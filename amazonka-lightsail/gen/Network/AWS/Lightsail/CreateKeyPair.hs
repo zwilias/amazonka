@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -100,11 +100,11 @@ instance ToQuery CreateKeyPair where
 -- | /See:/ 'createKeyPairResponse' smart constructor.
 data CreateKeyPairResponse =
   CreateKeyPairResponse'
-    { _ckprsKeyPair :: !(Maybe KeyPair)
-    , _ckprsOperation :: !(Maybe Operation)
-    , _ckprsPublicKeyBase64 :: !(Maybe Text)
+    { _ckprsKeyPair          :: !(Maybe KeyPair)
+    , _ckprsOperation        :: !(Maybe Operation)
+    , _ckprsPublicKeyBase64  :: !(Maybe Text)
     , _ckprsPrivateKeyBase64 :: !(Maybe Text)
-    , _ckprsResponseStatus :: !Int
+    , _ckprsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

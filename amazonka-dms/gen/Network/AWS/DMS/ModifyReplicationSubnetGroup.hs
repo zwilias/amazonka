@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.Response
 data ModifyReplicationSubnetGroup =
   ModifyReplicationSubnetGroup'
     { _mrsgReplicationSubnetGroupDescription :: !(Maybe Text)
-    , _mrsgReplicationSubnetGroupIdentifier :: !Text
-    , _mrsgSubnetIds :: ![Text]
+    , _mrsgReplicationSubnetGroupIdentifier  :: !Text
+    , _mrsgSubnetIds                         :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -142,7 +142,7 @@ instance ToQuery ModifyReplicationSubnetGroup where
 data ModifyReplicationSubnetGroupResponse =
   ModifyReplicationSubnetGroupResponse'
     { _mrsgrsReplicationSubnetGroup :: !(Maybe ReplicationSubnetGroup)
-    , _mrsgrsResponseStatus :: !Int
+    , _mrsgrsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

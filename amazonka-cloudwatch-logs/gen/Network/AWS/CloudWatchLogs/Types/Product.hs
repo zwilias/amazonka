@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,12 +26,12 @@ import Network.AWS.Prelude
 -- /See:/ 'destination' smart constructor.
 data Destination =
   Destination'
-    { _dTargetARN :: !(Maybe Text)
-    , _dCreationTime :: !(Maybe Nat)
-    , _dArn :: !(Maybe Text)
-    , _dAccessPolicy :: !(Maybe Text)
+    { _dTargetARN       :: !(Maybe Text)
+    , _dCreationTime    :: !(Maybe Nat)
+    , _dArn             :: !(Maybe Text)
+    , _dAccessPolicy    :: !(Maybe Text)
     , _dDestinationName :: !(Maybe Text)
-    , _dRoleARN :: !(Maybe Text)
+    , _dRoleARN         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -109,14 +109,14 @@ instance NFData Destination
 data ExportTask =
   ExportTask'
     { _etDestinationPrefix :: !(Maybe Text)
-    , _etDestination :: !(Maybe Text)
-    , _etStatus :: !(Maybe ExportTaskStatus)
-    , _etTaskName :: !(Maybe Text)
-    , _etTaskId :: !(Maybe Text)
-    , _etTo :: !(Maybe Nat)
-    , _etFrom :: !(Maybe Nat)
-    , _etLogGroupName :: !(Maybe Text)
-    , _etExecutionInfo :: !(Maybe ExportTaskExecutionInfo)
+    , _etDestination       :: !(Maybe Text)
+    , _etStatus            :: !(Maybe ExportTaskStatus)
+    , _etTaskName          :: !(Maybe Text)
+    , _etTaskId            :: !(Maybe Text)
+    , _etTo                :: !(Maybe Nat)
+    , _etFrom              :: !(Maybe Nat)
+    , _etLogGroupName      :: !(Maybe Text)
+    , _etExecutionInfo     :: !(Maybe ExportTaskExecutionInfo)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -217,7 +217,7 @@ instance NFData ExportTask
 -- /See:/ 'exportTaskExecutionInfo' smart constructor.
 data ExportTaskExecutionInfo =
   ExportTaskExecutionInfo'
-    { _eteiCreationTime :: !(Maybe Nat)
+    { _eteiCreationTime   :: !(Maybe Nat)
     , _eteiCompletionTime :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -263,7 +263,7 @@ instance NFData ExportTaskExecutionInfo
 -- /See:/ 'exportTaskStatus' smart constructor.
 data ExportTaskStatus =
   ExportTaskStatus'
-    { _etsCode :: !(Maybe ExportTaskStatusCode)
+    { _etsCode    :: !(Maybe ExportTaskStatusCode)
     , _etsMessage :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -305,9 +305,9 @@ data FilteredLogEvent =
   FilteredLogEvent'
     { _fleIngestionTime :: !(Maybe Nat)
     , _fleLogStreamName :: !(Maybe Text)
-    , _fleMessage :: !(Maybe Text)
-    , _fleTimestamp :: !(Maybe Nat)
-    , _fleEventId :: !(Maybe Text)
+    , _fleMessage       :: !(Maybe Text)
+    , _fleTimestamp     :: !(Maybe Nat)
+    , _fleEventId       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -378,7 +378,7 @@ instance NFData FilteredLogEvent
 data InputLogEvent =
   InputLogEvent'
     { _ileTimestamp :: !Nat
-    , _ileMessage :: !Text
+    , _ileMessage   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -421,13 +421,13 @@ instance ToJSON InputLogEvent where
 -- /See:/ 'logGroup' smart constructor.
 data LogGroup =
   LogGroup'
-    { _lgCreationTime :: !(Maybe Nat)
+    { _lgCreationTime      :: !(Maybe Nat)
     , _lgMetricFilterCount :: !(Maybe Int)
-    , _lgArn :: !(Maybe Text)
-    , _lgLogGroupName :: !(Maybe Text)
-    , _lgRetentionInDays :: !(Maybe Int)
-    , _lgKmsKeyId :: !(Maybe Text)
-    , _lgStoredBytes :: !(Maybe Nat)
+    , _lgArn               :: !(Maybe Text)
+    , _lgLogGroupName      :: !(Maybe Text)
+    , _lgRetentionInDays   :: !(Maybe Int)
+    , _lgKmsKeyId          :: !(Maybe Text)
+    , _lgStoredBytes       :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -514,14 +514,14 @@ instance NFData LogGroup
 -- /See:/ 'logStream' smart constructor.
 data LogStream =
   LogStream'
-    { _lsCreationTime :: !(Maybe Nat)
+    { _lsCreationTime        :: !(Maybe Nat)
     , _lsUploadSequenceToken :: !(Maybe Text)
-    , _lsArn :: !(Maybe Text)
+    , _lsArn                 :: !(Maybe Text)
     , _lsFirstEventTimestamp :: !(Maybe Nat)
-    , _lsLogStreamName :: !(Maybe Text)
-    , _lsStoredBytes :: !(Maybe Nat)
-    , _lsLastIngestionTime :: !(Maybe Nat)
-    , _lsLastEventTimestamp :: !(Maybe Nat)
+    , _lsLogStreamName       :: !(Maybe Text)
+    , _lsStoredBytes         :: !(Maybe Nat)
+    , _lsLastIngestionTime   :: !(Maybe Nat)
+    , _lsLastEventTimestamp  :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -622,10 +622,10 @@ instance NFData LogStream
 -- /See:/ 'metricFilter' smart constructor.
 data MetricFilter =
   MetricFilter'
-    { _mfCreationTime :: !(Maybe Nat)
-    , _mfFilterName :: !(Maybe Text)
-    , _mfLogGroupName :: !(Maybe Text)
-    , _mfFilterPattern :: !(Maybe Text)
+    { _mfCreationTime          :: !(Maybe Nat)
+    , _mfFilterName            :: !(Maybe Text)
+    , _mfLogGroupName          :: !(Maybe Text)
+    , _mfFilterPattern         :: !(Maybe Text)
     , _mfMetricTransformations :: !(Maybe (List1 MetricTransformation))
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -699,8 +699,8 @@ instance NFData MetricFilter
 data MetricFilterMatchRecord =
   MetricFilterMatchRecord'
     { _mfmrExtractedValues :: !(Maybe (Map Text Text))
-    , _mfmrEventNumber :: !(Maybe Integer)
-    , _mfmrEventMessage :: !(Maybe Text)
+    , _mfmrEventNumber     :: !(Maybe Integer)
+    , _mfmrEventMessage    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -755,10 +755,10 @@ instance NFData MetricFilterMatchRecord
 -- /See:/ 'metricTransformation' smart constructor.
 data MetricTransformation =
   MetricTransformation'
-    { _mtDefaultValue :: !(Maybe Double)
-    , _mtMetricName :: !Text
+    { _mtDefaultValue    :: !(Maybe Double)
+    , _mtMetricName      :: !Text
     , _mtMetricNamespace :: !Text
-    , _mtMetricValue :: !Text
+    , _mtMetricValue     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -834,8 +834,8 @@ instance ToJSON MetricTransformation where
 data OutputLogEvent =
   OutputLogEvent'
     { _oleIngestionTime :: !(Maybe Nat)
-    , _oleMessage :: !(Maybe Text)
-    , _oleTimestamp :: !(Maybe Nat)
+    , _oleMessage       :: !(Maybe Text)
+    , _oleTimestamp     :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -888,9 +888,9 @@ instance NFData OutputLogEvent
 -- /See:/ 'rejectedLogEventsInfo' smart constructor.
 data RejectedLogEventsInfo =
   RejectedLogEventsInfo'
-    { _rleiTooOldLogEventEndIndex :: !(Maybe Int)
+    { _rleiTooOldLogEventEndIndex   :: !(Maybe Int)
     , _rleiTooNewLogEventStartIndex :: !(Maybe Int)
-    , _rleiExpiredLogEventEndIndex :: !(Maybe Int)
+    , _rleiExpiredLogEventEndIndex  :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -950,8 +950,8 @@ instance NFData RejectedLogEventsInfo
 -- /See:/ 'resourcePolicy' smart constructor.
 data ResourcePolicy =
   ResourcePolicy'
-    { _rpPolicyName :: !(Maybe Text)
-    , _rpPolicyDocument :: !(Maybe Text)
+    { _rpPolicyName      :: !(Maybe Text)
+    , _rpPolicyDocument  :: !(Maybe Text)
     , _rpLastUpdatedTime :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1005,7 +1005,7 @@ instance NFData ResourcePolicy
 -- /See:/ 'searchedLogStream' smart constructor.
 data SearchedLogStream =
   SearchedLogStream'
-    { _slsLogStreamName :: !(Maybe Text)
+    { _slsLogStreamName      :: !(Maybe Text)
     , _slsSearchedCompletely :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1050,13 +1050,13 @@ instance NFData SearchedLogStream
 -- /See:/ 'subscriptionFilter' smart constructor.
 data SubscriptionFilter =
   SubscriptionFilter'
-    { _sfCreationTime :: !(Maybe Nat)
-    , _sfFilterName :: !(Maybe Text)
-    , _sfDistribution :: !(Maybe Distribution)
+    { _sfCreationTime   :: !(Maybe Nat)
+    , _sfFilterName     :: !(Maybe Text)
+    , _sfDistribution   :: !(Maybe Distribution)
     , _sfDestinationARN :: !(Maybe Text)
-    , _sfLogGroupName :: !(Maybe Text)
-    , _sfFilterPattern :: !(Maybe Text)
-    , _sfRoleARN :: !(Maybe Text)
+    , _sfLogGroupName   :: !(Maybe Text)
+    , _sfFilterPattern  :: !(Maybe Text)
+    , _sfRoleARN        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,11 +51,11 @@ import Network.AWS.Response
 -- | /See:/ 'describePolicies' smart constructor.
 data DescribePolicies =
   DescribePolicies'
-    { _dpsPolicyNames :: !(Maybe [Text])
-    , _dpsNextToken :: !(Maybe Text)
+    { _dpsPolicyNames          :: !(Maybe [Text])
+    , _dpsNextToken            :: !(Maybe Text)
     , _dpsAutoScalingGroupName :: !(Maybe Text)
-    , _dpsMaxRecords :: !(Maybe Int)
-    , _dpsPolicyTypes :: !(Maybe [Text])
+    , _dpsMaxRecords           :: !(Maybe Int)
+    , _dpsPolicyTypes          :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -147,9 +147,9 @@ instance ToQuery DescribePolicies where
 -- | /See:/ 'describePoliciesResponse' smart constructor.
 data DescribePoliciesResponse =
   DescribePoliciesResponse'
-    { _dprsNextToken :: !(Maybe Text)
+    { _dprsNextToken       :: !(Maybe Text)
     , _dprsScalingPolicies :: !(Maybe [ScalingPolicy])
-    , _dprsResponseStatus :: !Int
+    , _dprsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

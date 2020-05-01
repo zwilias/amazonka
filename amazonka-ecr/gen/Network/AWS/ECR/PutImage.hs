@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,10 +46,10 @@ import Network.AWS.Response
 -- | /See:/ 'putImage' smart constructor.
 data PutImage =
   PutImage'
-    { _piRegistryId :: !(Maybe Text)
-    , _piImageTag :: !(Maybe Text)
+    { _piRegistryId     :: !(Maybe Text)
+    , _piImageTag       :: !(Maybe Text)
     , _piRepositoryName :: !Text
-    , _piImageManifest :: !Text
+    , _piImageManifest  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -131,7 +131,7 @@ instance ToQuery PutImage where
 -- | /See:/ 'putImageResponse' smart constructor.
 data PutImageResponse =
   PutImageResponse'
-    { _pirsImage :: !(Maybe Image)
+    { _pirsImage          :: !(Maybe Image)
     , _pirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

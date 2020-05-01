@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,17 +57,17 @@ import Network.AWS.Response
 -- | /See:/ 'describeEvaluations' smart constructor.
 data DescribeEvaluations =
   DescribeEvaluations'
-    { _deEQ :: !(Maybe Text)
-    , _deGE :: !(Maybe Text)
-    , _dePrefix :: !(Maybe Text)
-    , _deGT :: !(Maybe Text)
-    , _deNE :: !(Maybe Text)
-    , _deNextToken :: !(Maybe Text)
-    , _deSortOrder :: !(Maybe SortOrder)
-    , _deLimit :: !(Maybe Nat)
-    , _deLT :: !(Maybe Text)
+    { _deEQ             :: !(Maybe Text)
+    , _deGE             :: !(Maybe Text)
+    , _dePrefix         :: !(Maybe Text)
+    , _deGT             :: !(Maybe Text)
+    , _deNE             :: !(Maybe Text)
+    , _deNextToken      :: !(Maybe Text)
+    , _deSortOrder      :: !(Maybe SortOrder)
+    , _deLimit          :: !(Maybe Nat)
+    , _deLT             :: !(Maybe Text)
     , _deFilterVariable :: !(Maybe EvaluationFilterVariable)
-    , _deLE :: !(Maybe Text)
+    , _deLE             :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -215,8 +215,8 @@ instance ToQuery DescribeEvaluations where
 -- /See:/ 'describeEvaluationsResponse' smart constructor.
 data DescribeEvaluationsResponse =
   DescribeEvaluationsResponse'
-    { _desrsResults :: !(Maybe [Evaluation])
-    , _desrsNextToken :: !(Maybe Text)
+    { _desrsResults        :: !(Maybe [Evaluation])
+    , _desrsNextToken      :: !(Maybe Text)
     , _desrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

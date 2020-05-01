@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,7 +51,7 @@ import Network.AWS.Response
 -- /See:/ 'listDistributions' smart constructor.
 data ListDistributions =
   ListDistributions'
-    { _ldMarker :: !(Maybe Text)
+    { _ldMarker   :: !(Maybe Text)
     , _ldMaxItems :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -111,7 +111,7 @@ instance ToQuery ListDistributions where
 -- /See:/ 'listDistributionsResponse' smart constructor.
 data ListDistributionsResponse =
   ListDistributionsResponse'
-    { _ldrsResponseStatus :: !Int
+    { _ldrsResponseStatus   :: !Int
     , _ldrsDistributionList :: !DistributionList
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

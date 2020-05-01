@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,11 +53,11 @@ import Network.AWS.Response
 data DescribeAlarms =
   DescribeAlarms'
     { _daAlarmNamePrefix :: !(Maybe Text)
-    , _daActionPrefix :: !(Maybe Text)
-    , _daNextToken :: !(Maybe Text)
-    , _daStateValue :: !(Maybe StateValue)
-    , _daAlarmNames :: !(Maybe [Text])
-    , _daMaxRecords :: !(Maybe Nat)
+    , _daActionPrefix    :: !(Maybe Text)
+    , _daNextToken       :: !(Maybe Text)
+    , _daStateValue      :: !(Maybe StateValue)
+    , _daAlarmNames      :: !(Maybe [Text])
+    , _daMaxRecords      :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -156,8 +156,8 @@ instance ToQuery DescribeAlarms where
 -- | /See:/ 'describeAlarmsResponse' smart constructor.
 data DescribeAlarmsResponse =
   DescribeAlarmsResponse'
-    { _darsMetricAlarms :: !(Maybe [MetricAlarm])
-    , _darsNextToken :: !(Maybe Text)
+    { _darsMetricAlarms   :: !(Maybe [MetricAlarm])
+    , _darsNextToken      :: !(Maybe Text)
     , _darsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

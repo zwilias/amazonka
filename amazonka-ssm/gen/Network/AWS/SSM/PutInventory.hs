@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.SSM.Types.Product
 data PutInventory =
   PutInventory'
     { _piInstanceId :: !Text
-    , _piItems :: !(List1 InventoryItem)
+    , _piItems      :: !(List1 InventoryItem)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -106,7 +106,7 @@ instance ToQuery PutInventory where
 -- | /See:/ 'putInventoryResponse' smart constructor.
 data PutInventoryResponse =
   PutInventoryResponse'
-    { _pirsMessage :: !(Maybe Text)
+    { _pirsMessage        :: !(Maybe Text)
     , _pirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

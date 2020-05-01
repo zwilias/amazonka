@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'getIntrospectionSchema' smart constructor.
 data GetIntrospectionSchema =
   GetIntrospectionSchema'
-    { _gisApiId :: !Text
+    { _gisApiId  :: !Text
     , _gisFormat :: !OutputType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -99,7 +99,7 @@ instance ToQuery GetIntrospectionSchema where
 -- | /See:/ 'getIntrospectionSchemaResponse' smart constructor.
 data GetIntrospectionSchemaResponse =
   GetIntrospectionSchemaResponse'
-    { _gisrsSchema :: !(Maybe ByteString)
+    { _gisrsSchema         :: !(Maybe ByteString)
     , _gisrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

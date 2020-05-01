@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -101,14 +101,14 @@ instance ToQuery GetFunctionDefinition where
 -- | /See:/ 'getFunctionDefinitionResponse' smart constructor.
 data GetFunctionDefinitionResponse =
   GetFunctionDefinitionResponse'
-    { _gfdrsLatestVersionARN :: !(Maybe Text)
-    , _gfdrsARN :: !(Maybe Text)
-    , _gfdrsName :: !(Maybe Text)
-    , _gfdrsCreationTimestamp :: !(Maybe Text)
-    , _gfdrsId :: !(Maybe Text)
-    , _gfdrsLatestVersion :: !(Maybe Text)
+    { _gfdrsLatestVersionARN     :: !(Maybe Text)
+    , _gfdrsARN                  :: !(Maybe Text)
+    , _gfdrsName                 :: !(Maybe Text)
+    , _gfdrsCreationTimestamp    :: !(Maybe Text)
+    , _gfdrsId                   :: !(Maybe Text)
+    , _gfdrsLatestVersion        :: !(Maybe Text)
     , _gfdrsLastUpdatedTimestamp :: !(Maybe Text)
-    , _gfdrsResponseStatus :: !Int
+    , _gfdrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

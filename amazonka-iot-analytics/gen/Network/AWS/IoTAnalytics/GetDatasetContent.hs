@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'getDatasetContent' smart constructor.
 data GetDatasetContent =
   GetDatasetContent'
-    { _gdcVersionId :: !(Maybe Text)
+    { _gdcVersionId   :: !(Maybe Text)
     , _gdcDatasetName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -100,9 +100,9 @@ instance ToQuery GetDatasetContent where
 -- | /See:/ 'getDatasetContentResponse' smart constructor.
 data GetDatasetContentResponse =
   GetDatasetContentResponse'
-    { _gdcrsStatus :: !(Maybe DatasetContentStatus)
-    , _gdcrsEntries :: !(Maybe [DatasetEntry])
-    , _gdcrsTimestamp :: !(Maybe POSIX)
+    { _gdcrsStatus         :: !(Maybe DatasetContentStatus)
+    , _gdcrsEntries        :: !(Maybe [DatasetEntry])
+    , _gdcrsTimestamp      :: !(Maybe POSIX)
     , _gdcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

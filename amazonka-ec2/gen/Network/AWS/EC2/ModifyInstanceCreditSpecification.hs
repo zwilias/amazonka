@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,8 +48,8 @@ import Network.AWS.Response
 -- | /See:/ 'modifyInstanceCreditSpecification' smart constructor.
 data ModifyInstanceCreditSpecification =
   ModifyInstanceCreditSpecification'
-    { _micsClientToken :: !(Maybe Text)
-    , _micsDryRun :: !(Maybe Bool)
+    { _micsClientToken                  :: !(Maybe Text)
+    , _micsDryRun                       :: !(Maybe Bool)
     , _micsInstanceCreditSpecifications :: ![InstanceCreditSpecificationRequest]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 -- /See:/ 'createPlatformVersion' smart constructor.
 data CreatePlatformVersion =
   CreatePlatformVersion'
-    { _cpvOptionSettings :: !(Maybe [ConfigurationOptionSetting])
-    , _cpvEnvironmentName :: !(Maybe Text)
-    , _cpvPlatformName :: !Text
-    , _cpvPlatformVersion :: !Text
+    { _cpvOptionSettings           :: !(Maybe [ConfigurationOptionSetting])
+    , _cpvEnvironmentName          :: !(Maybe Text)
+    , _cpvPlatformName             :: !Text
+    , _cpvPlatformVersion          :: !Text
     , _cpvPlatformDefinitionBundle :: !S3Location
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -151,9 +151,9 @@ instance ToQuery CreatePlatformVersion where
 -- | /See:/ 'createPlatformVersionResponse' smart constructor.
 data CreatePlatformVersionResponse =
   CreatePlatformVersionResponse'
-    { _cpvrsBuilder :: !(Maybe Builder)
+    { _cpvrsBuilder         :: !(Maybe Builder)
     , _cpvrsPlatformSummary :: !(Maybe PlatformSummary)
-    , _cpvrsResponseStatus :: !Int
+    , _cpvrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

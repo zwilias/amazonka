@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 -- | /See:/ 'listWorkersWithQualificationType' smart constructor.
 data ListWorkersWithQualificationType =
   ListWorkersWithQualificationType'
-    { _lwwqtStatus :: !(Maybe QualificationStatus)
-    , _lwwqtNextToken :: !(Maybe Text)
-    , _lwwqtMaxResults :: !(Maybe Nat)
+    { _lwwqtStatus              :: !(Maybe QualificationStatus)
+    , _lwwqtNextToken           :: !(Maybe Text)
+    , _lwwqtMaxResults          :: !(Maybe Nat)
     , _lwwqtQualificationTypeId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -148,8 +148,8 @@ instance ToQuery ListWorkersWithQualificationType where
 -- | /See:/ 'listWorkersWithQualificationTypeResponse' smart constructor.
 data ListWorkersWithQualificationTypeResponse =
   ListWorkersWithQualificationTypeResponse'
-    { _lwwqtrsNextToken :: !(Maybe Text)
-    , _lwwqtrsNumResults :: !(Maybe Int)
+    { _lwwqtrsNextToken      :: !(Maybe Text)
+    , _lwwqtrsNumResults     :: !(Maybe Int)
     , _lwwqtrsQualifications :: !(Maybe [Qualification])
     , _lwwqtrsResponseStatus :: !Int
     }

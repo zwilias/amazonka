@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,31 +26,31 @@ import Network.AWS.Prelude
 -- /See:/ 'certificateDetail' smart constructor.
 data CertificateDetail =
   CertificateDetail'
-    { _cdSubject :: !(Maybe Text)
-    , _cdStatus :: !(Maybe CertificateStatus)
-    , _cdFailureReason :: !(Maybe FailureReason)
+    { _cdSubject                 :: !(Maybe Text)
+    , _cdStatus                  :: !(Maybe CertificateStatus)
+    , _cdFailureReason           :: !(Maybe FailureReason)
     , _cdSubjectAlternativeNames :: !(Maybe (List1 Text))
-    , _cdInUseBy :: !(Maybe [Text])
-    , _cdCreatedAt :: !(Maybe POSIX)
-    , _cdCertificateARN :: !(Maybe Text)
-    , _cdSerial :: !(Maybe Text)
-    , _cdRenewalEligibility :: !(Maybe RenewalEligibility)
-    , _cdExtendedKeyUsages :: !(Maybe [ExtendedKeyUsage])
-    , _cdImportedAt :: !(Maybe POSIX)
-    , _cdKeyUsages :: !(Maybe [KeyUsage])
-    , _cdRevokedAt :: !(Maybe POSIX)
-    , _cdNotBefore :: !(Maybe POSIX)
-    , _cdRevocationReason :: !(Maybe RevocationReason)
-    , _cdDomainName :: !(Maybe Text)
-    , _cdRenewalSummary :: !(Maybe RenewalSummary)
-    , _cdKeyAlgorithm :: !(Maybe KeyAlgorithm)
-    , _cdType :: !(Maybe CertificateType)
-    , _cdOptions :: !(Maybe CertificateOptions)
-    , _cdIssuedAt :: !(Maybe POSIX)
-    , _cdSignatureAlgorithm :: !(Maybe Text)
+    , _cdInUseBy                 :: !(Maybe [Text])
+    , _cdCreatedAt               :: !(Maybe POSIX)
+    , _cdCertificateARN          :: !(Maybe Text)
+    , _cdSerial                  :: !(Maybe Text)
+    , _cdRenewalEligibility      :: !(Maybe RenewalEligibility)
+    , _cdExtendedKeyUsages       :: !(Maybe [ExtendedKeyUsage])
+    , _cdImportedAt              :: !(Maybe POSIX)
+    , _cdKeyUsages               :: !(Maybe [KeyUsage])
+    , _cdRevokedAt               :: !(Maybe POSIX)
+    , _cdNotBefore               :: !(Maybe POSIX)
+    , _cdRevocationReason        :: !(Maybe RevocationReason)
+    , _cdDomainName              :: !(Maybe Text)
+    , _cdRenewalSummary          :: !(Maybe RenewalSummary)
+    , _cdKeyAlgorithm            :: !(Maybe KeyAlgorithm)
+    , _cdType                    :: !(Maybe CertificateType)
+    , _cdOptions                 :: !(Maybe CertificateOptions)
+    , _cdIssuedAt                :: !(Maybe POSIX)
+    , _cdSignatureAlgorithm      :: !(Maybe Text)
     , _cdDomainValidationOptions :: !(Maybe (List1 DomainValidation))
-    , _cdIssuer :: !(Maybe Text)
-    , _cdNotAfter :: !(Maybe POSIX)
+    , _cdIssuer                  :: !(Maybe Text)
+    , _cdNotAfter                :: !(Maybe POSIX)
     , _cdCertificateAuthorityARN :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -349,7 +349,7 @@ instance ToJSON CertificateOptions where
 data CertificateSummary =
   CertificateSummary'
     { _csCertificateARN :: !(Maybe Text)
-    , _csDomainName :: !(Maybe Text)
+    , _csDomainName     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -393,10 +393,10 @@ data DomainValidation =
   DomainValidation'
     { _dvValidationEmails :: !(Maybe [Text])
     , _dvValidationMethod :: !(Maybe ValidationMethod)
-    , _dvResourceRecord :: !(Maybe ResourceRecord)
+    , _dvResourceRecord   :: !(Maybe ResourceRecord)
     , _dvValidationStatus :: !(Maybe DomainStatus)
     , _dvValidationDomain :: !(Maybe Text)
-    , _dvDomainName :: !Text
+    , _dvDomainName       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -480,7 +480,7 @@ instance NFData DomainValidation
 -- /See:/ 'domainValidationOption' smart constructor.
 data DomainValidationOption =
   DomainValidationOption'
-    { _dvoDomainName :: !Text
+    { _dvoDomainName       :: !Text
     , _dvoValidationDomain :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -528,7 +528,7 @@ instance ToJSON DomainValidationOption where
 -- /See:/ 'extendedKeyUsage' smart constructor.
 data ExtendedKeyUsage =
   ExtendedKeyUsage'
-    { _ekuOId :: !(Maybe Text)
+    { _ekuOId  :: !(Maybe Text)
     , _ekuName :: !(Maybe ExtendedKeyUsageName)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -568,8 +568,8 @@ instance NFData ExtendedKeyUsage
 -- /See:/ 'filters' smart constructor.
 data Filters =
   Filters'
-    { _fKeyTypes :: !(Maybe [KeyAlgorithm])
-    , _fKeyUsage :: !(Maybe [KeyUsageName])
+    { _fKeyTypes         :: !(Maybe [KeyAlgorithm])
+    , _fKeyUsage         :: !(Maybe [KeyUsageName])
     , _fExtendedKeyUsage :: !(Maybe [ExtendedKeyUsageName])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -652,7 +652,7 @@ instance NFData KeyUsage
 -- /See:/ 'renewalSummary' smart constructor.
 data RenewalSummary =
   RenewalSummary'
-    { _rsRenewalStatus :: !RenewalStatus
+    { _rsRenewalStatus           :: !RenewalStatus
     , _rsDomainValidationOptions :: !(List1 DomainValidation)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -703,8 +703,8 @@ instance NFData RenewalSummary
 -- /See:/ 'resourceRecord' smart constructor.
 data ResourceRecord =
   ResourceRecord'
-    { _rrName :: !Text
-    , _rrType :: !RecordType
+    { _rrName  :: !Text
+    , _rrType  :: !RecordType
     , _rrValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -757,7 +757,7 @@ instance NFData ResourceRecord
 data Tag =
   Tag'
     { _tagValue :: !(Maybe Text)
-    , _tagKey :: !Text
+    , _tagKey   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

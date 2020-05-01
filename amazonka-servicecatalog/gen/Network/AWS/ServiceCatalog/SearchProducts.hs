@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,12 +50,12 @@ import Network.AWS.ServiceCatalog.Types.Product
 -- | /See:/ 'searchProducts' smart constructor.
 data SearchProducts =
   SearchProducts'
-    { _spFilters :: !(Maybe (Map ProductViewFilterBy [Text]))
-    , _spSortOrder :: !(Maybe SortOrder)
+    { _spFilters        :: !(Maybe (Map ProductViewFilterBy [Text]))
+    , _spSortOrder      :: !(Maybe SortOrder)
     , _spAcceptLanguage :: !(Maybe Text)
-    , _spPageToken :: !(Maybe Text)
-    , _spPageSize :: !(Maybe Nat)
-    , _spSortBy :: !(Maybe ProductViewSortBy)
+    , _spPageToken      :: !(Maybe Text)
+    , _spPageSize       :: !(Maybe Nat)
+    , _spSortBy         :: !(Maybe ProductViewSortBy)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -74,10 +74,10 @@ import Network.AWS.Response
 -- /See:/ 'attachVolume' smart constructor.
 data AttachVolume =
   AttachVolume'
-    { _avDryRun :: !(Maybe Bool)
-    , _avDevice :: !Text
+    { _avDryRun     :: !(Maybe Bool)
+    , _avDevice     :: !Text
     , _avInstanceId :: !Text
-    , _avVolumeId :: !Text
+    , _avVolumeId   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

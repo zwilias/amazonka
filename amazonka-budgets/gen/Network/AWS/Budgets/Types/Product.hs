@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -29,13 +29,13 @@ import Network.AWS.Prelude
 data Budget =
   Budget'
     { _bCalculatedSpend :: !(Maybe CalculatedSpend)
-    , _bBudgetLimit :: !(Maybe Spend)
-    , _bTimePeriod :: !(Maybe TimePeriod)
-    , _bCostTypes :: !(Maybe CostTypes)
-    , _bCostFilters :: !(Maybe (Map Text [Text]))
-    , _bBudgetName :: !Text
-    , _bTimeUnit :: !TimeUnit
-    , _bBudgetType :: !BudgetType
+    , _bBudgetLimit     :: !(Maybe Spend)
+    , _bTimePeriod      :: !(Maybe TimePeriod)
+    , _bCostTypes       :: !(Maybe CostTypes)
+    , _bCostFilters     :: !(Maybe (Map Text [Text]))
+    , _bBudgetName      :: !Text
+    , _bTimeUnit        :: !TimeUnit
+    , _bBudgetType      :: !BudgetType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -149,7 +149,7 @@ instance ToJSON Budget where
 data CalculatedSpend =
   CalculatedSpend'
     { _csForecastedSpend :: !(Maybe Spend)
-    , _csActualSpend :: !Spend
+    , _csActualSpend     :: !Spend
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -201,17 +201,17 @@ instance ToJSON CalculatedSpend where
 -- /See:/ 'costTypes' smart constructor.
 data CostTypes =
   CostTypes'
-    { _ctUseAmortized :: !(Maybe Bool)
-    , _ctIncludeRecurring :: !(Maybe Bool)
-    , _ctUseBlended :: !(Maybe Bool)
-    , _ctIncludeSupport :: !(Maybe Bool)
-    , _ctIncludeDiscount :: !(Maybe Bool)
-    , _ctIncludeSubscription :: !(Maybe Bool)
-    , _ctIncludeRefund :: !(Maybe Bool)
-    , _ctIncludeUpfront :: !(Maybe Bool)
+    { _ctUseAmortized             :: !(Maybe Bool)
+    , _ctIncludeRecurring         :: !(Maybe Bool)
+    , _ctUseBlended               :: !(Maybe Bool)
+    , _ctIncludeSupport           :: !(Maybe Bool)
+    , _ctIncludeDiscount          :: !(Maybe Bool)
+    , _ctIncludeSubscription      :: !(Maybe Bool)
+    , _ctIncludeRefund            :: !(Maybe Bool)
+    , _ctIncludeUpfront           :: !(Maybe Bool)
     , _ctIncludeOtherSubscription :: !(Maybe Bool)
-    , _ctIncludeTax :: !(Maybe Bool)
-    , _ctIncludeCredit :: !(Maybe Bool)
+    , _ctIncludeTax               :: !(Maybe Bool)
+    , _ctIncludeCredit            :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -359,10 +359,10 @@ instance ToJSON CostTypes where
 -- /See:/ 'notification' smart constructor.
 data Notification =
   Notification'
-    { _nThresholdType :: !(Maybe ThresholdType)
-    , _nNotificationType :: !NotificationType
+    { _nThresholdType      :: !(Maybe ThresholdType)
+    , _nNotificationType   :: !NotificationType
     , _nComparisonOperator :: !ComparisonOperator
-    , _nThreshold :: !Double
+    , _nThreshold          :: !Double
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -438,7 +438,7 @@ instance ToJSON Notification where
 data NotificationWithSubscribers =
   NotificationWithSubscribers'
     { _nwsNotification :: !Notification
-    , _nwsSubscribers :: !(List1 Subscriber)
+    , _nwsSubscribers  :: !(List1 Subscriber)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -495,7 +495,7 @@ instance ToJSON NotificationWithSubscribers where
 data Spend =
   Spend'
     { _sAmount :: !Text
-    , _sUnit :: !Text
+    , _sUnit   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -548,7 +548,7 @@ instance ToJSON Spend where
 data Subscriber =
   Subscriber'
     { _sSubscriptionType :: !SubscriptionType
-    , _sAddress :: !Text
+    , _sAddress          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -600,7 +600,7 @@ instance ToJSON Subscriber where
 data TimePeriod =
   TimePeriod'
     { _tpStart :: !(Maybe POSIX)
-    , _tpEnd :: !(Maybe POSIX)
+    , _tpEnd   :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -82,21 +82,21 @@ import Network.AWS.Response
 -- /See:/ 'createFunction' smart constructor.
 data CreateFunction =
   CreateFunction'
-    { _cfMemorySize :: !(Maybe Nat)
-    , _cfKMSKeyARN :: !(Maybe Text)
-    , _cfEnvironment :: !(Maybe Environment)
+    { _cfMemorySize       :: !(Maybe Nat)
+    , _cfKMSKeyARN        :: !(Maybe Text)
+    , _cfEnvironment      :: !(Maybe Environment)
     , _cfDeadLetterConfig :: !(Maybe DeadLetterConfig)
-    , _cfVPCConfig :: !(Maybe VPCConfig)
-    , _cfTimeout :: !(Maybe Nat)
-    , _cfTracingConfig :: !(Maybe TracingConfig)
-    , _cfDescription :: !(Maybe Text)
-    , _cfTags :: !(Maybe (Map Text Text))
-    , _cfPublish :: !(Maybe Bool)
-    , _cfFunctionName :: !Text
-    , _cfRuntime :: !Runtime
-    , _cfRole :: !Text
-    , _cfHandler :: !Text
-    , _cfCode :: !FunctionCode
+    , _cfVPCConfig        :: !(Maybe VPCConfig)
+    , _cfTimeout          :: !(Maybe Nat)
+    , _cfTracingConfig    :: !(Maybe TracingConfig)
+    , _cfDescription      :: !(Maybe Text)
+    , _cfTags             :: !(Maybe (Map Text Text))
+    , _cfPublish          :: !(Maybe Bool)
+    , _cfFunctionName     :: !Text
+    , _cfRuntime          :: !Runtime
+    , _cfRole             :: !Text
+    , _cfHandler          :: !Text
+    , _cfCode             :: !FunctionCode
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

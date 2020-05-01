@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,8 +47,8 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'describeInstancePatchStatesForPatchGroup' smart constructor.
 data DescribeInstancePatchStatesForPatchGroup =
   DescribeInstancePatchStatesForPatchGroup'
-    { _dipsfpgFilters :: !(Maybe [InstancePatchStateFilter])
-    , _dipsfpgNextToken :: !(Maybe Text)
+    { _dipsfpgFilters    :: !(Maybe [InstancePatchStateFilter])
+    , _dipsfpgNextToken  :: !(Maybe Text)
     , _dipsfpgMaxResults :: !(Maybe Nat)
     , _dipsfpgPatchGroup :: !Text
     }
@@ -139,9 +139,9 @@ instance ToQuery DescribeInstancePatchStatesForPatchGroup where
 -- | /See:/ 'describeInstancePatchStatesForPatchGroupResponse' smart constructor.
 data DescribeInstancePatchStatesForPatchGroupResponse =
   DescribeInstancePatchStatesForPatchGroupResponse'
-    { _dipsfpgrsNextToken :: !(Maybe Text)
+    { _dipsfpgrsNextToken           :: !(Maybe Text)
     , _dipsfpgrsInstancePatchStates :: !(Maybe (List1 InstancePatchState))
-    , _dipsfpgrsResponseStatus :: !Int
+    , _dipsfpgrsResponseStatus      :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,13 +50,13 @@ import Network.AWS.Response
 -- | /See:/ 'updateAccountPasswordPolicy' smart constructor.
 data UpdateAccountPasswordPolicy =
   UpdateAccountPasswordPolicy'
-    { _uappMinimumPasswordLength :: !(Maybe Nat)
-    , _uappRequireNumbers :: !(Maybe Bool)
-    , _uappPasswordReusePrevention :: !(Maybe Nat)
+    { _uappMinimumPasswordLength      :: !(Maybe Nat)
+    , _uappRequireNumbers             :: !(Maybe Bool)
+    , _uappPasswordReusePrevention    :: !(Maybe Nat)
     , _uappRequireLowercaseCharacters :: !(Maybe Bool)
-    , _uappMaxPasswordAge :: !(Maybe Nat)
-    , _uappHardExpiry :: !(Maybe Bool)
-    , _uappRequireSymbols :: !(Maybe Bool)
+    , _uappMaxPasswordAge             :: !(Maybe Nat)
+    , _uappHardExpiry                 :: !(Maybe Bool)
+    , _uappRequireSymbols             :: !(Maybe Bool)
     , _uappRequireUppercaseCharacters :: !(Maybe Bool)
     , _uappAllowUsersToChangePassword :: !(Maybe Bool)
     }

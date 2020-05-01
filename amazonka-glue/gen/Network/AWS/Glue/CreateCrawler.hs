@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,15 +52,15 @@ import Network.AWS.Response
 data CreateCrawler =
   CreateCrawler'
     { _ccSchemaChangePolicy :: !(Maybe SchemaChangePolicy)
-    , _ccSchedule :: !(Maybe Text)
-    , _ccClassifiers :: !(Maybe [Text])
-    , _ccConfiguration :: !(Maybe Text)
-    , _ccTablePrefix :: !(Maybe Text)
-    , _ccDescription :: !(Maybe Text)
-    , _ccName :: !Text
-    , _ccRole :: !Text
-    , _ccDatabaseName :: !Text
-    , _ccTargets :: !CrawlerTargets
+    , _ccSchedule           :: !(Maybe Text)
+    , _ccClassifiers        :: !(Maybe [Text])
+    , _ccConfiguration      :: !(Maybe Text)
+    , _ccTablePrefix        :: !(Maybe Text)
+    , _ccDescription        :: !(Maybe Text)
+    , _ccName               :: !Text
+    , _ccRole               :: !Text
+    , _ccDatabaseName       :: !Text
+    , _ccTargets            :: !CrawlerTargets
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

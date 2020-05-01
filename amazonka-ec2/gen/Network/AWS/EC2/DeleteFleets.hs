@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,8 +48,8 @@ import Network.AWS.Response
 -- | /See:/ 'deleteFleets' smart constructor.
 data DeleteFleets =
   DeleteFleets'
-    { _dfDryRun :: !(Maybe Bool)
-    , _dfFleetIds :: ![Text]
+    { _dfDryRun             :: !(Maybe Bool)
+    , _dfFleetIds           :: ![Text]
     , _dfTerminateInstances :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -122,9 +122,9 @@ instance ToQuery DeleteFleets where
 -- | /See:/ 'deleteFleetsResponse' smart constructor.
 data DeleteFleetsResponse =
   DeleteFleetsResponse'
-    { _dfrsSuccessfulFleetDeletions :: !(Maybe [DeleteFleetSuccessItem])
+    { _dfrsSuccessfulFleetDeletions   :: !(Maybe [DeleteFleetSuccessItem])
     , _dfrsUnsuccessfulFleetDeletions :: !(Maybe [DeleteFleetErrorItem])
-    , _dfrsResponseStatus :: !Int
+    , _dfrsResponseStatus             :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

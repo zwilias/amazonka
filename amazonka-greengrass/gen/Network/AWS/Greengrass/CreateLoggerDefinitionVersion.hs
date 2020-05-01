@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 -- | /See:/ 'createLoggerDefinitionVersion' smart constructor.
 data CreateLoggerDefinitionVersion =
   CreateLoggerDefinitionVersion'
-    { _cldvLoggers :: !(Maybe [GreengrassLogger])
-    , _cldvAmznClientToken :: !(Maybe Text)
+    { _cldvLoggers            :: !(Maybe [GreengrassLogger])
+    , _cldvAmznClientToken    :: !(Maybe Text)
     , _cldvLoggerDefinitionId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -127,11 +127,11 @@ instance ToQuery CreateLoggerDefinitionVersion where
 -- | /See:/ 'createLoggerDefinitionVersionResponse' smart constructor.
 data CreateLoggerDefinitionVersionResponse =
   CreateLoggerDefinitionVersionResponse'
-    { _cldvrsARN :: !(Maybe Text)
+    { _cldvrsARN               :: !(Maybe Text)
     , _cldvrsCreationTimestamp :: !(Maybe Text)
-    , _cldvrsVersion :: !(Maybe Text)
-    , _cldvrsId :: !(Maybe Text)
-    , _cldvrsResponseStatus :: !Int
+    , _cldvrsVersion           :: !(Maybe Text)
+    , _cldvrsId                :: !(Maybe Text)
+    , _cldvrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

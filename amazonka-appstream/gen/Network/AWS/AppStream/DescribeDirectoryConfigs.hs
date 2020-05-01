@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- | /See:/ 'describeDirectoryConfigs' smart constructor.
 data DescribeDirectoryConfigs =
   DescribeDirectoryConfigs'
-    { _ddcNextToken :: !(Maybe Text)
+    { _ddcNextToken      :: !(Maybe Text)
     , _ddcDirectoryNames :: !(Maybe [Text])
-    , _ddcMaxResults :: !(Maybe Int)
+    , _ddcMaxResults     :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,9 +124,9 @@ instance ToQuery DescribeDirectoryConfigs where
 -- | /See:/ 'describeDirectoryConfigsResponse' smart constructor.
 data DescribeDirectoryConfigsResponse =
   DescribeDirectoryConfigsResponse'
-    { _ddcrsNextToken :: !(Maybe Text)
+    { _ddcrsNextToken        :: !(Maybe Text)
     , _ddcrsDirectoryConfigs :: !(Maybe [DirectoryConfig])
-    , _ddcrsResponseStatus :: !Int
+    , _ddcrsResponseStatus   :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

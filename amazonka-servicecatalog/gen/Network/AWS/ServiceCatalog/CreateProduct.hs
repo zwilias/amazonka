@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,18 +56,18 @@ import Network.AWS.ServiceCatalog.Types.Product
 -- | /See:/ 'createProduct' smart constructor.
 data CreateProduct =
   CreateProduct'
-    { _cpSupportURL :: !(Maybe Text)
-    , _cpDistributor :: !(Maybe Text)
-    , _cpAcceptLanguage :: !(Maybe Text)
-    , _cpSupportEmail :: !(Maybe Text)
-    , _cpDescription :: !(Maybe Text)
-    , _cpTags :: !(Maybe [Tag])
-    , _cpSupportDescription :: !(Maybe Text)
-    , _cpName :: !Text
-    , _cpOwner :: !Text
-    , _cpProductType :: !ProductType
+    { _cpSupportURL                     :: !(Maybe Text)
+    , _cpDistributor                    :: !(Maybe Text)
+    , _cpAcceptLanguage                 :: !(Maybe Text)
+    , _cpSupportEmail                   :: !(Maybe Text)
+    , _cpDescription                    :: !(Maybe Text)
+    , _cpTags                           :: !(Maybe [Tag])
+    , _cpSupportDescription             :: !(Maybe Text)
+    , _cpName                           :: !Text
+    , _cpOwner                          :: !Text
+    , _cpProductType                    :: !ProductType
     , _cpProvisioningArtifactParameters :: !ProvisioningArtifactProperties
-    , _cpIdempotencyToken :: !Text
+    , _cpIdempotencyToken               :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -228,10 +228,10 @@ instance ToQuery CreateProduct where
 -- | /See:/ 'createProductResponse' smart constructor.
 data CreateProductResponse =
   CreateProductResponse'
-    { _cprsProductViewDetail :: !(Maybe ProductViewDetail)
+    { _cprsProductViewDetail          :: !(Maybe ProductViewDetail)
     , _cprsProvisioningArtifactDetail :: !(Maybe ProvisioningArtifactDetail)
-    , _cprsTags :: !(Maybe [Tag])
-    , _cprsResponseStatus :: !Int
+    , _cprsTags                       :: !(Maybe [Tag])
+    , _cprsResponseStatus             :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

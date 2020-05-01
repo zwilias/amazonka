@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,12 +50,12 @@ import Network.AWS.Response
 -- | /See:/ 'modifyListener' smart constructor.
 data ModifyListener =
   ModifyListener'
-    { _mlSSLPolicy :: !(Maybe Text)
-    , _mlProtocol :: !(Maybe ProtocolEnum)
+    { _mlSSLPolicy      :: !(Maybe Text)
+    , _mlProtocol       :: !(Maybe ProtocolEnum)
     , _mlDefaultActions :: !(Maybe [Action])
-    , _mlCertificates :: !(Maybe [Certificate])
-    , _mlPort :: !(Maybe Nat)
-    , _mlListenerARN :: !Text
+    , _mlCertificates   :: !(Maybe [Certificate])
+    , _mlPort           :: !(Maybe Nat)
+    , _mlListenerARN    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -151,7 +151,7 @@ instance ToQuery ModifyListener where
 -- | /See:/ 'modifyListenerResponse' smart constructor.
 data ModifyListenerResponse =
   ModifyListenerResponse'
-    { _mlrsListeners :: !(Maybe [Listener])
+    { _mlrsListeners      :: !(Maybe [Listener])
     , _mlrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Response
 data DeleteBranch =
   DeleteBranch'
     { _dbRepositoryName :: !Text
-    , _dbBranchName :: !Text
+    , _dbBranchName     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -118,7 +118,7 @@ instance ToQuery DeleteBranch where
 -- /See:/ 'deleteBranchResponse' smart constructor.
 data DeleteBranchResponse =
   DeleteBranchResponse'
-    { _dbrsDeletedBranch :: !(Maybe BranchInfo)
+    { _dbrsDeletedBranch  :: !(Maybe BranchInfo)
     , _dbrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

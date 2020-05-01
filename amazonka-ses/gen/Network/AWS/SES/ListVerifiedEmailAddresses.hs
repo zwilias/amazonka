@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -86,7 +86,7 @@ instance ToQuery ListVerifiedEmailAddresses where
 data ListVerifiedEmailAddressesResponse =
   ListVerifiedEmailAddressesResponse'
     { _lvearsVerifiedEmailAddresses :: !(Maybe [Text])
-    , _lvearsResponseStatus :: !Int
+    , _lvearsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

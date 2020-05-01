@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,10 +48,10 @@ import Network.AWS.Response
 data CreateAssessmentTemplate =
   CreateAssessmentTemplate'
     { _catUserAttributesForFindings :: !(Maybe [Attribute])
-    , _catAssessmentTargetARN :: !Text
-    , _catAssessmentTemplateName :: !Text
-    , _catDurationInSeconds :: !Nat
-    , _catRulesPackageARNs :: ![Text]
+    , _catAssessmentTargetARN       :: !Text
+    , _catAssessmentTemplateName    :: !Text
+    , _catDurationInSeconds         :: !Nat
+    , _catRulesPackageARNs          :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -152,7 +152,7 @@ instance ToQuery CreateAssessmentTemplate where
 -- | /See:/ 'createAssessmentTemplateResponse' smart constructor.
 data CreateAssessmentTemplateResponse =
   CreateAssessmentTemplateResponse'
-    { _crsResponseStatus :: !Int
+    { _crsResponseStatus        :: !Int
     , _crsAssessmentTemplateARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

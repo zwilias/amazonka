@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -105,8 +105,8 @@ instance ToQuery GetHostnameSuggestion where
 -- /See:/ 'getHostnameSuggestionResponse' smart constructor.
 data GetHostnameSuggestionResponse =
   GetHostnameSuggestionResponse'
-    { _ghsrsHostname :: !(Maybe Text)
-    , _ghsrsLayerId :: !(Maybe Text)
+    { _ghsrsHostname       :: !(Maybe Text)
+    , _ghsrsLayerId        :: !(Maybe Text)
     , _ghsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

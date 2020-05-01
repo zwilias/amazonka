@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,10 +54,10 @@ import Network.AWS.Response
 -- /See:/ 'modifyDBClusterSnapshotAttribute' smart constructor.
 data ModifyDBClusterSnapshotAttribute =
   ModifyDBClusterSnapshotAttribute'
-    { _mdcsaValuesToAdd :: !(Maybe [Text])
-    , _mdcsaValuesToRemove :: !(Maybe [Text])
+    { _mdcsaValuesToAdd                 :: !(Maybe [Text])
+    , _mdcsaValuesToRemove              :: !(Maybe [Text])
     , _mdcsaDBClusterSnapshotIdentifier :: !Text
-    , _mdcsaAttributeName :: !Text
+    , _mdcsaAttributeName               :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

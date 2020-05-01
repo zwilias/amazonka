@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,9 +47,9 @@ import Network.AWS.Response
 data UpdateType =
   UpdateType'
     { _utDefinition :: !(Maybe Text)
-    , _utApiId :: !Text
-    , _utTypeName :: !Text
-    , _utFormat :: !TypeDefinitionFormat
+    , _utApiId      :: !Text
+    , _utTypeName   :: !Text
+    , _utFormat     :: !TypeDefinitionFormat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -125,7 +125,7 @@ instance ToQuery UpdateType where
 -- | /See:/ 'updateTypeResponse' smart constructor.
 data UpdateTypeResponse =
   UpdateTypeResponse'
-    { _utrsType :: !(Maybe Type)
+    { _utrsType           :: !(Maybe Type)
     , _utrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

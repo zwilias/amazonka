@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -80,33 +80,33 @@ import Network.AWS.Response
 -- /See:/ 'createReplicationGroup' smart constructor.
 data CreateReplicationGroup =
   CreateReplicationGroup'
-    { _crgAutomaticFailoverEnabled :: !(Maybe Bool)
-    , _crgEngineVersion :: !(Maybe Text)
-    , _crgCacheNodeType :: !(Maybe Text)
-    , _crgNodeGroupConfiguration :: !(Maybe [NodeGroupConfiguration])
-    , _crgAtRestEncryptionEnabled :: !(Maybe Bool)
-    , _crgSecurityGroupIds :: !(Maybe [Text])
-    , _crgSnapshotARNs :: !(Maybe [Text])
-    , _crgAutoMinorVersionUpgrade :: !(Maybe Bool)
-    , _crgCacheParameterGroupName :: !(Maybe Text)
-    , _crgTransitEncryptionEnabled :: !(Maybe Bool)
-    , _crgSnapshotWindow :: !(Maybe Text)
-    , _crgAuthToken :: !(Maybe Text)
-    , _crgPrimaryClusterId :: !(Maybe Text)
-    , _crgEngine :: !(Maybe Text)
-    , _crgPreferredMaintenanceWindow :: !(Maybe Text)
-    , _crgCacheSubnetGroupName :: !(Maybe Text)
-    , _crgNumNodeGroups :: !(Maybe Int)
-    , _crgSnapshotRetentionLimit :: !(Maybe Int)
-    , _crgReplicasPerNodeGroup :: !(Maybe Int)
-    , _crgNumCacheClusters :: !(Maybe Int)
-    , _crgPreferredCacheClusterAZs :: !(Maybe [Text])
-    , _crgSnapshotName :: !(Maybe Text)
-    , _crgNotificationTopicARN :: !(Maybe Text)
-    , _crgTags :: !(Maybe [Tag])
-    , _crgPort :: !(Maybe Int)
-    , _crgCacheSecurityGroupNames :: !(Maybe [Text])
-    , _crgReplicationGroupId :: !Text
+    { _crgAutomaticFailoverEnabled    :: !(Maybe Bool)
+    , _crgEngineVersion               :: !(Maybe Text)
+    , _crgCacheNodeType               :: !(Maybe Text)
+    , _crgNodeGroupConfiguration      :: !(Maybe [NodeGroupConfiguration])
+    , _crgAtRestEncryptionEnabled     :: !(Maybe Bool)
+    , _crgSecurityGroupIds            :: !(Maybe [Text])
+    , _crgSnapshotARNs                :: !(Maybe [Text])
+    , _crgAutoMinorVersionUpgrade     :: !(Maybe Bool)
+    , _crgCacheParameterGroupName     :: !(Maybe Text)
+    , _crgTransitEncryptionEnabled    :: !(Maybe Bool)
+    , _crgSnapshotWindow              :: !(Maybe Text)
+    , _crgAuthToken                   :: !(Maybe Text)
+    , _crgPrimaryClusterId            :: !(Maybe Text)
+    , _crgEngine                      :: !(Maybe Text)
+    , _crgPreferredMaintenanceWindow  :: !(Maybe Text)
+    , _crgCacheSubnetGroupName        :: !(Maybe Text)
+    , _crgNumNodeGroups               :: !(Maybe Int)
+    , _crgSnapshotRetentionLimit      :: !(Maybe Int)
+    , _crgReplicasPerNodeGroup        :: !(Maybe Int)
+    , _crgNumCacheClusters            :: !(Maybe Int)
+    , _crgPreferredCacheClusterAZs    :: !(Maybe [Text])
+    , _crgSnapshotName                :: !(Maybe Text)
+    , _crgNotificationTopicARN        :: !(Maybe Text)
+    , _crgTags                        :: !(Maybe [Tag])
+    , _crgPort                        :: !(Maybe Int)
+    , _crgCacheSecurityGroupNames     :: !(Maybe [Text])
+    , _crgReplicationGroupId          :: !Text
     , _crgReplicationGroupDescription :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -419,7 +419,7 @@ instance ToQuery CreateReplicationGroup where
 data CreateReplicationGroupResponse =
   CreateReplicationGroupResponse'
     { _crgrsReplicationGroup :: !(Maybe ReplicationGroup)
-    , _crgrsResponseStatus :: !Int
+    , _crgrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

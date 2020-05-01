@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,7 +58,7 @@ import Network.AWS.Response
 -- /See:/ 'updateTimeToLive' smart constructor.
 data UpdateTimeToLive =
   UpdateTimeToLive'
-    { _uttlTableName :: !Text
+    { _uttlTableName               :: !Text
     , _uttlTimeToLiveSpecification :: !TimeToLiveSpecification
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -131,7 +131,7 @@ instance ToQuery UpdateTimeToLive where
 data UpdateTimeToLiveResponse =
   UpdateTimeToLiveResponse'
     { _uttlrsTimeToLiveSpecification :: !(Maybe TimeToLiveSpecification)
-    , _uttlrsResponseStatus :: !Int
+    , _uttlrsResponseStatus          :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

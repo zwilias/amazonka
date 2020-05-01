@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 -- /See:/ 'describeVPNConnections' smart constructor.
 data DescribeVPNConnections =
   DescribeVPNConnections'
-    { _dvpncFilters :: !(Maybe [Filter])
+    { _dvpncFilters          :: !(Maybe [Filter])
     , _dvpncVPNConnectionIds :: !(Maybe [Text])
-    , _dvpncDryRun :: !(Maybe Bool)
+    , _dvpncDryRun           :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

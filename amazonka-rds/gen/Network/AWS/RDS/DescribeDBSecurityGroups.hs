@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,9 +54,9 @@ import Network.AWS.Response
 -- /See:/ 'describeDBSecurityGroups' smart constructor.
 data DescribeDBSecurityGroups =
   DescribeDBSecurityGroups'
-    { _ddbsgFilters :: !(Maybe [Filter])
-    , _ddbsgMarker :: !(Maybe Text)
-    , _ddbsgMaxRecords :: !(Maybe Int)
+    { _ddbsgFilters             :: !(Maybe [Filter])
+    , _ddbsgMarker              :: !(Maybe Text)
+    , _ddbsgMaxRecords          :: !(Maybe Int)
     , _ddbsgDBSecurityGroupName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -147,8 +147,8 @@ instance ToQuery DescribeDBSecurityGroups where
 data DescribeDBSecurityGroupsResponse =
   DescribeDBSecurityGroupsResponse'
     { _ddbsgrsDBSecurityGroups :: !(Maybe [DBSecurityGroup])
-    , _ddbsgrsMarker :: !(Maybe Text)
-    , _ddbsgrsResponseStatus :: !Int
+    , _ddbsgrsMarker           :: !(Maybe Text)
+    , _ddbsgrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'listPublicKeys' smart constructor.
 data ListPublicKeys =
   ListPublicKeys'
-    { _lpkMarker :: !(Maybe Text)
+    { _lpkMarker   :: !(Maybe Text)
     , _lpkMaxItems :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -92,7 +92,7 @@ instance ToQuery ListPublicKeys where
 -- | /See:/ 'listPublicKeysResponse' smart constructor.
 data ListPublicKeysResponse =
   ListPublicKeysResponse'
-    { _lpkrsPublicKeyList :: !(Maybe PublicKeyList)
+    { _lpkrsPublicKeyList  :: !(Maybe PublicKeyList)
     , _lpkrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

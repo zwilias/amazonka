@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 data ApplySchema =
   ApplySchema'
     { _asPublishedSchemaARN :: !Text
-    , _asDirectoryARN :: !Text
+    , _asDirectoryARN       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -107,9 +107,9 @@ instance ToQuery ApplySchema where
 -- | /See:/ 'applySchemaResponse' smart constructor.
 data ApplySchemaResponse =
   ApplySchemaResponse'
-    { _asrsDirectoryARN :: !(Maybe Text)
+    { _asrsDirectoryARN     :: !(Maybe Text)
     , _asrsAppliedSchemaARN :: !(Maybe Text)
-    , _asrsResponseStatus :: !Int
+    , _asrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

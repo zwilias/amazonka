@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.Response
 -- /See:/ 'createDeploymentConfig' smart constructor.
 data CreateDeploymentConfig =
   CreateDeploymentConfig'
-    { _cdcComputePlatform :: !(Maybe ComputePlatform)
-    , _cdcMinimumHealthyHosts :: !(Maybe MinimumHealthyHosts)
+    { _cdcComputePlatform      :: !(Maybe ComputePlatform)
+    , _cdcMinimumHealthyHosts  :: !(Maybe MinimumHealthyHosts)
     , _cdcTrafficRoutingConfig :: !(Maybe TrafficRoutingConfig)
     , _cdcDeploymentConfigName :: !Text
     }
@@ -147,7 +147,7 @@ instance ToQuery CreateDeploymentConfig where
 data CreateDeploymentConfigResponse =
   CreateDeploymentConfigResponse'
     { _cdcrsDeploymentConfigId :: !(Maybe Text)
-    , _cdcrsResponseStatus :: !Int
+    , _cdcrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

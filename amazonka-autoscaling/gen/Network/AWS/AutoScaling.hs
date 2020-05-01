@@ -418,8 +418,8 @@ module Network.AWS.AutoScaling
   ) where
 
 import Network.AWS.AutoScaling.AttachInstances
-import Network.AWS.AutoScaling.AttachLoadBalancerTargetGroups
 import Network.AWS.AutoScaling.AttachLoadBalancers
+import Network.AWS.AutoScaling.AttachLoadBalancerTargetGroups
 import Network.AWS.AutoScaling.CompleteLifecycleAction
 import Network.AWS.AutoScaling.CreateAutoScalingGroup
 import Network.AWS.AutoScaling.CreateLaunchConfiguration
@@ -437,10 +437,10 @@ import Network.AWS.AutoScaling.DescribeAutoScalingGroups
 import Network.AWS.AutoScaling.DescribeAutoScalingInstances
 import Network.AWS.AutoScaling.DescribeAutoScalingNotificationTypes
 import Network.AWS.AutoScaling.DescribeLaunchConfigurations
-import Network.AWS.AutoScaling.DescribeLifecycleHookTypes
 import Network.AWS.AutoScaling.DescribeLifecycleHooks
-import Network.AWS.AutoScaling.DescribeLoadBalancerTargetGroups
+import Network.AWS.AutoScaling.DescribeLifecycleHookTypes
 import Network.AWS.AutoScaling.DescribeLoadBalancers
+import Network.AWS.AutoScaling.DescribeLoadBalancerTargetGroups
 import Network.AWS.AutoScaling.DescribeMetricCollectionTypes
 import Network.AWS.AutoScaling.DescribeNotificationConfigurations
 import Network.AWS.AutoScaling.DescribePolicies
@@ -450,8 +450,8 @@ import Network.AWS.AutoScaling.DescribeScheduledActions
 import Network.AWS.AutoScaling.DescribeTags
 import Network.AWS.AutoScaling.DescribeTerminationPolicyTypes
 import Network.AWS.AutoScaling.DetachInstances
-import Network.AWS.AutoScaling.DetachLoadBalancerTargetGroups
 import Network.AWS.AutoScaling.DetachLoadBalancers
+import Network.AWS.AutoScaling.DetachLoadBalancerTargetGroups
 import Network.AWS.AutoScaling.DisableMetricsCollection
 import Network.AWS.AutoScaling.EnableMetricsCollection
 import Network.AWS.AutoScaling.EnterStandby

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,9 +50,9 @@ import Network.AWS.Response
 -- | /See:/ 'listAssessmentRunAgents' smart constructor.
 data ListAssessmentRunAgents =
   ListAssessmentRunAgents'
-    { _laraNextToken :: !(Maybe Text)
-    , _laraFilter :: !(Maybe AgentFilter)
-    , _laraMaxResults :: !(Maybe Int)
+    { _laraNextToken        :: !(Maybe Text)
+    , _laraFilter           :: !(Maybe AgentFilter)
+    , _laraMaxResults       :: !(Maybe Int)
     , _laraAssessmentRunARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -144,8 +144,8 @@ instance ToQuery ListAssessmentRunAgents where
 -- | /See:/ 'listAssessmentRunAgentsResponse' smart constructor.
 data ListAssessmentRunAgentsResponse =
   ListAssessmentRunAgentsResponse'
-    { _lararsNextToken :: !(Maybe Text)
-    , _lararsResponseStatus :: !Int
+    { _lararsNextToken           :: !(Maybe Text)
+    , _lararsResponseStatus      :: !Int
     , _lararsAssessmentRunAgents :: ![AssessmentRunAgent]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

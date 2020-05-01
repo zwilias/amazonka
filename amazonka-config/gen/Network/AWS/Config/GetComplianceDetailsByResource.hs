@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,9 +55,9 @@ import Network.AWS.Response
 data GetComplianceDetailsByResource =
   GetComplianceDetailsByResource'
     { _gcdbrComplianceTypes :: !(Maybe [ComplianceType])
-    , _gcdbrNextToken :: !(Maybe Text)
-    , _gcdbrResourceType :: !Text
-    , _gcdbrResourceId :: !Text
+    , _gcdbrNextToken       :: !(Maybe Text)
+    , _gcdbrResourceType    :: !Text
+    , _gcdbrResourceId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -156,8 +156,8 @@ instance ToQuery GetComplianceDetailsByResource where
 data GetComplianceDetailsByResourceResponse =
   GetComplianceDetailsByResourceResponse'
     { _gcdbrrsEvaluationResults :: !(Maybe [EvaluationResult])
-    , _gcdbrrsNextToken :: !(Maybe Text)
-    , _gcdbrrsResponseStatus :: !Int
+    , _gcdbrrsNextToken         :: !(Maybe Text)
+    , _gcdbrrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

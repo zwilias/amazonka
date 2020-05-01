@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,10 +49,10 @@ import Network.AWS.ServerlessApplicationRepository.Types.Product
 -- | /See:/ 'createCloudFormationChangeSet' smart constructor.
 data CreateCloudFormationChangeSet =
   CreateCloudFormationChangeSet'
-    { _ccfcsSemanticVersion :: !(Maybe Text)
+    { _ccfcsSemanticVersion    :: !(Maybe Text)
     , _ccfcsParameterOverrides :: !(Maybe [ParameterValue])
-    , _ccfcsStackName :: !(Maybe Text)
-    , _ccfcsApplicationId :: !Text
+    , _ccfcsStackName          :: !(Maybe Text)
+    , _ccfcsApplicationId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -139,10 +139,10 @@ instance ToQuery CreateCloudFormationChangeSet where
 data CreateCloudFormationChangeSetResponse =
   CreateCloudFormationChangeSetResponse'
     { _ccfcsrsSemanticVersion :: !(Maybe Text)
-    , _ccfcsrsChangeSetId :: !(Maybe Text)
-    , _ccfcsrsApplicationId :: !(Maybe Text)
-    , _ccfcsrsStackId :: !(Maybe Text)
-    , _ccfcsrsResponseStatus :: !Int
+    , _ccfcsrsChangeSetId     :: !(Maybe Text)
+    , _ccfcsrsApplicationId   :: !(Maybe Text)
+    , _ccfcsrsStackId         :: !(Maybe Text)
+    , _ccfcsrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -118,7 +118,7 @@ instance ToQuery ResolveAlias where
 -- /See:/ 'resolveAliasResponse' smart constructor.
 data ResolveAliasResponse =
   ResolveAliasResponse'
-    { _rarsFleetId :: !(Maybe Text)
+    { _rarsFleetId        :: !(Maybe Text)
     , _rarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

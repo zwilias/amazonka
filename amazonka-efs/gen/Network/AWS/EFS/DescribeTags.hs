@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,8 +56,8 @@ import Network.AWS.Response
 -- /See:/ 'describeTags' smart constructor.
 data DescribeTags =
   DescribeTags'
-    { _dtMarker :: !(Maybe Text)
-    , _dtMaxItems :: !(Maybe Nat)
+    { _dtMarker       :: !(Maybe Text)
+    , _dtMaxItems     :: !(Maybe Nat)
     , _dtFileSystemId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -131,10 +131,10 @@ instance ToQuery DescribeTags where
 -- /See:/ 'describeTagsResponse' smart constructor.
 data DescribeTagsResponse =
   DescribeTagsResponse'
-    { _dtrsMarker :: !(Maybe Text)
-    , _dtrsNextMarker :: !(Maybe Text)
+    { _dtrsMarker         :: !(Maybe Text)
+    , _dtrsNextMarker     :: !(Maybe Text)
     , _dtrsResponseStatus :: !Int
-    , _dtrsTags :: ![Tag]
+    , _dtrsTags           :: ![Tag]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

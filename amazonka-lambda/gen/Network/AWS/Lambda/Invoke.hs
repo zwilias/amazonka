@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -60,11 +60,11 @@ import Network.AWS.Response
 data Invoke =
   Invoke'
     { _iInvocationType :: !(Maybe InvocationType)
-    , _iLogType :: !(Maybe LogType)
-    , _iQualifier :: !(Maybe Text)
-    , _iClientContext :: !(Maybe Text)
-    , _iFunctionName :: !Text
-    , _iPayload :: !ByteString
+    , _iLogType        :: !(Maybe LogType)
+    , _iQualifier      :: !(Maybe Text)
+    , _iClientContext  :: !(Maybe Text)
+    , _iFunctionName   :: !Text
+    , _iPayload        :: !ByteString
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -162,11 +162,11 @@ instance ToQuery Invoke where
 -- /See:/ 'invokeResponse' smart constructor.
 data InvokeResponse =
   InvokeResponse'
-    { _irsFunctionError :: !(Maybe Text)
-    , _irsLogResult :: !(Maybe Text)
-    , _irsPayload :: !(Maybe ByteString)
+    { _irsFunctionError   :: !(Maybe Text)
+    , _irsLogResult       :: !(Maybe Text)
+    , _irsPayload         :: !(Maybe ByteString)
     , _irsExecutedVersion :: !(Maybe Text)
-    , _irsStatusCode :: !Int
+    , _irsStatusCode      :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

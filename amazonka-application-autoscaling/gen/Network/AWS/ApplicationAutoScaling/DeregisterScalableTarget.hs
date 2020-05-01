@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,8 +48,8 @@ import Network.AWS.Response
 -- | /See:/ 'deregisterScalableTarget' smart constructor.
 data DeregisterScalableTarget =
   DeregisterScalableTarget'
-    { _derServiceNamespace :: !ServiceNamespace
-    , _derResourceId :: !Text
+    { _derServiceNamespace  :: !ServiceNamespace
+    , _derResourceId        :: !Text
     , _derScalableDimension :: !ScalableDimension
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

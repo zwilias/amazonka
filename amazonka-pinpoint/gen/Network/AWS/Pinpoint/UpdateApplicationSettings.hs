@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -42,7 +42,7 @@ import Network.AWS.Response
 -- | /See:/ 'updateApplicationSettings' smart constructor.
 data UpdateApplicationSettings =
   UpdateApplicationSettings'
-    { _uasApplicationId :: !Text
+    { _uasApplicationId                   :: !Text
     , _uasWriteApplicationSettingsRequest :: !WriteApplicationSettingsRequest
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -113,7 +113,7 @@ instance ToQuery UpdateApplicationSettings where
 -- | /See:/ 'updateApplicationSettingsResponse' smart constructor.
 data UpdateApplicationSettingsResponse =
   UpdateApplicationSettingsResponse'
-    { _uasrsResponseStatus :: !Int
+    { _uasrsResponseStatus              :: !Int
     , _uasrsApplicationSettingsResource :: !ApplicationSettingsResource
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

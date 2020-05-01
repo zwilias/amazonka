@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 -- /See:/ 'confirmPrivateVirtualInterface' smart constructor.
 data ConfirmPrivateVirtualInterface =
   ConfirmPrivateVirtualInterface'
-    { _cpviVirtualGatewayId :: !(Maybe Text)
+    { _cpviVirtualGatewayId       :: !(Maybe Text)
     , _cpviDirectConnectGatewayId :: !(Maybe Text)
-    , _cpviVirtualInterfaceId :: !Text
+    , _cpviVirtualInterfaceId     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -137,7 +137,7 @@ instance ToQuery ConfirmPrivateVirtualInterface where
 data ConfirmPrivateVirtualInterfaceResponse =
   ConfirmPrivateVirtualInterfaceResponse'
     { _cpvirsVirtualInterfaceState :: !(Maybe VirtualInterfaceState)
-    , _cpvirsResponseStatus :: !Int
+    , _cpvirsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

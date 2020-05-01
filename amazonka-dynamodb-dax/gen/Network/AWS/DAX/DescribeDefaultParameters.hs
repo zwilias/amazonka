@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'describeDefaultParameters' smart constructor.
 data DescribeDefaultParameters =
   DescribeDefaultParameters'
-    { _ddpNextToken :: !(Maybe Text)
+    { _ddpNextToken  :: !(Maybe Text)
     , _ddpMaxResults :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -109,8 +109,8 @@ instance ToQuery DescribeDefaultParameters where
 -- | /See:/ 'describeDefaultParametersResponse' smart constructor.
 data DescribeDefaultParametersResponse =
   DescribeDefaultParametersResponse'
-    { _ddprsNextToken :: !(Maybe Text)
-    , _ddprsParameters :: !(Maybe [Parameter])
+    { _ddprsNextToken      :: !(Maybe Text)
+    , _ddprsParameters     :: !(Maybe [Parameter])
     , _ddprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

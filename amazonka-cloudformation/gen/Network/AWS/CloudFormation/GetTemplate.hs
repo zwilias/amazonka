@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,7 +54,7 @@ data GetTemplate =
   GetTemplate'
     { _gtChangeSetName :: !(Maybe Text)
     , _gtTemplateStage :: !(Maybe TemplateStage)
-    , _gtStackName :: !(Maybe Text)
+    , _gtStackName     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -127,8 +127,8 @@ instance ToQuery GetTemplate where
 data GetTemplateResponse =
   GetTemplateResponse'
     { _gtrsStagesAvailable :: !(Maybe [TemplateStage])
-    , _gtrsTemplateBody :: !(Maybe Text)
-    , _gtrsResponseStatus :: !Int
+    , _gtrsTemplateBody    :: !(Maybe Text)
+    , _gtrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

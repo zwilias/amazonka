@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- | /See:/ 'updatePublicKey' smart constructor.
 data UpdatePublicKey =
   UpdatePublicKey'
-    { _upkIfMatch :: !(Maybe Text)
+    { _upkIfMatch         :: !(Maybe Text)
     , _upkPublicKeyConfig :: !PublicKeyConfig
-    , _upkId :: !Text
+    , _upkId              :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -116,8 +116,8 @@ instance ToQuery UpdatePublicKey where
 -- | /See:/ 'updatePublicKeyResponse' smart constructor.
 data UpdatePublicKeyResponse =
   UpdatePublicKeyResponse'
-    { _upkrsETag :: !(Maybe Text)
-    , _upkrsPublicKey :: !(Maybe PublicKey)
+    { _upkrsETag           :: !(Maybe Text)
+    , _upkrsPublicKey      :: !(Maybe PublicKey)
     , _upkrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

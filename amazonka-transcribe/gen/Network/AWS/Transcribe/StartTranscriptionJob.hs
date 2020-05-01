@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,12 +48,12 @@ import Network.AWS.Transcribe.Types.Product
 -- | /See:/ 'startTranscriptionJob' smart constructor.
 data StartTranscriptionJob =
   StartTranscriptionJob'
-    { _stjSettings :: !(Maybe Settings)
+    { _stjSettings             :: !(Maybe Settings)
     , _stjMediaSampleRateHertz :: !(Maybe Nat)
     , _stjTranscriptionJobName :: !Text
-    , _stjLanguageCode :: !LanguageCode
-    , _stjMediaFormat :: !MediaFormat
-    , _stjMedia :: !Media
+    , _stjLanguageCode         :: !LanguageCode
+    , _stjMediaFormat          :: !MediaFormat
+    , _stjMedia                :: !Media
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -158,7 +158,7 @@ instance ToQuery StartTranscriptionJob where
 data StartTranscriptionJobResponse =
   StartTranscriptionJobResponse'
     { _stjrsTranscriptionJob :: !(Maybe TranscriptionJob)
-    , _stjrsResponseStatus :: !Int
+    , _stjrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

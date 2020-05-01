@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -40,8 +40,8 @@ import Network.AWS.S3.Types.Product
 -- | /See:/ 'putBucketMetricsConfiguration' smart constructor.
 data PutBucketMetricsConfiguration =
   PutBucketMetricsConfiguration'
-    { _pbmcBucket :: !BucketName
-    , _pbmcId :: !Text
+    { _pbmcBucket               :: !BucketName
+    , _pbmcId                   :: !Text
     , _pbmcMetricsConfiguration :: !MetricsConfiguration
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

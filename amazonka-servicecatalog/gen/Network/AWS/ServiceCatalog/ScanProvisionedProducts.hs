@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,10 +49,10 @@ import Network.AWS.ServiceCatalog.Types.Product
 -- | /See:/ 'scanProvisionedProducts' smart constructor.
 data ScanProvisionedProducts =
   ScanProvisionedProducts'
-    { _sAcceptLanguage :: !(Maybe Text)
+    { _sAcceptLanguage    :: !(Maybe Text)
     , _sAccessLevelFilter :: !(Maybe AccessLevelFilter)
-    , _sPageToken :: !(Maybe Text)
-    , _sPageSize :: !(Maybe Nat)
+    , _sPageToken         :: !(Maybe Text)
+    , _sPageSize          :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -135,9 +135,9 @@ instance ToQuery ScanProvisionedProducts where
 -- | /See:/ 'scanProvisionedProductsResponse' smart constructor.
 data ScanProvisionedProductsResponse =
   ScanProvisionedProductsResponse'
-    { _spprsNextPageToken :: !(Maybe Text)
+    { _spprsNextPageToken       :: !(Maybe Text)
     , _spprsProvisionedProducts :: !(Maybe [ProvisionedProductDetail])
-    , _spprsResponseStatus :: !Int
+    , _spprsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

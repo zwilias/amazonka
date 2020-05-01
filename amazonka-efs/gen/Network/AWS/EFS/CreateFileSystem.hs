@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -72,9 +72,9 @@ import Network.AWS.Response
 data CreateFileSystem =
   CreateFileSystem'
     { _cfsPerformanceMode :: !(Maybe PerformanceMode)
-    , _cfsEncrypted :: !(Maybe Bool)
-    , _cfsKMSKeyId :: !(Maybe Text)
-    , _cfsCreationToken :: !Text
+    , _cfsEncrypted       :: !(Maybe Bool)
+    , _cfsKMSKeyId        :: !(Maybe Text)
+    , _cfsCreationToken   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

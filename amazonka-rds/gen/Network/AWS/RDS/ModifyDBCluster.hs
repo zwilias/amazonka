@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -60,20 +60,20 @@ import Network.AWS.Response
 -- /See:/ 'modifyDBCluster' smart constructor.
 data ModifyDBCluster =
   ModifyDBCluster'
-    { _mdcEngineVersion :: !(Maybe Text)
-    , _mdcMasterUserPassword :: !(Maybe Text)
-    , _mdcBacktrackWindow :: !(Maybe Integer)
-    , _mdcPreferredMaintenanceWindow :: !(Maybe Text)
-    , _mdcPreferredBackupWindow :: !(Maybe Text)
-    , _mdcBackupRetentionPeriod :: !(Maybe Int)
-    , _mdcVPCSecurityGroupIds :: !(Maybe [Text])
-    , _mdcDBClusterParameterGroupName :: !(Maybe Text)
-    , _mdcApplyImmediately :: !(Maybe Bool)
-    , _mdcOptionGroupName :: !(Maybe Text)
-    , _mdcNewDBClusterIdentifier :: !(Maybe Text)
-    , _mdcPort :: !(Maybe Int)
+    { _mdcEngineVersion                   :: !(Maybe Text)
+    , _mdcMasterUserPassword              :: !(Maybe Text)
+    , _mdcBacktrackWindow                 :: !(Maybe Integer)
+    , _mdcPreferredMaintenanceWindow      :: !(Maybe Text)
+    , _mdcPreferredBackupWindow           :: !(Maybe Text)
+    , _mdcBackupRetentionPeriod           :: !(Maybe Int)
+    , _mdcVPCSecurityGroupIds             :: !(Maybe [Text])
+    , _mdcDBClusterParameterGroupName     :: !(Maybe Text)
+    , _mdcApplyImmediately                :: !(Maybe Bool)
+    , _mdcOptionGroupName                 :: !(Maybe Text)
+    , _mdcNewDBClusterIdentifier          :: !(Maybe Text)
+    , _mdcPort                            :: !(Maybe Int)
     , _mdcEnableIAMDatabaseAuthentication :: !(Maybe Bool)
-    , _mdcDBClusterIdentifier :: !Text
+    , _mdcDBClusterIdentifier             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -249,7 +249,7 @@ instance ToQuery ModifyDBCluster where
 -- | /See:/ 'modifyDBClusterResponse' smart constructor.
 data ModifyDBClusterResponse =
   ModifyDBClusterResponse'
-    { _mdcrsDBCluster :: !(Maybe DBCluster)
+    { _mdcrsDBCluster      :: !(Maybe DBCluster)
     , _mdcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

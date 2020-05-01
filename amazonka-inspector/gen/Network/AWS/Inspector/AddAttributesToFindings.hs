@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 data AddAttributesToFindings =
   AddAttributesToFindings'
     { _aatfFindingARNs :: !(List1 Text)
-    , _aatfAttributes :: ![Attribute]
+    , _aatfAttributes  :: ![Attribute]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -113,7 +113,7 @@ instance ToQuery AddAttributesToFindings where
 data AddAttributesToFindingsResponse =
   AddAttributesToFindingsResponse'
     { _aatfrsResponseStatus :: !Int
-    , _aatfrsFailedItems :: !(Map Text FailedItemDetails)
+    , _aatfrsFailedItems    :: !(Map Text FailedItemDetails)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

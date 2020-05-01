@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- | /See:/ 'listGlobalTables' smart constructor.
 data ListGlobalTables =
   ListGlobalTables'
-    { _lgtRegionName :: !(Maybe Text)
+    { _lgtRegionName                    :: !(Maybe Text)
     , _lgtExclusiveStartGlobalTableName :: !(Maybe Text)
-    , _lgtLimit :: !(Maybe Nat)
+    , _lgtLimit                         :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -127,8 +127,8 @@ instance ToQuery ListGlobalTables where
 data ListGlobalTablesResponse =
   ListGlobalTablesResponse'
     { _lgtrsLastEvaluatedGlobalTableName :: !(Maybe Text)
-    , _lgtrsGlobalTables :: !(Maybe [GlobalTable])
-    , _lgtrsResponseStatus :: !Int
+    , _lgtrsGlobalTables                 :: !(Maybe [GlobalTable])
+    , _lgtrsResponseStatus               :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

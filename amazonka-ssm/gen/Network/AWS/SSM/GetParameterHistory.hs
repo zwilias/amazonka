@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.SSM.Types.Product
 data GetParameterHistory =
   GetParameterHistory'
     { _gphWithDecryption :: !(Maybe Bool)
-    , _gphNextToken :: !(Maybe Text)
-    , _gphMaxResults :: !(Maybe Nat)
-    , _gphName :: !Text
+    , _gphNextToken      :: !(Maybe Text)
+    , _gphMaxResults     :: !(Maybe Nat)
+    , _gphName           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -143,8 +143,8 @@ instance ToQuery GetParameterHistory where
 -- | /See:/ 'getParameterHistoryResponse' smart constructor.
 data GetParameterHistoryResponse =
   GetParameterHistoryResponse'
-    { _gphrsNextToken :: !(Maybe Text)
-    , _gphrsParameters :: !(Maybe [ParameterHistory])
+    { _gphrsNextToken      :: !(Maybe Text)
+    , _gphrsParameters     :: !(Maybe [ParameterHistory])
     , _gphrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

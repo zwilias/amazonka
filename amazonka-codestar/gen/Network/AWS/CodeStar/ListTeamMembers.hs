@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- | /See:/ 'listTeamMembers' smart constructor.
 data ListTeamMembers =
   ListTeamMembers'
-    { _ltmNextToken :: !(Maybe Text)
+    { _ltmNextToken  :: !(Maybe Text)
     , _ltmMaxResults :: !(Maybe Nat)
-    , _ltmProjectId :: !Text
+    , _ltmProjectId  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,9 +124,9 @@ instance ToQuery ListTeamMembers where
 -- | /See:/ 'listTeamMembersResponse' smart constructor.
 data ListTeamMembersResponse =
   ListTeamMembersResponse'
-    { _ltmrsNextToken :: !(Maybe Text)
+    { _ltmrsNextToken      :: !(Maybe Text)
     , _ltmrsResponseStatus :: !Int
-    , _ltmrsTeamMembers :: ![TeamMember]
+    , _ltmrsTeamMembers    :: ![TeamMember]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

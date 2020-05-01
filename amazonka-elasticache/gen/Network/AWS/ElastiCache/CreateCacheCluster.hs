@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -71,29 +71,29 @@ import Network.AWS.Response
 -- /See:/ 'createCacheCluster' smart constructor.
 data CreateCacheCluster =
   CreateCacheCluster'
-    { _cccEngineVersion :: !(Maybe Text)
-    , _cccCacheNodeType :: !(Maybe Text)
-    , _cccSecurityGroupIds :: !(Maybe [Text])
-    , _cccSnapshotARNs :: !(Maybe [Text])
-    , _cccAutoMinorVersionUpgrade :: !(Maybe Bool)
-    , _cccCacheParameterGroupName :: !(Maybe Text)
-    , _cccSnapshotWindow :: !(Maybe Text)
-    , _cccAuthToken :: !(Maybe Text)
-    , _cccEngine :: !(Maybe Text)
+    { _cccEngineVersion              :: !(Maybe Text)
+    , _cccCacheNodeType              :: !(Maybe Text)
+    , _cccSecurityGroupIds           :: !(Maybe [Text])
+    , _cccSnapshotARNs               :: !(Maybe [Text])
+    , _cccAutoMinorVersionUpgrade    :: !(Maybe Bool)
+    , _cccCacheParameterGroupName    :: !(Maybe Text)
+    , _cccSnapshotWindow             :: !(Maybe Text)
+    , _cccAuthToken                  :: !(Maybe Text)
+    , _cccEngine                     :: !(Maybe Text)
     , _cccPreferredAvailabilityZones :: !(Maybe [Text])
     , _cccPreferredMaintenanceWindow :: !(Maybe Text)
-    , _cccCacheSubnetGroupName :: !(Maybe Text)
-    , _cccPreferredAvailabilityZone :: !(Maybe Text)
-    , _cccSnapshotRetentionLimit :: !(Maybe Int)
-    , _cccAZMode :: !(Maybe AZMode)
-    , _cccSnapshotName :: !(Maybe Text)
-    , _cccReplicationGroupId :: !(Maybe Text)
-    , _cccNotificationTopicARN :: !(Maybe Text)
-    , _cccNumCacheNodes :: !(Maybe Int)
-    , _cccTags :: !(Maybe [Tag])
-    , _cccPort :: !(Maybe Int)
-    , _cccCacheSecurityGroupNames :: !(Maybe [Text])
-    , _cccCacheClusterId :: !Text
+    , _cccCacheSubnetGroupName       :: !(Maybe Text)
+    , _cccPreferredAvailabilityZone  :: !(Maybe Text)
+    , _cccSnapshotRetentionLimit     :: !(Maybe Int)
+    , _cccAZMode                     :: !(Maybe AZMode)
+    , _cccSnapshotName               :: !(Maybe Text)
+    , _cccReplicationGroupId         :: !(Maybe Text)
+    , _cccNotificationTopicARN       :: !(Maybe Text)
+    , _cccNumCacheNodes              :: !(Maybe Int)
+    , _cccTags                       :: !(Maybe [Tag])
+    , _cccPort                       :: !(Maybe Int)
+    , _cccCacheSecurityGroupNames    :: !(Maybe [Text])
+    , _cccCacheClusterId             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -349,7 +349,7 @@ instance ToQuery CreateCacheCluster where
 -- | /See:/ 'createCacheClusterResponse' smart constructor.
 data CreateCacheClusterResponse =
   CreateCacheClusterResponse'
-    { _cccrsCacheCluster :: !(Maybe CacheCluster)
+    { _cccrsCacheCluster   :: !(Maybe CacheCluster)
     , _cccrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

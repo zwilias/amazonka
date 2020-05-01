@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,10 +47,10 @@ import Network.AWS.Response
 -- | /See:/ 'listAttachedPolicies' smart constructor.
 data ListAttachedPolicies =
   ListAttachedPolicies'
-    { _lapMarker :: !(Maybe Text)
+    { _lapMarker    :: !(Maybe Text)
     , _lapRecursive :: !(Maybe Bool)
-    , _lapPageSize :: !(Maybe Nat)
-    , _lapTarget :: !Text
+    , _lapPageSize  :: !(Maybe Nat)
+    , _lapTarget    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -127,8 +127,8 @@ instance ToQuery ListAttachedPolicies where
 -- | /See:/ 'listAttachedPoliciesResponse' smart constructor.
 data ListAttachedPoliciesResponse =
   ListAttachedPoliciesResponse'
-    { _laprsNextMarker :: !(Maybe Text)
-    , _laprsPolicies :: !(Maybe [Policy])
+    { _laprsNextMarker     :: !(Maybe Text)
+    , _laprsPolicies       :: !(Maybe [Policy])
     , _laprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

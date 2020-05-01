@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- /See:/ 'deleteVPNGateway' smart constructor.
 data DeleteVPNGateway =
   DeleteVPNGateway'
-    { _dvgDryRun :: !(Maybe Bool)
+    { _dvgDryRun       :: !(Maybe Bool)
     , _dvgVPNGatewayId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

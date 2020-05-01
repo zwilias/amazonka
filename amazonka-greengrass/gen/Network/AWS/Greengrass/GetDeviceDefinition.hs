@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -101,14 +101,14 @@ instance ToQuery GetDeviceDefinition where
 -- | /See:/ 'getDeviceDefinitionResponse' smart constructor.
 data GetDeviceDefinitionResponse =
   GetDeviceDefinitionResponse'
-    { _gddrsLatestVersionARN :: !(Maybe Text)
-    , _gddrsARN :: !(Maybe Text)
-    , _gddrsName :: !(Maybe Text)
-    , _gddrsCreationTimestamp :: !(Maybe Text)
-    , _gddrsId :: !(Maybe Text)
-    , _gddrsLatestVersion :: !(Maybe Text)
+    { _gddrsLatestVersionARN     :: !(Maybe Text)
+    , _gddrsARN                  :: !(Maybe Text)
+    , _gddrsName                 :: !(Maybe Text)
+    , _gddrsCreationTimestamp    :: !(Maybe Text)
+    , _gddrsId                   :: !(Maybe Text)
+    , _gddrsLatestVersion        :: !(Maybe Text)
     , _gddrsLastUpdatedTimestamp :: !(Maybe Text)
-    , _gddrsResponseStatus :: !Int
+    , _gddrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -28,10 +28,10 @@ import Network.AWS.Prelude
 -- /See:/ 'usageRecord' smart constructor.
 data UsageRecord =
   UsageRecord'
-    { _urTimestamp :: !POSIX
+    { _urTimestamp          :: !POSIX
     , _urCustomerIdentifier :: !Text
-    , _urDimension :: !Text
-    , _urQuantity :: !Nat
+    , _urDimension          :: !Text
+    , _urQuantity           :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -107,8 +107,8 @@ instance ToJSON UsageRecord where
 -- /See:/ 'usageRecordResult' smart constructor.
 data UsageRecordResult =
   UsageRecordResult'
-    { _urrStatus :: !(Maybe UsageRecordResultStatus)
-    , _urrUsageRecord :: !(Maybe UsageRecord)
+    { _urrStatus           :: !(Maybe UsageRecordResultStatus)
+    , _urrUsageRecord      :: !(Maybe UsageRecord)
     , _urrMeteringRecordId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

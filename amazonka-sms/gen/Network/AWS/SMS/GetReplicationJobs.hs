@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,8 +48,8 @@ import Network.AWS.SMS.Types.Product
 data GetReplicationJobs =
   GetReplicationJobs'
     { _grjReplicationJobId :: !(Maybe Text)
-    , _grjNextToken :: !(Maybe Text)
-    , _grjMaxResults :: !(Maybe Int)
+    , _grjNextToken        :: !(Maybe Text)
+    , _grjMaxResults       :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -131,8 +131,8 @@ instance ToQuery GetReplicationJobs where
 data GetReplicationJobsResponse =
   GetReplicationJobsResponse'
     { _grjrsReplicationJobList :: !(Maybe [ReplicationJob])
-    , _grjrsNextToken :: !(Maybe Text)
-    , _grjrsResponseStatus :: !Int
+    , _grjrsNextToken          :: !(Maybe Text)
+    , _grjrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

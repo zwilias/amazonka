@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -67,16 +67,16 @@ import Network.AWS.Response
 -- /See:/ 'updateTrail' smart constructor.
 data UpdateTrail =
   UpdateTrail'
-    { _utS3KeyPrefix :: !(Maybe Text)
-    , _utSNSTopicName :: !(Maybe Text)
-    , _utEnableLogFileValidation :: !(Maybe Bool)
-    , _utCloudWatchLogsLogGroupARN :: !(Maybe Text)
-    , _utKMSKeyId :: !(Maybe Text)
+    { _utS3KeyPrefix                :: !(Maybe Text)
+    , _utSNSTopicName               :: !(Maybe Text)
+    , _utEnableLogFileValidation    :: !(Maybe Bool)
+    , _utCloudWatchLogsLogGroupARN  :: !(Maybe Text)
+    , _utKMSKeyId                   :: !(Maybe Text)
     , _utIncludeGlobalServiceEvents :: !(Maybe Bool)
-    , _utCloudWatchLogsRoleARN :: !(Maybe Text)
-    , _utS3BucketName :: !(Maybe Text)
-    , _utIsMultiRegionTrail :: !(Maybe Bool)
-    , _utName :: !Text
+    , _utCloudWatchLogsRoleARN      :: !(Maybe Text)
+    , _utS3BucketName               :: !(Maybe Text)
+    , _utIsMultiRegionTrail         :: !(Maybe Bool)
+    , _utName                       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -231,19 +231,19 @@ instance ToQuery UpdateTrail where
 -- /See:/ 'updateTrailResponse' smart constructor.
 data UpdateTrailResponse =
   UpdateTrailResponse'
-    { _utrsLogFileValidationEnabled :: !(Maybe Bool)
-    , _utrsTrailARN :: !(Maybe Text)
-    , _utrsS3KeyPrefix :: !(Maybe Text)
-    , _utrsSNSTopicARN :: !(Maybe Text)
-    , _utrsSNSTopicName :: !(Maybe Text)
-    , _utrsCloudWatchLogsLogGroupARN :: !(Maybe Text)
-    , _utrsKMSKeyId :: !(Maybe Text)
-    , _utrsName :: !(Maybe Text)
+    { _utrsLogFileValidationEnabled   :: !(Maybe Bool)
+    , _utrsTrailARN                   :: !(Maybe Text)
+    , _utrsS3KeyPrefix                :: !(Maybe Text)
+    , _utrsSNSTopicARN                :: !(Maybe Text)
+    , _utrsSNSTopicName               :: !(Maybe Text)
+    , _utrsCloudWatchLogsLogGroupARN  :: !(Maybe Text)
+    , _utrsKMSKeyId                   :: !(Maybe Text)
+    , _utrsName                       :: !(Maybe Text)
     , _utrsIncludeGlobalServiceEvents :: !(Maybe Bool)
-    , _utrsCloudWatchLogsRoleARN :: !(Maybe Text)
-    , _utrsS3BucketName :: !(Maybe Text)
-    , _utrsIsMultiRegionTrail :: !(Maybe Bool)
-    , _utrsResponseStatus :: !Int
+    , _utrsCloudWatchLogsRoleARN      :: !(Maybe Text)
+    , _utrsS3BucketName               :: !(Maybe Text)
+    , _utrsIsMultiRegionTrail         :: !(Maybe Bool)
+    , _utrsResponseStatus             :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

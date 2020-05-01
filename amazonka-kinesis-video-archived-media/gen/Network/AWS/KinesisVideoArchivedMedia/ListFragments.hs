@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,9 +48,9 @@ import Network.AWS.Response
 data ListFragments =
   ListFragments'
     { _lfFragmentSelector :: !(Maybe FragmentSelector)
-    , _lfNextToken :: !(Maybe Text)
-    , _lfMaxResults :: !(Maybe Nat)
-    , _lfStreamName :: !Text
+    , _lfNextToken        :: !(Maybe Text)
+    , _lfMaxResults       :: !(Maybe Nat)
+    , _lfStreamName       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -129,8 +129,8 @@ instance ToQuery ListFragments where
 -- | /See:/ 'listFragmentsResponse' smart constructor.
 data ListFragmentsResponse =
   ListFragmentsResponse'
-    { _lfrsNextToken :: !(Maybe Text)
-    , _lfrsFragments :: !(Maybe [Fragment])
+    { _lfrsNextToken      :: !(Maybe Text)
+    , _lfrsFragments      :: !(Maybe [Fragment])
     , _lfrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

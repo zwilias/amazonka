@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,15 +52,15 @@ import Network.AWS.Response
 data UpdateCrawler =
   UpdateCrawler'
     { _uSchemaChangePolicy :: !(Maybe SchemaChangePolicy)
-    , _uSchedule :: !(Maybe Text)
-    , _uClassifiers :: !(Maybe [Text])
-    , _uRole :: !(Maybe Text)
-    , _uTargets :: !(Maybe CrawlerTargets)
-    , _uDatabaseName :: !(Maybe Text)
-    , _uConfiguration :: !(Maybe Text)
-    , _uTablePrefix :: !(Maybe Text)
-    , _uDescription :: !(Maybe Text)
-    , _uName :: !Text
+    , _uSchedule           :: !(Maybe Text)
+    , _uClassifiers        :: !(Maybe [Text])
+    , _uRole               :: !(Maybe Text)
+    , _uTargets            :: !(Maybe CrawlerTargets)
+    , _uDatabaseName       :: !(Maybe Text)
+    , _uConfiguration      :: !(Maybe Text)
+    , _uTablePrefix        :: !(Maybe Text)
+    , _uDescription        :: !(Maybe Text)
+    , _uName               :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

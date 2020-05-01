@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -68,7 +68,7 @@ import Network.AWS.Response
 -- | /See:/ 'createGlobalTable' smart constructor.
 data CreateGlobalTable =
   CreateGlobalTable'
-    { _cgtGlobalTableName :: !Text
+    { _cgtGlobalTableName  :: !Text
     , _cgtReplicationGroup :: ![Replica]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -137,7 +137,7 @@ instance ToQuery CreateGlobalTable where
 data CreateGlobalTableResponse =
   CreateGlobalTableResponse'
     { _cgtrsGlobalTableDescription :: !(Maybe GlobalTableDescription)
-    , _cgtrsResponseStatus :: !Int
+    , _cgtrsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

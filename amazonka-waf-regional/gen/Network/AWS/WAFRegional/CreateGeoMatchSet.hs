@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -59,7 +59,7 @@ import Network.AWS.WAFRegional.Types.Product
 -- | /See:/ 'createGeoMatchSet' smart constructor.
 data CreateGeoMatchSet =
   CreateGeoMatchSet'
-    { _cgmsName :: !Text
+    { _cgmsName        :: !Text
     , _cgmsChangeToken :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -124,8 +124,8 @@ instance ToQuery CreateGeoMatchSet where
 -- | /See:/ 'createGeoMatchSetResponse' smart constructor.
 data CreateGeoMatchSetResponse =
   CreateGeoMatchSetResponse'
-    { _cgmsrsGeoMatchSet :: !(Maybe GeoMatchSet)
-    , _cgmsrsChangeToken :: !(Maybe Text)
+    { _cgmsrsGeoMatchSet    :: !(Maybe GeoMatchSet)
+    , _cgmsrsChangeToken    :: !(Maybe Text)
     , _cgmsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

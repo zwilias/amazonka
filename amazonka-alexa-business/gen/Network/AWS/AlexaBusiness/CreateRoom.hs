@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,12 +48,12 @@ import Network.AWS.Response
 -- | /See:/ 'createRoom' smart constructor.
 data CreateRoom =
   CreateRoom'
-    { _crProfileARN :: !(Maybe Text)
+    { _crProfileARN         :: !(Maybe Text)
     , _crProviderCalendarId :: !(Maybe Text)
     , _crClientRequestToken :: !(Maybe Text)
-    , _crDescription :: !(Maybe Text)
-    , _crTags :: !(Maybe [Tag])
-    , _crRoomName :: !Text
+    , _crDescription        :: !(Maybe Text)
+    , _crTags               :: !(Maybe [Tag])
+    , _crRoomName           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -152,7 +152,7 @@ instance ToQuery CreateRoom where
 -- | /See:/ 'createRoomResponse' smart constructor.
 data CreateRoomResponse =
   CreateRoomResponse'
-    { _crrsRoomARN :: !(Maybe Text)
+    { _crrsRoomARN        :: !(Maybe Text)
     , _crrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

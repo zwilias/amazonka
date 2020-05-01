@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -116,23 +116,23 @@ instance ToQuery DescribeBroker where
 -- | /See:/ 'describeBrokerResponse' smart constructor.
 data DescribeBrokerResponse =
   DescribeBrokerResponse'
-    { _dbrsBrokerName :: !(Maybe Text)
-    , _dbrsEngineVersion :: !(Maybe Text)
-    , _dbrsBrokerState :: !(Maybe BrokerState)
-    , _dbrsPubliclyAccessible :: !(Maybe Bool)
-    , _dbrsAutoMinorVersionUpgrade :: !(Maybe Bool)
-    , _dbrsSecurityGroups :: !(Maybe [Text])
-    , _dbrsUsers :: !(Maybe [UserSummary])
-    , _dbrsSubnetIds :: !(Maybe [Text])
-    , _dbrsConfigurations :: !(Maybe Configurations)
+    { _dbrsBrokerName                 :: !(Maybe Text)
+    , _dbrsEngineVersion              :: !(Maybe Text)
+    , _dbrsBrokerState                :: !(Maybe BrokerState)
+    , _dbrsPubliclyAccessible         :: !(Maybe Bool)
+    , _dbrsAutoMinorVersionUpgrade    :: !(Maybe Bool)
+    , _dbrsSecurityGroups             :: !(Maybe [Text])
+    , _dbrsUsers                      :: !(Maybe [UserSummary])
+    , _dbrsSubnetIds                  :: !(Maybe [Text])
+    , _dbrsConfigurations             :: !(Maybe Configurations)
     , _dbrsMaintenanceWindowStartTime :: !(Maybe WeeklyStartTime)
-    , _dbrsDeploymentMode :: !(Maybe DeploymentMode)
-    , _dbrsBrokerId :: !(Maybe Text)
-    , _dbrsEngineType :: !(Maybe EngineType)
-    , _dbrsBrokerARN :: !(Maybe Text)
-    , _dbrsBrokerInstances :: !(Maybe [BrokerInstance])
-    , _dbrsHostInstanceType :: !(Maybe Text)
-    , _dbrsResponseStatus :: !Int
+    , _dbrsDeploymentMode             :: !(Maybe DeploymentMode)
+    , _dbrsBrokerId                   :: !(Maybe Text)
+    , _dbrsEngineType                 :: !(Maybe EngineType)
+    , _dbrsBrokerARN                  :: !(Maybe Text)
+    , _dbrsBrokerInstances            :: !(Maybe [BrokerInstance])
+    , _dbrsHostInstanceType           :: !(Maybe Text)
+    , _dbrsResponseStatus             :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -42,9 +42,9 @@ import Network.AWS.S3.Types.Product
 data PutBucketPolicy =
   PutBucketPolicy'
     { _pbpConfirmRemoveSelfBucketAccess :: !(Maybe Bool)
-    , _pbpContentMD5 :: !(Maybe Text)
-    , _pbpBucket :: !BucketName
-    , _pbpPolicy :: !ByteString
+    , _pbpContentMD5                    :: !(Maybe Text)
+    , _pbpBucket                        :: !BucketName
+    , _pbpPolicy                        :: !ByteString
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 -- | /See:/ 'describeImageBuilders' smart constructor.
 data DescribeImageBuilders =
   DescribeImageBuilders'
-    { _dibNextToken :: !(Maybe Text)
-    , _dibNames :: !(Maybe [Text])
+    { _dibNextToken  :: !(Maybe Text)
+    , _dibNames      :: !(Maybe [Text])
     , _dibMaxResults :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -119,8 +119,8 @@ instance ToQuery DescribeImageBuilders where
 -- | /See:/ 'describeImageBuildersResponse' smart constructor.
 data DescribeImageBuildersResponse =
   DescribeImageBuildersResponse'
-    { _dibsrsImageBuilders :: !(Maybe [ImageBuilder])
-    , _dibsrsNextToken :: !(Maybe Text)
+    { _dibsrsImageBuilders  :: !(Maybe [ImageBuilder])
+    , _dibsrsNextToken      :: !(Maybe Text)
     , _dibsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

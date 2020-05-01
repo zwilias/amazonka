@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -43,7 +43,7 @@ import Network.AWS.Response
 -- | /See:/ 'listFunctionDefinitions' smart constructor.
 data ListFunctionDefinitions =
   ListFunctionDefinitions'
-    { _lfdNextToken :: !(Maybe Text)
+    { _lfdNextToken  :: !(Maybe Text)
     , _lfdMaxResults :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -96,8 +96,8 @@ instance ToQuery ListFunctionDefinitions where
 -- | /See:/ 'listFunctionDefinitionsResponse' smart constructor.
 data ListFunctionDefinitionsResponse =
   ListFunctionDefinitionsResponse'
-    { _lfdrsNextToken :: !(Maybe Text)
-    , _lfdrsDefinitions :: !(Maybe [DefinitionInformation])
+    { _lfdrsNextToken      :: !(Maybe Text)
+    , _lfdrsDefinitions    :: !(Maybe [DefinitionInformation])
     , _lfdrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

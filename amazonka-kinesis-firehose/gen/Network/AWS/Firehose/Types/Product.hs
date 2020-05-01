@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,7 +26,7 @@ import Network.AWS.Prelude
 -- /See:/ 'bufferingHints' smart constructor.
 data BufferingHints =
   BufferingHints'
-    { _bhSizeInMBs :: !(Maybe Nat)
+    { _bhSizeInMBs         :: !(Maybe Nat)
     , _bhIntervalInSeconds :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -78,8 +78,8 @@ instance ToJSON BufferingHints where
 -- /See:/ 'cloudWatchLoggingOptions' smart constructor.
 data CloudWatchLoggingOptions =
   CloudWatchLoggingOptions'
-    { _cwloEnabled :: !(Maybe Bool)
-    , _cwloLogGroupName :: !(Maybe Text)
+    { _cwloEnabled       :: !(Maybe Bool)
+    , _cwloLogGroupName  :: !(Maybe Text)
     , _cwloLogStreamName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -142,9 +142,9 @@ instance ToJSON CloudWatchLoggingOptions where
 -- /See:/ 'copyCommand' smart constructor.
 data CopyCommand =
   CopyCommand'
-    { _ccCopyOptions :: !(Maybe Text)
+    { _ccCopyOptions      :: !(Maybe Text)
     , _ccDataTableColumns :: !(Maybe Text)
-    , _ccDataTableName :: !Text
+    , _ccDataTableName    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -209,9 +209,9 @@ instance ToJSON CopyCommand where
 data DataFormatConversionConfiguration =
   DataFormatConversionConfiguration'
     { _dfccOutputFormatConfiguration :: !(Maybe OutputFormatConfiguration)
-    , _dfccEnabled :: !(Maybe Bool)
-    , _dfccSchemaConfiguration :: !(Maybe SchemaConfiguration)
-    , _dfccInputFormatConfiguration :: !(Maybe InputFormatConfiguration)
+    , _dfccEnabled                   :: !(Maybe Bool)
+    , _dfccSchemaConfiguration       :: !(Maybe SchemaConfiguration)
+    , _dfccInputFormatConfiguration  :: !(Maybe InputFormatConfiguration)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -293,16 +293,16 @@ instance ToJSON DataFormatConversionConfiguration where
 -- /See:/ 'deliveryStreamDescription' smart constructor.
 data DeliveryStreamDescription =
   DeliveryStreamDescription'
-    { _dsdCreateTimestamp :: !(Maybe POSIX)
-    , _dsdSource :: !(Maybe SourceDescription)
-    , _dsdLastUpdateTimestamp :: !(Maybe POSIX)
-    , _dsdDeliveryStreamName :: !Text
-    , _dsdDeliveryStreamARN :: !Text
+    { _dsdCreateTimestamp      :: !(Maybe POSIX)
+    , _dsdSource               :: !(Maybe SourceDescription)
+    , _dsdLastUpdateTimestamp  :: !(Maybe POSIX)
+    , _dsdDeliveryStreamName   :: !Text
+    , _dsdDeliveryStreamARN    :: !Text
     , _dsdDeliveryStreamStatus :: !DeliveryStreamStatus
-    , _dsdDeliveryStreamType :: !DeliveryStreamType
-    , _dsdVersionId :: !Text
-    , _dsdDestinations :: ![DestinationDescription]
-    , _dsdHasMoreDestinations :: !Bool
+    , _dsdDeliveryStreamType   :: !DeliveryStreamType
+    , _dsdVersionId            :: !Text
+    , _dsdDestinations         :: ![DestinationDescription]
+    , _dsdHasMoreDestinations  :: !Bool
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -428,7 +428,7 @@ instance NFData DeliveryStreamDescription
 data Deserializer =
   Deserializer'
     { _dOpenXJSONSerDe :: !(Maybe OpenXJSONSerDe)
-    , _dHiveJSONSerDe :: !(Maybe HiveJSONSerDe)
+    , _dHiveJSONSerDe  :: !(Maybe HiveJSONSerDe)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -579,7 +579,7 @@ instance NFData DestinationDescription
 -- /See:/ 'elasticsearchBufferingHints' smart constructor.
 data ElasticsearchBufferingHints =
   ElasticsearchBufferingHints'
-    { _ebhSizeInMBs :: !(Maybe Nat)
+    { _ebhSizeInMBs         :: !(Maybe Nat)
     , _ebhIntervalInSeconds :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -633,17 +633,17 @@ instance ToJSON ElasticsearchBufferingHints where
 -- /See:/ 'elasticsearchDestinationConfiguration' smart constructor.
 data ElasticsearchDestinationConfiguration =
   ElasticsearchDestinationConfiguration'
-    { _edcIndexRotationPeriod :: !(Maybe ElasticsearchIndexRotationPeriod)
-    , _edcS3BackupMode :: !(Maybe ElasticsearchS3BackupMode)
+    { _edcIndexRotationPeriod      :: !(Maybe ElasticsearchIndexRotationPeriod)
+    , _edcS3BackupMode             :: !(Maybe ElasticsearchS3BackupMode)
     , _edcCloudWatchLoggingOptions :: !(Maybe CloudWatchLoggingOptions)
-    , _edcBufferingHints :: !(Maybe ElasticsearchBufferingHints)
-    , _edcRetryOptions :: !(Maybe ElasticsearchRetryOptions)
-    , _edcProcessingConfiguration :: !(Maybe ProcessingConfiguration)
-    , _edcRoleARN :: !Text
-    , _edcDomainARN :: !Text
-    , _edcIndexName :: !Text
-    , _edcTypeName :: !Text
-    , _edcS3Configuration :: !S3DestinationConfiguration
+    , _edcBufferingHints           :: !(Maybe ElasticsearchBufferingHints)
+    , _edcRetryOptions             :: !(Maybe ElasticsearchRetryOptions)
+    , _edcProcessingConfiguration  :: !(Maybe ProcessingConfiguration)
+    , _edcRoleARN                  :: !Text
+    , _edcDomainARN                :: !Text
+    , _edcIndexName                :: !Text
+    , _edcTypeName                 :: !Text
+    , _edcS3Configuration          :: !S3DestinationConfiguration
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -779,17 +779,17 @@ instance ToJSON ElasticsearchDestinationConfiguration where
 -- /See:/ 'elasticsearchDestinationDescription' smart constructor.
 data ElasticsearchDestinationDescription =
   ElasticsearchDestinationDescription'
-    { _eddIndexRotationPeriod :: !(Maybe ElasticsearchIndexRotationPeriod)
-    , _eddTypeName :: !(Maybe Text)
-    , _eddS3BackupMode :: !(Maybe ElasticsearchS3BackupMode)
-    , _eddDomainARN :: !(Maybe Text)
+    { _eddIndexRotationPeriod      :: !(Maybe ElasticsearchIndexRotationPeriod)
+    , _eddTypeName                 :: !(Maybe Text)
+    , _eddS3BackupMode             :: !(Maybe ElasticsearchS3BackupMode)
+    , _eddDomainARN                :: !(Maybe Text)
     , _eddCloudWatchLoggingOptions :: !(Maybe CloudWatchLoggingOptions)
     , _eddS3DestinationDescription :: !(Maybe S3DestinationDescription)
-    , _eddBufferingHints :: !(Maybe ElasticsearchBufferingHints)
-    , _eddRetryOptions :: !(Maybe ElasticsearchRetryOptions)
-    , _eddProcessingConfiguration :: !(Maybe ProcessingConfiguration)
-    , _eddRoleARN :: !(Maybe Text)
-    , _eddIndexName :: !(Maybe Text)
+    , _eddBufferingHints           :: !(Maybe ElasticsearchBufferingHints)
+    , _eddRetryOptions             :: !(Maybe ElasticsearchRetryOptions)
+    , _eddProcessingConfiguration  :: !(Maybe ProcessingConfiguration)
+    , _eddRoleARN                  :: !(Maybe Text)
+    , _eddIndexName                :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -921,16 +921,16 @@ instance NFData ElasticsearchDestinationDescription
 -- /See:/ 'elasticsearchDestinationUpdate' smart constructor.
 data ElasticsearchDestinationUpdate =
   ElasticsearchDestinationUpdate'
-    { _eduIndexRotationPeriod :: !(Maybe ElasticsearchIndexRotationPeriod)
-    , _eduTypeName :: !(Maybe Text)
-    , _eduDomainARN :: !(Maybe Text)
+    { _eduIndexRotationPeriod      :: !(Maybe ElasticsearchIndexRotationPeriod)
+    , _eduTypeName                 :: !(Maybe Text)
+    , _eduDomainARN                :: !(Maybe Text)
     , _eduCloudWatchLoggingOptions :: !(Maybe CloudWatchLoggingOptions)
-    , _eduS3Update :: !(Maybe S3DestinationUpdate)
-    , _eduBufferingHints :: !(Maybe ElasticsearchBufferingHints)
-    , _eduRetryOptions :: !(Maybe ElasticsearchRetryOptions)
-    , _eduProcessingConfiguration :: !(Maybe ProcessingConfiguration)
-    , _eduRoleARN :: !(Maybe Text)
-    , _eduIndexName :: !(Maybe Text)
+    , _eduS3Update                 :: !(Maybe S3DestinationUpdate)
+    , _eduBufferingHints           :: !(Maybe ElasticsearchBufferingHints)
+    , _eduRetryOptions             :: !(Maybe ElasticsearchRetryOptions)
+    , _eduProcessingConfiguration  :: !(Maybe ProcessingConfiguration)
+    , _eduRoleARN                  :: !(Maybe Text)
+    , _eduIndexName                :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1089,7 +1089,7 @@ instance ToJSON ElasticsearchRetryOptions where
 -- /See:/ 'encryptionConfiguration' smart constructor.
 data EncryptionConfiguration =
   EncryptionConfiguration'
-    { _ecNoEncryptionConfig :: !(Maybe NoEncryptionConfig)
+    { _ecNoEncryptionConfig  :: !(Maybe NoEncryptionConfig)
     , _ecKMSEncryptionConfig :: !(Maybe KMSEncryptionConfig)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1719,7 +1719,7 @@ instance ToJSON KMSEncryptionConfig where
 data KinesisStreamSourceConfiguration =
   KinesisStreamSourceConfiguration'
     { _ksscKinesisStreamARN :: !Text
-    , _ksscRoleARN :: !Text
+    , _ksscRoleARN          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1767,8 +1767,8 @@ instance ToJSON KinesisStreamSourceConfiguration where
 data KinesisStreamSourceDescription =
   KinesisStreamSourceDescription'
     { _kssdDeliveryStartTimestamp :: !(Maybe POSIX)
-    , _kssdKinesisStreamARN :: !(Maybe Text)
-    , _kssdRoleARN :: !(Maybe Text)
+    , _kssdKinesisStreamARN       :: !(Maybe Text)
+    , _kssdRoleARN                :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1825,8 +1825,8 @@ instance NFData KinesisStreamSourceDescription
 -- /See:/ 'openXJSONSerDe' smart constructor.
 data OpenXJSONSerDe =
   OpenXJSONSerDe'
-    { _oxjsdColumnToJSONKeyMappings :: !(Maybe (Map Text Text))
-    , _oxjsdCaseInsensitive :: !(Maybe Bool)
+    { _oxjsdColumnToJSONKeyMappings            :: !(Maybe (Map Text Text))
+    , _oxjsdCaseInsensitive                    :: !(Maybe Bool)
     , _oxjsdConvertDotsInJSONKeysToUnderscores :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1899,15 +1899,15 @@ instance ToJSON OpenXJSONSerDe where
 data OrcSerDe =
   OrcSerDe'
     { _osdBloomFilterFalsePositiveProbability :: !(Maybe Double)
-    , _osdDictionaryKeyThreshold :: !(Maybe Double)
-    , _osdEnablePadding :: !(Maybe Bool)
-    , _osdCompression :: !(Maybe OrcCompression)
-    , _osdBloomFilterColumns :: !(Maybe [Text])
-    , _osdRowIndexStride :: !(Maybe Nat)
-    , _osdFormatVersion :: !(Maybe OrcFormatVersion)
-    , _osdBlockSizeBytes :: !(Maybe Nat)
-    , _osdStripeSizeBytes :: !(Maybe Nat)
-    , _osdPaddingTolerance :: !(Maybe Double)
+    , _osdDictionaryKeyThreshold              :: !(Maybe Double)
+    , _osdEnablePadding                       :: !(Maybe Bool)
+    , _osdCompression                         :: !(Maybe OrcCompression)
+    , _osdBloomFilterColumns                  :: !(Maybe [Text])
+    , _osdRowIndexStride                      :: !(Maybe Nat)
+    , _osdFormatVersion                       :: !(Maybe OrcFormatVersion)
+    , _osdBlockSizeBytes                      :: !(Maybe Nat)
+    , _osdStripeSizeBytes                     :: !(Maybe Nat)
+    , _osdPaddingTolerance                    :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2081,12 +2081,12 @@ instance ToJSON OutputFormatConfiguration where
 -- /See:/ 'parquetSerDe' smart constructor.
 data ParquetSerDe =
   ParquetSerDe'
-    { _psdWriterVersion :: !(Maybe ParquetWriterVersion)
-    , _psdCompression :: !(Maybe ParquetCompression)
-    , _psdMaxPaddingBytes :: !(Maybe Nat)
+    { _psdWriterVersion               :: !(Maybe ParquetWriterVersion)
+    , _psdCompression                 :: !(Maybe ParquetCompression)
+    , _psdMaxPaddingBytes             :: !(Maybe Nat)
     , _psdEnableDictionaryCompression :: !(Maybe Bool)
-    , _psdPageSizeBytes :: !(Maybe Nat)
-    , _psdBlockSizeBytes :: !(Maybe Nat)
+    , _psdPageSizeBytes               :: !(Maybe Nat)
+    , _psdBlockSizeBytes              :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2181,7 +2181,7 @@ instance ToJSON ParquetSerDe where
 -- /See:/ 'processingConfiguration' smart constructor.
 data ProcessingConfiguration =
   ProcessingConfiguration'
-    { _pcEnabled :: !(Maybe Bool)
+    { _pcEnabled    :: !(Maybe Bool)
     , _pcProcessors :: !(Maybe [Processor])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2232,7 +2232,7 @@ instance ToJSON ProcessingConfiguration where
 data Processor =
   Processor'
     { _pParameters :: !(Maybe [ProcessorParameter])
-    , _pType :: !ProcessorType
+    , _pType       :: !ProcessorType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2279,7 +2279,7 @@ instance ToJSON Processor where
 -- /See:/ 'processorParameter' smart constructor.
 data ProcessorParameter =
   ProcessorParameter'
-    { _ppParameterName :: !ProcessorParameterName
+    { _ppParameterName  :: !ProcessorParameterName
     , _ppParameterValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2334,8 +2334,8 @@ instance ToJSON ProcessorParameter where
 -- /See:/ 'putRecordBatchResponseEntry' smart constructor.
 data PutRecordBatchResponseEntry =
   PutRecordBatchResponseEntry'
-    { _prbreRecordId :: !(Maybe Text)
-    , _prbreErrorCode :: !(Maybe Text)
+    { _prbreRecordId     :: !(Maybe Text)
+    , _prbreErrorCode    :: !(Maybe Text)
     , _prbreErrorMessage :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2421,17 +2421,17 @@ instance ToJSON Record where
 -- /See:/ 'redshiftDestinationConfiguration' smart constructor.
 data RedshiftDestinationConfiguration =
   RedshiftDestinationConfiguration'
-    { _rdcS3BackupMode :: !(Maybe RedshiftS3BackupMode)
+    { _rdcS3BackupMode             :: !(Maybe RedshiftS3BackupMode)
     , _rdcCloudWatchLoggingOptions :: !(Maybe CloudWatchLoggingOptions)
-    , _rdcS3BackupConfiguration :: !(Maybe S3DestinationConfiguration)
-    , _rdcRetryOptions :: !(Maybe RedshiftRetryOptions)
-    , _rdcProcessingConfiguration :: !(Maybe ProcessingConfiguration)
-    , _rdcRoleARN :: !Text
-    , _rdcClusterJDBCURL :: !Text
-    , _rdcCopyCommand :: !CopyCommand
-    , _rdcUsername :: !(Sensitive Text)
-    , _rdcPassword :: !(Sensitive Text)
-    , _rdcS3Configuration :: !S3DestinationConfiguration
+    , _rdcS3BackupConfiguration    :: !(Maybe S3DestinationConfiguration)
+    , _rdcRetryOptions             :: !(Maybe RedshiftRetryOptions)
+    , _rdcProcessingConfiguration  :: !(Maybe ProcessingConfiguration)
+    , _rdcRoleARN                  :: !Text
+    , _rdcClusterJDBCURL           :: !Text
+    , _rdcCopyCommand              :: !CopyCommand
+    , _rdcUsername                 :: !(Sensitive Text)
+    , _rdcPassword                 :: !(Sensitive Text)
+    , _rdcS3Configuration          :: !S3DestinationConfiguration
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -2567,15 +2567,15 @@ instance ToJSON RedshiftDestinationConfiguration where
 -- /See:/ 'redshiftDestinationDescription' smart constructor.
 data RedshiftDestinationDescription =
   RedshiftDestinationDescription'
-    { _rddS3BackupMode :: !(Maybe RedshiftS3BackupMode)
-    , _rddS3BackupDescription :: !(Maybe S3DestinationDescription)
+    { _rddS3BackupMode             :: !(Maybe RedshiftS3BackupMode)
+    , _rddS3BackupDescription      :: !(Maybe S3DestinationDescription)
     , _rddCloudWatchLoggingOptions :: !(Maybe CloudWatchLoggingOptions)
-    , _rddRetryOptions :: !(Maybe RedshiftRetryOptions)
-    , _rddProcessingConfiguration :: !(Maybe ProcessingConfiguration)
-    , _rddRoleARN :: !Text
-    , _rddClusterJDBCURL :: !Text
-    , _rddCopyCommand :: !CopyCommand
-    , _rddUsername :: !(Sensitive Text)
+    , _rddRetryOptions             :: !(Maybe RedshiftRetryOptions)
+    , _rddProcessingConfiguration  :: !(Maybe ProcessingConfiguration)
+    , _rddRoleARN                  :: !Text
+    , _rddClusterJDBCURL           :: !Text
+    , _rddCopyCommand              :: !CopyCommand
+    , _rddUsername                 :: !(Sensitive Text)
     , _rddS3DestinationDescription :: !S3DestinationDescription
     }
   deriving (Eq, Show, Data, Typeable, Generic)
@@ -2705,17 +2705,17 @@ instance NFData RedshiftDestinationDescription
 -- /See:/ 'redshiftDestinationUpdate' smart constructor.
 data RedshiftDestinationUpdate =
   RedshiftDestinationUpdate'
-    { _rduS3BackupMode :: !(Maybe RedshiftS3BackupMode)
+    { _rduS3BackupMode             :: !(Maybe RedshiftS3BackupMode)
     , _rduCloudWatchLoggingOptions :: !(Maybe CloudWatchLoggingOptions)
-    , _rduUsername :: !(Maybe (Sensitive Text))
-    , _rduS3Update :: !(Maybe S3DestinationUpdate)
-    , _rduPassword :: !(Maybe (Sensitive Text))
-    , _rduS3BackupUpdate :: !(Maybe S3DestinationUpdate)
-    , _rduCopyCommand :: !(Maybe CopyCommand)
-    , _rduRetryOptions :: !(Maybe RedshiftRetryOptions)
-    , _rduProcessingConfiguration :: !(Maybe ProcessingConfiguration)
-    , _rduClusterJDBCURL :: !(Maybe Text)
-    , _rduRoleARN :: !(Maybe Text)
+    , _rduUsername                 :: !(Maybe (Sensitive Text))
+    , _rduS3Update                 :: !(Maybe S3DestinationUpdate)
+    , _rduPassword                 :: !(Maybe (Sensitive Text))
+    , _rduS3BackupUpdate           :: !(Maybe S3DestinationUpdate)
+    , _rduCopyCommand              :: !(Maybe CopyCommand)
+    , _rduRetryOptions             :: !(Maybe RedshiftRetryOptions)
+    , _rduProcessingConfiguration  :: !(Maybe ProcessingConfiguration)
+    , _rduClusterJDBCURL           :: !(Maybe Text)
+    , _rduRoleARN                  :: !(Maybe Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -2879,13 +2879,13 @@ instance ToJSON RedshiftRetryOptions where
 -- /See:/ 's3DestinationConfiguration' smart constructor.
 data S3DestinationConfiguration =
   S3DestinationConfiguration'
-    { _sdcPrefix :: !(Maybe Text)
+    { _sdcPrefix                   :: !(Maybe Text)
     , _sdcCloudWatchLoggingOptions :: !(Maybe CloudWatchLoggingOptions)
-    , _sdcEncryptionConfiguration :: !(Maybe EncryptionConfiguration)
-    , _sdcCompressionFormat :: !(Maybe CompressionFormat)
-    , _sdcBufferingHints :: !(Maybe BufferingHints)
-    , _sdcRoleARN :: !Text
-    , _sdcBucketARN :: !Text
+    , _sdcEncryptionConfiguration  :: !(Maybe EncryptionConfiguration)
+    , _sdcCompressionFormat        :: !(Maybe CompressionFormat)
+    , _sdcBufferingHints           :: !(Maybe BufferingHints)
+    , _sdcRoleARN                  :: !Text
+    , _sdcBucketARN                :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2981,13 +2981,13 @@ instance ToJSON S3DestinationConfiguration where
 -- /See:/ 's3DestinationDescription' smart constructor.
 data S3DestinationDescription =
   S3DestinationDescription'
-    { _s3Prefix :: !(Maybe Text)
+    { _s3Prefix                   :: !(Maybe Text)
     , _s3CloudWatchLoggingOptions :: !(Maybe CloudWatchLoggingOptions)
-    , _s3RoleARN :: !Text
-    , _s3BucketARN :: !Text
-    , _s3BufferingHints :: !BufferingHints
-    , _s3CompressionFormat :: !CompressionFormat
-    , _s3EncryptionConfiguration :: !EncryptionConfiguration
+    , _s3RoleARN                  :: !Text
+    , _s3BucketARN                :: !Text
+    , _s3BufferingHints           :: !BufferingHints
+    , _s3CompressionFormat        :: !CompressionFormat
+    , _s3EncryptionConfiguration  :: !EncryptionConfiguration
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3083,13 +3083,13 @@ instance NFData S3DestinationDescription
 -- /See:/ 's3DestinationUpdate' smart constructor.
 data S3DestinationUpdate =
   S3DestinationUpdate'
-    { _sPrefix :: !(Maybe Text)
+    { _sPrefix                   :: !(Maybe Text)
     , _sCloudWatchLoggingOptions :: !(Maybe CloudWatchLoggingOptions)
-    , _sEncryptionConfiguration :: !(Maybe EncryptionConfiguration)
-    , _sCompressionFormat :: !(Maybe CompressionFormat)
-    , _sBufferingHints :: !(Maybe BufferingHints)
-    , _sBucketARN :: !(Maybe Text)
-    , _sRoleARN :: !(Maybe Text)
+    , _sEncryptionConfiguration  :: !(Maybe EncryptionConfiguration)
+    , _sCompressionFormat        :: !(Maybe CompressionFormat)
+    , _sBufferingHints           :: !(Maybe BufferingHints)
+    , _sBucketARN                :: !(Maybe Text)
+    , _sRoleARN                  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3179,12 +3179,12 @@ instance ToJSON S3DestinationUpdate where
 -- /See:/ 'schemaConfiguration' smart constructor.
 data SchemaConfiguration =
   SchemaConfiguration'
-    { _scVersionId :: !(Maybe Text)
-    , _scCatalogId :: !(Maybe Text)
+    { _scVersionId    :: !(Maybe Text)
+    , _scCatalogId    :: !(Maybe Text)
     , _scDatabaseName :: !(Maybe Text)
-    , _scRegion :: !(Maybe Text)
-    , _scTableName :: !(Maybe Text)
-    , _scRoleARN :: !(Maybe Text)
+    , _scRegion       :: !(Maybe Text)
+    , _scTableName    :: !(Maybe Text)
+    , _scRoleARN      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3272,7 +3272,7 @@ instance ToJSON SchemaConfiguration where
 -- /See:/ 'serializer' smart constructor.
 data Serializer =
   Serializer'
-    { _sOrcSerDe :: !(Maybe OrcSerDe)
+    { _sOrcSerDe     :: !(Maybe OrcSerDe)
     , _sParquetSerDe :: !(Maybe ParquetSerDe)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3358,15 +3358,15 @@ instance NFData SourceDescription
 -- /See:/ 'splunkDestinationConfiguration' smart constructor.
 data SplunkDestinationConfiguration =
   SplunkDestinationConfiguration'
-    { _splS3BackupMode :: !(Maybe SplunkS3BackupMode)
-    , _splCloudWatchLoggingOptions :: !(Maybe CloudWatchLoggingOptions)
+    { _splS3BackupMode                      :: !(Maybe SplunkS3BackupMode)
+    , _splCloudWatchLoggingOptions          :: !(Maybe CloudWatchLoggingOptions)
     , _splHECAcknowledgmentTimeoutInSeconds :: !(Maybe Nat)
-    , _splRetryOptions :: !(Maybe SplunkRetryOptions)
-    , _splProcessingConfiguration :: !(Maybe ProcessingConfiguration)
-    , _splHECEndpoint :: !Text
-    , _splHECEndpointType :: !HECEndpointType
-    , _splHECToken :: !Text
-    , _splS3Configuration :: !S3DestinationConfiguration
+    , _splRetryOptions                      :: !(Maybe SplunkRetryOptions)
+    , _splProcessingConfiguration           :: !(Maybe ProcessingConfiguration)
+    , _splHECEndpoint                       :: !Text
+    , _splHECEndpointType                   :: !HECEndpointType
+    , _splHECToken                          :: !Text
+    , _splS3Configuration                   :: !S3DestinationConfiguration
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3489,15 +3489,15 @@ instance ToJSON SplunkDestinationConfiguration where
 -- /See:/ 'splunkDestinationDescription' smart constructor.
 data SplunkDestinationDescription =
   SplunkDestinationDescription'
-    { _sddS3BackupMode :: !(Maybe SplunkS3BackupMode)
-    , _sddHECToken :: !(Maybe Text)
-    , _sddHECEndpointType :: !(Maybe HECEndpointType)
-    , _sddCloudWatchLoggingOptions :: !(Maybe CloudWatchLoggingOptions)
+    { _sddS3BackupMode                      :: !(Maybe SplunkS3BackupMode)
+    , _sddHECToken                          :: !(Maybe Text)
+    , _sddHECEndpointType                   :: !(Maybe HECEndpointType)
+    , _sddCloudWatchLoggingOptions          :: !(Maybe CloudWatchLoggingOptions)
     , _sddHECAcknowledgmentTimeoutInSeconds :: !(Maybe Nat)
-    , _sddS3DestinationDescription :: !(Maybe S3DestinationDescription)
-    , _sddHECEndpoint :: !(Maybe Text)
-    , _sddRetryOptions :: !(Maybe SplunkRetryOptions)
-    , _sddProcessingConfiguration :: !(Maybe ProcessingConfiguration)
+    , _sddS3DestinationDescription          :: !(Maybe S3DestinationDescription)
+    , _sddHECEndpoint                       :: !(Maybe Text)
+    , _sddRetryOptions                      :: !(Maybe SplunkRetryOptions)
+    , _sddProcessingConfiguration           :: !(Maybe ProcessingConfiguration)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3614,15 +3614,15 @@ instance NFData SplunkDestinationDescription
 -- /See:/ 'splunkDestinationUpdate' smart constructor.
 data SplunkDestinationUpdate =
   SplunkDestinationUpdate'
-    { _sduS3BackupMode :: !(Maybe SplunkS3BackupMode)
-    , _sduHECToken :: !(Maybe Text)
-    , _sduHECEndpointType :: !(Maybe HECEndpointType)
-    , _sduCloudWatchLoggingOptions :: !(Maybe CloudWatchLoggingOptions)
+    { _sduS3BackupMode                      :: !(Maybe SplunkS3BackupMode)
+    , _sduHECToken                          :: !(Maybe Text)
+    , _sduHECEndpointType                   :: !(Maybe HECEndpointType)
+    , _sduCloudWatchLoggingOptions          :: !(Maybe CloudWatchLoggingOptions)
     , _sduHECAcknowledgmentTimeoutInSeconds :: !(Maybe Nat)
-    , _sduS3Update :: !(Maybe S3DestinationUpdate)
-    , _sduHECEndpoint :: !(Maybe Text)
-    , _sduRetryOptions :: !(Maybe SplunkRetryOptions)
-    , _sduProcessingConfiguration :: !(Maybe ProcessingConfiguration)
+    , _sduS3Update                          :: !(Maybe S3DestinationUpdate)
+    , _sduHECEndpoint                       :: !(Maybe Text)
+    , _sduRetryOptions                      :: !(Maybe SplunkRetryOptions)
+    , _sduProcessingConfiguration           :: !(Maybe ProcessingConfiguration)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3776,7 +3776,7 @@ instance ToJSON SplunkRetryOptions where
 data Tag =
   Tag'
     { _tagValue :: !(Maybe Text)
-    , _tagKey :: !Text
+    , _tagKey   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

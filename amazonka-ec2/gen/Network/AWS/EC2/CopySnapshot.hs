@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,14 +58,14 @@ import Network.AWS.Response
 -- /See:/ 'copySnapshot' smart constructor.
 data CopySnapshot =
   CopySnapshot'
-    { _csPresignedURL :: !(Maybe Text)
-    , _csEncrypted :: !(Maybe Bool)
+    { _csPresignedURL      :: !(Maybe Text)
+    , _csEncrypted         :: !(Maybe Bool)
     , _csDestinationRegion :: !(Maybe Text)
-    , _csKMSKeyId :: !(Maybe Text)
-    , _csDescription :: !(Maybe Text)
-    , _csDryRun :: !(Maybe Bool)
-    , _csSourceRegion :: !Text
-    , _csSourceSnapshotId :: !Text
+    , _csKMSKeyId          :: !(Maybe Text)
+    , _csDescription       :: !(Maybe Text)
+    , _csDryRun            :: !(Maybe Bool)
+    , _csSourceRegion      :: !Text
+    , _csSourceSnapshotId  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -178,7 +178,7 @@ instance ToQuery CopySnapshot where
 -- /See:/ 'copySnapshotResponse' smart constructor.
 data CopySnapshotResponse =
   CopySnapshotResponse'
-    { _csrsSnapshotId :: !(Maybe Text)
+    { _csrsSnapshotId     :: !(Maybe Text)
     , _csrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

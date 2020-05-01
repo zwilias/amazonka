@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,16 +56,16 @@ import Network.AWS.Response
 data UpdateStackSet =
   UpdateStackSet'
     { _ussAdministrationRoleARN :: !(Maybe Text)
-    , _ussUsePreviousTemplate :: !(Maybe Bool)
-    , _ussParameters :: !(Maybe [Parameter])
-    , _ussOperationPreferences :: !(Maybe StackSetOperationPreferences)
-    , _ussOperationId :: !(Maybe Text)
-    , _ussTemplateBody :: !(Maybe Text)
-    , _ussTemplateURL :: !(Maybe Text)
-    , _ussDescription :: !(Maybe Text)
-    , _ussCapabilities :: !(Maybe [Capability])
-    , _ussTags :: !(Maybe [Tag])
-    , _ussStackSetName :: !Text
+    , _ussUsePreviousTemplate   :: !(Maybe Bool)
+    , _ussParameters            :: !(Maybe [Parameter])
+    , _ussOperationPreferences  :: !(Maybe StackSetOperationPreferences)
+    , _ussOperationId           :: !(Maybe Text)
+    , _ussTemplateBody          :: !(Maybe Text)
+    , _ussTemplateURL           :: !(Maybe Text)
+    , _ussDescription           :: !(Maybe Text)
+    , _ussCapabilities          :: !(Maybe [Capability])
+    , _ussTags                  :: !(Maybe [Tag])
+    , _ussStackSetName          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -203,7 +203,7 @@ instance ToQuery UpdateStackSet where
 -- | /See:/ 'updateStackSetResponse' smart constructor.
 data UpdateStackSetResponse =
   UpdateStackSetResponse'
-    { _ussrsOperationId :: !(Maybe Text)
+    { _ussrsOperationId    :: !(Maybe Text)
     , _ussrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

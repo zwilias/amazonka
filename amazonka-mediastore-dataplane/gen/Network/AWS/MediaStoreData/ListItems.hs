@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 -- | /See:/ 'listItems' smart constructor.
 data ListItems =
   ListItems'
-    { _liPath :: !(Maybe Text)
-    , _liNextToken :: !(Maybe Text)
+    { _liPath       :: !(Maybe Text)
+    , _liNextToken  :: !(Maybe Text)
     , _liMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -109,8 +109,8 @@ instance ToQuery ListItems where
 -- | /See:/ 'listItemsResponse' smart constructor.
 data ListItemsResponse =
   ListItemsResponse'
-    { _lirsItems :: !(Maybe [Item])
-    , _lirsNextToken :: !(Maybe Text)
+    { _lirsItems          :: !(Maybe [Item])
+    , _lirsNextToken      :: !(Maybe Text)
     , _lirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

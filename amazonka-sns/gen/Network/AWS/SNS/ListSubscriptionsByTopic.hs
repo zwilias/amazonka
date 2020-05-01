@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,7 +53,7 @@ import Network.AWS.SNS.Types.Product
 data ListSubscriptionsByTopic =
   ListSubscriptionsByTopic'
     { _lsbtNextToken :: !(Maybe Text)
-    , _lsbtTopicARN :: !Text
+    , _lsbtTopicARN  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -122,8 +122,8 @@ instance ToQuery ListSubscriptionsByTopic where
 -- /See:/ 'listSubscriptionsByTopicResponse' smart constructor.
 data ListSubscriptionsByTopicResponse =
   ListSubscriptionsByTopicResponse'
-    { _lsbtrsNextToken :: !(Maybe Text)
-    , _lsbtrsSubscriptions :: !(Maybe [Subscription])
+    { _lsbtrsNextToken      :: !(Maybe Text)
+    , _lsbtrsSubscriptions  :: !(Maybe [Subscription])
     , _lsbtrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

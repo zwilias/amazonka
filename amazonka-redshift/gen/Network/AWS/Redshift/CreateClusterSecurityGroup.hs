@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 -- /See:/ 'createClusterSecurityGroup' smart constructor.
 data CreateClusterSecurityGroup =
   CreateClusterSecurityGroup'
-    { _creTags :: !(Maybe [Tag])
+    { _creTags                     :: !(Maybe [Tag])
     , _creClusterSecurityGroupName :: !Text
-    , _creDescription :: !Text
+    , _creDescription              :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -126,7 +126,7 @@ instance ToQuery CreateClusterSecurityGroup where
 data CreateClusterSecurityGroupResponse =
   CreateClusterSecurityGroupResponse'
     { _crsClusterSecurityGroup :: !(Maybe ClusterSecurityGroup)
-    , _crsResponseStatus :: !Int
+    , _crsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

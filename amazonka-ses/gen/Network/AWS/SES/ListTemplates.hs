@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.SES.Types.Product
 data ListTemplates =
   ListTemplates'
     { _ltNextToken :: !(Maybe Text)
-    , _ltMaxItems :: !(Maybe Int)
+    , _ltMaxItems  :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -105,8 +105,8 @@ instance ToQuery ListTemplates where
 data ListTemplatesResponse =
   ListTemplatesResponse'
     { _ltrsTemplatesMetadata :: !(Maybe [TemplateMetadata])
-    , _ltrsNextToken :: !(Maybe Text)
-    , _ltrsResponseStatus :: !Int
+    , _ltrsNextToken         :: !(Maybe Text)
+    , _ltrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

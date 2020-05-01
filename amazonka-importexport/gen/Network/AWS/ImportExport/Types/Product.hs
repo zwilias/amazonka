@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -24,7 +24,7 @@ import Network.AWS.Prelude
 -- /See:/ 'artifact' smart constructor.
 data Artifact =
   Artifact'
-    { _aURL :: !(Maybe Text)
+    { _aURL         :: !(Maybe Text)
     , _aDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -59,9 +59,9 @@ instance NFData Artifact
 -- /See:/ 'job' smart constructor.
 data Job =
   Job'
-    { _jobJobType :: !JobType
-    , _jobJobId :: !Text
-    , _jobIsCanceled :: !Bool
+    { _jobJobType      :: !JobType
+    , _jobJobId        :: !Text
+    , _jobIsCanceled   :: !Bool
     , _jobCreationDate :: !ISO8601
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

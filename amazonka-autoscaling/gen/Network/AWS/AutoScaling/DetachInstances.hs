@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.Response
 -- | /See:/ 'detachInstances' smart constructor.
 data DetachInstances =
   DetachInstances'
-    { _diInstanceIds :: !(Maybe [Text])
-    , _diAutoScalingGroupName :: !Text
+    { _diInstanceIds                    :: !(Maybe [Text])
+    , _diAutoScalingGroupName           :: !Text
     , _diShouldDecrementDesiredCapacity :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -130,7 +130,7 @@ instance ToQuery DetachInstances where
 -- | /See:/ 'detachInstancesResponse' smart constructor.
 data DetachInstancesResponse =
   DetachInstancesResponse'
-    { _dirsActivities :: !(Maybe [Activity])
+    { _dirsActivities     :: !(Maybe [Activity])
     , _dirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

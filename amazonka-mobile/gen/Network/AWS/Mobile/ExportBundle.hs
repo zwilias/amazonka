@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,9 +49,9 @@ import Network.AWS.Response
 -- /See:/ 'exportBundle' smart constructor.
 data ExportBundle =
   ExportBundle'
-    { _ebPlatform :: !(Maybe Platform)
+    { _ebPlatform  :: !(Maybe Platform)
     , _ebProjectId :: !(Maybe Text)
-    , _ebBundleId :: !Text
+    , _ebBundleId  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -117,7 +117,7 @@ instance ToQuery ExportBundle where
 -- /See:/ 'exportBundleResponse' smart constructor.
 data ExportBundleResponse =
   ExportBundleResponse'
-    { _ebrsDownloadURL :: !(Maybe Text)
+    { _ebrsDownloadURL    :: !(Maybe Text)
     , _ebrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

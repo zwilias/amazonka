@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 data CreateRule =
   CreateRule'
     { _crListenerARN :: !Text
-    , _crConditions :: ![RuleCondition]
-    , _crPriority :: !Nat
-    , _crActions :: ![Action]
+    , _crConditions  :: ![RuleCondition]
+    , _crPriority    :: !Nat
+    , _crActions     :: ![Action]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -131,7 +131,7 @@ instance ToQuery CreateRule where
 -- | /See:/ 'createRuleResponse' smart constructor.
 data CreateRuleResponse =
   CreateRuleResponse'
-    { _crrsRules :: !(Maybe [Rule])
+    { _crrsRules          :: !(Maybe [Rule])
     , _crrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

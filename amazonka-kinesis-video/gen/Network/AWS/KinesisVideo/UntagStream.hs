@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'untagStream' smart constructor.
 data UntagStream =
   UntagStream'
-    { _usStreamARN :: !(Maybe Text)
+    { _usStreamARN  :: !(Maybe Text)
     , _usStreamName :: !(Maybe Text)
     , _usTagKeyList :: !(List1 Text)
     }

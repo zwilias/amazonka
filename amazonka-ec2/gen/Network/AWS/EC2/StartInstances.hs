@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,8 +58,8 @@ import Network.AWS.Response
 data StartInstances =
   StartInstances'
     { _sAdditionalInfo :: !(Maybe Text)
-    , _sDryRun :: !(Maybe Bool)
-    , _sInstanceIds :: ![Text]
+    , _sDryRun         :: !(Maybe Bool)
+    , _sInstanceIds    :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -127,7 +127,7 @@ instance ToQuery StartInstances where
 data StartInstancesResponse =
   StartInstancesResponse'
     { _srsStartingInstances :: !(Maybe [InstanceStateChange])
-    , _srsResponseStatus :: !Int
+    , _srsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

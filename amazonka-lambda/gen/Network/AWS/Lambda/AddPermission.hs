@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -61,15 +61,15 @@ import Network.AWS.Response
 -- /See:/ 'addPermission' smart constructor.
 data AddPermission =
   AddPermission'
-    { _apSourceAccount :: !(Maybe Text)
+    { _apSourceAccount    :: !(Maybe Text)
     , _apEventSourceToken :: !(Maybe Text)
-    , _apSourceARN :: !(Maybe Text)
-    , _apQualifier :: !(Maybe Text)
-    , _apRevisionId :: !(Maybe Text)
-    , _apFunctionName :: !Text
-    , _apStatementId :: !Text
-    , _apAction :: !Text
-    , _apPrincipal :: !Text
+    , _apSourceARN        :: !(Maybe Text)
+    , _apQualifier        :: !(Maybe Text)
+    , _apRevisionId       :: !(Maybe Text)
+    , _apFunctionName     :: !Text
+    , _apStatementId      :: !Text
+    , _apAction           :: !Text
+    , _apPrincipal        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -192,7 +192,7 @@ instance ToQuery AddPermission where
 -- /See:/ 'addPermissionResponse' smart constructor.
 data AddPermissionResponse =
   AddPermissionResponse'
-    { _aprsStatement :: !(Maybe Text)
+    { _aprsStatement      :: !(Maybe Text)
     , _aprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

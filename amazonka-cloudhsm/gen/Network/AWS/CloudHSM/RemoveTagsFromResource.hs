@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,7 +51,7 @@ import Network.AWS.Response
 data RemoveTagsFromResource =
   RemoveTagsFromResource'
     { _rtfrResourceARN :: !Text
-    , _rtfrTagKeyList :: ![Text]
+    , _rtfrTagKeyList  :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -118,7 +118,7 @@ instance ToQuery RemoveTagsFromResource where
 data RemoveTagsFromResourceResponse =
   RemoveTagsFromResourceResponse'
     { _rtfrrsResponseStatus :: !Int
-    , _rtfrrsStatus :: !Text
+    , _rtfrrsStatus         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

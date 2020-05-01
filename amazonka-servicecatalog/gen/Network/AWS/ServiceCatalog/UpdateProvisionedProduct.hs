@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,12 +56,12 @@ data UpdateProvisionedProduct =
   UpdateProvisionedProduct'
     { _uppProvisionedProductName :: !(Maybe Text)
     , _uppProvisioningArtifactId :: !(Maybe Text)
-    , _uppAcceptLanguage :: !(Maybe Text)
-    , _uppPathId :: !(Maybe Text)
+    , _uppAcceptLanguage         :: !(Maybe Text)
+    , _uppPathId                 :: !(Maybe Text)
     , _uppProvisioningParameters :: !(Maybe [UpdateProvisioningParameter])
-    , _uppProvisionedProductId :: !(Maybe Text)
-    , _uppProductId :: !(Maybe Text)
-    , _uppUpdateToken :: !Text
+    , _uppProvisionedProductId   :: !(Maybe Text)
+    , _uppProductId              :: !(Maybe Text)
+    , _uppUpdateToken            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -182,7 +182,7 @@ instance ToQuery UpdateProvisionedProduct where
 -- | /See:/ 'updateProvisionedProductResponse' smart constructor.
 data UpdateProvisionedProductResponse =
   UpdateProvisionedProductResponse'
-    { _upprsRecordDetail :: !(Maybe RecordDetail)
+    { _upprsRecordDetail   :: !(Maybe RecordDetail)
     , _upprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

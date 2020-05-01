@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Response
 data CreateRepository =
   CreateRepository'
     { _crRepositoryDescription :: !(Maybe Text)
-    , _crRepositoryName :: !Text
+    , _crRepositoryName        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -120,7 +120,7 @@ instance ToQuery CreateRepository where
 data CreateRepositoryResponse =
   CreateRepositoryResponse'
     { _crrsRepositoryMetadata :: !(Maybe RepositoryMetadata)
-    , _crrsResponseStatus :: !Int
+    , _crrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

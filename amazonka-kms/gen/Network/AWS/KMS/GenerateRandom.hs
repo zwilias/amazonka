@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -95,7 +95,7 @@ instance ToQuery GenerateRandom where
 -- | /See:/ 'generateRandomResponse' smart constructor.
 data GenerateRandomResponse =
   GenerateRandomResponse'
-    { _grrsPlaintext :: !(Maybe (Sensitive Base64))
+    { _grrsPlaintext      :: !(Maybe (Sensitive Base64))
     , _grrsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

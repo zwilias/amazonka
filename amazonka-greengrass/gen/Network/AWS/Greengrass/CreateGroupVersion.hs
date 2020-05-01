@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,14 +51,14 @@ import Network.AWS.Response
 -- | /See:/ 'createGroupVersion' smart constructor.
 data CreateGroupVersion =
   CreateGroupVersion'
-    { _cgvAmznClientToken :: !(Maybe Text)
-    , _cgvResourceDefinitionVersionARN :: !(Maybe Text)
+    { _cgvAmznClientToken                  :: !(Maybe Text)
+    , _cgvResourceDefinitionVersionARN     :: !(Maybe Text)
     , _cgvSubscriptionDefinitionVersionARN :: !(Maybe Text)
-    , _cgvCoreDefinitionVersionARN :: !(Maybe Text)
-    , _cgvDeviceDefinitionVersionARN :: !(Maybe Text)
-    , _cgvFunctionDefinitionVersionARN :: !(Maybe Text)
-    , _cgvLoggerDefinitionVersionARN :: !(Maybe Text)
-    , _cgvGroupId :: !Text
+    , _cgvCoreDefinitionVersionARN         :: !(Maybe Text)
+    , _cgvDeviceDefinitionVersionARN       :: !(Maybe Text)
+    , _cgvFunctionDefinitionVersionARN     :: !(Maybe Text)
+    , _cgvLoggerDefinitionVersionARN       :: !(Maybe Text)
+    , _cgvGroupId                          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -195,11 +195,11 @@ instance ToQuery CreateGroupVersion where
 -- | /See:/ 'createGroupVersionResponse' smart constructor.
 data CreateGroupVersionResponse =
   CreateGroupVersionResponse'
-    { _cgvrsARN :: !(Maybe Text)
+    { _cgvrsARN               :: !(Maybe Text)
     , _cgvrsCreationTimestamp :: !(Maybe Text)
-    , _cgvrsVersion :: !(Maybe Text)
-    , _cgvrsId :: !(Maybe Text)
-    , _cgvrsResponseStatus :: !Int
+    , _cgvrsVersion           :: !(Maybe Text)
+    , _cgvrsId                :: !(Maybe Text)
+    , _cgvrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

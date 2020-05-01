@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -88,7 +88,7 @@ instance ToQuery DeleteAPNSSandboxChannel where
 -- | /See:/ 'deleteAPNSSandboxChannelResponse' smart constructor.
 data DeleteAPNSSandboxChannelResponse =
   DeleteAPNSSandboxChannelResponse'
-    { _dascrsResponseStatus :: !Int
+    { _dascrsResponseStatus             :: !Int
     , _dascrsAPNSSandboxChannelResponse :: !APNSSandboxChannelResponse
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

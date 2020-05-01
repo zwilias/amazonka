@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- /See:/ 'updateRadius' smart constructor.
 data UpdateRadius =
   UpdateRadius'
-    { _urDirectoryId :: !Text
+    { _urDirectoryId    :: !Text
     , _urRadiusSettings :: !RadiusSettings
     }
   deriving (Eq, Show, Data, Typeable, Generic)

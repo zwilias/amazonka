@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,13 +50,13 @@ import Network.AWS.Response
 -- | /See:/ 'getAggregateComplianceDetailsByConfigRule' smart constructor.
 data GetAggregateComplianceDetailsByConfigRule =
   GetAggregateComplianceDetailsByConfigRule'
-    { _gacdbcrNextToken :: !(Maybe Text)
-    , _gacdbcrLimit :: !(Maybe Nat)
-    , _gacdbcrComplianceType :: !(Maybe ComplianceType)
+    { _gacdbcrNextToken                   :: !(Maybe Text)
+    , _gacdbcrLimit                       :: !(Maybe Nat)
+    , _gacdbcrComplianceType              :: !(Maybe ComplianceType)
     , _gacdbcrConfigurationAggregatorName :: !Text
-    , _gacdbcrConfigRuleName :: !Text
-    , _gacdbcrAccountId :: !Text
-    , _gacdbcrAWSRegion :: !Text
+    , _gacdbcrConfigRuleName              :: !Text
+    , _gacdbcrAccountId                   :: !Text
+    , _gacdbcrAWSRegion                   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

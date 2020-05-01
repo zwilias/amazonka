@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'registerThing' smart constructor.
 data RegisterThing =
   RegisterThing'
-    { _rtParameters :: !(Maybe (Map Text Text))
+    { _rtParameters   :: !(Maybe (Map Text Text))
     , _rtTemplateBody :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -107,7 +107,7 @@ instance ToQuery RegisterThing where
 data RegisterThingResponse =
   RegisterThingResponse'
     { _rtrsCertificatePem :: !(Maybe Text)
-    , _rtrsResourceARNs :: !(Maybe (Map Text Text))
+    , _rtrsResourceARNs   :: !(Maybe (Map Text Text))
     , _rtrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

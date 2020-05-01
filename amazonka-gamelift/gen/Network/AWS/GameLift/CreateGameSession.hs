@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -93,14 +93,14 @@ import Network.AWS.Response
 -- /See:/ 'createGameSession' smart constructor.
 data CreateGameSession =
   CreateGameSession'
-    { _cgsIdempotencyToken :: !(Maybe Text)
-    , _cgsGameProperties :: !(Maybe [GameProperty])
-    , _cgsGameSessionId :: !(Maybe Text)
-    , _cgsAliasId :: !(Maybe Text)
-    , _cgsName :: !(Maybe Text)
-    , _cgsGameSessionData :: !(Maybe Text)
-    , _cgsFleetId :: !(Maybe Text)
-    , _cgsCreatorId :: !(Maybe Text)
+    { _cgsIdempotencyToken          :: !(Maybe Text)
+    , _cgsGameProperties            :: !(Maybe [GameProperty])
+    , _cgsGameSessionId             :: !(Maybe Text)
+    , _cgsAliasId                   :: !(Maybe Text)
+    , _cgsName                      :: !(Maybe Text)
+    , _cgsGameSessionData           :: !(Maybe Text)
+    , _cgsFleetId                   :: !(Maybe Text)
+    , _cgsCreatorId                 :: !(Maybe Text)
     , _cgsMaximumPlayerSessionCount :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -235,7 +235,7 @@ instance ToQuery CreateGameSession where
 -- /See:/ 'createGameSessionResponse' smart constructor.
 data CreateGameSessionResponse =
   CreateGameSessionResponse'
-    { _cgsrsGameSession :: !(Maybe GameSession)
+    { _cgsrsGameSession    :: !(Maybe GameSession)
     , _cgsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

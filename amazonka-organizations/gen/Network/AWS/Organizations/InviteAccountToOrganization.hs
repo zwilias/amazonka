@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.Response
 -- | /See:/ 'inviteAccountToOrganization' smart constructor.
 data InviteAccountToOrganization =
   InviteAccountToOrganization'
-    { _iatoNotes :: !(Maybe (Sensitive Text))
+    { _iatoNotes  :: !(Maybe (Sensitive Text))
     , _iatoTarget :: !HandshakeParty
     }
   deriving (Eq, Show, Data, Typeable, Generic)
@@ -112,7 +112,7 @@ instance ToQuery InviteAccountToOrganization where
 -- | /See:/ 'inviteAccountToOrganizationResponse' smart constructor.
 data InviteAccountToOrganizationResponse =
   InviteAccountToOrganizationResponse'
-    { _iatorsHandshake :: !(Maybe Handshake)
+    { _iatorsHandshake      :: !(Maybe Handshake)
     , _iatorsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

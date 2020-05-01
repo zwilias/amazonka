@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.StorageGateway.Types.Product
 data AddCache =
   AddCache'
     { _acGatewayARN :: !Text
-    , _acDiskIds :: ![Text]
+    , _acDiskIds    :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -107,7 +107,7 @@ instance ToQuery AddCache where
 -- | /See:/ 'addCacheResponse' smart constructor.
 data AddCacheResponse =
   AddCacheResponse'
-    { _acrsGatewayARN :: !(Maybe Text)
+    { _acrsGatewayARN     :: !(Maybe Text)
     , _acrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -74,7 +74,7 @@ instance ToQuery DescribeDefaultAuthorizer where
 data DescribeDefaultAuthorizerResponse =
   DescribeDefaultAuthorizerResponse'
     { _ddarsAuthorizerDescription :: !(Maybe AuthorizerDescription)
-    , _ddarsResponseStatus :: !Int
+    , _ddarsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

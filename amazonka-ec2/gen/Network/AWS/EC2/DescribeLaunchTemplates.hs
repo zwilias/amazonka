@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,11 +49,11 @@ import Network.AWS.Response
 -- | /See:/ 'describeLaunchTemplates' smart constructor.
 data DescribeLaunchTemplates =
   DescribeLaunchTemplates'
-    { _dltsFilters :: !(Maybe [Filter])
-    , _dltsNextToken :: !(Maybe Text)
-    , _dltsLaunchTemplateIds :: !(Maybe [Text])
-    , _dltsDryRun :: !(Maybe Bool)
-    , _dltsMaxResults :: !(Maybe Int)
+    { _dltsFilters             :: !(Maybe [Filter])
+    , _dltsNextToken           :: !(Maybe Text)
+    , _dltsLaunchTemplateIds   :: !(Maybe [Text])
+    , _dltsDryRun              :: !(Maybe Bool)
+    , _dltsMaxResults          :: !(Maybe Int)
     , _dltsLaunchTemplateNames :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -151,8 +151,8 @@ instance ToQuery DescribeLaunchTemplates where
 data DescribeLaunchTemplatesResponse =
   DescribeLaunchTemplatesResponse'
     { _dltsrsLaunchTemplates :: !(Maybe [LaunchTemplate])
-    , _dltsrsNextToken :: !(Maybe Text)
-    , _dltsrsResponseStatus :: !Int
+    , _dltsrsNextToken       :: !(Maybe Text)
+    , _dltsrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

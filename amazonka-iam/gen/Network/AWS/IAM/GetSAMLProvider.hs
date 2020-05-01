@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -102,10 +102,10 @@ instance ToQuery GetSAMLProvider where
 -- /See:/ 'getSAMLProviderResponse' smart constructor.
 data GetSAMLProviderResponse =
   GetSAMLProviderResponse'
-    { _gsamlprsCreateDate :: !(Maybe ISO8601)
-    , _gsamlprsValidUntil :: !(Maybe ISO8601)
+    { _gsamlprsCreateDate           :: !(Maybe ISO8601)
+    , _gsamlprsValidUntil           :: !(Maybe ISO8601)
     , _gsamlprsSAMLMetadataDocument :: !(Maybe Text)
-    , _gsamlprsResponseStatus :: !Int
+    , _gsamlprsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

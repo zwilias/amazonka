@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,8 +51,8 @@ import Network.AWS.Response
 data DescribeConfigRuleEvaluationStatus =
   DescribeConfigRuleEvaluationStatus'
     { _dcresConfigRuleNames :: !(Maybe [Text])
-    , _dcresNextToken :: !(Maybe Text)
-    , _dcresLimit :: !(Maybe Nat)
+    , _dcresNextToken       :: !(Maybe Text)
+    , _dcresLimit           :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

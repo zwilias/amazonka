@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,10 +45,10 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'modifyDocumentPermission' smart constructor.
 data ModifyDocumentPermission =
   ModifyDocumentPermission'
-    { _mdpAccountIdsToAdd :: !(Maybe [Text])
+    { _mdpAccountIdsToAdd    :: !(Maybe [Text])
     , _mdpAccountIdsToRemove :: !(Maybe [Text])
-    , _mdpName :: !Text
-    , _mdpPermissionType :: !DocumentPermissionType
+    , _mdpName               :: !Text
+    , _mdpPermissionType     :: !DocumentPermissionType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

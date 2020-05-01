@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,9 +57,9 @@ import Network.AWS.Response
 -- /See:/ 'allocateAddress' smart constructor.
 data AllocateAddress =
   AllocateAddress'
-    { _aaDomain :: !(Maybe DomainType)
+    { _aaDomain  :: !(Maybe DomainType)
     , _aaAddress :: !(Maybe Text)
-    , _aaDryRun :: !(Maybe Bool)
+    , _aaDryRun  :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -127,9 +127,9 @@ instance ToQuery AllocateAddress where
 -- /See:/ 'allocateAddressResponse' smart constructor.
 data AllocateAddressResponse =
   AllocateAddressResponse'
-    { _aarsAllocationId :: !(Maybe Text)
-    , _aarsDomain :: !(Maybe DomainType)
-    , _aarsPublicIP :: !(Maybe Text)
+    { _aarsAllocationId   :: !(Maybe Text)
+    , _aarsDomain         :: !(Maybe DomainType)
+    , _aarsPublicIP       :: !(Maybe Text)
     , _aarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

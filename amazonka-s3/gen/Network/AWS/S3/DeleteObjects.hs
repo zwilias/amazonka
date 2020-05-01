@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,10 +46,10 @@ import Network.AWS.S3.Types.Product
 -- | /See:/ 'deleteObjects' smart constructor.
 data DeleteObjects =
   DeleteObjects'
-    { _dosMFA :: !(Maybe Text)
+    { _dosMFA          :: !(Maybe Text)
     , _dosRequestPayer :: !(Maybe RequestPayer)
-    , _dosBucket :: !BucketName
-    , _dosDelete :: !Delete
+    , _dosBucket       :: !BucketName
+    , _dosDelete       :: !Delete
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -125,8 +125,8 @@ instance ToQuery DeleteObjects where
 data DeleteObjectsResponse =
   DeleteObjectsResponse'
     { _drsRequestCharged :: !(Maybe RequestCharged)
-    , _drsDeleted :: !(Maybe [DeletedObject])
-    , _drsErrors :: !(Maybe [S3ServiceError])
+    , _drsDeleted        :: !(Maybe [DeletedObject])
+    , _drsErrors         :: !(Maybe [S3ServiceError])
     , _drsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

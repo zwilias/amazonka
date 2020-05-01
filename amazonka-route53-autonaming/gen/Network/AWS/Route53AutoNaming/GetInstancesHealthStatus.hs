@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,10 +47,10 @@ import Network.AWS.Route53AutoNaming.Types.Product
 -- | /See:/ 'getInstancesHealthStatus' smart constructor.
 data GetInstancesHealthStatus =
   GetInstancesHealthStatus'
-    { _gihsNextToken :: !(Maybe Text)
-    , _gihsInstances :: !(Maybe (List1 Text))
+    { _gihsNextToken  :: !(Maybe Text)
+    , _gihsInstances  :: !(Maybe (List1 Text))
     , _gihsMaxResults :: !(Maybe Nat)
-    , _gihsServiceId :: !Text
+    , _gihsServiceId  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -136,8 +136,8 @@ instance ToQuery GetInstancesHealthStatus where
 -- | /See:/ 'getInstancesHealthStatusResponse' smart constructor.
 data GetInstancesHealthStatusResponse =
   GetInstancesHealthStatusResponse'
-    { _gihsrsStatus :: !(Maybe (Map Text HealthStatus))
-    , _gihsrsNextToken :: !(Maybe Text)
+    { _gihsrsStatus         :: !(Maybe (Map Text HealthStatus))
+    , _gihsrsNextToken      :: !(Maybe Text)
     , _gihsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

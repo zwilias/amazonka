@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'deleteAttributes' smart constructor.
 data DeleteAttributes =
   DeleteAttributes'
-    { _daCluster :: !(Maybe Text)
+    { _daCluster    :: !(Maybe Text)
     , _daAttributes :: ![Attribute]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -105,7 +105,7 @@ instance ToQuery DeleteAttributes where
 -- | /See:/ 'deleteAttributesResponse' smart constructor.
 data DeleteAttributesResponse =
   DeleteAttributesResponse'
-    { _darsAttributes :: !(Maybe [Attribute])
+    { _darsAttributes     :: !(Maybe [Attribute])
     , _darsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

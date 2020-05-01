@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,11 +53,11 @@ import Network.AWS.S3.Types.Product
 -- | /See:/ 'completeMultipartUpload' smart constructor.
 data CompleteMultipartUpload =
   CompleteMultipartUpload'
-    { _cRequestPayer :: !(Maybe RequestPayer)
+    { _cRequestPayer    :: !(Maybe RequestPayer)
     , _cMultipartUpload :: !(Maybe CompletedMultipartUpload)
-    , _cBucket :: !BucketName
-    , _cKey :: !ObjectKey
-    , _cUploadId :: !Text
+    , _cBucket          :: !BucketName
+    , _cKey             :: !ObjectKey
+    , _cUploadId        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -149,16 +149,16 @@ instance ToQuery CompleteMultipartUpload where
 -- | /See:/ 'completeMultipartUploadResponse' smart constructor.
 data CompleteMultipartUploadResponse =
   CompleteMultipartUploadResponse'
-    { _crsRequestCharged :: !(Maybe RequestCharged)
-    , _crsETag :: !(Maybe ETag)
-    , _crsVersionId :: !(Maybe ObjectVersionId)
-    , _crsLocation :: !(Maybe Text)
-    , _crsExpiration :: !(Maybe Text)
-    , _crsBucket :: !(Maybe BucketName)
-    , _crsKey :: !(Maybe ObjectKey)
-    , _crsSSEKMSKeyId :: !(Maybe (Sensitive Text))
+    { _crsRequestCharged       :: !(Maybe RequestCharged)
+    , _crsETag                 :: !(Maybe ETag)
+    , _crsVersionId            :: !(Maybe ObjectVersionId)
+    , _crsLocation             :: !(Maybe Text)
+    , _crsExpiration           :: !(Maybe Text)
+    , _crsBucket               :: !(Maybe BucketName)
+    , _crsKey                  :: !(Maybe ObjectKey)
+    , _crsSSEKMSKeyId          :: !(Maybe (Sensitive Text))
     , _crsServerSideEncryption :: !(Maybe ServerSideEncryption)
-    , _crsResponseStatus :: !Int
+    , _crsResponseStatus       :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

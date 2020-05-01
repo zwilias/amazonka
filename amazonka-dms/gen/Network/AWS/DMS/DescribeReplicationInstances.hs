@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.Response
 -- /See:/ 'describeReplicationInstances' smart constructor.
 data DescribeReplicationInstances =
   DescribeReplicationInstances'
-    { _driFilters :: !(Maybe [Filter])
-    , _driMarker :: !(Maybe Text)
+    { _driFilters    :: !(Maybe [Filter])
+    , _driMarker     :: !(Maybe Text)
     , _driMaxRecords :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -136,9 +136,9 @@ instance ToQuery DescribeReplicationInstances where
 -- /See:/ 'describeReplicationInstancesResponse' smart constructor.
 data DescribeReplicationInstancesResponse =
   DescribeReplicationInstancesResponse'
-    { _drisrsMarker :: !(Maybe Text)
+    { _drisrsMarker               :: !(Maybe Text)
     , _drisrsReplicationInstances :: !(Maybe [ReplicationInstance])
-    , _drisrsResponseStatus :: !Int
+    , _drisrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

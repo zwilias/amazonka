@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,12 +51,12 @@ import Network.AWS.Response
 -- | /See:/ 'getMetricData' smart constructor.
 data GetMetricData =
   GetMetricData'
-    { _gmdMaxDatapoints :: !(Maybe Int)
-    , _gmdNextToken :: !(Maybe Text)
-    , _gmdScanBy :: !(Maybe ScanBy)
+    { _gmdMaxDatapoints     :: !(Maybe Int)
+    , _gmdNextToken         :: !(Maybe Text)
+    , _gmdScanBy            :: !(Maybe ScanBy)
     , _gmdMetricDataQueries :: ![MetricDataQuery]
-    , _gmdStartTime :: !ISO8601
-    , _gmdEndTime :: !ISO8601
+    , _gmdStartTime         :: !ISO8601
+    , _gmdEndTime           :: !ISO8601
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -153,8 +153,8 @@ instance ToQuery GetMetricData where
 data GetMetricDataResponse =
   GetMetricDataResponse'
     { _gmdrsMetricDataResults :: !(Maybe [MetricDataResult])
-    , _gmdrsNextToken :: !(Maybe Text)
-    , _gmdrsResponseStatus :: !Int
+    , _gmdrsNextToken         :: !(Maybe Text)
+    , _gmdrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

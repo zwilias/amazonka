@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -61,17 +61,17 @@ import Network.AWS.ServiceCatalog.Types.Product
 -- | /See:/ 'createProvisionedProductPlan' smart constructor.
 data CreateProvisionedProductPlan =
   CreateProvisionedProductPlan'
-    { _cpppNotificationARNs :: !(Maybe [Text])
-    , _cpppAcceptLanguage :: !(Maybe Text)
-    , _cpppPathId :: !(Maybe Text)
+    { _cpppNotificationARNs       :: !(Maybe [Text])
+    , _cpppAcceptLanguage         :: !(Maybe Text)
+    , _cpppPathId                 :: !(Maybe Text)
     , _cpppProvisioningParameters :: !(Maybe [UpdateProvisioningParameter])
-    , _cpppTags :: !(Maybe [Tag])
-    , _cpppPlanName :: !Text
-    , _cpppPlanType :: !ProvisionedProductPlanType
-    , _cpppProductId :: !Text
+    , _cpppTags                   :: !(Maybe [Tag])
+    , _cpppPlanName               :: !Text
+    , _cpppPlanType               :: !ProvisionedProductPlanType
+    , _cpppProductId              :: !Text
     , _cpppProvisionedProductName :: !Text
     , _cpppProvisioningArtifactId :: !Text
-    , _cpppIdempotencyToken :: !Text
+    , _cpppIdempotencyToken       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -230,11 +230,11 @@ instance ToQuery CreateProvisionedProductPlan where
 data CreateProvisionedProductPlanResponse =
   CreateProvisionedProductPlanResponse'
     { _cppprsProvisionedProductName :: !(Maybe Text)
-    , _cppprsProvisionProductId :: !(Maybe Text)
+    , _cppprsProvisionProductId     :: !(Maybe Text)
     , _cppprsProvisioningArtifactId :: !(Maybe Text)
-    , _cppprsPlanId :: !(Maybe Text)
-    , _cppprsPlanName :: !(Maybe Text)
-    , _cppprsResponseStatus :: !Int
+    , _cppprsPlanId                 :: !(Maybe Text)
+    , _cppprsPlanName               :: !(Maybe Text)
+    , _cppprsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

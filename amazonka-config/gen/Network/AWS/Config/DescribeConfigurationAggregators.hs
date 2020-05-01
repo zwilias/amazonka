@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 -- | /See:/ 'describeConfigurationAggregators' smart constructor.
 data DescribeConfigurationAggregators =
   DescribeConfigurationAggregators'
-    { _dcaNextToken :: !(Maybe Text)
-    , _dcaLimit :: !(Maybe Nat)
+    { _dcaNextToken                    :: !(Maybe Text)
+    , _dcaLimit                        :: !(Maybe Nat)
     , _dcaConfigurationAggregatorNames :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -127,9 +127,9 @@ instance ToQuery DescribeConfigurationAggregators where
 -- | /See:/ 'describeConfigurationAggregatorsResponse' smart constructor.
 data DescribeConfigurationAggregatorsResponse =
   DescribeConfigurationAggregatorsResponse'
-    { _dcarsNextToken :: !(Maybe Text)
+    { _dcarsNextToken                :: !(Maybe Text)
     , _dcarsConfigurationAggregators :: !(Maybe [ConfigurationAggregator])
-    , _dcarsResponseStatus :: !Int
+    , _dcarsResponseStatus           :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

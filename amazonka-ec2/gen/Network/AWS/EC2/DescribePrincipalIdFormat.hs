@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 -- | /See:/ 'describePrincipalIdFormat' smart constructor.
 data DescribePrincipalIdFormat =
   DescribePrincipalIdFormat'
-    { _dpifResources :: !(Maybe [Text])
-    , _dpifNextToken :: !(Maybe Text)
-    , _dpifDryRun :: !(Maybe Bool)
+    { _dpifResources  :: !(Maybe [Text])
+    , _dpifNextToken  :: !(Maybe Text)
+    , _dpifDryRun     :: !(Maybe Bool)
     , _dpifMaxResults :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -130,8 +130,8 @@ instance ToQuery DescribePrincipalIdFormat where
 -- | /See:/ 'describePrincipalIdFormatResponse' smart constructor.
 data DescribePrincipalIdFormatResponse =
   DescribePrincipalIdFormatResponse'
-    { _dpifrsPrincipals :: !(Maybe [PrincipalIdFormat])
-    , _dpifrsNextToken :: !(Maybe Text)
+    { _dpifrsPrincipals     :: !(Maybe [PrincipalIdFormat])
+    , _dpifrsNextToken      :: !(Maybe Text)
     , _dpifrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

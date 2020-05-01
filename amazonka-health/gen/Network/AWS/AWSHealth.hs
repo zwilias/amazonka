@@ -177,8 +177,8 @@ import Network.AWS.AWSHealth.DescribeAffectedEntities
 import Network.AWS.AWSHealth.DescribeEntityAggregates
 import Network.AWS.AWSHealth.DescribeEventAggregates
 import Network.AWS.AWSHealth.DescribeEventDetails
-import Network.AWS.AWSHealth.DescribeEventTypes
 import Network.AWS.AWSHealth.DescribeEvents
+import Network.AWS.AWSHealth.DescribeEventTypes
 import Network.AWS.AWSHealth.Types
 import Network.AWS.AWSHealth.Waiters
 {- $errors

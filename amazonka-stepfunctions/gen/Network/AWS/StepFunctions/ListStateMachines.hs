@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.StepFunctions.Types.Product
 -- | /See:/ 'listStateMachines' smart constructor.
 data ListStateMachines =
   ListStateMachines'
-    { _lsmNextToken :: !(Maybe Text)
+    { _lsmNextToken  :: !(Maybe Text)
     , _lsmMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -121,9 +121,9 @@ instance ToQuery ListStateMachines where
 -- | /See:/ 'listStateMachinesResponse' smart constructor.
 data ListStateMachinesResponse =
   ListStateMachinesResponse'
-    { _lsmrsNextToken :: !(Maybe Text)
+    { _lsmrsNextToken      :: !(Maybe Text)
     , _lsmrsResponseStatus :: !Int
-    , _lsmrsStateMachines :: ![StateMachineListItem]
+    , _lsmrsStateMachines  :: ![StateMachineListItem]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

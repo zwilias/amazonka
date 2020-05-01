@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -97,7 +97,7 @@ instance ToQuery GetWebACLForResource where
 -- | /See:/ 'getWebACLForResourceResponse' smart constructor.
 data GetWebACLForResourceResponse =
   GetWebACLForResourceResponse'
-    { _gwafrrsWebACLSummary :: !(Maybe WebACLSummary)
+    { _gwafrrsWebACLSummary  :: !(Maybe WebACLSummary)
     , _gwafrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

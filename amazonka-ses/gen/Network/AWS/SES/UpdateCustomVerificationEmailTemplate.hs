@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,12 +53,12 @@ import Network.AWS.SES.Types.Product
 -- /See:/ 'updateCustomVerificationEmailTemplate' smart constructor.
 data UpdateCustomVerificationEmailTemplate =
   UpdateCustomVerificationEmailTemplate'
-    { _ucvetFromEmailAddress :: !(Maybe Text)
+    { _ucvetFromEmailAddress      :: !(Maybe Text)
     , _ucvetFailureRedirectionURL :: !(Maybe Text)
-    , _ucvetTemplateSubject :: !(Maybe Text)
+    , _ucvetTemplateSubject       :: !(Maybe Text)
     , _ucvetSuccessRedirectionURL :: !(Maybe Text)
-    , _ucvetTemplateContent :: !(Maybe Text)
-    , _ucvetTemplateName :: !Text
+    , _ucvetTemplateContent       :: !(Maybe Text)
+    , _ucvetTemplateName          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

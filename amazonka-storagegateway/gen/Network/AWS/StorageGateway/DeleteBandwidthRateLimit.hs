@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.StorageGateway.Types.Product
 -- /See:/ 'deleteBandwidthRateLimit' smart constructor.
 data DeleteBandwidthRateLimit =
   DeleteBandwidthRateLimit'
-    { _dbrlbGatewayARN :: !Text
+    { _dbrlbGatewayARN    :: !Text
     , _dbrlbBandwidthType :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -124,7 +124,7 @@ instance ToQuery DeleteBandwidthRateLimit where
 -- /See:/ 'deleteBandwidthRateLimitResponse' smart constructor.
 data DeleteBandwidthRateLimitResponse =
   DeleteBandwidthRateLimitResponse'
-    { _delrsGatewayARN :: !(Maybe Text)
+    { _delrsGatewayARN     :: !(Maybe Text)
     , _delrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

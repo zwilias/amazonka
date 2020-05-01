@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.Response
 data ListVirtualMFADevices =
   ListVirtualMFADevices'
     { _lvmdAssignmentStatus :: !(Maybe AssignmentStatusType)
-    , _lvmdMarker :: !(Maybe Text)
-    , _lvmdMaxItems :: !(Maybe Nat)
+    , _lvmdMarker           :: !(Maybe Text)
+    , _lvmdMaxItems         :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -133,9 +133,9 @@ instance ToQuery ListVirtualMFADevices where
 -- /See:/ 'listVirtualMFADevicesResponse' smart constructor.
 data ListVirtualMFADevicesResponse =
   ListVirtualMFADevicesResponse'
-    { _lvmdrsMarker :: !(Maybe Text)
-    , _lvmdrsIsTruncated :: !(Maybe Bool)
-    , _lvmdrsResponseStatus :: !Int
+    { _lvmdrsMarker            :: !(Maybe Text)
+    , _lvmdrsIsTruncated       :: !(Maybe Bool)
+    , _lvmdrsResponseStatus    :: !Int
     , _lvmdrsVirtualMFADevices :: ![VirtualMFADevice]
     }
   deriving (Eq, Show, Data, Typeable, Generic)

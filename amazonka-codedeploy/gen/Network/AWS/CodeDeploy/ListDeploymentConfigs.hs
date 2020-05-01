@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -113,9 +113,9 @@ instance ToQuery ListDeploymentConfigs where
 -- /See:/ 'listDeploymentConfigsResponse' smart constructor.
 data ListDeploymentConfigsResponse =
   ListDeploymentConfigsResponse'
-    { _ldcrsNextToken :: !(Maybe Text)
+    { _ldcrsNextToken             :: !(Maybe Text)
     , _ldcrsDeploymentConfigsList :: !(Maybe [Text])
-    , _ldcrsResponseStatus :: !Int
+    , _ldcrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

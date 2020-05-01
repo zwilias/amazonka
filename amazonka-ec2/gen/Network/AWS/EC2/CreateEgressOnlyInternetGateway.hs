@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,8 +47,8 @@ import Network.AWS.Response
 data CreateEgressOnlyInternetGateway =
   CreateEgressOnlyInternetGateway'
     { _ceoigClientToken :: !(Maybe Text)
-    , _ceoigDryRun :: !(Maybe Bool)
-    , _ceoigVPCId :: !Text
+    , _ceoigDryRun      :: !(Maybe Bool)
+    , _ceoigVPCId       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -113,9 +113,9 @@ instance ToQuery CreateEgressOnlyInternetGateway where
 -- | /See:/ 'createEgressOnlyInternetGatewayResponse' smart constructor.
 data CreateEgressOnlyInternetGatewayResponse =
   CreateEgressOnlyInternetGatewayResponse'
-    { _ceoigrsClientToken :: !(Maybe Text)
+    { _ceoigrsClientToken               :: !(Maybe Text)
     , _ceoigrsEgressOnlyInternetGateway :: !(Maybe EgressOnlyInternetGateway)
-    , _ceoigrsResponseStatus :: !Int
+    , _ceoigrsResponseStatus            :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

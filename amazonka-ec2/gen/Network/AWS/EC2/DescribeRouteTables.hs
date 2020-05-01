@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.Response
 -- /See:/ 'describeRouteTables' smart constructor.
 data DescribeRouteTables =
   DescribeRouteTables'
-    { _drtsFilters :: !(Maybe [Filter])
-    , _drtsDryRun :: !(Maybe Bool)
+    { _drtsFilters       :: !(Maybe [Filter])
+    , _drtsDryRun        :: !(Maybe Bool)
     , _drtsRouteTableIds :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -128,7 +128,7 @@ instance ToQuery DescribeRouteTables where
 -- /See:/ 'describeRouteTablesResponse' smart constructor.
 data DescribeRouteTablesResponse =
   DescribeRouteTablesResponse'
-    { _drtrsRouteTables :: !(Maybe [RouteTable])
+    { _drtrsRouteTables    :: !(Maybe [RouteTable])
     , _drtrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,9 +47,9 @@ import Network.AWS.Response
 -- | /See:/ 'getSSHPublicKey' smart constructor.
 data GetSSHPublicKey =
   GetSSHPublicKey'
-    { _gspkUserName :: !Text
+    { _gspkUserName       :: !Text
     , _gspkSSHPublicKeyId :: !Text
-    , _gspkEncoding :: !EncodingType
+    , _gspkEncoding       :: !EncodingType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,7 +124,7 @@ instance ToQuery GetSSHPublicKey where
 -- /See:/ 'getSSHPublicKeyResponse' smart constructor.
 data GetSSHPublicKeyResponse =
   GetSSHPublicKeyResponse'
-    { _gspkrsSSHPublicKey :: !(Maybe SSHPublicKey)
+    { _gspkrsSSHPublicKey   :: !(Maybe SSHPublicKey)
     , _gspkrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

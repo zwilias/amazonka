@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -109,18 +109,18 @@ instance ToQuery DeleteChannel where
 -- /See:/ 'deleteChannelResponse' smart constructor.
 data DeleteChannelResponse =
   DeleteChannelResponse'
-    { _drsState :: !(Maybe ChannelState)
-    , _drsARN :: !(Maybe Text)
+    { _drsState                 :: !(Maybe ChannelState)
+    , _drsARN                   :: !(Maybe Text)
     , _drsPipelinesRunningCount :: !(Maybe Int)
-    , _drsInputSpecification :: !(Maybe InputSpecification)
-    , _drsInputAttachments :: !(Maybe [InputAttachment])
-    , _drsDestinations :: !(Maybe [OutputDestination])
-    , _drsName :: !(Maybe Text)
-    , _drsId :: !(Maybe Text)
-    , _drsEgressEndpoints :: !(Maybe [ChannelEgressEndpoint])
-    , _drsEncoderSettings :: !(Maybe EncoderSettings)
-    , _drsRoleARN :: !(Maybe Text)
-    , _drsResponseStatus :: !Int
+    , _drsInputSpecification    :: !(Maybe InputSpecification)
+    , _drsInputAttachments      :: !(Maybe [InputAttachment])
+    , _drsDestinations          :: !(Maybe [OutputDestination])
+    , _drsName                  :: !(Maybe Text)
+    , _drsId                    :: !(Maybe Text)
+    , _drsEgressEndpoints       :: !(Maybe [ChannelEgressEndpoint])
+    , _drsEncoderSettings       :: !(Maybe EncoderSettings)
+    , _drsRoleARN               :: !(Maybe Text)
+    , _drsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

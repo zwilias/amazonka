@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,12 +49,12 @@ import Network.AWS.Response
 -- | /See:/ 'startTopicsDetectionJob' smart constructor.
 data StartTopicsDetectionJob =
   StartTopicsDetectionJob'
-    { _stdjJobName :: !(Maybe Text)
-    , _stdjNumberOfTopics :: !(Maybe Nat)
+    { _stdjJobName            :: !(Maybe Text)
+    , _stdjNumberOfTopics     :: !(Maybe Nat)
     , _stdjClientRequestToken :: !(Maybe Text)
-    , _stdjInputDataConfig :: !InputDataConfig
-    , _stdjOutputDataConfig :: !OutputDataConfig
-    , _stdjDataAccessRoleARN :: !Text
+    , _stdjInputDataConfig    :: !InputDataConfig
+    , _stdjOutputDataConfig   :: !OutputDataConfig
+    , _stdjDataAccessRoleARN  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -161,8 +161,8 @@ instance ToQuery StartTopicsDetectionJob where
 -- | /See:/ 'startTopicsDetectionJobResponse' smart constructor.
 data StartTopicsDetectionJobResponse =
   StartTopicsDetectionJobResponse'
-    { _stdjrsJobId :: !(Maybe Text)
-    , _stdjrsJobStatus :: !(Maybe JobStatus)
+    { _stdjrsJobId          :: !(Maybe Text)
+    , _stdjrsJobStatus      :: !(Maybe JobStatus)
     , _stdjrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,7 +26,7 @@ import Network.AWS.Prelude
 -- /See:/ 'button' smart constructor.
 data Button =
   Button'
-    { _bText :: !Text
+    { _bText  :: !Text
     , _bValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -67,11 +67,11 @@ instance NFData Button
 -- /See:/ 'genericAttachment' smart constructor.
 data GenericAttachment =
   GenericAttachment'
-    { _gaButtons :: !(Maybe [Button])
-    , _gaSubTitle :: !(Maybe Text)
-    , _gaImageURL :: !(Maybe Text)
+    { _gaButtons           :: !(Maybe [Button])
+    , _gaSubTitle          :: !(Maybe Text)
+    , _gaImageURL          :: !(Maybe Text)
     , _gaAttachmentLinkURL :: !(Maybe Text)
-    , _gaTitle :: !(Maybe Text)
+    , _gaTitle             :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -142,8 +142,8 @@ instance NFData GenericAttachment
 data ResponseCard =
   ResponseCard'
     { _rcGenericAttachments :: !(Maybe [GenericAttachment])
-    , _rcVersion :: !(Maybe Text)
-    , _rcContentType :: !(Maybe ContentType)
+    , _rcVersion            :: !(Maybe Text)
+    , _rcContentType        :: !(Maybe ContentType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

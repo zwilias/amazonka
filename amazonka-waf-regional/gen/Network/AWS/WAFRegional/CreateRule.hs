@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -72,8 +72,8 @@ import Network.AWS.WAFRegional.Types.Product
 -- | /See:/ 'createRule' smart constructor.
 data CreateRule =
   CreateRule'
-    { _crName :: !Text
-    , _crMetricName :: !Text
+    { _crName        :: !Text
+    , _crMetricName  :: !Text
     , _crChangeToken :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -151,8 +151,8 @@ instance ToQuery CreateRule where
 -- | /See:/ 'createRuleResponse' smart constructor.
 data CreateRuleResponse =
   CreateRuleResponse'
-    { _crrsRule :: !(Maybe Rule)
-    , _crrsChangeToken :: !(Maybe Text)
+    { _crrsRule           :: !(Maybe Rule)
+    , _crrsChangeToken    :: !(Maybe Text)
     , _crrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

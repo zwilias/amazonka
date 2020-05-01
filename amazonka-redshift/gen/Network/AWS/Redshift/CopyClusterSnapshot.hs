@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,8 +54,8 @@ import Network.AWS.Response
 data CopyClusterSnapshot =
   CopyClusterSnapshot'
     { _ccsSourceSnapshotClusterIdentifier :: !(Maybe Text)
-    , _ccsSourceSnapshotIdentifier :: !Text
-    , _ccsTargetSnapshotIdentifier :: !Text
+    , _ccsSourceSnapshotIdentifier        :: !Text
+    , _ccsTargetSnapshotIdentifier        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -133,7 +133,7 @@ instance ToQuery CopyClusterSnapshot where
 -- | /See:/ 'copyClusterSnapshotResponse' smart constructor.
 data CopyClusterSnapshotResponse =
   CopyClusterSnapshotResponse'
-    { _ccsrsSnapshot :: !(Maybe Snapshot)
+    { _ccsrsSnapshot       :: !(Maybe Snapshot)
     , _ccsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

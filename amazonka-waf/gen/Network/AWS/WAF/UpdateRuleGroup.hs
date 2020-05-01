@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -66,7 +66,7 @@ import Network.AWS.WAF.Types.Product
 data UpdateRuleGroup =
   UpdateRuleGroup'
     { _urgRuleGroupId :: !Text
-    , _urgUpdates :: !(List1 RuleGroupUpdate)
+    , _urgUpdates     :: !(List1 RuleGroupUpdate)
     , _urgChangeToken :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -143,7 +143,7 @@ instance ToQuery UpdateRuleGroup where
 -- | /See:/ 'updateRuleGroupResponse' smart constructor.
 data UpdateRuleGroupResponse =
   UpdateRuleGroupResponse'
-    { _urgrsChangeToken :: !(Maybe Text)
+    { _urgrsChangeToken    :: !(Maybe Text)
     , _urgrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 data UpdateBroker =
   UpdateBroker'
     { _ubConfiguration :: !(Maybe ConfigurationId)
-    , _ubBrokerId :: !Text
+    , _ubBrokerId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -103,8 +103,8 @@ instance ToQuery UpdateBroker where
 -- | /See:/ 'updateBrokerResponse' smart constructor.
 data UpdateBrokerResponse =
   UpdateBrokerResponse'
-    { _ubrsConfiguration :: !(Maybe ConfigurationId)
-    , _ubrsBrokerId :: !(Maybe Text)
+    { _ubrsConfiguration  :: !(Maybe ConfigurationId)
+    , _ubrsBrokerId       :: !(Maybe Text)
     , _ubrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

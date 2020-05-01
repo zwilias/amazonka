@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -104,8 +104,8 @@ instance ToQuery GetStaticIPs where
 -- | /See:/ 'getStaticIPsResponse' smart constructor.
 data GetStaticIPsResponse =
   GetStaticIPsResponse'
-    { _gsiprsNextPageToken :: !(Maybe Text)
-    , _gsiprsStaticIPs :: !(Maybe [StaticIP])
+    { _gsiprsNextPageToken  :: !(Maybe Text)
+    , _gsiprsStaticIPs      :: !(Maybe [StaticIP])
     , _gsiprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

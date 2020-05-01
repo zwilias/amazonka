@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,7 +51,7 @@ import Network.AWS.Response
 data AddTagsToResource =
   AddTagsToResource'
     { _attrResourceARN :: !Text
-    , _attrTagList :: ![Tag]
+    , _attrTagList     :: ![Tag]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -115,7 +115,7 @@ instance ToQuery AddTagsToResource where
 data AddTagsToResourceResponse =
   AddTagsToResourceResponse'
     { _attrrsResponseStatus :: !Int
-    , _attrrsStatus :: !Text
+    , _attrrsStatus         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,12 +54,12 @@ import Network.AWS.Response
 -- | /See:/ 'createListener' smart constructor.
 data CreateListener =
   CreateListener'
-    { _clSSLPolicy :: !(Maybe Text)
-    , _clCertificates :: !(Maybe [Certificate])
+    { _clSSLPolicy       :: !(Maybe Text)
+    , _clCertificates    :: !(Maybe [Certificate])
     , _clLoadBalancerARN :: !Text
-    , _clProtocol :: !ProtocolEnum
-    , _clPort :: !Nat
-    , _clDefaultActions :: ![Action]
+    , _clProtocol        :: !ProtocolEnum
+    , _clPort            :: !Nat
+    , _clDefaultActions  :: ![Action]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -156,7 +156,7 @@ instance ToQuery CreateListener where
 -- | /See:/ 'createListenerResponse' smart constructor.
 data CreateListenerResponse =
   CreateListenerResponse'
-    { _clrsListeners :: !(Maybe [Listener])
+    { _clrsListeners      :: !(Maybe [Listener])
     , _clrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

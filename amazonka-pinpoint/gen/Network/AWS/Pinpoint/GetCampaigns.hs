@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -43,8 +43,8 @@ import Network.AWS.Response
 -- | /See:/ 'getCampaigns' smart constructor.
 data GetCampaigns =
   GetCampaigns'
-    { _gcsToken :: !(Maybe Text)
-    , _gcsPageSize :: !(Maybe Text)
+    { _gcsToken         :: !(Maybe Text)
+    , _gcsPageSize      :: !(Maybe Text)
     , _gcsApplicationId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -108,7 +108,7 @@ instance ToQuery GetCampaigns where
 -- | /See:/ 'getCampaignsResponse' smart constructor.
 data GetCampaignsResponse =
   GetCampaignsResponse'
-    { _gcsrsResponseStatus :: !Int
+    { _gcsrsResponseStatus    :: !Int
     , _gcsrsCampaignsResponse :: !CampaignsResponse
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,10 +47,10 @@ import Network.AWS.Response
 -- | /See:/ 'describeHostReservations' smart constructor.
 data DescribeHostReservations =
   DescribeHostReservations'
-    { _dhrNextToken :: !(Maybe Text)
+    { _dhrNextToken            :: !(Maybe Text)
     , _dhrHostReservationIdSet :: !(Maybe [Text])
-    , _dhrFilter :: !(Maybe [Filter])
-    , _dhrMaxResults :: !(Maybe Int)
+    , _dhrFilter               :: !(Maybe [Filter])
+    , _dhrMaxResults           :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -127,9 +127,9 @@ instance ToQuery DescribeHostReservations where
 -- | /See:/ 'describeHostReservationsResponse' smart constructor.
 data DescribeHostReservationsResponse =
   DescribeHostReservationsResponse'
-    { _dhrrsNextToken :: !(Maybe Text)
+    { _dhrrsNextToken          :: !(Maybe Text)
     , _dhrrsHostReservationSet :: !(Maybe [HostReservation])
-    , _dhrrsResponseStatus :: !Int
+    , _dhrrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

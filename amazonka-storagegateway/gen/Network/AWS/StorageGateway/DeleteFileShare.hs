@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.StorageGateway.Types.Product
 -- /See:/ 'deleteFileShare' smart constructor.
 data DeleteFileShare =
   DeleteFileShare'
-    { _dfsForceDelete :: !(Maybe Bool)
+    { _dfsForceDelete  :: !(Maybe Bool)
     , _dfsFileShareARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -118,7 +118,7 @@ instance ToQuery DeleteFileShare where
 -- /See:/ 'deleteFileShareResponse' smart constructor.
 data DeleteFileShareResponse =
   DeleteFileShareResponse'
-    { _dfsrsFileShareARN :: !(Maybe Text)
+    { _dfsrsFileShareARN   :: !(Maybe Text)
     , _dfsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,7 +57,7 @@ import Network.AWS.WAFRegional.Types.Product
 data DeleteGeoMatchSet =
   DeleteGeoMatchSet'
     { _dgmsGeoMatchSetId :: !Text
-    , _dgmsChangeToken :: !Text
+    , _dgmsChangeToken   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -123,7 +123,7 @@ instance ToQuery DeleteGeoMatchSet where
 -- | /See:/ 'deleteGeoMatchSetResponse' smart constructor.
 data DeleteGeoMatchSetResponse =
   DeleteGeoMatchSetResponse'
-    { _dgmsrsChangeToken :: !(Maybe Text)
+    { _dgmsrsChangeToken    :: !(Maybe Text)
     , _dgmsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

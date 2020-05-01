@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- /See:/ 'listInputSecurityGroups' smart constructor.
 data ListInputSecurityGroups =
   ListInputSecurityGroups'
-    { _lisgNextToken :: !(Maybe Text)
+    { _lisgNextToken  :: !(Maybe Text)
     , _lisgMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -110,9 +110,9 @@ instance ToQuery ListInputSecurityGroups where
 -- /See:/ 'listInputSecurityGroupsResponse' smart constructor.
 data ListInputSecurityGroupsResponse =
   ListInputSecurityGroupsResponse'
-    { _lisgrsNextToken :: !(Maybe Text)
+    { _lisgrsNextToken           :: !(Maybe Text)
     , _lisgrsInputSecurityGroups :: !(Maybe [InputSecurityGroup])
-    , _lisgrsResponseStatus :: !Int
+    , _lisgrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

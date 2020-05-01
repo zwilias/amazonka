@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,13 +58,13 @@ import Network.AWS.Response
 -- /See:/ 'describeReservedCacheNodes' smart constructor.
 data DescribeReservedCacheNodes =
   DescribeReservedCacheNodes'
-    { _drcnCacheNodeType :: !(Maybe Text)
-    , _drcnProductDescription :: !(Maybe Text)
-    , _drcnMarker :: !(Maybe Text)
-    , _drcnMaxRecords :: !(Maybe Int)
-    , _drcnReservedCacheNodeId :: !(Maybe Text)
-    , _drcnOfferingType :: !(Maybe Text)
-    , _drcnDuration :: !(Maybe Text)
+    { _drcnCacheNodeType                :: !(Maybe Text)
+    , _drcnProductDescription           :: !(Maybe Text)
+    , _drcnMarker                       :: !(Maybe Text)
+    , _drcnMaxRecords                   :: !(Maybe Int)
+    , _drcnReservedCacheNodeId          :: !(Maybe Text)
+    , _drcnOfferingType                 :: !(Maybe Text)
+    , _drcnDuration                     :: !(Maybe Text)
     , _drcnReservedCacheNodesOfferingId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -189,9 +189,9 @@ instance ToQuery DescribeReservedCacheNodes where
 -- /See:/ 'describeReservedCacheNodesResponse' smart constructor.
 data DescribeReservedCacheNodesResponse =
   DescribeReservedCacheNodesResponse'
-    { _drcnrsMarker :: !(Maybe Text)
+    { _drcnrsMarker             :: !(Maybe Text)
     , _drcnrsReservedCacheNodes :: !(Maybe [ReservedCacheNode])
-    , _drcnrsResponseStatus :: !Int
+    , _drcnrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

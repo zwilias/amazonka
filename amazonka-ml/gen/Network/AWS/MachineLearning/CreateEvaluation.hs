@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,9 +50,9 @@ import Network.AWS.Response
 -- | /See:/ 'createEvaluation' smart constructor.
 data CreateEvaluation =
   CreateEvaluation'
-    { _ceEvaluationName :: !(Maybe Text)
-    , _ceEvaluationId :: !Text
-    , _ceMLModelId :: !Text
+    { _ceEvaluationName         :: !(Maybe Text)
+    , _ceEvaluationId           :: !Text
+    , _ceMLModelId              :: !Text
     , _ceEvaluationDataSourceId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -145,7 +145,7 @@ instance ToQuery CreateEvaluation where
 -- /See:/ 'createEvaluationResponse' smart constructor.
 data CreateEvaluationResponse =
   CreateEvaluationResponse'
-    { _cersEvaluationId :: !(Maybe Text)
+    { _cersEvaluationId   :: !(Maybe Text)
     , _cersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

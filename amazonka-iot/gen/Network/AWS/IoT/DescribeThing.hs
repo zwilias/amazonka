@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -107,13 +107,13 @@ instance ToQuery DescribeThing where
 data DescribeThingResponse =
   DescribeThingResponse'
     { _dtrsDefaultClientId :: !(Maybe Text)
-    , _dtrsThingTypeName :: !(Maybe Text)
-    , _dtrsThingARN :: !(Maybe Text)
-    , _dtrsAttributes :: !(Maybe (Map Text Text))
-    , _dtrsVersion :: !(Maybe Integer)
-    , _dtrsThingName :: !(Maybe Text)
-    , _dtrsThingId :: !(Maybe Text)
-    , _dtrsResponseStatus :: !Int
+    , _dtrsThingTypeName   :: !(Maybe Text)
+    , _dtrsThingARN        :: !(Maybe Text)
+    , _dtrsAttributes      :: !(Maybe (Map Text Text))
+    , _dtrsVersion         :: !(Maybe Integer)
+    , _dtrsThingName       :: !(Maybe Text)
+    , _dtrsThingId         :: !(Maybe Text)
+    , _dtrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

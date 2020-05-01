@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,7 +55,7 @@ import Network.AWS.Response
 -- /See:/ 'getPolicyVersion' smart constructor.
 data GetPolicyVersion =
   GetPolicyVersion'
-    { _gpvPolicyName :: !Text
+    { _gpvPolicyName      :: !Text
     , _gpvPolicyVersionId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -123,14 +123,14 @@ instance ToQuery GetPolicyVersion where
 data GetPolicyVersionResponse =
   GetPolicyVersionResponse'
     { _gpvrsLastModifiedDate :: !(Maybe POSIX)
-    , _gpvrsPolicyName :: !(Maybe Text)
-    , _gpvrsPolicyDocument :: !(Maybe Text)
-    , _gpvrsPolicyVersionId :: !(Maybe Text)
-    , _gpvrsPolicyARN :: !(Maybe Text)
-    , _gpvrsCreationDate :: !(Maybe POSIX)
-    , _gpvrsGenerationId :: !(Maybe Text)
+    , _gpvrsPolicyName       :: !(Maybe Text)
+    , _gpvrsPolicyDocument   :: !(Maybe Text)
+    , _gpvrsPolicyVersionId  :: !(Maybe Text)
+    , _gpvrsPolicyARN        :: !(Maybe Text)
+    , _gpvrsCreationDate     :: !(Maybe POSIX)
+    , _gpvrsGenerationId     :: !(Maybe Text)
     , _gpvrsIsDefaultVersion :: !(Maybe Bool)
-    , _gpvrsResponseStatus :: !Int
+    , _gpvrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

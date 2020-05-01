@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.Response
 -- /See:/ 'getGatewayResponses' smart constructor.
 data GetGatewayResponses =
   GetGatewayResponses'
-    { _ggrLimit :: !(Maybe Int)
-    , _ggrPosition :: !(Maybe Text)
+    { _ggrLimit     :: !(Maybe Int)
+    , _ggrPosition  :: !(Maybe Text)
     , _ggrRestAPIId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -128,8 +128,8 @@ instance ToQuery GetGatewayResponses where
 -- /See:/ 'getGatewayResponsesResponse' smart constructor.
 data GetGatewayResponsesResponse =
   GetGatewayResponsesResponse'
-    { _ggrrsItems :: !(Maybe [GatewayResponse])
-    , _ggrrsPosition :: !(Maybe Text)
+    { _ggrrsItems          :: !(Maybe [GatewayResponse])
+    , _ggrrsPosition       :: !(Maybe Text)
     , _ggrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

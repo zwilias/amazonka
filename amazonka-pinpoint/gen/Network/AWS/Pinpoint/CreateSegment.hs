@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -42,7 +42,7 @@ import Network.AWS.Response
 -- | /See:/ 'createSegment' smart constructor.
 data CreateSegment =
   CreateSegment'
-    { _csApplicationId :: !Text
+    { _csApplicationId       :: !Text
     , _csWriteSegmentRequest :: !WriteSegmentRequest
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -104,7 +104,7 @@ instance ToQuery CreateSegment where
 -- | /See:/ 'createSegmentResponse' smart constructor.
 data CreateSegmentResponse =
   CreateSegmentResponse'
-    { _csrsResponseStatus :: !Int
+    { _csrsResponseStatus  :: !Int
     , _csrsSegmentResponse :: !SegmentResponse
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

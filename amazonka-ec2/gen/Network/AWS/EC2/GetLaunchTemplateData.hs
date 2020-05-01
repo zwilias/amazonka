@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'getLaunchTemplateData' smart constructor.
 data GetLaunchTemplateData =
   GetLaunchTemplateData'
-    { _gltdDryRun :: !(Maybe Bool)
+    { _gltdDryRun     :: !(Maybe Bool)
     , _gltdInstanceId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -102,7 +102,7 @@ instance ToQuery GetLaunchTemplateData where
 data GetLaunchTemplateDataResponse =
   GetLaunchTemplateDataResponse'
     { _gltdrsLaunchTemplateData :: !(Maybe ResponseLaunchTemplateData)
-    , _gltdrsResponseStatus :: !Int
+    , _gltdrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

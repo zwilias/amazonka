@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -64,8 +64,8 @@ import Network.AWS.Response
 -- /See:/ 'describeChangeSet' smart constructor.
 data DescribeChangeSet =
   DescribeChangeSet'
-    { _desNextToken :: !(Maybe Text)
-    , _desStackName :: !(Maybe Text)
+    { _desNextToken     :: !(Maybe Text)
+    , _desStackName     :: !(Maybe Text)
     , _desChangeSetName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -153,23 +153,23 @@ instance ToQuery DescribeChangeSet where
 -- /See:/ 'describeChangeSetResponse' smart constructor.
 data DescribeChangeSetResponse =
   DescribeChangeSetResponse'
-    { _desrsCreationTime :: !(Maybe ISO8601)
-    , _desrsChanges :: !(Maybe [Change])
-    , _desrsNotificationARNs :: !(Maybe [Text])
-    , _desrsChangeSetName :: !(Maybe Text)
-    , _desrsExecutionStatus :: !(Maybe ExecutionStatus)
-    , _desrsChangeSetId :: !(Maybe Text)
-    , _desrsNextToken :: !(Maybe Text)
-    , _desrsParameters :: !(Maybe [Parameter])
-    , _desrsStatusReason :: !(Maybe Text)
-    , _desrsStackId :: !(Maybe Text)
-    , _desrsDescription :: !(Maybe Text)
-    , _desrsCapabilities :: !(Maybe [Capability])
+    { _desrsCreationTime          :: !(Maybe ISO8601)
+    , _desrsChanges               :: !(Maybe [Change])
+    , _desrsNotificationARNs      :: !(Maybe [Text])
+    , _desrsChangeSetName         :: !(Maybe Text)
+    , _desrsExecutionStatus       :: !(Maybe ExecutionStatus)
+    , _desrsChangeSetId           :: !(Maybe Text)
+    , _desrsNextToken             :: !(Maybe Text)
+    , _desrsParameters            :: !(Maybe [Parameter])
+    , _desrsStatusReason          :: !(Maybe Text)
+    , _desrsStackId               :: !(Maybe Text)
+    , _desrsDescription           :: !(Maybe Text)
+    , _desrsCapabilities          :: !(Maybe [Capability])
     , _desrsRollbackConfiguration :: !(Maybe RollbackConfiguration)
-    , _desrsTags :: !(Maybe [Tag])
-    , _desrsStackName :: !(Maybe Text)
-    , _desrsResponseStatus :: !Int
-    , _desrsStatus :: !ChangeSetStatus
+    , _desrsTags                  :: !(Maybe [Tag])
+    , _desrsStackName             :: !(Maybe Text)
+    , _desrsResponseStatus        :: !Int
+    , _desrsStatus                :: !ChangeSetStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

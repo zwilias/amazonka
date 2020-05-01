@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 -- | /See:/ 'describeAffectedEntities' smart constructor.
 data DescribeAffectedEntities =
   DescribeAffectedEntities'
-    { _daeLocale :: !(Maybe Text)
-    , _daeNextToken :: !(Maybe Text)
+    { _daeLocale     :: !(Maybe Text)
+    , _daeNextToken  :: !(Maybe Text)
     , _daeMaxResults :: !(Maybe Nat)
-    , _daeFilter :: !EntityFilter
+    , _daeFilter     :: !EntityFilter
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -146,8 +146,8 @@ instance ToQuery DescribeAffectedEntities where
 -- | /See:/ 'describeAffectedEntitiesResponse' smart constructor.
 data DescribeAffectedEntitiesResponse =
   DescribeAffectedEntitiesResponse'
-    { _daersEntities :: !(Maybe [AffectedEntity])
-    , _daersNextToken :: !(Maybe Text)
+    { _daersEntities       :: !(Maybe [AffectedEntity])
+    , _daersNextToken      :: !(Maybe Text)
     , _daersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

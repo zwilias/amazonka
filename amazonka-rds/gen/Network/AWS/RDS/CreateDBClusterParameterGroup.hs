@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,10 +58,10 @@ import Network.AWS.Response
 -- /See:/ 'createDBClusterParameterGroup' smart constructor.
 data CreateDBClusterParameterGroup =
   CreateDBClusterParameterGroup'
-    { _cdcpgTags :: !(Maybe [Tag])
+    { _cdcpgTags                        :: !(Maybe [Tag])
     , _cdcpgDBClusterParameterGroupName :: !Text
-    , _cdcpgDBParameterGroupFamily :: !Text
-    , _cdcpgDescription :: !Text
+    , _cdcpgDBParameterGroupFamily      :: !Text
+    , _cdcpgDescription                 :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -147,7 +147,7 @@ instance ToQuery CreateDBClusterParameterGroup where
 data CreateDBClusterParameterGroupResponse =
   CreateDBClusterParameterGroupResponse'
     { _cdbcpgrsDBClusterParameterGroup :: !(Maybe DBClusterParameterGroup)
-    , _cdbcpgrsResponseStatus :: !Int
+    , _cdbcpgrsResponseStatus          :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,8 +48,8 @@ import Network.AWS.Response
 data DescribeElasticIPs =
   DescribeElasticIPs'
     { _deiInstanceId :: !(Maybe Text)
-    , _deiIPs :: !(Maybe [Text])
-    , _deiStackId :: !(Maybe Text)
+    , _deiIPs        :: !(Maybe [Text])
+    , _deiStackId    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -123,7 +123,7 @@ instance ToQuery DescribeElasticIPs where
 -- /See:/ 'describeElasticIPsResponse' smart constructor.
 data DescribeElasticIPsResponse =
   DescribeElasticIPsResponse'
-    { _deirsElasticIPs :: !(Maybe [ElasticIP])
+    { _deirsElasticIPs     :: !(Maybe [ElasticIP])
     , _deirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

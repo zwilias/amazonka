@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,10 +47,10 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'describeMaintenanceWindowExecutions' smart constructor.
 data DescribeMaintenanceWindowExecutions =
   DescribeMaintenanceWindowExecutions'
-    { _dmweFilters :: !(Maybe [MaintenanceWindowFilter])
-    , _dmweNextToken :: !(Maybe Text)
+    { _dmweFilters    :: !(Maybe [MaintenanceWindowFilter])
+    , _dmweNextToken  :: !(Maybe Text)
     , _dmweMaxResults :: !(Maybe Nat)
-    , _dmweWindowId :: !Text
+    , _dmweWindowId   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -139,8 +139,8 @@ instance ToQuery DescribeMaintenanceWindowExecutions where
 data DescribeMaintenanceWindowExecutionsResponse =
   DescribeMaintenanceWindowExecutionsResponse'
     { _dmwersWindowExecutions :: !(Maybe [MaintenanceWindowExecution])
-    , _dmwersNextToken :: !(Maybe Text)
-    , _dmwersResponseStatus :: !Int
+    , _dmwersNextToken        :: !(Maybe Text)
+    , _dmwersResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

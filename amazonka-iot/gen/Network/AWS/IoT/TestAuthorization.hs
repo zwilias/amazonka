@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,12 +48,12 @@ import Network.AWS.Response
 -- | /See:/ 'testAuthorization' smart constructor.
 data TestAuthorization =
   TestAuthorization'
-    { _taClientId :: !(Maybe Text)
-    , _taPolicyNamesToAdd :: !(Maybe [Text])
-    , _taPrincipal :: !(Maybe Text)
+    { _taClientId              :: !(Maybe Text)
+    , _taPolicyNamesToAdd      :: !(Maybe [Text])
+    , _taPrincipal             :: !(Maybe Text)
     , _taCognitoIdentityPoolId :: !(Maybe Text)
-    , _taPolicyNamesToSkip :: !(Maybe [Text])
-    , _taAuthInfos :: !(List1 AuthInfo)
+    , _taPolicyNamesToSkip     :: !(Maybe [Text])
+    , _taAuthInfos             :: !(List1 AuthInfo)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -150,7 +150,7 @@ instance ToQuery TestAuthorization where
 -- | /See:/ 'testAuthorizationResponse' smart constructor.
 data TestAuthorizationResponse =
   TestAuthorizationResponse'
-    { _tarsAuthResults :: !(Maybe [AuthResult])
+    { _tarsAuthResults    :: !(Maybe [AuthResult])
     , _tarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

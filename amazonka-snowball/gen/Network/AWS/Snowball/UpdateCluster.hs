@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,14 +49,14 @@ import Network.AWS.Snowball.Types.Product
 -- | /See:/ 'updateCluster' smart constructor.
 data UpdateCluster =
   UpdateCluster'
-    { _ucNotification :: !(Maybe Notification)
+    { _ucNotification        :: !(Maybe Notification)
     , _ucForwardingAddressId :: !(Maybe Text)
-    , _ucAddressId :: !(Maybe Text)
-    , _ucShippingOption :: !(Maybe ShippingOption)
-    , _ucResources :: !(Maybe JobResource)
-    , _ucDescription :: !(Maybe Text)
-    , _ucRoleARN :: !(Maybe Text)
-    , _ucClusterId :: !Text
+    , _ucAddressId           :: !(Maybe Text)
+    , _ucShippingOption      :: !(Maybe ShippingOption)
+    , _ucResources           :: !(Maybe JobResource)
+    , _ucDescription         :: !(Maybe Text)
+    , _ucRoleARN             :: !(Maybe Text)
+    , _ucClusterId           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

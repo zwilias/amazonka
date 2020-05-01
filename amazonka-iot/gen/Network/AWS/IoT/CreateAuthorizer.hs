@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,10 +48,10 @@ import Network.AWS.Response
 -- | /See:/ 'createAuthorizer' smart constructor.
 data CreateAuthorizer =
   CreateAuthorizer'
-    { _caStatus :: !(Maybe AuthorizerStatus)
-    , _caAuthorizerName :: !Text
-    , _caAuthorizerFunctionARN :: !Text
-    , _caTokenKeyName :: !Text
+    { _caStatus                 :: !(Maybe AuthorizerStatus)
+    , _caAuthorizerName         :: !Text
+    , _caAuthorizerFunctionARN  :: !Text
+    , _caTokenKeyName           :: !Text
     , _caTokenSigningPublicKeys :: !(Map Text Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -144,7 +144,7 @@ instance ToQuery CreateAuthorizer where
 data CreateAuthorizerResponse =
   CreateAuthorizerResponse'
     { _carsAuthorizerName :: !(Maybe Text)
-    , _carsAuthorizerARN :: !(Maybe Text)
+    , _carsAuthorizerARN  :: !(Maybe Text)
     , _carsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

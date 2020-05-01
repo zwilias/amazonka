@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,13 +57,13 @@ import Network.AWS.Response
 data SignUp =
   SignUp'
     { _suAnalyticsMetadata :: !(Maybe AnalyticsMetadataType)
-    , _suUserContextData :: !(Maybe UserContextDataType)
-    , _suUserAttributes :: !(Maybe [AttributeType])
-    , _suSecretHash :: !(Maybe (Sensitive Text))
-    , _suValidationData :: !(Maybe [AttributeType])
-    , _suClientId :: !(Sensitive Text)
-    , _suUsername :: !(Sensitive Text)
-    , _suPassword :: !(Sensitive Text)
+    , _suUserContextData   :: !(Maybe UserContextDataType)
+    , _suUserAttributes    :: !(Maybe [AttributeType])
+    , _suSecretHash        :: !(Maybe (Sensitive Text))
+    , _suValidationData    :: !(Maybe [AttributeType])
+    , _suClientId          :: !(Sensitive Text)
+    , _suUsername          :: !(Sensitive Text)
+    , _suPassword          :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -193,9 +193,9 @@ instance ToQuery SignUp where
 data SignUpResponse =
   SignUpResponse'
     { _sursCodeDeliveryDetails :: !(Maybe CodeDeliveryDetailsType)
-    , _sursResponseStatus :: !Int
-    , _sursUserConfirmed :: !Bool
-    , _sursUserSub :: !Text
+    , _sursResponseStatus      :: !Int
+    , _sursUserConfirmed       :: !Bool
+    , _sursUserSub             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

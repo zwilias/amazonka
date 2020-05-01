@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,10 +49,10 @@ import Network.AWS.Response
 data SearchIndex =
   SearchIndex'
     { _siQueryVersion :: !(Maybe Text)
-    , _siNextToken :: !(Maybe Text)
-    , _siMaxResults :: !(Maybe Nat)
-    , _siIndexName :: !(Maybe Text)
-    , _siQueryString :: !Text
+    , _siNextToken    :: !(Maybe Text)
+    , _siMaxResults   :: !(Maybe Nat)
+    , _siIndexName    :: !(Maybe Text)
+    , _siQueryString  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -138,8 +138,8 @@ instance ToQuery SearchIndex where
 -- | /See:/ 'searchIndexResponse' smart constructor.
 data SearchIndexResponse =
   SearchIndexResponse'
-    { _sirsNextToken :: !(Maybe Text)
-    , _sirsThings :: !(Maybe [ThingDocument])
+    { _sirsNextToken      :: !(Maybe Text)
+    , _sirsThings         :: !(Maybe [ThingDocument])
     , _sirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

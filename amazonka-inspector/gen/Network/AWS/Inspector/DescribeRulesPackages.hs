@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'describeRulesPackages' smart constructor.
 data DescribeRulesPackages =
   DescribeRulesPackages'
-    { _drpLocale :: !(Maybe Locale)
+    { _drpLocale           :: !(Maybe Locale)
     , _drpRulesPackageARNs :: !(List1 Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -114,8 +114,8 @@ instance ToQuery DescribeRulesPackages where
 data DescribeRulesPackagesResponse =
   DescribeRulesPackagesResponse'
     { _drprsResponseStatus :: !Int
-    , _drprsRulesPackages :: ![RulesPackage]
-    , _drprsFailedItems :: !(Map Text FailedItemDetails)
+    , _drprsRulesPackages  :: ![RulesPackage]
+    , _drprsFailedItems    :: !(Map Text FailedItemDetails)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

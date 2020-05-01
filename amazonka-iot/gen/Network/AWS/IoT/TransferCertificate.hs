@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,8 +57,8 @@ import Network.AWS.Response
 -- /See:/ 'transferCertificate' smart constructor.
 data TransferCertificate =
   TransferCertificate'
-    { _tcTransferMessage :: !(Maybe Text)
-    , _tcCertificateId :: !Text
+    { _tcTransferMessage  :: !(Maybe Text)
+    , _tcCertificateId    :: !Text
     , _tcTargetAWSAccount :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -132,7 +132,7 @@ instance ToQuery TransferCertificate where
 data TransferCertificateResponse =
   TransferCertificateResponse'
     { _tcrsTransferredCertificateARN :: !(Maybe Text)
-    , _tcrsResponseStatus :: !Int
+    , _tcrsResponseStatus            :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

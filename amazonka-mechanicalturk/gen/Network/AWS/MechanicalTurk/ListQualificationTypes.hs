@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,10 +53,10 @@ import Network.AWS.Response
 data ListQualificationTypes =
   ListQualificationTypes'
     { _lqtMustBeOwnedByCaller :: !(Maybe Bool)
-    , _lqtNextToken :: !(Maybe Text)
-    , _lqtQuery :: !(Maybe Text)
-    , _lqtMaxResults :: !(Maybe Nat)
-    , _lqtMustBeRequestable :: !Bool
+    , _lqtNextToken           :: !(Maybe Text)
+    , _lqtQuery               :: !(Maybe Text)
+    , _lqtMaxResults          :: !(Maybe Nat)
+    , _lqtMustBeRequestable   :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -160,9 +160,9 @@ instance ToQuery ListQualificationTypes where
 data ListQualificationTypesResponse =
   ListQualificationTypesResponse'
     { _lqtrsQualificationTypes :: !(Maybe [QualificationType])
-    , _lqtrsNextToken :: !(Maybe Text)
-    , _lqtrsNumResults :: !(Maybe Int)
-    , _lqtrsResponseStatus :: !Int
+    , _lqtrsNextToken          :: !(Maybe Text)
+    , _lqtrsNumResults         :: !(Maybe Int)
+    , _lqtrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

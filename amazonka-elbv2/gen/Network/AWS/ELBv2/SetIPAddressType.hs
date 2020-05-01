@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 data SetIPAddressType =
   SetIPAddressType'
     { _siatLoadBalancerARN :: !Text
-    , _siatIPAddressType :: !IPAddressType
+    , _siatIPAddressType   :: !IPAddressType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -109,7 +109,7 @@ instance ToQuery SetIPAddressType where
 -- | /See:/ 'setIPAddressTypeResponse' smart constructor.
 data SetIPAddressTypeResponse =
   SetIPAddressTypeResponse'
-    { _siatrsIPAddressType :: !(Maybe IPAddressType)
+    { _siatrsIPAddressType  :: !(Maybe IPAddressType)
     , _siatrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

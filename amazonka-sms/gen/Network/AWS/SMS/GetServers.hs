@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.SMS.Types.Product
 -- | /See:/ 'getServers' smart constructor.
 data GetServers =
   GetServers'
-    { _gsNextToken :: !(Maybe Text)
+    { _gsNextToken  :: !(Maybe Text)
     , _gsMaxResults :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -120,10 +120,10 @@ instance ToQuery GetServers where
 data GetServersResponse =
   GetServersResponse'
     { _gsrsServerCatalogStatus :: !(Maybe ServerCatalogStatus)
-    , _gsrsLastModifiedOn :: !(Maybe POSIX)
-    , _gsrsNextToken :: !(Maybe Text)
-    , _gsrsServerList :: !(Maybe [Server])
-    , _gsrsResponseStatus :: !Int
+    , _gsrsLastModifiedOn      :: !(Maybe POSIX)
+    , _gsrsNextToken           :: !(Maybe Text)
+    , _gsrsServerList          :: !(Maybe [Server])
+    , _gsrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

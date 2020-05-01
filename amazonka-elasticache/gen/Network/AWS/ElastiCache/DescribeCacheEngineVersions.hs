@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,12 +56,12 @@ import Network.AWS.Response
 -- /See:/ 'describeCacheEngineVersions' smart constructor.
 data DescribeCacheEngineVersions =
   DescribeCacheEngineVersions'
-    { _dcevEngineVersion :: !(Maybe Text)
+    { _dcevEngineVersion             :: !(Maybe Text)
     , _dcevCacheParameterGroupFamily :: !(Maybe Text)
-    , _dcevDefaultOnly :: !(Maybe Bool)
-    , _dcevEngine :: !(Maybe Text)
-    , _dcevMarker :: !(Maybe Text)
-    , _dcevMaxRecords :: !(Maybe Int)
+    , _dcevDefaultOnly               :: !(Maybe Bool)
+    , _dcevEngine                    :: !(Maybe Text)
+    , _dcevMarker                    :: !(Maybe Text)
+    , _dcevMaxRecords                :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -168,8 +168,8 @@ instance ToQuery DescribeCacheEngineVersions where
 data DescribeCacheEngineVersionsResponse =
   DescribeCacheEngineVersionsResponse'
     { _dcevrsCacheEngineVersions :: !(Maybe [CacheEngineVersion])
-    , _dcevrsMarker :: !(Maybe Text)
-    , _dcevrsResponseStatus :: !Int
+    , _dcevrsMarker              :: !(Maybe Text)
+    , _dcevrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

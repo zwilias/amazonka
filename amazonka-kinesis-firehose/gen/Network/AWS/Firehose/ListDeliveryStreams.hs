@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,8 +48,8 @@ import Network.AWS.Response
 -- | /See:/ 'listDeliveryStreams' smart constructor.
 data ListDeliveryStreams =
   ListDeliveryStreams'
-    { _ldsLimit :: !(Maybe Nat)
-    , _ldsDeliveryStreamType :: !(Maybe DeliveryStreamType)
+    { _ldsLimit                            :: !(Maybe Nat)
+    , _ldsDeliveryStreamType               :: !(Maybe DeliveryStreamType)
     , _ldsExclusiveStartDeliveryStreamName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -129,8 +129,8 @@ instance ToQuery ListDeliveryStreams where
 -- | /See:/ 'listDeliveryStreamsResponse' smart constructor.
 data ListDeliveryStreamsResponse =
   ListDeliveryStreamsResponse'
-    { _ldsrsResponseStatus :: !Int
-    , _ldsrsDeliveryStreamNames :: ![Text]
+    { _ldsrsResponseStatus         :: !Int
+    , _ldsrsDeliveryStreamNames    :: ![Text]
     , _ldsrsHasMoreDeliveryStreams :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,7 +56,7 @@ import Network.AWS.Response
 data CreateSlotTypeVersion =
   CreateSlotTypeVersion'
     { _cstvChecksum :: !(Maybe Text)
-    , _cstvName :: !Text
+    , _cstvName     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -120,15 +120,15 @@ instance ToQuery CreateSlotTypeVersion where
 -- | /See:/ 'createSlotTypeVersionResponse' smart constructor.
 data CreateSlotTypeVersionResponse =
   CreateSlotTypeVersionResponse'
-    { _cstvrsChecksum :: !(Maybe Text)
+    { _cstvrsChecksum               :: !(Maybe Text)
     , _cstvrsValueSelectionStrategy :: !(Maybe SlotValueSelectionStrategy)
-    , _cstvrsCreatedDate :: !(Maybe POSIX)
-    , _cstvrsName :: !(Maybe Text)
-    , _cstvrsVersion :: !(Maybe Text)
-    , _cstvrsLastUpdatedDate :: !(Maybe POSIX)
-    , _cstvrsDescription :: !(Maybe Text)
-    , _cstvrsEnumerationValues :: !(Maybe (List1 EnumerationValue))
-    , _cstvrsResponseStatus :: !Int
+    , _cstvrsCreatedDate            :: !(Maybe POSIX)
+    , _cstvrsName                   :: !(Maybe Text)
+    , _cstvrsVersion                :: !(Maybe Text)
+    , _cstvrsLastUpdatedDate        :: !(Maybe POSIX)
+    , _cstvrsDescription            :: !(Maybe Text)
+    , _cstvrsEnumerationValues      :: !(Maybe (List1 EnumerationValue))
+    , _cstvrsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

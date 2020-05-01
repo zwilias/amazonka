@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -113,7 +113,7 @@ instance ToQuery DefineIndexField where
 data DefineIndexFieldResponse =
   DefineIndexFieldResponse'
     { _defrsResponseStatus :: !Int
-    , _defrsIndexField :: !IndexFieldStatus
+    , _defrsIndexField     :: !IndexFieldStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

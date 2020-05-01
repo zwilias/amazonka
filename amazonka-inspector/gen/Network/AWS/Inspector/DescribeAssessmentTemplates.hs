@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -103,9 +103,9 @@ instance ToQuery DescribeAssessmentTemplates where
 -- | /See:/ 'describeAssessmentTemplatesResponse' smart constructor.
 data DescribeAssessmentTemplatesResponse =
   DescribeAssessmentTemplatesResponse'
-    { _datrsResponseStatus :: !Int
+    { _datrsResponseStatus      :: !Int
     , _datrsAssessmentTemplates :: ![AssessmentTemplate]
-    , _datrsFailedItems :: !(Map Text FailedItemDetails)
+    , _datrsFailedItems         :: !(Map Text FailedItemDetails)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

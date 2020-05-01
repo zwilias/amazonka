@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,16 +57,16 @@ import Network.AWS.Response
 -- /See:/ 'modifyImageAttribute' smart constructor.
 data ModifyImageAttribute =
   ModifyImageAttribute'
-    { _miaAttribute :: !(Maybe Text)
-    , _miaUserIds :: !(Maybe [Text])
-    , _miaUserGroups :: !(Maybe [Text])
-    , _miaValue :: !(Maybe Text)
+    { _miaAttribute        :: !(Maybe Text)
+    , _miaUserIds          :: !(Maybe [Text])
+    , _miaUserGroups       :: !(Maybe [Text])
+    , _miaValue            :: !(Maybe Text)
     , _miaLaunchPermission :: !(Maybe LaunchPermissionModifications)
-    , _miaOperationType :: !(Maybe OperationType)
-    , _miaProductCodes :: !(Maybe [Text])
-    , _miaDescription :: !(Maybe AttributeValue)
-    , _miaDryRun :: !(Maybe Bool)
-    , _miaImageId :: !Text
+    , _miaOperationType    :: !(Maybe OperationType)
+    , _miaProductCodes     :: !(Maybe [Text])
+    , _miaDescription      :: !(Maybe AttributeValue)
+    , _miaDryRun           :: !(Maybe Bool)
+    , _miaImageId          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

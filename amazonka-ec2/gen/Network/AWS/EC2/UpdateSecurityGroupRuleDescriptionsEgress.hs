@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,9 +52,9 @@ import Network.AWS.Response
 -- /See:/ 'updateSecurityGroupRuleDescriptionsEgress' smart constructor.
 data UpdateSecurityGroupRuleDescriptionsEgress =
   UpdateSecurityGroupRuleDescriptionsEgress'
-    { _usgrdeGroupId :: !(Maybe Text)
-    , _usgrdeGroupName :: !(Maybe Text)
-    , _usgrdeDryRun :: !(Maybe Bool)
+    { _usgrdeGroupId       :: !(Maybe Text)
+    , _usgrdeGroupName     :: !(Maybe Text)
+    , _usgrdeDryRun        :: !(Maybe Bool)
     , _usgrdeIPPermissions :: ![IPPermission]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -135,7 +135,7 @@ instance ToQuery UpdateSecurityGroupRuleDescriptionsEgress where
 -- /See:/ 'updateSecurityGroupRuleDescriptionsEgressResponse' smart constructor.
 data UpdateSecurityGroupRuleDescriptionsEgressResponse =
   UpdateSecurityGroupRuleDescriptionsEgressResponse'
-    { _usgrdersReturn :: !(Maybe Bool)
+    { _usgrdersReturn         :: !(Maybe Bool)
     , _usgrdersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -105,7 +105,7 @@ instance ToQuery GetApplication where
 -- /See:/ 'getApplicationResponse' smart constructor.
 data GetApplicationResponse =
   GetApplicationResponse'
-    { _garsApplication :: !(Maybe ApplicationInfo)
+    { _garsApplication    :: !(Maybe ApplicationInfo)
     , _garsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

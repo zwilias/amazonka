@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,13 +49,13 @@ import Network.AWS.Response
 -- /See:/ 'createFilter' smart constructor.
 data CreateFilter =
   CreateFilter'
-    { _cfClientToken :: !(Maybe Text)
+    { _cfClientToken     :: !(Maybe Text)
     , _cfFindingCriteria :: !(Maybe FindingCriteria)
-    , _cfAction :: !(Maybe FilterAction)
-    , _cfName :: !(Maybe Text)
-    , _cfDescription :: !(Maybe Text)
-    , _cfRank :: !(Maybe Int)
-    , _cfDetectorId :: !Text
+    , _cfAction          :: !(Maybe FilterAction)
+    , _cfName            :: !(Maybe Text)
+    , _cfDescription     :: !(Maybe Text)
+    , _cfRank            :: !(Maybe Int)
+    , _cfDetectorId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -157,7 +157,7 @@ instance ToQuery CreateFilter where
 -- | /See:/ 'createFilterResponse' smart constructor.
 data CreateFilterResponse =
   CreateFilterResponse'
-    { _cfrsName :: !(Maybe Text)
+    { _cfrsName           :: !(Maybe Text)
     , _cfrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

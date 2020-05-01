@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,14 +26,14 @@ import Network.AWS.Prelude
 -- /See:/ 'applicationDescription' smart constructor.
 data ApplicationDescription =
   ApplicationDescription'
-    { _adApplicationARN :: !(Maybe Text)
-    , _adVersions :: !(Maybe [Text])
-    , _adDateUpdated :: !(Maybe ISO8601)
-    , _adDateCreated :: !(Maybe ISO8601)
-    , _adApplicationName :: !(Maybe Text)
-    , _adConfigurationTemplates :: !(Maybe [Text])
+    { _adApplicationARN          :: !(Maybe Text)
+    , _adVersions                :: !(Maybe [Text])
+    , _adDateUpdated             :: !(Maybe ISO8601)
+    , _adDateCreated             :: !(Maybe ISO8601)
+    , _adApplicationName         :: !(Maybe Text)
+    , _adConfigurationTemplates  :: !(Maybe [Text])
     , _adResourceLifecycleConfig :: !(Maybe ApplicationResourceLifecycleConfig)
-    , _adDescription :: !(Maybe Text)
+    , _adDescription             :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -162,9 +162,9 @@ instance NFData ApplicationDescriptionMessage
 data ApplicationMetrics =
   ApplicationMetrics'
     { _amRequestCount :: !(Maybe Int)
-    , _amLatency :: !(Maybe Latency)
-    , _amStatusCodes :: !(Maybe StatusCodes)
-    , _amDuration :: !(Maybe Int)
+    , _amLatency      :: !(Maybe Latency)
+    , _amStatusCodes  :: !(Maybe StatusCodes)
+    , _amDuration     :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -222,7 +222,7 @@ instance NFData ApplicationMetrics
 data ApplicationResourceLifecycleConfig =
   ApplicationResourceLifecycleConfig'
     { _arlcVersionLifecycleConfig :: !(Maybe ApplicationVersionLifecycleConfig)
-    , _arlcServiceRole :: !(Maybe Text)
+    , _arlcServiceRole            :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -271,16 +271,16 @@ instance ToQuery ApplicationResourceLifecycleConfig where
 -- /See:/ 'applicationVersionDescription' smart constructor.
 data ApplicationVersionDescription =
   ApplicationVersionDescription'
-    { _avdStatus :: !(Maybe ApplicationVersionStatus)
-    , _avdSourceBundle :: !(Maybe S3Location)
-    , _avdDateUpdated :: !(Maybe ISO8601)
-    , _avdDateCreated :: !(Maybe ISO8601)
-    , _avdVersionLabel :: !(Maybe Text)
+    { _avdStatus                 :: !(Maybe ApplicationVersionStatus)
+    , _avdSourceBundle           :: !(Maybe S3Location)
+    , _avdDateUpdated            :: !(Maybe ISO8601)
+    , _avdDateCreated            :: !(Maybe ISO8601)
+    , _avdVersionLabel           :: !(Maybe Text)
     , _avdSourceBuildInformation :: !(Maybe SourceBuildInformation)
-    , _avdApplicationName :: !(Maybe Text)
-    , _avdApplicationVersionARN :: !(Maybe Text)
-    , _avdBuildARN :: !(Maybe Text)
-    , _avdDescription :: !(Maybe Text)
+    , _avdApplicationName        :: !(Maybe Text)
+    , _avdApplicationVersionARN  :: !(Maybe Text)
+    , _avdBuildARN               :: !(Maybe Text)
+    , _avdDescription            :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -429,7 +429,7 @@ instance NFData ApplicationVersionDescriptionMessage
 -- /See:/ 'applicationVersionLifecycleConfig' smart constructor.
 data ApplicationVersionLifecycleConfig =
   ApplicationVersionLifecycleConfig'
-    { _avlcMaxAgeRule :: !(Maybe MaxAgeRule)
+    { _avlcMaxAgeRule   :: !(Maybe MaxAgeRule)
     , _avlcMaxCountRule :: !(Maybe MaxCountRule)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -505,11 +505,11 @@ instance NFData AutoScalingGroup
 -- /See:/ 'buildConfiguration' smart constructor.
 data BuildConfiguration =
   BuildConfiguration'
-    { _bcArtifactName :: !(Maybe Text)
-    , _bcComputeType :: !(Maybe ComputeType)
-    , _bcTimeoutInMinutes :: !(Maybe Int)
+    { _bcArtifactName         :: !(Maybe Text)
+    , _bcComputeType          :: !(Maybe ComputeType)
+    , _bcTimeoutInMinutes     :: !(Maybe Int)
     , _bcCodeBuildServiceRole :: !Text
-    , _bcImage :: !Text
+    , _bcImage                :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -613,12 +613,12 @@ instance NFData Builder
 data CPUUtilization =
   CPUUtilization'
     { _cuSoftIRQ :: !(Maybe Double)
-    , _cuIdle :: !(Maybe Double)
-    , _cuIRQ :: !(Maybe Double)
-    , _cuSystem :: !(Maybe Double)
-    , _cuUser :: !(Maybe Double)
-    , _cuIOWait :: !(Maybe Double)
-    , _cuNice :: !(Maybe Double)
+    , _cuIdle    :: !(Maybe Double)
+    , _cuIRQ     :: !(Maybe Double)
+    , _cuSystem  :: !(Maybe Double)
+    , _cuUser    :: !(Maybe Double)
+    , _cuIOWait  :: !(Maybe Double)
+    , _cuNice    :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -698,17 +698,17 @@ instance NFData CPUUtilization
 -- /See:/ 'configurationOptionDescription' smart constructor.
 data ConfigurationOptionDescription =
   ConfigurationOptionDescription'
-    { _codMaxValue :: !(Maybe Int)
-    , _codRegex :: !(Maybe OptionRestrictionRegex)
-    , _codMaxLength :: !(Maybe Int)
-    , _codUserDefined :: !(Maybe Bool)
-    , _codNamespace :: !(Maybe Text)
-    , _codValueOptions :: !(Maybe [Text])
-    , _codName :: !(Maybe Text)
+    { _codMaxValue       :: !(Maybe Int)
+    , _codRegex          :: !(Maybe OptionRestrictionRegex)
+    , _codMaxLength      :: !(Maybe Int)
+    , _codUserDefined    :: !(Maybe Bool)
+    , _codNamespace      :: !(Maybe Text)
+    , _codValueOptions   :: !(Maybe [Text])
+    , _codName           :: !(Maybe Text)
     , _codChangeSeverity :: !(Maybe Text)
-    , _codDefaultValue :: !(Maybe Text)
-    , _codValueType :: !(Maybe ConfigurationOptionValueType)
-    , _codMinValue :: !(Maybe Int)
+    , _codDefaultValue   :: !(Maybe Text)
+    , _codValueType      :: !(Maybe ConfigurationOptionValueType)
+    , _codMinValue       :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -823,10 +823,10 @@ instance NFData ConfigurationOptionDescription
 -- /See:/ 'configurationOptionSetting' smart constructor.
 data ConfigurationOptionSetting =
   ConfigurationOptionSetting'
-    { _cosOptionName :: !(Maybe Text)
+    { _cosOptionName   :: !(Maybe Text)
     , _cosResourceName :: !(Maybe Text)
-    , _cosNamespace :: !(Maybe Text)
-    , _cosValue :: !(Maybe Text)
+    , _cosNamespace    :: !(Maybe Text)
+    , _cosValue        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -893,16 +893,16 @@ instance ToQuery ConfigurationOptionSetting where
 -- /See:/ 'configurationSettingsDescription' smart constructor.
 data ConfigurationSettingsDescription =
   ConfigurationSettingsDescription'
-    { _csdTemplateName :: !(Maybe Text)
-    , _csdOptionSettings :: !(Maybe [ConfigurationOptionSetting])
-    , _csdDateUpdated :: !(Maybe ISO8601)
-    , _csdDateCreated :: !(Maybe ISO8601)
-    , _csdPlatformARN :: !(Maybe Text)
-    , _csdEnvironmentName :: !(Maybe Text)
-    , _csdApplicationName :: !(Maybe Text)
-    , _csdDeploymentStatus :: !(Maybe ConfigurationDeploymentStatus)
+    { _csdTemplateName      :: !(Maybe Text)
+    , _csdOptionSettings    :: !(Maybe [ConfigurationOptionSetting])
+    , _csdDateUpdated       :: !(Maybe ISO8601)
+    , _csdDateCreated       :: !(Maybe ISO8601)
+    , _csdPlatformARN       :: !(Maybe Text)
+    , _csdEnvironmentName   :: !(Maybe Text)
+    , _csdApplicationName   :: !(Maybe Text)
+    , _csdDeploymentStatus  :: !(Maybe ConfigurationDeploymentStatus)
     , _csdSolutionStackName :: !(Maybe Text)
-    , _csdDescription :: !(Maybe Text)
+    , _csdDescription       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1019,7 +1019,7 @@ instance NFData ConfigurationSettingsDescription
 data CustomAMI =
   CustomAMI'
     { _caVirtualizationType :: !(Maybe Text)
-    , _caImageId :: !(Maybe Text)
+    , _caImageId            :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1056,10 +1056,10 @@ instance NFData CustomAMI
 -- /See:/ 'deployment' smart constructor.
 data Deployment =
   Deployment'
-    { _dDeploymentId :: !(Maybe Integer)
-    , _dStatus :: !(Maybe Text)
+    { _dDeploymentId   :: !(Maybe Integer)
+    , _dStatus         :: !(Maybe Text)
     , _dDeploymentTime :: !(Maybe ISO8601)
-    , _dVersionLabel :: !(Maybe Text)
+    , _dVersionLabel   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1117,26 +1117,26 @@ instance NFData Deployment
 -- /See:/ 'environmentDescription' smart constructor.
 data EnvironmentDescription =
   EnvironmentDescription'
-    { _eStatus :: !(Maybe EnvironmentStatus)
-    , _eCNAME :: !(Maybe Text)
-    , _eTemplateName :: !(Maybe Text)
+    { _eStatus                       :: !(Maybe EnvironmentStatus)
+    , _eCNAME                        :: !(Maybe Text)
+    , _eTemplateName                 :: !(Maybe Text)
     , _eAbortableOperationInProgress :: !(Maybe Bool)
-    , _eEndpointURL :: !(Maybe Text)
-    , _eResources :: !(Maybe EnvironmentResourcesDescription)
-    , _eDateUpdated :: !(Maybe ISO8601)
-    , _eDateCreated :: !(Maybe ISO8601)
-    , _eHealth :: !(Maybe EnvironmentHealth)
-    , _eVersionLabel :: !(Maybe Text)
-    , _ePlatformARN :: !(Maybe Text)
-    , _eTier :: !(Maybe EnvironmentTier)
-    , _eEnvironmentName :: !(Maybe Text)
-    , _eApplicationName :: !(Maybe Text)
-    , _eEnvironmentARN :: !(Maybe Text)
-    , _eSolutionStackName :: !(Maybe Text)
-    , _eEnvironmentId :: !(Maybe Text)
-    , _eHealthStatus :: !(Maybe EnvironmentHealthStatus)
-    , _eEnvironmentLinks :: !(Maybe [EnvironmentLink])
-    , _eDescription :: !(Maybe Text)
+    , _eEndpointURL                  :: !(Maybe Text)
+    , _eResources                    :: !(Maybe EnvironmentResourcesDescription)
+    , _eDateUpdated                  :: !(Maybe ISO8601)
+    , _eDateCreated                  :: !(Maybe ISO8601)
+    , _eHealth                       :: !(Maybe EnvironmentHealth)
+    , _eVersionLabel                 :: !(Maybe Text)
+    , _ePlatformARN                  :: !(Maybe Text)
+    , _eTier                         :: !(Maybe EnvironmentTier)
+    , _eEnvironmentName              :: !(Maybe Text)
+    , _eApplicationName              :: !(Maybe Text)
+    , _eEnvironmentARN               :: !(Maybe Text)
+    , _eSolutionStackName            :: !(Maybe Text)
+    , _eEnvironmentId                :: !(Maybe Text)
+    , _eHealthStatus                 :: !(Maybe EnvironmentHealthStatus)
+    , _eEnvironmentLinks             :: !(Maybe [EnvironmentLink])
+    , _eDescription                  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1330,7 +1330,7 @@ instance NFData EnvironmentDescription
 -- /See:/ 'environmentDescriptionsMessage' smart constructor.
 data EnvironmentDescriptionsMessage =
   EnvironmentDescriptionsMessage'
-    { _edmNextToken :: !(Maybe Text)
+    { _edmNextToken    :: !(Maybe Text)
     , _edmEnvironments :: !(Maybe [EnvironmentDescription])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1373,9 +1373,9 @@ instance NFData EnvironmentDescriptionsMessage
 data EnvironmentInfoDescription =
   EnvironmentInfoDescription'
     { _eidSampleTimestamp :: !(Maybe ISO8601)
-    , _eidEC2InstanceId :: !(Maybe Text)
-    , _eidInfoType :: !(Maybe EnvironmentInfoType)
-    , _eidMessage :: !(Maybe Text)
+    , _eidEC2InstanceId   :: !(Maybe Text)
+    , _eidInfoType        :: !(Maybe EnvironmentInfoType)
+    , _eidMessage         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1434,7 +1434,7 @@ instance NFData EnvironmentInfoDescription
 -- /See:/ 'environmentLink' smart constructor.
 data EnvironmentLink =
   EnvironmentLink'
-    { _elLinkName :: !(Maybe Text)
+    { _elLinkName        :: !(Maybe Text)
     , _elEnvironmentName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1473,13 +1473,13 @@ instance NFData EnvironmentLink
 -- /See:/ 'environmentResourceDescription' smart constructor.
 data EnvironmentResourceDescription =
   EnvironmentResourceDescription'
-    { _erdQueues :: !(Maybe [Queue])
-    , _erdTriggers :: !(Maybe [Trigger])
-    , _erdLoadBalancers :: !(Maybe [LoadBalancer])
-    , _erdEnvironmentName :: !(Maybe Text)
-    , _erdInstances :: !(Maybe [Instance])
+    { _erdQueues               :: !(Maybe [Queue])
+    , _erdTriggers             :: !(Maybe [Trigger])
+    , _erdLoadBalancers        :: !(Maybe [LoadBalancer])
+    , _erdEnvironmentName      :: !(Maybe Text)
+    , _erdInstances            :: !(Maybe [Instance])
     , _erdLaunchConfigurations :: !(Maybe [LaunchConfiguration])
-    , _erdAutoScalingGroups :: !(Maybe [AutoScalingGroup])
+    , _erdAutoScalingGroups    :: !(Maybe [AutoScalingGroup])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1604,9 +1604,9 @@ instance NFData EnvironmentResourcesDescription
 -- /See:/ 'environmentTier' smart constructor.
 data EnvironmentTier =
   EnvironmentTier'
-    { _etName :: !(Maybe Text)
+    { _etName    :: !(Maybe Text)
     , _etVersion :: !(Maybe Text)
-    , _etType :: !(Maybe Text)
+    , _etType    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1654,15 +1654,15 @@ instance ToQuery EnvironmentTier where
 -- /See:/ 'eventDescription' smart constructor.
 data EventDescription =
   EventDescription'
-    { _edRequestId :: !(Maybe Text)
-    , _edTemplateName :: !(Maybe Text)
-    , _edSeverity :: !(Maybe EventSeverity)
-    , _edVersionLabel :: !(Maybe Text)
-    , _edPlatformARN :: !(Maybe Text)
+    { _edRequestId       :: !(Maybe Text)
+    , _edTemplateName    :: !(Maybe Text)
+    , _edSeverity        :: !(Maybe EventSeverity)
+    , _edVersionLabel    :: !(Maybe Text)
+    , _edPlatformARN     :: !(Maybe Text)
     , _edEnvironmentName :: !(Maybe Text)
     , _edApplicationName :: !(Maybe Text)
-    , _edEventDate :: !(Maybe ISO8601)
-    , _edMessage :: !(Maybe Text)
+    , _edEventDate       :: !(Maybe ISO8601)
+    , _edMessage         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1789,14 +1789,14 @@ instance NFData Instance
 -- /See:/ 'instanceHealthSummary' smart constructor.
 data InstanceHealthSummary =
   InstanceHealthSummary'
-    { _ihsOK :: !(Maybe Int)
-    , _ihsPending :: !(Maybe Int)
-    , _ihsSevere :: !(Maybe Int)
-    , _ihsUnknown :: !(Maybe Int)
-    , _ihsNoData :: !(Maybe Int)
-    , _ihsWarning :: !(Maybe Int)
+    { _ihsOK       :: !(Maybe Int)
+    , _ihsPending  :: !(Maybe Int)
+    , _ihsSevere   :: !(Maybe Int)
+    , _ihsUnknown  :: !(Maybe Int)
+    , _ihsNoData   :: !(Maybe Int)
+    , _ihsWarning  :: !(Maybe Int)
     , _ihsDegraded :: !(Maybe Int)
-    , _ihsInfo :: !(Maybe Int)
+    , _ihsInfo     :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1885,14 +1885,14 @@ instance NFData InstanceHealthSummary
 -- /See:/ 'latency' smart constructor.
 data Latency =
   Latency'
-    { _lP75 :: !(Maybe Double)
-    , _lP50 :: !(Maybe Double)
-    , _lP85 :: !(Maybe Double)
+    { _lP75  :: !(Maybe Double)
+    , _lP50  :: !(Maybe Double)
+    , _lP85  :: !(Maybe Double)
     , _lP999 :: !(Maybe Double)
-    , _lP90 :: !(Maybe Double)
-    , _lP95 :: !(Maybe Double)
-    , _lP99 :: !(Maybe Double)
-    , _lP10 :: !(Maybe Double)
+    , _lP90  :: !(Maybe Double)
+    , _lP95  :: !(Maybe Double)
+    , _lP99  :: !(Maybe Double)
+    , _lP10  :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2011,7 +2011,7 @@ instance NFData LaunchConfiguration
 data Listener =
   Listener'
     { _lProtocol :: !(Maybe Text)
-    , _lPort :: !(Maybe Int)
+    , _lPort     :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2078,8 +2078,8 @@ instance NFData LoadBalancer
 data LoadBalancerDescription =
   LoadBalancerDescription'
     { _lbdLoadBalancerName :: !(Maybe Text)
-    , _lbdDomain :: !(Maybe Text)
-    , _lbdListeners :: !(Maybe [Listener])
+    , _lbdDomain           :: !(Maybe Text)
+    , _lbdListeners        :: !(Maybe [Listener])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2130,11 +2130,11 @@ instance NFData LoadBalancerDescription
 -- /See:/ 'managedAction' smart constructor.
 data ManagedAction =
   ManagedAction'
-    { _maStatus :: !(Maybe ActionStatus)
-    , _maActionId :: !(Maybe Text)
-    , _maWindowStartTime :: !(Maybe ISO8601)
+    { _maStatus            :: !(Maybe ActionStatus)
+    , _maActionId          :: !(Maybe Text)
+    , _maWindowStartTime   :: !(Maybe ISO8601)
     , _maActionDescription :: !(Maybe Text)
-    , _maActionType :: !(Maybe ActionType)
+    , _maActionType        :: !(Maybe ActionType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2201,14 +2201,14 @@ instance NFData ManagedAction
 -- /See:/ 'managedActionHistoryItem' smart constructor.
 data ManagedActionHistoryItem =
   ManagedActionHistoryItem'
-    { _mahiStatus :: !(Maybe ActionHistoryStatus)
-    , _mahiFailureType :: !(Maybe FailureType)
-    , _mahiActionId :: !(Maybe Text)
+    { _mahiStatus             :: !(Maybe ActionHistoryStatus)
+    , _mahiFailureType        :: !(Maybe FailureType)
+    , _mahiActionId           :: !(Maybe Text)
     , _mahiFailureDescription :: !(Maybe Text)
-    , _mahiFinishedTime :: !(Maybe ISO8601)
-    , _mahiActionDescription :: !(Maybe Text)
-    , _mahiExecutedTime :: !(Maybe ISO8601)
-    , _mahiActionType :: !(Maybe ActionType)
+    , _mahiFinishedTime       :: !(Maybe ISO8601)
+    , _mahiActionDescription  :: !(Maybe Text)
+    , _mahiExecutedTime       :: !(Maybe ISO8601)
+    , _mahiActionType         :: !(Maybe ActionType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2302,8 +2302,8 @@ instance NFData ManagedActionHistoryItem
 data MaxAgeRule =
   MaxAgeRule'
     { _marDeleteSourceFromS3 :: !(Maybe Bool)
-    , _marMaxAgeInDays :: !(Maybe Int)
-    , _marEnabled :: !Bool
+    , _marMaxAgeInDays       :: !(Maybe Int)
+    , _marEnabled            :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2363,9 +2363,9 @@ instance ToQuery MaxAgeRule where
 -- /See:/ 'maxCountRule' smart constructor.
 data MaxCountRule =
   MaxCountRule'
-    { _mcrMaxCount :: !(Maybe Int)
+    { _mcrMaxCount           :: !(Maybe Int)
     , _mcrDeleteSourceFromS3 :: !(Maybe Bool)
-    , _mcrEnabled :: !Bool
+    , _mcrEnabled            :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2426,7 +2426,7 @@ instance ToQuery MaxCountRule where
 data OptionRestrictionRegex =
   OptionRestrictionRegex'
     { _orrPattern :: !(Maybe Text)
-    , _orrLabel :: !(Maybe Text)
+    , _orrLabel   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2463,9 +2463,9 @@ instance NFData OptionRestrictionRegex
 -- /See:/ 'optionSpecification' smart constructor.
 data OptionSpecification =
   OptionSpecification'
-    { _osOptionName :: !(Maybe Text)
+    { _osOptionName   :: !(Maybe Text)
     , _osResourceName :: !(Maybe Text)
-    , _osNamespace :: !(Maybe Text)
+    , _osNamespace    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2514,24 +2514,24 @@ instance ToQuery OptionSpecification where
 -- /See:/ 'platformDescription' smart constructor.
 data PlatformDescription =
   PlatformDescription'
-    { _pdSupportedAddonList :: !(Maybe [Text])
-    , _pdPlatformCategory :: !(Maybe Text)
-    , _pdPlatformVersion :: !(Maybe Text)
-    , _pdPlatformStatus :: !(Maybe PlatformStatus)
-    , _pdMaintainer :: !(Maybe Text)
-    , _pdPlatformOwner :: !(Maybe Text)
-    , _pdDateUpdated :: !(Maybe ISO8601)
-    , _pdCustomAMIList :: !(Maybe [CustomAMI])
-    , _pdDateCreated :: !(Maybe ISO8601)
-    , _pdOperatingSystemName :: !(Maybe Text)
-    , _pdFrameworks :: !(Maybe [PlatformFramework])
-    , _pdPlatformARN :: !(Maybe Text)
+    { _pdSupportedAddonList     :: !(Maybe [Text])
+    , _pdPlatformCategory       :: !(Maybe Text)
+    , _pdPlatformVersion        :: !(Maybe Text)
+    , _pdPlatformStatus         :: !(Maybe PlatformStatus)
+    , _pdMaintainer             :: !(Maybe Text)
+    , _pdPlatformOwner          :: !(Maybe Text)
+    , _pdDateUpdated            :: !(Maybe ISO8601)
+    , _pdCustomAMIList          :: !(Maybe [CustomAMI])
+    , _pdDateCreated            :: !(Maybe ISO8601)
+    , _pdOperatingSystemName    :: !(Maybe Text)
+    , _pdFrameworks             :: !(Maybe [PlatformFramework])
+    , _pdPlatformARN            :: !(Maybe Text)
     , _pdOperatingSystemVersion :: !(Maybe Text)
-    , _pdProgrammingLanguages :: !(Maybe [PlatformProgrammingLanguage])
-    , _pdSolutionStackName :: !(Maybe Text)
-    , _pdPlatformName :: !(Maybe Text)
-    , _pdDescription :: !(Maybe Text)
-    , _pdSupportedTierList :: !(Maybe [Text])
+    , _pdProgrammingLanguages   :: !(Maybe [PlatformProgrammingLanguage])
+    , _pdSolutionStackName      :: !(Maybe Text)
+    , _pdPlatformName           :: !(Maybe Text)
+    , _pdDescription            :: !(Maybe Text)
+    , _pdSupportedTierList      :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2721,9 +2721,9 @@ instance NFData PlatformDescription
 -- /See:/ 'platformFilter' smart constructor.
 data PlatformFilter =
   PlatformFilter'
-    { _pfValues :: !(Maybe [Text])
+    { _pfValues   :: !(Maybe [Text])
     , _pfOperator :: !(Maybe Text)
-    , _pfType :: !(Maybe Text)
+    , _pfType     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2772,7 +2772,7 @@ instance ToQuery PlatformFilter where
 -- /See:/ 'platformFramework' smart constructor.
 data PlatformFramework =
   PlatformFramework'
-    { _pfName :: !(Maybe Text)
+    { _pfName    :: !(Maybe Text)
     , _pfVersion :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2809,7 +2809,7 @@ instance NFData PlatformFramework
 -- /See:/ 'platformProgrammingLanguage' smart constructor.
 data PlatformProgrammingLanguage =
   PlatformProgrammingLanguage'
-    { _pplName :: !(Maybe Text)
+    { _pplName    :: !(Maybe Text)
     , _pplVersion :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2848,14 +2848,14 @@ instance NFData PlatformProgrammingLanguage
 -- /See:/ 'platformSummary' smart constructor.
 data PlatformSummary =
   PlatformSummary'
-    { _psSupportedAddonList :: !(Maybe [Text])
-    , _psPlatformCategory :: !(Maybe Text)
-    , _psPlatformStatus :: !(Maybe PlatformStatus)
-    , _psPlatformOwner :: !(Maybe Text)
-    , _psOperatingSystemName :: !(Maybe Text)
-    , _psPlatformARN :: !(Maybe Text)
+    { _psSupportedAddonList     :: !(Maybe [Text])
+    , _psPlatformCategory       :: !(Maybe Text)
+    , _psPlatformStatus         :: !(Maybe PlatformStatus)
+    , _psPlatformOwner          :: !(Maybe Text)
+    , _psOperatingSystemName    :: !(Maybe Text)
+    , _psPlatformARN            :: !(Maybe Text)
     , _psOperatingSystemVersion :: !(Maybe Text)
-    , _psSupportedTierList :: !(Maybe [Text])
+    , _psSupportedTierList      :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2953,7 +2953,7 @@ instance NFData PlatformSummary
 -- /See:/ 'queue' smart constructor.
 data Queue =
   Queue'
-    { _qURL :: !(Maybe Text)
+    { _qURL  :: !(Maybe Text)
     , _qName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3020,10 +3020,10 @@ instance NFData ResourceQuota
 -- /See:/ 'resourceQuotas' smart constructor.
 data ResourceQuotas =
   ResourceQuotas'
-    { _rqApplicationQuota :: !(Maybe ResourceQuota)
-    , _rqCustomPlatformQuota :: !(Maybe ResourceQuota)
-    , _rqApplicationVersionQuota :: !(Maybe ResourceQuota)
-    , _rqEnvironmentQuota :: !(Maybe ResourceQuota)
+    { _rqApplicationQuota           :: !(Maybe ResourceQuota)
+    , _rqCustomPlatformQuota        :: !(Maybe ResourceQuota)
+    , _rqApplicationVersionQuota    :: !(Maybe ResourceQuota)
+    , _rqEnvironmentQuota           :: !(Maybe ResourceQuota)
     , _rqConfigurationTemplateQuota :: !(Maybe ResourceQuota)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3097,7 +3097,7 @@ instance NFData ResourceQuotas
 -- /See:/ 's3Location' smart constructor.
 data S3Location =
   S3Location'
-    { _slS3Key :: !(Maybe Text)
+    { _slS3Key    :: !(Maybe Text)
     , _slS3Bucket :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3138,16 +3138,16 @@ instance ToQuery S3Location where
 -- /See:/ 'singleInstanceHealth' smart constructor.
 data SingleInstanceHealth =
   SingleInstanceHealth'
-    { _sihInstanceId :: !(Maybe Text)
-    , _sihCauses :: !(Maybe [Text])
-    , _sihSystem :: !(Maybe SystemStatus)
+    { _sihInstanceId         :: !(Maybe Text)
+    , _sihCauses             :: !(Maybe [Text])
+    , _sihSystem             :: !(Maybe SystemStatus)
     , _sihApplicationMetrics :: !(Maybe ApplicationMetrics)
-    , _sihColor :: !(Maybe Text)
-    , _sihInstanceType :: !(Maybe Text)
-    , _sihAvailabilityZone :: !(Maybe Text)
-    , _sihHealthStatus :: !(Maybe Text)
-    , _sihDeployment :: !(Maybe Deployment)
-    , _sihLaunchedAt :: !(Maybe ISO8601)
+    , _sihColor              :: !(Maybe Text)
+    , _sihInstanceType       :: !(Maybe Text)
+    , _sihAvailabilityZone   :: !(Maybe Text)
+    , _sihHealthStatus       :: !(Maybe Text)
+    , _sihDeployment         :: !(Maybe Deployment)
+    , _sihLaunchedAt         :: !(Maybe ISO8601)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3257,7 +3257,7 @@ instance NFData SingleInstanceHealth
 data SolutionStackDescription =
   SolutionStackDescription'
     { _ssdPermittedFileTypes :: !(Maybe [Text])
-    , _ssdSolutionStackName :: !(Maybe Text)
+    , _ssdSolutionStackName  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3301,9 +3301,9 @@ instance NFData SolutionStackDescription
 -- /See:/ 'sourceBuildInformation' smart constructor.
 data SourceBuildInformation =
   SourceBuildInformation'
-    { _sbiSourceType :: !SourceType
+    { _sbiSourceType       :: !SourceType
     , _sbiSourceRepository :: !SourceRepository
-    , _sbiSourceLocation :: !Text
+    , _sbiSourceLocation   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3366,7 +3366,7 @@ instance ToQuery SourceBuildInformation where
 -- /See:/ 'sourceConfiguration' smart constructor.
 data SourceConfiguration =
   SourceConfiguration'
-    { _scTemplateName :: !(Maybe Text)
+    { _scTemplateName    :: !(Maybe Text)
     , _scApplicationName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3469,7 +3469,7 @@ instance NFData StatusCodes
 data SystemStatus =
   SystemStatus'
     { _ssCPUUtilization :: !(Maybe CPUUtilization)
-    , _ssLoadAverage :: !(Maybe [Double])
+    , _ssLoadAverage    :: !(Maybe [Double])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3510,7 +3510,7 @@ instance NFData SystemStatus
 data Tag =
   Tag'
     { _tagValue :: !(Maybe Text)
-    , _tagKey :: !(Maybe Text)
+    , _tagKey   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3580,9 +3580,9 @@ instance NFData Trigger
 data ValidationMessage =
   ValidationMessage'
     { _vmOptionName :: !(Maybe Text)
-    , _vmSeverity :: !(Maybe ValidationSeverity)
-    , _vmNamespace :: !(Maybe Text)
-    , _vmMessage :: !(Maybe Text)
+    , _vmSeverity   :: !(Maybe ValidationSeverity)
+    , _vmNamespace  :: !(Maybe Text)
+    , _vmMessage    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

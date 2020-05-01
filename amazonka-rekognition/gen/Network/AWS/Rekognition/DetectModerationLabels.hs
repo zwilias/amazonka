@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Response
 data DetectModerationLabels =
   DetectModerationLabels'
     { _dmlMinConfidence :: !(Maybe Double)
-    , _dmlImage :: !Image
+    , _dmlImage         :: !Image
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -115,7 +115,7 @@ instance ToQuery DetectModerationLabels where
 data DetectModerationLabelsResponse =
   DetectModerationLabelsResponse'
     { _dmlrsModerationLabels :: !(Maybe [ModerationLabel])
-    , _dmlrsResponseStatus :: !Int
+    , _dmlrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

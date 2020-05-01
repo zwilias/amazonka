@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,8 +27,8 @@ import Network.AWS.Prelude
 data AliasListEntry =
   AliasListEntry'
     { _aleTargetKeyId :: !(Maybe Text)
-    , _aleAliasName :: !(Maybe Text)
-    , _aleAliasARN :: !(Maybe Text)
+    , _aleAliasName   :: !(Maybe Text)
+    , _aleAliasARN    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -135,15 +135,15 @@ instance ToJSON GrantConstraints where
 -- /See:/ 'grantListEntry' smart constructor.
 data GrantListEntry =
   GrantListEntry'
-    { _gleKeyId :: !(Maybe Text)
+    { _gleKeyId             :: !(Maybe Text)
     , _gleRetiringPrincipal :: !(Maybe Text)
-    , _gleIssuingAccount :: !(Maybe Text)
-    , _gleGrantId :: !(Maybe Text)
-    , _gleConstraints :: !(Maybe GrantConstraints)
-    , _gleGranteePrincipal :: !(Maybe Text)
-    , _gleName :: !(Maybe Text)
-    , _gleCreationDate :: !(Maybe POSIX)
-    , _gleOperations :: !(Maybe [GrantOperation])
+    , _gleIssuingAccount    :: !(Maybe Text)
+    , _gleGrantId           :: !(Maybe Text)
+    , _gleConstraints       :: !(Maybe GrantConstraints)
+    , _gleGranteePrincipal  :: !(Maybe Text)
+    , _gleName              :: !(Maybe Text)
+    , _gleCreationDate      :: !(Maybe POSIX)
+    , _gleOperations        :: !(Maybe [GrantOperation])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -247,7 +247,7 @@ instance NFData GrantListEntry
 -- /See:/ 'keyListEntry' smart constructor.
 data KeyListEntry =
   KeyListEntry'
-    { _kleKeyId :: !(Maybe Text)
+    { _kleKeyId  :: !(Maybe Text)
     , _kleKeyARN :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -289,19 +289,19 @@ instance NFData KeyListEntry
 -- /See:/ 'keyMetadata' smart constructor.
 data KeyMetadata =
   KeyMetadata'
-    { _kmOrigin :: !(Maybe OriginType)
+    { _kmOrigin          :: !(Maybe OriginType)
     , _kmExpirationModel :: !(Maybe ExpirationModelType)
-    , _kmKeyManager :: !(Maybe KeyManagerType)
-    , _kmEnabled :: !(Maybe Bool)
-    , _kmValidTo :: !(Maybe POSIX)
-    , _kmARN :: !(Maybe Text)
-    , _kmKeyState :: !(Maybe KeyState)
-    , _kmAWSAccountId :: !(Maybe Text)
-    , _kmKeyUsage :: !(Maybe KeyUsageType)
-    , _kmCreationDate :: !(Maybe POSIX)
-    , _kmDeletionDate :: !(Maybe POSIX)
-    , _kmDescription :: !(Maybe Text)
-    , _kmKeyId :: !Text
+    , _kmKeyManager      :: !(Maybe KeyManagerType)
+    , _kmEnabled         :: !(Maybe Bool)
+    , _kmValidTo         :: !(Maybe POSIX)
+    , _kmARN             :: !(Maybe Text)
+    , _kmKeyState        :: !(Maybe KeyState)
+    , _kmAWSAccountId    :: !(Maybe Text)
+    , _kmKeyUsage        :: !(Maybe KeyUsageType)
+    , _kmCreationDate    :: !(Maybe POSIX)
+    , _kmDeletionDate    :: !(Maybe POSIX)
+    , _kmDescription     :: !(Maybe Text)
+    , _kmKeyId           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -433,8 +433,8 @@ instance NFData KeyMetadata
 -- | /See:/ 'listGrantsResponse' smart constructor.
 data ListGrantsResponse =
   ListGrantsResponse'
-    { _lgTruncated :: !(Maybe Bool)
-    , _lgGrants :: !(Maybe [GrantListEntry])
+    { _lgTruncated  :: !(Maybe Bool)
+    , _lgGrants     :: !(Maybe [GrantListEntry])
     , _lgNextMarker :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -487,7 +487,7 @@ instance NFData ListGrantsResponse
 -- /See:/ 'tag' smart constructor.
 data Tag =
   Tag'
-    { _tagTagKey :: !Text
+    { _tagTagKey   :: !Text
     , _tagTagValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.ServiceCatalog.Types.Product
 -- | /See:/ 'describeCopyProductStatus' smart constructor.
 data DescribeCopyProductStatus =
   DescribeCopyProductStatus'
-    { _dcpsAcceptLanguage :: !(Maybe Text)
+    { _dcpsAcceptLanguage   :: !(Maybe Text)
     , _dcpsCopyProductToken :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -116,10 +116,10 @@ instance ToQuery DescribeCopyProductStatus where
 -- | /See:/ 'describeCopyProductStatusResponse' smart constructor.
 data DescribeCopyProductStatusResponse =
   DescribeCopyProductStatusResponse'
-    { _dcpsrsTargetProductId :: !(Maybe Text)
+    { _dcpsrsTargetProductId   :: !(Maybe Text)
     , _dcpsrsCopyProductStatus :: !(Maybe CopyProductStatus)
-    , _dcpsrsStatusDetail :: !(Maybe Text)
-    , _dcpsrsResponseStatus :: !Int
+    , _dcpsrsStatusDetail      :: !(Maybe Text)
+    , _dcpsrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

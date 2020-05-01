@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -81,45 +81,45 @@ import Network.AWS.Response
 -- | /See:/ 'restoreDBInstanceFromS3' smart constructor.
 data RestoreDBInstanceFromS3 =
   RestoreDBInstanceFromS3'
-    { _rdifsEngineVersion :: !(Maybe Text)
-    , _rdifsDBSecurityGroups :: !(Maybe [Text])
-    , _rdifsStorageEncrypted :: !(Maybe Bool)
-    , _rdifsMasterUserPassword :: !(Maybe Text)
-    , _rdifsPubliclyAccessible :: !(Maybe Bool)
-    , _rdifsAutoMinorVersionUpgrade :: !(Maybe Bool)
-    , _rdifsMasterUsername :: !(Maybe Text)
-    , _rdifsDBSubnetGroupName :: !(Maybe Text)
-    , _rdifsMonitoringRoleARN :: !(Maybe Text)
-    , _rdifsIOPS :: !(Maybe Int)
-    , _rdifsMonitoringInterval :: !(Maybe Int)
-    , _rdifsLicenseModel :: !(Maybe Text)
-    , _rdifsPreferredMaintenanceWindow :: !(Maybe Text)
-    , _rdifsEnablePerformanceInsights :: !(Maybe Bool)
-    , _rdifsKMSKeyId :: !(Maybe Text)
-    , _rdifsDBParameterGroupName :: !(Maybe Text)
-    , _rdifsPreferredBackupWindow :: !(Maybe Text)
-    , _rdifsAvailabilityZone :: !(Maybe Text)
-    , _rdifsBackupRetentionPeriod :: !(Maybe Int)
-    , _rdifsPerformanceInsightsKMSKeyId :: !(Maybe Text)
-    , _rdifsVPCSecurityGroupIds :: !(Maybe [Text])
-    , _rdifsMultiAZ :: !(Maybe Bool)
-    , _rdifsS3Prefix :: !(Maybe Text)
-    , _rdifsAllocatedStorage :: !(Maybe Int)
-    , _rdifsOptionGroupName :: !(Maybe Text)
-    , _rdifsCopyTagsToSnapshot :: !(Maybe Bool)
-    , _rdifsTags :: !(Maybe [Tag])
-    , _rdifsPort :: !(Maybe Int)
+    { _rdifsEngineVersion                   :: !(Maybe Text)
+    , _rdifsDBSecurityGroups                :: !(Maybe [Text])
+    , _rdifsStorageEncrypted                :: !(Maybe Bool)
+    , _rdifsMasterUserPassword              :: !(Maybe Text)
+    , _rdifsPubliclyAccessible              :: !(Maybe Bool)
+    , _rdifsAutoMinorVersionUpgrade         :: !(Maybe Bool)
+    , _rdifsMasterUsername                  :: !(Maybe Text)
+    , _rdifsDBSubnetGroupName               :: !(Maybe Text)
+    , _rdifsMonitoringRoleARN               :: !(Maybe Text)
+    , _rdifsIOPS                            :: !(Maybe Int)
+    , _rdifsMonitoringInterval              :: !(Maybe Int)
+    , _rdifsLicenseModel                    :: !(Maybe Text)
+    , _rdifsPreferredMaintenanceWindow      :: !(Maybe Text)
+    , _rdifsEnablePerformanceInsights       :: !(Maybe Bool)
+    , _rdifsKMSKeyId                        :: !(Maybe Text)
+    , _rdifsDBParameterGroupName            :: !(Maybe Text)
+    , _rdifsPreferredBackupWindow           :: !(Maybe Text)
+    , _rdifsAvailabilityZone                :: !(Maybe Text)
+    , _rdifsBackupRetentionPeriod           :: !(Maybe Int)
+    , _rdifsPerformanceInsightsKMSKeyId     :: !(Maybe Text)
+    , _rdifsVPCSecurityGroupIds             :: !(Maybe [Text])
+    , _rdifsMultiAZ                         :: !(Maybe Bool)
+    , _rdifsS3Prefix                        :: !(Maybe Text)
+    , _rdifsAllocatedStorage                :: !(Maybe Int)
+    , _rdifsOptionGroupName                 :: !(Maybe Text)
+    , _rdifsCopyTagsToSnapshot              :: !(Maybe Bool)
+    , _rdifsTags                            :: !(Maybe [Tag])
+    , _rdifsPort                            :: !(Maybe Int)
     , _rdifsEnableIAMDatabaseAuthentication :: !(Maybe Bool)
-    , _rdifsStorageType :: !(Maybe Text)
-    , _rdifsEnableCloudwatchLogsExports :: !(Maybe [Text])
-    , _rdifsDBName :: !(Maybe Text)
-    , _rdifsDBInstanceIdentifier :: !Text
-    , _rdifsDBInstanceClass :: !Text
-    , _rdifsEngine :: !Text
-    , _rdifsSourceEngine :: !Text
-    , _rdifsSourceEngineVersion :: !Text
-    , _rdifsS3BucketName :: !Text
-    , _rdifsS3IngestionRoleARN :: !Text
+    , _rdifsStorageType                     :: !(Maybe Text)
+    , _rdifsEnableCloudwatchLogsExports     :: !(Maybe [Text])
+    , _rdifsDBName                          :: !(Maybe Text)
+    , _rdifsDBInstanceIdentifier            :: !Text
+    , _rdifsDBInstanceClass                 :: !Text
+    , _rdifsEngine                          :: !Text
+    , _rdifsSourceEngine                    :: !Text
+    , _rdifsSourceEngineVersion             :: !Text
+    , _rdifsS3BucketName                    :: !Text
+    , _rdifsS3IngestionRoleARN              :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -528,7 +528,7 @@ instance ToQuery RestoreDBInstanceFromS3 where
 -- | /See:/ 'restoreDBInstanceFromS3Response' smart constructor.
 data RestoreDBInstanceFromS3Response =
   RestoreDBInstanceFromS3Response'
-    { _rdifsrsDBInstance :: !(Maybe DBInstance)
+    { _rdifsrsDBInstance     :: !(Maybe DBInstance)
     , _rdifsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

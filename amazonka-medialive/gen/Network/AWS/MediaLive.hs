@@ -1236,8 +1236,8 @@ import Network.AWS.MediaLive.DescribeChannel
 import Network.AWS.MediaLive.DescribeInput
 import Network.AWS.MediaLive.DescribeInputSecurityGroup
 import Network.AWS.MediaLive.ListChannels
-import Network.AWS.MediaLive.ListInputSecurityGroups
 import Network.AWS.MediaLive.ListInputs
+import Network.AWS.MediaLive.ListInputSecurityGroups
 import Network.AWS.MediaLive.StartChannel
 import Network.AWS.MediaLive.StopChannel
 import Network.AWS.MediaLive.Types

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -74,15 +74,15 @@ import Network.AWS.SWF.Types.Product
 data RegisterActivityType =
   RegisterActivityType'
     { _ratDefaultTaskScheduleToStartTimeout :: !(Maybe Text)
-    , _ratDefaultTaskList :: !(Maybe TaskList)
-    , _ratDefaultTaskPriority :: !(Maybe Text)
-    , _ratDefaultTaskHeartbeatTimeout :: !(Maybe Text)
+    , _ratDefaultTaskList                   :: !(Maybe TaskList)
+    , _ratDefaultTaskPriority               :: !(Maybe Text)
+    , _ratDefaultTaskHeartbeatTimeout       :: !(Maybe Text)
     , _ratDefaultTaskScheduleToCloseTimeout :: !(Maybe Text)
-    , _ratDefaultTaskStartToCloseTimeout :: !(Maybe Text)
-    , _ratDescription :: !(Maybe Text)
-    , _ratDomain :: !Text
-    , _ratName :: !Text
-    , _ratVersion :: !Text
+    , _ratDefaultTaskStartToCloseTimeout    :: !(Maybe Text)
+    , _ratDescription                       :: !(Maybe Text)
+    , _ratDomain                            :: !Text
+    , _ratName                              :: !Text
+    , _ratVersion                           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

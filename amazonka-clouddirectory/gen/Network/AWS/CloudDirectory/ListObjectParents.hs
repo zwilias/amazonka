@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,10 +49,10 @@ import Network.AWS.Response
 data ListObjectParents =
   ListObjectParents'
     { _lopConsistencyLevel :: !(Maybe ConsistencyLevel)
-    , _lopNextToken :: !(Maybe Text)
-    , _lopMaxResults :: !(Maybe Nat)
-    , _lopDirectoryARN :: !Text
-    , _lopObjectReference :: !ObjectReference
+    , _lopNextToken        :: !(Maybe Text)
+    , _lopMaxResults       :: !(Maybe Nat)
+    , _lopDirectoryARN     :: !Text
+    , _lopObjectReference  :: !ObjectReference
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -144,8 +144,8 @@ instance ToQuery ListObjectParents where
 -- | /See:/ 'listObjectParentsResponse' smart constructor.
 data ListObjectParentsResponse =
   ListObjectParentsResponse'
-    { _lrsNextToken :: !(Maybe Text)
-    , _lrsParents :: !(Maybe (Map Text Text))
+    { _lrsNextToken      :: !(Maybe Text)
+    , _lrsParents        :: !(Maybe (Map Text Text))
     , _lrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,9 +49,9 @@ import Network.AWS.Response
 -- /See:/ 'describeVPCPeeringConnections' smart constructor.
 data DescribeVPCPeeringConnections =
   DescribeVPCPeeringConnections'
-    { _dvpcpcFilters :: !(Maybe [Filter])
+    { _dvpcpcFilters                 :: !(Maybe [Filter])
     , _dvpcpcVPCPeeringConnectionIds :: !(Maybe [Text])
-    , _dvpcpcDryRun :: !(Maybe Bool)
+    , _dvpcpcDryRun                  :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -130,7 +130,7 @@ instance ToQuery DescribeVPCPeeringConnections where
 data DescribeVPCPeeringConnectionsResponse =
   DescribeVPCPeeringConnectionsResponse'
     { _dvpcpcrsVPCPeeringConnections :: !(Maybe [VPCPeeringConnection])
-    , _dvpcpcrsResponseStatus :: !Int
+    , _dvpcpcrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

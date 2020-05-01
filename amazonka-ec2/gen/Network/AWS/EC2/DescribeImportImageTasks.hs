@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,11 +52,11 @@ import Network.AWS.Response
 -- /See:/ 'describeImportImageTasks' smart constructor.
 data DescribeImportImageTasks =
   DescribeImportImageTasks'
-    { _diitFilters :: !(Maybe [Filter])
+    { _diitFilters       :: !(Maybe [Filter])
     , _diitImportTaskIds :: !(Maybe [Text])
-    , _diitNextToken :: !(Maybe Text)
-    , _diitDryRun :: !(Maybe Bool)
-    , _diitMaxResults :: !(Maybe Int)
+    , _diitNextToken     :: !(Maybe Text)
+    , _diitDryRun        :: !(Maybe Bool)
+    , _diitMaxResults    :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -145,9 +145,9 @@ instance ToQuery DescribeImportImageTasks where
 -- /See:/ 'describeImportImageTasksResponse' smart constructor.
 data DescribeImportImageTasksResponse =
   DescribeImportImageTasksResponse'
-    { _diitrsNextToken :: !(Maybe Text)
+    { _diitrsNextToken        :: !(Maybe Text)
     , _diitrsImportImageTasks :: !(Maybe [ImportImageTask])
-    , _diitrsResponseStatus :: !Int
+    , _diitrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

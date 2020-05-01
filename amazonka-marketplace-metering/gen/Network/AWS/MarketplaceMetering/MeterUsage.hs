@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,11 +49,11 @@ import Network.AWS.Response
 -- | /See:/ 'meterUsage' smart constructor.
 data MeterUsage =
   MeterUsage'
-    { _muProductCode :: !Text
-    , _muTimestamp :: !POSIX
+    { _muProductCode    :: !Text
+    , _muTimestamp      :: !POSIX
     , _muUsageDimension :: !Text
-    , _muUsageQuantity :: !Nat
-    , _muDryRun :: !Bool
+    , _muUsageQuantity  :: !Nat
+    , _muDryRun         :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -149,7 +149,7 @@ instance ToQuery MeterUsage where
 data MeterUsageResponse =
   MeterUsageResponse'
     { _mursMeteringRecordId :: !(Maybe Text)
-    , _mursResponseStatus :: !Int
+    , _mursResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

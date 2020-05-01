@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,16 +26,16 @@ import Network.AWS.Prelude
 -- /See:/ 'jobExecution' smart constructor.
 data JobExecution =
   JobExecution'
-    { _jeStatus :: !(Maybe JobExecutionStatus)
-    , _jeJobId :: !(Maybe Text)
-    , _jeLastUpdatedAt :: !(Maybe Integer)
-    , _jeQueuedAt :: !(Maybe Integer)
-    , _jeJobDocument :: !(Maybe Text)
-    , _jeStatusDetails :: !(Maybe (Map Text Text))
+    { _jeStatus          :: !(Maybe JobExecutionStatus)
+    , _jeJobId           :: !(Maybe Text)
+    , _jeLastUpdatedAt   :: !(Maybe Integer)
+    , _jeQueuedAt        :: !(Maybe Integer)
+    , _jeJobDocument     :: !(Maybe Text)
+    , _jeStatusDetails   :: !(Maybe (Map Text Text))
     , _jeExecutionNumber :: !(Maybe Integer)
-    , _jeVersionNumber :: !(Maybe Integer)
-    , _jeStartedAt :: !(Maybe Integer)
-    , _jeThingName :: !(Maybe Text)
+    , _jeVersionNumber   :: !(Maybe Integer)
+    , _jeStartedAt       :: !(Maybe Integer)
+    , _jeThingName       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -144,7 +144,7 @@ instance NFData JobExecution
 -- /See:/ 'jobExecutionState' smart constructor.
 data JobExecutionState =
   JobExecutionState'
-    { _jesStatus :: !(Maybe JobExecutionStatus)
+    { _jesStatus        :: !(Maybe JobExecutionStatus)
     , _jesStatusDetails :: !(Maybe (Map Text Text))
     , _jesVersionNumber :: !(Maybe Integer)
     }
@@ -200,12 +200,12 @@ instance NFData JobExecutionState
 -- /See:/ 'jobExecutionSummary' smart constructor.
 data JobExecutionSummary =
   JobExecutionSummary'
-    { _jJobId :: !(Maybe Text)
-    , _jLastUpdatedAt :: !(Maybe Integer)
-    , _jQueuedAt :: !(Maybe Integer)
+    { _jJobId           :: !(Maybe Text)
+    , _jLastUpdatedAt   :: !(Maybe Integer)
+    , _jQueuedAt        :: !(Maybe Integer)
     , _jExecutionNumber :: !(Maybe Integer)
-    , _jVersionNumber :: !(Maybe Integer)
-    , _jStartedAt :: !(Maybe Integer)
+    , _jVersionNumber   :: !(Maybe Integer)
+    , _jStartedAt       :: !(Maybe Integer)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

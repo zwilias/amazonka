@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,13 +51,13 @@ import Network.AWS.Response
 -- | /See:/ 'createDeployment' smart constructor.
 data CreateDeployment =
   CreateDeployment'
-    { _cdCustomJSON :: !(Maybe Text)
-    , _cdAppId :: !(Maybe Text)
+    { _cdCustomJSON  :: !(Maybe Text)
+    , _cdAppId       :: !(Maybe Text)
     , _cdInstanceIds :: !(Maybe [Text])
-    , _cdLayerIds :: !(Maybe [Text])
-    , _cdComment :: !(Maybe Text)
-    , _cdStackId :: !Text
-    , _cdCommand :: !DeploymentCommand
+    , _cdLayerIds    :: !(Maybe [Text])
+    , _cdComment     :: !(Maybe Text)
+    , _cdStackId     :: !Text
+    , _cdCommand     :: !DeploymentCommand
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -170,7 +170,7 @@ instance ToQuery CreateDeployment where
 -- /See:/ 'createDeploymentResponse' smart constructor.
 data CreateDeploymentResponse =
   CreateDeploymentResponse'
-    { _cdrsDeploymentId :: !(Maybe Text)
+    { _cdrsDeploymentId   :: !(Maybe Text)
     , _cdrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

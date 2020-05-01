@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 data ModifyOptionGroup =
   ModifyOptionGroup'
     { _mogOptionsToInclude :: !(Maybe [OptionConfiguration])
-    , _mogOptionsToRemove :: !(Maybe [Text])
+    , _mogOptionsToRemove  :: !(Maybe [Text])
     , _mogApplyImmediately :: !(Maybe Bool)
-    , _mogOptionGroupName :: !Text
+    , _mogOptionGroupName  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -137,7 +137,7 @@ instance ToQuery ModifyOptionGroup where
 -- | /See:/ 'modifyOptionGroupResponse' smart constructor.
 data ModifyOptionGroupResponse =
   ModifyOptionGroupResponse'
-    { _mogrsOptionGroup :: !(Maybe OptionGroup)
+    { _mogrsOptionGroup    :: !(Maybe OptionGroup)
     , _mogrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 -- /See:/ 'createVPNGateway' smart constructor.
 data CreateVPNGateway =
   CreateVPNGateway'
-    { _cvgAmazonSideASN :: !(Maybe Integer)
+    { _cvgAmazonSideASN    :: !(Maybe Integer)
     , _cvgAvailabilityZone :: !(Maybe Text)
-    , _cvgDryRun :: !(Maybe Bool)
-    , _cvgType :: !GatewayType
+    , _cvgDryRun           :: !(Maybe Bool)
+    , _cvgType             :: !GatewayType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -135,7 +135,7 @@ instance ToQuery CreateVPNGateway where
 -- /See:/ 'createVPNGatewayResponse' smart constructor.
 data CreateVPNGatewayResponse =
   CreateVPNGatewayResponse'
-    { _cvgrsVPNGateway :: !(Maybe VPNGateway)
+    { _cvgrsVPNGateway     :: !(Maybe VPNGateway)
     , _cvgrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

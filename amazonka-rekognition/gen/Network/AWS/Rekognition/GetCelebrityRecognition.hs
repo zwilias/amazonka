@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -62,10 +62,10 @@ import Network.AWS.Response
 -- | /See:/ 'getCelebrityRecognition' smart constructor.
 data GetCelebrityRecognition =
   GetCelebrityRecognition'
-    { _gcrNextToken :: !(Maybe Text)
+    { _gcrNextToken  :: !(Maybe Text)
     , _gcrMaxResults :: !(Maybe Nat)
-    , _gcrSortBy :: !(Maybe CelebrityRecognitionSortBy)
-    , _gcrJobId :: !Text
+    , _gcrSortBy     :: !(Maybe CelebrityRecognitionSortBy)
+    , _gcrJobId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -153,11 +153,11 @@ instance ToQuery GetCelebrityRecognition where
 -- | /See:/ 'getCelebrityRecognitionResponse' smart constructor.
 data GetCelebrityRecognitionResponse =
   GetCelebrityRecognitionResponse'
-    { _gcrrsNextToken :: !(Maybe Text)
-    , _gcrrsVideoMetadata :: !(Maybe VideoMetadata)
-    , _gcrrsStatusMessage :: !(Maybe Text)
-    , _gcrrsCelebrities :: !(Maybe [CelebrityRecognition])
-    , _gcrrsJobStatus :: !(Maybe VideoJobStatus)
+    { _gcrrsNextToken      :: !(Maybe Text)
+    , _gcrrsVideoMetadata  :: !(Maybe VideoMetadata)
+    , _gcrrsStatusMessage  :: !(Maybe Text)
+    , _gcrrsCelebrities    :: !(Maybe [CelebrityRecognition])
+    , _gcrrsJobStatus      :: !(Maybe VideoJobStatus)
     , _gcrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.Response
 data StopDeployment =
   StopDeployment'
     { _sdAutoRollbackEnabled :: !(Maybe Bool)
-    , _sdDeploymentId :: !Text
+    , _sdDeploymentId        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -121,8 +121,8 @@ instance ToQuery StopDeployment where
 -- /See:/ 'stopDeploymentResponse' smart constructor.
 data StopDeploymentResponse =
   StopDeploymentResponse'
-    { _sdrsStatus :: !(Maybe StopStatus)
-    , _sdrsStatusMessage :: !(Maybe Text)
+    { _sdrsStatus         :: !(Maybe StopStatus)
+    , _sdrsStatusMessage  :: !(Maybe Text)
     , _sdrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,7 +53,7 @@ data CancelImportTask =
   CancelImportTask'
     { _citCancelReason :: !(Maybe Text)
     , _citImportTaskId :: !(Maybe Text)
-    , _citDryRun :: !(Maybe Bool)
+    , _citDryRun       :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,9 +124,9 @@ instance ToQuery CancelImportTask where
 -- /See:/ 'cancelImportTaskResponse' smart constructor.
 data CancelImportTaskResponse =
   CancelImportTaskResponse'
-    { _citrsState :: !(Maybe Text)
-    , _citrsImportTaskId :: !(Maybe Text)
-    , _citrsPreviousState :: !(Maybe Text)
+    { _citrsState          :: !(Maybe Text)
+    , _citrsImportTaskId   :: !(Maybe Text)
+    , _citrsPreviousState  :: !(Maybe Text)
     , _citrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

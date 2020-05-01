@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Response
 -- /See:/ 'createDBSnapshot' smart constructor.
 data CreateDBSnapshot =
   CreateDBSnapshot'
-    { _cdbsTags :: !(Maybe [Tag])
+    { _cdbsTags                 :: !(Maybe [Tag])
     , _cdbsDBSnapshotIdentifier :: !Text
     , _cdbsDBInstanceIdentifier :: !Text
     }
@@ -122,7 +122,7 @@ instance ToQuery CreateDBSnapshot where
 -- | /See:/ 'createDBSnapshotResponse' smart constructor.
 data CreateDBSnapshotResponse =
   CreateDBSnapshotResponse'
-    { _cdbsrsDBSnapshot :: !(Maybe DBSnapshot)
+    { _cdbsrsDBSnapshot     :: !(Maybe DBSnapshot)
     , _cdbsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

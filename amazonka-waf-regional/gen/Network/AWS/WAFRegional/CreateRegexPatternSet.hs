@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -59,7 +59,7 @@ import Network.AWS.WAFRegional.Types.Product
 -- | /See:/ 'createRegexPatternSet' smart constructor.
 data CreateRegexPatternSet =
   CreateRegexPatternSet'
-    { _crpsName :: !Text
+    { _crpsName        :: !Text
     , _crpsChangeToken :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -125,8 +125,8 @@ instance ToQuery CreateRegexPatternSet where
 data CreateRegexPatternSetResponse =
   CreateRegexPatternSetResponse'
     { _crpsrsRegexPatternSet :: !(Maybe RegexPatternSet)
-    , _crpsrsChangeToken :: !(Maybe Text)
-    , _crpsrsResponseStatus :: !Int
+    , _crpsrsChangeToken     :: !(Maybe Text)
+    , _crpsrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

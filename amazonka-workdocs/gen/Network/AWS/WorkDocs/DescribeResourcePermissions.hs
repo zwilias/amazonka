@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,11 +48,11 @@ import Network.AWS.WorkDocs.Types.Product
 -- | /See:/ 'describeResourcePermissions' smart constructor.
 data DescribeResourcePermissions =
   DescribeResourcePermissions'
-    { _drpPrincipalId :: !(Maybe Text)
+    { _drpPrincipalId         :: !(Maybe Text)
     , _drpAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _drpMarker :: !(Maybe Text)
-    , _drpLimit :: !(Maybe Nat)
-    , _drpResourceId :: !Text
+    , _drpMarker              :: !(Maybe Text)
+    , _drpLimit               :: !(Maybe Nat)
+    , _drpResourceId          :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -140,8 +140,8 @@ instance ToQuery DescribeResourcePermissions where
 -- | /See:/ 'describeResourcePermissionsResponse' smart constructor.
 data DescribeResourcePermissionsResponse =
   DescribeResourcePermissionsResponse'
-    { _drprsPrincipals :: !(Maybe [Principal])
-    , _drprsMarker :: !(Maybe Text)
+    { _drprsPrincipals     :: !(Maybe [Principal])
+    , _drprsMarker         :: !(Maybe Text)
     , _drprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

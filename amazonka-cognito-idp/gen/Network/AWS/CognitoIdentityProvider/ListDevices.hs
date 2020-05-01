@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,8 +51,8 @@ import Network.AWS.Response
 data ListDevices =
   ListDevices'
     { _ldPaginationToken :: !(Maybe Text)
-    , _ldLimit :: !(Maybe Nat)
-    , _ldAccessToken :: !(Sensitive Text)
+    , _ldLimit           :: !(Maybe Nat)
+    , _ldAccessToken     :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -134,8 +134,8 @@ instance ToQuery ListDevices where
 data ListDevicesResponse =
   ListDevicesResponse'
     { _ldrsPaginationToken :: !(Maybe Text)
-    , _ldrsDevices :: !(Maybe [DeviceType])
-    , _ldrsResponseStatus :: !Int
+    , _ldrsDevices         :: !(Maybe [DeviceType])
+    , _ldrsResponseStatus  :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

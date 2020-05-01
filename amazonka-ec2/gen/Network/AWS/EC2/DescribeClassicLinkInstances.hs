@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,11 +52,11 @@ import Network.AWS.Response
 -- /See:/ 'describeClassicLinkInstances' smart constructor.
 data DescribeClassicLinkInstances =
   DescribeClassicLinkInstances'
-    { _dcliFilters :: !(Maybe [Filter])
-    , _dcliNextToken :: !(Maybe Text)
+    { _dcliFilters     :: !(Maybe [Filter])
+    , _dcliNextToken   :: !(Maybe Text)
     , _dcliInstanceIds :: !(Maybe [Text])
-    , _dcliDryRun :: !(Maybe Bool)
-    , _dcliMaxResults :: !(Maybe Int)
+    , _dcliDryRun      :: !(Maybe Bool)
+    , _dcliMaxResults  :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -144,8 +144,8 @@ instance ToQuery DescribeClassicLinkInstances where
 -- /See:/ 'describeClassicLinkInstancesResponse' smart constructor.
 data DescribeClassicLinkInstancesResponse =
   DescribeClassicLinkInstancesResponse'
-    { _dclirsNextToken :: !(Maybe Text)
-    , _dclirsInstances :: !(Maybe [ClassicLinkInstance])
+    { _dclirsNextToken      :: !(Maybe Text)
+    , _dclirsInstances      :: !(Maybe [ClassicLinkInstance])
     , _dclirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

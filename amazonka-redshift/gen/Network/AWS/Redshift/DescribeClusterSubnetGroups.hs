@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -59,11 +59,11 @@ import Network.AWS.Response
 -- /See:/ 'describeClusterSubnetGroups' smart constructor.
 data DescribeClusterSubnetGroups =
   DescribeClusterSubnetGroups'
-    { _dcsgsTagValues :: !(Maybe [Text])
-    , _dcsgsTagKeys :: !(Maybe [Text])
+    { _dcsgsTagValues              :: !(Maybe [Text])
+    , _dcsgsTagKeys                :: !(Maybe [Text])
     , _dcsgsClusterSubnetGroupName :: !(Maybe Text)
-    , _dcsgsMarker :: !(Maybe Text)
-    , _dcsgsMaxRecords :: !(Maybe Int)
+    , _dcsgsMarker                 :: !(Maybe Text)
+    , _dcsgsMaxRecords             :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -164,8 +164,8 @@ instance ToQuery DescribeClusterSubnetGroups where
 data DescribeClusterSubnetGroupsResponse =
   DescribeClusterSubnetGroupsResponse'
     { _dcsgrsClusterSubnetGroups :: !(Maybe [ClusterSubnetGroup])
-    , _dcsgrsMarker :: !(Maybe Text)
-    , _dcsgrsResponseStatus :: !Int
+    , _dcsgrsMarker              :: !(Maybe Text)
+    , _dcsgrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

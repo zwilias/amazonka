@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,10 +48,10 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'getInventorySchema' smart constructor.
 data GetInventorySchema =
   GetInventorySchema'
-    { _gisTypeName :: !(Maybe Text)
+    { _gisTypeName   :: !(Maybe Text)
     , _gisAggregator :: !(Maybe Bool)
-    , _gisNextToken :: !(Maybe Text)
-    , _gisSubType :: !(Maybe Bool)
+    , _gisNextToken  :: !(Maybe Text)
+    , _gisSubType    :: !(Maybe Bool)
     , _gisMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -142,8 +142,8 @@ instance ToQuery GetInventorySchema where
 -- | /See:/ 'getInventorySchemaResponse' smart constructor.
 data GetInventorySchemaResponse =
   GetInventorySchemaResponse'
-    { _gisrsSchemas :: !(Maybe [InventoryItemSchema])
-    , _gisrsNextToken :: !(Maybe Text)
+    { _gisrsSchemas        :: !(Maybe [InventoryItemSchema])
+    , _gisrsNextToken      :: !(Maybe Text)
     , _gisrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

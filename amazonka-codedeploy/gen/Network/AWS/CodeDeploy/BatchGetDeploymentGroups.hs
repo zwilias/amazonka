@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Response
 -- /See:/ 'batchGetDeploymentGroups' smart constructor.
 data BatchGetDeploymentGroups =
   BatchGetDeploymentGroups'
-    { _bgdgApplicationName :: !Text
+    { _bgdgApplicationName      :: !Text
     , _bgdgDeploymentGroupNames :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -127,8 +127,8 @@ instance ToQuery BatchGetDeploymentGroups where
 data BatchGetDeploymentGroupsResponse =
   BatchGetDeploymentGroupsResponse'
     { _bgdgrsDeploymentGroupsInfo :: !(Maybe [DeploymentGroupInfo])
-    , _bgdgrsErrorMessage :: !(Maybe Text)
-    , _bgdgrsResponseStatus :: !Int
+    , _bgdgrsErrorMessage         :: !(Maybe Text)
+    , _bgdgrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

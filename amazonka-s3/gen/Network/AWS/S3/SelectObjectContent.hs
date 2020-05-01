@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,15 +53,15 @@ import Network.AWS.S3.Types.Product
 data SelectObjectContent =
   SelectObjectContent'
     { _socSSECustomerAlgorithm :: !(Maybe Text)
-    , _socSSECustomerKey :: !(Maybe (Sensitive Text))
-    , _socRequestProgress :: !(Maybe RequestProgress)
-    , _socSSECustomerKeyMD5 :: !(Maybe Text)
-    , _socBucket :: !BucketName
-    , _socKey :: !ObjectKey
-    , _socExpression :: !Text
-    , _socExpressionType :: !ExpressionType
-    , _socInputSerialization :: !InputSerialization
-    , _socOutputSerialization :: !OutputSerialization
+    , _socSSECustomerKey       :: !(Maybe (Sensitive Text))
+    , _socRequestProgress      :: !(Maybe RequestProgress)
+    , _socSSECustomerKeyMD5    :: !(Maybe Text)
+    , _socBucket               :: !BucketName
+    , _socKey                  :: !ObjectKey
+    , _socExpression           :: !Text
+    , _socExpressionType       :: !ExpressionType
+    , _socInputSerialization   :: !InputSerialization
+    , _socOutputSerialization  :: !OutputSerialization
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -203,7 +203,7 @@ instance ToXML SelectObjectContent where
 -- | /See:/ 'selectObjectContentResponse' smart constructor.
 data SelectObjectContentResponse =
   SelectObjectContentResponse'
-    { _socrsPayload :: !(Maybe SelectObjectContentEventStream)
+    { _socrsPayload        :: !(Maybe SelectObjectContentEventStream)
     , _socrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

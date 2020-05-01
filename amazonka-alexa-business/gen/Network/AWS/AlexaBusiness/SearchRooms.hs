@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,10 +51,10 @@ import Network.AWS.Response
 -- | /See:/ 'searchRooms' smart constructor.
 data SearchRooms =
   SearchRooms'
-    { _srFilters :: !(Maybe [Filter])
+    { _srFilters      :: !(Maybe [Filter])
     , _srSortCriteria :: !(Maybe [Sort])
-    , _srNextToken :: !(Maybe Text)
-    , _srMaxResults :: !(Maybe Nat)
+    , _srNextToken    :: !(Maybe Text)
+    , _srMaxResults   :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -143,9 +143,9 @@ instance ToQuery SearchRooms where
 -- | /See:/ 'searchRoomsResponse' smart constructor.
 data SearchRoomsResponse =
   SearchRoomsResponse'
-    { _srrsRooms :: !(Maybe [RoomData])
-    , _srrsNextToken :: !(Maybe Text)
-    , _srrsTotalCount :: !(Maybe Int)
+    { _srrsRooms          :: !(Maybe [RoomData])
+    , _srrsNextToken      :: !(Maybe Text)
+    , _srrsTotalCount     :: !(Maybe Int)
     , _srrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

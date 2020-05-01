@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,9 +44,9 @@ import Network.AWS.Response
 -- | /See:/ 'updateSSHPublicKey' smart constructor.
 data UpdateSSHPublicKey =
   UpdateSSHPublicKey'
-    { _uspkUserName :: !Text
+    { _uspkUserName       :: !Text
     , _uspkSSHPublicKeyId :: !Text
-    , _uspkStatus :: !StatusType
+    , _uspkStatus         :: !StatusType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

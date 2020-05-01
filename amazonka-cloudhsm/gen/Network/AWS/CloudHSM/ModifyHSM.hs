@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -59,11 +59,11 @@ import Network.AWS.Response
 data ModifyHSM =
   ModifyHSM'
     { _mhIAMRoleARN :: !(Maybe Text)
-    , _mhSubnetId :: !(Maybe Text)
-    , _mhSyslogIP :: !(Maybe Text)
+    , _mhSubnetId   :: !(Maybe Text)
+    , _mhSyslogIP   :: !(Maybe Text)
     , _mhExternalId :: !(Maybe Text)
-    , _mhEniIP :: !(Maybe Text)
-    , _mhHSMARN :: !Text
+    , _mhEniIP      :: !(Maybe Text)
+    , _mhHSMARN     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -163,7 +163,7 @@ instance ToQuery ModifyHSM where
 -- /See:/ 'modifyHSMResponse' smart constructor.
 data ModifyHSMResponse =
   ModifyHSMResponse'
-    { _mhsmrsHSMARN :: !(Maybe Text)
+    { _mhsmrsHSMARN         :: !(Maybe Text)
     , _mhsmrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

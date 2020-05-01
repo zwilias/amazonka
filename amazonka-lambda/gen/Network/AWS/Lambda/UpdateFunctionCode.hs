@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -76,13 +76,13 @@ import Network.AWS.Response
 data UpdateFunctionCode =
   UpdateFunctionCode'
     { _uS3ObjectVersion :: !(Maybe Text)
-    , _uS3Key :: !(Maybe Text)
-    , _uZipFile :: !(Maybe (Sensitive Base64))
-    , _uS3Bucket :: !(Maybe Text)
-    , _uDryRun :: !(Maybe Bool)
-    , _uRevisionId :: !(Maybe Text)
-    , _uPublish :: !(Maybe Bool)
-    , _uFunctionName :: !Text
+    , _uS3Key           :: !(Maybe Text)
+    , _uZipFile         :: !(Maybe (Sensitive Base64))
+    , _uS3Bucket        :: !(Maybe Text)
+    , _uDryRun          :: !(Maybe Bool)
+    , _uRevisionId      :: !(Maybe Text)
+    , _uPublish         :: !(Maybe Bool)
+    , _uFunctionName    :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

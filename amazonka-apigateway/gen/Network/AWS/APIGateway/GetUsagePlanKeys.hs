@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,9 +54,9 @@ import Network.AWS.Response
 -- /See:/ 'getUsagePlanKeys' smart constructor.
 data GetUsagePlanKeys =
   GetUsagePlanKeys'
-    { _gupkNameQuery :: !(Maybe Text)
-    , _gupkLimit :: !(Maybe Int)
-    , _gupkPosition :: !(Maybe Text)
+    { _gupkNameQuery   :: !(Maybe Text)
+    , _gupkLimit       :: !(Maybe Int)
+    , _gupkPosition    :: !(Maybe Text)
     , _gupkUsagePlanId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -142,8 +142,8 @@ instance ToQuery GetUsagePlanKeys where
 -- /See:/ 'getUsagePlanKeysResponse' smart constructor.
 data GetUsagePlanKeysResponse =
   GetUsagePlanKeysResponse'
-    { _gupkrsItems :: !(Maybe [UsagePlanKey])
-    , _gupkrsPosition :: !(Maybe Text)
+    { _gupkrsItems          :: !(Maybe [UsagePlanKey])
+    , _gupkrsPosition       :: !(Maybe Text)
     , _gupkrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

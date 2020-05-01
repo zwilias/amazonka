@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- | /See:/ 'createDataset' smart constructor.
 data CreateDataset =
   CreateDataset'
-    { _cdTriggers :: !(Maybe [DatasetTrigger])
+    { _cdTriggers    :: !(Maybe [DatasetTrigger])
     , _cdDatasetName :: !Text
-    , _cdActions :: !(List1 DatasetAction)
+    , _cdActions     :: !(List1 DatasetAction)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -119,8 +119,8 @@ instance ToQuery CreateDataset where
 -- | /See:/ 'createDatasetResponse' smart constructor.
 data CreateDatasetResponse =
   CreateDatasetResponse'
-    { _crsDatasetARN :: !(Maybe Text)
-    , _crsDatasetName :: !(Maybe Text)
+    { _crsDatasetARN     :: !(Maybe Text)
+    , _crsDatasetName    :: !(Maybe Text)
     , _crsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

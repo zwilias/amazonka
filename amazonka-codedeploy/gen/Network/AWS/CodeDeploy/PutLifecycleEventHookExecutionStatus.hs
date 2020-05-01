@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,8 +45,8 @@ import Network.AWS.Response
 -- | /See:/ 'putLifecycleEventHookExecutionStatus' smart constructor.
 data PutLifecycleEventHookExecutionStatus =
   PutLifecycleEventHookExecutionStatus'
-    { _plehesStatus :: !(Maybe LifecycleEventStatus)
-    , _plehesDeploymentId :: !(Maybe Text)
+    { _plehesStatus                        :: !(Maybe LifecycleEventStatus)
+    , _plehesDeploymentId                  :: !(Maybe Text)
     , _plehesLifecycleEventHookExecutionId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -129,7 +129,7 @@ instance ToQuery PutLifecycleEventHookExecutionStatus where
 data PutLifecycleEventHookExecutionStatusResponse =
   PutLifecycleEventHookExecutionStatusResponse'
     { _plehesrsLifecycleEventHookExecutionId :: !(Maybe Text)
-    , _plehesrsResponseStatus :: !Int
+    , _plehesrsResponseStatus                :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

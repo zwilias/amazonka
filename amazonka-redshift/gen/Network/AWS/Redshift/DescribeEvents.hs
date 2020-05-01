@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,13 +57,13 @@ import Network.AWS.Response
 -- /See:/ 'describeEvents' smart constructor.
 data DescribeEvents =
   DescribeEvents'
-    { _deStartTime :: !(Maybe ISO8601)
-    , _deSourceType :: !(Maybe SourceType)
+    { _deStartTime        :: !(Maybe ISO8601)
+    , _deSourceType       :: !(Maybe SourceType)
     , _deSourceIdentifier :: !(Maybe Text)
-    , _deMarker :: !(Maybe Text)
-    , _deMaxRecords :: !(Maybe Int)
-    , _deEndTime :: !(Maybe ISO8601)
-    , _deDuration :: !(Maybe Int)
+    , _deMarker           :: !(Maybe Text)
+    , _deMaxRecords       :: !(Maybe Int)
+    , _deEndTime          :: !(Maybe ISO8601)
+    , _deDuration         :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -174,8 +174,8 @@ instance ToQuery DescribeEvents where
 -- /See:/ 'describeEventsResponse' smart constructor.
 data DescribeEventsResponse =
   DescribeEventsResponse'
-    { _dersEvents :: !(Maybe [Event])
-    , _dersMarker :: !(Maybe Text)
+    { _dersEvents         :: !(Maybe [Event])
+    , _dersMarker         :: !(Maybe Text)
     , _dersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

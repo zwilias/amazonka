@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,10 +51,10 @@ import Network.AWS.Response
 -- | /See:/ 'searchDevices' smart constructor.
 data SearchDevices =
   SearchDevices'
-    { _sdFilters :: !(Maybe [Filter])
+    { _sdFilters      :: !(Maybe [Filter])
     , _sdSortCriteria :: !(Maybe [Sort])
-    , _sdNextToken :: !(Maybe Text)
-    , _sdMaxResults :: !(Maybe Nat)
+    , _sdNextToken    :: !(Maybe Text)
+    , _sdMaxResults   :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -143,9 +143,9 @@ instance ToQuery SearchDevices where
 -- | /See:/ 'searchDevicesResponse' smart constructor.
 data SearchDevicesResponse =
   SearchDevicesResponse'
-    { _sdrsNextToken :: !(Maybe Text)
-    , _sdrsDevices :: !(Maybe [DeviceData])
-    , _sdrsTotalCount :: !(Maybe Int)
+    { _sdrsNextToken      :: !(Maybe Text)
+    , _sdrsDevices        :: !(Maybe [DeviceData])
+    , _sdrsTotalCount     :: !(Maybe Int)
     , _sdrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

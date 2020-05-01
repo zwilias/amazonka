@@ -717,11 +717,11 @@ import Network.AWS.IAM.DeletePolicyVersion
 import Network.AWS.IAM.DeleteRole
 import Network.AWS.IAM.DeleteRolePolicy
 import Network.AWS.IAM.DeleteSAMLProvider
-import Network.AWS.IAM.DeleteSSHPublicKey
 import Network.AWS.IAM.DeleteServerCertificate
 import Network.AWS.IAM.DeleteServiceLinkedRole
 import Network.AWS.IAM.DeleteServiceSpecificCredential
 import Network.AWS.IAM.DeleteSigningCertificate
+import Network.AWS.IAM.DeleteSSHPublicKey
 import Network.AWS.IAM.DeleteUser
 import Network.AWS.IAM.DeleteUserPolicy
 import Network.AWS.IAM.DeleteVirtualMFADevice
@@ -747,9 +747,9 @@ import Network.AWS.IAM.GetPolicyVersion
 import Network.AWS.IAM.GetRole
 import Network.AWS.IAM.GetRolePolicy
 import Network.AWS.IAM.GetSAMLProvider
-import Network.AWS.IAM.GetSSHPublicKey
 import Network.AWS.IAM.GetServerCertificate
 import Network.AWS.IAM.GetServiceLinkedRoleDeletionStatus
+import Network.AWS.IAM.GetSSHPublicKey
 import Network.AWS.IAM.GetUser
 import Network.AWS.IAM.GetUserPolicy
 import Network.AWS.IAM.ListAccessKeys
@@ -770,10 +770,10 @@ import Network.AWS.IAM.ListPolicyVersions
 import Network.AWS.IAM.ListRolePolicies
 import Network.AWS.IAM.ListRoles
 import Network.AWS.IAM.ListSAMLProviders
-import Network.AWS.IAM.ListSSHPublicKeys
 import Network.AWS.IAM.ListServerCertificates
 import Network.AWS.IAM.ListServiceSpecificCredentials
 import Network.AWS.IAM.ListSigningCertificates
+import Network.AWS.IAM.ListSSHPublicKeys
 import Network.AWS.IAM.ListUserPolicies
 import Network.AWS.IAM.ListUsers
 import Network.AWS.IAM.ListVirtualMFADevices
@@ -798,14 +798,14 @@ import Network.AWS.IAM.UpdateOpenIdConnectProviderThumbprint
 import Network.AWS.IAM.UpdateRole
 import Network.AWS.IAM.UpdateRoleDescription
 import Network.AWS.IAM.UpdateSAMLProvider
-import Network.AWS.IAM.UpdateSSHPublicKey
 import Network.AWS.IAM.UpdateServerCertificate
 import Network.AWS.IAM.UpdateServiceSpecificCredential
 import Network.AWS.IAM.UpdateSigningCertificate
+import Network.AWS.IAM.UpdateSSHPublicKey
 import Network.AWS.IAM.UpdateUser
-import Network.AWS.IAM.UploadSSHPublicKey
 import Network.AWS.IAM.UploadServerCertificate
 import Network.AWS.IAM.UploadSigningCertificate
+import Network.AWS.IAM.UploadSSHPublicKey
 import Network.AWS.IAM.Waiters
 {- $errors
 Error matchers are designed for use with the functions provided by

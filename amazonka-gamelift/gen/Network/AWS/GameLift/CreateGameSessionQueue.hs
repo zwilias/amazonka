@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -69,9 +69,9 @@ import Network.AWS.Response
 data CreateGameSessionQueue =
   CreateGameSessionQueue'
     { _cgsqPlayerLatencyPolicies :: !(Maybe [PlayerLatencyPolicy])
-    , _cgsqTimeoutInSeconds :: !(Maybe Nat)
-    , _cgsqDestinations :: !(Maybe [GameSessionQueueDestination])
-    , _cgsqName :: !Text
+    , _cgsqTimeoutInSeconds      :: !(Maybe Nat)
+    , _cgsqDestinations          :: !(Maybe [GameSessionQueueDestination])
+    , _cgsqName                  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -164,7 +164,7 @@ instance ToQuery CreateGameSessionQueue where
 data CreateGameSessionQueueResponse =
   CreateGameSessionQueueResponse'
     { _cgsqrsGameSessionQueue :: !(Maybe GameSessionQueue)
-    , _cgsqrsResponseStatus :: !Int
+    , _cgsqrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

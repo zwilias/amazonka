@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,11 +49,11 @@ import Network.AWS.Response
 -- | /See:/ 'registerScalableTarget' smart constructor.
 data RegisterScalableTarget =
   RegisterScalableTarget'
-    { _rstMaxCapacity :: !(Maybe Int)
-    , _rstMinCapacity :: !(Maybe Int)
-    , _rstRoleARN :: !(Maybe Text)
-    , _rstServiceNamespace :: !ServiceNamespace
-    , _rstResourceId :: !Text
+    { _rstMaxCapacity       :: !(Maybe Int)
+    , _rstMinCapacity       :: !(Maybe Int)
+    , _rstRoleARN           :: !(Maybe Text)
+    , _rstServiceNamespace  :: !ServiceNamespace
+    , _rstResourceId        :: !Text
     , _rstScalableDimension :: !ScalableDimension
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

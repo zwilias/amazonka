@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -101,14 +101,14 @@ instance ToQuery GetResourceDefinition where
 -- | /See:/ 'getResourceDefinitionResponse' smart constructor.
 data GetResourceDefinitionResponse =
   GetResourceDefinitionResponse'
-    { _grdrsLatestVersionARN :: !(Maybe Text)
-    , _grdrsARN :: !(Maybe Text)
-    , _grdrsName :: !(Maybe Text)
-    , _grdrsCreationTimestamp :: !(Maybe Text)
-    , _grdrsId :: !(Maybe Text)
-    , _grdrsLatestVersion :: !(Maybe Text)
+    { _grdrsLatestVersionARN     :: !(Maybe Text)
+    , _grdrsARN                  :: !(Maybe Text)
+    , _grdrsName                 :: !(Maybe Text)
+    , _grdrsCreationTimestamp    :: !(Maybe Text)
+    , _grdrsId                   :: !(Maybe Text)
+    , _grdrsLatestVersion        :: !(Maybe Text)
     , _grdrsLastUpdatedTimestamp :: !(Maybe Text)
-    , _grdrsResponseStatus :: !Int
+    , _grdrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -59,13 +59,13 @@ import Network.AWS.S3.Types.Product
 -- | /See:/ 'listObjects' smart constructor.
 data ListObjects =
   ListObjects'
-    { _loPrefix :: !(Maybe Text)
+    { _loPrefix       :: !(Maybe Text)
     , _loEncodingType :: !(Maybe EncodingType)
     , _loRequestPayer :: !(Maybe RequestPayer)
-    , _loMarker :: !(Maybe Text)
-    , _loMaxKeys :: !(Maybe Int)
-    , _loDelimiter :: !(Maybe Delimiter)
-    , _loBucket :: !BucketName
+    , _loMarker       :: !(Maybe Text)
+    , _loMaxKeys      :: !(Maybe Int)
+    , _loDelimiter    :: !(Maybe Delimiter)
+    , _loBucket       :: !BucketName
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -182,16 +182,16 @@ instance ToQuery ListObjects where
 -- | /See:/ 'listObjectsResponse' smart constructor.
 data ListObjectsResponse =
   ListObjectsResponse'
-    { _lorsContents :: !(Maybe [Object])
-    , _lorsPrefix :: !(Maybe Text)
+    { _lorsContents       :: !(Maybe [Object])
+    , _lorsPrefix         :: !(Maybe Text)
     , _lorsCommonPrefixes :: !(Maybe [CommonPrefix])
-    , _lorsEncodingType :: !(Maybe EncodingType)
-    , _lorsName :: !(Maybe BucketName)
-    , _lorsMarker :: !(Maybe Text)
-    , _lorsNextMarker :: !(Maybe Text)
-    , _lorsMaxKeys :: !(Maybe Int)
-    , _lorsIsTruncated :: !(Maybe Bool)
-    , _lorsDelimiter :: !(Maybe Delimiter)
+    , _lorsEncodingType   :: !(Maybe EncodingType)
+    , _lorsName           :: !(Maybe BucketName)
+    , _lorsMarker         :: !(Maybe Text)
+    , _lorsNextMarker     :: !(Maybe Text)
+    , _lorsMaxKeys        :: !(Maybe Int)
+    , _lorsIsTruncated    :: !(Maybe Bool)
+    , _lorsDelimiter      :: !(Maybe Delimiter)
     , _lorsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

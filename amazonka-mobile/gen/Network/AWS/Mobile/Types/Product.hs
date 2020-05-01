@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,11 +27,11 @@ import Network.AWS.Prelude
 data BundleDetails =
   BundleDetails'
     { _bdAvailablePlatforms :: !(Maybe [Platform])
-    , _bdBundleId :: !(Maybe Text)
-    , _bdVersion :: !(Maybe Text)
-    , _bdIconURL :: !(Maybe Text)
-    , _bdTitle :: !(Maybe Text)
-    , _bdDescription :: !(Maybe Text)
+    , _bdBundleId           :: !(Maybe Text)
+    , _bdVersion            :: !(Maybe Text)
+    , _bdIconURL            :: !(Maybe Text)
+    , _bdTitle              :: !(Maybe Text)
+    , _bdDescription        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -110,13 +110,13 @@ instance NFData BundleDetails
 -- /See:/ 'projectDetails' smart constructor.
 data ProjectDetails =
   ProjectDetails'
-    { _pdState :: !(Maybe ProjectState)
-    , _pdResources :: !(Maybe [Resource])
-    , _pdCreatedDate :: !(Maybe POSIX)
-    , _pdConsoleURL :: !(Maybe Text)
-    , _pdName :: !(Maybe Text)
-    , _pdRegion :: !(Maybe Text)
-    , _pdProjectId :: !(Maybe Text)
+    { _pdState           :: !(Maybe ProjectState)
+    , _pdResources       :: !(Maybe [Resource])
+    , _pdCreatedDate     :: !(Maybe POSIX)
+    , _pdConsoleURL      :: !(Maybe Text)
+    , _pdName            :: !(Maybe Text)
+    , _pdRegion          :: !(Maybe Text)
+    , _pdProjectId       :: !(Maybe Text)
     , _pdLastUpdatedDate :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -212,7 +212,7 @@ instance NFData ProjectDetails
 -- /See:/ 'projectSummary' smart constructor.
 data ProjectSummary =
   ProjectSummary'
-    { _psName :: !(Maybe Text)
+    { _psName      :: !(Maybe Text)
     , _psProjectId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -252,11 +252,11 @@ instance NFData ProjectSummary
 -- /See:/ 'resource' smart constructor.
 data Resource =
   Resource'
-    { _rFeature :: !(Maybe Text)
-    , _rArn :: !(Maybe Text)
-    , _rName :: !(Maybe Text)
+    { _rFeature    :: !(Maybe Text)
+    , _rArn        :: !(Maybe Text)
+    , _rName       :: !(Maybe Text)
     , _rAttributes :: !(Maybe (Map Text Text))
-    , _rType :: !(Maybe Text)
+    , _rType       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

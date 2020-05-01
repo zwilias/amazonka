@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -108,7 +108,7 @@ instance ToQuery GetEventSelectors where
 -- | /See:/ 'getEventSelectorsResponse' smart constructor.
 data GetEventSelectorsResponse =
   GetEventSelectorsResponse'
-    { _gesrsTrailARN :: !(Maybe Text)
+    { _gesrsTrailARN       :: !(Maybe Text)
     , _gesrsEventSelectors :: !(Maybe [EventSelector])
     , _gesrsResponseStatus :: !Int
     }

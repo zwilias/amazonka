@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 data DescribeStacks =
   DescribeStacks'
     { _dNextToken :: !(Maybe Text)
-    , _dNames :: !(Maybe [Text])
+    , _dNames     :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -105,8 +105,8 @@ instance ToQuery DescribeStacks where
 -- | /See:/ 'describeStacksResponse' smart constructor.
 data DescribeStacksResponse =
   DescribeStacksResponse'
-    { _desrsNextToken :: !(Maybe Text)
-    , _desrsStacks :: !(Maybe [Stack])
+    { _desrsNextToken      :: !(Maybe Text)
+    , _desrsStacks         :: !(Maybe [Stack])
     , _desrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

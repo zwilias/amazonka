@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.WorkDocs.Types.Product
 data UpdateDocumentVersion =
   UpdateDocumentVersion'
     { _udvAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _udvVersionStatus :: !(Maybe DocumentVersionStatus)
-    , _udvDocumentId :: !Text
-    , _udvVersionId :: !Text
+    , _udvVersionStatus       :: !(Maybe DocumentVersionStatus)
+    , _udvDocumentId          :: !Text
+    , _udvVersionId           :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

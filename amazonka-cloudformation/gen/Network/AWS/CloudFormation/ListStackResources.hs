@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -124,9 +124,9 @@ instance ToQuery ListStackResources where
 -- /See:/ 'listStackResourcesResponse' smart constructor.
 data ListStackResourcesResponse =
   ListStackResourcesResponse'
-    { _lsrrsNextToken :: !(Maybe Text)
+    { _lsrrsNextToken              :: !(Maybe Text)
     , _lsrrsStackResourceSummaries :: !(Maybe [StackResourceSummary])
-    , _lsrrsResponseStatus :: !Int
+    , _lsrrsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

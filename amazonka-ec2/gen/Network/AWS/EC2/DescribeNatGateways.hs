@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,9 +55,9 @@ import Network.AWS.Response
 data DescribeNatGateways =
   DescribeNatGateways'
     { _dngNatGatewayIds :: !(Maybe [Text])
-    , _dngNextToken :: !(Maybe Text)
-    , _dngFilter :: !(Maybe [Filter])
-    , _dngMaxResults :: !(Maybe Int)
+    , _dngNextToken     :: !(Maybe Text)
+    , _dngFilter        :: !(Maybe [Filter])
+    , _dngMaxResults    :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -144,8 +144,8 @@ instance ToQuery DescribeNatGateways where
 -- /See:/ 'describeNatGatewaysResponse' smart constructor.
 data DescribeNatGatewaysResponse =
   DescribeNatGatewaysResponse'
-    { _dngrsNatGateways :: !(Maybe [NatGateway])
-    , _dngrsNextToken :: !(Maybe Text)
+    { _dngrsNatGateways    :: !(Maybe [NatGateway])
+    , _dngrsNextToken      :: !(Maybe Text)
     , _dngrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -129,11 +129,11 @@ instance ToQuery DescribeLimits where
 -- /See:/ 'describeLimitsResponse' smart constructor.
 data DescribeLimitsResponse =
   DescribeLimitsResponse'
-    { _dlrsTableMaxWriteCapacityUnits :: !(Maybe Nat)
-    , _dlrsTableMaxReadCapacityUnits :: !(Maybe Nat)
+    { _dlrsTableMaxWriteCapacityUnits   :: !(Maybe Nat)
+    , _dlrsTableMaxReadCapacityUnits    :: !(Maybe Nat)
     , _dlrsAccountMaxWriteCapacityUnits :: !(Maybe Nat)
-    , _dlrsAccountMaxReadCapacityUnits :: !(Maybe Nat)
-    , _dlrsResponseStatus :: !Int
+    , _dlrsAccountMaxReadCapacityUnits  :: !(Maybe Nat)
+    , _dlrsResponseStatus               :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

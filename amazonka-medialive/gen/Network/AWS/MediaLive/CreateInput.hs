@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,12 +48,12 @@ import Network.AWS.Response
 -- /See:/ 'createInput' smart constructor.
 data CreateInput =
   CreateInput'
-    { _ciRequestId :: !(Maybe Text)
-    , _ciSources :: !(Maybe [InputSourceRequest])
+    { _ciRequestId           :: !(Maybe Text)
+    , _ciSources             :: !(Maybe [InputSourceRequest])
     , _ciInputSecurityGroups :: !(Maybe [Text])
-    , _ciDestinations :: !(Maybe [InputDestinationRequest])
-    , _ciName :: !(Maybe Text)
-    , _ciType :: !(Maybe InputType)
+    , _ciDestinations        :: !(Maybe [InputDestinationRequest])
+    , _ciName                :: !(Maybe Text)
+    , _ciType                :: !(Maybe InputType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -150,7 +150,7 @@ instance ToQuery CreateInput where
 -- /See:/ 'createInputResponse' smart constructor.
 data CreateInputResponse =
   CreateInputResponse'
-    { _cirsInput :: !(Maybe Input)
+    { _cirsInput          :: !(Maybe Input)
     , _cirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

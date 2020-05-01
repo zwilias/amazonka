@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,8 +44,8 @@ import Network.AWS.SageMaker.Types.Product
 -- | /See:/ 'updateNotebookInstance' smart constructor.
 data UpdateNotebookInstance =
   UpdateNotebookInstance'
-    { _uniInstanceType :: !(Maybe InstanceType)
-    , _uniRoleARN :: !(Maybe Text)
+    { _uniInstanceType         :: !(Maybe InstanceType)
+    , _uniRoleARN              :: !(Maybe Text)
     , _uniNotebookInstanceName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

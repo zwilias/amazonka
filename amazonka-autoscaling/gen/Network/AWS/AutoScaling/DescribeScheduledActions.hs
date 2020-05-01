@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,11 +52,11 @@ import Network.AWS.Response
 -- | /See:/ 'describeScheduledActions' smart constructor.
 data DescribeScheduledActions =
   DescribeScheduledActions'
-    { _dsasStartTime :: !(Maybe ISO8601)
-    , _dsasNextToken :: !(Maybe Text)
+    { _dsasStartTime            :: !(Maybe ISO8601)
+    , _dsasNextToken            :: !(Maybe Text)
     , _dsasAutoScalingGroupName :: !(Maybe Text)
-    , _dsasMaxRecords :: !(Maybe Int)
-    , _dsasEndTime :: !(Maybe ISO8601)
+    , _dsasMaxRecords           :: !(Maybe Int)
+    , _dsasEndTime              :: !(Maybe ISO8601)
     , _dsasScheduledActionNames :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -162,8 +162,8 @@ instance ToQuery DescribeScheduledActions where
 data DescribeScheduledActionsResponse =
   DescribeScheduledActionsResponse'
     { _dsarsScheduledUpdateGroupActions :: !(Maybe [ScheduledUpdateGroupAction])
-    , _dsarsNextToken :: !(Maybe Text)
-    , _dsarsResponseStatus :: !Int
+    , _dsarsNextToken                   :: !(Maybe Text)
+    , _dsarsResponseStatus              :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

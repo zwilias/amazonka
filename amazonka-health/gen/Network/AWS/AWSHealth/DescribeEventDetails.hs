@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- | /See:/ 'describeEventDetails' smart constructor.
 data DescribeEventDetails =
   DescribeEventDetails'
-    { _dedLocale :: !(Maybe Text)
+    { _dedLocale    :: !(Maybe Text)
     , _dedEventARNs :: !(List1 Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -112,8 +112,8 @@ instance ToQuery DescribeEventDetails where
 -- | /See:/ 'describeEventDetailsResponse' smart constructor.
 data DescribeEventDetailsResponse =
   DescribeEventDetailsResponse'
-    { _dedrsSuccessfulSet :: !(Maybe [EventDetails])
-    , _dedrsFailedSet :: !(Maybe [EventDetailsErrorItem])
+    { _dedrsSuccessfulSet  :: !(Maybe [EventDetails])
+    , _dedrsFailedSet      :: !(Maybe [EventDetailsErrorItem])
     , _dedrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

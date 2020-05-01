@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,10 +63,10 @@ import Network.AWS.SecretsManager.Types.Product
 -- | /See:/ 'listSecretVersionIds' smart constructor.
 data ListSecretVersionIds =
   ListSecretVersionIds'
-    { _lsviNextToken :: !(Maybe Text)
+    { _lsviNextToken         :: !(Maybe Text)
     , _lsviIncludeDeprecated :: !(Maybe Bool)
-    , _lsviMaxResults :: !(Maybe Nat)
-    , _lsviSecretId :: !Text
+    , _lsviMaxResults        :: !(Maybe Nat)
+    , _lsviSecretId          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -154,10 +154,10 @@ instance ToQuery ListSecretVersionIds where
 -- | /See:/ 'listSecretVersionIdsResponse' smart constructor.
 data ListSecretVersionIdsResponse =
   ListSecretVersionIdsResponse'
-    { _lsvirsARN :: !(Maybe Text)
-    , _lsvirsVersions :: !(Maybe [SecretVersionsListEntry])
-    , _lsvirsNextToken :: !(Maybe Text)
-    , _lsvirsName :: !(Maybe Text)
+    { _lsvirsARN            :: !(Maybe Text)
+    , _lsvirsVersions       :: !(Maybe [SecretVersionsListEntry])
+    , _lsvirsNextToken      :: !(Maybe Text)
+    , _lsvirsName           :: !(Maybe Text)
     , _lsvirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -77,22 +77,22 @@ import Network.AWS.Response
 -- /See:/ 'scan' smart constructor.
 data Scan =
   Scan'
-    { _sProjectionExpression :: !(Maybe Text)
-    , _sScanFilter :: !(Maybe (Map Text Condition))
-    , _sAttributesToGet :: !(Maybe (List1 Text))
-    , _sTotalSegments :: !(Maybe Nat)
-    , _sExpressionAttributeNames :: !(Maybe (Map Text Text))
-    , _sFilterExpression :: !(Maybe Text)
-    , _sConsistentRead :: !(Maybe Bool)
+    { _sProjectionExpression      :: !(Maybe Text)
+    , _sScanFilter                :: !(Maybe (Map Text Condition))
+    , _sAttributesToGet           :: !(Maybe (List1 Text))
+    , _sTotalSegments             :: !(Maybe Nat)
+    , _sExpressionAttributeNames  :: !(Maybe (Map Text Text))
+    , _sFilterExpression          :: !(Maybe Text)
+    , _sConsistentRead            :: !(Maybe Bool)
     , _sExpressionAttributeValues :: !(Maybe (Map Text AttributeValue))
-    , _sReturnConsumedCapacity :: !(Maybe ReturnConsumedCapacity)
-    , _sLimit :: !(Maybe Nat)
-    , _sSelect :: !(Maybe Select)
-    , _sSegment :: !(Maybe Nat)
-    , _sConditionalOperator :: !(Maybe ConditionalOperator)
-    , _sExclusiveStartKey :: !(Maybe (Map Text AttributeValue))
-    , _sIndexName :: !(Maybe Text)
-    , _sTableName :: !Text
+    , _sReturnConsumedCapacity    :: !(Maybe ReturnConsumedCapacity)
+    , _sLimit                     :: !(Maybe Nat)
+    , _sSelect                    :: !(Maybe Select)
+    , _sSegment                   :: !(Maybe Nat)
+    , _sConditionalOperator       :: !(Maybe ConditionalOperator)
+    , _sExclusiveStartKey         :: !(Maybe (Map Text AttributeValue))
+    , _sIndexName                 :: !(Maybe Text)
+    , _sTableName                 :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -295,11 +295,11 @@ instance ToQuery Scan where
 data ScanResponse =
   ScanResponse'
     { _srsLastEvaluatedKey :: !(Maybe (Map Text AttributeValue))
-    , _srsCount :: !(Maybe Int)
-    , _srsScannedCount :: !(Maybe Int)
-    , _srsItems :: !(Maybe [Map Text AttributeValue])
+    , _srsCount            :: !(Maybe Int)
+    , _srsScannedCount     :: !(Maybe Int)
+    , _srsItems            :: !(Maybe [Map Text AttributeValue])
     , _srsConsumedCapacity :: !(Maybe ConsumedCapacity)
-    , _srsResponseStatus :: !Int
+    , _srsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

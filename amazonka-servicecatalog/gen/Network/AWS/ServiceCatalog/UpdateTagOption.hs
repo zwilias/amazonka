@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,9 +45,9 @@ import Network.AWS.ServiceCatalog.Types.Product
 -- | /See:/ 'updateTagOption' smart constructor.
 data UpdateTagOption =
   UpdateTagOption'
-    { _utoValue :: !(Maybe Text)
+    { _utoValue  :: !(Maybe Text)
     , _utoActive :: !(Maybe Bool)
-    , _utoId :: !Text
+    , _utoId     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -119,7 +119,7 @@ instance ToQuery UpdateTagOption where
 data UpdateTagOptionResponse =
   UpdateTagOptionResponse'
     { _utorsTagOptionDetail :: !(Maybe TagOptionDetail)
-    , _utorsResponseStatus :: !Int
+    , _utorsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

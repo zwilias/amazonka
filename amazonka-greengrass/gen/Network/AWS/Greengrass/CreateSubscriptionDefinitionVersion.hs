@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 -- | /See:/ 'createSubscriptionDefinitionVersion' smart constructor.
 data CreateSubscriptionDefinitionVersion =
   CreateSubscriptionDefinitionVersion'
-    { _csdvAmznClientToken :: !(Maybe Text)
-    , _csdvSubscriptions :: !(Maybe [Subscription])
+    { _csdvAmznClientToken          :: !(Maybe Text)
+    , _csdvSubscriptions            :: !(Maybe [Subscription])
     , _csdvSubscriptionDefinitionId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -130,11 +130,11 @@ instance ToQuery CreateSubscriptionDefinitionVersion where
 -- | /See:/ 'createSubscriptionDefinitionVersionResponse' smart constructor.
 data CreateSubscriptionDefinitionVersionResponse =
   CreateSubscriptionDefinitionVersionResponse'
-    { _csdvrsARN :: !(Maybe Text)
+    { _csdvrsARN               :: !(Maybe Text)
     , _csdvrsCreationTimestamp :: !(Maybe Text)
-    , _csdvrsVersion :: !(Maybe Text)
-    , _csdvrsId :: !(Maybe Text)
-    , _csdvrsResponseStatus :: !Int
+    , _csdvrsVersion           :: !(Maybe Text)
+    , _csdvrsId                :: !(Maybe Text)
+    , _csdvrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

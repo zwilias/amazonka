@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -66,21 +66,21 @@ import Network.AWS.Response
 -- /See:/ 'createChangeSet' smart constructor.
 data CreateChangeSet =
   CreateChangeSet'
-    { _ccsChangeSetType :: !(Maybe ChangeSetType)
-    , _ccsUsePreviousTemplate :: !(Maybe Bool)
-    , _ccsClientToken :: !(Maybe Text)
-    , _ccsNotificationARNs :: !(Maybe [Text])
-    , _ccsParameters :: !(Maybe [Parameter])
-    , _ccsTemplateBody :: !(Maybe Text)
-    , _ccsTemplateURL :: !(Maybe Text)
-    , _ccsDescription :: !(Maybe Text)
-    , _ccsCapabilities :: !(Maybe [Capability])
+    { _ccsChangeSetType         :: !(Maybe ChangeSetType)
+    , _ccsUsePreviousTemplate   :: !(Maybe Bool)
+    , _ccsClientToken           :: !(Maybe Text)
+    , _ccsNotificationARNs      :: !(Maybe [Text])
+    , _ccsParameters            :: !(Maybe [Parameter])
+    , _ccsTemplateBody          :: !(Maybe Text)
+    , _ccsTemplateURL           :: !(Maybe Text)
+    , _ccsDescription           :: !(Maybe Text)
+    , _ccsCapabilities          :: !(Maybe [Capability])
     , _ccsRollbackConfiguration :: !(Maybe RollbackConfiguration)
-    , _ccsResourceTypes :: !(Maybe [Text])
-    , _ccsTags :: !(Maybe [Tag])
-    , _ccsRoleARN :: !(Maybe Text)
-    , _ccsStackName :: !Text
-    , _ccsChangeSetName :: !Text
+    , _ccsResourceTypes         :: !(Maybe [Text])
+    , _ccsTags                  :: !(Maybe [Tag])
+    , _ccsRoleARN               :: !(Maybe Text)
+    , _ccsStackName             :: !Text
+    , _ccsChangeSetName         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -258,8 +258,8 @@ instance ToQuery CreateChangeSet where
 -- /See:/ 'createChangeSetResponse' smart constructor.
 data CreateChangeSetResponse =
   CreateChangeSetResponse'
-    { _ccsrsId :: !(Maybe Text)
-    , _ccsrsStackId :: !(Maybe Text)
+    { _ccsrsId             :: !(Maybe Text)
+    , _ccsrsStackId        :: !(Maybe Text)
     , _ccsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

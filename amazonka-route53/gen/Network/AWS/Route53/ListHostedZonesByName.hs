@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -82,8 +82,8 @@ import Network.AWS.Route53.Types.Product
 data ListHostedZonesByName =
   ListHostedZonesByName'
     { _lhzbnHostedZoneId :: !(Maybe ResourceId)
-    , _lhzbnMaxItems :: !(Maybe Text)
-    , _lhzbnDNSName :: !(Maybe Text)
+    , _lhzbnMaxItems     :: !(Maybe Text)
+    , _lhzbnDNSName      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -156,14 +156,14 @@ instance ToQuery ListHostedZonesByName where
 -- /See:/ 'listHostedZonesByNameResponse' smart constructor.
 data ListHostedZonesByNameResponse =
   ListHostedZonesByNameResponse'
-    { _lhzbnrsHostedZoneId :: !(Maybe ResourceId)
+    { _lhzbnrsHostedZoneId     :: !(Maybe ResourceId)
     , _lhzbnrsNextHostedZoneId :: !(Maybe ResourceId)
-    , _lhzbnrsDNSName :: !(Maybe Text)
-    , _lhzbnrsNextDNSName :: !(Maybe Text)
-    , _lhzbnrsResponseStatus :: !Int
-    , _lhzbnrsHostedZones :: ![HostedZone]
-    , _lhzbnrsIsTruncated :: !Bool
-    , _lhzbnrsMaxItems :: !Text
+    , _lhzbnrsDNSName          :: !(Maybe Text)
+    , _lhzbnrsNextDNSName      :: !(Maybe Text)
+    , _lhzbnrsResponseStatus   :: !Int
+    , _lhzbnrsHostedZones      :: ![HostedZone]
+    , _lhzbnrsIsTruncated      :: !Bool
+    , _lhzbnrsMaxItems         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -71,9 +71,9 @@ import Network.AWS.WAFRegional.Types.Product
 -- | /See:/ 'updateRule' smart constructor.
 data UpdateRule =
   UpdateRule'
-    { _urRuleId :: !Text
+    { _urRuleId      :: !Text
     , _urChangeToken :: !Text
-    , _urUpdates :: ![RuleUpdate]
+    , _urUpdates     :: ![RuleUpdate]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -145,7 +145,7 @@ instance ToQuery UpdateRule where
 -- | /See:/ 'updateRuleResponse' smart constructor.
 data UpdateRuleResponse =
   UpdateRuleResponse'
-    { _urrsChangeToken :: !(Maybe Text)
+    { _urrsChangeToken    :: !(Maybe Text)
     , _urrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

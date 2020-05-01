@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,10 +51,10 @@ import Network.AWS.Response
 -- /See:/ 'describeDirectConnectGatewayAssociations' smart constructor.
 data DescribeDirectConnectGatewayAssociations =
   DescribeDirectConnectGatewayAssociations'
-    { _ddcgaVirtualGatewayId :: !(Maybe Text)
+    { _ddcgaVirtualGatewayId       :: !(Maybe Text)
     , _ddcgaDirectConnectGatewayId :: !(Maybe Text)
-    , _ddcgaNextToken :: !(Maybe Text)
-    , _ddcgaMaxResults :: !(Maybe Int)
+    , _ddcgaNextToken              :: !(Maybe Text)
+    , _ddcgaMaxResults             :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

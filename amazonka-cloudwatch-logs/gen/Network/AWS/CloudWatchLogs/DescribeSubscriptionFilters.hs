@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 data DescribeSubscriptionFilters =
   DescribeSubscriptionFilters'
     { _dsfFilterNamePrefix :: !(Maybe Text)
-    , _dsfNextToken :: !(Maybe Text)
-    , _dsfLimit :: !(Maybe Nat)
-    , _dsfLogGroupName :: !Text
+    , _dsfNextToken        :: !(Maybe Text)
+    , _dsfLimit            :: !(Maybe Nat)
+    , _dsfLogGroupName     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -146,8 +146,8 @@ instance ToQuery DescribeSubscriptionFilters where
 data DescribeSubscriptionFiltersResponse =
   DescribeSubscriptionFiltersResponse'
     { _dsfrsSubscriptionFilters :: !(Maybe [SubscriptionFilter])
-    , _dsfrsNextToken :: !(Maybe Text)
-    , _dsfrsResponseStatus :: !Int
+    , _dsfrsNextToken           :: !(Maybe Text)
+    , _dsfrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

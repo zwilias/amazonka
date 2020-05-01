@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- | /See:/ 'listAssessmentTargets' smart constructor.
 data ListAssessmentTargets =
   ListAssessmentTargets'
-    { _lNextToken :: !(Maybe Text)
-    , _lFilter :: !(Maybe AssessmentTargetFilter)
+    { _lNextToken  :: !(Maybe Text)
+    , _lFilter     :: !(Maybe AssessmentTargetFilter)
     , _lMaxResults :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -128,8 +128,8 @@ instance ToQuery ListAssessmentTargets where
 -- | /See:/ 'listAssessmentTargetsResponse' smart constructor.
 data ListAssessmentTargetsResponse =
   ListAssessmentTargetsResponse'
-    { _lrsNextToken :: !(Maybe Text)
-    , _lrsResponseStatus :: !Int
+    { _lrsNextToken            :: !(Maybe Text)
+    , _lrsResponseStatus       :: !Int
     , _lrsAssessmentTargetARNs :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

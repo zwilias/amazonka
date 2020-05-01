@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.ServiceCatalog.Types.Product
 data DescribeRecord =
   DescribeRecord'
     { _drAcceptLanguage :: !(Maybe Text)
-    , _drPageToken :: !(Maybe Text)
-    , _drPageSize :: !(Maybe Nat)
-    , _drId :: !Text
+    , _drPageToken      :: !(Maybe Text)
+    , _drPageSize       :: !(Maybe Nat)
+    , _drId             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -138,9 +138,9 @@ instance ToQuery DescribeRecord where
 -- | /See:/ 'describeRecordResponse' smart constructor.
 data DescribeRecordResponse =
   DescribeRecordResponse'
-    { _drrsRecordDetail :: !(Maybe RecordDetail)
-    , _drrsNextPageToken :: !(Maybe Text)
-    , _drrsRecordOutputs :: !(Maybe [RecordOutput])
+    { _drrsRecordDetail   :: !(Maybe RecordDetail)
+    , _drrsNextPageToken  :: !(Maybe Text)
+    , _drrsRecordOutputs  :: !(Maybe [RecordOutput])
     , _drrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

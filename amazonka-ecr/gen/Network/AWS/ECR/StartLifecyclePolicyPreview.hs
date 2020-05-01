@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,9 +48,9 @@ import Network.AWS.Response
 -- | /See:/ 'startLifecyclePolicyPreview' smart constructor.
 data StartLifecyclePolicyPreview =
   StartLifecyclePolicyPreview'
-    { _slppRegistryId :: !(Maybe Text)
+    { _slppRegistryId          :: !(Maybe Text)
     , _slppLifecyclePolicyText :: !(Maybe Text)
-    , _slppRepositoryName :: !Text
+    , _slppRepositoryName      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -130,11 +130,11 @@ instance ToQuery StartLifecyclePolicyPreview where
 -- | /See:/ 'startLifecyclePolicyPreviewResponse' smart constructor.
 data StartLifecyclePolicyPreviewResponse =
   StartLifecyclePolicyPreviewResponse'
-    { _slpprsStatus :: !(Maybe LifecyclePolicyPreviewStatus)
-    , _slpprsRegistryId :: !(Maybe Text)
+    { _slpprsStatus              :: !(Maybe LifecyclePolicyPreviewStatus)
+    , _slpprsRegistryId          :: !(Maybe Text)
     , _slpprsLifecyclePolicyText :: !(Maybe Text)
-    , _slpprsRepositoryName :: !(Maybe Text)
-    , _slpprsResponseStatus :: !Int
+    , _slpprsRepositoryName      :: !(Maybe Text)
+    , _slpprsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

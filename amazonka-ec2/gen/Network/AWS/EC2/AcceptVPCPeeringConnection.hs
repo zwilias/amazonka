@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,7 +51,7 @@ import Network.AWS.Response
 data AcceptVPCPeeringConnection =
   AcceptVPCPeeringConnection'
     { _avpcVPCPeeringConnectionId :: !(Maybe Text)
-    , _avpcDryRun :: !(Maybe Bool)
+    , _avpcDryRun                 :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -112,7 +112,7 @@ instance ToQuery AcceptVPCPeeringConnection where
 data AcceptVPCPeeringConnectionResponse =
   AcceptVPCPeeringConnectionResponse'
     { _avpcrsVPCPeeringConnection :: !(Maybe VPCPeeringConnection)
-    , _avpcrsResponseStatus :: !Int
+    , _avpcrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

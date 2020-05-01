@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.StorageGateway.Types.Product
 data DeleteTape =
   DeleteTape'
     { _delGatewayARN :: !Text
-    , _delTapeARN :: !Text
+    , _delTapeARN    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -117,7 +117,7 @@ instance ToQuery DeleteTape where
 -- /See:/ 'deleteTapeResponse' smart constructor.
 data DeleteTapeResponse =
   DeleteTapeResponse'
-    { _dtrsTapeARN :: !(Maybe Text)
+    { _dtrsTapeARN        :: !(Maybe Text)
     , _dtrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

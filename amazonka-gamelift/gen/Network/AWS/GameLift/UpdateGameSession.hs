@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -77,11 +77,11 @@ import Network.AWS.Response
 -- /See:/ 'updateGameSession' smart constructor.
 data UpdateGameSession =
   UpdateGameSession'
-    { _ugsMaximumPlayerSessionCount :: !(Maybe Nat)
+    { _ugsMaximumPlayerSessionCount   :: !(Maybe Nat)
     , _ugsPlayerSessionCreationPolicy :: !(Maybe PlayerSessionCreationPolicy)
-    , _ugsName :: !(Maybe Text)
-    , _ugsProtectionPolicy :: !(Maybe ProtectionPolicy)
-    , _ugsGameSessionId :: !Text
+    , _ugsName                        :: !(Maybe Text)
+    , _ugsProtectionPolicy            :: !(Maybe ProtectionPolicy)
+    , _ugsGameSessionId               :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -185,7 +185,7 @@ instance ToQuery UpdateGameSession where
 -- /See:/ 'updateGameSessionResponse' smart constructor.
 data UpdateGameSessionResponse =
   UpdateGameSessionResponse'
-    { _ugsrsGameSession :: !(Maybe GameSession)
+    { _ugsrsGameSession    :: !(Maybe GameSession)
     , _ugsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

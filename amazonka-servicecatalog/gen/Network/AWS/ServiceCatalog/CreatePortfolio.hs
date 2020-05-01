@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,11 +49,11 @@ import Network.AWS.ServiceCatalog.Types.Product
 -- | /See:/ 'createPortfolio' smart constructor.
 data CreatePortfolio =
   CreatePortfolio'
-    { _creAcceptLanguage :: !(Maybe Text)
-    , _creDescription :: !(Maybe Text)
-    , _creTags :: !(Maybe [Tag])
-    , _creDisplayName :: !Text
-    , _creProviderName :: !Text
+    { _creAcceptLanguage   :: !(Maybe Text)
+    , _creDescription      :: !(Maybe Text)
+    , _creTags             :: !(Maybe [Tag])
+    , _creDisplayName      :: !Text
+    , _creProviderName     :: !Text
     , _creIdempotencyToken :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -158,8 +158,8 @@ instance ToQuery CreatePortfolio where
 data CreatePortfolioResponse =
   CreatePortfolioResponse'
     { _crsPortfolioDetail :: !(Maybe PortfolioDetail)
-    , _crsTags :: !(Maybe [Tag])
-    , _crsResponseStatus :: !Int
+    , _crsTags            :: !(Maybe [Tag])
+    , _crsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.Route53.Types.Product
 -- /See:/ 'listReusableDelegationSets' smart constructor.
 data ListReusableDelegationSets =
   ListReusableDelegationSets'
-    { _lrdsMarker :: !(Maybe Text)
+    { _lrdsMarker   :: !(Maybe Text)
     , _lrdsMaxItems :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -110,12 +110,12 @@ instance ToQuery ListReusableDelegationSets where
 -- /See:/ 'listReusableDelegationSetsResponse' smart constructor.
 data ListReusableDelegationSetsResponse =
   ListReusableDelegationSetsResponse'
-    { _lrdsrsNextMarker :: !(Maybe Text)
+    { _lrdsrsNextMarker     :: !(Maybe Text)
     , _lrdsrsResponseStatus :: !Int
     , _lrdsrsDelegationSets :: ![DelegationSet]
-    , _lrdsrsMarker :: !Text
-    , _lrdsrsIsTruncated :: !Bool
-    , _lrdsrsMaxItems :: !Text
+    , _lrdsrsMarker         :: !Text
+    , _lrdsrsIsTruncated    :: !Bool
+    , _lrdsrsMaxItems       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

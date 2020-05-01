@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,12 +57,12 @@ import Network.AWS.Response
 -- /See:/ 'describeDBLogFiles' smart constructor.
 data DescribeDBLogFiles =
   DescribeDBLogFiles'
-    { _ddlfFilenameContains :: !(Maybe Text)
-    , _ddlfFilters :: !(Maybe [Filter])
-    , _ddlfFileSize :: !(Maybe Integer)
-    , _ddlfFileLastWritten :: !(Maybe Integer)
-    , _ddlfMarker :: !(Maybe Text)
-    , _ddlfMaxRecords :: !(Maybe Int)
+    { _ddlfFilenameContains     :: !(Maybe Text)
+    , _ddlfFilters              :: !(Maybe [Filter])
+    , _ddlfFileSize             :: !(Maybe Integer)
+    , _ddlfFileLastWritten      :: !(Maybe Integer)
+    , _ddlfMarker               :: !(Maybe Text)
+    , _ddlfMaxRecords           :: !(Maybe Int)
     , _ddlfDBInstanceIdentifier :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -181,8 +181,8 @@ instance ToQuery DescribeDBLogFiles where
 data DescribeDBLogFilesResponse =
   DescribeDBLogFilesResponse'
     { _ddlfrsDescribeDBLogFiles :: !(Maybe [DescribeDBLogFilesDetails])
-    , _ddlfrsMarker :: !(Maybe Text)
-    , _ddlfrsResponseStatus :: !Int
+    , _ddlfrsMarker             :: !(Maybe Text)
+    , _ddlfrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -61,12 +61,12 @@ import Network.AWS.Response
 data TestInvokeAuthorizer =
   TestInvokeAuthorizer'
     { _tiaPathWithQueryString :: !(Maybe Text)
-    , _tiaBody :: !(Maybe Text)
-    , _tiaAdditionalContext :: !(Maybe (Map Text Text))
-    , _tiaStageVariables :: !(Maybe (Map Text Text))
-    , _tiaHeaders :: !(Maybe (Map Text Text))
-    , _tiaRestAPIId :: !Text
-    , _tiaAuthorizerId :: !Text
+    , _tiaBody                :: !(Maybe Text)
+    , _tiaAdditionalContext   :: !(Maybe (Map Text Text))
+    , _tiaStageVariables      :: !(Maybe (Map Text Text))
+    , _tiaHeaders             :: !(Maybe (Map Text Text))
+    , _tiaRestAPIId           :: !Text
+    , _tiaAuthorizerId        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -182,13 +182,13 @@ instance ToQuery TestInvokeAuthorizer where
 -- /See:/ 'testInvokeAuthorizerResponse' smart constructor.
 data TestInvokeAuthorizerResponse =
   TestInvokeAuthorizerResponse'
-    { _tiarsLog :: !(Maybe Text)
-    , _tiarsPrincipalId :: !(Maybe Text)
-    , _tiarsLatency :: !(Maybe Integer)
-    , _tiarsAuthorization :: !(Maybe (Map Text [Text]))
-    , _tiarsClaims :: !(Maybe (Map Text Text))
-    , _tiarsClientStatus :: !(Maybe Int)
-    , _tiarsPolicy :: !(Maybe Text)
+    { _tiarsLog            :: !(Maybe Text)
+    , _tiarsPrincipalId    :: !(Maybe Text)
+    , _tiarsLatency        :: !(Maybe Integer)
+    , _tiarsAuthorization  :: !(Maybe (Map Text [Text]))
+    , _tiarsClaims         :: !(Maybe (Map Text Text))
+    , _tiarsClientStatus   :: !(Maybe Int)
+    , _tiarsPolicy         :: !(Maybe Text)
     , _tiarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

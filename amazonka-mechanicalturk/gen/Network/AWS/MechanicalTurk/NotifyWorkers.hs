@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,9 +45,9 @@ import Network.AWS.Response
 -- | /See:/ 'notifyWorkers' smart constructor.
 data NotifyWorkers =
   NotifyWorkers'
-    { _nwSubject :: !Text
+    { _nwSubject     :: !Text
     , _nwMessageText :: !Text
-    , _nwWorkerIds :: ![Text]
+    , _nwWorkerIds   :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -125,7 +125,7 @@ instance ToQuery NotifyWorkers where
 data NotifyWorkersResponse =
   NotifyWorkersResponse'
     { _nwrsNotifyWorkersFailureStatuses :: !(Maybe [NotifyWorkersFailureStatus])
-    , _nwrsResponseStatus :: !Int
+    , _nwrsResponseStatus               :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

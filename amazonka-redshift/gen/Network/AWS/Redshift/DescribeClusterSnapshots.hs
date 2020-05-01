@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -66,16 +66,16 @@ import Network.AWS.Response
 data DescribeClusterSnapshots =
   DescribeClusterSnapshots'
     { _dSnapshotIdentifier :: !(Maybe Text)
-    , _dTagValues :: !(Maybe [Text])
-    , _dClusterExists :: !(Maybe Bool)
-    , _dStartTime :: !(Maybe ISO8601)
-    , _dTagKeys :: !(Maybe [Text])
-    , _dClusterIdentifier :: !(Maybe Text)
-    , _dSnapshotType :: !(Maybe Text)
-    , _dMarker :: !(Maybe Text)
-    , _dMaxRecords :: !(Maybe Int)
-    , _dEndTime :: !(Maybe ISO8601)
-    , _dOwnerAccount :: !(Maybe Text)
+    , _dTagValues          :: !(Maybe [Text])
+    , _dClusterExists      :: !(Maybe Bool)
+    , _dStartTime          :: !(Maybe ISO8601)
+    , _dTagKeys            :: !(Maybe [Text])
+    , _dClusterIdentifier  :: !(Maybe Text)
+    , _dSnapshotType       :: !(Maybe Text)
+    , _dMarker             :: !(Maybe Text)
+    , _dMaxRecords         :: !(Maybe Int)
+    , _dEndTime            :: !(Maybe ISO8601)
+    , _dOwnerAccount       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -219,8 +219,8 @@ instance ToQuery DescribeClusterSnapshots where
 -- /See:/ 'describeClusterSnapshotsResponse' smart constructor.
 data DescribeClusterSnapshotsResponse =
   DescribeClusterSnapshotsResponse'
-    { _dcssrsSnapshots :: !(Maybe [Snapshot])
-    , _dcssrsMarker :: !(Maybe Text)
+    { _dcssrsSnapshots      :: !(Maybe [Snapshot])
+    , _dcssrsMarker         :: !(Maybe Text)
     , _dcssrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

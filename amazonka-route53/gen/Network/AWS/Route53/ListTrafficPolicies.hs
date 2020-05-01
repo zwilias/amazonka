@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.Route53.Types.Product
 data ListTrafficPolicies =
   ListTrafficPolicies'
     { _ltpTrafficPolicyIdMarker :: !(Maybe Text)
-    , _ltpMaxItems :: !(Maybe Text)
+    , _ltpMaxItems              :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -114,11 +114,11 @@ instance ToQuery ListTrafficPolicies where
 -- /See:/ 'listTrafficPoliciesResponse' smart constructor.
 data ListTrafficPoliciesResponse =
   ListTrafficPoliciesResponse'
-    { _ltprsResponseStatus :: !Int
+    { _ltprsResponseStatus         :: !Int
     , _ltprsTrafficPolicySummaries :: ![TrafficPolicySummary]
-    , _ltprsIsTruncated :: !Bool
-    , _ltprsTrafficPolicyIdMarker :: !Text
-    , _ltprsMaxItems :: !Text
+    , _ltprsIsTruncated            :: !Bool
+    , _ltprsTrafficPolicyIdMarker  :: !Text
+    , _ltprsMaxItems               :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,8 +55,8 @@ import Network.AWS.StorageGateway.Types.Product
 -- /See:/ 'describeTapeArchives' smart constructor.
 data DescribeTapeArchives =
   DescribeTapeArchives'
-    { _dtaMarker :: !(Maybe Text)
-    , _dtaLimit :: !(Maybe Nat)
+    { _dtaMarker   :: !(Maybe Text)
+    , _dtaLimit    :: !(Maybe Nat)
     , _dtaTapeARNs :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -139,8 +139,8 @@ instance ToQuery DescribeTapeArchives where
 -- /See:/ 'describeTapeArchivesResponse' smart constructor.
 data DescribeTapeArchivesResponse =
   DescribeTapeArchivesResponse'
-    { _dtarsTapeArchives :: !(Maybe [TapeArchive])
-    , _dtarsMarker :: !(Maybe Text)
+    { _dtarsTapeArchives   :: !(Maybe [TapeArchive])
+    , _dtarsMarker         :: !(Maybe Text)
     , _dtarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Route53AutoNaming.Types.Product
 -- | /See:/ 'listNamespaces' smart constructor.
 data ListNamespaces =
   ListNamespaces'
-    { _lnFilters :: !(Maybe [NamespaceFilter])
-    , _lnNextToken :: !(Maybe Text)
+    { _lnFilters    :: !(Maybe [NamespaceFilter])
+    , _lnNextToken  :: !(Maybe Text)
     , _lnMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -128,8 +128,8 @@ instance ToQuery ListNamespaces where
 -- | /See:/ 'listNamespacesResponse' smart constructor.
 data ListNamespacesResponse =
   ListNamespacesResponse'
-    { _lnrsNamespaces :: !(Maybe [NamespaceSummary])
-    , _lnrsNextToken :: !(Maybe Text)
+    { _lnrsNamespaces     :: !(Maybe [NamespaceSummary])
+    , _lnrsNextToken      :: !(Maybe Text)
     , _lnrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

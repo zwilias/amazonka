@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,9 +55,9 @@ import Network.AWS.Response
 -- | /See:/ 'getSlotTypeVersions' smart constructor.
 data GetSlotTypeVersions =
   GetSlotTypeVersions'
-    { _gstvNextToken :: !(Maybe Text)
+    { _gstvNextToken  :: !(Maybe Text)
     , _gstvMaxResults :: !(Maybe Nat)
-    , _gstvName :: !Text
+    , _gstvName       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -126,8 +126,8 @@ instance ToQuery GetSlotTypeVersions where
 -- | /See:/ 'getSlotTypeVersionsResponse' smart constructor.
 data GetSlotTypeVersionsResponse =
   GetSlotTypeVersionsResponse'
-    { _gstvrsNextToken :: !(Maybe Text)
-    , _gstvrsSlotTypes :: !(Maybe [SlotTypeMetadata])
+    { _gstvrsNextToken      :: !(Maybe Text)
+    , _gstvrsSlotTypes      :: !(Maybe [SlotTypeMetadata])
     , _gstvrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

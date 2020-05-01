@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -80,19 +80,19 @@ import Network.AWS.Response
 -- /See:/ 'updateFunctionConfiguration' smart constructor.
 data UpdateFunctionConfiguration =
   UpdateFunctionConfiguration'
-    { _ufcMemorySize :: !(Maybe Nat)
-    , _ufcRuntime :: !(Maybe Runtime)
-    , _ufcKMSKeyARN :: !(Maybe Text)
-    , _ufcEnvironment :: !(Maybe Environment)
+    { _ufcMemorySize       :: !(Maybe Nat)
+    , _ufcRuntime          :: !(Maybe Runtime)
+    , _ufcKMSKeyARN        :: !(Maybe Text)
+    , _ufcEnvironment      :: !(Maybe Environment)
     , _ufcDeadLetterConfig :: !(Maybe DeadLetterConfig)
-    , _ufcRole :: !(Maybe Text)
-    , _ufcVPCConfig :: !(Maybe VPCConfig)
-    , _ufcHandler :: !(Maybe Text)
-    , _ufcTimeout :: !(Maybe Nat)
-    , _ufcTracingConfig :: !(Maybe TracingConfig)
-    , _ufcDescription :: !(Maybe Text)
-    , _ufcRevisionId :: !(Maybe Text)
-    , _ufcFunctionName :: !Text
+    , _ufcRole             :: !(Maybe Text)
+    , _ufcVPCConfig        :: !(Maybe VPCConfig)
+    , _ufcHandler          :: !(Maybe Text)
+    , _ufcTimeout          :: !(Maybe Nat)
+    , _ufcTracingConfig    :: !(Maybe TracingConfig)
+    , _ufcDescription      :: !(Maybe Text)
+    , _ufcRevisionId       :: !(Maybe Text)
+    , _ufcFunctionName     :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

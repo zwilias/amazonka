@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -62,14 +62,14 @@ import Network.AWS.Response
 -- /See:/ 'adminCreateUser' smart constructor.
 data AdminCreateUser =
   AdminCreateUser'
-    { _acuTemporaryPassword :: !(Maybe (Sensitive Text))
-    , _acuForceAliasCreation :: !(Maybe Bool)
+    { _acuTemporaryPassword      :: !(Maybe (Sensitive Text))
+    , _acuForceAliasCreation     :: !(Maybe Bool)
     , _acuDesiredDeliveryMediums :: !(Maybe [DeliveryMediumType])
-    , _acuMessageAction :: !(Maybe MessageActionType)
-    , _acuUserAttributes :: !(Maybe [AttributeType])
-    , _acuValidationData :: !(Maybe [AttributeType])
-    , _acuUserPoolId :: !Text
-    , _acuUsername :: !(Sensitive Text)
+    , _acuMessageAction          :: !(Maybe MessageActionType)
+    , _acuUserAttributes         :: !(Maybe [AttributeType])
+    , _acuValidationData         :: !(Maybe [AttributeType])
+    , _acuUserPoolId             :: !Text
+    , _acuUsername               :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -197,7 +197,7 @@ instance ToQuery AdminCreateUser where
 -- /See:/ 'adminCreateUserResponse' smart constructor.
 data AdminCreateUserResponse =
   AdminCreateUserResponse'
-    { _acursUser :: !(Maybe UserType)
+    { _acursUser           :: !(Maybe UserType)
     , _acursResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

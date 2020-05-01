@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'updateDataSource' smart constructor.
 data UpdateDataSource =
   UpdateDataSource'
-    { _udsDataSourceId :: !Text
+    { _udsDataSourceId   :: !Text
     , _udsDataSourceName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -119,7 +119,7 @@ instance ToQuery UpdateDataSource where
 -- /See:/ 'updateDataSourceResponse' smart constructor.
 data UpdateDataSourceResponse =
   UpdateDataSourceResponse'
-    { _udsrsDataSourceId :: !(Maybe Text)
+    { _udsrsDataSourceId   :: !(Maybe Text)
     , _udsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

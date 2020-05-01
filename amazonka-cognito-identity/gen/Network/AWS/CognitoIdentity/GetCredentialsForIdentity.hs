@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.Response
 data GetCredentialsForIdentity =
   GetCredentialsForIdentity'
     { _gcfiCustomRoleARN :: !(Maybe Text)
-    , _gcfiLogins :: !(Maybe (Map Text Text))
-    , _gcfiIdentityId :: !Text
+    , _gcfiLogins        :: !(Maybe (Map Text Text))
+    , _gcfiIdentityId    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -134,8 +134,8 @@ instance ToQuery GetCredentialsForIdentity where
 -- /See:/ 'getCredentialsForIdentityResponse' smart constructor.
 data GetCredentialsForIdentityResponse =
   GetCredentialsForIdentityResponse'
-    { _gcfirsCredentials :: !(Maybe Credentials)
-    , _gcfirsIdentityId :: !(Maybe Text)
+    { _gcfirsCredentials    :: !(Maybe Credentials)
+    , _gcfirsIdentityId     :: !(Maybe Text)
     , _gcfirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

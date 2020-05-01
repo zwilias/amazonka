@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.Route53Domains.Types.Product
 -- /See:/ 'listOperations' smart constructor.
 data ListOperations =
   ListOperations'
-    { _loMarker :: !(Maybe Text)
-    , _loMaxItems :: !(Maybe Int)
+    { _loMarker         :: !(Maybe Text)
+    , _loMaxItems       :: !(Maybe Int)
     , _loSubmittedSince :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -139,7 +139,7 @@ data ListOperationsResponse =
   ListOperationsResponse'
     { _lorsNextPageMarker :: !(Maybe Text)
     , _lorsResponseStatus :: !Int
-    , _lorsOperations :: ![OperationSummary]
+    , _lorsOperations     :: ![OperationSummary]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

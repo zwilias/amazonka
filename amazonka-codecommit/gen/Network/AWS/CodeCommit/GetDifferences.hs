@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,13 +53,13 @@ import Network.AWS.Response
 -- | /See:/ 'getDifferences' smart constructor.
 data GetDifferences =
   GetDifferences'
-    { _gdAfterPath :: !(Maybe Text)
-    , _gdNextToken :: !(Maybe Text)
+    { _gdAfterPath             :: !(Maybe Text)
+    , _gdNextToken             :: !(Maybe Text)
     , _gdBeforeCommitSpecifier :: !(Maybe Text)
-    , _gdBeforePath :: !(Maybe Text)
-    , _gdMaxResults :: !(Maybe Int)
-    , _gdRepositoryName :: !Text
-    , _gdAfterCommitSpecifier :: !Text
+    , _gdBeforePath            :: !(Maybe Text)
+    , _gdMaxResults            :: !(Maybe Int)
+    , _gdRepositoryName        :: !Text
+    , _gdAfterCommitSpecifier  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -176,8 +176,8 @@ instance ToQuery GetDifferences where
 -- | /See:/ 'getDifferencesResponse' smart constructor.
 data GetDifferencesResponse =
   GetDifferencesResponse'
-    { _gdrsNextToken :: !(Maybe Text)
-    , _gdrsDifferences :: !(Maybe [Difference])
+    { _gdrsNextToken      :: !(Maybe Text)
+    , _gdrsDifferences    :: !(Maybe [Difference])
     , _gdrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

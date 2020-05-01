@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.Response
 data DescribeDataset =
   DescribeDataset'
     { _ddIdentityPoolId :: !Text
-    , _ddIdentityId :: !Text
-    , _ddDatasetName :: !Text
+    , _ddIdentityId     :: !Text
+    , _ddDatasetName    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,7 +124,7 @@ instance ToQuery DescribeDataset where
 -- /See:/ 'describeDatasetResponse' smart constructor.
 data DescribeDatasetResponse =
   DescribeDatasetResponse'
-    { _ddrsDataset :: !(Maybe Dataset)
+    { _ddrsDataset        :: !(Maybe Dataset)
     , _ddrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

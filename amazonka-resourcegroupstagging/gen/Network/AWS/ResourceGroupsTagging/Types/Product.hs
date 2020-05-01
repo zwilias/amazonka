@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,9 +26,9 @@ import Network.AWS.ResourceGroupsTagging.Types.Sum
 -- /See:/ 'failureInfo' smart constructor.
 data FailureInfo =
   FailureInfo'
-    { _fiErrorCode :: !(Maybe ResourceErrorCode)
+    { _fiErrorCode    :: !(Maybe ResourceErrorCode)
     , _fiErrorMessage :: !(Maybe Text)
-    , _fiStatusCode :: !(Maybe Int)
+    , _fiStatusCode   :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -78,7 +78,7 @@ instance NFData FailureInfo
 data ResourceTagMapping =
   ResourceTagMapping'
     { _rtmResourceARN :: !(Maybe Text)
-    , _rtmTags :: !(Maybe [Tag])
+    , _rtmTags        :: !(Maybe [Tag])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -120,7 +120,7 @@ instance NFData ResourceTagMapping
 -- /See:/ 'tag' smart constructor.
 data Tag =
   Tag'
-    { _tagKey :: !Text
+    { _tagKey   :: !Text
     , _tagValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -161,7 +161,7 @@ instance NFData Tag
 data TagFilter =
   TagFilter'
     { _tfValues :: !(Maybe [Text])
-    , _tfKey :: !(Maybe Text)
+    , _tfKey    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

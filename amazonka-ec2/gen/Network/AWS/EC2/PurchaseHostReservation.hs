@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 data PurchaseHostReservation =
   PurchaseHostReservation'
     { _phrCurrencyCode :: !(Maybe CurrencyCodeValues)
-    , _phrClientToken :: !(Maybe Text)
-    , _phrLimitPrice :: !(Maybe Text)
-    , _phrHostIdSet :: ![Text]
-    , _phrOfferingId :: !Text
+    , _phrClientToken  :: !(Maybe Text)
+    , _phrLimitPrice   :: !(Maybe Text)
+    , _phrHostIdSet    :: ![Text]
+    , _phrOfferingId   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -142,12 +142,12 @@ instance ToQuery PurchaseHostReservation where
 -- | /See:/ 'purchaseHostReservationResponse' smart constructor.
 data PurchaseHostReservationResponse =
   PurchaseHostReservationResponse'
-    { _phrrsCurrencyCode :: !(Maybe CurrencyCodeValues)
-    , _phrrsClientToken :: !(Maybe Text)
-    , _phrrsTotalHourlyPrice :: !(Maybe Text)
+    { _phrrsCurrencyCode      :: !(Maybe CurrencyCodeValues)
+    , _phrrsClientToken       :: !(Maybe Text)
+    , _phrrsTotalHourlyPrice  :: !(Maybe Text)
     , _phrrsTotalUpfrontPrice :: !(Maybe Text)
-    , _phrrsPurchase :: !(Maybe [Purchase])
-    , _phrrsResponseStatus :: !Int
+    , _phrrsPurchase          :: !(Maybe [Purchase])
+    , _phrrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

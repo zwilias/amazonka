@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,12 +50,12 @@ import Network.AWS.Response
 -- | /See:/ 'startFaceSearch' smart constructor.
 data StartFaceSearch =
   StartFaceSearch'
-    { _sfsFaceMatchThreshold :: !(Maybe Double)
-    , _sfsJobTag :: !(Maybe Text)
+    { _sfsFaceMatchThreshold  :: !(Maybe Double)
+    , _sfsJobTag              :: !(Maybe Text)
     , _sfsNotificationChannel :: !(Maybe NotificationChannel)
-    , _sfsClientRequestToken :: !(Maybe Text)
-    , _sfsVideo :: !Video
-    , _sfsCollectionId :: !Text
+    , _sfsClientRequestToken  :: !(Maybe Text)
+    , _sfsVideo               :: !Video
+    , _sfsCollectionId        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -157,7 +157,7 @@ instance ToQuery StartFaceSearch where
 -- | /See:/ 'startFaceSearchResponse' smart constructor.
 data StartFaceSearchResponse =
   StartFaceSearchResponse'
-    { _sfsrsJobId :: !(Maybe Text)
+    { _sfsrsJobId          :: !(Maybe Text)
     , _sfsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

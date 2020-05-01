@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,8 +56,8 @@ import Network.AWS.Response
 -- | /See:/ 'getMedia' smart constructor.
 data GetMedia =
   GetMedia'
-    { _gmStreamARN :: !(Maybe Text)
-    , _gmStreamName :: !(Maybe Text)
+    { _gmStreamARN     :: !(Maybe Text)
+    , _gmStreamName    :: !(Maybe Text)
     , _gmStartSelector :: !StartSelector
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -127,9 +127,9 @@ instance ToQuery GetMedia where
 -- | /See:/ 'getMediaResponse' smart constructor.
 data GetMediaResponse =
   GetMediaResponse'
-    { _gmrsContentType :: !(Maybe Text)
+    { _gmrsContentType    :: !(Maybe Text)
     , _gmrsResponseStatus :: !Int
-    , _gmrsPayload :: !RsBody
+    , _gmrsPayload        :: !RsBody
     }
   deriving (Show, Generic)
 

@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,7 +27,7 @@ import Network.AWS.Prelude
 data Lexicon =
   Lexicon'
     { _lContent :: !(Maybe Text)
-    , _lName :: !(Maybe (Sensitive Text))
+    , _lName    :: !(Maybe (Sensitive Text))
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -67,10 +67,10 @@ instance NFData Lexicon
 data LexiconAttributes =
   LexiconAttributes'
     { _laLanguageCode :: !(Maybe LanguageCode)
-    , _laSize :: !(Maybe Int)
+    , _laSize         :: !(Maybe Int)
     , _laLexemesCount :: !(Maybe Int)
-    , _laLexiconARN :: !(Maybe Text)
-    , _laAlphabet :: !(Maybe Text)
+    , _laLexiconARN   :: !(Maybe Text)
+    , _laAlphabet     :: !(Maybe Text)
     , _laLastModified :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -149,7 +149,7 @@ instance NFData LexiconAttributes
 data LexiconDescription =
   LexiconDescription'
     { _ldAttributes :: !(Maybe LexiconAttributes)
-    , _ldName :: !(Maybe (Sensitive Text))
+    , _ldName       :: !(Maybe (Sensitive Text))
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -191,9 +191,9 @@ data Voice =
   Voice'
     { _vLanguageCode :: !(Maybe LanguageCode)
     , _vLanguageName :: !(Maybe Text)
-    , _vGender :: !(Maybe Gender)
-    , _vName :: !(Maybe Text)
-    , _vId :: !(Maybe VoiceId)
+    , _vGender       :: !(Maybe Gender)
+    , _vName         :: !(Maybe Text)
+    , _vId           :: !(Maybe VoiceId)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

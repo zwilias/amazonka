@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'startSchemaCreation' smart constructor.
 data StartSchemaCreation =
   StartSchemaCreation'
-    { _sscApiId :: !Text
+    { _sscApiId      :: !Text
     , _sscDefinition :: !Base64
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -106,7 +106,7 @@ instance ToQuery StartSchemaCreation where
 -- | /See:/ 'startSchemaCreationResponse' smart constructor.
 data StartSchemaCreationResponse =
   StartSchemaCreationResponse'
-    { _sscrsStatus :: !(Maybe SchemaStatus)
+    { _sscrsStatus         :: !(Maybe SchemaStatus)
     , _sscrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

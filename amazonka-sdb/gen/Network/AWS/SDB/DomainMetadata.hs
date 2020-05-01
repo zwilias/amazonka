@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -104,14 +104,14 @@ instance ToQuery DomainMetadata where
 -- | /See:/ 'domainMetadataResponse' smart constructor.
 data DomainMetadataResponse =
   DomainMetadataResponse'
-    { _dmrsItemNamesSizeBytes :: !(Maybe Integer)
+    { _dmrsItemNamesSizeBytes       :: !(Maybe Integer)
     , _dmrsAttributeValuesSizeBytes :: !(Maybe Integer)
-    , _dmrsAttributeNameCount :: !(Maybe Int)
-    , _dmrsAttributeNamesSizeBytes :: !(Maybe Integer)
-    , _dmrsAttributeValueCount :: !(Maybe Int)
-    , _dmrsItemCount :: !(Maybe Int)
-    , _dmrsTimestamp :: !(Maybe Int)
-    , _dmrsResponseStatus :: !Int
+    , _dmrsAttributeNameCount       :: !(Maybe Int)
+    , _dmrsAttributeNamesSizeBytes  :: !(Maybe Integer)
+    , _dmrsAttributeValueCount      :: !(Maybe Int)
+    , _dmrsItemCount                :: !(Maybe Int)
+    , _dmrsTimestamp                :: !(Maybe Int)
+    , _dmrsResponseStatus           :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

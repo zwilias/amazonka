@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -95,8 +95,8 @@ instance ToQuery GetTopicRule where
 -- /See:/ 'getTopicRuleResponse' smart constructor.
 data GetTopicRuleResponse =
   GetTopicRuleResponse'
-    { _gtrrsRule :: !(Maybe TopicRule)
-    , _gtrrsRuleARN :: !(Maybe Text)
+    { _gtrrsRule           :: !(Maybe TopicRule)
+    , _gtrrsRuleARN        :: !(Maybe Text)
     , _gtrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

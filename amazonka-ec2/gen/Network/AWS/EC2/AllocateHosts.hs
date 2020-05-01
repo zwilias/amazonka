@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,11 +51,11 @@ import Network.AWS.Response
 -- /See:/ 'allocateHosts' smart constructor.
 data AllocateHosts =
   AllocateHosts'
-    { _ahClientToken :: !(Maybe Text)
-    , _ahAutoPlacement :: !(Maybe AutoPlacement)
+    { _ahClientToken      :: !(Maybe Text)
+    , _ahAutoPlacement    :: !(Maybe AutoPlacement)
     , _ahAvailabilityZone :: !Text
-    , _ahInstanceType :: !Text
-    , _ahQuantity :: !Int
+    , _ahInstanceType     :: !Text
+    , _ahQuantity         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -146,7 +146,7 @@ instance ToQuery AllocateHosts where
 -- /See:/ 'allocateHostsResponse' smart constructor.
 data AllocateHostsResponse =
   AllocateHostsResponse'
-    { _ahrsHostIds :: !(Maybe [Text])
+    { _ahrsHostIds        :: !(Maybe [Text])
     , _ahrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

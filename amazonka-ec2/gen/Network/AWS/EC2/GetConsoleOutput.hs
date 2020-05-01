@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,8 +57,8 @@ import Network.AWS.Response
 -- /See:/ 'getConsoleOutput' smart constructor.
 data GetConsoleOutput =
   GetConsoleOutput'
-    { _gcoLatest :: !(Maybe Bool)
-    , _gcoDryRun :: !(Maybe Bool)
+    { _gcoLatest     :: !(Maybe Bool)
+    , _gcoDryRun     :: !(Maybe Bool)
     , _gcoInstanceId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -128,9 +128,9 @@ instance ToQuery GetConsoleOutput where
 -- /See:/ 'getConsoleOutputResponse' smart constructor.
 data GetConsoleOutputResponse =
   GetConsoleOutputResponse'
-    { _gcorsInstanceId :: !(Maybe Text)
-    , _gcorsOutput :: !(Maybe Text)
-    , _gcorsTimestamp :: !(Maybe ISO8601)
+    { _gcorsInstanceId     :: !(Maybe Text)
+    , _gcorsOutput         :: !(Maybe Text)
+    , _gcorsTimestamp      :: !(Maybe ISO8601)
     , _gcorsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

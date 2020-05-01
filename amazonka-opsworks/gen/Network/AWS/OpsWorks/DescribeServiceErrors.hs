@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- | /See:/ 'describeServiceErrors' smart constructor.
 data DescribeServiceErrors =
   DescribeServiceErrors'
-    { _dseInstanceId :: !(Maybe Text)
-    , _dseStackId :: !(Maybe Text)
+    { _dseInstanceId      :: !(Maybe Text)
+    , _dseStackId         :: !(Maybe Text)
     , _dseServiceErrorIds :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -130,7 +130,7 @@ instance ToQuery DescribeServiceErrors where
 -- /See:/ 'describeServiceErrorsResponse' smart constructor.
 data DescribeServiceErrorsResponse =
   DescribeServiceErrorsResponse'
-    { _dsersServiceErrors :: !(Maybe [ServiceError'])
+    { _dsersServiceErrors  :: !(Maybe [ServiceError'])
     , _dsersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

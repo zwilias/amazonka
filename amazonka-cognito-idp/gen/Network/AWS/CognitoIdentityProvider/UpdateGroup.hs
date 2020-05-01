@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,11 +49,11 @@ import Network.AWS.Response
 -- | /See:/ 'updateGroup' smart constructor.
 data UpdateGroup =
   UpdateGroup'
-    { _ugPrecedence :: !(Maybe Nat)
+    { _ugPrecedence  :: !(Maybe Nat)
     , _ugDescription :: !(Maybe Text)
-    , _ugRoleARN :: !(Maybe Text)
-    , _ugGroupName :: !Text
-    , _ugUserPoolId :: !Text
+    , _ugRoleARN     :: !(Maybe Text)
+    , _ugGroupName   :: !Text
+    , _ugUserPoolId  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -144,7 +144,7 @@ instance ToQuery UpdateGroup where
 -- | /See:/ 'updateGroupResponse' smart constructor.
 data UpdateGroupResponse =
   UpdateGroupResponse'
-    { _ugrsGroup :: !(Maybe GroupType)
+    { _ugrsGroup          :: !(Maybe GroupType)
     , _ugrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,10 +48,10 @@ import Network.AWS.Response
 -- | /See:/ 'listConfigurations' smart constructor.
 data ListConfigurations =
   ListConfigurations'
-    { _lcOrderBy :: !(Maybe [OrderByElement])
-    , _lcFilters :: !(Maybe [Filter])
-    , _lcNextToken :: !(Maybe Text)
-    , _lcMaxResults :: !(Maybe Int)
+    { _lcOrderBy           :: !(Maybe [OrderByElement])
+    , _lcFilters           :: !(Maybe [Filter])
+    , _lcNextToken         :: !(Maybe Text)
+    , _lcMaxResults        :: !(Maybe Int)
     , _lcConfigurationType :: !ConfigurationItemType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -146,7 +146,7 @@ instance ToQuery ListConfigurations where
 data ListConfigurationsResponse =
   ListConfigurationsResponse'
     { _lcrsConfigurations :: !(Maybe [Map Text Text])
-    , _lcrsNextToken :: !(Maybe Text)
+    , _lcrsNextToken      :: !(Maybe Text)
     , _lcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

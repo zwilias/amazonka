@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -60,17 +60,17 @@ import Network.AWS.S3.Types.Product
 -- | /See:/ 'uploadPart' smart constructor.
 data UploadPart =
   UploadPart'
-    { _upContentLength :: !(Maybe Integer)
+    { _upContentLength        :: !(Maybe Integer)
     , _upSSECustomerAlgorithm :: !(Maybe Text)
-    , _upSSECustomerKey :: !(Maybe (Sensitive Text))
-    , _upRequestPayer :: !(Maybe RequestPayer)
-    , _upSSECustomerKeyMD5 :: !(Maybe Text)
-    , _upContentMD5 :: !(Maybe Text)
-    , _upBucket :: !BucketName
-    , _upKey :: !ObjectKey
-    , _upPartNumber :: !Int
-    , _upUploadId :: !Text
-    , _upBody :: !RqBody
+    , _upSSECustomerKey       :: !(Maybe (Sensitive Text))
+    , _upRequestPayer         :: !(Maybe RequestPayer)
+    , _upSSECustomerKeyMD5    :: !(Maybe Text)
+    , _upContentMD5           :: !(Maybe Text)
+    , _upBucket               :: !BucketName
+    , _upKey                  :: !ObjectKey
+    , _upPartNumber           :: !Int
+    , _upUploadId             :: !Text
+    , _upBody                 :: !RqBody
     }
   deriving (Show, Generic)
 
@@ -208,13 +208,13 @@ instance ToQuery UploadPart where
 -- | /See:/ 'uploadPartResponse' smart constructor.
 data UploadPartResponse =
   UploadPartResponse'
-    { _uprsRequestCharged :: !(Maybe RequestCharged)
-    , _uprsETag :: !(Maybe ETag)
+    { _uprsRequestCharged       :: !(Maybe RequestCharged)
+    , _uprsETag                 :: !(Maybe ETag)
     , _uprsSSECustomerAlgorithm :: !(Maybe Text)
-    , _uprsSSECustomerKeyMD5 :: !(Maybe Text)
-    , _uprsSSEKMSKeyId :: !(Maybe (Sensitive Text))
+    , _uprsSSECustomerKeyMD5    :: !(Maybe Text)
+    , _uprsSSEKMSKeyId          :: !(Maybe (Sensitive Text))
     , _uprsServerSideEncryption :: !(Maybe ServerSideEncryption)
-    , _uprsResponseStatus :: !Int
+    , _uprsResponseStatus       :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

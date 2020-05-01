@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -69,11 +69,11 @@ import Network.AWS.Response
 -- /See:/ 'putRecord' smart constructor.
 data PutRecord =
   PutRecord'
-    { _prExplicitHashKey :: !(Maybe Text)
+    { _prExplicitHashKey           :: !(Maybe Text)
     , _prSequenceNumberForOrdering :: !(Maybe Text)
-    , _prStreamName :: !Text
-    , _prData :: !Base64
-    , _prPartitionKey :: !Text
+    , _prStreamName                :: !Text
+    , _prData                      :: !Base64
+    , _prPartitionKey              :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -175,7 +175,7 @@ data PutRecordResponse =
   PutRecordResponse'
     { _prrsEncryptionType :: !(Maybe EncryptionType)
     , _prrsResponseStatus :: !Int
-    , _prrsShardId :: !Text
+    , _prrsShardId        :: !Text
     , _prrsSequenceNumber :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

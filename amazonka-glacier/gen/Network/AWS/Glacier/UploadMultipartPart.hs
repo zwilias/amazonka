@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -68,12 +68,12 @@ import Network.AWS.Response
 -- /See:/ 'uploadMultipartPart' smart constructor.
 data UploadMultipartPart =
   UploadMultipartPart'
-    { _umpChecksum :: !(Maybe Text)
-    , _umpRange :: !(Maybe Text)
+    { _umpChecksum  :: !(Maybe Text)
+    , _umpRange     :: !(Maybe Text)
     , _umpAccountId :: !Text
     , _umpVaultName :: !Text
-    , _umpUploadId :: !Text
-    , _umpBody :: !HashedBody
+    , _umpUploadId  :: !Text
+    , _umpBody      :: !HashedBody
     }
   deriving (Show, Generic)
 
@@ -170,7 +170,7 @@ instance ToQuery UploadMultipartPart where
 -- /See:/ 'uploadMultipartPartResponse' smart constructor.
 data UploadMultipartPartResponse =
   UploadMultipartPartResponse'
-    { _umprsChecksum :: !(Maybe Text)
+    { _umprsChecksum       :: !(Maybe Text)
     , _umprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

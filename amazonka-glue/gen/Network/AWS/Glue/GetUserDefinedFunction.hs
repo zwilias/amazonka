@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'getUserDefinedFunction' smart constructor.
 data GetUserDefinedFunction =
   GetUserDefinedFunction'
-    { _getCatalogId :: !(Maybe Text)
+    { _getCatalogId    :: !(Maybe Text)
     , _getDatabaseName :: !Text
     , _getFunctionName :: !Text
     }
@@ -123,7 +123,7 @@ instance ToQuery GetUserDefinedFunction where
 data GetUserDefinedFunctionResponse =
   GetUserDefinedFunctionResponse'
     { _gudfursUserDefinedFunction :: !(Maybe UserDefinedFunction)
-    , _gudfursResponseStatus :: !Int
+    , _gudfursResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

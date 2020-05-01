@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,13 +49,13 @@ import Network.AWS.Response
 -- | /See:/ 'createTrigger' smart constructor.
 data CreateTrigger =
   CreateTrigger'
-    { _ctSchedule :: !(Maybe Text)
-    , _ctPredicate :: !(Maybe Predicate)
+    { _ctSchedule        :: !(Maybe Text)
+    , _ctPredicate       :: !(Maybe Predicate)
     , _ctStartOnCreation :: !(Maybe Bool)
-    , _ctDescription :: !(Maybe Text)
-    , _ctName :: !Text
-    , _ctType :: !TriggerType
-    , _ctActions :: ![Action]
+    , _ctDescription     :: !(Maybe Text)
+    , _ctName            :: !Text
+    , _ctType            :: !TriggerType
+    , _ctActions         :: ![Action]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -161,7 +161,7 @@ instance ToQuery CreateTrigger where
 -- | /See:/ 'createTriggerResponse' smart constructor.
 data CreateTriggerResponse =
   CreateTriggerResponse'
-    { _ctrsName :: !(Maybe Text)
+    { _ctrsName           :: !(Maybe Text)
     , _ctrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

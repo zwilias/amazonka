@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'batchDetectKeyPhrases' smart constructor.
 data BatchDetectKeyPhrases =
   BatchDetectKeyPhrases'
-    { _bdkpTextList :: ![Text]
+    { _bdkpTextList     :: ![Text]
     , _bdkpLanguageCode :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -113,8 +113,8 @@ instance ToQuery BatchDetectKeyPhrases where
 data BatchDetectKeyPhrasesResponse =
   BatchDetectKeyPhrasesResponse'
     { _bdkprsResponseStatus :: !Int
-    , _bdkprsResultList :: ![BatchDetectKeyPhrasesItemResult]
-    , _bdkprsErrorList :: ![BatchItemError]
+    , _bdkprsResultList     :: ![BatchDetectKeyPhrasesItemResult]
+    , _bdkprsErrorList      :: ![BatchItemError]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

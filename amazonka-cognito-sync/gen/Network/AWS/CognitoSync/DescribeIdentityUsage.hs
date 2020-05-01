@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Response
 data DescribeIdentityUsage =
   DescribeIdentityUsage'
     { _diuIdentityPoolId :: !Text
-    , _diuIdentityId :: !Text
+    , _diuIdentityId     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -111,7 +111,7 @@ instance ToQuery DescribeIdentityUsage where
 -- /See:/ 'describeIdentityUsageResponse' smart constructor.
 data DescribeIdentityUsageResponse =
   DescribeIdentityUsageResponse'
-    { _diursIdentityUsage :: !(Maybe IdentityUsage)
+    { _diursIdentityUsage  :: !(Maybe IdentityUsage)
     , _diursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

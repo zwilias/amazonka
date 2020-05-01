@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,9 +50,9 @@ import Network.AWS.Response
 -- /See:/ 'associateDHCPOptions' smart constructor.
 data AssociateDHCPOptions =
   AssociateDHCPOptions'
-    { _adoDryRun :: !(Maybe Bool)
+    { _adoDryRun        :: !(Maybe Bool)
     , _adoDHCPOptionsId :: !Text
-    , _adoVPCId :: !Text
+    , _adoVPCId         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

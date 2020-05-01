@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,11 +54,11 @@ import Network.AWS.Response
 -- /See:/ 'putGatewayResponse' smart constructor.
 data PutGatewayResponse =
   PutGatewayResponse'
-    { _pgResponseTemplates :: !(Maybe (Map Text Text))
-    , _pgStatusCode :: !(Maybe Text)
+    { _pgResponseTemplates  :: !(Maybe (Map Text Text))
+    , _pgStatusCode         :: !(Maybe Text)
     , _pgResponseParameters :: !(Maybe (Map Text Text))
-    , _pgRestAPIId :: !Text
-    , _pgResponseType :: !GatewayResponseType
+    , _pgRestAPIId          :: !Text
+    , _pgResponseType       :: !GatewayResponseType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

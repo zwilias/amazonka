@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'createSecurityConfiguration' smart constructor.
 data CreateSecurityConfiguration =
   CreateSecurityConfiguration'
-    { _cscName :: !Text
+    { _cscName                  :: !Text
     , _cscSecurityConfiguration :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -114,8 +114,8 @@ instance ToQuery CreateSecurityConfiguration where
 -- | /See:/ 'createSecurityConfigurationResponse' smart constructor.
 data CreateSecurityConfigurationResponse =
   CreateSecurityConfigurationResponse'
-    { _cscrsResponseStatus :: !Int
-    , _cscrsName :: !Text
+    { _cscrsResponseStatus   :: !Int
+    , _cscrsName             :: !Text
     , _cscrsCreationDateTime :: !POSIX
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

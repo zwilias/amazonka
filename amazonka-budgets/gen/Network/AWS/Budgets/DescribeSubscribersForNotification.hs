@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 -- /See:/ 'describeSubscribersForNotification' smart constructor.
 data DescribeSubscribersForNotification =
   DescribeSubscribersForNotification'
-    { _dsfnNextToken :: !(Maybe Text)
-    , _dsfnMaxResults :: !(Maybe Nat)
-    , _dsfnAccountId :: !Text
-    , _dsfnBudgetName :: !Text
+    { _dsfnNextToken    :: !(Maybe Text)
+    , _dsfnMaxResults   :: !(Maybe Nat)
+    , _dsfnAccountId    :: !Text
+    , _dsfnBudgetName   :: !Text
     , _dsfnNotification :: !Notification
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -155,8 +155,8 @@ instance ToQuery DescribeSubscribersForNotification where
 -- /See:/ 'describeSubscribersForNotificationResponse' smart constructor.
 data DescribeSubscribersForNotificationResponse =
   DescribeSubscribersForNotificationResponse'
-    { _dsfnrsNextToken :: !(Maybe Text)
-    , _dsfnrsSubscribers :: !(Maybe (List1 Subscriber))
+    { _dsfnrsNextToken      :: !(Maybe Text)
+    , _dsfnrsSubscribers    :: !(Maybe (List1 Subscriber))
     , _dsfnrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

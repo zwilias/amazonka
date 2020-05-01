@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,10 +55,10 @@ import Network.AWS.Response
 -- /See:/ 'downloadDBLogFilePortion' smart constructor.
 data DownloadDBLogFilePortion =
   DownloadDBLogFilePortion'
-    { _ddlfpNumberOfLines :: !(Maybe Int)
-    , _ddlfpMarker :: !(Maybe Text)
+    { _ddlfpNumberOfLines        :: !(Maybe Int)
+    , _ddlfpMarker               :: !(Maybe Text)
     , _ddlfpDBInstanceIdentifier :: !Text
-    , _ddlfpLogFileName :: !Text
+    , _ddlfpLogFileName          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -149,10 +149,10 @@ instance ToQuery DownloadDBLogFilePortion where
 -- /See:/ 'downloadDBLogFilePortionResponse' smart constructor.
 data DownloadDBLogFilePortionResponse =
   DownloadDBLogFilePortionResponse'
-    { _ddlfprsLogFileData :: !(Maybe Text)
+    { _ddlfprsLogFileData           :: !(Maybe Text)
     , _ddlfprsAdditionalDataPending :: !(Maybe Bool)
-    , _ddlfprsMarker :: !(Maybe Text)
-    , _ddlfprsResponseStatus :: !Int
+    , _ddlfprsMarker                :: !(Maybe Text)
+    , _ddlfprsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

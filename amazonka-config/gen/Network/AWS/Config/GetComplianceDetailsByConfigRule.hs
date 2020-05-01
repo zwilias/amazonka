@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,9 +55,9 @@ import Network.AWS.Response
 data GetComplianceDetailsByConfigRule =
   GetComplianceDetailsByConfigRule'
     { _gcdbcrComplianceTypes :: !(Maybe [ComplianceType])
-    , _gcdbcrNextToken :: !(Maybe Text)
-    , _gcdbcrLimit :: !(Maybe Nat)
-    , _gcdbcrConfigRuleName :: !Text
+    , _gcdbcrNextToken       :: !(Maybe Text)
+    , _gcdbcrLimit           :: !(Maybe Nat)
+    , _gcdbcrConfigRuleName  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -156,8 +156,8 @@ instance ToQuery GetComplianceDetailsByConfigRule where
 data GetComplianceDetailsByConfigRuleResponse =
   GetComplianceDetailsByConfigRuleResponse'
     { _gcdbcrrsEvaluationResults :: !(Maybe [EvaluationResult])
-    , _gcdbcrrsNextToken :: !(Maybe Text)
-    , _gcdbcrrsResponseStatus :: !Int
+    , _gcdbcrrsNextToken         :: !(Maybe Text)
+    , _gcdbcrrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

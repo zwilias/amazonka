@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -103,8 +103,8 @@ instance ToQuery ListPhoneNumbersOptedOut where
 -- /See:/ 'listPhoneNumbersOptedOutResponse' smart constructor.
 data ListPhoneNumbersOptedOutResponse =
   ListPhoneNumbersOptedOutResponse'
-    { _lpnoorsPhoneNumbers :: !(Maybe [Text])
-    , _lpnoorsNextToken :: !(Maybe Text)
+    { _lpnoorsPhoneNumbers   :: !(Maybe [Text])
+    , _lpnoorsNextToken      :: !(Maybe Text)
     , _lpnoorsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

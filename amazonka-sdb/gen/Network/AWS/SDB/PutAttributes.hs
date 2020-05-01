@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,9 +55,9 @@ import Network.AWS.SDB.Types.Product
 -- | /See:/ 'putAttributes' smart constructor.
 data PutAttributes =
   PutAttributes'
-    { _paExpected :: !(Maybe UpdateCondition)
+    { _paExpected   :: !(Maybe UpdateCondition)
     , _paDomainName :: !Text
-    , _paItemName :: !Text
+    , _paItemName   :: !Text
     , _paAttributes :: ![ReplaceableAttribute]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

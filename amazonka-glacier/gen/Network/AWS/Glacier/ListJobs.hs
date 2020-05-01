@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -64,12 +64,12 @@ import Network.AWS.Response
 -- /See:/ 'listJobs' smart constructor.
 data ListJobs =
   ListJobs'
-    { _ljMarker :: !(Maybe Text)
-    , _ljCompleted :: !(Maybe Text)
-    , _ljLimit :: !(Maybe Text)
+    { _ljMarker     :: !(Maybe Text)
+    , _ljCompleted  :: !(Maybe Text)
+    , _ljLimit      :: !(Maybe Text)
     , _ljStatuscode :: !(Maybe Text)
-    , _ljAccountId :: !Text
-    , _ljVaultName :: !Text
+    , _ljAccountId  :: !Text
+    , _ljVaultName  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -168,8 +168,8 @@ instance ToQuery ListJobs where
 -- /See:/ 'listJobsResponse' smart constructor.
 data ListJobsResponse =
   ListJobsResponse'
-    { _ljrsMarker :: !(Maybe Text)
-    , _ljrsJobList :: !(Maybe [GlacierJobDescription])
+    { _ljrsMarker         :: !(Maybe Text)
+    , _ljrsJobList        :: !(Maybe [GlacierJobDescription])
     , _ljrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'deregisterTaskFromMaintenanceWindow' smart constructor.
 data DeregisterTaskFromMaintenanceWindow =
   DeregisterTaskFromMaintenanceWindow'
-    { _derWindowId :: !Text
+    { _derWindowId     :: !Text
     , _derWindowTaskId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -113,8 +113,8 @@ instance ToQuery DeregisterTaskFromMaintenanceWindow where
 -- | /See:/ 'deregisterTaskFromMaintenanceWindowResponse' smart constructor.
 data DeregisterTaskFromMaintenanceWindowResponse =
   DeregisterTaskFromMaintenanceWindowResponse'
-    { _derrsWindowTaskId :: !(Maybe Text)
-    , _derrsWindowId :: !(Maybe Text)
+    { _derrsWindowTaskId   :: !(Maybe Text)
+    , _derrsWindowId       :: !(Maybe Text)
     , _derrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

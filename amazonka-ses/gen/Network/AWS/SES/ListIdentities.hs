@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,8 +56,8 @@ import Network.AWS.SES.Types.Product
 data ListIdentities =
   ListIdentities'
     { _liIdentityType :: !(Maybe IdentityType)
-    , _liNextToken :: !(Maybe Text)
-    , _liMaxItems :: !(Maybe Int)
+    , _liNextToken    :: !(Maybe Text)
+    , _liMaxItems     :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -130,9 +130,9 @@ instance ToQuery ListIdentities where
 -- /See:/ 'listIdentitiesResponse' smart constructor.
 data ListIdentitiesResponse =
   ListIdentitiesResponse'
-    { _lirsNextToken :: !(Maybe Text)
+    { _lirsNextToken      :: !(Maybe Text)
     , _lirsResponseStatus :: !Int
-    , _lirsIdentities :: ![Text]
+    , _lirsIdentities     :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

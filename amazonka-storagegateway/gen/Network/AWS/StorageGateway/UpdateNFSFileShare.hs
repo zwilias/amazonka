@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -71,17 +71,17 @@ import Network.AWS.StorageGateway.Types.Product
 -- /See:/ 'updateNFSFileShare' smart constructor.
 data UpdateNFSFileShare =
   UpdateNFSFileShare'
-    { _unfsfsKMSKey :: !(Maybe Text)
-    , _unfsfsObjectACL :: !(Maybe ObjectACL)
-    , _unfsfsKMSEncrypted :: !(Maybe Bool)
-    , _unfsfsDefaultStorageClass :: !(Maybe Text)
-    , _unfsfsSquash :: !(Maybe Text)
-    , _unfsfsRequesterPays :: !(Maybe Bool)
+    { _unfsfsKMSKey               :: !(Maybe Text)
+    , _unfsfsObjectACL            :: !(Maybe ObjectACL)
+    , _unfsfsKMSEncrypted         :: !(Maybe Bool)
+    , _unfsfsDefaultStorageClass  :: !(Maybe Text)
+    , _unfsfsSquash               :: !(Maybe Text)
+    , _unfsfsRequesterPays        :: !(Maybe Bool)
     , _unfsfsNFSFileShareDefaults :: !(Maybe NFSFileShareDefaults)
-    , _unfsfsClientList :: !(Maybe (List1 Text))
+    , _unfsfsClientList           :: !(Maybe (List1 Text))
     , _unfsfsGuessMIMETypeEnabled :: !(Maybe Bool)
-    , _unfsfsReadOnly :: !(Maybe Bool)
-    , _unfsfsFileShareARN :: !Text
+    , _unfsfsReadOnly             :: !(Maybe Bool)
+    , _unfsfsFileShareARN         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -232,7 +232,7 @@ instance ToQuery UpdateNFSFileShare where
 -- /See:/ 'updateNFSFileShareResponse' smart constructor.
 data UpdateNFSFileShareResponse =
   UpdateNFSFileShareResponse'
-    { _unfsfsrsFileShareARN :: !(Maybe Text)
+    { _unfsfsrsFileShareARN   :: !(Maybe Text)
     , _unfsfsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

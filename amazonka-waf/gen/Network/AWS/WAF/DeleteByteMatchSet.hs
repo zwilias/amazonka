@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,7 +57,7 @@ import Network.AWS.WAF.Types.Product
 data DeleteByteMatchSet =
   DeleteByteMatchSet'
     { _dbmsByteMatchSetId :: !Text
-    , _dbmsChangeToken :: !Text
+    , _dbmsChangeToken    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,7 +124,7 @@ instance ToQuery DeleteByteMatchSet where
 -- | /See:/ 'deleteByteMatchSetResponse' smart constructor.
 data DeleteByteMatchSetResponse =
   DeleteByteMatchSetResponse'
-    { _dbmsrsChangeToken :: !(Maybe Text)
+    { _dbmsrsChangeToken    :: !(Maybe Text)
     , _dbmsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

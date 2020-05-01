@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.Response
 -- /See:/ 'listUserPoolClients' smart constructor.
 data ListUserPoolClients =
   ListUserPoolClients'
-    { _lupcNextToken :: !(Maybe Text)
+    { _lupcNextToken  :: !(Maybe Text)
     , _lupcMaxResults :: !(Maybe Nat)
     , _lupcUserPoolId :: !Text
     }
@@ -133,9 +133,9 @@ instance ToQuery ListUserPoolClients where
 -- /See:/ 'listUserPoolClientsResponse' smart constructor.
 data ListUserPoolClientsResponse =
   ListUserPoolClientsResponse'
-    { _lupcrsNextToken :: !(Maybe Text)
+    { _lupcrsNextToken       :: !(Maybe Text)
     , _lupcrsUserPoolClients :: !(Maybe [UserPoolClientDescription])
-    , _lupcrsResponseStatus :: !Int
+    , _lupcrsResponseStatus  :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

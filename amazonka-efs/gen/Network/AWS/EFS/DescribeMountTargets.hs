@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,9 +57,9 @@ import Network.AWS.Response
 -- /See:/ 'describeMountTargets' smart constructor.
 data DescribeMountTargets =
   DescribeMountTargets'
-    { _dmtFileSystemId :: !(Maybe Text)
-    , _dmtMarker :: !(Maybe Text)
-    , _dmtMaxItems :: !(Maybe Nat)
+    { _dmtFileSystemId  :: !(Maybe Text)
+    , _dmtMarker        :: !(Maybe Text)
+    , _dmtMaxItems      :: !(Maybe Nat)
     , _dmtMountTargetId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -143,9 +143,9 @@ instance ToQuery DescribeMountTargets where
 -- /See:/ 'describeMountTargetsResponse' smart constructor.
 data DescribeMountTargetsResponse =
   DescribeMountTargetsResponse'
-    { _dmtrsMountTargets :: !(Maybe [MountTargetDescription])
-    , _dmtrsMarker :: !(Maybe Text)
-    , _dmtrsNextMarker :: !(Maybe Text)
+    { _dmtrsMountTargets   :: !(Maybe [MountTargetDescription])
+    , _dmtrsMarker         :: !(Maybe Text)
+    , _dmtrsNextMarker     :: !(Maybe Text)
     , _dmtrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

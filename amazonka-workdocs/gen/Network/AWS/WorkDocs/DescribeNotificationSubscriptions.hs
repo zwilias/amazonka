@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.WorkDocs.Types.Product
 -- | /See:/ 'describeNotificationSubscriptions' smart constructor.
 data DescribeNotificationSubscriptions =
   DescribeNotificationSubscriptions'
-    { _dMarker :: !(Maybe Text)
-    , _dLimit :: !(Maybe Nat)
+    { _dMarker         :: !(Maybe Text)
+    , _dLimit          :: !(Maybe Nat)
     , _dOrganizationId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -110,8 +110,8 @@ instance ToQuery DescribeNotificationSubscriptions where
 -- | /See:/ 'describeNotificationSubscriptionsResponse' smart constructor.
 data DescribeNotificationSubscriptionsResponse =
   DescribeNotificationSubscriptionsResponse'
-    { _dnsrsMarker :: !(Maybe Text)
-    , _dnsrsSubscriptions :: !(Maybe [Subscription])
+    { _dnsrsMarker         :: !(Maybe Text)
+    , _dnsrsSubscriptions  :: !(Maybe [Subscription])
     , _dnsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

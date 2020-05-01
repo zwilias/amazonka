@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 data ListPolicyAttachments =
   ListPolicyAttachments'
     { _lpaConsistencyLevel :: !(Maybe ConsistencyLevel)
-    , _lpaNextToken :: !(Maybe Text)
-    , _lpaMaxResults :: !(Maybe Nat)
-    , _lpaDirectoryARN :: !Text
-    , _lpaPolicyReference :: !ObjectReference
+    , _lpaNextToken        :: !(Maybe Text)
+    , _lpaMaxResults       :: !(Maybe Nat)
+    , _lpaDirectoryARN     :: !Text
+    , _lpaPolicyReference  :: !ObjectReference
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -155,8 +155,8 @@ instance ToQuery ListPolicyAttachments where
 data ListPolicyAttachmentsResponse =
   ListPolicyAttachmentsResponse'
     { _lparsObjectIdentifiers :: !(Maybe [Text])
-    , _lparsNextToken :: !(Maybe Text)
-    , _lparsResponseStatus :: !Int
+    , _lparsNextToken         :: !(Maybe Text)
+    , _lparsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

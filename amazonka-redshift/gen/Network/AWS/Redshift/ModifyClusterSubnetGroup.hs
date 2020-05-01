@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,9 +49,9 @@ import Network.AWS.Response
 -- /See:/ 'modifyClusterSubnetGroup' smart constructor.
 data ModifyClusterSubnetGroup =
   ModifyClusterSubnetGroup'
-    { _mcsgDescription :: !(Maybe Text)
+    { _mcsgDescription            :: !(Maybe Text)
     , _mcsgClusterSubnetGroupName :: !Text
-    , _mcsgSubnetIds :: ![Text]
+    , _mcsgSubnetIds              :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -121,7 +121,7 @@ instance ToQuery ModifyClusterSubnetGroup where
 data ModifyClusterSubnetGroupResponse =
   ModifyClusterSubnetGroupResponse'
     { _mcsgrsClusterSubnetGroup :: !(Maybe ClusterSubnetGroup)
-    , _mcsgrsResponseStatus :: !Int
+    , _mcsgrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

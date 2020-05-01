@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- | /See:/ 'listTagsForProject' smart constructor.
 data ListTagsForProject =
   ListTagsForProject'
-    { _ltfpNextToken :: !(Maybe Text)
+    { _ltfpNextToken  :: !(Maybe Text)
     , _ltfpMaxResults :: !(Maybe Nat)
-    , _ltfpId :: !Text
+    , _ltfpId         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -122,8 +122,8 @@ instance ToQuery ListTagsForProject where
 -- | /See:/ 'listTagsForProjectResponse' smart constructor.
 data ListTagsForProjectResponse =
   ListTagsForProjectResponse'
-    { _ltfprsNextToken :: !(Maybe Text)
-    , _ltfprsTags :: !(Maybe (Map Text Text))
+    { _ltfprsNextToken      :: !(Maybe Text)
+    , _ltfprsTags           :: !(Maybe (Map Text Text))
     , _ltfprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

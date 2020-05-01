@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,7 +53,7 @@ import Network.AWS.Response
 data ValidateTemplate =
   ValidateTemplate'
     { _vtTemplateBody :: !(Maybe Text)
-    , _vtTemplateURL :: !(Maybe Text)
+    , _vtTemplateURL  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -119,10 +119,10 @@ data ValidateTemplateResponse =
   ValidateTemplateResponse'
     { _vtrsDeclaredTransforms :: !(Maybe [Text])
     , _vtrsCapabilitiesReason :: !(Maybe Text)
-    , _vtrsParameters :: !(Maybe [TemplateParameter])
-    , _vtrsDescription :: !(Maybe Text)
-    , _vtrsCapabilities :: !(Maybe [Capability])
-    , _vtrsResponseStatus :: !Int
+    , _vtrsParameters         :: !(Maybe [TemplateParameter])
+    , _vtrsDescription        :: !(Maybe Text)
+    , _vtrsCapabilities       :: !(Maybe [Capability])
+    , _vtrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -24,15 +24,15 @@ import Network.AWS.SMS.Types.Sum
 -- /See:/ 'connector' smart constructor.
 data Connector =
   Connector'
-    { _cStatus :: !(Maybe ConnectorStatus)
-    , _cVmManagerName :: !(Maybe Text)
-    , _cIpAddress :: !(Maybe Text)
-    , _cVmManagerId :: !(Maybe Text)
-    , _cVmManagerType :: !(Maybe VMManagerType)
-    , _cConnectorId :: !(Maybe Text)
-    , _cAssociatedOn :: !(Maybe POSIX)
-    , _cMacAddress :: !(Maybe Text)
-    , _cVersion :: !(Maybe Text)
+    { _cStatus         :: !(Maybe ConnectorStatus)
+    , _cVmManagerName  :: !(Maybe Text)
+    , _cIpAddress      :: !(Maybe Text)
+    , _cVmManagerId    :: !(Maybe Text)
+    , _cVmManagerType  :: !(Maybe VMManagerType)
+    , _cConnectorId    :: !(Maybe Text)
+    , _cAssociatedOn   :: !(Maybe POSIX)
+    , _cMacAddress     :: !(Maybe Text)
+    , _cVersion        :: !(Maybe Text)
     , _cCapabilityList :: !(Maybe [ConnectorCapability])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -141,20 +141,20 @@ instance NFData Connector
 -- /See:/ 'replicationJob' smart constructor.
 data ReplicationJob =
   ReplicationJob'
-    { _rjFrequency :: !(Maybe Int)
-    , _rjState :: !(Maybe ReplicationJobState)
-    , _rjServerType :: !(Maybe ServerType)
-    , _rjServerId :: !(Maybe Text)
-    , _rjLicenseType :: !(Maybe LicenseType)
-    , _rjRoleName :: !(Maybe Text)
-    , _rjVmServer :: !(Maybe VMServer)
-    , _rjReplicationJobId :: !(Maybe Text)
-    , _rjReplicationRunList :: !(Maybe [ReplicationRun])
+    { _rjFrequency                   :: !(Maybe Int)
+    , _rjState                       :: !(Maybe ReplicationJobState)
+    , _rjServerType                  :: !(Maybe ServerType)
+    , _rjServerId                    :: !(Maybe Text)
+    , _rjLicenseType                 :: !(Maybe LicenseType)
+    , _rjRoleName                    :: !(Maybe Text)
+    , _rjVmServer                    :: !(Maybe VMServer)
+    , _rjReplicationJobId            :: !(Maybe Text)
+    , _rjReplicationRunList          :: !(Maybe [ReplicationRun])
     , _rjNextReplicationRunStartTime :: !(Maybe POSIX)
-    , _rjStatusMessage :: !(Maybe Text)
-    , _rjLatestAMIId :: !(Maybe Text)
-    , _rjSeedReplicationTime :: !(Maybe POSIX)
-    , _rjDescription :: !(Maybe Text)
+    , _rjStatusMessage               :: !(Maybe Text)
+    , _rjLatestAMIId                 :: !(Maybe Text)
+    , _rjSeedReplicationTime         :: !(Maybe POSIX)
+    , _rjDescription                 :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -301,14 +301,14 @@ instance NFData ReplicationJob
 -- /See:/ 'replicationRun' smart constructor.
 data ReplicationRun =
   ReplicationRun'
-    { _rrState :: !(Maybe ReplicationRunState)
-    , _rrReplicationRunId :: !(Maybe Text)
+    { _rrState              :: !(Maybe ReplicationRunState)
+    , _rrReplicationRunId   :: !(Maybe Text)
     , _rrScheduledStartTime :: !(Maybe POSIX)
-    , _rrStatusMessage :: !(Maybe Text)
-    , _rrCompletedTime :: !(Maybe POSIX)
-    , _rrAmiId :: !(Maybe Text)
-    , _rrType :: !(Maybe ReplicationRunType)
-    , _rrDescription :: !(Maybe Text)
+    , _rrStatusMessage      :: !(Maybe Text)
+    , _rrCompletedTime      :: !(Maybe POSIX)
+    , _rrAmiId              :: !(Maybe Text)
+    , _rrType               :: !(Maybe ReplicationRunType)
+    , _rrDescription        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -402,11 +402,11 @@ instance NFData ReplicationRun
 -- /See:/ 'server' smart constructor.
 data Server =
   Server'
-    { _sServerType :: !(Maybe ServerType)
-    , _sServerId :: !(Maybe Text)
+    { _sServerType               :: !(Maybe ServerType)
+    , _sServerId                 :: !(Maybe Text)
     , _sReplicationJobTerminated :: !(Maybe Bool)
-    , _sVmServer :: !(Maybe VMServer)
-    , _sReplicationJobId :: !(Maybe Text)
+    , _sVmServer                 :: !(Maybe VMServer)
+    , _sReplicationJobId         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -473,11 +473,11 @@ instance NFData Server
 -- /See:/ 'vMServer' smart constructor.
 data VMServer =
   VMServer'
-    { _vmsVmManagerName :: !(Maybe Text)
-    , _vmsVmManagerType :: !(Maybe VMManagerType)
+    { _vmsVmManagerName   :: !(Maybe Text)
+    , _vmsVmManagerType   :: !(Maybe VMManagerType)
     , _vmsVmServerAddress :: !(Maybe VMServerAddress)
-    , _vmsVmName :: !(Maybe Text)
-    , _vmsVmPath :: !(Maybe Text)
+    , _vmsVmName          :: !(Maybe Text)
+    , _vmsVmPath          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -545,7 +545,7 @@ instance NFData VMServer
 data VMServerAddress =
   VMServerAddress'
     { _vmsaVmManagerId :: !(Maybe Text)
-    , _vmsaVmId :: !(Maybe Text)
+    , _vmsaVmId        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

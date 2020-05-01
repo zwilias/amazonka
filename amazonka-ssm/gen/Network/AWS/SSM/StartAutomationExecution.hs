@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,14 +52,14 @@ import Network.AWS.SSM.Types.Product
 data StartAutomationExecution =
   StartAutomationExecution'
     { _saeTargetParameterName :: !(Maybe Text)
-    , _saeClientToken :: !(Maybe Text)
-    , _saeMode :: !(Maybe ExecutionMode)
-    , _saeMaxErrors :: !(Maybe Text)
-    , _saeTargets :: !(Maybe [Target])
-    , _saeParameters :: !(Maybe (Map Text [Text]))
-    , _saeDocumentVersion :: !(Maybe Text)
-    , _saeMaxConcurrency :: !(Maybe Text)
-    , _saeDocumentName :: !Text
+    , _saeClientToken         :: !(Maybe Text)
+    , _saeMode                :: !(Maybe ExecutionMode)
+    , _saeMaxErrors           :: !(Maybe Text)
+    , _saeTargets             :: !(Maybe [Target])
+    , _saeParameters          :: !(Maybe (Map Text [Text]))
+    , _saeDocumentVersion     :: !(Maybe Text)
+    , _saeMaxConcurrency      :: !(Maybe Text)
+    , _saeDocumentName        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -186,7 +186,7 @@ instance ToQuery StartAutomationExecution where
 data StartAutomationExecutionResponse =
   StartAutomationExecutionResponse'
     { _srsAutomationExecutionId :: !(Maybe Text)
-    , _srsResponseStatus :: !Int
+    , _srsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

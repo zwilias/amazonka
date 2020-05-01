@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,7 +56,7 @@ import Network.AWS.Response
 data UploadDocuments =
   UploadDocuments'
     { _udContentType :: !ContentType
-    , _udDocuments :: !HashedBody
+    , _udDocuments   :: !HashedBody
     }
   deriving (Show, Generic)
 
@@ -112,10 +112,10 @@ instance ToQuery UploadDocuments where
 -- /See:/ 'uploadDocumentsResponse' smart constructor.
 data UploadDocumentsResponse =
   UploadDocumentsResponse'
-    { _udrsStatus :: !(Maybe Text)
-    , _udrsAdds :: !(Maybe Integer)
-    , _udrsWarnings :: !(Maybe [DocumentServiceWarning])
-    , _udrsDeletes :: !(Maybe Integer)
+    { _udrsStatus         :: !(Maybe Text)
+    , _udrsAdds           :: !(Maybe Integer)
+    , _udrsWarnings       :: !(Maybe [DocumentServiceWarning])
+    , _udrsDeletes        :: !(Maybe Integer)
     , _udrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

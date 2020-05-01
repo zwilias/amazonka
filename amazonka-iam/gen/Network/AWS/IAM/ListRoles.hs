@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.Response
 data ListRoles =
   ListRoles'
     { _lrPathPrefix :: !(Maybe Text)
-    , _lrMarker :: !(Maybe Text)
-    , _lrMaxItems :: !(Maybe Nat)
+    , _lrMarker     :: !(Maybe Text)
+    , _lrMaxItems   :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -128,10 +128,10 @@ instance ToQuery ListRoles where
 -- /See:/ 'listRolesResponse' smart constructor.
 data ListRolesResponse =
   ListRolesResponse'
-    { _lrrsMarker :: !(Maybe Text)
-    , _lrrsIsTruncated :: !(Maybe Bool)
+    { _lrrsMarker         :: !(Maybe Text)
+    , _lrrsIsTruncated    :: !(Maybe Bool)
     , _lrrsResponseStatus :: !Int
-    , _lrrsRoles :: ![Role]
+    , _lrrsRoles          :: ![Role]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

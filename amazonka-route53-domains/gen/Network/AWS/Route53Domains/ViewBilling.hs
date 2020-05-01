@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Route53Domains.Types.Product
 -- /See:/ 'viewBilling' smart constructor.
 data ViewBilling =
   ViewBilling'
-    { _vbStart :: !(Maybe POSIX)
-    , _vbEnd :: !(Maybe POSIX)
-    , _vbMarker :: !(Maybe Text)
+    { _vbStart    :: !(Maybe POSIX)
+    , _vbEnd      :: !(Maybe POSIX)
+    , _vbMarker   :: !(Maybe Text)
     , _vbMaxItems :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

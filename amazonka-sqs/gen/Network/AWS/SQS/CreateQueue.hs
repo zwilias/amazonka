@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -67,7 +67,7 @@ import Network.AWS.SQS.Types.Product
 data CreateQueue =
   CreateQueue'
     { _cqAttributes :: !(Maybe (Map QueueAttributeName Text))
-    , _cqQueueName :: !Text
+    , _cqQueueName  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -128,7 +128,7 @@ instance ToQuery CreateQueue where
 -- /See:/ 'createQueueResponse' smart constructor.
 data CreateQueueResponse =
   CreateQueueResponse'
-    { _cqrsQueueURL :: !(Maybe Text)
+    { _cqrsQueueURL       :: !(Maybe Text)
     , _cqrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,10 +50,10 @@ import Network.AWS.Response
 -- /See:/ 'retryStageExecution' smart constructor.
 data RetryStageExecution =
   RetryStageExecution'
-    { _rsePipelineName :: !Text
-    , _rseStageName :: !Text
+    { _rsePipelineName        :: !Text
+    , _rseStageName           :: !Text
     , _rsePipelineExecutionId :: !Text
-    , _rseRetryMode :: !StageRetryMode
+    , _rseRetryMode           :: !StageRetryMode
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -145,7 +145,7 @@ instance ToQuery RetryStageExecution where
 data RetryStageExecutionResponse =
   RetryStageExecutionResponse'
     { _rsersPipelineExecutionId :: !(Maybe Text)
-    , _rsersResponseStatus :: !Int
+    , _rsersResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

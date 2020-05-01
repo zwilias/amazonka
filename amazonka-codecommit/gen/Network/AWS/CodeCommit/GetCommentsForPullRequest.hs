@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,12 +52,12 @@ import Network.AWS.Response
 -- | /See:/ 'getCommentsForPullRequest' smart constructor.
 data GetCommentsForPullRequest =
   GetCommentsForPullRequest'
-    { _gcfprAfterCommitId :: !(Maybe Text)
-    , _gcfprNextToken :: !(Maybe Text)
+    { _gcfprAfterCommitId  :: !(Maybe Text)
+    , _gcfprNextToken      :: !(Maybe Text)
     , _gcfprBeforeCommitId :: !(Maybe Text)
     , _gcfprRepositoryName :: !(Maybe Text)
-    , _gcfprMaxResults :: !(Maybe Int)
-    , _gcfprPullRequestId :: !Text
+    , _gcfprMaxResults     :: !(Maybe Int)
+    , _gcfprPullRequestId  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -169,8 +169,8 @@ instance ToQuery GetCommentsForPullRequest where
 data GetCommentsForPullRequestResponse =
   GetCommentsForPullRequestResponse'
     { _gcfprrsCommentsForPullRequestData :: !(Maybe [CommentsForPullRequest])
-    , _gcfprrsNextToken :: !(Maybe Text)
-    , _gcfprrsResponseStatus :: !Int
+    , _gcfprrsNextToken                  :: !(Maybe Text)
+    , _gcfprrsResponseStatus             :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

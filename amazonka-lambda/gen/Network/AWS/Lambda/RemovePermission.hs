@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,10 +53,10 @@ import Network.AWS.Response
 -- /See:/ 'removePermission' smart constructor.
 data RemovePermission =
   RemovePermission'
-    { _rpQualifier :: !(Maybe Text)
-    , _rpRevisionId :: !(Maybe Text)
+    { _rpQualifier    :: !(Maybe Text)
+    , _rpRevisionId   :: !(Maybe Text)
     , _rpFunctionName :: !Text
-    , _rpStatementId :: !Text
+    , _rpStatementId  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

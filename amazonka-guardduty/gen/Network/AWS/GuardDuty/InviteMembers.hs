@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,10 +46,10 @@ import Network.AWS.Response
 -- /See:/ 'inviteMembers' smart constructor.
 data InviteMembers =
   InviteMembers'
-    { _imAccountIds :: !(Maybe [Text])
+    { _imAccountIds               :: !(Maybe [Text])
     , _imDisableEmailNotification :: !(Maybe Bool)
-    , _imMessage :: !(Maybe Text)
-    , _imDetectorId :: !Text
+    , _imMessage                  :: !(Maybe Text)
+    , _imDetectorId               :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -131,7 +131,7 @@ instance ToQuery InviteMembers where
 data InviteMembersResponse =
   InviteMembersResponse'
     { _imrsUnprocessedAccounts :: !(Maybe [UnprocessedAccount])
-    , _imrsResponseStatus :: !Int
+    , _imrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,15 +26,15 @@ import Network.AWS.Prelude
 -- /See:/ 'streamInfo' smart constructor.
 data StreamInfo =
   StreamInfo'
-    { _siCreationTime :: !(Maybe POSIX)
-    , _siStatus :: !(Maybe StreamStatus)
-    , _siMediaType :: !(Maybe Text)
+    { _siCreationTime         :: !(Maybe POSIX)
+    , _siStatus               :: !(Maybe StreamStatus)
+    , _siMediaType            :: !(Maybe Text)
     , _siDataRetentionInHours :: !(Maybe Nat)
-    , _siStreamARN :: !(Maybe Text)
-    , _siKMSKeyId :: !(Maybe Text)
-    , _siDeviceName :: !(Maybe Text)
-    , _siVersion :: !(Maybe Text)
-    , _siStreamName :: !(Maybe Text)
+    , _siStreamARN            :: !(Maybe Text)
+    , _siKMSKeyId             :: !(Maybe Text)
+    , _siDeviceName           :: !(Maybe Text)
+    , _siVersion              :: !(Maybe Text)
+    , _siStreamName           :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -138,7 +138,7 @@ instance NFData StreamInfo
 data StreamNameCondition =
   StreamNameCondition'
     { _sncComparisonOperator :: !(Maybe ComparisonOperator)
-    , _sncComparisonValue :: !(Maybe Text)
+    , _sncComparisonValue    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

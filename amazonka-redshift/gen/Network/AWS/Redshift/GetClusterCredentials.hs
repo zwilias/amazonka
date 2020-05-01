@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -62,11 +62,11 @@ import Network.AWS.Response
 -- /See:/ 'getClusterCredentials' smart constructor.
 data GetClusterCredentials =
   GetClusterCredentials'
-    { _gccDBGroups :: !(Maybe [Text])
-    , _gccDurationSeconds :: !(Maybe Int)
-    , _gccAutoCreate :: !(Maybe Bool)
-    , _gccDBName :: !(Maybe Text)
-    , _gccDBUser :: !Text
+    { _gccDBGroups          :: !(Maybe [Text])
+    , _gccDurationSeconds   :: !(Maybe Int)
+    , _gccAutoCreate        :: !(Maybe Bool)
+    , _gccDBName            :: !(Maybe Text)
+    , _gccDBUser            :: !Text
     , _gccClusterIdentifier :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -169,9 +169,9 @@ instance ToQuery GetClusterCredentials where
 -- /See:/ 'getClusterCredentialsResponse' smart constructor.
 data GetClusterCredentialsResponse =
   GetClusterCredentialsResponse'
-    { _gccrsDBUser :: !(Maybe Text)
-    , _gccrsExpiration :: !(Maybe ISO8601)
-    , _gccrsDBPassword :: !(Maybe (Sensitive Text))
+    { _gccrsDBUser         :: !(Maybe Text)
+    , _gccrsExpiration     :: !(Maybe ISO8601)
+    , _gccrsDBPassword     :: !(Maybe (Sensitive Text))
     , _gccrsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

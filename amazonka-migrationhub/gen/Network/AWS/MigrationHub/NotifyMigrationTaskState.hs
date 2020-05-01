@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,12 +55,12 @@ import Network.AWS.Response
 -- | /See:/ 'notifyMigrationTaskState' smart constructor.
 data NotifyMigrationTaskState =
   NotifyMigrationTaskState'
-    { _nmtsDryRun :: !(Maybe Bool)
+    { _nmtsDryRun               :: !(Maybe Bool)
     , _nmtsProgressUpdateStream :: !Text
-    , _nmtsMigrationTaskName :: !Text
-    , _nmtsTask :: !Task
-    , _nmtsUpdateDateTime :: !POSIX
-    , _nmtsNextUpdateSeconds :: !Nat
+    , _nmtsMigrationTaskName    :: !Text
+    , _nmtsTask                 :: !Task
+    , _nmtsUpdateDateTime       :: !POSIX
+    , _nmtsNextUpdateSeconds    :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

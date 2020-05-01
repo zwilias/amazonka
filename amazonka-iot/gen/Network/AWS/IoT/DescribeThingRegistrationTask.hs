@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -110,19 +110,19 @@ instance ToQuery DescribeThingRegistrationTask where
 -- | /See:/ 'describeThingRegistrationTaskResponse' smart constructor.
 data DescribeThingRegistrationTaskResponse =
   DescribeThingRegistrationTaskResponse'
-    { _dtrtrsStatus :: !(Maybe TaskStatus)
-    , _dtrtrsLastModifiedDate :: !(Maybe POSIX)
-    , _dtrtrsInputFileKey :: !(Maybe Text)
-    , _dtrtrsTaskId :: !(Maybe Text)
-    , _dtrtrsCreationDate :: !(Maybe POSIX)
+    { _dtrtrsStatus             :: !(Maybe TaskStatus)
+    , _dtrtrsLastModifiedDate   :: !(Maybe POSIX)
+    , _dtrtrsInputFileKey       :: !(Maybe Text)
+    , _dtrtrsTaskId             :: !(Maybe Text)
+    , _dtrtrsCreationDate       :: !(Maybe POSIX)
     , _dtrtrsPercentageProgress :: !(Maybe Nat)
-    , _dtrtrsTemplateBody :: !(Maybe Text)
-    , _dtrtrsSuccessCount :: !(Maybe Int)
-    , _dtrtrsMessage :: !(Maybe Text)
-    , _dtrtrsFailureCount :: !(Maybe Int)
-    , _dtrtrsInputFileBucket :: !(Maybe Text)
-    , _dtrtrsRoleARN :: !(Maybe Text)
-    , _dtrtrsResponseStatus :: !Int
+    , _dtrtrsTemplateBody       :: !(Maybe Text)
+    , _dtrtrsSuccessCount       :: !(Maybe Int)
+    , _dtrtrsMessage            :: !(Maybe Text)
+    , _dtrtrsFailureCount       :: !(Maybe Int)
+    , _dtrtrsInputFileBucket    :: !(Maybe Text)
+    , _dtrtrsRoleARN            :: !(Maybe Text)
+    , _dtrtrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

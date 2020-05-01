@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,7 +53,7 @@ import Network.AWS.Response
 data ListUniqueProblems =
   ListUniqueProblems'
     { _lupNextToken :: !(Maybe Text)
-    , _lupArn :: !Text
+    , _lupArn       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -125,7 +125,7 @@ instance ToQuery ListUniqueProblems where
 -- /See:/ 'listUniqueProblemsResponse' smart constructor.
 data ListUniqueProblemsResponse =
   ListUniqueProblemsResponse'
-    { _luprsNextToken :: !(Maybe Text)
+    { _luprsNextToken      :: !(Maybe Text)
     , _luprsUniqueProblems :: !(Maybe (Map ExecutionResult [UniqueProblem]))
     , _luprsResponseStatus :: !Int
     }

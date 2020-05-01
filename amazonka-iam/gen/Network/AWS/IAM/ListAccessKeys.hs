@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,7 +55,7 @@ import Network.AWS.Response
 data ListAccessKeys =
   ListAccessKeys'
     { _lakUserName :: !(Maybe Text)
-    , _lakMarker :: !(Maybe Text)
+    , _lakMarker   :: !(Maybe Text)
     , _lakMaxItems :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -130,9 +130,9 @@ instance ToQuery ListAccessKeys where
 -- /See:/ 'listAccessKeysResponse' smart constructor.
 data ListAccessKeysResponse =
   ListAccessKeysResponse'
-    { _lakrsMarker :: !(Maybe Text)
-    , _lakrsIsTruncated :: !(Maybe Bool)
-    , _lakrsResponseStatus :: !Int
+    { _lakrsMarker            :: !(Maybe Text)
+    , _lakrsIsTruncated       :: !(Maybe Bool)
+    , _lakrsResponseStatus    :: !Int
     , _lakrsAccessKeyMetadata :: ![AccessKeyMetadata]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

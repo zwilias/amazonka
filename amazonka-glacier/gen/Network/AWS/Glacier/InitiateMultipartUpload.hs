@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -61,10 +61,10 @@ import Network.AWS.Response
 -- /See:/ 'initiateMultipartUpload' smart constructor.
 data InitiateMultipartUpload =
   InitiateMultipartUpload'
-    { _imuPartSize :: !(Maybe Text)
+    { _imuPartSize           :: !(Maybe Text)
     , _imuArchiveDescription :: !(Maybe Text)
-    , _imuAccountId :: !Text
-    , _imuVaultName :: !Text
+    , _imuAccountId          :: !Text
+    , _imuVaultName          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -152,8 +152,8 @@ instance ToQuery InitiateMultipartUpload where
 -- /See:/ 'initiateMultipartUploadResponse' smart constructor.
 data InitiateMultipartUploadResponse =
   InitiateMultipartUploadResponse'
-    { _imursLocation :: !(Maybe Text)
-    , _imursUploadId :: !(Maybe Text)
+    { _imursLocation       :: !(Maybe Text)
+    , _imursUploadId       :: !(Maybe Text)
     , _imursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -60,10 +60,10 @@ import Network.AWS.Response
 -- | /See:/ 'getContentModeration' smart constructor.
 data GetContentModeration =
   GetContentModeration'
-    { _gcmNextToken :: !(Maybe Text)
+    { _gcmNextToken  :: !(Maybe Text)
     , _gcmMaxResults :: !(Maybe Nat)
-    , _gcmSortBy :: !(Maybe ContentModerationSortBy)
-    , _gcmJobId :: !Text
+    , _gcmSortBy     :: !(Maybe ContentModerationSortBy)
+    , _gcmJobId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -151,12 +151,12 @@ instance ToQuery GetContentModeration where
 -- | /See:/ 'getContentModerationResponse' smart constructor.
 data GetContentModerationResponse =
   GetContentModerationResponse'
-    { _gcmrsNextToken :: !(Maybe Text)
-    , _gcmrsVideoMetadata :: !(Maybe VideoMetadata)
-    , _gcmrsStatusMessage :: !(Maybe Text)
-    , _gcmrsJobStatus :: !(Maybe VideoJobStatus)
+    { _gcmrsNextToken        :: !(Maybe Text)
+    , _gcmrsVideoMetadata    :: !(Maybe VideoMetadata)
+    , _gcmrsStatusMessage    :: !(Maybe Text)
+    , _gcmrsJobStatus        :: !(Maybe VideoJobStatus)
     , _gcmrsModerationLabels :: !(Maybe [ContentModerationDetection])
-    , _gcmrsResponseStatus :: !Int
+    , _gcmrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,7 +55,7 @@ import Network.AWS.Response
 data ListSSHPublicKeys =
   ListSSHPublicKeys'
     { _lspkUserName :: !(Maybe Text)
-    , _lspkMarker :: !(Maybe Text)
+    , _lspkMarker   :: !(Maybe Text)
     , _lspkMaxItems :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -132,9 +132,9 @@ instance ToQuery ListSSHPublicKeys where
 -- /See:/ 'listSSHPublicKeysResponse' smart constructor.
 data ListSSHPublicKeysResponse =
   ListSSHPublicKeysResponse'
-    { _lspkrsSSHPublicKeys :: !(Maybe [SSHPublicKeyMetadata])
-    , _lspkrsMarker :: !(Maybe Text)
-    , _lspkrsIsTruncated :: !(Maybe Bool)
+    { _lspkrsSSHPublicKeys  :: !(Maybe [SSHPublicKeyMetadata])
+    , _lspkrsMarker         :: !(Maybe Text)
+    , _lspkrsIsTruncated    :: !(Maybe Bool)
     , _lspkrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

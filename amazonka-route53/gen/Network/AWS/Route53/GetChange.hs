@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -100,7 +100,7 @@ instance ToQuery GetChange where
 data GetChangeResponse =
   GetChangeResponse'
     { _gcrsResponseStatus :: !Int
-    , _gcrsChangeInfo :: !ChangeInfo
+    , _gcrsChangeInfo     :: !ChangeInfo
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

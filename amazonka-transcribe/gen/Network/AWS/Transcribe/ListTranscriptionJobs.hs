@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,10 +48,10 @@ import Network.AWS.Transcribe.Types.Product
 -- | /See:/ 'listTranscriptionJobs' smart constructor.
 data ListTranscriptionJobs =
   ListTranscriptionJobs'
-    { _ltjStatus :: !(Maybe TranscriptionJobStatus)
-    , _ltjNextToken :: !(Maybe Text)
+    { _ltjStatus          :: !(Maybe TranscriptionJobStatus)
+    , _ltjNextToken       :: !(Maybe Text)
     , _ltjJobNameContains :: !(Maybe Text)
-    , _ltjMaxResults :: !(Maybe Nat)
+    , _ltjMaxResults      :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -135,10 +135,10 @@ instance ToQuery ListTranscriptionJobs where
 -- | /See:/ 'listTranscriptionJobsResponse' smart constructor.
 data ListTranscriptionJobsResponse =
   ListTranscriptionJobsResponse'
-    { _ltjrsStatus :: !(Maybe TranscriptionJobStatus)
-    , _ltjrsNextToken :: !(Maybe Text)
+    { _ltjrsStatus                    :: !(Maybe TranscriptionJobStatus)
+    , _ltjrsNextToken                 :: !(Maybe Text)
     , _ltjrsTranscriptionJobSummaries :: !(Maybe [TranscriptionJobSummary])
-    , _ltjrsResponseStatus :: !Int
+    , _ltjrsResponseStatus            :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

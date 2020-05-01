@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,9 +47,9 @@ import Network.AWS.Response
 -- | /See:/ 'listThingsInThingGroup' smart constructor.
 data ListThingsInThingGroup =
   ListThingsInThingGroup'
-    { _ltitgNextToken :: !(Maybe Text)
-    , _ltitgRecursive :: !(Maybe Bool)
-    , _ltitgMaxResults :: !(Maybe Nat)
+    { _ltitgNextToken      :: !(Maybe Text)
+    , _ltitgRecursive      :: !(Maybe Bool)
+    , _ltitgMaxResults     :: !(Maybe Nat)
     , _ltitgThingGroupName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -126,8 +126,8 @@ instance ToQuery ListThingsInThingGroup where
 -- | /See:/ 'listThingsInThingGroupResponse' smart constructor.
 data ListThingsInThingGroupResponse =
   ListThingsInThingGroupResponse'
-    { _ltitgrsNextToken :: !(Maybe Text)
-    , _ltitgrsThings :: !(Maybe [Text])
+    { _ltitgrsNextToken      :: !(Maybe Text)
+    , _ltitgrsThings         :: !(Maybe [Text])
     , _ltitgrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

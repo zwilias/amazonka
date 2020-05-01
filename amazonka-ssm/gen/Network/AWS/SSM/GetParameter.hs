@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.SSM.Types.Product
 data GetParameter =
   GetParameter'
     { _gWithDecryption :: !(Maybe Bool)
-    , _gName :: !Text
+    , _gName           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -105,7 +105,7 @@ instance ToQuery GetParameter where
 -- | /See:/ 'getParameterResponse' smart constructor.
 data GetParameterResponse =
   GetParameterResponse'
-    { _gprsParameter :: !(Maybe Parameter)
+    { _gprsParameter      :: !(Maybe Parameter)
     , _gprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.Response
 -- /See:/ 'getDeployments' smart constructor.
 data GetDeployments =
   GetDeployments'
-    { _gdLimit :: !(Maybe Int)
-    , _gdPosition :: !(Maybe Text)
+    { _gdLimit     :: !(Maybe Int)
+    , _gdPosition  :: !(Maybe Text)
     , _gdRestAPIId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -126,8 +126,8 @@ instance ToQuery GetDeployments where
 -- /See:/ 'getDeploymentsResponse' smart constructor.
 data GetDeploymentsResponse =
   GetDeploymentsResponse'
-    { _gdrsItems :: !(Maybe [Deployment])
-    , _gdrsPosition :: !(Maybe Text)
+    { _gdrsItems          :: !(Maybe [Deployment])
+    , _gdrsPosition       :: !(Maybe Text)
     , _gdrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

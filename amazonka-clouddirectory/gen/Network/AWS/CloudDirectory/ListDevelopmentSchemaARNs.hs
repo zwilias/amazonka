@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- | /See:/ 'listDevelopmentSchemaARNs' smart constructor.
 data ListDevelopmentSchemaARNs =
   ListDevelopmentSchemaARNs'
-    { _ldsaNextToken :: !(Maybe Text)
+    { _ldsaNextToken  :: !(Maybe Text)
     , _ldsaMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -114,8 +114,8 @@ instance ToQuery ListDevelopmentSchemaARNs where
 -- | /See:/ 'listDevelopmentSchemaARNsResponse' smart constructor.
 data ListDevelopmentSchemaARNsResponse =
   ListDevelopmentSchemaARNsResponse'
-    { _ldsarsSchemaARNs :: !(Maybe [Text])
-    , _ldsarsNextToken :: !(Maybe Text)
+    { _ldsarsSchemaARNs     :: !(Maybe [Text])
+    , _ldsarsNextToken      :: !(Maybe Text)
     , _ldsarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.SNS.Types.Product
 -- /See:/ 'listEndpointsByPlatformApplication' smart constructor.
 data ListEndpointsByPlatformApplication =
   ListEndpointsByPlatformApplication'
-    { _lebpaNextToken :: !(Maybe Text)
+    { _lebpaNextToken              :: !(Maybe Text)
     , _lebpaPlatformApplicationARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -127,8 +127,8 @@ instance ToQuery ListEndpointsByPlatformApplication where
 -- /See:/ 'listEndpointsByPlatformApplicationResponse' smart constructor.
 data ListEndpointsByPlatformApplicationResponse =
   ListEndpointsByPlatformApplicationResponse'
-    { _lebparsNextToken :: !(Maybe Text)
-    , _lebparsEndpoints :: !(Maybe [Endpoint])
+    { _lebparsNextToken      :: !(Maybe Text)
+    , _lebparsEndpoints      :: !(Maybe [Endpoint])
     , _lebparsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

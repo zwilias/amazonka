@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -109,8 +109,8 @@ instance ToQuery ListSubscriptions where
 -- /See:/ 'listSubscriptionsResponse' smart constructor.
 data ListSubscriptionsResponse =
   ListSubscriptionsResponse'
-    { _lsrsNextToken :: !(Maybe Text)
-    , _lsrsSubscriptions :: !(Maybe [Subscription])
+    { _lsrsNextToken      :: !(Maybe Text)
+    , _lsrsSubscriptions  :: !(Maybe [Subscription])
     , _lsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

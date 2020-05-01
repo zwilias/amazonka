@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- | /See:/ 'listGroupsForUser' smart constructor.
 data ListGroupsForUser =
   ListGroupsForUser'
-    { _lgfuMarker :: !(Maybe Text)
+    { _lgfuMarker   :: !(Maybe Text)
     , _lgfuMaxItems :: !(Maybe Nat)
     , _lgfuUserName :: !Text
     }
@@ -131,10 +131,10 @@ instance ToQuery ListGroupsForUser where
 -- /See:/ 'listGroupsForUserResponse' smart constructor.
 data ListGroupsForUserResponse =
   ListGroupsForUserResponse'
-    { _lgfursMarker :: !(Maybe Text)
-    , _lgfursIsTruncated :: !(Maybe Bool)
+    { _lgfursMarker         :: !(Maybe Text)
+    , _lgfursIsTruncated    :: !(Maybe Bool)
     , _lgfursResponseStatus :: !Int
-    , _lgfursGroups :: ![Group]
+    , _lgfursGroups         :: ![Group]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

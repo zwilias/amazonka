@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,8 +27,8 @@ import Network.AWS.Prelude
 data Action =
   Action'
     { _aArguments :: !(Maybe (Map Text Text))
-    , _aJobName :: !(Maybe Text)
-    , _aTimeout :: !(Maybe Nat)
+    , _aJobName   :: !(Maybe Text)
+    , _aTimeout   :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -85,8 +85,8 @@ instance ToJSON Action where
 -- /See:/ 'batchStopJobRunError' smart constructor.
 data BatchStopJobRunError =
   BatchStopJobRunError'
-    { _bsjreJobName :: !(Maybe Text)
-    , _bsjreJobRunId :: !(Maybe Text)
+    { _bsjreJobName     :: !(Maybe Text)
+    , _bsjreJobRunId    :: !(Maybe Text)
     , _bsjreErrorDetail :: !(Maybe ErrorDetail)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -139,7 +139,7 @@ instance NFData BatchStopJobRunError
 -- /See:/ 'batchStopJobRunSuccessfulSubmission' smart constructor.
 data BatchStopJobRunSuccessfulSubmission =
   BatchStopJobRunSuccessfulSubmission'
-    { _bsjrssJobName :: !(Maybe Text)
+    { _bsjrssJobName  :: !(Maybe Text)
     , _bsjrssJobRunId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -184,7 +184,7 @@ instance NFData BatchStopJobRunSuccessfulSubmission
 data CatalogEntry =
   CatalogEntry'
     { _ceDatabaseName :: !Text
-    , _ceTableName :: !Text
+    , _ceTableName    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -229,8 +229,8 @@ instance ToJSON CatalogEntry where
 -- /See:/ 'catalogImportStatus' smart constructor.
 data CatalogImportStatus =
   CatalogImportStatus'
-    { _cisImportedBy :: !(Maybe Text)
-    , _cisImportTime :: !(Maybe POSIX)
+    { _cisImportedBy      :: !(Maybe Text)
+    , _cisImportTime      :: !(Maybe POSIX)
     , _cisImportCompleted :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -288,7 +288,7 @@ instance NFData CatalogImportStatus
 data Classifier =
   Classifier'
     { _cGrokClassifier :: !(Maybe GrokClassifier)
-    , _cXMLClassifier :: !(Maybe XMLClassifier)
+    , _cXMLClassifier  :: !(Maybe XMLClassifier)
     , _cJSONClassifier :: !(Maybe JSONClassifier)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -342,8 +342,8 @@ instance NFData Classifier
 data CodeGenEdge =
   CodeGenEdge'
     { _cgeTargetParameter :: !(Maybe Text)
-    , _cgeSource :: !Text
-    , _cgeTarget :: !Text
+    , _cgeSource          :: !Text
+    , _cgeTarget          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -409,9 +409,9 @@ instance ToJSON CodeGenEdge where
 data CodeGenNode =
   CodeGenNode'
     { _cgnLineNumber :: !(Maybe Int)
-    , _cgnId :: !Text
-    , _cgnNodeType :: !Text
-    , _cgnArgs :: ![CodeGenNodeArg]
+    , _cgnId         :: !Text
+    , _cgnNodeType   :: !Text
+    , _cgnArgs       :: ![CodeGenNodeArg]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -485,7 +485,7 @@ instance ToJSON CodeGenNode where
 data CodeGenNodeArg =
   CodeGenNodeArg'
     { _cgnaParam :: !(Maybe Bool)
-    , _cgnaName :: !Text
+    , _cgnaName  :: !Text
     , _cgnaValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -547,9 +547,9 @@ instance ToJSON CodeGenNodeArg where
 -- /See:/ 'column' smart constructor.
 data Column =
   Column'
-    { _cType :: !(Maybe Text)
+    { _cType    :: !(Maybe Text)
     , _cComment :: !(Maybe Text)
-    , _cName :: !Text
+    , _cName    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -605,8 +605,8 @@ instance ToJSON Column where
 -- /See:/ 'condition' smart constructor.
 data Condition =
   Condition'
-    { _cState :: !(Maybe JobRunState)
-    , _cJobName :: !(Maybe Text)
+    { _cState           :: !(Maybe JobRunState)
+    , _cJobName         :: !(Maybe Text)
     , _cLogicalOperator :: !(Maybe LogicalOperator)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -914,22 +914,22 @@ instance ToJSON ConnectionsList where
 -- /See:/ 'crawler' smart constructor.
 data Crawler =
   Crawler'
-    { _craCreationTime :: !(Maybe POSIX)
-    , _craState :: !(Maybe CrawlerState)
+    { _craCreationTime       :: !(Maybe POSIX)
+    , _craState              :: !(Maybe CrawlerState)
     , _craSchemaChangePolicy :: !(Maybe SchemaChangePolicy)
-    , _craLastUpdated :: !(Maybe POSIX)
-    , _craSchedule :: !(Maybe Schedule)
-    , _craLastCrawl :: !(Maybe LastCrawlInfo)
-    , _craCrawlElapsedTime :: !(Maybe Integer)
-    , _craClassifiers :: !(Maybe [Text])
-    , _craRole :: !(Maybe Text)
-    , _craName :: !(Maybe Text)
-    , _craTargets :: !(Maybe CrawlerTargets)
-    , _craVersion :: !(Maybe Integer)
-    , _craDatabaseName :: !(Maybe Text)
-    , _craConfiguration :: !(Maybe Text)
-    , _craTablePrefix :: !(Maybe Text)
-    , _craDescription :: !(Maybe Text)
+    , _craLastUpdated        :: !(Maybe POSIX)
+    , _craSchedule           :: !(Maybe Schedule)
+    , _craLastCrawl          :: !(Maybe LastCrawlInfo)
+    , _craCrawlElapsedTime   :: !(Maybe Integer)
+    , _craClassifiers        :: !(Maybe [Text])
+    , _craRole               :: !(Maybe Text)
+    , _craName               :: !(Maybe Text)
+    , _craTargets            :: !(Maybe CrawlerTargets)
+    , _craVersion            :: !(Maybe Integer)
+    , _craDatabaseName       :: !(Maybe Text)
+    , _craConfiguration      :: !(Maybe Text)
+    , _craTablePrefix        :: !(Maybe Text)
+    , _craDescription        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1090,14 +1090,14 @@ instance NFData Crawler
 -- /See:/ 'crawlerMetrics' smart constructor.
 data CrawlerMetrics =
   CrawlerMetrics'
-    { _cmLastRuntimeSeconds :: !(Maybe Double)
-    , _cmTablesCreated :: !(Maybe Nat)
-    , _cmStillEstimating :: !(Maybe Bool)
+    { _cmLastRuntimeSeconds   :: !(Maybe Double)
+    , _cmTablesCreated        :: !(Maybe Nat)
+    , _cmStillEstimating      :: !(Maybe Bool)
     , _cmMedianRuntimeSeconds :: !(Maybe Double)
-    , _cmTimeLeftSeconds :: !(Maybe Double)
-    , _cmTablesDeleted :: !(Maybe Nat)
-    , _cmTablesUpdated :: !(Maybe Nat)
-    , _cmCrawlerName :: !(Maybe Text)
+    , _cmTimeLeftSeconds      :: !(Maybe Double)
+    , _cmTablesDeleted        :: !(Maybe Nat)
+    , _cmTablesUpdated        :: !(Maybe Nat)
+    , _cmCrawlerName          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1195,7 +1195,7 @@ instance NFData CrawlerMetrics
 -- /See:/ 'crawlerTargets' smart constructor.
 data CrawlerTargets =
   CrawlerTargets'
-    { _ctS3Targets :: !(Maybe [S3Target])
+    { _ctS3Targets   :: !(Maybe [S3Target])
     , _ctJdbcTargets :: !(Maybe [JdbcTarget])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1250,8 +1250,8 @@ data CreateGrokClassifierRequest =
   CreateGrokClassifierRequest'
     { _cgcrCustomPatterns :: !(Maybe Text)
     , _cgcrClassification :: !Text
-    , _cgcrName :: !Text
-    , _cgcrGrokPattern :: !Text
+    , _cgcrName           :: !Text
+    , _cgcrGrokPattern    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1318,7 +1318,7 @@ instance ToJSON CreateGrokClassifierRequest where
 -- /See:/ 'createJSONClassifierRequest' smart constructor.
 data CreateJSONClassifierRequest =
   CreateJSONClassifierRequest'
-    { _cjcrName :: !Text
+    { _cjcrName     :: !Text
     , _cjcrJSONPath :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1362,9 +1362,9 @@ instance ToJSON CreateJSONClassifierRequest where
 -- /See:/ 'createXMLClassifierRequest' smart constructor.
 data CreateXMLClassifierRequest =
   CreateXMLClassifierRequest'
-    { _cxcrRowTag :: !(Maybe Text)
+    { _cxcrRowTag         :: !(Maybe Text)
     , _cxcrClassification :: !Text
-    , _cxcrName :: !Text
+    , _cxcrName           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1422,10 +1422,10 @@ instance ToJSON CreateXMLClassifierRequest where
 data Database =
   Database'
     { _dLocationURI :: !(Maybe Text)
-    , _dParameters :: !(Maybe (Map Text Text))
+    , _dParameters  :: !(Maybe (Map Text Text))
     , _dDescription :: !(Maybe Text)
-    , _dCreateTime :: !(Maybe POSIX)
-    , _dName :: !Text
+    , _dCreateTime  :: !(Maybe POSIX)
+    , _dName        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1496,9 +1496,9 @@ instance NFData Database
 data DatabaseInput =
   DatabaseInput'
     { _diLocationURI :: !(Maybe Text)
-    , _diParameters :: !(Maybe (Map Text Text))
+    , _diParameters  :: !(Maybe (Map Text Text))
     , _diDescription :: !(Maybe Text)
-    , _diName :: !Text
+    , _diName        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1562,25 +1562,25 @@ instance ToJSON DatabaseInput where
 -- /See:/ 'devEndpoint' smart constructor.
 data DevEndpoint =
   DevEndpoint'
-    { _deStatus :: !(Maybe Text)
-    , _deFailureReason :: !(Maybe Text)
-    , _deEndpointName :: !(Maybe Text)
-    , _deExtraPythonLibsS3Path :: !(Maybe Text)
-    , _deLastUpdateStatus :: !(Maybe Text)
-    , _deSecurityGroupIds :: !(Maybe [Text])
-    , _deLastModifiedTimestamp :: !(Maybe POSIX)
-    , _deVPCId :: !(Maybe Text)
-    , _dePrivateAddress :: !(Maybe Text)
-    , _dePublicKey :: !(Maybe Text)
-    , _deSubnetId :: !(Maybe Text)
-    , _deNumberOfNodes :: !(Maybe Int)
-    , _dePublicAddress :: !(Maybe Text)
-    , _deAvailabilityZone :: !(Maybe Text)
+    { _deStatus                             :: !(Maybe Text)
+    , _deFailureReason                      :: !(Maybe Text)
+    , _deEndpointName                       :: !(Maybe Text)
+    , _deExtraPythonLibsS3Path              :: !(Maybe Text)
+    , _deLastUpdateStatus                   :: !(Maybe Text)
+    , _deSecurityGroupIds                   :: !(Maybe [Text])
+    , _deLastModifiedTimestamp              :: !(Maybe POSIX)
+    , _deVPCId                              :: !(Maybe Text)
+    , _dePrivateAddress                     :: !(Maybe Text)
+    , _dePublicKey                          :: !(Maybe Text)
+    , _deSubnetId                           :: !(Maybe Text)
+    , _deNumberOfNodes                      :: !(Maybe Int)
+    , _dePublicAddress                      :: !(Maybe Text)
+    , _deAvailabilityZone                   :: !(Maybe Text)
     , _deZeppelinRemoteSparkInterpreterPort :: !(Maybe Int)
-    , _deExtraJARsS3Path :: !(Maybe Text)
-    , _deCreatedTimestamp :: !(Maybe POSIX)
-    , _deYarnEndpointAddress :: !(Maybe Text)
-    , _deRoleARN :: !(Maybe Text)
+    , _deExtraJARsS3Path                    :: !(Maybe Text)
+    , _deCreatedTimestamp                   :: !(Maybe POSIX)
+    , _deYarnEndpointAddress                :: !(Maybe Text)
+    , _deRoleARN                            :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1773,7 +1773,7 @@ instance NFData DevEndpoint
 data DevEndpointCustomLibraries =
   DevEndpointCustomLibraries'
     { _declExtraPythonLibsS3Path :: !(Maybe Text)
-    , _declExtraJARsS3Path :: !(Maybe Text)
+    , _declExtraJARsS3Path       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1818,7 +1818,7 @@ instance ToJSON DevEndpointCustomLibraries where
 -- /See:/ 'errorDetail' smart constructor.
 data ErrorDetail =
   ErrorDetail'
-    { _edErrorCode :: !(Maybe Text)
+    { _edErrorCode    :: !(Maybe Text)
     , _edErrorMessage :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1896,7 +1896,7 @@ instance ToJSON ExecutionProperty where
 -- /See:/ 'getConnectionsFilter' smart constructor.
 data GetConnectionsFilter =
   GetConnectionsFilter'
-    { _gcfMatchCriteria :: !(Maybe [Text])
+    { _gcfMatchCriteria  :: !(Maybe [Text])
     , _gcfConnectionType :: !(Maybe ConnectionType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1942,13 +1942,13 @@ instance ToJSON GetConnectionsFilter where
 -- /See:/ 'grokClassifier' smart constructor.
 data GrokClassifier =
   GrokClassifier'
-    { _gcCreationTime :: !(Maybe POSIX)
-    , _gcLastUpdated :: !(Maybe POSIX)
-    , _gcVersion :: !(Maybe Integer)
+    { _gcCreationTime   :: !(Maybe POSIX)
+    , _gcLastUpdated    :: !(Maybe POSIX)
+    , _gcVersion        :: !(Maybe Integer)
     , _gcCustomPatterns :: !(Maybe Text)
-    , _gcName :: !Text
+    , _gcName           :: !Text
     , _gcClassification :: !Text
-    , _gcGrokPattern :: !Text
+    , _gcGrokPattern    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2039,10 +2039,10 @@ instance NFData GrokClassifier
 data JSONClassifier =
   JSONClassifier'
     { _jcCreationTime :: !(Maybe POSIX)
-    , _jcLastUpdated :: !(Maybe POSIX)
-    , _jcVersion :: !(Maybe Integer)
-    , _jcName :: !Text
-    , _jcJSONPath :: !Text
+    , _jcLastUpdated  :: !(Maybe POSIX)
+    , _jcVersion      :: !(Maybe Integer)
+    , _jcName         :: !Text
+    , _jcJSONPath     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2115,9 +2115,9 @@ instance NFData JSONClassifier
 -- /See:/ 'jdbcTarget' smart constructor.
 data JdbcTarget =
   JdbcTarget'
-    { _jtPath :: !(Maybe Text)
+    { _jtPath           :: !(Maybe Text)
     , _jtConnectionName :: !(Maybe Text)
-    , _jtExclusions :: !(Maybe [Text])
+    , _jtExclusions     :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2176,19 +2176,19 @@ instance ToJSON JdbcTarget where
 -- /See:/ 'job' smart constructor.
 data Job =
   Job'
-    { _jCommand :: !(Maybe JobCommand)
-    , _jLastModifiedOn :: !(Maybe POSIX)
-    , _jConnections :: !(Maybe ConnectionsList)
-    , _jRole :: !(Maybe Text)
-    , _jName :: !(Maybe Text)
-    , _jLogURI :: !(Maybe Text)
-    , _jMaxRetries :: !(Maybe Int)
+    { _jCommand           :: !(Maybe JobCommand)
+    , _jLastModifiedOn    :: !(Maybe POSIX)
+    , _jConnections       :: !(Maybe ConnectionsList)
+    , _jRole              :: !(Maybe Text)
+    , _jName              :: !(Maybe Text)
+    , _jLogURI            :: !(Maybe Text)
+    , _jMaxRetries        :: !(Maybe Int)
     , _jExecutionProperty :: !(Maybe ExecutionProperty)
     , _jAllocatedCapacity :: !(Maybe Int)
-    , _jTimeout :: !(Maybe Nat)
-    , _jDefaultArguments :: !(Maybe (Map Text Text))
-    , _jDescription :: !(Maybe Text)
-    , _jCreatedOn :: !(Maybe POSIX)
+    , _jTimeout           :: !(Maybe Nat)
+    , _jDefaultArguments  :: !(Maybe (Map Text Text))
+    , _jDescription       :: !(Maybe Text)
+    , _jCreatedOn         :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2324,10 +2324,10 @@ instance NFData Job
 -- /See:/ 'jobBookmarkEntry' smart constructor.
 data JobBookmarkEntry =
   JobBookmarkEntry'
-    { _jbeJobName :: !(Maybe Text)
-    , _jbeRun :: !(Maybe Int)
-    , _jbeVersion :: !(Maybe Int)
-    , _jbeAttempt :: !(Maybe Int)
+    { _jbeJobName     :: !(Maybe Text)
+    , _jbeRun         :: !(Maybe Int)
+    , _jbeVersion     :: !(Maybe Int)
+    , _jbeAttempt     :: !(Maybe Int)
     , _jbeJobBookmark :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2397,7 +2397,7 @@ instance NFData JobBookmarkEntry
 data JobCommand =
   JobCommand'
     { _jobScriptLocation :: !(Maybe Text)
-    , _jobName :: !(Maybe Text)
+    , _jobName           :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2444,21 +2444,21 @@ instance ToJSON JobCommand where
 -- /See:/ 'jobRun' smart constructor.
 data JobRun =
   JobRun'
-    { _jrCompletedOn :: !(Maybe POSIX)
-    , _jrTriggerName :: !(Maybe Text)
-    , _jrLastModifiedOn :: !(Maybe POSIX)
-    , _jrArguments :: !(Maybe (Map Text Text))
-    , _jrJobName :: !(Maybe Text)
-    , _jrStartedOn :: !(Maybe POSIX)
-    , _jrJobRunState :: !(Maybe JobRunState)
-    , _jrExecutionTime :: !(Maybe Int)
-    , _jrPredecessorRuns :: !(Maybe [Predecessor])
-    , _jrPreviousRunId :: !(Maybe Text)
-    , _jrId :: !(Maybe Text)
-    , _jrAttempt :: !(Maybe Int)
+    { _jrCompletedOn       :: !(Maybe POSIX)
+    , _jrTriggerName       :: !(Maybe Text)
+    , _jrLastModifiedOn    :: !(Maybe POSIX)
+    , _jrArguments         :: !(Maybe (Map Text Text))
+    , _jrJobName           :: !(Maybe Text)
+    , _jrStartedOn         :: !(Maybe POSIX)
+    , _jrJobRunState       :: !(Maybe JobRunState)
+    , _jrExecutionTime     :: !(Maybe Int)
+    , _jrPredecessorRuns   :: !(Maybe [Predecessor])
+    , _jrPreviousRunId     :: !(Maybe Text)
+    , _jrId                :: !(Maybe Text)
+    , _jrAttempt           :: !(Maybe Int)
     , _jrAllocatedCapacity :: !(Maybe Int)
-    , _jrTimeout :: !(Maybe Nat)
-    , _jrErrorMessage :: !(Maybe Text)
+    , _jrTimeout           :: !(Maybe Nat)
+    , _jrErrorMessage      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2611,16 +2611,16 @@ instance NFData JobRun
 -- /See:/ 'jobUpdate' smart constructor.
 data JobUpdate =
   JobUpdate'
-    { _juCommand :: !(Maybe JobCommand)
-    , _juConnections :: !(Maybe ConnectionsList)
-    , _juRole :: !(Maybe Text)
-    , _juLogURI :: !(Maybe Text)
-    , _juMaxRetries :: !(Maybe Int)
+    { _juCommand           :: !(Maybe JobCommand)
+    , _juConnections       :: !(Maybe ConnectionsList)
+    , _juRole              :: !(Maybe Text)
+    , _juLogURI            :: !(Maybe Text)
+    , _juMaxRetries        :: !(Maybe Int)
     , _juExecutionProperty :: !(Maybe ExecutionProperty)
     , _juAllocatedCapacity :: !(Maybe Int)
-    , _juTimeout :: !(Maybe Nat)
-    , _juDefaultArguments :: !(Maybe (Map Text Text))
-    , _juDescription :: !(Maybe Text)
+    , _juTimeout           :: !(Maybe Nat)
+    , _juDefaultArguments  :: !(Maybe (Map Text Text))
+    , _juDescription       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2733,12 +2733,12 @@ instance ToJSON JobUpdate where
 -- /See:/ 'lastCrawlInfo' smart constructor.
 data LastCrawlInfo =
   LastCrawlInfo'
-    { _lciStatus :: !(Maybe LastCrawlStatus)
-    , _lciStartTime :: !(Maybe POSIX)
-    , _lciLogStream :: !(Maybe Text)
-    , _lciLogGroup :: !(Maybe Text)
+    { _lciStatus        :: !(Maybe LastCrawlStatus)
+    , _lciStartTime     :: !(Maybe POSIX)
+    , _lciLogStream     :: !(Maybe Text)
+    , _lciLogGroup      :: !(Maybe Text)
     , _lciMessagePrefix :: !(Maybe Text)
-    , _lciErrorMessage :: !(Maybe Text)
+    , _lciErrorMessage  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2816,7 +2816,7 @@ instance NFData LastCrawlInfo
 data Location =
   Location'
     { _lJdbc :: !(Maybe [CodeGenNodeArg])
-    , _lS3 :: !(Maybe [CodeGenNodeArg])
+    , _lS3   :: !(Maybe [CodeGenNodeArg])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2854,11 +2854,11 @@ instance ToJSON Location where
 data MappingEntry =
   MappingEntry'
     { _meTargetTable :: !(Maybe Text)
-    , _meSourceType :: !(Maybe Text)
+    , _meSourceType  :: !(Maybe Text)
     , _meSourceTable :: !(Maybe Text)
-    , _meTargetType :: !(Maybe Text)
-    , _meTargetPath :: !(Maybe Text)
-    , _meSourcePath :: !(Maybe Text)
+    , _meTargetType  :: !(Maybe Text)
+    , _meTargetPath  :: !(Maybe Text)
+    , _meSourcePath  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2946,7 +2946,7 @@ instance ToJSON MappingEntry where
 -- /See:/ 'order' smart constructor.
 data Order =
   Order'
-    { _oColumn :: !Text
+    { _oColumn    :: !Text
     , _oSortOrder :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2994,14 +2994,14 @@ instance ToJSON Order where
 -- /See:/ 'partition' smart constructor.
 data Partition =
   Partition'
-    { _pCreationTime :: !(Maybe POSIX)
-    , _pValues :: !(Maybe [Text])
-    , _pLastAnalyzedTime :: !(Maybe POSIX)
+    { _pCreationTime      :: !(Maybe POSIX)
+    , _pValues            :: !(Maybe [Text])
+    , _pLastAnalyzedTime  :: !(Maybe POSIX)
     , _pStorageDescriptor :: !(Maybe StorageDescriptor)
-    , _pDatabaseName :: !(Maybe Text)
-    , _pParameters :: !(Maybe (Map Text Text))
-    , _pLastAccessTime :: !(Maybe POSIX)
-    , _pTableName :: !(Maybe Text)
+    , _pDatabaseName      :: !(Maybe Text)
+    , _pParameters        :: !(Maybe (Map Text Text))
+    , _pLastAccessTime    :: !(Maybe POSIX)
+    , _pTableName         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3098,7 +3098,7 @@ instance NFData Partition
 data PartitionError =
   PartitionError'
     { _pePartitionValues :: !(Maybe [Text])
-    , _peErrorDetail :: !(Maybe ErrorDetail)
+    , _peErrorDetail     :: !(Maybe ErrorDetail)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3142,11 +3142,11 @@ instance NFData PartitionError
 -- /See:/ 'partitionInput' smart constructor.
 data PartitionInput =
   PartitionInput'
-    { _piValues :: !(Maybe [Text])
-    , _piLastAnalyzedTime :: !(Maybe POSIX)
+    { _piValues            :: !(Maybe [Text])
+    , _piLastAnalyzedTime  :: !(Maybe POSIX)
     , _piStorageDescriptor :: !(Maybe StorageDescriptor)
-    , _piParameters :: !(Maybe (Map Text Text))
-    , _piLastAccessTime :: !(Maybe POSIX)
+    , _piParameters        :: !(Maybe (Map Text Text))
+    , _piLastAccessTime    :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3257,8 +3257,8 @@ instance ToJSON PartitionValueList where
 data PhysicalConnectionRequirements =
   PhysicalConnectionRequirements'
     { _pcrSecurityGroupIdList :: !(Maybe [Text])
-    , _pcrSubnetId :: !(Maybe Text)
-    , _pcrAvailabilityZone :: !(Maybe Text)
+    , _pcrSubnetId            :: !(Maybe Text)
+    , _pcrAvailabilityZone    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3325,7 +3325,7 @@ instance ToJSON PhysicalConnectionRequirements where
 data Predecessor =
   Predecessor'
     { _pJobName :: !(Maybe Text)
-    , _pRunId :: !(Maybe Text)
+    , _pRunId   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3364,7 +3364,7 @@ instance NFData Predecessor
 -- /See:/ 'predicate' smart constructor.
 data Predicate =
   Predicate'
-    { _pLogical :: !(Maybe Logical)
+    { _pLogical    :: !(Maybe Logical)
     , _pConditions :: !(Maybe [Condition])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3413,7 +3413,7 @@ instance ToJSON Predicate where
 data ResourceURI =
   ResourceURI'
     { _ruResourceType :: !(Maybe ResourceType)
-    , _ruURI :: !(Maybe Text)
+    , _ruURI          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3458,7 +3458,7 @@ instance ToJSON ResourceURI where
 -- /See:/ 's3Target' smart constructor.
 data S3Target =
   S3Target'
-    { _stPath :: !(Maybe Text)
+    { _stPath       :: !(Maybe Text)
     , _stExclusions :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3504,7 +3504,7 @@ instance ToJSON S3Target where
 -- /See:/ 'schedule' smart constructor.
 data Schedule =
   Schedule'
-    { _sState :: !(Maybe ScheduleState)
+    { _sState              :: !(Maybe ScheduleState)
     , _sScheduleExpression :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3647,8 +3647,8 @@ instance ToJSON Segment where
 data SerDeInfo =
   SerDeInfo'
     { _sdiSerializationLibrary :: !(Maybe Text)
-    , _sdiName :: !(Maybe Text)
-    , _sdiParameters :: !(Maybe (Map Text Text))
+    , _sdiName                 :: !(Maybe Text)
+    , _sdiParameters           :: !(Maybe (Map Text Text))
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3712,8 +3712,8 @@ instance ToJSON SerDeInfo where
 data SkewedInfo =
   SkewedInfo'
     { _siSkewedColumnValueLocationMaps :: !(Maybe (Map Text Text))
-    , _siSkewedColumnValues :: !(Maybe [Text])
-    , _siSkewedColumnNames :: !(Maybe [Text])
+    , _siSkewedColumnValues            :: !(Maybe [Text])
+    , _siSkewedColumnNames             :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3784,18 +3784,18 @@ instance ToJSON SkewedInfo where
 -- /See:/ 'storageDescriptor' smart constructor.
 data StorageDescriptor =
   StorageDescriptor'
-    { _sdSortColumns :: !(Maybe [Order])
-    , _sdCompressed :: !(Maybe Bool)
-    , _sdLocation :: !(Maybe Text)
-    , _sdBucketColumns :: !(Maybe [Text])
-    , _sdSerdeInfo :: !(Maybe SerDeInfo)
-    , _sdOutputFormat :: !(Maybe Text)
-    , _sdNumberOfBuckets :: !(Maybe Int)
+    { _sdSortColumns            :: !(Maybe [Order])
+    , _sdCompressed             :: !(Maybe Bool)
+    , _sdLocation               :: !(Maybe Text)
+    , _sdBucketColumns          :: !(Maybe [Text])
+    , _sdSerdeInfo              :: !(Maybe SerDeInfo)
+    , _sdOutputFormat           :: !(Maybe Text)
+    , _sdNumberOfBuckets        :: !(Maybe Int)
     , _sdStoredAsSubDirectories :: !(Maybe Bool)
-    , _sdParameters :: !(Maybe (Map Text Text))
-    , _sdInputFormat :: !(Maybe Text)
-    , _sdSkewedInfo :: !(Maybe SkewedInfo)
-    , _sdColumns :: !(Maybe [Column])
+    , _sdParameters             :: !(Maybe (Map Text Text))
+    , _sdInputFormat            :: !(Maybe Text)
+    , _sdSkewedInfo             :: !(Maybe SkewedInfo)
+    , _sdColumns                :: !(Maybe [Column])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3942,22 +3942,22 @@ instance ToJSON StorageDescriptor where
 -- /See:/ 'table' smart constructor.
 data Table =
   Table'
-    { _tRetention :: !(Maybe Nat)
-    , _tCreatedBy :: !(Maybe Text)
-    , _tTableType :: !(Maybe Text)
-    , _tOwner :: !(Maybe Text)
-    , _tViewOriginalText :: !(Maybe Text)
-    , _tUpdateTime :: !(Maybe POSIX)
-    , _tViewExpandedText :: !(Maybe Text)
-    , _tLastAnalyzedTime :: !(Maybe POSIX)
+    { _tRetention         :: !(Maybe Nat)
+    , _tCreatedBy         :: !(Maybe Text)
+    , _tTableType         :: !(Maybe Text)
+    , _tOwner             :: !(Maybe Text)
+    , _tViewOriginalText  :: !(Maybe Text)
+    , _tUpdateTime        :: !(Maybe POSIX)
+    , _tViewExpandedText  :: !(Maybe Text)
+    , _tLastAnalyzedTime  :: !(Maybe POSIX)
     , _tStorageDescriptor :: !(Maybe StorageDescriptor)
-    , _tDatabaseName :: !(Maybe Text)
-    , _tParameters :: !(Maybe (Map Text Text))
-    , _tLastAccessTime :: !(Maybe POSIX)
-    , _tDescription :: !(Maybe Text)
-    , _tPartitionKeys :: !(Maybe [Column])
-    , _tCreateTime :: !(Maybe POSIX)
-    , _tName :: !Text
+    , _tDatabaseName      :: !(Maybe Text)
+    , _tParameters        :: !(Maybe (Map Text Text))
+    , _tLastAccessTime    :: !(Maybe POSIX)
+    , _tDescription       :: !(Maybe Text)
+    , _tPartitionKeys     :: !(Maybe [Column])
+    , _tCreateTime        :: !(Maybe POSIX)
+    , _tName              :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4119,7 +4119,7 @@ instance NFData Table
 -- /See:/ 'tableError' smart constructor.
 data TableError =
   TableError'
-    { _teTableName :: !(Maybe Text)
+    { _teTableName   :: !(Maybe Text)
     , _teErrorDetail :: !(Maybe ErrorDetail)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -4159,18 +4159,18 @@ instance NFData TableError
 -- /See:/ 'tableInput' smart constructor.
 data TableInput =
   TableInput'
-    { _tiRetention :: !(Maybe Nat)
-    , _tiTableType :: !(Maybe Text)
-    , _tiOwner :: !(Maybe Text)
-    , _tiViewOriginalText :: !(Maybe Text)
-    , _tiViewExpandedText :: !(Maybe Text)
-    , _tiLastAnalyzedTime :: !(Maybe POSIX)
+    { _tiRetention         :: !(Maybe Nat)
+    , _tiTableType         :: !(Maybe Text)
+    , _tiOwner             :: !(Maybe Text)
+    , _tiViewOriginalText  :: !(Maybe Text)
+    , _tiViewExpandedText  :: !(Maybe Text)
+    , _tiLastAnalyzedTime  :: !(Maybe POSIX)
     , _tiStorageDescriptor :: !(Maybe StorageDescriptor)
-    , _tiParameters :: !(Maybe (Map Text Text))
-    , _tiLastAccessTime :: !(Maybe POSIX)
-    , _tiDescription :: !(Maybe Text)
-    , _tiPartitionKeys :: !(Maybe [Column])
-    , _tiName :: !Text
+    , _tiParameters        :: !(Maybe (Map Text Text))
+    , _tiLastAccessTime    :: !(Maybe POSIX)
+    , _tiDescription       :: !(Maybe Text)
+    , _tiPartitionKeys     :: !(Maybe [Column])
+    , _tiName              :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4305,7 +4305,7 @@ instance ToJSON TableInput where
 data TableVersion =
   TableVersion'
     { _tvVersionId :: !(Maybe Text)
-    , _tvTable :: !(Maybe Table)
+    , _tvTable     :: !(Maybe Table)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4344,8 +4344,8 @@ instance NFData TableVersion
 -- /See:/ 'tableVersionError' smart constructor.
 data TableVersionError =
   TableVersionError'
-    { _tveVersionId :: !(Maybe Text)
-    , _tveTableName :: !(Maybe Text)
+    { _tveVersionId   :: !(Maybe Text)
+    , _tveTableName   :: !(Maybe Text)
     , _tveErrorDetail :: !(Maybe ErrorDetail)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -4398,13 +4398,13 @@ instance NFData TableVersionError
 -- /See:/ 'trigger' smart constructor.
 data Trigger =
   Trigger'
-    { _triState :: !(Maybe TriggerState)
-    , _triActions :: !(Maybe [Action])
-    , _triSchedule :: !(Maybe Text)
-    , _triPredicate :: !(Maybe Predicate)
-    , _triName :: !(Maybe Text)
-    , _triId :: !(Maybe Text)
-    , _triType :: !(Maybe TriggerType)
+    { _triState       :: !(Maybe TriggerState)
+    , _triActions     :: !(Maybe [Action])
+    , _triSchedule    :: !(Maybe Text)
+    , _triPredicate   :: !(Maybe Predicate)
+    , _triName        :: !(Maybe Text)
+    , _triId          :: !(Maybe Text)
+    , _triType        :: !(Maybe TriggerType)
     , _triDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -4497,10 +4497,10 @@ instance NFData Trigger
 -- /See:/ 'triggerUpdate' smart constructor.
 data TriggerUpdate =
   TriggerUpdate'
-    { _tuActions :: !(Maybe [Action])
-    , _tuSchedule :: !(Maybe Text)
-    , _tuPredicate :: !(Maybe Predicate)
-    , _tuName :: !(Maybe Text)
+    { _tuActions     :: !(Maybe [Action])
+    , _tuSchedule    :: !(Maybe Text)
+    , _tuPredicate   :: !(Maybe Predicate)
+    , _tuName        :: !(Maybe Text)
     , _tuDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -4572,8 +4572,8 @@ data UpdateGrokClassifierRequest =
   UpdateGrokClassifierRequest'
     { _ugcrClassification :: !(Maybe Text)
     , _ugcrCustomPatterns :: !(Maybe Text)
-    , _ugcrGrokPattern :: !(Maybe Text)
-    , _ugcrName :: !Text
+    , _ugcrGrokPattern    :: !(Maybe Text)
+    , _ugcrName           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4639,7 +4639,7 @@ instance ToJSON UpdateGrokClassifierRequest where
 data UpdateJSONClassifierRequest =
   UpdateJSONClassifierRequest'
     { _ujcrJSONPath :: !(Maybe Text)
-    , _ujcrName :: !Text
+    , _ujcrName     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4681,8 +4681,8 @@ instance ToJSON UpdateJSONClassifierRequest where
 data UpdateXMLClassifierRequest =
   UpdateXMLClassifierRequest'
     { _uxcrClassification :: !(Maybe Text)
-    , _uxcrRowTag :: !(Maybe Text)
-    , _uxcrName :: !Text
+    , _uxcrRowTag         :: !(Maybe Text)
+    , _uxcrName           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4735,12 +4735,12 @@ instance ToJSON UpdateXMLClassifierRequest where
 -- /See:/ 'userDefinedFunction' smart constructor.
 data UserDefinedFunction =
   UserDefinedFunction'
-    { _udfOwnerName :: !(Maybe Text)
+    { _udfOwnerName    :: !(Maybe Text)
     , _udfResourceURIs :: !(Maybe [ResourceURI])
     , _udfFunctionName :: !(Maybe Text)
-    , _udfOwnerType :: !(Maybe PrincipalType)
-    , _udfCreateTime :: !(Maybe POSIX)
-    , _udfClassName :: !(Maybe Text)
+    , _udfOwnerType    :: !(Maybe PrincipalType)
+    , _udfCreateTime   :: !(Maybe POSIX)
+    , _udfClassName    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4819,11 +4819,11 @@ instance NFData UserDefinedFunction
 -- /See:/ 'userDefinedFunctionInput' smart constructor.
 data UserDefinedFunctionInput =
   UserDefinedFunctionInput'
-    { _udfiOwnerName :: !(Maybe Text)
+    { _udfiOwnerName    :: !(Maybe Text)
     , _udfiResourceURIs :: !(Maybe [ResourceURI])
     , _udfiFunctionName :: !(Maybe Text)
-    , _udfiOwnerType :: !(Maybe PrincipalType)
-    , _udfiClassName :: !(Maybe Text)
+    , _udfiOwnerType    :: !(Maybe PrincipalType)
+    , _udfiClassName    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4894,11 +4894,11 @@ instance ToJSON UserDefinedFunctionInput where
 -- /See:/ 'xmlClassifier' smart constructor.
 data XMLClassifier =
   XMLClassifier'
-    { _xcCreationTime :: !(Maybe POSIX)
-    , _xcLastUpdated :: !(Maybe POSIX)
-    , _xcVersion :: !(Maybe Integer)
-    , _xcRowTag :: !(Maybe Text)
-    , _xcName :: !Text
+    { _xcCreationTime   :: !(Maybe POSIX)
+    , _xcLastUpdated    :: !(Maybe POSIX)
+    , _xcVersion        :: !(Maybe Integer)
+    , _xcRowTag         :: !(Maybe Text)
+    , _xcName           :: !Text
     , _xcClassification :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

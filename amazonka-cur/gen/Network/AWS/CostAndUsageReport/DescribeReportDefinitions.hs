@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- /See:/ 'describeReportDefinitions' smart constructor.
 data DescribeReportDefinitions =
   DescribeReportDefinitions'
-    { _drdNextToken :: !(Maybe Text)
+    { _drdNextToken  :: !(Maybe Text)
     , _drdMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -121,9 +121,9 @@ instance ToQuery DescribeReportDefinitions where
 -- /See:/ 'describeReportDefinitionsResponse' smart constructor.
 data DescribeReportDefinitionsResponse =
   DescribeReportDefinitionsResponse'
-    { _drdrsNextToken :: !(Maybe Text)
+    { _drdrsNextToken         :: !(Maybe Text)
     , _drdrsReportDefinitions :: !(Maybe [ReportDefinition])
-    , _drdrsResponseStatus :: !Int
+    , _drdrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

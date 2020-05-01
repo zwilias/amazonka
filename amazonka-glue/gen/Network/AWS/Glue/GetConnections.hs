@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,9 +50,9 @@ import Network.AWS.Response
 -- | /See:/ 'getConnections' smart constructor.
 data GetConnections =
   GetConnections'
-    { _gcsCatalogId :: !(Maybe Text)
-    , _gcsNextToken :: !(Maybe Text)
-    , _gcsFilter :: !(Maybe GetConnectionsFilter)
+    { _gcsCatalogId  :: !(Maybe Text)
+    , _gcsNextToken  :: !(Maybe Text)
+    , _gcsFilter     :: !(Maybe GetConnectionsFilter)
     , _gcsMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -141,7 +141,7 @@ instance ToQuery GetConnections where
 -- | /See:/ 'getConnectionsResponse' smart constructor.
 data GetConnectionsResponse =
   GetConnectionsResponse'
-    { _gccrsNextToken :: !(Maybe Text)
+    { _gccrsNextToken      :: !(Maybe Text)
     , _gccrsConnectionList :: !(Maybe [Connection])
     , _gccrsResponseStatus :: !Int
     }

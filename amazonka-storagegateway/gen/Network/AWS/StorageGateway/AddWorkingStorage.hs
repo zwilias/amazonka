@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,7 +55,7 @@ import Network.AWS.StorageGateway.Types.Product
 data AddWorkingStorage =
   AddWorkingStorage'
     { _awsGatewayARN :: !Text
-    , _awsDiskIds :: ![Text]
+    , _awsDiskIds    :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -123,7 +123,7 @@ instance ToQuery AddWorkingStorage where
 -- /See:/ 'addWorkingStorageResponse' smart constructor.
 data AddWorkingStorageResponse =
   AddWorkingStorageResponse'
-    { _awsrsGatewayARN :: !(Maybe Text)
+    { _awsrsGatewayARN     :: !(Maybe Text)
     , _awsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

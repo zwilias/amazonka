@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.WorkSpaces.Types.Product
 data DescribeWorkspacesConnectionStatus =
   DescribeWorkspacesConnectionStatus'
     { _dwcsWorkspaceIds :: !(Maybe (List1 Text))
-    , _dwcsNextToken :: !(Maybe Text)
+    , _dwcsNextToken    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -112,9 +112,9 @@ instance ToQuery DescribeWorkspacesConnectionStatus where
 -- | /See:/ 'describeWorkspacesConnectionStatusResponse' smart constructor.
 data DescribeWorkspacesConnectionStatusResponse =
   DescribeWorkspacesConnectionStatusResponse'
-    { _dwcsrsNextToken :: !(Maybe Text)
+    { _dwcsrsNextToken                  :: !(Maybe Text)
     , _dwcsrsWorkspacesConnectionStatus :: !(Maybe [WorkspaceConnectionStatus])
-    , _dwcsrsResponseStatus :: !Int
+    , _dwcsrsResponseStatus             :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

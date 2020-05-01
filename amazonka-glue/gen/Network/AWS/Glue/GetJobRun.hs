@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 data GetJobRun =
   GetJobRun'
     { _gPredecessorsIncluded :: !(Maybe Bool)
-    , _gJobName :: !Text
-    , _gRunId :: !Text
+    , _gJobName              :: !Text
+    , _gRunId                :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -118,7 +118,7 @@ instance ToQuery GetJobRun where
 -- | /See:/ 'getJobRunResponse' smart constructor.
 data GetJobRunResponse =
   GetJobRunResponse'
-    { _gjrjrsJobRun :: !(Maybe JobRun)
+    { _gjrjrsJobRun         :: !(Maybe JobRun)
     , _gjrjrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

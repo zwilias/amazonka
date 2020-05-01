@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.WorkDocs.Types.Product
 -- | /See:/ 'getDocument' smart constructor.
 data GetDocument =
   GetDocument'
-    { _gdAuthenticationToken :: !(Maybe (Sensitive Text))
+    { _gdAuthenticationToken   :: !(Maybe (Sensitive Text))
     , _gdIncludeCustomMetadata :: !(Maybe Bool)
-    , _gdDocumentId :: !Text
+    , _gdDocumentId            :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -118,7 +118,7 @@ instance ToQuery GetDocument where
 data GetDocumentResponse =
   GetDocumentResponse'
     { _gdrsCustomMetadata :: !(Maybe (Map Text Text))
-    , _gdrsMetadata :: !(Maybe DocumentMetadata)
+    , _gdrsMetadata       :: !(Maybe DocumentMetadata)
     , _gdrsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

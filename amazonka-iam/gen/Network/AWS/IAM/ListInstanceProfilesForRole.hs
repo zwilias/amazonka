@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- | /See:/ 'listInstanceProfilesForRole' smart constructor.
 data ListInstanceProfilesForRole =
   ListInstanceProfilesForRole'
-    { _lipfrMarker :: !(Maybe Text)
+    { _lipfrMarker   :: !(Maybe Text)
     , _lipfrMaxItems :: !(Maybe Nat)
     , _lipfrRoleName :: !Text
     }
@@ -135,9 +135,9 @@ instance ToQuery ListInstanceProfilesForRole where
 -- /See:/ 'listInstanceProfilesForRoleResponse' smart constructor.
 data ListInstanceProfilesForRoleResponse =
   ListInstanceProfilesForRoleResponse'
-    { _lipfrrsMarker :: !(Maybe Text)
-    , _lipfrrsIsTruncated :: !(Maybe Bool)
-    , _lipfrrsResponseStatus :: !Int
+    { _lipfrrsMarker           :: !(Maybe Text)
+    , _lipfrrsIsTruncated      :: !(Maybe Bool)
+    , _lipfrrsResponseStatus   :: !Int
     , _lipfrrsInstanceProfiles :: ![InstanceProfile]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

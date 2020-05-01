@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.WorkMail.Types.Product
 data DescribeUser =
   DescribeUser'
     { _duOrganizationId :: !Text
-    , _duUserId :: !Text
+    , _duUserId         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -122,14 +122,14 @@ instance ToQuery DescribeUser where
 -- | /See:/ 'describeUserResponse' smart constructor.
 data DescribeUserResponse =
   DescribeUserResponse'
-    { _dursEmail :: !(Maybe Text)
-    , _dursState :: !(Maybe EntityState)
-    , _dursUserId :: !(Maybe Text)
-    , _dursDisabledDate :: !(Maybe POSIX)
-    , _dursName :: !(Maybe Text)
-    , _dursDisplayName :: !(Maybe Text)
-    , _dursUserRole :: !(Maybe UserRole)
-    , _dursEnabledDate :: !(Maybe POSIX)
+    { _dursEmail          :: !(Maybe Text)
+    , _dursState          :: !(Maybe EntityState)
+    , _dursUserId         :: !(Maybe Text)
+    , _dursDisabledDate   :: !(Maybe POSIX)
+    , _dursName           :: !(Maybe Text)
+    , _dursDisplayName    :: !(Maybe Text)
+    , _dursUserRole       :: !(Maybe UserRole)
+    , _dursEnabledDate    :: !(Maybe POSIX)
     , _dursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

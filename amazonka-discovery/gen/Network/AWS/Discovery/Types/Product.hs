@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,9 +26,9 @@ import Network.AWS.Prelude
 -- /See:/ 'agentConfigurationStatus' smart constructor.
 data AgentConfigurationStatus =
   AgentConfigurationStatus'
-    { _acsAgentId :: !(Maybe Text)
+    { _acsAgentId            :: !(Maybe Text)
     , _acsOperationSucceeded :: !(Maybe Bool)
-    , _acsDescription :: !(Maybe Text)
+    , _acsDescription        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -82,16 +82,16 @@ instance NFData AgentConfigurationStatus
 -- /See:/ 'agentInfo' smart constructor.
 data AgentInfo =
   AgentInfo'
-    { _aiHostName :: !(Maybe Text)
-    , _aiLastHealthPingTime :: !(Maybe Text)
+    { _aiHostName             :: !(Maybe Text)
+    , _aiLastHealthPingTime   :: !(Maybe Text)
     , _aiAgentNetworkInfoList :: !(Maybe [AgentNetworkInfo])
-    , _aiConnectorId :: !(Maybe Text)
-    , _aiHealth :: !(Maybe AgentStatus)
-    , _aiAgentId :: !(Maybe Text)
-    , _aiVersion :: !(Maybe Text)
-    , _aiCollectionStatus :: !(Maybe Text)
-    , _aiRegisteredTime :: !(Maybe Text)
-    , _aiAgentType :: !(Maybe Text)
+    , _aiConnectorId          :: !(Maybe Text)
+    , _aiHealth               :: !(Maybe AgentStatus)
+    , _aiAgentId              :: !(Maybe Text)
+    , _aiVersion              :: !(Maybe Text)
+    , _aiCollectionStatus     :: !(Maybe Text)
+    , _aiRegisteredTime       :: !(Maybe Text)
+    , _aiAgentType            :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -203,7 +203,7 @@ instance NFData AgentInfo
 -- /See:/ 'agentNetworkInfo' smart constructor.
 data AgentNetworkInfo =
   AgentNetworkInfo'
-    { _aniIpAddress :: !(Maybe Text)
+    { _aniIpAddress  :: !(Maybe Text)
     , _aniMacAddress :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -244,11 +244,11 @@ instance NFData AgentNetworkInfo
 -- /See:/ 'configurationTag' smart constructor.
 data ConfigurationTag =
   ConfigurationTag'
-    { _ctTimeOfCreation :: !(Maybe POSIX)
-    , _ctConfigurationId :: !(Maybe Text)
+    { _ctTimeOfCreation    :: !(Maybe POSIX)
+    , _ctConfigurationId   :: !(Maybe Text)
     , _ctConfigurationType :: !(Maybe ConfigurationItemType)
-    , _ctValue :: !(Maybe Text)
-    , _ctKey :: !(Maybe Text)
+    , _ctValue             :: !(Maybe Text)
+    , _ctKey               :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -319,13 +319,13 @@ instance NFData ConfigurationTag
 -- /See:/ 'customerAgentInfo' smart constructor.
 data CustomerAgentInfo =
   CustomerAgentInfo'
-    { _caiActiveAgents :: !Int
-    , _caiHealthyAgents :: !Int
+    { _caiActiveAgents      :: !Int
+    , _caiHealthyAgents     :: !Int
     , _caiBlackListedAgents :: !Int
-    , _caiShutdownAgents :: !Int
-    , _caiUnhealthyAgents :: !Int
-    , _caiTotalAgents :: !Int
-    , _caiUnknownAgents :: !Int
+    , _caiShutdownAgents    :: !Int
+    , _caiUnhealthyAgents   :: !Int
+    , _caiTotalAgents       :: !Int
+    , _caiUnknownAgents     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -419,13 +419,13 @@ instance NFData CustomerAgentInfo
 -- /See:/ 'customerConnectorInfo' smart constructor.
 data CustomerConnectorInfo =
   CustomerConnectorInfo'
-    { _cciActiveConnectors :: !Int
-    , _cciHealthyConnectors :: !Int
+    { _cciActiveConnectors      :: !Int
+    , _cciHealthyConnectors     :: !Int
     , _cciBlackListedConnectors :: !Int
-    , _cciShutdownConnectors :: !Int
-    , _cciUnhealthyConnectors :: !Int
-    , _cciTotalConnectors :: !Int
-    , _cciUnknownConnectors :: !Int
+    , _cciShutdownConnectors    :: !Int
+    , _cciUnhealthyConnectors   :: !Int
+    , _cciTotalConnectors       :: !Int
+    , _cciUnknownConnectors     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -525,8 +525,8 @@ instance NFData CustomerConnectorInfo
 -- /See:/ 'exportFilter' smart constructor.
 data ExportFilter =
   ExportFilter'
-    { _efName :: !Text
-    , _efValues :: ![Text]
+    { _efName      :: !Text
+    , _efValues    :: ![Text]
     , _efCondition :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -581,13 +581,13 @@ instance ToJSON ExportFilter where
 data ExportInfo =
   ExportInfo'
     { _eiConfigurationsDownloadURL :: !(Maybe Text)
-    , _eiRequestedStartTime :: !(Maybe POSIX)
-    , _eiRequestedEndTime :: !(Maybe POSIX)
-    , _eiIsTruncated :: !(Maybe Bool)
-    , _eiExportId :: !Text
-    , _eiExportStatus :: !ExportStatus
-    , _eiStatusMessage :: !Text
-    , _eiExportRequestTime :: !POSIX
+    , _eiRequestedStartTime        :: !(Maybe POSIX)
+    , _eiRequestedEndTime          :: !(Maybe POSIX)
+    , _eiIsTruncated               :: !(Maybe Bool)
+    , _eiExportId                  :: !Text
+    , _eiExportStatus              :: !ExportStatus
+    , _eiStatusMessage             :: !Text
+    , _eiExportRequestTime         :: !POSIX
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -694,8 +694,8 @@ instance NFData ExportInfo
 -- /See:/ 'filter'' smart constructor.
 data Filter =
   Filter'
-    { _fName :: !Text
-    , _fValues :: ![Text]
+    { _fName      :: !Text
+    , _fValues    :: ![Text]
     , _fCondition :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -748,11 +748,11 @@ instance ToJSON Filter where
 -- /See:/ 'neighborConnectionDetail' smart constructor.
 data NeighborConnectionDetail =
   NeighborConnectionDetail'
-    { _ncdTransportProtocol :: !(Maybe Text)
-    , _ncdDestinationPort :: !(Maybe Int)
-    , _ncdSourceServerId :: !Text
+    { _ncdTransportProtocol   :: !(Maybe Text)
+    , _ncdDestinationPort     :: !(Maybe Int)
+    , _ncdSourceServerId      :: !Text
     , _ncdDestinationServerId :: !Text
-    , _ncdConnectionsCount :: !Integer
+    , _ncdConnectionsCount    :: !Integer
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -874,7 +874,7 @@ instance ToJSON OrderByElement where
 -- /See:/ 'tag' smart constructor.
 data Tag =
   Tag'
-    { _tagKey :: !Text
+    { _tagKey   :: !Text
     , _tagValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -915,7 +915,7 @@ instance ToJSON Tag where
 -- /See:/ 'tagFilter' smart constructor.
 data TagFilter =
   TagFilter'
-    { _tfName :: !Text
+    { _tfName   :: !Text
     , _tfValues :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

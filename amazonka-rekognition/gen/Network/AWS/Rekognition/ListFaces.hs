@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,8 +52,8 @@ import Network.AWS.Response
 -- | /See:/ 'listFaces' smart constructor.
 data ListFaces =
   ListFaces'
-    { _lfNextToken :: !(Maybe Text)
-    , _lfMaxResults :: !(Maybe Nat)
+    { _lfNextToken    :: !(Maybe Text)
+    , _lfMaxResults   :: !(Maybe Nat)
     , _lfCollectionId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -137,9 +137,9 @@ instance ToQuery ListFaces where
 data ListFacesResponse =
   ListFacesResponse'
     { _lfrsFaceModelVersion :: !(Maybe Text)
-    , _lfrsNextToken :: !(Maybe Text)
-    , _lfrsFaces :: !(Maybe [Face])
-    , _lfrsResponseStatus :: !Int
+    , _lfrsNextToken        :: !(Maybe Text)
+    , _lfrsFaces            :: !(Maybe [Face])
+    , _lfrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

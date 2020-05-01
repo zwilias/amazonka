@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,14 +26,14 @@ import Network.AWS.Shield.Types.Sum
 -- /See:/ 'attackDetail' smart constructor.
 data AttackDetail =
   AttackDetail'
-    { _adAttackId :: !(Maybe Text)
-    , _adStartTime :: !(Maybe POSIX)
-    , _adSubResources :: !(Maybe [SubResourceSummary])
-    , _adMitigations :: !(Maybe [Mitigation])
+    { _adAttackId         :: !(Maybe Text)
+    , _adStartTime        :: !(Maybe POSIX)
+    , _adSubResources     :: !(Maybe [SubResourceSummary])
+    , _adMitigations      :: !(Maybe [Mitigation])
     , _adAttackProperties :: !(Maybe [AttackProperty])
-    , _adAttackCounters :: !(Maybe [SummarizedCounter])
-    , _adResourceARN :: !(Maybe Text)
-    , _adEndTime :: !(Maybe POSIX)
+    , _adAttackCounters   :: !(Maybe [SummarizedCounter])
+    , _adResourceARN      :: !(Maybe Text)
+    , _adEndTime          :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -131,11 +131,11 @@ instance NFData AttackDetail
 -- /See:/ 'attackProperty' smart constructor.
 data AttackProperty =
   AttackProperty'
-    { _apAttackLayer :: !(Maybe AttackLayer)
-    , _apTopContributors :: !(Maybe [Contributor])
+    { _apAttackLayer              :: !(Maybe AttackLayer)
+    , _apTopContributors          :: !(Maybe [Contributor])
     , _apAttackPropertyIdentifier :: !(Maybe AttackPropertyIdentifier)
-    , _apTotal :: !(Maybe Integer)
-    , _apUnit :: !(Maybe Unit)
+    , _apTotal                    :: !(Maybe Integer)
+    , _apUnit                     :: !(Maybe Unit)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -209,10 +209,10 @@ instance NFData AttackProperty
 data AttackSummary =
   AttackSummary'
     { _asAttackVectors :: !(Maybe [AttackVectorDescription])
-    , _asAttackId :: !(Maybe Text)
-    , _asStartTime :: !(Maybe POSIX)
-    , _asResourceARN :: !(Maybe Text)
-    , _asEndTime :: !(Maybe POSIX)
+    , _asAttackId      :: !(Maybe Text)
+    , _asStartTime     :: !(Maybe POSIX)
+    , _asResourceARN   :: !(Maybe Text)
+    , _asEndTime       :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -319,7 +319,7 @@ instance NFData AttackVectorDescription
 data Contributor =
   Contributor'
     { _cValue :: !(Maybe Integer)
-    , _cName :: !(Maybe Text)
+    , _cName  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -390,8 +390,8 @@ instance NFData Mitigation
 data Protection =
   Protection'
     { _pResourceARN :: !(Maybe Text)
-    , _pName :: !(Maybe Text)
-    , _pId :: !(Maybe Text)
+    , _pName        :: !(Maybe Text)
+    , _pId          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -439,10 +439,10 @@ instance NFData Protection
 -- /See:/ 'subResourceSummary' smart constructor.
 data SubResourceSummary =
   SubResourceSummary'
-    { _srsCounters :: !(Maybe [SummarizedCounter])
+    { _srsCounters      :: !(Maybe [SummarizedCounter])
     , _srsAttackVectors :: !(Maybe [SummarizedAttackVector])
-    , _srsId :: !(Maybe Text)
-    , _srsType :: !(Maybe SubResourceType)
+    , _srsId            :: !(Maybe Text)
+    , _srsType          :: !(Maybe SubResourceType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -507,7 +507,7 @@ instance NFData SubResourceSummary
 data Subscription =
   Subscription'
     { _sTimeCommitmentInSeconds :: !(Maybe Nat)
-    , _sStartTime :: !(Maybe POSIX)
+    , _sStartTime               :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -552,7 +552,7 @@ instance NFData Subscription
 data SummarizedAttackVector =
   SummarizedAttackVector'
     { _savVectorCounters :: !(Maybe [SummarizedCounter])
-    , _savVectorType :: !Text
+    , _savVectorType     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -599,12 +599,12 @@ instance NFData SummarizedAttackVector
 -- /See:/ 'summarizedCounter' smart constructor.
 data SummarizedCounter =
   SummarizedCounter'
-    { _scMax :: !(Maybe Double)
+    { _scMax     :: !(Maybe Double)
     , _scAverage :: !(Maybe Double)
-    , _scN :: !(Maybe Int)
-    , _scName :: !(Maybe Text)
-    , _scSum :: !(Maybe Double)
-    , _scUnit :: !(Maybe Text)
+    , _scN       :: !(Maybe Int)
+    , _scName    :: !(Maybe Text)
+    , _scSum     :: !(Maybe Double)
+    , _scUnit    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -681,7 +681,7 @@ instance NFData SummarizedCounter
 data TimeRange =
   TimeRange'
     { _trFromInclusive :: !(Maybe POSIX)
-    , _trToExclusive :: !(Maybe POSIX)
+    , _trToExclusive   :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.SQS.Types.Product
 data DeleteMessageBatch =
   DeleteMessageBatch'
     { _dmbQueueURL :: !Text
-    , _dmbEntries :: ![DeleteMessageBatchRequestEntry]
+    , _dmbEntries  :: ![DeleteMessageBatchRequestEntry]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -115,8 +115,8 @@ instance ToQuery DeleteMessageBatch where
 data DeleteMessageBatchResponse =
   DeleteMessageBatchResponse'
     { _dmbrsResponseStatus :: !Int
-    , _dmbrsSuccessful :: ![DeleteMessageBatchResultEntry]
-    , _dmbrsFailed :: ![BatchResultErrorEntry]
+    , _dmbrsSuccessful     :: ![DeleteMessageBatchResultEntry]
+    , _dmbrsFailed         :: ![BatchResultErrorEntry]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

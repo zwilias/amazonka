@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,10 +45,10 @@ import Network.AWS.Response
 -- | /See:/ 'setLoadBasedAutoScaling' smart constructor.
 data SetLoadBasedAutoScaling =
   SetLoadBasedAutoScaling'
-    { _slbasUpScaling :: !(Maybe AutoScalingThresholds)
-    , _slbasEnable :: !(Maybe Bool)
+    { _slbasUpScaling   :: !(Maybe AutoScalingThresholds)
+    , _slbasEnable      :: !(Maybe Bool)
     , _slbasDownScaling :: !(Maybe AutoScalingThresholds)
-    , _slbasLayerId :: !Text
+    , _slbasLayerId     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

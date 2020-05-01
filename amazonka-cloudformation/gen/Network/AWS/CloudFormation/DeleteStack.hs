@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,10 +47,10 @@ import Network.AWS.Response
 -- /See:/ 'deleteStack' smart constructor.
 data DeleteStack =
   DeleteStack'
-    { _dsRetainResources :: !(Maybe [Text])
+    { _dsRetainResources    :: !(Maybe [Text])
     , _dsClientRequestToken :: !(Maybe Text)
-    , _dsRoleARN :: !(Maybe Text)
-    , _dsStackName :: !Text
+    , _dsRoleARN            :: !(Maybe Text)
+    , _dsStackName          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

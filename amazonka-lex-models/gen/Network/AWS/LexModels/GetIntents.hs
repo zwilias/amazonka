@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,8 +58,8 @@ import Network.AWS.Response
 data GetIntents =
   GetIntents'
     { _giNameContains :: !(Maybe Text)
-    , _giNextToken :: !(Maybe Text)
-    , _giMaxResults :: !(Maybe Nat)
+    , _giNextToken    :: !(Maybe Text)
+    , _giMaxResults   :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -128,8 +128,8 @@ instance ToQuery GetIntents where
 -- | /See:/ 'getIntentsResponse' smart constructor.
 data GetIntentsResponse =
   GetIntentsResponse'
-    { _gisrsIntents :: !(Maybe [IntentMetadata])
-    , _gisrsNextToken :: !(Maybe Text)
+    { _gisrsIntents        :: !(Maybe [IntentMetadata])
+    , _gisrsNextToken      :: !(Maybe Text)
     , _gisrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,7 +51,7 @@ import Network.AWS.Response
 -- /See:/ 'modifyReservedInstances' smart constructor.
 data ModifyReservedInstances =
   ModifyReservedInstances'
-    { _mriClientToken :: !(Maybe Text)
+    { _mriClientToken          :: !(Maybe Text)
     , _mriReservedInstancesIds :: ![Text]
     , _mriTargetConfigurations :: ![ReservedInstancesConfiguration]
     }
@@ -131,7 +131,7 @@ instance ToQuery ModifyReservedInstances where
 data ModifyReservedInstancesResponse =
   ModifyReservedInstancesResponse'
     { _mrirsReservedInstancesModificationId :: !(Maybe Text)
-    , _mrirsResponseStatus :: !Int
+    , _mrirsResponseStatus                  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

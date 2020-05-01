@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,15 +52,15 @@ import Network.AWS.Response
 -- | /See:/ 'createQualificationType' smart constructor.
 data CreateQualificationType =
   CreateQualificationType'
-    { _cqtTestDurationInSeconds :: !(Maybe Integer)
-    , _cqtAnswerKey :: !(Maybe Text)
-    , _cqtTest :: !(Maybe Text)
-    , _cqtKeywords :: !(Maybe Text)
-    , _cqtAutoGranted :: !(Maybe Bool)
-    , _cqtAutoGrantedValue :: !(Maybe Int)
-    , _cqtRetryDelayInSeconds :: !(Maybe Integer)
-    , _cqtName :: !Text
-    , _cqtDescription :: !Text
+    { _cqtTestDurationInSeconds   :: !(Maybe Integer)
+    , _cqtAnswerKey               :: !(Maybe Text)
+    , _cqtTest                    :: !(Maybe Text)
+    , _cqtKeywords                :: !(Maybe Text)
+    , _cqtAutoGranted             :: !(Maybe Bool)
+    , _cqtAutoGrantedValue        :: !(Maybe Int)
+    , _cqtRetryDelayInSeconds     :: !(Maybe Integer)
+    , _cqtName                    :: !Text
+    , _cqtDescription             :: !Text
     , _cqtQualificationTypeStatus :: !QualificationTypeStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -200,7 +200,7 @@ instance ToQuery CreateQualificationType where
 data CreateQualificationTypeResponse =
   CreateQualificationTypeResponse'
     { _cqtrsQualificationType :: !(Maybe QualificationType)
-    , _cqtrsResponseStatus :: !Int
+    , _cqtrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

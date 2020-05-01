@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,9 +49,9 @@ import Network.AWS.Response
 -- /See:/ 'describeAnalysisSchemes' smart constructor.
 data DescribeAnalysisSchemes =
   DescribeAnalysisSchemes'
-    { _dassDeployed :: !(Maybe Bool)
+    { _dassDeployed            :: !(Maybe Bool)
     , _dassAnalysisSchemeNames :: !(Maybe [Text])
-    , _dassDomainName :: !Text
+    , _dassDomainName          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -126,7 +126,7 @@ instance ToQuery DescribeAnalysisSchemes where
 -- /See:/ 'describeAnalysisSchemesResponse' smart constructor.
 data DescribeAnalysisSchemesResponse =
   DescribeAnalysisSchemesResponse'
-    { _dasrsResponseStatus :: !Int
+    { _dasrsResponseStatus  :: !Int
     , _dasrsAnalysisSchemes :: ![AnalysisSchemeStatus]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

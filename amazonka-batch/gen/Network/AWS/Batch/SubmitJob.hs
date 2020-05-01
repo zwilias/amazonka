@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,14 +53,14 @@ import Network.AWS.Response
 data SubmitJob =
   SubmitJob'
     { _sjContainerOverrides :: !(Maybe ContainerOverrides)
-    , _sjRetryStrategy :: !(Maybe RetryStrategy)
-    , _sjDependsOn :: !(Maybe [JobDependency])
-    , _sjParameters :: !(Maybe (Map Text Text))
-    , _sjArrayProperties :: !(Maybe ArrayProperties)
-    , _sjTimeout :: !(Maybe JobTimeout)
-    , _sjJobName :: !Text
-    , _sjJobQueue :: !Text
-    , _sjJobDefinition :: !Text
+    , _sjRetryStrategy      :: !(Maybe RetryStrategy)
+    , _sjDependsOn          :: !(Maybe [JobDependency])
+    , _sjParameters         :: !(Maybe (Map Text Text))
+    , _sjArrayProperties    :: !(Maybe ArrayProperties)
+    , _sjTimeout            :: !(Maybe JobTimeout)
+    , _sjJobName            :: !Text
+    , _sjJobQueue           :: !Text
+    , _sjJobDefinition      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -185,8 +185,8 @@ instance ToQuery SubmitJob where
 data SubmitJobResponse =
   SubmitJobResponse'
     { _sjrsResponseStatus :: !Int
-    , _sjrsJobName :: !Text
-    , _sjrsJobId :: !Text
+    , _sjrsJobName        :: !Text
+    , _sjrsJobId          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

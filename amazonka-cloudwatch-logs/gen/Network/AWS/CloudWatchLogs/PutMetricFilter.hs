@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,9 +45,9 @@ import Network.AWS.Response
 -- | /See:/ 'putMetricFilter' smart constructor.
 data PutMetricFilter =
   PutMetricFilter'
-    { _pmfLogGroupName :: !Text
-    , _pmfFilterName :: !Text
-    , _pmfFilterPattern :: !Text
+    { _pmfLogGroupName          :: !Text
+    , _pmfFilterName            :: !Text
+    , _pmfFilterPattern         :: !Text
     , _pmfMetricTransformations :: !(List1 MetricTransformation)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

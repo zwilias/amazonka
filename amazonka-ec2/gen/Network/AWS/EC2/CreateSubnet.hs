@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,11 +63,11 @@ import Network.AWS.Response
 -- /See:/ 'createSubnet' smart constructor.
 data CreateSubnet =
   CreateSubnet'
-    { _cssIPv6CidrBlock :: !(Maybe Text)
+    { _cssIPv6CidrBlock    :: !(Maybe Text)
     , _cssAvailabilityZone :: !(Maybe Text)
-    , _cssDryRun :: !(Maybe Bool)
-    , _cssCidrBlock :: !Text
-    , _cssVPCId :: !Text
+    , _cssDryRun           :: !(Maybe Bool)
+    , _cssCidrBlock        :: !Text
+    , _cssVPCId            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -155,7 +155,7 @@ instance ToQuery CreateSubnet where
 -- /See:/ 'createSubnetResponse' smart constructor.
 data CreateSubnetResponse =
   CreateSubnetResponse'
-    { _crersSubnet :: !(Maybe Subnet)
+    { _crersSubnet         :: !(Maybe Subnet)
     , _crersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

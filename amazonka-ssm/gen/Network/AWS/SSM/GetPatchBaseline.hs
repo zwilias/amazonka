@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -122,21 +122,21 @@ instance ToQuery GetPatchBaseline where
 -- | /See:/ 'getPatchBaselineResponse' smart constructor.
 data GetPatchBaselineResponse =
   GetPatchBaselineResponse'
-    { _gpbrsApprovalRules :: !(Maybe PatchRuleGroup)
-    , _gpbrsOperatingSystem :: !(Maybe OperatingSystem)
-    , _gpbrsGlobalFilters :: !(Maybe PatchFilterGroup)
-    , _gpbrsApprovedPatchesComplianceLevel :: !(Maybe PatchComplianceLevel)
-    , _gpbrsApprovedPatches :: !(Maybe [Text])
+    { _gpbrsApprovalRules                    :: !(Maybe PatchRuleGroup)
+    , _gpbrsOperatingSystem                  :: !(Maybe OperatingSystem)
+    , _gpbrsGlobalFilters                    :: !(Maybe PatchFilterGroup)
+    , _gpbrsApprovedPatchesComplianceLevel   :: !(Maybe PatchComplianceLevel)
+    , _gpbrsApprovedPatches                  :: !(Maybe [Text])
     , _gpbrsApprovedPatchesEnableNonSecurity :: !(Maybe Bool)
-    , _gpbrsRejectedPatches :: !(Maybe [Text])
-    , _gpbrsSources :: !(Maybe [PatchSource])
-    , _gpbrsCreatedDate :: !(Maybe POSIX)
-    , _gpbrsName :: !(Maybe Text)
-    , _gpbrsPatchGroups :: !(Maybe [Text])
-    , _gpbrsModifiedDate :: !(Maybe POSIX)
-    , _gpbrsDescription :: !(Maybe Text)
-    , _gpbrsBaselineId :: !(Maybe Text)
-    , _gpbrsResponseStatus :: !Int
+    , _gpbrsRejectedPatches                  :: !(Maybe [Text])
+    , _gpbrsSources                          :: !(Maybe [PatchSource])
+    , _gpbrsCreatedDate                      :: !(Maybe POSIX)
+    , _gpbrsName                             :: !(Maybe Text)
+    , _gpbrsPatchGroups                      :: !(Maybe [Text])
+    , _gpbrsModifiedDate                     :: !(Maybe POSIX)
+    , _gpbrsDescription                      :: !(Maybe Text)
+    , _gpbrsBaselineId                       :: !(Maybe Text)
+    , _gpbrsResponseStatus                   :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

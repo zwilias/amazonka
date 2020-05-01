@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -82,18 +82,18 @@ import Network.AWS.Response
 -- /See:/ 'createMatchmakingConfiguration' smart constructor.
 data CreateMatchmakingConfiguration =
   CreateMatchmakingConfiguration'
-    { _cmcGameProperties :: !(Maybe [GameProperty])
+    { _cmcGameProperties           :: !(Maybe [GameProperty])
     , _cmcAcceptanceTimeoutSeconds :: !(Maybe Nat)
-    , _cmcNotificationTarget :: !(Maybe Text)
-    , _cmcCustomEventData :: !(Maybe Text)
-    , _cmcGameSessionData :: !(Maybe Text)
-    , _cmcDescription :: !(Maybe Text)
-    , _cmcAdditionalPlayerCount :: !(Maybe Nat)
-    , _cmcName :: !Text
-    , _cmcGameSessionQueueARNs :: ![Text]
-    , _cmcRequestTimeoutSeconds :: !Nat
-    , _cmcAcceptanceRequired :: !Bool
-    , _cmcRuleSetName :: !Text
+    , _cmcNotificationTarget       :: !(Maybe Text)
+    , _cmcCustomEventData          :: !(Maybe Text)
+    , _cmcGameSessionData          :: !(Maybe Text)
+    , _cmcDescription              :: !(Maybe Text)
+    , _cmcAdditionalPlayerCount    :: !(Maybe Nat)
+    , _cmcName                     :: !Text
+    , _cmcGameSessionQueueARNs     :: ![Text]
+    , _cmcRequestTimeoutSeconds    :: !Nat
+    , _cmcAcceptanceRequired       :: !Bool
+    , _cmcRuleSetName              :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -264,7 +264,7 @@ instance ToQuery CreateMatchmakingConfiguration where
 -- /See:/ 'createMatchmakingConfigurationResponse' smart constructor.
 data CreateMatchmakingConfigurationResponse =
   CreateMatchmakingConfigurationResponse'
-    { _cmcrsConfiguration :: !(Maybe MatchmakingConfiguration)
+    { _cmcrsConfiguration  :: !(Maybe MatchmakingConfiguration)
     , _cmcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

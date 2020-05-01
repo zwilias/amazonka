@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,11 +49,11 @@ import Network.AWS.Response
 -- /See:/ 'modifyNetworkInterfaceAttribute' smart constructor.
 data ModifyNetworkInterfaceAttribute =
   ModifyNetworkInterfaceAttribute'
-    { _mniaGroups :: !(Maybe [Text])
-    , _mniaSourceDestCheck :: !(Maybe AttributeBooleanValue)
-    , _mniaAttachment :: !(Maybe NetworkInterfaceAttachmentChanges)
-    , _mniaDescription :: !(Maybe AttributeValue)
-    , _mniaDryRun :: !(Maybe Bool)
+    { _mniaGroups             :: !(Maybe [Text])
+    , _mniaSourceDestCheck    :: !(Maybe AttributeBooleanValue)
+    , _mniaAttachment         :: !(Maybe NetworkInterfaceAttachmentChanges)
+    , _mniaDescription        :: !(Maybe AttributeValue)
+    , _mniaDryRun             :: !(Maybe Bool)
     , _mniaNetworkInterfaceId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

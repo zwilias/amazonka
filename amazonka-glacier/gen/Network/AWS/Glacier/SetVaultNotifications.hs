@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -61,8 +61,8 @@ import Network.AWS.Response
 data SetVaultNotifications =
   SetVaultNotifications'
     { _svnVaultNotificationConfig :: !(Maybe VaultNotificationConfig)
-    , _svnAccountId :: !Text
-    , _svnVaultName :: !Text
+    , _svnAccountId               :: !Text
+    , _svnVaultName               :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

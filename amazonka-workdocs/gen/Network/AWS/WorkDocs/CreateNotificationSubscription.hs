@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,9 +48,9 @@ import Network.AWS.WorkDocs.Types.Product
 -- | /See:/ 'createNotificationSubscription' smart constructor.
 data CreateNotificationSubscription =
   CreateNotificationSubscription'
-    { _cnsOrganizationId :: !Text
-    , _cnsEndpoint :: !Text
-    , _cnsProtocol :: !SubscriptionProtocolType
+    { _cnsOrganizationId   :: !Text
+    , _cnsEndpoint         :: !Text
+    , _cnsProtocol         :: !SubscriptionProtocolType
     , _cnsSubscriptionType :: !SubscriptionType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -135,7 +135,7 @@ instance ToQuery CreateNotificationSubscription where
 -- | /See:/ 'createNotificationSubscriptionResponse' smart constructor.
 data CreateNotificationSubscriptionResponse =
   CreateNotificationSubscriptionResponse'
-    { _cnsrsSubscription :: !(Maybe Subscription)
+    { _cnsrsSubscription   :: !(Maybe Subscription)
     , _cnsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

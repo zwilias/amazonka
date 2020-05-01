@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.SDB.Types.Product
 data ListDomains =
   ListDomains'
     { _ldMaxNumberOfDomains :: !(Maybe Int)
-    , _ldNextToken :: !(Maybe Text)
+    , _ldNextToken          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -112,8 +112,8 @@ instance ToQuery ListDomains where
 -- | /See:/ 'listDomainsResponse' smart constructor.
 data ListDomainsResponse =
   ListDomainsResponse'
-    { _ldrsDomainNames :: !(Maybe [Text])
-    , _ldrsNextToken :: !(Maybe Text)
+    { _ldrsDomainNames    :: !(Maybe [Text])
+    , _ldrsNextToken      :: !(Maybe Text)
     , _ldrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

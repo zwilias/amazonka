@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,11 +48,11 @@ import Network.AWS.Response
 -- /See:/ 'updateCACertificate' smart constructor.
 data UpdateCACertificate =
   UpdateCACertificate'
-    { _ucacRemoveAutoRegistration :: !(Maybe Bool)
-    , _ucacNewStatus :: !(Maybe CACertificateStatus)
-    , _ucacRegistrationConfig :: !(Maybe RegistrationConfig)
+    { _ucacRemoveAutoRegistration    :: !(Maybe Bool)
+    , _ucacNewStatus                 :: !(Maybe CACertificateStatus)
+    , _ucacRegistrationConfig        :: !(Maybe RegistrationConfig)
     , _ucacNewAutoRegistrationStatus :: !(Maybe AutoRegistrationStatus)
-    , _ucacCertificateId :: !Text
+    , _ucacCertificateId             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

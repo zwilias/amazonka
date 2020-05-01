@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,10 +50,10 @@ import Network.AWS.Response
 -- /See:/ 'enableSnapshotCopy' smart constructor.
 data EnableSnapshotCopy =
   EnableSnapshotCopy'
-    { _escRetentionPeriod :: !(Maybe Int)
+    { _escRetentionPeriod       :: !(Maybe Int)
     , _escSnapshotCopyGrantName :: !(Maybe Text)
-    , _escClusterIdentifier :: !Text
-    , _escDestinationRegion :: !Text
+    , _escClusterIdentifier     :: !Text
+    , _escDestinationRegion     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -134,7 +134,7 @@ instance ToQuery EnableSnapshotCopy where
 -- | /See:/ 'enableSnapshotCopyResponse' smart constructor.
 data EnableSnapshotCopyResponse =
   EnableSnapshotCopyResponse'
-    { _escrsCluster :: !(Maybe Cluster)
+    { _escrsCluster        :: !(Maybe Cluster)
     , _escrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

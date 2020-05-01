@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,11 +26,11 @@ import Network.AWS.Prelude
 -- /See:/ 'entitlement' smart constructor.
 data Entitlement =
   Entitlement'
-    { _eDimension :: !(Maybe Text)
-    , _eValue :: !(Maybe EntitlementValue)
-    , _eExpirationDate :: !(Maybe POSIX)
+    { _eDimension          :: !(Maybe Text)
+    , _eValue              :: !(Maybe EntitlementValue)
+    , _eExpirationDate     :: !(Maybe POSIX)
     , _eCustomerIdentifier :: !(Maybe Text)
-    , _eProductCode :: !(Maybe Text)
+    , _eProductCode        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -101,8 +101,8 @@ instance NFData Entitlement
 data EntitlementValue =
   EntitlementValue'
     { _evIntegerValue :: !(Maybe Int)
-    , _evDoubleValue :: !(Maybe Double)
-    , _evStringValue :: !(Maybe Text)
+    , _evDoubleValue  :: !(Maybe Double)
+    , _evStringValue  :: !(Maybe Text)
     , _evBooleanValue :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

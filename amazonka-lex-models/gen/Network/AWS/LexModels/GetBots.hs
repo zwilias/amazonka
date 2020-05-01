@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,8 +58,8 @@ import Network.AWS.Response
 data GetBots =
   GetBots'
     { _gbNameContains :: !(Maybe Text)
-    , _gbNextToken :: !(Maybe Text)
-    , _gbMaxResults :: !(Maybe Nat)
+    , _gbNextToken    :: !(Maybe Text)
+    , _gbMaxResults   :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -127,8 +127,8 @@ instance ToQuery GetBots where
 -- | /See:/ 'getBotsResponse' smart constructor.
 data GetBotsResponse =
   GetBotsResponse'
-    { _gbsrsBots :: !(Maybe [BotMetadata])
-    , _gbsrsNextToken :: !(Maybe Text)
+    { _gbsrsBots           :: !(Maybe [BotMetadata])
+    , _gbsrsNextToken      :: !(Maybe Text)
     , _gbsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

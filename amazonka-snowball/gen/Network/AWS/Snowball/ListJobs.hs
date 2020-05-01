@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Snowball.Types.Product
 -- | /See:/ 'listJobs' smart constructor.
 data ListJobs =
   ListJobs'
-    { _ljNextToken :: !(Maybe Text)
+    { _ljNextToken  :: !(Maybe Text)
     , _ljMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -118,7 +118,7 @@ instance ToQuery ListJobs where
 data ListJobsResponse =
   ListJobsResponse'
     { _ljrsJobListEntries :: !(Maybe [JobListEntry])
-    , _ljrsNextToken :: !(Maybe Text)
+    , _ljrsNextToken      :: !(Maybe Text)
     , _ljrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

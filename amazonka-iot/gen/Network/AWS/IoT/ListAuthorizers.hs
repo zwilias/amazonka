@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,10 +47,10 @@ import Network.AWS.Response
 -- | /See:/ 'listAuthorizers' smart constructor.
 data ListAuthorizers =
   ListAuthorizers'
-    { _laStatus :: !(Maybe AuthorizerStatus)
-    , _laMarker :: !(Maybe Text)
+    { _laStatus         :: !(Maybe AuthorizerStatus)
+    , _laMarker         :: !(Maybe Text)
     , _laAscendingOrder :: !(Maybe Bool)
-    , _laPageSize :: !(Maybe Nat)
+    , _laPageSize       :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -122,8 +122,8 @@ instance ToQuery ListAuthorizers where
 -- | /See:/ 'listAuthorizersResponse' smart constructor.
 data ListAuthorizersResponse =
   ListAuthorizersResponse'
-    { _larsAuthorizers :: !(Maybe [AuthorizerSummary])
-    , _larsNextMarker :: !(Maybe Text)
+    { _larsAuthorizers    :: !(Maybe [AuthorizerSummary])
+    , _larsNextMarker     :: !(Maybe Text)
     , _larsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

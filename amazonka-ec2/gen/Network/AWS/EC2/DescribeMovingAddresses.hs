@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 -- /See:/ 'describeMovingAddresses' smart constructor.
 data DescribeMovingAddresses =
   DescribeMovingAddresses'
-    { _dmaFilters :: !(Maybe [Filter])
-    , _dmaPublicIPs :: !(Maybe [Text])
-    , _dmaNextToken :: !(Maybe Text)
-    , _dmaDryRun :: !(Maybe Bool)
+    { _dmaFilters    :: !(Maybe [Filter])
+    , _dmaPublicIPs  :: !(Maybe [Text])
+    , _dmaNextToken  :: !(Maybe Text)
+    , _dmaDryRun     :: !(Maybe Bool)
     , _dmaMaxResults :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -146,8 +146,8 @@ instance ToQuery DescribeMovingAddresses where
 data DescribeMovingAddressesResponse =
   DescribeMovingAddressesResponse'
     { _dmarsMovingAddressStatuses :: !(Maybe [MovingAddressStatus])
-    , _dmarsNextToken :: !(Maybe Text)
-    , _dmarsResponseStatus :: !Int
+    , _dmarsNextToken             :: !(Maybe Text)
+    , _dmarsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

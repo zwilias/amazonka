@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,14 +56,14 @@ import Network.AWS.Response
 -- /See:/ 'createDeployment' smart constructor.
 data CreateDeployment =
   CreateDeployment'
-    { _cdStageDescription :: !(Maybe Text)
-    , _cdVariables :: !(Maybe (Map Text Text))
-    , _cdCacheClusterSize :: !(Maybe CacheClusterSize)
-    , _cdCanarySettings :: !(Maybe DeploymentCanarySettings)
+    { _cdStageDescription    :: !(Maybe Text)
+    , _cdVariables           :: !(Maybe (Map Text Text))
+    , _cdCacheClusterSize    :: !(Maybe CacheClusterSize)
+    , _cdCanarySettings      :: !(Maybe DeploymentCanarySettings)
     , _cdCacheClusterEnabled :: !(Maybe Bool)
-    , _cdStageName :: !(Maybe Text)
-    , _cdDescription :: !(Maybe Text)
-    , _cdRestAPIId :: !Text
+    , _cdStageName           :: !(Maybe Text)
+    , _cdDescription         :: !(Maybe Text)
+    , _cdRestAPIId           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

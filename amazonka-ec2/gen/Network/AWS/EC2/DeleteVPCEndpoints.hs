@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- /See:/ 'deleteVPCEndpoints' smart constructor.
 data DeleteVPCEndpoints =
   DeleteVPCEndpoints'
-    { _dveDryRun :: !(Maybe Bool)
+    { _dveDryRun         :: !(Maybe Bool)
     , _dveVPCEndpointIds :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -109,7 +109,7 @@ instance ToQuery DeleteVPCEndpoints where
 -- /See:/ 'deleteVPCEndpointsResponse' smart constructor.
 data DeleteVPCEndpointsResponse =
   DeleteVPCEndpointsResponse'
-    { _dversUnsuccessful :: !(Maybe [UnsuccessfulItem])
+    { _dversUnsuccessful   :: !(Maybe [UnsuccessfulItem])
     , _dversResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -108,9 +108,9 @@ instance ToQuery RequestUploadCredentials where
 -- /See:/ 'requestUploadCredentialsResponse' smart constructor.
 data RequestUploadCredentialsResponse =
   RequestUploadCredentialsResponse'
-    { _rucrsStorageLocation :: !(Maybe S3Location)
+    { _rucrsStorageLocation   :: !(Maybe S3Location)
     , _rucrsUploadCredentials :: !(Maybe (Sensitive AWSCredentials))
-    , _rucrsResponseStatus :: !Int
+    , _rucrsResponseStatus    :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

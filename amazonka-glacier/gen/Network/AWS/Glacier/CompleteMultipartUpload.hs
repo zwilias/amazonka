@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -62,11 +62,11 @@ import Network.AWS.Response
 -- /See:/ 'completeMultipartUpload' smart constructor.
 data CompleteMultipartUpload =
   CompleteMultipartUpload'
-    { _cmuChecksum :: !(Maybe Text)
+    { _cmuChecksum    :: !(Maybe Text)
     , _cmuArchiveSize :: !(Maybe Text)
-    , _cmuAccountId :: !Text
-    , _cmuVaultName :: !Text
-    , _cmuUploadId :: !Text
+    , _cmuAccountId   :: !Text
+    , _cmuVaultName   :: !Text
+    , _cmuUploadId    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

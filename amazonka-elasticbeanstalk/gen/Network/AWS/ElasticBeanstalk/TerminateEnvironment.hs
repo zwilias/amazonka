@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -68,10 +68,10 @@ import Network.AWS.Response
 -- /See:/ 'terminateEnvironment' smart constructor.
 data TerminateEnvironment =
   TerminateEnvironment'
-    { _teForceTerminate :: !(Maybe Bool)
+    { _teForceTerminate     :: !(Maybe Bool)
     , _teTerminateResources :: !(Maybe Bool)
-    , _teEnvironmentName :: !(Maybe Text)
-    , _teEnvironmentId :: !(Maybe Text)
+    , _teEnvironmentName    :: !(Maybe Text)
+    , _teEnvironmentId      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

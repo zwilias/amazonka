@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -64,22 +64,22 @@ import Network.AWS.Route53.Types.Product
 -- /See:/ 'updateHealthCheck' smart constructor.
 data UpdateHealthCheck =
   UpdateHealthCheck'
-    { _uhcFailureThreshold :: !(Maybe Nat)
-    , _uhcIPAddress :: !(Maybe Text)
-    , _uhcEnableSNI :: !(Maybe Bool)
-    , _uhcResetElements :: !(Maybe [ResettableElementName])
-    , _uhcSearchString :: !(Maybe Text)
-    , _uhcHealthThreshold :: !(Maybe Nat)
-    , _uhcRegions :: !(Maybe (List1 HealthCheckRegion))
-    , _uhcResourcePath :: !(Maybe Text)
+    { _uhcFailureThreshold             :: !(Maybe Nat)
+    , _uhcIPAddress                    :: !(Maybe Text)
+    , _uhcEnableSNI                    :: !(Maybe Bool)
+    , _uhcResetElements                :: !(Maybe [ResettableElementName])
+    , _uhcSearchString                 :: !(Maybe Text)
+    , _uhcHealthThreshold              :: !(Maybe Nat)
+    , _uhcRegions                      :: !(Maybe (List1 HealthCheckRegion))
+    , _uhcResourcePath                 :: !(Maybe Text)
     , _uhcInsufficientDataHealthStatus :: !(Maybe InsufficientDataHealthStatus)
-    , _uhcHealthCheckVersion :: !(Maybe Nat)
-    , _uhcAlarmIdentifier :: !(Maybe AlarmIdentifier)
-    , _uhcInverted :: !(Maybe Bool)
-    , _uhcFullyQualifiedDomainName :: !(Maybe Text)
-    , _uhcChildHealthChecks :: !(Maybe [Text])
-    , _uhcPort :: !(Maybe Nat)
-    , _uhcHealthCheckId :: !Text
+    , _uhcHealthCheckVersion           :: !(Maybe Nat)
+    , _uhcAlarmIdentifier              :: !(Maybe AlarmIdentifier)
+    , _uhcInverted                     :: !(Maybe Bool)
+    , _uhcFullyQualifiedDomainName     :: !(Maybe Text)
+    , _uhcChildHealthChecks            :: !(Maybe [Text])
+    , _uhcPort                         :: !(Maybe Nat)
+    , _uhcHealthCheckId                :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -276,7 +276,7 @@ instance ToXML UpdateHealthCheck where
 data UpdateHealthCheckResponse =
   UpdateHealthCheckResponse'
     { _uhcrsResponseStatus :: !Int
-    , _uhcrsHealthCheck :: !HealthCheck
+    , _uhcrsHealthCheck    :: !HealthCheck
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

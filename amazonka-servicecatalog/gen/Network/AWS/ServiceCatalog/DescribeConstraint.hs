@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.ServiceCatalog.Types.Product
 data DescribeConstraint =
   DescribeConstraint'
     { _dAcceptLanguage :: !(Maybe Text)
-    , _dId :: !Text
+    , _dId             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -111,10 +111,10 @@ instance ToQuery DescribeConstraint where
 -- | /See:/ 'describeConstraintResponse' smart constructor.
 data DescribeConstraintResponse =
   DescribeConstraintResponse'
-    { _desrsStatus :: !(Maybe RequestStatus)
-    , _desrsConstraintDetail :: !(Maybe ConstraintDetail)
+    { _desrsStatus               :: !(Maybe RequestStatus)
+    , _desrsConstraintDetail     :: !(Maybe ConstraintDetail)
     , _desrsConstraintParameters :: !(Maybe Text)
-    , _desrsResponseStatus :: !Int
+    , _desrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,8 +54,8 @@ import Network.AWS.Response
 data DescribeVolumeAttribute =
   DescribeVolumeAttribute'
     { _dvaAttribute :: !(Maybe VolumeAttributeName)
-    , _dvaDryRun :: !(Maybe Bool)
-    , _dvaVolumeId :: !Text
+    , _dvaDryRun    :: !(Maybe Bool)
+    , _dvaVolumeId  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -125,9 +125,9 @@ instance ToQuery DescribeVolumeAttribute where
 -- /See:/ 'describeVolumeAttributeResponse' smart constructor.
 data DescribeVolumeAttributeResponse =
   DescribeVolumeAttributeResponse'
-    { _dvarsVolumeId :: !(Maybe Text)
-    , _dvarsProductCodes :: !(Maybe [ProductCode])
-    , _dvarsAutoEnableIO :: !(Maybe AttributeBooleanValue)
+    { _dvarsVolumeId       :: !(Maybe Text)
+    , _dvarsProductCodes   :: !(Maybe [ProductCode])
+    , _dvarsAutoEnableIO   :: !(Maybe AttributeBooleanValue)
     , _dvarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

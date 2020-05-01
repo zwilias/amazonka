@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.WorkDocs.Types.Product
 -- | /See:/ 'describeRootFolders' smart constructor.
 data DescribeRootFolders =
   DescribeRootFolders'
-    { _drfMarker :: !(Maybe Text)
-    , _drfLimit :: !(Maybe Nat)
+    { _drfMarker              :: !(Maybe Text)
+    , _drfLimit               :: !(Maybe Nat)
     , _drfAuthenticationToken :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
@@ -116,8 +116,8 @@ instance ToQuery DescribeRootFolders where
 -- | /See:/ 'describeRootFoldersResponse' smart constructor.
 data DescribeRootFoldersResponse =
   DescribeRootFoldersResponse'
-    { _drfrsFolders :: !(Maybe [FolderMetadata])
-    , _drfrsMarker :: !(Maybe Text)
+    { _drfrsFolders        :: !(Maybe [FolderMetadata])
+    , _drfrsMarker         :: !(Maybe Text)
     , _drfrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

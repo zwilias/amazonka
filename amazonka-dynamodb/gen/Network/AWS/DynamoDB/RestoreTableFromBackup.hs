@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,7 +63,7 @@ import Network.AWS.Response
 data RestoreTableFromBackup =
   RestoreTableFromBackup'
     { _rtfbTargetTableName :: !Text
-    , _rtfbBackupARN :: !Text
+    , _rtfbBackupARN       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -131,7 +131,7 @@ instance ToQuery RestoreTableFromBackup where
 data RestoreTableFromBackupResponse =
   RestoreTableFromBackupResponse'
     { _rtfbrsTableDescription :: !(Maybe TableDescription)
-    , _rtfbrsResponseStatus :: !Int
+    , _rtfbrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

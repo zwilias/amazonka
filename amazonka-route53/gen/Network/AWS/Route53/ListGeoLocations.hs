@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,9 +58,9 @@ import Network.AWS.Route53.Types.Product
 data ListGeoLocations =
   ListGeoLocations'
     { _lglStartSubdivisionCode :: !(Maybe Text)
-    , _lglMaxItems :: !(Maybe Text)
-    , _lglStartCountryCode :: !(Maybe Text)
-    , _lglStartContinentCode :: !(Maybe Text)
+    , _lglMaxItems             :: !(Maybe Text)
+    , _lglStartCountryCode     :: !(Maybe Text)
+    , _lglStartContinentCode   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -144,13 +144,13 @@ instance ToQuery ListGeoLocations where
 -- /See:/ 'listGeoLocationsResponse' smart constructor.
 data ListGeoLocationsResponse =
   ListGeoLocationsResponse'
-    { _lglrsNextContinentCode :: !(Maybe Text)
-    , _lglrsNextCountryCode :: !(Maybe Text)
-    , _lglrsNextSubdivisionCode :: !(Maybe Text)
-    , _lglrsResponseStatus :: !Int
+    { _lglrsNextContinentCode      :: !(Maybe Text)
+    , _lglrsNextCountryCode        :: !(Maybe Text)
+    , _lglrsNextSubdivisionCode    :: !(Maybe Text)
+    , _lglrsResponseStatus         :: !Int
     , _lglrsGeoLocationDetailsList :: ![GeoLocationDetails]
-    , _lglrsIsTruncated :: !Bool
-    , _lglrsMaxItems :: !Text
+    , _lglrsIsTruncated            :: !Bool
+    , _lglrsMaxItems               :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

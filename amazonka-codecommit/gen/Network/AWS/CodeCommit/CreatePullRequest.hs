@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,9 +47,9 @@ import Network.AWS.Response
 data CreatePullRequest =
   CreatePullRequest'
     { _cprClientRequestToken :: !(Maybe Text)
-    , _cprDescription :: !(Maybe Text)
-    , _cprTitle :: !Text
-    , _cprTargets :: ![Target]
+    , _cprDescription        :: !(Maybe Text)
+    , _cprTitle              :: !Text
+    , _cprTargets            :: ![Target]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -134,7 +134,7 @@ instance ToQuery CreatePullRequest where
 data CreatePullRequestResponse =
   CreatePullRequestResponse'
     { _cprrsResponseStatus :: !Int
-    , _cprrsPullRequest :: !PullRequest
+    , _cprrsPullRequest    :: !PullRequest
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

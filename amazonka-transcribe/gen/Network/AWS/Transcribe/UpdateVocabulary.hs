@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Transcribe.Types.Product
 data UpdateVocabulary =
   UpdateVocabulary'
     { _uvVocabularyName :: !Text
-    , _uvLanguageCode :: !LanguageCode
-    , _uvPhrases :: ![Text]
+    , _uvLanguageCode   :: !LanguageCode
+    , _uvPhrases        :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -128,11 +128,11 @@ instance ToQuery UpdateVocabulary where
 -- | /See:/ 'updateVocabularyResponse' smart constructor.
 data UpdateVocabularyResponse =
   UpdateVocabularyResponse'
-    { _uvrsLanguageCode :: !(Maybe LanguageCode)
-    , _uvrsVocabularyName :: !(Maybe Text)
+    { _uvrsLanguageCode     :: !(Maybe LanguageCode)
+    , _uvrsVocabularyName   :: !(Maybe Text)
     , _uvrsLastModifiedTime :: !(Maybe POSIX)
-    , _uvrsVocabularyState :: !(Maybe VocabularyState)
-    , _uvrsResponseStatus :: !Int
+    , _uvrsVocabularyState  :: !(Maybe VocabularyState)
+    , _uvrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

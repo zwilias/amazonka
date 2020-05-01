@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -88,11 +88,11 @@ instance ToQuery DescribeAccountLimits where
 -- | /See:/ 'describeAccountLimitsResponse' smart constructor.
 data DescribeAccountLimitsResponse =
   DescribeAccountLimitsResponse'
-    { _dalrsNumberOfLaunchConfigurations :: !(Maybe Int)
-    , _dalrsNumberOfAutoScalingGroups :: !(Maybe Int)
-    , _dalrsMaxNumberOfAutoScalingGroups :: !(Maybe Int)
+    { _dalrsNumberOfLaunchConfigurations    :: !(Maybe Int)
+    , _dalrsNumberOfAutoScalingGroups       :: !(Maybe Int)
+    , _dalrsMaxNumberOfAutoScalingGroups    :: !(Maybe Int)
     , _dalrsMaxNumberOfLaunchConfigurations :: !(Maybe Int)
-    , _dalrsResponseStatus :: !Int
+    , _dalrsResponseStatus                  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

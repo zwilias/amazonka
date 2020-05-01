@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- /See:/ 'describeIdentityIdFormat' smart constructor.
 data DescribeIdentityIdFormat =
   DescribeIdentityIdFormat'
-    { _diifResource :: !(Maybe Text)
+    { _diifResource     :: !(Maybe Text)
     , _diifPrincipalARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -115,7 +115,7 @@ instance ToQuery DescribeIdentityIdFormat where
 -- /See:/ 'describeIdentityIdFormatResponse' smart constructor.
 data DescribeIdentityIdFormatResponse =
   DescribeIdentityIdFormatResponse'
-    { _diifrsStatuses :: !(Maybe [IdFormat])
+    { _diifrsStatuses       :: !(Maybe [IdFormat])
     , _diifrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

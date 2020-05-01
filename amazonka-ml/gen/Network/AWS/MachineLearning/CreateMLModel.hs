@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,12 +57,12 @@ import Network.AWS.Response
 -- | /See:/ 'createMLModel' smart constructor.
 data CreateMLModel =
   CreateMLModel'
-    { _cmlmRecipe :: !(Maybe Text)
-    , _cmlmRecipeURI :: !(Maybe Text)
-    , _cmlmMLModelName :: !(Maybe Text)
-    , _cmlmParameters :: !(Maybe (Map Text Text))
-    , _cmlmMLModelId :: !Text
-    , _cmlmMLModelType :: !MLModelType
+    { _cmlmRecipe               :: !(Maybe Text)
+    , _cmlmRecipeURI            :: !(Maybe Text)
+    , _cmlmMLModelName          :: !(Maybe Text)
+    , _cmlmParameters           :: !(Maybe (Map Text Text))
+    , _cmlmMLModelId            :: !Text
+    , _cmlmMLModelType          :: !MLModelType
     , _cmlmTrainingDataSourceId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -178,7 +178,7 @@ instance ToQuery CreateMLModel where
 -- /See:/ 'createMLModelResponse' smart constructor.
 data CreateMLModelResponse =
   CreateMLModelResponse'
-    { _cmlmrsMLModelId :: !(Maybe Text)
+    { _cmlmrsMLModelId      :: !(Maybe Text)
     , _cmlmrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

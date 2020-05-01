@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,11 +52,11 @@ import Network.AWS.Response
 -- | /See:/ 'describeImages' smart constructor.
 data DescribeImages =
   DescribeImages'
-    { _diRegistryId :: !(Maybe Text)
-    , _diImageIds :: !(Maybe [ImageIdentifier])
-    , _diNextToken :: !(Maybe Text)
-    , _diFilter :: !(Maybe DescribeImagesFilter)
-    , _diMaxResults :: !(Maybe Nat)
+    { _diRegistryId     :: !(Maybe Text)
+    , _diImageIds       :: !(Maybe [ImageIdentifier])
+    , _diNextToken      :: !(Maybe Text)
+    , _diFilter         :: !(Maybe DescribeImagesFilter)
+    , _diMaxResults     :: !(Maybe Nat)
     , _diRepositoryName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -163,8 +163,8 @@ instance ToQuery DescribeImages where
 -- | /See:/ 'describeImagesResponse' smart constructor.
 data DescribeImagesResponse =
   DescribeImagesResponse'
-    { _dirsImageDetails :: !(Maybe [ImageDetail])
-    , _dirsNextToken :: !(Maybe Text)
+    { _dirsImageDetails   :: !(Maybe [ImageDetail])
+    , _dirsNextToken      :: !(Maybe Text)
     , _dirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,11 +52,11 @@ import Network.AWS.Response
 data CreateLaunchTemplateVersion =
   CreateLaunchTemplateVersion'
     { _cltvLaunchTemplateName :: !(Maybe Text)
-    , _cltvClientToken :: !(Maybe Text)
-    , _cltvLaunchTemplateId :: !(Maybe Text)
+    , _cltvClientToken        :: !(Maybe Text)
+    , _cltvLaunchTemplateId   :: !(Maybe Text)
     , _cltvVersionDescription :: !(Maybe Text)
-    , _cltvSourceVersion :: !(Maybe Text)
-    , _cltvDryRun :: !(Maybe Bool)
+    , _cltvSourceVersion      :: !(Maybe Text)
+    , _cltvDryRun             :: !(Maybe Bool)
     , _cltvLaunchTemplateData :: !RequestLaunchTemplateData
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -163,7 +163,7 @@ instance ToQuery CreateLaunchTemplateVersion where
 data CreateLaunchTemplateVersionResponse =
   CreateLaunchTemplateVersionResponse'
     { _cltvrsLaunchTemplateVersion :: !(Maybe LaunchTemplateVersion)
-    , _cltvrsResponseStatus :: !Int
+    , _cltvrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

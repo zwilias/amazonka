@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,9 +48,9 @@ import Network.AWS.Response
 data DeleteRoute =
   DeleteRoute'
     { _drDestinationIPv6CidrBlock :: !(Maybe Text)
-    , _drDryRun :: !(Maybe Bool)
-    , _drDestinationCidrBlock :: !(Maybe Text)
-    , _drRouteTableId :: !Text
+    , _drDryRun                   :: !(Maybe Bool)
+    , _drDestinationCidrBlock     :: !(Maybe Text)
+    , _drRouteTableId             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

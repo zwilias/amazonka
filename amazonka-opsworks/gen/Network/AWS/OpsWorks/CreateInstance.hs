@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,23 +63,23 @@ import Network.AWS.Response
 data CreateInstance =
   CreateInstance'
     { _ciInstallUpdatesOnBoot :: !(Maybe Bool)
-    , _ciVirtualizationType :: !(Maybe Text)
-    , _ciHostname :: !(Maybe Text)
-    , _ciSSHKeyName :: !(Maybe Text)
-    , _ciAgentVersion :: !(Maybe Text)
-    , _ciSubnetId :: !(Maybe Text)
-    , _ciEBSOptimized :: !(Maybe Bool)
-    , _ciOS :: !(Maybe Text)
-    , _ciAvailabilityZone :: !(Maybe Text)
-    , _ciTenancy :: !(Maybe Text)
-    , _ciAutoScalingType :: !(Maybe AutoScalingType)
-    , _ciArchitecture :: !(Maybe Architecture)
-    , _ciAMIId :: !(Maybe Text)
-    , _ciRootDeviceType :: !(Maybe RootDeviceType)
-    , _ciBlockDeviceMappings :: !(Maybe [BlockDeviceMapping])
-    , _ciStackId :: !Text
-    , _ciLayerIds :: ![Text]
-    , _ciInstanceType :: !Text
+    , _ciVirtualizationType   :: !(Maybe Text)
+    , _ciHostname             :: !(Maybe Text)
+    , _ciSSHKeyName           :: !(Maybe Text)
+    , _ciAgentVersion         :: !(Maybe Text)
+    , _ciSubnetId             :: !(Maybe Text)
+    , _ciEBSOptimized         :: !(Maybe Bool)
+    , _ciOS                   :: !(Maybe Text)
+    , _ciAvailabilityZone     :: !(Maybe Text)
+    , _ciTenancy              :: !(Maybe Text)
+    , _ciAutoScalingType      :: !(Maybe AutoScalingType)
+    , _ciArchitecture         :: !(Maybe Architecture)
+    , _ciAMIId                :: !(Maybe Text)
+    , _ciRootDeviceType       :: !(Maybe RootDeviceType)
+    , _ciBlockDeviceMappings  :: !(Maybe [BlockDeviceMapping])
+    , _ciStackId              :: !Text
+    , _ciLayerIds             :: ![Text]
+    , _ciInstanceType         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -283,7 +283,7 @@ instance ToQuery CreateInstance where
 -- /See:/ 'createInstanceResponse' smart constructor.
 data CreateInstanceResponse =
   CreateInstanceResponse'
-    { _cirsInstanceId :: !(Maybe Text)
+    { _cirsInstanceId     :: !(Maybe Text)
     , _cirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

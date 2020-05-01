@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,11 +51,11 @@ import Network.AWS.Response
 -- | /See:/ 'getCommentsForComparedCommit' smart constructor.
 data GetCommentsForComparedCommit =
   GetCommentsForComparedCommit'
-    { _gcfccNextToken :: !(Maybe Text)
+    { _gcfccNextToken      :: !(Maybe Text)
     , _gcfccBeforeCommitId :: !(Maybe Text)
-    , _gcfccMaxResults :: !(Maybe Int)
+    , _gcfccMaxResults     :: !(Maybe Int)
     , _gcfccRepositoryName :: !Text
-    , _gcfccAfterCommitId :: !Text
+    , _gcfccAfterCommitId  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

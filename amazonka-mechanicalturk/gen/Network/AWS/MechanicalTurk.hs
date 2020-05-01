@@ -315,8 +315,8 @@ import Network.AWS.MechanicalTurk.ListHITs
 import Network.AWS.MechanicalTurk.ListHITsForQualificationType
 import Network.AWS.MechanicalTurk.ListQualificationRequests
 import Network.AWS.MechanicalTurk.ListQualificationTypes
-import Network.AWS.MechanicalTurk.ListReviewPolicyResultsForHIT
 import Network.AWS.MechanicalTurk.ListReviewableHITs
+import Network.AWS.MechanicalTurk.ListReviewPolicyResultsForHIT
 import Network.AWS.MechanicalTurk.ListWorkerBlocks
 import Network.AWS.MechanicalTurk.ListWorkersWithQualificationType
 import Network.AWS.MechanicalTurk.NotifyWorkers

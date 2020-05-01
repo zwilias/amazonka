@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,11 +48,11 @@ import Network.AWS.Response
 -- | /See:/ 'getPlan' smart constructor.
 data GetPlan =
   GetPlan'
-    { _gpSinks :: !(Maybe [CatalogEntry])
+    { _gpSinks    :: !(Maybe [CatalogEntry])
     , _gpLocation :: !(Maybe Location)
     , _gpLanguage :: !(Maybe Language)
-    , _gpMapping :: ![MappingEntry]
-    , _gpSource :: !CatalogEntry
+    , _gpMapping  :: ![MappingEntry]
+    , _gpSource   :: !CatalogEntry
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -142,8 +142,8 @@ instance ToQuery GetPlan where
 -- | /See:/ 'getPlanResponse' smart constructor.
 data GetPlanResponse =
   GetPlanResponse'
-    { _gpprsPythonScript :: !(Maybe Text)
-    , _gpprsScalaCode :: !(Maybe Text)
+    { _gpprsPythonScript   :: !(Maybe Text)
+    , _gpprsScalaCode      :: !(Maybe Text)
     , _gpprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

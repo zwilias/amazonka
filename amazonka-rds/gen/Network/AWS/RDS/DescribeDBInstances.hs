@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,10 +54,10 @@ import Network.AWS.Response
 -- /See:/ 'describeDBInstances' smart constructor.
 data DescribeDBInstances =
   DescribeDBInstances'
-    { _ddbiFilters :: !(Maybe [Filter])
+    { _ddbiFilters              :: !(Maybe [Filter])
     , _ddbiDBInstanceIdentifier :: !(Maybe Text)
-    , _ddbiMarker :: !(Maybe Text)
-    , _ddbiMaxRecords :: !(Maybe Int)
+    , _ddbiMarker               :: !(Maybe Text)
+    , _ddbiMaxRecords           :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -145,8 +145,8 @@ instance ToQuery DescribeDBInstances where
 -- /See:/ 'describeDBInstancesResponse' smart constructor.
 data DescribeDBInstancesResponse =
   DescribeDBInstancesResponse'
-    { _ddbirsDBInstances :: !(Maybe [DBInstance])
-    , _ddbirsMarker :: !(Maybe Text)
+    { _ddbirsDBInstances    :: !(Maybe [DBInstance])
+    , _ddbirsMarker         :: !(Maybe Text)
     , _ddbirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

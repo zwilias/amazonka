@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- | /See:/ 'listOTAUpdates' smart constructor.
 data ListOTAUpdates =
   ListOTAUpdates'
-    { _lotauNextToken :: !(Maybe Text)
+    { _lotauNextToken       :: !(Maybe Text)
     , _lotauOtaUpdateStatus :: !(Maybe OTAUpdateStatus)
-    , _lotauMaxResults :: !(Maybe Nat)
+    , _lotauMaxResults      :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -114,8 +114,8 @@ instance ToQuery ListOTAUpdates where
 -- | /See:/ 'listOTAUpdatesResponse' smart constructor.
 data ListOTAUpdatesResponse =
   ListOTAUpdatesResponse'
-    { _lotaursNextToken :: !(Maybe Text)
-    , _lotaursOtaUpdates :: !(Maybe [OTAUpdateSummary])
+    { _lotaursNextToken      :: !(Maybe Text)
+    , _lotaursOtaUpdates     :: !(Maybe [OTAUpdateSummary])
     , _lotaursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

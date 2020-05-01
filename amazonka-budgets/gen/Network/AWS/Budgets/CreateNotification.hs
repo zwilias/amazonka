@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,10 +49,10 @@ import Network.AWS.Response
 -- /See:/ 'createNotification' smart constructor.
 data CreateNotification =
   CreateNotification'
-    { _cnAccountId :: !Text
-    , _cnBudgetName :: !Text
+    { _cnAccountId    :: !Text
+    , _cnBudgetName   :: !Text
     , _cnNotification :: !Notification
-    , _cnSubscribers :: !(List1 Subscriber)
+    , _cnSubscribers  :: !(List1 Subscriber)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

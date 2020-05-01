@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.WAF.Types.Product
 data ListSubscribedRuleGroups =
   ListSubscribedRuleGroups'
     { _lsrgNextMarker :: !(Maybe Text)
-    , _lsrgLimit :: !(Maybe Nat)
+    , _lsrgLimit      :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -107,8 +107,8 @@ instance ToQuery ListSubscribedRuleGroups where
 -- | /See:/ 'listSubscribedRuleGroupsResponse' smart constructor.
 data ListSubscribedRuleGroupsResponse =
   ListSubscribedRuleGroupsResponse'
-    { _lsrgrsRuleGroups :: !(Maybe [SubscribedRuleGroupSummary])
-    , _lsrgrsNextMarker :: !(Maybe Text)
+    { _lsrgrsRuleGroups     :: !(Maybe [SubscribedRuleGroupSummary])
+    , _lsrgrsNextMarker     :: !(Maybe Text)
     , _lsrgrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

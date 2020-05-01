@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -97,7 +97,7 @@ instance ToQuery DescribeAccount where
 -- | /See:/ 'describeAccountResponse' smart constructor.
 data DescribeAccountResponse =
   DescribeAccountResponse'
-    { _darsAccount :: !(Maybe Account)
+    { _darsAccount        :: !(Maybe Account)
     , _darsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

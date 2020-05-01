@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,12 +26,12 @@ import Network.AWS.Prelude
 -- /See:/ 'item' smart constructor.
 data Item =
   Item'
-    { _iETag :: !(Maybe Text)
+    { _iETag          :: !(Maybe Text)
     , _iContentLength :: !(Maybe Nat)
-    , _iName :: !(Maybe Text)
-    , _iType :: !(Maybe ItemType)
-    , _iLastModified :: !(Maybe POSIX)
-    , _iContentType :: !(Maybe Text)
+    , _iName          :: !(Maybe Text)
+    , _iType          :: !(Maybe ItemType)
+    , _iLastModified  :: !(Maybe POSIX)
+    , _iContentType   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

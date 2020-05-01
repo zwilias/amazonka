@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -42,7 +42,7 @@ import Network.AWS.Response
 -- | /See:/ 'updateEndpointsBatch' smart constructor.
 data UpdateEndpointsBatch =
   UpdateEndpointsBatch'
-    { _uebApplicationId :: !Text
+    { _uebApplicationId        :: !Text
     , _uebEndpointBatchRequest :: !EndpointBatchRequest
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -107,7 +107,7 @@ instance ToQuery UpdateEndpointsBatch where
 data UpdateEndpointsBatchResponse =
   UpdateEndpointsBatchResponse'
     { _uebrsResponseStatus :: !Int
-    , _uebrsMessageBody :: !MessageBody
+    , _uebrsMessageBody    :: !MessageBody
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

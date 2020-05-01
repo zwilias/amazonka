@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,9 +57,9 @@ import Network.AWS.Response
 data CreateVPC =
   CreateVPC'
     { _cvAmazonProvidedIPv6CidrBlock :: !(Maybe Bool)
-    , _cvInstanceTenancy :: !(Maybe Tenancy)
-    , _cvDryRun :: !(Maybe Bool)
-    , _cvCidrBlock :: !Text
+    , _cvInstanceTenancy             :: !(Maybe Tenancy)
+    , _cvDryRun                      :: !(Maybe Bool)
+    , _cvCidrBlock                   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -139,7 +139,7 @@ instance ToQuery CreateVPC where
 -- /See:/ 'createVPCResponse' smart constructor.
 data CreateVPCResponse =
   CreateVPCResponse'
-    { _cvrsVPC :: !(Maybe VPC)
+    { _cvrsVPC            :: !(Maybe VPC)
     , _cvrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

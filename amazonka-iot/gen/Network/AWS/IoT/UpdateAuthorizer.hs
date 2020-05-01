@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,11 +48,11 @@ import Network.AWS.Response
 -- | /See:/ 'updateAuthorizer' smart constructor.
 data UpdateAuthorizer =
   UpdateAuthorizer'
-    { _uaStatus :: !(Maybe AuthorizerStatus)
-    , _uaAuthorizerFunctionARN :: !(Maybe Text)
+    { _uaStatus                 :: !(Maybe AuthorizerStatus)
+    , _uaAuthorizerFunctionARN  :: !(Maybe Text)
     , _uaTokenSigningPublicKeys :: !(Maybe (Map Text Text))
-    , _uaTokenKeyName :: !(Maybe Text)
-    , _uaAuthorizerName :: !Text
+    , _uaTokenKeyName           :: !(Maybe Text)
+    , _uaAuthorizerName         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -142,7 +142,7 @@ instance ToQuery UpdateAuthorizer where
 data UpdateAuthorizerResponse =
   UpdateAuthorizerResponse'
     { _uarsAuthorizerName :: !(Maybe Text)
-    , _uarsAuthorizerARN :: !(Maybe Text)
+    , _uarsAuthorizerARN  :: !(Maybe Text)
     , _uarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

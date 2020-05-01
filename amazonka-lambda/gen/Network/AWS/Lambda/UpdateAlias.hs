@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,12 +54,12 @@ import Network.AWS.Response
 -- | /See:/ 'updateAlias' smart constructor.
 data UpdateAlias =
   UpdateAlias'
-    { _uaRoutingConfig :: !(Maybe AliasRoutingConfiguration)
+    { _uaRoutingConfig   :: !(Maybe AliasRoutingConfiguration)
     , _uaFunctionVersion :: !(Maybe Text)
-    , _uaDescription :: !(Maybe Text)
-    , _uaRevisionId :: !(Maybe Text)
-    , _uaFunctionName :: !Text
-    , _uaName :: !Text
+    , _uaDescription     :: !(Maybe Text)
+    , _uaRevisionId      :: !(Maybe Text)
+    , _uaFunctionName    :: !Text
+    , _uaName            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

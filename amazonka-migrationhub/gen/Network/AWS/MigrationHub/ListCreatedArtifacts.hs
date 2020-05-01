@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,10 +55,10 @@ import Network.AWS.Response
 -- | /See:/ 'listCreatedArtifacts' smart constructor.
 data ListCreatedArtifacts =
   ListCreatedArtifacts'
-    { _lcaNextToken :: !(Maybe Text)
-    , _lcaMaxResults :: !(Maybe Nat)
+    { _lcaNextToken            :: !(Maybe Text)
+    , _lcaMaxResults           :: !(Maybe Nat)
     , _lcaProgressUpdateStream :: !Text
-    , _lcaMigrationTaskName :: !Text
+    , _lcaMigrationTaskName    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -146,9 +146,9 @@ instance ToQuery ListCreatedArtifacts where
 -- | /See:/ 'listCreatedArtifactsResponse' smart constructor.
 data ListCreatedArtifactsResponse =
   ListCreatedArtifactsResponse'
-    { _lcarsNextToken :: !(Maybe Text)
+    { _lcarsNextToken           :: !(Maybe Text)
     , _lcarsCreatedArtifactList :: !(Maybe [CreatedArtifact])
-    , _lcarsResponseStatus :: !Int
+    , _lcarsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -92,13 +92,13 @@ instance ToQuery GetDiscoverySummary where
 -- | /See:/ 'getDiscoverySummaryResponse' smart constructor.
 data GetDiscoverySummaryResponse =
   GetDiscoverySummaryResponse'
-    { _gdsrsServers :: !(Maybe Integer)
-    , _gdsrsServersMappedtoTags :: !(Maybe Integer)
+    { _gdsrsServers                     :: !(Maybe Integer)
+    , _gdsrsServersMappedtoTags         :: !(Maybe Integer)
     , _gdsrsServersMappedToApplications :: !(Maybe Integer)
-    , _gdsrsConnectorSummary :: !(Maybe CustomerConnectorInfo)
-    , _gdsrsAgentSummary :: !(Maybe CustomerAgentInfo)
-    , _gdsrsApplications :: !(Maybe Integer)
-    , _gdsrsResponseStatus :: !Int
+    , _gdsrsConnectorSummary            :: !(Maybe CustomerConnectorInfo)
+    , _gdsrsAgentSummary                :: !(Maybe CustomerAgentInfo)
+    , _gdsrsApplications                :: !(Maybe Integer)
+    , _gdsrsResponseStatus              :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

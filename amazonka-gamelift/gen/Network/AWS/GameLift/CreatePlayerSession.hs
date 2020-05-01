@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -73,9 +73,9 @@ import Network.AWS.Response
 -- /See:/ 'createPlayerSession' smart constructor.
 data CreatePlayerSession =
   CreatePlayerSession'
-    { _cPlayerData :: !(Maybe Text)
+    { _cPlayerData    :: !(Maybe Text)
     , _cGameSessionId :: !Text
-    , _cPlayerId :: !Text
+    , _cPlayerId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -154,7 +154,7 @@ instance ToQuery CreatePlayerSession where
 -- /See:/ 'createPlayerSessionResponse' smart constructor.
 data CreatePlayerSessionResponse =
   CreatePlayerSessionResponse'
-    { _cpsrsPlayerSession :: !(Maybe PlayerSession)
+    { _cpsrsPlayerSession  :: !(Maybe PlayerSession)
     , _cpsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,9 +50,9 @@ import Network.AWS.Response
 -- /See:/ 'copyOptionGroup' smart constructor.
 data CopyOptionGroup =
   CopyOptionGroup'
-    { _cTags :: !(Maybe [Tag])
-    , _cSourceOptionGroupIdentifier :: !Text
-    , _cTargetOptionGroupIdentifier :: !Text
+    { _cTags                         :: !(Maybe [Tag])
+    , _cSourceOptionGroupIdentifier  :: !Text
+    , _cTargetOptionGroupIdentifier  :: !Text
     , _cTargetOptionGroupDescription :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -140,7 +140,7 @@ instance ToQuery CopyOptionGroup where
 -- | /See:/ 'copyOptionGroupResponse' smart constructor.
 data CopyOptionGroupResponse =
   CopyOptionGroupResponse'
-    { _cogrsOptionGroup :: !(Maybe OptionGroup)
+    { _cogrsOptionGroup    :: !(Maybe OptionGroup)
     , _cogrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

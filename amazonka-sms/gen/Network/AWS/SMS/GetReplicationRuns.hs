@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,8 +48,8 @@ import Network.AWS.SMS.Types.Product
 -- | /See:/ 'getReplicationRuns' smart constructor.
 data GetReplicationRuns =
   GetReplicationRuns'
-    { _grrNextToken :: !(Maybe Text)
-    , _grrMaxResults :: !(Maybe Int)
+    { _grrNextToken        :: !(Maybe Text)
+    , _grrMaxResults       :: !(Maybe Int)
     , _grrReplicationJobId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -134,10 +134,10 @@ instance ToQuery GetReplicationRuns where
 -- | /See:/ 'getReplicationRunsResponse' smart constructor.
 data GetReplicationRunsResponse =
   GetReplicationRunsResponse'
-    { _grrrsReplicationJob :: !(Maybe ReplicationJob)
-    , _grrrsNextToken :: !(Maybe Text)
+    { _grrrsReplicationJob     :: !(Maybe ReplicationJob)
+    , _grrrsNextToken          :: !(Maybe Text)
     , _grrrsReplicationRunList :: !(Maybe [ReplicationRun])
-    , _grrrsResponseStatus :: !Int
+    , _grrrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

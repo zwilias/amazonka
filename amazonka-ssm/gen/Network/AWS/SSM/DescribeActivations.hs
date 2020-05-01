@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'describeActivations' smart constructor.
 data DescribeActivations =
   DescribeActivations'
-    { _daFilters :: !(Maybe [DescribeActivationsFilter])
-    , _daNextToken :: !(Maybe Text)
+    { _daFilters    :: !(Maybe [DescribeActivationsFilter])
+    , _daNextToken  :: !(Maybe Text)
     , _daMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -128,7 +128,7 @@ instance ToQuery DescribeActivations where
 data DescribeActivationsResponse =
   DescribeActivationsResponse'
     { _darsActivationList :: !(Maybe [Activation])
-    , _darsNextToken :: !(Maybe Text)
+    , _darsNextToken      :: !(Maybe Text)
     , _darsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.Response
 data ModifyDBSubnetGroup =
   ModifyDBSubnetGroup'
     { _mdsgDBSubnetGroupDescription :: !(Maybe Text)
-    , _mdsgDBSubnetGroupName :: !Text
-    , _mdsgSubnetIds :: ![Text]
+    , _mdsgDBSubnetGroupName        :: !Text
+    , _mdsgSubnetIds                :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -123,7 +123,7 @@ instance ToQuery ModifyDBSubnetGroup where
 -- | /See:/ 'modifyDBSubnetGroupResponse' smart constructor.
 data ModifyDBSubnetGroupResponse =
   ModifyDBSubnetGroupResponse'
-    { _mdsgrsDBSubnetGroup :: !(Maybe DBSubnetGroup)
+    { _mdsgrsDBSubnetGroup  :: !(Maybe DBSubnetGroup)
     , _mdsgrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

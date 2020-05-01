@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -83,9 +83,9 @@ import Network.AWS.WAF.Types.Product
 -- | /See:/ 'updateIPSet' smart constructor.
 data UpdateIPSet =
   UpdateIPSet'
-    { _uisIPSetId :: !Text
+    { _uisIPSetId     :: !Text
     , _uisChangeToken :: !Text
-    , _uisUpdates :: !(List1 IPSetUpdate)
+    , _uisUpdates     :: !(List1 IPSetUpdate)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -160,7 +160,7 @@ instance ToQuery UpdateIPSet where
 -- | /See:/ 'updateIPSetResponse' smart constructor.
 data UpdateIPSetResponse =
   UpdateIPSetResponse'
-    { _uisrsChangeToken :: !(Maybe Text)
+    { _uisrsChangeToken    :: !(Maybe Text)
     , _uisrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,10 +51,10 @@ import Network.AWS.Response
 data GetDimensionValues =
   GetDimensionValues'
     { _gdvNextPageToken :: !(Maybe Text)
-    , _gdvContext :: !(Maybe Context)
-    , _gdvSearchString :: !(Maybe Text)
-    , _gdvTimePeriod :: !DateInterval
-    , _gdvDimension :: !Dimension
+    , _gdvContext       :: !(Maybe Context)
+    , _gdvSearchString  :: !(Maybe Text)
+    , _gdvTimePeriod    :: !DateInterval
+    , _gdvDimension     :: !Dimension
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -149,11 +149,11 @@ instance ToQuery GetDimensionValues where
 -- | /See:/ 'getDimensionValuesResponse' smart constructor.
 data GetDimensionValuesResponse =
   GetDimensionValuesResponse'
-    { _gdvrsNextPageToken :: !(Maybe Text)
-    , _gdvrsResponseStatus :: !Int
+    { _gdvrsNextPageToken   :: !(Maybe Text)
+    , _gdvrsResponseStatus  :: !Int
     , _gdvrsDimensionValues :: ![DimensionValuesWithAttributes]
-    , _gdvrsReturnSize :: !Int
-    , _gdvrsTotalSize :: !Int
+    , _gdvrsReturnSize      :: !Int
+    , _gdvrsTotalSize       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

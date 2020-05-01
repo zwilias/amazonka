@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 data GetGroupVersion =
   GetGroupVersion'
     { _ggvGroupVersionId :: !Text
-    , _ggvGroupId :: !Text
+    , _ggvGroupId        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -110,12 +110,12 @@ instance ToQuery GetGroupVersion where
 -- | /See:/ 'getGroupVersionResponse' smart constructor.
 data GetGroupVersionResponse =
   GetGroupVersionResponse'
-    { _ggvrsDefinition :: !(Maybe GroupVersion)
-    , _ggvrsARN :: !(Maybe Text)
+    { _ggvrsDefinition        :: !(Maybe GroupVersion)
+    , _ggvrsARN               :: !(Maybe Text)
     , _ggvrsCreationTimestamp :: !(Maybe Text)
-    , _ggvrsVersion :: !(Maybe Text)
-    , _ggvrsId :: !(Maybe Text)
-    , _ggvrsResponseStatus :: !Int
+    , _ggvrsVersion           :: !(Maybe Text)
+    , _ggvrsId                :: !(Maybe Text)
+    , _ggvrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

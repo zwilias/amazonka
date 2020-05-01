@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -102,10 +102,10 @@ import Network.AWS.Response
 -- /See:/ 'updateFleetCapacity' smart constructor.
 data UpdateFleetCapacity =
   UpdateFleetCapacity'
-    { _ufcMaxSize :: !(Maybe Nat)
-    , _ufcMinSize :: !(Maybe Nat)
+    { _ufcMaxSize          :: !(Maybe Nat)
+    , _ufcMinSize          :: !(Maybe Nat)
     , _ufcDesiredInstances :: !(Maybe Nat)
-    , _ufcFleetId :: !Text
+    , _ufcFleetId          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -193,7 +193,7 @@ instance ToQuery UpdateFleetCapacity where
 -- /See:/ 'updateFleetCapacityResponse' smart constructor.
 data UpdateFleetCapacityResponse =
   UpdateFleetCapacityResponse'
-    { _ufcrsFleetId :: !(Maybe Text)
+    { _ufcrsFleetId        :: !(Maybe Text)
     , _ufcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

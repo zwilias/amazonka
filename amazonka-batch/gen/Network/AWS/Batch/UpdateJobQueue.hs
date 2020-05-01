@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,10 +47,10 @@ import Network.AWS.Response
 -- | /See:/ 'updateJobQueue' smart constructor.
 data UpdateJobQueue =
   UpdateJobQueue'
-    { _ujqState :: !(Maybe JQState)
-    , _ujqPriority :: !(Maybe Int)
+    { _ujqState                   :: !(Maybe JQState)
+    , _ujqPriority                :: !(Maybe Int)
     , _ujqComputeEnvironmentOrder :: !(Maybe [ComputeEnvironmentOrder])
-    , _ujqJobQueue :: !Text
+    , _ujqJobQueue                :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -132,8 +132,8 @@ instance ToQuery UpdateJobQueue where
 -- | /See:/ 'updateJobQueueResponse' smart constructor.
 data UpdateJobQueueResponse =
   UpdateJobQueueResponse'
-    { _ujqrsJobQueueARN :: !(Maybe Text)
-    , _ujqrsJobQueueName :: !(Maybe Text)
+    { _ujqrsJobQueueARN    :: !(Maybe Text)
+    , _ujqrsJobQueueName   :: !(Maybe Text)
     , _ujqrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

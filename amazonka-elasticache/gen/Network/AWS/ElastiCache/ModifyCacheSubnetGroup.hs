@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,9 +49,9 @@ import Network.AWS.Response
 -- /See:/ 'modifyCacheSubnetGroup' smart constructor.
 data ModifyCacheSubnetGroup =
   ModifyCacheSubnetGroup'
-    { _mcsgSubnetIds :: !(Maybe [Text])
+    { _mcsgSubnetIds                   :: !(Maybe [Text])
     , _mcsgCacheSubnetGroupDescription :: !(Maybe Text)
-    , _mcsgCacheSubnetGroupName :: !Text
+    , _mcsgCacheSubnetGroupName        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -126,7 +126,7 @@ instance ToQuery ModifyCacheSubnetGroup where
 data ModifyCacheSubnetGroupResponse =
   ModifyCacheSubnetGroupResponse'
     { _mcsgrsCacheSubnetGroup :: !(Maybe CacheSubnetGroup)
-    , _mcsgrsResponseStatus :: !Int
+    , _mcsgrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

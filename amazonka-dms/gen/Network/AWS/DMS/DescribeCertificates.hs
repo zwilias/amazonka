@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- | /See:/ 'describeCertificates' smart constructor.
 data DescribeCertificates =
   DescribeCertificates'
-    { _dFilters :: !(Maybe [Filter])
-    , _dMarker :: !(Maybe Text)
+    { _dFilters    :: !(Maybe [Filter])
+    , _dMarker     :: !(Maybe Text)
     , _dMaxRecords :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -128,8 +128,8 @@ instance ToQuery DescribeCertificates where
 -- | /See:/ 'describeCertificatesResponse' smart constructor.
 data DescribeCertificatesResponse =
   DescribeCertificatesResponse'
-    { _dcrsCertificates :: !(Maybe [Certificate])
-    , _dcrsMarker :: !(Maybe Text)
+    { _dcrsCertificates   :: !(Maybe [Certificate])
+    , _dcrsMarker         :: !(Maybe Text)
     , _dcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

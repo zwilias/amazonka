@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,9 +47,9 @@ import Network.AWS.Response
 data CopyImage =
   CopyImage'
     { _ciDestinationImageDescription :: !(Maybe Text)
-    , _ciSourceImageName :: !Text
-    , _ciDestinationImageName :: !Text
-    , _ciDestinationRegion :: !Text
+    , _ciSourceImageName             :: !Text
+    , _ciDestinationImageName        :: !Text
+    , _ciDestinationRegion           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -139,7 +139,7 @@ instance ToQuery CopyImage where
 data CopyImageResponse =
   CopyImageResponse'
     { _cirsDestinationImageName :: !(Maybe Text)
-    , _cirsResponseStatus :: !Int
+    , _cirsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

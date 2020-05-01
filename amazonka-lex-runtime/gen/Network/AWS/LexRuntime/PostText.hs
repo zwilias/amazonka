@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -89,10 +89,10 @@ data PostText =
   PostText'
     { _ptRequestAttributes :: !(Maybe (Sensitive (Map Text Text)))
     , _ptSessionAttributes :: !(Maybe (Sensitive (Map Text Text)))
-    , _ptBotName :: !Text
-    , _ptBotAlias :: !Text
-    , _ptUserId :: !Text
-    , _ptInputText :: !(Sensitive Text)
+    , _ptBotName           :: !Text
+    , _ptBotAlias          :: !Text
+    , _ptUserId            :: !Text
+    , _ptInputText         :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -207,15 +207,15 @@ instance ToQuery PostText where
 -- | /See:/ 'postTextResponse' smart constructor.
 data PostTextResponse =
   PostTextResponse'
-    { _ptrsSlots :: !(Maybe (Sensitive (Map Text Text)))
-    , _ptrsResponseCard :: !(Maybe ResponseCard)
-    , _ptrsIntentName :: !(Maybe Text)
-    , _ptrsDialogState :: !(Maybe DialogState)
-    , _ptrsMessageFormat :: !(Maybe MessageFormatType)
-    , _ptrsMessage :: !(Maybe (Sensitive Text))
-    , _ptrsSlotToElicit :: !(Maybe Text)
+    { _ptrsSlots             :: !(Maybe (Sensitive (Map Text Text)))
+    , _ptrsResponseCard      :: !(Maybe ResponseCard)
+    , _ptrsIntentName        :: !(Maybe Text)
+    , _ptrsDialogState       :: !(Maybe DialogState)
+    , _ptrsMessageFormat     :: !(Maybe MessageFormatType)
+    , _ptrsMessage           :: !(Maybe (Sensitive Text))
+    , _ptrsSlotToElicit      :: !(Maybe Text)
     , _ptrsSessionAttributes :: !(Maybe (Sensitive (Map Text Text)))
-    , _ptrsResponseStatus :: !Int
+    , _ptrsResponseStatus    :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

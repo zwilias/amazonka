@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,23 +63,23 @@ import Network.AWS.Response
 -- /See:/ 'createStack' smart constructor.
 data CreateStack =
   CreateStack'
-    { _csDisableRollback :: !(Maybe Bool)
-    , _csNotificationARNs :: !(Maybe [Text])
+    { _csDisableRollback             :: !(Maybe Bool)
+    , _csNotificationARNs            :: !(Maybe [Text])
     , _csEnableTerminationProtection :: !(Maybe Bool)
-    , _csStackPolicyBody :: !(Maybe Text)
-    , _csParameters :: !(Maybe [Parameter])
-    , _csStackPolicyURL :: !(Maybe Text)
-    , _csTemplateBody :: !(Maybe Text)
-    , _csTemplateURL :: !(Maybe Text)
-    , _csClientRequestToken :: !(Maybe Text)
-    , _csCapabilities :: !(Maybe [Capability])
-    , _csRollbackConfiguration :: !(Maybe RollbackConfiguration)
-    , _csOnFailure :: !(Maybe OnFailure)
-    , _csResourceTypes :: !(Maybe [Text])
-    , _csTags :: !(Maybe [Tag])
-    , _csTimeoutInMinutes :: !(Maybe Nat)
-    , _csRoleARN :: !(Maybe Text)
-    , _csStackName :: !Text
+    , _csStackPolicyBody             :: !(Maybe Text)
+    , _csParameters                  :: !(Maybe [Parameter])
+    , _csStackPolicyURL              :: !(Maybe Text)
+    , _csTemplateBody                :: !(Maybe Text)
+    , _csTemplateURL                 :: !(Maybe Text)
+    , _csClientRequestToken          :: !(Maybe Text)
+    , _csCapabilities                :: !(Maybe [Capability])
+    , _csRollbackConfiguration       :: !(Maybe RollbackConfiguration)
+    , _csOnFailure                   :: !(Maybe OnFailure)
+    , _csResourceTypes               :: !(Maybe [Text])
+    , _csTags                        :: !(Maybe [Tag])
+    , _csTimeoutInMinutes            :: !(Maybe Nat)
+    , _csRoleARN                     :: !(Maybe Text)
+    , _csStackName                   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -274,7 +274,7 @@ instance ToQuery CreateStack where
 -- /See:/ 'createStackResponse' smart constructor.
 data CreateStackResponse =
   CreateStackResponse'
-    { _csrsStackId :: !(Maybe Text)
+    { _csrsStackId        :: !(Maybe Text)
     , _csrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

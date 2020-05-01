@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -109,18 +109,18 @@ instance ToQuery DescribeChannel where
 -- /See:/ 'describeChannelResponse' smart constructor.
 data DescribeChannelResponse =
   DescribeChannelResponse'
-    { _dcrsState :: !(Maybe ChannelState)
-    , _dcrsARN :: !(Maybe Text)
+    { _dcrsState                 :: !(Maybe ChannelState)
+    , _dcrsARN                   :: !(Maybe Text)
     , _dcrsPipelinesRunningCount :: !(Maybe Int)
-    , _dcrsInputSpecification :: !(Maybe InputSpecification)
-    , _dcrsInputAttachments :: !(Maybe [InputAttachment])
-    , _dcrsDestinations :: !(Maybe [OutputDestination])
-    , _dcrsName :: !(Maybe Text)
-    , _dcrsId :: !(Maybe Text)
-    , _dcrsEgressEndpoints :: !(Maybe [ChannelEgressEndpoint])
-    , _dcrsEncoderSettings :: !(Maybe EncoderSettings)
-    , _dcrsRoleARN :: !(Maybe Text)
-    , _dcrsResponseStatus :: !Int
+    , _dcrsInputSpecification    :: !(Maybe InputSpecification)
+    , _dcrsInputAttachments      :: !(Maybe [InputAttachment])
+    , _dcrsDestinations          :: !(Maybe [OutputDestination])
+    , _dcrsName                  :: !(Maybe Text)
+    , _dcrsId                    :: !(Maybe Text)
+    , _dcrsEgressEndpoints       :: !(Maybe [ChannelEgressEndpoint])
+    , _dcrsEncoderSettings       :: !(Maybe EncoderSettings)
+    , _dcrsRoleARN               :: !(Maybe Text)
+    , _dcrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

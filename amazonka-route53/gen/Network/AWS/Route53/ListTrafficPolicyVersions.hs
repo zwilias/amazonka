@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,9 +54,9 @@ import Network.AWS.Route53.Types.Product
 -- /See:/ 'listTrafficPolicyVersions' smart constructor.
 data ListTrafficPolicyVersions =
   ListTrafficPolicyVersions'
-    { _ltpvMaxItems :: !(Maybe Text)
+    { _ltpvMaxItems                   :: !(Maybe Text)
     , _ltpvTrafficPolicyVersionMarker :: !(Maybe Text)
-    , _ltpvId :: !Text
+    , _ltpvId                         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -131,11 +131,11 @@ instance ToQuery ListTrafficPolicyVersions where
 -- /See:/ 'listTrafficPolicyVersionsResponse' smart constructor.
 data ListTrafficPolicyVersionsResponse =
   ListTrafficPolicyVersionsResponse'
-    { _ltpvrsResponseStatus :: !Int
-    , _ltpvrsTrafficPolicies :: ![TrafficPolicy]
-    , _ltpvrsIsTruncated :: !Bool
+    { _ltpvrsResponseStatus             :: !Int
+    , _ltpvrsTrafficPolicies            :: ![TrafficPolicy]
+    , _ltpvrsIsTruncated                :: !Bool
     , _ltpvrsTrafficPolicyVersionMarker :: !Text
-    , _ltpvrsMaxItems :: !Text
+    , _ltpvrsMaxItems                   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,7 +56,7 @@ import Network.AWS.Response
 data BatchMeterUsage =
   BatchMeterUsage'
     { _bmuUsageRecords :: ![UsageRecord]
-    , _bmuProductCode :: !Text
+    , _bmuProductCode  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -126,9 +126,9 @@ instance ToQuery BatchMeterUsage where
 -- /See:/ 'batchMeterUsageResponse' smart constructor.
 data BatchMeterUsageResponse =
   BatchMeterUsageResponse'
-    { _bmursResults :: !(Maybe [UsageRecordResult])
+    { _bmursResults            :: !(Maybe [UsageRecordResult])
     , _bmursUnprocessedRecords :: !(Maybe [UsageRecord])
-    , _bmursResponseStatus :: !Int
+    , _bmursResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

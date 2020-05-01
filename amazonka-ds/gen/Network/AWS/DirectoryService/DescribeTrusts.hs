@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,9 +54,9 @@ import Network.AWS.Response
 data DescribeTrusts =
   DescribeTrusts'
     { _dtDirectoryId :: !(Maybe Text)
-    , _dtNextToken :: !(Maybe Text)
-    , _dtTrustIds :: !(Maybe [Text])
-    , _dtLimit :: !(Maybe Nat)
+    , _dtNextToken   :: !(Maybe Text)
+    , _dtTrustIds    :: !(Maybe [Text])
+    , _dtLimit       :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -142,8 +142,8 @@ instance ToQuery DescribeTrusts where
 -- /See:/ 'describeTrustsResponse' smart constructor.
 data DescribeTrustsResponse =
   DescribeTrustsResponse'
-    { _dtrsNextToken :: !(Maybe Text)
-    , _dtrsTrusts :: !(Maybe [Trust])
+    { _dtrsNextToken      :: !(Maybe Text)
+    , _dtrsTrusts         :: !(Maybe [Trust])
     , _dtrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

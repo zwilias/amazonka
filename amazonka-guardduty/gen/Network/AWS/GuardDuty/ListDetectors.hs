@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'listDetectors' smart constructor.
 data ListDetectors =
   ListDetectors'
-    { _ldNextToken :: !(Maybe Text)
+    { _ldNextToken  :: !(Maybe Text)
     , _ldMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -104,8 +104,8 @@ instance ToQuery ListDetectors where
 -- | /See:/ 'listDetectorsResponse' smart constructor.
 data ListDetectorsResponse =
   ListDetectorsResponse'
-    { _ldrsNextToken :: !(Maybe Text)
-    , _ldrsDetectorIds :: !(Maybe [Text])
+    { _ldrsNextToken      :: !(Maybe Text)
+    , _ldrsDetectorIds    :: !(Maybe [Text])
     , _ldrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

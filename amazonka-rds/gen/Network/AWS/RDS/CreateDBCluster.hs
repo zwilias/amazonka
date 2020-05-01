@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -73,29 +73,29 @@ import Network.AWS.Response
 -- /See:/ 'createDBCluster' smart constructor.
 data CreateDBCluster =
   CreateDBCluster'
-    { _cdcEngineVersion :: !(Maybe Text)
-    , _cdcStorageEncrypted :: !(Maybe Bool)
-    , _cdcMasterUserPassword :: !(Maybe Text)
-    , _cdcReplicationSourceIdentifier :: !(Maybe Text)
-    , _cdcMasterUsername :: !(Maybe Text)
-    , _cdcDBSubnetGroupName :: !(Maybe Text)
-    , _cdcBacktrackWindow :: !(Maybe Integer)
-    , _cdcPreSignedURL :: !(Maybe Text)
-    , _cdcPreferredMaintenanceWindow :: !(Maybe Text)
-    , _cdcAvailabilityZones :: !(Maybe [Text])
-    , _cdcCharacterSetName :: !(Maybe Text)
-    , _cdcKMSKeyId :: !(Maybe Text)
-    , _cdcPreferredBackupWindow :: !(Maybe Text)
-    , _cdcBackupRetentionPeriod :: !(Maybe Int)
-    , _cdcVPCSecurityGroupIds :: !(Maybe [Text])
-    , _cdcDatabaseName :: !(Maybe Text)
-    , _cdcDBClusterParameterGroupName :: !(Maybe Text)
-    , _cdcOptionGroupName :: !(Maybe Text)
-    , _cdcTags :: !(Maybe [Tag])
-    , _cdcPort :: !(Maybe Int)
+    { _cdcEngineVersion                   :: !(Maybe Text)
+    , _cdcStorageEncrypted                :: !(Maybe Bool)
+    , _cdcMasterUserPassword              :: !(Maybe Text)
+    , _cdcReplicationSourceIdentifier     :: !(Maybe Text)
+    , _cdcMasterUsername                  :: !(Maybe Text)
+    , _cdcDBSubnetGroupName               :: !(Maybe Text)
+    , _cdcBacktrackWindow                 :: !(Maybe Integer)
+    , _cdcPreSignedURL                    :: !(Maybe Text)
+    , _cdcPreferredMaintenanceWindow      :: !(Maybe Text)
+    , _cdcAvailabilityZones               :: !(Maybe [Text])
+    , _cdcCharacterSetName                :: !(Maybe Text)
+    , _cdcKMSKeyId                        :: !(Maybe Text)
+    , _cdcPreferredBackupWindow           :: !(Maybe Text)
+    , _cdcBackupRetentionPeriod           :: !(Maybe Int)
+    , _cdcVPCSecurityGroupIds             :: !(Maybe [Text])
+    , _cdcDatabaseName                    :: !(Maybe Text)
+    , _cdcDBClusterParameterGroupName     :: !(Maybe Text)
+    , _cdcOptionGroupName                 :: !(Maybe Text)
+    , _cdcTags                            :: !(Maybe [Tag])
+    , _cdcPort                            :: !(Maybe Int)
     , _cdcEnableIAMDatabaseAuthentication :: !(Maybe Bool)
-    , _cdcDBClusterIdentifier :: !Text
-    , _cdcEngine :: !Text
+    , _cdcDBClusterIdentifier             :: !Text
+    , _cdcEngine                          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -351,7 +351,7 @@ instance ToQuery CreateDBCluster where
 -- | /See:/ 'createDBClusterResponse' smart constructor.
 data CreateDBClusterResponse =
   CreateDBClusterResponse'
-    { _cdcrsDBCluster :: !(Maybe DBCluster)
+    { _cdcrsDBCluster      :: !(Maybe DBCluster)
     , _cdcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,10 +47,10 @@ import Network.AWS.Response
 -- | /See:/ 'createRole' smart constructor.
 data CreateRole =
   CreateRole'
-    { _crMaxSessionDuration :: !(Maybe Nat)
-    , _crPath :: !(Maybe Text)
-    , _crDescription :: !(Maybe Text)
-    , _crRoleName :: !Text
+    { _crMaxSessionDuration       :: !(Maybe Nat)
+    , _crPath                     :: !(Maybe Text)
+    , _crDescription              :: !(Maybe Text)
+    , _crRoleName                 :: !Text
     , _crAssumeRolePolicyDocument :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -142,7 +142,7 @@ instance ToQuery CreateRole where
 data CreateRoleResponse =
   CreateRoleResponse'
     { _crrsResponseStatus :: !Int
-    , _crrsRole :: !Role
+    , _crrsRole           :: !Role
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

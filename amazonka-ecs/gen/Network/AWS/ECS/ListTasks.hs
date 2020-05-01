@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,15 +57,15 @@ import Network.AWS.Response
 -- | /See:/ 'listTasks' smart constructor.
 data ListTasks =
   ListTasks'
-    { _ltDesiredStatus :: !(Maybe DesiredStatus)
-    , _ltCluster :: !(Maybe Text)
-    , _ltFamily :: !(Maybe Text)
-    , _ltNextToken :: !(Maybe Text)
-    , _ltStartedBy :: !(Maybe Text)
-    , _ltServiceName :: !(Maybe Text)
-    , _ltLaunchType :: !(Maybe LaunchType)
+    { _ltDesiredStatus     :: !(Maybe DesiredStatus)
+    , _ltCluster           :: !(Maybe Text)
+    , _ltFamily            :: !(Maybe Text)
+    , _ltNextToken         :: !(Maybe Text)
+    , _ltStartedBy         :: !(Maybe Text)
+    , _ltServiceName       :: !(Maybe Text)
+    , _ltLaunchType        :: !(Maybe LaunchType)
     , _ltContainerInstance :: !(Maybe Text)
-    , _ltMaxResults :: !(Maybe Int)
+    , _ltMaxResults        :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -194,8 +194,8 @@ instance ToQuery ListTasks where
 -- | /See:/ 'listTasksResponse' smart constructor.
 data ListTasksResponse =
   ListTasksResponse'
-    { _ltrsNextToken :: !(Maybe Text)
-    , _ltrsTaskARNs :: !(Maybe [Text])
+    { _ltrsNextToken      :: !(Maybe Text)
+    , _ltrsTaskARNs       :: !(Maybe [Text])
     , _ltrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

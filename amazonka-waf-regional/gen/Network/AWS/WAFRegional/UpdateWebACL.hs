@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -74,10 +74,10 @@ import Network.AWS.WAFRegional.Types.Product
 -- | /See:/ 'updateWebACL' smart constructor.
 data UpdateWebACL =
   UpdateWebACL'
-    { _uwaUpdates :: !(Maybe [WebACLUpdate])
+    { _uwaUpdates       :: !(Maybe [WebACLUpdate])
     , _uwaDefaultAction :: !(Maybe WafAction)
-    , _uwaWebACLId :: !Text
-    , _uwaChangeToken :: !Text
+    , _uwaWebACLId      :: !Text
+    , _uwaChangeToken   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -160,7 +160,7 @@ instance ToQuery UpdateWebACL where
 -- | /See:/ 'updateWebACLResponse' smart constructor.
 data UpdateWebACLResponse =
   UpdateWebACLResponse'
-    { _uwarsChangeToken :: !(Maybe Text)
+    { _uwarsChangeToken    :: !(Maybe Text)
     , _uwarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

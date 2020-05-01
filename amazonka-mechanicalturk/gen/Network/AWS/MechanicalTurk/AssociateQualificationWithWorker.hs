@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,10 +47,10 @@ import Network.AWS.Response
 -- | /See:/ 'associateQualificationWithWorker' smart constructor.
 data AssociateQualificationWithWorker =
   AssociateQualificationWithWorker'
-    { _aqwwIntegerValue :: !(Maybe Int)
-    , _aqwwSendNotification :: !(Maybe Bool)
+    { _aqwwIntegerValue        :: !(Maybe Int)
+    , _aqwwSendNotification    :: !(Maybe Bool)
     , _aqwwQualificationTypeId :: !Text
-    , _aqwwWorkerId :: !Text
+    , _aqwwWorkerId            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

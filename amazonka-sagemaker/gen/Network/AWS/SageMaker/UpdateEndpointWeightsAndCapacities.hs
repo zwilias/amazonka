@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.SageMaker.Types.Product
 -- | /See:/ 'updateEndpointWeightsAndCapacities' smart constructor.
 data UpdateEndpointWeightsAndCapacities =
   UpdateEndpointWeightsAndCapacities'
-    { _uewacEndpointName :: !Text
+    { _uewacEndpointName                :: !Text
     , _uewacDesiredWeightsAndCapacities :: !(List1 DesiredWeightAndCapacity)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -120,7 +120,7 @@ instance ToQuery UpdateEndpointWeightsAndCapacities where
 data UpdateEndpointWeightsAndCapacitiesResponse =
   UpdateEndpointWeightsAndCapacitiesResponse'
     { _uewacrsResponseStatus :: !Int
-    , _uewacrsEndpointARN :: !Text
+    , _uewacrsEndpointARN    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

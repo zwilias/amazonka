@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -30,7 +30,7 @@ import Network.AWS.Prelude
 -- /See:/ 'accountGateResult' smart constructor.
 data AccountGateResult =
   AccountGateResult'
-    { _agrStatus :: !(Maybe AccountGateStatus)
+    { _agrStatus       :: !(Maybe AccountGateStatus)
     , _agrStatusReason :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -70,7 +70,7 @@ instance NFData AccountGateResult
 data AccountLimit =
   AccountLimit'
     { _alValue :: !(Maybe Int)
-    , _alName :: !(Maybe Text)
+    , _alName  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -107,7 +107,7 @@ instance NFData AccountLimit
 data Change =
   Change'
     { _cResourceChange :: !(Maybe ResourceChange)
-    , _cType :: !(Maybe ChangeType)
+    , _cType           :: !(Maybe ChangeType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -143,15 +143,15 @@ instance NFData Change
 -- /See:/ 'changeSetSummary' smart constructor.
 data ChangeSetSummary =
   ChangeSetSummary'
-    { _cCreationTime :: !(Maybe ISO8601)
-    , _cStatus :: !(Maybe ChangeSetStatus)
-    , _cChangeSetName :: !(Maybe Text)
+    { _cCreationTime    :: !(Maybe ISO8601)
+    , _cStatus          :: !(Maybe ChangeSetStatus)
+    , _cChangeSetName   :: !(Maybe Text)
     , _cExecutionStatus :: !(Maybe ExecutionStatus)
-    , _cChangeSetId :: !(Maybe Text)
-    , _cStatusReason :: !(Maybe Text)
-    , _cStackId :: !(Maybe Text)
-    , _cDescription :: !(Maybe Text)
-    , _cStackName :: !(Maybe Text)
+    , _cChangeSetId     :: !(Maybe Text)
+    , _cStatusReason    :: !(Maybe Text)
+    , _cStackId         :: !(Maybe Text)
+    , _cDescription     :: !(Maybe Text)
+    , _cStackName       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -249,9 +249,9 @@ instance NFData ChangeSetSummary
 -- /See:/ 'export'' smart constructor.
 data Export =
   Export'
-    { _eValue :: !(Maybe Text)
+    { _eValue            :: !(Maybe Text)
     , _eExportingStackId :: !(Maybe Text)
-    , _eName :: !(Maybe Text)
+    , _eName             :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -297,8 +297,8 @@ instance NFData Export
 data Output =
   Output'
     { _oOutputValue :: !(Maybe Text)
-    , _oOutputKey :: !(Maybe Text)
-    , _oExportName :: !(Maybe Text)
+    , _oOutputKey   :: !(Maybe Text)
+    , _oExportName  :: !(Maybe Text)
     , _oDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -356,9 +356,9 @@ instance NFData Output
 -- /See:/ 'parameter' smart constructor.
 data Parameter =
   Parameter'
-    { _pParameterValue :: !(Maybe Text)
-    , _pResolvedValue :: !(Maybe Text)
-    , _pParameterKey :: !(Maybe Text)
+    { _pParameterValue   :: !(Maybe Text)
+    , _pResolvedValue    :: !(Maybe Text)
+    , _pParameterKey     :: !(Maybe Text)
     , _pUsePreviousValue :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -458,12 +458,12 @@ instance NFData ParameterConstraints
 -- /See:/ 'parameterDeclaration' smart constructor.
 data ParameterDeclaration =
   ParameterDeclaration'
-    { _pdParameterKey :: !(Maybe Text)
-    , _pdParameterType :: !(Maybe Text)
+    { _pdParameterKey         :: !(Maybe Text)
+    , _pdParameterType        :: !(Maybe Text)
     , _pdParameterConstraints :: !(Maybe ParameterConstraints)
-    , _pdDefaultValue :: !(Maybe Text)
-    , _pdNoEcho :: !(Maybe Bool)
-    , _pdDescription :: !(Maybe Text)
+    , _pdDefaultValue         :: !(Maybe Text)
+    , _pdNoEcho               :: !(Maybe Bool)
+    , _pdDescription          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -538,13 +538,13 @@ instance NFData ParameterDeclaration
 -- /See:/ 'resourceChange' smart constructor.
 data ResourceChange =
   ResourceChange'
-    { _rcLogicalResourceId :: !(Maybe Text)
+    { _rcLogicalResourceId  :: !(Maybe Text)
     , _rcPhysicalResourceId :: !(Maybe Text)
-    , _rcResourceType :: !(Maybe Text)
-    , _rcAction :: !(Maybe ChangeAction)
-    , _rcScope :: !(Maybe [ResourceAttribute])
-    , _rcDetails :: !(Maybe [ResourceChangeDetail])
-    , _rcReplacement :: !(Maybe Replacement)
+    , _rcResourceType       :: !(Maybe Text)
+    , _rcAction             :: !(Maybe ChangeAction)
+    , _rcScope              :: !(Maybe [ResourceAttribute])
+    , _rcDetails            :: !(Maybe [ResourceChangeDetail])
+    , _rcReplacement        :: !(Maybe Replacement)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -629,9 +629,9 @@ instance NFData ResourceChange
 data ResourceChangeDetail =
   ResourceChangeDetail'
     { _rcdCausingEntity :: !(Maybe Text)
-    , _rcdChangeSource :: !(Maybe ChangeSource)
-    , _rcdEvaluation :: !(Maybe EvaluationType)
-    , _rcdTarget :: !(Maybe ResourceTargetDefinition)
+    , _rcdChangeSource  :: !(Maybe ChangeSource)
+    , _rcdEvaluation    :: !(Maybe EvaluationType)
+    , _rcdTarget        :: !(Maybe ResourceTargetDefinition)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -688,9 +688,9 @@ instance NFData ResourceChangeDetail
 -- /See:/ 'resourceTargetDefinition' smart constructor.
 data ResourceTargetDefinition =
   ResourceTargetDefinition'
-    { _rtdAttribute :: !(Maybe ResourceAttribute)
+    { _rtdAttribute          :: !(Maybe ResourceAttribute)
     , _rtdRequiresRecreation :: !(Maybe RequiresRecreation)
-    , _rtdName :: !(Maybe Text)
+    , _rtdName               :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -744,7 +744,7 @@ instance NFData ResourceTargetDefinition
 -- /See:/ 'rollbackConfiguration' smart constructor.
 data RollbackConfiguration =
   RollbackConfiguration'
-    { _rcRollbackTriggers :: !(Maybe [RollbackTrigger])
+    { _rcRollbackTriggers        :: !(Maybe [RollbackTrigger])
     , _rcMonitoringTimeInMinutes :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -798,7 +798,7 @@ instance ToQuery RollbackConfiguration where
 -- /See:/ 'rollbackTrigger' smart constructor.
 data RollbackTrigger =
   RollbackTrigger'
-    { _rtARN :: !Text
+    { _rtARN  :: !Text
     , _rtType :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -842,27 +842,27 @@ instance ToQuery RollbackTrigger where
 -- /See:/ 'stack' smart constructor.
 data Stack =
   Stack'
-    { _sDisableRollback :: !(Maybe Bool)
-    , _sLastUpdatedTime :: !(Maybe ISO8601)
-    , _sRootId :: !(Maybe Text)
-    , _sNotificationARNs :: !(Maybe [Text])
-    , _sStackStatusReason :: !(Maybe Text)
+    { _sDisableRollback             :: !(Maybe Bool)
+    , _sLastUpdatedTime             :: !(Maybe ISO8601)
+    , _sRootId                      :: !(Maybe Text)
+    , _sNotificationARNs            :: !(Maybe [Text])
+    , _sStackStatusReason           :: !(Maybe Text)
     , _sEnableTerminationProtection :: !(Maybe Bool)
-    , _sChangeSetId :: !(Maybe Text)
-    , _sDeletionTime :: !(Maybe ISO8601)
-    , _sOutputs :: !(Maybe [Output])
-    , _sParameters :: !(Maybe [Parameter])
-    , _sStackId :: !(Maybe Text)
-    , _sDescription :: !(Maybe Text)
-    , _sCapabilities :: !(Maybe [Capability])
-    , _sRollbackConfiguration :: !(Maybe RollbackConfiguration)
-    , _sTags :: !(Maybe [Tag])
-    , _sTimeoutInMinutes :: !(Maybe Nat)
-    , _sParentId :: !(Maybe Text)
-    , _sRoleARN :: !(Maybe Text)
-    , _sStackName :: !Text
-    , _sCreationTime :: !ISO8601
-    , _sStackStatus :: !StackStatus
+    , _sChangeSetId                 :: !(Maybe Text)
+    , _sDeletionTime                :: !(Maybe ISO8601)
+    , _sOutputs                     :: !(Maybe [Output])
+    , _sParameters                  :: !(Maybe [Parameter])
+    , _sStackId                     :: !(Maybe Text)
+    , _sDescription                 :: !(Maybe Text)
+    , _sCapabilities                :: !(Maybe [Capability])
+    , _sRollbackConfiguration       :: !(Maybe RollbackConfiguration)
+    , _sTags                        :: !(Maybe [Tag])
+    , _sTimeoutInMinutes            :: !(Maybe Nat)
+    , _sParentId                    :: !(Maybe Text)
+    , _sRoleARN                     :: !(Maybe Text)
+    , _sStackName                   :: !Text
+    , _sCreationTime                :: !ISO8601
+    , _sStackStatus                 :: !StackStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1071,17 +1071,17 @@ instance NFData Stack
 -- /See:/ 'stackEvent' smart constructor.
 data StackEvent =
   StackEvent'
-    { _seLogicalResourceId :: !(Maybe Text)
-    , _sePhysicalResourceId :: !(Maybe Text)
-    , _seResourceType :: !(Maybe Text)
+    { _seLogicalResourceId    :: !(Maybe Text)
+    , _sePhysicalResourceId   :: !(Maybe Text)
+    , _seResourceType         :: !(Maybe Text)
     , _seResourceStatusReason :: !(Maybe Text)
-    , _seResourceProperties :: !(Maybe Text)
-    , _seResourceStatus :: !(Maybe ResourceStatus)
-    , _seClientRequestToken :: !(Maybe Text)
-    , _seStackId :: !Text
-    , _seEventId :: !Text
-    , _seStackName :: !Text
-    , _seTimestamp :: !ISO8601
+    , _seResourceProperties   :: !(Maybe Text)
+    , _seResourceStatus       :: !(Maybe ResourceStatus)
+    , _seClientRequestToken   :: !(Maybe Text)
+    , _seStackId              :: !Text
+    , _seEventId              :: !Text
+    , _seStackName            :: !Text
+    , _seTimestamp            :: !ISO8601
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1204,13 +1204,13 @@ instance NFData StackEvent
 -- /See:/ 'stackInstance' smart constructor.
 data StackInstance =
   StackInstance'
-    { _siStatus :: !(Maybe StackInstanceStatus)
-    , _siAccount :: !(Maybe Text)
-    , _siRegion :: !(Maybe Text)
-    , _siStatusReason :: !(Maybe Text)
-    , _siStackId :: !(Maybe Text)
+    { _siStatus             :: !(Maybe StackInstanceStatus)
+    , _siAccount            :: !(Maybe Text)
+    , _siRegion             :: !(Maybe Text)
+    , _siStatusReason       :: !(Maybe Text)
+    , _siStackId            :: !(Maybe Text)
     , _siParameterOverrides :: !(Maybe [Parameter])
-    , _siStackSetId :: !(Maybe Text)
+    , _siStackSetId         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1293,12 +1293,12 @@ instance NFData StackInstance
 -- /See:/ 'stackInstanceSummary' smart constructor.
 data StackInstanceSummary =
   StackInstanceSummary'
-    { _sisStatus :: !(Maybe StackInstanceStatus)
-    , _sisAccount :: !(Maybe Text)
-    , _sisRegion :: !(Maybe Text)
+    { _sisStatus       :: !(Maybe StackInstanceStatus)
+    , _sisAccount      :: !(Maybe Text)
+    , _sisRegion       :: !(Maybe Text)
     , _sisStatusReason :: !(Maybe Text)
-    , _sisStackId :: !(Maybe Text)
-    , _sisStackSetId :: !(Maybe Text)
+    , _sisStackId      :: !(Maybe Text)
+    , _sisStackSetId   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1371,15 +1371,15 @@ instance NFData StackInstanceSummary
 -- /See:/ 'stackResource' smart constructor.
 data StackResource =
   StackResource'
-    { _srPhysicalResourceId :: !(Maybe Text)
+    { _srPhysicalResourceId   :: !(Maybe Text)
     , _srResourceStatusReason :: !(Maybe Text)
-    , _srStackId :: !(Maybe Text)
-    , _srDescription :: !(Maybe Text)
-    , _srStackName :: !(Maybe Text)
-    , _srLogicalResourceId :: !Text
-    , _srResourceType :: !Text
-    , _srTimestamp :: !ISO8601
-    , _srResourceStatus :: !ResourceStatus
+    , _srStackId              :: !(Maybe Text)
+    , _srDescription          :: !(Maybe Text)
+    , _srStackName            :: !(Maybe Text)
+    , _srLogicalResourceId    :: !Text
+    , _srResourceType         :: !Text
+    , _srTimestamp            :: !ISO8601
+    , _srResourceStatus       :: !ResourceStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1485,16 +1485,16 @@ instance NFData StackResource
 -- /See:/ 'stackResourceDetail' smart constructor.
 data StackResourceDetail =
   StackResourceDetail'
-    { _srdPhysicalResourceId :: !(Maybe Text)
+    { _srdPhysicalResourceId   :: !(Maybe Text)
     , _srdResourceStatusReason :: !(Maybe Text)
-    , _srdMetadata :: !(Maybe Text)
-    , _srdStackId :: !(Maybe Text)
-    , _srdDescription :: !(Maybe Text)
-    , _srdStackName :: !(Maybe Text)
-    , _srdLogicalResourceId :: !Text
-    , _srdResourceType :: !Text
+    , _srdMetadata             :: !(Maybe Text)
+    , _srdStackId              :: !(Maybe Text)
+    , _srdDescription          :: !(Maybe Text)
+    , _srdStackName            :: !(Maybe Text)
+    , _srdLogicalResourceId    :: !Text
+    , _srdResourceType         :: !Text
     , _srdLastUpdatedTimestamp :: !ISO8601
-    , _srdResourceStatus :: !ResourceStatus
+    , _srdResourceStatus       :: !ResourceStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1610,12 +1610,12 @@ instance NFData StackResourceDetail
 -- /See:/ 'stackResourceSummary' smart constructor.
 data StackResourceSummary =
   StackResourceSummary'
-    { _srsPhysicalResourceId :: !(Maybe Text)
+    { _srsPhysicalResourceId   :: !(Maybe Text)
     , _srsResourceStatusReason :: !(Maybe Text)
-    , _srsLogicalResourceId :: !Text
-    , _srsResourceType :: !Text
+    , _srsLogicalResourceId    :: !Text
+    , _srsResourceType         :: !Text
     , _srsLastUpdatedTimestamp :: !ISO8601
-    , _srsResourceStatus :: !ResourceStatus
+    , _srsResourceStatus       :: !ResourceStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1699,16 +1699,16 @@ instance NFData StackResourceSummary
 -- /See:/ 'stackSet' smart constructor.
 data StackSet =
   StackSet'
-    { _ssStatus :: !(Maybe StackSetStatus)
+    { _ssStatus                :: !(Maybe StackSetStatus)
     , _ssAdministrationRoleARN :: !(Maybe Text)
-    , _ssStackSetARN :: !(Maybe Text)
-    , _ssParameters :: !(Maybe [Parameter])
-    , _ssTemplateBody :: !(Maybe Text)
-    , _ssStackSetName :: !(Maybe Text)
-    , _ssDescription :: !(Maybe Text)
-    , _ssCapabilities :: !(Maybe [Capability])
-    , _ssTags :: !(Maybe [Tag])
-    , _ssStackSetId :: !(Maybe Text)
+    , _ssStackSetARN           :: !(Maybe Text)
+    , _ssParameters            :: !(Maybe [Parameter])
+    , _ssTemplateBody          :: !(Maybe Text)
+    , _ssStackSetName          :: !(Maybe Text)
+    , _ssDescription           :: !(Maybe Text)
+    , _ssCapabilities          :: !(Maybe [Capability])
+    , _ssTags                  :: !(Maybe [Tag])
+    , _ssStackSetId            :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1816,15 +1816,15 @@ instance NFData StackSet
 -- /See:/ 'stackSetOperation' smart constructor.
 data StackSetOperation =
   StackSetOperation'
-    { _ssoStatus :: !(Maybe StackSetOperationStatus)
+    { _ssoStatus                :: !(Maybe StackSetOperationStatus)
     , _ssoAdministrationRoleARN :: !(Maybe Text)
-    , _ssoAction :: !(Maybe StackSetOperationAction)
-    , _ssoEndTimestamp :: !(Maybe ISO8601)
-    , _ssoCreationTimestamp :: !(Maybe ISO8601)
-    , _ssoOperationPreferences :: !(Maybe StackSetOperationPreferences)
-    , _ssoOperationId :: !(Maybe Text)
-    , _ssoRetainStacks :: !(Maybe Bool)
-    , _ssoStackSetId :: !(Maybe Text)
+    , _ssoAction                :: !(Maybe StackSetOperationAction)
+    , _ssoEndTimestamp          :: !(Maybe ISO8601)
+    , _ssoCreationTimestamp     :: !(Maybe ISO8601)
+    , _ssoOperationPreferences  :: !(Maybe StackSetOperationPreferences)
+    , _ssoOperationId           :: !(Maybe Text)
+    , _ssoRetainStacks          :: !(Maybe Bool)
+    , _ssoStackSetId            :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1929,10 +1929,10 @@ instance NFData StackSetOperation
 -- /See:/ 'stackSetOperationPreferences' smart constructor.
 data StackSetOperationPreferences =
   StackSetOperationPreferences'
-    { _ssopRegionOrder :: !(Maybe [Text])
-    , _ssopMaxConcurrentCount :: !(Maybe Nat)
-    , _ssopMaxConcurrentPercentage :: !(Maybe Nat)
-    , _ssopFailureToleranceCount :: !(Maybe Nat)
+    { _ssopRegionOrder                :: !(Maybe [Text])
+    , _ssopMaxConcurrentCount         :: !(Maybe Nat)
+    , _ssopMaxConcurrentPercentage    :: !(Maybe Nat)
+    , _ssopFailureToleranceCount      :: !(Maybe Nat)
     , _ssopFailureTolerancePercentage :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2025,11 +2025,11 @@ instance ToQuery StackSetOperationPreferences where
 -- /See:/ 'stackSetOperationResultSummary' smart constructor.
 data StackSetOperationResultSummary =
   StackSetOperationResultSummary'
-    { _ssorsStatus :: !(Maybe StackSetOperationResultStatus)
-    , _ssorsAccount :: !(Maybe Text)
+    { _ssorsStatus            :: !(Maybe StackSetOperationResultStatus)
+    , _ssorsAccount           :: !(Maybe Text)
     , _ssorsAccountGateResult :: !(Maybe AccountGateResult)
-    , _ssorsRegion :: !(Maybe Text)
-    , _ssorsStatusReason :: !(Maybe Text)
+    , _ssorsRegion            :: !(Maybe Text)
+    , _ssorsStatusReason      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2097,11 +2097,11 @@ instance NFData StackSetOperationResultSummary
 -- /See:/ 'stackSetOperationSummary' smart constructor.
 data StackSetOperationSummary =
   StackSetOperationSummary'
-    { _ssosStatus :: !(Maybe StackSetOperationStatus)
-    , _ssosAction :: !(Maybe StackSetOperationAction)
-    , _ssosEndTimestamp :: !(Maybe ISO8601)
+    { _ssosStatus            :: !(Maybe StackSetOperationStatus)
+    , _ssosAction            :: !(Maybe StackSetOperationAction)
+    , _ssosEndTimestamp      :: !(Maybe ISO8601)
     , _ssosCreationTimestamp :: !(Maybe ISO8601)
-    , _ssosOperationId :: !(Maybe Text)
+    , _ssosOperationId       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2169,10 +2169,10 @@ instance NFData StackSetOperationSummary
 -- /See:/ 'stackSetSummary' smart constructor.
 data StackSetSummary =
   StackSetSummary'
-    { _sssStatus :: !(Maybe StackSetStatus)
+    { _sssStatus       :: !(Maybe StackSetStatus)
     , _sssStackSetName :: !(Maybe Text)
-    , _sssDescription :: !(Maybe Text)
-    , _sssStackSetId :: !(Maybe Text)
+    , _sssDescription  :: !(Maybe Text)
+    , _sssStackSetId   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2229,16 +2229,16 @@ instance NFData StackSetSummary
 -- /See:/ 'stackSummary' smart constructor.
 data StackSummary =
   StackSummary'
-    { _ssLastUpdatedTime :: !(Maybe ISO8601)
-    , _ssRootId :: !(Maybe Text)
-    , _ssStackStatusReason :: !(Maybe Text)
+    { _ssLastUpdatedTime     :: !(Maybe ISO8601)
+    , _ssRootId              :: !(Maybe Text)
+    , _ssStackStatusReason   :: !(Maybe Text)
     , _ssTemplateDescription :: !(Maybe Text)
-    , _ssDeletionTime :: !(Maybe ISO8601)
-    , _ssStackId :: !(Maybe Text)
-    , _ssParentId :: !(Maybe Text)
-    , _ssStackName :: !Text
-    , _ssCreationTime :: !ISO8601
-    , _ssStackStatus :: !StackStatus
+    , _ssDeletionTime        :: !(Maybe ISO8601)
+    , _ssStackId             :: !(Maybe Text)
+    , _ssParentId            :: !(Maybe Text)
+    , _ssStackName           :: !Text
+    , _ssCreationTime        :: !ISO8601
+    , _ssStackStatus         :: !StackStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2351,7 +2351,7 @@ instance NFData StackSummary
 -- /See:/ 'tag' smart constructor.
 data Tag =
   Tag'
-    { _tagKey :: !Text
+    { _tagKey   :: !Text
     , _tagValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2396,8 +2396,8 @@ data TemplateParameter =
   TemplateParameter'
     { _tpParameterKey :: !(Maybe Text)
     , _tpDefaultValue :: !(Maybe Text)
-    , _tpNoEcho :: !(Maybe Bool)
-    , _tpDescription :: !(Maybe Text)
+    , _tpNoEcho       :: !(Maybe Bool)
+    , _tpDescription  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

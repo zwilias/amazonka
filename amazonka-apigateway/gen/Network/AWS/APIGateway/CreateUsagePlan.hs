@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,11 +56,11 @@ import Network.AWS.Response
 -- /See:/ 'createUsagePlan' smart constructor.
 data CreateUsagePlan =
   CreateUsagePlan'
-    { _cupApiStages :: !(Maybe [APIStage])
-    , _cupThrottle :: !(Maybe ThrottleSettings)
-    , _cupQuota :: !(Maybe QuotaSettings)
+    { _cupApiStages   :: !(Maybe [APIStage])
+    , _cupThrottle    :: !(Maybe ThrottleSettings)
+    , _cupQuota       :: !(Maybe QuotaSettings)
     , _cupDescription :: !(Maybe Text)
-    , _cupName :: !Text
+    , _cupName        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Response
 data ExportCertificate =
   ExportCertificate'
     { _ecCertificateARN :: !Text
-    , _ecPassphrase :: !(Sensitive Base64)
+    , _ecPassphrase     :: !(Sensitive Base64)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -120,10 +120,10 @@ instance ToQuery ExportCertificate where
 -- | /See:/ 'exportCertificateResponse' smart constructor.
 data ExportCertificateResponse =
   ExportCertificateResponse'
-    { _ecrsPrivateKey :: !(Maybe (Sensitive Text))
-    , _ecrsCertificate :: !(Maybe Text)
+    { _ecrsPrivateKey       :: !(Maybe (Sensitive Text))
+    , _ecrsCertificate      :: !(Maybe Text)
     , _ecrsCertificateChain :: !(Maybe Text)
-    , _ecrsResponseStatus :: !Int
+    , _ecrsResponseStatus   :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

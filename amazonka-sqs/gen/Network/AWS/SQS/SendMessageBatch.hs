@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -62,7 +62,7 @@ import Network.AWS.SQS.Types.Product
 data SendMessageBatch =
   SendMessageBatch'
     { _smbQueueURL :: !Text
-    , _smbEntries :: ![SendMessageBatchRequestEntry]
+    , _smbEntries  :: ![SendMessageBatchRequestEntry]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -125,8 +125,8 @@ instance ToQuery SendMessageBatch where
 data SendMessageBatchResponse =
   SendMessageBatchResponse'
     { _smbrsResponseStatus :: !Int
-    , _smbrsSuccessful :: ![SendMessageBatchResultEntry]
-    , _smbrsFailed :: ![BatchResultErrorEntry]
+    , _smbrsSuccessful     :: ![SendMessageBatchResultEntry]
+    , _smbrsFailed         :: ![BatchResultErrorEntry]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'tag' smart constructor.
 data Tag =
   Tag'
-    { _tagARN :: !Text
+    { _tagARN  :: !Text
     , _tagTags :: !(Map Text Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -98,8 +98,8 @@ instance ToQuery Tag where
 -- | /See:/ 'tagResponse' smart constructor.
 data TagResponse =
   TagResponse'
-    { _tagrsARN :: !(Maybe Text)
-    , _tagrsTags :: !(Maybe (Map Text Text))
+    { _tagrsARN            :: !(Maybe Text)
+    , _tagrsTags           :: !(Maybe (Map Text Text))
     , _tagrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

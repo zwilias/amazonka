@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,9 +45,9 @@ import Network.AWS.XRay.Types.Product
 -- | /See:/ 'putTelemetryRecords' smart constructor.
 data PutTelemetryRecords =
   PutTelemetryRecords'
-    { _ptrHostname :: !(Maybe Text)
-    , _ptrEC2InstanceId :: !(Maybe Text)
-    , _ptrResourceARN :: !(Maybe Text)
+    { _ptrHostname         :: !(Maybe Text)
+    , _ptrEC2InstanceId    :: !(Maybe Text)
+    , _ptrResourceARN      :: !(Maybe Text)
     , _ptrTelemetryRecords :: ![TelemetryRecord]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,10 +46,10 @@ import Network.AWS.Response
 -- | /See:/ 'modifyVPCEndpointConnectionNotification' smart constructor.
 data ModifyVPCEndpointConnectionNotification =
   ModifyVPCEndpointConnectionNotification'
-    { _mvecnConnectionEvents :: !(Maybe [Text])
+    { _mvecnConnectionEvents          :: !(Maybe [Text])
     , _mvecnConnectionNotificationARN :: !(Maybe Text)
-    , _mvecnDryRun :: !(Maybe Bool)
-    , _mvecnConnectionNotificationId :: !Text
+    , _mvecnDryRun                    :: !(Maybe Bool)
+    , _mvecnConnectionNotificationId  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -134,7 +134,7 @@ instance ToQuery ModifyVPCEndpointConnectionNotification where
 -- | /See:/ 'modifyVPCEndpointConnectionNotificationResponse' smart constructor.
 data ModifyVPCEndpointConnectionNotificationResponse =
   ModifyVPCEndpointConnectionNotificationResponse'
-    { _mvecnrsReturnValue :: !(Maybe Bool)
+    { _mvecnrsReturnValue    :: !(Maybe Bool)
     , _mvecnrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- | /See:/ 'listTagsOfResource' smart constructor.
 data ListTagsOfResource =
   ListTagsOfResource'
-    { _ltorNextToken :: !(Maybe Text)
+    { _ltorNextToken   :: !(Maybe Text)
     , _ltorResourceARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -114,8 +114,8 @@ instance ToQuery ListTagsOfResource where
 -- | /See:/ 'listTagsOfResourceResponse' smart constructor.
 data ListTagsOfResourceResponse =
   ListTagsOfResourceResponse'
-    { _ltorrsNextToken :: !(Maybe Text)
-    , _ltorrsTags :: !(Maybe [Tag])
+    { _ltorrsNextToken      :: !(Maybe Text)
+    , _ltorrsTags           :: !(Maybe [Tag])
     , _ltorrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

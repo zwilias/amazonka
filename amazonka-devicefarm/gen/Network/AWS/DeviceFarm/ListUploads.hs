@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,7 +53,7 @@ import Network.AWS.Response
 data ListUploads =
   ListUploads'
     { _luNextToken :: !(Maybe Text)
-    , _luArn :: !Text
+    , _luArn       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -123,8 +123,8 @@ instance ToQuery ListUploads where
 -- /See:/ 'listUploadsResponse' smart constructor.
 data ListUploadsResponse =
   ListUploadsResponse'
-    { _lursNextToken :: !(Maybe Text)
-    , _lursUploads :: !(Maybe [Upload])
+    { _lursNextToken      :: !(Maybe Text)
+    , _lursUploads        :: !(Maybe [Upload])
     , _lursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

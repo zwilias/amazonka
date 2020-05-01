@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,12 +53,12 @@ import Network.AWS.Response
 data ConfirmForgotPassword =
   ConfirmForgotPassword'
     { _cfpAnalyticsMetadata :: !(Maybe AnalyticsMetadataType)
-    , _cfpUserContextData :: !(Maybe UserContextDataType)
-    , _cfpSecretHash :: !(Maybe (Sensitive Text))
-    , _cfpClientId :: !(Sensitive Text)
-    , _cfpUsername :: !(Sensitive Text)
-    , _cfpConfirmationCode :: !Text
-    , _cfpPassword :: !(Sensitive Text)
+    , _cfpUserContextData   :: !(Maybe UserContextDataType)
+    , _cfpSecretHash        :: !(Maybe (Sensitive Text))
+    , _cfpClientId          :: !(Sensitive Text)
+    , _cfpUsername          :: !(Sensitive Text)
+    , _cfpConfirmationCode  :: !Text
+    , _cfpPassword          :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

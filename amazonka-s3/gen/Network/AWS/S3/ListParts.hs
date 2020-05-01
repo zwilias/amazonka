@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -62,12 +62,12 @@ import Network.AWS.S3.Types.Product
 -- | /See:/ 'listParts' smart constructor.
 data ListParts =
   ListParts'
-    { _lpMaxParts :: !(Maybe Int)
-    , _lpRequestPayer :: !(Maybe RequestPayer)
+    { _lpMaxParts         :: !(Maybe Int)
+    , _lpRequestPayer     :: !(Maybe RequestPayer)
     , _lpPartNumberMarker :: !(Maybe Int)
-    , _lpBucket :: !BucketName
-    , _lpKey :: !ObjectKey
-    , _lpUploadId :: !Text
+    , _lpBucket           :: !BucketName
+    , _lpKey              :: !ObjectKey
+    , _lpUploadId         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -176,21 +176,21 @@ instance ToQuery ListParts where
 -- | /See:/ 'listPartsResponse' smart constructor.
 data ListPartsResponse =
   ListPartsResponse'
-    { _lprsParts :: !(Maybe [Part])
-    , _lprsRequestCharged :: !(Maybe RequestCharged)
-    , _lprsMaxParts :: !(Maybe Int)
-    , _lprsInitiator :: !(Maybe Initiator)
-    , _lprsBucket :: !(Maybe BucketName)
-    , _lprsAbortDate :: !(Maybe RFC822)
+    { _lprsParts                :: !(Maybe [Part])
+    , _lprsRequestCharged       :: !(Maybe RequestCharged)
+    , _lprsMaxParts             :: !(Maybe Int)
+    , _lprsInitiator            :: !(Maybe Initiator)
+    , _lprsBucket               :: !(Maybe BucketName)
+    , _lprsAbortDate            :: !(Maybe RFC822)
     , _lprsNextPartNumberMarker :: !(Maybe Int)
-    , _lprsAbortRuleId :: !(Maybe Text)
-    , _lprsOwner :: !(Maybe Owner)
-    , _lprsKey :: !(Maybe ObjectKey)
-    , _lprsStorageClass :: !(Maybe StorageClass)
-    , _lprsIsTruncated :: !(Maybe Bool)
-    , _lprsPartNumberMarker :: !(Maybe Int)
-    , _lprsUploadId :: !(Maybe Text)
-    , _lprsResponseStatus :: !Int
+    , _lprsAbortRuleId          :: !(Maybe Text)
+    , _lprsOwner                :: !(Maybe Owner)
+    , _lprsKey                  :: !(Maybe ObjectKey)
+    , _lprsStorageClass         :: !(Maybe StorageClass)
+    , _lprsIsTruncated          :: !(Maybe Bool)
+    , _lprsPartNumberMarker     :: !(Maybe Int)
+    , _lprsUploadId             :: !(Maybe Text)
+    , _lprsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

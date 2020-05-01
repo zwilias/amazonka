@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.Route53Domains.Types.Product
 -- /See:/ 'listDomains' smart constructor.
 data ListDomains =
   ListDomains'
-    { _ldMarker :: !(Maybe Text)
+    { _ldMarker   :: !(Maybe Text)
     , _ldMaxItems :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -124,7 +124,7 @@ data ListDomainsResponse =
   ListDomainsResponse'
     { _ldrsNextPageMarker :: !(Maybe Text)
     , _ldrsResponseStatus :: !Int
-    , _ldrsDomains :: ![DomainSummary]
+    , _ldrsDomains        :: ![DomainSummary]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

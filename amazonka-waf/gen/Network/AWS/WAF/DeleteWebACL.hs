@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,7 +54,7 @@ import Network.AWS.WAF.Types.Product
 -- | /See:/ 'deleteWebACL' smart constructor.
 data DeleteWebACL =
   DeleteWebACL'
-    { _dwaWebACLId :: !Text
+    { _dwaWebACLId    :: !Text
     , _dwaChangeToken :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -118,7 +118,7 @@ instance ToQuery DeleteWebACL where
 -- | /See:/ 'deleteWebACLResponse' smart constructor.
 data DeleteWebACLResponse =
   DeleteWebACLResponse'
-    { _dwarsChangeToken :: !(Maybe Text)
+    { _dwarsChangeToken    :: !(Maybe Text)
     , _dwarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

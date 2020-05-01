@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -61,24 +61,24 @@ import Network.AWS.Response
 -- | /See:/ 'createLaunchConfiguration' smart constructor.
 data CreateLaunchConfiguration =
   CreateLaunchConfiguration'
-    { _clcInstanceId :: !(Maybe Text)
-    , _clcAssociatePublicIPAddress :: !(Maybe Bool)
-    , _clcSecurityGroups :: !(Maybe [Text])
-    , _clcSpotPrice :: !(Maybe Text)
-    , _clcInstanceMonitoring :: !(Maybe InstanceMonitoring)
-    , _clcKeyName :: !(Maybe Text)
+    { _clcInstanceId                   :: !(Maybe Text)
+    , _clcAssociatePublicIPAddress     :: !(Maybe Bool)
+    , _clcSecurityGroups               :: !(Maybe [Text])
+    , _clcSpotPrice                    :: !(Maybe Text)
+    , _clcInstanceMonitoring           :: !(Maybe InstanceMonitoring)
+    , _clcKeyName                      :: !(Maybe Text)
     , _clcClassicLinkVPCSecurityGroups :: !(Maybe [Text])
-    , _clcRAMDiskId :: !(Maybe Text)
-    , _clcKernelId :: !(Maybe Text)
-    , _clcInstanceType :: !(Maybe Text)
-    , _clcEBSOptimized :: !(Maybe Bool)
-    , _clcUserData :: !(Maybe Text)
-    , _clcClassicLinkVPCId :: !(Maybe Text)
-    , _clcIAMInstanceProfile :: !(Maybe Text)
-    , _clcImageId :: !(Maybe Text)
-    , _clcPlacementTenancy :: !(Maybe Text)
-    , _clcBlockDeviceMappings :: !(Maybe [BlockDeviceMapping])
-    , _clcLaunchConfigurationName :: !Text
+    , _clcRAMDiskId                    :: !(Maybe Text)
+    , _clcKernelId                     :: !(Maybe Text)
+    , _clcInstanceType                 :: !(Maybe Text)
+    , _clcEBSOptimized                 :: !(Maybe Bool)
+    , _clcUserData                     :: !(Maybe Text)
+    , _clcClassicLinkVPCId             :: !(Maybe Text)
+    , _clcIAMInstanceProfile           :: !(Maybe Text)
+    , _clcImageId                      :: !(Maybe Text)
+    , _clcPlacementTenancy             :: !(Maybe Text)
+    , _clcBlockDeviceMappings          :: !(Maybe [BlockDeviceMapping])
+    , _clcLaunchConfigurationName      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

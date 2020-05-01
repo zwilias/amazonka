@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 data PutApprovalResult =
   PutApprovalResult'
     { _parPipelineName :: !Text
-    , _parStageName :: !Text
-    , _parActionName :: !Text
-    , _parResult :: !ApprovalResult
-    , _parToken :: !Text
+    , _parStageName    :: !Text
+    , _parActionName   :: !Text
+    , _parResult       :: !ApprovalResult
+    , _parToken        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -154,7 +154,7 @@ instance ToQuery PutApprovalResult where
 -- /See:/ 'putApprovalResultResponse' smart constructor.
 data PutApprovalResultResponse =
   PutApprovalResultResponse'
-    { _parrsApprovedAt :: !(Maybe POSIX)
+    { _parrsApprovedAt     :: !(Maybe POSIX)
     , _parrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,9 +50,9 @@ import Network.AWS.Response
 -- /See:/ 'purchaseReservedElasticsearchInstanceOffering' smart constructor.
 data PurchaseReservedElasticsearchInstanceOffering =
   PurchaseReservedElasticsearchInstanceOffering'
-    { _preioInstanceCount :: !(Maybe Nat)
+    { _preioInstanceCount                           :: !(Maybe Nat)
     , _preioReservedElasticsearchInstanceOfferingId :: !Text
-    , _preioReservationName :: !Text
+    , _preioReservationName                         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -139,8 +139,8 @@ instance ToQuery PurchaseReservedElasticsearchInstanceOffering where
 data PurchaseReservedElasticsearchInstanceOfferingResponse =
   PurchaseReservedElasticsearchInstanceOfferingResponse'
     { _preiorsReservedElasticsearchInstanceId :: !(Maybe Text)
-    , _preiorsReservationName :: !(Maybe Text)
-    , _preiorsResponseStatus :: !Int
+    , _preiorsReservationName                 :: !(Maybe Text)
+    , _preiorsResponseStatus                  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,9 +54,9 @@ import Network.AWS.Response
 -- /See:/ 'listCertificatesByCA' smart constructor.
 data ListCertificatesByCA =
   ListCertificatesByCA'
-    { _lcbcaMarker :: !(Maybe Text)
-    , _lcbcaAscendingOrder :: !(Maybe Bool)
-    , _lcbcaPageSize :: !(Maybe Nat)
+    { _lcbcaMarker          :: !(Maybe Text)
+    , _lcbcaAscendingOrder  :: !(Maybe Bool)
+    , _lcbcaPageSize        :: !(Maybe Nat)
     , _lcbcaCaCertificateId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -144,8 +144,8 @@ instance ToQuery ListCertificatesByCA where
 -- /See:/ 'listCertificatesByCAResponse' smart constructor.
 data ListCertificatesByCAResponse =
   ListCertificatesByCAResponse'
-    { _lcbcarsCertificates :: !(Maybe [Certificate])
-    , _lcbcarsNextMarker :: !(Maybe Text)
+    { _lcbcarsCertificates   :: !(Maybe [Certificate])
+    , _lcbcarsNextMarker     :: !(Maybe Text)
     , _lcbcarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

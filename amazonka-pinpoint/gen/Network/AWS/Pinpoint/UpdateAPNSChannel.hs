@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -42,7 +42,7 @@ import Network.AWS.Response
 -- | /See:/ 'updateAPNSChannel' smart constructor.
 data UpdateAPNSChannel =
   UpdateAPNSChannel'
-    { _uacApplicationId :: !Text
+    { _uacApplicationId      :: !Text
     , _uacAPNSChannelRequest :: !APNSChannelRequest
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -105,7 +105,7 @@ instance ToQuery UpdateAPNSChannel where
 -- | /See:/ 'updateAPNSChannelResponse' smart constructor.
 data UpdateAPNSChannelResponse =
   UpdateAPNSChannelResponse'
-    { _uacrsResponseStatus :: !Int
+    { _uacrsResponseStatus      :: !Int
     , _uacrsAPNSChannelResponse :: !APNSChannelResponse
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

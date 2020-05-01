@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,9 +54,9 @@ import Network.AWS.Response
 -- /See:/ 'batchDeleteImage' smart constructor.
 data BatchDeleteImage =
   BatchDeleteImage'
-    { _bdiRegistryId :: !(Maybe Text)
+    { _bdiRegistryId     :: !(Maybe Text)
     , _bdiRepositoryName :: !Text
-    , _bdiImageIds :: ![ImageIdentifier]
+    , _bdiImageIds       :: ![ImageIdentifier]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -132,8 +132,8 @@ instance ToQuery BatchDeleteImage where
 -- | /See:/ 'batchDeleteImageResponse' smart constructor.
 data BatchDeleteImageResponse =
   BatchDeleteImageResponse'
-    { _bdirsFailures :: !(Maybe [ImageFailure])
-    , _bdirsImageIds :: !(Maybe [ImageIdentifier])
+    { _bdirsFailures       :: !(Maybe [ImageFailure])
+    , _bdirsImageIds       :: !(Maybe [ImageIdentifier])
     , _bdirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

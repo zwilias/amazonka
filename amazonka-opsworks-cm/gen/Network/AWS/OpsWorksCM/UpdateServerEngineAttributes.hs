@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.Response
 data UpdateServerEngineAttributes =
   UpdateServerEngineAttributes'
     { _useaAttributeValue :: !(Maybe Text)
-    , _useaServerName :: !Text
-    , _useaAttributeName :: !Text
+    , _useaServerName     :: !Text
+    , _useaAttributeName  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -128,7 +128,7 @@ instance ToQuery UpdateServerEngineAttributes where
 -- | /See:/ 'updateServerEngineAttributesResponse' smart constructor.
 data UpdateServerEngineAttributesResponse =
   UpdateServerEngineAttributesResponse'
-    { _usearsServer :: !(Maybe Server)
+    { _usearsServer         :: !(Maybe Server)
     , _usearsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

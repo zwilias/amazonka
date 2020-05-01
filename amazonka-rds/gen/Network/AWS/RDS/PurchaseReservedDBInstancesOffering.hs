@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,9 +50,9 @@ import Network.AWS.Response
 -- /See:/ 'purchaseReservedDBInstancesOffering' smart constructor.
 data PurchaseReservedDBInstancesOffering =
   PurchaseReservedDBInstancesOffering'
-    { _prdioDBInstanceCount :: !(Maybe Int)
-    , _prdioReservedDBInstanceId :: !(Maybe Text)
-    , _prdioTags :: !(Maybe [Tag])
+    { _prdioDBInstanceCount               :: !(Maybe Int)
+    , _prdioReservedDBInstanceId          :: !(Maybe Text)
+    , _prdioTags                          :: !(Maybe [Tag])
     , _prdioReservedDBInstancesOfferingId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -138,7 +138,7 @@ instance ToQuery PurchaseReservedDBInstancesOffering where
 data PurchaseReservedDBInstancesOfferingResponse =
   PurchaseReservedDBInstancesOfferingResponse'
     { _prdiorsReservedDBInstance :: !(Maybe ReservedDBInstance)
-    , _prdiorsResponseStatus :: !Int
+    , _prdiorsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

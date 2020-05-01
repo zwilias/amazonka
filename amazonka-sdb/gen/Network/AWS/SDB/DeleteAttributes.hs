@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,9 +48,9 @@ import Network.AWS.SDB.Types.Product
 data DeleteAttributes =
   DeleteAttributes'
     { _daAttributes :: !(Maybe [Attribute])
-    , _daExpected :: !(Maybe UpdateCondition)
+    , _daExpected   :: !(Maybe UpdateCondition)
     , _daDomainName :: !Text
-    , _daItemName :: !Text
+    , _daItemName   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

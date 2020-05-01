@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,11 +51,11 @@ import Network.AWS.Response
 -- /See:/ 'createComputer' smart constructor.
 data CreateComputer =
   CreateComputer'
-    { _ccComputerAttributes :: !(Maybe [Attribute])
+    { _ccComputerAttributes                  :: !(Maybe [Attribute])
     , _ccOrganizationalUnitDistinguishedName :: !(Maybe Text)
-    , _ccDirectoryId :: !Text
-    , _ccComputerName :: !Text
-    , _ccPassword :: !(Sensitive Text)
+    , _ccDirectoryId                         :: !Text
+    , _ccComputerName                        :: !Text
+    , _ccPassword                            :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -157,7 +157,7 @@ instance ToQuery CreateComputer where
 -- /See:/ 'createComputerResponse' smart constructor.
 data CreateComputerResponse =
   CreateComputerResponse'
-    { _ccrsComputer :: !(Maybe Computer)
+    { _ccrsComputer       :: !(Maybe Computer)
     , _ccrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

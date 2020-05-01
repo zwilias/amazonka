@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,9 +57,9 @@ import Network.AWS.Route53.Types.Product
 data ListTrafficPolicyInstancesByHostedZone =
   ListTrafficPolicyInstancesByHostedZone'
     { _ltpibhzTrafficPolicyInstanceTypeMarker :: !(Maybe RecordType)
-    , _ltpibhzMaxItems :: !(Maybe Text)
+    , _ltpibhzMaxItems                        :: !(Maybe Text)
     , _ltpibhzTrafficPolicyInstanceNameMarker :: !(Maybe Text)
-    , _ltpibhzHostedZoneId :: !ResourceId
+    , _ltpibhzHostedZoneId                    :: !ResourceId
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -153,10 +153,10 @@ data ListTrafficPolicyInstancesByHostedZoneResponse =
   ListTrafficPolicyInstancesByHostedZoneResponse'
     { _ltpibhzrsTrafficPolicyInstanceTypeMarker :: !(Maybe RecordType)
     , _ltpibhzrsTrafficPolicyInstanceNameMarker :: !(Maybe Text)
-    , _ltpibhzrsResponseStatus :: !Int
-    , _ltpibhzrsTrafficPolicyInstances :: ![TrafficPolicyInstance]
-    , _ltpibhzrsIsTruncated :: !Bool
-    , _ltpibhzrsMaxItems :: !Text
+    , _ltpibhzrsResponseStatus                  :: !Int
+    , _ltpibhzrsTrafficPolicyInstances          :: ![TrafficPolicyInstance]
+    , _ltpibhzrsIsTruncated                     :: !Bool
+    , _ltpibhzrsMaxItems                        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

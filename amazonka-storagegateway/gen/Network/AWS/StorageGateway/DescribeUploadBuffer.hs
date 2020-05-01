@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -107,10 +107,10 @@ instance ToQuery DescribeUploadBuffer where
 data DescribeUploadBufferResponse =
   DescribeUploadBufferResponse'
     { _dubrsUploadBufferAllocatedInBytes :: !(Maybe Integer)
-    , _dubrsGatewayARN :: !(Maybe Text)
-    , _dubrsDiskIds :: !(Maybe [Text])
-    , _dubrsUploadBufferUsedInBytes :: !(Maybe Integer)
-    , _dubrsResponseStatus :: !Int
+    , _dubrsGatewayARN                   :: !(Maybe Text)
+    , _dubrsDiskIds                      :: !(Maybe [Text])
+    , _dubrsUploadBufferUsedInBytes      :: !(Maybe Integer)
+    , _dubrsResponseStatus               :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

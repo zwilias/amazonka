@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -107,13 +107,13 @@ instance ToQuery GetPolicy where
 data GetPolicyResponse =
   GetPolicyResponse'
     { _gprsLastModifiedDate :: !(Maybe POSIX)
-    , _gprsPolicyName :: !(Maybe Text)
-    , _gprsPolicyDocument :: !(Maybe Text)
+    , _gprsPolicyName       :: !(Maybe Text)
+    , _gprsPolicyDocument   :: !(Maybe Text)
     , _gprsDefaultVersionId :: !(Maybe Text)
-    , _gprsPolicyARN :: !(Maybe Text)
-    , _gprsCreationDate :: !(Maybe POSIX)
-    , _gprsGenerationId :: !(Maybe Text)
-    , _gprsResponseStatus :: !Int
+    , _gprsPolicyARN        :: !(Maybe Text)
+    , _gprsCreationDate     :: !(Maybe POSIX)
+    , _gprsGenerationId     :: !(Maybe Text)
+    , _gprsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

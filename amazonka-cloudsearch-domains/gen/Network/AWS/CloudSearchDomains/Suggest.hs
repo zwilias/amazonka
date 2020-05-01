@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,8 +54,8 @@ import Network.AWS.Response
 -- /See:/ 'suggest' smart constructor.
 data Suggest =
   Suggest'
-    { _sSize :: !(Maybe Integer)
-    , _sQuery :: !Text
+    { _sSize      :: !(Maybe Integer)
+    , _sQuery     :: !Text
     , _sSuggester :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -125,8 +125,8 @@ instance ToQuery Suggest where
 -- /See:/ 'suggestResponse' smart constructor.
 data SuggestResponse =
   SuggestResponse'
-    { _srsSuggest :: !(Maybe SuggestModel)
-    , _srsStatus :: !(Maybe SuggestStatus)
+    { _srsSuggest        :: !(Maybe SuggestModel)
+    , _srsStatus         :: !(Maybe SuggestStatus)
     , _srsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -60,7 +60,7 @@ import Network.AWS.Response
 data GetStatus =
   GetStatus'
     { _gsAPIVersion :: !(Maybe Text)
-    , _gsJobId :: !Text
+    , _gsJobId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -133,23 +133,23 @@ instance ToQuery GetStatus where
 -- /See:/ 'getStatusResponse' smart constructor.
 data GetStatusResponse =
   GetStatusResponse'
-    { _gsrsCarrier :: !(Maybe Text)
-    , _gsrsTrackingNumber :: !(Maybe Text)
-    , _gsrsSignature :: !(Maybe Text)
-    , _gsrsJobType :: !(Maybe JobType)
-    , _gsrsJobId :: !(Maybe Text)
+    { _gsrsCarrier               :: !(Maybe Text)
+    , _gsrsTrackingNumber        :: !(Maybe Text)
+    , _gsrsSignature             :: !(Maybe Text)
+    , _gsrsJobType               :: !(Maybe JobType)
+    , _gsrsJobId                 :: !(Maybe Text)
     , _gsrsSignatureFileContents :: !(Maybe Text)
-    , _gsrsErrorCount :: !(Maybe Int)
-    , _gsrsCurrentManifest :: !(Maybe Text)
-    , _gsrsArtifactList :: !(Maybe [Artifact])
-    , _gsrsLogBucket :: !(Maybe Text)
-    , _gsrsCreationDate :: !(Maybe ISO8601)
-    , _gsrsProgressCode :: !(Maybe Text)
-    , _gsrsLocationCode :: !(Maybe Text)
-    , _gsrsLogKey :: !(Maybe Text)
-    , _gsrsLocationMessage :: !(Maybe Text)
-    , _gsrsProgressMessage :: !(Maybe Text)
-    , _gsrsResponseStatus :: !Int
+    , _gsrsErrorCount            :: !(Maybe Int)
+    , _gsrsCurrentManifest       :: !(Maybe Text)
+    , _gsrsArtifactList          :: !(Maybe [Artifact])
+    , _gsrsLogBucket             :: !(Maybe Text)
+    , _gsrsCreationDate          :: !(Maybe ISO8601)
+    , _gsrsProgressCode          :: !(Maybe Text)
+    , _gsrsLocationCode          :: !(Maybe Text)
+    , _gsrsLogKey                :: !(Maybe Text)
+    , _gsrsLocationMessage       :: !(Maybe Text)
+    , _gsrsProgressMessage       :: !(Maybe Text)
+    , _gsrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

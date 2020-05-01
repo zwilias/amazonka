@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,8 +26,8 @@ import Network.AWS.RDS.Types.Sum
 -- /See:/ 'accountQuota' smart constructor.
 data AccountQuota =
   AccountQuota'
-    { _aqMax :: !(Maybe Integer)
-    , _aqUsed :: !(Maybe Integer)
+    { _aqMax              :: !(Maybe Integer)
+    , _aqUsed             :: !(Maybe Integer)
     , _aqAccountQuotaName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -111,12 +111,12 @@ instance NFData AvailabilityZone
 -- /See:/ 'certificate' smart constructor.
 data Certificate =
   Certificate'
-    { _cCertificateType :: !(Maybe Text)
-    , _cCertificateARN :: !(Maybe Text)
-    , _cValidTill :: !(Maybe ISO8601)
+    { _cCertificateType       :: !(Maybe Text)
+    , _cCertificateARN        :: !(Maybe Text)
+    , _cValidTill             :: !(Maybe ISO8601)
     , _cCertificateIdentifier :: !(Maybe Text)
-    , _cThumbprint :: !(Maybe Text)
-    , _cValidFrom :: !(Maybe ISO8601)
+    , _cThumbprint            :: !(Maybe Text)
+    , _cValidFrom             :: !(Maybe ISO8601)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -190,7 +190,7 @@ instance NFData Certificate
 -- /See:/ 'characterSet' smart constructor.
 data CharacterSet =
   CharacterSet'
-    { _csCharacterSetName :: !(Maybe Text)
+    { _csCharacterSetName        :: !(Maybe Text)
     , _csCharacterSetDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -234,7 +234,7 @@ instance NFData CharacterSet
 data CloudwatchLogsExportConfiguration =
   CloudwatchLogsExportConfiguration'
     { _clecDisableLogTypes :: !(Maybe [Text])
-    , _clecEnableLogTypes :: !(Maybe [Text])
+    , _clecEnableLogTypes  :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -699,11 +699,11 @@ instance NFData DBCluster
 -- /See:/ 'dbClusterBacktrack' smart constructor.
 data DBClusterBacktrack =
   DBClusterBacktrack'
-    { _dcbStatus :: !(Maybe Text)
-    , _dcbBacktrackIdentifier :: !(Maybe Text)
-    , _dcbBacktrackTo :: !(Maybe ISO8601)
-    , _dcbDBClusterIdentifier :: !(Maybe Text)
-    , _dcbBacktrackedFrom :: !(Maybe ISO8601)
+    { _dcbStatus                       :: !(Maybe Text)
+    , _dcbBacktrackIdentifier          :: !(Maybe Text)
+    , _dcbBacktrackTo                  :: !(Maybe ISO8601)
+    , _dcbDBClusterIdentifier          :: !(Maybe Text)
+    , _dcbBacktrackedFrom              :: !(Maybe ISO8601)
     , _dcbBacktrackRequestCreationTime :: !(Maybe ISO8601)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -785,9 +785,9 @@ instance NFData DBClusterBacktrack
 -- /See:/ 'dbClusterMember' smart constructor.
 data DBClusterMember =
   DBClusterMember'
-    { _dcmPromotionTier :: !(Maybe Int)
-    , _dcmDBInstanceIdentifier :: !(Maybe Text)
-    , _dcmIsClusterWriter :: !(Maybe Bool)
+    { _dcmPromotionTier                 :: !(Maybe Int)
+    , _dcmDBInstanceIdentifier          :: !(Maybe Text)
+    , _dcmIsClusterWriter               :: !(Maybe Bool)
     , _dcmDBClusterParameterGroupStatus :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -851,7 +851,7 @@ instance NFData DBClusterMember
 -- /See:/ 'dbClusterOptionGroupStatus' smart constructor.
 data DBClusterOptionGroupStatus =
   DBClusterOptionGroupStatus'
-    { _dcogsStatus :: !(Maybe Text)
+    { _dcogsStatus                   :: !(Maybe Text)
     , _dcogsDBClusterOptionGroupName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -897,10 +897,10 @@ instance NFData DBClusterOptionGroupStatus
 -- /See:/ 'dbClusterParameterGroup' smart constructor.
 data DBClusterParameterGroup =
   DBClusterParameterGroup'
-    { _dcpgDBClusterParameterGroupARN :: !(Maybe Text)
-    , _dcpgDBParameterGroupFamily :: !(Maybe Text)
+    { _dcpgDBClusterParameterGroupARN  :: !(Maybe Text)
+    , _dcpgDBParameterGroupFamily      :: !(Maybe Text)
     , _dcpgDBClusterParameterGroupName :: !(Maybe Text)
-    , _dcpgDescription :: !(Maybe Text)
+    , _dcpgDescription                 :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1003,7 +1003,7 @@ instance NFData DBClusterParameterGroupNameMessage
 -- /See:/ 'dbClusterRole' smart constructor.
 data DBClusterRole =
   DBClusterRole'
-    { _dcrStatus :: !(Maybe Text)
+    { _dcrStatus  :: !(Maybe Text)
     , _dcrRoleARN :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1042,26 +1042,26 @@ instance NFData DBClusterRole
 -- /See:/ 'dbClusterSnapshot' smart constructor.
 data DBClusterSnapshot =
   DBClusterSnapshot'
-    { _dcsEngineVersion :: !(Maybe Text)
-    , _dcsStatus :: !(Maybe Text)
-    , _dcsStorageEncrypted :: !(Maybe Bool)
-    , _dcsDBClusterIdentifier :: !(Maybe Text)
-    , _dcsMasterUsername :: !(Maybe Text)
+    { _dcsEngineVersion                    :: !(Maybe Text)
+    , _dcsStatus                           :: !(Maybe Text)
+    , _dcsStorageEncrypted                 :: !(Maybe Bool)
+    , _dcsDBClusterIdentifier              :: !(Maybe Text)
+    , _dcsMasterUsername                   :: !(Maybe Text)
     , _dcsIAMDatabaseAuthenticationEnabled :: !(Maybe Bool)
-    , _dcsDBClusterSnapshotARN :: !(Maybe Text)
-    , _dcsVPCId :: !(Maybe Text)
-    , _dcsDBClusterSnapshotIdentifier :: !(Maybe Text)
-    , _dcsEngine :: !(Maybe Text)
-    , _dcsLicenseModel :: !(Maybe Text)
-    , _dcsAvailabilityZones :: !(Maybe [Text])
-    , _dcsSnapshotType :: !(Maybe Text)
-    , _dcsKMSKeyId :: !(Maybe Text)
-    , _dcsSnapshotCreateTime :: !(Maybe ISO8601)
-    , _dcsAllocatedStorage :: !(Maybe Int)
-    , _dcsSourceDBClusterSnapshotARN :: !(Maybe Text)
-    , _dcsClusterCreateTime :: !(Maybe ISO8601)
-    , _dcsPercentProgress :: !(Maybe Int)
-    , _dcsPort :: !(Maybe Int)
+    , _dcsDBClusterSnapshotARN             :: !(Maybe Text)
+    , _dcsVPCId                            :: !(Maybe Text)
+    , _dcsDBClusterSnapshotIdentifier      :: !(Maybe Text)
+    , _dcsEngine                           :: !(Maybe Text)
+    , _dcsLicenseModel                     :: !(Maybe Text)
+    , _dcsAvailabilityZones                :: !(Maybe [Text])
+    , _dcsSnapshotType                     :: !(Maybe Text)
+    , _dcsKMSKeyId                         :: !(Maybe Text)
+    , _dcsSnapshotCreateTime               :: !(Maybe ISO8601)
+    , _dcsAllocatedStorage                 :: !(Maybe Int)
+    , _dcsSourceDBClusterSnapshotARN       :: !(Maybe Text)
+    , _dcsClusterCreateTime                :: !(Maybe ISO8601)
+    , _dcsPercentProgress                  :: !(Maybe Int)
+    , _dcsPort                             :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1270,7 +1270,7 @@ instance NFData DBClusterSnapshot
 data DBClusterSnapshotAttribute =
   DBClusterSnapshotAttribute'
     { _dcsaAttributeValues :: !(Maybe [Text])
-    , _dcsaAttributeName :: !(Maybe Text)
+    , _dcsaAttributeName   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1368,18 +1368,18 @@ instance NFData DBClusterSnapshotAttributesResult
 -- /See:/ 'dbEngineVersion' smart constructor.
 data DBEngineVersion =
   DBEngineVersion'
-    { _devEngineVersion :: !(Maybe Text)
-    , _devDBEngineVersionDescription :: !(Maybe Text)
-    , _devDefaultCharacterSet :: !(Maybe CharacterSet)
-    , _devEngine :: !(Maybe Text)
-    , _devDBParameterGroupFamily :: !(Maybe Text)
-    , _devSupportedCharacterSets :: !(Maybe [CharacterSet])
-    , _devDBEngineDescription :: !(Maybe Text)
-    , _devValidUpgradeTarget :: !(Maybe [UpgradeTarget])
+    { _devEngineVersion                      :: !(Maybe Text)
+    , _devDBEngineVersionDescription         :: !(Maybe Text)
+    , _devDefaultCharacterSet                :: !(Maybe CharacterSet)
+    , _devEngine                             :: !(Maybe Text)
+    , _devDBParameterGroupFamily             :: !(Maybe Text)
+    , _devSupportedCharacterSets             :: !(Maybe [CharacterSet])
+    , _devDBEngineDescription                :: !(Maybe Text)
+    , _devValidUpgradeTarget                 :: !(Maybe [UpgradeTarget])
     , _devSupportsLogExportsToCloudwatchLogs :: !(Maybe Bool)
-    , _devSupportsReadReplica :: !(Maybe Bool)
-    , _devSupportedTimezones :: !(Maybe [Timezone])
-    , _devExportableLogTypes :: !(Maybe [Text])
+    , _devSupportsReadReplica                :: !(Maybe Bool)
+    , _devSupportedTimezones                 :: !(Maybe [Timezone])
+    , _devExportableLogTypes                 :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2090,10 +2090,10 @@ instance NFData DBInstance
 -- /See:/ 'dbInstanceStatusInfo' smart constructor.
 data DBInstanceStatusInfo =
   DBInstanceStatusInfo'
-    { _disiStatus :: !(Maybe Text)
-    , _disiNormal :: !(Maybe Bool)
+    { _disiStatus     :: !(Maybe Text)
+    , _disiNormal     :: !(Maybe Bool)
     , _disiStatusType :: !(Maybe Text)
-    , _disiMessage :: !(Maybe Text)
+    , _disiMessage    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2152,10 +2152,10 @@ instance NFData DBInstanceStatusInfo
 -- /See:/ 'dbParameterGroup' smart constructor.
 data DBParameterGroup =
   DBParameterGroup'
-    { _dpgDBParameterGroupARN :: !(Maybe Text)
+    { _dpgDBParameterGroupARN    :: !(Maybe Text)
     , _dpgDBParameterGroupFamily :: !(Maybe Text)
-    , _dpgDBParameterGroupName :: !(Maybe Text)
-    , _dpgDescription :: !(Maybe Text)
+    , _dpgDBParameterGroupName   :: !(Maybe Text)
+    , _dpgDescription            :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2309,12 +2309,12 @@ instance NFData DBParameterGroupStatus
 -- /See:/ 'dbSecurityGroup' smart constructor.
 data DBSecurityGroup =
   DBSecurityGroup'
-    { _dbsgVPCId :: !(Maybe Text)
-    , _dbsgOwnerId :: !(Maybe Text)
-    , _dbsgDBSecurityGroupARN :: !(Maybe Text)
-    , _dbsgIPRanges :: !(Maybe [IPRange])
-    , _dbsgDBSecurityGroupName :: !(Maybe Text)
-    , _dbsgEC2SecurityGroups :: !(Maybe [EC2SecurityGroup])
+    { _dbsgVPCId                      :: !(Maybe Text)
+    , _dbsgOwnerId                    :: !(Maybe Text)
+    , _dbsgDBSecurityGroupARN         :: !(Maybe Text)
+    , _dbsgIPRanges                   :: !(Maybe [IPRange])
+    , _dbsgDBSecurityGroupName        :: !(Maybe Text)
+    , _dbsgEC2SecurityGroups          :: !(Maybe [EC2SecurityGroup])
     , _dbsgDBSecurityGroupDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2415,7 +2415,7 @@ instance NFData DBSecurityGroup
 -- /See:/ 'dbSecurityGroupMembership' smart constructor.
 data DBSecurityGroupMembership =
   DBSecurityGroupMembership'
-    { _dsgmStatus :: !(Maybe Text)
+    { _dsgmStatus              :: !(Maybe Text)
     , _dsgmDBSecurityGroupName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2459,32 +2459,32 @@ instance NFData DBSecurityGroupMembership
 -- /See:/ 'dbSnapshot' smart constructor.
 data DBSnapshot =
   DBSnapshot'
-    { _dsEngineVersion :: !(Maybe Text)
-    , _dsStatus :: !(Maybe Text)
-    , _dsDBSnapshotARN :: !(Maybe Text)
-    , _dsMasterUsername :: !(Maybe Text)
-    , _dsSourceRegion :: !(Maybe Text)
+    { _dsEngineVersion                    :: !(Maybe Text)
+    , _dsStatus                           :: !(Maybe Text)
+    , _dsDBSnapshotARN                    :: !(Maybe Text)
+    , _dsMasterUsername                   :: !(Maybe Text)
+    , _dsSourceRegion                     :: !(Maybe Text)
     , _dsIAMDatabaseAuthenticationEnabled :: !(Maybe Bool)
-    , _dsIOPS :: !(Maybe Int)
-    , _dsVPCId :: !(Maybe Text)
-    , _dsInstanceCreateTime :: !(Maybe ISO8601)
-    , _dsEngine :: !(Maybe Text)
-    , _dsEncrypted :: !(Maybe Bool)
-    , _dsDBSnapshotIdentifier :: !(Maybe Text)
-    , _dsLicenseModel :: !(Maybe Text)
-    , _dsSourceDBSnapshotIdentifier :: !(Maybe Text)
-    , _dsSnapshotType :: !(Maybe Text)
-    , _dsDBInstanceIdentifier :: !(Maybe Text)
-    , _dsKMSKeyId :: !(Maybe Text)
-    , _dsAvailabilityZone :: !(Maybe Text)
-    , _dsSnapshotCreateTime :: !(Maybe ISO8601)
-    , _dsAllocatedStorage :: !(Maybe Int)
-    , _dsOptionGroupName :: !(Maybe Text)
-    , _dsTimezone :: !(Maybe Text)
-    , _dsTDECredentialARN :: !(Maybe Text)
-    , _dsPercentProgress :: !(Maybe Int)
-    , _dsPort :: !(Maybe Int)
-    , _dsStorageType :: !(Maybe Text)
+    , _dsIOPS                             :: !(Maybe Int)
+    , _dsVPCId                            :: !(Maybe Text)
+    , _dsInstanceCreateTime               :: !(Maybe ISO8601)
+    , _dsEngine                           :: !(Maybe Text)
+    , _dsEncrypted                        :: !(Maybe Bool)
+    , _dsDBSnapshotIdentifier             :: !(Maybe Text)
+    , _dsLicenseModel                     :: !(Maybe Text)
+    , _dsSourceDBSnapshotIdentifier       :: !(Maybe Text)
+    , _dsSnapshotType                     :: !(Maybe Text)
+    , _dsDBInstanceIdentifier             :: !(Maybe Text)
+    , _dsKMSKeyId                         :: !(Maybe Text)
+    , _dsAvailabilityZone                 :: !(Maybe Text)
+    , _dsSnapshotCreateTime               :: !(Maybe ISO8601)
+    , _dsAllocatedStorage                 :: !(Maybe Int)
+    , _dsOptionGroupName                  :: !(Maybe Text)
+    , _dsTimezone                         :: !(Maybe Text)
+    , _dsTDECredentialARN                 :: !(Maybe Text)
+    , _dsPercentProgress                  :: !(Maybe Int)
+    , _dsPort                             :: !(Maybe Int)
+    , _dsStorageType                      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2735,7 +2735,7 @@ instance NFData DBSnapshot
 data DBSnapshotAttribute =
   DBSnapshotAttribute'
     { _dsaAttributeValues :: !(Maybe [Text])
-    , _dsaAttributeName :: !(Maybe Text)
+    , _dsaAttributeName   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2828,12 +2828,12 @@ instance NFData DBSnapshotAttributesResult
 -- /See:/ 'dbSubnetGroup' smart constructor.
 data DBSubnetGroup =
   DBSubnetGroup'
-    { _dsgDBSubnetGroupName :: !(Maybe Text)
-    , _dsgVPCId :: !(Maybe Text)
-    , _dsgSubnets :: !(Maybe [Subnet])
+    { _dsgDBSubnetGroupName        :: !(Maybe Text)
+    , _dsgVPCId                    :: !(Maybe Text)
+    , _dsgSubnets                  :: !(Maybe [Subnet])
     , _dsgDBSubnetGroupDescription :: !(Maybe Text)
-    , _dsgDBSubnetGroupARN :: !(Maybe Text)
-    , _dsgSubnetGroupStatus :: !(Maybe Text)
+    , _dsgDBSubnetGroupARN         :: !(Maybe Text)
+    , _dsgSubnetGroupStatus        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2913,7 +2913,7 @@ instance NFData DBSubnetGroup
 data DescribeDBLogFilesDetails =
   DescribeDBLogFilesDetails'
     { _ddlfdLastWritten :: !(Maybe Integer)
-    , _ddlfdSize :: !(Maybe Integer)
+    , _ddlfdSize        :: !(Maybe Integer)
     , _ddlfdLogFileName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2963,9 +2963,9 @@ instance NFData DescribeDBLogFilesDetails
 -- /See:/ 'domainMembership' smart constructor.
 data DomainMembership =
   DomainMembership'
-    { _dmStatus :: !(Maybe Text)
-    , _dmFQDN :: !(Maybe Text)
-    , _dmDomain :: !(Maybe Text)
+    { _dmStatus      :: !(Maybe Text)
+    , _dmFQDN        :: !(Maybe Text)
+    , _dmDomain      :: !(Maybe Text)
     , _dmIAMRoleName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3023,7 +3023,7 @@ instance NFData DomainMembership
 -- /See:/ 'doubleRange' smart constructor.
 data DoubleRange =
   DoubleRange'
-    { _drTo :: !(Maybe Double)
+    { _drTo   :: !(Maybe Double)
     , _drFrom :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3068,10 +3068,10 @@ instance NFData DoubleRange
 -- /See:/ 'ec2SecurityGroup' smart constructor.
 data EC2SecurityGroup =
   EC2SecurityGroup'
-    { _esgStatus :: !(Maybe Text)
+    { _esgStatus                  :: !(Maybe Text)
     , _esgEC2SecurityGroupOwnerId :: !(Maybe Text)
-    , _esgEC2SecurityGroupName :: !(Maybe Text)
-    , _esgEC2SecurityGroupId :: !(Maybe Text)
+    , _esgEC2SecurityGroupName    :: !(Maybe Text)
+    , _esgEC2SecurityGroupId      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3140,8 +3140,8 @@ instance NFData EC2SecurityGroup
 data Endpoint =
   Endpoint'
     { _eHostedZoneId :: !(Maybe Text)
-    , _eAddress :: !(Maybe Text)
-    , _ePort :: !(Maybe Int)
+    , _eAddress      :: !(Maybe Text)
+    , _ePort         :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3187,8 +3187,8 @@ instance NFData Endpoint
 data EngineDefaults =
   EngineDefaults'
     { _edDBParameterGroupFamily :: !(Maybe Text)
-    , _edMarker :: !(Maybe Text)
-    , _edParameters :: !(Maybe [Parameter])
+    , _edMarker                 :: !(Maybe Text)
+    , _edParameters             :: !(Maybe [Parameter])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3239,12 +3239,12 @@ instance NFData EngineDefaults
 -- /See:/ 'event' smart constructor.
 data Event =
   Event'
-    { _eSourceType :: !(Maybe SourceType)
-    , _eSourceARN :: !(Maybe Text)
+    { _eSourceType       :: !(Maybe SourceType)
+    , _eSourceARN        :: !(Maybe Text)
     , _eSourceIdentifier :: !(Maybe Text)
-    , _eDate :: !(Maybe ISO8601)
-    , _eEventCategories :: !(Maybe [Text])
-    , _eMessage :: !(Maybe Text)
+    , _eDate             :: !(Maybe ISO8601)
+    , _eEventCategories  :: !(Maybe [Text])
+    , _eMessage          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3319,7 +3319,7 @@ instance NFData Event
 -- /See:/ 'eventCategoriesMap' smart constructor.
 data EventCategoriesMap =
   EventCategoriesMap'
-    { _ecmSourceType :: !(Maybe Text)
+    { _ecmSourceType      :: !(Maybe Text)
     , _ecmEventCategories :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3361,16 +3361,16 @@ instance NFData EventCategoriesMap
 -- /See:/ 'eventSubscription' smart constructor.
 data EventSubscription =
   EventSubscription'
-    { _esStatus :: !(Maybe Text)
-    , _esCustomerAWSId :: !(Maybe Text)
-    , _esCustSubscriptionId :: !(Maybe Text)
-    , _esSNSTopicARN :: !(Maybe Text)
-    , _esEventSubscriptionARN :: !(Maybe Text)
-    , _esEnabled :: !(Maybe Bool)
-    , _esSourceType :: !(Maybe Text)
+    { _esStatus                   :: !(Maybe Text)
+    , _esCustomerAWSId            :: !(Maybe Text)
+    , _esCustSubscriptionId       :: !(Maybe Text)
+    , _esSNSTopicARN              :: !(Maybe Text)
+    , _esEventSubscriptionARN     :: !(Maybe Text)
+    , _esEnabled                  :: !(Maybe Bool)
+    , _esSourceType               :: !(Maybe Text)
     , _esSubscriptionCreationTime :: !(Maybe Text)
-    , _esEventCategoriesList :: !(Maybe [Text])
-    , _esSourceIdsList :: !(Maybe [Text])
+    , _esEventCategoriesList      :: !(Maybe [Text])
+    , _esSourceIdsList            :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3494,7 +3494,7 @@ instance NFData EventSubscription
 -- /See:/ 'filter'' smart constructor.
 data Filter =
   Filter'
-    { _fName :: !Text
+    { _fName   :: !Text
     , _fValues :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3571,15 +3571,15 @@ instance NFData IPRange
 -- /See:/ 'option' smart constructor.
 data Option =
   Option'
-    { _oOptionName :: !(Maybe Text)
-    , _oPermanent :: !(Maybe Bool)
-    , _oPersistent :: !(Maybe Bool)
-    , _oOptionDescription :: !(Maybe Text)
-    , _oOptionSettings :: !(Maybe [OptionSetting])
+    { _oOptionName                  :: !(Maybe Text)
+    , _oPermanent                   :: !(Maybe Bool)
+    , _oPersistent                  :: !(Maybe Bool)
+    , _oOptionDescription           :: !(Maybe Text)
+    , _oOptionSettings              :: !(Maybe [OptionSetting])
     , _oVPCSecurityGroupMemberships :: !(Maybe [VPCSecurityGroupMembership])
-    , _oDBSecurityGroupMemberships :: !(Maybe [DBSecurityGroupMembership])
-    , _oOptionVersion :: !(Maybe Text)
-    , _oPort :: !(Maybe Int)
+    , _oDBSecurityGroupMemberships  :: !(Maybe [DBSecurityGroupMembership])
+    , _oOptionVersion               :: !(Maybe Text)
+    , _oPort                        :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3688,12 +3688,12 @@ instance NFData Option
 -- /See:/ 'optionConfiguration' smart constructor.
 data OptionConfiguration =
   OptionConfiguration'
-    { _ocOptionSettings :: !(Maybe [OptionSetting])
+    { _ocOptionSettings              :: !(Maybe [OptionSetting])
     , _ocVPCSecurityGroupMemberships :: !(Maybe [Text])
-    , _ocDBSecurityGroupMemberships :: !(Maybe [Text])
-    , _ocOptionVersion :: !(Maybe Text)
-    , _ocPort :: !(Maybe Int)
-    , _ocOptionName :: !Text
+    , _ocDBSecurityGroupMemberships  :: !(Maybe [Text])
+    , _ocOptionVersion               :: !(Maybe Text)
+    , _ocPort                        :: !(Maybe Int)
+    , _ocOptionName                  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3786,14 +3786,14 @@ instance ToQuery OptionConfiguration where
 -- /See:/ 'optionGroup' smart constructor.
 data OptionGroup =
   OptionGroup'
-    { _ogOptionGroupDescription :: !(Maybe Text)
-    , _ogVPCId :: !(Maybe Text)
+    { _ogOptionGroupDescription                :: !(Maybe Text)
+    , _ogVPCId                                 :: !(Maybe Text)
     , _ogAllowsVPCAndNonVPCInstanceMemberships :: !(Maybe Bool)
-    , _ogEngineName :: !(Maybe Text)
-    , _ogOptionGroupARN :: !(Maybe Text)
-    , _ogMajorEngineVersion :: !(Maybe Text)
-    , _ogOptions :: !(Maybe [Option])
-    , _ogOptionGroupName :: !(Maybe Text)
+    , _ogEngineName                            :: !(Maybe Text)
+    , _ogOptionGroupARN                        :: !(Maybe Text)
+    , _ogMajorEngineVersion                    :: !(Maybe Text)
+    , _ogOptions                               :: !(Maybe [Option])
+    , _ogOptionGroupName                       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3887,7 +3887,7 @@ instance NFData OptionGroup
 -- /See:/ 'optionGroupMembership' smart constructor.
 data OptionGroupMembership =
   OptionGroupMembership'
-    { _ogmStatus :: !(Maybe Text)
+    { _ogmStatus          :: !(Maybe Text)
     , _ogmOptionGroupName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -4122,12 +4122,12 @@ instance NFData OptionGroupOption
 -- /See:/ 'optionGroupOptionSetting' smart constructor.
 data OptionGroupOptionSetting =
   OptionGroupOptionSetting'
-    { _ogosApplyType :: !(Maybe Text)
-    , _ogosSettingName :: !(Maybe Text)
-    , _ogosDefaultValue :: !(Maybe Text)
-    , _ogosIsModifiable :: !(Maybe Bool)
+    { _ogosApplyType          :: !(Maybe Text)
+    , _ogosSettingName        :: !(Maybe Text)
+    , _ogosDefaultValue       :: !(Maybe Text)
+    , _ogosIsModifiable       :: !(Maybe Bool)
     , _ogosSettingDescription :: !(Maybe Text)
-    , _ogosAllowedValues :: !(Maybe Text)
+    , _ogosAllowedValues      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4201,15 +4201,15 @@ instance NFData OptionGroupOptionSetting
 -- /See:/ 'optionSetting' smart constructor.
 data OptionSetting =
   OptionSetting'
-    { _osIsCollection :: !(Maybe Bool)
-    , _osApplyType :: !(Maybe Text)
-    , _osValue :: !(Maybe Text)
-    , _osName :: !(Maybe Text)
-    , _osDefaultValue :: !(Maybe Text)
-    , _osIsModifiable :: !(Maybe Bool)
-    , _osDataType :: !(Maybe Text)
+    { _osIsCollection  :: !(Maybe Bool)
+    , _osApplyType     :: !(Maybe Text)
+    , _osValue         :: !(Maybe Text)
+    , _osName          :: !(Maybe Text)
+    , _osDefaultValue  :: !(Maybe Text)
+    , _osIsModifiable  :: !(Maybe Bool)
+    , _osDataType      :: !(Maybe Text)
     , _osAllowedValues :: !(Maybe Text)
-    , _osDescription :: !(Maybe Text)
+    , _osDescription   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4320,7 +4320,7 @@ instance ToQuery OptionSetting where
 -- /See:/ 'optionVersion' smart constructor.
 data OptionVersion =
   OptionVersion'
-    { _ovVersion :: !(Maybe Text)
+    { _ovVersion   :: !(Maybe Text)
     , _ovIsDefault :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -4359,26 +4359,26 @@ instance NFData OptionVersion
 -- /See:/ 'orderableDBInstanceOption' smart constructor.
 data OrderableDBInstanceOption =
   OrderableDBInstanceOption'
-    { _odioEngineVersion :: !(Maybe Text)
-    , _odioMinIOPSPerGib :: !(Maybe Double)
+    { _odioEngineVersion                     :: !(Maybe Text)
+    , _odioMinIOPSPerGib                     :: !(Maybe Double)
     , _odioSupportsIAMDatabaseAuthentication :: !(Maybe Bool)
-    , _odioMinIOPSPerDBInstance :: !(Maybe Int)
-    , _odioMultiAZCapable :: !(Maybe Bool)
-    , _odioMaxStorageSize :: !(Maybe Int)
-    , _odioEngine :: !(Maybe Text)
-    , _odioMinStorageSize :: !(Maybe Int)
-    , _odioSupportsIOPS :: !(Maybe Bool)
-    , _odioSupportsPerformanceInsights :: !(Maybe Bool)
-    , _odioDBInstanceClass :: !(Maybe Text)
-    , _odioLicenseModel :: !(Maybe Text)
-    , _odioAvailabilityZones :: !(Maybe [AvailabilityZone])
-    , _odioSupportsStorageEncryption :: !(Maybe Bool)
-    , _odioReadReplicaCapable :: !(Maybe Bool)
-    , _odioMaxIOPSPerGib :: !(Maybe Double)
-    , _odioVPC :: !(Maybe Bool)
-    , _odioSupportsEnhancedMonitoring :: !(Maybe Bool)
-    , _odioMaxIOPSPerDBInstance :: !(Maybe Int)
-    , _odioStorageType :: !(Maybe Text)
+    , _odioMinIOPSPerDBInstance              :: !(Maybe Int)
+    , _odioMultiAZCapable                    :: !(Maybe Bool)
+    , _odioMaxStorageSize                    :: !(Maybe Int)
+    , _odioEngine                            :: !(Maybe Text)
+    , _odioMinStorageSize                    :: !(Maybe Int)
+    , _odioSupportsIOPS                      :: !(Maybe Bool)
+    , _odioSupportsPerformanceInsights       :: !(Maybe Bool)
+    , _odioDBInstanceClass                   :: !(Maybe Text)
+    , _odioLicenseModel                      :: !(Maybe Text)
+    , _odioAvailabilityZones                 :: !(Maybe [AvailabilityZone])
+    , _odioSupportsStorageEncryption         :: !(Maybe Bool)
+    , _odioReadReplicaCapable                :: !(Maybe Bool)
+    , _odioMaxIOPSPerGib                     :: !(Maybe Double)
+    , _odioVPC                               :: !(Maybe Bool)
+    , _odioSupportsEnhancedMonitoring        :: !(Maybe Bool)
+    , _odioMaxIOPSPerDBInstance              :: !(Maybe Int)
+    , _odioStorageType                       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4589,16 +4589,16 @@ instance NFData OrderableDBInstanceOption
 -- /See:/ 'parameter' smart constructor.
 data Parameter =
   Parameter'
-    { _pApplyType :: !(Maybe Text)
-    , _pParameterValue :: !(Maybe Text)
-    , _pApplyMethod :: !(Maybe ApplyMethod)
+    { _pApplyType            :: !(Maybe Text)
+    , _pParameterValue       :: !(Maybe Text)
+    , _pApplyMethod          :: !(Maybe ApplyMethod)
     , _pMinimumEngineVersion :: !(Maybe Text)
-    , _pSource :: !(Maybe Text)
-    , _pIsModifiable :: !(Maybe Bool)
-    , _pDataType :: !(Maybe Text)
-    , _pAllowedValues :: !(Maybe Text)
-    , _pParameterName :: !(Maybe Text)
-    , _pDescription :: !(Maybe Text)
+    , _pSource               :: !(Maybe Text)
+    , _pIsModifiable         :: !(Maybe Bool)
+    , _pDataType             :: !(Maybe Text)
+    , _pAllowedValues        :: !(Maybe Text)
+    , _pParameterName        :: !(Maybe Text)
+    , _pDescription          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4719,7 +4719,7 @@ instance ToQuery Parameter where
 -- /See:/ 'pendingCloudwatchLogsExports' smart constructor.
 data PendingCloudwatchLogsExports =
   PendingCloudwatchLogsExports'
-    { _pcleLogTypesToEnable :: !(Maybe [Text])
+    { _pcleLogTypesToEnable  :: !(Maybe [Text])
     , _pcleLogTypesToDisable :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -4766,11 +4766,11 @@ instance NFData PendingCloudwatchLogsExports
 data PendingMaintenanceAction =
   PendingMaintenanceAction'
     { _pmaAutoAppliedAfterDate :: !(Maybe ISO8601)
-    , _pmaAction :: !(Maybe Text)
-    , _pmaOptInStatus :: !(Maybe Text)
-    , _pmaDescription :: !(Maybe Text)
-    , _pmaForcedApplyDate :: !(Maybe ISO8601)
-    , _pmaCurrentApplyDate :: !(Maybe ISO8601)
+    , _pmaAction               :: !(Maybe Text)
+    , _pmaOptInStatus          :: !(Maybe Text)
+    , _pmaDescription          :: !(Maybe Text)
+    , _pmaForcedApplyDate      :: !(Maybe ISO8601)
+    , _pmaCurrentApplyDate     :: !(Maybe ISO8601)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4849,20 +4849,20 @@ instance NFData PendingMaintenanceAction
 -- /See:/ 'pendingModifiedValues' smart constructor.
 data PendingModifiedValues =
   PendingModifiedValues'
-    { _pmvEngineVersion :: !(Maybe Text)
-    , _pmvMasterUserPassword :: !(Maybe Text)
-    , _pmvDBSubnetGroupName :: !(Maybe Text)
-    , _pmvIOPS :: !(Maybe Int)
-    , _pmvDBInstanceClass :: !(Maybe Text)
-    , _pmvLicenseModel :: !(Maybe Text)
-    , _pmvCACertificateIdentifier :: !(Maybe Text)
-    , _pmvDBInstanceIdentifier :: !(Maybe Text)
+    { _pmvEngineVersion                :: !(Maybe Text)
+    , _pmvMasterUserPassword           :: !(Maybe Text)
+    , _pmvDBSubnetGroupName            :: !(Maybe Text)
+    , _pmvIOPS                         :: !(Maybe Int)
+    , _pmvDBInstanceClass              :: !(Maybe Text)
+    , _pmvLicenseModel                 :: !(Maybe Text)
+    , _pmvCACertificateIdentifier      :: !(Maybe Text)
+    , _pmvDBInstanceIdentifier         :: !(Maybe Text)
     , _pmvPendingCloudwatchLogsExports :: !(Maybe PendingCloudwatchLogsExports)
-    , _pmvBackupRetentionPeriod :: !(Maybe Int)
-    , _pmvMultiAZ :: !(Maybe Bool)
-    , _pmvAllocatedStorage :: !(Maybe Int)
-    , _pmvPort :: !(Maybe Int)
-    , _pmvStorageType :: !(Maybe Text)
+    , _pmvBackupRetentionPeriod        :: !(Maybe Int)
+    , _pmvMultiAZ                      :: !(Maybe Bool)
+    , _pmvAllocatedStorage             :: !(Maybe Int)
+    , _pmvPort                         :: !(Maybe Int)
+    , _pmvStorageType                  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -5011,7 +5011,7 @@ instance NFData PendingModifiedValues
 -- /See:/ 'range' smart constructor.
 data Range =
   Range'
-    { _rTo :: !(Maybe Int)
+    { _rTo   :: !(Maybe Int)
     , _rFrom :: !(Maybe Int)
     , _rStep :: !(Maybe Int)
     }
@@ -5056,7 +5056,7 @@ instance NFData Range
 data RecurringCharge =
   RecurringCharge'
     { _rcRecurringChargeFrequency :: !(Maybe Text)
-    , _rcRecurringChargeAmount :: !(Maybe Double)
+    , _rcRecurringChargeAmount    :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -5098,21 +5098,21 @@ instance NFData RecurringCharge
 -- /See:/ 'reservedDBInstance' smart constructor.
 data ReservedDBInstance =
   ReservedDBInstance'
-    { _rdiDBInstanceCount :: !(Maybe Int)
-    , _rdiState :: !(Maybe Text)
-    , _rdiCurrencyCode :: !(Maybe Text)
-    , _rdiStartTime :: !(Maybe ISO8601)
-    , _rdiProductDescription :: !(Maybe Text)
-    , _rdiReservedDBInstanceId :: !(Maybe Text)
-    , _rdiReservedDBInstanceARN :: !(Maybe Text)
-    , _rdiDBInstanceClass :: !(Maybe Text)
-    , _rdiMultiAZ :: !(Maybe Bool)
+    { _rdiDBInstanceCount               :: !(Maybe Int)
+    , _rdiState                         :: !(Maybe Text)
+    , _rdiCurrencyCode                  :: !(Maybe Text)
+    , _rdiStartTime                     :: !(Maybe ISO8601)
+    , _rdiProductDescription            :: !(Maybe Text)
+    , _rdiReservedDBInstanceId          :: !(Maybe Text)
+    , _rdiReservedDBInstanceARN         :: !(Maybe Text)
+    , _rdiDBInstanceClass               :: !(Maybe Text)
+    , _rdiMultiAZ                       :: !(Maybe Bool)
     , _rdiReservedDBInstancesOfferingId :: !(Maybe Text)
-    , _rdiRecurringCharges :: !(Maybe [RecurringCharge])
-    , _rdiOfferingType :: !(Maybe Text)
-    , _rdiUsagePrice :: !(Maybe Double)
-    , _rdiFixedPrice :: !(Maybe Double)
-    , _rdiDuration :: !(Maybe Int)
+    , _rdiRecurringCharges              :: !(Maybe [RecurringCharge])
+    , _rdiOfferingType                  :: !(Maybe Text)
+    , _rdiUsagePrice                    :: !(Maybe Double)
+    , _rdiFixedPrice                    :: !(Maybe Double)
+    , _rdiDuration                      :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -5269,16 +5269,16 @@ instance NFData ReservedDBInstance
 -- /See:/ 'reservedDBInstancesOffering' smart constructor.
 data ReservedDBInstancesOffering =
   ReservedDBInstancesOffering'
-    { _rdioCurrencyCode :: !(Maybe Text)
-    , _rdioProductDescription :: !(Maybe Text)
-    , _rdioDBInstanceClass :: !(Maybe Text)
-    , _rdioMultiAZ :: !(Maybe Bool)
+    { _rdioCurrencyCode                  :: !(Maybe Text)
+    , _rdioProductDescription            :: !(Maybe Text)
+    , _rdioDBInstanceClass               :: !(Maybe Text)
+    , _rdioMultiAZ                       :: !(Maybe Bool)
     , _rdioReservedDBInstancesOfferingId :: !(Maybe Text)
-    , _rdioRecurringCharges :: !(Maybe [RecurringCharge])
-    , _rdioOfferingType :: !(Maybe Text)
-    , _rdioUsagePrice :: !(Maybe Double)
-    , _rdioFixedPrice :: !(Maybe Double)
-    , _rdioDuration :: !(Maybe Int)
+    , _rdioRecurringCharges              :: !(Maybe [RecurringCharge])
+    , _rdioOfferingType                  :: !(Maybe Text)
+    , _rdioUsagePrice                    :: !(Maybe Double)
+    , _rdioFixedPrice                    :: !(Maybe Double)
+    , _rdioDuration                      :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -5444,9 +5444,9 @@ instance NFData ResourcePendingMaintenanceActions
 -- /See:/ 'sourceRegion' smart constructor.
 data SourceRegion =
   SourceRegion'
-    { _srStatus :: !(Maybe Text)
+    { _srStatus     :: !(Maybe Text)
     , _srRegionName :: !(Maybe Text)
-    , _srEndpoint :: !(Maybe Text)
+    , _srEndpoint   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -5492,8 +5492,8 @@ instance NFData SourceRegion
 -- /See:/ 'subnet' smart constructor.
 data Subnet =
   Subnet'
-    { _sSubnetStatus :: !(Maybe Text)
-    , _sSubnetIdentifier :: !(Maybe Text)
+    { _sSubnetStatus           :: !(Maybe Text)
+    , _sSubnetIdentifier       :: !(Maybe Text)
     , _sSubnetAvailabilityZone :: !(Maybe AvailabilityZone)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -5545,7 +5545,7 @@ instance NFData Subnet
 data Tag =
   Tag'
     { _tagValue :: !(Maybe Text)
-    , _tagKey :: !(Maybe Text)
+    , _tagKey   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -5614,11 +5614,11 @@ instance NFData Timezone
 -- /See:/ 'upgradeTarget' smart constructor.
 data UpgradeTarget =
   UpgradeTarget'
-    { _utEngineVersion :: !(Maybe Text)
+    { _utEngineVersion         :: !(Maybe Text)
     , _utIsMajorVersionUpgrade :: !(Maybe Bool)
-    , _utEngine :: !(Maybe Text)
-    , _utAutoUpgrade :: !(Maybe Bool)
-    , _utDescription :: !(Maybe Text)
+    , _utEngine                :: !(Maybe Text)
+    , _utAutoUpgrade           :: !(Maybe Bool)
+    , _utDescription           :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -5685,7 +5685,7 @@ instance NFData UpgradeTarget
 -- /See:/ 'vpcSecurityGroupMembership' smart constructor.
 data VPCSecurityGroupMembership =
   VPCSecurityGroupMembership'
-    { _vsgmStatus :: !(Maybe Text)
+    { _vsgmStatus             :: !(Maybe Text)
     , _vsgmVPCSecurityGroupId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -5761,10 +5761,10 @@ instance NFData ValidDBInstanceModificationsMessage
 -- /See:/ 'validStorageOptions' smart constructor.
 data ValidStorageOptions =
   ValidStorageOptions'
-    { _vsoStorageSize :: !(Maybe [Range])
-    , _vsoProvisionedIOPS :: !(Maybe [Range])
+    { _vsoStorageSize        :: !(Maybe [Range])
+    , _vsoProvisionedIOPS    :: !(Maybe [Range])
     , _vsoIOPSToStorageRatio :: !(Maybe [DoubleRange])
-    , _vsoStorageType :: !(Maybe Text)
+    , _vsoStorageType        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

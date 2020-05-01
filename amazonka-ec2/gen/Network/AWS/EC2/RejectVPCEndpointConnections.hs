@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,8 +45,8 @@ import Network.AWS.Response
 -- | /See:/ 'rejectVPCEndpointConnections' smart constructor.
 data RejectVPCEndpointConnections =
   RejectVPCEndpointConnections'
-    { _rvecDryRun :: !(Maybe Bool)
-    , _rvecServiceId :: !Text
+    { _rvecDryRun         :: !(Maybe Bool)
+    , _rvecServiceId      :: !Text
     , _rvecVPCEndpointIds :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -116,7 +116,7 @@ instance ToQuery RejectVPCEndpointConnections where
 -- | /See:/ 'rejectVPCEndpointConnectionsResponse' smart constructor.
 data RejectVPCEndpointConnectionsResponse =
   RejectVPCEndpointConnectionsResponse'
-    { _rvecrsUnsuccessful :: !(Maybe [UnsuccessfulItem])
+    { _rvecrsUnsuccessful   :: !(Maybe [UnsuccessfulItem])
     , _rvecrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

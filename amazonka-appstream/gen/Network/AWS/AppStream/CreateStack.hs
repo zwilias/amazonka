@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,12 +48,12 @@ import Network.AWS.Response
 -- | /See:/ 'createStack' smart constructor.
 data CreateStack =
   CreateStack'
-    { _csFeedbackURL :: !(Maybe Text)
+    { _csFeedbackURL       :: !(Maybe Text)
     , _csStorageConnectors :: !(Maybe [StorageConnector])
-    , _csDisplayName :: !(Maybe Text)
-    , _csDescription :: !(Maybe Text)
-    , _csRedirectURL :: !(Maybe Text)
-    , _csName :: !Text
+    , _csDisplayName       :: !(Maybe Text)
+    , _csDescription       :: !(Maybe Text)
+    , _csRedirectURL       :: !(Maybe Text)
+    , _csName              :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -153,7 +153,7 @@ instance ToQuery CreateStack where
 -- | /See:/ 'createStackResponse' smart constructor.
 data CreateStackResponse =
   CreateStackResponse'
-    { _csrsStack :: !(Maybe Stack)
+    { _csrsStack          :: !(Maybe Stack)
     , _csrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

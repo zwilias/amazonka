@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,10 +47,10 @@ import Network.AWS.Response
 -- | /See:/ 'listStackSetOperationResults' smart constructor.
 data ListStackSetOperationResults =
   ListStackSetOperationResults'
-    { _lssorNextToken :: !(Maybe Text)
-    , _lssorMaxResults :: !(Maybe Nat)
+    { _lssorNextToken    :: !(Maybe Text)
+    , _lssorMaxResults   :: !(Maybe Nat)
     , _lssorStackSetName :: !Text
-    , _lssorOperationId :: !Text
+    , _lssorOperationId  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -129,8 +129,8 @@ instance ToQuery ListStackSetOperationResults where
 -- | /See:/ 'listStackSetOperationResultsResponse' smart constructor.
 data ListStackSetOperationResultsResponse =
   ListStackSetOperationResultsResponse'
-    { _lssorrsNextToken :: !(Maybe Text)
-    , _lssorrsSummaries :: !(Maybe [StackSetOperationResultSummary])
+    { _lssorrsNextToken      :: !(Maybe Text)
+    , _lssorrsSummaries      :: !(Maybe [StackSetOperationResultSummary])
     , _lssorrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

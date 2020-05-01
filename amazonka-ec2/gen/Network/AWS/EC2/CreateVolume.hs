@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -73,15 +73,15 @@ import Network.AWS.Response
 -- /See:/ 'createVolume' smart constructor.
 data CreateVolume =
   CreateVolume'
-    { _cvvSize :: !(Maybe Int)
-    , _cvvIOPS :: !(Maybe Int)
-    , _cvvEncrypted :: !(Maybe Bool)
+    { _cvvSize              :: !(Maybe Int)
+    , _cvvIOPS              :: !(Maybe Int)
+    , _cvvEncrypted         :: !(Maybe Bool)
     , _cvvTagSpecifications :: !(Maybe [TagSpecification])
-    , _cvvKMSKeyId :: !(Maybe Text)
-    , _cvvVolumeType :: !(Maybe VolumeType)
-    , _cvvDryRun :: !(Maybe Bool)
-    , _cvvSnapshotId :: !(Maybe Text)
-    , _cvvAvailabilityZone :: !Text
+    , _cvvKMSKeyId          :: !(Maybe Text)
+    , _cvvVolumeType        :: !(Maybe VolumeType)
+    , _cvvDryRun            :: !(Maybe Bool)
+    , _cvvSnapshotId        :: !(Maybe Text)
+    , _cvvAvailabilityZone  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

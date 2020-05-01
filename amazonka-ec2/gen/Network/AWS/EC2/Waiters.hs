@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE TypeFamilies      #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -21,26 +21,26 @@ import Network.AWS.EC2.DescribeCustomerGateways
 import Network.AWS.EC2.DescribeExportTasks
 import Network.AWS.EC2.DescribeExportTasks
 import Network.AWS.EC2.DescribeImages
+import Network.AWS.EC2.DescribeInstances
+import Network.AWS.EC2.DescribeInstances
+import Network.AWS.EC2.DescribeInstances
+import Network.AWS.EC2.DescribeInstances
 import Network.AWS.EC2.DescribeInstanceStatus
 import Network.AWS.EC2.DescribeInstanceStatus
-import Network.AWS.EC2.DescribeInstances
-import Network.AWS.EC2.DescribeInstances
-import Network.AWS.EC2.DescribeInstances
-import Network.AWS.EC2.DescribeInstances
 import Network.AWS.EC2.DescribeNatGateways
 import Network.AWS.EC2.DescribeNetworkInterfaces
 import Network.AWS.EC2.DescribeSnapshots
 import Network.AWS.EC2.DescribeSpotInstanceRequests
 import Network.AWS.EC2.DescribeSubnets
+import Network.AWS.EC2.DescribeVolumes
+import Network.AWS.EC2.DescribeVolumes
+import Network.AWS.EC2.DescribeVolumes
 import Network.AWS.EC2.DescribeVPCPeeringConnections
 import Network.AWS.EC2.DescribeVPCPeeringConnections
 import Network.AWS.EC2.DescribeVPCs
 import Network.AWS.EC2.DescribeVPCs
 import Network.AWS.EC2.DescribeVPNConnections
 import Network.AWS.EC2.DescribeVPNConnections
-import Network.AWS.EC2.DescribeVolumes
-import Network.AWS.EC2.DescribeVolumes
-import Network.AWS.EC2.DescribeVolumes
 import Network.AWS.EC2.GetPasswordData
 import Network.AWS.EC2.Types
 import Network.AWS.Lens

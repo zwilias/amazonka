@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 -- /See:/ 'pollForTask' smart constructor.
 data PollForTask =
   PollForTask'
-    { _pftHostname :: !(Maybe Text)
+    { _pftHostname         :: !(Maybe Text)
     , _pftInstanceIdentity :: !(Maybe InstanceIdentity)
-    , _pftWorkerGroup :: !Text
+    , _pftWorkerGroup      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -131,7 +131,7 @@ instance ToQuery PollForTask where
 -- /See:/ 'pollForTaskResponse' smart constructor.
 data PollForTaskResponse =
   PollForTaskResponse'
-    { _pftrsTaskObject :: !(Maybe TaskObject)
+    { _pftrsTaskObject     :: !(Maybe TaskObject)
     , _pftrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

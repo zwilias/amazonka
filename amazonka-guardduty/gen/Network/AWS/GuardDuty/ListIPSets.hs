@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- | /See:/ 'listIPSets' smart constructor.
 data ListIPSets =
   ListIPSets'
-    { _lisNextToken :: !(Maybe Text)
+    { _lisNextToken  :: !(Maybe Text)
     , _lisMaxResults :: !(Maybe Nat)
     , _lisDetectorId :: !Text
     }
@@ -121,8 +121,8 @@ instance ToQuery ListIPSets where
 -- | /See:/ 'listIPSetsResponse' smart constructor.
 data ListIPSetsResponse =
   ListIPSetsResponse'
-    { _lisrsNextToken :: !(Maybe Text)
-    , _lisrsIPSetIds :: !(Maybe [Text])
+    { _lisrsNextToken      :: !(Maybe Text)
+    , _lisrsIPSetIds       :: !(Maybe [Text])
     , _lisrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

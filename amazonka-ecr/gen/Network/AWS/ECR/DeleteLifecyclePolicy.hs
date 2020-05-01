@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- | /See:/ 'deleteLifecyclePolicy' smart constructor.
 data DeleteLifecyclePolicy =
   DeleteLifecyclePolicy'
-    { _dlpRegistryId :: !(Maybe Text)
+    { _dlpRegistryId     :: !(Maybe Text)
     , _dlpRepositoryName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -116,11 +116,11 @@ instance ToQuery DeleteLifecyclePolicy where
 -- | /See:/ 'deleteLifecyclePolicyResponse' smart constructor.
 data DeleteLifecyclePolicyResponse =
   DeleteLifecyclePolicyResponse'
-    { _dlprsRegistryId :: !(Maybe Text)
-    , _dlprsLastEvaluatedAt :: !(Maybe POSIX)
+    { _dlprsRegistryId          :: !(Maybe Text)
+    , _dlprsLastEvaluatedAt     :: !(Maybe POSIX)
     , _dlprsLifecyclePolicyText :: !(Maybe Text)
-    , _dlprsRepositoryName :: !(Maybe Text)
-    , _dlprsResponseStatus :: !Int
+    , _dlprsRepositoryName      :: !(Maybe Text)
+    , _dlprsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

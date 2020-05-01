@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,11 +48,11 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'getInventory' smart constructor.
 data GetInventory =
   GetInventory'
-    { _giAggregators :: !(Maybe (List1 InventoryAggregator))
-    , _giFilters :: !(Maybe (List1 InventoryFilter))
+    { _giAggregators      :: !(Maybe (List1 InventoryAggregator))
+    , _giFilters          :: !(Maybe (List1 InventoryFilter))
     , _giResultAttributes :: !(Maybe (List1 ResultAttribute))
-    , _giNextToken :: !(Maybe Text)
-    , _giMaxResults :: !(Maybe Nat)
+    , _giNextToken        :: !(Maybe Text)
+    , _giMaxResults       :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -144,8 +144,8 @@ instance ToQuery GetInventory where
 -- | /See:/ 'getInventoryResponse' smart constructor.
 data GetInventoryResponse =
   GetInventoryResponse'
-    { _girsEntities :: !(Maybe [InventoryResultEntity])
-    , _girsNextToken :: !(Maybe Text)
+    { _girsEntities       :: !(Maybe [InventoryResultEntity])
+    , _girsNextToken      :: !(Maybe Text)
     , _girsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

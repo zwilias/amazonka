@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,10 +54,10 @@ import Network.AWS.Response
 data GetBotChannelAssociations =
   GetBotChannelAssociations'
     { _gbcaNameContains :: !(Maybe Text)
-    , _gbcaNextToken :: !(Maybe Text)
-    , _gbcaMaxResults :: !(Maybe Nat)
-    , _gbcaBotName :: !Text
-    , _gbcaBotAlias :: !Text
+    , _gbcaNextToken    :: !(Maybe Text)
+    , _gbcaMaxResults   :: !(Maybe Nat)
+    , _gbcaBotName      :: !Text
+    , _gbcaBotAlias     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -156,8 +156,8 @@ instance ToQuery GetBotChannelAssociations where
 data GetBotChannelAssociationsResponse =
   GetBotChannelAssociationsResponse'
     { _gbcasrsBotChannelAssociations :: !(Maybe [BotChannelAssociation])
-    , _gbcasrsNextToken :: !(Maybe Text)
-    , _gbcasrsResponseStatus :: !Int
+    , _gbcasrsNextToken              :: !(Maybe Text)
+    , _gbcasrsResponseStatus         :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

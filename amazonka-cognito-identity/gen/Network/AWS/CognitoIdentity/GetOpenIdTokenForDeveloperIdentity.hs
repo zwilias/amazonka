@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,10 +55,10 @@ import Network.AWS.Response
 -- /See:/ 'getOpenIdTokenForDeveloperIdentity' smart constructor.
 data GetOpenIdTokenForDeveloperIdentity =
   GetOpenIdTokenForDeveloperIdentity'
-    { _goitfdiTokenDuration :: !(Maybe Nat)
-    , _goitfdiIdentityId :: !(Maybe Text)
+    { _goitfdiTokenDuration  :: !(Maybe Nat)
+    , _goitfdiIdentityId     :: !(Maybe Text)
     , _goitfdiIdentityPoolId :: !Text
-    , _goitfdiLogins :: !(Map Text Text)
+    , _goitfdiLogins         :: !(Map Text Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -149,8 +149,8 @@ instance ToQuery GetOpenIdTokenForDeveloperIdentity where
 -- /See:/ 'getOpenIdTokenForDeveloperIdentityResponse' smart constructor.
 data GetOpenIdTokenForDeveloperIdentityResponse =
   GetOpenIdTokenForDeveloperIdentityResponse'
-    { _goitfdirsToken :: !(Maybe Text)
-    , _goitfdirsIdentityId :: !(Maybe Text)
+    { _goitfdirsToken          :: !(Maybe Text)
+    , _goitfdirsIdentityId     :: !(Maybe Text)
     , _goitfdirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

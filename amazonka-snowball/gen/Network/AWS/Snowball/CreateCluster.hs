@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,16 +52,16 @@ import Network.AWS.Snowball.Types.Product
 -- | /See:/ 'createCluster' smart constructor.
 data CreateCluster =
   CreateCluster'
-    { _ccKMSKeyARN :: !(Maybe Text)
-    , _ccNotification :: !(Maybe Notification)
+    { _ccKMSKeyARN           :: !(Maybe Text)
+    , _ccNotification        :: !(Maybe Notification)
     , _ccForwardingAddressId :: !(Maybe Text)
-    , _ccSnowballType :: !(Maybe SnowballType)
-    , _ccDescription :: !(Maybe Text)
-    , _ccJobType :: !JobType
-    , _ccResources :: !JobResource
-    , _ccAddressId :: !Text
-    , _ccRoleARN :: !Text
-    , _ccShippingOption :: !ShippingOption
+    , _ccSnowballType        :: !(Maybe SnowballType)
+    , _ccDescription         :: !(Maybe Text)
+    , _ccJobType             :: !JobType
+    , _ccResources           :: !JobResource
+    , _ccAddressId           :: !Text
+    , _ccRoleARN             :: !Text
+    , _ccShippingOption      :: !ShippingOption
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -196,7 +196,7 @@ instance ToQuery CreateCluster where
 -- | /See:/ 'createClusterResponse' smart constructor.
 data CreateClusterResponse =
   CreateClusterResponse'
-    { _crersClusterId :: !(Maybe Text)
+    { _crersClusterId      :: !(Maybe Text)
     , _crersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

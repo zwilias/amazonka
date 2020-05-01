@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -76,7 +76,7 @@ import Network.AWS.Response
 -- /See:/ 'createCertificateFromCSR' smart constructor.
 data CreateCertificateFromCSR =
   CreateCertificateFromCSR'
-    { _ccfcsrSetAsActive :: !(Maybe Bool)
+    { _ccfcsrSetAsActive               :: !(Maybe Bool)
     , _ccfcsrCertificateSigningRequest :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -150,7 +150,7 @@ data CreateCertificateFromCSRResponse =
   CreateCertificateFromCSRResponse'
     { _ccfcsrrsCertificatePem :: !(Maybe Text)
     , _ccfcsrrsCertificateARN :: !(Maybe Text)
-    , _ccfcsrrsCertificateId :: !(Maybe Text)
+    , _ccfcsrrsCertificateId  :: !(Maybe Text)
     , _ccfcsrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -96,10 +96,10 @@ instance ToQuery RotateChannelCredentials where
 -- | /See:/ 'rotateChannelCredentialsResponse' smart constructor.
 data RotateChannelCredentialsResponse =
   RotateChannelCredentialsResponse'
-    { _rccrsHlsIngest :: !(Maybe HlsIngest)
-    , _rccrsARN :: !(Maybe Text)
-    , _rccrsId :: !(Maybe Text)
-    , _rccrsDescription :: !(Maybe Text)
+    { _rccrsHlsIngest      :: !(Maybe HlsIngest)
+    , _rccrsARN            :: !(Maybe Text)
+    , _rccrsId             :: !(Maybe Text)
+    , _rccrsDescription    :: !(Maybe Text)
     , _rccrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

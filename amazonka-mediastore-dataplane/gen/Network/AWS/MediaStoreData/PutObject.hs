@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ data PutObject =
   PutObject'
     { _poStorageClass :: !(Maybe StorageClass)
     , _poCacheControl :: !(Maybe Text)
-    , _poContentType :: !(Maybe Text)
-    , _poPath :: !Text
-    , _poBody :: !HashedBody
+    , _poContentType  :: !(Maybe Text)
+    , _poPath         :: !Text
+    , _poBody         :: !HashedBody
     }
   deriving (Show, Generic)
 
@@ -133,9 +133,9 @@ instance ToQuery PutObject where
 -- | /See:/ 'putObjectResponse' smart constructor.
 data PutObjectResponse =
   PutObjectResponse'
-    { _porsETag :: !(Maybe Text)
-    , _porsStorageClass :: !(Maybe StorageClass)
-    , _porsContentSHA256 :: !(Maybe Text)
+    { _porsETag           :: !(Maybe Text)
+    , _porsStorageClass   :: !(Maybe StorageClass)
+    , _porsContentSHA256  :: !(Maybe Text)
     , _porsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

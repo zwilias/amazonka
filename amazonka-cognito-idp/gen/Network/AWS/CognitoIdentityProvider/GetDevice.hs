@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Response
 data GetDevice =
   GetDevice'
     { _gdAccessToken :: !(Maybe (Sensitive Text))
-    , _gdDeviceKey :: !Text
+    , _gdDeviceKey   :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -117,7 +117,7 @@ instance ToQuery GetDevice where
 data GetDeviceResponse =
   GetDeviceResponse'
     { _gdrsResponseStatus :: !Int
-    , _gdrsDevice :: !DeviceType
+    , _gdrsDevice         :: !DeviceType
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

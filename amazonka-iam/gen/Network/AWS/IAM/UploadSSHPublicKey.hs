@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'uploadSSHPublicKey' smart constructor.
 data UploadSSHPublicKey =
   UploadSSHPublicKey'
-    { _usshpkUserName :: !Text
+    { _usshpkUserName         :: !Text
     , _usshpkSSHPublicKeyBody :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -111,7 +111,7 @@ instance ToQuery UploadSSHPublicKey where
 -- /See:/ 'uploadSSHPublicKeyResponse' smart constructor.
 data UploadSSHPublicKeyResponse =
   UploadSSHPublicKeyResponse'
-    { _uspkrsSSHPublicKey :: !(Maybe SSHPublicKey)
+    { _uspkrsSSHPublicKey   :: !(Maybe SSHPublicKey)
     , _uspkrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

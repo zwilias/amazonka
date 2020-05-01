@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -119,8 +119,8 @@ instance ToQuery DescribeStackEvents where
 -- /See:/ 'describeStackEventsResponse' smart constructor.
 data DescribeStackEventsResponse =
   DescribeStackEventsResponse'
-    { _dsersNextToken :: !(Maybe Text)
-    , _dsersStackEvents :: !(Maybe [StackEvent])
+    { _dsersNextToken      :: !(Maybe Text)
+    , _dsersStackEvents    :: !(Maybe [StackEvent])
     , _dsersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -99,9 +99,9 @@ instance ToQuery DescribeApplicationState where
 -- | /See:/ 'describeApplicationStateResponse' smart constructor.
 data DescribeApplicationStateResponse =
   DescribeApplicationStateResponse'
-    { _dasrsLastUpdatedTime :: !(Maybe POSIX)
+    { _dasrsLastUpdatedTime   :: !(Maybe POSIX)
     , _dasrsApplicationStatus :: !(Maybe ApplicationStatus)
-    , _dasrsResponseStatus :: !Int
+    , _dasrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

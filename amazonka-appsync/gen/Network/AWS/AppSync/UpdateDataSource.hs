@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,14 +50,14 @@ import Network.AWS.Response
 -- | /See:/ 'updateDataSource' smart constructor.
 data UpdateDataSource =
   UpdateDataSource'
-    { _udsServiceRoleARN :: !(Maybe Text)
-    , _udsDynamodbConfig :: !(Maybe DynamodbDataSourceConfig)
-    , _udsLambdaConfig :: !(Maybe LambdaDataSourceConfig)
-    , _udsDescription :: !(Maybe Text)
+    { _udsServiceRoleARN      :: !(Maybe Text)
+    , _udsDynamodbConfig      :: !(Maybe DynamodbDataSourceConfig)
+    , _udsLambdaConfig        :: !(Maybe LambdaDataSourceConfig)
+    , _udsDescription         :: !(Maybe Text)
     , _udsElasticsearchConfig :: !(Maybe ElasticsearchDataSourceConfig)
-    , _udsApiId :: !Text
-    , _udsName :: !Text
-    , _udsType :: !DataSourceType
+    , _udsApiId               :: !Text
+    , _udsName                :: !Text
+    , _udsType                :: !DataSourceType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -171,7 +171,7 @@ instance ToQuery UpdateDataSource where
 -- | /See:/ 'updateDataSourceResponse' smart constructor.
 data UpdateDataSourceResponse =
   UpdateDataSourceResponse'
-    { _udsrsDataSource :: !(Maybe DataSource)
+    { _udsrsDataSource     :: !(Maybe DataSource)
     , _udsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

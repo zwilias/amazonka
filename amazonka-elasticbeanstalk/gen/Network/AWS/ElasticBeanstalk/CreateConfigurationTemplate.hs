@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -72,14 +72,14 @@ import Network.AWS.Response
 -- /See:/ 'createConfigurationTemplate' smart constructor.
 data CreateConfigurationTemplate =
   CreateConfigurationTemplate'
-    { _cctOptionSettings :: !(Maybe [ConfigurationOptionSetting])
-    , _cctPlatformARN :: !(Maybe Text)
+    { _cctOptionSettings      :: !(Maybe [ConfigurationOptionSetting])
+    , _cctPlatformARN         :: !(Maybe Text)
     , _cctSourceConfiguration :: !(Maybe SourceConfiguration)
-    , _cctSolutionStackName :: !(Maybe Text)
-    , _cctEnvironmentId :: !(Maybe Text)
-    , _cctDescription :: !(Maybe Text)
-    , _cctApplicationName :: !Text
-    , _cctTemplateName :: !Text
+    , _cctSolutionStackName   :: !(Maybe Text)
+    , _cctEnvironmentId       :: !(Maybe Text)
+    , _cctDescription         :: !(Maybe Text)
+    , _cctApplicationName     :: !Text
+    , _cctTemplateName        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

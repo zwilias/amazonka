@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.Response
 -- /See:/ 'listAllowedNodeTypeModifications' smart constructor.
 data ListAllowedNodeTypeModifications =
   ListAllowedNodeTypeModifications'
-    { _lantmCacheClusterId :: !(Maybe Text)
+    { _lantmCacheClusterId     :: !(Maybe Text)
     , _lantmReplicationGroupId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -116,7 +116,7 @@ instance ToQuery ListAllowedNodeTypeModifications where
 data ListAllowedNodeTypeModificationsResponse =
   ListAllowedNodeTypeModificationsResponse'
     { _lantmrsScaleUpModifications :: !(Maybe [Text])
-    , _lantmrsResponseStatus :: !Int
+    , _lantmrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

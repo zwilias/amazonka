@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -56,9 +56,9 @@ instance ToJSON ArrayProperties where
 -- /See:/ 'arrayPropertiesDetail' smart constructor.
 data ArrayPropertiesDetail =
   ArrayPropertiesDetail'
-    { _apdSize :: !(Maybe Int)
+    { _apdSize          :: !(Maybe Int)
     , _apdStatusSummary :: !(Maybe (Map Text Int))
-    , _apdIndex :: !(Maybe Int)
+    , _apdIndex         :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -109,7 +109,7 @@ instance NFData ArrayPropertiesDetail
 -- /See:/ 'arrayPropertiesSummary' smart constructor.
 data ArrayPropertiesSummary =
   ArrayPropertiesSummary'
-    { _apsSize :: !(Maybe Int)
+    { _apsSize  :: !(Maybe Int)
     , _apsIndex :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -150,11 +150,11 @@ instance NFData ArrayPropertiesSummary
 -- /See:/ 'attemptContainerDetail' smart constructor.
 data AttemptContainerDetail =
   AttemptContainerDetail'
-    { _acdTaskARN :: !(Maybe Text)
+    { _acdTaskARN              :: !(Maybe Text)
     , _acdContainerInstanceARN :: !(Maybe Text)
-    , _acdReason :: !(Maybe Text)
-    , _acdLogStreamName :: !(Maybe Text)
-    , _acdExitCode :: !(Maybe Int)
+    , _acdReason               :: !(Maybe Text)
+    , _acdLogStreamName        :: !(Maybe Text)
+    , _acdExitCode             :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -224,9 +224,9 @@ instance NFData AttemptContainerDetail
 -- /See:/ 'attemptDetail' smart constructor.
 data AttemptDetail =
   AttemptDetail'
-    { _adStoppedAt :: !(Maybe Integer)
-    , _adStartedAt :: !(Maybe Integer)
-    , _adContainer :: !(Maybe AttemptContainerDetail)
+    { _adStoppedAt    :: !(Maybe Integer)
+    , _adStartedAt    :: !(Maybe Integer)
+    , _adContainer    :: !(Maybe AttemptContainerDetail)
     , _adStatusReason :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -287,15 +287,15 @@ instance NFData AttemptDetail
 -- /See:/ 'computeEnvironmentDetail' smart constructor.
 data ComputeEnvironmentDetail =
   ComputeEnvironmentDetail'
-    { _cedStatus :: !(Maybe CEStatus)
-    , _cedState :: !(Maybe CEState)
-    , _cedComputeResources :: !(Maybe ComputeResource)
-    , _cedStatusReason :: !(Maybe Text)
-    , _cedType :: !(Maybe CEType)
-    , _cedServiceRole :: !(Maybe Text)
+    { _cedStatus                 :: !(Maybe CEStatus)
+    , _cedState                  :: !(Maybe CEState)
+    , _cedComputeResources       :: !(Maybe ComputeResource)
+    , _cedStatusReason           :: !(Maybe Text)
+    , _cedType                   :: !(Maybe CEType)
+    , _cedServiceRole            :: !(Maybe Text)
     , _cedComputeEnvironmentName :: !Text
-    , _cedComputeEnvironmentARN :: !Text
-    , _cedEcsClusterARN :: !Text
+    , _cedComputeEnvironmentARN  :: !Text
+    , _cedEcsClusterARN          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -402,7 +402,7 @@ instance NFData ComputeEnvironmentDetail
 -- /See:/ 'computeEnvironmentOrder' smart constructor.
 data ComputeEnvironmentOrder =
   ComputeEnvironmentOrder'
-    { _ceoOrder :: !Int
+    { _ceoOrder              :: !Int
     , _ceoComputeEnvironment :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -458,19 +458,19 @@ instance ToJSON ComputeEnvironmentOrder where
 -- /See:/ 'computeResource' smart constructor.
 data ComputeResource =
   ComputeResource'
-    { _crEc2KeyPair :: !(Maybe Text)
-    , _crBidPercentage :: !(Maybe Int)
+    { _crEc2KeyPair       :: !(Maybe Text)
+    , _crBidPercentage    :: !(Maybe Int)
     , _crSpotIAMFleetRole :: !(Maybe Text)
-    , _crImageId :: !(Maybe Text)
-    , _crDesiredvCPUs :: !(Maybe Int)
-    , _crTags :: !(Maybe (Map Text Text))
-    , _crType :: !CRType
-    , _crMinvCPUs :: !Int
-    , _crMaxvCPUs :: !Int
-    , _crInstanceTypes :: ![Text]
-    , _crSubnets :: ![Text]
+    , _crImageId          :: !(Maybe Text)
+    , _crDesiredvCPUs     :: !(Maybe Int)
+    , _crTags             :: !(Maybe (Map Text Text))
+    , _crType             :: !CRType
+    , _crMinvCPUs         :: !Int
+    , _crMaxvCPUs         :: !Int
+    , _crInstanceTypes    :: ![Text]
+    , _crSubnets          :: ![Text]
     , _crSecurityGroupIds :: ![Text]
-    , _crInstanceRole :: !Text
+    , _crInstanceRole     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -629,8 +629,8 @@ instance ToJSON ComputeResource where
 -- /See:/ 'computeResourceUpdate' smart constructor.
 data ComputeResourceUpdate =
   ComputeResourceUpdate'
-    { _cruMinvCPUs :: !(Maybe Int)
-    , _cruMaxvCPUs :: !(Maybe Int)
+    { _cruMinvCPUs     :: !(Maybe Int)
+    , _cruMaxvCPUs     :: !(Maybe Int)
     , _cruDesiredvCPUs :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -681,23 +681,23 @@ instance ToJSON ComputeResourceUpdate where
 -- /See:/ 'containerDetail' smart constructor.
 data ContainerDetail =
   ContainerDetail'
-    { _cdImage :: !(Maybe Text)
-    , _cdCommand :: !(Maybe [Text])
-    , _cdEnvironment :: !(Maybe [KeyValuePair])
-    , _cdTaskARN :: !(Maybe Text)
-    , _cdUlimits :: !(Maybe [Ulimit])
-    , _cdContainerInstanceARN :: !(Maybe Text)
-    , _cdPrivileged :: !(Maybe Bool)
-    , _cdJobRoleARN :: !(Maybe Text)
-    , _cdMemory :: !(Maybe Int)
-    , _cdUser :: !(Maybe Text)
-    , _cdReason :: !(Maybe Text)
-    , _cdLogStreamName :: !(Maybe Text)
-    , _cdMountPoints :: !(Maybe [MountPoint])
-    , _cdExitCode :: !(Maybe Int)
-    , _cdVcpus :: !(Maybe Int)
+    { _cdImage                  :: !(Maybe Text)
+    , _cdCommand                :: !(Maybe [Text])
+    , _cdEnvironment            :: !(Maybe [KeyValuePair])
+    , _cdTaskARN                :: !(Maybe Text)
+    , _cdUlimits                :: !(Maybe [Ulimit])
+    , _cdContainerInstanceARN   :: !(Maybe Text)
+    , _cdPrivileged             :: !(Maybe Bool)
+    , _cdJobRoleARN             :: !(Maybe Text)
+    , _cdMemory                 :: !(Maybe Int)
+    , _cdUser                   :: !(Maybe Text)
+    , _cdReason                 :: !(Maybe Text)
+    , _cdLogStreamName          :: !(Maybe Text)
+    , _cdMountPoints            :: !(Maybe [MountPoint])
+    , _cdExitCode               :: !(Maybe Int)
+    , _cdVcpus                  :: !(Maybe Int)
     , _cdReadonlyRootFilesystem :: !(Maybe Bool)
-    , _cdVolumes :: !(Maybe [Volume])
+    , _cdVolumes                :: !(Maybe [Volume])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -865,10 +865,10 @@ instance NFData ContainerDetail
 -- /See:/ 'containerOverrides' smart constructor.
 data ContainerOverrides =
   ContainerOverrides'
-    { _coCommand :: !(Maybe [Text])
+    { _coCommand     :: !(Maybe [Text])
     , _coEnvironment :: !(Maybe [KeyValuePair])
-    , _coMemory :: !(Maybe Int)
-    , _coVcpus :: !(Maybe Int)
+    , _coMemory      :: !(Maybe Int)
+    , _coVcpus       :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -930,18 +930,18 @@ instance ToJSON ContainerOverrides where
 -- /See:/ 'containerProperties' smart constructor.
 data ContainerProperties =
   ContainerProperties'
-    { _cpCommand :: !(Maybe [Text])
-    , _cpEnvironment :: !(Maybe [KeyValuePair])
-    , _cpUlimits :: !(Maybe [Ulimit])
-    , _cpPrivileged :: !(Maybe Bool)
-    , _cpJobRoleARN :: !(Maybe Text)
-    , _cpUser :: !(Maybe Text)
-    , _cpMountPoints :: !(Maybe [MountPoint])
+    { _cpCommand                :: !(Maybe [Text])
+    , _cpEnvironment            :: !(Maybe [KeyValuePair])
+    , _cpUlimits                :: !(Maybe [Ulimit])
+    , _cpPrivileged             :: !(Maybe Bool)
+    , _cpJobRoleARN             :: !(Maybe Text)
+    , _cpUser                   :: !(Maybe Text)
+    , _cpMountPoints            :: !(Maybe [MountPoint])
     , _cpReadonlyRootFilesystem :: !(Maybe Bool)
-    , _cpVolumes :: !(Maybe [Volume])
-    , _cpImage :: !Text
-    , _cpVcpus :: !Int
-    , _cpMemory :: !Int
+    , _cpVolumes                :: !(Maybe [Volume])
+    , _cpImage                  :: !Text
+    , _cpVcpus                  :: !Int
+    , _cpMemory                 :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1091,7 +1091,7 @@ instance ToJSON ContainerProperties where
 -- /See:/ 'containerSummary' smart constructor.
 data ContainerSummary =
   ContainerSummary'
-    { _csReason :: !(Maybe Text)
+    { _csReason   :: !(Maybe Text)
     , _csExitCode :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1165,15 +1165,15 @@ instance ToJSON Host where
 -- /See:/ 'jobDefinition' smart constructor.
 data JobDefinition =
   JobDefinition'
-    { _jddStatus :: !(Maybe Text)
-    , _jddRetryStrategy :: !(Maybe RetryStrategy)
-    , _jddParameters :: !(Maybe (Map Text Text))
-    , _jddTimeout :: !(Maybe JobTimeout)
+    { _jddStatus              :: !(Maybe Text)
+    , _jddRetryStrategy       :: !(Maybe RetryStrategy)
+    , _jddParameters          :: !(Maybe (Map Text Text))
+    , _jddTimeout             :: !(Maybe JobTimeout)
     , _jddContainerProperties :: !(Maybe ContainerProperties)
-    , _jddJobDefinitionName :: !Text
-    , _jddJobDefinitionARN :: !Text
-    , _jddRevision :: !Int
-    , _jddType :: !Text
+    , _jddJobDefinitionName   :: !Text
+    , _jddJobDefinitionARN    :: !Text
+    , _jddRevision            :: !Int
+    , _jddType                :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1283,7 +1283,7 @@ instance NFData JobDefinition
 data JobDependency =
   JobDependency'
     { _jJobId :: !(Maybe Text)
-    , _jType :: !(Maybe ArrayJobDependency)
+    , _jType  :: !(Maybe ArrayJobDependency)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1326,22 +1326,22 @@ instance ToJSON JobDependency where
 -- /See:/ 'jobDetail' smart constructor.
 data JobDetail =
   JobDetail'
-    { _jdStoppedAt :: !(Maybe Integer)
-    , _jdCreatedAt :: !(Maybe Integer)
-    , _jdRetryStrategy :: !(Maybe RetryStrategy)
-    , _jdAttempts :: !(Maybe [AttemptDetail])
-    , _jdDependsOn :: !(Maybe [JobDependency])
-    , _jdContainer :: !(Maybe ContainerDetail)
-    , _jdParameters :: !(Maybe (Map Text Text))
-    , _jdStatusReason :: !(Maybe Text)
+    { _jdStoppedAt       :: !(Maybe Integer)
+    , _jdCreatedAt       :: !(Maybe Integer)
+    , _jdRetryStrategy   :: !(Maybe RetryStrategy)
+    , _jdAttempts        :: !(Maybe [AttemptDetail])
+    , _jdDependsOn       :: !(Maybe [JobDependency])
+    , _jdContainer       :: !(Maybe ContainerDetail)
+    , _jdParameters      :: !(Maybe (Map Text Text))
+    , _jdStatusReason    :: !(Maybe Text)
     , _jdArrayProperties :: !(Maybe ArrayPropertiesDetail)
-    , _jdTimeout :: !(Maybe JobTimeout)
-    , _jdJobName :: !Text
-    , _jdJobId :: !Text
-    , _jdJobQueue :: !Text
-    , _jdStatus :: !JobStatus
-    , _jdStartedAt :: !Integer
-    , _jdJobDefinition :: !Text
+    , _jdTimeout         :: !(Maybe JobTimeout)
+    , _jdJobName         :: !Text
+    , _jdJobId           :: !Text
+    , _jdJobQueue        :: !Text
+    , _jdStatus          :: !JobStatus
+    , _jdStartedAt       :: !Integer
+    , _jdJobDefinition   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1506,12 +1506,12 @@ instance NFData JobDetail
 -- /See:/ 'jobQueueDetail' smart constructor.
 data JobQueueDetail =
   JobQueueDetail'
-    { _jqdStatus :: !(Maybe JQStatus)
-    , _jqdStatusReason :: !(Maybe Text)
-    , _jqdJobQueueName :: !Text
-    , _jqdJobQueueARN :: !Text
-    , _jqdState :: !JQState
-    , _jqdPriority :: !Int
+    { _jqdStatus                  :: !(Maybe JQStatus)
+    , _jqdStatusReason            :: !(Maybe Text)
+    , _jqdJobQueueName            :: !Text
+    , _jqdJobQueueARN             :: !Text
+    , _jqdState                   :: !JQState
+    , _jqdPriority                :: !Int
     , _jqdComputeEnvironmentOrder :: ![ComputeEnvironmentOrder]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1603,15 +1603,15 @@ instance NFData JobQueueDetail
 -- /See:/ 'jobSummary' smart constructor.
 data JobSummary =
   JobSummary'
-    { _jsStoppedAt :: !(Maybe Integer)
-    , _jsStatus :: !(Maybe JobStatus)
-    , _jsCreatedAt :: !(Maybe Integer)
-    , _jsStartedAt :: !(Maybe Integer)
-    , _jsContainer :: !(Maybe ContainerSummary)
-    , _jsStatusReason :: !(Maybe Text)
+    { _jsStoppedAt       :: !(Maybe Integer)
+    , _jsStatus          :: !(Maybe JobStatus)
+    , _jsCreatedAt       :: !(Maybe Integer)
+    , _jsStartedAt       :: !(Maybe Integer)
+    , _jsContainer       :: !(Maybe ContainerSummary)
+    , _jsStatusReason    :: !(Maybe Text)
     , _jsArrayProperties :: !(Maybe ArrayPropertiesSummary)
-    , _jsJobId :: !Text
-    , _jsJobName :: !Text
+    , _jsJobId           :: !Text
+    , _jsJobName         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1754,7 +1754,7 @@ instance ToJSON JobTimeout where
 data KeyValuePair =
   KeyValuePair'
     { _kvpValue :: !(Maybe Text)
-    , _kvpName :: !(Maybe Text)
+    , _kvpName  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1798,8 +1798,8 @@ instance ToJSON KeyValuePair where
 data MountPoint =
   MountPoint'
     { _mpContainerPath :: !(Maybe Text)
-    , _mpSourceVolume :: !(Maybe Text)
-    , _mpReadOnly :: !(Maybe Bool)
+    , _mpSourceVolume  :: !(Maybe Text)
+    , _mpReadOnly      :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1896,7 +1896,7 @@ instance ToJSON RetryStrategy where
 data Ulimit =
   Ulimit'
     { _uHardLimit :: !Int
-    , _uName :: !Text
+    , _uName      :: !Text
     , _uSoftLimit :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

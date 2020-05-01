@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -72,8 +72,8 @@ import Network.AWS.WAFRegional.Types.Product
 data UpdateSizeConstraintSet =
   UpdateSizeConstraintSet'
     { _uscsSizeConstraintSetId :: !Text
-    , _uscsChangeToken :: !Text
-    , _uscsUpdates :: !(List1 SizeConstraintSetUpdate)
+    , _uscsChangeToken         :: !Text
+    , _uscsUpdates             :: !(List1 SizeConstraintSetUpdate)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -151,7 +151,7 @@ instance ToQuery UpdateSizeConstraintSet where
 -- | /See:/ 'updateSizeConstraintSetResponse' smart constructor.
 data UpdateSizeConstraintSetResponse =
   UpdateSizeConstraintSetResponse'
-    { _uscsrsChangeToken :: !(Maybe Text)
+    { _uscsrsChangeToken    :: !(Maybe Text)
     , _uscsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

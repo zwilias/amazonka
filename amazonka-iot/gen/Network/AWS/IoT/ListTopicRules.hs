@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,9 +55,9 @@ import Network.AWS.Response
 data ListTopicRules =
   ListTopicRules'
     { _ltrRuleDisabled :: !(Maybe Bool)
-    , _ltrTopic :: !(Maybe Text)
-    , _ltrNextToken :: !(Maybe Text)
-    , _ltrMaxResults :: !(Maybe Nat)
+    , _ltrTopic        :: !(Maybe Text)
+    , _ltrNextToken    :: !(Maybe Text)
+    , _ltrMaxResults   :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -140,8 +140,8 @@ instance ToQuery ListTopicRules where
 -- /See:/ 'listTopicRulesResponse' smart constructor.
 data ListTopicRulesResponse =
   ListTopicRulesResponse'
-    { _ltrrsRules :: !(Maybe [TopicRuleListItem])
-    , _ltrrsNextToken :: !(Maybe Text)
+    { _ltrrsRules          :: !(Maybe [TopicRuleListItem])
+    , _ltrrsNextToken      :: !(Maybe Text)
     , _ltrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

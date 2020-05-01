@@ -107,9 +107,9 @@ module Network.AWS.SMS.Types
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.Sign.V4
 import Network.AWS.SMS.Types.Product
 import Network.AWS.SMS.Types.Sum
-import Network.AWS.Sign.V4
 
 -- | API version @2016-10-24@ of the Amazon Server Migration Service SDK configuration.
 sms :: Service

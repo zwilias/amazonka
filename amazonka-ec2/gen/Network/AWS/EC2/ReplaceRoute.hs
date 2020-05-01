@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,16 +55,16 @@ import Network.AWS.Response
 -- /See:/ 'replaceRoute' smart constructor.
 data ReplaceRoute =
   ReplaceRoute'
-    { _rrVPCPeeringConnectionId :: !(Maybe Text)
-    , _rrInstanceId :: !(Maybe Text)
+    { _rrVPCPeeringConnectionId      :: !(Maybe Text)
+    , _rrInstanceId                  :: !(Maybe Text)
     , _rrEgressOnlyInternetGatewayId :: !(Maybe Text)
-    , _rrDestinationIPv6CidrBlock :: !(Maybe Text)
-    , _rrNatGatewayId :: !(Maybe Text)
-    , _rrNetworkInterfaceId :: !(Maybe Text)
-    , _rrGatewayId :: !(Maybe Text)
-    , _rrDryRun :: !(Maybe Bool)
-    , _rrDestinationCidrBlock :: !(Maybe Text)
-    , _rrRouteTableId :: !Text
+    , _rrDestinationIPv6CidrBlock    :: !(Maybe Text)
+    , _rrNatGatewayId                :: !(Maybe Text)
+    , _rrNetworkInterfaceId          :: !(Maybe Text)
+    , _rrGatewayId                   :: !(Maybe Text)
+    , _rrDryRun                      :: !(Maybe Bool)
+    , _rrDestinationCidrBlock        :: !(Maybe Text)
+    , _rrRouteTableId                :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

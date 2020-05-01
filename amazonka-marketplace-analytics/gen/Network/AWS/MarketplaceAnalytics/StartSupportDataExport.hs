@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,13 +49,13 @@ import Network.AWS.Response
 -- /See:/ 'startSupportDataExport' smart constructor.
 data StartSupportDataExport =
   StartSupportDataExport'
-    { _ssdeCustomerDefinedValues :: !(Maybe (Map Text Text))
-    , _ssdeDestinationS3Prefix :: !(Maybe Text)
-    , _ssdeDataSetType :: !SupportDataSetType
-    , _ssdeFromDate :: !POSIX
-    , _ssdeRoleNameARN :: !Text
+    { _ssdeCustomerDefinedValues   :: !(Maybe (Map Text Text))
+    , _ssdeDestinationS3Prefix     :: !(Maybe Text)
+    , _ssdeDataSetType             :: !SupportDataSetType
+    , _ssdeFromDate                :: !POSIX
+    , _ssdeRoleNameARN             :: !Text
     , _ssdeDestinationS3BucketName :: !Text
-    , _ssdeSnsTopicARN :: !Text
+    , _ssdeSnsTopicARN             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -175,7 +175,7 @@ instance ToQuery StartSupportDataExport where
 data StartSupportDataExportResponse =
   StartSupportDataExportResponse'
     { _ssdersDataSetRequestId :: !(Maybe Text)
-    , _ssdersResponseStatus :: !Int
+    , _ssdersResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

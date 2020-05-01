@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,11 +47,11 @@ import Network.AWS.Response
 -- | /See:/ 'createContact' smart constructor.
 data CreateContact =
   CreateContact'
-    { _ccLastName :: !(Maybe Text)
-    , _ccDisplayName :: !(Maybe Text)
+    { _ccLastName           :: !(Maybe Text)
+    , _ccDisplayName        :: !(Maybe Text)
     , _ccClientRequestToken :: !(Maybe Text)
-    , _ccFirstName :: !Text
-    , _ccPhoneNumber :: !Text
+    , _ccFirstName          :: !Text
+    , _ccPhoneNumber        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -142,7 +142,7 @@ instance ToQuery CreateContact where
 -- | /See:/ 'createContactResponse' smart constructor.
 data CreateContactResponse =
   CreateContactResponse'
-    { _ccrsContactARN :: !(Maybe Text)
+    { _ccrsContactARN     :: !(Maybe Text)
     , _ccrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- /See:/ 'renewOffering' smart constructor.
 data RenewOffering =
   RenewOffering'
-    { _roQuantity :: !(Maybe Int)
+    { _roQuantity   :: !(Maybe Int)
     , _roOfferingId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -112,7 +112,7 @@ instance ToQuery RenewOffering where
 data RenewOfferingResponse =
   RenewOfferingResponse'
     { _rorsOfferingTransaction :: !(Maybe OfferingTransaction)
-    , _rorsResponseStatus :: !Int
+    , _rorsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

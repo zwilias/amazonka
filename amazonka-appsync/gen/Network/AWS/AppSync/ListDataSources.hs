@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- | /See:/ 'listDataSources' smart constructor.
 data ListDataSources =
   ListDataSources'
-    { _ldsNextToken :: !(Maybe Text)
+    { _ldsNextToken  :: !(Maybe Text)
     , _ldsMaxResults :: !(Maybe Nat)
-    , _ldsApiId :: !Text
+    , _ldsApiId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -111,8 +111,8 @@ instance ToQuery ListDataSources where
 -- | /See:/ 'listDataSourcesResponse' smart constructor.
 data ListDataSourcesResponse =
   ListDataSourcesResponse'
-    { _ldsrsDataSources :: !(Maybe [DataSource])
-    , _ldsrsNextToken :: !(Maybe Text)
+    { _ldsrsDataSources    :: !(Maybe [DataSource])
+    , _ldsrsNextToken      :: !(Maybe Text)
     , _ldsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

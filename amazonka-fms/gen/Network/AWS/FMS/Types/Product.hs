@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,8 +26,8 @@ import Network.AWS.Prelude
 -- /See:/ 'complianceViolator' smart constructor.
 data ComplianceViolator =
   ComplianceViolator'
-    { _cvResourceId :: !(Maybe Text)
-    , _cvResourceType :: !(Maybe Text)
+    { _cvResourceId      :: !(Maybe Text)
+    , _cvResourceType    :: !(Maybe Text)
     , _cvViolationReason :: !(Maybe ViolationReason)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -80,8 +80,8 @@ instance NFData ComplianceViolator
 -- /See:/ 'evaluationResult' smart constructor.
 data EvaluationResult =
   EvaluationResult'
-    { _erViolatorCount :: !(Maybe Nat)
-    , _erComplianceStatus :: !(Maybe PolicyComplianceStatusType)
+    { _erViolatorCount           :: !(Maybe Nat)
+    , _erComplianceStatus        :: !(Maybe PolicyComplianceStatusType)
     , _erEvaluationLimitExceeded :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -138,14 +138,14 @@ instance NFData EvaluationResult
 -- /See:/ 'policy' smart constructor.
 data Policy =
   Policy'
-    { _pPolicyId :: !(Maybe Text)
-    , _pResourceTags :: !(Maybe [ResourceTag])
-    , _pPolicyUpdateToken :: !(Maybe Text)
-    , _pPolicyName :: !Text
+    { _pPolicyId                  :: !(Maybe Text)
+    , _pResourceTags              :: !(Maybe [ResourceTag])
+    , _pPolicyUpdateToken         :: !(Maybe Text)
+    , _pPolicyName                :: !Text
     , _pSecurityServicePolicyData :: !SecurityServicePolicyData
-    , _pResourceType :: !Text
-    , _pExcludeResourceTags :: !Bool
-    , _pRemediationEnabled :: !Bool
+    , _pResourceType              :: !Text
+    , _pExcludeResourceTags       :: !Bool
+    , _pRemediationEnabled        :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -262,12 +262,12 @@ instance ToJSON Policy where
 -- /See:/ 'policyComplianceDetail' smart constructor.
 data PolicyComplianceDetail =
   PolicyComplianceDetail'
-    { _pcdExpiredAt :: !(Maybe POSIX)
-    , _pcdPolicyId :: !(Maybe Text)
-    , _pcdViolators :: !(Maybe [ComplianceViolator])
+    { _pcdExpiredAt               :: !(Maybe POSIX)
+    , _pcdPolicyId                :: !(Maybe Text)
+    , _pcdViolators               :: !(Maybe [ComplianceViolator])
     , _pcdEvaluationLimitExceeded :: !(Maybe Bool)
-    , _pcdPolicyOwner :: !(Maybe Text)
-    , _pcdMemberAccount :: !(Maybe Text)
+    , _pcdPolicyOwner             :: !(Maybe Text)
+    , _pcdMemberAccount           :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -347,11 +347,11 @@ instance NFData PolicyComplianceDetail
 data PolicyComplianceStatus =
   PolicyComplianceStatus'
     { _pcsEvaluationResults :: !(Maybe [EvaluationResult])
-    , _pcsLastUpdated :: !(Maybe POSIX)
-    , _pcsPolicyName :: !(Maybe Text)
-    , _pcsPolicyId :: !(Maybe Text)
-    , _pcsPolicyOwner :: !(Maybe Text)
-    , _pcsMemberAccount :: !(Maybe Text)
+    , _pcsLastUpdated       :: !(Maybe POSIX)
+    , _pcsPolicyName        :: !(Maybe Text)
+    , _pcsPolicyId          :: !(Maybe Text)
+    , _pcsPolicyOwner       :: !(Maybe Text)
+    , _pcsMemberAccount     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -431,11 +431,11 @@ instance NFData PolicyComplianceStatus
 -- /See:/ 'policySummary' smart constructor.
 data PolicySummary =
   PolicySummary'
-    { _psPolicyName :: !(Maybe Text)
-    , _psRemediationEnabled :: !(Maybe Bool)
-    , _psResourceType :: !(Maybe Text)
-    , _psPolicyId :: !(Maybe Text)
-    , _psPolicyARN :: !(Maybe Text)
+    { _psPolicyName          :: !(Maybe Text)
+    , _psRemediationEnabled  :: !(Maybe Bool)
+    , _psResourceType        :: !(Maybe Text)
+    , _psPolicyId            :: !(Maybe Text)
+    , _psPolicyARN           :: !(Maybe Text)
     , _psSecurityServiceType :: !(Maybe SecurityServiceType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -516,7 +516,7 @@ instance NFData PolicySummary
 data ResourceTag =
   ResourceTag'
     { _rtValue :: !(Maybe Text)
-    , _rtKey :: !Text
+    , _rtKey   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -562,7 +562,7 @@ instance ToJSON ResourceTag where
 data SecurityServicePolicyData =
   SecurityServicePolicyData'
     { _sspdManagedServiceData :: !(Maybe Text)
-    , _sspdType :: !SecurityServiceType
+    , _sspdType               :: !SecurityServiceType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,12 +53,12 @@ import Network.AWS.Response
 -- /See:/ 'putMethodResponse' smart constructor.
 data PutMethodResponse =
   PutMethodResponse'
-    { _pmResponseModels :: !(Maybe (Map Text Text))
+    { _pmResponseModels     :: !(Maybe (Map Text Text))
     , _pmResponseParameters :: !(Maybe (Map Text Bool))
-    , _pmRestAPIId :: !Text
-    , _pmResourceId :: !Text
-    , _pmHttpMethod :: !Text
-    , _pmStatusCode :: !Text
+    , _pmRestAPIId          :: !Text
+    , _pmResourceId         :: !Text
+    , _pmHttpMethod         :: !Text
+    , _pmStatusCode         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

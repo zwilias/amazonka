@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,8 +45,8 @@ import Network.AWS.Response
 -- | /See:/ 'detachFromIndex' smart constructor.
 data DetachFromIndex =
   DetachFromIndex'
-    { _dfiDirectoryARN :: !Text
-    , _dfiIndexReference :: !ObjectReference
+    { _dfiDirectoryARN    :: !Text
+    , _dfiIndexReference  :: !ObjectReference
     , _dfiTargetReference :: !ObjectReference
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -120,7 +120,7 @@ instance ToQuery DetachFromIndex where
 data DetachFromIndexResponse =
   DetachFromIndexResponse'
     { _dfirsDetachedObjectIdentifier :: !(Maybe Text)
-    , _dfirsResponseStatus :: !Int
+    , _dfirsResponseStatus           :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

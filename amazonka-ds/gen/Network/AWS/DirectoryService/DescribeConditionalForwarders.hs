@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,7 +51,7 @@ import Network.AWS.Response
 data DescribeConditionalForwarders =
   DescribeConditionalForwarders'
     { _dcfRemoteDomainNames :: !(Maybe [Text])
-    , _dcfDirectoryId :: !Text
+    , _dcfDirectoryId       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,7 +124,7 @@ instance ToQuery DescribeConditionalForwarders where
 data DescribeConditionalForwardersResponse =
   DescribeConditionalForwardersResponse'
     { _dcfrsConditionalForwarders :: !(Maybe [ConditionalForwarder])
-    , _dcfrsResponseStatus :: !Int
+    , _dcfrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

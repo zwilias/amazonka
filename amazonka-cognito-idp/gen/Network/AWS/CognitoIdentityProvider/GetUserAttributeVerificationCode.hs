@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- /See:/ 'getUserAttributeVerificationCode' smart constructor.
 data GetUserAttributeVerificationCode =
   GetUserAttributeVerificationCode'
-    { _guavcAccessToken :: !(Sensitive Text)
+    { _guavcAccessToken   :: !(Sensitive Text)
     , _guavcAttributeName :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
@@ -125,7 +125,7 @@ instance ToQuery GetUserAttributeVerificationCode where
 data GetUserAttributeVerificationCodeResponse =
   GetUserAttributeVerificationCodeResponse'
     { _guavcrsCodeDeliveryDetails :: !(Maybe CodeDeliveryDetailsType)
-    , _guavcrsResponseStatus :: !Int
+    , _guavcrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

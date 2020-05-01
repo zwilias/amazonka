@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -62,12 +62,12 @@ import Network.AWS.Response
 -- /See:/ 'createApplication' smart constructor.
 data CreateApplication =
   CreateApplication'
-    { _caApplicationDescription :: !(Maybe Text)
-    , _caInputs :: !(Maybe [Input])
+    { _caApplicationDescription   :: !(Maybe Text)
+    , _caInputs                   :: !(Maybe [Input])
     , _caCloudWatchLoggingOptions :: !(Maybe [CloudWatchLoggingOption])
-    , _caOutputs :: !(Maybe [Output])
-    , _caApplicationCode :: !(Maybe Text)
-    , _caApplicationName :: !Text
+    , _caOutputs                  :: !(Maybe [Output])
+    , _caApplicationCode          :: !(Maybe Text)
+    , _caApplicationName          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -173,7 +173,7 @@ instance ToQuery CreateApplication where
 -- /See:/ 'createApplicationResponse' smart constructor.
 data CreateApplicationResponse =
   CreateApplicationResponse'
-    { _carsResponseStatus :: !Int
+    { _carsResponseStatus     :: !Int
     , _carsApplicationSummary :: !ApplicationSummary
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

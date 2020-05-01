@@ -734,15 +734,15 @@ import Network.AWS.Redshift.DeleteSnapshotCopyGrant
 import Network.AWS.Redshift.DeleteTags
 import Network.AWS.Redshift.DescribeClusterParameterGroups
 import Network.AWS.Redshift.DescribeClusterParameters
+import Network.AWS.Redshift.DescribeClusters
 import Network.AWS.Redshift.DescribeClusterSecurityGroups
 import Network.AWS.Redshift.DescribeClusterSnapshots
 import Network.AWS.Redshift.DescribeClusterSubnetGroups
 import Network.AWS.Redshift.DescribeClusterVersions
-import Network.AWS.Redshift.DescribeClusters
 import Network.AWS.Redshift.DescribeDefaultClusterParameters
 import Network.AWS.Redshift.DescribeEventCategories
-import Network.AWS.Redshift.DescribeEventSubscriptions
 import Network.AWS.Redshift.DescribeEvents
+import Network.AWS.Redshift.DescribeEventSubscriptions
 import Network.AWS.Redshift.DescribeHSMClientCertificates
 import Network.AWS.Redshift.DescribeHSMConfigurations
 import Network.AWS.Redshift.DescribeLoggingStatus

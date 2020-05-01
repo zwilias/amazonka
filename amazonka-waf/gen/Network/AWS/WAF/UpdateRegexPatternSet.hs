@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -76,8 +76,8 @@ import Network.AWS.WAF.Types.Product
 data UpdateRegexPatternSet =
   UpdateRegexPatternSet'
     { _urpsRegexPatternSetId :: !Text
-    , _urpsUpdates :: !(List1 RegexPatternSetUpdate)
-    , _urpsChangeToken :: !Text
+    , _urpsUpdates           :: !(List1 RegexPatternSetUpdate)
+    , _urpsChangeToken       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -155,7 +155,7 @@ instance ToQuery UpdateRegexPatternSet where
 -- | /See:/ 'updateRegexPatternSetResponse' smart constructor.
 data UpdateRegexPatternSetResponse =
   UpdateRegexPatternSetResponse'
-    { _urpsrsChangeToken :: !(Maybe Text)
+    { _urpsrsChangeToken    :: !(Maybe Text)
     , _urpsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

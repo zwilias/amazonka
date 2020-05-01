@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Response
 data DescribeStep =
   DescribeStep'
     { _dsClusterId :: !Text
-    , _dsStepId :: !Text
+    , _dsStepId    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -114,7 +114,7 @@ instance ToQuery DescribeStep where
 -- /See:/ 'describeStepResponse' smart constructor.
 data DescribeStepResponse =
   DescribeStepResponse'
-    { _dsrsStep :: !(Maybe Step)
+    { _dsrsStep           :: !(Maybe Step)
     , _dsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

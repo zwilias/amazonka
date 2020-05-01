@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -98,7 +98,7 @@ instance ToQuery CreateContainer where
 data CreateContainerResponse =
   CreateContainerResponse'
     { _ccrsResponseStatus :: !Int
-    , _ccrsContainer :: !Container
+    , _ccrsContainer      :: !Container
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

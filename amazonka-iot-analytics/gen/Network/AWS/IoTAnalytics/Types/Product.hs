@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,8 +26,8 @@ import Network.AWS.Prelude
 -- /See:/ 'addAttributesActivity' smart constructor.
 data AddAttributesActivity =
   AddAttributesActivity'
-    { _aaaNext :: !(Maybe Text)
-    , _aaaName :: !Text
+    { _aaaNext       :: !(Maybe Text)
+    , _aaaName       :: !Text
     , _aaaAttributes :: !(Map Text Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -88,9 +88,9 @@ instance ToJSON AddAttributesActivity where
 -- /See:/ 'batchPutMessageErrorEntry' smart constructor.
 data BatchPutMessageErrorEntry =
   BatchPutMessageErrorEntry'
-    { _bpmeeErrorCode :: !(Maybe Text)
+    { _bpmeeErrorCode    :: !(Maybe Text)
     , _bpmeeErrorMessage :: !(Maybe Text)
-    , _bpmeeMessageId :: !(Maybe Text)
+    , _bpmeeMessageId    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -143,12 +143,12 @@ instance NFData BatchPutMessageErrorEntry
 -- /See:/ 'channel' smart constructor.
 data Channel =
   Channel'
-    { _cCreationTime :: !(Maybe POSIX)
-    , _cStatus :: !(Maybe ChannelStatus)
-    , _cArn :: !(Maybe Text)
+    { _cCreationTime    :: !(Maybe POSIX)
+    , _cStatus          :: !(Maybe ChannelStatus)
+    , _cArn             :: !(Maybe Text)
     , _cRetentionPeriod :: !(Maybe RetentionPeriod)
-    , _cName :: !(Maybe Text)
-    , _cLastUpdateTime :: !(Maybe POSIX)
+    , _cName            :: !(Maybe Text)
+    , _cLastUpdateTime  :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -226,8 +226,8 @@ instance NFData Channel
 -- /See:/ 'channelActivity' smart constructor.
 data ChannelActivity =
   ChannelActivity'
-    { _caNext :: !(Maybe Text)
-    , _caName :: !Text
+    { _caNext        :: !(Maybe Text)
+    , _caName        :: !Text
     , _caChannelName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -289,9 +289,9 @@ instance ToJSON ChannelActivity where
 -- /See:/ 'channelSummary' smart constructor.
 data ChannelSummary =
   ChannelSummary'
-    { _csCreationTime :: !(Maybe POSIX)
-    , _csStatus :: !(Maybe ChannelStatus)
-    , _csChannelName :: !(Maybe Text)
+    { _csCreationTime   :: !(Maybe POSIX)
+    , _csStatus         :: !(Maybe ChannelStatus)
+    , _csChannelName    :: !(Maybe Text)
     , _csLastUpdateTime :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -354,12 +354,12 @@ instance NFData ChannelSummary
 -- /See:/ 'dataset' smart constructor.
 data Dataset =
   Dataset'
-    { _dCreationTime :: !(Maybe POSIX)
-    , _dStatus :: !(Maybe DatasetStatus)
-    , _dArn :: !(Maybe Text)
-    , _dActions :: !(Maybe (List1 DatasetAction))
-    , _dTriggers :: !(Maybe [DatasetTrigger])
-    , _dName :: !(Maybe Text)
+    { _dCreationTime   :: !(Maybe POSIX)
+    , _dStatus         :: !(Maybe DatasetStatus)
+    , _dArn            :: !(Maybe Text)
+    , _dActions        :: !(Maybe (List1 DatasetAction))
+    , _dTriggers       :: !(Maybe [DatasetTrigger])
+    , _dName           :: !(Maybe Text)
     , _dLastUpdateTime :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -447,7 +447,7 @@ instance NFData Dataset
 data DatasetAction =
   DatasetAction'
     { _daQueryAction :: !(Maybe SqlQueryDatasetAction)
-    , _daActionName :: !(Maybe Text)
+    , _daActionName  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -495,7 +495,7 @@ instance ToJSON DatasetAction where
 -- /See:/ 'datasetContentStatus' smart constructor.
 data DatasetContentStatus =
   DatasetContentStatus'
-    { _dcsState :: !(Maybe DatasetContentState)
+    { _dcsState  :: !(Maybe DatasetContentState)
     , _dcsReason :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -537,7 +537,7 @@ instance NFData DatasetContentStatus
 data DatasetEntry =
   DatasetEntry'
     { _deEntryName :: !(Maybe Text)
-    , _deDataURI :: !(Maybe Text)
+    , _deDataURI   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -576,9 +576,9 @@ instance NFData DatasetEntry
 -- /See:/ 'datasetSummary' smart constructor.
 data DatasetSummary =
   DatasetSummary'
-    { _dssCreationTime :: !(Maybe POSIX)
-    , _dssStatus :: !(Maybe DatasetStatus)
-    , _dssDatasetName :: !(Maybe Text)
+    { _dssCreationTime   :: !(Maybe POSIX)
+    , _dssStatus         :: !(Maybe DatasetStatus)
+    , _dssDatasetName    :: !(Maybe Text)
     , _dssLastUpdateTime :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -676,12 +676,12 @@ instance ToJSON DatasetTrigger where
 -- /See:/ 'datastore' smart constructor.
 data Datastore =
   Datastore'
-    { _datCreationTime :: !(Maybe POSIX)
-    , _datStatus :: !(Maybe DatastoreStatus)
-    , _datArn :: !(Maybe Text)
+    { _datCreationTime    :: !(Maybe POSIX)
+    , _datStatus          :: !(Maybe DatastoreStatus)
+    , _datArn             :: !(Maybe Text)
     , _datRetentionPeriod :: !(Maybe RetentionPeriod)
-    , _datName :: !(Maybe Text)
-    , _datLastUpdateTime :: !(Maybe POSIX)
+    , _datName            :: !(Maybe Text)
+    , _datLastUpdateTime  :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -760,7 +760,7 @@ instance NFData Datastore
 -- /See:/ 'datastoreActivity' smart constructor.
 data DatastoreActivity =
   DatastoreActivity'
-    { _daName :: !Text
+    { _daName          :: !Text
     , _daDatastoreName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -810,9 +810,9 @@ instance ToJSON DatastoreActivity where
 -- /See:/ 'datastoreSummary' smart constructor.
 data DatastoreSummary =
   DatastoreSummary'
-    { _dsCreationTime :: !(Maybe POSIX)
-    , _dsStatus :: !(Maybe DatastoreStatus)
-    , _dsDatastoreName :: !(Maybe Text)
+    { _dsCreationTime   :: !(Maybe POSIX)
+    , _dsStatus         :: !(Maybe DatastoreStatus)
+    , _dsDatastoreName  :: !(Maybe Text)
     , _dsLastUpdateTime :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -875,11 +875,11 @@ instance NFData DatastoreSummary
 -- /See:/ 'deviceRegistryEnrichActivity' smart constructor.
 data DeviceRegistryEnrichActivity =
   DeviceRegistryEnrichActivity'
-    { _dreaNext :: !(Maybe Text)
-    , _dreaName :: !Text
+    { _dreaNext      :: !(Maybe Text)
+    , _dreaName      :: !Text
     , _dreaAttribute :: !Text
     , _dreaThingName :: !Text
-    , _dreaRoleARN :: !Text
+    , _dreaRoleARN   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -963,11 +963,11 @@ instance ToJSON DeviceRegistryEnrichActivity where
 -- /See:/ 'deviceShadowEnrichActivity' smart constructor.
 data DeviceShadowEnrichActivity =
   DeviceShadowEnrichActivity'
-    { _dseaNext :: !(Maybe Text)
-    , _dseaName :: !Text
+    { _dseaNext      :: !(Maybe Text)
+    , _dseaName      :: !Text
     , _dseaAttribute :: !Text
     , _dseaThingName :: !Text
-    , _dseaRoleARN :: !Text
+    , _dseaRoleARN   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1051,8 +1051,8 @@ instance ToJSON DeviceShadowEnrichActivity where
 -- /See:/ 'filterActivity' smart constructor.
 data FilterActivity =
   FilterActivity'
-    { _faNext :: !(Maybe Text)
-    , _faName :: !Text
+    { _faNext   :: !(Maybe Text)
+    , _faName   :: !Text
     , _faFilter :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1113,10 +1113,10 @@ instance ToJSON FilterActivity where
 -- /See:/ 'lambdaActivity' smart constructor.
 data LambdaActivity =
   LambdaActivity'
-    { _laNext :: !(Maybe Text)
-    , _laName :: !Text
+    { _laNext       :: !(Maybe Text)
+    , _laName       :: !Text
     , _laLambdaName :: !Text
-    , _laBatchSize :: !Nat
+    , _laBatchSize  :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1191,7 +1191,7 @@ instance ToJSON LambdaActivity where
 data LoggingOptions =
   LoggingOptions'
     { _loRoleARN :: !Text
-    , _loLevel :: !LoggingLevel
+    , _loLevel   :: !LoggingLevel
     , _loEnabled :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1254,10 +1254,10 @@ instance ToJSON LoggingOptions where
 -- /See:/ 'mathActivity' smart constructor.
 data MathActivity =
   MathActivity'
-    { _maNext :: !(Maybe Text)
-    , _maName :: !Text
+    { _maNext      :: !(Maybe Text)
+    , _maName      :: !Text
     , _maAttribute :: !Text
-    , _maMath :: !Text
+    , _maMath      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1332,7 +1332,7 @@ instance ToJSON MathActivity where
 data Message =
   Message'
     { _mMessageId :: !Text
-    , _mPayload :: !Base64
+    , _mPayload   :: !Base64
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1375,12 +1375,12 @@ instance ToJSON Message where
 -- /See:/ 'pipeline' smart constructor.
 data Pipeline =
   Pipeline'
-    { _pCreationTime :: !(Maybe POSIX)
-    , _pArn :: !(Maybe Text)
-    , _pActivities :: !(Maybe (List1 PipelineActivity))
-    , _pName :: !(Maybe Text)
+    { _pCreationTime          :: !(Maybe POSIX)
+    , _pArn                   :: !(Maybe Text)
+    , _pActivities            :: !(Maybe (List1 PipelineActivity))
+    , _pName                  :: !(Maybe Text)
     , _pReprocessingSummaries :: !(Maybe [ReprocessingSummary])
-    , _pLastUpdateTime :: !(Maybe POSIX)
+    , _pLastUpdateTime        :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1460,16 +1460,16 @@ instance NFData Pipeline
 -- /See:/ 'pipelineActivity' smart constructor.
 data PipelineActivity =
   PipelineActivity'
-    { _paSelectAttributes :: !(Maybe SelectAttributesActivity)
-    , _paChannel :: !(Maybe ChannelActivity)
-    , _paAddAttributes :: !(Maybe AddAttributesActivity)
+    { _paSelectAttributes     :: !(Maybe SelectAttributesActivity)
+    , _paChannel              :: !(Maybe ChannelActivity)
+    , _paAddAttributes        :: !(Maybe AddAttributesActivity)
     , _paDeviceRegistryEnrich :: !(Maybe DeviceRegistryEnrichActivity)
-    , _paRemoveAttributes :: !(Maybe RemoveAttributesActivity)
-    , _paLambda :: !(Maybe LambdaActivity)
-    , _paDatastore :: !(Maybe DatastoreActivity)
-    , _paDeviceShadowEnrich :: !(Maybe DeviceShadowEnrichActivity)
-    , _paFilter :: !(Maybe FilterActivity)
-    , _paMath :: !(Maybe MathActivity)
+    , _paRemoveAttributes     :: !(Maybe RemoveAttributesActivity)
+    , _paLambda               :: !(Maybe LambdaActivity)
+    , _paDatastore            :: !(Maybe DatastoreActivity)
+    , _paDeviceShadowEnrich   :: !(Maybe DeviceShadowEnrichActivity)
+    , _paFilter               :: !(Maybe FilterActivity)
+    , _paMath                 :: !(Maybe MathActivity)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1599,10 +1599,10 @@ instance ToJSON PipelineActivity where
 -- /See:/ 'pipelineSummary' smart constructor.
 data PipelineSummary =
   PipelineSummary'
-    { _psCreationTime :: !(Maybe POSIX)
-    , _psPipelineName :: !(Maybe Text)
+    { _psCreationTime          :: !(Maybe POSIX)
+    , _psPipelineName          :: !(Maybe Text)
     , _psReprocessingSummaries :: !(Maybe [ReprocessingSummary])
-    , _psLastUpdateTime :: !(Maybe POSIX)
+    , _psLastUpdateTime        :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1666,8 +1666,8 @@ instance NFData PipelineSummary
 -- /See:/ 'removeAttributesActivity' smart constructor.
 data RemoveAttributesActivity =
   RemoveAttributesActivity'
-    { _raaNext :: !(Maybe Text)
-    , _raaName :: !Text
+    { _raaNext       :: !(Maybe Text)
+    , _raaName       :: !Text
     , _raaAttributes :: !(List1 Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1733,8 +1733,8 @@ instance ToJSON RemoveAttributesActivity where
 data ReprocessingSummary =
   ReprocessingSummary'
     { _rsCreationTime :: !(Maybe POSIX)
-    , _rsStatus :: !(Maybe ReprocessingStatus)
-    , _rsId :: !(Maybe Text)
+    , _rsStatus       :: !(Maybe ReprocessingStatus)
+    , _rsId           :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1784,7 +1784,7 @@ instance NFData ReprocessingSummary
 -- /See:/ 'retentionPeriod' smart constructor.
 data RetentionPeriod =
   RetentionPeriod'
-    { _rpUnlimited :: !(Maybe Bool)
+    { _rpUnlimited    :: !(Maybe Bool)
     , _rpNumberOfDays :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1868,8 +1868,8 @@ instance ToJSON Schedule where
 -- /See:/ 'selectAttributesActivity' smart constructor.
 data SelectAttributesActivity =
   SelectAttributesActivity'
-    { _saaNext :: !(Maybe Text)
-    , _saaName :: !Text
+    { _saaNext       :: !(Maybe Text)
+    , _saaName       :: !Text
     , _saaAttributes :: !(List1 Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

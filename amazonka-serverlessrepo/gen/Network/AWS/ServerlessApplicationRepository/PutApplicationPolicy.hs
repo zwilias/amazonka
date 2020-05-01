@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.ServerlessApplicationRepository.Types.Product
 -- | /See:/ 'putApplicationPolicy' smart constructor.
 data PutApplicationPolicy =
   PutApplicationPolicy'
-    { _papStatements :: !(Maybe [ApplicationPolicyStatement])
+    { _papStatements    :: !(Maybe [ApplicationPolicyStatement])
     , _papApplicationId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -104,7 +104,7 @@ instance ToQuery PutApplicationPolicy where
 -- | /See:/ 'putApplicationPolicyResponse' smart constructor.
 data PutApplicationPolicyResponse =
   PutApplicationPolicyResponse'
-    { _paprsStatements :: !(Maybe [ApplicationPolicyStatement])
+    { _paprsStatements     :: !(Maybe [ApplicationPolicyStatement])
     , _paprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

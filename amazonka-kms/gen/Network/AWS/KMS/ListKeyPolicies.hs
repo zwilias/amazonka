@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,8 +51,8 @@ import Network.AWS.Response
 data ListKeyPolicies =
   ListKeyPolicies'
     { _lkpMarker :: !(Maybe Text)
-    , _lkpLimit :: !(Maybe Nat)
-    , _lkpKeyId :: !Text
+    , _lkpLimit  :: !(Maybe Nat)
+    , _lkpKeyId  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -131,9 +131,9 @@ instance ToQuery ListKeyPolicies where
 -- | /See:/ 'listKeyPoliciesResponse' smart constructor.
 data ListKeyPoliciesResponse =
   ListKeyPoliciesResponse'
-    { _lkprsPolicyNames :: !(Maybe [Text])
-    , _lkprsTruncated :: !(Maybe Bool)
-    , _lkprsNextMarker :: !(Maybe Text)
+    { _lkprsPolicyNames    :: !(Maybe [Text])
+    , _lkprsTruncated      :: !(Maybe Bool)
+    , _lkprsNextMarker     :: !(Maybe Text)
     , _lkprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

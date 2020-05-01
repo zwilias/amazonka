@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,9 +44,9 @@ import Network.AWS.Response
 -- | /See:/ 'updateLoginProfile' smart constructor.
 data UpdateLoginProfile =
   UpdateLoginProfile'
-    { _ulpPassword :: !(Maybe (Sensitive Text))
+    { _ulpPassword              :: !(Maybe (Sensitive Text))
     , _ulpPasswordResetRequired :: !(Maybe Bool)
-    , _ulpUserName :: !Text
+    , _ulpUserName              :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

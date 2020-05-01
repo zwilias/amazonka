@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- /See:/ 'getRestAPIs' smart constructor.
 data GetRestAPIs =
   GetRestAPIs'
-    { _graLimit :: !(Maybe Int)
+    { _graLimit    :: !(Maybe Int)
     , _graPosition :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -113,8 +113,8 @@ instance ToQuery GetRestAPIs where
 -- /See:/ 'getRestAPIsResponse' smart constructor.
 data GetRestAPIsResponse =
   GetRestAPIsResponse'
-    { _grarsItems :: !(Maybe [RestAPI])
-    , _grarsPosition :: !(Maybe Text)
+    { _grarsItems          :: !(Maybe [RestAPI])
+    , _grarsPosition       :: !(Maybe Text)
     , _grarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

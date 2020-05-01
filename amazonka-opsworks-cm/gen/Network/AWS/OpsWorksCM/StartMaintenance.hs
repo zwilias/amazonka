@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 data StartMaintenance =
   StartMaintenance'
     { _smEngineAttributes :: !(Maybe [EngineAttribute])
-    , _smServerName :: !Text
+    , _smServerName       :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -113,7 +113,7 @@ instance ToQuery StartMaintenance where
 -- | /See:/ 'startMaintenanceResponse' smart constructor.
 data StartMaintenanceResponse =
   StartMaintenanceResponse'
-    { _smrsServer :: !(Maybe Server)
+    { _smrsServer         :: !(Maybe Server)
     , _smrsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'describeTargetHealth' smart constructor.
 data DescribeTargetHealth =
   DescribeTargetHealth'
-    { _dthTargets :: !(Maybe [TargetDescription])
+    { _dthTargets        :: !(Maybe [TargetDescription])
     , _dthTargetGroupARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -106,7 +106,7 @@ instance ToQuery DescribeTargetHealth where
 data DescribeTargetHealthResponse =
   DescribeTargetHealthResponse'
     { _dthrsTargetHealthDescriptions :: !(Maybe [TargetHealthDescription])
-    , _dthrsResponseStatus :: !Int
+    , _dthrsResponseStatus           :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

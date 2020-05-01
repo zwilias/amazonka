@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -67,9 +67,9 @@ import Network.AWS.Response
 -- /See:/ 'publishVersion' smart constructor.
 data PublishVersion =
   PublishVersion'
-    { _pvCodeSha256 :: !(Maybe Text)
-    , _pvDescription :: !(Maybe Text)
-    , _pvRevisionId :: !(Maybe Text)
+    { _pvCodeSha256   :: !(Maybe Text)
+    , _pvDescription  :: !(Maybe Text)
+    , _pvRevisionId   :: !(Maybe Text)
     , _pvFunctionName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

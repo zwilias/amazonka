@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -66,19 +66,19 @@ instance ToJSON RotationRulesType where
 -- /See:/ 'secretListEntry' smart constructor.
 data SecretListEntry =
   SecretListEntry'
-    { _sleLastChangedDate :: !(Maybe POSIX)
-    , _sleARN :: !(Maybe Text)
+    { _sleLastChangedDate        :: !(Maybe POSIX)
+    , _sleARN                    :: !(Maybe Text)
     , _sleSecretVersionsToStages :: !(Maybe (Map Text (List1 Text)))
-    , _sleRotationRules :: !(Maybe RotationRulesType)
-    , _sleDeletedDate :: !(Maybe POSIX)
-    , _sleRotationEnabled :: !(Maybe Bool)
-    , _sleKMSKeyId :: !(Maybe Text)
-    , _sleName :: !(Maybe Text)
-    , _sleLastRotatedDate :: !(Maybe POSIX)
-    , _sleLastAccessedDate :: !(Maybe POSIX)
-    , _sleDescription :: !(Maybe Text)
-    , _sleRotationLambdaARN :: !(Maybe Text)
-    , _sleTags :: !(Maybe [Tag])
+    , _sleRotationRules          :: !(Maybe RotationRulesType)
+    , _sleDeletedDate            :: !(Maybe POSIX)
+    , _sleRotationEnabled        :: !(Maybe Bool)
+    , _sleKMSKeyId               :: !(Maybe Text)
+    , _sleName                   :: !(Maybe Text)
+    , _sleLastRotatedDate        :: !(Maybe POSIX)
+    , _sleLastAccessedDate       :: !(Maybe POSIX)
+    , _sleDescription            :: !(Maybe Text)
+    , _sleRotationLambdaARN      :: !(Maybe Text)
+    , _sleTags                   :: !(Maybe [Tag])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -220,9 +220,9 @@ instance NFData SecretListEntry
 -- /See:/ 'secretVersionsListEntry' smart constructor.
 data SecretVersionsListEntry =
   SecretVersionsListEntry'
-    { _svleVersionId :: !(Maybe Text)
-    , _svleVersionStages :: !(Maybe (List1 Text))
-    , _svleCreatedDate :: !(Maybe POSIX)
+    { _svleVersionId        :: !(Maybe Text)
+    , _svleVersionStages    :: !(Maybe (List1 Text))
+    , _svleCreatedDate      :: !(Maybe POSIX)
     , _svleLastAccessedDate :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -289,7 +289,7 @@ instance NFData SecretVersionsListEntry
 data Tag =
   Tag'
     { _tagValue :: !(Maybe Text)
-    , _tagKey :: !(Maybe Text)
+    , _tagKey   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

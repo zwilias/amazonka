@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,8 +48,8 @@ import Network.AWS.Response
 -- /See:/ 'resetCacheParameterGroup' smart constructor.
 data ResetCacheParameterGroup =
   ResetCacheParameterGroup'
-    { _rcpgResetAllParameters :: !(Maybe Bool)
-    , _rcpgParameterNameValues :: !(Maybe [ParameterNameValue])
+    { _rcpgResetAllParameters      :: !(Maybe Bool)
+    , _rcpgParameterNameValues     :: !(Maybe [ParameterNameValue])
     , _rcpgCacheParameterGroupName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

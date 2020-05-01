@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- /See:/ 'deleteVPNConnection' smart constructor.
 data DeleteVPNConnection =
   DeleteVPNConnection'
-    { _dvcDryRun :: !(Maybe Bool)
+    { _dvcDryRun          :: !(Maybe Bool)
     , _dvcVPNConnectionId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

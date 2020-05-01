@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Response
 data DescribeComputeEnvironments =
   DescribeComputeEnvironments'
     { _dceComputeEnvironments :: !(Maybe [Text])
-    , _dceNextToken :: !(Maybe Text)
-    , _dceMaxResults :: !(Maybe Int)
+    , _dceNextToken           :: !(Maybe Text)
+    , _dceMaxResults          :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,8 +124,8 @@ instance ToQuery DescribeComputeEnvironments where
 data DescribeComputeEnvironmentsResponse =
   DescribeComputeEnvironmentsResponse'
     { _drsComputeEnvironments :: !(Maybe [ComputeEnvironmentDetail])
-    , _drsNextToken :: !(Maybe Text)
-    , _drsResponseStatus :: !Int
+    , _drsNextToken           :: !(Maybe Text)
+    , _drsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

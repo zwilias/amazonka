@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -69,20 +69,20 @@ import Network.AWS.Response
 -- /See:/ 'search' smart constructor.
 data Search =
   Search'
-    { _seaExpr :: !(Maybe Text)
-    , _seaCursor :: !(Maybe Text)
-    , _seaReturn :: !(Maybe Text)
+    { _seaExpr         :: !(Maybe Text)
+    , _seaCursor       :: !(Maybe Text)
+    , _seaReturn       :: !(Maybe Text)
     , _seaQueryOptions :: !(Maybe Text)
-    , _seaFilterQuery :: !(Maybe Text)
-    , _seaSize :: !(Maybe Integer)
-    , _seaQueryParser :: !(Maybe QueryParser)
-    , _seaStart :: !(Maybe Integer)
-    , _seaHighlight :: !(Maybe Text)
-    , _seaStats :: !(Maybe Text)
-    , _seaSort :: !(Maybe Text)
-    , _seaFacet :: !(Maybe Text)
-    , _seaPartial :: !(Maybe Bool)
-    , _seaQuery :: !Text
+    , _seaFilterQuery  :: !(Maybe Text)
+    , _seaSize         :: !(Maybe Integer)
+    , _seaQueryParser  :: !(Maybe QueryParser)
+    , _seaStart        :: !(Maybe Integer)
+    , _seaHighlight    :: !(Maybe Text)
+    , _seaStats        :: !(Maybe Text)
+    , _seaSort         :: !(Maybe Text)
+    , _seaFacet        :: !(Maybe Text)
+    , _seaPartial      :: !(Maybe Bool)
+    , _seaQuery        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -244,10 +244,10 @@ instance ToQuery Search where
 -- /See:/ 'searchResponse' smart constructor.
 data SearchResponse =
   SearchResponse'
-    { _searsStatus :: !(Maybe SearchStatus)
-    , _searsFacets :: !(Maybe (Map Text BucketInfo))
-    , _searsStats :: !(Maybe (Map Text FieldStats))
-    , _searsHits :: !(Maybe Hits)
+    { _searsStatus         :: !(Maybe SearchStatus)
+    , _searsFacets         :: !(Maybe (Map Text BucketInfo))
+    , _searsStats          :: !(Maybe (Map Text FieldStats))
+    , _searsHits           :: !(Maybe Hits)
     , _searsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

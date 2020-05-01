@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,8 +55,8 @@ import Network.AWS.Response
 data DescribeReplicationTaskAssessmentResults =
   DescribeReplicationTaskAssessmentResults'
     { _drtarReplicationTaskARN :: !(Maybe Text)
-    , _drtarMarker :: !(Maybe Text)
-    , _drtarMaxRecords :: !(Maybe Int)
+    , _drtarMarker             :: !(Maybe Text)
+    , _drtarMaxRecords         :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

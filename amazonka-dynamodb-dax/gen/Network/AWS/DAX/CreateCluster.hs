@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,18 +54,18 @@ import Network.AWS.Response
 -- | /See:/ 'createCluster' smart constructor.
 data CreateCluster =
   CreateCluster'
-    { _ccSecurityGroupIds :: !(Maybe [Text])
-    , _ccSubnetGroupName :: !(Maybe Text)
+    { _ccSecurityGroupIds           :: !(Maybe [Text])
+    , _ccSubnetGroupName            :: !(Maybe Text)
     , _ccPreferredMaintenanceWindow :: !(Maybe Text)
-    , _ccAvailabilityZones :: !(Maybe [Text])
-    , _ccDescription :: !(Maybe Text)
-    , _ccNotificationTopicARN :: !(Maybe Text)
-    , _ccTags :: !(Maybe [Tag])
-    , _ccParameterGroupName :: !(Maybe Text)
-    , _ccClusterName :: !Text
-    , _ccNodeType :: !Text
-    , _ccReplicationFactor :: !Int
-    , _ccIAMRoleARN :: !Text
+    , _ccAvailabilityZones          :: !(Maybe [Text])
+    , _ccDescription                :: !(Maybe Text)
+    , _ccNotificationTopicARN       :: !(Maybe Text)
+    , _ccTags                       :: !(Maybe [Tag])
+    , _ccParameterGroupName         :: !(Maybe Text)
+    , _ccClusterName                :: !Text
+    , _ccNodeType                   :: !Text
+    , _ccReplicationFactor          :: !Int
+    , _ccIAMRoleARN                 :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -223,7 +223,7 @@ instance ToQuery CreateCluster where
 -- | /See:/ 'createClusterResponse' smart constructor.
 data CreateClusterResponse =
   CreateClusterResponse'
-    { _ccrsCluster :: !(Maybe Cluster)
+    { _ccrsCluster        :: !(Maybe Cluster)
     , _ccrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

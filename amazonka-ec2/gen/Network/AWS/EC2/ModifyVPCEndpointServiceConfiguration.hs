@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,10 +48,10 @@ import Network.AWS.Response
 data ModifyVPCEndpointServiceConfiguration =
   ModifyVPCEndpointServiceConfiguration'
     { _mvescRemoveNetworkLoadBalancerARNs :: !(Maybe [Text])
-    , _mvescAcceptanceRequired :: !(Maybe Bool)
-    , _mvescAddNetworkLoadBalancerARNs :: !(Maybe [Text])
-    , _mvescDryRun :: !(Maybe Bool)
-    , _mvescServiceId :: !Text
+    , _mvescAcceptanceRequired            :: !(Maybe Bool)
+    , _mvescAddNetworkLoadBalancerARNs    :: !(Maybe [Text])
+    , _mvescDryRun                        :: !(Maybe Bool)
+    , _mvescServiceId                     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -150,7 +150,7 @@ instance ToQuery ModifyVPCEndpointServiceConfiguration where
 -- | /See:/ 'modifyVPCEndpointServiceConfigurationResponse' smart constructor.
 data ModifyVPCEndpointServiceConfigurationResponse =
   ModifyVPCEndpointServiceConfigurationResponse'
-    { _mvescrsReturn :: !(Maybe Bool)
+    { _mvescrsReturn         :: !(Maybe Bool)
     , _mvescrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

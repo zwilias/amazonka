@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- /See:/ 'revokeCacheSecurityGroupIngress' smart constructor.
 data RevokeCacheSecurityGroupIngress =
   RevokeCacheSecurityGroupIngress'
-    { _rcsgiCacheSecurityGroupName :: !Text
-    , _rcsgiEC2SecurityGroupName :: !Text
+    { _rcsgiCacheSecurityGroupName  :: !Text
+    , _rcsgiEC2SecurityGroupName    :: !Text
     , _rcsgiEC2SecurityGroupOwnerId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -130,7 +130,7 @@ instance ToQuery RevokeCacheSecurityGroupIngress where
 data RevokeCacheSecurityGroupIngressResponse =
   RevokeCacheSecurityGroupIngressResponse'
     { _rcsgirsCacheSecurityGroup :: !(Maybe CacheSecurityGroup)
-    , _rcsgirsResponseStatus :: !Int
+    , _rcsgirsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

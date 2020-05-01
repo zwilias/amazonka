@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,18 +54,18 @@ import Network.AWS.Response
 -- | /See:/ 'createFleet' smart constructor.
 data CreateFleet =
   CreateFleet'
-    { _cfDomainJoinInfo :: !(Maybe DomainJoinInfo)
-    , _cfDisconnectTimeoutInSeconds :: !(Maybe Int)
-    , _cfMaxUserDurationInSeconds :: !(Maybe Int)
-    , _cfFleetType :: !(Maybe FleetType)
-    , _cfVPCConfig :: !(Maybe VPCConfig)
-    , _cfDisplayName :: !(Maybe Text)
+    { _cfDomainJoinInfo              :: !(Maybe DomainJoinInfo)
+    , _cfDisconnectTimeoutInSeconds  :: !(Maybe Int)
+    , _cfMaxUserDurationInSeconds    :: !(Maybe Int)
+    , _cfFleetType                   :: !(Maybe FleetType)
+    , _cfVPCConfig                   :: !(Maybe VPCConfig)
+    , _cfDisplayName                 :: !(Maybe Text)
     , _cfEnableDefaultInternetAccess :: !(Maybe Bool)
-    , _cfDescription :: !(Maybe Text)
-    , _cfName :: !Text
-    , _cfImageName :: !Text
-    , _cfInstanceType :: !Text
-    , _cfComputeCapacity :: !ComputeCapacity
+    , _cfDescription                 :: !(Maybe Text)
+    , _cfName                        :: !Text
+    , _cfImageName                   :: !Text
+    , _cfInstanceType                :: !Text
+    , _cfComputeCapacity             :: !ComputeCapacity
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -221,7 +221,7 @@ instance ToQuery CreateFleet where
 -- | /See:/ 'createFleetResponse' smart constructor.
 data CreateFleetResponse =
   CreateFleetResponse'
-    { _cfrsFleet :: !(Maybe Fleet)
+    { _cfrsFleet          :: !(Maybe Fleet)
     , _cfrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

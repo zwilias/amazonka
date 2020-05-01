@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- | /See:/ 'batchCheckLayerAvailability' smart constructor.
 data BatchCheckLayerAvailability =
   BatchCheckLayerAvailability'
-    { _bclaRegistryId :: !(Maybe Text)
+    { _bclaRegistryId     :: !(Maybe Text)
     , _bclaRepositoryName :: !Text
-    , _bclaLayerDigests :: !(List1 Text)
+    , _bclaLayerDigests   :: !(List1 Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -127,8 +127,8 @@ instance ToQuery BatchCheckLayerAvailability where
 -- | /See:/ 'batchCheckLayerAvailabilityResponse' smart constructor.
 data BatchCheckLayerAvailabilityResponse =
   BatchCheckLayerAvailabilityResponse'
-    { _bclarsFailures :: !(Maybe [LayerFailure])
-    , _bclarsLayers :: !(Maybe [Layer])
+    { _bclarsFailures       :: !(Maybe [LayerFailure])
+    , _bclarsLayers         :: !(Maybe [Layer])
     , _bclarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,9 +49,9 @@ import Network.AWS.ServiceCatalog.Types.Product
 -- | /See:/ 'listTagOptions' smart constructor.
 data ListTagOptions =
   ListTagOptions'
-    { _ltoFilters :: !(Maybe ListTagOptionsFilters)
+    { _ltoFilters   :: !(Maybe ListTagOptionsFilters)
     , _ltoPageToken :: !(Maybe Text)
-    , _ltoPageSize :: !(Maybe Nat)
+    , _ltoPageSize  :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -128,9 +128,9 @@ instance ToQuery ListTagOptions where
 -- | /See:/ 'listTagOptionsResponse' smart constructor.
 data ListTagOptionsResponse =
   ListTagOptionsResponse'
-    { _ltorsPageToken :: !(Maybe Text)
+    { _ltorsPageToken        :: !(Maybe Text)
     , _ltorsTagOptionDetails :: !(Maybe [TagOptionDetail])
-    , _ltorsResponseStatus :: !Int
+    , _ltorsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

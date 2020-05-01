@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,11 +44,11 @@ import Network.AWS.Response
 -- | /See:/ 'executePolicy' smart constructor.
 data ExecutePolicy =
   ExecutePolicy'
-    { _epHonorCooldown :: !(Maybe Bool)
-    , _epMetricValue :: !(Maybe Double)
+    { _epHonorCooldown        :: !(Maybe Bool)
+    , _epMetricValue          :: !(Maybe Double)
     , _epAutoScalingGroupName :: !(Maybe Text)
-    , _epBreachThreshold :: !(Maybe Double)
-    , _epPolicyName :: !Text
+    , _epBreachThreshold      :: !(Maybe Double)
+    , _epPolicyName           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

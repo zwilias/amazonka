@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 -- /See:/ 'getDevicePoolCompatibility' smart constructor.
 data GetDevicePoolCompatibility =
   GetDevicePoolCompatibility'
-    { _gdpcTest :: !(Maybe ScheduleRunTest)
-    , _gdpcAppARN :: !(Maybe Text)
+    { _gdpcTest          :: !(Maybe ScheduleRunTest)
+    , _gdpcAppARN        :: !(Maybe Text)
     , _gdpcConfiguration :: !(Maybe ScheduleRunConfiguration)
-    , _gdpcTestType :: !(Maybe TestType)
+    , _gdpcTestType      :: !(Maybe TestType)
     , _gdpcDevicePoolARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -155,8 +155,8 @@ instance ToQuery GetDevicePoolCompatibility where
 data GetDevicePoolCompatibilityResponse =
   GetDevicePoolCompatibilityResponse'
     { _gdpcrsIncompatibleDevices :: !(Maybe [DevicePoolCompatibilityResult])
-    , _gdpcrsCompatibleDevices :: !(Maybe [DevicePoolCompatibilityResult])
-    , _gdpcrsResponseStatus :: !Int
+    , _gdpcrsCompatibleDevices   :: !(Maybe [DevicePoolCompatibilityResult])
+    , _gdpcrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -42,7 +42,7 @@ import Network.AWS.Response
 -- | /See:/ 'updateAPNSVoipSandboxChannel' smart constructor.
 data UpdateAPNSVoipSandboxChannel =
   UpdateAPNSVoipSandboxChannel'
-    { _uavscApplicationId :: !Text
+    { _uavscApplicationId                 :: !Text
     , _uavscAPNSVoipSandboxChannelRequest :: !APNSVoipSandboxChannelRequest
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -115,7 +115,7 @@ instance ToQuery UpdateAPNSVoipSandboxChannel where
 -- | /See:/ 'updateAPNSVoipSandboxChannelResponse' smart constructor.
 data UpdateAPNSVoipSandboxChannelResponse =
   UpdateAPNSVoipSandboxChannelResponse'
-    { _uavscrsResponseStatus :: !Int
+    { _uavscrsResponseStatus                 :: !Int
     , _uavscrsAPNSVoipSandboxChannelResponse :: !APNSVoipSandboxChannelResponse
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

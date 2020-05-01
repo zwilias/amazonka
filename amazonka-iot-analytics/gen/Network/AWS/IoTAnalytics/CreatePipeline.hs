@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'createPipeline' smart constructor.
 data CreatePipeline =
   CreatePipeline'
-    { _cpPipelineName :: !Text
+    { _cpPipelineName       :: !Text
     , _cpPipelineActivities :: !(List1 PipelineActivity)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -110,8 +110,8 @@ instance ToQuery CreatePipeline where
 -- | /See:/ 'createPipelineResponse' smart constructor.
 data CreatePipelineResponse =
   CreatePipelineResponse'
-    { _cprsPipelineName :: !(Maybe Text)
-    , _cprsPipelineARN :: !(Maybe Text)
+    { _cprsPipelineName   :: !(Maybe Text)
+    , _cprsPipelineARN    :: !(Maybe Text)
     , _cprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -59,15 +59,15 @@ import Network.AWS.Response
 -- /See:/ 'describeReservedDBInstancesOfferings' smart constructor.
 data DescribeReservedDBInstancesOfferings =
   DescribeReservedDBInstancesOfferings'
-    { _drdioProductDescription :: !(Maybe Text)
-    , _drdioFilters :: !(Maybe [Filter])
-    , _drdioDBInstanceClass :: !(Maybe Text)
-    , _drdioMarker :: !(Maybe Text)
-    , _drdioMaxRecords :: !(Maybe Int)
-    , _drdioMultiAZ :: !(Maybe Bool)
+    { _drdioProductDescription            :: !(Maybe Text)
+    , _drdioFilters                       :: !(Maybe [Filter])
+    , _drdioDBInstanceClass               :: !(Maybe Text)
+    , _drdioMarker                        :: !(Maybe Text)
+    , _drdioMaxRecords                    :: !(Maybe Int)
+    , _drdioMultiAZ                       :: !(Maybe Bool)
     , _drdioReservedDBInstancesOfferingId :: !(Maybe Text)
-    , _drdioOfferingType :: !(Maybe Text)
-    , _drdioDuration :: !(Maybe Text)
+    , _drdioOfferingType                  :: !(Maybe Text)
+    , _drdioDuration                      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

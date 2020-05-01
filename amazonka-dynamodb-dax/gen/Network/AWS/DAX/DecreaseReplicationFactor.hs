@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- | /See:/ 'decreaseReplicationFactor' smart constructor.
 data DecreaseReplicationFactor =
   DecreaseReplicationFactor'
-    { _drfNodeIdsToRemove :: !(Maybe [Text])
-    , _drfAvailabilityZones :: !(Maybe [Text])
-    , _drfClusterName :: !Text
+    { _drfNodeIdsToRemove      :: !(Maybe [Text])
+    , _drfAvailabilityZones    :: !(Maybe [Text])
+    , _drfClusterName          :: !Text
     , _drfNewReplicationFactor :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -138,7 +138,7 @@ instance ToQuery DecreaseReplicationFactor where
 -- | /See:/ 'decreaseReplicationFactorResponse' smart constructor.
 data DecreaseReplicationFactorResponse =
   DecreaseReplicationFactorResponse'
-    { _drfrsCluster :: !(Maybe Cluster)
+    { _drfrsCluster        :: !(Maybe Cluster)
     , _drfrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -99,8 +99,8 @@ instance ToQuery DescribeEnvironmentStatus where
 -- | /See:/ 'describeEnvironmentStatusResponse' smart constructor.
 data DescribeEnvironmentStatusResponse =
   DescribeEnvironmentStatusResponse'
-    { _desrsStatus :: !(Maybe EnvironmentStatus)
-    , _desrsMessage :: !(Maybe Text)
+    { _desrsStatus         :: !(Maybe EnvironmentStatus)
+    , _desrsMessage        :: !(Maybe Text)
     , _desrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

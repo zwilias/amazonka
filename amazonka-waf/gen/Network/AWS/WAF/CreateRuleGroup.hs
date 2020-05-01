@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,8 +58,8 @@ import Network.AWS.WAF.Types.Product
 -- | /See:/ 'createRuleGroup' smart constructor.
 data CreateRuleGroup =
   CreateRuleGroup'
-    { _crgName :: !Text
-    , _crgMetricName :: !Text
+    { _crgName        :: !Text
+    , _crgMetricName  :: !Text
     , _crgChangeToken :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -137,8 +137,8 @@ instance ToQuery CreateRuleGroup where
 -- | /See:/ 'createRuleGroupResponse' smart constructor.
 data CreateRuleGroupResponse =
   CreateRuleGroupResponse'
-    { _crgrsChangeToken :: !(Maybe Text)
-    , _crgrsRuleGroup :: !(Maybe RuleGroup)
+    { _crgrsChangeToken    :: !(Maybe Text)
+    , _crgrsRuleGroup      :: !(Maybe RuleGroup)
     , _crgrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

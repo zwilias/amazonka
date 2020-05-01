@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 data UpdateUserProfile =
   UpdateUserProfile'
     { _uupAllowSelfManagement :: !(Maybe Bool)
-    , _uupSSHPublicKey :: !(Maybe Text)
-    , _uupSSHUsername :: !(Maybe Text)
-    , _uupIAMUserARN :: !Text
+    , _uupSSHPublicKey        :: !(Maybe Text)
+    , _uupSSHUsername         :: !(Maybe Text)
+    , _uupIAMUserARN          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

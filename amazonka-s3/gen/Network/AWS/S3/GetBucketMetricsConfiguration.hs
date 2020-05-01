@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -43,7 +43,7 @@ import Network.AWS.S3.Types.Product
 data GetBucketMetricsConfiguration =
   GetBucketMetricsConfiguration'
     { _gbmcBucket :: !BucketName
-    , _gbmcId :: !Text
+    , _gbmcId     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -96,7 +96,7 @@ instance ToQuery GetBucketMetricsConfiguration where
 data GetBucketMetricsConfigurationResponse =
   GetBucketMetricsConfigurationResponse'
     { _gbmcrsMetricsConfiguration :: !(Maybe MetricsConfiguration)
-    , _gbmcrsResponseStatus :: !Int
+    , _gbmcrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

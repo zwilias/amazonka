@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,15 +26,15 @@ import Network.AWS.SSM.Types.Sum
 -- /See:/ 'activation' smart constructor.
 data Activation =
   Activation'
-    { _aExpired :: !(Maybe Bool)
+    { _aExpired             :: !(Maybe Bool)
     , _aDefaultInstanceName :: !(Maybe Text)
-    , _aActivationId :: !(Maybe Text)
-    , _aCreatedDate :: !(Maybe POSIX)
-    , _aRegistrationLimit :: !(Maybe Nat)
-    , _aExpirationDate :: !(Maybe POSIX)
-    , _aDescription :: !(Maybe Text)
-    , _aRegistrationsCount :: !(Maybe Nat)
-    , _aIAMRole :: !(Maybe Text)
+    , _aActivationId        :: !(Maybe Text)
+    , _aCreatedDate         :: !(Maybe POSIX)
+    , _aRegistrationLimit   :: !(Maybe Nat)
+    , _aExpirationDate      :: !(Maybe POSIX)
+    , _aDescription         :: !(Maybe Text)
+    , _aRegistrationsCount  :: !(Maybe Nat)
+    , _aIAMRole             :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -140,16 +140,16 @@ instance NFData Activation
 -- /See:/ 'association' smart constructor.
 data Association =
   Association'
-    { _aAssociationId :: !(Maybe Text)
-    , _aInstanceId :: !(Maybe Text)
-    , _aOverview :: !(Maybe AssociationOverview)
-    , _aLastExecutionDate :: !(Maybe POSIX)
+    { _aAssociationId      :: !(Maybe Text)
+    , _aInstanceId         :: !(Maybe Text)
+    , _aOverview           :: !(Maybe AssociationOverview)
+    , _aLastExecutionDate  :: !(Maybe POSIX)
     , _aScheduleExpression :: !(Maybe Text)
-    , _aName :: !(Maybe Text)
-    , _aTargets :: !(Maybe [Target])
-    , _aDocumentVersion :: !(Maybe Text)
+    , _aName               :: !(Maybe Text)
+    , _aTargets            :: !(Maybe [Target])
+    , _aDocumentVersion    :: !(Maybe Text)
     , _aAssociationVersion :: !(Maybe Text)
-    , _aAssociationName :: !(Maybe Text)
+    , _aAssociationName    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -446,7 +446,7 @@ instance NFData AssociationDescription
 -- /See:/ 'associationFilter' smart constructor.
 data AssociationFilter =
   AssociationFilter'
-    { _afKey :: !AssociationFilterKey
+    { _afKey   :: !AssociationFilterKey
     , _afValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -488,8 +488,8 @@ instance ToJSON AssociationFilter where
 -- /See:/ 'associationOverview' smart constructor.
 data AssociationOverview =
   AssociationOverview'
-    { _aoDetailedStatus :: !(Maybe Text)
-    , _aoStatus :: !(Maybe Text)
+    { _aoDetailedStatus                   :: !(Maybe Text)
+    , _aoStatus                           :: !(Maybe Text)
     , _aoAssociationStatusAggregatedCount :: !(Maybe (Map Text Int))
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -548,9 +548,9 @@ instance NFData AssociationOverview
 data AssociationStatus =
   AssociationStatus'
     { _asAdditionalInfo :: !(Maybe Text)
-    , _asDate :: !POSIX
-    , _asName :: !AssociationStatusName
-    , _asMessage :: !Text
+    , _asDate           :: !POSIX
+    , _asName           :: !AssociationStatusName
+    , _asMessage        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -624,16 +624,16 @@ instance ToJSON AssociationStatus where
 -- /See:/ 'associationVersionInfo' smart constructor.
 data AssociationVersionInfo =
   AssociationVersionInfo'
-    { _aviAssociationId :: !(Maybe Text)
-    , _aviCreatedDate :: !(Maybe POSIX)
+    { _aviAssociationId      :: !(Maybe Text)
+    , _aviCreatedDate        :: !(Maybe POSIX)
     , _aviScheduleExpression :: !(Maybe Text)
-    , _aviName :: !(Maybe Text)
-    , _aviOutputLocation :: !(Maybe InstanceAssociationOutputLocation)
-    , _aviTargets :: !(Maybe [Target])
-    , _aviParameters :: !(Maybe (Map Text [Text]))
-    , _aviDocumentVersion :: !(Maybe Text)
+    , _aviName               :: !(Maybe Text)
+    , _aviOutputLocation     :: !(Maybe InstanceAssociationOutputLocation)
+    , _aviTargets            :: !(Maybe [Target])
+    , _aviParameters         :: !(Maybe (Map Text [Text]))
+    , _aviDocumentVersion    :: !(Maybe Text)
     , _aviAssociationVersion :: !(Maybe Text)
-    , _aviAssociationName :: !(Maybe Text)
+    , _aviAssociationName    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -749,28 +749,28 @@ instance NFData AssociationVersionInfo
 -- /See:/ 'automationExecution' smart constructor.
 data AutomationExecution =
   AutomationExecution'
-    { _aeCurrentStepName :: !(Maybe Text)
-    , _aeTargetParameterName :: !(Maybe Text)
-    , _aeExecutedBy :: !(Maybe Text)
-    , _aeDocumentName :: !(Maybe Text)
-    , _aeExecutionEndTime :: !(Maybe POSIX)
-    , _aeFailureMessage :: !(Maybe Text)
-    , _aeMode :: !(Maybe ExecutionMode)
-    , _aeStepExecutionsTruncated :: !(Maybe Bool)
-    , _aeAutomationExecutionStatus :: !(Maybe AutomationExecutionStatus)
+    { _aeCurrentStepName             :: !(Maybe Text)
+    , _aeTargetParameterName         :: !(Maybe Text)
+    , _aeExecutedBy                  :: !(Maybe Text)
+    , _aeDocumentName                :: !(Maybe Text)
+    , _aeExecutionEndTime            :: !(Maybe POSIX)
+    , _aeFailureMessage              :: !(Maybe Text)
+    , _aeMode                        :: !(Maybe ExecutionMode)
+    , _aeStepExecutionsTruncated     :: !(Maybe Bool)
+    , _aeAutomationExecutionStatus   :: !(Maybe AutomationExecutionStatus)
     , _aeParentAutomationExecutionId :: !(Maybe Text)
-    , _aeOutputs :: !(Maybe (Map Text [Text]))
-    , _aeMaxErrors :: !(Maybe Text)
-    , _aeExecutionStartTime :: !(Maybe POSIX)
-    , _aeCurrentAction :: !(Maybe Text)
-    , _aeTargets :: !(Maybe [Target])
-    , _aeResolvedTargets :: !(Maybe ResolvedTargets)
-    , _aeParameters :: !(Maybe (Map Text [Text]))
-    , _aeDocumentVersion :: !(Maybe Text)
-    , _aeAutomationExecutionId :: !(Maybe Text)
-    , _aeStepExecutions :: !(Maybe [StepExecution])
-    , _aeMaxConcurrency :: !(Maybe Text)
-    , _aeTarget :: !(Maybe Text)
+    , _aeOutputs                     :: !(Maybe (Map Text [Text]))
+    , _aeMaxErrors                   :: !(Maybe Text)
+    , _aeExecutionStartTime          :: !(Maybe POSIX)
+    , _aeCurrentAction               :: !(Maybe Text)
+    , _aeTargets                     :: !(Maybe [Target])
+    , _aeResolvedTargets             :: !(Maybe ResolvedTargets)
+    , _aeParameters                  :: !(Maybe (Map Text [Text]))
+    , _aeDocumentVersion             :: !(Maybe Text)
+    , _aeAutomationExecutionId       :: !(Maybe Text)
+    , _aeStepExecutions              :: !(Maybe [StepExecution])
+    , _aeMaxConcurrency              :: !(Maybe Text)
+    , _aeTarget                      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -991,7 +991,7 @@ instance NFData AutomationExecution
 -- /See:/ 'automationExecutionFilter' smart constructor.
 data AutomationExecutionFilter =
   AutomationExecutionFilter'
-    { _aefKey :: !AutomationExecutionFilterKey
+    { _aefKey    :: !AutomationExecutionFilterKey
     , _aefValues :: !(List1 Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1033,26 +1033,26 @@ instance ToJSON AutomationExecutionFilter where
 -- /See:/ 'automationExecutionMetadata' smart constructor.
 data AutomationExecutionMetadata =
   AutomationExecutionMetadata'
-    { _aemCurrentStepName :: !(Maybe Text)
-    , _aemTargetParameterName :: !(Maybe Text)
-    , _aemLogFile :: !(Maybe Text)
-    , _aemExecutedBy :: !(Maybe Text)
-    , _aemDocumentName :: !(Maybe Text)
-    , _aemExecutionEndTime :: !(Maybe POSIX)
-    , _aemFailureMessage :: !(Maybe Text)
-    , _aemMode :: !(Maybe ExecutionMode)
-    , _aemAutomationExecutionStatus :: !(Maybe AutomationExecutionStatus)
+    { _aemCurrentStepName             :: !(Maybe Text)
+    , _aemTargetParameterName         :: !(Maybe Text)
+    , _aemLogFile                     :: !(Maybe Text)
+    , _aemExecutedBy                  :: !(Maybe Text)
+    , _aemDocumentName                :: !(Maybe Text)
+    , _aemExecutionEndTime            :: !(Maybe POSIX)
+    , _aemFailureMessage              :: !(Maybe Text)
+    , _aemMode                        :: !(Maybe ExecutionMode)
+    , _aemAutomationExecutionStatus   :: !(Maybe AutomationExecutionStatus)
     , _aemParentAutomationExecutionId :: !(Maybe Text)
-    , _aemOutputs :: !(Maybe (Map Text [Text]))
-    , _aemMaxErrors :: !(Maybe Text)
-    , _aemExecutionStartTime :: !(Maybe POSIX)
-    , _aemCurrentAction :: !(Maybe Text)
-    , _aemTargets :: !(Maybe [Target])
-    , _aemResolvedTargets :: !(Maybe ResolvedTargets)
-    , _aemDocumentVersion :: !(Maybe Text)
-    , _aemAutomationExecutionId :: !(Maybe Text)
-    , _aemMaxConcurrency :: !(Maybe Text)
-    , _aemTarget :: !(Maybe Text)
+    , _aemOutputs                     :: !(Maybe (Map Text [Text]))
+    , _aemMaxErrors                   :: !(Maybe Text)
+    , _aemExecutionStartTime          :: !(Maybe POSIX)
+    , _aemCurrentAction               :: !(Maybe Text)
+    , _aemTargets                     :: !(Maybe [Target])
+    , _aemResolvedTargets             :: !(Maybe ResolvedTargets)
+    , _aemDocumentVersion             :: !(Maybe Text)
+    , _aemAutomationExecutionId       :: !(Maybe Text)
+    , _aemMaxConcurrency              :: !(Maybe Text)
+    , _aemTarget                      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1257,27 +1257,27 @@ instance NFData AutomationExecutionMetadata
 -- /See:/ 'command' smart constructor.
 data Command =
   Command'
-    { _cStatus :: !(Maybe CommandStatus)
-    , _cExpiresAfter :: !(Maybe POSIX)
+    { _cStatus             :: !(Maybe CommandStatus)
+    , _cExpiresAfter       :: !(Maybe POSIX)
     , _cNotificationConfig :: !(Maybe NotificationConfig)
-    , _cTargetCount :: !(Maybe Int)
-    , _cOutputS3KeyPrefix :: !(Maybe Text)
-    , _cDocumentName :: !(Maybe Text)
-    , _cErrorCount :: !(Maybe Int)
-    , _cStatusDetails :: !(Maybe Text)
-    , _cMaxErrors :: !(Maybe Text)
-    , _cInstanceIds :: !(Maybe [Text])
-    , _cOutputS3Region :: !(Maybe Text)
-    , _cTargets :: !(Maybe [Target])
-    , _cCommandId :: !(Maybe Text)
-    , _cParameters :: !(Maybe (Map Text [Text]))
-    , _cDocumentVersion :: !(Maybe Text)
-    , _cComment :: !(Maybe Text)
-    , _cCompletedCount :: !(Maybe Int)
+    , _cTargetCount        :: !(Maybe Int)
+    , _cOutputS3KeyPrefix  :: !(Maybe Text)
+    , _cDocumentName       :: !(Maybe Text)
+    , _cErrorCount         :: !(Maybe Int)
+    , _cStatusDetails      :: !(Maybe Text)
+    , _cMaxErrors          :: !(Maybe Text)
+    , _cInstanceIds        :: !(Maybe [Text])
+    , _cOutputS3Region     :: !(Maybe Text)
+    , _cTargets            :: !(Maybe [Target])
+    , _cCommandId          :: !(Maybe Text)
+    , _cParameters         :: !(Maybe (Map Text [Text]))
+    , _cDocumentVersion    :: !(Maybe Text)
+    , _cComment            :: !(Maybe Text)
+    , _cCompletedCount     :: !(Maybe Int)
     , _cOutputS3BucketName :: !(Maybe Text)
-    , _cMaxConcurrency :: !(Maybe Text)
-    , _cRequestedDateTime :: !(Maybe POSIX)
-    , _cServiceRole :: !(Maybe Text)
+    , _cMaxConcurrency     :: !(Maybe Text)
+    , _cRequestedDateTime  :: !(Maybe POSIX)
+    , _cServiceRole        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1479,7 +1479,7 @@ instance NFData Command
 -- /See:/ 'commandFilter' smart constructor.
 data CommandFilter =
   CommandFilter'
-    { _cfKey :: !CommandFilterKey
+    { _cfKey   :: !CommandFilterKey
     , _cfValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1521,21 +1521,21 @@ instance ToJSON CommandFilter where
 -- /See:/ 'commandInvocation' smart constructor.
 data CommandInvocation =
   CommandInvocation'
-    { _comInstanceId :: !(Maybe Text)
-    , _comStatus :: !(Maybe CommandInvocationStatus)
+    { _comInstanceId         :: !(Maybe Text)
+    , _comStatus             :: !(Maybe CommandInvocationStatus)
     , _comNotificationConfig :: !(Maybe NotificationConfig)
-    , _comCommandPlugins :: !(Maybe [CommandPlugin])
-    , _comDocumentName :: !(Maybe Text)
-    , _comStandardErrorURL :: !(Maybe Text)
-    , _comStatusDetails :: !(Maybe Text)
-    , _comStandardOutputURL :: !(Maybe Text)
-    , _comCommandId :: !(Maybe Text)
-    , _comDocumentVersion :: !(Maybe Text)
-    , _comComment :: !(Maybe Text)
-    , _comTraceOutput :: !(Maybe Text)
-    , _comInstanceName :: !(Maybe Text)
-    , _comRequestedDateTime :: !(Maybe POSIX)
-    , _comServiceRole :: !(Maybe Text)
+    , _comCommandPlugins     :: !(Maybe [CommandPlugin])
+    , _comDocumentName       :: !(Maybe Text)
+    , _comStandardErrorURL   :: !(Maybe Text)
+    , _comStatusDetails      :: !(Maybe Text)
+    , _comStandardOutputURL  :: !(Maybe Text)
+    , _comCommandId          :: !(Maybe Text)
+    , _comDocumentVersion    :: !(Maybe Text)
+    , _comComment            :: !(Maybe Text)
+    , _comTraceOutput        :: !(Maybe Text)
+    , _comInstanceName       :: !(Maybe Text)
+    , _comRequestedDateTime  :: !(Maybe POSIX)
+    , _comServiceRole        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1691,17 +1691,17 @@ instance NFData CommandInvocation
 -- /See:/ 'commandPlugin' smart constructor.
 data CommandPlugin =
   CommandPlugin'
-    { _cpStatus :: !(Maybe CommandPluginStatus)
-    , _cpResponseStartDateTime :: !(Maybe POSIX)
-    , _cpOutputS3KeyPrefix :: !(Maybe Text)
-    , _cpStandardErrorURL :: !(Maybe Text)
-    , _cpResponseCode :: !(Maybe Int)
-    , _cpStatusDetails :: !(Maybe Text)
-    , _cpOutput :: !(Maybe Text)
-    , _cpStandardOutputURL :: !(Maybe Text)
-    , _cpName :: !(Maybe Text)
-    , _cpOutputS3Region :: !(Maybe Text)
-    , _cpOutputS3BucketName :: !(Maybe Text)
+    { _cpStatus                 :: !(Maybe CommandPluginStatus)
+    , _cpResponseStartDateTime  :: !(Maybe POSIX)
+    , _cpOutputS3KeyPrefix      :: !(Maybe Text)
+    , _cpStandardErrorURL       :: !(Maybe Text)
+    , _cpResponseCode           :: !(Maybe Int)
+    , _cpStatusDetails          :: !(Maybe Text)
+    , _cpOutput                 :: !(Maybe Text)
+    , _cpStandardOutputURL      :: !(Maybe Text)
+    , _cpName                   :: !(Maybe Text)
+    , _cpOutputS3Region         :: !(Maybe Text)
+    , _cpOutputS3BucketName     :: !(Maybe Text)
     , _cpResponseFinishDateTime :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1834,7 +1834,7 @@ instance NFData CommandPlugin
 -- /See:/ 'complianceExecutionSummary' smart constructor.
 data ComplianceExecutionSummary =
   ComplianceExecutionSummary'
-    { _cesExecutionId :: !(Maybe Text)
+    { _cesExecutionId   :: !(Maybe Text)
     , _cesExecutionType :: !(Maybe Text)
     , _cesExecutionTime :: !POSIX
     }
@@ -1901,15 +1901,15 @@ instance ToJSON ComplianceExecutionSummary where
 -- /See:/ 'complianceItem' smart constructor.
 data ComplianceItem =
   ComplianceItem'
-    { _ciStatus :: !(Maybe ComplianceStatus)
-    , _ciResourceId :: !(Maybe Text)
-    , _ciResourceType :: !(Maybe Text)
-    , _ciSeverity :: !(Maybe ComplianceSeverity)
+    { _ciStatus           :: !(Maybe ComplianceStatus)
+    , _ciResourceId       :: !(Maybe Text)
+    , _ciResourceType     :: !(Maybe Text)
+    , _ciSeverity         :: !(Maybe ComplianceSeverity)
     , _ciExecutionSummary :: !(Maybe ComplianceExecutionSummary)
-    , _ciDetails :: !(Maybe (Map Text Text))
-    , _ciId :: !(Maybe Text)
-    , _ciComplianceType :: !(Maybe Text)
-    , _ciTitle :: !(Maybe Text)
+    , _ciDetails          :: !(Maybe (Map Text Text))
+    , _ciId               :: !(Maybe Text)
+    , _ciComplianceType   :: !(Maybe Text)
+    , _ciTitle            :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2010,11 +2010,11 @@ instance NFData ComplianceItem
 -- /See:/ 'complianceItemEntry' smart constructor.
 data ComplianceItemEntry =
   ComplianceItemEntry'
-    { _cieDetails :: !(Maybe (Map Text Text))
-    , _cieId :: !(Maybe Text)
-    , _cieTitle :: !(Maybe Text)
+    { _cieDetails  :: !(Maybe (Map Text Text))
+    , _cieId       :: !(Maybe Text)
+    , _cieTitle    :: !(Maybe Text)
     , _cieSeverity :: !ComplianceSeverity
-    , _cieStatus :: !ComplianceStatus
+    , _cieStatus   :: !ComplianceStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2087,8 +2087,8 @@ instance ToJSON ComplianceItemEntry where
 data ComplianceStringFilter =
   ComplianceStringFilter'
     { _csfValues :: !(Maybe (List1 Text))
-    , _csfKey :: !(Maybe Text)
-    , _csfType :: !(Maybe ComplianceQueryOperatorType)
+    , _csfKey    :: !(Maybe Text)
+    , _csfType   :: !(Maybe ComplianceQueryOperatorType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2139,8 +2139,8 @@ instance ToJSON ComplianceStringFilter where
 data ComplianceSummaryItem =
   ComplianceSummaryItem'
     { _csiNonCompliantSummary :: !(Maybe NonCompliantSummary)
-    , _csiCompliantSummary :: !(Maybe CompliantSummary)
-    , _csiComplianceType :: !(Maybe Text)
+    , _csiCompliantSummary    :: !(Maybe CompliantSummary)
+    , _csiComplianceType      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2196,7 +2196,7 @@ instance NFData ComplianceSummaryItem
 -- /See:/ 'compliantSummary' smart constructor.
 data CompliantSummary =
   CompliantSummary'
-    { _csCompliantCount :: !(Maybe Int)
+    { _csCompliantCount  :: !(Maybe Int)
     , _csSeveritySummary :: !(Maybe SeveritySummary)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2239,14 +2239,14 @@ instance NFData CompliantSummary
 -- /See:/ 'createAssociationBatchRequestEntry' smart constructor.
 data CreateAssociationBatchRequestEntry =
   CreateAssociationBatchRequestEntry'
-    { _cabreInstanceId :: !(Maybe Text)
+    { _cabreInstanceId         :: !(Maybe Text)
     , _cabreScheduleExpression :: !(Maybe Text)
-    , _cabreOutputLocation :: !(Maybe InstanceAssociationOutputLocation)
-    , _cabreTargets :: !(Maybe [Target])
-    , _cabreParameters :: !(Maybe (Map Text [Text]))
-    , _cabreDocumentVersion :: !(Maybe Text)
-    , _cabreAssociationName :: !(Maybe Text)
-    , _cabreName :: !Text
+    , _cabreOutputLocation     :: !(Maybe InstanceAssociationOutputLocation)
+    , _cabreTargets            :: !(Maybe [Target])
+    , _cabreParameters         :: !(Maybe (Map Text [Text]))
+    , _cabreDocumentVersion    :: !(Maybe Text)
+    , _cabreAssociationName    :: !(Maybe Text)
+    , _cabreName               :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2363,7 +2363,7 @@ instance ToJSON CreateAssociationBatchRequestEntry where
 -- /See:/ 'describeActivationsFilter' smart constructor.
 data DescribeActivationsFilter =
   DescribeActivationsFilter'
-    { _dafFilterKey :: !(Maybe DescribeActivationsFilterKeys)
+    { _dafFilterKey    :: !(Maybe DescribeActivationsFilterKeys)
     , _dafFilterValues :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2410,7 +2410,7 @@ instance ToJSON DescribeActivationsFilter where
 data DocumentDefaultVersionDescription =
   DocumentDefaultVersionDescription'
     { _ddvdDefaultVersion :: !(Maybe Text)
-    , _ddvdName :: !(Maybe Text)
+    , _ddvdName           :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2454,24 +2454,24 @@ instance NFData DocumentDefaultVersionDescription
 -- /See:/ 'documentDescription' smart constructor.
 data DocumentDescription =
   DocumentDescription'
-    { _dStatus :: !(Maybe DocumentStatus)
-    , _dDocumentType :: !(Maybe DocumentType)
-    , _dHash :: !(Maybe Text)
-    , _dSchemaVersion :: !(Maybe Text)
-    , _dSha1 :: !(Maybe Text)
-    , _dDefaultVersion :: !(Maybe Text)
-    , _dTargetType :: !(Maybe Text)
-    , _dOwner :: !(Maybe Text)
-    , _dPlatformTypes :: !(Maybe [PlatformType])
-    , _dCreatedDate :: !(Maybe POSIX)
-    , _dDocumentFormat :: !(Maybe DocumentFormat)
-    , _dName :: !(Maybe Text)
-    , _dHashType :: !(Maybe DocumentHashType)
-    , _dParameters :: !(Maybe [DocumentParameter])
+    { _dStatus          :: !(Maybe DocumentStatus)
+    , _dDocumentType    :: !(Maybe DocumentType)
+    , _dHash            :: !(Maybe Text)
+    , _dSchemaVersion   :: !(Maybe Text)
+    , _dSha1            :: !(Maybe Text)
+    , _dDefaultVersion  :: !(Maybe Text)
+    , _dTargetType      :: !(Maybe Text)
+    , _dOwner           :: !(Maybe Text)
+    , _dPlatformTypes   :: !(Maybe [PlatformType])
+    , _dCreatedDate     :: !(Maybe POSIX)
+    , _dDocumentFormat  :: !(Maybe DocumentFormat)
+    , _dName            :: !(Maybe Text)
+    , _dHashType        :: !(Maybe DocumentHashType)
+    , _dParameters      :: !(Maybe [DocumentParameter])
     , _dDocumentVersion :: !(Maybe Text)
-    , _dDescription :: !(Maybe Text)
-    , _dTags :: !(Maybe [Tag])
-    , _dLatestVersion :: !(Maybe Text)
+    , _dDescription     :: !(Maybe Text)
+    , _dTags            :: !(Maybe [Tag])
+    , _dLatestVersion   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2646,7 +2646,7 @@ instance NFData DocumentDescription
 -- /See:/ 'documentFilter' smart constructor.
 data DocumentFilter =
   DocumentFilter'
-    { _dfKey :: !DocumentFilterKey
+    { _dfKey   :: !DocumentFilterKey
     , _dfValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2688,15 +2688,15 @@ instance ToJSON DocumentFilter where
 -- /See:/ 'documentIdentifier' smart constructor.
 data DocumentIdentifier =
   DocumentIdentifier'
-    { _diDocumentType :: !(Maybe DocumentType)
-    , _diSchemaVersion :: !(Maybe Text)
-    , _diTargetType :: !(Maybe Text)
-    , _diOwner :: !(Maybe Text)
-    , _diPlatformTypes :: !(Maybe [PlatformType])
-    , _diDocumentFormat :: !(Maybe DocumentFormat)
-    , _diName :: !(Maybe Text)
+    { _diDocumentType    :: !(Maybe DocumentType)
+    , _diSchemaVersion   :: !(Maybe Text)
+    , _diTargetType      :: !(Maybe Text)
+    , _diOwner           :: !(Maybe Text)
+    , _diPlatformTypes   :: !(Maybe [PlatformType])
+    , _diDocumentFormat  :: !(Maybe DocumentFormat)
+    , _diName            :: !(Maybe Text)
     , _diDocumentVersion :: !(Maybe Text)
-    , _diTags :: !(Maybe [Tag])
+    , _diTags            :: !(Maybe [Tag])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2817,7 +2817,7 @@ instance NFData DocumentIdentifier
 data DocumentKeyValuesFilter =
   DocumentKeyValuesFilter'
     { _dkvfValues :: !(Maybe [Text])
-    , _dkvfKey :: !(Maybe Text)
+    , _dkvfKey    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2855,10 +2855,10 @@ instance ToJSON DocumentKeyValuesFilter where
 -- /See:/ 'documentParameter' smart constructor.
 data DocumentParameter =
   DocumentParameter'
-    { _dpName :: !(Maybe Text)
+    { _dpName         :: !(Maybe Text)
     , _dpDefaultValue :: !(Maybe Text)
-    , _dpType :: !(Maybe DocumentParameterType)
-    , _dpDescription :: !(Maybe Text)
+    , _dpType         :: !(Maybe DocumentParameterType)
+    , _dpDescription  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2918,10 +2918,10 @@ instance NFData DocumentParameter
 -- /See:/ 'documentVersionInfo' smart constructor.
 data DocumentVersionInfo =
   DocumentVersionInfo'
-    { _dviCreatedDate :: !(Maybe POSIX)
-    , _dviDocumentFormat :: !(Maybe DocumentFormat)
-    , _dviName :: !(Maybe Text)
-    , _dviDocumentVersion :: !(Maybe Text)
+    { _dviCreatedDate      :: !(Maybe POSIX)
+    , _dviDocumentFormat   :: !(Maybe DocumentFormat)
+    , _dviName             :: !(Maybe Text)
+    , _dviDocumentVersion  :: !(Maybe Text)
     , _dviIsDefaultVersion :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2994,7 +2994,7 @@ instance NFData DocumentVersionInfo
 -- /See:/ 'effectivePatch' smart constructor.
 data EffectivePatch =
   EffectivePatch'
-    { _epPatch :: !(Maybe Patch)
+    { _epPatch       :: !(Maybe Patch)
     , _epPatchStatus :: !(Maybe PatchStatus)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3034,8 +3034,8 @@ instance NFData EffectivePatch
 -- /See:/ 'failedCreateAssociation' smart constructor.
 data FailedCreateAssociation =
   FailedCreateAssociation'
-    { _fcaEntry :: !(Maybe CreateAssociationBatchRequestEntry)
-    , _fcaFault :: !(Maybe Fault)
+    { _fcaEntry   :: !(Maybe CreateAssociationBatchRequestEntry)
+    , _fcaFault   :: !(Maybe Fault)
     , _fcaMessage :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3086,9 +3086,9 @@ instance NFData FailedCreateAssociation
 -- /See:/ 'failureDetails' smart constructor.
 data FailureDetails =
   FailureDetails'
-    { _fdFailureType :: !(Maybe Text)
+    { _fdFailureType  :: !(Maybe Text)
     , _fdFailureStage :: !(Maybe Text)
-    , _fdDetails :: !(Maybe (Map Text [Text]))
+    , _fdDetails      :: !(Maybe (Map Text [Text]))
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3137,7 +3137,7 @@ instance NFData FailureDetails
 -- /See:/ 'instanceAggregatedAssociationOverview' smart constructor.
 data InstanceAggregatedAssociationOverview =
   InstanceAggregatedAssociationOverview'
-    { _iaaoDetailedStatus :: !(Maybe Text)
+    { _iaaoDetailedStatus                           :: !(Maybe Text)
     , _iaaoInstanceAssociationStatusAggregatedCount :: !(Maybe (Map Text Int))
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3189,9 +3189,9 @@ instance NFData InstanceAggregatedAssociationOverview
 -- /See:/ 'instanceAssociation' smart constructor.
 data InstanceAssociation =
   InstanceAssociation'
-    { _iaAssociationId :: !(Maybe Text)
-    , _iaInstanceId :: !(Maybe Text)
-    , _iaContent :: !(Maybe Text)
+    { _iaAssociationId      :: !(Maybe Text)
+    , _iaInstanceId         :: !(Maybe Text)
+    , _iaContent            :: !(Maybe Text)
     , _iaAssociationVersion :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3327,18 +3327,18 @@ instance NFData InstanceAssociationOutputURL
 -- /See:/ 'instanceAssociationStatusInfo' smart constructor.
 data InstanceAssociationStatusInfo =
   InstanceAssociationStatusInfo'
-    { _iasiAssociationId :: !(Maybe Text)
-    , _iasiInstanceId :: !(Maybe Text)
-    , _iasiDetailedStatus :: !(Maybe Text)
-    , _iasiStatus :: !(Maybe Text)
-    , _iasiOutputURL :: !(Maybe InstanceAssociationOutputURL)
-    , _iasiExecutionSummary :: !(Maybe Text)
-    , _iasiName :: !(Maybe Text)
-    , _iasiErrorCode :: !(Maybe Text)
-    , _iasiDocumentVersion :: !(Maybe Text)
+    { _iasiAssociationId      :: !(Maybe Text)
+    , _iasiInstanceId         :: !(Maybe Text)
+    , _iasiDetailedStatus     :: !(Maybe Text)
+    , _iasiStatus             :: !(Maybe Text)
+    , _iasiOutputURL          :: !(Maybe InstanceAssociationOutputURL)
+    , _iasiExecutionSummary   :: !(Maybe Text)
+    , _iasiName               :: !(Maybe Text)
+    , _iasiErrorCode          :: !(Maybe Text)
+    , _iasiDocumentVersion    :: !(Maybe Text)
     , _iasiAssociationVersion :: !(Maybe Text)
-    , _iasiExecutionDate :: !(Maybe POSIX)
-    , _iasiAssociationName :: !(Maybe Text)
+    , _iasiExecutionDate      :: !(Maybe POSIX)
+    , _iasiAssociationName    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3682,7 +3682,7 @@ instance NFData InstanceInformation
 -- /See:/ 'instanceInformationFilter' smart constructor.
 data InstanceInformationFilter =
   InstanceInformationFilter'
-    { _iifKey :: !InstanceInformationFilterKey
+    { _iifKey      :: !InstanceInformationFilterKey
     , _iifValueSet :: !(List1 Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3726,7 +3726,7 @@ instance ToJSON InstanceInformationFilter where
 -- /See:/ 'instanceInformationStringFilter' smart constructor.
 data InstanceInformationStringFilter =
   InstanceInformationStringFilter'
-    { _iisfKey :: !Text
+    { _iisfKey    :: !Text
     , _iisfValues :: !(List1 Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3770,19 +3770,19 @@ instance ToJSON InstanceInformationStringFilter where
 -- /See:/ 'instancePatchState' smart constructor.
 data InstancePatchState =
   InstancePatchState'
-    { _ipsOwnerInformation :: !(Maybe (Sensitive Text))
-    , _ipsFailedCount :: !(Maybe Int)
+    { _ipsOwnerInformation    :: !(Maybe (Sensitive Text))
+    , _ipsFailedCount         :: !(Maybe Int)
     , _ipsInstalledOtherCount :: !(Maybe Int)
-    , _ipsMissingCount :: !(Maybe Int)
-    , _ipsNotApplicableCount :: !(Maybe Int)
-    , _ipsInstalledCount :: !(Maybe Int)
-    , _ipsSnapshotId :: !(Maybe Text)
-    , _ipsInstanceId :: !Text
-    , _ipsPatchGroup :: !Text
-    , _ipsBaselineId :: !Text
-    , _ipsOperationStartTime :: !POSIX
-    , _ipsOperationEndTime :: !POSIX
-    , _ipsOperation :: !PatchOperationType
+    , _ipsMissingCount        :: !(Maybe Int)
+    , _ipsNotApplicableCount  :: !(Maybe Int)
+    , _ipsInstalledCount      :: !(Maybe Int)
+    , _ipsSnapshotId          :: !(Maybe Text)
+    , _ipsInstanceId          :: !Text
+    , _ipsPatchGroup          :: !Text
+    , _ipsBaselineId          :: !Text
+    , _ipsOperationStartTime  :: !POSIX
+    , _ipsOperationEndTime    :: !POSIX
+    , _ipsOperation           :: !PatchOperationType
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -3928,9 +3928,9 @@ instance NFData InstancePatchState
 -- /See:/ 'instancePatchStateFilter' smart constructor.
 data InstancePatchStateFilter =
   InstancePatchStateFilter'
-    { _ipsfKey :: !Text
+    { _ipsfKey    :: !Text
     , _ipsfValues :: !(List1 Text)
-    , _ipsfType :: !InstancePatchStateOperatorType
+    , _ipsfType   :: !InstancePatchStateOperatorType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3985,7 +3985,7 @@ instance ToJSON InstancePatchStateFilter where
 data InventoryAggregator =
   InventoryAggregator'
     { _iaAggregators :: !(Maybe (List1 InventoryAggregator))
-    , _iaExpression :: !(Maybe Text)
+    , _iaExpression  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4029,13 +4029,13 @@ instance ToJSON InventoryAggregator where
 -- /See:/ 'inventoryDeletionStatusItem' smart constructor.
 data InventoryDeletionStatusItem =
   InventoryDeletionStatusItem'
-    { _idsiTypeName :: !(Maybe Text)
+    { _idsiTypeName             :: !(Maybe Text)
     , _idsiLastStatusUpdateTime :: !(Maybe POSIX)
-    , _idsiLastStatusMessage :: !(Maybe Text)
-    , _idsiDeletionSummary :: !(Maybe InventoryDeletionSummary)
-    , _idsiLastStatus :: !(Maybe InventoryDeletionStatus)
-    , _idsiDeletionStartTime :: !(Maybe POSIX)
-    , _idsiDeletionId :: !(Maybe Text)
+    , _idsiLastStatusMessage    :: !(Maybe Text)
+    , _idsiDeletionSummary      :: !(Maybe InventoryDeletionSummary)
+    , _idsiLastStatus           :: !(Maybe InventoryDeletionStatus)
+    , _idsiDeletionStartTime    :: !(Maybe POSIX)
+    , _idsiDeletionId           :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4129,8 +4129,8 @@ instance NFData InventoryDeletionStatusItem
 data InventoryDeletionSummary =
   InventoryDeletionSummary'
     { _idsRemainingCount :: !(Maybe Int)
-    , _idsSummaryItems :: !(Maybe [InventoryDeletionSummaryItem])
-    , _idsTotalCount :: !(Maybe Int)
+    , _idsSummaryItems   :: !(Maybe [InventoryDeletionSummaryItem])
+    , _idsTotalCount     :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4185,8 +4185,8 @@ instance NFData InventoryDeletionSummary
 data InventoryDeletionSummaryItem =
   InventoryDeletionSummaryItem'
     { _idsiRemainingCount :: !(Maybe Int)
-    , _idsiCount :: !(Maybe Int)
-    , _idsiVersion :: !(Maybe Text)
+    , _idsiCount          :: !(Maybe Int)
+    , _idsiVersion        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4240,8 +4240,8 @@ instance NFData InventoryDeletionSummaryItem
 -- /See:/ 'inventoryFilter' smart constructor.
 data InventoryFilter =
   InventoryFilter'
-    { _ifType :: !(Maybe InventoryQueryOperatorType)
-    , _ifKey :: !Text
+    { _ifType   :: !(Maybe InventoryQueryOperatorType)
+    , _ifKey    :: !Text
     , _ifValues :: !(List1 Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -4295,12 +4295,12 @@ instance ToJSON InventoryFilter where
 -- /See:/ 'inventoryItem' smart constructor.
 data InventoryItem =
   InventoryItem'
-    { _iiContext :: !(Maybe (Map Text Text))
-    , _iiContentHash :: !(Maybe Text)
-    , _iiContent :: !(Maybe [Map Text Text])
-    , _iiTypeName :: !Text
+    { _iiContext       :: !(Maybe (Map Text Text))
+    , _iiContentHash   :: !(Maybe Text)
+    , _iiContent       :: !(Maybe [Map Text Text])
+    , _iiTypeName      :: !Text
     , _iiSchemaVersion :: !Text
-    , _iiCaptureTime :: !Text
+    , _iiCaptureTime   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4381,7 +4381,7 @@ instance ToJSON InventoryItem where
 -- /See:/ 'inventoryItemAttribute' smart constructor.
 data InventoryItemAttribute =
   InventoryItemAttribute'
-    { _iiaName :: !Text
+    { _iiaName     :: !Text
     , _iiaDataType :: !InventoryAttributeDataType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -4425,10 +4425,10 @@ instance NFData InventoryItemAttribute
 -- /See:/ 'inventoryItemSchema' smart constructor.
 data InventoryItemSchema =
   InventoryItemSchema'
-    { _iisVersion :: !(Maybe Text)
+    { _iisVersion     :: !(Maybe Text)
     , _iisDisplayName :: !(Maybe Text)
-    , _iisTypeName :: !Text
-    , _iisAttributes :: !(List1 InventoryItemAttribute)
+    , _iisTypeName    :: !Text
+    , _iisAttributes  :: !(List1 InventoryItemAttribute)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4492,7 +4492,7 @@ instance NFData InventoryItemSchema
 data InventoryResultEntity =
   InventoryResultEntity'
     { _ireData :: !(Maybe (Map Text InventoryResultItem))
-    , _ireId :: !(Maybe Text)
+    , _ireId   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4533,11 +4533,11 @@ instance NFData InventoryResultEntity
 -- /See:/ 'inventoryResultItem' smart constructor.
 data InventoryResultItem =
   InventoryResultItem'
-    { _iriContentHash :: !(Maybe Text)
-    , _iriCaptureTime :: !(Maybe Text)
-    , _iriTypeName :: !Text
+    { _iriContentHash   :: !(Maybe Text)
+    , _iriCaptureTime   :: !(Maybe Text)
+    , _iriTypeName      :: !Text
     , _iriSchemaVersion :: !Text
-    , _iriContent :: ![Map Text Text]
+    , _iriContent       :: ![Map Text Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4609,9 +4609,9 @@ instance NFData InventoryResultItem
 -- /See:/ 'loggingInfo' smart constructor.
 data LoggingInfo =
   LoggingInfo'
-    { _liS3KeyPrefix :: !(Maybe Text)
+    { _liS3KeyPrefix  :: !(Maybe Text)
     , _liS3BucketName :: !Text
-    , _liS3Region :: !Text
+    , _liS3Region     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4675,7 +4675,7 @@ instance ToJSON LoggingInfo where
 -- /See:/ 'maintenanceWindowAutomationParameters' smart constructor.
 data MaintenanceWindowAutomationParameters =
   MaintenanceWindowAutomationParameters'
-    { _mwapParameters :: !(Maybe (Map Text [Text]))
+    { _mwapParameters      :: !(Maybe (Map Text [Text]))
     , _mwapDocumentVersion :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -4731,12 +4731,12 @@ instance ToJSON MaintenanceWindowAutomationParameters where
 -- /See:/ 'maintenanceWindowExecution' smart constructor.
 data MaintenanceWindowExecution =
   MaintenanceWindowExecution'
-    { _mweStatus :: !(Maybe MaintenanceWindowExecutionStatus)
-    , _mweStartTime :: !(Maybe POSIX)
+    { _mweStatus            :: !(Maybe MaintenanceWindowExecutionStatus)
+    , _mweStartTime         :: !(Maybe POSIX)
     , _mweWindowExecutionId :: !(Maybe Text)
-    , _mweStatusDetails :: !(Maybe Text)
-    , _mweEndTime :: !(Maybe POSIX)
-    , _mweWindowId :: !(Maybe Text)
+    , _mweStatusDetails     :: !(Maybe Text)
+    , _mweEndTime           :: !(Maybe POSIX)
+    , _mweWindowId          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4816,14 +4816,14 @@ instance NFData MaintenanceWindowExecution
 -- /See:/ 'maintenanceWindowExecutionTaskIdentity' smart constructor.
 data MaintenanceWindowExecutionTaskIdentity =
   MaintenanceWindowExecutionTaskIdentity'
-    { _mwetiStatus :: !(Maybe MaintenanceWindowExecutionStatus)
-    , _mwetiTaskExecutionId :: !(Maybe Text)
-    , _mwetiStartTime :: !(Maybe POSIX)
-    , _mwetiTaskType :: !(Maybe MaintenanceWindowTaskType)
-    , _mwetiTaskARN :: !(Maybe Text)
+    { _mwetiStatus            :: !(Maybe MaintenanceWindowExecutionStatus)
+    , _mwetiTaskExecutionId   :: !(Maybe Text)
+    , _mwetiStartTime         :: !(Maybe POSIX)
+    , _mwetiTaskType          :: !(Maybe MaintenanceWindowTaskType)
+    , _mwetiTaskARN           :: !(Maybe Text)
     , _mwetiWindowExecutionId :: !(Maybe Text)
-    , _mwetiStatusDetails :: !(Maybe Text)
-    , _mwetiEndTime :: !(Maybe POSIX)
+    , _mwetiStatusDetails     :: !(Maybe Text)
+    , _mwetiEndTime           :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4925,18 +4925,18 @@ instance NFData MaintenanceWindowExecutionTaskIdentity
 -- /See:/ 'maintenanceWindowExecutionTaskInvocationIdentity' smart constructor.
 data MaintenanceWindowExecutionTaskInvocationIdentity =
   MaintenanceWindowExecutionTaskInvocationIdentity'
-    { _mwetiiStatus :: !(Maybe MaintenanceWindowExecutionStatus)
-    , _mwetiiExecutionId :: !(Maybe Text)
-    , _mwetiiTaskExecutionId :: !(Maybe Text)
-    , _mwetiiStartTime :: !(Maybe POSIX)
-    , _mwetiiInvocationId :: !(Maybe Text)
-    , _mwetiiOwnerInformation :: !(Maybe (Sensitive Text))
-    , _mwetiiTaskType :: !(Maybe MaintenanceWindowTaskType)
-    , _mwetiiWindowTargetId :: !(Maybe Text)
+    { _mwetiiStatus            :: !(Maybe MaintenanceWindowExecutionStatus)
+    , _mwetiiExecutionId       :: !(Maybe Text)
+    , _mwetiiTaskExecutionId   :: !(Maybe Text)
+    , _mwetiiStartTime         :: !(Maybe POSIX)
+    , _mwetiiInvocationId      :: !(Maybe Text)
+    , _mwetiiOwnerInformation  :: !(Maybe (Sensitive Text))
+    , _mwetiiTaskType          :: !(Maybe MaintenanceWindowTaskType)
+    , _mwetiiWindowTargetId    :: !(Maybe Text)
     , _mwetiiWindowExecutionId :: !(Maybe Text)
-    , _mwetiiStatusDetails :: !(Maybe Text)
-    , _mwetiiEndTime :: !(Maybe POSIX)
-    , _mwetiiParameters :: !(Maybe (Sensitive Text))
+    , _mwetiiStatusDetails     :: !(Maybe Text)
+    , _mwetiiEndTime           :: !(Maybe POSIX)
+    , _mwetiiParameters        :: !(Maybe (Sensitive Text))
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -5086,7 +5086,7 @@ instance NFData MaintenanceWindowExecutionTaskInvocationIdentity
 data MaintenanceWindowFilter =
   MaintenanceWindowFilter'
     { _mwfValues :: !(Maybe [Text])
-    , _mwfKey :: !(Maybe Text)
+    , _mwfKey    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -5124,12 +5124,12 @@ instance ToJSON MaintenanceWindowFilter where
 -- /See:/ 'maintenanceWindowIdentity' smart constructor.
 data MaintenanceWindowIdentity =
   MaintenanceWindowIdentity'
-    { _mwiEnabled :: !(Maybe Bool)
-    , _mwiName :: !(Maybe Text)
-    , _mwiCutoff :: !(Maybe Nat)
+    { _mwiEnabled     :: !(Maybe Bool)
+    , _mwiName        :: !(Maybe Text)
+    , _mwiCutoff      :: !(Maybe Nat)
     , _mwiDescription :: !(Maybe (Sensitive Text))
-    , _mwiDuration :: !(Maybe Nat)
-    , _mwiWindowId :: !(Maybe Text)
+    , _mwiDuration    :: !(Maybe Nat)
+    , _mwiWindowId    :: !(Maybe Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -5208,8 +5208,8 @@ instance NFData MaintenanceWindowIdentity
 -- /See:/ 'maintenanceWindowLambdaParameters' smart constructor.
 data MaintenanceWindowLambdaParameters =
   MaintenanceWindowLambdaParameters'
-    { _mwlpPayload :: !(Maybe (Sensitive Base64))
-    , _mwlpQualifier :: !(Maybe Text)
+    { _mwlpPayload       :: !(Maybe (Sensitive Base64))
+    , _mwlpQualifier     :: !(Maybe Text)
     , _mwlpClientContext :: !(Maybe Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
@@ -5276,14 +5276,14 @@ instance ToJSON MaintenanceWindowLambdaParameters where
 -- /See:/ 'maintenanceWindowRunCommandParameters' smart constructor.
 data MaintenanceWindowRunCommandParameters =
   MaintenanceWindowRunCommandParameters'
-    { _mwrcpServiceRoleARN :: !(Maybe Text)
+    { _mwrcpServiceRoleARN     :: !(Maybe Text)
     , _mwrcpNotificationConfig :: !(Maybe NotificationConfig)
-    , _mwrcpDocumentHashType :: !(Maybe DocumentHashType)
-    , _mwrcpOutputS3KeyPrefix :: !(Maybe Text)
-    , _mwrcpParameters :: !(Maybe (Map Text [Text]))
-    , _mwrcpDocumentHash :: !(Maybe Text)
-    , _mwrcpTimeoutSeconds :: !(Maybe Nat)
-    , _mwrcpComment :: !(Maybe Text)
+    , _mwrcpDocumentHashType   :: !(Maybe DocumentHashType)
+    , _mwrcpOutputS3KeyPrefix  :: !(Maybe Text)
+    , _mwrcpParameters         :: !(Maybe (Map Text [Text]))
+    , _mwrcpDocumentHash       :: !(Maybe Text)
+    , _mwrcpTimeoutSeconds     :: !(Maybe Nat)
+    , _mwrcpComment            :: !(Maybe Text)
     , _mwrcpOutputS3BucketName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -5417,7 +5417,7 @@ instance ToJSON MaintenanceWindowRunCommandParameters where
 data MaintenanceWindowStepFunctionsParameters =
   MaintenanceWindowStepFunctionsParameters'
     { _mwsfpInput :: !(Maybe (Sensitive Text))
-    , _mwsfpName :: !(Maybe Text)
+    , _mwsfpName  :: !(Maybe Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -5466,13 +5466,13 @@ instance ToJSON MaintenanceWindowStepFunctionsParameters where
 -- /See:/ 'maintenanceWindowTarget' smart constructor.
 data MaintenanceWindowTarget =
   MaintenanceWindowTarget'
-    { _mResourceType :: !(Maybe MaintenanceWindowResourceType)
+    { _mResourceType     :: !(Maybe MaintenanceWindowResourceType)
     , _mOwnerInformation :: !(Maybe (Sensitive Text))
-    , _mWindowTargetId :: !(Maybe Text)
-    , _mName :: !(Maybe Text)
-    , _mTargets :: !(Maybe [Target])
-    , _mDescription :: !(Maybe (Sensitive Text))
-    , _mWindowId :: !(Maybe Text)
+    , _mWindowTargetId   :: !(Maybe Text)
+    , _mName             :: !(Maybe Text)
+    , _mTargets          :: !(Maybe [Target])
+    , _mDescription      :: !(Maybe (Sensitive Text))
+    , _mWindowId         :: !(Maybe Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -5710,10 +5710,10 @@ instance NFData MaintenanceWindowTask
 -- /See:/ 'maintenanceWindowTaskInvocationParameters' smart constructor.
 data MaintenanceWindowTaskInvocationParameters =
   MaintenanceWindowTaskInvocationParameters'
-    { _mwtipAutomation :: !(Maybe MaintenanceWindowAutomationParameters)
+    { _mwtipAutomation    :: !(Maybe MaintenanceWindowAutomationParameters)
     , _mwtipStepFunctions :: !(Maybe MaintenanceWindowStepFunctionsParameters)
-    , _mwtipRunCommand :: !(Maybe MaintenanceWindowRunCommandParameters)
-    , _mwtipLambda :: !(Maybe MaintenanceWindowLambdaParameters)
+    , _mwtipRunCommand    :: !(Maybe MaintenanceWindowRunCommandParameters)
+    , _mwtipLambda        :: !(Maybe MaintenanceWindowLambdaParameters)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -5835,7 +5835,7 @@ instance ToJSON MaintenanceWindowTaskParameterValueExpression where
 data NonCompliantSummary =
   NonCompliantSummary'
     { _ncsNonCompliantCount :: !(Maybe Int)
-    , _ncsSeveritySummary :: !(Maybe SeveritySummary)
+    , _ncsSeveritySummary   :: !(Maybe SeveritySummary)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -5881,8 +5881,8 @@ instance NFData NonCompliantSummary
 data NotificationConfig =
   NotificationConfig'
     { _ncNotificationEvents :: !(Maybe [NotificationEvent])
-    , _ncNotificationType :: !(Maybe NotificationType)
-    , _ncNotificationARN :: !(Maybe Text)
+    , _ncNotificationType   :: !(Maybe NotificationType)
+    , _ncNotificationARN    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -5947,10 +5947,10 @@ instance ToJSON NotificationConfig where
 -- /See:/ 'parameter' smart constructor.
 data Parameter =
   Parameter'
-    { _pValue :: !(Maybe Text)
-    , _pName :: !(Maybe Text)
+    { _pValue   :: !(Maybe Text)
+    , _pName    :: !(Maybe Text)
     , _pVersion :: !(Maybe Integer)
-    , _pType :: !(Maybe ParameterType)
+    , _pType    :: !(Maybe ParameterType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -6006,14 +6006,14 @@ instance NFData Parameter
 data ParameterHistory =
   ParameterHistory'
     { _phLastModifiedDate :: !(Maybe POSIX)
-    , _phKeyId :: !(Maybe Text)
-    , _phValue :: !(Maybe Text)
-    , _phName :: !(Maybe Text)
-    , _phVersion :: !(Maybe Integer)
+    , _phKeyId            :: !(Maybe Text)
+    , _phValue            :: !(Maybe Text)
+    , _phName             :: !(Maybe Text)
+    , _phVersion          :: !(Maybe Integer)
     , _phLastModifiedUser :: !(Maybe Text)
-    , _phAllowedPattern :: !(Maybe Text)
-    , _phType :: !(Maybe ParameterType)
-    , _phDescription :: !(Maybe Text)
+    , _phAllowedPattern   :: !(Maybe Text)
+    , _phType             :: !(Maybe ParameterType)
+    , _phDescription      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -6116,13 +6116,13 @@ instance NFData ParameterHistory
 data ParameterMetadata =
   ParameterMetadata'
     { _pmLastModifiedDate :: !(Maybe POSIX)
-    , _pmKeyId :: !(Maybe Text)
-    , _pmName :: !(Maybe Text)
-    , _pmVersion :: !(Maybe Integer)
+    , _pmKeyId            :: !(Maybe Text)
+    , _pmName             :: !(Maybe Text)
+    , _pmVersion          :: !(Maybe Integer)
     , _pmLastModifiedUser :: !(Maybe Text)
-    , _pmAllowedPattern :: !(Maybe Text)
-    , _pmType :: !(Maybe ParameterType)
-    , _pmDescription :: !(Maybe Text)
+    , _pmAllowedPattern   :: !(Maybe Text)
+    , _pmType             :: !(Maybe ParameterType)
+    , _pmDescription      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -6218,7 +6218,7 @@ data ParameterStringFilter =
   ParameterStringFilter'
     { _psfValues :: !(Maybe (List1 Text))
     , _psfOption :: !(Maybe Text)
-    , _psfKey :: !Text
+    , _psfKey    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -6270,7 +6270,7 @@ instance ToJSON ParameterStringFilter where
 -- /See:/ 'parametersFilter' smart constructor.
 data ParametersFilter =
   ParametersFilter'
-    { _pKey :: !ParametersFilterKey
+    { _pKey    :: !ParametersFilterKey
     , _pValues :: !(List1 Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -6312,19 +6312,19 @@ instance ToJSON ParametersFilter where
 -- /See:/ 'patch' smart constructor.
 data Patch =
   Patch'
-    { _pVendor :: !(Maybe Text)
-    , _pMsrcSeverity :: !(Maybe Text)
-    , _pProductFamily :: !(Maybe Text)
+    { _pVendor         :: !(Maybe Text)
+    , _pMsrcSeverity   :: !(Maybe Text)
+    , _pProductFamily  :: !(Maybe Text)
     , _pClassification :: !(Maybe Text)
-    , _pMsrcNumber :: !(Maybe Text)
-    , _pLanguage :: !(Maybe Text)
-    , _pKbNumber :: !(Maybe Text)
-    , _pContentURL :: !(Maybe Text)
-    , _pId :: !(Maybe Text)
-    , _pReleaseDate :: !(Maybe POSIX)
-    , _pTitle :: !(Maybe Text)
-    , _pProduct :: !(Maybe Text)
-    , _pDescription :: !(Maybe Text)
+    , _pMsrcNumber     :: !(Maybe Text)
+    , _pLanguage       :: !(Maybe Text)
+    , _pKbNumber       :: !(Maybe Text)
+    , _pContentURL     :: !(Maybe Text)
+    , _pId             :: !(Maybe Text)
+    , _pReleaseDate    :: !(Maybe POSIX)
+    , _pTitle          :: !(Maybe Text)
+    , _pProduct        :: !(Maybe Text)
+    , _pDescription    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -6457,11 +6457,11 @@ instance NFData Patch
 -- /See:/ 'patchBaselineIdentity' smart constructor.
 data PatchBaselineIdentity =
   PatchBaselineIdentity'
-    { _pbiBaselineName :: !(Maybe Text)
+    { _pbiBaselineName        :: !(Maybe Text)
     , _pbiBaselineDescription :: !(Maybe Text)
-    , _pbiOperatingSystem :: !(Maybe OperatingSystem)
-    , _pbiDefaultBaseline :: !(Maybe Bool)
-    , _pbiBaselineId :: !(Maybe Text)
+    , _pbiOperatingSystem     :: !(Maybe OperatingSystem)
+    , _pbiDefaultBaseline     :: !(Maybe Bool)
+    , _pbiBaselineId          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -6533,12 +6533,12 @@ instance NFData PatchBaselineIdentity
 -- /See:/ 'patchComplianceData' smart constructor.
 data PatchComplianceData =
   PatchComplianceData'
-    { _pcdTitle :: !Text
-    , _pcdKBId :: !Text
+    { _pcdTitle          :: !Text
+    , _pcdKBId           :: !Text
     , _pcdClassification :: !Text
-    , _pcdSeverity :: !Text
-    , _pcdState :: !PatchComplianceDataState
-    , _pcdInstalledTime :: !POSIX
+    , _pcdSeverity       :: !Text
+    , _pcdState          :: !PatchComplianceDataState
+    , _pcdInstalledTime  :: !POSIX
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -6980,7 +6980,7 @@ instance NFData PatchComplianceData
 -- /See:/ 'patchFilter' smart constructor.
 data PatchFilter =
   PatchFilter'
-    { _pfKey :: !PatchFilterKey
+    { _pfKey    :: !PatchFilterKey
     , _pfValues :: !(List1 Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -7067,7 +7067,7 @@ instance ToJSON PatchFilterGroup where
 data PatchGroupPatchBaselineMapping =
   PatchGroupPatchBaselineMapping'
     { _pgpbmBaselineIdentity :: !(Maybe PatchBaselineIdentity)
-    , _pgpbmPatchGroup :: !(Maybe Text)
+    , _pgpbmPatchGroup       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -7113,7 +7113,7 @@ instance NFData PatchGroupPatchBaselineMapping
 data PatchOrchestratorFilter =
   PatchOrchestratorFilter'
     { _pofValues :: !(Maybe [Text])
-    , _pofKey :: !(Maybe Text)
+    , _pofKey    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -7152,9 +7152,9 @@ instance ToJSON PatchOrchestratorFilter where
 data PatchRule =
   PatchRule'
     { _prEnableNonSecurity :: !(Maybe Bool)
-    , _prComplianceLevel :: !(Maybe PatchComplianceLevel)
-    , _prPatchFilterGroup :: !PatchFilterGroup
-    , _prApproveAfterDays :: !Nat
+    , _prComplianceLevel   :: !(Maybe PatchComplianceLevel)
+    , _prPatchFilterGroup  :: !PatchFilterGroup
+    , _prApproveAfterDays  :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -7268,8 +7268,8 @@ instance ToJSON PatchRuleGroup where
 -- /See:/ 'patchSource' smart constructor.
 data PatchSource =
   PatchSource'
-    { _psName :: !Text
-    , _psProducts :: !(List1 Text)
+    { _psName          :: !Text
+    , _psProducts      :: !(List1 Text)
     , _psConfiguration :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
@@ -7336,9 +7336,9 @@ instance ToJSON PatchSource where
 -- /See:/ 'patchStatus' smart constructor.
 data PatchStatus =
   PatchStatus'
-    { _psApprovalDate :: !(Maybe POSIX)
+    { _psApprovalDate     :: !(Maybe POSIX)
     , _psDeploymentStatus :: !(Maybe PatchDeploymentStatus)
-    , _psComplianceLevel :: !(Maybe PatchComplianceLevel)
+    , _psComplianceLevel  :: !(Maybe PatchComplianceLevel)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -7392,7 +7392,7 @@ instance NFData PatchStatus
 -- /See:/ 'resolvedTargets' smart constructor.
 data ResolvedTargets =
   ResolvedTargets'
-    { _rtTruncated :: !(Maybe Bool)
+    { _rtTruncated       :: !(Maybe Bool)
     , _rtParameterValues :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -7438,13 +7438,13 @@ instance NFData ResolvedTargets
 data ResourceComplianceSummaryItem =
   ResourceComplianceSummaryItem'
     { _rcsiNonCompliantSummary :: !(Maybe NonCompliantSummary)
-    , _rcsiStatus :: !(Maybe ComplianceStatus)
-    , _rcsiResourceId :: !(Maybe Text)
-    , _rcsiResourceType :: !(Maybe Text)
-    , _rcsiCompliantSummary :: !(Maybe CompliantSummary)
-    , _rcsiExecutionSummary :: !(Maybe ComplianceExecutionSummary)
-    , _rcsiOverallSeverity :: !(Maybe ComplianceSeverity)
-    , _rcsiComplianceType :: !(Maybe Text)
+    , _rcsiStatus              :: !(Maybe ComplianceStatus)
+    , _rcsiResourceId          :: !(Maybe Text)
+    , _rcsiResourceType        :: !(Maybe Text)
+    , _rcsiCompliantSummary    :: !(Maybe CompliantSummary)
+    , _rcsiExecutionSummary    :: !(Maybe ComplianceExecutionSummary)
+    , _rcsiOverallSeverity     :: !(Maybe ComplianceSeverity)
+    , _rcsiComplianceType      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -7546,12 +7546,12 @@ instance NFData ResourceComplianceSummaryItem
 -- /See:/ 'resourceDataSyncItem' smart constructor.
 data ResourceDataSyncItem =
   ResourceDataSyncItem'
-    { _rdsiLastSyncStatusMessage :: !(Maybe Text)
-    , _rdsiSyncCreatedTime :: !(Maybe POSIX)
-    , _rdsiLastSyncTime :: !(Maybe POSIX)
-    , _rdsiSyncName :: !(Maybe Text)
-    , _rdsiLastStatus :: !(Maybe LastResourceDataSyncStatus)
-    , _rdsiS3Destination :: !(Maybe ResourceDataSyncS3Destination)
+    { _rdsiLastSyncStatusMessage  :: !(Maybe Text)
+    , _rdsiSyncCreatedTime        :: !(Maybe POSIX)
+    , _rdsiLastSyncTime           :: !(Maybe POSIX)
+    , _rdsiSyncName               :: !(Maybe Text)
+    , _rdsiLastStatus             :: !(Maybe LastResourceDataSyncStatus)
+    , _rdsiS3Destination          :: !(Maybe ResourceDataSyncS3Destination)
     , _rdsiLastSuccessfulSyncTime :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -7644,11 +7644,11 @@ instance NFData ResourceDataSyncItem
 -- /See:/ 'resourceDataSyncS3Destination' smart constructor.
 data ResourceDataSyncS3Destination =
   ResourceDataSyncS3Destination'
-    { _rdssdPrefix :: !(Maybe Text)
+    { _rdssdPrefix       :: !(Maybe Text)
     , _rdssdAWSKMSKeyARN :: !(Maybe Text)
-    , _rdssdBucketName :: !Text
-    , _rdssdSyncFormat :: !ResourceDataSyncS3Format
-    , _rdssdRegion :: !Text
+    , _rdssdBucketName   :: !Text
+    , _rdssdSyncFormat   :: !ResourceDataSyncS3Format
+    , _rdssdRegion       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -7765,8 +7765,8 @@ instance ToJSON ResultAttribute where
 -- /See:/ 's3OutputLocation' smart constructor.
 data S3OutputLocation =
   S3OutputLocation'
-    { _solOutputS3KeyPrefix :: !(Maybe Text)
-    , _solOutputS3Region :: !(Maybe Text)
+    { _solOutputS3KeyPrefix  :: !(Maybe Text)
+    , _solOutputS3Region     :: !(Maybe Text)
     , _solOutputS3BucketName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -7862,12 +7862,12 @@ instance NFData S3OutputURL
 -- /See:/ 'severitySummary' smart constructor.
 data SeveritySummary =
   SeveritySummary'
-    { _ssLowCount :: !(Maybe Int)
-    , _ssUnspecifiedCount :: !(Maybe Int)
-    , _ssHighCount :: !(Maybe Int)
-    , _ssMediumCount :: !(Maybe Int)
+    { _ssLowCount           :: !(Maybe Int)
+    , _ssUnspecifiedCount   :: !(Maybe Int)
+    , _ssHighCount          :: !(Maybe Int)
+    , _ssMediumCount        :: !(Maybe Int)
     , _ssInformationalCount :: !(Maybe Int)
-    , _ssCriticalCount :: !(Maybe Int)
+    , _ssCriticalCount      :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -7945,22 +7945,22 @@ instance NFData SeveritySummary
 -- /See:/ 'stepExecution' smart constructor.
 data StepExecution =
   StepExecution'
-    { _seFailureDetails :: !(Maybe FailureDetails)
-    , _seInputs :: !(Maybe (Map Text Text))
-    , _seStepName :: !(Maybe Text)
-    , _seExecutionEndTime :: !(Maybe POSIX)
-    , _seFailureMessage :: !(Maybe Text)
-    , _seResponse :: !(Maybe Text)
-    , _seAction :: !(Maybe Text)
-    , _seResponseCode :: !(Maybe Text)
-    , _seStepStatus :: !(Maybe AutomationExecutionStatus)
+    { _seFailureDetails       :: !(Maybe FailureDetails)
+    , _seInputs               :: !(Maybe (Map Text Text))
+    , _seStepName             :: !(Maybe Text)
+    , _seExecutionEndTime     :: !(Maybe POSIX)
+    , _seFailureMessage       :: !(Maybe Text)
+    , _seResponse             :: !(Maybe Text)
+    , _seAction               :: !(Maybe Text)
+    , _seResponseCode         :: !(Maybe Text)
+    , _seStepStatus           :: !(Maybe AutomationExecutionStatus)
     , _seOverriddenParameters :: !(Maybe (Map Text [Text]))
-    , _seOutputs :: !(Maybe (Map Text [Text]))
-    , _seExecutionStartTime :: !(Maybe POSIX)
-    , _seMaxAttempts :: !(Maybe Int)
-    , _seStepExecutionId :: !(Maybe Text)
-    , _seTimeoutSeconds :: !(Maybe Integer)
-    , _seOnFailure :: !(Maybe Text)
+    , _seOutputs              :: !(Maybe (Map Text [Text]))
+    , _seExecutionStartTime   :: !(Maybe POSIX)
+    , _seMaxAttempts          :: !(Maybe Int)
+    , _seStepExecutionId      :: !(Maybe Text)
+    , _seTimeoutSeconds       :: !(Maybe Integer)
+    , _seOnFailure            :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -8122,7 +8122,7 @@ instance NFData StepExecution
 -- /See:/ 'stepExecutionFilter' smart constructor.
 data StepExecutionFilter =
   StepExecutionFilter'
-    { _sefKey :: !StepExecutionFilterKey
+    { _sefKey    :: !StepExecutionFilterKey
     , _sefValues :: !(List1 Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -8164,7 +8164,7 @@ instance ToJSON StepExecutionFilter where
 -- /See:/ 'tag' smart constructor.
 data Tag =
   Tag'
-    { _tagKey :: !Text
+    { _tagKey   :: !Text
     , _tagValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -8211,7 +8211,7 @@ instance ToJSON Tag where
 data Target =
   Target'
     { _tValues :: !(Maybe [Text])
-    , _tKey :: !(Maybe Text)
+    , _tKey    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

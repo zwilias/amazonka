@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,15 +63,15 @@ import Network.AWS.Response
 -- | /See:/ 'updateQualificationType' smart constructor.
 data UpdateQualificationType =
   UpdateQualificationType'
-    { _uqtTestDurationInSeconds :: !(Maybe Integer)
+    { _uqtTestDurationInSeconds   :: !(Maybe Integer)
     , _uqtQualificationTypeStatus :: !(Maybe QualificationTypeStatus)
-    , _uqtAnswerKey :: !(Maybe Text)
-    , _uqtTest :: !(Maybe Text)
-    , _uqtAutoGranted :: !(Maybe Bool)
-    , _uqtAutoGrantedValue :: !(Maybe Int)
-    , _uqtDescription :: !(Maybe Text)
-    , _uqtRetryDelayInSeconds :: !(Maybe Integer)
-    , _uqtQualificationTypeId :: !Text
+    , _uqtAnswerKey               :: !(Maybe Text)
+    , _uqtTest                    :: !(Maybe Text)
+    , _uqtAutoGranted             :: !(Maybe Bool)
+    , _uqtAutoGrantedValue        :: !(Maybe Int)
+    , _uqtDescription             :: !(Maybe Text)
+    , _uqtRetryDelayInSeconds     :: !(Maybe Integer)
+    , _uqtQualificationTypeId     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -201,7 +201,7 @@ instance ToQuery UpdateQualificationType where
 data UpdateQualificationTypeResponse =
   UpdateQualificationTypeResponse'
     { _uqtrsQualificationType :: !(Maybe QualificationType)
-    , _uqtrsResponseStatus :: !Int
+    , _uqtrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

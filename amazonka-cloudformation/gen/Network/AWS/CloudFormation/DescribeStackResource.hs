@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.Response
 -- /See:/ 'describeStackResource' smart constructor.
 data DescribeStackResource =
   DescribeStackResource'
-    { _dsrsStackName :: !Text
+    { _dsrsStackName         :: !Text
     , _dsrsLogicalResourceId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -116,7 +116,7 @@ instance ToQuery DescribeStackResource where
 data DescribeStackResourceResponse =
   DescribeStackResourceResponse'
     { _dsrrsStackResourceDetail :: !(Maybe StackResourceDetail)
-    , _dsrrsResponseStatus :: !Int
+    , _dsrrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

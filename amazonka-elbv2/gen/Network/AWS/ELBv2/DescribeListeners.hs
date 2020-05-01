@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,10 +50,10 @@ import Network.AWS.Response
 -- | /See:/ 'describeListeners' smart constructor.
 data DescribeListeners =
   DescribeListeners'
-    { _dlListenerARNs :: !(Maybe [Text])
+    { _dlListenerARNs    :: !(Maybe [Text])
     , _dlLoadBalancerARN :: !(Maybe Text)
-    , _dlMarker :: !(Maybe Text)
-    , _dlPageSize :: !(Maybe Nat)
+    , _dlMarker          :: !(Maybe Text)
+    , _dlPageSize        :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -135,8 +135,8 @@ instance ToQuery DescribeListeners where
 -- | /See:/ 'describeListenersResponse' smart constructor.
 data DescribeListenersResponse =
   DescribeListenersResponse'
-    { _dlsrsNextMarker :: !(Maybe Text)
-    , _dlsrsListeners :: !(Maybe [Listener])
+    { _dlsrsNextMarker     :: !(Maybe Text)
+    , _dlsrsListeners      :: !(Maybe [Listener])
     , _dlsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

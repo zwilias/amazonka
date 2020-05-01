@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- /See:/ 'getSDKTypes' smart constructor.
 data GetSDKTypes =
   GetSDKTypes'
-    { _gstLimit :: !(Maybe Int)
+    { _gstLimit    :: !(Maybe Int)
     , _gstPosition :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -101,8 +101,8 @@ instance ToQuery GetSDKTypes where
 -- /See:/ 'getSDKTypesResponse' smart constructor.
 data GetSDKTypesResponse =
   GetSDKTypesResponse'
-    { _gstrsItems :: !(Maybe [SDKType])
-    , _gstrsPosition :: !(Maybe Text)
+    { _gstrsItems          :: !(Maybe [SDKType])
+    , _gstrsPosition       :: !(Maybe Text)
     , _gstrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

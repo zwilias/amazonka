@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -102,7 +102,7 @@ instance ToQuery VerifyDomainIdentity where
 -- /See:/ 'verifyDomainIdentityResponse' smart constructor.
 data VerifyDomainIdentityResponse =
   VerifyDomainIdentityResponse'
-    { _vdirsResponseStatus :: !Int
+    { _vdirsResponseStatus    :: !Int
     , _vdirsVerificationToken :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

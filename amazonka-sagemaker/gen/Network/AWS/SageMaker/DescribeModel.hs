@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -104,13 +104,13 @@ instance ToQuery DescribeModel where
 -- | /See:/ 'describeModelResponse' smart constructor.
 data DescribeModelResponse =
   DescribeModelResponse'
-    { _dmrsVPCConfig :: !(Maybe VPCConfig)
-    , _dmrsResponseStatus :: !Int
-    , _dmrsModelName :: !Text
+    { _dmrsVPCConfig        :: !(Maybe VPCConfig)
+    , _dmrsResponseStatus   :: !Int
+    , _dmrsModelName        :: !Text
     , _dmrsPrimaryContainer :: !ContainerDefinition
     , _dmrsExecutionRoleARN :: !Text
-    , _dmrsCreationTime :: !POSIX
-    , _dmrsModelARN :: !Text
+    , _dmrsCreationTime     :: !POSIX
+    , _dmrsModelARN         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

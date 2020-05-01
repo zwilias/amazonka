@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,10 +53,10 @@ import Network.AWS.Response
 -- /See:/ 'startReplicationTask' smart constructor.
 data StartReplicationTask =
   StartReplicationTask'
-    { _srtCdcStartPosition :: !(Maybe Text)
-    , _srtCdcStopPosition :: !(Maybe Text)
-    , _srtCdcStartTime :: !(Maybe POSIX)
-    , _srtReplicationTaskARN :: !Text
+    { _srtCdcStartPosition         :: !(Maybe Text)
+    , _srtCdcStopPosition          :: !(Maybe Text)
+    , _srtCdcStartTime             :: !(Maybe POSIX)
+    , _srtReplicationTaskARN       :: !Text
     , _srtStartReplicationTaskType :: !StartReplicationTaskTypeValue
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -162,7 +162,7 @@ instance ToQuery StartReplicationTask where
 data StartReplicationTaskResponse =
   StartReplicationTaskResponse'
     { _srtrsReplicationTask :: !(Maybe ReplicationTask)
-    , _srtrsResponseStatus :: !Int
+    , _srtrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

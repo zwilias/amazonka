@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -123,11 +123,11 @@ instance ToQuery DescribeMaintenanceStartTime where
 -- /See:/ 'describeMaintenanceStartTimeResponse' smart constructor.
 data DescribeMaintenanceStartTimeResponse =
   DescribeMaintenanceStartTimeResponse'
-    { _dmstrsGatewayARN :: !(Maybe Text)
-    , _dmstrsMinuteOfHour :: !(Maybe Nat)
-    , _dmstrsHourOfDay :: !(Maybe Nat)
-    , _dmstrsTimezone :: !(Maybe Text)
-    , _dmstrsDayOfWeek :: !(Maybe Nat)
+    { _dmstrsGatewayARN     :: !(Maybe Text)
+    , _dmstrsMinuteOfHour   :: !(Maybe Nat)
+    , _dmstrsHourOfDay      :: !(Maybe Nat)
+    , _dmstrsTimezone       :: !(Maybe Text)
+    , _dmstrsDayOfWeek      :: !(Maybe Nat)
     , _dmstrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

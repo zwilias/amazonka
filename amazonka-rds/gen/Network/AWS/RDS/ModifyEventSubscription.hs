@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,10 +53,10 @@ import Network.AWS.Response
 -- /See:/ 'modifyEventSubscription' smart constructor.
 data ModifyEventSubscription =
   ModifyEventSubscription'
-    { _mesSNSTopicARN :: !(Maybe Text)
-    , _mesEnabled :: !(Maybe Bool)
-    , _mesSourceType :: !(Maybe Text)
-    , _mesEventCategories :: !(Maybe [Text])
+    { _mesSNSTopicARN      :: !(Maybe Text)
+    , _mesEnabled          :: !(Maybe Bool)
+    , _mesSourceType       :: !(Maybe Text)
+    , _mesEventCategories  :: !(Maybe [Text])
     , _mesSubscriptionName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -146,7 +146,7 @@ instance ToQuery ModifyEventSubscription where
 data ModifyEventSubscriptionResponse =
   ModifyEventSubscriptionResponse'
     { _mesrsEventSubscription :: !(Maybe EventSubscription)
-    , _mesrsResponseStatus :: !Int
+    , _mesrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

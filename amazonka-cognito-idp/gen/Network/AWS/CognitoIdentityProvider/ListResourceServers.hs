@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'listResourceServers' smart constructor.
 data ListResourceServers =
   ListResourceServers'
-    { _lrsNextToken :: !(Maybe Text)
+    { _lrsNextToken  :: !(Maybe Text)
     , _lrsMaxResults :: !(Maybe Nat)
     , _lrsUserPoolId :: !Text
     }
@@ -125,8 +125,8 @@ instance ToQuery ListResourceServers where
 -- | /See:/ 'listResourceServersResponse' smart constructor.
 data ListResourceServersResponse =
   ListResourceServersResponse'
-    { _lrsrsNextToken :: !(Maybe Text)
-    , _lrsrsResponseStatus :: !Int
+    { _lrsrsNextToken       :: !(Maybe Text)
+    , _lrsrsResponseStatus  :: !Int
     , _lrsrsResourceServers :: ![ResourceServerType]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

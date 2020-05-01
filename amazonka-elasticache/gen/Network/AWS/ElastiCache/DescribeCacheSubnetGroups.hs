@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,8 +54,8 @@ import Network.AWS.Response
 data DescribeCacheSubnetGroups =
   DescribeCacheSubnetGroups'
     { _dcsgCacheSubnetGroupName :: !(Maybe Text)
-    , _dcsgMarker :: !(Maybe Text)
-    , _dcsgMaxRecords :: !(Maybe Int)
+    , _dcsgMarker               :: !(Maybe Text)
+    , _dcsgMaxRecords           :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -134,9 +134,9 @@ instance ToQuery DescribeCacheSubnetGroups where
 -- /See:/ 'describeCacheSubnetGroupsResponse' smart constructor.
 data DescribeCacheSubnetGroupsResponse =
   DescribeCacheSubnetGroupsResponse'
-    { _dcsgrsMarker :: !(Maybe Text)
+    { _dcsgrsMarker            :: !(Maybe Text)
     , _dcsgrsCacheSubnetGroups :: !(Maybe [CacheSubnetGroup])
-    , _dcsgrsResponseStatus :: !Int
+    , _dcsgrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

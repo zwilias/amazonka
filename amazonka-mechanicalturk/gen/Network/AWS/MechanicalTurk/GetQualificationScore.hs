@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Response
 data GetQualificationScore =
   GetQualificationScore'
     { _gqsQualificationTypeId :: !Text
-    , _gqsWorkerId :: !Text
+    , _gqsWorkerId            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -116,7 +116,7 @@ instance ToQuery GetQualificationScore where
 -- | /See:/ 'getQualificationScoreResponse' smart constructor.
 data GetQualificationScoreResponse =
   GetQualificationScoreResponse'
-    { _gqsrsQualification :: !(Maybe Qualification)
+    { _gqsrsQualification  :: !(Maybe Qualification)
     , _gqsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

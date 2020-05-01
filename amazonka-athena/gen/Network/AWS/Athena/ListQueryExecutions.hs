@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.Response
 -- | /See:/ 'listQueryExecutions' smart constructor.
 data ListQueryExecutions =
   ListQueryExecutions'
-    { _lqeNextToken :: !(Maybe Text)
+    { _lqeNextToken  :: !(Maybe Text)
     , _lqeMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -121,8 +121,8 @@ instance ToQuery ListQueryExecutions where
 data ListQueryExecutionsResponse =
   ListQueryExecutionsResponse'
     { _lqersQueryExecutionIds :: !(Maybe (List1 Text))
-    , _lqersNextToken :: !(Maybe Text)
-    , _lqersResponseStatus :: !Int
+    , _lqersNextToken         :: !(Maybe Text)
+    , _lqersResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

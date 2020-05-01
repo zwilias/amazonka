@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,8 +63,8 @@ import Network.AWS.StorageGateway.Types.Product
 data ListVolumes =
   ListVolumes'
     { _lvGatewayARN :: !(Maybe Text)
-    , _lvMarker :: !(Maybe Text)
-    , _lvLimit :: !(Maybe Nat)
+    , _lvMarker     :: !(Maybe Text)
+    , _lvLimit      :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -141,9 +141,9 @@ instance ToQuery ListVolumes where
 -- | /See:/ 'listVolumesResponse' smart constructor.
 data ListVolumesResponse =
   ListVolumesResponse'
-    { _lvrsGatewayARN :: !(Maybe Text)
-    , _lvrsMarker :: !(Maybe Text)
-    , _lvrsVolumeInfos :: !(Maybe [VolumeInfo])
+    { _lvrsGatewayARN     :: !(Maybe Text)
+    , _lvrsMarker         :: !(Maybe Text)
+    , _lvrsVolumeInfos    :: !(Maybe [VolumeInfo])
     , _lvrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.ServiceCatalog.Types.Product
 data DescribeProduct =
   DescribeProduct'
     { _dpAcceptLanguage :: !(Maybe Text)
-    , _dpId :: !Text
+    , _dpId             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -109,9 +109,9 @@ instance ToQuery DescribeProduct where
 -- | /See:/ 'describeProductResponse' smart constructor.
 data DescribeProductResponse =
   DescribeProductResponse'
-    { _ddrsProductViewSummary :: !(Maybe ProductViewSummary)
+    { _ddrsProductViewSummary    :: !(Maybe ProductViewSummary)
     , _ddrsProvisioningArtifacts :: !(Maybe [ProvisioningArtifact])
-    , _ddrsResponseStatus :: !Int
+    , _ddrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

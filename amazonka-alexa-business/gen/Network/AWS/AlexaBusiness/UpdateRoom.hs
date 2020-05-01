@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,11 +46,11 @@ import Network.AWS.Response
 -- | /See:/ 'updateRoom' smart constructor.
 data UpdateRoom =
   UpdateRoom'
-    { _urProfileARN :: !(Maybe Text)
+    { _urProfileARN         :: !(Maybe Text)
     , _urProviderCalendarId :: !(Maybe Text)
-    , _urRoomARN :: !(Maybe Text)
-    , _urRoomName :: !(Maybe Text)
-    , _urDescription :: !(Maybe Text)
+    , _urRoomARN            :: !(Maybe Text)
+    , _urRoomName           :: !(Maybe Text)
+    , _urDescription        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

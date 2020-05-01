@@ -981,9 +981,9 @@ import Network.AWS.IoT.ListThingGroupsForThing
 import Network.AWS.IoT.ListThingPrincipals
 import Network.AWS.IoT.ListThingRegistrationTaskReports
 import Network.AWS.IoT.ListThingRegistrationTasks
-import Network.AWS.IoT.ListThingTypes
 import Network.AWS.IoT.ListThings
 import Network.AWS.IoT.ListThingsInThingGroup
+import Network.AWS.IoT.ListThingTypes
 import Network.AWS.IoT.ListTopicRules
 import Network.AWS.IoT.ListV2LoggingLevels
 import Network.AWS.IoT.RegisterCACertificate

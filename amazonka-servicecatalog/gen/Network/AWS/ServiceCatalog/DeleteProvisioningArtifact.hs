@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.ServiceCatalog.Types.Product
 -- | /See:/ 'deleteProvisioningArtifact' smart constructor.
 data DeleteProvisioningArtifact =
   DeleteProvisioningArtifact'
-    { _dpapAcceptLanguage :: !(Maybe Text)
-    , _dpapProductId :: !Text
+    { _dpapAcceptLanguage         :: !(Maybe Text)
+    , _dpapProductId              :: !Text
     , _dpapProvisioningArtifactId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 data DescribeConfigurationRevision =
   DescribeConfigurationRevision'
     { _dcrConfigurationRevision :: !Text
-    , _dcrConfigurationId :: !Text
+    , _dcrConfigurationId       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -112,9 +112,9 @@ instance ToQuery DescribeConfigurationRevision where
 data DescribeConfigurationRevisionResponse =
   DescribeConfigurationRevisionResponse'
     { _dcrrsConfigurationId :: !(Maybe Text)
-    , _dcrrsData :: !(Maybe Text)
-    , _dcrrsDescription :: !(Maybe Text)
-    , _dcrrsResponseStatus :: !Int
+    , _dcrrsData            :: !(Maybe Text)
+    , _dcrrsDescription     :: !(Maybe Text)
+    , _dcrrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,10 +54,10 @@ import Network.AWS.Response
 -- /See:/ 'attachClassicLinkVPC' smart constructor.
 data AttachClassicLinkVPC =
   AttachClassicLinkVPC'
-    { _aclvDryRun :: !(Maybe Bool)
-    , _aclvGroups :: ![Text]
+    { _aclvDryRun     :: !(Maybe Bool)
+    , _aclvGroups     :: ![Text]
     , _aclvInstanceId :: !Text
-    , _aclvVPCId :: !Text
+    , _aclvVPCId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -137,7 +137,7 @@ instance ToQuery AttachClassicLinkVPC where
 -- /See:/ 'attachClassicLinkVPCResponse' smart constructor.
 data AttachClassicLinkVPCResponse =
   AttachClassicLinkVPCResponse'
-    { _aclvrsReturn :: !(Maybe Bool)
+    { _aclvrsReturn         :: !(Maybe Bool)
     , _aclvrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

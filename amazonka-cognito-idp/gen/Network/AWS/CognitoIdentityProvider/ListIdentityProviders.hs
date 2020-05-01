@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'listIdentityProviders' smart constructor.
 data ListIdentityProviders =
   ListIdentityProviders'
-    { _lipNextToken :: !(Maybe Text)
+    { _lipNextToken  :: !(Maybe Text)
     , _lipMaxResults :: !(Maybe Nat)
     , _lipUserPoolId :: !Text
     }
@@ -125,9 +125,9 @@ instance ToQuery ListIdentityProviders where
 -- | /See:/ 'listIdentityProvidersResponse' smart constructor.
 data ListIdentityProvidersResponse =
   ListIdentityProvidersResponse'
-    { _liprsNextToken :: !(Maybe Text)
+    { _liprsNextToken      :: !(Maybe Text)
     , _liprsResponseStatus :: !Int
-    , _liprsProviders :: ![ProviderDescription]
+    , _liprsProviders      :: ![ProviderDescription]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

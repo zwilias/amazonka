@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,8 +57,8 @@ import Network.AWS.Response
 data Decrypt =
   Decrypt'
     { _decEncryptionContext :: !(Maybe (Map Text Text))
-    , _decGrantTokens :: !(Maybe [Text])
-    , _decCiphertextBlob :: !Base64
+    , _decGrantTokens       :: !(Maybe [Text])
+    , _decCiphertextBlob    :: !Base64
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -136,8 +136,8 @@ instance ToQuery Decrypt where
 -- | /See:/ 'decryptResponse' smart constructor.
 data DecryptResponse =
   DecryptResponse'
-    { _drsKeyId :: !(Maybe Text)
-    , _drsPlaintext :: !(Maybe (Sensitive Base64))
+    { _drsKeyId          :: !(Maybe Text)
+    , _drsPlaintext      :: !(Maybe (Sensitive Base64))
     , _drsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

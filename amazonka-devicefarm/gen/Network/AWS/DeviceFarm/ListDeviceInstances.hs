@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'listDeviceInstances' smart constructor.
 data ListDeviceInstances =
   ListDeviceInstances'
-    { _ldiNextToken :: !(Maybe Text)
+    { _ldiNextToken  :: !(Maybe Text)
     , _ldiMaxResults :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -109,9 +109,9 @@ instance ToQuery ListDeviceInstances where
 -- | /See:/ 'listDeviceInstancesResponse' smart constructor.
 data ListDeviceInstancesResponse =
   ListDeviceInstancesResponse'
-    { _ldirsNextToken :: !(Maybe Text)
+    { _ldirsNextToken       :: !(Maybe Text)
     , _ldirsDeviceInstances :: !(Maybe [DeviceInstance])
-    , _ldirsResponseStatus :: !Int
+    , _ldirsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

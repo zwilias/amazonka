@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -59,7 +59,7 @@ import Network.AWS.WAFRegional.Types.Product
 -- | /See:/ 'createIPSet' smart constructor.
 data CreateIPSet =
   CreateIPSet'
-    { _cisName :: !Text
+    { _cisName        :: !Text
     , _cisChangeToken :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -123,8 +123,8 @@ instance ToQuery CreateIPSet where
 -- | /See:/ 'createIPSetResponse' smart constructor.
 data CreateIPSetResponse =
   CreateIPSetResponse'
-    { _cisrsChangeToken :: !(Maybe Text)
-    , _cisrsIPSet :: !(Maybe IPSet)
+    { _cisrsChangeToken    :: !(Maybe Text)
+    , _cisrsIPSet          :: !(Maybe IPSet)
     , _cisrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

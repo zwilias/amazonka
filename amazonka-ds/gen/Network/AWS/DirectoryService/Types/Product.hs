@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,7 +27,7 @@ import Network.AWS.Prelude
 data Attribute =
   Attribute'
     { _aValue :: !(Maybe Text)
-    , _aName :: !(Maybe Text)
+    , _aName  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -70,9 +70,9 @@ instance ToJSON Attribute where
 -- /See:/ 'computer' smart constructor.
 data Computer =
   Computer'
-    { _cComputerId :: !(Maybe Text)
+    { _cComputerId         :: !(Maybe Text)
     , _cComputerAttributes :: !(Maybe [Attribute])
-    , _cComputerName :: !(Maybe Text)
+    , _cComputerName       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -127,7 +127,7 @@ instance NFData Computer
 -- /See:/ 'conditionalForwarder' smart constructor.
 data ConditionalForwarder =
   ConditionalForwarder'
-    { _cfDNSIPAddrs :: !(Maybe [Text])
+    { _cfDNSIPAddrs       :: !(Maybe [Text])
     , _cfRemoteDomainName :: !(Maybe Text)
     , _cfReplicationScope :: !(Maybe ReplicationScope)
     }
@@ -185,9 +185,9 @@ instance NFData ConditionalForwarder
 -- /See:/ 'directoryConnectSettings' smart constructor.
 data DirectoryConnectSettings =
   DirectoryConnectSettings'
-    { _dcsVPCId :: !Text
-    , _dcsSubnetIds :: ![Text]
-    , _dcsCustomerDNSIPs :: ![Text]
+    { _dcsVPCId            :: !Text
+    , _dcsSubnetIds        :: ![Text]
+    , _dcsCustomerDNSIPs   :: ![Text]
     , _dcsCustomerUserName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -254,11 +254,11 @@ instance ToJSON DirectoryConnectSettings where
 -- /See:/ 'directoryConnectSettingsDescription' smart constructor.
 data DirectoryConnectSettingsDescription =
   DirectoryConnectSettingsDescription'
-    { _dcsdCustomerUserName :: !(Maybe Text)
-    , _dcsdSubnetIds :: !(Maybe [Text])
-    , _dcsdVPCId :: !(Maybe Text)
-    , _dcsdSecurityGroupId :: !(Maybe Text)
-    , _dcsdConnectIPs :: !(Maybe [Text])
+    { _dcsdCustomerUserName  :: !(Maybe Text)
+    , _dcsdSubnetIds         :: !(Maybe [Text])
+    , _dcsdVPCId             :: !(Maybe Text)
+    , _dcsdSecurityGroupId   :: !(Maybe Text)
+    , _dcsdConnectIPs        :: !(Maybe [Text])
     , _dcsdAvailabilityZones :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -561,10 +561,10 @@ data DirectoryLimits =
   DirectoryLimits'
     { _dlConnectedDirectoriesCurrentCount :: !(Maybe Nat)
     , _dlCloudOnlyMicrosoftADLimitReached :: !(Maybe Bool)
-    , _dlConnectedDirectoriesLimit :: !(Maybe Nat)
+    , _dlConnectedDirectoriesLimit        :: !(Maybe Nat)
     , _dlConnectedDirectoriesLimitReached :: !(Maybe Bool)
-    , _dlCloudOnlyMicrosoftADLimit :: !(Maybe Nat)
-    , _dlCloudOnlyDirectoriesLimit :: !(Maybe Nat)
+    , _dlCloudOnlyMicrosoftADLimit        :: !(Maybe Nat)
+    , _dlCloudOnlyDirectoriesLimit        :: !(Maybe Nat)
     , _dlCloudOnlyDirectoriesCurrentCount :: !(Maybe Nat)
     , _dlCloudOnlyDirectoriesLimitReached :: !(Maybe Bool)
     , _dlCloudOnlyMicrosoftADCurrentCount :: !(Maybe Nat)
@@ -701,7 +701,7 @@ instance NFData DirectoryLimits
 -- /See:/ 'directoryVPCSettings' smart constructor.
 data DirectoryVPCSettings =
   DirectoryVPCSettings'
-    { _dvsVPCId :: !Text
+    { _dvsVPCId     :: !Text
     , _dvsSubnetIds :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -744,9 +744,9 @@ instance ToJSON DirectoryVPCSettings where
 -- /See:/ 'directoryVPCSettingsDescription' smart constructor.
 data DirectoryVPCSettingsDescription =
   DirectoryVPCSettingsDescription'
-    { _dvsdSubnetIds :: !(Maybe [Text])
-    , _dvsdVPCId :: !(Maybe Text)
-    , _dvsdSecurityGroupId :: !(Maybe Text)
+    { _dvsdSubnetIds         :: !(Maybe [Text])
+    , _dvsdVPCId             :: !(Maybe Text)
+    , _dvsdSecurityGroupId   :: !(Maybe Text)
     , _dvsdAvailabilityZones :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -812,16 +812,16 @@ instance NFData DirectoryVPCSettingsDescription
 -- /See:/ 'domainController' smart constructor.
 data DomainController =
   DomainController'
-    { _dcStatus :: !(Maybe DomainControllerStatus)
-    , _dcDirectoryId :: !(Maybe Text)
-    , _dcVPCId :: !(Maybe Text)
-    , _dcLaunchTime :: !(Maybe POSIX)
-    , _dcSubnetId :: !(Maybe Text)
-    , _dcAvailabilityZone :: !(Maybe Text)
+    { _dcStatus                    :: !(Maybe DomainControllerStatus)
+    , _dcDirectoryId               :: !(Maybe Text)
+    , _dcVPCId                     :: !(Maybe Text)
+    , _dcLaunchTime                :: !(Maybe POSIX)
+    , _dcSubnetId                  :: !(Maybe Text)
+    , _dcAvailabilityZone          :: !(Maybe Text)
     , _dcStatusLastUpdatedDateTime :: !(Maybe POSIX)
-    , _dcStatusReason :: !(Maybe Text)
-    , _dcDNSIPAddr :: !(Maybe Text)
-    , _dcDomainControllerId :: !(Maybe Text)
+    , _dcStatusReason              :: !(Maybe Text)
+    , _dcDNSIPAddr                 :: !(Maybe Text)
+    , _dcDomainControllerId        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -936,10 +936,10 @@ instance NFData DomainController
 -- /See:/ 'eventTopic' smart constructor.
 data EventTopic =
   EventTopic'
-    { _etStatus :: !(Maybe TopicStatus)
-    , _etDirectoryId :: !(Maybe Text)
-    , _etTopicName :: !(Maybe Text)
-    , _etTopicARN :: !(Maybe Text)
+    { _etStatus          :: !(Maybe TopicStatus)
+    , _etDirectoryId     :: !(Maybe Text)
+    , _etTopicName       :: !(Maybe Text)
+    , _etTopicARN        :: !(Maybe Text)
     , _etCreatedDateTime :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1009,7 +1009,7 @@ instance NFData EventTopic
 -- /See:/ 'ipRoute' smart constructor.
 data IPRoute =
   IPRoute'
-    { _irCidrIP :: !(Maybe Text)
+    { _irCidrIP      :: !(Maybe Text)
     , _irDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1049,12 +1049,12 @@ instance ToJSON IPRoute where
 -- /See:/ 'ipRouteInfo' smart constructor.
 data IPRouteInfo =
   IPRouteInfo'
-    { _iriDirectoryId :: !(Maybe Text)
+    { _iriDirectoryId         :: !(Maybe Text)
     , _iriIPRouteStatusReason :: !(Maybe Text)
-    , _iriAddedDateTime :: !(Maybe POSIX)
-    , _iriCidrIP :: !(Maybe Text)
-    , _iriIPRouteStatusMsg :: !(Maybe IPRouteStatusMsg)
-    , _iriDescription :: !(Maybe Text)
+    , _iriAddedDateTime       :: !(Maybe POSIX)
+    , _iriCidrIP              :: !(Maybe Text)
+    , _iriIPRouteStatusMsg    :: !(Maybe IPRouteStatusMsg)
+    , _iriDescription         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1134,14 +1134,14 @@ instance NFData IPRouteInfo
 -- /See:/ 'radiusSettings' smart constructor.
 data RadiusSettings =
   RadiusSettings'
-    { _rsDisplayLabel :: !(Maybe Text)
-    , _rsRadiusRetries :: !(Maybe Nat)
+    { _rsDisplayLabel           :: !(Maybe Text)
+    , _rsRadiusRetries          :: !(Maybe Nat)
     , _rsAuthenticationProtocol :: !(Maybe RadiusAuthenticationProtocol)
-    , _rsRadiusServers :: !(Maybe [Text])
-    , _rsUseSameUsername :: !(Maybe Bool)
-    , _rsSharedSecret :: !(Maybe (Sensitive Text))
-    , _rsRadiusTimeout :: !(Maybe Nat)
-    , _rsRadiusPort :: !(Maybe Nat)
+    , _rsRadiusServers          :: !(Maybe [Text])
+    , _rsUseSameUsername        :: !(Maybe Bool)
+    , _rsSharedSecret           :: !(Maybe (Sensitive Text))
+    , _rsRadiusTimeout          :: !(Maybe Nat)
+    , _rsRadiusPort             :: !(Maybe Nat)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -1253,13 +1253,13 @@ instance ToJSON RadiusSettings where
 -- /See:/ 'schemaExtensionInfo' smart constructor.
 data SchemaExtensionInfo =
   SchemaExtensionInfo'
-    { _seiDirectoryId :: !(Maybe Text)
-    , _seiSchemaExtensionId :: !(Maybe Text)
+    { _seiDirectoryId                 :: !(Maybe Text)
+    , _seiSchemaExtensionId           :: !(Maybe Text)
     , _seiSchemaExtensionStatusReason :: !(Maybe Text)
-    , _seiSchemaExtensionStatus :: !(Maybe SchemaExtensionStatus)
-    , _seiDescription :: !(Maybe Text)
-    , _seiEndDateTime :: !(Maybe POSIX)
-    , _seiStartDateTime :: !(Maybe POSIX)
+    , _seiSchemaExtensionStatus       :: !(Maybe SchemaExtensionStatus)
+    , _seiDescription                 :: !(Maybe Text)
+    , _seiEndDateTime                 :: !(Maybe POSIX)
+    , _seiStartDateTime               :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1352,12 +1352,12 @@ instance NFData SchemaExtensionInfo
 -- /See:/ 'snapshot' smart constructor.
 data Snapshot =
   Snapshot'
-    { _sStatus :: !(Maybe SnapshotStatus)
+    { _sStatus      :: !(Maybe SnapshotStatus)
     , _sDirectoryId :: !(Maybe Text)
-    , _sStartTime :: !(Maybe POSIX)
-    , _sName :: !(Maybe Text)
-    , _sType :: !(Maybe SnapshotType)
-    , _sSnapshotId :: !(Maybe Text)
+    , _sStartTime   :: !(Maybe POSIX)
+    , _sName        :: !(Maybe Text)
+    , _sType        :: !(Maybe SnapshotType)
+    , _sSnapshotId  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1435,7 +1435,7 @@ data SnapshotLimits =
   SnapshotLimits'
     { _slManualSnapshotsLimitReached :: !(Maybe Bool)
     , _slManualSnapshotsCurrentCount :: !(Maybe Nat)
-    , _slManualSnapshotsLimit :: !(Maybe Nat)
+    , _slManualSnapshotsLimit        :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1497,7 +1497,7 @@ instance NFData SnapshotLimits
 -- /See:/ 'tag' smart constructor.
 data Tag =
   Tag'
-    { _tagKey :: !Text
+    { _tagKey   :: !Text
     , _tagValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1541,16 +1541,16 @@ instance ToJSON Tag where
 -- /See:/ 'trust' smart constructor.
 data Trust =
   Trust'
-    { _tDirectoryId :: !(Maybe Text)
-    , _tTrustState :: !(Maybe TrustState)
-    , _tLastUpdatedDateTime :: !(Maybe POSIX)
-    , _tTrustDirection :: !(Maybe TrustDirection)
+    { _tDirectoryId              :: !(Maybe Text)
+    , _tTrustState               :: !(Maybe TrustState)
+    , _tLastUpdatedDateTime      :: !(Maybe POSIX)
+    , _tTrustDirection           :: !(Maybe TrustDirection)
     , _tStateLastUpdatedDateTime :: !(Maybe POSIX)
-    , _tTrustType :: !(Maybe TrustType)
-    , _tTrustStateReason :: !(Maybe Text)
-    , _tRemoteDomainName :: !(Maybe Text)
-    , _tTrustId :: !(Maybe Text)
-    , _tCreatedDateTime :: !(Maybe POSIX)
+    , _tTrustType                :: !(Maybe TrustType)
+    , _tTrustStateReason         :: !(Maybe Text)
+    , _tRemoteDomainName         :: !(Maybe Text)
+    , _tTrustId                  :: !(Maybe Text)
+    , _tCreatedDateTime          :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

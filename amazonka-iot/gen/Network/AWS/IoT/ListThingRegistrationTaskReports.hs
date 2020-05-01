@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,9 +48,9 @@ import Network.AWS.Response
 -- | /See:/ 'listThingRegistrationTaskReports' smart constructor.
 data ListThingRegistrationTaskReports =
   ListThingRegistrationTaskReports'
-    { _ltrtrNextToken :: !(Maybe Text)
+    { _ltrtrNextToken  :: !(Maybe Text)
     , _ltrtrMaxResults :: !(Maybe Nat)
-    , _ltrtrTaskId :: !Text
+    , _ltrtrTaskId     :: !Text
     , _ltrtrReportType :: !ReportType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -129,9 +129,9 @@ instance ToQuery ListThingRegistrationTaskReports where
 -- | /See:/ 'listThingRegistrationTaskReportsResponse' smart constructor.
 data ListThingRegistrationTaskReportsResponse =
   ListThingRegistrationTaskReportsResponse'
-    { _ltrtrrsResourceLinks :: !(Maybe [Text])
-    , _ltrtrrsNextToken :: !(Maybe Text)
-    , _ltrtrrsReportType :: !(Maybe ReportType)
+    { _ltrtrrsResourceLinks  :: !(Maybe [Text])
+    , _ltrtrrsNextToken      :: !(Maybe Text)
+    , _ltrtrrsReportType     :: !(Maybe ReportType)
     , _ltrtrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

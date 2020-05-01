@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.WAFRegional.Types.Product
 data ListXSSMatchSets =
   ListXSSMatchSets'
     { _lxmsNextMarker :: !(Maybe Text)
-    , _lxmsLimit :: !(Maybe Nat)
+    , _lxmsLimit      :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -115,8 +115,8 @@ instance ToQuery ListXSSMatchSets where
 -- /See:/ 'listXSSMatchSetsResponse' smart constructor.
 data ListXSSMatchSetsResponse =
   ListXSSMatchSetsResponse'
-    { _lxmsrsXSSMatchSets :: !(Maybe [XSSMatchSetSummary])
-    , _lxmsrsNextMarker :: !(Maybe Text)
+    { _lxmsrsXSSMatchSets   :: !(Maybe [XSSMatchSetSummary])
+    , _lxmsrsNextMarker     :: !(Maybe Text)
     , _lxmsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -66,11 +66,11 @@ import Network.AWS.SWF.Types.Product
 -- | /See:/ 'listActivityTypes' smart constructor.
 data ListActivityTypes =
   ListActivityTypes'
-    { _latNextPageToken :: !(Maybe Text)
-    , _latReverseOrder :: !(Maybe Bool)
-    , _latName :: !(Maybe Text)
-    , _latMaximumPageSize :: !(Maybe Nat)
-    , _latDomain :: !Text
+    { _latNextPageToken      :: !(Maybe Text)
+    , _latReverseOrder       :: !(Maybe Bool)
+    , _latName               :: !(Maybe Text)
+    , _latMaximumPageSize    :: !(Maybe Nat)
+    , _latDomain             :: !Text
     , _latRegistrationStatus :: !RegistrationStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -184,9 +184,9 @@ instance ToQuery ListActivityTypes where
 -- /See:/ 'listActivityTypesResponse' smart constructor.
 data ListActivityTypesResponse =
   ListActivityTypesResponse'
-    { _latrsNextPageToken :: !(Maybe Text)
+    { _latrsNextPageToken  :: !(Maybe Text)
     , _latrsResponseStatus :: !Int
-    , _latrsTypeInfos :: ![ActivityTypeInfo]
+    , _latrsTypeInfos      :: ![ActivityTypeInfo]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

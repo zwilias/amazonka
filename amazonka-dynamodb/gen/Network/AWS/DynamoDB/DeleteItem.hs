@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -223,9 +223,9 @@ instance ToQuery DeleteItem where
 data DeleteItemResponse =
   DeleteItemResponse'
     { _dirsItemCollectionMetrics :: !(Maybe ItemCollectionMetrics)
-    , _dirsConsumedCapacity :: !(Maybe ConsumedCapacity)
-    , _dirsAttributes :: !(Maybe (Map Text AttributeValue))
-    , _dirsResponseStatus :: !Int
+    , _dirsConsumedCapacity      :: !(Maybe ConsumedCapacity)
+    , _dirsAttributes            :: !(Maybe (Map Text AttributeValue))
+    , _dirsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

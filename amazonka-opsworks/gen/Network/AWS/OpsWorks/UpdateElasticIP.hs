@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -43,7 +43,7 @@ import Network.AWS.Response
 -- | /See:/ 'updateElasticIP' smart constructor.
 data UpdateElasticIP =
   UpdateElasticIP'
-    { _ueiName :: !(Maybe Text)
+    { _ueiName      :: !(Maybe Text)
     , _ueiElasticIP :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

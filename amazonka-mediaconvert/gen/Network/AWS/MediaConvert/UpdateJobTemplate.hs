@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,11 +45,11 @@ import Network.AWS.Response
 -- | /See:/ 'updateJobTemplate' smart constructor.
 data UpdateJobTemplate =
   UpdateJobTemplate'
-    { _ujtSettings :: !(Maybe JobTemplateSettings)
-    , _ujtCategory :: !(Maybe Text)
-    , _ujtQueue :: !(Maybe Text)
+    { _ujtSettings    :: !(Maybe JobTemplateSettings)
+    , _ujtCategory    :: !(Maybe Text)
+    , _ujtQueue       :: !(Maybe Text)
     , _ujtDescription :: !(Maybe Text)
-    , _ujtName :: !Text
+    , _ujtName        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -136,7 +136,7 @@ instance ToQuery UpdateJobTemplate where
 -- | /See:/ 'updateJobTemplateResponse' smart constructor.
 data UpdateJobTemplateResponse =
   UpdateJobTemplateResponse'
-    { _ujtrsJobTemplate :: !(Maybe JobTemplate)
+    { _ujtrsJobTemplate    :: !(Maybe JobTemplate)
     , _ujtrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

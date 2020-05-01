@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,8 +54,8 @@ import Network.AWS.Response
 data ListDevicePools =
   ListDevicePools'
     { _ldpNextToken :: !(Maybe Text)
-    , _ldpType :: !(Maybe DevicePoolType)
-    , _ldpArn :: !Text
+    , _ldpType      :: !(Maybe DevicePoolType)
+    , _ldpArn       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -138,8 +138,8 @@ instance ToQuery ListDevicePools where
 -- /See:/ 'listDevicePoolsResponse' smart constructor.
 data ListDevicePoolsResponse =
   ListDevicePoolsResponse'
-    { _ldprsDevicePools :: !(Maybe [DevicePool])
-    , _ldprsNextToken :: !(Maybe Text)
+    { _ldprsDevicePools    :: !(Maybe [DevicePool])
+    , _ldprsNextToken      :: !(Maybe Text)
     , _ldprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -14,8 +14,8 @@ module Test.AWS.Gen.FMS where
 
 import Data.Proxy
 import Network.AWS.FMS
-import Test.AWS.FMS.Internal
 import Test.AWS.Fixture
+import Test.AWS.FMS.Internal
 import Test.AWS.Prelude
 import Test.Tasty
 

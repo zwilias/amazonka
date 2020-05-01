@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -115,8 +115,8 @@ instance ToQuery ListOfferingTransactions where
 data ListOfferingTransactionsResponse =
   ListOfferingTransactionsResponse'
     { _lotrsOfferingTransactions :: !(Maybe [OfferingTransaction])
-    , _lotrsNextToken :: !(Maybe Text)
-    , _lotrsResponseStatus :: !Int
+    , _lotrsNextToken            :: !(Maybe Text)
+    , _lotrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

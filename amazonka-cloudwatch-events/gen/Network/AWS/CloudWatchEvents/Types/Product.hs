@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -63,10 +63,10 @@ instance ToJSON BatchArrayProperties where
 -- /See:/ 'batchParameters' smart constructor.
 data BatchParameters =
   BatchParameters'
-    { _bpRetryStrategy :: !(Maybe BatchRetryStrategy)
+    { _bpRetryStrategy   :: !(Maybe BatchRetryStrategy)
     , _bpArrayProperties :: !(Maybe BatchArrayProperties)
-    , _bpJobDefinition :: !Text
-    , _bpJobName :: !Text
+    , _bpJobDefinition   :: !Text
+    , _bpJobName         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -177,7 +177,7 @@ instance ToJSON BatchRetryStrategy where
 -- /See:/ 'ecsParameters' smart constructor.
 data EcsParameters =
   EcsParameters'
-    { _epTaskCount :: !(Maybe Nat)
+    { _epTaskCount         :: !(Maybe Nat)
     , _epTaskDefinitionARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -327,11 +327,11 @@ instance ToJSON KinesisParameters where
 -- /See:/ 'putEventsRequestEntry' smart constructor.
 data PutEventsRequestEntry =
   PutEventsRequestEntry'
-    { _pereTime :: !(Maybe POSIX)
+    { _pereTime       :: !(Maybe POSIX)
     , _pereDetailType :: !(Maybe Text)
-    , _pereResources :: !(Maybe [Text])
-    , _pereSource :: !(Maybe Text)
-    , _pereDetail :: !(Maybe Text)
+    , _pereResources  :: !(Maybe [Text])
+    , _pereSource     :: !(Maybe Text)
+    , _pereDetail     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -401,9 +401,9 @@ instance ToJSON PutEventsRequestEntry where
 -- /See:/ 'putEventsResultEntry' smart constructor.
 data PutEventsResultEntry =
   PutEventsResultEntry'
-    { _pereErrorCode :: !(Maybe Text)
+    { _pereErrorCode    :: !(Maybe Text)
     , _pereErrorMessage :: !(Maybe Text)
-    , _pereEventId :: !(Maybe Text)
+    , _pereEventId      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -456,8 +456,8 @@ instance NFData PutEventsResultEntry
 -- /See:/ 'putTargetsResultEntry' smart constructor.
 data PutTargetsResultEntry =
   PutTargetsResultEntry'
-    { _ptreTargetId :: !(Maybe Text)
-    , _ptreErrorCode :: !(Maybe Text)
+    { _ptreTargetId     :: !(Maybe Text)
+    , _ptreErrorCode    :: !(Maybe Text)
     , _ptreErrorMessage :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -510,8 +510,8 @@ instance NFData PutTargetsResultEntry
 -- /See:/ 'removeTargetsResultEntry' smart constructor.
 data RemoveTargetsResultEntry =
   RemoveTargetsResultEntry'
-    { _rtreTargetId :: !(Maybe Text)
-    , _rtreErrorCode :: !(Maybe Text)
+    { _rtreTargetId     :: !(Maybe Text)
+    , _rtreErrorCode    :: !(Maybe Text)
     , _rtreErrorMessage :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -565,13 +565,13 @@ instance NFData RemoveTargetsResultEntry
 -- /See:/ 'rule' smart constructor.
 data Rule =
   Rule'
-    { _rEventPattern :: !(Maybe Text)
-    , _rState :: !(Maybe RuleState)
-    , _rARN :: !(Maybe Text)
+    { _rEventPattern       :: !(Maybe Text)
+    , _rState              :: !(Maybe RuleState)
+    , _rARN                :: !(Maybe Text)
     , _rScheduleExpression :: !(Maybe Text)
-    , _rName :: !(Maybe Text)
-    , _rDescription :: !(Maybe Text)
-    , _rRoleARN :: !(Maybe Text)
+    , _rName               :: !(Maybe Text)
+    , _rDescription        :: !(Maybe Text)
+    , _rRoleARN            :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -696,7 +696,7 @@ instance ToJSON RunCommandParameters where
 -- /See:/ 'runCommandTarget' smart constructor.
 data RunCommandTarget =
   RunCommandTarget'
-    { _rctKey :: !Text
+    { _rctKey    :: !Text
     , _rctValues :: !(List1 Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -782,16 +782,16 @@ instance ToJSON SqsParameters where
 data Target =
   Target'
     { _tRunCommandParameters :: !(Maybe RunCommandParameters)
-    , _tKinesisParameters :: !(Maybe KinesisParameters)
-    , _tInputTransformer :: !(Maybe InputTransformer)
-    , _tSqsParameters :: !(Maybe SqsParameters)
-    , _tInput :: !(Maybe Text)
-    , _tBatchParameters :: !(Maybe BatchParameters)
-    , _tEcsParameters :: !(Maybe EcsParameters)
-    , _tInputPath :: !(Maybe Text)
-    , _tRoleARN :: !(Maybe Text)
-    , _tId :: !Text
-    , _tARN :: !Text
+    , _tKinesisParameters    :: !(Maybe KinesisParameters)
+    , _tInputTransformer     :: !(Maybe InputTransformer)
+    , _tSqsParameters        :: !(Maybe SqsParameters)
+    , _tInput                :: !(Maybe Text)
+    , _tBatchParameters      :: !(Maybe BatchParameters)
+    , _tEcsParameters        :: !(Maybe EcsParameters)
+    , _tInputPath            :: !(Maybe Text)
+    , _tRoleARN              :: !(Maybe Text)
+    , _tId                   :: !Text
+    , _tARN                  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

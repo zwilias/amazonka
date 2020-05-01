@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,9 +48,9 @@ import Network.AWS.Response
 -- /See:/ 'updateConditionalForwarder' smart constructor.
 data UpdateConditionalForwarder =
   UpdateConditionalForwarder'
-    { _ucfDirectoryId :: !Text
+    { _ucfDirectoryId      :: !Text
     , _ucfRemoteDomainName :: !Text
-    , _ucfDNSIPAddrs :: ![Text]
+    , _ucfDNSIPAddrs       :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

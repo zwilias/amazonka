@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -84,11 +84,11 @@ import Network.AWS.Response
 data DescribeGameSessions =
   DescribeGameSessions'
     { _dgsGameSessionId :: !(Maybe Text)
-    , _dgsAliasId :: !(Maybe Text)
-    , _dgsNextToken :: !(Maybe Text)
-    , _dgsStatusFilter :: !(Maybe Text)
-    , _dgsLimit :: !(Maybe Nat)
-    , _dgsFleetId :: !(Maybe Text)
+    , _dgsAliasId       :: !(Maybe Text)
+    , _dgsNextToken     :: !(Maybe Text)
+    , _dgsStatusFilter  :: !(Maybe Text)
+    , _dgsLimit         :: !(Maybe Nat)
+    , _dgsFleetId       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -189,8 +189,8 @@ instance ToQuery DescribeGameSessions where
 -- /See:/ 'describeGameSessionsResponse' smart constructor.
 data DescribeGameSessionsResponse =
   DescribeGameSessionsResponse'
-    { _dgsrsGameSessions :: !(Maybe [GameSession])
-    , _dgsrsNextToken :: !(Maybe Text)
+    { _dgsrsGameSessions   :: !(Maybe [GameSession])
+    , _dgsrsNextToken      :: !(Maybe Text)
     , _dgsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

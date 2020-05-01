@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -61,12 +61,12 @@ import Network.AWS.SQS.Types.Product
 -- /See:/ 'sendMessage' smart constructor.
 data SendMessage =
   SendMessage'
-    { _smMessageAttributes :: !(Maybe (Map Text MessageAttributeValue))
-    , _smDelaySeconds :: !(Maybe Int)
+    { _smMessageAttributes      :: !(Maybe (Map Text MessageAttributeValue))
+    , _smDelaySeconds           :: !(Maybe Int)
     , _smMessageDeduplicationId :: !(Maybe Text)
-    , _smMessageGroupId :: !(Maybe Text)
-    , _smQueueURL :: !Text
-    , _smMessageBody :: !Text
+    , _smMessageGroupId         :: !(Maybe Text)
+    , _smQueueURL               :: !Text
+    , _smMessageBody            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -170,11 +170,11 @@ instance ToQuery SendMessage where
 -- /See:/ 'sendMessageResponse' smart constructor.
 data SendMessageResponse =
   SendMessageResponse'
-    { _smrsSequenceNumber :: !(Maybe Text)
-    , _smrsMessageId :: !(Maybe Text)
-    , _smrsMD5OfMessageBody :: !(Maybe Text)
+    { _smrsSequenceNumber         :: !(Maybe Text)
+    , _smrsMessageId              :: !(Maybe Text)
+    , _smrsMD5OfMessageBody       :: !(Maybe Text)
     , _smrsMD5OfMessageAttributes :: !(Maybe Text)
-    , _smrsResponseStatus :: !Int
+    , _smrsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,9 +47,9 @@ import Network.AWS.Response
 -- | /See:/ 'describeExportTasks' smart constructor.
 data DescribeExportTasks =
   DescribeExportTasks'
-    { _detTaskId :: !(Maybe Text)
-    , _detNextToken :: !(Maybe Text)
-    , _detLimit :: !(Maybe Nat)
+    { _detTaskId     :: !(Maybe Text)
+    , _detNextToken  :: !(Maybe Text)
+    , _detLimit      :: !(Maybe Nat)
     , _detStatusCode :: !(Maybe ExportTaskStatusCode)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -131,8 +131,8 @@ instance ToQuery DescribeExportTasks where
 -- | /See:/ 'describeExportTasksResponse' smart constructor.
 data DescribeExportTasksResponse =
   DescribeExportTasksResponse'
-    { _detrsNextToken :: !(Maybe Text)
-    , _detrsExportTasks :: !(Maybe [ExportTask])
+    { _detrsNextToken      :: !(Maybe Text)
+    , _detrsExportTasks    :: !(Maybe [ExportTask])
     , _detrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

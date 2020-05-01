@@ -517,12 +517,12 @@ import Network.AWS.Config.DescribeComplianceByConfigRule
 import Network.AWS.Config.DescribeComplianceByResource
 import Network.AWS.Config.DescribeConfigRuleEvaluationStatus
 import Network.AWS.Config.DescribeConfigRules
-import Network.AWS.Config.DescribeConfigurationAggregatorSourcesStatus
 import Network.AWS.Config.DescribeConfigurationAggregators
-import Network.AWS.Config.DescribeConfigurationRecorderStatus
+import Network.AWS.Config.DescribeConfigurationAggregatorSourcesStatus
 import Network.AWS.Config.DescribeConfigurationRecorders
-import Network.AWS.Config.DescribeDeliveryChannelStatus
+import Network.AWS.Config.DescribeConfigurationRecorderStatus
 import Network.AWS.Config.DescribeDeliveryChannels
+import Network.AWS.Config.DescribeDeliveryChannelStatus
 import Network.AWS.Config.DescribePendingAggregationRequests
 import Network.AWS.Config.GetAggregateComplianceDetailsByConfigRule
 import Network.AWS.Config.GetAggregateConfigRuleComplianceSummary

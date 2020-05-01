@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,8 +51,8 @@ import Network.AWS.Response
 -- /See:/ 'getAuthorizers' smart constructor.
 data GetAuthorizers =
   GetAuthorizers'
-    { _gaLimit :: !(Maybe Int)
-    , _gaPosition :: !(Maybe Text)
+    { _gaLimit     :: !(Maybe Int)
+    , _gaPosition  :: !(Maybe Text)
     , _gaRestAPIId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -118,8 +118,8 @@ instance ToQuery GetAuthorizers where
 -- /See:/ 'getAuthorizersResponse' smart constructor.
 data GetAuthorizersResponse =
   GetAuthorizersResponse'
-    { _garsItems :: !(Maybe [Authorizer])
-    , _garsPosition :: !(Maybe Text)
+    { _garsItems          :: !(Maybe [Authorizer])
+    , _garsPosition       :: !(Maybe Text)
     , _garsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

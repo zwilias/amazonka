@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ data GetAssessmentReport =
   GetAssessmentReport'
     { _garAssessmentRunARN :: !Text
     , _garReportFileFormat :: !ReportFileFormat
-    , _garReportType :: !ReportType
+    , _garReportType       :: !ReportType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -127,9 +127,9 @@ instance ToQuery GetAssessmentReport where
 -- | /See:/ 'getAssessmentReportResponse' smart constructor.
 data GetAssessmentReportResponse =
   GetAssessmentReportResponse'
-    { _garrsUrl :: !(Maybe Text)
+    { _garrsUrl            :: !(Maybe Text)
     , _garrsResponseStatus :: !Int
-    , _garrsStatus :: !ReportStatus
+    , _garrsStatus         :: !ReportStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

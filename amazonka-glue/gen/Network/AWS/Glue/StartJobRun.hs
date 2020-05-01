@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,11 +47,11 @@ import Network.AWS.Response
 -- | /See:/ 'startJobRun' smart constructor.
 data StartJobRun =
   StartJobRun'
-    { _sjrArguments :: !(Maybe (Map Text Text))
+    { _sjrArguments         :: !(Maybe (Map Text Text))
     , _sjrAllocatedCapacity :: !(Maybe Int)
-    , _sjrTimeout :: !(Maybe Nat)
-    , _sjrJobRunId :: !(Maybe Text)
-    , _sjrJobName :: !Text
+    , _sjrTimeout           :: !(Maybe Nat)
+    , _sjrJobRunId          :: !(Maybe Text)
+    , _sjrJobName           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -142,7 +142,7 @@ instance ToQuery StartJobRun where
 -- | /See:/ 'startJobRunResponse' smart constructor.
 data StartJobRunResponse =
   StartJobRunResponse'
-    { _sjrrsJobRunId :: !(Maybe Text)
+    { _sjrrsJobRunId       :: !(Maybe Text)
     , _sjrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

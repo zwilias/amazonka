@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,11 +49,11 @@ import Network.AWS.Response
 -- | /See:/ 'getReservationUtilization' smart constructor.
 data GetReservationUtilization =
   GetReservationUtilization'
-    { _gruGroupBy :: !(Maybe [GroupDefinition])
+    { _gruGroupBy       :: !(Maybe [GroupDefinition])
     , _gruNextPageToken :: !(Maybe Text)
-    , _gruGranularity :: !(Maybe Granularity)
-    , _gruFilter :: !(Maybe Expression)
-    , _gruTimePeriod :: !DateInterval
+    , _gruGranularity   :: !(Maybe Granularity)
+    , _gruFilter        :: !(Maybe Expression)
+    , _gruTimePeriod    :: !DateInterval
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -146,9 +146,9 @@ instance ToQuery GetReservationUtilization where
 -- | /See:/ 'getReservationUtilizationResponse' smart constructor.
 data GetReservationUtilizationResponse =
   GetReservationUtilizationResponse'
-    { _grursNextPageToken :: !(Maybe Text)
-    , _grursTotal :: !(Maybe ReservationAggregates)
-    , _grursResponseStatus :: !Int
+    { _grursNextPageToken      :: !(Maybe Text)
+    , _grursTotal              :: !(Maybe ReservationAggregates)
+    , _grursResponseStatus     :: !Int
     , _grursUtilizationsByTime :: ![UtilizationByTime]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,7 +63,7 @@ import Network.AWS.Response
 data CreateIntentVersion =
   CreateIntentVersion'
     { _civChecksum :: !(Maybe Text)
-    , _civName :: !Text
+    , _civName     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -134,22 +134,22 @@ instance ToQuery CreateIntentVersion where
 -- | /See:/ 'createIntentVersionResponse' smart constructor.
 data CreateIntentVersionResponse =
   CreateIntentVersionResponse'
-    { _civrsFulfillmentActivity :: !(Maybe FulfillmentActivity)
-    , _civrsSlots :: !(Maybe [Slot])
-    , _civrsRejectionStatement :: !(Maybe Statement)
-    , _civrsChecksum :: !(Maybe Text)
-    , _civrsConclusionStatement :: !(Maybe Statement)
-    , _civrsSampleUtterances :: !(Maybe [Text])
+    { _civrsFulfillmentActivity   :: !(Maybe FulfillmentActivity)
+    , _civrsSlots                 :: !(Maybe [Slot])
+    , _civrsRejectionStatement    :: !(Maybe Statement)
+    , _civrsChecksum              :: !(Maybe Text)
+    , _civrsConclusionStatement   :: !(Maybe Statement)
+    , _civrsSampleUtterances      :: !(Maybe [Text])
     , _civrsParentIntentSignature :: !(Maybe Text)
-    , _civrsCreatedDate :: !(Maybe POSIX)
-    , _civrsName :: !(Maybe Text)
-    , _civrsVersion :: !(Maybe Text)
-    , _civrsFollowUpPrompt :: !(Maybe FollowUpPrompt)
-    , _civrsLastUpdatedDate :: !(Maybe POSIX)
-    , _civrsConfirmationPrompt :: !(Maybe Prompt)
-    , _civrsDialogCodeHook :: !(Maybe CodeHook)
-    , _civrsDescription :: !(Maybe Text)
-    , _civrsResponseStatus :: !Int
+    , _civrsCreatedDate           :: !(Maybe POSIX)
+    , _civrsName                  :: !(Maybe Text)
+    , _civrsVersion               :: !(Maybe Text)
+    , _civrsFollowUpPrompt        :: !(Maybe FollowUpPrompt)
+    , _civrsLastUpdatedDate       :: !(Maybe POSIX)
+    , _civrsConfirmationPrompt    :: !(Maybe Prompt)
+    , _civrsDialogCodeHook        :: !(Maybe CodeHook)
+    , _civrsDescription           :: !(Maybe Text)
+    , _civrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

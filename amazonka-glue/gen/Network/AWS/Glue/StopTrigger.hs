@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -92,7 +92,7 @@ instance ToQuery StopTrigger where
 -- | /See:/ 'stopTriggerResponse' smart constructor.
 data StopTriggerResponse =
   StopTriggerResponse'
-    { _strsName :: !(Maybe Text)
+    { _strsName           :: !(Maybe Text)
     , _strsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

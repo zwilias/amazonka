@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- | /See:/ 'createServiceLinkedRole' smart constructor.
 data CreateServiceLinkedRole =
   CreateServiceLinkedRole'
-    { _cslrCustomSuffix :: !(Maybe Text)
-    , _cslrDescription :: !(Maybe Text)
+    { _cslrCustomSuffix   :: !(Maybe Text)
+    , _cslrDescription    :: !(Maybe Text)
     , _cslrAWSServiceName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -120,7 +120,7 @@ instance ToQuery CreateServiceLinkedRole where
 -- | /See:/ 'createServiceLinkedRoleResponse' smart constructor.
 data CreateServiceLinkedRoleResponse =
   CreateServiceLinkedRoleResponse'
-    { _cslrrsRole :: !(Maybe Role)
+    { _cslrrsRole           :: !(Maybe Role)
     , _cslrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

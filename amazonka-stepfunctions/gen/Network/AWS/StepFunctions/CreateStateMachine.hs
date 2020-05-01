@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.StepFunctions.Types.Product
 -- | /See:/ 'createStateMachine' smart constructor.
 data CreateStateMachine =
   CreateStateMachine'
-    { _csmName :: !Text
+    { _csmName       :: !Text
     , _csmDefinition :: !Text
-    , _csmRoleARN :: !Text
+    , _csmRoleARN    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -123,9 +123,9 @@ instance ToQuery CreateStateMachine where
 -- | /See:/ 'createStateMachineResponse' smart constructor.
 data CreateStateMachineResponse =
   CreateStateMachineResponse'
-    { _csmrsResponseStatus :: !Int
+    { _csmrsResponseStatus  :: !Int
     , _csmrsStateMachineARN :: !Text
-    , _csmrsCreationDate :: !POSIX
+    , _csmrsCreationDate    :: !POSIX
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

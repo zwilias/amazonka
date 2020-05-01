@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'describeInstanceAssociationsStatus' smart constructor.
 data DescribeInstanceAssociationsStatus =
   DescribeInstanceAssociationsStatus'
-    { _diasNextToken :: !(Maybe Text)
+    { _diasNextToken  :: !(Maybe Text)
     , _diasMaxResults :: !(Maybe Nat)
     , _diasInstanceId :: !Text
     }

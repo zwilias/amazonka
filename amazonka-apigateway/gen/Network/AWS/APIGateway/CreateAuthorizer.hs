@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -65,16 +65,16 @@ import Network.AWS.Response
 -- /See:/ 'createAuthorizer' smart constructor.
 data CreateAuthorizer =
   CreateAuthorizer'
-    { _caAuthorizerURI :: !(Maybe Text)
+    { _caAuthorizerURI                :: !(Maybe Text)
     , _caIdentityValidationExpression :: !(Maybe Text)
-    , _caProviderARNs :: !(Maybe [Text])
+    , _caProviderARNs                 :: !(Maybe [Text])
     , _caAuthorizerResultTtlInSeconds :: !(Maybe Int)
-    , _caAuthType :: !(Maybe Text)
-    , _caIdentitySource :: !(Maybe Text)
-    , _caAuthorizerCredentials :: !(Maybe Text)
-    , _caRestAPIId :: !Text
-    , _caName :: !Text
-    , _caType :: !AuthorizerType
+    , _caAuthType                     :: !(Maybe Text)
+    , _caIdentitySource               :: !(Maybe Text)
+    , _caAuthorizerCredentials        :: !(Maybe Text)
+    , _caRestAPIId                    :: !Text
+    , _caName                         :: !Text
+    , _caType                         :: !AuthorizerType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

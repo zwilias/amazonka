@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -67,8 +67,8 @@ instance NFData ActivityFailedEventDetails
 -- /See:/ 'activityListItem' smart constructor.
 data ActivityListItem =
   ActivityListItem'
-    { _aliActivityARN :: !Text
-    , _aliName :: !Text
+    { _aliActivityARN  :: !Text
+    , _aliName         :: !Text
     , _aliCreationDate :: !POSIX
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -171,9 +171,9 @@ instance NFData ActivityScheduleFailedEventDetails
 data ActivityScheduledEventDetails =
   ActivityScheduledEventDetails'
     { _asedHeartbeatInSeconds :: !(Maybe Integer)
-    , _asedInput :: !(Maybe Text)
-    , _asedTimeoutInSeconds :: !(Maybe Integer)
-    , _asedResource :: !Text
+    , _asedInput              :: !(Maybe Text)
+    , _asedTimeoutInSeconds   :: !(Maybe Integer)
+    , _asedResource           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -432,12 +432,12 @@ instance NFData ExecutionFailedEventDetails
 -- /See:/ 'executionListItem' smart constructor.
 data ExecutionListItem =
   ExecutionListItem'
-    { _eliStopDate :: !(Maybe POSIX)
-    , _eliExecutionARN :: !Text
+    { _eliStopDate        :: !(Maybe POSIX)
+    , _eliExecutionARN    :: !Text
     , _eliStateMachineARN :: !Text
-    , _eliName :: !Text
-    , _eliStatus :: !ExecutionStatus
-    , _eliStartDate :: !POSIX
+    , _eliName            :: !Text
+    , _eliStatus          :: !ExecutionStatus
+    , _eliStartDate       :: !POSIX
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -520,7 +520,7 @@ instance NFData ExecutionListItem
 -- /See:/ 'executionStartedEventDetails' smart constructor.
 data ExecutionStartedEventDetails =
   ExecutionStartedEventDetails'
-    { _esedInput :: !(Maybe Text)
+    { _esedInput   :: !(Maybe Text)
     , _esedRoleARN :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1037,9 +1037,9 @@ instance NFData LambdaFunctionScheduleFailedEventDetails
 -- /See:/ 'lambdaFunctionScheduledEventDetails' smart constructor.
 data LambdaFunctionScheduledEventDetails =
   LambdaFunctionScheduledEventDetails'
-    { _lfsedInput :: !(Maybe Text)
+    { _lfsedInput            :: !(Maybe Text)
     , _lfsedTimeoutInSeconds :: !(Maybe Integer)
-    , _lfsedResource :: !Text
+    , _lfsedResource         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1219,7 +1219,7 @@ instance NFData LambdaFunctionTimedOutEventDetails
 data StateEnteredEventDetails =
   StateEnteredEventDetails'
     { _sInput :: !(Maybe Text)
-    , _sName :: !Text
+    , _sName  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1262,7 +1262,7 @@ instance NFData StateEnteredEventDetails
 data StateExitedEventDetails =
   StateExitedEventDetails'
     { _seedOutput :: !(Maybe Text)
-    , _seedName :: !Text
+    , _seedName   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1305,8 +1305,8 @@ instance NFData StateExitedEventDetails
 data StateMachineListItem =
   StateMachineListItem'
     { _smliStateMachineARN :: !Text
-    , _smliName :: !Text
-    , _smliCreationDate :: !POSIX
+    , _smliName            :: !Text
+    , _smliCreationDate    :: !POSIX
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

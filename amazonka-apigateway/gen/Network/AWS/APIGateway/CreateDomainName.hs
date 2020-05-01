@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -64,15 +64,15 @@ import Network.AWS.Response
 -- /See:/ 'createDomainName' smart constructor.
 data CreateDomainName =
   CreateDomainName'
-    { _cdnCertificateName :: !(Maybe Text)
-    , _cdnRegionalCertificateARN :: !(Maybe Text)
-    , _cdnCertificateARN :: !(Maybe Text)
-    , _cdnCertificatePrivateKey :: !(Maybe Text)
+    { _cdnCertificateName         :: !(Maybe Text)
+    , _cdnRegionalCertificateARN  :: !(Maybe Text)
+    , _cdnCertificateARN          :: !(Maybe Text)
+    , _cdnCertificatePrivateKey   :: !(Maybe Text)
     , _cdnRegionalCertificateName :: !(Maybe Text)
-    , _cdnCertificateBody :: !(Maybe Text)
-    , _cdnCertificateChain :: !(Maybe Text)
-    , _cdnEndpointConfiguration :: !(Maybe EndpointConfiguration)
-    , _cdnDomainName :: !Text
+    , _cdnCertificateBody         :: !(Maybe Text)
+    , _cdnCertificateChain        :: !(Maybe Text)
+    , _cdnEndpointConfiguration   :: !(Maybe EndpointConfiguration)
+    , _cdnDomainName              :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

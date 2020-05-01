@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,13 +52,13 @@ import Network.AWS.ServiceCatalog.Types.Product
 -- | /See:/ 'updatePortfolio' smart constructor.
 data UpdatePortfolio =
   UpdatePortfolio'
-    { _uRemoveTags :: !(Maybe [Text])
+    { _uRemoveTags     :: !(Maybe [Text])
     , _uAcceptLanguage :: !(Maybe Text)
-    , _uDisplayName :: !(Maybe Text)
-    , _uAddTags :: !(Maybe [Tag])
-    , _uDescription :: !(Maybe Text)
-    , _uProviderName :: !(Maybe Text)
-    , _uId :: !Text
+    , _uDisplayName    :: !(Maybe Text)
+    , _uAddTags        :: !(Maybe [Tag])
+    , _uDescription    :: !(Maybe Text)
+    , _uProviderName   :: !(Maybe Text)
+    , _uId             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -168,8 +168,8 @@ instance ToQuery UpdatePortfolio where
 data UpdatePortfolioResponse =
   UpdatePortfolioResponse'
     { _uprsPortfolioDetail :: !(Maybe PortfolioDetail)
-    , _uprsTags :: !(Maybe [Tag])
-    , _uprsResponseStatus :: !Int
+    , _uprsTags            :: !(Maybe [Tag])
+    , _uprsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,9 +50,9 @@ import Network.AWS.Response
 -- /See:/ 'createNatGateway' smart constructor.
 data CreateNatGateway =
   CreateNatGateway'
-    { _cngClientToken :: !(Maybe Text)
+    { _cngClientToken  :: !(Maybe Text)
     , _cngAllocationId :: !Text
-    , _cngSubnetId :: !Text
+    , _cngSubnetId     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -125,8 +125,8 @@ instance ToQuery CreateNatGateway where
 -- /See:/ 'createNatGatewayResponse' smart constructor.
 data CreateNatGatewayResponse =
   CreateNatGatewayResponse'
-    { _cngrsClientToken :: !(Maybe Text)
-    , _cngrsNatGateway :: !(Maybe NatGateway)
+    { _cngrsClientToken    :: !(Maybe Text)
+    , _cngrsNatGateway     :: !(Maybe NatGateway)
     , _cngrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

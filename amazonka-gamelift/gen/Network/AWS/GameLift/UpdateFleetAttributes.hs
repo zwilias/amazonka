@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -101,11 +101,11 @@ import Network.AWS.Response
 data UpdateFleetAttributes =
   UpdateFleetAttributes'
     { _ufaNewGameSessionProtectionPolicy :: !(Maybe ProtectionPolicy)
-    , _ufaName :: !(Maybe Text)
-    , _ufaMetricGroups :: !(Maybe [Text])
-    , _ufaDescription :: !(Maybe Text)
-    , _ufaResourceCreationLimitPolicy :: !(Maybe ResourceCreationLimitPolicy)
-    , _ufaFleetId :: !Text
+    , _ufaName                           :: !(Maybe Text)
+    , _ufaMetricGroups                   :: !(Maybe [Text])
+    , _ufaDescription                    :: !(Maybe Text)
+    , _ufaResourceCreationLimitPolicy    :: !(Maybe ResourceCreationLimitPolicy)
+    , _ufaFleetId                        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -218,7 +218,7 @@ instance ToQuery UpdateFleetAttributes where
 -- /See:/ 'updateFleetAttributesResponse' smart constructor.
 data UpdateFleetAttributesResponse =
   UpdateFleetAttributesResponse'
-    { _ufarsFleetId :: !(Maybe Text)
+    { _ufarsFleetId        :: !(Maybe Text)
     , _ufarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

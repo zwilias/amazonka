@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,16 +56,16 @@ import Network.AWS.Response
 -- | /See:/ 'createHITWithHITType' smart constructor.
 data CreateHITWithHITType =
   CreateHITWithHITType'
-    { _chitwhittHITReviewPolicy :: !(Maybe ReviewPolicy)
-    , _chitwhittUniqueRequestToken :: !(Maybe Text)
-    , _chitwhittRequesterAnnotation :: !(Maybe Text)
-    , _chitwhittMaxAssignments :: !(Maybe Int)
-    , _chitwhittHITLayoutId :: !(Maybe Text)
-    , _chitwhittHITLayoutParameters :: !(Maybe [HITLayoutParameter])
-    , _chitwhittQuestion :: !(Maybe Text)
+    { _chitwhittHITReviewPolicy        :: !(Maybe ReviewPolicy)
+    , _chitwhittUniqueRequestToken     :: !(Maybe Text)
+    , _chitwhittRequesterAnnotation    :: !(Maybe Text)
+    , _chitwhittMaxAssignments         :: !(Maybe Int)
+    , _chitwhittHITLayoutId            :: !(Maybe Text)
+    , _chitwhittHITLayoutParameters    :: !(Maybe [HITLayoutParameter])
+    , _chitwhittQuestion               :: !(Maybe Text)
     , _chitwhittAssignmentReviewPolicy :: !(Maybe ReviewPolicy)
-    , _chitwhittHITTypeId :: !Text
-    , _chitwhittLifetimeInSeconds :: !Integer
+    , _chitwhittHITTypeId              :: !Text
+    , _chitwhittLifetimeInSeconds      :: !Integer
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -215,7 +215,7 @@ instance ToQuery CreateHITWithHITType where
 -- | /See:/ 'createHITWithHITTypeResponse' smart constructor.
 data CreateHITWithHITTypeResponse =
   CreateHITWithHITTypeResponse'
-    { _chitwhittrsHIT :: !(Maybe HIT)
+    { _chitwhittrsHIT            :: !(Maybe HIT)
     , _chitwhittrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

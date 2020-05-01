@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.SES.Types.Product
 data ListConfigurationSets =
   ListConfigurationSets'
     { _lcsNextToken :: !(Maybe Text)
-    , _lcsMaxItems :: !(Maybe Int)
+    , _lcsMaxItems  :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -114,8 +114,8 @@ instance ToQuery ListConfigurationSets where
 data ListConfigurationSetsResponse =
   ListConfigurationSetsResponse'
     { _lcsrsConfigurationSets :: !(Maybe [ConfigurationSet])
-    , _lcsrsNextToken :: !(Maybe Text)
-    , _lcsrsResponseStatus :: !Int
+    , _lcsrsNextToken         :: !(Maybe Text)
+    , _lcsrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

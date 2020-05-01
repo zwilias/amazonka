@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -43,7 +43,7 @@ import Network.AWS.Response
 -- | /See:/ 'createUserPoolDomain' smart constructor.
 data CreateUserPoolDomain =
   CreateUserPoolDomain'
-    { _cupdDomain :: !Text
+    { _cupdDomain     :: !Text
     , _cupdUserPoolId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

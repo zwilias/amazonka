@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,19 +26,19 @@ import Network.AWS.Prelude
 -- /See:/ 'asn1Subject' smart constructor.
 data ASN1Subject =
   ASN1Subject'
-    { _asGivenName :: !(Maybe Text)
-    , _asState :: !(Maybe Text)
-    , _asCommonName :: !(Maybe Text)
-    , _asOrganizationalUnit :: !(Maybe Text)
-    , _asCountry :: !(Maybe Text)
-    , _asGenerationQualifier :: !(Maybe Text)
-    , _asLocality :: !(Maybe Text)
-    , _asPseudonym :: !(Maybe Text)
-    , _asInitials :: !(Maybe Text)
-    , _asTitle :: !(Maybe Text)
-    , _asOrganization :: !(Maybe Text)
-    , _asSerialNumber :: !(Maybe Text)
-    , _asSurname :: !(Maybe Text)
+    { _asGivenName                  :: !(Maybe Text)
+    , _asState                      :: !(Maybe Text)
+    , _asCommonName                 :: !(Maybe Text)
+    , _asOrganizationalUnit         :: !(Maybe Text)
+    , _asCountry                    :: !(Maybe Text)
+    , _asGenerationQualifier        :: !(Maybe Text)
+    , _asLocality                   :: !(Maybe Text)
+    , _asPseudonym                  :: !(Maybe Text)
+    , _asInitials                   :: !(Maybe Text)
+    , _asTitle                      :: !(Maybe Text)
+    , _asOrganization               :: !(Maybe Text)
+    , _asSerialNumber               :: !(Maybe Text)
+    , _asSurname                    :: !(Maybe Text)
     , _asDistinguishedNameQualifier :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -338,9 +338,9 @@ instance NFData CertificateAuthority
 -- /See:/ 'certificateAuthorityConfiguration' smart constructor.
 data CertificateAuthorityConfiguration =
   CertificateAuthorityConfiguration'
-    { _cacKeyAlgorithm :: !KeyAlgorithm
+    { _cacKeyAlgorithm     :: !KeyAlgorithm
     , _cacSigningAlgorithm :: !SigningAlgorithm
-    , _cacSubject :: !ASN1Subject
+    , _cacSubject          :: !ASN1Subject
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -453,10 +453,10 @@ instance ToJSON CertificateAuthorityConfiguration where
 -- /See:/ 'crlConfiguration' smart constructor.
 data CrlConfiguration =
   CrlConfiguration'
-    { _ccCustomCname :: !(Maybe Text)
+    { _ccCustomCname      :: !(Maybe Text)
     , _ccExpirationInDays :: !(Maybe Nat)
-    , _ccS3BucketName :: !(Maybe Text)
-    , _ccEnabled :: !Bool
+    , _ccS3BucketName     :: !(Maybe Text)
+    , _ccEnabled          :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -570,7 +570,7 @@ instance ToJSON RevocationConfiguration where
 data Tag =
   Tag'
     { _tagValue :: !(Maybe Text)
-    , _tagKey :: !Text
+    , _tagKey   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -613,7 +613,7 @@ instance ToJSON Tag where
 data Validity =
   Validity'
     { _vValue :: !Nat
-    , _vType :: !ValidityPeriodType
+    , _vType  :: !ValidityPeriodType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

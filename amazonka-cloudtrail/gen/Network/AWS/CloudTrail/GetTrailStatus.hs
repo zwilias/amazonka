@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -135,24 +135,24 @@ instance ToQuery GetTrailStatus where
 -- /See:/ 'getTrailStatusResponse' smart constructor.
 data GetTrailStatusResponse =
   GetTrailStatusResponse'
-    { _gtsrsTimeLoggingStopped :: !(Maybe Text)
-    , _gtsrsLatestDeliveryError :: !(Maybe Text)
-    , _gtsrsLatestDigestDeliveryTime :: !(Maybe POSIX)
+    { _gtsrsTimeLoggingStopped                 :: !(Maybe Text)
+    , _gtsrsLatestDeliveryError                :: !(Maybe Text)
+    , _gtsrsLatestDigestDeliveryTime           :: !(Maybe POSIX)
     , _gtsrsLatestNotificationAttemptSucceeded :: !(Maybe Text)
-    , _gtsrsStartLoggingTime :: !(Maybe POSIX)
-    , _gtsrsLatestNotificationError :: !(Maybe Text)
-    , _gtsrsLatestDeliveryAttemptSucceeded :: !(Maybe Text)
-    , _gtsrsIsLogging :: !(Maybe Bool)
-    , _gtsrsTimeLoggingStarted :: !(Maybe Text)
-    , _gtsrsLatestDigestDeliveryError :: !(Maybe Text)
-    , _gtsrsLatestDeliveryAttemptTime :: !(Maybe Text)
-    , _gtsrsLatestDeliveryTime :: !(Maybe POSIX)
-    , _gtsrsLatestCloudWatchLogsDeliveryTime :: !(Maybe POSIX)
-    , _gtsrsLatestCloudWatchLogsDeliveryError :: !(Maybe Text)
-    , _gtsrsLatestNotificationTime :: !(Maybe POSIX)
-    , _gtsrsLatestNotificationAttemptTime :: !(Maybe Text)
-    , _gtsrsStopLoggingTime :: !(Maybe POSIX)
-    , _gtsrsResponseStatus :: !Int
+    , _gtsrsStartLoggingTime                   :: !(Maybe POSIX)
+    , _gtsrsLatestNotificationError            :: !(Maybe Text)
+    , _gtsrsLatestDeliveryAttemptSucceeded     :: !(Maybe Text)
+    , _gtsrsIsLogging                          :: !(Maybe Bool)
+    , _gtsrsTimeLoggingStarted                 :: !(Maybe Text)
+    , _gtsrsLatestDigestDeliveryError          :: !(Maybe Text)
+    , _gtsrsLatestDeliveryAttemptTime          :: !(Maybe Text)
+    , _gtsrsLatestDeliveryTime                 :: !(Maybe POSIX)
+    , _gtsrsLatestCloudWatchLogsDeliveryTime   :: !(Maybe POSIX)
+    , _gtsrsLatestCloudWatchLogsDeliveryError  :: !(Maybe Text)
+    , _gtsrsLatestNotificationTime             :: !(Maybe POSIX)
+    , _gtsrsLatestNotificationAttemptTime      :: !(Maybe Text)
+    , _gtsrsStopLoggingTime                    :: !(Maybe POSIX)
+    , _gtsrsResponseStatus                     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

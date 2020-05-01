@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -29,8 +29,8 @@ import Network.AWS.Prelude
 data ArchiveCreationOutput =
   ArchiveCreationOutput'
     { _acoArchiveId :: !(Maybe Text)
-    , _acoChecksum :: !(Maybe Text)
-    , _acoLocation :: !(Maybe Text)
+    , _acoChecksum  :: !(Maybe Text)
+    , _acoLocation  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -80,12 +80,12 @@ instance NFData ArchiveCreationOutput
 -- /See:/ 'csvInput' smart constructor.
 data CSVInput =
   CSVInput'
-    { _ciQuoteCharacter :: !(Maybe Text)
-    , _ciRecordDelimiter :: !(Maybe Text)
-    , _ciFileHeaderInfo :: !(Maybe FileHeaderInfo)
+    { _ciQuoteCharacter       :: !(Maybe Text)
+    , _ciRecordDelimiter      :: !(Maybe Text)
+    , _ciFileHeaderInfo       :: !(Maybe FileHeaderInfo)
     , _ciQuoteEscapeCharacter :: !(Maybe Text)
-    , _ciComments :: !(Maybe Text)
-    , _ciFieldDelimiter :: !(Maybe Text)
+    , _ciComments             :: !(Maybe Text)
+    , _ciFieldDelimiter       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -174,11 +174,11 @@ instance ToJSON CSVInput where
 -- /See:/ 'csvOutput' smart constructor.
 data CSVOutput =
   CSVOutput'
-    { _coQuoteCharacter :: !(Maybe Text)
-    , _coQuoteFields :: !(Maybe QuoteFields)
-    , _coRecordDelimiter :: !(Maybe Text)
+    { _coQuoteCharacter       :: !(Maybe Text)
+    , _coQuoteFields          :: !(Maybe QuoteFields)
+    , _coRecordDelimiter      :: !(Maybe Text)
     , _coQuoteEscapeCharacter :: !(Maybe Text)
-    , _coFieldDelimiter :: !(Maybe Text)
+    , _coFieldDelimiter       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -295,7 +295,7 @@ instance ToJSON DataRetrievalPolicy where
 -- /See:/ 'dataRetrievalRule' smart constructor.
 data DataRetrievalRule =
   DataRetrievalRule'
-    { _drrStrategy :: !(Maybe Text)
+    { _drrStrategy     :: !(Maybe Text)
     , _drrBytesPerHour :: !(Maybe Integer)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -345,12 +345,12 @@ instance ToJSON DataRetrievalRule where
 -- /See:/ 'describeVaultOutput' smart constructor.
 data DescribeVaultOutput =
   DescribeVaultOutput'
-    { _dvoVaultName :: !(Maybe Text)
-    , _dvoSizeInBytes :: !(Maybe Integer)
+    { _dvoVaultName         :: !(Maybe Text)
+    , _dvoSizeInBytes       :: !(Maybe Integer)
     , _dvoLastInventoryDate :: !(Maybe Text)
-    , _dvoVaultARN :: !(Maybe Text)
-    , _dvoCreationDate :: !(Maybe Text)
-    , _dvoNumberOfArchives :: !(Maybe Integer)
+    , _dvoVaultARN          :: !(Maybe Text)
+    , _dvoCreationDate      :: !(Maybe Text)
+    , _dvoNumberOfArchives  :: !(Maybe Integer)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -429,8 +429,8 @@ instance NFData DescribeVaultOutput
 data Encryption =
   Encryption'
     { _eEncryptionType :: !(Maybe EncryptionType)
-    , _eKMSKeyId :: !(Maybe Text)
-    , _eKMSContext :: !(Maybe Text)
+    , _eKMSKeyId       :: !(Maybe Text)
+    , _eKMSContext     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -715,7 +715,7 @@ instance NFData GlacierJobDescription
 data Grant =
   Grant'
     { _gPermission :: !(Maybe Permission)
-    , _gGrantee :: !(Maybe Grantee)
+    , _gGrantee    :: !(Maybe Grantee)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -760,11 +760,11 @@ instance ToJSON Grant where
 -- /See:/ 'grantee' smart constructor.
 data Grantee =
   Grantee'
-    { _gURI :: !(Maybe Text)
+    { _gURI          :: !(Maybe Text)
     , _gEmailAddress :: !(Maybe Text)
-    , _gDisplayName :: !(Maybe Text)
-    , _gId :: !(Maybe Text)
-    , _gType :: !Type
+    , _gDisplayName  :: !(Maybe Text)
+    , _gId           :: !(Maybe Text)
+    , _gType         :: !Type
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -881,11 +881,11 @@ instance ToJSON InputSerialization where
 -- /See:/ 'inventoryRetrievalJobDescription' smart constructor.
 data InventoryRetrievalJobDescription =
   InventoryRetrievalJobDescription'
-    { _irjdFormat :: !(Maybe Text)
-    , _irjdEndDate :: !(Maybe Text)
+    { _irjdFormat    :: !(Maybe Text)
+    , _irjdEndDate   :: !(Maybe Text)
     , _irjdStartDate :: !(Maybe Text)
-    , _irjdMarker :: !(Maybe Text)
-    , _irjdLimit :: !(Maybe Text)
+    , _irjdMarker    :: !(Maybe Text)
+    , _irjdLimit     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -954,10 +954,10 @@ instance NFData InventoryRetrievalJobDescription
 -- /See:/ 'inventoryRetrievalJobInput' smart constructor.
 data InventoryRetrievalJobInput =
   InventoryRetrievalJobInput'
-    { _irjiEndDate :: !(Maybe Text)
+    { _irjiEndDate   :: !(Maybe Text)
     , _irjiStartDate :: !(Maybe Text)
-    , _irjiMarker :: !(Maybe Text)
-    , _irjiLimit :: !(Maybe Text)
+    , _irjiMarker    :: !(Maybe Text)
+    , _irjiLimit     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1018,16 +1018,16 @@ instance ToJSON InventoryRetrievalJobInput where
 -- /See:/ 'jobParameters' smart constructor.
 data JobParameters =
   JobParameters'
-    { _jpArchiveId :: !(Maybe Text)
-    , _jpSelectParameters :: !(Maybe SelectParameters)
-    , _jpFormat :: !(Maybe Text)
-    , _jpRetrievalByteRange :: !(Maybe Text)
+    { _jpArchiveId                    :: !(Maybe Text)
+    , _jpSelectParameters             :: !(Maybe SelectParameters)
+    , _jpFormat                       :: !(Maybe Text)
+    , _jpRetrievalByteRange           :: !(Maybe Text)
     , _jpInventoryRetrievalParameters :: !(Maybe InventoryRetrievalJobInput)
-    , _jpSNSTopic :: !(Maybe Text)
-    , _jpOutputLocation :: !(Maybe OutputLocation)
-    , _jpTier :: !(Maybe Text)
-    , _jpType :: !(Maybe Text)
-    , _jpDescription :: !(Maybe Text)
+    , _jpSNSTopic                     :: !(Maybe Text)
+    , _jpOutputLocation               :: !(Maybe OutputLocation)
+    , _jpTier                         :: !(Maybe Text)
+    , _jpType                         :: !(Maybe Text)
+    , _jpDescription                  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1214,7 +1214,7 @@ instance ToJSON OutputSerialization where
 data PartListElement =
   PartListElement'
     { _pleSHA256TreeHash :: !(Maybe Text)
-    , _pleRangeInBytes :: !(Maybe Text)
+    , _pleRangeInBytes   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1256,8 +1256,8 @@ instance NFData PartListElement
 -- /See:/ 'provisionedCapacityDescription' smart constructor.
 data ProvisionedCapacityDescription =
   ProvisionedCapacityDescription'
-    { _pcdCapacityId :: !(Maybe Text)
-    , _pcdStartDate :: !(Maybe Text)
+    { _pcdCapacityId     :: !(Maybe Text)
+    , _pcdStartDate      :: !(Maybe Text)
     , _pcdExpirationDate :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1311,14 +1311,14 @@ instance NFData ProvisionedCapacityDescription
 -- /See:/ 's3Location' smart constructor.
 data S3Location =
   S3Location'
-    { _slCannedACL :: !(Maybe CannedACL)
-    , _slPrefix :: !(Maybe Text)
-    , _slBucketName :: !(Maybe Text)
+    { _slCannedACL         :: !(Maybe CannedACL)
+    , _slPrefix            :: !(Maybe Text)
+    , _slBucketName        :: !(Maybe Text)
     , _slAccessControlList :: !(Maybe [Grant])
-    , _slUserMetadata :: !(Maybe (Map Text Text))
-    , _slEncryption :: !(Maybe Encryption)
-    , _slStorageClass :: !(Maybe StorageClass)
-    , _slTagging :: !(Maybe (Map Text Text))
+    , _slUserMetadata      :: !(Maybe (Map Text Text))
+    , _slEncryption        :: !(Maybe Encryption)
+    , _slStorageClass      :: !(Maybe StorageClass)
+    , _slTagging           :: !(Maybe (Map Text Text))
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1427,10 +1427,10 @@ instance ToJSON S3Location where
 -- /See:/ 'selectParameters' smart constructor.
 data SelectParameters =
   SelectParameters'
-    { _spExpressionType :: !(Maybe ExpressionType)
+    { _spExpressionType      :: !(Maybe ExpressionType)
     , _spOutputSerialization :: !(Maybe OutputSerialization)
-    , _spExpression :: !(Maybe Text)
-    , _spInputSerialization :: !(Maybe InputSerialization)
+    , _spExpression          :: !(Maybe Text)
+    , _spInputSerialization  :: !(Maybe InputSerialization)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1503,11 +1503,11 @@ instance ToJSON SelectParameters where
 -- /See:/ 'uploadListElement' smart constructor.
 data UploadListElement =
   UploadListElement'
-    { _uleMultipartUploadId :: !(Maybe Text)
-    , _ulePartSizeInBytes :: !(Maybe Integer)
+    { _uleMultipartUploadId  :: !(Maybe Text)
+    , _ulePartSizeInBytes    :: !(Maybe Integer)
     , _uleArchiveDescription :: !(Maybe Text)
-    , _uleVaultARN :: !(Maybe Text)
-    , _uleCreationDate :: !(Maybe Text)
+    , _uleVaultARN           :: !(Maybe Text)
+    , _uleCreationDate       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1648,7 +1648,7 @@ instance ToJSON VaultLockPolicy where
 data VaultNotificationConfig =
   VaultNotificationConfig'
     { _vncSNSTopic :: !(Maybe Text)
-    , _vncEvents :: !(Maybe [Text])
+    , _vncEvents   :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

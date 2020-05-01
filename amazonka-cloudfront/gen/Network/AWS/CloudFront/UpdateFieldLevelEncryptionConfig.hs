@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- | /See:/ 'updateFieldLevelEncryptionConfig' smart constructor.
 data UpdateFieldLevelEncryptionConfig =
   UpdateFieldLevelEncryptionConfig'
-    { _uflecIfMatch :: !(Maybe Text)
+    { _uflecIfMatch                    :: !(Maybe Text)
     , _uflecFieldLevelEncryptionConfig :: !FieldLevelEncryptionConfig
-    , _uflecId :: !Text
+    , _uflecId                         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -122,9 +122,9 @@ instance ToQuery UpdateFieldLevelEncryptionConfig where
 -- | /See:/ 'updateFieldLevelEncryptionConfigResponse' smart constructor.
 data UpdateFieldLevelEncryptionConfigResponse =
   UpdateFieldLevelEncryptionConfigResponse'
-    { _uflecrsETag :: !(Maybe Text)
+    { _uflecrsETag                 :: !(Maybe Text)
     , _uflecrsFieldLevelEncryption :: !(Maybe FieldLevelEncryption)
-    , _uflecrsResponseStatus :: !Int
+    , _uflecrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

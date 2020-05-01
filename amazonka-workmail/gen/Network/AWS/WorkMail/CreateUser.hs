@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,9 +47,9 @@ import Network.AWS.WorkMail.Types.Product
 data CreateUser =
   CreateUser'
     { _cuOrganizationId :: !Text
-    , _cuName :: !Text
-    , _cuDisplayName :: !Text
-    , _cuPassword :: !(Sensitive Text)
+    , _cuName           :: !Text
+    , _cuDisplayName    :: !Text
+    , _cuPassword       :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -133,7 +133,7 @@ instance ToQuery CreateUser where
 -- | /See:/ 'createUserResponse' smart constructor.
 data CreateUserResponse =
   CreateUserResponse'
-    { _cursUserId :: !(Maybe Text)
+    { _cursUserId         :: !(Maybe Text)
     , _cursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

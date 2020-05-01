@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,8 +52,8 @@ import Network.AWS.Response
 data DescribeStream =
   DescribeStream'
     { _dsExclusiveStartShardId :: !(Maybe Text)
-    , _dsLimit :: !(Maybe Nat)
-    , _dsStreamARN :: !Text
+    , _dsLimit                 :: !(Maybe Nat)
+    , _dsStreamARN             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -134,7 +134,7 @@ instance ToQuery DescribeStream where
 data DescribeStreamResponse =
   DescribeStreamResponse'
     { _dsrsStreamDescription :: !(Maybe StreamDescription)
-    , _dsrsResponseStatus :: !Int
+    , _dsrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -25,10 +25,10 @@ import Network.AWS.Prelude
 data AWSAPICallAction =
   AWSAPICallAction'
     { _aacaRemoteIPDetails :: !(Maybe RemoteIPDetails)
-    , _aacaCallerType :: !(Maybe Text)
-    , _aacaDomainDetails :: !(Maybe DomainDetails)
-    , _aacaServiceName :: !(Maybe Text)
-    , _aacaAPI :: !(Maybe Text)
+    , _aacaCallerType      :: !(Maybe Text)
+    , _aacaDomainDetails   :: !(Maybe DomainDetails)
+    , _aacaServiceName     :: !(Maybe Text)
+    , _aacaAPI             :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -97,9 +97,9 @@ instance NFData AWSAPICallAction
 data AccessKeyDetails =
   AccessKeyDetails'
     { _akdPrincipalId :: !(Maybe Text)
-    , _akdUserName :: !(Maybe Text)
+    , _akdUserName    :: !(Maybe Text)
     , _akdAccessKeyId :: !(Maybe Text)
-    , _akdUserType :: !(Maybe Text)
+    , _akdUserType    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -157,7 +157,7 @@ instance NFData AccessKeyDetails
 -- /See:/ 'accountDetail' smart constructor.
 data AccountDetail =
   AccountDetail'
-    { _adEmail :: !Text
+    { _adEmail     :: !Text
     , _adAccountId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -200,10 +200,10 @@ instance ToJSON AccountDetail where
 data Action =
   Action'
     { _aNetworkConnectionAction :: !(Maybe NetworkConnectionAction)
-    , _aPortProbeAction :: !(Maybe PortProbeAction)
-    , _aActionType :: !(Maybe Text)
-    , _aDNSRequestAction :: !(Maybe DNSRequestAction)
-    , _aAWSAPICallAction :: !(Maybe AWSAPICallAction)
+    , _aPortProbeAction         :: !(Maybe PortProbeAction)
+    , _aActionType              :: !(Maybe Text)
+    , _aDNSRequestAction        :: !(Maybe DNSRequestAction)
+    , _aAWSAPICallAction        :: !(Maybe AWSAPICallAction)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -299,11 +299,11 @@ instance NFData City
 -- /See:/ 'condition' smart constructor.
 data Condition =
   Condition'
-    { _cEQ :: !(Maybe [Text])
+    { _cEQ  :: !(Maybe [Text])
     , _cLte :: !(Maybe Int)
-    , _cGT :: !(Maybe Int)
+    , _cGT  :: !(Maybe Int)
     , _cNeq :: !(Maybe [Text])
-    , _cLT :: !(Maybe Int)
+    , _cLT  :: !(Maybe Int)
     , _cGte :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -476,21 +476,21 @@ instance NFData DomainDetails
 -- /See:/ 'finding' smart constructor.
 data Finding =
   Finding'
-    { _fService :: !(Maybe ServiceInfo)
-    , _fConfidence :: !(Maybe Double)
-    , _fPartition :: !(Maybe Text)
-    , _fTitle :: !(Maybe Text)
-    , _fDescription :: !(Maybe Text)
-    , _fAccountId :: !Text
+    { _fService       :: !(Maybe ServiceInfo)
+    , _fConfidence    :: !(Maybe Double)
+    , _fPartition     :: !(Maybe Text)
+    , _fTitle         :: !(Maybe Text)
+    , _fDescription   :: !(Maybe Text)
+    , _fAccountId     :: !Text
     , _fSchemaVersion :: !Text
-    , _fCreatedAt :: !Text
-    , _fResource :: !Resource
-    , _fSeverity :: !Double
-    , _fUpdatedAt :: !Text
-    , _fType :: !Text
-    , _fRegion :: !Text
-    , _fId :: !Text
-    , _fARN :: !Text
+    , _fCreatedAt     :: !Text
+    , _fResource      :: !Resource
+    , _fSeverity      :: !Double
+    , _fUpdatedAt     :: !Text
+    , _fType          :: !Text
+    , _fRegion        :: !Text
+    , _fId            :: !Text
+    , _fARN           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -753,7 +753,7 @@ instance NFData GeoLocation
 data IAMInstanceProfile =
   IAMInstanceProfile'
     { _iapARN :: !(Maybe Text)
-    , _iapId :: !(Maybe Text)
+    , _iapId  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -790,18 +790,18 @@ instance NFData IAMInstanceProfile
 -- /See:/ 'instanceDetails' smart constructor.
 data InstanceDetails =
   InstanceDetails'
-    { _idInstanceId :: !(Maybe Text)
-    , _idPlatform :: !(Maybe Text)
-    , _idLaunchTime :: !(Maybe Text)
-    , _idNetworkInterfaces :: !(Maybe [NetworkInterface])
-    , _idInstanceType :: !(Maybe Text)
-    , _idAvailabilityZone :: !(Maybe Text)
+    { _idInstanceId         :: !(Maybe Text)
+    , _idPlatform           :: !(Maybe Text)
+    , _idLaunchTime         :: !(Maybe Text)
+    , _idNetworkInterfaces  :: !(Maybe [NetworkInterface])
+    , _idInstanceType       :: !(Maybe Text)
+    , _idAvailabilityZone   :: !(Maybe Text)
     , _idIAMInstanceProfile :: !(Maybe IAMInstanceProfile)
-    , _idImageId :: !(Maybe Text)
-    , _idProductCodes :: !(Maybe [ProductCode])
-    , _idInstanceState :: !(Maybe Text)
-    , _idTags :: !(Maybe [Tag])
-    , _idImageDescription :: !(Maybe Text)
+    , _idImageId            :: !(Maybe Text)
+    , _idProductCodes       :: !(Maybe [ProductCode])
+    , _idInstanceState      :: !(Maybe Text)
+    , _idTags               :: !(Maybe [Tag])
+    , _idImageDescription   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -929,10 +929,10 @@ instance NFData InstanceDetails
 -- /See:/ 'invitation' smart constructor.
 data Invitation =
   Invitation'
-    { _iInvitedAt :: !(Maybe Text)
+    { _iInvitedAt          :: !(Maybe Text)
     , _iRelationshipStatus :: !(Maybe Text)
-    , _iInvitationId :: !(Maybe Text)
-    , _iAccountId :: !(Maybe Text)
+    , _iInvitationId       :: !(Maybe Text)
+    , _iAccountId          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -992,7 +992,7 @@ instance NFData Invitation
 data LocalPortDetails =
   LocalPortDetails'
     { _lpdPortName :: !(Maybe Text)
-    , _lpdPort :: !(Maybe Int)
+    , _lpdPort     :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1030,10 +1030,10 @@ instance NFData LocalPortDetails
 -- /See:/ 'master' smart constructor.
 data Master =
   Master'
-    { _masInvitedAt :: !(Maybe Text)
+    { _masInvitedAt          :: !(Maybe Text)
     , _masRelationshipStatus :: !(Maybe Text)
-    , _masInvitationId :: !(Maybe Text)
-    , _masAccountId :: !(Maybe Text)
+    , _masInvitationId       :: !(Maybe Text)
+    , _masAccountId          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1092,12 +1092,12 @@ instance NFData Master
 -- /See:/ 'member' smart constructor.
 data Member =
   Member'
-    { _mInvitedAt :: !(Maybe Text)
-    , _mDetectorId :: !(Maybe Text)
-    , _mEmail :: !Text
-    , _mAccountId :: !Text
-    , _mMasterId :: !Text
-    , _mUpdatedAt :: !Text
+    { _mInvitedAt          :: !(Maybe Text)
+    , _mDetectorId         :: !(Maybe Text)
+    , _mEmail              :: !Text
+    , _mAccountId          :: !Text
+    , _mMasterId           :: !Text
+    , _mUpdatedAt          :: !Text
     , _mRelationshipStatus :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1187,12 +1187,12 @@ instance NFData Member
 -- /See:/ 'networkConnectionAction' smart constructor.
 data NetworkConnectionAction =
   NetworkConnectionAction'
-    { _ncaRemoteIPDetails :: !(Maybe RemoteIPDetails)
-    , _ncaProtocol :: !(Maybe Text)
-    , _ncaRemotePortDetails :: !(Maybe RemotePortDetails)
-    , _ncaBlocked :: !(Maybe Bool)
+    { _ncaRemoteIPDetails     :: !(Maybe RemoteIPDetails)
+    , _ncaProtocol            :: !(Maybe Text)
+    , _ncaRemotePortDetails   :: !(Maybe RemotePortDetails)
+    , _ncaBlocked             :: !(Maybe Bool)
     , _ncaConnectionDirection :: !(Maybe Text)
-    , _ncaLocalPortDetails :: !(Maybe LocalPortDetails)
+    , _ncaLocalPortDetails    :: !(Maybe LocalPortDetails)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1272,15 +1272,15 @@ instance NFData NetworkConnectionAction
 data NetworkInterface =
   NetworkInterface'
     { _niPrivateIPAddresses :: !(Maybe [PrivateIPAddressDetails])
-    , _niPublicDNSName :: !(Maybe Text)
-    , _niSecurityGroups :: !(Maybe [SecurityGroup])
-    , _niVPCId :: !(Maybe Text)
+    , _niPublicDNSName      :: !(Maybe Text)
+    , _niSecurityGroups     :: !(Maybe [SecurityGroup])
+    , _niVPCId              :: !(Maybe Text)
     , _niNetworkInterfaceId :: !(Maybe Text)
-    , _niSubnetId :: !(Maybe Text)
-    , _niPrivateIPAddress :: !(Maybe Text)
-    , _niPublicIP :: !(Maybe Text)
-    , _niPrivateDNSName :: !(Maybe Text)
-    , _niIPv6Addresses :: !(Maybe [Text])
+    , _niSubnetId           :: !(Maybe Text)
+    , _niPrivateIPAddress   :: !(Maybe Text)
+    , _niPublicIP           :: !(Maybe Text)
+    , _niPrivateDNSName     :: !(Maybe Text)
+    , _niIPv6Addresses      :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1394,10 +1394,10 @@ instance NFData NetworkInterface
 -- /See:/ 'organization' smart constructor.
 data Organization =
   Organization'
-    { _oOrg :: !(Maybe Text)
+    { _oOrg    :: !(Maybe Text)
     , _oASNOrg :: !(Maybe Text)
-    , _oASN :: !(Maybe Text)
-    , _oIsp :: !(Maybe Text)
+    , _oASN    :: !(Maybe Text)
+    , _oIsp    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1451,7 +1451,7 @@ instance NFData Organization
 data PortProbeAction =
   PortProbeAction'
     { _ppaPortProbeDetails :: !(Maybe [PortProbeDetail])
-    , _ppaBlocked :: !(Maybe Bool)
+    , _ppaBlocked          :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1493,7 +1493,7 @@ instance NFData PortProbeAction
 -- /See:/ 'portProbeDetail' smart constructor.
 data PortProbeDetail =
   PortProbeDetail'
-    { _ppdRemoteIPDetails :: !(Maybe RemoteIPDetails)
+    { _ppdRemoteIPDetails  :: !(Maybe RemoteIPDetails)
     , _ppdLocalPortDetails :: !(Maybe LocalPortDetails)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1538,7 +1538,7 @@ instance NFData PortProbeDetail
 data PrivateIPAddressDetails =
   PrivateIPAddressDetails'
     { _piadPrivateIPAddress :: !(Maybe Text)
-    , _piadPrivateDNSName :: !(Maybe Text)
+    , _piadPrivateDNSName   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1582,7 +1582,7 @@ instance NFData PrivateIPAddressDetails
 data ProductCode =
   ProductCode'
     { _pcProductType :: !(Maybe Text)
-    , _pcCode :: !(Maybe Text)
+    , _pcCode        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1619,10 +1619,10 @@ instance NFData ProductCode
 -- /See:/ 'remoteIPDetails' smart constructor.
 data RemoteIPDetails =
   RemoteIPDetails'
-    { _ridCountry :: !(Maybe Country)
-    , _ridCity :: !(Maybe City)
-    , _ridIPAddressV4 :: !(Maybe Text)
-    , _ridGeoLocation :: !(Maybe GeoLocation)
+    { _ridCountry      :: !(Maybe Country)
+    , _ridCity         :: !(Maybe City)
+    , _ridIPAddressV4  :: !(Maybe Text)
+    , _ridGeoLocation  :: !(Maybe GeoLocation)
     , _ridOrganization :: !(Maybe Organization)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1690,7 +1690,7 @@ instance NFData RemoteIPDetails
 data RemotePortDetails =
   RemotePortDetails'
     { _rpdPortName :: !(Maybe Text)
-    , _rpdPort :: !(Maybe Int)
+    , _rpdPort     :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1728,8 +1728,8 @@ instance NFData RemotePortDetails
 -- /See:/ 'resource' smart constructor.
 data Resource =
   Resource'
-    { _rResourceType :: !(Maybe Text)
-    , _rInstanceDetails :: !(Maybe InstanceDetails)
+    { _rResourceType     :: !(Maybe Text)
+    , _rInstanceDetails  :: !(Maybe InstanceDetails)
     , _rAccessKeyDetails :: !(Maybe AccessKeyDetails)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1780,7 +1780,7 @@ instance NFData Resource
 -- /See:/ 'securityGroup' smart constructor.
 data SecurityGroup =
   SecurityGroup'
-    { _sgGroupId :: !(Maybe Text)
+    { _sgGroupId   :: !(Maybe Text)
     , _sgGroupName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1818,15 +1818,15 @@ instance NFData SecurityGroup
 -- /See:/ 'serviceInfo' smart constructor.
 data ServiceInfo =
   ServiceInfo'
-    { _siCount :: !(Maybe Int)
+    { _siCount          :: !(Maybe Int)
     , _siEventFirstSeen :: !(Maybe Text)
-    , _siAction :: !(Maybe Action)
-    , _siDetectorId :: !(Maybe Text)
-    , _siServiceName :: !(Maybe Text)
-    , _siUserFeedback :: !(Maybe Text)
-    , _siEventLastSeen :: !(Maybe Text)
-    , _siResourceRole :: !(Maybe Text)
-    , _siArchived :: !(Maybe Bool)
+    , _siAction         :: !(Maybe Action)
+    , _siDetectorId     :: !(Maybe Text)
+    , _siServiceName    :: !(Maybe Text)
+    , _siUserFeedback   :: !(Maybe Text)
+    , _siEventLastSeen  :: !(Maybe Text)
+    , _siResourceRole   :: !(Maybe Text)
+    , _siArchived       :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1924,7 +1924,7 @@ instance NFData ServiceInfo
 -- /See:/ 'sortCriteria' smart constructor.
 data SortCriteria =
   SortCriteria'
-    { _scOrderBy :: !(Maybe OrderBy)
+    { _scOrderBy       :: !(Maybe OrderBy)
     , _scAttributeName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1965,7 +1965,7 @@ instance ToJSON SortCriteria where
 data Tag =
   Tag'
     { _tagValue :: !(Maybe Text)
-    , _tagKey :: !(Maybe Text)
+    , _tagKey   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2001,7 +2001,7 @@ instance NFData Tag
 data UnprocessedAccount =
   UnprocessedAccount'
     { _uaAccountId :: !Text
-    , _uaResult :: !Text
+    , _uaResult    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

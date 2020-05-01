@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,11 +26,11 @@ import Network.AWS.Prelude
 -- /See:/ 'accountLimit' smart constructor.
 data AccountLimit =
   AccountLimit'
-    { _alConcurrentExecutions :: !(Maybe Int)
-    , _alTotalCodeSize :: !(Maybe Integer)
+    { _alConcurrentExecutions           :: !(Maybe Int)
+    , _alTotalCodeSize                  :: !(Maybe Integer)
     , _alUnreservedConcurrentExecutions :: !(Maybe Nat)
-    , _alCodeSizeUnzipped :: !(Maybe Integer)
-    , _alCodeSizeZipped :: !(Maybe Integer)
+    , _alCodeSizeUnzipped               :: !(Maybe Integer)
+    , _alCodeSizeZipped                 :: !(Maybe Integer)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -147,12 +147,12 @@ instance NFData AccountUsage
 -- /See:/ 'aliasConfiguration' smart constructor.
 data AliasConfiguration =
   AliasConfiguration'
-    { _acRoutingConfig :: !(Maybe AliasRoutingConfiguration)
-    , _acName :: !(Maybe Text)
+    { _acRoutingConfig   :: !(Maybe AliasRoutingConfiguration)
+    , _acName            :: !(Maybe Text)
     , _acFunctionVersion :: !(Maybe Text)
-    , _acAliasARN :: !(Maybe Text)
-    , _acDescription :: !(Maybe Text)
-    , _acRevisionId :: !(Maybe Text)
+    , _acAliasARN        :: !(Maybe Text)
+    , _acDescription     :: !(Maybe Text)
+    , _acRevisionId      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -378,7 +378,7 @@ instance ToJSON Environment where
 data EnvironmentError =
   EnvironmentError'
     { _eeErrorCode :: !(Maybe Text)
-    , _eeMessage :: !(Maybe (Sensitive Text))
+    , _eeMessage   :: !(Maybe (Sensitive Text))
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -419,7 +419,7 @@ instance NFData EnvironmentError
 data EnvironmentResponse =
   EnvironmentResponse'
     { _envVariables :: !(Maybe (Sensitive (Map Text (Sensitive Text))))
-    , _envError :: !(Maybe EnvironmentError)
+    , _envError     :: !(Maybe EnvironmentError)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -463,14 +463,14 @@ instance NFData EnvironmentResponse
 -- /See:/ 'eventSourceMappingConfiguration' smart constructor.
 data EventSourceMappingConfiguration =
   EventSourceMappingConfiguration'
-    { _esmcEventSourceARN :: !(Maybe Text)
-    , _esmcState :: !(Maybe Text)
-    , _esmcFunctionARN :: !(Maybe Text)
-    , _esmcUUId :: !(Maybe Text)
-    , _esmcLastProcessingResult :: !(Maybe Text)
-    , _esmcBatchSize :: !(Maybe Nat)
+    { _esmcEventSourceARN        :: !(Maybe Text)
+    , _esmcState                 :: !(Maybe Text)
+    , _esmcFunctionARN           :: !(Maybe Text)
+    , _esmcUUId                  :: !(Maybe Text)
+    , _esmcLastProcessingResult  :: !(Maybe Text)
+    , _esmcBatchSize             :: !(Maybe Nat)
     , _esmcStateTransitionReason :: !(Maybe Text)
-    , _esmcLastModified :: !(Maybe POSIX)
+    , _esmcLastModified          :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -569,9 +569,9 @@ instance NFData EventSourceMappingConfiguration
 data FunctionCode =
   FunctionCode'
     { _fcS3ObjectVersion :: !(Maybe Text)
-    , _fcS3Key :: !(Maybe Text)
-    , _fcZipFile :: !(Maybe (Sensitive Base64))
-    , _fcS3Bucket :: !(Maybe Text)
+    , _fcS3Key           :: !(Maybe Text)
+    , _fcZipFile         :: !(Maybe (Sensitive Base64))
+    , _fcS3Bucket        :: !(Maybe Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -633,7 +633,7 @@ instance ToJSON FunctionCode where
 -- /See:/ 'functionCodeLocation' smart constructor.
 data FunctionCodeLocation =
   FunctionCodeLocation'
-    { _fclLocation :: !(Maybe Text)
+    { _fclLocation       :: !(Maybe Text)
     , _fclRepositoryType :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -676,25 +676,25 @@ instance NFData FunctionCodeLocation
 -- /See:/ 'functionConfiguration' smart constructor.
 data FunctionConfiguration =
   FunctionConfiguration'
-    { _fcMemorySize :: !(Maybe Nat)
-    , _fcRuntime :: !(Maybe Runtime)
-    , _fcFunctionARN :: !(Maybe Text)
-    , _fcKMSKeyARN :: !(Maybe Text)
-    , _fcEnvironment :: !(Maybe EnvironmentResponse)
+    { _fcMemorySize       :: !(Maybe Nat)
+    , _fcRuntime          :: !(Maybe Runtime)
+    , _fcFunctionARN      :: !(Maybe Text)
+    , _fcKMSKeyARN        :: !(Maybe Text)
+    , _fcEnvironment      :: !(Maybe EnvironmentResponse)
     , _fcDeadLetterConfig :: !(Maybe DeadLetterConfig)
-    , _fcRole :: !(Maybe Text)
-    , _fcVPCConfig :: !(Maybe VPCConfigResponse)
-    , _fcVersion :: !(Maybe Text)
-    , _fcFunctionName :: !(Maybe Text)
-    , _fcCodeSize :: !(Maybe Integer)
-    , _fcHandler :: !(Maybe Text)
-    , _fcTimeout :: !(Maybe Nat)
-    , _fcLastModified :: !(Maybe Text)
-    , _fcCodeSha256 :: !(Maybe Text)
-    , _fcTracingConfig :: !(Maybe TracingConfigResponse)
-    , _fcDescription :: !(Maybe Text)
-    , _fcRevisionId :: !(Maybe Text)
-    , _fcMasterARN :: !(Maybe Text)
+    , _fcRole             :: !(Maybe Text)
+    , _fcVPCConfig        :: !(Maybe VPCConfigResponse)
+    , _fcVersion          :: !(Maybe Text)
+    , _fcFunctionName     :: !(Maybe Text)
+    , _fcCodeSize         :: !(Maybe Integer)
+    , _fcHandler          :: !(Maybe Text)
+    , _fcTimeout          :: !(Maybe Nat)
+    , _fcLastModified     :: !(Maybe Text)
+    , _fcCodeSha256       :: !(Maybe Text)
+    , _fcTracingConfig    :: !(Maybe TracingConfigResponse)
+    , _fcDescription      :: !(Maybe Text)
+    , _fcRevisionId       :: !(Maybe Text)
+    , _fcMasterARN        :: !(Maybe Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -939,7 +939,7 @@ instance NFData TracingConfigResponse
 data VPCConfig =
   VPCConfig'
     { _vpccSecurityGroupIds :: !(Maybe [Text])
-    , _vpccSubnetIds :: !(Maybe [Text])
+    , _vpccSubnetIds        :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -985,8 +985,8 @@ instance ToJSON VPCConfig where
 data VPCConfigResponse =
   VPCConfigResponse'
     { _vcSecurityGroupIds :: !(Maybe [Text])
-    , _vcSubnetIds :: !(Maybe [Text])
-    , _vcVPCId :: !(Maybe Text)
+    , _vcSubnetIds        :: !(Maybe [Text])
+    , _vcVPCId            :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

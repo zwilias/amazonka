@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,10 +50,10 @@ import Network.AWS.Response
 -- /See:/ 'createReplicationSubnetGroup' smart constructor.
 data CreateReplicationSubnetGroup =
   CreateReplicationSubnetGroup'
-    { _crsgTags :: !(Maybe [Tag])
-    , _crsgReplicationSubnetGroupIdentifier :: !Text
+    { _crsgTags                              :: !(Maybe [Tag])
+    , _crsgReplicationSubnetGroupIdentifier  :: !Text
     , _crsgReplicationSubnetGroupDescription :: !Text
-    , _crsgSubnetIds :: ![Text]
+    , _crsgSubnetIds                         :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -154,7 +154,7 @@ instance ToQuery CreateReplicationSubnetGroup where
 data CreateReplicationSubnetGroupResponse =
   CreateReplicationSubnetGroupResponse'
     { _crsgrsReplicationSubnetGroup :: !(Maybe ReplicationSubnetGroup)
-    , _crsgrsResponseStatus :: !Int
+    , _crsgrsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

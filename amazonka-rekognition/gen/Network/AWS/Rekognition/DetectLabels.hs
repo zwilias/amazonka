@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -73,8 +73,8 @@ import Network.AWS.Response
 data DetectLabels =
   DetectLabels'
     { _dlMinConfidence :: !(Maybe Double)
-    , _dlMaxLabels :: !(Maybe Nat)
-    , _dlImage :: !Image
+    , _dlMaxLabels     :: !(Maybe Nat)
+    , _dlImage         :: !Image
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -146,9 +146,9 @@ instance ToQuery DetectLabels where
 -- | /See:/ 'detectLabelsResponse' smart constructor.
 data DetectLabelsResponse =
   DetectLabelsResponse'
-    { _dlrsLabels :: !(Maybe [Label])
+    { _dlrsLabels                :: !(Maybe [Label])
     , _dlrsOrientationCorrection :: !(Maybe OrientationCorrection)
-    , _dlrsResponseStatus :: !Int
+    , _dlrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- /See:/ 'deleteSuggester' smart constructor.
 data DeleteSuggester =
   DeleteSuggester'
-    { _ddDomainName :: !Text
+    { _ddDomainName    :: !Text
     , _ddSuggesterName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -112,7 +112,7 @@ instance ToQuery DeleteSuggester where
 data DeleteSuggesterResponse =
   DeleteSuggesterResponse'
     { _delersResponseStatus :: !Int
-    , _delersSuggester :: !SuggesterStatus
+    , _delersSuggester      :: !SuggesterStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

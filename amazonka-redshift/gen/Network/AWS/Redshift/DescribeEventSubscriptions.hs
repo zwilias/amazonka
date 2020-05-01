@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -60,10 +60,10 @@ import Network.AWS.Response
 data DescribeEventSubscriptions =
   DescribeEventSubscriptions'
     { _dessSubscriptionName :: !(Maybe Text)
-    , _dessTagValues :: !(Maybe [Text])
-    , _dessTagKeys :: !(Maybe [Text])
-    , _dessMarker :: !(Maybe Text)
-    , _dessMaxRecords :: !(Maybe Int)
+    , _dessTagValues        :: !(Maybe [Text])
+    , _dessTagKeys          :: !(Maybe [Text])
+    , _dessMarker           :: !(Maybe Text)
+    , _dessMaxRecords       :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -162,8 +162,8 @@ instance ToQuery DescribeEventSubscriptions where
 data DescribeEventSubscriptionsResponse =
   DescribeEventSubscriptionsResponse'
     { _desrsEventSubscriptionsList :: !(Maybe [EventSubscription])
-    , _desrsMarker :: !(Maybe Text)
-    , _desrsResponseStatus :: !Int
+    , _desrsMarker                 :: !(Maybe Text)
+    , _desrsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

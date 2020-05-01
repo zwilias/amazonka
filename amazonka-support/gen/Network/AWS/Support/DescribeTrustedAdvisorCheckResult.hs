@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -69,7 +69,7 @@ import Network.AWS.Support.Types.Product
 data DescribeTrustedAdvisorCheckResult =
   DescribeTrustedAdvisorCheckResult'
     { _dtacrLanguage :: !(Maybe Text)
-    , _dtacrCheckId :: !Text
+    , _dtacrCheckId  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -136,7 +136,7 @@ instance ToQuery DescribeTrustedAdvisorCheckResult where
 -- /See:/ 'describeTrustedAdvisorCheckResultResponse' smart constructor.
 data DescribeTrustedAdvisorCheckResultResponse =
   DescribeTrustedAdvisorCheckResultResponse'
-    { _dtacrrsResult :: !(Maybe TrustedAdvisorCheckResult)
+    { _dtacrrsResult         :: !(Maybe TrustedAdvisorCheckResult)
     , _dtacrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

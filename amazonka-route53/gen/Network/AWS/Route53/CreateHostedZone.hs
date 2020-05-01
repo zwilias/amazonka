@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -73,11 +73,11 @@ import Network.AWS.Route53.Types.Product
 -- /See:/ 'createHostedZone' smart constructor.
 data CreateHostedZone =
   CreateHostedZone'
-    { _chzDelegationSetId :: !(Maybe ResourceId)
-    , _chzVPC :: !(Maybe VPC)
+    { _chzDelegationSetId  :: !(Maybe ResourceId)
+    , _chzVPC              :: !(Maybe VPC)
     , _chzHostedZoneConfig :: !(Maybe HostedZoneConfig)
-    , _chzName :: !Text
-    , _chzCallerReference :: !Text
+    , _chzName             :: !Text
+    , _chzCallerReference  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -177,12 +177,12 @@ instance ToXML CreateHostedZone where
 -- /See:/ 'createHostedZoneResponse' smart constructor.
 data CreateHostedZoneResponse =
   CreateHostedZoneResponse'
-    { _chzrsVPC :: !(Maybe VPC)
+    { _chzrsVPC            :: !(Maybe VPC)
     , _chzrsResponseStatus :: !Int
-    , _chzrsHostedZone :: !HostedZone
-    , _chzrsChangeInfo :: !ChangeInfo
-    , _chzrsDelegationSet :: !DelegationSet
-    , _chzrsLocation :: !Text
+    , _chzrsHostedZone     :: !HostedZone
+    , _chzrsChangeInfo     :: !ChangeInfo
+    , _chzrsDelegationSet  :: !DelegationSet
+    , _chzrsLocation       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

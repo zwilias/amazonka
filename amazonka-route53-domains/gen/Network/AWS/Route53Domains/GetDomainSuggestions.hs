@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,9 +45,9 @@ import Network.AWS.Route53Domains.Types.Product
 -- | /See:/ 'getDomainSuggestions' smart constructor.
 data GetDomainSuggestions =
   GetDomainSuggestions'
-    { _gdsDomainName :: !Text
+    { _gdsDomainName      :: !Text
     , _gdsSuggestionCount :: !Int
-    , _gdsOnlyAvailable :: !Bool
+    , _gdsOnlyAvailable   :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -126,7 +126,7 @@ instance ToQuery GetDomainSuggestions where
 data GetDomainSuggestionsResponse =
   GetDomainSuggestionsResponse'
     { _gdsrsSuggestionsList :: !(Maybe [DomainSuggestion])
-    , _gdsrsResponseStatus :: !Int
+    , _gdsrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.Transcribe.Types.Product
 data CreateVocabulary =
   CreateVocabulary'
     { _cvVocabularyName :: !Text
-    , _cvLanguageCode :: !LanguageCode
-    , _cvPhrases :: ![Text]
+    , _cvLanguageCode   :: !LanguageCode
+    , _cvPhrases        :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -130,12 +130,12 @@ instance ToQuery CreateVocabulary where
 -- | /See:/ 'createVocabularyResponse' smart constructor.
 data CreateVocabularyResponse =
   CreateVocabularyResponse'
-    { _cvrsFailureReason :: !(Maybe Text)
-    , _cvrsLanguageCode :: !(Maybe LanguageCode)
-    , _cvrsVocabularyName :: !(Maybe Text)
+    { _cvrsFailureReason    :: !(Maybe Text)
+    , _cvrsLanguageCode     :: !(Maybe LanguageCode)
+    , _cvrsVocabularyName   :: !(Maybe Text)
     , _cvrsLastModifiedTime :: !(Maybe POSIX)
-    , _cvrsVocabularyState :: !(Maybe VocabularyState)
-    , _cvrsResponseStatus :: !Int
+    , _cvrsVocabularyState  :: !(Maybe VocabularyState)
+    , _cvrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

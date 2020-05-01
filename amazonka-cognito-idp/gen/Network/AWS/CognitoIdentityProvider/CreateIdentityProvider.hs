@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,12 +48,12 @@ import Network.AWS.Response
 -- | /See:/ 'createIdentityProvider' smart constructor.
 data CreateIdentityProvider =
   CreateIdentityProvider'
-    { _cipIdpIdentifiers :: !(Maybe [Text])
+    { _cipIdpIdentifiers   :: !(Maybe [Text])
     , _cipAttributeMapping :: !(Maybe (Map Text Text))
-    , _cipUserPoolId :: !Text
-    , _cipProviderName :: !Text
-    , _cipProviderType :: !IdentityProviderTypeType
-    , _cipProviderDetails :: !(Map Text Text)
+    , _cipUserPoolId       :: !Text
+    , _cipProviderName     :: !Text
+    , _cipProviderType     :: !IdentityProviderTypeType
+    , _cipProviderDetails  :: !(Map Text Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -159,7 +159,7 @@ instance ToQuery CreateIdentityProvider where
 -- | /See:/ 'createIdentityProviderResponse' smart constructor.
 data CreateIdentityProviderResponse =
   CreateIdentityProviderResponse'
-    { _ciprsResponseStatus :: !Int
+    { _ciprsResponseStatus   :: !Int
     , _ciprsIdentityProvider :: !IdentityProviderType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

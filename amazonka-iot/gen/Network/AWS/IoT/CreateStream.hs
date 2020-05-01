@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,9 +50,9 @@ import Network.AWS.Response
 data CreateStream =
   CreateStream'
     { _csDescription :: !(Maybe Text)
-    , _csStreamId :: !Text
-    , _csFiles :: !(List1 StreamFile)
-    , _csRoleARN :: !Text
+    , _csStreamId    :: !Text
+    , _csFiles       :: !(List1 StreamFile)
+    , _csRoleARN     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -133,10 +133,10 @@ instance ToQuery CreateStream where
 -- | /See:/ 'createStreamResponse' smart constructor.
 data CreateStreamResponse =
   CreateStreamResponse'
-    { _csrsStreamVersion :: !(Maybe Nat)
-    , _csrsStreamARN :: !(Maybe Text)
-    , _csrsDescription :: !(Maybe Text)
-    , _csrsStreamId :: !(Maybe Text)
+    { _csrsStreamVersion  :: !(Maybe Nat)
+    , _csrsStreamARN      :: !(Maybe Text)
+    , _csrsDescription    :: !(Maybe Text)
+    , _csrsStreamId       :: !(Maybe Text)
     , _csrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

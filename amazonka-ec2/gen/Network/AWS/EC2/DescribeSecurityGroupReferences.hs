@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'describeSecurityGroupReferences' smart constructor.
 data DescribeSecurityGroupReferences =
   DescribeSecurityGroupReferences'
-    { _dsgrDryRun :: !(Maybe Bool)
+    { _dsgrDryRun  :: !(Maybe Bool)
     , _dsgrGroupId :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -103,7 +103,7 @@ instance ToQuery DescribeSecurityGroupReferences where
 data DescribeSecurityGroupReferencesResponse =
   DescribeSecurityGroupReferencesResponse'
     { _dsgrrsSecurityGroupReferenceSet :: !(Maybe [SecurityGroupReference])
-    , _dsgrrsResponseStatus :: !Int
+    , _dsgrrsResponseStatus            :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

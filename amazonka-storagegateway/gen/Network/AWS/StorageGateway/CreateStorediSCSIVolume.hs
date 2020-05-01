@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -70,12 +70,12 @@ import Network.AWS.StorageGateway.Types.Product
 -- /See:/ 'createStorediSCSIVolume' smart constructor.
 data CreateStorediSCSIVolume =
   CreateStorediSCSIVolume'
-    { _csscsivSnapshotId :: !(Maybe Text)
-    , _csscsivGatewayARN :: !Text
-    , _csscsivDiskId :: !Text
+    { _csscsivSnapshotId           :: !(Maybe Text)
+    , _csscsivGatewayARN           :: !Text
+    , _csscsivDiskId               :: !Text
     , _csscsivPreserveExistingData :: !Bool
-    , _csscsivTargetName :: !Text
-    , _csscsivNetworkInterfaceId :: !Text
+    , _csscsivTargetName           :: !Text
+    , _csscsivNetworkInterfaceId   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -188,10 +188,10 @@ instance ToQuery CreateStorediSCSIVolume where
 -- /See:/ 'createStorediSCSIVolumeResponse' smart constructor.
 data CreateStorediSCSIVolumeResponse =
   CreateStorediSCSIVolumeResponse'
-    { _csscsivrsTargetARN :: !(Maybe Text)
-    , _csscsivrsVolumeARN :: !(Maybe Text)
+    { _csscsivrsTargetARN         :: !(Maybe Text)
+    , _csscsivrsVolumeARN         :: !(Maybe Text)
     , _csscsivrsVolumeSizeInBytes :: !(Maybe Integer)
-    , _csscsivrsResponseStatus :: !Int
+    , _csscsivrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

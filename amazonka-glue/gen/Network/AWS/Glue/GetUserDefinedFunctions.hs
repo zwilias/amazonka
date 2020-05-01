@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,11 +51,11 @@ import Network.AWS.Response
 -- | /See:/ 'getUserDefinedFunctions' smart constructor.
 data GetUserDefinedFunctions =
   GetUserDefinedFunctions'
-    { _gudfCatalogId :: !(Maybe Text)
-    , _gudfNextToken :: !(Maybe Text)
-    , _gudfMaxResults :: !(Maybe Nat)
+    { _gudfCatalogId    :: !(Maybe Text)
+    , _gudfNextToken    :: !(Maybe Text)
+    , _gudfMaxResults   :: !(Maybe Nat)
     , _gudfDatabaseName :: !Text
-    , _gudfPattern :: !Text
+    , _gudfPattern      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -154,9 +154,9 @@ instance ToQuery GetUserDefinedFunctions where
 -- | /See:/ 'getUserDefinedFunctionsResponse' smart constructor.
 data GetUserDefinedFunctionsResponse =
   GetUserDefinedFunctionsResponse'
-    { _gudfrsNextToken :: !(Maybe Text)
+    { _gudfrsNextToken            :: !(Maybe Text)
     , _gudfrsUserDefinedFunctions :: !(Maybe [UserDefinedFunction])
-    , _gudfrsResponseStatus :: !Int
+    , _gudfrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

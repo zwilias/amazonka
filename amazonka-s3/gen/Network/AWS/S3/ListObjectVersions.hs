@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -62,13 +62,13 @@ import Network.AWS.S3.Types.Product
 -- | /See:/ 'listObjectVersions' smart constructor.
 data ListObjectVersions =
   ListObjectVersions'
-    { _lKeyMarker :: !(Maybe Text)
-    , _lPrefix :: !(Maybe Text)
-    , _lEncodingType :: !(Maybe EncodingType)
+    { _lKeyMarker       :: !(Maybe Text)
+    , _lPrefix          :: !(Maybe Text)
+    , _lEncodingType    :: !(Maybe EncodingType)
     , _lVersionIdMarker :: !(Maybe Text)
-    , _lMaxKeys :: !(Maybe Int)
-    , _lDelimiter :: !(Maybe Delimiter)
-    , _lBucket :: !BucketName
+    , _lMaxKeys         :: !(Maybe Int)
+    , _lDelimiter       :: !(Maybe Delimiter)
+    , _lBucket          :: !BucketName
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -188,19 +188,19 @@ instance ToQuery ListObjectVersions where
 data ListObjectVersionsResponse =
   ListObjectVersionsResponse'
     { _lrsNextVersionIdMarker :: !(Maybe Text)
-    , _lrsKeyMarker :: !(Maybe Text)
-    , _lrsDeleteMarkers :: !(Maybe [DeleteMarkerEntry])
-    , _lrsPrefix :: !(Maybe Text)
-    , _lrsCommonPrefixes :: !(Maybe [CommonPrefix])
-    , _lrsEncodingType :: !(Maybe EncodingType)
-    , _lrsVersions :: !(Maybe [ObjectVersion])
-    , _lrsName :: !(Maybe BucketName)
-    , _lrsNextKeyMarker :: !(Maybe Text)
-    , _lrsVersionIdMarker :: !(Maybe Text)
-    , _lrsMaxKeys :: !(Maybe Int)
-    , _lrsIsTruncated :: !(Maybe Bool)
-    , _lrsDelimiter :: !(Maybe Delimiter)
-    , _lrsResponseStatus :: !Int
+    , _lrsKeyMarker           :: !(Maybe Text)
+    , _lrsDeleteMarkers       :: !(Maybe [DeleteMarkerEntry])
+    , _lrsPrefix              :: !(Maybe Text)
+    , _lrsCommonPrefixes      :: !(Maybe [CommonPrefix])
+    , _lrsEncodingType        :: !(Maybe EncodingType)
+    , _lrsVersions            :: !(Maybe [ObjectVersion])
+    , _lrsName                :: !(Maybe BucketName)
+    , _lrsNextKeyMarker       :: !(Maybe Text)
+    , _lrsVersionIdMarker     :: !(Maybe Text)
+    , _lrsMaxKeys             :: !(Maybe Int)
+    , _lrsIsTruncated         :: !(Maybe Bool)
+    , _lrsDelimiter           :: !(Maybe Delimiter)
+    , _lrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

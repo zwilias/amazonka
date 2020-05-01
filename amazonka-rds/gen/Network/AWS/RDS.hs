@@ -1054,9 +1054,9 @@ import Network.AWS.RDS.DescribeCertificates
 import Network.AWS.RDS.DescribeDBClusterBacktracks
 import Network.AWS.RDS.DescribeDBClusterParameterGroups
 import Network.AWS.RDS.DescribeDBClusterParameters
+import Network.AWS.RDS.DescribeDBClusters
 import Network.AWS.RDS.DescribeDBClusterSnapshotAttributes
 import Network.AWS.RDS.DescribeDBClusterSnapshots
-import Network.AWS.RDS.DescribeDBClusters
 import Network.AWS.RDS.DescribeDBEngineVersions
 import Network.AWS.RDS.DescribeDBInstances
 import Network.AWS.RDS.DescribeDBLogFiles
@@ -1069,8 +1069,8 @@ import Network.AWS.RDS.DescribeDBSubnetGroups
 import Network.AWS.RDS.DescribeEngineDefaultClusterParameters
 import Network.AWS.RDS.DescribeEngineDefaultParameters
 import Network.AWS.RDS.DescribeEventCategories
-import Network.AWS.RDS.DescribeEventSubscriptions
 import Network.AWS.RDS.DescribeEvents
+import Network.AWS.RDS.DescribeEventSubscriptions
 import Network.AWS.RDS.DescribeOptionGroupOptions
 import Network.AWS.RDS.DescribeOptionGroups
 import Network.AWS.RDS.DescribeOrderableDBInstanceOptions

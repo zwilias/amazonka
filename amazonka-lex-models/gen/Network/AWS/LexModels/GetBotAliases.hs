@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,9 +53,9 @@ import Network.AWS.Response
 data GetBotAliases =
   GetBotAliases'
     { _gbaNameContains :: !(Maybe Text)
-    , _gbaNextToken :: !(Maybe Text)
-    , _gbaMaxResults :: !(Maybe Nat)
-    , _gbaBotName :: !Text
+    , _gbaNextToken    :: !(Maybe Text)
+    , _gbaMaxResults   :: !(Maybe Nat)
+    , _gbaBotName      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -137,8 +137,8 @@ instance ToQuery GetBotAliases where
 -- | /See:/ 'getBotAliasesResponse' smart constructor.
 data GetBotAliasesResponse =
   GetBotAliasesResponse'
-    { _gbarsNextToken :: !(Maybe Text)
-    , _gbarsBotAliases :: !(Maybe [BotAliasMetadata])
+    { _gbarsNextToken      :: !(Maybe Text)
+    , _gbarsBotAliases     :: !(Maybe [BotAliasMetadata])
     , _gbarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

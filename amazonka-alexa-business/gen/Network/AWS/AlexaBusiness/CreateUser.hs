@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,12 +48,12 @@ import Network.AWS.Response
 -- | /See:/ 'createUser' smart constructor.
 data CreateUser =
   CreateUser'
-    { _cuEmail :: !(Maybe Text)
-    , _cuLastName :: !(Maybe Text)
-    , _cuFirstName :: !(Maybe Text)
+    { _cuEmail              :: !(Maybe Text)
+    , _cuLastName           :: !(Maybe Text)
+    , _cuFirstName          :: !(Maybe Text)
     , _cuClientRequestToken :: !(Maybe Text)
-    , _cuTags :: !(Maybe [Tag])
-    , _cuUserId :: !Text
+    , _cuTags               :: !(Maybe [Tag])
+    , _cuUserId             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -151,7 +151,7 @@ instance ToQuery CreateUser where
 -- | /See:/ 'createUserResponse' smart constructor.
 data CreateUserResponse =
   CreateUserResponse'
-    { _cursUserARN :: !(Maybe Text)
+    { _cursUserARN        :: !(Maybe Text)
     , _cursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

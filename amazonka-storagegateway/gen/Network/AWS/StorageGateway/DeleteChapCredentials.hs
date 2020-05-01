@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,7 +55,7 @@ import Network.AWS.StorageGateway.Types.Product
 -- /See:/ 'deleteChapCredentials' smart constructor.
 data DeleteChapCredentials =
   DeleteChapCredentials'
-    { _dTargetARN :: !Text
+    { _dTargetARN     :: !Text
     , _dInitiatorName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -127,8 +127,8 @@ instance ToQuery DeleteChapCredentials where
 -- /See:/ 'deleteChapCredentialsResponse' smart constructor.
 data DeleteChapCredentialsResponse =
   DeleteChapCredentialsResponse'
-    { _drsTargetARN :: !(Maybe Text)
-    , _drsInitiatorName :: !(Maybe Text)
+    { _drsTargetARN      :: !(Maybe Text)
+    , _drsInitiatorName  :: !(Maybe Text)
     , _drsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

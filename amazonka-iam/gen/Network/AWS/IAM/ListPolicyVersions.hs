@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,8 +52,8 @@ import Network.AWS.Response
 -- | /See:/ 'listPolicyVersions' smart constructor.
 data ListPolicyVersions =
   ListPolicyVersions'
-    { _lpvMarker :: !(Maybe Text)
-    , _lpvMaxItems :: !(Maybe Nat)
+    { _lpvMarker    :: !(Maybe Text)
+    , _lpvMaxItems  :: !(Maybe Nat)
     , _lpvPolicyARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -132,9 +132,9 @@ instance ToQuery ListPolicyVersions where
 -- /See:/ 'listPolicyVersionsResponse' smart constructor.
 data ListPolicyVersionsResponse =
   ListPolicyVersionsResponse'
-    { _lpvrsVersions :: !(Maybe [PolicyVersion])
-    , _lpvrsMarker :: !(Maybe Text)
-    , _lpvrsIsTruncated :: !(Maybe Bool)
+    { _lpvrsVersions       :: !(Maybe [PolicyVersion])
+    , _lpvrsMarker         :: !(Maybe Text)
+    , _lpvrsIsTruncated    :: !(Maybe Bool)
     , _lpvrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

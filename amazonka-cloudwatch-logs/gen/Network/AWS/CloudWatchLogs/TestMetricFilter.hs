@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'testMetricFilter' smart constructor.
 data TestMetricFilter =
   TestMetricFilter'
-    { _tmfFilterPattern :: !Text
+    { _tmfFilterPattern    :: !Text
     , _tmfLogEventMessages :: !(List1 Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -113,7 +113,7 @@ instance ToQuery TestMetricFilter where
 -- | /See:/ 'testMetricFilterResponse' smart constructor.
 data TestMetricFilterResponse =
   TestMetricFilterResponse'
-    { _tmfrsMatches :: !(Maybe [MetricFilterMatchRecord])
+    { _tmfrsMatches        :: !(Maybe [MetricFilterMatchRecord])
     , _tmfrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

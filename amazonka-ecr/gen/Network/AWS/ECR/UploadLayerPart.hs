@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,12 +51,12 @@ import Network.AWS.Response
 -- | /See:/ 'uploadLayerPart' smart constructor.
 data UploadLayerPart =
   UploadLayerPart'
-    { _ulpRegistryId :: !(Maybe Text)
+    { _ulpRegistryId     :: !(Maybe Text)
     , _ulpRepositoryName :: !Text
-    , _ulpUploadId :: !Text
-    , _ulpPartFirstByte :: !Nat
-    , _ulpPartLastByte :: !Nat
-    , _ulpLayerPartBlob :: !Base64
+    , _ulpUploadId       :: !Text
+    , _ulpPartFirstByte  :: !Nat
+    , _ulpPartLastByte   :: !Nat
+    , _ulpLayerPartBlob  :: !Base64
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -165,11 +165,11 @@ instance ToQuery UploadLayerPart where
 -- | /See:/ 'uploadLayerPartResponse' smart constructor.
 data UploadLayerPartResponse =
   UploadLayerPartResponse'
-    { _ulprsRegistryId :: !(Maybe Text)
+    { _ulprsRegistryId       :: !(Maybe Text)
     , _ulprsLastByteReceived :: !(Maybe Nat)
-    , _ulprsRepositoryName :: !(Maybe Text)
-    , _ulprsUploadId :: !(Maybe Text)
-    , _ulprsResponseStatus :: !Int
+    , _ulprsRepositoryName   :: !(Maybe Text)
+    , _ulprsUploadId         :: !(Maybe Text)
+    , _ulprsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

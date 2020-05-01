@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,8 +51,8 @@ import Network.AWS.Response
 data DescribeDirectConnectGateways =
   DescribeDirectConnectGateways'
     { _ddcgDirectConnectGatewayId :: !(Maybe Text)
-    , _ddcgNextToken :: !(Maybe Text)
-    , _ddcgMaxResults :: !(Maybe Int)
+    , _ddcgNextToken              :: !(Maybe Text)
+    , _ddcgMaxResults             :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -133,8 +133,8 @@ instance ToQuery DescribeDirectConnectGateways where
 data DescribeDirectConnectGatewaysResponse =
   DescribeDirectConnectGatewaysResponse'
     { _ddcgrsDirectConnectGateways :: !(Maybe [DirectConnectGateway])
-    , _ddcgrsNextToken :: !(Maybe Text)
-    , _ddcgrsResponseStatus :: !Int
+    , _ddcgrsNextToken             :: !(Maybe Text)
+    , _ddcgrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

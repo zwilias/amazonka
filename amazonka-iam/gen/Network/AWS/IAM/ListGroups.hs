@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.Response
 data ListGroups =
   ListGroups'
     { _lgPathPrefix :: !(Maybe Text)
-    , _lgMarker :: !(Maybe Text)
-    , _lgMaxItems :: !(Maybe Nat)
+    , _lgMarker     :: !(Maybe Text)
+    , _lgMaxItems   :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -128,10 +128,10 @@ instance ToQuery ListGroups where
 -- /See:/ 'listGroupsResponse' smart constructor.
 data ListGroupsResponse =
   ListGroupsResponse'
-    { _lgrsMarker :: !(Maybe Text)
-    , _lgrsIsTruncated :: !(Maybe Bool)
+    { _lgrsMarker         :: !(Maybe Text)
+    , _lgrsIsTruncated    :: !(Maybe Bool)
     , _lgrsResponseStatus :: !Int
-    , _lgrsGroups :: ![Group]
+    , _lgrsGroups         :: ![Group]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

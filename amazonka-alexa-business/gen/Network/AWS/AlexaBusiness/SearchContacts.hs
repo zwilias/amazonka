@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,10 +48,10 @@ import Network.AWS.Response
 -- | /See:/ 'searchContacts' smart constructor.
 data SearchContacts =
   SearchContacts'
-    { _scFilters :: !(Maybe [Filter])
+    { _scFilters      :: !(Maybe [Filter])
     , _scSortCriteria :: !(Maybe [Sort])
-    , _scNextToken :: !(Maybe Text)
-    , _scMaxResults :: !(Maybe Nat)
+    , _scNextToken    :: !(Maybe Text)
+    , _scMaxResults   :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -134,9 +134,9 @@ instance ToQuery SearchContacts where
 -- | /See:/ 'searchContactsResponse' smart constructor.
 data SearchContactsResponse =
   SearchContactsResponse'
-    { _scrsNextToken :: !(Maybe Text)
-    , _scrsContacts :: !(Maybe [ContactData])
-    , _scrsTotalCount :: !(Maybe Int)
+    { _scrsNextToken      :: !(Maybe Text)
+    , _scrsContacts       :: !(Maybe [ContactData])
+    , _scrsTotalCount     :: !(Maybe Int)
     , _scrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

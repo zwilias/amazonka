@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- /See:/ 'getDomainNames' smart constructor.
 data GetDomainNames =
   GetDomainNames'
-    { _gdnLimit :: !(Maybe Int)
+    { _gdnLimit    :: !(Maybe Int)
     , _gdnPosition :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -113,8 +113,8 @@ instance ToQuery GetDomainNames where
 -- /See:/ 'getDomainNamesResponse' smart constructor.
 data GetDomainNamesResponse =
   GetDomainNamesResponse'
-    { _gdnrsItems :: !(Maybe [DomainName])
-    , _gdnrsPosition :: !(Maybe Text)
+    { _gdnrsItems          :: !(Maybe [DomainName])
+    , _gdnrsPosition       :: !(Maybe Text)
     , _gdnrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

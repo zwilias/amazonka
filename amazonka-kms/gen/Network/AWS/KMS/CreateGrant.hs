@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,12 +53,12 @@ import Network.AWS.Response
 data CreateGrant =
   CreateGrant'
     { _cgRetiringPrincipal :: !(Maybe Text)
-    , _cgGrantTokens :: !(Maybe [Text])
-    , _cgConstraints :: !(Maybe GrantConstraints)
-    , _cgName :: !(Maybe Text)
-    , _cgKeyId :: !Text
-    , _cgGranteePrincipal :: !Text
-    , _cgOperations :: ![GrantOperation]
+    , _cgGrantTokens       :: !(Maybe [Text])
+    , _cgConstraints       :: !(Maybe GrantConstraints)
+    , _cgName              :: !(Maybe Text)
+    , _cgKeyId             :: !Text
+    , _cgGranteePrincipal  :: !Text
+    , _cgOperations        :: ![GrantOperation]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -168,8 +168,8 @@ instance ToQuery CreateGrant where
 -- | /See:/ 'createGrantResponse' smart constructor.
 data CreateGrantResponse =
   CreateGrantResponse'
-    { _cgrsGrantId :: !(Maybe Text)
-    , _cgrsGrantToken :: !(Maybe Text)
+    { _cgrsGrantId        :: !(Maybe Text)
+    , _cgrsGrantToken     :: !(Maybe Text)
     , _cgrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

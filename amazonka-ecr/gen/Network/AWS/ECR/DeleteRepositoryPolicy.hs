@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'deleteRepositoryPolicy' smart constructor.
 data DeleteRepositoryPolicy =
   DeleteRepositoryPolicy'
-    { _drpRegistryId :: !(Maybe Text)
+    { _drpRegistryId     :: !(Maybe Text)
     , _drpRepositoryName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -114,9 +114,9 @@ instance ToQuery DeleteRepositoryPolicy where
 -- | /See:/ 'deleteRepositoryPolicyResponse' smart constructor.
 data DeleteRepositoryPolicyResponse =
   DeleteRepositoryPolicyResponse'
-    { _drprsRegistryId :: !(Maybe Text)
+    { _drprsRegistryId     :: !(Maybe Text)
     , _drprsRepositoryName :: !(Maybe Text)
-    , _drprsPolicyText :: !(Maybe Text)
+    , _drprsPolicyText     :: !(Maybe Text)
     , _drprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

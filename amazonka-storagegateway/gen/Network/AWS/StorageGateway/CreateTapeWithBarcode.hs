@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,9 +49,9 @@ import Network.AWS.StorageGateway.Types.Product
 -- /See:/ 'createTapeWithBarcode' smart constructor.
 data CreateTapeWithBarcode =
   CreateTapeWithBarcode'
-    { _ctwbGatewayARN :: !Text
+    { _ctwbGatewayARN      :: !Text
     , _ctwbTapeSizeInBytes :: !Integer
-    , _ctwbTapeBarcode :: !Text
+    , _ctwbTapeBarcode     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -133,7 +133,7 @@ instance ToQuery CreateTapeWithBarcode where
 -- /See:/ 'createTapeWithBarcodeResponse' smart constructor.
 data CreateTapeWithBarcodeResponse =
   CreateTapeWithBarcodeResponse'
-    { _ctwbrsTapeARN :: !(Maybe Text)
+    { _ctwbrsTapeARN        :: !(Maybe Text)
     , _ctwbrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

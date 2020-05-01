@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,18 +54,18 @@ import Network.AWS.Response
 -- | /See:/ 'createNetworkProfile' smart constructor.
 data CreateNetworkProfile =
   CreateNetworkProfile'
-    { _cnpUplinkJitterMs :: !(Maybe Integer)
-    , _cnpUplinkLossPercent :: !(Maybe Nat)
-    , _cnpDownlinkJitterMs :: !(Maybe Integer)
-    , _cnpDownlinkLossPercent :: !(Maybe Nat)
-    , _cnpType :: !(Maybe NetworkProfileType)
-    , _cnpUplinkDelayMs :: !(Maybe Integer)
-    , _cnpUplinkBandwidthBits :: !(Maybe Integer)
-    , _cnpDescription :: !(Maybe Text)
-    , _cnpDownlinkDelayMs :: !(Maybe Integer)
+    { _cnpUplinkJitterMs        :: !(Maybe Integer)
+    , _cnpUplinkLossPercent     :: !(Maybe Nat)
+    , _cnpDownlinkJitterMs      :: !(Maybe Integer)
+    , _cnpDownlinkLossPercent   :: !(Maybe Nat)
+    , _cnpType                  :: !(Maybe NetworkProfileType)
+    , _cnpUplinkDelayMs         :: !(Maybe Integer)
+    , _cnpUplinkBandwidthBits   :: !(Maybe Integer)
+    , _cnpDescription           :: !(Maybe Text)
+    , _cnpDownlinkDelayMs       :: !(Maybe Integer)
     , _cnpDownlinkBandwidthBits :: !(Maybe Integer)
-    , _cnpProjectARN :: !Text
-    , _cnpName :: !Text
+    , _cnpProjectARN            :: !Text
+    , _cnpName                  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

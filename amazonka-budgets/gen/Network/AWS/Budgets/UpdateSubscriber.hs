@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,9 +50,9 @@ import Network.AWS.Response
 -- /See:/ 'updateSubscriber' smart constructor.
 data UpdateSubscriber =
   UpdateSubscriber'
-    { _usAccountId :: !Text
-    , _usBudgetName :: !Text
-    , _usNotification :: !Notification
+    { _usAccountId     :: !Text
+    , _usBudgetName    :: !Text
+    , _usNotification  :: !Notification
     , _usOldSubscriber :: !Subscriber
     , _usNewSubscriber :: !Subscriber
     }

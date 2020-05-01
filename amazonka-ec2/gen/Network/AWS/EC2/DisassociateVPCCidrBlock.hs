@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -98,10 +98,10 @@ instance ToQuery DisassociateVPCCidrBlock where
 -- | /See:/ 'disassociateVPCCidrBlockResponse' smart constructor.
 data DisassociateVPCCidrBlockResponse =
   DisassociateVPCCidrBlockResponse'
-    { _dvcbrsVPCId :: !(Maybe Text)
-    , _dvcbrsCidrBlockAssociation :: !(Maybe VPCCidrBlockAssociation)
+    { _dvcbrsVPCId                    :: !(Maybe Text)
+    , _dvcbrsCidrBlockAssociation     :: !(Maybe VPCCidrBlockAssociation)
     , _dvcbrsIPv6CidrBlockAssociation :: !(Maybe VPCIPv6CidrBlockAssociation)
-    , _dvcbrsResponseStatus :: !Int
+    , _dvcbrsResponseStatus           :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

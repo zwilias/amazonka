@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.StorageGateway.Types.Product
 -- | /See:/ 'createSnapshotFromVolumeRecoveryPoint' smart constructor.
 data CreateSnapshotFromVolumeRecoveryPoint =
   CreateSnapshotFromVolumeRecoveryPoint'
-    { _csfvrpVolumeARN :: !Text
+    { _csfvrpVolumeARN           :: !Text
     , _csfvrpSnapshotDescription :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -124,9 +124,9 @@ instance ToQuery CreateSnapshotFromVolumeRecoveryPoint where
 data CreateSnapshotFromVolumeRecoveryPointResponse =
   CreateSnapshotFromVolumeRecoveryPointResponse'
     { _csfvrprsVolumeRecoveryPointTime :: !(Maybe Text)
-    , _csfvrprsVolumeARN :: !(Maybe Text)
-    , _csfvrprsSnapshotId :: !(Maybe Text)
-    , _csfvrprsResponseStatus :: !Int
+    , _csfvrprsVolumeARN               :: !(Maybe Text)
+    , _csfvrprsSnapshotId              :: !(Maybe Text)
+    , _csfvrprsResponseStatus          :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

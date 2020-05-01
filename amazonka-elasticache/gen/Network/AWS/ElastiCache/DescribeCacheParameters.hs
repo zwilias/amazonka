@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,9 +55,9 @@ import Network.AWS.Response
 -- /See:/ 'describeCacheParameters' smart constructor.
 data DescribeCacheParameters =
   DescribeCacheParameters'
-    { _dcpMarker :: !(Maybe Text)
-    , _dcpMaxRecords :: !(Maybe Int)
-    , _dcpSource :: !(Maybe Text)
+    { _dcpMarker                  :: !(Maybe Text)
+    , _dcpMaxRecords              :: !(Maybe Int)
+    , _dcpSource                  :: !(Maybe Text)
     , _dcpCacheParameterGroupName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

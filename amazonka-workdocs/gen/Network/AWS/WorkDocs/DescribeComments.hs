@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,10 +49,10 @@ import Network.AWS.WorkDocs.Types.Product
 data DescribeComments =
   DescribeComments'
     { _dcAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _dcMarker :: !(Maybe Text)
-    , _dcLimit :: !(Maybe Nat)
-    , _dcDocumentId :: !Text
-    , _dcVersionId :: !Text
+    , _dcMarker              :: !(Maybe Text)
+    , _dcLimit               :: !(Maybe Nat)
+    , _dcDocumentId          :: !Text
+    , _dcVersionId           :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -142,8 +142,8 @@ instance ToQuery DescribeComments where
 -- | /See:/ 'describeCommentsResponse' smart constructor.
 data DescribeCommentsResponse =
   DescribeCommentsResponse'
-    { _dcrsMarker :: !(Maybe Text)
-    , _dcrsComments :: !(Maybe [Comment])
+    { _dcrsMarker         :: !(Maybe Text)
+    , _dcrsComments       :: !(Maybe [Comment])
     , _dcrsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

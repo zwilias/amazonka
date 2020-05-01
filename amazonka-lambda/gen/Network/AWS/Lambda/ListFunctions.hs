@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,9 +58,9 @@ import Network.AWS.Response
 -- /See:/ 'listFunctions' smart constructor.
 data ListFunctions =
   ListFunctions'
-    { _lfMasterRegion :: !(Maybe Text)
-    , _lfMarker :: !(Maybe Text)
-    , _lfMaxItems :: !(Maybe Nat)
+    { _lfMasterRegion    :: !(Maybe Text)
+    , _lfMarker          :: !(Maybe Text)
+    , _lfMaxItems        :: !(Maybe Nat)
     , _lfFunctionVersion :: !(Maybe FunctionVersion)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -143,8 +143,8 @@ instance ToQuery ListFunctions where
 -- /See:/ 'listFunctionsResponse' smart constructor.
 data ListFunctionsResponse =
   ListFunctionsResponse'
-    { _lfrsNextMarker :: !(Maybe Text)
-    , _lfrsFunctions :: !(Maybe [FunctionConfiguration])
+    { _lfrsNextMarker     :: !(Maybe Text)
+    , _lfrsFunctions      :: !(Maybe [FunctionConfiguration])
     , _lfrsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

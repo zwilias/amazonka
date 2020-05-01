@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,9 +55,9 @@ import Network.AWS.Response
 -- /See:/ 'runScheduledInstances' smart constructor.
 data RunScheduledInstances =
   RunScheduledInstances'
-    { _rsiClientToken :: !(Maybe Text)
-    , _rsiInstanceCount :: !(Maybe Int)
-    , _rsiDryRun :: !(Maybe Bool)
+    { _rsiClientToken         :: !(Maybe Text)
+    , _rsiInstanceCount       :: !(Maybe Int)
+    , _rsiDryRun              :: !(Maybe Bool)
     , _rsiLaunchSpecification :: !ScheduledInstancesLaunchSpecification
     , _rsiScheduledInstanceId :: !Text
     }
@@ -151,7 +151,7 @@ instance ToQuery RunScheduledInstances where
 -- /See:/ 'runScheduledInstancesResponse' smart constructor.
 data RunScheduledInstancesResponse =
   RunScheduledInstancesResponse'
-    { _rrsInstanceIdSet :: !(Maybe [Text])
+    { _rrsInstanceIdSet  :: !(Maybe [Text])
     , _rrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

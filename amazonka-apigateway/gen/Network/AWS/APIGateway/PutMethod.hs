@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -67,16 +67,16 @@ import Network.AWS.Response
 data PutMethod =
   PutMethod'
     { _putAuthorizationScopes :: !(Maybe [Text])
-    , _putRequestValidatorId :: !(Maybe Text)
-    , _putRequestModels :: !(Maybe (Map Text Text))
-    , _putRequestParameters :: !(Maybe (Map Text Bool))
-    , _putAuthorizerId :: !(Maybe Text)
-    , _putOperationName :: !(Maybe Text)
-    , _putApiKeyRequired :: !(Maybe Bool)
-    , _putRestAPIId :: !Text
-    , _putResourceId :: !Text
-    , _putHttpMethod :: !Text
-    , _putAuthorizationType :: !Text
+    , _putRequestValidatorId  :: !(Maybe Text)
+    , _putRequestModels       :: !(Maybe (Map Text Text))
+    , _putRequestParameters   :: !(Maybe (Map Text Bool))
+    , _putAuthorizerId        :: !(Maybe Text)
+    , _putOperationName       :: !(Maybe Text)
+    , _putApiKeyRequired      :: !(Maybe Bool)
+    , _putRestAPIId           :: !Text
+    , _putResourceId          :: !Text
+    , _putHttpMethod          :: !Text
+    , _putAuthorizationType   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

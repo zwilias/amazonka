@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 data DescribeNodeAssociationStatus =
   DescribeNodeAssociationStatus'
     { _dnasNodeAssociationStatusToken :: !Text
-    , _dnasServerName :: !Text
+    , _dnasServerName                 :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -122,8 +122,8 @@ instance ToQuery DescribeNodeAssociationStatus where
 -- | /See:/ 'describeNodeAssociationStatusResponse' smart constructor.
 data DescribeNodeAssociationStatusResponse =
   DescribeNodeAssociationStatusResponse'
-    { _dnasrsEngineAttributes :: !(Maybe [EngineAttribute])
-    , _dnasrsResponseStatus :: !Int
+    { _dnasrsEngineAttributes      :: !(Maybe [EngineAttribute])
+    , _dnasrsResponseStatus        :: !Int
     , _dnasrsNodeAssociationStatus :: !NodeAssociationStatus
     }
   deriving (Eq, Show, Data, Typeable, Generic)

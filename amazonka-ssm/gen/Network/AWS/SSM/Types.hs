@@ -1031,9 +1031,9 @@ module Network.AWS.SSM.Types
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.Sign.V4
 import Network.AWS.SSM.Types.Product
 import Network.AWS.SSM.Types.Sum
-import Network.AWS.Sign.V4
 
 -- | API version @2014-11-06@ of the Amazon Simple Systems Manager (SSM) SDK configuration.
 ssm :: Service

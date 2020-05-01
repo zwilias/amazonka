@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Response
 -- /See:/ 'describeIndexFields' smart constructor.
 data DescribeIndexFields =
   DescribeIndexFields'
-    { _difDeployed :: !(Maybe Bool)
+    { _difDeployed   :: !(Maybe Bool)
     , _difFieldNames :: !(Maybe [Text])
     , _difDomainName :: !Text
     }
@@ -125,7 +125,7 @@ instance ToQuery DescribeIndexFields where
 data DescribeIndexFieldsResponse =
   DescribeIndexFieldsResponse'
     { _difsrsResponseStatus :: !Int
-    , _difsrsIndexFields :: ![IndexFieldStatus]
+    , _difsrsIndexFields    :: ![IndexFieldStatus]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

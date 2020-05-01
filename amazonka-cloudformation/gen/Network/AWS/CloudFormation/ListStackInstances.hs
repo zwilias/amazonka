@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,11 +48,11 @@ import Network.AWS.Response
 -- | /See:/ 'listStackInstances' smart constructor.
 data ListStackInstances =
   ListStackInstances'
-    { _lsiStackInstanceRegion :: !(Maybe Text)
-    , _lsiNextToken :: !(Maybe Text)
+    { _lsiStackInstanceRegion  :: !(Maybe Text)
+    , _lsiNextToken            :: !(Maybe Text)
     , _lsiStackInstanceAccount :: !(Maybe Text)
-    , _lsiMaxResults :: !(Maybe Nat)
-    , _lsiStackSetName :: !Text
+    , _lsiMaxResults           :: !(Maybe Nat)
+    , _lsiStackSetName         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -140,8 +140,8 @@ instance ToQuery ListStackInstances where
 -- | /See:/ 'listStackInstancesResponse' smart constructor.
 data ListStackInstancesResponse =
   ListStackInstancesResponse'
-    { _lsirsNextToken :: !(Maybe Text)
-    , _lsirsSummaries :: !(Maybe [StackInstanceSummary])
+    { _lsirsNextToken      :: !(Maybe Text)
+    , _lsirsSummaries      :: !(Maybe [StackInstanceSummary])
     , _lsirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

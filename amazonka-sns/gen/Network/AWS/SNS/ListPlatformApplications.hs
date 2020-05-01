@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -112,8 +112,8 @@ instance ToQuery ListPlatformApplications where
 data ListPlatformApplicationsResponse =
   ListPlatformApplicationsResponse'
     { _lparsPlatformApplications :: !(Maybe [PlatformApplication])
-    , _lparsNextToken :: !(Maybe Text)
-    , _lparsResponseStatus :: !Int
+    , _lparsNextToken            :: !(Maybe Text)
+    , _lparsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

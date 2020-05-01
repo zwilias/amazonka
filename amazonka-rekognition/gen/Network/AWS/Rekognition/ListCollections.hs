@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,7 +53,7 @@ import Network.AWS.Response
 -- | /See:/ 'listCollections' smart constructor.
 data ListCollections =
   ListCollections'
-    { _lcNextToken :: !(Maybe Text)
+    { _lcNextToken  :: !(Maybe Text)
     , _lcMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -125,10 +125,10 @@ instance ToQuery ListCollections where
 -- | /See:/ 'listCollectionsResponse' smart constructor.
 data ListCollectionsResponse =
   ListCollectionsResponse'
-    { _lcrsCollectionIds :: !(Maybe [Text])
-    , _lcrsNextToken :: !(Maybe Text)
+    { _lcrsCollectionIds     :: !(Maybe [Text])
+    , _lcrsNextToken         :: !(Maybe Text)
     , _lcrsFaceModelVersions :: !(Maybe [Text])
-    , _lcrsResponseStatus :: !Int
+    , _lcrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

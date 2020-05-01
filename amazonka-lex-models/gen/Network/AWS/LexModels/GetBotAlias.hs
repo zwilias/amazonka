@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- | /See:/ 'getBotAlias' smart constructor.
 data GetBotAlias =
   GetBotAlias'
-    { _gbasName :: !Text
+    { _gbasName    :: !Text
     , _gbasBotName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -112,14 +112,14 @@ instance ToQuery GetBotAlias where
 -- | /See:/ 'getBotAliasResponse' smart constructor.
 data GetBotAliasResponse =
   GetBotAliasResponse'
-    { _gbasrsChecksum :: !(Maybe Text)
-    , _gbasrsBotVersion :: !(Maybe Text)
-    , _gbasrsBotName :: !(Maybe Text)
-    , _gbasrsCreatedDate :: !(Maybe POSIX)
-    , _gbasrsName :: !(Maybe Text)
+    { _gbasrsChecksum        :: !(Maybe Text)
+    , _gbasrsBotVersion      :: !(Maybe Text)
+    , _gbasrsBotName         :: !(Maybe Text)
+    , _gbasrsCreatedDate     :: !(Maybe POSIX)
+    , _gbasrsName            :: !(Maybe Text)
     , _gbasrsLastUpdatedDate :: !(Maybe POSIX)
-    , _gbasrsDescription :: !(Maybe Text)
-    , _gbasrsResponseStatus :: !Int
+    , _gbasrsDescription     :: !(Maybe Text)
+    , _gbasrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

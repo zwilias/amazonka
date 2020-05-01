@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,9 +47,9 @@ import Network.AWS.Response
 data CreateVPCEConfiguration =
   CreateVPCEConfiguration'
     { _cvecVpceConfigurationDescription :: !(Maybe Text)
-    , _cvecVpceConfigurationName :: !Text
-    , _cvecVpceServiceName :: !Text
-    , _cvecServiceDNSName :: !Text
+    , _cvecVpceConfigurationName        :: !Text
+    , _cvecVpceServiceName              :: !Text
+    , _cvecServiceDNSName               :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -142,7 +142,7 @@ instance ToQuery CreateVPCEConfiguration where
 data CreateVPCEConfigurationResponse =
   CreateVPCEConfigurationResponse'
     { _cvecrsVpceConfiguration :: !(Maybe VPCEConfiguration)
-    , _cvecrsResponseStatus :: !Int
+    , _cvecrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

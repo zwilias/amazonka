@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,15 +55,15 @@ import Network.AWS.ServiceCatalog.Types.Product
 -- | /See:/ 'provisionProduct' smart constructor.
 data ProvisionProduct =
   ProvisionProduct'
-    { _ppNotificationARNs :: !(Maybe [Text])
-    , _ppAcceptLanguage :: !(Maybe Text)
-    , _ppPathId :: !(Maybe Text)
+    { _ppNotificationARNs       :: !(Maybe [Text])
+    , _ppAcceptLanguage         :: !(Maybe Text)
+    , _ppPathId                 :: !(Maybe Text)
     , _ppProvisioningParameters :: !(Maybe [ProvisioningParameter])
-    , _ppTags :: !(Maybe [Tag])
-    , _ppProductId :: !Text
+    , _ppTags                   :: !(Maybe [Tag])
+    , _ppProductId              :: !Text
     , _ppProvisioningArtifactId :: !Text
     , _ppProvisionedProductName :: !Text
-    , _ppProvisionToken :: !Text
+    , _ppProvisionToken         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -195,7 +195,7 @@ instance ToQuery ProvisionProduct where
 -- | /See:/ 'provisionProductResponse' smart constructor.
 data ProvisionProductResponse =
   ProvisionProductResponse'
-    { _pprsRecordDetail :: !(Maybe RecordDetail)
+    { _pprsRecordDetail   :: !(Maybe RecordDetail)
     , _pprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

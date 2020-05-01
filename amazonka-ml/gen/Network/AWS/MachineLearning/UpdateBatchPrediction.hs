@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'updateBatchPrediction' smart constructor.
 data UpdateBatchPrediction =
   UpdateBatchPrediction'
-    { _ubpBatchPredictionId :: !Text
+    { _ubpBatchPredictionId   :: !Text
     , _ubpBatchPredictionName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -124,7 +124,7 @@ instance ToQuery UpdateBatchPrediction where
 data UpdateBatchPredictionResponse =
   UpdateBatchPredictionResponse'
     { _ubprsBatchPredictionId :: !(Maybe Text)
-    , _ubprsResponseStatus :: !Int
+    , _ubprsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -185,9 +185,9 @@ instance ToQuery PutScalingPolicy where
 -- | /See:/ 'putScalingPolicyResponse' smart constructor.
 data PutScalingPolicyResponse =
   PutScalingPolicyResponse'
-    { _psprsAlarms :: !(Maybe [Alarm])
+    { _psprsAlarms         :: !(Maybe [Alarm])
     , _psprsResponseStatus :: !Int
-    , _psprsPolicyARN :: !Text
+    , _psprsPolicyARN      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

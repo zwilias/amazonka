@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- | /See:/ 'updateContinuousBackups' smart constructor.
 data UpdateContinuousBackups =
   UpdateContinuousBackups'
-    { _ucbTableName :: !Text
+    { _ucbTableName                        :: !Text
     , _ucbPointInTimeRecoverySpecification :: !PointInTimeRecoverySpecification
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

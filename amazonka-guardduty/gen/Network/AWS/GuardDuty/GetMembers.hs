@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -105,9 +105,9 @@ instance ToQuery GetMembers where
 -- | /See:/ 'getMembersResponse' smart constructor.
 data GetMembersResponse =
   GetMembersResponse'
-    { _gmrsMembers :: !(Maybe [Member])
+    { _gmrsMembers             :: !(Maybe [Member])
     , _gmrsUnprocessedAccounts :: !(Maybe [UnprocessedAccount])
-    , _gmrsResponseStatus :: !Int
+    , _gmrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

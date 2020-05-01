@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'getCoreDefinitionVersion' smart constructor.
 data GetCoreDefinitionVersion =
   GetCoreDefinitionVersion'
-    { _gcdvCoreDefinitionId :: !Text
+    { _gcdvCoreDefinitionId        :: !Text
     , _gcdvCoreDefinitionVersionId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -117,12 +117,12 @@ instance ToQuery GetCoreDefinitionVersion where
 -- | /See:/ 'getCoreDefinitionVersionResponse' smart constructor.
 data GetCoreDefinitionVersionResponse =
   GetCoreDefinitionVersionResponse'
-    { _gcdvrsDefinition :: !(Maybe CoreDefinitionVersion)
-    , _gcdvrsARN :: !(Maybe Text)
+    { _gcdvrsDefinition        :: !(Maybe CoreDefinitionVersion)
+    , _gcdvrsARN               :: !(Maybe Text)
     , _gcdvrsCreationTimestamp :: !(Maybe Text)
-    , _gcdvrsVersion :: !(Maybe Text)
-    , _gcdvrsId :: !(Maybe Text)
-    , _gcdvrsResponseStatus :: !Int
+    , _gcdvrsVersion           :: !(Maybe Text)
+    , _gcdvrsId                :: !(Maybe Text)
+    , _gcdvrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

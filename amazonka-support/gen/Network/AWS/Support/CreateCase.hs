@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -77,14 +77,14 @@ import Network.AWS.Support.Types.Product
 -- /See:/ 'createCase' smart constructor.
 data CreateCase =
   CreateCase'
-    { _ccSeverityCode :: !(Maybe Text)
-    , _ccIssueType :: !(Maybe Text)
-    , _ccCcEmailAddresses :: !(Maybe [Text])
-    , _ccLanguage :: !(Maybe Text)
-    , _ccCategoryCode :: !(Maybe Text)
-    , _ccServiceCode :: !(Maybe Text)
-    , _ccAttachmentSetId :: !(Maybe Text)
-    , _ccSubject :: !Text
+    { _ccSeverityCode      :: !(Maybe Text)
+    , _ccIssueType         :: !(Maybe Text)
+    , _ccCcEmailAddresses  :: !(Maybe [Text])
+    , _ccLanguage          :: !(Maybe Text)
+    , _ccCategoryCode      :: !(Maybe Text)
+    , _ccServiceCode       :: !(Maybe Text)
+    , _ccAttachmentSetId   :: !(Maybe Text)
+    , _ccSubject           :: !Text
     , _ccCommunicationBody :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -214,7 +214,7 @@ instance ToQuery CreateCase where
 -- /See:/ 'createCaseResponse' smart constructor.
 data CreateCaseResponse =
   CreateCaseResponse'
-    { _ccrsCaseId :: !(Maybe Text)
+    { _ccrsCaseId         :: !(Maybe Text)
     , _ccrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

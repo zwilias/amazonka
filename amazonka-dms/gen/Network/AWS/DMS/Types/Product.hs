@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,8 +26,8 @@ import Network.AWS.Prelude
 -- /See:/ 'accountQuota' smart constructor.
 data AccountQuota =
   AccountQuota'
-    { _aqMax :: !(Maybe Integer)
-    , _aqUsed :: !(Maybe Integer)
+    { _aqMax              :: !(Maybe Integer)
+    , _aqUsed             :: !(Maybe Integer)
     , _aqAccountQuotaName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -109,16 +109,16 @@ instance NFData AvailabilityZone
 -- /See:/ 'certificate' smart constructor.
 data Certificate =
   Certificate'
-    { _cCertificateOwner :: !(Maybe Text)
-    , _cSigningAlgorithm :: !(Maybe Text)
-    , _cValidFromDate :: !(Maybe POSIX)
-    , _cCertificatePem :: !(Maybe Text)
-    , _cCertificateARN :: !(Maybe Text)
+    { _cCertificateOwner        :: !(Maybe Text)
+    , _cSigningAlgorithm        :: !(Maybe Text)
+    , _cValidFromDate           :: !(Maybe POSIX)
+    , _cCertificatePem          :: !(Maybe Text)
+    , _cCertificateARN          :: !(Maybe Text)
     , _cCertificateCreationDate :: !(Maybe POSIX)
-    , _cCertificateIdentifier :: !(Maybe Text)
-    , _cCertificateWallet :: !(Maybe Base64)
-    , _cKeyLength :: !(Maybe Int)
-    , _cValidToDate :: !(Maybe POSIX)
+    , _cCertificateIdentifier   :: !(Maybe Text)
+    , _cCertificateWallet       :: !(Maybe Base64)
+    , _cKeyLength               :: !(Maybe Int)
+    , _cValidToDate             :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -234,12 +234,12 @@ instance NFData Certificate
 -- /See:/ 'connection' smart constructor.
 data Connection =
   Connection'
-    { _cStatus :: !(Maybe Text)
-    , _cReplicationInstanceARN :: !(Maybe Text)
-    , _cEndpointIdentifier :: !(Maybe Text)
+    { _cStatus                        :: !(Maybe Text)
+    , _cReplicationInstanceARN        :: !(Maybe Text)
+    , _cEndpointIdentifier            :: !(Maybe Text)
     , _cReplicationInstanceIdentifier :: !(Maybe Text)
-    , _cEndpointARN :: !(Maybe Text)
-    , _cLastFailureMessage :: !(Maybe Text)
+    , _cEndpointARN                   :: !(Maybe Text)
+    , _cLastFailureMessage            :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -363,26 +363,26 @@ instance ToJSON DynamoDBSettings where
 -- /See:/ 'endpoint' smart constructor.
 data Endpoint =
   Endpoint'
-    { _eStatus :: !(Maybe Text)
-    , _eServerName :: !(Maybe Text)
-    , _eCertificateARN :: !(Maybe Text)
-    , _eServiceAccessRoleARN :: !(Maybe Text)
-    , _eEngineDisplayName :: !(Maybe Text)
+    { _eStatus                    :: !(Maybe Text)
+    , _eServerName                :: !(Maybe Text)
+    , _eCertificateARN            :: !(Maybe Text)
+    , _eServiceAccessRoleARN      :: !(Maybe Text)
+    , _eEngineDisplayName         :: !(Maybe Text)
     , _eExtraConnectionAttributes :: !(Maybe Text)
-    , _eEndpointType :: !(Maybe ReplicationEndpointTypeValue)
-    , _eUsername :: !(Maybe Text)
-    , _eExternalTableDefinition :: !(Maybe Text)
-    , _eEngineName :: !(Maybe Text)
-    , _eKMSKeyId :: !(Maybe Text)
-    , _eMongoDBSettings :: !(Maybe MongoDBSettings)
-    , _eSSLMode :: !(Maybe DmsSSLModeValue)
-    , _eDatabaseName :: !(Maybe Text)
-    , _eS3Settings :: !(Maybe S3Settings)
-    , _eEndpointIdentifier :: !(Maybe Text)
-    , _eExternalId :: !(Maybe Text)
-    , _eDynamoDBSettings :: !(Maybe DynamoDBSettings)
-    , _eEndpointARN :: !(Maybe Text)
-    , _ePort :: !(Maybe Int)
+    , _eEndpointType              :: !(Maybe ReplicationEndpointTypeValue)
+    , _eUsername                  :: !(Maybe Text)
+    , _eExternalTableDefinition   :: !(Maybe Text)
+    , _eEngineName                :: !(Maybe Text)
+    , _eKMSKeyId                  :: !(Maybe Text)
+    , _eMongoDBSettings           :: !(Maybe MongoDBSettings)
+    , _eSSLMode                   :: !(Maybe DmsSSLModeValue)
+    , _eDatabaseName              :: !(Maybe Text)
+    , _eS3Settings                :: !(Maybe S3Settings)
+    , _eEndpointIdentifier        :: !(Maybe Text)
+    , _eExternalId                :: !(Maybe Text)
+    , _eDynamoDBSettings          :: !(Maybe DynamoDBSettings)
+    , _eEndpointARN               :: !(Maybe Text)
+    , _ePort                      :: !(Maybe Int)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -575,11 +575,11 @@ instance NFData Endpoint
 -- /See:/ 'event' smart constructor.
 data Event =
   Event'
-    { _eSourceType :: !(Maybe SourceType)
+    { _eSourceType       :: !(Maybe SourceType)
     , _eSourceIdentifier :: !(Maybe Text)
-    , _eDate :: !(Maybe POSIX)
-    , _eEventCategories :: !(Maybe [Text])
-    , _eMessage :: !(Maybe Text)
+    , _eDate             :: !(Maybe POSIX)
+    , _eEventCategories  :: !(Maybe [Text])
+    , _eMessage          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -649,7 +649,7 @@ instance NFData Event
 -- /See:/ 'eventCategoryGroup' smart constructor.
 data EventCategoryGroup =
   EventCategoryGroup'
-    { _ecgSourceType :: !(Maybe Text)
+    { _ecgSourceType      :: !(Maybe Text)
     , _ecgEventCategories :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -694,15 +694,15 @@ instance NFData EventCategoryGroup
 -- /See:/ 'eventSubscription' smart constructor.
 data EventSubscription =
   EventSubscription'
-    { _esStatus :: !(Maybe Text)
-    , _esCustomerAWSId :: !(Maybe Text)
-    , _esCustSubscriptionId :: !(Maybe Text)
-    , _esSNSTopicARN :: !(Maybe Text)
-    , _esEnabled :: !(Maybe Bool)
-    , _esSourceType :: !(Maybe Text)
+    { _esStatus                   :: !(Maybe Text)
+    , _esCustomerAWSId            :: !(Maybe Text)
+    , _esCustSubscriptionId       :: !(Maybe Text)
+    , _esSNSTopicARN              :: !(Maybe Text)
+    , _esEnabled                  :: !(Maybe Bool)
+    , _esSourceType               :: !(Maybe Text)
     , _esSubscriptionCreationTime :: !(Maybe Text)
-    , _esEventCategoriesList :: !(Maybe [Text])
-    , _esSourceIdsList :: !(Maybe [Text])
+    , _esEventCategoriesList      :: !(Maybe [Text])
+    , _esSourceIdsList            :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -807,7 +807,7 @@ instance NFData EventSubscription
 -- /See:/ 'filter'' smart constructor.
 data Filter =
   Filter'
-    { _fName :: !Text
+    { _fName   :: !Text
     , _fValues :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -847,18 +847,18 @@ instance ToJSON Filter where
 -- /See:/ 'mongoDBSettings' smart constructor.
 data MongoDBSettings =
   MongoDBSettings'
-    { _mdsServerName :: !(Maybe Text)
-    , _mdsAuthMechanism :: !(Maybe AuthMechanismValue)
-    , _mdsUsername :: !(Maybe Text)
-    , _mdsKMSKeyId :: !(Maybe Text)
-    , _mdsPassword :: !(Maybe (Sensitive Text))
-    , _mdsNestingLevel :: !(Maybe NestingLevelValue)
-    , _mdsDatabaseName :: !(Maybe Text)
+    { _mdsServerName        :: !(Maybe Text)
+    , _mdsAuthMechanism     :: !(Maybe AuthMechanismValue)
+    , _mdsUsername          :: !(Maybe Text)
+    , _mdsKMSKeyId          :: !(Maybe Text)
+    , _mdsPassword          :: !(Maybe (Sensitive Text))
+    , _mdsNestingLevel      :: !(Maybe NestingLevelValue)
+    , _mdsDatabaseName      :: !(Maybe Text)
     , _mdsDocsToInvestigate :: !(Maybe Text)
-    , _mdsAuthSource :: !(Maybe Text)
-    , _mdsExtractDocId :: !(Maybe Text)
-    , _mdsAuthType :: !(Maybe AuthTypeValue)
-    , _mdsPort :: !(Maybe Int)
+    , _mdsAuthSource        :: !(Maybe Text)
+    , _mdsExtractDocId      :: !(Maybe Text)
+    , _mdsAuthType          :: !(Maybe AuthTypeValue)
+    , _mdsPort              :: !(Maybe Int)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -1002,13 +1002,13 @@ instance ToJSON MongoDBSettings where
 -- /See:/ 'orderableReplicationInstance' smart constructor.
 data OrderableReplicationInstance =
   OrderableReplicationInstance'
-    { _oriEngineVersion :: !(Maybe Text)
-    , _oriMinAllocatedStorage :: !(Maybe Int)
+    { _oriEngineVersion            :: !(Maybe Text)
+    , _oriMinAllocatedStorage      :: !(Maybe Int)
     , _oriIncludedAllocatedStorage :: !(Maybe Int)
-    , _oriMaxAllocatedStorage :: !(Maybe Int)
+    , _oriMaxAllocatedStorage      :: !(Maybe Int)
     , _oriReplicationInstanceClass :: !(Maybe Text)
-    , _oriDefaultAllocatedStorage :: !(Maybe Int)
-    , _oriStorageType :: !(Maybe Text)
+    , _oriDefaultAllocatedStorage  :: !(Maybe Int)
+    , _oriStorageType              :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1102,11 +1102,11 @@ instance NFData OrderableReplicationInstance
 -- /See:/ 'refreshSchemasStatus' smart constructor.
 data RefreshSchemasStatus =
   RefreshSchemasStatus'
-    { _rssStatus :: !(Maybe RefreshSchemasStatusTypeValue)
-    , _rssLastRefreshDate :: !(Maybe POSIX)
+    { _rssStatus                 :: !(Maybe RefreshSchemasStatusTypeValue)
+    , _rssLastRefreshDate        :: !(Maybe POSIX)
     , _rssReplicationInstanceARN :: !(Maybe Text)
-    , _rssEndpointARN :: !(Maybe Text)
-    , _rssLastFailureMessage :: !(Maybe Text)
+    , _rssEndpointARN            :: !(Maybe Text)
+    , _rssLastFailureMessage     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1444,8 +1444,8 @@ instance NFData ReplicationInstance
 -- /See:/ 'replicationInstanceTaskLog' smart constructor.
 data ReplicationInstanceTaskLog =
   ReplicationInstanceTaskLog'
-    { _ritlReplicationTaskName :: !(Maybe Text)
-    , _ritlReplicationTaskARN :: !(Maybe Text)
+    { _ritlReplicationTaskName            :: !(Maybe Text)
+    , _ritlReplicationTaskARN             :: !(Maybe Text)
     , _ritlReplicationInstanceTaskLogSize :: !(Maybe Integer)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1505,9 +1505,9 @@ instance NFData ReplicationInstanceTaskLog
 -- /See:/ 'replicationPendingModifiedValues' smart constructor.
 data ReplicationPendingModifiedValues =
   ReplicationPendingModifiedValues'
-    { _rpmvEngineVersion :: !(Maybe Text)
-    , _rpmvMultiAZ :: !(Maybe Bool)
-    , _rpmvAllocatedStorage :: !(Maybe Int)
+    { _rpmvEngineVersion            :: !(Maybe Text)
+    , _rpmvMultiAZ                  :: !(Maybe Bool)
+    , _rpmvAllocatedStorage         :: !(Maybe Int)
     , _rpmvReplicationInstanceClass :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1574,10 +1574,10 @@ instance NFData ReplicationPendingModifiedValues
 -- /See:/ 'replicationSubnetGroup' smart constructor.
 data ReplicationSubnetGroup =
   ReplicationSubnetGroup'
-    { _rsgVPCId :: !(Maybe Text)
-    , _rsgSubnets :: !(Maybe [Subnet])
-    , _rsgReplicationSubnetGroupIdentifier :: !(Maybe Text)
-    , _rsgSubnetGroupStatus :: !(Maybe Text)
+    { _rsgVPCId                             :: !(Maybe Text)
+    , _rsgSubnets                           :: !(Maybe [Subnet])
+    , _rsgReplicationSubnetGroupIdentifier  :: !(Maybe Text)
+    , _rsgSubnetGroupStatus                 :: !(Maybe Text)
     , _rsgReplicationSubnetGroupDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1655,23 +1655,23 @@ instance NFData ReplicationSubnetGroup
 -- /See:/ 'replicationTask' smart constructor.
 data ReplicationTask =
   ReplicationTask'
-    { _rReplicationTaskSettings :: !(Maybe Text)
-    , _rStatus :: !(Maybe Text)
-    , _rStopReason :: !(Maybe Text)
-    , _rTargetEndpointARN :: !(Maybe Text)
-    , _rReplicationTaskIdentifier :: !(Maybe Text)
-    , _rCdcStartPosition :: !(Maybe Text)
-    , _rReplicationTaskStartDate :: !(Maybe POSIX)
-    , _rSourceEndpointARN :: !(Maybe Text)
-    , _rRecoveryCheckpoint :: !(Maybe Text)
-    , _rTableMappings :: !(Maybe Text)
+    { _rReplicationTaskSettings     :: !(Maybe Text)
+    , _rStatus                      :: !(Maybe Text)
+    , _rStopReason                  :: !(Maybe Text)
+    , _rTargetEndpointARN           :: !(Maybe Text)
+    , _rReplicationTaskIdentifier   :: !(Maybe Text)
+    , _rCdcStartPosition            :: !(Maybe Text)
+    , _rReplicationTaskStartDate    :: !(Maybe POSIX)
+    , _rSourceEndpointARN           :: !(Maybe Text)
+    , _rRecoveryCheckpoint          :: !(Maybe Text)
+    , _rTableMappings               :: !(Maybe Text)
     , _rReplicationTaskCreationDate :: !(Maybe POSIX)
-    , _rMigrationType :: !(Maybe MigrationTypeValue)
-    , _rReplicationTaskARN :: !(Maybe Text)
-    , _rCdcStopPosition :: !(Maybe Text)
-    , _rReplicationTaskStats :: !(Maybe ReplicationTaskStats)
-    , _rReplicationInstanceARN :: !(Maybe Text)
-    , _rLastFailureMessage :: !(Maybe Text)
+    , _rMigrationType               :: !(Maybe MigrationTypeValue)
+    , _rReplicationTaskARN          :: !(Maybe Text)
+    , _rCdcStopPosition             :: !(Maybe Text)
+    , _rReplicationTaskStats        :: !(Maybe ReplicationTaskStats)
+    , _rReplicationInstanceARN      :: !(Maybe Text)
+    , _rLastFailureMessage          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1851,13 +1851,13 @@ instance NFData ReplicationTask
 -- /See:/ 'replicationTaskAssessmentResult' smart constructor.
 data ReplicationTaskAssessmentResult =
   ReplicationTaskAssessmentResult'
-    { _rtarAssessmentResults :: !(Maybe Text)
-    , _rtarAssessmentResultsFile :: !(Maybe Text)
-    , _rtarReplicationTaskIdentifier :: !(Maybe Text)
-    , _rtarAssessmentStatus :: !(Maybe Text)
-    , _rtarS3ObjectURL :: !(Maybe Text)
+    { _rtarAssessmentResults                 :: !(Maybe Text)
+    , _rtarAssessmentResultsFile             :: !(Maybe Text)
+    , _rtarReplicationTaskIdentifier         :: !(Maybe Text)
+    , _rtarAssessmentStatus                  :: !(Maybe Text)
+    , _rtarS3ObjectURL                       :: !(Maybe Text)
     , _rtarReplicationTaskLastAssessmentDate :: !(Maybe POSIX)
-    , _rtarReplicationTaskARN :: !(Maybe Text)
+    , _rtarReplicationTaskARN                :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1956,11 +1956,11 @@ instance NFData ReplicationTaskAssessmentResult
 data ReplicationTaskStats =
   ReplicationTaskStats'
     { _rtsFullLoadProgressPercent :: !(Maybe Int)
-    , _rtsElapsedTimeMillis :: !(Maybe Integer)
-    , _rtsTablesErrored :: !(Maybe Int)
-    , _rtsTablesLoaded :: !(Maybe Int)
-    , _rtsTablesQueued :: !(Maybe Int)
-    , _rtsTablesLoading :: !(Maybe Int)
+    , _rtsElapsedTimeMillis       :: !(Maybe Integer)
+    , _rtsTablesErrored           :: !(Maybe Int)
+    , _rtsTablesLoaded            :: !(Maybe Int)
+    , _rtsTablesQueued            :: !(Maybe Int)
+    , _rtsTablesLoading           :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2039,13 +2039,13 @@ instance NFData ReplicationTaskStats
 -- /See:/ 's3Settings' smart constructor.
 data S3Settings =
   S3Settings'
-    { _ssCSVDelimiter :: !(Maybe Text)
-    , _ssServiceAccessRoleARN :: !(Maybe Text)
-    , _ssBucketFolder :: !(Maybe Text)
+    { _ssCSVDelimiter            :: !(Maybe Text)
+    , _ssServiceAccessRoleARN    :: !(Maybe Text)
+    , _ssBucketFolder            :: !(Maybe Text)
     , _ssExternalTableDefinition :: !(Maybe Text)
-    , _ssBucketName :: !(Maybe Text)
-    , _ssCSVRowDelimiter :: !(Maybe Text)
-    , _ssCompressionType :: !(Maybe CompressionTypeValue)
+    , _ssBucketName              :: !(Maybe Text)
+    , _ssCSVRowDelimiter         :: !(Maybe Text)
+    , _ssCompressionType         :: !(Maybe CompressionTypeValue)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2145,8 +2145,8 @@ instance ToJSON S3Settings where
 -- /See:/ 'subnet' smart constructor.
 data Subnet =
   Subnet'
-    { _sSubnetStatus :: !(Maybe Text)
-    , _sSubnetIdentifier :: !(Maybe Text)
+    { _sSubnetStatus           :: !(Maybe Text)
+    , _sSubnetIdentifier       :: !(Maybe Text)
     , _sSubnetAvailabilityZone :: !(Maybe AvailabilityZone)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2201,9 +2201,9 @@ instance NFData Subnet
 data SupportedEndpointType =
   SupportedEndpointType'
     { _setEngineDisplayName :: !(Maybe Text)
-    , _setEndpointType :: !(Maybe ReplicationEndpointTypeValue)
-    , _setEngineName :: !(Maybe Text)
-    , _setSupportsCDC :: !(Maybe Bool)
+    , _setEndpointType      :: !(Maybe ReplicationEndpointTypeValue)
+    , _setEngineName        :: !(Maybe Text)
+    , _setSupportsCDC       :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2266,21 +2266,21 @@ instance NFData SupportedEndpointType
 -- /See:/ 'tableStatistics' smart constructor.
 data TableStatistics =
   TableStatistics'
-    { _tsValidationState :: !(Maybe Text)
-    , _tsFullLoadRows :: !(Maybe Integer)
-    , _tsInserts :: !(Maybe Integer)
+    { _tsValidationState              :: !(Maybe Text)
+    , _tsFullLoadRows                 :: !(Maybe Integer)
+    , _tsInserts                      :: !(Maybe Integer)
     , _tsFullLoadCondtnlChkFailedRows :: !(Maybe Integer)
-    , _tsValidationFailedRecords :: !(Maybe Integer)
-    , _tsValidationSuspendedRecords :: !(Maybe Integer)
-    , _tsSchemaName :: !(Maybe Text)
-    , _tsTableState :: !(Maybe Text)
-    , _tsFullLoadErrorRows :: !(Maybe Integer)
-    , _tsDdls :: !(Maybe Integer)
-    , _tsDeletes :: !(Maybe Integer)
-    , _tsUpdates :: !(Maybe Integer)
-    , _tsValidationPendingRecords :: !(Maybe Integer)
-    , _tsLastUpdateTime :: !(Maybe POSIX)
-    , _tsTableName :: !(Maybe Text)
+    , _tsValidationFailedRecords      :: !(Maybe Integer)
+    , _tsValidationSuspendedRecords   :: !(Maybe Integer)
+    , _tsSchemaName                   :: !(Maybe Text)
+    , _tsTableState                   :: !(Maybe Text)
+    , _tsFullLoadErrorRows            :: !(Maybe Integer)
+    , _tsDdls                         :: !(Maybe Integer)
+    , _tsDeletes                      :: !(Maybe Integer)
+    , _tsUpdates                      :: !(Maybe Integer)
+    , _tsValidationPendingRecords     :: !(Maybe Integer)
+    , _tsLastUpdateTime               :: !(Maybe POSIX)
+    , _tsTableName                    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2440,7 +2440,7 @@ instance NFData TableStatistics
 data TableToReload =
   TableToReload'
     { _ttrSchemaName :: !(Maybe Text)
-    , _ttrTableName :: !(Maybe Text)
+    , _ttrTableName  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2483,7 +2483,7 @@ instance ToJSON TableToReload where
 data Tag =
   Tag'
     { _tagValue :: !(Maybe Text)
-    , _tagKey :: !(Maybe Text)
+    , _tagKey   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2524,7 +2524,7 @@ instance ToJSON Tag where
 -- /See:/ 'vpcSecurityGroupMembership' smart constructor.
 data VPCSecurityGroupMembership =
   VPCSecurityGroupMembership'
-    { _vsgmStatus :: !(Maybe Text)
+    { _vsgmStatus             :: !(Maybe Text)
     , _vsgmVPCSecurityGroupId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

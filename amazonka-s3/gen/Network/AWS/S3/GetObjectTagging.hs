@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,8 +45,8 @@ import Network.AWS.S3.Types.Product
 data GetObjectTagging =
   GetObjectTagging'
     { _gotoVersionId :: !(Maybe ObjectVersionId)
-    , _gotoBucket :: !BucketName
-    , _gotoKey :: !ObjectKey
+    , _gotoBucket    :: !BucketName
+    , _gotoKey       :: !ObjectKey
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -107,9 +107,9 @@ instance ToQuery GetObjectTagging where
 -- | /See:/ 'getObjectTaggingResponse' smart constructor.
 data GetObjectTaggingResponse =
   GetObjectTaggingResponse'
-    { _gotrsVersionId :: !(Maybe ObjectVersionId)
+    { _gotrsVersionId      :: !(Maybe ObjectVersionId)
     , _gotrsResponseStatus :: !Int
-    , _gotrsTagSet :: ![Tag]
+    , _gotrsTagSet         :: ![Tag]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

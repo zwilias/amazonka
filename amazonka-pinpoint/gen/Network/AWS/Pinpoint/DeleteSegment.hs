@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -42,7 +42,7 @@ import Network.AWS.Response
 -- | /See:/ 'deleteSegment' smart constructor.
 data DeleteSegment =
   DeleteSegment'
-    { _dsSegmentId :: !Text
+    { _dsSegmentId     :: !Text
     , _dsApplicationId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -98,7 +98,7 @@ instance ToQuery DeleteSegment where
 -- | /See:/ 'deleteSegmentResponse' smart constructor.
 data DeleteSegmentResponse =
   DeleteSegmentResponse'
-    { _dsrsResponseStatus :: !Int
+    { _dsrsResponseStatus  :: !Int
     , _dsrsSegmentResponse :: !SegmentResponse
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

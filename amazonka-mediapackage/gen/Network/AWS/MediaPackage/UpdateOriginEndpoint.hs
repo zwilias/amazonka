@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -64,16 +64,16 @@ import Network.AWS.Response
 -- /See:/ 'updateOriginEndpoint' smart constructor.
 data UpdateOriginEndpoint =
   UpdateOriginEndpoint'
-    { _uoeWhitelist :: !(Maybe [Text])
-    , _uoeHlsPackage :: !(Maybe HlsPackage)
-    , _uoeManifestName :: !(Maybe Text)
+    { _uoeWhitelist              :: !(Maybe [Text])
+    , _uoeHlsPackage             :: !(Maybe HlsPackage)
+    , _uoeManifestName           :: !(Maybe Text)
     , _uoeStartoverWindowSeconds :: !(Maybe Int)
-    , _uoeDashPackage :: !(Maybe DashPackage)
-    , _uoeMssPackage :: !(Maybe MssPackage)
-    , _uoeTimeDelaySeconds :: !(Maybe Int)
-    , _uoeCmafPackage :: !(Maybe CmafPackageCreateOrUpdateParameters)
-    , _uoeDescription :: !(Maybe Text)
-    , _uoeId :: !Text
+    , _uoeDashPackage            :: !(Maybe DashPackage)
+    , _uoeMssPackage             :: !(Maybe MssPackage)
+    , _uoeTimeDelaySeconds       :: !(Maybe Int)
+    , _uoeCmafPackage            :: !(Maybe CmafPackageCreateOrUpdateParameters)
+    , _uoeDescription            :: !(Maybe Text)
+    , _uoeId                     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -216,20 +216,20 @@ instance ToQuery UpdateOriginEndpoint where
 -- | /See:/ 'updateOriginEndpointResponse' smart constructor.
 data UpdateOriginEndpointResponse =
   UpdateOriginEndpointResponse'
-    { _uoersWhitelist :: !(Maybe [Text])
-    , _uoersHlsPackage :: !(Maybe HlsPackage)
-    , _uoersARN :: !(Maybe Text)
-    , _uoersManifestName :: !(Maybe Text)
-    , _uoersURL :: !(Maybe Text)
-    , _uoersChannelId :: !(Maybe Text)
+    { _uoersWhitelist              :: !(Maybe [Text])
+    , _uoersHlsPackage             :: !(Maybe HlsPackage)
+    , _uoersARN                    :: !(Maybe Text)
+    , _uoersManifestName           :: !(Maybe Text)
+    , _uoersURL                    :: !(Maybe Text)
+    , _uoersChannelId              :: !(Maybe Text)
     , _uoersStartoverWindowSeconds :: !(Maybe Int)
-    , _uoersDashPackage :: !(Maybe DashPackage)
-    , _uoersMssPackage :: !(Maybe MssPackage)
-    , _uoersId :: !(Maybe Text)
-    , _uoersTimeDelaySeconds :: !(Maybe Int)
-    , _uoersCmafPackage :: !(Maybe CmafPackage)
-    , _uoersDescription :: !(Maybe Text)
-    , _uoersResponseStatus :: !Int
+    , _uoersDashPackage            :: !(Maybe DashPackage)
+    , _uoersMssPackage             :: !(Maybe MssPackage)
+    , _uoersId                     :: !(Maybe Text)
+    , _uoersTimeDelaySeconds       :: !(Maybe Int)
+    , _uoersCmafPackage            :: !(Maybe CmafPackage)
+    , _uoersDescription            :: !(Maybe Text)
+    , _uoersResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

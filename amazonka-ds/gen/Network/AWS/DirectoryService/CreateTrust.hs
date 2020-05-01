@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,11 +57,11 @@ import Network.AWS.Response
 data CreateTrust =
   CreateTrust'
     { _ctConditionalForwarderIPAddrs :: !(Maybe [Text])
-    , _ctTrustType :: !(Maybe TrustType)
-    , _ctDirectoryId :: !Text
-    , _ctRemoteDomainName :: !Text
-    , _ctTrustPassword :: !(Sensitive Text)
-    , _ctTrustDirection :: !TrustDirection
+    , _ctTrustType                   :: !(Maybe TrustType)
+    , _ctDirectoryId                 :: !Text
+    , _ctRemoteDomainName            :: !Text
+    , _ctTrustPassword               :: !(Sensitive Text)
+    , _ctTrustDirection              :: !TrustDirection
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -172,7 +172,7 @@ instance ToQuery CreateTrust where
 -- /See:/ 'createTrustResponse' smart constructor.
 data CreateTrustResponse =
   CreateTrustResponse'
-    { _ctrsTrustId :: !(Maybe Text)
+    { _ctrsTrustId        :: !(Maybe Text)
     , _ctrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

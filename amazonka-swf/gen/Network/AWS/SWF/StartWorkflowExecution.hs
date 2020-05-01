@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -87,17 +87,17 @@ import Network.AWS.SWF.Types.Product
 -- | /See:/ 'startWorkflowExecution' smart constructor.
 data StartWorkflowExecution =
   StartWorkflowExecution'
-    { _sTagList :: !(Maybe [Text])
-    , _sTaskStartToCloseTimeout :: !(Maybe Text)
-    , _sLambdaRole :: !(Maybe Text)
-    , _sInput :: !(Maybe Text)
+    { _sTagList                      :: !(Maybe [Text])
+    , _sTaskStartToCloseTimeout      :: !(Maybe Text)
+    , _sLambdaRole                   :: !(Maybe Text)
+    , _sInput                        :: !(Maybe Text)
     , _sExecutionStartToCloseTimeout :: !(Maybe Text)
-    , _sTaskList :: !(Maybe TaskList)
-    , _sTaskPriority :: !(Maybe Text)
-    , _sChildPolicy :: !(Maybe ChildPolicy)
-    , _sDomain :: !Text
-    , _sWorkflowId :: !Text
-    , _sWorkflowType :: !WorkflowType
+    , _sTaskList                     :: !(Maybe TaskList)
+    , _sTaskPriority                 :: !(Maybe Text)
+    , _sChildPolicy                  :: !(Maybe ChildPolicy)
+    , _sDomain                       :: !Text
+    , _sWorkflowId                   :: !Text
+    , _sWorkflowType                 :: !WorkflowType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -247,7 +247,7 @@ instance ToQuery StartWorkflowExecution where
 -- /See:/ 'startWorkflowExecutionResponse' smart constructor.
 data StartWorkflowExecutionResponse =
   StartWorkflowExecutionResponse'
-    { _swersRunId :: !(Maybe Text)
+    { _swersRunId          :: !(Maybe Text)
     , _swersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

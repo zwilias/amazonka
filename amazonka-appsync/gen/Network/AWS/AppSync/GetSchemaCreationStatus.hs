@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -92,8 +92,8 @@ instance ToQuery GetSchemaCreationStatus where
 -- | /See:/ 'getSchemaCreationStatusResponse' smart constructor.
 data GetSchemaCreationStatusResponse =
   GetSchemaCreationStatusResponse'
-    { _gscsrsStatus :: !(Maybe SchemaStatus)
-    , _gscsrsDetails :: !(Maybe Text)
+    { _gscsrsStatus         :: !(Maybe SchemaStatus)
+    , _gscsrsDetails        :: !(Maybe Text)
     , _gscsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,13 +52,13 @@ import Network.AWS.Response
 -- /See:/ 'getDocumentationParts' smart constructor.
 data GetDocumentationParts =
   GetDocumentationParts'
-    { _gdpPath :: !(Maybe Text)
+    { _gdpPath           :: !(Maybe Text)
     , _gdpLocationStatus :: !(Maybe LocationStatusType)
-    , _gdpNameQuery :: !(Maybe Text)
-    , _gdpLimit :: !(Maybe Int)
-    , _gdpType :: !(Maybe DocumentationPartType)
-    , _gdpPosition :: !(Maybe Text)
-    , _gdpRestAPIId :: !Text
+    , _gdpNameQuery      :: !(Maybe Text)
+    , _gdpLimit          :: !(Maybe Int)
+    , _gdpType           :: !(Maybe DocumentationPartType)
+    , _gdpPosition       :: !(Maybe Text)
+    , _gdpRestAPIId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -161,8 +161,8 @@ instance ToQuery GetDocumentationParts where
 -- /See:/ 'getDocumentationPartsResponse' smart constructor.
 data GetDocumentationPartsResponse =
   GetDocumentationPartsResponse'
-    { _gdprsItems :: !(Maybe [DocumentationPart])
-    , _gdprsPosition :: !(Maybe Text)
+    { _gdprsItems          :: !(Maybe [DocumentationPart])
+    , _gdprsPosition       :: !(Maybe Text)
     , _gdprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

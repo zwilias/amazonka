@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Route53AutoNaming.Types.Product
 data CreatePublicDNSNamespace =
   CreatePublicDNSNamespace'
     { _cpdnCreatorRequestId :: !(Maybe Text)
-    , _cpdnDescription :: !(Maybe Text)
-    , _cpdnName :: !Text
+    , _cpdnDescription      :: !(Maybe Text)
+    , _cpdnName             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -123,7 +123,7 @@ instance ToQuery CreatePublicDNSNamespace where
 -- | /See:/ 'createPublicDNSNamespaceResponse' smart constructor.
 data CreatePublicDNSNamespaceResponse =
   CreatePublicDNSNamespaceResponse'
-    { _cpdnrsOperationId :: !(Maybe Text)
+    { _cpdnrsOperationId    :: !(Maybe Text)
     , _cpdnrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

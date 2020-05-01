@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'listAssociationVersions' smart constructor.
 data ListAssociationVersions =
   ListAssociationVersions'
-    { _lavNextToken :: !(Maybe Text)
-    , _lavMaxResults :: !(Maybe Nat)
+    { _lavNextToken     :: !(Maybe Text)
+    , _lavMaxResults    :: !(Maybe Nat)
     , _lavAssociationId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -124,9 +124,9 @@ instance ToQuery ListAssociationVersions where
 -- | /See:/ 'listAssociationVersionsResponse' smart constructor.
 data ListAssociationVersionsResponse =
   ListAssociationVersionsResponse'
-    { _lavrsNextToken :: !(Maybe Text)
+    { _lavrsNextToken           :: !(Maybe Text)
     , _lavrsAssociationVersions :: !(Maybe (List1 AssociationVersionInfo))
-    , _lavrsResponseStatus :: !Int
+    , _lavrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

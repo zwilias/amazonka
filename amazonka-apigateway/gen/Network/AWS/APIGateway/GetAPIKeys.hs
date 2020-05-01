@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,10 +57,10 @@ import Network.AWS.Response
 data GetAPIKeys =
   GetAPIKeys'
     { _gakIncludeValues :: !(Maybe Bool)
-    , _gakCustomerId :: !(Maybe Text)
-    , _gakNameQuery :: !(Maybe Text)
-    , _gakLimit :: !(Maybe Int)
-    , _gakPosition :: !(Maybe Text)
+    , _gakCustomerId    :: !(Maybe Text)
+    , _gakNameQuery     :: !(Maybe Text)
+    , _gakLimit         :: !(Maybe Int)
+    , _gakPosition      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -152,9 +152,9 @@ instance ToQuery GetAPIKeys where
 -- /See:/ 'getAPIKeysResponse' smart constructor.
 data GetAPIKeysResponse =
   GetAPIKeysResponse'
-    { _gakrsItems :: !(Maybe [APIKey])
-    , _gakrsWarnings :: !(Maybe [Text])
-    , _gakrsPosition :: !(Maybe Text)
+    { _gakrsItems          :: !(Maybe [APIKey])
+    , _gakrsWarnings       :: !(Maybe [Text])
+    , _gakrsPosition       :: !(Maybe Text)
     , _gakrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

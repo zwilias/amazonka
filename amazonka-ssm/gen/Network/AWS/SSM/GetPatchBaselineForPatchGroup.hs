@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.SSM.Types.Product
 data GetPatchBaselineForPatchGroup =
   GetPatchBaselineForPatchGroup'
     { _gpbfpgOperatingSystem :: !(Maybe OperatingSystem)
-    , _gpbfpgPatchGroup :: !Text
+    , _gpbfpgPatchGroup      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -117,9 +117,9 @@ instance ToQuery GetPatchBaselineForPatchGroup where
 data GetPatchBaselineForPatchGroupResponse =
   GetPatchBaselineForPatchGroupResponse'
     { _gpbfpgrsOperatingSystem :: !(Maybe OperatingSystem)
-    , _gpbfpgrsBaselineId :: !(Maybe Text)
-    , _gpbfpgrsPatchGroup :: !(Maybe Text)
-    , _gpbfpgrsResponseStatus :: !Int
+    , _gpbfpgrsBaselineId      :: !(Maybe Text)
+    , _gpbfpgrsPatchGroup      :: !(Maybe Text)
+    , _gpbfpgrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

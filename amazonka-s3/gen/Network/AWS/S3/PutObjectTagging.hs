@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,11 +45,11 @@ import Network.AWS.S3.Types.Product
 -- | /See:/ 'putObjectTagging' smart constructor.
 data PutObjectTagging =
   PutObjectTagging'
-    { _potVersionId :: !(Maybe ObjectVersionId)
+    { _potVersionId  :: !(Maybe ObjectVersionId)
     , _potContentMD5 :: !(Maybe Text)
-    , _potBucket :: !BucketName
-    , _potKey :: !ObjectKey
-    , _potTagging :: !Tagging
+    , _potBucket     :: !BucketName
+    , _potKey        :: !ObjectKey
+    , _potTagging    :: !Tagging
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -131,7 +131,7 @@ instance ToQuery PutObjectTagging where
 -- | /See:/ 'putObjectTaggingResponse' smart constructor.
 data PutObjectTaggingResponse =
   PutObjectTaggingResponse'
-    { _potrsVersionId :: !(Maybe ObjectVersionId)
+    { _potrsVersionId      :: !(Maybe ObjectVersionId)
     , _potrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

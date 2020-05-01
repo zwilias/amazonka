@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 -- /See:/ 'describeKeyPairs' smart constructor.
 data DescribeKeyPairs =
   DescribeKeyPairs'
-    { _dkpsFilters :: !(Maybe [Filter])
+    { _dkpsFilters  :: !(Maybe [Filter])
     , _dkpsKeyNames :: !(Maybe [Text])
-    , _dkpsDryRun :: !(Maybe Bool)
+    , _dkpsDryRun   :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -122,7 +122,7 @@ instance ToQuery DescribeKeyPairs where
 -- /See:/ 'describeKeyPairsResponse' smart constructor.
 data DescribeKeyPairsResponse =
   DescribeKeyPairsResponse'
-    { _dkprsKeyPairs :: !(Maybe [KeyPairInfo])
+    { _dkprsKeyPairs       :: !(Maybe [KeyPairInfo])
     , _dkprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

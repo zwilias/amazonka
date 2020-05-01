@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -105,10 +105,10 @@ instance ToQuery CreateKeysAndCertificate where
 -- /See:/ 'createKeysAndCertificateResponse' smart constructor.
 data CreateKeysAndCertificateResponse =
   CreateKeysAndCertificateResponse'
-    { _ckacrsKeyPair :: !(Maybe KeyPair)
+    { _ckacrsKeyPair        :: !(Maybe KeyPair)
     , _ckacrsCertificatePem :: !(Maybe Text)
     , _ckacrsCertificateARN :: !(Maybe Text)
-    , _ckacrsCertificateId :: !(Maybe Text)
+    , _ckacrsCertificateId  :: !(Maybe Text)
     , _ckacrsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

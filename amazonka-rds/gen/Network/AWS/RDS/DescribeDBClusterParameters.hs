@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,10 +54,10 @@ import Network.AWS.Response
 -- /See:/ 'describeDBClusterParameters' smart constructor.
 data DescribeDBClusterParameters =
   DescribeDBClusterParameters'
-    { _ddcpFilters :: !(Maybe [Filter])
-    , _ddcpMarker :: !(Maybe Text)
-    , _ddcpMaxRecords :: !(Maybe Int)
-    , _ddcpSource :: !(Maybe Text)
+    { _ddcpFilters                     :: !(Maybe [Filter])
+    , _ddcpMarker                      :: !(Maybe Text)
+    , _ddcpMaxRecords                  :: !(Maybe Int)
+    , _ddcpSource                      :: !(Maybe Text)
     , _ddcpDBClusterParameterGroupName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -151,8 +151,8 @@ instance ToQuery DescribeDBClusterParameters where
 -- /See:/ 'describeDBClusterParametersResponse' smart constructor.
 data DescribeDBClusterParametersResponse =
   DescribeDBClusterParametersResponse'
-    { _ddcprsMarker :: !(Maybe Text)
-    , _ddcprsParameters :: !(Maybe [Parameter])
+    { _ddcprsMarker         :: !(Maybe Text)
+    , _ddcprsParameters     :: !(Maybe [Parameter])
     , _ddcprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

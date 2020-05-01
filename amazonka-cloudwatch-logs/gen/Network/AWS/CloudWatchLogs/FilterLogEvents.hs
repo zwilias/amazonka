@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,14 +57,14 @@ import Network.AWS.Response
 -- | /See:/ 'filterLogEvents' smart constructor.
 data FilterLogEvents =
   FilterLogEvents'
-    { _fleStartTime :: !(Maybe Nat)
-    , _fleNextToken :: !(Maybe Text)
+    { _fleStartTime      :: !(Maybe Nat)
+    , _fleNextToken      :: !(Maybe Text)
     , _fleLogStreamNames :: !(Maybe (List1 Text))
-    , _fleEndTime :: !(Maybe Nat)
-    , _fleLimit :: !(Maybe Nat)
-    , _fleFilterPattern :: !(Maybe Text)
-    , _fleInterleaved :: !(Maybe Bool)
-    , _fleLogGroupName :: !Text
+    , _fleEndTime        :: !(Maybe Nat)
+    , _fleLimit          :: !(Maybe Nat)
+    , _fleFilterPattern  :: !(Maybe Text)
+    , _fleInterleaved    :: !(Maybe Bool)
+    , _fleLogGroupName   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -187,9 +187,9 @@ instance ToQuery FilterLogEvents where
 data FilterLogEventsResponse =
   FilterLogEventsResponse'
     { _flersSearchedLogStreams :: !(Maybe [SearchedLogStream])
-    , _flersNextToken :: !(Maybe Text)
-    , _flersEvents :: !(Maybe [FilteredLogEvent])
-    , _flersResponseStatus :: !Int
+    , _flersNextToken          :: !(Maybe Text)
+    , _flersEvents             :: !(Maybe [FilteredLogEvent])
+    , _flersResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

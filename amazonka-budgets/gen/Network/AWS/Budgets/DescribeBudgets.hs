@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,9 +50,9 @@ import Network.AWS.Response
 -- /See:/ 'describeBudgets' smart constructor.
 data DescribeBudgets =
   DescribeBudgets'
-    { _dbNextToken :: !(Maybe Text)
+    { _dbNextToken  :: !(Maybe Text)
     , _dbMaxResults :: !(Maybe Nat)
-    , _dbAccountId :: !Text
+    , _dbAccountId  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -132,8 +132,8 @@ instance ToQuery DescribeBudgets where
 -- /See:/ 'describeBudgetsResponse' smart constructor.
 data DescribeBudgetsResponse =
   DescribeBudgetsResponse'
-    { _dbrsNextToken :: !(Maybe Text)
-    , _dbrsBudgets :: !(Maybe [Budget])
+    { _dbrsNextToken      :: !(Maybe Text)
+    , _dbrsBudgets        :: !(Maybe [Budget])
     , _dbrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

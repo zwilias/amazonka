@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.Response
 data TestRepositoryTriggers =
   TestRepositoryTriggers'
     { _trtRepositoryName :: !Text
-    , _trtTriggers :: ![RepositoryTrigger]
+    , _trtTriggers       :: ![RepositoryTrigger]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -121,9 +121,9 @@ instance ToQuery TestRepositoryTriggers where
 -- /See:/ 'testRepositoryTriggersResponse' smart constructor.
 data TestRepositoryTriggersResponse =
   TestRepositoryTriggersResponse'
-    { _trtrsFailedExecutions :: !(Maybe [RepositoryTriggerExecutionFailure])
+    { _trtrsFailedExecutions     :: !(Maybe [RepositoryTriggerExecutionFailure])
     , _trtrsSuccessfulExecutions :: !(Maybe [Text])
-    , _trtrsResponseStatus :: !Int
+    , _trtrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

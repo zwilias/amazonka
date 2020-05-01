@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,11 +51,11 @@ import Network.AWS.Response
 -- | /See:/ 'listTaskDefinitions' smart constructor.
 data ListTaskDefinitions =
   ListTaskDefinitions'
-    { _ltdStatus :: !(Maybe TaskDefinitionStatus)
+    { _ltdStatus       :: !(Maybe TaskDefinitionStatus)
     , _ltdFamilyPrefix :: !(Maybe Text)
-    , _ltdNextToken :: !(Maybe Text)
-    , _ltdSort :: !(Maybe SortOrder)
-    , _ltdMaxResults :: !(Maybe Int)
+    , _ltdNextToken    :: !(Maybe Text)
+    , _ltdSort         :: !(Maybe SortOrder)
+    , _ltdMaxResults   :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -153,8 +153,8 @@ instance ToQuery ListTaskDefinitions where
 data ListTaskDefinitionsResponse =
   ListTaskDefinitionsResponse'
     { _ltdrsTaskDefinitionARNs :: !(Maybe [Text])
-    , _ltdrsNextToken :: !(Maybe Text)
-    , _ltdrsResponseStatus :: !Int
+    , _ltdrsNextToken          :: !(Maybe Text)
+    , _ltdrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

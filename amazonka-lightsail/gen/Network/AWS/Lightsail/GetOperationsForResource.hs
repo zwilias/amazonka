@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'getOperationsForResource' smart constructor.
 data GetOperationsForResource =
   GetOperationsForResource'
-    { _gofrPageToken :: !(Maybe Text)
+    { _gofrPageToken    :: !(Maybe Text)
     , _gofrResourceName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -114,9 +114,9 @@ instance ToQuery GetOperationsForResource where
 -- | /See:/ 'getOperationsForResourceResponse' smart constructor.
 data GetOperationsForResourceResponse =
   GetOperationsForResourceResponse'
-    { _gofrrsNextPageCount :: !(Maybe Text)
-    , _gofrrsNextPageToken :: !(Maybe Text)
-    , _gofrrsOperations :: !(Maybe [Operation])
+    { _gofrrsNextPageCount  :: !(Maybe Text)
+    , _gofrrsNextPageToken  :: !(Maybe Text)
+    , _gofrrsOperations     :: !(Maybe [Operation])
     , _gofrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

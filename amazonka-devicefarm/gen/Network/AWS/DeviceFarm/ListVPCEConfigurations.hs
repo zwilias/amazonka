@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'listVPCEConfigurations' smart constructor.
 data ListVPCEConfigurations =
   ListVPCEConfigurations'
-    { _lvecNextToken :: !(Maybe Text)
+    { _lvecNextToken  :: !(Maybe Text)
     , _lvecMaxResults :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -109,9 +109,9 @@ instance ToQuery ListVPCEConfigurations where
 -- | /See:/ 'listVPCEConfigurationsResponse' smart constructor.
 data ListVPCEConfigurationsResponse =
   ListVPCEConfigurationsResponse'
-    { _lvecrsNextToken :: !(Maybe Text)
+    { _lvecrsNextToken          :: !(Maybe Text)
     , _lvecrsVpceConfigurations :: !(Maybe [VPCEConfiguration])
-    , _lvecrsResponseStatus :: !Int
+    , _lvecrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

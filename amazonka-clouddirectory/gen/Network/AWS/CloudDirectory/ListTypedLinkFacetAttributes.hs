@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,10 +50,10 @@ import Network.AWS.Response
 -- | /See:/ 'listTypedLinkFacetAttributes' smart constructor.
 data ListTypedLinkFacetAttributes =
   ListTypedLinkFacetAttributes'
-    { _ltlfaNextToken :: !(Maybe Text)
+    { _ltlfaNextToken  :: !(Maybe Text)
     , _ltlfaMaxResults :: !(Maybe Nat)
-    , _ltlfaSchemaARN :: !Text
-    , _ltlfaName :: !Text
+    , _ltlfaSchemaARN  :: !Text
+    , _ltlfaName       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -139,8 +139,8 @@ instance ToQuery ListTypedLinkFacetAttributes where
 -- | /See:/ 'listTypedLinkFacetAttributesResponse' smart constructor.
 data ListTypedLinkFacetAttributesResponse =
   ListTypedLinkFacetAttributesResponse'
-    { _ltlfarsNextToken :: !(Maybe Text)
-    , _ltlfarsAttributes :: !(Maybe [TypedLinkAttributeDefinition])
+    { _ltlfarsNextToken      :: !(Maybe Text)
+    , _ltlfarsAttributes     :: !(Maybe [TypedLinkAttributeDefinition])
     , _ltlfarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

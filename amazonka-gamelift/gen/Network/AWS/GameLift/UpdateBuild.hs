@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,7 +63,7 @@ import Network.AWS.Response
 -- /See:/ 'updateBuild' smart constructor.
 data UpdateBuild =
   UpdateBuild'
-    { _ubName :: !(Maybe Text)
+    { _ubName    :: !(Maybe Text)
     , _ubVersion :: !(Maybe Text)
     , _ubBuildId :: !Text
     }
@@ -138,7 +138,7 @@ instance ToQuery UpdateBuild where
 -- /See:/ 'updateBuildResponse' smart constructor.
 data UpdateBuildResponse =
   UpdateBuildResponse'
-    { _ubrsBuild :: !(Maybe Build)
+    { _ubrsBuild          :: !(Maybe Build)
     , _ubrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

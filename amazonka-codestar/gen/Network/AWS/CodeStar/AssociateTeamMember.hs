@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,10 +48,10 @@ import Network.AWS.Response
 data AssociateTeamMember =
   AssociateTeamMember'
     { _atmRemoteAccessAllowed :: !(Maybe Bool)
-    , _atmClientRequestToken :: !(Maybe Text)
-    , _atmProjectId :: !Text
-    , _atmUserARN :: !Text
-    , _atmProjectRole :: !Text
+    , _atmClientRequestToken  :: !(Maybe Text)
+    , _atmProjectId           :: !Text
+    , _atmUserARN             :: !Text
+    , _atmProjectRole         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -147,7 +147,7 @@ instance ToQuery AssociateTeamMember where
 data AssociateTeamMemberResponse =
   AssociateTeamMemberResponse'
     { _atmrsClientRequestToken :: !(Maybe Text)
-    , _atmrsResponseStatus :: !Int
+    , _atmrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

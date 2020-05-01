@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,7 +27,7 @@ import Network.AWS.Prelude
 data Alarm =
   Alarm'
     { _aAlarmName :: !Text
-    , _aAlarmARN :: !Text
+    , _aAlarmARN  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -71,10 +71,10 @@ instance NFData Alarm
 data CustomizedMetricSpecification =
   CustomizedMetricSpecification'
     { _cmsDimensions :: !(Maybe [MetricDimension])
-    , _cmsUnit :: !(Maybe Text)
+    , _cmsUnit       :: !(Maybe Text)
     , _cmsMetricName :: !Text
-    , _cmsNamespace :: !Text
-    , _cmsStatistic :: !MetricStatistic
+    , _cmsNamespace  :: !Text
+    , _cmsStatistic  :: !MetricStatistic
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -159,7 +159,7 @@ instance ToJSON CustomizedMetricSpecification where
 -- /See:/ 'metricDimension' smart constructor.
 data MetricDimension =
   MetricDimension'
-    { _mdName :: !Text
+    { _mdName  :: !Text
     , _mdValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -207,7 +207,7 @@ instance ToJSON MetricDimension where
 -- /See:/ 'predefinedMetricSpecification' smart constructor.
 data PredefinedMetricSpecification =
   PredefinedMetricSpecification'
-    { _pmsResourceLabel :: !(Maybe Text)
+    { _pmsResourceLabel        :: !(Maybe Text)
     , _pmsPredefinedMetricType :: !MetricType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -264,13 +264,13 @@ instance ToJSON PredefinedMetricSpecification where
 -- /See:/ 'scalableTarget' smart constructor.
 data ScalableTarget =
   ScalableTarget'
-    { _stServiceNamespace :: !ServiceNamespace
-    , _stResourceId :: !Text
+    { _stServiceNamespace  :: !ServiceNamespace
+    , _stResourceId        :: !Text
     , _stScalableDimension :: !ScalableDimension
-    , _stMinCapacity :: !Int
-    , _stMaxCapacity :: !Int
-    , _stRoleARN :: !Text
-    , _stCreationTime :: !POSIX
+    , _stMinCapacity       :: !Int
+    , _stMaxCapacity       :: !Int
+    , _stRoleARN           :: !Text
+    , _stCreationTime      :: !POSIX
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -415,17 +415,17 @@ instance ToJSON ScalableTargetAction where
 -- /See:/ 'scalingActivity' smart constructor.
 data ScalingActivity =
   ScalingActivity'
-    { _sStatusMessage :: !(Maybe Text)
-    , _sEndTime :: !(Maybe POSIX)
-    , _sDetails :: !(Maybe Text)
-    , _sActivityId :: !Text
-    , _sServiceNamespace :: !ServiceNamespace
-    , _sResourceId :: !Text
+    { _sStatusMessage     :: !(Maybe Text)
+    , _sEndTime           :: !(Maybe POSIX)
+    , _sDetails           :: !(Maybe Text)
+    , _sActivityId        :: !Text
+    , _sServiceNamespace  :: !ServiceNamespace
+    , _sResourceId        :: !Text
     , _sScalableDimension :: !ScalableDimension
-    , _sDescription :: !Text
-    , _sCause :: !Text
-    , _sStartTime :: !POSIX
-    , _sStatusCode :: !ScalingActivityStatusCode
+    , _sDescription       :: !Text
+    , _sCause             :: !Text
+    , _sStartTime         :: !POSIX
+    , _sStatusCode        :: !ScalingActivityStatusCode
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -687,16 +687,16 @@ instance NFData ScalingPolicy
 -- /See:/ 'scheduledAction' smart constructor.
 data ScheduledAction =
   ScheduledAction'
-    { _saScalableDimension :: !(Maybe ScalableDimension)
-    , _saStartTime :: !(Maybe POSIX)
-    , _saEndTime :: !(Maybe POSIX)
+    { _saScalableDimension    :: !(Maybe ScalableDimension)
+    , _saStartTime            :: !(Maybe POSIX)
+    , _saEndTime              :: !(Maybe POSIX)
     , _saScalableTargetAction :: !(Maybe ScalableTargetAction)
-    , _saScheduledActionName :: !Text
-    , _saScheduledActionARN :: !Text
-    , _saServiceNamespace :: !ServiceNamespace
-    , _saSchedule :: !Text
-    , _saResourceId :: !Text
-    , _saCreationTime :: !POSIX
+    , _saScheduledActionName  :: !Text
+    , _saScheduledActionARN   :: !Text
+    , _saServiceNamespace     :: !ServiceNamespace
+    , _saSchedule             :: !Text
+    , _saResourceId           :: !Text
+    , _saCreationTime         :: !POSIX
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -839,7 +839,7 @@ data StepAdjustment =
   StepAdjustment'
     { _saMetricIntervalLowerBound :: !(Maybe Double)
     , _saMetricIntervalUpperBound :: !(Maybe Double)
-    , _saScalingAdjustment :: !Int
+    , _saScalingAdjustment        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -906,10 +906,10 @@ instance ToJSON StepAdjustment where
 -- /See:/ 'stepScalingPolicyConfiguration' smart constructor.
 data StepScalingPolicyConfiguration =
   StepScalingPolicyConfiguration'
-    { _sspcStepAdjustments :: !(Maybe [StepAdjustment])
-    , _sspcAdjustmentType :: !(Maybe AdjustmentType)
-    , _sspcCooldown :: !(Maybe Int)
-    , _sspcMetricAggregationType :: !(Maybe MetricAggregationType)
+    { _sspcStepAdjustments        :: !(Maybe [StepAdjustment])
+    , _sspcAdjustmentType         :: !(Maybe AdjustmentType)
+    , _sspcCooldown               :: !(Maybe Int)
+    , _sspcMetricAggregationType  :: !(Maybe MetricAggregationType)
     , _sspcMinAdjustmentMagnitude :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -73,32 +73,32 @@ import Network.AWS.S3.Types.Product
 -- | /See:/ 'putObject' smart constructor.
 data PutObject =
   PutObject'
-    { _poContentLength :: !(Maybe Integer)
-    , _poExpires :: !(Maybe RFC822)
-    , _poGrantReadACP :: !(Maybe Text)
-    , _poSSECustomerAlgorithm :: !(Maybe Text)
-    , _poSSECustomerKey :: !(Maybe (Sensitive Text))
-    , _poRequestPayer :: !(Maybe RequestPayer)
-    , _poGrantWriteACP :: !(Maybe Text)
+    { _poContentLength           :: !(Maybe Integer)
+    , _poExpires                 :: !(Maybe RFC822)
+    , _poGrantReadACP            :: !(Maybe Text)
+    , _poSSECustomerAlgorithm    :: !(Maybe Text)
+    , _poSSECustomerKey          :: !(Maybe (Sensitive Text))
+    , _poRequestPayer            :: !(Maybe RequestPayer)
+    , _poGrantWriteACP           :: !(Maybe Text)
     , _poWebsiteRedirectLocation :: !(Maybe Text)
-    , _poGrantRead :: !(Maybe Text)
-    , _poStorageClass :: !(Maybe StorageClass)
-    , _poSSECustomerKeyMD5 :: !(Maybe Text)
-    , _poSSEKMSKeyId :: !(Maybe (Sensitive Text))
-    , _poGrantFullControl :: !(Maybe Text)
-    , _poContentEncoding :: !(Maybe Text)
-    , _poTagging :: !(Maybe Text)
-    , _poContentMD5 :: !(Maybe Text)
-    , _poMetadata :: !(Map Text Text)
-    , _poCacheControl :: !(Maybe Text)
-    , _poContentLanguage :: !(Maybe Text)
-    , _poACL :: !(Maybe ObjectCannedACL)
-    , _poContentDisposition :: !(Maybe Text)
-    , _poServerSideEncryption :: !(Maybe ServerSideEncryption)
-    , _poContentType :: !(Maybe Text)
-    , _poBucket :: !BucketName
-    , _poKey :: !ObjectKey
-    , _poBody :: !RqBody
+    , _poGrantRead               :: !(Maybe Text)
+    , _poStorageClass            :: !(Maybe StorageClass)
+    , _poSSECustomerKeyMD5       :: !(Maybe Text)
+    , _poSSEKMSKeyId             :: !(Maybe (Sensitive Text))
+    , _poGrantFullControl        :: !(Maybe Text)
+    , _poContentEncoding         :: !(Maybe Text)
+    , _poTagging                 :: !(Maybe Text)
+    , _poContentMD5              :: !(Maybe Text)
+    , _poMetadata                :: !(Map Text Text)
+    , _poCacheControl            :: !(Maybe Text)
+    , _poContentLanguage         :: !(Maybe Text)
+    , _poACL                     :: !(Maybe ObjectCannedACL)
+    , _poContentDisposition      :: !(Maybe Text)
+    , _poServerSideEncryption    :: !(Maybe ServerSideEncryption)
+    , _poContentType             :: !(Maybe Text)
+    , _poBucket                  :: !BucketName
+    , _poKey                     :: !ObjectKey
+    , _poBody                    :: !RqBody
     }
   deriving (Show, Generic)
 
@@ -362,15 +362,15 @@ instance ToQuery PutObject where
 -- | /See:/ 'putObjectResponse' smart constructor.
 data PutObjectResponse =
   PutObjectResponse'
-    { _porsRequestCharged :: !(Maybe RequestCharged)
-    , _porsETag :: !(Maybe ETag)
-    , _porsVersionId :: !(Maybe ObjectVersionId)
-    , _porsExpiration :: !(Maybe Text)
+    { _porsRequestCharged       :: !(Maybe RequestCharged)
+    , _porsETag                 :: !(Maybe ETag)
+    , _porsVersionId            :: !(Maybe ObjectVersionId)
+    , _porsExpiration           :: !(Maybe Text)
     , _porsSSECustomerAlgorithm :: !(Maybe Text)
-    , _porsSSECustomerKeyMD5 :: !(Maybe Text)
-    , _porsSSEKMSKeyId :: !(Maybe (Sensitive Text))
+    , _porsSSECustomerKeyMD5    :: !(Maybe Text)
+    , _porsSSEKMSKeyId          :: !(Maybe (Sensitive Text))
     , _porsServerSideEncryption :: !(Maybe ServerSideEncryption)
-    , _porsResponseStatus :: !Int
+    , _porsResponseStatus       :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -61,13 +61,13 @@ import Network.AWS.Response
 -- /See:/ 'listRecords' smart constructor.
 data ListRecords =
   ListRecords'
-    { _lrLastSyncCount :: !(Maybe Integer)
-    , _lrNextToken :: !(Maybe Text)
+    { _lrLastSyncCount    :: !(Maybe Integer)
+    , _lrNextToken        :: !(Maybe Text)
     , _lrSyncSessionToken :: !(Maybe Text)
-    , _lrMaxResults :: !(Maybe Int)
-    , _lrIdentityPoolId :: !Text
-    , _lrIdentityId :: !Text
-    , _lrDatasetName :: !Text
+    , _lrMaxResults       :: !(Maybe Int)
+    , _lrIdentityPoolId   :: !Text
+    , _lrIdentityId       :: !Text
+    , _lrDatasetName      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -187,15 +187,15 @@ instance ToQuery ListRecords where
 data ListRecordsResponse =
   ListRecordsResponse'
     { _lrrsDatasetDeletedAfterRequestedSyncCount :: !(Maybe Bool)
-    , _lrrsDatasetExists :: !(Maybe Bool)
-    , _lrrsCount :: !(Maybe Int)
-    , _lrrsRecords :: !(Maybe [Record])
-    , _lrrsNextToken :: !(Maybe Text)
-    , _lrrsMergedDatasetNames :: !(Maybe [Text])
-    , _lrrsSyncSessionToken :: !(Maybe Text)
-    , _lrrsLastModifiedBy :: !(Maybe Text)
-    , _lrrsDatasetSyncCount :: !(Maybe Integer)
-    , _lrrsResponseStatus :: !Int
+    , _lrrsDatasetExists                         :: !(Maybe Bool)
+    , _lrrsCount                                 :: !(Maybe Int)
+    , _lrrsRecords                               :: !(Maybe [Record])
+    , _lrrsNextToken                             :: !(Maybe Text)
+    , _lrrsMergedDatasetNames                    :: !(Maybe [Text])
+    , _lrrsSyncSessionToken                      :: !(Maybe Text)
+    , _lrrsLastModifiedBy                        :: !(Maybe Text)
+    , _lrrsDatasetSyncCount                      :: !(Maybe Integer)
+    , _lrrsResponseStatus                        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

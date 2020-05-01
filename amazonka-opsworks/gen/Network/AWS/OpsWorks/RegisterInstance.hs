@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,13 +53,13 @@ import Network.AWS.Response
 -- | /See:/ 'registerInstance' smart constructor.
 data RegisterInstance =
   RegisterInstance'
-    { _riPrivateIP :: !(Maybe Text)
-    , _riHostname :: !(Maybe Text)
-    , _riInstanceIdentity :: !(Maybe InstanceIdentity)
-    , _riPublicIP :: !(Maybe Text)
+    { _riPrivateIP               :: !(Maybe Text)
+    , _riHostname                :: !(Maybe Text)
+    , _riInstanceIdentity        :: !(Maybe InstanceIdentity)
+    , _riPublicIP                :: !(Maybe Text)
     , _riRsaPublicKeyFingerprint :: !(Maybe Text)
-    , _riRsaPublicKey :: !(Maybe Text)
-    , _riStackId :: !Text
+    , _riRsaPublicKey            :: !(Maybe Text)
+    , _riStackId                 :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -172,7 +172,7 @@ instance ToQuery RegisterInstance where
 -- /See:/ 'registerInstanceResponse' smart constructor.
 data RegisterInstanceResponse =
   RegisterInstanceResponse'
-    { _rirsInstanceId :: !(Maybe Text)
+    { _rirsInstanceId     :: !(Maybe Text)
     , _rirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

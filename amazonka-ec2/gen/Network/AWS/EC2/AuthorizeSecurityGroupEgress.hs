@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,15 +56,15 @@ import Network.AWS.Response
 -- /See:/ 'authorizeSecurityGroupEgress' smart constructor.
 data AuthorizeSecurityGroupEgress =
   AuthorizeSecurityGroupEgress'
-    { _asgeFromPort :: !(Maybe Int)
-    , _asgeIPPermissions :: !(Maybe [IPPermission])
-    , _asgeIPProtocol :: !(Maybe Text)
-    , _asgeToPort :: !(Maybe Int)
-    , _asgeCidrIP :: !(Maybe Text)
+    { _asgeFromPort                   :: !(Maybe Int)
+    , _asgeIPPermissions              :: !(Maybe [IPPermission])
+    , _asgeIPProtocol                 :: !(Maybe Text)
+    , _asgeToPort                     :: !(Maybe Int)
+    , _asgeCidrIP                     :: !(Maybe Text)
     , _asgeSourceSecurityGroupOwnerId :: !(Maybe Text)
-    , _asgeSourceSecurityGroupName :: !(Maybe Text)
-    , _asgeDryRun :: !(Maybe Bool)
-    , _asgeGroupId :: !Text
+    , _asgeSourceSecurityGroupName    :: !(Maybe Text)
+    , _asgeDryRun                     :: !(Maybe Bool)
+    , _asgeGroupId                    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

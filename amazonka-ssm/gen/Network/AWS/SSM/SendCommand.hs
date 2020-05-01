@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,22 +58,22 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'sendCommand' smart constructor.
 data SendCommand =
   SendCommand'
-    { _scServiceRoleARN :: !(Maybe Text)
+    { _scServiceRoleARN     :: !(Maybe Text)
     , _scNotificationConfig :: !(Maybe NotificationConfig)
-    , _scDocumentHashType :: !(Maybe DocumentHashType)
-    , _scOutputS3KeyPrefix :: !(Maybe Text)
-    , _scMaxErrors :: !(Maybe Text)
-    , _scInstanceIds :: !(Maybe [Text])
-    , _scOutputS3Region :: !(Maybe Text)
-    , _scTargets :: !(Maybe [Target])
-    , _scParameters :: !(Maybe (Map Text [Text]))
-    , _scDocumentHash :: !(Maybe Text)
-    , _scDocumentVersion :: !(Maybe Text)
-    , _scTimeoutSeconds :: !(Maybe Nat)
-    , _scComment :: !(Maybe Text)
+    , _scDocumentHashType   :: !(Maybe DocumentHashType)
+    , _scOutputS3KeyPrefix  :: !(Maybe Text)
+    , _scMaxErrors          :: !(Maybe Text)
+    , _scInstanceIds        :: !(Maybe [Text])
+    , _scOutputS3Region     :: !(Maybe Text)
+    , _scTargets            :: !(Maybe [Target])
+    , _scParameters         :: !(Maybe (Map Text [Text]))
+    , _scDocumentHash       :: !(Maybe Text)
+    , _scDocumentVersion    :: !(Maybe Text)
+    , _scTimeoutSeconds     :: !(Maybe Nat)
+    , _scComment            :: !(Maybe Text)
     , _scOutputS3BucketName :: !(Maybe Text)
-    , _scMaxConcurrency :: !(Maybe Text)
-    , _scDocumentName :: !Text
+    , _scMaxConcurrency     :: !(Maybe Text)
+    , _scDocumentName       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -257,7 +257,7 @@ instance ToQuery SendCommand where
 -- | /See:/ 'sendCommandResponse' smart constructor.
 data SendCommandResponse =
   SendCommandResponse'
-    { _scrsCommand :: !(Maybe Command)
+    { _scrsCommand        :: !(Maybe Command)
     , _scrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

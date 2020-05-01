@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'updateDomainEntry' smart constructor.
 data UpdateDomainEntry =
   UpdateDomainEntry'
-    { _udeDomainName :: !Text
+    { _udeDomainName  :: !Text
     , _udeDomainEntry :: !DomainEntry
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -111,7 +111,7 @@ instance ToQuery UpdateDomainEntry where
 -- | /See:/ 'updateDomainEntryResponse' smart constructor.
 data UpdateDomainEntryResponse =
   UpdateDomainEntryResponse'
-    { _udersOperations :: !(Maybe [Operation])
+    { _udersOperations     :: !(Maybe [Operation])
     , _udersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

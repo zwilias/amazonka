@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.Response
 -- | /See:/ 'listHITsForQualificationType' smart constructor.
 data ListHITsForQualificationType =
   ListHITsForQualificationType'
-    { _lhitfqtNextToken :: !(Maybe Text)
-    , _lhitfqtMaxResults :: !(Maybe Nat)
+    { _lhitfqtNextToken           :: !(Maybe Text)
+    , _lhitfqtMaxResults          :: !(Maybe Nat)
     , _lhitfqtQualificationTypeId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -137,9 +137,9 @@ instance ToQuery ListHITsForQualificationType where
 -- | /See:/ 'listHITsForQualificationTypeResponse' smart constructor.
 data ListHITsForQualificationTypeResponse =
   ListHITsForQualificationTypeResponse'
-    { _lhitfqtrsNextToken :: !(Maybe Text)
-    , _lhitfqtrsNumResults :: !(Maybe Int)
-    , _lhitfqtrsHITs :: !(Maybe [HIT])
+    { _lhitfqtrsNextToken      :: !(Maybe Text)
+    , _lhitfqtrsNumResults     :: !(Maybe Int)
+    , _lhitfqtrsHITs           :: !(Maybe [HIT])
     , _lhitfqtrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

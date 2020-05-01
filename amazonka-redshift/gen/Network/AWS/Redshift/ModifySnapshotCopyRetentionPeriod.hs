@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Response
 data ModifySnapshotCopyRetentionPeriod =
   ModifySnapshotCopyRetentionPeriod'
     { _mscrpClusterIdentifier :: !Text
-    , _mscrpRetentionPeriod :: !Int
+    , _mscrpRetentionPeriod   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -112,7 +112,7 @@ instance ToQuery ModifySnapshotCopyRetentionPeriod where
 -- | /See:/ 'modifySnapshotCopyRetentionPeriodResponse' smart constructor.
 data ModifySnapshotCopyRetentionPeriodResponse =
   ModifySnapshotCopyRetentionPeriodResponse'
-    { _mscrprsCluster :: !(Maybe Cluster)
+    { _mscrprsCluster        :: !(Maybe Cluster)
     , _mscrprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

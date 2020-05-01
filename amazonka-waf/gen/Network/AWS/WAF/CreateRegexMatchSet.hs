@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -59,7 +59,7 @@ import Network.AWS.WAF.Types.Product
 -- | /See:/ 'createRegexMatchSet' smart constructor.
 data CreateRegexMatchSet =
   CreateRegexMatchSet'
-    { _crmsName :: !Text
+    { _crmsName        :: !Text
     , _crmsChangeToken :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -124,8 +124,8 @@ instance ToQuery CreateRegexMatchSet where
 -- | /See:/ 'createRegexMatchSetResponse' smart constructor.
 data CreateRegexMatchSetResponse =
   CreateRegexMatchSetResponse'
-    { _crmsrsRegexMatchSet :: !(Maybe RegexMatchSet)
-    , _crmsrsChangeToken :: !(Maybe Text)
+    { _crmsrsRegexMatchSet  :: !(Maybe RegexMatchSet)
+    , _crmsrsChangeToken    :: !(Maybe Text)
     , _crmsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

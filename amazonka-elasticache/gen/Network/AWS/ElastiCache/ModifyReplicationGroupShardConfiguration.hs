@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,10 +54,10 @@ import Network.AWS.Response
 data ModifyReplicationGroupShardConfiguration =
   ModifyReplicationGroupShardConfiguration'
     { _mrgscReshardingConfiguration :: !(Maybe [ReshardingConfiguration])
-    , _mrgscNodeGroupsToRemove :: !(Maybe [Text])
-    , _mrgscReplicationGroupId :: !Text
-    , _mrgscNodeGroupCount :: !Int
-    , _mrgscApplyImmediately :: !Bool
+    , _mrgscNodeGroupsToRemove      :: !(Maybe [Text])
+    , _mrgscReplicationGroupId      :: !Text
+    , _mrgscNodeGroupCount          :: !Int
+    , _mrgscApplyImmediately        :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -159,7 +159,7 @@ instance ToQuery ModifyReplicationGroupShardConfiguration where
 data ModifyReplicationGroupShardConfigurationResponse =
   ModifyReplicationGroupShardConfigurationResponse'
     { _mrgscrsReplicationGroup :: !(Maybe ReplicationGroup)
-    , _mrgscrsResponseStatus :: !Int
+    , _mrgscrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

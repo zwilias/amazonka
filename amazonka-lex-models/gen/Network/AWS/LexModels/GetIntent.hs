@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -60,7 +60,7 @@ import Network.AWS.Response
 -- | /See:/ 'getIntent' smart constructor.
 data GetIntent =
   GetIntent'
-    { _giName :: !Text
+    { _giName    :: !Text
     , _giVersion :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -129,22 +129,22 @@ instance ToQuery GetIntent where
 -- | /See:/ 'getIntentResponse' smart constructor.
 data GetIntentResponse =
   GetIntentResponse'
-    { _getrsFulfillmentActivity :: !(Maybe FulfillmentActivity)
-    , _getrsSlots :: !(Maybe [Slot])
-    , _getrsRejectionStatement :: !(Maybe Statement)
-    , _getrsChecksum :: !(Maybe Text)
-    , _getrsConclusionStatement :: !(Maybe Statement)
-    , _getrsSampleUtterances :: !(Maybe [Text])
+    { _getrsFulfillmentActivity   :: !(Maybe FulfillmentActivity)
+    , _getrsSlots                 :: !(Maybe [Slot])
+    , _getrsRejectionStatement    :: !(Maybe Statement)
+    , _getrsChecksum              :: !(Maybe Text)
+    , _getrsConclusionStatement   :: !(Maybe Statement)
+    , _getrsSampleUtterances      :: !(Maybe [Text])
     , _getrsParentIntentSignature :: !(Maybe Text)
-    , _getrsCreatedDate :: !(Maybe POSIX)
-    , _getrsName :: !(Maybe Text)
-    , _getrsVersion :: !(Maybe Text)
-    , _getrsFollowUpPrompt :: !(Maybe FollowUpPrompt)
-    , _getrsLastUpdatedDate :: !(Maybe POSIX)
-    , _getrsConfirmationPrompt :: !(Maybe Prompt)
-    , _getrsDialogCodeHook :: !(Maybe CodeHook)
-    , _getrsDescription :: !(Maybe Text)
-    , _getrsResponseStatus :: !Int
+    , _getrsCreatedDate           :: !(Maybe POSIX)
+    , _getrsName                  :: !(Maybe Text)
+    , _getrsVersion               :: !(Maybe Text)
+    , _getrsFollowUpPrompt        :: !(Maybe FollowUpPrompt)
+    , _getrsLastUpdatedDate       :: !(Maybe POSIX)
+    , _getrsConfirmationPrompt    :: !(Maybe Prompt)
+    , _getrsDialogCodeHook        :: !(Maybe CodeHook)
+    , _getrsDescription           :: !(Maybe Text)
+    , _getrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

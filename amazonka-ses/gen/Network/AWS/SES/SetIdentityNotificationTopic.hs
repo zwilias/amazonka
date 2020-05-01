@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,8 +52,8 @@ import Network.AWS.SES.Types.Product
 -- /See:/ 'setIdentityNotificationTopic' smart constructor.
 data SetIdentityNotificationTopic =
   SetIdentityNotificationTopic'
-    { _sintSNSTopic :: !(Maybe Text)
-    , _sintIdentity :: !Text
+    { _sintSNSTopic         :: !(Maybe Text)
+    , _sintIdentity         :: !Text
     , _sintNotificationType :: !NotificationType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

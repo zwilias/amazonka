@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -42,7 +42,7 @@ import Network.AWS.Response
 -- | /See:/ 'updateSmsChannel' smart constructor.
 data UpdateSmsChannel =
   UpdateSmsChannel'
-    { _uscApplicationId :: !Text
+    { _uscApplicationId     :: !Text
     , _uscSMSChannelRequest :: !SMSChannelRequest
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -105,7 +105,7 @@ instance ToQuery UpdateSmsChannel where
 -- | /See:/ 'updateSmsChannelResponse' smart constructor.
 data UpdateSmsChannelResponse =
   UpdateSmsChannelResponse'
-    { _uscrsResponseStatus :: !Int
+    { _uscrsResponseStatus     :: !Int
     , _uscrsSMSChannelResponse :: !SMSChannelResponse
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

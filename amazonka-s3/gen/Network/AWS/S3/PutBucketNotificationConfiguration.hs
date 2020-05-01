@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -39,7 +39,7 @@ import Network.AWS.S3.Types.Product
 -- | /See:/ 'putBucketNotificationConfiguration' smart constructor.
 data PutBucketNotificationConfiguration =
   PutBucketNotificationConfiguration'
-    { _pbncBucket :: !BucketName
+    { _pbncBucket                    :: !BucketName
     , _pbncNotificationConfiguration :: !NotificationConfiguration
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Response
 data StartUserImportJob =
   StartUserImportJob'
     { _suijUserPoolId :: !Text
-    , _suijJobId :: !Text
+    , _suijJobId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -116,7 +116,7 @@ instance ToQuery StartUserImportJob where
 -- /See:/ 'startUserImportJobResponse' smart constructor.
 data StartUserImportJobResponse =
   StartUserImportJobResponse'
-    { _suijrsUserImportJob :: !(Maybe UserImportJobType)
+    { _suijrsUserImportJob  :: !(Maybe UserImportJobType)
     , _suijrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

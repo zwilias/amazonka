@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,12 +54,12 @@ import Network.AWS.WorkSpaces.Types.Product
 -- | /See:/ 'describeWorkspaces' smart constructor.
 data DescribeWorkspaces =
   DescribeWorkspaces'
-    { _dwDirectoryId :: !(Maybe Text)
+    { _dwDirectoryId  :: !(Maybe Text)
     , _dwWorkspaceIds :: !(Maybe (List1 Text))
-    , _dwUserName :: !(Maybe Text)
-    , _dwBundleId :: !(Maybe Text)
-    , _dwNextToken :: !(Maybe Text)
-    , _dwLimit :: !(Maybe Nat)
+    , _dwUserName     :: !(Maybe Text)
+    , _dwBundleId     :: !(Maybe Text)
+    , _dwNextToken    :: !(Maybe Text)
+    , _dwLimit        :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -164,8 +164,8 @@ instance ToQuery DescribeWorkspaces where
 -- | /See:/ 'describeWorkspacesResponse' smart constructor.
 data DescribeWorkspacesResponse =
   DescribeWorkspacesResponse'
-    { _dwrsNextToken :: !(Maybe Text)
-    , _dwrsWorkspaces :: !(Maybe [Workspace])
+    { _dwrsNextToken      :: !(Maybe Text)
+    , _dwrsWorkspaces     :: !(Maybe [Workspace])
     , _dwrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

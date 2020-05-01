@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- /See:/ 'purchaseOffering' smart constructor.
 data PurchaseOffering =
   PurchaseOffering'
-    { _poQuantity :: !(Maybe Int)
-    , _poOfferingId :: !(Maybe Text)
+    { _poQuantity            :: !(Maybe Int)
+    , _poOfferingId          :: !(Maybe Text)
     , _poOfferingPromotionId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -130,7 +130,7 @@ instance ToQuery PurchaseOffering where
 data PurchaseOfferingResponse =
   PurchaseOfferingResponse'
     { _porsOfferingTransaction :: !(Maybe OfferingTransaction)
-    , _porsResponseStatus :: !Int
+    , _porsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

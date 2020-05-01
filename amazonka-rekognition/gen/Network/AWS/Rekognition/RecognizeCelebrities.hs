@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -112,10 +112,10 @@ instance ToQuery RecognizeCelebrities where
 -- | /See:/ 'recognizeCelebritiesResponse' smart constructor.
 data RecognizeCelebritiesResponse =
   RecognizeCelebritiesResponse'
-    { _rcrsCelebrityFaces :: !(Maybe [Celebrity])
+    { _rcrsCelebrityFaces        :: !(Maybe [Celebrity])
     , _rcrsOrientationCorrection :: !(Maybe OrientationCorrection)
-    , _rcrsUnrecognizedFaces :: !(Maybe [ComparedFace])
-    , _rcrsResponseStatus :: !Int
+    , _rcrsUnrecognizedFaces     :: !(Maybe [ComparedFace])
+    , _rcrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 -- | /See:/ 'putGroupPolicy' smart constructor.
 data PutGroupPolicy =
   PutGroupPolicy'
-    { _pgpGroupName :: !Text
-    , _pgpPolicyName :: !Text
+    { _pgpGroupName      :: !Text
+    , _pgpPolicyName     :: !Text
     , _pgpPolicyDocument :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

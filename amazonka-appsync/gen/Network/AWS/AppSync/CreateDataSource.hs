@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,14 +50,14 @@ import Network.AWS.Response
 -- | /See:/ 'createDataSource' smart constructor.
 data CreateDataSource =
   CreateDataSource'
-    { _cdsServiceRoleARN :: !(Maybe Text)
-    , _cdsDynamodbConfig :: !(Maybe DynamodbDataSourceConfig)
-    , _cdsLambdaConfig :: !(Maybe LambdaDataSourceConfig)
-    , _cdsDescription :: !(Maybe Text)
+    { _cdsServiceRoleARN      :: !(Maybe Text)
+    , _cdsDynamodbConfig      :: !(Maybe DynamodbDataSourceConfig)
+    , _cdsLambdaConfig        :: !(Maybe LambdaDataSourceConfig)
+    , _cdsDescription         :: !(Maybe Text)
     , _cdsElasticsearchConfig :: !(Maybe ElasticsearchDataSourceConfig)
-    , _cdsApiId :: !Text
-    , _cdsName :: !Text
-    , _cdsType :: !DataSourceType
+    , _cdsApiId               :: !Text
+    , _cdsName                :: !Text
+    , _cdsType                :: !DataSourceType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -172,7 +172,7 @@ instance ToQuery CreateDataSource where
 -- | /See:/ 'createDataSourceResponse' smart constructor.
 data CreateDataSourceResponse =
   CreateDataSourceResponse'
-    { _cdsrsDataSource :: !(Maybe DataSource)
+    { _cdsrsDataSource     :: !(Maybe DataSource)
     , _cdsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

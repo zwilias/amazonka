@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 data GetGroupCertificateAuthority =
   GetGroupCertificateAuthority'
     { _ggcaCertificateAuthorityId :: !Text
-    , _ggcaGroupId :: !Text
+    , _ggcaGroupId                :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -111,10 +111,10 @@ instance ToQuery GetGroupCertificateAuthority where
 -- | /See:/ 'getGroupCertificateAuthorityResponse' smart constructor.
 data GetGroupCertificateAuthorityResponse =
   GetGroupCertificateAuthorityResponse'
-    { _ggcarsPemEncodedCertificate :: !(Maybe Text)
+    { _ggcarsPemEncodedCertificate        :: !(Maybe Text)
     , _ggcarsGroupCertificateAuthorityARN :: !(Maybe Text)
-    , _ggcarsGroupCertificateAuthorityId :: !(Maybe Text)
-    , _ggcarsResponseStatus :: !Int
+    , _ggcarsGroupCertificateAuthorityId  :: !(Maybe Text)
+    , _ggcarsResponseStatus               :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

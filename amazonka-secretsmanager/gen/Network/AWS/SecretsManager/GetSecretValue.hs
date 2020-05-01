@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -69,9 +69,9 @@ import Network.AWS.SecretsManager.Types.Product
 -- | /See:/ 'getSecretValue' smart constructor.
 data GetSecretValue =
   GetSecretValue'
-    { _gsvVersionId :: !(Maybe Text)
+    { _gsvVersionId    :: !(Maybe Text)
     , _gsvVersionStage :: !(Maybe Text)
-    , _gsvSecretId :: !Text
+    , _gsvSecretId     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -150,13 +150,13 @@ instance ToQuery GetSecretValue where
 -- | /See:/ 'getSecretValueResponse' smart constructor.
 data GetSecretValueResponse =
   GetSecretValueResponse'
-    { _gsvrsVersionId :: !(Maybe Text)
-    , _gsvrsARN :: !(Maybe Text)
-    , _gsvrsVersionStages :: !(Maybe (List1 Text))
-    , _gsvrsSecretBinary :: !(Maybe (Sensitive Base64))
-    , _gsvrsCreatedDate :: !(Maybe POSIX)
-    , _gsvrsName :: !(Maybe Text)
-    , _gsvrsSecretString :: !(Maybe (Sensitive Text))
+    { _gsvrsVersionId      :: !(Maybe Text)
+    , _gsvrsARN            :: !(Maybe Text)
+    , _gsvrsVersionStages  :: !(Maybe (List1 Text))
+    , _gsvrsSecretBinary   :: !(Maybe (Sensitive Base64))
+    , _gsvrsCreatedDate    :: !(Maybe POSIX)
+    , _gsvrsName           :: !(Maybe Text)
+    , _gsvrsSecretString   :: !(Maybe (Sensitive Text))
     , _gsvrsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

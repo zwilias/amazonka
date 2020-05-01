@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- | /See:/ 'getClassifiers' smart constructor.
 data GetClassifiers =
   GetClassifiers'
-    { _gcNextToken :: !(Maybe Text)
+    { _gcNextToken  :: !(Maybe Text)
     , _gcMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -117,8 +117,8 @@ instance ToQuery GetClassifiers where
 -- | /See:/ 'getClassifiersResponse' smart constructor.
 data GetClassifiersResponse =
   GetClassifiersResponse'
-    { _gcsrsNextToken :: !(Maybe Text)
-    , _gcsrsClassifiers :: !(Maybe [Classifier])
+    { _gcsrsNextToken      :: !(Maybe Text)
+    , _gcsrsClassifiers    :: !(Maybe [Classifier])
     , _gcsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,9 +47,9 @@ import Network.AWS.Route53AutoNaming.Types.Product
 data CreatePrivateDNSNamespace =
   CreatePrivateDNSNamespace'
     { _cpdnsnCreatorRequestId :: !(Maybe Text)
-    , _cpdnsnDescription :: !(Maybe Text)
-    , _cpdnsnName :: !Text
-    , _cpdnsnVPC :: !Text
+    , _cpdnsnDescription      :: !(Maybe Text)
+    , _cpdnsnName             :: !Text
+    , _cpdnsnVPC              :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -134,7 +134,7 @@ instance ToQuery CreatePrivateDNSNamespace where
 -- | /See:/ 'createPrivateDNSNamespaceResponse' smart constructor.
 data CreatePrivateDNSNamespaceResponse =
   CreatePrivateDNSNamespaceResponse'
-    { _cpdnsnrsOperationId :: !(Maybe Text)
+    { _cpdnsnrsOperationId    :: !(Maybe Text)
     , _cpdnsnrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

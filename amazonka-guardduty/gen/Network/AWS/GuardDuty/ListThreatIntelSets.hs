@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- | /See:/ 'listThreatIntelSets' smart constructor.
 data ListThreatIntelSets =
   ListThreatIntelSets'
-    { _ltisNextToken :: !(Maybe Text)
+    { _ltisNextToken  :: !(Maybe Text)
     , _ltisMaxResults :: !(Maybe Nat)
     , _ltisDetectorId :: !Text
     }
@@ -122,8 +122,8 @@ instance ToQuery ListThreatIntelSets where
 data ListThreatIntelSetsResponse =
   ListThreatIntelSetsResponse'
     { _ltisrsThreatIntelSetIds :: !(Maybe [Text])
-    , _ltisrsNextToken :: !(Maybe Text)
-    , _ltisrsResponseStatus :: !Int
+    , _ltisrsNextToken         :: !(Maybe Text)
+    , _ltisrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

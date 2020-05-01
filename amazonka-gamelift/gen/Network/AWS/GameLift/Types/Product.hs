@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,8 +27,8 @@ import Network.AWS.Prelude
 data AWSCredentials =
   AWSCredentials'
     { _acSecretAccessKey :: !(Maybe Text)
-    , _acSessionToken :: !(Maybe Text)
-    , _acAccessKeyId :: !(Maybe Text)
+    , _acSessionToken    :: !(Maybe Text)
+    , _acAccessKeyId     :: !(Maybe Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -97,13 +97,13 @@ instance NFData AWSCredentials
 -- /See:/ 'alias' smart constructor.
 data Alias =
   Alias'
-    { _aCreationTime :: !(Maybe POSIX)
+    { _aCreationTime    :: !(Maybe POSIX)
     , _aLastUpdatedTime :: !(Maybe POSIX)
-    , _aAliasId :: !(Maybe Text)
+    , _aAliasId         :: !(Maybe Text)
     , _aRoutingStrategy :: !(Maybe RoutingStrategy)
-    , _aName :: !(Maybe Text)
-    , _aAliasARN :: !(Maybe Text)
-    , _aDescription :: !(Maybe Text)
+    , _aName            :: !(Maybe Text)
+    , _aAliasARN        :: !(Maybe Text)
+    , _aDescription     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -189,10 +189,10 @@ instance NFData Alias
 -- /See:/ 'attributeValue' smart constructor.
 data AttributeValue =
   AttributeValue'
-    { _avSL :: !(Maybe [Text])
+    { _avSL  :: !(Maybe [Text])
     , _avSDM :: !(Maybe (Map Text Double))
-    , _avN :: !(Maybe Double)
-    , _avS :: !(Maybe Text)
+    , _avN   :: !(Maybe Double)
+    , _avS   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -273,13 +273,13 @@ instance ToJSON AttributeValue where
 -- /See:/ 'build' smart constructor.
 data Build =
   Build'
-    { _bCreationTime :: !(Maybe POSIX)
-    , _bStatus :: !(Maybe BuildStatus)
+    { _bCreationTime    :: !(Maybe POSIX)
+    , _bStatus          :: !(Maybe BuildStatus)
     , _bOperatingSystem :: !(Maybe OperatingSystem)
-    , _bBuildId :: !(Maybe Text)
-    , _bName :: !(Maybe Text)
-    , _bVersion :: !(Maybe Text)
-    , _bSizeOnDisk :: !(Maybe Nat)
+    , _bBuildId         :: !(Maybe Text)
+    , _bName            :: !(Maybe Text)
+    , _bVersion         :: !(Maybe Text)
+    , _bSizeOnDisk      :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -365,7 +365,7 @@ instance NFData Build
 data DesiredPlayerSession =
   DesiredPlayerSession'
     { _dpsPlayerData :: !(Maybe Text)
-    , _dpsPlayerId :: !(Maybe Text)
+    , _dpsPlayerId   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -455,13 +455,13 @@ instance ToJSON DesiredPlayerSession where
 -- /See:/ 'ec2InstanceCounts' smart constructor.
 data EC2InstanceCounts =
   EC2InstanceCounts'
-    { _eicIdLE :: !(Maybe Nat)
+    { _eicIdLE        :: !(Maybe Nat)
     , _eicTERMINATING :: !(Maybe Nat)
-    , _eicPENDING :: !(Maybe Nat)
-    , _eicMAXIMUM :: !(Maybe Nat)
-    , _eicDESIRED :: !(Maybe Nat)
-    , _eicMINIMUM :: !(Maybe Nat)
-    , _eicACTIVE :: !(Maybe Nat)
+    , _eicPENDING     :: !(Maybe Nat)
+    , _eicMAXIMUM     :: !(Maybe Nat)
+    , _eicDESIRED     :: !(Maybe Nat)
+    , _eicMINIMUM     :: !(Maybe Nat)
+    , _eicACTIVE      :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -546,9 +546,9 @@ instance NFData EC2InstanceCounts
 -- /See:/ 'ec2InstanceLimit' smart constructor.
 data EC2InstanceLimit =
   EC2InstanceLimit'
-    { _eilEC2InstanceType :: !(Maybe EC2InstanceType)
+    { _eilEC2InstanceType  :: !(Maybe EC2InstanceType)
     , _eilCurrentInstances :: !(Maybe Nat)
-    , _eilInstanceLimit :: !(Maybe Nat)
+    , _eilInstanceLimit    :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -605,12 +605,12 @@ instance NFData EC2InstanceLimit
 -- /See:/ 'event' smart constructor.
 data Event =
   Event'
-    { _eResourceId :: !(Maybe Text)
+    { _eResourceId      :: !(Maybe Text)
     , _ePreSignedLogURL :: !(Maybe Text)
-    , _eEventTime :: !(Maybe POSIX)
-    , _eMessage :: !(Maybe Text)
-    , _eEventCode :: !(Maybe EventCode)
-    , _eEventId :: !(Maybe Text)
+    , _eEventTime       :: !(Maybe POSIX)
+    , _eMessage         :: !(Maybe Text)
+    , _eEventCode       :: !(Maybe EventCode)
+    , _eEventId         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -734,24 +734,24 @@ instance NFData Event
 -- /See:/ 'fleetAttributes' smart constructor.
 data FleetAttributes =
   FleetAttributes'
-    { _faCreationTime :: !(Maybe POSIX)
-    , _faStatus :: !(Maybe FleetStatus)
-    , _faServerLaunchParameters :: !(Maybe Text)
-    , _faLogPaths :: !(Maybe [Text])
-    , _faOperatingSystem :: !(Maybe OperatingSystem)
-    , _faBuildId :: !(Maybe Text)
-    , _faFleetARN :: !(Maybe Text)
-    , _faFleetType :: !(Maybe FleetType)
-    , _faTerminationTime :: !(Maybe POSIX)
-    , _faInstanceType :: !(Maybe EC2InstanceType)
-    , _faStoppedActions :: !(Maybe (List1 FleetAction))
+    { _faCreationTime                   :: !(Maybe POSIX)
+    , _faStatus                         :: !(Maybe FleetStatus)
+    , _faServerLaunchParameters         :: !(Maybe Text)
+    , _faLogPaths                       :: !(Maybe [Text])
+    , _faOperatingSystem                :: !(Maybe OperatingSystem)
+    , _faBuildId                        :: !(Maybe Text)
+    , _faFleetARN                       :: !(Maybe Text)
+    , _faFleetType                      :: !(Maybe FleetType)
+    , _faTerminationTime                :: !(Maybe POSIX)
+    , _faInstanceType                   :: !(Maybe EC2InstanceType)
+    , _faStoppedActions                 :: !(Maybe (List1 FleetAction))
     , _faNewGameSessionProtectionPolicy :: !(Maybe ProtectionPolicy)
-    , _faName :: !(Maybe Text)
-    , _faServerLaunchPath :: !(Maybe Text)
-    , _faMetricGroups :: !(Maybe [Text])
-    , _faFleetId :: !(Maybe Text)
-    , _faDescription :: !(Maybe Text)
-    , _faResourceCreationLimitPolicy :: !(Maybe ResourceCreationLimitPolicy)
+    , _faName                           :: !(Maybe Text)
+    , _faServerLaunchPath               :: !(Maybe Text)
+    , _faMetricGroups                   :: !(Maybe [Text])
+    , _faFleetId                        :: !(Maybe Text)
+    , _faDescription                    :: !(Maybe Text)
+    , _faResourceCreationLimitPolicy    :: !(Maybe ResourceCreationLimitPolicy)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -985,8 +985,8 @@ instance NFData FleetAttributes
 -- /See:/ 'fleetCapacity' smart constructor.
 data FleetCapacity =
   FleetCapacity'
-    { _fcInstanceType :: !(Maybe EC2InstanceType)
-    , _fcFleetId :: !(Maybe Text)
+    { _fcInstanceType   :: !(Maybe EC2InstanceType)
+    , _fcFleetId        :: !(Maybe Text)
     , _fcInstanceCounts :: !(Maybe EC2InstanceCounts)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1087,11 +1087,11 @@ instance NFData FleetCapacity
 -- /See:/ 'fleetUtilization' smart constructor.
 data FleetUtilization =
   FleetUtilization'
-    { _fuActiveGameSessionCount :: !(Maybe Nat)
+    { _fuActiveGameSessionCount    :: !(Maybe Nat)
     , _fuMaximumPlayerSessionCount :: !(Maybe Nat)
     , _fuCurrentPlayerSessionCount :: !(Maybe Nat)
-    , _fuFleetId :: !(Maybe Text)
-    , _fuActiveServerProcessCount :: !(Maybe Nat)
+    , _fuFleetId                   :: !(Maybe Text)
+    , _fuActiveServerProcessCount  :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1172,7 +1172,7 @@ instance NFData FleetUtilization
 -- /See:/ 'gameProperty' smart constructor.
 data GameProperty =
   GameProperty'
-    { _gpKey :: !Text
+    { _gpKey   :: !Text
     , _gpValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1249,22 +1249,22 @@ instance ToJSON GameProperty where
 -- /See:/ 'gameSession' smart constructor.
 data GameSession =
   GameSession'
-    { _gsCreationTime :: !(Maybe POSIX)
-    , _gsStatus :: !(Maybe GameSessionStatus)
-    , _gsGameProperties :: !(Maybe [GameProperty])
-    , _gsIPAddress :: !(Maybe Text)
-    , _gsGameSessionId :: !(Maybe Text)
-    , _gsMatchmakerData :: !(Maybe Text)
-    , _gsMaximumPlayerSessionCount :: !(Maybe Nat)
-    , _gsTerminationTime :: !(Maybe POSIX)
+    { _gsCreationTime                :: !(Maybe POSIX)
+    , _gsStatus                      :: !(Maybe GameSessionStatus)
+    , _gsGameProperties              :: !(Maybe [GameProperty])
+    , _gsIPAddress                   :: !(Maybe Text)
+    , _gsGameSessionId               :: !(Maybe Text)
+    , _gsMatchmakerData              :: !(Maybe Text)
+    , _gsMaximumPlayerSessionCount   :: !(Maybe Nat)
+    , _gsTerminationTime             :: !(Maybe POSIX)
     , _gsPlayerSessionCreationPolicy :: !(Maybe PlayerSessionCreationPolicy)
-    , _gsName :: !(Maybe Text)
-    , _gsCurrentPlayerSessionCount :: !(Maybe Nat)
-    , _gsStatusReason :: !(Maybe GameSessionStatusReason)
-    , _gsGameSessionData :: !(Maybe Text)
-    , _gsFleetId :: !(Maybe Text)
-    , _gsCreatorId :: !(Maybe Text)
-    , _gsPort :: !(Maybe Nat)
+    , _gsName                        :: !(Maybe Text)
+    , _gsCurrentPlayerSessionCount   :: !(Maybe Nat)
+    , _gsStatusReason                :: !(Maybe GameSessionStatusReason)
+    , _gsGameSessionData             :: !(Maybe Text)
+    , _gsFleetId                     :: !(Maybe Text)
+    , _gsCreatorId                   :: !(Maybe Text)
+    , _gsPort                        :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1437,9 +1437,9 @@ instance NFData GameSession
 data GameSessionConnectionInfo =
   GameSessionConnectionInfo'
     { _gsciMatchedPlayerSessions :: !(Maybe [MatchedPlayerSession])
-    , _gsciIPAddress :: !(Maybe Text)
-    , _gsciGameSessionARN :: !(Maybe Text)
-    , _gsciPort :: !(Maybe Nat)
+    , _gsciIPAddress             :: !(Maybe Text)
+    , _gsciGameSessionARN        :: !(Maybe Text)
+    , _gsciPort                  :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1505,7 +1505,7 @@ instance NFData GameSessionConnectionInfo
 -- /See:/ 'gameSessionDetail' smart constructor.
 data GameSessionDetail =
   GameSessionDetail'
-    { _gsdGameSession :: !(Maybe GameSession)
+    { _gsdGameSession      :: !(Maybe GameSession)
     , _gsdProtectionPolicy :: !(Maybe ProtectionPolicy)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1559,23 +1559,23 @@ instance NFData GameSessionDetail
 -- /See:/ 'gameSessionPlacement' smart constructor.
 data GameSessionPlacement =
   GameSessionPlacement'
-    { _gspStatus :: !(Maybe GameSessionPlacementState)
-    , _gspPlacementId :: !(Maybe Text)
-    , _gspGameProperties :: !(Maybe [GameProperty])
-    , _gspIPAddress :: !(Maybe Text)
-    , _gspGameSessionName :: !(Maybe Text)
-    , _gspStartTime :: !(Maybe POSIX)
-    , _gspGameSessionId :: !(Maybe Text)
-    , _gspGameSessionRegion :: !(Maybe Text)
-    , _gspMatchmakerData :: !(Maybe Text)
+    { _gspStatus                    :: !(Maybe GameSessionPlacementState)
+    , _gspPlacementId               :: !(Maybe Text)
+    , _gspGameProperties            :: !(Maybe [GameProperty])
+    , _gspIPAddress                 :: !(Maybe Text)
+    , _gspGameSessionName           :: !(Maybe Text)
+    , _gspStartTime                 :: !(Maybe POSIX)
+    , _gspGameSessionId             :: !(Maybe Text)
+    , _gspGameSessionRegion         :: !(Maybe Text)
+    , _gspMatchmakerData            :: !(Maybe Text)
     , _gspMaximumPlayerSessionCount :: !(Maybe Nat)
-    , _gspEndTime :: !(Maybe POSIX)
-    , _gspGameSessionARN :: !(Maybe Text)
-    , _gspPlayerLatencies :: !(Maybe [PlayerLatency])
-    , _gspGameSessionData :: !(Maybe Text)
-    , _gspGameSessionQueueName :: !(Maybe Text)
-    , _gspPlacedPlayerSessions :: !(Maybe [PlacedPlayerSession])
-    , _gspPort :: !(Maybe Nat)
+    , _gspEndTime                   :: !(Maybe POSIX)
+    , _gspGameSessionARN            :: !(Maybe Text)
+    , _gspPlayerLatencies           :: !(Maybe [PlayerLatency])
+    , _gspGameSessionData           :: !(Maybe Text)
+    , _gspGameSessionQueueName      :: !(Maybe Text)
+    , _gspPlacedPlayerSessions      :: !(Maybe [PlacedPlayerSession])
+    , _gspPort                      :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1774,11 +1774,11 @@ instance NFData GameSessionPlacement
 -- /See:/ 'gameSessionQueue' smart constructor.
 data GameSessionQueue =
   GameSessionQueue'
-    { _gsqGameSessionQueueARN :: !(Maybe Text)
+    { _gsqGameSessionQueueARN   :: !(Maybe Text)
     , _gsqPlayerLatencyPolicies :: !(Maybe [PlayerLatencyPolicy])
-    , _gsqTimeoutInSeconds :: !(Maybe Nat)
-    , _gsqDestinations :: !(Maybe [GameSessionQueueDestination])
-    , _gsqName :: !(Maybe Text)
+    , _gsqTimeoutInSeconds      :: !(Maybe Nat)
+    , _gsqDestinations          :: !(Maybe [GameSessionQueueDestination])
+    , _gsqName                  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1905,8 +1905,8 @@ instance ToJSON GameSessionQueueDestination where
 data IPPermission =
   IPPermission'
     { _ipFromPort :: !Nat
-    , _ipToPort :: !Nat
-    , _ipIPRange :: !Text
+    , _ipToPort   :: !Nat
+    , _ipIPRange  :: !Text
     , _ipProtocol :: !IPProtocol
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1982,13 +1982,13 @@ instance ToJSON IPPermission where
 -- /See:/ 'instance'' smart constructor.
 data Instance =
   Instance'
-    { _iCreationTime :: !(Maybe POSIX)
-    , _iInstanceId :: !(Maybe Text)
-    , _iStatus :: !(Maybe InstanceStatus)
-    , _iIPAddress :: !(Maybe Text)
+    { _iCreationTime    :: !(Maybe POSIX)
+    , _iInstanceId      :: !(Maybe Text)
+    , _iStatus          :: !(Maybe InstanceStatus)
+    , _iIPAddress       :: !(Maybe Text)
     , _iOperatingSystem :: !(Maybe OperatingSystem)
-    , _iType :: !(Maybe EC2InstanceType)
-    , _iFleetId :: !(Maybe Text)
+    , _iType            :: !(Maybe EC2InstanceType)
+    , _iFleetId         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2073,11 +2073,11 @@ instance NFData Instance
 -- /See:/ 'instanceAccess' smart constructor.
 data InstanceAccess =
   InstanceAccess'
-    { _iaInstanceId :: !(Maybe Text)
-    , _iaIPAddress :: !(Maybe Text)
+    { _iaInstanceId      :: !(Maybe Text)
+    , _iaIPAddress       :: !(Maybe Text)
     , _iaOperatingSystem :: !(Maybe OperatingSystem)
-    , _iaCredentials :: !(Maybe (Sensitive InstanceCredentials))
-    , _iaFleetId :: !(Maybe Text)
+    , _iaCredentials     :: !(Maybe (Sensitive InstanceCredentials))
+    , _iaFleetId         :: !(Maybe Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -2147,7 +2147,7 @@ instance NFData InstanceAccess
 data InstanceCredentials =
   InstanceCredentials'
     { _icUserName :: !(Maybe Text)
-    , _icSecret :: !(Maybe Text)
+    , _icSecret   :: !(Maybe Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -2190,7 +2190,7 @@ instance NFData InstanceCredentials
 data MatchedPlayerSession =
   MatchedPlayerSession'
     { _mpsPlayerSessionId :: !(Maybe Text)
-    , _mpsPlayerId :: !(Maybe Text)
+    , _mpsPlayerId        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2233,19 +2233,19 @@ instance NFData MatchedPlayerSession
 -- /See:/ 'matchmakingConfiguration' smart constructor.
 data MatchmakingConfiguration =
   MatchmakingConfiguration'
-    { _mcCreationTime :: !(Maybe POSIX)
-    , _mcGameProperties :: !(Maybe [GameProperty])
-    , _mcRuleSetName :: !(Maybe Text)
+    { _mcCreationTime             :: !(Maybe POSIX)
+    , _mcGameProperties           :: !(Maybe [GameProperty])
+    , _mcRuleSetName              :: !(Maybe Text)
     , _mcAcceptanceTimeoutSeconds :: !(Maybe Nat)
-    , _mcRequestTimeoutSeconds :: !(Maybe Nat)
-    , _mcNotificationTarget :: !(Maybe Text)
-    , _mcGameSessionQueueARNs :: !(Maybe [Text])
-    , _mcName :: !(Maybe Text)
-    , _mcCustomEventData :: !(Maybe Text)
-    , _mcAcceptanceRequired :: !(Maybe Bool)
-    , _mcGameSessionData :: !(Maybe Text)
-    , _mcDescription :: !(Maybe Text)
-    , _mcAdditionalPlayerCount :: !(Maybe Nat)
+    , _mcRequestTimeoutSeconds    :: !(Maybe Nat)
+    , _mcNotificationTarget       :: !(Maybe Text)
+    , _mcGameSessionQueueARNs     :: !(Maybe [Text])
+    , _mcName                     :: !(Maybe Text)
+    , _mcCustomEventData          :: !(Maybe Text)
+    , _mcAcceptanceRequired       :: !(Maybe Bool)
+    , _mcGameSessionData          :: !(Maybe Text)
+    , _mcDescription              :: !(Maybe Text)
+    , _mcAdditionalPlayerCount    :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2404,8 +2404,8 @@ instance NFData MatchmakingConfiguration
 data MatchmakingRuleSet =
   MatchmakingRuleSet'
     { _mrsCreationTime :: !(Maybe POSIX)
-    , _mrsRuleSetName :: !(Maybe Text)
-    , _mrsRuleSetBody :: !Text
+    , _mrsRuleSetName  :: !(Maybe Text)
+    , _mrsRuleSetBody  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2461,16 +2461,16 @@ instance NFData MatchmakingRuleSet
 -- /See:/ 'matchmakingTicket' smart constructor.
 data MatchmakingTicket =
   MatchmakingTicket'
-    { _mtStatus :: !(Maybe MatchmakingConfigurationStatus)
-    , _mtConfigurationName :: !(Maybe Text)
-    , _mtStartTime :: !(Maybe POSIX)
+    { _mtStatus                    :: !(Maybe MatchmakingConfigurationStatus)
+    , _mtConfigurationName         :: !(Maybe Text)
+    , _mtStartTime                 :: !(Maybe POSIX)
     , _mtGameSessionConnectionInfo :: !(Maybe GameSessionConnectionInfo)
-    , _mtTicketId :: !(Maybe Text)
-    , _mtEstimatedWaitTime :: !(Maybe Nat)
-    , _mtStatusMessage :: !(Maybe Text)
-    , _mtEndTime :: !(Maybe POSIX)
-    , _mtStatusReason :: !(Maybe Text)
-    , _mtPlayers :: !(Maybe [Player])
+    , _mtTicketId                  :: !(Maybe Text)
+    , _mtEstimatedWaitTime         :: !(Maybe Nat)
+    , _mtStatusMessage             :: !(Maybe Text)
+    , _mtEndTime                   :: !(Maybe POSIX)
+    , _mtStatusReason              :: !(Maybe Text)
+    , _mtPlayers                   :: !(Maybe [Player])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2606,7 +2606,7 @@ instance NFData MatchmakingTicket
 data PlacedPlayerSession =
   PlacedPlayerSession'
     { _ppsPlayerSessionId :: !(Maybe Text)
-    , _ppsPlayerId :: !(Maybe Text)
+    , _ppsPlayerId        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2650,9 +2650,9 @@ instance NFData PlacedPlayerSession
 data Player =
   Player'
     { _pPlayerAttributes :: !(Maybe (Map Text AttributeValue))
-    , _pTeam :: !(Maybe Text)
-    , _pPlayerId :: !(Maybe Text)
-    , _pLatencyInMs :: !(Maybe (Map Text Nat))
+    , _pTeam             :: !(Maybe Text)
+    , _pPlayerId         :: !(Maybe Text)
+    , _pLatencyInMs      :: !(Maybe (Map Text Nat))
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2725,8 +2725,8 @@ instance ToJSON Player where
 data PlayerLatency =
   PlayerLatency'
     { _plLatencyInMilliseconds :: !(Maybe Double)
-    , _plRegionIdentifier :: !(Maybe Text)
-    , _plPlayerId :: !(Maybe Text)
+    , _plRegionIdentifier      :: !(Maybe Text)
+    , _plPlayerId              :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2802,7 +2802,7 @@ instance ToJSON PlayerLatency where
 -- /See:/ 'playerLatencyPolicy' smart constructor.
 data PlayerLatencyPolicy =
   PlayerLatencyPolicy'
-    { _plpPolicyDurationSeconds :: !(Maybe Nat)
+    { _plpPolicyDurationSeconds                      :: !(Maybe Nat)
     , _plpMaximumIndividualPlayerLatencyMilliseconds :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2886,16 +2886,16 @@ instance ToJSON PlayerLatencyPolicy where
 -- /See:/ 'playerSession' smart constructor.
 data PlayerSession =
   PlayerSession'
-    { _psCreationTime :: !(Maybe POSIX)
-    , _psStatus :: !(Maybe PlayerSessionStatus)
-    , _psIPAddress :: !(Maybe Text)
-    , _psGameSessionId :: !(Maybe Text)
+    { _psCreationTime    :: !(Maybe POSIX)
+    , _psStatus          :: !(Maybe PlayerSessionStatus)
+    , _psIPAddress       :: !(Maybe Text)
+    , _psGameSessionId   :: !(Maybe Text)
     , _psTerminationTime :: !(Maybe POSIX)
     , _psPlayerSessionId :: !(Maybe Text)
-    , _psFleetId :: !(Maybe Text)
-    , _psPlayerData :: !(Maybe Text)
-    , _psPlayerId :: !(Maybe Text)
-    , _psPort :: !(Maybe Nat)
+    , _psFleetId         :: !(Maybe Text)
+    , _psPlayerData      :: !(Maybe Text)
+    , _psPlayerId        :: !(Maybe Text)
+    , _psPort            :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3008,7 +3008,7 @@ instance NFData PlayerSession
 data ResourceCreationLimitPolicy =
   ResourceCreationLimitPolicy'
     { _rclpNewGameSessionsPerCreator :: !(Maybe Nat)
-    , _rclpPolicyPeriodInMinutes :: !(Maybe Nat)
+    , _rclpPolicyPeriodInMinutes     :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3116,7 +3116,7 @@ instance ToJSON ResourceCreationLimitPolicy where
 -- /See:/ 'routingStrategy' smart constructor.
 data RoutingStrategy =
   RoutingStrategy'
-    { _rsType :: !(Maybe RoutingStrategyType)
+    { _rsType    :: !(Maybe RoutingStrategyType)
     , _rsMessage :: !(Maybe Text)
     , _rsFleetId :: !(Maybe Text)
     }
@@ -3229,7 +3229,7 @@ instance ToJSON RoutingStrategy where
 data RuntimeConfiguration =
   RuntimeConfiguration'
     { _rcGameSessionActivationTimeoutSeconds :: !(Maybe Nat)
-    , _rcServerProcesses :: !(Maybe (List1 ServerProcess))
+    , _rcServerProcesses                     :: !(Maybe (List1 ServerProcess))
     , _rcMaxConcurrentGameSessionActivations :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3305,8 +3305,8 @@ instance ToJSON RuntimeConfiguration where
 -- /See:/ 's3Location' smart constructor.
 data S3Location =
   S3Location'
-    { _slBucket :: !(Maybe Text)
-    , _slKey :: !(Maybe Text)
+    { _slBucket  :: !(Maybe Text)
+    , _slKey     :: !(Maybe Text)
     , _slRoleARN :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3392,17 +3392,17 @@ instance ToJSON S3Location where
 -- /See:/ 'scalingPolicy' smart constructor.
 data ScalingPolicy =
   ScalingPolicy'
-    { _spStatus :: !(Maybe ScalingStatusType)
+    { _spStatus                :: !(Maybe ScalingStatusType)
     , _spScalingAdjustmentType :: !(Maybe ScalingAdjustmentType)
-    , _spEvaluationPeriods :: !(Maybe Nat)
-    , _spPolicyType :: !(Maybe PolicyType)
-    , _spMetricName :: !(Maybe MetricName)
-    , _spComparisonOperator :: !(Maybe ComparisonOperatorType)
-    , _spName :: !(Maybe Text)
-    , _spThreshold :: !(Maybe Double)
-    , _spScalingAdjustment :: !(Maybe Int)
-    , _spFleetId :: !(Maybe Text)
-    , _spTargetConfiguration :: !(Maybe TargetConfiguration)
+    , _spEvaluationPeriods     :: !(Maybe Nat)
+    , _spPolicyType            :: !(Maybe PolicyType)
+    , _spMetricName            :: !(Maybe MetricName)
+    , _spComparisonOperator    :: !(Maybe ComparisonOperatorType)
+    , _spName                  :: !(Maybe Text)
+    , _spThreshold             :: !(Maybe Double)
+    , _spScalingAdjustment     :: !(Maybe Int)
+    , _spFleetId               :: !(Maybe Text)
+    , _spTargetConfiguration   :: !(Maybe TargetConfiguration)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3524,8 +3524,8 @@ instance NFData ScalingPolicy
 -- /See:/ 'serverProcess' smart constructor.
 data ServerProcess =
   ServerProcess'
-    { _spParameters :: !(Maybe Text)
-    , _spLaunchPath :: !Text
+    { _spParameters           :: !(Maybe Text)
+    , _spLaunchPath           :: !Text
     , _spConcurrentExecutions :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3675,11 +3675,11 @@ instance ToJSON TargetConfiguration where
 -- /See:/ 'vpcPeeringAuthorization' smart constructor.
 data VPCPeeringAuthorization =
   VPCPeeringAuthorization'
-    { _vpaCreationTime :: !(Maybe POSIX)
-    , _vpaPeerVPCId :: !(Maybe Text)
-    , _vpaPeerVPCAWSAccountId :: !(Maybe Text)
+    { _vpaCreationTime         :: !(Maybe POSIX)
+    , _vpaPeerVPCId            :: !(Maybe Text)
+    , _vpaPeerVPCAWSAccountId  :: !(Maybe Text)
     , _vpaGameLiftAWSAccountId :: !(Maybe Text)
-    , _vpaExpirationTime :: !(Maybe POSIX)
+    , _vpaExpirationTime       :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3769,11 +3769,11 @@ instance NFData VPCPeeringAuthorization
 data VPCPeeringConnection =
   VPCPeeringConnection'
     { _vpcVPCPeeringConnectionId :: !(Maybe Text)
-    , _vpcStatus :: !(Maybe VPCPeeringConnectionStatus)
-    , _vpcPeerVPCId :: !(Maybe Text)
-    , _vpcIPV4CidrBlock :: !(Maybe Text)
-    , _vpcGameLiftVPCId :: !(Maybe Text)
-    , _vpcFleetId :: !(Maybe Text)
+    , _vpcStatus                 :: !(Maybe VPCPeeringConnectionStatus)
+    , _vpcPeerVPCId              :: !(Maybe Text)
+    , _vpcIPV4CidrBlock          :: !(Maybe Text)
+    , _vpcGameLiftVPCId          :: !(Maybe Text)
+    , _vpcFleetId                :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3851,7 +3851,7 @@ instance NFData VPCPeeringConnection
 -- /See:/ 'vpcPeeringConnectionStatus' smart constructor.
 data VPCPeeringConnectionStatus =
   VPCPeeringConnectionStatus'
-    { _vpcsCode :: !(Maybe Text)
+    { _vpcsCode    :: !(Maybe Text)
     , _vpcsMessage :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

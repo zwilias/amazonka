@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -60,10 +60,10 @@ import Network.AWS.Response
 -- | /See:/ 'indexFaces' smart constructor.
 data IndexFaces =
   IndexFaces'
-    { _ifExternalImageId :: !(Maybe Text)
+    { _ifExternalImageId     :: !(Maybe Text)
     , _ifDetectionAttributes :: !(Maybe [Attribute])
-    , _ifCollectionId :: !Text
-    , _ifImage :: !Image
+    , _ifCollectionId        :: !Text
+    , _ifImage               :: !Image
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -150,10 +150,10 @@ instance ToQuery IndexFaces where
 -- | /See:/ 'indexFacesResponse' smart constructor.
 data IndexFacesResponse =
   IndexFacesResponse'
-    { _ifrsFaceModelVersion :: !(Maybe Text)
-    , _ifrsFaceRecords :: !(Maybe [FaceRecord])
+    { _ifrsFaceModelVersion      :: !(Maybe Text)
+    , _ifrsFaceRecords           :: !(Maybe [FaceRecord])
     , _ifrsOrientationCorrection :: !(Maybe OrientationCorrection)
-    , _ifrsResponseStatus :: !Int
+    , _ifrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

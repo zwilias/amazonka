@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,14 +54,14 @@ import Network.AWS.Response
 -- /See:/ 'describeEnvironments' smart constructor.
 data DescribeEnvironments =
   DescribeEnvironments'
-    { _desEnvironmentIds :: !(Maybe [Text])
-    , _desEnvironmentNames :: !(Maybe [Text])
-    , _desNextToken :: !(Maybe Text)
-    , _desVersionLabel :: !(Maybe Text)
-    , _desMaxRecords :: !(Maybe Nat)
-    , _desApplicationName :: !(Maybe Text)
+    { _desEnvironmentIds        :: !(Maybe [Text])
+    , _desEnvironmentNames      :: !(Maybe [Text])
+    , _desNextToken             :: !(Maybe Text)
+    , _desVersionLabel          :: !(Maybe Text)
+    , _desMaxRecords            :: !(Maybe Nat)
+    , _desApplicationName       :: !(Maybe Text)
     , _desIncludedDeletedBackTo :: !(Maybe ISO8601)
-    , _desIncludeDeleted :: !(Maybe Bool)
+    , _desIncludeDeleted        :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

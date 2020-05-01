@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- /See:/ 'updateConfiguration' smart constructor.
 data UpdateConfiguration =
   UpdateConfiguration'
-    { _ucData :: !(Maybe Text)
-    , _ucDescription :: !(Maybe Text)
+    { _ucData            :: !(Maybe Text)
+    , _ucDescription     :: !(Maybe Text)
     , _ucConfigurationId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -124,11 +124,11 @@ instance ToQuery UpdateConfiguration where
 -- | /See:/ 'updateConfigurationResponse' smart constructor.
 data UpdateConfigurationResponse =
   UpdateConfigurationResponse'
-    { _ucrsARN :: !(Maybe Text)
+    { _ucrsARN            :: !(Maybe Text)
     , _ucrsLatestRevision :: !(Maybe ConfigurationRevision)
-    , _ucrsWarnings :: !(Maybe [SanitizationWarning])
-    , _ucrsName :: !(Maybe Text)
-    , _ucrsId :: !(Maybe Text)
+    , _ucrsWarnings       :: !(Maybe [SanitizationWarning])
+    , _ucrsName           :: !(Maybe Text)
+    , _ucrsId             :: !(Maybe Text)
     , _ucrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

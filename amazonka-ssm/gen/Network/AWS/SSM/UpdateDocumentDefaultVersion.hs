@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'updateDocumentDefaultVersion' smart constructor.
 data UpdateDocumentDefaultVersion =
   UpdateDocumentDefaultVersion'
-    { _uddvName :: !Text
+    { _uddvName            :: !Text
     , _uddvDocumentVersion :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -112,7 +112,7 @@ instance ToQuery UpdateDocumentDefaultVersion where
 -- | /See:/ 'updateDocumentDefaultVersionResponse' smart constructor.
 data UpdateDocumentDefaultVersionResponse =
   UpdateDocumentDefaultVersionResponse'
-    { _uddvrsDescription :: !(Maybe DocumentDefaultVersionDescription)
+    { _uddvrsDescription    :: !(Maybe DocumentDefaultVersionDescription)
     , _uddvrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

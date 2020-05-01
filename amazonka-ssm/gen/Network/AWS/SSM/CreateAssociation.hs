@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,14 +54,14 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'createAssociation' smart constructor.
 data CreateAssociation =
   CreateAssociation'
-    { _caInstanceId :: !(Maybe Text)
+    { _caInstanceId         :: !(Maybe Text)
     , _caScheduleExpression :: !(Maybe Text)
-    , _caOutputLocation :: !(Maybe InstanceAssociationOutputLocation)
-    , _caTargets :: !(Maybe [Target])
-    , _caParameters :: !(Maybe (Map Text [Text]))
-    , _caDocumentVersion :: !(Maybe Text)
-    , _caAssociationName :: !(Maybe Text)
-    , _caName :: !Text
+    , _caOutputLocation     :: !(Maybe InstanceAssociationOutputLocation)
+    , _caTargets            :: !(Maybe [Target])
+    , _caParameters         :: !(Maybe (Map Text [Text]))
+    , _caDocumentVersion    :: !(Maybe Text)
+    , _caAssociationName    :: !(Maybe Text)
+    , _caName               :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -179,7 +179,7 @@ instance ToQuery CreateAssociation where
 data CreateAssociationResponse =
   CreateAssociationResponse'
     { _crsAssociationDescription :: !(Maybe AssociationDescription)
-    , _crsResponseStatus :: !Int
+    , _crsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

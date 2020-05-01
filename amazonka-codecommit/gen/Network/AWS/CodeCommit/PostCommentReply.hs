@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 data PostCommentReply =
   PostCommentReply'
     { _pcrClientRequestToken :: !(Maybe Text)
-    , _pcrInReplyTo :: !Text
-    , _pcrContent :: !Text
+    , _pcrInReplyTo          :: !Text
+    , _pcrContent            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -123,7 +123,7 @@ instance ToQuery PostCommentReply where
 -- | /See:/ 'postCommentReplyResponse' smart constructor.
 data PostCommentReplyResponse =
   PostCommentReplyResponse'
-    { _pcrrsComment :: !(Maybe Comment)
+    { _pcrrsComment        :: !(Maybe Comment)
     , _pcrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

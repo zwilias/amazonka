@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Route53AutoNaming.Types.Product
 -- | /See:/ 'listOperations' smart constructor.
 data ListOperations =
   ListOperations'
-    { _loFilters :: !(Maybe [OperationFilter])
-    , _loNextToken :: !(Maybe Text)
+    { _loFilters    :: !(Maybe [OperationFilter])
+    , _loNextToken  :: !(Maybe Text)
     , _loMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -128,8 +128,8 @@ instance ToQuery ListOperations where
 -- | /See:/ 'listOperationsResponse' smart constructor.
 data ListOperationsResponse =
   ListOperationsResponse'
-    { _lorsNextToken :: !(Maybe Text)
-    , _lorsOperations :: !(Maybe [OperationSummary])
+    { _lorsNextToken      :: !(Maybe Text)
+    , _lorsOperations     :: !(Maybe [OperationSummary])
     , _lorsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

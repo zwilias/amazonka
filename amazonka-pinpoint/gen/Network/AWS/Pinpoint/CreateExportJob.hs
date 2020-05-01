@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -42,7 +42,7 @@ import Network.AWS.Response
 -- | /See:/ 'createExportJob' smart constructor.
 data CreateExportJob =
   CreateExportJob'
-    { _cejApplicationId :: !Text
+    { _cejApplicationId    :: !Text
     , _cejExportJobRequest :: !ExportJobRequest
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -105,7 +105,7 @@ instance ToQuery CreateExportJob where
 -- | /See:/ 'createExportJobResponse' smart constructor.
 data CreateExportJobResponse =
   CreateExportJobResponse'
-    { _cejrsResponseStatus :: !Int
+    { _cejrsResponseStatus    :: !Int
     , _cejrsExportJobResponse :: !ExportJobResponse
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

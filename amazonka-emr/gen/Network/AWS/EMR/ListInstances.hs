@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,12 +58,12 @@ import Network.AWS.Response
 data ListInstances =
   ListInstances'
     { _liInstanceGroupTypes :: !(Maybe [InstanceGroupType])
-    , _liInstanceFleetType :: !(Maybe InstanceFleetType)
-    , _liMarker :: !(Maybe Text)
-    , _liInstanceFleetId :: !(Maybe Text)
-    , _liInstanceStates :: !(Maybe [InstanceState])
-    , _liInstanceGroupId :: !(Maybe Text)
-    , _liClusterId :: !Text
+    , _liInstanceFleetType  :: !(Maybe InstanceFleetType)
+    , _liMarker             :: !(Maybe Text)
+    , _liInstanceFleetId    :: !(Maybe Text)
+    , _liInstanceStates     :: !(Maybe [InstanceState])
+    , _liInstanceGroupId    :: !(Maybe Text)
+    , _liClusterId          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -185,8 +185,8 @@ instance ToQuery ListInstances where
 -- /See:/ 'listInstancesResponse' smart constructor.
 data ListInstancesResponse =
   ListInstancesResponse'
-    { _lirsMarker :: !(Maybe Text)
-    , _lirsInstances :: !(Maybe [Instance])
+    { _lirsMarker         :: !(Maybe Text)
+    , _lirsInstances      :: !(Maybe [Instance])
     , _lirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

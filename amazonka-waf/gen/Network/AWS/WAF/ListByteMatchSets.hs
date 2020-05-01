@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.WAF.Types.Product
 data ListByteMatchSets =
   ListByteMatchSets'
     { _lbmsNextMarker :: !(Maybe Text)
-    , _lbmsLimit :: !(Maybe Nat)
+    , _lbmsLimit      :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -115,8 +115,8 @@ instance ToQuery ListByteMatchSets where
 -- | /See:/ 'listByteMatchSetsResponse' smart constructor.
 data ListByteMatchSetsResponse =
   ListByteMatchSetsResponse'
-    { _lbmsrsByteMatchSets :: !(Maybe [ByteMatchSetSummary])
-    , _lbmsrsNextMarker :: !(Maybe Text)
+    { _lbmsrsByteMatchSets  :: !(Maybe [ByteMatchSetSummary])
+    , _lbmsrsNextMarker     :: !(Maybe Text)
     , _lbmsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

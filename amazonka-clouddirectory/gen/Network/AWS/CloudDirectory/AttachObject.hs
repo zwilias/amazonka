@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 -- | /See:/ 'attachObject' smart constructor.
 data AttachObject =
   AttachObject'
-    { _aoDirectoryARN :: !Text
+    { _aoDirectoryARN    :: !Text
     , _aoParentReference :: !ObjectReference
-    , _aoChildReference :: !ObjectReference
-    , _aoLinkName :: !Text
+    , _aoChildReference  :: !ObjectReference
+    , _aoLinkName        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -136,7 +136,7 @@ instance ToQuery AttachObject where
 data AttachObjectResponse =
   AttachObjectResponse'
     { _aorsAttachedObjectIdentifier :: !(Maybe Text)
-    , _aorsResponseStatus :: !Int
+    , _aorsResponseStatus           :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

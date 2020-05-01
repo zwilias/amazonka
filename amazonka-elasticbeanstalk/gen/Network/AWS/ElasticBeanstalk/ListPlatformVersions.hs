@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 -- | /See:/ 'listPlatformVersions' smart constructor.
 data ListPlatformVersions =
   ListPlatformVersions'
-    { _lpvFilters :: !(Maybe [PlatformFilter])
-    , _lpvNextToken :: !(Maybe Text)
+    { _lpvFilters    :: !(Maybe [PlatformFilter])
+    , _lpvNextToken  :: !(Maybe Text)
     , _lpvMaxRecords :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -113,9 +113,9 @@ instance ToQuery ListPlatformVersions where
 -- | /See:/ 'listPlatformVersionsResponse' smart constructor.
 data ListPlatformVersionsResponse =
   ListPlatformVersionsResponse'
-    { _lpvrsNextToken :: !(Maybe Text)
+    { _lpvrsNextToken           :: !(Maybe Text)
     , _lpvrsPlatformSummaryList :: !(Maybe [PlatformSummary])
-    , _lpvrsResponseStatus :: !Int
+    , _lpvrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

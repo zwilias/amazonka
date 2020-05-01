@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,12 +55,12 @@ import Network.AWS.Response
 -- /See:/ 'respondToAuthChallenge' smart constructor.
 data RespondToAuthChallenge =
   RespondToAuthChallenge'
-    { _rtacAnalyticsMetadata :: !(Maybe AnalyticsMetadataType)
+    { _rtacAnalyticsMetadata  :: !(Maybe AnalyticsMetadataType)
     , _rtacChallengeResponses :: !(Maybe (Map Text Text))
-    , _rtacUserContextData :: !(Maybe UserContextDataType)
-    , _rtacSession :: !(Maybe Text)
-    , _rtacClientId :: !(Sensitive Text)
-    , _rtacChallengeName :: !ChallengeNameType
+    , _rtacUserContextData    :: !(Maybe UserContextDataType)
+    , _rtacSession            :: !(Maybe Text)
+    , _rtacClientId           :: !(Sensitive Text)
+    , _rtacChallengeName      :: !ChallengeNameType
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -172,11 +172,11 @@ instance ToQuery RespondToAuthChallenge where
 -- /See:/ 'respondToAuthChallengeResponse' smart constructor.
 data RespondToAuthChallengeResponse =
   RespondToAuthChallengeResponse'
-    { _rtacrsChallengeName :: !(Maybe ChallengeNameType)
-    , _rtacrsChallengeParameters :: !(Maybe (Map Text Text))
+    { _rtacrsChallengeName        :: !(Maybe ChallengeNameType)
+    , _rtacrsChallengeParameters  :: !(Maybe (Map Text Text))
     , _rtacrsAuthenticationResult :: !(Maybe AuthenticationResultType)
-    , _rtacrsSession :: !(Maybe Text)
-    , _rtacrsResponseStatus :: !Int
+    , _rtacrsSession              :: !(Maybe Text)
+    , _rtacrsResponseStatus       :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

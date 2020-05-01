@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,11 +56,11 @@ import Network.AWS.Response
 -- /See:/ 'queryObjects' smart constructor.
 data QueryObjects =
   QueryObjects'
-    { _qoQuery :: !(Maybe Query)
-    , _qoMarker :: !(Maybe Text)
-    , _qoLimit :: !(Maybe Int)
+    { _qoQuery      :: !(Maybe Query)
+    , _qoMarker     :: !(Maybe Text)
+    , _qoLimit      :: !(Maybe Int)
     , _qoPipelineId :: !Text
-    , _qoSphere :: !Text
+    , _qoSphere     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -164,8 +164,8 @@ instance ToQuery QueryObjects where
 data QueryObjectsResponse =
   QueryObjectsResponse'
     { _qorsHasMoreResults :: !(Maybe Bool)
-    , _qorsIds :: !(Maybe [Text])
-    , _qorsMarker :: !(Maybe Text)
+    , _qorsIds            :: !(Maybe [Text])
+    , _qorsMarker         :: !(Maybe Text)
     , _qorsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

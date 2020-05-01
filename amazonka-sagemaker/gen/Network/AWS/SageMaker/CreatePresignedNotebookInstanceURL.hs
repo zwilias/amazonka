@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.SageMaker.Types.Product
 data CreatePresignedNotebookInstanceURL =
   CreatePresignedNotebookInstanceURL'
     { _cpniuSessionExpirationDurationInSeconds :: !(Maybe Nat)
-    , _cpniuNotebookInstanceName :: !Text
+    , _cpniuNotebookInstanceName               :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -119,7 +119,7 @@ instance ToQuery CreatePresignedNotebookInstanceURL where
 -- | /See:/ 'createPresignedNotebookInstanceURLResponse' smart constructor.
 data CreatePresignedNotebookInstanceURLResponse =
   CreatePresignedNotebookInstanceURLResponse'
-    { _cpniursAuthorizedURL :: !(Maybe Text)
+    { _cpniursAuthorizedURL  :: !(Maybe Text)
     , _cpniursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

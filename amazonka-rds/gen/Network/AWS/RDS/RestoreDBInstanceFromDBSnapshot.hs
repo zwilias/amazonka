@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -73,29 +73,29 @@ import Network.AWS.Response
 -- /See:/ 'restoreDBInstanceFromDBSnapshot' smart constructor.
 data RestoreDBInstanceFromDBSnapshot =
   RestoreDBInstanceFromDBSnapshot'
-    { _rdifdsPubliclyAccessible :: !(Maybe Bool)
-    , _rdifdsAutoMinorVersionUpgrade :: !(Maybe Bool)
-    , _rdifdsDBSubnetGroupName :: !(Maybe Text)
-    , _rdifdsIOPS :: !(Maybe Int)
-    , _rdifdsDomain :: !(Maybe Text)
-    , _rdifdsEngine :: !(Maybe Text)
-    , _rdifdsTDECredentialPassword :: !(Maybe Text)
-    , _rdifdsDBInstanceClass :: !(Maybe Text)
-    , _rdifdsLicenseModel :: !(Maybe Text)
-    , _rdifdsAvailabilityZone :: !(Maybe Text)
-    , _rdifdsMultiAZ :: !(Maybe Bool)
-    , _rdifdsOptionGroupName :: !(Maybe Text)
-    , _rdifdsCopyTagsToSnapshot :: !(Maybe Bool)
-    , _rdifdsTDECredentialARN :: !(Maybe Text)
-    , _rdifdsDomainIAMRoleName :: !(Maybe Text)
-    , _rdifdsTags :: !(Maybe [Tag])
-    , _rdifdsPort :: !(Maybe Int)
+    { _rdifdsPubliclyAccessible              :: !(Maybe Bool)
+    , _rdifdsAutoMinorVersionUpgrade         :: !(Maybe Bool)
+    , _rdifdsDBSubnetGroupName               :: !(Maybe Text)
+    , _rdifdsIOPS                            :: !(Maybe Int)
+    , _rdifdsDomain                          :: !(Maybe Text)
+    , _rdifdsEngine                          :: !(Maybe Text)
+    , _rdifdsTDECredentialPassword           :: !(Maybe Text)
+    , _rdifdsDBInstanceClass                 :: !(Maybe Text)
+    , _rdifdsLicenseModel                    :: !(Maybe Text)
+    , _rdifdsAvailabilityZone                :: !(Maybe Text)
+    , _rdifdsMultiAZ                         :: !(Maybe Bool)
+    , _rdifdsOptionGroupName                 :: !(Maybe Text)
+    , _rdifdsCopyTagsToSnapshot              :: !(Maybe Bool)
+    , _rdifdsTDECredentialARN                :: !(Maybe Text)
+    , _rdifdsDomainIAMRoleName               :: !(Maybe Text)
+    , _rdifdsTags                            :: !(Maybe [Tag])
+    , _rdifdsPort                            :: !(Maybe Int)
     , _rdifdsEnableIAMDatabaseAuthentication :: !(Maybe Bool)
-    , _rdifdsStorageType :: !(Maybe Text)
-    , _rdifdsEnableCloudwatchLogsExports :: !(Maybe [Text])
-    , _rdifdsDBName :: !(Maybe Text)
-    , _rdifdsDBInstanceIdentifier :: !Text
-    , _rdifdsDBSnapshotIdentifier :: !Text
+    , _rdifdsStorageType                     :: !(Maybe Text)
+    , _rdifdsEnableCloudwatchLogsExports     :: !(Maybe [Text])
+    , _rdifdsDBName                          :: !(Maybe Text)
+    , _rdifdsDBInstanceIdentifier            :: !Text
+    , _rdifdsDBSnapshotIdentifier            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -354,7 +354,7 @@ instance ToQuery RestoreDBInstanceFromDBSnapshot where
 -- | /See:/ 'restoreDBInstanceFromDBSnapshotResponse' smart constructor.
 data RestoreDBInstanceFromDBSnapshotResponse =
   RestoreDBInstanceFromDBSnapshotResponse'
-    { _rdifdsrsDBInstance :: !(Maybe DBInstance)
+    { _rdifdsrsDBInstance     :: !(Maybe DBInstance)
     , _rdifdsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

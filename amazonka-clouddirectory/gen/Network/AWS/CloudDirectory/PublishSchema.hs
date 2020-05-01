@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,10 +46,10 @@ import Network.AWS.Response
 -- | /See:/ 'publishSchema' smart constructor.
 data PublishSchema =
   PublishSchema'
-    { _psMinorVersion :: !(Maybe Text)
-    , _psName :: !(Maybe Text)
+    { _psMinorVersion         :: !(Maybe Text)
+    , _psName                 :: !(Maybe Text)
     , _psDevelopmentSchemaARN :: !Text
-    , _psVersion :: !Text
+    , _psVersion              :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -129,7 +129,7 @@ instance ToQuery PublishSchema where
 data PublishSchemaResponse =
   PublishSchemaResponse'
     { _psrsPublishedSchemaARN :: !(Maybe Text)
-    , _psrsResponseStatus :: !Int
+    , _psrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,9 +52,9 @@ import Network.AWS.Response
 -- | /See:/ 'getParametersForImport' smart constructor.
 data GetParametersForImport =
   GetParametersForImport'
-    { _gpfiKeyId :: !Text
+    { _gpfiKeyId             :: !Text
     , _gpfiWrappingAlgorithm :: !AlgorithmSpec
-    , _gpfiWrappingKeySpec :: !WrappingKeySpec
+    , _gpfiWrappingKeySpec   :: !WrappingKeySpec
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -136,11 +136,11 @@ instance ToQuery GetParametersForImport where
 -- | /See:/ 'getParametersForImportResponse' smart constructor.
 data GetParametersForImportResponse =
   GetParametersForImportResponse'
-    { _gpfirsKeyId :: !(Maybe Text)
-    , _gpfirsPublicKey :: !(Maybe (Sensitive Base64))
+    { _gpfirsKeyId             :: !(Maybe Text)
+    , _gpfirsPublicKey         :: !(Maybe (Sensitive Base64))
     , _gpfirsParametersValidTo :: !(Maybe POSIX)
-    , _gpfirsImportToken :: !(Maybe Base64)
-    , _gpfirsResponseStatus :: !Int
+    , _gpfirsImportToken       :: !(Maybe Base64)
+    , _gpfirsResponseStatus    :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

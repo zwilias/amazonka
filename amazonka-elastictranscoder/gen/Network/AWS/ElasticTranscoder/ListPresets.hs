@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -112,8 +112,8 @@ instance ToQuery ListPresets where
 -- /See:/ 'listPresetsResponse' smart constructor.
 data ListPresetsResponse =
   ListPresetsResponse'
-    { _lrsNextPageToken :: !(Maybe Text)
-    , _lrsPresets :: !(Maybe [Preset])
+    { _lrsNextPageToken  :: !(Maybe Text)
+    , _lrsPresets        :: !(Maybe [Preset])
     , _lrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

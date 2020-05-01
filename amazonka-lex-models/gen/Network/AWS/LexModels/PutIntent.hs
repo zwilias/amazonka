@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -100,19 +100,19 @@ import Network.AWS.Response
 -- | /See:/ 'putIntent' smart constructor.
 data PutIntent =
   PutIntent'
-    { _piFulfillmentActivity :: !(Maybe FulfillmentActivity)
-    , _piSlots :: !(Maybe [Slot])
-    , _piRejectionStatement :: !(Maybe Statement)
-    , _piChecksum :: !(Maybe Text)
-    , _piConclusionStatement :: !(Maybe Statement)
-    , _piSampleUtterances :: !(Maybe [Text])
+    { _piFulfillmentActivity   :: !(Maybe FulfillmentActivity)
+    , _piSlots                 :: !(Maybe [Slot])
+    , _piRejectionStatement    :: !(Maybe Statement)
+    , _piChecksum              :: !(Maybe Text)
+    , _piConclusionStatement   :: !(Maybe Statement)
+    , _piSampleUtterances      :: !(Maybe [Text])
     , _piParentIntentSignature :: !(Maybe Text)
-    , _piFollowUpPrompt :: !(Maybe FollowUpPrompt)
-    , _piConfirmationPrompt :: !(Maybe Prompt)
-    , _piCreateVersion :: !(Maybe Bool)
-    , _piDialogCodeHook :: !(Maybe CodeHook)
-    , _piDescription :: !(Maybe Text)
-    , _piName :: !Text
+    , _piFollowUpPrompt        :: !(Maybe FollowUpPrompt)
+    , _piConfirmationPrompt    :: !(Maybe Prompt)
+    , _piCreateVersion         :: !(Maybe Bool)
+    , _piDialogCodeHook        :: !(Maybe CodeHook)
+    , _piDescription           :: !(Maybe Text)
+    , _piName                  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -285,23 +285,23 @@ instance ToQuery PutIntent where
 -- | /See:/ 'putIntentResponse' smart constructor.
 data PutIntentResponse =
   PutIntentResponse'
-    { _pirsFulfillmentActivity :: !(Maybe FulfillmentActivity)
-    , _pirsSlots :: !(Maybe [Slot])
-    , _pirsRejectionStatement :: !(Maybe Statement)
-    , _pirsChecksum :: !(Maybe Text)
-    , _pirsConclusionStatement :: !(Maybe Statement)
-    , _pirsSampleUtterances :: !(Maybe [Text])
+    { _pirsFulfillmentActivity   :: !(Maybe FulfillmentActivity)
+    , _pirsSlots                 :: !(Maybe [Slot])
+    , _pirsRejectionStatement    :: !(Maybe Statement)
+    , _pirsChecksum              :: !(Maybe Text)
+    , _pirsConclusionStatement   :: !(Maybe Statement)
+    , _pirsSampleUtterances      :: !(Maybe [Text])
     , _pirsParentIntentSignature :: !(Maybe Text)
-    , _pirsCreatedDate :: !(Maybe POSIX)
-    , _pirsName :: !(Maybe Text)
-    , _pirsVersion :: !(Maybe Text)
-    , _pirsFollowUpPrompt :: !(Maybe FollowUpPrompt)
-    , _pirsLastUpdatedDate :: !(Maybe POSIX)
-    , _pirsConfirmationPrompt :: !(Maybe Prompt)
-    , _pirsCreateVersion :: !(Maybe Bool)
-    , _pirsDialogCodeHook :: !(Maybe CodeHook)
-    , _pirsDescription :: !(Maybe Text)
-    , _pirsResponseStatus :: !Int
+    , _pirsCreatedDate           :: !(Maybe POSIX)
+    , _pirsName                  :: !(Maybe Text)
+    , _pirsVersion               :: !(Maybe Text)
+    , _pirsFollowUpPrompt        :: !(Maybe FollowUpPrompt)
+    , _pirsLastUpdatedDate       :: !(Maybe POSIX)
+    , _pirsConfirmationPrompt    :: !(Maybe Prompt)
+    , _pirsCreateVersion         :: !(Maybe Bool)
+    , _pirsDialogCodeHook        :: !(Maybe CodeHook)
+    , _pirsDescription           :: !(Maybe Text)
+    , _pirsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

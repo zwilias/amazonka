@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'listFieldLevelEncryptionProfiles' smart constructor.
 data ListFieldLevelEncryptionProfiles =
   ListFieldLevelEncryptionProfiles'
-    { _lflepMarker :: !(Maybe Text)
+    { _lflepMarker   :: !(Maybe Text)
     , _lflepMaxItems :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

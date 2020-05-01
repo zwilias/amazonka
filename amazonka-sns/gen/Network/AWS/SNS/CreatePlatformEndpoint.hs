@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.SNS.Types.Product
 -- /See:/ 'createPlatformEndpoint' smart constructor.
 data CreatePlatformEndpoint =
   CreatePlatformEndpoint'
-    { _cpeCustomUserData :: !(Maybe Text)
-    , _cpeAttributes :: !(Maybe (Map Text Text))
+    { _cpeCustomUserData         :: !(Maybe Text)
+    , _cpeAttributes             :: !(Maybe (Map Text Text))
     , _cpePlatformApplicationARN :: !Text
-    , _cpeToken :: !Text
+    , _cpeToken                  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -139,7 +139,7 @@ instance ToQuery CreatePlatformEndpoint where
 -- /See:/ 'createPlatformEndpointResponse' smart constructor.
 data CreatePlatformEndpointResponse =
   CreatePlatformEndpointResponse'
-    { _cpersEndpointARN :: !(Maybe Text)
+    { _cpersEndpointARN    :: !(Maybe Text)
     , _cpersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

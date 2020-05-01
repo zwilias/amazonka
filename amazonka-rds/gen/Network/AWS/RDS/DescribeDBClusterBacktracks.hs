@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,9 +55,9 @@ import Network.AWS.Response
 data DescribeDBClusterBacktracks =
   DescribeDBClusterBacktracks'
     { _ddcbBacktrackIdentifier :: !(Maybe Text)
-    , _ddcbFilters :: !(Maybe [Filter])
-    , _ddcbMarker :: !(Maybe Text)
-    , _ddcbMaxRecords :: !(Maybe Int)
+    , _ddcbFilters             :: !(Maybe [Filter])
+    , _ddcbMarker              :: !(Maybe Text)
+    , _ddcbMaxRecords          :: !(Maybe Int)
     , _ddcbDBClusterIdentifier :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -151,9 +151,9 @@ instance ToQuery DescribeDBClusterBacktracks where
 -- /See:/ 'describeDBClusterBacktracksResponse' smart constructor.
 data DescribeDBClusterBacktracksResponse =
   DescribeDBClusterBacktracksResponse'
-    { _ddcbrsMarker :: !(Maybe Text)
+    { _ddcbrsMarker              :: !(Maybe Text)
     , _ddcbrsDBClusterBacktracks :: !(Maybe [DBClusterBacktrack])
-    , _ddcbrsResponseStatus :: !Int
+    , _ddcbrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

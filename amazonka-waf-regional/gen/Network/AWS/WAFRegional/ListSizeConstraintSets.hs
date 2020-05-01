@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.WAFRegional.Types.Product
 data ListSizeConstraintSets =
   ListSizeConstraintSets'
     { _lscsNextMarker :: !(Maybe Text)
-    , _lscsLimit :: !(Maybe Nat)
+    , _lscsLimit      :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -109,8 +109,8 @@ instance ToQuery ListSizeConstraintSets where
 data ListSizeConstraintSetsResponse =
   ListSizeConstraintSetsResponse'
     { _lscsrsSizeConstraintSets :: !(Maybe [SizeConstraintSetSummary])
-    , _lscsrsNextMarker :: !(Maybe Text)
-    , _lscsrsResponseStatus :: !Int
+    , _lscsrsNextMarker         :: !(Maybe Text)
+    , _lscsrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

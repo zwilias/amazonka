@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,11 +26,11 @@ import Network.AWS.Prelude
 -- /See:/ 'alarmHistoryItem' smart constructor.
 data AlarmHistoryItem =
   AlarmHistoryItem'
-    { _ahiAlarmName :: !(Maybe Text)
+    { _ahiAlarmName       :: !(Maybe Text)
     , _ahiHistoryItemType :: !(Maybe HistoryItemType)
-    , _ahiHistoryData :: !(Maybe Text)
-    , _ahiHistorySummary :: !(Maybe Text)
-    , _ahiTimestamp :: !(Maybe ISO8601)
+    , _ahiHistoryData     :: !(Maybe Text)
+    , _ahiHistorySummary  :: !(Maybe Text)
+    , _ahiTimestamp       :: !(Maybe ISO8601)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -97,10 +97,10 @@ instance NFData AlarmHistoryItem
 -- /See:/ 'dashboardEntry' smart constructor.
 data DashboardEntry =
   DashboardEntry'
-    { _deSize :: !(Maybe Integer)
+    { _deSize          :: !(Maybe Integer)
     , _deDashboardName :: !(Maybe Text)
-    , _deLastModified :: !(Maybe ISO8601)
-    , _deDashboardARN :: !(Maybe Text)
+    , _deLastModified  :: !(Maybe ISO8601)
+    , _deDashboardARN  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -159,7 +159,7 @@ instance NFData DashboardEntry
 data DashboardValidationMessage =
   DashboardValidationMessage'
     { _dvmDataPath :: !(Maybe Text)
-    , _dvmMessage :: !(Maybe Text)
+    , _dvmMessage  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -197,14 +197,14 @@ instance NFData DashboardValidationMessage
 -- /See:/ 'datapoint' smart constructor.
 data Datapoint =
   Datapoint'
-    { _dSampleCount :: !(Maybe Double)
-    , _dMaximum :: !(Maybe Double)
-    , _dAverage :: !(Maybe Double)
-    , _dMinimum :: !(Maybe Double)
+    { _dSampleCount        :: !(Maybe Double)
+    , _dMaximum            :: !(Maybe Double)
+    , _dAverage            :: !(Maybe Double)
+    , _dMinimum            :: !(Maybe Double)
     , _dExtendedStatistics :: !(Maybe (Map Text Double))
-    , _dSum :: !(Maybe Double)
-    , _dUnit :: !(Maybe StandardUnit)
-    , _dTimestamp :: !(Maybe ISO8601)
+    , _dSum                :: !(Maybe Double)
+    , _dUnit               :: !(Maybe StandardUnit)
+    , _dTimestamp          :: !(Maybe ISO8601)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -296,7 +296,7 @@ instance NFData Datapoint
 -- /See:/ 'dimension' smart constructor.
 data Dimension =
   Dimension'
-    { _dName :: !Text
+    { _dName  :: !Text
     , _dValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -340,7 +340,7 @@ instance ToQuery Dimension where
 data DimensionFilter =
   DimensionFilter'
     { _dfValue :: !(Maybe Text)
-    , _dfName :: !Text
+    , _dfName  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -380,7 +380,7 @@ instance ToQuery DimensionFilter where
 data MessageData =
   MessageData'
     { _mValue :: !(Maybe Text)
-    , _mCode :: !(Maybe Text)
+    , _mCode  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -417,7 +417,7 @@ instance NFData MessageData
 data Metric =
   Metric'
     { _mMetricName :: !(Maybe Text)
-    , _mNamespace :: !(Maybe Text)
+    , _mNamespace  :: !(Maybe Text)
     , _mDimensions :: !(Maybe [Dimension])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -473,31 +473,31 @@ instance ToQuery Metric where
 -- /See:/ 'metricAlarm' smart constructor.
 data MetricAlarm =
   MetricAlarm'
-    { _maAlarmName :: !(Maybe Text)
-    , _maStateUpdatedTimestamp :: !(Maybe ISO8601)
-    , _maTreatMissingData :: !(Maybe Text)
-    , _maPeriod :: !(Maybe Nat)
-    , _maAlarmDescription :: !(Maybe Text)
-    , _maEvaluationPeriods :: !(Maybe Nat)
-    , _maMetricName :: !(Maybe Text)
-    , _maNamespace :: !(Maybe Text)
-    , _maComparisonOperator :: !(Maybe ComparisonOperator)
-    , _maOKActions :: !(Maybe [Text])
-    , _maEvaluateLowSampleCountPercentile :: !(Maybe Text)
-    , _maStateValue :: !(Maybe StateValue)
-    , _maDatapointsToAlarm :: !(Maybe Nat)
-    , _maThreshold :: !(Maybe Double)
+    { _maAlarmName                          :: !(Maybe Text)
+    , _maStateUpdatedTimestamp              :: !(Maybe ISO8601)
+    , _maTreatMissingData                   :: !(Maybe Text)
+    , _maPeriod                             :: !(Maybe Nat)
+    , _maAlarmDescription                   :: !(Maybe Text)
+    , _maEvaluationPeriods                  :: !(Maybe Nat)
+    , _maMetricName                         :: !(Maybe Text)
+    , _maNamespace                          :: !(Maybe Text)
+    , _maComparisonOperator                 :: !(Maybe ComparisonOperator)
+    , _maOKActions                          :: !(Maybe [Text])
+    , _maEvaluateLowSampleCountPercentile   :: !(Maybe Text)
+    , _maStateValue                         :: !(Maybe StateValue)
+    , _maDatapointsToAlarm                  :: !(Maybe Nat)
+    , _maThreshold                          :: !(Maybe Double)
     , _maAlarmConfigurationUpdatedTimestamp :: !(Maybe ISO8601)
-    , _maActionsEnabled :: !(Maybe Bool)
-    , _maInsufficientDataActions :: !(Maybe [Text])
-    , _maStateReason :: !(Maybe Text)
-    , _maStateReasonData :: !(Maybe Text)
-    , _maDimensions :: !(Maybe [Dimension])
-    , _maAlarmARN :: !(Maybe Text)
-    , _maAlarmActions :: !(Maybe [Text])
-    , _maUnit :: !(Maybe StandardUnit)
-    , _maStatistic :: !(Maybe Statistic)
-    , _maExtendedStatistic :: !(Maybe Text)
+    , _maActionsEnabled                     :: !(Maybe Bool)
+    , _maInsufficientDataActions            :: !(Maybe [Text])
+    , _maStateReason                        :: !(Maybe Text)
+    , _maStateReasonData                    :: !(Maybe Text)
+    , _maDimensions                         :: !(Maybe [Dimension])
+    , _maAlarmARN                           :: !(Maybe Text)
+    , _maAlarmActions                       :: !(Maybe [Text])
+    , _maUnit                               :: !(Maybe StandardUnit)
+    , _maStatistic                          :: !(Maybe Statistic)
+    , _maExtendedStatistic                  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -746,9 +746,9 @@ data MetricDataQuery =
   MetricDataQuery'
     { _mdqReturnData :: !(Maybe Bool)
     , _mdqExpression :: !(Maybe Text)
-    , _mdqLabel :: !(Maybe Text)
+    , _mdqLabel      :: !(Maybe Text)
     , _mdqMetricStat :: !(Maybe MetricStat)
-    , _mdqId :: !Text
+    , _mdqId         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -818,11 +818,11 @@ instance ToQuery MetricDataQuery where
 -- /See:/ 'metricDataResult' smart constructor.
 data MetricDataResult =
   MetricDataResult'
-    { _mdrValues :: !(Maybe [Double])
-    , _mdrId :: !(Maybe Text)
+    { _mdrValues     :: !(Maybe [Double])
+    , _mdrId         :: !(Maybe Text)
     , _mdrTimestamps :: !(Maybe [ISO8601])
-    , _mdrMessages :: !(Maybe [MessageData])
-    , _mdrLabel :: !(Maybe Text)
+    , _mdrMessages   :: !(Maybe [MessageData])
+    , _mdrLabel      :: !(Maybe Text)
     , _mdrStatusCode :: !(Maybe StatusCode)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -900,13 +900,13 @@ instance NFData MetricDataResult
 -- /See:/ 'metricDatum' smart constructor.
 data MetricDatum =
   MetricDatum'
-    { _mdValue :: !(Maybe Double)
+    { _mdValue             :: !(Maybe Double)
     , _mdStorageResolution :: !(Maybe Nat)
-    , _mdDimensions :: !(Maybe [Dimension])
-    , _mdUnit :: !(Maybe StandardUnit)
-    , _mdTimestamp :: !(Maybe ISO8601)
-    , _mdStatisticValues :: !(Maybe StatisticSet)
-    , _mdMetricName :: !Text
+    , _mdDimensions        :: !(Maybe [Dimension])
+    , _mdUnit              :: !(Maybe StandardUnit)
+    , _mdTimestamp         :: !(Maybe ISO8601)
+    , _mdStatisticValues   :: !(Maybe StatisticSet)
+    , _mdMetricName        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -995,10 +995,10 @@ instance ToQuery MetricDatum where
 -- /See:/ 'metricStat' smart constructor.
 data MetricStat =
   MetricStat'
-    { _msUnit :: !(Maybe StandardUnit)
+    { _msUnit   :: !(Maybe StandardUnit)
     , _msMetric :: !Metric
     , _msPeriod :: !Nat
-    , _msStat :: !Text
+    , _msStat   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1063,9 +1063,9 @@ instance ToQuery MetricStat where
 data StatisticSet =
   StatisticSet'
     { _ssSampleCount :: !Double
-    , _ssSum :: !Double
-    , _ssMinimum :: !Double
-    , _ssMaximum :: !Double
+    , _ssSum         :: !Double
+    , _ssMinimum     :: !Double
+    , _ssMaximum     :: !Double
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

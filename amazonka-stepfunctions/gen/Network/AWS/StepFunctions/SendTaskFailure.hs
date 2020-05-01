@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,8 +44,8 @@ import Network.AWS.StepFunctions.Types.Product
 -- | /See:/ 'sendTaskFailure' smart constructor.
 data SendTaskFailure =
   SendTaskFailure'
-    { _stfError :: !(Maybe Text)
-    , _stfCause :: !(Maybe Text)
+    { _stfError     :: !(Maybe Text)
+    , _stfCause     :: !(Maybe Text)
     , _stfTaskToken :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

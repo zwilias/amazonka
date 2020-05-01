@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,7 +56,7 @@ import Network.AWS.Response
 -- /See:/ 'listElasticsearchVersions' smart constructor.
 data ListElasticsearchVersions =
   ListElasticsearchVersions'
-    { _levNextToken :: !(Maybe Text)
+    { _levNextToken  :: !(Maybe Text)
     , _levMaxResults :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -117,9 +117,9 @@ instance ToQuery ListElasticsearchVersions where
 -- /See:/ 'listElasticsearchVersionsResponse' smart constructor.
 data ListElasticsearchVersionsResponse =
   ListElasticsearchVersionsResponse'
-    { _levrsNextToken :: !(Maybe Text)
+    { _levrsNextToken             :: !(Maybe Text)
     , _levrsElasticsearchVersions :: !(Maybe [Text])
-    , _levrsResponseStatus :: !Int
+    , _levrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

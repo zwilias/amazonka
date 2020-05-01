@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.Response
 -- /See:/ 'describeSnapshotAttribute' smart constructor.
 data DescribeSnapshotAttribute =
   DescribeSnapshotAttribute'
-    { _dsaDryRun :: !(Maybe Bool)
-    , _dsaAttribute :: !SnapshotAttributeName
+    { _dsaDryRun     :: !(Maybe Bool)
+    , _dsaAttribute  :: !SnapshotAttributeName
     , _dsaSnapshotId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -132,9 +132,9 @@ instance ToQuery DescribeSnapshotAttribute where
 data DescribeSnapshotAttributeResponse =
   DescribeSnapshotAttributeResponse'
     { _dsarsCreateVolumePermissions :: !(Maybe [CreateVolumePermission])
-    , _dsarsProductCodes :: !(Maybe [ProductCode])
-    , _dsarsSnapshotId :: !(Maybe Text)
-    , _dsarsResponseStatus :: !Int
+    , _dsarsProductCodes            :: !(Maybe [ProductCode])
+    , _dsarsSnapshotId              :: !(Maybe Text)
+    , _dsarsResponseStatus          :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,10 +47,10 @@ import Network.AWS.Response
 -- | /See:/ 'listResolvers' smart constructor.
 data ListResolvers =
   ListResolvers'
-    { _lrNextToken :: !(Maybe Text)
+    { _lrNextToken  :: !(Maybe Text)
     , _lrMaxResults :: !(Maybe Nat)
-    , _lrApiId :: !Text
-    , _lrTypeName :: !Text
+    , _lrApiId      :: !Text
+    , _lrTypeName   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,8 +124,8 @@ instance ToQuery ListResolvers where
 -- | /See:/ 'listResolversResponse' smart constructor.
 data ListResolversResponse =
   ListResolversResponse'
-    { _lrrsNextToken :: !(Maybe Text)
-    , _lrrsResolvers :: !(Maybe [Resolver])
+    { _lrrsNextToken      :: !(Maybe Text)
+    , _lrrsResolvers      :: !(Maybe [Resolver])
     , _lrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

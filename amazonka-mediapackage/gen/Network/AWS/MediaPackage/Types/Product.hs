@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -24,9 +24,9 @@ import Network.AWS.Prelude
 -- /See:/ 'channel' smart constructor.
 data Channel =
   Channel'
-    { _cHlsIngest :: !(Maybe HlsIngest)
-    , _cARN :: !(Maybe Text)
-    , _cId :: !(Maybe Text)
+    { _cHlsIngest   :: !(Maybe HlsIngest)
+    , _cARN         :: !(Maybe Text)
+    , _cId          :: !(Maybe Text)
     , _cDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -85,7 +85,7 @@ instance NFData Channel
 data CmafEncryption =
   CmafEncryption'
     { _ceKeyRotationIntervalSeconds :: !(Maybe Int)
-    , _ceSpekeKeyProvider :: !SpekeKeyProvider
+    , _ceSpekeKeyProvider           :: !SpekeKeyProvider
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -142,11 +142,11 @@ instance ToJSON CmafEncryption where
 -- /See:/ 'cmafPackage' smart constructor.
 data CmafPackage =
   CmafPackage'
-    { _cpHlsManifests :: !(Maybe [HlsManifest])
+    { _cpHlsManifests           :: !(Maybe [HlsManifest])
     , _cpSegmentDurationSeconds :: !(Maybe Int)
-    , _cpStreamSelection :: !(Maybe StreamSelection)
-    , _cpEncryption :: !(Maybe CmafEncryption)
-    , _cpSegmentPrefix :: !(Maybe Text)
+    , _cpStreamSelection        :: !(Maybe StreamSelection)
+    , _cpEncryption             :: !(Maybe CmafEncryption)
+    , _cpSegmentPrefix          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -298,7 +298,7 @@ instance ToJSON CmafPackageCreateOrUpdateParameters where
 data DashEncryption =
   DashEncryption'
     { _deKeyRotationIntervalSeconds :: !(Maybe Int)
-    , _deSpekeKeyProvider :: !SpekeKeyProvider
+    , _deSpekeKeyProvider           :: !SpekeKeyProvider
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -355,14 +355,14 @@ instance ToJSON DashEncryption where
 -- /See:/ 'dashPackage' smart constructor.
 data DashPackage =
   DashPackage'
-    { _dpMinBufferTimeSeconds :: !(Maybe Int)
-    , _dpProfile :: !(Maybe Profile)
-    , _dpSegmentDurationSeconds :: !(Maybe Int)
-    , _dpStreamSelection :: !(Maybe StreamSelection)
-    , _dpEncryption :: !(Maybe DashEncryption)
-    , _dpMinUpdatePeriodSeconds :: !(Maybe Int)
+    { _dpMinBufferTimeSeconds              :: !(Maybe Int)
+    , _dpProfile                           :: !(Maybe Profile)
+    , _dpSegmentDurationSeconds            :: !(Maybe Int)
+    , _dpStreamSelection                   :: !(Maybe StreamSelection)
+    , _dpEncryption                        :: !(Maybe DashEncryption)
+    , _dpMinUpdatePeriodSeconds            :: !(Maybe Int)
     , _dpSuggestedPresentationDelaySeconds :: !(Maybe Int)
-    , _dpManifestWindowSeconds :: !(Maybe Int)
+    , _dpManifestWindowSeconds             :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -474,11 +474,11 @@ instance ToJSON DashPackage where
 -- /See:/ 'hlsEncryption' smart constructor.
 data HlsEncryption =
   HlsEncryption'
-    { _heEncryptionMethod :: !(Maybe EncryptionMethod)
-    , _heKeyRotationIntervalSeconds :: !(Maybe Int)
+    { _heEncryptionMethod             :: !(Maybe EncryptionMethod)
+    , _heKeyRotationIntervalSeconds   :: !(Maybe Int)
     , _heConstantInitializationVector :: !(Maybe Text)
-    , _heRepeatExtXKey :: !(Maybe Bool)
-    , _heSpekeKeyProvider :: !SpekeKeyProvider
+    , _heRepeatExtXKey                :: !(Maybe Bool)
+    , _heSpekeKeyProvider             :: !SpekeKeyProvider
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -600,14 +600,14 @@ instance NFData HlsIngest
 -- /See:/ 'hlsManifest' smart constructor.
 data HlsManifest =
   HlsManifest'
-    { _hmManifestName :: !(Maybe Text)
-    , _hmURL :: !(Maybe Text)
-    , _hmPlaylistType :: !(Maybe PlaylistType)
+    { _hmManifestName                   :: !(Maybe Text)
+    , _hmURL                            :: !(Maybe Text)
+    , _hmPlaylistType                   :: !(Maybe PlaylistType)
     , _hmProgramDateTimeIntervalSeconds :: !(Maybe Int)
-    , _hmAdMarkers :: !(Maybe AdMarkers)
-    , _hmIncludeIframeOnlyStream :: !(Maybe Bool)
-    , _hmPlaylistWindowSeconds :: !(Maybe Int)
-    , _hmId :: !Text
+    , _hmAdMarkers                      :: !(Maybe AdMarkers)
+    , _hmIncludeIframeOnlyStream        :: !(Maybe Bool)
+    , _hmPlaylistWindowSeconds          :: !(Maybe Int)
+    , _hmId                             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -704,13 +704,13 @@ instance NFData HlsManifest
 -- /See:/ 'hlsManifestCreateOrUpdateParameters' smart constructor.
 data HlsManifestCreateOrUpdateParameters =
   HlsManifestCreateOrUpdateParameters'
-    { _hmcoupManifestName :: !(Maybe Text)
-    , _hmcoupPlaylistType :: !(Maybe PlaylistType)
+    { _hmcoupManifestName                   :: !(Maybe Text)
+    , _hmcoupPlaylistType                   :: !(Maybe PlaylistType)
     , _hmcoupProgramDateTimeIntervalSeconds :: !(Maybe Int)
-    , _hmcoupAdMarkers :: !(Maybe AdMarkers)
-    , _hmcoupIncludeIframeOnlyStream :: !(Maybe Bool)
-    , _hmcoupPlaylistWindowSeconds :: !(Maybe Int)
-    , _hmcoupId :: !Text
+    , _hmcoupAdMarkers                      :: !(Maybe AdMarkers)
+    , _hmcoupIncludeIframeOnlyStream        :: !(Maybe Bool)
+    , _hmcoupPlaylistWindowSeconds          :: !(Maybe Int)
+    , _hmcoupId                             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -811,15 +811,15 @@ instance ToJSON HlsManifestCreateOrUpdateParameters where
 -- /See:/ 'hlsPackage' smart constructor.
 data HlsPackage =
   HlsPackage'
-    { _hpUseAudioRenditionGroup :: !(Maybe Bool)
-    , _hpPlaylistType :: !(Maybe PlaylistType)
-    , _hpSegmentDurationSeconds :: !(Maybe Int)
+    { _hpUseAudioRenditionGroup         :: !(Maybe Bool)
+    , _hpPlaylistType                   :: !(Maybe PlaylistType)
+    , _hpSegmentDurationSeconds         :: !(Maybe Int)
     , _hpProgramDateTimeIntervalSeconds :: !(Maybe Int)
-    , _hpStreamSelection :: !(Maybe StreamSelection)
-    , _hpAdMarkers :: !(Maybe AdMarkers)
-    , _hpEncryption :: !(Maybe HlsEncryption)
-    , _hpIncludeIframeOnlyStream :: !(Maybe Bool)
-    , _hpPlaylistWindowSeconds :: !(Maybe Int)
+    , _hpStreamSelection                :: !(Maybe StreamSelection)
+    , _hpAdMarkers                      :: !(Maybe AdMarkers)
+    , _hpEncryption                     :: !(Maybe HlsEncryption)
+    , _hpIncludeIframeOnlyStream        :: !(Maybe Bool)
+    , _hpPlaylistWindowSeconds          :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -941,7 +941,7 @@ instance ToJSON HlsPackage where
 -- /See:/ 'ingestEndpoint' smart constructor.
 data IngestEndpoint =
   IngestEndpoint'
-    { _ieURL :: !(Maybe Text)
+    { _ieURL      :: !(Maybe Text)
     , _ieUsername :: !(Maybe Text)
     , _iePassword :: !(Maybe Text)
     }
@@ -1030,9 +1030,9 @@ instance ToJSON MssEncryption where
 data MssPackage =
   MssPackage'
     { _mpSegmentDurationSeconds :: !(Maybe Int)
-    , _mpStreamSelection :: !(Maybe StreamSelection)
-    , _mpEncryption :: !(Maybe MssEncryption)
-    , _mpManifestWindowSeconds :: !(Maybe Int)
+    , _mpStreamSelection        :: !(Maybe StreamSelection)
+    , _mpEncryption             :: !(Maybe MssEncryption)
+    , _mpManifestWindowSeconds  :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1103,19 +1103,19 @@ instance ToJSON MssPackage where
 -- /See:/ 'originEndpoint' smart constructor.
 data OriginEndpoint =
   OriginEndpoint'
-    { _oeWhitelist :: !(Maybe [Text])
-    , _oeHlsPackage :: !(Maybe HlsPackage)
-    , _oeARN :: !(Maybe Text)
-    , _oeManifestName :: !(Maybe Text)
-    , _oeURL :: !(Maybe Text)
-    , _oeChannelId :: !(Maybe Text)
+    { _oeWhitelist              :: !(Maybe [Text])
+    , _oeHlsPackage             :: !(Maybe HlsPackage)
+    , _oeARN                    :: !(Maybe Text)
+    , _oeManifestName           :: !(Maybe Text)
+    , _oeURL                    :: !(Maybe Text)
+    , _oeChannelId              :: !(Maybe Text)
     , _oeStartoverWindowSeconds :: !(Maybe Int)
-    , _oeDashPackage :: !(Maybe DashPackage)
-    , _oeMssPackage :: !(Maybe MssPackage)
-    , _oeId :: !(Maybe Text)
-    , _oeTimeDelaySeconds :: !(Maybe Int)
-    , _oeCmafPackage :: !(Maybe CmafPackage)
-    , _oeDescription :: !(Maybe Text)
+    , _oeDashPackage            :: !(Maybe DashPackage)
+    , _oeMssPackage             :: !(Maybe MssPackage)
+    , _oeId                     :: !(Maybe Text)
+    , _oeTimeDelaySeconds       :: !(Maybe Int)
+    , _oeCmafPackage            :: !(Maybe CmafPackage)
+    , _oeDescription            :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1249,10 +1249,10 @@ instance NFData OriginEndpoint
 -- /See:/ 'spekeKeyProvider' smart constructor.
 data SpekeKeyProvider =
   SpekeKeyProvider'
-    { _skpURL :: !Text
+    { _skpURL        :: !Text
     , _skpResourceId :: !Text
-    , _skpRoleARN :: !Text
-    , _skpSystemIds :: ![Text]
+    , _skpRoleARN    :: !Text
+    , _skpSystemIds  :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1324,7 +1324,7 @@ instance ToJSON SpekeKeyProvider where
 -- /See:/ 'streamSelection' smart constructor.
 data StreamSelection =
   StreamSelection'
-    { _ssStreamOrder :: !(Maybe StreamOrder)
+    { _ssStreamOrder           :: !(Maybe StreamOrder)
     , _ssMinVideoBitsPerSecond :: !(Maybe Int)
     , _ssMaxVideoBitsPerSecond :: !(Maybe Int)
     }

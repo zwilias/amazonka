@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -73,12 +73,12 @@ import Network.AWS.Response
 -- /See:/ 'createIdentityPool' smart constructor.
 data CreateIdentityPool =
   CreateIdentityPool'
-    { _cipSamlProviderARNs :: !(Maybe [Text])
-    , _cipSupportedLoginProviders :: !(Maybe (Map Text Text))
-    , _cipDeveloperProviderName :: !(Maybe Text)
-    , _cipOpenIdConnectProviderARNs :: !(Maybe [Text])
-    , _cipCognitoIdentityProviders :: !(Maybe [CognitoIdentityProvider])
-    , _cipIdentityPoolName :: !Text
+    { _cipSamlProviderARNs               :: !(Maybe [Text])
+    , _cipSupportedLoginProviders        :: !(Maybe (Map Text Text))
+    , _cipDeveloperProviderName          :: !(Maybe Text)
+    , _cipOpenIdConnectProviderARNs      :: !(Maybe [Text])
+    , _cipCognitoIdentityProviders       :: !(Maybe [CognitoIdentityProvider])
+    , _cipIdentityPoolName               :: !Text
     , _cipAllowUnauthenticatedIdentities :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

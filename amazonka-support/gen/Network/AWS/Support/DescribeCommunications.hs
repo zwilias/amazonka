@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -59,11 +59,11 @@ import Network.AWS.Support.Types.Product
 -- /See:/ 'describeCommunications' smart constructor.
 data DescribeCommunications =
   DescribeCommunications'
-    { _dAfterTime :: !(Maybe Text)
+    { _dAfterTime  :: !(Maybe Text)
     , _dBeforeTime :: !(Maybe Text)
-    , _dNextToken :: !(Maybe Text)
+    , _dNextToken  :: !(Maybe Text)
     , _dMaxResults :: !(Maybe Nat)
-    , _dCaseId :: !Text
+    , _dCaseId     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -165,7 +165,7 @@ instance ToQuery DescribeCommunications where
 -- /See:/ 'describeCommunicationsResponse' smart constructor.
 data DescribeCommunicationsResponse =
   DescribeCommunicationsResponse'
-    { _dcrsNextToken :: !(Maybe Text)
+    { _dcrsNextToken      :: !(Maybe Text)
     , _dcrsCommunications :: !(Maybe [Communication])
     , _dcrsResponseStatus :: !Int
     }

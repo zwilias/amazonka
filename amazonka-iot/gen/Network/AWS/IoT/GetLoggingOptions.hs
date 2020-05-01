@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -82,8 +82,8 @@ instance ToQuery GetLoggingOptions where
 -- /See:/ 'getLoggingOptionsResponse' smart constructor.
 data GetLoggingOptionsResponse =
   GetLoggingOptionsResponse'
-    { _glorsLogLevel :: !(Maybe LogLevel)
-    , _glorsRoleARN :: !(Maybe Text)
+    { _glorsLogLevel       :: !(Maybe LogLevel)
+    , _glorsRoleARN        :: !(Maybe Text)
     , _glorsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

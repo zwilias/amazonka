@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,11 +49,11 @@ import Network.AWS.Response
 data CreateStackInstances =
   CreateStackInstances'
     { _csiOperationPreferences :: !(Maybe StackSetOperationPreferences)
-    , _csiOperationId :: !(Maybe Text)
-    , _csiParameterOverrides :: !(Maybe [Parameter])
-    , _csiStackSetName :: !Text
-    , _csiAccounts :: ![Text]
-    , _csiRegions :: ![Text]
+    , _csiOperationId          :: !(Maybe Text)
+    , _csiParameterOverrides   :: !(Maybe [Parameter])
+    , _csiStackSetName         :: !Text
+    , _csiAccounts             :: ![Text]
+    , _csiRegions              :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -150,7 +150,7 @@ instance ToQuery CreateStackInstances where
 -- | /See:/ 'createStackInstancesResponse' smart constructor.
 data CreateStackInstancesResponse =
   CreateStackInstancesResponse'
-    { _csirsOperationId :: !(Maybe Text)
+    { _csirsOperationId    :: !(Maybe Text)
     , _csirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

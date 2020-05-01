@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,8 +52,8 @@ import Network.AWS.Response
 data DescribeSourceRegions =
   DescribeSourceRegions'
     { _dsrRegionName :: !(Maybe Text)
-    , _dsrFilters :: !(Maybe [Filter])
-    , _dsrMarker :: !(Maybe Text)
+    , _dsrFilters    :: !(Maybe [Filter])
+    , _dsrMarker     :: !(Maybe Text)
     , _dsrMaxRecords :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -133,8 +133,8 @@ instance ToQuery DescribeSourceRegions where
 -- /See:/ 'describeSourceRegionsResponse' smart constructor.
 data DescribeSourceRegionsResponse =
   DescribeSourceRegionsResponse'
-    { _dsrrsMarker :: !(Maybe Text)
-    , _dsrrsSourceRegions :: !(Maybe [SourceRegion])
+    { _dsrrsMarker         :: !(Maybe Text)
+    , _dsrrsSourceRegions  :: !(Maybe [SourceRegion])
     , _dsrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

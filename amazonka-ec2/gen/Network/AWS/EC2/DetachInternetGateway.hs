@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- /See:/ 'detachInternetGateway' smart constructor.
 data DetachInternetGateway =
   DetachInternetGateway'
-    { _digDryRun :: !(Maybe Bool)
+    { _digDryRun            :: !(Maybe Bool)
     , _digInternetGatewayId :: !Text
-    , _digVPCId :: !Text
+    , _digVPCId             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

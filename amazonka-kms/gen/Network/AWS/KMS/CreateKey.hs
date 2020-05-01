@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,12 +58,12 @@ import Network.AWS.Response
 -- | /See:/ 'createKey' smart constructor.
 data CreateKey =
   CreateKey'
-    { _ckOrigin :: !(Maybe OriginType)
-    , _ckKeyUsage :: !(Maybe KeyUsageType)
+    { _ckOrigin                         :: !(Maybe OriginType)
+    , _ckKeyUsage                       :: !(Maybe KeyUsageType)
     , _ckBypassPolicyLockoutSafetyCheck :: !(Maybe Bool)
-    , _ckPolicy :: !(Maybe Text)
-    , _ckDescription :: !(Maybe Text)
-    , _ckTags :: !(Maybe [Tag])
+    , _ckPolicy                         :: !(Maybe Text)
+    , _ckDescription                    :: !(Maybe Text)
+    , _ckTags                           :: !(Maybe [Tag])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -162,7 +162,7 @@ instance ToQuery CreateKey where
 -- | /See:/ 'createKeyResponse' smart constructor.
 data CreateKeyResponse =
   CreateKeyResponse'
-    { _ckrsKeyMetadata :: !(Maybe KeyMetadata)
+    { _ckrsKeyMetadata    :: !(Maybe KeyMetadata)
     , _ckrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

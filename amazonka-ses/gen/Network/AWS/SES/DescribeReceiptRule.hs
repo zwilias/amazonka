@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,7 +53,7 @@ import Network.AWS.SES.Types.Product
 data DescribeReceiptRule =
   DescribeReceiptRule'
     { _drrRuleSetName :: !Text
-    , _drrRuleName :: !Text
+    , _drrRuleName    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -115,7 +115,7 @@ instance ToQuery DescribeReceiptRule where
 -- /See:/ 'describeReceiptRuleResponse' smart constructor.
 data DescribeReceiptRuleResponse =
   DescribeReceiptRuleResponse'
-    { _drrrsRule :: !(Maybe ReceiptRule)
+    { _drrrsRule           :: !(Maybe ReceiptRule)
     , _drrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -59,13 +59,13 @@ import Network.AWS.Response
 data TestInvokeMethod =
   TestInvokeMethod'
     { _timPathWithQueryString :: !(Maybe Text)
-    , _timBody :: !(Maybe Text)
+    , _timBody                :: !(Maybe Text)
     , _timClientCertificateId :: !(Maybe Text)
-    , _timStageVariables :: !(Maybe (Map Text Text))
-    , _timHeaders :: !(Maybe (Map Text Text))
-    , _timRestAPIId :: !Text
-    , _timResourceId :: !Text
-    , _timHttpMethod :: !Text
+    , _timStageVariables      :: !(Maybe (Map Text Text))
+    , _timHeaders             :: !(Maybe (Map Text Text))
+    , _timRestAPIId           :: !Text
+    , _timResourceId          :: !Text
+    , _timHttpMethod          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -192,11 +192,11 @@ instance ToQuery TestInvokeMethod where
 -- /See:/ 'testInvokeMethodResponse' smart constructor.
 data TestInvokeMethodResponse =
   TestInvokeMethodResponse'
-    { _timrsLog :: !(Maybe Text)
-    , _timrsStatus :: !(Maybe Int)
-    , _timrsBody :: !(Maybe Text)
-    , _timrsLatency :: !(Maybe Integer)
-    , _timrsHeaders :: !(Maybe (Map Text Text))
+    { _timrsLog            :: !(Maybe Text)
+    , _timrsStatus         :: !(Maybe Int)
+    , _timrsBody           :: !(Maybe Text)
+    , _timrsLatency        :: !(Maybe Integer)
+    , _timrsHeaders        :: !(Maybe (Map Text Text))
     , _timrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

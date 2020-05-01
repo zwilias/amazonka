@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 -- | /See:/ 'describeLoadBalancers' smart constructor.
 data DescribeLoadBalancers =
   DescribeLoadBalancers'
-    { _dlbNames :: !(Maybe [Text])
+    { _dlbNames            :: !(Maybe [Text])
     , _dlbLoadBalancerARNs :: !(Maybe [Text])
-    , _dlbMarker :: !(Maybe Text)
-    , _dlbPageSize :: !(Maybe Nat)
+    , _dlbMarker           :: !(Maybe Text)
+    , _dlbPageSize         :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -140,8 +140,8 @@ instance ToQuery DescribeLoadBalancers where
 -- | /See:/ 'describeLoadBalancersResponse' smart constructor.
 data DescribeLoadBalancersResponse =
   DescribeLoadBalancersResponse'
-    { _dlbrsLoadBalancers :: !(Maybe [LoadBalancer])
-    , _dlbrsNextMarker :: !(Maybe Text)
+    { _dlbrsLoadBalancers  :: !(Maybe [LoadBalancer])
+    , _dlbrsNextMarker     :: !(Maybe Text)
     , _dlbrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

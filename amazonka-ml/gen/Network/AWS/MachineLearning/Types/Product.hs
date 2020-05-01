@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -28,22 +28,22 @@ import Network.AWS.Prelude
 -- /See:/ 'batchPrediction' smart constructor.
 data BatchPrediction =
   BatchPrediction'
-    { _bpStatus :: !(Maybe EntityStatus)
-    , _bpLastUpdatedAt :: !(Maybe POSIX)
-    , _bpCreatedAt :: !(Maybe POSIX)
-    , _bpComputeTime :: !(Maybe Integer)
-    , _bpInputDataLocationS3 :: !(Maybe Text)
-    , _bpMLModelId :: !(Maybe Text)
+    { _bpStatus                      :: !(Maybe EntityStatus)
+    , _bpLastUpdatedAt               :: !(Maybe POSIX)
+    , _bpCreatedAt                   :: !(Maybe POSIX)
+    , _bpComputeTime                 :: !(Maybe Integer)
+    , _bpInputDataLocationS3         :: !(Maybe Text)
+    , _bpMLModelId                   :: !(Maybe Text)
     , _bpBatchPredictionDataSourceId :: !(Maybe Text)
-    , _bpTotalRecordCount :: !(Maybe Integer)
-    , _bpStartedAt :: !(Maybe POSIX)
-    , _bpBatchPredictionId :: !(Maybe Text)
-    , _bpFinishedAt :: !(Maybe POSIX)
-    , _bpInvalidRecordCount :: !(Maybe Integer)
-    , _bpCreatedByIAMUser :: !(Maybe Text)
-    , _bpName :: !(Maybe Text)
-    , _bpMessage :: !(Maybe Text)
-    , _bpOutputURI :: !(Maybe Text)
+    , _bpTotalRecordCount            :: !(Maybe Integer)
+    , _bpStartedAt                   :: !(Maybe POSIX)
+    , _bpBatchPredictionId           :: !(Maybe Text)
+    , _bpFinishedAt                  :: !(Maybe POSIX)
+    , _bpInvalidRecordCount          :: !(Maybe Integer)
+    , _bpCreatedByIAMUser            :: !(Maybe Text)
+    , _bpName                        :: !(Maybe Text)
+    , _bpMessage                     :: !(Maybe Text)
+    , _bpOutputURI                   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -211,24 +211,24 @@ instance NFData BatchPrediction
 -- /See:/ 'dataSource' smart constructor.
 data DataSource =
   DataSource'
-    { _dsStatus :: !(Maybe EntityStatus)
-    , _dsNumberOfFiles :: !(Maybe Integer)
-    , _dsLastUpdatedAt :: !(Maybe POSIX)
-    , _dsCreatedAt :: !(Maybe POSIX)
-    , _dsComputeTime :: !(Maybe Integer)
-    , _dsDataSourceId :: !(Maybe Text)
-    , _dsRDSMetadata :: !(Maybe RDSMetadata)
-    , _dsDataSizeInBytes :: !(Maybe Integer)
-    , _dsStartedAt :: !(Maybe POSIX)
-    , _dsFinishedAt :: !(Maybe POSIX)
-    , _dsCreatedByIAMUser :: !(Maybe Text)
-    , _dsName :: !(Maybe Text)
-    , _dsDataLocationS3 :: !(Maybe Text)
+    { _dsStatus            :: !(Maybe EntityStatus)
+    , _dsNumberOfFiles     :: !(Maybe Integer)
+    , _dsLastUpdatedAt     :: !(Maybe POSIX)
+    , _dsCreatedAt         :: !(Maybe POSIX)
+    , _dsComputeTime       :: !(Maybe Integer)
+    , _dsDataSourceId      :: !(Maybe Text)
+    , _dsRDSMetadata       :: !(Maybe RDSMetadata)
+    , _dsDataSizeInBytes   :: !(Maybe Integer)
+    , _dsStartedAt         :: !(Maybe POSIX)
+    , _dsFinishedAt        :: !(Maybe POSIX)
+    , _dsCreatedByIAMUser  :: !(Maybe Text)
+    , _dsName              :: !(Maybe Text)
+    , _dsDataLocationS3    :: !(Maybe Text)
     , _dsComputeStatistics :: !(Maybe Bool)
-    , _dsMessage :: !(Maybe Text)
-    , _dsRedshiftMetadata :: !(Maybe RedshiftMetadata)
+    , _dsMessage           :: !(Maybe Text)
+    , _dsRedshiftMetadata  :: !(Maybe RedshiftMetadata)
     , _dsDataRearrangement :: !(Maybe Text)
-    , _dsRoleARN :: !(Maybe Text)
+    , _dsRoleARN           :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -408,19 +408,19 @@ instance NFData DataSource
 -- /See:/ 'evaluation' smart constructor.
 data Evaluation =
   Evaluation'
-    { _eStatus :: !(Maybe EntityStatus)
-    , _ePerformanceMetrics :: !(Maybe PerformanceMetrics)
-    , _eLastUpdatedAt :: !(Maybe POSIX)
-    , _eCreatedAt :: !(Maybe POSIX)
-    , _eComputeTime :: !(Maybe Integer)
-    , _eInputDataLocationS3 :: !(Maybe Text)
-    , _eMLModelId :: !(Maybe Text)
-    , _eStartedAt :: !(Maybe POSIX)
-    , _eFinishedAt :: !(Maybe POSIX)
-    , _eCreatedByIAMUser :: !(Maybe Text)
-    , _eName :: !(Maybe Text)
-    , _eEvaluationId :: !(Maybe Text)
-    , _eMessage :: !(Maybe Text)
+    { _eStatus                 :: !(Maybe EntityStatus)
+    , _ePerformanceMetrics     :: !(Maybe PerformanceMetrics)
+    , _eLastUpdatedAt          :: !(Maybe POSIX)
+    , _eCreatedAt              :: !(Maybe POSIX)
+    , _eComputeTime            :: !(Maybe Integer)
+    , _eInputDataLocationS3    :: !(Maybe Text)
+    , _eMLModelId              :: !(Maybe Text)
+    , _eStartedAt              :: !(Maybe POSIX)
+    , _eFinishedAt             :: !(Maybe POSIX)
+    , _eCreatedByIAMUser       :: !(Maybe Text)
+    , _eName                   :: !(Maybe Text)
+    , _eEvaluationId           :: !(Maybe Text)
+    , _eMessage                :: !(Maybe Text)
     , _eEvaluationDataSourceId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -567,25 +567,25 @@ instance NFData Evaluation
 -- /See:/ 'mLModel' smart constructor.
 data MLModel =
   MLModel'
-    { _mlmStatus :: !(Maybe EntityStatus)
-    , _mlmLastUpdatedAt :: !(Maybe POSIX)
-    , _mlmTrainingParameters :: !(Maybe (Map Text Text))
+    { _mlmStatus                      :: !(Maybe EntityStatus)
+    , _mlmLastUpdatedAt               :: !(Maybe POSIX)
+    , _mlmTrainingParameters          :: !(Maybe (Map Text Text))
     , _mlmScoreThresholdLastUpdatedAt :: !(Maybe POSIX)
-    , _mlmCreatedAt :: !(Maybe POSIX)
-    , _mlmComputeTime :: !(Maybe Integer)
-    , _mlmInputDataLocationS3 :: !(Maybe Text)
-    , _mlmMLModelId :: !(Maybe Text)
-    , _mlmSizeInBytes :: !(Maybe Integer)
-    , _mlmStartedAt :: !(Maybe POSIX)
-    , _mlmScoreThreshold :: !(Maybe Double)
-    , _mlmFinishedAt :: !(Maybe POSIX)
-    , _mlmAlgorithm :: !(Maybe Algorithm)
-    , _mlmCreatedByIAMUser :: !(Maybe Text)
-    , _mlmName :: !(Maybe Text)
-    , _mlmEndpointInfo :: !(Maybe RealtimeEndpointInfo)
-    , _mlmTrainingDataSourceId :: !(Maybe Text)
-    , _mlmMessage :: !(Maybe Text)
-    , _mlmMLModelType :: !(Maybe MLModelType)
+    , _mlmCreatedAt                   :: !(Maybe POSIX)
+    , _mlmComputeTime                 :: !(Maybe Integer)
+    , _mlmInputDataLocationS3         :: !(Maybe Text)
+    , _mlmMLModelId                   :: !(Maybe Text)
+    , _mlmSizeInBytes                 :: !(Maybe Integer)
+    , _mlmStartedAt                   :: !(Maybe POSIX)
+    , _mlmScoreThreshold              :: !(Maybe Double)
+    , _mlmFinishedAt                  :: !(Maybe POSIX)
+    , _mlmAlgorithm                   :: !(Maybe Algorithm)
+    , _mlmCreatedByIAMUser            :: !(Maybe Text)
+    , _mlmName                        :: !(Maybe Text)
+    , _mlmEndpointInfo                :: !(Maybe RealtimeEndpointInfo)
+    , _mlmTrainingDataSourceId        :: !(Maybe Text)
+    , _mlmMessage                     :: !(Maybe Text)
+    , _mlmMLModelType                 :: !(Maybe MLModelType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -832,10 +832,10 @@ instance NFData PerformanceMetrics
 -- /See:/ 'prediction' smart constructor.
 data Prediction =
   Prediction'
-    { _pPredictedValue :: !(Maybe Double)
-    , _pPredictedLabel :: !(Maybe Text)
+    { _pPredictedValue  :: !(Maybe Double)
+    , _pPredictedLabel  :: !(Maybe Text)
     , _pPredictedScores :: !(Maybe (Map Text Double))
-    , _pDetails :: !(Maybe (Map DetailsAttributes Text))
+    , _pDetails         :: !(Maybe (Map DetailsAttributes Text))
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -896,17 +896,17 @@ instance NFData Prediction
 -- /See:/ 'rdsDataSpec' smart constructor.
 data RDSDataSpec =
   RDSDataSpec'
-    { _rdsdsDataSchemaURI :: !(Maybe Text)
-    , _rdsdsDataSchema :: !(Maybe Text)
-    , _rdsdsDataRearrangement :: !(Maybe Text)
+    { _rdsdsDataSchemaURI       :: !(Maybe Text)
+    , _rdsdsDataSchema          :: !(Maybe Text)
+    , _rdsdsDataRearrangement   :: !(Maybe Text)
     , _rdsdsDatabaseInformation :: !RDSDatabase
-    , _rdsdsSelectSqlQuery :: !Text
+    , _rdsdsSelectSqlQuery      :: !Text
     , _rdsdsDatabaseCredentials :: !RDSDatabaseCredentials
-    , _rdsdsS3StagingLocation :: !Text
-    , _rdsdsResourceRole :: !Text
-    , _rdsdsServiceRole :: !Text
-    , _rdsdsSubnetId :: !Text
-    , _rdsdsSecurityGroupIds :: ![Text]
+    , _rdsdsS3StagingLocation   :: !Text
+    , _rdsdsResourceRole        :: !Text
+    , _rdsdsServiceRole         :: !Text
+    , _rdsdsSubnetId            :: !Text
+    , _rdsdsSecurityGroupIds    :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1039,7 +1039,7 @@ instance ToJSON RDSDataSpec where
 data RDSDatabase =
   RDSDatabase'
     { _rdsdInstanceIdentifier :: !Text
-    , _rdsdDatabaseName :: !Text
+    , _rdsdDatabaseName       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1142,12 +1142,12 @@ instance ToJSON RDSDatabaseCredentials where
 -- /See:/ 'rdsMetadata' smart constructor.
 data RDSMetadata =
   RDSMetadata'
-    { _rmSelectSqlQuery :: !(Maybe Text)
-    , _rmDataPipelineId :: !(Maybe Text)
-    , _rmDatabase :: !(Maybe RDSDatabase)
+    { _rmSelectSqlQuery   :: !(Maybe Text)
+    , _rmDataPipelineId   :: !(Maybe Text)
+    , _rmDatabase         :: !(Maybe RDSDatabase)
     , _rmDatabaseUserName :: !(Maybe Text)
-    , _rmResourceRole :: !(Maybe Text)
-    , _rmServiceRole :: !(Maybe Text)
+    , _rmResourceRole     :: !(Maybe Text)
+    , _rmServiceRole      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1224,9 +1224,9 @@ instance NFData RDSMetadata
 -- /See:/ 'realtimeEndpointInfo' smart constructor.
 data RealtimeEndpointInfo =
   RealtimeEndpointInfo'
-    { _reiCreatedAt :: !(Maybe POSIX)
-    , _reiEndpointURL :: !(Maybe Text)
-    , _reiEndpointStatus :: !(Maybe RealtimeEndpointStatus)
+    { _reiCreatedAt             :: !(Maybe POSIX)
+    , _reiEndpointURL           :: !(Maybe Text)
+    , _reiEndpointStatus        :: !(Maybe RealtimeEndpointStatus)
     , _reiPeakRequestsPerSecond :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1289,13 +1289,13 @@ instance NFData RealtimeEndpointInfo
 -- /See:/ 'redshiftDataSpec' smart constructor.
 data RedshiftDataSpec =
   RedshiftDataSpec'
-    { _rDataSchemaURI :: !(Maybe Text)
-    , _rDataSchema :: !(Maybe Text)
-    , _rDataRearrangement :: !(Maybe Text)
+    { _rDataSchemaURI       :: !(Maybe Text)
+    , _rDataSchema          :: !(Maybe Text)
+    , _rDataRearrangement   :: !(Maybe Text)
     , _rDatabaseInformation :: !RedshiftDatabase
-    , _rSelectSqlQuery :: !Text
+    , _rSelectSqlQuery      :: !Text
     , _rDatabaseCredentials :: !RedshiftDatabaseCredentials
-    , _rS3StagingLocation :: !Text
+    , _rS3StagingLocation   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1389,7 +1389,7 @@ instance ToJSON RedshiftDataSpec where
 -- /See:/ 'redshiftDatabase' smart constructor.
 data RedshiftDatabase =
   RedshiftDatabase'
-    { _rdDatabaseName :: !Text
+    { _rdDatabaseName      :: !Text
     , _rdClusterIdentifier :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1492,7 +1492,7 @@ instance ToJSON RedshiftDatabaseCredentials where
 -- /See:/ 'redshiftMetadata' smart constructor.
 data RedshiftMetadata =
   RedshiftMetadata'
-    { _redSelectSqlQuery :: !(Maybe Text)
+    { _redSelectSqlQuery   :: !(Maybe Text)
     , _redRedshiftDatabase :: !(Maybe RedshiftDatabase)
     , _redDatabaseUserName :: !(Maybe Text)
     }
@@ -1549,10 +1549,10 @@ instance NFData RedshiftMetadata
 -- /See:/ 's3DataSpec' smart constructor.
 data S3DataSpec =
   S3DataSpec'
-    { _sdsDataSchema :: !(Maybe Text)
+    { _sdsDataSchema           :: !(Maybe Text)
     , _sdsDataSchemaLocationS3 :: !(Maybe Text)
-    , _sdsDataRearrangement :: !(Maybe Text)
-    , _sdsDataLocationS3 :: !Text
+    , _sdsDataRearrangement    :: !(Maybe Text)
+    , _sdsDataLocationS3       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1618,7 +1618,7 @@ instance ToJSON S3DataSpec where
 data Tag =
   Tag'
     { _tagValue :: !(Maybe Text)
-    , _tagKey :: !(Maybe Text)
+    , _tagKey   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

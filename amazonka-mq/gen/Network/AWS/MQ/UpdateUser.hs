@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,11 +46,11 @@ import Network.AWS.Response
 -- /See:/ 'updateUser' smart constructor.
 data UpdateUser =
   UpdateUser'
-    { _uuGroups :: !(Maybe [Text])
+    { _uuGroups        :: !(Maybe [Text])
     , _uuConsoleAccess :: !(Maybe Bool)
-    , _uuPassword :: !(Maybe Text)
-    , _uuUsername :: !Text
-    , _uuBrokerId :: !Text
+    , _uuPassword      :: !(Maybe Text)
+    , _uuUsername      :: !Text
+    , _uuBrokerId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

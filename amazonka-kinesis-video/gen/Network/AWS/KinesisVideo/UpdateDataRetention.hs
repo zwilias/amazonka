@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,10 +56,10 @@ import Network.AWS.Response
 -- | /See:/ 'updateDataRetention' smart constructor.
 data UpdateDataRetention =
   UpdateDataRetention'
-    { _udrStreamARN :: !(Maybe Text)
-    , _udrStreamName :: !(Maybe Text)
-    , _udrCurrentVersion :: !Text
-    , _udrOperation :: !UpdateDataRetentionOperation
+    { _udrStreamARN                  :: !(Maybe Text)
+    , _udrStreamName                 :: !(Maybe Text)
+    , _udrCurrentVersion             :: !Text
+    , _udrOperation                  :: !UpdateDataRetentionOperation
     , _udrDataRetentionChangeInHours :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

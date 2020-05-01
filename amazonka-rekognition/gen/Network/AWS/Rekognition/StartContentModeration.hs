@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,11 +51,11 @@ import Network.AWS.Response
 -- | /See:/ 'startContentModeration' smart constructor.
 data StartContentModeration =
   StartContentModeration'
-    { _scmJobTag :: !(Maybe Text)
+    { _scmJobTag              :: !(Maybe Text)
     , _scmNotificationChannel :: !(Maybe NotificationChannel)
-    , _scmClientRequestToken :: !(Maybe Text)
-    , _scmMinConfidence :: !(Maybe Double)
-    , _scmVideo :: !Video
+    , _scmClientRequestToken  :: !(Maybe Text)
+    , _scmMinConfidence       :: !(Maybe Double)
+    , _scmVideo               :: !Video
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -149,7 +149,7 @@ instance ToQuery StartContentModeration where
 -- | /See:/ 'startContentModerationResponse' smart constructor.
 data StartContentModerationResponse =
   StartContentModerationResponse'
-    { _scmrsJobId :: !(Maybe Text)
+    { _scmrsJobId          :: !(Maybe Text)
     , _scmrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

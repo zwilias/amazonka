@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -65,10 +65,10 @@ import Network.AWS.Response
 -- /See:/ 'describeFileSystems' smart constructor.
 data DescribeFileSystems =
   DescribeFileSystems'
-    { _dfsFileSystemId :: !(Maybe Text)
+    { _dfsFileSystemId  :: !(Maybe Text)
     , _dfsCreationToken :: !(Maybe Text)
-    , _dfsMarker :: !(Maybe Text)
-    , _dfsMaxItems :: !(Maybe Nat)
+    , _dfsMarker        :: !(Maybe Text)
+    , _dfsMaxItems      :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -147,9 +147,9 @@ instance ToQuery DescribeFileSystems where
 -- | /See:/ 'describeFileSystemsResponse' smart constructor.
 data DescribeFileSystemsResponse =
   DescribeFileSystemsResponse'
-    { _dfsrsFileSystems :: !(Maybe [FileSystemDescription])
-    , _dfsrsMarker :: !(Maybe Text)
-    , _dfsrsNextMarker :: !(Maybe Text)
+    { _dfsrsFileSystems    :: !(Maybe [FileSystemDescription])
+    , _dfsrsMarker         :: !(Maybe Text)
+    , _dfsrsNextMarker     :: !(Maybe Text)
     , _dfsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

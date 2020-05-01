@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 data GetDeviceDefinitionVersion =
   GetDeviceDefinitionVersion'
     { _gddvDeviceDefinitionVersionId :: !Text
-    , _gddvDeviceDefinitionId :: !Text
+    , _gddvDeviceDefinitionId        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -117,12 +117,12 @@ instance ToQuery GetDeviceDefinitionVersion where
 -- | /See:/ 'getDeviceDefinitionVersionResponse' smart constructor.
 data GetDeviceDefinitionVersionResponse =
   GetDeviceDefinitionVersionResponse'
-    { _gddvrsDefinition :: !(Maybe DeviceDefinitionVersion)
-    , _gddvrsARN :: !(Maybe Text)
+    { _gddvrsDefinition        :: !(Maybe DeviceDefinitionVersion)
+    , _gddvrsARN               :: !(Maybe Text)
     , _gddvrsCreationTimestamp :: !(Maybe Text)
-    , _gddvrsVersion :: !(Maybe Text)
-    , _gddvrsId :: !(Maybe Text)
-    , _gddvrsResponseStatus :: !Int
+    , _gddvrsVersion           :: !(Maybe Text)
+    , _gddvrsId                :: !(Maybe Text)
+    , _gddvrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

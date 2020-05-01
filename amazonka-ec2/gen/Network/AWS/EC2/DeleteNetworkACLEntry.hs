@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,10 +47,10 @@ import Network.AWS.Response
 -- /See:/ 'deleteNetworkACLEntry' smart constructor.
 data DeleteNetworkACLEntry =
   DeleteNetworkACLEntry'
-    { _dnaeDryRun :: !(Maybe Bool)
-    , _dnaeEgress :: !Bool
+    { _dnaeDryRun       :: !(Maybe Bool)
+    , _dnaeEgress       :: !Bool
     , _dnaeNetworkACLId :: !Text
-    , _dnaeRuleNumber :: !Int
+    , _dnaeRuleNumber   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

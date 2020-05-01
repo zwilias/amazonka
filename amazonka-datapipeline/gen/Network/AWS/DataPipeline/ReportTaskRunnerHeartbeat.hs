@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- /See:/ 'reportTaskRunnerHeartbeat' smart constructor.
 data ReportTaskRunnerHeartbeat =
   ReportTaskRunnerHeartbeat'
-    { _rtrhHostname :: !(Maybe Text)
-    , _rtrhWorkerGroup :: !(Maybe Text)
+    { _rtrhHostname     :: !(Maybe Text)
+    , _rtrhWorkerGroup  :: !(Maybe Text)
     , _rtrhTaskrunnerId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -131,7 +131,7 @@ instance ToQuery ReportTaskRunnerHeartbeat where
 data ReportTaskRunnerHeartbeatResponse =
   ReportTaskRunnerHeartbeatResponse'
     { _rtrhrsResponseStatus :: !Int
-    , _rtrhrsTerminate :: !Bool
+    , _rtrhrsTerminate      :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

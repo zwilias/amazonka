@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -71,7 +71,7 @@ import Network.AWS.Response
 data PutRecords =
   PutRecords'
     { _pRecordEntries :: !(List1 PutRecordsRequestEntry)
-    , _pStreamName :: !Text
+    , _pStreamName    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -142,10 +142,10 @@ instance ToQuery PutRecords where
 -- /See:/ 'putRecordsResponse' smart constructor.
 data PutRecordsResponse =
   PutRecordsResponse'
-    { _prsEncryptionType :: !(Maybe EncryptionType)
+    { _prsEncryptionType    :: !(Maybe EncryptionType)
     , _prsFailedRecordCount :: !(Maybe Nat)
-    , _prsResponseStatus :: !Int
-    , _prsRecords :: !(List1 PutRecordsResultEntry)
+    , _prsResponseStatus    :: !Int
+    , _prsRecords           :: !(List1 PutRecordsResultEntry)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -76,16 +76,16 @@ import Network.AWS.SageMaker.Types.Product
 -- | /See:/ 'createTrainingJob' smart constructor.
 data CreateTrainingJob =
   CreateTrainingJob'
-    { _ctjHyperParameters :: !(Maybe (Map Text Text))
-    , _ctjVPCConfig :: !(Maybe VPCConfig)
-    , _ctjTags :: !(Maybe [Tag])
-    , _ctjTrainingJobName :: !Text
+    { _ctjHyperParameters        :: !(Maybe (Map Text Text))
+    , _ctjVPCConfig              :: !(Maybe VPCConfig)
+    , _ctjTags                   :: !(Maybe [Tag])
+    , _ctjTrainingJobName        :: !Text
     , _ctjAlgorithmSpecification :: !AlgorithmSpecification
-    , _ctjRoleARN :: !Text
-    , _ctjInputDataConfig :: !(List1 Channel)
-    , _ctjOutputDataConfig :: !OutputDataConfig
-    , _ctjResourceConfig :: !ResourceConfig
-    , _ctjStoppingCondition :: !StoppingCondition
+    , _ctjRoleARN                :: !Text
+    , _ctjInputDataConfig        :: !(List1 Channel)
+    , _ctjOutputDataConfig       :: !OutputDataConfig
+    , _ctjResourceConfig         :: !ResourceConfig
+    , _ctjStoppingCondition      :: !StoppingCondition
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

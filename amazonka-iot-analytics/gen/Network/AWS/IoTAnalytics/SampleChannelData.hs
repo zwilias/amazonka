@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- | /See:/ 'sampleChannelData' smart constructor.
 data SampleChannelData =
   SampleChannelData'
-    { _scdStartTime :: !(Maybe POSIX)
+    { _scdStartTime   :: !(Maybe POSIX)
     , _scdMaxMessages :: !(Maybe Nat)
-    , _scdEndTime :: !(Maybe POSIX)
+    , _scdEndTime     :: !(Maybe POSIX)
     , _scdChannelName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -124,7 +124,7 @@ instance ToQuery SampleChannelData where
 -- | /See:/ 'sampleChannelDataResponse' smart constructor.
 data SampleChannelDataResponse =
   SampleChannelDataResponse'
-    { _scdrsPayloads :: !(Maybe (List1 Base64))
+    { _scdrsPayloads       :: !(Maybe (List1 Base64))
     , _scdrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

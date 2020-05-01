@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 -- | /See:/ 'createDeviceDefinitionVersion' smart constructor.
 data CreateDeviceDefinitionVersion =
   CreateDeviceDefinitionVersion'
-    { _cddvAmznClientToken :: !(Maybe Text)
-    , _cddvDevices :: !(Maybe [Device])
+    { _cddvAmznClientToken    :: !(Maybe Text)
+    , _cddvDevices            :: !(Maybe [Device])
     , _cddvDeviceDefinitionId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -127,11 +127,11 @@ instance ToQuery CreateDeviceDefinitionVersion where
 -- | /See:/ 'createDeviceDefinitionVersionResponse' smart constructor.
 data CreateDeviceDefinitionVersionResponse =
   CreateDeviceDefinitionVersionResponse'
-    { _cddvrsARN :: !(Maybe Text)
+    { _cddvrsARN               :: !(Maybe Text)
     , _cddvrsCreationTimestamp :: !(Maybe Text)
-    , _cddvrsVersion :: !(Maybe Text)
-    , _cddvrsId :: !(Maybe Text)
-    , _cddvrsResponseStatus :: !Int
+    , _cddvrsVersion           :: !(Maybe Text)
+    , _cddvrsId                :: !(Maybe Text)
+    , _cddvrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

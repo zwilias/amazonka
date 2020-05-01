@@ -665,9 +665,9 @@ import Network.AWS.APIGateway.DeleteVPCLink
 import Network.AWS.APIGateway.FlushStageAuthorizersCache
 import Network.AWS.APIGateway.FlushStageCache
 import Network.AWS.APIGateway.GenerateClientCertificate
+import Network.AWS.APIGateway.GetAccount
 import Network.AWS.APIGateway.GetAPIKey
 import Network.AWS.APIGateway.GetAPIKeys
-import Network.AWS.APIGateway.GetAccount
 import Network.AWS.APIGateway.GetAuthorizer
 import Network.AWS.APIGateway.GetAuthorizers
 import Network.AWS.APIGateway.GetBasePathMapping
@@ -690,8 +690,8 @@ import Network.AWS.APIGateway.GetIntegrationResponse
 import Network.AWS.APIGateway.GetMethod
 import Network.AWS.APIGateway.GetMethodResponse
 import Network.AWS.APIGateway.GetModel
-import Network.AWS.APIGateway.GetModelTemplate
 import Network.AWS.APIGateway.GetModels
+import Network.AWS.APIGateway.GetModelTemplate
 import Network.AWS.APIGateway.GetRequestValidator
 import Network.AWS.APIGateway.GetRequestValidators
 import Network.AWS.APIGateway.GetResource
@@ -725,8 +725,8 @@ import Network.AWS.APIGateway.TestInvokeAuthorizer
 import Network.AWS.APIGateway.TestInvokeMethod
 import Network.AWS.APIGateway.Types
 import Network.AWS.APIGateway.UntagResource
-import Network.AWS.APIGateway.UpdateAPIKey
 import Network.AWS.APIGateway.UpdateAccount
+import Network.AWS.APIGateway.UpdateAPIKey
 import Network.AWS.APIGateway.UpdateAuthorizer
 import Network.AWS.APIGateway.UpdateBasePathMapping
 import Network.AWS.APIGateway.UpdateClientCertificate

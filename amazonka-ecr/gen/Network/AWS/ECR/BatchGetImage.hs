@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,10 +47,10 @@ import Network.AWS.Response
 -- | /See:/ 'batchGetImage' smart constructor.
 data BatchGetImage =
   BatchGetImage'
-    { _bgiRegistryId :: !(Maybe Text)
+    { _bgiRegistryId         :: !(Maybe Text)
     , _bgiAcceptedMediaTypes :: !(Maybe (List1 Text))
-    , _bgiRepositoryName :: !Text
-    , _bgiImageIds :: ![ImageIdentifier]
+    , _bgiRepositoryName     :: !Text
+    , _bgiImageIds           :: ![ImageIdentifier]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -136,8 +136,8 @@ instance ToQuery BatchGetImage where
 -- | /See:/ 'batchGetImageResponse' smart constructor.
 data BatchGetImageResponse =
   BatchGetImageResponse'
-    { _bgirsImages :: !(Maybe [Image])
-    , _bgirsFailures :: !(Maybe [ImageFailure])
+    { _bgirsImages         :: !(Maybe [Image])
+    , _bgirsFailures       :: !(Maybe [ImageFailure])
     , _bgirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

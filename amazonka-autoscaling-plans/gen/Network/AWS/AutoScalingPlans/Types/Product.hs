@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,7 +26,7 @@ import Network.AWS.Prelude
 -- /See:/ 'applicationSource' smart constructor.
 data ApplicationSource =
   ApplicationSource'
-    { _asTagFilters :: !(Maybe [TagFilter])
+    { _asTagFilters             :: !(Maybe [TagFilter])
     , _asCloudFormationStackARN :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -81,10 +81,10 @@ instance ToJSON ApplicationSource where
 data CustomizedScalingMetricSpecification =
   CustomizedScalingMetricSpecification'
     { _csmsDimensions :: !(Maybe [MetricDimension])
-    , _csmsUnit :: !(Maybe Text)
+    , _csmsUnit       :: !(Maybe Text)
     , _csmsMetricName :: !Text
-    , _csmsNamespace :: !Text
-    , _csmsStatistic :: !MetricStatistic
+    , _csmsNamespace  :: !Text
+    , _csmsStatistic  :: !MetricStatistic
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -170,7 +170,7 @@ instance ToJSON CustomizedScalingMetricSpecification where
 -- /See:/ 'metricDimension' smart constructor.
 data MetricDimension =
   MetricDimension'
-    { _mdName :: !Text
+    { _mdName  :: !Text
     , _mdValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -218,7 +218,7 @@ instance ToJSON MetricDimension where
 -- /See:/ 'predefinedScalingMetricSpecification' smart constructor.
 data PredefinedScalingMetricSpecification =
   PredefinedScalingMetricSpecification'
-    { _psmsResourceLabel :: !(Maybe Text)
+    { _psmsResourceLabel               :: !(Maybe Text)
     , _psmsPredefinedScalingMetricType :: !ScalingMetricType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -279,11 +279,11 @@ instance ToJSON PredefinedScalingMetricSpecification where
 -- /See:/ 'scalingInstruction' smart constructor.
 data ScalingInstruction =
   ScalingInstruction'
-    { _siServiceNamespace :: !ServiceNamespace
-    , _siResourceId :: !Text
-    , _siScalableDimension :: !ScalableDimension
-    , _siMinCapacity :: !Int
-    , _siMaxCapacity :: !Int
+    { _siServiceNamespace             :: !ServiceNamespace
+    , _siResourceId                   :: !Text
+    , _siScalableDimension            :: !ScalableDimension
+    , _siMinCapacity                  :: !Int
+    , _siMaxCapacity                  :: !Int
     , _siTargetTrackingConfigurations :: ![TargetTrackingConfiguration]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -387,14 +387,14 @@ instance ToJSON ScalingInstruction where
 -- /See:/ 'scalingPlan' smart constructor.
 data ScalingPlan =
   ScalingPlan'
-    { _spCreationTime :: !(Maybe POSIX)
-    , _spStatusStartTime :: !(Maybe POSIX)
-    , _spStatusMessage :: !(Maybe Text)
-    , _spScalingPlanName :: !Text
-    , _spScalingPlanVersion :: !Integer
-    , _spApplicationSource :: !ApplicationSource
+    { _spCreationTime        :: !(Maybe POSIX)
+    , _spStatusStartTime     :: !(Maybe POSIX)
+    , _spStatusMessage       :: !(Maybe Text)
+    , _spScalingPlanName     :: !Text
+    , _spScalingPlanVersion  :: !Integer
+    , _spApplicationSource   :: !ApplicationSource
     , _spScalingInstructions :: ![ScalingInstruction]
-    , _spStatusCode :: !ScalingPlanStatusCode
+    , _spStatusCode          :: !ScalingPlanStatusCode
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -497,13 +497,13 @@ instance NFData ScalingPlan
 data ScalingPlanResource =
   ScalingPlanResource'
     { _sprScalingStatusMessage :: !(Maybe Text)
-    , _sprScalingPolicies :: !(Maybe [ScalingPolicy])
-    , _sprScalingPlanName :: !Text
-    , _sprScalingPlanVersion :: !Integer
-    , _sprServiceNamespace :: !ServiceNamespace
-    , _sprResourceId :: !Text
-    , _sprScalableDimension :: !ScalableDimension
-    , _sprScalingStatusCode :: !ScalingStatusCode
+    , _sprScalingPolicies      :: !(Maybe [ScalingPolicy])
+    , _sprScalingPlanName      :: !Text
+    , _sprScalingPlanVersion   :: !Integer
+    , _sprServiceNamespace     :: !ServiceNamespace
+    , _sprResourceId           :: !Text
+    , _sprScalableDimension    :: !ScalableDimension
+    , _sprScalingStatusCode    :: !ScalingStatusCode
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -612,8 +612,8 @@ instance NFData ScalingPlanResource
 data ScalingPolicy =
   ScalingPolicy'
     { _spTargetTrackingConfiguration :: !(Maybe TargetTrackingConfiguration)
-    , _spPolicyName :: !Text
-    , _spPolicyType :: !PolicyType
+    , _spPolicyName                  :: !Text
+    , _spPolicyType                  :: !PolicyType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -674,7 +674,7 @@ instance NFData ScalingPolicy
 data TagFilter =
   TagFilter'
     { _tfValues :: !(Maybe [Text])
-    , _tfKey :: !(Maybe Text)
+    , _tfKey    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

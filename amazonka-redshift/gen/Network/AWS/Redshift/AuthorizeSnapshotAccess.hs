@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,8 +52,8 @@ import Network.AWS.Response
 data AuthorizeSnapshotAccess =
   AuthorizeSnapshotAccess'
     { _asaSnapshotClusterIdentifier :: !(Maybe Text)
-    , _asaSnapshotIdentifier :: !Text
-    , _asaAccountWithRestoreAccess :: !Text
+    , _asaSnapshotIdentifier        :: !Text
+    , _asaAccountWithRestoreAccess  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -129,7 +129,7 @@ instance ToQuery AuthorizeSnapshotAccess where
 -- | /See:/ 'authorizeSnapshotAccessResponse' smart constructor.
 data AuthorizeSnapshotAccessResponse =
   AuthorizeSnapshotAccessResponse'
-    { _asarsSnapshot :: !(Maybe Snapshot)
+    { _asarsSnapshot       :: !(Maybe Snapshot)
     , _asarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

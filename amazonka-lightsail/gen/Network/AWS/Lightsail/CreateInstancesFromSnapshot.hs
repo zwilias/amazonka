@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,13 +49,13 @@ import Network.AWS.Response
 -- | /See:/ 'createInstancesFromSnapshot' smart constructor.
 data CreateInstancesFromSnapshot =
   CreateInstancesFromSnapshot'
-    { _cifsUserData :: !(Maybe Text)
-    , _cifsKeyPairName :: !(Maybe Text)
-    , _cifsAttachedDiskMapping :: !(Maybe (Map Text [DiskMap]))
-    , _cifsInstanceNames :: ![Text]
-    , _cifsAvailabilityZone :: !Text
+    { _cifsUserData             :: !(Maybe Text)
+    , _cifsKeyPairName          :: !(Maybe Text)
+    , _cifsAttachedDiskMapping  :: !(Maybe (Map Text [DiskMap]))
+    , _cifsInstanceNames        :: ![Text]
+    , _cifsAvailabilityZone     :: !Text
     , _cifsInstanceSnapshotName :: !Text
-    , _cifsBundleId :: !Text
+    , _cifsBundleId             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -171,7 +171,7 @@ instance ToQuery CreateInstancesFromSnapshot where
 -- | /See:/ 'createInstancesFromSnapshotResponse' smart constructor.
 data CreateInstancesFromSnapshotResponse =
   CreateInstancesFromSnapshotResponse'
-    { _cifsrsOperations :: !(Maybe [Operation])
+    { _cifsrsOperations     :: !(Maybe [Operation])
     , _cifsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

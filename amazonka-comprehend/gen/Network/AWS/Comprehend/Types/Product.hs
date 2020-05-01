@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,7 +27,7 @@ import Network.AWS.Prelude
 data BatchDetectDominantLanguageItemResult =
   BatchDetectDominantLanguageItemResult'
     { _bddlirLanguages :: !(Maybe [DominantLanguage])
-    , _bddlirIndex :: !(Maybe Int)
+    , _bddlirIndex     :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -74,7 +74,7 @@ instance NFData BatchDetectDominantLanguageItemResult
 data BatchDetectEntitiesItemResult =
   BatchDetectEntitiesItemResult'
     { _bdeirEntities :: !(Maybe [Entity])
-    , _bdeirIndex :: !(Maybe Int)
+    , _bdeirIndex    :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -118,7 +118,7 @@ instance NFData BatchDetectEntitiesItemResult
 -- /See:/ 'batchDetectKeyPhrasesItemResult' smart constructor.
 data BatchDetectKeyPhrasesItemResult =
   BatchDetectKeyPhrasesItemResult'
-    { _bdkpirIndex :: !(Maybe Int)
+    { _bdkpirIndex      :: !(Maybe Int)
     , _bdkpirKeyPhrases :: !(Maybe [KeyPhrase])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -164,9 +164,9 @@ instance NFData BatchDetectKeyPhrasesItemResult
 -- /See:/ 'batchDetectSentimentItemResult' smart constructor.
 data BatchDetectSentimentItemResult =
   BatchDetectSentimentItemResult'
-    { _bdsirSentiment :: !(Maybe SentimentType)
+    { _bdsirSentiment      :: !(Maybe SentimentType)
     , _bdsirSentimentScore :: !(Maybe SentimentScore)
-    , _bdsirIndex :: !(Maybe Int)
+    , _bdsirIndex          :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -221,9 +221,9 @@ instance NFData BatchDetectSentimentItemResult
 -- /See:/ 'batchItemError' smart constructor.
 data BatchItemError =
   BatchItemError'
-    { _bieErrorCode :: !(Maybe Text)
+    { _bieErrorCode    :: !(Maybe Text)
     , _bieErrorMessage :: !(Maybe Text)
-    , _bieIndex :: !(Maybe Int)
+    , _bieIndex        :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -273,7 +273,7 @@ instance NFData BatchItemError
 data DominantLanguage =
   DominantLanguage'
     { _dlLanguageCode :: !(Maybe Text)
-    , _dlScore :: !(Maybe Double)
+    , _dlScore        :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -316,10 +316,10 @@ instance NFData DominantLanguage
 data Entity =
   Entity'
     { _eBeginOffset :: !(Maybe Int)
-    , _eText :: !(Maybe Text)
-    , _eScore :: !(Maybe Double)
-    , _eEndOffset :: !(Maybe Int)
-    , _eType :: !(Maybe EntityType)
+    , _eText        :: !(Maybe Text)
+    , _eScore       :: !(Maybe Double)
+    , _eEndOffset   :: !(Maybe Int)
+    , _eType        :: !(Maybe EntityType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -388,7 +388,7 @@ instance NFData Entity
 data InputDataConfig =
   InputDataConfig'
     { _idcInputFormat :: !(Maybe InputFormat)
-    , _idcS3URI :: !Text
+    , _idcS3URI       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -437,9 +437,9 @@ instance ToJSON InputDataConfig where
 data KeyPhrase =
   KeyPhrase'
     { _kpBeginOffset :: !(Maybe Int)
-    , _kpText :: !(Maybe Text)
-    , _kpScore :: !(Maybe Double)
-    , _kpEndOffset :: !(Maybe Int)
+    , _kpText        :: !(Maybe Text)
+    , _kpScore       :: !(Maybe Double)
+    , _kpEndOffset   :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -538,9 +538,9 @@ instance ToJSON OutputDataConfig where
 -- /See:/ 'sentimentScore' smart constructor.
 data SentimentScore =
   SentimentScore'
-    { _ssMixed :: !(Maybe Double)
+    { _ssMixed    :: !(Maybe Double)
     , _ssNegative :: !(Maybe Double)
-    , _ssNeutral :: !(Maybe Double)
+    , _ssNeutral  :: !(Maybe Double)
     , _ssPositive :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -601,10 +601,10 @@ instance NFData SentimentScore
 -- /See:/ 'topicsDetectionJobFilter' smart constructor.
 data TopicsDetectionJobFilter =
   TopicsDetectionJobFilter'
-    { _tdjfSubmitTimeAfter :: !(Maybe POSIX)
+    { _tdjfSubmitTimeAfter  :: !(Maybe POSIX)
     , _tdjfSubmitTimeBefore :: !(Maybe POSIX)
-    , _tdjfJobName :: !(Maybe Text)
-    , _tdjfJobStatus :: !(Maybe JobStatus)
+    , _tdjfJobName          :: !(Maybe Text)
+    , _tdjfJobStatus        :: !(Maybe JobStatus)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -669,15 +669,15 @@ instance ToJSON TopicsDetectionJobFilter where
 -- /See:/ 'topicsDetectionJobProperties' smart constructor.
 data TopicsDetectionJobProperties =
   TopicsDetectionJobProperties'
-    { _tdjpJobId :: !(Maybe Text)
-    , _tdjpJobName :: !(Maybe Text)
-    , _tdjpInputDataConfig :: !(Maybe InputDataConfig)
-    , _tdjpEndTime :: !(Maybe POSIX)
+    { _tdjpJobId            :: !(Maybe Text)
+    , _tdjpJobName          :: !(Maybe Text)
+    , _tdjpInputDataConfig  :: !(Maybe InputDataConfig)
+    , _tdjpEndTime          :: !(Maybe POSIX)
     , _tdjpOutputDataConfig :: !(Maybe OutputDataConfig)
-    , _tdjpNumberOfTopics :: !(Maybe Int)
-    , _tdjpJobStatus :: !(Maybe JobStatus)
-    , _tdjpMessage :: !(Maybe Text)
-    , _tdjpSubmitTime :: !(Maybe POSIX)
+    , _tdjpNumberOfTopics   :: !(Maybe Int)
+    , _tdjpJobStatus        :: !(Maybe JobStatus)
+    , _tdjpMessage          :: !(Maybe Text)
+    , _tdjpSubmitTime       :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

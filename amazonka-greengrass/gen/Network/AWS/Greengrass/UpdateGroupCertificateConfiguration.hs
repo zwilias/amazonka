@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 data UpdateGroupCertificateConfiguration =
   UpdateGroupCertificateConfiguration'
     { _ugccCertificateExpiryInMilliseconds :: !(Maybe Text)
-    , _ugccGroupId :: !Text
+    , _ugccGroupId                         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -119,9 +119,9 @@ instance ToQuery UpdateGroupCertificateConfiguration where
 data UpdateGroupCertificateConfigurationResponse =
   UpdateGroupCertificateConfigurationResponse'
     { _ugccrsCertificateAuthorityExpiryInMilliseconds :: !(Maybe Text)
-    , _ugccrsGroupId :: !(Maybe Text)
-    , _ugccrsCertificateExpiryInMilliseconds :: !(Maybe Text)
-    , _ugccrsResponseStatus :: !Int
+    , _ugccrsGroupId                                  :: !(Maybe Text)
+    , _ugccrsCertificateExpiryInMilliseconds          :: !(Maybe Text)
+    , _ugccrsResponseStatus                           :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

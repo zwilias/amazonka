@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,12 +54,12 @@ import Network.AWS.Response
 data ScheduleRun =
   ScheduleRun'
     { _srExecutionConfiguration :: !(Maybe ExecutionConfiguration)
-    , _srAppARN :: !(Maybe Text)
-    , _srName :: !(Maybe Text)
-    , _srConfiguration :: !(Maybe ScheduleRunConfiguration)
-    , _srProjectARN :: !Text
-    , _srDevicePoolARN :: !Text
-    , _srTest :: !ScheduleRunTest
+    , _srAppARN                 :: !(Maybe Text)
+    , _srName                   :: !(Maybe Text)
+    , _srConfiguration          :: !(Maybe ScheduleRunConfiguration)
+    , _srProjectARN             :: !Text
+    , _srDevicePoolARN          :: !Text
+    , _srTest                   :: !ScheduleRunTest
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -170,7 +170,7 @@ instance ToQuery ScheduleRun where
 -- /See:/ 'scheduleRunResponse' smart constructor.
 data ScheduleRunResponse =
   ScheduleRunResponse'
-    { _srrsRun :: !(Maybe Run)
+    { _srrsRun            :: !(Maybe Run)
     , _srrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -42,7 +42,7 @@ import Network.AWS.Response
 -- | /See:/ 'deleteCampaign' smart constructor.
 data DeleteCampaign =
   DeleteCampaign'
-    { _dcCampaignId :: !Text
+    { _dcCampaignId    :: !Text
     , _dcApplicationId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -98,7 +98,7 @@ instance ToQuery DeleteCampaign where
 -- | /See:/ 'deleteCampaignResponse' smart constructor.
 data DeleteCampaignResponse =
   DeleteCampaignResponse'
-    { _dcrsResponseStatus :: !Int
+    { _dcrsResponseStatus   :: !Int
     , _dcrsCampaignResponse :: !CampaignResponse
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'getFunctionDefinitionVersion' smart constructor.
 data GetFunctionDefinitionVersion =
   GetFunctionDefinitionVersion'
-    { _gfdvFunctionDefinitionId :: !Text
+    { _gfdvFunctionDefinitionId        :: !Text
     , _gfdvFunctionDefinitionVersionId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -117,12 +117,12 @@ instance ToQuery GetFunctionDefinitionVersion where
 -- | /See:/ 'getFunctionDefinitionVersionResponse' smart constructor.
 data GetFunctionDefinitionVersionResponse =
   GetFunctionDefinitionVersionResponse'
-    { _gfdvrsDefinition :: !(Maybe FunctionDefinitionVersion)
-    , _gfdvrsARN :: !(Maybe Text)
+    { _gfdvrsDefinition        :: !(Maybe FunctionDefinitionVersion)
+    , _gfdvrsARN               :: !(Maybe Text)
     , _gfdvrsCreationTimestamp :: !(Maybe Text)
-    , _gfdvrsVersion :: !(Maybe Text)
-    , _gfdvrsId :: !(Maybe Text)
-    , _gfdvrsResponseStatus :: !Int
+    , _gfdvrsVersion           :: !(Maybe Text)
+    , _gfdvrsId                :: !(Maybe Text)
+    , _gfdvrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

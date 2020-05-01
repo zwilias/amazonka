@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.SSM.Types.Product
 data ListAssociations =
   ListAssociations'
     { _laAssociationFilterList :: !(Maybe (List1 AssociationFilter))
-    , _laNextToken :: !(Maybe Text)
-    , _laMaxResults :: !(Maybe Nat)
+    , _laNextToken             :: !(Maybe Text)
+    , _laMaxResults            :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -133,8 +133,8 @@ instance ToQuery ListAssociations where
 -- | /See:/ 'listAssociationsResponse' smart constructor.
 data ListAssociationsResponse =
   ListAssociationsResponse'
-    { _larsNextToken :: !(Maybe Text)
-    , _larsAssociations :: !(Maybe [Association])
+    { _larsNextToken      :: !(Maybe Text)
+    , _larsAssociations   :: !(Maybe [Association])
     , _larsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

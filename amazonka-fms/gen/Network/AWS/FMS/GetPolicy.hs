@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -95,8 +95,8 @@ instance ToQuery GetPolicy where
 -- | /See:/ 'getPolicyResponse' smart constructor.
 data GetPolicyResponse =
   GetPolicyResponse'
-    { _gprsPolicyARN :: !(Maybe Text)
-    , _gprsPolicy :: !(Maybe Policy)
+    { _gprsPolicyARN      :: !(Maybe Text)
+    , _gprsPolicy         :: !(Maybe Policy)
     , _gprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

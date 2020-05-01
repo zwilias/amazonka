@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,7 +56,7 @@ import Network.AWS.WAF.Types.Product
 -- | /See:/ 'deleteRule' smart constructor.
 data DeleteRule =
   DeleteRule'
-    { _drRuleId :: !Text
+    { _drRuleId      :: !Text
     , _drChangeToken :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -118,7 +118,7 @@ instance ToQuery DeleteRule where
 -- | /See:/ 'deleteRuleResponse' smart constructor.
 data DeleteRuleResponse =
   DeleteRuleResponse'
-    { _drrsChangeToken :: !(Maybe Text)
+    { _drrsChangeToken    :: !(Maybe Text)
     , _drrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

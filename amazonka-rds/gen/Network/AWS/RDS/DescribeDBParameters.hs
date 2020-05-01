@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,10 +51,10 @@ import Network.AWS.Response
 -- | /See:/ 'describeDBParameters' smart constructor.
 data DescribeDBParameters =
   DescribeDBParameters'
-    { _ddpFilters :: !(Maybe [Filter])
-    , _ddpMarker :: !(Maybe Text)
-    , _ddpMaxRecords :: !(Maybe Int)
-    , _ddpSource :: !(Maybe Text)
+    { _ddpFilters              :: !(Maybe [Filter])
+    , _ddpMarker               :: !(Maybe Text)
+    , _ddpMaxRecords           :: !(Maybe Int)
+    , _ddpSource               :: !(Maybe Text)
     , _ddpDBParameterGroupName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -151,8 +151,8 @@ instance ToQuery DescribeDBParameters where
 -- /See:/ 'describeDBParametersResponse' smart constructor.
 data DescribeDBParametersResponse =
   DescribeDBParametersResponse'
-    { _ddprsMarker :: !(Maybe Text)
-    , _ddprsParameters :: !(Maybe [Parameter])
+    { _ddprsMarker         :: !(Maybe Text)
+    , _ddprsParameters     :: !(Maybe [Parameter])
     , _ddprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 -- /See:/ 'associateRouteTable' smart constructor.
 data AssociateRouteTable =
   AssociateRouteTable'
-    { _artDryRun :: !(Maybe Bool)
+    { _artDryRun       :: !(Maybe Bool)
     , _artRouteTableId :: !Text
-    , _artSubnetId :: !Text
+    , _artSubnetId     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -125,7 +125,7 @@ instance ToQuery AssociateRouteTable where
 -- /See:/ 'associateRouteTableResponse' smart constructor.
 data AssociateRouteTableResponse =
   AssociateRouteTableResponse'
-    { _artrsAssociationId :: !(Maybe Text)
+    { _artrsAssociationId  :: !(Maybe Text)
     , _artrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

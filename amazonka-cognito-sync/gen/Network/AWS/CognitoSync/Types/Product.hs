@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -25,8 +25,8 @@ import Network.AWS.Prelude
 data CognitoStreams =
   CognitoStreams'
     { _csStreamingStatus :: !(Maybe StreamingStatus)
-    , _csStreamName :: !(Maybe Text)
-    , _csRoleARN :: !(Maybe Text)
+    , _csStreamName      :: !(Maybe Text)
+    , _csRoleARN         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -86,12 +86,12 @@ instance ToJSON CognitoStreams where
 data Dataset =
   Dataset'
     { _dLastModifiedDate :: !(Maybe POSIX)
-    , _dNumRecords :: !(Maybe Integer)
-    , _dDataStorage :: !(Maybe Integer)
-    , _dDatasetName :: !(Maybe Text)
-    , _dCreationDate :: !(Maybe POSIX)
-    , _dLastModifiedBy :: !(Maybe Text)
-    , _dIdentityId :: !(Maybe Text)
+    , _dNumRecords       :: !(Maybe Integer)
+    , _dDataStorage      :: !(Maybe Integer)
+    , _dDatasetName      :: !(Maybe Text)
+    , _dCreationDate     :: !(Maybe POSIX)
+    , _dLastModifiedBy   :: !(Maybe Text)
+    , _dIdentityId       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -175,9 +175,9 @@ instance NFData Dataset
 -- /See:/ 'identityPoolUsage' smart constructor.
 data IdentityPoolUsage =
   IdentityPoolUsage'
-    { _ipuLastModifiedDate :: !(Maybe POSIX)
-    , _ipuIdentityPoolId :: !(Maybe Text)
-    , _ipuDataStorage :: !(Maybe Integer)
+    { _ipuLastModifiedDate  :: !(Maybe POSIX)
+    , _ipuIdentityPoolId    :: !(Maybe Text)
+    , _ipuDataStorage       :: !(Maybe Integer)
     , _ipuSyncSessionsCount :: !(Maybe Integer)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -241,10 +241,10 @@ instance NFData IdentityPoolUsage
 data IdentityUsage =
   IdentityUsage'
     { _iuLastModifiedDate :: !(Maybe POSIX)
-    , _iuIdentityPoolId :: !(Maybe Text)
-    , _iuDatasetCount :: !(Maybe Int)
-    , _iuDataStorage :: !(Maybe Integer)
-    , _iuIdentityId :: !(Maybe Text)
+    , _iuIdentityPoolId   :: !(Maybe Text)
+    , _iuDatasetCount     :: !(Maybe Int)
+    , _iuDataStorage      :: !(Maybe Integer)
+    , _iuIdentityId       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -315,7 +315,7 @@ instance NFData IdentityUsage
 data PushSync =
   PushSync'
     { _psApplicationARNs :: !(Maybe [Text])
-    , _psRoleARN :: !(Maybe Text)
+    , _psRoleARN         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -364,12 +364,12 @@ instance ToJSON PushSync where
 -- /See:/ 'record' smart constructor.
 data Record =
   Record'
-    { _rSyncCount :: !(Maybe Integer)
+    { _rSyncCount              :: !(Maybe Integer)
     , _rDeviceLastModifiedDate :: !(Maybe POSIX)
-    , _rLastModifiedDate :: !(Maybe POSIX)
-    , _rValue :: !(Maybe Text)
-    , _rKey :: !(Maybe Text)
-    , _rLastModifiedBy :: !(Maybe Text)
+    , _rLastModifiedDate       :: !(Maybe POSIX)
+    , _rValue                  :: !(Maybe Text)
+    , _rKey                    :: !(Maybe Text)
+    , _rLastModifiedBy         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -447,10 +447,10 @@ instance NFData Record
 data RecordPatch =
   RecordPatch'
     { _rpDeviceLastModifiedDate :: !(Maybe POSIX)
-    , _rpValue :: !(Maybe Text)
-    , _rpOp :: !Operation
-    , _rpKey :: !Text
-    , _rpSyncCount :: !Integer
+    , _rpValue                  :: !(Maybe Text)
+    , _rpOp                     :: !Operation
+    , _rpKey                    :: !Text
+    , _rpSyncCount              :: !Integer
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

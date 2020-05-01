@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,13 +53,13 @@ import Network.AWS.Response
 -- /See:/ 'createCustomActionType' smart constructor.
 data CreateCustomActionType =
   CreateCustomActionType'
-    { _ccatSettings :: !(Maybe ActionTypeSettings)
+    { _ccatSettings                :: !(Maybe ActionTypeSettings)
     , _ccatConfigurationProperties :: !(Maybe [ActionConfigurationProperty])
-    , _ccatCategory :: !ActionCategory
-    , _ccatProvider :: !Text
-    , _ccatVersion :: !Text
-    , _ccatInputArtifactDetails :: !ArtifactDetails
-    , _ccatOutputArtifactDetails :: !ArtifactDetails
+    , _ccatCategory                :: !ActionCategory
+    , _ccatProvider                :: !Text
+    , _ccatVersion                 :: !Text
+    , _ccatInputArtifactDetails    :: !ArtifactDetails
+    , _ccatOutputArtifactDetails   :: !ArtifactDetails
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -182,7 +182,7 @@ instance ToQuery CreateCustomActionType where
 data CreateCustomActionTypeResponse =
   CreateCustomActionTypeResponse'
     { _ccatrsResponseStatus :: !Int
-    , _ccatrsActionType :: !ActionType
+    , _ccatrsActionType     :: !ActionType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

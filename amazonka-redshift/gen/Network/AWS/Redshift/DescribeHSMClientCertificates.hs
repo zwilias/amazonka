@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -59,11 +59,11 @@ import Network.AWS.Response
 -- /See:/ 'describeHSMClientCertificates' smart constructor.
 data DescribeHSMClientCertificates =
   DescribeHSMClientCertificates'
-    { _dhccTagValues :: !(Maybe [Text])
-    , _dhccTagKeys :: !(Maybe [Text])
+    { _dhccTagValues                      :: !(Maybe [Text])
+    , _dhccTagKeys                        :: !(Maybe [Text])
     , _dhccHSMClientCertificateIdentifier :: !(Maybe Text)
-    , _dhccMarker :: !(Maybe Text)
-    , _dhccMaxRecords :: !(Maybe Int)
+    , _dhccMarker                         :: !(Maybe Text)
+    , _dhccMaxRecords                     :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -163,9 +163,9 @@ instance ToQuery DescribeHSMClientCertificates where
 -- /See:/ 'describeHSMClientCertificatesResponse' smart constructor.
 data DescribeHSMClientCertificatesResponse =
   DescribeHSMClientCertificatesResponse'
-    { _dhccrsMarker :: !(Maybe Text)
+    { _dhccrsMarker                :: !(Maybe Text)
     , _dhccrsHSMClientCertificates :: !(Maybe [HSMClientCertificate])
-    , _dhccrsResponseStatus :: !Int
+    , _dhccrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.Response
 data ExecuteChangeSet =
   ExecuteChangeSet'
     { _ecsClientRequestToken :: !(Maybe Text)
-    , _ecsStackName :: !(Maybe Text)
-    , _ecsChangeSetName :: !Text
+    , _ecsStackName          :: !(Maybe Text)
+    , _ecsChangeSetName      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

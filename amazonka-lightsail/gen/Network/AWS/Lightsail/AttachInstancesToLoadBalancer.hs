@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 data AttachInstancesToLoadBalancer =
   AttachInstancesToLoadBalancer'
     { _aitlbLoadBalancerName :: !Text
-    , _aitlbInstanceNames :: ![Text]
+    , _aitlbInstanceNames    :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -115,7 +115,7 @@ instance ToQuery AttachInstancesToLoadBalancer where
 -- | /See:/ 'attachInstancesToLoadBalancerResponse' smart constructor.
 data AttachInstancesToLoadBalancerResponse =
   AttachInstancesToLoadBalancerResponse'
-    { _aitlbrsOperations :: !(Maybe [Operation])
+    { _aitlbrsOperations     :: !(Maybe [Operation])
     , _aitlbrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

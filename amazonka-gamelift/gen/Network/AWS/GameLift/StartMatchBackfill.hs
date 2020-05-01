@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -68,10 +68,10 @@ import Network.AWS.Response
 -- /See:/ 'startMatchBackfill' smart constructor.
 data StartMatchBackfill =
   StartMatchBackfill'
-    { _smbTicketId :: !(Maybe Text)
+    { _smbTicketId          :: !(Maybe Text)
     , _smbConfigurationName :: !Text
-    , _smbGameSessionARN :: !Text
-    , _smbPlayers :: ![Player]
+    , _smbGameSessionARN    :: !Text
+    , _smbPlayers           :: ![Player]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -160,7 +160,7 @@ instance ToQuery StartMatchBackfill where
 data StartMatchBackfillResponse =
   StartMatchBackfillResponse'
     { _smbrsMatchmakingTicket :: !(Maybe MatchmakingTicket)
-    , _smbrsResponseStatus :: !Int
+    , _smbrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

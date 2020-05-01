@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,10 +49,10 @@ import Network.AWS.Response
 -- | /See:/ 'updateStream' smart constructor.
 data UpdateStream =
   UpdateStream'
-    { _usFiles :: !(Maybe (List1 StreamFile))
+    { _usFiles       :: !(Maybe (List1 StreamFile))
     , _usDescription :: !(Maybe Text)
-    , _usRoleARN :: !(Maybe Text)
-    , _usStreamId :: !Text
+    , _usRoleARN     :: !(Maybe Text)
+    , _usStreamId    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -131,10 +131,10 @@ instance ToQuery UpdateStream where
 -- | /See:/ 'updateStreamResponse' smart constructor.
 data UpdateStreamResponse =
   UpdateStreamResponse'
-    { _usrsStreamVersion :: !(Maybe Nat)
-    , _usrsStreamARN :: !(Maybe Text)
-    , _usrsDescription :: !(Maybe Text)
-    , _usrsStreamId :: !(Maybe Text)
+    { _usrsStreamVersion  :: !(Maybe Nat)
+    , _usrsStreamARN      :: !(Maybe Text)
+    , _usrsDescription    :: !(Maybe Text)
+    , _usrsStreamId       :: !(Maybe Text)
     , _usrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

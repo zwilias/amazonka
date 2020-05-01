@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -113,12 +113,12 @@ instance ToQuery GetUser where
 -- /See:/ 'getUserResponse' smart constructor.
 data GetUserResponse =
   GetUserResponse'
-    { _gursUserMFASettingList :: !(Maybe [Text])
-    , _gursMFAOptions :: !(Maybe [MFAOptionType])
+    { _gursUserMFASettingList  :: !(Maybe [Text])
+    , _gursMFAOptions          :: !(Maybe [MFAOptionType])
     , _gursPreferredMFASetting :: !(Maybe Text)
-    , _gursResponseStatus :: !Int
-    , _gursUsername :: !(Sensitive Text)
-    , _gursUserAttributes :: ![AttributeType]
+    , _gursResponseStatus      :: !Int
+    , _gursUsername            :: !(Sensitive Text)
+    , _gursUserAttributes      :: ![AttributeType]
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

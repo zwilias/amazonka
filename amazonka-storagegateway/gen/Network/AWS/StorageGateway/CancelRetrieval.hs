@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.StorageGateway.Types.Product
 data CancelRetrieval =
   CancelRetrieval'
     { _crGatewayARN :: !Text
-    , _crTapeARN :: !Text
+    , _crTapeARN    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -115,7 +115,7 @@ instance ToQuery CancelRetrieval where
 -- /See:/ 'cancelRetrievalResponse' smart constructor.
 data CancelRetrievalResponse =
   CancelRetrievalResponse'
-    { _crrsTapeARN :: !(Maybe Text)
+    { _crrsTapeARN        :: !(Maybe Text)
     , _crrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

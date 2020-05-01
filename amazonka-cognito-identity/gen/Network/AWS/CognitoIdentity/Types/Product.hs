@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,9 +26,9 @@ import Network.AWS.Prelude
 -- /See:/ 'cognitoIdentityProvider' smart constructor.
 data CognitoIdentityProvider =
   CognitoIdentityProvider'
-    { _cipClientId :: !(Maybe Text)
+    { _cipClientId             :: !(Maybe Text)
     , _cipServerSideTokenCheck :: !(Maybe Bool)
-    , _cipProviderName :: !(Maybe Text)
+    , _cipProviderName         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -92,9 +92,9 @@ instance ToJSON CognitoIdentityProvider where
 data Credentials =
   Credentials'
     { _cSessionToken :: !(Maybe Text)
-    , _cExpiration :: !(Maybe POSIX)
-    , _cSecretKey :: !(Maybe Text)
-    , _cAccessKeyId :: !(Maybe Text)
+    , _cExpiration   :: !(Maybe POSIX)
+    , _cSecretKey    :: !(Maybe Text)
+    , _cAccessKeyId  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -155,9 +155,9 @@ instance NFData Credentials
 data IdentityDescription =
   IdentityDescription'
     { _idLastModifiedDate :: !(Maybe POSIX)
-    , _idCreationDate :: !(Maybe POSIX)
-    , _idLogins :: !(Maybe [Text])
-    , _idIdentityId :: !(Maybe Text)
+    , _idCreationDate     :: !(Maybe POSIX)
+    , _idLogins           :: !(Maybe [Text])
+    , _idIdentityId       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -220,13 +220,13 @@ instance NFData IdentityDescription
 -- /See:/ 'identityPool' smart constructor.
 data IdentityPool =
   IdentityPool'
-    { _ipSamlProviderARNs :: !(Maybe [Text])
-    , _ipSupportedLoginProviders :: !(Maybe (Map Text Text))
-    , _ipDeveloperProviderName :: !(Maybe Text)
-    , _ipOpenIdConnectProviderARNs :: !(Maybe [Text])
-    , _ipCognitoIdentityProviders :: !(Maybe [CognitoIdentityProvider])
-    , _ipIdentityPoolId :: !Text
-    , _ipIdentityPoolName :: !Text
+    { _ipSamlProviderARNs               :: !(Maybe [Text])
+    , _ipSupportedLoginProviders        :: !(Maybe (Map Text Text))
+    , _ipDeveloperProviderName          :: !(Maybe Text)
+    , _ipOpenIdConnectProviderARNs      :: !(Maybe [Text])
+    , _ipCognitoIdentityProviders       :: !(Maybe [CognitoIdentityProvider])
+    , _ipIdentityPoolId                 :: !Text
+    , _ipIdentityPoolName               :: !Text
     , _ipAllowUnauthenticatedIdentities :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -355,7 +355,7 @@ instance ToJSON IdentityPool where
 -- /See:/ 'identityPoolShortDescription' smart constructor.
 data IdentityPoolShortDescription =
   IdentityPoolShortDescription'
-    { _ipsdIdentityPoolId :: !(Maybe Text)
+    { _ipsdIdentityPoolId   :: !(Maybe Text)
     , _ipsdIdentityPoolName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -401,10 +401,10 @@ instance NFData IdentityPoolShortDescription
 -- /See:/ 'mappingRule' smart constructor.
 data MappingRule =
   MappingRule'
-    { _mrClaim :: !Text
+    { _mrClaim     :: !Text
     , _mrMatchType :: !MappingRuleMatchType
-    , _mrValue :: !Text
-    , _mrRoleARN :: !Text
+    , _mrValue     :: !Text
+    , _mrRoleARN   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -479,9 +479,9 @@ instance ToJSON MappingRule where
 -- /See:/ 'roleMapping' smart constructor.
 data RoleMapping =
   RoleMapping'
-    { _rmRulesConfiguration :: !(Maybe RulesConfigurationType)
+    { _rmRulesConfiguration      :: !(Maybe RulesConfigurationType)
     , _rmAmbiguousRoleResolution :: !(Maybe AmbiguousRoleResolutionType)
-    , _rmType :: !RoleMappingType
+    , _rmType                    :: !RoleMappingType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -588,7 +588,7 @@ instance ToJSON RulesConfigurationType where
 -- /See:/ 'unprocessedIdentityId' smart constructor.
 data UnprocessedIdentityId =
   UnprocessedIdentityId'
-    { _uiiErrorCode :: !(Maybe CognitoErrorCode)
+    { _uiiErrorCode  :: !(Maybe CognitoErrorCode)
     , _uiiIdentityId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

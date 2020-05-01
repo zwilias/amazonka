@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,14 +52,14 @@ import Network.AWS.Response
 data CreateStackSet =
   CreateStackSet'
     { _cssAdministrationRoleARN :: !(Maybe Text)
-    , _cssParameters :: !(Maybe [Parameter])
-    , _cssTemplateBody :: !(Maybe Text)
-    , _cssTemplateURL :: !(Maybe Text)
-    , _cssClientRequestToken :: !(Maybe Text)
-    , _cssDescription :: !(Maybe Text)
-    , _cssCapabilities :: !(Maybe [Capability])
-    , _cssTags :: !(Maybe [Tag])
-    , _cssStackSetName :: !Text
+    , _cssParameters            :: !(Maybe [Parameter])
+    , _cssTemplateBody          :: !(Maybe Text)
+    , _cssTemplateURL           :: !(Maybe Text)
+    , _cssClientRequestToken    :: !(Maybe Text)
+    , _cssDescription           :: !(Maybe Text)
+    , _cssCapabilities          :: !(Maybe [Capability])
+    , _cssTags                  :: !(Maybe [Tag])
+    , _cssStackSetName          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -179,7 +179,7 @@ instance ToQuery CreateStackSet where
 -- | /See:/ 'createStackSetResponse' smart constructor.
 data CreateStackSetResponse =
   CreateStackSetResponse'
-    { _cssrsStackSetId :: !(Maybe Text)
+    { _cssrsStackSetId     :: !(Maybe Text)
     , _cssrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

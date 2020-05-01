@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,14 +58,14 @@ import Network.AWS.Response
 -- /See:/ 'describeOrderableDBInstanceOptions' smart constructor.
 data DescribeOrderableDBInstanceOptions =
   DescribeOrderableDBInstanceOptions'
-    { _dodioEngineVersion :: !(Maybe Text)
-    , _dodioFilters :: !(Maybe [Filter])
+    { _dodioEngineVersion   :: !(Maybe Text)
+    , _dodioFilters         :: !(Maybe [Filter])
     , _dodioDBInstanceClass :: !(Maybe Text)
-    , _dodioLicenseModel :: !(Maybe Text)
-    , _dodioMarker :: !(Maybe Text)
-    , _dodioMaxRecords :: !(Maybe Int)
-    , _dodioVPC :: !(Maybe Bool)
-    , _dodioEngine :: !Text
+    , _dodioLicenseModel    :: !(Maybe Text)
+    , _dodioMarker          :: !(Maybe Text)
+    , _dodioMaxRecords      :: !(Maybe Int)
+    , _dodioVPC             :: !(Maybe Bool)
+    , _dodioEngine          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -190,8 +190,8 @@ instance ToQuery DescribeOrderableDBInstanceOptions where
 data DescribeOrderableDBInstanceOptionsResponse =
   DescribeOrderableDBInstanceOptionsResponse'
     { _dodiorsOrderableDBInstanceOptions :: !(Maybe [OrderableDBInstanceOption])
-    , _dodiorsMarker :: !(Maybe Text)
-    , _dodiorsResponseStatus :: !Int
+    , _dodiorsMarker                     :: !(Maybe Text)
+    , _dodiorsResponseStatus             :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

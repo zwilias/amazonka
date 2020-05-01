@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,23 +63,23 @@ import Network.AWS.Response
 -- /See:/ 'modifyCacheCluster' smart constructor.
 data ModifyCacheCluster =
   ModifyCacheCluster'
-    { _mccEngineVersion :: !(Maybe Text)
-    , _mccCacheNodeType :: !(Maybe Text)
-    , _mccSecurityGroupIds :: !(Maybe [Text])
-    , _mccAutoMinorVersionUpgrade :: !(Maybe Bool)
-    , _mccCacheParameterGroupName :: !(Maybe Text)
-    , _mccSnapshotWindow :: !(Maybe Text)
-    , _mccNewAvailabilityZones :: !(Maybe [Text])
+    { _mccEngineVersion              :: !(Maybe Text)
+    , _mccCacheNodeType              :: !(Maybe Text)
+    , _mccSecurityGroupIds           :: !(Maybe [Text])
+    , _mccAutoMinorVersionUpgrade    :: !(Maybe Bool)
+    , _mccCacheParameterGroupName    :: !(Maybe Text)
+    , _mccSnapshotWindow             :: !(Maybe Text)
+    , _mccNewAvailabilityZones       :: !(Maybe [Text])
     , _mccPreferredMaintenanceWindow :: !(Maybe Text)
-    , _mccCacheNodeIdsToRemove :: !(Maybe [Text])
-    , _mccSnapshotRetentionLimit :: !(Maybe Int)
-    , _mccNotificationTopicStatus :: !(Maybe Text)
-    , _mccAZMode :: !(Maybe AZMode)
-    , _mccApplyImmediately :: !(Maybe Bool)
-    , _mccNotificationTopicARN :: !(Maybe Text)
-    , _mccNumCacheNodes :: !(Maybe Int)
-    , _mccCacheSecurityGroupNames :: !(Maybe [Text])
-    , _mccCacheClusterId :: !Text
+    , _mccCacheNodeIdsToRemove       :: !(Maybe [Text])
+    , _mccSnapshotRetentionLimit     :: !(Maybe Int)
+    , _mccNotificationTopicStatus    :: !(Maybe Text)
+    , _mccAZMode                     :: !(Maybe AZMode)
+    , _mccApplyImmediately           :: !(Maybe Bool)
+    , _mccNotificationTopicARN       :: !(Maybe Text)
+    , _mccNumCacheNodes              :: !(Maybe Int)
+    , _mccCacheSecurityGroupNames    :: !(Maybe [Text])
+    , _mccCacheClusterId             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -282,7 +282,7 @@ instance ToQuery ModifyCacheCluster where
 -- | /See:/ 'modifyCacheClusterResponse' smart constructor.
 data ModifyCacheClusterResponse =
   ModifyCacheClusterResponse'
-    { _mccrsCacheCluster :: !(Maybe CacheCluster)
+    { _mccrsCacheCluster   :: !(Maybe CacheCluster)
     , _mccrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

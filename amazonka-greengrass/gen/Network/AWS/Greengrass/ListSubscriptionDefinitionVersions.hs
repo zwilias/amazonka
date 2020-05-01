@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,8 +44,8 @@ import Network.AWS.Response
 -- | /See:/ 'listSubscriptionDefinitionVersions' smart constructor.
 data ListSubscriptionDefinitionVersions =
   ListSubscriptionDefinitionVersions'
-    { _lsdvNextToken :: !(Maybe Text)
-    , _lsdvMaxResults :: !(Maybe Text)
+    { _lsdvNextToken                :: !(Maybe Text)
+    , _lsdvMaxResults               :: !(Maybe Text)
     , _lsdvSubscriptionDefinitionId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -119,8 +119,8 @@ instance ToQuery ListSubscriptionDefinitionVersions where
 -- | /See:/ 'listSubscriptionDefinitionVersionsResponse' smart constructor.
 data ListSubscriptionDefinitionVersionsResponse =
   ListSubscriptionDefinitionVersionsResponse'
-    { _lsdvrsVersions :: !(Maybe [VersionInformation])
-    , _lsdvrsNextToken :: !(Maybe Text)
+    { _lsdvrsVersions       :: !(Maybe [VersionInformation])
+    , _lsdvrsNextToken      :: !(Maybe Text)
     , _lsdvrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,9 +49,9 @@ import Network.AWS.Response
 -- | /See:/ 'createVPCEndpointServiceConfiguration' smart constructor.
 data CreateVPCEndpointServiceConfiguration =
   CreateVPCEndpointServiceConfiguration'
-    { _cvescClientToken :: !(Maybe Text)
-    , _cvescAcceptanceRequired :: !(Maybe Bool)
-    , _cvescDryRun :: !(Maybe Bool)
+    { _cvescClientToken             :: !(Maybe Text)
+    , _cvescAcceptanceRequired      :: !(Maybe Bool)
+    , _cvescDryRun                  :: !(Maybe Bool)
     , _cvescNetworkLoadBalancerARNs :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -134,9 +134,9 @@ instance ToQuery CreateVPCEndpointServiceConfiguration where
 -- | /See:/ 'createVPCEndpointServiceConfigurationResponse' smart constructor.
 data CreateVPCEndpointServiceConfigurationResponse =
   CreateVPCEndpointServiceConfigurationResponse'
-    { _cvescrsClientToken :: !(Maybe Text)
+    { _cvescrsClientToken          :: !(Maybe Text)
     , _cvescrsServiceConfiguration :: !(Maybe ServiceConfiguration)
-    , _cvescrsResponseStatus :: !Int
+    , _cvescrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

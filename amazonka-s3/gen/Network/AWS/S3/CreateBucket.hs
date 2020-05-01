@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,14 +48,14 @@ import Network.AWS.S3.Types.Product
 -- | /See:/ 'createBucket' smart constructor.
 data CreateBucket =
   CreateBucket'
-    { _cbGrantReadACP :: !(Maybe Text)
-    , _cbGrantWriteACP :: !(Maybe Text)
-    , _cbGrantRead :: !(Maybe Text)
-    , _cbGrantFullControl :: !(Maybe Text)
+    { _cbGrantReadACP              :: !(Maybe Text)
+    , _cbGrantWriteACP             :: !(Maybe Text)
+    , _cbGrantRead                 :: !(Maybe Text)
+    , _cbGrantFullControl          :: !(Maybe Text)
     , _cbCreateBucketConfiguration :: !(Maybe CreateBucketConfiguration)
-    , _cbGrantWrite :: !(Maybe Text)
-    , _cbACL :: !(Maybe BucketCannedACL)
-    , _cbBucket :: !BucketName
+    , _cbGrantWrite                :: !(Maybe Text)
+    , _cbACL                       :: !(Maybe BucketCannedACL)
+    , _cbBucket                    :: !BucketName
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -168,7 +168,7 @@ instance ToQuery CreateBucket where
 -- | /See:/ 'createBucketResponse' smart constructor.
 data CreateBucketResponse =
   CreateBucketResponse'
-    { _cbrsLocation :: !(Maybe Text)
+    { _cbrsLocation       :: !(Maybe Text)
     , _cbrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

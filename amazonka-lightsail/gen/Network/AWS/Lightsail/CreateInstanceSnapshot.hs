@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 data CreateInstanceSnapshot =
   CreateInstanceSnapshot'
     { _cisInstanceSnapshotName :: !Text
-    , _cisInstanceName :: !Text
+    , _cisInstanceName         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -114,7 +114,7 @@ instance ToQuery CreateInstanceSnapshot where
 -- | /See:/ 'createInstanceSnapshotResponse' smart constructor.
 data CreateInstanceSnapshotResponse =
   CreateInstanceSnapshotResponse'
-    { _cisrsOperations :: !(Maybe [Operation])
+    { _cisrsOperations     :: !(Maybe [Operation])
     , _cisrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

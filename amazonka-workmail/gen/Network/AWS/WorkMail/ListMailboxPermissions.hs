@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,10 +47,10 @@ import Network.AWS.WorkMail.Types.Product
 -- | /See:/ 'listMailboxPermissions' smart constructor.
 data ListMailboxPermissions =
   ListMailboxPermissions'
-    { _lmpNextToken :: !(Maybe Text)
-    , _lmpMaxResults :: !(Maybe Nat)
+    { _lmpNextToken      :: !(Maybe Text)
+    , _lmpMaxResults     :: !(Maybe Nat)
     , _lmpOrganizationId :: !Text
-    , _lmpEntityId :: !Text
+    , _lmpEntityId       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -136,8 +136,8 @@ instance ToQuery ListMailboxPermissions where
 -- | /See:/ 'listMailboxPermissionsResponse' smart constructor.
 data ListMailboxPermissionsResponse =
   ListMailboxPermissionsResponse'
-    { _lmprsNextToken :: !(Maybe Text)
-    , _lmprsPermissions :: !(Maybe [Permission])
+    { _lmprsNextToken      :: !(Maybe Text)
+    , _lmprsPermissions    :: !(Maybe [Permission])
     , _lmprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

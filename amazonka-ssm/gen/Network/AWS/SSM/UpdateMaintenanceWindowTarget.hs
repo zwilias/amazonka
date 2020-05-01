@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -68,13 +68,13 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'updateMaintenanceWindowTarget' smart constructor.
 data UpdateMaintenanceWindowTarget =
   UpdateMaintenanceWindowTarget'
-    { _uReplace :: !(Maybe Bool)
+    { _uReplace          :: !(Maybe Bool)
     , _uOwnerInformation :: !(Maybe (Sensitive Text))
-    , _uName :: !(Maybe Text)
-    , _uTargets :: !(Maybe [Target])
-    , _uDescription :: !(Maybe (Sensitive Text))
-    , _uWindowId :: !Text
-    , _uWindowTargetId :: !Text
+    , _uName             :: !(Maybe Text)
+    , _uTargets          :: !(Maybe [Target])
+    , _uDescription      :: !(Maybe (Sensitive Text))
+    , _uWindowId         :: !Text
+    , _uWindowTargetId   :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -191,12 +191,12 @@ instance ToQuery UpdateMaintenanceWindowTarget where
 data UpdateMaintenanceWindowTargetResponse =
   UpdateMaintenanceWindowTargetResponse'
     { _ursOwnerInformation :: !(Maybe (Sensitive Text))
-    , _ursWindowTargetId :: !(Maybe Text)
-    , _ursName :: !(Maybe Text)
-    , _ursTargets :: !(Maybe [Target])
-    , _ursDescription :: !(Maybe (Sensitive Text))
-    , _ursWindowId :: !(Maybe Text)
-    , _ursResponseStatus :: !Int
+    , _ursWindowTargetId   :: !(Maybe Text)
+    , _ursName             :: !(Maybe Text)
+    , _ursTargets          :: !(Maybe [Target])
+    , _ursDescription      :: !(Maybe (Sensitive Text))
+    , _ursWindowId         :: !(Maybe Text)
+    , _ursResponseStatus   :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

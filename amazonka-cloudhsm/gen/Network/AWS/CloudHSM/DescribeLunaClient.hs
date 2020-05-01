@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- | /See:/ 'describeLunaClient' smart constructor.
 data DescribeLunaClient =
   DescribeLunaClient'
-    { _dlcClientARN :: !(Maybe Text)
+    { _dlcClientARN              :: !(Maybe Text)
     , _dlcCertificateFingerprint :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -121,12 +121,12 @@ instance ToQuery DescribeLunaClient where
 -- | /See:/ 'describeLunaClientResponse' smart constructor.
 data DescribeLunaClientResponse =
   DescribeLunaClientResponse'
-    { _drsClientARN :: !(Maybe Text)
-    , _drsLastModifiedTimestamp :: !(Maybe Text)
+    { _drsClientARN              :: !(Maybe Text)
+    , _drsLastModifiedTimestamp  :: !(Maybe Text)
     , _drsCertificateFingerprint :: !(Maybe Text)
-    , _drsCertificate :: !(Maybe Text)
-    , _drsLabel :: !(Maybe Text)
-    , _drsResponseStatus :: !Int
+    , _drsCertificate            :: !(Maybe Text)
+    , _drsLabel                  :: !(Maybe Text)
+    , _drsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -66,11 +66,11 @@ import Network.AWS.SWF.Types.Product
 -- | /See:/ 'listWorkflowTypes' smart constructor.
 data ListWorkflowTypes =
   ListWorkflowTypes'
-    { _lwtNextPageToken :: !(Maybe Text)
-    , _lwtReverseOrder :: !(Maybe Bool)
-    , _lwtName :: !(Maybe Text)
-    , _lwtMaximumPageSize :: !(Maybe Nat)
-    , _lwtDomain :: !Text
+    { _lwtNextPageToken      :: !(Maybe Text)
+    , _lwtReverseOrder       :: !(Maybe Bool)
+    , _lwtName               :: !(Maybe Text)
+    , _lwtMaximumPageSize    :: !(Maybe Nat)
+    , _lwtDomain             :: !Text
     , _lwtRegistrationStatus :: !RegistrationStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -184,9 +184,9 @@ instance ToQuery ListWorkflowTypes where
 -- /See:/ 'listWorkflowTypesResponse' smart constructor.
 data ListWorkflowTypesResponse =
   ListWorkflowTypesResponse'
-    { _lwtrsNextPageToken :: !(Maybe Text)
+    { _lwtrsNextPageToken  :: !(Maybe Text)
     , _lwtrsResponseStatus :: !Int
-    , _lwtrsTypeInfos :: ![WorkflowTypeInfo]
+    , _lwtrsTypeInfos      :: ![WorkflowTypeInfo]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

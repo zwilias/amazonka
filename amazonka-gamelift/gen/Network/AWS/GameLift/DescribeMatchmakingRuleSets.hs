@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -69,8 +69,8 @@ import Network.AWS.Response
 data DescribeMatchmakingRuleSets =
   DescribeMatchmakingRuleSets'
     { _dmrsNextToken :: !(Maybe Text)
-    , _dmrsNames :: !(Maybe (List1 Text))
-    , _dmrsLimit :: !(Maybe Nat)
+    , _dmrsNames     :: !(Maybe (List1 Text))
+    , _dmrsLimit     :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -145,9 +145,9 @@ instance ToQuery DescribeMatchmakingRuleSets where
 -- /See:/ 'describeMatchmakingRuleSetsResponse' smart constructor.
 data DescribeMatchmakingRuleSetsResponse =
   DescribeMatchmakingRuleSetsResponse'
-    { _dmrsrsNextToken :: !(Maybe Text)
+    { _dmrsrsNextToken      :: !(Maybe Text)
     , _dmrsrsResponseStatus :: !Int
-    , _dmrsrsRuleSets :: ![MatchmakingRuleSet]
+    , _dmrsrsRuleSets       :: ![MatchmakingRuleSet]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

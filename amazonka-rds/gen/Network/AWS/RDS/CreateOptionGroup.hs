@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,10 +51,10 @@ import Network.AWS.Response
 -- /See:/ 'createOptionGroup' smart constructor.
 data CreateOptionGroup =
   CreateOptionGroup'
-    { _cogTags :: !(Maybe [Tag])
-    , _cogOptionGroupName :: !Text
-    , _cogEngineName :: !Text
-    , _cogMajorEngineVersion :: !Text
+    { _cogTags                   :: !(Maybe [Tag])
+    , _cogOptionGroupName        :: !Text
+    , _cogEngineName             :: !Text
+    , _cogMajorEngineVersion     :: !Text
     , _cogOptionGroupDescription :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -145,7 +145,7 @@ instance ToQuery CreateOptionGroup where
 -- | /See:/ 'createOptionGroupResponse' smart constructor.
 data CreateOptionGroupResponse =
   CreateOptionGroupResponse'
-    { _crsOptionGroup :: !(Maybe OptionGroup)
+    { _crsOptionGroup    :: !(Maybe OptionGroup)
     , _crsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

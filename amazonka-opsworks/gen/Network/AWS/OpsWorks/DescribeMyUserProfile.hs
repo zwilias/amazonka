@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -88,7 +88,7 @@ instance ToQuery DescribeMyUserProfile where
 -- /See:/ 'describeMyUserProfileResponse' smart constructor.
 data DescribeMyUserProfileResponse =
   DescribeMyUserProfileResponse'
-    { _dmuprsUserProfile :: !(Maybe SelfUserProfile)
+    { _dmuprsUserProfile    :: !(Maybe SelfUserProfile)
     , _dmuprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

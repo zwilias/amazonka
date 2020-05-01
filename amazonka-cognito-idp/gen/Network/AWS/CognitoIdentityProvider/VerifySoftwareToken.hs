@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,10 +47,10 @@ import Network.AWS.Response
 -- | /See:/ 'verifySoftwareToken' smart constructor.
 data VerifySoftwareToken =
   VerifySoftwareToken'
-    { _vstAccessToken :: !(Maybe (Sensitive Text))
+    { _vstAccessToken        :: !(Maybe (Sensitive Text))
     , _vstFriendlyDeviceName :: !(Maybe Text)
-    , _vstSession :: !(Maybe Text)
-    , _vstUserCode :: !Text
+    , _vstSession            :: !(Maybe Text)
+    , _vstUserCode           :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -135,8 +135,8 @@ instance ToQuery VerifySoftwareToken where
 -- | /See:/ 'verifySoftwareTokenResponse' smart constructor.
 data VerifySoftwareTokenResponse =
   VerifySoftwareTokenResponse'
-    { _vstrsStatus :: !(Maybe VerifySoftwareTokenResponseType)
-    , _vstrsSession :: !(Maybe Text)
+    { _vstrsStatus         :: !(Maybe VerifySoftwareTokenResponseType)
+    , _vstrsSession        :: !(Maybe Text)
     , _vstrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

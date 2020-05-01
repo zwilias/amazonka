@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 data CreateUpload =
   CreateUpload'
     { _cuContentType :: !(Maybe Text)
-    , _cuProjectARN :: !Text
-    , _cuName :: !Text
-    , _cuType :: !UploadType
+    , _cuProjectARN  :: !Text
+    , _cuName        :: !Text
+    , _cuType        :: !UploadType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -140,7 +140,7 @@ instance ToQuery CreateUpload where
 -- /See:/ 'createUploadResponse' smart constructor.
 data CreateUploadResponse =
   CreateUploadResponse'
-    { _cursUpload :: !(Maybe Upload)
+    { _cursUpload         :: !(Maybe Upload)
     , _cursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

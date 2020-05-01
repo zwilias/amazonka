@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,18 +26,18 @@ import Network.AWS.Prelude
 -- /See:/ 'assignment' smart constructor.
 data Assignment =
   Assignment'
-    { _aAcceptTime :: !(Maybe POSIX)
-    , _aAnswer :: !(Maybe Text)
-    , _aAssignmentStatus :: !(Maybe AssignmentStatus)
+    { _aAcceptTime        :: !(Maybe POSIX)
+    , _aAnswer            :: !(Maybe Text)
+    , _aAssignmentStatus  :: !(Maybe AssignmentStatus)
     , _aRequesterFeedback :: !(Maybe Text)
-    , _aDeadline :: !(Maybe POSIX)
-    , _aApprovalTime :: !(Maybe POSIX)
-    , _aRejectionTime :: !(Maybe POSIX)
-    , _aAutoApprovalTime :: !(Maybe POSIX)
-    , _aHITId :: !(Maybe Text)
-    , _aWorkerId :: !(Maybe Text)
-    , _aAssignmentId :: !(Maybe Text)
-    , _aSubmitTime :: !(Maybe POSIX)
+    , _aDeadline          :: !(Maybe POSIX)
+    , _aApprovalTime      :: !(Maybe POSIX)
+    , _aRejectionTime     :: !(Maybe POSIX)
+    , _aAutoApprovalTime  :: !(Maybe POSIX)
+    , _aHITId             :: !(Maybe Text)
+    , _aWorkerId          :: !(Maybe Text)
+    , _aAssignmentId      :: !(Maybe Text)
+    , _aSubmitTime        :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -165,11 +165,11 @@ instance NFData Assignment
 -- /See:/ 'bonusPayment' smart constructor.
 data BonusPayment =
   BonusPayment'
-    { _bpReason :: !(Maybe Text)
-    , _bpGrantTime :: !(Maybe POSIX)
-    , _bpWorkerId :: !(Maybe Text)
+    { _bpReason       :: !(Maybe Text)
+    , _bpGrantTime    :: !(Maybe POSIX)
+    , _bpWorkerId     :: !(Maybe Text)
     , _bpAssignmentId :: !(Maybe Text)
-    , _bpBonusAmount :: !(Maybe Text)
+    , _bpBonusAmount  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -237,27 +237,27 @@ instance NFData BonusPayment
 -- /See:/ 'hIT' smart constructor.
 data HIT =
   HIT'
-    { _hitCreationTime :: !(Maybe POSIX)
-    , _hitHITGroupId :: !(Maybe Text)
-    , _hitNumberOfAssignmentsPending :: !(Maybe Int)
-    , _hitHITTypeId :: !(Maybe Text)
-    , _hitExpiration :: !(Maybe POSIX)
-    , _hitAutoApprovalDelayInSeconds :: !(Maybe Integer)
-    , _hitRequesterAnnotation :: !(Maybe Text)
-    , _hitHITStatus :: !(Maybe HITStatus)
-    , _hitMaxAssignments :: !(Maybe Int)
+    { _hitCreationTime                 :: !(Maybe POSIX)
+    , _hitHITGroupId                   :: !(Maybe Text)
+    , _hitNumberOfAssignmentsPending   :: !(Maybe Int)
+    , _hitHITTypeId                    :: !(Maybe Text)
+    , _hitExpiration                   :: !(Maybe POSIX)
+    , _hitAutoApprovalDelayInSeconds   :: !(Maybe Integer)
+    , _hitRequesterAnnotation          :: !(Maybe Text)
+    , _hitHITStatus                    :: !(Maybe HITStatus)
+    , _hitMaxAssignments               :: !(Maybe Int)
     , _hitNumberOfAssignmentsCompleted :: !(Maybe Int)
-    , _hitReward :: !(Maybe Text)
-    , _hitKeywords :: !(Maybe Text)
-    , _hitHITLayoutId :: !(Maybe Text)
-    , _hitQualificationRequirements :: !(Maybe [QualificationRequirement])
-    , _hitTitle :: !(Maybe Text)
-    , _hitHITId :: !(Maybe Text)
-    , _hitHITReviewStatus :: !(Maybe HITReviewStatus)
+    , _hitReward                       :: !(Maybe Text)
+    , _hitKeywords                     :: !(Maybe Text)
+    , _hitHITLayoutId                  :: !(Maybe Text)
+    , _hitQualificationRequirements    :: !(Maybe [QualificationRequirement])
+    , _hitTitle                        :: !(Maybe Text)
+    , _hitHITId                        :: !(Maybe Text)
+    , _hitHITReviewStatus              :: !(Maybe HITReviewStatus)
     , _hitNumberOfAssignmentsAvailable :: !(Maybe Int)
-    , _hitDescription :: !(Maybe Text)
-    , _hitQuestion :: !(Maybe Text)
-    , _hitAssignmentDurationInSeconds :: !(Maybe Integer)
+    , _hitDescription                  :: !(Maybe Text)
+    , _hitQuestion                     :: !(Maybe Text)
+    , _hitAssignmentDurationInSeconds  :: !(Maybe Integer)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -476,7 +476,7 @@ instance NFData HIT
 -- /See:/ 'hITLayoutParameter' smart constructor.
 data HITLayoutParameter =
   HITLayoutParameter'
-    { _hitlpName :: !Text
+    { _hitlpName  :: !Text
     , _hitlpValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -520,7 +520,7 @@ instance ToJSON HITLayoutParameter where
 data Locale =
   Locale'
     { _lSubdivision :: !(Maybe Text)
-    , _lCountry :: !Text
+    , _lCountry     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -568,9 +568,9 @@ instance ToJSON Locale where
 data NotificationSpecification =
   NotificationSpecification'
     { _nsDestination :: !Text
-    , _nsTransport :: !NotificationTransport
-    , _nsVersion :: !Text
-    , _nsEventTypes :: ![EventType]
+    , _nsTransport   :: !NotificationTransport
+    , _nsVersion     :: !Text
+    , _nsEventTypes  :: ![EventType]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -636,8 +636,8 @@ instance ToJSON NotificationSpecification where
 data NotifyWorkersFailureStatus =
   NotifyWorkersFailureStatus'
     { _nwfsNotifyWorkersFailureMessage :: !(Maybe Text)
-    , _nwfsNotifyWorkersFailureCode :: !(Maybe NotifyWorkersFailureCode)
-    , _nwfsWorkerId :: !(Maybe Text)
+    , _nwfsNotifyWorkersFailureCode    :: !(Maybe NotifyWorkersFailureCode)
+    , _nwfsWorkerId                    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -698,7 +698,7 @@ instance NFData NotifyWorkersFailureStatus
 data ParameterMapEntry =
   ParameterMapEntry'
     { _pmeValues :: !(Maybe [Text])
-    , _pmeKey :: !(Maybe Text)
+    , _pmeKey    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -742,9 +742,9 @@ instance ToJSON ParameterMapEntry where
 -- /See:/ 'policyParameter' smart constructor.
 data PolicyParameter =
   PolicyParameter'
-    { _ppValues :: !(Maybe [Text])
+    { _ppValues     :: !(Maybe [Text])
     , _ppMapEntries :: !(Maybe [ParameterMapEntry])
-    , _ppKey :: !(Maybe Text)
+    , _ppKey        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -804,12 +804,12 @@ instance ToJSON PolicyParameter where
 -- /See:/ 'qualification' smart constructor.
 data Qualification =
   Qualification'
-    { _qStatus :: !(Maybe QualificationStatus)
-    , _qIntegerValue :: !(Maybe Int)
-    , _qLocaleValue :: !(Maybe Locale)
+    { _qStatus              :: !(Maybe QualificationStatus)
+    , _qIntegerValue        :: !(Maybe Int)
+    , _qLocaleValue         :: !(Maybe Locale)
     , _qQualificationTypeId :: !(Maybe Text)
-    , _qGrantTime :: !(Maybe POSIX)
-    , _qWorkerId :: !(Maybe Text)
+    , _qGrantTime           :: !(Maybe POSIX)
+    , _qWorkerId            :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -887,11 +887,11 @@ instance NFData Qualification
 data QualificationRequest =
   QualificationRequest'
     { _quaQualificationRequestId :: !(Maybe Text)
-    , _quaTest :: !(Maybe Text)
-    , _quaQualificationTypeId :: !(Maybe Text)
-    , _quaAnswer :: !(Maybe Text)
-    , _quaWorkerId :: !(Maybe Text)
-    , _quaSubmitTime :: !(Maybe POSIX)
+    , _quaTest                   :: !(Maybe Text)
+    , _quaQualificationTypeId    :: !(Maybe Text)
+    , _quaAnswer                 :: !(Maybe Text)
+    , _quaWorkerId               :: !(Maybe Text)
+    , _quaSubmitTime             :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -971,12 +971,12 @@ instance NFData QualificationRequest
 -- /See:/ 'qualificationRequirement' smart constructor.
 data QualificationRequirement =
   QualificationRequirement'
-    { _qrLocaleValues :: !(Maybe [Locale])
-    , _qrActionsGuarded :: !(Maybe HITAccessActions)
-    , _qrRequiredToPreview :: !(Maybe Bool)
-    , _qrIntegerValues :: !(Maybe [Int])
+    { _qrLocaleValues        :: !(Maybe [Locale])
+    , _qrActionsGuarded      :: !(Maybe HITAccessActions)
+    , _qrRequiredToPreview   :: !(Maybe Bool)
+    , _qrIntegerValues       :: !(Maybe [Int])
     , _qrQualificationTypeId :: !Text
-    , _qrComparator :: !Comparator
+    , _qrComparator          :: !Comparator
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1072,19 +1072,19 @@ instance ToJSON QualificationRequirement where
 -- /See:/ 'qualificationType' smart constructor.
 data QualificationType =
   QualificationType'
-    { _qtCreationTime :: !(Maybe POSIX)
-    , _qtTestDurationInSeconds :: !(Maybe Integer)
+    { _qtCreationTime            :: !(Maybe POSIX)
+    , _qtTestDurationInSeconds   :: !(Maybe Integer)
     , _qtQualificationTypeStatus :: !(Maybe QualificationTypeStatus)
-    , _qtAnswerKey :: !(Maybe Text)
-    , _qtTest :: !(Maybe Text)
-    , _qtQualificationTypeId :: !(Maybe Text)
-    , _qtName :: !(Maybe Text)
-    , _qtKeywords :: !(Maybe Text)
-    , _qtAutoGranted :: !(Maybe Bool)
-    , _qtAutoGrantedValue :: !(Maybe Int)
-    , _qtDescription :: !(Maybe Text)
-    , _qtIsRequestable :: !(Maybe Bool)
-    , _qtRetryDelayInSeconds :: !(Maybe Integer)
+    , _qtAnswerKey               :: !(Maybe Text)
+    , _qtTest                    :: !(Maybe Text)
+    , _qtQualificationTypeId     :: !(Maybe Text)
+    , _qtName                    :: !(Maybe Text)
+    , _qtKeywords                :: !(Maybe Text)
+    , _qtAutoGranted             :: !(Maybe Bool)
+    , _qtAutoGrantedValue        :: !(Maybe Int)
+    , _qtDescription             :: !(Maybe Text)
+    , _qtIsRequestable           :: !(Maybe Bool)
+    , _qtRetryDelayInSeconds     :: !(Maybe Integer)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1224,14 +1224,14 @@ instance NFData QualificationType
 -- /See:/ 'reviewActionDetail' smart constructor.
 data ReviewActionDetail =
   ReviewActionDetail'
-    { _radStatus :: !(Maybe ReviewActionStatus)
-    , _radTargetId :: !(Maybe Text)
-    , _radActionId :: !(Maybe Text)
-    , _radTargetType :: !(Maybe Text)
-    , _radResult :: !(Maybe Text)
-    , _radActionName :: !(Maybe Text)
+    { _radStatus       :: !(Maybe ReviewActionStatus)
+    , _radTargetId     :: !(Maybe Text)
+    , _radActionId     :: !(Maybe Text)
+    , _radTargetType   :: !(Maybe Text)
+    , _radResult       :: !(Maybe Text)
+    , _radActionName   :: !(Maybe Text)
     , _radCompleteTime :: !(Maybe POSIX)
-    , _radErrorCode :: !(Maybe Text)
+    , _radErrorCode    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1423,12 +1423,12 @@ instance NFData ReviewReport
 -- /See:/ 'reviewResultDetail' smart constructor.
 data ReviewResultDetail =
   ReviewResultDetail'
-    { _rrdValue :: !(Maybe Text)
-    , _rrdActionId :: !(Maybe Text)
+    { _rrdValue       :: !(Maybe Text)
+    , _rrdActionId    :: !(Maybe Text)
     , _rrdSubjectType :: !(Maybe Text)
-    , _rrdKey :: !(Maybe Text)
-    , _rrdQuestionId :: !(Maybe Text)
-    , _rrdSubjectId :: !(Maybe Text)
+    , _rrdKey         :: !(Maybe Text)
+    , _rrdQuestionId  :: !(Maybe Text)
+    , _rrdSubjectId   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1504,7 +1504,7 @@ instance NFData ReviewResultDetail
 -- /See:/ 'workerBlock' smart constructor.
 data WorkerBlock =
   WorkerBlock'
-    { _wbReason :: !(Maybe Text)
+    { _wbReason   :: !(Maybe Text)
     , _wbWorkerId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

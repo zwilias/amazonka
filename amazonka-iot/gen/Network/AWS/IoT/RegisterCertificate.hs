@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,10 +51,10 @@ import Network.AWS.Response
 -- /See:/ 'registerCertificate' smart constructor.
 data RegisterCertificate =
   RegisterCertificate'
-    { _rcStatus :: !(Maybe CertificateStatus)
+    { _rcStatus           :: !(Maybe CertificateStatus)
     , _rcCaCertificatePem :: !(Maybe Text)
-    , _rcSetAsActive :: !(Maybe Bool)
-    , _rcCertificatePem :: !Text
+    , _rcSetAsActive      :: !(Maybe Bool)
+    , _rcCertificatePem   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -137,7 +137,7 @@ instance ToQuery RegisterCertificate where
 data RegisterCertificateResponse =
   RegisterCertificateResponse'
     { _rcrsCertificateARN :: !(Maybe Text)
-    , _rcrsCertificateId :: !(Maybe Text)
+    , _rcrsCertificateId  :: !(Maybe Text)
     , _rcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

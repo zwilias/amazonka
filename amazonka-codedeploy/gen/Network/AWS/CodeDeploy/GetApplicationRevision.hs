@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,7 +51,7 @@ import Network.AWS.Response
 data GetApplicationRevision =
   GetApplicationRevision'
     { _garApplicationName :: !Text
-    , _garRevision :: !RevisionLocation
+    , _garRevision        :: !RevisionLocation
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -125,9 +125,9 @@ instance ToQuery GetApplicationRevision where
 data GetApplicationRevisionResponse =
   GetApplicationRevisionResponse'
     { _garrsApplicationName :: !(Maybe Text)
-    , _garrsRevisionInfo :: !(Maybe GenericRevisionInfo)
-    , _garrsRevision :: !(Maybe RevisionLocation)
-    , _garrsResponseStatus :: !Int
+    , _garrsRevisionInfo    :: !(Maybe GenericRevisionInfo)
+    , _garrsRevision        :: !(Maybe RevisionLocation)
+    , _garrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

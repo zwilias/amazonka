@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 -- /See:/ 'describeNotificationsForBudget' smart constructor.
 data DescribeNotificationsForBudget =
   DescribeNotificationsForBudget'
-    { _dnfbNextToken :: !(Maybe Text)
+    { _dnfbNextToken  :: !(Maybe Text)
     , _dnfbMaxResults :: !(Maybe Nat)
-    , _dnfbAccountId :: !Text
+    , _dnfbAccountId  :: !Text
     , _dnfbBudgetName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -144,8 +144,8 @@ instance ToQuery DescribeNotificationsForBudget where
 -- /See:/ 'describeNotificationsForBudgetResponse' smart constructor.
 data DescribeNotificationsForBudgetResponse =
   DescribeNotificationsForBudgetResponse'
-    { _dnfbrsNextToken :: !(Maybe Text)
-    , _dnfbrsNotifications :: !(Maybe [Notification])
+    { _dnfbrsNextToken      :: !(Maybe Text)
+    , _dnfbrsNotifications  :: !(Maybe [Notification])
     , _dnfbrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

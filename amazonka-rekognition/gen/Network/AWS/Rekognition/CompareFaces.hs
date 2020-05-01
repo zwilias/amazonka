@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -64,8 +64,8 @@ import Network.AWS.Response
 data CompareFaces =
   CompareFaces'
     { _cfSimilarityThreshold :: !(Maybe Double)
-    , _cfSourceImage :: !Image
-    , _cfTargetImage :: !Image
+    , _cfSourceImage         :: !Image
+    , _cfTargetImage         :: !Image
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -145,12 +145,12 @@ instance ToQuery CompareFaces where
 -- | /See:/ 'compareFacesResponse' smart constructor.
 data CompareFacesResponse =
   CompareFacesResponse'
-    { _cfrsFaceMatches :: !(Maybe [CompareFacesMatch])
-    , _cfrsUnmatchedFaces :: !(Maybe [ComparedFace])
+    { _cfrsFaceMatches                      :: !(Maybe [CompareFacesMatch])
+    , _cfrsUnmatchedFaces                   :: !(Maybe [ComparedFace])
     , _cfrsTargetImageOrientationCorrection :: !(Maybe OrientationCorrection)
     , _cfrsSourceImageOrientationCorrection :: !(Maybe OrientationCorrection)
-    , _cfrsSourceImageFace :: !(Maybe ComparedSourceImageFace)
-    , _cfrsResponseStatus :: !Int
+    , _cfrsSourceImageFace                  :: !(Maybe ComparedSourceImageFace)
+    , _cfrsResponseStatus                   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

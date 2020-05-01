@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'listUserProfiles' smart constructor.
 data ListUserProfiles =
   ListUserProfiles'
-    { _lupNextToken :: !(Maybe Text)
+    { _lupNextToken  :: !(Maybe Text)
     , _lupMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -110,9 +110,9 @@ instance ToQuery ListUserProfiles where
 -- | /See:/ 'listUserProfilesResponse' smart constructor.
 data ListUserProfilesResponse =
   ListUserProfilesResponse'
-    { _luprsNextToken :: !(Maybe Text)
+    { _luprsNextToken      :: !(Maybe Text)
     , _luprsResponseStatus :: !Int
-    , _luprsUserProfiles :: ![UserProfileSummary]
+    , _luprsUserProfiles   :: ![UserProfileSummary]
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

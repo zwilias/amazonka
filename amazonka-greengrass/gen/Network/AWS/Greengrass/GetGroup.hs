@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -97,14 +97,14 @@ instance ToQuery GetGroup where
 -- | /See:/ 'getGroupResponse' smart constructor.
 data GetGroupResponse =
   GetGroupResponse'
-    { _ggrsLatestVersionARN :: !(Maybe Text)
-    , _ggrsARN :: !(Maybe Text)
-    , _ggrsName :: !(Maybe Text)
-    , _ggrsCreationTimestamp :: !(Maybe Text)
-    , _ggrsId :: !(Maybe Text)
-    , _ggrsLatestVersion :: !(Maybe Text)
+    { _ggrsLatestVersionARN     :: !(Maybe Text)
+    , _ggrsARN                  :: !(Maybe Text)
+    , _ggrsName                 :: !(Maybe Text)
+    , _ggrsCreationTimestamp    :: !(Maybe Text)
+    , _ggrsId                   :: !(Maybe Text)
+    , _ggrsLatestVersion        :: !(Maybe Text)
     , _ggrsLastUpdatedTimestamp :: !(Maybe Text)
-    , _ggrsResponseStatus :: !Int
+    , _ggrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

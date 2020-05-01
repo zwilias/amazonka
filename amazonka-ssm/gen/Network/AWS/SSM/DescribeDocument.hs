@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.SSM.Types.Product
 data DescribeDocument =
   DescribeDocument'
     { _ddDocumentVersion :: !(Maybe Text)
-    , _ddName :: !Text
+    , _ddName            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -108,7 +108,7 @@ instance ToQuery DescribeDocument where
 -- | /See:/ 'describeDocumentResponse' smart constructor.
 data DescribeDocumentResponse =
   DescribeDocumentResponse'
-    { _desrsDocument :: !(Maybe DocumentDescription)
+    { _desrsDocument       :: !(Maybe DocumentDescription)
     , _desrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

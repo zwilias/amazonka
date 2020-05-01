@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,13 +53,13 @@ import Network.AWS.Response
 -- | /See:/ 'getPartitions' smart constructor.
 data GetPartitions =
   GetPartitions'
-    { _gpsCatalogId :: !(Maybe Text)
-    , _gpsNextToken :: !(Maybe Text)
-    , _gpsExpression :: !(Maybe Text)
-    , _gpsSegment :: !(Maybe Segment)
-    , _gpsMaxResults :: !(Maybe Nat)
+    { _gpsCatalogId    :: !(Maybe Text)
+    , _gpsNextToken    :: !(Maybe Text)
+    , _gpsExpression   :: !(Maybe Text)
+    , _gpsSegment      :: !(Maybe Segment)
+    , _gpsMaxResults   :: !(Maybe Nat)
     , _gpsDatabaseName :: !Text
-    , _gpsTableName :: !Text
+    , _gpsTableName    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -174,8 +174,8 @@ instance ToQuery GetPartitions where
 -- | /See:/ 'getPartitionsResponse' smart constructor.
 data GetPartitionsResponse =
   GetPartitionsResponse'
-    { _gpsrsPartitions :: !(Maybe [Partition])
-    , _gpsrsNextToken :: !(Maybe Text)
+    { _gpsrsPartitions     :: !(Maybe [Partition])
+    , _gpsrsNextToken      :: !(Maybe Text)
     , _gpsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

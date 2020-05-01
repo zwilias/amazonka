@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,10 +50,10 @@ import Network.AWS.Response
 -- | /See:/ 'describeScalingActivities' smart constructor.
 data DescribeScalingActivities =
   DescribeScalingActivities'
-    { _desNextToken :: !(Maybe Text)
+    { _desNextToken            :: !(Maybe Text)
     , _desAutoScalingGroupName :: !(Maybe Text)
-    , _desMaxRecords :: !(Maybe Int)
-    , _desActivityIds :: !(Maybe [Text])
+    , _desMaxRecords           :: !(Maybe Int)
+    , _desActivityIds          :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -136,9 +136,9 @@ instance ToQuery DescribeScalingActivities where
 -- | /See:/ 'describeScalingActivitiesResponse' smart constructor.
 data DescribeScalingActivitiesResponse =
   DescribeScalingActivitiesResponse'
-    { _dsasrsNextToken :: !(Maybe Text)
+    { _dsasrsNextToken      :: !(Maybe Text)
     , _dsasrsResponseStatus :: !Int
-    , _dsasrsActivities :: ![Activity]
+    , _dsasrsActivities     :: ![Activity]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

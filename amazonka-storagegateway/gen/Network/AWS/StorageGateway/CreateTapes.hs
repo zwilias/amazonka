@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,10 +51,10 @@ import Network.AWS.StorageGateway.Types.Product
 -- /See:/ 'createTapes' smart constructor.
 data CreateTapes =
   CreateTapes'
-    { _ctGatewayARN :: !Text
-    , _ctTapeSizeInBytes :: !Integer
-    , _ctClientToken :: !Text
-    , _ctNumTapesToCreate :: !Nat
+    { _ctGatewayARN        :: !Text
+    , _ctTapeSizeInBytes   :: !Integer
+    , _ctClientToken       :: !Text
+    , _ctNumTapesToCreate  :: !Nat
     , _ctTapeBarcodePrefix :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -156,7 +156,7 @@ instance ToQuery CreateTapes where
 -- /See:/ 'createTapesResponse' smart constructor.
 data CreateTapesResponse =
   CreateTapesResponse'
-    { _ctrsTapeARNs :: !(Maybe [Text])
+    { _ctrsTapeARNs       :: !(Maybe [Text])
     , _ctrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

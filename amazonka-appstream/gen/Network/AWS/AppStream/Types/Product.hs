@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,13 +26,13 @@ import Network.AWS.Prelude
 -- /See:/ 'application' smart constructor.
 data Application =
   Application'
-    { _aEnabled :: !(Maybe Bool)
-    , _aLaunchPath :: !(Maybe Text)
+    { _aEnabled          :: !(Maybe Bool)
+    , _aLaunchPath       :: !(Maybe Text)
     , _aLaunchParameters :: !(Maybe Text)
-    , _aName :: !(Maybe Text)
-    , _aDisplayName :: !(Maybe Text)
-    , _aMetadata :: !(Maybe (Map Text Text))
-    , _aIconURL :: !(Maybe Text)
+    , _aName             :: !(Maybe Text)
+    , _aDisplayName      :: !(Maybe Text)
+    , _aMetadata         :: !(Maybe (Map Text Text))
+    , _aIconURL          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -151,10 +151,10 @@ instance ToJSON ComputeCapacity where
 -- /See:/ 'computeCapacityStatus' smart constructor.
 data ComputeCapacityStatus =
   ComputeCapacityStatus'
-    { _ccsInUse :: !(Maybe Int)
-    , _ccsRunning :: !(Maybe Int)
+    { _ccsInUse     :: !(Maybe Int)
+    , _ccsRunning   :: !(Maybe Int)
     , _ccsAvailable :: !(Maybe Int)
-    , _ccsDesired :: !Int
+    , _ccsDesired   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -292,7 +292,7 @@ instance NFData DirectoryConfig
 data DomainJoinInfo =
   DomainJoinInfo'
     { _djiOrganizationalUnitDistinguishedName :: !(Maybe Text)
-    , _djiDirectoryName :: !(Maybe Text)
+    , _djiDirectoryName                       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -349,22 +349,22 @@ instance ToJSON DomainJoinInfo where
 -- /See:/ 'fleet' smart constructor.
 data Fleet =
   Fleet'
-    { _fDomainJoinInfo :: !(Maybe DomainJoinInfo)
-    , _fDisconnectTimeoutInSeconds :: !(Maybe Int)
-    , _fMaxUserDurationInSeconds :: !(Maybe Int)
-    , _fCreatedTime :: !(Maybe POSIX)
-    , _fFleetType :: !(Maybe FleetType)
-    , _fVPCConfig :: !(Maybe VPCConfig)
-    , _fFleetErrors :: !(Maybe [FleetError])
-    , _fDisplayName :: !(Maybe Text)
+    { _fDomainJoinInfo              :: !(Maybe DomainJoinInfo)
+    , _fDisconnectTimeoutInSeconds  :: !(Maybe Int)
+    , _fMaxUserDurationInSeconds    :: !(Maybe Int)
+    , _fCreatedTime                 :: !(Maybe POSIX)
+    , _fFleetType                   :: !(Maybe FleetType)
+    , _fVPCConfig                   :: !(Maybe VPCConfig)
+    , _fFleetErrors                 :: !(Maybe [FleetError])
+    , _fDisplayName                 :: !(Maybe Text)
     , _fEnableDefaultInternetAccess :: !(Maybe Bool)
-    , _fDescription :: !(Maybe Text)
-    , _fARN :: !Text
-    , _fName :: !Text
-    , _fImageName :: !Text
-    , _fInstanceType :: !Text
-    , _fComputeCapacityStatus :: !ComputeCapacityStatus
-    , _fState :: !FleetState
+    , _fDescription                 :: !(Maybe Text)
+    , _fARN                         :: !Text
+    , _fName                        :: !Text
+    , _fImageName                   :: !Text
+    , _fInstanceType                :: !Text
+    , _fComputeCapacityStatus       :: !ComputeCapacityStatus
+    , _fState                       :: !FleetState
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -538,7 +538,7 @@ instance NFData Fleet
 -- /See:/ 'fleetError' smart constructor.
 data FleetError =
   FleetError'
-    { _feErrorCode :: !(Maybe FleetErrorCode)
+    { _feErrorCode    :: !(Maybe FleetErrorCode)
     , _feErrorMessage :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -578,20 +578,20 @@ instance NFData FleetError
 -- /See:/ 'image' smart constructor.
 data Image =
   Image'
-    { _iState :: !(Maybe ImageState)
-    , _iPlatform :: !(Maybe PlatformType)
+    { _iState                       :: !(Maybe ImageState)
+    , _iPlatform                    :: !(Maybe PlatformType)
     , _iPublicBaseImageReleasedDate :: !(Maybe POSIX)
-    , _iStateChangeReason :: !(Maybe ImageStateChangeReason)
-    , _iARN :: !(Maybe Text)
-    , _iCreatedTime :: !(Maybe POSIX)
-    , _iImageBuilderSupported :: !(Maybe Bool)
-    , _iVisibility :: !(Maybe VisibilityType)
-    , _iBaseImageARN :: !(Maybe Text)
-    , _iDisplayName :: !(Maybe Text)
-    , _iDescription :: !(Maybe Text)
-    , _iAppstreamAgentVersion :: !(Maybe Text)
-    , _iApplications :: !(Maybe [Application])
-    , _iName :: !Text
+    , _iStateChangeReason           :: !(Maybe ImageStateChangeReason)
+    , _iARN                         :: !(Maybe Text)
+    , _iCreatedTime                 :: !(Maybe POSIX)
+    , _iImageBuilderSupported       :: !(Maybe Bool)
+    , _iVisibility                  :: !(Maybe VisibilityType)
+    , _iBaseImageARN                :: !(Maybe Text)
+    , _iDisplayName                 :: !(Maybe Text)
+    , _iDescription                 :: !(Maybe Text)
+    , _iAppstreamAgentVersion       :: !(Maybe Text)
+    , _iApplications                :: !(Maybe [Application])
+    , _iName                        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -742,21 +742,21 @@ instance NFData Image
 -- /See:/ 'imageBuilder' smart constructor.
 data ImageBuilder =
   ImageBuilder'
-    { _ibDomainJoinInfo :: !(Maybe DomainJoinInfo)
-    , _ibState :: !(Maybe ImageBuilderState)
-    , _ibPlatform :: !(Maybe PlatformType)
-    , _ibStateChangeReason :: !(Maybe ImageBuilderStateChangeReason)
-    , _ibARN :: !(Maybe Text)
-    , _ibCreatedTime :: !(Maybe POSIX)
-    , _ibImageBuilderErrors :: !(Maybe [ResourceError])
-    , _ibInstanceType :: !(Maybe Text)
-    , _ibVPCConfig :: !(Maybe VPCConfig)
-    , _ibImageARN :: !(Maybe Text)
-    , _ibDisplayName :: !(Maybe Text)
+    { _ibDomainJoinInfo              :: !(Maybe DomainJoinInfo)
+    , _ibState                       :: !(Maybe ImageBuilderState)
+    , _ibPlatform                    :: !(Maybe PlatformType)
+    , _ibStateChangeReason           :: !(Maybe ImageBuilderStateChangeReason)
+    , _ibARN                         :: !(Maybe Text)
+    , _ibCreatedTime                 :: !(Maybe POSIX)
+    , _ibImageBuilderErrors          :: !(Maybe [ResourceError])
+    , _ibInstanceType                :: !(Maybe Text)
+    , _ibVPCConfig                   :: !(Maybe VPCConfig)
+    , _ibImageARN                    :: !(Maybe Text)
+    , _ibDisplayName                 :: !(Maybe Text)
     , _ibEnableDefaultInternetAccess :: !(Maybe Bool)
-    , _ibDescription :: !(Maybe Text)
-    , _ibAppstreamAgentVersion :: !(Maybe Text)
-    , _ibName :: !Text
+    , _ibDescription                 :: !(Maybe Text)
+    , _ibAppstreamAgentVersion       :: !(Maybe Text)
+    , _ibName                        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -914,7 +914,7 @@ instance NFData ImageBuilder
 -- /See:/ 'imageBuilderStateChangeReason' smart constructor.
 data ImageBuilderStateChangeReason =
   ImageBuilderStateChangeReason'
-    { _ibscrCode :: !(Maybe ImageBuilderStateChangeReasonCode)
+    { _ibscrCode    :: !(Maybe ImageBuilderStateChangeReasonCode)
     , _ibscrMessage :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -957,7 +957,7 @@ instance NFData ImageBuilderStateChangeReason
 -- /See:/ 'imageStateChangeReason' smart constructor.
 data ImageStateChangeReason =
   ImageStateChangeReason'
-    { _iscrCode :: !(Maybe ImageStateChangeReasonCode)
+    { _iscrCode    :: !(Maybe ImageStateChangeReasonCode)
     , _iscrMessage :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -998,8 +998,8 @@ instance NFData ImageStateChangeReason
 -- /See:/ 'resourceError' smart constructor.
 data ResourceError =
   ResourceError'
-    { _reErrorCode :: !(Maybe FleetErrorCode)
-    , _reErrorMessage :: !(Maybe Text)
+    { _reErrorCode      :: !(Maybe FleetErrorCode)
+    , _reErrorMessage   :: !(Maybe Text)
     , _reErrorTimestamp :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1053,7 +1053,7 @@ instance NFData ResourceError
 -- /See:/ 'serviceAccountCredentials' smart constructor.
 data ServiceAccountCredentials =
   ServiceAccountCredentials'
-    { _sacAccountName :: !(Sensitive Text)
+    { _sacAccountName     :: !(Sensitive Text)
     , _sacAccountPassword :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
@@ -1113,11 +1113,11 @@ instance ToJSON ServiceAccountCredentials where
 data Session =
   Session'
     { _sAuthenticationType :: !(Maybe AuthenticationType)
-    , _sId :: !Text
-    , _sUserId :: !Text
-    , _sStackName :: !Text
-    , _sFleetName :: !Text
-    , _sState :: !SessionState
+    , _sId                 :: !Text
+    , _sUserId             :: !Text
+    , _sStackName          :: !Text
+    , _sFleetName          :: !Text
+    , _sState              :: !SessionState
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1200,15 +1200,15 @@ instance NFData Session
 -- /See:/ 'stack' smart constructor.
 data Stack =
   Stack'
-    { _sFeedbackURL :: !(Maybe Text)
-    , _sARN :: !(Maybe Text)
-    , _sCreatedTime :: !(Maybe POSIX)
+    { _sFeedbackURL       :: !(Maybe Text)
+    , _sARN               :: !(Maybe Text)
+    , _sCreatedTime       :: !(Maybe POSIX)
     , _sStorageConnectors :: !(Maybe [StorageConnector])
-    , _sDisplayName :: !(Maybe Text)
-    , _sStackErrors :: !(Maybe [StackError])
-    , _sDescription :: !(Maybe Text)
-    , _sRedirectURL :: !(Maybe Text)
-    , _sName :: !Text
+    , _sDisplayName       :: !(Maybe Text)
+    , _sStackErrors       :: !(Maybe [StackError])
+    , _sDescription       :: !(Maybe Text)
+    , _sRedirectURL       :: !(Maybe Text)
+    , _sName              :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1314,7 +1314,7 @@ instance NFData Stack
 -- /See:/ 'stackError' smart constructor.
 data StackError =
   StackError'
-    { _seErrorCode :: !(Maybe StackErrorCode)
+    { _seErrorCode    :: !(Maybe StackErrorCode)
     , _seErrorMessage :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1355,7 +1355,7 @@ instance NFData StackError
 data StorageConnector =
   StorageConnector'
     { _scResourceIdentifier :: !(Maybe Text)
-    , _scConnectorType :: !StorageConnectorType
+    , _scConnectorType      :: !StorageConnectorType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1410,7 +1410,7 @@ instance ToJSON StorageConnector where
 data VPCConfig =
   VPCConfig'
     { _vcSecurityGroupIds :: !(Maybe [Text])
-    , _vcSubnetIds :: !(Maybe [Text])
+    , _vcSubnetIds        :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

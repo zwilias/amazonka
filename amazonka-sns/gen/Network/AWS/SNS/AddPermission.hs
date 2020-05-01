@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -43,10 +43,10 @@ import Network.AWS.SNS.Types.Product
 -- | /See:/ 'addPermission' smart constructor.
 data AddPermission =
   AddPermission'
-    { _apTopicARN :: !Text
-    , _apLabel :: !Text
+    { _apTopicARN     :: !Text
+    , _apLabel        :: !Text
     , _apAWSAccountId :: ![Text]
-    , _apActionName :: ![Text]
+    , _apActionName   :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

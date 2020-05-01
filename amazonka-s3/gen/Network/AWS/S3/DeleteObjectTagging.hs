@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,8 +44,8 @@ import Network.AWS.S3.Types.Product
 data DeleteObjectTagging =
   DeleteObjectTagging'
     { _dotVersionId :: !(Maybe ObjectVersionId)
-    , _dotBucket :: !BucketName
-    , _dotKey :: !ObjectKey
+    , _dotBucket    :: !BucketName
+    , _dotKey       :: !ObjectKey
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -105,7 +105,7 @@ instance ToQuery DeleteObjectTagging where
 -- | /See:/ 'deleteObjectTaggingResponse' smart constructor.
 data DeleteObjectTaggingResponse =
   DeleteObjectTaggingResponse'
-    { _dotrsVersionId :: !(Maybe ObjectVersionId)
+    { _dotrsVersionId      :: !(Maybe ObjectVersionId)
     , _dotrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

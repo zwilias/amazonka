@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.Response
 -- /See:/ 'purchaseReservedNodeOffering' smart constructor.
 data PurchaseReservedNodeOffering =
   PurchaseReservedNodeOffering'
-    { _prnoNodeCount :: !(Maybe Int)
+    { _prnoNodeCount              :: !(Maybe Int)
     , _prnoReservedNodeOfferingId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -112,7 +112,7 @@ instance ToQuery PurchaseReservedNodeOffering where
 -- | /See:/ 'purchaseReservedNodeOfferingResponse' smart constructor.
 data PurchaseReservedNodeOfferingResponse =
   PurchaseReservedNodeOfferingResponse'
-    { _prnorsReservedNode :: !(Maybe ReservedNode)
+    { _prnorsReservedNode   :: !(Maybe ReservedNode)
     , _prnorsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

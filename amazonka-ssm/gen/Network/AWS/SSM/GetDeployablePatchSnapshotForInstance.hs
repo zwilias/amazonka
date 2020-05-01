@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -117,11 +117,11 @@ instance ToQuery GetDeployablePatchSnapshotForInstance where
 -- | /See:/ 'getDeployablePatchSnapshotForInstanceResponse' smart constructor.
 data GetDeployablePatchSnapshotForInstanceResponse =
   GetDeployablePatchSnapshotForInstanceResponse'
-    { _gdpsfirsInstanceId :: !(Maybe Text)
-    , _gdpsfirsProduct :: !(Maybe Text)
+    { _gdpsfirsInstanceId          :: !(Maybe Text)
+    , _gdpsfirsProduct             :: !(Maybe Text)
     , _gdpsfirsSnapshotDownloadURL :: !(Maybe Text)
-    , _gdpsfirsSnapshotId :: !(Maybe Text)
-    , _gdpsfirsResponseStatus :: !Int
+    , _gdpsfirsSnapshotId          :: !(Maybe Text)
+    , _gdpsfirsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

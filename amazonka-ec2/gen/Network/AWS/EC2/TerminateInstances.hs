@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,7 +58,7 @@ import Network.AWS.Response
 -- /See:/ 'terminateInstances' smart constructor.
 data TerminateInstances =
   TerminateInstances'
-    { _tiDryRun :: !(Maybe Bool)
+    { _tiDryRun      :: !(Maybe Bool)
     , _tiInstanceIds :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -119,7 +119,7 @@ instance ToQuery TerminateInstances where
 data TerminateInstancesResponse =
   TerminateInstancesResponse'
     { _tirsTerminatingInstances :: !(Maybe [InstanceStateChange])
-    , _tirsResponseStatus :: !Int
+    , _tirsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,11 +47,11 @@ import Network.AWS.Response
 -- | /See:/ 'createIndex' smart constructor.
 data CreateIndex =
   CreateIndex'
-    { _ciParentReference :: !(Maybe ObjectReference)
-    , _ciLinkName :: !(Maybe Text)
-    , _ciDirectoryARN :: !Text
+    { _ciParentReference             :: !(Maybe ObjectReference)
+    , _ciLinkName                    :: !(Maybe Text)
+    , _ciDirectoryARN                :: !Text
     , _ciOrderedIndexedAttributeList :: ![AttributeKey]
-    , _ciIsUnique :: !Bool
+    , _ciIsUnique                    :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -143,7 +143,7 @@ instance ToQuery CreateIndex where
 data CreateIndexResponse =
   CreateIndexResponse'
     { _cirsObjectIdentifier :: !(Maybe Text)
-    , _cirsResponseStatus :: !Int
+    , _cirsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

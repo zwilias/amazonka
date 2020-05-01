@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -91,8 +91,8 @@ instance ToQuery GetSchemaAsJSON where
 -- | /See:/ 'getSchemaAsJSONResponse' smart constructor.
 data GetSchemaAsJSONResponse =
   GetSchemaAsJSONResponse'
-    { _gsajrsDocument :: !(Maybe Text)
-    , _gsajrsName :: !(Maybe Text)
+    { _gsajrsDocument       :: !(Maybe Text)
+    , _gsajrsName           :: !(Maybe Text)
     , _gsajrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

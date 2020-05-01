@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,9 +57,9 @@ import Network.AWS.Response
 -- /See:/ 'createCacheParameterGroup' smart constructor.
 data CreateCacheParameterGroup =
   CreateCacheParameterGroup'
-    { _ccpgCacheParameterGroupName :: !Text
+    { _ccpgCacheParameterGroupName   :: !Text
     , _ccpgCacheParameterGroupFamily :: !Text
-    , _ccpgDescription :: !Text
+    , _ccpgDescription               :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -136,7 +136,7 @@ instance ToQuery CreateCacheParameterGroup where
 data CreateCacheParameterGroupResponse =
   CreateCacheParameterGroupResponse'
     { _ccpgrsCacheParameterGroup :: !(Maybe CacheParameterGroup)
-    , _ccpgrsResponseStatus :: !Int
+    , _ccpgrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

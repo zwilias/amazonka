@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.Response
 data DescribeAutoScalingGroups =
   DescribeAutoScalingGroups'
     { _dasgAutoScalingGroupNames :: !(Maybe [Text])
-    , _dasgNextToken :: !(Maybe Text)
-    , _dasgMaxRecords :: !(Maybe Int)
+    , _dasgNextToken             :: !(Maybe Text)
+    , _dasgMaxRecords            :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -127,8 +127,8 @@ instance ToQuery DescribeAutoScalingGroups where
 -- | /See:/ 'describeAutoScalingGroupsResponse' smart constructor.
 data DescribeAutoScalingGroupsResponse =
   DescribeAutoScalingGroupsResponse'
-    { _dasgrsNextToken :: !(Maybe Text)
-    , _dasgrsResponseStatus :: !Int
+    { _dasgrsNextToken         :: !(Maybe Text)
+    , _dasgrsResponseStatus    :: !Int
     , _dasgrsAutoScalingGroups :: ![AutoScalingGroup]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

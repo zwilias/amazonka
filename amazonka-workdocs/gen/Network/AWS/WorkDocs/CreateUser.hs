@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,14 +52,14 @@ import Network.AWS.WorkDocs.Types.Product
 data CreateUser =
   CreateUser'
     { _cuAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _cuStorageRule :: !(Maybe StorageRuleType)
-    , _cuEmailAddress :: !(Maybe Text)
-    , _cuTimeZoneId :: !(Maybe Text)
-    , _cuOrganizationId :: !(Maybe Text)
-    , _cuUsername :: !Text
-    , _cuGivenName :: !Text
-    , _cuSurname :: !Text
-    , _cuPassword :: !(Sensitive Text)
+    , _cuStorageRule         :: !(Maybe StorageRuleType)
+    , _cuEmailAddress        :: !(Maybe Text)
+    , _cuTimeZoneId          :: !(Maybe Text)
+    , _cuOrganizationId      :: !(Maybe Text)
+    , _cuUsername            :: !Text
+    , _cuGivenName           :: !Text
+    , _cuSurname             :: !Text
+    , _cuPassword            :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -182,7 +182,7 @@ instance ToQuery CreateUser where
 -- | /See:/ 'createUserResponse' smart constructor.
 data CreateUserResponse =
   CreateUserResponse'
-    { _cursUser :: !(Maybe User)
+    { _cursUser           :: !(Maybe User)
     , _cursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

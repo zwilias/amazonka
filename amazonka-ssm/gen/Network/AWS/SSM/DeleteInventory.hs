@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,10 +48,10 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'deleteInventory' smart constructor.
 data DeleteInventory =
   DeleteInventory'
-    { _diClientToken :: !(Maybe Text)
+    { _diClientToken        :: !(Maybe Text)
     , _diSchemaDeleteOption :: !(Maybe InventorySchemaDeleteOption)
-    , _diDryRun :: !(Maybe Bool)
-    , _diTypeName :: !Text
+    , _diDryRun             :: !(Maybe Bool)
+    , _diTypeName           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -137,10 +137,10 @@ instance ToQuery DeleteInventory where
 -- | /See:/ 'deleteInventoryResponse' smart constructor.
 data DeleteInventoryResponse =
   DeleteInventoryResponse'
-    { _dirsTypeName :: !(Maybe Text)
+    { _dirsTypeName        :: !(Maybe Text)
     , _dirsDeletionSummary :: !(Maybe InventoryDeletionSummary)
-    , _dirsDeletionId :: !(Maybe Text)
-    , _dirsResponseStatus :: !Int
+    , _dirsDeletionId      :: !(Maybe Text)
+    , _dirsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

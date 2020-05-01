@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,12 +52,12 @@ import Network.AWS.Response
 data SynthesizeSpeech =
   SynthesizeSpeech'
     { _ssSpeechMarkTypes :: !(Maybe [SpeechMarkType])
-    , _ssSampleRate :: !(Maybe Text)
-    , _ssTextType :: !(Maybe TextType)
-    , _ssLexiconNames :: !(Maybe [Sensitive Text])
-    , _ssOutputFormat :: !OutputFormat
-    , _ssText :: !Text
-    , _ssVoiceId :: !VoiceId
+    , _ssSampleRate      :: !(Maybe Text)
+    , _ssTextType        :: !(Maybe TextType)
+    , _ssLexiconNames    :: !(Maybe [Sensitive Text])
+    , _ssOutputFormat    :: !OutputFormat
+    , _ssText            :: !Text
+    , _ssVoiceId         :: !VoiceId
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -166,9 +166,9 @@ instance ToQuery SynthesizeSpeech where
 data SynthesizeSpeechResponse =
   SynthesizeSpeechResponse'
     { _ssrsRequestCharacters :: !(Maybe Int)
-    , _ssrsContentType :: !(Maybe Text)
-    , _ssrsResponseStatus :: !Int
-    , _ssrsAudioStream :: !RsBody
+    , _ssrsContentType       :: !(Maybe Text)
+    , _ssrsResponseStatus    :: !Int
+    , _ssrsAudioStream       :: !RsBody
     }
   deriving (Show, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -67,12 +67,12 @@ import Network.AWS.Response
 -- /See:/ 'describeTags' smart constructor.
 data DescribeTags =
   DescribeTags'
-    { _dtTagValues :: !(Maybe [Text])
+    { _dtTagValues    :: !(Maybe [Text])
     , _dtResourceType :: !(Maybe Text)
     , _dtResourceName :: !(Maybe Text)
-    , _dtTagKeys :: !(Maybe [Text])
-    , _dtMarker :: !(Maybe Text)
-    , _dtMaxRecords :: !(Maybe Int)
+    , _dtTagKeys      :: !(Maybe [Text])
+    , _dtMarker       :: !(Maybe Text)
+    , _dtMaxRecords   :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -169,9 +169,9 @@ instance ToQuery DescribeTags where
 -- /See:/ 'describeTagsResponse' smart constructor.
 data DescribeTagsResponse =
   DescribeTagsResponse'
-    { _dtrsMarker :: !(Maybe Text)
+    { _dtrsMarker          :: !(Maybe Text)
     , _dtrsTaggedResources :: !(Maybe [TaggedResource])
-    , _dtrsResponseStatus :: !Int
+    , _dtrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

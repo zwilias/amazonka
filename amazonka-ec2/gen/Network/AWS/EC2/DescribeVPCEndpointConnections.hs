@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,9 +47,9 @@ import Network.AWS.Response
 -- | /See:/ 'describeVPCEndpointConnections' smart constructor.
 data DescribeVPCEndpointConnections =
   DescribeVPCEndpointConnections'
-    { _dvecFilters :: !(Maybe [Filter])
-    , _dvecNextToken :: !(Maybe Text)
-    , _dvecDryRun :: !(Maybe Bool)
+    { _dvecFilters    :: !(Maybe [Filter])
+    , _dvecNextToken  :: !(Maybe Text)
+    , _dvecDryRun     :: !(Maybe Bool)
     , _dvecMaxResults :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -128,8 +128,8 @@ instance ToQuery DescribeVPCEndpointConnections where
 data DescribeVPCEndpointConnectionsResponse =
   DescribeVPCEndpointConnectionsResponse'
     { _dvecrsVPCEndpointConnections :: !(Maybe [VPCEndpointConnection])
-    , _dvecrsNextToken :: !(Maybe Text)
-    , _dvecrsResponseStatus :: !Int
+    , _dvecrsNextToken              :: !(Maybe Text)
+    , _dvecrsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

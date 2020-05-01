@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -67,7 +67,7 @@ data DescribeComplianceByConfigRule =
   DescribeComplianceByConfigRule'
     { _dcbcrConfigRuleNames :: !(Maybe [Text])
     , _dcbcrComplianceTypes :: !(Maybe [ComplianceType])
-    , _dcbcrNextToken :: !(Maybe Text)
+    , _dcbcrNextToken       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -157,8 +157,8 @@ instance ToQuery DescribeComplianceByConfigRule where
 data DescribeComplianceByConfigRuleResponse =
   DescribeComplianceByConfigRuleResponse'
     { _dcbcrrsComplianceByConfigRules :: !(Maybe [ComplianceByConfigRule])
-    , _dcbcrrsNextToken :: !(Maybe Text)
-    , _dcbcrrsResponseStatus :: !Int
+    , _dcbcrrsNextToken               :: !(Maybe Text)
+    , _dcbcrrsResponseStatus          :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

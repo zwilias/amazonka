@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,8 +55,8 @@ import Network.AWS.Response
 -- | /See:/ 'getBotChannelAssociation' smart constructor.
 data GetBotChannelAssociation =
   GetBotChannelAssociation'
-    { _gName :: !Text
-    , _gBotName :: !Text
+    { _gName     :: !Text
+    , _gBotName  :: !Text
     , _gBotAlias :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -134,16 +134,16 @@ instance ToQuery GetBotChannelAssociation where
 -- | /See:/ 'getBotChannelAssociationResponse' smart constructor.
 data GetBotChannelAssociationResponse =
   GetBotChannelAssociationResponse'
-    { _gbcarsFailureReason :: !(Maybe Text)
-    , _gbcarsStatus :: !(Maybe ChannelStatus)
-    , _gbcarsBotAlias :: !(Maybe Text)
-    , _gbcarsBotName :: !(Maybe Text)
+    { _gbcarsFailureReason    :: !(Maybe Text)
+    , _gbcarsStatus           :: !(Maybe ChannelStatus)
+    , _gbcarsBotAlias         :: !(Maybe Text)
+    , _gbcarsBotName          :: !(Maybe Text)
     , _gbcarsBotConfiguration :: !(Maybe (Sensitive (Map Text Text)))
-    , _gbcarsCreatedDate :: !(Maybe POSIX)
-    , _gbcarsName :: !(Maybe Text)
-    , _gbcarsType :: !(Maybe ChannelType)
-    , _gbcarsDescription :: !(Maybe Text)
-    , _gbcarsResponseStatus :: !Int
+    , _gbcarsCreatedDate      :: !(Maybe POSIX)
+    , _gbcarsName             :: !(Maybe Text)
+    , _gbcarsType             :: !(Maybe ChannelType)
+    , _gbcarsDescription      :: !(Maybe Text)
+    , _gbcarsResponseStatus   :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

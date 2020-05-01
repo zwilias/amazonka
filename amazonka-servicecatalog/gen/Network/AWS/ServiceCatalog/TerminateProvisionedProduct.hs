@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.ServiceCatalog.Types.Product
 data TerminateProvisionedProduct =
   TerminateProvisionedProduct'
     { _tppProvisionedProductName :: !(Maybe Text)
-    , _tppAcceptLanguage :: !(Maybe Text)
-    , _tppIgnoreErrors :: !(Maybe Bool)
-    , _tppProvisionedProductId :: !(Maybe Text)
-    , _tppTerminateToken :: !Text
+    , _tppAcceptLanguage         :: !(Maybe Text)
+    , _tppIgnoreErrors           :: !(Maybe Bool)
+    , _tppProvisionedProductId   :: !(Maybe Text)
+    , _tppTerminateToken         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -148,7 +148,7 @@ instance ToQuery TerminateProvisionedProduct where
 -- | /See:/ 'terminateProvisionedProductResponse' smart constructor.
 data TerminateProvisionedProductResponse =
   TerminateProvisionedProductResponse'
-    { _tpprsRecordDetail :: !(Maybe RecordDetail)
+    { _tpprsRecordDetail   :: !(Maybe RecordDetail)
     , _tpprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

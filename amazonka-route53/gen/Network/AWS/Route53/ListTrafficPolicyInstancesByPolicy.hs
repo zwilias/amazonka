@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -60,11 +60,11 @@ import Network.AWS.Route53.Types.Product
 data ListTrafficPolicyInstancesByPolicy =
   ListTrafficPolicyInstancesByPolicy'
     { _ltpibpTrafficPolicyInstanceTypeMarker :: !(Maybe RecordType)
-    , _ltpibpMaxItems :: !(Maybe Text)
-    , _ltpibpHostedZoneIdMarker :: !(Maybe ResourceId)
+    , _ltpibpMaxItems                        :: !(Maybe Text)
+    , _ltpibpHostedZoneIdMarker              :: !(Maybe ResourceId)
     , _ltpibpTrafficPolicyInstanceNameMarker :: !(Maybe Text)
-    , _ltpibpTrafficPolicyId :: !Text
-    , _ltpibpTrafficPolicyVersion :: !Nat
+    , _ltpibpTrafficPolicyId                 :: !Text
+    , _ltpibpTrafficPolicyVersion            :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -179,12 +179,12 @@ instance ToQuery ListTrafficPolicyInstancesByPolicy where
 data ListTrafficPolicyInstancesByPolicyResponse =
   ListTrafficPolicyInstancesByPolicyResponse'
     { _ltpibprsTrafficPolicyInstanceTypeMarker :: !(Maybe RecordType)
-    , _ltpibprsHostedZoneIdMarker :: !(Maybe ResourceId)
+    , _ltpibprsHostedZoneIdMarker              :: !(Maybe ResourceId)
     , _ltpibprsTrafficPolicyInstanceNameMarker :: !(Maybe Text)
-    , _ltpibprsResponseStatus :: !Int
-    , _ltpibprsTrafficPolicyInstances :: ![TrafficPolicyInstance]
-    , _ltpibprsIsTruncated :: !Bool
-    , _ltpibprsMaxItems :: !Text
+    , _ltpibprsResponseStatus                  :: !Int
+    , _ltpibprsTrafficPolicyInstances          :: ![TrafficPolicyInstance]
+    , _ltpibprsIsTruncated                     :: !Bool
+    , _ltpibprsMaxItems                        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

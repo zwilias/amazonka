@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -111,15 +111,15 @@ instance ToQuery DescribeOrganization where
 -- | /See:/ 'describeOrganizationResponse' smart constructor.
 data DescribeOrganizationResponse =
   DescribeOrganizationResponse'
-    { _dorsDirectoryId :: !(Maybe Text)
-    , _dorsState :: !(Maybe Text)
-    , _dorsAlias :: !(Maybe Text)
-    , _dorsCompletedDate :: !(Maybe POSIX)
-    , _dorsDirectoryType :: !(Maybe Text)
+    { _dorsDirectoryId       :: !(Maybe Text)
+    , _dorsState             :: !(Maybe Text)
+    , _dorsAlias             :: !(Maybe Text)
+    , _dorsCompletedDate     :: !(Maybe POSIX)
+    , _dorsDirectoryType     :: !(Maybe Text)
     , _dorsDefaultMailDomain :: !(Maybe Text)
-    , _dorsErrorMessage :: !(Maybe Text)
-    , _dorsOrganizationId :: !(Maybe Text)
-    , _dorsResponseStatus :: !Int
+    , _dorsErrorMessage      :: !(Maybe Text)
+    , _dorsOrganizationId    :: !(Maybe Text)
+    , _dorsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

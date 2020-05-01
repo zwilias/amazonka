@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,12 +52,12 @@ import Network.AWS.Response
 -- | /See:/ 'describeFleetHistory' smart constructor.
 data DescribeFleetHistory =
   DescribeFleetHistory'
-    { _dfhNextToken :: !(Maybe Text)
-    , _dfhEventType :: !(Maybe FleetEventType)
-    , _dfhDryRun :: !(Maybe Bool)
+    { _dfhNextToken  :: !(Maybe Text)
+    , _dfhEventType  :: !(Maybe FleetEventType)
+    , _dfhDryRun     :: !(Maybe Bool)
     , _dfhMaxResults :: !(Maybe Int)
-    , _dfhFleetId :: !Text
-    , _dfhStartTime :: !ISO8601
+    , _dfhFleetId    :: !Text
+    , _dfhStartTime  :: !ISO8601
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -153,12 +153,12 @@ instance ToQuery DescribeFleetHistory where
 -- | /See:/ 'describeFleetHistoryResponse' smart constructor.
 data DescribeFleetHistoryResponse =
   DescribeFleetHistoryResponse'
-    { _dfhrsStartTime :: !(Maybe ISO8601)
+    { _dfhrsStartTime         :: !(Maybe ISO8601)
     , _dfhrsLastEvaluatedTime :: !(Maybe ISO8601)
-    , _dfhrsNextToken :: !(Maybe Text)
-    , _dfhrsHistoryRecords :: !(Maybe [HistoryRecordEntry])
-    , _dfhrsFleetId :: !(Maybe Text)
-    , _dfhrsResponseStatus :: !Int
+    , _dfhrsNextToken         :: !(Maybe Text)
+    , _dfhrsHistoryRecords    :: !(Maybe [HistoryRecordEntry])
+    , _dfhrsFleetId           :: !(Maybe Text)
+    , _dfhrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -59,7 +59,7 @@ import Network.AWS.Response
 data RegisterInstancesWithLoadBalancer =
   RegisterInstancesWithLoadBalancer'
     { _riwlbLoadBalancerName :: !Text
-    , _riwlbInstances :: ![Instance]
+    , _riwlbInstances        :: ![Instance]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,7 +124,7 @@ instance ToQuery RegisterInstancesWithLoadBalancer where
 -- /See:/ 'registerInstancesWithLoadBalancerResponse' smart constructor.
 data RegisterInstancesWithLoadBalancerResponse =
   RegisterInstancesWithLoadBalancerResponse'
-    { _riwlbrsInstances :: !(Maybe [Instance])
+    { _riwlbrsInstances      :: !(Maybe [Instance])
     , _riwlbrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

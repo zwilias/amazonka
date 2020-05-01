@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Route53.Types.Product
 -- /See:/ 'associateVPCWithHostedZone' smart constructor.
 data AssociateVPCWithHostedZone =
   AssociateVPCWithHostedZone'
-    { _avwhzComment :: !(Maybe Text)
+    { _avwhzComment      :: !(Maybe Text)
     , _avwhzHostedZoneId :: !ResourceId
-    , _avwhzVPC :: !VPC
+    , _avwhzVPC          :: !VPC
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -130,7 +130,7 @@ instance ToXML AssociateVPCWithHostedZone where
 data AssociateVPCWithHostedZoneResponse =
   AssociateVPCWithHostedZoneResponse'
     { _avwhzrsResponseStatus :: !Int
-    , _avwhzrsChangeInfo :: !ChangeInfo
+    , _avwhzrsChangeInfo     :: !ChangeInfo
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

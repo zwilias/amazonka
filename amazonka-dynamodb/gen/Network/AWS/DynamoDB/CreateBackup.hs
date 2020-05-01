@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -66,7 +66,7 @@ import Network.AWS.Response
 -- | /See:/ 'createBackup' smart constructor.
 data CreateBackup =
   CreateBackup'
-    { _cbTableName :: !Text
+    { _cbTableName  :: !Text
     , _cbBackupName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -131,7 +131,7 @@ instance ToQuery CreateBackup where
 -- | /See:/ 'createBackupResponse' smart constructor.
 data CreateBackupResponse =
   CreateBackupResponse'
-    { _cbrsBackupDetails :: !(Maybe BackupDetails)
+    { _cbrsBackupDetails  :: !(Maybe BackupDetails)
     , _cbrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

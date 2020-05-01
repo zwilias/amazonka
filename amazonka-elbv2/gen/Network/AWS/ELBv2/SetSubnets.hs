@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,9 +47,9 @@ import Network.AWS.Response
 -- | /See:/ 'setSubnets' smart constructor.
 data SetSubnets =
   SetSubnets'
-    { _ssSubnetMappings :: !(Maybe [SubnetMapping])
+    { _ssSubnetMappings  :: !(Maybe [SubnetMapping])
     , _ssLoadBalancerARN :: !Text
-    , _ssSubnets :: ![Text]
+    , _ssSubnets         :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -121,7 +121,7 @@ instance ToQuery SetSubnets where
 data SetSubnetsResponse =
   SetSubnetsResponse'
     { _ssrsAvailabilityZones :: !(Maybe [AvailabilityZone])
-    , _ssrsResponseStatus :: !Int
+    , _ssrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

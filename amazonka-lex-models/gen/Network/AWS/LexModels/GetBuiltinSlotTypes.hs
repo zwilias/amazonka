@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,10 +54,10 @@ import Network.AWS.Response
 -- | /See:/ 'getBuiltinSlotTypes' smart constructor.
 data GetBuiltinSlotTypes =
   GetBuiltinSlotTypes'
-    { _gbstLocale :: !(Maybe Locale)
-    , _gbstNextToken :: !(Maybe Text)
+    { _gbstLocale            :: !(Maybe Locale)
+    , _gbstNextToken         :: !(Maybe Text)
     , _gbstSignatureContains :: !(Maybe Text)
-    , _gbstMaxResults :: !(Maybe Nat)
+    , _gbstMaxResults        :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -139,8 +139,8 @@ instance ToQuery GetBuiltinSlotTypes where
 -- | /See:/ 'getBuiltinSlotTypesResponse' smart constructor.
 data GetBuiltinSlotTypesResponse =
   GetBuiltinSlotTypesResponse'
-    { _gbstrsNextToken :: !(Maybe Text)
-    , _gbstrsSlotTypes :: !(Maybe [BuiltinSlotTypeMetadata])
+    { _gbstrsNextToken      :: !(Maybe Text)
+    , _gbstrsSlotTypes      :: !(Maybe [BuiltinSlotTypeMetadata])
     , _gbstrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,13 +27,13 @@ import Network.AWS.WorkDocs.Types.Sum
 data Activity =
   Activity'
     { _aResourceMetadata :: !(Maybe ResourceMetadata)
-    , _aInitiator :: !(Maybe UserMetadata)
-    , _aParticipants :: !(Maybe Participants)
-    , _aOriginalParent :: !(Maybe ResourceMetadata)
-    , _aType :: !(Maybe ActivityType)
-    , _aCommentMetadata :: !(Maybe CommentMetadata)
-    , _aTimeStamp :: !(Maybe POSIX)
-    , _aOrganizationId :: !(Maybe Text)
+    , _aInitiator        :: !(Maybe UserMetadata)
+    , _aParticipants     :: !(Maybe Participants)
+    , _aOriginalParent   :: !(Maybe ResourceMetadata)
+    , _aType             :: !(Maybe ActivityType)
+    , _aCommentMetadata  :: !(Maybe CommentMetadata)
+    , _aTimeStamp        :: !(Maybe POSIX)
+    , _aOrganizationId   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -125,15 +125,15 @@ instance NFData Activity
 -- /See:/ 'comment' smart constructor.
 data Comment =
   Comment'
-    { _cStatus :: !(Maybe CommentStatusType)
-    , _cText :: !(Maybe (Sensitive Text))
-    , _cVisibility :: !(Maybe CommentVisibilityType)
-    , _cThreadId :: !(Maybe Text)
-    , _cContributor :: !(Maybe User)
+    { _cStatus           :: !(Maybe CommentStatusType)
+    , _cText             :: !(Maybe (Sensitive Text))
+    , _cVisibility       :: !(Maybe CommentVisibilityType)
+    , _cThreadId         :: !(Maybe Text)
+    , _cContributor      :: !(Maybe User)
     , _cCreatedTimestamp :: !(Maybe POSIX)
-    , _cRecipientId :: !(Maybe Text)
-    , _cParentId :: !(Maybe Text)
-    , _cCommentId :: !Text
+    , _cRecipientId      :: !(Maybe Text)
+    , _cParentId         :: !(Maybe Text)
+    , _cCommentId        :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -236,11 +236,11 @@ instance NFData Comment
 -- /See:/ 'commentMetadata' smart constructor.
 data CommentMetadata =
   CommentMetadata'
-    { _cmCommentStatus :: !(Maybe CommentStatusType)
-    , _cmContributor :: !(Maybe User)
-    , _cmCommentId :: !(Maybe Text)
+    { _cmCommentStatus    :: !(Maybe CommentStatusType)
+    , _cmContributor      :: !(Maybe User)
+    , _cmCommentId        :: !(Maybe Text)
     , _cmCreatedTimestamp :: !(Maybe POSIX)
-    , _cmRecipientId :: !(Maybe Text)
+    , _cmRecipientId      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -310,13 +310,13 @@ instance NFData CommentMetadata
 data DocumentMetadata =
   DocumentMetadata'
     { _dmLatestVersionMetadata :: !(Maybe DocumentVersionMetadata)
-    , _dmParentFolderId :: !(Maybe Text)
-    , _dmModifiedTimestamp :: !(Maybe POSIX)
-    , _dmId :: !(Maybe Text)
-    , _dmLabels :: !(Maybe [Text])
-    , _dmResourceState :: !(Maybe ResourceStateType)
-    , _dmCreatedTimestamp :: !(Maybe POSIX)
-    , _dmCreatorId :: !(Maybe Text)
+    , _dmParentFolderId        :: !(Maybe Text)
+    , _dmModifiedTimestamp     :: !(Maybe POSIX)
+    , _dmId                    :: !(Maybe Text)
+    , _dmLabels                :: !(Maybe [Text])
+    , _dmResourceState         :: !(Maybe ResourceStateType)
+    , _dmCreatedTimestamp      :: !(Maybe POSIX)
+    , _dmCreatorId             :: !(Maybe Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -571,17 +571,17 @@ instance NFData DocumentVersionMetadata
 -- /See:/ 'folderMetadata' smart constructor.
 data FolderMetadata =
   FolderMetadata'
-    { _fmSignature :: !(Maybe Text)
-    , _fmParentFolderId :: !(Maybe Text)
-    , _fmSize :: !(Maybe Integer)
+    { _fmSignature         :: !(Maybe Text)
+    , _fmParentFolderId    :: !(Maybe Text)
+    , _fmSize              :: !(Maybe Integer)
     , _fmLatestVersionSize :: !(Maybe Integer)
-    , _fmName :: !(Maybe Text)
+    , _fmName              :: !(Maybe Text)
     , _fmModifiedTimestamp :: !(Maybe POSIX)
-    , _fmId :: !(Maybe Text)
-    , _fmLabels :: !(Maybe [Text])
-    , _fmResourceState :: !(Maybe ResourceStateType)
-    , _fmCreatedTimestamp :: !(Maybe POSIX)
-    , _fmCreatorId :: !(Maybe Text)
+    , _fmId                :: !(Maybe Text)
+    , _fmLabels            :: !(Maybe [Text])
+    , _fmResourceState     :: !(Maybe ResourceStateType)
+    , _fmCreatedTimestamp  :: !(Maybe POSIX)
+    , _fmCreatorId         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -702,7 +702,7 @@ instance NFData FolderMetadata
 data GroupMetadata =
   GroupMetadata'
     { _gmName :: !(Maybe Text)
-    , _gmId :: !(Maybe Text)
+    , _gmId   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -742,7 +742,7 @@ instance NFData GroupMetadata
 data NotificationOptions =
   NotificationOptions'
     { _noEmailMessage :: !(Maybe (Sensitive Text))
-    , _noSendEmail :: !(Maybe Bool)
+    , _noSendEmail    :: !(Maybe Bool)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -786,7 +786,7 @@ instance ToJSON NotificationOptions where
 data Participants =
   Participants'
     { _pGroups :: !(Maybe [GroupMetadata])
-    , _pUsers :: !(Maybe [UserMetadata])
+    , _pUsers  :: !(Maybe [UserMetadata])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -868,8 +868,8 @@ instance NFData PermissionInfo
 data Principal =
   Principal'
     { _pRoles :: !(Maybe [PermissionInfo])
-    , _pId :: !(Maybe Text)
-    , _pType :: !(Maybe PrincipalType)
+    , _pId    :: !(Maybe Text)
+    , _pType  :: !(Maybe PrincipalType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -916,13 +916,13 @@ instance NFData Principal
 -- /See:/ 'resourceMetadata' smart constructor.
 data ResourceMetadata =
   ResourceMetadata'
-    { _rmVersionId :: !(Maybe Text)
-    , _rmOwner :: !(Maybe UserMetadata)
-    , _rmName :: !(Maybe Text)
-    , _rmId :: !(Maybe Text)
-    , _rmType :: !(Maybe ResourceType)
+    { _rmVersionId    :: !(Maybe Text)
+    , _rmOwner        :: !(Maybe UserMetadata)
+    , _rmName         :: !(Maybe Text)
+    , _rmId           :: !(Maybe Text)
+    , _rmType         :: !(Maybe ResourceType)
     , _rmOriginalName :: !(Maybe Text)
-    , _rmParentId :: !(Maybe Text)
+    , _rmParentId     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1041,7 +1041,7 @@ instance NFData ResourcePath
 data ResourcePathComponent =
   ResourcePathComponent'
     { _rpcName :: !(Maybe Text)
-    , _rpcId :: !(Maybe Text)
+    , _rpcId   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1081,7 +1081,7 @@ instance NFData ResourcePathComponent
 -- /See:/ 'sharePrincipal' smart constructor.
 data SharePrincipal =
   SharePrincipal'
-    { _spId :: !Text
+    { _spId   :: !Text
     , _spType :: !PrincipalType
     , _spRole :: !RoleType
     }
@@ -1136,11 +1136,11 @@ instance ToJSON SharePrincipal where
 -- /See:/ 'shareResult' smart constructor.
 data ShareResult =
   ShareResult'
-    { _srStatus :: !(Maybe ShareStatusType)
-    , _srPrincipalId :: !(Maybe Text)
-    , _srRole :: !(Maybe RoleType)
+    { _srStatus        :: !(Maybe ShareStatusType)
+    , _srPrincipalId   :: !(Maybe Text)
+    , _srRole          :: !(Maybe RoleType)
     , _srStatusMessage :: !(Maybe (Sensitive Text))
-    , _srShareId :: !(Maybe Text)
+    , _srShareId       :: !(Maybe Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -1210,7 +1210,7 @@ instance NFData ShareResult
 data StorageRuleType =
   StorageRuleType'
     { _srtStorageAllocatedInBytes :: !(Maybe Nat)
-    , _srtStorageType :: !(Maybe StorageType)
+    , _srtStorageType             :: !(Maybe StorageType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1263,8 +1263,8 @@ instance ToJSON StorageRuleType where
 -- /See:/ 'subscription' smart constructor.
 data Subscription =
   Subscription'
-    { _sProtocol :: !(Maybe SubscriptionProtocolType)
-    , _sEndPoint :: !(Maybe Text)
+    { _sProtocol       :: !(Maybe SubscriptionProtocolType)
+    , _sEndPoint       :: !(Maybe Text)
     , _sSubscriptionId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1314,7 +1314,7 @@ instance NFData Subscription
 -- /See:/ 'uploadMetadata' smart constructor.
 data UploadMetadata =
   UploadMetadata'
-    { _umUploadURL :: !(Maybe (Sensitive Text))
+    { _umUploadURL     :: !(Maybe (Sensitive Text))
     , _umSignedHeaders :: !(Maybe (Map Text Text))
     }
   deriving (Eq, Show, Data, Typeable, Generic)
@@ -1359,20 +1359,20 @@ instance NFData UploadMetadata
 -- /See:/ 'user' smart constructor.
 data User =
   User'
-    { _uGivenName :: !(Maybe Text)
-    , _uStatus :: !(Maybe UserStatusType)
-    , _uLocale :: !(Maybe LocaleType)
-    , _uUsername :: !(Maybe Text)
-    , _uStorage :: !(Maybe UserStorageMetadata)
-    , _uModifiedTimestamp :: !(Maybe POSIX)
-    , _uEmailAddress :: !(Maybe Text)
-    , _uId :: !(Maybe Text)
-    , _uRootFolderId :: !(Maybe Text)
-    , _uType :: !(Maybe UserType)
-    , _uSurname :: !(Maybe Text)
-    , _uTimeZoneId :: !(Maybe Text)
-    , _uCreatedTimestamp :: !(Maybe POSIX)
-    , _uOrganizationId :: !(Maybe Text)
+    { _uGivenName          :: !(Maybe Text)
+    , _uStatus             :: !(Maybe UserStatusType)
+    , _uLocale             :: !(Maybe LocaleType)
+    , _uUsername           :: !(Maybe Text)
+    , _uStorage            :: !(Maybe UserStorageMetadata)
+    , _uModifiedTimestamp  :: !(Maybe POSIX)
+    , _uEmailAddress       :: !(Maybe Text)
+    , _uId                 :: !(Maybe Text)
+    , _uRootFolderId       :: !(Maybe Text)
+    , _uType               :: !(Maybe UserType)
+    , _uSurname            :: !(Maybe Text)
+    , _uTimeZoneId         :: !(Maybe Text)
+    , _uCreatedTimestamp   :: !(Maybe POSIX)
+    , _uOrganizationId     :: !(Maybe Text)
     , _uRecycleBinFolderId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1523,11 +1523,11 @@ instance NFData User
 -- /See:/ 'userMetadata' smart constructor.
 data UserMetadata =
   UserMetadata'
-    { _umGivenName :: !(Maybe Text)
-    , _umUsername :: !(Maybe Text)
+    { _umGivenName    :: !(Maybe Text)
+    , _umUsername     :: !(Maybe Text)
     , _umEmailAddress :: !(Maybe Text)
-    , _umId :: !(Maybe Text)
-    , _umSurname :: !(Maybe Text)
+    , _umId           :: !(Maybe Text)
+    , _umSurname      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1596,7 +1596,7 @@ instance NFData UserMetadata
 data UserStorageMetadata =
   UserStorageMetadata'
     { _usmStorageUtilizedInBytes :: !(Maybe Integer)
-    , _usmStorageRule :: !(Maybe StorageRuleType)
+    , _usmStorageRule            :: !(Maybe StorageRuleType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

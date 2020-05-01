@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -245,9 +245,9 @@ instance ToQuery PutItem where
 data PutItemResponse =
   PutItemResponse'
     { _pirsItemCollectionMetrics :: !(Maybe ItemCollectionMetrics)
-    , _pirsConsumedCapacity :: !(Maybe ConsumedCapacity)
-    , _pirsAttributes :: !(Maybe (Map Text AttributeValue))
-    , _pirsResponseStatus :: !Int
+    , _pirsConsumedCapacity      :: !(Maybe ConsumedCapacity)
+    , _pirsAttributes            :: !(Maybe (Map Text AttributeValue))
+    , _pirsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

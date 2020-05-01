@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,9 +57,9 @@ import Network.AWS.Response
 data DescribeDBSubnetGroups =
   DescribeDBSubnetGroups'
     { _ddsgDBSubnetGroupName :: !(Maybe Text)
-    , _ddsgFilters :: !(Maybe [Filter])
-    , _ddsgMarker :: !(Maybe Text)
-    , _ddsgMaxRecords :: !(Maybe Int)
+    , _ddsgFilters           :: !(Maybe [Filter])
+    , _ddsgMarker            :: !(Maybe Text)
+    , _ddsgMaxRecords        :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -149,7 +149,7 @@ instance ToQuery DescribeDBSubnetGroups where
 data DescribeDBSubnetGroupsResponse =
   DescribeDBSubnetGroupsResponse'
     { _ddsgrsDBSubnetGroups :: !(Maybe [DBSubnetGroup])
-    , _ddsgrsMarker :: !(Maybe Text)
+    , _ddsgrsMarker         :: !(Maybe Text)
     , _ddsgrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

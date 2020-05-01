@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,14 +52,14 @@ import Network.AWS.SSM.Types.Product
 data UpdateAssociation =
   UpdateAssociation'
     { _uaScheduleExpression :: !(Maybe Text)
-    , _uaName :: !(Maybe Text)
-    , _uaOutputLocation :: !(Maybe InstanceAssociationOutputLocation)
-    , _uaTargets :: !(Maybe [Target])
-    , _uaParameters :: !(Maybe (Map Text [Text]))
-    , _uaDocumentVersion :: !(Maybe Text)
+    , _uaName               :: !(Maybe Text)
+    , _uaOutputLocation     :: !(Maybe InstanceAssociationOutputLocation)
+    , _uaTargets            :: !(Maybe [Target])
+    , _uaParameters         :: !(Maybe (Map Text [Text]))
+    , _uaDocumentVersion    :: !(Maybe Text)
     , _uaAssociationVersion :: !(Maybe Text)
-    , _uaAssociationName :: !(Maybe Text)
-    , _uaAssociationId :: !Text
+    , _uaAssociationName    :: !(Maybe Text)
+    , _uaAssociationId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -186,7 +186,7 @@ instance ToQuery UpdateAssociation where
 data UpdateAssociationResponse =
   UpdateAssociationResponse'
     { _uarsAssociationDescription :: !(Maybe AssociationDescription)
-    , _uarsResponseStatus :: !Int
+    , _uarsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

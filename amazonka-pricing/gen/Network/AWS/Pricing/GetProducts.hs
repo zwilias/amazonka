@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,11 +52,11 @@ import Network.AWS.Response
 -- | /See:/ 'getProducts' smart constructor.
 data GetProducts =
   GetProducts'
-    { _gpFilters :: !(Maybe [Filter])
+    { _gpFilters       :: !(Maybe [Filter])
     , _gpFormatVersion :: !(Maybe Text)
-    , _gpNextToken :: !(Maybe Text)
-    , _gpServiceCode :: !(Maybe Text)
-    , _gpMaxResults :: !(Maybe Nat)
+    , _gpNextToken     :: !(Maybe Text)
+    , _gpServiceCode   :: !(Maybe Text)
+    , _gpMaxResults    :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -152,9 +152,9 @@ instance ToQuery GetProducts where
 -- | /See:/ 'getProductsResponse' smart constructor.
 data GetProductsResponse =
   GetProductsResponse'
-    { _gprsFormatVersion :: !(Maybe Text)
-    , _gprsNextToken :: !(Maybe Text)
-    , _gprsPriceList :: !(Maybe [Text])
+    { _gprsFormatVersion  :: !(Maybe Text)
+    , _gprsNextToken      :: !(Maybe Text)
+    , _gprsPriceList      :: !(Maybe [Text])
     , _gprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

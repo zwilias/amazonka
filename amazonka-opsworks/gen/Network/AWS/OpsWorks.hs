@@ -769,8 +769,8 @@ import Network.AWS.OpsWorks.DescribeRAIdArrays
 import Network.AWS.OpsWorks.DescribeRDSDBInstances
 import Network.AWS.OpsWorks.DescribeServiceErrors
 import Network.AWS.OpsWorks.DescribeStackProvisioningParameters
-import Network.AWS.OpsWorks.DescribeStackSummary
 import Network.AWS.OpsWorks.DescribeStacks
+import Network.AWS.OpsWorks.DescribeStackSummary
 import Network.AWS.OpsWorks.DescribeTimeBasedAutoScaling
 import Network.AWS.OpsWorks.DescribeUserProfiles
 import Network.AWS.OpsWorks.DescribeVolumes

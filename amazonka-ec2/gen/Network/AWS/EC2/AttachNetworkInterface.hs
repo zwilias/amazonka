@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,9 +50,9 @@ import Network.AWS.Response
 -- /See:/ 'attachNetworkInterface' smart constructor.
 data AttachNetworkInterface =
   AttachNetworkInterface'
-    { _aniDryRun :: !(Maybe Bool)
-    , _aniDeviceIndex :: !Int
-    , _aniInstanceId :: !Text
+    { _aniDryRun             :: !(Maybe Bool)
+    , _aniDeviceIndex        :: !Int
+    , _aniInstanceId         :: !Text
     , _aniNetworkInterfaceId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -135,7 +135,7 @@ instance ToQuery AttachNetworkInterface where
 -- /See:/ 'attachNetworkInterfaceResponse' smart constructor.
 data AttachNetworkInterfaceResponse =
   AttachNetworkInterfaceResponse'
-    { _anirsAttachmentId :: !(Maybe Text)
+    { _anirsAttachmentId   :: !(Maybe Text)
     , _anirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

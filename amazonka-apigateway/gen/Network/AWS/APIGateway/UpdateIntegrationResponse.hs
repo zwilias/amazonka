@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,10 +55,10 @@ import Network.AWS.Response
 data UpdateIntegrationResponse =
   UpdateIntegrationResponse'
     { _uiPatchOperations :: !(Maybe [PatchOperation])
-    , _uiRestAPIId :: !Text
-    , _uiResourceId :: !Text
-    , _uiHttpMethod :: !Text
-    , _uiStatusCode :: !Text
+    , _uiRestAPIId       :: !Text
+    , _uiResourceId      :: !Text
+    , _uiHttpMethod      :: !Text
+    , _uiStatusCode      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

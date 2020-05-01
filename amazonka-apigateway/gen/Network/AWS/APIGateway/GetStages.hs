@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Response
 data GetStages =
   GetStages'
     { _gsDeploymentId :: !(Maybe Text)
-    , _gsRestAPIId :: !Text
+    , _gsRestAPIId    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -104,7 +104,7 @@ instance ToQuery GetStages where
 -- /See:/ 'getStagesResponse' smart constructor.
 data GetStagesResponse =
   GetStagesResponse'
-    { _gsrsItem :: !(Maybe [Stage])
+    { _gsrsItem           :: !(Maybe [Stage])
     , _gsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

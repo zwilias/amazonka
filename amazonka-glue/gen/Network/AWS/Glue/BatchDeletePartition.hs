@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- | /See:/ 'batchDeletePartition' smart constructor.
 data BatchDeletePartition =
   BatchDeletePartition'
-    { _bdpCatalogId :: !(Maybe Text)
-    , _bdpDatabaseName :: !Text
-    , _bdpTableName :: !Text
+    { _bdpCatalogId          :: !(Maybe Text)
+    , _bdpDatabaseName       :: !Text
+    , _bdpTableName          :: !Text
     , _bdpPartitionsToDelete :: ![PartitionValueList]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -133,7 +133,7 @@ instance ToQuery BatchDeletePartition where
 -- | /See:/ 'batchDeletePartitionResponse' smart constructor.
 data BatchDeletePartitionResponse =
   BatchDeletePartitionResponse'
-    { _bdprsErrors :: !(Maybe [PartitionError])
+    { _bdprsErrors         :: !(Maybe [PartitionError])
     , _bdprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

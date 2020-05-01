@@ -871,10 +871,10 @@ import Network.AWS.S3.DeleteBucketReplication
 import Network.AWS.S3.DeleteBucketTagging
 import Network.AWS.S3.DeleteBucketWebsite
 import Network.AWS.S3.DeleteObject
-import Network.AWS.S3.DeleteObjectTagging
 import Network.AWS.S3.DeleteObjects
-import Network.AWS.S3.GetBucketACL
+import Network.AWS.S3.DeleteObjectTagging
 import Network.AWS.S3.GetBucketAccelerateConfiguration
+import Network.AWS.S3.GetBucketACL
 import Network.AWS.S3.GetBucketAnalyticsConfiguration
 import Network.AWS.S3.GetBucketCORS
 import Network.AWS.S3.GetBucketEncryption
@@ -902,12 +902,12 @@ import Network.AWS.S3.ListBucketInventoryConfigurations
 import Network.AWS.S3.ListBucketMetricsConfigurations
 import Network.AWS.S3.ListBuckets
 import Network.AWS.S3.ListMultipartUploads
-import Network.AWS.S3.ListObjectVersions
 import Network.AWS.S3.ListObjects
 import Network.AWS.S3.ListObjectsV2
+import Network.AWS.S3.ListObjectVersions
 import Network.AWS.S3.ListParts
-import Network.AWS.S3.PutBucketACL
 import Network.AWS.S3.PutBucketAccelerateConfiguration
+import Network.AWS.S3.PutBucketACL
 import Network.AWS.S3.PutBucketAnalyticsConfiguration
 import Network.AWS.S3.PutBucketCORS
 import Network.AWS.S3.PutBucketEncryption

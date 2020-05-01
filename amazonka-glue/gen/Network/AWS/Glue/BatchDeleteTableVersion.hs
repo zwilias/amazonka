@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,10 +46,10 @@ import Network.AWS.Response
 -- | /See:/ 'batchDeleteTableVersion' smart constructor.
 data BatchDeleteTableVersion =
   BatchDeleteTableVersion'
-    { _bdtvCatalogId :: !(Maybe Text)
+    { _bdtvCatalogId    :: !(Maybe Text)
     , _bdtvDatabaseName :: !Text
-    , _bdtvTableName :: !Text
-    , _bdtvVersionIds :: ![Text]
+    , _bdtvTableName    :: !Text
+    , _bdtvVersionIds   :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -133,7 +133,7 @@ instance ToQuery BatchDeleteTableVersion where
 -- | /See:/ 'batchDeleteTableVersionResponse' smart constructor.
 data BatchDeleteTableVersionResponse =
   BatchDeleteTableVersionResponse'
-    { _bdtvrsErrors :: !(Maybe [TableVersionError])
+    { _bdtvrsErrors         :: !(Maybe [TableVersionError])
     , _bdtvrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

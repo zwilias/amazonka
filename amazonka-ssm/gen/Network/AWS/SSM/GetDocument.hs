@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,9 +49,9 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'getDocument' smart constructor.
 data GetDocument =
   GetDocument'
-    { _gdDocumentFormat :: !(Maybe DocumentFormat)
+    { _gdDocumentFormat  :: !(Maybe DocumentFormat)
     , _gdDocumentVersion :: !(Maybe Text)
-    , _gdName :: !Text
+    , _gdName            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -128,12 +128,12 @@ instance ToQuery GetDocument where
 -- | /See:/ 'getDocumentResponse' smart constructor.
 data GetDocumentResponse =
   GetDocumentResponse'
-    { _gdrsDocumentType :: !(Maybe DocumentType)
-    , _gdrsContent :: !(Maybe Text)
-    , _gdrsDocumentFormat :: !(Maybe DocumentFormat)
-    , _gdrsName :: !(Maybe Text)
+    { _gdrsDocumentType    :: !(Maybe DocumentType)
+    , _gdrsContent         :: !(Maybe Text)
+    , _gdrsDocumentFormat  :: !(Maybe DocumentFormat)
+    , _gdrsName            :: !(Maybe Text)
     , _gdrsDocumentVersion :: !(Maybe Text)
-    , _gdrsResponseStatus :: !Int
+    , _gdrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

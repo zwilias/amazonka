@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -72,8 +72,8 @@ import Network.AWS.WAFRegional.Types.Product
 data UpdateXSSMatchSet =
   UpdateXSSMatchSet'
     { _uxmsXSSMatchSetId :: !Text
-    , _uxmsChangeToken :: !Text
-    , _uxmsUpdates :: !(List1 XSSMatchSetUpdate)
+    , _uxmsChangeToken   :: !Text
+    , _uxmsUpdates       :: !(List1 XSSMatchSetUpdate)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -154,7 +154,7 @@ instance ToQuery UpdateXSSMatchSet where
 -- /See:/ 'updateXSSMatchSetResponse' smart constructor.
 data UpdateXSSMatchSetResponse =
   UpdateXSSMatchSetResponse'
-    { _uxmsrsChangeToken :: !(Maybe Text)
+    { _uxmsrsChangeToken    :: !(Maybe Text)
     , _uxmsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

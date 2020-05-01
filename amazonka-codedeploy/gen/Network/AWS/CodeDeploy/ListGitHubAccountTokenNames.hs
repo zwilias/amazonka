@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -106,8 +106,8 @@ instance ToQuery ListGitHubAccountTokenNames where
 -- /See:/ 'listGitHubAccountTokenNamesResponse' smart constructor.
 data ListGitHubAccountTokenNamesResponse =
   ListGitHubAccountTokenNamesResponse'
-    { _lghatnrsTokenNameList :: !(Maybe [Text])
-    , _lghatnrsNextToken :: !(Maybe Text)
+    { _lghatnrsTokenNameList  :: !(Maybe [Text])
+    , _lghatnrsNextToken      :: !(Maybe Text)
     , _lghatnrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

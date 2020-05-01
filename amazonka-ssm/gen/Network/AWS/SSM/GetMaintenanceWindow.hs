@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -114,17 +114,17 @@ instance ToQuery GetMaintenanceWindow where
 -- | /See:/ 'getMaintenanceWindowResponse' smart constructor.
 data GetMaintenanceWindowResponse =
   GetMaintenanceWindowResponse'
-    { _gmwrsEnabled :: !(Maybe Bool)
-    , _gmwrsSchedule :: !(Maybe Text)
-    , _gmwrsCreatedDate :: !(Maybe POSIX)
-    , _gmwrsName :: !(Maybe Text)
-    , _gmwrsModifiedDate :: !(Maybe POSIX)
-    , _gmwrsCutoff :: !(Maybe Nat)
+    { _gmwrsEnabled                  :: !(Maybe Bool)
+    , _gmwrsSchedule                 :: !(Maybe Text)
+    , _gmwrsCreatedDate              :: !(Maybe POSIX)
+    , _gmwrsName                     :: !(Maybe Text)
+    , _gmwrsModifiedDate             :: !(Maybe POSIX)
+    , _gmwrsCutoff                   :: !(Maybe Nat)
     , _gmwrsAllowUnassociatedTargets :: !(Maybe Bool)
-    , _gmwrsDescription :: !(Maybe (Sensitive Text))
-    , _gmwrsDuration :: !(Maybe Nat)
-    , _gmwrsWindowId :: !(Maybe Text)
-    , _gmwrsResponseStatus :: !Int
+    , _gmwrsDescription              :: !(Maybe (Sensitive Text))
+    , _gmwrsDuration                 :: !(Maybe Nat)
+    , _gmwrsWindowId                 :: !(Maybe Text)
+    , _gmwrsResponseStatus           :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

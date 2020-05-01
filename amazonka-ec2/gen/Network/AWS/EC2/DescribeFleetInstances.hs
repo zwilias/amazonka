@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,11 +49,11 @@ import Network.AWS.Response
 -- | /See:/ 'describeFleetInstances' smart constructor.
 data DescribeFleetInstances =
   DescribeFleetInstances'
-    { _dfisFilters :: !(Maybe [Filter])
-    , _dfisNextToken :: !(Maybe Text)
-    , _dfisDryRun :: !(Maybe Bool)
+    { _dfisFilters    :: !(Maybe [Filter])
+    , _dfisNextToken  :: !(Maybe Text)
+    , _dfisDryRun     :: !(Maybe Bool)
     , _dfisMaxResults :: !(Maybe Int)
-    , _dfisFleetId :: !Text
+    , _dfisFleetId    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -139,10 +139,10 @@ instance ToQuery DescribeFleetInstances where
 -- | /See:/ 'describeFleetInstancesResponse' smart constructor.
 data DescribeFleetInstancesResponse =
   DescribeFleetInstancesResponse'
-    { _drsNextToken :: !(Maybe Text)
-    , _drsFleetId :: !(Maybe Text)
+    { _drsNextToken       :: !(Maybe Text)
+    , _drsFleetId         :: !(Maybe Text)
     , _drsActiveInstances :: !(Maybe [ActiveInstance])
-    , _drsResponseStatus :: !Int
+    , _drsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

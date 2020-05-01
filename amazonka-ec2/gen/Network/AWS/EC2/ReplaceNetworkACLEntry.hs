@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,15 +54,15 @@ import Network.AWS.Response
 data ReplaceNetworkACLEntry =
   ReplaceNetworkACLEntry'
     { _rnaeIPv6CidrBlock :: !(Maybe Text)
-    , _rnaeICMPTypeCode :: !(Maybe ICMPTypeCode)
-    , _rnaePortRange :: !(Maybe PortRange)
-    , _rnaeCidrBlock :: !(Maybe Text)
-    , _rnaeDryRun :: !(Maybe Bool)
-    , _rnaeEgress :: !Bool
-    , _rnaeNetworkACLId :: !Text
-    , _rnaeProtocol :: !Text
-    , _rnaeRuleAction :: !RuleAction
-    , _rnaeRuleNumber :: !Int
+    , _rnaeICMPTypeCode  :: !(Maybe ICMPTypeCode)
+    , _rnaePortRange     :: !(Maybe PortRange)
+    , _rnaeCidrBlock     :: !(Maybe Text)
+    , _rnaeDryRun        :: !(Maybe Bool)
+    , _rnaeEgress        :: !Bool
+    , _rnaeNetworkACLId  :: !Text
+    , _rnaeProtocol      :: !Text
+    , _rnaeRuleAction    :: !RuleAction
+    , _rnaeRuleNumber    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1359,8 +1359,8 @@ import Network.AWS.MediaConvert.GetJob
 import Network.AWS.MediaConvert.GetJobTemplate
 import Network.AWS.MediaConvert.GetPreset
 import Network.AWS.MediaConvert.GetQueue
-import Network.AWS.MediaConvert.ListJobTemplates
 import Network.AWS.MediaConvert.ListJobs
+import Network.AWS.MediaConvert.ListJobTemplates
 import Network.AWS.MediaConvert.ListPresets
 import Network.AWS.MediaConvert.ListQueues
 import Network.AWS.MediaConvert.Types

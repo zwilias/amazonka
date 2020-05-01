@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,7 +53,7 @@ import Network.AWS.Response
 -- /See:/ 'createPolicy' smart constructor.
 data CreatePolicy =
   CreatePolicy'
-    { _cpPolicyName :: !Text
+    { _cpPolicyName     :: !Text
     , _cpPolicyDocument :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -117,11 +117,11 @@ instance ToQuery CreatePolicy where
 -- /See:/ 'createPolicyResponse' smart constructor.
 data CreatePolicyResponse =
   CreatePolicyResponse'
-    { _cprsPolicyName :: !(Maybe Text)
-    , _cprsPolicyDocument :: !(Maybe Text)
+    { _cprsPolicyName      :: !(Maybe Text)
+    , _cprsPolicyDocument  :: !(Maybe Text)
     , _cprsPolicyVersionId :: !(Maybe Text)
-    , _cprsPolicyARN :: !(Maybe Text)
-    , _cprsResponseStatus :: !Int
+    , _cprsPolicyARN       :: !(Maybe Text)
+    , _cprsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,13 +49,13 @@ import Network.AWS.Response
 -- | /See:/ 'createHITType' smart constructor.
 data CreateHITType =
   CreateHITType'
-    { _chittAutoApprovalDelayInSeconds :: !(Maybe Integer)
-    , _chittKeywords :: !(Maybe Text)
-    , _chittQualificationRequirements :: !(Maybe [QualificationRequirement])
+    { _chittAutoApprovalDelayInSeconds  :: !(Maybe Integer)
+    , _chittKeywords                    :: !(Maybe Text)
+    , _chittQualificationRequirements   :: !(Maybe [QualificationRequirement])
     , _chittAssignmentDurationInSeconds :: !Integer
-    , _chittReward :: !Text
-    , _chittTitle :: !Text
-    , _chittDescription :: !Text
+    , _chittReward                      :: !Text
+    , _chittTitle                       :: !Text
+    , _chittDescription                 :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -176,7 +176,7 @@ instance ToQuery CreateHITType where
 -- | /See:/ 'createHITTypeResponse' smart constructor.
 data CreateHITTypeResponse =
   CreateHITTypeResponse'
-    { _chittrsHITTypeId :: !(Maybe Text)
+    { _chittrsHITTypeId      :: !(Maybe Text)
     , _chittrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

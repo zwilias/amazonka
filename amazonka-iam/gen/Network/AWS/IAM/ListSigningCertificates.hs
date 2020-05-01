@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,7 +55,7 @@ import Network.AWS.Response
 data ListSigningCertificates =
   ListSigningCertificates'
     { _lUserName :: !(Maybe Text)
-    , _lMarker :: !(Maybe Text)
+    , _lMarker   :: !(Maybe Text)
     , _lMaxItems :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -131,10 +131,10 @@ instance ToQuery ListSigningCertificates where
 -- /See:/ 'listSigningCertificatesResponse' smart constructor.
 data ListSigningCertificatesResponse =
   ListSigningCertificatesResponse'
-    { _lrsMarker :: !(Maybe Text)
-    , _lrsIsTruncated :: !(Maybe Bool)
+    { _lrsMarker         :: !(Maybe Text)
+    , _lrsIsTruncated    :: !(Maybe Bool)
     , _lrsResponseStatus :: !Int
-    , _lrsCertificates :: ![SigningCertificate]
+    , _lrsCertificates   :: ![SigningCertificate]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

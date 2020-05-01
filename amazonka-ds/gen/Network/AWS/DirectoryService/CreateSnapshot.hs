@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- /See:/ 'createSnapshot' smart constructor.
 data CreateSnapshot =
   CreateSnapshot'
-    { _csName :: !(Maybe Text)
+    { _csName        :: !(Maybe Text)
     , _csDirectoryId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -115,7 +115,7 @@ instance ToQuery CreateSnapshot where
 -- /See:/ 'createSnapshotResponse' smart constructor.
 data CreateSnapshotResponse =
   CreateSnapshotResponse'
-    { _csrsSnapshotId :: !(Maybe Text)
+    { _csrsSnapshotId     :: !(Maybe Text)
     , _csrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

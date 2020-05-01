@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -98,13 +98,13 @@ instance ToQuery DescribeThingGroup where
 -- | /See:/ 'describeThingGroupResponse' smart constructor.
 data DescribeThingGroupResponse =
   DescribeThingGroupResponse'
-    { _dtgrsThingGroupARN :: !(Maybe Text)
-    , _dtgrsThingGroupId :: !(Maybe Text)
-    , _dtgrsThingGroupMetadata :: !(Maybe ThingGroupMetadata)
-    , _dtgrsThingGroupName :: !(Maybe Text)
-    , _dtgrsVersion :: !(Maybe Integer)
+    { _dtgrsThingGroupARN        :: !(Maybe Text)
+    , _dtgrsThingGroupId         :: !(Maybe Text)
+    , _dtgrsThingGroupMetadata   :: !(Maybe ThingGroupMetadata)
+    , _dtgrsThingGroupName       :: !(Maybe Text)
+    , _dtgrsVersion              :: !(Maybe Integer)
     , _dtgrsThingGroupProperties :: !(Maybe ThingGroupProperties)
-    , _dtgrsResponseStatus :: !Int
+    , _dtgrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- | /See:/ 'createVirtualMFADevice' smart constructor.
 data CreateVirtualMFADevice =
   CreateVirtualMFADevice'
-    { _cvmdPath :: !(Maybe Text)
+    { _cvmdPath                 :: !(Maybe Text)
     , _cvmdVirtualMFADeviceName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -112,7 +112,7 @@ instance ToQuery CreateVirtualMFADevice where
 -- /See:/ 'createVirtualMFADeviceResponse' smart constructor.
 data CreateVirtualMFADeviceResponse =
   CreateVirtualMFADeviceResponse'
-    { _cvmdrsResponseStatus :: !Int
+    { _cvmdrsResponseStatus   :: !Int
     , _cvmdrsVirtualMFADevice :: !VirtualMFADevice
     }
   deriving (Eq, Show, Data, Typeable, Generic)

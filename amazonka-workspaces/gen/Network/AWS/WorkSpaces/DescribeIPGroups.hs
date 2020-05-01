@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.WorkSpaces.Types.Product
 -- | /See:/ 'describeIPGroups' smart constructor.
 data DescribeIPGroups =
   DescribeIPGroups'
-    { _dipgGroupIds :: !(Maybe [Text])
-    , _dipgNextToken :: !(Maybe Text)
+    { _dipgGroupIds   :: !(Maybe [Text])
+    , _dipgNextToken  :: !(Maybe Text)
     , _dipgMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -124,8 +124,8 @@ instance ToQuery DescribeIPGroups where
 -- | /See:/ 'describeIPGroupsResponse' smart constructor.
 data DescribeIPGroupsResponse =
   DescribeIPGroupsResponse'
-    { _digsrsResult :: !(Maybe [WorkspacesIPGroup])
-    , _digsrsNextToken :: !(Maybe Text)
+    { _digsrsResult         :: !(Maybe [WorkspacesIPGroup])
+    , _digsrsNextToken      :: !(Maybe Text)
     , _digsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

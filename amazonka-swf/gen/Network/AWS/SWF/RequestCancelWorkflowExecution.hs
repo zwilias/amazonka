@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,8 +56,8 @@ import Network.AWS.SWF.Types.Product
 -- | /See:/ 'requestCancelWorkflowExecution' smart constructor.
 data RequestCancelWorkflowExecution =
   RequestCancelWorkflowExecution'
-    { _rcweRunId :: !(Maybe Text)
-    , _rcweDomain :: !Text
+    { _rcweRunId      :: !(Maybe Text)
+    , _rcweDomain     :: !Text
     , _rcweWorkflowId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

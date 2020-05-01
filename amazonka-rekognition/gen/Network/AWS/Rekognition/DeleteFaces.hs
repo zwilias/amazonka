@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 data DeleteFaces =
   DeleteFaces'
     { _dfCollectionId :: !Text
-    , _dfFaceIds :: !(List1 Text)
+    , _dfFaceIds      :: !(List1 Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -111,7 +111,7 @@ instance ToQuery DeleteFaces where
 -- | /See:/ 'deleteFacesResponse' smart constructor.
 data DeleteFacesResponse =
   DeleteFacesResponse'
-    { _dfsrsDeletedFaces :: !(Maybe (List1 Text))
+    { _dfsrsDeletedFaces   :: !(Maybe (List1 Text))
     , _dfsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

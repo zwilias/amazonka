@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Response
 data UpdateAvailabilityOptions =
   UpdateAvailabilityOptions'
     { _uaoDomainName :: !Text
-    , _uaoMultiAZ :: !Bool
+    , _uaoMultiAZ    :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -113,7 +113,7 @@ instance ToQuery UpdateAvailabilityOptions where
 data UpdateAvailabilityOptionsResponse =
   UpdateAvailabilityOptionsResponse'
     { _uaorsAvailabilityOptions :: !(Maybe AvailabilityOptionsStatus)
-    , _uaorsResponseStatus :: !Int
+    , _uaorsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

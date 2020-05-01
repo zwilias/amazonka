@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 data CreateDatastore =
   CreateDatastore'
     { _cdRetentionPeriod :: !(Maybe RetentionPeriod)
-    , _cdDatastoreName :: !Text
+    , _cdDatastoreName   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -108,10 +108,10 @@ instance ToQuery CreateDatastore where
 -- | /See:/ 'createDatastoreResponse' smart constructor.
 data CreateDatastoreResponse =
   CreateDatastoreResponse'
-    { _cdrsDatastoreARN :: !(Maybe Text)
-    , _cdrsDatastoreName :: !(Maybe Text)
+    { _cdrsDatastoreARN    :: !(Maybe Text)
+    , _cdrsDatastoreName   :: !(Maybe Text)
     , _cdrsRetentionPeriod :: !(Maybe RetentionPeriod)
-    , _cdrsResponseStatus :: !Int
+    , _cdrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

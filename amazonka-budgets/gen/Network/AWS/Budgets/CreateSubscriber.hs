@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,10 +49,10 @@ import Network.AWS.Response
 -- /See:/ 'createSubscriber' smart constructor.
 data CreateSubscriber =
   CreateSubscriber'
-    { _csAccountId :: !Text
-    , _csBudgetName :: !Text
+    { _csAccountId    :: !Text
+    , _csBudgetName   :: !Text
     , _csNotification :: !Notification
-    , _csSubscriber :: !Subscriber
+    , _csSubscriber   :: !Subscriber
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

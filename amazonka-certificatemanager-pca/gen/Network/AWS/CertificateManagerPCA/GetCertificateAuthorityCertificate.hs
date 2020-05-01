@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -105,9 +105,9 @@ instance ToQuery GetCertificateAuthorityCertificate where
 -- | /See:/ 'getCertificateAuthorityCertificateResponse' smart constructor.
 data GetCertificateAuthorityCertificateResponse =
   GetCertificateAuthorityCertificateResponse'
-    { _gcacrsCertificate :: !(Maybe Text)
+    { _gcacrsCertificate      :: !(Maybe Text)
     , _gcacrsCertificateChain :: !(Maybe Text)
-    , _gcacrsResponseStatus :: !Int
+    , _gcacrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

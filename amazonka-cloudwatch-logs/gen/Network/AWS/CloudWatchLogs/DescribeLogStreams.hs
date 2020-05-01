@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,12 +54,12 @@ import Network.AWS.Response
 -- | /See:/ 'describeLogStreams' smart constructor.
 data DescribeLogStreams =
   DescribeLogStreams'
-    { _dlssOrderBy :: !(Maybe OrderBy)
-    , _dlssDescending :: !(Maybe Bool)
-    , _dlssNextToken :: !(Maybe Text)
+    { _dlssOrderBy             :: !(Maybe OrderBy)
+    , _dlssDescending          :: !(Maybe Bool)
+    , _dlssNextToken           :: !(Maybe Text)
     , _dlssLogStreamNamePrefix :: !(Maybe Text)
-    , _dlssLimit :: !(Maybe Nat)
-    , _dlssLogGroupName :: !Text
+    , _dlssLimit               :: !(Maybe Nat)
+    , _dlssLogGroupName        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -165,8 +165,8 @@ instance ToQuery DescribeLogStreams where
 -- | /See:/ 'describeLogStreamsResponse' smart constructor.
 data DescribeLogStreamsResponse =
   DescribeLogStreamsResponse'
-    { _dlsrsNextToken :: !(Maybe Text)
-    , _dlsrsLogStreams :: !(Maybe [LogStream])
+    { _dlsrsNextToken      :: !(Maybe Text)
+    , _dlsrsLogStreams     :: !(Maybe [LogStream])
     , _dlsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

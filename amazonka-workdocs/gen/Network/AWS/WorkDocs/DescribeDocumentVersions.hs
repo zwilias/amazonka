@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,12 +54,12 @@ import Network.AWS.WorkDocs.Types.Product
 -- | /See:/ 'describeDocumentVersions' smart constructor.
 data DescribeDocumentVersions =
   DescribeDocumentVersions'
-    { _ddvInclude :: !(Maybe Text)
+    { _ddvInclude             :: !(Maybe Text)
     , _ddvAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _ddvMarker :: !(Maybe Text)
-    , _ddvLimit :: !(Maybe Nat)
-    , _ddvFields :: !(Maybe Text)
-    , _ddvDocumentId :: !Text
+    , _ddvMarker              :: !(Maybe Text)
+    , _ddvLimit               :: !(Maybe Nat)
+    , _ddvFields              :: !(Maybe Text)
+    , _ddvDocumentId          :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -162,8 +162,8 @@ instance ToQuery DescribeDocumentVersions where
 data DescribeDocumentVersionsResponse =
   DescribeDocumentVersionsResponse'
     { _ddvrsDocumentVersions :: !(Maybe [DocumentVersionMetadata])
-    , _ddvrsMarker :: !(Maybe Text)
-    , _ddvrsResponseStatus :: !Int
+    , _ddvrsMarker           :: !(Maybe Text)
+    , _ddvrsResponseStatus   :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

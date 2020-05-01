@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -72,8 +72,8 @@ import Network.AWS.WAF.Types.Product
 data UpdateByteMatchSet =
   UpdateByteMatchSet'
     { _ubmsByteMatchSetId :: !Text
-    , _ubmsChangeToken :: !Text
-    , _ubmsUpdates :: !(List1 ByteMatchSetUpdate)
+    , _ubmsChangeToken    :: !Text
+    , _ubmsUpdates        :: !(List1 ByteMatchSetUpdate)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -151,7 +151,7 @@ instance ToQuery UpdateByteMatchSet where
 -- | /See:/ 'updateByteMatchSetResponse' smart constructor.
 data UpdateByteMatchSetResponse =
   UpdateByteMatchSetResponse'
-    { _ubmsrsChangeToken :: !(Maybe Text)
+    { _ubmsrsChangeToken    :: !(Maybe Text)
     , _ubmsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

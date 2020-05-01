@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -101,7 +101,7 @@ instance ToQuery DeclineHandshake where
 -- | /See:/ 'declineHandshakeResponse' smart constructor.
 data DeclineHandshakeResponse =
   DeclineHandshakeResponse'
-    { _drsHandshake :: !(Maybe Handshake)
+    { _drsHandshake      :: !(Maybe Handshake)
     , _drsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

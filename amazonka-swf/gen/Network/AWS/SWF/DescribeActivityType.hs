@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -65,7 +65,7 @@ import Network.AWS.SWF.Types.Product
 -- | /See:/ 'describeActivityType' smart constructor.
 data DescribeActivityType =
   DescribeActivityType'
-    { _datDomain :: !Text
+    { _datDomain       :: !Text
     , _datActivityType :: !ActivityType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -138,8 +138,8 @@ instance ToQuery DescribeActivityType where
 data DescribeActivityTypeResponse =
   DescribeActivityTypeResponse'
     { _datrsResponseStatus :: !Int
-    , _datrsTypeInfo :: !ActivityTypeInfo
-    , _datrsConfiguration :: !ActivityTypeConfiguration
+    , _datrsTypeInfo       :: !ActivityTypeInfo
+    , _datrsConfiguration  :: !ActivityTypeConfiguration
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

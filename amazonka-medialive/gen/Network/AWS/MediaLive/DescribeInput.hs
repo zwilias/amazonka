@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -106,16 +106,16 @@ instance ToQuery DescribeInput where
 -- /See:/ 'describeInputResponse' smart constructor.
 data DescribeInputResponse =
   DescribeInputResponse'
-    { _diirsState :: !(Maybe InputState)
-    , _diirsSecurityGroups :: !(Maybe [Text])
-    , _diirsARN :: !(Maybe Text)
-    , _diirsSources :: !(Maybe [InputSource])
-    , _diirsDestinations :: !(Maybe [InputDestination])
-    , _diirsName :: !(Maybe Text)
+    { _diirsState            :: !(Maybe InputState)
+    , _diirsSecurityGroups   :: !(Maybe [Text])
+    , _diirsARN              :: !(Maybe Text)
+    , _diirsSources          :: !(Maybe [InputSource])
+    , _diirsDestinations     :: !(Maybe [InputDestination])
+    , _diirsName             :: !(Maybe Text)
     , _diirsAttachedChannels :: !(Maybe [Text])
-    , _diirsId :: !(Maybe Text)
-    , _diirsType :: !(Maybe InputType)
-    , _diirsResponseStatus :: !Int
+    , _diirsId               :: !(Maybe Text)
+    , _diirsType             :: !(Maybe InputType)
+    , _diirsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -66,15 +66,15 @@ import Network.AWS.Response
 -- /See:/ 'importImage' smart constructor.
 data ImportImage =
   ImportImage'
-    { _impHypervisor :: !(Maybe Text)
-    , _impPlatform :: !(Maybe Text)
-    , _impClientToken :: !(Maybe Text)
-    , _impLicenseType :: !(Maybe Text)
-    , _impRoleName :: !(Maybe Text)
-    , _impArchitecture :: !(Maybe Text)
-    , _impDescription :: !(Maybe Text)
-    , _impDryRun :: !(Maybe Bool)
-    , _impClientData :: !(Maybe ClientData)
+    { _impHypervisor     :: !(Maybe Text)
+    , _impPlatform       :: !(Maybe Text)
+    , _impClientToken    :: !(Maybe Text)
+    , _impLicenseType    :: !(Maybe Text)
+    , _impRoleName       :: !(Maybe Text)
+    , _impArchitecture   :: !(Maybe Text)
+    , _impDescription    :: !(Maybe Text)
+    , _impDryRun         :: !(Maybe Bool)
+    , _impClientData     :: !(Maybe ClientData)
     , _impDiskContainers :: !(Maybe [ImageDiskContainer])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -211,18 +211,18 @@ instance ToQuery ImportImage where
 -- /See:/ 'importImageResponse' smart constructor.
 data ImportImageResponse =
   ImportImageResponse'
-    { _irsStatus :: !(Maybe Text)
-    , _irsHypervisor :: !(Maybe Text)
-    , _irsPlatform :: !(Maybe Text)
-    , _irsProgress :: !(Maybe Text)
-    , _irsLicenseType :: !(Maybe Text)
+    { _irsStatus          :: !(Maybe Text)
+    , _irsHypervisor      :: !(Maybe Text)
+    , _irsPlatform        :: !(Maybe Text)
+    , _irsProgress        :: !(Maybe Text)
+    , _irsLicenseType     :: !(Maybe Text)
     , _irsSnapshotDetails :: !(Maybe [SnapshotDetail])
-    , _irsStatusMessage :: !(Maybe Text)
-    , _irsImageId :: !(Maybe Text)
-    , _irsImportTaskId :: !(Maybe Text)
-    , _irsArchitecture :: !(Maybe Text)
-    , _irsDescription :: !(Maybe Text)
-    , _irsResponseStatus :: !Int
+    , _irsStatusMessage   :: !(Maybe Text)
+    , _irsImageId         :: !(Maybe Text)
+    , _irsImportTaskId    :: !(Maybe Text)
+    , _irsArchitecture    :: !(Maybe Text)
+    , _irsDescription     :: !(Maybe Text)
+    , _irsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

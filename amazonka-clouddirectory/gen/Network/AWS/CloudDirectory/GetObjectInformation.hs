@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,8 +47,8 @@ import Network.AWS.Response
 data GetObjectInformation =
   GetObjectInformation'
     { _goiConsistencyLevel :: !(Maybe ConsistencyLevel)
-    , _goiDirectoryARN :: !Text
-    , _goiObjectReference :: !ObjectReference
+    , _goiDirectoryARN     :: !Text
+    , _goiObjectReference  :: !ObjectReference
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -121,8 +121,8 @@ instance ToQuery GetObjectInformation where
 data GetObjectInformationResponse =
   GetObjectInformationResponse'
     { _goirsObjectIdentifier :: !(Maybe Text)
-    , _goirsSchemaFacets :: !(Maybe [SchemaFacet])
-    , _goirsResponseStatus :: !Int
+    , _goirsSchemaFacets     :: !(Maybe [SchemaFacet])
+    , _goirsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

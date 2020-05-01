@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,9 +49,9 @@ import Network.AWS.Response
 -- | /See:/ 'listEventSubscriptions' smart constructor.
 data ListEventSubscriptions =
   ListEventSubscriptions'
-    { _lesNextToken :: !(Maybe Text)
+    { _lesNextToken   :: !(Maybe Text)
     , _lesResourceARN :: !(Maybe Text)
-    , _lesMaxResults :: !(Maybe Int)
+    , _lesMaxResults  :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -131,9 +131,9 @@ instance ToQuery ListEventSubscriptions where
 -- | /See:/ 'listEventSubscriptionsResponse' smart constructor.
 data ListEventSubscriptionsResponse =
   ListEventSubscriptionsResponse'
-    { _lesrsNextToken :: !(Maybe Text)
+    { _lesrsNextToken      :: !(Maybe Text)
     , _lesrsResponseStatus :: !Int
-    , _lesrsSubscriptions :: ![Subscription]
+    , _lesrsSubscriptions  :: ![Subscription]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

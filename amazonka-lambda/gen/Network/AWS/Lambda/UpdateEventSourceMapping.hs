@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -62,10 +62,10 @@ import Network.AWS.Response
 -- /See:/ 'updateEventSourceMapping' smart constructor.
 data UpdateEventSourceMapping =
   UpdateEventSourceMapping'
-    { _uesmEnabled :: !(Maybe Bool)
-    , _uesmBatchSize :: !(Maybe Nat)
+    { _uesmEnabled      :: !(Maybe Bool)
+    , _uesmBatchSize    :: !(Maybe Nat)
     , _uesmFunctionName :: !(Maybe Text)
-    , _uesmUUId :: !Text
+    , _uesmUUId         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,10 +46,10 @@ import Network.AWS.Response
 -- | /See:/ 'listPresets' smart constructor.
 data ListPresets =
   ListPresets'
-    { _lpCategory :: !(Maybe Text)
-    , _lpListBy :: !(Maybe PresetListBy)
-    , _lpNextToken :: !(Maybe Text)
-    , _lpOrder :: !(Maybe Order)
+    { _lpCategory   :: !(Maybe Text)
+    , _lpListBy     :: !(Maybe PresetListBy)
+    , _lpNextToken  :: !(Maybe Text)
+    , _lpOrder      :: !(Maybe Order)
     , _lpMaxResults :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -132,8 +132,8 @@ instance ToQuery ListPresets where
 -- | /See:/ 'listPresetsResponse' smart constructor.
 data ListPresetsResponse =
   ListPresetsResponse'
-    { _lprsPresets :: !(Maybe [Preset])
-    , _lprsNextToken :: !(Maybe Text)
+    { _lprsPresets        :: !(Maybe [Preset])
+    , _lprsNextToken      :: !(Maybe Text)
     , _lprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

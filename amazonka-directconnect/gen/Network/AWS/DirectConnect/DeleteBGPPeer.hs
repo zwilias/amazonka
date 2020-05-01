@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- /See:/ 'deleteBGPPeer' smart constructor.
 data DeleteBGPPeer =
   DeleteBGPPeer'
-    { _dbpCustomerAddress :: !(Maybe Text)
-    , _dbpAsn :: !(Maybe Int)
+    { _dbpCustomerAddress    :: !(Maybe Text)
+    , _dbpAsn                :: !(Maybe Int)
     , _dbpVirtualInterfaceId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -130,7 +130,7 @@ instance ToQuery DeleteBGPPeer where
 data DeleteBGPPeerResponse =
   DeleteBGPPeerResponse'
     { _dbprsVirtualInterface :: !(Maybe VirtualInterface)
-    , _dbprsResponseStatus :: !Int
+    , _dbprsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

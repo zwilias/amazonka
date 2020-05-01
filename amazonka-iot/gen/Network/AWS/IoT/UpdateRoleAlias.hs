@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,8 +47,8 @@ import Network.AWS.Response
 data UpdateRoleAlias =
   UpdateRoleAlias'
     { _uraCredentialDurationSeconds :: !(Maybe Nat)
-    , _uraRoleARN :: !(Maybe Text)
-    , _uraRoleAlias :: !Text
+    , _uraRoleARN                   :: !(Maybe Text)
+    , _uraRoleAlias                 :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -121,8 +121,8 @@ instance ToQuery UpdateRoleAlias where
 -- | /See:/ 'updateRoleAliasResponse' smart constructor.
 data UpdateRoleAliasResponse =
   UpdateRoleAliasResponse'
-    { _urarsRoleAliasARN :: !(Maybe Text)
-    , _urarsRoleAlias :: !(Maybe Text)
+    { _urarsRoleAliasARN   :: !(Maybe Text)
+    , _urarsRoleAlias      :: !(Maybe Text)
     , _urarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

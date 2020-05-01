@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,17 +57,17 @@ import Network.AWS.Response
 -- /See:/ 'modifyVPCEndpoint' smart constructor.
 data ModifyVPCEndpoint =
   ModifyVPCEndpoint'
-    { _mvePolicyDocument :: !(Maybe Text)
-    , _mveRemoveRouteTableIds :: !(Maybe [Text])
-    , _mveResetPolicy :: !(Maybe Bool)
-    , _mveAddRouteTableIds :: !(Maybe [Text])
-    , _mvePrivateDNSEnabled :: !(Maybe Bool)
-    , _mveAddSubnetIds :: !(Maybe [Text])
-    , _mveRemoveSubnetIds :: !(Maybe [Text])
-    , _mveAddSecurityGroupIds :: !(Maybe [Text])
-    , _mveDryRun :: !(Maybe Bool)
+    { _mvePolicyDocument         :: !(Maybe Text)
+    , _mveRemoveRouteTableIds    :: !(Maybe [Text])
+    , _mveResetPolicy            :: !(Maybe Bool)
+    , _mveAddRouteTableIds       :: !(Maybe [Text])
+    , _mvePrivateDNSEnabled      :: !(Maybe Bool)
+    , _mveAddSubnetIds           :: !(Maybe [Text])
+    , _mveRemoveSubnetIds        :: !(Maybe [Text])
+    , _mveAddSecurityGroupIds    :: !(Maybe [Text])
+    , _mveDryRun                 :: !(Maybe Bool)
     , _mveRemoveSecurityGroupIds :: !(Maybe [Text])
-    , _mveVPCEndpointId :: !Text
+    , _mveVPCEndpointId          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -210,7 +210,7 @@ instance ToQuery ModifyVPCEndpoint where
 -- | /See:/ 'modifyVPCEndpointResponse' smart constructor.
 data ModifyVPCEndpointResponse =
   ModifyVPCEndpointResponse'
-    { _mversReturn :: !(Maybe Bool)
+    { _mversReturn         :: !(Maybe Bool)
     , _mversResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

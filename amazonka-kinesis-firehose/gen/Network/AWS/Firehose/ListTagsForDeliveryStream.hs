@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- | /See:/ 'listTagsForDeliveryStream' smart constructor.
 data ListTagsForDeliveryStream =
   ListTagsForDeliveryStream'
-    { _ltfdsLimit :: !(Maybe Nat)
+    { _ltfdsLimit                :: !(Maybe Nat)
     , _ltfdsExclusiveStartTagKey :: !(Maybe Text)
-    , _ltfdsDeliveryStreamName :: !Text
+    , _ltfdsDeliveryStreamName   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -127,8 +127,8 @@ instance ToQuery ListTagsForDeliveryStream where
 data ListTagsForDeliveryStreamResponse =
   ListTagsForDeliveryStreamResponse'
     { _ltfdsrsResponseStatus :: !Int
-    , _ltfdsrsTags :: ![Tag]
-    , _ltfdsrsHasMoreTags :: !Bool
+    , _ltfdsrsTags           :: ![Tag]
+    , _ltfdsrsHasMoreTags    :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

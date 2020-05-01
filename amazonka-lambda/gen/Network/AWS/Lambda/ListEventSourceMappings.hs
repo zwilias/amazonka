@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -61,9 +61,9 @@ import Network.AWS.Response
 data ListEventSourceMappings =
   ListEventSourceMappings'
     { _lesmEventSourceARN :: !(Maybe Text)
-    , _lesmMarker :: !(Maybe Text)
-    , _lesmMaxItems :: !(Maybe Nat)
-    , _lesmFunctionName :: !(Maybe Text)
+    , _lesmMarker         :: !(Maybe Text)
+    , _lesmMaxItems       :: !(Maybe Nat)
+    , _lesmFunctionName   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -148,8 +148,8 @@ instance ToQuery ListEventSourceMappings where
 data ListEventSourceMappingsResponse =
   ListEventSourceMappingsResponse'
     { _lesmrsEventSourceMappings :: !(Maybe [EventSourceMappingConfiguration])
-    , _lesmrsNextMarker :: !(Maybe Text)
-    , _lesmrsResponseStatus :: !Int
+    , _lesmrsNextMarker          :: !(Maybe Text)
+    , _lesmrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

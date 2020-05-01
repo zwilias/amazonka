@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.ServiceCatalog.Types.Product
 data ListProvisioningArtifacts =
   ListProvisioningArtifacts'
     { _lpaAcceptLanguage :: !(Maybe Text)
-    , _lpaProductId :: !Text
+    , _lpaProductId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -112,9 +112,9 @@ instance ToQuery ListProvisioningArtifacts where
 -- | /See:/ 'listProvisioningArtifactsResponse' smart constructor.
 data ListProvisioningArtifactsResponse =
   ListProvisioningArtifactsResponse'
-    { _lrsNextPageToken :: !(Maybe Text)
+    { _lrsNextPageToken               :: !(Maybe Text)
     , _lrsProvisioningArtifactDetails :: !(Maybe [ProvisioningArtifactDetail])
-    , _lrsResponseStatus :: !Int
+    , _lrsResponseStatus              :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

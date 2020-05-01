@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'createGroup' smart constructor.
 data CreateGroup =
   CreateGroup'
-    { _cgPath :: !(Maybe Text)
+    { _cgPath      :: !(Maybe Text)
     , _cgGroupName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -107,7 +107,7 @@ instance ToQuery CreateGroup where
 data CreateGroupResponse =
   CreateGroupResponse'
     { _cgrsResponseStatus :: !Int
-    , _cgrsGroup :: !Group
+    , _cgrsGroup          :: !Group
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

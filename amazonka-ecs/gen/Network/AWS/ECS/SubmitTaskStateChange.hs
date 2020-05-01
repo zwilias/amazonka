@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,15 +51,15 @@ import Network.AWS.Response
 -- | /See:/ 'submitTaskStateChange' smart constructor.
 data SubmitTaskStateChange =
   SubmitTaskStateChange'
-    { _stscStatus :: !(Maybe Text)
-    , _stscCluster :: !(Maybe Text)
-    , _stscAttachments :: !(Maybe [AttachmentStateChange])
+    { _stscStatus             :: !(Maybe Text)
+    , _stscCluster            :: !(Maybe Text)
+    , _stscAttachments        :: !(Maybe [AttachmentStateChange])
     , _stscExecutionStoppedAt :: !(Maybe POSIX)
-    , _stscPullStoppedAt :: !(Maybe POSIX)
-    , _stscContainers :: !(Maybe [ContainerStateChange])
-    , _stscReason :: !(Maybe Text)
-    , _stscTask :: !(Maybe Text)
-    , _stscPullStartedAt :: !(Maybe POSIX)
+    , _stscPullStoppedAt      :: !(Maybe POSIX)
+    , _stscContainers         :: !(Maybe [ContainerStateChange])
+    , _stscReason             :: !(Maybe Text)
+    , _stscTask               :: !(Maybe Text)
+    , _stscPullStartedAt      :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,7 +55,7 @@ import Network.AWS.Route53.Types.Product
 -- /See:/ 'listHealthChecks' smart constructor.
 data ListHealthChecks =
   ListHealthChecks'
-    { _lhcMarker :: !(Maybe Text)
+    { _lhcMarker   :: !(Maybe Text)
     , _lhcMaxItems :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -119,12 +119,12 @@ instance ToQuery ListHealthChecks where
 -- /See:/ 'listHealthChecksResponse' smart constructor.
 data ListHealthChecksResponse =
   ListHealthChecksResponse'
-    { _lhcrsNextMarker :: !(Maybe Text)
+    { _lhcrsNextMarker     :: !(Maybe Text)
     , _lhcrsResponseStatus :: !Int
-    , _lhcrsHealthChecks :: ![HealthCheck]
-    , _lhcrsMarker :: !Text
-    , _lhcrsIsTruncated :: !Bool
-    , _lhcrsMaxItems :: !Text
+    , _lhcrsHealthChecks   :: ![HealthCheck]
+    , _lhcrsMarker         :: !Text
+    , _lhcrsIsTruncated    :: !Bool
+    , _lhcrsMaxItems       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

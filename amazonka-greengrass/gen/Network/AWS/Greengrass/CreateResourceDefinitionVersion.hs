@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 -- | /See:/ 'createResourceDefinitionVersion' smart constructor.
 data CreateResourceDefinitionVersion =
   CreateResourceDefinitionVersion'
-    { _crdvAmznClientToken :: !(Maybe Text)
-    , _crdvResources :: !(Maybe [Resource])
+    { _crdvAmznClientToken      :: !(Maybe Text)
+    , _crdvResources            :: !(Maybe [Resource])
     , _crdvResourceDefinitionId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -127,11 +127,11 @@ instance ToQuery CreateResourceDefinitionVersion where
 -- | /See:/ 'createResourceDefinitionVersionResponse' smart constructor.
 data CreateResourceDefinitionVersionResponse =
   CreateResourceDefinitionVersionResponse'
-    { _crdvrsARN :: !(Maybe Text)
+    { _crdvrsARN               :: !(Maybe Text)
     , _crdvrsCreationTimestamp :: !(Maybe Text)
-    , _crdvrsVersion :: !(Maybe Text)
-    , _crdvrsId :: !(Maybe Text)
-    , _crdvrsResponseStatus :: !Int
+    , _crdvrsVersion           :: !(Maybe Text)
+    , _crdvrsId                :: !(Maybe Text)
+    , _crdvrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

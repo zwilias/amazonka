@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,11 +54,11 @@ import Network.AWS.Response
 -- | /See:/ 'getLifecyclePolicyPreview' smart constructor.
 data GetLifecyclePolicyPreview =
   GetLifecyclePolicyPreview'
-    { _glppRegistryId :: !(Maybe Text)
-    , _glppImageIds :: !(Maybe [ImageIdentifier])
-    , _glppNextToken :: !(Maybe Text)
-    , _glppFilter :: !(Maybe LifecyclePolicyPreviewFilter)
-    , _glppMaxResults :: !(Maybe Nat)
+    { _glppRegistryId     :: !(Maybe Text)
+    , _glppImageIds       :: !(Maybe [ImageIdentifier])
+    , _glppNextToken      :: !(Maybe Text)
+    , _glppFilter         :: !(Maybe LifecyclePolicyPreviewFilter)
+    , _glppMaxResults     :: !(Maybe Nat)
     , _glppRepositoryName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -168,14 +168,14 @@ instance ToQuery GetLifecyclePolicyPreview where
 -- | /See:/ 'getLifecyclePolicyPreviewResponse' smart constructor.
 data GetLifecyclePolicyPreviewResponse =
   GetLifecyclePolicyPreviewResponse'
-    { _glpprsSummary :: !(Maybe LifecyclePolicyPreviewSummary)
-    , _glpprsStatus :: !(Maybe LifecyclePolicyPreviewStatus)
-    , _glpprsRegistryId :: !(Maybe Text)
+    { _glpprsSummary             :: !(Maybe LifecyclePolicyPreviewSummary)
+    , _glpprsStatus              :: !(Maybe LifecyclePolicyPreviewStatus)
+    , _glpprsRegistryId          :: !(Maybe Text)
     , _glpprsLifecyclePolicyText :: !(Maybe Text)
-    , _glpprsNextToken :: !(Maybe Text)
-    , _glpprsRepositoryName :: !(Maybe Text)
-    , _glpprsPreviewResults :: !(Maybe [LifecyclePolicyPreviewResult])
-    , _glpprsResponseStatus :: !Int
+    , _glpprsNextToken           :: !(Maybe Text)
+    , _glpprsRepositoryName      :: !(Maybe Text)
+    , _glpprsPreviewResults      :: !(Maybe [LifecyclePolicyPreviewResult])
+    , _glpprsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

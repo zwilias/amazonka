@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,13 +49,13 @@ import Network.AWS.Response
 -- | /See:/ 'updateCluster' smart constructor.
 data UpdateCluster =
   UpdateCluster'
-    { _ucSecurityGroupIds :: !(Maybe [Text])
+    { _ucSecurityGroupIds           :: !(Maybe [Text])
     , _ucPreferredMaintenanceWindow :: !(Maybe Text)
-    , _ucNotificationTopicStatus :: !(Maybe Text)
-    , _ucDescription :: !(Maybe Text)
-    , _ucNotificationTopicARN :: !(Maybe Text)
-    , _ucParameterGroupName :: !(Maybe Text)
-    , _ucClusterName :: !Text
+    , _ucNotificationTopicStatus    :: !(Maybe Text)
+    , _ucDescription                :: !(Maybe Text)
+    , _ucNotificationTopicARN       :: !(Maybe Text)
+    , _ucParameterGroupName         :: !(Maybe Text)
+    , _ucClusterName                :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -168,7 +168,7 @@ instance ToQuery UpdateCluster where
 -- | /See:/ 'updateClusterResponse' smart constructor.
 data UpdateClusterResponse =
   UpdateClusterResponse'
-    { _ucrsCluster :: !(Maybe Cluster)
+    { _ucrsCluster        :: !(Maybe Cluster)
     , _ucrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

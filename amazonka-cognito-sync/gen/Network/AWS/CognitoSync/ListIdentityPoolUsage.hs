@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,7 +51,7 @@ import Network.AWS.Response
 -- /See:/ 'listIdentityPoolUsage' smart constructor.
 data ListIdentityPoolUsage =
   ListIdentityPoolUsage'
-    { _lipuNextToken :: !(Maybe Text)
+    { _lipuNextToken  :: !(Maybe Text)
     , _lipuMaxResults :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -110,10 +110,10 @@ instance ToQuery ListIdentityPoolUsage where
 data ListIdentityPoolUsageResponse =
   ListIdentityPoolUsageResponse'
     { _lipursIdentityPoolUsages :: !(Maybe [IdentityPoolUsage])
-    , _lipursCount :: !(Maybe Int)
-    , _lipursNextToken :: !(Maybe Text)
-    , _lipursMaxResults :: !(Maybe Int)
-    , _lipursResponseStatus :: !Int
+    , _lipursCount              :: !(Maybe Int)
+    , _lipursNextToken          :: !(Maybe Text)
+    , _lipursMaxResults         :: !(Maybe Int)
+    , _lipursResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

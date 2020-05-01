@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -66,24 +66,24 @@ import Network.AWS.Response
 -- /See:/ 'modifyReplicationGroup' smart constructor.
 data ModifyReplicationGroup =
   ModifyReplicationGroup'
-    { _mrgAutomaticFailoverEnabled :: !(Maybe Bool)
-    , _mrgEngineVersion :: !(Maybe Text)
-    , _mrgCacheNodeType :: !(Maybe Text)
-    , _mrgSnapshottingClusterId :: !(Maybe Text)
-    , _mrgSecurityGroupIds :: !(Maybe [Text])
-    , _mrgAutoMinorVersionUpgrade :: !(Maybe Bool)
-    , _mrgCacheParameterGroupName :: !(Maybe Text)
+    { _mrgAutomaticFailoverEnabled    :: !(Maybe Bool)
+    , _mrgEngineVersion               :: !(Maybe Text)
+    , _mrgCacheNodeType               :: !(Maybe Text)
+    , _mrgSnapshottingClusterId       :: !(Maybe Text)
+    , _mrgSecurityGroupIds            :: !(Maybe [Text])
+    , _mrgAutoMinorVersionUpgrade     :: !(Maybe Bool)
+    , _mrgCacheParameterGroupName     :: !(Maybe Text)
     , _mrgReplicationGroupDescription :: !(Maybe Text)
-    , _mrgSnapshotWindow :: !(Maybe Text)
-    , _mrgPrimaryClusterId :: !(Maybe Text)
-    , _mrgPreferredMaintenanceWindow :: !(Maybe Text)
-    , _mrgNodeGroupId :: !(Maybe Text)
-    , _mrgSnapshotRetentionLimit :: !(Maybe Int)
-    , _mrgNotificationTopicStatus :: !(Maybe Text)
-    , _mrgApplyImmediately :: !(Maybe Bool)
-    , _mrgNotificationTopicARN :: !(Maybe Text)
-    , _mrgCacheSecurityGroupNames :: !(Maybe [Text])
-    , _mrgReplicationGroupId :: !Text
+    , _mrgSnapshotWindow              :: !(Maybe Text)
+    , _mrgPrimaryClusterId            :: !(Maybe Text)
+    , _mrgPreferredMaintenanceWindow  :: !(Maybe Text)
+    , _mrgNodeGroupId                 :: !(Maybe Text)
+    , _mrgSnapshotRetentionLimit      :: !(Maybe Int)
+    , _mrgNotificationTopicStatus     :: !(Maybe Text)
+    , _mrgApplyImmediately            :: !(Maybe Bool)
+    , _mrgNotificationTopicARN        :: !(Maybe Text)
+    , _mrgCacheSecurityGroupNames     :: !(Maybe [Text])
+    , _mrgReplicationGroupId          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -297,7 +297,7 @@ instance ToQuery ModifyReplicationGroup where
 data ModifyReplicationGroupResponse =
   ModifyReplicationGroupResponse'
     { _mrgrsReplicationGroup :: !(Maybe ReplicationGroup)
-    , _mrgrsResponseStatus :: !Int
+    , _mrgrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

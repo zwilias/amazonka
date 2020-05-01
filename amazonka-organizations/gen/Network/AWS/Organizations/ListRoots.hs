@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.Response
 -- | /See:/ 'listRoots' smart constructor.
 data ListRoots =
   ListRoots'
-    { _lrNextToken :: !(Maybe Text)
+    { _lrNextToken  :: !(Maybe Text)
     , _lrMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -119,8 +119,8 @@ instance ToQuery ListRoots where
 -- | /See:/ 'listRootsResponse' smart constructor.
 data ListRootsResponse =
   ListRootsResponse'
-    { _lrrsRoots :: !(Maybe [Root])
-    , _lrrsNextToken :: !(Maybe Text)
+    { _lrrsRoots          :: !(Maybe [Root])
+    , _lrrsNextToken      :: !(Maybe Text)
     , _lrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

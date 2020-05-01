@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'listFieldLevelEncryptionConfigs' smart constructor.
 data ListFieldLevelEncryptionConfigs =
   ListFieldLevelEncryptionConfigs'
-    { _lflecMarker :: !(Maybe Text)
+    { _lflecMarker   :: !(Maybe Text)
     , _lflecMaxItems :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -96,7 +96,7 @@ instance ToQuery ListFieldLevelEncryptionConfigs where
 data ListFieldLevelEncryptionConfigsResponse =
   ListFieldLevelEncryptionConfigsResponse'
     { _lflecrsFieldLevelEncryptionList :: !(Maybe FieldLevelEncryptionList)
-    , _lflecrsResponseStatus :: !Int
+    , _lflecrsResponseStatus           :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

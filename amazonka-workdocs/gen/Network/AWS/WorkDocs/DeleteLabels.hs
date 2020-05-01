@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,10 +45,10 @@ import Network.AWS.WorkDocs.Types.Product
 -- | /See:/ 'deleteLabels' smart constructor.
 data DeleteLabels =
   DeleteLabels'
-    { _dlDeleteAll :: !(Maybe Bool)
+    { _dlDeleteAll           :: !(Maybe Bool)
     , _dlAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _dlLabels :: !(Maybe [Text])
-    , _dlResourceId :: !Text
+    , _dlLabels              :: !(Maybe [Text])
+    , _dlResourceId          :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

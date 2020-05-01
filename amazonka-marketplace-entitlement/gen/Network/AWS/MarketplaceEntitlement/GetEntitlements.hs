@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 -- /See:/ 'getEntitlements' smart constructor.
 data GetEntitlements =
   GetEntitlements'
-    { _geNextToken :: !(Maybe Text)
-    , _geFilter :: !(Maybe (Map GetEntitlementFilterName (List1 Text)))
-    , _geMaxResults :: !(Maybe Int)
+    { _geNextToken   :: !(Maybe Text)
+    , _geFilter      :: !(Maybe (Map GetEntitlementFilterName (List1 Text)))
+    , _geMaxResults  :: !(Maybe Int)
     , _geProductCode :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -143,8 +143,8 @@ instance ToQuery GetEntitlements where
 -- /See:/ 'getEntitlementsResponse' smart constructor.
 data GetEntitlementsResponse =
   GetEntitlementsResponse'
-    { _gersNextToken :: !(Maybe Text)
-    , _gersEntitlements :: !(Maybe [Entitlement])
+    { _gersNextToken      :: !(Maybe Text)
+    , _gersEntitlements   :: !(Maybe [Entitlement])
     , _gersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,9 +47,9 @@ import Network.AWS.Response
 -- | /See:/ 'describeScalingPlanResources' smart constructor.
 data DescribeScalingPlanResources =
   DescribeScalingPlanResources'
-    { _dsprNextToken :: !(Maybe Text)
-    , _dsprMaxResults :: !(Maybe Int)
-    , _dsprScalingPlanName :: !Text
+    { _dsprNextToken          :: !(Maybe Text)
+    , _dsprMaxResults         :: !(Maybe Int)
+    , _dsprScalingPlanName    :: !Text
     , _dsprScalingPlanVersion :: !Integer
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -137,9 +137,9 @@ instance ToQuery DescribeScalingPlanResources where
 -- | /See:/ 'describeScalingPlanResourcesResponse' smart constructor.
 data DescribeScalingPlanResourcesResponse =
   DescribeScalingPlanResourcesResponse'
-    { _dsprrsNextToken :: !(Maybe Text)
+    { _dsprrsNextToken            :: !(Maybe Text)
     , _dsprrsScalingPlanResources :: !(Maybe [ScalingPlanResource])
-    , _dsprrsResponseStatus :: !Int
+    , _dsprrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

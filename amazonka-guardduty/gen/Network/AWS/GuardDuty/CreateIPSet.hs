@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,10 +47,10 @@ import Network.AWS.Response
 -- /See:/ 'createIPSet' smart constructor.
 data CreateIPSet =
   CreateIPSet'
-    { _cisLocation :: !(Maybe Text)
-    , _cisFormat :: !(Maybe IPSetFormat)
-    , _cisActivate :: !(Maybe Bool)
-    , _cisName :: !(Maybe Text)
+    { _cisLocation   :: !(Maybe Text)
+    , _cisFormat     :: !(Maybe IPSetFormat)
+    , _cisActivate   :: !(Maybe Bool)
+    , _cisName       :: !(Maybe Text)
     , _cisDetectorId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -137,7 +137,7 @@ instance ToQuery CreateIPSet where
 -- | /See:/ 'createIPSetResponse' smart constructor.
 data CreateIPSetResponse =
   CreateIPSetResponse'
-    { _cisrsIPSetId :: !(Maybe Text)
+    { _cisrsIPSetId        :: !(Maybe Text)
     , _cisrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

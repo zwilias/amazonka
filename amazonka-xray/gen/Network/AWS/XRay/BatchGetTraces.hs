@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.XRay.Types.Product
 data BatchGetTraces =
   BatchGetTraces'
     { _bgtNextToken :: !(Maybe Text)
-    , _bgtTraceIds :: ![Text]
+    , _bgtTraceIds  :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -112,10 +112,10 @@ instance ToQuery BatchGetTraces where
 -- | /See:/ 'batchGetTracesResponse' smart constructor.
 data BatchGetTracesResponse =
   BatchGetTracesResponse'
-    { _bgtrsNextToken :: !(Maybe Text)
-    , _bgtrsTraces :: !(Maybe [Trace])
+    { _bgtrsNextToken           :: !(Maybe Text)
+    , _bgtrsTraces              :: !(Maybe [Trace])
     , _bgtrsUnprocessedTraceIds :: !(Maybe [Text])
-    , _bgtrsResponseStatus :: !Int
+    , _bgtrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

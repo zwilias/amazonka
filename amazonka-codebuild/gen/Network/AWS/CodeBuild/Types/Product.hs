@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,24 +26,24 @@ import Network.AWS.Prelude
 -- /See:/ 'build' smart constructor.
 data Build =
   Build'
-    { _bPhases :: !(Maybe [BuildPhase])
-    , _bBuildComplete :: !(Maybe Bool)
-    , _bArn :: !(Maybe Text)
-    , _bStartTime :: !(Maybe POSIX)
-    , _bArtifacts :: !(Maybe BuildArtifacts)
-    , _bEnvironment :: !(Maybe ProjectEnvironment)
-    , _bInitiator :: !(Maybe Text)
+    { _bPhases           :: !(Maybe [BuildPhase])
+    , _bBuildComplete    :: !(Maybe Bool)
+    , _bArn              :: !(Maybe Text)
+    , _bStartTime        :: !(Maybe POSIX)
+    , _bArtifacts        :: !(Maybe BuildArtifacts)
+    , _bEnvironment      :: !(Maybe ProjectEnvironment)
+    , _bInitiator        :: !(Maybe Text)
     , _bNetworkInterface :: !(Maybe NetworkInterface)
-    , _bCurrentPhase :: !(Maybe Text)
-    , _bCache :: !(Maybe ProjectCache)
-    , _bSourceVersion :: !(Maybe Text)
-    , _bLogs :: !(Maybe LogsLocation)
-    , _bVpcConfig :: !(Maybe VPCConfig)
-    , _bEndTime :: !(Maybe POSIX)
-    , _bProjectName :: !(Maybe Text)
-    , _bBuildStatus :: !(Maybe StatusType)
-    , _bSource :: !(Maybe ProjectSource)
-    , _bId :: !(Maybe Text)
+    , _bCurrentPhase     :: !(Maybe Text)
+    , _bCache            :: !(Maybe ProjectCache)
+    , _bSourceVersion    :: !(Maybe Text)
+    , _bLogs             :: !(Maybe LogsLocation)
+    , _bVpcConfig        :: !(Maybe VPCConfig)
+    , _bEndTime          :: !(Maybe POSIX)
+    , _bProjectName      :: !(Maybe Text)
+    , _bBuildStatus      :: !(Maybe StatusType)
+    , _bSource           :: !(Maybe ProjectSource)
+    , _bId               :: !(Maybe Text)
     , _bTimeoutInMinutes :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -224,8 +224,8 @@ instance NFData Build
 -- /See:/ 'buildArtifacts' smart constructor.
 data BuildArtifacts =
   BuildArtifacts'
-    { _baLocation :: !(Maybe Text)
-    , _baMd5sum :: !(Maybe Text)
+    { _baLocation  :: !(Maybe Text)
+    , _baMd5sum    :: !(Maybe Text)
     , _baSha256sum :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -275,7 +275,7 @@ instance NFData BuildArtifacts
 -- /See:/ 'buildNotDeleted' smart constructor.
 data BuildNotDeleted =
   BuildNotDeleted'
-    { _bndId :: !(Maybe Text)
+    { _bndId         :: !(Maybe Text)
     , _bndStatusCode :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -315,11 +315,11 @@ instance NFData BuildNotDeleted
 -- /See:/ 'buildPhase' smart constructor.
 data BuildPhase =
   BuildPhase'
-    { _bpContexts :: !(Maybe [PhaseContext])
-    , _bpStartTime :: !(Maybe POSIX)
-    , _bpPhaseStatus :: !(Maybe StatusType)
-    , _bpPhaseType :: !(Maybe BuildPhaseType)
-    , _bpEndTime :: !(Maybe POSIX)
+    { _bpContexts          :: !(Maybe [PhaseContext])
+    , _bpStartTime         :: !(Maybe POSIX)
+    , _bpPhaseStatus       :: !(Maybe StatusType)
+    , _bpPhaseType         :: !(Maybe BuildPhaseType)
+    , _bpEndTime           :: !(Maybe POSIX)
     , _bpDurationInSeconds :: !(Maybe Integer)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -397,8 +397,8 @@ instance NFData BuildPhase
 -- /See:/ 'environmentImage' smart constructor.
 data EnvironmentImage =
   EnvironmentImage'
-    { _eiVersions :: !(Maybe [Text])
-    , _eiName :: !(Maybe Text)
+    { _eiVersions    :: !(Maybe [Text])
+    , _eiName        :: !(Maybe Text)
     , _eiDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -448,7 +448,7 @@ instance NFData EnvironmentImage
 -- /See:/ 'environmentLanguage' smart constructor.
 data EnvironmentLanguage =
   EnvironmentLanguage'
-    { _elImages :: !(Maybe [EnvironmentImage])
+    { _elImages   :: !(Maybe [EnvironmentImage])
     , _elLanguage :: !(Maybe LanguageType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -491,7 +491,7 @@ instance NFData EnvironmentLanguage
 -- /See:/ 'environmentPlatform' smart constructor.
 data EnvironmentPlatform =
   EnvironmentPlatform'
-    { _epPlatform :: !(Maybe PlatformType)
+    { _epPlatform  :: !(Maybe PlatformType)
     , _epLanguages :: !(Maybe [EnvironmentLanguage])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -535,8 +535,8 @@ instance NFData EnvironmentPlatform
 -- /See:/ 'environmentVariable' smart constructor.
 data EnvironmentVariable =
   EnvironmentVariable'
-    { _evType :: !(Maybe EnvironmentVariableType)
-    , _evName :: !Text
+    { _evType  :: !(Maybe EnvironmentVariableType)
+    , _evName  :: !Text
     , _evValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -597,8 +597,8 @@ instance ToJSON EnvironmentVariable where
 -- /See:/ 'logsLocation' smart constructor.
 data LogsLocation =
   LogsLocation'
-    { _llDeepLink :: !(Maybe Text)
-    , _llGroupName :: !(Maybe Text)
+    { _llDeepLink   :: !(Maybe Text)
+    , _llGroupName  :: !(Maybe Text)
     , _llStreamName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -648,7 +648,7 @@ instance NFData LogsLocation
 -- /See:/ 'networkInterface' smart constructor.
 data NetworkInterface =
   NetworkInterface'
-    { _niSubnetId :: !(Maybe Text)
+    { _niSubnetId           :: !(Maybe Text)
     , _niNetworkInterfaceId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -692,7 +692,7 @@ instance NFData NetworkInterface
 -- /See:/ 'phaseContext' smart constructor.
 data PhaseContext =
   PhaseContext'
-    { _pcMessage :: !(Maybe Text)
+    { _pcMessage    :: !(Maybe Text)
     , _pcStatusCode :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -732,21 +732,21 @@ instance NFData PhaseContext
 -- /See:/ 'project' smart constructor.
 data Project =
   Project'
-    { _pArn :: !(Maybe Text)
-    , _pArtifacts :: !(Maybe ProjectArtifacts)
-    , _pEnvironment :: !(Maybe ProjectEnvironment)
-    , _pCreated :: !(Maybe POSIX)
-    , _pCache :: !(Maybe ProjectCache)
-    , _pName :: !(Maybe Text)
-    , _pVpcConfig :: !(Maybe VPCConfig)
-    , _pSource :: !(Maybe ProjectSource)
-    , _pBadge :: !(Maybe ProjectBadge)
-    , _pEncryptionKey :: !(Maybe Text)
-    , _pLastModified :: !(Maybe POSIX)
-    , _pWebhook :: !(Maybe Webhook)
-    , _pDescription :: !(Maybe Text)
-    , _pServiceRole :: !(Maybe Text)
-    , _pTags :: !(Maybe [Tag])
+    { _pArn              :: !(Maybe Text)
+    , _pArtifacts        :: !(Maybe ProjectArtifacts)
+    , _pEnvironment      :: !(Maybe ProjectEnvironment)
+    , _pCreated          :: !(Maybe POSIX)
+    , _pCache            :: !(Maybe ProjectCache)
+    , _pName             :: !(Maybe Text)
+    , _pVpcConfig        :: !(Maybe VPCConfig)
+    , _pSource           :: !(Maybe ProjectSource)
+    , _pBadge            :: !(Maybe ProjectBadge)
+    , _pEncryptionKey    :: !(Maybe Text)
+    , _pLastModified     :: !(Maybe POSIX)
+    , _pWebhook          :: !(Maybe Webhook)
+    , _pDescription      :: !(Maybe Text)
+    , _pServiceRole      :: !(Maybe Text)
+    , _pTags             :: !(Maybe [Tag])
     , _pTimeoutInMinutes :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -905,12 +905,12 @@ instance NFData Project
 -- /See:/ 'projectArtifacts' smart constructor.
 data ProjectArtifacts =
   ProjectArtifacts'
-    { _paPackaging :: !(Maybe ArtifactPackaging)
-    , _paPath :: !(Maybe Text)
-    , _paLocation :: !(Maybe Text)
-    , _paName :: !(Maybe Text)
+    { _paPackaging     :: !(Maybe ArtifactPackaging)
+    , _paPath          :: !(Maybe Text)
+    , _paLocation      :: !(Maybe Text)
+    , _paName          :: !(Maybe Text)
     , _paNamespaceType :: !(Maybe ArtifactNamespace)
-    , _paType :: !ArtifactsType
+    , _paType          :: !ArtifactsType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1000,7 +1000,7 @@ instance ToJSON ProjectArtifacts where
 -- /See:/ 'projectBadge' smart constructor.
 data ProjectBadge =
   ProjectBadge'
-    { _pbBadgeEnabled :: !(Maybe Bool)
+    { _pbBadgeEnabled    :: !(Maybe Bool)
     , _pbBadgeRequestURL :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1043,7 +1043,7 @@ instance NFData ProjectBadge
 data ProjectCache =
   ProjectCache'
     { _pcLocation :: !(Maybe Text)
-    , _pcType :: !CacheType
+    , _pcType     :: !CacheType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1089,12 +1089,12 @@ instance ToJSON ProjectCache where
 -- /See:/ 'projectEnvironment' smart constructor.
 data ProjectEnvironment =
   ProjectEnvironment'
-    { _pePrivilegedMode :: !(Maybe Bool)
-    , _peCertificate :: !(Maybe Text)
+    { _pePrivilegedMode       :: !(Maybe Bool)
+    , _peCertificate          :: !(Maybe Text)
     , _peEnvironmentVariables :: !(Maybe [EnvironmentVariable])
-    , _peType :: !EnvironmentType
-    , _peImage :: !Text
-    , _peComputeType :: !ComputeType
+    , _peType                 :: !EnvironmentType
+    , _peImage                :: !Text
+    , _peComputeType          :: !ComputeType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1189,12 +1189,12 @@ instance ToJSON ProjectEnvironment where
 -- /See:/ 'projectSource' smart constructor.
 data ProjectSource =
   ProjectSource'
-    { _psInsecureSSL :: !(Maybe Bool)
-    , _psLocation :: !(Maybe Text)
-    , _psAuth :: !(Maybe SourceAuth)
-    , _psBuildspec :: !(Maybe Text)
+    { _psInsecureSSL   :: !(Maybe Bool)
+    , _psLocation      :: !(Maybe Text)
+    , _psAuth          :: !(Maybe SourceAuth)
+    , _psBuildspec     :: !(Maybe Text)
     , _psGitCloneDepth :: !(Maybe Nat)
-    , _psType :: !SourceType
+    , _psType          :: !SourceType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1288,7 +1288,7 @@ instance ToJSON ProjectSource where
 data SourceAuth =
   SourceAuth'
     { _saResource :: !(Maybe Text)
-    , _saType :: !SourceAuthType
+    , _saType     :: !SourceAuthType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1337,7 +1337,7 @@ instance ToJSON SourceAuth where
 data Tag =
   Tag'
     { _tagValue :: !(Maybe Text)
-    , _tagKey :: !(Maybe Text)
+    , _tagKey   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1379,8 +1379,8 @@ instance ToJSON Tag where
 data VPCConfig =
   VPCConfig'
     { _vcSecurityGroupIds :: !(Maybe [Text])
-    , _vcVpcId :: !(Maybe Text)
-    , _vcSubnets :: !(Maybe [Text])
+    , _vcVpcId            :: !(Maybe Text)
+    , _vcSubnets          :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1441,11 +1441,11 @@ instance ToJSON VPCConfig where
 -- /See:/ 'webhook' smart constructor.
 data Webhook =
   Webhook'
-    { _wBranchFilter :: !(Maybe Text)
+    { _wBranchFilter       :: !(Maybe Text)
     , _wLastModifiedSecret :: !(Maybe POSIX)
-    , _wUrl :: !(Maybe Text)
-    , _wSecret :: !(Maybe Text)
-    , _wPayloadURL :: !(Maybe Text)
+    , _wUrl                :: !(Maybe Text)
+    , _wSecret             :: !(Maybe Text)
+    , _wPayloadURL         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

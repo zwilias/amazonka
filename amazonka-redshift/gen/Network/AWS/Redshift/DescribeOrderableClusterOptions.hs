@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,10 +54,10 @@ import Network.AWS.Response
 -- /See:/ 'describeOrderableClusterOptions' smart constructor.
 data DescribeOrderableClusterOptions =
   DescribeOrderableClusterOptions'
-    { _docoMarker :: !(Maybe Text)
-    , _docoMaxRecords :: !(Maybe Int)
+    { _docoMarker         :: !(Maybe Text)
+    , _docoMaxRecords     :: !(Maybe Int)
     , _docoClusterVersion :: !(Maybe Text)
-    , _docoNodeType :: !(Maybe Text)
+    , _docoNodeType       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -144,9 +144,9 @@ instance ToQuery DescribeOrderableClusterOptions where
 -- /See:/ 'describeOrderableClusterOptionsResponse' smart constructor.
 data DescribeOrderableClusterOptionsResponse =
   DescribeOrderableClusterOptionsResponse'
-    { _docorsMarker :: !(Maybe Text)
+    { _docorsMarker                  :: !(Maybe Text)
     , _docorsOrderableClusterOptions :: !(Maybe [OrderableClusterOption])
-    , _docorsResponseStatus :: !Int
+    , _docorsResponseStatus          :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

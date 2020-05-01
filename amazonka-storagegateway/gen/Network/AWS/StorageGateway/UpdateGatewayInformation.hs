@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.StorageGateway.Types.Product
 -- | /See:/ 'updateGatewayInformation' smart constructor.
 data UpdateGatewayInformation =
   UpdateGatewayInformation'
-    { _ugiGatewayName :: !(Maybe Text)
+    { _ugiGatewayName     :: !(Maybe Text)
     , _ugiGatewayTimezone :: !(Maybe Text)
-    , _ugiGatewayARN :: !Text
+    , _ugiGatewayARN      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -129,8 +129,8 @@ instance ToQuery UpdateGatewayInformation where
 -- /See:/ 'updateGatewayInformationResponse' smart constructor.
 data UpdateGatewayInformationResponse =
   UpdateGatewayInformationResponse'
-    { _ugirsGatewayARN :: !(Maybe Text)
-    , _ugirsGatewayName :: !(Maybe Text)
+    { _ugirsGatewayARN     :: !(Maybe Text)
+    , _ugirsGatewayName    :: !(Maybe Text)
     , _ugirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

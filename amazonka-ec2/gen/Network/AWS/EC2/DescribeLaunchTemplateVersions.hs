@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,14 +53,14 @@ import Network.AWS.Response
 data DescribeLaunchTemplateVersions =
   DescribeLaunchTemplateVersions'
     { _dltvsLaunchTemplateName :: !(Maybe Text)
-    , _dltvsLaunchTemplateId :: !(Maybe Text)
-    , _dltvsMinVersion :: !(Maybe Text)
-    , _dltvsFilters :: !(Maybe [Filter])
-    , _dltvsMaxVersion :: !(Maybe Text)
-    , _dltvsVersions :: !(Maybe [Text])
-    , _dltvsNextToken :: !(Maybe Text)
-    , _dltvsDryRun :: !(Maybe Bool)
-    , _dltvsMaxResults :: !(Maybe Int)
+    , _dltvsLaunchTemplateId   :: !(Maybe Text)
+    , _dltvsMinVersion         :: !(Maybe Text)
+    , _dltvsFilters            :: !(Maybe [Filter])
+    , _dltvsMaxVersion         :: !(Maybe Text)
+    , _dltvsVersions           :: !(Maybe [Text])
+    , _dltvsNextToken          :: !(Maybe Text)
+    , _dltvsDryRun             :: !(Maybe Bool)
+    , _dltvsMaxResults         :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -179,9 +179,9 @@ instance ToQuery DescribeLaunchTemplateVersions where
 -- | /See:/ 'describeLaunchTemplateVersionsResponse' smart constructor.
 data DescribeLaunchTemplateVersionsResponse =
   DescribeLaunchTemplateVersionsResponse'
-    { _dltvrsNextToken :: !(Maybe Text)
+    { _dltvrsNextToken              :: !(Maybe Text)
     , _dltvrsLaunchTemplateVersions :: !(Maybe [LaunchTemplateVersion])
-    , _dltvrsResponseStatus :: !Int
+    , _dltvrsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

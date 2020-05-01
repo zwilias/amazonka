@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.WAFRegional.Types.Product
 data ListRegexMatchSets =
   ListRegexMatchSets'
     { _lrmsNextMarker :: !(Maybe Text)
-    , _lrmsLimit :: !(Maybe Nat)
+    , _lrmsLimit      :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -108,7 +108,7 @@ instance ToQuery ListRegexMatchSets where
 data ListRegexMatchSetsResponse =
   ListRegexMatchSetsResponse'
     { _lrmsrsRegexMatchSets :: !(Maybe [RegexMatchSetSummary])
-    , _lrmsrsNextMarker :: !(Maybe Text)
+    , _lrmsrsNextMarker     :: !(Maybe Text)
     , _lrmsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

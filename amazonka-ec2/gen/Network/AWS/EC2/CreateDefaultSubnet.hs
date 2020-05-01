@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'createDefaultSubnet' smart constructor.
 data CreateDefaultSubnet =
   CreateDefaultSubnet'
-    { _cdsDryRun :: !(Maybe Bool)
+    { _cdsDryRun           :: !(Maybe Bool)
     , _cdsAvailabilityZone :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -103,7 +103,7 @@ instance ToQuery CreateDefaultSubnet where
 -- | /See:/ 'createDefaultSubnetResponse' smart constructor.
 data CreateDefaultSubnetResponse =
   CreateDefaultSubnetResponse'
-    { _cdsrsSubnet :: !(Maybe Subnet)
+    { _cdsrsSubnet         :: !(Maybe Subnet)
     , _cdsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

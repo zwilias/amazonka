@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.Response
 data CreateGroup =
   CreateGroup'
     { _cgAmznClientToken :: !(Maybe Text)
-    , _cgInitialVersion :: !(Maybe GroupVersion)
-    , _cgName :: !(Maybe Text)
+    , _cgInitialVersion  :: !(Maybe GroupVersion)
+    , _cgName            :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,14 +124,14 @@ instance ToQuery CreateGroup where
 -- | /See:/ 'createGroupResponse' smart constructor.
 data CreateGroupResponse =
   CreateGroupResponse'
-    { _cgrsLatestVersionARN :: !(Maybe Text)
-    , _cgrsARN :: !(Maybe Text)
-    , _cgrsName :: !(Maybe Text)
-    , _cgrsCreationTimestamp :: !(Maybe Text)
-    , _cgrsId :: !(Maybe Text)
-    , _cgrsLatestVersion :: !(Maybe Text)
+    { _cgrsLatestVersionARN     :: !(Maybe Text)
+    , _cgrsARN                  :: !(Maybe Text)
+    , _cgrsName                 :: !(Maybe Text)
+    , _cgrsCreationTimestamp    :: !(Maybe Text)
+    , _cgrsId                   :: !(Maybe Text)
+    , _cgrsLatestVersion        :: !(Maybe Text)
     , _cgrsLastUpdatedTimestamp :: !(Maybe Text)
-    , _cgrsResponseStatus :: !Int
+    , _cgrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

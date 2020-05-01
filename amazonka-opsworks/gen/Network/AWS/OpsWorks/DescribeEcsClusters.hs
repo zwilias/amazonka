@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,9 +54,9 @@ import Network.AWS.Response
 -- | /See:/ 'describeEcsClusters' smart constructor.
 data DescribeEcsClusters =
   DescribeEcsClusters'
-    { _decNextToken :: !(Maybe Text)
-    , _decStackId :: !(Maybe Text)
-    , _decMaxResults :: !(Maybe Int)
+    { _decNextToken      :: !(Maybe Text)
+    , _decStackId        :: !(Maybe Text)
+    , _decMaxResults     :: !(Maybe Int)
     , _decEcsClusterARNs :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -151,8 +151,8 @@ instance ToQuery DescribeEcsClusters where
 -- /See:/ 'describeEcsClustersResponse' smart constructor.
 data DescribeEcsClustersResponse =
   DescribeEcsClustersResponse'
-    { _decrsNextToken :: !(Maybe Text)
-    , _decrsEcsClusters :: !(Maybe [EcsCluster])
+    { _decrsNextToken      :: !(Maybe Text)
+    , _decrsEcsClusters    :: !(Maybe [EcsCluster])
     , _decrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

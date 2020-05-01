@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 data AssociateSoftwareToken =
   AssociateSoftwareToken'
     { _astAccessToken :: !(Maybe (Sensitive Text))
-    , _astSession :: !(Maybe Text)
+    , _astSession     :: !(Maybe Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -110,8 +110,8 @@ instance ToQuery AssociateSoftwareToken where
 -- | /See:/ 'associateSoftwareTokenResponse' smart constructor.
 data AssociateSoftwareTokenResponse =
   AssociateSoftwareTokenResponse'
-    { _astrsSecretCode :: !(Maybe (Sensitive Text))
-    , _astrsSession :: !(Maybe Text)
+    { _astrsSecretCode     :: !(Maybe (Sensitive Text))
+    , _astrsSession        :: !(Maybe Text)
     , _astrsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

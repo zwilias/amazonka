@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -103,7 +103,7 @@ import Network.AWS.Route53.Types.Product
 -- | /See:/ 'createQueryLoggingConfig' smart constructor.
 data CreateQueryLoggingConfig =
   CreateQueryLoggingConfig'
-    { _cqlcHostedZoneId :: !ResourceId
+    { _cqlcHostedZoneId              :: !ResourceId
     , _cqlcCloudWatchLogsLogGroupARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -174,9 +174,9 @@ instance ToXML CreateQueryLoggingConfig where
 -- | /See:/ 'createQueryLoggingConfigResponse' smart constructor.
 data CreateQueryLoggingConfigResponse =
   CreateQueryLoggingConfigResponse'
-    { _cqlcrsResponseStatus :: !Int
+    { _cqlcrsResponseStatus     :: !Int
     , _cqlcrsQueryLoggingConfig :: !QueryLoggingConfig
-    , _cqlcrsLocation :: !Text
+    , _cqlcrsLocation           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

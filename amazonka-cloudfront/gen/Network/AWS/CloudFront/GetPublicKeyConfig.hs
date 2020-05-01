@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -88,9 +88,9 @@ instance ToQuery GetPublicKeyConfig where
 -- | /See:/ 'getPublicKeyConfigResponse' smart constructor.
 data GetPublicKeyConfigResponse =
   GetPublicKeyConfigResponse'
-    { _gpkcrsETag :: !(Maybe Text)
+    { _gpkcrsETag            :: !(Maybe Text)
     , _gpkcrsPublicKeyConfig :: !(Maybe PublicKeyConfig)
-    , _gpkcrsResponseStatus :: !Int
+    , _gpkcrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

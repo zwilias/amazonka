@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Response
 data DescribeTrails =
   DescribeTrails'
     { _dtIncludeShadowTrails :: !(Maybe Bool)
-    , _dtTrailNameList :: !(Maybe [Text])
+    , _dtTrailNameList       :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -117,7 +117,7 @@ instance ToQuery DescribeTrails where
 -- /See:/ 'describeTrailsResponse' smart constructor.
 data DescribeTrailsResponse =
   DescribeTrailsResponse'
-    { _dtrsTrailList :: !(Maybe [Trail])
+    { _dtrsTrailList      :: !(Maybe [Trail])
     , _dtrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

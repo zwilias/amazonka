@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -66,9 +66,9 @@ import Network.AWS.Response
 data PutLogEvents =
   PutLogEvents'
     { _pleSequenceToken :: !(Maybe Text)
-    , _pleLogGroupName :: !Text
+    , _pleLogGroupName  :: !Text
     , _pleLogStreamName :: !Text
-    , _pleLogEvents :: !(List1 InputLogEvent)
+    , _pleLogEvents     :: !(List1 InputLogEvent)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -154,8 +154,8 @@ instance ToQuery PutLogEvents where
 data PutLogEventsResponse =
   PutLogEventsResponse'
     { _plersRejectedLogEventsInfo :: !(Maybe RejectedLogEventsInfo)
-    , _plersNextSequenceToken :: !(Maybe Text)
-    , _plersResponseStatus :: !Int
+    , _plersNextSequenceToken     :: !(Maybe Text)
+    , _plersResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

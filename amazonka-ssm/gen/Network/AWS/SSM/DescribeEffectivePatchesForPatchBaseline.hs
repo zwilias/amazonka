@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'describeEffectivePatchesForPatchBaseline' smart constructor.
 data DescribeEffectivePatchesForPatchBaseline =
   DescribeEffectivePatchesForPatchBaseline'
-    { _depfpbNextToken :: !(Maybe Text)
+    { _depfpbNextToken  :: !(Maybe Text)
     , _depfpbMaxResults :: !(Maybe Nat)
     , _depfpbBaselineId :: !Text
     }
@@ -128,8 +128,8 @@ instance ToQuery DescribeEffectivePatchesForPatchBaseline where
 data DescribeEffectivePatchesForPatchBaselineResponse =
   DescribeEffectivePatchesForPatchBaselineResponse'
     { _depfpbrsEffectivePatches :: !(Maybe [EffectivePatch])
-    , _depfpbrsNextToken :: !(Maybe Text)
-    , _depfpbrsResponseStatus :: !Int
+    , _depfpbrsNextToken        :: !(Maybe Text)
+    , _depfpbrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

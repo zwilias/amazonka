@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -108,8 +108,8 @@ instance ToQuery DescribeReceiptRuleSet where
 -- /See:/ 'describeReceiptRuleSetResponse' smart constructor.
 data DescribeReceiptRuleSetResponse =
   DescribeReceiptRuleSetResponse'
-    { _desrsRules :: !(Maybe [ReceiptRule])
-    , _desrsMetadata :: !(Maybe ReceiptRuleSetMetadata)
+    { _desrsRules          :: !(Maybe [ReceiptRule])
+    , _desrsMetadata       :: !(Maybe ReceiptRuleSetMetadata)
     , _desrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

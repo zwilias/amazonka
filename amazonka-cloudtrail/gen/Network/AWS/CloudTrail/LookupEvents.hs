@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -75,11 +75,11 @@ import Network.AWS.Response
 -- /See:/ 'lookupEvents' smart constructor.
 data LookupEvents =
   LookupEvents'
-    { _leStartTime :: !(Maybe POSIX)
+    { _leStartTime        :: !(Maybe POSIX)
     , _leLookupAttributes :: !(Maybe [LookupAttribute])
-    , _leNextToken :: !(Maybe Text)
-    , _leEndTime :: !(Maybe POSIX)
-    , _leMaxResults :: !(Maybe Nat)
+    , _leNextToken        :: !(Maybe Text)
+    , _leEndTime          :: !(Maybe POSIX)
+    , _leMaxResults       :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -181,8 +181,8 @@ instance ToQuery LookupEvents where
 -- /See:/ 'lookupEventsResponse' smart constructor.
 data LookupEventsResponse =
   LookupEventsResponse'
-    { _lersNextToken :: !(Maybe Text)
-    , _lersEvents :: !(Maybe [Event])
+    { _lersNextToken      :: !(Maybe Text)
+    , _lersEvents         :: !(Maybe [Event])
     , _lersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

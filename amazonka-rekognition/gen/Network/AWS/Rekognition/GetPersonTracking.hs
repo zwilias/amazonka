@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -60,10 +60,10 @@ import Network.AWS.Response
 -- | /See:/ 'getPersonTracking' smart constructor.
 data GetPersonTracking =
   GetPersonTracking'
-    { _gptNextToken :: !(Maybe Text)
+    { _gptNextToken  :: !(Maybe Text)
     , _gptMaxResults :: !(Maybe Nat)
-    , _gptSortBy :: !(Maybe PersonTrackingSortBy)
-    , _gptJobId :: !Text
+    , _gptSortBy     :: !(Maybe PersonTrackingSortBy)
+    , _gptJobId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -151,11 +151,11 @@ instance ToQuery GetPersonTracking where
 -- | /See:/ 'getPersonTrackingResponse' smart constructor.
 data GetPersonTrackingResponse =
   GetPersonTrackingResponse'
-    { _gptrsNextToken :: !(Maybe Text)
-    , _gptrsVideoMetadata :: !(Maybe VideoMetadata)
-    , _gptrsStatusMessage :: !(Maybe Text)
-    , _gptrsJobStatus :: !(Maybe VideoJobStatus)
-    , _gptrsPersons :: !(Maybe [PersonDetection])
+    { _gptrsNextToken      :: !(Maybe Text)
+    , _gptrsVideoMetadata  :: !(Maybe VideoMetadata)
+    , _gptrsStatusMessage  :: !(Maybe Text)
+    , _gptrsJobStatus      :: !(Maybe VideoJobStatus)
+    , _gptrsPersons        :: !(Maybe [PersonDetection])
     , _gptrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

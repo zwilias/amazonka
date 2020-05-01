@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -64,20 +64,20 @@ import Network.AWS.StorageGateway.Types.Product
 -- /See:/ 'createNFSFileShare' smart constructor.
 data CreateNFSFileShare =
   CreateNFSFileShare'
-    { _cnfsfsKMSKey :: !(Maybe Text)
-    , _cnfsfsObjectACL :: !(Maybe ObjectACL)
-    , _cnfsfsKMSEncrypted :: !(Maybe Bool)
-    , _cnfsfsDefaultStorageClass :: !(Maybe Text)
-    , _cnfsfsSquash :: !(Maybe Text)
-    , _cnfsfsRequesterPays :: !(Maybe Bool)
+    { _cnfsfsKMSKey               :: !(Maybe Text)
+    , _cnfsfsObjectACL            :: !(Maybe ObjectACL)
+    , _cnfsfsKMSEncrypted         :: !(Maybe Bool)
+    , _cnfsfsDefaultStorageClass  :: !(Maybe Text)
+    , _cnfsfsSquash               :: !(Maybe Text)
+    , _cnfsfsRequesterPays        :: !(Maybe Bool)
     , _cnfsfsNFSFileShareDefaults :: !(Maybe NFSFileShareDefaults)
-    , _cnfsfsClientList :: !(Maybe (List1 Text))
+    , _cnfsfsClientList           :: !(Maybe (List1 Text))
     , _cnfsfsGuessMIMETypeEnabled :: !(Maybe Bool)
-    , _cnfsfsReadOnly :: !(Maybe Bool)
-    , _cnfsfsClientToken :: !Text
-    , _cnfsfsGatewayARN :: !Text
-    , _cnfsfsRole :: !Text
-    , _cnfsfsLocationARN :: !Text
+    , _cnfsfsReadOnly             :: !(Maybe Bool)
+    , _cnfsfsClientToken          :: !Text
+    , _cnfsfsGatewayARN           :: !Text
+    , _cnfsfsRole                 :: !Text
+    , _cnfsfsLocationARN          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -254,7 +254,7 @@ instance ToQuery CreateNFSFileShare where
 -- /See:/ 'createNFSFileShareResponse' smart constructor.
 data CreateNFSFileShareResponse =
   CreateNFSFileShareResponse'
-    { _cnfsfsrsFileShareARN :: !(Maybe Text)
+    { _cnfsfsrsFileShareARN   :: !(Maybe Text)
     , _cnfsfsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

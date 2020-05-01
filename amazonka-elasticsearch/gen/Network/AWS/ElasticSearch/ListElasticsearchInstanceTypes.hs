@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,9 +54,9 @@ import Network.AWS.Response
 -- /See:/ 'listElasticsearchInstanceTypes' smart constructor.
 data ListElasticsearchInstanceTypes =
   ListElasticsearchInstanceTypes'
-    { _leitNextToken :: !(Maybe Text)
-    , _leitDomainName :: !(Maybe Text)
-    , _leitMaxResults :: !(Maybe Int)
+    { _leitNextToken            :: !(Maybe Text)
+    , _leitDomainName           :: !(Maybe Text)
+    , _leitMaxResults           :: !(Maybe Int)
     , _leitElasticsearchVersion :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -144,8 +144,8 @@ instance ToQuery ListElasticsearchInstanceTypes where
 data ListElasticsearchInstanceTypesResponse =
   ListElasticsearchInstanceTypesResponse'
     { _leitrsElasticsearchInstanceTypes :: !(Maybe [ESPartitionInstanceType])
-    , _leitrsNextToken :: !(Maybe Text)
-    , _leitrsResponseStatus :: !Int
+    , _leitrsNextToken                  :: !(Maybe Text)
+    , _leitrsResponseStatus             :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

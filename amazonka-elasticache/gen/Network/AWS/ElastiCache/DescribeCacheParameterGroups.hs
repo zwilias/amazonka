@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,8 +54,8 @@ import Network.AWS.Response
 data DescribeCacheParameterGroups =
   DescribeCacheParameterGroups'
     { _dcpgCacheParameterGroupName :: !(Maybe Text)
-    , _dcpgMarker :: !(Maybe Text)
-    , _dcpgMaxRecords :: !(Maybe Int)
+    , _dcpgMarker                  :: !(Maybe Text)
+    , _dcpgMaxRecords              :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -138,8 +138,8 @@ instance ToQuery DescribeCacheParameterGroups where
 data DescribeCacheParameterGroupsResponse =
   DescribeCacheParameterGroupsResponse'
     { _dcpgrsCacheParameterGroups :: !(Maybe [CacheParameterGroup])
-    , _dcpgrsMarker :: !(Maybe Text)
-    , _dcpgrsResponseStatus :: !Int
+    , _dcpgrsMarker               :: !(Maybe Text)
+    , _dcpgrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

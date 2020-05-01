@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.WAFRegional.Types.Product
 data ListRegexPatternSets =
   ListRegexPatternSets'
     { _lrpsNextMarker :: !(Maybe Text)
-    , _lrpsLimit :: !(Maybe Nat)
+    , _lrpsLimit      :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -108,8 +108,8 @@ instance ToQuery ListRegexPatternSets where
 data ListRegexPatternSetsResponse =
   ListRegexPatternSetsResponse'
     { _lrpsrsRegexPatternSets :: !(Maybe [RegexPatternSetSummary])
-    , _lrpsrsNextMarker :: !(Maybe Text)
-    , _lrpsrsResponseStatus :: !Int
+    , _lrpsrsNextMarker       :: !(Maybe Text)
+    , _lrpsrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

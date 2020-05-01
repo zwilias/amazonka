@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,12 +53,12 @@ import Network.AWS.Response
 -- | /See:/ 'describeScheduledActions' smart constructor.
 data DescribeScheduledActions =
   DescribeScheduledActions'
-    { _dsasScalableDimension :: !(Maybe ScalableDimension)
-    , _dsasResourceId :: !(Maybe Text)
-    , _dsasNextToken :: !(Maybe Text)
+    { _dsasScalableDimension    :: !(Maybe ScalableDimension)
+    , _dsasResourceId           :: !(Maybe Text)
+    , _dsasNextToken            :: !(Maybe Text)
     , _dsasScheduledActionNames :: !(Maybe [Text])
-    , _dsasMaxResults :: !(Maybe Int)
-    , _dsasServiceNamespace :: !ServiceNamespace
+    , _dsasMaxResults           :: !(Maybe Int)
+    , _dsasServiceNamespace     :: !ServiceNamespace
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -163,9 +163,9 @@ instance ToQuery DescribeScheduledActions where
 -- | /See:/ 'describeScheduledActionsResponse' smart constructor.
 data DescribeScheduledActionsResponse =
   DescribeScheduledActionsResponse'
-    { _dsarsNextToken :: !(Maybe Text)
+    { _dsarsNextToken        :: !(Maybe Text)
     , _dsarsScheduledActions :: !(Maybe [ScheduledAction])
-    , _dsarsResponseStatus :: !Int
+    , _dsarsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

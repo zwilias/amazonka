@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,7 +27,7 @@ import Network.AWS.Route53.Types.Sum
 -- /See:/ 'accountLimit' smart constructor.
 data AccountLimit =
   AccountLimit'
-    { _alType :: !AccountLimitType
+    { _alType  :: !AccountLimitType
     , _alValue :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -69,7 +69,7 @@ instance NFData AccountLimit
 data AlarmIdentifier =
   AlarmIdentifier'
     { _aiRegion :: !CloudWatchRegion
-    , _aiName :: !Text
+    , _aiName   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -123,8 +123,8 @@ instance ToXML AlarmIdentifier where
 -- /See:/ 'aliasTarget' smart constructor.
 data AliasTarget =
   AliasTarget'
-    { _atHostedZoneId :: !ResourceId
-    , _atDNSName :: !Text
+    { _atHostedZoneId         :: !ResourceId
+    , _atDNSName              :: !Text
     , _atEvaluateTargetHealth :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -187,7 +187,7 @@ instance ToXML AliasTarget where
 -- /See:/ 'change' smart constructor.
 data Change =
   Change'
-    { _cAction :: !ChangeAction
+    { _cAction            :: !ChangeAction
     , _cResourceRecordSet :: !ResourceRecordSet
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -272,9 +272,9 @@ instance ToXML ChangeBatch where
 -- /See:/ 'changeInfo' smart constructor.
 data ChangeInfo =
   ChangeInfo'
-    { _ciComment :: !(Maybe Text)
-    , _ciId :: !ResourceId
-    , _ciStatus :: !ChangeStatus
+    { _ciComment     :: !(Maybe Text)
+    , _ciId          :: !ResourceId
+    , _ciStatus      :: !ChangeStatus
     , _ciSubmittedAt :: !ISO8601
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -335,14 +335,14 @@ instance NFData ChangeInfo
 -- /See:/ 'cloudWatchAlarmConfiguration' smart constructor.
 data CloudWatchAlarmConfiguration =
   CloudWatchAlarmConfiguration'
-    { _cwacDimensions :: !(Maybe [Dimension])
-    , _cwacEvaluationPeriods :: !Nat
-    , _cwacThreshold :: !Double
+    { _cwacDimensions         :: !(Maybe [Dimension])
+    , _cwacEvaluationPeriods  :: !Nat
+    , _cwacThreshold          :: !Double
     , _cwacComparisonOperator :: !ComparisonOperator
-    , _cwacPeriod :: !Nat
-    , _cwacMetricName :: !Text
-    , _cwacNamespace :: !Text
-    , _cwacStatistic :: !Statistic
+    , _cwacPeriod             :: !Nat
+    , _cwacMetricName         :: !Text
+    , _cwacNamespace          :: !Text
+    , _cwacStatistic          :: !Statistic
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -444,9 +444,9 @@ instance NFData CloudWatchAlarmConfiguration
 -- /See:/ 'delegationSet' smart constructor.
 data DelegationSet =
   DelegationSet'
-    { _dsId :: !(Maybe ResourceId)
+    { _dsId              :: !(Maybe ResourceId)
     , _dsCallerReference :: !(Maybe Text)
-    , _dsNameServers :: !(List1 Text)
+    , _dsNameServers     :: !(List1 Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -497,7 +497,7 @@ instance NFData DelegationSet
 -- /See:/ 'dimension' smart constructor.
 data Dimension =
   Dimension'
-    { _dName :: !Text
+    { _dName  :: !Text
     , _dValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -538,8 +538,8 @@ instance NFData Dimension
 data GeoLocation =
   GeoLocation'
     { _glSubdivisionCode :: !(Maybe Text)
-    , _glCountryCode :: !(Maybe Text)
-    , _glContinentCode :: !(Maybe Text)
+    , _glCountryCode     :: !(Maybe Text)
+    , _glContinentCode   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -598,10 +598,10 @@ data GeoLocationDetails =
   GeoLocationDetails'
     { _gldSubdivisionName :: !(Maybe Text)
     , _gldSubdivisionCode :: !(Maybe Text)
-    , _gldCountryName :: !(Maybe Text)
-    , _gldCountryCode :: !(Maybe Text)
-    , _gldContinentCode :: !(Maybe Text)
-    , _gldContinentName :: !(Maybe Text)
+    , _gldCountryName     :: !(Maybe Text)
+    , _gldCountryCode     :: !(Maybe Text)
+    , _gldContinentCode   :: !(Maybe Text)
+    , _gldContinentName   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -677,12 +677,12 @@ instance NFData GeoLocationDetails
 -- /See:/ 'healthCheck' smart constructor.
 data HealthCheck =
   HealthCheck'
-    { _hcLinkedService :: !(Maybe LinkedService)
+    { _hcLinkedService                :: !(Maybe LinkedService)
     , _hcCloudWatchAlarmConfiguration :: !(Maybe CloudWatchAlarmConfiguration)
-    , _hcId :: !Text
-    , _hcCallerReference :: !Text
-    , _hcHealthCheckConfig :: !HealthCheckConfig
-    , _hcHealthCheckVersion :: !Nat
+    , _hcId                           :: !Text
+    , _hcCallerReference              :: !Text
+    , _hcHealthCheckConfig            :: !HealthCheckConfig
+    , _hcHealthCheckVersion           :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -767,22 +767,22 @@ instance NFData HealthCheck
 -- /See:/ 'healthCheckConfig' smart constructor.
 data HealthCheckConfig =
   HealthCheckConfig'
-    { _hccFailureThreshold :: !(Maybe Nat)
-    , _hccIPAddress :: !(Maybe Text)
-    , _hccEnableSNI :: !(Maybe Bool)
-    , _hccSearchString :: !(Maybe Text)
-    , _hccHealthThreshold :: !(Maybe Nat)
-    , _hccRegions :: !(Maybe (List1 HealthCheckRegion))
-    , _hccResourcePath :: !(Maybe Text)
+    { _hccFailureThreshold             :: !(Maybe Nat)
+    , _hccIPAddress                    :: !(Maybe Text)
+    , _hccEnableSNI                    :: !(Maybe Bool)
+    , _hccSearchString                 :: !(Maybe Text)
+    , _hccHealthThreshold              :: !(Maybe Nat)
+    , _hccRegions                      :: !(Maybe (List1 HealthCheckRegion))
+    , _hccResourcePath                 :: !(Maybe Text)
     , _hccInsufficientDataHealthStatus :: !(Maybe InsufficientDataHealthStatus)
-    , _hccAlarmIdentifier :: !(Maybe AlarmIdentifier)
-    , _hccMeasureLatency :: !(Maybe Bool)
-    , _hccInverted :: !(Maybe Bool)
-    , _hccFullyQualifiedDomainName :: !(Maybe Text)
-    , _hccChildHealthChecks :: !(Maybe [Text])
-    , _hccRequestInterval :: !(Maybe Nat)
-    , _hccPort :: !(Maybe Nat)
-    , _hccType :: !HealthCheckType
+    , _hccAlarmIdentifier              :: !(Maybe AlarmIdentifier)
+    , _hccMeasureLatency               :: !(Maybe Bool)
+    , _hccInverted                     :: !(Maybe Bool)
+    , _hccFullyQualifiedDomainName     :: !(Maybe Text)
+    , _hccChildHealthChecks            :: !(Maybe [Text])
+    , _hccRequestInterval              :: !(Maybe Nat)
+    , _hccPort                         :: !(Maybe Nat)
+    , _hccType                         :: !HealthCheckType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -974,9 +974,9 @@ instance ToXML HealthCheckConfig where
 -- /See:/ 'healthCheckObservation' smart constructor.
 data HealthCheckObservation =
   HealthCheckObservation'
-    { _hcoIPAddress :: !(Maybe Text)
+    { _hcoIPAddress    :: !(Maybe Text)
     , _hcoStatusReport :: !(Maybe StatusReport)
-    , _hcoRegion :: !(Maybe HealthCheckRegion)
+    , _hcoRegion       :: !(Maybe HealthCheckRegion)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1022,12 +1022,12 @@ instance NFData HealthCheckObservation
 -- /See:/ 'hostedZone' smart constructor.
 data HostedZone =
   HostedZone'
-    { _hzLinkedService :: !(Maybe LinkedService)
-    , _hzConfig :: !(Maybe HostedZoneConfig)
+    { _hzLinkedService          :: !(Maybe LinkedService)
+    , _hzConfig                 :: !(Maybe HostedZoneConfig)
     , _hzResourceRecordSetCount :: !(Maybe Integer)
-    , _hzId :: !ResourceId
-    , _hzName :: !Text
-    , _hzCallerReference :: !Text
+    , _hzId                     :: !ResourceId
+    , _hzName                   :: !Text
+    , _hzCallerReference        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1106,7 +1106,7 @@ instance NFData HostedZone
 data HostedZoneConfig =
   HostedZoneConfig'
     { _hzcPrivateZone :: !(Maybe Bool)
-    , _hzcComment :: !(Maybe Text)
+    , _hzcComment     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1147,7 +1147,7 @@ instance ToXML HostedZoneConfig where
 -- /See:/ 'hostedZoneLimit' smart constructor.
 data HostedZoneLimit =
   HostedZoneLimit'
-    { _hzlType :: !HostedZoneLimitType
+    { _hzlType  :: !HostedZoneLimitType
     , _hzlValue :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1189,7 +1189,7 @@ instance NFData HostedZoneLimit
 data LinkedService =
   LinkedService'
     { _lsServicePrincipal :: !(Maybe Text)
-    , _lsDescription :: !(Maybe Text)
+    , _lsDescription      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1228,8 +1228,8 @@ instance NFData LinkedService
 -- /See:/ 'queryLoggingConfig' smart constructor.
 data QueryLoggingConfig =
   QueryLoggingConfig'
-    { _qlcId :: !Text
-    , _qlcHostedZoneId :: !ResourceId
+    { _qlcId                        :: !Text
+    , _qlcHostedZoneId              :: !ResourceId
     , _qlcCloudWatchLogsLogGroupARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1321,19 +1321,19 @@ instance ToXML ResourceRecord where
 -- /See:/ 'resourceRecordSet' smart constructor.
 data ResourceRecordSet =
   ResourceRecordSet'
-    { _rrsTTL :: !(Maybe Nat)
-    , _rrsResourceRecords :: !(Maybe (List1 ResourceRecord))
-    , _rrsAliasTarget :: !(Maybe AliasTarget)
-    , _rrsWeight :: !(Maybe Nat)
+    { _rrsTTL                     :: !(Maybe Nat)
+    , _rrsResourceRecords         :: !(Maybe (List1 ResourceRecord))
+    , _rrsAliasTarget             :: !(Maybe AliasTarget)
+    , _rrsWeight                  :: !(Maybe Nat)
     , _rrsTrafficPolicyInstanceId :: !(Maybe Text)
-    , _rrsSetIdentifier :: !(Maybe Text)
-    , _rrsFailover :: !(Maybe Failover)
-    , _rrsHealthCheckId :: !(Maybe Text)
-    , _rrsRegion :: !(Maybe Region)
-    , _rrsGeoLocation :: !(Maybe GeoLocation)
-    , _rrsMultiValueAnswer :: !(Maybe Bool)
-    , _rrsName :: !Text
-    , _rrsType :: !RecordType
+    , _rrsSetIdentifier           :: !(Maybe Text)
+    , _rrsFailover                :: !(Maybe Failover)
+    , _rrsHealthCheckId           :: !(Maybe Text)
+    , _rrsRegion                  :: !(Maybe Region)
+    , _rrsGeoLocation             :: !(Maybe GeoLocation)
+    , _rrsMultiValueAnswer        :: !(Maybe Bool)
+    , _rrsName                    :: !Text
+    , _rrsType                    :: !RecordType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1489,9 +1489,9 @@ instance ToXML ResourceRecordSet where
 -- /See:/ 'resourceTagSet' smart constructor.
 data ResourceTagSet =
   ResourceTagSet'
-    { _rtsResourceId :: !(Maybe Text)
+    { _rtsResourceId   :: !(Maybe Text)
     , _rtsResourceType :: !(Maybe TagResourceType)
-    , _rtsTags :: !(Maybe (List1 Tag))
+    , _rtsTags         :: !(Maybe (List1 Tag))
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1537,7 +1537,7 @@ instance NFData ResourceTagSet
 -- /See:/ 'reusableDelegationSetLimit' smart constructor.
 data ReusableDelegationSetLimit =
   ReusableDelegationSetLimit'
-    { _rdslType :: !ReusableDelegationSetLimitType
+    { _rdslType  :: !ReusableDelegationSetLimitType
     , _rdslValue :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1578,7 +1578,7 @@ instance NFData ReusableDelegationSetLimit
 -- /See:/ 'statusReport' smart constructor.
 data StatusReport =
   StatusReport'
-    { _srStatus :: !(Maybe Text)
+    { _srStatus      :: !(Maybe Text)
     , _srCheckedTime :: !(Maybe ISO8601)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1617,7 +1617,7 @@ instance NFData StatusReport
 data Tag =
   Tag'
     { _tagValue :: !(Maybe Text)
-    , _tagKey :: !(Maybe Text)
+    , _tagKey   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1656,11 +1656,11 @@ instance ToXML Tag where
 -- /See:/ 'trafficPolicy' smart constructor.
 data TrafficPolicy =
   TrafficPolicy'
-    { _tpComment :: !(Maybe Text)
-    , _tpId :: !Text
-    , _tpVersion :: !Nat
-    , _tpName :: !Text
-    , _tpType :: !RecordType
+    { _tpComment  :: !(Maybe Text)
+    , _tpId       :: !Text
+    , _tpVersion  :: !Nat
+    , _tpName     :: !Text
+    , _tpType     :: !RecordType
     , _tpDocument :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1739,15 +1739,15 @@ instance NFData TrafficPolicy
 -- /See:/ 'trafficPolicyInstance' smart constructor.
 data TrafficPolicyInstance =
   TrafficPolicyInstance'
-    { _tpiId :: !Text
-    , _tpiHostedZoneId :: !ResourceId
-    , _tpiName :: !Text
-    , _tpiTTL :: !Nat
-    , _tpiState :: !Text
-    , _tpiMessage :: !Text
-    , _tpiTrafficPolicyId :: !Text
+    { _tpiId                   :: !Text
+    , _tpiHostedZoneId         :: !ResourceId
+    , _tpiName                 :: !Text
+    , _tpiTTL                  :: !Nat
+    , _tpiState                :: !Text
+    , _tpiMessage              :: !Text
+    , _tpiTrafficPolicyId      :: !Text
     , _tpiTrafficPolicyVersion :: !Nat
-    , _tpiTrafficPolicyType :: !RecordType
+    , _tpiTrafficPolicyType    :: !RecordType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1858,10 +1858,10 @@ instance NFData TrafficPolicyInstance
 -- /See:/ 'trafficPolicySummary' smart constructor.
 data TrafficPolicySummary =
   TrafficPolicySummary'
-    { _tpsId :: !Text
-    , _tpsName :: !Text
-    , _tpsType :: !RecordType
-    , _tpsLatestVersion :: !Nat
+    { _tpsId                 :: !Text
+    , _tpsName               :: !Text
+    , _tpsType               :: !RecordType
+    , _tpsLatestVersion      :: !Nat
     , _tpsTrafficPolicyCount :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1935,7 +1935,7 @@ instance NFData TrafficPolicySummary
 data VPC =
   VPC'
     { _vpcVPCRegion :: !(Maybe VPCRegion)
-    , _vpcVPCId :: !(Maybe Text)
+    , _vpcVPCId     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

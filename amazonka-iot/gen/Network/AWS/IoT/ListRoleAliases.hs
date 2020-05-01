@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- | /See:/ 'listRoleAliases' smart constructor.
 data ListRoleAliases =
   ListRoleAliases'
-    { _lraMarker :: !(Maybe Text)
+    { _lraMarker         :: !(Maybe Text)
     , _lraAscendingOrder :: !(Maybe Bool)
-    , _lraPageSize :: !(Maybe Nat)
+    , _lraPageSize       :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -109,8 +109,8 @@ instance ToQuery ListRoleAliases where
 -- | /See:/ 'listRoleAliasesResponse' smart constructor.
 data ListRoleAliasesResponse =
   ListRoleAliasesResponse'
-    { _lrarsRoleAliases :: !(Maybe [Text])
-    , _lrarsNextMarker :: !(Maybe Text)
+    { _lrarsRoleAliases    :: !(Maybe [Text])
+    , _lrarsNextMarker     :: !(Maybe Text)
     , _lrarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

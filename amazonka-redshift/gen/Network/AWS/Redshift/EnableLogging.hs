@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,9 +53,9 @@ import Network.AWS.Response
 -- /See:/ 'enableLogging' smart constructor.
 data EnableLogging =
   EnableLogging'
-    { _elS3KeyPrefix :: !(Maybe Text)
+    { _elS3KeyPrefix       :: !(Maybe Text)
     , _elClusterIdentifier :: !Text
-    , _elBucketName :: !Text
+    , _elBucketName        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

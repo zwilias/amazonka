@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Shield.Types.Product
 -- | /See:/ 'listProtections' smart constructor.
 data ListProtections =
   ListProtections'
-    { _lpNextToken :: !(Maybe Text)
+    { _lpNextToken  :: !(Maybe Text)
     , _lpMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -118,8 +118,8 @@ instance ToQuery ListProtections where
 -- | /See:/ 'listProtectionsResponse' smart constructor.
 data ListProtectionsResponse =
   ListProtectionsResponse'
-    { _lprsProtections :: !(Maybe [Protection])
-    , _lprsNextToken :: !(Maybe Text)
+    { _lprsProtections    :: !(Maybe [Protection])
+    , _lprsNextToken      :: !(Maybe Text)
     , _lprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

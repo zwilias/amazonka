@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,8 +48,8 @@ import Network.AWS.Response
 data DescribeInstances =
   DescribeInstances'
     { _diInstanceIds :: !(Maybe [Text])
-    , _diStackId :: !(Maybe Text)
-    , _diLayerId :: !(Maybe Text)
+    , _diStackId     :: !(Maybe Text)
+    , _diLayerId     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,7 +124,7 @@ instance ToQuery DescribeInstances where
 -- /See:/ 'describeInstancesResponse' smart constructor.
 data DescribeInstancesResponse =
   DescribeInstancesResponse'
-    { _dirsInstances :: !(Maybe [Instance])
+    { _dirsInstances      :: !(Maybe [Instance])
     , _dirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,16 +63,16 @@ import Network.AWS.Response
 -- /See:/ 'createVPCEndpoint' smart constructor.
 data CreateVPCEndpoint =
   CreateVPCEndpoint'
-    { _cvePolicyDocument :: !(Maybe Text)
-    , _cveSecurityGroupIds :: !(Maybe [Text])
-    , _cveClientToken :: !(Maybe Text)
-    , _cveSubnetIds :: !(Maybe [Text])
-    , _cveVPCEndpointType :: !(Maybe VPCEndpointType)
+    { _cvePolicyDocument    :: !(Maybe Text)
+    , _cveSecurityGroupIds  :: !(Maybe [Text])
+    , _cveClientToken       :: !(Maybe Text)
+    , _cveSubnetIds         :: !(Maybe [Text])
+    , _cveVPCEndpointType   :: !(Maybe VPCEndpointType)
     , _cvePrivateDNSEnabled :: !(Maybe Bool)
-    , _cveDryRun :: !(Maybe Bool)
-    , _cveRouteTableIds :: !(Maybe [Text])
-    , _cveVPCId :: !Text
-    , _cveServiceName :: !Text
+    , _cveDryRun            :: !(Maybe Bool)
+    , _cveRouteTableIds     :: !(Maybe [Text])
+    , _cveVPCId             :: !Text
+    , _cveServiceName       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -208,8 +208,8 @@ instance ToQuery CreateVPCEndpoint where
 -- /See:/ 'createVPCEndpointResponse' smart constructor.
 data CreateVPCEndpointResponse =
   CreateVPCEndpointResponse'
-    { _cversClientToken :: !(Maybe Text)
-    , _cversVPCEndpoint :: !(Maybe VPCEndpoint)
+    { _cversClientToken    :: !(Maybe Text)
+    , _cversVPCEndpoint    :: !(Maybe VPCEndpoint)
     , _cversResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,8 +51,8 @@ import Network.AWS.Response
 -- /See:/ 'modifyClusterIAMRoles' smart constructor.
 data ModifyClusterIAMRoles =
   ModifyClusterIAMRoles'
-    { _mcirRemoveIAMRoles :: !(Maybe [Text])
-    , _mcirAddIAMRoles :: !(Maybe [Text])
+    { _mcirRemoveIAMRoles    :: !(Maybe [Text])
+    , _mcirAddIAMRoles       :: !(Maybe [Text])
     , _mcirClusterIdentifier :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -126,7 +126,7 @@ instance ToQuery ModifyClusterIAMRoles where
 -- | /See:/ 'modifyClusterIAMRolesResponse' smart constructor.
 data ModifyClusterIAMRolesResponse =
   ModifyClusterIAMRolesResponse'
-    { _mcirrsCluster :: !(Maybe Cluster)
+    { _mcirrsCluster        :: !(Maybe Cluster)
     , _mcirrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

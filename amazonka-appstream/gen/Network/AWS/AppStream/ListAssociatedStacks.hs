@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -111,8 +111,8 @@ instance ToQuery ListAssociatedStacks where
 -- | /See:/ 'listAssociatedStacksResponse' smart constructor.
 data ListAssociatedStacksResponse =
   ListAssociatedStacksResponse'
-    { _lasrsNextToken :: !(Maybe Text)
-    , _lasrsNames :: !(Maybe [Text])
+    { _lasrsNextToken      :: !(Maybe Text)
+    , _lasrsNames          :: !(Maybe [Text])
     , _lasrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

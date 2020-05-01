@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,9 +54,9 @@ import Network.AWS.Response
 data DescribeDBClusters =
   DescribeDBClusters'
     { _ddcDBClusterIdentifier :: !(Maybe Text)
-    , _ddcFilters :: !(Maybe [Filter])
-    , _ddcMarker :: !(Maybe Text)
-    , _ddcMaxRecords :: !(Maybe Int)
+    , _ddcFilters             :: !(Maybe [Filter])
+    , _ddcMarker              :: !(Maybe Text)
+    , _ddcMaxRecords          :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -137,8 +137,8 @@ instance ToQuery DescribeDBClusters where
 -- /See:/ 'describeDBClustersResponse' smart constructor.
 data DescribeDBClustersResponse =
   DescribeDBClustersResponse'
-    { _ddcrsDBClusters :: !(Maybe [DBCluster])
-    , _ddcrsMarker :: !(Maybe Text)
+    { _ddcrsDBClusters     :: !(Maybe [DBCluster])
+    , _ddcrsMarker         :: !(Maybe Text)
     , _ddcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

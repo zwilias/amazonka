@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -69,16 +69,16 @@ import Network.AWS.Response
 -- /See:/ 'createStage' smart constructor.
 data CreateStage =
   CreateStage'
-    { _cVariables :: !(Maybe (Map Text Text))
+    { _cVariables            :: !(Maybe (Map Text Text))
     , _cDocumentationVersion :: !(Maybe Text)
-    , _cCacheClusterSize :: !(Maybe CacheClusterSize)
-    , _cCanarySettings :: !(Maybe CanarySettings)
-    , _cCacheClusterEnabled :: !(Maybe Bool)
-    , _cDescription :: !(Maybe Text)
-    , _cTags :: !(Maybe (Map Text Text))
-    , _cRestAPIId :: !Text
-    , _cStageName :: !Text
-    , _cDeploymentId :: !Text
+    , _cCacheClusterSize     :: !(Maybe CacheClusterSize)
+    , _cCanarySettings       :: !(Maybe CanarySettings)
+    , _cCacheClusterEnabled  :: !(Maybe Bool)
+    , _cDescription          :: !(Maybe Text)
+    , _cTags                 :: !(Maybe (Map Text Text))
+    , _cRestAPIId            :: !Text
+    , _cStageName            :: !Text
+    , _cDeploymentId         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

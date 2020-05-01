@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,17 +54,17 @@ import Network.AWS.ServiceCatalog.Types.Product
 -- | /See:/ 'updateProduct' smart constructor.
 data UpdateProduct =
   UpdateProduct'
-    { _upRemoveTags :: !(Maybe [Text])
-    , _upOwner :: !(Maybe Text)
-    , _upSupportURL :: !(Maybe Text)
-    , _upDistributor :: !(Maybe Text)
-    , _upName :: !(Maybe Text)
-    , _upAcceptLanguage :: !(Maybe Text)
-    , _upAddTags :: !(Maybe [Tag])
-    , _upSupportEmail :: !(Maybe Text)
-    , _upDescription :: !(Maybe Text)
+    { _upRemoveTags         :: !(Maybe [Text])
+    , _upOwner              :: !(Maybe Text)
+    , _upSupportURL         :: !(Maybe Text)
+    , _upDistributor        :: !(Maybe Text)
+    , _upName               :: !(Maybe Text)
+    , _upAcceptLanguage     :: !(Maybe Text)
+    , _upAddTags            :: !(Maybe [Tag])
+    , _upSupportEmail       :: !(Maybe Text)
+    , _upDescription        :: !(Maybe Text)
     , _upSupportDescription :: !(Maybe Text)
-    , _upId :: !Text
+    , _upId                 :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -207,8 +207,8 @@ instance ToQuery UpdateProduct where
 data UpdateProductResponse =
   UpdateProductResponse'
     { _ursProductViewDetail :: !(Maybe ProductViewDetail)
-    , _ursTags :: !(Maybe [Tag])
-    , _ursResponseStatus :: !Int
+    , _ursTags              :: !(Maybe [Tag])
+    , _ursResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

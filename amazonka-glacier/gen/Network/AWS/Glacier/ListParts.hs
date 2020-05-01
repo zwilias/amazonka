@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -66,11 +66,11 @@ import Network.AWS.Response
 -- /See:/ 'listParts' smart constructor.
 data ListParts =
   ListParts'
-    { _lpMarker :: !(Maybe Text)
-    , _lpLimit :: !(Maybe Text)
+    { _lpMarker    :: !(Maybe Text)
+    , _lpLimit     :: !(Maybe Text)
     , _lpAccountId :: !Text
     , _lpVaultName :: !Text
-    , _lpUploadId :: !Text
+    , _lpUploadId  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -170,14 +170,14 @@ instance ToQuery ListParts where
 -- /See:/ 'listPartsResponse' smart constructor.
 data ListPartsResponse =
   ListPartsResponse'
-    { _lprsParts :: !(Maybe [PartListElement])
-    , _lprsMultipartUploadId :: !(Maybe Text)
-    , _lprsPartSizeInBytes :: !(Maybe Integer)
+    { _lprsParts              :: !(Maybe [PartListElement])
+    , _lprsMultipartUploadId  :: !(Maybe Text)
+    , _lprsPartSizeInBytes    :: !(Maybe Integer)
     , _lprsArchiveDescription :: !(Maybe Text)
-    , _lprsVaultARN :: !(Maybe Text)
-    , _lprsMarker :: !(Maybe Text)
-    , _lprsCreationDate :: !(Maybe Text)
-    , _lprsResponseStatus :: !Int
+    , _lprsVaultARN           :: !(Maybe Text)
+    , _lprsMarker             :: !(Maybe Text)
+    , _lprsCreationDate       :: !(Maybe Text)
+    , _lprsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

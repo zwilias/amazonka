@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.WorkMail.Types.Product
 data CreateResource =
   CreateResource'
     { _crOrganizationId :: !Text
-    , _crName :: !Text
-    , _crType :: !ResourceType
+    , _crName           :: !Text
+    , _crType           :: !ResourceType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -120,7 +120,7 @@ instance ToQuery CreateResource where
 -- | /See:/ 'createResourceResponse' smart constructor.
 data CreateResourceResponse =
   CreateResourceResponse'
-    { _crrsResourceId :: !(Maybe Text)
+    { _crrsResourceId     :: !(Maybe Text)
     , _crrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

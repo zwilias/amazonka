@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- | /See:/ 'deregisterContainerInstance' smart constructor.
 data DeregisterContainerInstance =
   DeregisterContainerInstance'
-    { _derCluster :: !(Maybe Text)
-    , _derForce :: !(Maybe Bool)
+    { _derCluster           :: !(Maybe Text)
+    , _derForce             :: !(Maybe Bool)
     , _derContainerInstance :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -128,7 +128,7 @@ instance ToQuery DeregisterContainerInstance where
 data DeregisterContainerInstanceResponse =
   DeregisterContainerInstanceResponse'
     { _dcirsContainerInstance :: !(Maybe ContainerInstance)
-    , _dcirsResponseStatus :: !Int
+    , _dcirsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

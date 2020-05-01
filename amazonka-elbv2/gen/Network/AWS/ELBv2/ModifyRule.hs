@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,9 +49,9 @@ import Network.AWS.Response
 -- | /See:/ 'modifyRule' smart constructor.
 data ModifyRule =
   ModifyRule'
-    { _mrActions :: !(Maybe [Action])
+    { _mrActions    :: !(Maybe [Action])
     , _mrConditions :: !(Maybe [RuleCondition])
-    , _mrRuleARN :: !Text
+    , _mrRuleARN    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -118,7 +118,7 @@ instance ToQuery ModifyRule where
 -- | /See:/ 'modifyRuleResponse' smart constructor.
 data ModifyRuleResponse =
   ModifyRuleResponse'
-    { _mrrsRules :: !(Maybe [Rule])
+    { _mrrsRules          :: !(Maybe [Rule])
     , _mrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

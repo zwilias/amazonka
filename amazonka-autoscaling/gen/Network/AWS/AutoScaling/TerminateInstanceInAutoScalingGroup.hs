@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'terminateInstanceInAutoScalingGroup' smart constructor.
 data TerminateInstanceInAutoScalingGroup =
   TerminateInstanceInAutoScalingGroup'
-    { _tiiasgInstanceId :: !Text
+    { _tiiasgInstanceId                     :: !Text
     , _tiiasgShouldDecrementDesiredCapacity :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -113,7 +113,7 @@ instance ToQuery TerminateInstanceInAutoScalingGroup where
 -- | /See:/ 'terminateInstanceInAutoScalingGroupResponse' smart constructor.
 data TerminateInstanceInAutoScalingGroupResponse =
   TerminateInstanceInAutoScalingGroupResponse'
-    { _tiiasgrsActivity :: !(Maybe Activity)
+    { _tiiasgrsActivity       :: !(Maybe Activity)
     , _tiiasgrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

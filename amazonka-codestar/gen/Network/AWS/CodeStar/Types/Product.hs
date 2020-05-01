@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,7 +27,7 @@ import Network.AWS.Prelude
 data ProjectSummary =
   ProjectSummary'
     { _psProjectARN :: !(Maybe Text)
-    , _psProjectId :: !(Maybe Text)
+    , _psProjectId  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -100,8 +100,8 @@ instance NFData Resource
 data TeamMember =
   TeamMember'
     { _tmRemoteAccessAllowed :: !(Maybe Bool)
-    , _tmUserARN :: !Text
-    , _tmProjectRole :: !Text
+    , _tmUserARN             :: !Text
+    , _tmProjectRole         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -158,9 +158,9 @@ instance NFData TeamMember
 data UserProfileSummary =
   UserProfileSummary'
     { _upsSshPublicKey :: !(Maybe Text)
-    , _upsUserARN :: !(Maybe Text)
+    , _upsUserARN      :: !(Maybe Text)
     , _upsEmailAddress :: !(Maybe (Sensitive Text))
-    , _upsDisplayName :: !(Maybe Text)
+    , _upsDisplayName  :: !(Maybe Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

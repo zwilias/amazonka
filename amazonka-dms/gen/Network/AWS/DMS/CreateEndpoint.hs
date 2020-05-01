@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -64,24 +64,24 @@ import Network.AWS.Response
 -- /See:/ 'createEndpoint' smart constructor.
 data CreateEndpoint =
   CreateEndpoint'
-    { _ceServerName :: !(Maybe Text)
-    , _ceCertificateARN :: !(Maybe Text)
-    , _ceServiceAccessRoleARN :: !(Maybe Text)
+    { _ceServerName                :: !(Maybe Text)
+    , _ceCertificateARN            :: !(Maybe Text)
+    , _ceServiceAccessRoleARN      :: !(Maybe Text)
     , _ceExtraConnectionAttributes :: !(Maybe Text)
-    , _ceUsername :: !(Maybe Text)
-    , _ceExternalTableDefinition :: !(Maybe Text)
-    , _ceKMSKeyId :: !(Maybe Text)
-    , _ceMongoDBSettings :: !(Maybe MongoDBSettings)
-    , _ceSSLMode :: !(Maybe DmsSSLModeValue)
-    , _cePassword :: !(Maybe (Sensitive Text))
-    , _ceDatabaseName :: !(Maybe Text)
-    , _ceS3Settings :: !(Maybe S3Settings)
-    , _ceDynamoDBSettings :: !(Maybe DynamoDBSettings)
-    , _ceTags :: !(Maybe [Tag])
-    , _cePort :: !(Maybe Int)
-    , _ceEndpointIdentifier :: !Text
-    , _ceEndpointType :: !ReplicationEndpointTypeValue
-    , _ceEngineName :: !Text
+    , _ceUsername                  :: !(Maybe Text)
+    , _ceExternalTableDefinition   :: !(Maybe Text)
+    , _ceKMSKeyId                  :: !(Maybe Text)
+    , _ceMongoDBSettings           :: !(Maybe MongoDBSettings)
+    , _ceSSLMode                   :: !(Maybe DmsSSLModeValue)
+    , _cePassword                  :: !(Maybe (Sensitive Text))
+    , _ceDatabaseName              :: !(Maybe Text)
+    , _ceS3Settings                :: !(Maybe S3Settings)
+    , _ceDynamoDBSettings          :: !(Maybe DynamoDBSettings)
+    , _ceTags                      :: !(Maybe [Tag])
+    , _cePort                      :: !(Maybe Int)
+    , _ceEndpointIdentifier        :: !Text
+    , _ceEndpointType              :: !ReplicationEndpointTypeValue
+    , _ceEngineName                :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -287,7 +287,7 @@ instance ToQuery CreateEndpoint where
 -- /See:/ 'createEndpointResponse' smart constructor.
 data CreateEndpointResponse =
   CreateEndpointResponse'
-    { _cersEndpoint :: !(Maybe Endpoint)
+    { _cersEndpoint       :: !(Maybe Endpoint)
     , _cersResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

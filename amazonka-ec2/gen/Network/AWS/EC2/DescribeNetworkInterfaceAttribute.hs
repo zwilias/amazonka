@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.Response
 -- /See:/ 'describeNetworkInterfaceAttribute' smart constructor.
 data DescribeNetworkInterfaceAttribute =
   DescribeNetworkInterfaceAttribute'
-    { _dniaAttribute :: !(Maybe NetworkInterfaceAttribute)
-    , _dniaDryRun :: !(Maybe Bool)
+    { _dniaAttribute          :: !(Maybe NetworkInterfaceAttribute)
+    , _dniaDryRun             :: !(Maybe Bool)
     , _dniaNetworkInterfaceId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -133,12 +133,12 @@ instance ToQuery DescribeNetworkInterfaceAttribute where
 -- /See:/ 'describeNetworkInterfaceAttributeResponse' smart constructor.
 data DescribeNetworkInterfaceAttributeResponse =
   DescribeNetworkInterfaceAttributeResponse'
-    { _dniarsGroups :: !(Maybe [GroupIdentifier])
-    , _dniarsSourceDestCheck :: !(Maybe AttributeBooleanValue)
+    { _dniarsGroups             :: !(Maybe [GroupIdentifier])
+    , _dniarsSourceDestCheck    :: !(Maybe AttributeBooleanValue)
     , _dniarsNetworkInterfaceId :: !(Maybe Text)
-    , _dniarsAttachment :: !(Maybe NetworkInterfaceAttachment)
-    , _dniarsDescription :: !(Maybe AttributeValue)
-    , _dniarsResponseStatus :: !Int
+    , _dniarsAttachment         :: !(Maybe NetworkInterfaceAttachment)
+    , _dniarsDescription        :: !(Maybe AttributeValue)
+    , _dniarsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

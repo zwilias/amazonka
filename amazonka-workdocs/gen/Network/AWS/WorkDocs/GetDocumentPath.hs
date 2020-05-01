@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,10 +50,10 @@ import Network.AWS.WorkDocs.Types.Product
 data GetDocumentPath =
   GetDocumentPath'
     { _gdpAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _gdpMarker :: !(Maybe Text)
-    , _gdpLimit :: !(Maybe Nat)
-    , _gdpFields :: !(Maybe Text)
-    , _gdpDocumentId :: !Text
+    , _gdpMarker              :: !(Maybe Text)
+    , _gdpLimit               :: !(Maybe Nat)
+    , _gdpFields              :: !(Maybe Text)
+    , _gdpDocumentId          :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -135,7 +135,7 @@ instance ToQuery GetDocumentPath where
 -- | /See:/ 'getDocumentPathResponse' smart constructor.
 data GetDocumentPathResponse =
   GetDocumentPathResponse'
-    { _gdprsPath :: !(Maybe ResourcePath)
+    { _gdprsPath           :: !(Maybe ResourcePath)
     , _gdprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

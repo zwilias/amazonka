@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -100,9 +100,9 @@ instance ToQuery ListHAPGs where
 -- | /See:/ 'listHAPGsResponse' smart constructor.
 data ListHAPGsResponse =
   ListHAPGsResponse'
-    { _lhrsNextToken :: !(Maybe Text)
+    { _lhrsNextToken      :: !(Maybe Text)
     , _lhrsResponseStatus :: !Int
-    , _lhrsHAPGList :: ![Text]
+    , _lhrsHAPGList       :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

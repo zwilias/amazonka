@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,10 +51,10 @@ import Network.AWS.Response
 -- | /See:/ 'listBonusPayments' smart constructor.
 data ListBonusPayments =
   ListBonusPayments'
-    { _lbpNextToken :: !(Maybe Text)
-    , _lbpHITId :: !(Maybe Text)
+    { _lbpNextToken    :: !(Maybe Text)
+    , _lbpHITId        :: !(Maybe Text)
     , _lbpAssignmentId :: !(Maybe Text)
-    , _lbpMaxResults :: !(Maybe Nat)
+    , _lbpMaxResults   :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -144,9 +144,9 @@ instance ToQuery ListBonusPayments where
 -- | /See:/ 'listBonusPaymentsResponse' smart constructor.
 data ListBonusPaymentsResponse =
   ListBonusPaymentsResponse'
-    { _lbprsBonusPayments :: !(Maybe [BonusPayment])
-    , _lbprsNextToken :: !(Maybe Text)
-    , _lbprsNumResults :: !(Maybe Int)
+    { _lbprsBonusPayments  :: !(Maybe [BonusPayment])
+    , _lbprsNextToken      :: !(Maybe Text)
+    , _lbprsNumResults     :: !(Maybe Int)
     , _lbprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

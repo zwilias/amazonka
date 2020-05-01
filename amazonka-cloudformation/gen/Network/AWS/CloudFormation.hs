@@ -481,9 +481,9 @@ import Network.AWS.CloudFormation.DescribeStackEvents
 import Network.AWS.CloudFormation.DescribeStackInstance
 import Network.AWS.CloudFormation.DescribeStackResource
 import Network.AWS.CloudFormation.DescribeStackResources
+import Network.AWS.CloudFormation.DescribeStacks
 import Network.AWS.CloudFormation.DescribeStackSet
 import Network.AWS.CloudFormation.DescribeStackSetOperation
-import Network.AWS.CloudFormation.DescribeStacks
 import Network.AWS.CloudFormation.EstimateTemplateCost
 import Network.AWS.CloudFormation.ExecuteChangeSet
 import Network.AWS.CloudFormation.GetStackPolicy
@@ -494,10 +494,10 @@ import Network.AWS.CloudFormation.ListExports
 import Network.AWS.CloudFormation.ListImports
 import Network.AWS.CloudFormation.ListStackInstances
 import Network.AWS.CloudFormation.ListStackResources
+import Network.AWS.CloudFormation.ListStacks
 import Network.AWS.CloudFormation.ListStackSetOperationResults
 import Network.AWS.CloudFormation.ListStackSetOperations
 import Network.AWS.CloudFormation.ListStackSets
-import Network.AWS.CloudFormation.ListStacks
 import Network.AWS.CloudFormation.SetStackPolicy
 import Network.AWS.CloudFormation.SignalResource
 import Network.AWS.CloudFormation.StopStackSetOperation

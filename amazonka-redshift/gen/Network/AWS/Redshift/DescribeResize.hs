@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -130,19 +130,19 @@ instance ToQuery DescribeResize where
 -- /See:/ 'describeResizeResponse' smart constructor.
 data DescribeResizeResponse =
   DescribeResizeResponse'
-    { _drrsImportTablesNotStarted :: !(Maybe [Text])
-    , _drrsStatus :: !(Maybe Text)
+    { _drrsImportTablesNotStarted             :: !(Maybe [Text])
+    , _drrsStatus                             :: !(Maybe Text)
     , _drrsEstimatedTimeToCompletionInSeconds :: !(Maybe Integer)
-    , _drrsAvgResizeRateInMegaBytesPerSecond :: !(Maybe Double)
-    , _drrsTargetNumberOfNodes :: !(Maybe Int)
-    , _drrsTargetNodeType :: !(Maybe Text)
-    , _drrsImportTablesInProgress :: !(Maybe [Text])
-    , _drrsImportTablesCompleted :: !(Maybe [Text])
-    , _drrsProgressInMegaBytes :: !(Maybe Integer)
-    , _drrsTotalResizeDataInMegaBytes :: !(Maybe Integer)
-    , _drrsTargetClusterType :: !(Maybe Text)
-    , _drrsElapsedTimeInSeconds :: !(Maybe Integer)
-    , _drrsResponseStatus :: !Int
+    , _drrsAvgResizeRateInMegaBytesPerSecond  :: !(Maybe Double)
+    , _drrsTargetNumberOfNodes                :: !(Maybe Int)
+    , _drrsTargetNodeType                     :: !(Maybe Text)
+    , _drrsImportTablesInProgress             :: !(Maybe [Text])
+    , _drrsImportTablesCompleted              :: !(Maybe [Text])
+    , _drrsProgressInMegaBytes                :: !(Maybe Integer)
+    , _drrsTotalResizeDataInMegaBytes         :: !(Maybe Integer)
+    , _drrsTargetClusterType                  :: !(Maybe Text)
+    , _drrsElapsedTimeInSeconds               :: !(Maybe Integer)
+    , _drrsResponseStatus                     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

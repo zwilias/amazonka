@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -62,12 +62,12 @@ import Network.AWS.Response
 -- | /See:/ 'putSlotType' smart constructor.
 data PutSlotType =
   PutSlotType'
-    { _pstChecksum :: !(Maybe Text)
+    { _pstChecksum               :: !(Maybe Text)
     , _pstValueSelectionStrategy :: !(Maybe SlotValueSelectionStrategy)
-    , _pstCreateVersion :: !(Maybe Bool)
-    , _pstDescription :: !(Maybe Text)
-    , _pstEnumerationValues :: !(Maybe (List1 EnumerationValue))
-    , _pstName :: !Text
+    , _pstCreateVersion          :: !(Maybe Bool)
+    , _pstDescription            :: !(Maybe Text)
+    , _pstEnumerationValues      :: !(Maybe (List1 EnumerationValue))
+    , _pstName                   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -174,16 +174,16 @@ instance ToQuery PutSlotType where
 -- | /See:/ 'putSlotTypeResponse' smart constructor.
 data PutSlotTypeResponse =
   PutSlotTypeResponse'
-    { _pstrsChecksum :: !(Maybe Text)
+    { _pstrsChecksum               :: !(Maybe Text)
     , _pstrsValueSelectionStrategy :: !(Maybe SlotValueSelectionStrategy)
-    , _pstrsCreatedDate :: !(Maybe POSIX)
-    , _pstrsName :: !(Maybe Text)
-    , _pstrsVersion :: !(Maybe Text)
-    , _pstrsLastUpdatedDate :: !(Maybe POSIX)
-    , _pstrsCreateVersion :: !(Maybe Bool)
-    , _pstrsDescription :: !(Maybe Text)
-    , _pstrsEnumerationValues :: !(Maybe (List1 EnumerationValue))
-    , _pstrsResponseStatus :: !Int
+    , _pstrsCreatedDate            :: !(Maybe POSIX)
+    , _pstrsName                   :: !(Maybe Text)
+    , _pstrsVersion                :: !(Maybe Text)
+    , _pstrsLastUpdatedDate        :: !(Maybe POSIX)
+    , _pstrsCreateVersion          :: !(Maybe Bool)
+    , _pstrsDescription            :: !(Maybe Text)
+    , _pstrsEnumerationValues      :: !(Maybe (List1 EnumerationValue))
+    , _pstrsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

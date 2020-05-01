@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -59,14 +59,14 @@ import Network.AWS.Response
 -- /See:/ 'describeScheduledInstanceAvailability' smart constructor.
 data DescribeScheduledInstanceAvailability =
   DescribeScheduledInstanceAvailability'
-    { _dsiaMinSlotDurationInHours :: !(Maybe Int)
-    , _dsiaFilters :: !(Maybe [Filter])
-    , _dsiaNextToken :: !(Maybe Text)
-    , _dsiaMaxSlotDurationInHours :: !(Maybe Int)
-    , _dsiaDryRun :: !(Maybe Bool)
-    , _dsiaMaxResults :: !(Maybe Int)
+    { _dsiaMinSlotDurationInHours  :: !(Maybe Int)
+    , _dsiaFilters                 :: !(Maybe [Filter])
+    , _dsiaNextToken               :: !(Maybe Text)
+    , _dsiaMaxSlotDurationInHours  :: !(Maybe Int)
+    , _dsiaDryRun                  :: !(Maybe Bool)
+    , _dsiaMaxResults              :: !(Maybe Int)
     , _dsiaFirstSlotStartTimeRange :: !SlotDateTimeRangeRequest
-    , _dsiaRecurrence :: !ScheduledInstanceRecurrenceRequest
+    , _dsiaRecurrence              :: !ScheduledInstanceRecurrenceRequest
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

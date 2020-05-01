@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,10 +56,10 @@ import Network.AWS.Response
 -- /See:/ 'createCustomerGateway' smart constructor.
 data CreateCustomerGateway =
   CreateCustomerGateway'
-    { _ccgDryRun :: !(Maybe Bool)
-    , _ccgBGPASN :: !Int
+    { _ccgDryRun   :: !(Maybe Bool)
+    , _ccgBGPASN   :: !Int
     , _ccgPublicIP :: !Text
-    , _ccgType :: !GatewayType
+    , _ccgType     :: !GatewayType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -141,7 +141,7 @@ instance ToQuery CreateCustomerGateway where
 data CreateCustomerGatewayResponse =
   CreateCustomerGatewayResponse'
     { _ccgrsCustomerGateway :: !(Maybe CustomerGateway)
-    , _ccgrsResponseStatus :: !Int
+    , _ccgrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -110,14 +110,14 @@ instance ToQuery DescribeCache where
 -- | /See:/ 'describeCacheResponse' smart constructor.
 data DescribeCacheResponse =
   DescribeCacheResponse'
-    { _dcrsGatewayARN :: !(Maybe Text)
-    , _dcrsDiskIds :: !(Maybe [Text])
-    , _dcrsCacheUsedPercentage :: !(Maybe Double)
-    , _dcrsCacheHitPercentage :: !(Maybe Double)
-    , _dcrsCacheMissPercentage :: !(Maybe Double)
+    { _dcrsGatewayARN            :: !(Maybe Text)
+    , _dcrsDiskIds               :: !(Maybe [Text])
+    , _dcrsCacheUsedPercentage   :: !(Maybe Double)
+    , _dcrsCacheHitPercentage    :: !(Maybe Double)
+    , _dcrsCacheMissPercentage   :: !(Maybe Double)
     , _dcrsCacheAllocatedInBytes :: !(Maybe Integer)
-    , _dcrsCacheDirtyPercentage :: !(Maybe Double)
-    , _dcrsResponseStatus :: !Int
+    , _dcrsCacheDirtyPercentage  :: !(Maybe Double)
+    , _dcrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

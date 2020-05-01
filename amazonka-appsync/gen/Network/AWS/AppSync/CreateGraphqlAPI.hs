@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,10 +48,10 @@ import Network.AWS.Response
 data CreateGraphqlAPI =
   CreateGraphqlAPI'
     { _cgaOpenIdConnectConfig :: !(Maybe OpenIdConnectConfig)
-    , _cgaUserPoolConfig :: !(Maybe UserPoolConfig)
-    , _cgaLogConfig :: !(Maybe LogConfig)
-    , _cgaName :: !Text
-    , _cgaAuthenticationType :: !AuthenticationType
+    , _cgaUserPoolConfig      :: !(Maybe UserPoolConfig)
+    , _cgaLogConfig           :: !(Maybe LogConfig)
+    , _cgaName                :: !Text
+    , _cgaAuthenticationType  :: !AuthenticationType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -141,7 +141,7 @@ instance ToQuery CreateGraphqlAPI where
 -- | /See:/ 'createGraphqlAPIResponse' smart constructor.
 data CreateGraphqlAPIResponse =
   CreateGraphqlAPIResponse'
-    { _cgarsGraphqlAPI :: !(Maybe GraphqlAPI)
+    { _cgarsGraphqlAPI     :: !(Maybe GraphqlAPI)
     , _cgarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

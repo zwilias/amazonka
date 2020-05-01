@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Response
 data UpdateDeviceStatus =
   UpdateDeviceStatus'
     { _udsDeviceRememberedStatus :: !(Maybe DeviceRememberedStatusType)
-    , _udsAccessToken :: !(Sensitive Text)
-    , _udsDeviceKey :: !Text
+    , _udsAccessToken            :: !(Sensitive Text)
+    , _udsDeviceKey              :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

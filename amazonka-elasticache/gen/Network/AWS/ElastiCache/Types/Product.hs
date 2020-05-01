@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -56,31 +56,31 @@ instance NFData AvailabilityZone
 -- /See:/ 'cacheCluster' smart constructor.
 data CacheCluster =
   CacheCluster'
-    { _ccEngineVersion :: !(Maybe Text)
-    , _ccCacheNodeType :: !(Maybe Text)
-    , _ccCacheNodes :: !(Maybe [CacheNode])
-    , _ccCacheClusterCreateTime :: !(Maybe ISO8601)
-    , _ccAtRestEncryptionEnabled :: !(Maybe Bool)
-    , _ccAutoMinorVersionUpgrade :: !(Maybe Bool)
-    , _ccSecurityGroups :: !(Maybe [SecurityGroupMembership])
-    , _ccNotificationConfiguration :: !(Maybe NotificationConfiguration)
-    , _ccTransitEncryptionEnabled :: !(Maybe Bool)
-    , _ccSnapshotWindow :: !(Maybe Text)
-    , _ccCacheClusterId :: !(Maybe Text)
-    , _ccConfigurationEndpoint :: !(Maybe Endpoint)
-    , _ccEngine :: !(Maybe Text)
-    , _ccCacheSecurityGroups :: !(Maybe [CacheSecurityGroupMembership])
-    , _ccAuthTokenEnabled :: !(Maybe Bool)
-    , _ccClientDownloadLandingPage :: !(Maybe Text)
+    { _ccEngineVersion              :: !(Maybe Text)
+    , _ccCacheNodeType              :: !(Maybe Text)
+    , _ccCacheNodes                 :: !(Maybe [CacheNode])
+    , _ccCacheClusterCreateTime     :: !(Maybe ISO8601)
+    , _ccAtRestEncryptionEnabled    :: !(Maybe Bool)
+    , _ccAutoMinorVersionUpgrade    :: !(Maybe Bool)
+    , _ccSecurityGroups             :: !(Maybe [SecurityGroupMembership])
+    , _ccNotificationConfiguration  :: !(Maybe NotificationConfiguration)
+    , _ccTransitEncryptionEnabled   :: !(Maybe Bool)
+    , _ccSnapshotWindow             :: !(Maybe Text)
+    , _ccCacheClusterId             :: !(Maybe Text)
+    , _ccConfigurationEndpoint      :: !(Maybe Endpoint)
+    , _ccEngine                     :: !(Maybe Text)
+    , _ccCacheSecurityGroups        :: !(Maybe [CacheSecurityGroupMembership])
+    , _ccAuthTokenEnabled           :: !(Maybe Bool)
+    , _ccClientDownloadLandingPage  :: !(Maybe Text)
     , _ccPreferredMaintenanceWindow :: !(Maybe Text)
-    , _ccCacheSubnetGroupName :: !(Maybe Text)
-    , _ccPreferredAvailabilityZone :: !(Maybe Text)
-    , _ccCacheParameterGroup :: !(Maybe CacheParameterGroupStatus)
-    , _ccCacheClusterStatus :: !(Maybe Text)
-    , _ccSnapshotRetentionLimit :: !(Maybe Int)
-    , _ccReplicationGroupId :: !(Maybe Text)
-    , _ccPendingModifiedValues :: !(Maybe PendingModifiedValues)
-    , _ccNumCacheNodes :: !(Maybe Int)
+    , _ccCacheSubnetGroupName       :: !(Maybe Text)
+    , _ccPreferredAvailabilityZone  :: !(Maybe Text)
+    , _ccCacheParameterGroup        :: !(Maybe CacheParameterGroupStatus)
+    , _ccCacheClusterStatus         :: !(Maybe Text)
+    , _ccSnapshotRetentionLimit     :: !(Maybe Int)
+    , _ccReplicationGroupId         :: !(Maybe Text)
+    , _ccPendingModifiedValues      :: !(Maybe PendingModifiedValues)
+    , _ccNumCacheNodes              :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -337,10 +337,10 @@ instance NFData CacheCluster
 -- /See:/ 'cacheEngineVersion' smart constructor.
 data CacheEngineVersion =
   CacheEngineVersion'
-    { _cevEngineVersion :: !(Maybe Text)
-    , _cevCacheParameterGroupFamily :: !(Maybe Text)
-    , _cevCacheEngineDescription :: !(Maybe Text)
-    , _cevEngine :: !(Maybe Text)
+    { _cevEngineVersion                 :: !(Maybe Text)
+    , _cevCacheParameterGroupFamily     :: !(Maybe Text)
+    , _cevCacheEngineDescription        :: !(Maybe Text)
+    , _cevEngine                        :: !(Maybe Text)
     , _cevCacheEngineVersionDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -470,13 +470,13 @@ instance NFData CacheEngineVersion
 -- /See:/ 'cacheNode' smart constructor.
 data CacheNode =
   CacheNode'
-    { _cnSourceCacheNodeId :: !(Maybe Text)
-    , _cnParameterGroupStatus :: !(Maybe Text)
-    , _cnCacheNodeCreateTime :: !(Maybe ISO8601)
+    { _cnSourceCacheNodeId        :: !(Maybe Text)
+    , _cnParameterGroupStatus     :: !(Maybe Text)
+    , _cnCacheNodeCreateTime      :: !(Maybe ISO8601)
     , _cnCustomerAvailabilityZone :: !(Maybe Text)
-    , _cnCacheNodeId :: !(Maybe Text)
-    , _cnCacheNodeStatus :: !(Maybe Text)
-    , _cnEndpoint :: !(Maybe Endpoint)
+    , _cnCacheNodeId              :: !(Maybe Text)
+    , _cnCacheNodeStatus          :: !(Maybe Text)
+    , _cnEndpoint                 :: !(Maybe Endpoint)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -564,14 +564,14 @@ instance NFData CacheNode
 data CacheNodeTypeSpecificParameter =
   CacheNodeTypeSpecificParameter'
     { _cntspCacheNodeTypeSpecificValues :: !(Maybe [CacheNodeTypeSpecificValue])
-    , _cntspMinimumEngineVersion :: !(Maybe Text)
-    , _cntspSource :: !(Maybe Text)
-    , _cntspIsModifiable :: !(Maybe Bool)
-    , _cntspDataType :: !(Maybe Text)
-    , _cntspAllowedValues :: !(Maybe Text)
-    , _cntspParameterName :: !(Maybe Text)
-    , _cntspDescription :: !(Maybe Text)
-    , _cntspChangeType :: !(Maybe ChangeType)
+    , _cntspMinimumEngineVersion        :: !(Maybe Text)
+    , _cntspSource                      :: !(Maybe Text)
+    , _cntspIsModifiable                :: !(Maybe Bool)
+    , _cntspDataType                    :: !(Maybe Text)
+    , _cntspAllowedValues               :: !(Maybe Text)
+    , _cntspParameterName               :: !(Maybe Text)
+    , _cntspDescription                 :: !(Maybe Text)
+    , _cntspChangeType                  :: !(Maybe ChangeType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -680,7 +680,7 @@ instance NFData CacheNodeTypeSpecificParameter
 data CacheNodeTypeSpecificValue =
   CacheNodeTypeSpecificValue'
     { _cntsvCacheNodeType :: !(Maybe Text)
-    , _cntsvValue :: !(Maybe Text)
+    , _cntsvValue         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -721,8 +721,8 @@ instance NFData CacheNodeTypeSpecificValue
 data CacheParameterGroup =
   CacheParameterGroup'
     { _cpgCacheParameterGroupFamily :: !(Maybe Text)
-    , _cpgCacheParameterGroupName :: !(Maybe Text)
-    , _cpgDescription :: !(Maybe Text)
+    , _cpgCacheParameterGroupName   :: !(Maybe Text)
+    , _cpgDescription               :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -819,8 +819,8 @@ instance NFData CacheParameterGroupNameMessage
 data CacheParameterGroupStatus =
   CacheParameterGroupStatus'
     { _cpgsCacheParameterGroupName :: !(Maybe Text)
-    , _cpgsCacheNodeIdsToReboot :: !(Maybe [Text])
-    , _cpgsParameterApplyStatus :: !(Maybe Text)
+    , _cpgsCacheNodeIdsToReboot    :: !(Maybe [Text])
+    , _cpgsParameterApplyStatus    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -886,9 +886,9 @@ instance NFData CacheParameterGroupStatus
 data CacheSecurityGroup =
   CacheSecurityGroup'
     { _csgCacheSecurityGroupName :: !(Maybe Text)
-    , _csgOwnerId :: !(Maybe Text)
-    , _csgEC2SecurityGroups :: !(Maybe [EC2SecurityGroup])
-    , _csgDescription :: !(Maybe Text)
+    , _csgOwnerId                :: !(Maybe Text)
+    , _csgEC2SecurityGroups      :: !(Maybe [EC2SecurityGroup])
+    , _csgDescription            :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -950,7 +950,7 @@ instance NFData CacheSecurityGroup
 -- /See:/ 'cacheSecurityGroupMembership' smart constructor.
 data CacheSecurityGroupMembership =
   CacheSecurityGroupMembership'
-    { _csgmStatus :: !(Maybe Text)
+    { _csgmStatus                 :: !(Maybe Text)
     , _csgmCacheSecurityGroupName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -998,9 +998,9 @@ instance NFData CacheSecurityGroupMembership
 -- /See:/ 'cacheSubnetGroup' smart constructor.
 data CacheSubnetGroup =
   CacheSubnetGroup'
-    { _csgVPCId :: !(Maybe Text)
-    , _csgSubnets :: !(Maybe [Subnet])
-    , _csgCacheSubnetGroupName :: !(Maybe Text)
+    { _csgVPCId                       :: !(Maybe Text)
+    , _csgSubnets                     :: !(Maybe [Subnet])
+    , _csgCacheSubnetGroupName        :: !(Maybe Text)
     , _csgCacheSubnetGroupDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1063,9 +1063,9 @@ instance NFData CacheSubnetGroup
 -- /See:/ 'ec2SecurityGroup' smart constructor.
 data EC2SecurityGroup =
   EC2SecurityGroup'
-    { _esgStatus :: !(Maybe Text)
+    { _esgStatus                  :: !(Maybe Text)
     , _esgEC2SecurityGroupOwnerId :: !(Maybe Text)
-    , _esgEC2SecurityGroupName :: !(Maybe Text)
+    , _esgEC2SecurityGroupName    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1117,7 +1117,7 @@ instance NFData EC2SecurityGroup
 data Endpoint =
   Endpoint'
     { _eAddress :: !(Maybe Text)
-    , _ePort :: !(Maybe Int)
+    , _ePort    :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1224,10 +1224,10 @@ instance NFData EngineDefaults
 -- /See:/ 'event' smart constructor.
 data Event =
   Event'
-    { _eSourceType :: !(Maybe SourceType)
+    { _eSourceType       :: !(Maybe SourceType)
     , _eSourceIdentifier :: !(Maybe Text)
-    , _eDate :: !(Maybe ISO8601)
-    , _eMessage :: !(Maybe Text)
+    , _eDate             :: !(Maybe ISO8601)
+    , _eMessage          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1284,11 +1284,11 @@ instance NFData Event
 -- /See:/ 'nodeGroup' smart constructor.
 data NodeGroup =
   NodeGroup'
-    { _ngStatus :: !(Maybe Text)
-    , _ngPrimaryEndpoint :: !(Maybe Endpoint)
-    , _ngSlots :: !(Maybe Text)
+    { _ngStatus           :: !(Maybe Text)
+    , _ngPrimaryEndpoint  :: !(Maybe Endpoint)
+    , _ngSlots            :: !(Maybe Text)
     , _ngNodeGroupMembers :: !(Maybe [NodeGroupMember])
-    , _ngNodeGroupId :: !(Maybe Text)
+    , _ngNodeGroupId      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1356,9 +1356,9 @@ instance NFData NodeGroup
 -- /See:/ 'nodeGroupConfiguration' smart constructor.
 data NodeGroupConfiguration =
   NodeGroupConfiguration'
-    { _ngcSlots :: !(Maybe Text)
-    , _ngcReplicaCount :: !(Maybe Int)
-    , _ngcPrimaryAvailabilityZone :: !(Maybe Text)
+    { _ngcSlots                    :: !(Maybe Text)
+    , _ngcReplicaCount             :: !(Maybe Int)
+    , _ngcPrimaryAvailabilityZone  :: !(Maybe Text)
     , _ngcReplicaAvailabilityZones :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1433,11 +1433,11 @@ instance ToQuery NodeGroupConfiguration where
 -- /See:/ 'nodeGroupMember' smart constructor.
 data NodeGroupMember =
   NodeGroupMember'
-    { _ngmCacheClusterId :: !(Maybe Text)
-    , _ngmCacheNodeId :: !(Maybe Text)
+    { _ngmCacheClusterId            :: !(Maybe Text)
+    , _ngmCacheNodeId               :: !(Maybe Text)
     , _ngmPreferredAvailabilityZone :: !(Maybe Text)
-    , _ngmCurrentRole :: !(Maybe Text)
-    , _ngmReadEndpoint :: !(Maybe Endpoint)
+    , _ngmCurrentRole               :: !(Maybe Text)
+    , _ngmReadEndpoint              :: !(Maybe Endpoint)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1506,12 +1506,12 @@ instance NFData NodeGroupMember
 data NodeSnapshot =
   NodeSnapshot'
     { _nsNodeGroupConfiguration :: !(Maybe NodeGroupConfiguration)
-    , _nsCacheNodeCreateTime :: !(Maybe ISO8601)
-    , _nsCacheClusterId :: !(Maybe Text)
-    , _nsCacheNodeId :: !(Maybe Text)
-    , _nsNodeGroupId :: !(Maybe Text)
-    , _nsSnapshotCreateTime :: !(Maybe ISO8601)
-    , _nsCacheSize :: !(Maybe Text)
+    , _nsCacheNodeCreateTime    :: !(Maybe ISO8601)
+    , _nsCacheClusterId         :: !(Maybe Text)
+    , _nsCacheNodeId            :: !(Maybe Text)
+    , _nsNodeGroupId            :: !(Maybe Text)
+    , _nsSnapshotCreateTime     :: !(Maybe ISO8601)
+    , _nsCacheSize              :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1599,7 +1599,7 @@ instance NFData NodeSnapshot
 data NotificationConfiguration =
   NotificationConfiguration'
     { _ncTopicStatus :: !(Maybe Text)
-    , _ncTopicARN :: !(Maybe Text)
+    , _ncTopicARN    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1637,15 +1637,15 @@ instance NFData NotificationConfiguration
 -- /See:/ 'parameter' smart constructor.
 data Parameter =
   Parameter'
-    { _pParameterValue :: !(Maybe Text)
+    { _pParameterValue       :: !(Maybe Text)
     , _pMinimumEngineVersion :: !(Maybe Text)
-    , _pSource :: !(Maybe Text)
-    , _pIsModifiable :: !(Maybe Bool)
-    , _pDataType :: !(Maybe Text)
-    , _pAllowedValues :: !(Maybe Text)
-    , _pParameterName :: !(Maybe Text)
-    , _pDescription :: !(Maybe Text)
-    , _pChangeType :: !(Maybe ChangeType)
+    , _pSource               :: !(Maybe Text)
+    , _pIsModifiable         :: !(Maybe Bool)
+    , _pDataType             :: !(Maybe Text)
+    , _pAllowedValues        :: !(Maybe Text)
+    , _pParameterName        :: !(Maybe Text)
+    , _pDescription          :: !(Maybe Text)
+    , _pChangeType           :: !(Maybe ChangeType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1744,7 +1744,7 @@ instance NFData Parameter
 data ParameterNameValue =
   ParameterNameValue'
     { _pnvParameterValue :: !(Maybe Text)
-    , _pnvParameterName :: !(Maybe Text)
+    , _pnvParameterName  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1786,10 +1786,10 @@ instance ToQuery ParameterNameValue where
 -- /See:/ 'pendingModifiedValues' smart constructor.
 data PendingModifiedValues =
   PendingModifiedValues'
-    { _pmvEngineVersion :: !(Maybe Text)
-    , _pmvCacheNodeType :: !(Maybe Text)
+    { _pmvEngineVersion        :: !(Maybe Text)
+    , _pmvCacheNodeType        :: !(Maybe Text)
     , _pmvCacheNodeIdsToRemove :: !(Maybe [Text])
-    , _pmvNumCacheNodes :: !(Maybe Int)
+    , _pmvNumCacheNodes        :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1851,7 +1851,7 @@ instance NFData PendingModifiedValues
 data RecurringCharge =
   RecurringCharge'
     { _rcRecurringChargeFrequency :: !(Maybe Text)
-    , _rcRecurringChargeAmount :: !(Maybe Double)
+    , _rcRecurringChargeAmount    :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2074,8 +2074,8 @@ instance NFData ReplicationGroup
 -- /See:/ 'replicationGroupPendingModifiedValues' smart constructor.
 data ReplicationGroupPendingModifiedValues =
   ReplicationGroupPendingModifiedValues'
-    { _rgpmvResharding :: !(Maybe ReshardingStatus)
-    , _rgpmvPrimaryClusterId :: !(Maybe Text)
+    { _rgpmvResharding              :: !(Maybe ReshardingStatus)
+    , _rgpmvPrimaryClusterId        :: !(Maybe Text)
     , _rgpmvAutomaticFailoverStatus :: !(Maybe PendingAutomaticFailoverStatus)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2133,17 +2133,17 @@ instance NFData ReplicationGroupPendingModifiedValues
 -- /See:/ 'reservedCacheNode' smart constructor.
 data ReservedCacheNode =
   ReservedCacheNode'
-    { _rcnCacheNodeType :: !(Maybe Text)
-    , _rcnState :: !(Maybe Text)
-    , _rcnStartTime :: !(Maybe ISO8601)
-    , _rcnProductDescription :: !(Maybe Text)
-    , _rcnCacheNodeCount :: !(Maybe Int)
-    , _rcnReservedCacheNodeId :: !(Maybe Text)
-    , _rcnRecurringCharges :: !(Maybe [RecurringCharge])
-    , _rcnOfferingType :: !(Maybe Text)
-    , _rcnUsagePrice :: !(Maybe Double)
-    , _rcnFixedPrice :: !(Maybe Double)
-    , _rcnDuration :: !(Maybe Int)
+    { _rcnCacheNodeType                :: !(Maybe Text)
+    , _rcnState                        :: !(Maybe Text)
+    , _rcnStartTime                    :: !(Maybe ISO8601)
+    , _rcnProductDescription           :: !(Maybe Text)
+    , _rcnCacheNodeCount               :: !(Maybe Int)
+    , _rcnReservedCacheNodeId          :: !(Maybe Text)
+    , _rcnRecurringCharges             :: !(Maybe [RecurringCharge])
+    , _rcnOfferingType                 :: !(Maybe Text)
+    , _rcnUsagePrice                   :: !(Maybe Double)
+    , _rcnFixedPrice                   :: !(Maybe Double)
+    , _rcnDuration                     :: !(Maybe Int)
     , _rcnReservedCacheNodesOfferingId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2274,13 +2274,13 @@ instance NFData ReservedCacheNode
 -- /See:/ 'reservedCacheNodesOffering' smart constructor.
 data ReservedCacheNodesOffering =
   ReservedCacheNodesOffering'
-    { _rcnoCacheNodeType :: !(Maybe Text)
-    , _rcnoProductDescription :: !(Maybe Text)
-    , _rcnoRecurringCharges :: !(Maybe [RecurringCharge])
-    , _rcnoOfferingType :: !(Maybe Text)
-    , _rcnoUsagePrice :: !(Maybe Double)
-    , _rcnoFixedPrice :: !(Maybe Double)
-    , _rcnoDuration :: !(Maybe Int)
+    { _rcnoCacheNodeType                :: !(Maybe Text)
+    , _rcnoProductDescription           :: !(Maybe Text)
+    , _rcnoRecurringCharges             :: !(Maybe [RecurringCharge])
+    , _rcnoOfferingType                 :: !(Maybe Text)
+    , _rcnoUsagePrice                   :: !(Maybe Double)
+    , _rcnoFixedPrice                   :: !(Maybe Double)
+    , _rcnoDuration                     :: !(Maybe Int)
     , _rcnoReservedCacheNodesOfferingId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2449,7 +2449,7 @@ instance NFData ReshardingStatus
 -- /See:/ 'securityGroupMembership' smart constructor.
 data SecurityGroupMembership =
   SecurityGroupMembership'
-    { _sgmStatus :: !(Maybe Text)
+    { _sgmStatus          :: !(Maybe Text)
     , _sgmSecurityGroupId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2520,30 +2520,30 @@ instance NFData SlotMigration
 -- /See:/ 'snapshot' smart constructor.
 data Snapshot =
   Snapshot'
-    { _sEngineVersion :: !(Maybe Text)
-    , _sCacheNodeType :: !(Maybe Text)
-    , _sCacheClusterCreateTime :: !(Maybe ISO8601)
-    , _sAutoMinorVersionUpgrade :: !(Maybe Bool)
-    , _sCacheParameterGroupName :: !(Maybe Text)
+    { _sEngineVersion               :: !(Maybe Text)
+    , _sCacheNodeType               :: !(Maybe Text)
+    , _sCacheClusterCreateTime      :: !(Maybe ISO8601)
+    , _sAutoMinorVersionUpgrade     :: !(Maybe Bool)
+    , _sCacheParameterGroupName     :: !(Maybe Text)
     , _sReplicationGroupDescription :: !(Maybe Text)
-    , _sVPCId :: !(Maybe Text)
-    , _sSnapshotStatus :: !(Maybe Text)
-    , _sSnapshotWindow :: !(Maybe Text)
-    , _sCacheClusterId :: !(Maybe Text)
-    , _sEngine :: !(Maybe Text)
-    , _sPreferredMaintenanceWindow :: !(Maybe Text)
-    , _sTopicARN :: !(Maybe Text)
-    , _sNodeSnapshots :: !(Maybe [NodeSnapshot])
-    , _sCacheSubnetGroupName :: !(Maybe Text)
-    , _sPreferredAvailabilityZone :: !(Maybe Text)
-    , _sNumNodeGroups :: !(Maybe Int)
-    , _sSnapshotRetentionLimit :: !(Maybe Int)
-    , _sSnapshotName :: !(Maybe Text)
-    , _sReplicationGroupId :: !(Maybe Text)
-    , _sNumCacheNodes :: !(Maybe Int)
-    , _sPort :: !(Maybe Int)
-    , _sAutomaticFailover :: !(Maybe AutomaticFailoverStatus)
-    , _sSnapshotSource :: !(Maybe Text)
+    , _sVPCId                       :: !(Maybe Text)
+    , _sSnapshotStatus              :: !(Maybe Text)
+    , _sSnapshotWindow              :: !(Maybe Text)
+    , _sCacheClusterId              :: !(Maybe Text)
+    , _sEngine                      :: !(Maybe Text)
+    , _sPreferredMaintenanceWindow  :: !(Maybe Text)
+    , _sTopicARN                    :: !(Maybe Text)
+    , _sNodeSnapshots               :: !(Maybe [NodeSnapshot])
+    , _sCacheSubnetGroupName        :: !(Maybe Text)
+    , _sPreferredAvailabilityZone   :: !(Maybe Text)
+    , _sNumNodeGroups               :: !(Maybe Int)
+    , _sSnapshotRetentionLimit      :: !(Maybe Int)
+    , _sSnapshotName                :: !(Maybe Text)
+    , _sReplicationGroupId          :: !(Maybe Text)
+    , _sNumCacheNodes               :: !(Maybe Int)
+    , _sPort                        :: !(Maybe Int)
+    , _sAutomaticFailover           :: !(Maybe AutomaticFailoverStatus)
+    , _sSnapshotSource              :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2776,7 +2776,7 @@ instance NFData Snapshot
 -- /See:/ 'subnet' smart constructor.
 data Subnet =
   Subnet'
-    { _sSubnetIdentifier :: !(Maybe Text)
+    { _sSubnetIdentifier       :: !(Maybe Text)
     , _sSubnetAvailabilityZone :: !(Maybe AvailabilityZone)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2817,7 +2817,7 @@ instance NFData Subnet
 data Tag =
   Tag'
     { _tagValue :: !(Maybe Text)
-    , _tagKey :: !(Maybe Text)
+    , _tagKey   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

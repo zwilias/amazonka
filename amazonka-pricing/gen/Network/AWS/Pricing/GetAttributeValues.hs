@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,9 +50,9 @@ import Network.AWS.Response
 -- | /See:/ 'getAttributeValues' smart constructor.
 data GetAttributeValues =
   GetAttributeValues'
-    { _gavNextToken :: !(Maybe Text)
-    , _gavMaxResults :: !(Maybe Nat)
-    , _gavServiceCode :: !Text
+    { _gavNextToken     :: !(Maybe Text)
+    , _gavMaxResults    :: !(Maybe Nat)
+    , _gavServiceCode   :: !Text
     , _gavAttributeName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -146,8 +146,8 @@ instance ToQuery GetAttributeValues where
 data GetAttributeValuesResponse =
   GetAttributeValuesResponse'
     { _gavrsAttributeValues :: !(Maybe [AttributeValue])
-    , _gavrsNextToken :: !(Maybe Text)
-    , _gavrsResponseStatus :: !Int
+    , _gavrsNextToken       :: !(Maybe Text)
+    , _gavrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

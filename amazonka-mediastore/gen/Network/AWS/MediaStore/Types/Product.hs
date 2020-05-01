@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,10 +27,10 @@ import Network.AWS.Prelude
 data CORSRule =
   CORSRule'
     { _crAllowedMethods :: !(Maybe [MethodName])
-    , _crMaxAgeSeconds :: !(Maybe Nat)
+    , _crMaxAgeSeconds  :: !(Maybe Nat)
     , _crAllowedHeaders :: !(Maybe [Text])
     , _crAllowedOrigins :: !(Maybe [Text])
-    , _crExposeHeaders :: !(Maybe [Text])
+    , _crExposeHeaders  :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -119,10 +119,10 @@ instance ToJSON CORSRule where
 data Container =
   Container'
     { _cCreationTime :: !(Maybe POSIX)
-    , _cStatus :: !(Maybe ContainerStatus)
-    , _cARN :: !(Maybe Text)
-    , _cName :: !(Maybe Text)
-    , _cEndpoint :: !(Maybe Text)
+    , _cStatus       :: !(Maybe ContainerStatus)
+    , _cARN          :: !(Maybe Text)
+    , _cName         :: !(Maybe Text)
+    , _cEndpoint     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

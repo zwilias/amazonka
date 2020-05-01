@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,7 +53,7 @@ import Network.AWS.Response
 data DeregisterInstancesFromLoadBalancer =
   DeregisterInstancesFromLoadBalancer'
     { _diflbLoadBalancerName :: !Text
-    , _diflbInstances :: ![Instance]
+    , _diflbInstances        :: ![Instance]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -118,7 +118,7 @@ instance ToQuery DeregisterInstancesFromLoadBalancer where
 -- /See:/ 'deregisterInstancesFromLoadBalancerResponse' smart constructor.
 data DeregisterInstancesFromLoadBalancerResponse =
   DeregisterInstancesFromLoadBalancerResponse'
-    { _diflbrsInstances :: !(Maybe [Instance])
+    { _diflbrsInstances      :: !(Maybe [Instance])
     , _diflbrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

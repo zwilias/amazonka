@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -28,7 +28,7 @@ import Network.AWS.Rekognition.Types.Sum
 -- /See:/ 'ageRange' smart constructor.
 data AgeRange =
   AgeRange'
-    { _arLow :: !(Maybe Nat)
+    { _arLow  :: !(Maybe Nat)
     , _arHigh :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -66,7 +66,7 @@ instance NFData AgeRange
 -- /See:/ 'beard' smart constructor.
 data Beard =
   Beard'
-    { _bValue :: !(Maybe Bool)
+    { _bValue      :: !(Maybe Bool)
     , _bConfidence :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -111,9 +111,9 @@ instance NFData Beard
 data BoundingBox =
   BoundingBox'
     { _bbHeight :: !(Maybe Double)
-    , _bbLeft :: !(Maybe Double)
-    , _bbWidth :: !(Maybe Double)
-    , _bbTop :: !(Maybe Double)
+    , _bbLeft   :: !(Maybe Double)
+    , _bbWidth  :: !(Maybe Double)
+    , _bbTop    :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -174,10 +174,10 @@ instance NFData BoundingBox
 data Celebrity =
   Celebrity'
     { _cMatchConfidence :: !(Maybe Double)
-    , _cURLs :: !(Maybe [Text])
-    , _cName :: !(Maybe Text)
-    , _cId :: !(Maybe Text)
-    , _cFace :: !(Maybe ComparedFace)
+    , _cURLs            :: !(Maybe [Text])
+    , _cName            :: !(Maybe Text)
+    , _cId              :: !(Maybe Text)
+    , _cFace            :: !(Maybe ComparedFace)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -246,11 +246,11 @@ instance NFData Celebrity
 data CelebrityDetail =
   CelebrityDetail'
     { _cdBoundingBox :: !(Maybe BoundingBox)
-    , _cdURLs :: !(Maybe [Text])
-    , _cdConfidence :: !(Maybe Double)
-    , _cdName :: !(Maybe Text)
-    , _cdId :: !(Maybe Text)
-    , _cdFace :: !(Maybe FaceDetail)
+    , _cdURLs        :: !(Maybe [Text])
+    , _cdConfidence  :: !(Maybe Double)
+    , _cdName        :: !(Maybe Text)
+    , _cdId          :: !(Maybe Text)
+    , _cdFace        :: !(Maybe FaceDetail)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -370,7 +370,7 @@ instance NFData CelebrityRecognition
 data CompareFacesMatch =
   CompareFacesMatch'
     { _cfmSimilarity :: !(Maybe Double)
-    , _cfmFace :: !(Maybe ComparedFace)
+    , _cfmFace       :: !(Maybe ComparedFace)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -411,10 +411,10 @@ instance NFData CompareFacesMatch
 data ComparedFace =
   ComparedFace'
     { _cfBoundingBox :: !(Maybe BoundingBox)
-    , _cfPose :: !(Maybe Pose)
-    , _cfConfidence :: !(Maybe Double)
-    , _cfQuality :: !(Maybe ImageQuality)
-    , _cfLandmarks :: !(Maybe [Landmark])
+    , _cfPose        :: !(Maybe Pose)
+    , _cfConfidence  :: !(Maybe Double)
+    , _cfQuality     :: !(Maybe ImageQuality)
+    , _cfLandmarks   :: !(Maybe [Landmark])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -484,7 +484,7 @@ instance NFData ComparedFace
 data ComparedSourceImageFace =
   ComparedSourceImageFace'
     { _csifBoundingBox :: !(Maybe BoundingBox)
-    , _csifConfidence :: !(Maybe Double)
+    , _csifConfidence  :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -528,7 +528,7 @@ instance NFData ComparedSourceImageFace
 data ContentModerationDetection =
   ContentModerationDetection'
     { _cmdModerationLabel :: !(Maybe ModerationLabel)
-    , _cmdTimestamp :: !(Maybe Integer)
+    , _cmdTimestamp       :: !(Maybe Integer)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -573,7 +573,7 @@ instance NFData ContentModerationDetection
 data Emotion =
   Emotion'
     { _eConfidence :: !(Maybe Double)
-    , _eType :: !(Maybe EmotionName)
+    , _eType       :: !(Maybe EmotionName)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -612,7 +612,7 @@ instance NFData Emotion
 -- /See:/ 'eyeOpen' smart constructor.
 data EyeOpen =
   EyeOpen'
-    { _eoValue :: !(Maybe Bool)
+    { _eoValue      :: !(Maybe Bool)
     , _eoConfidence :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -652,7 +652,7 @@ instance NFData EyeOpen
 -- /See:/ 'eyeglasses' smart constructor.
 data Eyeglasses =
   Eyeglasses'
-    { _eyeValue :: !(Maybe Bool)
+    { _eyeValue      :: !(Maybe Bool)
     , _eyeConfidence :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -692,11 +692,11 @@ instance NFData Eyeglasses
 -- /See:/ 'face' smart constructor.
 data Face =
   Face'
-    { _fFaceId :: !(Maybe Text)
-    , _fBoundingBox :: !(Maybe BoundingBox)
+    { _fFaceId          :: !(Maybe Text)
+    , _fBoundingBox     :: !(Maybe BoundingBox)
     , _fExternalImageId :: !(Maybe Text)
-    , _fConfidence :: !(Maybe Double)
-    , _fImageId :: !(Maybe Text)
+    , _fConfidence      :: !(Maybe Double)
+    , _fImageId         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -778,21 +778,21 @@ instance NFData Face
 -- /See:/ 'faceDetail' smart constructor.
 data FaceDetail =
   FaceDetail'
-    { _fdAgeRange :: !(Maybe AgeRange)
-    , _fdSunglasses :: !(Maybe Sunglasses)
-    , _fdMouthOpen :: !(Maybe MouthOpen)
+    { _fdAgeRange    :: !(Maybe AgeRange)
+    , _fdSunglasses  :: !(Maybe Sunglasses)
+    , _fdMouthOpen   :: !(Maybe MouthOpen)
     , _fdBoundingBox :: !(Maybe BoundingBox)
-    , _fdEmotions :: !(Maybe [Emotion])
-    , _fdEyesOpen :: !(Maybe EyeOpen)
-    , _fdPose :: !(Maybe Pose)
-    , _fdConfidence :: !(Maybe Double)
-    , _fdGender :: !(Maybe Gender)
-    , _fdQuality :: !(Maybe ImageQuality)
-    , _fdEyeglasses :: !(Maybe Eyeglasses)
-    , _fdBeard :: !(Maybe Beard)
-    , _fdMustache :: !(Maybe Mustache)
-    , _fdSmile :: !(Maybe Smile)
-    , _fdLandmarks :: !(Maybe [Landmark])
+    , _fdEmotions    :: !(Maybe [Emotion])
+    , _fdEyesOpen    :: !(Maybe EyeOpen)
+    , _fdPose        :: !(Maybe Pose)
+    , _fdConfidence  :: !(Maybe Double)
+    , _fdGender      :: !(Maybe Gender)
+    , _fdQuality     :: !(Maybe ImageQuality)
+    , _fdEyeglasses  :: !(Maybe Eyeglasses)
+    , _fdBeard       :: !(Maybe Beard)
+    , _fdMustache    :: !(Maybe Mustache)
+    , _fdSmile       :: !(Maybe Smile)
+    , _fdLandmarks   :: !(Maybe [Landmark])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -942,7 +942,7 @@ instance NFData FaceDetail
 data FaceDetection =
   FaceDetection'
     { _fdTimestamp :: !(Maybe Integer)
-    , _fdFace :: !(Maybe FaceDetail)
+    , _fdFace      :: !(Maybe FaceDetail)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -982,7 +982,7 @@ instance NFData FaceDetection
 data FaceMatch =
   FaceMatch'
     { _fmSimilarity :: !(Maybe Double)
-    , _fmFace :: !(Maybe Face)
+    , _fmFace       :: !(Maybe Face)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1022,7 +1022,7 @@ instance NFData FaceMatch
 data FaceRecord =
   FaceRecord'
     { _frFaceDetail :: !(Maybe FaceDetail)
-    , _frFace :: !(Maybe Face)
+    , _frFace       :: !(Maybe Face)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1062,7 +1062,7 @@ instance NFData FaceRecord
 data FaceSearchSettings =
   FaceSearchSettings'
     { _fssFaceMatchThreshold :: !(Maybe Double)
-    , _fssCollectionId :: !(Maybe Text)
+    , _fssCollectionId       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1114,7 +1114,7 @@ instance ToJSON FaceSearchSettings where
 -- /See:/ 'gender' smart constructor.
 data Gender =
   Gender'
-    { _gValue :: !(Maybe GenderType)
+    { _gValue      :: !(Maybe GenderType)
     , _gConfidence :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1155,7 +1155,7 @@ instance NFData Gender
 data Geometry =
   Geometry'
     { _gBoundingBox :: !(Maybe BoundingBox)
-    , _gPolygon :: !(Maybe [Point])
+    , _gPolygon     :: !(Maybe [Point])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1206,7 +1206,7 @@ instance NFData Geometry
 data Image =
   Image'
     { _iS3Object :: !(Maybe S3Object)
-    , _iBytes :: !(Maybe Base64)
+    , _iBytes    :: !(Maybe Base64)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1244,7 +1244,7 @@ instance ToJSON Image where
 -- /See:/ 'imageQuality' smart constructor.
 data ImageQuality =
   ImageQuality'
-    { _iqSharpness :: !(Maybe Double)
+    { _iqSharpness  :: !(Maybe Double)
     , _iqBrightness :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1355,7 +1355,7 @@ instance ToJSON KinesisVideoStream where
 data Label =
   Label'
     { _lConfidence :: !(Maybe Double)
-    , _lName :: !(Maybe Text)
+    , _lName       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1394,7 +1394,7 @@ instance NFData Label
 -- /See:/ 'labelDetection' smart constructor.
 data LabelDetection =
   LabelDetection'
-    { _ldLabel :: !(Maybe Label)
+    { _ldLabel     :: !(Maybe Label)
     , _ldTimestamp :: !(Maybe Integer)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1435,8 +1435,8 @@ instance NFData LabelDetection
 data Landmark =
   Landmark'
     { _lType :: !(Maybe LandmarkType)
-    , _lX :: !(Maybe Double)
-    , _lY :: !(Maybe Double)
+    , _lX    :: !(Maybe Double)
+    , _lY    :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1482,7 +1482,7 @@ instance NFData Landmark
 data ModerationLabel =
   ModerationLabel'
     { _mlConfidence :: !(Maybe Double)
-    , _mlName :: !(Maybe Text)
+    , _mlName       :: !(Maybe Text)
     , _mlParentName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1532,7 +1532,7 @@ instance NFData ModerationLabel
 -- /See:/ 'mouthOpen' smart constructor.
 data MouthOpen =
   MouthOpen'
-    { _moValue :: !(Maybe Bool)
+    { _moValue      :: !(Maybe Bool)
     , _moConfidence :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1572,7 +1572,7 @@ instance NFData MouthOpen
 -- /See:/ 'mustache' smart constructor.
 data Mustache =
   Mustache'
-    { _mValue :: !(Maybe Bool)
+    { _mValue      :: !(Maybe Bool)
     , _mConfidence :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1613,7 +1613,7 @@ instance NFData Mustache
 data NotificationChannel =
   NotificationChannel'
     { _ncSNSTopicARN :: !Text
-    , _ncRoleARN :: !Text
+    , _ncRoleARN     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1659,8 +1659,8 @@ instance ToJSON NotificationChannel where
 data PersonDetail =
   PersonDetail'
     { _pdBoundingBox :: !(Maybe BoundingBox)
-    , _pdIndex :: !(Maybe Integer)
-    , _pdFace :: !(Maybe FaceDetail)
+    , _pdIndex       :: !(Maybe Integer)
+    , _pdFace        :: !(Maybe FaceDetail)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1709,7 +1709,7 @@ instance NFData PersonDetail
 -- /See:/ 'personDetection' smart constructor.
 data PersonDetection =
   PersonDetection'
-    { _pdPerson :: !(Maybe PersonDetail)
+    { _pdPerson    :: !(Maybe PersonDetail)
     , _pdTimestamp :: !(Maybe Integer)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1750,8 +1750,8 @@ instance NFData PersonDetection
 data PersonMatch =
   PersonMatch'
     { _pmFaceMatches :: !(Maybe [FaceMatch])
-    , _pmPerson :: !(Maybe PersonDetail)
-    , _pmTimestamp :: !(Maybe Integer)
+    , _pmPerson      :: !(Maybe PersonDetail)
+    , _pmTimestamp   :: !(Maybe Integer)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1840,8 +1840,8 @@ instance NFData Point
 -- /See:/ 'pose' smart constructor.
 data Pose =
   Pose'
-    { _pYaw :: !(Maybe Double)
-    , _pRoll :: !(Maybe Double)
+    { _pYaw   :: !(Maybe Double)
+    , _pRoll  :: !(Maybe Double)
     , _pPitch :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1891,8 +1891,8 @@ instance NFData Pose
 -- /See:/ 's3Object' smart constructor.
 data S3Object =
   S3Object'
-    { _soBucket :: !(Maybe Text)
-    , _soName :: !(Maybe Text)
+    { _soBucket  :: !(Maybe Text)
+    , _soName    :: !(Maybe Text)
     , _soVersion :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1942,7 +1942,7 @@ instance ToJSON S3Object where
 -- /See:/ 'smile' smart constructor.
 data Smile =
   Smile'
-    { _smiValue :: !(Maybe Bool)
+    { _smiValue      :: !(Maybe Bool)
     , _smiConfidence :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1983,7 +1983,7 @@ instance NFData Smile
 data StreamProcessor =
   StreamProcessor'
     { _spStatus :: !(Maybe StreamProcessorStatus)
-    , _spName :: !(Maybe Text)
+    , _spName   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2135,7 +2135,7 @@ instance ToJSON StreamProcessorSettings where
 -- /See:/ 'sunglasses' smart constructor.
 data Sunglasses =
   Sunglasses'
-    { _sValue :: !(Maybe Bool)
+    { _sValue      :: !(Maybe Bool)
     , _sConfidence :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2182,11 +2182,11 @@ instance NFData Sunglasses
 data TextDetection =
   TextDetection'
     { _tdDetectedText :: !(Maybe Text)
-    , _tdConfidence :: !(Maybe Double)
-    , _tdGeometry :: !(Maybe Geometry)
-    , _tdId :: !(Maybe Nat)
-    , _tdType :: !(Maybe TextTypes)
-    , _tdParentId :: !(Maybe Nat)
+    , _tdConfidence   :: !(Maybe Double)
+    , _tdGeometry     :: !(Maybe Geometry)
+    , _tdId           :: !(Maybe Nat)
+    , _tdType         :: !(Maybe TextTypes)
+    , _tdParentId     :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2292,12 +2292,12 @@ instance ToJSON Video where
 -- /See:/ 'videoMetadata' smart constructor.
 data VideoMetadata =
   VideoMetadata'
-    { _vmFrameRate :: !(Maybe Double)
-    , _vmFormat :: !(Maybe Text)
-    , _vmCodec :: !(Maybe Text)
-    , _vmFrameHeight :: !(Maybe Nat)
+    { _vmFrameRate      :: !(Maybe Double)
+    , _vmFormat         :: !(Maybe Text)
+    , _vmCodec          :: !(Maybe Text)
+    , _vmFrameHeight    :: !(Maybe Nat)
     , _vmDurationMillis :: !(Maybe Nat)
-    , _vmFrameWidth :: !(Maybe Nat)
+    , _vmFrameWidth     :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

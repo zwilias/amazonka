@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,10 +48,10 @@ import Network.AWS.ServiceCatalog.Types.Product
 -- | /See:/ 'describeProvisioningArtifact' smart constructor.
 data DescribeProvisioningArtifact =
   DescribeProvisioningArtifact'
-    { _dpaVerbose :: !(Maybe Bool)
-    , _dpaAcceptLanguage :: !(Maybe Text)
+    { _dpaVerbose                :: !(Maybe Bool)
+    , _dpaAcceptLanguage         :: !(Maybe Text)
     , _dpaProvisioningArtifactId :: !Text
-    , _dpaProductId :: !Text
+    , _dpaProductId              :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -138,10 +138,10 @@ instance ToQuery DescribeProvisioningArtifact where
 -- | /See:/ 'describeProvisioningArtifactResponse' smart constructor.
 data DescribeProvisioningArtifactResponse =
   DescribeProvisioningArtifactResponse'
-    { _dpaprsStatus :: !(Maybe RequestStatus)
-    , _dpaprsInfo :: !(Maybe (Map Text Text))
+    { _dpaprsStatus                     :: !(Maybe RequestStatus)
+    , _dpaprsInfo                       :: !(Maybe (Map Text Text))
     , _dpaprsProvisioningArtifactDetail :: !(Maybe ProvisioningArtifactDetail)
-    , _dpaprsResponseStatus :: !Int
+    , _dpaprsResponseStatus             :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

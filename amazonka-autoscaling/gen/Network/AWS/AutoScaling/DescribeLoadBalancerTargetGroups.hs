@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 -- | /See:/ 'describeLoadBalancerTargetGroups' smart constructor.
 data DescribeLoadBalancerTargetGroups =
   DescribeLoadBalancerTargetGroups'
-    { _dlbtgsNextToken :: !(Maybe Text)
-    , _dlbtgsMaxRecords :: !(Maybe Int)
+    { _dlbtgsNextToken            :: !(Maybe Text)
+    , _dlbtgsMaxRecords           :: !(Maybe Int)
     , _dlbtgsAutoScalingGroupName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

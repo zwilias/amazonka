@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,8 +26,8 @@ import Network.AWS.Prelude
 -- /See:/ 'blobMetadata' smart constructor.
 data BlobMetadata =
   BlobMetadata'
-    { _bmPath :: !(Maybe Text)
-    , _bmMode :: !(Maybe Text)
+    { _bmPath   :: !(Maybe Text)
+    , _bmMode   :: !(Maybe Text)
     , _bmBlobId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -76,7 +76,7 @@ instance NFData BlobMetadata
 -- /See:/ 'branchInfo' smart constructor.
 data BranchInfo =
   BranchInfo'
-    { _biCommitId :: !(Maybe Text)
+    { _biCommitId   :: !(Maybe Text)
     , _biBranchName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -116,14 +116,14 @@ instance NFData BranchInfo
 -- /See:/ 'comment' smart constructor.
 data Comment =
   Comment'
-    { _cLastModifiedDate :: !(Maybe POSIX)
-    , _cAuthorARN :: !(Maybe Text)
-    , _cContent :: !(Maybe Text)
-    , _cCreationDate :: !(Maybe POSIX)
-    , _cDeleted :: !(Maybe Bool)
+    { _cLastModifiedDate   :: !(Maybe POSIX)
+    , _cAuthorARN          :: !(Maybe Text)
+    , _cContent            :: !(Maybe Text)
+    , _cCreationDate       :: !(Maybe POSIX)
+    , _cDeleted            :: !(Maybe Bool)
     , _cClientRequestToken :: !(Maybe Text)
-    , _cCommentId :: !(Maybe Text)
-    , _cInReplyTo :: !(Maybe Text)
+    , _cCommentId          :: !(Maybe Text)
+    , _cInReplyTo          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -218,13 +218,13 @@ instance NFData Comment
 -- /See:/ 'commentsForComparedCommit' smart constructor.
 data CommentsForComparedCommit =
   CommentsForComparedCommit'
-    { _cfccBeforeBlobId :: !(Maybe Text)
-    , _cfccLocation :: !(Maybe Location)
-    , _cfccAfterCommitId :: !(Maybe Text)
-    , _cfccAfterBlobId :: !(Maybe Text)
+    { _cfccBeforeBlobId   :: !(Maybe Text)
+    , _cfccLocation       :: !(Maybe Location)
+    , _cfccAfterCommitId  :: !(Maybe Text)
+    , _cfccAfterBlobId    :: !(Maybe Text)
     , _cfccBeforeCommitId :: !(Maybe Text)
     , _cfccRepositoryName :: !(Maybe Text)
-    , _cfccComments :: !(Maybe [Comment])
+    , _cfccComments       :: !(Maybe [Comment])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -312,14 +312,14 @@ instance NFData CommentsForComparedCommit
 -- /See:/ 'commentsForPullRequest' smart constructor.
 data CommentsForPullRequest =
   CommentsForPullRequest'
-    { _cfprBeforeBlobId :: !(Maybe Text)
-    , _cfprLocation :: !(Maybe Location)
-    , _cfprAfterCommitId :: !(Maybe Text)
-    , _cfprPullRequestId :: !(Maybe Text)
-    , _cfprAfterBlobId :: !(Maybe Text)
+    { _cfprBeforeBlobId   :: !(Maybe Text)
+    , _cfprLocation       :: !(Maybe Location)
+    , _cfprAfterCommitId  :: !(Maybe Text)
+    , _cfprPullRequestId  :: !(Maybe Text)
+    , _cfprAfterBlobId    :: !(Maybe Text)
     , _cfprBeforeCommitId :: !(Maybe Text)
     , _cfprRepositoryName :: !(Maybe Text)
-    , _cfprComments :: !(Maybe [Comment])
+    , _cfprComments       :: !(Maybe [Comment])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -415,13 +415,13 @@ instance NFData CommentsForPullRequest
 -- /See:/ 'commit' smart constructor.
 data Commit =
   Commit'
-    { _cCommitId :: !(Maybe Text)
-    , _cCommitter :: !(Maybe UserInfo)
-    , _cTreeId :: !(Maybe Text)
+    { _cCommitId       :: !(Maybe Text)
+    , _cCommitter      :: !(Maybe UserInfo)
+    , _cTreeId         :: !(Maybe Text)
     , _cAdditionalData :: !(Maybe Text)
-    , _cParents :: !(Maybe [Text])
-    , _cAuthor :: !(Maybe UserInfo)
-    , _cMessage :: !(Maybe Text)
+    , _cParents        :: !(Maybe [Text])
+    , _cAuthor         :: !(Maybe UserInfo)
+    , _cMessage        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -505,7 +505,7 @@ instance NFData Commit
 -- /See:/ 'difference' smart constructor.
 data Difference =
   Difference'
-    { _dAfterBlob :: !(Maybe BlobMetadata)
+    { _dAfterBlob  :: !(Maybe BlobMetadata)
     , _dBeforeBlob :: !(Maybe BlobMetadata)
     , _dChangeType :: !(Maybe ChangeTypeEnum)
     }
@@ -557,8 +557,8 @@ instance NFData Difference
 data Location =
   Location'
     { _lRelativeFileVersion :: !(Maybe RelativeFileVersionEnum)
-    , _lFilePath :: !(Maybe Text)
-    , _lFilePosition :: !(Maybe Integer)
+    , _lFilePath            :: !(Maybe Text)
+    , _lFilePosition        :: !(Maybe Integer)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -660,15 +660,15 @@ instance NFData MergeMetadata
 -- /See:/ 'pullRequest' smart constructor.
 data PullRequest =
   PullRequest'
-    { _prAuthorARN :: !(Maybe Text)
-    , _prPullRequestId :: !(Maybe Text)
-    , _prCreationDate :: !(Maybe POSIX)
-    , _prPullRequestStatus :: !(Maybe PullRequestStatusEnum)
-    , _prTitle :: !(Maybe Text)
+    { _prAuthorARN          :: !(Maybe Text)
+    , _prPullRequestId      :: !(Maybe Text)
+    , _prCreationDate       :: !(Maybe POSIX)
+    , _prPullRequestStatus  :: !(Maybe PullRequestStatusEnum)
+    , _prTitle              :: !(Maybe Text)
     , _prClientRequestToken :: !(Maybe Text)
-    , _prLastActivityDate :: !(Maybe POSIX)
+    , _prLastActivityDate   :: !(Maybe POSIX)
     , _prPullRequestTargets :: !(Maybe [PullRequestTarget])
-    , _prDescription :: !(Maybe Text)
+    , _prDescription        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -881,8 +881,8 @@ instance NFData PullRequestEvent
 data PullRequestMergedStateChangedEventMetadata =
   PullRequestMergedStateChangedEventMetadata'
     { _prmscemDestinationReference :: !(Maybe Text)
-    , _prmscemMergeMetadata :: !(Maybe MergeMetadata)
-    , _prmscemRepositoryName :: !(Maybe Text)
+    , _prmscemMergeMetadata        :: !(Maybe MergeMetadata)
+    , _prmscemRepositoryName       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -945,7 +945,7 @@ instance NFData PullRequestMergedStateChangedEventMetadata
 -- /See:/ 'pullRequestSourceReferenceUpdatedEventMetadata' smart constructor.
 data PullRequestSourceReferenceUpdatedEventMetadata =
   PullRequestSourceReferenceUpdatedEventMetadata'
-    { _prsruemAfterCommitId :: !(Maybe Text)
+    { _prsruemAfterCommitId  :: !(Maybe Text)
     , _prsruemBeforeCommitId :: !(Maybe Text)
     , _prsruemRepositoryName :: !(Maybe Text)
     }
@@ -1045,12 +1045,12 @@ instance NFData PullRequestStatusChangedEventMetadata
 -- /See:/ 'pullRequestTarget' smart constructor.
 data PullRequestTarget =
   PullRequestTarget'
-    { _prtSourceCommit :: !(Maybe Text)
+    { _prtSourceCommit         :: !(Maybe Text)
     , _prtDestinationReference :: !(Maybe Text)
-    , _prtMergeMetadata :: !(Maybe MergeMetadata)
-    , _prtDestinationCommit :: !(Maybe Text)
-    , _prtRepositoryName :: !(Maybe Text)
-    , _prtSourceReference :: !(Maybe Text)
+    , _prtMergeMetadata        :: !(Maybe MergeMetadata)
+    , _prtDestinationCommit    :: !(Maybe Text)
+    , _prtRepositoryName       :: !(Maybe Text)
+    , _prtSourceReference      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1131,15 +1131,15 @@ instance NFData PullRequestTarget
 data RepositoryMetadata =
   RepositoryMetadata'
     { _rmRepositoryDescription :: !(Maybe Text)
-    , _rmLastModifiedDate :: !(Maybe POSIX)
-    , _rmARN :: !(Maybe Text)
-    , _rmCloneURLHTTP :: !(Maybe Text)
-    , _rmAccountId :: !(Maybe Text)
-    , _rmDefaultBranch :: !(Maybe Text)
-    , _rmRepositoryId :: !(Maybe Text)
-    , _rmRepositoryName :: !(Maybe Text)
-    , _rmCreationDate :: !(Maybe POSIX)
-    , _rmCloneURLSSH :: !(Maybe Text)
+    , _rmLastModifiedDate      :: !(Maybe POSIX)
+    , _rmARN                   :: !(Maybe Text)
+    , _rmCloneURLHTTP          :: !(Maybe Text)
+    , _rmAccountId             :: !(Maybe Text)
+    , _rmDefaultBranch         :: !(Maybe Text)
+    , _rmRepositoryId          :: !(Maybe Text)
+    , _rmRepositoryName        :: !(Maybe Text)
+    , _rmCreationDate          :: !(Maybe POSIX)
+    , _rmCloneURLSSH           :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1251,7 +1251,7 @@ instance NFData RepositoryMetadata
 -- /See:/ 'repositoryNameIdPair' smart constructor.
 data RepositoryNameIdPair =
   RepositoryNameIdPair'
-    { _rnipRepositoryId :: !(Maybe Text)
+    { _rnipRepositoryId   :: !(Maybe Text)
     , _rnipRepositoryName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1296,11 +1296,11 @@ instance NFData RepositoryNameIdPair
 -- /See:/ 'repositoryTrigger' smart constructor.
 data RepositoryTrigger =
   RepositoryTrigger'
-    { _rtBranches :: !(Maybe [Text])
-    , _rtCustomData :: !(Maybe Text)
-    , _rtName :: !Text
+    { _rtBranches       :: !(Maybe [Text])
+    , _rtCustomData     :: !(Maybe Text)
+    , _rtName           :: !Text
     , _rtDestinationARN :: !Text
-    , _rtEvents :: ![RepositoryTriggerEventEnum]
+    , _rtEvents         :: ![RepositoryTriggerEventEnum]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1384,7 +1384,7 @@ instance ToJSON RepositoryTrigger where
 data RepositoryTriggerExecutionFailure =
   RepositoryTriggerExecutionFailure'
     { _rtefFailureMessage :: !(Maybe Text)
-    , _rtefTrigger :: !(Maybe Text)
+    , _rtefTrigger        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1429,8 +1429,8 @@ instance NFData RepositoryTriggerExecutionFailure
 data Target =
   Target'
     { _tDestinationReference :: !(Maybe Text)
-    , _tRepositoryName :: !Text
-    , _tSourceReference :: !Text
+    , _tRepositoryName       :: !Text
+    , _tSourceReference      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1488,8 +1488,8 @@ instance ToJSON Target where
 data UserInfo =
   UserInfo'
     { _uiEmail :: !(Maybe Text)
-    , _uiDate :: !(Maybe Text)
-    , _uiName :: !(Maybe Text)
+    , _uiDate  :: !(Maybe Text)
+    , _uiName  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

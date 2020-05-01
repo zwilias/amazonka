@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 -- /See:/ 'describeVPCAttribute' smart constructor.
 data DescribeVPCAttribute =
   DescribeVPCAttribute'
-    { _dvpcaDryRun :: !(Maybe Bool)
+    { _dvpcaDryRun    :: !(Maybe Bool)
     , _dvpcaAttribute :: !VPCAttributeName
-    , _dvpcaVPCId :: !Text
+    , _dvpcaVPCId     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -128,9 +128,9 @@ instance ToQuery DescribeVPCAttribute where
 data DescribeVPCAttributeResponse =
   DescribeVPCAttributeResponse'
     { _dvpcarsEnableDNSHostnames :: !(Maybe AttributeBooleanValue)
-    , _dvpcarsEnableDNSSupport :: !(Maybe AttributeBooleanValue)
-    , _dvpcarsVPCId :: !(Maybe Text)
-    , _dvpcarsResponseStatus :: !Int
+    , _dvpcarsEnableDNSSupport   :: !(Maybe AttributeBooleanValue)
+    , _dvpcarsVPCId              :: !(Maybe Text)
+    , _dvpcarsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

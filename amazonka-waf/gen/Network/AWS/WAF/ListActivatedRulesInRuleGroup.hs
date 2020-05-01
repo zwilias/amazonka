@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,8 +47,8 @@ import Network.AWS.WAF.Types.Product
 data ListActivatedRulesInRuleGroup =
   ListActivatedRulesInRuleGroup'
     { _larirgRuleGroupId :: !(Maybe Text)
-    , _larirgNextMarker :: !(Maybe Text)
-    , _larirgLimit :: !(Maybe Nat)
+    , _larirgNextMarker  :: !(Maybe Text)
+    , _larirgLimit       :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -122,7 +122,7 @@ instance ToQuery ListActivatedRulesInRuleGroup where
 -- | /See:/ 'listActivatedRulesInRuleGroupResponse' smart constructor.
 data ListActivatedRulesInRuleGroupResponse =
   ListActivatedRulesInRuleGroupResponse'
-    { _larirgrsNextMarker :: !(Maybe Text)
+    { _larirgrsNextMarker     :: !(Maybe Text)
     , _larirgrsActivatedRules :: !(Maybe [ActivatedRule])
     , _larirgrsResponseStatus :: !Int
     }

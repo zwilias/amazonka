@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,7 +27,7 @@ import Network.AWS.ServiceCatalog.Types.Sum
 data AccessLevelFilter =
   AccessLevelFilter'
     { _alfValue :: !(Maybe Text)
-    , _alfKey :: !(Maybe AccessLevelFilterKey)
+    , _alfKey   :: !(Maybe AccessLevelFilterKey)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -98,9 +98,9 @@ instance NFData CloudWatchDashboard
 data ConstraintDetail =
   ConstraintDetail'
     { _cdConstraintId :: !(Maybe Text)
-    , _cdOwner :: !(Maybe Text)
-    , _cdType :: !(Maybe Text)
-    , _cdDescription :: !(Maybe Text)
+    , _cdOwner        :: !(Maybe Text)
+    , _cdType         :: !(Maybe Text)
+    , _cdDescription  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -160,7 +160,7 @@ instance NFData ConstraintDetail
 -- /See:/ 'constraintSummary' smart constructor.
 data ConstraintSummary =
   ConstraintSummary'
-    { _csType :: !(Maybe Text)
+    { _csType        :: !(Maybe Text)
     , _csDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -202,9 +202,9 @@ instance NFData ConstraintSummary
 data LaunchPathSummary =
   LaunchPathSummary'
     { _lpsConstraintSummaries :: !(Maybe [ConstraintSummary])
-    , _lpsName :: !(Maybe Text)
-    , _lpsId :: !(Maybe Text)
-    , _lpsTags :: !(Maybe [Tag])
+    , _lpsName                :: !(Maybe Text)
+    , _lpsId                  :: !(Maybe Text)
+    , _lpsTags                :: !(Maybe [Tag])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -268,7 +268,7 @@ instance NFData LaunchPathSummary
 data ListRecordHistorySearchFilter =
   ListRecordHistorySearchFilter'
     { _lrhsfValue :: !(Maybe Text)
-    , _lrhsfKey :: !(Maybe Text)
+    , _lrhsfKey   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -306,9 +306,9 @@ instance ToJSON ListRecordHistorySearchFilter where
 -- /See:/ 'listTagOptionsFilters' smart constructor.
 data ListTagOptionsFilters =
   ListTagOptionsFilters'
-    { _ltofValue :: !(Maybe Text)
+    { _ltofValue  :: !(Maybe Text)
     , _ltofActive :: !(Maybe Bool)
-    , _ltofKey :: !(Maybe Text)
+    , _ltofKey    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -392,11 +392,11 @@ instance NFData ParameterConstraints
 -- /See:/ 'portfolioDetail' smart constructor.
 data PortfolioDetail =
   PortfolioDetail'
-    { _pdARN :: !(Maybe Text)
-    , _pdCreatedTime :: !(Maybe POSIX)
-    , _pdId :: !(Maybe Text)
-    , _pdDisplayName :: !(Maybe Text)
-    , _pdDescription :: !(Maybe Text)
+    { _pdARN          :: !(Maybe Text)
+    , _pdCreatedTime  :: !(Maybe POSIX)
+    , _pdId           :: !(Maybe Text)
+    , _pdDisplayName  :: !(Maybe Text)
+    , _pdDescription  :: !(Maybe Text)
     , _pdProviderName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -475,7 +475,7 @@ instance NFData PortfolioDetail
 data Principal =
   Principal'
     { _pPrincipalType :: !(Maybe PrincipalType)
-    , _pPrincipalARN :: !(Maybe Text)
+    , _pPrincipalARN  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -514,7 +514,7 @@ instance NFData Principal
 -- /See:/ 'productViewAggregationValue' smart constructor.
 data ProductViewAggregationValue =
   ProductViewAggregationValue'
-    { _pvavValue :: !(Maybe Text)
+    { _pvavValue            :: !(Maybe Text)
     , _pvavApproximateCount :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -559,10 +559,10 @@ instance NFData ProductViewAggregationValue
 -- /See:/ 'productViewDetail' smart constructor.
 data ProductViewDetail =
   ProductViewDetail'
-    { _pvdStatus :: !(Maybe RequestStatus)
+    { _pvdStatus             :: !(Maybe RequestStatus)
     , _pvdProductViewSummary :: !(Maybe ProductViewSummary)
-    , _pvdCreatedTime :: !(Maybe POSIX)
-    , _pvdProductARN :: !(Maybe Text)
+    , _pvdCreatedTime        :: !(Maybe POSIX)
+    , _pvdProductARN         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -625,16 +625,16 @@ instance NFData ProductViewDetail
 -- /See:/ 'productViewSummary' smart constructor.
 data ProductViewSummary =
   ProductViewSummary'
-    { _pvsOwner :: !(Maybe Text)
-    , _pvsSupportURL :: !(Maybe Text)
-    , _pvsShortDescription :: !(Maybe Text)
-    , _pvsHasDefaultPath :: !(Maybe Bool)
-    , _pvsDistributor :: !(Maybe Text)
-    , _pvsName :: !(Maybe Text)
-    , _pvsId :: !(Maybe Text)
-    , _pvsType :: !(Maybe ProductType)
-    , _pvsSupportEmail :: !(Maybe Text)
-    , _pvsProductId :: !(Maybe Text)
+    { _pvsOwner              :: !(Maybe Text)
+    , _pvsSupportURL         :: !(Maybe Text)
+    , _pvsShortDescription   :: !(Maybe Text)
+    , _pvsHasDefaultPath     :: !(Maybe Bool)
+    , _pvsDistributor        :: !(Maybe Text)
+    , _pvsName               :: !(Maybe Text)
+    , _pvsId                 :: !(Maybe Text)
+    , _pvsType               :: !(Maybe ProductType)
+    , _pvsSupportEmail       :: !(Maybe Text)
+    , _pvsProductId          :: !(Maybe Text)
     , _pvsSupportDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -753,21 +753,21 @@ instance NFData ProductViewSummary
 -- /See:/ 'provisionedProductAttribute' smart constructor.
 data ProvisionedProductAttribute =
   ProvisionedProductAttribute'
-    { _ppaIdempotencyToken :: !(Maybe Text)
-    , _ppaStatus :: !(Maybe ProvisionedProductStatus)
+    { _ppaIdempotencyToken       :: !(Maybe Text)
+    , _ppaStatus                 :: !(Maybe ProvisionedProductStatus)
     , _ppaProvisioningArtifactId :: !(Maybe Text)
-    , _ppaARN :: !(Maybe Text)
-    , _ppaCreatedTime :: !(Maybe POSIX)
-    , _ppaUserARN :: !(Maybe Text)
-    , _ppaStatusMessage :: !(Maybe Text)
-    , _ppaName :: !(Maybe Text)
-    , _ppaLastRecordId :: !(Maybe Text)
-    , _ppaUserARNSession :: !(Maybe Text)
-    , _ppaId :: !(Maybe Text)
-    , _ppaType :: !(Maybe Text)
-    , _ppaPhysicalId :: !(Maybe Text)
-    , _ppaProductId :: !(Maybe Text)
-    , _ppaTags :: !(Maybe [Tag])
+    , _ppaARN                    :: !(Maybe Text)
+    , _ppaCreatedTime            :: !(Maybe POSIX)
+    , _ppaUserARN                :: !(Maybe Text)
+    , _ppaStatusMessage          :: !(Maybe Text)
+    , _ppaName                   :: !(Maybe Text)
+    , _ppaLastRecordId           :: !(Maybe Text)
+    , _ppaUserARNSession         :: !(Maybe Text)
+    , _ppaId                     :: !(Maybe Text)
+    , _ppaType                   :: !(Maybe Text)
+    , _ppaPhysicalId             :: !(Maybe Text)
+    , _ppaProductId              :: !(Maybe Text)
+    , _ppaTags                   :: !(Maybe [Tag])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -920,14 +920,14 @@ instance NFData ProvisionedProductAttribute
 data ProvisionedProductDetail =
   ProvisionedProductDetail'
     { _ppdIdempotencyToken :: !(Maybe Text)
-    , _ppdStatus :: !(Maybe ProvisionedProductStatus)
-    , _ppdARN :: !(Maybe Text)
-    , _ppdCreatedTime :: !(Maybe POSIX)
-    , _ppdStatusMessage :: !(Maybe Text)
-    , _ppdName :: !(Maybe Text)
-    , _ppdLastRecordId :: !(Maybe Text)
-    , _ppdId :: !(Maybe Text)
-    , _ppdType :: !(Maybe Text)
+    , _ppdStatus           :: !(Maybe ProvisionedProductStatus)
+    , _ppdARN              :: !(Maybe Text)
+    , _ppdCreatedTime      :: !(Maybe POSIX)
+    , _ppdStatusMessage    :: !(Maybe Text)
+    , _ppdName             :: !(Maybe Text)
+    , _ppdLastRecordId     :: !(Maybe Text)
+    , _ppdId               :: !(Maybe Text)
+    , _ppdType             :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1030,21 +1030,21 @@ instance NFData ProvisionedProductDetail
 -- /See:/ 'provisionedProductPlanDetails' smart constructor.
 data ProvisionedProductPlanDetails =
   ProvisionedProductPlanDetails'
-    { _pppdStatus :: !(Maybe ProvisionedProductPlanStatus)
-    , _pppdProvisionProductId :: !(Maybe Text)
+    { _pppdStatus                 :: !(Maybe ProvisionedProductPlanStatus)
+    , _pppdProvisionProductId     :: !(Maybe Text)
     , _pppdProvisioningArtifactId :: !(Maybe Text)
-    , _pppdProvisionProductName :: !(Maybe Text)
-    , _pppdCreatedTime :: !(Maybe POSIX)
-    , _pppdNotificationARNs :: !(Maybe [Text])
-    , _pppdPlanId :: !(Maybe Text)
-    , _pppdPlanName :: !(Maybe Text)
-    , _pppdStatusMessage :: !(Maybe Text)
-    , _pppdUpdatedTime :: !(Maybe POSIX)
-    , _pppdPathId :: !(Maybe Text)
+    , _pppdProvisionProductName   :: !(Maybe Text)
+    , _pppdCreatedTime            :: !(Maybe POSIX)
+    , _pppdNotificationARNs       :: !(Maybe [Text])
+    , _pppdPlanId                 :: !(Maybe Text)
+    , _pppdPlanName               :: !(Maybe Text)
+    , _pppdStatusMessage          :: !(Maybe Text)
+    , _pppdUpdatedTime            :: !(Maybe POSIX)
+    , _pppdPathId                 :: !(Maybe Text)
     , _pppdProvisioningParameters :: !(Maybe [UpdateProvisioningParameter])
-    , _pppdPlanType :: !(Maybe ProvisionedProductPlanType)
-    , _pppdProductId :: !(Maybe Text)
-    , _pppdTags :: !(Maybe [Tag])
+    , _pppdPlanType               :: !(Maybe ProvisionedProductPlanType)
+    , _pppdProductId              :: !(Maybe Text)
+    , _pppdTags                   :: !(Maybe [Tag])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1205,12 +1205,12 @@ instance NFData ProvisionedProductPlanDetails
 -- /See:/ 'provisionedProductPlanSummary' smart constructor.
 data ProvisionedProductPlanSummary =
   ProvisionedProductPlanSummary'
-    { _pppsProvisionProductId :: !(Maybe Text)
+    { _pppsProvisionProductId     :: !(Maybe Text)
     , _pppsProvisioningArtifactId :: !(Maybe Text)
-    , _pppsProvisionProductName :: !(Maybe Text)
-    , _pppsPlanId :: !(Maybe Text)
-    , _pppsPlanName :: !(Maybe Text)
-    , _pppsPlanType :: !(Maybe ProvisionedProductPlanType)
+    , _pppsProvisionProductName   :: !(Maybe Text)
+    , _pppsPlanId                 :: !(Maybe Text)
+    , _pppsPlanName               :: !(Maybe Text)
+    , _pppsPlanType               :: !(Maybe ProvisionedProductPlanType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1292,8 +1292,8 @@ instance NFData ProvisionedProductPlanSummary
 data ProvisioningArtifact =
   ProvisioningArtifact'
     { _paCreatedTime :: !(Maybe POSIX)
-    , _paName :: !(Maybe Text)
-    , _paId :: !(Maybe Text)
+    , _paName        :: !(Maybe Text)
+    , _paId          :: !(Maybe Text)
     , _paDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1356,10 +1356,10 @@ instance NFData ProvisioningArtifact
 data ProvisioningArtifactDetail =
   ProvisioningArtifactDetail'
     { _padCreatedTime :: !(Maybe POSIX)
-    , _padActive :: !(Maybe Bool)
-    , _padName :: !(Maybe Text)
-    , _padId :: !(Maybe Text)
-    , _padType :: !(Maybe ProvisioningArtifactType)
+    , _padActive      :: !(Maybe Bool)
+    , _padName        :: !(Maybe Text)
+    , _padId          :: !(Maybe Text)
+    , _padType        :: !(Maybe ProvisioningArtifactType)
     , _padDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1438,12 +1438,12 @@ instance NFData ProvisioningArtifactDetail
 -- /See:/ 'provisioningArtifactParameter' smart constructor.
 data ProvisioningArtifactParameter =
   ProvisioningArtifactParameter'
-    { _pIsNoEcho :: !(Maybe Bool)
-    , _pParameterKey :: !(Maybe Text)
-    , _pParameterType :: !(Maybe Text)
+    { _pIsNoEcho             :: !(Maybe Bool)
+    , _pParameterKey         :: !(Maybe Text)
+    , _pParameterType        :: !(Maybe Text)
     , _pParameterConstraints :: !(Maybe ParameterConstraints)
-    , _pDefaultValue :: !(Maybe Text)
-    , _pDescription :: !(Maybe Text)
+    , _pDefaultValue         :: !(Maybe Text)
+    , _pDescription          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1522,10 +1522,10 @@ instance NFData ProvisioningArtifactParameter
 -- /See:/ 'provisioningArtifactProperties' smart constructor.
 data ProvisioningArtifactProperties =
   ProvisioningArtifactProperties'
-    { _papName :: !(Maybe Text)
-    , _papType :: !(Maybe ProvisioningArtifactType)
+    { _papName        :: !(Maybe Text)
+    , _papType        :: !(Maybe ProvisioningArtifactType)
     , _papDescription :: !(Maybe Text)
-    , _papInfo :: !(Map Text Text)
+    , _papInfo        :: !(Map Text Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1587,10 +1587,10 @@ instance ToJSON ProvisioningArtifactProperties where
 data ProvisioningArtifactSummary =
   ProvisioningArtifactSummary'
     { _pasProvisioningArtifactMetadata :: !(Maybe (Map Text Text))
-    , _pasCreatedTime :: !(Maybe POSIX)
-    , _pasName :: !(Maybe Text)
-    , _pasId :: !(Maybe Text)
-    , _pasDescription :: !(Maybe Text)
+    , _pasCreatedTime                  :: !(Maybe POSIX)
+    , _pasName                         :: !(Maybe Text)
+    , _pasId                           :: !(Maybe Text)
+    , _pasDescription                  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1667,7 +1667,7 @@ instance NFData ProvisioningArtifactSummary
 data ProvisioningParameter =
   ProvisioningParameter'
     { _ppValue :: !(Maybe Text)
-    , _ppKey :: !(Maybe Text)
+    , _ppKey   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1705,19 +1705,19 @@ instance ToJSON ProvisioningParameter where
 -- /See:/ 'recordDetail' smart constructor.
 data RecordDetail =
   RecordDetail'
-    { _rdStatus :: !(Maybe RecordStatus)
-    , _rdRecordTags :: !(Maybe [RecordTag])
+    { _rdStatus                 :: !(Maybe RecordStatus)
+    , _rdRecordTags             :: !(Maybe [RecordTag])
     , _rdProvisionedProductName :: !(Maybe Text)
     , _rdProvisioningArtifactId :: !(Maybe Text)
-    , _rdCreatedTime :: !(Maybe POSIX)
-    , _rdRecordType :: !(Maybe Text)
-    , _rdRecordId :: !(Maybe Text)
+    , _rdCreatedTime            :: !(Maybe POSIX)
+    , _rdRecordType             :: !(Maybe Text)
+    , _rdRecordId               :: !(Maybe Text)
     , _rdProvisionedProductType :: !(Maybe Text)
-    , _rdUpdatedTime :: !(Maybe POSIX)
-    , _rdPathId :: !(Maybe Text)
-    , _rdProvisionedProductId :: !(Maybe Text)
-    , _rdRecordErrors :: !(Maybe [RecordError])
-    , _rdProductId :: !(Maybe Text)
+    , _rdUpdatedTime            :: !(Maybe POSIX)
+    , _rdPathId                 :: !(Maybe Text)
+    , _rdProvisionedProductId   :: !(Maybe Text)
+    , _rdRecordErrors           :: !(Maybe [RecordError])
+    , _rdProductId              :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1857,7 +1857,7 @@ instance NFData RecordDetail
 -- /See:/ 'recordError' smart constructor.
 data RecordError =
   RecordError'
-    { _reCode :: !(Maybe Text)
+    { _reCode        :: !(Maybe Text)
     , _reDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1898,7 +1898,7 @@ instance NFData RecordError
 data RecordOutput =
   RecordOutput'
     { _roOutputValue :: !(Maybe Text)
-    , _roOutputKey :: !(Maybe Text)
+    , _roOutputKey   :: !(Maybe Text)
     , _roDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1949,7 +1949,7 @@ instance NFData RecordOutput
 data RecordTag =
   RecordTag'
     { _rtValue :: !(Maybe Text)
-    , _rtKey :: !(Maybe Text)
+    , _rtKey   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1988,13 +1988,13 @@ instance NFData RecordTag
 -- /See:/ 'resourceChange' smart constructor.
 data ResourceChange =
   ResourceChange'
-    { _rcLogicalResourceId :: !(Maybe Text)
+    { _rcLogicalResourceId  :: !(Maybe Text)
     , _rcPhysicalResourceId :: !(Maybe Text)
-    , _rcResourceType :: !(Maybe Text)
-    , _rcAction :: !(Maybe ChangeAction)
-    , _rcScope :: !(Maybe [ResourceAttribute])
-    , _rcDetails :: !(Maybe [ResourceChangeDetail])
-    , _rcReplacement :: !(Maybe Replacement)
+    , _rcResourceType       :: !(Maybe Text)
+    , _rcAction             :: !(Maybe ChangeAction)
+    , _rcScope              :: !(Maybe [ResourceAttribute])
+    , _rcDetails            :: !(Maybe [ResourceChangeDetail])
+    , _rcReplacement        :: !(Maybe Replacement)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2082,8 +2082,8 @@ instance NFData ResourceChange
 data ResourceChangeDetail =
   ResourceChangeDetail'
     { _rcdCausingEntity :: !(Maybe Text)
-    , _rcdEvaluation :: !(Maybe EvaluationType)
-    , _rcdTarget :: !(Maybe ResourceTargetDefinition)
+    , _rcdEvaluation    :: !(Maybe EvaluationType)
+    , _rcdTarget        :: !(Maybe ResourceTargetDefinition)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2136,10 +2136,10 @@ instance NFData ResourceChangeDetail
 -- /See:/ 'resourceDetail' smart constructor.
 data ResourceDetail =
   ResourceDetail'
-    { _rARN :: !(Maybe Text)
+    { _rARN         :: !(Maybe Text)
     , _rCreatedTime :: !(Maybe POSIX)
-    , _rName :: !(Maybe Text)
-    , _rId :: !(Maybe Text)
+    , _rName        :: !(Maybe Text)
+    , _rId          :: !(Maybe Text)
     , _rDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2209,9 +2209,9 @@ instance NFData ResourceDetail
 -- /See:/ 'resourceTargetDefinition' smart constructor.
 data ResourceTargetDefinition =
   ResourceTargetDefinition'
-    { _rtdAttribute :: !(Maybe ResourceAttribute)
+    { _rtdAttribute          :: !(Maybe ResourceAttribute)
     , _rtdRequiresRecreation :: !(Maybe RequiresRecreation)
-    , _rtdName :: !(Maybe Text)
+    , _rtdName               :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2266,7 +2266,7 @@ instance NFData ResourceTargetDefinition
 -- /See:/ 'tag' smart constructor.
 data Tag =
   Tag'
-    { _tagKey :: !Text
+    { _tagKey   :: !Text
     , _tagValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2310,10 +2310,10 @@ instance ToJSON Tag where
 -- /See:/ 'tagOptionDetail' smart constructor.
 data TagOptionDetail =
   TagOptionDetail'
-    { _todValue :: !(Maybe Text)
+    { _todValue  :: !(Maybe Text)
     , _todActive :: !(Maybe Bool)
-    , _todKey :: !(Maybe Text)
-    , _todId :: !(Maybe Text)
+    , _todKey    :: !(Maybe Text)
+    , _todId     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2374,7 +2374,7 @@ instance NFData TagOptionDetail
 data TagOptionSummary =
   TagOptionSummary'
     { _tosValues :: !(Maybe [Text])
-    , _tosKey :: !(Maybe Text)
+    , _tosKey    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2413,8 +2413,8 @@ instance NFData TagOptionSummary
 -- /See:/ 'updateProvisioningParameter' smart constructor.
 data UpdateProvisioningParameter =
   UpdateProvisioningParameter'
-    { _uppValue :: !(Maybe Text)
-    , _uppKey :: !(Maybe Text)
+    { _uppValue            :: !(Maybe Text)
+    , _uppKey              :: !(Maybe Text)
     , _uppUsePreviousValue :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2475,7 +2475,7 @@ instance ToJSON UpdateProvisioningParameter where
 data UsageInstruction =
   UsageInstruction'
     { _uiValue :: !(Maybe Text)
-    , _uiType :: !(Maybe Text)
+    , _uiType  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

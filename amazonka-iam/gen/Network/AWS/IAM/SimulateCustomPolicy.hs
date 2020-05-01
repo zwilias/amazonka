@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -64,16 +64,16 @@ import Network.AWS.Response
 -- | /See:/ 'simulateCustomPolicy' smart constructor.
 data SimulateCustomPolicy =
   SimulateCustomPolicy'
-    { _scpResourcePolicy :: !(Maybe Text)
-    , _scpCallerARN :: !(Maybe Text)
+    { _scpResourcePolicy         :: !(Maybe Text)
+    , _scpCallerARN              :: !(Maybe Text)
     , _scpResourceHandlingOption :: !(Maybe Text)
-    , _scpResourceARNs :: !(Maybe [Text])
-    , _scpMarker :: !(Maybe Text)
-    , _scpMaxItems :: !(Maybe Nat)
-    , _scpContextEntries :: !(Maybe [ContextEntry])
-    , _scpResourceOwner :: !(Maybe Text)
-    , _scpPolicyInputList :: ![Text]
-    , _scpActionNames :: ![Text]
+    , _scpResourceARNs           :: !(Maybe [Text])
+    , _scpMarker                 :: !(Maybe Text)
+    , _scpMaxItems               :: !(Maybe Nat)
+    , _scpContextEntries         :: !(Maybe [ContextEntry])
+    , _scpResourceOwner          :: !(Maybe Text)
+    , _scpPolicyInputList        :: ![Text]
+    , _scpActionNames            :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

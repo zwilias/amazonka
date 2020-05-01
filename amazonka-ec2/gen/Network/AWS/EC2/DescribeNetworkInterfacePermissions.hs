@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,10 +51,10 @@ import Network.AWS.Response
 -- /See:/ 'describeNetworkInterfacePermissions' smart constructor.
 data DescribeNetworkInterfacePermissions =
   DescribeNetworkInterfacePermissions'
-    { _dnipFilters :: !(Maybe [Filter])
-    , _dnipNextToken :: !(Maybe Text)
+    { _dnipFilters                       :: !(Maybe [Filter])
+    , _dnipNextToken                     :: !(Maybe Text)
     , _dnipNetworkInterfacePermissionIds :: !(Maybe [Text])
-    , _dnipMaxResults :: !(Maybe Int)
+    , _dnipMaxResults                    :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

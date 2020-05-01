@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,12 +56,12 @@ import Network.AWS.Response
 -- /See:/ 'describeOptionGroups' smart constructor.
 data DescribeOptionGroups =
   DescribeOptionGroups'
-    { _dogFilters :: !(Maybe [Filter])
-    , _dogEngineName :: !(Maybe Text)
+    { _dogFilters            :: !(Maybe [Filter])
+    , _dogEngineName         :: !(Maybe Text)
     , _dogMajorEngineVersion :: !(Maybe Text)
-    , _dogMarker :: !(Maybe Text)
-    , _dogMaxRecords :: !(Maybe Int)
-    , _dogOptionGroupName :: !(Maybe Text)
+    , _dogMarker             :: !(Maybe Text)
+    , _dogMaxRecords         :: !(Maybe Int)
+    , _dogOptionGroupName    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -165,9 +165,9 @@ instance ToQuery DescribeOptionGroups where
 -- /See:/ 'describeOptionGroupsResponse' smart constructor.
 data DescribeOptionGroupsResponse =
   DescribeOptionGroupsResponse'
-    { _dogrsMarker :: !(Maybe Text)
+    { _dogrsMarker           :: !(Maybe Text)
     , _dogrsOptionGroupsList :: !(Maybe [OptionGroup])
-    , _dogrsResponseStatus :: !Int
+    , _dogrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

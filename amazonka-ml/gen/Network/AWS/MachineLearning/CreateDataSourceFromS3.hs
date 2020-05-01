@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,10 +54,10 @@ import Network.AWS.Response
 -- | /See:/ 'createDataSourceFromS3' smart constructor.
 data CreateDataSourceFromS3 =
   CreateDataSourceFromS3'
-    { _cdsfsDataSourceName :: !(Maybe Text)
+    { _cdsfsDataSourceName    :: !(Maybe Text)
     , _cdsfsComputeStatistics :: !(Maybe Bool)
-    , _cdsfsDataSourceId :: !Text
-    , _cdsfsDataSpec :: !S3DataSpec
+    , _cdsfsDataSourceId      :: !Text
+    , _cdsfsDataSpec          :: !S3DataSpec
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -149,7 +149,7 @@ instance ToQuery CreateDataSourceFromS3 where
 -- /See:/ 'createDataSourceFromS3Response' smart constructor.
 data CreateDataSourceFromS3Response =
   CreateDataSourceFromS3Response'
-    { _cdsfsrsDataSourceId :: !(Maybe Text)
+    { _cdsfsrsDataSourceId   :: !(Maybe Text)
     , _cdsfsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

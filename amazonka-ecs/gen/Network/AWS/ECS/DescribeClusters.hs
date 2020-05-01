@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'describeClusters' smart constructor.
 data DescribeClusters =
   DescribeClusters'
-    { _dcInclude :: !(Maybe [ClusterField])
+    { _dcInclude  :: !(Maybe [ClusterField])
     , _dcClusters :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -107,8 +107,8 @@ instance ToQuery DescribeClusters where
 -- | /See:/ 'describeClustersResponse' smart constructor.
 data DescribeClustersResponse =
   DescribeClustersResponse'
-    { _dcrsFailures :: !(Maybe [Failure])
-    , _dcrsClusters :: !(Maybe [Cluster])
+    { _dcrsFailures       :: !(Maybe [Failure])
+    , _dcrsClusters       :: !(Maybe [Cluster])
     , _dcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

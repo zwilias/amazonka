@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,11 +49,11 @@ import Network.AWS.Response
 -- | /See:/ 'updateServer' smart constructor.
 data UpdateServer =
   UpdateServer'
-    { _usDisableAutomatedBackup :: !(Maybe Bool)
+    { _usDisableAutomatedBackup     :: !(Maybe Bool)
     , _usPreferredMaintenanceWindow :: !(Maybe Text)
-    , _usPreferredBackupWindow :: !(Maybe Text)
-    , _usBackupRetentionCount :: !(Maybe Int)
-    , _usServerName :: !Text
+    , _usPreferredBackupWindow      :: !(Maybe Text)
+    , _usBackupRetentionCount       :: !(Maybe Int)
+    , _usServerName                 :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -149,7 +149,7 @@ instance ToQuery UpdateServer where
 -- | /See:/ 'updateServerResponse' smart constructor.
 data UpdateServerResponse =
   UpdateServerResponse'
-    { _usrsServer :: !(Maybe Server)
+    { _usrsServer         :: !(Maybe Server)
     , _usrsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

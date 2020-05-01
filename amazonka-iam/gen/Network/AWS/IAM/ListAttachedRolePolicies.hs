@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,9 +56,9 @@ import Network.AWS.Response
 data ListAttachedRolePolicies =
   ListAttachedRolePolicies'
     { _larpPathPrefix :: !(Maybe Text)
-    , _larpMarker :: !(Maybe Text)
-    , _larpMaxItems :: !(Maybe Nat)
-    , _larpRoleName :: !Text
+    , _larpMarker     :: !(Maybe Text)
+    , _larpMaxItems   :: !(Maybe Nat)
+    , _larpRoleName   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -148,9 +148,9 @@ instance ToQuery ListAttachedRolePolicies where
 data ListAttachedRolePoliciesResponse =
   ListAttachedRolePoliciesResponse'
     { _larprsAttachedPolicies :: !(Maybe [AttachedPolicy])
-    , _larprsMarker :: !(Maybe Text)
-    , _larprsIsTruncated :: !(Maybe Bool)
-    , _larprsResponseStatus :: !Int
+    , _larprsMarker           :: !(Maybe Text)
+    , _larprsIsTruncated      :: !(Maybe Bool)
+    , _larprsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

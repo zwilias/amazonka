@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -107,10 +107,10 @@ instance ToQuery GetOpenIdConnectProvider where
 -- /See:/ 'getOpenIdConnectProviderResponse' smart constructor.
 data GetOpenIdConnectProviderResponse =
   GetOpenIdConnectProviderResponse'
-    { _goicprsCreateDate :: !(Maybe ISO8601)
-    , _goicprsURL :: !(Maybe Text)
+    { _goicprsCreateDate     :: !(Maybe ISO8601)
+    , _goicprsURL            :: !(Maybe Text)
     , _goicprsThumbprintList :: !(Maybe [Text])
-    , _goicprsClientIdList :: !(Maybe [Text])
+    , _goicprsClientIdList   :: !(Maybe [Text])
     , _goicprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,11 +51,11 @@ import Network.AWS.Response
 -- | /See:/ 'createBatchPrediction' smart constructor.
 data CreateBatchPrediction =
   CreateBatchPrediction'
-    { _cbpBatchPredictionName :: !(Maybe Text)
-    , _cbpBatchPredictionId :: !Text
-    , _cbpMLModelId :: !Text
+    { _cbpBatchPredictionName         :: !(Maybe Text)
+    , _cbpBatchPredictionId           :: !Text
+    , _cbpMLModelId                   :: !Text
     , _cbpBatchPredictionDataSourceId :: !Text
-    , _cbpOutputURI :: !Text
+    , _cbpOutputURI                   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -162,7 +162,7 @@ instance ToQuery CreateBatchPrediction where
 data CreateBatchPredictionResponse =
   CreateBatchPredictionResponse'
     { _cbprsBatchPredictionId :: !(Maybe Text)
-    , _cbprsResponseStatus :: !Int
+    , _cbprsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

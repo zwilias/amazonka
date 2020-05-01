@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,15 +46,15 @@ import Network.AWS.S3.Types.Product
 -- | /See:/ 'putBucketACL' smart constructor.
 data PutBucketACL =
   PutBucketACL'
-    { _pbaGrantReadACP :: !(Maybe Text)
-    , _pbaGrantWriteACP :: !(Maybe Text)
-    , _pbaGrantRead :: !(Maybe Text)
-    , _pbaGrantFullControl :: !(Maybe Text)
-    , _pbaContentMD5 :: !(Maybe Text)
+    { _pbaGrantReadACP        :: !(Maybe Text)
+    , _pbaGrantWriteACP       :: !(Maybe Text)
+    , _pbaGrantRead           :: !(Maybe Text)
+    , _pbaGrantFullControl    :: !(Maybe Text)
+    , _pbaContentMD5          :: !(Maybe Text)
     , _pbaAccessControlPolicy :: !(Maybe AccessControlPolicy)
-    , _pbaGrantWrite :: !(Maybe Text)
-    , _pbaACL :: !(Maybe BucketCannedACL)
-    , _pbaBucket :: !BucketName
+    , _pbaGrantWrite          :: !(Maybe Text)
+    , _pbaACL                 :: !(Maybe BucketCannedACL)
+    , _pbaBucket              :: !BucketName
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

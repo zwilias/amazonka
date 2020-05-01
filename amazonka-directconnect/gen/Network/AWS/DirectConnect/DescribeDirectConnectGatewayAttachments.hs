@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,9 +52,9 @@ import Network.AWS.Response
 data DescribeDirectConnectGatewayAttachments =
   DescribeDirectConnectGatewayAttachments'
     { _ddcgasDirectConnectGatewayId :: !(Maybe Text)
-    , _ddcgasNextToken :: !(Maybe Text)
-    , _ddcgasMaxResults :: !(Maybe Int)
-    , _ddcgasVirtualInterfaceId :: !(Maybe Text)
+    , _ddcgasNextToken              :: !(Maybe Text)
+    , _ddcgasMaxResults             :: !(Maybe Int)
+    , _ddcgasVirtualInterfaceId     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

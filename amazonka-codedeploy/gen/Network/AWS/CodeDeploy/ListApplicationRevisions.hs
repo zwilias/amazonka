@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,12 +57,12 @@ import Network.AWS.Response
 -- /See:/ 'listApplicationRevisions' smart constructor.
 data ListApplicationRevisions =
   ListApplicationRevisions'
-    { _larS3KeyPrefix :: !(Maybe Text)
-    , _larDeployed :: !(Maybe ListStateFilterAction)
-    , _larSortOrder :: !(Maybe SortOrder)
-    , _larNextToken :: !(Maybe Text)
-    , _larS3Bucket :: !(Maybe Text)
-    , _larSortBy :: !(Maybe ApplicationRevisionSortBy)
+    { _larS3KeyPrefix     :: !(Maybe Text)
+    , _larDeployed        :: !(Maybe ListStateFilterAction)
+    , _larSortOrder       :: !(Maybe SortOrder)
+    , _larNextToken       :: !(Maybe Text)
+    , _larS3Bucket        :: !(Maybe Text)
+    , _larSortBy          :: !(Maybe ApplicationRevisionSortBy)
     , _larApplicationName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -182,8 +182,8 @@ instance ToQuery ListApplicationRevisions where
 -- /See:/ 'listApplicationRevisionsResponse' smart constructor.
 data ListApplicationRevisionsResponse =
   ListApplicationRevisionsResponse'
-    { _larrsNextToken :: !(Maybe Text)
-    , _larrsRevisions :: !(Maybe [RevisionLocation])
+    { _larrsNextToken      :: !(Maybe Text)
+    , _larrsRevisions      :: !(Maybe [RevisionLocation])
     , _larrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

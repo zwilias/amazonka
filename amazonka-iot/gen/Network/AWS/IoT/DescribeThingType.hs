@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -105,11 +105,11 @@ instance ToQuery DescribeThingType where
 data DescribeThingTypeResponse =
   DescribeThingTypeResponse'
     { _desrsThingTypeProperties :: !(Maybe ThingTypeProperties)
-    , _desrsThingTypeName :: !(Maybe Text)
-    , _desrsThingTypeId :: !(Maybe Text)
-    , _desrsThingTypeMetadata :: !(Maybe ThingTypeMetadata)
-    , _desrsThingTypeARN :: !(Maybe Text)
-    , _desrsResponseStatus :: !Int
+    , _desrsThingTypeName       :: !(Maybe Text)
+    , _desrsThingTypeId         :: !(Maybe Text)
+    , _desrsThingTypeMetadata   :: !(Maybe ThingTypeMetadata)
+    , _desrsThingTypeARN        :: !(Maybe Text)
+    , _desrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

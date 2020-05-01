@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -113,8 +113,8 @@ instance ToQuery ListBuilds where
 -- | /See:/ 'listBuildsResponse' smart constructor.
 data ListBuildsResponse =
   ListBuildsResponse'
-    { _lbrsIds :: !(Maybe (List1 Text))
-    , _lbrsNextToken :: !(Maybe Text)
+    { _lbrsIds            :: !(Maybe (List1 Text))
+    , _lbrsNextToken      :: !(Maybe Text)
     , _lbrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

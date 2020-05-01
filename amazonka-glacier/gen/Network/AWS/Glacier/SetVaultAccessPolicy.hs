@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- /See:/ 'setVaultAccessPolicy' smart constructor.
 data SetVaultAccessPolicy =
   SetVaultAccessPolicy'
-    { _svapPolicy :: !(Maybe VaultAccessPolicy)
+    { _svapPolicy    :: !(Maybe VaultAccessPolicy)
     , _svapAccountId :: !Text
     , _svapVaultName :: !Text
     }

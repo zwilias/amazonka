@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,12 +27,12 @@ import Network.AWS.Prelude
 data BGPPeer =
   BGPPeer'
     { _bpCustomerAddress :: !(Maybe Text)
-    , _bpAmazonAddress :: !(Maybe Text)
-    , _bpAddressFamily :: !(Maybe AddressFamily)
-    , _bpBgpStatus :: !(Maybe BGPStatus)
-    , _bpAsn :: !(Maybe Int)
-    , _bpAuthKey :: !(Maybe Text)
-    , _bpBgpPeerState :: !(Maybe BGPPeerState)
+    , _bpAmazonAddress   :: !(Maybe Text)
+    , _bpAddressFamily   :: !(Maybe AddressFamily)
+    , _bpBgpStatus       :: !(Maybe BGPStatus)
+    , _bpAsn             :: !(Maybe Int)
+    , _bpAuthKey         :: !(Maybe Text)
+    , _bpBgpPeerState    :: !(Maybe BGPPeerState)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -116,17 +116,17 @@ instance NFData BGPPeer
 -- /See:/ 'connection' smart constructor.
 data Connection =
   Connection'
-    { _cLagId :: !(Maybe Text)
-    , _cVlan :: !(Maybe Int)
-    , _cLocation :: !(Maybe Text)
-    , _cAwsDevice :: !(Maybe Text)
-    , _cConnectionId :: !(Maybe Text)
-    , _cLoaIssueTime :: !(Maybe POSIX)
-    , _cPartnerName :: !(Maybe Text)
-    , _cConnectionName :: !(Maybe Text)
-    , _cBandwidth :: !(Maybe Text)
-    , _cOwnerAccount :: !(Maybe Text)
-    , _cRegion :: !(Maybe Text)
+    { _cLagId           :: !(Maybe Text)
+    , _cVlan            :: !(Maybe Int)
+    , _cLocation        :: !(Maybe Text)
+    , _cAwsDevice       :: !(Maybe Text)
+    , _cConnectionId    :: !(Maybe Text)
+    , _cLoaIssueTime    :: !(Maybe POSIX)
+    , _cPartnerName     :: !(Maybe Text)
+    , _cConnectionName  :: !(Maybe Text)
+    , _cBandwidth       :: !(Maybe Text)
+    , _cOwnerAccount    :: !(Maybe Text)
+    , _cRegion          :: !(Maybe Text)
     , _cConnectionState :: !(Maybe ConnectionState)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -286,12 +286,12 @@ instance NFData Connections
 -- /See:/ 'directConnectGateway' smart constructor.
 data DirectConnectGateway =
   DirectConnectGateway'
-    { _dcgDirectConnectGatewayId :: !(Maybe Text)
-    , _dcgStateChangeError :: !(Maybe Text)
-    , _dcgAmazonSideASN :: !(Maybe Integer)
-    , _dcgDirectConnectGatewayName :: !(Maybe Text)
+    { _dcgDirectConnectGatewayId    :: !(Maybe Text)
+    , _dcgStateChangeError          :: !(Maybe Text)
+    , _dcgAmazonSideASN             :: !(Maybe Integer)
+    , _dcgDirectConnectGatewayName  :: !(Maybe Text)
     , _dcgDirectConnectGatewayState :: !(Maybe DirectConnectGatewayState)
-    , _dcgOwnerAccount :: !(Maybe Text)
+    , _dcgOwnerAccount              :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -563,15 +563,15 @@ instance NFData DirectConnectGatewayAttachment
 -- /See:/ 'interconnect' smart constructor.
 data Interconnect =
   Interconnect'
-    { _iLagId :: !(Maybe Text)
-    , _iInterconnectId :: !(Maybe Text)
-    , _iLocation :: !(Maybe Text)
-    , _iInterconnectName :: !(Maybe Text)
-    , _iAwsDevice :: !(Maybe Text)
-    , _iLoaIssueTime :: !(Maybe POSIX)
-    , _iBandwidth :: !(Maybe Text)
+    { _iLagId             :: !(Maybe Text)
+    , _iInterconnectId    :: !(Maybe Text)
+    , _iLocation          :: !(Maybe Text)
+    , _iInterconnectName  :: !(Maybe Text)
+    , _iAwsDevice         :: !(Maybe Text)
+    , _iLoaIssueTime      :: !(Maybe POSIX)
+    , _iBandwidth         :: !(Maybe Text)
     , _iInterconnectState :: !(Maybe InterconnectState)
-    , _iRegion :: !(Maybe Text)
+    , _iRegion            :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -673,18 +673,18 @@ instance NFData Interconnect
 -- /See:/ 'lag' smart constructor.
 data Lag =
   Lag'
-    { _lagLagId :: !(Maybe Text)
-    , _lagConnectionsBandwidth :: !(Maybe Text)
-    , _lagMinimumLinks :: !(Maybe Int)
-    , _lagLagName :: !(Maybe Text)
-    , _lagLocation :: !(Maybe Text)
-    , _lagConnections :: !(Maybe [Connection])
-    , _lagAwsDevice :: !(Maybe Text)
+    { _lagLagId                   :: !(Maybe Text)
+    , _lagConnectionsBandwidth    :: !(Maybe Text)
+    , _lagMinimumLinks            :: !(Maybe Int)
+    , _lagLagName                 :: !(Maybe Text)
+    , _lagLocation                :: !(Maybe Text)
+    , _lagConnections             :: !(Maybe [Connection])
+    , _lagAwsDevice               :: !(Maybe Text)
     , _lagAllowsHostedConnections :: !(Maybe Bool)
-    , _lagNumberOfConnections :: !(Maybe Int)
-    , _lagLagState :: !(Maybe LagState)
-    , _lagOwnerAccount :: !(Maybe Text)
-    , _lagRegion :: !(Maybe Text)
+    , _lagNumberOfConnections     :: !(Maybe Int)
+    , _lagLagState                :: !(Maybe LagState)
+    , _lagOwnerAccount            :: !(Maybe Text)
+    , _lagRegion                  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -853,10 +853,10 @@ instance NFData Location
 data NewBGPPeer =
   NewBGPPeer'
     { _nbpCustomerAddress :: !(Maybe Text)
-    , _nbpAmazonAddress :: !(Maybe Text)
-    , _nbpAddressFamily :: !(Maybe AddressFamily)
-    , _nbpAsn :: !(Maybe Int)
-    , _nbpAuthKey :: !(Maybe Text)
+    , _nbpAmazonAddress   :: !(Maybe Text)
+    , _nbpAddressFamily   :: !(Maybe AddressFamily)
+    , _nbpAsn             :: !(Maybe Int)
+    , _nbpAuthKey         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -926,15 +926,15 @@ instance ToJSON NewBGPPeer where
 -- /See:/ 'newPrivateVirtualInterface' smart constructor.
 data NewPrivateVirtualInterface =
   NewPrivateVirtualInterface'
-    { _nVirtualGatewayId :: !(Maybe Text)
-    , _nCustomerAddress :: !(Maybe Text)
-    , _nAmazonAddress :: !(Maybe Text)
-    , _nAddressFamily :: !(Maybe AddressFamily)
+    { _nVirtualGatewayId       :: !(Maybe Text)
+    , _nCustomerAddress        :: !(Maybe Text)
+    , _nAmazonAddress          :: !(Maybe Text)
+    , _nAddressFamily          :: !(Maybe AddressFamily)
     , _nDirectConnectGatewayId :: !(Maybe Text)
-    , _nAuthKey :: !(Maybe Text)
-    , _nVirtualInterfaceName :: !Text
-    , _nVlan :: !Int
-    , _nAsn :: !Int
+    , _nAuthKey                :: !(Maybe Text)
+    , _nVirtualInterfaceName   :: !Text
+    , _nVlan                   :: !Int
+    , _nAsn                    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1041,13 +1041,13 @@ instance ToJSON NewPrivateVirtualInterface where
 -- /See:/ 'newPrivateVirtualInterfaceAllocation' smart constructor.
 data NewPrivateVirtualInterfaceAllocation =
   NewPrivateVirtualInterfaceAllocation'
-    { _npviaCustomerAddress :: !(Maybe Text)
-    , _npviaAmazonAddress :: !(Maybe Text)
-    , _npviaAddressFamily :: !(Maybe AddressFamily)
-    , _npviaAuthKey :: !(Maybe Text)
+    { _npviaCustomerAddress      :: !(Maybe Text)
+    , _npviaAmazonAddress        :: !(Maybe Text)
+    , _npviaAddressFamily        :: !(Maybe AddressFamily)
+    , _npviaAuthKey              :: !(Maybe Text)
     , _npviaVirtualInterfaceName :: !Text
-    , _npviaVlan :: !Int
-    , _npviaAsn :: !Int
+    , _npviaVlan                 :: !Int
+    , _npviaAsn                  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1141,14 +1141,14 @@ instance ToJSON NewPrivateVirtualInterfaceAllocation where
 -- /See:/ 'newPublicVirtualInterface' smart constructor.
 data NewPublicVirtualInterface =
   NewPublicVirtualInterface'
-    { _npviRouteFilterPrefixes :: !(Maybe [RouteFilterPrefix])
-    , _npviCustomerAddress :: !(Maybe Text)
-    , _npviAmazonAddress :: !(Maybe Text)
-    , _npviAddressFamily :: !(Maybe AddressFamily)
-    , _npviAuthKey :: !(Maybe Text)
+    { _npviRouteFilterPrefixes  :: !(Maybe [RouteFilterPrefix])
+    , _npviCustomerAddress      :: !(Maybe Text)
+    , _npviAmazonAddress        :: !(Maybe Text)
+    , _npviAddressFamily        :: !(Maybe AddressFamily)
+    , _npviAuthKey              :: !(Maybe Text)
     , _npviVirtualInterfaceName :: !Text
-    , _npviVlan :: !Int
-    , _npviAsn :: !Int
+    , _npviVlan                 :: !Int
+    , _npviAsn                  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1249,14 +1249,14 @@ instance ToJSON NewPublicVirtualInterface where
 -- /See:/ 'newPublicVirtualInterfaceAllocation' smart constructor.
 data NewPublicVirtualInterfaceAllocation =
   NewPublicVirtualInterfaceAllocation'
-    { _newRouteFilterPrefixes :: !(Maybe [RouteFilterPrefix])
-    , _newCustomerAddress :: !(Maybe Text)
-    , _newAmazonAddress :: !(Maybe Text)
-    , _newAddressFamily :: !(Maybe AddressFamily)
-    , _newAuthKey :: !(Maybe Text)
+    { _newRouteFilterPrefixes  :: !(Maybe [RouteFilterPrefix])
+    , _newCustomerAddress      :: !(Maybe Text)
+    , _newAmazonAddress        :: !(Maybe Text)
+    , _newAddressFamily        :: !(Maybe AddressFamily)
+    , _newAuthKey              :: !(Maybe Text)
     , _newVirtualInterfaceName :: !Text
-    , _newVlan :: !Int
-    , _newAsn :: !Int
+    , _newVlan                 :: !Int
+    , _newAsn                  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1360,7 +1360,7 @@ instance ToJSON NewPublicVirtualInterfaceAllocation where
 data ResourceTag =
   ResourceTag'
     { _rtResourceARN :: !(Maybe Text)
-    , _rtTags :: !(Maybe (List1 Tag))
+    , _rtTags        :: !(Maybe (List1 Tag))
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1434,7 +1434,7 @@ instance ToJSON RouteFilterPrefix where
 data Tag =
   Tag'
     { _tagValue :: !(Maybe Text)
-    , _tagKey :: !Text
+    , _tagKey   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1478,7 +1478,7 @@ instance ToJSON Tag where
 -- /See:/ 'virtualGateway' smart constructor.
 data VirtualGateway =
   VirtualGateway'
-    { _vgVirtualGatewayId :: !(Maybe Text)
+    { _vgVirtualGatewayId    :: !(Maybe Text)
     , _vgVirtualGatewayState :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1524,25 +1524,25 @@ instance NFData VirtualGateway
 -- /See:/ 'virtualInterface' smart constructor.
 data VirtualInterface =
   VirtualInterface'
-    { _viBgpPeers :: !(Maybe [BGPPeer])
-    , _viVirtualGatewayId :: !(Maybe Text)
-    , _viRouteFilterPrefixes :: !(Maybe [RouteFilterPrefix])
-    , _viCustomerAddress :: !(Maybe Text)
-    , _viVlan :: !(Maybe Int)
-    , _viLocation :: !(Maybe Text)
-    , _viAmazonAddress :: !(Maybe Text)
-    , _viAddressFamily :: !(Maybe AddressFamily)
-    , _viVirtualInterfaceState :: !(Maybe VirtualInterfaceState)
-    , _viConnectionId :: !(Maybe Text)
+    { _viBgpPeers               :: !(Maybe [BGPPeer])
+    , _viVirtualGatewayId       :: !(Maybe Text)
+    , _viRouteFilterPrefixes    :: !(Maybe [RouteFilterPrefix])
+    , _viCustomerAddress        :: !(Maybe Text)
+    , _viVlan                   :: !(Maybe Int)
+    , _viLocation               :: !(Maybe Text)
+    , _viAmazonAddress          :: !(Maybe Text)
+    , _viAddressFamily          :: !(Maybe AddressFamily)
+    , _viVirtualInterfaceState  :: !(Maybe VirtualInterfaceState)
+    , _viConnectionId           :: !(Maybe Text)
     , _viDirectConnectGatewayId :: !(Maybe Text)
-    , _viAmazonSideASN :: !(Maybe Integer)
-    , _viVirtualInterfaceType :: !(Maybe Text)
-    , _viAsn :: !(Maybe Int)
-    , _viAuthKey :: !(Maybe Text)
-    , _viCustomerRouterConfig :: !(Maybe Text)
-    , _viOwnerAccount :: !(Maybe Text)
-    , _viVirtualInterfaceName :: !(Maybe Text)
-    , _viVirtualInterfaceId :: !(Maybe Text)
+    , _viAmazonSideASN          :: !(Maybe Integer)
+    , _viVirtualInterfaceType   :: !(Maybe Text)
+    , _viAsn                    :: !(Maybe Int)
+    , _viAuthKey                :: !(Maybe Text)
+    , _viCustomerRouterConfig   :: !(Maybe Text)
+    , _viOwnerAccount           :: !(Maybe Text)
+    , _viVirtualInterfaceName   :: !(Maybe Text)
+    , _viVirtualInterfaceId     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

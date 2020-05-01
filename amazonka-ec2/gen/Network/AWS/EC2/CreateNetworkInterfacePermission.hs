@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,11 +53,11 @@ import Network.AWS.Response
 -- /See:/ 'createNetworkInterfacePermission' smart constructor.
 data CreateNetworkInterfacePermission =
   CreateNetworkInterfacePermission'
-    { _cnipAWSAccountId :: !(Maybe Text)
-    , _cnipAWSService :: !(Maybe Text)
-    , _cnipDryRun :: !(Maybe Bool)
+    { _cnipAWSAccountId       :: !(Maybe Text)
+    , _cnipAWSService         :: !(Maybe Text)
+    , _cnipDryRun             :: !(Maybe Bool)
     , _cnipNetworkInterfaceId :: !Text
-    , _cnipPermission :: !InterfacePermissionType
+    , _cnipPermission         :: !InterfacePermissionType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -148,7 +148,7 @@ instance ToQuery CreateNetworkInterfacePermission where
 data CreateNetworkInterfacePermissionResponse =
   CreateNetworkInterfacePermissionResponse'
     { _cniprsInterfacePermission :: !(Maybe NetworkInterfacePermission)
-    , _cniprsResponseStatus :: !Int
+    , _cniprsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

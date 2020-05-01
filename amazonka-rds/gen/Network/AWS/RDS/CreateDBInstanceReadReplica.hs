@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -70,28 +70,28 @@ import Network.AWS.Response
 -- | /See:/ 'createDBInstanceReadReplica' smart constructor.
 data CreateDBInstanceReadReplica =
   CreateDBInstanceReadReplica'
-    { _cdirrPubliclyAccessible :: !(Maybe Bool)
-    , _cdirrAutoMinorVersionUpgrade :: !(Maybe Bool)
-    , _cdirrDBSubnetGroupName :: !(Maybe Text)
-    , _cdirrMonitoringRoleARN :: !(Maybe Text)
-    , _cdirrIOPS :: !(Maybe Int)
-    , _cdirrMonitoringInterval :: !(Maybe Int)
-    , _cdirrPreSignedURL :: !(Maybe Text)
-    , _cdirrDBInstanceClass :: !(Maybe Text)
-    , _cdirrEnablePerformanceInsights :: !(Maybe Bool)
-    , _cdirrKMSKeyId :: !(Maybe Text)
-    , _cdirrAvailabilityZone :: !(Maybe Text)
-    , _cdirrPerformanceInsightsKMSKeyId :: !(Maybe Text)
-    , _cdirrMultiAZ :: !(Maybe Bool)
-    , _cdirrOptionGroupName :: !(Maybe Text)
-    , _cdirrCopyTagsToSnapshot :: !(Maybe Bool)
-    , _cdirrTags :: !(Maybe [Tag])
-    , _cdirrPort :: !(Maybe Int)
+    { _cdirrPubliclyAccessible              :: !(Maybe Bool)
+    , _cdirrAutoMinorVersionUpgrade         :: !(Maybe Bool)
+    , _cdirrDBSubnetGroupName               :: !(Maybe Text)
+    , _cdirrMonitoringRoleARN               :: !(Maybe Text)
+    , _cdirrIOPS                            :: !(Maybe Int)
+    , _cdirrMonitoringInterval              :: !(Maybe Int)
+    , _cdirrPreSignedURL                    :: !(Maybe Text)
+    , _cdirrDBInstanceClass                 :: !(Maybe Text)
+    , _cdirrEnablePerformanceInsights       :: !(Maybe Bool)
+    , _cdirrKMSKeyId                        :: !(Maybe Text)
+    , _cdirrAvailabilityZone                :: !(Maybe Text)
+    , _cdirrPerformanceInsightsKMSKeyId     :: !(Maybe Text)
+    , _cdirrMultiAZ                         :: !(Maybe Bool)
+    , _cdirrOptionGroupName                 :: !(Maybe Text)
+    , _cdirrCopyTagsToSnapshot              :: !(Maybe Bool)
+    , _cdirrTags                            :: !(Maybe [Tag])
+    , _cdirrPort                            :: !(Maybe Int)
     , _cdirrEnableIAMDatabaseAuthentication :: !(Maybe Bool)
-    , _cdirrStorageType :: !(Maybe Text)
-    , _cdirrEnableCloudwatchLogsExports :: !(Maybe [Text])
-    , _cdirrDBInstanceIdentifier :: !Text
-    , _cdirrSourceDBInstanceIdentifier :: !Text
+    , _cdirrStorageType                     :: !(Maybe Text)
+    , _cdirrEnableCloudwatchLogsExports     :: !(Maybe [Text])
+    , _cdirrDBInstanceIdentifier            :: !Text
+    , _cdirrSourceDBInstanceIdentifier      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -344,7 +344,7 @@ instance ToQuery CreateDBInstanceReadReplica where
 -- | /See:/ 'createDBInstanceReadReplicaResponse' smart constructor.
 data CreateDBInstanceReadReplicaResponse =
   CreateDBInstanceReadReplicaResponse'
-    { _cdirrrsDBInstance :: !(Maybe DBInstance)
+    { _cdirrrsDBInstance     :: !(Maybe DBInstance)
     , _cdirrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

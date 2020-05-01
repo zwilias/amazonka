@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,10 +56,10 @@ import Network.AWS.Response
 -- /See:/ 'backtrackDBCluster' smart constructor.
 data BacktrackDBCluster =
   BacktrackDBCluster'
-    { _bdcForce :: !(Maybe Bool)
+    { _bdcForce                                   :: !(Maybe Bool)
     , _bdcUseEarliestTimeOnPointInTimeUnavailable :: !(Maybe Bool)
-    , _bdcDBClusterIdentifier :: !Text
-    , _bdcBacktrackTo :: !ISO8601
+    , _bdcDBClusterIdentifier                     :: !Text
+    , _bdcBacktrackTo                             :: !ISO8601
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.WorkSpaces.Types.Product
 data DescribeWorkspaceBundles =
   DescribeWorkspaceBundles'
     { _dwbBundleIds :: !(Maybe (List1 Text))
-    , _dwbOwner :: !(Maybe Text)
+    , _dwbOwner     :: !(Maybe Text)
     , _dwbNextToken :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -131,8 +131,8 @@ instance ToQuery DescribeWorkspaceBundles where
 -- | /See:/ 'describeWorkspaceBundlesResponse' smart constructor.
 data DescribeWorkspaceBundlesResponse =
   DescribeWorkspaceBundlesResponse'
-    { _dwbrsBundles :: !(Maybe [WorkspaceBundle])
-    , _dwbrsNextToken :: !(Maybe Text)
+    { _dwbrsBundles        :: !(Maybe [WorkspaceBundle])
+    , _dwbrsNextToken      :: !(Maybe Text)
     , _dwbrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

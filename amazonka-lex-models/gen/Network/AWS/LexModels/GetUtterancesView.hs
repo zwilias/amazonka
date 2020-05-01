@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,9 +52,9 @@ import Network.AWS.Response
 -- | /See:/ 'getUtterancesView' smart constructor.
 data GetUtterancesView =
   GetUtterancesView'
-    { _guvBotName :: !Text
+    { _guvBotName     :: !Text
     , _guvBotVersions :: !(List1 Text)
-    , _guvStatusType :: !StatusType
+    , _guvStatusType  :: !StatusType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -125,8 +125,8 @@ instance ToQuery GetUtterancesView where
 -- | /See:/ 'getUtterancesViewResponse' smart constructor.
 data GetUtterancesViewResponse =
   GetUtterancesViewResponse'
-    { _guvrsBotName :: !(Maybe Text)
-    , _guvrsUtterances :: !(Maybe [UtteranceList])
+    { _guvrsBotName        :: !(Maybe Text)
+    , _guvrsUtterances     :: !(Maybe [UtteranceList])
     , _guvrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

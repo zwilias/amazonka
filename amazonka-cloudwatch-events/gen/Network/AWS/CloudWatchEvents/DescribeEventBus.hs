@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -84,9 +84,9 @@ instance ToQuery DescribeEventBus where
 -- | /See:/ 'describeEventBusResponse' smart constructor.
 data DescribeEventBusResponse =
   DescribeEventBusResponse'
-    { _debrsARN :: !(Maybe Text)
-    , _debrsName :: !(Maybe Text)
-    , _debrsPolicy :: !(Maybe Text)
+    { _debrsARN            :: !(Maybe Text)
+    , _debrsName           :: !(Maybe Text)
+    , _debrsPolicy         :: !(Maybe Text)
     , _debrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

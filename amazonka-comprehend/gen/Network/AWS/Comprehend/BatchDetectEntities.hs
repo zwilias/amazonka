@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'batchDetectEntities' smart constructor.
 data BatchDetectEntities =
   BatchDetectEntities'
-    { _bdeTextList :: ![Text]
+    { _bdeTextList     :: ![Text]
     , _bdeLanguageCode :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -113,8 +113,8 @@ instance ToQuery BatchDetectEntities where
 data BatchDetectEntitiesResponse =
   BatchDetectEntitiesResponse'
     { _bdersResponseStatus :: !Int
-    , _bdersResultList :: ![BatchDetectEntitiesItemResult]
-    , _bdersErrorList :: ![BatchItemError]
+    , _bdersResultList     :: ![BatchDetectEntitiesItemResult]
+    , _bdersErrorList      :: ![BatchItemError]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

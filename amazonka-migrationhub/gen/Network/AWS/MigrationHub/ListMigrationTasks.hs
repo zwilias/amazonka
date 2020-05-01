@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,8 +55,8 @@ import Network.AWS.Response
 data ListMigrationTasks =
   ListMigrationTasks'
     { _lmtResourceName :: !(Maybe Text)
-    , _lmtNextToken :: !(Maybe Text)
-    , _lmtMaxResults :: !(Maybe Nat)
+    , _lmtNextToken    :: !(Maybe Text)
+    , _lmtMaxResults   :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -133,8 +133,8 @@ instance ToQuery ListMigrationTasks where
 data ListMigrationTasksResponse =
   ListMigrationTasksResponse'
     { _lmtrsMigrationTaskSummaryList :: !(Maybe [MigrationTaskSummary])
-    , _lmtrsNextToken :: !(Maybe Text)
-    , _lmtrsResponseStatus :: !Int
+    , _lmtrsNextToken                :: !(Maybe Text)
+    , _lmtrsResponseStatus           :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

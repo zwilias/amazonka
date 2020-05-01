@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 -- | /See:/ 'getBuiltinIntents' smart constructor.
 data GetBuiltinIntents =
   GetBuiltinIntents'
-    { _gbiLocale :: !(Maybe Locale)
-    , _gbiNextToken :: !(Maybe Text)
+    { _gbiLocale            :: !(Maybe Locale)
+    , _gbiNextToken         :: !(Maybe Text)
     , _gbiSignatureContains :: !(Maybe Text)
-    , _gbiMaxResults :: !(Maybe Nat)
+    , _gbiMaxResults        :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -137,8 +137,8 @@ instance ToQuery GetBuiltinIntents where
 -- | /See:/ 'getBuiltinIntentsResponse' smart constructor.
 data GetBuiltinIntentsResponse =
   GetBuiltinIntentsResponse'
-    { _grsIntents :: !(Maybe [BuiltinIntentMetadata])
-    , _grsNextToken :: !(Maybe Text)
+    { _grsIntents        :: !(Maybe [BuiltinIntentMetadata])
+    , _grsNextToken      :: !(Maybe Text)
     , _grsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

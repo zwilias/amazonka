@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.ServerlessApplicationRepository.Types.Product
 data ListApplications =
   ListApplications'
     { _laNextToken :: !(Maybe Text)
-    , _laMaxItems :: !(Maybe Nat)
+    , _laMaxItems  :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -98,8 +98,8 @@ instance ToQuery ListApplications where
 -- | /See:/ 'listApplicationsResponse' smart constructor.
 data ListApplicationsResponse =
   ListApplicationsResponse'
-    { _larsNextToken :: !(Maybe Text)
-    , _larsApplications :: !(Maybe [ApplicationSummary])
+    { _larsNextToken      :: !(Maybe Text)
+    , _larsApplications   :: !(Maybe [ApplicationSummary])
     , _larsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

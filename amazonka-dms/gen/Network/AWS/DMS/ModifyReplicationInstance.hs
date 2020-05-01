@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -61,17 +61,17 @@ import Network.AWS.Response
 -- /See:/ 'modifyReplicationInstance' smart constructor.
 data ModifyReplicationInstance =
   ModifyReplicationInstance'
-    { _mriEngineVersion :: !(Maybe Text)
-    , _mriAutoMinorVersionUpgrade :: !(Maybe Bool)
-    , _mriAllowMajorVersionUpgrade :: !(Maybe Bool)
-    , _mriPreferredMaintenanceWindow :: !(Maybe Text)
-    , _mriVPCSecurityGroupIds :: !(Maybe [Text])
-    , _mriMultiAZ :: !(Maybe Bool)
-    , _mriAllocatedStorage :: !(Maybe Int)
-    , _mriApplyImmediately :: !(Maybe Bool)
-    , _mriReplicationInstanceClass :: !(Maybe Text)
+    { _mriEngineVersion                 :: !(Maybe Text)
+    , _mriAutoMinorVersionUpgrade       :: !(Maybe Bool)
+    , _mriAllowMajorVersionUpgrade      :: !(Maybe Bool)
+    , _mriPreferredMaintenanceWindow    :: !(Maybe Text)
+    , _mriVPCSecurityGroupIds           :: !(Maybe [Text])
+    , _mriMultiAZ                       :: !(Maybe Bool)
+    , _mriAllocatedStorage              :: !(Maybe Int)
+    , _mriApplyImmediately              :: !(Maybe Bool)
+    , _mriReplicationInstanceClass      :: !(Maybe Text)
     , _mriReplicationInstanceIdentifier :: !(Maybe Text)
-    , _mriReplicationInstanceARN :: !Text
+    , _mriReplicationInstanceARN        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -234,7 +234,7 @@ instance ToQuery ModifyReplicationInstance where
 data ModifyReplicationInstanceResponse =
   ModifyReplicationInstanceResponse'
     { _mrirsReplicationInstance :: !(Maybe ReplicationInstance)
-    , _mrirsResponseStatus :: !Int
+    , _mrirsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

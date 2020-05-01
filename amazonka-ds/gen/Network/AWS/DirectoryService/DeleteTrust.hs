@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Response
 data DeleteTrust =
   DeleteTrust'
     { _dtDeleteAssociatedConditionalForwarder :: !(Maybe Bool)
-    , _dtTrustId :: !Text
+    , _dtTrustId                              :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -121,7 +121,7 @@ instance ToQuery DeleteTrust where
 -- /See:/ 'deleteTrustResponse' smart constructor.
 data DeleteTrustResponse =
   DeleteTrustResponse'
-    { _dttrsTrustId :: !(Maybe Text)
+    { _dttrsTrustId        :: !(Maybe Text)
     , _dttrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

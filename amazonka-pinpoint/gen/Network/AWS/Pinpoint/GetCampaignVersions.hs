@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,10 +44,10 @@ import Network.AWS.Response
 -- | /See:/ 'getCampaignVersions' smart constructor.
 data GetCampaignVersions =
   GetCampaignVersions'
-    { _gcvToken :: !(Maybe Text)
-    , _gcvPageSize :: !(Maybe Text)
+    { _gcvToken         :: !(Maybe Text)
+    , _gcvPageSize      :: !(Maybe Text)
     , _gcvApplicationId :: !Text
-    , _gcvCampaignId :: !Text
+    , _gcvCampaignId    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -125,7 +125,7 @@ instance ToQuery GetCampaignVersions where
 -- | /See:/ 'getCampaignVersionsResponse' smart constructor.
 data GetCampaignVersionsResponse =
   GetCampaignVersionsResponse'
-    { _gcvrsResponseStatus :: !Int
+    { _gcvrsResponseStatus    :: !Int
     , _gcvrsCampaignsResponse :: !CampaignsResponse
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

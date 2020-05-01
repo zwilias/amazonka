@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -28,7 +28,7 @@ import Network.AWS.SageMaker.Types.Sum
 -- /See:/ 'algorithmSpecification' smart constructor.
 data AlgorithmSpecification =
   AlgorithmSpecification'
-    { _asTrainingImage :: !Text
+    { _asTrainingImage     :: !Text
     , _asTrainingInputMode :: !TrainingInputMode
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -87,10 +87,10 @@ instance ToJSON AlgorithmSpecification where
 data Channel =
   Channel'
     { _cRecordWrapperType :: !(Maybe RecordWrapper)
-    , _cCompressionType :: !(Maybe CompressionType)
-    , _cContentType :: !(Maybe Text)
-    , _cChannelName :: !Text
-    , _cDataSource :: !DataSource
+    , _cCompressionType   :: !(Maybe CompressionType)
+    , _cContentType       :: !(Maybe Text)
+    , _cChannelName       :: !Text
+    , _cDataSource        :: !DataSource
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -173,10 +173,10 @@ instance ToJSON Channel where
 -- /See:/ 'containerDefinition' smart constructor.
 data ContainerDefinition =
   ContainerDefinition'
-    { _cdModelDataURL :: !(Maybe Text)
-    , _cdEnvironment :: !(Maybe (Map Text Text))
+    { _cdModelDataURL      :: !(Maybe Text)
+    , _cdEnvironment       :: !(Maybe (Map Text Text))
     , _cdContainerHostname :: !(Maybe Text)
-    , _cdImage :: !Text
+    , _cdImage             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -289,8 +289,8 @@ instance ToJSON DataSource where
 data DesiredWeightAndCapacity =
   DesiredWeightAndCapacity'
     { _dwacDesiredInstanceCount :: !(Maybe Nat)
-    , _dwacDesiredWeight :: !(Maybe Double)
-    , _dwacVariantName :: !Text
+    , _dwacDesiredWeight        :: !(Maybe Double)
+    , _dwacVariantName          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -348,8 +348,8 @@ instance ToJSON DesiredWeightAndCapacity where
 data EndpointConfigSummary =
   EndpointConfigSummary'
     { _ecsEndpointConfigName :: !Text
-    , _ecsEndpointConfigARN :: !Text
-    , _ecsCreationTime :: !POSIX
+    , _ecsEndpointConfigARN  :: !Text
+    , _ecsCreationTime       :: !POSIX
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -409,11 +409,11 @@ instance NFData EndpointConfigSummary
 -- /See:/ 'endpointSummary' smart constructor.
 data EndpointSummary =
   EndpointSummary'
-    { _esEndpointName :: !Text
-    , _esEndpointARN :: !Text
-    , _esCreationTime :: !POSIX
+    { _esEndpointName     :: !Text
+    , _esEndpointARN      :: !Text
+    , _esCreationTime     :: !POSIX
     , _esLastModifiedTime :: !POSIX
-    , _esEndpointStatus :: !EndpointStatus
+    , _esEndpointStatus   :: !EndpointStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -525,8 +525,8 @@ instance NFData ModelArtifacts
 -- /See:/ 'modelSummary' smart constructor.
 data ModelSummary =
   ModelSummary'
-    { _msModelName :: !Text
-    , _msModelARN :: !Text
+    { _msModelName    :: !Text
+    , _msModelARN     :: !Text
     , _msCreationTime :: !POSIX
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -583,10 +583,10 @@ instance NFData ModelSummary
 -- /See:/ 'notebookInstanceLifecycleConfigSummary' smart constructor.
 data NotebookInstanceLifecycleConfigSummary =
   NotebookInstanceLifecycleConfigSummary'
-    { _nilcsCreationTime :: !(Maybe POSIX)
-    , _nilcsLastModifiedTime :: !(Maybe POSIX)
+    { _nilcsCreationTime                        :: !(Maybe POSIX)
+    , _nilcsLastModifiedTime                    :: !(Maybe POSIX)
     , _nilcsNotebookInstanceLifecycleConfigName :: !Text
-    , _nilcsNotebookInstanceLifecycleConfigARN :: !Text
+    , _nilcsNotebookInstanceLifecycleConfigARN  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -713,14 +713,14 @@ instance ToJSON NotebookInstanceLifecycleHook where
 -- /See:/ 'notebookInstanceSummary' smart constructor.
 data NotebookInstanceSummary =
   NotebookInstanceSummary'
-    { _nisCreationTime :: !(Maybe POSIX)
-    , _nisURL :: !(Maybe Text)
-    , _nisLastModifiedTime :: !(Maybe POSIX)
-    , _nisInstanceType :: !(Maybe InstanceType)
-    , _nisNotebookInstanceStatus :: !(Maybe NotebookInstanceStatus)
+    { _nisCreationTime                        :: !(Maybe POSIX)
+    , _nisURL                                 :: !(Maybe Text)
+    , _nisLastModifiedTime                    :: !(Maybe POSIX)
+    , _nisInstanceType                        :: !(Maybe InstanceType)
+    , _nisNotebookInstanceStatus              :: !(Maybe NotebookInstanceStatus)
     , _nisNotebookInstanceLifecycleConfigName :: !(Maybe Text)
-    , _nisNotebookInstanceName :: !Text
-    , _nisNotebookInstanceARN :: !Text
+    , _nisNotebookInstanceName                :: !Text
+    , _nisNotebookInstanceARN                 :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -826,7 +826,7 @@ instance NFData NotebookInstanceSummary
 -- /See:/ 'outputDataConfig' smart constructor.
 data OutputDataConfig =
   OutputDataConfig'
-    { _odcKMSKeyId :: !(Maybe Text)
+    { _odcKMSKeyId     :: !(Maybe Text)
     , _odcS3OutputPath :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -878,10 +878,10 @@ instance ToJSON OutputDataConfig where
 data ProductionVariant =
   ProductionVariant'
     { _pvInitialVariantWeight :: !(Maybe Double)
-    , _pvVariantName :: !Text
-    , _pvModelName :: !Text
+    , _pvVariantName          :: !Text
+    , _pvModelName            :: !Text
     , _pvInitialInstanceCount :: !Nat
-    , _pvInstanceType :: !ProductionVariantInstanceType
+    , _pvInstanceType         :: !ProductionVariantInstanceType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -969,10 +969,10 @@ instance ToJSON ProductionVariant where
 data ProductionVariantSummary =
   ProductionVariantSummary'
     { _pvsDesiredInstanceCount :: !(Maybe Nat)
-    , _pvsDesiredWeight :: !(Maybe Double)
-    , _pvsCurrentWeight :: !(Maybe Double)
+    , _pvsDesiredWeight        :: !(Maybe Double)
+    , _pvsCurrentWeight        :: !(Maybe Double)
     , _pvsCurrentInstanceCount :: !(Maybe Nat)
-    , _pvsVariantName :: !Text
+    , _pvsVariantName          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1048,8 +1048,8 @@ instance NFData ProductionVariantSummary
 data ResourceConfig =
   ResourceConfig'
     { _rcVolumeKMSKeyId :: !(Maybe Text)
-    , _rcInstanceType :: !TrainingInstanceType
-    , _rcInstanceCount :: !Nat
+    , _rcInstanceType   :: !TrainingInstanceType
+    , _rcInstanceCount  :: !Nat
     , _rcVolumeSizeInGB :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1127,8 +1127,8 @@ instance ToJSON ResourceConfig where
 data S3DataSource =
   S3DataSource'
     { _sdsS3DataDistributionType :: !(Maybe S3DataDistribution)
-    , _sdsS3DataType :: !S3DataType
-    , _sdsS3URI :: !Text
+    , _sdsS3DataType             :: !S3DataType
+    , _sdsS3URI                  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1237,7 +1237,7 @@ instance ToJSON StoppingCondition where
 -- /See:/ 'tag' smart constructor.
 data Tag =
   Tag'
-    { _tagKey :: !Text
+    { _tagKey   :: !Text
     , _tagValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1281,11 +1281,11 @@ instance ToJSON Tag where
 -- /See:/ 'trainingJobSummary' smart constructor.
 data TrainingJobSummary =
   TrainingJobSummary'
-    { _tjsTrainingEndTime :: !(Maybe POSIX)
-    , _tjsLastModifiedTime :: !(Maybe POSIX)
-    , _tjsTrainingJobName :: !Text
-    , _tjsTrainingJobARN :: !Text
-    , _tjsCreationTime :: !POSIX
+    { _tjsTrainingEndTime   :: !(Maybe POSIX)
+    , _tjsLastModifiedTime  :: !(Maybe POSIX)
+    , _tjsTrainingJobName   :: !Text
+    , _tjsTrainingJobARN    :: !Text
+    , _tjsCreationTime      :: !POSIX
     , _tjsTrainingJobStatus :: !TrainingJobStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1375,7 +1375,7 @@ instance NFData TrainingJobSummary
 data VPCConfig =
   VPCConfig'
     { _vcSecurityGroupIds :: !(List1 Text)
-    , _vcSubnets :: !(List1 Text)
+    , _vcSubnets          :: !(List1 Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

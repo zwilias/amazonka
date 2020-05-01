@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -74,22 +74,22 @@ import Network.AWS.Response
 -- /See:/ 'putIntegration' smart constructor.
 data PutIntegration =
   PutIntegration'
-    { _pRequestTemplates :: !(Maybe (Map Text Text))
-    , _pCredentials :: !(Maybe Text)
-    , _pConnectionId :: !(Maybe Text)
-    , _pRequestParameters :: !(Maybe (Map Text Text))
-    , _pContentHandling :: !(Maybe ContentHandlingStrategy)
-    , _pPassthroughBehavior :: !(Maybe Text)
-    , _pUri :: !(Maybe Text)
-    , _pCacheNamespace :: !(Maybe Text)
-    , _pTimeoutInMillis :: !(Maybe Int)
-    , _pConnectionType :: !(Maybe ConnectionType)
+    { _pRequestTemplates      :: !(Maybe (Map Text Text))
+    , _pCredentials           :: !(Maybe Text)
+    , _pConnectionId          :: !(Maybe Text)
+    , _pRequestParameters     :: !(Maybe (Map Text Text))
+    , _pContentHandling       :: !(Maybe ContentHandlingStrategy)
+    , _pPassthroughBehavior   :: !(Maybe Text)
+    , _pUri                   :: !(Maybe Text)
+    , _pCacheNamespace        :: !(Maybe Text)
+    , _pTimeoutInMillis       :: !(Maybe Int)
+    , _pConnectionType        :: !(Maybe ConnectionType)
     , _pIntegrationHTTPMethod :: !(Maybe Text)
-    , _pCacheKeyParameters :: !(Maybe [Text])
-    , _pRestAPIId :: !Text
-    , _pResourceId :: !Text
-    , _pHttpMethod :: !Text
-    , _pType :: !IntegrationType
+    , _pCacheKeyParameters    :: !(Maybe [Text])
+    , _pRestAPIId             :: !Text
+    , _pResourceId            :: !Text
+    , _pHttpMethod            :: !Text
+    , _pType                  :: !IntegrationType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

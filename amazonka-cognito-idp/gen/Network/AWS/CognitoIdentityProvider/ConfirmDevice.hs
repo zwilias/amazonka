@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 data ConfirmDevice =
   ConfirmDevice'
     { _cdDeviceSecretVerifierConfig :: !(Maybe DeviceSecretVerifierConfigType)
-    , _cdDeviceName :: !(Maybe Text)
-    , _cdAccessToken :: !(Sensitive Text)
-    , _cdDeviceKey :: !Text
+    , _cdDeviceName                 :: !(Maybe Text)
+    , _cdAccessToken                :: !(Sensitive Text)
+    , _cdDeviceKey                  :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -147,7 +147,7 @@ instance ToQuery ConfirmDevice where
 data ConfirmDeviceResponse =
   ConfirmDeviceResponse'
     { _cdrsUserConfirmationNecessary :: !(Maybe Bool)
-    , _cdrsResponseStatus :: !Int
+    , _cdrsResponseStatus            :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

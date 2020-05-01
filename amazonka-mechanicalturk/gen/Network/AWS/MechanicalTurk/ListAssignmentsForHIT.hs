@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -60,9 +60,9 @@ import Network.AWS.Response
 data ListAssignmentsForHIT =
   ListAssignmentsForHIT'
     { _lafhitAssignmentStatuses :: !(Maybe [AssignmentStatus])
-    , _lafhitNextToken :: !(Maybe Text)
-    , _lafhitMaxResults :: !(Maybe Nat)
-    , _lafhitHITId :: !Text
+    , _lafhitNextToken          :: !(Maybe Text)
+    , _lafhitMaxResults         :: !(Maybe Nat)
+    , _lafhitHITId              :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -156,9 +156,9 @@ instance ToQuery ListAssignmentsForHIT where
 -- | /See:/ 'listAssignmentsForHITResponse' smart constructor.
 data ListAssignmentsForHITResponse =
   ListAssignmentsForHITResponse'
-    { _lafhitrsNextToken :: !(Maybe Text)
-    , _lafhitrsNumResults :: !(Maybe Int)
-    , _lafhitrsAssignments :: !(Maybe [Assignment])
+    { _lafhitrsNextToken      :: !(Maybe Text)
+    , _lafhitrsNumResults     :: !(Maybe Int)
+    , _lafhitrsAssignments    :: !(Maybe [Assignment])
     , _lafhitrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

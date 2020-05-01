@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.Response
 data TestInvokeAuthorizer =
   TestInvokeAuthorizer'
     { _tiaAuthorizerName :: !Text
-    , _tiaToken :: !Text
+    , _tiaToken          :: !Text
     , _tiaTokenSignature :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -126,12 +126,12 @@ instance ToQuery TestInvokeAuthorizer where
 -- | /See:/ 'testInvokeAuthorizerResponse' smart constructor.
 data TestInvokeAuthorizerResponse =
   TestInvokeAuthorizerResponse'
-    { _tiarsPolicyDocuments :: !(Maybe [Text])
-    , _tiarsPrincipalId :: !(Maybe Text)
+    { _tiarsPolicyDocuments          :: !(Maybe [Text])
+    , _tiarsPrincipalId              :: !(Maybe Text)
     , _tiarsDisconnectAfterInSeconds :: !(Maybe Int)
-    , _tiarsIsAuthenticated :: !(Maybe Bool)
-    , _tiarsRefreshAfterInSeconds :: !(Maybe Int)
-    , _tiarsResponseStatus :: !Int
+    , _tiarsIsAuthenticated          :: !(Maybe Bool)
+    , _tiarsRefreshAfterInSeconds    :: !(Maybe Int)
+    , _tiarsResponseStatus           :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

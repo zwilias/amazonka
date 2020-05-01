@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,8 +27,8 @@ import Network.AWS.ResourceGroups.Types.Sum
 data Group =
   Group'
     { _gDescription :: !(Maybe Text)
-    , _gGroupARN :: !Text
-    , _gName :: !Text
+    , _gGroupARN    :: !Text
+    , _gName        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -79,7 +79,7 @@ instance NFData Group
 -- /See:/ 'groupQuery' smart constructor.
 data GroupQuery =
   GroupQuery'
-    { _gqGroupName :: !Text
+    { _gqGroupName     :: !Text
     , _gqResourceQuery :: !ResourceQuery
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -124,7 +124,7 @@ instance NFData GroupQuery
 data ResourceIdentifier =
   ResourceIdentifier'
     { _riResourceType :: !(Maybe Text)
-    , _riResourceARN :: !(Maybe Text)
+    , _riResourceARN  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -166,7 +166,7 @@ instance NFData ResourceIdentifier
 -- /See:/ 'resourceQuery' smart constructor.
 data ResourceQuery =
   ResourceQuery'
-    { _rqType :: !QueryType
+    { _rqType        :: !QueryType
     , _rqSearchQuery :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

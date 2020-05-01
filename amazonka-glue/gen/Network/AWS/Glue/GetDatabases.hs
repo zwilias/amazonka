@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- | /See:/ 'getDatabases' smart constructor.
 data GetDatabases =
   GetDatabases'
-    { _gdCatalogId :: !(Maybe Text)
-    , _gdNextToken :: !(Maybe Text)
+    { _gdCatalogId  :: !(Maybe Text)
+    , _gdNextToken  :: !(Maybe Text)
     , _gdMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -126,9 +126,9 @@ instance ToQuery GetDatabases where
 -- | /See:/ 'getDatabasesResponse' smart constructor.
 data GetDatabasesResponse =
   GetDatabasesResponse'
-    { _gdsrsNextToken :: !(Maybe Text)
+    { _gdsrsNextToken      :: !(Maybe Text)
     , _gdsrsResponseStatus :: !Int
-    , _gdsrsDatabaseList :: ![Database]
+    , _gdsrsDatabaseList   :: ![Database]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

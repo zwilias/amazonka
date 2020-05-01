@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -75,8 +75,8 @@ instance ToQuery GetServiceRoleForAccount where
 -- | /See:/ 'getServiceRoleForAccountResponse' smart constructor.
 data GetServiceRoleForAccountResponse =
   GetServiceRoleForAccountResponse'
-    { _gsrfarsAssociatedAt :: !(Maybe Text)
-    , _gsrfarsRoleARN :: !(Maybe Text)
+    { _gsrfarsAssociatedAt   :: !(Maybe Text)
+    , _gsrfarsRoleARN        :: !(Maybe Text)
     , _gsrfarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -77,8 +77,8 @@ instance ToQuery GetAccountSettings where
 -- | /See:/ 'getAccountSettingsResponse' smart constructor.
 data GetAccountSettingsResponse =
   GetAccountSettingsResponse'
-    { _gasrsAccountLimit :: !(Maybe AccountLimit)
-    , _gasrsAccountUsage :: !(Maybe AccountUsage)
+    { _gasrsAccountLimit   :: !(Maybe AccountLimit)
+    , _gasrsAccountUsage   :: !(Maybe AccountUsage)
     , _gasrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -84,10 +84,10 @@ import Network.AWS.Response
 -- /See:/ 'copyDBClusterSnapshot' smart constructor.
 data CopyDBClusterSnapshot =
   CopyDBClusterSnapshot'
-    { _cdbcsPreSignedURL :: !(Maybe Text)
-    , _cdbcsCopyTags :: !(Maybe Bool)
-    , _cdbcsKMSKeyId :: !(Maybe Text)
-    , _cdbcsTags :: !(Maybe [Tag])
+    { _cdbcsPreSignedURL                      :: !(Maybe Text)
+    , _cdbcsCopyTags                          :: !(Maybe Bool)
+    , _cdbcsKMSKeyId                          :: !(Maybe Text)
+    , _cdbcsTags                              :: !(Maybe [Tag])
     , _cdbcsSourceDBClusterSnapshotIdentifier :: !Text
     , _cdbcsTargetDBClusterSnapshotIdentifier :: !Text
     }
@@ -193,7 +193,7 @@ instance ToQuery CopyDBClusterSnapshot where
 data CopyDBClusterSnapshotResponse =
   CopyDBClusterSnapshotResponse'
     { _cdcsrsDBClusterSnapshot :: !(Maybe DBClusterSnapshot)
-    , _cdcsrsResponseStatus :: !Int
+    , _cdcsrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.WorkMail.Types.Product
 data DescribeGroup =
   DescribeGroup'
     { _dgOrganizationId :: !Text
-    , _dgGroupId :: !Text
+    , _dgGroupId        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -118,12 +118,12 @@ instance ToQuery DescribeGroup where
 -- | /See:/ 'describeGroupResponse' smart constructor.
 data DescribeGroupResponse =
   DescribeGroupResponse'
-    { _desrsEmail :: !(Maybe Text)
-    , _desrsState :: !(Maybe EntityState)
-    , _desrsDisabledDate :: !(Maybe POSIX)
-    , _desrsName :: !(Maybe Text)
-    , _desrsGroupId :: !(Maybe Text)
-    , _desrsEnabledDate :: !(Maybe POSIX)
+    { _desrsEmail          :: !(Maybe Text)
+    , _desrsState          :: !(Maybe EntityState)
+    , _desrsDisabledDate   :: !(Maybe POSIX)
+    , _desrsName           :: !(Maybe Text)
+    , _desrsGroupId        :: !(Maybe Text)
+    , _desrsEnabledDate    :: !(Maybe POSIX)
     , _desrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

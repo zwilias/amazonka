@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,10 +56,10 @@ import Network.AWS.Response
 data ListThings =
   ListThings'
     { _ltAttributeValue :: !(Maybe Text)
-    , _ltThingTypeName :: !(Maybe Text)
-    , _ltNextToken :: !(Maybe Text)
-    , _ltAttributeName :: !(Maybe Text)
-    , _ltMaxResults :: !(Maybe Nat)
+    , _ltThingTypeName  :: !(Maybe Text)
+    , _ltNextToken      :: !(Maybe Text)
+    , _ltAttributeName  :: !(Maybe Text)
+    , _ltMaxResults     :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -149,8 +149,8 @@ instance ToQuery ListThings where
 -- /See:/ 'listThingsResponse' smart constructor.
 data ListThingsResponse =
   ListThingsResponse'
-    { _ltrsNextToken :: !(Maybe Text)
-    , _ltrsThings :: !(Maybe [ThingAttribute])
+    { _ltrsNextToken      :: !(Maybe Text)
+    , _ltrsThings         :: !(Maybe [ThingAttribute])
     , _ltrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

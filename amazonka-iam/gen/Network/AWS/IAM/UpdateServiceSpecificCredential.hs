@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -42,9 +42,9 @@ import Network.AWS.Response
 -- | /See:/ 'updateServiceSpecificCredential' smart constructor.
 data UpdateServiceSpecificCredential =
   UpdateServiceSpecificCredential'
-    { _usscUserName :: !(Maybe Text)
+    { _usscUserName                    :: !(Maybe Text)
     , _usscServiceSpecificCredentialId :: !Text
-    , _usscStatus :: !StatusType
+    , _usscStatus                      :: !StatusType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

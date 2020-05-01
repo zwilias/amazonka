@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'describeInventoryDeletions' smart constructor.
 data DescribeInventoryDeletions =
   DescribeInventoryDeletions'
-    { _didNextToken :: !(Maybe Text)
+    { _didNextToken  :: !(Maybe Text)
     , _didMaxResults :: !(Maybe Nat)
     , _didDeletionId :: !(Maybe Text)
     }
@@ -125,8 +125,8 @@ instance ToQuery DescribeInventoryDeletions where
 data DescribeInventoryDeletionsResponse =
   DescribeInventoryDeletionsResponse'
     { _didrsInventoryDeletions :: !(Maybe [InventoryDeletionStatusItem])
-    , _didrsNextToken :: !(Maybe Text)
-    , _didrsResponseStatus :: !Int
+    , _didrsNextToken          :: !(Maybe Text)
+    , _didrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

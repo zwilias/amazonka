@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,13 +49,13 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'registerTargetWithMaintenanceWindow' smart constructor.
 data RegisterTargetWithMaintenanceWindow =
   RegisterTargetWithMaintenanceWindow'
-    { _rClientToken :: !(Maybe Text)
+    { _rClientToken      :: !(Maybe Text)
     , _rOwnerInformation :: !(Maybe (Sensitive Text))
-    , _rName :: !(Maybe Text)
-    , _rDescription :: !(Maybe (Sensitive Text))
-    , _rWindowId :: !Text
-    , _rResourceType :: !MaintenanceWindowResourceType
-    , _rTargets :: ![Target]
+    , _rName             :: !(Maybe Text)
+    , _rDescription      :: !(Maybe (Sensitive Text))
+    , _rWindowId         :: !Text
+    , _rResourceType     :: !MaintenanceWindowResourceType
+    , _rTargets          :: ![Target]
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

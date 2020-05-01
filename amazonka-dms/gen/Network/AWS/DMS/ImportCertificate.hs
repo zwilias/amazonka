@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- | /See:/ 'importCertificate' smart constructor.
 data ImportCertificate =
   ImportCertificate'
-    { _icCertificatePem :: !(Maybe Text)
-    , _icCertificateWallet :: !(Maybe Base64)
-    , _icTags :: !(Maybe [Tag])
+    { _icCertificatePem        :: !(Maybe Text)
+    , _icCertificateWallet     :: !(Maybe Base64)
+    , _icTags                  :: !(Maybe [Tag])
     , _icCertificateIdentifier :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -135,7 +135,7 @@ instance ToQuery ImportCertificate where
 -- | /See:/ 'importCertificateResponse' smart constructor.
 data ImportCertificateResponse =
   ImportCertificateResponse'
-    { _icrsCertificate :: !(Maybe Certificate)
+    { _icrsCertificate    :: !(Maybe Certificate)
     , _icrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

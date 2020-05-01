@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -42,7 +42,7 @@ import Network.AWS.Response
 -- | /See:/ 'sendUsersMessages' smart constructor.
 data SendUsersMessages =
   SendUsersMessages'
-    { _sumsApplicationId :: !Text
+    { _sumsApplicationId           :: !Text
     , _sumsSendUsersMessageRequest :: !SendUsersMessageRequest
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -109,7 +109,7 @@ instance ToQuery SendUsersMessages where
 -- | /See:/ 'sendUsersMessagesResponse' smart constructor.
 data SendUsersMessagesResponse =
   SendUsersMessagesResponse'
-    { _sumrsResponseStatus :: !Int
+    { _sumrsResponseStatus           :: !Int
     , _sumrsSendUsersMessageResponse :: !SendUsersMessageResponse
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.Response
 -- /See:/ 'getRequestValidators' smart constructor.
 data GetRequestValidators =
   GetRequestValidators'
-    { _grvLimit :: !(Maybe Int)
-    , _grvPosition :: !(Maybe Text)
+    { _grvLimit     :: !(Maybe Int)
+    , _grvPosition  :: !(Maybe Text)
     , _grvRestAPIId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -119,8 +119,8 @@ instance ToQuery GetRequestValidators where
 -- /See:/ 'getRequestValidatorsResponse' smart constructor.
 data GetRequestValidatorsResponse =
   GetRequestValidatorsResponse'
-    { _grvrsItems :: !(Maybe [RequestValidator])
-    , _grvrsPosition :: !(Maybe Text)
+    { _grvrsItems          :: !(Maybe [RequestValidator])
+    , _grvrsPosition       :: !(Maybe Text)
     , _grvrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,15 +53,15 @@ import Network.AWS.Response
 -- | /See:/ 'putFile' smart constructor.
 data PutFile =
   PutFile'
-    { _pfEmail :: !(Maybe Text)
-    , _pfFileMode :: !(Maybe FileModeTypeEnum)
+    { _pfEmail          :: !(Maybe Text)
+    , _pfFileMode       :: !(Maybe FileModeTypeEnum)
     , _pfParentCommitId :: !(Maybe Text)
-    , _pfName :: !(Maybe Text)
-    , _pfCommitMessage :: !(Maybe Text)
+    , _pfName           :: !(Maybe Text)
+    , _pfCommitMessage  :: !(Maybe Text)
     , _pfRepositoryName :: !Text
-    , _pfBranchName :: !Text
-    , _pfFileContent :: !Base64
-    , _pfFilePath :: !Text
+    , _pfBranchName     :: !Text
+    , _pfFileContent    :: !Base64
+    , _pfFilePath       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -188,9 +188,9 @@ instance ToQuery PutFile where
 data PutFileResponse =
   PutFileResponse'
     { _pfrsResponseStatus :: !Int
-    , _pfrsCommitId :: !Text
-    , _pfrsBlobId :: !Text
-    , _pfrsTreeId :: !Text
+    , _pfrsCommitId       :: !Text
+    , _pfrsBlobId         :: !Text
+    , _pfrsTreeId         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

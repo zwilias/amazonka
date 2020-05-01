@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.SNS.Types.Product
 data SetPlatformApplicationAttributes =
   SetPlatformApplicationAttributes'
     { _spaaPlatformApplicationARN :: !Text
-    , _spaaAttributes :: !(Map Text Text)
+    , _spaaAttributes             :: !(Map Text Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

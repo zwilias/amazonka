@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 -- | /See:/ 'getExport' smart constructor.
 data GetExport =
   GetExport'
-    { _geName :: !Text
-    , _geVersion :: !Text
+    { _geName         :: !Text
+    , _geVersion      :: !Text
     , _geResourceType :: !ResourceType
-    , _geExportType :: !ExportType
+    , _geExportType   :: !ExportType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -139,13 +139,13 @@ instance ToQuery GetExport where
 -- | /See:/ 'getExportResponse' smart constructor.
 data GetExportResponse =
   GetExportResponse'
-    { _gersFailureReason :: !(Maybe Text)
-    , _gersResourceType :: !(Maybe ResourceType)
-    , _gersExportStatus :: !(Maybe ExportStatus)
-    , _gersUrl :: !(Maybe Text)
-    , _gersExportType :: !(Maybe ExportType)
-    , _gersName :: !(Maybe Text)
-    , _gersVersion :: !(Maybe Text)
+    { _gersFailureReason  :: !(Maybe Text)
+    , _gersResourceType   :: !(Maybe ResourceType)
+    , _gersExportStatus   :: !(Maybe ExportStatus)
+    , _gersUrl            :: !(Maybe Text)
+    , _gersExportType     :: !(Maybe ExportType)
+    , _gersName           :: !(Maybe Text)
+    , _gersVersion        :: !(Maybe Text)
     , _gersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

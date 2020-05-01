@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -43,8 +43,8 @@ import Network.AWS.Response
 -- | /See:/ 'getSegmentVersion' smart constructor.
 data GetSegmentVersion =
   GetSegmentVersion'
-    { _gSegmentId :: !Text
-    , _gVersion :: !Text
+    { _gSegmentId     :: !Text
+    , _gVersion       :: !Text
     , _gApplicationId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -117,7 +117,7 @@ instance ToQuery GetSegmentVersion where
 -- | /See:/ 'getSegmentVersionResponse' smart constructor.
 data GetSegmentVersionResponse =
   GetSegmentVersionResponse'
-    { _gsvrsResponseStatus :: !Int
+    { _gsvrsResponseStatus  :: !Int
     , _gsvrsSegmentResponse :: !SegmentResponse
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,9 +47,9 @@ import Network.AWS.Response
 -- | /See:/ 'createThingGroup' smart constructor.
 data CreateThingGroup =
   CreateThingGroup'
-    { _ctgParentGroupName :: !(Maybe Text)
+    { _ctgParentGroupName      :: !(Maybe Text)
     , _ctgThingGroupProperties :: !(Maybe ThingGroupProperties)
-    , _ctgThingGroupName :: !Text
+    , _ctgThingGroupName       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -122,8 +122,8 @@ instance ToQuery CreateThingGroup where
 -- | /See:/ 'createThingGroupResponse' smart constructor.
 data CreateThingGroupResponse =
   CreateThingGroupResponse'
-    { _ctgrsThingGroupARN :: !(Maybe Text)
-    , _ctgrsThingGroupId :: !(Maybe Text)
+    { _ctgrsThingGroupARN  :: !(Maybe Text)
+    , _ctgrsThingGroupId   :: !(Maybe Text)
     , _ctgrsThingGroupName :: !(Maybe Text)
     , _ctgrsResponseStatus :: !Int
     }

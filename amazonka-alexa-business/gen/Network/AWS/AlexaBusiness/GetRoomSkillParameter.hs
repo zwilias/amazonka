@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,8 +45,8 @@ import Network.AWS.Response
 -- | /See:/ 'getRoomSkillParameter' smart constructor.
 data GetRoomSkillParameter =
   GetRoomSkillParameter'
-    { _grspRoomARN :: !(Maybe Text)
-    , _grspSkillId :: !Text
+    { _grspRoomARN      :: !(Maybe Text)
+    , _grspSkillId      :: !Text
     , _grspParameterKey :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -124,7 +124,7 @@ instance ToQuery GetRoomSkillParameter where
 data GetRoomSkillParameterResponse =
   GetRoomSkillParameterResponse'
     { _grsprsRoomSkillParameter :: !(Maybe RoomSkillParameter)
-    , _grsprsResponseStatus :: !Int
+    , _grsprsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

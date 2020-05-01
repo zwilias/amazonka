@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,9 +53,9 @@ import Network.AWS.Route53Domains.Types.Product
 data UpdateDomainContact =
   UpdateDomainContact'
     { _udcRegistrantContact :: !(Maybe (Sensitive ContactDetail))
-    , _udcAdminContact :: !(Maybe (Sensitive ContactDetail))
-    , _udcTechContact :: !(Maybe (Sensitive ContactDetail))
-    , _udcDomainName :: !Text
+    , _udcAdminContact      :: !(Maybe (Sensitive ContactDetail))
+    , _udcTechContact       :: !(Maybe (Sensitive ContactDetail))
+    , _udcDomainName        :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -147,7 +147,7 @@ instance ToQuery UpdateDomainContact where
 data UpdateDomainContactResponse =
   UpdateDomainContactResponse'
     { _udcrsResponseStatus :: !Int
-    , _udcrsOperationId :: !Text
+    , _udcrsOperationId    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

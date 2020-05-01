@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -77,16 +77,16 @@ import Network.AWS.SWF.Types.Product
 -- | /See:/ 'listClosedWorkflowExecutions' smart constructor.
 data ListClosedWorkflowExecutions =
   ListClosedWorkflowExecutions'
-    { _lcweNextPageToken :: !(Maybe Text)
-    , _lcweExecutionFilter :: !(Maybe WorkflowExecutionFilter)
+    { _lcweNextPageToken     :: !(Maybe Text)
+    , _lcweExecutionFilter   :: !(Maybe WorkflowExecutionFilter)
     , _lcweCloseStatusFilter :: !(Maybe CloseStatusFilter)
-    , _lcweTypeFilter :: !(Maybe WorkflowTypeFilter)
-    , _lcweCloseTimeFilter :: !(Maybe ExecutionTimeFilter)
-    , _lcweReverseOrder :: !(Maybe Bool)
-    , _lcweTagFilter :: !(Maybe TagFilter)
-    , _lcweStartTimeFilter :: !(Maybe ExecutionTimeFilter)
-    , _lcweMaximumPageSize :: !(Maybe Nat)
-    , _lcweDomain :: !Text
+    , _lcweTypeFilter        :: !(Maybe WorkflowTypeFilter)
+    , _lcweCloseTimeFilter   :: !(Maybe ExecutionTimeFilter)
+    , _lcweReverseOrder      :: !(Maybe Bool)
+    , _lcweTagFilter         :: !(Maybe TagFilter)
+    , _lcweStartTimeFilter   :: !(Maybe ExecutionTimeFilter)
+    , _lcweMaximumPageSize   :: !(Maybe Nat)
+    , _lcweDomain            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

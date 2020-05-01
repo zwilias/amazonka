@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,11 +49,11 @@ import Network.AWS.Response
 data DeleteStackInstances =
   DeleteStackInstances'
     { _dsiOperationPreferences :: !(Maybe StackSetOperationPreferences)
-    , _dsiOperationId :: !(Maybe Text)
-    , _dsiStackSetName :: !Text
-    , _dsiAccounts :: ![Text]
-    , _dsiRegions :: ![Text]
-    , _dsiRetainStacks :: !Bool
+    , _dsiOperationId          :: !(Maybe Text)
+    , _dsiStackSetName         :: !Text
+    , _dsiAccounts             :: ![Text]
+    , _dsiRegions              :: ![Text]
+    , _dsiRetainStacks         :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -148,7 +148,7 @@ instance ToQuery DeleteStackInstances where
 -- | /See:/ 'deleteStackInstancesResponse' smart constructor.
 data DeleteStackInstancesResponse =
   DeleteStackInstancesResponse'
-    { _dsirsOperationId :: !(Maybe Text)
+    { _dsirsOperationId    :: !(Maybe Text)
     , _dsirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

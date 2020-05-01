@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,9 +44,9 @@ import Network.AWS.Response
 -- | /See:/ 'updateSigningCertificate' smart constructor.
 data UpdateSigningCertificate =
   UpdateSigningCertificate'
-    { _uscUserName :: !(Maybe Text)
+    { _uscUserName      :: !(Maybe Text)
     , _uscCertificateId :: !Text
-    , _uscStatus :: !StatusType
+    , _uscStatus        :: !StatusType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'stopInstance' smart constructor.
 data StopInstance =
   StopInstance'
-    { _siForce :: !(Maybe Bool)
+    { _siForce        :: !(Maybe Bool)
     , _siInstanceName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -106,7 +106,7 @@ instance ToQuery StopInstance where
 -- | /See:/ 'stopInstanceResponse' smart constructor.
 data StopInstanceResponse =
   StopInstanceResponse'
-    { _sirsOperations :: !(Maybe [Operation])
+    { _sirsOperations     :: !(Maybe [Operation])
     , _sirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

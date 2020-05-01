@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,7 +51,7 @@ import Network.AWS.Response
 data BatchGetApplicationRevisions =
   BatchGetApplicationRevisions'
     { _bgarApplicationName :: !Text
-    , _bgarRevisions :: ![RevisionLocation]
+    , _bgarRevisions       :: ![RevisionLocation]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,9 +124,9 @@ instance ToQuery BatchGetApplicationRevisions where
 data BatchGetApplicationRevisionsResponse =
   BatchGetApplicationRevisionsResponse'
     { _bgarrsApplicationName :: !(Maybe Text)
-    , _bgarrsRevisions :: !(Maybe [RevisionInfo])
-    , _bgarrsErrorMessage :: !(Maybe Text)
-    , _bgarrsResponseStatus :: !Int
+    , _bgarrsRevisions       :: !(Maybe [RevisionInfo])
+    , _bgarrsErrorMessage    :: !(Maybe Text)
+    , _bgarrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

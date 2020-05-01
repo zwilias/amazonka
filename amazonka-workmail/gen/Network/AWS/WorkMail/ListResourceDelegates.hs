@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,10 +47,10 @@ import Network.AWS.WorkMail.Types.Product
 -- | /See:/ 'listResourceDelegates' smart constructor.
 data ListResourceDelegates =
   ListResourceDelegates'
-    { _lrdNextToken :: !(Maybe Text)
-    , _lrdMaxResults :: !(Maybe Nat)
+    { _lrdNextToken      :: !(Maybe Text)
+    , _lrdMaxResults     :: !(Maybe Nat)
     , _lrdOrganizationId :: !Text
-    , _lrdResourceId :: !Text
+    , _lrdResourceId     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -136,8 +136,8 @@ instance ToQuery ListResourceDelegates where
 -- | /See:/ 'listResourceDelegatesResponse' smart constructor.
 data ListResourceDelegatesResponse =
   ListResourceDelegatesResponse'
-    { _lrdrsDelegates :: !(Maybe [Delegate])
-    , _lrdrsNextToken :: !(Maybe Text)
+    { _lrdrsDelegates      :: !(Maybe [Delegate])
+    , _lrdrsNextToken      :: !(Maybe Text)
     , _lrdrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

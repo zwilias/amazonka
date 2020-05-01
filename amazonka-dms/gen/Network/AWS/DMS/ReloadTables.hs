@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 data ReloadTables =
   ReloadTables'
     { _rtReplicationTaskARN :: !Text
-    , _rtTablesToReload :: ![TableToReload]
+    , _rtTablesToReload     :: ![TableToReload]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -112,7 +112,7 @@ instance ToQuery ReloadTables where
 data ReloadTablesResponse =
   ReloadTablesResponse'
     { _rtrsReplicationTaskARN :: !(Maybe Text)
-    , _rtrsResponseStatus :: !Int
+    , _rtrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

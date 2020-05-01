@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,7 +63,7 @@ import Network.AWS.WAF.Types.Product
 -- /See:/ 'createSqlInjectionMatchSet' smart constructor.
 data CreateSqlInjectionMatchSet =
   CreateSqlInjectionMatchSet'
-    { _csimsName :: !Text
+    { _csimsName        :: !Text
     , _csimsChangeToken :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -136,8 +136,8 @@ instance ToQuery CreateSqlInjectionMatchSet where
 data CreateSqlInjectionMatchSetResponse =
   CreateSqlInjectionMatchSetResponse'
     { _csimsrsSqlInjectionMatchSet :: !(Maybe SqlInjectionMatchSet)
-    , _csimsrsChangeToken :: !(Maybe Text)
-    , _csimsrsResponseStatus :: !Int
+    , _csimsrsChangeToken          :: !(Maybe Text)
+    , _csimsrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

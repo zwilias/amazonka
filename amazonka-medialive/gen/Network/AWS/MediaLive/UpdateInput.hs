@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,11 +47,11 @@ import Network.AWS.Response
 -- /See:/ 'updateInput' smart constructor.
 data UpdateInput =
   UpdateInput'
-    { _uiSources :: !(Maybe [InputSourceRequest])
+    { _uiSources             :: !(Maybe [InputSourceRequest])
     , _uiInputSecurityGroups :: !(Maybe [Text])
-    , _uiDestinations :: !(Maybe [InputDestinationRequest])
-    , _uiName :: !(Maybe Text)
-    , _uiInputId :: !Text
+    , _uiDestinations        :: !(Maybe [InputDestinationRequest])
+    , _uiName                :: !(Maybe Text)
+    , _uiInputId             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -141,7 +141,7 @@ instance ToQuery UpdateInput where
 -- /See:/ 'updateInputResponse' smart constructor.
 data UpdateInputResponse =
   UpdateInputResponse'
-    { _uirsInput :: !(Maybe Input)
+    { _uirsInput          :: !(Maybe Input)
     , _uirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

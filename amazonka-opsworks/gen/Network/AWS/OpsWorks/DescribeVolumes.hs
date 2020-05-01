@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,10 +48,10 @@ import Network.AWS.Response
 -- | /See:/ 'describeVolumes' smart constructor.
 data DescribeVolumes =
   DescribeVolumes'
-    { _dvInstanceId :: !(Maybe Text)
-    , _dvVolumeIds :: !(Maybe [Text])
+    { _dvInstanceId  :: !(Maybe Text)
+    , _dvVolumeIds   :: !(Maybe [Text])
     , _dvRAIdArrayId :: !(Maybe Text)
-    , _dvStackId :: !(Maybe Text)
+    , _dvStackId     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -136,7 +136,7 @@ instance ToQuery DescribeVolumes where
 -- /See:/ 'describeVolumesResponse' smart constructor.
 data DescribeVolumesResponse =
   DescribeVolumesResponse'
-    { _dvrsVolumes :: !(Maybe [Volume])
+    { _dvrsVolumes        :: !(Maybe [Volume])
     , _dvrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

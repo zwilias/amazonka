@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,9 +50,9 @@ import Network.AWS.Response
 data CreateProject =
   CreateProject'
     { _cpClientRequestToken :: !(Maybe Text)
-    , _cpDescription :: !(Maybe (Sensitive Text))
-    , _cpName :: !(Sensitive Text)
-    , _cpId :: !Text
+    , _cpDescription        :: !(Maybe (Sensitive Text))
+    , _cpName               :: !(Sensitive Text)
+    , _cpId                 :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -140,11 +140,11 @@ instance ToQuery CreateProject where
 -- | /See:/ 'createProjectResponse' smart constructor.
 data CreateProjectResponse =
   CreateProjectResponse'
-    { _cprsProjectTemplateId :: !(Maybe Text)
+    { _cprsProjectTemplateId  :: !(Maybe Text)
     , _cprsClientRequestToken :: !(Maybe Text)
-    , _cprsResponseStatus :: !Int
-    , _cprsId :: !Text
-    , _cprsArn :: !Text
+    , _cprsResponseStatus     :: !Int
+    , _cprsId                 :: !Text
+    , _cprsArn                :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

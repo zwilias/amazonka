@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,9 +50,9 @@ import Network.AWS.Response
 -- /See:/ 'copyDBParameterGroup' smart constructor.
 data CopyDBParameterGroup =
   CopyDBParameterGroup'
-    { _cdpgTags :: !(Maybe [Tag])
-    , _cdpgSourceDBParameterGroupIdentifier :: !Text
-    , _cdpgTargetDBParameterGroupIdentifier :: !Text
+    { _cdpgTags                              :: !(Maybe [Tag])
+    , _cdpgSourceDBParameterGroupIdentifier  :: !Text
+    , _cdpgTargetDBParameterGroupIdentifier  :: !Text
     , _cdpgTargetDBParameterGroupDescription :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -145,7 +145,7 @@ instance ToQuery CopyDBParameterGroup where
 data CopyDBParameterGroupResponse =
   CopyDBParameterGroupResponse'
     { _cdbpgrsDBParameterGroup :: !(Maybe DBParameterGroup)
-    , _cdbpgrsResponseStatus :: !Int
+    , _cdbpgrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

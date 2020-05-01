@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -94,9 +94,9 @@ instance ToQuery DisassociateSubnetCidrBlock where
 -- | /See:/ 'disassociateSubnetCidrBlockResponse' smart constructor.
 data DisassociateSubnetCidrBlockResponse =
   DisassociateSubnetCidrBlockResponse'
-    { _dscbrsSubnetId :: !(Maybe Text)
+    { _dscbrsSubnetId                 :: !(Maybe Text)
     , _dscbrsIPv6CidrBlockAssociation :: !(Maybe SubnetIPv6CidrBlockAssociation)
-    , _dscbrsResponseStatus :: !Int
+    , _dscbrsResponseStatus           :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

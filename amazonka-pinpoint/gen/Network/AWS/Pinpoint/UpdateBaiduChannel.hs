@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -42,7 +42,7 @@ import Network.AWS.Response
 -- | /See:/ 'updateBaiduChannel' smart constructor.
 data UpdateBaiduChannel =
   UpdateBaiduChannel'
-    { _ubcApplicationId :: !Text
+    { _ubcApplicationId       :: !Text
     , _ubcBaiduChannelRequest :: !BaiduChannelRequest
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -105,7 +105,7 @@ instance ToQuery UpdateBaiduChannel where
 -- | /See:/ 'updateBaiduChannelResponse' smart constructor.
 data UpdateBaiduChannelResponse =
   UpdateBaiduChannelResponse'
-    { _ubcrsResponseStatus :: !Int
+    { _ubcrsResponseStatus       :: !Int
     , _ubcrsBaiduChannelResponse :: !BaiduChannelResponse
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

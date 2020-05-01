@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Route53.Types.Product
 data UpdateHostedZoneComment =
   UpdateHostedZoneComment'
     { _uhzcComment :: !(Maybe Text)
-    , _uhzcId :: !ResourceId
+    , _uhzcId      :: !ResourceId
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -113,7 +113,7 @@ instance ToXML UpdateHostedZoneComment where
 data UpdateHostedZoneCommentResponse =
   UpdateHostedZoneCommentResponse'
     { _uhzcrsResponseStatus :: !Int
-    , _uhzcrsHostedZone :: !HostedZone
+    , _uhzcrsHostedZone     :: !HostedZone
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

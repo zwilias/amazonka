@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 data BatchRead =
   BatchRead'
     { _brConsistencyLevel :: !(Maybe ConsistencyLevel)
-    , _brDirectoryARN :: !Text
-    , _brOperations :: ![BatchReadOperation]
+    , _brDirectoryARN     :: !Text
+    , _brOperations       :: ![BatchReadOperation]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -116,7 +116,7 @@ instance ToQuery BatchRead where
 -- | /See:/ 'batchReadResponse' smart constructor.
 data BatchReadResponse =
   BatchReadResponse'
-    { _brrsResponses :: !(Maybe [BatchReadOperationResponse])
+    { _brrsResponses      :: !(Maybe [BatchReadOperationResponse])
     , _brrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

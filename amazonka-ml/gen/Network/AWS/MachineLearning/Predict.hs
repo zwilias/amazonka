@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,8 +45,8 @@ import Network.AWS.Response
 -- | /See:/ 'predict' smart constructor.
 data Predict =
   Predict'
-    { _pMLModelId :: !Text
-    , _pRecord :: !(Map Text Text)
+    { _pMLModelId       :: !Text
+    , _pRecord          :: !(Map Text Text)
     , _pPredictEndpoint :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -121,7 +121,7 @@ instance ToQuery Predict where
 -- | /See:/ 'predictResponse' smart constructor.
 data PredictResponse =
   PredictResponse'
-    { _prsPrediction :: !(Maybe Prediction)
+    { _prsPrediction     :: !(Maybe Prediction)
     , _prsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,7 +53,7 @@ import Network.AWS.Response
 -- /See:/ 'listApplications' smart constructor.
 data ListApplications =
   ListApplications'
-    { _laLimit :: !(Maybe Nat)
+    { _laLimit                         :: !(Maybe Nat)
     , _laExclusiveStartApplicationName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -126,9 +126,9 @@ instance ToQuery ListApplications where
 -- /See:/ 'listApplicationsResponse' smart constructor.
 data ListApplicationsResponse =
   ListApplicationsResponse'
-    { _larsResponseStatus :: !Int
+    { _larsResponseStatus       :: !Int
     , _larsApplicationSummaries :: ![ApplicationSummary]
-    , _larsHasMoreApplications :: !Bool
+    , _larsHasMoreApplications  :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,9 +49,9 @@ import Network.AWS.Response
 -- /See:/ 'describeExpressions' smart constructor.
 data DescribeExpressions =
   DescribeExpressions'
-    { _deDeployed :: !(Maybe Bool)
+    { _deDeployed        :: !(Maybe Bool)
     , _deExpressionNames :: !(Maybe [Text])
-    , _deDomainName :: !Text
+    , _deDomainName      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -127,7 +127,7 @@ instance ToQuery DescribeExpressions where
 data DescribeExpressionsResponse =
   DescribeExpressionsResponse'
     { _drsResponseStatus :: !Int
-    , _drsExpressions :: ![ExpressionStatus]
+    , _drsExpressions    :: ![ExpressionStatus]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

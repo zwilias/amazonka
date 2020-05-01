@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,12 +48,12 @@ import Network.AWS.Response
 -- | /See:/ 'copyFpgaImage' smart constructor.
 data CopyFpgaImage =
   CopyFpgaImage'
-    { _cfiClientToken :: !(Maybe Text)
-    , _cfiName :: !(Maybe Text)
-    , _cfiDescription :: !(Maybe Text)
-    , _cfiDryRun :: !(Maybe Bool)
+    { _cfiClientToken       :: !(Maybe Text)
+    , _cfiName              :: !(Maybe Text)
+    , _cfiDescription       :: !(Maybe Text)
+    , _cfiDryRun            :: !(Maybe Bool)
     , _cfiSourceFpgaImageId :: !Text
-    , _cfiSourceRegion :: !Text
+    , _cfiSourceRegion      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -146,7 +146,7 @@ instance ToQuery CopyFpgaImage where
 -- | /See:/ 'copyFpgaImageResponse' smart constructor.
 data CopyFpgaImageResponse =
   CopyFpgaImageResponse'
-    { _crsFpgaImageId :: !(Maybe Text)
+    { _crsFpgaImageId    :: !(Maybe Text)
     , _crsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

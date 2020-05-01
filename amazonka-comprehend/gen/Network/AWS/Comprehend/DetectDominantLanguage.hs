@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -96,7 +96,7 @@ instance ToQuery DetectDominantLanguage where
 -- | /See:/ 'detectDominantLanguageResponse' smart constructor.
 data DetectDominantLanguageResponse =
   DetectDominantLanguageResponse'
-    { _ddlrsLanguages :: !(Maybe [DominantLanguage])
+    { _ddlrsLanguages      :: !(Maybe [DominantLanguage])
     , _ddlrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

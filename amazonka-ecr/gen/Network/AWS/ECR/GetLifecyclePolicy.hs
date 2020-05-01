@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- | /See:/ 'getLifecyclePolicy' smart constructor.
 data GetLifecyclePolicy =
   GetLifecyclePolicy'
-    { _glpRegistryId :: !(Maybe Text)
+    { _glpRegistryId     :: !(Maybe Text)
     , _glpRepositoryName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -116,11 +116,11 @@ instance ToQuery GetLifecyclePolicy where
 -- | /See:/ 'getLifecyclePolicyResponse' smart constructor.
 data GetLifecyclePolicyResponse =
   GetLifecyclePolicyResponse'
-    { _glprsRegistryId :: !(Maybe Text)
-    , _glprsLastEvaluatedAt :: !(Maybe POSIX)
+    { _glprsRegistryId          :: !(Maybe Text)
+    , _glprsLastEvaluatedAt     :: !(Maybe POSIX)
     , _glprsLifecyclePolicyText :: !(Maybe Text)
-    , _glprsRepositoryName :: !(Maybe Text)
-    , _glprsResponseStatus :: !Int
+    , _glprsRepositoryName      :: !(Maybe Text)
+    , _glprsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

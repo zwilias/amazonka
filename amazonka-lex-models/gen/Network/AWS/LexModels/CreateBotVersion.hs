@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,7 +63,7 @@ import Network.AWS.Response
 data CreateBotVersion =
   CreateBotVersion'
     { _cbvChecksum :: !(Maybe Text)
-    , _cbvName :: !Text
+    , _cbvName     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -133,22 +133,22 @@ instance ToQuery CreateBotVersion where
 -- | /See:/ 'createBotVersionResponse' smart constructor.
 data CreateBotVersionResponse =
   CreateBotVersionResponse'
-    { _cbvrsFailureReason :: !(Maybe Text)
-    , _cbvrsStatus :: !(Maybe LexStatus)
-    , _cbvrsAbortStatement :: !(Maybe Statement)
-    , _cbvrsIntents :: !(Maybe [Intent])
-    , _cbvrsChecksum :: !(Maybe Text)
-    , _cbvrsLocale :: !(Maybe Locale)
-    , _cbvrsCreatedDate :: !(Maybe POSIX)
-    , _cbvrsName :: !(Maybe Text)
-    , _cbvrsVersion :: !(Maybe Text)
+    { _cbvrsFailureReason           :: !(Maybe Text)
+    , _cbvrsStatus                  :: !(Maybe LexStatus)
+    , _cbvrsAbortStatement          :: !(Maybe Statement)
+    , _cbvrsIntents                 :: !(Maybe [Intent])
+    , _cbvrsChecksum                :: !(Maybe Text)
+    , _cbvrsLocale                  :: !(Maybe Locale)
+    , _cbvrsCreatedDate             :: !(Maybe POSIX)
+    , _cbvrsName                    :: !(Maybe Text)
+    , _cbvrsVersion                 :: !(Maybe Text)
     , _cbvrsIdleSessionTTLInSeconds :: !(Maybe Nat)
-    , _cbvrsClarificationPrompt :: !(Maybe Prompt)
-    , _cbvrsVoiceId :: !(Maybe Text)
-    , _cbvrsLastUpdatedDate :: !(Maybe POSIX)
-    , _cbvrsChildDirected :: !(Maybe Bool)
-    , _cbvrsDescription :: !(Maybe Text)
-    , _cbvrsResponseStatus :: !Int
+    , _cbvrsClarificationPrompt     :: !(Maybe Prompt)
+    , _cbvrsVoiceId                 :: !(Maybe Text)
+    , _cbvrsLastUpdatedDate         :: !(Maybe POSIX)
+    , _cbvrsChildDirected           :: !(Maybe Bool)
+    , _cbvrsDescription             :: !(Maybe Text)
+    , _cbvrsResponseStatus          :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

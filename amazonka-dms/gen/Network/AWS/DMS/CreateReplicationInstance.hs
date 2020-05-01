@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -59,19 +59,19 @@ import Network.AWS.Response
 -- /See:/ 'createReplicationInstance' smart constructor.
 data CreateReplicationInstance =
   CreateReplicationInstance'
-    { _criEngineVersion :: !(Maybe Text)
-    , _criPubliclyAccessible :: !(Maybe Bool)
-    , _criAutoMinorVersionUpgrade :: !(Maybe Bool)
+    { _criEngineVersion                    :: !(Maybe Text)
+    , _criPubliclyAccessible               :: !(Maybe Bool)
+    , _criAutoMinorVersionUpgrade          :: !(Maybe Bool)
     , _criReplicationSubnetGroupIdentifier :: !(Maybe Text)
-    , _criPreferredMaintenanceWindow :: !(Maybe Text)
-    , _criKMSKeyId :: !(Maybe Text)
-    , _criAvailabilityZone :: !(Maybe Text)
-    , _criVPCSecurityGroupIds :: !(Maybe [Text])
-    , _criMultiAZ :: !(Maybe Bool)
-    , _criAllocatedStorage :: !(Maybe Int)
-    , _criTags :: !(Maybe [Tag])
-    , _criReplicationInstanceIdentifier :: !Text
-    , _criReplicationInstanceClass :: !Text
+    , _criPreferredMaintenanceWindow       :: !(Maybe Text)
+    , _criKMSKeyId                         :: !(Maybe Text)
+    , _criAvailabilityZone                 :: !(Maybe Text)
+    , _criVPCSecurityGroupIds              :: !(Maybe [Text])
+    , _criMultiAZ                          :: !(Maybe Bool)
+    , _criAllocatedStorage                 :: !(Maybe Int)
+    , _criTags                             :: !(Maybe [Tag])
+    , _criReplicationInstanceIdentifier    :: !Text
+    , _criReplicationInstanceClass         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -254,7 +254,7 @@ instance ToQuery CreateReplicationInstance where
 data CreateReplicationInstanceResponse =
   CreateReplicationInstanceResponse'
     { _crirsReplicationInstance :: !(Maybe ReplicationInstance)
-    , _crirsResponseStatus :: !Int
+    , _crirsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,12 +55,12 @@ import Network.AWS.Response
 -- /See:/ 'createHSMConfiguration' smart constructor.
 data CreateHSMConfiguration =
   CreateHSMConfiguration'
-    { _chcTags :: !(Maybe [Tag])
+    { _chcTags                       :: !(Maybe [Tag])
     , _chcHSMConfigurationIdentifier :: !Text
-    , _chcDescription :: !Text
-    , _chcHSMIPAddress :: !Text
-    , _chcHSMPartitionName :: !Text
-    , _chcHSMPartitionPassword :: !Text
+    , _chcDescription                :: !Text
+    , _chcHSMIPAddress               :: !Text
+    , _chcHSMPartitionName           :: !Text
+    , _chcHSMPartitionPassword       :: !Text
     , _chcHSMServerPublicCertificate :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -175,7 +175,7 @@ instance ToQuery CreateHSMConfiguration where
 data CreateHSMConfigurationResponse =
   CreateHSMConfigurationResponse'
     { _chcrsHSMConfiguration :: !(Maybe HSMConfiguration)
-    , _chcrsResponseStatus :: !Int
+    , _chcrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

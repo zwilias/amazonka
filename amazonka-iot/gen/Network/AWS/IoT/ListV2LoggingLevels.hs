@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 data ListV2LoggingLevels =
   ListV2LoggingLevels'
     { _lvllTargetType :: !(Maybe LogTargetType)
-    , _lvllNextToken :: !(Maybe Text)
+    , _lvllNextToken  :: !(Maybe Text)
     , _lvllMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -115,8 +115,8 @@ instance ToQuery ListV2LoggingLevels where
 data ListV2LoggingLevelsResponse =
   ListV2LoggingLevelsResponse'
     { _lvllrsLogTargetConfigurations :: !(Maybe [LogTargetConfiguration])
-    , _lvllrsNextToken :: !(Maybe Text)
-    , _lvllrsResponseStatus :: !Int
+    , _lvllrsNextToken               :: !(Maybe Text)
+    , _lvllrsResponseStatus          :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

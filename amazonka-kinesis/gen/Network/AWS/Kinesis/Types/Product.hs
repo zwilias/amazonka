@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -63,7 +63,7 @@ data EnhancedMonitoringOutput =
   EnhancedMonitoringOutput'
     { _emoDesiredShardLevelMetrics :: !(Maybe [MetricsName])
     , _emoCurrentShardLevelMetrics :: !(Maybe [MetricsName])
-    , _emoStreamName :: !(Maybe Text)
+    , _emoStreamName               :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -126,7 +126,7 @@ instance NFData EnhancedMonitoringOutput
 data HashKeyRange =
   HashKeyRange'
     { _hkrStartingHashKey :: !Text
-    , _hkrEndingHashKey :: !Text
+    , _hkrEndingHashKey   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -175,8 +175,8 @@ instance NFData HashKeyRange
 data PutRecordsRequestEntry =
   PutRecordsRequestEntry'
     { _prreExplicitHashKey :: !(Maybe Text)
-    , _prreData :: !Base64
-    , _prrePartitionKey :: !Text
+    , _prreData            :: !Base64
+    , _prrePartitionKey    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -234,9 +234,9 @@ instance ToJSON PutRecordsRequestEntry where
 data PutRecordsResultEntry =
   PutRecordsResultEntry'
     { _prreSequenceNumber :: !(Maybe Text)
-    , _prreErrorCode :: !(Maybe Text)
-    , _prreErrorMessage :: !(Maybe Text)
-    , _prreShardId :: !(Maybe Text)
+    , _prreErrorCode      :: !(Maybe Text)
+    , _prreErrorMessage   :: !(Maybe Text)
+    , _prreShardId        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -298,11 +298,11 @@ instance NFData PutRecordsResultEntry
 -- /See:/ 'record' smart constructor.
 data Record =
   Record'
-    { _rEncryptionType :: !(Maybe EncryptionType)
+    { _rEncryptionType              :: !(Maybe EncryptionType)
     , _rApproximateArrivalTimestamp :: !(Maybe POSIX)
-    , _rSequenceNumber :: !Text
-    , _rData :: !Base64
-    , _rPartitionKey :: !Text
+    , _rSequenceNumber              :: !Text
+    , _rData                        :: !Base64
+    , _rPartitionKey                :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -379,7 +379,7 @@ instance NFData Record
 -- /See:/ 'sequenceNumberRange' smart constructor.
 data SequenceNumberRange =
   SequenceNumberRange'
-    { _snrEndingSequenceNumber :: !(Maybe Text)
+    { _snrEndingSequenceNumber   :: !(Maybe Text)
     , _snrStartingSequenceNumber :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -430,10 +430,10 @@ instance NFData SequenceNumberRange
 data Shard =
   Shard'
     { _sAdjacentParentShardId :: !(Maybe Text)
-    , _sParentShardId :: !(Maybe Text)
-    , _sShardId :: !Text
-    , _sHashKeyRange :: !HashKeyRange
-    , _sSequenceNumberRange :: !SequenceNumberRange
+    , _sParentShardId         :: !(Maybe Text)
+    , _sShardId               :: !Text
+    , _sHashKeyRange          :: !HashKeyRange
+    , _sSequenceNumberRange   :: !SequenceNumberRange
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -507,16 +507,16 @@ instance NFData Shard
 -- /See:/ 'streamDescription' smart constructor.
 data StreamDescription =
   StreamDescription'
-    { _sdEncryptionType :: !(Maybe EncryptionType)
-    , _sdKeyId :: !(Maybe Text)
-    , _sdStreamName :: !Text
-    , _sdStreamARN :: !Text
-    , _sdStreamStatus :: !StreamStatus
-    , _sdShards :: ![Shard]
-    , _sdHasMoreShards :: !Bool
-    , _sdRetentionPeriodHours :: !Nat
+    { _sdEncryptionType          :: !(Maybe EncryptionType)
+    , _sdKeyId                   :: !(Maybe Text)
+    , _sdStreamName              :: !Text
+    , _sdStreamARN               :: !Text
+    , _sdStreamStatus            :: !StreamStatus
+    , _sdShards                  :: ![Shard]
+    , _sdHasMoreShards           :: !Bool
+    , _sdRetentionPeriodHours    :: !Nat
     , _sdStreamCreationTimestamp :: !POSIX
-    , _sdEnhancedMonitoring :: ![EnhancedMetrics]
+    , _sdEnhancedMonitoring      :: ![EnhancedMetrics]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -635,15 +635,15 @@ instance NFData StreamDescription
 -- /See:/ 'streamDescriptionSummary' smart constructor.
 data StreamDescriptionSummary =
   StreamDescriptionSummary'
-    { _sdsEncryptionType :: !(Maybe EncryptionType)
-    , _sdsKeyId :: !(Maybe Text)
-    , _sdsStreamName :: !Text
-    , _sdsStreamARN :: !Text
-    , _sdsStreamStatus :: !StreamStatus
-    , _sdsRetentionPeriodHours :: !Nat
+    { _sdsEncryptionType          :: !(Maybe EncryptionType)
+    , _sdsKeyId                   :: !(Maybe Text)
+    , _sdsStreamName              :: !Text
+    , _sdsStreamARN               :: !Text
+    , _sdsStreamStatus            :: !StreamStatus
+    , _sdsRetentionPeriodHours    :: !Nat
     , _sdsStreamCreationTimestamp :: !POSIX
-    , _sdsEnhancedMonitoring :: ![EnhancedMetrics]
-    , _sdsOpenShardCount :: !Nat
+    , _sdsEnhancedMonitoring      :: ![EnhancedMetrics]
+    , _sdsOpenShardCount          :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -758,7 +758,7 @@ instance NFData StreamDescriptionSummary
 data Tag =
   Tag'
     { _tagValue :: !(Maybe Text)
-    , _tagKey :: !Text
+    , _tagKey   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

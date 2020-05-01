@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,7 +51,7 @@ data ListProjects =
   ListProjects'
     { _lpSortOrder :: !(Maybe SortOrderType)
     , _lpNextToken :: !(Maybe Text)
-    , _lpSortBy :: !(Maybe ProjectSortByType)
+    , _lpSortBy    :: !(Maybe ProjectSortByType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -126,8 +126,8 @@ instance ToQuery ListProjects where
 -- | /See:/ 'listProjectsResponse' smart constructor.
 data ListProjectsResponse =
   ListProjectsResponse'
-    { _lprsNextToken :: !(Maybe Text)
-    , _lprsProjects :: !(Maybe (List1 Text))
+    { _lprsNextToken      :: !(Maybe Text)
+    , _lprsProjects       :: !(Maybe (List1 Text))
     , _lprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

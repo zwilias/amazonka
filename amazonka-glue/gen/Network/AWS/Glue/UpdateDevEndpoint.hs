@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,10 +45,10 @@ import Network.AWS.Response
 -- | /See:/ 'updateDevEndpoint' smart constructor.
 data UpdateDevEndpoint =
   UpdateDevEndpoint'
-    { _udeCustomLibraries :: !(Maybe DevEndpointCustomLibraries)
-    , _udePublicKey :: !(Maybe Text)
+    { _udeCustomLibraries    :: !(Maybe DevEndpointCustomLibraries)
+    , _udePublicKey          :: !(Maybe Text)
     , _udeUpdateEtlLibraries :: !(Maybe Bool)
-    , _udeEndpointName :: !Text
+    , _udeEndpointName       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

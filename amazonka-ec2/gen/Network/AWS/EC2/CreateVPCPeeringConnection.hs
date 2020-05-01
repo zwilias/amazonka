@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,11 +55,11 @@ import Network.AWS.Response
 -- /See:/ 'createVPCPeeringConnection' smart constructor.
 data CreateVPCPeeringConnection =
   CreateVPCPeeringConnection'
-    { _cvpcPeerVPCId :: !(Maybe Text)
-    , _cvpcVPCId :: !(Maybe Text)
+    { _cvpcPeerVPCId   :: !(Maybe Text)
+    , _cvpcVPCId       :: !(Maybe Text)
     , _cvpcPeerOwnerId :: !(Maybe Text)
-    , _cvpcPeerRegion :: !(Maybe Text)
-    , _cvpcDryRun :: !(Maybe Bool)
+    , _cvpcPeerRegion  :: !(Maybe Text)
+    , _cvpcDryRun      :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -145,7 +145,7 @@ instance ToQuery CreateVPCPeeringConnection where
 data CreateVPCPeeringConnectionResponse =
   CreateVPCPeeringConnectionResponse'
     { _cvpcrsVPCPeeringConnection :: !(Maybe VPCPeeringConnection)
-    , _cvpcrsResponseStatus :: !Int
+    , _cvpcrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

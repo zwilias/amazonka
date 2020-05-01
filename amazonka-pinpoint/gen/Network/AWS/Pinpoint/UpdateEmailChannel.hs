@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -42,7 +42,7 @@ import Network.AWS.Response
 -- | /See:/ 'updateEmailChannel' smart constructor.
 data UpdateEmailChannel =
   UpdateEmailChannel'
-    { _uecApplicationId :: !Text
+    { _uecApplicationId       :: !Text
     , _uecEmailChannelRequest :: !EmailChannelRequest
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -105,7 +105,7 @@ instance ToQuery UpdateEmailChannel where
 -- | /See:/ 'updateEmailChannelResponse' smart constructor.
 data UpdateEmailChannelResponse =
   UpdateEmailChannelResponse'
-    { _uecrsResponseStatus :: !Int
+    { _uecrsResponseStatus       :: !Int
     , _uecrsEmailChannelResponse :: !EmailChannelResponse
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

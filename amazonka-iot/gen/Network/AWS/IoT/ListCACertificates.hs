@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,9 +55,9 @@ import Network.AWS.Response
 -- /See:/ 'listCACertificates' smart constructor.
 data ListCACertificates =
   ListCACertificates'
-    { _lcacMarker :: !(Maybe Text)
+    { _lcacMarker         :: !(Maybe Text)
     , _lcacAscendingOrder :: !(Maybe Bool)
-    , _lcacPageSize :: !(Maybe Nat)
+    , _lcacPageSize       :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -132,8 +132,8 @@ instance ToQuery ListCACertificates where
 -- /See:/ 'listCACertificatesResponse' smart constructor.
 data ListCACertificatesResponse =
   ListCACertificatesResponse'
-    { _lcacrsCertificates :: !(Maybe [CACertificate])
-    , _lcacrsNextMarker :: !(Maybe Text)
+    { _lcacrsCertificates   :: !(Maybe [CACertificate])
+    , _lcacrsNextMarker     :: !(Maybe Text)
     , _lcacrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

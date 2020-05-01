@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -268,8 +268,8 @@ instance ToJSON Ac3Settings where
 -- /See:/ 'aiffSettings' smart constructor.
 data AiffSettings =
   AiffSettings'
-    { _asBitDepth :: !(Maybe Int)
-    , _asChannels :: !(Maybe Int)
+    { _asBitDepth   :: !(Maybe Int)
+    , _asChannels   :: !(Maybe Int)
     , _asSampleRate :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -370,11 +370,11 @@ instance ToJSON AncillarySourceSettings where
 data AudioCodecSettings =
   AudioCodecSettings'
     { _acsAiffSettings :: !(Maybe AiffSettings)
-    , _acsCodec :: !(Maybe AudioCodec)
-    , _acsAc3Settings :: !(Maybe Ac3Settings)
-    , _acsMp2Settings :: !(Maybe Mp2Settings)
-    , _acsWavSettings :: !(Maybe WavSettings)
-    , _acsAacSettings :: !(Maybe AacSettings)
+    , _acsCodec        :: !(Maybe AudioCodec)
+    , _acsAc3Settings  :: !(Maybe Ac3Settings)
+    , _acsMp2Settings  :: !(Maybe Mp2Settings)
+    , _acsWavSettings  :: !(Maybe WavSettings)
+    , _acsAacSettings  :: !(Maybe AacSettings)
     , _acsEac3Settings :: !(Maybe Eac3Settings)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -470,15 +470,15 @@ instance ToJSON AudioCodecSettings where
 -- /See:/ 'audioDescription' smart constructor.
 data AudioDescription =
   AudioDescription'
-    { _adAudioSourceName :: !(Maybe Text)
-    , _adLanguageCode :: !(Maybe LanguageCode)
-    , _adAudioType :: !(Maybe Int)
+    { _adAudioSourceName            :: !(Maybe Text)
+    , _adLanguageCode               :: !(Maybe LanguageCode)
+    , _adAudioType                  :: !(Maybe Int)
     , _adAudioNormalizationSettings :: !(Maybe AudioNormalizationSettings)
-    , _adLanguageCodeControl :: !(Maybe AudioLanguageCodeControl)
-    , _adCodecSettings :: !(Maybe AudioCodecSettings)
-    , _adStreamName :: !(Maybe Text)
-    , _adRemixSettings :: !(Maybe RemixSettings)
-    , _adAudioTypeControl :: !(Maybe AudioTypeControl)
+    , _adLanguageCodeControl        :: !(Maybe AudioLanguageCodeControl)
+    , _adCodecSettings              :: !(Maybe AudioCodecSettings)
+    , _adStreamName                 :: !(Maybe Text)
+    , _adRemixSettings              :: !(Maybe RemixSettings)
+    , _adAudioTypeControl           :: !(Maybe AudioTypeControl)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -598,12 +598,12 @@ instance ToJSON AudioDescription where
 -- /See:/ 'audioNormalizationSettings' smart constructor.
 data AudioNormalizationSettings =
   AudioNormalizationSettings'
-    { _ansAlgorithmControl :: !(Maybe AudioNormalizationAlgorithmControl)
-    , _ansTargetLkfs :: !(Maybe Double)
-    , _ansPeakCalculation :: !(Maybe AudioNormalizationPeakCalculation)
+    { _ansAlgorithmControl    :: !(Maybe AudioNormalizationAlgorithmControl)
+    , _ansTargetLkfs          :: !(Maybe Double)
+    , _ansPeakCalculation     :: !(Maybe AudioNormalizationPeakCalculation)
     , _ansCorrectionGateLevel :: !(Maybe Int)
-    , _ansAlgorithm :: !(Maybe AudioNormalizationAlgorithm)
-    , _ansLoudnessLogging :: !(Maybe AudioNormalizationLoudnessLogging)
+    , _ansAlgorithm           :: !(Maybe AudioNormalizationAlgorithm)
+    , _ansLoudnessLogging     :: !(Maybe AudioNormalizationLoudnessLogging)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -698,15 +698,15 @@ instance ToJSON AudioNormalizationSettings where
 -- /See:/ 'audioSelector' smart constructor.
 data AudioSelector =
   AudioSelector'
-    { _asTracks :: !(Maybe [Int])
-    , _asProgramSelection :: !(Maybe Int)
-    , _asLanguageCode :: !(Maybe LanguageCode)
-    , _asOffset :: !(Maybe Int)
-    , _asDefaultSelection :: !(Maybe AudioDefaultSelection)
-    , _asPids :: !(Maybe [Int])
-    , _asSelectorType :: !(Maybe AudioSelectorType)
+    { _asTracks                 :: !(Maybe [Int])
+    , _asProgramSelection       :: !(Maybe Int)
+    , _asLanguageCode           :: !(Maybe LanguageCode)
+    , _asOffset                 :: !(Maybe Int)
+    , _asDefaultSelection       :: !(Maybe AudioDefaultSelection)
+    , _asPids                   :: !(Maybe [Int])
+    , _asSelectorType           :: !(Maybe AudioSelectorType)
     , _asExternalAudioFileInput :: !(Maybe Text)
-    , _asRemixSettings :: !(Maybe RemixSettings)
+    , _asRemixSettings          :: !(Maybe RemixSettings)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -897,21 +897,21 @@ instance ToJSON AvailBlanking where
 data BurninDestinationSettings =
   BurninDestinationSettings'
     { _bdsBackgroundOpacity :: !(Maybe Int)
-    , _bdsFontOpacity :: !(Maybe Int)
-    , _bdsShadowYOffset :: !(Maybe Int)
-    , _bdsFontResolution :: !(Maybe Int)
-    , _bdsYPosition :: !(Maybe Int)
-    , _bdsBackgroundColor :: !(Maybe BurninSubtitleBackgroundColor)
-    , _bdsShadowXOffset :: !(Maybe Int)
-    , _bdsFontSize :: !(Maybe Int)
-    , _bdsXPosition :: !(Maybe Int)
-    , _bdsTeletextSpacing :: !(Maybe BurninSubtitleTeletextSpacing)
-    , _bdsAlignment :: !(Maybe BurninSubtitleAlignment)
-    , _bdsShadowOpacity :: !(Maybe Int)
-    , _bdsOutlineColor :: !(Maybe BurninSubtitleOutlineColor)
-    , _bdsOutlineSize :: !(Maybe Int)
-    , _bdsShadowColor :: !(Maybe BurninSubtitleShadowColor)
-    , _bdsFontColor :: !(Maybe BurninSubtitleFontColor)
+    , _bdsFontOpacity       :: !(Maybe Int)
+    , _bdsShadowYOffset     :: !(Maybe Int)
+    , _bdsFontResolution    :: !(Maybe Int)
+    , _bdsYPosition         :: !(Maybe Int)
+    , _bdsBackgroundColor   :: !(Maybe BurninSubtitleBackgroundColor)
+    , _bdsShadowXOffset     :: !(Maybe Int)
+    , _bdsFontSize          :: !(Maybe Int)
+    , _bdsXPosition         :: !(Maybe Int)
+    , _bdsTeletextSpacing   :: !(Maybe BurninSubtitleTeletextSpacing)
+    , _bdsAlignment         :: !(Maybe BurninSubtitleAlignment)
+    , _bdsShadowOpacity     :: !(Maybe Int)
+    , _bdsOutlineColor      :: !(Maybe BurninSubtitleOutlineColor)
+    , _bdsOutlineSize       :: !(Maybe Int)
+    , _bdsShadowColor       :: !(Maybe BurninSubtitleShadowColor)
+    , _bdsFontColor         :: !(Maybe BurninSubtitleFontColor)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1096,7 +1096,7 @@ instance ToJSON BurninDestinationSettings where
 data CaptionDescription =
   CaptionDescription'
     { _cdCaptionSelectorName :: !(Maybe Text)
-    , _cdLanguageCode :: !(Maybe LanguageCode)
+    , _cdLanguageCode        :: !(Maybe LanguageCode)
     , _cdDestinationSettings :: !(Maybe CaptionDestinationSettings)
     , _cdLanguageDescription :: !(Maybe Text)
     }
@@ -1171,7 +1171,7 @@ instance ToJSON CaptionDescription where
 -- /See:/ 'captionDescriptionPreset' smart constructor.
 data CaptionDescriptionPreset =
   CaptionDescriptionPreset'
-    { _cdpLanguageCode :: !(Maybe LanguageCode)
+    { _cdpLanguageCode        :: !(Maybe LanguageCode)
     , _cdpDestinationSettings :: !(Maybe CaptionDestinationSettings)
     , _cdpLanguageDescription :: !(Maybe Text)
     }
@@ -1237,11 +1237,11 @@ instance ToJSON CaptionDescriptionPreset where
 data CaptionDestinationSettings =
   CaptionDestinationSettings'
     { _cdsTeletextDestinationSettings :: !(Maybe TeletextDestinationSettings)
-    , _cdsDvbSubDestinationSettings :: !(Maybe DvbSubDestinationSettings)
-    , _cdsTtmlDestinationSettings :: !(Maybe TtmlDestinationSettings)
-    , _cdsDestinationType :: !(Maybe CaptionDestinationType)
-    , _cdsSccDestinationSettings :: !(Maybe SccDestinationSettings)
-    , _cdsBurninDestinationSettings :: !(Maybe BurninDestinationSettings)
+    , _cdsDvbSubDestinationSettings   :: !(Maybe DvbSubDestinationSettings)
+    , _cdsTtmlDestinationSettings     :: !(Maybe TtmlDestinationSettings)
+    , _cdsDestinationType             :: !(Maybe CaptionDestinationType)
+    , _cdsSccDestinationSettings      :: !(Maybe SccDestinationSettings)
+    , _cdsBurninDestinationSettings   :: !(Maybe BurninDestinationSettings)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1347,7 +1347,7 @@ instance ToJSON CaptionDestinationSettings where
 -- /See:/ 'captionSelector' smart constructor.
 data CaptionSelector =
   CaptionSelector'
-    { _csLanguageCode :: !(Maybe LanguageCode)
+    { _csLanguageCode   :: !(Maybe LanguageCode)
     , _csSourceSettings :: !(Maybe CaptionSourceSettings)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1396,12 +1396,12 @@ instance ToJSON CaptionSelector where
 -- /See:/ 'captionSourceSettings' smart constructor.
 data CaptionSourceSettings =
   CaptionSourceSettings'
-    { _cssTeletextSourceSettings :: !(Maybe TeletextSourceSettings)
-    , _cssSourceType :: !(Maybe CaptionSourceType)
-    , _cssFileSourceSettings :: !(Maybe FileSourceSettings)
-    , _cssDvbSubSourceSettings :: !(Maybe DvbSubSourceSettings)
+    { _cssTeletextSourceSettings  :: !(Maybe TeletextSourceSettings)
+    , _cssSourceType              :: !(Maybe CaptionSourceType)
+    , _cssFileSourceSettings      :: !(Maybe FileSourceSettings)
+    , _cssDvbSubSourceSettings    :: !(Maybe DvbSubSourceSettings)
     , _cssAncillarySourceSettings :: !(Maybe AncillarySourceSettings)
-    , _cssEmbeddedSourceSettings :: !(Maybe EmbeddedSourceSettings)
+    , _cssEmbeddedSourceSettings  :: !(Maybe EmbeddedSourceSettings)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1534,12 +1534,12 @@ instance ToJSON ChannelMapping where
 -- /See:/ 'colorCorrector' smart constructor.
 data ColorCorrector =
   ColorCorrector'
-    { _ccSaturation :: !(Maybe Int)
-    , _ccHue :: !(Maybe Int)
+    { _ccSaturation           :: !(Maybe Int)
+    , _ccHue                  :: !(Maybe Int)
     , _ccColorSpaceConversion :: !(Maybe ColorSpaceConversion)
-    , _ccHdr10Metadata :: !(Maybe Hdr10Metadata)
-    , _ccContrast :: !(Maybe Int)
-    , _ccBrightness :: !(Maybe Int)
+    , _ccHdr10Metadata        :: !(Maybe Hdr10Metadata)
+    , _ccContrast             :: !(Maybe Int)
+    , _ccBrightness           :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1628,10 +1628,10 @@ data ContainerSettings =
   ContainerSettings'
     { _csM2tsSettings :: !(Maybe M2tsSettings)
     , _csM3u8Settings :: !(Maybe M3u8Settings)
-    , _csMovSettings :: !(Maybe MovSettings)
-    , _csMp4Settings :: !(Maybe Mp4Settings)
-    , _csContainer :: !(Maybe ContainerType)
-    , _csF4vSettings :: !(Maybe F4vSettings)
+    , _csMovSettings  :: !(Maybe MovSettings)
+    , _csMp4Settings  :: !(Maybe Mp4Settings)
+    , _csContainer    :: !(Maybe ContainerType)
+    , _csF4vSettings  :: !(Maybe F4vSettings)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1755,14 +1755,14 @@ instance ToJSON DashIsoEncryptionSettings where
 -- /See:/ 'dashIsoGroupSettings' smart constructor.
 data DashIsoGroupSettings =
   DashIsoGroupSettings'
-    { _digsFragmentLength :: !(Maybe Int)
-    , _digsSegmentControl :: !(Maybe DashIsoSegmentControl)
-    , _digsDestination :: !(Maybe Text)
+    { _digsFragmentLength  :: !(Maybe Int)
+    , _digsSegmentControl  :: !(Maybe DashIsoSegmentControl)
+    , _digsDestination     :: !(Maybe Text)
     , _digsHbbtvCompliance :: !(Maybe DashIsoHbbtvCompliance)
-    , _digsMinBufferTime :: !(Maybe Int)
-    , _digsBaseURL :: !(Maybe Text)
-    , _digsEncryption :: !(Maybe DashIsoEncryptionSettings)
-    , _digsSegmentLength :: !(Maybe Int)
+    , _digsMinBufferTime   :: !(Maybe Int)
+    , _digsBaseURL         :: !(Maybe Text)
+    , _digsEncryption      :: !(Maybe DashIsoEncryptionSettings)
+    , _digsSegmentLength   :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1870,8 +1870,8 @@ instance ToJSON DashIsoGroupSettings where
 -- /See:/ 'deinterlacer' smart constructor.
 data Deinterlacer =
   Deinterlacer'
-    { _dControl :: !(Maybe DeinterlacerControl)
-    , _dMode :: !(Maybe DeinterlacerMode)
+    { _dControl   :: !(Maybe DeinterlacerControl)
+    , _dMode      :: !(Maybe DeinterlacerMode)
     , _dAlgorithm :: !(Maybe DeinterlaceAlgorithm)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1927,7 +1927,7 @@ instance ToJSON Deinterlacer where
 -- /See:/ 'dvbNitSettings' smart constructor.
 data DvbNitSettings =
   DvbNitSettings'
-    { _dnsNetworkId :: !(Maybe Int)
+    { _dnsNetworkId   :: !(Maybe Int)
     , _dnsNetworkName :: !(Maybe Text)
     , _dnsNitInterval :: !(Maybe Int)
     }
@@ -1988,10 +1988,10 @@ instance ToJSON DvbNitSettings where
 -- /See:/ 'dvbSdtSettings' smart constructor.
 data DvbSdtSettings =
   DvbSdtSettings'
-    { _dssSdtInterval :: !(Maybe Int)
+    { _dssSdtInterval         :: !(Maybe Int)
     , _dssServiceProviderName :: !(Maybe Text)
-    , _dssOutputSdt :: !(Maybe OutputSdt)
-    , _dssServiceName :: !(Maybe Text)
+    , _dssOutputSdt           :: !(Maybe OutputSdt)
+    , _dssServiceName         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2062,21 +2062,21 @@ instance ToJSON DvbSdtSettings where
 data DvbSubDestinationSettings =
   DvbSubDestinationSettings'
     { _dsdsBackgroundOpacity :: !(Maybe Int)
-    , _dsdsFontOpacity :: !(Maybe Int)
-    , _dsdsShadowYOffset :: !(Maybe Int)
-    , _dsdsFontResolution :: !(Maybe Int)
-    , _dsdsYPosition :: !(Maybe Int)
-    , _dsdsBackgroundColor :: !(Maybe DvbSubtitleBackgroundColor)
-    , _dsdsShadowXOffset :: !(Maybe Int)
-    , _dsdsFontSize :: !(Maybe Int)
-    , _dsdsXPosition :: !(Maybe Int)
-    , _dsdsTeletextSpacing :: !(Maybe DvbSubtitleTeletextSpacing)
-    , _dsdsAlignment :: !(Maybe DvbSubtitleAlignment)
-    , _dsdsShadowOpacity :: !(Maybe Int)
-    , _dsdsOutlineColor :: !(Maybe DvbSubtitleOutlineColor)
-    , _dsdsOutlineSize :: !(Maybe Int)
-    , _dsdsShadowColor :: !(Maybe DvbSubtitleShadowColor)
-    , _dsdsFontColor :: !(Maybe DvbSubtitleFontColor)
+    , _dsdsFontOpacity       :: !(Maybe Int)
+    , _dsdsShadowYOffset     :: !(Maybe Int)
+    , _dsdsFontResolution    :: !(Maybe Int)
+    , _dsdsYPosition         :: !(Maybe Int)
+    , _dsdsBackgroundColor   :: !(Maybe DvbSubtitleBackgroundColor)
+    , _dsdsShadowXOffset     :: !(Maybe Int)
+    , _dsdsFontSize          :: !(Maybe Int)
+    , _dsdsXPosition         :: !(Maybe Int)
+    , _dsdsTeletextSpacing   :: !(Maybe DvbSubtitleTeletextSpacing)
+    , _dsdsAlignment         :: !(Maybe DvbSubtitleAlignment)
+    , _dsdsShadowOpacity     :: !(Maybe Int)
+    , _dsdsOutlineColor      :: !(Maybe DvbSubtitleOutlineColor)
+    , _dsdsOutlineSize       :: !(Maybe Int)
+    , _dsdsShadowColor       :: !(Maybe DvbSubtitleShadowColor)
+    , _dsdsFontColor         :: !(Maybe DvbSubtitleFontColor)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2331,27 +2331,27 @@ instance ToJSON DvbTdtSettings where
 -- /See:/ 'eac3Settings' smart constructor.
 data Eac3Settings =
   Eac3Settings'
-    { _esStereoDownmix :: !(Maybe Eac3StereoDownmix)
-    , _esLoRoCenterMixLevel :: !(Maybe Double)
-    , _esLtRtCenterMixLevel :: !(Maybe Double)
-    , _esLfeFilter :: !(Maybe Eac3LfeFilter)
+    { _esStereoDownmix               :: !(Maybe Eac3StereoDownmix)
+    , _esLoRoCenterMixLevel          :: !(Maybe Double)
+    , _esLtRtCenterMixLevel          :: !(Maybe Double)
+    , _esLfeFilter                   :: !(Maybe Eac3LfeFilter)
     , _esDynamicRangeCompressionLine :: !(Maybe Eac3DynamicRangeCompressionLine)
-    , _esLtRtSurroundMixLevel :: !(Maybe Double)
-    , _esMetadataControl :: !(Maybe Eac3MetadataControl)
-    , _esLoRoSurroundMixLevel :: !(Maybe Double)
-    , _esSurroundMode :: !(Maybe Eac3SurroundMode)
-    , _esAttenuationControl :: !(Maybe Eac3AttenuationControl)
-    , _esPassthroughControl :: !(Maybe Eac3PassthroughControl)
-    , _esBitstreamMode :: !(Maybe Eac3BitstreamMode)
-    , _esLfeControl :: !(Maybe Eac3LfeControl)
-    , _esDynamicRangeCompressionRf :: !(Maybe Eac3DynamicRangeCompressionRf)
-    , _esCodingMode :: !(Maybe Eac3CodingMode)
-    , _esSampleRate :: !(Maybe Int)
-    , _esDcFilter :: !(Maybe Eac3DcFilter)
-    , _esBitrate :: !(Maybe Int)
-    , _esPhaseControl :: !(Maybe Eac3PhaseControl)
-    , _esSurroundExMode :: !(Maybe Eac3SurroundExMode)
-    , _esDialnorm :: !(Maybe Int)
+    , _esLtRtSurroundMixLevel        :: !(Maybe Double)
+    , _esMetadataControl             :: !(Maybe Eac3MetadataControl)
+    , _esLoRoSurroundMixLevel        :: !(Maybe Double)
+    , _esSurroundMode                :: !(Maybe Eac3SurroundMode)
+    , _esAttenuationControl          :: !(Maybe Eac3AttenuationControl)
+    , _esPassthroughControl          :: !(Maybe Eac3PassthroughControl)
+    , _esBitstreamMode               :: !(Maybe Eac3BitstreamMode)
+    , _esLfeControl                  :: !(Maybe Eac3LfeControl)
+    , _esDynamicRangeCompressionRf   :: !(Maybe Eac3DynamicRangeCompressionRf)
+    , _esCodingMode                  :: !(Maybe Eac3CodingMode)
+    , _esSampleRate                  :: !(Maybe Int)
+    , _esDcFilter                    :: !(Maybe Eac3DcFilter)
+    , _esBitrate                     :: !(Maybe Int)
+    , _esPhaseControl                :: !(Maybe Eac3PhaseControl)
+    , _esSurroundExMode              :: !(Maybe Eac3SurroundExMode)
+    , _esDialnorm                    :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2587,8 +2587,8 @@ instance ToJSON Eac3Settings where
 -- /See:/ 'embeddedSourceSettings' smart constructor.
 data EmbeddedSourceSettings =
   EmbeddedSourceSettings'
-    { _essConvert608To708 :: !(Maybe EmbeddedConvert608To708)
-    , _essSource608TrackNumber :: !(Maybe Int)
+    { _essConvert608To708        :: !(Maybe EmbeddedConvert608To708)
+    , _essSource608TrackNumber   :: !(Maybe Int)
     , _essSource608ChannelNumber :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2750,8 +2750,8 @@ instance ToJSON FileGroupSettings where
 data FileSourceSettings =
   FileSourceSettings'
     { _fssConvert608To708 :: !(Maybe FileSourceConvert608To708)
-    , _fssTimeDelta :: !(Maybe Int)
-    , _fssSourceFile :: !(Maybe Text)
+    , _fssTimeDelta       :: !(Maybe Int)
+    , _fssSourceFile      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2812,10 +2812,10 @@ instance ToJSON FileSourceSettings where
 -- /See:/ 'frameCaptureSettings' smart constructor.
 data FrameCaptureSettings =
   FrameCaptureSettings'
-    { _fcsQuality :: !(Maybe Int)
+    { _fcsQuality              :: !(Maybe Int)
     , _fcsFramerateDenominator :: !(Maybe Int)
-    , _fcsMaxCaptures :: !(Maybe Int)
-    , _fcsFramerateNumerator :: !(Maybe Int)
+    , _fcsMaxCaptures          :: !(Maybe Int)
+    , _fcsFramerateNumerator   :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3760,18 +3760,18 @@ instance ToJSON H265Settings where
 -- /See:/ 'hdr10Metadata' smart constructor.
 data Hdr10Metadata =
   Hdr10Metadata'
-    { _hmRedPrimaryX :: !(Maybe Int)
-    , _hmBluePrimaryX :: !(Maybe Int)
+    { _hmRedPrimaryX               :: !(Maybe Int)
+    , _hmBluePrimaryX              :: !(Maybe Int)
     , _hmMaxFrameAverageLightLevel :: !(Maybe Int)
-    , _hmWhitePointY :: !(Maybe Int)
-    , _hmMaxContentLightLevel :: !(Maybe Int)
-    , _hmWhitePointX :: !(Maybe Int)
-    , _hmBluePrimaryY :: !(Maybe Int)
-    , _hmGreenPrimaryY :: !(Maybe Int)
-    , _hmGreenPrimaryX :: !(Maybe Int)
-    , _hmMinLuminance :: !(Maybe Int)
-    , _hmRedPrimaryY :: !(Maybe Int)
-    , _hmMaxLuminance :: !(Maybe Int)
+    , _hmWhitePointY               :: !(Maybe Int)
+    , _hmMaxContentLightLevel      :: !(Maybe Int)
+    , _hmWhitePointX               :: !(Maybe Int)
+    , _hmBluePrimaryY              :: !(Maybe Int)
+    , _hmGreenPrimaryY             :: !(Maybe Int)
+    , _hmGreenPrimaryX             :: !(Maybe Int)
+    , _hmMinLuminance              :: !(Maybe Int)
+    , _hmRedPrimaryY               :: !(Maybe Int)
+    , _hmMaxLuminance              :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3915,9 +3915,9 @@ instance ToJSON Hdr10Metadata where
 -- /See:/ 'hlsCaptionLanguageMapping' smart constructor.
 data HlsCaptionLanguageMapping =
   HlsCaptionLanguageMapping'
-    { _hclmLanguageCode :: !(Maybe LanguageCode)
+    { _hclmLanguageCode        :: !(Maybe LanguageCode)
     , _hclmLanguageDescription :: !(Maybe Text)
-    , _hclmCaptionChannel :: !(Maybe Int)
+    , _hclmCaptionChannel      :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4083,28 +4083,28 @@ instance ToJSON HlsEncryptionSettings where
 -- /See:/ 'hlsGroupSettings' smart constructor.
 data HlsGroupSettings =
   HlsGroupSettings'
-    { _hgsDirectoryStructure :: !(Maybe HlsDirectoryStructure)
-    , _hgsSegmentControl :: !(Maybe HlsSegmentControl)
-    , _hgsDestination :: !(Maybe Text)
-    , _hgsTimedMetadataId3Period :: !(Maybe Int)
-    , _hgsMinSegmentLength :: !(Maybe Int)
-    , _hgsProgramDateTime :: !(Maybe HlsProgramDateTime)
-    , _hgsProgramDateTimePeriod :: !(Maybe Int)
-    , _hgsCodecSpecification :: !(Maybe HlsCodecSpecification)
-    , _hgsCaptionLanguageMappings :: !(Maybe [HlsCaptionLanguageMapping])
-    , _hgsBaseURL :: !(Maybe Text)
-    , _hgsAdMarkers :: !(Maybe [HlsAdMarkers])
-    , _hgsEncryption :: !(Maybe HlsEncryptionSettings)
-    , _hgsSegmentLength :: !(Maybe Int)
-    , _hgsTimedMetadataId3Frame :: !(Maybe HlsTimedMetadataId3Frame)
-    , _hgsOutputSelection :: !(Maybe HlsOutputSelection)
-    , _hgsCaptionLanguageSetting :: !(Maybe HlsCaptionLanguageSetting)
-    , _hgsSegmentsPerSubdirectory :: !(Maybe Int)
-    , _hgsManifestDurationFormat :: !(Maybe HlsManifestDurationFormat)
-    , _hgsClientCache :: !(Maybe HlsClientCache)
+    { _hgsDirectoryStructure         :: !(Maybe HlsDirectoryStructure)
+    , _hgsSegmentControl             :: !(Maybe HlsSegmentControl)
+    , _hgsDestination                :: !(Maybe Text)
+    , _hgsTimedMetadataId3Period     :: !(Maybe Int)
+    , _hgsMinSegmentLength           :: !(Maybe Int)
+    , _hgsProgramDateTime            :: !(Maybe HlsProgramDateTime)
+    , _hgsProgramDateTimePeriod      :: !(Maybe Int)
+    , _hgsCodecSpecification         :: !(Maybe HlsCodecSpecification)
+    , _hgsCaptionLanguageMappings    :: !(Maybe [HlsCaptionLanguageMapping])
+    , _hgsBaseURL                    :: !(Maybe Text)
+    , _hgsAdMarkers                  :: !(Maybe [HlsAdMarkers])
+    , _hgsEncryption                 :: !(Maybe HlsEncryptionSettings)
+    , _hgsSegmentLength              :: !(Maybe Int)
+    , _hgsTimedMetadataId3Frame      :: !(Maybe HlsTimedMetadataId3Frame)
+    , _hgsOutputSelection            :: !(Maybe HlsOutputSelection)
+    , _hgsCaptionLanguageSetting     :: !(Maybe HlsCaptionLanguageSetting)
+    , _hgsSegmentsPerSubdirectory    :: !(Maybe Int)
+    , _hgsManifestDurationFormat     :: !(Maybe HlsManifestDurationFormat)
+    , _hgsClientCache                :: !(Maybe HlsClientCache)
     , _hgsTimestampDeltaMilliseconds :: !(Maybe Int)
-    , _hgsStreamInfResolution :: !(Maybe HlsStreamInfResolution)
-    , _hgsManifestCompression :: !(Maybe HlsManifestCompression)
+    , _hgsStreamInfResolution        :: !(Maybe HlsStreamInfResolution)
+    , _hgsManifestCompression        :: !(Maybe HlsManifestCompression)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4359,9 +4359,9 @@ data HlsSettings =
   HlsSettings'
     { _hsAudioRenditionSets :: !(Maybe Text)
     , _hsIFrameOnlyManifest :: !(Maybe HlsIFrameOnlyManifest)
-    , _hsAudioGroupId :: !(Maybe Text)
-    , _hsSegmentModifier :: !(Maybe Text)
-    , _hsAudioTrackType :: !(Maybe HlsAudioTrackType)
+    , _hsAudioGroupId       :: !(Maybe Text)
+    , _hsSegmentModifier    :: !(Maybe Text)
+    , _hsAudioTrackType     :: !(Maybe HlsAudioTrackType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4441,7 +4441,7 @@ instance ToJSON HlsSettings where
 -- /See:/ 'id3Insertion' smart constructor.
 data Id3Insertion =
   Id3Insertion'
-    { _iiId3 :: !(Maybe Text)
+    { _iiId3      :: !(Maybe Text)
     , _iiTimecode :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -4520,19 +4520,19 @@ instance ToJSON ImageInserter where
 -- /See:/ 'input' smart constructor.
 data Input =
   Input'
-    { _iVideoSelector :: !(Maybe VideoSelector)
-    , _iProgramNumber :: !(Maybe Int)
+    { _iVideoSelector       :: !(Maybe VideoSelector)
+    , _iProgramNumber       :: !(Maybe Int)
     , _iAudioSelectorGroups :: !(Maybe (Map Text AudioSelectorGroup))
-    , _iTimecodeSource :: !(Maybe InputTimecodeSource)
-    , _iAudioSelectors :: !(Maybe (Map Text AudioSelector))
-    , _iDeblockFilter :: !(Maybe InputDeblockFilter)
-    , _iInputClippings :: !(Maybe [InputClipping])
-    , _iDenoiseFilter :: !(Maybe InputDenoiseFilter)
-    , _iFilterStrength :: !(Maybe Int)
-    , _iPsiControl :: !(Maybe InputPsiControl)
-    , _iCaptionSelectors :: !(Maybe (Map Text CaptionSelector))
-    , _iFileInput :: !(Maybe Text)
-    , _iFilterEnable :: !(Maybe InputFilterEnable)
+    , _iTimecodeSource      :: !(Maybe InputTimecodeSource)
+    , _iAudioSelectors      :: !(Maybe (Map Text AudioSelector))
+    , _iDeblockFilter       :: !(Maybe InputDeblockFilter)
+    , _iInputClippings      :: !(Maybe [InputClipping])
+    , _iDenoiseFilter       :: !(Maybe InputDenoiseFilter)
+    , _iFilterStrength      :: !(Maybe Int)
+    , _iPsiControl          :: !(Maybe InputPsiControl)
+    , _iCaptionSelectors    :: !(Maybe (Map Text CaptionSelector))
+    , _iFileInput           :: !(Maybe Text)
+    , _iFilterEnable        :: !(Maybe InputFilterEnable)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4686,7 +4686,7 @@ instance ToJSON Input where
 -- /See:/ 'inputClipping' smart constructor.
 data InputClipping =
   InputClipping'
-    { _icEndTimecode :: !(Maybe Text)
+    { _icEndTimecode   :: !(Maybe Text)
     , _icStartTimecode :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -4734,18 +4734,18 @@ instance ToJSON InputClipping where
 -- /See:/ 'inputTemplate' smart constructor.
 data InputTemplate =
   InputTemplate'
-    { _itVideoSelector :: !(Maybe VideoSelector)
-    , _itProgramNumber :: !(Maybe Int)
+    { _itVideoSelector       :: !(Maybe VideoSelector)
+    , _itProgramNumber       :: !(Maybe Int)
     , _itAudioSelectorGroups :: !(Maybe (Map Text AudioSelectorGroup))
-    , _itTimecodeSource :: !(Maybe InputTimecodeSource)
-    , _itAudioSelectors :: !(Maybe (Map Text AudioSelector))
-    , _itDeblockFilter :: !(Maybe InputDeblockFilter)
-    , _itInputClippings :: !(Maybe [InputClipping])
-    , _itDenoiseFilter :: !(Maybe InputDenoiseFilter)
-    , _itFilterStrength :: !(Maybe Int)
-    , _itPsiControl :: !(Maybe InputPsiControl)
-    , _itCaptionSelectors :: !(Maybe (Map Text CaptionSelector))
-    , _itFilterEnable :: !(Maybe InputFilterEnable)
+    , _itTimecodeSource      :: !(Maybe InputTimecodeSource)
+    , _itAudioSelectors      :: !(Maybe (Map Text AudioSelector))
+    , _itDeblockFilter       :: !(Maybe InputDeblockFilter)
+    , _itInputClippings      :: !(Maybe [InputClipping])
+    , _itDenoiseFilter       :: !(Maybe InputDenoiseFilter)
+    , _itFilterStrength      :: !(Maybe Int)
+    , _itPsiControl          :: !(Maybe InputPsiControl)
+    , _itCaptionSelectors    :: !(Maybe (Map Text CaptionSelector))
+    , _itFilterEnable        :: !(Maybe InputFilterEnable)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4892,17 +4892,17 @@ instance ToJSON InputTemplate where
 -- /See:/ 'insertableImage' smart constructor.
 data InsertableImage =
   InsertableImage'
-    { _iiImageX :: !(Maybe Int)
-    , _iiHeight :: !(Maybe Int)
-    , _iiStartTime :: !(Maybe Text)
-    , _iiFadeOut :: !(Maybe Int)
-    , _iiWidth :: !(Maybe Int)
-    , _iiOpacity :: !(Maybe Int)
-    , _iiLayer :: !(Maybe Int)
-    , _iiDuration :: !(Maybe Int)
-    , _iiImageY :: !(Maybe Int)
+    { _iiImageX             :: !(Maybe Int)
+    , _iiHeight             :: !(Maybe Int)
+    , _iiStartTime          :: !(Maybe Text)
+    , _iiFadeOut            :: !(Maybe Int)
+    , _iiWidth              :: !(Maybe Int)
+    , _iiOpacity            :: !(Maybe Int)
+    , _iiLayer              :: !(Maybe Int)
+    , _iiDuration           :: !(Maybe Int)
+    , _iiImageY             :: !(Maybe Int)
     , _iiImageInserterInput :: !(Maybe Text)
-    , _iiFadeIn :: !(Maybe Int)
+    , _iiFadeIn             :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -5034,19 +5034,19 @@ instance ToJSON InsertableImage where
 -- /See:/ 'job' smart constructor.
 data Job =
   Job'
-    { _jStatus :: !(Maybe JobStatus)
-    , _jJobTemplate :: !(Maybe Text)
-    , _jSettings :: !(Maybe JobSettings)
-    , _jARN :: !(Maybe Text)
-    , _jCreatedAt :: !(Maybe POSIX)
-    , _jQueue :: !(Maybe Text)
-    , _jUserMetadata :: !(Maybe (Map Text Text))
-    , _jRole :: !(Maybe Text)
+    { _jStatus             :: !(Maybe JobStatus)
+    , _jJobTemplate        :: !(Maybe Text)
+    , _jSettings           :: !(Maybe JobSettings)
+    , _jARN                :: !(Maybe Text)
+    , _jCreatedAt          :: !(Maybe POSIX)
+    , _jQueue              :: !(Maybe Text)
+    , _jUserMetadata       :: !(Maybe (Map Text Text))
+    , _jRole               :: !(Maybe Text)
     , _jOutputGroupDetails :: !(Maybe [OutputGroupDetail])
-    , _jErrorCode :: !(Maybe Int)
-    , _jId :: !(Maybe Text)
-    , _jTiming :: !(Maybe Timing)
-    , _jErrorMessage :: !(Maybe Text)
+    , _jErrorCode          :: !(Maybe Int)
+    , _jId                 :: !(Maybe Text)
+    , _jTiming             :: !(Maybe Timing)
+    , _jErrorMessage       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -5179,13 +5179,13 @@ instance NFData Job
 -- /See:/ 'jobSettings' smart constructor.
 data JobSettings =
   JobSettings'
-    { _jsInputs :: !(Maybe [Input])
+    { _jsInputs                 :: !(Maybe [Input])
     , _jsTimedMetadataInsertion :: !(Maybe TimedMetadataInsertion)
-    , _jsNielsenConfiguration :: !(Maybe NielsenConfiguration)
-    , _jsAvailBlanking :: !(Maybe AvailBlanking)
-    , _jsTimecodeConfig :: !(Maybe TimecodeConfig)
-    , _jsOutputGroups :: !(Maybe [OutputGroup])
-    , _jsAdAvailOffset :: !(Maybe Int)
+    , _jsNielsenConfiguration   :: !(Maybe NielsenConfiguration)
+    , _jsAvailBlanking          :: !(Maybe AvailBlanking)
+    , _jsTimecodeConfig         :: !(Maybe TimecodeConfig)
+    , _jsOutputGroups           :: !(Maybe [OutputGroup])
+    , _jsAdAvailOffset          :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -5285,13 +5285,13 @@ instance ToJSON JobSettings where
 data JobTemplate =
   JobTemplate'
     { _jtLastUpdated :: !(Maybe POSIX)
-    , _jtSettings :: !(Maybe JobTemplateSettings)
-    , _jtARN :: !(Maybe Text)
-    , _jtCreatedAt :: !(Maybe POSIX)
-    , _jtCategory :: !(Maybe Text)
-    , _jtQueue :: !(Maybe Text)
-    , _jtName :: !(Maybe Text)
-    , _jtType :: !(Maybe Type)
+    , _jtSettings    :: !(Maybe JobTemplateSettings)
+    , _jtARN         :: !(Maybe Text)
+    , _jtCreatedAt   :: !(Maybe POSIX)
+    , _jtCategory    :: !(Maybe Text)
+    , _jtQueue       :: !(Maybe Text)
+    , _jtName        :: !(Maybe Text)
+    , _jtType        :: !(Maybe Type)
     , _jtDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -5391,13 +5391,13 @@ instance NFData JobTemplate
 -- /See:/ 'jobTemplateSettings' smart constructor.
 data JobTemplateSettings =
   JobTemplateSettings'
-    { _jtsInputs :: !(Maybe [InputTemplate])
+    { _jtsInputs                 :: !(Maybe [InputTemplate])
     , _jtsTimedMetadataInsertion :: !(Maybe TimedMetadataInsertion)
-    , _jtsNielsenConfiguration :: !(Maybe NielsenConfiguration)
-    , _jtsAvailBlanking :: !(Maybe AvailBlanking)
-    , _jtsTimecodeConfig :: !(Maybe TimecodeConfig)
-    , _jtsOutputGroups :: !(Maybe [OutputGroup])
-    , _jtsAdAvailOffset :: !(Maybe Int)
+    , _jtsNielsenConfiguration   :: !(Maybe NielsenConfiguration)
+    , _jtsAvailBlanking          :: !(Maybe AvailBlanking)
+    , _jtsTimecodeConfig         :: !(Maybe TimecodeConfig)
+    , _jtsOutputGroups           :: !(Maybe [OutputGroup])
+    , _jtsAdAvailOffset          :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -5498,40 +5498,40 @@ instance ToJSON JobTemplateSettings where
 -- /See:/ 'm2tsSettings' smart constructor.
 data M2tsSettings =
   M2tsSettings'
-    { _mPmtPid :: !(Maybe Int)
-    , _mVideoPid :: !(Maybe Int)
-    , _mBufferModel :: !(Maybe M2tsBufferModel)
-    , _mProgramNumber :: !(Maybe Int)
-    , _mScte35Pid :: !(Maybe Int)
-    , _mMinEbpInterval :: !(Maybe Int)
-    , _mTransportStreamId :: !(Maybe Int)
-    , _mMaxPcrInterval :: !(Maybe Int)
-    , _mFragmentTime :: !(Maybe Double)
-    , _mPrivateMetadataPid :: !(Maybe Int)
-    , _mPmtInterval :: !(Maybe Int)
-    , _mDvbSdtSettings :: !(Maybe DvbSdtSettings)
-    , _mNullPacketBitrate :: !(Maybe Double)
-    , _mAudioBufferModel :: !(Maybe M2tsAudioBufferModel)
-    , _mTimedMetadataPid :: !(Maybe Int)
-    , _mAudioFramesPerPes :: !(Maybe Int)
-    , _mPcrPid :: !(Maybe Int)
+    { _mPmtPid              :: !(Maybe Int)
+    , _mVideoPid            :: !(Maybe Int)
+    , _mBufferModel         :: !(Maybe M2tsBufferModel)
+    , _mProgramNumber       :: !(Maybe Int)
+    , _mScte35Pid           :: !(Maybe Int)
+    , _mMinEbpInterval      :: !(Maybe Int)
+    , _mTransportStreamId   :: !(Maybe Int)
+    , _mMaxPcrInterval      :: !(Maybe Int)
+    , _mFragmentTime        :: !(Maybe Double)
+    , _mPrivateMetadataPid  :: !(Maybe Int)
+    , _mPmtInterval         :: !(Maybe Int)
+    , _mDvbSdtSettings      :: !(Maybe DvbSdtSettings)
+    , _mNullPacketBitrate   :: !(Maybe Double)
+    , _mAudioBufferModel    :: !(Maybe M2tsAudioBufferModel)
+    , _mTimedMetadataPid    :: !(Maybe Int)
+    , _mAudioFramesPerPes   :: !(Maybe Int)
+    , _mPcrPid              :: !(Maybe Int)
     , _mSegmentationMarkers :: !(Maybe M2tsSegmentationMarkers)
-    , _mDvbSubPids :: !(Maybe [Int])
-    , _mScte35Source :: !(Maybe M2tsScte35Source)
-    , _mPatInterval :: !(Maybe Int)
-    , _mEsRateInPes :: !(Maybe M2tsEsRateInPes)
-    , _mBitrate :: !(Maybe Int)
-    , _mAudioPids :: !(Maybe [Int])
-    , _mDvbTeletextPid :: !(Maybe Int)
-    , _mNielsenId3 :: !(Maybe M2tsNielsenId3)
-    , _mSegmentationTime :: !(Maybe Double)
-    , _mEbpAudioInterval :: !(Maybe M2tsEbpAudioInterval)
-    , _mDvbNitSettings :: !(Maybe DvbNitSettings)
-    , _mPcrControl :: !(Maybe M2tsPcrControl)
-    , _mEbpPlacement :: !(Maybe M2tsEbpPlacement)
-    , _mRateMode :: !(Maybe M2tsRateMode)
-    , _mSegmentationStyle :: !(Maybe M2tsSegmentationStyle)
-    , _mDvbTdtSettings :: !(Maybe DvbTdtSettings)
+    , _mDvbSubPids          :: !(Maybe [Int])
+    , _mScte35Source        :: !(Maybe M2tsScte35Source)
+    , _mPatInterval         :: !(Maybe Int)
+    , _mEsRateInPes         :: !(Maybe M2tsEsRateInPes)
+    , _mBitrate             :: !(Maybe Int)
+    , _mAudioPids           :: !(Maybe [Int])
+    , _mDvbTeletextPid      :: !(Maybe Int)
+    , _mNielsenId3          :: !(Maybe M2tsNielsenId3)
+    , _mSegmentationTime    :: !(Maybe Double)
+    , _mEbpAudioInterval    :: !(Maybe M2tsEbpAudioInterval)
+    , _mDvbNitSettings      :: !(Maybe DvbNitSettings)
+    , _mPcrControl          :: !(Maybe M2tsPcrControl)
+    , _mEbpPlacement        :: !(Maybe M2tsEbpPlacement)
+    , _mRateMode            :: !(Maybe M2tsRateMode)
+    , _mSegmentationStyle   :: !(Maybe M2tsSegmentationStyle)
+    , _mDvbTdtSettings      :: !(Maybe DvbTdtSettings)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -5876,22 +5876,22 @@ instance ToJSON M2tsSettings where
 -- /See:/ 'm3u8Settings' smart constructor.
 data M3u8Settings =
   M3u8Settings'
-    { _msPmtPid :: !(Maybe Int)
-    , _msVideoPid :: !(Maybe Int)
-    , _msProgramNumber :: !(Maybe Int)
-    , _msScte35Pid :: !(Maybe Int)
-    , _msTransportStreamId :: !(Maybe Int)
+    { _msPmtPid             :: !(Maybe Int)
+    , _msVideoPid           :: !(Maybe Int)
+    , _msProgramNumber      :: !(Maybe Int)
+    , _msScte35Pid          :: !(Maybe Int)
+    , _msTransportStreamId  :: !(Maybe Int)
     , _msPrivateMetadataPid :: !(Maybe Int)
-    , _msPmtInterval :: !(Maybe Int)
-    , _msTimedMetadataPid :: !(Maybe Int)
-    , _msAudioFramesPerPes :: !(Maybe Int)
-    , _msPcrPid :: !(Maybe Int)
-    , _msTimedMetadata :: !(Maybe TimedMetadata)
-    , _msScte35Source :: !(Maybe M3u8Scte35Source)
-    , _msPatInterval :: !(Maybe Int)
-    , _msAudioPids :: !(Maybe [Int])
-    , _msNielsenId3 :: !(Maybe M3u8NielsenId3)
-    , _msPcrControl :: !(Maybe M3u8PcrControl)
+    , _msPmtInterval        :: !(Maybe Int)
+    , _msTimedMetadataPid   :: !(Maybe Int)
+    , _msAudioFramesPerPes  :: !(Maybe Int)
+    , _msPcrPid             :: !(Maybe Int)
+    , _msTimedMetadata      :: !(Maybe TimedMetadata)
+    , _msScte35Source       :: !(Maybe M3u8Scte35Source)
+    , _msPatInterval        :: !(Maybe Int)
+    , _msAudioPids          :: !(Maybe [Int])
+    , _msNielsenId3         :: !(Maybe M3u8NielsenId3)
+    , _msPcrControl         :: !(Maybe M3u8PcrControl)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -6072,11 +6072,11 @@ instance ToJSON M3u8Settings where
 -- /See:/ 'movSettings' smart constructor.
 data MovSettings =
   MovSettings'
-    { _msReference :: !(Maybe MovReference)
-    , _msCslgAtom :: !(Maybe MovCslgAtom)
+    { _msReference          :: !(Maybe MovReference)
+    , _msCslgAtom           :: !(Maybe MovCslgAtom)
     , _msMpeg2FourCCControl :: !(Maybe MovMpeg2FourCCControl)
-    , _msPaddingControl :: !(Maybe MovPaddingControl)
-    , _msClapAtom :: !(Maybe MovClapAtom)
+    , _msPaddingControl     :: !(Maybe MovPaddingControl)
+    , _msClapAtom           :: !(Maybe MovClapAtom)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -6154,9 +6154,9 @@ instance ToJSON MovSettings where
 -- /See:/ 'mp2Settings' smart constructor.
 data Mp2Settings =
   Mp2Settings'
-    { _mssChannels :: !(Maybe Int)
+    { _mssChannels   :: !(Maybe Int)
     , _mssSampleRate :: !(Maybe Int)
-    , _mssBitrate :: !(Maybe Int)
+    , _mssBitrate    :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -6213,9 +6213,9 @@ instance ToJSON Mp2Settings where
 data Mp4Settings =
   Mp4Settings'
     { _mMoovPlacement :: !(Maybe Mp4MoovPlacement)
-    , _mFreeSpaceBox :: !(Maybe Mp4FreeSpaceBox)
+    , _mFreeSpaceBox  :: !(Maybe Mp4FreeSpaceBox)
     , _mMp4MajorBrand :: !(Maybe Text)
-    , _mCslgAtom :: !(Maybe Mp4CslgAtom)
+    , _mCslgAtom      :: !(Maybe Mp4CslgAtom)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -6683,11 +6683,11 @@ instance ToJSON MsSmoothEncryptionSettings where
 -- /See:/ 'msSmoothGroupSettings' smart constructor.
 data MsSmoothGroupSettings =
   MsSmoothGroupSettings'
-    { _msgsFragmentLength :: !(Maybe Int)
-    , _msgsManifestEncoding :: !(Maybe MsSmoothManifestEncoding)
-    , _msgsDestination :: !(Maybe Text)
+    { _msgsFragmentLength     :: !(Maybe Int)
+    , _msgsManifestEncoding   :: !(Maybe MsSmoothManifestEncoding)
+    , _msgsDestination        :: !(Maybe Text)
     , _msgsAudioDeduplication :: !(Maybe MsSmoothAudioDeduplication)
-    , _msgsEncryption :: !(Maybe MsSmoothEncryptionSettings)
+    , _msgsEncryption         :: !(Maybe MsSmoothEncryptionSettings)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -6770,7 +6770,7 @@ instance ToJSON MsSmoothGroupSettings where
 -- /See:/ 'nielsenConfiguration' smart constructor.
 data NielsenConfiguration =
   NielsenConfiguration'
-    { _ncBreakoutCode :: !(Maybe Int)
+    { _ncBreakoutCode  :: !(Maybe Int)
     , _ncDistributorId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -6820,8 +6820,8 @@ instance ToJSON NielsenConfiguration where
 data NoiseReducer =
   NoiseReducer'
     { _nrSpatialFilterSettings :: !(Maybe NoiseReducerSpatialFilterSettings)
-    , _nrFilterSettings :: !(Maybe NoiseReducerFilterSettings)
-    , _nrFilter :: !(Maybe NoiseReducerFilter)
+    , _nrFilterSettings        :: !(Maybe NoiseReducerFilterSettings)
+    , _nrFilter                :: !(Maybe NoiseReducerFilter)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -6919,9 +6919,9 @@ instance ToJSON NoiseReducerFilterSettings where
 -- /See:/ 'noiseReducerSpatialFilterSettings' smart constructor.
 data NoiseReducerSpatialFilterSettings =
   NoiseReducerSpatialFilterSettings'
-    { _nrsfsStrength :: !(Maybe Int)
+    { _nrsfsStrength                  :: !(Maybe Int)
     , _nrsfsPostFilterSharpenStrength :: !(Maybe Int)
-    , _nrsfsSpeed :: !(Maybe Int)
+    , _nrsfsSpeed                     :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -6986,13 +6986,13 @@ instance ToJSON NoiseReducerSpatialFilterSettings where
 data Output =
   Output'
     { _oCaptionDescriptions :: !(Maybe [CaptionDescription])
-    , _oExtension :: !(Maybe Text)
-    , _oVideoDescription :: !(Maybe VideoDescription)
-    , _oContainerSettings :: !(Maybe ContainerSettings)
-    , _oOutputSettings :: !(Maybe OutputSettings)
-    , _oPreset :: !(Maybe Text)
-    , _oNameModifier :: !(Maybe Text)
-    , _oAudioDescriptions :: !(Maybe [AudioDescription])
+    , _oExtension           :: !(Maybe Text)
+    , _oVideoDescription    :: !(Maybe VideoDescription)
+    , _oContainerSettings   :: !(Maybe ContainerSettings)
+    , _oOutputSettings      :: !(Maybe OutputSettings)
+    , _oPreset              :: !(Maybe Text)
+    , _oNameModifier        :: !(Maybe Text)
+    , _oAudioDescriptions   :: !(Maybe [AudioDescription])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -7179,9 +7179,9 @@ instance NFData OutputDetail
 data OutputGroup =
   OutputGroup'
     { _ogOutputGroupSettings :: !(Maybe OutputGroupSettings)
-    , _ogOutputs :: !(Maybe [Output])
-    , _ogCustomName :: !(Maybe Text)
-    , _ogName :: !(Maybe Text)
+    , _ogOutputs             :: !(Maybe [Output])
+    , _ogCustomName          :: !(Maybe Text)
+    , _ogName                :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -7284,11 +7284,11 @@ instance NFData OutputGroupDetail
 -- /See:/ 'outputGroupSettings' smart constructor.
 data OutputGroupSettings =
   OutputGroupSettings'
-    { _ogsFileGroupSettings :: !(Maybe FileGroupSettings)
+    { _ogsFileGroupSettings     :: !(Maybe FileGroupSettings)
     , _ogsMsSmoothGroupSettings :: !(Maybe MsSmoothGroupSettings)
-    , _ogsHlsGroupSettings :: !(Maybe HlsGroupSettings)
-    , _ogsType :: !(Maybe OutputGroupType)
-    , _ogsDashIsoGroupSettings :: !(Maybe DashIsoGroupSettings)
+    , _ogsHlsGroupSettings      :: !(Maybe HlsGroupSettings)
+    , _ogsType                  :: !(Maybe OutputGroupType)
+    , _ogsDashIsoGroupSettings  :: !(Maybe DashIsoGroupSettings)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -7408,12 +7408,12 @@ instance ToJSON OutputSettings where
 data Preset =
   Preset'
     { _pLastUpdated :: !(Maybe POSIX)
-    , _pSettings :: !(Maybe PresetSettings)
-    , _pARN :: !(Maybe Text)
-    , _pCreatedAt :: !(Maybe POSIX)
-    , _pCategory :: !(Maybe Text)
-    , _pName :: !(Maybe Text)
-    , _pType :: !(Maybe Type)
+    , _pSettings    :: !(Maybe PresetSettings)
+    , _pARN         :: !(Maybe Text)
+    , _pCreatedAt   :: !(Maybe POSIX)
+    , _pCategory    :: !(Maybe Text)
+    , _pName        :: !(Maybe Text)
+    , _pType        :: !(Maybe Type)
     , _pDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -7506,9 +7506,9 @@ instance NFData Preset
 data PresetSettings =
   PresetSettings'
     { _psCaptionDescriptions :: !(Maybe [CaptionDescriptionPreset])
-    , _psVideoDescription :: !(Maybe VideoDescription)
-    , _psContainerSettings :: !(Maybe ContainerSettings)
-    , _psAudioDescriptions :: !(Maybe [AudioDescription])
+    , _psVideoDescription    :: !(Maybe VideoDescription)
+    , _psContainerSettings   :: !(Maybe ContainerSettings)
+    , _psAudioDescriptions   :: !(Maybe [AudioDescription])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -7732,12 +7732,12 @@ instance ToJSON ProresSettings where
 -- /See:/ 'queue' smart constructor.
 data Queue =
   Queue'
-    { _qStatus :: !(Maybe QueueStatus)
+    { _qStatus      :: !(Maybe QueueStatus)
     , _qLastUpdated :: !(Maybe POSIX)
-    , _qARN :: !(Maybe Text)
-    , _qCreatedAt :: !(Maybe POSIX)
-    , _qName :: !(Maybe Text)
-    , _qType :: !(Maybe Type)
+    , _qARN         :: !(Maybe Text)
+    , _qCreatedAt   :: !(Maybe POSIX)
+    , _qName        :: !(Maybe Text)
+    , _qType        :: !(Maybe Type)
     , _qDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -7821,9 +7821,9 @@ instance NFData Queue
 data Rectangle =
   Rectangle'
     { _rHeight :: !(Maybe Int)
-    , _rWidth :: !(Maybe Int)
-    , _rX :: !(Maybe Int)
-    , _rY :: !(Maybe Int)
+    , _rWidth  :: !(Maybe Int)
+    , _rX      :: !(Maybe Int)
+    , _rY      :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -7887,8 +7887,8 @@ instance ToJSON Rectangle where
 data RemixSettings =
   RemixSettings'
     { _rsChannelMapping :: !(Maybe ChannelMapping)
-    , _rsChannelsIn :: !(Maybe Int)
-    , _rsChannelsOut :: !(Maybe Int)
+    , _rsChannelsIn     :: !(Maybe Int)
+    , _rsChannelsOut    :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -7983,8 +7983,8 @@ instance ToJSON SccDestinationSettings where
 data SpekeKeyProvider =
   SpekeKeyProvider'
     { _skpResourceId :: !(Maybe Text)
-    , _skpURL :: !(Maybe Text)
-    , _skpSystemIds :: !(Maybe [Text])
+    , _skpURL        :: !(Maybe Text)
+    , _skpSystemIds  :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -8041,9 +8041,9 @@ instance ToJSON SpekeKeyProvider where
 -- /See:/ 'staticKeyProvider' smart constructor.
 data StaticKeyProvider =
   StaticKeyProvider'
-    { _sStaticKeyValue :: !(Maybe Text)
-    , _sURL :: !(Maybe Text)
-    , _sKeyFormat :: !(Maybe Text)
+    { _sStaticKeyValue    :: !(Maybe Text)
+    , _sURL               :: !(Maybe Text)
+    , _sKeyFormat         :: !(Maybe Text)
     , _sKeyFormatVersions :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -8184,7 +8184,7 @@ instance ToJSON TeletextSourceSettings where
 -- /See:/ 'timecodeBurnin' smart constructor.
 data TimecodeBurnin =
   TimecodeBurnin'
-    { _tbPrefix :: !(Maybe Text)
+    { _tbPrefix   :: !(Maybe Text)
     , _tbFontSize :: !(Maybe Int)
     , _tbPosition :: !(Maybe TimecodeBurninPosition)
     }
@@ -8242,10 +8242,10 @@ instance ToJSON TimecodeBurnin where
 -- /See:/ 'timecodeConfig' smart constructor.
 data TimecodeConfig =
   TimecodeConfig'
-    { _tcStart :: !(Maybe Text)
+    { _tcStart           :: !(Maybe Text)
     , _tcTimestampOffset :: !(Maybe Text)
-    , _tcAnchor :: !(Maybe Text)
-    , _tcSource :: !(Maybe TimecodeSource)
+    , _tcAnchor          :: !(Maybe Text)
+    , _tcSource          :: !(Maybe TimecodeSource)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -8350,7 +8350,7 @@ instance ToJSON TimedMetadataInsertion where
 -- /See:/ 'timing' smart constructor.
 data Timing =
   Timing'
-    { _tStartTime :: !(Maybe POSIX)
+    { _tStartTime  :: !(Maybe POSIX)
     , _tFinishTime :: !(Maybe POSIX)
     , _tSubmitTime :: !(Maybe POSIX)
     }
@@ -8438,11 +8438,11 @@ instance ToJSON TtmlDestinationSettings where
 data VideoCodecSettings =
   VideoCodecSettings'
     { _vcsFrameCaptureSettings :: !(Maybe FrameCaptureSettings)
-    , _vcsCodec :: !(Maybe VideoCodec)
-    , _vcsH265Settings :: !(Maybe H265Settings)
-    , _vcsProresSettings :: !(Maybe ProresSettings)
-    , _vcsH264Settings :: !(Maybe H264Settings)
-    , _vcsMpeg2Settings :: !(Maybe Mpeg2Settings)
+    , _vcsCodec                :: !(Maybe VideoCodec)
+    , _vcsH265Settings         :: !(Maybe H265Settings)
+    , _vcsProresSettings       :: !(Maybe ProresSettings)
+    , _vcsH264Settings         :: !(Maybe H264Settings)
+    , _vcsMpeg2Settings        :: !(Maybe Mpeg2Settings)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -8530,21 +8530,21 @@ instance ToJSON VideoCodecSettings where
 -- /See:/ 'videoDescription' smart constructor.
 data VideoDescription =
   VideoDescription'
-    { _vdTimecodeInsertion :: !(Maybe VideoTimecodeInsertion)
-    , _vdHeight :: !(Maybe Int)
-    , _vdAfdSignaling :: !(Maybe AfdSignaling)
-    , _vdSharpness :: !(Maybe Int)
-    , _vdCrop :: !(Maybe Rectangle)
-    , _vdWidth :: !(Maybe Int)
-    , _vdScalingBehavior :: !(Maybe ScalingBehavior)
-    , _vdRespondToAfd :: !(Maybe RespondToAfd)
-    , _vdDropFrameTimecode :: !(Maybe DropFrameTimecode)
-    , _vdAntiAlias :: !(Maybe AntiAlias)
-    , _vdFixedAfd :: !(Maybe Int)
-    , _vdColorMetadata :: !(Maybe ColorMetadata)
-    , _vdCodecSettings :: !(Maybe VideoCodecSettings)
+    { _vdTimecodeInsertion  :: !(Maybe VideoTimecodeInsertion)
+    , _vdHeight             :: !(Maybe Int)
+    , _vdAfdSignaling       :: !(Maybe AfdSignaling)
+    , _vdSharpness          :: !(Maybe Int)
+    , _vdCrop               :: !(Maybe Rectangle)
+    , _vdWidth              :: !(Maybe Int)
+    , _vdScalingBehavior    :: !(Maybe ScalingBehavior)
+    , _vdRespondToAfd       :: !(Maybe RespondToAfd)
+    , _vdDropFrameTimecode  :: !(Maybe DropFrameTimecode)
+    , _vdAntiAlias          :: !(Maybe AntiAlias)
+    , _vdFixedAfd           :: !(Maybe Int)
+    , _vdColorMetadata      :: !(Maybe ColorMetadata)
+    , _vdCodecSettings      :: !(Maybe VideoCodecSettings)
     , _vdVideoPreprocessors :: !(Maybe VideoPreprocessor)
-    , _vdPosition :: !(Maybe Rectangle)
+    , _vdPosition           :: !(Maybe Rectangle)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -8715,7 +8715,7 @@ instance ToJSON VideoDescription where
 data VideoDetail =
   VideoDetail'
     { _vdHeightInPx :: !(Maybe Int)
-    , _vdWidthInPx :: !(Maybe Int)
+    , _vdWidthInPx  :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -8754,9 +8754,9 @@ data VideoPreprocessor =
   VideoPreprocessor'
     { _vpTimecodeBurnin :: !(Maybe TimecodeBurnin)
     , _vpColorCorrector :: !(Maybe ColorCorrector)
-    , _vpDeinterlacer :: !(Maybe Deinterlacer)
-    , _vpNoiseReducer :: !(Maybe NoiseReducer)
-    , _vpImageInserter :: !(Maybe ImageInserter)
+    , _vpDeinterlacer   :: !(Maybe Deinterlacer)
+    , _vpNoiseReducer   :: !(Maybe NoiseReducer)
+    , _vpImageInserter  :: !(Maybe ImageInserter)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -8834,11 +8834,11 @@ instance ToJSON VideoPreprocessor where
 -- /See:/ 'videoSelector' smart constructor.
 data VideoSelector =
   VideoSelector'
-    { _vsProgramNumber :: !(Maybe Int)
+    { _vsProgramNumber   :: !(Maybe Int)
     , _vsColorSpaceUsage :: !(Maybe ColorSpaceUsage)
-    , _vsHdr10Metadata :: !(Maybe Hdr10Metadata)
-    , _vsPid :: !(Maybe Int)
-    , _vsColorSpace :: !(Maybe ColorSpace)
+    , _vsHdr10Metadata   :: !(Maybe Hdr10Metadata)
+    , _vsPid             :: !(Maybe Int)
+    , _vsColorSpace      :: !(Maybe ColorSpace)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -8916,8 +8916,8 @@ instance ToJSON VideoSelector where
 -- /See:/ 'wavSettings' smart constructor.
 data WavSettings =
   WavSettings'
-    { _wsBitDepth :: !(Maybe Int)
-    , _wsChannels :: !(Maybe Int)
+    { _wsBitDepth   :: !(Maybe Int)
+    , _wsChannels   :: !(Maybe Int)
     , _wsSampleRate :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

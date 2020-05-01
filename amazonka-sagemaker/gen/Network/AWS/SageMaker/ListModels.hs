@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,13 +53,13 @@ import Network.AWS.SageMaker.Types.Product
 -- | /See:/ 'listModels' smart constructor.
 data ListModels =
   ListModels'
-    { _lmNameContains :: !(Maybe Text)
-    , _lmCreationTimeAfter :: !(Maybe POSIX)
-    , _lmNextToken :: !(Maybe Text)
-    , _lmSortOrder :: !(Maybe OrderKey)
+    { _lmNameContains       :: !(Maybe Text)
+    , _lmCreationTimeAfter  :: !(Maybe POSIX)
+    , _lmNextToken          :: !(Maybe Text)
+    , _lmSortOrder          :: !(Maybe OrderKey)
     , _lmCreationTimeBefore :: !(Maybe POSIX)
-    , _lmMaxResults :: !(Maybe Nat)
-    , _lmSortBy :: !(Maybe ModelSortKey)
+    , _lmMaxResults         :: !(Maybe Nat)
+    , _lmSortBy             :: !(Maybe ModelSortKey)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -173,9 +173,9 @@ instance ToQuery ListModels where
 -- | /See:/ 'listModelsResponse' smart constructor.
 data ListModelsResponse =
   ListModelsResponse'
-    { _lmrsNextToken :: !(Maybe Text)
+    { _lmrsNextToken      :: !(Maybe Text)
     , _lmrsResponseStatus :: !Int
-    , _lmrsModels :: ![ModelSummary]
+    , _lmrsModels         :: ![ModelSummary]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -87,9 +87,9 @@ import Network.AWS.Response
 -- /See:/ 'startMatchmaking' smart constructor.
 data StartMatchmaking =
   StartMatchmaking'
-    { _sTicketId :: !(Maybe Text)
+    { _sTicketId          :: !(Maybe Text)
     , _sConfigurationName :: !Text
-    , _sPlayers :: ![Player]
+    , _sPlayers           :: ![Player]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -169,7 +169,7 @@ instance ToQuery StartMatchmaking where
 data StartMatchmakingResponse =
   StartMatchmakingResponse'
     { _srsMatchmakingTicket :: !(Maybe MatchmakingTicket)
-    , _srsResponseStatus :: !Int
+    , _srsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

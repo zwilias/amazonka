@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,9 +50,9 @@ import Network.AWS.Response
 -- | /See:/ 'describeEventTypes' smart constructor.
 data DescribeEventTypes =
   DescribeEventTypes'
-    { _detLocale :: !(Maybe Text)
-    , _detNextToken :: !(Maybe Text)
-    , _detFilter :: !(Maybe EventTypeFilter)
+    { _detLocale     :: !(Maybe Text)
+    , _detNextToken  :: !(Maybe Text)
+    , _detFilter     :: !(Maybe EventTypeFilter)
     , _detMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -142,8 +142,8 @@ instance ToQuery DescribeEventTypes where
 -- | /See:/ 'describeEventTypesResponse' smart constructor.
 data DescribeEventTypesResponse =
   DescribeEventTypesResponse'
-    { _detrsEventTypes :: !(Maybe [EventType])
-    , _detrsNextToken :: !(Maybe Text)
+    { _detrsEventTypes     :: !(Maybe [EventType])
+    , _detrsNextToken      :: !(Maybe Text)
     , _detrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

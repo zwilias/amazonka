@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.Response
 data BatchGetDeploymentInstances =
   BatchGetDeploymentInstances'
     { _bgdiDeploymentId :: !Text
-    , _bgdiInstanceIds :: ![Text]
+    , _bgdiInstanceIds  :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -123,8 +123,8 @@ instance ToQuery BatchGetDeploymentInstances where
 data BatchGetDeploymentInstancesResponse =
   BatchGetDeploymentInstancesResponse'
     { _bgdirsInstancesSummary :: !(Maybe [InstanceSummary])
-    , _bgdirsErrorMessage :: !(Maybe Text)
-    , _bgdirsResponseStatus :: !Int
+    , _bgdirsErrorMessage     :: !(Maybe Text)
+    , _bgdirsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

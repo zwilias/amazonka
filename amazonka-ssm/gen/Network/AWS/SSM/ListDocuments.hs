@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.SSM.Types.Product
 data ListDocuments =
   ListDocuments'
     { _ldDocumentFilterList :: !(Maybe (List1 DocumentFilter))
-    , _ldFilters :: !(Maybe [DocumentKeyValuesFilter])
-    , _ldNextToken :: !(Maybe Text)
-    , _ldMaxResults :: !(Maybe Nat)
+    , _ldFilters            :: !(Maybe [DocumentKeyValuesFilter])
+    , _ldNextToken          :: !(Maybe Text)
+    , _ldMaxResults         :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -143,8 +143,8 @@ instance ToQuery ListDocuments where
 data ListDocumentsResponse =
   ListDocumentsResponse'
     { _ldrsDocumentIdentifiers :: !(Maybe [DocumentIdentifier])
-    , _ldrsNextToken :: !(Maybe Text)
-    , _ldrsResponseStatus :: !Int
+    , _ldrsNextToken           :: !(Maybe Text)
+    , _ldrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

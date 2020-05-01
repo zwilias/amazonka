@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'initiateLayerUpload' smart constructor.
 data InitiateLayerUpload =
   InitiateLayerUpload'
-    { _iluRegistryId :: !(Maybe Text)
+    { _iluRegistryId     :: !(Maybe Text)
     , _iluRepositoryName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -112,8 +112,8 @@ instance ToQuery InitiateLayerUpload where
 -- | /See:/ 'initiateLayerUploadResponse' smart constructor.
 data InitiateLayerUploadResponse =
   InitiateLayerUploadResponse'
-    { _ilursPartSize :: !(Maybe Nat)
-    , _ilursUploadId :: !(Maybe Text)
+    { _ilursPartSize       :: !(Maybe Nat)
+    , _ilursUploadId       :: !(Maybe Text)
     , _ilursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

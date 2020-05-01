@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,7 +56,7 @@ import Network.AWS.Response
 -- /See:/ 'rebootCacheCluster' smart constructor.
 data RebootCacheCluster =
   RebootCacheCluster'
-    { _rccCacheClusterId :: !Text
+    { _rccCacheClusterId       :: !Text
     , _rccCacheNodeIdsToReboot :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -118,7 +118,7 @@ instance ToQuery RebootCacheCluster where
 -- | /See:/ 'rebootCacheClusterResponse' smart constructor.
 data RebootCacheClusterResponse =
   RebootCacheClusterResponse'
-    { _rccrsCacheCluster :: !(Maybe CacheCluster)
+    { _rccrsCacheCluster   :: !(Maybe CacheCluster)
     , _rccrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

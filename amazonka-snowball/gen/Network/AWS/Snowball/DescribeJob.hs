@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -97,7 +97,7 @@ instance ToQuery DescribeJob where
 -- | /See:/ 'describeJobResponse' smart constructor.
 data DescribeJobResponse =
   DescribeJobResponse'
-    { _djrsJobMetadata :: !(Maybe JobMetadata)
+    { _djrsJobMetadata    :: !(Maybe JobMetadata)
     , _djrsSubJobMetadata :: !(Maybe [JobMetadata])
     , _djrsResponseStatus :: !Int
     }

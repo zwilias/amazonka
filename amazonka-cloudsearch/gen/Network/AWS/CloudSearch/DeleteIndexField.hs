@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- /See:/ 'deleteIndexField' smart constructor.
 data DeleteIndexField =
   DeleteIndexField'
-    { _difiDomainName :: !Text
+    { _difiDomainName     :: !Text
     , _difiIndexFieldName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -114,7 +114,7 @@ instance ToQuery DeleteIndexField where
 data DeleteIndexFieldResponse =
   DeleteIndexFieldResponse'
     { _difrsResponseStatus :: !Int
-    , _difrsIndexField :: !IndexFieldStatus
+    , _difrsIndexField     :: !IndexFieldStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

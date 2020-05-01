@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,17 +57,17 @@ import Network.AWS.Response
 -- | /See:/ 'describeBatchPredictions' smart constructor.
 data DescribeBatchPredictions =
   DescribeBatchPredictions'
-    { _dbpEQ :: !(Maybe Text)
-    , _dbpGE :: !(Maybe Text)
-    , _dbpPrefix :: !(Maybe Text)
-    , _dbpGT :: !(Maybe Text)
-    , _dbpNE :: !(Maybe Text)
-    , _dbpNextToken :: !(Maybe Text)
-    , _dbpSortOrder :: !(Maybe SortOrder)
-    , _dbpLimit :: !(Maybe Nat)
-    , _dbpLT :: !(Maybe Text)
+    { _dbpEQ             :: !(Maybe Text)
+    , _dbpGE             :: !(Maybe Text)
+    , _dbpPrefix         :: !(Maybe Text)
+    , _dbpGT             :: !(Maybe Text)
+    , _dbpNE             :: !(Maybe Text)
+    , _dbpNextToken      :: !(Maybe Text)
+    , _dbpSortOrder      :: !(Maybe SortOrder)
+    , _dbpLimit          :: !(Maybe Nat)
+    , _dbpLT             :: !(Maybe Text)
     , _dbpFilterVariable :: !(Maybe BatchPredictionFilterVariable)
-    , _dbpLE :: !(Maybe Text)
+    , _dbpLE             :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -216,8 +216,8 @@ instance ToQuery DescribeBatchPredictions where
 -- /See:/ 'describeBatchPredictionsResponse' smart constructor.
 data DescribeBatchPredictionsResponse =
   DescribeBatchPredictionsResponse'
-    { _dbpsrsResults :: !(Maybe [BatchPrediction])
-    , _dbpsrsNextToken :: !(Maybe Text)
+    { _dbpsrsResults        :: !(Maybe [BatchPrediction])
+    , _dbpsrsNextToken      :: !(Maybe Text)
     , _dbpsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

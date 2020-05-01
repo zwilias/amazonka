@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -107,13 +107,13 @@ instance ToQuery DescribePatchGroupState where
 -- | /See:/ 'describePatchGroupStateResponse' smart constructor.
 data DescribePatchGroupStateResponse =
   DescribePatchGroupStateResponse'
-    { _dpgsrsInstancesWithMissingPatches :: !(Maybe Int)
+    { _dpgsrsInstancesWithMissingPatches        :: !(Maybe Int)
     , _dpgsrsInstancesWithInstalledOtherPatches :: !(Maybe Int)
-    , _dpgsrsInstancesWithNotApplicablePatches :: !(Maybe Int)
-    , _dpgsrsInstancesWithInstalledPatches :: !(Maybe Int)
-    , _dpgsrsInstances :: !(Maybe Int)
-    , _dpgsrsInstancesWithFailedPatches :: !(Maybe Int)
-    , _dpgsrsResponseStatus :: !Int
+    , _dpgsrsInstancesWithNotApplicablePatches  :: !(Maybe Int)
+    , _dpgsrsInstancesWithInstalledPatches      :: !(Maybe Int)
+    , _dpgsrsInstances                          :: !(Maybe Int)
+    , _dpgsrsInstancesWithFailedPatches         :: !(Maybe Int)
+    , _dpgsrsResponseStatus                     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -99,8 +99,8 @@ instance ToQuery BatchGetProjects where
 data BatchGetProjectsResponse =
   BatchGetProjectsResponse'
     { _bgprsProjectsNotFound :: !(Maybe (List1 Text))
-    , _bgprsProjects :: !(Maybe [Project])
-    , _bgprsResponseStatus :: !Int
+    , _bgprsProjects         :: !(Maybe [Project])
+    , _bgprsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

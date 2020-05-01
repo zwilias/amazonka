@@ -755,9 +755,9 @@ module Network.AWS.SWF.Types
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.Sign.V4
 import Network.AWS.SWF.Types.Product
 import Network.AWS.SWF.Types.Sum
-import Network.AWS.Sign.V4
 
 -- | API version @2012-01-25@ of the Amazon Simple Workflow Service SDK configuration.
 swf :: Service

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,18 +52,18 @@ import Network.AWS.S3.Types.Product
 -- | /See:/ 'putObjectACL' smart constructor.
 data PutObjectACL =
   PutObjectACL'
-    { _poaVersionId :: !(Maybe ObjectVersionId)
-    , _poaGrantReadACP :: !(Maybe Text)
-    , _poaRequestPayer :: !(Maybe RequestPayer)
-    , _poaGrantWriteACP :: !(Maybe Text)
-    , _poaGrantRead :: !(Maybe Text)
-    , _poaGrantFullControl :: !(Maybe Text)
-    , _poaContentMD5 :: !(Maybe Text)
+    { _poaVersionId           :: !(Maybe ObjectVersionId)
+    , _poaGrantReadACP        :: !(Maybe Text)
+    , _poaRequestPayer        :: !(Maybe RequestPayer)
+    , _poaGrantWriteACP       :: !(Maybe Text)
+    , _poaGrantRead           :: !(Maybe Text)
+    , _poaGrantFullControl    :: !(Maybe Text)
+    , _poaContentMD5          :: !(Maybe Text)
     , _poaAccessControlPolicy :: !(Maybe AccessControlPolicy)
-    , _poaGrantWrite :: !(Maybe Text)
-    , _poaACL :: !(Maybe ObjectCannedACL)
-    , _poaBucket :: !BucketName
-    , _poaKey :: !ObjectKey
+    , _poaGrantWrite          :: !(Maybe Text)
+    , _poaACL                 :: !(Maybe ObjectCannedACL)
+    , _poaBucket              :: !BucketName
+    , _poaKey                 :: !ObjectKey
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

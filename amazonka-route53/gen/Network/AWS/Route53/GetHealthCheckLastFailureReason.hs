@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -102,7 +102,7 @@ instance ToQuery GetHealthCheckLastFailureReason where
 -- /See:/ 'getHealthCheckLastFailureReasonResponse' smart constructor.
 data GetHealthCheckLastFailureReasonResponse =
   GetHealthCheckLastFailureReasonResponse'
-    { _ghclfrrsResponseStatus :: !Int
+    { _ghclfrrsResponseStatus          :: !Int
     , _ghclfrrsHealthCheckObservations :: ![HealthCheckObservation]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

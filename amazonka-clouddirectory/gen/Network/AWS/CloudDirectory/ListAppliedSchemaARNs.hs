@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,9 +50,9 @@ import Network.AWS.Response
 -- | /See:/ 'listAppliedSchemaARNs' smart constructor.
 data ListAppliedSchemaARNs =
   ListAppliedSchemaARNs'
-    { _lasaNextToken :: !(Maybe Text)
-    , _lasaSchemaARN :: !(Maybe Text)
-    , _lasaMaxResults :: !(Maybe Nat)
+    { _lasaNextToken    :: !(Maybe Text)
+    , _lasaSchemaARN    :: !(Maybe Text)
+    , _lasaMaxResults   :: !(Maybe Nat)
     , _lasaDirectoryARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -138,8 +138,8 @@ instance ToQuery ListAppliedSchemaARNs where
 -- | /See:/ 'listAppliedSchemaARNsResponse' smart constructor.
 data ListAppliedSchemaARNsResponse =
   ListAppliedSchemaARNsResponse'
-    { _lasarsSchemaARNs :: !(Maybe [Text])
-    , _lasarsNextToken :: !(Maybe Text)
+    { _lasarsSchemaARNs     :: !(Maybe [Text])
+    , _lasarsNextToken      :: !(Maybe Text)
     , _lasarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

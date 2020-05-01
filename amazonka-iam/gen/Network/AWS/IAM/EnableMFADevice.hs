@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -43,8 +43,8 @@ import Network.AWS.Response
 -- | /See:/ 'enableMFADevice' smart constructor.
 data EnableMFADevice =
   EnableMFADevice'
-    { _emdUserName :: !Text
-    , _emdSerialNumber :: !Text
+    { _emdUserName            :: !Text
+    , _emdSerialNumber        :: !Text
     , _emdAuthenticationCode1 :: !Text
     , _emdAuthenticationCode2 :: !Text
     }

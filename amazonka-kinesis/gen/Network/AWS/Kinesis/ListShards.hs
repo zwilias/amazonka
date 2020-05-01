@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,11 +50,11 @@ import Network.AWS.Response
 -- | /See:/ 'listShards' smart constructor.
 data ListShards =
   ListShards'
-    { _lsNextToken :: !(Maybe Text)
-    , _lsExclusiveStartShardId :: !(Maybe Text)
+    { _lsNextToken               :: !(Maybe Text)
+    , _lsExclusiveStartShardId   :: !(Maybe Text)
     , _lsStreamCreationTimestamp :: !(Maybe POSIX)
-    , _lsStreamName :: !(Maybe Text)
-    , _lsMaxResults :: !(Maybe Nat)
+    , _lsStreamName              :: !(Maybe Text)
+    , _lsMaxResults              :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -146,8 +146,8 @@ instance ToQuery ListShards where
 -- | /See:/ 'listShardsResponse' smart constructor.
 data ListShardsResponse =
   ListShardsResponse'
-    { _lrsNextToken :: !(Maybe Text)
-    , _lrsShards :: !(Maybe [Shard])
+    { _lrsNextToken      :: !(Maybe Text)
+    , _lrsShards         :: !(Maybe [Shard])
     , _lrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

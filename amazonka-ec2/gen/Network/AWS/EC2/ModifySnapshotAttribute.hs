@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,13 +52,13 @@ import Network.AWS.Response
 -- /See:/ 'modifySnapshotAttribute' smart constructor.
 data ModifySnapshotAttribute =
   ModifySnapshotAttribute'
-    { _msaAttribute :: !(Maybe SnapshotAttributeName)
+    { _msaAttribute              :: !(Maybe SnapshotAttributeName)
     , _msaCreateVolumePermission :: !(Maybe CreateVolumePermissionModifications)
-    , _msaUserIds :: !(Maybe [Text])
-    , _msaGroupNames :: !(Maybe [Text])
-    , _msaOperationType :: !(Maybe OperationType)
-    , _msaDryRun :: !(Maybe Bool)
-    , _msaSnapshotId :: !Text
+    , _msaUserIds                :: !(Maybe [Text])
+    , _msaGroupNames             :: !(Maybe [Text])
+    , _msaOperationType          :: !(Maybe OperationType)
+    , _msaDryRun                 :: !(Maybe Bool)
+    , _msaSnapshotId             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

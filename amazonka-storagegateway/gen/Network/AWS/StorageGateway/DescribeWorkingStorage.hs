@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -113,11 +113,11 @@ instance ToQuery DescribeWorkingStorage where
 -- /See:/ 'describeWorkingStorageResponse' smart constructor.
 data DescribeWorkingStorageResponse =
   DescribeWorkingStorageResponse'
-    { _dwsrsGatewayARN :: !(Maybe Text)
-    , _dwsrsDiskIds :: !(Maybe [Text])
+    { _dwsrsGatewayARN                     :: !(Maybe Text)
+    , _dwsrsDiskIds                        :: !(Maybe [Text])
     , _dwsrsWorkingStorageAllocatedInBytes :: !(Maybe Integer)
-    , _dwsrsWorkingStorageUsedInBytes :: !(Maybe Integer)
-    , _dwsrsResponseStatus :: !Int
+    , _dwsrsWorkingStorageUsedInBytes      :: !(Maybe Integer)
+    , _dwsrsResponseStatus                 :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

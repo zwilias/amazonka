@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Route53Domains.Types.Product
 -- /See:/ 'updateDomainContactPrivacy' smart constructor.
 data UpdateDomainContactPrivacy =
   UpdateDomainContactPrivacy'
-    { _udcpTechPrivacy :: !(Maybe Bool)
+    { _udcpTechPrivacy       :: !(Maybe Bool)
     , _udcpRegistrantPrivacy :: !(Maybe Bool)
-    , _udcpAdminPrivacy :: !(Maybe Bool)
-    , _udcpDomainName :: !Text
+    , _udcpAdminPrivacy      :: !(Maybe Bool)
+    , _udcpDomainName        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -144,7 +144,7 @@ instance ToQuery UpdateDomainContactPrivacy where
 data UpdateDomainContactPrivacyResponse =
   UpdateDomainContactPrivacyResponse'
     { _udcprsResponseStatus :: !Int
-    , _udcprsOperationId :: !Text
+    , _udcprsOperationId    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

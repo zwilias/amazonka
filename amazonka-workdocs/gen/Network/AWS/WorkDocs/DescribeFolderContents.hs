@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,14 +57,14 @@ import Network.AWS.WorkDocs.Types.Product
 -- | /See:/ 'describeFolderContents' smart constructor.
 data DescribeFolderContents =
   DescribeFolderContents'
-    { _dfcsInclude :: !(Maybe Text)
+    { _dfcsInclude             :: !(Maybe Text)
     , _dfcsAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _dfcsSort :: !(Maybe ResourceSortType)
-    , _dfcsMarker :: !(Maybe Text)
-    , _dfcsLimit :: !(Maybe Nat)
-    , _dfcsType :: !(Maybe FolderContentType)
-    , _dfcsOrder :: !(Maybe OrderType)
-    , _dfcsFolderId :: !Text
+    , _dfcsSort                :: !(Maybe ResourceSortType)
+    , _dfcsMarker              :: !(Maybe Text)
+    , _dfcsLimit               :: !(Maybe Nat)
+    , _dfcsType                :: !(Maybe FolderContentType)
+    , _dfcsOrder               :: !(Maybe OrderType)
+    , _dfcsFolderId            :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -183,9 +183,9 @@ instance ToQuery DescribeFolderContents where
 -- | /See:/ 'describeFolderContentsResponse' smart constructor.
 data DescribeFolderContentsResponse =
   DescribeFolderContentsResponse'
-    { _dfcrsFolders :: !(Maybe [FolderMetadata])
-    , _dfcrsDocuments :: !(Maybe [DocumentMetadata])
-    , _dfcrsMarker :: !(Maybe Text)
+    { _dfcrsFolders        :: !(Maybe [FolderMetadata])
+    , _dfcrsDocuments      :: !(Maybe [DocumentMetadata])
+    , _dfcrsMarker         :: !(Maybe Text)
     , _dfcrsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

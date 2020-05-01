@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.StepFunctions.Types.Product
 -- | /See:/ 'getActivityTask' smart constructor.
 data GetActivityTask =
   GetActivityTask'
-    { _gatWorkerName :: !(Maybe Text)
+    { _gatWorkerName  :: !(Maybe Text)
     , _gatActivityARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -111,8 +111,8 @@ instance ToQuery GetActivityTask where
 -- | /See:/ 'getActivityTaskResponse' smart constructor.
 data GetActivityTaskResponse =
   GetActivityTaskResponse'
-    { _gatrsInput :: !(Maybe Text)
-    , _gatrsTaskToken :: !(Maybe Text)
+    { _gatrsInput          :: !(Maybe Text)
+    , _gatrsTaskToken      :: !(Maybe Text)
     , _gatrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

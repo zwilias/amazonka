@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -70,16 +70,16 @@ import Network.AWS.Response
 -- /See:/ 'createRoute' smart constructor.
 data CreateRoute =
   CreateRoute'
-    { _crVPCPeeringConnectionId :: !(Maybe Text)
-    , _crInstanceId :: !(Maybe Text)
+    { _crVPCPeeringConnectionId      :: !(Maybe Text)
+    , _crInstanceId                  :: !(Maybe Text)
     , _crEgressOnlyInternetGatewayId :: !(Maybe Text)
-    , _crDestinationIPv6CidrBlock :: !(Maybe Text)
-    , _crNatGatewayId :: !(Maybe Text)
-    , _crNetworkInterfaceId :: !(Maybe Text)
-    , _crGatewayId :: !(Maybe Text)
-    , _crDryRun :: !(Maybe Bool)
-    , _crDestinationCidrBlock :: !(Maybe Text)
-    , _crRouteTableId :: !Text
+    , _crDestinationIPv6CidrBlock    :: !(Maybe Text)
+    , _crNatGatewayId                :: !(Maybe Text)
+    , _crNetworkInterfaceId          :: !(Maybe Text)
+    , _crGatewayId                   :: !(Maybe Text)
+    , _crDryRun                      :: !(Maybe Bool)
+    , _crDestinationCidrBlock        :: !(Maybe Text)
+    , _crRouteTableId                :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -212,7 +212,7 @@ instance ToQuery CreateRoute where
 -- /See:/ 'createRouteResponse' smart constructor.
 data CreateRouteResponse =
   CreateRouteResponse'
-    { _crrsReturn :: !(Maybe Bool)
+    { _crrsReturn         :: !(Maybe Bool)
     , _crrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

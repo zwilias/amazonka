@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,10 +49,10 @@ import Network.AWS.Response
 -- | /See:/ 'describeElasticGpus' smart constructor.
 data DescribeElasticGpus =
   DescribeElasticGpus'
-    { _degFilters :: !(Maybe [Filter])
-    , _degNextToken :: !(Maybe Text)
-    , _degDryRun :: !(Maybe Bool)
-    , _degMaxResults :: !(Maybe Int)
+    { _degFilters       :: !(Maybe [Filter])
+    , _degNextToken     :: !(Maybe Text)
+    , _degDryRun        :: !(Maybe Bool)
+    , _degMaxResults    :: !(Maybe Int)
     , _degElasticGpuIds :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -139,9 +139,9 @@ instance ToQuery DescribeElasticGpus where
 -- | /See:/ 'describeElasticGpusResponse' smart constructor.
 data DescribeElasticGpusResponse =
   DescribeElasticGpusResponse'
-    { _degrsElasticGpuSet :: !(Maybe [ElasticGpus])
-    , _degrsNextToken :: !(Maybe Text)
-    , _degrsMaxResults :: !(Maybe Int)
+    { _degrsElasticGpuSet  :: !(Maybe [ElasticGpus])
+    , _degrsNextToken      :: !(Maybe Text)
+    , _degrsMaxResults     :: !(Maybe Int)
     , _degrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

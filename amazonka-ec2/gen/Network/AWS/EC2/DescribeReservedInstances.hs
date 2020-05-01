@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,11 +53,11 @@ import Network.AWS.Response
 -- /See:/ 'describeReservedInstances' smart constructor.
 data DescribeReservedInstances =
   DescribeReservedInstances'
-    { _driFilters :: !(Maybe [Filter])
+    { _driFilters              :: !(Maybe [Filter])
     , _driReservedInstancesIds :: !(Maybe [Text])
-    , _driOfferingType :: !(Maybe OfferingTypeValues)
-    , _driOfferingClass :: !(Maybe OfferingClassType)
-    , _driDryRun :: !(Maybe Bool)
+    , _driOfferingType         :: !(Maybe OfferingTypeValues)
+    , _driOfferingClass        :: !(Maybe OfferingClassType)
+    , _driDryRun               :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -146,7 +146,7 @@ instance ToQuery DescribeReservedInstances where
 data DescribeReservedInstancesResponse =
   DescribeReservedInstancesResponse'
     { _drirsReservedInstances :: !(Maybe [ReservedInstances])
-    , _drirsResponseStatus :: !Int
+    , _drirsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

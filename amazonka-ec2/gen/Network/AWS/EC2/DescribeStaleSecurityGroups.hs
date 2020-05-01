@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,10 +47,10 @@ import Network.AWS.Response
 -- | /See:/ 'describeStaleSecurityGroups' smart constructor.
 data DescribeStaleSecurityGroups =
   DescribeStaleSecurityGroups'
-    { _dssgNextToken :: !(Maybe Text)
-    , _dssgDryRun :: !(Maybe Bool)
+    { _dssgNextToken  :: !(Maybe Text)
+    , _dssgDryRun     :: !(Maybe Bool)
     , _dssgMaxResults :: !(Maybe Nat)
-    , _dssgVPCId :: !Text
+    , _dssgVPCId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -129,8 +129,8 @@ instance ToQuery DescribeStaleSecurityGroups where
 data DescribeStaleSecurityGroupsResponse =
   DescribeStaleSecurityGroupsResponse'
     { _dssgrsStaleSecurityGroupSet :: !(Maybe [StaleSecurityGroup])
-    , _dssgrsNextToken :: !(Maybe Text)
-    , _dssgrsResponseStatus :: !Int
+    , _dssgrsNextToken             :: !(Maybe Text)
+    , _dssgrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

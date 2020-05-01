@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.Response
 -- | /See:/ 'getUserPolicy' smart constructor.
 data GetUserPolicy =
   GetUserPolicy'
-    { _gupUserName :: !Text
+    { _gupUserName   :: !Text
     , _gupPolicyName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -115,8 +115,8 @@ instance ToQuery GetUserPolicy where
 data GetUserPolicyResponse =
   GetUserPolicyResponse'
     { _guprsResponseStatus :: !Int
-    , _guprsUserName :: !Text
-    , _guprsPolicyName :: !Text
+    , _guprsUserName       :: !Text
+    , _guprsPolicyName     :: !Text
     , _guprsPolicyDocument :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

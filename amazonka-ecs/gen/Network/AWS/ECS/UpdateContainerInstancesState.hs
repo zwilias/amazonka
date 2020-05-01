@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -64,9 +64,9 @@ import Network.AWS.Response
 -- | /See:/ 'updateContainerInstancesState' smart constructor.
 data UpdateContainerInstancesState =
   UpdateContainerInstancesState'
-    { _ucisCluster :: !(Maybe Text)
+    { _ucisCluster            :: !(Maybe Text)
     , _ucisContainerInstances :: ![Text]
-    , _ucisStatus :: !ContainerInstanceStatus
+    , _ucisStatus             :: !ContainerInstanceStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -145,9 +145,9 @@ instance ToQuery UpdateContainerInstancesState where
 -- | /See:/ 'updateContainerInstancesStateResponse' smart constructor.
 data UpdateContainerInstancesStateResponse =
   UpdateContainerInstancesStateResponse'
-    { _ucisrsFailures :: !(Maybe [Failure])
+    { _ucisrsFailures           :: !(Maybe [Failure])
     , _ucisrsContainerInstances :: !(Maybe [ContainerInstance])
-    , _ucisrsResponseStatus :: !Int
+    , _ucisrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

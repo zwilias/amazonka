@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,7 +51,7 @@ import Network.AWS.Response
 data ConfigureHealthCheck =
   ConfigureHealthCheck'
     { _chcLoadBalancerName :: !Text
-    , _chcHealthCheck :: !HealthCheck
+    , _chcHealthCheck      :: !HealthCheck
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -115,7 +115,7 @@ instance ToQuery ConfigureHealthCheck where
 -- /See:/ 'configureHealthCheckResponse' smart constructor.
 data ConfigureHealthCheckResponse =
   ConfigureHealthCheckResponse'
-    { _chcrsHealthCheck :: !(Maybe HealthCheck)
+    { _chcrsHealthCheck    :: !(Maybe HealthCheck)
     , _chcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,10 +46,10 @@ import Network.AWS.Response
 -- | /See:/ 'startSchemaExtension' smart constructor.
 data StartSchemaExtension =
   StartSchemaExtension'
-    { _sseDirectoryId :: !Text
+    { _sseDirectoryId                         :: !Text
     , _sseCreateSnapshotBeforeSchemaExtension :: !Bool
-    , _sseLdifContent :: !Text
-    , _sseDescription :: !Text
+    , _sseLdifContent                         :: !Text
+    , _sseDescription                         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -142,7 +142,7 @@ instance ToQuery StartSchemaExtension where
 data StartSchemaExtensionResponse =
   StartSchemaExtensionResponse'
     { _ssersSchemaExtensionId :: !(Maybe Text)
-    , _ssersResponseStatus :: !Int
+    , _ssersResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

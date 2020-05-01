@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,10 +49,10 @@ import Network.AWS.Response
 -- /See:/ 'assignPrivateIPAddresses' smart constructor.
 data AssignPrivateIPAddresses =
   AssignPrivateIPAddresses'
-    { _apiaPrivateIPAddresses :: !(Maybe [Text])
-    , _apiaAllowReassignment :: !(Maybe Bool)
+    { _apiaPrivateIPAddresses             :: !(Maybe [Text])
+    , _apiaAllowReassignment              :: !(Maybe Bool)
     , _apiaSecondaryPrivateIPAddressCount :: !(Maybe Int)
-    , _apiaNetworkInterfaceId :: !Text
+    , _apiaNetworkInterfaceId             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

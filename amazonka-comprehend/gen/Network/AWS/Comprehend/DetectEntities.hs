@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'detectEntities' smart constructor.
 data DetectEntities =
   DetectEntities'
-    { _deText :: !Text
+    { _deText         :: !Text
     , _deLanguageCode :: !LanguageCode
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -108,7 +108,7 @@ instance ToQuery DetectEntities where
 -- | /See:/ 'detectEntitiesResponse' smart constructor.
 data DetectEntitiesResponse =
   DetectEntitiesResponse'
-    { _dersEntities :: !(Maybe [Entity])
+    { _dersEntities       :: !(Maybe [Entity])
     , _dersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 data PutKeyPolicy =
   PutKeyPolicy'
     { _pkpBypassPolicyLockoutSafetyCheck :: !(Maybe Bool)
-    , _pkpKeyId :: !Text
-    , _pkpPolicyName :: !Text
-    , _pkpPolicy :: !Text
+    , _pkpKeyId                          :: !Text
+    , _pkpPolicyName                     :: !Text
+    , _pkpPolicy                         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

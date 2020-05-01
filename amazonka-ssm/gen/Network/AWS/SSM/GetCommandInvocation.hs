@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -61,7 +61,7 @@ import Network.AWS.SSM.Types.Product
 data GetCommandInvocation =
   GetCommandInvocation'
     { _gciPluginName :: !(Maybe Text)
-    , _gciCommandId :: !Text
+    , _gciCommandId  :: !Text
     , _gciInstanceId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -152,23 +152,23 @@ instance ToQuery GetCommandInvocation where
 -- | /See:/ 'getCommandInvocationResponse' smart constructor.
 data GetCommandInvocationResponse =
   GetCommandInvocationResponse'
-    { _gcirsInstanceId :: !(Maybe Text)
-    , _gcirsStatus :: !(Maybe CommandInvocationStatus)
-    , _gcirsStandardErrorContent :: !(Maybe Text)
-    , _gcirsExecutionElapsedTime :: !(Maybe Text)
-    , _gcirsDocumentName :: !(Maybe Text)
-    , _gcirsStandardErrorURL :: !(Maybe Text)
+    { _gcirsInstanceId             :: !(Maybe Text)
+    , _gcirsStatus                 :: !(Maybe CommandInvocationStatus)
+    , _gcirsStandardErrorContent   :: !(Maybe Text)
+    , _gcirsExecutionElapsedTime   :: !(Maybe Text)
+    , _gcirsDocumentName           :: !(Maybe Text)
+    , _gcirsStandardErrorURL       :: !(Maybe Text)
     , _gcirsExecutionStartDateTime :: !(Maybe Text)
-    , _gcirsResponseCode :: !(Maybe Int)
-    , _gcirsStatusDetails :: !(Maybe Text)
-    , _gcirsExecutionEndDateTime :: !(Maybe Text)
-    , _gcirsStandardOutputURL :: !(Maybe Text)
-    , _gcirsCommandId :: !(Maybe Text)
-    , _gcirsDocumentVersion :: !(Maybe Text)
-    , _gcirsStandardOutputContent :: !(Maybe Text)
-    , _gcirsComment :: !(Maybe Text)
-    , _gcirsPluginName :: !(Maybe Text)
-    , _gcirsResponseStatus :: !Int
+    , _gcirsResponseCode           :: !(Maybe Int)
+    , _gcirsStatusDetails          :: !(Maybe Text)
+    , _gcirsExecutionEndDateTime   :: !(Maybe Text)
+    , _gcirsStandardOutputURL      :: !(Maybe Text)
+    , _gcirsCommandId              :: !(Maybe Text)
+    , _gcirsDocumentVersion        :: !(Maybe Text)
+    , _gcirsStandardOutputContent  :: !(Maybe Text)
+    , _gcirsComment                :: !(Maybe Text)
+    , _gcirsPluginName             :: !(Maybe Text)
+    , _gcirsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,10 +50,10 @@ import Network.AWS.Response
 -- | /See:/ 'describeDomainControllers' smart constructor.
 data DescribeDomainControllers =
   DescribeDomainControllers'
-    { _ddcNextToken :: !(Maybe Text)
+    { _ddcNextToken           :: !(Maybe Text)
     , _ddcDomainControllerIds :: !(Maybe [Text])
-    , _ddcLimit :: !(Maybe Nat)
-    , _ddcDirectoryId :: !Text
+    , _ddcLimit               :: !(Maybe Nat)
+    , _ddcDirectoryId         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -145,9 +145,9 @@ instance ToQuery DescribeDomainControllers where
 -- | /See:/ 'describeDomainControllersResponse' smart constructor.
 data DescribeDomainControllersResponse =
   DescribeDomainControllersResponse'
-    { _ddcrsNextToken :: !(Maybe Text)
+    { _ddcrsNextToken         :: !(Maybe Text)
     , _ddcrsDomainControllers :: !(Maybe [DomainController])
-    , _ddcrsResponseStatus :: !Int
+    , _ddcrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

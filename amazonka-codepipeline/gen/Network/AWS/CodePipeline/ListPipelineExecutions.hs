@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.Response
 -- /See:/ 'listPipelineExecutions' smart constructor.
 data ListPipelineExecutions =
   ListPipelineExecutions'
-    { _lpeNextToken :: !(Maybe Text)
-    , _lpeMaxResults :: !(Maybe Nat)
+    { _lpeNextToken    :: !(Maybe Text)
+    , _lpeMaxResults   :: !(Maybe Nat)
     , _lpePipelineName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -133,9 +133,9 @@ instance ToQuery ListPipelineExecutions where
 -- /See:/ 'listPipelineExecutionsResponse' smart constructor.
 data ListPipelineExecutionsResponse =
   ListPipelineExecutionsResponse'
-    { _lpersNextToken :: !(Maybe Text)
+    { _lpersNextToken                  :: !(Maybe Text)
     , _lpersPipelineExecutionSummaries :: !(Maybe [PipelineExecutionSummary])
-    , _lpersResponseStatus :: !Int
+    , _lpersResponseStatus             :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,8 +47,8 @@ import Network.AWS.Response
 -- | /See:/ 'putAutoScalingPolicy' smart constructor.
 data PutAutoScalingPolicy =
   PutAutoScalingPolicy'
-    { _paspClusterId :: !Text
-    , _paspInstanceGroupId :: !Text
+    { _paspClusterId         :: !Text
+    , _paspInstanceGroupId   :: !Text
     , _paspAutoScalingPolicy :: !AutoScalingPolicy
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -130,10 +130,10 @@ instance ToQuery PutAutoScalingPolicy where
 -- | /See:/ 'putAutoScalingPolicyResponse' smart constructor.
 data PutAutoScalingPolicyResponse =
   PutAutoScalingPolicyResponse'
-    { _pasprsClusterId :: !(Maybe Text)
+    { _pasprsClusterId         :: !(Maybe Text)
     , _pasprsAutoScalingPolicy :: !(Maybe AutoScalingPolicyDescription)
-    , _pasprsInstanceGroupId :: !(Maybe Text)
-    , _pasprsResponseStatus :: !Int
+    , _pasprsInstanceGroupId   :: !(Maybe Text)
+    , _pasprsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

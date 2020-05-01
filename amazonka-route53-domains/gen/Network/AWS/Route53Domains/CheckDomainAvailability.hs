@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Route53Domains.Types.Product
 data CheckDomainAvailability =
   CheckDomainAvailability'
     { _cdaIdNLangCode :: !(Maybe Text)
-    , _cdaDomainName :: !Text
+    , _cdaDomainName  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -119,7 +119,7 @@ instance ToQuery CheckDomainAvailability where
 data CheckDomainAvailabilityResponse =
   CheckDomainAvailabilityResponse'
     { _cdarsResponseStatus :: !Int
-    , _cdarsAvailability :: !DomainAvailability
+    , _cdarsAvailability   :: !DomainAvailability
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

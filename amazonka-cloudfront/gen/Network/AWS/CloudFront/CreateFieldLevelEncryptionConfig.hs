@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -102,10 +102,10 @@ instance ToQuery CreateFieldLevelEncryptionConfig where
 -- | /See:/ 'createFieldLevelEncryptionConfigResponse' smart constructor.
 data CreateFieldLevelEncryptionConfigResponse =
   CreateFieldLevelEncryptionConfigResponse'
-    { _cflecrsETag :: !(Maybe Text)
-    , _cflecrsLocation :: !(Maybe Text)
+    { _cflecrsETag                 :: !(Maybe Text)
+    , _cflecrsLocation             :: !(Maybe Text)
     , _cflecrsFieldLevelEncryption :: !(Maybe FieldLevelEncryption)
-    , _cflecrsResponseStatus :: !Int
+    , _cflecrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.Route53.Types.Product
 -- /See:/ 'listVPCAssociationAuthorizations' smart constructor.
 data ListVPCAssociationAuthorizations =
   ListVPCAssociationAuthorizations'
-    { _lvaaNextToken :: !(Maybe Text)
-    , _lvaaMaxResults :: !(Maybe Text)
+    { _lvaaNextToken    :: !(Maybe Text)
+    , _lvaaMaxResults   :: !(Maybe Text)
     , _lvaaHostedZoneId :: !ResourceId
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -127,10 +127,10 @@ instance ToQuery ListVPCAssociationAuthorizations where
 -- /See:/ 'listVPCAssociationAuthorizationsResponse' smart constructor.
 data ListVPCAssociationAuthorizationsResponse =
   ListVPCAssociationAuthorizationsResponse'
-    { _lvaarsNextToken :: !(Maybe Text)
+    { _lvaarsNextToken      :: !(Maybe Text)
     , _lvaarsResponseStatus :: !Int
-    , _lvaarsHostedZoneId :: !ResourceId
-    , _lvaarsVPCs :: !(List1 VPC)
+    , _lvaarsHostedZoneId   :: !ResourceId
+    , _lvaarsVPCs           :: !(List1 VPC)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

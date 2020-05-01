@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'putInstancePublicPorts' smart constructor.
 data PutInstancePublicPorts =
   PutInstancePublicPorts'
-    { _pippPortInfos :: ![PortInfo]
+    { _pippPortInfos    :: ![PortInfo]
     , _pippInstanceName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -110,7 +110,7 @@ instance ToQuery PutInstancePublicPorts where
 -- | /See:/ 'putInstancePublicPortsResponse' smart constructor.
 data PutInstancePublicPortsResponse =
   PutInstancePublicPortsResponse'
-    { _pipprsOperation :: !(Maybe Operation)
+    { _pipprsOperation      :: !(Maybe Operation)
     , _pipprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -59,11 +59,11 @@ import Network.AWS.Response
 -- /See:/ 'describeHSMConfigurations' smart constructor.
 data DescribeHSMConfigurations =
   DescribeHSMConfigurations'
-    { _dhsmcTagValues :: !(Maybe [Text])
+    { _dhsmcTagValues                  :: !(Maybe [Text])
     , _dhsmcHSMConfigurationIdentifier :: !(Maybe Text)
-    , _dhsmcTagKeys :: !(Maybe [Text])
-    , _dhsmcMarker :: !(Maybe Text)
-    , _dhsmcMaxRecords :: !(Maybe Int)
+    , _dhsmcTagKeys                    :: !(Maybe [Text])
+    , _dhsmcMarker                     :: !(Maybe Text)
+    , _dhsmcMaxRecords                 :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -162,9 +162,9 @@ instance ToQuery DescribeHSMConfigurations where
 -- /See:/ 'describeHSMConfigurationsResponse' smart constructor.
 data DescribeHSMConfigurationsResponse =
   DescribeHSMConfigurationsResponse'
-    { _dhcrsMarker :: !(Maybe Text)
+    { _dhcrsMarker            :: !(Maybe Text)
     , _dhcrsHSMConfigurations :: !(Maybe [HSMConfiguration])
-    , _dhcrsResponseStatus :: !Int
+    , _dhcrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

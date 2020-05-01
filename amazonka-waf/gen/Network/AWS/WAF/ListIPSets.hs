@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.WAF.Types.Product
 data ListIPSets =
   ListIPSets'
     { _lisNextMarker :: !(Maybe Text)
-    , _lisLimit :: !(Maybe Nat)
+    , _lisLimit      :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -114,8 +114,8 @@ instance ToQuery ListIPSets where
 -- | /See:/ 'listIPSetsResponse' smart constructor.
 data ListIPSetsResponse =
   ListIPSetsResponse'
-    { _lisrsNextMarker :: !(Maybe Text)
-    , _lisrsIPSets :: !(Maybe [IPSetSummary])
+    { _lisrsNextMarker     :: !(Maybe Text)
+    , _lisrsIPSets         :: !(Maybe [IPSetSummary])
     , _lisrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

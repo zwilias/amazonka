@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 data UpdateLoadBalancerAttribute =
   UpdateLoadBalancerAttribute'
     { _ulbaLoadBalancerName :: !Text
-    , _ulbaAttributeName :: !LoadBalancerAttributeName
-    , _ulbaAttributeValue :: !Text
+    , _ulbaAttributeName    :: !LoadBalancerAttributeName
+    , _ulbaAttributeValue   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -127,7 +127,7 @@ instance ToQuery UpdateLoadBalancerAttribute where
 -- | /See:/ 'updateLoadBalancerAttributeResponse' smart constructor.
 data UpdateLoadBalancerAttributeResponse =
   UpdateLoadBalancerAttributeResponse'
-    { _ulbarsOperations :: !(Maybe [Operation])
+    { _ulbarsOperations     :: !(Maybe [Operation])
     , _ulbarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

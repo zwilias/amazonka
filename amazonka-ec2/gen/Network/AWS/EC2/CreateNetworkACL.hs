@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,7 +51,7 @@ import Network.AWS.Response
 data CreateNetworkACL =
   CreateNetworkACL'
     { _cnaDryRun :: !(Maybe Bool)
-    , _cnaVPCId :: !Text
+    , _cnaVPCId  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -111,7 +111,7 @@ instance ToQuery CreateNetworkACL where
 -- /See:/ 'createNetworkACLResponse' smart constructor.
 data CreateNetworkACLResponse =
   CreateNetworkACLResponse'
-    { _cnarsNetworkACL :: !(Maybe NetworkACL)
+    { _cnarsNetworkACL     :: !(Maybe NetworkACL)
     , _cnarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

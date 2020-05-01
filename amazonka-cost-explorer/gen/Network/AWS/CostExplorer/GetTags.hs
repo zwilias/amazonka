@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,9 +50,9 @@ import Network.AWS.Response
 data GetTags =
   GetTags'
     { _gtNextPageToken :: !(Maybe Text)
-    , _gtSearchString :: !(Maybe Text)
-    , _gtTagKey :: !(Maybe Text)
-    , _gtTimePeriod :: !DateInterval
+    , _gtSearchString  :: !(Maybe Text)
+    , _gtTagKey        :: !(Maybe Text)
+    , _gtTimePeriod    :: !DateInterval
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -136,11 +136,11 @@ instance ToQuery GetTags where
 -- | /See:/ 'getTagsResponse' smart constructor.
 data GetTagsResponse =
   GetTagsResponse'
-    { _gtrsNextPageToken :: !(Maybe Text)
+    { _gtrsNextPageToken  :: !(Maybe Text)
     , _gtrsResponseStatus :: !Int
-    , _gtrsTags :: ![Text]
-    , _gtrsReturnSize :: !Int
-    , _gtrsTotalSize :: !Int
+    , _gtrsTags           :: ![Text]
+    , _gtrsReturnSize     :: !Int
+    , _gtrsTotalSize      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,11 +55,11 @@ import Network.AWS.Response
 -- | /See:/ 'listBackups' smart constructor.
 data ListBackups =
   ListBackups'
-    { _lbTimeRangeUpperBound :: !(Maybe POSIX)
-    , _lbTimeRangeLowerBound :: !(Maybe POSIX)
-    , _lbLimit :: !(Maybe Nat)
+    { _lbTimeRangeUpperBound     :: !(Maybe POSIX)
+    , _lbTimeRangeLowerBound     :: !(Maybe POSIX)
+    , _lbLimit                   :: !(Maybe Nat)
     , _lbExclusiveStartBackupARN :: !(Maybe Text)
-    , _lbTableName :: !(Maybe Text)
+    , _lbTableName               :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -160,9 +160,9 @@ instance ToQuery ListBackups where
 -- | /See:/ 'listBackupsResponse' smart constructor.
 data ListBackupsResponse =
   ListBackupsResponse'
-    { _lbrsBackupSummaries :: !(Maybe [BackupSummary])
+    { _lbrsBackupSummaries        :: !(Maybe [BackupSummary])
     , _lbrsLastEvaluatedBackupARN :: !(Maybe Text)
-    , _lbrsResponseStatus :: !Int
+    , _lbrsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

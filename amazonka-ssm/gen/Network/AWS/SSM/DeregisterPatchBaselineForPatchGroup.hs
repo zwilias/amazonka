@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -113,8 +113,8 @@ instance ToQuery DeregisterPatchBaselineForPatchGroup where
 -- | /See:/ 'deregisterPatchBaselineForPatchGroupResponse' smart constructor.
 data DeregisterPatchBaselineForPatchGroupResponse =
   DeregisterPatchBaselineForPatchGroupResponse'
-    { _dpbfpgrsBaselineId :: !(Maybe Text)
-    , _dpbfpgrsPatchGroup :: !(Maybe Text)
+    { _dpbfpgrsBaselineId     :: !(Maybe Text)
+    , _dpbfpgrsPatchGroup     :: !(Maybe Text)
     , _dpbfpgrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

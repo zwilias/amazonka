@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -92,7 +92,7 @@ instance ToQuery GetCurrentUser where
 -- | /See:/ 'getCurrentUserResponse' smart constructor.
 data GetCurrentUserResponse =
   GetCurrentUserResponse'
-    { _gcursUser :: !(Maybe User)
+    { _gcursUser           :: !(Maybe User)
     , _gcursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

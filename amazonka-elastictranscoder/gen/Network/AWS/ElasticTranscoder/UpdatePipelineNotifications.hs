@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.Response
 -- /See:/ 'updatePipelineNotifications' smart constructor.
 data UpdatePipelineNotifications =
   UpdatePipelineNotifications'
-    { _upnId :: !Text
+    { _upnId            :: !Text
     , _upnNotifications :: !Notifications
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -112,7 +112,7 @@ instance ToQuery UpdatePipelineNotifications where
 -- /See:/ 'updatePipelineNotificationsResponse' smart constructor.
 data UpdatePipelineNotificationsResponse =
   UpdatePipelineNotificationsResponse'
-    { _upnrsPipeline :: !(Maybe Pipeline)
+    { _upnrsPipeline       :: !(Maybe Pipeline)
     , _upnrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

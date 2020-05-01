@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,8 +45,8 @@ import Network.AWS.StepFunctions.Types.Product
 -- | /See:/ 'updateStateMachine' smart constructor.
 data UpdateStateMachine =
   UpdateStateMachine'
-    { _usmDefinition :: !(Maybe Text)
-    , _usmRoleARN :: !(Maybe Text)
+    { _usmDefinition      :: !(Maybe Text)
+    , _usmRoleARN         :: !(Maybe Text)
     , _usmStateMachineARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -124,7 +124,7 @@ instance ToQuery UpdateStateMachine where
 data UpdateStateMachineResponse =
   UpdateStateMachineResponse'
     { _usmrsResponseStatus :: !Int
-    , _usmrsUpdateDate :: !POSIX
+    , _usmrsUpdateDate     :: !POSIX
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

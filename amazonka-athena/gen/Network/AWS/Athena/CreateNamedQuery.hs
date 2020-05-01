@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,10 +50,10 @@ import Network.AWS.Response
 data CreateNamedQuery =
   CreateNamedQuery'
     { _cnqClientRequestToken :: !(Maybe Text)
-    , _cnqDescription :: !(Maybe Text)
-    , _cnqName :: !Text
-    , _cnqDatabase :: !Text
-    , _cnqQueryString :: !Text
+    , _cnqDescription        :: !(Maybe Text)
+    , _cnqName               :: !Text
+    , _cnqDatabase           :: !Text
+    , _cnqQueryString        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -146,7 +146,7 @@ instance ToQuery CreateNamedQuery where
 -- | /See:/ 'createNamedQueryResponse' smart constructor.
 data CreateNamedQueryResponse =
   CreateNamedQueryResponse'
-    { _cnqrsNamedQueryId :: !(Maybe Text)
+    { _cnqrsNamedQueryId   :: !(Maybe Text)
     , _cnqrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

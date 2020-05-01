@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -103,7 +103,7 @@ import Network.AWS.Response
 -- | /See:/ 'putTargets' smart constructor.
 data PutTargets =
   PutTargets'
-    { _ptRule :: !Text
+    { _ptRule    :: !Text
     , _ptTargets :: !(List1 Target)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -167,8 +167,8 @@ instance ToQuery PutTargets where
 data PutTargetsResponse =
   PutTargetsResponse'
     { _ptrsFailedEntryCount :: !(Maybe Int)
-    , _ptrsFailedEntries :: !(Maybe [PutTargetsResultEntry])
-    , _ptrsResponseStatus :: !Int
+    , _ptrsFailedEntries    :: !(Maybe [PutTargetsResultEntry])
+    , _ptrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

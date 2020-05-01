@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,9 +56,9 @@ import Network.AWS.Response
 data DescribeSnapshots =
   DescribeSnapshots'
     { _dsDirectoryId :: !(Maybe Text)
-    , _dsNextToken :: !(Maybe Text)
+    , _dsNextToken   :: !(Maybe Text)
     , _dsSnapshotIds :: !(Maybe [Text])
-    , _dsLimit :: !(Maybe Nat)
+    , _dsLimit       :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -145,8 +145,8 @@ instance ToQuery DescribeSnapshots where
 -- /See:/ 'describeSnapshotsResponse' smart constructor.
 data DescribeSnapshotsResponse =
   DescribeSnapshotsResponse'
-    { _dssrsNextToken :: !(Maybe Text)
-    , _dssrsSnapshots :: !(Maybe [Snapshot])
+    { _dssrsNextToken      :: !(Maybe Text)
+    , _dssrsSnapshots      :: !(Maybe [Snapshot])
     , _dssrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

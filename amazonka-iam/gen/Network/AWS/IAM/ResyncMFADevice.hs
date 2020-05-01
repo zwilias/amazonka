@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,8 +45,8 @@ import Network.AWS.Response
 -- | /See:/ 'resyncMFADevice' smart constructor.
 data ResyncMFADevice =
   ResyncMFADevice'
-    { _rmdUserName :: !Text
-    , _rmdSerialNumber :: !Text
+    { _rmdUserName            :: !Text
+    , _rmdSerialNumber        :: !Text
     , _rmdAuthenticationCode1 :: !Text
     , _rmdAuthenticationCode2 :: !Text
     }

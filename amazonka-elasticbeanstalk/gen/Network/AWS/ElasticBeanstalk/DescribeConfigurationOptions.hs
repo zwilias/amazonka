@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,12 +54,12 @@ import Network.AWS.Response
 -- /See:/ 'describeConfigurationOptions' smart constructor.
 data DescribeConfigurationOptions =
   DescribeConfigurationOptions'
-    { _dcoTemplateName :: !(Maybe Text)
-    , _dcoPlatformARN :: !(Maybe Text)
-    , _dcoEnvironmentName :: !(Maybe Text)
-    , _dcoApplicationName :: !(Maybe Text)
+    { _dcoTemplateName      :: !(Maybe Text)
+    , _dcoPlatformARN       :: !(Maybe Text)
+    , _dcoEnvironmentName   :: !(Maybe Text)
+    , _dcoApplicationName   :: !(Maybe Text)
     , _dcoSolutionStackName :: !(Maybe Text)
-    , _dcoOptions :: !(Maybe [OptionSpecification])
+    , _dcoOptions           :: !(Maybe [OptionSpecification])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -158,10 +158,10 @@ instance ToQuery DescribeConfigurationOptions where
 -- /See:/ 'describeConfigurationOptionsResponse' smart constructor.
 data DescribeConfigurationOptionsResponse =
   DescribeConfigurationOptionsResponse'
-    { _dcorsPlatformARN :: !(Maybe Text)
+    { _dcorsPlatformARN       :: !(Maybe Text)
     , _dcorsSolutionStackName :: !(Maybe Text)
-    , _dcorsOptions :: !(Maybe [ConfigurationOptionDescription])
-    , _dcorsResponseStatus :: !Int
+    , _dcorsOptions           :: !(Maybe [ConfigurationOptionDescription])
+    , _dcorsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

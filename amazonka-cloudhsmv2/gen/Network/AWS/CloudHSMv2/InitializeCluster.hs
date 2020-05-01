@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 -- | /See:/ 'initializeCluster' smart constructor.
 data InitializeCluster =
   InitializeCluster'
-    { _icClusterId :: !Text
-    , _icSignedCert :: !Text
+    { _icClusterId   :: !Text
+    , _icSignedCert  :: !Text
     , _icTrustAnchor :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -125,8 +125,8 @@ instance ToQuery InitializeCluster where
 -- | /See:/ 'initializeClusterResponse' smart constructor.
 data InitializeClusterResponse =
   InitializeClusterResponse'
-    { _icrsStateMessage :: !(Maybe Text)
-    , _icrsState :: !(Maybe ClusterState)
+    { _icrsStateMessage   :: !(Maybe Text)
+    , _icrsState          :: !(Maybe ClusterState)
     , _icrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

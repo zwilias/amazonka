@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -60,14 +60,14 @@ import Network.AWS.Response
 -- /See:/ 'describeDBClusterSnapshots' smart constructor.
 data DescribeDBClusterSnapshots =
   DescribeDBClusterSnapshots'
-    { _ddbcsDBClusterIdentifier :: !(Maybe Text)
-    , _ddbcsIncludeShared :: !(Maybe Bool)
+    { _ddbcsDBClusterIdentifier         :: !(Maybe Text)
+    , _ddbcsIncludeShared               :: !(Maybe Bool)
     , _ddbcsDBClusterSnapshotIdentifier :: !(Maybe Text)
-    , _ddbcsFilters :: !(Maybe [Filter])
-    , _ddbcsSnapshotType :: !(Maybe Text)
-    , _ddbcsMarker :: !(Maybe Text)
-    , _ddbcsMaxRecords :: !(Maybe Int)
-    , _ddbcsIncludePublic :: !(Maybe Bool)
+    , _ddbcsFilters                     :: !(Maybe [Filter])
+    , _ddbcsSnapshotType                :: !(Maybe Text)
+    , _ddbcsMarker                      :: !(Maybe Text)
+    , _ddbcsMaxRecords                  :: !(Maybe Int)
+    , _ddbcsIncludePublic               :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -193,9 +193,9 @@ instance ToQuery DescribeDBClusterSnapshots where
 -- /See:/ 'describeDBClusterSnapshotsResponse' smart constructor.
 data DescribeDBClusterSnapshotsResponse =
   DescribeDBClusterSnapshotsResponse'
-    { _ddbcsrsMarker :: !(Maybe Text)
+    { _ddbcsrsMarker             :: !(Maybe Text)
     , _ddbcsrsDBClusterSnapshots :: !(Maybe [DBClusterSnapshot])
-    , _ddbcsrsResponseStatus :: !Int
+    , _ddbcsrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

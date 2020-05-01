@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,9 +49,9 @@ import Network.AWS.Response
 -- | /See:/ 'listGroupResources' smart constructor.
 data ListGroupResources =
   ListGroupResources'
-    { _lgrNextToken :: !(Maybe Text)
+    { _lgrNextToken  :: !(Maybe Text)
     , _lgrMaxResults :: !(Maybe Nat)
-    , _lgrGroupName :: !Text
+    , _lgrGroupName  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -121,9 +121,9 @@ instance ToQuery ListGroupResources where
 -- | /See:/ 'listGroupResourcesResponse' smart constructor.
 data ListGroupResourcesResponse =
   ListGroupResourcesResponse'
-    { _lgrrsNextToken :: !(Maybe Text)
+    { _lgrrsNextToken           :: !(Maybe Text)
     , _lgrrsResourceIdentifiers :: !(Maybe [ResourceIdentifier])
-    , _lgrrsResponseStatus :: !Int
+    , _lgrrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

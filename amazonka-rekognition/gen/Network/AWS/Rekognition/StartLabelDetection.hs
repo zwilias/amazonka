@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,11 +55,11 @@ import Network.AWS.Response
 -- | /See:/ 'startLabelDetection' smart constructor.
 data StartLabelDetection =
   StartLabelDetection'
-    { _sldJobTag :: !(Maybe Text)
+    { _sldJobTag              :: !(Maybe Text)
     , _sldNotificationChannel :: !(Maybe NotificationChannel)
-    , _sldClientRequestToken :: !(Maybe Text)
-    , _sldMinConfidence :: !(Maybe Double)
-    , _sldVideo :: !Video
+    , _sldClientRequestToken  :: !(Maybe Text)
+    , _sldMinConfidence       :: !(Maybe Double)
+    , _sldVideo               :: !Video
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -152,7 +152,7 @@ instance ToQuery StartLabelDetection where
 -- | /See:/ 'startLabelDetectionResponse' smart constructor.
 data StartLabelDetectionResponse =
   StartLabelDetectionResponse'
-    { _sldrsJobId :: !(Maybe Text)
+    { _sldrsJobId          :: !(Maybe Text)
     , _sldrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

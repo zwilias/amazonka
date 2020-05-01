@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -74,10 +74,10 @@ import Network.AWS.Response
 -- | /See:/ 'importCertificate' smart constructor.
 data ImportCertificate =
   ImportCertificate'
-    { _icCertificateARN :: !(Maybe Text)
+    { _icCertificateARN   :: !(Maybe Text)
     , _icCertificateChain :: !(Maybe Base64)
-    , _icCertificate :: !Base64
-    , _icPrivateKey :: !(Sensitive Base64)
+    , _icCertificate      :: !Base64
+    , _icPrivateKey       :: !(Sensitive Base64)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -70,16 +70,16 @@ import Network.AWS.Route53Domains.Types.Product
 -- /See:/ 'registerDomain' smart constructor.
 data RegisterDomain =
   RegisterDomain'
-    { _rPrivacyProtectTechContact :: !(Maybe Bool)
+    { _rPrivacyProtectTechContact       :: !(Maybe Bool)
     , _rPrivacyProtectRegistrantContact :: !(Maybe Bool)
-    , _rAutoRenew :: !(Maybe Bool)
-    , _rPrivacyProtectAdminContact :: !(Maybe Bool)
-    , _rIdNLangCode :: !(Maybe Text)
-    , _rDomainName :: !Text
-    , _rDurationInYears :: !Nat
-    , _rAdminContact :: !(Sensitive ContactDetail)
-    , _rRegistrantContact :: !(Sensitive ContactDetail)
-    , _rTechContact :: !(Sensitive ContactDetail)
+    , _rAutoRenew                       :: !(Maybe Bool)
+    , _rPrivacyProtectAdminContact      :: !(Maybe Bool)
+    , _rIdNLangCode                     :: !(Maybe Text)
+    , _rDomainName                      :: !Text
+    , _rDurationInYears                 :: !Nat
+    , _rAdminContact                    :: !(Sensitive ContactDetail)
+    , _rRegistrantContact               :: !(Sensitive ContactDetail)
+    , _rTechContact                     :: !(Sensitive ContactDetail)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -230,7 +230,7 @@ instance ToQuery RegisterDomain where
 data RegisterDomainResponse =
   RegisterDomainResponse'
     { _rdrsResponseStatus :: !Int
-    , _rdrsOperationId :: !Text
+    , _rdrsOperationId    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,9 +47,9 @@ import Network.AWS.Response
 -- | /See:/ 'describeRAIdArrays' smart constructor.
 data DescribeRAIdArrays =
   DescribeRAIdArrays'
-    { _draiaInstanceId :: !(Maybe Text)
+    { _draiaInstanceId   :: !(Maybe Text)
     , _draiaRAIdArrayIds :: !(Maybe [Text])
-    , _draiaStackId :: !(Maybe Text)
+    , _draiaStackId      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -128,7 +128,7 @@ instance ToQuery DescribeRAIdArrays where
 -- /See:/ 'describeRAIdArraysResponse' smart constructor.
 data DescribeRAIdArraysResponse =
   DescribeRAIdArraysResponse'
-    { _draiarsRAIdArrays :: !(Maybe [RAIdArray])
+    { _draiarsRAIdArrays     :: !(Maybe [RAIdArray])
     , _draiarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.Response
 -- /See:/ 'describeReplicationSubnetGroups' smart constructor.
 data DescribeReplicationSubnetGroups =
   DescribeReplicationSubnetGroups'
-    { _drsgFilters :: !(Maybe [Filter])
-    , _drsgMarker :: !(Maybe Text)
+    { _drsgFilters    :: !(Maybe [Filter])
+    , _drsgMarker     :: !(Maybe Text)
     , _drsgMaxRecords :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -137,9 +137,9 @@ instance ToQuery DescribeReplicationSubnetGroups where
 -- /See:/ 'describeReplicationSubnetGroupsResponse' smart constructor.
 data DescribeReplicationSubnetGroupsResponse =
   DescribeReplicationSubnetGroupsResponse'
-    { _drsgsrsMarker :: !(Maybe Text)
+    { _drsgsrsMarker                  :: !(Maybe Text)
     , _drsgsrsReplicationSubnetGroups :: !(Maybe [ReplicationSubnetGroup])
-    , _drsgsrsResponseStatus :: !Int
+    , _drsgsrsResponseStatus          :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

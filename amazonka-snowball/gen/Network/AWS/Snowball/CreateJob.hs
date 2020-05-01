@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,17 +54,17 @@ import Network.AWS.Snowball.Types.Product
 -- | /See:/ 'createJob' smart constructor.
 data CreateJob =
   CreateJob'
-    { _cjJobType :: !(Maybe JobType)
-    , _cjKMSKeyARN :: !(Maybe Text)
-    , _cjNotification :: !(Maybe Notification)
-    , _cjForwardingAddressId :: !(Maybe Text)
-    , _cjAddressId :: !(Maybe Text)
-    , _cjSnowballType :: !(Maybe SnowballType)
-    , _cjShippingOption :: !(Maybe ShippingOption)
-    , _cjResources :: !(Maybe JobResource)
-    , _cjClusterId :: !(Maybe Text)
-    , _cjDescription :: !(Maybe Text)
-    , _cjRoleARN :: !(Maybe Text)
+    { _cjJobType                    :: !(Maybe JobType)
+    , _cjKMSKeyARN                  :: !(Maybe Text)
+    , _cjNotification               :: !(Maybe Notification)
+    , _cjForwardingAddressId        :: !(Maybe Text)
+    , _cjAddressId                  :: !(Maybe Text)
+    , _cjSnowballType               :: !(Maybe SnowballType)
+    , _cjShippingOption             :: !(Maybe ShippingOption)
+    , _cjResources                  :: !(Maybe JobResource)
+    , _cjClusterId                  :: !(Maybe Text)
+    , _cjDescription                :: !(Maybe Text)
+    , _cjRoleARN                    :: !(Maybe Text)
     , _cjSnowballCapacityPreference :: !(Maybe SnowballCapacity)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -212,7 +212,7 @@ instance ToQuery CreateJob where
 -- | /See:/ 'createJobResponse' smart constructor.
 data CreateJobResponse =
   CreateJobResponse'
-    { _cjrsJobId :: !(Maybe Text)
+    { _cjrsJobId          :: !(Maybe Text)
     , _cjrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -105,8 +105,8 @@ instance ToQuery ListHSMs where
 -- /See:/ 'listHSMsResponse' smart constructor.
 data ListHSMsResponse =
   ListHSMsResponse'
-    { _lhsmrsNextToken :: !(Maybe Text)
-    , _lhsmrsHSMList :: !(Maybe [Text])
+    { _lhsmrsNextToken      :: !(Maybe Text)
+    , _lhsmrsHSMList        :: !(Maybe [Text])
     , _lhsmrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

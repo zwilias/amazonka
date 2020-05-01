@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,12 +50,12 @@ import Network.AWS.Response
 data StartBuild =
   StartBuild'
     { _sbEnvironmentVariablesOverride :: !(Maybe [EnvironmentVariable])
-    , _sbTimeoutInMinutesOverride :: !(Maybe Nat)
-    , _sbGitCloneDepthOverride :: !(Maybe Nat)
-    , _sbSourceVersion :: !(Maybe Text)
-    , _sbBuildspecOverride :: !(Maybe Text)
-    , _sbArtifactsOverride :: !(Maybe ProjectArtifacts)
-    , _sbProjectName :: !Text
+    , _sbTimeoutInMinutesOverride     :: !(Maybe Nat)
+    , _sbGitCloneDepthOverride        :: !(Maybe Nat)
+    , _sbSourceVersion                :: !(Maybe Text)
+    , _sbBuildspecOverride            :: !(Maybe Text)
+    , _sbArtifactsOverride            :: !(Maybe ProjectArtifacts)
+    , _sbProjectName                  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -170,7 +170,7 @@ instance ToQuery StartBuild where
 -- | /See:/ 'startBuildResponse' smart constructor.
 data StartBuildResponse =
   StartBuildResponse'
-    { _srsBuild :: !(Maybe Build)
+    { _srsBuild          :: !(Maybe Build)
     , _srsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

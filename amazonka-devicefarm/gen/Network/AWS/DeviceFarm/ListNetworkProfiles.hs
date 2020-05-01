@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,8 +47,8 @@ import Network.AWS.Response
 data ListNetworkProfiles =
   ListNetworkProfiles'
     { _lnpNextToken :: !(Maybe Text)
-    , _lnpType :: !(Maybe NetworkProfileType)
-    , _lnpArn :: !Text
+    , _lnpType      :: !(Maybe NetworkProfileType)
+    , _lnpArn       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -122,8 +122,8 @@ instance ToQuery ListNetworkProfiles where
 data ListNetworkProfilesResponse =
   ListNetworkProfilesResponse'
     { _lnprsNetworkProfiles :: !(Maybe [NetworkProfile])
-    , _lnprsNextToken :: !(Maybe Text)
-    , _lnprsResponseStatus :: !Int
+    , _lnprsNextToken       :: !(Maybe Text)
+    , _lnprsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

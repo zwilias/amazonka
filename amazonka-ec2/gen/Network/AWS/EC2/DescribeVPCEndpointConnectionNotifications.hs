@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,11 +48,11 @@ import Network.AWS.Response
 -- | /See:/ 'describeVPCEndpointConnectionNotifications' smart constructor.
 data DescribeVPCEndpointConnectionNotifications =
   DescribeVPCEndpointConnectionNotifications'
-    { _dvpcecnFilters :: !(Maybe [Filter])
-    , _dvpcecnNextToken :: !(Maybe Text)
+    { _dvpcecnFilters                  :: !(Maybe [Filter])
+    , _dvpcecnNextToken                :: !(Maybe Text)
     , _dvpcecnConnectionNotificationId :: !(Maybe Text)
-    , _dvpcecnDryRun :: !(Maybe Bool)
-    , _dvpcecnMaxResults :: !(Maybe Int)
+    , _dvpcecnDryRun                   :: !(Maybe Bool)
+    , _dvpcecnMaxResults               :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -145,8 +145,8 @@ instance ToQuery DescribeVPCEndpointConnectionNotifications where
 data DescribeVPCEndpointConnectionNotificationsResponse =
   DescribeVPCEndpointConnectionNotificationsResponse'
     { _dvpcecnrsConnectionNotificationSet :: !(Maybe [ConnectionNotification])
-    , _dvpcecnrsNextToken :: !(Maybe Text)
-    , _dvpcecnrsResponseStatus :: !Int
+    , _dvpcecnrsNextToken                 :: !(Maybe Text)
+    , _dvpcecnrsResponseStatus            :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

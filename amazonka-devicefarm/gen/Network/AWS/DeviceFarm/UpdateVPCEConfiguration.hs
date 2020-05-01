@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,11 +47,11 @@ import Network.AWS.Response
 -- | /See:/ 'updateVPCEConfiguration' smart constructor.
 data UpdateVPCEConfiguration =
   UpdateVPCEConfiguration'
-    { _uvecVpceServiceName :: !(Maybe Text)
-    , _uvecVpceConfigurationName :: !(Maybe Text)
-    , _uvecServiceDNSName :: !(Maybe Text)
+    { _uvecVpceServiceName              :: !(Maybe Text)
+    , _uvecVpceConfigurationName        :: !(Maybe Text)
+    , _uvecServiceDNSName               :: !(Maybe Text)
     , _uvecVpceConfigurationDescription :: !(Maybe Text)
-    , _uvecArn :: !Text
+    , _uvecArn                          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -150,7 +150,7 @@ instance ToQuery UpdateVPCEConfiguration where
 data UpdateVPCEConfigurationResponse =
   UpdateVPCEConfigurationResponse'
     { _uvecrsVpceConfiguration :: !(Maybe VPCEConfiguration)
-    , _uvecrsResponseStatus :: !Int
+    , _uvecrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

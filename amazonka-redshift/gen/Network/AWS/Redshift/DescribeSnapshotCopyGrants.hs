@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,10 +54,10 @@ import Network.AWS.Response
 -- /See:/ 'describeSnapshotCopyGrants' smart constructor.
 data DescribeSnapshotCopyGrants =
   DescribeSnapshotCopyGrants'
-    { _dscgsTagValues :: !(Maybe [Text])
-    , _dscgsTagKeys :: !(Maybe [Text])
-    , _dscgsMarker :: !(Maybe Text)
-    , _dscgsMaxRecords :: !(Maybe Int)
+    { _dscgsTagValues             :: !(Maybe [Text])
+    , _dscgsTagKeys               :: !(Maybe [Text])
+    , _dscgsMarker                :: !(Maybe Text)
+    , _dscgsMaxRecords            :: !(Maybe Int)
     , _dscgsSnapshotCopyGrantName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -151,8 +151,8 @@ instance ToQuery DescribeSnapshotCopyGrants where
 data DescribeSnapshotCopyGrantsResponse =
   DescribeSnapshotCopyGrantsResponse'
     { _dscgrsSnapshotCopyGrants :: !(Maybe [SnapshotCopyGrant])
-    , _dscgrsMarker :: !(Maybe Text)
-    , _dscgrsResponseStatus :: !Int
+    , _dscgrsMarker             :: !(Maybe Text)
+    , _dscgrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

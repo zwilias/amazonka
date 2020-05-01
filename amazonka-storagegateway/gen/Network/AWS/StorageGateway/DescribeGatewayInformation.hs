@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -121,16 +121,16 @@ instance ToQuery DescribeGatewayInformation where
 -- /See:/ 'describeGatewayInformationResponse' smart constructor.
 data DescribeGatewayInformationResponse =
   DescribeGatewayInformationResponse'
-    { _dgirsGatewayState :: !(Maybe Text)
-    , _dgirsGatewayARN :: !(Maybe Text)
-    , _dgirsGatewayNetworkInterfaces :: !(Maybe [NetworkInterface])
+    { _dgirsGatewayState               :: !(Maybe Text)
+    , _dgirsGatewayARN                 :: !(Maybe Text)
+    , _dgirsGatewayNetworkInterfaces   :: !(Maybe [NetworkInterface])
     , _dgirsNextUpdateAvailabilityDate :: !(Maybe Text)
-    , _dgirsLastSoftwareUpdate :: !(Maybe Text)
-    , _dgirsGatewayName :: !(Maybe Text)
-    , _dgirsGatewayId :: !(Maybe Text)
-    , _dgirsGatewayType :: !(Maybe Text)
-    , _dgirsGatewayTimezone :: !(Maybe Text)
-    , _dgirsResponseStatus :: !Int
+    , _dgirsLastSoftwareUpdate         :: !(Maybe Text)
+    , _dgirsGatewayName                :: !(Maybe Text)
+    , _dgirsGatewayId                  :: !(Maybe Text)
+    , _dgirsGatewayType                :: !(Maybe Text)
+    , _dgirsGatewayTimezone            :: !(Maybe Text)
+    , _dgirsResponseStatus             :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

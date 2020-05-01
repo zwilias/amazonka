@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,12 +56,12 @@ import Network.AWS.Response
 -- /See:/ 'createImage' smart constructor.
 data CreateImage =
   CreateImage'
-    { _ciiNoReboot :: !(Maybe Bool)
-    , _ciiDescription :: !(Maybe Text)
+    { _ciiNoReboot            :: !(Maybe Bool)
+    , _ciiDescription         :: !(Maybe Text)
     , _ciiBlockDeviceMappings :: !(Maybe [BlockDeviceMapping])
-    , _ciiDryRun :: !(Maybe Bool)
-    , _ciiInstanceId :: !Text
-    , _ciiName :: !Text
+    , _ciiDryRun              :: !(Maybe Bool)
+    , _ciiInstanceId          :: !Text
+    , _ciiName                :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -158,7 +158,7 @@ instance ToQuery CreateImage where
 -- /See:/ 'createImageResponse' smart constructor.
 data CreateImageResponse =
   CreateImageResponse'
-    { _cirsImageId :: !(Maybe Text)
+    { _cirsImageId        :: !(Maybe Text)
     , _cirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

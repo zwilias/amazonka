@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,9 +53,9 @@ import Network.AWS.Response
 -- /See:/ 'listOutgoingCertificates' smart constructor.
 data ListOutgoingCertificates =
   ListOutgoingCertificates'
-    { _locMarker :: !(Maybe Text)
+    { _locMarker         :: !(Maybe Text)
     , _locAscendingOrder :: !(Maybe Bool)
-    , _locPageSize :: !(Maybe Nat)
+    , _locPageSize       :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -126,9 +126,9 @@ instance ToQuery ListOutgoingCertificates where
 -- /See:/ 'listOutgoingCertificatesResponse' smart constructor.
 data ListOutgoingCertificatesResponse =
   ListOutgoingCertificatesResponse'
-    { _locrsNextMarker :: !(Maybe Text)
+    { _locrsNextMarker           :: !(Maybe Text)
     , _locrsOutgoingCertificates :: !(Maybe [OutgoingCertificate])
-    , _locrsResponseStatus :: !Int
+    , _locrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

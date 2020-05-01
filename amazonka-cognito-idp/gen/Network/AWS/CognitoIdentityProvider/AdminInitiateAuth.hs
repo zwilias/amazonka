@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,13 +58,13 @@ import Network.AWS.Response
 -- /See:/ 'adminInitiateAuth' smart constructor.
 data AdminInitiateAuth =
   AdminInitiateAuth'
-    { _aiaClientMetadata :: !(Maybe (Map Text Text))
-    , _aiaContextData :: !(Maybe ContextDataType)
+    { _aiaClientMetadata    :: !(Maybe (Map Text Text))
+    , _aiaContextData       :: !(Maybe ContextDataType)
     , _aiaAnalyticsMetadata :: !(Maybe AnalyticsMetadataType)
-    , _aiaAuthParameters :: !(Maybe (Map Text Text))
-    , _aiaUserPoolId :: !Text
-    , _aiaClientId :: !(Sensitive Text)
-    , _aiaAuthFlow :: !AuthFlowType
+    , _aiaAuthParameters    :: !(Maybe (Map Text Text))
+    , _aiaUserPoolId        :: !Text
+    , _aiaClientId          :: !(Sensitive Text)
+    , _aiaAuthFlow          :: !AuthFlowType
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -183,11 +183,11 @@ instance ToQuery AdminInitiateAuth where
 -- /See:/ 'adminInitiateAuthResponse' smart constructor.
 data AdminInitiateAuthResponse =
   AdminInitiateAuthResponse'
-    { _aiarsChallengeName :: !(Maybe ChallengeNameType)
-    , _aiarsChallengeParameters :: !(Maybe (Map Text Text))
+    { _aiarsChallengeName        :: !(Maybe ChallengeNameType)
+    , _aiarsChallengeParameters  :: !(Maybe (Map Text Text))
     , _aiarsAuthenticationResult :: !(Maybe AuthenticationResultType)
-    , _aiarsSession :: !(Maybe Text)
-    , _aiarsResponseStatus :: !Int
+    , _aiarsSession              :: !(Maybe Text)
+    , _aiarsResponseStatus       :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

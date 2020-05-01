@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- | /See:/ 'previewAgents' smart constructor.
 data PreviewAgents =
   PreviewAgents'
-    { _paNextToken :: !(Maybe Text)
-    , _paMaxResults :: !(Maybe Int)
+    { _paNextToken        :: !(Maybe Text)
+    , _paMaxResults       :: !(Maybe Int)
     , _paPreviewAgentsARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -132,9 +132,9 @@ instance ToQuery PreviewAgents where
 -- | /See:/ 'previewAgentsResponse' smart constructor.
 data PreviewAgentsResponse =
   PreviewAgentsResponse'
-    { _parsNextToken :: !(Maybe Text)
+    { _parsNextToken      :: !(Maybe Text)
     , _parsResponseStatus :: !Int
-    , _parsAgentPreviews :: ![AgentPreview]
+    , _parsAgentPreviews  :: ![AgentPreview]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

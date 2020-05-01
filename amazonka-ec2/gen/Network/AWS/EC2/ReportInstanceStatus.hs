@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,13 +52,13 @@ import Network.AWS.Response
 -- /See:/ 'reportInstanceStatus' smart constructor.
 data ReportInstanceStatus =
   ReportInstanceStatus'
-    { _rissStartTime :: !(Maybe ISO8601)
-    , _rissEndTime :: !(Maybe ISO8601)
+    { _rissStartTime   :: !(Maybe ISO8601)
+    , _rissEndTime     :: !(Maybe ISO8601)
     , _rissDescription :: !(Maybe Text)
-    , _rissDryRun :: !(Maybe Bool)
-    , _rissInstances :: ![Text]
+    , _rissDryRun      :: !(Maybe Bool)
+    , _rissInstances   :: ![Text]
     , _rissReasonCodes :: ![ReportInstanceReasonCodes]
-    , _rissStatus :: !ReportStatusType
+    , _rissStatus      :: !ReportStatusType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

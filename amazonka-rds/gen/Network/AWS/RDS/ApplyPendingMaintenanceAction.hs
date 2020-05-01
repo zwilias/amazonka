@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.Response
 data ApplyPendingMaintenanceAction =
   ApplyPendingMaintenanceAction'
     { _apmaResourceIdentifier :: !Text
-    , _apmaApplyAction :: !Text
-    , _apmaOptInType :: !Text
+    , _apmaApplyAction        :: !Text
+    , _apmaOptInType          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

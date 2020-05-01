@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- | /See:/ 'getCrawlerMetrics' smart constructor.
 data GetCrawlerMetrics =
   GetCrawlerMetrics'
-    { _gcmNextToken :: !(Maybe Text)
-    , _gcmMaxResults :: !(Maybe Nat)
+    { _gcmNextToken       :: !(Maybe Text)
+    , _gcmMaxResults      :: !(Maybe Nat)
     , _gcmCrawlerNameList :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -134,8 +134,8 @@ instance ToQuery GetCrawlerMetrics where
 data GetCrawlerMetricsResponse =
   GetCrawlerMetricsResponse'
     { _gcmrsCrawlerMetricsList :: !(Maybe [CrawlerMetrics])
-    , _gcmrsNextToken :: !(Maybe Text)
-    , _gcmrsResponseStatus :: !Int
+    , _gcmrsNextToken          :: !(Maybe Text)
+    , _gcmrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

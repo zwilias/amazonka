@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.Response
 data AddInstanceGroups =
   AddInstanceGroups'
     { _aigInstanceGroups :: ![InstanceGroupConfig]
-    , _aigJobFlowId :: !Text
+    , _aigJobFlowId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -120,9 +120,9 @@ instance ToQuery AddInstanceGroups where
 -- /See:/ 'addInstanceGroupsResponse' smart constructor.
 data AddInstanceGroupsResponse =
   AddInstanceGroupsResponse'
-    { _aigrsJobFlowId :: !(Maybe Text)
+    { _aigrsJobFlowId        :: !(Maybe Text)
     , _aigrsInstanceGroupIds :: !(Maybe [Text])
-    , _aigrsResponseStatus :: !Int
+    , _aigrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

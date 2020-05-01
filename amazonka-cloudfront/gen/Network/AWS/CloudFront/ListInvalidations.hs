@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,8 +52,8 @@ import Network.AWS.Response
 -- /See:/ 'listInvalidations' smart constructor.
 data ListInvalidations =
   ListInvalidations'
-    { _liMarker :: !(Maybe Text)
-    , _liMaxItems :: !(Maybe Text)
+    { _liMarker         :: !(Maybe Text)
+    , _liMaxItems       :: !(Maybe Text)
     , _liDistributionId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -127,7 +127,7 @@ instance ToQuery ListInvalidations where
 -- /See:/ 'listInvalidationsResponse' smart constructor.
 data ListInvalidationsResponse =
   ListInvalidationsResponse'
-    { _lirsResponseStatus :: !Int
+    { _lirsResponseStatus   :: !Int
     , _lirsInvalidationList :: !InvalidationList
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

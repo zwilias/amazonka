@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -111,20 +111,20 @@ instance ToQuery DescribeOriginEndpoint where
 -- | /See:/ 'describeOriginEndpointResponse' smart constructor.
 data DescribeOriginEndpointResponse =
   DescribeOriginEndpointResponse'
-    { _desrsWhitelist :: !(Maybe [Text])
-    , _desrsHlsPackage :: !(Maybe HlsPackage)
-    , _desrsARN :: !(Maybe Text)
-    , _desrsManifestName :: !(Maybe Text)
-    , _desrsURL :: !(Maybe Text)
-    , _desrsChannelId :: !(Maybe Text)
+    { _desrsWhitelist              :: !(Maybe [Text])
+    , _desrsHlsPackage             :: !(Maybe HlsPackage)
+    , _desrsARN                    :: !(Maybe Text)
+    , _desrsManifestName           :: !(Maybe Text)
+    , _desrsURL                    :: !(Maybe Text)
+    , _desrsChannelId              :: !(Maybe Text)
     , _desrsStartoverWindowSeconds :: !(Maybe Int)
-    , _desrsDashPackage :: !(Maybe DashPackage)
-    , _desrsMssPackage :: !(Maybe MssPackage)
-    , _desrsId :: !(Maybe Text)
-    , _desrsTimeDelaySeconds :: !(Maybe Int)
-    , _desrsCmafPackage :: !(Maybe CmafPackage)
-    , _desrsDescription :: !(Maybe Text)
-    , _desrsResponseStatus :: !Int
+    , _desrsDashPackage            :: !(Maybe DashPackage)
+    , _desrsMssPackage             :: !(Maybe MssPackage)
+    , _desrsId                     :: !(Maybe Text)
+    , _desrsTimeDelaySeconds       :: !(Maybe Int)
+    , _desrsCmafPackage            :: !(Maybe CmafPackage)
+    , _desrsDescription            :: !(Maybe Text)
+    , _desrsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

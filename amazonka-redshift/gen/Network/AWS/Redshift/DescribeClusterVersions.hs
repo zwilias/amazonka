@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,9 +55,9 @@ import Network.AWS.Response
 data DescribeClusterVersions =
   DescribeClusterVersions'
     { _dcvClusterParameterGroupFamily :: !(Maybe Text)
-    , _dcvMarker :: !(Maybe Text)
-    , _dcvMaxRecords :: !(Maybe Int)
-    , _dcvClusterVersion :: !(Maybe Text)
+    , _dcvMarker                      :: !(Maybe Text)
+    , _dcvMaxRecords                  :: !(Maybe Int)
+    , _dcvClusterVersion              :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -148,8 +148,8 @@ instance ToQuery DescribeClusterVersions where
 data DescribeClusterVersionsResponse =
   DescribeClusterVersionsResponse'
     { _dcvrsClusterVersions :: !(Maybe [ClusterVersion])
-    , _dcvrsMarker :: !(Maybe Text)
-    , _dcvrsResponseStatus :: !Int
+    , _dcvrsMarker          :: !(Maybe Text)
+    , _dcvrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

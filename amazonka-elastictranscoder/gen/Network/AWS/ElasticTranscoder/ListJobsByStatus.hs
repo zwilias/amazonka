@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,7 +55,7 @@ data ListJobsByStatus =
   ListJobsByStatus'
     { _ljbsAscending :: !(Maybe Text)
     , _ljbsPageToken :: !(Maybe Text)
-    , _ljbsStatus :: !Text
+    , _ljbsStatus    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -125,8 +125,8 @@ instance ToQuery ListJobsByStatus where
 -- /See:/ 'listJobsByStatusResponse' smart constructor.
 data ListJobsByStatusResponse =
   ListJobsByStatusResponse'
-    { _ljbsrsNextPageToken :: !(Maybe Text)
-    , _ljbsrsJobs :: !(Maybe [Job'])
+    { _ljbsrsNextPageToken  :: !(Maybe Text)
+    , _ljbsrsJobs           :: !(Maybe [Job'])
     , _ljbsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

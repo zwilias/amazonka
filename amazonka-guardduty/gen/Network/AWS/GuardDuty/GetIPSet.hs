@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 data GetIPSet =
   GetIPSet'
     { _gisDetectorId :: !Text
-    , _gisIPSetId :: !Text
+    , _gisIPSetId    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -102,10 +102,10 @@ instance ToQuery GetIPSet where
 -- | /See:/ 'getIPSetResponse' smart constructor.
 data GetIPSetResponse =
   GetIPSetResponse'
-    { _gisrsStatus :: !(Maybe IPSetStatus)
-    , _gisrsLocation :: !(Maybe Text)
-    , _gisrsFormat :: !(Maybe IPSetFormat)
-    , _gisrsName :: !(Maybe Text)
+    { _gisrsStatus         :: !(Maybe IPSetStatus)
+    , _gisrsLocation       :: !(Maybe Text)
+    , _gisrsFormat         :: !(Maybe IPSetFormat)
+    , _gisrsName           :: !(Maybe Text)
     , _gisrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

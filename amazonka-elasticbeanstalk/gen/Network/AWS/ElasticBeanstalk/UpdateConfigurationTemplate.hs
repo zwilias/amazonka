@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -66,10 +66,10 @@ import Network.AWS.Response
 data UpdateConfigurationTemplate =
   UpdateConfigurationTemplate'
     { _uctOptionsToRemove :: !(Maybe [OptionSpecification])
-    , _uctOptionSettings :: !(Maybe [ConfigurationOptionSetting])
-    , _uctDescription :: !(Maybe Text)
+    , _uctOptionSettings  :: !(Maybe [ConfigurationOptionSetting])
+    , _uctDescription     :: !(Maybe Text)
     , _uctApplicationName :: !Text
-    , _uctTemplateName :: !Text
+    , _uctTemplateName    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

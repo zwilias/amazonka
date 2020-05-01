@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -77,10 +77,10 @@ instance ToQuery DescribeEventConfigurations where
 -- | /See:/ 'describeEventConfigurationsResponse' smart constructor.
 data DescribeEventConfigurationsResponse =
   DescribeEventConfigurationsResponse'
-    { _decrsLastModifiedDate :: !(Maybe POSIX)
+    { _decrsLastModifiedDate    :: !(Maybe POSIX)
     , _decrsEventConfigurations :: !(Maybe (Map EventType Configuration))
-    , _decrsCreationDate :: !(Maybe POSIX)
-    , _decrsResponseStatus :: !Int
+    , _decrsCreationDate        :: !(Maybe POSIX)
+    , _decrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,9 +57,9 @@ import Network.AWS.Response
 -- /See:/ 'describeTableStatistics' smart constructor.
 data DescribeTableStatistics =
   DescribeTableStatistics'
-    { _dtsFilters :: !(Maybe [Filter])
-    , _dtsMarker :: !(Maybe Text)
-    , _dtsMaxRecords :: !(Maybe Int)
+    { _dtsFilters            :: !(Maybe [Filter])
+    , _dtsMarker             :: !(Maybe Text)
+    , _dtsMaxRecords         :: !(Maybe Int)
     , _dtsReplicationTaskARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -157,9 +157,9 @@ instance ToQuery DescribeTableStatistics where
 data DescribeTableStatisticsResponse =
   DescribeTableStatisticsResponse'
     { _dtsrsReplicationTaskARN :: !(Maybe Text)
-    , _dtsrsMarker :: !(Maybe Text)
-    , _dtsrsTableStatistics :: !(Maybe [TableStatistics])
-    , _dtsrsResponseStatus :: !Int
+    , _dtsrsMarker             :: !(Maybe Text)
+    , _dtsrsTableStatistics    :: !(Maybe [TableStatistics])
+    , _dtsrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

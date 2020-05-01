@@ -35,9 +35,9 @@ module Network.AWS.STS.Types
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.Sign.V4
 import Network.AWS.STS.Types.Product
 import Network.AWS.STS.Types.Sum
-import Network.AWS.Sign.V4
 
 -- | API version @2011-06-15@ of the Amazon Security Token Service SDK configuration.
 sts :: Service

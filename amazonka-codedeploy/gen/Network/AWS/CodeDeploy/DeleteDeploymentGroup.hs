@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- /See:/ 'deleteDeploymentGroup' smart constructor.
 data DeleteDeploymentGroup =
   DeleteDeploymentGroup'
-    { _ddgApplicationName :: !Text
+    { _ddgApplicationName     :: !Text
     , _ddgDeploymentGroupName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -125,7 +125,7 @@ instance ToQuery DeleteDeploymentGroup where
 data DeleteDeploymentGroupResponse =
   DeleteDeploymentGroupResponse'
     { _ddgrsHooksNotCleanedUp :: !(Maybe [AutoScalingGroup])
-    , _ddgrsResponseStatus :: !Int
+    , _ddgrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,10 +47,10 @@ import Network.AWS.Response
 -- /See:/ 'signalResource' smart constructor.
 data SignalResource =
   SignalResource'
-    { _sigStackName :: !Text
+    { _sigStackName         :: !Text
     , _sigLogicalResourceId :: !Text
-    , _sigUniqueId :: !Text
-    , _sigStatus :: !ResourceSignalStatus
+    , _sigUniqueId          :: !Text
+    , _sigStatus            :: !ResourceSignalStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

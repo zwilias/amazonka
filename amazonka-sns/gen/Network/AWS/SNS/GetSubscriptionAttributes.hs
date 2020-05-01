@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -104,7 +104,7 @@ instance ToQuery GetSubscriptionAttributes where
 -- /See:/ 'getSubscriptionAttributesResponse' smart constructor.
 data GetSubscriptionAttributesResponse =
   GetSubscriptionAttributesResponse'
-    { _gsarsAttributes :: !(Maybe (Map Text Text))
+    { _gsarsAttributes     :: !(Maybe (Map Text Text))
     , _gsarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

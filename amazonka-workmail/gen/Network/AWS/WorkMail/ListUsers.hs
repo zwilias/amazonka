@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.WorkMail.Types.Product
 -- | /See:/ 'listUsers' smart constructor.
 data ListUsers =
   ListUsers'
-    { _luNextToken :: !(Maybe Text)
-    , _luMaxResults :: !(Maybe Nat)
+    { _luNextToken      :: !(Maybe Text)
+    , _luMaxResults     :: !(Maybe Nat)
     , _luOrganizationId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -132,8 +132,8 @@ instance ToQuery ListUsers where
 -- | /See:/ 'listUsersResponse' smart constructor.
 data ListUsersResponse =
   ListUsersResponse'
-    { _lursUsers :: !(Maybe [User])
-    , _lursNextToken :: !(Maybe Text)
+    { _lursUsers          :: !(Maybe [User])
+    , _lursNextToken      :: !(Maybe Text)
     , _lursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

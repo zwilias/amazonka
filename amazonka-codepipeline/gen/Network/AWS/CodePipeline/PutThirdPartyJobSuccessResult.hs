@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,10 +49,10 @@ import Network.AWS.Response
 data PutThirdPartyJobSuccessResult =
   PutThirdPartyJobSuccessResult'
     { _ptpjsrContinuationToken :: !(Maybe Text)
-    , _ptpjsrExecutionDetails :: !(Maybe ExecutionDetails)
-    , _ptpjsrCurrentRevision :: !(Maybe CurrentRevision)
-    , _ptpjsrJobId :: !Text
-    , _ptpjsrClientToken :: !Text
+    , _ptpjsrExecutionDetails  :: !(Maybe ExecutionDetails)
+    , _ptpjsrCurrentRevision   :: !(Maybe CurrentRevision)
+    , _ptpjsrJobId             :: !Text
+    , _ptpjsrClientToken       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.SageMaker.Types.Product
 data AddTags =
   AddTags'
     { _atResourceARN :: !Text
-    , _atTags :: ![Tag]
+    , _atTags        :: ![Tag]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -107,7 +107,7 @@ instance ToQuery AddTags where
 -- | /See:/ 'addTagsResponse' smart constructor.
 data AddTagsResponse =
   AddTagsResponse'
-    { _atrsTags :: !(Maybe [Tag])
+    { _atrsTags           :: !(Maybe [Tag])
     , _atrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

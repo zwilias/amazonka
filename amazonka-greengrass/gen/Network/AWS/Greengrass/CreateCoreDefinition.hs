@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,8 +52,8 @@ import Network.AWS.Response
 data CreateCoreDefinition =
   CreateCoreDefinition'
     { _ccdAmznClientToken :: !(Maybe Text)
-    , _ccdInitialVersion :: !(Maybe CoreDefinitionVersion)
-    , _ccdName :: !(Maybe Text)
+    , _ccdInitialVersion  :: !(Maybe CoreDefinitionVersion)
+    , _ccdName            :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -130,14 +130,14 @@ instance ToQuery CreateCoreDefinition where
 -- | /See:/ 'createCoreDefinitionResponse' smart constructor.
 data CreateCoreDefinitionResponse =
   CreateCoreDefinitionResponse'
-    { _ccdrsLatestVersionARN :: !(Maybe Text)
-    , _ccdrsARN :: !(Maybe Text)
-    , _ccdrsName :: !(Maybe Text)
-    , _ccdrsCreationTimestamp :: !(Maybe Text)
-    , _ccdrsId :: !(Maybe Text)
-    , _ccdrsLatestVersion :: !(Maybe Text)
+    { _ccdrsLatestVersionARN     :: !(Maybe Text)
+    , _ccdrsARN                  :: !(Maybe Text)
+    , _ccdrsName                 :: !(Maybe Text)
+    , _ccdrsCreationTimestamp    :: !(Maybe Text)
+    , _ccdrsId                   :: !(Maybe Text)
+    , _ccdrsLatestVersion        :: !(Maybe Text)
     , _ccdrsLastUpdatedTimestamp :: !(Maybe Text)
-    , _ccdrsResponseStatus :: !Int
+    , _ccdrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

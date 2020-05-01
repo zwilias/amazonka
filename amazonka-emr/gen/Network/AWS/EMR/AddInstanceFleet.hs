@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'addInstanceFleet' smart constructor.
 data AddInstanceFleet =
   AddInstanceFleet'
-    { _aifClusterId :: !Text
+    { _aifClusterId     :: !Text
     , _aifInstanceFleet :: !InstanceFleetConfig
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -112,9 +112,9 @@ instance ToQuery AddInstanceFleet where
 -- | /See:/ 'addInstanceFleetResponse' smart constructor.
 data AddInstanceFleetResponse =
   AddInstanceFleetResponse'
-    { _aifrsClusterId :: !(Maybe Text)
+    { _aifrsClusterId       :: !(Maybe Text)
     , _aifrsInstanceFleetId :: !(Maybe Text)
-    , _aifrsResponseStatus :: !Int
+    , _aifrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

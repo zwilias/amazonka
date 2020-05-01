@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'describeAssociation' smart constructor.
 data DescribeAssociation =
   DescribeAssociation'
-    { _daAssociationId :: !(Maybe Text)
-    , _daInstanceId :: !(Maybe Text)
-    , _daName :: !(Maybe Text)
+    { _daAssociationId      :: !(Maybe Text)
+    , _daInstanceId         :: !(Maybe Text)
+    , _daName               :: !(Maybe Text)
     , _daAssociationVersion :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -131,7 +131,7 @@ instance ToQuery DescribeAssociation where
 data DescribeAssociationResponse =
   DescribeAssociationResponse'
     { _daarsAssociationDescription :: !(Maybe AssociationDescription)
-    , _daarsResponseStatus :: !Int
+    , _daarsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

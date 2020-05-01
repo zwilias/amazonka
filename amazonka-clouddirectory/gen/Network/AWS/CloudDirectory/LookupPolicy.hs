@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,9 +50,9 @@ import Network.AWS.Response
 -- | /See:/ 'lookupPolicy' smart constructor.
 data LookupPolicy =
   LookupPolicy'
-    { _lpNextToken :: !(Maybe Text)
-    , _lpMaxResults :: !(Maybe Nat)
-    , _lpDirectoryARN :: !Text
+    { _lpNextToken       :: !(Maybe Text)
+    , _lpMaxResults      :: !(Maybe Nat)
+    , _lpDirectoryARN    :: !Text
     , _lpObjectReference :: !ObjectReference
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -138,9 +138,9 @@ instance ToQuery LookupPolicy where
 -- | /See:/ 'lookupPolicyResponse' smart constructor.
 data LookupPolicyResponse =
   LookupPolicyResponse'
-    { _lprsNextToken :: !(Maybe Text)
+    { _lprsNextToken        :: !(Maybe Text)
     , _lprsPolicyToPathList :: !(Maybe [PolicyToPath])
-    , _lprsResponseStatus :: !Int
+    , _lprsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

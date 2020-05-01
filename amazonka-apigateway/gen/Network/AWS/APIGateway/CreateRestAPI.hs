@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -65,14 +65,14 @@ import Network.AWS.Response
 data CreateRestAPI =
   CreateRestAPI'
     { _craMinimumCompressionSize :: !(Maybe Int)
-    , _craBinaryMediaTypes :: !(Maybe [Text])
-    , _craVersion :: !(Maybe Text)
-    , _craApiKeySource :: !(Maybe APIKeySourceType)
-    , _craCloneFrom :: !(Maybe Text)
-    , _craPolicy :: !(Maybe Text)
-    , _craEndpointConfiguration :: !(Maybe EndpointConfiguration)
-    , _craDescription :: !(Maybe Text)
-    , _craName :: !Text
+    , _craBinaryMediaTypes       :: !(Maybe [Text])
+    , _craVersion                :: !(Maybe Text)
+    , _craApiKeySource           :: !(Maybe APIKeySourceType)
+    , _craCloneFrom              :: !(Maybe Text)
+    , _craPolicy                 :: !(Maybe Text)
+    , _craEndpointConfiguration  :: !(Maybe EndpointConfiguration)
+    , _craDescription            :: !(Maybe Text)
+    , _craName                   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

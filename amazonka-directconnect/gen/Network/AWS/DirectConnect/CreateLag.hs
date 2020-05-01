@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -69,11 +69,11 @@ import Network.AWS.Response
 -- /See:/ 'createLag' smart constructor.
 data CreateLag =
   CreateLag'
-    { _clConnectionId :: !(Maybe Text)
-    , _clNumberOfConnections :: !Int
-    , _clLocation :: !Text
+    { _clConnectionId         :: !(Maybe Text)
+    , _clNumberOfConnections  :: !Int
+    , _clLocation             :: !Text
     , _clConnectionsBandwidth :: !Text
-    , _clLagName :: !Text
+    , _clLagName              :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -73,7 +73,7 @@ import Network.AWS.Route53.Types.Product
 -- | /See:/ 'createReusableDelegationSet' smart constructor.
 data CreateReusableDelegationSet =
   CreateReusableDelegationSet'
-    { _crdsHostedZoneId :: !(Maybe ResourceId)
+    { _crdsHostedZoneId    :: !(Maybe ResourceId)
     , _crdsCallerReference :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -140,8 +140,8 @@ instance ToXML CreateReusableDelegationSet where
 data CreateReusableDelegationSetResponse =
   CreateReusableDelegationSetResponse'
     { _crdsrsResponseStatus :: !Int
-    , _crdsrsDelegationSet :: !DelegationSet
-    , _crdsrsLocation :: !Text
+    , _crdsrsDelegationSet  :: !DelegationSet
+    , _crdsrsLocation       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -61,12 +61,12 @@ import Network.AWS.SWF.Types.Product
 -- | /See:/ 'terminateWorkflowExecution' smart constructor.
 data TerminateWorkflowExecution =
   TerminateWorkflowExecution'
-    { _tweReason :: !(Maybe Text)
-    , _tweRunId :: !(Maybe Text)
+    { _tweReason      :: !(Maybe Text)
+    , _tweRunId       :: !(Maybe Text)
     , _tweChildPolicy :: !(Maybe ChildPolicy)
-    , _tweDetails :: !(Maybe Text)
-    , _tweDomain :: !Text
-    , _tweWorkflowId :: !Text
+    , _tweDetails     :: !(Maybe Text)
+    , _tweDomain      :: !Text
+    , _tweWorkflowId  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

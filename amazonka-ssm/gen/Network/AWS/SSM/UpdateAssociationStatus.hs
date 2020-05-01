@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,8 +45,8 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'updateAssociationStatus' smart constructor.
 data UpdateAssociationStatus =
   UpdateAssociationStatus'
-    { _uasName :: !Text
-    , _uasInstanceId :: !Text
+    { _uasName              :: !Text
+    , _uasInstanceId        :: !Text
     , _uasAssociationStatus :: !AssociationStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -125,7 +125,7 @@ instance ToQuery UpdateAssociationStatus where
 data UpdateAssociationStatusResponse =
   UpdateAssociationStatusResponse'
     { _uasrsAssociationDescription :: !(Maybe AssociationDescription)
-    , _uasrsResponseStatus :: !Int
+    , _uasrsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

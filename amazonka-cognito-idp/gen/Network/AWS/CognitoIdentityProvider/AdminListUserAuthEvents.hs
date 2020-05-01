@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,10 +47,10 @@ import Network.AWS.Response
 -- | /See:/ 'adminListUserAuthEvents' smart constructor.
 data AdminListUserAuthEvents =
   AdminListUserAuthEvents'
-    { _aluaeNextToken :: !(Maybe Text)
+    { _aluaeNextToken  :: !(Maybe Text)
     , _aluaeMaxResults :: !(Maybe Nat)
     , _aluaeUserPoolId :: !Text
-    , _aluaeUsername :: !(Sensitive Text)
+    , _aluaeUsername   :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -137,8 +137,8 @@ instance ToQuery AdminListUserAuthEvents where
 -- | /See:/ 'adminListUserAuthEventsResponse' smart constructor.
 data AdminListUserAuthEventsResponse =
   AdminListUserAuthEventsResponse'
-    { _aluaersNextToken :: !(Maybe Text)
-    , _aluaersAuthEvents :: !(Maybe [AuthEventType])
+    { _aluaersNextToken      :: !(Maybe Text)
+    , _aluaersAuthEvents     :: !(Maybe [AuthEventType])
     , _aluaersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -67,7 +67,7 @@ import Network.AWS.Route53.Types.Product
 -- /See:/ 'createHealthCheck' smart constructor.
 data CreateHealthCheck =
   CreateHealthCheck'
-    { _chcCallerReference :: !Text
+    { _chcCallerReference   :: !Text
     , _chcHealthCheckConfig :: !HealthCheckConfig
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -142,8 +142,8 @@ instance ToXML CreateHealthCheck where
 data CreateHealthCheckResponse =
   CreateHealthCheckResponse'
     { _chcrsResponseStatus :: !Int
-    , _chcrsHealthCheck :: !HealthCheck
-    , _chcrsLocation :: !Text
+    , _chcrsHealthCheck    :: !HealthCheck
+    , _chcrsLocation       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

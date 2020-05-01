@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,8 +63,8 @@ import Network.AWS.Response
 data UpdateStage =
   UpdateStage'
     { _usPatchOperations :: !(Maybe [PatchOperation])
-    , _usRestAPIId :: !Text
-    , _usStageName :: !Text
+    , _usRestAPIId       :: !Text
+    , _usStageName       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

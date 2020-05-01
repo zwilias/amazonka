@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 data DetachInstancesFromLoadBalancer =
   DetachInstancesFromLoadBalancer'
     { _diflbLoadBalancerName :: !Text
-    , _diflbInstanceNames :: ![Text]
+    , _diflbInstanceNames    :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -115,7 +115,7 @@ instance ToQuery DetachInstancesFromLoadBalancer where
 -- | /See:/ 'detachInstancesFromLoadBalancerResponse' smart constructor.
 data DetachInstancesFromLoadBalancerResponse =
   DetachInstancesFromLoadBalancerResponse'
-    { _diflbrsOperations :: !(Maybe [Operation])
+    { _diflbrsOperations     :: !(Maybe [Operation])
     , _diflbrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

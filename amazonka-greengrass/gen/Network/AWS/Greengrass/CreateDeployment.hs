@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,11 +46,11 @@ import Network.AWS.Response
 -- | /See:/ 'createDeployment' smart constructor.
 data CreateDeployment =
   CreateDeployment'
-    { _cdDeploymentId :: !(Maybe Text)
+    { _cdDeploymentId    :: !(Maybe Text)
     , _cdAmznClientToken :: !(Maybe Text)
-    , _cdDeploymentType :: !(Maybe DeploymentType)
-    , _cdGroupVersionId :: !(Maybe Text)
-    , _cdGroupId :: !Text
+    , _cdDeploymentType  :: !(Maybe DeploymentType)
+    , _cdGroupVersionId  :: !(Maybe Text)
+    , _cdGroupId         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -139,8 +139,8 @@ instance ToQuery CreateDeployment where
 -- | /See:/ 'createDeploymentResponse' smart constructor.
 data CreateDeploymentResponse =
   CreateDeploymentResponse'
-    { _cdrsDeploymentId :: !(Maybe Text)
-    , _cdrsDeploymentARN :: !(Maybe Text)
+    { _cdrsDeploymentId   :: !(Maybe Text)
+    , _cdrsDeploymentARN  :: !(Maybe Text)
     , _cdrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.Response
 -- /See:/ 'getUsagePlans' smart constructor.
 data GetUsagePlans =
   GetUsagePlans'
-    { _gupKeyId :: !(Maybe Text)
-    , _gupLimit :: !(Maybe Int)
+    { _gupKeyId    :: !(Maybe Text)
+    , _gupLimit    :: !(Maybe Int)
     , _gupPosition :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -124,8 +124,8 @@ instance ToQuery GetUsagePlans where
 -- /See:/ 'getUsagePlansResponse' smart constructor.
 data GetUsagePlansResponse =
   GetUsagePlansResponse'
-    { _guprsItems :: !(Maybe [UsagePlan])
-    , _guprsPosition :: !(Maybe Text)
+    { _guprsItems          :: !(Maybe [UsagePlan])
+    , _guprsPosition       :: !(Maybe Text)
     , _guprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

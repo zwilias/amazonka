@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -77,11 +77,11 @@ import Network.AWS.Response
 -- /See:/ 'describePlayerSessions' smart constructor.
 data DescribePlayerSessions =
   DescribePlayerSessions'
-    { _dpssGameSessionId :: !(Maybe Text)
-    , _dpssNextToken :: !(Maybe Text)
-    , _dpssLimit :: !(Maybe Nat)
-    , _dpssPlayerSessionId :: !(Maybe Text)
-    , _dpssPlayerId :: !(Maybe Text)
+    { _dpssGameSessionId             :: !(Maybe Text)
+    , _dpssNextToken                 :: !(Maybe Text)
+    , _dpssLimit                     :: !(Maybe Nat)
+    , _dpssPlayerSessionId           :: !(Maybe Text)
+    , _dpssPlayerId                  :: !(Maybe Text)
     , _dpssPlayerSessionStatusFilter :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -187,7 +187,7 @@ instance ToQuery DescribePlayerSessions where
 -- /See:/ 'describePlayerSessionsResponse' smart constructor.
 data DescribePlayerSessionsResponse =
   DescribePlayerSessionsResponse'
-    { _dpsrsNextToken :: !(Maybe Text)
+    { _dpsrsNextToken      :: !(Maybe Text)
     , _dpsrsPlayerSessions :: !(Maybe [PlayerSession])
     , _dpsrsResponseStatus :: !Int
     }

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,7 +63,7 @@ import Network.AWS.StorageGateway.Types.Product
 data ListGateways =
   ListGateways'
     { _lgMarker :: !(Maybe Text)
-    , _lgLimit :: !(Maybe Nat)
+    , _lgLimit  :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -127,8 +127,8 @@ instance ToQuery ListGateways where
 -- | /See:/ 'listGatewaysResponse' smart constructor.
 data ListGatewaysResponse =
   ListGatewaysResponse'
-    { _lgrsMarker :: !(Maybe Text)
-    , _lgrsGateways :: !(Maybe [GatewayInfo])
+    { _lgrsMarker         :: !(Maybe Text)
+    , _lgrsGateways       :: !(Maybe [GatewayInfo])
     , _lgrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

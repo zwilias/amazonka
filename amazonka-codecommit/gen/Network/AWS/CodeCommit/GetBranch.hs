@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- /See:/ 'getBranch' smart constructor.
 data GetBranch =
   GetBranch'
-    { _gbBranchName :: !(Maybe Text)
+    { _gbBranchName     :: !(Maybe Text)
     , _gbRepositoryName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -111,7 +111,7 @@ instance ToQuery GetBranch where
 -- /See:/ 'getBranchResponse' smart constructor.
 data GetBranchResponse =
   GetBranchResponse'
-    { _grsBranch :: !(Maybe BranchInfo)
+    { _grsBranch         :: !(Maybe BranchInfo)
     , _grsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.WAFRegional.Types.Product
 data ListRateBasedRules =
   ListRateBasedRules'
     { _lrbrNextMarker :: !(Maybe Text)
-    , _lrbrLimit :: !(Maybe Nat)
+    , _lrbrLimit      :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -107,8 +107,8 @@ instance ToQuery ListRateBasedRules where
 -- | /See:/ 'listRateBasedRulesResponse' smart constructor.
 data ListRateBasedRulesResponse =
   ListRateBasedRulesResponse'
-    { _lrbrrsRules :: !(Maybe [RuleSummary])
-    , _lrbrrsNextMarker :: !(Maybe Text)
+    { _lrbrrsRules          :: !(Maybe [RuleSummary])
+    , _lrbrrsNextMarker     :: !(Maybe Text)
     , _lrbrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

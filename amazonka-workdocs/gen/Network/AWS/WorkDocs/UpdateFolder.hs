@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,11 +44,11 @@ import Network.AWS.WorkDocs.Types.Product
 -- | /See:/ 'updateFolder' smart constructor.
 data UpdateFolder =
   UpdateFolder'
-    { _ufParentFolderId :: !(Maybe Text)
+    { _ufParentFolderId      :: !(Maybe Text)
     , _ufAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _ufName :: !(Maybe Text)
-    , _ufResourceState :: !(Maybe ResourceStateType)
-    , _ufFolderId :: !Text
+    , _ufName                :: !(Maybe Text)
+    , _ufResourceState       :: !(Maybe ResourceStateType)
+    , _ufFolderId            :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

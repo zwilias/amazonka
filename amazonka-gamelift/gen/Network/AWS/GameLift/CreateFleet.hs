@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -145,21 +145,21 @@ import Network.AWS.Response
 -- /See:/ 'createFleet' smart constructor.
 data CreateFleet =
   CreateFleet'
-    { _cfServerLaunchParameters :: !(Maybe Text)
-    , _cfLogPaths :: !(Maybe [Text])
-    , _cfPeerVPCId :: !(Maybe Text)
-    , _cfFleetType :: !(Maybe FleetType)
-    , _cfPeerVPCAWSAccountId :: !(Maybe Text)
-    , _cfEC2InboundPermissions :: !(Maybe [IPPermission])
-    , _cfRuntimeConfiguration :: !(Maybe RuntimeConfiguration)
+    { _cfServerLaunchParameters         :: !(Maybe Text)
+    , _cfLogPaths                       :: !(Maybe [Text])
+    , _cfPeerVPCId                      :: !(Maybe Text)
+    , _cfFleetType                      :: !(Maybe FleetType)
+    , _cfPeerVPCAWSAccountId            :: !(Maybe Text)
+    , _cfEC2InboundPermissions          :: !(Maybe [IPPermission])
+    , _cfRuntimeConfiguration           :: !(Maybe RuntimeConfiguration)
     , _cfNewGameSessionProtectionPolicy :: !(Maybe ProtectionPolicy)
-    , _cfServerLaunchPath :: !(Maybe Text)
-    , _cfMetricGroups :: !(Maybe [Text])
-    , _cfDescription :: !(Maybe Text)
-    , _cfResourceCreationLimitPolicy :: !(Maybe ResourceCreationLimitPolicy)
-    , _cfName :: !Text
-    , _cfBuildId :: !Text
-    , _cfEC2InstanceType :: !EC2InstanceType
+    , _cfServerLaunchPath               :: !(Maybe Text)
+    , _cfMetricGroups                   :: !(Maybe [Text])
+    , _cfDescription                    :: !(Maybe Text)
+    , _cfResourceCreationLimitPolicy    :: !(Maybe ResourceCreationLimitPolicy)
+    , _cfName                           :: !Text
+    , _cfBuildId                        :: !Text
+    , _cfEC2InstanceType                :: !EC2InstanceType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -351,7 +351,7 @@ instance ToQuery CreateFleet where
 data CreateFleetResponse =
   CreateFleetResponse'
     { _cfrsFleetAttributes :: !(Maybe FleetAttributes)
-    , _cfrsResponseStatus :: !Int
+    , _cfrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

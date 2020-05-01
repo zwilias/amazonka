@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,11 +26,11 @@ import Network.AWS.Route53Domains.Types.Sum
 -- /See:/ 'billingRecord' smart constructor.
 data BillingRecord =
   BillingRecord'
-    { _brOperation :: !(Maybe OperationType)
-    , _brInvoiceId :: !(Maybe Text)
+    { _brOperation  :: !(Maybe OperationType)
+    , _brInvoiceId  :: !(Maybe Text)
     , _brDomainName :: !(Maybe Text)
-    , _brBillDate :: !(Maybe POSIX)
-    , _brPrice :: !(Maybe Double)
+    , _brBillDate   :: !(Maybe POSIX)
+    , _brPrice      :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -99,19 +99,19 @@ instance NFData BillingRecord
 data ContactDetail =
   ContactDetail'
     { _cdOrganizationName :: !(Maybe Text)
-    , _cdEmail :: !(Maybe Text)
-    , _cdState :: !(Maybe Text)
-    , _cdFax :: !(Maybe Text)
-    , _cdLastName :: !(Maybe Text)
-    , _cdExtraParams :: !(Maybe [ExtraParam])
-    , _cdZipCode :: !(Maybe Text)
-    , _cdAddressLine1 :: !(Maybe Text)
-    , _cdCity :: !(Maybe Text)
-    , _cdPhoneNumber :: !(Maybe Text)
-    , _cdAddressLine2 :: !(Maybe Text)
-    , _cdFirstName :: !(Maybe Text)
-    , _cdCountryCode :: !(Maybe CountryCode)
-    , _cdContactType :: !(Maybe ContactType)
+    , _cdEmail            :: !(Maybe Text)
+    , _cdState            :: !(Maybe Text)
+    , _cdFax              :: !(Maybe Text)
+    , _cdLastName         :: !(Maybe Text)
+    , _cdExtraParams      :: !(Maybe [ExtraParam])
+    , _cdZipCode          :: !(Maybe Text)
+    , _cdAddressLine1     :: !(Maybe Text)
+    , _cdCity             :: !(Maybe Text)
+    , _cdPhoneNumber      :: !(Maybe Text)
+    , _cdAddressLine2     :: !(Maybe Text)
+    , _cdFirstName        :: !(Maybe Text)
+    , _cdCountryCode      :: !(Maybe CountryCode)
+    , _cdContactType      :: !(Maybe ContactType)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -274,7 +274,7 @@ instance ToJSON ContactDetail where
 data DomainSuggestion =
   DomainSuggestion'
     { _dAvailability :: !(Maybe Text)
-    , _dDomainName :: !(Maybe Text)
+    , _dDomainName   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -315,10 +315,10 @@ instance NFData DomainSuggestion
 -- /See:/ 'domainSummary' smart constructor.
 data DomainSummary =
   DomainSummary'
-    { _dsExpiry :: !(Maybe POSIX)
+    { _dsExpiry       :: !(Maybe POSIX)
     , _dsTransferLock :: !(Maybe Bool)
-    , _dsAutoRenew :: !(Maybe Bool)
-    , _dsDomainName :: !Text
+    , _dsAutoRenew    :: !(Maybe Bool)
+    , _dsDomainName   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -413,7 +413,7 @@ instance NFData DomainTransferability
 -- /See:/ 'extraParam' smart constructor.
 data ExtraParam =
   ExtraParam'
-    { _epName :: !ExtraParamName
+    { _epName  :: !ExtraParamName
     , _epValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -461,7 +461,7 @@ instance ToJSON ExtraParam where
 data Nameserver =
   Nameserver'
     { _nGlueIPs :: !(Maybe [Text])
-    , _nName :: !Text
+    , _nName    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -506,9 +506,9 @@ instance ToJSON Nameserver where
 -- /See:/ 'operationSummary' smart constructor.
 data OperationSummary =
   OperationSummary'
-    { _osOperationId :: !Text
-    , _osStatus :: !OperationStatus
-    , _osType :: !OperationType
+    { _osOperationId   :: !Text
+    , _osStatus        :: !OperationStatus
+    , _osType          :: !OperationType
     , _osSubmittedDate :: !POSIX
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -576,7 +576,7 @@ instance NFData OperationSummary
 data Tag =
   Tag'
     { _tagValue :: !(Maybe Text)
-    , _tagKey :: !(Maybe Text)
+    , _tagKey   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

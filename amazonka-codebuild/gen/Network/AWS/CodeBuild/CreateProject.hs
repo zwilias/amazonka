@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,18 +54,18 @@ import Network.AWS.Response
 -- | /See:/ 'createProject' smart constructor.
 data CreateProject =
   CreateProject'
-    { _cpBadgeEnabled :: !(Maybe Bool)
-    , _cpCache :: !(Maybe ProjectCache)
-    , _cpVpcConfig :: !(Maybe VPCConfig)
-    , _cpEncryptionKey :: !(Maybe Text)
-    , _cpDescription :: !(Maybe Text)
-    , _cpServiceRole :: !(Maybe Text)
-    , _cpTags :: !(Maybe [Tag])
+    { _cpBadgeEnabled     :: !(Maybe Bool)
+    , _cpCache            :: !(Maybe ProjectCache)
+    , _cpVpcConfig        :: !(Maybe VPCConfig)
+    , _cpEncryptionKey    :: !(Maybe Text)
+    , _cpDescription      :: !(Maybe Text)
+    , _cpServiceRole      :: !(Maybe Text)
+    , _cpTags             :: !(Maybe [Tag])
     , _cpTimeoutInMinutes :: !(Maybe Nat)
-    , _cpName :: !Text
-    , _cpSource :: !ProjectSource
-    , _cpArtifacts :: !ProjectArtifacts
-    , _cpEnvironment :: !ProjectEnvironment
+    , _cpName             :: !Text
+    , _cpSource           :: !ProjectSource
+    , _cpArtifacts        :: !ProjectArtifacts
+    , _cpEnvironment      :: !ProjectEnvironment
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -214,7 +214,7 @@ instance ToQuery CreateProject where
 -- | /See:/ 'createProjectResponse' smart constructor.
 data CreateProjectResponse =
   CreateProjectResponse'
-    { _cprsProject :: !(Maybe Project)
+    { _cprsProject        :: !(Maybe Project)
     , _cprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

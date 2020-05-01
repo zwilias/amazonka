@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- | /See:/ 'batchCreatePartition' smart constructor.
 data BatchCreatePartition =
   BatchCreatePartition'
-    { _bcpCatalogId :: !(Maybe Text)
-    , _bcpDatabaseName :: !Text
-    , _bcpTableName :: !Text
+    { _bcpCatalogId          :: !(Maybe Text)
+    , _bcpDatabaseName       :: !Text
+    , _bcpTableName          :: !Text
     , _bcpPartitionInputList :: ![PartitionInput]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -133,7 +133,7 @@ instance ToQuery BatchCreatePartition where
 -- | /See:/ 'batchCreatePartitionResponse' smart constructor.
 data BatchCreatePartitionResponse =
   BatchCreatePartitionResponse'
-    { _bcprsErrors :: !(Maybe [PartitionError])
+    { _bcprsErrors         :: !(Maybe [PartitionError])
     , _bcprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

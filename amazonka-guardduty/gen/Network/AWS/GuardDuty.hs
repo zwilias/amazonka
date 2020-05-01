@@ -373,8 +373,8 @@ import Network.AWS.GuardDuty.CreateThreatIntelSet
 import Network.AWS.GuardDuty.DeclineInvitations
 import Network.AWS.GuardDuty.DeleteDetector
 import Network.AWS.GuardDuty.DeleteFilter
-import Network.AWS.GuardDuty.DeleteIPSet
 import Network.AWS.GuardDuty.DeleteInvitations
+import Network.AWS.GuardDuty.DeleteIPSet
 import Network.AWS.GuardDuty.DeleteMembers
 import Network.AWS.GuardDuty.DeleteThreatIntelSet
 import Network.AWS.GuardDuty.DisassociateFromMasterAccount
@@ -383,8 +383,8 @@ import Network.AWS.GuardDuty.GetDetector
 import Network.AWS.GuardDuty.GetFilter
 import Network.AWS.GuardDuty.GetFindings
 import Network.AWS.GuardDuty.GetFindingsStatistics
-import Network.AWS.GuardDuty.GetIPSet
 import Network.AWS.GuardDuty.GetInvitationsCount
+import Network.AWS.GuardDuty.GetIPSet
 import Network.AWS.GuardDuty.GetMasterAccount
 import Network.AWS.GuardDuty.GetMembers
 import Network.AWS.GuardDuty.GetThreatIntelSet
@@ -392,8 +392,8 @@ import Network.AWS.GuardDuty.InviteMembers
 import Network.AWS.GuardDuty.ListDetectors
 import Network.AWS.GuardDuty.ListFilters
 import Network.AWS.GuardDuty.ListFindings
-import Network.AWS.GuardDuty.ListIPSets
 import Network.AWS.GuardDuty.ListInvitations
+import Network.AWS.GuardDuty.ListIPSets
 import Network.AWS.GuardDuty.ListMembers
 import Network.AWS.GuardDuty.ListThreatIntelSets
 import Network.AWS.GuardDuty.StartMonitoringMembers

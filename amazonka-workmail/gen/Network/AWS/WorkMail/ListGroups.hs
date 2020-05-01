@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.WorkMail.Types.Product
 -- | /See:/ 'listGroups' smart constructor.
 data ListGroups =
   ListGroups'
-    { _lgNextToken :: !(Maybe Text)
-    , _lgMaxResults :: !(Maybe Nat)
+    { _lgNextToken      :: !(Maybe Text)
+    , _lgMaxResults     :: !(Maybe Nat)
     , _lgOrganizationId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -132,8 +132,8 @@ instance ToQuery ListGroups where
 -- | /See:/ 'listGroupsResponse' smart constructor.
 data ListGroupsResponse =
   ListGroupsResponse'
-    { _lgrsGroups :: !(Maybe [Group])
-    , _lgrsNextToken :: !(Maybe Text)
+    { _lgrsGroups         :: !(Maybe [Group])
+    , _lgrsNextToken      :: !(Maybe Text)
     , _lgrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

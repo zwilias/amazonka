@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -72,28 +72,28 @@ import Network.AWS.Response
 -- /See:/ 'restoreFromClusterSnapshot' smart constructor.
 data RestoreFromClusterSnapshot =
   RestoreFromClusterSnapshot'
-    { _rfcsEnhancedVPCRouting :: !(Maybe Bool)
-    , _rfcsAdditionalInfo :: !(Maybe Text)
-    , _rfcsPubliclyAccessible :: !(Maybe Bool)
-    , _rfcsSnapshotClusterIdentifier :: !(Maybe Text)
-    , _rfcsHSMConfigurationIdentifier :: !(Maybe Text)
-    , _rfcsClusterSecurityGroups :: !(Maybe [Text])
+    { _rfcsEnhancedVPCRouting               :: !(Maybe Bool)
+    , _rfcsAdditionalInfo                   :: !(Maybe Text)
+    , _rfcsPubliclyAccessible               :: !(Maybe Bool)
+    , _rfcsSnapshotClusterIdentifier        :: !(Maybe Text)
+    , _rfcsHSMConfigurationIdentifier       :: !(Maybe Text)
+    , _rfcsClusterSecurityGroups            :: !(Maybe [Text])
     , _rfcsAutomatedSnapshotRetentionPeriod :: !(Maybe Int)
-    , _rfcsClusterSubnetGroupName :: !(Maybe Text)
-    , _rfcsHSMClientCertificateIdentifier :: !(Maybe Text)
-    , _rfcsElasticIP :: !(Maybe Text)
-    , _rfcsPreferredMaintenanceWindow :: !(Maybe Text)
-    , _rfcsKMSKeyId :: !(Maybe Text)
-    , _rfcsAvailabilityZone :: !(Maybe Text)
-    , _rfcsVPCSecurityGroupIds :: !(Maybe [Text])
-    , _rfcsIAMRoles :: !(Maybe [Text])
-    , _rfcsOwnerAccount :: !(Maybe Text)
-    , _rfcsNodeType :: !(Maybe Text)
-    , _rfcsAllowVersionUpgrade :: !(Maybe Bool)
-    , _rfcsClusterParameterGroupName :: !(Maybe Text)
-    , _rfcsPort :: !(Maybe Int)
-    , _rfcsClusterIdentifier :: !Text
-    , _rfcsSnapshotIdentifier :: !Text
+    , _rfcsClusterSubnetGroupName           :: !(Maybe Text)
+    , _rfcsHSMClientCertificateIdentifier   :: !(Maybe Text)
+    , _rfcsElasticIP                        :: !(Maybe Text)
+    , _rfcsPreferredMaintenanceWindow       :: !(Maybe Text)
+    , _rfcsKMSKeyId                         :: !(Maybe Text)
+    , _rfcsAvailabilityZone                 :: !(Maybe Text)
+    , _rfcsVPCSecurityGroupIds              :: !(Maybe [Text])
+    , _rfcsIAMRoles                         :: !(Maybe [Text])
+    , _rfcsOwnerAccount                     :: !(Maybe Text)
+    , _rfcsNodeType                         :: !(Maybe Text)
+    , _rfcsAllowVersionUpgrade              :: !(Maybe Bool)
+    , _rfcsClusterParameterGroupName        :: !(Maybe Text)
+    , _rfcsPort                             :: !(Maybe Int)
+    , _rfcsClusterIdentifier                :: !Text
+    , _rfcsSnapshotIdentifier               :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -351,7 +351,7 @@ instance ToQuery RestoreFromClusterSnapshot where
 -- | /See:/ 'restoreFromClusterSnapshotResponse' smart constructor.
 data RestoreFromClusterSnapshotResponse =
   RestoreFromClusterSnapshotResponse'
-    { _rfcsrsCluster :: !(Maybe Cluster)
+    { _rfcsrsCluster        :: !(Maybe Cluster)
     , _rfcsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

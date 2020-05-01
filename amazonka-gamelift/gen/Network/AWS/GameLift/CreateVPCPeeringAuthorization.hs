@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -73,7 +73,7 @@ import Network.AWS.Response
 data CreateVPCPeeringAuthorization =
   CreateVPCPeeringAuthorization'
     { _cvpaGameLiftAWSAccountId :: !Text
-    , _cvpaPeerVPCId :: !Text
+    , _cvpaPeerVPCId            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -148,7 +148,7 @@ instance ToQuery CreateVPCPeeringAuthorization where
 data CreateVPCPeeringAuthorizationResponse =
   CreateVPCPeeringAuthorizationResponse'
     { _cvparsVPCPeeringAuthorization :: !(Maybe VPCPeeringAuthorization)
-    , _cvparsResponseStatus :: !Int
+    , _cvparsResponseStatus          :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

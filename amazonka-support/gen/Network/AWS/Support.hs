@@ -222,8 +222,8 @@ import Network.AWS.Support.DescribeServices
 import Network.AWS.Support.DescribeSeverityLevels
 import Network.AWS.Support.DescribeTrustedAdvisorCheckRefreshStatuses
 import Network.AWS.Support.DescribeTrustedAdvisorCheckResult
-import Network.AWS.Support.DescribeTrustedAdvisorCheckSummaries
 import Network.AWS.Support.DescribeTrustedAdvisorChecks
+import Network.AWS.Support.DescribeTrustedAdvisorCheckSummaries
 import Network.AWS.Support.RefreshTrustedAdvisorCheck
 import Network.AWS.Support.ResolveCase
 import Network.AWS.Support.Types

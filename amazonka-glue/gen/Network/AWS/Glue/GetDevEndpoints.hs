@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- | /See:/ 'getDevEndpoints' smart constructor.
 data GetDevEndpoints =
   GetDevEndpoints'
-    { _gdeNextToken :: !(Maybe Text)
+    { _gdeNextToken  :: !(Maybe Text)
     , _gdeMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -118,8 +118,8 @@ instance ToQuery GetDevEndpoints where
 -- | /See:/ 'getDevEndpointsResponse' smart constructor.
 data GetDevEndpointsResponse =
   GetDevEndpointsResponse'
-    { _gdersNextToken :: !(Maybe Text)
-    , _gdersDevEndpoints :: !(Maybe [DevEndpoint])
+    { _gdersNextToken      :: !(Maybe Text)
+    , _gdersDevEndpoints   :: !(Maybe [DevEndpoint])
     , _gdersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

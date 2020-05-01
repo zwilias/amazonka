@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -69,15 +69,15 @@ import Network.AWS.Support.Types.Product
 -- /See:/ 'describeCases' smart constructor.
 data DescribeCases =
   DescribeCases'
-    { _dcIncludeResolvedCases :: !(Maybe Bool)
-    , _dcCaseIdList :: !(Maybe [Text])
-    , _dcAfterTime :: !(Maybe Text)
-    , _dcBeforeTime :: !(Maybe Text)
-    , _dcNextToken :: !(Maybe Text)
+    { _dcIncludeResolvedCases  :: !(Maybe Bool)
+    , _dcCaseIdList            :: !(Maybe [Text])
+    , _dcAfterTime             :: !(Maybe Text)
+    , _dcBeforeTime            :: !(Maybe Text)
+    , _dcNextToken             :: !(Maybe Text)
     , _dcIncludeCommunications :: !(Maybe Bool)
-    , _dcDisplayId :: !(Maybe Text)
-    , _dcLanguage :: !(Maybe Text)
-    , _dcMaxResults :: !(Maybe Nat)
+    , _dcDisplayId             :: !(Maybe Text)
+    , _dcLanguage              :: !(Maybe Text)
+    , _dcMaxResults            :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -211,8 +211,8 @@ instance ToQuery DescribeCases where
 -- /See:/ 'describeCasesResponse' smart constructor.
 data DescribeCasesResponse =
   DescribeCasesResponse'
-    { _drsCases :: !(Maybe [CaseDetails])
-    , _drsNextToken :: !(Maybe Text)
+    { _drsCases          :: !(Maybe [CaseDetails])
+    , _drsNextToken      :: !(Maybe Text)
     , _drsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

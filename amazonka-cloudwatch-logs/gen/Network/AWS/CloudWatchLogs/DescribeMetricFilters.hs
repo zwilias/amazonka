@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,11 +53,11 @@ import Network.AWS.Response
 data DescribeMetricFilters =
   DescribeMetricFilters'
     { _dmfFilterNamePrefix :: !(Maybe Text)
-    , _dmfMetricName :: !(Maybe Text)
-    , _dmfLogGroupName :: !(Maybe Text)
-    , _dmfNextToken :: !(Maybe Text)
-    , _dmfMetricNamespace :: !(Maybe Text)
-    , _dmfLimit :: !(Maybe Nat)
+    , _dmfMetricName       :: !(Maybe Text)
+    , _dmfLogGroupName     :: !(Maybe Text)
+    , _dmfNextToken        :: !(Maybe Text)
+    , _dmfMetricNamespace  :: !(Maybe Text)
+    , _dmfLimit            :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -163,8 +163,8 @@ instance ToQuery DescribeMetricFilters where
 -- | /See:/ 'describeMetricFiltersResponse' smart constructor.
 data DescribeMetricFiltersResponse =
   DescribeMetricFiltersResponse'
-    { _dmfrsNextToken :: !(Maybe Text)
-    , _dmfrsMetricFilters :: !(Maybe [MetricFilter])
+    { _dmfrsNextToken      :: !(Maybe Text)
+    , _dmfrsMetricFilters  :: !(Maybe [MetricFilter])
     , _dmfrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

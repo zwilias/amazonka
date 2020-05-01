@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -71,7 +71,7 @@ import Network.AWS.Response
 data BatchGetItem =
   BatchGetItem'
     { _bgiReturnConsumedCapacity :: !(Maybe ReturnConsumedCapacity)
-    , _bgiRequestItems :: !(Map Text KeysAndAttributes)
+    , _bgiRequestItems           :: !(Map Text KeysAndAttributes)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -141,10 +141,10 @@ instance ToQuery BatchGetItem where
 -- /See:/ 'batchGetItemResponse' smart constructor.
 data BatchGetItemResponse =
   BatchGetItemResponse'
-    { _bgirsUnprocessedKeys :: !(Maybe (Map Text KeysAndAttributes))
-    , _bgirsResponses :: !(Maybe (Map Text [Map Text AttributeValue]))
+    { _bgirsUnprocessedKeys  :: !(Maybe (Map Text KeysAndAttributes))
+    , _bgirsResponses        :: !(Maybe (Map Text [Map Text AttributeValue]))
     , _bgirsConsumedCapacity :: !(Maybe [ConsumedCapacity])
-    , _bgirsResponseStatus :: !Int
+    , _bgirsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

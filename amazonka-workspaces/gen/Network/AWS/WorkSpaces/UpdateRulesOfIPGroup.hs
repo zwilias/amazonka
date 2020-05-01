@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -43,7 +43,7 @@ import Network.AWS.WorkSpaces.Types.Product
 -- | /See:/ 'updateRulesOfIPGroup' smart constructor.
 data UpdateRulesOfIPGroup =
   UpdateRulesOfIPGroup'
-    { _uroigGroupId :: !Text
+    { _uroigGroupId   :: !Text
     , _uroigUserRules :: ![IPRuleItem]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,10 +50,10 @@ import Network.AWS.WorkMail.Types.Product
 -- | /See:/ 'listAliases' smart constructor.
 data ListAliases =
   ListAliases'
-    { _laNextToken :: !(Maybe Text)
-    , _laMaxResults :: !(Maybe Nat)
+    { _laNextToken      :: !(Maybe Text)
+    , _laMaxResults     :: !(Maybe Nat)
     , _laOrganizationId :: !Text
-    , _laEntityId :: !Text
+    , _laEntityId       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -143,8 +143,8 @@ instance ToQuery ListAliases where
 -- | /See:/ 'listAliasesResponse' smart constructor.
 data ListAliasesResponse =
   ListAliasesResponse'
-    { _larsAliases :: !(Maybe [Text])
-    , _larsNextToken :: !(Maybe Text)
+    { _larsAliases        :: !(Maybe [Text])
+    , _larsNextToken      :: !(Maybe Text)
     , _larsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.ServiceCatalog.Types.Product
 data ListAcceptedPortfolioShares =
   ListAcceptedPortfolioShares'
     { _lapsAcceptLanguage :: !(Maybe Text)
-    , _lapsPageToken :: !(Maybe Text)
-    , _lapsPageSize :: !(Maybe Nat)
+    , _lapsPageToken      :: !(Maybe Text)
+    , _lapsPageSize       :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -132,9 +132,9 @@ instance ToQuery ListAcceptedPortfolioShares where
 -- | /See:/ 'listAcceptedPortfolioSharesResponse' smart constructor.
 data ListAcceptedPortfolioSharesResponse =
   ListAcceptedPortfolioSharesResponse'
-    { _lapsrsNextPageToken :: !(Maybe Text)
+    { _lapsrsNextPageToken    :: !(Maybe Text)
     , _lapsrsPortfolioDetails :: !(Maybe [PortfolioDetail])
-    , _lapsrsResponseStatus :: !Int
+    , _lapsrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- | /See:/ 'listAWSServiceAccessForOrganization' smart constructor.
 data ListAWSServiceAccessForOrganization =
   ListAWSServiceAccessForOrganization'
-    { _lasafoNextToken :: !(Maybe Text)
+    { _lasafoNextToken  :: !(Maybe Text)
     , _lasafoMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -124,9 +124,9 @@ instance ToQuery ListAWSServiceAccessForOrganization where
 -- | /See:/ 'listAWSServiceAccessForOrganizationResponse' smart constructor.
 data ListAWSServiceAccessForOrganizationResponse =
   ListAWSServiceAccessForOrganizationResponse'
-    { _lasaforsNextToken :: !(Maybe Text)
+    { _lasaforsNextToken                :: !(Maybe Text)
     , _lasaforsEnabledServicePrincipals :: !(Maybe [EnabledServicePrincipal])
-    , _lasaforsResponseStatus :: !Int
+    , _lasaforsResponseStatus           :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

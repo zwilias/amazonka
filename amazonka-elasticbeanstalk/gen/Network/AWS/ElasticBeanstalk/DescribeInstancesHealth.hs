@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 -- /See:/ 'describeInstancesHealth' smart constructor.
 data DescribeInstancesHealth =
   DescribeInstancesHealth'
-    { _dihNextToken :: !(Maybe Text)
+    { _dihNextToken       :: !(Maybe Text)
     , _dihEnvironmentName :: !(Maybe Text)
-    , _dihAttributeNames :: !(Maybe [InstancesHealthAttribute])
-    , _dihEnvironmentId :: !(Maybe Text)
+    , _dihAttributeNames  :: !(Maybe [InstancesHealthAttribute])
+    , _dihEnvironmentId   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -141,9 +141,9 @@ instance ToQuery DescribeInstancesHealth where
 data DescribeInstancesHealthResponse =
   DescribeInstancesHealthResponse'
     { _dihrsInstanceHealthList :: !(Maybe [SingleInstanceHealth])
-    , _dihrsNextToken :: !(Maybe Text)
-    , _dihrsRefreshedAt :: !(Maybe ISO8601)
-    , _dihrsResponseStatus :: !Int
+    , _dihrsNextToken          :: !(Maybe Text)
+    , _dihrsRefreshedAt        :: !(Maybe ISO8601)
+    , _dihrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

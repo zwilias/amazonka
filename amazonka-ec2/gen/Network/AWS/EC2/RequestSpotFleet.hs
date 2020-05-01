@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -60,7 +60,7 @@ import Network.AWS.Response
 -- /See:/ 'requestSpotFleet' smart constructor.
 data RequestSpotFleet =
   RequestSpotFleet'
-    { _rsfDryRun :: !(Maybe Bool)
+    { _rsfDryRun                 :: !(Maybe Bool)
     , _rsfSpotFleetRequestConfig :: !SpotFleetRequestConfigData
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -125,7 +125,7 @@ instance ToQuery RequestSpotFleet where
 -- /See:/ 'requestSpotFleetResponse' smart constructor.
 data RequestSpotFleetResponse =
   RequestSpotFleetResponse'
-    { _rsfrsResponseStatus :: !Int
+    { _rsfrsResponseStatus     :: !Int
     , _rsfrsSpotFleetRequestId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

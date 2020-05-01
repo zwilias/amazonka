@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,11 +54,11 @@ import Network.AWS.Response
 data ListReviewPolicyResultsForHIT =
   ListReviewPolicyResultsForHIT'
     { _lrprfhitRetrieveResults :: !(Maybe Bool)
-    , _lrprfhitPolicyLevels :: !(Maybe [ReviewPolicyLevel])
+    , _lrprfhitPolicyLevels    :: !(Maybe [ReviewPolicyLevel])
     , _lrprfhitRetrieveActions :: !(Maybe Bool)
-    , _lrprfhitNextToken :: !(Maybe Text)
-    , _lrprfhitMaxResults :: !(Maybe Nat)
-    , _lrprfhitHITId :: !Text
+    , _lrprfhitNextToken       :: !(Maybe Text)
+    , _lrprfhitMaxResults      :: !(Maybe Nat)
+    , _lrprfhitHITId           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -167,13 +167,13 @@ instance ToQuery ListReviewPolicyResultsForHIT where
 -- | /See:/ 'listReviewPolicyResultsForHITResponse' smart constructor.
 data ListReviewPolicyResultsForHITResponse =
   ListReviewPolicyResultsForHITResponse'
-    { _lrprfhitrsHITReviewPolicy :: !(Maybe ReviewPolicy)
-    , _lrprfhitrsHITReviewReport :: !(Maybe ReviewReport)
-    , _lrprfhitrsNextToken :: !(Maybe Text)
+    { _lrprfhitrsHITReviewPolicy        :: !(Maybe ReviewPolicy)
+    , _lrprfhitrsHITReviewReport        :: !(Maybe ReviewReport)
+    , _lrprfhitrsNextToken              :: !(Maybe Text)
     , _lrprfhitrsAssignmentReviewReport :: !(Maybe ReviewReport)
-    , _lrprfhitrsHITId :: !(Maybe Text)
+    , _lrprfhitrsHITId                  :: !(Maybe Text)
     , _lrprfhitrsAssignmentReviewPolicy :: !(Maybe ReviewPolicy)
-    , _lrprfhitrsResponseStatus :: !Int
+    , _lrprfhitrsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

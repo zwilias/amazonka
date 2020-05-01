@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'rebootReplicationInstance' smart constructor.
 data RebootReplicationInstance =
   RebootReplicationInstance'
-    { _rriForceFailover :: !(Maybe Bool)
+    { _rriForceFailover          :: !(Maybe Bool)
     , _rriReplicationInstanceARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -114,7 +114,7 @@ instance ToQuery RebootReplicationInstance where
 data RebootReplicationInstanceResponse =
   RebootReplicationInstanceResponse'
     { _rrirsReplicationInstance :: !(Maybe ReplicationInstance)
-    , _rrirsResponseStatus :: !Int
+    , _rrirsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

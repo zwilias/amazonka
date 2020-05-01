@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,9 +53,9 @@ import Network.AWS.Response
 -- /See:/ 'listPrincipalThings' smart constructor.
 data ListPrincipalThings =
   ListPrincipalThings'
-    { _lptNextToken :: !(Maybe Text)
+    { _lptNextToken  :: !(Maybe Text)
     , _lptMaxResults :: !(Maybe Nat)
-    , _lptPrincipal :: !Text
+    , _lptPrincipal  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -129,8 +129,8 @@ instance ToQuery ListPrincipalThings where
 -- /See:/ 'listPrincipalThingsResponse' smart constructor.
 data ListPrincipalThingsResponse =
   ListPrincipalThingsResponse'
-    { _lptrsNextToken :: !(Maybe Text)
-    , _lptrsThings :: !(Maybe [Text])
+    { _lptrsNextToken      :: !(Maybe Text)
+    , _lptrsThings         :: !(Maybe [Text])
     , _lptrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

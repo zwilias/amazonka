@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,8 +51,8 @@ import Network.AWS.Response
 -- /See:/ 'getId' smart constructor.
 data GetId =
   GetId'
-    { _giAccountId :: !(Maybe Text)
-    , _giLogins :: !(Maybe (Map Text Text))
+    { _giAccountId      :: !(Maybe Text)
+    , _giLogins         :: !(Maybe (Map Text Text))
     , _giIdentityPoolId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -129,7 +129,7 @@ instance ToQuery GetId where
 -- /See:/ 'getIdResponse' smart constructor.
 data GetIdResponse =
   GetIdResponse'
-    { _girsIdentityId :: !(Maybe Text)
+    { _girsIdentityId     :: !(Maybe Text)
     , _girsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

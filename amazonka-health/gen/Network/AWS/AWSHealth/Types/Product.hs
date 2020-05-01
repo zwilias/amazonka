@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,12 +27,12 @@ import Network.AWS.Prelude
 data AffectedEntity =
   AffectedEntity'
     { _aeLastUpdatedTime :: !(Maybe POSIX)
-    , _aeEntityValue :: !(Maybe Text)
-    , _aeAwsAccountId :: !(Maybe Text)
-    , _aeEventARN :: !(Maybe Text)
-    , _aeEntityARN :: !(Maybe Text)
-    , _aeTags :: !(Maybe (Map Text Text))
-    , _aeStatusCode :: !(Maybe EntityStatusCode)
+    , _aeEntityValue     :: !(Maybe Text)
+    , _aeAwsAccountId    :: !(Maybe Text)
+    , _aeEventARN        :: !(Maybe Text)
+    , _aeEntityARN       :: !(Maybe Text)
+    , _aeTags            :: !(Maybe (Map Text Text))
+    , _aeStatusCode      :: !(Maybe EntityStatusCode)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -117,7 +117,7 @@ instance NFData AffectedEntity
 -- /See:/ 'dateTimeRange' smart constructor.
 data DateTimeRange =
   DateTimeRange'
-    { _dtrTo :: !(Maybe POSIX)
+    { _dtrTo   :: !(Maybe POSIX)
     , _dtrFrom :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -155,7 +155,7 @@ instance ToJSON DateTimeRange where
 -- /See:/ 'entityAggregate' smart constructor.
 data EntityAggregate =
   EntityAggregate'
-    { _eCount :: !(Maybe Int)
+    { _eCount    :: !(Maybe Int)
     , _eEventARN :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -195,12 +195,12 @@ instance NFData EntityAggregate
 -- /See:/ 'entityFilter' smart constructor.
 data EntityFilter =
   EntityFilter'
-    { _eStatusCodes :: !(Maybe (List1 EntityStatusCode))
-    , _eEntityARNs :: !(Maybe (List1 Text))
-    , _eEntityValues :: !(Maybe (List1 Text))
-    , _eTags :: !(Maybe [Map Text Text])
+    { _eStatusCodes      :: !(Maybe (List1 EntityStatusCode))
+    , _eEntityARNs       :: !(Maybe (List1 Text))
+    , _eEntityValues     :: !(Maybe (List1 Text))
+    , _eTags             :: !(Maybe [Map Text Text])
     , _eLastUpdatedTimes :: !(Maybe (List1 DateTimeRange))
-    , _eEventARNs :: !(List1 Text)
+    , _eEventARNs        :: !(List1 Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -282,16 +282,16 @@ instance ToJSON EntityFilter where
 -- /See:/ 'event' smart constructor.
 data Event =
   Event'
-    { _eLastUpdatedTime :: !(Maybe POSIX)
-    , _eArn :: !(Maybe Text)
-    , _eService :: !(Maybe Text)
-    , _eStartTime :: !(Maybe POSIX)
-    , _eEventTypeCode :: !(Maybe Text)
+    { _eLastUpdatedTime   :: !(Maybe POSIX)
+    , _eArn               :: !(Maybe Text)
+    , _eService           :: !(Maybe Text)
+    , _eStartTime         :: !(Maybe POSIX)
+    , _eEventTypeCode     :: !(Maybe Text)
     , _eEventTypeCategory :: !(Maybe EventTypeCategory)
-    , _eAvailabilityZone :: !(Maybe Text)
-    , _eEndTime :: !(Maybe POSIX)
-    , _eRegion :: !(Maybe Text)
-    , _eStatusCode :: !(Maybe EventStatusCode)
+    , _eAvailabilityZone  :: !(Maybe Text)
+    , _eEndTime           :: !(Maybe POSIX)
+    , _eRegion            :: !(Maybe Text)
+    , _eStatusCode        :: !(Maybe EventStatusCode)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -401,7 +401,7 @@ instance NFData Event
 -- /See:/ 'eventAggregate' smart constructor.
 data EventAggregate =
   EventAggregate'
-    { _eaCount :: !(Maybe Int)
+    { _eaCount          :: !(Maybe Int)
     , _eaAggregateValue :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -476,9 +476,9 @@ instance NFData EventDescription
 -- /See:/ 'eventDetails' smart constructor.
 data EventDetails =
   EventDetails'
-    { _edEvent :: !(Maybe Event)
+    { _edEvent            :: !(Maybe Event)
     , _edEventDescription :: !(Maybe EventDescription)
-    , _edEventMetadata :: !(Maybe (Map Text Text))
+    , _edEventMetadata    :: !(Maybe (Map Text Text))
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -532,8 +532,8 @@ instance NFData EventDetails
 -- /See:/ 'eventDetailsErrorItem' smart constructor.
 data EventDetailsErrorItem =
   EventDetailsErrorItem'
-    { _edeiEventARN :: !(Maybe Text)
-    , _edeiErrorName :: !(Maybe Text)
+    { _edeiEventARN     :: !(Maybe Text)
+    , _edeiErrorName    :: !(Maybe Text)
     , _edeiErrorMessage :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -586,19 +586,19 @@ instance NFData EventDetailsErrorItem
 -- /See:/ 'eventFilter' smart constructor.
 data EventFilter =
   EventFilter'
-    { _efEventARNs :: !(Maybe (List1 Text))
+    { _efEventARNs           :: !(Maybe (List1 Text))
     , _efEventTypeCategories :: !(Maybe (List1 EventTypeCategory))
-    , _efEventTypeCodes :: !(Maybe (List1 Text))
-    , _efRegions :: !(Maybe (List1 Text))
-    , _efEventStatusCodes :: !(Maybe (List1 EventStatusCode))
-    , _efEndTimes :: !(Maybe (List1 DateTimeRange))
-    , _efAvailabilityZones :: !(Maybe [Text])
-    , _efEntityARNs :: !(Maybe (List1 Text))
-    , _efEntityValues :: !(Maybe (List1 Text))
-    , _efStartTimes :: !(Maybe (List1 DateTimeRange))
-    , _efServices :: !(Maybe (List1 Text))
-    , _efTags :: !(Maybe [Map Text Text])
-    , _efLastUpdatedTimes :: !(Maybe (List1 DateTimeRange))
+    , _efEventTypeCodes      :: !(Maybe (List1 Text))
+    , _efRegions             :: !(Maybe (List1 Text))
+    , _efEventStatusCodes    :: !(Maybe (List1 EventStatusCode))
+    , _efEndTimes            :: !(Maybe (List1 DateTimeRange))
+    , _efAvailabilityZones   :: !(Maybe [Text])
+    , _efEntityARNs          :: !(Maybe (List1 Text))
+    , _efEntityValues        :: !(Maybe (List1 Text))
+    , _efStartTimes          :: !(Maybe (List1 DateTimeRange))
+    , _efServices            :: !(Maybe (List1 Text))
+    , _efTags                :: !(Maybe [Map Text Text])
+    , _efLastUpdatedTimes    :: !(Maybe (List1 DateTimeRange))
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -743,9 +743,9 @@ instance ToJSON EventFilter where
 -- /See:/ 'eventType' smart constructor.
 data EventType =
   EventType'
-    { _etService :: !(Maybe Text)
+    { _etService  :: !(Maybe Text)
     , _etCategory :: !(Maybe EventTypeCategory)
-    , _etCode :: !(Maybe Text)
+    , _etCode     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -794,8 +794,8 @@ instance NFData EventType
 data EventTypeFilter =
   EventTypeFilter'
     { _etfEventTypeCategories :: !(Maybe (List1 EventTypeCategory))
-    , _etfEventTypeCodes :: !(Maybe (List1 Text))
-    , _etfServices :: !(Maybe (List1 Text))
+    , _etfEventTypeCodes      :: !(Maybe (List1 Text))
+    , _etfServices            :: !(Maybe (List1 Text))
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

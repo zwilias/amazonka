@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,11 +49,11 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'createDocument' smart constructor.
 data CreateDocument =
   CreateDocument'
-    { _cdDocumentType :: !(Maybe DocumentType)
-    , _cdTargetType :: !(Maybe Text)
+    { _cdDocumentType   :: !(Maybe DocumentType)
+    , _cdTargetType     :: !(Maybe Text)
     , _cdDocumentFormat :: !(Maybe DocumentFormat)
-    , _cdContent :: !Text
-    , _cdName :: !Text
+    , _cdContent        :: !Text
+    , _cdName           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -145,7 +145,7 @@ instance ToQuery CreateDocument where
 data CreateDocumentResponse =
   CreateDocumentResponse'
     { _cdrsDocumentDescription :: !(Maybe DocumentDescription)
-    , _cdrsResponseStatus :: !Int
+    , _cdrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

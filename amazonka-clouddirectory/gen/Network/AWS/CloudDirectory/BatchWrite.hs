@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 data BatchWrite =
   BatchWrite'
     { _bwDirectoryARN :: !Text
-    , _bwOperations :: ![BatchWriteOperation]
+    , _bwOperations   :: ![BatchWriteOperation]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -100,7 +100,7 @@ instance ToQuery BatchWrite where
 -- | /See:/ 'batchWriteResponse' smart constructor.
 data BatchWriteResponse =
   BatchWriteResponse'
-    { _bwrsResponses :: !(Maybe [BatchWriteOperationResponse])
+    { _bwrsResponses      :: !(Maybe [BatchWriteOperationResponse])
     , _bwrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

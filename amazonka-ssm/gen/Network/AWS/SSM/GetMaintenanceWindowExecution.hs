@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -108,13 +108,13 @@ instance ToQuery GetMaintenanceWindowExecution where
 -- | /See:/ 'getMaintenanceWindowExecutionResponse' smart constructor.
 data GetMaintenanceWindowExecutionResponse =
   GetMaintenanceWindowExecutionResponse'
-    { _gmwersStatus :: !(Maybe MaintenanceWindowExecutionStatus)
-    , _gmwersStartTime :: !(Maybe POSIX)
+    { _gmwersStatus            :: !(Maybe MaintenanceWindowExecutionStatus)
+    , _gmwersStartTime         :: !(Maybe POSIX)
     , _gmwersWindowExecutionId :: !(Maybe Text)
-    , _gmwersStatusDetails :: !(Maybe Text)
-    , _gmwersEndTime :: !(Maybe POSIX)
-    , _gmwersTaskIds :: !(Maybe [Text])
-    , _gmwersResponseStatus :: !Int
+    , _gmwersStatusDetails     :: !(Maybe Text)
+    , _gmwersEndTime           :: !(Maybe POSIX)
+    , _gmwersTaskIds           :: !(Maybe [Text])
+    , _gmwersResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

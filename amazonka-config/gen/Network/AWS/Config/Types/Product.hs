@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,9 +26,9 @@ import Network.AWS.Prelude
 -- /See:/ 'accountAggregationSource' smart constructor.
 data AccountAggregationSource =
   AccountAggregationSource'
-    { _aasAWSRegions :: !(Maybe (List1 Text))
+    { _aasAWSRegions    :: !(Maybe (List1 Text))
     , _aasAllAWSRegions :: !(Maybe Bool)
-    , _aasAccountIds :: !(List1 Text)
+    , _aasAccountIds    :: !(List1 Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -95,10 +95,10 @@ instance ToJSON AccountAggregationSource where
 -- /See:/ 'aggregateComplianceByConfigRule' smart constructor.
 data AggregateComplianceByConfigRule =
   AggregateComplianceByConfigRule'
-    { _acbcrCompliance :: !(Maybe Compliance)
+    { _acbcrCompliance     :: !(Maybe Compliance)
     , _acbcrConfigRuleName :: !(Maybe Text)
-    , _acbcrAccountId :: !(Maybe Text)
-    , _acbcrAWSRegion :: !(Maybe Text)
+    , _acbcrAccountId      :: !(Maybe Text)
+    , _acbcrAWSRegion      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -160,7 +160,7 @@ instance NFData AggregateComplianceByConfigRule
 -- /See:/ 'aggregateComplianceCount' smart constructor.
 data AggregateComplianceCount =
   AggregateComplianceCount'
-    { _accGroupName :: !(Maybe Text)
+    { _accGroupName         :: !(Maybe Text)
     , _accComplianceSummary :: !(Maybe ComplianceSummary)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -206,12 +206,12 @@ instance NFData AggregateComplianceCount
 data AggregateEvaluationResult =
   AggregateEvaluationResult'
     { _aerEvaluationResultIdentifier :: !(Maybe EvaluationResultIdentifier)
-    , _aerAnnotation :: !(Maybe Text)
-    , _aerConfigRuleInvokedTime :: !(Maybe POSIX)
-    , _aerResultRecordedTime :: !(Maybe POSIX)
-    , _aerAccountId :: !(Maybe Text)
-    , _aerComplianceType :: !(Maybe ComplianceType)
-    , _aerAWSRegion :: !(Maybe Text)
+    , _aerAnnotation                 :: !(Maybe Text)
+    , _aerConfigRuleInvokedTime      :: !(Maybe POSIX)
+    , _aerResultRecordedTime         :: !(Maybe POSIX)
+    , _aerAccountId                  :: !(Maybe Text)
+    , _aerComplianceType             :: !(Maybe ComplianceType)
+    , _aerAWSRegion                  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -304,13 +304,13 @@ instance NFData AggregateEvaluationResult
 -- /See:/ 'aggregatedSourceStatus' smart constructor.
 data AggregatedSourceStatus =
   AggregatedSourceStatus'
-    { _assLastErrorCode :: !(Maybe Text)
+    { _assLastErrorCode    :: !(Maybe Text)
     , _assLastUpdateStatus :: !(Maybe AggregatedSourceStatusType)
-    , _assSourceType :: !(Maybe AggregatedSourceType)
-    , _assSourceId :: !(Maybe Text)
+    , _assSourceType       :: !(Maybe AggregatedSourceType)
+    , _assSourceId         :: !(Maybe Text)
     , _assLastErrorMessage :: !(Maybe Text)
-    , _assAWSRegion :: !(Maybe Text)
-    , _assLastUpdateTime :: !(Maybe POSIX)
+    , _assAWSRegion        :: !(Maybe Text)
+    , _assLastUpdateTime   :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -399,10 +399,10 @@ instance NFData AggregatedSourceStatus
 -- /See:/ 'aggregationAuthorization' smart constructor.
 data AggregationAuthorization =
   AggregationAuthorization'
-    { _aaCreationTime :: !(Maybe POSIX)
-    , _aaAuthorizedAWSRegion :: !(Maybe Text)
+    { _aaCreationTime                :: !(Maybe POSIX)
+    , _aaAuthorizedAWSRegion         :: !(Maybe Text)
     , _aaAggregationAuthorizationARN :: !(Maybe Text)
-    , _aaAuthorizedAccountId :: !(Maybe Text)
+    , _aaAuthorizedAccountId         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -469,20 +469,20 @@ instance NFData AggregationAuthorization
 -- /See:/ 'baseConfigurationItem' smart constructor.
 data BaseConfigurationItem =
   BaseConfigurationItem'
-    { _bciResourceId :: !(Maybe Text)
-    , _bciResourceType :: !(Maybe ResourceType)
-    , _bciConfigurationStateId :: !(Maybe Text)
-    , _bciArn :: !(Maybe Text)
-    , _bciResourceName :: !(Maybe Text)
-    , _bciResourceCreationTime :: !(Maybe POSIX)
-    , _bciConfigurationItemStatus :: !(Maybe ConfigurationItemStatus)
+    { _bciResourceId                   :: !(Maybe Text)
+    , _bciResourceType                 :: !(Maybe ResourceType)
+    , _bciConfigurationStateId         :: !(Maybe Text)
+    , _bciArn                          :: !(Maybe Text)
+    , _bciResourceName                 :: !(Maybe Text)
+    , _bciResourceCreationTime         :: !(Maybe POSIX)
+    , _bciConfigurationItemStatus      :: !(Maybe ConfigurationItemStatus)
     , _bciConfigurationItemCaptureTime :: !(Maybe POSIX)
-    , _bciAccountId :: !(Maybe Text)
-    , _bciSupplementaryConfiguration :: !(Maybe (Map Text Text))
-    , _bciAvailabilityZone :: !(Maybe Text)
-    , _bciVersion :: !(Maybe Text)
-    , _bciAwsRegion :: !(Maybe Text)
-    , _bciConfiguration :: !(Maybe Text)
+    , _bciAccountId                    :: !(Maybe Text)
+    , _bciSupplementaryConfiguration   :: !(Maybe (Map Text Text))
+    , _bciAvailabilityZone             :: !(Maybe Text)
+    , _bciVersion                      :: !(Maybe Text)
+    , _bciAwsRegion                    :: !(Maybe Text)
+    , _bciConfiguration                :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -638,7 +638,7 @@ instance NFData BaseConfigurationItem
 data Compliance =
   Compliance'
     { _cComplianceContributorCount :: !(Maybe ComplianceContributorCount)
-    , _cComplianceType :: !(Maybe ComplianceType)
+    , _cComplianceType             :: !(Maybe ComplianceType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -685,7 +685,7 @@ instance NFData Compliance
 -- /See:/ 'complianceByConfigRule' smart constructor.
 data ComplianceByConfigRule =
   ComplianceByConfigRule'
-    { _cbcrCompliance :: !(Maybe Compliance)
+    { _cbcrCompliance     :: !(Maybe Compliance)
     , _cbcrConfigRuleName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -730,9 +730,9 @@ instance NFData ComplianceByConfigRule
 -- /See:/ 'complianceByResource' smart constructor.
 data ComplianceByResource =
   ComplianceByResource'
-    { _cbrResourceId :: !(Maybe Text)
+    { _cbrResourceId   :: !(Maybe Text)
     , _cbrResourceType :: !(Maybe Text)
-    , _cbrCompliance :: !(Maybe Compliance)
+    , _cbrCompliance   :: !(Maybe Compliance)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -830,8 +830,8 @@ instance NFData ComplianceContributorCount
 data ComplianceSummary =
   ComplianceSummary'
     { _csComplianceSummaryTimestamp :: !(Maybe POSIX)
-    , _csCompliantResourceCount :: !(Maybe ComplianceContributorCount)
-    , _csNonCompliantResourceCount :: !(Maybe ComplianceContributorCount)
+    , _csCompliantResourceCount     :: !(Maybe ComplianceContributorCount)
+    , _csNonCompliantResourceCount  :: !(Maybe ComplianceContributorCount)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -894,7 +894,7 @@ instance NFData ComplianceSummary
 -- /See:/ 'complianceSummaryByResourceType' smart constructor.
 data ComplianceSummaryByResourceType =
   ComplianceSummaryByResourceType'
-    { _csbrtResourceType :: !(Maybe Text)
+    { _csbrtResourceType      :: !(Maybe Text)
     , _csbrtComplianceSummary :: !(Maybe ComplianceSummary)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -940,12 +940,12 @@ instance NFData ComplianceSummaryByResourceType
 -- /See:/ 'configExportDeliveryInfo' smart constructor.
 data ConfigExportDeliveryInfo =
   ConfigExportDeliveryInfo'
-    { _cediLastErrorCode :: !(Maybe Text)
-    , _cediLastAttemptTime :: !(Maybe POSIX)
+    { _cediLastErrorCode      :: !(Maybe Text)
+    , _cediLastAttemptTime    :: !(Maybe POSIX)
     , _cediLastSuccessfulTime :: !(Maybe POSIX)
-    , _cediLastStatus :: !(Maybe DeliveryStatus)
-    , _cediLastErrorMessage :: !(Maybe Text)
-    , _cediNextDeliveryTime :: !(Maybe POSIX)
+    , _cediLastStatus         :: !(Maybe DeliveryStatus)
+    , _cediLastErrorMessage   :: !(Maybe Text)
+    , _cediNextDeliveryTime   :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1031,15 +1031,15 @@ instance NFData ConfigExportDeliveryInfo
 -- /See:/ 'configRule' smart constructor.
 data ConfigRule =
   ConfigRule'
-    { _crInputParameters :: !(Maybe Text)
-    , _crConfigRuleName :: !(Maybe Text)
+    { _crInputParameters           :: !(Maybe Text)
+    , _crConfigRuleName            :: !(Maybe Text)
     , _crMaximumExecutionFrequency :: !(Maybe MaximumExecutionFrequency)
-    , _crConfigRuleId :: !(Maybe Text)
-    , _crScope :: !(Maybe Scope)
-    , _crConfigRuleState :: !(Maybe ConfigRuleState)
-    , _crDescription :: !(Maybe Text)
-    , _crConfigRuleARN :: !(Maybe Text)
-    , _crSource :: !Source
+    , _crConfigRuleId              :: !(Maybe Text)
+    , _crScope                     :: !(Maybe Scope)
+    , _crConfigRuleState           :: !(Maybe ConfigRuleState)
+    , _crDescription               :: !(Maybe Text)
+    , _crConfigRuleARN             :: !(Maybe Text)
+    , _crSource                    :: !Source
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1161,9 +1161,9 @@ instance ToJSON ConfigRule where
 data ConfigRuleComplianceFilters =
   ConfigRuleComplianceFilters'
     { _crcfConfigRuleName :: !(Maybe Text)
-    , _crcfAccountId :: !(Maybe Text)
+    , _crcfAccountId      :: !(Maybe Text)
     , _crcfComplianceType :: !(Maybe ComplianceType)
-    , _crcfAWSRegion :: !(Maybe Text)
+    , _crcfAWSRegion      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1272,17 +1272,17 @@ instance ToJSON ConfigRuleComplianceSummaryFilters where
 -- /See:/ 'configRuleEvaluationStatus' smart constructor.
 data ConfigRuleEvaluationStatus =
   ConfigRuleEvaluationStatus'
-    { _cresLastErrorCode :: !(Maybe Text)
-    , _cresLastFailedEvaluationTime :: !(Maybe POSIX)
-    , _cresFirstActivatedTime :: !(Maybe POSIX)
+    { _cresLastErrorCode                :: !(Maybe Text)
+    , _cresLastFailedEvaluationTime     :: !(Maybe POSIX)
+    , _cresFirstActivatedTime           :: !(Maybe POSIX)
     , _cresLastSuccessfulEvaluationTime :: !(Maybe POSIX)
-    , _cresConfigRuleName :: !(Maybe Text)
-    , _cresLastErrorMessage :: !(Maybe Text)
-    , _cresConfigRuleId :: !(Maybe Text)
-    , _cresLastFailedInvocationTime :: !(Maybe POSIX)
-    , _cresFirstEvaluationStarted :: !(Maybe Bool)
+    , _cresConfigRuleName               :: !(Maybe Text)
+    , _cresLastErrorMessage             :: !(Maybe Text)
+    , _cresConfigRuleId                 :: !(Maybe Text)
+    , _cresLastFailedInvocationTime     :: !(Maybe POSIX)
+    , _cresFirstEvaluationStarted       :: !(Maybe Bool)
     , _cresLastSuccessfulInvocationTime :: !(Maybe POSIX)
-    , _cresConfigRuleARN :: !(Maybe Text)
+    , _cresConfigRuleARN                :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1486,10 +1486,10 @@ instance ToJSON ConfigSnapshotDeliveryProperties where
 -- /See:/ 'configStreamDeliveryInfo' smart constructor.
 data ConfigStreamDeliveryInfo =
   ConfigStreamDeliveryInfo'
-    { _csdiLastErrorCode :: !(Maybe Text)
+    { _csdiLastErrorCode        :: !(Maybe Text)
     , _csdiLastStatusChangeTime :: !(Maybe POSIX)
-    , _csdiLastStatus :: !(Maybe DeliveryStatus)
-    , _csdiLastErrorMessage :: !(Maybe Text)
+    , _csdiLastStatus           :: !(Maybe DeliveryStatus)
+    , _csdiLastErrorMessage     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1553,12 +1553,12 @@ instance NFData ConfigStreamDeliveryInfo
 -- /See:/ 'configurationAggregator' smart constructor.
 data ConfigurationAggregator =
   ConfigurationAggregator'
-    { _caConfigurationAggregatorARN :: !(Maybe Text)
-    , _caCreationTime :: !(Maybe POSIX)
+    { _caConfigurationAggregatorARN    :: !(Maybe Text)
+    , _caCreationTime                  :: !(Maybe POSIX)
     , _caOrganizationAggregationSource :: !(Maybe OrganizationAggregationSource)
-    , _caLastUpdatedTime :: !(Maybe POSIX)
-    , _caAccountAggregationSources :: !(Maybe [AccountAggregationSource])
-    , _caConfigurationAggregatorName :: !(Maybe Text)
+    , _caLastUpdatedTime               :: !(Maybe POSIX)
+    , _caAccountAggregationSources     :: !(Maybe [AccountAggregationSource])
+    , _caConfigurationAggregatorName   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1652,24 +1652,24 @@ instance NFData ConfigurationAggregator
 -- /See:/ 'configurationItem' smart constructor.
 data ConfigurationItem =
   ConfigurationItem'
-    { _ciResourceId :: !(Maybe Text)
-    , _ciResourceType :: !(Maybe ResourceType)
-    , _ciConfigurationStateId :: !(Maybe Text)
-    , _ciArn :: !(Maybe Text)
-    , _ciResourceName :: !(Maybe Text)
-    , _ciResourceCreationTime :: !(Maybe POSIX)
-    , _ciConfigurationItemStatus :: !(Maybe ConfigurationItemStatus)
+    { _ciResourceId                   :: !(Maybe Text)
+    , _ciResourceType                 :: !(Maybe ResourceType)
+    , _ciConfigurationStateId         :: !(Maybe Text)
+    , _ciArn                          :: !(Maybe Text)
+    , _ciResourceName                 :: !(Maybe Text)
+    , _ciResourceCreationTime         :: !(Maybe POSIX)
+    , _ciConfigurationItemStatus      :: !(Maybe ConfigurationItemStatus)
     , _ciConfigurationItemCaptureTime :: !(Maybe POSIX)
-    , _ciAccountId :: !(Maybe Text)
-    , _ciSupplementaryConfiguration :: !(Maybe (Map Text Text))
-    , _ciAvailabilityZone :: !(Maybe Text)
-    , _ciRelationships :: !(Maybe [Relationship])
-    , _ciVersion :: !(Maybe Text)
-    , _ciAwsRegion :: !(Maybe Text)
-    , _ciRelatedEvents :: !(Maybe [Text])
-    , _ciConfiguration :: !(Maybe Text)
-    , _ciConfigurationItemMD5Hash :: !(Maybe Text)
-    , _ciTags :: !(Maybe (Map Text Text))
+    , _ciAccountId                    :: !(Maybe Text)
+    , _ciSupplementaryConfiguration   :: !(Maybe (Map Text Text))
+    , _ciAvailabilityZone             :: !(Maybe Text)
+    , _ciRelationships                :: !(Maybe [Relationship])
+    , _ciVersion                      :: !(Maybe Text)
+    , _ciAwsRegion                    :: !(Maybe Text)
+    , _ciRelatedEvents                :: !(Maybe [Text])
+    , _ciConfiguration                :: !(Maybe Text)
+    , _ciConfigurationItemMD5Hash     :: !(Maybe Text)
+    , _ciTags                         :: !(Maybe (Map Text Text))
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1858,9 +1858,9 @@ instance NFData ConfigurationItem
 -- /See:/ 'configurationRecorder' smart constructor.
 data ConfigurationRecorder =
   ConfigurationRecorder'
-    { _crName :: !(Maybe Text)
+    { _crName           :: !(Maybe Text)
     , _crRecordingGroup :: !(Maybe RecordingGroup)
-    , _crRoleARN :: !(Maybe Text)
+    , _crRoleARN        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1918,14 +1918,14 @@ instance ToJSON ConfigurationRecorder where
 -- /See:/ 'configurationRecorderStatus' smart constructor.
 data ConfigurationRecorderStatus =
   ConfigurationRecorderStatus'
-    { _crsLastErrorCode :: !(Maybe Text)
-    , _crsLastStopTime :: !(Maybe POSIX)
+    { _crsLastErrorCode        :: !(Maybe Text)
+    , _crsLastStopTime         :: !(Maybe POSIX)
     , _crsLastStatusChangeTime :: !(Maybe POSIX)
-    , _crsRecording :: !(Maybe Bool)
-    , _crsLastStatus :: !(Maybe RecorderStatus)
-    , _crsLastErrorMessage :: !(Maybe Text)
-    , _crsName :: !(Maybe Text)
-    , _crsLastStartTime :: !(Maybe POSIX)
+    , _crsRecording            :: !(Maybe Bool)
+    , _crsLastStatus           :: !(Maybe RecorderStatus)
+    , _crsLastErrorMessage     :: !(Maybe Text)
+    , _crsName                 :: !(Maybe Text)
+    , _crsLastStartTime        :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2114,9 +2114,9 @@ instance ToJSON DeliveryChannel where
 data DeliveryChannelStatus =
   DeliveryChannelStatus'
     { _dcsConfigSnapshotDeliveryInfo :: !(Maybe ConfigExportDeliveryInfo)
-    , _dcsConfigStreamDeliveryInfo :: !(Maybe ConfigStreamDeliveryInfo)
-    , _dcsConfigHistoryDeliveryInfo :: !(Maybe ConfigExportDeliveryInfo)
-    , _dcsName :: !(Maybe Text)
+    , _dcsConfigStreamDeliveryInfo   :: !(Maybe ConfigStreamDeliveryInfo)
+    , _dcsConfigHistoryDeliveryInfo  :: !(Maybe ConfigExportDeliveryInfo)
+    , _dcsName                       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2189,11 +2189,11 @@ instance NFData DeliveryChannelStatus
 -- /See:/ 'evaluation' smart constructor.
 data Evaluation =
   Evaluation'
-    { _eAnnotation :: !(Maybe Text)
+    { _eAnnotation             :: !(Maybe Text)
     , _eComplianceResourceType :: !Text
-    , _eComplianceResourceId :: !Text
-    , _eComplianceType :: !ComplianceType
-    , _eOrderingTimestamp :: !POSIX
+    , _eComplianceResourceId   :: !Text
+    , _eComplianceType         :: !ComplianceType
+    , _eOrderingTimestamp      :: !POSIX
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2282,11 +2282,11 @@ instance ToJSON Evaluation where
 data EvaluationResult =
   EvaluationResult'
     { _erEvaluationResultIdentifier :: !(Maybe EvaluationResultIdentifier)
-    , _erAnnotation :: !(Maybe Text)
-    , _erConfigRuleInvokedTime :: !(Maybe POSIX)
-    , _erResultRecordedTime :: !(Maybe POSIX)
-    , _erResultToken :: !(Maybe Text)
-    , _erComplianceType :: !(Maybe ComplianceType)
+    , _erAnnotation                 :: !(Maybe Text)
+    , _erConfigRuleInvokedTime      :: !(Maybe POSIX)
+    , _erResultRecordedTime         :: !(Maybe POSIX)
+    , _erResultToken                :: !(Maybe Text)
+    , _erComplianceType             :: !(Maybe ComplianceType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2372,7 +2372,7 @@ instance NFData EvaluationResult
 data EvaluationResultIdentifier =
   EvaluationResultIdentifier'
     { _eriEvaluationResultQualifier :: !(Maybe EvaluationResultQualifier)
-    , _eriOrderingTimestamp :: !(Maybe POSIX)
+    , _eriOrderingTimestamp         :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2421,8 +2421,8 @@ instance NFData EvaluationResultIdentifier
 -- /See:/ 'evaluationResultQualifier' smart constructor.
 data EvaluationResultQualifier =
   EvaluationResultQualifier'
-    { _erqResourceId :: !(Maybe Text)
-    , _erqResourceType :: !(Maybe Text)
+    { _erqResourceId     :: !(Maybe Text)
+    , _erqResourceType   :: !(Maybe Text)
     , _erqConfigRuleName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2476,9 +2476,9 @@ instance NFData EvaluationResultQualifier
 -- /See:/ 'organizationAggregationSource' smart constructor.
 data OrganizationAggregationSource =
   OrganizationAggregationSource'
-    { _oasAWSRegions :: !(Maybe (List1 Text))
+    { _oasAWSRegions    :: !(Maybe (List1 Text))
     , _oasAllAWSRegions :: !(Maybe Bool)
-    , _oasRoleARN :: !Text
+    , _oasRoleARN       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2603,9 +2603,9 @@ instance NFData PendingAggregationRequest
 -- /See:/ 'recordingGroup' smart constructor.
 data RecordingGroup =
   RecordingGroup'
-    { _rgAllSupported :: !(Maybe Bool)
+    { _rgAllSupported               :: !(Maybe Bool)
     , _rgIncludeGlobalResourceTypes :: !(Maybe Bool)
-    , _rgResourceTypes :: !(Maybe [ResourceType])
+    , _rgResourceTypes              :: !(Maybe [ResourceType])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2671,9 +2671,9 @@ instance ToJSON RecordingGroup where
 -- /See:/ 'relationship' smart constructor.
 data Relationship =
   Relationship'
-    { _rResourceId :: !(Maybe Text)
-    , _rResourceType :: !(Maybe ResourceType)
-    , _rResourceName :: !(Maybe Text)
+    { _rResourceId       :: !(Maybe Text)
+    , _rResourceType     :: !(Maybe ResourceType)
+    , _rResourceName     :: !(Maybe Text)
     , _rRelationshipName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2735,7 +2735,7 @@ instance NFData Relationship
 data ResourceCount =
   ResourceCount'
     { _rcResourceType :: !(Maybe ResourceType)
-    , _rcCount :: !(Maybe Integer)
+    , _rcCount        :: !(Maybe Integer)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2774,9 +2774,9 @@ instance NFData ResourceCount
 -- /See:/ 'resourceIdentifier' smart constructor.
 data ResourceIdentifier =
   ResourceIdentifier'
-    { _riResourceId :: !(Maybe Text)
-    , _riResourceType :: !(Maybe ResourceType)
-    , _riResourceName :: !(Maybe Text)
+    { _riResourceId           :: !(Maybe Text)
+    , _riResourceType         :: !(Maybe ResourceType)
+    , _riResourceName         :: !(Maybe Text)
     , _riResourceDeletionTime :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2840,7 +2840,7 @@ instance NFData ResourceIdentifier
 data ResourceKey =
   ResourceKey'
     { _rkResourceType :: !ResourceType
-    , _rkResourceId :: !Text
+    , _rkResourceId   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2892,9 +2892,9 @@ instance ToJSON ResourceKey where
 data Scope =
   Scope'
     { _sComplianceResourceTypes :: !(Maybe [Text])
-    , _sComplianceResourceId :: !(Maybe Text)
-    , _sTagValue :: !(Maybe Text)
-    , _sTagKey :: !(Maybe Text)
+    , _sComplianceResourceId    :: !(Maybe Text)
+    , _sTagValue                :: !(Maybe Text)
+    , _sTagKey                  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2968,8 +2968,8 @@ instance ToJSON Scope where
 -- /See:/ 'source' smart constructor.
 data Source =
   Source'
-    { _sSourceDetails :: !(Maybe [SourceDetail])
-    , _sOwner :: !Owner
+    { _sSourceDetails    :: !(Maybe [SourceDetail])
+    , _sOwner            :: !Owner
     , _sSourceIdentifier :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3035,9 +3035,9 @@ instance ToJSON Source where
 -- /See:/ 'sourceDetail' smart constructor.
 data SourceDetail =
   SourceDetail'
-    { _sdMessageType :: !(Maybe MessageType)
+    { _sdMessageType               :: !(Maybe MessageType)
     , _sdMaximumExecutionFrequency :: !(Maybe MaximumExecutionFrequency)
-    , _sdEventSource :: !(Maybe EventSource)
+    , _sdEventSource               :: !(Maybe EventSource)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

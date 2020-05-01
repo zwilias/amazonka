@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,7 +57,7 @@ data AssociateTargetsWithJob =
   AssociateTargetsWithJob'
     { _atwjComment :: !(Maybe Text)
     , _atwjTargets :: !(List1 Text)
-    , _atwjJobId :: !Text
+    , _atwjJobId   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -127,9 +127,9 @@ instance ToQuery AssociateTargetsWithJob where
 -- | /See:/ 'associateTargetsWithJobResponse' smart constructor.
 data AssociateTargetsWithJobResponse =
   AssociateTargetsWithJobResponse'
-    { _atwjrsJobId :: !(Maybe Text)
-    , _atwjrsJobARN :: !(Maybe Text)
-    , _atwjrsDescription :: !(Maybe Text)
+    { _atwjrsJobId          :: !(Maybe Text)
+    , _atwjrsJobARN         :: !(Maybe Text)
+    , _atwjrsDescription    :: !(Maybe Text)
     , _atwjrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

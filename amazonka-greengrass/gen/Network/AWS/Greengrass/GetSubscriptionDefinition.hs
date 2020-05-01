@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -107,14 +107,14 @@ instance ToQuery GetSubscriptionDefinition where
 -- | /See:/ 'getSubscriptionDefinitionResponse' smart constructor.
 data GetSubscriptionDefinitionResponse =
   GetSubscriptionDefinitionResponse'
-    { _gsdrsLatestVersionARN :: !(Maybe Text)
-    , _gsdrsARN :: !(Maybe Text)
-    , _gsdrsName :: !(Maybe Text)
-    , _gsdrsCreationTimestamp :: !(Maybe Text)
-    , _gsdrsId :: !(Maybe Text)
-    , _gsdrsLatestVersion :: !(Maybe Text)
+    { _gsdrsLatestVersionARN     :: !(Maybe Text)
+    , _gsdrsARN                  :: !(Maybe Text)
+    , _gsdrsName                 :: !(Maybe Text)
+    , _gsdrsCreationTimestamp    :: !(Maybe Text)
+    , _gsdrsId                   :: !(Maybe Text)
+    , _gsdrsLatestVersion        :: !(Maybe Text)
     , _gsdrsLastUpdatedTimestamp :: !(Maybe Text)
-    , _gsdrsResponseStatus :: !Int
+    , _gsdrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

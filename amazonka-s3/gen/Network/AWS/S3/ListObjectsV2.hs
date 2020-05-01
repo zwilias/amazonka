@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,15 +63,15 @@ import Network.AWS.S3.Types.Product
 -- | /See:/ 'listObjectsV2' smart constructor.
 data ListObjectsV2 =
   ListObjectsV2'
-    { _lovStartAfter :: !(Maybe Text)
+    { _lovStartAfter        :: !(Maybe Text)
     , _lovContinuationToken :: !(Maybe Text)
-    , _lovFetchOwner :: !(Maybe Bool)
-    , _lovPrefix :: !(Maybe Text)
-    , _lovEncodingType :: !(Maybe EncodingType)
-    , _lovRequestPayer :: !(Maybe RequestPayer)
-    , _lovMaxKeys :: !(Maybe Int)
-    , _lovDelimiter :: !(Maybe Delimiter)
-    , _lovBucket :: !BucketName
+    , _lovFetchOwner        :: !(Maybe Bool)
+    , _lovPrefix            :: !(Maybe Text)
+    , _lovEncodingType      :: !(Maybe EncodingType)
+    , _lovRequestPayer      :: !(Maybe RequestPayer)
+    , _lovMaxKeys           :: !(Maybe Int)
+    , _lovDelimiter         :: !(Maybe Delimiter)
+    , _lovBucket            :: !BucketName
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -202,19 +202,19 @@ instance ToQuery ListObjectsV2 where
 -- | /See:/ 'listObjectsV2Response' smart constructor.
 data ListObjectsV2Response =
   ListObjectsV2Response'
-    { _lovrsStartAfter :: !(Maybe Text)
-    , _lovrsKeyCount :: !(Maybe Int)
-    , _lovrsContents :: !(Maybe [Object])
-    , _lovrsContinuationToken :: !(Maybe Text)
-    , _lovrsPrefix :: !(Maybe Text)
-    , _lovrsCommonPrefixes :: !(Maybe [CommonPrefix])
-    , _lovrsEncodingType :: !(Maybe EncodingType)
-    , _lovrsName :: !(Maybe BucketName)
+    { _lovrsStartAfter            :: !(Maybe Text)
+    , _lovrsKeyCount              :: !(Maybe Int)
+    , _lovrsContents              :: !(Maybe [Object])
+    , _lovrsContinuationToken     :: !(Maybe Text)
+    , _lovrsPrefix                :: !(Maybe Text)
+    , _lovrsCommonPrefixes        :: !(Maybe [CommonPrefix])
+    , _lovrsEncodingType          :: !(Maybe EncodingType)
+    , _lovrsName                  :: !(Maybe BucketName)
     , _lovrsNextContinuationToken :: !(Maybe Text)
-    , _lovrsMaxKeys :: !(Maybe Int)
-    , _lovrsIsTruncated :: !(Maybe Bool)
-    , _lovrsDelimiter :: !(Maybe Delimiter)
-    , _lovrsResponseStatus :: !Int
+    , _lovrsMaxKeys               :: !(Maybe Int)
+    , _lovrsIsTruncated           :: !(Maybe Bool)
+    , _lovrsDelimiter             :: !(Maybe Delimiter)
+    , _lovrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

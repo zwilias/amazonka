@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 data DescribeAgentVersions =
   DescribeAgentVersions'
     { _davConfigurationManager :: !(Maybe StackConfigurationManager)
-    , _davStackId :: !(Maybe Text)
+    , _davStackId              :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -114,7 +114,7 @@ instance ToQuery DescribeAgentVersions where
 -- /See:/ 'describeAgentVersionsResponse' smart constructor.
 data DescribeAgentVersionsResponse =
   DescribeAgentVersionsResponse'
-    { _davrsAgentVersions :: !(Maybe [AgentVersion])
+    { _davrsAgentVersions  :: !(Maybe [AgentVersion])
     , _davrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

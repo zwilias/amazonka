@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 data ListFindings =
   ListFindings'
     { _lfFindingCriteria :: !(Maybe FindingCriteria)
-    , _lfSortCriteria :: !(Maybe SortCriteria)
-    , _lfNextToken :: !(Maybe Text)
-    , _lfMaxResults :: !(Maybe Nat)
-    , _lfDetectorId :: !Text
+    , _lfSortCriteria    :: !(Maybe SortCriteria)
+    , _lfNextToken       :: !(Maybe Text)
+    , _lfMaxResults      :: !(Maybe Nat)
+    , _lfDetectorId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -149,8 +149,8 @@ instance ToQuery ListFindings where
 -- | /See:/ 'listFindingsResponse' smart constructor.
 data ListFindingsResponse =
   ListFindingsResponse'
-    { _lfrsFindingIds :: !(Maybe [Text])
-    , _lfrsNextToken :: !(Maybe Text)
+    { _lfrsFindingIds     :: !(Maybe [Text])
+    , _lfrsNextToken      :: !(Maybe Text)
     , _lfrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

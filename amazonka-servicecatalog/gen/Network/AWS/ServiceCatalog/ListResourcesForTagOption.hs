@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.ServiceCatalog.Types.Product
 data ListResourcesForTagOption =
   ListResourcesForTagOption'
     { _lrftoResourceType :: !(Maybe Text)
-    , _lrftoPageToken :: !(Maybe Text)
-    , _lrftoPageSize :: !(Maybe Nat)
-    , _lrftoTagOptionId :: !Text
+    , _lrftoPageToken    :: !(Maybe Text)
+    , _lrftoPageSize     :: !(Maybe Nat)
+    , _lrftoTagOptionId  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -146,8 +146,8 @@ instance ToQuery ListResourcesForTagOption where
 data ListResourcesForTagOptionResponse =
   ListResourcesForTagOptionResponse'
     { _lrftorsResourceDetails :: !(Maybe [ResourceDetail])
-    , _lrftorsPageToken :: !(Maybe Text)
-    , _lrftorsResponseStatus :: !Int
+    , _lrftorsPageToken       :: !(Maybe Text)
+    , _lrftorsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,12 +46,12 @@ import Network.AWS.SMS.Types.Product
 -- | /See:/ 'createReplicationJob' smart constructor.
 data CreateReplicationJob =
   CreateReplicationJob'
-    { _crjLicenseType :: !(Maybe LicenseType)
-    , _crjRoleName :: !(Maybe Text)
-    , _crjDescription :: !(Maybe Text)
-    , _crjServerId :: !Text
+    { _crjLicenseType         :: !(Maybe LicenseType)
+    , _crjRoleName            :: !(Maybe Text)
+    , _crjDescription         :: !(Maybe Text)
+    , _crjServerId            :: !Text
     , _crjSeedReplicationTime :: !POSIX
-    , _crjFrequency :: !Int
+    , _crjFrequency           :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -154,7 +154,7 @@ instance ToQuery CreateReplicationJob where
 data CreateReplicationJobResponse =
   CreateReplicationJobResponse'
     { _crjrsReplicationJobId :: !(Maybe Text)
-    , _crjrsResponseStatus :: !Int
+    , _crjrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 data CreateSkillGroup =
   CreateSkillGroup'
     { _csgClientRequestToken :: !(Maybe Text)
-    , _csgDescription :: !(Maybe Text)
-    , _csgSkillGroupName :: !Text
+    , _csgDescription        :: !(Maybe Text)
+    , _csgSkillGroupName     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -122,7 +122,7 @@ instance ToQuery CreateSkillGroup where
 -- | /See:/ 'createSkillGroupResponse' smart constructor.
 data CreateSkillGroupResponse =
   CreateSkillGroupResponse'
-    { _csgrsSkillGroupARN :: !(Maybe Text)
+    { _csgrsSkillGroupARN  :: !(Maybe Text)
     , _csgrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

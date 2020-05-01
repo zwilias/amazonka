@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- | /See:/ 'getQueryResults' smart constructor.
 data GetQueryResults =
   GetQueryResults'
-    { _gqrNextToken :: !(Maybe Text)
-    , _gqrMaxResults :: !(Maybe Nat)
+    { _gqrNextToken        :: !(Maybe Text)
+    , _gqrMaxResults       :: !(Maybe Nat)
     , _gqrQueryExecutionId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -134,8 +134,8 @@ instance ToQuery GetQueryResults where
 -- | /See:/ 'getQueryResultsResponse' smart constructor.
 data GetQueryResultsResponse =
   GetQueryResultsResponse'
-    { _gqrrsNextToken :: !(Maybe Text)
-    , _gqrrsResultSet :: !(Maybe ResultSet)
+    { _gqrrsNextToken      :: !(Maybe Text)
+    , _gqrrsResultSet      :: !(Maybe ResultSet)
     , _gqrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

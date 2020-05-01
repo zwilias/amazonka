@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,14 +57,14 @@ import Network.AWS.Response
 -- /See:/ 'putIntegrationResponse' smart constructor.
 data PutIntegrationResponse =
   PutIntegrationResponse'
-    { _piContentHandling :: !(Maybe ContentHandlingStrategy)
-    , _piResponseTemplates :: !(Maybe (Map Text Text))
-    , _piSelectionPattern :: !(Maybe Text)
+    { _piContentHandling    :: !(Maybe ContentHandlingStrategy)
+    , _piResponseTemplates  :: !(Maybe (Map Text Text))
+    , _piSelectionPattern   :: !(Maybe Text)
     , _piResponseParameters :: !(Maybe (Map Text Text))
-    , _piRestAPIId :: !Text
-    , _piResourceId :: !Text
-    , _piHttpMethod :: !Text
-    , _piStatusCode :: !Text
+    , _piRestAPIId          :: !Text
+    , _piResourceId         :: !Text
+    , _piHttpMethod         :: !Text
+    , _piStatusCode         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

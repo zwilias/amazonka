@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 data ListRuleNamesByTarget =
   ListRuleNamesByTarget'
     { _lrnbtNextToken :: !(Maybe Text)
-    , _lrnbtLimit :: !(Maybe Nat)
+    , _lrnbtLimit     :: !(Maybe Nat)
     , _lrnbtTargetARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -123,8 +123,8 @@ instance ToQuery ListRuleNamesByTarget where
 -- | /See:/ 'listRuleNamesByTargetResponse' smart constructor.
 data ListRuleNamesByTargetResponse =
   ListRuleNamesByTargetResponse'
-    { _lrnbtrsRuleNames :: !(Maybe [Text])
-    , _lrnbtrsNextToken :: !(Maybe Text)
+    { _lrnbtrsRuleNames      :: !(Maybe [Text])
+    , _lrnbtrsNextToken      :: !(Maybe Text)
     , _lrnbtrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

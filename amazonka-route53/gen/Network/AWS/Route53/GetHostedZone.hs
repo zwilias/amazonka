@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -99,10 +99,10 @@ instance ToQuery GetHostedZone where
 -- /See:/ 'getHostedZoneResponse' smart constructor.
 data GetHostedZoneResponse =
   GetHostedZoneResponse'
-    { _ghzrsVPCs :: !(Maybe (List1 VPC))
-    , _ghzrsDelegationSet :: !(Maybe DelegationSet)
+    { _ghzrsVPCs           :: !(Maybe (List1 VPC))
+    , _ghzrsDelegationSet  :: !(Maybe DelegationSet)
     , _ghzrsResponseStatus :: !Int
-    , _ghzrsHostedZone :: !HostedZone
+    , _ghzrsHostedZone     :: !HostedZone
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

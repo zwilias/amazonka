@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.Response
 -- /See:/ 'getModels' smart constructor.
 data GetModels =
   GetModels'
-    { _gmsLimit :: !(Maybe Int)
-    , _gmsPosition :: !(Maybe Text)
+    { _gmsLimit     :: !(Maybe Int)
+    , _gmsPosition  :: !(Maybe Text)
     , _gmsRestAPIId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -124,8 +124,8 @@ instance ToQuery GetModels where
 -- /See:/ 'getModelsResponse' smart constructor.
 data GetModelsResponse =
   GetModelsResponse'
-    { _gmrsItems :: !(Maybe [Model])
-    , _gmrsPosition :: !(Maybe Text)
+    { _gmrsItems          :: !(Maybe [Model])
+    , _gmrsPosition       :: !(Maybe Text)
     , _gmrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

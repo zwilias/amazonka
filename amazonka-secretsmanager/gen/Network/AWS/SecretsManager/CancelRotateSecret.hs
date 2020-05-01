@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -130,9 +130,9 @@ instance ToQuery CancelRotateSecret where
 -- | /See:/ 'cancelRotateSecretResponse' smart constructor.
 data CancelRotateSecretResponse =
   CancelRotateSecretResponse'
-    { _crsrsVersionId :: !(Maybe Text)
-    , _crsrsARN :: !(Maybe Text)
-    , _crsrsName :: !(Maybe Text)
+    { _crsrsVersionId      :: !(Maybe Text)
+    , _crsrsARN            :: !(Maybe Text)
+    , _crsrsName           :: !(Maybe Text)
     , _crsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

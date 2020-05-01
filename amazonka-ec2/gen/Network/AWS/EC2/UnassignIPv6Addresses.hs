@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'unassignIPv6Addresses' smart constructor.
 data UnassignIPv6Addresses =
   UnassignIPv6Addresses'
-    { _uiaIPv6Addresses :: ![Text]
+    { _uiaIPv6Addresses      :: ![Text]
     , _uiaNetworkInterfaceId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -107,9 +107,9 @@ instance ToQuery UnassignIPv6Addresses where
 -- | /See:/ 'unassignIPv6AddressesResponse' smart constructor.
 data UnassignIPv6AddressesResponse =
   UnassignIPv6AddressesResponse'
-    { _uiarsNetworkInterfaceId :: !(Maybe Text)
+    { _uiarsNetworkInterfaceId      :: !(Maybe Text)
     , _uiarsUnassignedIPv6Addresses :: !(Maybe [Text])
-    , _uiarsResponseStatus :: !Int
+    , _uiarsResponseStatus          :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -131,25 +131,25 @@ instance ToQuery DescribeTrainingJob where
 -- | /See:/ 'describeTrainingJobResponse' smart constructor.
 data DescribeTrainingJobResponse =
   DescribeTrainingJobResponse'
-    { _dtjrsFailureReason :: !(Maybe Text)
-    , _dtjrsTrainingEndTime :: !(Maybe POSIX)
-    , _dtjrsLastModifiedTime :: !(Maybe POSIX)
-    , _dtjrsHyperParameters :: !(Maybe (Map Text Text))
-    , _dtjrsVPCConfig :: !(Maybe VPCConfig)
-    , _dtjrsOutputDataConfig :: !(Maybe OutputDataConfig)
-    , _dtjrsTrainingStartTime :: !(Maybe POSIX)
-    , _dtjrsRoleARN :: !(Maybe Text)
-    , _dtjrsResponseStatus :: !Int
-    , _dtjrsTrainingJobName :: !Text
-    , _dtjrsTrainingJobARN :: !Text
-    , _dtjrsModelArtifacts :: !ModelArtifacts
-    , _dtjrsTrainingJobStatus :: !TrainingJobStatus
-    , _dtjrsSecondaryStatus :: !SecondaryStatus
+    { _dtjrsFailureReason          :: !(Maybe Text)
+    , _dtjrsTrainingEndTime        :: !(Maybe POSIX)
+    , _dtjrsLastModifiedTime       :: !(Maybe POSIX)
+    , _dtjrsHyperParameters        :: !(Maybe (Map Text Text))
+    , _dtjrsVPCConfig              :: !(Maybe VPCConfig)
+    , _dtjrsOutputDataConfig       :: !(Maybe OutputDataConfig)
+    , _dtjrsTrainingStartTime      :: !(Maybe POSIX)
+    , _dtjrsRoleARN                :: !(Maybe Text)
+    , _dtjrsResponseStatus         :: !Int
+    , _dtjrsTrainingJobName        :: !Text
+    , _dtjrsTrainingJobARN         :: !Text
+    , _dtjrsModelArtifacts         :: !ModelArtifacts
+    , _dtjrsTrainingJobStatus      :: !TrainingJobStatus
+    , _dtjrsSecondaryStatus        :: !SecondaryStatus
     , _dtjrsAlgorithmSpecification :: !AlgorithmSpecification
-    , _dtjrsInputDataConfig :: !(List1 Channel)
-    , _dtjrsResourceConfig :: !ResourceConfig
-    , _dtjrsStoppingCondition :: !StoppingCondition
-    , _dtjrsCreationTime :: !POSIX
+    , _dtjrsInputDataConfig        :: !(List1 Channel)
+    , _dtjrsResourceConfig         :: !ResourceConfig
+    , _dtjrsStoppingCondition      :: !StoppingCondition
+    , _dtjrsCreationTime           :: !POSIX
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,7 +58,7 @@ import Network.AWS.SWF.Types.Product
 -- | /See:/ 'countPendingDecisionTasks' smart constructor.
 data CountPendingDecisionTasks =
   CountPendingDecisionTasks'
-    { _cpdtDomain :: !Text
+    { _cpdtDomain   :: !Text
     , _cpdtTaskList :: !TaskList
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

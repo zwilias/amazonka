@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,10 +49,10 @@ import Network.AWS.SQS.Types.Product
 -- /See:/ 'addPermission' smart constructor.
 data AddPermission =
   AddPermission'
-    { _apQueueURL :: !Text
-    , _apLabel :: !Text
+    { _apQueueURL      :: !Text
+    , _apLabel         :: !Text
     , _apAWSAccountIds :: ![Text]
-    , _apActions :: ![Text]
+    , _apActions       :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

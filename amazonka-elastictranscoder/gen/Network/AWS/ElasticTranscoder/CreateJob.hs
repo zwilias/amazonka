@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,14 +56,14 @@ import Network.AWS.Response
 -- /See:/ 'createJob' smart constructor.
 data CreateJob =
   CreateJob'
-    { _cjInputs :: !(Maybe [JobInput])
-    , _cjInput :: !(Maybe JobInput)
-    , _cjUserMetadata :: !(Maybe (Map Text Text))
-    , _cjOutputs :: !(Maybe [CreateJobOutput])
-    , _cjOutput :: !(Maybe CreateJobOutput)
-    , _cjPlaylists :: !(Maybe [CreateJobPlaylist])
+    { _cjInputs          :: !(Maybe [JobInput])
+    , _cjInput           :: !(Maybe JobInput)
+    , _cjUserMetadata    :: !(Maybe (Map Text Text))
+    , _cjOutputs         :: !(Maybe [CreateJobOutput])
+    , _cjOutput          :: !(Maybe CreateJobOutput)
+    , _cjPlaylists       :: !(Maybe [CreateJobPlaylist])
     , _cjOutputKeyPrefix :: !(Maybe Text)
-    , _cjPipelineId :: !Text
+    , _cjPipelineId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -176,7 +176,7 @@ instance ToQuery CreateJob where
 -- /See:/ 'createJobResponse' smart constructor.
 data CreateJobResponse =
   CreateJobResponse'
-    { _cjrsJob :: !(Maybe Job')
+    { _cjrsJob            :: !(Maybe Job')
     , _cjrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,10 +50,10 @@ import Network.AWS.WorkDocs.Types.Product
 data GetFolderPath =
   GetFolderPath'
     { _gfpAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _gfpMarker :: !(Maybe Text)
-    , _gfpLimit :: !(Maybe Nat)
-    , _gfpFields :: !(Maybe Text)
-    , _gfpFolderId :: !Text
+    , _gfpMarker              :: !(Maybe Text)
+    , _gfpLimit               :: !(Maybe Nat)
+    , _gfpFields              :: !(Maybe Text)
+    , _gfpFolderId            :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -135,7 +135,7 @@ instance ToQuery GetFolderPath where
 -- | /See:/ 'getFolderPathResponse' smart constructor.
 data GetFolderPathResponse =
   GetFolderPathResponse'
-    { _gfprsPath :: !(Maybe ResourcePath)
+    { _gfprsPath           :: !(Maybe ResourcePath)
     , _gfprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

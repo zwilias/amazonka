@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,12 +53,12 @@ import Network.AWS.Response
 -- | /See:/ 'getLogEvents' smart constructor.
 data GetLogEvents =
   GetLogEvents'
-    { _gleStartTime :: !(Maybe Nat)
+    { _gleStartTime     :: !(Maybe Nat)
     , _gleStartFromHead :: !(Maybe Bool)
-    , _gleNextToken :: !(Maybe Text)
-    , _gleEndTime :: !(Maybe Nat)
-    , _gleLimit :: !(Maybe Nat)
-    , _gleLogGroupName :: !Text
+    , _gleNextToken     :: !(Maybe Text)
+    , _gleEndTime       :: !(Maybe Nat)
+    , _gleLimit         :: !(Maybe Nat)
+    , _gleLogGroupName  :: !Text
     , _gleLogStreamName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -169,9 +169,9 @@ instance ToQuery GetLogEvents where
 data GetLogEventsResponse =
   GetLogEventsResponse'
     { _glersNextBackwardToken :: !(Maybe Text)
-    , _glersNextForwardToken :: !(Maybe Text)
-    , _glersEvents :: !(Maybe [OutputLogEvent])
-    , _glersResponseStatus :: !Int
+    , _glersNextForwardToken  :: !(Maybe Text)
+    , _glersEvents            :: !(Maybe [OutputLogEvent])
+    , _glersResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

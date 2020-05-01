@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- /See:/ 'authorizeCacheSecurityGroupIngress' smart constructor.
 data AuthorizeCacheSecurityGroupIngress =
   AuthorizeCacheSecurityGroupIngress'
-    { _acsgiCacheSecurityGroupName :: !Text
-    , _acsgiEC2SecurityGroupName :: !Text
+    { _acsgiCacheSecurityGroupName  :: !Text
+    , _acsgiEC2SecurityGroupName    :: !Text
     , _acsgiEC2SecurityGroupOwnerId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -130,7 +130,7 @@ instance ToQuery AuthorizeCacheSecurityGroupIngress where
 data AuthorizeCacheSecurityGroupIngressResponse =
   AuthorizeCacheSecurityGroupIngressResponse'
     { _acsgirsCacheSecurityGroup :: !(Maybe CacheSecurityGroup)
-    , _acsgirsResponseStatus :: !Int
+    , _acsgirsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

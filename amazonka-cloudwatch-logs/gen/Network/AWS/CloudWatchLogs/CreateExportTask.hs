@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,13 +53,13 @@ import Network.AWS.Response
 -- | /See:/ 'createExportTask' smart constructor.
 data CreateExportTask =
   CreateExportTask'
-    { _cetDestinationPrefix :: !(Maybe Text)
-    , _cetTaskName :: !(Maybe Text)
+    { _cetDestinationPrefix   :: !(Maybe Text)
+    , _cetTaskName            :: !(Maybe Text)
     , _cetLogStreamNamePrefix :: !(Maybe Text)
-    , _cetLogGroupName :: !Text
-    , _cetFrom :: !Nat
-    , _cetTo :: !Nat
-    , _cetDestination :: !Text
+    , _cetLogGroupName        :: !Text
+    , _cetFrom                :: !Nat
+    , _cetTo                  :: !Nat
+    , _cetDestination         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -169,7 +169,7 @@ instance ToQuery CreateExportTask where
 -- | /See:/ 'createExportTaskResponse' smart constructor.
 data CreateExportTaskResponse =
   CreateExportTaskResponse'
-    { _cetrsTaskId :: !(Maybe Text)
+    { _cetrsTaskId         :: !(Maybe Text)
     , _cetrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

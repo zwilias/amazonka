@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.Response
 -- /See:/ 'describeEndpointTypes' smart constructor.
 data DescribeEndpointTypes =
   DescribeEndpointTypes'
-    { _detFilters :: !(Maybe [Filter])
-    , _detMarker :: !(Maybe Text)
+    { _detFilters    :: !(Maybe [Filter])
+    , _detMarker     :: !(Maybe Text)
     , _detMaxRecords :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -138,8 +138,8 @@ instance ToQuery DescribeEndpointTypes where
 data DescribeEndpointTypesResponse =
   DescribeEndpointTypesResponse'
     { _detrsSupportedEndpointTypes :: !(Maybe [SupportedEndpointType])
-    , _detrsMarker :: !(Maybe Text)
-    , _detrsResponseStatus :: !Int
+    , _detrsMarker                 :: !(Maybe Text)
+    , _detrsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

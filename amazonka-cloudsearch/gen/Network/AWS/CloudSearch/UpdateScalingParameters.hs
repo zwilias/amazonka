@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- /See:/ 'updateScalingParameters' smart constructor.
 data UpdateScalingParameters =
   UpdateScalingParameters'
-    { _uspDomainName :: !Text
+    { _uspDomainName        :: !Text
     , _uspScalingParameters :: !ScalingParameters
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -113,7 +113,7 @@ instance ToQuery UpdateScalingParameters where
 -- /See:/ 'updateScalingParametersResponse' smart constructor.
 data UpdateScalingParametersResponse =
   UpdateScalingParametersResponse'
-    { _usprsResponseStatus :: !Int
+    { _usprsResponseStatus    :: !Int
     , _usprsScalingParameters :: !ScalingParametersStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 data GetTypedLinkFacetInformation =
   GetTypedLinkFacetInformation'
     { _gtlfiSchemaARN :: !Text
-    , _gtlfiName :: !Text
+    , _gtlfiName      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -104,7 +104,7 @@ instance ToQuery GetTypedLinkFacetInformation where
 data GetTypedLinkFacetInformationResponse =
   GetTypedLinkFacetInformationResponse'
     { _gtlfirsIdentityAttributeOrder :: !(Maybe [Text])
-    , _gtlfirsResponseStatus :: !Int
+    , _gtlfirsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

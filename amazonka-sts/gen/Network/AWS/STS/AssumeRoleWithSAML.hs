@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -81,10 +81,10 @@ import Network.AWS.STS.Types.Product
 data AssumeRoleWithSAML =
   AssumeRoleWithSAML'
     { _arwsamlDurationSeconds :: !(Maybe Nat)
-    , _arwsamlPolicy :: !(Maybe Text)
-    , _arwsamlRoleARN :: !Text
-    , _arwsamlPrincipalARN :: !Text
-    , _arwsamlSAMLAssertion :: !Text
+    , _arwsamlPolicy          :: !(Maybe Text)
+    , _arwsamlRoleARN         :: !Text
+    , _arwsamlPrincipalARN    :: !Text
+    , _arwsamlSAMLAssertion   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -185,15 +185,15 @@ instance ToQuery AssumeRoleWithSAML where
 -- /See:/ 'assumeRoleWithSAMLResponse' smart constructor.
 data AssumeRoleWithSAMLResponse =
   AssumeRoleWithSAMLResponse'
-    { _arwsamlrsSubject :: !(Maybe Text)
-    , _arwsamlrsAudience :: !(Maybe Text)
+    { _arwsamlrsSubject          :: !(Maybe Text)
+    , _arwsamlrsAudience         :: !(Maybe Text)
     , _arwsamlrsPackedPolicySize :: !(Maybe Nat)
-    , _arwsamlrsCredentials :: !(Maybe AuthEnv)
-    , _arwsamlrsSubjectType :: !(Maybe Text)
-    , _arwsamlrsNameQualifier :: !(Maybe Text)
-    , _arwsamlrsAssumedRoleUser :: !(Maybe AssumedRoleUser)
-    , _arwsamlrsIssuer :: !(Maybe Text)
-    , _arwsamlrsResponseStatus :: !Int
+    , _arwsamlrsCredentials      :: !(Maybe AuthEnv)
+    , _arwsamlrsSubjectType      :: !(Maybe Text)
+    , _arwsamlrsNameQualifier    :: !(Maybe Text)
+    , _arwsamlrsAssumedRoleUser  :: !(Maybe AssumedRoleUser)
+    , _arwsamlrsIssuer           :: !(Maybe Text)
+    , _arwsamlrsResponseStatus   :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,10 +53,10 @@ import Network.AWS.Response
 -- | /See:/ 'updateFacet' smart constructor.
 data UpdateFacet =
   UpdateFacet'
-    { _ufObjectType :: !(Maybe ObjectType)
+    { _ufObjectType       :: !(Maybe ObjectType)
     , _ufAttributeUpdates :: !(Maybe [FacetAttributeUpdate])
-    , _ufSchemaARN :: !Text
-    , _ufName :: !Text
+    , _ufSchemaARN        :: !Text
+    , _ufName             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

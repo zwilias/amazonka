@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,11 +56,11 @@ import Network.AWS.SES.Types.Product
 -- /See:/ 'sendBounce' smart constructor.
 data SendBounce =
   SendBounce'
-    { _sbMessageDsn :: !(Maybe MessageDsn)
-    , _sbExplanation :: !(Maybe Text)
-    , _sbBounceSenderARN :: !(Maybe Text)
-    , _sbOriginalMessageId :: !Text
-    , _sbBounceSender :: !Text
+    { _sbMessageDsn               :: !(Maybe MessageDsn)
+    , _sbExplanation              :: !(Maybe Text)
+    , _sbBounceSenderARN          :: !(Maybe Text)
+    , _sbOriginalMessageId        :: !Text
+    , _sbBounceSender             :: !Text
     , _sbBouncedRecipientInfoList :: ![BouncedRecipientInfo]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -161,7 +161,7 @@ instance ToQuery SendBounce where
 -- /See:/ 'sendBounceResponse' smart constructor.
 data SendBounceResponse =
   SendBounceResponse'
-    { _sbrsMessageId :: !(Maybe Text)
+    { _sbrsMessageId      :: !(Maybe Text)
     , _sbrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

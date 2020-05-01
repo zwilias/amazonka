@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -103,7 +103,7 @@ instance ToQuery NotifyWhenUploaded where
 -- | /See:/ 'notifyWhenUploadedResponse' smart constructor.
 data NotifyWhenUploadedResponse =
   NotifyWhenUploadedResponse'
-    { _nwursFileShareARN :: !(Maybe Text)
+    { _nwursFileShareARN   :: !(Maybe Text)
     , _nwursNotificationId :: !(Maybe Text)
     , _nwursResponseStatus :: !Int
     }

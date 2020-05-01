@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,11 +48,11 @@ import Network.AWS.WorkDocs.Types.Product
 -- | /See:/ 'getDocumentVersion' smart constructor.
 data GetDocumentVersion =
   GetDocumentVersion'
-    { _gdvAuthenticationToken :: !(Maybe (Sensitive Text))
+    { _gdvAuthenticationToken   :: !(Maybe (Sensitive Text))
     , _gdvIncludeCustomMetadata :: !(Maybe Bool)
-    , _gdvFields :: !(Maybe Text)
-    , _gdvDocumentId :: !Text
-    , _gdvVersionId :: !Text
+    , _gdvFields                :: !(Maybe Text)
+    , _gdvDocumentId            :: !Text
+    , _gdvVersionId             :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -146,7 +146,7 @@ instance ToQuery GetDocumentVersion where
 data GetDocumentVersionResponse =
   GetDocumentVersionResponse'
     { _gdvrsCustomMetadata :: !(Maybe (Map Text Text))
-    , _gdvrsMetadata :: !(Maybe DocumentVersionMetadata)
+    , _gdvrsMetadata       :: !(Maybe DocumentVersionMetadata)
     , _gdvrsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

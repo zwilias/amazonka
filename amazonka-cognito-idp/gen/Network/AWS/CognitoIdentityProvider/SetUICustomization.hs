@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,9 +48,9 @@ import Network.AWS.Response
 -- | /See:/ 'setUICustomization' smart constructor.
 data SetUICustomization =
   SetUICustomization'
-    { _suicClientId :: !(Maybe (Sensitive Text))
-    , _suicCSS :: !(Maybe Text)
-    , _suicImageFile :: !(Maybe Base64)
+    { _suicClientId   :: !(Maybe (Sensitive Text))
+    , _suicCSS        :: !(Maybe Text)
+    , _suicImageFile  :: !(Maybe Base64)
     , _suicUserPoolId :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
@@ -136,7 +136,7 @@ instance ToQuery SetUICustomization where
 -- | /See:/ 'setUICustomizationResponse' smart constructor.
 data SetUICustomizationResponse =
   SetUICustomizationResponse'
-    { _suicrsResponseStatus :: !Int
+    { _suicrsResponseStatus  :: !Int
     , _suicrsUICustomization :: !UICustomizationType
     }
   deriving (Eq, Show, Data, Typeable, Generic)

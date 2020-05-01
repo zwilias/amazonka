@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,9 +63,9 @@ import Network.AWS.Response
 data UpdateGameSessionQueue =
   UpdateGameSessionQueue'
     { _ugsqPlayerLatencyPolicies :: !(Maybe [PlayerLatencyPolicy])
-    , _ugsqTimeoutInSeconds :: !(Maybe Nat)
-    , _ugsqDestinations :: !(Maybe [GameSessionQueueDestination])
-    , _ugsqName :: !Text
+    , _ugsqTimeoutInSeconds      :: !(Maybe Nat)
+    , _ugsqDestinations          :: !(Maybe [GameSessionQueueDestination])
+    , _ugsqName                  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -158,7 +158,7 @@ instance ToQuery UpdateGameSessionQueue where
 data UpdateGameSessionQueueResponse =
   UpdateGameSessionQueueResponse'
     { _ugsqrsGameSessionQueue :: !(Maybe GameSessionQueue)
-    , _ugsqrsResponseStatus :: !Int
+    , _ugsqrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

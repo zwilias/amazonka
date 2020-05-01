@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 -- | /See:/ 'listReviewableHITs' smart constructor.
 data ListReviewableHITs =
   ListReviewableHITs'
-    { _lrhitStatus :: !(Maybe ReviewableHITStatus)
-    , _lrhitHITTypeId :: !(Maybe Text)
-    , _lrhitNextToken :: !(Maybe Text)
+    { _lrhitStatus     :: !(Maybe ReviewableHITStatus)
+    , _lrhitHITTypeId  :: !(Maybe Text)
+    , _lrhitNextToken  :: !(Maybe Text)
     , _lrhitMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -144,9 +144,9 @@ instance ToQuery ListReviewableHITs where
 -- | /See:/ 'listReviewableHITsResponse' smart constructor.
 data ListReviewableHITsResponse =
   ListReviewableHITsResponse'
-    { _lrhitrsNextToken :: !(Maybe Text)
-    , _lrhitrsNumResults :: !(Maybe Int)
-    , _lrhitrsHITs :: !(Maybe [HIT])
+    { _lrhitrsNextToken      :: !(Maybe Text)
+    , _lrhitrsNumResults     :: !(Maybe Int)
+    , _lrhitrsHITs           :: !(Maybe [HIT])
     , _lrhitrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

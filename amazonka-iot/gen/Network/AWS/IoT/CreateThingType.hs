@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,7 +51,7 @@ import Network.AWS.Response
 data CreateThingType =
   CreateThingType'
     { _cttThingTypeProperties :: !(Maybe ThingTypeProperties)
-    , _cttThingTypeName :: !Text
+    , _cttThingTypeName       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -114,9 +114,9 @@ instance ToQuery CreateThingType where
 -- /See:/ 'createThingTypeResponse' smart constructor.
 data CreateThingTypeResponse =
   CreateThingTypeResponse'
-    { _cttrsThingTypeName :: !(Maybe Text)
-    , _cttrsThingTypeId :: !(Maybe Text)
-    , _cttrsThingTypeARN :: !(Maybe Text)
+    { _cttrsThingTypeName  :: !(Maybe Text)
+    , _cttrsThingTypeId    :: !(Maybe Text)
+    , _cttrsThingTypeARN   :: !(Maybe Text)
     , _cttrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

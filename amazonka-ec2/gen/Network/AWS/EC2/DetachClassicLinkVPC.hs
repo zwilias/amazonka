@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,9 +49,9 @@ import Network.AWS.Response
 -- /See:/ 'detachClassicLinkVPC' smart constructor.
 data DetachClassicLinkVPC =
   DetachClassicLinkVPC'
-    { _dclvDryRun :: !(Maybe Bool)
+    { _dclvDryRun     :: !(Maybe Bool)
     , _dclvInstanceId :: !Text
-    , _dclvVPCId :: !Text
+    , _dclvVPCId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -123,7 +123,7 @@ instance ToQuery DetachClassicLinkVPC where
 -- /See:/ 'detachClassicLinkVPCResponse' smart constructor.
 data DetachClassicLinkVPCResponse =
   DetachClassicLinkVPCResponse'
-    { _dclvrsReturn :: !(Maybe Bool)
+    { _dclvrsReturn         :: !(Maybe Bool)
     , _dclvrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -60,15 +60,15 @@ import Network.AWS.Response
 data CreateNetworkACLEntry =
   CreateNetworkACLEntry'
     { _cnaeIPv6CidrBlock :: !(Maybe Text)
-    , _cnaeICMPTypeCode :: !(Maybe ICMPTypeCode)
-    , _cnaePortRange :: !(Maybe PortRange)
-    , _cnaeCidrBlock :: !(Maybe Text)
-    , _cnaeDryRun :: !(Maybe Bool)
-    , _cnaeEgress :: !Bool
-    , _cnaeNetworkACLId :: !Text
-    , _cnaeProtocol :: !Text
-    , _cnaeRuleAction :: !RuleAction
-    , _cnaeRuleNumber :: !Int
+    , _cnaeICMPTypeCode  :: !(Maybe ICMPTypeCode)
+    , _cnaePortRange     :: !(Maybe PortRange)
+    , _cnaeCidrBlock     :: !(Maybe Text)
+    , _cnaeDryRun        :: !(Maybe Bool)
+    , _cnaeEgress        :: !Bool
+    , _cnaeNetworkACLId  :: !Text
+    , _cnaeProtocol      :: !Text
+    , _cnaeRuleAction    :: !RuleAction
+    , _cnaeRuleNumber    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

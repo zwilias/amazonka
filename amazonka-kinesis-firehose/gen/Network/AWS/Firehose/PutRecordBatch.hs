@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -64,7 +64,7 @@ import Network.AWS.Response
 data PutRecordBatch =
   PutRecordBatch'
     { _prbDeliveryStreamName :: !Text
-    , _prbRecords :: !(List1 Record)
+    , _prbRecords            :: !(List1 Record)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -133,8 +133,8 @@ instance ToQuery PutRecordBatch where
 -- | /See:/ 'putRecordBatchResponse' smart constructor.
 data PutRecordBatchResponse =
   PutRecordBatchResponse'
-    { _prbrsResponseStatus :: !Int
-    , _prbrsFailedPutCount :: !Nat
+    { _prbrsResponseStatus   :: !Int
+    , _prbrsFailedPutCount   :: !Nat
     , _prbrsRequestResponses :: !(List1 PutRecordBatchResponseEntry)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

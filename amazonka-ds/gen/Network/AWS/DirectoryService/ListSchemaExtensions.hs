@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 -- | /See:/ 'listSchemaExtensions' smart constructor.
 data ListSchemaExtensions =
   ListSchemaExtensions'
-    { _lseNextToken :: !(Maybe Text)
-    , _lseLimit :: !(Maybe Nat)
+    { _lseNextToken   :: !(Maybe Text)
+    , _lseLimit       :: !(Maybe Nat)
     , _lseDirectoryId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -126,8 +126,8 @@ instance ToQuery ListSchemaExtensions where
 data ListSchemaExtensionsResponse =
   ListSchemaExtensionsResponse'
     { _lsersSchemaExtensionsInfo :: !(Maybe [SchemaExtensionInfo])
-    , _lsersNextToken :: !(Maybe Text)
-    , _lsersResponseStatus :: !Int
+    , _lsersNextToken            :: !(Maybe Text)
+    , _lsersResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

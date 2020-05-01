@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.WorkMail.Types.Product
 data CreateGroup =
   CreateGroup'
     { _cgOrganizationId :: !Text
-    , _cgName :: !Text
+    , _cgName           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -108,7 +108,7 @@ instance ToQuery CreateGroup where
 -- | /See:/ 'createGroupResponse' smart constructor.
 data CreateGroupResponse =
   CreateGroupResponse'
-    { _cgrsGroupId :: !(Maybe Text)
+    { _cgrsGroupId        :: !(Maybe Text)
     , _cgrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

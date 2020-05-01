@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'describeEffectiveInstanceAssociations' smart constructor.
 data DescribeEffectiveInstanceAssociations =
   DescribeEffectiveInstanceAssociations'
-    { _deiaNextToken :: !(Maybe Text)
+    { _deiaNextToken  :: !(Maybe Text)
     , _deiaMaxResults :: !(Maybe Nat)
     , _deiaInstanceId :: !Text
     }
@@ -125,8 +125,8 @@ instance ToQuery DescribeEffectiveInstanceAssociations where
 -- | /See:/ 'describeEffectiveInstanceAssociationsResponse' smart constructor.
 data DescribeEffectiveInstanceAssociationsResponse =
   DescribeEffectiveInstanceAssociationsResponse'
-    { _deiarsNextToken :: !(Maybe Text)
-    , _deiarsAssociations :: !(Maybe [InstanceAssociation])
+    { _deiarsNextToken      :: !(Maybe Text)
+    , _deiarsAssociations   :: !(Maybe [InstanceAssociation])
     , _deiarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

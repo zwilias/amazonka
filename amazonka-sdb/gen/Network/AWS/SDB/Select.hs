@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.SDB.Types.Product
 -- | /See:/ 'select' smart constructor.
 data Select =
   Select'
-    { _sConsistentRead :: !(Maybe Bool)
-    , _sNextToken :: !(Maybe Text)
+    { _sConsistentRead   :: !(Maybe Bool)
+    , _sNextToken        :: !(Maybe Text)
     , _sSelectExpression :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -130,8 +130,8 @@ instance ToQuery Select where
 -- | /See:/ 'selectResponse' smart constructor.
 data SelectResponse =
   SelectResponse'
-    { _srsItems :: !(Maybe [Item])
-    , _srsNextToken :: !(Maybe Text)
+    { _srsItems          :: !(Maybe [Item])
+    , _srsNextToken      :: !(Maybe Text)
     , _srsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

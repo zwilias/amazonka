@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -111,8 +111,8 @@ instance ToQuery ListAssociatedFleets where
 -- | /See:/ 'listAssociatedFleetsResponse' smart constructor.
 data ListAssociatedFleetsResponse =
   ListAssociatedFleetsResponse'
-    { _lafrsNextToken :: !(Maybe Text)
-    , _lafrsNames :: !(Maybe [Text])
+    { _lafrsNextToken      :: !(Maybe Text)
+    , _lafrsNames          :: !(Maybe [Text])
     , _lafrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

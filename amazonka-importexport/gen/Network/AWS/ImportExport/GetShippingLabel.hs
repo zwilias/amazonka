@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,18 +53,18 @@ import Network.AWS.Response
 -- | /See:/ 'getShippingLabel' smart constructor.
 data GetShippingLabel =
   GetShippingLabel'
-    { _gslStreet3 :: !(Maybe Text)
-    , _gslAPIVersion :: !(Maybe Text)
-    , _gslCountry :: !(Maybe Text)
+    { _gslStreet3         :: !(Maybe Text)
+    , _gslAPIVersion      :: !(Maybe Text)
+    , _gslCountry         :: !(Maybe Text)
     , _gslStateOrProvince :: !(Maybe Text)
-    , _gslPostalCode :: !(Maybe Text)
-    , _gslStreet2 :: !(Maybe Text)
-    , _gslName :: !(Maybe Text)
-    , _gslCompany :: !(Maybe Text)
-    , _gslPhoneNumber :: !(Maybe Text)
-    , _gslCity :: !(Maybe Text)
-    , _gslStreet1 :: !(Maybe Text)
-    , _gslJobIds :: ![Text]
+    , _gslPostalCode      :: !(Maybe Text)
+    , _gslStreet2         :: !(Maybe Text)
+    , _gslName            :: !(Maybe Text)
+    , _gslCompany         :: !(Maybe Text)
+    , _gslPhoneNumber     :: !(Maybe Text)
+    , _gslCity            :: !(Maybe Text)
+    , _gslStreet1         :: !(Maybe Text)
+    , _gslJobIds          :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -206,8 +206,8 @@ instance ToQuery GetShippingLabel where
 data GetShippingLabelResponse =
   GetShippingLabelResponse'
     { _gslrsShippingLabelURL :: !(Maybe Text)
-    , _gslrsWarning :: !(Maybe Text)
-    , _gslrsResponseStatus :: !Int
+    , _gslrsWarning          :: !(Maybe Text)
+    , _gslrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

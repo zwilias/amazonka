@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,19 +56,19 @@ import Network.AWS.Response
 -- /See:/ 'createBroker' smart constructor.
 data CreateBroker =
   CreateBroker'
-    { _cbBrokerName :: !(Maybe Text)
-    , _cbEngineVersion :: !(Maybe Text)
-    , _cbPubliclyAccessible :: !(Maybe Bool)
-    , _cbAutoMinorVersionUpgrade :: !(Maybe Bool)
-    , _cbSecurityGroups :: !(Maybe [Text])
-    , _cbUsers :: !(Maybe [User])
-    , _cbSubnetIds :: !(Maybe [Text])
-    , _cbCreatorRequestId :: !(Maybe Text)
+    { _cbBrokerName                 :: !(Maybe Text)
+    , _cbEngineVersion              :: !(Maybe Text)
+    , _cbPubliclyAccessible         :: !(Maybe Bool)
+    , _cbAutoMinorVersionUpgrade    :: !(Maybe Bool)
+    , _cbSecurityGroups             :: !(Maybe [Text])
+    , _cbUsers                      :: !(Maybe [User])
+    , _cbSubnetIds                  :: !(Maybe [Text])
+    , _cbCreatorRequestId           :: !(Maybe Text)
     , _cbMaintenanceWindowStartTime :: !(Maybe WeeklyStartTime)
-    , _cbDeploymentMode :: !(Maybe DeploymentMode)
-    , _cbConfiguration :: !(Maybe ConfigurationId)
-    , _cbEngineType :: !(Maybe EngineType)
-    , _cbHostInstanceType :: !(Maybe Text)
+    , _cbDeploymentMode             :: !(Maybe DeploymentMode)
+    , _cbConfiguration              :: !(Maybe ConfigurationId)
+    , _cbEngineType                 :: !(Maybe EngineType)
+    , _cbHostInstanceType           :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -227,8 +227,8 @@ instance ToQuery CreateBroker where
 -- | /See:/ 'createBrokerResponse' smart constructor.
 data CreateBrokerResponse =
   CreateBrokerResponse'
-    { _cbrsBrokerId :: !(Maybe Text)
-    , _cbrsBrokerARN :: !(Maybe Text)
+    { _cbrsBrokerId       :: !(Maybe Text)
+    , _cbrsBrokerARN      :: !(Maybe Text)
     , _cbrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

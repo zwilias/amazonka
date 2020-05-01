@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,9 +55,9 @@ import Network.AWS.Response
 -- | /See:/ 'getIntentVersions' smart constructor.
 data GetIntentVersions =
   GetIntentVersions'
-    { _givNextToken :: !(Maybe Text)
+    { _givNextToken  :: !(Maybe Text)
     , _givMaxResults :: !(Maybe Nat)
-    , _givName :: !Text
+    , _givName       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -126,8 +126,8 @@ instance ToQuery GetIntentVersions where
 -- | /See:/ 'getIntentVersionsResponse' smart constructor.
 data GetIntentVersionsResponse =
   GetIntentVersionsResponse'
-    { _givrsIntents :: !(Maybe [IntentMetadata])
-    , _givrsNextToken :: !(Maybe Text)
+    { _givrsIntents        :: !(Maybe [IntentMetadata])
+    , _givrsNextToken      :: !(Maybe Text)
     , _givrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

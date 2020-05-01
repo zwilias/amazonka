@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,11 +55,11 @@ import Network.AWS.Response
 -- | /See:/ 'describeScalableTargets' smart constructor.
 data DescribeScalableTargets =
   DescribeScalableTargets'
-    { _dstResourceIds :: !(Maybe [Text])
+    { _dstResourceIds       :: !(Maybe [Text])
     , _dstScalableDimension :: !(Maybe ScalableDimension)
-    , _dstNextToken :: !(Maybe Text)
-    , _dstMaxResults :: !(Maybe Int)
-    , _dstServiceNamespace :: !ServiceNamespace
+    , _dstNextToken         :: !(Maybe Text)
+    , _dstMaxResults        :: !(Maybe Int)
+    , _dstServiceNamespace  :: !ServiceNamespace
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -160,9 +160,9 @@ instance ToQuery DescribeScalableTargets where
 -- | /See:/ 'describeScalableTargetsResponse' smart constructor.
 data DescribeScalableTargetsResponse =
   DescribeScalableTargetsResponse'
-    { _dstsrsNextToken :: !(Maybe Text)
+    { _dstsrsNextToken       :: !(Maybe Text)
     , _dstsrsScalableTargets :: !(Maybe [ScalableTarget])
-    , _dstsrsResponseStatus :: !Int
+    , _dstsrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

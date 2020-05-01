@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,12 +58,12 @@ import Network.AWS.Response
 -- /See:/ 'describeSpotFleetRequestHistory' smart constructor.
 data DescribeSpotFleetRequestHistory =
   DescribeSpotFleetRequestHistory'
-    { _dsfrhNextToken :: !(Maybe Text)
-    , _dsfrhEventType :: !(Maybe EventType)
-    , _dsfrhDryRun :: !(Maybe Bool)
-    , _dsfrhMaxResults :: !(Maybe Int)
+    { _dsfrhNextToken          :: !(Maybe Text)
+    , _dsfrhEventType          :: !(Maybe EventType)
+    , _dsfrhDryRun             :: !(Maybe Bool)
+    , _dsfrhMaxResults         :: !(Maybe Int)
     , _dsfrhSpotFleetRequestId :: !Text
-    , _dsfrhStartTime :: !ISO8601
+    , _dsfrhStartTime          :: !ISO8601
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -164,12 +164,12 @@ instance ToQuery DescribeSpotFleetRequestHistory where
 -- /See:/ 'describeSpotFleetRequestHistoryResponse' smart constructor.
 data DescribeSpotFleetRequestHistoryResponse =
   DescribeSpotFleetRequestHistoryResponse'
-    { _dsfrhrsNextToken :: !(Maybe Text)
-    , _dsfrhrsResponseStatus :: !Int
-    , _dsfrhrsHistoryRecords :: ![HistoryRecord]
-    , _dsfrhrsLastEvaluatedTime :: !ISO8601
+    { _dsfrhrsNextToken          :: !(Maybe Text)
+    , _dsfrhrsResponseStatus     :: !Int
+    , _dsfrhrsHistoryRecords     :: ![HistoryRecord]
+    , _dsfrhrsLastEvaluatedTime  :: !ISO8601
     , _dsfrhrsSpotFleetRequestId :: !Text
-    , _dsfrhrsStartTime :: !ISO8601
+    , _dsfrhrsStartTime          :: !ISO8601
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

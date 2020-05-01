@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 -- | /See:/ 'describeVolumesModifications' smart constructor.
 data DescribeVolumesModifications =
   DescribeVolumesModifications'
-    { _dvmFilters :: !(Maybe [Filter])
-    , _dvmVolumeIds :: !(Maybe [Text])
-    , _dvmNextToken :: !(Maybe Text)
-    , _dvmDryRun :: !(Maybe Bool)
+    { _dvmFilters    :: !(Maybe [Filter])
+    , _dvmVolumeIds  :: !(Maybe [Text])
+    , _dvmNextToken  :: !(Maybe Text)
+    , _dvmDryRun     :: !(Maybe Bool)
     , _dvmMaxResults :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -141,8 +141,8 @@ instance ToQuery DescribeVolumesModifications where
 data DescribeVolumesModificationsResponse =
   DescribeVolumesModificationsResponse'
     { _dvmrsVolumesModifications :: !(Maybe [VolumeModification])
-    , _dvmrsNextToken :: !(Maybe Text)
-    , _dvmrsResponseStatus :: !Int
+    , _dvmrsNextToken            :: !(Maybe Text)
+    , _dvmrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

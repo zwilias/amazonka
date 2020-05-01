@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 -- | /See:/ 'listConfigurationRevisions' smart constructor.
 data ListConfigurationRevisions =
   ListConfigurationRevisions'
-    { _lcrNextToken :: !(Maybe Text)
-    , _lcrMaxResults :: !(Maybe Nat)
+    { _lcrNextToken       :: !(Maybe Text)
+    , _lcrMaxResults      :: !(Maybe Nat)
     , _lcrConfigurationId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -118,10 +118,10 @@ instance ToQuery ListConfigurationRevisions where
 data ListConfigurationRevisionsResponse =
   ListConfigurationRevisionsResponse'
     { _lcrrsConfigurationId :: !(Maybe Text)
-    , _lcrrsNextToken :: !(Maybe Text)
-    , _lcrrsRevisions :: !(Maybe [ConfigurationRevision])
-    , _lcrrsMaxResults :: !(Maybe Int)
-    , _lcrrsResponseStatus :: !Int
+    , _lcrrsNextToken       :: !(Maybe Text)
+    , _lcrrsRevisions       :: !(Maybe [ConfigurationRevision])
+    , _lcrrsMaxResults      :: !(Maybe Int)
+    , _lcrrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

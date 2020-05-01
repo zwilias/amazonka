@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.StorageGateway.Types.Product
 data AddUploadBuffer =
   AddUploadBuffer'
     { _aubGatewayARN :: !Text
-    , _aubDiskIds :: ![Text]
+    , _aubDiskIds    :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -111,7 +111,7 @@ instance ToQuery AddUploadBuffer where
 -- | /See:/ 'addUploadBufferResponse' smart constructor.
 data AddUploadBufferResponse =
   AddUploadBufferResponse'
-    { _aubrsGatewayARN :: !(Maybe Text)
+    { _aubrsGatewayARN     :: !(Maybe Text)
     , _aubrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

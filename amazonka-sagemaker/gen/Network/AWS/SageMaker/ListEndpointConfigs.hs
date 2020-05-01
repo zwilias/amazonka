@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,13 +53,13 @@ import Network.AWS.SageMaker.Types.Product
 -- | /See:/ 'listEndpointConfigs' smart constructor.
 data ListEndpointConfigs =
   ListEndpointConfigs'
-    { _lecNameContains :: !(Maybe Text)
-    , _lecCreationTimeAfter :: !(Maybe POSIX)
-    , _lecNextToken :: !(Maybe Text)
-    , _lecSortOrder :: !(Maybe OrderKey)
+    { _lecNameContains       :: !(Maybe Text)
+    , _lecCreationTimeAfter  :: !(Maybe POSIX)
+    , _lecNextToken          :: !(Maybe Text)
+    , _lecSortOrder          :: !(Maybe OrderKey)
     , _lecCreationTimeBefore :: !(Maybe POSIX)
-    , _lecMaxResults :: !(Maybe Nat)
-    , _lecSortBy :: !(Maybe EndpointConfigSortKey)
+    , _lecMaxResults         :: !(Maybe Nat)
+    , _lecSortBy             :: !(Maybe EndpointConfigSortKey)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -175,8 +175,8 @@ instance ToQuery ListEndpointConfigs where
 -- | /See:/ 'listEndpointConfigsResponse' smart constructor.
 data ListEndpointConfigsResponse =
   ListEndpointConfigsResponse'
-    { _lecrsNextToken :: !(Maybe Text)
-    , _lecrsResponseStatus :: !Int
+    { _lecrsNextToken       :: !(Maybe Text)
+    , _lecrsResponseStatus  :: !Int
     , _lecrsEndpointConfigs :: ![EndpointConfigSummary]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

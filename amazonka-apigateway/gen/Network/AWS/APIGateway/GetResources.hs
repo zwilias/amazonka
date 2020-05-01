@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,9 +54,9 @@ import Network.AWS.Response
 -- /See:/ 'getResources' smart constructor.
 data GetResources =
   GetResources'
-    { _grsEmbed :: !(Maybe [Text])
-    , _grsLimit :: !(Maybe Int)
-    , _grsPosition :: !(Maybe Text)
+    { _grsEmbed     :: !(Maybe [Text])
+    , _grsLimit     :: !(Maybe Int)
+    , _grsPosition  :: !(Maybe Text)
     , _grsRestAPIId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -142,8 +142,8 @@ instance ToQuery GetResources where
 -- /See:/ 'getResourcesResponse' smart constructor.
 data GetResourcesResponse =
   GetResourcesResponse'
-    { _grrsItems :: !(Maybe [Resource])
-    , _grrsPosition :: !(Maybe Text)
+    { _grrsItems          :: !(Maybe [Resource])
+    , _grrsPosition       :: !(Maybe Text)
     , _grrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- /See:/ 'createLunaClient' smart constructor.
 data CreateLunaClient =
   CreateLunaClient'
-    { _clcLabel :: !(Maybe Text)
+    { _clcLabel       :: !(Maybe Text)
     , _clcCertificate :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -119,7 +119,7 @@ instance ToQuery CreateLunaClient where
 -- /See:/ 'createLunaClientResponse' smart constructor.
 data CreateLunaClientResponse =
   CreateLunaClientResponse'
-    { _clcrsClientARN :: !(Maybe Text)
+    { _clcrsClientARN      :: !(Maybe Text)
     , _clcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

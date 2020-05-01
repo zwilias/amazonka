@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,15 +57,15 @@ import Network.AWS.Response
 -- | /See:/ 'getReservationPurchaseRecommendation' smart constructor.
 data GetReservationPurchaseRecommendation =
   GetReservationPurchaseRecommendation'
-    { _grprNextPageToken :: !(Maybe Text)
-    , _grprTermInYears :: !(Maybe TermInYears)
+    { _grprNextPageToken        :: !(Maybe Text)
+    , _grprTermInYears          :: !(Maybe TermInYears)
     , _grprServiceSpecification :: !(Maybe ServiceSpecification)
-    , _grprAccountScope :: !(Maybe AccountScope)
-    , _grprAccountId :: !(Maybe Text)
-    , _grprPageSize :: !(Maybe Nat)
+    , _grprAccountScope         :: !(Maybe AccountScope)
+    , _grprAccountId            :: !(Maybe Text)
+    , _grprPageSize             :: !(Maybe Nat)
     , _grprLookbackPeriodInDays :: !(Maybe LookbackPeriodInDays)
-    , _grprPaymentOption :: !(Maybe PaymentOption)
-    , _grprService :: !Text
+    , _grprPaymentOption        :: !(Maybe PaymentOption)
+    , _grprService              :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

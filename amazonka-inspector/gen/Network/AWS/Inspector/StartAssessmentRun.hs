@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'startAssessmentRun' smart constructor.
 data StartAssessmentRun =
   StartAssessmentRun'
-    { _sarAssessmentRunName :: !(Maybe Text)
+    { _sarAssessmentRunName     :: !(Maybe Text)
     , _sarAssessmentTemplateARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -114,7 +114,7 @@ instance ToQuery StartAssessmentRun where
 -- | /See:/ 'startAssessmentRunResponse' smart constructor.
 data StartAssessmentRunResponse =
   StartAssessmentRunResponse'
-    { _sarrsResponseStatus :: !Int
+    { _sarrsResponseStatus   :: !Int
     , _sarrsAssessmentRunARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

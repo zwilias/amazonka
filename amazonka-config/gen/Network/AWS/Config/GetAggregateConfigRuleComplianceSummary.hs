@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -156,9 +156,9 @@ instance ToQuery GetAggregateConfigRuleComplianceSummary where
 data GetAggregateConfigRuleComplianceSummaryResponse =
   GetAggregateConfigRuleComplianceSummaryResponse'
     { _gacrcsrsAggregateComplianceCounts :: !(Maybe [AggregateComplianceCount])
-    , _gacrcsrsNextToken :: !(Maybe Text)
-    , _gacrcsrsGroupByKey :: !(Maybe Text)
-    , _gacrcsrsResponseStatus :: !Int
+    , _gacrcsrsNextToken                 :: !(Maybe Text)
+    , _gacrcsrsGroupByKey                :: !(Maybe Text)
+    , _gacrcsrsResponseStatus            :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

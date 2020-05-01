@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -167,10 +167,10 @@ instance ToQuery SearchProvisionedProducts where
 -- | /See:/ 'searchProvisionedProductsResponse' smart constructor.
 data SearchProvisionedProductsResponse =
   SearchProvisionedProductsResponse'
-    { _srsNextPageToken :: !(Maybe Text)
+    { _srsNextPageToken       :: !(Maybe Text)
     , _srsProvisionedProducts :: !(Maybe [ProvisionedProductAttribute])
-    , _srsTotalResultsCount :: !(Maybe Int)
-    , _srsResponseStatus :: !Int
+    , _srsTotalResultsCount   :: !(Maybe Int)
+    , _srsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,10 +54,10 @@ import Network.AWS.Response
 data AuthorizeDBSecurityGroupIngress =
   AuthorizeDBSecurityGroupIngress'
     { _adsgiEC2SecurityGroupOwnerId :: !(Maybe Text)
-    , _adsgiEC2SecurityGroupName :: !(Maybe Text)
-    , _adsgiCIdRIP :: !(Maybe Text)
-    , _adsgiEC2SecurityGroupId :: !(Maybe Text)
-    , _adsgiDBSecurityGroupName :: !Text
+    , _adsgiEC2SecurityGroupName    :: !(Maybe Text)
+    , _adsgiCIdRIP                  :: !(Maybe Text)
+    , _adsgiEC2SecurityGroupId      :: !(Maybe Text)
+    , _adsgiDBSecurityGroupName     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -149,7 +149,7 @@ instance ToQuery AuthorizeDBSecurityGroupIngress where
 data AuthorizeDBSecurityGroupIngressResponse =
   AuthorizeDBSecurityGroupIngressResponse'
     { _adsgirsDBSecurityGroup :: !(Maybe DBSecurityGroup)
-    , _adsgirsResponseStatus :: !Int
+    , _adsgirsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

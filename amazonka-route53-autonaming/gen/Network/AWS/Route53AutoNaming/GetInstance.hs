@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Route53AutoNaming.Types.Product
 -- | /See:/ 'getInstance' smart constructor.
 data GetInstance =
   GetInstance'
-    { _giServiceId :: !Text
+    { _giServiceId  :: !Text
     , _giInstanceId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -109,7 +109,7 @@ instance ToQuery GetInstance where
 -- | /See:/ 'getInstanceResponse' smart constructor.
 data GetInstanceResponse =
   GetInstanceResponse'
-    { _girsInstance :: !(Maybe Instance)
+    { _girsInstance       :: !(Maybe Instance)
     , _girsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

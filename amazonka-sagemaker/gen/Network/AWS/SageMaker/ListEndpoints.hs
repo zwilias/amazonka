@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,16 +56,16 @@ import Network.AWS.SageMaker.Types.Product
 -- | /See:/ 'listEndpoints' smart constructor.
 data ListEndpoints =
   ListEndpoints'
-    { _leNameContains :: !(Maybe Text)
+    { _leNameContains           :: !(Maybe Text)
     , _leLastModifiedTimeBefore :: !(Maybe POSIX)
-    , _leCreationTimeAfter :: !(Maybe POSIX)
-    , _leNextToken :: !(Maybe Text)
-    , _leSortOrder :: !(Maybe OrderKey)
-    , _leLastModifiedTimeAfter :: !(Maybe POSIX)
-    , _leCreationTimeBefore :: !(Maybe POSIX)
-    , _leStatusEquals :: !(Maybe EndpointStatus)
-    , _leMaxResults :: !(Maybe Nat)
-    , _leSortBy :: !(Maybe EndpointSortKey)
+    , _leCreationTimeAfter      :: !(Maybe POSIX)
+    , _leNextToken              :: !(Maybe Text)
+    , _leSortOrder              :: !(Maybe OrderKey)
+    , _leLastModifiedTimeAfter  :: !(Maybe POSIX)
+    , _leCreationTimeBefore     :: !(Maybe POSIX)
+    , _leStatusEquals           :: !(Maybe EndpointStatus)
+    , _leMaxResults             :: !(Maybe Nat)
+    , _leSortBy                 :: !(Maybe EndpointSortKey)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -207,9 +207,9 @@ instance ToQuery ListEndpoints where
 -- | /See:/ 'listEndpointsResponse' smart constructor.
 data ListEndpointsResponse =
   ListEndpointsResponse'
-    { _lersNextToken :: !(Maybe Text)
+    { _lersNextToken      :: !(Maybe Text)
     , _lersResponseStatus :: !Int
-    , _lersEndpoints :: ![EndpointSummary]
+    , _lersEndpoints      :: ![EndpointSummary]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

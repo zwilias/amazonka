@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,14 +55,14 @@ import Network.AWS.Response
 -- | /See:/ 'putScheduledAction' smart constructor.
 data PutScheduledAction =
   PutScheduledAction'
-    { _psaScalableDimension :: !(Maybe ScalableDimension)
-    , _psaStartTime :: !(Maybe POSIX)
-    , _psaSchedule :: !(Maybe Text)
-    , _psaEndTime :: !(Maybe POSIX)
+    { _psaScalableDimension    :: !(Maybe ScalableDimension)
+    , _psaStartTime            :: !(Maybe POSIX)
+    , _psaSchedule             :: !(Maybe Text)
+    , _psaEndTime              :: !(Maybe POSIX)
     , _psaScalableTargetAction :: !(Maybe ScalableTargetAction)
-    , _psaServiceNamespace :: !ServiceNamespace
-    , _psaScheduledActionName :: !Text
-    , _psaResourceId :: !Text
+    , _psaServiceNamespace     :: !ServiceNamespace
+    , _psaScheduledActionName  :: !Text
+    , _psaResourceId           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -97,8 +97,8 @@ instance ToQuery CreateActivity where
 data CreateActivityResponse =
   CreateActivityResponse'
     { _carsResponseStatus :: !Int
-    , _carsActivityARN :: !Text
-    , _carsCreationDate :: !POSIX
+    , _carsActivityARN    :: !Text
+    , _carsCreationDate   :: !POSIX
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

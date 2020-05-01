@@ -116,8 +116,8 @@ import Network.AWS.Cloud9.CreateEnvironmentMembership
 import Network.AWS.Cloud9.DeleteEnvironment
 import Network.AWS.Cloud9.DeleteEnvironmentMembership
 import Network.AWS.Cloud9.DescribeEnvironmentMemberships
-import Network.AWS.Cloud9.DescribeEnvironmentStatus
 import Network.AWS.Cloud9.DescribeEnvironments
+import Network.AWS.Cloud9.DescribeEnvironmentStatus
 import Network.AWS.Cloud9.ListEnvironments
 import Network.AWS.Cloud9.Types
 import Network.AWS.Cloud9.UpdateEnvironment

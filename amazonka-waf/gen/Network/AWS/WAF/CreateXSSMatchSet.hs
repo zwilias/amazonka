@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,7 +63,7 @@ import Network.AWS.WAF.Types.Product
 -- /See:/ 'createXSSMatchSet' smart constructor.
 data CreateXSSMatchSet =
   CreateXSSMatchSet'
-    { _cxmsName :: !Text
+    { _cxmsName        :: !Text
     , _cxmsChangeToken :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -131,8 +131,8 @@ instance ToQuery CreateXSSMatchSet where
 -- /See:/ 'createXSSMatchSetResponse' smart constructor.
 data CreateXSSMatchSetResponse =
   CreateXSSMatchSetResponse'
-    { _cxmsrsXSSMatchSet :: !(Maybe XSSMatchSet)
-    , _cxmsrsChangeToken :: !(Maybe Text)
+    { _cxmsrsXSSMatchSet    :: !(Maybe XSSMatchSet)
+    , _cxmsrsChangeToken    :: !(Maybe Text)
     , _cxmsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

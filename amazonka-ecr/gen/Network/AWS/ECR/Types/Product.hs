@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,8 +26,8 @@ import Network.AWS.Prelude
 -- /See:/ 'authorizationData' smart constructor.
 data AuthorizationData =
   AuthorizationData'
-    { _adExpiresAt :: !(Maybe POSIX)
-    , _adProxyEndpoint :: !(Maybe Text)
+    { _adExpiresAt          :: !(Maybe POSIX)
+    , _adProxyEndpoint      :: !(Maybe Text)
     , _adAuthorizationToken :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -112,10 +112,10 @@ instance ToJSON DescribeImagesFilter where
 -- /See:/ 'image' smart constructor.
 data Image =
   Image'
-    { _iRegistryId :: !(Maybe Text)
-    , _iImageId :: !(Maybe ImageIdentifier)
+    { _iRegistryId     :: !(Maybe Text)
+    , _iImageId        :: !(Maybe ImageIdentifier)
     , _iRepositoryName :: !(Maybe Text)
-    , _iImageManifest :: !(Maybe Text)
+    , _iImageManifest  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -175,12 +175,12 @@ instance NFData Image
 -- /See:/ 'imageDetail' smart constructor.
 data ImageDetail =
   ImageDetail'
-    { _idRegistryId :: !(Maybe Text)
-    , _idImageTags :: !(Maybe [Text])
+    { _idRegistryId       :: !(Maybe Text)
+    , _idImageTags        :: !(Maybe [Text])
     , _idImageSizeInBytes :: !(Maybe Integer)
-    , _idImageDigest :: !(Maybe Text)
-    , _idImagePushedAt :: !(Maybe POSIX)
-    , _idRepositoryName :: !(Maybe Text)
+    , _idImageDigest      :: !(Maybe Text)
+    , _idImagePushedAt    :: !(Maybe POSIX)
+    , _idRepositoryName   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -261,8 +261,8 @@ instance NFData ImageDetail
 data ImageFailure =
   ImageFailure'
     { _ifFailureReason :: !(Maybe Text)
-    , _ifFailureCode :: !(Maybe ImageFailureCode)
-    , _ifImageId :: !(Maybe ImageIdentifier)
+    , _ifFailureCode   :: !(Maybe ImageFailureCode)
+    , _ifImageId       :: !(Maybe ImageIdentifier)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -312,7 +312,7 @@ instance NFData ImageFailure
 data ImageIdentifier =
   ImageIdentifier'
     { _iiImageDigest :: !(Maybe Text)
-    , _iiImageTag :: !(Maybe Text)
+    , _iiImageTag    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -360,9 +360,9 @@ instance ToJSON ImageIdentifier where
 -- /See:/ 'layer' smart constructor.
 data Layer =
   Layer'
-    { _lMediaType :: !(Maybe Text)
-    , _lLayerDigest :: !(Maybe Text)
-    , _lLayerSize :: !(Maybe Integer)
+    { _lMediaType         :: !(Maybe Text)
+    , _lLayerDigest       :: !(Maybe Text)
+    , _lLayerSize         :: !(Maybe Integer)
     , _lLayerAvailability :: !(Maybe LayerAvailability)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -425,8 +425,8 @@ instance NFData Layer
 data LayerFailure =
   LayerFailure'
     { _lfFailureReason :: !(Maybe Text)
-    , _lfFailureCode :: !(Maybe LayerFailureCode)
-    , _lfLayerDigest :: !(Maybe Text)
+    , _lfFailureCode   :: !(Maybe LayerFailureCode)
+    , _lfLayerDigest   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -510,10 +510,10 @@ instance ToJSON LifecyclePolicyPreviewFilter where
 -- /See:/ 'lifecyclePolicyPreviewResult' smart constructor.
 data LifecyclePolicyPreviewResult =
   LifecyclePolicyPreviewResult'
-    { _lpprImageTags :: !(Maybe [Text])
-    , _lpprAction :: !(Maybe LifecyclePolicyRuleAction)
-    , _lpprImageDigest :: !(Maybe Text)
-    , _lpprImagePushedAt :: !(Maybe POSIX)
+    { _lpprImageTags           :: !(Maybe [Text])
+    , _lpprAction              :: !(Maybe LifecyclePolicyRuleAction)
+    , _lpprImageDigest         :: !(Maybe Text)
+    , _lpprImagePushedAt       :: !(Maybe POSIX)
     , _lpprAppliedRulePriority :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -692,10 +692,10 @@ instance ToJSON ListImagesFilter where
 -- /See:/ 'repository' smart constructor.
 data Repository =
   Repository'
-    { _rRepositoryARN :: !(Maybe Text)
-    , _rCreatedAt :: !(Maybe POSIX)
-    , _rRegistryId :: !(Maybe Text)
-    , _rRepositoryURI :: !(Maybe Text)
+    { _rRepositoryARN  :: !(Maybe Text)
+    , _rCreatedAt      :: !(Maybe POSIX)
+    , _rRegistryId     :: !(Maybe Text)
+    , _rRepositoryURI  :: !(Maybe Text)
     , _rRepositoryName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- | /See:/ 'listClusters' smart constructor.
 data ListClusters =
   ListClusters'
-    { _lcNextToken :: !(Maybe Text)
+    { _lcNextToken  :: !(Maybe Text)
     , _lcMaxResults :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -117,8 +117,8 @@ instance ToQuery ListClusters where
 -- | /See:/ 'listClustersResponse' smart constructor.
 data ListClustersResponse =
   ListClustersResponse'
-    { _lcrsClusterARNs :: !(Maybe [Text])
-    , _lcrsNextToken :: !(Maybe Text)
+    { _lcrsClusterARNs    :: !(Maybe [Text])
+    , _lcrsNextToken      :: !(Maybe Text)
     , _lcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

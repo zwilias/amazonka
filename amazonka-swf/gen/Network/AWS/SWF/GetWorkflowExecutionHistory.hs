@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -65,11 +65,11 @@ import Network.AWS.SWF.Types.Product
 -- | /See:/ 'getWorkflowExecutionHistory' smart constructor.
 data GetWorkflowExecutionHistory =
   GetWorkflowExecutionHistory'
-    { _gwehNextPageToken :: !(Maybe Text)
-    , _gwehReverseOrder :: !(Maybe Bool)
+    { _gwehNextPageToken   :: !(Maybe Text)
+    , _gwehReverseOrder    :: !(Maybe Bool)
     , _gwehMaximumPageSize :: !(Maybe Nat)
-    , _gwehDomain :: !Text
-    , _gwehExecution :: !WorkflowExecution
+    , _gwehDomain          :: !Text
+    , _gwehExecution       :: !WorkflowExecution
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -174,9 +174,9 @@ instance ToQuery GetWorkflowExecutionHistory where
 -- /See:/ 'getWorkflowExecutionHistoryResponse' smart constructor.
 data GetWorkflowExecutionHistoryResponse =
   GetWorkflowExecutionHistoryResponse'
-    { _gwehrsNextPageToken :: !(Maybe Text)
+    { _gwehrsNextPageToken  :: !(Maybe Text)
     , _gwehrsResponseStatus :: !Int
-    , _gwehrsEvents :: ![HistoryEvent]
+    , _gwehrsEvents         :: ![HistoryEvent]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

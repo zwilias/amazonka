@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,11 +49,11 @@ import Network.AWS.Response
 data UpdateFilter =
   UpdateFilter'
     { _ufFindingCriteria :: !(Maybe FindingCriteria)
-    , _ufAction :: !(Maybe FilterAction)
-    , _ufDescription :: !(Maybe Text)
-    , _ufRank :: !(Maybe Int)
-    , _ufDetectorId :: !Text
-    , _ufFilterName :: !Text
+    , _ufAction          :: !(Maybe FilterAction)
+    , _ufDescription     :: !(Maybe Text)
+    , _ufRank            :: !(Maybe Int)
+    , _ufDetectorId      :: !Text
+    , _ufFilterName      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -147,7 +147,7 @@ instance ToQuery UpdateFilter where
 -- | /See:/ 'updateFilterResponse' smart constructor.
 data UpdateFilterResponse =
   UpdateFilterResponse'
-    { _ufrsName :: !(Maybe Text)
+    { _ufrsName           :: !(Maybe Text)
     , _ufrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

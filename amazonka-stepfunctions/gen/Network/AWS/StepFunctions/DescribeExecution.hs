@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -110,15 +110,15 @@ instance ToQuery DescribeExecution where
 -- | /See:/ 'describeExecutionResponse' smart constructor.
 data DescribeExecutionResponse =
   DescribeExecutionResponse'
-    { _dersStopDate :: !(Maybe POSIX)
-    , _dersName :: !(Maybe Text)
-    , _dersOutput :: !(Maybe Text)
-    , _dersResponseStatus :: !Int
-    , _dersExecutionARN :: !Text
+    { _dersStopDate        :: !(Maybe POSIX)
+    , _dersName            :: !(Maybe Text)
+    , _dersOutput          :: !(Maybe Text)
+    , _dersResponseStatus  :: !Int
+    , _dersExecutionARN    :: !Text
     , _dersStateMachineARN :: !Text
-    , _dersStatus :: !ExecutionStatus
-    , _dersStartDate :: !POSIX
-    , _dersInput :: !Text
+    , _dersStatus          :: !ExecutionStatus
+    , _dersStartDate       :: !POSIX
+    , _dersInput           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- /See:/ 'listBootstrapActions' smart constructor.
 data ListBootstrapActions =
   ListBootstrapActions'
-    { _lbaMarker :: !(Maybe Text)
+    { _lbaMarker    :: !(Maybe Text)
     , _lbaClusterId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -127,8 +127,8 @@ instance ToQuery ListBootstrapActions where
 data ListBootstrapActionsResponse =
   ListBootstrapActionsResponse'
     { _lbarsBootstrapActions :: !(Maybe [Command])
-    , _lbarsMarker :: !(Maybe Text)
-    , _lbarsResponseStatus :: !Int
+    , _lbarsMarker           :: !(Maybe Text)
+    , _lbarsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

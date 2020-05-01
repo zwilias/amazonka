@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -60,8 +60,8 @@ instance ToJSON Alarm where
 data AlarmConfiguration =
   AlarmConfiguration'
     { _acIgnorePollAlarmFailure :: !(Maybe Bool)
-    , _acEnabled :: !(Maybe Bool)
-    , _acAlarms :: !(Maybe [Alarm])
+    , _acEnabled                :: !(Maybe Bool)
+    , _acAlarms                 :: !(Maybe [Alarm])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,12 +124,12 @@ instance ToJSON AlarmConfiguration where
 -- /See:/ 'applicationInfo' smart constructor.
 data ApplicationInfo =
   ApplicationInfo'
-    { _aiLinkedToGitHub :: !(Maybe Bool)
-    , _aiComputePlatform :: !(Maybe ComputePlatform)
-    , _aiApplicationId :: !(Maybe Text)
-    , _aiApplicationName :: !(Maybe Text)
+    { _aiLinkedToGitHub    :: !(Maybe Bool)
+    , _aiComputePlatform   :: !(Maybe ComputePlatform)
+    , _aiApplicationId     :: !(Maybe Text)
+    , _aiApplicationName   :: !(Maybe Text)
     , _aiGitHubAccountName :: !(Maybe Text)
-    , _aiCreateTime :: !(Maybe POSIX)
+    , _aiCreateTime        :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -209,7 +209,7 @@ instance NFData ApplicationInfo
 data AutoRollbackConfiguration =
   AutoRollbackConfiguration'
     { _arcEnabled :: !(Maybe Bool)
-    , _arcEvents :: !(Maybe [AutoRollbackEvent])
+    , _arcEvents  :: !(Maybe [AutoRollbackEvent])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -372,7 +372,7 @@ instance ToJSON BlueGreenDeploymentConfiguration where
 -- /See:/ 'blueInstanceTerminationOption' smart constructor.
 data BlueInstanceTerminationOption =
   BlueInstanceTerminationOption'
-    { _bitoAction :: !(Maybe InstanceAction)
+    { _bitoAction                       :: !(Maybe InstanceAction)
     , _bitoTerminationWaitTimeInMinutes :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -430,11 +430,11 @@ instance ToJSON BlueInstanceTerminationOption where
 data DeploymentConfigInfo =
   DeploymentConfigInfo'
     { _dciDeploymentConfigName :: !(Maybe Text)
-    , _dciComputePlatform :: !(Maybe ComputePlatform)
-    , _dciMinimumHealthyHosts :: !(Maybe MinimumHealthyHosts)
+    , _dciComputePlatform      :: !(Maybe ComputePlatform)
+    , _dciMinimumHealthyHosts  :: !(Maybe MinimumHealthyHosts)
     , _dciTrafficRoutingConfig :: !(Maybe TrafficRoutingConfig)
-    , _dciDeploymentConfigId :: !(Maybe Text)
-    , _dciCreateTime :: !(Maybe POSIX)
+    , _dciDeploymentConfigId   :: !(Maybe Text)
+    , _dciCreateTime           :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1060,12 +1060,12 @@ instance NFData DeploymentInfo
 -- /See:/ 'deploymentOverview' smart constructor.
 data DeploymentOverview =
   DeploymentOverview'
-    { _doPending :: !(Maybe Integer)
-    , _doSkipped :: !(Maybe Integer)
+    { _doPending    :: !(Maybe Integer)
+    , _doSkipped    :: !(Maybe Integer)
     , _doInProgress :: !(Maybe Integer)
-    , _doSucceeded :: !(Maybe Integer)
-    , _doReady :: !(Maybe Integer)
-    , _doFailed :: !(Maybe Integer)
+    , _doSucceeded  :: !(Maybe Integer)
+    , _doReady      :: !(Maybe Integer)
+    , _doFailed     :: !(Maybe Integer)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1141,7 +1141,7 @@ instance NFData DeploymentOverview
 -- /See:/ 'deploymentReadyOption' smart constructor.
 data DeploymentReadyOption =
   DeploymentReadyOption'
-    { _droActionOnTimeout :: !(Maybe DeploymentReadyAction)
+    { _droActionOnTimeout   :: !(Maybe DeploymentReadyAction)
     , _droWaitTimeInMinutes :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1196,7 +1196,7 @@ instance ToJSON DeploymentReadyOption where
 data DeploymentStyle =
   DeploymentStyle'
     { _dsDeploymentOption :: !(Maybe DeploymentOption)
-    , _dsDeploymentType :: !(Maybe DeploymentType)
+    , _dsDeploymentType   :: !(Maybe DeploymentType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1247,10 +1247,10 @@ instance ToJSON DeploymentStyle where
 -- /See:/ 'diagnostics' smart constructor.
 data Diagnostics =
   Diagnostics'
-    { _dLogTail :: !(Maybe Text)
-    , _dErrorCode :: !(Maybe LifecycleErrorCode)
+    { _dLogTail    :: !(Maybe Text)
+    , _dErrorCode  :: !(Maybe LifecycleErrorCode)
     , _dScriptName :: !(Maybe Text)
-    , _dMessage :: !(Maybe Text)
+    , _dMessage    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1311,8 +1311,8 @@ instance NFData Diagnostics
 data EC2TagFilter =
   EC2TagFilter'
     { _etfValue :: !(Maybe Text)
-    , _etfKey :: !(Maybe Text)
-    , _etfType :: !(Maybe EC2TagFilterType)
+    , _etfKey   :: !(Maybe Text)
+    , _etfType  :: !(Maybe EC2TagFilterType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1440,7 +1440,7 @@ instance ToJSON ELBInfo where
 -- /See:/ 'errorInformation' smart constructor.
 data ErrorInformation =
   ErrorInformation'
-    { _eiCode :: !(Maybe DeployErrorCode)
+    { _eiCode    :: !(Maybe DeployErrorCode)
     , _eiMessage :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1480,11 +1480,11 @@ instance NFData ErrorInformation
 -- /See:/ 'genericRevisionInfo' smart constructor.
 data GenericRevisionInfo =
   GenericRevisionInfo'
-    { _griRegisterTime :: !(Maybe POSIX)
-    , _griFirstUsedTime :: !(Maybe POSIX)
+    { _griRegisterTime     :: !(Maybe POSIX)
+    , _griFirstUsedTime    :: !(Maybe POSIX)
     , _griDeploymentGroups :: !(Maybe [Text])
-    , _griLastUsedTime :: !(Maybe POSIX)
-    , _griDescription :: !(Maybe Text)
+    , _griLastUsedTime     :: !(Maybe POSIX)
+    , _griDescription      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1558,7 +1558,7 @@ instance NFData GenericRevisionInfo
 -- /See:/ 'gitHubLocation' smart constructor.
 data GitHubLocation =
   GitHubLocation'
-    { _ghlCommitId :: !(Maybe Text)
+    { _ghlCommitId   :: !(Maybe Text)
     , _ghlRepository :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1646,13 +1646,13 @@ instance ToJSON GreenFleetProvisioningOption where
 -- /See:/ 'instanceInfo' smart constructor.
 data InstanceInfo =
   InstanceInfo'
-    { _iiRegisterTime :: !(Maybe POSIX)
-    , _iiInstanceARN :: !(Maybe Text)
+    { _iiRegisterTime   :: !(Maybe POSIX)
+    , _iiInstanceARN    :: !(Maybe Text)
     , _iiDeregisterTime :: !(Maybe POSIX)
-    , _iiIamUserARN :: !(Maybe Text)
-    , _iiInstanceName :: !(Maybe Text)
-    , _iiIamSessionARN :: !(Maybe Text)
-    , _iiTags :: !(Maybe [Tag])
+    , _iiIamUserARN     :: !(Maybe Text)
+    , _iiInstanceName   :: !(Maybe Text)
+    , _iiIamSessionARN  :: !(Maybe Text)
+    , _iiTags           :: !(Maybe [Tag])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1738,12 +1738,12 @@ instance NFData InstanceInfo
 -- /See:/ 'instanceSummary' smart constructor.
 data InstanceSummary =
   InstanceSummary'
-    { _isInstanceId :: !(Maybe Text)
-    , _isStatus :: !(Maybe InstanceStatus)
-    , _isDeploymentId :: !(Maybe Text)
-    , _isLastUpdatedAt :: !(Maybe POSIX)
+    { _isInstanceId      :: !(Maybe Text)
+    , _isStatus          :: !(Maybe InstanceStatus)
+    , _isDeploymentId    :: !(Maybe Text)
+    , _isLastUpdatedAt   :: !(Maybe POSIX)
     , _isLifecycleEvents :: !(Maybe [LifecycleEvent])
-    , _isInstanceType :: !(Maybe InstanceType)
+    , _isInstanceType    :: !(Maybe InstanceType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1822,10 +1822,10 @@ instance NFData InstanceSummary
 -- /See:/ 'lastDeploymentInfo' smart constructor.
 data LastDeploymentInfo =
   LastDeploymentInfo'
-    { _ldiStatus :: !(Maybe DeploymentStatus)
+    { _ldiStatus       :: !(Maybe DeploymentStatus)
     , _ldiDeploymentId :: !(Maybe Text)
-    , _ldiEndTime :: !(Maybe POSIX)
-    , _ldiCreateTime :: !(Maybe POSIX)
+    , _ldiEndTime      :: !(Maybe POSIX)
+    , _ldiCreateTime   :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1886,11 +1886,11 @@ instance NFData LastDeploymentInfo
 -- /See:/ 'lifecycleEvent' smart constructor.
 data LifecycleEvent =
   LifecycleEvent'
-    { _leStatus :: !(Maybe LifecycleEventStatus)
+    { _leStatus             :: !(Maybe LifecycleEventStatus)
     , _leLifecycleEventName :: !(Maybe Text)
-    , _leStartTime :: !(Maybe POSIX)
-    , _leDiagnostics :: !(Maybe Diagnostics)
-    , _leEndTime :: !(Maybe POSIX)
+    , _leStartTime          :: !(Maybe POSIX)
+    , _leDiagnostics        :: !(Maybe Diagnostics)
+    , _leEndTime            :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1959,7 +1959,7 @@ instance NFData LifecycleEvent
 -- /See:/ 'loadBalancerInfo' smart constructor.
 data LoadBalancerInfo =
   LoadBalancerInfo'
-    { _lbiElbInfoList :: !(Maybe [ELBInfo])
+    { _lbiElbInfoList         :: !(Maybe [ELBInfo])
     , _lbiTargetGroupInfoList :: !(Maybe [TargetGroupInfo])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2015,7 +2015,7 @@ instance ToJSON LoadBalancerInfo where
 data MinimumHealthyHosts =
   MinimumHealthyHosts'
     { _mhhValue :: !(Maybe Int)
-    , _mhhType :: !(Maybe MinimumHealthyHostsType)
+    , _mhhType  :: !(Maybe MinimumHealthyHostsType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2100,7 +2100,7 @@ instance ToJSON OnPremisesTagSet where
 data RawString =
   RawString'
     { _rsContent :: !(Maybe Text)
-    , _rsSha256 :: !(Maybe Text)
+    , _rsSha256  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2145,7 +2145,7 @@ instance ToJSON RawString where
 data RevisionInfo =
   RevisionInfo'
     { _riGenericRevisionInfo :: !(Maybe GenericRevisionInfo)
-    , _riRevisionLocation :: !(Maybe RevisionLocation)
+    , _riRevisionLocation    :: !(Maybe RevisionLocation)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2190,9 +2190,9 @@ instance NFData RevisionInfo
 -- /See:/ 'revisionLocation' smart constructor.
 data RevisionLocation =
   RevisionLocation'
-    { _rlString :: !(Maybe RawString)
-    , _rlRevisionType :: !(Maybe RevisionLocationType)
-    , _rlS3Location :: !(Maybe S3Location)
+    { _rlString         :: !(Maybe RawString)
+    , _rlRevisionType   :: !(Maybe RevisionLocationType)
+    , _rlS3Location     :: !(Maybe S3Location)
     , _rlGitHubLocation :: !(Maybe GitHubLocation)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2264,8 +2264,8 @@ instance ToJSON RevisionLocation where
 data RollbackInfo =
   RollbackInfo'
     { _riRollbackTriggeringDeploymentId :: !(Maybe Text)
-    , _riRollbackMessage :: !(Maybe Text)
-    , _riRollbackDeploymentId :: !(Maybe Text)
+    , _riRollbackMessage                :: !(Maybe Text)
+    , _riRollbackDeploymentId           :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2323,10 +2323,10 @@ instance NFData RollbackInfo
 data S3Location =
   S3Location'
     { _slBundleType :: !(Maybe BundleType)
-    , _slETag :: !(Maybe Text)
-    , _slBucket :: !(Maybe Text)
-    , _slKey :: !(Maybe Text)
-    , _slVersion :: !(Maybe Text)
+    , _slETag       :: !(Maybe Text)
+    , _slBucket     :: !(Maybe Text)
+    , _slKey        :: !(Maybe Text)
+    , _slVersion    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2406,7 +2406,7 @@ instance ToJSON S3Location where
 data Tag =
   Tag'
     { _tagValue :: !(Maybe Text)
-    , _tagKey :: !(Maybe Text)
+    , _tagKey   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2448,8 +2448,8 @@ instance ToJSON Tag where
 data TagFilter =
   TagFilter'
     { _tfValue :: !(Maybe Text)
-    , _tfKey :: !(Maybe Text)
-    , _tfType :: !(Maybe TagFilterType)
+    , _tfKey   :: !(Maybe Text)
+    , _tfType  :: !(Maybe TagFilterType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2537,8 +2537,8 @@ instance ToJSON TargetGroupInfo where
 -- /See:/ 'targetInstances' smart constructor.
 data TargetInstances =
   TargetInstances'
-    { _tiEc2TagSet :: !(Maybe EC2TagSet)
-    , _tiTagFilters :: !(Maybe [EC2TagFilter])
+    { _tiEc2TagSet         :: !(Maybe EC2TagSet)
+    , _tiTagFilters        :: !(Maybe [EC2TagFilter])
     , _tiAutoScalingGroups :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2604,7 +2604,7 @@ instance ToJSON TargetInstances where
 -- /See:/ 'timeBasedCanary' smart constructor.
 data TimeBasedCanary =
   TimeBasedCanary'
-    { _tbcCanaryInterval :: !(Maybe Int)
+    { _tbcCanaryInterval   :: !(Maybe Int)
     , _tbcCanaryPercentage :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2657,7 +2657,7 @@ instance ToJSON TimeBasedCanary where
 -- /See:/ 'timeBasedLinear' smart constructor.
 data TimeBasedLinear =
   TimeBasedLinear'
-    { _tblLinearInterval :: !(Maybe Int)
+    { _tblLinearInterval   :: !(Maybe Int)
     , _tblLinearPercentage :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2711,7 +2711,7 @@ instance ToJSON TimeBasedLinear where
 data TimeRange =
   TimeRange'
     { _trStart :: !(Maybe POSIX)
-    , _trEnd :: !(Maybe POSIX)
+    , _trEnd   :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2750,7 +2750,7 @@ data TrafficRoutingConfig =
   TrafficRoutingConfig'
     { _trcTimeBasedCanary :: !(Maybe TimeBasedCanary)
     , _trcTimeBasedLinear :: !(Maybe TimeBasedLinear)
-    , _trcType :: !(Maybe TrafficRoutingType)
+    , _trcType            :: !(Maybe TrafficRoutingType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2814,8 +2814,8 @@ instance ToJSON TrafficRoutingConfig where
 -- /See:/ 'triggerConfig' smart constructor.
 data TriggerConfig =
   TriggerConfig'
-    { _tcTriggerName :: !(Maybe Text)
-    , _tcTriggerEvents :: !(Maybe [TriggerEventType])
+    { _tcTriggerName      :: !(Maybe Text)
+    , _tcTriggerEvents    :: !(Maybe [TriggerEventType])
     , _tcTriggerTargetARN :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

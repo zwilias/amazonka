@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,10 +54,10 @@ import Network.AWS.Response
 data DescribeTargetGroups =
   DescribeTargetGroups'
     { _dtgTargetGroupARNs :: !(Maybe [Text])
-    , _dtgNames :: !(Maybe [Text])
+    , _dtgNames           :: !(Maybe [Text])
     , _dtgLoadBalancerARN :: !(Maybe Text)
-    , _dtgMarker :: !(Maybe Text)
-    , _dtgPageSize :: !(Maybe Nat)
+    , _dtgMarker          :: !(Maybe Text)
+    , _dtgPageSize        :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -150,8 +150,8 @@ instance ToQuery DescribeTargetGroups where
 -- | /See:/ 'describeTargetGroupsResponse' smart constructor.
 data DescribeTargetGroupsResponse =
   DescribeTargetGroupsResponse'
-    { _dtgsrsNextMarker :: !(Maybe Text)
-    , _dtgsrsTargetGroups :: !(Maybe [TargetGroup])
+    { _dtgsrsNextMarker     :: !(Maybe Text)
+    , _dtgsrsTargetGroups   :: !(Maybe [TargetGroup])
     , _dtgsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

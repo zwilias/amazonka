@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -76,9 +76,9 @@ import Network.AWS.Response
 -- /See:/ 'updateDistribution' smart constructor.
 data UpdateDistribution =
   UpdateDistribution'
-    { _udIfMatch :: !(Maybe Text)
+    { _udIfMatch            :: !(Maybe Text)
     , _udDistributionConfig :: !DistributionConfig
-    , _udId :: !Text
+    , _udId                 :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -151,8 +151,8 @@ instance ToQuery UpdateDistribution where
 -- /See:/ 'updateDistributionResponse' smart constructor.
 data UpdateDistributionResponse =
   UpdateDistributionResponse'
-    { _udrsETag :: !(Maybe Text)
-    , _udrsDistribution :: !(Maybe Distribution)
+    { _udrsETag           :: !(Maybe Text)
+    , _udrsDistribution   :: !(Maybe Distribution)
     , _udrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

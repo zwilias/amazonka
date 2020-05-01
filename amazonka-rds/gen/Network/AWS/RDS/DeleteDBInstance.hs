@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -64,8 +64,8 @@ import Network.AWS.Response
 data DeleteDBInstance =
   DeleteDBInstance'
     { _ddiFinalDBSnapshotIdentifier :: !(Maybe Text)
-    , _ddiSkipFinalSnapshot :: !(Maybe Bool)
-    , _ddiDBInstanceIdentifier :: !Text
+    , _ddiSkipFinalSnapshot         :: !(Maybe Bool)
+    , _ddiDBInstanceIdentifier      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -138,7 +138,7 @@ instance ToQuery DeleteDBInstance where
 -- | /See:/ 'deleteDBInstanceResponse' smart constructor.
 data DeleteDBInstanceResponse =
   DeleteDBInstanceResponse'
-    { _ddirsDBInstance :: !(Maybe DBInstance)
+    { _ddirsDBInstance     :: !(Maybe DBInstance)
     , _ddirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

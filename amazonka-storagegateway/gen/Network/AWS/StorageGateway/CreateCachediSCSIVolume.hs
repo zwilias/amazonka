@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,13 +54,13 @@ import Network.AWS.StorageGateway.Types.Product
 -- | /See:/ 'createCachediSCSIVolume' smart constructor.
 data CreateCachediSCSIVolume =
   CreateCachediSCSIVolume'
-    { _ccscsivSourceVolumeARN :: !(Maybe Text)
-    , _ccscsivSnapshotId :: !(Maybe Text)
-    , _ccscsivGatewayARN :: !Text
-    , _ccscsivVolumeSizeInBytes :: !Integer
-    , _ccscsivTargetName :: !Text
+    { _ccscsivSourceVolumeARN    :: !(Maybe Text)
+    , _ccscsivSnapshotId         :: !(Maybe Text)
+    , _ccscsivGatewayARN         :: !Text
+    , _ccscsivVolumeSizeInBytes  :: !Integer
+    , _ccscsivTargetName         :: !Text
     , _ccscsivNetworkInterfaceId :: !Text
-    , _ccscsivClientToken :: !Text
+    , _ccscsivClientToken        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -176,8 +176,8 @@ instance ToQuery CreateCachediSCSIVolume where
 -- | /See:/ 'createCachediSCSIVolumeResponse' smart constructor.
 data CreateCachediSCSIVolumeResponse =
   CreateCachediSCSIVolumeResponse'
-    { _ccscsivrsTargetARN :: !(Maybe Text)
-    , _ccscsivrsVolumeARN :: !(Maybe Text)
+    { _ccscsivrsTargetARN      :: !(Maybe Text)
+    , _ccscsivrsVolumeARN      :: !(Maybe Text)
     , _ccscsivrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

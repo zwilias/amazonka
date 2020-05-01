@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.Response
 data CreateFunctionDefinition =
   CreateFunctionDefinition'
     { _cfdAmznClientToken :: !(Maybe Text)
-    , _cfdInitialVersion :: !(Maybe FunctionDefinitionVersion)
-    , _cfdName :: !(Maybe Text)
+    , _cfdInitialVersion  :: !(Maybe FunctionDefinitionVersion)
+    , _cfdName            :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -129,14 +129,14 @@ instance ToQuery CreateFunctionDefinition where
 -- | /See:/ 'createFunctionDefinitionResponse' smart constructor.
 data CreateFunctionDefinitionResponse =
   CreateFunctionDefinitionResponse'
-    { _cfdrsLatestVersionARN :: !(Maybe Text)
-    , _cfdrsARN :: !(Maybe Text)
-    , _cfdrsName :: !(Maybe Text)
-    , _cfdrsCreationTimestamp :: !(Maybe Text)
-    , _cfdrsId :: !(Maybe Text)
-    , _cfdrsLatestVersion :: !(Maybe Text)
+    { _cfdrsLatestVersionARN     :: !(Maybe Text)
+    , _cfdrsARN                  :: !(Maybe Text)
+    , _cfdrsName                 :: !(Maybe Text)
+    , _cfdrsCreationTimestamp    :: !(Maybe Text)
+    , _cfdrsId                   :: !(Maybe Text)
+    , _cfdrsLatestVersion        :: !(Maybe Text)
     , _cfdrsLastUpdatedTimestamp :: !(Maybe Text)
-    , _cfdrsResponseStatus :: !Int
+    , _cfdrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

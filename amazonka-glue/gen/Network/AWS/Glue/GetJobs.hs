@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- | /See:/ 'getJobs' smart constructor.
 data GetJobs =
   GetJobs'
-    { _gjNextToken :: !(Maybe Text)
+    { _gjNextToken  :: !(Maybe Text)
     , _gjMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -115,8 +115,8 @@ instance ToQuery GetJobs where
 -- | /See:/ 'getJobsResponse' smart constructor.
 data GetJobsResponse =
   GetJobsResponse'
-    { _gjsrsNextToken :: !(Maybe Text)
-    , _gjsrsJobs :: !(Maybe [Job])
+    { _gjsrsNextToken      :: !(Maybe Text)
+    , _gjsrsJobs           :: !(Maybe [Job])
     , _gjsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

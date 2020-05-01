@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,9 +49,9 @@ import Network.AWS.Response
 -- | /See:/ 'adminListGroupsForUser' smart constructor.
 data AdminListGroupsForUser =
   AdminListGroupsForUser'
-    { _algfuNextToken :: !(Maybe Text)
-    , _algfuLimit :: !(Maybe Nat)
-    , _algfuUsername :: !(Sensitive Text)
+    { _algfuNextToken  :: !(Maybe Text)
+    , _algfuLimit      :: !(Maybe Nat)
+    , _algfuUsername   :: !(Sensitive Text)
     , _algfuUserPoolId :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
@@ -138,8 +138,8 @@ instance ToQuery AdminListGroupsForUser where
 -- | /See:/ 'adminListGroupsForUserResponse' smart constructor.
 data AdminListGroupsForUserResponse =
   AdminListGroupsForUserResponse'
-    { _algfursGroups :: !(Maybe [GroupType])
-    , _algfursNextToken :: !(Maybe Text)
+    { _algfursGroups         :: !(Maybe [GroupType])
+    , _algfursNextToken      :: !(Maybe Text)
     , _algfursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

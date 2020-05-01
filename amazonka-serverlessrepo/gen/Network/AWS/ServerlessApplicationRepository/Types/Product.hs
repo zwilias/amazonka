@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,8 +27,8 @@ import Network.AWS.ServerlessApplicationRepository.Types.Sum
 data ApplicationPolicyStatement =
   ApplicationPolicyStatement'
     { _apsStatementId :: !(Maybe Text)
-    , _apsPrincipals :: ![Text]
-    , _apsActions :: ![Text]
+    , _apsPrincipals  :: ![Text]
+    , _apsActions     :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -87,14 +87,14 @@ instance ToJSON ApplicationPolicyStatement where
 -- /See:/ 'applicationSummary' smart constructor.
 data ApplicationSummary =
   ApplicationSummary'
-    { _asCreationTime :: !(Maybe Text)
-    , _asHomePageURL :: !(Maybe Text)
-    , _asLabels :: !(Maybe [Text])
+    { _asCreationTime  :: !(Maybe Text)
+    , _asHomePageURL   :: !(Maybe Text)
+    , _asLabels        :: !(Maybe [Text])
     , _asSpdxLicenseId :: !(Maybe Text)
-    , _asDescription :: !Text
-    , _asAuthor :: !Text
+    , _asDescription   :: !Text
+    , _asAuthor        :: !Text
     , _asApplicationId :: !Text
-    , _asName :: !Text
+    , _asName          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -192,19 +192,19 @@ instance NFData ApplicationSummary
 -- /See:/ 'parameterDefinition' smart constructor.
 data ParameterDefinition =
   ParameterDefinition'
-    { _pdMaxValue :: !(Maybe Int)
-    , _pdMaxLength :: !(Maybe Int)
+    { _pdMaxValue              :: !(Maybe Int)
+    , _pdMaxLength             :: !(Maybe Int)
     , _pdConstraintDescription :: !(Maybe Text)
-    , _pdMinLength :: !(Maybe Int)
-    , _pdDefaultValue :: !(Maybe Text)
-    , _pdAllowedPattern :: !(Maybe Text)
-    , _pdNoEcho :: !(Maybe Bool)
-    , _pdType :: !(Maybe Text)
-    , _pdAllowedValues :: !(Maybe [Text])
-    , _pdDescription :: !(Maybe Text)
-    , _pdMinValue :: !(Maybe Int)
+    , _pdMinLength             :: !(Maybe Int)
+    , _pdDefaultValue          :: !(Maybe Text)
+    , _pdAllowedPattern        :: !(Maybe Text)
+    , _pdNoEcho                :: !(Maybe Bool)
+    , _pdType                  :: !(Maybe Text)
+    , _pdAllowedValues         :: !(Maybe [Text])
+    , _pdDescription           :: !(Maybe Text)
+    , _pdMinValue              :: !(Maybe Int)
     , _pdReferencedByResources :: ![Text]
-    , _pdName :: !Text
+    , _pdName                  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -343,7 +343,7 @@ instance NFData ParameterDefinition
 data ParameterValue =
   ParameterValue'
     { _pvValue :: !Text
-    , _pvName :: !Text
+    , _pvName  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -384,12 +384,12 @@ instance ToJSON ParameterValue where
 -- /See:/ 'version' smart constructor.
 data Version =
   Version'
-    { _vSourceCodeURL :: !(Maybe Text)
-    , _vTemplateURL :: !Text
+    { _vSourceCodeURL        :: !(Maybe Text)
+    , _vTemplateURL          :: !Text
     , _vParameterDefinitions :: ![ParameterDefinition]
-    , _vCreationTime :: !Text
-    , _vApplicationId :: !Text
-    , _vSemanticVersion :: !Text
+    , _vCreationTime         :: !Text
+    , _vApplicationId        :: !Text
+    , _vSemanticVersion      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -471,9 +471,9 @@ instance NFData Version
 -- /See:/ 'versionSummary' smart constructor.
 data VersionSummary =
   VersionSummary'
-    { _vsSourceCodeURL :: !(Maybe Text)
-    , _vsCreationTime :: !Text
-    , _vsApplicationId :: !Text
+    { _vsSourceCodeURL   :: !(Maybe Text)
+    , _vsCreationTime    :: !Text
+    , _vsApplicationId   :: !Text
     , _vsSemanticVersion :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

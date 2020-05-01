@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,8 +45,8 @@ import Network.AWS.ServiceCatalog.Types.Product
 data DeleteProvisionedProductPlan =
   DeleteProvisionedProductPlan'
     { _delAcceptLanguage :: !(Maybe Text)
-    , _delIgnoreErrors :: !(Maybe Bool)
-    , _delPlanId :: !Text
+    , _delIgnoreErrors   :: !(Maybe Bool)
+    , _delPlanId         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

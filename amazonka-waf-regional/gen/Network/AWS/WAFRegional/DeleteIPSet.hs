@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,7 +56,7 @@ import Network.AWS.WAFRegional.Types.Product
 -- | /See:/ 'deleteIPSet' smart constructor.
 data DeleteIPSet =
   DeleteIPSet'
-    { _disIPSetId :: !Text
+    { _disIPSetId     :: !Text
     , _disChangeToken :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -121,7 +121,7 @@ instance ToQuery DeleteIPSet where
 -- | /See:/ 'deleteIPSetResponse' smart constructor.
 data DeleteIPSetResponse =
   DeleteIPSetResponse'
-    { _disrsChangeToken :: !(Maybe Text)
+    { _disrsChangeToken    :: !(Maybe Text)
     , _disrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

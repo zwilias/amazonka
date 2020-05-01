@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,8 +47,8 @@ import Network.AWS.Response
 data DescribeSubnetGroups =
   DescribeSubnetGroups'
     { _dsgSubnetGroupNames :: !(Maybe [Text])
-    , _dsgNextToken :: !(Maybe Text)
-    , _dsgMaxResults :: !(Maybe Int)
+    , _dsgNextToken        :: !(Maybe Text)
+    , _dsgMaxResults       :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -123,8 +123,8 @@ instance ToQuery DescribeSubnetGroups where
 -- | /See:/ 'describeSubnetGroupsResponse' smart constructor.
 data DescribeSubnetGroupsResponse =
   DescribeSubnetGroupsResponse'
-    { _dsgsrsSubnetGroups :: !(Maybe [SubnetGroup])
-    , _dsgsrsNextToken :: !(Maybe Text)
+    { _dsgsrsSubnetGroups   :: !(Maybe [SubnetGroup])
+    , _dsgsrsNextToken      :: !(Maybe Text)
     , _dsgsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

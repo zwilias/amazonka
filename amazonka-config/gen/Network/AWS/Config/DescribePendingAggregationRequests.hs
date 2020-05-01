@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 data DescribePendingAggregationRequests =
   DescribePendingAggregationRequests'
     { _dparNextToken :: !(Maybe Text)
-    , _dparLimit :: !(Maybe Nat)
+    , _dparLimit     :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -108,9 +108,9 @@ instance ToQuery DescribePendingAggregationRequests where
 -- | /See:/ 'describePendingAggregationRequestsResponse' smart constructor.
 data DescribePendingAggregationRequestsResponse =
   DescribePendingAggregationRequestsResponse'
-    { _dparrsNextToken :: !(Maybe Text)
+    { _dparrsNextToken                  :: !(Maybe Text)
     , _dparrsPendingAggregationRequests :: !(Maybe [PendingAggregationRequest])
-    , _dparrsResponseStatus :: !Int
+    , _dparrsResponseStatus             :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

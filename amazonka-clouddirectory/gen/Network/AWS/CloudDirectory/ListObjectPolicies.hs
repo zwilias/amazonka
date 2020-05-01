@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 data ListObjectPolicies =
   ListObjectPolicies'
     { _lConsistencyLevel :: !(Maybe ConsistencyLevel)
-    , _lNextToken :: !(Maybe Text)
-    , _lMaxResults :: !(Maybe Nat)
-    , _lDirectoryARN :: !Text
-    , _lObjectReference :: !ObjectReference
+    , _lNextToken        :: !(Maybe Text)
+    , _lMaxResults       :: !(Maybe Nat)
+    , _lDirectoryARN     :: !Text
+    , _lObjectReference  :: !ObjectReference
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -150,9 +150,9 @@ instance ToQuery ListObjectPolicies where
 -- | /See:/ 'listObjectPoliciesResponse' smart constructor.
 data ListObjectPoliciesResponse =
   ListObjectPoliciesResponse'
-    { _loprsNextToken :: !(Maybe Text)
+    { _loprsNextToken         :: !(Maybe Text)
     , _loprsAttachedPolicyIds :: !(Maybe [Text])
-    , _loprsResponseStatus :: !Int
+    , _loprsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

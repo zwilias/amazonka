@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,15 +50,15 @@ import Network.AWS.Snowball.Types.Product
 -- | /See:/ 'updateJob' smart constructor.
 data UpdateJob =
   UpdateJob'
-    { _ujNotification :: !(Maybe Notification)
-    , _ujForwardingAddressId :: !(Maybe Text)
-    , _ujAddressId :: !(Maybe Text)
-    , _ujShippingOption :: !(Maybe ShippingOption)
-    , _ujResources :: !(Maybe JobResource)
-    , _ujDescription :: !(Maybe Text)
-    , _ujRoleARN :: !(Maybe Text)
+    { _ujNotification               :: !(Maybe Notification)
+    , _ujForwardingAddressId        :: !(Maybe Text)
+    , _ujAddressId                  :: !(Maybe Text)
+    , _ujShippingOption             :: !(Maybe ShippingOption)
+    , _ujResources                  :: !(Maybe JobResource)
+    , _ujDescription                :: !(Maybe Text)
+    , _ujRoleARN                    :: !(Maybe Text)
     , _ujSnowballCapacityPreference :: !(Maybe SnowballCapacity)
-    , _ujJobId :: !Text
+    , _ujJobId                      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

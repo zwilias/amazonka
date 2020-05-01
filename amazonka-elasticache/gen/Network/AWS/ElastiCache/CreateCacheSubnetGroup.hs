@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 -- /See:/ 'createCacheSubnetGroup' smart constructor.
 data CreateCacheSubnetGroup =
   CreateCacheSubnetGroup'
-    { _ccsgCacheSubnetGroupName :: !Text
+    { _ccsgCacheSubnetGroupName        :: !Text
     , _ccsgCacheSubnetGroupDescription :: !Text
-    , _ccsgSubnetIds :: ![Text]
+    , _ccsgSubnetIds                   :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -127,7 +127,7 @@ instance ToQuery CreateCacheSubnetGroup where
 data CreateCacheSubnetGroupResponse =
   CreateCacheSubnetGroupResponse'
     { _crsCacheSubnetGroup :: !(Maybe CacheSubnetGroup)
-    , _crsResponseStatus :: !Int
+    , _crsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

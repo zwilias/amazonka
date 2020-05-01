@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -82,10 +82,10 @@ import Network.AWS.SecretsManager.Types.Product
 -- | /See:/ 'rotateSecret' smart constructor.
 data RotateSecret =
   RotateSecret'
-    { _rsRotationRules :: !(Maybe RotationRulesType)
+    { _rsRotationRules      :: !(Maybe RotationRulesType)
     , _rsClientRequestToken :: !(Maybe Text)
-    , _rsRotationLambdaARN :: !(Maybe Text)
-    , _rsSecretId :: !Text
+    , _rsRotationLambdaARN  :: !(Maybe Text)
+    , _rsSecretId           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -170,9 +170,9 @@ instance ToQuery RotateSecret where
 -- | /See:/ 'rotateSecretResponse' smart constructor.
 data RotateSecretResponse =
   RotateSecretResponse'
-    { _rsrsVersionId :: !(Maybe Text)
-    , _rsrsARN :: !(Maybe Text)
-    , _rsrsName :: !(Maybe Text)
+    { _rsrsVersionId      :: !(Maybe Text)
+    , _rsrsARN            :: !(Maybe Text)
+    , _rsrsName           :: !(Maybe Text)
     , _rsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

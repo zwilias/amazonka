@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,7 +26,7 @@ import Network.AWS.SNS.Types.Sum
 -- /See:/ 'endpoint' smart constructor.
 data Endpoint =
   Endpoint'
-    { _eAttributes :: !(Maybe (Map Text Text))
+    { _eAttributes  :: !(Maybe (Map Text Text))
     , _eEndpointARN :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -70,7 +70,7 @@ data MessageAttributeValue =
   MessageAttributeValue'
     { _mavBinaryValue :: !(Maybe Base64)
     , _mavStringValue :: !(Maybe Text)
-    , _mavDataType :: !Text
+    , _mavDataType    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -126,7 +126,7 @@ instance ToQuery MessageAttributeValue where
 data PlatformApplication =
   PlatformApplication'
     { _paPlatformApplicationARN :: !(Maybe Text)
-    , _paAttributes :: !(Maybe (Map Text Text))
+    , _paAttributes             :: !(Maybe (Map Text Text))
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -168,10 +168,10 @@ instance NFData PlatformApplication
 -- /See:/ 'subscription' smart constructor.
 data Subscription =
   Subscription'
-    { _sProtocol :: !(Maybe Text)
-    , _sOwner :: !(Maybe Text)
-    , _sTopicARN :: !(Maybe Text)
-    , _sEndpoint :: !(Maybe Text)
+    { _sProtocol        :: !(Maybe Text)
+    , _sOwner           :: !(Maybe Text)
+    , _sTopicARN        :: !(Maybe Text)
+    , _sEndpoint        :: !(Maybe Text)
     , _sSubscriptionARN :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

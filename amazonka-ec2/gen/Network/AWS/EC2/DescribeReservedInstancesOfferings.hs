@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -69,21 +69,21 @@ import Network.AWS.Response
 -- /See:/ 'describeReservedInstancesOfferings' smart constructor.
 data DescribeReservedInstancesOfferings =
   DescribeReservedInstancesOfferings'
-    { _drioMaxDuration :: !(Maybe Integer)
-    , _drioProductDescription :: !(Maybe RIProductDescription)
-    , _drioFilters :: !(Maybe [Filter])
-    , _drioIncludeMarketplace :: !(Maybe Bool)
-    , _drioInstanceType :: !(Maybe InstanceType)
-    , _drioNextToken :: !(Maybe Text)
-    , _drioMinDuration :: !(Maybe Integer)
-    , _drioAvailabilityZone :: !(Maybe Text)
-    , _drioOfferingType :: !(Maybe OfferingTypeValues)
+    { _drioMaxDuration                  :: !(Maybe Integer)
+    , _drioProductDescription           :: !(Maybe RIProductDescription)
+    , _drioFilters                      :: !(Maybe [Filter])
+    , _drioIncludeMarketplace           :: !(Maybe Bool)
+    , _drioInstanceType                 :: !(Maybe InstanceType)
+    , _drioNextToken                    :: !(Maybe Text)
+    , _drioMinDuration                  :: !(Maybe Integer)
+    , _drioAvailabilityZone             :: !(Maybe Text)
+    , _drioOfferingType                 :: !(Maybe OfferingTypeValues)
     , _drioReservedInstancesOfferingIds :: !(Maybe [Text])
-    , _drioInstanceTenancy :: !(Maybe Tenancy)
-    , _drioOfferingClass :: !(Maybe OfferingClassType)
-    , _drioMaxInstanceCount :: !(Maybe Int)
-    , _drioDryRun :: !(Maybe Bool)
-    , _drioMaxResults :: !(Maybe Int)
+    , _drioInstanceTenancy              :: !(Maybe Tenancy)
+    , _drioOfferingClass                :: !(Maybe OfferingClassType)
+    , _drioMaxInstanceCount             :: !(Maybe Int)
+    , _drioDryRun                       :: !(Maybe Bool)
+    , _drioMaxResults                   :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -273,9 +273,9 @@ instance ToQuery DescribeReservedInstancesOfferings where
 -- /See:/ 'describeReservedInstancesOfferingsResponse' smart constructor.
 data DescribeReservedInstancesOfferingsResponse =
   DescribeReservedInstancesOfferingsResponse'
-    { _driorsNextToken :: !(Maybe Text)
+    { _driorsNextToken                  :: !(Maybe Text)
     , _driorsReservedInstancesOfferings :: !(Maybe [ReservedInstancesOffering])
-    , _driorsResponseStatus :: !Int
+    , _driorsResponseStatus             :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

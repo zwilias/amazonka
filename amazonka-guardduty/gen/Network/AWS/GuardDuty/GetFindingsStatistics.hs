@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 data GetFindingsStatistics =
   GetFindingsStatistics'
     { _gfsFindingStatisticTypes :: !(Maybe [FindingStatisticType])
-    , _gfsFindingCriteria :: !(Maybe FindingCriteria)
-    , _gfsDetectorId :: !Text
+    , _gfsFindingCriteria       :: !(Maybe FindingCriteria)
+    , _gfsDetectorId            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -122,7 +122,7 @@ instance ToQuery GetFindingsStatistics where
 data GetFindingsStatisticsResponse =
   GetFindingsStatisticsResponse'
     { _gfsrsFindingStatistics :: !(Maybe FindingStatistics)
-    , _gfsrsResponseStatus :: !Int
+    , _gfsrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,14 +54,14 @@ import Network.AWS.ServiceCatalog.Types.Product
 -- | /See:/ 'searchProductsAsAdmin' smart constructor.
 data SearchProductsAsAdmin =
   SearchProductsAsAdmin'
-    { _spaaPortfolioId :: !(Maybe Text)
-    , _spaaFilters :: !(Maybe (Map ProductViewFilterBy [Text]))
-    , _spaaSortOrder :: !(Maybe SortOrder)
+    { _spaaPortfolioId    :: !(Maybe Text)
+    , _spaaFilters        :: !(Maybe (Map ProductViewFilterBy [Text]))
+    , _spaaSortOrder      :: !(Maybe SortOrder)
     , _spaaAcceptLanguage :: !(Maybe Text)
-    , _spaaPageToken :: !(Maybe Text)
-    , _spaaPageSize :: !(Maybe Nat)
-    , _spaaProductSource :: !(Maybe ProductSource)
-    , _spaaSortBy :: !(Maybe ProductViewSortBy)
+    , _spaaPageToken      :: !(Maybe Text)
+    , _spaaPageSize       :: !(Maybe Nat)
+    , _spaaProductSource  :: !(Maybe ProductSource)
+    , _spaaSortBy         :: !(Maybe ProductViewSortBy)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -182,9 +182,9 @@ instance ToQuery SearchProductsAsAdmin where
 -- | /See:/ 'searchProductsAsAdminResponse' smart constructor.
 data SearchProductsAsAdminResponse =
   SearchProductsAsAdminResponse'
-    { _spaarsNextPageToken :: !(Maybe Text)
+    { _spaarsNextPageToken      :: !(Maybe Text)
     , _spaarsProductViewDetails :: !(Maybe [ProductViewDetail])
-    , _spaarsResponseStatus :: !Int
+    , _spaarsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

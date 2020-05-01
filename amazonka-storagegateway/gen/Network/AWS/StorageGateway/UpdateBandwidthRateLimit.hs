@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -59,9 +59,9 @@ import Network.AWS.StorageGateway.Types.Product
 -- /See:/ 'updateBandwidthRateLimit' smart constructor.
 data UpdateBandwidthRateLimit =
   UpdateBandwidthRateLimit'
-    { _ubrlAverageUploadRateLimitInBitsPerSec :: !(Maybe Nat)
+    { _ubrlAverageUploadRateLimitInBitsPerSec   :: !(Maybe Nat)
     , _ubrlAverageDownloadRateLimitInBitsPerSec :: !(Maybe Nat)
-    , _ubrlGatewayARN :: !Text
+    , _ubrlGatewayARN                           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -152,7 +152,7 @@ instance ToQuery UpdateBandwidthRateLimit where
 -- /See:/ 'updateBandwidthRateLimitResponse' smart constructor.
 data UpdateBandwidthRateLimitResponse =
   UpdateBandwidthRateLimitResponse'
-    { _ubrlrsGatewayARN :: !(Maybe Text)
+    { _ubrlrsGatewayARN     :: !(Maybe Text)
     , _ubrlrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,11 +56,11 @@ import Network.AWS.Response
 -- | /See:/ 'describeInstanceCreditSpecifications' smart constructor.
 data DescribeInstanceCreditSpecifications =
   DescribeInstanceCreditSpecifications'
-    { _dicsFilters :: !(Maybe [Filter])
-    , _dicsNextToken :: !(Maybe Text)
+    { _dicsFilters     :: !(Maybe [Filter])
+    , _dicsNextToken   :: !(Maybe Text)
     , _dicsInstanceIds :: !(Maybe [Text])
-    , _dicsDryRun :: !(Maybe Bool)
-    , _dicsMaxResults :: !(Maybe Int)
+    , _dicsDryRun      :: !(Maybe Bool)
+    , _dicsMaxResults  :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

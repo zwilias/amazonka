@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,8 +52,8 @@ import Network.AWS.Response
 data CreateUserProfile =
   CreateUserProfile'
     { _cupSshPublicKey :: !(Maybe Text)
-    , _cupUserARN :: !Text
-    , _cupDisplayName :: !Text
+    , _cupUserARN      :: !Text
+    , _cupDisplayName  :: !Text
     , _cupEmailAddress :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
@@ -146,12 +146,12 @@ instance ToQuery CreateUserProfile where
 data CreateUserProfileResponse =
   CreateUserProfileResponse'
     { _cuprsLastModifiedTimestamp :: !(Maybe POSIX)
-    , _cuprsSshPublicKey :: !(Maybe Text)
-    , _cuprsEmailAddress :: !(Maybe (Sensitive Text))
-    , _cuprsDisplayName :: !(Maybe Text)
-    , _cuprsCreatedTimestamp :: !(Maybe POSIX)
-    , _cuprsResponseStatus :: !Int
-    , _cuprsUserARN :: !Text
+    , _cuprsSshPublicKey          :: !(Maybe Text)
+    , _cuprsEmailAddress          :: !(Maybe (Sensitive Text))
+    , _cuprsDisplayName           :: !(Maybe Text)
+    , _cuprsCreatedTimestamp      :: !(Maybe POSIX)
+    , _cuprsResponseStatus        :: !Int
+    , _cuprsUserARN               :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,9 +53,9 @@ import Network.AWS.Response
 -- /See:/ 'describeSpotInstanceRequests' smart constructor.
 data DescribeSpotInstanceRequests =
   DescribeSpotInstanceRequests'
-    { _dsirFilters :: !(Maybe [Filter])
+    { _dsirFilters                :: !(Maybe [Filter])
     , _dsirSpotInstanceRequestIds :: !(Maybe [Text])
-    , _dsirDryRun :: !(Maybe Bool)
+    , _dsirDryRun                 :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -131,7 +131,7 @@ instance ToQuery DescribeSpotInstanceRequests where
 data DescribeSpotInstanceRequestsResponse =
   DescribeSpotInstanceRequestsResponse'
     { _dsirrsSpotInstanceRequests :: !(Maybe [SpotInstanceRequest])
-    , _dsirrsResponseStatus :: !Int
+    , _dsirrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

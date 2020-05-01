@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -66,20 +66,20 @@ import Network.AWS.ServerlessApplicationRepository.Types.Product
 -- | /See:/ 'createApplication' smart constructor.
 data CreateApplication =
   CreateApplication'
-    { _caHomePageURL :: !(Maybe Text)
-    , _caReadmeBody :: !(Maybe Text)
-    , _caLicenseURL :: !(Maybe Text)
+    { _caHomePageURL     :: !(Maybe Text)
+    , _caReadmeBody      :: !(Maybe Text)
+    , _caLicenseURL      :: !(Maybe Text)
     , _caSemanticVersion :: !(Maybe Text)
-    , _caSourceCodeURL :: !(Maybe Text)
-    , _caReadmeURL :: !(Maybe Text)
-    , _caName :: !(Maybe Text)
-    , _caAuthor :: !(Maybe Text)
-    , _caLabels :: !(Maybe [Text])
-    , _caTemplateBody :: !(Maybe Text)
-    , _caTemplateURL :: !(Maybe Text)
-    , _caLicenseBody :: !(Maybe Text)
-    , _caDescription :: !(Maybe Text)
-    , _caSpdxLicenseId :: !(Maybe Text)
+    , _caSourceCodeURL   :: !(Maybe Text)
+    , _caReadmeURL       :: !(Maybe Text)
+    , _caName            :: !(Maybe Text)
+    , _caAuthor          :: !(Maybe Text)
+    , _caLabels          :: !(Maybe [Text])
+    , _caTemplateBody    :: !(Maybe Text)
+    , _caTemplateURL     :: !(Maybe Text)
+    , _caLicenseBody     :: !(Maybe Text)
+    , _caDescription     :: !(Maybe Text)
+    , _caSpdxLicenseId   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -246,17 +246,17 @@ instance ToQuery CreateApplication where
 -- | /See:/ 'createApplicationResponse' smart constructor.
 data CreateApplicationResponse =
   CreateApplicationResponse'
-    { _carsCreationTime :: !(Maybe Text)
-    , _carsHomePageURL :: !(Maybe Text)
-    , _carsLicenseURL :: !(Maybe Text)
-    , _carsReadmeURL :: !(Maybe Text)
-    , _carsApplicationId :: !(Maybe Text)
-    , _carsName :: !(Maybe Text)
-    , _carsVersion :: !(Maybe Version)
-    , _carsAuthor :: !(Maybe Text)
-    , _carsLabels :: !(Maybe [Text])
-    , _carsDescription :: !(Maybe Text)
-    , _carsSpdxLicenseId :: !(Maybe Text)
+    { _carsCreationTime   :: !(Maybe Text)
+    , _carsHomePageURL    :: !(Maybe Text)
+    , _carsLicenseURL     :: !(Maybe Text)
+    , _carsReadmeURL      :: !(Maybe Text)
+    , _carsApplicationId  :: !(Maybe Text)
+    , _carsName           :: !(Maybe Text)
+    , _carsVersion        :: !(Maybe Version)
+    , _carsAuthor         :: !(Maybe Text)
+    , _carsLabels         :: !(Maybe [Text])
+    , _carsDescription    :: !(Maybe Text)
+    , _carsSpdxLicenseId  :: !(Maybe Text)
     , _carsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

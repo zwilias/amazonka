@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,12 +45,12 @@ import Network.AWS.SMS.Types.Product
 -- | /See:/ 'updateReplicationJob' smart constructor.
 data UpdateReplicationJob =
   UpdateReplicationJob'
-    { _urjFrequency :: !(Maybe Int)
-    , _urjLicenseType :: !(Maybe LicenseType)
-    , _urjRoleName :: !(Maybe Text)
+    { _urjFrequency                   :: !(Maybe Int)
+    , _urjLicenseType                 :: !(Maybe LicenseType)
+    , _urjRoleName                    :: !(Maybe Text)
     , _urjNextReplicationRunStartTime :: !(Maybe POSIX)
-    , _urjDescription :: !(Maybe Text)
-    , _urjReplicationJobId :: !Text
+    , _urjDescription                 :: !(Maybe Text)
+    , _urjReplicationJobId            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

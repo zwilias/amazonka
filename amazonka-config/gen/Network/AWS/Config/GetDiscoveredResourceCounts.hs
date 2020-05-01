@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -67,8 +67,8 @@ import Network.AWS.Response
 -- | /See:/ 'getDiscoveredResourceCounts' smart constructor.
 data GetDiscoveredResourceCounts =
   GetDiscoveredResourceCounts'
-    { _gdrcNextToken :: !(Maybe Text)
-    , _gdrcLimit :: !(Maybe Nat)
+    { _gdrcNextToken     :: !(Maybe Text)
+    , _gdrcLimit         :: !(Maybe Nat)
     , _gdrcResourceTypes :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -148,9 +148,9 @@ instance ToQuery GetDiscoveredResourceCounts where
 data GetDiscoveredResourceCountsResponse =
   GetDiscoveredResourceCountsResponse'
     { _gdrcrsTotalDiscoveredResources :: !(Maybe Integer)
-    , _gdrcrsNextToken :: !(Maybe Text)
-    , _gdrcrsResourceCounts :: !(Maybe [ResourceCount])
-    , _gdrcrsResponseStatus :: !Int
+    , _gdrcrsNextToken                :: !(Maybe Text)
+    , _gdrcrsResourceCounts           :: !(Maybe [ResourceCount])
+    , _gdrcrsResponseStatus           :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

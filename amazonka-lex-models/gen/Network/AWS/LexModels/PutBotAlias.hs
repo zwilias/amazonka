@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,11 +55,11 @@ import Network.AWS.Response
 -- | /See:/ 'putBotAlias' smart constructor.
 data PutBotAlias =
   PutBotAlias'
-    { _pbaChecksum :: !(Maybe Text)
+    { _pbaChecksum    :: !(Maybe Text)
     , _pbaDescription :: !(Maybe Text)
-    , _pbaName :: !Text
-    , _pbaBotVersion :: !Text
-    , _pbaBotName :: !Text
+    , _pbaName        :: !Text
+    , _pbaBotVersion  :: !Text
+    , _pbaBotName     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -152,14 +152,14 @@ instance ToQuery PutBotAlias where
 -- | /See:/ 'putBotAliasResponse' smart constructor.
 data PutBotAliasResponse =
   PutBotAliasResponse'
-    { _pbarsChecksum :: !(Maybe Text)
-    , _pbarsBotVersion :: !(Maybe Text)
-    , _pbarsBotName :: !(Maybe Text)
-    , _pbarsCreatedDate :: !(Maybe POSIX)
-    , _pbarsName :: !(Maybe Text)
+    { _pbarsChecksum        :: !(Maybe Text)
+    , _pbarsBotVersion      :: !(Maybe Text)
+    , _pbarsBotName         :: !(Maybe Text)
+    , _pbarsCreatedDate     :: !(Maybe POSIX)
+    , _pbarsName            :: !(Maybe Text)
     , _pbarsLastUpdatedDate :: !(Maybe POSIX)
-    , _pbarsDescription :: !(Maybe Text)
-    , _pbarsResponseStatus :: !Int
+    , _pbarsDescription     :: !(Maybe Text)
+    , _pbarsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

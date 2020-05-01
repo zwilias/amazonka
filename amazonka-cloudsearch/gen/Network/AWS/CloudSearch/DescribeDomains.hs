@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -99,7 +99,7 @@ instance ToQuery DescribeDomains where
 -- /See:/ 'describeDomainsResponse' smart constructor.
 data DescribeDomainsResponse =
   DescribeDomainsResponse'
-    { _ddsrsResponseStatus :: !Int
+    { _ddsrsResponseStatus   :: !Int
     , _ddsrsDomainStatusList :: ![DomainStatus]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,9 +47,9 @@ import Network.AWS.Response
 -- | /See:/ 'createLaunchTemplate' smart constructor.
 data CreateLaunchTemplate =
   CreateLaunchTemplate'
-    { _cltClientToken :: !(Maybe Text)
+    { _cltClientToken        :: !(Maybe Text)
     , _cltVersionDescription :: !(Maybe Text)
-    , _cltDryRun :: !(Maybe Bool)
+    , _cltDryRun             :: !(Maybe Bool)
     , _cltLaunchTemplateName :: !Text
     , _cltLaunchTemplateData :: !RequestLaunchTemplateData
     }

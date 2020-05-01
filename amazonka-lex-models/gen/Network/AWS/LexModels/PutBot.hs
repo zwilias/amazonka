@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -73,18 +73,18 @@ import Network.AWS.Response
 -- | /See:/ 'putBot' smart constructor.
 data PutBot =
   PutBot'
-    { _pbAbortStatement :: !(Maybe Statement)
-    , _pbIntents :: !(Maybe [Intent])
-    , _pbChecksum :: !(Maybe Text)
-    , _pbProcessBehavior :: !(Maybe ProcessBehavior)
+    { _pbAbortStatement          :: !(Maybe Statement)
+    , _pbIntents                 :: !(Maybe [Intent])
+    , _pbChecksum                :: !(Maybe Text)
+    , _pbProcessBehavior         :: !(Maybe ProcessBehavior)
     , _pbIdleSessionTTLInSeconds :: !(Maybe Nat)
-    , _pbClarificationPrompt :: !(Maybe Prompt)
-    , _pbVoiceId :: !(Maybe Text)
-    , _pbCreateVersion :: !(Maybe Bool)
-    , _pbDescription :: !(Maybe Text)
-    , _pbName :: !Text
-    , _pbLocale :: !Locale
-    , _pbChildDirected :: !Bool
+    , _pbClarificationPrompt     :: !(Maybe Prompt)
+    , _pbVoiceId                 :: !(Maybe Text)
+    , _pbCreateVersion           :: !(Maybe Bool)
+    , _pbDescription             :: !(Maybe Text)
+    , _pbName                    :: !Text
+    , _pbLocale                  :: !Locale
+    , _pbChildDirected           :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -245,23 +245,23 @@ instance ToQuery PutBot where
 -- | /See:/ 'putBotResponse' smart constructor.
 data PutBotResponse =
   PutBotResponse'
-    { _pbrsFailureReason :: !(Maybe Text)
-    , _pbrsStatus :: !(Maybe LexStatus)
-    , _pbrsAbortStatement :: !(Maybe Statement)
-    , _pbrsIntents :: !(Maybe [Intent])
-    , _pbrsChecksum :: !(Maybe Text)
-    , _pbrsLocale :: !(Maybe Locale)
-    , _pbrsCreatedDate :: !(Maybe POSIX)
-    , _pbrsName :: !(Maybe Text)
-    , _pbrsVersion :: !(Maybe Text)
+    { _pbrsFailureReason           :: !(Maybe Text)
+    , _pbrsStatus                  :: !(Maybe LexStatus)
+    , _pbrsAbortStatement          :: !(Maybe Statement)
+    , _pbrsIntents                 :: !(Maybe [Intent])
+    , _pbrsChecksum                :: !(Maybe Text)
+    , _pbrsLocale                  :: !(Maybe Locale)
+    , _pbrsCreatedDate             :: !(Maybe POSIX)
+    , _pbrsName                    :: !(Maybe Text)
+    , _pbrsVersion                 :: !(Maybe Text)
     , _pbrsIdleSessionTTLInSeconds :: !(Maybe Nat)
-    , _pbrsClarificationPrompt :: !(Maybe Prompt)
-    , _pbrsVoiceId :: !(Maybe Text)
-    , _pbrsLastUpdatedDate :: !(Maybe POSIX)
-    , _pbrsCreateVersion :: !(Maybe Bool)
-    , _pbrsChildDirected :: !(Maybe Bool)
-    , _pbrsDescription :: !(Maybe Text)
-    , _pbrsResponseStatus :: !Int
+    , _pbrsClarificationPrompt     :: !(Maybe Prompt)
+    , _pbrsVoiceId                 :: !(Maybe Text)
+    , _pbrsLastUpdatedDate         :: !(Maybe POSIX)
+    , _pbrsCreateVersion           :: !(Maybe Bool)
+    , _pbrsChildDirected           :: !(Maybe Bool)
+    , _pbrsDescription             :: !(Maybe Text)
+    , _pbrsResponseStatus          :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

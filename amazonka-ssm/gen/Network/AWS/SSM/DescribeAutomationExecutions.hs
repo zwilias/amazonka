@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'describeAutomationExecutions' smart constructor.
 data DescribeAutomationExecutions =
   DescribeAutomationExecutions'
-    { _daeFilters :: !(Maybe (List1 AutomationExecutionFilter))
-    , _daeNextToken :: !(Maybe Text)
+    { _daeFilters    :: !(Maybe (List1 AutomationExecutionFilter))
+    , _daeNextToken  :: !(Maybe Text)
     , _daeMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

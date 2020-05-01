@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'describeAvailablePatches' smart constructor.
 data DescribeAvailablePatches =
   DescribeAvailablePatches'
-    { _dapFilters :: !(Maybe [PatchOrchestratorFilter])
-    , _dapNextToken :: !(Maybe Text)
+    { _dapFilters    :: !(Maybe [PatchOrchestratorFilter])
+    , _dapNextToken  :: !(Maybe Text)
     , _dapMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -120,8 +120,8 @@ instance ToQuery DescribeAvailablePatches where
 -- | /See:/ 'describeAvailablePatchesResponse' smart constructor.
 data DescribeAvailablePatchesResponse =
   DescribeAvailablePatchesResponse'
-    { _daprsPatches :: !(Maybe [Patch])
-    , _daprsNextToken :: !(Maybe Text)
+    { _daprsPatches        :: !(Maybe [Patch])
+    , _daprsNextToken      :: !(Maybe Text)
     , _daprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

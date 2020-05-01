@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,10 +63,10 @@ import Network.AWS.Response
 -- /See:/ 'describeVolumeStatus' smart constructor.
 data DescribeVolumeStatus =
   DescribeVolumeStatus'
-    { _dvssFilters :: !(Maybe [Filter])
-    , _dvssVolumeIds :: !(Maybe [Text])
-    , _dvssNextToken :: !(Maybe Text)
-    , _dvssDryRun :: !(Maybe Bool)
+    { _dvssFilters    :: !(Maybe [Filter])
+    , _dvssVolumeIds  :: !(Maybe [Text])
+    , _dvssNextToken  :: !(Maybe Text)
+    , _dvssDryRun     :: !(Maybe Bool)
     , _dvssMaxResults :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -161,7 +161,7 @@ instance ToQuery DescribeVolumeStatus where
 -- /See:/ 'describeVolumeStatusResponse' smart constructor.
 data DescribeVolumeStatusResponse =
   DescribeVolumeStatusResponse'
-    { _dvsrsNextToken :: !(Maybe Text)
+    { _dvsrsNextToken      :: !(Maybe Text)
     , _dvsrsVolumeStatuses :: !(Maybe [VolumeStatusItem])
     , _dvsrsResponseStatus :: !Int
     }

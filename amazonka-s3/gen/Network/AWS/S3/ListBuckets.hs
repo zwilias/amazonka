@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -74,8 +74,8 @@ instance ToQuery ListBuckets where
 -- | /See:/ 'listBucketsResponse' smart constructor.
 data ListBucketsResponse =
   ListBucketsResponse'
-    { _lbrsBuckets :: !(Maybe [Bucket])
-    , _lbrsOwner :: !(Maybe Owner)
+    { _lbrsBuckets        :: !(Maybe [Bucket])
+    , _lbrsOwner          :: !(Maybe Owner)
     , _lbrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

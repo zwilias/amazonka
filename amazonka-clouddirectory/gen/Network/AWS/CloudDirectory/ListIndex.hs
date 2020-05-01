@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,11 +53,11 @@ import Network.AWS.Response
 data ListIndex =
   ListIndex'
     { _liRangesOnIndexedValues :: !(Maybe [ObjectAttributeRange])
-    , _liConsistencyLevel :: !(Maybe ConsistencyLevel)
-    , _liNextToken :: !(Maybe Text)
-    , _liMaxResults :: !(Maybe Nat)
-    , _liDirectoryARN :: !Text
-    , _liIndexReference :: !ObjectReference
+    , _liConsistencyLevel      :: !(Maybe ConsistencyLevel)
+    , _liNextToken             :: !(Maybe Text)
+    , _liMaxResults            :: !(Maybe Nat)
+    , _liDirectoryARN          :: !Text
+    , _liIndexReference        :: !ObjectReference
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -164,8 +164,8 @@ instance ToQuery ListIndex where
 data ListIndexResponse =
   ListIndexResponse'
     { _lirsIndexAttachments :: !(Maybe [IndexAttachment])
-    , _lirsNextToken :: !(Maybe Text)
-    , _lirsResponseStatus :: !Int
+    , _lirsNextToken        :: !(Maybe Text)
+    , _lirsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

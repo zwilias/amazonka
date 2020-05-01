@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,11 +46,11 @@ import Network.AWS.Response
 -- /See:/ 'updateIPSet' smart constructor.
 data UpdateIPSet =
   UpdateIPSet'
-    { _uisLocation :: !(Maybe Text)
-    , _uisActivate :: !(Maybe Bool)
-    , _uisName :: !(Maybe Text)
+    { _uisLocation   :: !(Maybe Text)
+    , _uisActivate   :: !(Maybe Bool)
+    , _uisName       :: !(Maybe Text)
     , _uisDetectorId :: !Text
-    , _uisIPSetId :: !Text
+    , _uisIPSetId    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

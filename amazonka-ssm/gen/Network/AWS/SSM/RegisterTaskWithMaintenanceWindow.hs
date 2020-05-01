@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -250,7 +250,7 @@ instance ToQuery RegisterTaskWithMaintenanceWindow where
 -- | /See:/ 'registerTaskWithMaintenanceWindowResponse' smart constructor.
 data RegisterTaskWithMaintenanceWindowResponse =
   RegisterTaskWithMaintenanceWindowResponse'
-    { _rtwmwrsWindowTaskId :: !(Maybe Text)
+    { _rtwmwrsWindowTaskId   :: !(Maybe Text)
     , _rtwmwrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

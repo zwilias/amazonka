@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Shield.Types.Product
 -- | /See:/ 'createProtection' smart constructor.
 data CreateProtection =
   CreateProtection'
-    { _cpName :: !Text
+    { _cpName        :: !Text
     , _cpResourceARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -108,7 +108,7 @@ instance ToQuery CreateProtection where
 -- | /See:/ 'createProtectionResponse' smart constructor.
 data CreateProtectionResponse =
   CreateProtectionResponse'
-    { _cprsProtectionId :: !(Maybe Text)
+    { _cprsProtectionId   :: !(Maybe Text)
     , _cprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

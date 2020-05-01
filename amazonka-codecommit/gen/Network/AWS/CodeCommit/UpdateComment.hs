@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 data UpdateComment =
   UpdateComment'
     { _ucCommentId :: !Text
-    , _ucContent :: !Text
+    , _ucContent   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -106,7 +106,7 @@ instance ToQuery UpdateComment where
 -- | /See:/ 'updateCommentResponse' smart constructor.
 data UpdateCommentResponse =
   UpdateCommentResponse'
-    { _ucrsComment :: !(Maybe Comment)
+    { _ucrsComment        :: !(Maybe Comment)
     , _ucrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

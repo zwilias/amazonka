@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,10 +50,10 @@ import Network.AWS.Response
 -- | /See:/ 'listFacetAttributes' smart constructor.
 data ListFacetAttributes =
   ListFacetAttributes'
-    { _lfaNextToken :: !(Maybe Text)
+    { _lfaNextToken  :: !(Maybe Text)
     , _lfaMaxResults :: !(Maybe Nat)
-    , _lfaSchemaARN :: !Text
-    , _lfaName :: !Text
+    , _lfaSchemaARN  :: !Text
+    , _lfaName       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -139,8 +139,8 @@ instance ToQuery ListFacetAttributes where
 -- | /See:/ 'listFacetAttributesResponse' smart constructor.
 data ListFacetAttributesResponse =
   ListFacetAttributesResponse'
-    { _lfarsNextToken :: !(Maybe Text)
-    , _lfarsAttributes :: !(Maybe [FacetAttribute])
+    { _lfarsNextToken      :: !(Maybe Text)
+    , _lfarsAttributes     :: !(Maybe [FacetAttribute])
     , _lfarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

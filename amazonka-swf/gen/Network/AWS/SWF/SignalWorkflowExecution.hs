@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,9 +58,9 @@ import Network.AWS.SWF.Types.Product
 -- | /See:/ 'signalWorkflowExecution' smart constructor.
 data SignalWorkflowExecution =
   SignalWorkflowExecution'
-    { _sweInput :: !(Maybe Text)
-    , _sweRunId :: !(Maybe Text)
-    , _sweDomain :: !Text
+    { _sweInput      :: !(Maybe Text)
+    , _sweRunId      :: !(Maybe Text)
+    , _sweDomain     :: !Text
     , _sweWorkflowId :: !Text
     , _sweSignalName :: !Text
     }

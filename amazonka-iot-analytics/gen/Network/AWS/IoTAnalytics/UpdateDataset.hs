@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -42,9 +42,9 @@ import Network.AWS.Response
 -- | /See:/ 'updateDataset' smart constructor.
 data UpdateDataset =
   UpdateDataset'
-    { _udTriggers :: !(Maybe [DatasetTrigger])
+    { _udTriggers    :: !(Maybe [DatasetTrigger])
     , _udDatasetName :: !Text
-    , _udActions :: !(List1 DatasetAction)
+    , _udActions     :: !(List1 DatasetAction)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

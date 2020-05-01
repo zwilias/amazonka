@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,9 +47,9 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'describeMaintenanceWindowExecutionTasks' smart constructor.
 data DescribeMaintenanceWindowExecutionTasks =
   DescribeMaintenanceWindowExecutionTasks'
-    { _dmwetFilters :: !(Maybe [MaintenanceWindowFilter])
-    , _dmwetNextToken :: !(Maybe Text)
-    , _dmwetMaxResults :: !(Maybe Nat)
+    { _dmwetFilters           :: !(Maybe [MaintenanceWindowFilter])
+    , _dmwetNextToken         :: !(Maybe Text)
+    , _dmwetMaxResults        :: !(Maybe Nat)
     , _dmwetWindowExecutionId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

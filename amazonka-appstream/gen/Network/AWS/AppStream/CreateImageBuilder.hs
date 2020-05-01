@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,15 +53,15 @@ import Network.AWS.Response
 -- | /See:/ 'createImageBuilder' smart constructor.
 data CreateImageBuilder =
   CreateImageBuilder'
-    { _cibDomainJoinInfo :: !(Maybe DomainJoinInfo)
-    , _cibVPCConfig :: !(Maybe VPCConfig)
-    , _cibDisplayName :: !(Maybe Text)
+    { _cibDomainJoinInfo              :: !(Maybe DomainJoinInfo)
+    , _cibVPCConfig                   :: !(Maybe VPCConfig)
+    , _cibDisplayName                 :: !(Maybe Text)
     , _cibEnableDefaultInternetAccess :: !(Maybe Bool)
-    , _cibDescription :: !(Maybe Text)
-    , _cibAppstreamAgentVersion :: !(Maybe Text)
-    , _cibName :: !Text
-    , _cibImageName :: !Text
-    , _cibInstanceType :: !Text
+    , _cibDescription                 :: !(Maybe Text)
+    , _cibAppstreamAgentVersion       :: !(Maybe Text)
+    , _cibName                        :: !Text
+    , _cibImageName                   :: !Text
+    , _cibInstanceType                :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -191,7 +191,7 @@ instance ToQuery CreateImageBuilder where
 -- | /See:/ 'createImageBuilderResponse' smart constructor.
 data CreateImageBuilderResponse =
   CreateImageBuilderResponse'
-    { _cibrsImageBuilder :: !(Maybe ImageBuilder)
+    { _cibrsImageBuilder   :: !(Maybe ImageBuilder)
     , _cibrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

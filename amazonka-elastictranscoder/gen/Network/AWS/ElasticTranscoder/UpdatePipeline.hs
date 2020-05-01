@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,14 +57,14 @@ import Network.AWS.Response
 -- /See:/ 'updatePipeline' smart constructor.
 data UpdatePipeline =
   UpdatePipeline'
-    { _upInputBucket :: !(Maybe Text)
-    , _upContentConfig :: !(Maybe PipelineOutputConfig)
-    , _upRole :: !(Maybe Text)
-    , _upName :: !(Maybe Text)
-    , _upAWSKMSKeyARN :: !(Maybe Text)
-    , _upNotifications :: !(Maybe Notifications)
+    { _upInputBucket     :: !(Maybe Text)
+    , _upContentConfig   :: !(Maybe PipelineOutputConfig)
+    , _upRole            :: !(Maybe Text)
+    , _upName            :: !(Maybe Text)
+    , _upAWSKMSKeyARN    :: !(Maybe Text)
+    , _upNotifications   :: !(Maybe Notifications)
     , _upThumbnailConfig :: !(Maybe PipelineOutputConfig)
-    , _upId :: !Text
+    , _upId              :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -177,8 +177,8 @@ instance ToQuery UpdatePipeline where
 -- /See:/ 'updatePipelineResponse' smart constructor.
 data UpdatePipelineResponse =
   UpdatePipelineResponse'
-    { _uprsWarnings :: !(Maybe [Warning])
-    , _uprsPipeline :: !(Maybe Pipeline)
+    { _uprsWarnings       :: !(Maybe [Warning])
+    , _uprsPipeline       :: !(Maybe Pipeline)
     , _uprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

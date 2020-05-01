@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,9 +55,9 @@ import Network.AWS.Response
 -- | /See:/ 'getAccountAuthorizationDetails' smart constructor.
 data GetAccountAuthorizationDetails =
   GetAccountAuthorizationDetails'
-    { _gaadMarker :: !(Maybe Text)
+    { _gaadMarker   :: !(Maybe Text)
     , _gaadMaxItems :: !(Maybe Nat)
-    , _gaadFilter :: !(Maybe [EntityType])
+    , _gaadFilter   :: !(Maybe [EntityType])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -136,13 +136,13 @@ instance ToQuery GetAccountAuthorizationDetails where
 -- /See:/ 'getAccountAuthorizationDetailsResponse' smart constructor.
 data GetAccountAuthorizationDetailsResponse =
   GetAccountAuthorizationDetailsResponse'
-    { _gaadrsRoleDetailList :: !(Maybe [RoleDetail])
+    { _gaadrsRoleDetailList  :: !(Maybe [RoleDetail])
     , _gaadrsGroupDetailList :: !(Maybe [GroupDetail])
-    , _gaadrsUserDetailList :: !(Maybe [UserDetail])
-    , _gaadrsMarker :: !(Maybe Text)
-    , _gaadrsIsTruncated :: !(Maybe Bool)
-    , _gaadrsPolicies :: !(Maybe [ManagedPolicyDetail])
-    , _gaadrsResponseStatus :: !Int
+    , _gaadrsUserDetailList  :: !(Maybe [UserDetail])
+    , _gaadrsMarker          :: !(Maybe Text)
+    , _gaadrsIsTruncated     :: !(Maybe Bool)
+    , _gaadrsPolicies        :: !(Maybe [ManagedPolicyDetail])
+    , _gaadrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

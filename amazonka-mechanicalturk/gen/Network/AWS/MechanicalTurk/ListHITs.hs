@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Response
 -- | /See:/ 'listHITs' smart constructor.
 data ListHITs =
   ListHITs'
-    { _lhitNextToken :: !(Maybe Text)
+    { _lhitNextToken  :: !(Maybe Text)
     , _lhitMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -119,9 +119,9 @@ instance ToQuery ListHITs where
 -- | /See:/ 'listHITsResponse' smart constructor.
 data ListHITsResponse =
   ListHITsResponse'
-    { _lhitrsNextToken :: !(Maybe Text)
-    , _lhitrsNumResults :: !(Maybe Int)
-    , _lhitrsHITs :: !(Maybe [HIT])
+    { _lhitrsNextToken      :: !(Maybe Text)
+    , _lhitrsNumResults     :: !(Maybe Int)
+    , _lhitrsHITs           :: !(Maybe [HIT])
     , _lhitrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

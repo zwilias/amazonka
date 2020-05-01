@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 -- | /See:/ 'createCoreDefinitionVersion' smart constructor.
 data CreateCoreDefinitionVersion =
   CreateCoreDefinitionVersion'
-    { _ccdvAmznClientToken :: !(Maybe Text)
-    , _ccdvCores :: !(Maybe [Core])
+    { _ccdvAmznClientToken  :: !(Maybe Text)
+    , _ccdvCores            :: !(Maybe [Core])
     , _ccdvCoreDefinitionId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -123,11 +123,11 @@ instance ToQuery CreateCoreDefinitionVersion where
 -- | /See:/ 'createCoreDefinitionVersionResponse' smart constructor.
 data CreateCoreDefinitionVersionResponse =
   CreateCoreDefinitionVersionResponse'
-    { _ccdvrsARN :: !(Maybe Text)
+    { _ccdvrsARN               :: !(Maybe Text)
     , _ccdvrsCreationTimestamp :: !(Maybe Text)
-    , _ccdvrsVersion :: !(Maybe Text)
-    , _ccdvrsId :: !(Maybe Text)
-    , _ccdvrsResponseStatus :: !Int
+    , _ccdvrsVersion           :: !(Maybe Text)
+    , _ccdvrsId                :: !(Maybe Text)
+    , _ccdvrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

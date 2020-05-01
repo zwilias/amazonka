@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,8 +48,8 @@ import Network.AWS.Response
 -- | /See:/ 'putRolePolicy' smart constructor.
 data PutRolePolicy =
   PutRolePolicy'
-    { _prpRoleName :: !Text
-    , _prpPolicyName :: !Text
+    { _prpRoleName       :: !Text
+    , _prpPolicyName     :: !Text
     , _prpPolicyDocument :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

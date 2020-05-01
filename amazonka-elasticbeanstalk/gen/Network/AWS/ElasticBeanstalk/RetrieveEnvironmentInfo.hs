@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,8 +56,8 @@ import Network.AWS.Response
 data RetrieveEnvironmentInfo =
   RetrieveEnvironmentInfo'
     { _rEnvironmentName :: !(Maybe Text)
-    , _rEnvironmentId :: !(Maybe Text)
-    , _rInfoType :: !EnvironmentInfoType
+    , _rEnvironmentId   :: !(Maybe Text)
+    , _rInfoType        :: !EnvironmentInfoType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -131,7 +131,7 @@ instance ToQuery RetrieveEnvironmentInfo where
 data RetrieveEnvironmentInfoResponse =
   RetrieveEnvironmentInfoResponse'
     { _reirsEnvironmentInfo :: !(Maybe [EnvironmentInfoDescription])
-    , _reirsResponseStatus :: !Int
+    , _reirsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

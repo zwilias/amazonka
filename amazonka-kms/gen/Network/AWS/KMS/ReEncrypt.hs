@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,10 +54,10 @@ import Network.AWS.Response
 data ReEncrypt =
   ReEncrypt'
     { _reDestinationEncryptionContext :: !(Maybe (Map Text Text))
-    , _reSourceEncryptionContext :: !(Maybe (Map Text Text))
-    , _reGrantTokens :: !(Maybe [Text])
-    , _reCiphertextBlob :: !Base64
-    , _reDestinationKeyId :: !Text
+    , _reSourceEncryptionContext      :: !(Maybe (Map Text Text))
+    , _reGrantTokens                  :: !(Maybe [Text])
+    , _reCiphertextBlob               :: !Base64
+    , _reDestinationKeyId             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -159,8 +159,8 @@ instance ToQuery ReEncrypt where
 -- | /See:/ 'reEncryptResponse' smart constructor.
 data ReEncryptResponse =
   ReEncryptResponse'
-    { _rersSourceKeyId :: !(Maybe Text)
-    , _rersKeyId :: !(Maybe Text)
+    { _rersSourceKeyId    :: !(Maybe Text)
+    , _rersKeyId          :: !(Maybe Text)
     , _rersCiphertextBlob :: !(Maybe Base64)
     , _rersResponseStatus :: !Int
     }

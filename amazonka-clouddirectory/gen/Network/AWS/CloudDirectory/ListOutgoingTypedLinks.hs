@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,12 +51,12 @@ import Network.AWS.Response
 data ListOutgoingTypedLinks =
   ListOutgoingTypedLinks'
     { _lotlFilterAttributeRanges :: !(Maybe [TypedLinkAttributeRange])
-    , _lotlConsistencyLevel :: !(Maybe ConsistencyLevel)
-    , _lotlNextToken :: !(Maybe Text)
-    , _lotlFilterTypedLink :: !(Maybe TypedLinkSchemaAndFacetName)
-    , _lotlMaxResults :: !(Maybe Nat)
-    , _lotlDirectoryARN :: !Text
-    , _lotlObjectReference :: !ObjectReference
+    , _lotlConsistencyLevel      :: !(Maybe ConsistencyLevel)
+    , _lotlNextToken             :: !(Maybe Text)
+    , _lotlFilterTypedLink       :: !(Maybe TypedLinkSchemaAndFacetName)
+    , _lotlMaxResults            :: !(Maybe Nat)
+    , _lotlDirectoryARN          :: !Text
+    , _lotlObjectReference       :: !ObjectReference
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -169,8 +169,8 @@ instance ToQuery ListOutgoingTypedLinks where
 data ListOutgoingTypedLinksResponse =
   ListOutgoingTypedLinksResponse'
     { _lotlrsTypedLinkSpecifiers :: !(Maybe [TypedLinkSpecifier])
-    , _lotlrsNextToken :: !(Maybe Text)
-    , _lotlrsResponseStatus :: !Int
+    , _lotlrsNextToken           :: !(Maybe Text)
+    , _lotlrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

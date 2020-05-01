@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,8 +58,8 @@ import Network.AWS.Route53.Types.Product
 data ListTrafficPolicyInstances =
   ListTrafficPolicyInstances'
     { _ltpiTrafficPolicyInstanceTypeMarker :: !(Maybe RecordType)
-    , _ltpiMaxItems :: !(Maybe Text)
-    , _ltpiHostedZoneIdMarker :: !(Maybe ResourceId)
+    , _ltpiMaxItems                        :: !(Maybe Text)
+    , _ltpiHostedZoneIdMarker              :: !(Maybe ResourceId)
     , _ltpiTrafficPolicyInstanceNameMarker :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -152,12 +152,12 @@ instance ToQuery ListTrafficPolicyInstances where
 data ListTrafficPolicyInstancesResponse =
   ListTrafficPolicyInstancesResponse'
     { _ltpirsTrafficPolicyInstanceTypeMarker :: !(Maybe RecordType)
-    , _ltpirsHostedZoneIdMarker :: !(Maybe ResourceId)
+    , _ltpirsHostedZoneIdMarker              :: !(Maybe ResourceId)
     , _ltpirsTrafficPolicyInstanceNameMarker :: !(Maybe Text)
-    , _ltpirsResponseStatus :: !Int
-    , _ltpirsTrafficPolicyInstances :: ![TrafficPolicyInstance]
-    , _ltpirsIsTruncated :: !Bool
-    , _ltpirsMaxItems :: !Text
+    , _ltpirsResponseStatus                  :: !Int
+    , _ltpirsTrafficPolicyInstances          :: ![TrafficPolicyInstance]
+    , _ltpirsIsTruncated                     :: !Bool
+    , _ltpirsMaxItems                        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

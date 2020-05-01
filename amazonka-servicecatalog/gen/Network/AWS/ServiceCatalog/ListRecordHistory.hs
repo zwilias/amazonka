@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,11 +48,11 @@ import Network.AWS.ServiceCatalog.Types.Product
 -- | /See:/ 'listRecordHistory' smart constructor.
 data ListRecordHistory =
   ListRecordHistory'
-    { _lrhSearchFilter :: !(Maybe ListRecordHistorySearchFilter)
-    , _lrhAcceptLanguage :: !(Maybe Text)
+    { _lrhSearchFilter      :: !(Maybe ListRecordHistorySearchFilter)
+    , _lrhAcceptLanguage    :: !(Maybe Text)
     , _lrhAccessLevelFilter :: !(Maybe AccessLevelFilter)
-    , _lrhPageToken :: !(Maybe Text)
-    , _lrhPageSize :: !(Maybe Nat)
+    , _lrhPageToken         :: !(Maybe Text)
+    , _lrhPageSize          :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -143,8 +143,8 @@ instance ToQuery ListRecordHistory where
 -- | /See:/ 'listRecordHistoryResponse' smart constructor.
 data ListRecordHistoryResponse =
   ListRecordHistoryResponse'
-    { _lrhrsNextPageToken :: !(Maybe Text)
-    , _lrhrsRecordDetails :: !(Maybe [RecordDetail])
+    { _lrhrsNextPageToken  :: !(Maybe Text)
+    , _lrhrsRecordDetails  :: !(Maybe [RecordDetail])
     , _lrhrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

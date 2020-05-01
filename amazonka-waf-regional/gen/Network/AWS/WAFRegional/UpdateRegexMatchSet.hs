@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -70,8 +70,8 @@ import Network.AWS.WAFRegional.Types.Product
 data UpdateRegexMatchSet =
   UpdateRegexMatchSet'
     { _urmsRegexMatchSetId :: !Text
-    , _urmsUpdates :: !(List1 RegexMatchSetUpdate)
-    , _urmsChangeToken :: !Text
+    , _urmsUpdates         :: !(List1 RegexMatchSetUpdate)
+    , _urmsChangeToken     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -149,7 +149,7 @@ instance ToQuery UpdateRegexMatchSet where
 -- | /See:/ 'updateRegexMatchSetResponse' smart constructor.
 data UpdateRegexMatchSetResponse =
   UpdateRegexMatchSetResponse'
-    { _urmsrsChangeToken :: !(Maybe Text)
+    { _urmsrsChangeToken    :: !(Maybe Text)
     , _urmsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

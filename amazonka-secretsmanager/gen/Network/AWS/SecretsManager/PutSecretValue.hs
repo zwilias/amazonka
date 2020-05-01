@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -84,11 +84,11 @@ import Network.AWS.SecretsManager.Types.Product
 -- | /See:/ 'putSecretValue' smart constructor.
 data PutSecretValue =
   PutSecretValue'
-    { _psvVersionStages :: !(Maybe (List1 Text))
-    , _psvSecretBinary :: !(Maybe (Sensitive Base64))
-    , _psvSecretString :: !(Maybe (Sensitive Text))
+    { _psvVersionStages      :: !(Maybe (List1 Text))
+    , _psvSecretBinary       :: !(Maybe (Sensitive Base64))
+    , _psvSecretString       :: !(Maybe (Sensitive Text))
     , _psvClientRequestToken :: !(Maybe Text)
-    , _psvSecretId :: !Text
+    , _psvSecretId           :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -185,10 +185,10 @@ instance ToQuery PutSecretValue where
 -- | /See:/ 'putSecretValueResponse' smart constructor.
 data PutSecretValueResponse =
   PutSecretValueResponse'
-    { _psvrsVersionId :: !(Maybe Text)
-    , _psvrsARN :: !(Maybe Text)
-    , _psvrsVersionStages :: !(Maybe (List1 Text))
-    , _psvrsName :: !(Maybe Text)
+    { _psvrsVersionId      :: !(Maybe Text)
+    , _psvrsARN            :: !(Maybe Text)
+    , _psvrsVersionStages  :: !(Maybe (List1 Text))
+    , _psvrsName           :: !(Maybe Text)
     , _psvrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

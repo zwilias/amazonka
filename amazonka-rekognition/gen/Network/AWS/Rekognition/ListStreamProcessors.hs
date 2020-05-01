@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- | /See:/ 'listStreamProcessors' smart constructor.
 data ListStreamProcessors =
   ListStreamProcessors'
-    { _lspNextToken :: !(Maybe Text)
+    { _lspNextToken  :: !(Maybe Text)
     , _lspMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -120,8 +120,8 @@ instance ToQuery ListStreamProcessors where
 data ListStreamProcessorsResponse =
   ListStreamProcessorsResponse'
     { _lsprsStreamProcessors :: !(Maybe [StreamProcessor])
-    , _lsprsNextToken :: !(Maybe Text)
-    , _lsprsResponseStatus :: !Int
+    , _lsprsNextToken        :: !(Maybe Text)
+    , _lsprsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

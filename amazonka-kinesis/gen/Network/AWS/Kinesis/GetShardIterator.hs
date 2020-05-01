@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -64,10 +64,10 @@ import Network.AWS.Response
 data GetShardIterator =
   GetShardIterator'
     { _gsiStartingSequenceNumber :: !(Maybe Text)
-    , _gsiTimestamp :: !(Maybe POSIX)
-    , _gsiStreamName :: !Text
-    , _gsiShardId :: !Text
-    , _gsiShardIteratorType :: !ShardIteratorType
+    , _gsiTimestamp              :: !(Maybe POSIX)
+    , _gsiStreamName             :: !Text
+    , _gsiShardId                :: !Text
+    , _gsiShardIteratorType      :: !ShardIteratorType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -166,7 +166,7 @@ instance ToQuery GetShardIterator where
 -- /See:/ 'getShardIteratorResponse' smart constructor.
 data GetShardIteratorResponse =
   GetShardIteratorResponse'
-    { _gsirsShardIterator :: !(Maybe Text)
+    { _gsirsShardIterator  :: !(Maybe Text)
     , _gsirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

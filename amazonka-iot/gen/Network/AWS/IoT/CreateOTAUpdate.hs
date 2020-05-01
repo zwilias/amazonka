@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,12 +54,12 @@ import Network.AWS.Response
 data CreateOTAUpdate =
   CreateOTAUpdate'
     { _cotauAdditionalParameters :: !(Maybe (Map Text Text))
-    , _cotauDescription :: !(Maybe Text)
-    , _cotauTargetSelection :: !(Maybe TargetSelection)
-    , _cotauOtaUpdateId :: !Text
-    , _cotauTargets :: !(List1 Text)
-    , _cotauFiles :: !(List1 OTAUpdateFile)
-    , _cotauRoleARN :: !Text
+    , _cotauDescription          :: !(Maybe Text)
+    , _cotauTargetSelection      :: !(Maybe TargetSelection)
+    , _cotauOtaUpdateId          :: !Text
+    , _cotauTargets              :: !(List1 Text)
+    , _cotauFiles                :: !(List1 OTAUpdateFile)
+    , _cotauRoleARN              :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -170,12 +170,12 @@ instance ToQuery CreateOTAUpdate where
 -- | /See:/ 'createOTAUpdateResponse' smart constructor.
 data CreateOTAUpdateResponse =
   CreateOTAUpdateResponse'
-    { _cotaursAwsIotJobId :: !(Maybe Text)
+    { _cotaursAwsIotJobId     :: !(Maybe Text)
     , _cotaursOtaUpdateStatus :: !(Maybe OTAUpdateStatus)
-    , _cotaursAwsIotJobARN :: !(Maybe Text)
-    , _cotaursOtaUpdateId :: !(Maybe Text)
-    , _cotaursOtaUpdateARN :: !(Maybe Text)
-    , _cotaursResponseStatus :: !Int
+    , _cotaursAwsIotJobARN    :: !(Maybe Text)
+    , _cotaursOtaUpdateId     :: !(Maybe Text)
+    , _cotaursOtaUpdateARN    :: !(Maybe Text)
+    , _cotaursResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

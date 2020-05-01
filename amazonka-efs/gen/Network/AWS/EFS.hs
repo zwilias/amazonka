@@ -129,8 +129,8 @@ import Network.AWS.EFS.DeleteFileSystem
 import Network.AWS.EFS.DeleteMountTarget
 import Network.AWS.EFS.DeleteTags
 import Network.AWS.EFS.DescribeFileSystems
-import Network.AWS.EFS.DescribeMountTargetSecurityGroups
 import Network.AWS.EFS.DescribeMountTargets
+import Network.AWS.EFS.DescribeMountTargetSecurityGroups
 import Network.AWS.EFS.DescribeTags
 import Network.AWS.EFS.ModifyMountTargetSecurityGroups
 import Network.AWS.EFS.Types

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,10 +47,10 @@ import Network.AWS.Response
 -- | /See:/ 'listDiscoveredResources' smart constructor.
 data ListDiscoveredResources =
   ListDiscoveredResources'
-    { _ldrNextToken :: !(Maybe Text)
-    , _ldrMaxResults :: !(Maybe Nat)
+    { _ldrNextToken            :: !(Maybe Text)
+    , _ldrMaxResults           :: !(Maybe Nat)
     , _ldrProgressUpdateStream :: !Text
-    , _ldrMigrationTaskName :: !Text
+    , _ldrMigrationTaskName    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -140,8 +140,8 @@ instance ToQuery ListDiscoveredResources where
 data ListDiscoveredResourcesResponse =
   ListDiscoveredResourcesResponse'
     { _ldrrsDiscoveredResourceList :: !(Maybe [DiscoveredResource])
-    , _ldrrsNextToken :: !(Maybe Text)
-    , _ldrrsResponseStatus :: !Int
+    , _ldrrsNextToken              :: !(Maybe Text)
+    , _ldrrsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

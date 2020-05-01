@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -59,9 +59,9 @@ import Network.AWS.STS.Types.Product
 -- | /See:/ 'getSessionToken' smart constructor.
 data GetSessionToken =
   GetSessionToken'
-    { _gstTokenCode :: !(Maybe Text)
+    { _gstTokenCode       :: !(Maybe Text)
     , _gstDurationSeconds :: !(Maybe Nat)
-    , _gstSerialNumber :: !(Maybe Text)
+    , _gstSerialNumber    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -132,7 +132,7 @@ instance ToQuery GetSessionToken where
 -- /See:/ 'getSessionTokenResponse' smart constructor.
 data GetSessionTokenResponse =
   GetSessionTokenResponse'
-    { _gstrsCredentials :: !(Maybe AuthEnv)
+    { _gstrsCredentials    :: !(Maybe AuthEnv)
     , _gstrsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

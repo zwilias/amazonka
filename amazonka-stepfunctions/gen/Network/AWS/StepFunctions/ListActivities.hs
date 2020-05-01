@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.StepFunctions.Types.Product
 -- | /See:/ 'listActivities' smart constructor.
 data ListActivities =
   ListActivities'
-    { _laNextToken :: !(Maybe Text)
+    { _laNextToken  :: !(Maybe Text)
     , _laMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -118,9 +118,9 @@ instance ToQuery ListActivities where
 -- | /See:/ 'listActivitiesResponse' smart constructor.
 data ListActivitiesResponse =
   ListActivitiesResponse'
-    { _larsNextToken :: !(Maybe Text)
+    { _larsNextToken      :: !(Maybe Text)
     , _larsResponseStatus :: !Int
-    , _larsActivities :: ![ActivityListItem]
+    , _larsActivities     :: ![ActivityListItem]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

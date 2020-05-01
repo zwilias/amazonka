@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Response
 -- | /See:/ 'listWorkerBlocks' smart constructor.
 data ListWorkerBlocks =
   ListWorkerBlocks'
-    { _lwbNextToken :: !(Maybe Text)
+    { _lwbNextToken  :: !(Maybe Text)
     , _lwbMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -121,9 +121,9 @@ instance ToQuery ListWorkerBlocks where
 -- | /See:/ 'listWorkerBlocksResponse' smart constructor.
 data ListWorkerBlocksResponse =
   ListWorkerBlocksResponse'
-    { _lwbrsWorkerBlocks :: !(Maybe [WorkerBlock])
-    , _lwbrsNextToken :: !(Maybe Text)
-    , _lwbrsNumResults :: !(Maybe Int)
+    { _lwbrsWorkerBlocks   :: !(Maybe [WorkerBlock])
+    , _lwbrsNextToken      :: !(Maybe Text)
+    , _lwbrsNumResults     :: !(Maybe Int)
     , _lwbrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

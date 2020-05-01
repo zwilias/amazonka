@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 data DescribeJobExecution =
   DescribeJobExecution'
     { _djeExecutionNumber :: !(Maybe Integer)
-    , _djeJobId :: !Text
-    , _djeThingName :: !Text
+    , _djeJobId           :: !Text
+    , _djeThingName       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -111,7 +111,7 @@ instance ToQuery DescribeJobExecution where
 -- | /See:/ 'describeJobExecutionResponse' smart constructor.
 data DescribeJobExecutionResponse =
   DescribeJobExecutionResponse'
-    { _djersExecution :: !(Maybe JobExecution)
+    { _djersExecution      :: !(Maybe JobExecution)
     , _djersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

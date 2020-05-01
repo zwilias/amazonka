@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,15 +55,15 @@ import Network.AWS.Response
 -- | /See:/ 'describeDBEngineVersions' smart constructor.
 data DescribeDBEngineVersions =
   DescribeDBEngineVersions'
-    { _ddevEngineVersion :: !(Maybe Text)
-    , _ddevListSupportedTimezones :: !(Maybe Bool)
-    , _ddevDefaultOnly :: !(Maybe Bool)
-    , _ddevFilters :: !(Maybe [Filter])
-    , _ddevEngine :: !(Maybe Text)
-    , _ddevDBParameterGroupFamily :: !(Maybe Text)
+    { _ddevEngineVersion              :: !(Maybe Text)
+    , _ddevListSupportedTimezones     :: !(Maybe Bool)
+    , _ddevDefaultOnly                :: !(Maybe Bool)
+    , _ddevFilters                    :: !(Maybe [Filter])
+    , _ddevEngine                     :: !(Maybe Text)
+    , _ddevDBParameterGroupFamily     :: !(Maybe Text)
     , _ddevListSupportedCharacterSets :: !(Maybe Bool)
-    , _ddevMarker :: !(Maybe Text)
-    , _ddevMaxRecords :: !(Maybe Int)
+    , _ddevMarker                     :: !(Maybe Text)
+    , _ddevMaxRecords                 :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -195,9 +195,9 @@ instance ToQuery DescribeDBEngineVersions where
 -- /See:/ 'describeDBEngineVersionsResponse' smart constructor.
 data DescribeDBEngineVersionsResponse =
   DescribeDBEngineVersionsResponse'
-    { _ddevrsMarker :: !(Maybe Text)
+    { _ddevrsMarker           :: !(Maybe Text)
     , _ddevrsDBEngineVersions :: !(Maybe [DBEngineVersion])
-    , _ddevrsResponseStatus :: !Int
+    , _ddevrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

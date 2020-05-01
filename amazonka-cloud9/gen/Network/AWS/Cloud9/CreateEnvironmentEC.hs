@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,12 +50,12 @@ import Network.AWS.Response
 data CreateEnvironmentEC =
   CreateEnvironmentEC'
     { _ceecAutomaticStopTimeMinutes :: !(Maybe Int)
-    , _ceecSubnetId :: !(Maybe Text)
-    , _ceecOwnerARN :: !(Maybe Text)
-    , _ceecClientRequestToken :: !(Maybe Text)
-    , _ceecDescription :: !(Maybe Text)
-    , _ceecName :: !Text
-    , _ceecInstanceType :: !Text
+    , _ceecSubnetId                 :: !(Maybe Text)
+    , _ceecOwnerARN                 :: !(Maybe Text)
+    , _ceecClientRequestToken       :: !(Maybe Text)
+    , _ceecDescription              :: !(Maybe Text)
+    , _ceecName                     :: !Text
+    , _ceecInstanceType             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -167,7 +167,7 @@ instance ToQuery CreateEnvironmentEC where
 -- | /See:/ 'createEnvironmentECResponse' smart constructor.
 data CreateEnvironmentECResponse =
   CreateEnvironmentECResponse'
-    { _ceecrsEnvironmentId :: !(Maybe Text)
+    { _ceecrsEnvironmentId  :: !(Maybe Text)
     , _ceecrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

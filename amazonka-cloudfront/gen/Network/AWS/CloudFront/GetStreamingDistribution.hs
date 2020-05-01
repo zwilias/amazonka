@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -96,9 +96,9 @@ instance ToQuery GetStreamingDistribution where
 -- /See:/ 'getStreamingDistributionResponse' smart constructor.
 data GetStreamingDistributionResponse =
   GetStreamingDistributionResponse'
-    { _gsdrsETag :: !(Maybe Text)
+    { _gsdrsETag                  :: !(Maybe Text)
     , _gsdrsStreamingDistribution :: !(Maybe StreamingDistribution)
-    , _gsdrsResponseStatus :: !Int
+    , _gsdrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

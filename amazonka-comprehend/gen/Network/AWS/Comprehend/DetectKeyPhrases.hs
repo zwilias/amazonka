@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'detectKeyPhrases' smart constructor.
 data DetectKeyPhrases =
   DetectKeyPhrases'
-    { _dkpText :: !Text
+    { _dkpText         :: !Text
     , _dkpLanguageCode :: !LanguageCode
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -108,7 +108,7 @@ instance ToQuery DetectKeyPhrases where
 -- | /See:/ 'detectKeyPhrasesResponse' smart constructor.
 data DetectKeyPhrasesResponse =
   DetectKeyPhrasesResponse'
-    { _dkprsKeyPhrases :: !(Maybe [KeyPhrase])
+    { _dkprsKeyPhrases     :: !(Maybe [KeyPhrase])
     , _dkprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

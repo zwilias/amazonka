@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,8 +54,8 @@ import Network.AWS.Response
 -- | /See:/ 'listGroupPolicies' smart constructor.
 data ListGroupPolicies =
   ListGroupPolicies'
-    { _lgpMarker :: !(Maybe Text)
-    , _lgpMaxItems :: !(Maybe Nat)
+    { _lgpMarker    :: !(Maybe Text)
+    , _lgpMaxItems  :: !(Maybe Nat)
     , _lgpGroupName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -133,10 +133,10 @@ instance ToQuery ListGroupPolicies where
 -- /See:/ 'listGroupPoliciesResponse' smart constructor.
 data ListGroupPoliciesResponse =
   ListGroupPoliciesResponse'
-    { _lgprsMarker :: !(Maybe Text)
-    , _lgprsIsTruncated :: !(Maybe Bool)
+    { _lgprsMarker         :: !(Maybe Text)
+    , _lgprsIsTruncated    :: !(Maybe Bool)
     , _lgprsResponseStatus :: !Int
-    , _lgprsPolicyNames :: ![Text]
+    , _lgprsPolicyNames    :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

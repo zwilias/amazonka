@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,9 +45,9 @@ import Network.AWS.Response
 -- | /See:/ 'listQueues' smart constructor.
 data ListQueues =
   ListQueues'
-    { _lqListBy :: !(Maybe QueueListBy)
-    , _lqNextToken :: !(Maybe Text)
-    , _lqOrder :: !(Maybe Order)
+    { _lqListBy     :: !(Maybe QueueListBy)
+    , _lqNextToken  :: !(Maybe Text)
+    , _lqOrder      :: !(Maybe Order)
     , _lqMaxResults :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -122,8 +122,8 @@ instance ToQuery ListQueues where
 -- | /See:/ 'listQueuesResponse' smart constructor.
 data ListQueuesResponse =
   ListQueuesResponse'
-    { _lqrsQueues :: !(Maybe [Queue])
-    , _lqrsNextToken :: !(Maybe Text)
+    { _lqrsQueues         :: !(Maybe [Queue])
+    , _lqrsNextToken      :: !(Maybe Text)
     , _lqrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

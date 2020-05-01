@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- | /See:/ 'getDownloadURLForLayer' smart constructor.
 data GetDownloadURLForLayer =
   GetDownloadURLForLayer'
-    { _gduflRegistryId :: !(Maybe Text)
+    { _gduflRegistryId     :: !(Maybe Text)
     , _gduflRepositoryName :: !Text
-    , _gduflLayerDigest :: !Text
+    , _gduflLayerDigest    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -126,8 +126,8 @@ instance ToQuery GetDownloadURLForLayer where
 -- | /See:/ 'getDownloadURLForLayerResponse' smart constructor.
 data GetDownloadURLForLayerResponse =
   GetDownloadURLForLayerResponse'
-    { _gduflrsLayerDigest :: !(Maybe Text)
-    , _gduflrsDownloadURL :: !(Maybe Text)
+    { _gduflrsLayerDigest    :: !(Maybe Text)
+    , _gduflrsDownloadURL    :: !(Maybe Text)
     , _gduflrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

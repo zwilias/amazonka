@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.WorkSpaces.Types.Product
 -- | /See:/ 'modifyWorkspaceState' smart constructor.
 data ModifyWorkspaceState =
   ModifyWorkspaceState'
-    { _mwsWorkspaceId :: !Text
+    { _mwsWorkspaceId    :: !Text
     , _mwsWorkspaceState :: !TargetWorkspaceState
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

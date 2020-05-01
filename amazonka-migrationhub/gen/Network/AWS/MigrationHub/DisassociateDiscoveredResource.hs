@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,10 +45,10 @@ import Network.AWS.Response
 -- | /See:/ 'disassociateDiscoveredResource' smart constructor.
 data DisassociateDiscoveredResource =
   DisassociateDiscoveredResource'
-    { _ddrDryRun :: !(Maybe Bool)
+    { _ddrDryRun               :: !(Maybe Bool)
     , _ddrProgressUpdateStream :: !Text
-    , _ddrMigrationTaskName :: !Text
-    , _ddrConfigurationId :: !Text
+    , _ddrMigrationTaskName    :: !Text
+    , _ddrConfigurationId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

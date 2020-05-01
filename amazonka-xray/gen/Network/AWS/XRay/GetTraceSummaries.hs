@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -64,10 +64,10 @@ import Network.AWS.XRay.Types.Product
 data GetTraceSummaries =
   GetTraceSummaries'
     { _gtsFilterExpression :: !(Maybe Text)
-    , _gtsNextToken :: !(Maybe Text)
-    , _gtsSampling :: !(Maybe Bool)
-    , _gtsStartTime :: !POSIX
-    , _gtsEndTime :: !POSIX
+    , _gtsNextToken        :: !(Maybe Text)
+    , _gtsSampling         :: !(Maybe Bool)
+    , _gtsStartTime        :: !POSIX
+    , _gtsEndTime          :: !POSIX
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -164,10 +164,10 @@ instance ToQuery GetTraceSummaries where
 data GetTraceSummariesResponse =
   GetTraceSummariesResponse'
     { _gtsrsTracesProcessedCount :: !(Maybe Integer)
-    , _gtsrsNextToken :: !(Maybe Text)
-    , _gtsrsApproximateTime :: !(Maybe POSIX)
-    , _gtsrsTraceSummaries :: !(Maybe [TraceSummary])
-    , _gtsrsResponseStatus :: !Int
+    , _gtsrsNextToken            :: !(Maybe Text)
+    , _gtsrsApproximateTime      :: !(Maybe POSIX)
+    , _gtsrsTraceSummaries       :: !(Maybe [TraceSummary])
+    , _gtsrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

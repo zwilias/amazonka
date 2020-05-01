@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -60,7 +60,7 @@ import Network.AWS.Response
 -- | /See:/ 'getBot' smart constructor.
 data GetBot =
   GetBot'
-    { _gbName :: !Text
+    { _gbName           :: !Text
     , _gbVersionOrAlias :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -128,22 +128,22 @@ instance ToQuery GetBot where
 -- | /See:/ 'getBotResponse' smart constructor.
 data GetBotResponse =
   GetBotResponse'
-    { _gbrsFailureReason :: !(Maybe Text)
-    , _gbrsStatus :: !(Maybe LexStatus)
-    , _gbrsAbortStatement :: !(Maybe Statement)
-    , _gbrsIntents :: !(Maybe [Intent])
-    , _gbrsChecksum :: !(Maybe Text)
-    , _gbrsLocale :: !(Maybe Locale)
-    , _gbrsCreatedDate :: !(Maybe POSIX)
-    , _gbrsName :: !(Maybe Text)
-    , _gbrsVersion :: !(Maybe Text)
+    { _gbrsFailureReason           :: !(Maybe Text)
+    , _gbrsStatus                  :: !(Maybe LexStatus)
+    , _gbrsAbortStatement          :: !(Maybe Statement)
+    , _gbrsIntents                 :: !(Maybe [Intent])
+    , _gbrsChecksum                :: !(Maybe Text)
+    , _gbrsLocale                  :: !(Maybe Locale)
+    , _gbrsCreatedDate             :: !(Maybe POSIX)
+    , _gbrsName                    :: !(Maybe Text)
+    , _gbrsVersion                 :: !(Maybe Text)
     , _gbrsIdleSessionTTLInSeconds :: !(Maybe Nat)
-    , _gbrsClarificationPrompt :: !(Maybe Prompt)
-    , _gbrsVoiceId :: !(Maybe Text)
-    , _gbrsLastUpdatedDate :: !(Maybe POSIX)
-    , _gbrsChildDirected :: !(Maybe Bool)
-    , _gbrsDescription :: !(Maybe Text)
-    , _gbrsResponseStatus :: !Int
+    , _gbrsClarificationPrompt     :: !(Maybe Prompt)
+    , _gbrsVoiceId                 :: !(Maybe Text)
+    , _gbrsLastUpdatedDate         :: !(Maybe POSIX)
+    , _gbrsChildDirected           :: !(Maybe Bool)
+    , _gbrsDescription             :: !(Maybe Text)
+    , _gbrsResponseStatus          :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

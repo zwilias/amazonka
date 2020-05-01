@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,9 +56,9 @@ import Network.AWS.Response
 data DescribeObjects =
   DescribeObjects'
     { _doEvaluateExpressions :: !(Maybe Bool)
-    , _doMarker :: !(Maybe Text)
-    , _doPipelineId :: !Text
-    , _doObjectIds :: ![Text]
+    , _doMarker              :: !(Maybe Text)
+    , _doPipelineId          :: !Text
+    , _doObjectIds           :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -153,9 +153,9 @@ instance ToQuery DescribeObjects where
 -- /See:/ 'describeObjectsResponse' smart constructor.
 data DescribeObjectsResponse =
   DescribeObjectsResponse'
-    { _dorsHasMoreResults :: !(Maybe Bool)
-    , _dorsMarker :: !(Maybe Text)
-    , _dorsResponseStatus :: !Int
+    { _dorsHasMoreResults  :: !(Maybe Bool)
+    , _dorsMarker          :: !(Maybe Text)
+    , _dorsResponseStatus  :: !Int
     , _dorsPipelineObjects :: ![PipelineObject]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

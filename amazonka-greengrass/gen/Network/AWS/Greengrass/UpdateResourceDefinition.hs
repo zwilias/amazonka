@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -41,7 +41,7 @@ import Network.AWS.Response
 -- | /See:/ 'updateResourceDefinition' smart constructor.
 data UpdateResourceDefinition =
   UpdateResourceDefinition'
-    { _urdName :: !(Maybe Text)
+    { _urdName                 :: !(Maybe Text)
     , _urdResourceDefinitionId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

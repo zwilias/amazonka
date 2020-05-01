@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,8 +55,8 @@ import Network.AWS.Response
 -- /See:/ 'describeSchemas' smart constructor.
 data DescribeSchemas =
   DescribeSchemas'
-    { _dsMarker :: !(Maybe Text)
-    , _dsMaxRecords :: !(Maybe Int)
+    { _dsMarker      :: !(Maybe Text)
+    , _dsMaxRecords  :: !(Maybe Int)
     , _dsEndpointARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -143,8 +143,8 @@ instance ToQuery DescribeSchemas where
 -- /See:/ 'describeSchemasResponse' smart constructor.
 data DescribeSchemasResponse =
   DescribeSchemasResponse'
-    { _dsrsSchemas :: !(Maybe [Text])
-    , _dsrsMarker :: !(Maybe Text)
+    { _dsrsSchemas        :: !(Maybe [Text])
+    , _dsrsMarker         :: !(Maybe Text)
     , _dsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

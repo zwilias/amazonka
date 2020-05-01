@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,12 +51,12 @@ import Network.AWS.Response
 -- | /See:/ 'createVPCEndpointConnectionNotification' smart constructor.
 data CreateVPCEndpointConnectionNotification =
   CreateVPCEndpointConnectionNotification'
-    { _cvecnClientToken :: !(Maybe Text)
-    , _cvecnServiceId :: !(Maybe Text)
-    , _cvecnVPCEndpointId :: !(Maybe Text)
-    , _cvecnDryRun :: !(Maybe Bool)
+    { _cvecnClientToken               :: !(Maybe Text)
+    , _cvecnServiceId                 :: !(Maybe Text)
+    , _cvecnVPCEndpointId             :: !(Maybe Text)
+    , _cvecnDryRun                    :: !(Maybe Bool)
     , _cvecnConnectionNotificationARN :: !Text
-    , _cvecnConnectionEvents :: ![Text]
+    , _cvecnConnectionEvents          :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -155,9 +155,9 @@ instance ToQuery CreateVPCEndpointConnectionNotification where
 -- | /See:/ 'createVPCEndpointConnectionNotificationResponse' smart constructor.
 data CreateVPCEndpointConnectionNotificationResponse =
   CreateVPCEndpointConnectionNotificationResponse'
-    { _cvecnrsClientToken :: !(Maybe Text)
+    { _cvecnrsClientToken            :: !(Maybe Text)
     , _cvecnrsConnectionNotification :: !(Maybe ConnectionNotification)
-    , _cvecnrsResponseStatus :: !Int
+    , _cvecnrsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

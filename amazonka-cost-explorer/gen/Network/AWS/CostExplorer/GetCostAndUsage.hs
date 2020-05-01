@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,12 +50,12 @@ import Network.AWS.Response
 -- | /See:/ 'getCostAndUsage' smart constructor.
 data GetCostAndUsage =
   GetCostAndUsage'
-    { _gcauGroupBy :: !(Maybe [GroupDefinition])
+    { _gcauGroupBy       :: !(Maybe [GroupDefinition])
     , _gcauNextPageToken :: !(Maybe Text)
-    , _gcauMetrics :: !(Maybe [Text])
-    , _gcauTimePeriod :: !(Maybe DateInterval)
-    , _gcauGranularity :: !(Maybe Granularity)
-    , _gcauFilter :: !(Maybe Expression)
+    , _gcauMetrics       :: !(Maybe [Text])
+    , _gcauTimePeriod    :: !(Maybe DateInterval)
+    , _gcauGranularity   :: !(Maybe Granularity)
+    , _gcauFilter        :: !(Maybe Expression)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -156,10 +156,10 @@ instance ToQuery GetCostAndUsage where
 -- | /See:/ 'getCostAndUsageResponse' smart constructor.
 data GetCostAndUsageResponse =
   GetCostAndUsageResponse'
-    { _gcaursResultsByTime :: !(Maybe [ResultByTime])
-    , _gcaursNextPageToken :: !(Maybe Text)
+    { _gcaursResultsByTime    :: !(Maybe [ResultByTime])
+    , _gcaursNextPageToken    :: !(Maybe Text)
     , _gcaursGroupDefinitions :: !(Maybe [GroupDefinition])
-    , _gcaursResponseStatus :: !Int
+    , _gcaursResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

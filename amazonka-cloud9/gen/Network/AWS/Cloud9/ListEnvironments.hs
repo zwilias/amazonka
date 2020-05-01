@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- | /See:/ 'listEnvironments' smart constructor.
 data ListEnvironments =
   ListEnvironments'
-    { _leNextToken :: !(Maybe Text)
+    { _leNextToken  :: !(Maybe Text)
     , _leMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -119,7 +119,7 @@ instance ToQuery ListEnvironments where
 data ListEnvironmentsResponse =
   ListEnvironmentsResponse'
     { _lersEnvironmentIds :: !(Maybe [Text])
-    , _lersNextToken :: !(Maybe Text)
+    , _lersNextToken      :: !(Maybe Text)
     , _lersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 data UpdatePullRequestTitle =
   UpdatePullRequestTitle'
     { _uprtPullRequestId :: !Text
-    , _uprtTitle :: !Text
+    , _uprtTitle         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -112,7 +112,7 @@ instance ToQuery UpdatePullRequestTitle where
 data UpdatePullRequestTitleResponse =
   UpdatePullRequestTitleResponse'
     { _uprtrsResponseStatus :: !Int
-    , _uprtrsPullRequest :: !PullRequest
+    , _uprtrsPullRequest    :: !PullRequest
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

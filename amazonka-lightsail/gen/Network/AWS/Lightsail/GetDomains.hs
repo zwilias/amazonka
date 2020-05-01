@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -104,8 +104,8 @@ instance ToQuery GetDomains where
 -- | /See:/ 'getDomainsResponse' smart constructor.
 data GetDomainsResponse =
   GetDomainsResponse'
-    { _ggrsNextPageToken :: !(Maybe Text)
-    , _ggrsDomains :: !(Maybe [Domain])
+    { _ggrsNextPageToken  :: !(Maybe Text)
+    , _ggrsDomains        :: !(Maybe [Domain])
     , _ggrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

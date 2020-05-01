@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,8 +45,8 @@ import Network.AWS.Response
 -- | /See:/ 'updateObjectAttributes' smart constructor.
 data UpdateObjectAttributes =
   UpdateObjectAttributes'
-    { _uoaDirectoryARN :: !Text
-    , _uoaObjectReference :: !ObjectReference
+    { _uoaDirectoryARN     :: !Text
+    , _uoaObjectReference  :: !ObjectReference
     , _uoaAttributeUpdates :: ![ObjectAttributeUpdate]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -120,7 +120,7 @@ instance ToQuery UpdateObjectAttributes where
 data UpdateObjectAttributesResponse =
   UpdateObjectAttributesResponse'
     { _uoarsObjectIdentifier :: !(Maybe Text)
-    , _uoarsResponseStatus :: !Int
+    , _uoarsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,10 +51,10 @@ import Network.AWS.Response
 -- | /See:/ 'searchProfiles' smart constructor.
 data SearchProfiles =
   SearchProfiles'
-    { _spFilters :: !(Maybe [Filter])
+    { _spFilters      :: !(Maybe [Filter])
     , _spSortCriteria :: !(Maybe [Sort])
-    , _spNextToken :: !(Maybe Text)
-    , _spMaxResults :: !(Maybe Nat)
+    , _spNextToken    :: !(Maybe Text)
+    , _spMaxResults   :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -143,9 +143,9 @@ instance ToQuery SearchProfiles where
 -- | /See:/ 'searchProfilesResponse' smart constructor.
 data SearchProfilesResponse =
   SearchProfilesResponse'
-    { _sprsProfiles :: !(Maybe [ProfileData])
-    , _sprsNextToken :: !(Maybe Text)
-    , _sprsTotalCount :: !(Maybe Int)
+    { _sprsProfiles       :: !(Maybe [ProfileData])
+    , _sprsNextToken      :: !(Maybe Text)
+    , _sprsTotalCount     :: !(Maybe Int)
     , _sprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

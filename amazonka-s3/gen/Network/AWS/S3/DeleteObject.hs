@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,11 +47,11 @@ import Network.AWS.S3.Types.Product
 -- | /See:/ 'deleteObject' smart constructor.
 data DeleteObject =
   DeleteObject'
-    { _doVersionId :: !(Maybe ObjectVersionId)
-    , _doMFA :: !(Maybe Text)
+    { _doVersionId    :: !(Maybe ObjectVersionId)
+    , _doMFA          :: !(Maybe Text)
     , _doRequestPayer :: !(Maybe RequestPayer)
-    , _doBucket :: !BucketName
-    , _doKey :: !ObjectKey
+    , _doBucket       :: !BucketName
+    , _doKey          :: !ObjectKey
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -130,8 +130,8 @@ instance ToQuery DeleteObject where
 data DeleteObjectResponse =
   DeleteObjectResponse'
     { _dorsRequestCharged :: !(Maybe RequestCharged)
-    , _dorsVersionId :: !(Maybe ObjectVersionId)
-    , _dorsDeleteMarker :: !(Maybe Bool)
+    , _dorsVersionId      :: !(Maybe ObjectVersionId)
+    , _dorsDeleteMarker   :: !(Maybe Bool)
     , _dorsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

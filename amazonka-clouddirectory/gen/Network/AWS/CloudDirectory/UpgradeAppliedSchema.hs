@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- | /See:/ 'upgradeAppliedSchema' smart constructor.
 data UpgradeAppliedSchema =
   UpgradeAppliedSchema'
-    { _uasDryRun :: !(Maybe Bool)
+    { _uasDryRun             :: !(Maybe Bool)
     , _uasPublishedSchemaARN :: !Text
-    , _uasDirectoryARN :: !Text
+    , _uasDirectoryARN       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -120,9 +120,9 @@ instance ToQuery UpgradeAppliedSchema where
 -- | /See:/ 'upgradeAppliedSchemaResponse' smart constructor.
 data UpgradeAppliedSchemaResponse =
   UpgradeAppliedSchemaResponse'
-    { _uasrsDirectoryARN :: !(Maybe Text)
+    { _uasrsDirectoryARN      :: !(Maybe Text)
     , _uasrsUpgradedSchemaARN :: !(Maybe Text)
-    , _uasrsResponseStatus :: !Int
+    , _uasrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

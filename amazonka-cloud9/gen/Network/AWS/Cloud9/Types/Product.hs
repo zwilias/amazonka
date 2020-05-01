@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,11 +26,11 @@ import Network.AWS.Prelude
 -- /See:/ 'environment' smart constructor.
 data Environment =
   Environment'
-    { _eArn :: !(Maybe Text)
-    , _eOwnerARN :: !(Maybe Text)
-    , _eName :: !(Maybe Text)
-    , _eId :: !(Maybe Text)
-    , _eType :: !(Maybe EnvironmentType)
+    { _eArn         :: !(Maybe Text)
+    , _eOwnerARN    :: !(Maybe Text)
+    , _eName        :: !(Maybe Text)
+    , _eId          :: !(Maybe Text)
+    , _eType        :: !(Maybe EnvironmentType)
     , _eDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -107,10 +107,10 @@ instance NFData Environment
 -- /See:/ 'environmentMember' smart constructor.
 data EnvironmentMember =
   EnvironmentMember'
-    { _emLastAccess :: !(Maybe POSIX)
-    , _emUserId :: !(Maybe Text)
-    , _emUserARN :: !(Maybe Text)
-    , _emPermissions :: !(Maybe Permissions)
+    { _emLastAccess    :: !(Maybe POSIX)
+    , _emUserId        :: !(Maybe Text)
+    , _emUserARN       :: !(Maybe Text)
+    , _emPermissions   :: !(Maybe Permissions)
     , _emEnvironmentId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

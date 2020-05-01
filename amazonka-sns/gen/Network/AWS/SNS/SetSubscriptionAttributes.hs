@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.SNS.Types.Product
 -- /See:/ 'setSubscriptionAttributes' smart constructor.
 data SetSubscriptionAttributes =
   SetSubscriptionAttributes'
-    { _ssaAttributeValue :: !(Maybe Text)
+    { _ssaAttributeValue  :: !(Maybe Text)
     , _ssaSubscriptionARN :: !Text
-    , _ssaAttributeName :: !Text
+    , _ssaAttributeName   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

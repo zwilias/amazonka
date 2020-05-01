@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -114,17 +114,17 @@ instance ToQuery DescribeStreamProcessor where
 -- | /See:/ 'describeStreamProcessorResponse' smart constructor.
 data DescribeStreamProcessorResponse =
   DescribeStreamProcessorResponse'
-    { _dsprsStatus :: !(Maybe StreamProcessorStatus)
-    , _dsprsSettings :: !(Maybe StreamProcessorSettings)
-    , _dsprsInput :: !(Maybe StreamProcessorInput)
-    , _dsprsOutput :: !(Maybe StreamProcessorOutput)
-    , _dsprsStreamProcessorARN :: !(Maybe Text)
-    , _dsprsStatusMessage :: !(Maybe Text)
-    , _dsprsName :: !(Maybe Text)
-    , _dsprsCreationTimestamp :: !(Maybe POSIX)
+    { _dsprsStatus              :: !(Maybe StreamProcessorStatus)
+    , _dsprsSettings            :: !(Maybe StreamProcessorSettings)
+    , _dsprsInput               :: !(Maybe StreamProcessorInput)
+    , _dsprsOutput              :: !(Maybe StreamProcessorOutput)
+    , _dsprsStreamProcessorARN  :: !(Maybe Text)
+    , _dsprsStatusMessage       :: !(Maybe Text)
+    , _dsprsName                :: !(Maybe Text)
+    , _dsprsCreationTimestamp   :: !(Maybe POSIX)
     , _dsprsLastUpdateTimestamp :: !(Maybe POSIX)
-    , _dsprsRoleARN :: !(Maybe Text)
-    , _dsprsResponseStatus :: !Int
+    , _dsprsRoleARN             :: !(Maybe Text)
+    , _dsprsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

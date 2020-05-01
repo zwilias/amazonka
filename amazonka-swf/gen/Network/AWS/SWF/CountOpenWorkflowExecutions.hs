@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -70,9 +70,9 @@ import Network.AWS.SWF.Types.Product
 data CountOpenWorkflowExecutions =
   CountOpenWorkflowExecutions'
     { _coweExecutionFilter :: !(Maybe WorkflowExecutionFilter)
-    , _coweTypeFilter :: !(Maybe WorkflowTypeFilter)
-    , _coweTagFilter :: !(Maybe TagFilter)
-    , _coweDomain :: !Text
+    , _coweTypeFilter      :: !(Maybe WorkflowTypeFilter)
+    , _coweTagFilter       :: !(Maybe TagFilter)
+    , _coweDomain          :: !Text
     , _coweStartTimeFilter :: !ExecutionTimeFilter
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

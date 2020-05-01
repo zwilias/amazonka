@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,8 +52,8 @@ import Network.AWS.Response
 data RevokeSnapshotAccess =
   RevokeSnapshotAccess'
     { _rsaSnapshotClusterIdentifier :: !(Maybe Text)
-    , _rsaSnapshotIdentifier :: !Text
-    , _rsaAccountWithRestoreAccess :: !Text
+    , _rsaSnapshotIdentifier        :: !Text
+    , _rsaAccountWithRestoreAccess  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -129,7 +129,7 @@ instance ToQuery RevokeSnapshotAccess where
 -- | /See:/ 'revokeSnapshotAccessResponse' smart constructor.
 data RevokeSnapshotAccessResponse =
   RevokeSnapshotAccessResponse'
-    { _rsarsSnapshot :: !(Maybe Snapshot)
+    { _rsarsSnapshot       :: !(Maybe Snapshot)
     , _rsarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

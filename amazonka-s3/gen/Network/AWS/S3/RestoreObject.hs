@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,11 +46,11 @@ import Network.AWS.S3.Types.Product
 -- | /See:/ 'restoreObject' smart constructor.
 data RestoreObject =
   RestoreObject'
-    { _roVersionId :: !(Maybe ObjectVersionId)
-    , _roRequestPayer :: !(Maybe RequestPayer)
+    { _roVersionId      :: !(Maybe ObjectVersionId)
+    , _roRequestPayer   :: !(Maybe RequestPayer)
     , _roRestoreRequest :: !(Maybe RestoreRequest)
-    , _roBucket :: !BucketName
-    , _roKey :: !ObjectKey
+    , _roBucket         :: !BucketName
+    , _roKey            :: !ObjectKey
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -132,9 +132,9 @@ instance ToQuery RestoreObject where
 -- | /See:/ 'restoreObjectResponse' smart constructor.
 data RestoreObjectResponse =
   RestoreObjectResponse'
-    { _rorsRequestCharged :: !(Maybe RequestCharged)
+    { _rorsRequestCharged    :: !(Maybe RequestCharged)
     , _rorsRestoreOutputPath :: !(Maybe Text)
-    , _rorsResponseStatus :: !Int
+    , _rorsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

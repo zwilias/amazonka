@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,8 +48,8 @@ import Network.AWS.Response
 -- | /See:/ 'listTagsForStream' smart constructor.
 data ListTagsForStream =
   ListTagsForStream'
-    { _ltfsStreamARN :: !(Maybe Text)
-    , _ltfsNextToken :: !(Maybe Text)
+    { _ltfsStreamARN  :: !(Maybe Text)
+    , _ltfsNextToken  :: !(Maybe Text)
     , _ltfsStreamName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -118,8 +118,8 @@ instance ToQuery ListTagsForStream where
 -- | /See:/ 'listTagsForStreamResponse' smart constructor.
 data ListTagsForStreamResponse =
   ListTagsForStreamResponse'
-    { _ltfsrsNextToken :: !(Maybe Text)
-    , _ltfsrsTags :: !(Maybe (Map Text Text))
+    { _ltfsrsNextToken      :: !(Maybe Text)
+    , _ltfsrsTags           :: !(Maybe (Map Text Text))
     , _ltfsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

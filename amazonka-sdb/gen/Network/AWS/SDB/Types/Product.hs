@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,9 +27,9 @@ import Network.AWS.SDB.Types.Sum
 data Attribute =
   Attribute'
     { _aAlternateValueEncoding :: !(Maybe Text)
-    , _aAlternateNameEncoding :: !(Maybe Text)
-    , _aName :: !Text
-    , _aValue :: !Text
+    , _aAlternateNameEncoding  :: !(Maybe Text)
+    , _aName                   :: !Text
+    , _aValue                  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -98,7 +98,7 @@ instance ToQuery Attribute where
 data DeletableItem =
   DeletableItem'
     { _diAttributes :: !(Maybe [Attribute])
-    , _diName :: !Text
+    , _diName       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -143,8 +143,8 @@ instance ToQuery DeletableItem where
 data Item =
   Item'
     { _iAlternateNameEncoding :: !(Maybe Text)
-    , _iName :: !Text
-    , _iAttributes :: ![Attribute]
+    , _iName                  :: !Text
+    , _iAttributes            :: ![Attribute]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -194,8 +194,8 @@ instance NFData Item
 data ReplaceableAttribute =
   ReplaceableAttribute'
     { _raReplace :: !(Maybe Bool)
-    , _raName :: !Text
-    , _raValue :: !Text
+    , _raName    :: !Text
+    , _raValue   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -243,7 +243,7 @@ instance ToQuery ReplaceableAttribute where
 -- /See:/ 'replaceableItem' smart constructor.
 data ReplaceableItem =
   ReplaceableItem'
-    { _riName :: !Text
+    { _riName       :: !Text
     , _riAttributes :: ![ReplaceableAttribute]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -285,8 +285,8 @@ instance ToQuery ReplaceableItem where
 data UpdateCondition =
   UpdateCondition'
     { _ucExists :: !(Maybe Bool)
-    , _ucValue :: !(Maybe Text)
-    , _ucName :: !(Maybe Text)
+    , _ucValue  :: !(Maybe Text)
+    , _ucName   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

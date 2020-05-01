@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,7 +54,7 @@ import Network.AWS.SDB.Types.Product
 data BatchPutAttributes =
   BatchPutAttributes'
     { _bpaDomainName :: !Text
-    , _bpaItems :: ![ReplaceableItem]
+    , _bpaItems      :: ![ReplaceableItem]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

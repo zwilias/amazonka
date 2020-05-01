@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -83,9 +83,9 @@ import Network.AWS.Response
 -- /See:/ 'batchWriteItem' smart constructor.
 data BatchWriteItem =
   BatchWriteItem'
-    { _bwiReturnConsumedCapacity :: !(Maybe ReturnConsumedCapacity)
+    { _bwiReturnConsumedCapacity      :: !(Maybe ReturnConsumedCapacity)
     , _bwiReturnItemCollectionMetrics :: !(Maybe ReturnItemCollectionMetrics)
-    , _bwiRequestItems :: !(Map Text (List1 WriteRequest))
+    , _bwiRequestItems                :: !(Map Text (List1 WriteRequest))
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -171,9 +171,9 @@ instance ToQuery BatchWriteItem where
 data BatchWriteItemResponse =
   BatchWriteItemResponse'
     { _bwirsItemCollectionMetrics :: !(Maybe (Map Text [ItemCollectionMetrics]))
-    , _bwirsConsumedCapacity :: !(Maybe [ConsumedCapacity])
-    , _bwirsUnprocessedItems :: !(Maybe (Map Text (List1 WriteRequest)))
-    , _bwirsResponseStatus :: !Int
+    , _bwirsConsumedCapacity      :: !(Maybe [ConsumedCapacity])
+    , _bwirsUnprocessedItems      :: !(Maybe (Map Text (List1 WriteRequest)))
+    , _bwirsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,13 +56,13 @@ import Network.AWS.Response
 -- /See:/ 'getItem' smart constructor.
 data GetItem =
   GetItem'
-    { _giProjectionExpression :: !(Maybe Text)
-    , _giAttributesToGet :: !(Maybe (List1 Text))
+    { _giProjectionExpression     :: !(Maybe Text)
+    , _giAttributesToGet          :: !(Maybe (List1 Text))
     , _giExpressionAttributeNames :: !(Maybe (Map Text Text))
-    , _giConsistentRead :: !(Maybe Bool)
-    , _giReturnConsumedCapacity :: !(Maybe ReturnConsumedCapacity)
-    , _giTableName :: !Text
-    , _giKey :: !(Map Text AttributeValue)
+    , _giConsistentRead           :: !(Maybe Bool)
+    , _giReturnConsumedCapacity   :: !(Maybe ReturnConsumedCapacity)
+    , _giTableName                :: !Text
+    , _giKey                      :: !(Map Text AttributeValue)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -179,8 +179,8 @@ instance ToQuery GetItem where
 data GetItemResponse =
   GetItemResponse'
     { _girsConsumedCapacity :: !(Maybe ConsumedCapacity)
-    , _girsItem :: !(Maybe (Map Text AttributeValue))
-    , _girsResponseStatus :: !Int
+    , _girsItem             :: !(Maybe (Map Text AttributeValue))
+    , _girsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

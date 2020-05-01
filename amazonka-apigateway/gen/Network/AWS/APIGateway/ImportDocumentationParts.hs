@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,10 +49,10 @@ import Network.AWS.Response
 -- /See:/ 'importDocumentationParts' smart constructor.
 data ImportDocumentationParts =
   ImportDocumentationParts'
-    { _idpMode :: !(Maybe PutMode)
+    { _idpMode           :: !(Maybe PutMode)
     , _idpFailOnWarnings :: !(Maybe Bool)
-    , _idpRestAPIId :: !Text
-    , _idpBody :: !ByteString
+    , _idpRestAPIId      :: !Text
+    , _idpBody           :: !ByteString
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -131,8 +131,8 @@ instance ToQuery ImportDocumentationParts where
 -- /See:/ 'importDocumentationPartsResponse' smart constructor.
 data ImportDocumentationPartsResponse =
   ImportDocumentationPartsResponse'
-    { _idprsIds :: !(Maybe [Text])
-    , _idprsWarnings :: !(Maybe [Text])
+    { _idprsIds            :: !(Maybe [Text])
+    , _idprsWarnings       :: !(Maybe [Text])
     , _idprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

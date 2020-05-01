@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,8 +52,8 @@ import Network.AWS.Response
 data DescribeSubnets =
   DescribeSubnets'
     { _dsSubnetIds :: !(Maybe [Text])
-    , _dsFilters :: !(Maybe [Filter])
-    , _dsDryRun :: !(Maybe Bool)
+    , _dsFilters   :: !(Maybe [Filter])
+    , _dsDryRun    :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -121,7 +121,7 @@ instance ToQuery DescribeSubnets where
 -- /See:/ 'describeSubnetsResponse' smart constructor.
 data DescribeSubnetsResponse =
   DescribeSubnetsResponse'
-    { _dsrsSubnets :: !(Maybe [Subnet])
+    { _dsrsSubnets        :: !(Maybe [Subnet])
     , _dsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

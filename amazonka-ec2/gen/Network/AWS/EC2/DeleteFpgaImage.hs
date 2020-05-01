@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'deleteFpgaImage' smart constructor.
 data DeleteFpgaImage =
   DeleteFpgaImage'
-    { _dfiDryRun :: !(Maybe Bool)
+    { _dfiDryRun      :: !(Maybe Bool)
     , _dfiFpgaImageId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -100,7 +100,7 @@ instance ToQuery DeleteFpgaImage where
 -- | /See:/ 'deleteFpgaImageResponse' smart constructor.
 data DeleteFpgaImageResponse =
   DeleteFpgaImageResponse'
-    { _delrsReturn :: !(Maybe Bool)
+    { _delrsReturn         :: !(Maybe Bool)
     , _delrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

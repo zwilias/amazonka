@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'updatePullRequestStatus' smart constructor.
 data UpdatePullRequestStatus =
   UpdatePullRequestStatus'
-    { _uprsPullRequestId :: !Text
+    { _uprsPullRequestId     :: !Text
     , _uprsPullRequestStatus :: !PullRequestStatusEnum
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -115,7 +115,7 @@ instance ToQuery UpdatePullRequestStatus where
 data UpdatePullRequestStatusResponse =
   UpdatePullRequestStatusResponse'
     { _uprsrsResponseStatus :: !Int
-    , _uprsrsPullRequest :: !PullRequest
+    , _uprsrsPullRequest    :: !PullRequest
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -68,17 +68,17 @@ import Network.AWS.Response
 -- | /See:/ 'runTask' smart constructor.
 data RunTask =
   RunTask'
-    { _rtOverrides :: !(Maybe TaskOverride)
-    , _rtGroup :: !(Maybe Text)
-    , _rtCluster :: !(Maybe Text)
-    , _rtPlatformVersion :: !(Maybe Text)
-    , _rtCount :: !(Maybe Int)
+    { _rtOverrides            :: !(Maybe TaskOverride)
+    , _rtGroup                :: !(Maybe Text)
+    , _rtCluster              :: !(Maybe Text)
+    , _rtPlatformVersion      :: !(Maybe Text)
+    , _rtCount                :: !(Maybe Int)
     , _rtPlacementConstraints :: !(Maybe [PlacementConstraint])
-    , _rtPlacementStrategy :: !(Maybe [PlacementStrategy])
-    , _rtStartedBy :: !(Maybe Text)
-    , _rtLaunchType :: !(Maybe LaunchType)
+    , _rtPlacementStrategy    :: !(Maybe [PlacementStrategy])
+    , _rtStartedBy            :: !(Maybe Text)
+    , _rtLaunchType           :: !(Maybe LaunchType)
     , _rtNetworkConfiguration :: !(Maybe NetworkConfiguration)
-    , _rtTaskDefinition :: !Text
+    , _rtTaskDefinition       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -223,8 +223,8 @@ instance ToQuery RunTask where
 -- | /See:/ 'runTaskResponse' smart constructor.
 data RunTaskResponse =
   RunTaskResponse'
-    { _rtrsFailures :: !(Maybe [Failure])
-    , _rtrsTasks :: !(Maybe [Task])
+    { _rtrsFailures       :: !(Maybe [Failure])
+    , _rtrsTasks          :: !(Maybe [Task])
     , _rtrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

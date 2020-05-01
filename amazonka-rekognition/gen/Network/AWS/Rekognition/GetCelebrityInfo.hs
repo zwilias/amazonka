@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -99,8 +99,8 @@ instance ToQuery GetCelebrityInfo where
 -- | /See:/ 'getCelebrityInfoResponse' smart constructor.
 data GetCelebrityInfoResponse =
   GetCelebrityInfoResponse'
-    { _gcirsURLs :: !(Maybe [Text])
-    , _gcirsName :: !(Maybe Text)
+    { _gcirsURLs           :: !(Maybe [Text])
+    , _gcirsName           :: !(Maybe Text)
     , _gcirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

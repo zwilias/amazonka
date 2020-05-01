@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -98,9 +98,9 @@ import Network.AWS.Response
 -- /See:/ 'listFleets' smart constructor.
 data ListFleets =
   ListFleets'
-    { _lfBuildId :: !(Maybe Text)
+    { _lfBuildId   :: !(Maybe Text)
     , _lfNextToken :: !(Maybe Text)
-    , _lfLimit :: !(Maybe Nat)
+    , _lfLimit     :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -172,8 +172,8 @@ instance ToQuery ListFleets where
 -- /See:/ 'listFleetsResponse' smart constructor.
 data ListFleetsResponse =
   ListFleetsResponse'
-    { _lfrsNextToken :: !(Maybe Text)
-    , _lfrsFleetIds :: !(Maybe (List1 Text))
+    { _lfrsNextToken      :: !(Maybe Text)
+    , _lfrsFleetIds       :: !(Maybe (List1 Text))
     , _lfrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

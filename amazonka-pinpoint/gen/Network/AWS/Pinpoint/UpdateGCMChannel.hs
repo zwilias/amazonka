@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -42,7 +42,7 @@ import Network.AWS.Response
 -- | /See:/ 'updateGCMChannel' smart constructor.
 data UpdateGCMChannel =
   UpdateGCMChannel'
-    { _ugcApplicationId :: !Text
+    { _ugcApplicationId     :: !Text
     , _ugcGCMChannelRequest :: !GCMChannelRequest
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -105,7 +105,7 @@ instance ToQuery UpdateGCMChannel where
 -- | /See:/ 'updateGCMChannelResponse' smart constructor.
 data UpdateGCMChannelResponse =
   UpdateGCMChannelResponse'
-    { _ugcrsResponseStatus :: !Int
+    { _ugcrsResponseStatus     :: !Int
     , _ugcrsGCMChannelResponse :: !GCMChannelResponse
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

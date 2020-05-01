@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -60,16 +60,16 @@ import Network.AWS.Response
 -- /See:/ 'describeReservedDBInstances' smart constructor.
 data DescribeReservedDBInstances =
   DescribeReservedDBInstances'
-    { _drdiProductDescription :: !(Maybe Text)
-    , _drdiFilters :: !(Maybe [Filter])
-    , _drdiReservedDBInstanceId :: !(Maybe Text)
-    , _drdiDBInstanceClass :: !(Maybe Text)
-    , _drdiMarker :: !(Maybe Text)
-    , _drdiMaxRecords :: !(Maybe Int)
-    , _drdiMultiAZ :: !(Maybe Bool)
+    { _drdiProductDescription            :: !(Maybe Text)
+    , _drdiFilters                       :: !(Maybe [Filter])
+    , _drdiReservedDBInstanceId          :: !(Maybe Text)
+    , _drdiDBInstanceClass               :: !(Maybe Text)
+    , _drdiMarker                        :: !(Maybe Text)
+    , _drdiMaxRecords                    :: !(Maybe Int)
+    , _drdiMultiAZ                       :: !(Maybe Bool)
     , _drdiReservedDBInstancesOfferingId :: !(Maybe Text)
-    , _drdiOfferingType :: !(Maybe Text)
-    , _drdiDuration :: !(Maybe Text)
+    , _drdiOfferingType                  :: !(Maybe Text)
+    , _drdiDuration                      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -213,8 +213,8 @@ instance ToQuery DescribeReservedDBInstances where
 data DescribeReservedDBInstancesResponse =
   DescribeReservedDBInstancesResponse'
     { _drdirsReservedDBInstances :: !(Maybe [ReservedDBInstance])
-    , _drdirsMarker :: !(Maybe Text)
-    , _drdirsResponseStatus :: !Int
+    , _drdirsMarker              :: !(Maybe Text)
+    , _drdirsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

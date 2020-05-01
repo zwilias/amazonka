@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,8 +44,8 @@ import Network.AWS.Response
 -- | /See:/ 'listCoreDefinitionVersions' smart constructor.
 data ListCoreDefinitionVersions =
   ListCoreDefinitionVersions'
-    { _lcdvNextToken :: !(Maybe Text)
-    , _lcdvMaxResults :: !(Maybe Text)
+    { _lcdvNextToken        :: !(Maybe Text)
+    , _lcdvMaxResults       :: !(Maybe Text)
     , _lcdvCoreDefinitionId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -113,8 +113,8 @@ instance ToQuery ListCoreDefinitionVersions where
 -- | /See:/ 'listCoreDefinitionVersionsResponse' smart constructor.
 data ListCoreDefinitionVersionsResponse =
   ListCoreDefinitionVersionsResponse'
-    { _lcdvrsVersions :: !(Maybe [VersionInformation])
-    , _lcdvrsNextToken :: !(Maybe Text)
+    { _lcdvrsVersions       :: !(Maybe [VersionInformation])
+    , _lcdvrsNextToken      :: !(Maybe Text)
     , _lcdvrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -115,12 +115,12 @@ instance ToQuery GetOperationDetail where
 -- /See:/ 'getOperationDetailResponse' smart constructor.
 data GetOperationDetailResponse =
   GetOperationDetailResponse'
-    { _godrsStatus :: !(Maybe OperationStatus)
-    , _godrsSubmittedDate :: !(Maybe POSIX)
-    , _godrsDomainName :: !(Maybe Text)
-    , _godrsOperationId :: !(Maybe Text)
-    , _godrsType :: !(Maybe OperationType)
-    , _godrsMessage :: !(Maybe Text)
+    { _godrsStatus         :: !(Maybe OperationStatus)
+    , _godrsSubmittedDate  :: !(Maybe POSIX)
+    , _godrsDomainName     :: !(Maybe Text)
+    , _godrsOperationId    :: !(Maybe Text)
+    , _godrsType           :: !(Maybe OperationType)
+    , _godrsMessage        :: !(Maybe Text)
     , _godrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

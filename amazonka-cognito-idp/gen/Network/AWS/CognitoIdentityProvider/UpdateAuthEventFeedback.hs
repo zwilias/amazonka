@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- | /See:/ 'updateAuthEventFeedback' smart constructor.
 data UpdateAuthEventFeedback =
   UpdateAuthEventFeedback'
-    { _uaefUserPoolId :: !Text
-    , _uaefUsername :: !(Sensitive Text)
-    , _uaefEventId :: !Text
+    { _uaefUserPoolId    :: !Text
+    , _uaefUsername      :: !(Sensitive Text)
+    , _uaefEventId       :: !Text
     , _uaefFeedbackToken :: !(Sensitive Text)
     , _uaefFeedbackValue :: !FeedbackValueType
     }

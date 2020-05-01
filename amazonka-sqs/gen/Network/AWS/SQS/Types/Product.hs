@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,10 +26,10 @@ import Network.AWS.SQS.Types.Sum
 -- /See:/ 'batchResultErrorEntry' smart constructor.
 data BatchResultErrorEntry =
   BatchResultErrorEntry'
-    { _breeMessage :: !(Maybe Text)
-    , _breeId :: !Text
+    { _breeMessage     :: !(Maybe Text)
+    , _breeId          :: !Text
     , _breeSenderFault :: !Bool
-    , _breeCode :: !Text
+    , _breeCode        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -99,8 +99,8 @@ instance NFData BatchResultErrorEntry
 data ChangeMessageVisibilityBatchRequestEntry =
   ChangeMessageVisibilityBatchRequestEntry'
     { _cVisibilityTimeout :: !(Maybe Int)
-    , _cId :: !Text
-    , _cReceiptHandle :: !Text
+    , _cId                :: !Text
+    , _cReceiptHandle     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -189,7 +189,7 @@ instance NFData ChangeMessageVisibilityBatchResultEntry
 -- /See:/ 'deleteMessageBatchRequestEntry' smart constructor.
 data DeleteMessageBatchRequestEntry =
   DeleteMessageBatchRequestEntry'
-    { _dmbreId :: !Text
+    { _dmbreId            :: !Text
     , _dmbreReceiptHandle :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -266,12 +266,12 @@ instance NFData DeleteMessageBatchResultEntry
 -- /See:/ 'message' smart constructor.
 data Message =
   Message'
-    { _mMessageAttributes :: !(Maybe (Map Text MessageAttributeValue))
-    , _mMD5OfBody :: !(Maybe Text)
-    , _mBody :: !(Maybe Text)
-    , _mAttributes :: !(Maybe (Map MessageAttribute Text))
-    , _mReceiptHandle :: !(Maybe Text)
-    , _mMessageId :: !(Maybe Text)
+    { _mMessageAttributes      :: !(Maybe (Map Text MessageAttributeValue))
+    , _mMD5OfBody              :: !(Maybe Text)
+    , _mBody                   :: !(Maybe Text)
+    , _mAttributes             :: !(Maybe (Map MessageAttribute Text))
+    , _mReceiptHandle          :: !(Maybe Text)
+    , _mMessageId              :: !(Maybe Text)
     , _mMD5OfMessageAttributes :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -359,11 +359,11 @@ instance NFData Message
 -- /See:/ 'messageAttributeValue' smart constructor.
 data MessageAttributeValue =
   MessageAttributeValue'
-    { _mavBinaryValue :: !(Maybe Base64)
+    { _mavBinaryValue      :: !(Maybe Base64)
     , _mavStringListValues :: !(Maybe [Text])
-    , _mavStringValue :: !(Maybe Text)
+    , _mavStringValue      :: !(Maybe Text)
     , _mavBinaryListValues :: !(Maybe [Base64])
-    , _mavDataType :: !Text
+    , _mavDataType         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -448,12 +448,12 @@ instance ToQuery MessageAttributeValue where
 -- /See:/ 'sendMessageBatchRequestEntry' smart constructor.
 data SendMessageBatchRequestEntry =
   SendMessageBatchRequestEntry'
-    { _sMessageAttributes :: !(Maybe (Map Text MessageAttributeValue))
-    , _sDelaySeconds :: !(Maybe Int)
+    { _sMessageAttributes      :: !(Maybe (Map Text MessageAttributeValue))
+    , _sDelaySeconds           :: !(Maybe Int)
     , _sMessageDeduplicationId :: !(Maybe Text)
-    , _sMessageGroupId :: !(Maybe Text)
-    , _sId :: !Text
-    , _sMessageBody :: !Text
+    , _sMessageGroupId         :: !(Maybe Text)
+    , _sId                     :: !Text
+    , _sMessageBody            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -537,11 +537,11 @@ instance ToQuery SendMessageBatchRequestEntry where
 -- /See:/ 'sendMessageBatchResultEntry' smart constructor.
 data SendMessageBatchResultEntry =
   SendMessageBatchResultEntry'
-    { _smbreSequenceNumber :: !(Maybe Text)
+    { _smbreSequenceNumber         :: !(Maybe Text)
     , _smbreMD5OfMessageAttributes :: !(Maybe Text)
-    , _smbreId :: !Text
-    , _smbreMessageId :: !Text
-    , _smbreMD5OfMessageBody :: !Text
+    , _smbreId                     :: !Text
+    , _smbreMessageId              :: !Text
+    , _smbreMD5OfMessageBody       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

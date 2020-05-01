@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -43,7 +43,7 @@ import Network.AWS.Response
 data GetEndpoint =
   GetEndpoint'
     { _geApplicationId :: !Text
-    , _geEndpointId :: !Text
+    , _geEndpointId    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -98,7 +98,7 @@ instance ToQuery GetEndpoint where
 -- | /See:/ 'getEndpointResponse' smart constructor.
 data GetEndpointResponse =
   GetEndpointResponse'
-    { _gersResponseStatus :: !Int
+    { _gersResponseStatus   :: !Int
     , _gersEndpointResponse :: !EndpointResponse
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

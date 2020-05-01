@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -84,25 +84,25 @@ import Network.AWS.Response
 -- | /See:/ 'putMetricAlarm' smart constructor.
 data PutMetricAlarm =
   PutMetricAlarm'
-    { _pmaTreatMissingData :: !(Maybe Text)
-    , _pmaAlarmDescription :: !(Maybe Text)
-    , _pmaOKActions :: !(Maybe [Text])
+    { _pmaTreatMissingData                 :: !(Maybe Text)
+    , _pmaAlarmDescription                 :: !(Maybe Text)
+    , _pmaOKActions                        :: !(Maybe [Text])
     , _pmaEvaluateLowSampleCountPercentile :: !(Maybe Text)
-    , _pmaDatapointsToAlarm :: !(Maybe Nat)
-    , _pmaActionsEnabled :: !(Maybe Bool)
-    , _pmaInsufficientDataActions :: !(Maybe [Text])
-    , _pmaDimensions :: !(Maybe [Dimension])
-    , _pmaAlarmActions :: !(Maybe [Text])
-    , _pmaUnit :: !(Maybe StandardUnit)
-    , _pmaStatistic :: !(Maybe Statistic)
-    , _pmaExtendedStatistic :: !(Maybe Text)
-    , _pmaAlarmName :: !Text
-    , _pmaMetricName :: !Text
-    , _pmaNamespace :: !Text
-    , _pmaPeriod :: !Nat
-    , _pmaEvaluationPeriods :: !Nat
-    , _pmaThreshold :: !Double
-    , _pmaComparisonOperator :: !ComparisonOperator
+    , _pmaDatapointsToAlarm                :: !(Maybe Nat)
+    , _pmaActionsEnabled                   :: !(Maybe Bool)
+    , _pmaInsufficientDataActions          :: !(Maybe [Text])
+    , _pmaDimensions                       :: !(Maybe [Dimension])
+    , _pmaAlarmActions                     :: !(Maybe [Text])
+    , _pmaUnit                             :: !(Maybe StandardUnit)
+    , _pmaStatistic                        :: !(Maybe Statistic)
+    , _pmaExtendedStatistic                :: !(Maybe Text)
+    , _pmaAlarmName                        :: !Text
+    , _pmaMetricName                       :: !Text
+    , _pmaNamespace                        :: !Text
+    , _pmaPeriod                           :: !Nat
+    , _pmaEvaluationPeriods                :: !Nat
+    , _pmaThreshold                        :: !Double
+    , _pmaComparisonOperator               :: !ComparisonOperator
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 data CancelJob =
   CancelJob'
     { _cComment :: !(Maybe Text)
-    , _cJobId :: !Text
+    , _cJobId   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -100,9 +100,9 @@ instance ToQuery CancelJob where
 -- | /See:/ 'cancelJobResponse' smart constructor.
 data CancelJobResponse =
   CancelJobResponse'
-    { _crsJobId :: !(Maybe Text)
-    , _crsJobARN :: !(Maybe Text)
-    , _crsDescription :: !(Maybe Text)
+    { _crsJobId          :: !(Maybe Text)
+    , _crsJobARN         :: !(Maybe Text)
+    , _crsDescription    :: !(Maybe Text)
     , _crsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

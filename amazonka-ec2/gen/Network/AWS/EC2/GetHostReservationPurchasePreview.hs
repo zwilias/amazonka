@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Response
 -- | /See:/ 'getHostReservationPurchasePreview' smart constructor.
 data GetHostReservationPurchasePreview =
   GetHostReservationPurchasePreview'
-    { _ghrppHostIdSet :: ![Text]
+    { _ghrppHostIdSet  :: ![Text]
     , _ghrppOfferingId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -111,11 +111,11 @@ instance ToQuery GetHostReservationPurchasePreview where
 -- | /See:/ 'getHostReservationPurchasePreviewResponse' smart constructor.
 data GetHostReservationPurchasePreviewResponse =
   GetHostReservationPurchasePreviewResponse'
-    { _ghrpprsCurrencyCode :: !(Maybe CurrencyCodeValues)
-    , _ghrpprsTotalHourlyPrice :: !(Maybe Text)
+    { _ghrpprsCurrencyCode      :: !(Maybe CurrencyCodeValues)
+    , _ghrpprsTotalHourlyPrice  :: !(Maybe Text)
     , _ghrpprsTotalUpfrontPrice :: !(Maybe Text)
-    , _ghrpprsPurchase :: !(Maybe [Purchase])
-    , _ghrpprsResponseStatus :: !Int
+    , _ghrpprsPurchase          :: !(Maybe [Purchase])
+    , _ghrpprsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,11 +48,11 @@ import Network.AWS.Response
 -- | /See:/ 'describeVPCEndpointServicePermissions' smart constructor.
 data DescribeVPCEndpointServicePermissions =
   DescribeVPCEndpointServicePermissions'
-    { _dvespFilters :: !(Maybe [Filter])
-    , _dvespNextToken :: !(Maybe Text)
-    , _dvespDryRun :: !(Maybe Bool)
+    { _dvespFilters    :: !(Maybe [Filter])
+    , _dvespNextToken  :: !(Maybe Text)
+    , _dvespDryRun     :: !(Maybe Bool)
     , _dvespMaxResults :: !(Maybe Int)
-    , _dvespServiceId :: !Text
+    , _dvespServiceId  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -137,9 +137,9 @@ instance ToQuery DescribeVPCEndpointServicePermissions where
 -- | /See:/ 'describeVPCEndpointServicePermissionsResponse' smart constructor.
 data DescribeVPCEndpointServicePermissionsResponse =
   DescribeVPCEndpointServicePermissionsResponse'
-    { _dvesprsNextToken :: !(Maybe Text)
+    { _dvesprsNextToken         :: !(Maybe Text)
     , _dvesprsAllowedPrincipals :: !(Maybe [AllowedPrincipal])
-    , _dvesprsResponseStatus :: !Int
+    , _dvesprsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

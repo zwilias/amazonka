@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- /See:/ 'getVPCLinks' smart constructor.
 data GetVPCLinks =
   GetVPCLinks'
-    { _gvlLimit :: !(Maybe Int)
+    { _gvlLimit    :: !(Maybe Int)
     , _gvlPosition :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -113,8 +113,8 @@ instance ToQuery GetVPCLinks where
 -- /See:/ 'getVPCLinksResponse' smart constructor.
 data GetVPCLinksResponse =
   GetVPCLinksResponse'
-    { _gvlrsItems :: !(Maybe [VPCLink])
-    , _gvlrsPosition :: !(Maybe Text)
+    { _gvlrsItems          :: !(Maybe [VPCLink])
+    , _gvlrsPosition       :: !(Maybe Text)
     , _gvlrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 data RegisterEcsCluster =
   RegisterEcsCluster'
     { _recEcsClusterARN :: !Text
-    , _recStackId :: !Text
+    , _recStackId       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -117,7 +117,7 @@ instance ToQuery RegisterEcsCluster where
 -- /See:/ 'registerEcsClusterResponse' smart constructor.
 data RegisterEcsClusterResponse =
   RegisterEcsClusterResponse'
-    { _recrsEcsClusterARN :: !(Maybe Text)
+    { _recrsEcsClusterARN  :: !(Maybe Text)
     , _recrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

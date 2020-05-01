@@ -397,14 +397,14 @@ import Network.AWS.Organizations.DescribePolicy
 import Network.AWS.Organizations.DetachPolicy
 import Network.AWS.Organizations.DisableAWSServiceAccess
 import Network.AWS.Organizations.DisablePolicyType
-import Network.AWS.Organizations.EnableAWSServiceAccess
 import Network.AWS.Organizations.EnableAllFeatures
+import Network.AWS.Organizations.EnableAWSServiceAccess
 import Network.AWS.Organizations.EnablePolicyType
 import Network.AWS.Organizations.InviteAccountToOrganization
 import Network.AWS.Organizations.LeaveOrganization
-import Network.AWS.Organizations.ListAWSServiceAccessForOrganization
 import Network.AWS.Organizations.ListAccounts
 import Network.AWS.Organizations.ListAccountsForParent
+import Network.AWS.Organizations.ListAWSServiceAccessForOrganization
 import Network.AWS.Organizations.ListChildren
 import Network.AWS.Organizations.ListCreateAccountStatus
 import Network.AWS.Organizations.ListHandshakesForAccount

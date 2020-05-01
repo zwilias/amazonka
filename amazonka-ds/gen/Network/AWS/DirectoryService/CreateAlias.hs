@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.Response
 data CreateAlias =
   CreateAlias'
     { _caDirectoryId :: !Text
-    , _caAlias :: !Text
+    , _caAlias       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -119,8 +119,8 @@ instance ToQuery CreateAlias where
 -- /See:/ 'createAliasResponse' smart constructor.
 data CreateAliasResponse =
   CreateAliasResponse'
-    { _carsDirectoryId :: !(Maybe Text)
-    , _carsAlias :: !(Maybe Text)
+    { _carsDirectoryId    :: !(Maybe Text)
+    , _carsAlias          :: !(Maybe Text)
     , _carsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

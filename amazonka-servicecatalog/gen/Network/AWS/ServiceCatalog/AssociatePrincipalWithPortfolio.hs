@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.ServiceCatalog.Types.Product
 data AssociatePrincipalWithPortfolio =
   AssociatePrincipalWithPortfolio'
     { _aAcceptLanguage :: !(Maybe Text)
-    , _aPortfolioId :: !Text
-    , _aPrincipalARN :: !Text
-    , _aPrincipalType :: !PrincipalType
+    , _aPortfolioId    :: !Text
+    , _aPrincipalARN   :: !Text
+    , _aPrincipalType  :: !PrincipalType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

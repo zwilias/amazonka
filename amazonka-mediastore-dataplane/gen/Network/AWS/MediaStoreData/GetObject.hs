@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,7 +51,7 @@ import Network.AWS.Response
 data GetObject =
   GetObject'
     { _goRange :: !(Maybe Text)
-    , _goPath :: !Text
+    , _goPath  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -105,14 +105,14 @@ instance ToQuery GetObject where
 -- | /See:/ 'getObjectResponse' smart constructor.
 data GetObjectResponse =
   GetObjectResponse'
-    { _gorsETag :: !(Maybe Text)
+    { _gorsETag          :: !(Maybe Text)
     , _gorsContentLength :: !(Maybe Nat)
-    , _gorsCacheControl :: !(Maybe Text)
-    , _gorsLastModified :: !(Maybe POSIX)
-    , _gorsContentRange :: !(Maybe Text)
-    , _gorsContentType :: !(Maybe Text)
-    , _gorsStatusCode :: !Int
-    , _gorsBody :: !RsBody
+    , _gorsCacheControl  :: !(Maybe Text)
+    , _gorsLastModified  :: !(Maybe POSIX)
+    , _gorsContentRange  :: !(Maybe Text)
+    , _gorsContentType   :: !(Maybe Text)
+    , _gorsStatusCode    :: !Int
+    , _gorsBody          :: !RsBody
     }
   deriving (Show, Generic)
 

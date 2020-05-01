@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -113,18 +113,18 @@ instance ToQuery StartChannel where
 -- /See:/ 'startChannelResponse' smart constructor.
 data StartChannelResponse =
   StartChannelResponse'
-    { _scrsState :: !(Maybe ChannelState)
-    , _scrsARN :: !(Maybe Text)
+    { _scrsState                 :: !(Maybe ChannelState)
+    , _scrsARN                   :: !(Maybe Text)
     , _scrsPipelinesRunningCount :: !(Maybe Int)
-    , _scrsInputSpecification :: !(Maybe InputSpecification)
-    , _scrsInputAttachments :: !(Maybe [InputAttachment])
-    , _scrsDestinations :: !(Maybe [OutputDestination])
-    , _scrsName :: !(Maybe Text)
-    , _scrsId :: !(Maybe Text)
-    , _scrsEgressEndpoints :: !(Maybe [ChannelEgressEndpoint])
-    , _scrsEncoderSettings :: !(Maybe EncoderSettings)
-    , _scrsRoleARN :: !(Maybe Text)
-    , _scrsResponseStatus :: !Int
+    , _scrsInputSpecification    :: !(Maybe InputSpecification)
+    , _scrsInputAttachments      :: !(Maybe [InputAttachment])
+    , _scrsDestinations          :: !(Maybe [OutputDestination])
+    , _scrsName                  :: !(Maybe Text)
+    , _scrsId                    :: !(Maybe Text)
+    , _scrsEgressEndpoints       :: !(Maybe [ChannelEgressEndpoint])
+    , _scrsEncoderSettings       :: !(Maybe EncoderSettings)
+    , _scrsRoleARN               :: !(Maybe Text)
+    , _scrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

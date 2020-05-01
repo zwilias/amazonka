@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 data RunPipelineActivity =
   RunPipelineActivity'
     { _rpaPipelineActivity :: !PipelineActivity
-    , _rpaPayloads :: !(List1 Base64)
+    , _rpaPayloads         :: !(List1 Base64)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -110,8 +110,8 @@ instance ToQuery RunPipelineActivity where
 -- | /See:/ 'runPipelineActivityResponse' smart constructor.
 data RunPipelineActivityResponse =
   RunPipelineActivityResponse'
-    { _rparsLogResult :: !(Maybe Text)
-    , _rparsPayloads :: !(Maybe (List1 Base64))
+    { _rparsLogResult      :: !(Maybe Text)
+    , _rparsPayloads       :: !(Maybe (List1 Base64))
     , _rparsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

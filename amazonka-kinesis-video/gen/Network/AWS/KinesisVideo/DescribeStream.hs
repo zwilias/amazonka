@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'describeStream' smart constructor.
 data DescribeStream =
   DescribeStream'
-    { _dStreamARN :: !(Maybe Text)
+    { _dStreamARN  :: !(Maybe Text)
     , _dStreamName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -98,7 +98,7 @@ instance ToQuery DescribeStream where
 -- | /See:/ 'describeStreamResponse' smart constructor.
 data DescribeStreamResponse =
   DescribeStreamResponse'
-    { _drsStreamInfo :: !(Maybe StreamInfo)
+    { _drsStreamInfo     :: !(Maybe StreamInfo)
     , _drsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

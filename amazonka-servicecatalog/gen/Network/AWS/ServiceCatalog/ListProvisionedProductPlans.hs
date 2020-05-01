@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,10 +49,10 @@ import Network.AWS.ServiceCatalog.Types.Product
 data ListProvisionedProductPlans =
   ListProvisionedProductPlans'
     { _lpppProvisionProductId :: !(Maybe Text)
-    , _lpppAcceptLanguage :: !(Maybe Text)
-    , _lpppAccessLevelFilter :: !(Maybe AccessLevelFilter)
-    , _lpppPageToken :: !(Maybe Text)
-    , _lpppPageSize :: !(Maybe Nat)
+    , _lpppAcceptLanguage     :: !(Maybe Text)
+    , _lpppAccessLevelFilter  :: !(Maybe AccessLevelFilter)
+    , _lpppPageToken          :: !(Maybe Text)
+    , _lpppPageSize           :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -146,9 +146,9 @@ instance ToQuery ListProvisionedProductPlans where
 -- | /See:/ 'listProvisionedProductPlansResponse' smart constructor.
 data ListProvisionedProductPlansResponse =
   ListProvisionedProductPlansResponse'
-    { _lppprsNextPageToken :: !(Maybe Text)
+    { _lppprsNextPageToken           :: !(Maybe Text)
     , _lppprsProvisionedProductPlans :: !(Maybe [ProvisionedProductPlanSummary])
-    , _lppprsResponseStatus :: !Int
+    , _lppprsResponseStatus          :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -62,13 +62,13 @@ import Network.AWS.Response
 -- /See:/ 'updateIdentityPool' smart constructor.
 data UpdateIdentityPool =
   UpdateIdentityPool'
-    { _uipSamlProviderARNs :: !(Maybe [Text])
-    , _uipSupportedLoginProviders :: !(Maybe (Map Text Text))
-    , _uipDeveloperProviderName :: !(Maybe Text)
-    , _uipOpenIdConnectProviderARNs :: !(Maybe [Text])
-    , _uipCognitoIdentityProviders :: !(Maybe [CognitoIdentityProvider])
-    , _uipIdentityPoolId :: !Text
-    , _uipIdentityPoolName :: !Text
+    { _uipSamlProviderARNs               :: !(Maybe [Text])
+    , _uipSupportedLoginProviders        :: !(Maybe (Map Text Text))
+    , _uipDeveloperProviderName          :: !(Maybe Text)
+    , _uipOpenIdConnectProviderARNs      :: !(Maybe [Text])
+    , _uipCognitoIdentityProviders       :: !(Maybe [CognitoIdentityProvider])
+    , _uipIdentityPoolId                 :: !Text
+    , _uipIdentityPoolName               :: !Text
     , _uipAllowUnauthenticatedIdentities :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

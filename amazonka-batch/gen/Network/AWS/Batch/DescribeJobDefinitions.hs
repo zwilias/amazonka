@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,11 +48,11 @@ import Network.AWS.Response
 -- | /See:/ 'describeJobDefinitions' smart constructor.
 data DescribeJobDefinitions =
   DescribeJobDefinitions'
-    { _djdStatus :: !(Maybe Text)
+    { _djdStatus            :: !(Maybe Text)
     , _djdJobDefinitionName :: !(Maybe Text)
-    , _djdJobDefinitions :: !(Maybe [Text])
-    , _djdNextToken :: !(Maybe Text)
-    , _djdMaxResults :: !(Maybe Int)
+    , _djdJobDefinitions    :: !(Maybe [Text])
+    , _djdNextToken         :: !(Maybe Text)
+    , _djdMaxResults        :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -142,7 +142,7 @@ instance ToQuery DescribeJobDefinitions where
 data DescribeJobDefinitionsResponse =
   DescribeJobDefinitionsResponse'
     { _djdrsJobDefinitions :: !(Maybe [JobDefinition])
-    , _djdrsNextToken :: !(Maybe Text)
+    , _djdrsNextToken      :: !(Maybe Text)
     , _djdrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

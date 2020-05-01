@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'uploadSigningCertificate' smart constructor.
 data UploadSigningCertificate =
   UploadSigningCertificate'
-    { _uplUserName :: !(Maybe Text)
+    { _uplUserName        :: !(Maybe Text)
     , _uplCertificateBody :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -111,7 +111,7 @@ instance ToQuery UploadSigningCertificate where
 data UploadSigningCertificateResponse =
   UploadSigningCertificateResponse'
     { _uscrsResponseStatus :: !Int
-    , _uscrsCertificate :: !SigningCertificate
+    , _uscrsCertificate    :: !SigningCertificate
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

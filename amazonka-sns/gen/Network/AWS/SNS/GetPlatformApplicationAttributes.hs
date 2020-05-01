@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -105,7 +105,7 @@ instance ToQuery GetPlatformApplicationAttributes where
 -- /See:/ 'getPlatformApplicationAttributesResponse' smart constructor.
 data GetPlatformApplicationAttributesResponse =
   GetPlatformApplicationAttributesResponse'
-    { _gpaarsAttributes :: !(Maybe (Map Text Text))
+    { _gpaarsAttributes     :: !(Maybe (Map Text Text))
     , _gpaarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,10 +48,10 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'describeAutomationStepExecutions' smart constructor.
 data DescribeAutomationStepExecutions =
   DescribeAutomationStepExecutions'
-    { _daseFilters :: !(Maybe (List1 StepExecutionFilter))
-    , _daseReverseOrder :: !(Maybe Bool)
-    , _daseNextToken :: !(Maybe Text)
-    , _daseMaxResults :: !(Maybe Nat)
+    { _daseFilters               :: !(Maybe (List1 StepExecutionFilter))
+    , _daseReverseOrder          :: !(Maybe Bool)
+    , _daseNextToken             :: !(Maybe Text)
+    , _daseMaxResults            :: !(Maybe Nat)
     , _daseAutomationExecutionId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -147,7 +147,7 @@ instance ToQuery DescribeAutomationStepExecutions where
 -- | /See:/ 'describeAutomationStepExecutionsResponse' smart constructor.
 data DescribeAutomationStepExecutionsResponse =
   DescribeAutomationStepExecutionsResponse'
-    { _dasersNextToken :: !(Maybe Text)
+    { _dasersNextToken      :: !(Maybe Text)
     , _dasersStepExecutions :: !(Maybe [StepExecution])
     , _dasersResponseStatus :: !Int
     }

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,9 +54,9 @@ import Network.AWS.Response
 data GetExport =
   GetExport'
     { _geParameters :: !(Maybe (Map Text Text))
-    , _geAccepts :: !(Maybe Text)
-    , _geRestAPIId :: !Text
-    , _geStageName :: !Text
+    , _geAccepts    :: !(Maybe Text)
+    , _geRestAPIId  :: !Text
+    , _geStageName  :: !Text
     , _geExportType :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -154,10 +154,10 @@ instance ToQuery GetExport where
 -- /See:/ 'getExportResponse' smart constructor.
 data GetExportResponse =
   GetExportResponse'
-    { _gersBody :: !(Maybe ByteString)
+    { _gersBody               :: !(Maybe ByteString)
     , _gersContentDisposition :: !(Maybe Text)
-    , _gersContentType :: !(Maybe Text)
-    , _gersResponseStatus :: !Int
+    , _gersContentType        :: !(Maybe Text)
+    , _gersResponseStatus     :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

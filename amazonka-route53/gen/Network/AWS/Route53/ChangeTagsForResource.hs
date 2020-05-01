@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,9 +52,9 @@ import Network.AWS.Route53.Types.Product
 data ChangeTagsForResource =
   ChangeTagsForResource'
     { _ctfrRemoveTagKeys :: !(Maybe (List1 Text))
-    , _ctfrAddTags :: !(Maybe (List1 Tag))
-    , _ctfrResourceType :: !TagResourceType
-    , _ctfrResourceId :: !Text
+    , _ctfrAddTags       :: !(Maybe (List1 Tag))
+    , _ctfrResourceType  :: !TagResourceType
+    , _ctfrResourceId    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

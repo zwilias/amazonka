@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.WAF.Types.Product
 data ListWebACLs =
   ListWebACLs'
     { _lwaNextMarker :: !(Maybe Text)
-    , _lwaLimit :: !(Maybe Nat)
+    , _lwaLimit      :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -114,8 +114,8 @@ instance ToQuery ListWebACLs where
 -- | /See:/ 'listWebACLsResponse' smart constructor.
 data ListWebACLsResponse =
   ListWebACLsResponse'
-    { _lwarsWebACLs :: !(Maybe [WebACLSummary])
-    , _lwarsNextMarker :: !(Maybe Text)
+    { _lwarsWebACLs        :: !(Maybe [WebACLSummary])
+    , _lwarsNextMarker     :: !(Maybe Text)
     , _lwarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

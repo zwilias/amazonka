@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,12 +49,12 @@ import Network.AWS.Response
 -- | /See:/ 'describeSessions' smart constructor.
 data DescribeSessions =
   DescribeSessions'
-    { _dsUserId :: !(Maybe Text)
-    , _dsNextToken :: !(Maybe Text)
-    , _dsLimit :: !(Maybe Int)
+    { _dsUserId             :: !(Maybe Text)
+    , _dsNextToken          :: !(Maybe Text)
+    , _dsLimit              :: !(Maybe Int)
     , _dsAuthenticationType :: !(Maybe AuthenticationType)
-    , _dsStackName :: !Text
-    , _dsFleetName :: !Text
+    , _dsStackName          :: !Text
+    , _dsFleetName          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -156,8 +156,8 @@ instance ToQuery DescribeSessions where
 -- | /See:/ 'describeSessionsResponse' smart constructor.
 data DescribeSessionsResponse =
   DescribeSessionsResponse'
-    { _dssrsNextToken :: !(Maybe Text)
-    , _dssrsSessions :: !(Maybe [Session])
+    { _dssrsNextToken      :: !(Maybe Text)
+    , _dssrsSessions       :: !(Maybe [Session])
     , _dssrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

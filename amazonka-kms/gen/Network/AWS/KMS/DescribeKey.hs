@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 data DescribeKey =
   DescribeKey'
     { _dGrantTokens :: !(Maybe [Text])
-    , _dKeyId :: !Text
+    , _dKeyId       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -107,7 +107,7 @@ instance ToQuery DescribeKey where
 -- | /See:/ 'describeKeyResponse' smart constructor.
 data DescribeKeyResponse =
   DescribeKeyResponse'
-    { _dkrsKeyMetadata :: !(Maybe KeyMetadata)
+    { _dkrsKeyMetadata    :: !(Maybe KeyMetadata)
     , _dkrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

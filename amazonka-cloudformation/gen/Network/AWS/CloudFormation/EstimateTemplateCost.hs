@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,9 +49,9 @@ import Network.AWS.Response
 -- /See:/ 'estimateTemplateCost' smart constructor.
 data EstimateTemplateCost =
   EstimateTemplateCost'
-    { _etcParameters :: !(Maybe [Parameter])
+    { _etcParameters   :: !(Maybe [Parameter])
     , _etcTemplateBody :: !(Maybe Text)
-    , _etcTemplateURL :: !(Maybe Text)
+    , _etcTemplateURL  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -121,7 +121,7 @@ instance ToQuery EstimateTemplateCost where
 -- /See:/ 'estimateTemplateCostResponse' smart constructor.
 data EstimateTemplateCostResponse =
   EstimateTemplateCostResponse'
-    { _etcrsURL :: !(Maybe Text)
+    { _etcrsURL            :: !(Maybe Text)
     , _etcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

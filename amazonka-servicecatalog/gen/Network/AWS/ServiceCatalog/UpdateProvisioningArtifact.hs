@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,11 +52,11 @@ import Network.AWS.ServiceCatalog.Types.Product
 -- | /See:/ 'updateProvisioningArtifact' smart constructor.
 data UpdateProvisioningArtifact =
   UpdateProvisioningArtifact'
-    { _upaActive :: !(Maybe Bool)
-    , _upaName :: !(Maybe Text)
-    , _upaAcceptLanguage :: !(Maybe Text)
-    , _upaDescription :: !(Maybe Text)
-    , _upaProductId :: !Text
+    { _upaActive                 :: !(Maybe Bool)
+    , _upaName                   :: !(Maybe Text)
+    , _upaAcceptLanguage         :: !(Maybe Text)
+    , _upaDescription            :: !(Maybe Text)
+    , _upaProductId              :: !Text
     , _upaProvisioningArtifactId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -160,10 +160,10 @@ instance ToQuery UpdateProvisioningArtifact where
 -- | /See:/ 'updateProvisioningArtifactResponse' smart constructor.
 data UpdateProvisioningArtifactResponse =
   UpdateProvisioningArtifactResponse'
-    { _uparsStatus :: !(Maybe RequestStatus)
-    , _uparsInfo :: !(Maybe (Map Text Text))
+    { _uparsStatus                     :: !(Maybe RequestStatus)
+    , _uparsInfo                       :: !(Maybe (Map Text Text))
     , _uparsProvisioningArtifactDetail :: !(Maybe ProvisioningArtifactDetail)
-    , _uparsResponseStatus :: !Int
+    , _uparsResponseStatus             :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -56,11 +56,11 @@ instance NFData ComputeType
 -- /See:/ 'defaultWorkspaceCreationProperties' smart constructor.
 data DefaultWorkspaceCreationProperties =
   DefaultWorkspaceCreationProperties'
-    { _dwcpCustomSecurityGroupId :: !(Maybe Text)
+    { _dwcpCustomSecurityGroupId           :: !(Maybe Text)
     , _dwcpUserEnabledAsLocalAdministrator :: !(Maybe Bool)
-    , _dwcpEnableWorkDocs :: !(Maybe Bool)
-    , _dwcpEnableInternetAccess :: !(Maybe Bool)
-    , _dwcpDefaultOu :: !(Maybe Text)
+    , _dwcpEnableWorkDocs                  :: !(Maybe Bool)
+    , _dwcpEnableInternetAccess            :: !(Maybe Bool)
+    , _dwcpDefaultOu                       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -139,8 +139,8 @@ instance NFData DefaultWorkspaceCreationProperties
 data FailedCreateWorkspaceRequest =
   FailedCreateWorkspaceRequest'
     { _fcwrWorkspaceRequest :: !(Maybe WorkspaceRequest)
-    , _fcwrErrorCode :: !(Maybe Text)
-    , _fcwrErrorMessage :: !(Maybe Text)
+    , _fcwrErrorCode        :: !(Maybe Text)
+    , _fcwrErrorMessage     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -195,8 +195,8 @@ instance NFData FailedCreateWorkspaceRequest
 -- /See:/ 'failedWorkspaceChangeRequest' smart constructor.
 data FailedWorkspaceChangeRequest =
   FailedWorkspaceChangeRequest'
-    { _fwcrErrorCode :: !(Maybe Text)
-    , _fwcrWorkspaceId :: !(Maybe Text)
+    { _fwcrErrorCode    :: !(Maybe Text)
+    , _fwcrWorkspaceId  :: !(Maybe Text)
     , _fwcrErrorMessage :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -251,7 +251,7 @@ instance NFData FailedWorkspaceChangeRequest
 data IPRuleItem =
   IPRuleItem'
     { _iriRuleDesc :: !(Maybe Text)
-    , _iriIpRule :: !(Maybe Text)
+    , _iriIpRule   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -296,7 +296,7 @@ instance ToJSON IPRuleItem where
 -- /See:/ 'modificationState' smart constructor.
 data ModificationState =
   ModificationState'
-    { _msState :: !(Maybe ModificationStateEnum)
+    { _msState    :: !(Maybe ModificationStateEnum)
     , _msResource :: !(Maybe ModificationResourceEnum)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -497,7 +497,7 @@ instance ToJSON StopRequest where
 data Tag =
   Tag'
     { _tagValue :: !(Maybe Text)
-    , _tagKey :: !Text
+    , _tagKey   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -604,21 +604,21 @@ instance NFData UserStorage
 -- /See:/ 'workspace' smart constructor.
 data Workspace =
   Workspace'
-    { _wDirectoryId :: !(Maybe Text)
-    , _wState :: !(Maybe WorkspaceState)
-    , _wIPAddress :: !(Maybe Text)
-    , _wModificationStates :: !(Maybe [ModificationState])
-    , _wUserName :: !(Maybe Text)
-    , _wSubnetId :: !(Maybe Text)
-    , _wBundleId :: !(Maybe Text)
-    , _wWorkspaceProperties :: !(Maybe WorkspaceProperties)
+    { _wDirectoryId                 :: !(Maybe Text)
+    , _wState                       :: !(Maybe WorkspaceState)
+    , _wIPAddress                   :: !(Maybe Text)
+    , _wModificationStates          :: !(Maybe [ModificationState])
+    , _wUserName                    :: !(Maybe Text)
+    , _wSubnetId                    :: !(Maybe Text)
+    , _wBundleId                    :: !(Maybe Text)
+    , _wWorkspaceProperties         :: !(Maybe WorkspaceProperties)
     , _wRootVolumeEncryptionEnabled :: !(Maybe Bool)
-    , _wErrorCode :: !(Maybe Text)
-    , _wVolumeEncryptionKey :: !(Maybe Text)
-    , _wComputerName :: !(Maybe Text)
-    , _wWorkspaceId :: !(Maybe Text)
+    , _wErrorCode                   :: !(Maybe Text)
+    , _wVolumeEncryptionKey         :: !(Maybe Text)
+    , _wComputerName                :: !(Maybe Text)
+    , _wWorkspaceId                 :: !(Maybe Text)
     , _wUserVolumeEncryptionEnabled :: !(Maybe Bool)
-    , _wErrorMessage :: !(Maybe Text)
+    , _wErrorMessage                :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -776,10 +776,10 @@ instance NFData Workspace
 -- /See:/ 'workspaceBundle' smart constructor.
 data WorkspaceBundle =
   WorkspaceBundle'
-    { _wbBundleId :: !(Maybe Text)
-    , _wbOwner :: !(Maybe Text)
+    { _wbBundleId    :: !(Maybe Text)
+    , _wbOwner       :: !(Maybe Text)
     , _wbRootStorage :: !(Maybe RootStorage)
-    , _wbName :: !(Maybe Text)
+    , _wbName        :: !(Maybe Text)
     , _wbComputeType :: !(Maybe ComputeType)
     , _wbUserStorage :: !(Maybe UserStorage)
     , _wbDescription :: !(Maybe Text)
@@ -867,9 +867,9 @@ instance NFData WorkspaceBundle
 data WorkspaceConnectionStatus =
   WorkspaceConnectionStatus'
     { _wcsLastKnownUserConnectionTimestamp :: !(Maybe POSIX)
-    , _wcsConnectionStateCheckTimestamp :: !(Maybe POSIX)
-    , _wcsWorkspaceId :: !(Maybe Text)
-    , _wcsConnectionState :: !(Maybe ConnectionState)
+    , _wcsConnectionStateCheckTimestamp    :: !(Maybe POSIX)
+    , _wcsWorkspaceId                      :: !(Maybe Text)
+    , _wcsConnectionState                  :: !(Maybe ConnectionState)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1098,11 +1098,11 @@ instance NFData WorkspaceDirectory
 -- /See:/ 'workspaceProperties' smart constructor.
 data WorkspaceProperties =
   WorkspaceProperties'
-    { _wpComputeTypeName :: !(Maybe Compute)
-    , _wpRunningMode :: !(Maybe RunningMode)
-    , _wpRootVolumeSizeGib :: !(Maybe Int)
+    { _wpComputeTypeName                     :: !(Maybe Compute)
+    , _wpRunningMode                         :: !(Maybe RunningMode)
+    , _wpRootVolumeSizeGib                   :: !(Maybe Int)
     , _wpRunningModeAutoStopTimeoutInMinutes :: !(Maybe Int)
-    , _wpUserVolumeSizeGib :: !(Maybe Int)
+    , _wpUserVolumeSizeGib                   :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1188,14 +1188,14 @@ instance ToJSON WorkspaceProperties where
 -- /See:/ 'workspaceRequest' smart constructor.
 data WorkspaceRequest =
   WorkspaceRequest'
-    { _wrWorkspaceProperties :: !(Maybe WorkspaceProperties)
+    { _wrWorkspaceProperties         :: !(Maybe WorkspaceProperties)
     , _wrRootVolumeEncryptionEnabled :: !(Maybe Bool)
-    , _wrVolumeEncryptionKey :: !(Maybe Text)
+    , _wrVolumeEncryptionKey         :: !(Maybe Text)
     , _wrUserVolumeEncryptionEnabled :: !(Maybe Bool)
-    , _wrTags :: !(Maybe [Tag])
-    , _wrDirectoryId :: !Text
-    , _wrUserName :: !Text
-    , _wrBundleId :: !Text
+    , _wrTags                        :: !(Maybe [Tag])
+    , _wrDirectoryId                 :: !Text
+    , _wrUserName                    :: !Text
+    , _wrBundleId                    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1316,7 +1316,7 @@ data WorkspacesIPGroup =
   WorkspacesIPGroup'
     { _wigGroupDesc :: !(Maybe Text)
     , _wigUserRules :: !(Maybe [IPRuleItem])
-    , _wigGroupId :: !(Maybe Text)
+    , _wigGroupId   :: !(Maybe Text)
     , _wigGroupName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

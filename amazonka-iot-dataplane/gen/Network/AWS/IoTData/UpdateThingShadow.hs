@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,7 +51,7 @@ import Network.AWS.Response
 data UpdateThingShadow =
   UpdateThingShadow'
     { _utsThingName :: !Text
-    , _utsPayload :: !ByteString
+    , _utsPayload   :: !ByteString
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -109,7 +109,7 @@ instance ToQuery UpdateThingShadow where
 -- /See:/ 'updateThingShadowResponse' smart constructor.
 data UpdateThingShadowResponse =
   UpdateThingShadowResponse'
-    { _utsrsPayload :: !(Maybe ByteString)
+    { _utsrsPayload        :: !(Maybe ByteString)
     , _utsrsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

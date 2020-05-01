@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,10 +46,10 @@ import Network.AWS.S3.Types.Product
 -- | /See:/ 'getObjectACL' smart constructor.
 data GetObjectACL =
   GetObjectACL'
-    { _goaVersionId :: !(Maybe ObjectVersionId)
+    { _goaVersionId    :: !(Maybe ObjectVersionId)
     , _goaRequestPayer :: !(Maybe RequestPayer)
-    , _goaBucket :: !BucketName
-    , _goaKey :: !ObjectKey
+    , _goaBucket       :: !BucketName
+    , _goaKey          :: !ObjectKey
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -121,8 +121,8 @@ instance ToQuery GetObjectACL where
 data GetObjectACLResponse =
   GetObjectACLResponse'
     { _goarsRequestCharged :: !(Maybe RequestCharged)
-    , _goarsGrants :: !(Maybe [Grant])
-    , _goarsOwner :: !(Maybe Owner)
+    , _goarsGrants         :: !(Maybe [Grant])
+    , _goarsOwner          :: !(Maybe Owner)
     , _goarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

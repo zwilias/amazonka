@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.StorageGateway.Types.Product
 -- /See:/ 'retrieveTapeArchive' smart constructor.
 data RetrieveTapeArchive =
   RetrieveTapeArchive'
-    { _rtaTapeARN :: !Text
+    { _rtaTapeARN    :: !Text
     , _rtaGatewayARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -120,7 +120,7 @@ instance ToQuery RetrieveTapeArchive where
 -- /See:/ 'retrieveTapeArchiveResponse' smart constructor.
 data RetrieveTapeArchiveResponse =
   RetrieveTapeArchiveResponse'
-    { _rtarsTapeARN :: !(Maybe Text)
+    { _rtarsTapeARN        :: !(Maybe Text)
     , _rtarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

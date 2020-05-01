@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 data GetCertificate =
   GetCertificate'
     { _gcCertificateAuthorityARN :: !Text
-    , _gcCertificateARN :: !Text
+    , _gcCertificateARN          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -115,9 +115,9 @@ instance ToQuery GetCertificate where
 -- | /See:/ 'getCertificateResponse' smart constructor.
 data GetCertificateResponse =
   GetCertificateResponse'
-    { _gcrsCertificate :: !(Maybe Text)
+    { _gcrsCertificate      :: !(Maybe Text)
     , _gcrsCertificateChain :: !(Maybe Text)
-    , _gcrsResponseStatus :: !Int
+    , _gcrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

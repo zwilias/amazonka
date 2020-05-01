@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,8 +48,8 @@ import Network.AWS.Response
 -- /See:/ 'getDocumentationVersions' smart constructor.
 data GetDocumentationVersions =
   GetDocumentationVersions'
-    { _gdvLimit :: !(Maybe Int)
-    , _gdvPosition :: !(Maybe Text)
+    { _gdvLimit     :: !(Maybe Int)
+    , _gdvPosition  :: !(Maybe Text)
     , _gdvRestAPIId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -117,8 +117,8 @@ instance ToQuery GetDocumentationVersions where
 -- /See:/ 'getDocumentationVersionsResponse' smart constructor.
 data GetDocumentationVersionsResponse =
   GetDocumentationVersionsResponse'
-    { _gdvrsItems :: !(Maybe [DocumentationVersion])
-    , _gdvrsPosition :: !(Maybe Text)
+    { _gdvrsItems          :: !(Maybe [DocumentationVersion])
+    , _gdvrsPosition       :: !(Maybe Text)
     , _gdvrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

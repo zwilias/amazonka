@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'discoverPollEndpoint' smart constructor.
 data DiscoverPollEndpoint =
   DiscoverPollEndpoint'
-    { _dpeCluster :: !(Maybe Text)
+    { _dpeCluster           :: !(Maybe Text)
     , _dpeContainerInstance :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -111,8 +111,8 @@ instance ToQuery DiscoverPollEndpoint where
 data DiscoverPollEndpointResponse =
   DiscoverPollEndpointResponse'
     { _dpersTelemetryEndpoint :: !(Maybe Text)
-    , _dpersEndpoint :: !(Maybe Text)
-    , _dpersResponseStatus :: !Int
+    , _dpersEndpoint          :: !(Maybe Text)
+    , _dpersResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

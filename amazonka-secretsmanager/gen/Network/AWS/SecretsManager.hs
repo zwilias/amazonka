@@ -136,8 +136,8 @@ import Network.AWS.SecretsManager.DeleteSecret
 import Network.AWS.SecretsManager.DescribeSecret
 import Network.AWS.SecretsManager.GetRandomPassword
 import Network.AWS.SecretsManager.GetSecretValue
-import Network.AWS.SecretsManager.ListSecretVersionIds
 import Network.AWS.SecretsManager.ListSecrets
+import Network.AWS.SecretsManager.ListSecretVersionIds
 import Network.AWS.SecretsManager.PutSecretValue
 import Network.AWS.SecretsManager.RestoreSecret
 import Network.AWS.SecretsManager.RotateSecret

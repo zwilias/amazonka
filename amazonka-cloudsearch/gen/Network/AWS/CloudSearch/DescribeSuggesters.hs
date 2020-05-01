@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,9 +49,9 @@ import Network.AWS.Response
 -- /See:/ 'describeSuggesters' smart constructor.
 data DescribeSuggesters =
   DescribeSuggesters'
-    { _dssDeployed :: !(Maybe Bool)
+    { _dssDeployed       :: !(Maybe Bool)
     , _dssSuggesterNames :: !(Maybe [Text])
-    , _dssDomainName :: !Text
+    , _dssDomainName     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -127,7 +127,7 @@ instance ToQuery DescribeSuggesters where
 data DescribeSuggestersResponse =
   DescribeSuggestersResponse'
     { _dssrsResponseStatus :: !Int
-    , _dssrsSuggesters :: ![SuggesterStatus]
+    , _dssrsSuggesters     :: ![SuggesterStatus]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.XRay.Types.Product
 data GetTraceGraph =
   GetTraceGraph'
     { _gtgNextToken :: !(Maybe Text)
-    , _gtgTraceIds :: ![Text]
+    , _gtgTraceIds  :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -109,8 +109,8 @@ instance ToQuery GetTraceGraph where
 -- | /See:/ 'getTraceGraphResponse' smart constructor.
 data GetTraceGraphResponse =
   GetTraceGraphResponse'
-    { _gtgrsNextToken :: !(Maybe Text)
-    , _gtgrsServices :: !(Maybe [ServiceInfo])
+    { _gtgrsNextToken      :: !(Maybe Text)
+    , _gtgrsServices       :: !(Maybe [ServiceInfo])
     , _gtgrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

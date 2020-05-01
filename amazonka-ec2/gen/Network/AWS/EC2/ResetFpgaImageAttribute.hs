@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,8 +45,8 @@ import Network.AWS.Response
 -- | /See:/ 'resetFpgaImageAttribute' smart constructor.
 data ResetFpgaImageAttribute =
   ResetFpgaImageAttribute'
-    { _rfiaAttribute :: !(Maybe ResetFpgaImageAttributeName)
-    , _rfiaDryRun :: !(Maybe Bool)
+    { _rfiaAttribute   :: !(Maybe ResetFpgaImageAttributeName)
+    , _rfiaDryRun      :: !(Maybe Bool)
     , _rfiaFpgaImageId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -115,7 +115,7 @@ instance ToQuery ResetFpgaImageAttribute where
 -- | /See:/ 'resetFpgaImageAttributeResponse' smart constructor.
 data ResetFpgaImageAttributeResponse =
   ResetFpgaImageAttributeResponse'
-    { _rfiarsReturn :: !(Maybe Bool)
+    { _rfiarsReturn         :: !(Maybe Bool)
     , _rfiarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

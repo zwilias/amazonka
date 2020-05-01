@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -99,8 +99,8 @@ instance ToQuery GetAccountLimit where
 data GetAccountLimitResponse =
   GetAccountLimitResponse'
     { _galrsResponseStatus :: !Int
-    , _galrsLimit :: !AccountLimit
-    , _galrsCount :: !Nat
+    , _galrsLimit          :: !AccountLimit
+    , _galrsCount          :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -75,11 +75,11 @@ import Network.AWS.Response
 -- | /See:/ 'generateDataKey' smart constructor.
 data GenerateDataKey =
   GenerateDataKey'
-    { _gdkKeySpec :: !(Maybe DataKeySpec)
+    { _gdkKeySpec           :: !(Maybe DataKeySpec)
     , _gdkEncryptionContext :: !(Maybe (Map Text Text))
-    , _gdkNumberOfBytes :: !(Maybe Nat)
-    , _gdkGrantTokens :: !(Maybe [Text])
-    , _gdkKeyId :: !Text
+    , _gdkNumberOfBytes     :: !(Maybe Nat)
+    , _gdkGrantTokens       :: !(Maybe [Text])
+    , _gdkKeyId             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -175,8 +175,8 @@ instance ToQuery GenerateDataKey where
 data GenerateDataKeyResponse =
   GenerateDataKeyResponse'
     { _gdkrsResponseStatus :: !Int
-    , _gdkrsKeyId :: !Text
-    , _gdkrsPlaintext :: !(Sensitive Base64)
+    , _gdkrsKeyId          :: !Text
+    , _gdkrsPlaintext      :: !(Sensitive Base64)
     , _gdkrsCiphertextBlob :: !Base64
     }
   deriving (Eq, Show, Data, Typeable, Generic)

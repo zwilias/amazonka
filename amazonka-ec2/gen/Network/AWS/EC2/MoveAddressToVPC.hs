@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Response
 -- /See:/ 'moveAddressToVPC' smart constructor.
 data MoveAddressToVPC =
   MoveAddressToVPC'
-    { _matvDryRun :: !(Maybe Bool)
+    { _matvDryRun   :: !(Maybe Bool)
     , _matvPublicIP :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -111,8 +111,8 @@ instance ToQuery MoveAddressToVPC where
 -- /See:/ 'moveAddressToVPCResponse' smart constructor.
 data MoveAddressToVPCResponse =
   MoveAddressToVPCResponse'
-    { _matvrsStatus :: !(Maybe AddressStatus)
-    , _matvrsAllocationId :: !(Maybe Text)
+    { _matvrsStatus         :: !(Maybe AddressStatus)
+    , _matvrsAllocationId   :: !(Maybe Text)
     , _matvrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

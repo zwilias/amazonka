@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -125,10 +125,10 @@ instance ToQuery GetVaultLock where
 -- /See:/ 'getVaultLockResponse' smart constructor.
 data GetVaultLockResponse =
   GetVaultLockResponse'
-    { _gvlrsState :: !(Maybe Text)
+    { _gvlrsState          :: !(Maybe Text)
     , _gvlrsExpirationDate :: !(Maybe Text)
-    , _gvlrsCreationDate :: !(Maybe Text)
-    , _gvlrsPolicy :: !(Maybe Text)
+    , _gvlrsCreationDate   :: !(Maybe Text)
+    , _gvlrsPolicy         :: !(Maybe Text)
     , _gvlrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

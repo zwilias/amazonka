@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -83,14 +83,14 @@ import Network.AWS.Response
 data GetMetricStatistics =
   GetMetricStatistics'
     { _gmsExtendedStatistics :: !(Maybe (List1 Text))
-    , _gmsStatistics :: !(Maybe (List1 Statistic))
-    , _gmsDimensions :: !(Maybe [Dimension])
-    , _gmsUnit :: !(Maybe StandardUnit)
-    , _gmsNamespace :: !Text
-    , _gmsMetricName :: !Text
-    , _gmsStartTime :: !ISO8601
-    , _gmsEndTime :: !ISO8601
-    , _gmsPeriod :: !Nat
+    , _gmsStatistics         :: !(Maybe (List1 Statistic))
+    , _gmsDimensions         :: !(Maybe [Dimension])
+    , _gmsUnit               :: !(Maybe StandardUnit)
+    , _gmsNamespace          :: !Text
+    , _gmsMetricName         :: !Text
+    , _gmsStartTime          :: !ISO8601
+    , _gmsEndTime            :: !ISO8601
+    , _gmsPeriod             :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -217,8 +217,8 @@ instance ToQuery GetMetricStatistics where
 -- | /See:/ 'getMetricStatisticsResponse' smart constructor.
 data GetMetricStatisticsResponse =
   GetMetricStatisticsResponse'
-    { _gmsrsDatapoints :: !(Maybe [Datapoint])
-    , _gmsrsLabel :: !(Maybe Text)
+    { _gmsrsDatapoints     :: !(Maybe [Datapoint])
+    , _gmsrsLabel          :: !(Maybe Text)
     , _gmsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -70,9 +70,9 @@ import Network.AWS.Response
 data DescribeMatchmakingConfigurations =
   DescribeMatchmakingConfigurations'
     { _dmcRuleSetName :: !(Maybe Text)
-    , _dmcNextToken :: !(Maybe Text)
-    , _dmcNames :: !(Maybe [Text])
-    , _dmcLimit :: !(Maybe Nat)
+    , _dmcNextToken   :: !(Maybe Text)
+    , _dmcNames       :: !(Maybe [Text])
+    , _dmcLimit       :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -160,7 +160,7 @@ instance ToQuery DescribeMatchmakingConfigurations where
 data DescribeMatchmakingConfigurationsResponse =
   DescribeMatchmakingConfigurationsResponse'
     { _dmcsrsConfigurations :: !(Maybe [MatchmakingConfiguration])
-    , _dmcsrsNextToken :: !(Maybe Text)
+    , _dmcsrsNextToken      :: !(Maybe Text)
     , _dmcsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

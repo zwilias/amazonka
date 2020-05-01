@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -60,12 +60,12 @@ import Network.AWS.Response
 data GetResourceConfigHistory =
   GetResourceConfigHistory'
     { _grchChronologicalOrder :: !(Maybe ChronologicalOrder)
-    , _grchNextToken :: !(Maybe Text)
-    , _grchLimit :: !(Maybe Nat)
-    , _grchLaterTime :: !(Maybe POSIX)
-    , _grchEarlierTime :: !(Maybe POSIX)
-    , _grchResourceType :: !ResourceType
-    , _grchResourceId :: !Text
+    , _grchNextToken          :: !(Maybe Text)
+    , _grchLimit              :: !(Maybe Nat)
+    , _grchLaterTime          :: !(Maybe POSIX)
+    , _grchEarlierTime        :: !(Maybe POSIX)
+    , _grchResourceType       :: !ResourceType
+    , _grchResourceId         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -188,9 +188,9 @@ instance ToQuery GetResourceConfigHistory where
 -- /See:/ 'getResourceConfigHistoryResponse' smart constructor.
 data GetResourceConfigHistoryResponse =
   GetResourceConfigHistoryResponse'
-    { _grchrsNextToken :: !(Maybe Text)
+    { _grchrsNextToken          :: !(Maybe Text)
     , _grchrsConfigurationItems :: !(Maybe [ConfigurationItem])
-    , _grchrsResponseStatus :: !Int
+    , _grchrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -67,7 +67,7 @@ import Network.AWS.SWF.Types.Product
 data PollForActivityTask =
   PollForActivityTask'
     { _pfatIdentity :: !(Maybe Text)
-    , _pfatDomain :: !Text
+    , _pfatDomain   :: !Text
     , _pfatTaskList :: !TaskList
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -153,13 +153,13 @@ instance ToQuery PollForActivityTask where
 -- /See:/ 'pollForActivityTaskResponse' smart constructor.
 data PollForActivityTaskResponse =
   PollForActivityTaskResponse'
-    { _pfatrsActivityType :: !(Maybe ActivityType)
-    , _pfatrsActivityId :: !(Maybe Text)
-    , _pfatrsInput :: !(Maybe Text)
-    , _pfatrsTaskToken :: !(Maybe Text)
+    { _pfatrsActivityType      :: !(Maybe ActivityType)
+    , _pfatrsActivityId        :: !(Maybe Text)
+    , _pfatrsInput             :: !(Maybe Text)
+    , _pfatrsTaskToken         :: !(Maybe Text)
     , _pfatrsWorkflowExecution :: !(Maybe WorkflowExecution)
-    , _pfatrsResponseStatus :: !Int
-    , _pfatrsStartedEventId :: !Integer
+    , _pfatrsResponseStatus    :: !Int
+    , _pfatrsStartedEventId    :: !Integer
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

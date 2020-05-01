@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,9 +56,9 @@ import Network.AWS.Response
 -- /See:/ 'authorizeClusterSecurityGroupIngress' smart constructor.
 data AuthorizeClusterSecurityGroupIngress =
   AuthorizeClusterSecurityGroupIngress'
-    { _acsgiEC2SecurityGroupOwnerId :: !(Maybe Text)
-    , _acsgiEC2SecurityGroupName :: !(Maybe Text)
-    , _acsgiCIdRIP :: !(Maybe Text)
+    { _acsgiEC2SecurityGroupOwnerId  :: !(Maybe Text)
+    , _acsgiEC2SecurityGroupName     :: !(Maybe Text)
+    , _acsgiCIdRIP                   :: !(Maybe Text)
     , _acsgiClusterSecurityGroupName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -146,7 +146,7 @@ instance ToQuery AuthorizeClusterSecurityGroupIngress where
 data AuthorizeClusterSecurityGroupIngressResponse =
   AuthorizeClusterSecurityGroupIngressResponse'
     { _acsgirsClusterSecurityGroup :: !(Maybe ClusterSecurityGroup)
-    , _acsgirsResponseStatus :: !Int
+    , _acsgirsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

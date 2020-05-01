@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,11 +53,11 @@ import Network.AWS.Response
 -- | /See:/ 'createStreamProcessor' smart constructor.
 data CreateStreamProcessor =
   CreateStreamProcessor'
-    { _cspInput :: !StreamProcessorInput
-    , _cspOutput :: !StreamProcessorOutput
-    , _cspName :: !Text
+    { _cspInput    :: !StreamProcessorInput
+    , _cspOutput   :: !StreamProcessorOutput
+    , _cspName     :: !Text
     , _cspSettings :: !StreamProcessorSettings
-    , _cspRoleARN :: !Text
+    , _cspRoleARN  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -153,7 +153,7 @@ instance ToQuery CreateStreamProcessor where
 data CreateStreamProcessorResponse =
   CreateStreamProcessorResponse'
     { _csprsStreamProcessorARN :: !(Maybe Text)
-    , _csprsResponseStatus :: !Int
+    , _csprsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

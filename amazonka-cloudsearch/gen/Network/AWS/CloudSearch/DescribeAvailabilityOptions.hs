@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- /See:/ 'describeAvailabilityOptions' smart constructor.
 data DescribeAvailabilityOptions =
   DescribeAvailabilityOptions'
-    { _daoDeployed :: !(Maybe Bool)
+    { _daoDeployed   :: !(Maybe Bool)
     , _daoDomainName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -112,7 +112,7 @@ instance ToQuery DescribeAvailabilityOptions where
 data DescribeAvailabilityOptionsResponse =
   DescribeAvailabilityOptionsResponse'
     { _daorsAvailabilityOptions :: !(Maybe AvailabilityOptionsStatus)
-    , _daorsResponseStatus :: !Int
+    , _daorsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

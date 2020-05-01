@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 data UpdateEnvironmentMembership =
   UpdateEnvironmentMembership'
     { _uemEnvironmentId :: !Text
-    , _uemUserARN :: !Text
-    , _uemPermissions :: !MemberPermissions
+    , _uemUserARN       :: !Text
+    , _uemPermissions   :: !MemberPermissions
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,7 +124,7 @@ instance ToQuery UpdateEnvironmentMembership where
 -- | /See:/ 'updateEnvironmentMembershipResponse' smart constructor.
 data UpdateEnvironmentMembershipResponse =
   UpdateEnvironmentMembershipResponse'
-    { _uemrsMembership :: !(Maybe EnvironmentMember)
+    { _uemrsMembership     :: !(Maybe EnvironmentMember)
     , _uemrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

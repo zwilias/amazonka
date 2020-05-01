@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -87,7 +87,7 @@ instance ToQuery GetSnowballUsage where
 data GetSnowballUsageResponse =
   GetSnowballUsageResponse'
     { _gsursSnowballsInUse :: !(Maybe Int)
-    , _gsursSnowballLimit :: !(Maybe Int)
+    , _gsursSnowballLimit  :: !(Maybe Int)
     , _gsursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,11 +55,11 @@ import Network.AWS.Response
 -- /See:/ 'describeOptionGroupOptions' smart constructor.
 data DescribeOptionGroupOptions =
   DescribeOptionGroupOptions'
-    { _dogoFilters :: !(Maybe [Filter])
+    { _dogoFilters            :: !(Maybe [Filter])
     , _dogoMajorEngineVersion :: !(Maybe Text)
-    , _dogoMarker :: !(Maybe Text)
-    , _dogoMaxRecords :: !(Maybe Int)
-    , _dogoEngineName :: !Text
+    , _dogoMarker             :: !(Maybe Text)
+    , _dogoMaxRecords         :: !(Maybe Int)
+    , _dogoEngineName         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -159,8 +159,8 @@ instance ToQuery DescribeOptionGroupOptions where
 data DescribeOptionGroupOptionsResponse =
   DescribeOptionGroupOptionsResponse'
     { _dogorsOptionGroupOptions :: !(Maybe [OptionGroupOption])
-    , _dogorsMarker :: !(Maybe Text)
-    , _dogorsResponseStatus :: !Int
+    , _dogorsMarker             :: !(Maybe Text)
+    , _dogorsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -619,8 +619,8 @@ import Network.AWS.ElasticBeanstalk.DeleteConfigurationTemplate
 import Network.AWS.ElasticBeanstalk.DeleteEnvironmentConfiguration
 import Network.AWS.ElasticBeanstalk.DeletePlatformVersion
 import Network.AWS.ElasticBeanstalk.DescribeAccountAttributes
-import Network.AWS.ElasticBeanstalk.DescribeApplicationVersions
 import Network.AWS.ElasticBeanstalk.DescribeApplications
+import Network.AWS.ElasticBeanstalk.DescribeApplicationVersions
 import Network.AWS.ElasticBeanstalk.DescribeConfigurationOptions
 import Network.AWS.ElasticBeanstalk.DescribeConfigurationSettings
 import Network.AWS.ElasticBeanstalk.DescribeEnvironmentHealth

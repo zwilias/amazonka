@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 data AttachLoadBalancerTLSCertificate =
   AttachLoadBalancerTLSCertificate'
     { _albtcLoadBalancerName :: !Text
-    , _albtcCertificateName :: !Text
+    , _albtcCertificateName  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -118,7 +118,7 @@ instance ToQuery AttachLoadBalancerTLSCertificate where
 -- | /See:/ 'attachLoadBalancerTLSCertificateResponse' smart constructor.
 data AttachLoadBalancerTLSCertificateResponse =
   AttachLoadBalancerTLSCertificateResponse'
-    { _albtcrsOperations :: !(Maybe [Operation])
+    { _albtcrsOperations     :: !(Maybe [Operation])
     , _albtcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -242,9 +242,9 @@ instance ToQuery UpdateItem where
 data UpdateItemResponse =
   UpdateItemResponse'
     { _uirsItemCollectionMetrics :: !(Maybe ItemCollectionMetrics)
-    , _uirsConsumedCapacity :: !(Maybe ConsumedCapacity)
-    , _uirsAttributes :: !(Maybe (Map Text AttributeValue))
-    , _uirsResponseStatus :: !Int
+    , _uirsConsumedCapacity      :: !(Maybe ConsumedCapacity)
+    , _uirsAttributes            :: !(Maybe (Map Text AttributeValue))
+    , _uirsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

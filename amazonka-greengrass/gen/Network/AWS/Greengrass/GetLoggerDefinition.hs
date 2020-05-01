@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -101,14 +101,14 @@ instance ToQuery GetLoggerDefinition where
 -- | /See:/ 'getLoggerDefinitionResponse' smart constructor.
 data GetLoggerDefinitionResponse =
   GetLoggerDefinitionResponse'
-    { _gldrsLatestVersionARN :: !(Maybe Text)
-    , _gldrsARN :: !(Maybe Text)
-    , _gldrsName :: !(Maybe Text)
-    , _gldrsCreationTimestamp :: !(Maybe Text)
-    , _gldrsId :: !(Maybe Text)
-    , _gldrsLatestVersion :: !(Maybe Text)
+    { _gldrsLatestVersionARN     :: !(Maybe Text)
+    , _gldrsARN                  :: !(Maybe Text)
+    , _gldrsName                 :: !(Maybe Text)
+    , _gldrsCreationTimestamp    :: !(Maybe Text)
+    , _gldrsId                   :: !(Maybe Text)
+    , _gldrsLatestVersion        :: !(Maybe Text)
     , _gldrsLastUpdatedTimestamp :: !(Maybe Text)
-    , _gldrsResponseStatus :: !Int
+    , _gldrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,14 +55,14 @@ import Network.AWS.WorkDocs.Types.Product
 -- | /See:/ 'initiateDocumentVersionUpload' smart constructor.
 data InitiateDocumentVersionUpload =
   InitiateDocumentVersionUpload'
-    { _idvuDocumentSizeInBytes :: !(Maybe Integer)
-    , _idvuContentCreatedTimestamp :: !(Maybe POSIX)
-    , _idvuAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _idvuName :: !(Maybe Text)
-    , _idvuId :: !(Maybe Text)
+    { _idvuDocumentSizeInBytes      :: !(Maybe Integer)
+    , _idvuContentCreatedTimestamp  :: !(Maybe POSIX)
+    , _idvuAuthenticationToken      :: !(Maybe (Sensitive Text))
+    , _idvuName                     :: !(Maybe Text)
+    , _idvuId                       :: !(Maybe Text)
     , _idvuContentModifiedTimestamp :: !(Maybe POSIX)
-    , _idvuContentType :: !(Maybe Text)
-    , _idvuParentFolderId :: !Text
+    , _idvuContentType              :: !(Maybe Text)
+    , _idvuParentFolderId           :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -189,7 +189,7 @@ instance ToQuery InitiateDocumentVersionUpload where
 -- | /See:/ 'initiateDocumentVersionUploadResponse' smart constructor.
 data InitiateDocumentVersionUploadResponse =
   InitiateDocumentVersionUploadResponse'
-    { _idvursMetadata :: !(Maybe DocumentMetadata)
+    { _idvursMetadata       :: !(Maybe DocumentMetadata)
     , _idvursUploadMetadata :: !(Maybe UploadMetadata)
     , _idvursResponseStatus :: !Int
     }

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,7 +51,7 @@ import Network.AWS.Route53.Types.Product
 -- /See:/ 'getHostedZoneLimit' smart constructor.
 data GetHostedZoneLimit =
   GetHostedZoneLimit'
-    { _ghzlType :: !HostedZoneLimitType
+    { _ghzlType         :: !HostedZoneLimitType
     , _ghzlHostedZoneId :: !ResourceId
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -114,8 +114,8 @@ instance ToQuery GetHostedZoneLimit where
 data GetHostedZoneLimitResponse =
   GetHostedZoneLimitResponse'
     { _ghzlrsResponseStatus :: !Int
-    , _ghzlrsLimit :: !HostedZoneLimit
-    , _ghzlrsCount :: !Nat
+    , _ghzlrsLimit          :: !HostedZoneLimit
+    , _ghzlrsCount          :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

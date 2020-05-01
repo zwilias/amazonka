@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,9 +48,9 @@ import Network.AWS.Response
 data DescribeRules =
   DescribeRules'
     { _drListenerARN :: !(Maybe Text)
-    , _drMarker :: !(Maybe Text)
-    , _drRuleARNs :: !(Maybe [Text])
-    , _drPageSize :: !(Maybe Nat)
+    , _drMarker      :: !(Maybe Text)
+    , _drRuleARNs    :: !(Maybe [Text])
+    , _drPageSize    :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -126,8 +126,8 @@ instance ToQuery DescribeRules where
 -- | /See:/ 'describeRulesResponse' smart constructor.
 data DescribeRulesResponse =
   DescribeRulesResponse'
-    { _drsrsRules :: !(Maybe [Rule])
-    , _drsrsNextMarker :: !(Maybe Text)
+    { _drsrsRules          :: !(Maybe [Rule])
+    , _drsrsNextMarker     :: !(Maybe Text)
     , _drsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

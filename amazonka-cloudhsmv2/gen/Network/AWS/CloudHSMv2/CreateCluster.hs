@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 data CreateCluster =
   CreateCluster'
     { _ccSourceBackupId :: !(Maybe Text)
-    , _ccSubnetIds :: !(List1 Text)
-    , _ccHSMType :: !Text
+    , _ccSubnetIds      :: !(List1 Text)
+    , _ccHSMType        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -121,7 +121,7 @@ instance ToQuery CreateCluster where
 -- | /See:/ 'createClusterResponse' smart constructor.
 data CreateClusterResponse =
   CreateClusterResponse'
-    { _ccrsCluster :: !(Maybe Cluster)
+    { _ccrsCluster        :: !(Maybe Cluster)
     , _ccrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

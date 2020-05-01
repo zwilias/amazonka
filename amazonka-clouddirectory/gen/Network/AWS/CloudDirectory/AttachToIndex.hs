@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,8 +45,8 @@ import Network.AWS.Response
 -- | /See:/ 'attachToIndex' smart constructor.
 data AttachToIndex =
   AttachToIndex'
-    { _atiDirectoryARN :: !Text
-    , _atiIndexReference :: !ObjectReference
+    { _atiDirectoryARN    :: !Text
+    , _atiIndexReference  :: !ObjectReference
     , _atiTargetReference :: !ObjectReference
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -120,7 +120,7 @@ instance ToQuery AttachToIndex where
 data AttachToIndexResponse =
   AttachToIndexResponse'
     { _atirsAttachedObjectIdentifier :: !(Maybe Text)
-    , _atirsResponseStatus :: !Int
+    , _atirsResponseStatus           :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

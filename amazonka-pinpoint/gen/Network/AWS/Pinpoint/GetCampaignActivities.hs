@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,10 +44,10 @@ import Network.AWS.Response
 -- | /See:/ 'getCampaignActivities' smart constructor.
 data GetCampaignActivities =
   GetCampaignActivities'
-    { _gcaToken :: !(Maybe Text)
-    , _gcaPageSize :: !(Maybe Text)
+    { _gcaToken         :: !(Maybe Text)
+    , _gcaPageSize      :: !(Maybe Text)
     , _gcaApplicationId :: !Text
-    , _gcaCampaignId :: !Text
+    , _gcaCampaignId    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -125,7 +125,7 @@ instance ToQuery GetCampaignActivities where
 -- | /See:/ 'getCampaignActivitiesResponse' smart constructor.
 data GetCampaignActivitiesResponse =
   GetCampaignActivitiesResponse'
-    { _gcarsResponseStatus :: !Int
+    { _gcarsResponseStatus     :: !Int
     , _gcarsActivitiesResponse :: !ActivitiesResponse
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

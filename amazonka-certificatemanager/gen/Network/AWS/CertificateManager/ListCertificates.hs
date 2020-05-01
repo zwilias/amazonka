@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 data ListCertificates =
   ListCertificates'
     { _lcCertificateStatuses :: !(Maybe [CertificateStatus])
-    , _lcNextToken :: !(Maybe Text)
-    , _lcIncludes :: !(Maybe Filters)
-    , _lcMaxItems :: !(Maybe Nat)
+    , _lcNextToken           :: !(Maybe Text)
+    , _lcIncludes            :: !(Maybe Filters)
+    , _lcMaxItems            :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -145,8 +145,8 @@ instance ToQuery ListCertificates where
 data ListCertificatesResponse =
   ListCertificatesResponse'
     { _lcrsCertificateSummaryList :: !(Maybe [CertificateSummary])
-    , _lcrsNextToken :: !(Maybe Text)
-    , _lcrsResponseStatus :: !Int
+    , _lcrsNextToken              :: !(Maybe Text)
+    , _lcrsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

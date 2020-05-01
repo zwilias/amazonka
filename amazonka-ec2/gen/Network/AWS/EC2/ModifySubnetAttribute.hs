@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,8 +47,8 @@ import Network.AWS.Response
 data ModifySubnetAttribute =
   ModifySubnetAttribute'
     { _msaAssignIPv6AddressOnCreation :: !(Maybe AttributeBooleanValue)
-    , _msaMapPublicIPOnLaunch :: !(Maybe AttributeBooleanValue)
-    , _msaSubnetId :: !Text
+    , _msaMapPublicIPOnLaunch         :: !(Maybe AttributeBooleanValue)
+    , _msaSubnetId                    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,10 +56,10 @@ import Network.AWS.Response
 -- | /See:/ 'getFaceSearch' smart constructor.
 data GetFaceSearch =
   GetFaceSearch'
-    { _gfsNextToken :: !(Maybe Text)
+    { _gfsNextToken  :: !(Maybe Text)
     , _gfsMaxResults :: !(Maybe Nat)
-    , _gfsSortBy :: !(Maybe FaceSearchSortBy)
-    , _gfsJobId :: !Text
+    , _gfsSortBy     :: !(Maybe FaceSearchSortBy)
+    , _gfsJobId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -146,11 +146,11 @@ instance ToQuery GetFaceSearch where
 -- | /See:/ 'getFaceSearchResponse' smart constructor.
 data GetFaceSearchResponse =
   GetFaceSearchResponse'
-    { _gfsrsNextToken :: !(Maybe Text)
-    , _gfsrsVideoMetadata :: !(Maybe VideoMetadata)
-    , _gfsrsStatusMessage :: !(Maybe Text)
-    , _gfsrsJobStatus :: !(Maybe VideoJobStatus)
-    , _gfsrsPersons :: !(Maybe [PersonMatch])
+    { _gfsrsNextToken      :: !(Maybe Text)
+    , _gfsrsVideoMetadata  :: !(Maybe VideoMetadata)
+    , _gfsrsStatusMessage  :: !(Maybe Text)
+    , _gfsrsJobStatus      :: !(Maybe VideoJobStatus)
+    , _gfsrsPersons        :: !(Maybe [PersonMatch])
     , _gfsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

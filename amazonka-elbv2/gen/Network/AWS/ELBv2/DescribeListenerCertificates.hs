@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 -- | /See:/ 'describeListenerCertificates' smart constructor.
 data DescribeListenerCertificates =
   DescribeListenerCertificates'
-    { _dlcMarker :: !(Maybe Text)
-    , _dlcPageSize :: !(Maybe Nat)
+    { _dlcMarker      :: !(Maybe Text)
+    , _dlcPageSize    :: !(Maybe Nat)
     , _dlcListenerARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -118,8 +118,8 @@ instance ToQuery DescribeListenerCertificates where
 -- | /See:/ 'describeListenerCertificatesResponse' smart constructor.
 data DescribeListenerCertificatesResponse =
   DescribeListenerCertificatesResponse'
-    { _dlcrsCertificates :: !(Maybe [Certificate])
-    , _dlcrsNextMarker :: !(Maybe Text)
+    { _dlcrsCertificates   :: !(Maybe [Certificate])
+    , _dlcrsNextMarker     :: !(Maybe Text)
     , _dlcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

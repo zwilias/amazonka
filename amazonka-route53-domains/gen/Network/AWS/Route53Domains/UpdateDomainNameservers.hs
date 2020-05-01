@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.Route53Domains.Types.Product
 -- /See:/ 'updateDomainNameservers' smart constructor.
 data UpdateDomainNameservers =
   UpdateDomainNameservers'
-    { _udnFIAuthKey :: !(Maybe Text)
-    , _udnDomainName :: !Text
+    { _udnFIAuthKey   :: !(Maybe Text)
+    , _udnDomainName  :: !Text
     , _udnNameservers :: ![Nameserver]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -136,7 +136,7 @@ instance ToQuery UpdateDomainNameservers where
 data UpdateDomainNameserversResponse =
   UpdateDomainNameserversResponse'
     { _udnrsResponseStatus :: !Int
-    , _udnrsOperationId :: !Text
+    , _udnrsOperationId    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,11 +57,11 @@ import Network.AWS.Response
 -- | /See:/ 'createDataSourceFromRedshift' smart constructor.
 data CreateDataSourceFromRedshift =
   CreateDataSourceFromRedshift'
-    { _cdsfrDataSourceName :: !(Maybe Text)
+    { _cdsfrDataSourceName    :: !(Maybe Text)
     , _cdsfrComputeStatistics :: !(Maybe Bool)
-    , _cdsfrDataSourceId :: !Text
-    , _cdsfrDataSpec :: !RedshiftDataSpec
-    , _cdsfrRoleARN :: !Text
+    , _cdsfrDataSourceId      :: !Text
+    , _cdsfrDataSpec          :: !RedshiftDataSpec
+    , _cdsfrRoleARN           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -162,7 +162,7 @@ instance ToQuery CreateDataSourceFromRedshift where
 -- /See:/ 'createDataSourceFromRedshiftResponse' smart constructor.
 data CreateDataSourceFromRedshiftResponse =
   CreateDataSourceFromRedshiftResponse'
-    { _cdsfrrsDataSourceId :: !(Maybe Text)
+    { _cdsfrrsDataSourceId   :: !(Maybe Text)
     , _cdsfrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

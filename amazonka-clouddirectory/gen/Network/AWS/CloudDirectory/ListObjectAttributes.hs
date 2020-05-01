@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,12 +52,12 @@ import Network.AWS.Response
 -- | /See:/ 'listObjectAttributes' smart constructor.
 data ListObjectAttributes =
   ListObjectAttributes'
-    { _loaFacetFilter :: !(Maybe SchemaFacet)
+    { _loaFacetFilter      :: !(Maybe SchemaFacet)
     , _loaConsistencyLevel :: !(Maybe ConsistencyLevel)
-    , _loaNextToken :: !(Maybe Text)
-    , _loaMaxResults :: !(Maybe Nat)
-    , _loaDirectoryARN :: !Text
-    , _loaObjectReference :: !ObjectReference
+    , _loaNextToken        :: !(Maybe Text)
+    , _loaMaxResults       :: !(Maybe Nat)
+    , _loaDirectoryARN     :: !Text
+    , _loaObjectReference  :: !ObjectReference
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -163,8 +163,8 @@ instance ToQuery ListObjectAttributes where
 -- | /See:/ 'listObjectAttributesResponse' smart constructor.
 data ListObjectAttributesResponse =
   ListObjectAttributesResponse'
-    { _loarsNextToken :: !(Maybe Text)
-    , _loarsAttributes :: !(Maybe [AttributeKeyAndValue])
+    { _loarsNextToken      :: !(Maybe Text)
+    , _loarsAttributes     :: !(Maybe [AttributeKeyAndValue])
     , _loarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,9 +52,9 @@ import Network.AWS.Response
 data DescribeServices =
   DescribeServices'
     { _dsFormatVersion :: !(Maybe Text)
-    , _dsNextToken :: !(Maybe Text)
-    , _dsServiceCode :: !(Maybe Text)
-    , _dsMaxResults :: !(Maybe Nat)
+    , _dsNextToken     :: !(Maybe Text)
+    , _dsServiceCode   :: !(Maybe Text)
+    , _dsMaxResults    :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -143,9 +143,9 @@ instance ToQuery DescribeServices where
 -- | /See:/ 'describeServicesResponse' smart constructor.
 data DescribeServicesResponse =
   DescribeServicesResponse'
-    { _dsrsFormatVersion :: !(Maybe Text)
-    , _dsrsNextToken :: !(Maybe Text)
-    , _dsrsServices :: !(Maybe [PricingService])
+    { _dsrsFormatVersion  :: !(Maybe Text)
+    , _dsrsNextToken      :: !(Maybe Text)
+    , _dsrsServices       :: !(Maybe [PricingService])
     , _dsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

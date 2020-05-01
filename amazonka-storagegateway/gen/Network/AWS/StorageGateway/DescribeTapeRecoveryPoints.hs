@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,8 +56,8 @@ import Network.AWS.StorageGateway.Types.Product
 -- /See:/ 'describeTapeRecoveryPoints' smart constructor.
 data DescribeTapeRecoveryPoints =
   DescribeTapeRecoveryPoints'
-    { _dtrpMarker :: !(Maybe Text)
-    , _dtrpLimit :: !(Maybe Nat)
+    { _dtrpMarker     :: !(Maybe Text)
+    , _dtrpLimit      :: !(Maybe Nat)
     , _dtrpGatewayARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -147,9 +147,9 @@ instance ToQuery DescribeTapeRecoveryPoints where
 data DescribeTapeRecoveryPointsResponse =
   DescribeTapeRecoveryPointsResponse'
     { _dtrprsTapeRecoveryPointInfos :: !(Maybe [TapeRecoveryPointInfo])
-    , _dtrprsGatewayARN :: !(Maybe Text)
-    , _dtrprsMarker :: !(Maybe Text)
-    , _dtrprsResponseStatus :: !Int
+    , _dtrprsGatewayARN             :: !(Maybe Text)
+    , _dtrprsMarker                 :: !(Maybe Text)
+    , _dtrprsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.S3.Types.Product
 data ListBucketInventoryConfigurations =
   ListBucketInventoryConfigurations'
     { _lbicContinuationToken :: !(Maybe Text)
-    , _lbicBucket :: !BucketName
+    , _lbicBucket            :: !BucketName
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -104,11 +104,11 @@ instance ToQuery ListBucketInventoryConfigurations where
 -- | /See:/ 'listBucketInventoryConfigurationsResponse' smart constructor.
 data ListBucketInventoryConfigurationsResponse =
   ListBucketInventoryConfigurationsResponse'
-    { _lbicrsContinuationToken :: !(Maybe Text)
+    { _lbicrsContinuationToken          :: !(Maybe Text)
     , _lbicrsInventoryConfigurationList :: !(Maybe [InventoryConfiguration])
-    , _lbicrsNextContinuationToken :: !(Maybe Text)
-    , _lbicrsIsTruncated :: !(Maybe Bool)
-    , _lbicrsResponseStatus :: !Int
+    , _lbicrsNextContinuationToken      :: !(Maybe Text)
+    , _lbicrsIsTruncated                :: !(Maybe Bool)
+    , _lbicrsResponseStatus             :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

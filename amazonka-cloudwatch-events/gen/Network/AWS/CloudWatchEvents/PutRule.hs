@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,12 +56,12 @@ import Network.AWS.Response
 -- | /See:/ 'putRule' smart constructor.
 data PutRule =
   PutRule'
-    { _prEventPattern :: !(Maybe Text)
-    , _prState :: !(Maybe RuleState)
+    { _prEventPattern       :: !(Maybe Text)
+    , _prState              :: !(Maybe RuleState)
     , _prScheduleExpression :: !(Maybe Text)
-    , _prDescription :: !(Maybe Text)
-    , _prRoleARN :: !(Maybe Text)
-    , _prName :: !Text
+    , _prDescription        :: !(Maybe Text)
+    , _prRoleARN            :: !(Maybe Text)
+    , _prName               :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -158,7 +158,7 @@ instance ToQuery PutRule where
 -- | /See:/ 'putRuleResponse' smart constructor.
 data PutRuleResponse =
   PutRuleResponse'
-    { _prrsRuleARN :: !(Maybe Text)
+    { _prrsRuleARN        :: !(Maybe Text)
     , _prrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

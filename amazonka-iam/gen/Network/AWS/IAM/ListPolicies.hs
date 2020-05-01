@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,11 +58,11 @@ import Network.AWS.Response
 -- | /See:/ 'listPolicies' smart constructor.
 data ListPolicies =
   ListPolicies'
-    { _lpPathPrefix :: !(Maybe Text)
+    { _lpPathPrefix   :: !(Maybe Text)
     , _lpOnlyAttached :: !(Maybe Bool)
-    , _lpMarker :: !(Maybe Text)
-    , _lpScope :: !(Maybe PolicyScopeType)
-    , _lpMaxItems :: !(Maybe Nat)
+    , _lpMarker       :: !(Maybe Text)
+    , _lpScope        :: !(Maybe PolicyScopeType)
+    , _lpMaxItems     :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -155,9 +155,9 @@ instance ToQuery ListPolicies where
 -- /See:/ 'listPoliciesResponse' smart constructor.
 data ListPoliciesResponse =
   ListPoliciesResponse'
-    { _lprsMarker :: !(Maybe Text)
-    , _lprsIsTruncated :: !(Maybe Bool)
-    , _lprsPolicies :: !(Maybe [Policy])
+    { _lprsMarker         :: !(Maybe Text)
+    , _lprsIsTruncated    :: !(Maybe Bool)
+    , _lprsPolicies       :: !(Maybe [Policy])
     , _lprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

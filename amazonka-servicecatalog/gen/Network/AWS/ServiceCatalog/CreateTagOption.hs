@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.ServiceCatalog.Types.Product
 -- | /See:/ 'createTagOption' smart constructor.
 data CreateTagOption =
   CreateTagOption'
-    { _ctoKey :: !Text
+    { _ctoKey   :: !Text
     , _ctoValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -107,7 +107,7 @@ instance ToQuery CreateTagOption where
 data CreateTagOptionResponse =
   CreateTagOptionResponse'
     { _ctorsTagOptionDetail :: !(Maybe TagOptionDetail)
-    , _ctorsResponseStatus :: !Int
+    , _ctorsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

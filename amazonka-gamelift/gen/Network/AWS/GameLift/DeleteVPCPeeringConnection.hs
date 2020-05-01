@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -65,7 +65,7 @@ import Network.AWS.Response
 -- /See:/ 'deleteVPCPeeringConnection' smart constructor.
 data DeleteVPCPeeringConnection =
   DeleteVPCPeeringConnection'
-    { _dvpcFleetId :: !Text
+    { _dvpcFleetId                :: !Text
     , _dvpcVPCPeeringConnectionId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

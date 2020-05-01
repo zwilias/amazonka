@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'getKeyPolicy' smart constructor.
 data GetKeyPolicy =
   GetKeyPolicy'
-    { _gkpKeyId :: !Text
+    { _gkpKeyId      :: !Text
     , _gkpPolicyName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -106,7 +106,7 @@ instance ToQuery GetKeyPolicy where
 -- | /See:/ 'getKeyPolicyResponse' smart constructor.
 data GetKeyPolicyResponse =
   GetKeyPolicyResponse'
-    { _gkprsPolicy :: !(Maybe Text)
+    { _gkprsPolicy         :: !(Maybe Text)
     , _gkprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

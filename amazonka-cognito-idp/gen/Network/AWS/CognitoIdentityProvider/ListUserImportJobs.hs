@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,8 +51,8 @@ import Network.AWS.Response
 data ListUserImportJobs =
   ListUserImportJobs'
     { _luijPaginationToken :: !(Maybe Text)
-    , _luijUserPoolId :: !Text
-    , _luijMaxResults :: !Nat
+    , _luijUserPoolId      :: !Text
+    , _luijMaxResults      :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -135,8 +135,8 @@ instance ToQuery ListUserImportJobs where
 data ListUserImportJobsResponse =
   ListUserImportJobsResponse'
     { _luijrsPaginationToken :: !(Maybe Text)
-    , _luijrsUserImportJobs :: !(Maybe (List1 UserImportJobType))
-    , _luijrsResponseStatus :: !Int
+    , _luijrsUserImportJobs  :: !(Maybe (List1 UserImportJobType))
+    , _luijrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

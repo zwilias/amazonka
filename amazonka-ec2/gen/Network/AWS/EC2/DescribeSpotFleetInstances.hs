@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,9 +55,9 @@ import Network.AWS.Response
 -- /See:/ 'describeSpotFleetInstances' smart constructor.
 data DescribeSpotFleetInstances =
   DescribeSpotFleetInstances'
-    { _dsfiNextToken :: !(Maybe Text)
-    , _dsfiDryRun :: !(Maybe Bool)
-    , _dsfiMaxResults :: !(Maybe Int)
+    { _dsfiNextToken          :: !(Maybe Text)
+    , _dsfiDryRun             :: !(Maybe Bool)
+    , _dsfiMaxResults         :: !(Maybe Int)
     , _dsfiSpotFleetRequestId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -146,9 +146,9 @@ instance ToQuery DescribeSpotFleetInstances where
 -- /See:/ 'describeSpotFleetInstancesResponse' smart constructor.
 data DescribeSpotFleetInstancesResponse =
   DescribeSpotFleetInstancesResponse'
-    { _dsfirsNextToken :: !(Maybe Text)
-    , _dsfirsResponseStatus :: !Int
-    , _dsfirsActiveInstances :: ![ActiveInstance]
+    { _dsfirsNextToken          :: !(Maybe Text)
+    , _dsfirsResponseStatus     :: !Int
+    , _dsfirsActiveInstances    :: ![ActiveInstance]
     , _dsfirsSpotFleetRequestId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

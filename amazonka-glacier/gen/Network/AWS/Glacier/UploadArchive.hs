@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -64,11 +64,11 @@ import Network.AWS.Response
 -- /See:/ 'uploadArchive' smart constructor.
 data UploadArchive =
   UploadArchive'
-    { _uaChecksum :: !(Maybe Text)
+    { _uaChecksum           :: !(Maybe Text)
     , _uaArchiveDescription :: !(Maybe Text)
-    , _uaVaultName :: !Text
-    , _uaAccountId :: !Text
-    , _uaBody :: !HashedBody
+    , _uaVaultName          :: !Text
+    , _uaAccountId          :: !Text
+    , _uaBody               :: !HashedBody
     }
   deriving (Show, Generic)
 

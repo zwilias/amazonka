@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'createDomainEntry' smart constructor.
 data CreateDomainEntry =
   CreateDomainEntry'
-    { _cdeDomainName :: !Text
+    { _cdeDomainName  :: !Text
     , _cdeDomainEntry :: !DomainEntry
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -111,7 +111,7 @@ instance ToQuery CreateDomainEntry where
 -- | /See:/ 'createDomainEntryResponse' smart constructor.
 data CreateDomainEntryResponse =
   CreateDomainEntryResponse'
-    { _cdersOperation :: !(Maybe Operation)
+    { _cdersOperation      :: !(Maybe Operation)
     , _cdersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,12 +50,12 @@ import Network.AWS.Response
 data UpdateChannel =
   UpdateChannel'
     { _ucInputSpecification :: !(Maybe InputSpecification)
-    , _ucInputAttachments :: !(Maybe [InputAttachment])
-    , _ucDestinations :: !(Maybe [OutputDestination])
-    , _ucName :: !(Maybe Text)
-    , _ucEncoderSettings :: !(Maybe EncoderSettings)
-    , _ucRoleARN :: !(Maybe Text)
-    , _ucChannelId :: !Text
+    , _ucInputAttachments   :: !(Maybe [InputAttachment])
+    , _ucDestinations       :: !(Maybe [OutputDestination])
+    , _ucName               :: !(Maybe Text)
+    , _ucEncoderSettings    :: !(Maybe EncoderSettings)
+    , _ucRoleARN            :: !(Maybe Text)
+    , _ucChannelId          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -162,7 +162,7 @@ instance ToQuery UpdateChannel where
 -- /See:/ 'updateChannelResponse' smart constructor.
 data UpdateChannelResponse =
   UpdateChannelResponse'
-    { _ucrsChannel :: !(Maybe Channel)
+    { _ucrsChannel        :: !(Maybe Channel)
     , _ucrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

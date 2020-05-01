@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,8 +47,8 @@ import Network.AWS.Response
 data ResetDeployments =
   ResetDeployments'
     { _rdAmznClientToken :: !(Maybe Text)
-    , _rdForce :: !(Maybe Bool)
-    , _rdGroupId :: !Text
+    , _rdForce           :: !(Maybe Bool)
+    , _rdGroupId         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -114,8 +114,8 @@ instance ToQuery ResetDeployments where
 -- | /See:/ 'resetDeploymentsResponse' smart constructor.
 data ResetDeploymentsResponse =
   ResetDeploymentsResponse'
-    { _rdrsDeploymentId :: !(Maybe Text)
-    , _rdrsDeploymentARN :: !(Maybe Text)
+    { _rdrsDeploymentId   :: !(Maybe Text)
+    , _rdrsDeploymentARN  :: !(Maybe Text)
     , _rdrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

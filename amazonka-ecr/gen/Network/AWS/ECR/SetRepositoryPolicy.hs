@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,10 +48,10 @@ import Network.AWS.Response
 -- | /See:/ 'setRepositoryPolicy' smart constructor.
 data SetRepositoryPolicy =
   SetRepositoryPolicy'
-    { _srpForce :: !(Maybe Bool)
-    , _srpRegistryId :: !(Maybe Text)
+    { _srpForce          :: !(Maybe Bool)
+    , _srpRegistryId     :: !(Maybe Text)
     , _srpRepositoryName :: !Text
-    , _srpPolicyText :: !Text
+    , _srpPolicyText     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -137,9 +137,9 @@ instance ToQuery SetRepositoryPolicy where
 -- | /See:/ 'setRepositoryPolicyResponse' smart constructor.
 data SetRepositoryPolicyResponse =
   SetRepositoryPolicyResponse'
-    { _srprsRegistryId :: !(Maybe Text)
+    { _srprsRegistryId     :: !(Maybe Text)
     , _srprsRepositoryName :: !(Maybe Text)
-    , _srprsPolicyText :: !(Maybe Text)
+    , _srprsPolicyText     :: !(Maybe Text)
     , _srprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

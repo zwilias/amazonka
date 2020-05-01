@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -138,20 +138,20 @@ instance ToQuery DescribeSecret where
 -- | /See:/ 'describeSecretResponse' smart constructor.
 data DescribeSecretResponse =
   DescribeSecretResponse'
-    { _drsLastChangedDate :: !(Maybe POSIX)
-    , _drsARN :: !(Maybe Text)
-    , _drsRotationRules :: !(Maybe RotationRulesType)
-    , _drsDeletedDate :: !(Maybe POSIX)
-    , _drsRotationEnabled :: !(Maybe Bool)
-    , _drsKMSKeyId :: !(Maybe Text)
-    , _drsName :: !(Maybe Text)
+    { _drsLastChangedDate    :: !(Maybe POSIX)
+    , _drsARN                :: !(Maybe Text)
+    , _drsRotationRules      :: !(Maybe RotationRulesType)
+    , _drsDeletedDate        :: !(Maybe POSIX)
+    , _drsRotationEnabled    :: !(Maybe Bool)
+    , _drsKMSKeyId           :: !(Maybe Text)
+    , _drsName               :: !(Maybe Text)
     , _drsVersionIdsToStages :: !(Maybe (Map Text (List1 Text)))
-    , _drsLastRotatedDate :: !(Maybe POSIX)
-    , _drsLastAccessedDate :: !(Maybe POSIX)
-    , _drsDescription :: !(Maybe Text)
-    , _drsRotationLambdaARN :: !(Maybe Text)
-    , _drsTags :: !(Maybe [Tag])
-    , _drsResponseStatus :: !Int
+    , _drsLastRotatedDate    :: !(Maybe POSIX)
+    , _drsLastAccessedDate   :: !(Maybe POSIX)
+    , _drsDescription        :: !(Maybe Text)
+    , _drsRotationLambdaARN  :: !(Maybe Text)
+    , _drsTags               :: !(Maybe [Tag])
+    , _drsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

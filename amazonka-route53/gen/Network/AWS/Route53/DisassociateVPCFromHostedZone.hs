@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Route53.Types.Product
 -- /See:/ 'disassociateVPCFromHostedZone' smart constructor.
 data DisassociateVPCFromHostedZone =
   DisassociateVPCFromHostedZone'
-    { _dvfhzComment :: !(Maybe Text)
+    { _dvfhzComment      :: !(Maybe Text)
     , _dvfhzHostedZoneId :: !ResourceId
-    , _dvfhzVPC :: !VPC
+    , _dvfhzVPC          :: !VPC
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -130,7 +130,7 @@ instance ToXML DisassociateVPCFromHostedZone where
 data DisassociateVPCFromHostedZoneResponse =
   DisassociateVPCFromHostedZoneResponse'
     { _dvfhzrsResponseStatus :: !Int
-    , _dvfhzrsChangeInfo :: !ChangeInfo
+    , _dvfhzrsChangeInfo     :: !ChangeInfo
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

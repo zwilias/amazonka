@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,9 +49,9 @@ import Network.AWS.Response
 -- | /See:/ 'createJobQueue' smart constructor.
 data CreateJobQueue =
   CreateJobQueue'
-    { _cjqState :: !(Maybe JQState)
-    , _cjqJobQueueName :: !Text
-    , _cjqPriority :: !Int
+    { _cjqState                   :: !(Maybe JQState)
+    , _cjqJobQueueName            :: !Text
+    , _cjqPriority                :: !Int
     , _cjqComputeEnvironmentOrder :: ![ComputeEnvironmentOrder]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -136,8 +136,8 @@ instance ToQuery CreateJobQueue where
 data CreateJobQueueResponse =
   CreateJobQueueResponse'
     { _cjqrsResponseStatus :: !Int
-    , _cjqrsJobQueueName :: !Text
-    , _cjqrsJobQueueARN :: !Text
+    , _cjqrsJobQueueName   :: !Text
+    , _cjqrsJobQueueARN    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

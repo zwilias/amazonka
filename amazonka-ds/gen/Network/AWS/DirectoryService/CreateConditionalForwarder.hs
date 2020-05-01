@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,9 +48,9 @@ import Network.AWS.Response
 -- /See:/ 'createConditionalForwarder' smart constructor.
 data CreateConditionalForwarder =
   CreateConditionalForwarder'
-    { _ccfDirectoryId :: !Text
+    { _ccfDirectoryId      :: !Text
     , _ccfRemoteDomainName :: !Text
-    , _ccfDNSIPAddrs :: ![Text]
+    , _ccfDNSIPAddrs       :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

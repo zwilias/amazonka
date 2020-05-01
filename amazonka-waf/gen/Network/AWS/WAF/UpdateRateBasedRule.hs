@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -74,10 +74,10 @@ import Network.AWS.WAF.Types.Product
 -- | /See:/ 'updateRateBasedRule' smart constructor.
 data UpdateRateBasedRule =
   UpdateRateBasedRule'
-    { _urbrRuleId :: !Text
+    { _urbrRuleId      :: !Text
     , _urbrChangeToken :: !Text
-    , _urbrUpdates :: ![RuleUpdate]
-    , _urbrRateLimit :: !Nat
+    , _urbrUpdates     :: ![RuleUpdate]
+    , _urbrRateLimit   :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -162,7 +162,7 @@ instance ToQuery UpdateRateBasedRule where
 -- | /See:/ 'updateRateBasedRuleResponse' smart constructor.
 data UpdateRateBasedRuleResponse =
   UpdateRateBasedRuleResponse'
-    { _urbrrsChangeToken :: !(Maybe Text)
+    { _urbrrsChangeToken    :: !(Maybe Text)
     , _urbrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

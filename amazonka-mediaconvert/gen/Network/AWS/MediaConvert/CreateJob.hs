@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,11 +46,11 @@ import Network.AWS.Response
 -- | /See:/ 'createJob' smart constructor.
 data CreateJob =
   CreateJob'
-    { _cjJobTemplate :: !(Maybe Text)
-    , _cjSettings :: !(Maybe JobSettings)
-    , _cjQueue :: !(Maybe Text)
-    , _cjUserMetadata :: !(Maybe (Map Text Text))
-    , _cjRole :: !(Maybe Text)
+    { _cjJobTemplate        :: !(Maybe Text)
+    , _cjSettings           :: !(Maybe JobSettings)
+    , _cjQueue              :: !(Maybe Text)
+    , _cjUserMetadata       :: !(Maybe (Map Text Text))
+    , _cjRole               :: !(Maybe Text)
     , _cjClientRequestToken :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -144,7 +144,7 @@ instance ToQuery CreateJob where
 -- | /See:/ 'createJobResponse' smart constructor.
 data CreateJobResponse =
   CreateJobResponse'
-    { _cjrsJob :: !(Maybe Job)
+    { _cjrsJob            :: !(Maybe Job)
     , _cjrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

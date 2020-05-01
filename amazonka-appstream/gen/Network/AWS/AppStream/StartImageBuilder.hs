@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 data StartImageBuilder =
   StartImageBuilder'
     { _sibAppstreamAgentVersion :: !(Maybe Text)
-    , _sibName :: !Text
+    , _sibName                  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -110,7 +110,7 @@ instance ToQuery StartImageBuilder where
 -- | /See:/ 'startImageBuilderResponse' smart constructor.
 data StartImageBuilderResponse =
   StartImageBuilderResponse'
-    { _srsImageBuilder :: !(Maybe ImageBuilder)
+    { _srsImageBuilder   :: !(Maybe ImageBuilder)
     , _srsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

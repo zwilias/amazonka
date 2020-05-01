@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,7 +63,7 @@ import Network.AWS.Response
 -- | /See:/ 'putEventSelectors' smart constructor.
 data PutEventSelectors =
   PutEventSelectors'
-    { _pesTrailName :: !Text
+    { _pesTrailName      :: !Text
     , _pesEventSelectors :: ![EventSelector]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -130,7 +130,7 @@ instance ToQuery PutEventSelectors where
 -- | /See:/ 'putEventSelectorsResponse' smart constructor.
 data PutEventSelectorsResponse =
   PutEventSelectorsResponse'
-    { _pesrsTrailARN :: !(Maybe Text)
+    { _pesrsTrailARN       :: !(Maybe Text)
     , _pesrsEventSelectors :: !(Maybe [EventSelector])
     , _pesrsResponseStatus :: !Int
     }

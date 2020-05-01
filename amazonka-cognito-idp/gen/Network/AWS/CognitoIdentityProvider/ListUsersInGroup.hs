@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,10 +49,10 @@ import Network.AWS.Response
 -- | /See:/ 'listUsersInGroup' smart constructor.
 data ListUsersInGroup =
   ListUsersInGroup'
-    { _luigNextToken :: !(Maybe Text)
-    , _luigLimit :: !(Maybe Nat)
+    { _luigNextToken  :: !(Maybe Text)
+    , _luigLimit      :: !(Maybe Nat)
     , _luigUserPoolId :: !Text
-    , _luigGroupName :: !Text
+    , _luigGroupName  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -137,8 +137,8 @@ instance ToQuery ListUsersInGroup where
 -- | /See:/ 'listUsersInGroupResponse' smart constructor.
 data ListUsersInGroupResponse =
   ListUsersInGroupResponse'
-    { _luigrsUsers :: !(Maybe [UserType])
-    , _luigrsNextToken :: !(Maybe Text)
+    { _luigrsUsers          :: !(Maybe [UserType])
+    , _luigrsNextToken      :: !(Maybe Text)
     , _luigrsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

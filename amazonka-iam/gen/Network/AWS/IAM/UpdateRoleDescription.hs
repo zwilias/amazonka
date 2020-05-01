@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'updateRoleDescription' smart constructor.
 data UpdateRoleDescription =
   UpdateRoleDescription'
-    { _urdRoleName :: !Text
+    { _urdRoleName    :: !Text
     , _urdDescription :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -106,7 +106,7 @@ instance ToQuery UpdateRoleDescription where
 -- | /See:/ 'updateRoleDescriptionResponse' smart constructor.
 data UpdateRoleDescriptionResponse =
   UpdateRoleDescriptionResponse'
-    { _urdrsRole :: !(Maybe Role)
+    { _urdrsRole           :: !(Maybe Role)
     , _urdrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

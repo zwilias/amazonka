@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,7 +55,7 @@ import Network.AWS.ServerlessApplicationRepository.Types.Product
 data GetApplication =
   GetApplication'
     { _gaSemanticVersion :: !(Maybe Text)
-    , _gaApplicationId :: !Text
+    , _gaApplicationId   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -120,17 +120,17 @@ instance ToQuery GetApplication where
 -- | /See:/ 'getApplicationResponse' smart constructor.
 data GetApplicationResponse =
   GetApplicationResponse'
-    { _garsCreationTime :: !(Maybe Text)
-    , _garsHomePageURL :: !(Maybe Text)
-    , _garsLicenseURL :: !(Maybe Text)
-    , _garsReadmeURL :: !(Maybe Text)
-    , _garsApplicationId :: !(Maybe Text)
-    , _garsName :: !(Maybe Text)
-    , _garsVersion :: !(Maybe Version)
-    , _garsAuthor :: !(Maybe Text)
-    , _garsLabels :: !(Maybe [Text])
-    , _garsDescription :: !(Maybe Text)
-    , _garsSpdxLicenseId :: !(Maybe Text)
+    { _garsCreationTime   :: !(Maybe Text)
+    , _garsHomePageURL    :: !(Maybe Text)
+    , _garsLicenseURL     :: !(Maybe Text)
+    , _garsReadmeURL      :: !(Maybe Text)
+    , _garsApplicationId  :: !(Maybe Text)
+    , _garsName           :: !(Maybe Text)
+    , _garsVersion        :: !(Maybe Version)
+    , _garsAuthor         :: !(Maybe Text)
+    , _garsLabels         :: !(Maybe [Text])
+    , _garsDescription    :: !(Maybe Text)
+    , _garsSpdxLicenseId  :: !(Maybe Text)
     , _garsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

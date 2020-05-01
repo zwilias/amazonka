@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -68,9 +68,9 @@ import Network.AWS.SecretsManager.Types.Product
 data UpdateSecretVersionStage =
   UpdateSecretVersionStage'
     { _usvsRemoveFromVersionId :: !(Maybe Text)
-    , _usvsMoveToVersionId :: !(Maybe Text)
-    , _usvsSecretId :: !Text
-    , _usvsVersionStage :: !Text
+    , _usvsMoveToVersionId     :: !(Maybe Text)
+    , _usvsSecretId            :: !Text
+    , _usvsVersionStage        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -156,8 +156,8 @@ instance ToQuery UpdateSecretVersionStage where
 -- | /See:/ 'updateSecretVersionStageResponse' smart constructor.
 data UpdateSecretVersionStageResponse =
   UpdateSecretVersionStageResponse'
-    { _usvsrsARN :: !(Maybe Text)
-    , _usvsrsName :: !(Maybe Text)
+    { _usvsrsARN            :: !(Maybe Text)
+    , _usvsrsName           :: !(Maybe Text)
     , _usvsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,8 +55,8 @@ import Network.AWS.Response
 -- /See:/ 'listJobsByPipeline' smart constructor.
 data ListJobsByPipeline =
   ListJobsByPipeline'
-    { _ljbpAscending :: !(Maybe Text)
-    , _ljbpPageToken :: !(Maybe Text)
+    { _ljbpAscending  :: !(Maybe Text)
+    , _ljbpPageToken  :: !(Maybe Text)
     , _ljbpPipelineId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -130,8 +130,8 @@ instance ToQuery ListJobsByPipeline where
 -- /See:/ 'listJobsByPipelineResponse' smart constructor.
 data ListJobsByPipelineResponse =
   ListJobsByPipelineResponse'
-    { _ljbprsNextPageToken :: !(Maybe Text)
-    , _ljbprsJobs :: !(Maybe [Job'])
+    { _ljbprsNextPageToken  :: !(Maybe Text)
+    , _ljbprsJobs           :: !(Maybe [Job'])
     , _ljbprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

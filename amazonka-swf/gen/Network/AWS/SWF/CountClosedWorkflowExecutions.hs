@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -71,13 +71,13 @@ import Network.AWS.SWF.Types.Product
 -- | /See:/ 'countClosedWorkflowExecutions' smart constructor.
 data CountClosedWorkflowExecutions =
   CountClosedWorkflowExecutions'
-    { _ccweExecutionFilter :: !(Maybe WorkflowExecutionFilter)
+    { _ccweExecutionFilter   :: !(Maybe WorkflowExecutionFilter)
     , _ccweCloseStatusFilter :: !(Maybe CloseStatusFilter)
-    , _ccweTypeFilter :: !(Maybe WorkflowTypeFilter)
-    , _ccweCloseTimeFilter :: !(Maybe ExecutionTimeFilter)
-    , _ccweTagFilter :: !(Maybe TagFilter)
-    , _ccweStartTimeFilter :: !(Maybe ExecutionTimeFilter)
-    , _ccweDomain :: !Text
+    , _ccweTypeFilter        :: !(Maybe WorkflowTypeFilter)
+    , _ccweCloseTimeFilter   :: !(Maybe ExecutionTimeFilter)
+    , _ccweTagFilter         :: !(Maybe TagFilter)
+    , _ccweStartTimeFilter   :: !(Maybe ExecutionTimeFilter)
+    , _ccweDomain            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

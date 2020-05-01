@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.SageMaker.Types.Product
 -- | /See:/ 'createEndpoint' smart constructor.
 data CreateEndpoint =
   CreateEndpoint'
-    { _ceTags :: !(Maybe [Tag])
-    , _ceEndpointName :: !Text
+    { _ceTags               :: !(Maybe [Tag])
+    , _ceEndpointName       :: !Text
     , _ceEndpointConfigName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -132,7 +132,7 @@ instance ToQuery CreateEndpoint where
 data CreateEndpointResponse =
   CreateEndpointResponse'
     { _cersResponseStatus :: !Int
-    , _cersEndpointARN :: !Text
+    , _cersEndpointARN    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

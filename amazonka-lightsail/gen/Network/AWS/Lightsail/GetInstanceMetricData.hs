@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,12 +51,12 @@ import Network.AWS.Response
 data GetInstanceMetricData =
   GetInstanceMetricData'
     { _gimdInstanceName :: !Text
-    , _gimdMetricName :: !InstanceMetricName
-    , _gimdPeriod :: !Nat
-    , _gimdStartTime :: !POSIX
-    , _gimdEndTime :: !POSIX
-    , _gimdUnit :: !MetricUnit
-    , _gimdStatistics :: ![MetricStatistic]
+    , _gimdMetricName   :: !InstanceMetricName
+    , _gimdPeriod       :: !Nat
+    , _gimdStartTime    :: !POSIX
+    , _gimdEndTime      :: !POSIX
+    , _gimdUnit         :: !MetricUnit
+    , _gimdStatistics   :: ![MetricStatistic]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -170,8 +170,8 @@ instance ToQuery GetInstanceMetricData where
 -- | /See:/ 'getInstanceMetricDataResponse' smart constructor.
 data GetInstanceMetricDataResponse =
   GetInstanceMetricDataResponse'
-    { _gimdrsMetricName :: !(Maybe InstanceMetricName)
-    , _gimdrsMetricData :: !(Maybe [MetricDatapoint])
+    { _gimdrsMetricName     :: !(Maybe InstanceMetricName)
+    , _gimdrsMetricData     :: !(Maybe [MetricDatapoint])
     , _gimdrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

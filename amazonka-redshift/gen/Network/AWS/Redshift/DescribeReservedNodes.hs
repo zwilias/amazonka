@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,8 +54,8 @@ import Network.AWS.Response
 data DescribeReservedNodes =
   DescribeReservedNodes'
     { _drnReservedNodeId :: !(Maybe Text)
-    , _drnMarker :: !(Maybe Text)
-    , _drnMaxRecords :: !(Maybe Int)
+    , _drnMarker         :: !(Maybe Text)
+    , _drnMaxRecords     :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -133,8 +133,8 @@ instance ToQuery DescribeReservedNodes where
 -- /See:/ 'describeReservedNodesResponse' smart constructor.
 data DescribeReservedNodesResponse =
   DescribeReservedNodesResponse'
-    { _drnrsReservedNodes :: !(Maybe [ReservedNode])
-    , _drnrsMarker :: !(Maybe Text)
+    { _drnrsReservedNodes  :: !(Maybe [ReservedNode])
+    , _drnrsMarker         :: !(Maybe Text)
     , _drnrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

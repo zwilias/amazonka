@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,7 +53,7 @@ import Network.AWS.Response
 data ListTables =
   ListTables'
     { _ltExclusiveStartTableName :: !(Maybe Text)
-    , _ltLimit :: !(Maybe Nat)
+    , _ltLimit                   :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -128,8 +128,8 @@ instance ToQuery ListTables where
 data ListTablesResponse =
   ListTablesResponse'
     { _ltrsLastEvaluatedTableName :: !(Maybe Text)
-    , _ltrsTableNames :: !(Maybe [Text])
-    , _ltrsResponseStatus :: !Int
+    , _ltrsTableNames             :: !(Maybe [Text])
+    , _ltrsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

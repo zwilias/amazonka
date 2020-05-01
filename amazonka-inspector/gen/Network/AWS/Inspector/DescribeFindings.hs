@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'describeFindings' smart constructor.
 data DescribeFindings =
   DescribeFindings'
-    { _dfLocale :: !(Maybe Locale)
+    { _dfLocale      :: !(Maybe Locale)
     , _dfFindingARNs :: !(List1 Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -110,8 +110,8 @@ instance ToQuery DescribeFindings where
 data DescribeFindingsResponse =
   DescribeFindingsResponse'
     { _dfrsResponseStatus :: !Int
-    , _dfrsFindings :: ![Finding]
-    , _dfrsFailedItems :: !(Map Text FailedItemDetails)
+    , _dfrsFindings       :: ![Finding]
+    , _dfrsFailedItems    :: !(Map Text FailedItemDetails)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

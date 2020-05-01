@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'describePatchBaselines' smart constructor.
 data DescribePatchBaselines =
   DescribePatchBaselines'
-    { _dpbFilters :: !(Maybe [PatchOrchestratorFilter])
-    , _dpbNextToken :: !(Maybe Text)
+    { _dpbFilters    :: !(Maybe [PatchOrchestratorFilter])
+    , _dpbNextToken  :: !(Maybe Text)
     , _dpbMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -121,8 +121,8 @@ instance ToQuery DescribePatchBaselines where
 data DescribePatchBaselinesResponse =
   DescribePatchBaselinesResponse'
     { _dpbsrsBaselineIdentities :: !(Maybe [PatchBaselineIdentity])
-    , _dpbsrsNextToken :: !(Maybe Text)
-    , _dpbsrsResponseStatus :: !Int
+    , _dpbsrsNextToken          :: !(Maybe Text)
+    , _dpbsrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

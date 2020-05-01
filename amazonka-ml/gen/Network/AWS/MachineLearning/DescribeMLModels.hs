@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,17 +57,17 @@ import Network.AWS.Response
 -- | /See:/ 'describeMLModels' smart constructor.
 data DescribeMLModels =
   DescribeMLModels'
-    { _dmlmEQ :: !(Maybe Text)
-    , _dmlmGE :: !(Maybe Text)
-    , _dmlmPrefix :: !(Maybe Text)
-    , _dmlmGT :: !(Maybe Text)
-    , _dmlmNE :: !(Maybe Text)
-    , _dmlmNextToken :: !(Maybe Text)
-    , _dmlmSortOrder :: !(Maybe SortOrder)
-    , _dmlmLimit :: !(Maybe Nat)
-    , _dmlmLT :: !(Maybe Text)
+    { _dmlmEQ             :: !(Maybe Text)
+    , _dmlmGE             :: !(Maybe Text)
+    , _dmlmPrefix         :: !(Maybe Text)
+    , _dmlmGT             :: !(Maybe Text)
+    , _dmlmNE             :: !(Maybe Text)
+    , _dmlmNextToken      :: !(Maybe Text)
+    , _dmlmSortOrder      :: !(Maybe SortOrder)
+    , _dmlmLimit          :: !(Maybe Nat)
+    , _dmlmLT             :: !(Maybe Text)
     , _dmlmFilterVariable :: !(Maybe MLModelFilterVariable)
-    , _dmlmLE :: !(Maybe Text)
+    , _dmlmLE             :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -216,8 +216,8 @@ instance ToQuery DescribeMLModels where
 -- /See:/ 'describeMLModelsResponse' smart constructor.
 data DescribeMLModelsResponse =
   DescribeMLModelsResponse'
-    { _dmlmsrsResults :: !(Maybe [MLModel])
-    , _dmlmsrsNextToken :: !(Maybe Text)
+    { _dmlmsrsResults        :: !(Maybe [MLModel])
+    , _dmlmsrsNextToken      :: !(Maybe Text)
     , _dmlmsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'deleteEgressOnlyInternetGateway' smart constructor.
 data DeleteEgressOnlyInternetGateway =
   DeleteEgressOnlyInternetGateway'
-    { _deoigeDryRun :: !(Maybe Bool)
+    { _deoigeDryRun                      :: !(Maybe Bool)
     , _deoigeEgressOnlyInternetGatewayId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -107,7 +107,7 @@ instance ToQuery DeleteEgressOnlyInternetGateway where
 -- | /See:/ 'deleteEgressOnlyInternetGatewayResponse' smart constructor.
 data DeleteEgressOnlyInternetGatewayResponse =
   DeleteEgressOnlyInternetGatewayResponse'
-    { _deoigersReturnCode :: !(Maybe Bool)
+    { _deoigersReturnCode     :: !(Maybe Bool)
     , _deoigersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

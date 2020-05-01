@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,8 +27,8 @@ import Network.AWS.Prelude
 data AddressBook =
   AddressBook'
     { _abAddressBookARN :: !(Maybe Text)
-    , _abName :: !(Maybe Text)
-    , _abDescription :: !(Maybe Text)
+    , _abName           :: !(Maybe Text)
+    , _abDescription    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -78,8 +78,8 @@ instance NFData AddressBook
 data AddressBookData =
   AddressBookData'
     { _abdAddressBookARN :: !(Maybe Text)
-    , _abdName :: !(Maybe Text)
-    , _abdDescription :: !(Maybe Text)
+    , _abdName           :: !(Maybe Text)
+    , _abdDescription    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -131,10 +131,10 @@ instance NFData AddressBookData
 -- /See:/ 'contact' smart constructor.
 data Contact =
   Contact'
-    { _cLastName :: !(Maybe Text)
-    , _cContactARN :: !(Maybe Text)
+    { _cLastName    :: !(Maybe Text)
+    , _cContactARN  :: !(Maybe Text)
     , _cPhoneNumber :: !(Maybe Text)
-    , _cFirstName :: !(Maybe Text)
+    , _cFirstName   :: !(Maybe Text)
     , _cDisplayName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -203,10 +203,10 @@ instance NFData Contact
 -- /See:/ 'contactData' smart constructor.
 data ContactData =
   ContactData'
-    { _cdLastName :: !(Maybe Text)
-    , _cdContactARN :: !(Maybe Text)
+    { _cdLastName    :: !(Maybe Text)
+    , _cdContactARN  :: !(Maybe Text)
     , _cdPhoneNumber :: !(Maybe Text)
-    , _cdFirstName :: !(Maybe Text)
+    , _cdFirstName   :: !(Maybe Text)
     , _cdDisplayName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -275,14 +275,14 @@ instance NFData ContactData
 -- /See:/ 'device' smart constructor.
 data Device =
   Device'
-    { _dDeviceStatus :: !(Maybe DeviceStatus)
-    , _dDeviceStatusInfo :: !(Maybe DeviceStatusInfo)
-    , _dDeviceARN :: !(Maybe Text)
-    , _dMACAddress :: !(Maybe Text)
-    , _dDeviceName :: !(Maybe Text)
-    , _dRoomARN :: !(Maybe Text)
-    , _dSoftwareVersion :: !(Maybe Text)
-    , _dDeviceType :: !(Maybe Text)
+    { _dDeviceStatus       :: !(Maybe DeviceStatus)
+    , _dDeviceStatusInfo   :: !(Maybe DeviceStatusInfo)
+    , _dDeviceARN          :: !(Maybe Text)
+    , _dMACAddress         :: !(Maybe Text)
+    , _dDeviceName         :: !(Maybe Text)
+    , _dRoomARN            :: !(Maybe Text)
+    , _dSoftwareVersion    :: !(Maybe Text)
+    , _dDeviceType         :: !(Maybe Text)
     , _dDeviceSerialNumber :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -384,15 +384,15 @@ instance NFData Device
 -- /See:/ 'deviceData' smart constructor.
 data DeviceData =
   DeviceData'
-    { _ddDeviceStatus :: !(Maybe DeviceStatus)
-    , _ddDeviceStatusInfo :: !(Maybe DeviceStatusInfo)
-    , _ddDeviceARN :: !(Maybe Text)
-    , _ddMACAddress :: !(Maybe Text)
-    , _ddDeviceName :: !(Maybe Text)
-    , _ddRoomARN :: !(Maybe Text)
-    , _ddSoftwareVersion :: !(Maybe Text)
-    , _ddDeviceType :: !(Maybe Text)
-    , _ddRoomName :: !(Maybe Text)
+    { _ddDeviceStatus       :: !(Maybe DeviceStatus)
+    , _ddDeviceStatusInfo   :: !(Maybe DeviceStatusInfo)
+    , _ddDeviceARN          :: !(Maybe Text)
+    , _ddMACAddress         :: !(Maybe Text)
+    , _ddDeviceName         :: !(Maybe Text)
+    , _ddRoomARN            :: !(Maybe Text)
+    , _ddSoftwareVersion    :: !(Maybe Text)
+    , _ddDeviceType         :: !(Maybe Text)
+    , _ddRoomName           :: !(Maybe Text)
     , _ddDeviceSerialNumber :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -503,8 +503,8 @@ instance NFData DeviceData
 -- /See:/ 'deviceEvent' smart constructor.
 data DeviceEvent =
   DeviceEvent'
-    { _deValue :: !(Maybe Text)
-    , _deType :: !(Maybe DeviceEventType)
+    { _deValue     :: !(Maybe Text)
+    , _deType      :: !(Maybe DeviceEventType)
     , _deTimestamp :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -587,7 +587,7 @@ instance NFData DeviceStatusDetail
 data DeviceStatusInfo =
   DeviceStatusInfo'
     { _dsiDeviceStatusDetails :: !(Maybe [DeviceStatusDetail])
-    , _dsiConnectionStatus :: !(Maybe ConnectionStatus)
+    , _dsiConnectionStatus    :: !(Maybe ConnectionStatus)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -633,7 +633,7 @@ instance NFData DeviceStatusInfo
 -- /See:/ 'filter'' smart constructor.
 data Filter =
   Filter'
-    { _fKey :: !Text
+    { _fKey    :: !Text
     , _fValues :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -674,15 +674,15 @@ instance ToJSON Filter where
 data Profile =
   Profile'
     { _pSetupModeDisabled :: !(Maybe Bool)
-    , _pPSTNEnabled :: !(Maybe Bool)
-    , _pDistanceUnit :: !(Maybe DistanceUnit)
-    , _pAddress :: !(Maybe Text)
-    , _pProfileARN :: !(Maybe Text)
-    , _pWakeWord :: !(Maybe WakeWord)
-    , _pProfileName :: !(Maybe Text)
-    , _pTemperatureUnit :: !(Maybe TemperatureUnit)
-    , _pTimezone :: !(Maybe Text)
-    , _pMaxVolumeLimit :: !(Maybe Int)
+    , _pPSTNEnabled       :: !(Maybe Bool)
+    , _pDistanceUnit      :: !(Maybe DistanceUnit)
+    , _pAddress           :: !(Maybe Text)
+    , _pProfileARN        :: !(Maybe Text)
+    , _pWakeWord          :: !(Maybe WakeWord)
+    , _pProfileName       :: !(Maybe Text)
+    , _pTemperatureUnit   :: !(Maybe TemperatureUnit)
+    , _pTimezone          :: !(Maybe Text)
+    , _pMaxVolumeLimit    :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -791,13 +791,13 @@ instance NFData Profile
 -- /See:/ 'profileData' smart constructor.
 data ProfileData =
   ProfileData'
-    { _pdDistanceUnit :: !(Maybe DistanceUnit)
-    , _pdAddress :: !(Maybe Text)
-    , _pdProfileARN :: !(Maybe Text)
-    , _pdWakeWord :: !(Maybe WakeWord)
-    , _pdProfileName :: !(Maybe Text)
+    { _pdDistanceUnit    :: !(Maybe DistanceUnit)
+    , _pdAddress         :: !(Maybe Text)
+    , _pdProfileARN      :: !(Maybe Text)
+    , _pdWakeWord        :: !(Maybe WakeWord)
+    , _pdProfileName     :: !(Maybe Text)
     , _pdTemperatureUnit :: !(Maybe TemperatureUnit)
-    , _pdTimezone :: !(Maybe Text)
+    , _pdTimezone        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -881,11 +881,11 @@ instance NFData ProfileData
 -- /See:/ 'room' smart constructor.
 data Room =
   Room'
-    { _rProfileARN :: !(Maybe Text)
+    { _rProfileARN         :: !(Maybe Text)
     , _rProviderCalendarId :: !(Maybe Text)
-    , _rRoomARN :: !(Maybe Text)
-    , _rRoomName :: !(Maybe Text)
-    , _rDescription :: !(Maybe Text)
+    , _rRoomARN            :: !(Maybe Text)
+    , _rRoomName           :: !(Maybe Text)
+    , _rDescription        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -954,12 +954,12 @@ instance NFData Room
 -- /See:/ 'roomData' smart constructor.
 data RoomData =
   RoomData'
-    { _rdProfileARN :: !(Maybe Text)
+    { _rdProfileARN         :: !(Maybe Text)
     , _rdProviderCalendarId :: !(Maybe Text)
-    , _rdProfileName :: !(Maybe Text)
-    , _rdRoomARN :: !(Maybe Text)
-    , _rdRoomName :: !(Maybe Text)
-    , _rdDescription :: !(Maybe Text)
+    , _rdProfileName        :: !(Maybe Text)
+    , _rdRoomARN            :: !(Maybe Text)
+    , _rdRoomName           :: !(Maybe Text)
+    , _rdDescription        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1036,7 +1036,7 @@ instance NFData RoomData
 -- /See:/ 'roomSkillParameter' smart constructor.
 data RoomSkillParameter =
   RoomSkillParameter'
-    { _rspParameterKey :: !Text
+    { _rspParameterKey   :: !Text
     , _rspParameterValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1091,8 +1091,8 @@ instance ToJSON RoomSkillParameter where
 -- /See:/ 'skillGroup' smart constructor.
 data SkillGroup =
   SkillGroup'
-    { _sgSkillGroupARN :: !(Maybe Text)
-    , _sgDescription :: !(Maybe Text)
+    { _sgSkillGroupARN  :: !(Maybe Text)
+    , _sgDescription    :: !(Maybe Text)
     , _sgSkillGroupName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1145,8 +1145,8 @@ instance NFData SkillGroup
 -- /See:/ 'skillGroupData' smart constructor.
 data SkillGroupData =
   SkillGroupData'
-    { _sgdSkillGroupARN :: !(Maybe Text)
-    , _sgdDescription :: !(Maybe Text)
+    { _sgdSkillGroupARN  :: !(Maybe Text)
+    , _sgdDescription    :: !(Maybe Text)
     , _sgdSkillGroupName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1199,9 +1199,9 @@ instance NFData SkillGroupData
 -- /See:/ 'skillSummary' smart constructor.
 data SkillSummary =
   SkillSummary'
-    { _ssSkillId :: !(Maybe Text)
+    { _ssSkillId         :: !(Maybe Text)
     , _ssSupportsLinking :: !(Maybe Bool)
-    , _ssSkillName :: !(Maybe Text)
+    , _ssSkillName       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1250,7 +1250,7 @@ instance NFData SkillSummary
 -- /See:/ 'sort' smart constructor.
 data Sort =
   Sort'
-    { _sKey :: !Text
+    { _sKey   :: !Text
     , _sValue :: !SortValue
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1292,7 +1292,7 @@ instance ToJSON Sort where
 data Tag =
   Tag'
     { _tagValue :: !(Maybe Text)
-    , _tagKey :: !(Maybe Text)
+    , _tagKey   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1333,11 +1333,11 @@ instance ToJSON Tag where
 -- /See:/ 'userData' smart constructor.
 data UserData =
   UserData'
-    { _udEmail :: !(Maybe Text)
-    , _udLastName :: !(Maybe Text)
-    , _udEnrollmentId :: !(Maybe Text)
-    , _udUserARN :: !(Maybe Text)
-    , _udFirstName :: !(Maybe Text)
+    { _udEmail            :: !(Maybe Text)
+    , _udLastName         :: !(Maybe Text)
+    , _udEnrollmentId     :: !(Maybe Text)
+    , _udUserARN          :: !(Maybe Text)
+    , _udFirstName        :: !(Maybe Text)
     , _udEnrollmentStatus :: !(Maybe EnrollmentStatus)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -79,11 +79,11 @@ import Network.AWS.STS.Types.Product
 -- | /See:/ 'assumeRoleWithWebIdentity' smart constructor.
 data AssumeRoleWithWebIdentity =
   AssumeRoleWithWebIdentity'
-    { _arwwiProviderId :: !(Maybe Text)
-    , _arwwiDurationSeconds :: !(Maybe Nat)
-    , _arwwiPolicy :: !(Maybe Text)
-    , _arwwiRoleARN :: !Text
-    , _arwwiRoleSessionName :: !Text
+    { _arwwiProviderId       :: !(Maybe Text)
+    , _arwwiDurationSeconds  :: !(Maybe Nat)
+    , _arwwiPolicy           :: !(Maybe Text)
+    , _arwwiRoleARN          :: !Text
+    , _arwwiRoleSessionName  :: !Text
     , _arwwiWebIdentityToken :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -191,13 +191,13 @@ instance ToQuery AssumeRoleWithWebIdentity where
 -- /See:/ 'assumeRoleWithWebIdentityResponse' smart constructor.
 data AssumeRoleWithWebIdentityResponse =
   AssumeRoleWithWebIdentityResponse'
-    { _arwwirsAudience :: !(Maybe Text)
+    { _arwwirsAudience                    :: !(Maybe Text)
     , _arwwirsSubjectFromWebIdentityToken :: !(Maybe Text)
-    , _arwwirsPackedPolicySize :: !(Maybe Nat)
-    , _arwwirsCredentials :: !(Maybe AuthEnv)
-    , _arwwirsAssumedRoleUser :: !(Maybe AssumedRoleUser)
-    , _arwwirsProvider :: !(Maybe Text)
-    , _arwwirsResponseStatus :: !Int
+    , _arwwirsPackedPolicySize            :: !(Maybe Nat)
+    , _arwwirsCredentials                 :: !(Maybe AuthEnv)
+    , _arwwirsAssumedRoleUser             :: !(Maybe AssumedRoleUser)
+    , _arwwirsProvider                    :: !(Maybe Text)
+    , _arwwirsResponseStatus              :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

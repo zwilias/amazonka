@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,8 +47,8 @@ import Network.AWS.Response
 -- | /See:/ 'modifyDBSnapshot' smart constructor.
 data ModifyDBSnapshot =
   ModifyDBSnapshot'
-    { _mdsEngineVersion :: !(Maybe Text)
-    , _mdsOptionGroupName :: !(Maybe Text)
+    { _mdsEngineVersion        :: !(Maybe Text)
+    , _mdsOptionGroupName      :: !(Maybe Text)
     , _mdsDBSnapshotIdentifier :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -119,7 +119,7 @@ instance ToQuery ModifyDBSnapshot where
 -- | /See:/ 'modifyDBSnapshotResponse' smart constructor.
 data ModifyDBSnapshotResponse =
   ModifyDBSnapshotResponse'
-    { _mdsrsDBSnapshot :: !(Maybe DBSnapshot)
+    { _mdsrsDBSnapshot     :: !(Maybe DBSnapshot)
     , _mdsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

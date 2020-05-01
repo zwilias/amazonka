@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,9 +45,9 @@ import Network.AWS.Response
 -- | /See:/ 'createPartition' smart constructor.
 data CreatePartition =
   CreatePartition'
-    { _cpCatalogId :: !(Maybe Text)
-    , _cpDatabaseName :: !Text
-    , _cpTableName :: !Text
+    { _cpCatalogId      :: !(Maybe Text)
+    , _cpDatabaseName   :: !Text
+    , _cpTableName      :: !Text
     , _cpPartitionInput :: !PartitionInput
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

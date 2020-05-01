@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- | /See:/ 'getCrawlers' smart constructor.
 data GetCrawlers =
   GetCrawlers'
-    { _gNextToken :: !(Maybe Text)
+    { _gNextToken  :: !(Maybe Text)
     , _gMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -114,8 +114,8 @@ instance ToQuery GetCrawlers where
 -- | /See:/ 'getCrawlersResponse' smart constructor.
 data GetCrawlersResponse =
   GetCrawlersResponse'
-    { _grsNextToken :: !(Maybe Text)
-    , _grsCrawlers :: !(Maybe [Crawler])
+    { _grsNextToken      :: !(Maybe Text)
+    , _grsCrawlers       :: !(Maybe [Crawler])
     , _grsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

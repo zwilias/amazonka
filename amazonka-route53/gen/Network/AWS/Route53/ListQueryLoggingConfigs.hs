@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Route53.Types.Product
 data ListQueryLoggingConfigs =
   ListQueryLoggingConfigs'
     { _lqlcHostedZoneId :: !(Maybe ResourceId)
-    , _lqlcNextToken :: !(Maybe Text)
-    , _lqlcMaxResults :: !(Maybe Text)
+    , _lqlcNextToken    :: !(Maybe Text)
+    , _lqlcMaxResults   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -115,8 +115,8 @@ instance ToQuery ListQueryLoggingConfigs where
 -- | /See:/ 'listQueryLoggingConfigsResponse' smart constructor.
 data ListQueryLoggingConfigsResponse =
   ListQueryLoggingConfigsResponse'
-    { _lqlcrsNextToken :: !(Maybe Text)
-    , _lqlcrsResponseStatus :: !Int
+    { _lqlcrsNextToken           :: !(Maybe Text)
+    , _lqlcrsResponseStatus      :: !Int
     , _lqlcrsQueryLoggingConfigs :: ![QueryLoggingConfig]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

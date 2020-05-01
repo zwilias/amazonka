@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,9 +52,9 @@ import Network.AWS.Response
 -- | /See:/ 'adminLinkProviderForUser' smart constructor.
 data AdminLinkProviderForUser =
   AdminLinkProviderForUser'
-    { _alpfuUserPoolId :: !Text
+    { _alpfuUserPoolId      :: !Text
     , _alpfuDestinationUser :: !ProviderUserIdentifierType
-    , _alpfuSourceUser :: !ProviderUserIdentifierType
+    , _alpfuSourceUser      :: !ProviderUserIdentifierType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

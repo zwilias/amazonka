@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -213,7 +213,7 @@ instance ToQuery CreateElasticsearchDomain where
 -- /See:/ 'createElasticsearchDomainResponse' smart constructor.
 data CreateElasticsearchDomainResponse =
   CreateElasticsearchDomainResponse'
-    { _cedrsDomainStatus :: !(Maybe ElasticsearchDomainStatus)
+    { _cedrsDomainStatus   :: !(Maybe ElasticsearchDomainStatus)
     , _cedrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

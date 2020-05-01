@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.Response
 data ScheduleKeyDeletion =
   ScheduleKeyDeletion'
     { _skdPendingWindowInDays :: !(Maybe Nat)
-    , _skdKeyId :: !Text
+    , _skdKeyId               :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -118,8 +118,8 @@ instance ToQuery ScheduleKeyDeletion where
 -- | /See:/ 'scheduleKeyDeletionResponse' smart constructor.
 data ScheduleKeyDeletionResponse =
   ScheduleKeyDeletionResponse'
-    { _skdrsKeyId :: !(Maybe Text)
-    , _skdrsDeletionDate :: !(Maybe POSIX)
+    { _skdrsKeyId          :: !(Maybe Text)
+    , _skdrsDeletionDate   :: !(Maybe POSIX)
     , _skdrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

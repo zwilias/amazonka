@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 -- | /See:/ 'listIPRoutes' smart constructor.
 data ListIPRoutes =
   ListIPRoutes'
-    { _lirNextToken :: !(Maybe Text)
-    , _lirLimit :: !(Maybe Nat)
+    { _lirNextToken   :: !(Maybe Text)
+    , _lirLimit       :: !(Maybe Nat)
     , _lirDirectoryId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -124,8 +124,8 @@ instance ToQuery ListIPRoutes where
 -- | /See:/ 'listIPRoutesResponse' smart constructor.
 data ListIPRoutesResponse =
   ListIPRoutesResponse'
-    { _lirrsIPRoutesInfo :: !(Maybe [IPRouteInfo])
-    , _lirrsNextToken :: !(Maybe Text)
+    { _lirrsIPRoutesInfo   :: !(Maybe [IPRouteInfo])
+    , _lirrsNextToken      :: !(Maybe Text)
     , _lirrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

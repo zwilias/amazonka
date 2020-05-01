@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,8 +44,8 @@ import Network.AWS.Response
 -- | /See:/ 'updateApplication' smart constructor.
 data UpdateApplication =
   UpdateApplication'
-    { _uaName :: !(Maybe Text)
-    , _uaDescription :: !(Maybe Text)
+    { _uaName            :: !(Maybe Text)
+    , _uaDescription     :: !(Maybe Text)
     , _uaConfigurationId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

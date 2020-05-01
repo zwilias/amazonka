@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -77,12 +77,12 @@ import Network.AWS.STS.Types.Product
 -- | /See:/ 'assumeRole' smart constructor.
 data AssumeRole =
   AssumeRole'
-    { _arTokenCode :: !(Maybe Text)
+    { _arTokenCode       :: !(Maybe Text)
     , _arDurationSeconds :: !(Maybe Nat)
-    , _arPolicy :: !(Maybe Text)
-    , _arExternalId :: !(Maybe Text)
-    , _arSerialNumber :: !(Maybe Text)
-    , _arRoleARN :: !Text
+    , _arPolicy          :: !(Maybe Text)
+    , _arExternalId      :: !(Maybe Text)
+    , _arSerialNumber    :: !(Maybe Text)
+    , _arRoleARN         :: !Text
     , _arRoleSessionName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -192,9 +192,9 @@ instance ToQuery AssumeRole where
 data AssumeRoleResponse =
   AssumeRoleResponse'
     { _arrsPackedPolicySize :: !(Maybe Nat)
-    , _arrsCredentials :: !(Maybe AuthEnv)
-    , _arrsAssumedRoleUser :: !(Maybe AssumedRoleUser)
-    , _arrsResponseStatus :: !Int
+    , _arrsCredentials      :: !(Maybe AuthEnv)
+    , _arrsAssumedRoleUser  :: !(Maybe AssumedRoleUser)
+    , _arrsResponseStatus   :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

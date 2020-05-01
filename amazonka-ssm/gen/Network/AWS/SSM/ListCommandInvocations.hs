@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,10 +53,10 @@ import Network.AWS.SSM.Types.Product
 data ListCommandInvocations =
   ListCommandInvocations'
     { _lciInstanceId :: !(Maybe Text)
-    , _lciFilters :: !(Maybe (List1 CommandFilter))
-    , _lciNextToken :: !(Maybe Text)
-    , _lciCommandId :: !(Maybe Text)
-    , _lciDetails :: !(Maybe Bool)
+    , _lciFilters    :: !(Maybe (List1 CommandFilter))
+    , _lciNextToken  :: !(Maybe Text)
+    , _lciCommandId  :: !(Maybe Text)
+    , _lciDetails    :: !(Maybe Bool)
     , _lciMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -161,9 +161,9 @@ instance ToQuery ListCommandInvocations where
 -- | /See:/ 'listCommandInvocationsResponse' smart constructor.
 data ListCommandInvocationsResponse =
   ListCommandInvocationsResponse'
-    { _lrsNextToken :: !(Maybe Text)
+    { _lrsNextToken          :: !(Maybe Text)
     , _lrsCommandInvocations :: !(Maybe [CommandInvocation])
-    , _lrsResponseStatus :: !Int
+    , _lrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

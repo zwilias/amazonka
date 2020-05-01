@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,8 +52,8 @@ import Network.AWS.Response
 -- /See:/ 'getConsoleScreenshot' smart constructor.
 data GetConsoleScreenshot =
   GetConsoleScreenshot'
-    { _gcsWakeUp :: !(Maybe Bool)
-    , _gcsDryRun :: !(Maybe Bool)
+    { _gcsWakeUp     :: !(Maybe Bool)
+    , _gcsDryRun     :: !(Maybe Bool)
     , _gcsInstanceId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -123,8 +123,8 @@ instance ToQuery GetConsoleScreenshot where
 -- /See:/ 'getConsoleScreenshotResponse' smart constructor.
 data GetConsoleScreenshotResponse =
   GetConsoleScreenshotResponse'
-    { _gcsrsInstanceId :: !(Maybe Text)
-    , _gcsrsImageData :: !(Maybe Text)
+    { _gcsrsInstanceId     :: !(Maybe Text)
+    , _gcsrsImageData      :: !(Maybe Text)
     , _gcsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

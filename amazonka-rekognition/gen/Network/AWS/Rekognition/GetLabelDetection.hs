@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,10 +58,10 @@ import Network.AWS.Response
 -- | /See:/ 'getLabelDetection' smart constructor.
 data GetLabelDetection =
   GetLabelDetection'
-    { _gldNextToken :: !(Maybe Text)
+    { _gldNextToken  :: !(Maybe Text)
     , _gldMaxResults :: !(Maybe Nat)
-    , _gldSortBy :: !(Maybe LabelDetectionSortBy)
-    , _gldJobId :: !Text
+    , _gldSortBy     :: !(Maybe LabelDetectionSortBy)
+    , _gldJobId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -149,11 +149,11 @@ instance ToQuery GetLabelDetection where
 -- | /See:/ 'getLabelDetectionResponse' smart constructor.
 data GetLabelDetectionResponse =
   GetLabelDetectionResponse'
-    { _gldrsNextToken :: !(Maybe Text)
-    , _gldrsVideoMetadata :: !(Maybe VideoMetadata)
-    , _gldrsStatusMessage :: !(Maybe Text)
-    , _gldrsLabels :: !(Maybe [LabelDetection])
-    , _gldrsJobStatus :: !(Maybe VideoJobStatus)
+    { _gldrsNextToken      :: !(Maybe Text)
+    , _gldrsVideoMetadata  :: !(Maybe VideoMetadata)
+    , _gldrsStatusMessage  :: !(Maybe Text)
+    , _gldrsLabels         :: !(Maybe [LabelDetection])
+    , _gldrsJobStatus      :: !(Maybe VideoJobStatus)
     , _gldrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

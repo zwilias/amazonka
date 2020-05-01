@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -71,15 +71,15 @@ import Network.AWS.SageMaker.Types.Product
 -- | /See:/ 'createNotebookInstance' smart constructor.
 data CreateNotebookInstance =
   CreateNotebookInstance'
-    { _cniSecurityGroupIds :: !(Maybe [Text])
-    , _cniLifecycleConfigName :: !(Maybe Text)
-    , _cniSubnetId :: !(Maybe Text)
-    , _cniKMSKeyId :: !(Maybe Text)
+    { _cniSecurityGroupIds     :: !(Maybe [Text])
+    , _cniLifecycleConfigName  :: !(Maybe Text)
+    , _cniSubnetId             :: !(Maybe Text)
+    , _cniKMSKeyId             :: !(Maybe Text)
     , _cniDirectInternetAccess :: !(Maybe DirectInternetAccess)
-    , _cniTags :: !(Maybe [Tag])
+    , _cniTags                 :: !(Maybe [Tag])
     , _cniNotebookInstanceName :: !Text
-    , _cniInstanceType :: !InstanceType
-    , _cniRoleARN :: !Text
+    , _cniInstanceType         :: !InstanceType
+    , _cniRoleARN              :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -210,7 +210,7 @@ instance ToQuery CreateNotebookInstance where
 data CreateNotebookInstanceResponse =
   CreateNotebookInstanceResponse'
     { _cnirsNotebookInstanceARN :: !(Maybe Text)
-    , _cnirsResponseStatus :: !Int
+    , _cnirsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

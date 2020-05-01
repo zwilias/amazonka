@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.ServiceCatalog.Types.Product
 data ListPortfolioAccess =
   ListPortfolioAccess'
     { _lAcceptLanguage :: !(Maybe Text)
-    , _lPortfolioId :: !Text
+    , _lPortfolioId    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -112,8 +112,8 @@ instance ToQuery ListPortfolioAccess where
 -- | /See:/ 'listPortfolioAccessResponse' smart constructor.
 data ListPortfolioAccessResponse =
   ListPortfolioAccessResponse'
-    { _lparsNextPageToken :: !(Maybe Text)
-    , _lparsAccountIds :: !(Maybe [Text])
+    { _lparsNextPageToken  :: !(Maybe Text)
+    , _lparsAccountIds     :: !(Maybe [Text])
     , _lparsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

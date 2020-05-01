@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,8 +44,8 @@ import Network.AWS.Response
 -- | /See:/ 'listResourceDefinitionVersions' smart constructor.
 data ListResourceDefinitionVersions =
   ListResourceDefinitionVersions'
-    { _lrdvNextToken :: !(Maybe Text)
-    , _lrdvMaxResults :: !(Maybe Text)
+    { _lrdvNextToken            :: !(Maybe Text)
+    , _lrdvMaxResults           :: !(Maybe Text)
     , _lrdvResourceDefinitionId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -117,8 +117,8 @@ instance ToQuery ListResourceDefinitionVersions where
 -- | /See:/ 'listResourceDefinitionVersionsResponse' smart constructor.
 data ListResourceDefinitionVersionsResponse =
   ListResourceDefinitionVersionsResponse'
-    { _lrdvrsVersions :: !(Maybe [VersionInformation])
-    , _lrdvrsNextToken :: !(Maybe Text)
+    { _lrdvrsVersions       :: !(Maybe [VersionInformation])
+    , _lrdvrsNextToken      :: !(Maybe Text)
     , _lrdvrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -87,15 +87,15 @@ import Network.AWS.Response
 -- | /See:/ 'updateService' smart constructor.
 data UpdateService =
   UpdateService'
-    { _usCluster :: !(Maybe Text)
-    , _usPlatformVersion :: !(Maybe Text)
-    , _usDesiredCount :: !(Maybe Int)
-    , _usForceNewDeployment :: !(Maybe Bool)
-    , _usTaskDefinition :: !(Maybe Text)
+    { _usCluster                       :: !(Maybe Text)
+    , _usPlatformVersion               :: !(Maybe Text)
+    , _usDesiredCount                  :: !(Maybe Int)
+    , _usForceNewDeployment            :: !(Maybe Bool)
+    , _usTaskDefinition                :: !(Maybe Text)
     , _usHealthCheckGracePeriodSeconds :: !(Maybe Int)
-    , _usNetworkConfiguration :: !(Maybe NetworkConfiguration)
-    , _usDeploymentConfiguration :: !(Maybe DeploymentConfiguration)
-    , _usService :: !Text
+    , _usNetworkConfiguration          :: !(Maybe NetworkConfiguration)
+    , _usDeploymentConfiguration       :: !(Maybe DeploymentConfiguration)
+    , _usService                       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -224,7 +224,7 @@ instance ToQuery UpdateService where
 -- | /See:/ 'updateServiceResponse' smart constructor.
 data UpdateServiceResponse =
   UpdateServiceResponse'
-    { _usrsService :: !(Maybe ContainerService)
+    { _usrsService        :: !(Maybe ContainerService)
     , _usrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

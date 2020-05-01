@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -61,11 +61,11 @@ import Network.AWS.Response
 -- /See:/ 'createVPNConnection' smart constructor.
 data CreateVPNConnection =
   CreateVPNConnection'
-    { _cvcOptions :: !(Maybe VPNConnectionOptionsSpecification)
-    , _cvcDryRun :: !(Maybe Bool)
+    { _cvcOptions           :: !(Maybe VPNConnectionOptionsSpecification)
+    , _cvcDryRun            :: !(Maybe Bool)
     , _cvcCustomerGatewayId :: !Text
-    , _cvcType :: !Text
-    , _cvcVPNGatewayId :: !Text
+    , _cvcType              :: !Text
+    , _cvcVPNGatewayId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -156,7 +156,7 @@ instance ToQuery CreateVPNConnection where
 -- /See:/ 'createVPNConnectionResponse' smart constructor.
 data CreateVPNConnectionResponse =
   CreateVPNConnectionResponse'
-    { _cvcrsVPNConnection :: !(Maybe VPNConnection)
+    { _cvcrsVPNConnection  :: !(Maybe VPNConnection)
     , _cvcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

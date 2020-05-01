@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -62,7 +62,7 @@ import Network.AWS.SWF.Types.Product
 -- | /See:/ 'describeWorkflowExecution' smart constructor.
 data DescribeWorkflowExecution =
   DescribeWorkflowExecution'
-    { _dweDomain :: !Text
+    { _dweDomain    :: !Text
     , _dweExecution :: !WorkflowExecution
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -137,11 +137,11 @@ instance ToQuery DescribeWorkflowExecution where
 data DescribeWorkflowExecutionResponse =
   DescribeWorkflowExecutionResponse'
     { _dwersLatestActivityTaskTimestamp :: !(Maybe POSIX)
-    , _dwersLatestExecutionContext :: !(Maybe Text)
-    , _dwersResponseStatus :: !Int
-    , _dwersExecutionInfo :: !WorkflowExecutionInfo
-    , _dwersExecutionConfiguration :: !WorkflowExecutionConfiguration
-    , _dwersOpenCounts :: !WorkflowExecutionOpenCounts
+    , _dwersLatestExecutionContext      :: !(Maybe Text)
+    , _dwersResponseStatus              :: !Int
+    , _dwersExecutionInfo               :: !WorkflowExecutionInfo
+    , _dwersExecutionConfiguration      :: !WorkflowExecutionConfiguration
+    , _dwersOpenCounts                  :: !WorkflowExecutionOpenCounts
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

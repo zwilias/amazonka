@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -64,7 +64,7 @@ import Network.AWS.SWF.Types.Product
 -- | /See:/ 'recordActivityTaskHeartbeat' smart constructor.
 data RecordActivityTaskHeartbeat =
   RecordActivityTaskHeartbeat'
-    { _rathDetails :: !(Maybe Text)
+    { _rathDetails   :: !(Maybe Text)
     , _rathTaskToken :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -132,7 +132,7 @@ instance ToQuery RecordActivityTaskHeartbeat where
 -- /See:/ 'recordActivityTaskHeartbeatResponse' smart constructor.
 data RecordActivityTaskHeartbeatResponse =
   RecordActivityTaskHeartbeatResponse'
-    { _rathrsResponseStatus :: !Int
+    { _rathrsResponseStatus  :: !Int
     , _rathrsCancelRequested :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

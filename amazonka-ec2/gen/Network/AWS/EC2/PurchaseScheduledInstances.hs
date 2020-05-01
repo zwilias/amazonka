@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.Response
 -- /See:/ 'purchaseScheduledInstances' smart constructor.
 data PurchaseScheduledInstances =
   PurchaseScheduledInstances'
-    { _psiClientToken :: !(Maybe Text)
-    , _psiDryRun :: !(Maybe Bool)
+    { _psiClientToken      :: !(Maybe Text)
+    , _psiDryRun           :: !(Maybe Bool)
     , _psiPurchaseRequests :: !(List1 PurchaseRequest)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -130,7 +130,7 @@ instance ToQuery PurchaseScheduledInstances where
 data PurchaseScheduledInstancesResponse =
   PurchaseScheduledInstancesResponse'
     { _psirsScheduledInstanceSet :: !(Maybe [ScheduledInstance])
-    , _psirsResponseStatus :: !Int
+    , _psirsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

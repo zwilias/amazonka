@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -42,7 +42,7 @@ import Network.AWS.Response
 -- | /See:/ 'sendMessages' smart constructor.
 data SendMessages =
   SendMessages'
-    { _smApplicationId :: !Text
+    { _smApplicationId  :: !Text
     , _smMessageRequest :: !MessageRequest
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -101,7 +101,7 @@ instance ToQuery SendMessages where
 -- | /See:/ 'sendMessagesResponse' smart constructor.
 data SendMessagesResponse =
   SendMessagesResponse'
-    { _smrsResponseStatus :: !Int
+    { _smrsResponseStatus  :: !Int
     , _smrsMessageResponse :: !MessageResponse
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

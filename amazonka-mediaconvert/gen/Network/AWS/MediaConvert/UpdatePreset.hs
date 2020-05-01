@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,10 +44,10 @@ import Network.AWS.Response
 -- | /See:/ 'updatePreset' smart constructor.
 data UpdatePreset =
   UpdatePreset'
-    { _upSettings :: !(Maybe PresetSettings)
-    , _upCategory :: !(Maybe Text)
+    { _upSettings    :: !(Maybe PresetSettings)
+    , _upCategory    :: !(Maybe Text)
     , _upDescription :: !(Maybe Text)
-    , _upName :: !Text
+    , _upName        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,7 +124,7 @@ instance ToQuery UpdatePreset where
 -- | /See:/ 'updatePresetResponse' smart constructor.
 data UpdatePresetResponse =
   UpdatePresetResponse'
-    { _uprsPreset :: !(Maybe Preset)
+    { _uprsPreset         :: !(Maybe Preset)
     , _uprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

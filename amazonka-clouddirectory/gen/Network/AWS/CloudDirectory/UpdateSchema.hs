@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 data UpdateSchema =
   UpdateSchema'
     { _usSchemaARN :: !Text
-    , _usName :: !Text
+    , _usName      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -99,7 +99,7 @@ instance ToQuery UpdateSchema where
 -- | /See:/ 'updateSchemaResponse' smart constructor.
 data UpdateSchemaResponse =
   UpdateSchemaResponse'
-    { _usrsSchemaARN :: !(Maybe Text)
+    { _usrsSchemaARN      :: !(Maybe Text)
     , _usrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,9 +50,9 @@ import Network.AWS.Response
 -- | /See:/ 'describeEventAggregates' smart constructor.
 data DescribeEventAggregates =
   DescribeEventAggregates'
-    { _deaNextToken :: !(Maybe Text)
-    , _deaFilter :: !(Maybe EventFilter)
-    , _deaMaxResults :: !(Maybe Nat)
+    { _deaNextToken      :: !(Maybe Text)
+    , _deaFilter         :: !(Maybe EventFilter)
+    , _deaMaxResults     :: !(Maybe Nat)
     , _deaAggregateField :: !EventAggregateField
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -144,9 +144,9 @@ instance ToQuery DescribeEventAggregates where
 -- | /See:/ 'describeEventAggregatesResponse' smart constructor.
 data DescribeEventAggregatesResponse =
   DescribeEventAggregatesResponse'
-    { _drsNextToken :: !(Maybe Text)
+    { _drsNextToken       :: !(Maybe Text)
     , _drsEventAggregates :: !(Maybe [EventAggregate])
-    , _drsResponseStatus :: !Int
+    , _drsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

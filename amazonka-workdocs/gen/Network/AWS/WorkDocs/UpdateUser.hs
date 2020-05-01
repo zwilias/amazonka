@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,15 +51,15 @@ import Network.AWS.WorkDocs.Types.Product
 -- | /See:/ 'updateUser' smart constructor.
 data UpdateUser =
   UpdateUser'
-    { _uuGivenName :: !(Maybe Text)
+    { _uuGivenName                :: !(Maybe Text)
     , _uuGrantPoweruserPrivileges :: !(Maybe BooleanEnumType)
-    , _uuLocale :: !(Maybe LocaleType)
-    , _uuAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _uuStorageRule :: !(Maybe StorageRuleType)
-    , _uuType :: !(Maybe UserType)
-    , _uuSurname :: !(Maybe Text)
-    , _uuTimeZoneId :: !(Maybe Text)
-    , _uuUserId :: !Text
+    , _uuLocale                   :: !(Maybe LocaleType)
+    , _uuAuthenticationToken      :: !(Maybe (Sensitive Text))
+    , _uuStorageRule              :: !(Maybe StorageRuleType)
+    , _uuType                     :: !(Maybe UserType)
+    , _uuSurname                  :: !(Maybe Text)
+    , _uuTimeZoneId               :: !(Maybe Text)
+    , _uuUserId                   :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -179,7 +179,7 @@ instance ToQuery UpdateUser where
 -- | /See:/ 'updateUserResponse' smart constructor.
 data UpdateUserResponse =
   UpdateUserResponse'
-    { _uursUser :: !(Maybe User)
+    { _uursUser           :: !(Maybe User)
     , _uursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

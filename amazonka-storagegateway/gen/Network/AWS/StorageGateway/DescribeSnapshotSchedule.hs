@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -109,12 +109,12 @@ instance ToQuery DescribeSnapshotSchedule where
 -- | /See:/ 'describeSnapshotScheduleResponse' smart constructor.
 data DescribeSnapshotScheduleResponse =
   DescribeSnapshotScheduleResponse'
-    { _dssrsStartAt :: !(Maybe Nat)
-    , _dssrsVolumeARN :: !(Maybe Text)
+    { _dssrsStartAt           :: !(Maybe Nat)
+    , _dssrsVolumeARN         :: !(Maybe Text)
     , _dssrsRecurrenceInHours :: !(Maybe Nat)
-    , _dssrsTimezone :: !(Maybe Text)
-    , _dssrsDescription :: !(Maybe Text)
-    , _dssrsResponseStatus :: !Int
+    , _dssrsTimezone          :: !(Maybe Text)
+    , _dssrsDescription       :: !(Maybe Text)
+    , _dssrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

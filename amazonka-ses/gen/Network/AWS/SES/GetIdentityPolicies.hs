@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.SES.Types.Product
 -- /See:/ 'getIdentityPolicies' smart constructor.
 data GetIdentityPolicies =
   GetIdentityPolicies'
-    { _gipIdentity :: !Text
+    { _gipIdentity    :: !Text
     , _gipPolicyNames :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -116,7 +116,7 @@ instance ToQuery GetIdentityPolicies where
 data GetIdentityPoliciesResponse =
   GetIdentityPoliciesResponse'
     { _giprsResponseStatus :: !Int
-    , _giprsPolicies :: !(Map Text Text)
+    , _giprsPolicies       :: !(Map Text Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

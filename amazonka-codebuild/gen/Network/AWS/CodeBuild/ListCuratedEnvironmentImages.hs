@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -83,7 +83,7 @@ instance ToQuery ListCuratedEnvironmentImages where
 -- | /See:/ 'listCuratedEnvironmentImagesResponse' smart constructor.
 data ListCuratedEnvironmentImagesResponse =
   ListCuratedEnvironmentImagesResponse'
-    { _lceirsPlatforms :: !(Maybe [EnvironmentPlatform])
+    { _lceirsPlatforms      :: !(Maybe [EnvironmentPlatform])
     , _lceirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

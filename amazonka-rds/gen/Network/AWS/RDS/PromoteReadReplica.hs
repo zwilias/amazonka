@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,7 +51,7 @@ data PromoteReadReplica =
   PromoteReadReplica'
     { _prrPreferredBackupWindow :: !(Maybe Text)
     , _prrBackupRetentionPeriod :: !(Maybe Int)
-    , _prrDBInstanceIdentifier :: !Text
+    , _prrDBInstanceIdentifier  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -122,7 +122,7 @@ instance ToQuery PromoteReadReplica where
 -- | /See:/ 'promoteReadReplicaResponse' smart constructor.
 data PromoteReadReplicaResponse =
   PromoteReadReplicaResponse'
-    { _prrrsDBInstance :: !(Maybe DBInstance)
+    { _prrrsDBInstance     :: !(Maybe DBInstance)
     , _prrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

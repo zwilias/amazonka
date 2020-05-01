@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,10 +53,10 @@ import Network.AWS.Response
 -- | /See:/ 'associateCreatedArtifact' smart constructor.
 data AssociateCreatedArtifact =
   AssociateCreatedArtifact'
-    { _acaDryRun :: !(Maybe Bool)
+    { _acaDryRun               :: !(Maybe Bool)
     , _acaProgressUpdateStream :: !Text
-    , _acaMigrationTaskName :: !Text
-    , _acaCreatedArtifact :: !CreatedArtifact
+    , _acaMigrationTaskName    :: !Text
+    , _acaCreatedArtifact      :: !CreatedArtifact
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

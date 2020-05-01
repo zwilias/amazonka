@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'describeIdentityProvider' smart constructor.
 data DescribeIdentityProvider =
   DescribeIdentityProvider'
-    { _dipUserPoolId :: !Text
+    { _dipUserPoolId   :: !Text
     , _dipProviderName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -111,7 +111,7 @@ instance ToQuery DescribeIdentityProvider where
 -- | /See:/ 'describeIdentityProviderResponse' smart constructor.
 data DescribeIdentityProviderResponse =
   DescribeIdentityProviderResponse'
-    { _diprsResponseStatus :: !Int
+    { _diprsResponseStatus   :: !Int
     , _diprsIdentityProvider :: !IdentityProviderType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -110,15 +110,15 @@ instance ToQuery DescribeEndpoint where
 -- | /See:/ 'describeEndpointResponse' smart constructor.
 data DescribeEndpointResponse =
   DescribeEndpointResponse'
-    { _dersFailureReason :: !(Maybe Text)
+    { _dersFailureReason      :: !(Maybe Text)
     , _dersProductionVariants :: !(Maybe (List1 ProductionVariantSummary))
-    , _dersResponseStatus :: !Int
-    , _dersEndpointName :: !Text
-    , _dersEndpointARN :: !Text
+    , _dersResponseStatus     :: !Int
+    , _dersEndpointName       :: !Text
+    , _dersEndpointARN        :: !Text
     , _dersEndpointConfigName :: !Text
-    , _dersEndpointStatus :: !EndpointStatus
-    , _dersCreationTime :: !POSIX
-    , _dersLastModifiedTime :: !POSIX
+    , _dersEndpointStatus     :: !EndpointStatus
+    , _dersCreationTime       :: !POSIX
+    , _dersLastModifiedTime   :: !POSIX
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

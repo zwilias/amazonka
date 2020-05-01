@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,12 +57,12 @@ import Network.AWS.Route53.Types.Product
 -- /See:/ 'testDNSAnswer' smart constructor.
 data TestDNSAnswer =
   TestDNSAnswer'
-    { _tdaResolverIP :: !(Maybe Text)
-    , _tdaEDNS0ClientSubnetIP :: !(Maybe Text)
+    { _tdaResolverIP            :: !(Maybe Text)
+    , _tdaEDNS0ClientSubnetIP   :: !(Maybe Text)
     , _tdaEDNS0ClientSubnetMask :: !(Maybe Text)
-    , _tdaHostedZoneId :: !ResourceId
-    , _tdaRecordName :: !Text
-    , _tdaRecordType :: !RecordType
+    , _tdaHostedZoneId          :: !ResourceId
+    , _tdaRecordName            :: !Text
+    , _tdaRecordType            :: !RecordType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -164,12 +164,12 @@ instance ToQuery TestDNSAnswer where
 data TestDNSAnswerResponse =
   TestDNSAnswerResponse'
     { _tdarsResponseStatus :: !Int
-    , _tdarsNameserver :: !Text
-    , _tdarsRecordName :: !Text
-    , _tdarsRecordType :: !RecordType
-    , _tdarsRecordData :: ![Text]
-    , _tdarsResponseCode :: !Text
-    , _tdarsProtocol :: !Text
+    , _tdarsNameserver     :: !Text
+    , _tdarsRecordName     :: !Text
+    , _tdarsRecordType     :: !RecordType
+    , _tdarsRecordData     :: ![Text]
+    , _tdarsResponseCode   :: !Text
+    , _tdarsProtocol       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

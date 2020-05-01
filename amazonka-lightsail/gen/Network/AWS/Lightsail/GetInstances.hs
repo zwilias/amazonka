@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -104,8 +104,8 @@ instance ToQuery GetInstances where
 -- | /See:/ 'getInstancesResponse' smart constructor.
 data GetInstancesResponse =
   GetInstancesResponse'
-    { _grsNextPageToken :: !(Maybe Text)
-    , _grsInstances :: !(Maybe [Instance])
+    { _grsNextPageToken  :: !(Maybe Text)
+    , _grsInstances      :: !(Maybe [Instance])
     , _grsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

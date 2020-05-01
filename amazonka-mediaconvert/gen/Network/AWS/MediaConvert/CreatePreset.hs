@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,9 +44,9 @@ import Network.AWS.Response
 -- | /See:/ 'createPreset' smart constructor.
 data CreatePreset =
   CreatePreset'
-    { _cpSettings :: !(Maybe PresetSettings)
-    , _cpCategory :: !(Maybe Text)
-    , _cpName :: !(Maybe Text)
+    { _cpSettings    :: !(Maybe PresetSettings)
+    , _cpCategory    :: !(Maybe Text)
+    , _cpName        :: !(Maybe Text)
     , _cpDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -123,7 +123,7 @@ instance ToQuery CreatePreset where
 -- | /See:/ 'createPresetResponse' smart constructor.
 data CreatePresetResponse =
   CreatePresetResponse'
-    { _cprsPreset :: !(Maybe Preset)
+    { _cprsPreset         :: !(Maybe Preset)
     , _cprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

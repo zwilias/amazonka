@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 data CreateLoginProfile =
   CreateLoginProfile'
     { _clpPasswordResetRequired :: !(Maybe Bool)
-    , _clpUserName :: !Text
-    , _clpPassword :: !(Sensitive Text)
+    , _clpUserName              :: !Text
+    , _clpPassword              :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -122,7 +122,7 @@ instance ToQuery CreateLoginProfile where
 data CreateLoginProfileResponse =
   CreateLoginProfileResponse'
     { _clprsResponseStatus :: !Int
-    , _clprsLoginProfile :: !LoginProfile
+    , _clprsLoginProfile   :: !LoginProfile
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

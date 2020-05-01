@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,16 +53,16 @@ import Network.AWS.Response
 data UpdateApp =
   UpdateApp'
     { _uaSSLConfiguration :: !(Maybe SSLConfiguration)
-    , _uaEnvironment :: !(Maybe [EnvironmentVariable])
-    , _uaEnableSSL :: !(Maybe Bool)
-    , _uaDataSources :: !(Maybe [DataSource])
-    , _uaAppSource :: !(Maybe Source)
-    , _uaAttributes :: !(Maybe (Map AppAttributesKeys Text))
-    , _uaName :: !(Maybe Text)
-    , _uaType :: !(Maybe AppType)
-    , _uaDomains :: !(Maybe [Text])
-    , _uaDescription :: !(Maybe Text)
-    , _uaAppId :: !Text
+    , _uaEnvironment      :: !(Maybe [EnvironmentVariable])
+    , _uaEnableSSL        :: !(Maybe Bool)
+    , _uaDataSources      :: !(Maybe [DataSource])
+    , _uaAppSource        :: !(Maybe Source)
+    , _uaAttributes       :: !(Maybe (Map AppAttributesKeys Text))
+    , _uaName             :: !(Maybe Text)
+    , _uaType             :: !(Maybe AppType)
+    , _uaDomains          :: !(Maybe [Text])
+    , _uaDescription      :: !(Maybe Text)
+    , _uaAppId            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

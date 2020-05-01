@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,9 +45,9 @@ import Network.AWS.Response
 -- | /See:/ 'addApplicationInputProcessingConfiguration' smart constructor.
 data AddApplicationInputProcessingConfiguration =
   AddApplicationInputProcessingConfiguration'
-    { _aaipcApplicationName :: !Text
-    , _aaipcCurrentApplicationVersionId :: !Nat
-    , _aaipcInputId :: !Text
+    { _aaipcApplicationName              :: !Text
+    , _aaipcCurrentApplicationVersionId  :: !Nat
+    , _aaipcInputId                      :: !Text
     , _aaipcInputProcessingConfiguration :: !InputProcessingConfiguration
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

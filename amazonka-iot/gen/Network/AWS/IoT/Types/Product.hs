@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,19 +27,19 @@ import Network.AWS.Prelude
 data Action =
   Action'
     { _aCloudwatchMetric :: !(Maybe CloudwatchMetricAction)
-    , _aDynamoDBv2 :: !(Maybe DynamoDBv2Action)
-    , _aCloudwatchAlarm :: !(Maybe CloudwatchAlarmAction)
-    , _aSns :: !(Maybe SNSAction)
-    , _aDynamoDB :: !(Maybe DynamoDBAction)
-    , _aFirehose :: !(Maybe FirehoseAction)
-    , _aIotAnalytics :: !(Maybe IotAnalyticsAction)
-    , _aLambda :: !(Maybe LambdaAction)
-    , _aSalesforce :: !(Maybe SalesforceAction)
-    , _aKinesis :: !(Maybe KinesisAction)
-    , _aS3 :: !(Maybe S3Action)
-    , _aElasticsearch :: !(Maybe ElasticsearchAction)
-    , _aRepublish :: !(Maybe RepublishAction)
-    , _aSqs :: !(Maybe SqsAction)
+    , _aDynamoDBv2       :: !(Maybe DynamoDBv2Action)
+    , _aCloudwatchAlarm  :: !(Maybe CloudwatchAlarmAction)
+    , _aSns              :: !(Maybe SNSAction)
+    , _aDynamoDB         :: !(Maybe DynamoDBAction)
+    , _aFirehose         :: !(Maybe FirehoseAction)
+    , _aIotAnalytics     :: !(Maybe IotAnalyticsAction)
+    , _aLambda           :: !(Maybe LambdaAction)
+    , _aSalesforce       :: !(Maybe SalesforceAction)
+    , _aKinesis          :: !(Maybe KinesisAction)
+    , _aS3               :: !(Maybe S3Action)
+    , _aElasticsearch    :: !(Maybe ElasticsearchAction)
+    , _aRepublish        :: !(Maybe RepublishAction)
+    , _aSqs              :: !(Maybe SqsAction)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -231,7 +231,7 @@ instance NFData Allowed
 data AttributePayload =
   AttributePayload'
     { _apAttributes :: !(Maybe (Map Text Text))
-    , _apMerge :: !(Maybe Bool)
+    , _apMerge      :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -280,7 +280,7 @@ instance ToJSON AttributePayload where
 -- /See:/ 'authInfo' smart constructor.
 data AuthInfo =
   AuthInfo'
-    { _aiResources :: !(Maybe [Text])
+    { _aiResources  :: !(Maybe [Text])
     , _aiActionType :: !(Maybe ActionType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -330,11 +330,11 @@ instance ToJSON AuthInfo where
 -- /See:/ 'authResult' smart constructor.
 data AuthResult =
   AuthResult'
-    { _arDenied :: !(Maybe Denied)
-    , _arAuthDecision :: !(Maybe AuthDecision)
-    , _arAllowed :: !(Maybe Allowed)
+    { _arDenied               :: !(Maybe Denied)
+    , _arAuthDecision         :: !(Maybe AuthDecision)
+    , _arAllowed              :: !(Maybe Allowed)
     , _arMissingContextValues :: !(Maybe [Text])
-    , _arAuthInfo :: !(Maybe AuthInfo)
+    , _arAuthInfo             :: !(Maybe AuthInfo)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -404,14 +404,14 @@ instance NFData AuthResult
 -- /See:/ 'authorizerDescription' smart constructor.
 data AuthorizerDescription =
   AuthorizerDescription'
-    { _adStatus :: !(Maybe AuthorizerStatus)
-    , _adLastModifiedDate :: !(Maybe POSIX)
-    , _adAuthorizerName :: !(Maybe Text)
-    , _adAuthorizerFunctionARN :: !(Maybe Text)
-    , _adAuthorizerARN :: !(Maybe Text)
-    , _adCreationDate :: !(Maybe POSIX)
+    { _adStatus                 :: !(Maybe AuthorizerStatus)
+    , _adLastModifiedDate       :: !(Maybe POSIX)
+    , _adAuthorizerName         :: !(Maybe Text)
+    , _adAuthorizerFunctionARN  :: !(Maybe Text)
+    , _adAuthorizerARN          :: !(Maybe Text)
+    , _adCreationDate           :: !(Maybe POSIX)
     , _adTokenSigningPublicKeys :: !(Maybe (Map Text Text))
-    , _adTokenKeyName :: !(Maybe Text)
+    , _adTokenKeyName           :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -510,7 +510,7 @@ instance NFData AuthorizerDescription
 data AuthorizerSummary =
   AuthorizerSummary'
     { _asAuthorizerName :: !(Maybe Text)
-    , _asAuthorizerARN :: !(Maybe Text)
+    , _asAuthorizerARN  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -552,10 +552,10 @@ instance NFData AuthorizerSummary
 -- /See:/ 'cACertificate' smart constructor.
 data CACertificate =
   CACertificate'
-    { _cacStatus :: !(Maybe CACertificateStatus)
+    { _cacStatus         :: !(Maybe CACertificateStatus)
     , _cacCertificateARN :: !(Maybe Text)
-    , _cacCertificateId :: !(Maybe Text)
-    , _cacCreationDate :: !(Maybe POSIX)
+    , _cacCertificateId  :: !(Maybe Text)
+    , _cacCreationDate   :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -616,16 +616,16 @@ instance NFData CACertificate
 -- /See:/ 'cACertificateDescription' smart constructor.
 data CACertificateDescription =
   CACertificateDescription'
-    { _cacdStatus :: !(Maybe CACertificateStatus)
-    , _cacdOwnedBy :: !(Maybe Text)
-    , _cacdLastModifiedDate :: !(Maybe POSIX)
-    , _cacdCertificatePem :: !(Maybe Text)
-    , _cacdCertificateARN :: !(Maybe Text)
-    , _cacdCertificateId :: !(Maybe Text)
+    { _cacdStatus                 :: !(Maybe CACertificateStatus)
+    , _cacdOwnedBy                :: !(Maybe Text)
+    , _cacdLastModifiedDate       :: !(Maybe POSIX)
+    , _cacdCertificatePem         :: !(Maybe Text)
+    , _cacdCertificateARN         :: !(Maybe Text)
+    , _cacdCertificateId          :: !(Maybe Text)
     , _cacdAutoRegistrationStatus :: !(Maybe AutoRegistrationStatus)
-    , _cacdCreationDate :: !(Maybe POSIX)
-    , _cacdGenerationId :: !(Maybe Text)
-    , _cacdCustomerVersion :: !(Maybe Nat)
+    , _cacdCreationDate           :: !(Maybe POSIX)
+    , _cacdGenerationId           :: !(Maybe Text)
+    , _cacdCustomerVersion        :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -742,10 +742,10 @@ instance NFData CACertificateDescription
 -- /See:/ 'certificate' smart constructor.
 data Certificate =
   Certificate'
-    { _cStatus :: !(Maybe CertificateStatus)
+    { _cStatus         :: !(Maybe CertificateStatus)
     , _cCertificateARN :: !(Maybe Text)
-    , _cCertificateId :: !(Maybe Text)
-    , _cCreationDate :: !(Maybe POSIX)
+    , _cCertificateId  :: !(Maybe Text)
+    , _cCreationDate   :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -806,18 +806,18 @@ instance NFData Certificate
 -- /See:/ 'certificateDescription' smart constructor.
 data CertificateDescription =
   CertificateDescription'
-    { _cdStatus :: !(Maybe CertificateStatus)
-    , _cdOwnedBy :: !(Maybe Text)
+    { _cdStatus           :: !(Maybe CertificateStatus)
+    , _cdOwnedBy          :: !(Maybe Text)
     , _cdLastModifiedDate :: !(Maybe POSIX)
-    , _cdCaCertificateId :: !(Maybe Text)
-    , _cdPreviousOwnedBy :: !(Maybe Text)
-    , _cdCertificatePem :: !(Maybe Text)
-    , _cdCertificateARN :: !(Maybe Text)
-    , _cdCertificateId :: !(Maybe Text)
-    , _cdCreationDate :: !(Maybe POSIX)
-    , _cdGenerationId :: !(Maybe Text)
-    , _cdTransferData :: !(Maybe TransferData)
-    , _cdCustomerVersion :: !(Maybe Nat)
+    , _cdCaCertificateId  :: !(Maybe Text)
+    , _cdPreviousOwnedBy  :: !(Maybe Text)
+    , _cdCertificatePem   :: !(Maybe Text)
+    , _cdCertificateARN   :: !(Maybe Text)
+    , _cdCertificateId    :: !(Maybe Text)
+    , _cdCreationDate     :: !(Maybe POSIX)
+    , _cdGenerationId     :: !(Maybe Text)
+    , _cdTransferData     :: !(Maybe TransferData)
+    , _cdCustomerVersion  :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -944,10 +944,10 @@ instance NFData CertificateDescription
 -- /See:/ 'cloudwatchAlarmAction' smart constructor.
 data CloudwatchAlarmAction =
   CloudwatchAlarmAction'
-    { _caaRoleARN :: !Text
-    , _caaAlarmName :: !Text
+    { _caaRoleARN     :: !Text
+    , _caaAlarmName   :: !Text
     , _caaStateReason :: !Text
-    , _caaStateValue :: !Text
+    , _caaStateValue  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1023,11 +1023,11 @@ instance ToJSON CloudwatchAlarmAction where
 data CloudwatchMetricAction =
   CloudwatchMetricAction'
     { _cmaMetricTimestamp :: !(Maybe Text)
-    , _cmaRoleARN :: !Text
+    , _cmaRoleARN         :: !Text
     , _cmaMetricNamespace :: !Text
-    , _cmaMetricName :: !Text
-    , _cmaMetricValue :: !Text
-    , _cmaMetricUnit :: !Text
+    , _cmaMetricName      :: !Text
+    , _cmaMetricValue     :: !Text
+    , _cmaMetricUnit      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1125,7 +1125,7 @@ instance ToJSON CloudwatchMetricAction where
 data CodeSigning =
   CodeSigning'
     { _csCustomCodeSigning :: !(Maybe CustomCodeSigning)
-    , _csAwsSignerJobId :: !(Maybe Text)
+    , _csAwsSignerJobId    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1176,9 +1176,9 @@ instance ToJSON CodeSigning where
 -- /See:/ 'codeSigningCertificateChain' smart constructor.
 data CodeSigningCertificateChain =
   CodeSigningCertificateChain'
-    { _csccStream :: !(Maybe Stream)
+    { _csccStream          :: !(Maybe Stream)
     , _csccCertificateName :: !(Maybe Text)
-    , _csccInlineDocument :: !(Maybe Text)
+    , _csccInlineDocument  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1242,7 +1242,7 @@ instance ToJSON CodeSigningCertificateChain where
 -- /See:/ 'codeSigningSignature' smart constructor.
 data CodeSigningSignature =
   CodeSigningSignature'
-    { _cssStream :: !(Maybe Stream)
+    { _cssStream         :: !(Maybe Stream)
     , _cssInlineDocument :: !(Maybe Base64)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1327,9 +1327,9 @@ instance ToJSON Configuration where
 -- /See:/ 'customCodeSigning' smart constructor.
 data CustomCodeSigning =
   CustomCodeSigning'
-    { _ccsSignature :: !(Maybe CodeSigningSignature)
-    , _ccsHashAlgorithm :: !(Maybe Text)
-    , _ccsCertificateChain :: !(Maybe CodeSigningCertificateChain)
+    { _ccsSignature          :: !(Maybe CodeSigningSignature)
+    , _ccsHashAlgorithm      :: !(Maybe Text)
+    , _ccsCertificateChain   :: !(Maybe CodeSigningCertificateChain)
     , _ccsSignatureAlgorithm :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1455,16 +1455,16 @@ instance NFData Denied
 -- /See:/ 'dynamoDBAction' smart constructor.
 data DynamoDBAction =
   DynamoDBAction'
-    { _ddbaHashKeyType :: !(Maybe DynamoKeyType)
-    , _ddbaOperation :: !(Maybe Text)
-    , _ddbaRangeKeyType :: !(Maybe DynamoKeyType)
-    , _ddbaPayloadField :: !(Maybe Text)
+    { _ddbaHashKeyType   :: !(Maybe DynamoKeyType)
+    , _ddbaOperation     :: !(Maybe Text)
+    , _ddbaRangeKeyType  :: !(Maybe DynamoKeyType)
+    , _ddbaPayloadField  :: !(Maybe Text)
     , _ddbaRangeKeyField :: !(Maybe Text)
     , _ddbaRangeKeyValue :: !(Maybe Text)
-    , _ddbaTableName :: !Text
-    , _ddbaRoleARN :: !Text
-    , _ddbaHashKeyField :: !Text
-    , _ddbaHashKeyValue :: !Text
+    , _ddbaTableName     :: !Text
+    , _ddbaRoleARN       :: !Text
+    , _ddbaHashKeyField  :: !Text
+    , _ddbaHashKeyValue  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1642,9 +1642,9 @@ instance ToJSON DynamoDBv2Action where
 -- /See:/ 'effectivePolicy' smart constructor.
 data EffectivePolicy =
   EffectivePolicy'
-    { _epPolicyName :: !(Maybe Text)
+    { _epPolicyName     :: !(Maybe Text)
     , _epPolicyDocument :: !(Maybe Text)
-    , _epPolicyARN :: !(Maybe Text)
+    , _epPolicyARN      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1696,11 +1696,11 @@ instance NFData EffectivePolicy
 -- /See:/ 'elasticsearchAction' smart constructor.
 data ElasticsearchAction =
   ElasticsearchAction'
-    { _eaRoleARN :: !Text
+    { _eaRoleARN  :: !Text
     , _eaEndpoint :: !Text
-    , _eaIndex :: !Text
-    , _eaType :: !Text
-    , _eaId :: !Text
+    , _eaIndex    :: !Text
+    , _eaType     :: !Text
+    , _eaId       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1785,7 +1785,7 @@ instance ToJSON ElasticsearchAction where
 -- /See:/ 'errorInfo' smart constructor.
 data ErrorInfo =
   ErrorInfo'
-    { _eiCode :: !(Maybe Text)
+    { _eiCode    :: !(Maybe Text)
     , _eiMessage :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1858,8 +1858,8 @@ instance NFData ExplicitDeny
 -- /See:/ 'firehoseAction' smart constructor.
 data FirehoseAction =
   FirehoseAction'
-    { _faSeparator :: !(Maybe Text)
-    , _faRoleARN :: !Text
+    { _faSeparator          :: !(Maybe Text)
+    , _faRoleARN            :: !Text
     , _faDeliveryStreamName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1925,7 +1925,7 @@ instance ToJSON FirehoseAction where
 -- /See:/ 'groupNameAndARN' smart constructor.
 data GroupNameAndARN =
   GroupNameAndARN'
-    { _gnaaGroupARN :: !(Maybe Text)
+    { _gnaaGroupARN  :: !(Maybe Text)
     , _gnaaGroupName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1999,9 +1999,9 @@ instance NFData ImplicitDeny
 -- /See:/ 'iotAnalyticsAction' smart constructor.
 data IotAnalyticsAction =
   IotAnalyticsAction'
-    { _iaaChannelARN :: !(Maybe Text)
+    { _iaaChannelARN  :: !(Maybe Text)
     , _iaaChannelName :: !(Maybe Text)
-    , _iaaRoleARN :: !(Maybe Text)
+    , _iaaRoleARN     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2059,20 +2059,20 @@ instance ToJSON IotAnalyticsAction where
 -- /See:/ 'job' smart constructor.
 data Job =
   Job'
-    { _jobStatus :: !(Maybe JobStatus)
+    { _jobStatus                     :: !(Maybe JobStatus)
     , _jobJobExecutionsRolloutConfig :: !(Maybe JobExecutionsRolloutConfig)
-    , _jobJobId :: !(Maybe Text)
-    , _jobLastUpdatedAt :: !(Maybe POSIX)
-    , _jobJobARN :: !(Maybe Text)
-    , _jobCreatedAt :: !(Maybe POSIX)
-    , _jobDocumentParameters :: !(Maybe (Map Text Text))
-    , _jobJobProcessDetails :: !(Maybe JobProcessDetails)
-    , _jobPresignedURLConfig :: !(Maybe PresignedURLConfig)
-    , _jobTargets :: !(Maybe (List1 Text))
-    , _jobCompletedAt :: !(Maybe POSIX)
-    , _jobComment :: !(Maybe Text)
-    , _jobDescription :: !(Maybe Text)
-    , _jobTargetSelection :: !(Maybe TargetSelection)
+    , _jobJobId                      :: !(Maybe Text)
+    , _jobLastUpdatedAt              :: !(Maybe POSIX)
+    , _jobJobARN                     :: !(Maybe Text)
+    , _jobCreatedAt                  :: !(Maybe POSIX)
+    , _jobDocumentParameters         :: !(Maybe (Map Text Text))
+    , _jobJobProcessDetails          :: !(Maybe JobProcessDetails)
+    , _jobPresignedURLConfig         :: !(Maybe PresignedURLConfig)
+    , _jobTargets                    :: !(Maybe (List1 Text))
+    , _jobCompletedAt                :: !(Maybe POSIX)
+    , _jobComment                    :: !(Maybe Text)
+    , _jobDescription                :: !(Maybe Text)
+    , _jobTargetSelection            :: !(Maybe TargetSelection)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2223,14 +2223,14 @@ instance NFData Job
 -- /See:/ 'jobExecution' smart constructor.
 data JobExecution =
   JobExecution'
-    { _jeStatus :: !(Maybe JobExecutionStatus)
-    , _jeJobId :: !(Maybe Text)
-    , _jeLastUpdatedAt :: !(Maybe POSIX)
-    , _jeQueuedAt :: !(Maybe POSIX)
-    , _jeStatusDetails :: !(Maybe JobExecutionStatusDetails)
-    , _jeThingARN :: !(Maybe Text)
+    { _jeStatus          :: !(Maybe JobExecutionStatus)
+    , _jeJobId           :: !(Maybe Text)
+    , _jeLastUpdatedAt   :: !(Maybe POSIX)
+    , _jeQueuedAt        :: !(Maybe POSIX)
+    , _jeStatusDetails   :: !(Maybe JobExecutionStatusDetails)
+    , _jeThingARN        :: !(Maybe Text)
     , _jeExecutionNumber :: !(Maybe Integer)
-    , _jeStartedAt :: !(Maybe POSIX)
+    , _jeStartedAt       :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2358,11 +2358,11 @@ instance NFData JobExecutionStatusDetails
 -- /See:/ 'jobExecutionSummary' smart constructor.
 data JobExecutionSummary =
   JobExecutionSummary'
-    { _jesStatus :: !(Maybe JobExecutionStatus)
-    , _jesLastUpdatedAt :: !(Maybe POSIX)
-    , _jesQueuedAt :: !(Maybe POSIX)
+    { _jesStatus          :: !(Maybe JobExecutionStatus)
+    , _jesLastUpdatedAt   :: !(Maybe POSIX)
+    , _jesQueuedAt        :: !(Maybe POSIX)
     , _jesExecutionNumber :: !(Maybe Integer)
-    , _jesStartedAt :: !(Maybe POSIX)
+    , _jesStartedAt       :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2434,7 +2434,7 @@ instance NFData JobExecutionSummary
 data JobExecutionSummaryForJob =
   JobExecutionSummaryForJob'
     { _jesfjJobExecutionSummary :: !(Maybe JobExecutionSummary)
-    , _jesfjThingARN :: !(Maybe Text)
+    , _jesfjThingARN            :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2479,7 +2479,7 @@ instance NFData JobExecutionSummaryForJob
 -- /See:/ 'jobExecutionSummaryForThing' smart constructor.
 data JobExecutionSummaryForThing =
   JobExecutionSummaryForThing'
-    { _jesftJobId :: !(Maybe Text)
+    { _jesftJobId               :: !(Maybe Text)
     , _jesftJobExecutionSummary :: !(Maybe JobExecutionSummary)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2565,14 +2565,14 @@ instance ToJSON JobExecutionsRolloutConfig where
 -- /See:/ 'jobProcessDetails' smart constructor.
 data JobProcessDetails =
   JobProcessDetails'
-    { _jpdNumberOfRemovedThings :: !(Maybe Int)
-    , _jpdNumberOfQueuedThings :: !(Maybe Int)
-    , _jpdNumberOfFailedThings :: !(Maybe Int)
-    , _jpdNumberOfSucceededThings :: !(Maybe Int)
+    { _jpdNumberOfRemovedThings    :: !(Maybe Int)
+    , _jpdNumberOfQueuedThings     :: !(Maybe Int)
+    , _jpdNumberOfFailedThings     :: !(Maybe Int)
+    , _jpdNumberOfSucceededThings  :: !(Maybe Int)
     , _jpdNumberOfInProgressThings :: !(Maybe Int)
-    , _jpdNumberOfCanceledThings :: !(Maybe Int)
-    , _jpdNumberOfRejectedThings :: !(Maybe Int)
-    , _jpdProcessingTargets :: !(Maybe [Text])
+    , _jpdNumberOfCanceledThings   :: !(Maybe Int)
+    , _jpdNumberOfRejectedThings   :: !(Maybe Int)
+    , _jpdProcessingTargets        :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2676,13 +2676,13 @@ instance NFData JobProcessDetails
 -- /See:/ 'jobSummary' smart constructor.
 data JobSummary =
   JobSummary'
-    { _jsStatus :: !(Maybe JobStatus)
-    , _jsJobId :: !(Maybe Text)
-    , _jsLastUpdatedAt :: !(Maybe POSIX)
-    , _jsJobARN :: !(Maybe Text)
-    , _jsCreatedAt :: !(Maybe POSIX)
-    , _jsThingGroupId :: !(Maybe Text)
-    , _jsCompletedAt :: !(Maybe POSIX)
+    { _jsStatus          :: !(Maybe JobStatus)
+    , _jsJobId           :: !(Maybe Text)
+    , _jsLastUpdatedAt   :: !(Maybe POSIX)
+    , _jsJobARN          :: !(Maybe Text)
+    , _jsCreatedAt       :: !(Maybe POSIX)
+    , _jsThingGroupId    :: !(Maybe Text)
+    , _jsCompletedAt     :: !(Maybe POSIX)
     , _jsTargetSelection :: !(Maybe TargetSelection)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2778,7 +2778,7 @@ instance NFData JobSummary
 data KeyPair =
   KeyPair'
     { _kpPrivateKey :: !(Maybe (Sensitive Text))
-    , _kpPublicKey :: !(Maybe Text)
+    , _kpPublicKey  :: !(Maybe Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -2819,8 +2819,8 @@ instance NFData KeyPair
 data KinesisAction =
   KinesisAction'
     { _kaPartitionKey :: !(Maybe Text)
-    , _kaRoleARN :: !Text
-    , _kaStreamName :: !Text
+    , _kaRoleARN      :: !Text
+    , _kaStreamName   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2972,7 +2972,7 @@ instance ToJSON LogTarget where
 -- /See:/ 'logTargetConfiguration' smart constructor.
 data LogTargetConfiguration =
   LogTargetConfiguration'
-    { _ltcLogLevel :: !(Maybe LogLevel)
+    { _ltcLogLevel  :: !(Maybe LogLevel)
     , _ltcLogTarget :: !(Maybe LogTarget)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3015,7 +3015,7 @@ instance NFData LogTargetConfiguration
 data LoggingOptionsPayload =
   LoggingOptionsPayload'
     { _lopLogLevel :: !(Maybe LogLevel)
-    , _lopRoleARN :: !Text
+    , _lopRoleARN  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3058,10 +3058,10 @@ instance ToJSON LoggingOptionsPayload where
 data OTAUpdateFile =
   OTAUpdateFile'
     { _otaufFileVersion :: !(Maybe Text)
-    , _otaufAttributes :: !(Maybe (Map Text Text))
-    , _otaufFileSource :: !(Maybe Stream)
+    , _otaufAttributes  :: !(Maybe (Map Text Text))
+    , _otaufFileSource  :: !(Maybe Stream)
     , _otaufCodeSigning :: !(Maybe CodeSigning)
-    , _otaufFileName :: !(Maybe Text)
+    , _otaufFileName    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3142,19 +3142,19 @@ instance ToJSON OTAUpdateFile where
 -- /See:/ 'oTAUpdateInfo' smart constructor.
 data OTAUpdateInfo =
   OTAUpdateInfo'
-    { _otauiLastModifiedDate :: !(Maybe POSIX)
-    , _otauiAwsIotJobId :: !(Maybe Text)
-    , _otauiOtaUpdateFiles :: !(Maybe (List1 OTAUpdateFile))
-    , _otauiOtaUpdateStatus :: !(Maybe OTAUpdateStatus)
-    , _otauiTargets :: !(Maybe (List1 Text))
-    , _otauiAwsIotJobARN :: !(Maybe Text)
-    , _otauiCreationDate :: !(Maybe POSIX)
+    { _otauiLastModifiedDate     :: !(Maybe POSIX)
+    , _otauiAwsIotJobId          :: !(Maybe Text)
+    , _otauiOtaUpdateFiles       :: !(Maybe (List1 OTAUpdateFile))
+    , _otauiOtaUpdateStatus      :: !(Maybe OTAUpdateStatus)
+    , _otauiTargets              :: !(Maybe (List1 Text))
+    , _otauiAwsIotJobARN         :: !(Maybe Text)
+    , _otauiCreationDate         :: !(Maybe POSIX)
     , _otauiAdditionalParameters :: !(Maybe (Map Text Text))
-    , _otauiOtaUpdateId :: !(Maybe Text)
-    , _otauiErrorInfo :: !(Maybe ErrorInfo)
-    , _otauiOtaUpdateARN :: !(Maybe Text)
-    , _otauiDescription :: !(Maybe Text)
-    , _otauiTargetSelection :: !(Maybe TargetSelection)
+    , _otauiOtaUpdateId          :: !(Maybe Text)
+    , _otauiErrorInfo            :: !(Maybe ErrorInfo)
+    , _otauiOtaUpdateARN         :: !(Maybe Text)
+    , _otauiDescription          :: !(Maybe Text)
+    , _otauiTargetSelection      :: !(Maybe TargetSelection)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3297,7 +3297,7 @@ instance NFData OTAUpdateInfo
 data OTAUpdateSummary =
   OTAUpdateSummary'
     { _otausCreationDate :: !(Maybe POSIX)
-    , _otausOtaUpdateId :: !(Maybe Text)
+    , _otausOtaUpdateId  :: !(Maybe Text)
     , _otausOtaUpdateARN :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3351,11 +3351,11 @@ instance NFData OTAUpdateSummary
 -- /See:/ 'outgoingCertificate' smart constructor.
 data OutgoingCertificate =
   OutgoingCertificate'
-    { _ocTransferDate :: !(Maybe POSIX)
-    , _ocCertificateARN :: !(Maybe Text)
-    , _ocCertificateId :: !(Maybe Text)
-    , _ocTransferredTo :: !(Maybe Text)
-    , _ocCreationDate :: !(Maybe POSIX)
+    { _ocTransferDate    :: !(Maybe POSIX)
+    , _ocCertificateARN  :: !(Maybe Text)
+    , _ocCertificateId   :: !(Maybe Text)
+    , _ocTransferredTo   :: !(Maybe Text)
+    , _ocCreationDate    :: !(Maybe POSIX)
     , _ocTransferMessage :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3436,7 +3436,7 @@ instance NFData OutgoingCertificate
 data Policy =
   Policy'
     { _pPolicyName :: !(Maybe Text)
-    , _pPolicyARN :: !(Maybe Text)
+    , _pPolicyARN  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3475,8 +3475,8 @@ instance NFData Policy
 -- /See:/ 'policyVersion' smart constructor.
 data PolicyVersion =
   PolicyVersion'
-    { _pvVersionId :: !(Maybe Text)
-    , _pvCreateDate :: !(Maybe POSIX)
+    { _pvVersionId        :: !(Maybe Text)
+    , _pvCreateDate       :: !(Maybe POSIX)
     , _pvIsDefaultVersion :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3532,7 +3532,7 @@ instance NFData PolicyVersion
 data PresignedURLConfig =
   PresignedURLConfig'
     { _pucExpiresInSec :: !(Maybe Nat)
-    , _pucRoleARN :: !(Maybe Text)
+    , _pucRoleARN      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3620,7 +3620,7 @@ instance ToJSON PutItemInput where
 data RegistrationConfig =
   RegistrationConfig'
     { _rcTemplateBody :: !(Maybe Text)
-    , _rcRoleARN :: !(Maybe Text)
+    , _rcRoleARN      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3670,7 +3670,7 @@ instance ToJSON RegistrationConfig where
 data RepublishAction =
   RepublishAction'
     { _raRoleARN :: !Text
-    , _raTopic :: !Text
+    , _raTopic   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3718,13 +3718,13 @@ instance ToJSON RepublishAction where
 -- /See:/ 'roleAliasDescription' smart constructor.
 data RoleAliasDescription =
   RoleAliasDescription'
-    { _radRoleAliasARN :: !(Maybe Text)
-    , _radLastModifiedDate :: !(Maybe POSIX)
-    , _radRoleAlias :: !(Maybe Text)
-    , _radOwner :: !(Maybe Text)
-    , _radCreationDate :: !(Maybe POSIX)
+    { _radRoleAliasARN              :: !(Maybe Text)
+    , _radLastModifiedDate          :: !(Maybe POSIX)
+    , _radRoleAlias                 :: !(Maybe Text)
+    , _radOwner                     :: !(Maybe Text)
+    , _radCreationDate              :: !(Maybe POSIX)
     , _radCredentialDurationSeconds :: !(Maybe Nat)
-    , _radRoleARN :: !(Maybe Text)
+    , _radRoleARN                   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3816,10 +3816,10 @@ instance NFData RoleAliasDescription
 -- /See:/ 's3Action' smart constructor.
 data S3Action =
   S3Action'
-    { _sCannedACL :: !(Maybe CannedAccessControlList)
-    , _sRoleARN :: !Text
+    { _sCannedACL  :: !(Maybe CannedAccessControlList)
+    , _sRoleARN    :: !Text
     , _sBucketName :: !Text
-    , _sKey :: !Text
+    , _sKey        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3894,8 +3894,8 @@ instance ToJSON S3Action where
 data S3Location =
   S3Location'
     { _slVersion :: !(Maybe Text)
-    , _slBucket :: !Text
-    , _slKey :: !Text
+    , _slBucket  :: !Text
+    , _slKey     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3955,8 +3955,8 @@ instance ToJSON S3Location where
 data SNSAction =
   SNSAction'
     { _snsaMessageFormat :: !(Maybe MessageFormat)
-    , _snsaTargetARN :: !Text
-    , _snsaRoleARN :: !Text
+    , _snsaTargetARN     :: !Text
+    , _snsaRoleARN       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4021,7 +4021,7 @@ instance ToJSON SNSAction where
 data SalesforceAction =
   SalesforceAction'
     { _saToken :: !Text
-    , _saUrl :: !Text
+    , _saUrl   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4069,8 +4069,8 @@ instance ToJSON SalesforceAction where
 data SqsAction =
   SqsAction'
     { _saUseBase64 :: !(Maybe Bool)
-    , _saRoleARN :: !Text
-    , _saQueueURL :: !Text
+    , _saRoleARN   :: !Text
+    , _saQueueURL  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4131,7 +4131,7 @@ instance ToJSON SqsAction where
 -- /See:/ 'stream' smart constructor.
 data Stream =
   Stream'
-    { _sFileId :: !(Maybe Nat)
+    { _sFileId   :: !(Maybe Nat)
     , _sStreamId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -4177,7 +4177,7 @@ instance ToJSON Stream where
 data StreamFile =
   StreamFile'
     { _sfS3Location :: !(Maybe S3Location)
-    , _sfFileId :: !(Maybe Nat)
+    , _sfFileId     :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4223,13 +4223,13 @@ instance ToJSON StreamFile where
 data StreamInfo =
   StreamInfo'
     { _siLastUpdatedAt :: !(Maybe POSIX)
-    , _siCreatedAt :: !(Maybe POSIX)
+    , _siCreatedAt     :: !(Maybe POSIX)
     , _siStreamVersion :: !(Maybe Nat)
-    , _siStreamARN :: !(Maybe Text)
-    , _siFiles :: !(Maybe (List1 StreamFile))
-    , _siDescription :: !(Maybe Text)
-    , _siStreamId :: !(Maybe Text)
-    , _siRoleARN :: !(Maybe Text)
+    , _siStreamARN     :: !(Maybe Text)
+    , _siFiles         :: !(Maybe (List1 StreamFile))
+    , _siDescription   :: !(Maybe Text)
+    , _siStreamId      :: !(Maybe Text)
+    , _siRoleARN       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4324,9 +4324,9 @@ instance NFData StreamInfo
 data StreamSummary =
   StreamSummary'
     { _ssStreamVersion :: !(Maybe Nat)
-    , _ssStreamARN :: !(Maybe Text)
-    , _ssDescription :: !(Maybe Text)
-    , _ssStreamId :: !(Maybe Text)
+    , _ssStreamARN     :: !(Maybe Text)
+    , _ssDescription   :: !(Maybe Text)
+    , _ssStreamId      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4388,10 +4388,10 @@ instance NFData StreamSummary
 data ThingAttribute =
   ThingAttribute'
     { _taThingTypeName :: !(Maybe Text)
-    , _taThingARN :: !(Maybe Text)
-    , _taAttributes :: !(Maybe (Map Text Text))
-    , _taVersion :: !(Maybe Integer)
-    , _taThingName :: !(Maybe Text)
+    , _taThingARN      :: !(Maybe Text)
+    , _taAttributes    :: !(Maybe (Map Text Text))
+    , _taVersion       :: !(Maybe Integer)
+    , _taThingName     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4461,11 +4461,11 @@ instance NFData ThingAttribute
 data ThingDocument =
   ThingDocument'
     { _tdThingGroupNames :: !(Maybe [Text])
-    , _tdThingTypeName :: !(Maybe Text)
-    , _tdShadow :: !(Maybe Text)
-    , _tdAttributes :: !(Maybe (Map Text Text))
-    , _tdThingName :: !(Maybe Text)
-    , _tdThingId :: !(Maybe Text)
+    , _tdThingTypeName   :: !(Maybe Text)
+    , _tdShadow          :: !(Maybe Text)
+    , _tdAttributes      :: !(Maybe (Map Text Text))
+    , _tdThingName       :: !(Maybe Text)
+    , _tdThingId         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4546,8 +4546,8 @@ instance NFData ThingDocument
 data ThingGroupMetadata =
   ThingGroupMetadata'
     { _tgmRootToParentThingGroups :: !(Maybe [GroupNameAndARN])
-    , _tgmParentGroupName :: !(Maybe Text)
-    , _tgmCreationDate :: !(Maybe POSIX)
+    , _tgmParentGroupName         :: !(Maybe Text)
+    , _tgmCreationDate            :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4604,7 +4604,7 @@ instance NFData ThingGroupMetadata
 -- /See:/ 'thingGroupProperties' smart constructor.
 data ThingGroupProperties =
   ThingGroupProperties'
-    { _tgpAttributePayload :: !(Maybe AttributePayload)
+    { _tgpAttributePayload      :: !(Maybe AttributePayload)
     , _tgpThingGroupDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -4699,9 +4699,9 @@ instance ToJSON ThingIndexingConfiguration where
 data ThingTypeDefinition =
   ThingTypeDefinition'
     { _ttdThingTypeProperties :: !(Maybe ThingTypeProperties)
-    , _ttdThingTypeName :: !(Maybe Text)
-    , _ttdThingTypeMetadata :: !(Maybe ThingTypeMetadata)
-    , _ttdThingTypeARN :: !(Maybe Text)
+    , _ttdThingTypeName       :: !(Maybe Text)
+    , _ttdThingTypeMetadata   :: !(Maybe ThingTypeMetadata)
+    , _ttdThingTypeARN        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4765,8 +4765,8 @@ instance NFData ThingTypeDefinition
 data ThingTypeMetadata =
   ThingTypeMetadata'
     { _ttmDeprecationDate :: !(Maybe POSIX)
-    , _ttmCreationDate :: !(Maybe POSIX)
-    , _ttmDeprecated :: !(Maybe Bool)
+    , _ttmCreationDate    :: !(Maybe POSIX)
+    , _ttmDeprecated      :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4876,14 +4876,14 @@ instance ToJSON ThingTypeProperties where
 -- /See:/ 'topicRule' smart constructor.
 data TopicRule =
   TopicRule'
-    { _trCreatedAt :: !(Maybe POSIX)
-    , _trActions :: !(Maybe [Action])
+    { _trCreatedAt        :: !(Maybe POSIX)
+    , _trActions          :: !(Maybe [Action])
     , _trAwsIotSqlVersion :: !(Maybe Text)
-    , _trErrorAction :: !(Maybe Action)
-    , _trRuleDisabled :: !(Maybe Bool)
-    , _trRuleName :: !(Maybe Text)
-    , _trSql :: !(Maybe Text)
-    , _trDescription :: !(Maybe Text)
+    , _trErrorAction      :: !(Maybe Action)
+    , _trRuleDisabled     :: !(Maybe Bool)
+    , _trRuleName         :: !(Maybe Text)
+    , _trSql              :: !(Maybe Text)
+    , _trDescription      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4976,10 +4976,10 @@ instance NFData TopicRule
 -- /See:/ 'topicRuleListItem' smart constructor.
 data TopicRuleListItem =
   TopicRuleListItem'
-    { _trliCreatedAt :: !(Maybe POSIX)
+    { _trliCreatedAt    :: !(Maybe POSIX)
     , _trliRuleDisabled :: !(Maybe Bool)
-    , _trliRuleName :: !(Maybe Text)
-    , _trliRuleARN :: !(Maybe Text)
+    , _trliRuleName     :: !(Maybe Text)
+    , _trliRuleARN      :: !(Maybe Text)
     , _trliTopicPattern :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -5050,11 +5050,11 @@ instance NFData TopicRuleListItem
 data TopicRulePayload =
   TopicRulePayload'
     { _trpAwsIotSqlVersion :: !(Maybe Text)
-    , _trpErrorAction :: !(Maybe Action)
-    , _trpRuleDisabled :: !(Maybe Bool)
-    , _trpDescription :: !(Maybe Text)
-    , _trpSql :: !Text
-    , _trpActions :: ![Action]
+    , _trpErrorAction      :: !(Maybe Action)
+    , _trpRuleDisabled     :: !(Maybe Bool)
+    , _trpDescription      :: !(Maybe Text)
+    , _trpSql              :: !Text
+    , _trpActions          :: ![Action]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -5134,11 +5134,11 @@ instance ToJSON TopicRulePayload where
 -- /See:/ 'transferData' smart constructor.
 data TransferData =
   TransferData'
-    { _tdTransferDate :: !(Maybe POSIX)
-    , _tdAcceptDate :: !(Maybe POSIX)
+    { _tdTransferDate    :: !(Maybe POSIX)
+    , _tdAcceptDate      :: !(Maybe POSIX)
     , _tdTransferMessage :: !(Maybe Text)
-    , _tdRejectDate :: !(Maybe POSIX)
-    , _tdRejectReason :: !(Maybe Text)
+    , _tdRejectDate      :: !(Maybe POSIX)
+    , _tdRejectReason    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

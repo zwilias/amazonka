@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,11 +46,11 @@ import Network.AWS.Response
 -- | /See:/ 'updatePartition' smart constructor.
 data UpdatePartition =
   UpdatePartition'
-    { _upCatalogId :: !(Maybe Text)
-    , _upDatabaseName :: !Text
-    , _upTableName :: !Text
+    { _upCatalogId          :: !(Maybe Text)
+    , _upDatabaseName       :: !Text
+    , _upTableName          :: !Text
     , _upPartitionValueList :: ![Text]
-    , _upPartitionInput :: !PartitionInput
+    , _upPartitionInput     :: !PartitionInput
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

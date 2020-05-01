@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,13 +49,13 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'putParameter' smart constructor.
 data PutParameter =
   PutParameter'
-    { _ppKeyId :: !(Maybe Text)
+    { _ppKeyId          :: !(Maybe Text)
     , _ppAllowedPattern :: !(Maybe Text)
-    , _ppOverwrite :: !(Maybe Bool)
-    , _ppDescription :: !(Maybe Text)
-    , _ppName :: !Text
-    , _ppValue :: !Text
-    , _ppType :: !ParameterType
+    , _ppOverwrite      :: !(Maybe Bool)
+    , _ppDescription    :: !(Maybe Text)
+    , _ppName           :: !Text
+    , _ppValue          :: !Text
+    , _ppType           :: !ParameterType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -162,7 +162,7 @@ instance ToQuery PutParameter where
 -- | /See:/ 'putParameterResponse' smart constructor.
 data PutParameterResponse =
   PutParameterResponse'
-    { _pprsVersion :: !(Maybe Integer)
+    { _pprsVersion        :: !(Maybe Integer)
     , _pprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

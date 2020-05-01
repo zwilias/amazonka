@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- /See:/ 'enableAvailabilityZonesForLoadBalancer' smart constructor.
 data EnableAvailabilityZonesForLoadBalancer =
   EnableAvailabilityZonesForLoadBalancer'
-    { _eazflbLoadBalancerName :: !Text
+    { _eazflbLoadBalancerName  :: !Text
     , _eazflbAvailabilityZones :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -122,7 +122,7 @@ instance ToQuery EnableAvailabilityZonesForLoadBalancer where
 data EnableAvailabilityZonesForLoadBalancerResponse =
   EnableAvailabilityZonesForLoadBalancerResponse'
     { _eazflbrsAvailabilityZones :: !(Maybe [Text])
-    , _eazflbrsResponseStatus :: !Int
+    , _eazflbrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,14 +26,14 @@ import Network.AWS.Prelude
 -- /See:/ 'accountSettings' smart constructor.
 data AccountSettings =
   AccountSettings'
-    { _asSkipAppResign :: !(Maybe Bool)
-    , _asAwsAccountNumber :: !(Maybe Text)
-    , _asMaxJobTimeoutMinutes :: !(Maybe Int)
-    , _asMaxSlots :: !(Maybe (Map Text Int))
-    , _asTrialMinutes :: !(Maybe TrialMinutes)
-    , _asUnmeteredDevices :: !(Maybe (Map DevicePlatform Int))
+    { _asSkipAppResign                :: !(Maybe Bool)
+    , _asAwsAccountNumber             :: !(Maybe Text)
+    , _asMaxJobTimeoutMinutes         :: !(Maybe Int)
+    , _asMaxSlots                     :: !(Maybe (Map Text Int))
+    , _asTrialMinutes                 :: !(Maybe TrialMinutes)
+    , _asUnmeteredDevices             :: !(Maybe (Map DevicePlatform Int))
     , _asUnmeteredRemoteAccessDevices :: !(Maybe (Map DevicePlatform Int))
-    , _asDefaultJobTimeoutMinutes :: !(Maybe Int)
+    , _asDefaultJobTimeoutMinutes     :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -136,11 +136,11 @@ instance NFData AccountSettings
 -- /See:/ 'artifact' smart constructor.
 data Artifact =
   Artifact'
-    { _aArn :: !(Maybe Text)
-    , _aUrl :: !(Maybe Text)
+    { _aArn       :: !(Maybe Text)
+    , _aUrl       :: !(Maybe Text)
     , _aExtension :: !(Maybe Text)
-    , _aName :: !(Maybe Text)
-    , _aType :: !(Maybe ArtifactType)
+    , _aName      :: !(Maybe Text)
+    , _aType      :: !(Maybe ArtifactType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -209,8 +209,8 @@ instance NFData Artifact
 -- /See:/ 'cpu' smart constructor.
 data CPU =
   CPU'
-    { _cpuFrequency :: !(Maybe Text)
-    , _cpuClock :: !(Maybe Double)
+    { _cpuFrequency    :: !(Maybe Text)
+    , _cpuClock        :: !(Maybe Double)
     , _cpuArchitecture :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -260,12 +260,12 @@ instance NFData CPU
 -- /See:/ 'counters' smart constructor.
 data Counters =
   Counters'
-    { _cPassed :: !(Maybe Int)
+    { _cPassed  :: !(Maybe Int)
     , _cSkipped :: !(Maybe Int)
-    , _cWarned :: !(Maybe Int)
+    , _cWarned  :: !(Maybe Int)
     , _cStopped :: !(Maybe Int)
-    , _cTotal :: !(Maybe Int)
-    , _cFailed :: !(Maybe Int)
+    , _cTotal   :: !(Maybe Int)
+    , _cFailed  :: !(Maybe Int)
     , _cErrored :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -388,9 +388,9 @@ instance ToJSON CreateRemoteAccessSessionConfiguration where
 -- /See:/ 'customerArtifactPaths' smart constructor.
 data CustomerArtifactPaths =
   CustomerArtifactPaths'
-    { _capAndroidPaths :: !(Maybe [Text])
+    { _capAndroidPaths    :: !(Maybe [Text])
     , _capDeviceHostPaths :: !(Maybe [Text])
-    , _capIosPaths :: !(Maybe [Text])
+    , _capIosPaths        :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -456,26 +456,26 @@ instance ToJSON CustomerArtifactPaths where
 -- /See:/ 'device' smart constructor.
 data Device =
   Device'
-    { _devCarrier :: !(Maybe Text)
-    , _devImage :: !(Maybe Text)
-    , _devManufacturer :: !(Maybe Text)
-    , _devPlatform :: !(Maybe DevicePlatform)
-    , _devModelId :: !(Maybe Text)
+    { _devCarrier             :: !(Maybe Text)
+    , _devImage               :: !(Maybe Text)
+    , _devManufacturer        :: !(Maybe Text)
+    , _devPlatform            :: !(Maybe DevicePlatform)
+    , _devModelId             :: !(Maybe Text)
     , _devRemoteAccessEnabled :: !(Maybe Bool)
-    , _devArn :: !(Maybe Text)
-    , _devFormFactor :: !(Maybe DeviceFormFactor)
-    , _devFleetType :: !(Maybe Text)
-    , _devResolution :: !(Maybe Resolution)
-    , _devMemory :: !(Maybe Integer)
-    , _devRadio :: !(Maybe Text)
-    , _devOs :: !(Maybe Text)
-    , _devName :: !(Maybe Text)
-    , _devModel :: !(Maybe Text)
-    , _devInstances :: !(Maybe [DeviceInstance])
-    , _devRemoteDebugEnabled :: !(Maybe Bool)
-    , _devCpu :: !(Maybe CPU)
-    , _devHeapSize :: !(Maybe Integer)
-    , _devFleetName :: !(Maybe Text)
+    , _devArn                 :: !(Maybe Text)
+    , _devFormFactor          :: !(Maybe DeviceFormFactor)
+    , _devFleetType           :: !(Maybe Text)
+    , _devResolution          :: !(Maybe Resolution)
+    , _devMemory              :: !(Maybe Integer)
+    , _devRadio               :: !(Maybe Text)
+    , _devOs                  :: !(Maybe Text)
+    , _devName                :: !(Maybe Text)
+    , _devModel               :: !(Maybe Text)
+    , _devInstances           :: !(Maybe [DeviceInstance])
+    , _devRemoteDebugEnabled  :: !(Maybe Bool)
+    , _devCpu                 :: !(Maybe CPU)
+    , _devHeapSize            :: !(Maybe Integer)
+    , _devFleetName           :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -666,12 +666,12 @@ instance NFData Device
 -- /See:/ 'deviceInstance' smart constructor.
 data DeviceInstance =
   DeviceInstance'
-    { _diStatus :: !(Maybe InstanceStatus)
-    , _diUdid :: !(Maybe Text)
+    { _diStatus          :: !(Maybe InstanceStatus)
+    , _diUdid            :: !(Maybe Text)
     , _diInstanceProfile :: !(Maybe InstanceProfile)
-    , _diArn :: !(Maybe Text)
-    , _diDeviceARN :: !(Maybe Text)
-    , _diLabels :: !(Maybe [Text])
+    , _diArn             :: !(Maybe Text)
+    , _diDeviceARN       :: !(Maybe Text)
+    , _diLabels          :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -747,8 +747,8 @@ instance NFData DeviceInstance
 -- /See:/ 'deviceMinutes' smart constructor.
 data DeviceMinutes =
   DeviceMinutes'
-    { _dmMetered :: !(Maybe Double)
-    , _dmTotal :: !(Maybe Double)
+    { _dmMetered   :: !(Maybe Double)
+    , _dmTotal     :: !(Maybe Double)
     , _dmUnmetered :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -798,10 +798,10 @@ instance NFData DeviceMinutes
 -- /See:/ 'devicePool' smart constructor.
 data DevicePool =
   DevicePool'
-    { _dArn :: !(Maybe Text)
-    , _dRules :: !(Maybe [Rule])
-    , _dName :: !(Maybe Text)
-    , _dType :: !(Maybe DevicePoolType)
+    { _dArn         :: !(Maybe Text)
+    , _dRules       :: !(Maybe [Rule])
+    , _dName        :: !(Maybe Text)
+    , _dType        :: !(Maybe DevicePoolType)
     , _dDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -870,8 +870,8 @@ instance NFData DevicePool
 -- /See:/ 'devicePoolCompatibilityResult' smart constructor.
 data DevicePoolCompatibilityResult =
   DevicePoolCompatibilityResult'
-    { _dpcrDevice :: !(Maybe Device)
-    , _dpcrCompatible :: !(Maybe Bool)
+    { _dpcrDevice                  :: !(Maybe Device)
+    , _dpcrCompatible              :: !(Maybe Bool)
     , _dpcrIncompatibilityMessages :: !(Maybe [IncompatibilityMessage])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -930,10 +930,10 @@ instance NFData DevicePoolCompatibilityResult
 -- /See:/ 'executionConfiguration' smart constructor.
 data ExecutionConfiguration =
   ExecutionConfiguration'
-    { _ecSkipAppResign :: !(Maybe Bool)
-    , _ecAccountsCleanup :: !(Maybe Bool)
+    { _ecSkipAppResign      :: !(Maybe Bool)
+    , _ecAccountsCleanup    :: !(Maybe Bool)
     , _ecAppPackagesCleanup :: !(Maybe Bool)
-    , _ecJobTimeoutMinutes :: !(Maybe Int)
+    , _ecJobTimeoutMinutes  :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -996,7 +996,7 @@ instance ToJSON ExecutionConfiguration where
 -- /See:/ 'incompatibilityMessage' smart constructor.
 data IncompatibilityMessage =
   IncompatibilityMessage'
-    { _imType :: !(Maybe DeviceAttribute)
+    { _imType    :: !(Maybe DeviceAttribute)
     , _imMessage :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1037,12 +1037,12 @@ instance NFData IncompatibilityMessage
 -- /See:/ 'instanceProfile' smart constructor.
 data InstanceProfile =
   InstanceProfile'
-    { _ipArn :: !(Maybe Text)
-    , _ipRebootAfterUse :: !(Maybe Bool)
-    , _ipName :: !(Maybe Text)
-    , _ipPackageCleanup :: !(Maybe Bool)
+    { _ipArn                           :: !(Maybe Text)
+    , _ipRebootAfterUse                :: !(Maybe Bool)
+    , _ipName                          :: !(Maybe Text)
+    , _ipPackageCleanup                :: !(Maybe Bool)
     , _ipExcludeAppPackagesFromCleanup :: !(Maybe [Text])
-    , _ipDescription :: !(Maybe Text)
+    , _ipDescription                   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1122,19 +1122,19 @@ instance NFData InstanceProfile
 -- /See:/ 'job' smart constructor.
 data Job =
   Job'
-    { _jobInstanceARN :: !(Maybe Text)
-    , _jobStatus :: !(Maybe ExecutionStatus)
-    , _jobCounters :: !(Maybe Counters)
-    , _jobArn :: !(Maybe Text)
-    , _jobCreated :: !(Maybe POSIX)
-    , _jobDevice :: !(Maybe Device)
-    , _jobStopped :: !(Maybe POSIX)
-    , _jobResult :: !(Maybe ExecutionResult)
-    , _jobName :: !(Maybe Text)
+    { _jobInstanceARN   :: !(Maybe Text)
+    , _jobStatus        :: !(Maybe ExecutionStatus)
+    , _jobCounters      :: !(Maybe Counters)
+    , _jobArn           :: !(Maybe Text)
+    , _jobCreated       :: !(Maybe POSIX)
+    , _jobDevice        :: !(Maybe Device)
+    , _jobStopped       :: !(Maybe POSIX)
+    , _jobResult        :: !(Maybe ExecutionResult)
+    , _jobName          :: !(Maybe Text)
     , _jobDeviceMinutes :: !(Maybe DeviceMinutes)
-    , _jobType :: !(Maybe TestType)
-    , _jobMessage :: !(Maybe Text)
-    , _jobStarted :: !(Maybe POSIX)
+    , _jobType          :: !(Maybe TestType)
+    , _jobMessage       :: !(Maybe Text)
+    , _jobStarted       :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1268,7 +1268,7 @@ instance NFData Job
 -- /See:/ 'location' smart constructor.
 data Location =
   Location'
-    { _lLatitude :: !Double
+    { _lLatitude  :: !Double
     , _lLongitude :: !Double
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1318,7 +1318,7 @@ instance ToJSON Location where
 -- /See:/ 'monetaryAmount' smart constructor.
 data MonetaryAmount =
   MonetaryAmount'
-    { _maAmount :: !(Maybe Double)
+    { _maAmount       :: !(Maybe Double)
     , _maCurrencyCode :: !(Maybe CurrencyCode)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1359,17 +1359,17 @@ instance NFData MonetaryAmount
 -- /See:/ 'networkProfile' smart constructor.
 data NetworkProfile =
   NetworkProfile'
-    { _npUplinkJitterMs :: !(Maybe Integer)
-    , _npArn :: !(Maybe Text)
-    , _npUplinkLossPercent :: !(Maybe Nat)
-    , _npDownlinkJitterMs :: !(Maybe Integer)
-    , _npName :: !(Maybe Text)
-    , _npDownlinkLossPercent :: !(Maybe Nat)
-    , _npType :: !(Maybe NetworkProfileType)
-    , _npUplinkDelayMs :: !(Maybe Integer)
-    , _npUplinkBandwidthBits :: !(Maybe Integer)
-    , _npDescription :: !(Maybe Text)
-    , _npDownlinkDelayMs :: !(Maybe Integer)
+    { _npUplinkJitterMs        :: !(Maybe Integer)
+    , _npArn                   :: !(Maybe Text)
+    , _npUplinkLossPercent     :: !(Maybe Nat)
+    , _npDownlinkJitterMs      :: !(Maybe Integer)
+    , _npName                  :: !(Maybe Text)
+    , _npDownlinkLossPercent   :: !(Maybe Nat)
+    , _npType                  :: !(Maybe NetworkProfileType)
+    , _npUplinkDelayMs         :: !(Maybe Integer)
+    , _npUplinkBandwidthBits   :: !(Maybe Integer)
+    , _npDescription           :: !(Maybe Text)
+    , _npDownlinkDelayMs       :: !(Maybe Integer)
     , _npDownlinkBandwidthBits :: !(Maybe Integer)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1501,11 +1501,11 @@ instance NFData NetworkProfile
 -- /See:/ 'offering' smart constructor.
 data Offering =
   Offering'
-    { _oPlatform :: !(Maybe DevicePlatform)
-    , _oId :: !(Maybe Text)
+    { _oPlatform         :: !(Maybe DevicePlatform)
+    , _oId               :: !(Maybe Text)
     , _oRecurringCharges :: !(Maybe [RecurringCharge])
-    , _oType :: !(Maybe OfferingType)
-    , _oDescription :: !(Maybe Text)
+    , _oType             :: !(Maybe OfferingType)
+    , _oDescription      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1575,7 +1575,7 @@ instance NFData Offering
 -- /See:/ 'offeringPromotion' smart constructor.
 data OfferingPromotion =
   OfferingPromotion'
-    { _opId :: !(Maybe Text)
+    { _opId          :: !(Maybe Text)
     , _opDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1617,9 +1617,9 @@ instance NFData OfferingPromotion
 data OfferingStatus =
   OfferingStatus'
     { _osEffectiveOn :: !(Maybe POSIX)
-    , _osOffering :: !(Maybe Offering)
-    , _osQuantity :: !(Maybe Int)
-    , _osType :: !(Maybe OfferingTransactionType)
+    , _osOffering    :: !(Maybe Offering)
+    , _osQuantity    :: !(Maybe Int)
+    , _osType        :: !(Maybe OfferingTransactionType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1680,11 +1680,11 @@ instance NFData OfferingStatus
 -- /See:/ 'offeringTransaction' smart constructor.
 data OfferingTransaction =
   OfferingTransaction'
-    { _otOfferingStatus :: !(Maybe OfferingStatus)
-    , _otCost :: !(Maybe MonetaryAmount)
-    , _otTransactionId :: !(Maybe Text)
+    { _otOfferingStatus      :: !(Maybe OfferingStatus)
+    , _otCost                :: !(Maybe MonetaryAmount)
+    , _otTransactionId       :: !(Maybe Text)
     , _otOfferingPromotionId :: !(Maybe Text)
-    , _otCreatedOn :: !(Maybe POSIX)
+    , _otCreatedOn           :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1753,13 +1753,13 @@ instance NFData OfferingTransaction
 -- /See:/ 'problem' smart constructor.
 data Problem =
   Problem'
-    { _pDevice :: !(Maybe Device)
-    , _pTest :: !(Maybe ProblemDetail)
-    , _pResult :: !(Maybe ExecutionResult)
-    , _pRun :: !(Maybe ProblemDetail)
-    , _pJob :: !(Maybe ProblemDetail)
+    { _pDevice  :: !(Maybe Device)
+    , _pTest    :: !(Maybe ProblemDetail)
+    , _pResult  :: !(Maybe ExecutionResult)
+    , _pRun     :: !(Maybe ProblemDetail)
+    , _pJob     :: !(Maybe ProblemDetail)
     , _pMessage :: !(Maybe Text)
-    , _pSuite :: !(Maybe ProblemDetail)
+    , _pSuite   :: !(Maybe ProblemDetail)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1842,7 +1842,7 @@ instance NFData Problem
 -- /See:/ 'problemDetail' smart constructor.
 data ProblemDetail =
   ProblemDetail'
-    { _pdArn :: !(Maybe Text)
+    { _pdArn  :: !(Maybe Text)
     , _pdName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1882,9 +1882,9 @@ instance NFData ProblemDetail
 -- /See:/ 'project' smart constructor.
 data Project =
   Project'
-    { _pArn :: !(Maybe Text)
-    , _pCreated :: !(Maybe POSIX)
-    , _pName :: !(Maybe Text)
+    { _pArn                      :: !(Maybe Text)
+    , _pCreated                  :: !(Maybe POSIX)
+    , _pName                     :: !(Maybe Text)
     , _pDefaultJobTimeoutMinutes :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1945,10 +1945,10 @@ instance NFData Project
 -- /See:/ 'radios' smart constructor.
 data Radios =
   Radios'
-    { _rNfc :: !(Maybe Bool)
-    , _rGps :: !(Maybe Bool)
+    { _rNfc       :: !(Maybe Bool)
+    , _rGps       :: !(Maybe Bool)
     , _rBluetooth :: !(Maybe Bool)
-    , _rWifi :: !(Maybe Bool)
+    , _rWifi      :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2014,7 +2014,7 @@ instance ToJSON Radios where
 data RecurringCharge =
   RecurringCharge'
     { _rcFrequency :: !(Maybe RecurringChargeFrequency)
-    , _rcCost :: !(Maybe MonetaryAmount)
+    , _rcCost      :: !(Maybe MonetaryAmount)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2053,27 +2053,27 @@ instance NFData RecurringCharge
 -- /See:/ 'remoteAccessSession' smart constructor.
 data RemoteAccessSession =
   RemoteAccessSession'
-    { _rasBillingMethod :: !(Maybe BillingMethod)
-    , _rasClientId :: !(Maybe Text)
-    , _rasDeviceUdid :: !(Maybe Text)
-    , _rasSkipAppResign :: !(Maybe Bool)
-    , _rasInstanceARN :: !(Maybe Text)
-    , _rasStatus :: !(Maybe ExecutionStatus)
+    { _rasBillingMethod       :: !(Maybe BillingMethod)
+    , _rasClientId            :: !(Maybe Text)
+    , _rasDeviceUdid          :: !(Maybe Text)
+    , _rasSkipAppResign       :: !(Maybe Bool)
+    , _rasInstanceARN         :: !(Maybe Text)
+    , _rasStatus              :: !(Maybe ExecutionStatus)
     , _rasRemoteRecordEnabled :: !(Maybe Bool)
-    , _rasArn :: !(Maybe Text)
-    , _rasRemoteRecordAppARN :: !(Maybe Text)
-    , _rasCreated :: !(Maybe POSIX)
-    , _rasDevice :: !(Maybe Device)
-    , _rasStopped :: !(Maybe POSIX)
-    , _rasResult :: !(Maybe ExecutionResult)
-    , _rasName :: !(Maybe Text)
-    , _rasDeviceMinutes :: !(Maybe DeviceMinutes)
-    , _rasRemoteDebugEnabled :: !(Maybe Bool)
-    , _rasEndpoint :: !(Maybe Text)
-    , _rasMessage :: !(Maybe Text)
-    , _rasHostAddress :: !(Maybe Text)
-    , _rasInteractionMode :: !(Maybe InteractionMode)
-    , _rasStarted :: !(Maybe POSIX)
+    , _rasArn                 :: !(Maybe Text)
+    , _rasRemoteRecordAppARN  :: !(Maybe Text)
+    , _rasCreated             :: !(Maybe POSIX)
+    , _rasDevice              :: !(Maybe Device)
+    , _rasStopped             :: !(Maybe POSIX)
+    , _rasResult              :: !(Maybe ExecutionResult)
+    , _rasName                :: !(Maybe Text)
+    , _rasDeviceMinutes       :: !(Maybe DeviceMinutes)
+    , _rasRemoteDebugEnabled  :: !(Maybe Bool)
+    , _rasEndpoint            :: !(Maybe Text)
+    , _rasMessage             :: !(Maybe Text)
+    , _rasHostAddress         :: !(Maybe Text)
+    , _rasInteractionMode     :: !(Maybe InteractionMode)
+    , _rasStarted             :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2274,7 +2274,7 @@ instance NFData RemoteAccessSession
 data Resolution =
   Resolution'
     { _rHeight :: !(Maybe Int)
-    , _rWidth :: !(Maybe Int)
+    , _rWidth  :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2314,8 +2314,8 @@ instance NFData Resolution
 data Rule =
   Rule'
     { _rAttribute :: !(Maybe DeviceAttribute)
-    , _rOperator :: !(Maybe RuleOperator)
-    , _rValue :: !(Maybe Text)
+    , _rOperator  :: !(Maybe RuleOperator)
+    , _rValue     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2371,35 +2371,35 @@ instance ToJSON Rule where
 -- /See:/ 'run' smart constructor.
 data Run =
   Run'
-    { _runBillingMethod :: !(Maybe BillingMethod)
-    , _runSkipAppResign :: !(Maybe Bool)
-    , _runStatus :: !(Maybe ExecutionStatus)
+    { _runBillingMethod         :: !(Maybe BillingMethod)
+    , _runSkipAppResign         :: !(Maybe Bool)
+    , _runStatus                :: !(Maybe ExecutionStatus)
     , _runCustomerArtifactPaths :: !(Maybe CustomerArtifactPaths)
-    , _runEventCount :: !(Maybe Int)
-    , _runCounters :: !(Maybe Counters)
-    , _runPlatform :: !(Maybe DevicePlatform)
-    , _runSeed :: !(Maybe Int)
-    , _runRadios :: !(Maybe Radios)
-    , _runArn :: !(Maybe Text)
-    , _runLocation :: !(Maybe Location)
-    , _runCreated :: !(Maybe POSIX)
-    , _runLocale :: !(Maybe Text)
-    , _runStopped :: !(Maybe POSIX)
-    , _runResult :: !(Maybe ExecutionResult)
-    , _runJobTimeoutMinutes :: !(Maybe Int)
-    , _runCompletedJobs :: !(Maybe Int)
-    , _runResultCode :: !(Maybe ExecutionResultCode)
-    , _runName :: !(Maybe Text)
-    , _runAppUpload :: !(Maybe Text)
-    , _runParsingResultURL :: !(Maybe Text)
-    , _runNetworkProfile :: !(Maybe NetworkProfile)
-    , _runDeviceMinutes :: !(Maybe DeviceMinutes)
-    , _runType :: !(Maybe TestType)
-    , _runMessage :: !(Maybe Text)
-    , _runWebURL :: !(Maybe Text)
-    , _runTotalJobs :: !(Maybe Int)
-    , _runDevicePoolARN :: !(Maybe Text)
-    , _runStarted :: !(Maybe POSIX)
+    , _runEventCount            :: !(Maybe Int)
+    , _runCounters              :: !(Maybe Counters)
+    , _runPlatform              :: !(Maybe DevicePlatform)
+    , _runSeed                  :: !(Maybe Int)
+    , _runRadios                :: !(Maybe Radios)
+    , _runArn                   :: !(Maybe Text)
+    , _runLocation              :: !(Maybe Location)
+    , _runCreated               :: !(Maybe POSIX)
+    , _runLocale                :: !(Maybe Text)
+    , _runStopped               :: !(Maybe POSIX)
+    , _runResult                :: !(Maybe ExecutionResult)
+    , _runJobTimeoutMinutes     :: !(Maybe Int)
+    , _runCompletedJobs         :: !(Maybe Int)
+    , _runResultCode            :: !(Maybe ExecutionResultCode)
+    , _runName                  :: !(Maybe Text)
+    , _runAppUpload             :: !(Maybe Text)
+    , _runParsingResultURL      :: !(Maybe Text)
+    , _runNetworkProfile        :: !(Maybe NetworkProfile)
+    , _runDeviceMinutes         :: !(Maybe DeviceMinutes)
+    , _runType                  :: !(Maybe TestType)
+    , _runMessage               :: !(Maybe Text)
+    , _runWebURL                :: !(Maybe Text)
+    , _runTotalJobs             :: !(Maybe Int)
+    , _runDevicePoolARN         :: !(Maybe Text)
+    , _runStarted               :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2662,8 +2662,8 @@ instance NFData Run
 -- /See:/ 'sample' smart constructor.
 data Sample =
   Sample'
-    { _samArn :: !(Maybe Text)
-    , _samUrl :: !(Maybe Text)
+    { _samArn  :: !(Maybe Text)
+    , _samUrl  :: !(Maybe Text)
     , _samType :: !(Maybe SampleType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2709,14 +2709,14 @@ instance NFData Sample
 -- /See:/ 'scheduleRunConfiguration' smart constructor.
 data ScheduleRunConfiguration =
   ScheduleRunConfiguration'
-    { _srcBillingMethod :: !(Maybe BillingMethod)
+    { _srcBillingMethod         :: !(Maybe BillingMethod)
     , _srcCustomerArtifactPaths :: !(Maybe CustomerArtifactPaths)
-    , _srcRadios :: !(Maybe Radios)
-    , _srcLocation :: !(Maybe Location)
-    , _srcLocale :: !(Maybe Text)
-    , _srcNetworkProfileARN :: !(Maybe Text)
-    , _srcExtraDataPackageARN :: !(Maybe Text)
-    , _srcAuxiliaryApps :: !(Maybe [Text])
+    , _srcRadios                :: !(Maybe Radios)
+    , _srcLocation              :: !(Maybe Location)
+    , _srcLocale                :: !(Maybe Text)
+    , _srcNetworkProfileARN     :: !(Maybe Text)
+    , _srcExtraDataPackageARN   :: !(Maybe Text)
+    , _srcAuxiliaryApps         :: !(Maybe [Text])
     , _srcVpceConfigurationARNs :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2827,9 +2827,9 @@ instance ToJSON ScheduleRunConfiguration where
 data ScheduleRunTest =
   ScheduleRunTest'
     { _srtTestPackageARN :: !(Maybe Text)
-    , _srtParameters :: !(Maybe (Map Text Text))
-    , _srtFilter :: !(Maybe Text)
-    , _srtType :: !TestType
+    , _srtParameters     :: !(Maybe (Map Text Text))
+    , _srtFilter         :: !(Maybe Text)
+    , _srtType           :: !TestType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2893,17 +2893,17 @@ instance ToJSON ScheduleRunTest where
 -- /See:/ 'suite' smart constructor.
 data Suite =
   Suite'
-    { _sStatus :: !(Maybe ExecutionStatus)
-    , _sCounters :: !(Maybe Counters)
-    , _sArn :: !(Maybe Text)
-    , _sCreated :: !(Maybe POSIX)
-    , _sStopped :: !(Maybe POSIX)
-    , _sResult :: !(Maybe ExecutionResult)
-    , _sName :: !(Maybe Text)
+    { _sStatus        :: !(Maybe ExecutionStatus)
+    , _sCounters      :: !(Maybe Counters)
+    , _sArn           :: !(Maybe Text)
+    , _sCreated       :: !(Maybe POSIX)
+    , _sStopped       :: !(Maybe POSIX)
+    , _sResult        :: !(Maybe ExecutionResult)
+    , _sName          :: !(Maybe Text)
     , _sDeviceMinutes :: !(Maybe DeviceMinutes)
-    , _sType :: !(Maybe TestType)
-    , _sMessage :: !(Maybe Text)
-    , _sStarted :: !(Maybe POSIX)
+    , _sType          :: !(Maybe TestType)
+    , _sMessage       :: !(Maybe Text)
+    , _sStarted       :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3018,17 +3018,17 @@ instance NFData Suite
 -- /See:/ 'test' smart constructor.
 data Test =
   Test'
-    { _tStatus :: !(Maybe ExecutionStatus)
-    , _tCounters :: !(Maybe Counters)
-    , _tArn :: !(Maybe Text)
-    , _tCreated :: !(Maybe POSIX)
-    , _tStopped :: !(Maybe POSIX)
-    , _tResult :: !(Maybe ExecutionResult)
-    , _tName :: !(Maybe Text)
+    { _tStatus        :: !(Maybe ExecutionStatus)
+    , _tCounters      :: !(Maybe Counters)
+    , _tArn           :: !(Maybe Text)
+    , _tCreated       :: !(Maybe POSIX)
+    , _tStopped       :: !(Maybe POSIX)
+    , _tResult        :: !(Maybe ExecutionResult)
+    , _tName          :: !(Maybe Text)
     , _tDeviceMinutes :: !(Maybe DeviceMinutes)
-    , _tType :: !(Maybe TestType)
-    , _tMessage :: !(Maybe Text)
-    , _tStarted :: !(Maybe POSIX)
+    , _tType          :: !(Maybe TestType)
+    , _tMessage       :: !(Maybe Text)
+    , _tStarted       :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3144,7 +3144,7 @@ instance NFData Test
 data TrialMinutes =
   TrialMinutes'
     { _tmRemaining :: !(Maybe Double)
-    , _tmTotal :: !(Maybe Double)
+    , _tmTotal     :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3184,7 +3184,7 @@ instance NFData TrialMinutes
 data UniqueProblem =
   UniqueProblem'
     { _upProblems :: !(Maybe [Problem])
-    , _upMessage :: !(Maybe Text)
+    , _upMessage  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3224,14 +3224,14 @@ instance NFData UniqueProblem
 -- /See:/ 'upload' smart constructor.
 data Upload =
   Upload'
-    { _uStatus :: !(Maybe UploadStatus)
-    , _uArn :: !(Maybe Text)
-    , _uCreated :: !(Maybe POSIX)
-    , _uUrl :: !(Maybe Text)
-    , _uName :: !(Maybe Text)
-    , _uMetadata :: !(Maybe Text)
-    , _uType :: !(Maybe UploadType)
-    , _uMessage :: !(Maybe Text)
+    { _uStatus      :: !(Maybe UploadStatus)
+    , _uArn         :: !(Maybe Text)
+    , _uCreated     :: !(Maybe POSIX)
+    , _uUrl         :: !(Maybe Text)
+    , _uName        :: !(Maybe Text)
+    , _uMetadata    :: !(Maybe Text)
+    , _uType        :: !(Maybe UploadType)
+    , _uMessage     :: !(Maybe Text)
     , _uContentType :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3331,10 +3331,10 @@ instance NFData Upload
 -- /See:/ 'vpcEConfiguration' smart constructor.
 data VPCEConfiguration =
   VPCEConfiguration'
-    { _vecVpceServiceName :: !(Maybe Text)
-    , _vecArn :: !(Maybe Text)
-    , _vecVpceConfigurationName :: !(Maybe Text)
-    , _vecServiceDNSName :: !(Maybe Text)
+    { _vecVpceServiceName              :: !(Maybe Text)
+    , _vecArn                          :: !(Maybe Text)
+    , _vecVpceConfigurationName        :: !(Maybe Text)
+    , _vecServiceDNSName               :: !(Maybe Text)
     , _vecVpceConfigurationDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

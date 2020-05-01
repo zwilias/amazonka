@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,14 +58,14 @@ import Network.AWS.Response
 -- /See:/ 'createEventSubscription' smart constructor.
 data CreateEventSubscription =
   CreateEventSubscription'
-    { _cesEnabled :: !(Maybe Bool)
-    , _cesSourceType :: !(Maybe Text)
-    , _cesSeverity :: !(Maybe Text)
-    , _cesEventCategories :: !(Maybe [Text])
-    , _cesSourceIds :: !(Maybe [Text])
-    , _cesTags :: !(Maybe [Tag])
+    { _cesEnabled          :: !(Maybe Bool)
+    , _cesSourceType       :: !(Maybe Text)
+    , _cesSeverity         :: !(Maybe Text)
+    , _cesEventCategories  :: !(Maybe [Text])
+    , _cesSourceIds        :: !(Maybe [Text])
+    , _cesTags             :: !(Maybe [Tag])
     , _cesSubscriptionName :: !Text
-    , _cesSNSTopicARN :: !Text
+    , _cesSNSTopicARN      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -180,7 +180,7 @@ instance ToQuery CreateEventSubscription where
 data CreateEventSubscriptionResponse =
   CreateEventSubscriptionResponse'
     { _cesrsEventSubscription :: !(Maybe EventSubscription)
-    , _cesrsResponseStatus :: !Int
+    , _cesrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

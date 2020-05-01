@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -61,14 +61,14 @@ import Network.AWS.Response
 -- /See:/ 'createApplicationVersion' smart constructor.
 data CreateApplicationVersion =
   CreateApplicationVersion'
-    { _cavProcess :: !(Maybe Bool)
-    , _cavSourceBundle :: !(Maybe S3Location)
-    , _cavAutoCreateApplication :: !(Maybe Bool)
+    { _cavProcess                :: !(Maybe Bool)
+    , _cavSourceBundle           :: !(Maybe S3Location)
+    , _cavAutoCreateApplication  :: !(Maybe Bool)
     , _cavSourceBuildInformation :: !(Maybe SourceBuildInformation)
-    , _cavDescription :: !(Maybe Text)
-    , _cavBuildConfiguration :: !(Maybe BuildConfiguration)
-    , _cavApplicationName :: !Text
-    , _cavVersionLabel :: !Text
+    , _cavDescription            :: !(Maybe Text)
+    , _cavBuildConfiguration     :: !(Maybe BuildConfiguration)
+    , _cavApplicationName        :: !Text
+    , _cavVersionLabel           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

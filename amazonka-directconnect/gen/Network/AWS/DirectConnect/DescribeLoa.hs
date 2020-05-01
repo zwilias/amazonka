@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.Response
 data DescribeLoa =
   DescribeLoa'
     { _dlLoaContentType :: !(Maybe LoaContentType)
-    , _dlProviderName :: !(Maybe Text)
-    , _dlConnectionId :: !Text
+    , _dlProviderName   :: !(Maybe Text)
+    , _dlConnectionId   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -133,7 +133,7 @@ instance ToQuery DescribeLoa where
 -- /See:/ 'describeLoaResponse' smart constructor.
 data DescribeLoaResponse =
   DescribeLoaResponse'
-    { _dlrsLoaContent :: !(Maybe Base64)
+    { _dlrsLoaContent     :: !(Maybe Base64)
     , _dlrsLoaContentType :: !(Maybe LoaContentType)
     , _dlrsResponseStatus :: !Int
     }

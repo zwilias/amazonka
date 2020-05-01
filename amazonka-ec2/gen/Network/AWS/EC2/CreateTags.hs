@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,9 +48,9 @@ import Network.AWS.Response
 -- /See:/ 'createTags' smart constructor.
 data CreateTags =
   CreateTags'
-    { _cDryRun :: !(Maybe Bool)
+    { _cDryRun    :: !(Maybe Bool)
     , _cResources :: ![Text]
-    , _cTags :: ![Tag]
+    , _cTags      :: ![Tag]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

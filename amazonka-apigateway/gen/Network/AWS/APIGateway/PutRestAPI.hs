@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -60,11 +60,11 @@ import Network.AWS.Response
 -- /See:/ 'putRestAPI' smart constructor.
 data PutRestAPI =
   PutRestAPI'
-    { _praMode :: !(Maybe PutMode)
+    { _praMode           :: !(Maybe PutMode)
     , _praFailOnWarnings :: !(Maybe Bool)
-    , _praParameters :: !(Maybe (Map Text Text))
-    , _praRestAPIId :: !Text
-    , _praBody :: !ByteString
+    , _praParameters     :: !(Maybe (Map Text Text))
+    , _praRestAPIId      :: !Text
+    , _praBody           :: !ByteString
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

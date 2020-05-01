@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,9 +47,9 @@ import Network.AWS.Response
 -- | /See:/ 'describeAgents' smart constructor.
 data DescribeAgents =
   DescribeAgents'
-    { _daAgentIds :: !(Maybe [Text])
-    , _daFilters :: !(Maybe [Filter])
-    , _daNextToken :: !(Maybe Text)
+    { _daAgentIds   :: !(Maybe [Text])
+    , _daFilters    :: !(Maybe [Filter])
+    , _daNextToken  :: !(Maybe Text)
     , _daMaxResults :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -132,8 +132,8 @@ instance ToQuery DescribeAgents where
 -- | /See:/ 'describeAgentsResponse' smart constructor.
 data DescribeAgentsResponse =
   DescribeAgentsResponse'
-    { _dasrsAgentsInfo :: !(Maybe [AgentInfo])
-    , _dasrsNextToken :: !(Maybe Text)
+    { _dasrsAgentsInfo     :: !(Maybe [AgentInfo])
+    , _dasrsNextToken      :: !(Maybe Text)
     , _dasrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

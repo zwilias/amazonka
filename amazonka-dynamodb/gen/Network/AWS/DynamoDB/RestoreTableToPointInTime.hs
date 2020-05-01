@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -81,9 +81,9 @@ import Network.AWS.Response
 data RestoreTableToPointInTime =
   RestoreTableToPointInTime'
     { _rttpitUseLatestRestorableTime :: !(Maybe Bool)
-    , _rttpitRestoreDateTime :: !(Maybe POSIX)
-    , _rttpitSourceTableName :: !Text
-    , _rttpitTargetTableName :: !Text
+    , _rttpitRestoreDateTime         :: !(Maybe POSIX)
+    , _rttpitSourceTableName         :: !Text
+    , _rttpitTargetTableName         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -175,7 +175,7 @@ instance ToQuery RestoreTableToPointInTime where
 data RestoreTableToPointInTimeResponse =
   RestoreTableToPointInTimeResponse'
     { _rttpitrsTableDescription :: !(Maybe TableDescription)
-    , _rttpitrsResponseStatus :: !Int
+    , _rttpitrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

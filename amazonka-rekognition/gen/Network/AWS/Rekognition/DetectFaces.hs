@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,7 +56,7 @@ import Network.AWS.Response
 data DetectFaces =
   DetectFaces'
     { _dfAttributes :: !(Maybe [Attribute])
-    , _dfImage :: !Image
+    , _dfImage      :: !Image
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -119,8 +119,8 @@ instance ToQuery DetectFaces where
 data DetectFacesResponse =
   DetectFacesResponse'
     { _dfrsOrientationCorrection :: !(Maybe OrientationCorrection)
-    , _dfrsFaceDetails :: !(Maybe [FaceDetail])
-    , _dfrsResponseStatus :: !Int
+    , _dfrsFaceDetails           :: !(Maybe [FaceDetail])
+    , _dfrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

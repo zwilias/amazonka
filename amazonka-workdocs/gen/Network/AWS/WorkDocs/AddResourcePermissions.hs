@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,8 +48,8 @@ data AddResourcePermissions =
   AddResourcePermissions'
     { _arpNotificationOptions :: !(Maybe NotificationOptions)
     , _arpAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _arpResourceId :: !Text
-    , _arpPrincipals :: ![SharePrincipal]
+    , _arpResourceId          :: !Text
+    , _arpPrincipals          :: ![SharePrincipal]
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -133,7 +133,7 @@ instance ToQuery AddResourcePermissions where
 -- | /See:/ 'addResourcePermissionsResponse' smart constructor.
 data AddResourcePermissionsResponse =
   AddResourcePermissionsResponse'
-    { _arprsShareResults :: !(Maybe [ShareResult])
+    { _arprsShareResults   :: !(Maybe [ShareResult])
     , _arprsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

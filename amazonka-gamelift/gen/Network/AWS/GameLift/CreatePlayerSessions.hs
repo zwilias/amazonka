@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -75,7 +75,7 @@ data CreatePlayerSessions =
   CreatePlayerSessions'
     { _cpsPlayerDataMap :: !(Maybe (Map Text Text))
     , _cpsGameSessionId :: !Text
-    , _cpsPlayerIds :: !(List1 Text)
+    , _cpsPlayerIds     :: !(List1 Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

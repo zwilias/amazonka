@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 data CreateEnvironmentMembership =
   CreateEnvironmentMembership'
     { _cemEnvironmentId :: !Text
-    , _cemUserARN :: !Text
-    , _cemPermissions :: !MemberPermissions
+    , _cemUserARN       :: !Text
+    , _cemPermissions   :: !MemberPermissions
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,7 +124,7 @@ instance ToQuery CreateEnvironmentMembership where
 -- | /See:/ 'createEnvironmentMembershipResponse' smart constructor.
 data CreateEnvironmentMembershipResponse =
   CreateEnvironmentMembershipResponse'
-    { _cemrsMembership :: !(Maybe EnvironmentMember)
+    { _cemrsMembership     :: !(Maybe EnvironmentMember)
     , _cemrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

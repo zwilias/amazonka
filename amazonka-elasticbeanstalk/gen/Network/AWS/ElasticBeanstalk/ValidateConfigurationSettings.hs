@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 -- /See:/ 'validateConfigurationSettings' smart constructor.
 data ValidateConfigurationSettings =
   ValidateConfigurationSettings'
-    { _vcsTemplateName :: !(Maybe Text)
+    { _vcsTemplateName    :: !(Maybe Text)
     , _vcsEnvironmentName :: !(Maybe Text)
     , _vcsApplicationName :: !Text
-    , _vcsOptionSettings :: ![ConfigurationOptionSetting]
+    , _vcsOptionSettings  :: ![ConfigurationOptionSetting]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -140,7 +140,7 @@ instance ToQuery ValidateConfigurationSettings where
 -- /See:/ 'validateConfigurationSettingsResponse' smart constructor.
 data ValidateConfigurationSettingsResponse =
   ValidateConfigurationSettingsResponse'
-    { _vcsrsMessages :: !(Maybe [ValidationMessage])
+    { _vcsrsMessages       :: !(Maybe [ValidationMessage])
     , _vcsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

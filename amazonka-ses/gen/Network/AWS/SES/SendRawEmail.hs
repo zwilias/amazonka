@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -91,13 +91,13 @@ import Network.AWS.SES.Types.Product
 data SendRawEmail =
   SendRawEmail'
     { _sreConfigurationSetName :: !(Maybe Text)
-    , _sreSourceARN :: !(Maybe Text)
-    , _sreDestinations :: !(Maybe [Text])
-    , _sreReturnPathARN :: !(Maybe Text)
-    , _sreSource :: !(Maybe Text)
-    , _sreFromARN :: !(Maybe Text)
-    , _sreTags :: !(Maybe [MessageTag])
-    , _sreRawMessage :: !RawMessage
+    , _sreSourceARN            :: !(Maybe Text)
+    , _sreDestinations         :: !(Maybe [Text])
+    , _sreReturnPathARN        :: !(Maybe Text)
+    , _sreSource               :: !(Maybe Text)
+    , _sreFromARN              :: !(Maybe Text)
+    , _sreTags                 :: !(Maybe [MessageTag])
+    , _sreRawMessage           :: !RawMessage
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -211,7 +211,7 @@ instance ToQuery SendRawEmail where
 data SendRawEmailResponse =
   SendRawEmailResponse'
     { _srersResponseStatus :: !Int
-    , _srersMessageId :: !Text
+    , _srersMessageId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

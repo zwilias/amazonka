@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,12 +52,12 @@ data CreateComment =
   CreateComment'
     { _ccNotifyCollaborators :: !(Maybe Bool)
     , _ccAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _ccVisibility :: !(Maybe CommentVisibilityType)
-    , _ccThreadId :: !(Maybe Text)
-    , _ccParentId :: !(Maybe Text)
-    , _ccDocumentId :: !Text
-    , _ccVersionId :: !Text
-    , _ccText :: !(Sensitive Text)
+    , _ccVisibility          :: !(Maybe CommentVisibilityType)
+    , _ccThreadId            :: !(Maybe Text)
+    , _ccParentId            :: !(Maybe Text)
+    , _ccDocumentId          :: !Text
+    , _ccVersionId           :: !Text
+    , _ccText                :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -178,7 +178,7 @@ instance ToQuery CreateComment where
 -- | /See:/ 'createCommentResponse' smart constructor.
 data CreateCommentResponse =
   CreateCommentResponse'
-    { _ccrsComment :: !(Maybe Comment)
+    { _ccrsComment        :: !(Maybe Comment)
     , _ccrsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -67,19 +67,19 @@ import Network.AWS.Response
 -- /See:/ 'registerImage' smart constructor.
 data RegisterImage =
   RegisterImage'
-    { _riVirtualizationType :: !(Maybe Text)
-    , _riImageLocation :: !(Maybe Text)
-    , _riEnaSupport :: !(Maybe Bool)
-    , _riBillingProducts :: !(Maybe [Text])
-    , _riRAMDiskId :: !(Maybe Text)
-    , _riKernelId :: !(Maybe Text)
-    , _riRootDeviceName :: !(Maybe Text)
-    , _riSRIOVNetSupport :: !(Maybe Text)
-    , _riArchitecture :: !(Maybe ArchitectureValues)
-    , _riDescription :: !(Maybe Text)
+    { _riVirtualizationType  :: !(Maybe Text)
+    , _riImageLocation       :: !(Maybe Text)
+    , _riEnaSupport          :: !(Maybe Bool)
+    , _riBillingProducts     :: !(Maybe [Text])
+    , _riRAMDiskId           :: !(Maybe Text)
+    , _riKernelId            :: !(Maybe Text)
+    , _riRootDeviceName      :: !(Maybe Text)
+    , _riSRIOVNetSupport     :: !(Maybe Text)
+    , _riArchitecture        :: !(Maybe ArchitectureValues)
+    , _riDescription         :: !(Maybe Text)
     , _riBlockDeviceMappings :: !(Maybe [BlockDeviceMapping])
-    , _riDryRun :: !(Maybe Bool)
-    , _riName :: !Text
+    , _riDryRun              :: !(Maybe Bool)
+    , _riName                :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -234,7 +234,7 @@ instance ToQuery RegisterImage where
 -- /See:/ 'registerImageResponse' smart constructor.
 data RegisterImageResponse =
   RegisterImageResponse'
-    { _rirsImageId :: !(Maybe Text)
+    { _rirsImageId        :: !(Maybe Text)
     , _rirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

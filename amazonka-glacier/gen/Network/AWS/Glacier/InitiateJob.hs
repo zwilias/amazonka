@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,8 +52,8 @@ import Network.AWS.Response
 data InitiateJob =
   InitiateJob'
     { _ijJobParameters :: !(Maybe JobParameters)
-    , _ijAccountId :: !Text
-    , _ijVaultName :: !Text
+    , _ijAccountId     :: !Text
+    , _ijVaultName     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -125,9 +125,9 @@ instance ToQuery InitiateJob where
 -- /See:/ 'initiateJobResponse' smart constructor.
 data InitiateJobResponse =
   InitiateJobResponse'
-    { _ijrsJobId :: !(Maybe Text)
-    , _ijrsJobOutputPath :: !(Maybe Text)
-    , _ijrsLocation :: !(Maybe Text)
+    { _ijrsJobId          :: !(Maybe Text)
+    , _ijrsJobOutputPath  :: !(Maybe Text)
+    , _ijrsLocation       :: !(Maybe Text)
     , _ijrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

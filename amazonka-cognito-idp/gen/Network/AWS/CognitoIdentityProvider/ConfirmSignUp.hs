@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,12 +53,12 @@ import Network.AWS.Response
 data ConfirmSignUp =
   ConfirmSignUp'
     { _csuForceAliasCreation :: !(Maybe Bool)
-    , _csuAnalyticsMetadata :: !(Maybe AnalyticsMetadataType)
-    , _csuUserContextData :: !(Maybe UserContextDataType)
-    , _csuSecretHash :: !(Maybe (Sensitive Text))
-    , _csuClientId :: !(Sensitive Text)
-    , _csuUsername :: !(Sensitive Text)
-    , _csuConfirmationCode :: !Text
+    , _csuAnalyticsMetadata  :: !(Maybe AnalyticsMetadataType)
+    , _csuUserContextData    :: !(Maybe UserContextDataType)
+    , _csuSecretHash         :: !(Maybe (Sensitive Text))
+    , _csuClientId           :: !(Sensitive Text)
+    , _csuUsername           :: !(Sensitive Text)
+    , _csuConfirmationCode   :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

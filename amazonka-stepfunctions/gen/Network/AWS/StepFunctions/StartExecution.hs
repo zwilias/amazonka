@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.StepFunctions.Types.Product
 -- | /See:/ 'startExecution' smart constructor.
 data StartExecution =
   StartExecution'
-    { _seInput :: !(Maybe Text)
-    , _seName :: !(Maybe Text)
+    { _seInput           :: !(Maybe Text)
+    , _seName            :: !(Maybe Text)
     , _seStateMachineARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -124,8 +124,8 @@ instance ToQuery StartExecution where
 data StartExecutionResponse =
   StartExecutionResponse'
     { _srsResponseStatus :: !Int
-    , _srsExecutionARN :: !Text
-    , _srsStartDate :: !POSIX
+    , _srsExecutionARN   :: !Text
+    , _srsStartDate      :: !POSIX
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

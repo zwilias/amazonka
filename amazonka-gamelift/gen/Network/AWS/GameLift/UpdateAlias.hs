@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -67,9 +67,9 @@ import Network.AWS.Response
 data UpdateAlias =
   UpdateAlias'
     { _uaRoutingStrategy :: !(Maybe RoutingStrategy)
-    , _uaName :: !(Maybe Text)
-    , _uaDescription :: !(Maybe Text)
-    , _uaAliasId :: !Text
+    , _uaName            :: !(Maybe Text)
+    , _uaDescription     :: !(Maybe Text)
+    , _uaAliasId         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -154,7 +154,7 @@ instance ToQuery UpdateAlias where
 -- /See:/ 'updateAliasResponse' smart constructor.
 data UpdateAliasResponse =
   UpdateAliasResponse'
-    { _uarsAlias :: !(Maybe Alias)
+    { _uarsAlias          :: !(Maybe Alias)
     , _uarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

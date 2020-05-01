@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -60,9 +60,9 @@ import Network.AWS.Response
 data Encrypt =
   Encrypt'
     { _eEncryptionContext :: !(Maybe (Map Text Text))
-    , _eGrantTokens :: !(Maybe [Text])
-    , _eKeyId :: !Text
-    , _ePlaintext :: !(Sensitive Base64)
+    , _eGrantTokens       :: !(Maybe [Text])
+    , _eKeyId             :: !Text
+    , _ePlaintext         :: !(Sensitive Base64)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -149,7 +149,7 @@ instance ToQuery Encrypt where
 -- | /See:/ 'encryptResponse' smart constructor.
 data EncryptResponse =
   EncryptResponse'
-    { _ersKeyId :: !(Maybe Text)
+    { _ersKeyId          :: !(Maybe Text)
     , _ersCiphertextBlob :: !(Maybe Base64)
     , _ersResponseStatus :: !Int
     }

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.WorkDocs.Types.Product
 -- | /See:/ 'getFolder' smart constructor.
 data GetFolder =
   GetFolder'
-    { _gfAuthenticationToken :: !(Maybe (Sensitive Text))
+    { _gfAuthenticationToken   :: !(Maybe (Sensitive Text))
     , _gfIncludeCustomMetadata :: !(Maybe Bool)
-    , _gfFolderId :: !Text
+    , _gfFolderId              :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -118,7 +118,7 @@ instance ToQuery GetFolder where
 data GetFolderResponse =
   GetFolderResponse'
     { _gfrsCustomMetadata :: !(Maybe (Map Text Text))
-    , _gfrsMetadata :: !(Maybe FolderMetadata)
+    , _gfrsMetadata       :: !(Maybe FolderMetadata)
     , _gfrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

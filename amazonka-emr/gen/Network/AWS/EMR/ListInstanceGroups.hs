@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- /See:/ 'listInstanceGroups' smart constructor.
 data ListInstanceGroups =
   ListInstanceGroups'
-    { _ligMarker :: !(Maybe Text)
+    { _ligMarker    :: !(Maybe Text)
     , _ligClusterId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -126,7 +126,7 @@ instance ToQuery ListInstanceGroups where
 -- /See:/ 'listInstanceGroupsResponse' smart constructor.
 data ListInstanceGroupsResponse =
   ListInstanceGroupsResponse'
-    { _ligrsMarker :: !(Maybe Text)
+    { _ligrsMarker         :: !(Maybe Text)
     , _ligrsInstanceGroups :: !(Maybe [InstanceGroup])
     , _ligrsResponseStatus :: !Int
     }

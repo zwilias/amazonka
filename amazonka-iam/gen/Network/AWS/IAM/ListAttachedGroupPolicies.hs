@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,9 +56,9 @@ import Network.AWS.Response
 data ListAttachedGroupPolicies =
   ListAttachedGroupPolicies'
     { _lagpPathPrefix :: !(Maybe Text)
-    , _lagpMarker :: !(Maybe Text)
-    , _lagpMaxItems :: !(Maybe Nat)
-    , _lagpGroupName :: !Text
+    , _lagpMarker     :: !(Maybe Text)
+    , _lagpMaxItems   :: !(Maybe Nat)
+    , _lagpGroupName  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -148,9 +148,9 @@ instance ToQuery ListAttachedGroupPolicies where
 data ListAttachedGroupPoliciesResponse =
   ListAttachedGroupPoliciesResponse'
     { _lagprsAttachedPolicies :: !(Maybe [AttachedPolicy])
-    , _lagprsMarker :: !(Maybe Text)
-    , _lagprsIsTruncated :: !(Maybe Bool)
-    , _lagprsResponseStatus :: !Int
+    , _lagprsMarker           :: !(Maybe Text)
+    , _lagprsIsTruncated      :: !(Maybe Bool)
+    , _lagprsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

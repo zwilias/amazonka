@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- /See:/ 'getClientCertificates' smart constructor.
 data GetClientCertificates =
   GetClientCertificates'
-    { _gccLimit :: !(Maybe Int)
+    { _gccLimit    :: !(Maybe Int)
     , _gccPosition :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -114,8 +114,8 @@ instance ToQuery GetClientCertificates where
 -- /See:/ 'getClientCertificatesResponse' smart constructor.
 data GetClientCertificatesResponse =
   GetClientCertificatesResponse'
-    { _gccrsItems :: !(Maybe [ClientCertificate])
-    , _gccrsPosition :: !(Maybe Text)
+    { _gccrsItems          :: !(Maybe [ClientCertificate])
+    , _gccrsPosition       :: !(Maybe Text)
     , _gccrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

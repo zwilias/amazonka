@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'listIndices' smart constructor.
 data ListIndices =
   ListIndices'
-    { _liNextToken :: !(Maybe Text)
+    { _liNextToken  :: !(Maybe Text)
     , _liMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -95,8 +95,8 @@ instance ToQuery ListIndices where
 -- | /See:/ 'listIndicesResponse' smart constructor.
 data ListIndicesResponse =
   ListIndicesResponse'
-    { _lirsNextToken :: !(Maybe Text)
-    , _lirsIndexNames :: !(Maybe [Text])
+    { _lirsNextToken      :: !(Maybe Text)
+    , _lirsIndexNames     :: !(Maybe [Text])
     , _lirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

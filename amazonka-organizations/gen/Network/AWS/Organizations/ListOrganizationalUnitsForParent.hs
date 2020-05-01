@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 -- | /See:/ 'listOrganizationalUnitsForParent' smart constructor.
 data ListOrganizationalUnitsForParent =
   ListOrganizationalUnitsForParent'
-    { _loufpNextToken :: !(Maybe Text)
+    { _loufpNextToken  :: !(Maybe Text)
     , _loufpMaxResults :: !(Maybe Nat)
-    , _loufpParentId :: !Text
+    , _loufpParentId   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -136,9 +136,9 @@ instance ToQuery ListOrganizationalUnitsForParent where
 -- | /See:/ 'listOrganizationalUnitsForParentResponse' smart constructor.
 data ListOrganizationalUnitsForParentResponse =
   ListOrganizationalUnitsForParentResponse'
-    { _loufprsNextToken :: !(Maybe Text)
+    { _loufprsNextToken           :: !(Maybe Text)
     , _loufprsOrganizationalUnits :: !(Maybe [OrganizationalUnit])
-    , _loufprsResponseStatus :: !Int
+    , _loufprsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

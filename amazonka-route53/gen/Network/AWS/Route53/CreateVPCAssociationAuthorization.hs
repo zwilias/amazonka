@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.Route53.Types.Product
 data CreateVPCAssociationAuthorization =
   CreateVPCAssociationAuthorization'
     { _cvaaHostedZoneId :: !ResourceId
-    , _cvaaVPC :: !VPC
+    , _cvaaVPC          :: !VPC
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -121,8 +121,8 @@ instance ToXML CreateVPCAssociationAuthorization where
 data CreateVPCAssociationAuthorizationResponse =
   CreateVPCAssociationAuthorizationResponse'
     { _cvaarsResponseStatus :: !Int
-    , _cvaarsHostedZoneId :: !ResourceId
-    , _cvaarsVPC :: !VPC
+    , _cvaarsHostedZoneId   :: !ResourceId
+    , _cvaarsVPC            :: !VPC
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

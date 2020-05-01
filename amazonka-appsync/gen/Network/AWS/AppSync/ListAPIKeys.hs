@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- | /See:/ 'listAPIKeys' smart constructor.
 data ListAPIKeys =
   ListAPIKeys'
-    { _lakNextToken :: !(Maybe Text)
+    { _lakNextToken  :: !(Maybe Text)
     , _lakMaxResults :: !(Maybe Nat)
-    , _lakApiId :: !Text
+    , _lakApiId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -110,8 +110,8 @@ instance ToQuery ListAPIKeys where
 -- | /See:/ 'listAPIKeysResponse' smart constructor.
 data ListAPIKeysResponse =
   ListAPIKeysResponse'
-    { _lakrsApiKeys :: !(Maybe [APIKey])
-    , _lakrsNextToken :: !(Maybe Text)
+    { _lakrsApiKeys        :: !(Maybe [APIKey])
+    , _lakrsNextToken      :: !(Maybe Text)
     , _lakrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

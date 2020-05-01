@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,23 +63,23 @@ import Network.AWS.Response
 -- /See:/ 'modifyEndpoint' smart constructor.
 data ModifyEndpoint =
   ModifyEndpoint'
-    { _meServerName :: !(Maybe Text)
-    , _meCertificateARN :: !(Maybe Text)
-    , _meServiceAccessRoleARN :: !(Maybe Text)
+    { _meServerName                :: !(Maybe Text)
+    , _meCertificateARN            :: !(Maybe Text)
+    , _meServiceAccessRoleARN      :: !(Maybe Text)
     , _meExtraConnectionAttributes :: !(Maybe Text)
-    , _meEndpointType :: !(Maybe ReplicationEndpointTypeValue)
-    , _meUsername :: !(Maybe Text)
-    , _meExternalTableDefinition :: !(Maybe Text)
-    , _meEngineName :: !(Maybe Text)
-    , _meMongoDBSettings :: !(Maybe MongoDBSettings)
-    , _meSSLMode :: !(Maybe DmsSSLModeValue)
-    , _mePassword :: !(Maybe (Sensitive Text))
-    , _meDatabaseName :: !(Maybe Text)
-    , _meS3Settings :: !(Maybe S3Settings)
-    , _meEndpointIdentifier :: !(Maybe Text)
-    , _meDynamoDBSettings :: !(Maybe DynamoDBSettings)
-    , _mePort :: !(Maybe Int)
-    , _meEndpointARN :: !Text
+    , _meEndpointType              :: !(Maybe ReplicationEndpointTypeValue)
+    , _meUsername                  :: !(Maybe Text)
+    , _meExternalTableDefinition   :: !(Maybe Text)
+    , _meEngineName                :: !(Maybe Text)
+    , _meMongoDBSettings           :: !(Maybe MongoDBSettings)
+    , _meSSLMode                   :: !(Maybe DmsSSLModeValue)
+    , _mePassword                  :: !(Maybe (Sensitive Text))
+    , _meDatabaseName              :: !(Maybe Text)
+    , _meS3Settings                :: !(Maybe S3Settings)
+    , _meEndpointIdentifier        :: !(Maybe Text)
+    , _meDynamoDBSettings          :: !(Maybe DynamoDBSettings)
+    , _mePort                      :: !(Maybe Int)
+    , _meEndpointARN               :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -275,7 +275,7 @@ instance ToQuery ModifyEndpoint where
 -- /See:/ 'modifyEndpointResponse' smart constructor.
 data ModifyEndpointResponse =
   ModifyEndpointResponse'
-    { _mersEndpoint :: !(Maybe Endpoint)
+    { _mersEndpoint       :: !(Maybe Endpoint)
     , _mersResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 data ForgotPassword =
   ForgotPassword'
     { _fpAnalyticsMetadata :: !(Maybe AnalyticsMetadataType)
-    , _fpUserContextData :: !(Maybe UserContextDataType)
-    , _fpSecretHash :: !(Maybe (Sensitive Text))
-    , _fpClientId :: !(Sensitive Text)
-    , _fpUsername :: !(Sensitive Text)
+    , _fpUserContextData   :: !(Maybe UserContextDataType)
+    , _fpSecretHash        :: !(Maybe (Sensitive Text))
+    , _fpClientId          :: !(Sensitive Text)
+    , _fpUsername          :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -154,7 +154,7 @@ instance ToQuery ForgotPassword where
 data ForgotPasswordResponse =
   ForgotPasswordResponse'
     { _fprsCodeDeliveryDetails :: !(Maybe CodeDeliveryDetailsType)
-    , _fprsResponseStatus :: !Int
+    , _fprsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

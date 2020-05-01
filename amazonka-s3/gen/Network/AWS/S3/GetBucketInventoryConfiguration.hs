@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -43,7 +43,7 @@ import Network.AWS.S3.Types.Product
 data GetBucketInventoryConfiguration =
   GetBucketInventoryConfiguration'
     { _gbicBucket :: !BucketName
-    , _gbicId :: !Text
+    , _gbicId     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -96,7 +96,7 @@ instance ToQuery GetBucketInventoryConfiguration where
 data GetBucketInventoryConfigurationResponse =
   GetBucketInventoryConfigurationResponse'
     { _gbicrsInventoryConfiguration :: !(Maybe InventoryConfiguration)
-    , _gbicrsResponseStatus :: !Int
+    , _gbicrsResponseStatus         :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

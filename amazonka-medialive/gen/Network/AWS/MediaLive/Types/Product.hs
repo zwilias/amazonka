@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -24,15 +24,15 @@ import Network.AWS.Prelude
 -- /See:/ 'aacSettings' smart constructor.
 data AacSettings =
   AacSettings'
-    { _aRawFormat :: !(Maybe AacRawFormat)
-    , _aCodingMode :: !(Maybe AacCodingMode)
-    , _aProfile :: !(Maybe AacProfile)
+    { _aRawFormat       :: !(Maybe AacRawFormat)
+    , _aCodingMode      :: !(Maybe AacCodingMode)
+    , _aProfile         :: !(Maybe AacProfile)
     , _aRateControlMode :: !(Maybe AacRateControlMode)
-    , _aSampleRate :: !(Maybe Double)
-    , _aSpec :: !(Maybe AacSpec)
-    , _aBitrate :: !(Maybe Double)
-    , _aVbrQuality :: !(Maybe AacVbrQuality)
-    , _aInputType :: !(Maybe AacInputType)
+    , _aSampleRate      :: !(Maybe Double)
+    , _aSpec            :: !(Maybe AacSpec)
+    , _aBitrate         :: !(Maybe Double)
+    , _aVbrQuality      :: !(Maybe AacVbrQuality)
+    , _aInputType       :: !(Maybe AacInputType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -145,13 +145,13 @@ instance ToJSON AacSettings where
 -- /See:/ 'ac3Settings' smart constructor.
 data Ac3Settings =
   Ac3Settings'
-    { _asLfeFilter :: !(Maybe Ac3LfeFilter)
+    { _asLfeFilter       :: !(Maybe Ac3LfeFilter)
     , _asMetadataControl :: !(Maybe Ac3MetadataControl)
-    , _asBitstreamMode :: !(Maybe Ac3BitstreamMode)
-    , _asCodingMode :: !(Maybe Ac3CodingMode)
-    , _asBitrate :: !(Maybe Double)
-    , _asDialnorm :: !(Maybe Nat)
-    , _asDrcProfile :: !(Maybe Ac3DrcProfile)
+    , _asBitstreamMode   :: !(Maybe Ac3BitstreamMode)
+    , _asCodingMode      :: !(Maybe Ac3CodingMode)
+    , _asBitrate         :: !(Maybe Double)
+    , _asDialnorm        :: !(Maybe Nat)
+    , _asDrcProfile      :: !(Maybe Ac3DrcProfile)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -283,7 +283,7 @@ instance ToJSON ArchiveContainerSettings where
 data ArchiveGroupSettings =
   ArchiveGroupSettings'
     { _agsRolloverInterval :: !(Maybe Nat)
-    , _agsDestination :: !OutputLocationRef
+    , _agsDestination      :: !OutputLocationRef
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -336,8 +336,8 @@ instance ToJSON ArchiveGroupSettings where
 -- /See:/ 'archiveOutputSettings' smart constructor.
 data ArchiveOutputSettings =
   ArchiveOutputSettings'
-    { _aosExtension :: !(Maybe Text)
-    , _aosNameModifier :: !(Maybe Text)
+    { _aosExtension         :: !(Maybe Text)
+    , _aosNameModifier      :: !(Maybe Text)
     , _aosContainerSettings :: !ArchiveContainerSettings
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -446,7 +446,7 @@ instance ToJSON AribSourceSettings where
 -- /See:/ 'audioChannelMapping' smart constructor.
 data AudioChannelMapping =
   AudioChannelMapping'
-    { _acmOutputChannel :: !Nat
+    { _acmOutputChannel      :: !Nat
     , _acmInputChannelLevels :: ![InputChannelLevel]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -503,10 +503,10 @@ instance ToJSON AudioChannelMapping where
 data AudioCodecSettings =
   AudioCodecSettings'
     { _acsPassThroughSettings :: !(Maybe PassThroughSettings)
-    , _acsAc3Settings :: !(Maybe Ac3Settings)
-    , _acsMp2Settings :: !(Maybe Mp2Settings)
-    , _acsAacSettings :: !(Maybe AacSettings)
-    , _acsEac3Settings :: !(Maybe Eac3Settings)
+    , _acsAc3Settings         :: !(Maybe Ac3Settings)
+    , _acsMp2Settings         :: !(Maybe Mp2Settings)
+    , _acsAacSettings         :: !(Maybe AacSettings)
+    , _acsEac3Settings        :: !(Maybe Eac3Settings)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -729,7 +729,7 @@ instance ToJSON AudioDescription where
 data AudioLanguageSelection =
   AudioLanguageSelection'
     { _alsLanguageSelectionPolicy :: !(Maybe AudioLanguageSelectionPolicy)
-    , _alsLanguageCode :: !Text
+    , _alsLanguageCode            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -783,8 +783,8 @@ instance ToJSON AudioLanguageSelection where
 data AudioNormalizationSettings =
   AudioNormalizationSettings'
     { _ansAlgorithmControl :: !(Maybe AudioNormalizationAlgorithmControl)
-    , _ansTargetLkfs :: !(Maybe Double)
-    , _ansAlgorithm :: !(Maybe AudioNormalizationAlgorithm)
+    , _ansTargetLkfs       :: !(Maybe Double)
+    , _ansAlgorithm        :: !(Maybe AudioNormalizationAlgorithm)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -848,7 +848,7 @@ instance ToJSON AudioNormalizationSettings where
 data AudioOnlyHlsSettings =
   AudioOnlyHlsSettings'
     { _aohsAudioOnlyImage :: !(Maybe InputLocation)
-    , _aohsAudioGroupId :: !(Maybe Text)
+    , _aohsAudioGroupId   :: !(Maybe Text)
     , _aohsAudioTrackType :: !(Maybe AudioOnlyHlsTrackType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -946,7 +946,7 @@ instance ToJSON AudioPidSelection where
 data AudioSelector =
   AudioSelector'
     { _asSelectorSettings :: !(Maybe AudioSelectorSettings)
-    , _asName :: !Text
+    , _asName             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -996,7 +996,7 @@ instance ToJSON AudioSelector where
 data AudioSelectorSettings =
   AudioSelectorSettings'
     { _assAudioLanguageSelection :: !(Maybe AudioLanguageSelection)
-    , _assAudioPidSelection :: !(Maybe AudioPidSelection)
+    , _assAudioPidSelection      :: !(Maybe AudioPidSelection)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1048,7 +1048,7 @@ instance ToJSON AudioSelectorSettings where
 -- /See:/ 'availBlanking' smart constructor.
 data AvailBlanking =
   AvailBlanking'
-    { _abState :: !(Maybe AvailBlankingState)
+    { _abState              :: !(Maybe AvailBlankingState)
     , _abAvailBlankingImage :: !(Maybe InputLocation)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1131,7 +1131,7 @@ instance ToJSON AvailConfiguration where
 -- /See:/ 'availSettings' smart constructor.
 data AvailSettings =
   AvailSettings'
-    { _asScte35SpliceInsert :: !(Maybe Scte35SpliceInsert)
+    { _asScte35SpliceInsert   :: !(Maybe Scte35SpliceInsert)
     , _asScte35TimeSignalApos :: !(Maybe Scte35TimeSignalApos)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1184,10 +1184,10 @@ instance ToJSON AvailSettings where
 data BlackoutSlate =
   BlackoutSlate'
     { _bsNetworkEndBlackoutImage :: !(Maybe InputLocation)
-    , _bsState :: !(Maybe BlackoutSlateState)
-    , _bsNetworkEndBlackout :: !(Maybe BlackoutSlateNetworkEndBlackout)
-    , _bsNetworkId :: !(Maybe Text)
-    , _bsBlackoutSlateImage :: !(Maybe InputLocation)
+    , _bsState                   :: !(Maybe BlackoutSlateState)
+    , _bsNetworkEndBlackout      :: !(Maybe BlackoutSlateNetworkEndBlackout)
+    , _bsNetworkId               :: !(Maybe Text)
+    , _bsBlackoutSlateImage      :: !(Maybe InputLocation)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1269,23 +1269,23 @@ instance ToJSON BlackoutSlate where
 -- /See:/ 'burnInDestinationSettings' smart constructor.
 data BurnInDestinationSettings =
   BurnInDestinationSettings'
-    { _bidsBackgroundOpacity :: !(Maybe Nat)
-    , _bidsFontOpacity :: !(Maybe Nat)
-    , _bidsShadowYOffset :: !(Maybe Int)
-    , _bidsFontResolution :: !(Maybe Nat)
-    , _bidsYPosition :: !(Maybe Nat)
-    , _bidsBackgroundColor :: !(Maybe BurnInBackgroundColor)
-    , _bidsShadowXOffset :: !(Maybe Int)
-    , _bidsFontSize :: !(Maybe Text)
-    , _bidsXPosition :: !(Maybe Nat)
-    , _bidsAlignment :: !(Maybe BurnInAlignment)
-    , _bidsShadowOpacity :: !(Maybe Nat)
+    { _bidsBackgroundOpacity   :: !(Maybe Nat)
+    , _bidsFontOpacity         :: !(Maybe Nat)
+    , _bidsShadowYOffset       :: !(Maybe Int)
+    , _bidsFontResolution      :: !(Maybe Nat)
+    , _bidsYPosition           :: !(Maybe Nat)
+    , _bidsBackgroundColor     :: !(Maybe BurnInBackgroundColor)
+    , _bidsShadowXOffset       :: !(Maybe Int)
+    , _bidsFontSize            :: !(Maybe Text)
+    , _bidsXPosition           :: !(Maybe Nat)
+    , _bidsAlignment           :: !(Maybe BurnInAlignment)
+    , _bidsShadowOpacity       :: !(Maybe Nat)
     , _bidsTeletextGridControl :: !(Maybe BurnInTeletextGridControl)
-    , _bidsOutlineColor :: !(Maybe BurnInOutlineColor)
-    , _bidsOutlineSize :: !(Maybe Nat)
-    , _bidsFont :: !(Maybe InputLocation)
-    , _bidsShadowColor :: !(Maybe BurnInShadowColor)
-    , _bidsFontColor :: !(Maybe BurnInFontColor)
+    , _bidsOutlineColor        :: !(Maybe BurnInOutlineColor)
+    , _bidsOutlineSize         :: !(Maybe Nat)
+    , _bidsFont                :: !(Maybe InputLocation)
+    , _bidsShadowColor         :: !(Maybe BurnInShadowColor)
+    , _bidsFontColor           :: !(Maybe BurnInFontColor)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1483,11 +1483,11 @@ instance ToJSON BurnInDestinationSettings where
 -- /See:/ 'captionDescription' smart constructor.
 data CaptionDescription =
   CaptionDescription'
-    { _cdLanguageCode :: !(Maybe Text)
+    { _cdLanguageCode        :: !(Maybe Text)
     , _cdDestinationSettings :: !(Maybe CaptionDestinationSettings)
     , _cdLanguageDescription :: !(Maybe Text)
     , _cdCaptionSelectorName :: !Text
-    , _cdName :: !Text
+    , _cdName                :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1773,9 +1773,9 @@ instance ToJSON CaptionDestinationSettings where
 -- /See:/ 'captionLanguageMapping' smart constructor.
 data CaptionLanguageMapping =
   CaptionLanguageMapping'
-    { _clmLanguageCode :: !Text
+    { _clmLanguageCode        :: !Text
     , _clmLanguageDescription :: !Text
-    , _clmCaptionChannel :: !Nat
+    , _clmCaptionChannel      :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1841,9 +1841,9 @@ instance ToJSON CaptionLanguageMapping where
 -- /See:/ 'captionSelector' smart constructor.
 data CaptionSelector =
   CaptionSelector'
-    { _csLanguageCode :: !(Maybe Text)
+    { _csLanguageCode     :: !(Maybe Text)
     , _csSelectorSettings :: !(Maybe CaptionSelectorSettings)
-    , _csName :: !Text
+    , _csName             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1904,10 +1904,10 @@ instance ToJSON CaptionSelector where
 data CaptionSelectorSettings =
   CaptionSelectorSettings'
     { _cssTeletextSourceSettings :: !(Maybe TeletextSourceSettings)
-    , _cssAribSourceSettings :: !(Maybe AribSourceSettings)
-    , _cssScte27SourceSettings :: !(Maybe Scte27SourceSettings)
-    , _cssDvbSubSourceSettings :: !(Maybe DvbSubSourceSettings)
-    , _cssScte20SourceSettings :: !(Maybe Scte20SourceSettings)
+    , _cssAribSourceSettings     :: !(Maybe AribSourceSettings)
+    , _cssScte27SourceSettings   :: !(Maybe Scte27SourceSettings)
+    , _cssDvbSubSourceSettings   :: !(Maybe DvbSubSourceSettings)
+    , _cssScte20SourceSettings   :: !(Maybe Scte20SourceSettings)
     , _cssEmbeddedSourceSettings :: !(Maybe EmbeddedSourceSettings)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2007,17 +2007,17 @@ instance ToJSON CaptionSelectorSettings where
 -- /See:/ 'channel' smart constructor.
 data Channel =
   Channel'
-    { _cState :: !(Maybe ChannelState)
-    , _cARN :: !(Maybe Text)
+    { _cState                 :: !(Maybe ChannelState)
+    , _cARN                   :: !(Maybe Text)
     , _cPipelinesRunningCount :: !(Maybe Int)
-    , _cInputSpecification :: !(Maybe InputSpecification)
-    , _cInputAttachments :: !(Maybe [InputAttachment])
-    , _cDestinations :: !(Maybe [OutputDestination])
-    , _cName :: !(Maybe Text)
-    , _cId :: !(Maybe Text)
-    , _cEgressEndpoints :: !(Maybe [ChannelEgressEndpoint])
-    , _cEncoderSettings :: !(Maybe EncoderSettings)
-    , _cRoleARN :: !(Maybe Text)
+    , _cInputSpecification    :: !(Maybe InputSpecification)
+    , _cInputAttachments      :: !(Maybe [InputAttachment])
+    , _cDestinations          :: !(Maybe [OutputDestination])
+    , _cName                  :: !(Maybe Text)
+    , _cId                    :: !(Maybe Text)
+    , _cEgressEndpoints       :: !(Maybe [ChannelEgressEndpoint])
+    , _cEncoderSettings       :: !(Maybe EncoderSettings)
+    , _cRoleARN               :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2169,16 +2169,16 @@ instance NFData ChannelEgressEndpoint
 -- /See:/ 'channelSummary' smart constructor.
 data ChannelSummary =
   ChannelSummary'
-    { _chaState :: !(Maybe ChannelState)
-    , _chaARN :: !(Maybe Text)
+    { _chaState                 :: !(Maybe ChannelState)
+    , _chaARN                   :: !(Maybe Text)
     , _chaPipelinesRunningCount :: !(Maybe Int)
-    , _chaInputSpecification :: !(Maybe InputSpecification)
-    , _chaInputAttachments :: !(Maybe [InputAttachment])
-    , _chaDestinations :: !(Maybe [OutputDestination])
-    , _chaName :: !(Maybe Text)
-    , _chaId :: !(Maybe Text)
-    , _chaEgressEndpoints :: !(Maybe [ChannelEgressEndpoint])
-    , _chaRoleARN :: !(Maybe Text)
+    , _chaInputSpecification    :: !(Maybe InputSpecification)
+    , _chaInputAttachments      :: !(Maybe [InputAttachment])
+    , _chaDestinations          :: !(Maybe [OutputDestination])
+    , _chaName                  :: !(Maybe Text)
+    , _chaId                    :: !(Maybe Text)
+    , _chaEgressEndpoints       :: !(Maybe [ChannelEgressEndpoint])
+    , _chaRoleARN               :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2293,7 +2293,7 @@ data DvbNitSettings =
   DvbNitSettings'
     { _dnsRepInterval :: !(Maybe Nat)
     , _dnsNetworkName :: !Text
-    , _dnsNetworkId :: !Nat
+    , _dnsNetworkId   :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2356,10 +2356,10 @@ instance ToJSON DvbNitSettings where
 -- /See:/ 'dvbSdtSettings' smart constructor.
 data DvbSdtSettings =
   DvbSdtSettings'
-    { _dssRepInterval :: !(Maybe Nat)
+    { _dssRepInterval         :: !(Maybe Nat)
     , _dssServiceProviderName :: !(Maybe Text)
-    , _dssOutputSdt :: !(Maybe DvbSdtOutputSdt)
-    , _dssServiceName :: !(Maybe Text)
+    , _dssOutputSdt           :: !(Maybe DvbSdtOutputSdt)
+    , _dssServiceName         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2430,23 +2430,23 @@ instance ToJSON DvbSdtSettings where
 -- /See:/ 'dvbSubDestinationSettings' smart constructor.
 data DvbSubDestinationSettings =
   DvbSubDestinationSettings'
-    { _dsdsBackgroundOpacity :: !(Maybe Nat)
-    , _dsdsFontOpacity :: !(Maybe Nat)
-    , _dsdsShadowYOffset :: !(Maybe Int)
-    , _dsdsFontResolution :: !(Maybe Nat)
-    , _dsdsYPosition :: !(Maybe Nat)
-    , _dsdsBackgroundColor :: !(Maybe DvbSubDestinationBackgroundColor)
-    , _dsdsShadowXOffset :: !(Maybe Int)
-    , _dsdsFontSize :: !(Maybe Text)
-    , _dsdsXPosition :: !(Maybe Nat)
-    , _dsdsAlignment :: !(Maybe DvbSubDestinationAlignment)
-    , _dsdsShadowOpacity :: !(Maybe Nat)
+    { _dsdsBackgroundOpacity   :: !(Maybe Nat)
+    , _dsdsFontOpacity         :: !(Maybe Nat)
+    , _dsdsShadowYOffset       :: !(Maybe Int)
+    , _dsdsFontResolution      :: !(Maybe Nat)
+    , _dsdsYPosition           :: !(Maybe Nat)
+    , _dsdsBackgroundColor     :: !(Maybe DvbSubDestinationBackgroundColor)
+    , _dsdsShadowXOffset       :: !(Maybe Int)
+    , _dsdsFontSize            :: !(Maybe Text)
+    , _dsdsXPosition           :: !(Maybe Nat)
+    , _dsdsAlignment           :: !(Maybe DvbSubDestinationAlignment)
+    , _dsdsShadowOpacity       :: !(Maybe Nat)
     , _dsdsTeletextGridControl :: !(Maybe DvbSubDestinationTeletextGridControl)
-    , _dsdsOutlineColor :: !(Maybe DvbSubDestinationOutlineColor)
-    , _dsdsOutlineSize :: !(Maybe Nat)
-    , _dsdsFont :: !(Maybe InputLocation)
-    , _dsdsShadowColor :: !(Maybe DvbSubDestinationShadowColor)
-    , _dsdsFontColor :: !(Maybe DvbSubDestinationFontColor)
+    , _dsdsOutlineColor        :: !(Maybe DvbSubDestinationOutlineColor)
+    , _dsdsOutlineSize         :: !(Maybe Nat)
+    , _dsdsFont                :: !(Maybe InputLocation)
+    , _dsdsShadowColor         :: !(Maybe DvbSubDestinationShadowColor)
+    , _dsdsFontColor           :: !(Maybe DvbSubDestinationFontColor)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2719,26 +2719,26 @@ instance ToJSON DvbTdtSettings where
 -- /See:/ 'eac3Settings' smart constructor.
 data Eac3Settings =
   Eac3Settings'
-    { _esStereoDownmix :: !(Maybe Eac3StereoDownmix)
-    , _esLoRoCenterMixLevel :: !(Maybe Double)
-    , _esLtRtCenterMixLevel :: !(Maybe Double)
-    , _esLfeFilter :: !(Maybe Eac3LfeFilter)
+    { _esStereoDownmix        :: !(Maybe Eac3StereoDownmix)
+    , _esLoRoCenterMixLevel   :: !(Maybe Double)
+    , _esLtRtCenterMixLevel   :: !(Maybe Double)
+    , _esLfeFilter            :: !(Maybe Eac3LfeFilter)
     , _esLtRtSurroundMixLevel :: !(Maybe Double)
-    , _esMetadataControl :: !(Maybe Eac3MetadataControl)
+    , _esMetadataControl      :: !(Maybe Eac3MetadataControl)
     , _esLoRoSurroundMixLevel :: !(Maybe Double)
-    , _esSurroundMode :: !(Maybe Eac3SurroundMode)
-    , _esAttenuationControl :: !(Maybe Eac3AttenuationControl)
-    , _esPassthroughControl :: !(Maybe Eac3PassthroughControl)
-    , _esBitstreamMode :: !(Maybe Eac3BitstreamMode)
-    , _esLfeControl :: !(Maybe Eac3LfeControl)
-    , _esCodingMode :: !(Maybe Eac3CodingMode)
-    , _esDrcLine :: !(Maybe Eac3DrcLine)
-    , _esDrcRf :: !(Maybe Eac3DrcRf)
-    , _esDcFilter :: !(Maybe Eac3DcFilter)
-    , _esBitrate :: !(Maybe Double)
-    , _esPhaseControl :: !(Maybe Eac3PhaseControl)
-    , _esSurroundExMode :: !(Maybe Eac3SurroundExMode)
-    , _esDialnorm :: !(Maybe Nat)
+    , _esSurroundMode         :: !(Maybe Eac3SurroundMode)
+    , _esAttenuationControl   :: !(Maybe Eac3AttenuationControl)
+    , _esPassthroughControl   :: !(Maybe Eac3PassthroughControl)
+    , _esBitstreamMode        :: !(Maybe Eac3BitstreamMode)
+    , _esLfeControl           :: !(Maybe Eac3LfeControl)
+    , _esCodingMode           :: !(Maybe Eac3CodingMode)
+    , _esDrcLine              :: !(Maybe Eac3DrcLine)
+    , _esDrcRf                :: !(Maybe Eac3DrcRf)
+    , _esDcFilter             :: !(Maybe Eac3DcFilter)
+    , _esBitrate              :: !(Maybe Double)
+    , _esPhaseControl         :: !(Maybe Eac3PhaseControl)
+    , _esSurroundExMode       :: !(Maybe Eac3SurroundExMode)
+    , _esDialnorm             :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3007,9 +3007,9 @@ instance ToJSON EmbeddedPlusScte20DestinationSettings where
 -- /See:/ 'embeddedSourceSettings' smart constructor.
 data EmbeddedSourceSettings =
   EmbeddedSourceSettings'
-    { _essConvert608To708 :: !(Maybe EmbeddedConvert608To708)
-    , _essScte20Detection :: !(Maybe EmbeddedScte20Detection)
-    , _essSource608TrackNumber :: !(Maybe Nat)
+    { _essConvert608To708        :: !(Maybe EmbeddedConvert608To708)
+    , _essScte20Detection        :: !(Maybe EmbeddedScte20Detection)
+    , _essSource608TrackNumber   :: !(Maybe Nat)
     , _essSource608ChannelNumber :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3088,14 +3088,14 @@ instance ToJSON EmbeddedSourceSettings where
 data EncoderSettings =
   EncoderSettings'
     { _esCaptionDescriptions :: !(Maybe [CaptionDescription])
-    , _esAvailConfiguration :: !(Maybe AvailConfiguration)
-    , _esAvailBlanking :: !(Maybe AvailBlanking)
+    , _esAvailConfiguration  :: !(Maybe AvailConfiguration)
+    , _esAvailBlanking       :: !(Maybe AvailBlanking)
     , _esGlobalConfiguration :: !(Maybe GlobalConfiguration)
-    , _esBlackoutSlate :: !(Maybe BlackoutSlate)
-    , _esVideoDescriptions :: ![VideoDescription]
-    , _esAudioDescriptions :: ![AudioDescription]
-    , _esOutputGroups :: ![OutputGroup]
-    , _esTimecodeConfig :: !TimecodeConfig
+    , _esBlackoutSlate       :: !(Maybe BlackoutSlate)
+    , _esVideoDescriptions   :: ![VideoDescription]
+    , _esAudioDescriptions   :: ![AudioDescription]
+    , _esOutputGroups        :: ![OutputGroup]
+    , _esTimecodeConfig      :: !TimecodeConfig
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3218,8 +3218,8 @@ instance ToJSON EncoderSettings where
 -- /See:/ 'fecOutputSettings' smart constructor.
 data FecOutputSettings =
   FecOutputSettings'
-    { _fosRowLength :: !(Maybe Nat)
-    , _fosIncludeFec :: !(Maybe FecOutputIncludeFec)
+    { _fosRowLength   :: !(Maybe Nat)
+    , _fosIncludeFec  :: !(Maybe FecOutputIncludeFec)
     , _fosColumnDepth :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3371,41 +3371,41 @@ instance ToJSON GlobalConfiguration where
 -- /See:/ 'h264Settings' smart constructor.
 data H264Settings =
   H264Settings'
-    { _hsTemporalAq :: !(Maybe H264TemporalAq)
-    , _hsSceneChangeDetect :: !(Maybe H264SceneChangeDetect)
-    , _hsScanType :: !(Maybe H264ScanType)
-    , _hsTimecodeInsertion :: !(Maybe H264TimecodeInsertionBehavior)
-    , _hsParNumerator :: !(Maybe Int)
-    , _hsAfdSignaling :: !(Maybe AfdSignaling)
-    , _hsGopSize :: !(Maybe Double)
-    , _hsGopSizeUnits :: !(Maybe H264GopSizeUnits)
-    , _hsSlices :: !(Maybe Nat)
-    , _hsProfile :: !(Maybe H264Profile)
-    , _hsRateControlMode :: !(Maybe H264RateControlMode)
-    , _hsMinIInterval :: !(Maybe Nat)
-    , _hsParControl :: !(Maybe H264ParControl)
-    , _hsFlickerAq :: !(Maybe H264FlickerAq)
-    , _hsBufSize :: !(Maybe Nat)
-    , _hsSpatialAq :: !(Maybe H264SpatialAq)
-    , _hsGopNumBFrames :: !(Maybe Nat)
-    , _hsFixedAfd :: !(Maybe FixedAfd)
-    , _hsSoftness :: !(Maybe Nat)
-    , _hsBitrate :: !(Maybe Nat)
+    { _hsTemporalAq           :: !(Maybe H264TemporalAq)
+    , _hsSceneChangeDetect    :: !(Maybe H264SceneChangeDetect)
+    , _hsScanType             :: !(Maybe H264ScanType)
+    , _hsTimecodeInsertion    :: !(Maybe H264TimecodeInsertionBehavior)
+    , _hsParNumerator         :: !(Maybe Int)
+    , _hsAfdSignaling         :: !(Maybe AfdSignaling)
+    , _hsGopSize              :: !(Maybe Double)
+    , _hsGopSizeUnits         :: !(Maybe H264GopSizeUnits)
+    , _hsSlices               :: !(Maybe Nat)
+    , _hsProfile              :: !(Maybe H264Profile)
+    , _hsRateControlMode      :: !(Maybe H264RateControlMode)
+    , _hsMinIInterval         :: !(Maybe Nat)
+    , _hsParControl           :: !(Maybe H264ParControl)
+    , _hsFlickerAq            :: !(Maybe H264FlickerAq)
+    , _hsBufSize              :: !(Maybe Nat)
+    , _hsSpatialAq            :: !(Maybe H264SpatialAq)
+    , _hsGopNumBFrames        :: !(Maybe Nat)
+    , _hsFixedAfd             :: !(Maybe FixedAfd)
+    , _hsSoftness             :: !(Maybe Nat)
+    , _hsBitrate              :: !(Maybe Nat)
     , _hsFramerateDenominator :: !(Maybe Int)
-    , _hsEntropyEncoding :: !(Maybe H264EntropyEncoding)
-    , _hsFramerateControl :: !(Maybe H264FramerateControl)
-    , _hsColorMetadata :: !(Maybe H264ColorMetadata)
+    , _hsEntropyEncoding      :: !(Maybe H264EntropyEncoding)
+    , _hsFramerateControl     :: !(Maybe H264FramerateControl)
+    , _hsColorMetadata        :: !(Maybe H264ColorMetadata)
     , _hsLookAheadRateControl :: !(Maybe H264LookAheadRateControl)
     , _hsAdaptiveQuantization :: !(Maybe H264AdaptiveQuantization)
-    , _hsFramerateNumerator :: !(Maybe Int)
-    , _hsLevel :: !(Maybe H264Level)
-    , _hsGopBReference :: !(Maybe H264GopBReference)
-    , _hsMaxBitrate :: !(Maybe Nat)
-    , _hsSyntax :: !(Maybe H264Syntax)
-    , _hsBufFillPct :: !(Maybe Nat)
-    , _hsGopClosedCadence :: !(Maybe Nat)
-    , _hsNumRefFrames :: !(Maybe Nat)
-    , _hsParDenominator :: !(Maybe Nat)
+    , _hsFramerateNumerator   :: !(Maybe Int)
+    , _hsLevel                :: !(Maybe H264Level)
+    , _hsGopBReference        :: !(Maybe H264GopBReference)
+    , _hsMaxBitrate           :: !(Maybe Nat)
+    , _hsSyntax               :: !(Maybe H264Syntax)
+    , _hsBufFillPct           :: !(Maybe Nat)
+    , _hsGopClosedCadence     :: !(Maybe Nat)
+    , _hsNumRefFrames         :: !(Maybe Nat)
+    , _hsParDenominator       :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3764,13 +3764,13 @@ instance ToJSON H264Settings where
 -- /See:/ 'hlsAkamaiSettings' smart constructor.
 data HlsAkamaiSettings =
   HlsAkamaiSettings'
-    { _hasHTTPTransferMode :: !(Maybe HlsAkamaiHTTPTransferMode)
-    , _hasNumRetries :: !(Maybe Nat)
-    , _hasToken :: !(Maybe Text)
+    { _hasHTTPTransferMode        :: !(Maybe HlsAkamaiHTTPTransferMode)
+    , _hasNumRetries              :: !(Maybe Nat)
+    , _hasToken                   :: !(Maybe Text)
     , _hasConnectionRetryInterval :: !(Maybe Nat)
-    , _hasFilecacheDuration :: !(Maybe Nat)
-    , _hasRestartDelay :: !(Maybe Nat)
-    , _hasSalt :: !(Maybe Text)
+    , _hasFilecacheDuration       :: !(Maybe Nat)
+    , _hasRestartDelay            :: !(Maybe Nat)
+    , _hasSalt                    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3873,10 +3873,10 @@ instance ToJSON HlsAkamaiSettings where
 -- /See:/ 'hlsBasicPutSettings' smart constructor.
 data HlsBasicPutSettings =
   HlsBasicPutSettings'
-    { _hbpsNumRetries :: !(Maybe Nat)
+    { _hbpsNumRetries              :: !(Maybe Nat)
     , _hbpsConnectionRetryInterval :: !(Maybe Nat)
-    , _hbpsFilecacheDuration :: !(Maybe Nat)
-    , _hbpsRestartDelay :: !(Maybe Nat)
+    , _hbpsFilecacheDuration       :: !(Maybe Nat)
+    , _hbpsRestartDelay            :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3953,10 +3953,10 @@ instance ToJSON HlsBasicPutSettings where
 -- /See:/ 'hlsCdnSettings' smart constructor.
 data HlsCdnSettings =
   HlsCdnSettings'
-    { _hcsHlsAkamaiSettings :: !(Maybe HlsAkamaiSettings)
+    { _hcsHlsAkamaiSettings     :: !(Maybe HlsAkamaiSettings)
     , _hcsHlsMediaStoreSettings :: !(Maybe HlsMediaStoreSettings)
-    , _hcsHlsBasicPutSettings :: !(Maybe HlsBasicPutSettings)
-    , _hcsHlsWebdavSettings :: !(Maybe HlsWebdavSettings)
+    , _hcsHlsBasicPutSettings   :: !(Maybe HlsBasicPutSettings)
+    , _hcsHlsWebdavSettings     :: !(Maybe HlsWebdavSettings)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4029,41 +4029,41 @@ instance ToJSON HlsCdnSettings where
 -- /See:/ 'hlsGroupSettings' smart constructor.
 data HlsGroupSettings =
   HlsGroupSettings'
-    { _hgsDirectoryStructure :: !(Maybe HlsDirectoryStructure)
-    , _hgsEncryptionType :: !(Maybe HlsEncryptionType)
-    , _hgsTimedMetadataId3Period :: !(Maybe Nat)
-    , _hgsIvInManifest :: !(Maybe HlsIvInManifest)
-    , _hgsTsFileMode :: !(Maybe HlsTsFileMode)
-    , _hgsMinSegmentLength :: !(Maybe Nat)
-    , _hgsProgramDateTime :: !(Maybe HlsProgramDateTime)
-    , _hgsIndexNSegments :: !(Maybe Nat)
-    , _hgsProgramDateTimePeriod :: !(Maybe Nat)
-    , _hgsCodecSpecification :: !(Maybe HlsCodecSpecification)
-    , _hgsHlsCdnSettings :: !(Maybe HlsCdnSettings)
-    , _hgsCaptionLanguageMappings :: !(Maybe [CaptionLanguageMapping])
-    , _hgsInputLossAction :: !(Maybe InputLossActionForHlsOut)
-    , _hgsMode :: !(Maybe HlsMode)
-    , _hgsKeyProviderSettings :: !(Maybe KeyProviderSettings)
-    , _hgsConstantIv :: !(Maybe Text)
-    , _hgsBaseURLManifest :: !(Maybe Text)
-    , _hgsAdMarkers :: !(Maybe [HlsAdMarkers])
-    , _hgsKeyFormat :: !(Maybe Text)
-    , _hgsSegmentLength :: !(Maybe Nat)
-    , _hgsTimedMetadataId3Frame :: !(Maybe HlsTimedMetadataId3Frame)
-    , _hgsBaseURLContent :: !(Maybe Text)
-    , _hgsOutputSelection :: !(Maybe HlsOutputSelection)
-    , _hgsCaptionLanguageSetting :: !(Maybe HlsCaptionLanguageSetting)
-    , _hgsSegmentsPerSubdirectory :: !(Maybe Nat)
-    , _hgsManifestDurationFormat :: !(Maybe HlsManifestDurationFormat)
-    , _hgsIvSource :: !(Maybe HlsIvSource)
-    , _hgsSegmentationMode :: !(Maybe HlsSegmentationMode)
-    , _hgsKeyFormatVersions :: !(Maybe Text)
-    , _hgsClientCache :: !(Maybe HlsClientCache)
+    { _hgsDirectoryStructure         :: !(Maybe HlsDirectoryStructure)
+    , _hgsEncryptionType             :: !(Maybe HlsEncryptionType)
+    , _hgsTimedMetadataId3Period     :: !(Maybe Nat)
+    , _hgsIvInManifest               :: !(Maybe HlsIvInManifest)
+    , _hgsTsFileMode                 :: !(Maybe HlsTsFileMode)
+    , _hgsMinSegmentLength           :: !(Maybe Nat)
+    , _hgsProgramDateTime            :: !(Maybe HlsProgramDateTime)
+    , _hgsIndexNSegments             :: !(Maybe Nat)
+    , _hgsProgramDateTimePeriod      :: !(Maybe Nat)
+    , _hgsCodecSpecification         :: !(Maybe HlsCodecSpecification)
+    , _hgsHlsCdnSettings             :: !(Maybe HlsCdnSettings)
+    , _hgsCaptionLanguageMappings    :: !(Maybe [CaptionLanguageMapping])
+    , _hgsInputLossAction            :: !(Maybe InputLossActionForHlsOut)
+    , _hgsMode                       :: !(Maybe HlsMode)
+    , _hgsKeyProviderSettings        :: !(Maybe KeyProviderSettings)
+    , _hgsConstantIv                 :: !(Maybe Text)
+    , _hgsBaseURLManifest            :: !(Maybe Text)
+    , _hgsAdMarkers                  :: !(Maybe [HlsAdMarkers])
+    , _hgsKeyFormat                  :: !(Maybe Text)
+    , _hgsSegmentLength              :: !(Maybe Nat)
+    , _hgsTimedMetadataId3Frame      :: !(Maybe HlsTimedMetadataId3Frame)
+    , _hgsBaseURLContent             :: !(Maybe Text)
+    , _hgsOutputSelection            :: !(Maybe HlsOutputSelection)
+    , _hgsCaptionLanguageSetting     :: !(Maybe HlsCaptionLanguageSetting)
+    , _hgsSegmentsPerSubdirectory    :: !(Maybe Nat)
+    , _hgsManifestDurationFormat     :: !(Maybe HlsManifestDurationFormat)
+    , _hgsIvSource                   :: !(Maybe HlsIvSource)
+    , _hgsSegmentationMode           :: !(Maybe HlsSegmentationMode)
+    , _hgsKeyFormatVersions          :: !(Maybe Text)
+    , _hgsClientCache                :: !(Maybe HlsClientCache)
     , _hgsTimestampDeltaMilliseconds :: !(Maybe Nat)
-    , _hgsStreamInfResolution :: !(Maybe HlsStreamInfResolution)
-    , _hgsKeepSegments :: !(Maybe Nat)
-    , _hgsManifestCompression :: !(Maybe HlsManifestCompression)
-    , _hgsDestination :: !OutputLocationRef
+    , _hgsStreamInfResolution        :: !(Maybe HlsStreamInfResolution)
+    , _hgsKeepSegments               :: !(Maybe Nat)
+    , _hgsManifestCompression        :: !(Maybe HlsManifestCompression)
+    , _hgsDestination                :: !OutputLocationRef
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4449,9 +4449,9 @@ instance ToJSON HlsGroupSettings where
 data HlsInputSettings =
   HlsInputSettings'
     { _hisBufferSegments :: !(Maybe Nat)
-    , _hisRetries :: !(Maybe Nat)
-    , _hisRetryInterval :: !(Maybe Nat)
-    , _hisBandwidth :: !(Maybe Nat)
+    , _hisRetries        :: !(Maybe Nat)
+    , _hisRetryInterval  :: !(Maybe Nat)
+    , _hisBandwidth      :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4521,11 +4521,11 @@ instance ToJSON HlsInputSettings where
 -- /See:/ 'hlsMediaStoreSettings' smart constructor.
 data HlsMediaStoreSettings =
   HlsMediaStoreSettings'
-    { _hmssNumRetries :: !(Maybe Nat)
+    { _hmssNumRetries              :: !(Maybe Nat)
     , _hmssConnectionRetryInterval :: !(Maybe Nat)
-    , _hmssFilecacheDuration :: !(Maybe Nat)
-    , _hmssMediaStoreStorageClass :: !(Maybe HlsMediaStoreStorageClass)
-    , _hmssRestartDelay :: !(Maybe Nat)
+    , _hmssFilecacheDuration       :: !(Maybe Nat)
+    , _hmssMediaStoreStorageClass  :: !(Maybe HlsMediaStoreStorageClass)
+    , _hmssRestartDelay            :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4614,8 +4614,8 @@ instance ToJSON HlsMediaStoreSettings where
 data HlsOutputSettings =
   HlsOutputSettings'
     { _hosSegmentModifier :: !(Maybe Text)
-    , _hosNameModifier :: !(Maybe Text)
-    , _hosHlsSettings :: !HlsSettings
+    , _hosNameModifier    :: !(Maybe Text)
+    , _hosHlsSettings     :: !HlsSettings
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4679,7 +4679,7 @@ instance ToJSON HlsOutputSettings where
 data HlsSettings =
   HlsSettings'
     { _hsAudioOnlyHlsSettings :: !(Maybe AudioOnlyHlsSettings)
-    , _hsStandardHlsSettings :: !(Maybe StandardHlsSettings)
+    , _hsStandardHlsSettings  :: !(Maybe StandardHlsSettings)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4730,11 +4730,11 @@ instance ToJSON HlsSettings where
 -- /See:/ 'hlsWebdavSettings' smart constructor.
 data HlsWebdavSettings =
   HlsWebdavSettings'
-    { _hwsHTTPTransferMode :: !(Maybe HlsWebdavHTTPTransferMode)
-    , _hwsNumRetries :: !(Maybe Nat)
+    { _hwsHTTPTransferMode        :: !(Maybe HlsWebdavHTTPTransferMode)
+    , _hwsNumRetries              :: !(Maybe Nat)
     , _hwsConnectionRetryInterval :: !(Maybe Nat)
-    , _hwsFilecacheDuration :: !(Maybe Nat)
-    , _hwsRestartDelay :: !(Maybe Nat)
+    , _hwsFilecacheDuration       :: !(Maybe Nat)
+    , _hwsRestartDelay            :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4819,15 +4819,15 @@ instance ToJSON HlsWebdavSettings where
 -- /See:/ 'input' smart constructor.
 data Input =
   Input'
-    { _iState :: !(Maybe InputState)
-    , _iSecurityGroups :: !(Maybe [Text])
-    , _iARN :: !(Maybe Text)
-    , _iSources :: !(Maybe [InputSource])
-    , _iDestinations :: !(Maybe [InputDestination])
-    , _iName :: !(Maybe Text)
+    { _iState            :: !(Maybe InputState)
+    , _iSecurityGroups   :: !(Maybe [Text])
+    , _iARN              :: !(Maybe Text)
+    , _iSources          :: !(Maybe [InputSource])
+    , _iDestinations     :: !(Maybe [InputDestination])
+    , _iName             :: !(Maybe Text)
     , _iAttachedChannels :: !(Maybe [Text])
-    , _iId :: !(Maybe Text)
-    , _iType :: !(Maybe InputType)
+    , _iId               :: !(Maybe Text)
+    , _iType             :: !(Maybe InputType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4929,7 +4929,7 @@ instance NFData Input
 -- /See:/ 'inputAttachment' smart constructor.
 data InputAttachment =
   InputAttachment'
-    { _iaInputId :: !(Maybe Text)
+    { _iaInputId       :: !(Maybe Text)
     , _iaInputSettings :: !(Maybe InputSettings)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -4977,7 +4977,7 @@ instance ToJSON InputAttachment where
 data InputChannelLevel =
   InputChannelLevel'
     { _iclInputChannel :: !Nat
-    , _iclGain :: !Int
+    , _iclGain         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -5026,8 +5026,8 @@ instance ToJSON InputChannelLevel where
 -- /See:/ 'inputDestination' smart constructor.
 data InputDestination =
   InputDestination'
-    { _idURL :: !(Maybe Text)
-    , _idIP :: !(Maybe Text)
+    { _idURL  :: !(Maybe Text)
+    , _idIP   :: !(Maybe Text)
     , _idPort :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -5102,9 +5102,9 @@ instance ToJSON InputDestinationRequest where
 -- /See:/ 'inputLocation' smart constructor.
 data InputLocation =
   InputLocation'
-    { _ilUsername :: !(Maybe Text)
+    { _ilUsername      :: !(Maybe Text)
     , _ilPasswordParam :: !(Maybe Text)
-    , _ilURI :: !Text
+    , _ilURI           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -5163,9 +5163,9 @@ instance ToJSON InputLocation where
 data InputLossBehavior =
   InputLossBehavior'
     { _ilbInputLossImageColor :: !(Maybe Text)
-    , _ilbBlackFrameMsec :: !(Maybe Nat)
-    , _ilbRepeatFrameMsec :: !(Maybe Nat)
-    , _ilbInputLossImageType :: !(Maybe InputLossImageType)
+    , _ilbBlackFrameMsec      :: !(Maybe Nat)
+    , _ilbRepeatFrameMsec     :: !(Maybe Nat)
+    , _ilbInputLossImageType  :: !(Maybe InputLossImageType)
     , _ilbInputLossImageSlate :: !(Maybe InputLocation)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -5249,10 +5249,10 @@ instance ToJSON InputLossBehavior where
 -- /See:/ 'inputSecurityGroup' smart constructor.
 data InputSecurityGroup =
   InputSecurityGroup'
-    { _isgState :: !(Maybe InputSecurityGroupState)
-    , _isgARN :: !(Maybe Text)
-    , _isgInputs :: !(Maybe [Text])
-    , _isgId :: !(Maybe Text)
+    { _isgState          :: !(Maybe InputSecurityGroupState)
+    , _isgARN            :: !(Maybe Text)
+    , _isgInputs         :: !(Maybe [Text])
+    , _isgId             :: !(Maybe Text)
     , _isgWhitelistRules :: !(Maybe [InputWhitelistRule])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -5321,15 +5321,15 @@ instance NFData InputSecurityGroup
 -- /See:/ 'inputSettings' smart constructor.
 data InputSettings =
   InputSettings'
-    { _isVideoSelector :: !(Maybe VideoSelector)
+    { _isVideoSelector        :: !(Maybe VideoSelector)
     , _isNetworkInputSettings :: !(Maybe NetworkInputSettings)
-    , _isAudioSelectors :: !(Maybe [AudioSelector])
-    , _isDeblockFilter :: !(Maybe InputDeblockFilter)
-    , _isDenoiseFilter :: !(Maybe InputDenoiseFilter)
-    , _isFilterStrength :: !(Maybe Nat)
-    , _isCaptionSelectors :: !(Maybe [CaptionSelector])
-    , _isInputFilter :: !(Maybe InputFilter)
-    , _isSourceEndBehavior :: !(Maybe InputSourceEndBehavior)
+    , _isAudioSelectors       :: !(Maybe [AudioSelector])
+    , _isDeblockFilter        :: !(Maybe InputDeblockFilter)
+    , _isDenoiseFilter        :: !(Maybe InputDenoiseFilter)
+    , _isFilterStrength       :: !(Maybe Nat)
+    , _isCaptionSelectors     :: !(Maybe [CaptionSelector])
+    , _isInputFilter          :: !(Maybe InputFilter)
+    , _isSourceEndBehavior    :: !(Maybe InputSourceEndBehavior)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -5450,8 +5450,8 @@ instance ToJSON InputSettings where
 -- /See:/ 'inputSource' smart constructor.
 data InputSource =
   InputSource'
-    { _isURL :: !(Maybe Text)
-    , _isUsername :: !(Maybe Text)
+    { _isURL           :: !(Maybe Text)
+    , _isUsername      :: !(Maybe Text)
     , _isPasswordParam :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -5499,8 +5499,8 @@ instance NFData InputSource
 -- /See:/ 'inputSourceRequest' smart constructor.
 data InputSourceRequest =
   InputSourceRequest'
-    { _isrURL :: !(Maybe Text)
-    , _isrUsername :: !(Maybe Text)
+    { _isrURL           :: !(Maybe Text)
+    , _isrUsername      :: !(Maybe Text)
     , _isrPasswordParam :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -5549,8 +5549,8 @@ instance ToJSON InputSourceRequest where
 -- /See:/ 'inputSpecification' smart constructor.
 data InputSpecification =
   InputSpecification'
-    { _isResolution :: !(Maybe InputResolution)
-    , _isCodec :: !(Maybe InputCodec)
+    { _isResolution     :: !(Maybe InputResolution)
+    , _isCodec          :: !(Maybe InputCodec)
     , _isMaximumBitrate :: !(Maybe InputMaximumBitrate)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -5703,52 +5703,52 @@ instance ToJSON KeyProviderSettings where
 -- /See:/ 'm2tsSettings' smart constructor.
 data M2tsSettings =
   M2tsSettings'
-    { _msPmtPid :: !(Maybe Text)
-    , _msEtvSignalPid :: !(Maybe Text)
-    , _msVideoPid :: !(Maybe Text)
-    , _msBufferModel :: !(Maybe M2tsBufferModel)
-    , _msScte35Pid :: !(Maybe Text)
-    , _msTransportStreamId :: !(Maybe Nat)
-    , _msProgramNum :: !(Maybe Nat)
-    , _msFragmentTime :: !(Maybe Double)
-    , _msTimedMetadataBehavior :: !(Maybe M2tsTimedMetadataBehavior)
-    , _msCCDescriptor :: !(Maybe M2tsCCDescriptor)
-    , _msPmtInterval :: !(Maybe Nat)
-    , _msDvbSdtSettings :: !(Maybe DvbSdtSettings)
-    , _msEcmPid :: !(Maybe Text)
-    , _msNullPacketBitrate :: !(Maybe Double)
-    , _msAudioBufferModel :: !(Maybe M2tsAudioBufferModel)
-    , _msTimedMetadataPid :: !(Maybe Text)
-    , _msKlv :: !(Maybe M2tsKlv)
-    , _msAudioFramesPerPes :: !(Maybe Nat)
-    , _msPcrPeriod :: !(Maybe Nat)
-    , _msPcrPid :: !(Maybe Text)
-    , _msSegmentationMarkers :: !(Maybe M2tsSegmentationMarkers)
-    , _msAribCaptionsPidControl :: !(Maybe M2tsAribCaptionsPidControl)
-    , _msKlvDataPids :: !(Maybe Text)
-    , _msEbpLookaheadMs :: !(Maybe Nat)
-    , _msDvbSubPids :: !(Maybe Text)
-    , _msScte27Pids :: !(Maybe Text)
-    , _msPatInterval :: !(Maybe Nat)
-    , _msAudioStreamType :: !(Maybe M2tsAudioStreamType)
-    , _msEsRateInPes :: !(Maybe M2tsEsRateInPes)
-    , _msEtvPlatformPid :: !(Maybe Text)
-    , _msBitrate :: !(Maybe Nat)
-    , _msScte35Control :: !(Maybe M2tsScte35Control)
-    , _msAudioPids :: !(Maybe Text)
-    , _msDvbTeletextPid :: !(Maybe Text)
-    , _msEbif :: !(Maybe M2tsEbifControl)
-    , _msArib :: !(Maybe M2tsArib)
-    , _msAribCaptionsPid :: !(Maybe Text)
+    { _msPmtPid                   :: !(Maybe Text)
+    , _msEtvSignalPid             :: !(Maybe Text)
+    , _msVideoPid                 :: !(Maybe Text)
+    , _msBufferModel              :: !(Maybe M2tsBufferModel)
+    , _msScte35Pid                :: !(Maybe Text)
+    , _msTransportStreamId        :: !(Maybe Nat)
+    , _msProgramNum               :: !(Maybe Nat)
+    , _msFragmentTime             :: !(Maybe Double)
+    , _msTimedMetadataBehavior    :: !(Maybe M2tsTimedMetadataBehavior)
+    , _msCCDescriptor             :: !(Maybe M2tsCCDescriptor)
+    , _msPmtInterval              :: !(Maybe Nat)
+    , _msDvbSdtSettings           :: !(Maybe DvbSdtSettings)
+    , _msEcmPid                   :: !(Maybe Text)
+    , _msNullPacketBitrate        :: !(Maybe Double)
+    , _msAudioBufferModel         :: !(Maybe M2tsAudioBufferModel)
+    , _msTimedMetadataPid         :: !(Maybe Text)
+    , _msKlv                      :: !(Maybe M2tsKlv)
+    , _msAudioFramesPerPes        :: !(Maybe Nat)
+    , _msPcrPeriod                :: !(Maybe Nat)
+    , _msPcrPid                   :: !(Maybe Text)
+    , _msSegmentationMarkers      :: !(Maybe M2tsSegmentationMarkers)
+    , _msAribCaptionsPidControl   :: !(Maybe M2tsAribCaptionsPidControl)
+    , _msKlvDataPids              :: !(Maybe Text)
+    , _msEbpLookaheadMs           :: !(Maybe Nat)
+    , _msDvbSubPids               :: !(Maybe Text)
+    , _msScte27Pids               :: !(Maybe Text)
+    , _msPatInterval              :: !(Maybe Nat)
+    , _msAudioStreamType          :: !(Maybe M2tsAudioStreamType)
+    , _msEsRateInPes              :: !(Maybe M2tsEsRateInPes)
+    , _msEtvPlatformPid           :: !(Maybe Text)
+    , _msBitrate                  :: !(Maybe Nat)
+    , _msScte35Control            :: !(Maybe M2tsScte35Control)
+    , _msAudioPids                :: !(Maybe Text)
+    , _msDvbTeletextPid           :: !(Maybe Text)
+    , _msEbif                     :: !(Maybe M2tsEbifControl)
+    , _msArib                     :: !(Maybe M2tsArib)
+    , _msAribCaptionsPid          :: !(Maybe Text)
     , _msAbsentInputAudioBehavior :: !(Maybe M2tsAbsentInputAudioBehavior)
-    , _msSegmentationTime :: !(Maybe Double)
-    , _msEbpAudioInterval :: !(Maybe M2tsAudioInterval)
-    , _msDvbNitSettings :: !(Maybe DvbNitSettings)
-    , _msPcrControl :: !(Maybe M2tsPcrControl)
-    , _msEbpPlacement :: !(Maybe M2tsEbpPlacement)
-    , _msRateMode :: !(Maybe M2tsRateMode)
-    , _msSegmentationStyle :: !(Maybe M2tsSegmentationStyle)
-    , _msDvbTdtSettings :: !(Maybe DvbTdtSettings)
+    , _msSegmentationTime         :: !(Maybe Double)
+    , _msEbpAudioInterval         :: !(Maybe M2tsAudioInterval)
+    , _msDvbNitSettings           :: !(Maybe DvbNitSettings)
+    , _msPcrControl               :: !(Maybe M2tsPcrControl)
+    , _msEbpPlacement             :: !(Maybe M2tsEbpPlacement)
+    , _msRateMode                 :: !(Maybe M2tsRateMode)
+    , _msSegmentationStyle        :: !(Maybe M2tsSegmentationStyle)
+    , _msDvbTdtSettings           :: !(Maybe DvbTdtSettings)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -6213,22 +6213,22 @@ instance ToJSON M2tsSettings where
 -- /See:/ 'm3u8Settings' smart constructor.
 data M3u8Settings =
   M3u8Settings'
-    { _mPmtPid :: !(Maybe Text)
-    , _mVideoPid :: !(Maybe Text)
-    , _mScte35Pid :: !(Maybe Text)
-    , _mTransportStreamId :: !(Maybe Nat)
-    , _mProgramNum :: !(Maybe Nat)
+    { _mPmtPid                :: !(Maybe Text)
+    , _mVideoPid              :: !(Maybe Text)
+    , _mScte35Pid             :: !(Maybe Text)
+    , _mTransportStreamId     :: !(Maybe Nat)
+    , _mProgramNum            :: !(Maybe Nat)
     , _mTimedMetadataBehavior :: !(Maybe M3u8TimedMetadataBehavior)
-    , _mPmtInterval :: !(Maybe Nat)
-    , _mEcmPid :: !(Maybe Text)
-    , _mTimedMetadataPid :: !(Maybe Text)
-    , _mAudioFramesPerPes :: !(Maybe Nat)
-    , _mPcrPeriod :: !(Maybe Nat)
-    , _mPcrPid :: !(Maybe Text)
-    , _mPatInterval :: !(Maybe Nat)
-    , _mAudioPids :: !(Maybe Text)
-    , _mScte35Behavior :: !(Maybe M3u8Scte35Behavior)
-    , _mPcrControl :: !(Maybe M3u8PcrControl)
+    , _mPmtInterval           :: !(Maybe Nat)
+    , _mEcmPid                :: !(Maybe Text)
+    , _mTimedMetadataPid      :: !(Maybe Text)
+    , _mAudioFramesPerPes     :: !(Maybe Nat)
+    , _mPcrPeriod             :: !(Maybe Nat)
+    , _mPcrPid                :: !(Maybe Text)
+    , _mPatInterval           :: !(Maybe Nat)
+    , _mAudioPids             :: !(Maybe Text)
+    , _mScte35Behavior        :: !(Maybe M3u8Scte35Behavior)
+    , _mPcrControl            :: !(Maybe M3u8PcrControl)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -6409,7 +6409,7 @@ data Mp2Settings =
   Mp2Settings'
     { _mCodingMode :: !(Maybe Mp2CodingMode)
     , _mSampleRate :: !(Maybe Double)
-    , _mBitrate :: !(Maybe Double)
+    , _mBitrate    :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -6808,10 +6808,10 @@ instance ToJSON NetworkInputSettings where
 data Output =
   Output'
     { _oCaptionDescriptionNames :: !(Maybe [Text])
-    , _oVideoDescriptionName :: !(Maybe Text)
-    , _oOutputName :: !(Maybe Text)
-    , _oAudioDescriptionNames :: !(Maybe [Text])
-    , _oOutputSettings :: !OutputSettings
+    , _oVideoDescriptionName    :: !(Maybe Text)
+    , _oOutputName              :: !(Maybe Text)
+    , _oAudioDescriptionNames   :: !(Maybe [Text])
+    , _oOutputSettings          :: !OutputSettings
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -6897,7 +6897,7 @@ instance ToJSON Output where
 data OutputDestination =
   OutputDestination'
     { _odSettings :: !(Maybe [OutputDestinationSettings])
-    , _odId :: !(Maybe Text)
+    , _odId       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -6939,10 +6939,10 @@ instance ToJSON OutputDestination where
 -- /See:/ 'outputDestinationSettings' smart constructor.
 data OutputDestinationSettings =
   OutputDestinationSettings'
-    { _odsURL :: !(Maybe Text)
-    , _odsUsername :: !(Maybe Text)
+    { _odsURL           :: !(Maybe Text)
+    , _odsUsername      :: !(Maybe Text)
     , _odsPasswordParam :: !(Maybe Text)
-    , _odsStreamName :: !(Maybe Text)
+    , _odsStreamName    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -7010,8 +7010,8 @@ instance ToJSON OutputDestinationSettings where
 -- /See:/ 'outputGroup' smart constructor.
 data OutputGroup =
   OutputGroup'
-    { _ogName :: !(Maybe Text)
-    , _ogOutputs :: ![Output]
+    { _ogName                :: !(Maybe Text)
+    , _ogOutputs             :: ![Output]
     , _ogOutputGroupSettings :: !OutputGroupSettings
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -7075,10 +7075,10 @@ instance ToJSON OutputGroup where
 data OutputGroupSettings =
   OutputGroupSettings'
     { _ogsMsSmoothGroupSettings :: !(Maybe MsSmoothGroupSettings)
-    , _ogsRtmpGroupSettings :: !(Maybe RtmpGroupSettings)
-    , _ogsHlsGroupSettings :: !(Maybe HlsGroupSettings)
-    , _ogsArchiveGroupSettings :: !(Maybe ArchiveGroupSettings)
-    , _ogsUdpGroupSettings :: !(Maybe UdpGroupSettings)
+    , _ogsRtmpGroupSettings     :: !(Maybe RtmpGroupSettings)
+    , _ogsHlsGroupSettings      :: !(Maybe HlsGroupSettings)
+    , _ogsArchiveGroupSettings  :: !(Maybe ArchiveGroupSettings)
+    , _ogsUdpGroupSettings      :: !(Maybe UdpGroupSettings)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -7199,10 +7199,10 @@ instance ToJSON OutputLocationRef where
 -- /See:/ 'outputSettings' smart constructor.
 data OutputSettings =
   OutputSettings'
-    { _osArchiveOutputSettings :: !(Maybe ArchiveOutputSettings)
-    , _osRtmpOutputSettings :: !(Maybe RtmpOutputSettings)
-    , _osHlsOutputSettings :: !(Maybe HlsOutputSettings)
-    , _osUdpOutputSettings :: !(Maybe UdpOutputSettings)
+    { _osArchiveOutputSettings  :: !(Maybe ArchiveOutputSettings)
+    , _osRtmpOutputSettings     :: !(Maybe RtmpOutputSettings)
+    , _osHlsOutputSettings      :: !(Maybe HlsOutputSettings)
+    , _osUdpOutputSettings      :: !(Maybe UdpOutputSettings)
     , _osMsSmoothOutputSettings :: !(Maybe MsSmoothOutputSettings)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -7308,8 +7308,8 @@ instance ToJSON PassThroughSettings where
 -- /See:/ 'remixSettings' smart constructor.
 data RemixSettings =
   RemixSettings'
-    { _rsChannelsIn :: !(Maybe Nat)
-    , _rsChannelsOut :: !(Maybe Nat)
+    { _rsChannelsIn      :: !(Maybe Nat)
+    , _rsChannelsOut     :: !(Maybe Nat)
     , _rsChannelMappings :: ![AudioChannelMapping]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -7396,11 +7396,11 @@ instance ToJSON RtmpCaptionInfoDestinationSettings where
 -- /See:/ 'rtmpGroupSettings' smart constructor.
 data RtmpGroupSettings =
   RtmpGroupSettings'
-    { _rgsCaptionData :: !(Maybe RtmpCaptionData)
-    , _rgsRestartDelay :: !(Maybe Nat)
+    { _rgsCaptionData          :: !(Maybe RtmpCaptionData)
+    , _rgsRestartDelay         :: !(Maybe Nat)
     , _rgsAuthenticationScheme :: !(Maybe AuthenticationScheme)
-    , _rgsCacheLength :: !(Maybe Nat)
-    , _rgsCacheFullBehavior :: !(Maybe RtmpCacheFullBehavior)
+    , _rgsCacheLength          :: !(Maybe Nat)
+    , _rgsCacheFullBehavior    :: !(Maybe RtmpCacheFullBehavior)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -7481,10 +7481,10 @@ instance ToJSON RtmpGroupSettings where
 -- /See:/ 'rtmpOutputSettings' smart constructor.
 data RtmpOutputSettings =
   RtmpOutputSettings'
-    { _rosNumRetries :: !(Maybe Nat)
-    , _rosCertificateMode :: !(Maybe RtmpOutputCertificateMode)
+    { _rosNumRetries              :: !(Maybe Nat)
+    , _rosCertificateMode         :: !(Maybe RtmpOutputCertificateMode)
     , _rosConnectionRetryInterval :: !(Maybe Nat)
-    , _rosDestination :: !OutputLocationRef
+    , _rosDestination             :: !OutputLocationRef
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -7584,7 +7584,7 @@ instance ToJSON Scte20PlusEmbeddedDestinationSettings where
 -- /See:/ 'scte20SourceSettings' smart constructor.
 data Scte20SourceSettings =
   Scte20SourceSettings'
-    { _sssConvert608To708 :: !(Maybe Scte20Convert608To708)
+    { _sssConvert608To708        :: !(Maybe Scte20Convert608To708)
     , _sssSource608ChannelNumber :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -7855,7 +7855,7 @@ instance ToJSON SmpteTtDestinationSettings where
 data StandardHlsSettings =
   StandardHlsSettings'
     { _shsAudioRenditionSets :: !(Maybe Text)
-    , _shsM3u8Settings :: !M3u8Settings
+    , _shsM3u8Settings       :: !M3u8Settings
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -7908,7 +7908,7 @@ instance ToJSON StandardHlsSettings where
 data StaticKeySettings =
   StaticKeySettings'
     { _sksKeyProviderServer :: !(Maybe InputLocation)
-    , _sksStaticKeyValue :: !Text
+    , _sksStaticKeyValue    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -8021,7 +8021,7 @@ instance ToJSON TeletextSourceSettings where
 data TimecodeConfig =
   TimecodeConfig'
     { _tcSyncThreshold :: !(Maybe Nat)
-    , _tcSource :: !TimecodeConfigSource
+    , _tcSource        :: !TimecodeConfigSource
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -8142,8 +8142,8 @@ instance ToJSON UdpContainerSettings where
 data UdpGroupSettings =
   UdpGroupSettings'
     { _ugsTimedMetadataId3Period :: !(Maybe Nat)
-    , _ugsInputLossAction :: !(Maybe InputLossActionForUdpOut)
-    , _ugsTimedMetadataId3Frame :: !(Maybe UdpTimedMetadataId3Frame)
+    , _ugsInputLossAction        :: !(Maybe InputLossActionForUdpOut)
+    , _ugsTimedMetadataId3Frame  :: !(Maybe UdpTimedMetadataId3Frame)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -8209,8 +8209,8 @@ instance ToJSON UdpGroupSettings where
 data UdpOutputSettings =
   UdpOutputSettings'
     { _uosFecOutputSettings :: !(Maybe FecOutputSettings)
-    , _uosBufferMsec :: !(Maybe Nat)
-    , _uosDestination :: !OutputLocationRef
+    , _uosBufferMsec        :: !(Maybe Nat)
+    , _uosDestination       :: !OutputLocationRef
     , _uosContainerSettings :: !UdpContainerSettings
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -8321,13 +8321,13 @@ instance ToJSON VideoCodecSettings where
 -- /See:/ 'videoDescription' smart constructor.
 data VideoDescription =
   VideoDescription'
-    { _vdHeight :: !(Maybe Int)
-    , _vdSharpness :: !(Maybe Nat)
-    , _vdWidth :: !(Maybe Int)
+    { _vdHeight          :: !(Maybe Int)
+    , _vdSharpness       :: !(Maybe Nat)
+    , _vdWidth           :: !(Maybe Int)
     , _vdScalingBehavior :: !(Maybe VideoDescriptionScalingBehavior)
-    , _vdRespondToAfd :: !(Maybe VideoDescriptionRespondToAfd)
-    , _vdCodecSettings :: !(Maybe VideoCodecSettings)
-    , _vdName :: !Text
+    , _vdRespondToAfd    :: !(Maybe VideoDescriptionRespondToAfd)
+    , _vdCodecSettings   :: !(Maybe VideoCodecSettings)
+    , _vdName            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -8426,8 +8426,8 @@ instance ToJSON VideoDescription where
 data VideoSelector =
   VideoSelector'
     { _vsSelectorSettings :: !(Maybe VideoSelectorSettings)
-    , _vsColorSpaceUsage :: !(Maybe VideoSelectorColorSpaceUsage)
-    , _vsColorSpace :: !(Maybe VideoSelectorColorSpace)
+    , _vsColorSpaceUsage  :: !(Maybe VideoSelectorColorSpaceUsage)
+    , _vsColorSpace       :: !(Maybe VideoSelectorColorSpace)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -8557,7 +8557,7 @@ instance ToJSON VideoSelectorProgramId where
 data VideoSelectorSettings =
   VideoSelectorSettings'
     { _vssVideoSelectorProgramId :: !(Maybe VideoSelectorProgramId)
-    , _vssVideoSelectorPid :: !(Maybe VideoSelectorPid)
+    , _vssVideoSelectorPid       :: !(Maybe VideoSelectorPid)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

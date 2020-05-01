@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,11 +58,11 @@ import Network.AWS.Response
 -- | /See:/ 'listEntitiesForPolicy' smart constructor.
 data ListEntitiesForPolicy =
   ListEntitiesForPolicy'
-    { _lefpPathPrefix :: !(Maybe Text)
+    { _lefpPathPrefix   :: !(Maybe Text)
     , _lefpEntityFilter :: !(Maybe EntityType)
-    , _lefpMarker :: !(Maybe Text)
-    , _lefpMaxItems :: !(Maybe Nat)
-    , _lefpPolicyARN :: !Text
+    , _lefpMarker       :: !(Maybe Text)
+    , _lefpMaxItems     :: !(Maybe Nat)
+    , _lefpPolicyARN    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -161,11 +161,11 @@ instance ToQuery ListEntitiesForPolicy where
 -- /See:/ 'listEntitiesForPolicyResponse' smart constructor.
 data ListEntitiesForPolicyResponse =
   ListEntitiesForPolicyResponse'
-    { _lefprsPolicyGroups :: !(Maybe [PolicyGroup])
-    , _lefprsPolicyRoles :: !(Maybe [PolicyRole])
-    , _lefprsMarker :: !(Maybe Text)
-    , _lefprsPolicyUsers :: !(Maybe [PolicyUser])
-    , _lefprsIsTruncated :: !(Maybe Bool)
+    { _lefprsPolicyGroups   :: !(Maybe [PolicyGroup])
+    , _lefprsPolicyRoles    :: !(Maybe [PolicyRole])
+    , _lefprsMarker         :: !(Maybe Text)
+    , _lefprsPolicyUsers    :: !(Maybe [PolicyUser])
+    , _lefprsIsTruncated    :: !(Maybe Bool)
     , _lefprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

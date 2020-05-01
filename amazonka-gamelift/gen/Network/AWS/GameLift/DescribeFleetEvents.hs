@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -102,9 +102,9 @@ data DescribeFleetEvents =
   DescribeFleetEvents'
     { _dfeStartTime :: !(Maybe POSIX)
     , _dfeNextToken :: !(Maybe Text)
-    , _dfeEndTime :: !(Maybe POSIX)
-    , _dfeLimit :: !(Maybe Nat)
-    , _dfeFleetId :: !Text
+    , _dfeEndTime   :: !(Maybe POSIX)
+    , _dfeLimit     :: !(Maybe Nat)
+    , _dfeFleetId   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -200,8 +200,8 @@ instance ToQuery DescribeFleetEvents where
 -- /See:/ 'describeFleetEventsResponse' smart constructor.
 data DescribeFleetEventsResponse =
   DescribeFleetEventsResponse'
-    { _dfersNextToken :: !(Maybe Text)
-    , _dfersEvents :: !(Maybe [Event])
+    { _dfersNextToken      :: !(Maybe Text)
+    , _dfersEvents         :: !(Maybe [Event])
     , _dfersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- | /See:/ 'createDirectory' smart constructor.
 data CreateDirectory =
   CreateDirectory'
-    { _cdName :: !Text
+    { _cdName      :: !Text
     , _cdSchemaARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -106,9 +106,9 @@ instance ToQuery CreateDirectory where
 -- | /See:/ 'createDirectoryResponse' smart constructor.
 data CreateDirectoryResponse =
   CreateDirectoryResponse'
-    { _cdrsResponseStatus :: !Int
-    , _cdrsDirectoryARN :: !Text
-    , _cdrsName :: !Text
+    { _cdrsResponseStatus   :: !Int
+    , _cdrsDirectoryARN     :: !Text
+    , _cdrsName             :: !Text
     , _cdrsObjectIdentifier :: !Text
     , _cdrsAppliedSchemaARN :: !Text
     }

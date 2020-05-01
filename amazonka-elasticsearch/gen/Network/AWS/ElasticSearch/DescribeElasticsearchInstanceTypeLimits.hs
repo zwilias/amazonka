@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- /See:/ 'describeElasticsearchInstanceTypeLimits' smart constructor.
 data DescribeElasticsearchInstanceTypeLimits =
   DescribeElasticsearchInstanceTypeLimits'
-    { _deitlDomainName :: !(Maybe Text)
-    , _deitlInstanceType :: !ESPartitionInstanceType
+    { _deitlDomainName           :: !(Maybe Text)
+    , _deitlInstanceType         :: !ESPartitionInstanceType
     , _deitlElasticsearchVersion :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -126,7 +126,7 @@ instance ToQuery DescribeElasticsearchInstanceTypeLimits where
 -- /See:/ 'describeElasticsearchInstanceTypeLimitsResponse' smart constructor.
 data DescribeElasticsearchInstanceTypeLimitsResponse =
   DescribeElasticsearchInstanceTypeLimitsResponse'
-    { _deitlrsLimitsByRole :: !(Maybe (Map Text Limits))
+    { _deitlrsLimitsByRole   :: !(Maybe (Map Text Limits))
     , _deitlrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

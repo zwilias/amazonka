@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -84,9 +84,9 @@ instance ToQuery DownloadDefaultKeyPair where
 -- | /See:/ 'downloadDefaultKeyPairResponse' smart constructor.
 data DownloadDefaultKeyPairResponse =
   DownloadDefaultKeyPairResponse'
-    { _ddkprsPublicKeyBase64 :: !(Maybe Text)
+    { _ddkprsPublicKeyBase64  :: !(Maybe Text)
     , _ddkprsPrivateKeyBase64 :: !(Maybe Text)
-    , _ddkprsResponseStatus :: !Int
+    , _ddkprsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

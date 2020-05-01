@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -92,10 +92,10 @@ import Network.AWS.WAFRegional.Types.Product
 -- | /See:/ 'createRateBasedRule' smart constructor.
 data CreateRateBasedRule =
   CreateRateBasedRule'
-    { _crbrName :: !Text
-    , _crbrMetricName :: !Text
-    , _crbrRateKey :: !RateKey
-    , _crbrRateLimit :: !Nat
+    { _crbrName        :: !Text
+    , _crbrMetricName  :: !Text
+    , _crbrRateKey     :: !RateKey
+    , _crbrRateLimit   :: !Nat
     , _crbrChangeToken :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -192,8 +192,8 @@ instance ToQuery CreateRateBasedRule where
 -- | /See:/ 'createRateBasedRuleResponse' smart constructor.
 data CreateRateBasedRuleResponse =
   CreateRateBasedRuleResponse'
-    { _crbrrsRule :: !(Maybe RateBasedRule)
-    , _crbrrsChangeToken :: !(Maybe Text)
+    { _crbrrsRule           :: !(Maybe RateBasedRule)
+    , _crbrrsChangeToken    :: !(Maybe Text)
     , _crbrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

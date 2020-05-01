@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 data ResendConfirmationCode =
   ResendConfirmationCode'
     { _rccAnalyticsMetadata :: !(Maybe AnalyticsMetadataType)
-    , _rccUserContextData :: !(Maybe UserContextDataType)
-    , _rccSecretHash :: !(Maybe (Sensitive Text))
-    , _rccClientId :: !(Sensitive Text)
-    , _rccUsername :: !(Sensitive Text)
+    , _rccUserContextData   :: !(Maybe UserContextDataType)
+    , _rccSecretHash        :: !(Maybe (Sensitive Text))
+    , _rccClientId          :: !(Sensitive Text)
+    , _rccUsername          :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -156,7 +156,7 @@ instance ToQuery ResendConfirmationCode where
 data ResendConfirmationCodeResponse =
   ResendConfirmationCodeResponse'
     { _rccrsCodeDeliveryDetails :: !(Maybe CodeDeliveryDetailsType)
-    , _rccrsResponseStatus :: !Int
+    , _rccrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

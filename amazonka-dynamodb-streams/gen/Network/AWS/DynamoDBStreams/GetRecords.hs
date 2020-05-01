@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,7 +51,7 @@ import Network.AWS.Response
 -- /See:/ 'getRecords' smart constructor.
 data GetRecords =
   GetRecords'
-    { _grLimit :: !(Maybe Nat)
+    { _grLimit         :: !(Maybe Nat)
     , _grShardIterator :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -119,9 +119,9 @@ instance ToQuery GetRecords where
 -- /See:/ 'getRecordsResponse' smart constructor.
 data GetRecordsResponse =
   GetRecordsResponse'
-    { _grrsRecords :: !(Maybe [Record])
+    { _grrsRecords           :: !(Maybe [Record])
     , _grrsNextShardIterator :: !(Maybe Text)
-    , _grrsResponseStatus :: !Int
+    , _grrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

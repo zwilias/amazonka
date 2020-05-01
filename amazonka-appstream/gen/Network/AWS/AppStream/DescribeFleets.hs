@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 data DescribeFleets =
   DescribeFleets'
     { _dfNextToken :: !(Maybe Text)
-    , _dfNames :: !(Maybe [Text])
+    , _dfNames     :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -105,8 +105,8 @@ instance ToQuery DescribeFleets where
 -- | /See:/ 'describeFleetsResponse' smart constructor.
 data DescribeFleetsResponse =
   DescribeFleetsResponse'
-    { _dfsrsNextToken :: !(Maybe Text)
-    , _dfsrsFleets :: !(Maybe [Fleet])
+    { _dfsrsNextToken      :: !(Maybe Text)
+    , _dfsrsFleets         :: !(Maybe [Fleet])
     , _dfsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

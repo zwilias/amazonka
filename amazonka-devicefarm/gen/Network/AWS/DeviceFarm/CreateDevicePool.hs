@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 data CreateDevicePool =
   CreateDevicePool'
     { _cdpDescription :: !(Maybe Text)
-    , _cdpProjectARN :: !Text
-    , _cdpName :: !Text
-    , _cdpRules :: ![Rule]
+    , _cdpProjectARN  :: !Text
+    , _cdpName        :: !Text
+    , _cdpRules       :: ![Rule]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -141,7 +141,7 @@ instance ToQuery CreateDevicePool where
 -- /See:/ 'createDevicePoolResponse' smart constructor.
 data CreateDevicePoolResponse =
   CreateDevicePoolResponse'
-    { _cdprsDevicePool :: !(Maybe DevicePool)
+    { _cdprsDevicePool     :: !(Maybe DevicePool)
     , _cdprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

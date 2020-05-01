@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,9 +54,9 @@ import Network.AWS.Support.Types.Product
 -- /See:/ 'addCommunicationToCase' smart constructor.
 data AddCommunicationToCase =
   AddCommunicationToCase'
-    { _actcCaseId :: !(Maybe Text)
-    , _actcCcEmailAddresses :: !(Maybe [Text])
-    , _actcAttachmentSetId :: !(Maybe Text)
+    { _actcCaseId            :: !(Maybe Text)
+    , _actcCcEmailAddresses  :: !(Maybe [Text])
+    , _actcAttachmentSetId   :: !(Maybe Text)
     , _actcCommunicationBody :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -148,7 +148,7 @@ instance ToQuery AddCommunicationToCase where
 -- /See:/ 'addCommunicationToCaseResponse' smart constructor.
 data AddCommunicationToCaseResponse =
   AddCommunicationToCaseResponse'
-    { _actcrsResult :: !(Maybe Bool)
+    { _actcrsResult         :: !(Maybe Bool)
     , _actcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

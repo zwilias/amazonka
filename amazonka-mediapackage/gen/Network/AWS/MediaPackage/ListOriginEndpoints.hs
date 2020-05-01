@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,8 +47,8 @@ import Network.AWS.Response
 -- | /See:/ 'listOriginEndpoints' smart constructor.
 data ListOriginEndpoints =
   ListOriginEndpoints'
-    { _loeChannelId :: !(Maybe Text)
-    , _loeNextToken :: !(Maybe Text)
+    { _loeChannelId  :: !(Maybe Text)
+    , _loeNextToken  :: !(Maybe Text)
     , _loeMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -120,8 +120,8 @@ instance ToQuery ListOriginEndpoints where
 data ListOriginEndpointsResponse =
   ListOriginEndpointsResponse'
     { _loersOriginEndpoints :: !(Maybe [OriginEndpoint])
-    , _loersNextToken :: !(Maybe Text)
-    , _loersResponseStatus :: !Int
+    , _loersNextToken       :: !(Maybe Text)
+    , _loersResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

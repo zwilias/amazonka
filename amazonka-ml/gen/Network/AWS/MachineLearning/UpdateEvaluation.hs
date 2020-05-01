@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'updateEvaluation' smart constructor.
 data UpdateEvaluation =
   UpdateEvaluation'
-    { _ueEvaluationId :: !Text
+    { _ueEvaluationId   :: !Text
     , _ueEvaluationName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -119,7 +119,7 @@ instance ToQuery UpdateEvaluation where
 -- /See:/ 'updateEvaluationResponse' smart constructor.
 data UpdateEvaluationResponse =
   UpdateEvaluationResponse'
-    { _uersEvaluationId :: !(Maybe Text)
+    { _uersEvaluationId   :: !(Maybe Text)
     , _uersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -77,12 +77,12 @@ import Network.AWS.SWF.Types.Product
 -- | /See:/ 'pollForDecisionTask' smart constructor.
 data PollForDecisionTask =
   PollForDecisionTask'
-    { _pfdtNextPageToken :: !(Maybe Text)
-    , _pfdtReverseOrder :: !(Maybe Bool)
+    { _pfdtNextPageToken   :: !(Maybe Text)
+    , _pfdtReverseOrder    :: !(Maybe Bool)
     , _pfdtMaximumPageSize :: !(Maybe Nat)
-    , _pfdtIdentity :: !(Maybe Text)
-    , _pfdtDomain :: !Text
-    , _pfdtTaskList :: !TaskList
+    , _pfdtIdentity        :: !(Maybe Text)
+    , _pfdtDomain          :: !Text
+    , _pfdtTaskList        :: !TaskList
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -200,14 +200,14 @@ instance ToQuery PollForDecisionTask where
 -- /See:/ 'pollForDecisionTaskResponse' smart constructor.
 data PollForDecisionTaskResponse =
   PollForDecisionTaskResponse'
-    { _pfdtrsNextPageToken :: !(Maybe Text)
-    , _pfdtrsWorkflowType :: !(Maybe WorkflowType)
+    { _pfdtrsNextPageToken          :: !(Maybe Text)
+    , _pfdtrsWorkflowType           :: !(Maybe WorkflowType)
     , _pfdtrsPreviousStartedEventId :: !(Maybe Integer)
-    , _pfdtrsEvents :: !(Maybe [HistoryEvent])
-    , _pfdtrsTaskToken :: !(Maybe Text)
-    , _pfdtrsWorkflowExecution :: !(Maybe WorkflowExecution)
-    , _pfdtrsResponseStatus :: !Int
-    , _pfdtrsStartedEventId :: !Integer
+    , _pfdtrsEvents                 :: !(Maybe [HistoryEvent])
+    , _pfdtrsTaskToken              :: !(Maybe Text)
+    , _pfdtrsWorkflowExecution      :: !(Maybe WorkflowExecution)
+    , _pfdtrsResponseStatus         :: !Int
+    , _pfdtrsStartedEventId         :: !Integer
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

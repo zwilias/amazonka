@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -71,23 +71,23 @@ import Network.AWS.Response
 -- | /See:/ 'createServer' smart constructor.
 data CreateServer =
   CreateServer'
-    { _csEngineVersion :: !(Maybe Text)
-    , _csDisableAutomatedBackup :: !(Maybe Bool)
-    , _csSecurityGroupIds :: !(Maybe [Text])
-    , _csAssociatePublicIPAddress :: !(Maybe Bool)
-    , _csSubnetIds :: !(Maybe [Text])
-    , _csKeyPair :: !(Maybe Text)
-    , _csBackupId :: !(Maybe Text)
-    , _csEngine :: !(Maybe Text)
-    , _csEngineModel :: !(Maybe Text)
-    , _csEngineAttributes :: !(Maybe [EngineAttribute])
+    { _csEngineVersion              :: !(Maybe Text)
+    , _csDisableAutomatedBackup     :: !(Maybe Bool)
+    , _csSecurityGroupIds           :: !(Maybe [Text])
+    , _csAssociatePublicIPAddress   :: !(Maybe Bool)
+    , _csSubnetIds                  :: !(Maybe [Text])
+    , _csKeyPair                    :: !(Maybe Text)
+    , _csBackupId                   :: !(Maybe Text)
+    , _csEngine                     :: !(Maybe Text)
+    , _csEngineModel                :: !(Maybe Text)
+    , _csEngineAttributes           :: !(Maybe [EngineAttribute])
     , _csPreferredMaintenanceWindow :: !(Maybe Text)
-    , _csPreferredBackupWindow :: !(Maybe Text)
-    , _csBackupRetentionCount :: !(Maybe Nat)
-    , _csServerName :: !Text
-    , _csInstanceProfileARN :: !Text
-    , _csInstanceType :: !Text
-    , _csServiceRoleARN :: !Text
+    , _csPreferredBackupWindow      :: !(Maybe Text)
+    , _csBackupRetentionCount       :: !(Maybe Nat)
+    , _csServerName                 :: !Text
+    , _csInstanceProfileARN         :: !Text
+    , _csInstanceType               :: !Text
+    , _csServiceRoleARN             :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -290,7 +290,7 @@ instance ToQuery CreateServer where
 -- | /See:/ 'createServerResponse' smart constructor.
 data CreateServerResponse =
   CreateServerResponse'
-    { _csrsServer :: !(Maybe Server)
+    { _csrsServer         :: !(Maybe Server)
     , _csrsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

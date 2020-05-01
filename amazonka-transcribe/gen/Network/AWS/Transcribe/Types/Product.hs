@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -60,8 +60,8 @@ instance ToJSON Media where
 -- /See:/ 'settings' smart constructor.
 data Settings =
   Settings'
-    { _sVocabularyName :: !(Maybe Text)
-    , _sMaxSpeakerLabels :: !(Maybe Nat)
+    { _sVocabularyName    :: !(Maybe Text)
+    , _sMaxSpeakerLabels  :: !(Maybe Nat)
     , _sShowSpeakerLabels :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -157,17 +157,17 @@ instance NFData Transcript
 -- /See:/ 'transcriptionJob' smart constructor.
 data TranscriptionJob =
   TranscriptionJob'
-    { _tjCreationTime :: !(Maybe POSIX)
-    , _tjFailureReason :: !(Maybe Text)
-    , _tjLanguageCode :: !(Maybe LanguageCode)
-    , _tjSettings :: !(Maybe Settings)
-    , _tjCompletionTime :: !(Maybe POSIX)
-    , _tjMedia :: !(Maybe Media)
-    , _tjMediaFormat :: !(Maybe MediaFormat)
+    { _tjCreationTime           :: !(Maybe POSIX)
+    , _tjFailureReason          :: !(Maybe Text)
+    , _tjLanguageCode           :: !(Maybe LanguageCode)
+    , _tjSettings               :: !(Maybe Settings)
+    , _tjCompletionTime         :: !(Maybe POSIX)
+    , _tjMedia                  :: !(Maybe Media)
+    , _tjMediaFormat            :: !(Maybe MediaFormat)
     , _tjTranscriptionJobStatus :: !(Maybe TranscriptionJobStatus)
-    , _tjTranscriptionJobName :: !(Maybe Text)
-    , _tjTranscript :: !(Maybe Transcript)
-    , _tjMediaSampleRateHertz :: !(Maybe Nat)
+    , _tjTranscriptionJobName   :: !(Maybe Text)
+    , _tjTranscript             :: !(Maybe Transcript)
+    , _tjMediaSampleRateHertz   :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -291,12 +291,12 @@ instance NFData TranscriptionJob
 -- /See:/ 'transcriptionJobSummary' smart constructor.
 data TranscriptionJobSummary =
   TranscriptionJobSummary'
-    { _tjsCreationTime :: !(Maybe POSIX)
-    , _tjsFailureReason :: !(Maybe Text)
-    , _tjsLanguageCode :: !(Maybe LanguageCode)
-    , _tjsCompletionTime :: !(Maybe POSIX)
+    { _tjsCreationTime           :: !(Maybe POSIX)
+    , _tjsFailureReason          :: !(Maybe Text)
+    , _tjsLanguageCode           :: !(Maybe LanguageCode)
+    , _tjsCompletionTime         :: !(Maybe POSIX)
     , _tjsTranscriptionJobStatus :: !(Maybe TranscriptionJobStatus)
-    , _tjsTranscriptionJobName :: !(Maybe Text)
+    , _tjsTranscriptionJobName   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -378,10 +378,10 @@ instance NFData TranscriptionJobSummary
 -- /See:/ 'vocabularyInfo' smart constructor.
 data VocabularyInfo =
   VocabularyInfo'
-    { _viLanguageCode :: !(Maybe LanguageCode)
-    , _viVocabularyName :: !(Maybe Text)
+    { _viLanguageCode     :: !(Maybe LanguageCode)
+    , _viVocabularyName   :: !(Maybe Text)
     , _viLastModifiedTime :: !(Maybe POSIX)
-    , _viVocabularyState :: !(Maybe VocabularyState)
+    , _viVocabularyState  :: !(Maybe VocabularyState)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

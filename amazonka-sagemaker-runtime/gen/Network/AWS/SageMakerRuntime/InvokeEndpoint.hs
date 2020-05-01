@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.SageMakerRuntime.Types.Product
 -- | /See:/ 'invokeEndpoint' smart constructor.
 data InvokeEndpoint =
   InvokeEndpoint'
-    { _ieAccept :: !(Maybe Text)
-    , _ieContentType :: !(Maybe Text)
+    { _ieAccept       :: !(Maybe Text)
+    , _ieContentType  :: !(Maybe Text)
     , _ieEndpointName :: !Text
-    , _ieBody :: !ByteString
+    , _ieBody         :: !ByteString
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -131,9 +131,9 @@ instance ToQuery InvokeEndpoint where
 data InvokeEndpointResponse =
   InvokeEndpointResponse'
     { _iersInvokedProductionVariant :: !(Maybe Text)
-    , _iersContentType :: !(Maybe Text)
-    , _iersResponseStatus :: !Int
-    , _iersBody :: !ByteString
+    , _iersContentType              :: !(Maybe Text)
+    , _iersResponseStatus           :: !Int
+    , _iersBody                     :: !ByteString
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

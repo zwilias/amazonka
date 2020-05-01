@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,10 +46,10 @@ import Network.AWS.Response
 -- | /See:/ 'startThingRegistrationTask' smart constructor.
 data StartThingRegistrationTask =
   StartThingRegistrationTask'
-    { _strtTemplateBody :: !Text
+    { _strtTemplateBody    :: !Text
     , _strtInputFileBucket :: !Text
-    , _strtInputFileKey :: !Text
-    , _strtRoleARN :: !Text
+    , _strtInputFileKey    :: !Text
+    , _strtRoleARN         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -130,7 +130,7 @@ instance ToQuery StartThingRegistrationTask where
 -- | /See:/ 'startThingRegistrationTaskResponse' smart constructor.
 data StartThingRegistrationTaskResponse =
   StartThingRegistrationTaskResponse'
-    { _strtrsTaskId :: !(Maybe Text)
+    { _strtrsTaskId         :: !(Maybe Text)
     , _strtrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

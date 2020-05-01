@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -67,7 +67,7 @@ import Network.AWS.Response
 -- /See:/ 'createPublicVirtualInterface' smart constructor.
 data CreatePublicVirtualInterface =
   CreatePublicVirtualInterface'
-    { _cpviConnectionId :: !Text
+    { _cpviConnectionId              :: !Text
     , _cpviNewPublicVirtualInterface :: !NewPublicVirtualInterface
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -370,8 +370,8 @@ import Network.AWS.StorageGateway.CreateNFSFileShare
 import Network.AWS.StorageGateway.CreateSnapshot
 import Network.AWS.StorageGateway.CreateSnapshotFromVolumeRecoveryPoint
 import Network.AWS.StorageGateway.CreateStorediSCSIVolume
-import Network.AWS.StorageGateway.CreateTapeWithBarcode
 import Network.AWS.StorageGateway.CreateTapes
+import Network.AWS.StorageGateway.CreateTapeWithBarcode
 import Network.AWS.StorageGateway.DeleteBandwidthRateLimit
 import Network.AWS.StorageGateway.DeleteChapCredentials
 import Network.AWS.StorageGateway.DeleteFileShare

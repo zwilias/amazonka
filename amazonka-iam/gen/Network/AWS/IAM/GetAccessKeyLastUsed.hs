@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -99,9 +99,9 @@ instance ToQuery GetAccessKeyLastUsed where
 -- /See:/ 'getAccessKeyLastUsedResponse' smart constructor.
 data GetAccessKeyLastUsedResponse =
   GetAccessKeyLastUsedResponse'
-    { _gaklursUserName :: !(Maybe Text)
+    { _gaklursUserName          :: !(Maybe Text)
     , _gaklursAccessKeyLastUsed :: !(Maybe AccessKeyLastUsed)
-    , _gaklursResponseStatus :: !Int
+    , _gaklursResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

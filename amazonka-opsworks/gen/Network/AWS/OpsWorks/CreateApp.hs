@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,17 +57,17 @@ import Network.AWS.Response
 data CreateApp =
   CreateApp'
     { _caSSLConfiguration :: !(Maybe SSLConfiguration)
-    , _caEnvironment :: !(Maybe [EnvironmentVariable])
-    , _caEnableSSL :: !(Maybe Bool)
-    , _caShortname :: !(Maybe Text)
-    , _caDataSources :: !(Maybe [DataSource])
-    , _caAppSource :: !(Maybe Source)
-    , _caAttributes :: !(Maybe (Map AppAttributesKeys Text))
-    , _caDomains :: !(Maybe [Text])
-    , _caDescription :: !(Maybe Text)
-    , _caStackId :: !Text
-    , _caName :: !Text
-    , _caType :: !AppType
+    , _caEnvironment      :: !(Maybe [EnvironmentVariable])
+    , _caEnableSSL        :: !(Maybe Bool)
+    , _caShortname        :: !(Maybe Text)
+    , _caDataSources      :: !(Maybe [DataSource])
+    , _caAppSource        :: !(Maybe Source)
+    , _caAttributes       :: !(Maybe (Map AppAttributesKeys Text))
+    , _caDomains          :: !(Maybe [Text])
+    , _caDescription      :: !(Maybe Text)
+    , _caStackId          :: !Text
+    , _caName             :: !Text
+    , _caType             :: !AppType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -221,7 +221,7 @@ instance ToQuery CreateApp where
 -- /See:/ 'createAppResponse' smart constructor.
 data CreateAppResponse =
   CreateAppResponse'
-    { _carsAppId :: !(Maybe Text)
+    { _carsAppId          :: !(Maybe Text)
     , _carsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

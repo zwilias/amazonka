@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,11 +50,11 @@ import Network.AWS.Response
 data ListAttributes =
   ListAttributes'
     { _laAttributeValue :: !(Maybe Text)
-    , _laCluster :: !(Maybe Text)
-    , _laNextToken :: !(Maybe Text)
-    , _laAttributeName :: !(Maybe Text)
-    , _laMaxResults :: !(Maybe Int)
-    , _laTargetType :: !TargetType
+    , _laCluster        :: !(Maybe Text)
+    , _laNextToken      :: !(Maybe Text)
+    , _laAttributeName  :: !(Maybe Text)
+    , _laMaxResults     :: !(Maybe Int)
+    , _laTargetType     :: !TargetType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -154,8 +154,8 @@ instance ToQuery ListAttributes where
 -- | /See:/ 'listAttributesResponse' smart constructor.
 data ListAttributesResponse =
   ListAttributesResponse'
-    { _larsNextToken :: !(Maybe Text)
-    , _larsAttributes :: !(Maybe [Attribute])
+    { _larsNextToken      :: !(Maybe Text)
+    , _larsAttributes     :: !(Maybe [Attribute])
     , _larsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

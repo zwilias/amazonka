@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'listInstanceProfiles' smart constructor.
 data ListInstanceProfiles =
   ListInstanceProfiles'
-    { _lipNextToken :: !(Maybe Text)
+    { _lipNextToken  :: !(Maybe Text)
     , _lipMaxResults :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -109,9 +109,9 @@ instance ToQuery ListInstanceProfiles where
 -- | /See:/ 'listInstanceProfilesResponse' smart constructor.
 data ListInstanceProfilesResponse =
   ListInstanceProfilesResponse'
-    { _liprsNextToken :: !(Maybe Text)
+    { _liprsNextToken        :: !(Maybe Text)
     , _liprsInstanceProfiles :: !(Maybe [InstanceProfile])
-    , _liprsResponseStatus :: !Int
+    , _liprsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1023,9 +1023,9 @@ import Network.AWS.Pinpoint.GetApps
 import Network.AWS.Pinpoint.GetBaiduChannel
 import Network.AWS.Pinpoint.GetCampaign
 import Network.AWS.Pinpoint.GetCampaignActivities
+import Network.AWS.Pinpoint.GetCampaigns
 import Network.AWS.Pinpoint.GetCampaignVersion
 import Network.AWS.Pinpoint.GetCampaignVersions
-import Network.AWS.Pinpoint.GetCampaigns
 import Network.AWS.Pinpoint.GetEmailChannel
 import Network.AWS.Pinpoint.GetEndpoint
 import Network.AWS.Pinpoint.GetEventStream
@@ -1037,9 +1037,9 @@ import Network.AWS.Pinpoint.GetImportJobs
 import Network.AWS.Pinpoint.GetSegment
 import Network.AWS.Pinpoint.GetSegmentExportJobs
 import Network.AWS.Pinpoint.GetSegmentImportJobs
+import Network.AWS.Pinpoint.GetSegments
 import Network.AWS.Pinpoint.GetSegmentVersion
 import Network.AWS.Pinpoint.GetSegmentVersions
-import Network.AWS.Pinpoint.GetSegments
 import Network.AWS.Pinpoint.GetSmsChannel
 import Network.AWS.Pinpoint.PutEventStream
 import Network.AWS.Pinpoint.SendMessages

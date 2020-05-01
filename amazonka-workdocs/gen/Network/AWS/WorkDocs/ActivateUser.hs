@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.WorkDocs.Types.Product
 data ActivateUser =
   ActivateUser'
     { _auAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _auUserId :: !Text
+    , _auUserId              :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -104,7 +104,7 @@ instance ToQuery ActivateUser where
 -- | /See:/ 'activateUserResponse' smart constructor.
 data ActivateUserResponse =
   ActivateUserResponse'
-    { _aursUser :: !(Maybe User)
+    { _aursUser           :: !(Maybe User)
     , _aursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

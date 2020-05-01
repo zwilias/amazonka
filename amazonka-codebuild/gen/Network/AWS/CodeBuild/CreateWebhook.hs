@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 data CreateWebhook =
   CreateWebhook'
     { _cwBranchFilter :: !(Maybe Text)
-    , _cwProjectName :: !Text
+    , _cwProjectName  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -109,7 +109,7 @@ instance ToQuery CreateWebhook where
 -- | /See:/ 'createWebhookResponse' smart constructor.
 data CreateWebhookResponse =
   CreateWebhookResponse'
-    { _cwrsWebhook :: !(Maybe Webhook)
+    { _cwrsWebhook        :: !(Maybe Webhook)
     , _cwrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

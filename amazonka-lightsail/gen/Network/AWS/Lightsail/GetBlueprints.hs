@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,7 +49,7 @@ import Network.AWS.Response
 data GetBlueprints =
   GetBlueprints'
     { _gbIncludeInactive :: !(Maybe Bool)
-    , _gbPageToken :: !(Maybe Text)
+    , _gbPageToken       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -117,8 +117,8 @@ instance ToQuery GetBlueprints where
 -- | /See:/ 'getBlueprintsResponse' smart constructor.
 data GetBlueprintsResponse =
   GetBlueprintsResponse'
-    { _gbsrsBlueprints :: !(Maybe [Blueprint])
-    , _gbsrsNextPageToken :: !(Maybe Text)
+    { _gbsrsBlueprints     :: !(Maybe [Blueprint])
+    , _gbsrsNextPageToken  :: !(Maybe Text)
     , _gbsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.Response
 -- | /See:/ 'modifyLunaClient' smart constructor.
 data ModifyLunaClient =
   ModifyLunaClient'
-    { _mlcClientARN :: !Text
+    { _mlcClientARN   :: !Text
     , _mlcCertificate :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -117,7 +117,7 @@ instance ToQuery ModifyLunaClient where
 -- | /See:/ 'modifyLunaClientResponse' smart constructor.
 data ModifyLunaClientResponse =
   ModifyLunaClientResponse'
-    { _mlcrsClientARN :: !(Maybe Text)
+    { _mlcrsClientARN      :: !(Maybe Text)
     , _mlcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

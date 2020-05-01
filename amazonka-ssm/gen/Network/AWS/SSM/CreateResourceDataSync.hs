@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'createResourceDataSync' smart constructor.
 data CreateResourceDataSync =
   CreateResourceDataSync'
-    { _crdsSyncName :: !Text
+    { _crdsSyncName      :: !Text
     , _crdsS3Destination :: !ResourceDataSyncS3Destination
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

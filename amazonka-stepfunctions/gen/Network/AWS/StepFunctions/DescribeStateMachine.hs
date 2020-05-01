@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -108,13 +108,13 @@ instance ToQuery DescribeStateMachine where
 -- | /See:/ 'describeStateMachineResponse' smart constructor.
 data DescribeStateMachineResponse =
   DescribeStateMachineResponse'
-    { _dsmrsStatus :: !(Maybe StateMachineStatus)
-    , _dsmrsResponseStatus :: !Int
+    { _dsmrsStatus          :: !(Maybe StateMachineStatus)
+    , _dsmrsResponseStatus  :: !Int
     , _dsmrsStateMachineARN :: !Text
-    , _dsmrsName :: !Text
-    , _dsmrsDefinition :: !Text
-    , _dsmrsRoleARN :: !Text
-    , _dsmrsCreationDate :: !POSIX
+    , _dsmrsName            :: !Text
+    , _dsmrsDefinition      :: !Text
+    , _dsmrsRoleARN         :: !Text
+    , _dsmrsCreationDate    :: !POSIX
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

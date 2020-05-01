@@ -55,9 +55,9 @@ module Network.AWS.SNS.Types
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.Sign.V4
 import Network.AWS.SNS.Types.Product
 import Network.AWS.SNS.Types.Sum
-import Network.AWS.Sign.V4
 
 -- | API version @2010-03-31@ of the Amazon Simple Notification Service SDK configuration.
 sns :: Service

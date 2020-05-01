@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -115,15 +115,15 @@ import Network.AWS.Response
 data PutScalingPolicy =
   PutScalingPolicy'
     { _pspScalingAdjustmentType :: !(Maybe ScalingAdjustmentType)
-    , _pspEvaluationPeriods :: !(Maybe Nat)
-    , _pspPolicyType :: !(Maybe PolicyType)
-    , _pspComparisonOperator :: !(Maybe ComparisonOperatorType)
-    , _pspThreshold :: !(Maybe Double)
-    , _pspScalingAdjustment :: !(Maybe Int)
-    , _pspTargetConfiguration :: !(Maybe TargetConfiguration)
-    , _pspName :: !Text
-    , _pspFleetId :: !Text
-    , _pspMetricName :: !MetricName
+    , _pspEvaluationPeriods     :: !(Maybe Nat)
+    , _pspPolicyType            :: !(Maybe PolicyType)
+    , _pspComparisonOperator    :: !(Maybe ComparisonOperatorType)
+    , _pspThreshold             :: !(Maybe Double)
+    , _pspScalingAdjustment     :: !(Maybe Int)
+    , _pspTargetConfiguration   :: !(Maybe TargetConfiguration)
+    , _pspName                  :: !Text
+    , _pspFleetId               :: !Text
+    , _pspMetricName            :: !MetricName
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -264,7 +264,7 @@ instance ToQuery PutScalingPolicy where
 -- /See:/ 'putScalingPolicyResponse' smart constructor.
 data PutScalingPolicyResponse =
   PutScalingPolicyResponse'
-    { _psprsName :: !(Maybe Text)
+    { _psprsName           :: !(Maybe Text)
     , _psprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

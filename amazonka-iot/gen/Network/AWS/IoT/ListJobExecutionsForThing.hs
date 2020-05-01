@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,10 +47,10 @@ import Network.AWS.Response
 -- | /See:/ 'listJobExecutionsForThing' smart constructor.
 data ListJobExecutionsForThing =
   ListJobExecutionsForThing'
-    { _ljeftStatus :: !(Maybe JobExecutionStatus)
-    , _ljeftNextToken :: !(Maybe Text)
+    { _ljeftStatus     :: !(Maybe JobExecutionStatus)
+    , _ljeftNextToken  :: !(Maybe Text)
     , _ljeftMaxResults :: !(Maybe Nat)
-    , _ljeftThingName :: !Text
+    , _ljeftThingName  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -127,8 +127,8 @@ instance ToQuery ListJobExecutionsForThing where
 data ListJobExecutionsForThingResponse =
   ListJobExecutionsForThingResponse'
     { _ljeftrsExecutionSummaries :: !(Maybe [JobExecutionSummaryForThing])
-    , _ljeftrsNextToken :: !(Maybe Text)
-    , _ljeftrsResponseStatus :: !Int
+    , _ljeftrsNextToken          :: !(Maybe Text)
+    , _ljeftrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

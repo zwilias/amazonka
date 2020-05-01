@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,11 +52,11 @@ import Network.AWS.Response
 -- /See:/ 'describeImportSnapshotTasks' smart constructor.
 data DescribeImportSnapshotTasks =
   DescribeImportSnapshotTasks'
-    { _distFilters :: !(Maybe [Filter])
+    { _distFilters       :: !(Maybe [Filter])
     , _distImportTaskIds :: !(Maybe [Text])
-    , _distNextToken :: !(Maybe Text)
-    , _distDryRun :: !(Maybe Bool)
-    , _distMaxResults :: !(Maybe Int)
+    , _distNextToken     :: !(Maybe Text)
+    , _distDryRun        :: !(Maybe Bool)
+    , _distMaxResults    :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -145,9 +145,9 @@ instance ToQuery DescribeImportSnapshotTasks where
 -- /See:/ 'describeImportSnapshotTasksResponse' smart constructor.
 data DescribeImportSnapshotTasksResponse =
   DescribeImportSnapshotTasksResponse'
-    { _distrsNextToken :: !(Maybe Text)
+    { _distrsNextToken           :: !(Maybe Text)
     , _distrsImportSnapshotTasks :: !(Maybe [ImportSnapshotTask])
-    , _distrsResponseStatus :: !Int
+    , _distrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

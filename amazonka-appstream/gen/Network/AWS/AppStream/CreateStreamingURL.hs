@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,11 +50,11 @@ import Network.AWS.Response
 data CreateStreamingURL =
   CreateStreamingURL'
     { _csuSessionContext :: !(Maybe Text)
-    , _csuApplicationId :: !(Maybe Text)
-    , _csuValidity :: !(Maybe Integer)
-    , _csuStackName :: !Text
-    , _csuFleetName :: !Text
-    , _csuUserId :: !Text
+    , _csuApplicationId  :: !(Maybe Text)
+    , _csuValidity       :: !(Maybe Integer)
+    , _csuStackName      :: !Text
+    , _csuFleetName      :: !Text
+    , _csuUserId         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -156,8 +156,8 @@ instance ToQuery CreateStreamingURL where
 -- | /See:/ 'createStreamingURLResponse' smart constructor.
 data CreateStreamingURLResponse =
   CreateStreamingURLResponse'
-    { _csursStreamingURL :: !(Maybe Text)
-    , _csursExpires :: !(Maybe POSIX)
+    { _csursStreamingURL   :: !(Maybe Text)
+    , _csursExpires        :: !(Maybe POSIX)
     , _csursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

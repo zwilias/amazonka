@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,9 +47,9 @@ import Network.AWS.Response
 data ModifyVPCEndpointServicePermissions =
   ModifyVPCEndpointServicePermissions'
     { _mvespRemoveAllowedPrincipals :: !(Maybe [Text])
-    , _mvespAddAllowedPrincipals :: !(Maybe [Text])
-    , _mvespDryRun :: !(Maybe Bool)
-    , _mvespServiceId :: !Text
+    , _mvespAddAllowedPrincipals    :: !(Maybe [Text])
+    , _mvespDryRun                  :: !(Maybe Bool)
+    , _mvespServiceId               :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -133,7 +133,7 @@ instance ToQuery ModifyVPCEndpointServicePermissions where
 -- | /See:/ 'modifyVPCEndpointServicePermissionsResponse' smart constructor.
 data ModifyVPCEndpointServicePermissionsResponse =
   ModifyVPCEndpointServicePermissionsResponse'
-    { _mvesprsReturnValue :: !(Maybe Bool)
+    { _mvesprsReturnValue    :: !(Maybe Bool)
     , _mvesprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

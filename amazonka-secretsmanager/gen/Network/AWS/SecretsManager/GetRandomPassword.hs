@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,14 +58,14 @@ import Network.AWS.SecretsManager.Types.Product
 -- | /See:/ 'getRandomPassword' smart constructor.
 data GetRandomPassword =
   GetRandomPassword'
-    { _grpIncludeSpace :: !(Maybe Bool)
-    , _grpExcludeNumbers :: !(Maybe Bool)
-    , _grpExcludeLowercase :: !(Maybe Bool)
-    , _grpExcludeCharacters :: !(Maybe Text)
-    , _grpExcludePunctuation :: !(Maybe Bool)
+    { _grpIncludeSpace            :: !(Maybe Bool)
+    , _grpExcludeNumbers          :: !(Maybe Bool)
+    , _grpExcludeLowercase        :: !(Maybe Bool)
+    , _grpExcludeCharacters       :: !(Maybe Text)
+    , _grpExcludePunctuation      :: !(Maybe Bool)
     , _grpRequireEachIncludedType :: !(Maybe Bool)
-    , _grpExcludeUppercase :: !(Maybe Bool)
-    , _grpPasswordLength :: !(Maybe Nat)
+    , _grpExcludeUppercase        :: !(Maybe Bool)
+    , _grpPasswordLength          :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

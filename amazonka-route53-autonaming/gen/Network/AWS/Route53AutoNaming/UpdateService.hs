@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,7 +56,7 @@ import Network.AWS.Route53AutoNaming.Types.Product
 -- | /See:/ 'updateService' smart constructor.
 data UpdateService =
   UpdateService'
-    { _usId :: !Text
+    { _usId      :: !Text
     , _usService :: !ServiceChange
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -118,7 +118,7 @@ instance ToQuery UpdateService where
 -- | /See:/ 'updateServiceResponse' smart constructor.
 data UpdateServiceResponse =
   UpdateServiceResponse'
-    { _usrsOperationId :: !(Maybe Text)
+    { _usrsOperationId    :: !(Maybe Text)
     , _usrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

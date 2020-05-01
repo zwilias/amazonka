@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,10 +46,10 @@ import Network.AWS.Response
 -- | /See:/ 'updateAPIKey' smart constructor.
 data UpdateAPIKey =
   UpdateAPIKey'
-    { _uakExpires :: !(Maybe Integer)
+    { _uakExpires     :: !(Maybe Integer)
     , _uakDescription :: !(Maybe Text)
-    , _uakApiId :: !Text
-    , _uakId :: !Text
+    , _uakApiId       :: !Text
+    , _uakId          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -127,7 +127,7 @@ instance ToQuery UpdateAPIKey where
 -- | /See:/ 'updateAPIKeyResponse' smart constructor.
 data UpdateAPIKeyResponse =
   UpdateAPIKeyResponse'
-    { _uakrsApiKey :: !(Maybe APIKey)
+    { _uakrsApiKey         :: !(Maybe APIKey)
     , _uakrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -85,7 +85,7 @@ instance ToQuery GetAccountSendingEnabled where
 -- /See:/ 'getAccountSendingEnabledResponse' smart constructor.
 data GetAccountSendingEnabledResponse =
   GetAccountSendingEnabledResponse'
-    { _gasersEnabled :: !(Maybe Bool)
+    { _gasersEnabled        :: !(Maybe Bool)
     , _gasersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

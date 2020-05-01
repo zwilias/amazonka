@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 data DescribeLayers =
   DescribeLayers'
     { _dlLayerIds :: !(Maybe [Text])
-    , _dlStackId :: !(Maybe Text)
+    , _dlStackId  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -109,7 +109,7 @@ instance ToQuery DescribeLayers where
 -- /See:/ 'describeLayersResponse' smart constructor.
 data DescribeLayersResponse =
   DescribeLayersResponse'
-    { _dlrsLayers :: !(Maybe [Layer])
+    { _dlrsLayers         :: !(Maybe [Layer])
     , _dlrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

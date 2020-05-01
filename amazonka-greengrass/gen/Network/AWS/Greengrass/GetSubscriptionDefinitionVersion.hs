@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'getSubscriptionDefinitionVersion' smart constructor.
 data GetSubscriptionDefinitionVersion =
   GetSubscriptionDefinitionVersion'
-    { _gsdvSubscriptionDefinitionId :: !Text
+    { _gsdvSubscriptionDefinitionId        :: !Text
     , _gsdvSubscriptionDefinitionVersionId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -120,12 +120,12 @@ instance ToQuery GetSubscriptionDefinitionVersion where
 -- | /See:/ 'getSubscriptionDefinitionVersionResponse' smart constructor.
 data GetSubscriptionDefinitionVersionResponse =
   GetSubscriptionDefinitionVersionResponse'
-    { _gsdvrsDefinition :: !(Maybe SubscriptionDefinitionVersion)
-    , _gsdvrsARN :: !(Maybe Text)
+    { _gsdvrsDefinition        :: !(Maybe SubscriptionDefinitionVersion)
+    , _gsdvrsARN               :: !(Maybe Text)
     , _gsdvrsCreationTimestamp :: !(Maybe Text)
-    , _gsdvrsVersion :: !(Maybe Text)
-    , _gsdvrsId :: !(Maybe Text)
-    , _gsdvrsResponseStatus :: !Int
+    , _gsdvrsVersion           :: !(Maybe Text)
+    , _gsdvrsId                :: !(Maybe Text)
+    , _gsdvrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

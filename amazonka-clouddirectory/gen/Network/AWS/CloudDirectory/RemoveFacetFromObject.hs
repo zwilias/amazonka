@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,8 +44,8 @@ import Network.AWS.Response
 -- | /See:/ 'removeFacetFromObject' smart constructor.
 data RemoveFacetFromObject =
   RemoveFacetFromObject'
-    { _rffoDirectoryARN :: !Text
-    , _rffoSchemaFacet :: !SchemaFacet
+    { _rffoDirectoryARN    :: !Text
+    , _rffoSchemaFacet     :: !SchemaFacet
     , _rffoObjectReference :: !ObjectReference
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

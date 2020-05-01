@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -70,12 +70,12 @@ import Network.AWS.StorageGateway.Types.Product
 data ActivateGateway =
   ActivateGateway'
     { _agMediumChangerType :: !(Maybe Text)
-    , _agTapeDriveType :: !(Maybe Text)
-    , _agGatewayType :: !(Maybe Text)
-    , _agActivationKey :: !Text
-    , _agGatewayName :: !Text
-    , _agGatewayTimezone :: !Text
-    , _agGatewayRegion :: !Text
+    , _agTapeDriveType     :: !(Maybe Text)
+    , _agGatewayType       :: !(Maybe Text)
+    , _agActivationKey     :: !Text
+    , _agGatewayName       :: !Text
+    , _agGatewayTimezone   :: !Text
+    , _agGatewayRegion     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -190,7 +190,7 @@ instance ToQuery ActivateGateway where
 -- /See:/ 'activateGatewayResponse' smart constructor.
 data ActivateGatewayResponse =
   ActivateGatewayResponse'
-    { _agrsGatewayARN :: !(Maybe Text)
+    { _agrsGatewayARN     :: !(Maybe Text)
     , _agrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

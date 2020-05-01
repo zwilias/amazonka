@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,11 +51,11 @@ import Network.AWS.Response
 -- | /See:/ 'getTableVersions' smart constructor.
 data GetTableVersions =
   GetTableVersions'
-    { _gtvsCatalogId :: !(Maybe Text)
-    , _gtvsNextToken :: !(Maybe Text)
-    , _gtvsMaxResults :: !(Maybe Nat)
+    { _gtvsCatalogId    :: !(Maybe Text)
+    , _gtvsNextToken    :: !(Maybe Text)
+    , _gtvsMaxResults   :: !(Maybe Nat)
     , _gtvsDatabaseName :: !Text
-    , _gtvsTableName :: !Text
+    , _gtvsTableName    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -154,8 +154,8 @@ instance ToQuery GetTableVersions where
 -- | /See:/ 'getTableVersionsResponse' smart constructor.
 data GetTableVersionsResponse =
   GetTableVersionsResponse'
-    { _gtvsrsTableVersions :: !(Maybe [TableVersion])
-    , _gtvsrsNextToken :: !(Maybe Text)
+    { _gtvsrsTableVersions  :: !(Maybe [TableVersion])
+    , _gtvsrsNextToken      :: !(Maybe Text)
     , _gtvsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

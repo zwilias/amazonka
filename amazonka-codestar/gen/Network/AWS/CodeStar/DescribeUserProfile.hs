@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -106,12 +106,12 @@ instance ToQuery DescribeUserProfile where
 -- | /See:/ 'describeUserProfileResponse' smart constructor.
 data DescribeUserProfileResponse =
   DescribeUserProfileResponse'
-    { _duprsSshPublicKey :: !(Maybe Text)
-    , _duprsEmailAddress :: !(Maybe (Sensitive Text))
-    , _duprsDisplayName :: !(Maybe Text)
-    , _duprsResponseStatus :: !Int
-    , _duprsUserARN :: !Text
-    , _duprsCreatedTimestamp :: !POSIX
+    { _duprsSshPublicKey          :: !(Maybe Text)
+    , _duprsEmailAddress          :: !(Maybe (Sensitive Text))
+    , _duprsDisplayName           :: !(Maybe Text)
+    , _duprsResponseStatus        :: !Int
+    , _duprsUserARN               :: !Text
+    , _duprsCreatedTimestamp      :: !POSIX
     , _duprsLastModifiedTimestamp :: !POSIX
     }
   deriving (Eq, Show, Data, Typeable, Generic)

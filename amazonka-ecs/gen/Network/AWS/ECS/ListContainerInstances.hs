@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,10 +51,10 @@ import Network.AWS.Response
 -- | /See:/ 'listContainerInstances' smart constructor.
 data ListContainerInstances =
   ListContainerInstances'
-    { _lciStatus :: !(Maybe ContainerInstanceStatus)
-    , _lciCluster :: !(Maybe Text)
-    , _lciNextToken :: !(Maybe Text)
-    , _lciFilter :: !(Maybe Text)
+    { _lciStatus     :: !(Maybe ContainerInstanceStatus)
+    , _lciCluster    :: !(Maybe Text)
+    , _lciNextToken  :: !(Maybe Text)
+    , _lciFilter     :: !(Maybe Text)
     , _lciMaxResults :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -153,8 +153,8 @@ instance ToQuery ListContainerInstances where
 data ListContainerInstancesResponse =
   ListContainerInstancesResponse'
     { _lcirsContainerInstanceARNs :: !(Maybe [Text])
-    , _lcirsNextToken :: !(Maybe Text)
-    , _lcirsResponseStatus :: !Int
+    , _lcirsNextToken             :: !(Maybe Text)
+    , _lcirsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

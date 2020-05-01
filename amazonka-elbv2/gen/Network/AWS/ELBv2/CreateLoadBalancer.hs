@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -62,12 +62,12 @@ data CreateLoadBalancer =
   CreateLoadBalancer'
     { _clbSubnetMappings :: !(Maybe [SubnetMapping])
     , _clbSecurityGroups :: !(Maybe [Text])
-    , _clbSubnets :: !(Maybe [Text])
-    , _clbIPAddressType :: !(Maybe IPAddressType)
-    , _clbScheme :: !(Maybe LoadBalancerSchemeEnum)
-    , _clbType :: !(Maybe LoadBalancerTypeEnum)
-    , _clbTags :: !(Maybe (List1 Tag))
-    , _clbName :: !Text
+    , _clbSubnets        :: !(Maybe [Text])
+    , _clbIPAddressType  :: !(Maybe IPAddressType)
+    , _clbScheme         :: !(Maybe LoadBalancerSchemeEnum)
+    , _clbType           :: !(Maybe LoadBalancerTypeEnum)
+    , _clbTags           :: !(Maybe (List1 Tag))
+    , _clbName           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -182,7 +182,7 @@ instance ToQuery CreateLoadBalancer where
 -- | /See:/ 'createLoadBalancerResponse' smart constructor.
 data CreateLoadBalancerResponse =
   CreateLoadBalancerResponse'
-    { _clbrsLoadBalancers :: !(Maybe [LoadBalancer])
+    { _clbrsLoadBalancers  :: !(Maybe [LoadBalancer])
     , _clbrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

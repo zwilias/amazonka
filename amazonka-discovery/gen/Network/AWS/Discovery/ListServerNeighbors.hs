@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,11 +49,11 @@ import Network.AWS.Response
 -- | /See:/ 'listServerNeighbors' smart constructor.
 data ListServerNeighbors =
   ListServerNeighbors'
-    { _lsnPortInformationNeeded :: !(Maybe Bool)
+    { _lsnPortInformationNeeded    :: !(Maybe Bool)
     , _lsnNeighborConfigurationIds :: !(Maybe [Text])
-    , _lsnNextToken :: !(Maybe Text)
-    , _lsnMaxResults :: !(Maybe Int)
-    , _lsnConfigurationId :: !Text
+    , _lsnNextToken                :: !(Maybe Text)
+    , _lsnMaxResults               :: !(Maybe Int)
+    , _lsnConfigurationId          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -152,10 +152,10 @@ instance ToQuery ListServerNeighbors where
 -- | /See:/ 'listServerNeighborsResponse' smart constructor.
 data ListServerNeighborsResponse =
   ListServerNeighborsResponse'
-    { _lsnrsNextToken :: !(Maybe Text)
+    { _lsnrsNextToken            :: !(Maybe Text)
     , _lsnrsKnownDependencyCount :: !(Maybe Integer)
-    , _lsnrsResponseStatus :: !Int
-    , _lsnrsNeighbors :: ![NeighborConnectionDetail]
+    , _lsnrsResponseStatus       :: !Int
+    , _lsnrsNeighbors            :: ![NeighborConnectionDetail]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

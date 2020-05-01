@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -65,19 +65,19 @@ import Network.AWS.Response
 -- | /See:/ 'createTargetGroup' smart constructor.
 data CreateTargetGroup =
   CreateTargetGroup'
-    { _ctgMatcher :: !(Maybe Matcher)
-    , _ctgHealthCheckPath :: !(Maybe Text)
-    , _ctgUnhealthyThresholdCount :: !(Maybe Nat)
+    { _ctgMatcher                    :: !(Maybe Matcher)
+    , _ctgHealthCheckPath            :: !(Maybe Text)
+    , _ctgUnhealthyThresholdCount    :: !(Maybe Nat)
     , _ctgHealthCheckIntervalSeconds :: !(Maybe Nat)
-    , _ctgTargetType :: !(Maybe TargetTypeEnum)
-    , _ctgHealthyThresholdCount :: !(Maybe Nat)
-    , _ctgHealthCheckProtocol :: !(Maybe ProtocolEnum)
-    , _ctgHealthCheckTimeoutSeconds :: !(Maybe Nat)
-    , _ctgHealthCheckPort :: !(Maybe Text)
-    , _ctgName :: !Text
-    , _ctgProtocol :: !ProtocolEnum
-    , _ctgPort :: !Nat
-    , _ctgVPCId :: !Text
+    , _ctgTargetType                 :: !(Maybe TargetTypeEnum)
+    , _ctgHealthyThresholdCount      :: !(Maybe Nat)
+    , _ctgHealthCheckProtocol        :: !(Maybe ProtocolEnum)
+    , _ctgHealthCheckTimeoutSeconds  :: !(Maybe Nat)
+    , _ctgHealthCheckPort            :: !(Maybe Text)
+    , _ctgName                       :: !Text
+    , _ctgProtocol                   :: !ProtocolEnum
+    , _ctgPort                       :: !Nat
+    , _ctgVPCId                      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -244,7 +244,7 @@ instance ToQuery CreateTargetGroup where
 -- | /See:/ 'createTargetGroupResponse' smart constructor.
 data CreateTargetGroupResponse =
   CreateTargetGroupResponse'
-    { _ctgrsTargetGroups :: !(Maybe [TargetGroup])
+    { _ctgrsTargetGroups   :: !(Maybe [TargetGroup])
     , _ctgrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -59,8 +59,8 @@ import Network.AWS.Route53.Types.Product
 data ListHostedZones =
   ListHostedZones'
     { _lhzDelegationSetId :: !(Maybe ResourceId)
-    , _lhzMarker :: !(Maybe Text)
-    , _lhzMaxItems :: !(Maybe Text)
+    , _lhzMarker          :: !(Maybe Text)
+    , _lhzMaxItems        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -133,12 +133,12 @@ instance ToQuery ListHostedZones where
 -- | /See:/ 'listHostedZonesResponse' smart constructor.
 data ListHostedZonesResponse =
   ListHostedZonesResponse'
-    { _lhzrsMarker :: !(Maybe Text)
-    , _lhzrsNextMarker :: !(Maybe Text)
+    { _lhzrsMarker         :: !(Maybe Text)
+    , _lhzrsNextMarker     :: !(Maybe Text)
     , _lhzrsResponseStatus :: !Int
-    , _lhzrsHostedZones :: ![HostedZone]
-    , _lhzrsIsTruncated :: !Bool
-    , _lhzrsMaxItems :: !Text
+    , _lhzrsHostedZones    :: ![HostedZone]
+    , _lhzrsIsTruncated    :: !Bool
+    , _lhzrsMaxItems       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

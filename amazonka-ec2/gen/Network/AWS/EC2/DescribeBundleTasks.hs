@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.Response
 data DescribeBundleTasks =
   DescribeBundleTasks'
     { _dbtBundleIds :: !(Maybe [Text])
-    , _dbtFilters :: !(Maybe [Filter])
-    , _dbtDryRun :: !(Maybe Bool)
+    , _dbtFilters   :: !(Maybe [Filter])
+    , _dbtDryRun    :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -120,7 +120,7 @@ instance ToQuery DescribeBundleTasks where
 -- /See:/ 'describeBundleTasksResponse' smart constructor.
 data DescribeBundleTasksResponse =
   DescribeBundleTasksResponse'
-    { _dbtrsBundleTasks :: !(Maybe [BundleTask])
+    { _dbtrsBundleTasks    :: !(Maybe [BundleTask])
     , _dbtrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

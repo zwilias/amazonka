@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -102,13 +102,13 @@ import Network.AWS.Response
 -- /See:/ 'startGameSessionPlacement' smart constructor.
 data StartGameSessionPlacement =
   StartGameSessionPlacement'
-    { _sgspGameProperties :: !(Maybe [GameProperty])
-    , _sgspGameSessionName :: !(Maybe Text)
-    , _sgspPlayerLatencies :: !(Maybe [PlayerLatency])
-    , _sgspGameSessionData :: !(Maybe Text)
-    , _sgspDesiredPlayerSessions :: !(Maybe [DesiredPlayerSession])
-    , _sgspPlacementId :: !Text
-    , _sgspGameSessionQueueName :: !Text
+    { _sgspGameProperties            :: !(Maybe [GameProperty])
+    , _sgspGameSessionName           :: !(Maybe Text)
+    , _sgspPlayerLatencies           :: !(Maybe [PlayerLatency])
+    , _sgspGameSessionData           :: !(Maybe Text)
+    , _sgspDesiredPlayerSessions     :: !(Maybe [DesiredPlayerSession])
+    , _sgspPlacementId               :: !Text
+    , _sgspGameSessionQueueName      :: !Text
     , _sgspMaximumPlayerSessionCount :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -245,7 +245,7 @@ instance ToQuery StartGameSessionPlacement where
 data StartGameSessionPlacementResponse =
   StartGameSessionPlacementResponse'
     { _sgsprsGameSessionPlacement :: !(Maybe GameSessionPlacement)
-    , _sgsprsResponseStatus :: !Int
+    , _sgsprsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

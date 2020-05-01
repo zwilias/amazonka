@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.ServiceCatalog.Types.Product
 data DescribePortfolio =
   DescribePortfolio'
     { _desAcceptLanguage :: !(Maybe Text)
-    , _desId :: !Text
+    , _desId             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -112,9 +112,9 @@ instance ToQuery DescribePortfolio where
 data DescribePortfolioResponse =
   DescribePortfolioResponse'
     { _dprsPortfolioDetail :: !(Maybe PortfolioDetail)
-    , _dprsTagOptions :: !(Maybe [TagOptionDetail])
-    , _dprsTags :: !(Maybe [Tag])
-    , _dprsResponseStatus :: !Int
+    , _dprsTagOptions      :: !(Maybe [TagOptionDetail])
+    , _dprsTags            :: !(Maybe [Tag])
+    , _dprsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

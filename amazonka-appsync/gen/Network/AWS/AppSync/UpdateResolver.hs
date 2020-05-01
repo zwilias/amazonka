@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,11 +49,11 @@ import Network.AWS.Response
 data UpdateResolver =
   UpdateResolver'
     { _urResponseMappingTemplate :: !(Maybe Text)
-    , _urApiId :: !Text
-    , _urTypeName :: !Text
-    , _urFieldName :: !Text
-    , _urDataSourceName :: !Text
-    , _urRequestMappingTemplate :: !Text
+    , _urApiId                   :: !Text
+    , _urTypeName                :: !Text
+    , _urFieldName               :: !Text
+    , _urDataSourceName          :: !Text
+    , _urRequestMappingTemplate  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -158,7 +158,7 @@ instance ToQuery UpdateResolver where
 -- | /See:/ 'updateResolverResponse' smart constructor.
 data UpdateResolverResponse =
   UpdateResolverResponse'
-    { _urrsResolver :: !(Maybe Resolver)
+    { _urrsResolver       :: !(Maybe Resolver)
     , _urrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,12 +53,12 @@ import Network.AWS.Response
 -- /See:/ 'describeScheduledInstances' smart constructor.
 data DescribeScheduledInstances =
   DescribeScheduledInstances'
-    { _dsiFilters :: !(Maybe [Filter])
-    , _dsiSlotStartTimeRange :: !(Maybe SlotStartTimeRangeRequest)
-    , _dsiNextToken :: !(Maybe Text)
+    { _dsiFilters              :: !(Maybe [Filter])
+    , _dsiSlotStartTimeRange   :: !(Maybe SlotStartTimeRangeRequest)
+    , _dsiNextToken            :: !(Maybe Text)
     , _dsiScheduledInstanceIds :: !(Maybe [Text])
-    , _dsiDryRun :: !(Maybe Bool)
-    , _dsiMaxResults :: !(Maybe Int)
+    , _dsiDryRun               :: !(Maybe Bool)
+    , _dsiMaxResults           :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -156,9 +156,9 @@ instance ToQuery DescribeScheduledInstances where
 -- /See:/ 'describeScheduledInstancesResponse' smart constructor.
 data DescribeScheduledInstancesResponse =
   DescribeScheduledInstancesResponse'
-    { _dsirsNextToken :: !(Maybe Text)
+    { _dsirsNextToken            :: !(Maybe Text)
     , _dsirsScheduledInstanceSet :: !(Maybe [ScheduledInstance])
-    , _dsirsResponseStatus :: !Int
+    , _dsirsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

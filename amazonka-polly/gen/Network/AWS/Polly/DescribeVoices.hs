@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,7 +57,7 @@ import Network.AWS.Response
 data DescribeVoices =
   DescribeVoices'
     { _dvLanguageCode :: !(Maybe LanguageCode)
-    , _dvNextToken :: !(Maybe Text)
+    , _dvNextToken    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -113,8 +113,8 @@ instance ToQuery DescribeVoices where
 -- | /See:/ 'describeVoicesResponse' smart constructor.
 data DescribeVoicesResponse =
   DescribeVoicesResponse'
-    { _dvrsNextToken :: !(Maybe Text)
-    , _dvrsVoices :: !(Maybe [Voice])
+    { _dvrsNextToken      :: !(Maybe Text)
+    , _dvrsVoices         :: !(Maybe [Voice])
     , _dvrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

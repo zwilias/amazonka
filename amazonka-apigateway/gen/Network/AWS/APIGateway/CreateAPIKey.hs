@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -61,13 +61,13 @@ import Network.AWS.Response
 -- /See:/ 'createAPIKey' smart constructor.
 data CreateAPIKey =
   CreateAPIKey'
-    { _cakEnabled :: !(Maybe Bool)
-    , _cakValue :: !(Maybe Text)
-    , _cakCustomerId :: !(Maybe Text)
+    { _cakEnabled            :: !(Maybe Bool)
+    , _cakValue              :: !(Maybe Text)
+    , _cakCustomerId         :: !(Maybe Text)
     , _cakGenerateDistinctId :: !(Maybe Bool)
-    , _cakName :: !(Maybe Text)
-    , _cakStageKeys :: !(Maybe [StageKey])
-    , _cakDescription :: !(Maybe Text)
+    , _cakName               :: !(Maybe Text)
+    , _cakStageKeys          :: !(Maybe [StageKey])
+    , _cakDescription        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

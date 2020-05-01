@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -67,7 +67,7 @@ import Network.AWS.SecretsManager.Types.Product
 data DeleteSecret =
   DeleteSecret'
     { _dsRecoveryWindowInDays :: !(Maybe Integer)
-    , _dsSecretId :: !Text
+    , _dsSecretId             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -132,9 +132,9 @@ instance ToQuery DeleteSecret where
 -- | /See:/ 'deleteSecretResponse' smart constructor.
 data DeleteSecretResponse =
   DeleteSecretResponse'
-    { _dsrsARN :: !(Maybe Text)
-    , _dsrsName :: !(Maybe Text)
-    , _dsrsDeletionDate :: !(Maybe POSIX)
+    { _dsrsARN            :: !(Maybe Text)
+    , _dsrsName           :: !(Maybe Text)
+    , _dsrsDeletionDate   :: !(Maybe POSIX)
     , _dsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

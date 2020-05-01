@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -66,10 +66,10 @@ import Network.AWS.Response
 data DescribeCacheClusters =
   DescribeCacheClusters'
     { _dShowCacheClustersNotInReplicationGroups :: !(Maybe Bool)
-    , _dCacheClusterId :: !(Maybe Text)
-    , _dMarker :: !(Maybe Text)
-    , _dMaxRecords :: !(Maybe Int)
-    , _dShowCacheNodeInfo :: !(Maybe Bool)
+    , _dCacheClusterId                          :: !(Maybe Text)
+    , _dMarker                                  :: !(Maybe Text)
+    , _dMaxRecords                              :: !(Maybe Int)
+    , _dShowCacheNodeInfo                       :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -169,8 +169,8 @@ instance ToQuery DescribeCacheClusters where
 -- /See:/ 'describeCacheClustersResponse' smart constructor.
 data DescribeCacheClustersResponse =
   DescribeCacheClustersResponse'
-    { _drsCacheClusters :: !(Maybe [CacheCluster])
-    , _drsMarker :: !(Maybe Text)
+    { _drsCacheClusters  :: !(Maybe [CacheCluster])
+    , _drsMarker         :: !(Maybe Text)
     , _drsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

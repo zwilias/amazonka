@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,11 +47,11 @@ import Network.AWS.Response
 -- | /See:/ 'updateIdentityProvider' smart constructor.
 data UpdateIdentityProvider =
   UpdateIdentityProvider'
-    { _uipIdpIdentifiers :: !(Maybe [Text])
+    { _uipIdpIdentifiers   :: !(Maybe [Text])
     , _uipAttributeMapping :: !(Maybe (Map Text Text))
-    , _uipProviderDetails :: !(Maybe (Map Text Text))
-    , _uipUserPoolId :: !Text
-    , _uipProviderName :: !Text
+    , _uipProviderDetails  :: !(Maybe (Map Text Text))
+    , _uipUserPoolId       :: !Text
+    , _uipProviderName     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -149,7 +149,7 @@ instance ToQuery UpdateIdentityProvider where
 -- | /See:/ 'updateIdentityProviderResponse' smart constructor.
 data UpdateIdentityProviderResponse =
   UpdateIdentityProviderResponse'
-    { _uiprsResponseStatus :: !Int
+    { _uiprsResponseStatus   :: !Int
     , _uiprsIdentityProvider :: !IdentityProviderType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

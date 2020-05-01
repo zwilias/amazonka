@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,9 +45,9 @@ import Network.AWS.Response
 -- | /See:/ 'getType' smart constructor.
 data GetType =
   GetType'
-    { _gtApiId :: !Text
+    { _gtApiId    :: !Text
     , _gtTypeName :: !Text
-    , _gtFormat :: !TypeDefinitionFormat
+    , _gtFormat   :: !TypeDefinitionFormat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -106,7 +106,7 @@ instance ToQuery GetType where
 -- | /See:/ 'getTypeResponse' smart constructor.
 data GetTypeResponse =
   GetTypeResponse'
-    { _gtrsType :: !(Maybe Type)
+    { _gtrsType           :: !(Maybe Type)
     , _gtrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

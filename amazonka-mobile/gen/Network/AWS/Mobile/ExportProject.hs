@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -102,9 +102,9 @@ instance ToQuery ExportProject where
 -- /See:/ 'exportProjectResponse' smart constructor.
 data ExportProjectResponse =
   ExportProjectResponse'
-    { _eprsShareURL :: !(Maybe Text)
-    , _eprsDownloadURL :: !(Maybe Text)
-    , _eprsSnapshotId :: !(Maybe Text)
+    { _eprsShareURL       :: !(Maybe Text)
+    , _eprsDownloadURL    :: !(Maybe Text)
+    , _eprsSnapshotId     :: !(Maybe Text)
     , _eprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

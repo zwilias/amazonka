@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 data DescribeAggregationAuthorizations =
   DescribeAggregationAuthorizations'
     { _daaNextToken :: !(Maybe Text)
-    , _daaLimit :: !(Maybe Nat)
+    , _daaLimit     :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -110,8 +110,8 @@ instance ToQuery DescribeAggregationAuthorizations where
 data DescribeAggregationAuthorizationsResponse =
   DescribeAggregationAuthorizationsResponse'
     { _daarsAggregationAuthorizations :: !(Maybe [AggregationAuthorization])
-    , _daarsNextToken :: !(Maybe Text)
-    , _daarsResponseStatus :: !Int
+    , _daarsNextToken                 :: !(Maybe Text)
+    , _daarsResponseStatus            :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

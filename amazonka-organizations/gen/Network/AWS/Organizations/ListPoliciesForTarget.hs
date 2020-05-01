@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 -- | /See:/ 'listPoliciesForTarget' smart constructor.
 data ListPoliciesForTarget =
   ListPoliciesForTarget'
-    { _lpftNextToken :: !(Maybe Text)
+    { _lpftNextToken  :: !(Maybe Text)
     , _lpftMaxResults :: !(Maybe Nat)
-    , _lpftTargetId :: !Text
-    , _lpftFilter :: !PolicyType
+    , _lpftTargetId   :: !Text
+    , _lpftFilter     :: !PolicyType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -147,8 +147,8 @@ instance ToQuery ListPoliciesForTarget where
 -- | /See:/ 'listPoliciesForTargetResponse' smart constructor.
 data ListPoliciesForTargetResponse =
   ListPoliciesForTargetResponse'
-    { _lpftrsNextToken :: !(Maybe Text)
-    , _lpftrsPolicies :: !(Maybe [PolicySummary])
+    { _lpftrsNextToken      :: !(Maybe Text)
+    , _lpftrsPolicies       :: !(Maybe [PolicySummary])
     , _lpftrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

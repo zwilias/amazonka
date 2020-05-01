@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -30,8 +30,8 @@ import Network.AWS.Prelude
 -- /See:/ 'activeTrustedSigners' smart constructor.
 data ActiveTrustedSigners =
   ActiveTrustedSigners'
-    { _atsItems :: !(Maybe [Signer])
-    , _atsEnabled :: !Bool
+    { _atsItems    :: !(Maybe [Signer])
+    , _atsEnabled  :: !Bool
     , _atsQuantity :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -83,7 +83,7 @@ instance NFData ActiveTrustedSigners
 -- /See:/ 'aliases' smart constructor.
 data Aliases =
   Aliases'
-    { _aItems :: !(Maybe [Text])
+    { _aItems    :: !(Maybe [Text])
     , _aQuantity :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -142,8 +142,8 @@ instance ToXML Aliases where
 data AllowedMethods =
   AllowedMethods'
     { _amCachedMethods :: !(Maybe CachedMethods)
-    , _amQuantity :: !Int
-    , _amItems :: ![Method]
+    , _amQuantity      :: !Int
+    , _amItems         :: ![Method]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -211,19 +211,19 @@ instance ToXML AllowedMethods where
 -- /See:/ 'cacheBehavior' smart constructor.
 data CacheBehavior =
   CacheBehavior'
-    { _cbAllowedMethods :: !(Maybe AllowedMethods)
+    { _cbAllowedMethods             :: !(Maybe AllowedMethods)
     , _cbLambdaFunctionAssociations :: !(Maybe LambdaFunctionAssociations)
-    , _cbMaxTTL :: !(Maybe Integer)
-    , _cbCompress :: !(Maybe Bool)
-    , _cbSmoothStreaming :: !(Maybe Bool)
-    , _cbDefaultTTL :: !(Maybe Integer)
-    , _cbFieldLevelEncryptionId :: !(Maybe Text)
-    , _cbPathPattern :: !Text
-    , _cbTargetOriginId :: !Text
-    , _cbForwardedValues :: !ForwardedValues
-    , _cbTrustedSigners :: !TrustedSigners
-    , _cbViewerProtocolPolicy :: !ViewerProtocolPolicy
-    , _cbMinTTL :: !Integer
+    , _cbMaxTTL                     :: !(Maybe Integer)
+    , _cbCompress                   :: !(Maybe Bool)
+    , _cbSmoothStreaming            :: !(Maybe Bool)
+    , _cbDefaultTTL                 :: !(Maybe Integer)
+    , _cbFieldLevelEncryptionId     :: !(Maybe Text)
+    , _cbPathPattern                :: !Text
+    , _cbTargetOriginId             :: !Text
+    , _cbForwardedValues            :: !ForwardedValues
+    , _cbTrustedSigners             :: !TrustedSigners
+    , _cbViewerProtocolPolicy       :: !ViewerProtocolPolicy
+    , _cbMinTTL                     :: !Integer
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -384,7 +384,7 @@ instance ToXML CacheBehavior where
 -- /See:/ 'cacheBehaviors' smart constructor.
 data CacheBehaviors =
   CacheBehaviors'
-    { _cbItems :: !(Maybe [CacheBehavior])
+    { _cbItems    :: !(Maybe [CacheBehavior])
     , _cbQuantity :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -443,7 +443,7 @@ instance ToXML CacheBehaviors where
 data CachedMethods =
   CachedMethods'
     { _cmQuantity :: !Int
-    , _cmItems :: ![Method]
+    , _cmItems    :: ![Method]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -550,7 +550,7 @@ instance NFData CloudFrontOriginAccessIdentity
 data CloudFrontOriginAccessIdentityConfig =
   CloudFrontOriginAccessIdentityConfig'
     { _cfoaicCallerReference :: !Text
-    , _cfoaicComment :: !Text
+    , _cfoaicComment         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -599,12 +599,12 @@ instance ToXML CloudFrontOriginAccessIdentityConfig where
 -- /See:/ 'cloudFrontOriginAccessIdentityList' smart constructor.
 data CloudFrontOriginAccessIdentityList =
   CloudFrontOriginAccessIdentityList'
-    { _cfoailItems :: !(Maybe [CloudFrontOriginAccessIdentitySummary])
-    , _cfoailNextMarker :: !(Maybe Text)
-    , _cfoailMarker :: !Text
-    , _cfoailMaxItems :: !Int
+    { _cfoailItems       :: !(Maybe [CloudFrontOriginAccessIdentitySummary])
+    , _cfoailNextMarker  :: !(Maybe Text)
+    , _cfoailMarker      :: !Text
+    , _cfoailMaxItems    :: !Int
     , _cfoailIsTruncated :: !Bool
-    , _cfoailQuantity :: !Int
+    , _cfoailQuantity    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -687,9 +687,9 @@ instance NFData CloudFrontOriginAccessIdentityList
 -- /See:/ 'cloudFrontOriginAccessIdentitySummary' smart constructor.
 data CloudFrontOriginAccessIdentitySummary =
   CloudFrontOriginAccessIdentitySummary'
-    { _cfoaisId :: !Text
+    { _cfoaisId                :: !Text
     , _cfoaisS3CanonicalUserId :: !Text
-    , _cfoaisComment :: !Text
+    , _cfoaisComment           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -744,8 +744,8 @@ instance NFData CloudFrontOriginAccessIdentitySummary
 -- /See:/ 'contentTypeProfile' smart constructor.
 data ContentTypeProfile =
   ContentTypeProfile'
-    { _ctpProfileId :: !(Maybe Text)
-    , _ctpFormat :: !Format
+    { _ctpProfileId   :: !(Maybe Text)
+    , _ctpFormat      :: !Format
     , _ctpContentType :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -806,7 +806,7 @@ instance ToXML ContentTypeProfile where
 -- /See:/ 'contentTypeProfileConfig' smart constructor.
 data ContentTypeProfileConfig =
   ContentTypeProfileConfig'
-    { _ctpcContentTypeProfiles :: !(Maybe ContentTypeProfiles)
+    { _ctpcContentTypeProfiles             :: !(Maybe ContentTypeProfiles)
     , _ctpcForwardWhenContentTypeIsUnknown :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -864,7 +864,7 @@ instance ToXML ContentTypeProfileConfig where
 -- /See:/ 'contentTypeProfiles' smart constructor.
 data ContentTypeProfiles =
   ContentTypeProfiles'
-    { _ctpItems :: !(Maybe [ContentTypeProfile])
+    { _ctpItems    :: !(Maybe [ContentTypeProfile])
     , _ctpQuantity :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -914,7 +914,7 @@ instance ToXML ContentTypeProfiles where
 -- /See:/ 'cookieNames' smart constructor.
 data CookieNames =
   CookieNames'
-    { _cnItems :: !(Maybe [Text])
+    { _cnItems    :: !(Maybe [Text])
     , _cnQuantity :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -964,7 +964,7 @@ instance ToXML CookieNames where
 data CookiePreference =
   CookiePreference'
     { _cpWhitelistedNames :: !(Maybe CookieNames)
-    , _cpForward :: !ItemSelection
+    , _cpForward          :: !ItemSelection
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1017,10 +1017,10 @@ instance ToXML CookiePreference where
 -- /See:/ 'customErrorResponse' smart constructor.
 data CustomErrorResponse =
   CustomErrorResponse'
-    { _ceResponsePagePath :: !(Maybe Text)
-    , _ceResponseCode :: !(Maybe Text)
+    { _ceResponsePagePath   :: !(Maybe Text)
+    , _ceResponseCode       :: !(Maybe Text)
     , _ceErrorCachingMinTTL :: !(Maybe Integer)
-    , _ceErrorCode :: !Int
+    , _ceErrorCode          :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1099,7 +1099,7 @@ instance ToXML CustomErrorResponse where
 -- /See:/ 'customErrorResponses' smart constructor.
 data CustomErrorResponses =
   CustomErrorResponses'
-    { _cerItems :: !(Maybe [CustomErrorResponse])
+    { _cerItems    :: !(Maybe [CustomErrorResponse])
     , _cerQuantity :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1149,7 +1149,7 @@ instance ToXML CustomErrorResponses where
 -- /See:/ 'customHeaders' smart constructor.
 data CustomHeaders =
   CustomHeaders'
-    { _chItems :: !(Maybe [OriginCustomHeader])
+    { _chItems    :: !(Maybe [OriginCustomHeader])
     , _chQuantity :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1200,11 +1200,11 @@ instance ToXML CustomHeaders where
 data CustomOriginConfig =
   CustomOriginConfig'
     { _cocOriginKeepaliveTimeout :: !(Maybe Int)
-    , _cocOriginReadTimeout :: !(Maybe Int)
-    , _cocOriginSSLProtocols :: !(Maybe OriginSSLProtocols)
-    , _cocHTTPPort :: !Int
-    , _cocHTTPSPort :: !Int
-    , _cocOriginProtocolPolicy :: !OriginProtocolPolicy
+    , _cocOriginReadTimeout      :: !(Maybe Int)
+    , _cocOriginSSLProtocols     :: !(Maybe OriginSSLProtocols)
+    , _cocHTTPPort               :: !Int
+    , _cocHTTPSPort              :: !Int
+    , _cocOriginProtocolPolicy   :: !OriginProtocolPolicy
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1297,18 +1297,18 @@ instance ToXML CustomOriginConfig where
 -- /See:/ 'defaultCacheBehavior' smart constructor.
 data DefaultCacheBehavior =
   DefaultCacheBehavior'
-    { _dcbAllowedMethods :: !(Maybe AllowedMethods)
+    { _dcbAllowedMethods             :: !(Maybe AllowedMethods)
     , _dcbLambdaFunctionAssociations :: !(Maybe LambdaFunctionAssociations)
-    , _dcbMaxTTL :: !(Maybe Integer)
-    , _dcbCompress :: !(Maybe Bool)
-    , _dcbSmoothStreaming :: !(Maybe Bool)
-    , _dcbDefaultTTL :: !(Maybe Integer)
-    , _dcbFieldLevelEncryptionId :: !(Maybe Text)
-    , _dcbTargetOriginId :: !Text
-    , _dcbForwardedValues :: !ForwardedValues
-    , _dcbTrustedSigners :: !TrustedSigners
-    , _dcbViewerProtocolPolicy :: !ViewerProtocolPolicy
-    , _dcbMinTTL :: !Integer
+    , _dcbMaxTTL                     :: !(Maybe Integer)
+    , _dcbCompress                   :: !(Maybe Bool)
+    , _dcbSmoothStreaming            :: !(Maybe Bool)
+    , _dcbDefaultTTL                 :: !(Maybe Integer)
+    , _dcbFieldLevelEncryptionId     :: !(Maybe Text)
+    , _dcbTargetOriginId             :: !Text
+    , _dcbForwardedValues            :: !ForwardedValues
+    , _dcbTrustedSigners             :: !TrustedSigners
+    , _dcbViewerProtocolPolicy       :: !ViewerProtocolPolicy
+    , _dcbMinTTL                     :: !Integer
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1461,14 +1461,14 @@ instance ToXML DefaultCacheBehavior where
 -- /See:/ 'distribution' smart constructor.
 data Distribution =
   Distribution'
-    { _dId :: !Text
-    , _dARN :: !Text
-    , _dStatus :: !Text
-    , _dLastModifiedTime :: !ISO8601
+    { _dId                            :: !Text
+    , _dARN                           :: !Text
+    , _dStatus                        :: !Text
+    , _dLastModifiedTime              :: !ISO8601
     , _dInProgressInvalidationBatches :: !Int
-    , _dDomainName :: !Text
-    , _dActiveTrustedSigners :: !ActiveTrustedSigners
-    , _dDistributionConfig :: !DistributionConfig
+    , _dDomainName                    :: !Text
+    , _dActiveTrustedSigners          :: !ActiveTrustedSigners
+    , _dDistributionConfig            :: !DistributionConfig
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1571,22 +1571,22 @@ instance NFData Distribution
 -- /See:/ 'distributionConfig' smart constructor.
 data DistributionConfig =
   DistributionConfig'
-    { _dcHTTPVersion :: !(Maybe HTTPVersion)
-    , _dcAliases :: !(Maybe Aliases)
-    , _dcDefaultRootObject :: !(Maybe Text)
-    , _dcPriceClass :: !(Maybe PriceClass)
+    { _dcHTTPVersion          :: !(Maybe HTTPVersion)
+    , _dcAliases              :: !(Maybe Aliases)
+    , _dcDefaultRootObject    :: !(Maybe Text)
+    , _dcPriceClass           :: !(Maybe PriceClass)
     , _dcCustomErrorResponses :: !(Maybe CustomErrorResponses)
-    , _dcWebACLId :: !(Maybe Text)
-    , _dcViewerCertificate :: !(Maybe ViewerCertificate)
-    , _dcRestrictions :: !(Maybe Restrictions)
-    , _dcLogging :: !(Maybe LoggingConfig)
-    , _dcCacheBehaviors :: !(Maybe CacheBehaviors)
-    , _dcIsIPV6Enabled :: !(Maybe Bool)
-    , _dcCallerReference :: !Text
-    , _dcOrigins :: !Origins
+    , _dcWebACLId             :: !(Maybe Text)
+    , _dcViewerCertificate    :: !(Maybe ViewerCertificate)
+    , _dcRestrictions         :: !(Maybe Restrictions)
+    , _dcLogging              :: !(Maybe LoggingConfig)
+    , _dcCacheBehaviors       :: !(Maybe CacheBehaviors)
+    , _dcIsIPV6Enabled        :: !(Maybe Bool)
+    , _dcCallerReference      :: !Text
+    , _dcOrigins              :: !Origins
     , _dcDefaultCacheBehavior :: !DefaultCacheBehavior
-    , _dcComment :: !Text
-    , _dcEnabled :: !Bool
+    , _dcComment              :: !Text
+    , _dcEnabled              :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1771,7 +1771,7 @@ instance ToXML DistributionConfig where
 data DistributionConfigWithTags =
   DistributionConfigWithTags'
     { _dcwtDistributionConfig :: !DistributionConfig
-    , _dcwtTags :: !Tags
+    , _dcwtTags               :: !Tags
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1815,12 +1815,12 @@ instance ToXML DistributionConfigWithTags where
 -- /See:/ 'distributionList' smart constructor.
 data DistributionList =
   DistributionList'
-    { _dlItems :: !(Maybe [DistributionSummary])
-    , _dlNextMarker :: !(Maybe Text)
-    , _dlMarker :: !Text
-    , _dlMaxItems :: !Int
+    { _dlItems       :: !(Maybe [DistributionSummary])
+    , _dlNextMarker  :: !(Maybe Text)
+    , _dlMarker      :: !Text
+    , _dlMaxItems    :: !Int
     , _dlIsTruncated :: !Bool
-    , _dlQuantity :: !Int
+    , _dlQuantity    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1900,24 +1900,24 @@ instance NFData DistributionList
 -- /See:/ 'distributionSummary' smart constructor.
 data DistributionSummary =
   DistributionSummary'
-    { _dsId :: !Text
-    , _dsARN :: !Text
-    , _dsStatus :: !Text
-    , _dsLastModifiedTime :: !ISO8601
-    , _dsDomainName :: !Text
-    , _dsAliases :: !Aliases
-    , _dsOrigins :: !Origins
+    { _dsId                   :: !Text
+    , _dsARN                  :: !Text
+    , _dsStatus               :: !Text
+    , _dsLastModifiedTime     :: !ISO8601
+    , _dsDomainName           :: !Text
+    , _dsAliases              :: !Aliases
+    , _dsOrigins              :: !Origins
     , _dsDefaultCacheBehavior :: !DefaultCacheBehavior
-    , _dsCacheBehaviors :: !CacheBehaviors
+    , _dsCacheBehaviors       :: !CacheBehaviors
     , _dsCustomErrorResponses :: !CustomErrorResponses
-    , _dsComment :: !Text
-    , _dsPriceClass :: !PriceClass
-    , _dsEnabled :: !Bool
-    , _dsViewerCertificate :: !ViewerCertificate
-    , _dsRestrictions :: !Restrictions
-    , _dsWebACLId :: !Text
-    , _dsHTTPVersion :: !HTTPVersion
-    , _dsIsIPV6Enabled :: !Bool
+    , _dsComment              :: !Text
+    , _dsPriceClass           :: !PriceClass
+    , _dsEnabled              :: !Bool
+    , _dsViewerCertificate    :: !ViewerCertificate
+    , _dsRestrictions         :: !Restrictions
+    , _dsWebACLId             :: !Text
+    , _dsHTTPVersion          :: !HTTPVersion
+    , _dsIsIPV6Enabled        :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2108,7 +2108,7 @@ instance NFData DistributionSummary
 -- /See:/ 'encryptionEntities' smart constructor.
 data EncryptionEntities =
   EncryptionEntities'
-    { _eeItems :: !(Maybe [EncryptionEntity])
+    { _eeItems    :: !(Maybe [EncryptionEntity])
     , _eeQuantity :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2158,8 +2158,8 @@ instance ToXML EncryptionEntities where
 -- /See:/ 'encryptionEntity' smart constructor.
 data EncryptionEntity =
   EncryptionEntity'
-    { _eePublicKeyId :: !Text
-    , _eeProviderId :: !Text
+    { _eePublicKeyId   :: !Text
+    , _eeProviderId    :: !Text
     , _eeFieldPatterns :: !FieldPatterns
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2221,8 +2221,8 @@ instance ToXML EncryptionEntity where
 -- /See:/ 'fieldLevelEncryption' smart constructor.
 data FieldLevelEncryption =
   FieldLevelEncryption'
-    { _fleId :: !Text
-    , _fleLastModifiedTime :: !ISO8601
+    { _fleId                         :: !Text
+    , _fleLastModifiedTime           :: !ISO8601
     , _fleFieldLevelEncryptionConfig :: !FieldLevelEncryptionConfig
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2281,10 +2281,10 @@ instance NFData FieldLevelEncryption
 -- /See:/ 'fieldLevelEncryptionConfig' smart constructor.
 data FieldLevelEncryptionConfig =
   FieldLevelEncryptionConfig'
-    { _flecQueryArgProfileConfig :: !(Maybe QueryArgProfileConfig)
+    { _flecQueryArgProfileConfig    :: !(Maybe QueryArgProfileConfig)
     , _flecContentTypeProfileConfig :: !(Maybe ContentTypeProfileConfig)
-    , _flecComment :: !(Maybe Text)
-    , _flecCallerReference :: !Text
+    , _flecComment                  :: !(Maybe Text)
+    , _flecCallerReference          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2360,10 +2360,10 @@ instance ToXML FieldLevelEncryptionConfig where
 -- /See:/ 'fieldLevelEncryptionList' smart constructor.
 data FieldLevelEncryptionList =
   FieldLevelEncryptionList'
-    { _flelItems :: !(Maybe [FieldLevelEncryptionSummary])
+    { _flelItems      :: !(Maybe [FieldLevelEncryptionSummary])
     , _flelNextMarker :: !(Maybe Text)
-    , _flelMaxItems :: !Int
-    , _flelQuantity :: !Int
+    , _flelMaxItems   :: !Int
+    , _flelQuantity   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2487,9 +2487,9 @@ instance NFData FieldLevelEncryptionProfile
 -- /See:/ 'fieldLevelEncryptionProfileConfig' smart constructor.
 data FieldLevelEncryptionProfileConfig =
   FieldLevelEncryptionProfileConfig'
-    { _flepcComment :: !(Maybe Text)
-    , _flepcName :: !Text
-    , _flepcCallerReference :: !Text
+    { _flepcComment            :: !(Maybe Text)
+    , _flepcName               :: !Text
+    , _flepcCallerReference    :: !Text
     , _flepcEncryptionEntities :: !EncryptionEntities
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2563,10 +2563,10 @@ instance ToXML FieldLevelEncryptionProfileConfig where
 -- /See:/ 'fieldLevelEncryptionProfileList' smart constructor.
 data FieldLevelEncryptionProfileList =
   FieldLevelEncryptionProfileList'
-    { _fleplItems :: !(Maybe [FieldLevelEncryptionProfileSummary])
+    { _fleplItems      :: !(Maybe [FieldLevelEncryptionProfileSummary])
     , _fleplNextMarker :: !(Maybe Text)
-    , _fleplMaxItems :: !Int
-    , _fleplQuantity :: !Int
+    , _fleplMaxItems   :: !Int
+    , _fleplQuantity   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2630,10 +2630,10 @@ instance NFData FieldLevelEncryptionProfileList
 -- /See:/ 'fieldLevelEncryptionProfileSummary' smart constructor.
 data FieldLevelEncryptionProfileSummary =
   FieldLevelEncryptionProfileSummary'
-    { _flepsComment :: !(Maybe Text)
-    , _flepsId :: !Text
-    , _flepsLastModifiedTime :: !ISO8601
-    , _flepsName :: !Text
+    { _flepsComment            :: !(Maybe Text)
+    , _flepsId                 :: !Text
+    , _flepsLastModifiedTime   :: !ISO8601
+    , _flepsName               :: !Text
     , _flepsEncryptionEntities :: !EncryptionEntities
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2707,11 +2707,11 @@ instance NFData FieldLevelEncryptionProfileSummary
 -- /See:/ 'fieldLevelEncryptionSummary' smart constructor.
 data FieldLevelEncryptionSummary =
   FieldLevelEncryptionSummary'
-    { _flesQueryArgProfileConfig :: !(Maybe QueryArgProfileConfig)
+    { _flesQueryArgProfileConfig    :: !(Maybe QueryArgProfileConfig)
     , _flesContentTypeProfileConfig :: !(Maybe ContentTypeProfileConfig)
-    , _flesComment :: !(Maybe Text)
-    , _flesId :: !Text
-    , _flesLastModifiedTime :: !ISO8601
+    , _flesComment                  :: !(Maybe Text)
+    , _flesId                       :: !Text
+    , _flesLastModifiedTime         :: !ISO8601
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2787,7 +2787,7 @@ instance NFData FieldLevelEncryptionSummary
 -- /See:/ 'fieldPatterns' smart constructor.
 data FieldPatterns =
   FieldPatterns'
-    { _fpItems :: !(Maybe [Text])
+    { _fpItems    :: !(Maybe [Text])
     , _fpQuantity :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2838,9 +2838,9 @@ instance ToXML FieldPatterns where
 data ForwardedValues =
   ForwardedValues'
     { _fvQueryStringCacheKeys :: !(Maybe QueryStringCacheKeys)
-    , _fvHeaders :: !(Maybe Headers)
-    , _fvQueryString :: !Bool
-    , _fvCookies :: !CookiePreference
+    , _fvHeaders              :: !(Maybe Headers)
+    , _fvQueryString          :: !Bool
+    , _fvCookies              :: !CookiePreference
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2910,9 +2910,9 @@ instance ToXML ForwardedValues where
 -- /See:/ 'geoRestriction' smart constructor.
 data GeoRestriction =
   GeoRestriction'
-    { _grItems :: !(Maybe [Text])
+    { _grItems           :: !(Maybe [Text])
     , _grRestrictionType :: !GeoRestrictionType
-    , _grQuantity :: !Int
+    , _grQuantity        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2976,7 +2976,7 @@ instance ToXML GeoRestriction where
 -- /See:/ 'headers' smart constructor.
 data Headers =
   Headers'
-    { _hItems :: !(Maybe [Text])
+    { _hItems    :: !(Maybe [Text])
     , _hQuantity :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3024,9 +3024,9 @@ instance ToXML Headers where
 -- /See:/ 'invalidation' smart constructor.
 data Invalidation =
   Invalidation'
-    { _iId :: !Text
-    , _iStatus :: !Text
-    , _iCreateTime :: !ISO8601
+    { _iId                :: !Text
+    , _iStatus            :: !Text
+    , _iCreateTime        :: !ISO8601
     , _iInvalidationBatch :: !InvalidationBatch
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3089,7 +3089,7 @@ instance NFData Invalidation
 -- /See:/ 'invalidationBatch' smart constructor.
 data InvalidationBatch =
   InvalidationBatch'
-    { _ibPaths :: !Paths
+    { _ibPaths           :: !Paths
     , _ibCallerReference :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3136,12 +3136,12 @@ instance ToXML InvalidationBatch where
 -- /See:/ 'invalidationList' smart constructor.
 data InvalidationList =
   InvalidationList'
-    { _ilItems :: !(Maybe [InvalidationSummary])
-    , _ilNextMarker :: !(Maybe Text)
-    , _ilMarker :: !Text
-    , _ilMaxItems :: !Int
+    { _ilItems       :: !(Maybe [InvalidationSummary])
+    , _ilNextMarker  :: !(Maybe Text)
+    , _ilMarker      :: !Text
+    , _ilMaxItems    :: !Int
     , _ilIsTruncated :: !Bool
-    , _ilQuantity :: !Int
+    , _ilQuantity    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3221,9 +3221,9 @@ instance NFData InvalidationList
 -- /See:/ 'invalidationSummary' smart constructor.
 data InvalidationSummary =
   InvalidationSummary'
-    { _isId :: !Text
+    { _isId         :: !Text
     , _isCreateTime :: !ISO8601
-    , _isStatus :: !Text
+    , _isStatus     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3275,7 +3275,7 @@ instance NFData InvalidationSummary
 -- /See:/ 'keyPairIds' smart constructor.
 data KeyPairIds =
   KeyPairIds'
-    { _kpiItems :: !(Maybe [Text])
+    { _kpiItems    :: !(Maybe [Text])
     , _kpiQuantity :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3319,7 +3319,7 @@ instance NFData KeyPairIds
 data LambdaFunctionAssociation =
   LambdaFunctionAssociation'
     { _lfaLambdaFunctionARN :: !Text
-    , _lfaEventType :: !EventType
+    , _lfaEventType         :: !EventType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3374,7 +3374,7 @@ instance ToXML LambdaFunctionAssociation where
 -- /See:/ 'lambdaFunctionAssociations' smart constructor.
 data LambdaFunctionAssociations =
   LambdaFunctionAssociations'
-    { _lfaItems :: !(Maybe [LambdaFunctionAssociation])
+    { _lfaItems    :: !(Maybe [LambdaFunctionAssociation])
     , _lfaQuantity :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3424,10 +3424,10 @@ instance ToXML LambdaFunctionAssociations where
 -- /See:/ 'loggingConfig' smart constructor.
 data LoggingConfig =
   LoggingConfig'
-    { _lcEnabled :: !Bool
+    { _lcEnabled        :: !Bool
     , _lcIncludeCookies :: !Bool
-    , _lcBucket :: !Text
-    , _lcPrefix :: !Text
+    , _lcBucket         :: !Text
+    , _lcPrefix         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3500,12 +3500,12 @@ instance ToXML LoggingConfig where
 -- /See:/ 'origin' smart constructor.
 data Origin =
   Origin'
-    { _oCustomHeaders :: !(Maybe CustomHeaders)
+    { _oCustomHeaders      :: !(Maybe CustomHeaders)
     , _oCustomOriginConfig :: !(Maybe CustomOriginConfig)
-    , _oS3OriginConfig :: !(Maybe S3OriginConfig)
-    , _oOriginPath :: !(Maybe Text)
-    , _oId :: !Text
-    , _oDomainName :: !Text
+    , _oS3OriginConfig     :: !(Maybe S3OriginConfig)
+    , _oOriginPath         :: !(Maybe Text)
+    , _oId                 :: !Text
+    , _oDomainName         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3593,7 +3593,7 @@ instance ToXML Origin where
 -- /See:/ 'originCustomHeader' smart constructor.
 data OriginCustomHeader =
   OriginCustomHeader'
-    { _ochHeaderName :: !Text
+    { _ochHeaderName  :: !Text
     , _ochHeaderValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3641,7 +3641,7 @@ instance ToXML OriginCustomHeader where
 data OriginSSLProtocols =
   OriginSSLProtocols'
     { _ospQuantity :: !Int
-    , _ospItems :: ![SSLProtocol]
+    , _ospItems    :: ![SSLProtocol]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3687,7 +3687,7 @@ instance ToXML OriginSSLProtocols where
 -- /See:/ 'origins' smart constructor.
 data Origins =
   Origins'
-    { _oItems :: !(Maybe (List1 Origin))
+    { _oItems    :: !(Maybe (List1 Origin))
     , _oQuantity :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3735,7 +3735,7 @@ instance ToXML Origins where
 -- /See:/ 'paths' smart constructor.
 data Paths =
   Paths'
-    { _pItems :: !(Maybe [Text])
+    { _pItems    :: !(Maybe [Text])
     , _pQuantity :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3783,8 +3783,8 @@ instance ToXML Paths where
 -- /See:/ 'publicKey' smart constructor.
 data PublicKey =
   PublicKey'
-    { _pkId :: !Text
-    , _pkCreatedTime :: !ISO8601
+    { _pkId              :: !Text
+    , _pkCreatedTime     :: !ISO8601
     , _pkPublicKeyConfig :: !PublicKeyConfig
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3838,10 +3838,10 @@ instance NFData PublicKey
 -- /See:/ 'publicKeyConfig' smart constructor.
 data PublicKeyConfig =
   PublicKeyConfig'
-    { _pkcComment :: !(Maybe Text)
+    { _pkcComment         :: !(Maybe Text)
     , _pkcCallerReference :: !Text
-    , _pkcName :: !Text
-    , _pkcEncodedKey :: !Text
+    , _pkcName            :: !Text
+    , _pkcEncodedKey      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3912,10 +3912,10 @@ instance ToXML PublicKeyConfig where
 -- /See:/ 'publicKeyList' smart constructor.
 data PublicKeyList =
   PublicKeyList'
-    { _pklItems :: !(Maybe [PublicKeySummary])
+    { _pklItems      :: !(Maybe [PublicKeySummary])
     , _pklNextMarker :: !(Maybe Text)
-    , _pklMaxItems :: !Int
-    , _pklQuantity :: !Int
+    , _pklMaxItems   :: !Int
+    , _pklQuantity   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3977,11 +3977,11 @@ instance NFData PublicKeyList
 -- /See:/ 'publicKeySummary' smart constructor.
 data PublicKeySummary =
   PublicKeySummary'
-    { _pksComment :: !(Maybe Text)
-    , _pksId :: !Text
-    , _pksName :: !Text
+    { _pksComment     :: !(Maybe Text)
+    , _pksId          :: !Text
+    , _pksName        :: !Text
     , _pksCreatedTime :: !ISO8601
-    , _pksEncodedKey :: !Text
+    , _pksEncodedKey  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4050,7 +4050,7 @@ instance NFData PublicKeySummary
 -- /See:/ 'queryArgProfile' smart constructor.
 data QueryArgProfile =
   QueryArgProfile'
-    { _qapQueryArg :: !Text
+    { _qapQueryArg  :: !Text
     , _qapProfileId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -4095,7 +4095,7 @@ instance ToXML QueryArgProfile where
 -- /See:/ 'queryArgProfileConfig' smart constructor.
 data QueryArgProfileConfig =
   QueryArgProfileConfig'
-    { _qapcQueryArgProfiles :: !(Maybe QueryArgProfiles)
+    { _qapcQueryArgProfiles                    :: !(Maybe QueryArgProfiles)
     , _qapcForwardWhenQueryArgProfileIsUnknown :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -4153,7 +4153,7 @@ instance ToXML QueryArgProfileConfig where
 -- /See:/ 'queryArgProfiles' smart constructor.
 data QueryArgProfiles =
   QueryArgProfiles'
-    { _qapItems :: !(Maybe [QueryArgProfile])
+    { _qapItems    :: !(Maybe [QueryArgProfile])
     , _qapQuantity :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -4199,7 +4199,7 @@ instance ToXML QueryArgProfiles where
 -- | /See:/ 'queryStringCacheKeys' smart constructor.
 data QueryStringCacheKeys =
   QueryStringCacheKeys'
-    { _qsckItems :: !(Maybe [Text])
+    { _qsckItems    :: !(Maybe [Text])
     , _qsckQuantity :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -4285,7 +4285,7 @@ instance ToXML Restrictions where
 -- /See:/ 's3Origin' smart constructor.
 data S3Origin =
   S3Origin'
-    { _soDomainName :: !Text
+    { _soDomainName           :: !Text
     , _soOriginAccessIdentity :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -4377,7 +4377,7 @@ instance ToXML S3OriginConfig where
 data Signer =
   Signer'
     { _sAWSAccountNumber :: !(Maybe Text)
-    , _sKeyPairIds :: !(Maybe KeyPairIds)
+    , _sKeyPairIds       :: !(Maybe KeyPairIds)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4413,12 +4413,12 @@ instance NFData Signer
 -- /See:/ 'streamingDistribution' smart constructor.
 data StreamingDistribution =
   StreamingDistribution'
-    { _sdLastModifiedTime :: !(Maybe ISO8601)
-    , _sdId :: !Text
-    , _sdARN :: !Text
-    , _sdStatus :: !Text
-    , _sdDomainName :: !Text
-    , _sdActiveTrustedSigners :: !ActiveTrustedSigners
+    { _sdLastModifiedTime            :: !(Maybe ISO8601)
+    , _sdId                          :: !Text
+    , _sdARN                         :: !Text
+    , _sdStatus                      :: !Text
+    , _sdDomainName                  :: !Text
+    , _sdActiveTrustedSigners        :: !ActiveTrustedSigners
     , _sdStreamingDistributionConfig :: !StreamingDistributionConfig
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -4513,14 +4513,14 @@ instance NFData StreamingDistribution
 -- /See:/ 'streamingDistributionConfig' smart constructor.
 data StreamingDistributionConfig =
   StreamingDistributionConfig'
-    { _sdcAliases :: !(Maybe Aliases)
-    , _sdcPriceClass :: !(Maybe PriceClass)
-    , _sdcLogging :: !(Maybe StreamingLoggingConfig)
+    { _sdcAliases         :: !(Maybe Aliases)
+    , _sdcPriceClass      :: !(Maybe PriceClass)
+    , _sdcLogging         :: !(Maybe StreamingLoggingConfig)
     , _sdcCallerReference :: !Text
-    , _sdcS3Origin :: !S3Origin
-    , _sdcComment :: !Text
-    , _sdcTrustedSigners :: !TrustedSigners
-    , _sdcEnabled :: !Bool
+    , _sdcS3Origin        :: !S3Origin
+    , _sdcComment         :: !Text
+    , _sdcTrustedSigners  :: !TrustedSigners
+    , _sdcEnabled         :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4630,7 +4630,7 @@ instance ToXML StreamingDistributionConfig where
 data StreamingDistributionConfigWithTags =
   StreamingDistributionConfigWithTags'
     { _sdcwtStreamingDistributionConfig :: !StreamingDistributionConfig
-    , _sdcwtTags :: !Tags
+    , _sdcwtTags                        :: !Tags
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4681,12 +4681,12 @@ instance ToXML StreamingDistributionConfigWithTags where
 -- /See:/ 'streamingDistributionList' smart constructor.
 data StreamingDistributionList =
   StreamingDistributionList'
-    { _sdlItems :: !(Maybe [StreamingDistributionSummary])
-    , _sdlNextMarker :: !(Maybe Text)
-    , _sdlMarker :: !Text
-    , _sdlMaxItems :: !Int
+    { _sdlItems       :: !(Maybe [StreamingDistributionSummary])
+    , _sdlNextMarker  :: !(Maybe Text)
+    , _sdlMarker      :: !Text
+    , _sdlMaxItems    :: !Int
     , _sdlIsTruncated :: !Bool
-    , _sdlQuantity :: !Int
+    , _sdlQuantity    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4767,17 +4767,17 @@ instance NFData StreamingDistributionList
 -- /See:/ 'streamingDistributionSummary' smart constructor.
 data StreamingDistributionSummary =
   StreamingDistributionSummary'
-    { _sdsId :: !Text
-    , _sdsARN :: !Text
-    , _sdsStatus :: !Text
+    { _sdsId               :: !Text
+    , _sdsARN              :: !Text
+    , _sdsStatus           :: !Text
     , _sdsLastModifiedTime :: !ISO8601
-    , _sdsDomainName :: !Text
-    , _sdsS3Origin :: !S3Origin
-    , _sdsAliases :: !Aliases
-    , _sdsTrustedSigners :: !TrustedSigners
-    , _sdsComment :: !Text
-    , _sdsPriceClass :: !PriceClass
-    , _sdsEnabled :: !Bool
+    , _sdsDomainName       :: !Text
+    , _sdsS3Origin         :: !S3Origin
+    , _sdsAliases          :: !Aliases
+    , _sdsTrustedSigners   :: !TrustedSigners
+    , _sdsComment          :: !Text
+    , _sdsPriceClass       :: !PriceClass
+    , _sdsEnabled          :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4904,8 +4904,8 @@ instance NFData StreamingDistributionSummary
 data StreamingLoggingConfig =
   StreamingLoggingConfig'
     { _slcEnabled :: !Bool
-    , _slcBucket :: !Text
-    , _slcPrefix :: !Text
+    , _slcBucket  :: !Text
+    , _slcPrefix  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -4961,7 +4961,7 @@ instance ToXML StreamingLoggingConfig where
 data Tag =
   Tag'
     { _tagValue :: !(Maybe Text)
-    , _tagKey :: !Text
+    , _tagKey   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -5074,8 +5074,8 @@ instance ToXML Tags where
 -- /See:/ 'trustedSigners' smart constructor.
 data TrustedSigners =
   TrustedSigners'
-    { _tsItems :: !(Maybe [Text])
-    , _tsEnabled :: !Bool
+    { _tsItems    :: !(Maybe [Text])
+    , _tsEnabled  :: !Bool
     , _tsQuantity :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -5205,12 +5205,12 @@ instance ToXML TrustedSigners where
 -- /See:/ 'viewerCertificate' smart constructor.
 data ViewerCertificate =
   ViewerCertificate'
-    { _vcSSLSupportMethod :: !(Maybe SSLSupportMethod)
-    , _vcACMCertificateARN :: !(Maybe Text)
-    , _vcCertificateSource :: !(Maybe CertificateSource)
-    , _vcMinimumProtocolVersion :: !(Maybe MinimumProtocolVersion)
-    , _vcCertificate :: !(Maybe Text)
-    , _vcIAMCertificateId :: !(Maybe Text)
+    { _vcSSLSupportMethod             :: !(Maybe SSLSupportMethod)
+    , _vcACMCertificateARN            :: !(Maybe Text)
+    , _vcCertificateSource            :: !(Maybe CertificateSource)
+    , _vcMinimumProtocolVersion       :: !(Maybe MinimumProtocolVersion)
+    , _vcCertificate                  :: !(Maybe Text)
+    , _vcIAMCertificateId             :: !(Maybe Text)
     , _vcCloudFrontDefaultCertificate :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

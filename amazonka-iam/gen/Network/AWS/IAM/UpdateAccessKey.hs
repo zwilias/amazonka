@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- | /See:/ 'updateAccessKey' smart constructor.
 data UpdateAccessKey =
   UpdateAccessKey'
-    { _uakUserName :: !(Maybe Text)
+    { _uakUserName    :: !(Maybe Text)
     , _uakAccessKeyId :: !AccessKey
-    , _uakStatus :: !StatusType
+    , _uakStatus      :: !StatusType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

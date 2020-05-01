@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- | /See:/ 'listRulesPackages' smart constructor.
 data ListRulesPackages =
   ListRulesPackages'
-    { _lrpNextToken :: !(Maybe Text)
+    { _lrpNextToken  :: !(Maybe Text)
     , _lrpMaxResults :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -118,8 +118,8 @@ instance ToQuery ListRulesPackages where
 -- | /See:/ 'listRulesPackagesResponse' smart constructor.
 data ListRulesPackagesResponse =
   ListRulesPackagesResponse'
-    { _lrprsNextToken :: !(Maybe Text)
-    , _lrprsResponseStatus :: !Int
+    { _lrprsNextToken        :: !(Maybe Text)
+    , _lrprsResponseStatus   :: !Int
     , _lrprsRulesPackageARNs :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

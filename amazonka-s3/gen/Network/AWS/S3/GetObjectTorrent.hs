@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,8 +45,8 @@ import Network.AWS.S3.Types.Product
 data GetObjectTorrent =
   GetObjectTorrent'
     { _gotRequestPayer :: !(Maybe RequestPayer)
-    , _gotBucket :: !BucketName
-    , _gotKey :: !ObjectKey
+    , _gotBucket       :: !BucketName
+    , _gotKey          :: !ObjectKey
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -109,7 +109,7 @@ data GetObjectTorrentResponse =
   GetObjectTorrentResponse'
     { _getrsRequestCharged :: !(Maybe RequestCharged)
     , _getrsResponseStatus :: !Int
-    , _getrsBody :: !RsBody
+    , _getrsBody           :: !RsBody
     }
   deriving (Show, Generic)
 

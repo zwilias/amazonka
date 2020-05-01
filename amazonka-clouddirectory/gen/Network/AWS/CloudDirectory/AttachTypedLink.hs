@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,11 +47,11 @@ import Network.AWS.Response
 -- | /See:/ 'attachTypedLink' smart constructor.
 data AttachTypedLink =
   AttachTypedLink'
-    { _atlDirectoryARN :: !Text
+    { _atlDirectoryARN          :: !Text
     , _atlSourceObjectReference :: !ObjectReference
     , _atlTargetObjectReference :: !ObjectReference
-    , _atlTypedLinkFacet :: !TypedLinkSchemaAndFacetName
-    , _atlAttributes :: ![AttributeNameAndValue]
+    , _atlTypedLinkFacet        :: !TypedLinkSchemaAndFacetName
+    , _atlAttributes            :: ![AttributeNameAndValue]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -142,7 +142,7 @@ instance ToQuery AttachTypedLink where
 data AttachTypedLinkResponse =
   AttachTypedLinkResponse'
     { _atlrsTypedLinkSpecifier :: !(Maybe TypedLinkSpecifier)
-    , _atlrsResponseStatus :: !Int
+    , _atlrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

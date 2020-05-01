@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,8 +54,8 @@ import Network.AWS.Response
 data DeleteDBCluster =
   DeleteDBCluster'
     { _ddbcFinalDBSnapshotIdentifier :: !(Maybe Text)
-    , _ddbcSkipFinalSnapshot :: !(Maybe Bool)
-    , _ddbcDBClusterIdentifier :: !Text
+    , _ddbcSkipFinalSnapshot         :: !(Maybe Bool)
+    , _ddbcDBClusterIdentifier       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -128,7 +128,7 @@ instance ToQuery DeleteDBCluster where
 -- | /See:/ 'deleteDBClusterResponse' smart constructor.
 data DeleteDBClusterResponse =
   DeleteDBClusterResponse'
-    { _ddbcrsDBCluster :: !(Maybe DBCluster)
+    { _ddbcrsDBCluster      :: !(Maybe DBCluster)
     , _ddbcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

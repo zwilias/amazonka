@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,7 +27,7 @@ import Network.AWS.STS.Types.Sum
 data AssumedRoleUser =
   AssumedRoleUser'
     { _aruAssumedRoleId :: !Text
-    , _aruARN :: !Text
+    , _aruARN           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -68,7 +68,7 @@ instance NFData AssumedRoleUser
 data FederatedUser =
   FederatedUser'
     { _fuFederatedUserId :: !Text
-    , _fuARN :: !Text
+    , _fuARN             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

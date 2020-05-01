@@ -78,15 +78,15 @@ module Network.AWS.MediaStore
   ) where
 
 import Network.AWS.MediaStore.CreateContainer
-import Network.AWS.MediaStore.DeleteCORSPolicy
 import Network.AWS.MediaStore.DeleteContainer
 import Network.AWS.MediaStore.DeleteContainerPolicy
+import Network.AWS.MediaStore.DeleteCORSPolicy
 import Network.AWS.MediaStore.DescribeContainer
-import Network.AWS.MediaStore.GetCORSPolicy
 import Network.AWS.MediaStore.GetContainerPolicy
+import Network.AWS.MediaStore.GetCORSPolicy
 import Network.AWS.MediaStore.ListContainers
-import Network.AWS.MediaStore.PutCORSPolicy
 import Network.AWS.MediaStore.PutContainerPolicy
+import Network.AWS.MediaStore.PutCORSPolicy
 import Network.AWS.MediaStore.Types
 import Network.AWS.MediaStore.Waiters
 {- $errors

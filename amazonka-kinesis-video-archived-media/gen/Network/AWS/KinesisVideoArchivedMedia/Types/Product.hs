@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,10 +27,10 @@ import Network.AWS.Prelude
 data Fragment =
   Fragment'
     { _fFragmentLengthInMilliseconds :: !(Maybe Integer)
-    , _fServerTimestamp :: !(Maybe POSIX)
-    , _fFragmentSizeInBytes :: !(Maybe Integer)
-    , _fFragmentNumber :: !(Maybe Text)
-    , _fProducerTimestamp :: !(Maybe POSIX)
+    , _fServerTimestamp              :: !(Maybe POSIX)
+    , _fFragmentSizeInBytes          :: !(Maybe Integer)
+    , _fFragmentNumber               :: !(Maybe Text)
+    , _fProducerTimestamp            :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -106,7 +106,7 @@ instance NFData Fragment
 data FragmentSelector =
   FragmentSelector'
     { _fsFragmentSelectorType :: !FragmentSelectorType
-    , _fsTimestampRange :: !TimestampRange
+    , _fsTimestampRange       :: !TimestampRange
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -156,7 +156,7 @@ instance ToJSON FragmentSelector where
 data TimestampRange =
   TimestampRange'
     { _trStartTimestamp :: !POSIX
-    , _trEndTimestamp :: !POSIX
+    , _trEndTimestamp   :: !POSIX
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

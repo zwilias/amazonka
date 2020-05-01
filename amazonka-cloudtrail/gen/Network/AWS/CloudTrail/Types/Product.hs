@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -41,7 +41,7 @@ import Network.AWS.Prelude
 data DataResource =
   DataResource'
     { _drValues :: !(Maybe [Text])
-    , _drType :: !(Maybe Text)
+    , _drType   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -84,13 +84,13 @@ instance ToJSON DataResource where
 -- /See:/ 'event' smart constructor.
 data Event =
   Event'
-    { _eUsername :: !(Maybe Text)
-    , _eResources :: !(Maybe [Resource])
-    , _eEventTime :: !(Maybe POSIX)
+    { _eUsername        :: !(Maybe Text)
+    , _eResources       :: !(Maybe [Resource])
+    , _eEventTime       :: !(Maybe POSIX)
     , _eCloudTrailEvent :: !(Maybe Text)
-    , _eEventName :: !(Maybe Text)
-    , _eEventSource :: !(Maybe Text)
-    , _eEventId :: !(Maybe Text)
+    , _eEventName       :: !(Maybe Text)
+    , _eEventSource     :: !(Maybe Text)
+    , _eEventId         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -176,8 +176,8 @@ instance NFData Event
 -- /See:/ 'eventSelector' smart constructor.
 data EventSelector =
   EventSelector'
-    { _esDataResources :: !(Maybe [DataResource])
-    , _esReadWriteType :: !(Maybe ReadWriteType)
+    { _esDataResources           :: !(Maybe [DataResource])
+    , _esReadWriteType           :: !(Maybe ReadWriteType)
     , _esIncludeManagementEvents :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -242,7 +242,7 @@ instance ToJSON EventSelector where
 -- /See:/ 'lookupAttribute' smart constructor.
 data LookupAttribute =
   LookupAttribute'
-    { _laAttributeKey :: !LookupAttributeKey
+    { _laAttributeKey   :: !LookupAttributeKey
     , _laAttributeValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -289,9 +289,9 @@ instance ToJSON LookupAttribute where
 -- /See:/ 'publicKey' smart constructor.
 data PublicKey =
   PublicKey'
-    { _pkFingerprint :: !(Maybe Text)
-    , _pkValidityEndTime :: !(Maybe POSIX)
-    , _pkValue :: !(Maybe Base64)
+    { _pkFingerprint       :: !(Maybe Text)
+    , _pkValidityEndTime   :: !(Maybe POSIX)
+    , _pkValue             :: !(Maybe Base64)
     , _pkValidityStartTime :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -396,7 +396,7 @@ instance NFData Resource
 data ResourceTag =
   ResourceTag'
     { _rResourceId :: !(Maybe Text)
-    , _rTagsList :: !(Maybe [Tag])
+    , _rTagsList   :: !(Maybe [Tag])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -437,7 +437,7 @@ instance NFData ResourceTag
 data Tag =
   Tag'
     { _tagValue :: !(Maybe Text)
-    , _tagKey :: !Text
+    , _tagKey   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -479,20 +479,20 @@ instance ToJSON Tag where
 -- /See:/ 'trail' smart constructor.
 data Trail =
   Trail'
-    { _tLogFileValidationEnabled :: !(Maybe Bool)
-    , _tTrailARN :: !(Maybe Text)
-    , _tS3KeyPrefix :: !(Maybe Text)
-    , _tSNSTopicARN :: !(Maybe Text)
-    , _tSNSTopicName :: !(Maybe Text)
-    , _tCloudWatchLogsLogGroupARN :: !(Maybe Text)
-    , _tKMSKeyId :: !(Maybe Text)
-    , _tHomeRegion :: !(Maybe Text)
-    , _tName :: !(Maybe Text)
+    { _tLogFileValidationEnabled   :: !(Maybe Bool)
+    , _tTrailARN                   :: !(Maybe Text)
+    , _tS3KeyPrefix                :: !(Maybe Text)
+    , _tSNSTopicARN                :: !(Maybe Text)
+    , _tSNSTopicName               :: !(Maybe Text)
+    , _tCloudWatchLogsLogGroupARN  :: !(Maybe Text)
+    , _tKMSKeyId                   :: !(Maybe Text)
+    , _tHomeRegion                 :: !(Maybe Text)
+    , _tName                       :: !(Maybe Text)
     , _tIncludeGlobalServiceEvents :: !(Maybe Bool)
-    , _tHasCustomEventSelectors :: !(Maybe Bool)
-    , _tCloudWatchLogsRoleARN :: !(Maybe Text)
-    , _tS3BucketName :: !(Maybe Text)
-    , _tIsMultiRegionTrail :: !(Maybe Bool)
+    , _tHasCustomEventSelectors    :: !(Maybe Bool)
+    , _tCloudWatchLogsRoleARN      :: !(Maybe Text)
+    , _tS3BucketName               :: !(Maybe Text)
+    , _tIsMultiRegionTrail         :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

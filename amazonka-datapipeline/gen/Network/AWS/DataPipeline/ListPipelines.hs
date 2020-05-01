@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -114,7 +114,7 @@ instance ToQuery ListPipelines where
 data ListPipelinesResponse =
   ListPipelinesResponse'
     { _lprsHasMoreResults :: !(Maybe Bool)
-    , _lprsMarker :: !(Maybe Text)
+    , _lprsMarker         :: !(Maybe Text)
     , _lprsResponseStatus :: !Int
     , _lprsPipelineIdList :: ![PipelineIdName]
     }

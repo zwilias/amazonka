@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.Response
 data CreateLoggerDefinition =
   CreateLoggerDefinition'
     { _cldAmznClientToken :: !(Maybe Text)
-    , _cldInitialVersion :: !(Maybe LoggerDefinitionVersion)
-    , _cldName :: !(Maybe Text)
+    , _cldInitialVersion  :: !(Maybe LoggerDefinitionVersion)
+    , _cldName            :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -129,14 +129,14 @@ instance ToQuery CreateLoggerDefinition where
 -- | /See:/ 'createLoggerDefinitionResponse' smart constructor.
 data CreateLoggerDefinitionResponse =
   CreateLoggerDefinitionResponse'
-    { _cldrsLatestVersionARN :: !(Maybe Text)
-    , _cldrsARN :: !(Maybe Text)
-    , _cldrsName :: !(Maybe Text)
-    , _cldrsCreationTimestamp :: !(Maybe Text)
-    , _cldrsId :: !(Maybe Text)
-    , _cldrsLatestVersion :: !(Maybe Text)
+    { _cldrsLatestVersionARN     :: !(Maybe Text)
+    , _cldrsARN                  :: !(Maybe Text)
+    , _cldrsName                 :: !(Maybe Text)
+    , _cldrsCreationTimestamp    :: !(Maybe Text)
+    , _cldrsId                   :: !(Maybe Text)
+    , _cldrsLatestVersion        :: !(Maybe Text)
     , _cldrsLastUpdatedTimestamp :: !(Maybe Text)
-    , _cldrsResponseStatus :: !Int
+    , _cldrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,18 +57,18 @@ import Network.AWS.Response
 -- | /See:/ 'putScalingPolicy' smart constructor.
 data PutScalingPolicy =
   PutScalingPolicy'
-    { _pspMinAdjustmentStep :: !(Maybe Int)
-    , _pspEstimatedInstanceWarmup :: !(Maybe Int)
-    , _pspPolicyType :: !(Maybe Text)
-    , _pspStepAdjustments :: !(Maybe [StepAdjustment])
+    { _pspMinAdjustmentStep           :: !(Maybe Int)
+    , _pspEstimatedInstanceWarmup     :: !(Maybe Int)
+    , _pspPolicyType                  :: !(Maybe Text)
+    , _pspStepAdjustments             :: !(Maybe [StepAdjustment])
     , _pspTargetTrackingConfiguration :: !(Maybe TargetTrackingConfiguration)
-    , _pspAdjustmentType :: !(Maybe Text)
-    , _pspScalingAdjustment :: !(Maybe Int)
-    , _pspCooldown :: !(Maybe Int)
-    , _pspMetricAggregationType :: !(Maybe Text)
-    , _pspMinAdjustmentMagnitude :: !(Maybe Int)
-    , _pspAutoScalingGroupName :: !Text
-    , _pspPolicyName :: !Text
+    , _pspAdjustmentType              :: !(Maybe Text)
+    , _pspScalingAdjustment           :: !(Maybe Int)
+    , _pspCooldown                    :: !(Maybe Int)
+    , _pspMetricAggregationType       :: !(Maybe Text)
+    , _pspMinAdjustmentMagnitude      :: !(Maybe Int)
+    , _pspAutoScalingGroupName        :: !Text
+    , _pspPolicyName                  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -227,8 +227,8 @@ instance ToQuery PutScalingPolicy where
 -- /See:/ 'putScalingPolicyResponse' smart constructor.
 data PutScalingPolicyResponse =
   PutScalingPolicyResponse'
-    { _psprsPolicyARN :: !(Maybe Text)
-    , _psprsAlarms :: !(Maybe [Alarm])
+    { _psprsPolicyARN      :: !(Maybe Text)
+    , _psprsAlarms         :: !(Maybe [Alarm])
     , _psprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

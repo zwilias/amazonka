@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,14 +58,14 @@ import Network.AWS.Response
 -- /See:/ 'modifyReplicationTask' smart constructor.
 data ModifyReplicationTask =
   ModifyReplicationTask'
-    { _mrtReplicationTaskSettings :: !(Maybe Text)
+    { _mrtReplicationTaskSettings   :: !(Maybe Text)
     , _mrtReplicationTaskIdentifier :: !(Maybe Text)
-    , _mrtCdcStartPosition :: !(Maybe Text)
-    , _mrtTableMappings :: !(Maybe Text)
-    , _mrtMigrationType :: !(Maybe MigrationTypeValue)
-    , _mrtCdcStopPosition :: !(Maybe Text)
-    , _mrtCdcStartTime :: !(Maybe POSIX)
-    , _mrtReplicationTaskARN :: !Text
+    , _mrtCdcStartPosition          :: !(Maybe Text)
+    , _mrtTableMappings             :: !(Maybe Text)
+    , _mrtMigrationType             :: !(Maybe MigrationTypeValue)
+    , _mrtCdcStopPosition           :: !(Maybe Text)
+    , _mrtCdcStartTime              :: !(Maybe POSIX)
+    , _mrtReplicationTaskARN        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -193,7 +193,7 @@ instance ToQuery ModifyReplicationTask where
 data ModifyReplicationTaskResponse =
   ModifyReplicationTaskResponse'
     { _mrtrsReplicationTask :: !(Maybe ReplicationTask)
-    , _mrtrsResponseStatus :: !Int
+    , _mrtrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

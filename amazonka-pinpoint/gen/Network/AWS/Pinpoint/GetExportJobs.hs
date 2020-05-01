@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -43,8 +43,8 @@ import Network.AWS.Response
 -- | /See:/ 'getExportJobs' smart constructor.
 data GetExportJobs =
   GetExportJobs'
-    { _gejsToken :: !(Maybe Text)
-    , _gejsPageSize :: !(Maybe Text)
+    { _gejsToken         :: !(Maybe Text)
+    , _gejsPageSize      :: !(Maybe Text)
     , _gejsApplicationId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -108,7 +108,7 @@ instance ToQuery GetExportJobs where
 -- | /See:/ 'getExportJobsResponse' smart constructor.
 data GetExportJobsResponse =
   GetExportJobsResponse'
-    { _gejrsResponseStatus :: !Int
+    { _gejrsResponseStatus     :: !Int
     , _gejrsExportJobsResponse :: !ExportJobsResponse
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

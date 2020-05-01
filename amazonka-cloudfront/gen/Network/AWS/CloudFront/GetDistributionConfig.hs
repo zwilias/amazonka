@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -96,9 +96,9 @@ instance ToQuery GetDistributionConfig where
 -- /See:/ 'getDistributionConfigResponse' smart constructor.
 data GetDistributionConfigResponse =
   GetDistributionConfigResponse'
-    { _gdcrsETag :: !(Maybe Text)
+    { _gdcrsETag               :: !(Maybe Text)
     , _gdcrsDistributionConfig :: !(Maybe DistributionConfig)
-    , _gdcrsResponseStatus :: !Int
+    , _gdcrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

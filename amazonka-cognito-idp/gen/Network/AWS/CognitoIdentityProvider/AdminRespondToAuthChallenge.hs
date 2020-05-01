@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,13 +58,13 @@ import Network.AWS.Response
 -- /See:/ 'adminRespondToAuthChallenge' smart constructor.
 data AdminRespondToAuthChallenge =
   AdminRespondToAuthChallenge'
-    { _artacContextData :: !(Maybe ContextDataType)
-    , _artacAnalyticsMetadata :: !(Maybe AnalyticsMetadataType)
+    { _artacContextData        :: !(Maybe ContextDataType)
+    , _artacAnalyticsMetadata  :: !(Maybe AnalyticsMetadataType)
     , _artacChallengeResponses :: !(Maybe (Map Text Text))
-    , _artacSession :: !(Maybe Text)
-    , _artacUserPoolId :: !Text
-    , _artacClientId :: !(Sensitive Text)
-    , _artacChallengeName :: !ChallengeNameType
+    , _artacSession            :: !(Maybe Text)
+    , _artacUserPoolId         :: !Text
+    , _artacClientId           :: !(Sensitive Text)
+    , _artacChallengeName      :: !ChallengeNameType
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -186,11 +186,11 @@ instance ToQuery AdminRespondToAuthChallenge where
 -- /See:/ 'adminRespondToAuthChallengeResponse' smart constructor.
 data AdminRespondToAuthChallengeResponse =
   AdminRespondToAuthChallengeResponse'
-    { _artacrsChallengeName :: !(Maybe ChallengeNameType)
-    , _artacrsChallengeParameters :: !(Maybe (Map Text Text))
+    { _artacrsChallengeName        :: !(Maybe ChallengeNameType)
+    , _artacrsChallengeParameters  :: !(Maybe (Map Text Text))
     , _artacrsAuthenticationResult :: !(Maybe AuthenticationResultType)
-    , _artacrsSession :: !(Maybe Text)
-    , _artacrsResponseStatus :: !Int
+    , _artacrsSession              :: !(Maybe Text)
+    , _artacrsResponseStatus       :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

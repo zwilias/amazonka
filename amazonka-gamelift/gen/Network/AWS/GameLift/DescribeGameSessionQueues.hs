@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,8 +63,8 @@ import Network.AWS.Response
 data DescribeGameSessionQueues =
   DescribeGameSessionQueues'
     { _dgsqNextToken :: !(Maybe Text)
-    , _dgsqNames :: !(Maybe [Text])
-    , _dgsqLimit :: !(Maybe Nat)
+    , _dgsqNames     :: !(Maybe [Text])
+    , _dgsqLimit     :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -139,9 +139,9 @@ instance ToQuery DescribeGameSessionQueues where
 -- /See:/ 'describeGameSessionQueuesResponse' smart constructor.
 data DescribeGameSessionQueuesResponse =
   DescribeGameSessionQueuesResponse'
-    { _drsNextToken :: !(Maybe Text)
+    { _drsNextToken         :: !(Maybe Text)
     , _drsGameSessionQueues :: !(Maybe [GameSessionQueue])
-    , _drsResponseStatus :: !Int
+    , _drsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

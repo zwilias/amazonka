@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- /See:/ 'registerApplicationRevision' smart constructor.
 data RegisterApplicationRevision =
   RegisterApplicationRevision'
-    { _rarDescription :: !(Maybe Text)
+    { _rarDescription     :: !(Maybe Text)
     , _rarApplicationName :: !Text
-    , _rarRevision :: !RevisionLocation
+    , _rarRevision        :: !RevisionLocation
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,12 +55,12 @@ import Network.AWS.Response
 -- /See:/ 'initiateAuth' smart constructor.
 data InitiateAuth =
   InitiateAuth'
-    { _iaClientMetadata :: !(Maybe (Map Text Text))
+    { _iaClientMetadata    :: !(Maybe (Map Text Text))
     , _iaAnalyticsMetadata :: !(Maybe AnalyticsMetadataType)
-    , _iaUserContextData :: !(Maybe UserContextDataType)
-    , _iaAuthParameters :: !(Maybe (Map Text Text))
-    , _iaAuthFlow :: !AuthFlowType
-    , _iaClientId :: !(Sensitive Text)
+    , _iaUserContextData   :: !(Maybe UserContextDataType)
+    , _iaAuthParameters    :: !(Maybe (Map Text Text))
+    , _iaAuthFlow          :: !AuthFlowType
+    , _iaClientId          :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -170,11 +170,11 @@ instance ToQuery InitiateAuth where
 -- /See:/ 'initiateAuthResponse' smart constructor.
 data InitiateAuthResponse =
   InitiateAuthResponse'
-    { _iarsChallengeName :: !(Maybe ChallengeNameType)
-    , _iarsChallengeParameters :: !(Maybe (Map Text Text))
+    { _iarsChallengeName        :: !(Maybe ChallengeNameType)
+    , _iarsChallengeParameters  :: !(Maybe (Map Text Text))
     , _iarsAuthenticationResult :: !(Maybe AuthenticationResultType)
-    , _iarsSession :: !(Maybe Text)
-    , _iarsResponseStatus :: !Int
+    , _iarsSession              :: !(Maybe Text)
+    , _iarsResponseStatus       :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

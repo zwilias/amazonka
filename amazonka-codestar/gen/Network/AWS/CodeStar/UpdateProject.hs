@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,9 +44,9 @@ import Network.AWS.Response
 -- | /See:/ 'updateProject' smart constructor.
 data UpdateProject =
   UpdateProject'
-    { _upName :: !(Maybe (Sensitive Text))
+    { _upName        :: !(Maybe (Sensitive Text))
     , _upDescription :: !(Maybe (Sensitive Text))
-    , _upId :: !Text
+    , _upId          :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

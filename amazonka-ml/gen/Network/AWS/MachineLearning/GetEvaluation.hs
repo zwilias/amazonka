@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -127,22 +127,22 @@ instance ToQuery GetEvaluation where
 -- /See:/ 'getEvaluationResponse' smart constructor.
 data GetEvaluationResponse =
   GetEvaluationResponse'
-    { _gersStatus :: !(Maybe EntityStatus)
-    , _gersPerformanceMetrics :: !(Maybe PerformanceMetrics)
-    , _gersLastUpdatedAt :: !(Maybe POSIX)
-    , _gersCreatedAt :: !(Maybe POSIX)
-    , _gersComputeTime :: !(Maybe Integer)
-    , _gersInputDataLocationS3 :: !(Maybe Text)
-    , _gersMLModelId :: !(Maybe Text)
-    , _gersStartedAt :: !(Maybe POSIX)
-    , _gersFinishedAt :: !(Maybe POSIX)
-    , _gersCreatedByIAMUser :: !(Maybe Text)
-    , _gersName :: !(Maybe Text)
-    , _gersLogURI :: !(Maybe Text)
-    , _gersEvaluationId :: !(Maybe Text)
-    , _gersMessage :: !(Maybe Text)
+    { _gersStatus                 :: !(Maybe EntityStatus)
+    , _gersPerformanceMetrics     :: !(Maybe PerformanceMetrics)
+    , _gersLastUpdatedAt          :: !(Maybe POSIX)
+    , _gersCreatedAt              :: !(Maybe POSIX)
+    , _gersComputeTime            :: !(Maybe Integer)
+    , _gersInputDataLocationS3    :: !(Maybe Text)
+    , _gersMLModelId              :: !(Maybe Text)
+    , _gersStartedAt              :: !(Maybe POSIX)
+    , _gersFinishedAt             :: !(Maybe POSIX)
+    , _gersCreatedByIAMUser       :: !(Maybe Text)
+    , _gersName                   :: !(Maybe Text)
+    , _gersLogURI                 :: !(Maybe Text)
+    , _gersEvaluationId           :: !(Maybe Text)
+    , _gersMessage                :: !(Maybe Text)
     , _gersEvaluationDataSourceId :: !(Maybe Text)
-    , _gersResponseStatus :: !Int
+    , _gersResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

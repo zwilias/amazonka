@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,13 +51,13 @@ import Network.AWS.Response
 -- | /See:/ 'requestCertificate' smart constructor.
 data RequestCertificate =
   RequestCertificate'
-    { _rcIdempotencyToken :: !(Maybe Text)
-    , _rcValidationMethod :: !(Maybe ValidationMethod)
+    { _rcIdempotencyToken        :: !(Maybe Text)
+    , _rcValidationMethod        :: !(Maybe ValidationMethod)
     , _rcSubjectAlternativeNames :: !(Maybe (List1 Text))
-    , _rcOptions :: !(Maybe CertificateOptions)
+    , _rcOptions                 :: !(Maybe CertificateOptions)
     , _rcDomainValidationOptions :: !(Maybe (List1 DomainValidationOption))
     , _rcCertificateAuthorityARN :: !(Maybe Text)
-    , _rcDomainName :: !Text
+    , _rcDomainName              :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,10 +49,10 @@ import Network.AWS.WorkDocs.Types.Product
 data DescribeGroups =
   DescribeGroups'
     { _dgAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _dgMarker :: !(Maybe Text)
-    , _dgLimit :: !(Maybe Nat)
-    , _dgOrganizationId :: !(Maybe Text)
-    , _dgSearchQuery :: !(Sensitive Text)
+    , _dgMarker              :: !(Maybe Text)
+    , _dgLimit               :: !(Maybe Nat)
+    , _dgOrganizationId      :: !(Maybe Text)
+    , _dgSearchQuery         :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -140,8 +140,8 @@ instance ToQuery DescribeGroups where
 -- | /See:/ 'describeGroupsResponse' smart constructor.
 data DescribeGroupsResponse =
   DescribeGroupsResponse'
-    { _dgrsGroups :: !(Maybe [GroupMetadata])
-    , _dgrsMarker :: !(Maybe Text)
+    { _dgrsGroups         :: !(Maybe [GroupMetadata])
+    , _dgrsMarker         :: !(Maybe Text)
     , _dgrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

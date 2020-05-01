@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -113,18 +113,18 @@ instance ToQuery StopChannel where
 -- /See:/ 'stopChannelResponse' smart constructor.
 data StopChannelResponse =
   StopChannelResponse'
-    { _srsState :: !(Maybe ChannelState)
-    , _srsARN :: !(Maybe Text)
+    { _srsState                 :: !(Maybe ChannelState)
+    , _srsARN                   :: !(Maybe Text)
     , _srsPipelinesRunningCount :: !(Maybe Int)
-    , _srsInputSpecification :: !(Maybe InputSpecification)
-    , _srsInputAttachments :: !(Maybe [InputAttachment])
-    , _srsDestinations :: !(Maybe [OutputDestination])
-    , _srsName :: !(Maybe Text)
-    , _srsId :: !(Maybe Text)
-    , _srsEgressEndpoints :: !(Maybe [ChannelEgressEndpoint])
-    , _srsEncoderSettings :: !(Maybe EncoderSettings)
-    , _srsRoleARN :: !(Maybe Text)
-    , _srsResponseStatus :: !Int
+    , _srsInputSpecification    :: !(Maybe InputSpecification)
+    , _srsInputAttachments      :: !(Maybe [InputAttachment])
+    , _srsDestinations          :: !(Maybe [OutputDestination])
+    , _srsName                  :: !(Maybe Text)
+    , _srsId                    :: !(Maybe Text)
+    , _srsEgressEndpoints       :: !(Maybe [ChannelEgressEndpoint])
+    , _srsEncoderSettings       :: !(Maybe EncoderSettings)
+    , _srsRoleARN               :: !(Maybe Text)
+    , _srsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

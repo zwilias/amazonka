@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -77,10 +77,10 @@ instance ToQuery GetV2LoggingOptions where
 -- | /See:/ 'getV2LoggingOptionsResponse' smart constructor.
 data GetV2LoggingOptionsResponse =
   GetV2LoggingOptionsResponse'
-    { _gvlorsDisableAllLogs :: !(Maybe Bool)
+    { _gvlorsDisableAllLogs  :: !(Maybe Bool)
     , _gvlorsDefaultLogLevel :: !(Maybe LogLevel)
-    , _gvlorsRoleARN :: !(Maybe Text)
-    , _gvlorsResponseStatus :: !Int
+    , _gvlorsRoleARN         :: !(Maybe Text)
+    , _gvlorsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,8 +48,8 @@ import Network.AWS.Response
 data StopTask =
   StopTask'
     { _stCluster :: !(Maybe Text)
-    , _stReason :: !(Maybe Text)
-    , _stTask :: !Text
+    , _stReason  :: !(Maybe Text)
+    , _stTask    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -118,7 +118,7 @@ instance ToQuery StopTask where
 -- | /See:/ 'stopTaskResponse' smart constructor.
 data StopTaskResponse =
   StopTaskResponse'
-    { _srsTask :: !(Maybe Task)
+    { _srsTask           :: !(Maybe Task)
     , _srsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

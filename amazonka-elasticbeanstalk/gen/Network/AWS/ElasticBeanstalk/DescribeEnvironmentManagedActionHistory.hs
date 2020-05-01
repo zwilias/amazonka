@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,10 +51,10 @@ import Network.AWS.Response
 -- /See:/ 'describeEnvironmentManagedActionHistory' smart constructor.
 data DescribeEnvironmentManagedActionHistory =
   DescribeEnvironmentManagedActionHistory'
-    { _demahNextToken :: !(Maybe Text)
+    { _demahNextToken       :: !(Maybe Text)
     , _demahEnvironmentName :: !(Maybe Text)
-    , _demahMaxItems :: !(Maybe Int)
-    , _demahEnvironmentId :: !(Maybe Text)
+    , _demahMaxItems        :: !(Maybe Int)
+    , _demahEnvironmentId   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

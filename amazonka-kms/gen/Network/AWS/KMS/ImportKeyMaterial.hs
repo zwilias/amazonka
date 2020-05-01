@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -64,10 +64,10 @@ import Network.AWS.Response
 -- | /See:/ 'importKeyMaterial' smart constructor.
 data ImportKeyMaterial =
   ImportKeyMaterial'
-    { _ikmExpirationModel :: !(Maybe ExpirationModelType)
-    , _ikmValidTo :: !(Maybe POSIX)
-    , _ikmKeyId :: !Text
-    , _ikmImportToken :: !Base64
+    { _ikmExpirationModel      :: !(Maybe ExpirationModelType)
+    , _ikmValidTo              :: !(Maybe POSIX)
+    , _ikmKeyId                :: !Text
+    , _ikmImportToken          :: !Base64
     , _ikmEncryptedKeyMaterial :: !Base64
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

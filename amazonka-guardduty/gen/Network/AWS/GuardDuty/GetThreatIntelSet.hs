@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 data GetThreatIntelSet =
   GetThreatIntelSet'
     { _gtisThreatIntelSetId :: !Text
-    , _gtisDetectorId :: !Text
+    , _gtisDetectorId       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -109,10 +109,10 @@ instance ToQuery GetThreatIntelSet where
 -- | /See:/ 'getThreatIntelSetResponse' smart constructor.
 data GetThreatIntelSetResponse =
   GetThreatIntelSetResponse'
-    { _gtisrsStatus :: !(Maybe ThreatIntelSetStatus)
-    , _gtisrsLocation :: !(Maybe Text)
-    , _gtisrsFormat :: !(Maybe ThreatIntelSetFormat)
-    , _gtisrsName :: !(Maybe Text)
+    { _gtisrsStatus         :: !(Maybe ThreatIntelSetStatus)
+    , _gtisrsLocation       :: !(Maybe Text)
+    , _gtisrsFormat         :: !(Maybe ThreatIntelSetFormat)
+    , _gtisrsName           :: !(Maybe Text)
     , _gtisrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

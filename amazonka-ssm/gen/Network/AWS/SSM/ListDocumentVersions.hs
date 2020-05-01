@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'listDocumentVersions' smart constructor.
 data ListDocumentVersions =
   ListDocumentVersions'
-    { _ldvNextToken :: !(Maybe Text)
+    { _ldvNextToken  :: !(Maybe Text)
     , _ldvMaxResults :: !(Maybe Nat)
-    , _ldvName :: !Text
+    , _ldvName       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -122,8 +122,8 @@ instance ToQuery ListDocumentVersions where
 data ListDocumentVersionsResponse =
   ListDocumentVersionsResponse'
     { _ldvrsDocumentVersions :: !(Maybe (List1 DocumentVersionInfo))
-    , _ldvrsNextToken :: !(Maybe Text)
-    , _ldvrsResponseStatus :: !Int
+    , _ldvrsNextToken        :: !(Maybe Text)
+    , _ldvrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

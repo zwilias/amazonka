@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -67,7 +67,7 @@ import Network.AWS.Response
 -- /See:/ 'initiateVaultLock' smart constructor.
 data InitiateVaultLock =
   InitiateVaultLock'
-    { _ivlPolicy :: !(Maybe VaultLockPolicy)
+    { _ivlPolicy    :: !(Maybe VaultLockPolicy)
     , _ivlAccountId :: !Text
     , _ivlVaultName :: !Text
     }
@@ -140,7 +140,7 @@ instance ToQuery InitiateVaultLock where
 -- /See:/ 'initiateVaultLockResponse' smart constructor.
 data InitiateVaultLockResponse =
   InitiateVaultLockResponse'
-    { _ivlrsLockId :: !(Maybe Text)
+    { _ivlrsLockId         :: !(Maybe Text)
     , _ivlrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

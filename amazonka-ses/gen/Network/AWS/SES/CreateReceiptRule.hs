@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,9 +52,9 @@ import Network.AWS.SES.Types.Product
 -- /See:/ 'createReceiptRule' smart constructor.
 data CreateReceiptRule =
   CreateReceiptRule'
-    { _crrAfter :: !(Maybe Text)
+    { _crrAfter       :: !(Maybe Text)
     , _crrRuleSetName :: !Text
-    , _crrRule :: !ReceiptRule
+    , _crrRule        :: !ReceiptRule
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

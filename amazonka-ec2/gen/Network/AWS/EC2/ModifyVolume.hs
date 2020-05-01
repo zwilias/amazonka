@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,11 +51,11 @@ import Network.AWS.Response
 -- | /See:/ 'modifyVolume' smart constructor.
 data ModifyVolume =
   ModifyVolume'
-    { _mvSize :: !(Maybe Int)
-    , _mvIOPS :: !(Maybe Int)
+    { _mvSize       :: !(Maybe Int)
+    , _mvIOPS       :: !(Maybe Int)
     , _mvVolumeType :: !(Maybe VolumeType)
-    , _mvDryRun :: !(Maybe Bool)
-    , _mvVolumeId :: !Text
+    , _mvDryRun     :: !(Maybe Bool)
+    , _mvVolumeId   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -139,7 +139,7 @@ instance ToQuery ModifyVolume where
 data ModifyVolumeResponse =
   ModifyVolumeResponse'
     { _mvrsVolumeModification :: !(Maybe VolumeModification)
-    , _mvrsResponseStatus :: !Int
+    , _mvrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

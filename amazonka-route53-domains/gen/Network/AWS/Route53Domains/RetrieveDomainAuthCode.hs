@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -106,7 +106,7 @@ instance ToQuery RetrieveDomainAuthCode where
 data RetrieveDomainAuthCodeResponse =
   RetrieveDomainAuthCodeResponse'
     { _rdacrsResponseStatus :: !Int
-    , _rdacrsAuthCode :: !(Sensitive Text)
+    , _rdacrsAuthCode       :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

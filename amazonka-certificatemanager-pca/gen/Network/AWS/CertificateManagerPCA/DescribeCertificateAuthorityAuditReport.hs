@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 data DescribeCertificateAuthorityAuditReport =
   DescribeCertificateAuthorityAuditReport'
     { _dcaarCertificateAuthorityARN :: !Text
-    , _dcaarAuditReportId :: !Text
+    , _dcaarAuditReportId           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,11 +124,11 @@ instance ToQuery DescribeCertificateAuthorityAuditReport where
 -- | /See:/ 'describeCertificateAuthorityAuditReportResponse' smart constructor.
 data DescribeCertificateAuthorityAuditReportResponse =
   DescribeCertificateAuthorityAuditReportResponse'
-    { _dcaarrsS3Key :: !(Maybe Text)
-    , _dcaarrsCreatedAt :: !(Maybe POSIX)
+    { _dcaarrsS3Key             :: !(Maybe Text)
+    , _dcaarrsCreatedAt         :: !(Maybe POSIX)
     , _dcaarrsAuditReportStatus :: !(Maybe AuditReportStatus)
-    , _dcaarrsS3BucketName :: !(Maybe Text)
-    , _dcaarrsResponseStatus :: !Int
+    , _dcaarrsS3BucketName      :: !(Maybe Text)
+    , _dcaarrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

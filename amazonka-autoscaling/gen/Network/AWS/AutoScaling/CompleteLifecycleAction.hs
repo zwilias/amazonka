@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -62,10 +62,10 @@ import Network.AWS.Response
 -- | /See:/ 'completeLifecycleAction' smart constructor.
 data CompleteLifecycleAction =
   CompleteLifecycleAction'
-    { _claInstanceId :: !(Maybe Text)
-    , _claLifecycleActionToken :: !(Maybe Text)
-    , _claLifecycleHookName :: !Text
-    , _claAutoScalingGroupName :: !Text
+    { _claInstanceId            :: !(Maybe Text)
+    , _claLifecycleActionToken  :: !(Maybe Text)
+    , _claLifecycleHookName     :: !Text
+    , _claAutoScalingGroupName  :: !Text
     , _claLifecycleActionResult :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

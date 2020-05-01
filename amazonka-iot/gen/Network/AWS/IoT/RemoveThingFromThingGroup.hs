@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,10 +45,10 @@ import Network.AWS.Response
 -- | /See:/ 'removeThingFromThingGroup' smart constructor.
 data RemoveThingFromThingGroup =
   RemoveThingFromThingGroup'
-    { _rtftgThingGroupARN :: !(Maybe Text)
-    , _rtftgThingARN :: !(Maybe Text)
+    { _rtftgThingGroupARN  :: !(Maybe Text)
+    , _rtftgThingARN       :: !(Maybe Text)
     , _rtftgThingGroupName :: !(Maybe Text)
-    , _rtftgThingName :: !(Maybe Text)
+    , _rtftgThingName      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

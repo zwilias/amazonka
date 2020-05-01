@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -61,7 +61,7 @@ import Network.AWS.StorageGateway.Types.Product
 -- /See:/ 'createSnapshot' smart constructor.
 data CreateSnapshot =
   CreateSnapshot'
-    { _csVolumeARN :: !Text
+    { _csVolumeARN           :: !Text
     , _csSnapshotDescription :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -134,8 +134,8 @@ instance ToQuery CreateSnapshot where
 -- /See:/ 'createSnapshotResponse' smart constructor.
 data CreateSnapshotResponse =
   CreateSnapshotResponse'
-    { _csrsVolumeARN :: !(Maybe Text)
-    , _csrsSnapshotId :: !(Maybe Text)
+    { _csrsVolumeARN      :: !(Maybe Text)
+    , _csrsSnapshotId     :: !(Maybe Text)
     , _csrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

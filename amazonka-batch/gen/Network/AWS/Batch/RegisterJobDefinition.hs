@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,12 +50,12 @@ import Network.AWS.Response
 -- | /See:/ 'registerJobDefinition' smart constructor.
 data RegisterJobDefinition =
   RegisterJobDefinition'
-    { _rjdRetryStrategy :: !(Maybe RetryStrategy)
-    , _rjdParameters :: !(Maybe (Map Text Text))
-    , _rjdTimeout :: !(Maybe JobTimeout)
+    { _rjdRetryStrategy       :: !(Maybe RetryStrategy)
+    , _rjdParameters          :: !(Maybe (Map Text Text))
+    , _rjdTimeout             :: !(Maybe JobTimeout)
     , _rjdContainerProperties :: !(Maybe ContainerProperties)
-    , _rjdJobDefinitionName :: !Text
-    , _rjdType :: !JobDefinitionType
+    , _rjdJobDefinitionName   :: !Text
+    , _rjdType                :: !JobDefinitionType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -157,10 +157,10 @@ instance ToQuery RegisterJobDefinition where
 -- | /See:/ 'registerJobDefinitionResponse' smart constructor.
 data RegisterJobDefinitionResponse =
   RegisterJobDefinitionResponse'
-    { _rjdrsResponseStatus :: !Int
+    { _rjdrsResponseStatus    :: !Int
     , _rjdrsJobDefinitionName :: !Text
-    , _rjdrsJobDefinitionARN :: !Text
-    , _rjdrsRevision :: !Int
+    , _rjdrsJobDefinitionARN  :: !Text
+    , _rjdrsRevision          :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,8 +48,8 @@ import Network.AWS.Response
 -- | /See:/ 'deleteTags' smart constructor.
 data DeleteTags =
   DeleteTags'
-    { _dTagKeys :: ![Text]
-    , _dResourceId :: !Text
+    { _dTagKeys      :: ![Text]
+    , _dResourceId   :: !Text
     , _dResourceType :: !TaggableResourceType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -129,8 +129,8 @@ instance ToQuery DeleteTags where
 -- /See:/ 'deleteTagsResponse' smart constructor.
 data DeleteTagsResponse =
   DeleteTagsResponse'
-    { _drsResourceId :: !(Maybe Text)
-    , _drsResourceType :: !(Maybe TaggableResourceType)
+    { _drsResourceId     :: !(Maybe Text)
+    , _drsResourceType   :: !(Maybe TaggableResourceType)
     , _drsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

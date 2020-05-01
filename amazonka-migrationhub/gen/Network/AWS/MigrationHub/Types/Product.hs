@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,7 +27,7 @@ import Network.AWS.Prelude
 data CreatedArtifact =
   CreatedArtifact'
     { _caDescription :: !(Maybe Text)
-    , _caName :: !Text
+    , _caName        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -75,7 +75,7 @@ instance ToJSON CreatedArtifact where
 -- /See:/ 'discoveredResource' smart constructor.
 data DiscoveredResource =
   DiscoveredResource'
-    { _drDescription :: !(Maybe Text)
+    { _drDescription     :: !(Maybe Text)
     , _drConfigurationId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -129,11 +129,11 @@ instance ToJSON DiscoveredResource where
 -- /See:/ 'migrationTask' smart constructor.
 data MigrationTask =
   MigrationTask'
-    { _mtUpdateDateTime :: !(Maybe POSIX)
+    { _mtUpdateDateTime        :: !(Maybe POSIX)
     , _mtResourceAttributeList :: !(Maybe [ResourceAttribute])
-    , _mtTask :: !(Maybe Task)
-    , _mtProgressUpdateStream :: !(Maybe Text)
-    , _mtMigrationTaskName :: !(Maybe Text)
+    , _mtTask                  :: !(Maybe Task)
+    , _mtProgressUpdateStream  :: !(Maybe Text)
+    , _mtMigrationTaskName     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -207,12 +207,12 @@ instance NFData MigrationTask
 -- /See:/ 'migrationTaskSummary' smart constructor.
 data MigrationTaskSummary =
   MigrationTaskSummary'
-    { _mtsStatus :: !(Maybe MigrationStatus)
-    , _mtsUpdateDateTime :: !(Maybe POSIX)
-    , _mtsProgressPercent :: !(Maybe Nat)
-    , _mtsStatusDetail :: !(Maybe Text)
+    { _mtsStatus               :: !(Maybe MigrationStatus)
+    , _mtsUpdateDateTime       :: !(Maybe POSIX)
+    , _mtsProgressPercent      :: !(Maybe Nat)
+    , _mtsStatusDetail         :: !(Maybe Text)
     , _mtsProgressUpdateStream :: !(Maybe Text)
-    , _mtsMigrationTaskName :: !(Maybe Text)
+    , _mtsMigrationTaskName    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -345,7 +345,7 @@ instance NFData ProgressUpdateStreamSummary
 -- /See:/ 'resourceAttribute' smart constructor.
 data ResourceAttribute =
   ResourceAttribute'
-    { _raType :: !ResourceAttributeType
+    { _raType  :: !ResourceAttributeType
     , _raValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -394,8 +394,8 @@ instance ToJSON ResourceAttribute where
 data Task =
   Task'
     { _tProgressPercent :: !(Maybe Nat)
-    , _tStatusDetail :: !(Maybe Text)
-    , _tStatus :: !MigrationStatus
+    , _tStatusDetail    :: !(Maybe Text)
+    , _tStatus          :: !MigrationStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

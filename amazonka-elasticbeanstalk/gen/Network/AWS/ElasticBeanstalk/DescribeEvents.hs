@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -62,18 +62,18 @@ import Network.AWS.Response
 -- /See:/ 'describeEvents' smart constructor.
 data DescribeEvents =
   DescribeEvents'
-    { _deRequestId :: !(Maybe Text)
-    , _deTemplateName :: !(Maybe Text)
-    , _deStartTime :: !(Maybe ISO8601)
-    , _deSeverity :: !(Maybe EventSeverity)
-    , _deNextToken :: !(Maybe Text)
-    , _deVersionLabel :: !(Maybe Text)
-    , _dePlatformARN :: !(Maybe Text)
+    { _deRequestId       :: !(Maybe Text)
+    , _deTemplateName    :: !(Maybe Text)
+    , _deStartTime       :: !(Maybe ISO8601)
+    , _deSeverity        :: !(Maybe EventSeverity)
+    , _deNextToken       :: !(Maybe Text)
+    , _deVersionLabel    :: !(Maybe Text)
+    , _dePlatformARN     :: !(Maybe Text)
     , _deEnvironmentName :: !(Maybe Text)
-    , _deMaxRecords :: !(Maybe Nat)
-    , _deEndTime :: !(Maybe ISO8601)
+    , _deMaxRecords      :: !(Maybe Nat)
+    , _deEndTime         :: !(Maybe ISO8601)
     , _deApplicationName :: !(Maybe Text)
-    , _deEnvironmentId :: !(Maybe Text)
+    , _deEnvironmentId   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -222,8 +222,8 @@ instance ToQuery DescribeEvents where
 -- /See:/ 'describeEventsResponse' smart constructor.
 data DescribeEventsResponse =
   DescribeEventsResponse'
-    { _dersNextToken :: !(Maybe Text)
-    , _dersEvents :: !(Maybe [EventDescription])
+    { _dersNextToken      :: !(Maybe Text)
+    , _dersEvents         :: !(Maybe [EventDescription])
     , _dersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.Response
 -- /See:/ 'listBundles' smart constructor.
 data ListBundles =
   ListBundles'
-    { _lbNextToken :: !(Maybe Text)
+    { _lbNextToken  :: !(Maybe Text)
     , _lbMaxResults :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -114,8 +114,8 @@ instance ToQuery ListBundles where
 -- /See:/ 'listBundlesResponse' smart constructor.
 data ListBundlesResponse =
   ListBundlesResponse'
-    { _lbrsBundleList :: !(Maybe [BundleDetails])
-    , _lbrsNextToken :: !(Maybe Text)
+    { _lbrsBundleList     :: !(Maybe [BundleDetails])
+    , _lbrsNextToken      :: !(Maybe Text)
     , _lbrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

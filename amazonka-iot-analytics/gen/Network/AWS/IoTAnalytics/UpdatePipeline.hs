@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -41,7 +41,7 @@ import Network.AWS.Response
 -- | /See:/ 'updatePipeline' smart constructor.
 data UpdatePipeline =
   UpdatePipeline'
-    { _upPipelineName :: !Text
+    { _upPipelineName       :: !Text
     , _upPipelineActivities :: !(List1 PipelineActivity)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

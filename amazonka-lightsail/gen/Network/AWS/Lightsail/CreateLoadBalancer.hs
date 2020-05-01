@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,12 +50,12 @@ import Network.AWS.Response
 -- | /See:/ 'createLoadBalancer' smart constructor.
 data CreateLoadBalancer =
   CreateLoadBalancer'
-    { _clbHealthCheckPath :: !(Maybe Text)
-    , _clbCertificateName :: !(Maybe Text)
-    , _clbCertificateDomainName :: !(Maybe Text)
+    { _clbHealthCheckPath             :: !(Maybe Text)
+    , _clbCertificateName             :: !(Maybe Text)
+    , _clbCertificateDomainName       :: !(Maybe Text)
     , _clbCertificateAlternativeNames :: !(Maybe [Text])
-    , _clbLoadBalancerName :: !Text
-    , _clbInstancePort :: !Nat
+    , _clbLoadBalancerName            :: !Text
+    , _clbInstancePort                :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -165,7 +165,7 @@ instance ToQuery CreateLoadBalancer where
 -- | /See:/ 'createLoadBalancerResponse' smart constructor.
 data CreateLoadBalancerResponse =
   CreateLoadBalancerResponse'
-    { _clbrsOperations :: !(Maybe [Operation])
+    { _clbrsOperations     :: !(Maybe [Operation])
     , _clbrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

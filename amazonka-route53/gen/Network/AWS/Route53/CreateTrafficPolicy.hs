@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.Route53.Types.Product
 -- /See:/ 'createTrafficPolicy' smart constructor.
 data CreateTrafficPolicy =
   CreateTrafficPolicy'
-    { _ctpComment :: !(Maybe Text)
-    , _ctpName :: !Text
+    { _ctpComment  :: !(Maybe Text)
+    , _ctpName     :: !Text
     , _ctpDocument :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -126,8 +126,8 @@ instance ToXML CreateTrafficPolicy where
 data CreateTrafficPolicyResponse =
   CreateTrafficPolicyResponse'
     { _ctprsResponseStatus :: !Int
-    , _ctprsTrafficPolicy :: !TrafficPolicy
-    , _ctprsLocation :: !Text
+    , _ctprsTrafficPolicy  :: !TrafficPolicy
+    , _ctprsLocation       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

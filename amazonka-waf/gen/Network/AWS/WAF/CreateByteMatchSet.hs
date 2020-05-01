@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -59,7 +59,7 @@ import Network.AWS.WAF.Types.Product
 -- | /See:/ 'createByteMatchSet' smart constructor.
 data CreateByteMatchSet =
   CreateByteMatchSet'
-    { _cbmsName :: !Text
+    { _cbmsName        :: !Text
     , _cbmsChangeToken :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -124,8 +124,8 @@ instance ToQuery CreateByteMatchSet where
 -- | /See:/ 'createByteMatchSetResponse' smart constructor.
 data CreateByteMatchSetResponse =
   CreateByteMatchSetResponse'
-    { _cbmsrsByteMatchSet :: !(Maybe ByteMatchSet)
-    , _cbmsrsChangeToken :: !(Maybe Text)
+    { _cbmsrsByteMatchSet   :: !(Maybe ByteMatchSet)
+    , _cbmsrsChangeToken    :: !(Maybe Text)
     , _cbmsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

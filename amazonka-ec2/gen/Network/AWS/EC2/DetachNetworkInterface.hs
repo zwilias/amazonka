@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 -- /See:/ 'detachNetworkInterface' smart constructor.
 data DetachNetworkInterface =
   DetachNetworkInterface'
-    { _dniForce :: !(Maybe Bool)
-    , _dniDryRun :: !(Maybe Bool)
+    { _dniForce        :: !(Maybe Bool)
+    , _dniDryRun       :: !(Maybe Bool)
     , _dniAttachmentId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

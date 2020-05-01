@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 data PutSchemaFromJSON =
   PutSchemaFromJSON'
     { _psfjSchemaARN :: !Text
-    , _psfjDocument :: !Text
+    , _psfjDocument  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -100,7 +100,7 @@ instance ToQuery PutSchemaFromJSON where
 -- | /See:/ 'putSchemaFromJSONResponse' smart constructor.
 data PutSchemaFromJSONResponse =
   PutSchemaFromJSONResponse'
-    { _psfjrsARN :: !(Maybe Text)
+    { _psfjrsARN            :: !(Maybe Text)
     , _psfjrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

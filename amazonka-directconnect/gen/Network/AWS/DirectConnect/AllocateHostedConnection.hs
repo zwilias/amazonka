@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,11 +63,11 @@ import Network.AWS.Response
 -- /See:/ 'allocateHostedConnection' smart constructor.
 data AllocateHostedConnection =
   AllocateHostedConnection'
-    { _ahcConnectionId :: !Text
-    , _ahcOwnerAccount :: !Text
-    , _ahcBandwidth :: !Text
+    { _ahcConnectionId   :: !Text
+    , _ahcOwnerAccount   :: !Text
+    , _ahcBandwidth      :: !Text
     , _ahcConnectionName :: !Text
-    , _ahcVlan :: !Int
+    , _ahcVlan           :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

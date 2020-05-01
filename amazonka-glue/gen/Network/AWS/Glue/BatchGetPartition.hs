@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,9 +47,9 @@ import Network.AWS.Response
 -- | /See:/ 'batchGetPartition' smart constructor.
 data BatchGetPartition =
   BatchGetPartition'
-    { _bgpCatalogId :: !(Maybe Text)
-    , _bgpDatabaseName :: !Text
-    , _bgpTableName :: !Text
+    { _bgpCatalogId       :: !(Maybe Text)
+    , _bgpDatabaseName    :: !Text
+    , _bgpTableName       :: !Text
     , _bgpPartitionsToGet :: ![PartitionValueList]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -136,8 +136,8 @@ instance ToQuery BatchGetPartition where
 data BatchGetPartitionResponse =
   BatchGetPartitionResponse'
     { _bgprsUnprocessedKeys :: !(Maybe [PartitionValueList])
-    , _bgprsPartitions :: !(Maybe [Partition])
-    , _bgprsResponseStatus :: !Int
+    , _bgprsPartitions      :: !(Maybe [Partition])
+    , _bgprsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

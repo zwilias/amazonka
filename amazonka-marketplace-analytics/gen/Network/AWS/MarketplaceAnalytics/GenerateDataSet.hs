@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,13 +49,13 @@ import Network.AWS.Response
 -- /See:/ 'generateDataSet' smart constructor.
 data GenerateDataSet =
   GenerateDataSet'
-    { _gdsCustomerDefinedValues :: !(Maybe (Map Text Text))
-    , _gdsDestinationS3Prefix :: !(Maybe Text)
-    , _gdsDataSetType :: !DataSetType
-    , _gdsDataSetPublicationDate :: !POSIX
-    , _gdsRoleNameARN :: !Text
+    { _gdsCustomerDefinedValues   :: !(Maybe (Map Text Text))
+    , _gdsDestinationS3Prefix     :: !(Maybe Text)
+    , _gdsDataSetType             :: !DataSetType
+    , _gdsDataSetPublicationDate  :: !POSIX
+    , _gdsRoleNameARN             :: !Text
     , _gdsDestinationS3BucketName :: !Text
-    , _gdsSnsTopicARN :: !Text
+    , _gdsSnsTopicARN             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -175,7 +175,7 @@ instance ToQuery GenerateDataSet where
 data GenerateDataSetResponse =
   GenerateDataSetResponse'
     { _gdsrsDataSetRequestId :: !(Maybe Text)
-    , _gdsrsResponseStatus :: !Int
+    , _gdsrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

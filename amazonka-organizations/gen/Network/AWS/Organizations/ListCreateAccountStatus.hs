@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,8 +51,8 @@ import Network.AWS.Response
 -- | /See:/ 'listCreateAccountStatus' smart constructor.
 data ListCreateAccountStatus =
   ListCreateAccountStatus'
-    { _lcasStates :: !(Maybe [CreateAccountState])
-    , _lcasNextToken :: !(Maybe Text)
+    { _lcasStates     :: !(Maybe [CreateAccountState])
+    , _lcasNextToken  :: !(Maybe Text)
     , _lcasMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -133,8 +133,8 @@ instance ToQuery ListCreateAccountStatus where
 data ListCreateAccountStatusResponse =
   ListCreateAccountStatusResponse'
     { _lcasrsCreateAccountStatuses :: !(Maybe [CreateAccountStatus])
-    , _lcasrsNextToken :: !(Maybe Text)
-    , _lcasrsResponseStatus :: !Int
+    , _lcasrsNextToken             :: !(Maybe Text)
+    , _lcasrsResponseStatus        :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -67,11 +67,11 @@ import Network.AWS.Response
 data DescribeInstanceStatus =
   DescribeInstanceStatus'
     { _disIncludeAllInstances :: !(Maybe Bool)
-    , _disFilters :: !(Maybe [Filter])
-    , _disNextToken :: !(Maybe Text)
-    , _disInstanceIds :: !(Maybe [Text])
-    , _disDryRun :: !(Maybe Bool)
-    , _disMaxResults :: !(Maybe Int)
+    , _disFilters             :: !(Maybe [Filter])
+    , _disNextToken           :: !(Maybe Text)
+    , _disInstanceIds         :: !(Maybe [Text])
+    , _disDryRun              :: !(Maybe Bool)
+    , _disMaxResults          :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -175,8 +175,8 @@ instance ToQuery DescribeInstanceStatus where
 data DescribeInstanceStatusResponse =
   DescribeInstanceStatusResponse'
     { _disrsInstanceStatuses :: !(Maybe [InstanceStatus])
-    , _disrsNextToken :: !(Maybe Text)
-    , _disrsResponseStatus :: !Int
+    , _disrsNextToken        :: !(Maybe Text)
+    , _disrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

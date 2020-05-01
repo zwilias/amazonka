@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,9 +49,9 @@ import Network.AWS.Response
 data ListMembers =
   ListMembers'
     { _lmOnlyAssociated :: !(Maybe Text)
-    , _lmNextToken :: !(Maybe Text)
-    , _lmMaxResults :: !(Maybe Nat)
-    , _lmDetectorId :: !Text
+    , _lmNextToken      :: !(Maybe Text)
+    , _lmMaxResults     :: !(Maybe Nat)
+    , _lmDetectorId     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -133,8 +133,8 @@ instance ToQuery ListMembers where
 -- | /See:/ 'listMembersResponse' smart constructor.
 data ListMembersResponse =
   ListMembersResponse'
-    { _lmrsMembers :: !(Maybe [Member])
-    , _lmrsNextToken :: !(Maybe Text)
+    { _lmrsMembers        :: !(Maybe [Member])
+    , _lmrsNextToken      :: !(Maybe Text)
     , _lmrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

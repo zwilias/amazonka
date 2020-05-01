@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- /See:/ 'deleteVPCPeeringConnection' smart constructor.
 data DeleteVPCPeeringConnection =
   DeleteVPCPeeringConnection'
-    { _dvpcDryRun :: !(Maybe Bool)
+    { _dvpcDryRun                 :: !(Maybe Bool)
     , _dvpcVPCPeeringConnectionId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -113,7 +113,7 @@ instance ToQuery DeleteVPCPeeringConnection where
 -- /See:/ 'deleteVPCPeeringConnectionResponse' smart constructor.
 data DeleteVPCPeeringConnectionResponse =
   DeleteVPCPeeringConnectionResponse'
-    { _dvpcrsReturn :: !(Maybe Bool)
+    { _dvpcrsReturn         :: !(Maybe Bool)
     , _dvpcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,9 +52,9 @@ import Network.AWS.Response
 -- | /See:/ 'listObjectParentPaths' smart constructor.
 data ListObjectParentPaths =
   ListObjectParentPaths'
-    { _loppNextToken :: !(Maybe Text)
-    , _loppMaxResults :: !(Maybe Nat)
-    , _loppDirectoryARN :: !Text
+    { _loppNextToken       :: !(Maybe Text)
+    , _loppMaxResults      :: !(Maybe Nat)
+    , _loppDirectoryARN    :: !Text
     , _loppObjectReference :: !ObjectReference
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -144,8 +144,8 @@ instance ToQuery ListObjectParentPaths where
 data ListObjectParentPathsResponse =
   ListObjectParentPathsResponse'
     { _lopprsPathToObjectIdentifiersList :: !(Maybe [PathToObjectIdentifiers])
-    , _lopprsNextToken :: !(Maybe Text)
-    , _lopprsResponseStatus :: !Int
+    , _lopprsNextToken                   :: !(Maybe Text)
+    , _lopprsResponseStatus              :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

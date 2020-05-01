@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -85,13 +85,13 @@ import Network.AWS.SecretsManager.Types.Product
 -- | /See:/ 'createSecret' smart constructor.
 data CreateSecret =
   CreateSecret'
-    { _csSecretBinary :: !(Maybe (Sensitive Base64))
-    , _csKMSKeyId :: !(Maybe Text)
-    , _csSecretString :: !(Maybe (Sensitive Text))
+    { _csSecretBinary       :: !(Maybe (Sensitive Base64))
+    , _csKMSKeyId           :: !(Maybe Text)
+    , _csSecretString       :: !(Maybe (Sensitive Text))
     , _csClientRequestToken :: !(Maybe Text)
-    , _csDescription :: !(Maybe Text)
-    , _csTags :: !(Maybe [Tag])
-    , _csName :: !Text
+    , _csDescription        :: !(Maybe Text)
+    , _csTags               :: !(Maybe [Tag])
+    , _csName               :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -202,9 +202,9 @@ instance ToQuery CreateSecret where
 -- | /See:/ 'createSecretResponse' smart constructor.
 data CreateSecretResponse =
   CreateSecretResponse'
-    { _csrsVersionId :: !(Maybe Text)
-    , _csrsARN :: !(Maybe Text)
-    , _csrsName :: !(Maybe Text)
+    { _csrsVersionId      :: !(Maybe Text)
+    , _csrsARN            :: !(Maybe Text)
+    , _csrsName           :: !(Maybe Text)
     , _csrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'resetServiceSpecificCredential' smart constructor.
 data ResetServiceSpecificCredential =
   ResetServiceSpecificCredential'
-    { _rsscUserName :: !(Maybe Text)
+    { _rsscUserName                    :: !(Maybe Text)
     , _rsscServiceSpecificCredentialId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -110,7 +110,7 @@ instance ToQuery ResetServiceSpecificCredential where
 data ResetServiceSpecificCredentialResponse =
   ResetServiceSpecificCredentialResponse'
     { _rsscrsServiceSpecificCredential :: !(Maybe ServiceSpecificCredential)
-    , _rsscrsResponseStatus :: !Int
+    , _rsscrsResponseStatus            :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

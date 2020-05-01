@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'batchDetectSentiment' smart constructor.
 data BatchDetectSentiment =
   BatchDetectSentiment'
-    { _bdsTextList :: ![Text]
+    { _bdsTextList     :: ![Text]
     , _bdsLanguageCode :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -113,8 +113,8 @@ instance ToQuery BatchDetectSentiment where
 data BatchDetectSentimentResponse =
   BatchDetectSentimentResponse'
     { _bdsrsResponseStatus :: !Int
-    , _bdsrsResultList :: ![BatchDetectSentimentItemResult]
-    , _bdsrsErrorList :: ![BatchItemError]
+    , _bdsrsResultList     :: ![BatchDetectSentimentItemResult]
+    , _bdsrsErrorList      :: ![BatchItemError]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

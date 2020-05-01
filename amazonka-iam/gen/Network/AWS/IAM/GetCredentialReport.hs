@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -87,9 +87,9 @@ instance ToQuery GetCredentialReport where
 -- /See:/ 'getCredentialReportResponse' smart constructor.
 data GetCredentialReportResponse =
   GetCredentialReportResponse'
-    { _grsContent :: !(Maybe Base64)
-    , _grsGeneratedTime :: !(Maybe ISO8601)
-    , _grsReportFormat :: !(Maybe ReportFormatType)
+    { _grsContent        :: !(Maybe Base64)
+    , _grsGeneratedTime  :: !(Maybe ISO8601)
+    , _grsReportFormat   :: !(Maybe ReportFormatType)
     , _grsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

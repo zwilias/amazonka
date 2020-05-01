@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,10 +48,10 @@ import Network.AWS.Response
 -- | /See:/ 'getMergeConflicts' smart constructor.
 data GetMergeConflicts =
   GetMergeConflicts'
-    { _gmcRepositoryName :: !Text
+    { _gmcRepositoryName             :: !Text
     , _gmcDestinationCommitSpecifier :: !Text
-    , _gmcSourceCommitSpecifier :: !Text
-    , _gmcMergeOption :: !MergeOptionTypeEnum
+    , _gmcSourceCommitSpecifier      :: !Text
+    , _gmcMergeOption                :: !MergeOptionTypeEnum
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -143,10 +143,10 @@ instance ToQuery GetMergeConflicts where
 -- | /See:/ 'getMergeConflictsResponse' smart constructor.
 data GetMergeConflictsResponse =
   GetMergeConflictsResponse'
-    { _gmcrsResponseStatus :: !Int
-    , _gmcrsMergeable :: !Bool
+    { _gmcrsResponseStatus      :: !Int
+    , _gmcrsMergeable           :: !Bool
     , _gmcrsDestinationCommitId :: !Text
-    , _gmcrsSourceCommitId :: !Text
+    , _gmcrsSourceCommitId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

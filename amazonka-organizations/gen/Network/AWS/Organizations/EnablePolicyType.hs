@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.Response
 -- | /See:/ 'enablePolicyType' smart constructor.
 data EnablePolicyType =
   EnablePolicyType'
-    { _eptRootId :: !Text
+    { _eptRootId     :: !Text
     , _eptPolicyType :: !PolicyType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -113,7 +113,7 @@ instance ToQuery EnablePolicyType where
 -- | /See:/ 'enablePolicyTypeResponse' smart constructor.
 data EnablePolicyTypeResponse =
   EnablePolicyTypeResponse'
-    { _eptrsRoot :: !(Maybe Root)
+    { _eptrsRoot           :: !(Maybe Root)
     , _eptrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

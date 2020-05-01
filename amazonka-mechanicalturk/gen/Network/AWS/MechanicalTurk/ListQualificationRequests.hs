@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,9 +50,9 @@ import Network.AWS.Response
 -- | /See:/ 'listQualificationRequests' smart constructor.
 data ListQualificationRequests =
   ListQualificationRequests'
-    { _lqrNextToken :: !(Maybe Text)
+    { _lqrNextToken           :: !(Maybe Text)
     , _lqrQualificationTypeId :: !(Maybe Text)
-    , _lqrMaxResults :: !(Maybe Nat)
+    , _lqrMaxResults          :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -137,9 +137,9 @@ instance ToQuery ListQualificationRequests where
 data ListQualificationRequestsResponse =
   ListQualificationRequestsResponse'
     { _lqrrsQualificationRequests :: !(Maybe [QualificationRequest])
-    , _lqrrsNextToken :: !(Maybe Text)
-    , _lqrrsNumResults :: !(Maybe Int)
-    , _lqrrsResponseStatus :: !Int
+    , _lqrrsNextToken             :: !(Maybe Text)
+    , _lqrrsNumResults            :: !(Maybe Int)
+    , _lqrrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

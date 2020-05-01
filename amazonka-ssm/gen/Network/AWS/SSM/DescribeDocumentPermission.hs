@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'describeDocumentPermission' smart constructor.
 data DescribeDocumentPermission =
   DescribeDocumentPermission'
-    { _ddpName :: !Text
+    { _ddpName           :: !Text
     , _ddpPermissionType :: !DocumentPermissionType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -111,7 +111,7 @@ instance ToQuery DescribeDocumentPermission where
 -- | /See:/ 'describeDocumentPermissionResponse' smart constructor.
 data DescribeDocumentPermissionResponse =
   DescribeDocumentPermissionResponse'
-    { _ddprsAccountIds :: !(Maybe [Text])
+    { _ddprsAccountIds     :: !(Maybe [Text])
     , _ddprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

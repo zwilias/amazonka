@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,13 +48,13 @@ import Network.AWS.Response
 -- | /See:/ 'createSoftwareUpdateJob' smart constructor.
 data CreateSoftwareUpdateJob =
   CreateSoftwareUpdateJob'
-    { _csujUpdateAgentLogLevel :: !(Maybe UpdateAgentLogLevel)
-    , _csujAmznClientToken :: !(Maybe Text)
-    , _csujSoftwareToUpdate :: !(Maybe SoftwareToUpdate)
+    { _csujUpdateAgentLogLevel          :: !(Maybe UpdateAgentLogLevel)
+    , _csujAmznClientToken              :: !(Maybe Text)
+    , _csujSoftwareToUpdate             :: !(Maybe SoftwareToUpdate)
     , _csujUpdateTargetsOperatingSystem :: !(Maybe UpdateTargetsOperatingSystem)
-    , _csujS3URLSignerRole :: !(Maybe Text)
-    , _csujUpdateTargets :: !(Maybe [Text])
-    , _csujUpdateTargetsArchitecture :: !(Maybe UpdateTargetsArchitecture)
+    , _csujS3URLSignerRole              :: !(Maybe Text)
+    , _csujUpdateTargets                :: !(Maybe [Text])
+    , _csujUpdateTargetsArchitecture    :: !(Maybe UpdateTargetsArchitecture)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -173,8 +173,8 @@ instance ToQuery CreateSoftwareUpdateJob where
 -- | /See:/ 'createSoftwareUpdateJobResponse' smart constructor.
 data CreateSoftwareUpdateJobResponse =
   CreateSoftwareUpdateJobResponse'
-    { _csujrsIotJobARN :: !(Maybe Text)
-    , _csujrsIotJobId :: !(Maybe Text)
+    { _csujrsIotJobARN      :: !(Maybe Text)
+    , _csujrsIotJobId       :: !(Maybe Text)
     , _csujrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

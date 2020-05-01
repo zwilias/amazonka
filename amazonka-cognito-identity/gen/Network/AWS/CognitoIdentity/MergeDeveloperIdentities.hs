@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 -- /See:/ 'mergeDeveloperIdentities' smart constructor.
 data MergeDeveloperIdentities =
   MergeDeveloperIdentities'
-    { _mdiSourceUserIdentifier :: !Text
+    { _mdiSourceUserIdentifier      :: !Text
     , _mdiDestinationUserIdentifier :: !Text
-    , _mdiDeveloperProviderName :: !Text
-    , _mdiIdentityPoolId :: !Text
+    , _mdiDeveloperProviderName     :: !Text
+    , _mdiIdentityPoolId            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -150,7 +150,7 @@ instance ToQuery MergeDeveloperIdentities where
 -- /See:/ 'mergeDeveloperIdentitiesResponse' smart constructor.
 data MergeDeveloperIdentitiesResponse =
   MergeDeveloperIdentitiesResponse'
-    { _mdirsIdentityId :: !(Maybe Text)
+    { _mdirsIdentityId     :: !(Maybe Text)
     , _mdirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

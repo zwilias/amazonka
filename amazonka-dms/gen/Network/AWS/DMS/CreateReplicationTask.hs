@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,17 +57,17 @@ import Network.AWS.Response
 -- /See:/ 'createReplicationTask' smart constructor.
 data CreateReplicationTask =
   CreateReplicationTask'
-    { _crtReplicationTaskSettings :: !(Maybe Text)
-    , _crtCdcStartPosition :: !(Maybe Text)
-    , _crtCdcStopPosition :: !(Maybe Text)
-    , _crtTags :: !(Maybe [Tag])
-    , _crtCdcStartTime :: !(Maybe POSIX)
+    { _crtReplicationTaskSettings   :: !(Maybe Text)
+    , _crtCdcStartPosition          :: !(Maybe Text)
+    , _crtCdcStopPosition           :: !(Maybe Text)
+    , _crtTags                      :: !(Maybe [Tag])
+    , _crtCdcStartTime              :: !(Maybe POSIX)
     , _crtReplicationTaskIdentifier :: !Text
-    , _crtSourceEndpointARN :: !Text
-    , _crtTargetEndpointARN :: !Text
-    , _crtReplicationInstanceARN :: !Text
-    , _crtMigrationType :: !MigrationTypeValue
-    , _crtTableMappings :: !Text
+    , _crtSourceEndpointARN         :: !Text
+    , _crtTargetEndpointARN         :: !Text
+    , _crtReplicationInstanceARN    :: !Text
+    , _crtMigrationType             :: !MigrationTypeValue
+    , _crtTableMappings             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -226,7 +226,7 @@ instance ToQuery CreateReplicationTask where
 data CreateReplicationTaskResponse =
   CreateReplicationTaskResponse'
     { _crtrsReplicationTask :: !(Maybe ReplicationTask)
-    , _crtrsResponseStatus :: !Int
+    , _crtrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

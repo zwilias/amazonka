@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,9 +49,9 @@ import Network.AWS.Response
 -- | /See:/ 'listTypedLinkFacetNames' smart constructor.
 data ListTypedLinkFacetNames =
   ListTypedLinkFacetNames'
-    { _ltlfnNextToken :: !(Maybe Text)
+    { _ltlfnNextToken  :: !(Maybe Text)
     , _ltlfnMaxResults :: !(Maybe Nat)
-    , _ltlfnSchemaARN :: !Text
+    , _ltlfnSchemaARN  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -128,8 +128,8 @@ instance ToQuery ListTypedLinkFacetNames where
 -- | /See:/ 'listTypedLinkFacetNamesResponse' smart constructor.
 data ListTypedLinkFacetNamesResponse =
   ListTypedLinkFacetNamesResponse'
-    { _ltlfnrsNextToken :: !(Maybe Text)
-    , _ltlfnrsFacetNames :: !(Maybe [Text])
+    { _ltlfnrsNextToken      :: !(Maybe Text)
+    , _ltlfnrsFacetNames     :: !(Maybe [Text])
     , _ltlfnrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

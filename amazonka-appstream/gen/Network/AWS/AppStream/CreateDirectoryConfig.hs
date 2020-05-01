@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,9 +45,9 @@ import Network.AWS.Response
 -- | /See:/ 'createDirectoryConfig' smart constructor.
 data CreateDirectoryConfig =
   CreateDirectoryConfig'
-    { _cdcDirectoryName :: !Text
+    { _cdcDirectoryName                        :: !Text
     , _cdcOrganizationalUnitDistinguishedNames :: ![Text]
-    , _cdcServiceAccountCredentials :: !ServiceAccountCredentials
+    , _cdcServiceAccountCredentials            :: !ServiceAccountCredentials
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -134,7 +134,7 @@ instance ToQuery CreateDirectoryConfig where
 data CreateDirectoryConfigResponse =
   CreateDirectoryConfigResponse'
     { _cdcrsDirectoryConfig :: !(Maybe DirectoryConfig)
-    , _cdcrsResponseStatus :: !Int
+    , _cdcrsResponseStatus  :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

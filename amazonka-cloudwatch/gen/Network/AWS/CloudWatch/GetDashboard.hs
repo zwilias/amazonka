@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -99,9 +99,9 @@ instance ToQuery GetDashboard where
 -- | /See:/ 'getDashboardResponse' smart constructor.
 data GetDashboardResponse =
   GetDashboardResponse'
-    { _gdrsDashboardName :: !(Maybe Text)
-    , _gdrsDashboardBody :: !(Maybe Text)
-    , _gdrsDashboardARN :: !(Maybe Text)
+    { _gdrsDashboardName  :: !(Maybe Text)
+    , _gdrsDashboardBody  :: !(Maybe Text)
+    , _gdrsDashboardARN   :: !(Maybe Text)
     , _gdrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

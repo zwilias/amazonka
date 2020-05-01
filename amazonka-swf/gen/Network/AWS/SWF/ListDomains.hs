@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -64,9 +64,9 @@ import Network.AWS.SWF.Types.Product
 -- | /See:/ 'listDomains' smart constructor.
 data ListDomains =
   ListDomains'
-    { _ldNextPageToken :: !(Maybe Text)
-    , _ldReverseOrder :: !(Maybe Bool)
-    , _ldMaximumPageSize :: !(Maybe Nat)
+    { _ldNextPageToken      :: !(Maybe Text)
+    , _ldReverseOrder       :: !(Maybe Bool)
+    , _ldMaximumPageSize    :: !(Maybe Nat)
     , _ldRegistrationStatus :: !RegistrationStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -162,9 +162,9 @@ instance ToQuery ListDomains where
 -- /See:/ 'listDomainsResponse' smart constructor.
 data ListDomainsResponse =
   ListDomainsResponse'
-    { _ldrsNextPageToken :: !(Maybe Text)
+    { _ldrsNextPageToken  :: !(Maybe Text)
     , _ldrsResponseStatus :: !Int
-    , _ldrsDomainInfos :: ![DomainInfo]
+    , _ldrsDomainInfos    :: ![DomainInfo]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

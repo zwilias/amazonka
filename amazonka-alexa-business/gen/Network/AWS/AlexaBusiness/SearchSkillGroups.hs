@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,10 +51,10 @@ import Network.AWS.Response
 -- | /See:/ 'searchSkillGroups' smart constructor.
 data SearchSkillGroups =
   SearchSkillGroups'
-    { _ssgFilters :: !(Maybe [Filter])
+    { _ssgFilters      :: !(Maybe [Filter])
     , _ssgSortCriteria :: !(Maybe [Sort])
-    , _ssgNextToken :: !(Maybe Text)
-    , _ssgMaxResults :: !(Maybe Nat)
+    , _ssgNextToken    :: !(Maybe Text)
+    , _ssgMaxResults   :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -145,9 +145,9 @@ instance ToQuery SearchSkillGroups where
 -- | /See:/ 'searchSkillGroupsResponse' smart constructor.
 data SearchSkillGroupsResponse =
   SearchSkillGroupsResponse'
-    { _ssgrsNextToken :: !(Maybe Text)
-    , _ssgrsSkillGroups :: !(Maybe [SkillGroupData])
-    , _ssgrsTotalCount :: !(Maybe Int)
+    { _ssgrsNextToken      :: !(Maybe Text)
+    , _ssgrsSkillGroups    :: !(Maybe [SkillGroupData])
+    , _ssgrsTotalCount     :: !(Maybe Int)
     , _ssgrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

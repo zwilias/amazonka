@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -25,7 +25,7 @@ import Network.AWS.Prelude
 data BrokerInstance =
   BrokerInstance'
     { _biConsoleURL :: !(Maybe Text)
-    , _biEndpoints :: !(Maybe [Text])
+    , _biEndpoints  :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -66,11 +66,11 @@ instance NFData BrokerInstance
 -- /See:/ 'brokerSummary' smart constructor.
 data BrokerSummary =
   BrokerSummary'
-    { _bsBrokerName :: !(Maybe Text)
-    , _bsBrokerState :: !(Maybe BrokerState)
-    , _bsDeploymentMode :: !(Maybe DeploymentMode)
-    , _bsBrokerId :: !(Maybe Text)
-    , _bsBrokerARN :: !(Maybe Text)
+    { _bsBrokerName       :: !(Maybe Text)
+    , _bsBrokerState      :: !(Maybe BrokerState)
+    , _bsDeploymentMode   :: !(Maybe DeploymentMode)
+    , _bsBrokerId         :: !(Maybe Text)
+    , _bsBrokerARN        :: !(Maybe Text)
     , _bsHostInstanceType :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -146,13 +146,13 @@ instance NFData BrokerSummary
 -- /See:/ 'configuration' smart constructor.
 data Configuration =
   Configuration'
-    { _cEngineVersion :: !(Maybe Text)
-    , _cARN :: !(Maybe Text)
+    { _cEngineVersion  :: !(Maybe Text)
+    , _cARN            :: !(Maybe Text)
     , _cLatestRevision :: !(Maybe ConfigurationRevision)
-    , _cName :: !(Maybe Text)
-    , _cId :: !(Maybe Text)
-    , _cDescription :: !(Maybe Text)
-    , _cEngineType :: !(Maybe EngineType)
+    , _cName           :: !(Maybe Text)
+    , _cId             :: !(Maybe Text)
+    , _cDescription    :: !(Maybe Text)
+    , _cEngineType     :: !(Maybe EngineType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -234,7 +234,7 @@ instance NFData Configuration
 -- /See:/ 'configurationId' smart constructor.
 data ConfigurationId =
   ConfigurationId'
-    { _ciId :: !(Maybe Text)
+    { _ciId       :: !(Maybe Text)
     , _ciRevision :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -276,7 +276,7 @@ instance ToJSON ConfigurationId where
 -- /See:/ 'configurationRevision' smart constructor.
 data ConfigurationRevision =
   ConfigurationRevision'
-    { _crRevision :: !(Maybe Int)
+    { _crRevision    :: !(Maybe Int)
     , _crDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -365,9 +365,9 @@ instance NFData Configurations
 -- /See:/ 'sanitizationWarning' smart constructor.
 data SanitizationWarning =
   SanitizationWarning'
-    { _swReason :: !(Maybe SanitizationWarningReason)
+    { _swReason        :: !(Maybe SanitizationWarningReason)
     , _swAttributeName :: !(Maybe Text)
-    , _swElementName :: !(Maybe Text)
+    , _swElementName   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -414,10 +414,10 @@ instance NFData SanitizationWarning
 -- /See:/ 'user' smart constructor.
 data User =
   User'
-    { _uGroups :: !(Maybe [Text])
+    { _uGroups        :: !(Maybe [Text])
     , _uConsoleAccess :: !(Maybe Bool)
-    , _uUsername :: !(Maybe Text)
-    , _uPassword :: !(Maybe Text)
+    , _uUsername      :: !(Maybe Text)
+    , _uPassword      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -476,7 +476,7 @@ instance ToJSON User where
 -- /See:/ 'userPendingChanges' smart constructor.
 data UserPendingChanges =
   UserPendingChanges'
-    { _upcGroups :: !(Maybe [Text])
+    { _upcGroups        :: !(Maybe [Text])
     , _upcConsoleAccess :: !(Maybe Bool)
     , _upcPendingChange :: !(Maybe ChangeType)
     }
@@ -529,7 +529,7 @@ instance NFData UserPendingChanges
 -- /See:/ 'userSummary' smart constructor.
 data UserSummary =
   UserSummary'
-    { _usUsername :: !(Maybe Text)
+    { _usUsername      :: !(Maybe Text)
     , _usPendingChange :: !(Maybe ChangeType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -568,7 +568,7 @@ instance NFData UserSummary
 data WeeklyStartTime =
   WeeklyStartTime'
     { _wstTimeOfDay :: !(Maybe Text)
-    , _wstTimeZone :: !(Maybe Text)
+    , _wstTimeZone  :: !(Maybe Text)
     , _wstDayOfWeek :: !(Maybe DayOfWeek)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

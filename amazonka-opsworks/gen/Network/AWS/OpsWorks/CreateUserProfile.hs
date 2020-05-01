@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,9 +49,9 @@ import Network.AWS.Response
 data CreateUserProfile =
   CreateUserProfile'
     { _cupAllowSelfManagement :: !(Maybe Bool)
-    , _cupSSHPublicKey :: !(Maybe Text)
-    , _cupSSHUsername :: !(Maybe Text)
-    , _cupIAMUserARN :: !Text
+    , _cupSSHPublicKey        :: !(Maybe Text)
+    , _cupSSHUsername         :: !(Maybe Text)
+    , _cupIAMUserARN          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -139,7 +139,7 @@ instance ToQuery CreateUserProfile where
 -- /See:/ 'createUserProfileResponse' smart constructor.
 data CreateUserProfileResponse =
   CreateUserProfileResponse'
-    { _cuprsIAMUserARN :: !(Maybe Text)
+    { _cuprsIAMUserARN     :: !(Maybe Text)
     , _cuprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

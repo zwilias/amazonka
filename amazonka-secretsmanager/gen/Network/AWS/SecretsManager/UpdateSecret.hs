@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -82,12 +82,12 @@ import Network.AWS.SecretsManager.Types.Product
 -- | /See:/ 'updateSecret' smart constructor.
 data UpdateSecret =
   UpdateSecret'
-    { _usSecretBinary :: !(Maybe (Sensitive Base64))
-    , _usKMSKeyId :: !(Maybe Text)
-    , _usSecretString :: !(Maybe (Sensitive Text))
+    { _usSecretBinary       :: !(Maybe (Sensitive Base64))
+    , _usKMSKeyId           :: !(Maybe Text)
+    , _usSecretString       :: !(Maybe (Sensitive Text))
     , _usClientRequestToken :: !(Maybe Text)
-    , _usDescription :: !(Maybe Text)
-    , _usSecretId :: !Text
+    , _usDescription        :: !(Maybe Text)
+    , _usSecretId           :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -190,9 +190,9 @@ instance ToQuery UpdateSecret where
 -- | /See:/ 'updateSecretResponse' smart constructor.
 data UpdateSecretResponse =
   UpdateSecretResponse'
-    { _usrsVersionId :: !(Maybe Text)
-    , _usrsARN :: !(Maybe Text)
-    , _usrsName :: !(Maybe Text)
+    { _usrsVersionId      :: !(Maybe Text)
+    , _usrsARN            :: !(Maybe Text)
+    , _usrsName           :: !(Maybe Text)
     , _usrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

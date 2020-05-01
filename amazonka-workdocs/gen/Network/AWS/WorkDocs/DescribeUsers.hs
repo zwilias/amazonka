@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -59,16 +59,16 @@ import Network.AWS.WorkDocs.Types.Product
 -- | /See:/ 'describeUsers' smart constructor.
 data DescribeUsers =
   DescribeUsers'
-    { _duInclude :: !(Maybe UserFilterType)
-    , _duUserIds :: !(Maybe Text)
+    { _duInclude             :: !(Maybe UserFilterType)
+    , _duUserIds             :: !(Maybe Text)
     , _duAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _duSort :: !(Maybe UserSortType)
-    , _duMarker :: !(Maybe Text)
-    , _duQuery :: !(Maybe (Sensitive Text))
-    , _duLimit :: !(Maybe Nat)
-    , _duOrder :: !(Maybe OrderType)
-    , _duOrganizationId :: !(Maybe Text)
-    , _duFields :: !(Maybe Text)
+    , _duSort                :: !(Maybe UserSortType)
+    , _duMarker              :: !(Maybe Text)
+    , _duQuery               :: !(Maybe (Sensitive Text))
+    , _duLimit               :: !(Maybe Nat)
+    , _duOrder               :: !(Maybe OrderType)
+    , _duOrganizationId      :: !(Maybe Text)
+    , _duFields              :: !(Maybe Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -200,10 +200,10 @@ instance ToQuery DescribeUsers where
 -- | /See:/ 'describeUsersResponse' smart constructor.
 data DescribeUsersResponse =
   DescribeUsersResponse'
-    { _dursUsers :: !(Maybe [User])
+    { _dursUsers              :: !(Maybe [User])
     , _dursTotalNumberOfUsers :: !(Maybe Integer)
-    , _dursMarker :: !(Maybe Text)
-    , _dursResponseStatus :: !Int
+    , _dursMarker             :: !(Maybe Text)
+    , _dursResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

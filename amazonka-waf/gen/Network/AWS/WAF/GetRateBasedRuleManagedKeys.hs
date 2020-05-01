@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.WAF.Types.Product
 data GetRateBasedRuleManagedKeys =
   GetRateBasedRuleManagedKeys'
     { _grbrmkNextMarker :: !(Maybe Text)
-    , _grbrmkRuleId :: !Text
+    , _grbrmkRuleId     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -112,8 +112,8 @@ instance ToQuery GetRateBasedRuleManagedKeys where
 -- | /See:/ 'getRateBasedRuleManagedKeysResponse' smart constructor.
 data GetRateBasedRuleManagedKeysResponse =
   GetRateBasedRuleManagedKeysResponse'
-    { _grbrmkrsNextMarker :: !(Maybe Text)
-    , _grbrmkrsManagedKeys :: !(Maybe [Text])
+    { _grbrmkrsNextMarker     :: !(Maybe Text)
+    , _grbrmkrsManagedKeys    :: !(Maybe [Text])
     , _grbrmkrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

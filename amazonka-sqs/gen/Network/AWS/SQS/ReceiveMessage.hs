@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -78,12 +78,12 @@ import Network.AWS.SQS.Types.Product
 data ReceiveMessage =
   ReceiveMessage'
     { _rmReceiveRequestAttemptId :: !(Maybe Text)
-    , _rmVisibilityTimeout :: !(Maybe Int)
-    , _rmMessageAttributeNames :: !(Maybe [Text])
-    , _rmWaitTimeSeconds :: !(Maybe Int)
-    , _rmAttributeNames :: !(Maybe [MessageAttribute])
-    , _rmMaxNumberOfMessages :: !(Maybe Int)
-    , _rmQueueURL :: !Text
+    , _rmVisibilityTimeout       :: !(Maybe Int)
+    , _rmMessageAttributeNames   :: !(Maybe [Text])
+    , _rmWaitTimeSeconds         :: !(Maybe Int)
+    , _rmAttributeNames          :: !(Maybe [MessageAttribute])
+    , _rmMaxNumberOfMessages     :: !(Maybe Int)
+    , _rmQueueURL                :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -195,7 +195,7 @@ instance ToQuery ReceiveMessage where
 -- /See:/ 'receiveMessageResponse' smart constructor.
 data ReceiveMessageResponse =
   ReceiveMessageResponse'
-    { _rmrsMessages :: !(Maybe [Message])
+    { _rmrsMessages       :: !(Maybe [Message])
     , _rmrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

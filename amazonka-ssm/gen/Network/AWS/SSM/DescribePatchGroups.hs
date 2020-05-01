@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'describePatchGroups' smart constructor.
 data DescribePatchGroups =
   DescribePatchGroups'
-    { _dpgFilters :: !(Maybe [PatchOrchestratorFilter])
-    , _dpgNextToken :: !(Maybe Text)
+    { _dpgFilters    :: !(Maybe [PatchOrchestratorFilter])
+    , _dpgNextToken  :: !(Maybe Text)
     , _dpgMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -119,8 +119,8 @@ instance ToQuery DescribePatchGroups where
 -- | /See:/ 'describePatchGroupsResponse' smart constructor.
 data DescribePatchGroupsResponse =
   DescribePatchGroupsResponse'
-    { _dpgrsMappings :: !(Maybe [PatchGroupPatchBaselineMapping])
-    , _dpgrsNextToken :: !(Maybe Text)
+    { _dpgrsMappings       :: !(Maybe [PatchGroupPatchBaselineMapping])
+    , _dpgrsNextToken      :: !(Maybe Text)
     , _dpgrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.Response
 -- | /See:/ 'getGroupPolicy' smart constructor.
 data GetGroupPolicy =
   GetGroupPolicy'
-    { _ggpGroupName :: !Text
+    { _ggpGroupName  :: !Text
     , _ggpPolicyName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -115,8 +115,8 @@ instance ToQuery GetGroupPolicy where
 data GetGroupPolicyResponse =
   GetGroupPolicyResponse'
     { _ggprsResponseStatus :: !Int
-    , _ggprsGroupName :: !Text
-    , _ggprsPolicyName :: !Text
+    , _ggprsGroupName      :: !Text
+    , _ggprsPolicyName     :: !Text
     , _ggprsPolicyDocument :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

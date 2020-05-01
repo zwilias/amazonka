@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -43,7 +43,7 @@ import Network.AWS.Response
 -- | /See:/ 'listBrokers' smart constructor.
 data ListBrokers =
   ListBrokers'
-    { _lbNextToken :: !(Maybe Text)
+    { _lbNextToken  :: !(Maybe Text)
     , _lbMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -95,9 +95,9 @@ instance ToQuery ListBrokers where
 -- | /See:/ 'listBrokersResponse' smart constructor.
 data ListBrokersResponse =
   ListBrokersResponse'
-    { _lbrsNextToken :: !(Maybe Text)
+    { _lbrsNextToken       :: !(Maybe Text)
     , _lbrsBrokerSummaries :: !(Maybe [BrokerSummary])
-    , _lbrsResponseStatus :: !Int
+    , _lbrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

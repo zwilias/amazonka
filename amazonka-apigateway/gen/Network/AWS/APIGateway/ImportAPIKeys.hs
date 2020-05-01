@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,8 +51,8 @@ import Network.AWS.Response
 data ImportAPIKeys =
   ImportAPIKeys'
     { _iakFailOnWarnings :: !(Maybe Bool)
-    , _iakBody :: !ByteString
-    , _iakFormat :: !APIKeysFormat
+    , _iakBody           :: !ByteString
+    , _iakFormat         :: !APIKeysFormat
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -123,8 +123,8 @@ instance ToQuery ImportAPIKeys where
 -- /See:/ 'importAPIKeysResponse' smart constructor.
 data ImportAPIKeysResponse =
   ImportAPIKeysResponse'
-    { _iakrsIds :: !(Maybe [Text])
-    , _iakrsWarnings :: !(Maybe [Text])
+    { _iakrsIds            :: !(Maybe [Text])
+    , _iakrsWarnings       :: !(Maybe [Text])
     , _iakrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

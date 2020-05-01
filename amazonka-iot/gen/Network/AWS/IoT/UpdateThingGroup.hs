@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,8 +45,8 @@ import Network.AWS.Response
 -- | /See:/ 'updateThingGroup' smart constructor.
 data UpdateThingGroup =
   UpdateThingGroup'
-    { _utgExpectedVersion :: !(Maybe Integer)
-    , _utgThingGroupName :: !Text
+    { _utgExpectedVersion      :: !(Maybe Integer)
+    , _utgThingGroupName       :: !Text
     , _utgThingGroupProperties :: !ThingGroupProperties
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -118,7 +118,7 @@ instance ToQuery UpdateThingGroup where
 -- | /See:/ 'updateThingGroupResponse' smart constructor.
 data UpdateThingGroupResponse =
   UpdateThingGroupResponse'
-    { _utgrsVersion :: !(Maybe Integer)
+    { _utgrsVersion        :: !(Maybe Integer)
     , _utgrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

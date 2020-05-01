@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,10 +49,10 @@ import Network.AWS.Response
 -- | /See:/ 'completeLayerUpload' smart constructor.
 data CompleteLayerUpload =
   CompleteLayerUpload'
-    { _cluRegistryId :: !(Maybe Text)
+    { _cluRegistryId     :: !(Maybe Text)
     , _cluRepositoryName :: !Text
-    , _cluUploadId :: !Text
-    , _cluLayerDigests :: !(List1 Text)
+    , _cluUploadId       :: !Text
+    , _cluLayerDigests   :: !(List1 Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -141,10 +141,10 @@ instance ToQuery CompleteLayerUpload where
 -- | /See:/ 'completeLayerUploadResponse' smart constructor.
 data CompleteLayerUploadResponse =
   CompleteLayerUploadResponse'
-    { _clursRegistryId :: !(Maybe Text)
-    , _clursLayerDigest :: !(Maybe Text)
+    { _clursRegistryId     :: !(Maybe Text)
+    , _clursLayerDigest    :: !(Maybe Text)
     , _clursRepositoryName :: !(Maybe Text)
-    , _clursUploadId :: !(Maybe Text)
+    , _clursUploadId       :: !(Maybe Text)
     , _clursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

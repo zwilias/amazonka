@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,16 +56,16 @@ import Network.AWS.SageMaker.Types.Product
 -- | /See:/ 'listTrainingJobs' smart constructor.
 data ListTrainingJobs =
   ListTrainingJobs'
-    { _ltjNameContains :: !(Maybe Text)
+    { _ltjNameContains           :: !(Maybe Text)
     , _ltjLastModifiedTimeBefore :: !(Maybe POSIX)
-    , _ltjCreationTimeAfter :: !(Maybe POSIX)
-    , _ltjNextToken :: !(Maybe Text)
-    , _ltjSortOrder :: !(Maybe SortOrder)
-    , _ltjLastModifiedTimeAfter :: !(Maybe POSIX)
-    , _ltjCreationTimeBefore :: !(Maybe POSIX)
-    , _ltjStatusEquals :: !(Maybe TrainingJobStatus)
-    , _ltjMaxResults :: !(Maybe Nat)
-    , _ltjSortBy :: !(Maybe SortBy)
+    , _ltjCreationTimeAfter      :: !(Maybe POSIX)
+    , _ltjNextToken              :: !(Maybe Text)
+    , _ltjSortOrder              :: !(Maybe SortOrder)
+    , _ltjLastModifiedTimeAfter  :: !(Maybe POSIX)
+    , _ltjCreationTimeBefore     :: !(Maybe POSIX)
+    , _ltjStatusEquals           :: !(Maybe TrainingJobStatus)
+    , _ltjMaxResults             :: !(Maybe Nat)
+    , _ltjSortBy                 :: !(Maybe SortBy)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -209,8 +209,8 @@ instance ToQuery ListTrainingJobs where
 -- | /See:/ 'listTrainingJobsResponse' smart constructor.
 data ListTrainingJobsResponse =
   ListTrainingJobsResponse'
-    { _ltjrsNextToken :: !(Maybe Text)
-    , _ltjrsResponseStatus :: !Int
+    { _ltjrsNextToken            :: !(Maybe Text)
+    , _ltjrsResponseStatus       :: !Int
     , _ltjrsTrainingJobSummaries :: ![TrainingJobSummary]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

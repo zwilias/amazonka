@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -61,19 +61,19 @@ import Network.AWS.Response
 -- /See:/ 'restoreDBClusterToPointInTime' smart constructor.
 data RestoreDBClusterToPointInTime =
   RestoreDBClusterToPointInTime'
-    { _rdctpitUseLatestRestorableTime :: !(Maybe Bool)
-    , _rdctpitDBSubnetGroupName :: !(Maybe Text)
-    , _rdctpitBacktrackWindow :: !(Maybe Integer)
-    , _rdctpitKMSKeyId :: !(Maybe Text)
-    , _rdctpitVPCSecurityGroupIds :: !(Maybe [Text])
-    , _rdctpitRestoreType :: !(Maybe Text)
-    , _rdctpitOptionGroupName :: !(Maybe Text)
-    , _rdctpitRestoreToTime :: !(Maybe ISO8601)
-    , _rdctpitTags :: !(Maybe [Tag])
-    , _rdctpitPort :: !(Maybe Int)
+    { _rdctpitUseLatestRestorableTime         :: !(Maybe Bool)
+    , _rdctpitDBSubnetGroupName               :: !(Maybe Text)
+    , _rdctpitBacktrackWindow                 :: !(Maybe Integer)
+    , _rdctpitKMSKeyId                        :: !(Maybe Text)
+    , _rdctpitVPCSecurityGroupIds             :: !(Maybe [Text])
+    , _rdctpitRestoreType                     :: !(Maybe Text)
+    , _rdctpitOptionGroupName                 :: !(Maybe Text)
+    , _rdctpitRestoreToTime                   :: !(Maybe ISO8601)
+    , _rdctpitTags                            :: !(Maybe [Tag])
+    , _rdctpitPort                            :: !(Maybe Int)
     , _rdctpitEnableIAMDatabaseAuthentication :: !(Maybe Bool)
-    , _rdctpitDBClusterIdentifier :: !Text
-    , _rdctpitSourceDBClusterIdentifier :: !Text
+    , _rdctpitDBClusterIdentifier             :: !Text
+    , _rdctpitSourceDBClusterIdentifier       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -246,7 +246,7 @@ instance ToQuery RestoreDBClusterToPointInTime where
 -- | /See:/ 'restoreDBClusterToPointInTimeResponse' smart constructor.
 data RestoreDBClusterToPointInTimeResponse =
   RestoreDBClusterToPointInTimeResponse'
-    { _rdctpitrsDBCluster :: !(Maybe DBCluster)
+    { _rdctpitrsDBCluster      :: !(Maybe DBCluster)
     , _rdctpitrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

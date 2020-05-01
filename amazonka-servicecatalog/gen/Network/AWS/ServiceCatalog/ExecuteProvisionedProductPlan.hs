@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,8 +45,8 @@ import Network.AWS.ServiceCatalog.Types.Product
 -- | /See:/ 'executeProvisionedProductPlan' smart constructor.
 data ExecuteProvisionedProductPlan =
   ExecuteProvisionedProductPlan'
-    { _epppAcceptLanguage :: !(Maybe Text)
-    , _epppPlanId :: !Text
+    { _epppAcceptLanguage   :: !(Maybe Text)
+    , _epppPlanId           :: !Text
     , _epppIdempotencyToken :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -125,7 +125,7 @@ instance ToQuery ExecuteProvisionedProductPlan where
 -- | /See:/ 'executeProvisionedProductPlanResponse' smart constructor.
 data ExecuteProvisionedProductPlanResponse =
   ExecuteProvisionedProductPlanResponse'
-    { _eppprsRecordDetail :: !(Maybe RecordDetail)
+    { _eppprsRecordDetail   :: !(Maybe RecordDetail)
     , _eppprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

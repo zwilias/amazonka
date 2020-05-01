@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,15 +52,15 @@ import Network.AWS.Response
 data UpdateProfile =
   UpdateProfile'
     { _upSetupModeDisabled :: !(Maybe Bool)
-    , _upPSTNEnabled :: !(Maybe Bool)
-    , _upDistanceUnit :: !(Maybe DistanceUnit)
-    , _upAddress :: !(Maybe Text)
-    , _upProfileARN :: !(Maybe Text)
-    , _upWakeWord :: !(Maybe WakeWord)
-    , _upProfileName :: !(Maybe Text)
-    , _upTemperatureUnit :: !(Maybe TemperatureUnit)
-    , _upTimezone :: !(Maybe Text)
-    , _upMaxVolumeLimit :: !(Maybe Int)
+    , _upPSTNEnabled       :: !(Maybe Bool)
+    , _upDistanceUnit      :: !(Maybe DistanceUnit)
+    , _upAddress           :: !(Maybe Text)
+    , _upProfileARN        :: !(Maybe Text)
+    , _upWakeWord          :: !(Maybe WakeWord)
+    , _upProfileName       :: !(Maybe Text)
+    , _upTemperatureUnit   :: !(Maybe TemperatureUnit)
+    , _upTimezone          :: !(Maybe Text)
+    , _upMaxVolumeLimit    :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

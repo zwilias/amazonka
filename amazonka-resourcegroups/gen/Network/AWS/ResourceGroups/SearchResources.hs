@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- | /See:/ 'searchResources' smart constructor.
 data SearchResources =
   SearchResources'
-    { _srNextToken :: !(Maybe Text)
-    , _srMaxResults :: !(Maybe Nat)
+    { _srNextToken     :: !(Maybe Text)
+    , _srMaxResults    :: !(Maybe Nat)
     , _srResourceQuery :: !ResourceQuery
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -127,9 +127,9 @@ instance ToQuery SearchResources where
 -- | /See:/ 'searchResourcesResponse' smart constructor.
 data SearchResourcesResponse =
   SearchResourcesResponse'
-    { _srrsNextToken :: !(Maybe Text)
+    { _srrsNextToken           :: !(Maybe Text)
     , _srrsResourceIdentifiers :: !(Maybe [ResourceIdentifier])
-    , _srrsResponseStatus :: !Int
+    , _srrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

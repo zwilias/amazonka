@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -89,7 +89,7 @@ import Network.AWS.Route53.Types.Product
 data ChangeResourceRecordSets =
   ChangeResourceRecordSets'
     { _crrsHostedZoneId :: !ResourceId
-    , _crrsChangeBatch :: !ChangeBatch
+    , _crrsChangeBatch  :: !ChangeBatch
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -156,7 +156,7 @@ instance ToXML ChangeResourceRecordSets where
 data ChangeResourceRecordSetsResponse =
   ChangeResourceRecordSetsResponse'
     { _crrsrsResponseStatus :: !Int
-    , _crrsrsChangeInfo :: !ChangeInfo
+    , _crrsrsChangeInfo     :: !ChangeInfo
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

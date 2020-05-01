@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'createDiskSnapshot' smart constructor.
 data CreateDiskSnapshot =
   CreateDiskSnapshot'
-    { _cdsDiskName :: !Text
+    { _cdsDiskName         :: !Text
     , _cdsDiskSnapshotName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -114,7 +114,7 @@ instance ToQuery CreateDiskSnapshot where
 -- | /See:/ 'createDiskSnapshotResponse' smart constructor.
 data CreateDiskSnapshotResponse =
   CreateDiskSnapshotResponse'
-    { _cdsrsOperations :: !(Maybe [Operation])
+    { _cdsrsOperations     :: !(Maybe [Operation])
     , _cdsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

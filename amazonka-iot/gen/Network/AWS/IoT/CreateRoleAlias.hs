@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,8 +47,8 @@ import Network.AWS.Response
 data CreateRoleAlias =
   CreateRoleAlias'
     { _craCredentialDurationSeconds :: !(Maybe Nat)
-    , _craRoleAlias :: !Text
-    , _craRoleARN :: !Text
+    , _craRoleAlias                 :: !Text
+    , _craRoleARN                   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -122,8 +122,8 @@ instance ToQuery CreateRoleAlias where
 -- | /See:/ 'createRoleAliasResponse' smart constructor.
 data CreateRoleAliasResponse =
   CreateRoleAliasResponse'
-    { _crarsRoleAliasARN :: !(Maybe Text)
-    , _crarsRoleAlias :: !(Maybe Text)
+    { _crarsRoleAliasARN   :: !(Maybe Text)
+    , _crarsRoleAlias      :: !(Maybe Text)
     , _crarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 data CreateImageBuilderStreamingURL =
   CreateImageBuilderStreamingURL'
     { _cibsuValidity :: !(Maybe Integer)
-    , _cibsuName :: !Text
+    , _cibsuName     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -110,8 +110,8 @@ instance ToQuery CreateImageBuilderStreamingURL where
 -- | /See:/ 'createImageBuilderStreamingURLResponse' smart constructor.
 data CreateImageBuilderStreamingURLResponse =
   CreateImageBuilderStreamingURLResponse'
-    { _cibsursStreamingURL :: !(Maybe Text)
-    , _cibsursExpires :: !(Maybe POSIX)
+    { _cibsursStreamingURL   :: !(Maybe Text)
+    , _cibsursExpires        :: !(Maybe POSIX)
     , _cibsursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

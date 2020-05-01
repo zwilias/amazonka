@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -66,20 +66,20 @@ import Network.AWS.Response
 -- /See:/ 'restoreDBClusterFromSnapshot' smart constructor.
 data RestoreDBClusterFromSnapshot =
   RestoreDBClusterFromSnapshot'
-    { _rdbcfsEngineVersion :: !(Maybe Text)
-    , _rdbcfsDBSubnetGroupName :: !(Maybe Text)
-    , _rdbcfsBacktrackWindow :: !(Maybe Integer)
-    , _rdbcfsAvailabilityZones :: !(Maybe [Text])
-    , _rdbcfsKMSKeyId :: !(Maybe Text)
-    , _rdbcfsVPCSecurityGroupIds :: !(Maybe [Text])
-    , _rdbcfsDatabaseName :: !(Maybe Text)
-    , _rdbcfsOptionGroupName :: !(Maybe Text)
-    , _rdbcfsTags :: !(Maybe [Tag])
-    , _rdbcfsPort :: !(Maybe Int)
+    { _rdbcfsEngineVersion                   :: !(Maybe Text)
+    , _rdbcfsDBSubnetGroupName               :: !(Maybe Text)
+    , _rdbcfsBacktrackWindow                 :: !(Maybe Integer)
+    , _rdbcfsAvailabilityZones               :: !(Maybe [Text])
+    , _rdbcfsKMSKeyId                        :: !(Maybe Text)
+    , _rdbcfsVPCSecurityGroupIds             :: !(Maybe [Text])
+    , _rdbcfsDatabaseName                    :: !(Maybe Text)
+    , _rdbcfsOptionGroupName                 :: !(Maybe Text)
+    , _rdbcfsTags                            :: !(Maybe [Tag])
+    , _rdbcfsPort                            :: !(Maybe Int)
     , _rdbcfsEnableIAMDatabaseAuthentication :: !(Maybe Bool)
-    , _rdbcfsDBClusterIdentifier :: !Text
-    , _rdbcfsSnapshotIdentifier :: !Text
-    , _rdbcfsEngine :: !Text
+    , _rdbcfsDBClusterIdentifier             :: !Text
+    , _rdbcfsSnapshotIdentifier              :: !Text
+    , _rdbcfsEngine                          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -256,7 +256,7 @@ instance ToQuery RestoreDBClusterFromSnapshot where
 -- | /See:/ 'restoreDBClusterFromSnapshotResponse' smart constructor.
 data RestoreDBClusterFromSnapshotResponse =
   RestoreDBClusterFromSnapshotResponse'
-    { _rdbcfsrsDBCluster :: !(Maybe DBCluster)
+    { _rdbcfsrsDBCluster      :: !(Maybe DBCluster)
     , _rdbcfsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,13 +53,13 @@ import Network.AWS.Response
 -- | /See:/ 'startOutboundVoiceContact' smart constructor.
 data StartOutboundVoiceContact =
   StartOutboundVoiceContact'
-    { _sovcClientToken :: !(Maybe Text)
-    , _sovcQueueId :: !(Maybe Text)
-    , _sovcAttributes :: !(Maybe (Map Text Text))
-    , _sovcSourcePhoneNumber :: !(Maybe Text)
+    { _sovcClientToken            :: !(Maybe Text)
+    , _sovcQueueId                :: !(Maybe Text)
+    , _sovcAttributes             :: !(Maybe (Map Text Text))
+    , _sovcSourcePhoneNumber      :: !(Maybe Text)
     , _sovcDestinationPhoneNumber :: !Text
-    , _sovcContactFlowId :: !Text
-    , _sovcInstanceId :: !Text
+    , _sovcContactFlowId          :: !Text
+    , _sovcInstanceId             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -167,7 +167,7 @@ instance ToQuery StartOutboundVoiceContact where
 -- | /See:/ 'startOutboundVoiceContactResponse' smart constructor.
 data StartOutboundVoiceContactResponse =
   StartOutboundVoiceContactResponse'
-    { _sovcrsContactId :: !(Maybe Text)
+    { _sovcrsContactId      :: !(Maybe Text)
     , _sovcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

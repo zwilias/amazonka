@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.Response
 -- /See:/ 'modifyVPCTenancy' smart constructor.
 data ModifyVPCTenancy =
   ModifyVPCTenancy'
-    { _mvtDryRun :: !(Maybe Bool)
-    , _mvtVPCId :: !Text
+    { _mvtDryRun          :: !(Maybe Bool)
+    , _mvtVPCId           :: !Text
     , _mvtInstanceTenancy :: !VPCTenancy
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -127,7 +127,7 @@ instance ToQuery ModifyVPCTenancy where
 -- /See:/ 'modifyVPCTenancyResponse' smart constructor.
 data ModifyVPCTenancyResponse =
   ModifyVPCTenancyResponse'
-    { _mvtrsReturnValue :: !(Maybe Bool)
+    { _mvtrsReturnValue    :: !(Maybe Bool)
     , _mvtrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

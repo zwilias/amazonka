@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -75,16 +75,16 @@ import Network.AWS.SWF.Types.Product
 -- | /See:/ 'registerWorkflowType' smart constructor.
 data RegisterWorkflowType =
   RegisterWorkflowType'
-    { _rwtDefaultLambdaRole :: !(Maybe Text)
-    , _rwtDefaultChildPolicy :: !(Maybe ChildPolicy)
-    , _rwtDefaultTaskList :: !(Maybe TaskList)
-    , _rwtDefaultTaskPriority :: !(Maybe Text)
+    { _rwtDefaultLambdaRole                   :: !(Maybe Text)
+    , _rwtDefaultChildPolicy                  :: !(Maybe ChildPolicy)
+    , _rwtDefaultTaskList                     :: !(Maybe TaskList)
+    , _rwtDefaultTaskPriority                 :: !(Maybe Text)
     , _rwtDefaultExecutionStartToCloseTimeout :: !(Maybe Text)
-    , _rwtDefaultTaskStartToCloseTimeout :: !(Maybe Text)
-    , _rwtDescription :: !(Maybe Text)
-    , _rwtDomain :: !Text
-    , _rwtName :: !Text
-    , _rwtVersion :: !Text
+    , _rwtDefaultTaskStartToCloseTimeout      :: !(Maybe Text)
+    , _rwtDescription                         :: !(Maybe Text)
+    , _rwtDomain                              :: !Text
+    , _rwtName                                :: !Text
+    , _rwtVersion                             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

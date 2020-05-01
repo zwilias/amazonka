@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -85,8 +85,8 @@ instance ToQuery GetAccountBalance where
 data GetAccountBalanceResponse =
   GetAccountBalanceResponse'
     { _gabrsAvailableBalance :: !(Maybe Text)
-    , _gabrsOnHoldBalance :: !(Maybe Text)
-    , _gabrsResponseStatus :: !Int
+    , _gabrsOnHoldBalance    :: !(Maybe Text)
+    , _gabrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

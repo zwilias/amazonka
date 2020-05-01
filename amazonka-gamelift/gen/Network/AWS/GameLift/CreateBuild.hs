@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -82,8 +82,8 @@ data CreateBuild =
   CreateBuild'
     { _cbStorageLocation :: !(Maybe S3Location)
     , _cbOperatingSystem :: !(Maybe OperatingSystem)
-    , _cbName :: !(Maybe Text)
-    , _cbVersion :: !(Maybe Text)
+    , _cbName            :: !(Maybe Text)
+    , _cbVersion         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -169,10 +169,10 @@ instance ToQuery CreateBuild where
 -- /See:/ 'createBuildResponse' smart constructor.
 data CreateBuildResponse =
   CreateBuildResponse'
-    { _cbrsStorageLocation :: !(Maybe S3Location)
+    { _cbrsStorageLocation   :: !(Maybe S3Location)
     , _cbrsUploadCredentials :: !(Maybe (Sensitive AWSCredentials))
-    , _cbrsBuild :: !(Maybe Build)
-    , _cbrsResponseStatus :: !Int
+    , _cbrsBuild             :: !(Maybe Build)
+    , _cbrsResponseStatus    :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

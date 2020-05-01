@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 -- | /See:/ 'listParents' smart constructor.
 data ListParents =
   ListParents'
-    { _lNextToken :: !(Maybe Text)
+    { _lNextToken  :: !(Maybe Text)
     , _lMaxResults :: !(Maybe Nat)
-    , _lChildId :: !Text
+    , _lChildId    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -132,8 +132,8 @@ instance ToQuery ListParents where
 -- | /See:/ 'listParentsResponse' smart constructor.
 data ListParentsResponse =
   ListParentsResponse'
-    { _lrsNextToken :: !(Maybe Text)
-    , _lrsParents :: !(Maybe [Parent])
+    { _lrsNextToken      :: !(Maybe Text)
+    , _lrsParents        :: !(Maybe [Parent])
     , _lrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

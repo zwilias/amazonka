@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -91,10 +91,10 @@ instance ToQuery GetBucketWebsite where
 data GetBucketWebsiteResponse =
   GetBucketWebsiteResponse'
     { _gbwrsRedirectAllRequestsTo :: !(Maybe RedirectAllRequestsTo)
-    , _gbwrsErrorDocument :: !(Maybe ErrorDocument)
-    , _gbwrsIndexDocument :: !(Maybe IndexDocument)
-    , _gbwrsRoutingRules :: !(Maybe [RoutingRule])
-    , _gbwrsResponseStatus :: !Int
+    , _gbwrsErrorDocument         :: !(Maybe ErrorDocument)
+    , _gbwrsIndexDocument         :: !(Maybe IndexDocument)
+    , _gbwrsRoutingRules          :: !(Maybe [RoutingRule])
+    , _gbwrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

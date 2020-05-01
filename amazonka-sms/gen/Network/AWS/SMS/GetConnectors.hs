@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.SMS.Types.Product
 -- | /See:/ 'getConnectors' smart constructor.
 data GetConnectors =
   GetConnectors'
-    { _gcNextToken :: !(Maybe Text)
+    { _gcNextToken  :: !(Maybe Text)
     , _gcMaxResults :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -115,8 +115,8 @@ instance ToQuery GetConnectors where
 -- | /See:/ 'getConnectorsResponse' smart constructor.
 data GetConnectorsResponse =
   GetConnectorsResponse'
-    { _gcrsConnectorList :: !(Maybe [Connector])
-    , _gcrsNextToken :: !(Maybe Text)
+    { _gcrsConnectorList  :: !(Maybe [Connector])
+    , _gcrsNextToken      :: !(Maybe Text)
     , _gcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

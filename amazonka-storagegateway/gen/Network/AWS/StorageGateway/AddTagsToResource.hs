@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,7 +63,7 @@ import Network.AWS.StorageGateway.Types.Product
 data AddTagsToResource =
   AddTagsToResource'
     { _attrResourceARN :: !Text
-    , _attrTags :: ![Tag]
+    , _attrTags        :: ![Tag]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -129,7 +129,7 @@ instance ToQuery AddTagsToResource where
 -- /See:/ 'addTagsToResourceResponse' smart constructor.
 data AddTagsToResourceResponse =
   AddTagsToResourceResponse'
-    { _attrrsResourceARN :: !(Maybe Text)
+    { _attrrsResourceARN    :: !(Maybe Text)
     , _attrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

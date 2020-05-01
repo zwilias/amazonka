@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.WorkSpaces.Types.Product
 -- | /See:/ 'describeWorkspaceDirectories' smart constructor.
 data DescribeWorkspaceDirectories =
   DescribeWorkspaceDirectories'
-    { _dwdNextToken :: !(Maybe Text)
+    { _dwdNextToken    :: !(Maybe Text)
     , _dwdDirectoryIds :: !(Maybe (List1 Text))
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -121,8 +121,8 @@ instance ToQuery DescribeWorkspaceDirectories where
 -- | /See:/ 'describeWorkspaceDirectoriesResponse' smart constructor.
 data DescribeWorkspaceDirectoriesResponse =
   DescribeWorkspaceDirectoriesResponse'
-    { _dwdrsDirectories :: !(Maybe [WorkspaceDirectory])
-    , _dwdrsNextToken :: !(Maybe Text)
+    { _dwdrsDirectories    :: !(Maybe [WorkspaceDirectory])
+    , _dwdrsNextToken      :: !(Maybe Text)
     , _dwdrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

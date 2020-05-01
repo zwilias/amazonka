@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Response
 data CreateConfiguration =
   CreateConfiguration'
     { _ccEngineVersion :: !(Maybe Text)
-    , _ccName :: !(Maybe Text)
-    , _ccEngineType :: !(Maybe EngineType)
+    , _ccName          :: !(Maybe Text)
+    , _ccEngineType    :: !(Maybe EngineType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -119,10 +119,10 @@ instance ToQuery CreateConfiguration where
 -- | /See:/ 'createConfigurationResponse' smart constructor.
 data CreateConfigurationResponse =
   CreateConfigurationResponse'
-    { _ccrsARN :: !(Maybe Text)
+    { _ccrsARN            :: !(Maybe Text)
     , _ccrsLatestRevision :: !(Maybe ConfigurationRevision)
-    , _ccrsName :: !(Maybe Text)
-    , _ccrsId :: !(Maybe Text)
+    , _ccrsName           :: !(Maybe Text)
+    , _ccrsId             :: !(Maybe Text)
     , _ccrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

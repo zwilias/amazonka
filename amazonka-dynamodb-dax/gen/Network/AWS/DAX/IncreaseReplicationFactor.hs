@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,8 +45,8 @@ import Network.AWS.Response
 -- | /See:/ 'increaseReplicationFactor' smart constructor.
 data IncreaseReplicationFactor =
   IncreaseReplicationFactor'
-    { _irfAvailabilityZones :: !(Maybe [Text])
-    , _irfClusterName :: !Text
+    { _irfAvailabilityZones    :: !(Maybe [Text])
+    , _irfClusterName          :: !Text
     , _irfNewReplicationFactor :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -126,7 +126,7 @@ instance ToQuery IncreaseReplicationFactor where
 -- | /See:/ 'increaseReplicationFactorResponse' smart constructor.
 data IncreaseReplicationFactorResponse =
   IncreaseReplicationFactorResponse'
-    { _irfrsCluster :: !(Maybe Cluster)
+    { _irfrsCluster        :: !(Maybe Cluster)
     , _irfrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

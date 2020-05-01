@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,9 +45,9 @@ import Network.AWS.Response
 -- /See:/ 'getFindings' smart constructor.
 data GetFindings =
   GetFindings'
-    { _gfFindingIds :: !(Maybe [Text])
+    { _gfFindingIds   :: !(Maybe [Text])
     , _gfSortCriteria :: !(Maybe SortCriteria)
-    , _gfDetectorId :: !Text
+    , _gfDetectorId   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -119,7 +119,7 @@ instance ToQuery GetFindings where
 -- | /See:/ 'getFindingsResponse' smart constructor.
 data GetFindingsResponse =
   GetFindingsResponse'
-    { _grsFindings :: !(Maybe [Finding])
+    { _grsFindings       :: !(Maybe [Finding])
     , _grsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

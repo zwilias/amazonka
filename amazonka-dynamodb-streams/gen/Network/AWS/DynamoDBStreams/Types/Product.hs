@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -28,15 +28,15 @@ import Network.AWS.Prelude
 -- /See:/ 'attributeValue' smart constructor.
 data AttributeValue =
   AttributeValue'
-    { _avL :: !(Maybe [AttributeValue])
-    , _avNS :: !(Maybe [Text])
-    , _avM :: !(Maybe (Map Text AttributeValue))
+    { _avL    :: !(Maybe [AttributeValue])
+    , _avNS   :: !(Maybe [Text])
+    , _avM    :: !(Maybe (Map Text AttributeValue))
     , _avNULL :: !(Maybe Bool)
-    , _avN :: !(Maybe Text)
-    , _avBS :: !(Maybe [Base64])
-    , _avB :: !(Maybe Base64)
-    , _avSS :: !(Maybe [Text])
-    , _avS :: !(Maybe Text)
+    , _avN    :: !(Maybe Text)
+    , _avBS   :: !(Maybe [Base64])
+    , _avB    :: !(Maybe Base64)
+    , _avSS   :: !(Maybe [Text])
+    , _avS    :: !(Maybe Text)
     , _avBOOL :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -146,7 +146,7 @@ instance NFData AttributeValue
 data Identity =
   Identity'
     { _iPrincipalId :: !(Maybe Text)
-    , _iType :: !(Maybe Text)
+    , _iType        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -188,7 +188,7 @@ instance NFData Identity
 data KeySchemaElement =
   KeySchemaElement'
     { _kseAttributeName :: !Text
-    , _kseKeyType :: !KeyType
+    , _kseKeyType       :: !KeyType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -234,11 +234,11 @@ data Record =
   Record'
     { _rUserIdentity :: !(Maybe Identity)
     , _rEventVersion :: !(Maybe Text)
-    , _rDynamodb :: !(Maybe StreamRecord)
-    , _rAwsRegion :: !(Maybe Text)
-    , _rEventName :: !(Maybe OperationType)
-    , _rEventSource :: !(Maybe Text)
-    , _rEventId :: !(Maybe Text)
+    , _rDynamodb     :: !(Maybe StreamRecord)
+    , _rAwsRegion    :: !(Maybe Text)
+    , _rEventName    :: !(Maybe OperationType)
+    , _rEventSource  :: !(Maybe Text)
+    , _rEventId      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -323,7 +323,7 @@ instance NFData Record
 data SequenceNumberRange =
   SequenceNumberRange'
     { _snrStartingSequenceNumber :: !(Maybe Text)
-    , _snrEndingSequenceNumber :: !(Maybe Text)
+    , _snrEndingSequenceNumber   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -368,9 +368,9 @@ instance NFData SequenceNumberRange
 -- /See:/ 'shard' smart constructor.
 data Shard =
   Shard'
-    { _sParentShardId :: !(Maybe Text)
+    { _sParentShardId       :: !(Maybe Text)
     , _sSequenceNumberRange :: !(Maybe SequenceNumberRange)
-    , _sShardId :: !(Maybe Text)
+    , _sShardId             :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -424,8 +424,8 @@ instance NFData Shard
 data Stream =
   Stream'
     { _sStreamLabel :: !(Maybe Text)
-    , _sStreamARN :: !(Maybe Text)
-    , _sTableName :: !(Maybe Text)
+    , _sStreamARN   :: !(Maybe Text)
+    , _sTableName   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -474,14 +474,14 @@ instance NFData Stream
 -- /See:/ 'streamDescription' smart constructor.
 data StreamDescription =
   StreamDescription'
-    { _sdLastEvaluatedShardId :: !(Maybe Text)
-    , _sdStreamLabel :: !(Maybe Text)
-    , _sdStreamStatus :: !(Maybe StreamStatus)
-    , _sdKeySchema :: !(Maybe (List1 KeySchemaElement))
-    , _sdStreamViewType :: !(Maybe StreamViewType)
-    , _sdStreamARN :: !(Maybe Text)
-    , _sdShards :: !(Maybe [Shard])
-    , _sdTableName :: !(Maybe Text)
+    { _sdLastEvaluatedShardId    :: !(Maybe Text)
+    , _sdStreamLabel             :: !(Maybe Text)
+    , _sdStreamStatus            :: !(Maybe StreamStatus)
+    , _sdKeySchema               :: !(Maybe (List1 KeySchemaElement))
+    , _sdStreamViewType          :: !(Maybe StreamViewType)
+    , _sdStreamARN               :: !(Maybe Text)
+    , _sdShards                  :: !(Maybe [Shard])
+    , _sdTableName               :: !(Maybe Text)
     , _sdCreationRequestDateTime :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -586,13 +586,13 @@ instance NFData StreamDescription
 -- /See:/ 'streamRecord' smart constructor.
 data StreamRecord =
   StreamRecord'
-    { _srSizeBytes :: !(Maybe Nat)
-    , _srSequenceNumber :: !(Maybe Text)
+    { _srSizeBytes                   :: !(Maybe Nat)
+    , _srSequenceNumber              :: !(Maybe Text)
     , _srApproximateCreationDateTime :: !(Maybe POSIX)
-    , _srStreamViewType :: !(Maybe StreamViewType)
-    , _srKeys :: !(Maybe (Map Text AttributeValue))
-    , _srOldImage :: !(Maybe (Map Text AttributeValue))
-    , _srNewImage :: !(Maybe (Map Text AttributeValue))
+    , _srStreamViewType              :: !(Maybe StreamViewType)
+    , _srKeys                        :: !(Maybe (Map Text AttributeValue))
+    , _srOldImage                    :: !(Maybe (Map Text AttributeValue))
+    , _srNewImage                    :: !(Maybe (Map Text AttributeValue))
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'resolveRoom' smart constructor.
 data ResolveRoom =
   ResolveRoom'
-    { _rrUserId :: !Text
+    { _rrUserId  :: !Text
     , _rrSkillId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -111,9 +111,9 @@ instance ToQuery ResolveRoom where
 data ResolveRoomResponse =
   ResolveRoomResponse'
     { _rrrsRoomSkillParameters :: !(Maybe [RoomSkillParameter])
-    , _rrrsRoomARN :: !(Maybe Text)
-    , _rrrsRoomName :: !(Maybe Text)
-    , _rrrsResponseStatus :: !Int
+    , _rrrsRoomARN             :: !(Maybe Text)
+    , _rrrsRoomName            :: !(Maybe Text)
+    , _rrrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

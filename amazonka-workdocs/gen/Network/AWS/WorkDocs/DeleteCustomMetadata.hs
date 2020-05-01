@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,11 +46,11 @@ import Network.AWS.WorkDocs.Types.Product
 -- | /See:/ 'deleteCustomMetadata' smart constructor.
 data DeleteCustomMetadata =
   DeleteCustomMetadata'
-    { _dcmVersionId :: !(Maybe Text)
-    , _dcmDeleteAll :: !(Maybe Bool)
+    { _dcmVersionId           :: !(Maybe Text)
+    , _dcmDeleteAll           :: !(Maybe Bool)
     , _dcmAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _dcmKeys :: !(Maybe [Text])
-    , _dcmResourceId :: !Text
+    , _dcmKeys                :: !(Maybe [Text])
+    , _dcmResourceId          :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

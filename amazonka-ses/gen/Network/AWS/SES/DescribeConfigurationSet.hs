@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,7 +54,7 @@ import Network.AWS.SES.Types.Product
 data DescribeConfigurationSet =
   DescribeConfigurationSet'
     { _dcsConfigurationSetAttributeNames :: !(Maybe [ConfigurationSetAttribute])
-    , _dcsConfigurationSetName :: !Text
+    , _dcsConfigurationSetName           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -128,11 +128,11 @@ instance ToQuery DescribeConfigurationSet where
 -- /See:/ 'describeConfigurationSetResponse' smart constructor.
 data DescribeConfigurationSetResponse =
   DescribeConfigurationSetResponse'
-    { _dcsrsTrackingOptions :: !(Maybe TrackingOptions)
-    , _dcsrsConfigurationSet :: !(Maybe ConfigurationSet)
+    { _dcsrsTrackingOptions   :: !(Maybe TrackingOptions)
+    , _dcsrsConfigurationSet  :: !(Maybe ConfigurationSet)
     , _dcsrsReputationOptions :: !(Maybe ReputationOptions)
     , _dcsrsEventDestinations :: !(Maybe [EventDestination])
-    , _dcsrsResponseStatus :: !Int
+    , _dcsrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 data StartExportTask =
   StartExportTask'
     { _setExportDataFormat :: !(Maybe [ExportDataFormat])
-    , _setStartTime :: !(Maybe POSIX)
-    , _setFilters :: !(Maybe [ExportFilter])
-    , _setEndTime :: !(Maybe POSIX)
+    , _setStartTime        :: !(Maybe POSIX)
+    , _setFilters          :: !(Maybe [ExportFilter])
+    , _setEndTime          :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -136,7 +136,7 @@ instance ToQuery StartExportTask where
 -- | /See:/ 'startExportTaskResponse' smart constructor.
 data StartExportTaskResponse =
   StartExportTaskResponse'
-    { _setrsExportId :: !(Maybe Text)
+    { _setrsExportId       :: !(Maybe Text)
     , _setrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

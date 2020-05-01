@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'updateTrigger' smart constructor.
 data UpdateTrigger =
   UpdateTrigger'
-    { _utName :: !Text
+    { _utName          :: !Text
     , _utTriggerUpdate :: !TriggerUpdate
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -106,7 +106,7 @@ instance ToQuery UpdateTrigger where
 -- | /See:/ 'updateTriggerResponse' smart constructor.
 data UpdateTriggerResponse =
   UpdateTriggerResponse'
-    { _updrsTrigger :: !(Maybe Trigger)
+    { _updrsTrigger        :: !(Maybe Trigger)
     , _updrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

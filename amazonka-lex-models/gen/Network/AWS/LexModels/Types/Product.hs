@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,13 +26,13 @@ import Network.AWS.Prelude
 -- /See:/ 'botAliasMetadata' smart constructor.
 data BotAliasMetadata =
   BotAliasMetadata'
-    { _bamChecksum :: !(Maybe Text)
-    , _bamBotVersion :: !(Maybe Text)
-    , _bamBotName :: !(Maybe Text)
-    , _bamCreatedDate :: !(Maybe POSIX)
-    , _bamName :: !(Maybe Text)
+    { _bamChecksum        :: !(Maybe Text)
+    , _bamBotVersion      :: !(Maybe Text)
+    , _bamBotName         :: !(Maybe Text)
+    , _bamCreatedDate     :: !(Maybe POSIX)
+    , _bamName            :: !(Maybe Text)
     , _bamLastUpdatedDate :: !(Maybe POSIX)
-    , _bamDescription :: !(Maybe Text)
+    , _bamDescription     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -118,15 +118,15 @@ instance NFData BotAliasMetadata
 -- /See:/ 'botChannelAssociation' smart constructor.
 data BotChannelAssociation =
   BotChannelAssociation'
-    { _bcaFailureReason :: !(Maybe Text)
-    , _bcaStatus :: !(Maybe ChannelStatus)
-    , _bcaBotAlias :: !(Maybe Text)
-    , _bcaBotName :: !(Maybe Text)
+    { _bcaFailureReason    :: !(Maybe Text)
+    , _bcaStatus           :: !(Maybe ChannelStatus)
+    , _bcaBotAlias         :: !(Maybe Text)
+    , _bcaBotName          :: !(Maybe Text)
     , _bcaBotConfiguration :: !(Maybe (Sensitive (Map Text Text)))
-    , _bcaCreatedDate :: !(Maybe POSIX)
-    , _bcaName :: !(Maybe Text)
-    , _bcaType :: !(Maybe ChannelType)
-    , _bcaDescription :: !(Maybe Text)
+    , _bcaCreatedDate      :: !(Maybe POSIX)
+    , _bcaName             :: !(Maybe Text)
+    , _bcaType             :: !(Maybe ChannelType)
+    , _bcaDescription      :: !(Maybe Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -229,12 +229,12 @@ instance NFData BotChannelAssociation
 -- /See:/ 'botMetadata' smart constructor.
 data BotMetadata =
   BotMetadata'
-    { _bmStatus :: !(Maybe LexStatus)
-    , _bmCreatedDate :: !(Maybe POSIX)
-    , _bmName :: !(Maybe Text)
-    , _bmVersion :: !(Maybe Text)
+    { _bmStatus          :: !(Maybe LexStatus)
+    , _bmCreatedDate     :: !(Maybe POSIX)
+    , _bmName            :: !(Maybe Text)
+    , _bmVersion         :: !(Maybe Text)
     , _bmLastUpdatedDate :: !(Maybe POSIX)
-    , _bmDescription :: !(Maybe Text)
+    , _bmDescription     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -312,7 +312,7 @@ instance NFData BotMetadata
 -- /See:/ 'builtinIntentMetadata' smart constructor.
 data BuiltinIntentMetadata =
   BuiltinIntentMetadata'
-    { _bimSignature :: !(Maybe Text)
+    { _bimSignature        :: !(Maybe Text)
     , _bimSupportedLocales :: !(Maybe [Locale])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -389,7 +389,7 @@ instance NFData BuiltinIntentSlot
 -- /See:/ 'builtinSlotTypeMetadata' smart constructor.
 data BuiltinSlotTypeMetadata =
   BuiltinSlotTypeMetadata'
-    { _bstmSignature :: !(Maybe Text)
+    { _bstmSignature        :: !(Maybe Text)
     , _bstmSupportedLocales :: !(Maybe [Locale])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -435,7 +435,7 @@ instance NFData BuiltinSlotTypeMetadata
 -- /See:/ 'codeHook' smart constructor.
 data CodeHook =
   CodeHook'
-    { _chUri :: !Text
+    { _chUri            :: !Text
     , _chMessageVersion :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -496,7 +496,7 @@ instance ToJSON CodeHook where
 data EnumerationValue =
   EnumerationValue'
     { _evSynonyms :: !(Maybe [Text])
-    , _evValue :: !Text
+    , _evValue    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -544,7 +544,7 @@ instance ToJSON EnumerationValue where
 -- /See:/ 'followUpPrompt' smart constructor.
 data FollowUpPrompt =
   FollowUpPrompt'
-    { _fupPrompt :: !Prompt
+    { _fupPrompt             :: !Prompt
     , _fupRejectionStatement :: !Statement
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -607,7 +607,7 @@ instance ToJSON FollowUpPrompt where
 data FulfillmentActivity =
   FulfillmentActivity'
     { _faCodeHook :: !(Maybe CodeHook)
-    , _faType :: !FulfillmentActivityType
+    , _faType     :: !FulfillmentActivityType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -654,7 +654,7 @@ instance ToJSON FulfillmentActivity where
 -- /See:/ 'intent' smart constructor.
 data Intent =
   Intent'
-    { _iIntentName :: !Text
+    { _iIntentName    :: !Text
     , _iIntentVersion :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -706,11 +706,11 @@ instance ToJSON Intent where
 -- /See:/ 'intentMetadata' smart constructor.
 data IntentMetadata =
   IntentMetadata'
-    { _imCreatedDate :: !(Maybe POSIX)
-    , _imName :: !(Maybe Text)
-    , _imVersion :: !(Maybe Text)
+    { _imCreatedDate     :: !(Maybe POSIX)
+    , _imName            :: !(Maybe Text)
+    , _imVersion         :: !(Maybe Text)
     , _imLastUpdatedDate :: !(Maybe POSIX)
-    , _imDescription :: !(Maybe Text)
+    , _imDescription     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -782,7 +782,7 @@ data Message =
   Message'
     { _mGroupNumber :: !(Maybe Nat)
     , _mContentType :: !ContentType
-    , _mContent :: !Text
+    , _mContent     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -847,8 +847,8 @@ instance ToJSON Message where
 data Prompt =
   Prompt'
     { _pResponseCard :: !(Maybe Text)
-    , _pMessages :: !(List1 Message)
-    , _pMaxAttempts :: !Nat
+    , _pMessages     :: !(List1 Message)
+    , _pMaxAttempts  :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -912,15 +912,15 @@ instance ToJSON Prompt where
 -- /See:/ 'slot' smart constructor.
 data Slot =
   Slot'
-    { _sSlotType :: !(Maybe Text)
+    { _sSlotType               :: !(Maybe Text)
     , _sValueElicitationPrompt :: !(Maybe Prompt)
-    , _sResponseCard :: !(Maybe Text)
-    , _sPriority :: !(Maybe Nat)
-    , _sSlotTypeVersion :: !(Maybe Text)
-    , _sSampleUtterances :: !(Maybe [Text])
-    , _sDescription :: !(Maybe Text)
-    , _sName :: !Text
-    , _sSlotConstraint :: !SlotConstraint
+    , _sResponseCard           :: !(Maybe Text)
+    , _sPriority               :: !(Maybe Nat)
+    , _sSlotTypeVersion        :: !(Maybe Text)
+    , _sSampleUtterances       :: !(Maybe [Text])
+    , _sDescription            :: !(Maybe Text)
+    , _sName                   :: !Text
+    , _sSlotConstraint         :: !SlotConstraint
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1041,11 +1041,11 @@ instance ToJSON Slot where
 -- /See:/ 'slotTypeMetadata' smart constructor.
 data SlotTypeMetadata =
   SlotTypeMetadata'
-    { _stmCreatedDate :: !(Maybe POSIX)
-    , _stmName :: !(Maybe Text)
-    , _stmVersion :: !(Maybe Text)
+    { _stmCreatedDate     :: !(Maybe POSIX)
+    , _stmName            :: !(Maybe Text)
+    , _stmVersion         :: !(Maybe Text)
     , _stmLastUpdatedDate :: !(Maybe POSIX)
-    , _stmDescription :: !(Maybe Text)
+    , _stmDescription     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1116,7 +1116,7 @@ instance NFData SlotTypeMetadata
 data Statement =
   Statement'
     { _staResponseCard :: !(Maybe Text)
-    , _staMessages :: !(List1 Message)
+    , _staMessages     :: !(List1 Message)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1167,10 +1167,10 @@ instance ToJSON Statement where
 data UtteranceData =
   UtteranceData'
     { _udFirstUtteredDate :: !(Maybe POSIX)
-    , _udCount :: !(Maybe Int)
-    , _udUtteranceString :: !(Maybe Text)
-    , _udLastUtteredDate :: !(Maybe POSIX)
-    , _udDistinctUsers :: !(Maybe Int)
+    , _udCount            :: !(Maybe Int)
+    , _udUtteranceString  :: !(Maybe Text)
+    , _udLastUtteredDate  :: !(Maybe POSIX)
+    , _udDistinctUsers    :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,13 +52,13 @@ import Network.AWS.Response
 -- | /See:/ 'startTask' smart constructor.
 data StartTask =
   StartTask'
-    { _sOverrides :: !(Maybe TaskOverride)
-    , _sGroup :: !(Maybe Text)
-    , _sCluster :: !(Maybe Text)
-    , _sStartedBy :: !(Maybe Text)
+    { _sOverrides            :: !(Maybe TaskOverride)
+    , _sGroup                :: !(Maybe Text)
+    , _sCluster              :: !(Maybe Text)
+    , _sStartedBy            :: !(Maybe Text)
     , _sNetworkConfiguration :: !(Maybe NetworkConfiguration)
-    , _sTaskDefinition :: !Text
-    , _sContainerInstances :: ![Text]
+    , _sTaskDefinition       :: !Text
+    , _sContainerInstances   :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -168,8 +168,8 @@ instance ToQuery StartTask where
 -- | /See:/ 'startTaskResponse' smart constructor.
 data StartTaskResponse =
   StartTaskResponse'
-    { _strsFailures :: !(Maybe [Failure])
-    , _strsTasks :: !(Maybe [Task])
+    { _strsFailures       :: !(Maybe [Failure])
+    , _strsTasks          :: !(Maybe [Task])
     , _strsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

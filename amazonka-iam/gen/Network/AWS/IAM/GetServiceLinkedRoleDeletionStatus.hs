@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -96,9 +96,9 @@ instance ToQuery GetServiceLinkedRoleDeletionStatus where
 -- | /See:/ 'getServiceLinkedRoleDeletionStatusResponse' smart constructor.
 data GetServiceLinkedRoleDeletionStatusResponse =
   GetServiceLinkedRoleDeletionStatusResponse'
-    { _gslrdsrsReason :: !(Maybe DeletionTaskFailureReasonType)
+    { _gslrdsrsReason         :: !(Maybe DeletionTaskFailureReasonType)
     , _gslrdsrsResponseStatus :: !Int
-    , _gslrdsrsStatus :: !DeletionTaskStatusType
+    , _gslrdsrsStatus         :: !DeletionTaskStatusType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

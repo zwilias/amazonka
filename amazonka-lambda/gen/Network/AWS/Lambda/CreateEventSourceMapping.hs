@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -69,11 +69,11 @@ import Network.AWS.Response
 data CreateEventSourceMapping =
   CreateEventSourceMapping'
     { _cesmStartingPositionTimestamp :: !(Maybe POSIX)
-    , _cesmEnabled :: !(Maybe Bool)
-    , _cesmBatchSize :: !(Maybe Nat)
-    , _cesmEventSourceARN :: !Text
-    , _cesmFunctionName :: !Text
-    , _cesmStartingPosition :: !EventSourcePosition
+    , _cesmEnabled                   :: !(Maybe Bool)
+    , _cesmBatchSize                 :: !(Maybe Nat)
+    , _cesmEventSourceARN            :: !Text
+    , _cesmFunctionName              :: !Text
+    , _cesmStartingPosition          :: !EventSourcePosition
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -79,21 +79,21 @@ import Network.AWS.Response
 -- | /See:/ 'createService' smart constructor.
 data CreateService =
   CreateService'
-    { _cCluster :: !(Maybe Text)
-    , _cClientToken :: !(Maybe Text)
-    , _cPlatformVersion :: !(Maybe Text)
-    , _cLoadBalancers :: !(Maybe [LoadBalancer])
-    , _cRole :: !(Maybe Text)
-    , _cPlacementConstraints :: !(Maybe [PlacementConstraint])
-    , _cPlacementStrategy :: !(Maybe [PlacementStrategy])
-    , _cLaunchType :: !(Maybe LaunchType)
+    { _cCluster                       :: !(Maybe Text)
+    , _cClientToken                   :: !(Maybe Text)
+    , _cPlatformVersion               :: !(Maybe Text)
+    , _cLoadBalancers                 :: !(Maybe [LoadBalancer])
+    , _cRole                          :: !(Maybe Text)
+    , _cPlacementConstraints          :: !(Maybe [PlacementConstraint])
+    , _cPlacementStrategy             :: !(Maybe [PlacementStrategy])
+    , _cLaunchType                    :: !(Maybe LaunchType)
     , _cHealthCheckGracePeriodSeconds :: !(Maybe Int)
-    , _cNetworkConfiguration :: !(Maybe NetworkConfiguration)
-    , _cServiceRegistries :: !(Maybe [ServiceRegistry])
-    , _cDeploymentConfiguration :: !(Maybe DeploymentConfiguration)
-    , _cServiceName :: !Text
-    , _cTaskDefinition :: !Text
-    , _cDesiredCount :: !Int
+    , _cNetworkConfiguration          :: !(Maybe NetworkConfiguration)
+    , _cServiceRegistries             :: !(Maybe [ServiceRegistry])
+    , _cDeploymentConfiguration       :: !(Maybe DeploymentConfiguration)
+    , _cServiceName                   :: !Text
+    , _cTaskDefinition                :: !Text
+    , _cDesiredCount                  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -278,7 +278,7 @@ instance ToQuery CreateService where
 -- | /See:/ 'createServiceResponse' smart constructor.
 data CreateServiceResponse =
   CreateServiceResponse'
-    { _csrsService :: !(Maybe ContainerService)
+    { _csrsService        :: !(Maybe ContainerService)
     , _csrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

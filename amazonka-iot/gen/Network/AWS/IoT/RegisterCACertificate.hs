@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 -- /See:/ 'registerCACertificate' smart constructor.
 data RegisterCACertificate =
   RegisterCACertificate'
-    { _rcacSetAsActive :: !(Maybe Bool)
-    , _rcacAllowAutoRegistration :: !(Maybe Bool)
-    , _rcacRegistrationConfig :: !(Maybe RegistrationConfig)
-    , _rcacCaCertificate :: !Text
+    { _rcacSetAsActive             :: !(Maybe Bool)
+    , _rcacAllowAutoRegistration   :: !(Maybe Bool)
+    , _rcacRegistrationConfig      :: !(Maybe RegistrationConfig)
+    , _rcacCaCertificate           :: !Text
     , _rcacVerificationCertificate :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -155,7 +155,7 @@ instance ToQuery RegisterCACertificate where
 data RegisterCACertificateResponse =
   RegisterCACertificateResponse'
     { _rcacrsCertificateARN :: !(Maybe Text)
-    , _rcacrsCertificateId :: !(Maybe Text)
+    , _rcacrsCertificateId  :: !(Maybe Text)
     , _rcacrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

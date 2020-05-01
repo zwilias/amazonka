@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.Response
 data ListSkills =
   ListSkills'
     { _lsSkillGroupARN :: !(Maybe Text)
-    , _lsNextToken :: !(Maybe Text)
-    , _lsMaxResults :: !(Maybe Nat)
+    , _lsNextToken     :: !(Maybe Text)
+    , _lsMaxResults    :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -130,7 +130,7 @@ instance ToQuery ListSkills where
 -- | /See:/ 'listSkillsResponse' smart constructor.
 data ListSkillsResponse =
   ListSkillsResponse'
-    { _lsrsNextToken :: !(Maybe Text)
+    { _lsrsNextToken      :: !(Maybe Text)
     , _lsrsSkillSummaries :: !(Maybe [SkillSummary])
     , _lsrsResponseStatus :: !Int
     }

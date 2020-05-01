@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.WorkMail.Types.Product
 data DescribeResource =
   DescribeResource'
     { _drOrganizationId :: !Text
-    , _drResourceId :: !Text
+    , _drResourceId     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -123,13 +123,13 @@ instance ToQuery DescribeResource where
 -- | /See:/ 'describeResourceResponse' smart constructor.
 data DescribeResourceResponse =
   DescribeResourceResponse'
-    { _drrsEmail :: !(Maybe Text)
-    , _drrsState :: !(Maybe EntityState)
-    , _drrsResourceId :: !(Maybe Text)
-    , _drrsDisabledDate :: !(Maybe POSIX)
-    , _drrsName :: !(Maybe Text)
-    , _drrsType :: !(Maybe ResourceType)
-    , _drrsEnabledDate :: !(Maybe POSIX)
+    { _drrsEmail          :: !(Maybe Text)
+    , _drrsState          :: !(Maybe EntityState)
+    , _drrsResourceId     :: !(Maybe Text)
+    , _drrsDisabledDate   :: !(Maybe POSIX)
+    , _drrsName           :: !(Maybe Text)
+    , _drrsType           :: !(Maybe ResourceType)
+    , _drrsEnabledDate    :: !(Maybe POSIX)
     , _drrsBookingOptions :: !(Maybe BookingOptions)
     , _drrsResponseStatus :: !Int
     }

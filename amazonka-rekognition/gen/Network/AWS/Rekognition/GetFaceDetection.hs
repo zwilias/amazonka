@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,9 +55,9 @@ import Network.AWS.Response
 -- | /See:/ 'getFaceDetection' smart constructor.
 data GetFaceDetection =
   GetFaceDetection'
-    { _gfdNextToken :: !(Maybe Text)
+    { _gfdNextToken  :: !(Maybe Text)
     , _gfdMaxResults :: !(Maybe Nat)
-    , _gfdJobId :: !Text
+    , _gfdJobId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -134,11 +134,11 @@ instance ToQuery GetFaceDetection where
 -- | /See:/ 'getFaceDetectionResponse' smart constructor.
 data GetFaceDetectionResponse =
   GetFaceDetectionResponse'
-    { _gfdrsNextToken :: !(Maybe Text)
-    , _gfdrsVideoMetadata :: !(Maybe VideoMetadata)
-    , _gfdrsStatusMessage :: !(Maybe Text)
-    , _gfdrsFaces :: !(Maybe [FaceDetection])
-    , _gfdrsJobStatus :: !(Maybe VideoJobStatus)
+    { _gfdrsNextToken      :: !(Maybe Text)
+    , _gfdrsVideoMetadata  :: !(Maybe VideoMetadata)
+    , _gfdrsStatusMessage  :: !(Maybe Text)
+    , _gfdrsFaces          :: !(Maybe [FaceDetection])
+    , _gfdrsJobStatus      :: !(Maybe VideoJobStatus)
     , _gfdrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

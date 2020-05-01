@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,9 +58,9 @@ import Network.AWS.Response
 -- /See:/ 'addApplicationOutput' smart constructor.
 data AddApplicationOutput =
   AddApplicationOutput'
-    { _aaoApplicationName :: !Text
+    { _aaoApplicationName             :: !Text
     , _aaoCurrentApplicationVersionId :: !Nat
-    , _aaoOutput :: !Output
+    , _aaoOutput                      :: !Output
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,19 +57,19 @@ import Network.AWS.Response
 -- | /See:/ 'updateFleet' smart constructor.
 data UpdateFleet =
   UpdateFleet'
-    { _ufDomainJoinInfo :: !(Maybe DomainJoinInfo)
-    , _ufDisconnectTimeoutInSeconds :: !(Maybe Int)
-    , _ufMaxUserDurationInSeconds :: !(Maybe Int)
-    , _ufAttributesToDelete :: !(Maybe [FleetAttribute])
-    , _ufDeleteVPCConfig :: !(Maybe Bool)
-    , _ufInstanceType :: !(Maybe Text)
-    , _ufVPCConfig :: !(Maybe VPCConfig)
-    , _ufDisplayName :: !(Maybe Text)
+    { _ufDomainJoinInfo              :: !(Maybe DomainJoinInfo)
+    , _ufDisconnectTimeoutInSeconds  :: !(Maybe Int)
+    , _ufMaxUserDurationInSeconds    :: !(Maybe Int)
+    , _ufAttributesToDelete          :: !(Maybe [FleetAttribute])
+    , _ufDeleteVPCConfig             :: !(Maybe Bool)
+    , _ufInstanceType                :: !(Maybe Text)
+    , _ufVPCConfig                   :: !(Maybe VPCConfig)
+    , _ufDisplayName                 :: !(Maybe Text)
     , _ufEnableDefaultInternetAccess :: !(Maybe Bool)
-    , _ufImageName :: !(Maybe Text)
-    , _ufDescription :: !(Maybe Text)
-    , _ufComputeCapacity :: !(Maybe ComputeCapacity)
-    , _ufName :: !Text
+    , _ufImageName                   :: !(Maybe Text)
+    , _ufDescription                 :: !(Maybe Text)
+    , _ufComputeCapacity             :: !(Maybe ComputeCapacity)
+    , _ufName                        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -232,7 +232,7 @@ instance ToQuery UpdateFleet where
 -- | /See:/ 'updateFleetResponse' smart constructor.
 data UpdateFleetResponse =
   UpdateFleetResponse'
-    { _ufrsFleet :: !(Maybe Fleet)
+    { _ufrsFleet          :: !(Maybe Fleet)
     , _ufrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

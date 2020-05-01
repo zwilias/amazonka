@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.Response
 data ListAliases =
   ListAliases'
     { _laMarker :: !(Maybe Text)
-    , _laLimit :: !(Maybe Nat)
+    , _laLimit  :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -116,9 +116,9 @@ instance ToQuery ListAliases where
 -- | /See:/ 'listAliasesResponse' smart constructor.
 data ListAliasesResponse =
   ListAliasesResponse'
-    { _larsTruncated :: !(Maybe Bool)
-    , _larsAliases :: !(Maybe [AliasListEntry])
-    , _larsNextMarker :: !(Maybe Text)
+    { _larsTruncated      :: !(Maybe Bool)
+    , _larsAliases        :: !(Maybe [AliasListEntry])
+    , _larsNextMarker     :: !(Maybe Text)
     , _larsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ data GetAttributes =
   GetAttributes'
     { _gaConsistentRead :: !(Maybe Bool)
     , _gaAttributeNames :: !(Maybe [Text])
-    , _gaDomainName :: !Text
-    , _gaItemName :: !Text
+    , _gaDomainName     :: !Text
+    , _gaItemName       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -130,7 +130,7 @@ instance ToQuery GetAttributes where
 -- | /See:/ 'getAttributesResponse' smart constructor.
 data GetAttributesResponse =
   GetAttributesResponse'
-    { _garsAttributes :: !(Maybe [Attribute])
+    { _garsAttributes     :: !(Maybe [Attribute])
     , _garsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

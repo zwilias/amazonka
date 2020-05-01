@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,22 +26,22 @@ import Network.AWS.Prelude
 -- /See:/ 'cluster' smart constructor.
 data Cluster =
   Cluster'
-    { _cStatus :: !(Maybe Text)
-    , _cIAMRoleARN :: !(Maybe Text)
-    , _cClusterARN :: !(Maybe Text)
-    , _cActiveNodes :: !(Maybe Int)
-    , _cSecurityGroups :: !(Maybe [SecurityGroupMembership])
-    , _cNotificationConfiguration :: !(Maybe NotificationConfiguration)
-    , _cNodeIdsToRemove :: !(Maybe [Text])
-    , _cTotalNodes :: !(Maybe Int)
+    { _cStatus                     :: !(Maybe Text)
+    , _cIAMRoleARN                 :: !(Maybe Text)
+    , _cClusterARN                 :: !(Maybe Text)
+    , _cActiveNodes                :: !(Maybe Int)
+    , _cSecurityGroups             :: !(Maybe [SecurityGroupMembership])
+    , _cNotificationConfiguration  :: !(Maybe NotificationConfiguration)
+    , _cNodeIdsToRemove            :: !(Maybe [Text])
+    , _cTotalNodes                 :: !(Maybe Int)
     , _cPreferredMaintenanceWindow :: !(Maybe Text)
-    , _cSubnetGroup :: !(Maybe Text)
-    , _cClusterName :: !(Maybe Text)
-    , _cNodeType :: !(Maybe Text)
-    , _cNodes :: !(Maybe [Node])
-    , _cClusterDiscoveryEndpoint :: !(Maybe Endpoint)
-    , _cDescription :: !(Maybe Text)
-    , _cParameterGroup :: !(Maybe ParameterGroupStatus)
+    , _cSubnetGroup                :: !(Maybe Text)
+    , _cClusterName                :: !(Maybe Text)
+    , _cNodeType                   :: !(Maybe Text)
+    , _cNodes                      :: !(Maybe [Node])
+    , _cClusterDiscoveryEndpoint   :: !(Maybe Endpoint)
+    , _cDescription                :: !(Maybe Text)
+    , _cParameterGroup             :: !(Maybe ParameterGroupStatus)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -206,7 +206,7 @@ instance NFData Cluster
 data Endpoint =
   Endpoint'
     { _eAddress :: !(Maybe Text)
-    , _ePort :: !(Maybe Int)
+    , _ePort    :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -247,8 +247,8 @@ data Event =
   Event'
     { _eSourceName :: !(Maybe Text)
     , _eSourceType :: !(Maybe SourceType)
-    , _eDate :: !(Maybe POSIX)
-    , _eMessage :: !(Maybe Text)
+    , _eDate       :: !(Maybe POSIX)
+    , _eMessage    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -308,12 +308,12 @@ instance NFData Event
 -- /See:/ 'node' smart constructor.
 data Node =
   Node'
-    { _nNodeStatus :: !(Maybe Text)
+    { _nNodeStatus           :: !(Maybe Text)
     , _nParameterGroupStatus :: !(Maybe Text)
-    , _nAvailabilityZone :: !(Maybe Text)
-    , _nNodeId :: !(Maybe Text)
-    , _nEndpoint :: !(Maybe Endpoint)
-    , _nNodeCreateTime :: !(Maybe POSIX)
+    , _nAvailabilityZone     :: !(Maybe Text)
+    , _nNodeId               :: !(Maybe Text)
+    , _nEndpoint             :: !(Maybe Endpoint)
+    , _nNodeCreateTime       :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -391,7 +391,7 @@ instance NFData Node
 -- /See:/ 'nodeTypeSpecificValue' smart constructor.
 data NodeTypeSpecificValue =
   NodeTypeSpecificValue'
-    { _ntsvValue :: !(Maybe Text)
+    { _ntsvValue    :: !(Maybe Text)
     , _ntsvNodeType :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -433,7 +433,7 @@ instance NFData NodeTypeSpecificValue
 data NotificationConfiguration =
   NotificationConfiguration'
     { _ncTopicStatus :: !(Maybe Text)
-    , _ncTopicARN :: !(Maybe Text)
+    , _ncTopicARN    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -475,16 +475,16 @@ instance NFData NotificationConfiguration
 -- /See:/ 'parameter' smart constructor.
 data Parameter =
   Parameter'
-    { _pParameterValue :: !(Maybe Text)
-    , _pParameterType :: !(Maybe ParameterType)
-    , _pSource :: !(Maybe Text)
-    , _pIsModifiable :: !(Maybe IsModifiable)
-    , _pDataType :: !(Maybe Text)
+    { _pParameterValue         :: !(Maybe Text)
+    , _pParameterType          :: !(Maybe ParameterType)
+    , _pSource                 :: !(Maybe Text)
+    , _pIsModifiable           :: !(Maybe IsModifiable)
+    , _pDataType               :: !(Maybe Text)
     , _pNodeTypeSpecificValues :: !(Maybe [NodeTypeSpecificValue])
-    , _pAllowedValues :: !(Maybe Text)
-    , _pParameterName :: !(Maybe Text)
-    , _pDescription :: !(Maybe Text)
-    , _pChangeType :: !(Maybe ChangeType)
+    , _pAllowedValues          :: !(Maybe Text)
+    , _pParameterName          :: !(Maybe Text)
+    , _pDescription            :: !(Maybe Text)
+    , _pChangeType             :: !(Maybe ChangeType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -594,7 +594,7 @@ instance NFData Parameter
 -- /See:/ 'parameterGroup' smart constructor.
 data ParameterGroup =
   ParameterGroup'
-    { _pgDescription :: !(Maybe Text)
+    { _pgDescription        :: !(Maybe Text)
     , _pgParameterGroupName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -638,9 +638,9 @@ instance NFData ParameterGroup
 -- /See:/ 'parameterGroupStatus' smart constructor.
 data ParameterGroupStatus =
   ParameterGroupStatus'
-    { _pgsNodeIdsToReboot :: !(Maybe [Text])
+    { _pgsNodeIdsToReboot      :: !(Maybe [Text])
     , _pgsParameterApplyStatus :: !(Maybe Text)
-    , _pgsParameterGroupName :: !(Maybe Text)
+    , _pgsParameterGroupName   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -698,7 +698,7 @@ instance NFData ParameterGroupStatus
 data ParameterNameValue =
   ParameterNameValue'
     { _pnvParameterValue :: !(Maybe Text)
-    , _pnvParameterName :: !(Maybe Text)
+    , _pnvParameterName  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -741,7 +741,7 @@ instance ToJSON ParameterNameValue where
 -- /See:/ 'securityGroupMembership' smart constructor.
 data SecurityGroupMembership =
   SecurityGroupMembership'
-    { _sgmStatus :: !(Maybe Text)
+    { _sgmStatus                  :: !(Maybe Text)
     , _sgmSecurityGroupIdentifier :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -786,7 +786,7 @@ instance NFData SecurityGroupMembership
 -- /See:/ 'subnet' smart constructor.
 data Subnet =
   Subnet'
-    { _sSubnetIdentifier :: !(Maybe Text)
+    { _sSubnetIdentifier       :: !(Maybe Text)
     , _sSubnetAvailabilityZone :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -836,10 +836,10 @@ instance NFData Subnet
 -- /See:/ 'subnetGroup' smart constructor.
 data SubnetGroup =
   SubnetGroup'
-    { _sgVPCId :: !(Maybe Text)
-    , _sgSubnets :: !(Maybe [Subnet])
+    { _sgVPCId           :: !(Maybe Text)
+    , _sgSubnets         :: !(Maybe [Subnet])
     , _sgSubnetGroupName :: !(Maybe Text)
-    , _sgDescription :: !(Maybe Text)
+    , _sgDescription     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -904,7 +904,7 @@ instance NFData SubnetGroup
 data Tag =
   Tag'
     { _tagValue :: !(Maybe Text)
-    , _tagKey :: !(Maybe Text)
+    , _tagKey   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

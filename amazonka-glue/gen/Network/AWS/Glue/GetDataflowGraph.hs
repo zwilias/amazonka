@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -95,8 +95,8 @@ instance ToQuery GetDataflowGraph where
 -- | /See:/ 'getDataflowGraphResponse' smart constructor.
 data GetDataflowGraphResponse =
   GetDataflowGraphResponse'
-    { _gdgrsDagEdges :: !(Maybe [CodeGenEdge])
-    , _gdgrsDagNodes :: !(Maybe [CodeGenNode])
+    { _gdgrsDagEdges       :: !(Maybe [CodeGenEdge])
+    , _gdgrsDagNodes       :: !(Maybe [CodeGenNode])
     , _gdgrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

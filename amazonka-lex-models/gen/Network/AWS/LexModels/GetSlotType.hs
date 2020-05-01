@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,7 +53,7 @@ import Network.AWS.Response
 -- | /See:/ 'getSlotType' smart constructor.
 data GetSlotType =
   GetSlotType'
-    { _gstName :: !Text
+    { _gstName    :: !Text
     , _gstVersion :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -115,15 +115,15 @@ instance ToQuery GetSlotType where
 -- | /See:/ 'getSlotTypeResponse' smart constructor.
 data GetSlotTypeResponse =
   GetSlotTypeResponse'
-    { _gstsrsChecksum :: !(Maybe Text)
+    { _gstsrsChecksum               :: !(Maybe Text)
     , _gstsrsValueSelectionStrategy :: !(Maybe SlotValueSelectionStrategy)
-    , _gstsrsCreatedDate :: !(Maybe POSIX)
-    , _gstsrsName :: !(Maybe Text)
-    , _gstsrsVersion :: !(Maybe Text)
-    , _gstsrsLastUpdatedDate :: !(Maybe POSIX)
-    , _gstsrsDescription :: !(Maybe Text)
-    , _gstsrsEnumerationValues :: !(Maybe (List1 EnumerationValue))
-    , _gstsrsResponseStatus :: !Int
+    , _gstsrsCreatedDate            :: !(Maybe POSIX)
+    , _gstsrsName                   :: !(Maybe Text)
+    , _gstsrsVersion                :: !(Maybe Text)
+    , _gstsrsLastUpdatedDate        :: !(Maybe POSIX)
+    , _gstsrsDescription            :: !(Maybe Text)
+    , _gstsrsEnumerationValues      :: !(Maybe (List1 EnumerationValue))
+    , _gstsrsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

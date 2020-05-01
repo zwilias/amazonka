@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,10 +51,10 @@ import Network.AWS.Response
 data SetTaskStatus =
   SetTaskStatus'
     { _stsErrorStackTrace :: !(Maybe Text)
-    , _stsErrorId :: !(Maybe Text)
-    , _stsErrorMessage :: !(Maybe Text)
-    , _stsTaskId :: !Text
-    , _stsTaskStatus :: !TaskStatus
+    , _stsErrorId         :: !(Maybe Text)
+    , _stsErrorMessage    :: !(Maybe Text)
+    , _stsTaskId          :: !Text
+    , _stsTaskStatus      :: !TaskStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

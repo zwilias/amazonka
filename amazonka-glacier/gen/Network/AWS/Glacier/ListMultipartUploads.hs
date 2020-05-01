@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -62,8 +62,8 @@ import Network.AWS.Response
 -- /See:/ 'listMultipartUploads' smart constructor.
 data ListMultipartUploads =
   ListMultipartUploads'
-    { _lmuMarker :: !(Maybe Text)
-    , _lmuLimit :: !(Maybe Text)
+    { _lmuMarker    :: !(Maybe Text)
+    , _lmuLimit     :: !(Maybe Text)
     , _lmuAccountId :: !Text
     , _lmuVaultName :: !Text
     }
@@ -152,8 +152,8 @@ instance ToQuery ListMultipartUploads where
 -- /See:/ 'listMultipartUploadsResponse' smart constructor.
 data ListMultipartUploadsResponse =
   ListMultipartUploadsResponse'
-    { _lmursUploadsList :: !(Maybe [UploadListElement])
-    , _lmursMarker :: !(Maybe Text)
+    { _lmursUploadsList    :: !(Maybe [UploadListElement])
+    , _lmursMarker         :: !(Maybe Text)
     , _lmursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

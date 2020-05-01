@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,12 +49,12 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'createMaintenanceWindow' smart constructor.
 data CreateMaintenanceWindow =
   CreateMaintenanceWindow'
-    { _cmwClientToken :: !(Maybe Text)
-    , _cmwDescription :: !(Maybe (Sensitive Text))
-    , _cmwName :: !Text
-    , _cmwSchedule :: !Text
-    , _cmwDuration :: !Nat
-    , _cmwCutoff :: !Nat
+    { _cmwClientToken              :: !(Maybe Text)
+    , _cmwDescription              :: !(Maybe (Sensitive Text))
+    , _cmwName                     :: !Text
+    , _cmwSchedule                 :: !Text
+    , _cmwDuration                 :: !Nat
+    , _cmwCutoff                   :: !Nat
     , _cmwAllowUnassociatedTargets :: !Bool
     }
   deriving (Eq, Show, Data, Typeable, Generic)
@@ -169,7 +169,7 @@ instance ToQuery CreateMaintenanceWindow where
 -- | /See:/ 'createMaintenanceWindowResponse' smart constructor.
 data CreateMaintenanceWindowResponse =
   CreateMaintenanceWindowResponse'
-    { _cmwrsWindowId :: !(Maybe Text)
+    { _cmwrsWindowId       :: !(Maybe Text)
     , _cmwrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

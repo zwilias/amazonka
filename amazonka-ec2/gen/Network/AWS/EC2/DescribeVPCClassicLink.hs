@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.Response
 data DescribeVPCClassicLink =
   DescribeVPCClassicLink'
     { _dvclFilters :: !(Maybe [Filter])
-    , _dvclVPCIds :: !(Maybe [Text])
-    , _dvclDryRun :: !(Maybe Bool)
+    , _dvclVPCIds  :: !(Maybe [Text])
+    , _dvclDryRun  :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -119,7 +119,7 @@ instance ToQuery DescribeVPCClassicLink where
 -- /See:/ 'describeVPCClassicLinkResponse' smart constructor.
 data DescribeVPCClassicLinkResponse =
   DescribeVPCClassicLinkResponse'
-    { _dvclrsVPCs :: !(Maybe [VPCClassicLink])
+    { _dvclrsVPCs           :: !(Maybe [VPCClassicLink])
     , _dvclrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

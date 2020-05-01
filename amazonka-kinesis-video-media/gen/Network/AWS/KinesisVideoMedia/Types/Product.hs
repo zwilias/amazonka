@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -34,10 +34,10 @@ import Network.AWS.Prelude
 -- /See:/ 'startSelector' smart constructor.
 data StartSelector =
   StartSelector'
-    { _ssContinuationToken :: !(Maybe Text)
+    { _ssContinuationToken   :: !(Maybe Text)
     , _ssAfterFragmentNumber :: !(Maybe Text)
-    , _ssStartTimestamp :: !(Maybe POSIX)
-    , _ssStartSelectorType :: !StartSelectorType
+    , _ssStartTimestamp      :: !(Maybe POSIX)
+    , _ssStartSelectorType   :: !StartSelectorType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

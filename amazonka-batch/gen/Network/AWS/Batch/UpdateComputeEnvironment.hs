@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,9 +47,9 @@ import Network.AWS.Response
 -- | /See:/ 'updateComputeEnvironment' smart constructor.
 data UpdateComputeEnvironment =
   UpdateComputeEnvironment'
-    { _uceState :: !(Maybe CEState)
-    , _uceComputeResources :: !(Maybe ComputeResourceUpdate)
-    , _uceServiceRole :: !(Maybe Text)
+    { _uceState              :: !(Maybe CEState)
+    , _uceComputeResources   :: !(Maybe ComputeResourceUpdate)
+    , _uceServiceRole        :: !(Maybe Text)
     , _uceComputeEnvironment :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -134,8 +134,8 @@ instance ToQuery UpdateComputeEnvironment where
 data UpdateComputeEnvironmentResponse =
   UpdateComputeEnvironmentResponse'
     { _ucersComputeEnvironmentName :: !(Maybe Text)
-    , _ucersComputeEnvironmentARN :: !(Maybe Text)
-    , _ucersResponseStatus :: !Int
+    , _ucersComputeEnvironmentARN  :: !(Maybe Text)
+    , _ucersResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

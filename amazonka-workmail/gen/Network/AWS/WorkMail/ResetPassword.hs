@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,8 +45,8 @@ import Network.AWS.WorkMail.Types.Product
 data ResetPassword =
   ResetPassword'
     { _rpOrganizationId :: !Text
-    , _rpUserId :: !Text
-    , _rpPassword :: !(Sensitive Text)
+    , _rpUserId         :: !Text
+    , _rpPassword       :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

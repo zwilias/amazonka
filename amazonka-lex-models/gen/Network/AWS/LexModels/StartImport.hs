@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.Response
 -- | /See:/ 'startImport' smart constructor.
 data StartImport =
   StartImport'
-    { _siPayload :: !Base64
-    , _siResourceType :: !ResourceType
+    { _siPayload       :: !Base64
+    , _siResourceType  :: !ResourceType
     , _siMergeStrategy :: !MergeStrategy
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -129,12 +129,12 @@ instance ToQuery StartImport where
 -- | /See:/ 'startImportResponse' smart constructor.
 data StartImportResponse =
   StartImportResponse'
-    { _sirsResourceType :: !(Maybe ResourceType)
-    , _sirsImportId :: !(Maybe Text)
-    , _sirsCreatedDate :: !(Maybe POSIX)
-    , _sirsName :: !(Maybe Text)
-    , _sirsMergeStrategy :: !(Maybe MergeStrategy)
-    , _sirsImportStatus :: !(Maybe ImportStatus)
+    { _sirsResourceType   :: !(Maybe ResourceType)
+    , _sirsImportId       :: !(Maybe Text)
+    , _sirsCreatedDate    :: !(Maybe POSIX)
+    , _sirsName           :: !(Maybe Text)
+    , _sirsMergeStrategy  :: !(Maybe MergeStrategy)
+    , _sirsImportStatus   :: !(Maybe ImportStatus)
     , _sirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

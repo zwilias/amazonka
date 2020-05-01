@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,12 +54,12 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'getParametersByPath' smart constructor.
 data GetParametersByPath =
   GetParametersByPath'
-    { _gpbpWithDecryption :: !(Maybe Bool)
+    { _gpbpWithDecryption   :: !(Maybe Bool)
     , _gpbpParameterFilters :: !(Maybe [ParameterStringFilter])
-    , _gpbpNextToken :: !(Maybe Text)
-    , _gpbpRecursive :: !(Maybe Bool)
-    , _gpbpMaxResults :: !(Maybe Nat)
-    , _gpbpPath :: !Text
+    , _gpbpNextToken        :: !(Maybe Text)
+    , _gpbpRecursive        :: !(Maybe Bool)
+    , _gpbpMaxResults       :: !(Maybe Nat)
+    , _gpbpPath             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -168,8 +168,8 @@ instance ToQuery GetParametersByPath where
 -- | /See:/ 'getParametersByPathResponse' smart constructor.
 data GetParametersByPathResponse =
   GetParametersByPathResponse'
-    { _gpbprsNextToken :: !(Maybe Text)
-    , _gpbprsParameters :: !(Maybe [Parameter])
+    { _gpbprsNextToken      :: !(Maybe Text)
+    , _gpbprsParameters     :: !(Maybe [Parameter])
     , _gpbprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

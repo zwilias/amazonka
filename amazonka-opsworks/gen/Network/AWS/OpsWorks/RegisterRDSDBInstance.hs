@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,10 +45,10 @@ import Network.AWS.Response
 -- | /See:/ 'registerRDSDBInstance' smart constructor.
 data RegisterRDSDBInstance =
   RegisterRDSDBInstance'
-    { _rrdiStackId :: !Text
+    { _rrdiStackId          :: !Text
     , _rrdiRDSDBInstanceARN :: !Text
-    , _rrdiDBUser :: !Text
-    , _rrdiDBPassword :: !Text
+    , _rrdiDBUser           :: !Text
+    , _rrdiDBPassword       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

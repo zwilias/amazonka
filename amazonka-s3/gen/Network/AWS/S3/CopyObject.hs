@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -81,39 +81,39 @@ import Network.AWS.S3.Types.Product
 -- | /See:/ 'copyObject' smart constructor.
 data CopyObject =
   CopyObject'
-    { _coCopySourceIfModifiedSince :: !(Maybe RFC822)
-    , _coCopySourceIfUnmodifiedSince :: !(Maybe RFC822)
-    , _coCopySourceSSECustomerKeyMD5 :: !(Maybe Text)
-    , _coTaggingDirective :: !(Maybe TaggingDirective)
-    , _coMetadataDirective :: !(Maybe MetadataDirective)
-    , _coExpires :: !(Maybe RFC822)
-    , _coGrantReadACP :: !(Maybe Text)
-    , _coCopySourceIfNoneMatch :: !(Maybe Text)
-    , _coSSECustomerAlgorithm :: !(Maybe Text)
-    , _coSSECustomerKey :: !(Maybe (Sensitive Text))
-    , _coRequestPayer :: !(Maybe RequestPayer)
-    , _coGrantWriteACP :: !(Maybe Text)
-    , _coCopySourceIfMatch :: !(Maybe Text)
-    , _coWebsiteRedirectLocation :: !(Maybe Text)
-    , _coGrantRead :: !(Maybe Text)
-    , _coStorageClass :: !(Maybe StorageClass)
-    , _coSSECustomerKeyMD5 :: !(Maybe Text)
-    , _coSSEKMSKeyId :: !(Maybe (Sensitive Text))
-    , _coGrantFullControl :: !(Maybe Text)
-    , _coContentEncoding :: !(Maybe Text)
-    , _coTagging :: !(Maybe Text)
-    , _coMetadata :: !(Map Text Text)
-    , _coCacheControl :: !(Maybe Text)
-    , _coContentLanguage :: !(Maybe Text)
-    , _coCopySourceSSECustomerKey :: !(Maybe (Sensitive Text))
+    { _coCopySourceIfModifiedSince      :: !(Maybe RFC822)
+    , _coCopySourceIfUnmodifiedSince    :: !(Maybe RFC822)
+    , _coCopySourceSSECustomerKeyMD5    :: !(Maybe Text)
+    , _coTaggingDirective               :: !(Maybe TaggingDirective)
+    , _coMetadataDirective              :: !(Maybe MetadataDirective)
+    , _coExpires                        :: !(Maybe RFC822)
+    , _coGrantReadACP                   :: !(Maybe Text)
+    , _coCopySourceIfNoneMatch          :: !(Maybe Text)
+    , _coSSECustomerAlgorithm           :: !(Maybe Text)
+    , _coSSECustomerKey                 :: !(Maybe (Sensitive Text))
+    , _coRequestPayer                   :: !(Maybe RequestPayer)
+    , _coGrantWriteACP                  :: !(Maybe Text)
+    , _coCopySourceIfMatch              :: !(Maybe Text)
+    , _coWebsiteRedirectLocation        :: !(Maybe Text)
+    , _coGrantRead                      :: !(Maybe Text)
+    , _coStorageClass                   :: !(Maybe StorageClass)
+    , _coSSECustomerKeyMD5              :: !(Maybe Text)
+    , _coSSEKMSKeyId                    :: !(Maybe (Sensitive Text))
+    , _coGrantFullControl               :: !(Maybe Text)
+    , _coContentEncoding                :: !(Maybe Text)
+    , _coTagging                        :: !(Maybe Text)
+    , _coMetadata                       :: !(Map Text Text)
+    , _coCacheControl                   :: !(Maybe Text)
+    , _coContentLanguage                :: !(Maybe Text)
+    , _coCopySourceSSECustomerKey       :: !(Maybe (Sensitive Text))
     , _coCopySourceSSECustomerAlgorithm :: !(Maybe Text)
-    , _coACL :: !(Maybe ObjectCannedACL)
-    , _coContentDisposition :: !(Maybe Text)
-    , _coServerSideEncryption :: !(Maybe ServerSideEncryption)
-    , _coContentType :: !(Maybe Text)
-    , _coBucket :: !BucketName
-    , _coCopySource :: !Text
-    , _coKey :: !ObjectKey
+    , _coACL                            :: !(Maybe ObjectCannedACL)
+    , _coContentDisposition             :: !(Maybe Text)
+    , _coServerSideEncryption           :: !(Maybe ServerSideEncryption)
+    , _coContentType                    :: !(Maybe Text)
+    , _coBucket                         :: !BucketName
+    , _coCopySource                     :: !Text
+    , _coKey                            :: !ObjectKey
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -460,16 +460,16 @@ instance ToQuery CopyObject where
 -- | /See:/ 'copyObjectResponse' smart constructor.
 data CopyObjectResponse =
   CopyObjectResponse'
-    { _corsRequestCharged :: !(Maybe RequestCharged)
-    , _corsVersionId :: !(Maybe ObjectVersionId)
-    , _corsExpiration :: !(Maybe Text)
+    { _corsRequestCharged       :: !(Maybe RequestCharged)
+    , _corsVersionId            :: !(Maybe ObjectVersionId)
+    , _corsExpiration           :: !(Maybe Text)
     , _corsSSECustomerAlgorithm :: !(Maybe Text)
-    , _corsCopySourceVersionId :: !(Maybe Text)
-    , _corsSSECustomerKeyMD5 :: !(Maybe Text)
-    , _corsSSEKMSKeyId :: !(Maybe (Sensitive Text))
+    , _corsCopySourceVersionId  :: !(Maybe Text)
+    , _corsSSECustomerKeyMD5    :: !(Maybe Text)
+    , _corsSSEKMSKeyId          :: !(Maybe (Sensitive Text))
     , _corsServerSideEncryption :: !(Maybe ServerSideEncryption)
-    , _corsCopyObjectResult :: !(Maybe CopyObjectResult)
-    , _corsResponseStatus :: !Int
+    , _corsCopyObjectResult     :: !(Maybe CopyObjectResult)
+    , _corsResponseStatus       :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,10 +50,10 @@ import Network.AWS.Response
 -- /See:/ 'updateDevicePool' smart constructor.
 data UpdateDevicePool =
   UpdateDevicePool'
-    { _udpRules :: !(Maybe [Rule])
-    , _udpName :: !(Maybe Text)
+    { _udpRules       :: !(Maybe [Rule])
+    , _udpName        :: !(Maybe Text)
     , _udpDescription :: !(Maybe Text)
-    , _udpArn :: !Text
+    , _udpArn         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -140,7 +140,7 @@ instance ToQuery UpdateDevicePool where
 -- /See:/ 'updateDevicePoolResponse' smart constructor.
 data UpdateDevicePoolResponse =
   UpdateDevicePoolResponse'
-    { _udprsDevicePool :: !(Maybe DevicePool)
+    { _udprsDevicePool     :: !(Maybe DevicePool)
     , _udprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

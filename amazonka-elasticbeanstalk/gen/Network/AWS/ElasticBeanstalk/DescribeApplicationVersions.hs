@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 -- /See:/ 'describeApplicationVersions' smart constructor.
 data DescribeApplicationVersions =
   DescribeApplicationVersions'
-    { _dVersionLabels :: !(Maybe [Text])
-    , _dNextToken :: !(Maybe Text)
-    , _dMaxRecords :: !(Maybe Nat)
+    { _dVersionLabels   :: !(Maybe [Text])
+    , _dNextToken       :: !(Maybe Text)
+    , _dMaxRecords      :: !(Maybe Nat)
     , _dApplicationName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -136,8 +136,8 @@ instance ToQuery DescribeApplicationVersions where
 data DescribeApplicationVersionsResponse =
   DescribeApplicationVersionsResponse'
     { _davrsApplicationVersions :: !(Maybe [ApplicationVersionDescription])
-    , _davrsNextToken :: !(Maybe Text)
-    , _davrsResponseStatus :: !Int
+    , _davrsNextToken           :: !(Maybe Text)
+    , _davrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

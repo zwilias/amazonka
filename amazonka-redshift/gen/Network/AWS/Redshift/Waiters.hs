@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE TypeFamilies      #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -15,10 +15,10 @@ module Network.AWS.Redshift.Waiters where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.Redshift.DescribeClusters
+import Network.AWS.Redshift.DescribeClusters
+import Network.AWS.Redshift.DescribeClusters
 import Network.AWS.Redshift.DescribeClusterSnapshots
-import Network.AWS.Redshift.DescribeClusters
-import Network.AWS.Redshift.DescribeClusters
-import Network.AWS.Redshift.DescribeClusters
 import Network.AWS.Redshift.Types
 import Network.AWS.Waiter
 

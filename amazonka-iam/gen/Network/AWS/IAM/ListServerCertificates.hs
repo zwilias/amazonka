@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,8 +55,8 @@ import Network.AWS.Response
 data ListServerCertificates =
   ListServerCertificates'
     { _lscPathPrefix :: !(Maybe Text)
-    , _lscMarker :: !(Maybe Text)
-    , _lscMaxItems :: !(Maybe Nat)
+    , _lscMarker     :: !(Maybe Text)
+    , _lscMaxItems   :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -132,9 +132,9 @@ instance ToQuery ListServerCertificates where
 -- /See:/ 'listServerCertificatesResponse' smart constructor.
 data ListServerCertificatesResponse =
   ListServerCertificatesResponse'
-    { _lscrsMarker :: !(Maybe Text)
-    , _lscrsIsTruncated :: !(Maybe Bool)
-    , _lscrsResponseStatus :: !Int
+    { _lscrsMarker                        :: !(Maybe Text)
+    , _lscrsIsTruncated                   :: !(Maybe Bool)
+    , _lscrsResponseStatus                :: !Int
     , _lscrsServerCertificateMetadataList :: ![ServerCertificateMetadata]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

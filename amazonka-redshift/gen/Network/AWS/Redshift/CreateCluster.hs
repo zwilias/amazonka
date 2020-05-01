@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -75,33 +75,33 @@ import Network.AWS.Response
 -- /See:/ 'createCluster' smart constructor.
 data CreateCluster =
   CreateCluster'
-    { _ccEnhancedVPCRouting :: !(Maybe Bool)
-    , _ccAdditionalInfo :: !(Maybe Text)
-    , _ccPubliclyAccessible :: !(Maybe Bool)
-    , _ccHSMConfigurationIdentifier :: !(Maybe Text)
-    , _ccClusterSecurityGroups :: !(Maybe [Text])
+    { _ccEnhancedVPCRouting               :: !(Maybe Bool)
+    , _ccAdditionalInfo                   :: !(Maybe Text)
+    , _ccPubliclyAccessible               :: !(Maybe Bool)
+    , _ccHSMConfigurationIdentifier       :: !(Maybe Text)
+    , _ccClusterSecurityGroups            :: !(Maybe [Text])
     , _ccAutomatedSnapshotRetentionPeriod :: !(Maybe Int)
-    , _ccEncrypted :: !(Maybe Bool)
-    , _ccClusterSubnetGroupName :: !(Maybe Text)
-    , _ccHSMClientCertificateIdentifier :: !(Maybe Text)
-    , _ccNumberOfNodes :: !(Maybe Int)
-    , _ccElasticIP :: !(Maybe Text)
-    , _ccPreferredMaintenanceWindow :: !(Maybe Text)
-    , _ccKMSKeyId :: !(Maybe Text)
-    , _ccAvailabilityZone :: !(Maybe Text)
-    , _ccVPCSecurityGroupIds :: !(Maybe [Text])
-    , _ccIAMRoles :: !(Maybe [Text])
-    , _ccClusterType :: !(Maybe Text)
-    , _ccClusterVersion :: !(Maybe Text)
-    , _ccAllowVersionUpgrade :: !(Maybe Bool)
-    , _ccClusterParameterGroupName :: !(Maybe Text)
-    , _ccTags :: !(Maybe [Tag])
-    , _ccPort :: !(Maybe Int)
-    , _ccDBName :: !(Maybe Text)
-    , _ccClusterIdentifier :: !Text
-    , _ccNodeType :: !Text
-    , _ccMasterUsername :: !Text
-    , _ccMasterUserPassword :: !Text
+    , _ccEncrypted                        :: !(Maybe Bool)
+    , _ccClusterSubnetGroupName           :: !(Maybe Text)
+    , _ccHSMClientCertificateIdentifier   :: !(Maybe Text)
+    , _ccNumberOfNodes                    :: !(Maybe Int)
+    , _ccElasticIP                        :: !(Maybe Text)
+    , _ccPreferredMaintenanceWindow       :: !(Maybe Text)
+    , _ccKMSKeyId                         :: !(Maybe Text)
+    , _ccAvailabilityZone                 :: !(Maybe Text)
+    , _ccVPCSecurityGroupIds              :: !(Maybe [Text])
+    , _ccIAMRoles                         :: !(Maybe [Text])
+    , _ccClusterType                      :: !(Maybe Text)
+    , _ccClusterVersion                   :: !(Maybe Text)
+    , _ccAllowVersionUpgrade              :: !(Maybe Bool)
+    , _ccClusterParameterGroupName        :: !(Maybe Text)
+    , _ccTags                             :: !(Maybe [Tag])
+    , _ccPort                             :: !(Maybe Int)
+    , _ccDBName                           :: !(Maybe Text)
+    , _ccClusterIdentifier                :: !Text
+    , _ccNodeType                         :: !Text
+    , _ccMasterUsername                   :: !Text
+    , _ccMasterUserPassword               :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -393,7 +393,7 @@ instance ToQuery CreateCluster where
 -- | /See:/ 'createClusterResponse' smart constructor.
 data CreateClusterResponse =
   CreateClusterResponse'
-    { _ccrsCluster :: !(Maybe Cluster)
+    { _ccrsCluster        :: !(Maybe Cluster)
     , _ccrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

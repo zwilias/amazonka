@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -81,11 +81,11 @@ import Network.AWS.Response
 -- /See:/ 'getReservationCoverage' smart constructor.
 data GetReservationCoverage =
   GetReservationCoverage'
-    { _grcGroupBy :: !(Maybe [GroupDefinition])
+    { _grcGroupBy       :: !(Maybe [GroupDefinition])
     , _grcNextPageToken :: !(Maybe Text)
-    , _grcGranularity :: !(Maybe Granularity)
-    , _grcFilter :: !(Maybe Expression)
-    , _grcTimePeriod :: !DateInterval
+    , _grcGranularity   :: !(Maybe Granularity)
+    , _grcFilter        :: !(Maybe Expression)
+    , _grcTimePeriod    :: !DateInterval
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -178,9 +178,9 @@ instance ToQuery GetReservationCoverage where
 -- | /See:/ 'getReservationCoverageResponse' smart constructor.
 data GetReservationCoverageResponse =
   GetReservationCoverageResponse'
-    { _grcrsNextPageToken :: !(Maybe Text)
-    , _grcrsTotal :: !(Maybe Coverage)
-    , _grcrsResponseStatus :: !Int
+    { _grcrsNextPageToken   :: !(Maybe Text)
+    , _grcrsTotal           :: !(Maybe Coverage)
+    , _grcrsResponseStatus  :: !Int
     , _grcrsCoveragesByTime :: ![CoverageByTime]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

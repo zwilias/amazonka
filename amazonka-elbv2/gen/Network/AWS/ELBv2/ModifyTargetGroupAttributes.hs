@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 data ModifyTargetGroupAttributes =
   ModifyTargetGroupAttributes'
     { _mtgaTargetGroupARN :: !Text
-    , _mtgaAttributes :: ![TargetGroupAttribute]
+    , _mtgaAttributes     :: ![TargetGroupAttribute]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -106,7 +106,7 @@ instance ToQuery ModifyTargetGroupAttributes where
 -- | /See:/ 'modifyTargetGroupAttributesResponse' smart constructor.
 data ModifyTargetGroupAttributesResponse =
   ModifyTargetGroupAttributesResponse'
-    { _mtgarsAttributes :: !(Maybe [TargetGroupAttribute])
+    { _mtgarsAttributes     :: !(Maybe [TargetGroupAttribute])
     , _mtgarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

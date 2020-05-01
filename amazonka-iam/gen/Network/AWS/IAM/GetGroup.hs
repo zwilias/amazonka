@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,8 +51,8 @@ import Network.AWS.Response
 -- | /See:/ 'getGroup' smart constructor.
 data GetGroup =
   GetGroup'
-    { _ggMarker :: !(Maybe Text)
-    , _ggMaxItems :: !(Maybe Nat)
+    { _ggMarker    :: !(Maybe Text)
+    , _ggMaxItems  :: !(Maybe Nat)
     , _ggGroupName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -130,11 +130,11 @@ instance ToQuery GetGroup where
 -- /See:/ 'getGroupResponse' smart constructor.
 data GetGroupResponse =
   GetGroupResponse'
-    { _ggrsMarker :: !(Maybe Text)
-    , _ggrsIsTruncated :: !(Maybe Bool)
+    { _ggrsMarker         :: !(Maybe Text)
+    , _ggrsIsTruncated    :: !(Maybe Bool)
     , _ggrsResponseStatus :: !Int
-    , _ggrsGroup :: !Group
-    , _ggrsUsers :: ![User]
+    , _ggrsGroup          :: !Group
+    , _ggrsUsers          :: ![User]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

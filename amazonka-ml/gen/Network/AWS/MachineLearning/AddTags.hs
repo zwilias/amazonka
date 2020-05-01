@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.Response
 -- | /See:/ 'addTags' smart constructor.
 data AddTags =
   AddTags'
-    { _atTags :: ![Tag]
-    , _atResourceId :: !Text
+    { _atTags         :: ![Tag]
+    , _atResourceId   :: !Text
     , _atResourceType :: !TaggableResourceType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -127,8 +127,8 @@ instance ToQuery AddTags where
 -- /See:/ 'addTagsResponse' smart constructor.
 data AddTagsResponse =
   AddTagsResponse'
-    { _atrsResourceId :: !(Maybe Text)
-    , _atrsResourceType :: !(Maybe TaggableResourceType)
+    { _atrsResourceId     :: !(Maybe Text)
+    , _atrsResourceType   :: !(Maybe TaggableResourceType)
     , _atrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

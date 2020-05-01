@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -72,8 +72,8 @@ import Network.AWS.WAF.Types.Product
 data UpdateSqlInjectionMatchSet =
   UpdateSqlInjectionMatchSet'
     { _usimsSqlInjectionMatchSetId :: !Text
-    , _usimsChangeToken :: !Text
-    , _usimsUpdates :: !(List1 SqlInjectionMatchSetUpdate)
+    , _usimsChangeToken            :: !Text
+    , _usimsUpdates                :: !(List1 SqlInjectionMatchSetUpdate)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -158,7 +158,7 @@ instance ToQuery UpdateSqlInjectionMatchSet where
 -- /See:/ 'updateSqlInjectionMatchSetResponse' smart constructor.
 data UpdateSqlInjectionMatchSetResponse =
   UpdateSqlInjectionMatchSetResponse'
-    { _usimsrsChangeToken :: !(Maybe Text)
+    { _usimsrsChangeToken    :: !(Maybe Text)
     , _usimsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

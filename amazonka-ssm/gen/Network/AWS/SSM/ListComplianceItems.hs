@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,10 +48,10 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'listComplianceItems' smart constructor.
 data ListComplianceItems =
   ListComplianceItems'
-    { _lResourceIds :: !(Maybe (List1 Text))
-    , _lFilters :: !(Maybe [ComplianceStringFilter])
-    , _lNextToken :: !(Maybe Text)
-    , _lMaxResults :: !(Maybe Nat)
+    { _lResourceIds   :: !(Maybe (List1 Text))
+    , _lFilters       :: !(Maybe [ComplianceStringFilter])
+    , _lNextToken     :: !(Maybe Text)
+    , _lMaxResults    :: !(Maybe Nat)
     , _lResourceTypes :: !(Maybe (List1 Text))
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -144,8 +144,8 @@ instance ToQuery ListComplianceItems where
 data ListComplianceItemsResponse =
   ListComplianceItemsResponse'
     { _lcirsComplianceItems :: !(Maybe [ComplianceItem])
-    , _lcirsNextToken :: !(Maybe Text)
-    , _lcirsResponseStatus :: !Int
+    , _lcirsNextToken       :: !(Maybe Text)
+    , _lcirsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

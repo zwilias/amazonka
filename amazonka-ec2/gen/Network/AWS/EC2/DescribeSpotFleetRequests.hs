@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,9 +57,9 @@ import Network.AWS.Response
 data DescribeSpotFleetRequests =
   DescribeSpotFleetRequests'
     { _dsfrSpotFleetRequestIds :: !(Maybe [Text])
-    , _dsfrNextToken :: !(Maybe Text)
-    , _dsfrDryRun :: !(Maybe Bool)
-    , _dsfrMaxResults :: !(Maybe Int)
+    , _dsfrNextToken           :: !(Maybe Text)
+    , _dsfrDryRun              :: !(Maybe Bool)
+    , _dsfrMaxResults          :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -145,8 +145,8 @@ instance ToQuery DescribeSpotFleetRequests where
 -- /See:/ 'describeSpotFleetRequestsResponse' smart constructor.
 data DescribeSpotFleetRequestsResponse =
   DescribeSpotFleetRequestsResponse'
-    { _dsfrrsNextToken :: !(Maybe Text)
-    , _dsfrrsResponseStatus :: !Int
+    { _dsfrrsNextToken               :: !(Maybe Text)
+    , _dsfrrsResponseStatus          :: !Int
     , _dsfrrsSpotFleetRequestConfigs :: ![SpotFleetRequestConfig]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

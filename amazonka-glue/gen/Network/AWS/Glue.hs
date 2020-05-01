@@ -821,9 +821,9 @@ import Network.AWS.Glue.GetPartition
 import Network.AWS.Glue.GetPartitions
 import Network.AWS.Glue.GetPlan
 import Network.AWS.Glue.GetTable
+import Network.AWS.Glue.GetTables
 import Network.AWS.Glue.GetTableVersion
 import Network.AWS.Glue.GetTableVersions
-import Network.AWS.Glue.GetTables
 import Network.AWS.Glue.GetTrigger
 import Network.AWS.Glue.GetTriggers
 import Network.AWS.Glue.GetUserDefinedFunction

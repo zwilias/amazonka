@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,12 +57,12 @@ import Network.AWS.Response
 -- /See:/ 'describeReservedCacheNodesOfferings' smart constructor.
 data DescribeReservedCacheNodesOfferings =
   DescribeReservedCacheNodesOfferings'
-    { _drcnoCacheNodeType :: !(Maybe Text)
-    , _drcnoProductDescription :: !(Maybe Text)
-    , _drcnoMarker :: !(Maybe Text)
-    , _drcnoMaxRecords :: !(Maybe Int)
-    , _drcnoOfferingType :: !(Maybe Text)
-    , _drcnoDuration :: !(Maybe Text)
+    { _drcnoCacheNodeType                :: !(Maybe Text)
+    , _drcnoProductDescription           :: !(Maybe Text)
+    , _drcnoMarker                       :: !(Maybe Text)
+    , _drcnoMaxRecords                   :: !(Maybe Int)
+    , _drcnoOfferingType                 :: !(Maybe Text)
+    , _drcnoDuration                     :: !(Maybe Text)
     , _drcnoReservedCacheNodesOfferingId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

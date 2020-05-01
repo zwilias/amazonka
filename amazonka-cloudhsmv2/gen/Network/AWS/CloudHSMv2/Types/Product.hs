@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,10 +26,10 @@ import Network.AWS.Prelude
 -- /See:/ 'backup' smart constructor.
 data Backup =
   Backup'
-    { _bClusterId :: !(Maybe Text)
+    { _bClusterId       :: !(Maybe Text)
     , _bCreateTimestamp :: !(Maybe POSIX)
-    , _bBackupState :: !(Maybe BackupState)
-    , _bBackupId :: !Text
+    , _bBackupState     :: !(Maybe BackupState)
+    , _bBackupId        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -93,10 +93,10 @@ instance NFData Backup
 data Certificates =
   Certificates'
     { _cManufacturerHardwareCertificate :: !(Maybe Text)
-    , _cClusterCSR :: !(Maybe Text)
-    , _cHSMCertificate :: !(Maybe Text)
-    , _cClusterCertificate :: !(Maybe Text)
-    , _cAWSHardwareCertificate :: !(Maybe Text)
+    , _cClusterCSR                      :: !(Maybe Text)
+    , _cHSMCertificate                  :: !(Maybe Text)
+    , _cClusterCertificate              :: !(Maybe Text)
+    , _cAWSHardwareCertificate          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -170,19 +170,19 @@ instance NFData Certificates
 -- /See:/ 'cluster' smart constructor.
 data Cluster =
   Cluster'
-    { _cPreCoPassword :: !(Maybe Text)
-    , _cStateMessage :: !(Maybe Text)
-    , _cState :: !(Maybe ClusterState)
-    , _cSubnetMapping :: !(Maybe (Map Text Text))
-    , _cHSMs :: !(Maybe [HSM])
-    , _cVPCId :: !(Maybe Text)
-    , _cSourceBackupId :: !(Maybe Text)
-    , _cCertificates :: !(Maybe Certificates)
-    , _cSecurityGroup :: !(Maybe Text)
-    , _cClusterId :: !(Maybe Text)
+    { _cPreCoPassword   :: !(Maybe Text)
+    , _cStateMessage    :: !(Maybe Text)
+    , _cState           :: !(Maybe ClusterState)
+    , _cSubnetMapping   :: !(Maybe (Map Text Text))
+    , _cHSMs            :: !(Maybe [HSM])
+    , _cVPCId           :: !(Maybe Text)
+    , _cSourceBackupId  :: !(Maybe Text)
+    , _cCertificates    :: !(Maybe Certificates)
+    , _cSecurityGroup   :: !(Maybe Text)
+    , _cClusterId       :: !(Maybe Text)
     , _cCreateTimestamp :: !(Maybe POSIX)
-    , _cBackupPolicy :: !(Maybe BackupPolicy)
-    , _cHSMType :: !(Maybe Text)
+    , _cBackupPolicy    :: !(Maybe BackupPolicy)
+    , _cHSMType         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -316,14 +316,14 @@ instance NFData Cluster
 -- /See:/ 'hsm' smart constructor.
 data HSM =
   HSM'
-    { _hsmStateMessage :: !(Maybe Text)
-    , _hsmState :: !(Maybe HSMState)
-    , _hsmEniId :: !(Maybe Text)
-    , _hsmSubnetId :: !(Maybe Text)
+    { _hsmStateMessage     :: !(Maybe Text)
+    , _hsmState            :: !(Maybe HSMState)
+    , _hsmEniId            :: !(Maybe Text)
+    , _hsmSubnetId         :: !(Maybe Text)
     , _hsmAvailabilityZone :: !(Maybe Text)
-    , _hsmClusterId :: !(Maybe Text)
-    , _hsmEniIP :: !(Maybe Text)
-    , _hsmHSMId :: !Text
+    , _hsmClusterId        :: !(Maybe Text)
+    , _hsmEniIP            :: !(Maybe Text)
+    , _hsmHSMId            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -417,7 +417,7 @@ instance NFData HSM
 -- /See:/ 'tag' smart constructor.
 data Tag =
   Tag'
-    { _tagKey :: !Text
+    { _tagKey   :: !Text
     , _tagValue :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

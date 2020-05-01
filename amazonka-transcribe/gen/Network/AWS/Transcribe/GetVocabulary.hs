@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -106,13 +106,13 @@ instance ToQuery GetVocabulary where
 -- | /See:/ 'getVocabularyResponse' smart constructor.
 data GetVocabularyResponse =
   GetVocabularyResponse'
-    { _gvrsFailureReason :: !(Maybe Text)
-    , _gvrsLanguageCode :: !(Maybe LanguageCode)
-    , _gvrsDownloadURI :: !(Maybe Text)
-    , _gvrsVocabularyName :: !(Maybe Text)
+    { _gvrsFailureReason    :: !(Maybe Text)
+    , _gvrsLanguageCode     :: !(Maybe LanguageCode)
+    , _gvrsDownloadURI      :: !(Maybe Text)
+    , _gvrsVocabularyName   :: !(Maybe Text)
     , _gvrsLastModifiedTime :: !(Maybe POSIX)
-    , _gvrsVocabularyState :: !(Maybe VocabularyState)
-    , _gvrsResponseStatus :: !Int
+    , _gvrsVocabularyState  :: !(Maybe VocabularyState)
+    , _gvrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

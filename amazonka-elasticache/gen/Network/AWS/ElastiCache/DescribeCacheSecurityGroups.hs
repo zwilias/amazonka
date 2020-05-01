@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,8 +54,8 @@ import Network.AWS.Response
 data DescribeCacheSecurityGroups =
   DescribeCacheSecurityGroups'
     { _dcsgsCacheSecurityGroupName :: !(Maybe Text)
-    , _dcsgsMarker :: !(Maybe Text)
-    , _dcsgsMaxRecords :: !(Maybe Int)
+    , _dcsgsMarker                 :: !(Maybe Text)
+    , _dcsgsMaxRecords             :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -138,8 +138,8 @@ instance ToQuery DescribeCacheSecurityGroups where
 data DescribeCacheSecurityGroupsResponse =
   DescribeCacheSecurityGroupsResponse'
     { _dcsgsrsCacheSecurityGroups :: !(Maybe [CacheSecurityGroup])
-    , _dcsgsrsMarker :: !(Maybe Text)
-    , _dcsgsrsResponseStatus :: !Int
+    , _dcsgsrsMarker              :: !(Maybe Text)
+    , _dcsgsrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

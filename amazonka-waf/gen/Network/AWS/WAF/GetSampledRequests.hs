@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,10 +50,10 @@ import Network.AWS.WAF.Types.Product
 -- | /See:/ 'getSampledRequests' smart constructor.
 data GetSampledRequests =
   GetSampledRequests'
-    { _gsrWebACLId :: !Text
-    , _gsrRuleId :: !Text
+    { _gsrWebACLId   :: !Text
+    , _gsrRuleId     :: !Text
     , _gsrTimeWindow :: !TimeWindow
-    , _gsrMaxItems :: !Nat
+    , _gsrMaxItems   :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -142,9 +142,9 @@ instance ToQuery GetSampledRequests where
 data GetSampledRequestsResponse =
   GetSampledRequestsResponse'
     { _gsrrsSampledRequests :: !(Maybe [SampledHTTPRequest])
-    , _gsrrsPopulationSize :: !(Maybe Integer)
-    , _gsrrsTimeWindow :: !(Maybe TimeWindow)
-    , _gsrrsResponseStatus :: !Int
+    , _gsrrsPopulationSize  :: !(Maybe Integer)
+    , _gsrrsTimeWindow      :: !(Maybe TimeWindow)
+    , _gsrrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,10 +50,10 @@ import Network.AWS.Response
 -- | /See:/ 'startPersonTracking' smart constructor.
 data StartPersonTracking =
   StartPersonTracking'
-    { _sptJobTag :: !(Maybe Text)
+    { _sptJobTag              :: !(Maybe Text)
     , _sptNotificationChannel :: !(Maybe NotificationChannel)
-    , _sptClientRequestToken :: !(Maybe Text)
-    , _sptVideo :: !Video
+    , _sptClientRequestToken  :: !(Maybe Text)
+    , _sptVideo               :: !Video
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -138,7 +138,7 @@ instance ToQuery StartPersonTracking where
 -- | /See:/ 'startPersonTrackingResponse' smart constructor.
 data StartPersonTrackingResponse =
   StartPersonTrackingResponse'
-    { _sptrsJobId :: !(Maybe Text)
+    { _sptrsJobId          :: !(Maybe Text)
     , _sptrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

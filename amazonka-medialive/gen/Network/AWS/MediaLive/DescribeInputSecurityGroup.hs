@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -102,10 +102,10 @@ instance ToQuery DescribeInputSecurityGroup where
 -- /See:/ 'describeInputSecurityGroupResponse' smart constructor.
 data DescribeInputSecurityGroupResponse =
   DescribeInputSecurityGroupResponse'
-    { _desrsState :: !(Maybe InputSecurityGroupState)
-    , _desrsARN :: !(Maybe Text)
-    , _desrsInputs :: !(Maybe [Text])
-    , _desrsId :: !(Maybe Text)
+    { _desrsState          :: !(Maybe InputSecurityGroupState)
+    , _desrsARN            :: !(Maybe Text)
+    , _desrsInputs         :: !(Maybe [Text])
+    , _desrsId             :: !(Maybe Text)
     , _desrsWhitelistRules :: !(Maybe [InputWhitelistRule])
     , _desrsResponseStatus :: !Int
     }

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,9 +54,9 @@ import Network.AWS.Response
 data AdminListDevices =
   AdminListDevices'
     { _aldPaginationToken :: !(Maybe Text)
-    , _aldLimit :: !(Maybe Nat)
-    , _aldUserPoolId :: !Text
-    , _aldUsername :: !(Sensitive Text)
+    , _aldLimit           :: !(Maybe Nat)
+    , _aldUserPoolId      :: !Text
+    , _aldUsername        :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -147,8 +147,8 @@ instance ToQuery AdminListDevices where
 data AdminListDevicesResponse =
   AdminListDevicesResponse'
     { _aldrsPaginationToken :: !(Maybe Text)
-    , _aldrsDevices :: !(Maybe [DeviceType])
-    , _aldrsResponseStatus :: !Int
+    , _aldrsDevices         :: !(Maybe [DeviceType])
+    , _aldrsResponseStatus  :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

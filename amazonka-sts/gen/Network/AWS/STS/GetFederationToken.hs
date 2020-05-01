@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -78,8 +78,8 @@ import Network.AWS.STS.Types.Product
 data GetFederationToken =
   GetFederationToken'
     { _gftDurationSeconds :: !(Maybe Nat)
-    , _gftPolicy :: !(Maybe Text)
-    , _gftName :: !Text
+    , _gftPolicy          :: !(Maybe Text)
+    , _gftName            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -152,9 +152,9 @@ instance ToQuery GetFederationToken where
 data GetFederationTokenResponse =
   GetFederationTokenResponse'
     { _gftrsPackedPolicySize :: !(Maybe Nat)
-    , _gftrsCredentials :: !(Maybe AuthEnv)
-    , _gftrsFederatedUser :: !(Maybe FederatedUser)
-    , _gftrsResponseStatus :: !Int
+    , _gftrsCredentials      :: !(Maybe AuthEnv)
+    , _gftrsFederatedUser    :: !(Maybe FederatedUser)
+    , _gftrsResponseStatus   :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

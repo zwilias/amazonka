@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,7 +53,7 @@ import Network.AWS.Response
 -- /See:/ 'listDeploymentGroups' smart constructor.
 data ListDeploymentGroups =
   ListDeploymentGroups'
-    { _ldgNextToken :: !(Maybe Text)
+    { _ldgNextToken       :: !(Maybe Text)
     , _ldgApplicationName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -132,10 +132,10 @@ instance ToQuery ListDeploymentGroups where
 -- /See:/ 'listDeploymentGroupsResponse' smart constructor.
 data ListDeploymentGroupsResponse =
   ListDeploymentGroupsResponse'
-    { _ldgrsNextToken :: !(Maybe Text)
-    , _ldgrsApplicationName :: !(Maybe Text)
+    { _ldgrsNextToken        :: !(Maybe Text)
+    , _ldgrsApplicationName  :: !(Maybe Text)
     , _ldgrsDeploymentGroups :: !(Maybe [Text])
-    , _ldgrsResponseStatus :: !Int
+    , _ldgrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

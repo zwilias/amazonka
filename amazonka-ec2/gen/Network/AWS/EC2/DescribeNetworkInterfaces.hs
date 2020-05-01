@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.Response
 data DescribeNetworkInterfaces =
   DescribeNetworkInterfaces'
     { _dnisNetworkInterfaceIds :: !(Maybe [Text])
-    , _dnisFilters :: !(Maybe [Filter])
-    , _dnisDryRun :: !(Maybe Bool)
+    , _dnisFilters             :: !(Maybe [Filter])
+    , _dnisDryRun              :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -125,7 +125,7 @@ instance ToQuery DescribeNetworkInterfaces where
 data DescribeNetworkInterfacesResponse =
   DescribeNetworkInterfacesResponse'
     { _dnirsNetworkInterfaces :: !(Maybe [NetworkInterface])
-    , _dnirsResponseStatus :: !Int
+    , _dnirsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

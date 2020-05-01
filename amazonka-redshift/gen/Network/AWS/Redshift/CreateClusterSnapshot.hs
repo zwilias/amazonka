@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 -- /See:/ 'createClusterSnapshot' smart constructor.
 data CreateClusterSnapshot =
   CreateClusterSnapshot'
-    { _ccsTags :: !(Maybe [Tag])
+    { _ccsTags               :: !(Maybe [Tag])
     , _ccsSnapshotIdentifier :: !Text
-    , _ccsClusterIdentifier :: !Text
+    , _ccsClusterIdentifier  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,7 +124,7 @@ instance ToQuery CreateClusterSnapshot where
 -- | /See:/ 'createClusterSnapshotResponse' smart constructor.
 data CreateClusterSnapshotResponse =
   CreateClusterSnapshotResponse'
-    { _crersSnapshot :: !(Maybe Snapshot)
+    { _crersSnapshot       :: !(Maybe Snapshot)
     , _crersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 data CreateChannel =
   CreateChannel'
     { _ccDescription :: !(Maybe Text)
-    , _ccId :: !Text
+    , _ccId          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -106,10 +106,10 @@ instance ToQuery CreateChannel where
 -- | /See:/ 'createChannelResponse' smart constructor.
 data CreateChannelResponse =
   CreateChannelResponse'
-    { _ccrsHlsIngest :: !(Maybe HlsIngest)
-    , _ccrsARN :: !(Maybe Text)
-    , _ccrsId :: !(Maybe Text)
-    , _ccrsDescription :: !(Maybe Text)
+    { _ccrsHlsIngest      :: !(Maybe HlsIngest)
+    , _ccrsARN            :: !(Maybe Text)
+    , _ccrsId             :: !(Maybe Text)
+    , _ccrsDescription    :: !(Maybe Text)
     , _ccrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -88,7 +88,7 @@ instance ToQuery DeleteBaiduChannel where
 -- | /See:/ 'deleteBaiduChannelResponse' smart constructor.
 data DeleteBaiduChannelResponse =
   DeleteBaiduChannelResponse'
-    { _dbcrsResponseStatus :: !Int
+    { _dbcrsResponseStatus       :: !Int
     , _dbcrsBaiduChannelResponse :: !BaiduChannelResponse
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

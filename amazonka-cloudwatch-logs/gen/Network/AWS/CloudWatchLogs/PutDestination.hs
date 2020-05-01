@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,8 +48,8 @@ import Network.AWS.Response
 data PutDestination =
   PutDestination'
     { _pdDestinationName :: !Text
-    , _pdTargetARN :: !Text
-    , _pdRoleARN :: !Text
+    , _pdTargetARN       :: !Text
+    , _pdRoleARN         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -125,7 +125,7 @@ instance ToQuery PutDestination where
 -- | /See:/ 'putDestinationResponse' smart constructor.
 data PutDestinationResponse =
   PutDestinationResponse'
-    { _pdrsDestination :: !(Maybe Destination)
+    { _pdrsDestination    :: !(Maybe Destination)
     , _pdrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,11 +46,11 @@ import Network.AWS.Response
 -- | /See:/ 'updateContact' smart constructor.
 data UpdateContact =
   UpdateContact'
-    { _ucLastName :: !(Maybe Text)
+    { _ucLastName    :: !(Maybe Text)
     , _ucPhoneNumber :: !(Maybe Text)
-    , _ucFirstName :: !(Maybe Text)
+    , _ucFirstName   :: !(Maybe Text)
     , _ucDisplayName :: !(Maybe Text)
-    , _ucContactARN :: !Text
+    , _ucContactARN  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

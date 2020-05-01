@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -124,16 +124,16 @@ instance ToQuery DescribeHAPG where
 -- /See:/ 'describeHAPGResponse' smart constructor.
 data DescribeHAPGResponse =
   DescribeHAPGResponse'
-    { _dhapgrsState :: !(Maybe CloudHSMObjectState)
-    , _dhapgrsLastModifiedTimestamp :: !(Maybe Text)
+    { _dhapgrsState                   :: !(Maybe CloudHSMObjectState)
+    , _dhapgrsLastModifiedTimestamp   :: !(Maybe Text)
     , _dhapgrsHSMsPendingRegistration :: !(Maybe [Text])
-    , _dhapgrsHSMsPendingDeletion :: !(Maybe [Text])
-    , _dhapgrsHAPGSerial :: !(Maybe Text)
-    , _dhapgrsHSMsLastActionFailed :: !(Maybe [Text])
-    , _dhapgrsPartitionSerialList :: !(Maybe [Text])
-    , _dhapgrsHAPGARN :: !(Maybe Text)
-    , _dhapgrsLabel :: !(Maybe Text)
-    , _dhapgrsResponseStatus :: !Int
+    , _dhapgrsHSMsPendingDeletion     :: !(Maybe [Text])
+    , _dhapgrsHAPGSerial              :: !(Maybe Text)
+    , _dhapgrsHSMsLastActionFailed    :: !(Maybe [Text])
+    , _dhapgrsPartitionSerialList     :: !(Maybe [Text])
+    , _dhapgrsHAPGARN                 :: !(Maybe Text)
+    , _dhapgrsLabel                   :: !(Maybe Text)
+    , _dhapgrsResponseStatus          :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'getDeploymentStatus' smart constructor.
 data GetDeploymentStatus =
   GetDeploymentStatus'
-    { _gdsGroupId :: !Text
+    { _gdsGroupId      :: !Text
     , _gdsDeploymentId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -112,12 +112,12 @@ instance ToQuery GetDeploymentStatus where
 -- | /See:/ 'getDeploymentStatusResponse' smart constructor.
 data GetDeploymentStatusResponse =
   GetDeploymentStatusResponse'
-    { _gdsrsDeploymentType :: !(Maybe DeploymentType)
-    , _gdsrsErrorDetails :: !(Maybe [ErrorDetail])
+    { _gdsrsDeploymentType   :: !(Maybe DeploymentType)
+    , _gdsrsErrorDetails     :: !(Maybe [ErrorDetail])
     , _gdsrsDeploymentStatus :: !(Maybe Text)
-    , _gdsrsUpdatedAt :: !(Maybe Text)
-    , _gdsrsErrorMessage :: !(Maybe Text)
-    , _gdsrsResponseStatus :: !Int
+    , _gdsrsUpdatedAt        :: !(Maybe Text)
+    , _gdsrsErrorMessage     :: !(Maybe Text)
+    , _gdsrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

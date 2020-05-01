@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -65,17 +65,17 @@ import Network.AWS.Response
 -- /See:/ 'createOriginEndpoint' smart constructor.
 data CreateOriginEndpoint =
   CreateOriginEndpoint'
-    { _coeWhitelist :: !(Maybe [Text])
-    , _coeHlsPackage :: !(Maybe HlsPackage)
-    , _coeManifestName :: !(Maybe Text)
+    { _coeWhitelist              :: !(Maybe [Text])
+    , _coeHlsPackage             :: !(Maybe HlsPackage)
+    , _coeManifestName           :: !(Maybe Text)
     , _coeStartoverWindowSeconds :: !(Maybe Int)
-    , _coeDashPackage :: !(Maybe DashPackage)
-    , _coeMssPackage :: !(Maybe MssPackage)
-    , _coeTimeDelaySeconds :: !(Maybe Int)
-    , _coeCmafPackage :: !(Maybe CmafPackageCreateOrUpdateParameters)
-    , _coeDescription :: !(Maybe Text)
-    , _coeChannelId :: !Text
-    , _coeId :: !Text
+    , _coeDashPackage            :: !(Maybe DashPackage)
+    , _coeMssPackage             :: !(Maybe MssPackage)
+    , _coeTimeDelaySeconds       :: !(Maybe Int)
+    , _coeCmafPackage            :: !(Maybe CmafPackageCreateOrUpdateParameters)
+    , _coeDescription            :: !(Maybe Text)
+    , _coeChannelId              :: !Text
+    , _coeId                     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -227,20 +227,20 @@ instance ToQuery CreateOriginEndpoint where
 -- | /See:/ 'createOriginEndpointResponse' smart constructor.
 data CreateOriginEndpointResponse =
   CreateOriginEndpointResponse'
-    { _coersWhitelist :: !(Maybe [Text])
-    , _coersHlsPackage :: !(Maybe HlsPackage)
-    , _coersARN :: !(Maybe Text)
-    , _coersManifestName :: !(Maybe Text)
-    , _coersURL :: !(Maybe Text)
-    , _coersChannelId :: !(Maybe Text)
+    { _coersWhitelist              :: !(Maybe [Text])
+    , _coersHlsPackage             :: !(Maybe HlsPackage)
+    , _coersARN                    :: !(Maybe Text)
+    , _coersManifestName           :: !(Maybe Text)
+    , _coersURL                    :: !(Maybe Text)
+    , _coersChannelId              :: !(Maybe Text)
     , _coersStartoverWindowSeconds :: !(Maybe Int)
-    , _coersDashPackage :: !(Maybe DashPackage)
-    , _coersMssPackage :: !(Maybe MssPackage)
-    , _coersId :: !(Maybe Text)
-    , _coersTimeDelaySeconds :: !(Maybe Int)
-    , _coersCmafPackage :: !(Maybe CmafPackage)
-    , _coersDescription :: !(Maybe Text)
-    , _coersResponseStatus :: !Int
+    , _coersDashPackage            :: !(Maybe DashPackage)
+    , _coersMssPackage             :: !(Maybe MssPackage)
+    , _coersId                     :: !(Maybe Text)
+    , _coersTimeDelaySeconds       :: !(Maybe Int)
+    , _coersCmafPackage            :: !(Maybe CmafPackage)
+    , _coersDescription            :: !(Maybe Text)
+    , _coersResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

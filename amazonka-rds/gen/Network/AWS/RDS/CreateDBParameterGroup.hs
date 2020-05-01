@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,10 +54,10 @@ import Network.AWS.Response
 -- /See:/ 'createDBParameterGroup' smart constructor.
 data CreateDBParameterGroup =
   CreateDBParameterGroup'
-    { _cdbpgTags :: !(Maybe [Tag])
-    , _cdbpgDBParameterGroupName :: !Text
+    { _cdbpgTags                   :: !(Maybe [Tag])
+    , _cdbpgDBParameterGroupName   :: !Text
     , _cdbpgDBParameterGroupFamily :: !Text
-    , _cdbpgDescription :: !Text
+    , _cdbpgDescription            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -140,7 +140,7 @@ instance ToQuery CreateDBParameterGroup where
 data CreateDBParameterGroupResponse =
   CreateDBParameterGroupResponse'
     { _cdpgrsDBParameterGroup :: !(Maybe DBParameterGroup)
-    , _cdpgrsResponseStatus :: !Int
+    , _cdpgrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

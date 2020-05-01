@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.Response
 data GetPipeline =
   GetPipeline'
     { _gpVersion :: !(Maybe Nat)
-    , _gpName :: !Text
+    , _gpName    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -112,8 +112,8 @@ instance ToQuery GetPipeline where
 -- /See:/ 'getPipelineResponse' smart constructor.
 data GetPipelineResponse =
   GetPipelineResponse'
-    { _gprsPipeline :: !(Maybe PipelineDeclaration)
-    , _gprsMetadata :: !(Maybe PipelineMetadata)
+    { _gprsPipeline       :: !(Maybe PipelineDeclaration)
+    , _gprsMetadata       :: !(Maybe PipelineMetadata)
     , _gprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

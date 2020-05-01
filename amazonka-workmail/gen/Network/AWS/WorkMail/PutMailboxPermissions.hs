@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,9 +45,9 @@ import Network.AWS.WorkMail.Types.Product
 -- | /See:/ 'putMailboxPermissions' smart constructor.
 data PutMailboxPermissions =
   PutMailboxPermissions'
-    { _pmpOrganizationId :: !Text
-    , _pmpEntityId :: !Text
-    , _pmpGranteeId :: !Text
+    { _pmpOrganizationId   :: !Text
+    , _pmpEntityId         :: !Text
+    , _pmpGranteeId        :: !Text
     , _pmpPermissionValues :: ![PermissionType]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

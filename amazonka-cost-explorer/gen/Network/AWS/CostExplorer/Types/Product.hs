@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -57,9 +57,9 @@ instance NFData Coverage
 -- /See:/ 'coverageByTime' smart constructor.
 data CoverageByTime =
   CoverageByTime'
-    { _cbtGroups :: !(Maybe [ReservationCoverageGroup])
+    { _cbtGroups     :: !(Maybe [ReservationCoverageGroup])
     , _cbtTimePeriod :: !(Maybe DateInterval)
-    , _cbtTotal :: !(Maybe Coverage)
+    , _cbtTotal      :: !(Maybe Coverage)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -110,9 +110,9 @@ instance NFData CoverageByTime
 data CoverageHours =
   CoverageHours'
     { _chCoverageHoursPercentage :: !(Maybe Text)
-    , _chOnDemandHours :: !(Maybe Text)
-    , _chTotalRunningHours :: !(Maybe Text)
-    , _chReservedHours :: !(Maybe Text)
+    , _chOnDemandHours           :: !(Maybe Text)
+    , _chTotalRunningHours       :: !(Maybe Text)
+    , _chReservedHours           :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -176,7 +176,7 @@ instance NFData CoverageHours
 data DateInterval =
   DateInterval'
     { _diStart :: !Text
-    , _diEnd :: !Text
+    , _diEnd   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -223,7 +223,7 @@ instance ToJSON DateInterval where
 data DimensionValues =
   DimensionValues'
     { _dvValues :: !(Maybe [Text])
-    , _dvKey :: !(Maybe Dimension)
+    , _dvKey    :: !(Maybe Dimension)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -260,7 +260,7 @@ instance ToJSON DimensionValues where
 -- /See:/ 'dimensionValuesWithAttributes' smart constructor.
 data DimensionValuesWithAttributes =
   DimensionValuesWithAttributes'
-    { _dvwaValue :: !(Maybe Text)
+    { _dvwaValue      :: !(Maybe Text)
     , _dvwaAttributes :: !(Maybe (Map Text Text))
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -306,13 +306,13 @@ instance NFData DimensionValuesWithAttributes
 data EC2InstanceDetails =
   EC2InstanceDetails'
     { _eidCurrentGeneration :: !(Maybe Bool)
-    , _eidPlatform :: !(Maybe Text)
-    , _eidFamily :: !(Maybe Text)
-    , _eidInstanceType :: !(Maybe Text)
-    , _eidAvailabilityZone :: !(Maybe Text)
-    , _eidSizeFlexEligible :: !(Maybe Bool)
-    , _eidTenancy :: !(Maybe Text)
-    , _eidRegion :: !(Maybe Text)
+    , _eidPlatform          :: !(Maybe Text)
+    , _eidFamily            :: !(Maybe Text)
+    , _eidInstanceType      :: !(Maybe Text)
+    , _eidAvailabilityZone  :: !(Maybe Text)
+    , _eidSizeFlexEligible  :: !(Maybe Bool)
+    , _eidTenancy           :: !(Maybe Text)
+    , _eidRegion            :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -459,11 +459,11 @@ instance ToJSON EC2Specification where
 -- /See:/ 'expression' smart constructor.
 data Expression =
   Expression'
-    { _eNot :: !(Maybe Expression)
-    , _eAnd :: !(Maybe [Expression])
-    , _eOr :: !(Maybe [Expression])
+    { _eNot        :: !(Maybe Expression)
+    , _eAnd        :: !(Maybe [Expression])
+    , _eOr         :: !(Maybe [Expression])
     , _eDimensions :: !(Maybe DimensionValues)
-    , _eTags :: !(Maybe TagValues)
+    , _eTags       :: !(Maybe TagValues)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -533,7 +533,7 @@ instance ToJSON Expression where
 data Group =
   Group'
     { _gMetrics :: !(Maybe (Map Text MetricValue))
-    , _gKeys :: !(Maybe [Text])
+    , _gKeys    :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -573,7 +573,7 @@ instance NFData Group
 -- /See:/ 'groupDefinition' smart constructor.
 data GroupDefinition =
   GroupDefinition'
-    { _gdKey :: !(Maybe Text)
+    { _gdKey  :: !(Maybe Text)
     , _gdType :: !(Maybe GroupDefinitionType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -664,7 +664,7 @@ instance NFData InstanceDetails
 data MetricValue =
   MetricValue'
     { _mvAmount :: !(Maybe Text)
-    , _mvUnit :: !(Maybe Text)
+    , _mvUnit   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -704,13 +704,13 @@ instance NFData MetricValue
 data RDSInstanceDetails =
   RDSInstanceDetails'
     { _ridCurrentGeneration :: !(Maybe Bool)
-    , _ridDeploymentOption :: !(Maybe Text)
-    , _ridFamily :: !(Maybe Text)
-    , _ridInstanceType :: !(Maybe Text)
-    , _ridLicenseModel :: !(Maybe Text)
-    , _ridSizeFlexEligible :: !(Maybe Bool)
-    , _ridRegion :: !(Maybe Text)
-    , _ridDatabaseEngine :: !(Maybe Text)
+    , _ridDeploymentOption  :: !(Maybe Text)
+    , _ridFamily            :: !(Maybe Text)
+    , _ridInstanceType      :: !(Maybe Text)
+    , _ridLicenseModel      :: !(Maybe Text)
+    , _ridSizeFlexEligible  :: !(Maybe Bool)
+    , _ridRegion            :: !(Maybe Text)
+    , _ridDatabaseEngine    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -806,10 +806,10 @@ instance NFData RDSInstanceDetails
 -- /See:/ 'reservationAggregates' smart constructor.
 data ReservationAggregates =
   ReservationAggregates'
-    { _raPurchasedHours :: !(Maybe Text)
-    , _raTotalActualHours :: !(Maybe Text)
+    { _raPurchasedHours        :: !(Maybe Text)
+    , _raTotalActualHours      :: !(Maybe Text)
     , _raUtilizationPercentage :: !(Maybe Text)
-    , _raUnusedHours :: !(Maybe Text)
+    , _raUnusedHours           :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -872,7 +872,7 @@ instance NFData ReservationAggregates
 -- /See:/ 'reservationCoverageGroup' smart constructor.
 data ReservationCoverageGroup =
   ReservationCoverageGroup'
-    { _rcgCoverage :: !(Maybe Coverage)
+    { _rcgCoverage   :: !(Maybe Coverage)
     , _rcgAttributes :: !(Maybe (Map Text Text))
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1017,24 +1017,24 @@ instance NFData ReservationPurchaseRecommendation
 -- /See:/ 'reservationPurchaseRecommendationDetail' smart constructor.
 data ReservationPurchaseRecommendationDetail =
   ReservationPurchaseRecommendationDetail'
-    { _rprdMaximumNormalizedUnitsUsedPerHour :: !(Maybe Text)
-    , _rprdRecurringStandardMonthlyCost :: !(Maybe Text)
-    , _rprdAverageNormalizedUnitsUsedPerHour :: !(Maybe Text)
-    , _rprdCurrencyCode :: !(Maybe Text)
-    , _rprdEstimatedMonthlySavingsPercentage :: !(Maybe Text)
-    , _rprdRecommendedNormalizedUnitsToPurchase :: !(Maybe Text)
-    , _rprdAverageUtilization :: !(Maybe Text)
-    , _rprdEstimatedMonthlySavingsAmount :: !(Maybe Text)
-    , _rprdUpfrontCost :: !(Maybe Text)
-    , _rprdMinimumNormalizedUnitsUsedPerHour :: !(Maybe Text)
-    , _rprdEstimatedMonthlyOnDemandCost :: !(Maybe Text)
-    , _rprdRecommendedNumberOfInstancesToPurchase :: !(Maybe Text)
-    , _rprdMaximumNumberOfInstancesUsedPerHour :: !(Maybe Text)
+    { _rprdMaximumNormalizedUnitsUsedPerHour         :: !(Maybe Text)
+    , _rprdRecurringStandardMonthlyCost              :: !(Maybe Text)
+    , _rprdAverageNormalizedUnitsUsedPerHour         :: !(Maybe Text)
+    , _rprdCurrencyCode                              :: !(Maybe Text)
+    , _rprdEstimatedMonthlySavingsPercentage         :: !(Maybe Text)
+    , _rprdRecommendedNormalizedUnitsToPurchase      :: !(Maybe Text)
+    , _rprdAverageUtilization                        :: !(Maybe Text)
+    , _rprdEstimatedMonthlySavingsAmount             :: !(Maybe Text)
+    , _rprdUpfrontCost                               :: !(Maybe Text)
+    , _rprdMinimumNormalizedUnitsUsedPerHour         :: !(Maybe Text)
+    , _rprdEstimatedMonthlyOnDemandCost              :: !(Maybe Text)
+    , _rprdRecommendedNumberOfInstancesToPurchase    :: !(Maybe Text)
+    , _rprdMaximumNumberOfInstancesUsedPerHour       :: !(Maybe Text)
     , _rprdEstimatedReservationCostForLookbackPeriod :: !(Maybe Text)
-    , _rprdInstanceDetails :: !(Maybe InstanceDetails)
-    , _rprdAverageNumberOfInstancesUsedPerHour :: !(Maybe Text)
-    , _rprdMinimumNumberOfInstancesUsedPerHour :: !(Maybe Text)
-    , _rprdEstimatedBreakEvenInMonths :: !(Maybe Text)
+    , _rprdInstanceDetails                           :: !(Maybe InstanceDetails)
+    , _rprdAverageNumberOfInstancesUsedPerHour       :: !(Maybe Text)
+    , _rprdMinimumNumberOfInstancesUsedPerHour       :: !(Maybe Text)
+    , _rprdEstimatedBreakEvenInMonths                :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1269,7 +1269,7 @@ instance NFData ReservationPurchaseRecommendationDetail
 -- /See:/ 'reservationPurchaseRecommendationMetadata' smart constructor.
 data ReservationPurchaseRecommendationMetadata =
   ReservationPurchaseRecommendationMetadata'
-    { _rprmRecommendationId :: !(Maybe Text)
+    { _rprmRecommendationId    :: !(Maybe Text)
     , _rprmGenerationTimestamp :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1319,9 +1319,9 @@ instance NFData ReservationPurchaseRecommendationMetadata
 -- /See:/ 'reservationPurchaseRecommendationSummary' smart constructor.
 data ReservationPurchaseRecommendationSummary =
   ReservationPurchaseRecommendationSummary'
-    { _rprsCurrencyCode :: !(Maybe Text)
+    { _rprsCurrencyCode                           :: !(Maybe Text)
     , _rprsTotalEstimatedMonthlySavingsPercentage :: !(Maybe Text)
-    , _rprsTotalEstimatedMonthlySavingsAmount :: !(Maybe Text)
+    , _rprsTotalEstimatedMonthlySavingsAmount     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1383,9 +1383,9 @@ instance NFData ReservationPurchaseRecommendationSummary
 -- /See:/ 'reservationUtilizationGroup' smart constructor.
 data ReservationUtilizationGroup =
   ReservationUtilizationGroup'
-    { _rugValue :: !(Maybe Text)
-    , _rugKey :: !(Maybe Text)
-    , _rugAttributes :: !(Maybe (Map Text Text))
+    { _rugValue       :: !(Maybe Text)
+    , _rugKey         :: !(Maybe Text)
+    , _rugAttributes  :: !(Maybe (Map Text Text))
     , _rugUtilization :: !(Maybe ReservationAggregates)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1448,10 +1448,10 @@ instance NFData ReservationUtilizationGroup
 -- /See:/ 'resultByTime' smart constructor.
 data ResultByTime =
   ResultByTime'
-    { _rbtGroups :: !(Maybe [Group])
+    { _rbtGroups     :: !(Maybe [Group])
     , _rbtTimePeriod :: !(Maybe DateInterval)
-    , _rbtTotal :: !(Maybe (Map Text MetricValue))
-    , _rbtEstimated :: !(Maybe Bool)
+    , _rbtTotal      :: !(Maybe (Map Text MetricValue))
+    , _rbtEstimated  :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1550,7 +1550,7 @@ instance ToJSON ServiceSpecification where
 data TagValues =
   TagValues'
     { _tvValues :: !(Maybe [Text])
-    , _tvKey :: !(Maybe Text)
+    , _tvKey    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1587,9 +1587,9 @@ instance ToJSON TagValues where
 -- /See:/ 'utilizationByTime' smart constructor.
 data UtilizationByTime =
   UtilizationByTime'
-    { _ubtGroups :: !(Maybe [ReservationUtilizationGroup])
+    { _ubtGroups     :: !(Maybe [ReservationUtilizationGroup])
     , _ubtTimePeriod :: !(Maybe DateInterval)
-    , _ubtTotal :: !(Maybe ReservationAggregates)
+    , _ubtTotal      :: !(Maybe ReservationAggregates)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

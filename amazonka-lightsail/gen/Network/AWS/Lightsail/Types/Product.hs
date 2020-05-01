@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,7 +26,7 @@ import Network.AWS.Prelude
 -- /See:/ 'availabilityZone' smart constructor.
 data AvailabilityZone =
   AvailabilityZone'
-    { _azState :: !(Maybe Text)
+    { _azState    :: !(Maybe Text)
     , _azZoneName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -67,16 +67,16 @@ instance NFData AvailabilityZone
 data Blueprint =
   Blueprint'
     { _bVersionCode :: !(Maybe Text)
-    , _bPlatform :: !(Maybe InstancePlatform)
-    , _bGroup :: !(Maybe Text)
-    , _bMinPower :: !(Maybe Int)
-    , _bProductURL :: !(Maybe Text)
-    , _bLicenseURL :: !(Maybe Text)
-    , _bName :: !(Maybe Text)
-    , _bVersion :: !(Maybe Text)
+    , _bPlatform    :: !(Maybe InstancePlatform)
+    , _bGroup       :: !(Maybe Text)
+    , _bMinPower    :: !(Maybe Int)
+    , _bProductURL  :: !(Maybe Text)
+    , _bLicenseURL  :: !(Maybe Text)
+    , _bName        :: !(Maybe Text)
+    , _bVersion     :: !(Maybe Text)
     , _bBlueprintId :: !(Maybe Text)
-    , _bType :: !(Maybe BlueprintType)
-    , _bIsActive :: !(Maybe Bool)
+    , _bType        :: !(Maybe BlueprintType)
+    , _bIsActive    :: !(Maybe Bool)
     , _bDescription :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -201,17 +201,17 @@ instance NFData Blueprint
 -- /See:/ 'bundle' smart constructor.
 data Bundle =
   Bundle'
-    { _bunCpuCount :: !(Maybe Int)
+    { _bunCpuCount             :: !(Maybe Int)
     , _bunTransferPerMonthInGb :: !(Maybe Int)
-    , _bunBundleId :: !(Maybe Text)
-    , _bunInstanceType :: !(Maybe Text)
-    , _bunName :: !(Maybe Text)
-    , _bunPower :: !(Maybe Int)
-    , _bunDiskSizeInGb :: !(Maybe Int)
-    , _bunSupportedPlatforms :: !(Maybe [InstancePlatform])
-    , _bunPrice :: !(Maybe Double)
-    , _bunIsActive :: !(Maybe Bool)
-    , _bunRamSizeInGb :: !(Maybe Double)
+    , _bunBundleId             :: !(Maybe Text)
+    , _bunInstanceType         :: !(Maybe Text)
+    , _bunName                 :: !(Maybe Text)
+    , _bunPower                :: !(Maybe Int)
+    , _bunDiskSizeInGb         :: !(Maybe Int)
+    , _bunSupportedPlatforms   :: !(Maybe [InstancePlatform])
+    , _bunPrice                :: !(Maybe Double)
+    , _bunIsActive             :: !(Maybe Bool)
+    , _bunRamSizeInGb          :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -330,21 +330,21 @@ instance NFData Bundle
 -- /See:/ 'disk' smart constructor.
 data Disk =
   Disk'
-    { _dState :: !(Maybe DiskState)
-    , _dResourceType :: !(Maybe ResourceType)
-    , _dArn :: !(Maybe Text)
-    , _dPath :: !(Maybe Text)
-    , _dCreatedAt :: !(Maybe POSIX)
-    , _dLocation :: !(Maybe ResourceLocation)
-    , _dIops :: !(Maybe Int)
-    , _dIsAttached :: !(Maybe Bool)
+    { _dState           :: !(Maybe DiskState)
+    , _dResourceType    :: !(Maybe ResourceType)
+    , _dArn             :: !(Maybe Text)
+    , _dPath            :: !(Maybe Text)
+    , _dCreatedAt       :: !(Maybe POSIX)
+    , _dLocation        :: !(Maybe ResourceLocation)
+    , _dIops            :: !(Maybe Int)
+    , _dIsAttached      :: !(Maybe Bool)
     , _dAttachmentState :: !(Maybe Text)
-    , _dName :: !(Maybe Text)
-    , _dSizeInGb :: !(Maybe Int)
-    , _dSupportCode :: !(Maybe Text)
-    , _dIsSystemDisk :: !(Maybe Bool)
-    , _dAttachedTo :: !(Maybe Text)
-    , _dGbInUse :: !(Maybe Int)
+    , _dName            :: !(Maybe Text)
+    , _dSizeInGb        :: !(Maybe Int)
+    , _dSupportCode     :: !(Maybe Text)
+    , _dIsSystemDisk    :: !(Maybe Bool)
+    , _dAttachedTo      :: !(Maybe Text)
+    , _dGbInUse         :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -491,7 +491,7 @@ instance NFData Disk
 -- /See:/ 'diskMap' smart constructor.
 data DiskMap =
   DiskMap'
-    { _dmNewDiskName :: !(Maybe Text)
+    { _dmNewDiskName      :: !(Maybe Text)
     , _dmOriginalDiskPath :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -535,16 +535,16 @@ instance ToJSON DiskMap where
 data DiskSnapshot =
   DiskSnapshot'
     { _dsFromDiskName :: !(Maybe Text)
-    , _dsState :: !(Maybe DiskSnapshotState)
+    , _dsState        :: !(Maybe DiskSnapshotState)
     , _dsResourceType :: !(Maybe ResourceType)
-    , _dsArn :: !(Maybe Text)
-    , _dsCreatedAt :: !(Maybe POSIX)
-    , _dsLocation :: !(Maybe ResourceLocation)
-    , _dsProgress :: !(Maybe Text)
-    , _dsName :: !(Maybe Text)
-    , _dsSizeInGb :: !(Maybe Int)
-    , _dsSupportCode :: !(Maybe Text)
-    , _dsFromDiskARN :: !(Maybe Text)
+    , _dsArn          :: !(Maybe Text)
+    , _dsCreatedAt    :: !(Maybe POSIX)
+    , _dsLocation     :: !(Maybe ResourceLocation)
+    , _dsProgress     :: !(Maybe Text)
+    , _dsName         :: !(Maybe Text)
+    , _dsSizeInGb     :: !(Maybe Int)
+    , _dsSupportCode  :: !(Maybe Text)
+    , _dsFromDiskARN  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -660,13 +660,13 @@ instance NFData DiskSnapshot
 -- /See:/ 'domain' smart constructor.
 data Domain =
   Domain'
-    { _domResourceType :: !(Maybe ResourceType)
+    { _domResourceType  :: !(Maybe ResourceType)
     , _domDomainEntries :: !(Maybe [DomainEntry])
-    , _domArn :: !(Maybe Text)
-    , _domCreatedAt :: !(Maybe POSIX)
-    , _domLocation :: !(Maybe ResourceLocation)
-    , _domName :: !(Maybe Text)
-    , _domSupportCode :: !(Maybe Text)
+    , _domArn           :: !(Maybe Text)
+    , _domCreatedAt     :: !(Maybe POSIX)
+    , _domLocation      :: !(Maybe ResourceLocation)
+    , _domName          :: !(Maybe Text)
+    , _domSupportCode   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -755,11 +755,11 @@ instance NFData Domain
 data DomainEntry =
   DomainEntry'
     { _deIsAlias :: !(Maybe Bool)
-    , _deName :: !(Maybe Text)
-    , _deId :: !(Maybe Text)
+    , _deName    :: !(Maybe Text)
+    , _deId      :: !(Maybe Text)
     , _deOptions :: !(Maybe (Map Text Text))
-    , _deType :: !(Maybe Text)
-    , _deTarget :: !(Maybe Text)
+    , _deType    :: !(Maybe Text)
+    , _deTarget  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -846,24 +846,24 @@ instance ToJSON DomainEntry where
 -- /See:/ 'instance'' smart constructor.
 data Instance =
   Instance'
-    { _iState :: !(Maybe InstanceState)
-    , _iIpv6Address :: !(Maybe Text)
-    , _iResourceType :: !(Maybe ResourceType)
-    , _iArn :: !(Maybe Text)
-    , _iCreatedAt :: !(Maybe POSIX)
-    , _iLocation :: !(Maybe ResourceLocation)
-    , _iSshKeyName :: !(Maybe Text)
-    , _iUsername :: !(Maybe Text)
-    , _iNetworking :: !(Maybe InstanceNetworking)
-    , _iBundleId :: !(Maybe Text)
-    , _iName :: !(Maybe Text)
-    , _iSupportCode :: !(Maybe Text)
-    , _iBlueprintId :: !(Maybe Text)
+    { _iState            :: !(Maybe InstanceState)
+    , _iIpv6Address      :: !(Maybe Text)
+    , _iResourceType     :: !(Maybe ResourceType)
+    , _iArn              :: !(Maybe Text)
+    , _iCreatedAt        :: !(Maybe POSIX)
+    , _iLocation         :: !(Maybe ResourceLocation)
+    , _iSshKeyName       :: !(Maybe Text)
+    , _iUsername         :: !(Maybe Text)
+    , _iNetworking       :: !(Maybe InstanceNetworking)
+    , _iBundleId         :: !(Maybe Text)
+    , _iName             :: !(Maybe Text)
+    , _iSupportCode      :: !(Maybe Text)
+    , _iBlueprintId      :: !(Maybe Text)
     , _iPrivateIPAddress :: !(Maybe Text)
-    , _iBlueprintName :: !(Maybe Text)
-    , _iIsStaticIP :: !(Maybe Bool)
-    , _iPublicIPAddress :: !(Maybe Text)
-    , _iHardware :: !(Maybe InstanceHardware)
+    , _iBlueprintName    :: !(Maybe Text)
+    , _iIsStaticIP       :: !(Maybe Bool)
+    , _iPublicIPAddress  :: !(Maybe Text)
+    , _iHardware         :: !(Maybe InstanceHardware)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1035,14 +1035,14 @@ instance NFData Instance
 -- /See:/ 'instanceAccessDetails' smart constructor.
 data InstanceAccessDetails =
   InstanceAccessDetails'
-    { _iadCertKey :: !(Maybe Text)
-    , _iadIpAddress :: !(Maybe Text)
-    , _iadPrivateKey :: !(Maybe Text)
-    , _iadExpiresAt :: !(Maybe POSIX)
-    , _iadUsername :: !(Maybe Text)
-    , _iadProtocol :: !(Maybe InstanceAccessProtocol)
+    { _iadCertKey      :: !(Maybe Text)
+    , _iadIpAddress    :: !(Maybe Text)
+    , _iadPrivateKey   :: !(Maybe Text)
+    , _iadExpiresAt    :: !(Maybe POSIX)
+    , _iadUsername     :: !(Maybe Text)
+    , _iadProtocol     :: !(Maybe InstanceAccessProtocol)
     , _iadPasswordData :: !(Maybe PasswordData)
-    , _iadPassword :: !(Maybe Text)
+    , _iadPassword     :: !(Maybe Text)
     , _iadInstanceName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1144,8 +1144,8 @@ instance NFData InstanceAccessDetails
 -- /See:/ 'instanceHardware' smart constructor.
 data InstanceHardware =
   InstanceHardware'
-    { _ihCpuCount :: !(Maybe Int)
-    , _ihDisks :: !(Maybe [Disk])
+    { _ihCpuCount    :: !(Maybe Int)
+    , _ihDisks       :: !(Maybe [Disk])
     , _ihRamSizeInGb :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1195,8 +1195,8 @@ instance NFData InstanceHardware
 -- /See:/ 'instanceHealthSummary' smart constructor.
 data InstanceHealthSummary =
   InstanceHealthSummary'
-    { _ihsInstanceHealth :: !(Maybe InstanceHealthState)
-    , _ihsInstanceName :: !(Maybe Text)
+    { _ihsInstanceHealth       :: !(Maybe InstanceHealthState)
+    , _ihsInstanceName         :: !(Maybe Text)
     , _ihsInstanceHealthReason :: !(Maybe InstanceHealthReason)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1253,7 +1253,7 @@ instance NFData InstanceHealthSummary
 data InstanceNetworking =
   InstanceNetworking'
     { _inMonthlyTransfer :: !(Maybe MonthlyTransfer)
-    , _inPorts :: !(Maybe [InstancePortInfo])
+    , _inPorts           :: !(Maybe [InstancePortInfo])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1295,13 +1295,13 @@ instance NFData InstanceNetworking
 -- /See:/ 'instancePortInfo' smart constructor.
 data InstancePortInfo =
   InstancePortInfo'
-    { _ipiFromPort :: !(Maybe Nat)
-    , _ipiCommonName :: !(Maybe Text)
-    , _ipiProtocol :: !(Maybe NetworkProtocol)
+    { _ipiFromPort        :: !(Maybe Nat)
+    , _ipiCommonName      :: !(Maybe Text)
+    , _ipiProtocol        :: !(Maybe NetworkProtocol)
     , _ipiAccessDirection :: !(Maybe AccessDirection)
-    , _ipiAccessType :: !(Maybe PortAccessType)
-    , _ipiToPort :: !(Maybe Nat)
-    , _ipiAccessFrom :: !(Maybe Text)
+    , _ipiAccessType      :: !(Maybe PortAccessType)
+    , _ipiToPort          :: !(Maybe Nat)
+    , _ipiAccessFrom      :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1387,9 +1387,9 @@ instance NFData InstancePortInfo
 data InstancePortState =
   InstancePortState'
     { _ipsFromPort :: !(Maybe Nat)
-    , _ipsState :: !(Maybe PortState)
+    , _ipsState    :: !(Maybe PortState)
     , _ipsProtocol :: !(Maybe NetworkProtocol)
-    , _ipsToPort :: !(Maybe Nat)
+    , _ipsToPort   :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1449,20 +1449,20 @@ instance NFData InstancePortState
 -- /See:/ 'instanceSnapshot' smart constructor.
 data InstanceSnapshot =
   InstanceSnapshot'
-    { _insFromBlueprintId :: !(Maybe Text)
-    , _insState :: !(Maybe InstanceSnapshotState)
-    , _insResourceType :: !(Maybe ResourceType)
+    { _insFromBlueprintId   :: !(Maybe Text)
+    , _insState             :: !(Maybe InstanceSnapshotState)
+    , _insResourceType      :: !(Maybe ResourceType)
     , _insFromAttachedDisks :: !(Maybe [Disk])
-    , _insArn :: !(Maybe Text)
-    , _insCreatedAt :: !(Maybe POSIX)
-    , _insLocation :: !(Maybe ResourceLocation)
-    , _insProgress :: !(Maybe Text)
-    , _insName :: !(Maybe Text)
-    , _insFromBundleId :: !(Maybe Text)
-    , _insSizeInGb :: !(Maybe Int)
-    , _insSupportCode :: !(Maybe Text)
-    , _insFromInstanceARN :: !(Maybe Text)
-    , _insFromInstanceName :: !(Maybe Text)
+    , _insArn               :: !(Maybe Text)
+    , _insCreatedAt         :: !(Maybe POSIX)
+    , _insLocation          :: !(Maybe ResourceLocation)
+    , _insProgress          :: !(Maybe Text)
+    , _insName              :: !(Maybe Text)
+    , _insFromBundleId      :: !(Maybe Text)
+    , _insSizeInGb          :: !(Maybe Int)
+    , _insSupportCode       :: !(Maybe Text)
+    , _insFromInstanceARN   :: !(Maybe Text)
+    , _insFromInstanceName  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1649,12 +1649,12 @@ instance NFData InstanceState
 data KeyPair =
   KeyPair'
     { _kpResourceType :: !(Maybe ResourceType)
-    , _kpArn :: !(Maybe Text)
-    , _kpCreatedAt :: !(Maybe POSIX)
-    , _kpLocation :: !(Maybe ResourceLocation)
-    , _kpFingerprint :: !(Maybe Text)
-    , _kpName :: !(Maybe Text)
-    , _kpSupportCode :: !(Maybe Text)
+    , _kpArn          :: !(Maybe Text)
+    , _kpCreatedAt    :: !(Maybe POSIX)
+    , _kpLocation     :: !(Maybe ResourceLocation)
+    , _kpFingerprint  :: !(Maybe Text)
+    , _kpName         :: !(Maybe Text)
+    , _kpSupportCode  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2359,7 +2359,7 @@ instance NFData LoadBalancerTLSCertificateRenewalSummary
 data LoadBalancerTLSCertificateSummary =
   LoadBalancerTLSCertificateSummary'
     { _lbtcsIsAttached :: !(Maybe Bool)
-    , _lbtcsName :: !(Maybe Text)
+    , _lbtcsName       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2403,12 +2403,12 @@ instance NFData LoadBalancerTLSCertificateSummary
 data MetricDatapoint =
   MetricDatapoint'
     { _mdSampleCount :: !(Maybe Double)
-    , _mdMaximum :: !(Maybe Double)
-    , _mdAverage :: !(Maybe Double)
-    , _mdMinimum :: !(Maybe Double)
-    , _mdSum :: !(Maybe Double)
-    , _mdTimestamp :: !(Maybe POSIX)
-    , _mdUnit :: !(Maybe MetricUnit)
+    , _mdMaximum     :: !(Maybe Double)
+    , _mdAverage     :: !(Maybe Double)
+    , _mdMinimum     :: !(Maybe Double)
+    , _mdSum         :: !(Maybe Double)
+    , _mdTimestamp   :: !(Maybe POSIX)
+    , _mdUnit        :: !(Maybe MetricUnit)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2526,18 +2526,18 @@ instance NFData MonthlyTransfer
 -- /See:/ 'operation' smart constructor.
 data Operation =
   Operation'
-    { _oStatus :: !(Maybe OperationStatus)
+    { _oStatus           :: !(Maybe OperationStatus)
     , _oOperationDetails :: !(Maybe Text)
-    , _oResourceType :: !(Maybe ResourceType)
-    , _oCreatedAt :: !(Maybe POSIX)
-    , _oResourceName :: !(Maybe Text)
-    , _oLocation :: !(Maybe ResourceLocation)
-    , _oStatusChangedAt :: !(Maybe POSIX)
-    , _oErrorDetails :: !(Maybe Text)
-    , _oErrorCode :: !(Maybe Text)
-    , _oId :: !(Maybe Text)
-    , _oOperationType :: !(Maybe OperationType)
-    , _oIsTerminal :: !(Maybe Bool)
+    , _oResourceType     :: !(Maybe ResourceType)
+    , _oCreatedAt        :: !(Maybe POSIX)
+    , _oResourceName     :: !(Maybe Text)
+    , _oLocation         :: !(Maybe ResourceLocation)
+    , _oStatusChangedAt  :: !(Maybe POSIX)
+    , _oErrorDetails     :: !(Maybe Text)
+    , _oErrorCode        :: !(Maybe Text)
+    , _oId               :: !(Maybe Text)
+    , _oOperationType    :: !(Maybe OperationType)
+    , _oIsTerminal       :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2663,7 +2663,7 @@ instance NFData Operation
 data PasswordData =
   PasswordData'
     { _pdKeyPairName :: !(Maybe Text)
-    , _pdCiphertext :: !(Maybe Text)
+    , _pdCiphertext  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2704,7 +2704,7 @@ data PortInfo =
   PortInfo'
     { _piFromPort :: !(Maybe Nat)
     , _piProtocol :: !(Maybe NetworkProtocol)
-    , _piToPort :: !(Maybe Nat)
+    , _piToPort   :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2754,10 +2754,10 @@ instance ToJSON PortInfo where
 data RegionInfo =
   RegionInfo'
     { _riAvailabilityZones :: !(Maybe [AvailabilityZone])
-    , _riName :: !(Maybe RegionName)
-    , _riDisplayName :: !(Maybe Text)
-    , _riContinentCode :: !(Maybe Text)
-    , _riDescription :: !(Maybe Text)
+    , _riName              :: !(Maybe RegionName)
+    , _riDisplayName       :: !(Maybe Text)
+    , _riContinentCode     :: !(Maybe Text)
+    , _riDescription       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2828,7 +2828,7 @@ instance NFData RegionInfo
 -- /See:/ 'resourceLocation' smart constructor.
 data ResourceLocation =
   ResourceLocation'
-    { _rlRegionName :: !(Maybe RegionName)
+    { _rlRegionName       :: !(Maybe RegionName)
     , _rlAvailabilityZone :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2872,15 +2872,15 @@ instance NFData ResourceLocation
 -- /See:/ 'staticIP' smart constructor.
 data StaticIP =
   StaticIP'
-    { _siIpAddress :: !(Maybe Text)
+    { _siIpAddress    :: !(Maybe Text)
     , _siResourceType :: !(Maybe ResourceType)
-    , _siArn :: !(Maybe Text)
-    , _siCreatedAt :: !(Maybe POSIX)
-    , _siLocation :: !(Maybe ResourceLocation)
-    , _siIsAttached :: !(Maybe Bool)
-    , _siName :: !(Maybe Text)
-    , _siSupportCode :: !(Maybe Text)
-    , _siAttachedTo :: !(Maybe Text)
+    , _siArn          :: !(Maybe Text)
+    , _siCreatedAt    :: !(Maybe POSIX)
+    , _siLocation     :: !(Maybe ResourceLocation)
+    , _siIsAttached   :: !(Maybe Bool)
+    , _siName         :: !(Maybe Text)
+    , _siSupportCode  :: !(Maybe Text)
+    , _siAttachedTo   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

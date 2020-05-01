@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 data GetLoggerDefinitionVersion =
   GetLoggerDefinitionVersion'
     { _gldvLoggerDefinitionVersionId :: !Text
-    , _gldvLoggerDefinitionId :: !Text
+    , _gldvLoggerDefinitionId        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -117,12 +117,12 @@ instance ToQuery GetLoggerDefinitionVersion where
 -- | /See:/ 'getLoggerDefinitionVersionResponse' smart constructor.
 data GetLoggerDefinitionVersionResponse =
   GetLoggerDefinitionVersionResponse'
-    { _gldvrsDefinition :: !(Maybe LoggerDefinitionVersion)
-    , _gldvrsARN :: !(Maybe Text)
+    { _gldvrsDefinition        :: !(Maybe LoggerDefinitionVersion)
+    , _gldvrsARN               :: !(Maybe Text)
     , _gldvrsCreationTimestamp :: !(Maybe Text)
-    , _gldvrsVersion :: !(Maybe Text)
-    , _gldvrsId :: !(Maybe Text)
-    , _gldvrsResponseStatus :: !Int
+    , _gldvrsVersion           :: !(Maybe Text)
+    , _gldvrsId                :: !(Maybe Text)
+    , _gldvrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

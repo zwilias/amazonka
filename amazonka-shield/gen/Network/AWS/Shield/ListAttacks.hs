@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,11 +48,11 @@ import Network.AWS.Shield.Types.Product
 -- | /See:/ 'listAttacks' smart constructor.
 data ListAttacks =
   ListAttacks'
-    { _laStartTime :: !(Maybe TimeRange)
+    { _laStartTime    :: !(Maybe TimeRange)
     , _laResourceARNs :: !(Maybe [Text])
-    , _laNextToken :: !(Maybe Text)
-    , _laEndTime :: !(Maybe TimeRange)
-    , _laMaxResults :: !(Maybe Nat)
+    , _laNextToken    :: !(Maybe Text)
+    , _laEndTime      :: !(Maybe TimeRange)
+    , _laMaxResults   :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -143,8 +143,8 @@ instance ToQuery ListAttacks where
 data ListAttacksResponse =
   ListAttacksResponse'
     { _larsAttackSummaries :: !(Maybe [AttackSummary])
-    , _larsNextToken :: !(Maybe Text)
-    , _larsResponseStatus :: !Int
+    , _larsNextToken       :: !(Maybe Text)
+    , _larsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -75,13 +75,13 @@ import Network.AWS.SWF.Types.Product
 -- | /See:/ 'listOpenWorkflowExecutions' smart constructor.
 data ListOpenWorkflowExecutions =
   ListOpenWorkflowExecutions'
-    { _loweNextPageToken :: !(Maybe Text)
+    { _loweNextPageToken   :: !(Maybe Text)
     , _loweExecutionFilter :: !(Maybe WorkflowExecutionFilter)
-    , _loweTypeFilter :: !(Maybe WorkflowTypeFilter)
-    , _loweReverseOrder :: !(Maybe Bool)
-    , _loweTagFilter :: !(Maybe TagFilter)
+    , _loweTypeFilter      :: !(Maybe WorkflowTypeFilter)
+    , _loweReverseOrder    :: !(Maybe Bool)
+    , _loweTagFilter       :: !(Maybe TagFilter)
     , _loweMaximumPageSize :: !(Maybe Nat)
-    , _loweDomain :: !Text
+    , _loweDomain          :: !Text
     , _loweStartTimeFilter :: !ExecutionTimeFilter
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

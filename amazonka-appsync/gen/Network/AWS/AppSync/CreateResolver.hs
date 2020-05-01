@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,11 +51,11 @@ import Network.AWS.Response
 data CreateResolver =
   CreateResolver'
     { _crResponseMappingTemplate :: !(Maybe Text)
-    , _crApiId :: !Text
-    , _crTypeName :: !Text
-    , _crFieldName :: !Text
-    , _crDataSourceName :: !Text
-    , _crRequestMappingTemplate :: !Text
+    , _crApiId                   :: !Text
+    , _crTypeName                :: !Text
+    , _crFieldName               :: !Text
+    , _crDataSourceName          :: !Text
+    , _crRequestMappingTemplate  :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -155,7 +155,7 @@ instance ToQuery CreateResolver where
 -- | /See:/ 'createResolverResponse' smart constructor.
 data CreateResolverResponse =
   CreateResolverResponse'
-    { _crrsResolver :: !(Maybe Resolver)
+    { _crrsResolver       :: !(Maybe Resolver)
     , _crrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

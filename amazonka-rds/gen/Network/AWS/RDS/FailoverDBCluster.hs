@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,7 +54,7 @@ import Network.AWS.Response
 -- /See:/ 'failoverDBCluster' smart constructor.
 data FailoverDBCluster =
   FailoverDBCluster'
-    { _fdcDBClusterIdentifier :: !(Maybe Text)
+    { _fdcDBClusterIdentifier        :: !(Maybe Text)
     , _fdcTargetDBInstanceIdentifier :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -117,7 +117,7 @@ instance ToQuery FailoverDBCluster where
 -- | /See:/ 'failoverDBClusterResponse' smart constructor.
 data FailoverDBClusterResponse =
   FailoverDBClusterResponse'
-    { _fdcrsDBCluster :: !(Maybe DBCluster)
+    { _fdcrsDBCluster      :: !(Maybe DBCluster)
     , _fdcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

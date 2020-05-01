@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -83,11 +83,11 @@ import Network.AWS.Route53.Types.Product
 -- /See:/ 'listResourceRecordSets' smart constructor.
 data ListResourceRecordSets =
   ListResourceRecordSets'
-    { _lrrsStartRecordName :: !(Maybe Text)
-    , _lrrsStartRecordType :: !(Maybe RecordType)
+    { _lrrsStartRecordName       :: !(Maybe Text)
+    , _lrrsStartRecordType       :: !(Maybe RecordType)
     , _lrrsStartRecordIdentifier :: !(Maybe Text)
-    , _lrrsMaxItems :: !(Maybe Text)
-    , _lrrsHostedZoneId :: !ResourceId
+    , _lrrsMaxItems              :: !(Maybe Text)
+    , _lrrsHostedZoneId          :: !ResourceId
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -193,13 +193,13 @@ instance ToQuery ListResourceRecordSets where
 -- /See:/ 'listResourceRecordSetsResponse' smart constructor.
 data ListResourceRecordSetsResponse =
   ListResourceRecordSetsResponse'
-    { _lrrsrsNextRecordType :: !(Maybe RecordType)
-    , _lrrsrsNextRecordName :: !(Maybe Text)
+    { _lrrsrsNextRecordType       :: !(Maybe RecordType)
+    , _lrrsrsNextRecordName       :: !(Maybe Text)
     , _lrrsrsNextRecordIdentifier :: !(Maybe Text)
-    , _lrrsrsResponseStatus :: !Int
-    , _lrrsrsResourceRecordSets :: ![ResourceRecordSet]
-    , _lrrsrsIsTruncated :: !Bool
-    , _lrrsrsMaxItems :: !Text
+    , _lrrsrsResponseStatus       :: !Int
+    , _lrrsrsResourceRecordSets   :: ![ResourceRecordSet]
+    , _lrrsrsIsTruncated          :: !Bool
+    , _lrrsrsMaxItems             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

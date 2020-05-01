@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'batchDeleteConnection' smart constructor.
 data BatchDeleteConnection =
   BatchDeleteConnection'
-    { _bdcCatalogId :: !(Maybe Text)
+    { _bdcCatalogId          :: !(Maybe Text)
     , _bdcConnectionNameList :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -110,8 +110,8 @@ instance ToQuery BatchDeleteConnection where
 -- | /See:/ 'batchDeleteConnectionResponse' smart constructor.
 data BatchDeleteConnectionResponse =
   BatchDeleteConnectionResponse'
-    { _bdcrsSucceeded :: !(Maybe [Text])
-    , _bdcrsErrors :: !(Maybe (Map Text ErrorDetail))
+    { _bdcrsSucceeded      :: !(Maybe [Text])
+    , _bdcrsErrors         :: !(Maybe (Map Text ErrorDetail))
     , _bdcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

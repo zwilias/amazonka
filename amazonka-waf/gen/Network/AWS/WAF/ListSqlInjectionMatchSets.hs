@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,7 +53,7 @@ import Network.AWS.WAF.Types.Product
 data ListSqlInjectionMatchSets =
   ListSqlInjectionMatchSets'
     { _lsimsNextMarker :: !(Maybe Text)
-    , _lsimsLimit :: !(Maybe Nat)
+    , _lsimsLimit      :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,9 +124,9 @@ instance ToQuery ListSqlInjectionMatchSets where
 -- /See:/ 'listSqlInjectionMatchSetsResponse' smart constructor.
 data ListSqlInjectionMatchSetsResponse =
   ListSqlInjectionMatchSetsResponse'
-    { _lsimsrsNextMarker :: !(Maybe Text)
+    { _lsimsrsNextMarker            :: !(Maybe Text)
     , _lsimsrsSqlInjectionMatchSets :: !(Maybe [SqlInjectionMatchSetSummary])
-    , _lsimsrsResponseStatus :: !Int
+    , _lsimsrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

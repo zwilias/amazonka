@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -127,22 +127,22 @@ instance ToQuery DescribeNotebookInstance where
 -- | /See:/ 'describeNotebookInstanceResponse' smart constructor.
 data DescribeNotebookInstanceResponse =
   DescribeNotebookInstanceResponse'
-    { _dnirsCreationTime :: !(Maybe POSIX)
-    , _dnirsFailureReason :: !(Maybe Text)
-    , _dnirsNotebookInstanceName :: !(Maybe Text)
-    , _dnirsSecurityGroups :: !(Maybe [Text])
-    , _dnirsURL :: !(Maybe Text)
-    , _dnirsLastModifiedTime :: !(Maybe POSIX)
-    , _dnirsNetworkInterfaceId :: !(Maybe Text)
-    , _dnirsSubnetId :: !(Maybe Text)
-    , _dnirsInstanceType :: !(Maybe InstanceType)
-    , _dnirsKMSKeyId :: !(Maybe Text)
-    , _dnirsDirectInternetAccess :: !(Maybe DirectInternetAccess)
-    , _dnirsNotebookInstanceARN :: !(Maybe Text)
+    { _dnirsCreationTime                        :: !(Maybe POSIX)
+    , _dnirsFailureReason                       :: !(Maybe Text)
+    , _dnirsNotebookInstanceName                :: !(Maybe Text)
+    , _dnirsSecurityGroups                      :: !(Maybe [Text])
+    , _dnirsURL                                 :: !(Maybe Text)
+    , _dnirsLastModifiedTime                    :: !(Maybe POSIX)
+    , _dnirsNetworkInterfaceId                  :: !(Maybe Text)
+    , _dnirsSubnetId                            :: !(Maybe Text)
+    , _dnirsInstanceType                        :: !(Maybe InstanceType)
+    , _dnirsKMSKeyId                            :: !(Maybe Text)
+    , _dnirsDirectInternetAccess                :: !(Maybe DirectInternetAccess)
+    , _dnirsNotebookInstanceARN                 :: !(Maybe Text)
     , _dnirsNotebookInstanceLifecycleConfigName :: !(Maybe Text)
-    , _dnirsRoleARN :: !(Maybe Text)
-    , _dnirsResponseStatus :: !Int
-    , _dnirsNotebookInstanceStatus :: !NotebookInstanceStatus
+    , _dnirsRoleARN                             :: !(Maybe Text)
+    , _dnirsResponseStatus                      :: !Int
+    , _dnirsNotebookInstanceStatus              :: !NotebookInstanceStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,9 +46,9 @@ import Network.AWS.Response
 -- | /See:/ 'importMigrationTask' smart constructor.
 data ImportMigrationTask =
   ImportMigrationTask'
-    { _imtDryRun :: !(Maybe Bool)
+    { _imtDryRun               :: !(Maybe Bool)
     , _imtProgressUpdateStream :: !Text
-    , _imtMigrationTaskName :: !Text
+    , _imtMigrationTaskName    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

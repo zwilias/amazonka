@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ data ListPublicKeys =
   ListPublicKeys'
     { _lpkStartTime :: !(Maybe POSIX)
     , _lpkNextToken :: !(Maybe Text)
-    , _lpkEndTime :: !(Maybe POSIX)
+    , _lpkEndTime   :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -128,8 +128,8 @@ instance ToQuery ListPublicKeys where
 -- /See:/ 'listPublicKeysResponse' smart constructor.
 data ListPublicKeysResponse =
   ListPublicKeysResponse'
-    { _lpkrsPublicKeyList :: !(Maybe [PublicKey])
-    , _lpkrsNextToken :: !(Maybe Text)
+    { _lpkrsPublicKeyList  :: !(Maybe [PublicKey])
+    , _lpkrsNextToken      :: !(Maybe Text)
     , _lpkrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

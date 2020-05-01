@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,11 +46,11 @@ import Network.AWS.Response
 -- /See:/ 'createUser' smart constructor.
 data CreateUser =
   CreateUser'
-    { _cuGroups :: !(Maybe [Text])
+    { _cuGroups        :: !(Maybe [Text])
     , _cuConsoleAccess :: !(Maybe Bool)
-    , _cuPassword :: !(Maybe Text)
-    , _cuUsername :: !Text
-    , _cuBrokerId :: !Text
+    , _cuPassword      :: !(Maybe Text)
+    , _cuUsername      :: !Text
+    , _cuBrokerId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

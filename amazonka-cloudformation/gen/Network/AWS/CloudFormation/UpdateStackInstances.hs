@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,11 +55,11 @@ import Network.AWS.Response
 data UpdateStackInstances =
   UpdateStackInstances'
     { _usiOperationPreferences :: !(Maybe StackSetOperationPreferences)
-    , _usiOperationId :: !(Maybe Text)
-    , _usiParameterOverrides :: !(Maybe [Parameter])
-    , _usiStackSetName :: !Text
-    , _usiAccounts :: ![Text]
-    , _usiRegions :: ![Text]
+    , _usiOperationId          :: !(Maybe Text)
+    , _usiParameterOverrides   :: !(Maybe [Parameter])
+    , _usiStackSetName         :: !Text
+    , _usiAccounts             :: ![Text]
+    , _usiRegions              :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -156,7 +156,7 @@ instance ToQuery UpdateStackInstances where
 -- | /See:/ 'updateStackInstancesResponse' smart constructor.
 data UpdateStackInstancesResponse =
   UpdateStackInstancesResponse'
-    { _usirsOperationId :: !(Maybe Text)
+    { _usirsOperationId    :: !(Maybe Text)
     , _usirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

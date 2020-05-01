@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -108,15 +108,15 @@ instance ToQuery DescribeProject where
 -- | /See:/ 'describeProjectResponse' smart constructor.
 data DescribeProjectResponse =
   DescribeProjectResponse'
-    { _drsArn :: !(Maybe Text)
-    , _drsProjectTemplateId :: !(Maybe Text)
-    , _drsName :: !(Maybe (Sensitive Text))
-    , _drsId :: !(Maybe Text)
-    , _drsStackId :: !(Maybe Text)
+    { _drsArn                :: !(Maybe Text)
+    , _drsProjectTemplateId  :: !(Maybe Text)
+    , _drsName               :: !(Maybe (Sensitive Text))
+    , _drsId                 :: !(Maybe Text)
+    , _drsStackId            :: !(Maybe Text)
     , _drsClientRequestToken :: !(Maybe Text)
-    , _drsCreatedTimeStamp :: !(Maybe POSIX)
-    , _drsDescription :: !(Maybe (Sensitive Text))
-    , _drsResponseStatus :: !Int
+    , _drsCreatedTimeStamp   :: !(Maybe POSIX)
+    , _drsDescription        :: !(Maybe (Sensitive Text))
+    , _drsResponseStatus     :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

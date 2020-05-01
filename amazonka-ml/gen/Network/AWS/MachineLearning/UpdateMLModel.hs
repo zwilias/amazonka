@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,9 +47,9 @@ import Network.AWS.Response
 -- | /See:/ 'updateMLModel' smart constructor.
 data UpdateMLModel =
   UpdateMLModel'
-    { _umlmMLModelName :: !(Maybe Text)
+    { _umlmMLModelName    :: !(Maybe Text)
     , _umlmScoreThreshold :: !(Maybe Double)
-    , _umlmMLModelId :: !Text
+    , _umlmMLModelId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -129,7 +129,7 @@ instance ToQuery UpdateMLModel where
 -- /See:/ 'updateMLModelResponse' smart constructor.
 data UpdateMLModelResponse =
   UpdateMLModelResponse'
-    { _umlmrsMLModelId :: !(Maybe Text)
+    { _umlmrsMLModelId      :: !(Maybe Text)
     , _umlmrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

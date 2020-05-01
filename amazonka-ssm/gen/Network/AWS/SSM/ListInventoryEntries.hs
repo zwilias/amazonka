@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,11 +52,11 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'listInventoryEntries' smart constructor.
 data ListInventoryEntries =
   ListInventoryEntries'
-    { _lieFilters :: !(Maybe (List1 InventoryFilter))
-    , _lieNextToken :: !(Maybe Text)
+    { _lieFilters    :: !(Maybe (List1 InventoryFilter))
+    , _lieNextToken  :: !(Maybe Text)
     , _lieMaxResults :: !(Maybe Nat)
     , _lieInstanceId :: !Text
-    , _lieTypeName :: !Text
+    , _lieTypeName   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -153,12 +153,12 @@ instance ToQuery ListInventoryEntries where
 -- | /See:/ 'listInventoryEntriesResponse' smart constructor.
 data ListInventoryEntriesResponse =
   ListInventoryEntriesResponse'
-    { _liersInstanceId :: !(Maybe Text)
-    , _liersTypeName :: !(Maybe Text)
-    , _liersEntries :: !(Maybe [Map Text Text])
-    , _liersSchemaVersion :: !(Maybe Text)
-    , _liersCaptureTime :: !(Maybe Text)
-    , _liersNextToken :: !(Maybe Text)
+    { _liersInstanceId     :: !(Maybe Text)
+    , _liersTypeName       :: !(Maybe Text)
+    , _liersEntries        :: !(Maybe [Map Text Text])
+    , _liersSchemaVersion  :: !(Maybe Text)
+    , _liersCaptureTime    :: !(Maybe Text)
+    , _liersNextToken      :: !(Maybe Text)
     , _liersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

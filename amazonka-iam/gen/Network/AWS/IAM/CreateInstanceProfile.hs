@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'createInstanceProfile' smart constructor.
 data CreateInstanceProfile =
   CreateInstanceProfile'
-    { _cipPath :: !(Maybe Text)
+    { _cipPath                :: !(Maybe Text)
     , _cipInstanceProfileName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -110,7 +110,7 @@ instance ToQuery CreateInstanceProfile where
 -- /See:/ 'createInstanceProfileResponse' smart constructor.
 data CreateInstanceProfileResponse =
   CreateInstanceProfileResponse'
-    { _ciprsResponseStatus :: !Int
+    { _ciprsResponseStatus  :: !Int
     , _ciprsInstanceProfile :: !InstanceProfile
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

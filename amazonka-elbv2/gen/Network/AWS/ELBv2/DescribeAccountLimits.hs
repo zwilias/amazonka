@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 -- | /See:/ 'describeAccountLimits' smart constructor.
 data DescribeAccountLimits =
   DescribeAccountLimits'
-    { _dalMarker :: !(Maybe Text)
+    { _dalMarker   :: !(Maybe Text)
     , _dalPageSize :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -105,8 +105,8 @@ instance ToQuery DescribeAccountLimits where
 -- | /See:/ 'describeAccountLimitsResponse' smart constructor.
 data DescribeAccountLimitsResponse =
   DescribeAccountLimitsResponse'
-    { _dalrsLimits :: !(Maybe [Limit])
-    , _dalrsNextMarker :: !(Maybe Text)
+    { _dalrsLimits         :: !(Maybe [Limit])
+    , _dalrsNextMarker     :: !(Maybe Text)
     , _dalrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

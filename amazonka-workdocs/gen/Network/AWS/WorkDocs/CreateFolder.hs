@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.WorkDocs.Types.Product
 data CreateFolder =
   CreateFolder'
     { _cfAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _cfName :: !(Maybe Text)
-    , _cfParentFolderId :: !Text
+    , _cfName                :: !(Maybe Text)
+    , _cfParentFolderId      :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -118,7 +118,7 @@ instance ToQuery CreateFolder where
 -- | /See:/ 'createFolderResponse' smart constructor.
 data CreateFolderResponse =
   CreateFolderResponse'
-    { _cfrsMetadata :: !(Maybe FolderMetadata)
+    { _cfrsMetadata       :: !(Maybe FolderMetadata)
     , _cfrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

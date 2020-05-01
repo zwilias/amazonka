@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ data CreateLoadBalancerPolicy =
   CreateLoadBalancerPolicy'
     { _clbpPolicyAttributes :: !(Maybe [PolicyAttribute])
     , _clbpLoadBalancerName :: !Text
-    , _clbpPolicyName :: !Text
-    , _clbpPolicyTypeName :: !Text
+    , _clbpPolicyName       :: !Text
+    , _clbpPolicyTypeName   :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

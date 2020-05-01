@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 -- /See:/ 'adminGetDevice' smart constructor.
 data AdminGetDevice =
   AdminGetDevice'
-    { _agdDeviceKey :: !Text
+    { _agdDeviceKey  :: !Text
     , _agdUserPoolId :: !Text
-    , _agdUsername :: !(Sensitive Text)
+    , _agdUsername   :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -134,7 +134,7 @@ instance ToQuery AdminGetDevice where
 data AdminGetDeviceResponse =
   AdminGetDeviceResponse'
     { _agdrsResponseStatus :: !Int
-    , _agdrsDevice :: !DeviceType
+    , _agdrsDevice         :: !DeviceType
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,10 +45,10 @@ import Network.AWS.Response
 -- | /See:/ 'updateTable' smart constructor.
 data UpdateTable =
   UpdateTable'
-    { _utSkipArchive :: !(Maybe Bool)
-    , _utCatalogId :: !(Maybe Text)
+    { _utSkipArchive  :: !(Maybe Bool)
+    , _utCatalogId    :: !(Maybe Text)
     , _utDatabaseName :: !Text
-    , _utTableInput :: !TableInput
+    , _utTableInput   :: !TableInput
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

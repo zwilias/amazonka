@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,12 +51,12 @@ import Network.AWS.ServiceCatalog.Types.Product
 -- | /See:/ 'createConstraint' smart constructor.
 data CreateConstraint =
   CreateConstraint'
-    { _ccAcceptLanguage :: !(Maybe Text)
-    , _ccDescription :: !(Maybe Text)
-    , _ccPortfolioId :: !Text
-    , _ccProductId :: !Text
-    , _ccParameters :: !Text
-    , _ccType :: !Text
+    { _ccAcceptLanguage   :: !(Maybe Text)
+    , _ccDescription      :: !(Maybe Text)
+    , _ccPortfolioId      :: !Text
+    , _ccProductId        :: !Text
+    , _ccParameters       :: !Text
+    , _ccType             :: !Text
     , _ccIdempotencyToken :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -171,10 +171,10 @@ instance ToQuery CreateConstraint where
 -- | /See:/ 'createConstraintResponse' smart constructor.
 data CreateConstraintResponse =
   CreateConstraintResponse'
-    { _ccrsStatus :: !(Maybe RequestStatus)
-    , _ccrsConstraintDetail :: !(Maybe ConstraintDetail)
+    { _ccrsStatus               :: !(Maybe RequestStatus)
+    , _ccrsConstraintDetail     :: !(Maybe ConstraintDetail)
     , _ccrsConstraintParameters :: !(Maybe Text)
-    , _ccrsResponseStatus :: !Int
+    , _ccrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

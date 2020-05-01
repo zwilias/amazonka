@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.SageMaker.Types.Product
 -- | /See:/ 'createEndpointConfig' smart constructor.
 data CreateEndpointConfig =
   CreateEndpointConfig'
-    { _cecKMSKeyId :: !(Maybe Text)
-    , _cecTags :: !(Maybe [Tag])
+    { _cecKMSKeyId           :: !(Maybe Text)
+    , _cecTags               :: !(Maybe [Tag])
     , _cecEndpointConfigName :: !Text
     , _cecProductionVariants :: !(List1 ProductionVariant)
     }
@@ -138,7 +138,7 @@ instance ToQuery CreateEndpointConfig where
 -- | /See:/ 'createEndpointConfigResponse' smart constructor.
 data CreateEndpointConfigResponse =
   CreateEndpointConfigResponse'
-    { _cecrsResponseStatus :: !Int
+    { _cecrsResponseStatus    :: !Int
     , _cecrsEndpointConfigARN :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

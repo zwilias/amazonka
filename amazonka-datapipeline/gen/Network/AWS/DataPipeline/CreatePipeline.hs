@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.Response
 data CreatePipeline =
   CreatePipeline'
     { _cpDescription :: !(Maybe Text)
-    , _cpTags :: !(Maybe [Tag])
-    , _cpName :: !Text
-    , _cpUniqueId :: !Text
+    , _cpTags        :: !(Maybe [Tag])
+    , _cpName        :: !Text
+    , _cpUniqueId    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -141,7 +141,7 @@ instance ToQuery CreatePipeline where
 data CreatePipelineResponse =
   CreatePipelineResponse'
     { _cprsResponseStatus :: !Int
-    , _cprsPipelineId :: !Text
+    , _cprsPipelineId     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,10 +50,10 @@ import Network.AWS.Response
 -- | /See:/ 'describeRepositories' smart constructor.
 data DescribeRepositories =
   DescribeRepositories'
-    { _drRegistryId :: !(Maybe Text)
+    { _drRegistryId      :: !(Maybe Text)
     , _drRepositoryNames :: !(Maybe (List1 Text))
-    , _drNextToken :: !(Maybe Text)
-    , _drMaxResults :: !(Maybe Nat)
+    , _drNextToken       :: !(Maybe Text)
+    , _drMaxResults      :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -142,8 +142,8 @@ instance ToQuery DescribeRepositories where
 -- | /See:/ 'describeRepositoriesResponse' smart constructor.
 data DescribeRepositoriesResponse =
   DescribeRepositoriesResponse'
-    { _drrsRepositories :: !(Maybe [Repository])
-    , _drrsNextToken :: !(Maybe Text)
+    { _drrsRepositories   :: !(Maybe [Repository])
+    , _drrsNextToken      :: !(Maybe Text)
     , _drrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

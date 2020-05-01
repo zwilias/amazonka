@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,10 +45,10 @@ import Network.AWS.WorkMail.Types.Product
 -- | /See:/ 'updateResource' smart constructor.
 data UpdateResource =
   UpdateResource'
-    { _urName :: !(Maybe Text)
+    { _urName           :: !(Maybe Text)
     , _urBookingOptions :: !(Maybe BookingOptions)
     , _urOrganizationId :: !Text
-    , _urResourceId :: !Text
+    , _urResourceId     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -28,7 +28,7 @@ data AWSVPCConfiguration =
   AWSVPCConfiguration'
     { _avcSecurityGroups :: !(Maybe [Text])
     , _avcAssignPublicIP :: !(Maybe AssignPublicIP)
-    , _avcSubnets :: ![Text]
+    , _avcSubnets        :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -92,10 +92,10 @@ instance ToJSON AWSVPCConfiguration where
 -- /See:/ 'attachment' smart constructor.
 data Attachment =
   Attachment'
-    { _aStatus :: !(Maybe Text)
+    { _aStatus  :: !(Maybe Text)
     , _aDetails :: !(Maybe [KeyValuePair])
-    , _aId :: !(Maybe Text)
-    , _aType :: !(Maybe Text)
+    , _aId      :: !(Maybe Text)
+    , _aType    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -152,7 +152,7 @@ instance NFData Attachment
 data AttachmentStateChange =
   AttachmentStateChange'
     { _ascAttachmentARN :: !Text
-    , _ascStatus :: !Text
+    , _ascStatus        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -198,10 +198,10 @@ instance ToJSON AttachmentStateChange where
 -- /See:/ 'attribute' smart constructor.
 data Attribute =
   Attribute'
-    { _aTargetId :: !(Maybe Text)
-    , _aValue :: !(Maybe Text)
+    { _aTargetId   :: !(Maybe Text)
+    , _aValue      :: !(Maybe Text)
     , _aTargetType :: !(Maybe TargetType)
-    , _aName :: !Text
+    , _aName       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -273,14 +273,14 @@ instance ToJSON Attribute where
 -- /See:/ 'cluster' smart constructor.
 data Cluster =
   Cluster'
-    { _cStatus :: !(Maybe Text)
-    , _cClusterARN :: !(Maybe Text)
-    , _cRunningTasksCount :: !(Maybe Int)
+    { _cStatus                            :: !(Maybe Text)
+    , _cClusterARN                        :: !(Maybe Text)
+    , _cRunningTasksCount                 :: !(Maybe Int)
     , _cRegisteredContainerInstancesCount :: !(Maybe Int)
-    , _cPendingTasksCount :: !(Maybe Int)
-    , _cClusterName :: !(Maybe Text)
-    , _cStatistics :: !(Maybe [KeyValuePair])
-    , _cActiveServicesCount :: !(Maybe Int)
+    , _cPendingTasksCount                 :: !(Maybe Int)
+    , _cClusterName                       :: !(Maybe Text)
+    , _cStatistics                        :: !(Maybe [KeyValuePair])
+    , _cActiveServicesCount               :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -379,15 +379,15 @@ instance NFData Cluster
 -- /See:/ 'container' smart constructor.
 data Container =
   Container'
-    { _cNetworkBindings :: !(Maybe [NetworkBinding])
-    , _cContainerARN :: !(Maybe Text)
+    { _cNetworkBindings   :: !(Maybe [NetworkBinding])
+    , _cContainerARN      :: !(Maybe Text)
     , _cNetworkInterfaces :: !(Maybe [NetworkInterface])
-    , _cTaskARN :: !(Maybe Text)
-    , _cLastStatus :: !(Maybe Text)
-    , _cReason :: !(Maybe Text)
-    , _cName :: !(Maybe Text)
-    , _cExitCode :: !(Maybe Int)
-    , _cHealthStatus :: !(Maybe HealthStatus)
+    , _cTaskARN           :: !(Maybe Text)
+    , _cLastStatus        :: !(Maybe Text)
+    , _cReason            :: !(Maybe Text)
+    , _cName              :: !(Maybe Text)
+    , _cExitCode          :: !(Maybe Int)
+    , _cHealthStatus      :: !(Maybe HealthStatus)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -492,34 +492,34 @@ instance NFData Container
 -- /See:/ 'containerDefinition' smart constructor.
 data ContainerDefinition =
   ContainerDefinition'
-    { _cdImage :: !(Maybe Text)
-    , _cdCommand :: !(Maybe [Text])
-    , _cdHostname :: !(Maybe Text)
-    , _cdDockerSecurityOptions :: !(Maybe [Text])
-    , _cdHealthCheck :: !(Maybe HealthCheck)
-    , _cdDisableNetworking :: !(Maybe Bool)
-    , _cdVolumesFrom :: !(Maybe [VolumeFrom])
-    , _cdEnvironment :: !(Maybe [KeyValuePair])
-    , _cdEntryPoint :: !(Maybe [Text])
-    , _cdWorkingDirectory :: !(Maybe Text)
-    , _cdUlimits :: !(Maybe [Ulimit])
-    , _cdPrivileged :: !(Maybe Bool)
-    , _cdPortMappings :: !(Maybe [PortMapping])
-    , _cdDockerLabels :: !(Maybe (Map Text Text))
-    , _cdExtraHosts :: !(Maybe [HostEntry])
-    , _cdMemory :: !(Maybe Int)
-    , _cdUser :: !(Maybe Text)
-    , _cdDnsSearchDomains :: !(Maybe [Text])
-    , _cdLogConfiguration :: !(Maybe LogConfiguration)
-    , _cdLinuxParameters :: !(Maybe LinuxParameters)
-    , _cdName :: !(Maybe Text)
-    , _cdDnsServers :: !(Maybe [Text])
-    , _cdMountPoints :: !(Maybe [MountPoint])
-    , _cdLinks :: !(Maybe [Text])
+    { _cdImage                  :: !(Maybe Text)
+    , _cdCommand                :: !(Maybe [Text])
+    , _cdHostname               :: !(Maybe Text)
+    , _cdDockerSecurityOptions  :: !(Maybe [Text])
+    , _cdHealthCheck            :: !(Maybe HealthCheck)
+    , _cdDisableNetworking      :: !(Maybe Bool)
+    , _cdVolumesFrom            :: !(Maybe [VolumeFrom])
+    , _cdEnvironment            :: !(Maybe [KeyValuePair])
+    , _cdEntryPoint             :: !(Maybe [Text])
+    , _cdWorkingDirectory       :: !(Maybe Text)
+    , _cdUlimits                :: !(Maybe [Ulimit])
+    , _cdPrivileged             :: !(Maybe Bool)
+    , _cdPortMappings           :: !(Maybe [PortMapping])
+    , _cdDockerLabels           :: !(Maybe (Map Text Text))
+    , _cdExtraHosts             :: !(Maybe [HostEntry])
+    , _cdMemory                 :: !(Maybe Int)
+    , _cdUser                   :: !(Maybe Text)
+    , _cdDnsSearchDomains       :: !(Maybe [Text])
+    , _cdLogConfiguration       :: !(Maybe LogConfiguration)
+    , _cdLinuxParameters        :: !(Maybe LinuxParameters)
+    , _cdName                   :: !(Maybe Text)
+    , _cdDnsServers             :: !(Maybe [Text])
+    , _cdMountPoints            :: !(Maybe [MountPoint])
+    , _cdLinks                  :: !(Maybe [Text])
     , _cdReadonlyRootFilesystem :: !(Maybe Bool)
-    , _cdEssential :: !(Maybe Bool)
-    , _cdCpu :: !(Maybe Int)
-    , _cdMemoryReservation :: !(Maybe Int)
+    , _cdEssential              :: !(Maybe Bool)
+    , _cdCpu                    :: !(Maybe Int)
+    , _cdMemoryReservation      :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -823,20 +823,20 @@ instance ToJSON ContainerDefinition where
 -- /See:/ 'containerInstance' smart constructor.
 data ContainerInstance =
   ContainerInstance'
-    { _ciStatus :: !(Maybe Text)
-    , _ciAttachments :: !(Maybe [Attachment])
-    , _ciRunningTasksCount :: !(Maybe Int)
-    , _ciRemainingResources :: !(Maybe [Resource])
-    , _ciEc2InstanceId :: !(Maybe Text)
+    { _ciStatus               :: !(Maybe Text)
+    , _ciAttachments          :: !(Maybe [Attachment])
+    , _ciRunningTasksCount    :: !(Maybe Int)
+    , _ciRemainingResources   :: !(Maybe [Resource])
+    , _ciEc2InstanceId        :: !(Maybe Text)
     , _ciContainerInstanceARN :: !(Maybe Text)
-    , _ciAgentConnected :: !(Maybe Bool)
-    , _ciVersionInfo :: !(Maybe VersionInfo)
-    , _ciAgentUpdateStatus :: !(Maybe AgentUpdateStatus)
-    , _ciAttributes :: !(Maybe [Attribute])
-    , _ciVersion :: !(Maybe Integer)
-    , _ciPendingTasksCount :: !(Maybe Int)
-    , _ciRegisteredAt :: !(Maybe POSIX)
-    , _ciRegisteredResources :: !(Maybe [Resource])
+    , _ciAgentConnected       :: !(Maybe Bool)
+    , _ciVersionInfo          :: !(Maybe VersionInfo)
+    , _ciAgentUpdateStatus    :: !(Maybe AgentUpdateStatus)
+    , _ciAttributes           :: !(Maybe [Attribute])
+    , _ciVersion              :: !(Maybe Integer)
+    , _ciPendingTasksCount    :: !(Maybe Int)
+    , _ciRegisteredAt         :: !(Maybe POSIX)
+    , _ciRegisteredResources  :: !(Maybe [Resource])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -988,11 +988,11 @@ instance NFData ContainerInstance
 -- /See:/ 'containerOverride' smart constructor.
 data ContainerOverride =
   ContainerOverride'
-    { _coCommand :: !(Maybe [Text])
-    , _coEnvironment :: !(Maybe [KeyValuePair])
-    , _coMemory :: !(Maybe Int)
-    , _coName :: !(Maybe Text)
-    , _coCpu :: !(Maybe Int)
+    { _coCommand           :: !(Maybe [Text])
+    , _coEnvironment       :: !(Maybe [KeyValuePair])
+    , _coMemory            :: !(Maybe Int)
+    , _coName              :: !(Maybe Text)
+    , _coCpu               :: !(Maybe Int)
     , _coMemoryReservation :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1084,27 +1084,27 @@ instance ToJSON ContainerOverride where
 -- /See:/ 'containerService' smart constructor.
 data ContainerService =
   ContainerService'
-    { _csRunningCount :: !(Maybe Int)
-    , _csStatus :: !(Maybe Text)
-    , _csClusterARN :: !(Maybe Text)
-    , _csCreatedAt :: !(Maybe POSIX)
-    , _csPlatformVersion :: !(Maybe Text)
-    , _csDesiredCount :: !(Maybe Int)
-    , _csLoadBalancers :: !(Maybe [LoadBalancer])
-    , _csPendingCount :: !(Maybe Int)
-    , _csPlacementConstraints :: !(Maybe [PlacementConstraint])
-    , _csEvents :: !(Maybe [ServiceEvent])
-    , _csPlacementStrategy :: !(Maybe [PlacementStrategy])
-    , _csDeployments :: !(Maybe [Deployment])
-    , _csServiceName :: !(Maybe Text)
-    , _csLaunchType :: !(Maybe LaunchType)
-    , _csServiceARN :: !(Maybe Text)
-    , _csTaskDefinition :: !(Maybe Text)
+    { _csRunningCount                  :: !(Maybe Int)
+    , _csStatus                        :: !(Maybe Text)
+    , _csClusterARN                    :: !(Maybe Text)
+    , _csCreatedAt                     :: !(Maybe POSIX)
+    , _csPlatformVersion               :: !(Maybe Text)
+    , _csDesiredCount                  :: !(Maybe Int)
+    , _csLoadBalancers                 :: !(Maybe [LoadBalancer])
+    , _csPendingCount                  :: !(Maybe Int)
+    , _csPlacementConstraints          :: !(Maybe [PlacementConstraint])
+    , _csEvents                        :: !(Maybe [ServiceEvent])
+    , _csPlacementStrategy             :: !(Maybe [PlacementStrategy])
+    , _csDeployments                   :: !(Maybe [Deployment])
+    , _csServiceName                   :: !(Maybe Text)
+    , _csLaunchType                    :: !(Maybe LaunchType)
+    , _csServiceARN                    :: !(Maybe Text)
+    , _csTaskDefinition                :: !(Maybe Text)
     , _csHealthCheckGracePeriodSeconds :: !(Maybe Int)
-    , _csNetworkConfiguration :: !(Maybe NetworkConfiguration)
-    , _csServiceRegistries :: !(Maybe [ServiceRegistry])
-    , _csRoleARN :: !(Maybe Text)
-    , _csDeploymentConfiguration :: !(Maybe DeploymentConfiguration)
+    , _csNetworkConfiguration          :: !(Maybe NetworkConfiguration)
+    , _csServiceRegistries             :: !(Maybe [ServiceRegistry])
+    , _csRoleARN                       :: !(Maybe Text)
+    , _csDeploymentConfiguration       :: !(Maybe DeploymentConfiguration)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1315,10 +1315,10 @@ instance NFData ContainerService
 data ContainerStateChange =
   ContainerStateChange'
     { _cscNetworkBindings :: !(Maybe [NetworkBinding])
-    , _cscStatus :: !(Maybe Text)
-    , _cscContainerName :: !(Maybe Text)
-    , _cscReason :: !(Maybe Text)
-    , _cscExitCode :: !(Maybe Int)
+    , _cscStatus          :: !(Maybe Text)
+    , _cscContainerName   :: !(Maybe Text)
+    , _cscReason          :: !(Maybe Text)
+    , _cscExitCode        :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1389,16 +1389,16 @@ instance ToJSON ContainerStateChange where
 -- /See:/ 'deployment' smart constructor.
 data Deployment =
   Deployment'
-    { _dRunningCount :: !(Maybe Int)
-    , _dStatus :: !(Maybe Text)
-    , _dCreatedAt :: !(Maybe POSIX)
-    , _dPlatformVersion :: !(Maybe Text)
-    , _dDesiredCount :: !(Maybe Int)
-    , _dPendingCount :: !(Maybe Int)
-    , _dId :: !(Maybe Text)
-    , _dLaunchType :: !(Maybe LaunchType)
-    , _dUpdatedAt :: !(Maybe POSIX)
-    , _dTaskDefinition :: !(Maybe Text)
+    { _dRunningCount         :: !(Maybe Int)
+    , _dStatus               :: !(Maybe Text)
+    , _dCreatedAt            :: !(Maybe POSIX)
+    , _dPlatformVersion      :: !(Maybe Text)
+    , _dDesiredCount         :: !(Maybe Int)
+    , _dPendingCount         :: !(Maybe Int)
+    , _dId                   :: !(Maybe Text)
+    , _dLaunchType           :: !(Maybe LaunchType)
+    , _dUpdatedAt            :: !(Maybe POSIX)
+    , _dTaskDefinition       :: !(Maybe Text)
     , _dNetworkConfiguration :: !(Maybe NetworkConfiguration)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1517,7 +1517,7 @@ instance NFData Deployment
 data DeploymentConfiguration =
   DeploymentConfiguration'
     { _dcMinimumHealthyPercent :: !(Maybe Int)
-    , _dcMaximumPercent :: !(Maybe Int)
+    , _dcMaximumPercent        :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1570,8 +1570,8 @@ instance ToJSON DeploymentConfiguration where
 data Device =
   Device'
     { _dContainerPath :: !(Maybe Text)
-    , _dPermissions :: !(Maybe [DeviceCgroupPermission])
-    , _dHostPath :: !Text
+    , _dPermissions   :: !(Maybe [DeviceCgroupPermission])
+    , _dHostPath      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1636,7 +1636,7 @@ instance ToJSON Device where
 -- /See:/ 'failure' smart constructor.
 data Failure =
   Failure'
-    { _fArn :: !(Maybe Text)
+    { _fArn    :: !(Maybe Text)
     , _fReason :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1675,10 +1675,10 @@ instance NFData Failure
 data HealthCheck =
   HealthCheck'
     { _hcStartPeriod :: !(Maybe Int)
-    , _hcRetries :: !(Maybe Int)
-    , _hcInterval :: !(Maybe Int)
-    , _hcTimeout :: !(Maybe Int)
-    , _hcCommand :: ![Text]
+    , _hcRetries     :: !(Maybe Int)
+    , _hcInterval    :: !(Maybe Int)
+    , _hcTimeout     :: !(Maybe Int)
+    , _hcCommand     :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1757,7 +1757,7 @@ instance ToJSON HealthCheck where
 -- /See:/ 'hostEntry' smart constructor.
 data HostEntry =
   HostEntry'
-    { _heHostname :: !Text
+    { _heHostname  :: !Text
     , _heIpAddress :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1845,7 +1845,7 @@ instance ToJSON HostVolumeProperties where
 data KernelCapabilities =
   KernelCapabilities'
     { _kcDrop :: !(Maybe [Text])
-    , _kcAdd :: !(Maybe [Text])
+    , _kcAdd  :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1891,7 +1891,7 @@ instance ToJSON KernelCapabilities where
 data KeyValuePair =
   KeyValuePair'
     { _kvpValue :: !(Maybe Text)
-    , _kvpName :: !(Maybe Text)
+    , _kvpName  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1934,11 +1934,11 @@ instance ToJSON KeyValuePair where
 -- /See:/ 'linuxParameters' smart constructor.
 data LinuxParameters =
   LinuxParameters'
-    { _lpSharedMemorySize :: !(Maybe Int)
+    { _lpSharedMemorySize   :: !(Maybe Int)
     , _lpInitProcessEnabled :: !(Maybe Bool)
-    , _lpTmpfs :: !(Maybe [Tmpfs])
-    , _lpDevices :: !(Maybe [Device])
-    , _lpCapabilities :: !(Maybe KernelCapabilities)
+    , _lpTmpfs              :: !(Maybe [Tmpfs])
+    , _lpDevices            :: !(Maybe [Device])
+    , _lpCapabilities       :: !(Maybe KernelCapabilities)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2021,9 +2021,9 @@ instance ToJSON LinuxParameters where
 data LoadBalancer =
   LoadBalancer'
     { _lbLoadBalancerName :: !(Maybe Text)
-    , _lbContainerName :: !(Maybe Text)
-    , _lbTargetGroupARN :: !(Maybe Text)
-    , _lbContainerPort :: !(Maybe Int)
+    , _lbContainerName    :: !(Maybe Text)
+    , _lbTargetGroupARN   :: !(Maybe Text)
+    , _lbContainerPort    :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2095,7 +2095,7 @@ instance ToJSON LoadBalancer where
 -- /See:/ 'logConfiguration' smart constructor.
 data LogConfiguration =
   LogConfiguration'
-    { _lcOptions :: !(Maybe (Map Text Text))
+    { _lcOptions   :: !(Maybe (Map Text Text))
     , _lcLogDriver :: !LogDriver
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2147,8 +2147,8 @@ instance ToJSON LogConfiguration where
 data MountPoint =
   MountPoint'
     { _mpContainerPath :: !(Maybe Text)
-    , _mpSourceVolume :: !(Maybe Text)
-    , _mpReadOnly :: !(Maybe Bool)
+    , _mpSourceVolume  :: !(Maybe Text)
+    , _mpReadOnly      :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2209,9 +2209,9 @@ instance ToJSON MountPoint where
 -- /See:/ 'networkBinding' smart constructor.
 data NetworkBinding =
   NetworkBinding'
-    { _nbBindIP :: !(Maybe Text)
-    , _nbProtocol :: !(Maybe TransportProtocol)
-    , _nbHostPort :: !(Maybe Int)
+    { _nbBindIP        :: !(Maybe Text)
+    , _nbProtocol      :: !(Maybe TransportProtocol)
+    , _nbHostPort      :: !(Maybe Int)
     , _nbContainerPort :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2320,9 +2320,9 @@ instance ToJSON NetworkConfiguration where
 -- /See:/ 'networkInterface' smart constructor.
 data NetworkInterface =
   NetworkInterface'
-    { _niIpv6Address :: !(Maybe Text)
+    { _niIpv6Address        :: !(Maybe Text)
     , _niPrivateIPv4Address :: !(Maybe Text)
-    , _niAttachmentId :: !(Maybe Text)
+    , _niAttachmentId       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2377,7 +2377,7 @@ instance NFData NetworkInterface
 data PlacementConstraint =
   PlacementConstraint'
     { _pcExpression :: !(Maybe Text)
-    , _pcType :: !(Maybe PlacementConstraintType)
+    , _pcType       :: !(Maybe PlacementConstraintType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2423,7 +2423,7 @@ instance ToJSON PlacementConstraint where
 data PlacementStrategy =
   PlacementStrategy'
     { _psField :: !(Maybe Text)
-    , _psType :: !(Maybe PlacementStrategyType)
+    , _psType  :: !(Maybe PlacementStrategyType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2470,8 +2470,8 @@ instance ToJSON PlacementStrategy where
 -- /See:/ 'portMapping' smart constructor.
 data PortMapping =
   PortMapping'
-    { _pmProtocol :: !(Maybe TransportProtocol)
-    , _pmHostPort :: !(Maybe Int)
+    { _pmProtocol      :: !(Maybe TransportProtocol)
+    , _pmHostPort      :: !(Maybe Int)
     , _pmContainerPort :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -2531,11 +2531,11 @@ instance ToJSON PortMapping where
 data Resource =
   Resource'
     { _rStringSetValue :: !(Maybe [Text])
-    , _rIntegerValue :: !(Maybe Int)
-    , _rDoubleValue :: !(Maybe Double)
-    , _rLongValue :: !(Maybe Integer)
-    , _rName :: !(Maybe Text)
-    , _rType :: !(Maybe Text)
+    , _rIntegerValue   :: !(Maybe Int)
+    , _rDoubleValue    :: !(Maybe Double)
+    , _rLongValue      :: !(Maybe Integer)
+    , _rName           :: !(Maybe Text)
+    , _rType           :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2626,8 +2626,8 @@ instance ToJSON Resource where
 data ServiceEvent =
   ServiceEvent'
     { _seCreatedAt :: !(Maybe POSIX)
-    , _seId :: !(Maybe Text)
-    , _seMessage :: !(Maybe Text)
+    , _seId        :: !(Maybe Text)
+    , _seMessage   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2676,7 +2676,7 @@ instance NFData ServiceEvent
 data ServiceRegistry =
   ServiceRegistry'
     { _srRegistryARN :: !(Maybe Text)
-    , _srPort :: !(Maybe Int)
+    , _srPort        :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2721,33 +2721,33 @@ instance ToJSON ServiceRegistry where
 -- /See:/ 'task' smart constructor.
 data Task =
   Task'
-    { _tStoppedAt :: !(Maybe POSIX)
-    , _tDesiredStatus :: !(Maybe Text)
-    , _tOverrides :: !(Maybe TaskOverride)
-    , _tClusterARN :: !(Maybe Text)
-    , _tGroup :: !(Maybe Text)
-    , _tAttachments :: !(Maybe [Attachment])
-    , _tCreatedAt :: !(Maybe POSIX)
-    , _tPlatformVersion :: !(Maybe Text)
-    , _tTaskARN :: !(Maybe Text)
+    { _tStoppedAt            :: !(Maybe POSIX)
+    , _tDesiredStatus        :: !(Maybe Text)
+    , _tOverrides            :: !(Maybe TaskOverride)
+    , _tClusterARN           :: !(Maybe Text)
+    , _tGroup                :: !(Maybe Text)
+    , _tAttachments          :: !(Maybe [Attachment])
+    , _tCreatedAt            :: !(Maybe POSIX)
+    , _tPlatformVersion      :: !(Maybe Text)
+    , _tTaskARN              :: !(Maybe Text)
     , _tContainerInstanceARN :: !(Maybe Text)
-    , _tExecutionStoppedAt :: !(Maybe POSIX)
-    , _tLastStatus :: !(Maybe Text)
-    , _tMemory :: !(Maybe Text)
-    , _tPullStoppedAt :: !(Maybe POSIX)
-    , _tContainers :: !(Maybe [Container])
-    , _tStartedAt :: !(Maybe POSIX)
-    , _tVersion :: !(Maybe Integer)
-    , _tStartedBy :: !(Maybe Text)
-    , _tStoppedReason :: !(Maybe Text)
-    , _tConnectivity :: !(Maybe Connectivity)
-    , _tStoppingAt :: !(Maybe POSIX)
-    , _tLaunchType :: !(Maybe LaunchType)
-    , _tTaskDefinitionARN :: !(Maybe Text)
-    , _tHealthStatus :: !(Maybe HealthStatus)
-    , _tConnectivityAt :: !(Maybe POSIX)
-    , _tCpu :: !(Maybe Text)
-    , _tPullStartedAt :: !(Maybe POSIX)
+    , _tExecutionStoppedAt   :: !(Maybe POSIX)
+    , _tLastStatus           :: !(Maybe Text)
+    , _tMemory               :: !(Maybe Text)
+    , _tPullStoppedAt        :: !(Maybe POSIX)
+    , _tContainers           :: !(Maybe [Container])
+    , _tStartedAt            :: !(Maybe POSIX)
+    , _tVersion              :: !(Maybe Integer)
+    , _tStartedBy            :: !(Maybe Text)
+    , _tStoppedReason        :: !(Maybe Text)
+    , _tConnectivity         :: !(Maybe Connectivity)
+    , _tStoppingAt           :: !(Maybe POSIX)
+    , _tLaunchType           :: !(Maybe LaunchType)
+    , _tTaskDefinitionARN    :: !(Maybe Text)
+    , _tHealthStatus         :: !(Maybe HealthStatus)
+    , _tConnectivityAt       :: !(Maybe POSIX)
+    , _tCpu                  :: !(Maybe Text)
+    , _tPullStartedAt        :: !(Maybe POSIX)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3000,21 +3000,21 @@ instance NFData Task
 -- /See:/ 'taskDefinition' smart constructor.
 data TaskDefinition =
   TaskDefinition'
-    { _tdStatus :: !(Maybe TaskDefinitionStatus)
-    , _tdExecutionRoleARN :: !(Maybe Text)
+    { _tdStatus                  :: !(Maybe TaskDefinitionStatus)
+    , _tdExecutionRoleARN        :: !(Maybe Text)
     , _tdRequiresCompatibilities :: !(Maybe [Compatibility])
-    , _tdFamily :: !(Maybe Text)
-    , _tdContainerDefinitions :: !(Maybe [ContainerDefinition])
-    , _tdMemory :: !(Maybe Text)
-    , _tdTaskRoleARN :: !(Maybe Text)
-    , _tdPlacementConstraints :: !(Maybe [TaskDefinitionPlacementConstraint])
-    , _tdNetworkMode :: !(Maybe NetworkMode)
-    , _tdTaskDefinitionARN :: !(Maybe Text)
-    , _tdCompatibilities :: !(Maybe [Compatibility])
-    , _tdRevision :: !(Maybe Int)
-    , _tdVolumes :: !(Maybe [Volume])
-    , _tdCpu :: !(Maybe Text)
-    , _tdRequiresAttributes :: !(Maybe [Attribute])
+    , _tdFamily                  :: !(Maybe Text)
+    , _tdContainerDefinitions    :: !(Maybe [ContainerDefinition])
+    , _tdMemory                  :: !(Maybe Text)
+    , _tdTaskRoleARN             :: !(Maybe Text)
+    , _tdPlacementConstraints    :: !(Maybe [TaskDefinitionPlacementConstraint])
+    , _tdNetworkMode             :: !(Maybe NetworkMode)
+    , _tdTaskDefinitionARN       :: !(Maybe Text)
+    , _tdCompatibilities         :: !(Maybe [Compatibility])
+    , _tdRevision                :: !(Maybe Int)
+    , _tdVolumes                 :: !(Maybe [Volume])
+    , _tdCpu                     :: !(Maybe Text)
+    , _tdRequiresAttributes      :: !(Maybe [Attribute])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3180,7 +3180,7 @@ instance NFData TaskDefinition
 data TaskDefinitionPlacementConstraint =
   TaskDefinitionPlacementConstraint'
     { _tdpcExpression :: !(Maybe Text)
-    , _tdpcType :: !(Maybe TaskDefinitionPlacementConstraintType)
+    , _tdpcType       :: !(Maybe TaskDefinitionPlacementConstraintType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3231,8 +3231,8 @@ instance ToJSON TaskDefinitionPlacementConstraint where
 data TaskOverride =
   TaskOverride'
     { _toContainerOverrides :: !(Maybe [ContainerOverride])
-    , _toExecutionRoleARN :: !(Maybe Text)
-    , _toTaskRoleARN :: !(Maybe Text)
+    , _toExecutionRoleARN   :: !(Maybe Text)
+    , _toTaskRoleARN        :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3297,9 +3297,9 @@ instance ToJSON TaskOverride where
 -- /See:/ 'tmpfs' smart constructor.
 data Tmpfs =
   Tmpfs'
-    { _tMountOptions :: !(Maybe [Text])
+    { _tMountOptions  :: !(Maybe [Text])
     , _tContainerPath :: !Text
-    , _tSize :: !Int
+    , _tSize          :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3364,7 +3364,7 @@ instance ToJSON Tmpfs where
 -- /See:/ 'ulimit' smart constructor.
 data Ulimit =
   Ulimit'
-    { _uName :: !UlimitName
+    { _uName      :: !UlimitName
     , _uSoftLimit :: !Int
     , _uHardLimit :: !Int
     }
@@ -3427,8 +3427,8 @@ instance ToJSON Ulimit where
 -- /See:/ 'versionInfo' smart constructor.
 data VersionInfo =
   VersionInfo'
-    { _viAgentHash :: !(Maybe Text)
-    , _viAgentVersion :: !(Maybe Text)
+    { _viAgentHash     :: !(Maybe Text)
+    , _viAgentVersion  :: !(Maybe Text)
     , _viDockerVersion :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3533,7 +3533,7 @@ instance ToJSON Volume where
 data VolumeFrom =
   VolumeFrom'
     { _vfSourceContainer :: !(Maybe Text)
-    , _vfReadOnly :: !(Maybe Bool)
+    , _vfReadOnly        :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -26,7 +26,7 @@ import Network.AWS.Support.Types.Sum
 -- /See:/ 'attachment' smart constructor.
 data Attachment =
   Attachment'
-    { _aData :: !(Maybe Base64)
+    { _aData     :: !(Maybe Base64)
     , _aFileName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -71,7 +71,7 @@ instance ToJSON Attachment where
 data AttachmentDetails =
   AttachmentDetails'
     { _adAttachmentId :: !(Maybe Text)
-    , _adFileName :: !(Maybe Text)
+    , _adFileName     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -138,18 +138,18 @@ instance NFData AttachmentDetails
 -- /See:/ 'caseDetails' smart constructor.
 data CaseDetails =
   CaseDetails'
-    { _cdSubject :: !(Maybe Text)
-    , _cdStatus :: !(Maybe Text)
+    { _cdSubject              :: !(Maybe Text)
+    , _cdStatus               :: !(Maybe Text)
     , _cdRecentCommunications :: !(Maybe RecentCaseCommunications)
-    , _cdSeverityCode :: !(Maybe Text)
-    , _cdCaseId :: !(Maybe Text)
-    , _cdCcEmailAddresses :: !(Maybe [Text])
-    , _cdDisplayId :: !(Maybe Text)
-    , _cdSubmittedBy :: !(Maybe Text)
-    , _cdLanguage :: !(Maybe Text)
-    , _cdTimeCreated :: !(Maybe Text)
-    , _cdCategoryCode :: !(Maybe Text)
-    , _cdServiceCode :: !(Maybe Text)
+    , _cdSeverityCode         :: !(Maybe Text)
+    , _cdCaseId               :: !(Maybe Text)
+    , _cdCcEmailAddresses     :: !(Maybe [Text])
+    , _cdDisplayId            :: !(Maybe Text)
+    , _cdSubmittedBy          :: !(Maybe Text)
+    , _cdLanguage             :: !(Maybe Text)
+    , _cdTimeCreated          :: !(Maybe Text)
+    , _cdCategoryCode         :: !(Maybe Text)
+    , _cdServiceCode          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -316,10 +316,10 @@ instance NFData Category
 -- /See:/ 'communication' smart constructor.
 data Communication =
   Communication'
-    { _cBody :: !(Maybe Text)
-    , _cCaseId :: !(Maybe Text)
-    , _cSubmittedBy :: !(Maybe Text)
-    , _cTimeCreated :: !(Maybe Text)
+    { _cBody          :: !(Maybe Text)
+    , _cCaseId        :: !(Maybe Text)
+    , _cSubmittedBy   :: !(Maybe Text)
+    , _cTimeCreated   :: !(Maybe Text)
     , _cAttachmentSet :: !(Maybe [AttachmentDetails])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -389,7 +389,7 @@ instance NFData Communication
 -- /See:/ 'recentCaseCommunications' smart constructor.
 data RecentCaseCommunications =
   RecentCaseCommunications'
-    { _rccNextToken :: !(Maybe Text)
+    { _rccNextToken      :: !(Maybe Text)
     , _rccCommunications :: !(Maybe [Communication])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -476,8 +476,8 @@ instance NFData SeverityLevel
 data SupportService =
   SupportService'
     { _ssCategories :: !(Maybe [Category])
-    , _ssName :: !(Maybe Text)
-    , _ssCode :: !(Maybe Text)
+    , _ssName       :: !(Maybe Text)
+    , _ssCode       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -563,11 +563,11 @@ instance NFData TrustedAdvisorCategorySpecificSummary
 -- /See:/ 'trustedAdvisorCheckDescription' smart constructor.
 data TrustedAdvisorCheckDescription =
   TrustedAdvisorCheckDescription'
-    { _tacdId :: !Text
-    , _tacdName :: !Text
+    { _tacdId          :: !Text
+    , _tacdName        :: !Text
     , _tacdDescription :: !Text
-    , _tacdCategory :: !Text
-    , _tacdMetadata :: ![Text]
+    , _tacdCategory    :: !Text
+    , _tacdMetadata    :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -640,8 +640,8 @@ instance NFData TrustedAdvisorCheckDescription
 -- /See:/ 'trustedAdvisorCheckRefreshStatus' smart constructor.
 data TrustedAdvisorCheckRefreshStatus =
   TrustedAdvisorCheckRefreshStatus'
-    { _tacrsCheckId :: !Text
-    , _tacrsStatus :: !Text
+    { _tacrsCheckId                    :: !Text
+    , _tacrsStatus                     :: !Text
     , _tacrsMillisUntilNextRefreshable :: !Integer
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -703,12 +703,12 @@ instance NFData TrustedAdvisorCheckRefreshStatus
 -- /See:/ 'trustedAdvisorCheckResult' smart constructor.
 data TrustedAdvisorCheckResult =
   TrustedAdvisorCheckResult'
-    { _tacrCheckId :: !Text
-    , _tacrTimestamp :: !Text
-    , _tacrStatus :: !Text
-    , _tacrResourcesSummary :: !TrustedAdvisorResourcesSummary
+    { _tacrCheckId                 :: !Text
+    , _tacrTimestamp               :: !Text
+    , _tacrStatus                  :: !Text
+    , _tacrResourcesSummary        :: !TrustedAdvisorResourcesSummary
     , _tacrCategorySpecificSummary :: !TrustedAdvisorCategorySpecificSummary
-    , _tacrFlaggedResources :: ![TrustedAdvisorResourceDetail]
+    , _tacrFlaggedResources        :: ![TrustedAdvisorResourceDetail]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -798,11 +798,11 @@ instance NFData TrustedAdvisorCheckResult
 -- /See:/ 'trustedAdvisorCheckSummary' smart constructor.
 data TrustedAdvisorCheckSummary =
   TrustedAdvisorCheckSummary'
-    { _tacsHasFlaggedResources :: !(Maybe Bool)
-    , _tacsCheckId :: !Text
-    , _tacsTimestamp :: !Text
-    , _tacsStatus :: !Text
-    , _tacsResourcesSummary :: !TrustedAdvisorResourcesSummary
+    { _tacsHasFlaggedResources     :: !(Maybe Bool)
+    , _tacsCheckId                 :: !Text
+    , _tacsTimestamp               :: !Text
+    , _tacsStatus                  :: !Text
+    , _tacsResourcesSummary        :: !TrustedAdvisorResourcesSummary
     , _tacsCategorySpecificSummary :: !TrustedAdvisorCategorySpecificSummary
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -893,7 +893,7 @@ instance NFData TrustedAdvisorCheckSummary
 -- /See:/ 'trustedAdvisorCostOptimizingSummary' smart constructor.
 data TrustedAdvisorCostOptimizingSummary =
   TrustedAdvisorCostOptimizingSummary'
-    { _tacosEstimatedMonthlySavings :: !Double
+    { _tacosEstimatedMonthlySavings        :: !Double
     , _tacosEstimatedPercentMonthlySavings :: !Double
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -951,10 +951,10 @@ instance NFData TrustedAdvisorCostOptimizingSummary
 data TrustedAdvisorResourceDetail =
   TrustedAdvisorResourceDetail'
     { _tardIsSuppressed :: !(Maybe Bool)
-    , _tardRegion :: !(Maybe Text)
-    , _tardStatus :: !Text
-    , _tardResourceId :: !Text
-    , _tardMetadata :: ![Text]
+    , _tardRegion       :: !(Maybe Text)
+    , _tardStatus       :: !Text
+    , _tardResourceId   :: !Text
+    , _tardMetadata     :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1026,9 +1026,9 @@ instance NFData TrustedAdvisorResourceDetail
 -- /See:/ 'trustedAdvisorResourcesSummary' smart constructor.
 data TrustedAdvisorResourcesSummary =
   TrustedAdvisorResourcesSummary'
-    { _tarsResourcesProcessed :: !Integer
-    , _tarsResourcesFlagged :: !Integer
-    , _tarsResourcesIgnored :: !Integer
+    { _tarsResourcesProcessed  :: !Integer
+    , _tarsResourcesFlagged    :: !Integer
+    , _tarsResourcesIgnored    :: !Integer
     , _tarsResourcesSuppressed :: !Integer
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

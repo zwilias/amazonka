@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.Response
 data RevokeDBSecurityGroupIngress =
   RevokeDBSecurityGroupIngress'
     { _rdsgiEC2SecurityGroupOwnerId :: !(Maybe Text)
-    , _rdsgiEC2SecurityGroupName :: !(Maybe Text)
-    , _rdsgiCIdRIP :: !(Maybe Text)
-    , _rdsgiEC2SecurityGroupId :: !(Maybe Text)
-    , _rdsgiDBSecurityGroupName :: !Text
+    , _rdsgiEC2SecurityGroupName    :: !(Maybe Text)
+    , _rdsgiCIdRIP                  :: !(Maybe Text)
+    , _rdsgiEC2SecurityGroupId      :: !(Maybe Text)
+    , _rdsgiDBSecurityGroupName     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -146,7 +146,7 @@ instance ToQuery RevokeDBSecurityGroupIngress where
 data RevokeDBSecurityGroupIngressResponse =
   RevokeDBSecurityGroupIngressResponse'
     { _rdsgirsDBSecurityGroup :: !(Maybe DBSecurityGroup)
-    , _rdsgirsResponseStatus :: !Int
+    , _rdsgirsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

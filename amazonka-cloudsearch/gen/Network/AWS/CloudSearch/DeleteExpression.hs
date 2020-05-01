@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- /See:/ 'deleteExpression' smart constructor.
 data DeleteExpression =
   DeleteExpression'
-    { _delDomainName :: !Text
+    { _delDomainName     :: !Text
     , _delExpressionName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -113,7 +113,7 @@ instance ToQuery DeleteExpression where
 data DeleteExpressionResponse =
   DeleteExpressionResponse'
     { _delrsResponseStatus :: !Int
-    , _delrsExpression :: !ExpressionStatus
+    , _delrsExpression     :: !ExpressionStatus
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,7 +50,7 @@ import Network.AWS.Response
 data RemoveTargets =
   RemoveTargets'
     { _rtRule :: !Text
-    , _rtIds :: !(List1 Text)
+    , _rtIds  :: !(List1 Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -112,8 +112,8 @@ instance ToQuery RemoveTargets where
 data RemoveTargetsResponse =
   RemoveTargetsResponse'
     { _rtrsFailedEntryCount :: !(Maybe Int)
-    , _rtrsFailedEntries :: !(Maybe [RemoveTargetsResultEntry])
-    , _rtrsResponseStatus :: !Int
+    , _rtrsFailedEntries    :: !(Maybe [RemoveTargetsResultEntry])
+    , _rtrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

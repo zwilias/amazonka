@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 -- | /See:/ 'updateOrganizationalUnit' smart constructor.
 data UpdateOrganizationalUnit =
   UpdateOrganizationalUnit'
-    { _uouName :: !(Maybe Text)
+    { _uouName                 :: !(Maybe Text)
     , _uouOrganizationalUnitId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -114,7 +114,7 @@ instance ToQuery UpdateOrganizationalUnit where
 data UpdateOrganizationalUnitResponse =
   UpdateOrganizationalUnitResponse'
     { _uoursOrganizationalUnit :: !(Maybe OrganizationalUnit)
-    , _uoursResponseStatus :: !Int
+    , _uoursResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

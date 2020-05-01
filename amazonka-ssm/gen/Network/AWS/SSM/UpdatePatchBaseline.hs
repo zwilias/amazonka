@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -65,17 +65,17 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'updatePatchBaseline' smart constructor.
 data UpdatePatchBaseline =
   UpdatePatchBaseline'
-    { _upbReplace :: !(Maybe Bool)
-    , _upbApprovalRules :: !(Maybe PatchRuleGroup)
-    , _upbGlobalFilters :: !(Maybe PatchFilterGroup)
-    , _upbApprovedPatchesComplianceLevel :: !(Maybe PatchComplianceLevel)
-    , _upbApprovedPatches :: !(Maybe [Text])
+    { _upbReplace                          :: !(Maybe Bool)
+    , _upbApprovalRules                    :: !(Maybe PatchRuleGroup)
+    , _upbGlobalFilters                    :: !(Maybe PatchFilterGroup)
+    , _upbApprovedPatchesComplianceLevel   :: !(Maybe PatchComplianceLevel)
+    , _upbApprovedPatches                  :: !(Maybe [Text])
     , _upbApprovedPatchesEnableNonSecurity :: !(Maybe Bool)
-    , _upbRejectedPatches :: !(Maybe [Text])
-    , _upbSources :: !(Maybe [PatchSource])
-    , _upbName :: !(Maybe Text)
-    , _upbDescription :: !(Maybe Text)
-    , _upbBaselineId :: !Text
+    , _upbRejectedPatches                  :: !(Maybe [Text])
+    , _upbSources                          :: !(Maybe [PatchSource])
+    , _upbName                             :: !(Maybe Text)
+    , _upbDescription                      :: !(Maybe Text)
+    , _upbBaselineId                       :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -238,20 +238,20 @@ instance ToQuery UpdatePatchBaseline where
 -- | /See:/ 'updatePatchBaselineResponse' smart constructor.
 data UpdatePatchBaselineResponse =
   UpdatePatchBaselineResponse'
-    { _upbrsApprovalRules :: !(Maybe PatchRuleGroup)
-    , _upbrsOperatingSystem :: !(Maybe OperatingSystem)
-    , _upbrsGlobalFilters :: !(Maybe PatchFilterGroup)
-    , _upbrsApprovedPatchesComplianceLevel :: !(Maybe PatchComplianceLevel)
-    , _upbrsApprovedPatches :: !(Maybe [Text])
+    { _upbrsApprovalRules                    :: !(Maybe PatchRuleGroup)
+    , _upbrsOperatingSystem                  :: !(Maybe OperatingSystem)
+    , _upbrsGlobalFilters                    :: !(Maybe PatchFilterGroup)
+    , _upbrsApprovedPatchesComplianceLevel   :: !(Maybe PatchComplianceLevel)
+    , _upbrsApprovedPatches                  :: !(Maybe [Text])
     , _upbrsApprovedPatchesEnableNonSecurity :: !(Maybe Bool)
-    , _upbrsRejectedPatches :: !(Maybe [Text])
-    , _upbrsSources :: !(Maybe [PatchSource])
-    , _upbrsCreatedDate :: !(Maybe POSIX)
-    , _upbrsName :: !(Maybe Text)
-    , _upbrsModifiedDate :: !(Maybe POSIX)
-    , _upbrsDescription :: !(Maybe Text)
-    , _upbrsBaselineId :: !(Maybe Text)
-    , _upbrsResponseStatus :: !Int
+    , _upbrsRejectedPatches                  :: !(Maybe [Text])
+    , _upbrsSources                          :: !(Maybe [PatchSource])
+    , _upbrsCreatedDate                      :: !(Maybe POSIX)
+    , _upbrsName                             :: !(Maybe Text)
+    , _upbrsModifiedDate                     :: !(Maybe POSIX)
+    , _upbrsDescription                      :: !(Maybe Text)
+    , _upbrsBaselineId                       :: !(Maybe Text)
+    , _upbrsResponseStatus                   :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

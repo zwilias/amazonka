@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,9 +52,9 @@ import Network.AWS.Response
 -- /See:/ 'cancelSpotFleetRequests' smart constructor.
 data CancelSpotFleetRequests =
   CancelSpotFleetRequests'
-    { _csfrDryRun :: !(Maybe Bool)
+    { _csfrDryRun              :: !(Maybe Bool)
     , _csfrSpotFleetRequestIds :: ![Text]
-    , _csfrTerminateInstances :: !Bool
+    , _csfrTerminateInstances  :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

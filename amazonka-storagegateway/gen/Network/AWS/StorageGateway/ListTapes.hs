@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -60,8 +60,8 @@ import Network.AWS.StorageGateway.Types.Product
 -- /See:/ 'listTapes' smart constructor.
 data ListTapes =
   ListTapes'
-    { _ltMarker :: !(Maybe Text)
-    , _ltLimit :: !(Maybe Nat)
+    { _ltMarker   :: !(Maybe Text)
+    , _ltLimit    :: !(Maybe Nat)
     , _ltTapeARNs :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -141,8 +141,8 @@ instance ToQuery ListTapes where
 -- /See:/ 'listTapesResponse' smart constructor.
 data ListTapesResponse =
   ListTapesResponse'
-    { _ltrsMarker :: !(Maybe Text)
-    , _ltrsTapeInfos :: !(Maybe [TapeInfo])
+    { _ltrsMarker         :: !(Maybe Text)
+    , _ltrsTapeInfos      :: !(Maybe [TapeInfo])
     , _ltrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

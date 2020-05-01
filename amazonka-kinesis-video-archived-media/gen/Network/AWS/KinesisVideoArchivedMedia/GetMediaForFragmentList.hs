@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,7 +54,7 @@ import Network.AWS.Response
 data GetMediaForFragmentList =
   GetMediaForFragmentList'
     { _gmfflStreamName :: !Text
-    , _gmfflFragments :: ![Text]
+    , _gmfflFragments  :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -115,9 +115,9 @@ instance ToQuery GetMediaForFragmentList where
 -- | /See:/ 'getMediaForFragmentListResponse' smart constructor.
 data GetMediaForFragmentListResponse =
   GetMediaForFragmentListResponse'
-    { _gmfflrsContentType :: !(Maybe Text)
+    { _gmfflrsContentType    :: !(Maybe Text)
     , _gmfflrsResponseStatus :: !Int
-    , _gmfflrsPayload :: !RsBody
+    , _gmfflrsPayload        :: !RsBody
     }
   deriving (Show, Generic)
 

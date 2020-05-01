@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,11 +52,11 @@ import Network.AWS.Response
 -- | /See:/ 'createComputeEnvironment' smart constructor.
 data CreateComputeEnvironment =
   CreateComputeEnvironment'
-    { _cceState :: !(Maybe CEState)
-    , _cceComputeResources :: !(Maybe ComputeResource)
+    { _cceState                  :: !(Maybe CEState)
+    , _cceComputeResources       :: !(Maybe ComputeResource)
     , _cceComputeEnvironmentName :: !Text
-    , _cceType :: !CEType
-    , _cceServiceRole :: !Text
+    , _cceType                   :: !CEType
+    , _cceServiceRole            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -149,8 +149,8 @@ instance ToQuery CreateComputeEnvironment where
 data CreateComputeEnvironmentResponse =
   CreateComputeEnvironmentResponse'
     { _ccersComputeEnvironmentName :: !(Maybe Text)
-    , _ccersComputeEnvironmentARN :: !(Maybe Text)
-    , _ccersResponseStatus :: !Int
+    , _ccersComputeEnvironmentARN  :: !(Maybe Text)
+    , _ccersResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

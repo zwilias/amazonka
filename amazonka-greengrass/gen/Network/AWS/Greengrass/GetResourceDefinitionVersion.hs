@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,7 +47,7 @@ import Network.AWS.Response
 data GetResourceDefinitionVersion =
   GetResourceDefinitionVersion'
     { _grdvResourceDefinitionVersionId :: !Text
-    , _grdvResourceDefinitionId :: !Text
+    , _grdvResourceDefinitionId        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -117,12 +117,12 @@ instance ToQuery GetResourceDefinitionVersion where
 -- | /See:/ 'getResourceDefinitionVersionResponse' smart constructor.
 data GetResourceDefinitionVersionResponse =
   GetResourceDefinitionVersionResponse'
-    { _grdvrsDefinition :: !(Maybe ResourceDefinitionVersion)
-    , _grdvrsARN :: !(Maybe Text)
+    { _grdvrsDefinition        :: !(Maybe ResourceDefinitionVersion)
+    , _grdvrsARN               :: !(Maybe Text)
     , _grdvrsCreationTimestamp :: !(Maybe Text)
-    , _grdvrsVersion :: !(Maybe Text)
-    , _grdvrsId :: !(Maybe Text)
-    , _grdvrsResponseStatus :: !Int
+    , _grdvrsVersion           :: !(Maybe Text)
+    , _grdvrsId                :: !(Maybe Text)
+    , _grdvrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,10 +51,10 @@ import Network.AWS.Response
 -- /See:/ 'continueUpdateRollback' smart constructor.
 data ContinueUpdateRollback =
   ContinueUpdateRollback'
-    { _curResourcesToSkip :: !(Maybe [Text])
+    { _curResourcesToSkip    :: !(Maybe [Text])
     , _curClientRequestToken :: !(Maybe Text)
-    , _curRoleARN :: !(Maybe Text)
-    , _curStackName :: !Text
+    , _curRoleARN            :: !(Maybe Text)
+    , _curStackName          :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

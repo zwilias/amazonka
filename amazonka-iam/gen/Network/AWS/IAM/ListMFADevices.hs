@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,7 +53,7 @@ import Network.AWS.Response
 data ListMFADevices =
   ListMFADevices'
     { _lmdUserName :: !(Maybe Text)
-    , _lmdMarker :: !(Maybe Text)
+    , _lmdMarker   :: !(Maybe Text)
     , _lmdMaxItems :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -128,10 +128,10 @@ instance ToQuery ListMFADevices where
 -- /See:/ 'listMFADevicesResponse' smart constructor.
 data ListMFADevicesResponse =
   ListMFADevicesResponse'
-    { _lmdrsMarker :: !(Maybe Text)
-    , _lmdrsIsTruncated :: !(Maybe Bool)
+    { _lmdrsMarker         :: !(Maybe Text)
+    , _lmdrsIsTruncated    :: !(Maybe Bool)
     , _lmdrsResponseStatus :: !Int
-    , _lmdrsMFADevices :: ![MFADevice]
+    , _lmdrsMFADevices     :: ![MFADevice]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

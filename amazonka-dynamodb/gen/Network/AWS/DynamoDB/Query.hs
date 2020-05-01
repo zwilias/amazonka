@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -82,23 +82,23 @@ import Network.AWS.Response
 -- /See:/ 'query' smart constructor.
 data Query =
   Query'
-    { _qKeyConditions :: !(Maybe (Map Text Condition))
-    , _qProjectionExpression :: !(Maybe Text)
-    , _qAttributesToGet :: !(Maybe (List1 Text))
-    , _qExpressionAttributeNames :: !(Maybe (Map Text Text))
-    , _qFilterExpression :: !(Maybe Text)
-    , _qQueryFilter :: !(Maybe (Map Text Condition))
-    , _qConsistentRead :: !(Maybe Bool)
+    { _qKeyConditions             :: !(Maybe (Map Text Condition))
+    , _qProjectionExpression      :: !(Maybe Text)
+    , _qAttributesToGet           :: !(Maybe (List1 Text))
+    , _qExpressionAttributeNames  :: !(Maybe (Map Text Text))
+    , _qFilterExpression          :: !(Maybe Text)
+    , _qQueryFilter               :: !(Maybe (Map Text Condition))
+    , _qConsistentRead            :: !(Maybe Bool)
     , _qExpressionAttributeValues :: !(Maybe (Map Text AttributeValue))
-    , _qReturnConsumedCapacity :: !(Maybe ReturnConsumedCapacity)
-    , _qScanIndexForward :: !(Maybe Bool)
-    , _qLimit :: !(Maybe Nat)
-    , _qSelect :: !(Maybe Select)
-    , _qKeyConditionExpression :: !(Maybe Text)
-    , _qConditionalOperator :: !(Maybe ConditionalOperator)
-    , _qExclusiveStartKey :: !(Maybe (Map Text AttributeValue))
-    , _qIndexName :: !(Maybe Text)
-    , _qTableName :: !Text
+    , _qReturnConsumedCapacity    :: !(Maybe ReturnConsumedCapacity)
+    , _qScanIndexForward          :: !(Maybe Bool)
+    , _qLimit                     :: !(Maybe Nat)
+    , _qSelect                    :: !(Maybe Select)
+    , _qKeyConditionExpression    :: !(Maybe Text)
+    , _qConditionalOperator       :: !(Maybe ConditionalOperator)
+    , _qExclusiveStartKey         :: !(Maybe (Map Text AttributeValue))
+    , _qIndexName                 :: !(Maybe Text)
+    , _qTableName                 :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -311,11 +311,11 @@ instance ToQuery Query where
 data QueryResponse =
   QueryResponse'
     { _qrsLastEvaluatedKey :: !(Maybe (Map Text AttributeValue))
-    , _qrsCount :: !(Maybe Int)
-    , _qrsScannedCount :: !(Maybe Int)
-    , _qrsItems :: !(Maybe [Map Text AttributeValue])
+    , _qrsCount            :: !(Maybe Int)
+    , _qrsScannedCount     :: !(Maybe Int)
+    , _qrsItems            :: !(Maybe [Map Text AttributeValue])
     , _qrsConsumedCapacity :: !(Maybe ConsumedCapacity)
-    , _qrsResponseStatus :: !Int
+    , _qrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

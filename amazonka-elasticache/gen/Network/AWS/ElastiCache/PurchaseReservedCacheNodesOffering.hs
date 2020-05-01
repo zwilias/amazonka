@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- /See:/ 'purchaseReservedCacheNodesOffering' smart constructor.
 data PurchaseReservedCacheNodesOffering =
   PurchaseReservedCacheNodesOffering'
-    { _prcnoCacheNodeCount :: !(Maybe Int)
-    , _prcnoReservedCacheNodeId :: !(Maybe Text)
+    { _prcnoCacheNodeCount               :: !(Maybe Int)
+    , _prcnoReservedCacheNodeId          :: !(Maybe Text)
     , _prcnoReservedCacheNodesOfferingId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -128,7 +128,7 @@ instance ToQuery PurchaseReservedCacheNodesOffering where
 data PurchaseReservedCacheNodesOfferingResponse =
   PurchaseReservedCacheNodesOfferingResponse'
     { _prcnorsReservedCacheNode :: !(Maybe ReservedCacheNode)
-    , _prcnorsResponseStatus :: !Int
+    , _prcnorsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

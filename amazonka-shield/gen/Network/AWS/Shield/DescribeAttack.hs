@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -94,7 +94,7 @@ instance ToQuery DescribeAttack where
 -- | /See:/ 'describeAttackResponse' smart constructor.
 data DescribeAttackResponse =
   DescribeAttackResponse'
-    { _darsAttack :: !(Maybe AttackDetail)
+    { _darsAttack         :: !(Maybe AttackDetail)
     , _darsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

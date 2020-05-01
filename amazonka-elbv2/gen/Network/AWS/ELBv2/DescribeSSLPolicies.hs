@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,8 +48,8 @@ import Network.AWS.Response
 -- | /See:/ 'describeSSLPolicies' smart constructor.
 data DescribeSSLPolicies =
   DescribeSSLPolicies'
-    { _dspNames :: !(Maybe [Text])
-    , _dspMarker :: !(Maybe Text)
+    { _dspNames    :: !(Maybe [Text])
+    , _dspMarker   :: !(Maybe Text)
     , _dspPageSize :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -115,8 +115,8 @@ instance ToQuery DescribeSSLPolicies where
 -- | /See:/ 'describeSSLPoliciesResponse' smart constructor.
 data DescribeSSLPoliciesResponse =
   DescribeSSLPoliciesResponse'
-    { _dsprsSSLPolicies :: !(Maybe [SSLPolicy])
-    , _dsprsNextMarker :: !(Maybe Text)
+    { _dsprsSSLPolicies    :: !(Maybe [SSLPolicy])
+    , _dsprsNextMarker     :: !(Maybe Text)
     , _dsprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

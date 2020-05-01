@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -61,11 +61,11 @@ import Network.AWS.Response
 -- /See:/ 'describeClusterSecurityGroups' smart constructor.
 data DescribeClusterSecurityGroups =
   DescribeClusterSecurityGroups'
-    { _dcsgTagValues :: !(Maybe [Text])
-    , _dcsgTagKeys :: !(Maybe [Text])
+    { _dcsgTagValues                :: !(Maybe [Text])
+    , _dcsgTagKeys                  :: !(Maybe [Text])
     , _dcsgClusterSecurityGroupName :: !(Maybe Text)
-    , _dcsgMarker :: !(Maybe Text)
-    , _dcsgMaxRecords :: !(Maybe Int)
+    , _dcsgMarker                   :: !(Maybe Text)
+    , _dcsgMaxRecords               :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -166,8 +166,8 @@ instance ToQuery DescribeClusterSecurityGroups where
 data DescribeClusterSecurityGroupsResponse =
   DescribeClusterSecurityGroupsResponse'
     { _dcsgsrsClusterSecurityGroups :: !(Maybe [ClusterSecurityGroup])
-    , _dcsgsrsMarker :: !(Maybe Text)
-    , _dcsgsrsResponseStatus :: !Int
+    , _dcsgsrsMarker                :: !(Maybe Text)
+    , _dcsgsrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

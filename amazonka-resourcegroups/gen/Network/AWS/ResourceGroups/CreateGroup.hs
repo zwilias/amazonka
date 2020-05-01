@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,9 +48,9 @@ import Network.AWS.Response
 -- | /See:/ 'createGroup' smart constructor.
 data CreateGroup =
   CreateGroup'
-    { _cgDescription :: !(Maybe Text)
-    , _cgTags :: !(Maybe (Map Text Text))
-    , _cgName :: !Text
+    { _cgDescription   :: !(Maybe Text)
+    , _cgTags          :: !(Maybe (Map Text Text))
+    , _cgName          :: !Text
     , _cgResourceQuery :: !ResourceQuery
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -130,9 +130,9 @@ instance ToQuery CreateGroup where
 -- | /See:/ 'createGroupResponse' smart constructor.
 data CreateGroupResponse =
   CreateGroupResponse'
-    { _cgrsGroup :: !(Maybe Group)
-    , _cgrsResourceQuery :: !(Maybe ResourceQuery)
-    , _cgrsTags :: !(Maybe (Map Text Text))
+    { _cgrsGroup          :: !(Maybe Group)
+    , _cgrsResourceQuery  :: !(Maybe ResourceQuery)
+    , _cgrsTags           :: !(Maybe (Map Text Text))
     , _cgrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

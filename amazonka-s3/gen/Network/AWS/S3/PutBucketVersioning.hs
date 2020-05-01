@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -41,9 +41,9 @@ import Network.AWS.S3.Types.Product
 -- | /See:/ 'putBucketVersioning' smart constructor.
 data PutBucketVersioning =
   PutBucketVersioning'
-    { _pbvMFA :: !(Maybe Text)
-    , _pbvContentMD5 :: !(Maybe Text)
-    , _pbvBucket :: !BucketName
+    { _pbvMFA                     :: !(Maybe Text)
+    , _pbvContentMD5              :: !(Maybe Text)
+    , _pbvBucket                  :: !BucketName
     , _pbvVersioningConfiguration :: !VersioningConfiguration
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

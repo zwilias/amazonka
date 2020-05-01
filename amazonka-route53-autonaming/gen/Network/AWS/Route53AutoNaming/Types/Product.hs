@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -27,8 +27,8 @@ import Network.AWS.Route53AutoNaming.Types.Sum
 data DNSConfig =
   DNSConfig'
     { _dcRoutingPolicy :: !(Maybe RoutingPolicy)
-    , _dcNamespaceId :: !Text
-    , _dcDNSRecords :: ![DNSRecord]
+    , _dcNamespaceId   :: !Text
+    , _dcDNSRecords    :: ![DNSRecord]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -154,7 +154,7 @@ instance NFData DNSProperties
 data DNSRecord =
   DNSRecord'
     { _drType :: !RecordType
-    , _drTTL :: !Nat
+    , _drTTL  :: !Nat
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -227,8 +227,8 @@ instance ToJSON DNSRecord where
 data HealthCheckConfig =
   HealthCheckConfig'
     { _hccFailureThreshold :: !(Maybe Nat)
-    , _hccResourcePath :: !(Maybe Text)
-    , _hccType :: !(Maybe HealthCheckType)
+    , _hccResourcePath     :: !(Maybe Text)
+    , _hccType             :: !(Maybe HealthCheckType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -329,8 +329,8 @@ instance ToJSON HealthCheckCustomConfig where
 data Instance =
   Instance'
     { _iCreatorRequestId :: !(Maybe Text)
-    , _iAttributes :: !(Maybe (Map Text Text))
-    , _iId :: !Text
+    , _iAttributes       :: !(Maybe (Map Text Text))
+    , _iId               :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -382,7 +382,7 @@ instance NFData Instance
 data InstanceSummary =
   InstanceSummary'
     { _isAttributes :: !(Maybe (Map Text Text))
-    , _isId :: !(Maybe Text)
+    , _isId         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -423,15 +423,15 @@ instance NFData InstanceSummary
 -- /See:/ 'namespace' smart constructor.
 data Namespace =
   Namespace'
-    { _nARN :: !(Maybe Text)
+    { _nARN              :: !(Maybe Text)
     , _nCreatorRequestId :: !(Maybe Text)
-    , _nCreateDate :: !(Maybe POSIX)
-    , _nServiceCount :: !(Maybe Int)
-    , _nName :: !(Maybe Text)
-    , _nId :: !(Maybe Text)
-    , _nType :: !(Maybe NamespaceType)
-    , _nDescription :: !(Maybe Text)
-    , _nProperties :: !(Maybe NamespaceProperties)
+    , _nCreateDate       :: !(Maybe POSIX)
+    , _nServiceCount     :: !(Maybe Int)
+    , _nName             :: !(Maybe Text)
+    , _nId               :: !(Maybe Text)
+    , _nType             :: !(Maybe NamespaceType)
+    , _nDescription      :: !(Maybe Text)
+    , _nProperties       :: !(Maybe NamespaceProperties)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -532,8 +532,8 @@ instance NFData Namespace
 data NamespaceFilter =
   NamespaceFilter'
     { _nfCondition :: !(Maybe FilterCondition)
-    , _nfName :: !NamespaceFilterName
-    , _nfValues :: ![Text]
+    , _nfName      :: !NamespaceFilterName
+    , _nfValues    :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -618,9 +618,9 @@ instance NFData NamespaceProperties
 -- /See:/ 'namespaceSummary' smart constructor.
 data NamespaceSummary =
   NamespaceSummary'
-    { _nsARN :: !(Maybe Text)
+    { _nsARN  :: !(Maybe Text)
     , _nsName :: !(Maybe Text)
-    , _nsId :: !(Maybe Text)
+    , _nsId   :: !(Maybe Text)
     , _nsType :: !(Maybe NamespaceType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -676,13 +676,13 @@ instance NFData NamespaceSummary
 -- /See:/ 'operation' smart constructor.
 data Operation =
   Operation'
-    { _oStatus :: !(Maybe OperationStatus)
-    , _oUpdateDate :: !(Maybe POSIX)
-    , _oCreateDate :: !(Maybe POSIX)
-    , _oTargets :: !(Maybe (Map OperationTargetType Text))
-    , _oErrorCode :: !(Maybe Text)
-    , _oId :: !(Maybe Text)
-    , _oType :: !(Maybe OperationType)
+    { _oStatus       :: !(Maybe OperationStatus)
+    , _oUpdateDate   :: !(Maybe POSIX)
+    , _oCreateDate   :: !(Maybe POSIX)
+    , _oTargets      :: !(Maybe (Map OperationTargetType Text))
+    , _oErrorCode    :: !(Maybe Text)
+    , _oId           :: !(Maybe Text)
+    , _oType         :: !(Maybe OperationType)
     , _oErrorMessage :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -776,8 +776,8 @@ instance NFData Operation
 data OperationFilter =
   OperationFilter'
     { _ofCondition :: !(Maybe FilterCondition)
-    , _ofName :: !OperationFilterName
-    , _ofValues :: ![Text]
+    , _ofName      :: !OperationFilterName
+    , _ofValues    :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -830,7 +830,7 @@ instance ToJSON OperationFilter where
 data OperationSummary =
   OperationSummary'
     { _osStatus :: !(Maybe OperationStatus)
-    , _osId :: !(Maybe Text)
+    , _osId     :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -870,8 +870,8 @@ instance NFData OperationSummary
 data ServiceChange =
   ServiceChange'
     { _scHealthCheckConfig :: !(Maybe HealthCheckConfig)
-    , _scDescription :: !(Maybe Text)
-    , _scDNSConfig :: !DNSConfigChange
+    , _scDescription       :: !(Maybe Text)
+    , _scDNSConfig         :: !DNSConfigChange
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -928,8 +928,8 @@ instance ToJSON ServiceChange where
 data ServiceFilter =
   ServiceFilter'
     { _sfCondition :: !(Maybe FilterCondition)
-    , _sfName :: !ServiceFilterName
-    , _sfValues :: ![Text]
+    , _sfName      :: !ServiceFilterName
+    , _sfValues    :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -980,16 +980,16 @@ instance ToJSON ServiceFilter where
 -- /See:/ 'serviceInfo' smart constructor.
 data ServiceInfo =
   ServiceInfo'
-    { _siInstanceCount :: !(Maybe Int)
-    , _siARN :: !(Maybe Text)
-    , _siHealthCheckConfig :: !(Maybe HealthCheckConfig)
-    , _siCreatorRequestId :: !(Maybe Text)
-    , _siCreateDate :: !(Maybe POSIX)
+    { _siInstanceCount           :: !(Maybe Int)
+    , _siARN                     :: !(Maybe Text)
+    , _siHealthCheckConfig       :: !(Maybe HealthCheckConfig)
+    , _siCreatorRequestId        :: !(Maybe Text)
+    , _siCreateDate              :: !(Maybe POSIX)
     , _siHealthCheckCustomConfig :: !(Maybe HealthCheckCustomConfig)
-    , _siName :: !(Maybe Text)
-    , _siId :: !(Maybe Text)
-    , _siDNSConfig :: !(Maybe DNSConfig)
-    , _siDescription :: !(Maybe Text)
+    , _siName                    :: !(Maybe Text)
+    , _siId                      :: !(Maybe Text)
+    , _siDNSConfig               :: !(Maybe DNSConfig)
+    , _siDescription             :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1102,10 +1102,10 @@ instance NFData ServiceInfo
 data ServiceSummary =
   ServiceSummary'
     { _ssInstanceCount :: !(Maybe Int)
-    , _ssARN :: !(Maybe Text)
-    , _ssName :: !(Maybe Text)
-    , _ssId :: !(Maybe Text)
-    , _ssDescription :: !(Maybe Text)
+    , _ssARN           :: !(Maybe Text)
+    , _ssName          :: !(Maybe Text)
+    , _ssId            :: !(Maybe Text)
+    , _ssDescription   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,7 +48,7 @@ import Network.AWS.Response
 -- /See:/ 'rejectVPCPeeringConnection' smart constructor.
 data RejectVPCPeeringConnection =
   RejectVPCPeeringConnection'
-    { _rvpcDryRun :: !(Maybe Bool)
+    { _rvpcDryRun                 :: !(Maybe Bool)
     , _rvpcVPCPeeringConnectionId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -113,7 +113,7 @@ instance ToQuery RejectVPCPeeringConnection where
 -- /See:/ 'rejectVPCPeeringConnectionResponse' smart constructor.
 data RejectVPCPeeringConnectionResponse =
   RejectVPCPeeringConnectionResponse'
-    { _rvpcrsReturn :: !(Maybe Bool)
+    { _rvpcrsReturn         :: !(Maybe Bool)
     , _rvpcrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

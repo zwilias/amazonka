@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'getFileUploadURL' smart constructor.
 data GetFileUploadURL =
   GetFileUploadURL'
-    { _gfuuAssignmentId :: !Text
+    { _gfuuAssignmentId       :: !Text
     , _gfuuQuestionIdentifier :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -114,7 +114,7 @@ instance ToQuery GetFileUploadURL where
 -- | /See:/ 'getFileUploadURLResponse' smart constructor.
 data GetFileUploadURLResponse =
   GetFileUploadURLResponse'
-    { _gfuursFileUploadURL :: !(Maybe Text)
+    { _gfuursFileUploadURL  :: !(Maybe Text)
     , _gfuursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

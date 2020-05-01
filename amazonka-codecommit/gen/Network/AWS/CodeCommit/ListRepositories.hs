@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,8 +54,8 @@ import Network.AWS.Response
 data ListRepositories =
   ListRepositories'
     { _lrNextToken :: !(Maybe Text)
-    , _lrOrder :: !(Maybe OrderEnum)
-    , _lrSortBy :: !(Maybe SortByEnum)
+    , _lrOrder     :: !(Maybe OrderEnum)
+    , _lrSortBy    :: !(Maybe SortByEnum)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -136,8 +136,8 @@ instance ToQuery ListRepositories where
 -- /See:/ 'listRepositoriesResponse' smart constructor.
 data ListRepositoriesResponse =
   ListRepositoriesResponse'
-    { _lrrsRepositories :: !(Maybe [RepositoryNameIdPair])
-    , _lrrsNextToken :: !(Maybe Text)
+    { _lrrsRepositories   :: !(Maybe [RepositoryNameIdPair])
+    , _lrrsNextToken      :: !(Maybe Text)
     , _lrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

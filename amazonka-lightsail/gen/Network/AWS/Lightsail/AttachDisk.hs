@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,9 +45,9 @@ import Network.AWS.Response
 -- | /See:/ 'attachDisk' smart constructor.
 data AttachDisk =
   AttachDisk'
-    { _adDiskName :: !Text
+    { _adDiskName     :: !Text
     , _adInstanceName :: !Text
-    , _adDiskPath :: !Text
+    , _adDiskPath     :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -123,7 +123,7 @@ instance ToQuery AttachDisk where
 -- | /See:/ 'attachDiskResponse' smart constructor.
 data AttachDiskResponse =
   AttachDiskResponse'
-    { _adrsOperations :: !(Maybe [Operation])
+    { _adrsOperations     :: !(Maybe [Operation])
     , _adrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

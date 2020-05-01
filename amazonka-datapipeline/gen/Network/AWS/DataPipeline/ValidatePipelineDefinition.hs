@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,9 +53,9 @@ import Network.AWS.Response
 data ValidatePipelineDefinition =
   ValidatePipelineDefinition'
     { _vpdParameterObjects :: !(Maybe [ParameterObject])
-    , _vpdParameterValues :: !(Maybe [ParameterValue])
-    , _vpdPipelineId :: !Text
-    , _vpdPipelineObjects :: ![PipelineObject]
+    , _vpdParameterValues  :: !(Maybe [ParameterValue])
+    , _vpdPipelineId       :: !Text
+    , _vpdPipelineObjects  :: ![PipelineObject]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -150,10 +150,10 @@ instance ToQuery ValidatePipelineDefinition where
 -- /See:/ 'validatePipelineDefinitionResponse' smart constructor.
 data ValidatePipelineDefinitionResponse =
   ValidatePipelineDefinitionResponse'
-    { _vpdrsValidationErrors :: !(Maybe [ValidationError])
+    { _vpdrsValidationErrors   :: !(Maybe [ValidationError])
     , _vpdrsValidationWarnings :: !(Maybe [ValidationWarning])
-    , _vpdrsResponseStatus :: !Int
-    , _vpdrsErrored :: !Bool
+    , _vpdrsResponseStatus     :: !Int
+    , _vpdrsErrored            :: !Bool
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

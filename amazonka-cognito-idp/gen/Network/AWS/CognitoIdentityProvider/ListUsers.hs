@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -54,9 +54,9 @@ data ListUsers =
   ListUsers'
     { _luPaginationToken :: !(Maybe Text)
     , _luAttributesToGet :: !(Maybe [Text])
-    , _luLimit :: !(Maybe Nat)
-    , _luFilter :: !(Maybe Text)
-    , _luUserPoolId :: !Text
+    , _luLimit           :: !(Maybe Nat)
+    , _luFilter          :: !(Maybe Text)
+    , _luUserPoolId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -155,8 +155,8 @@ instance ToQuery ListUsers where
 data ListUsersResponse =
   ListUsersResponse'
     { _lursPaginationToken :: !(Maybe Text)
-    , _lursUsers :: !(Maybe [UserType])
-    , _lursResponseStatus :: !Int
+    , _lursUsers           :: !(Maybe [UserType])
+    , _lursResponseStatus  :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

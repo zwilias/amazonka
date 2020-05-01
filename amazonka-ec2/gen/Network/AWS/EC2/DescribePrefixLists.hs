@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,11 +52,11 @@ import Network.AWS.Response
 -- /See:/ 'describePrefixLists' smart constructor.
 data DescribePrefixLists =
   DescribePrefixLists'
-    { _dplFilters :: !(Maybe [Filter])
+    { _dplFilters       :: !(Maybe [Filter])
     , _dplPrefixListIds :: !(Maybe [Text])
-    , _dplNextToken :: !(Maybe Text)
-    , _dplDryRun :: !(Maybe Bool)
-    , _dplMaxResults :: !(Maybe Int)
+    , _dplNextToken     :: !(Maybe Text)
+    , _dplDryRun        :: !(Maybe Bool)
+    , _dplMaxResults    :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -144,8 +144,8 @@ instance ToQuery DescribePrefixLists where
 -- /See:/ 'describePrefixListsResponse' smart constructor.
 data DescribePrefixListsResponse =
   DescribePrefixListsResponse'
-    { _dplrsNextToken :: !(Maybe Text)
-    , _dplrsPrefixLists :: !(Maybe [PrefixList])
+    { _dplrsNextToken      :: !(Maybe Text)
+    , _dplrsPrefixLists    :: !(Maybe [PrefixList])
     , _dplrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

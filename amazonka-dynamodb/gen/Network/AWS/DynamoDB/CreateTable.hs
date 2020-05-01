@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -60,14 +60,14 @@ import Network.AWS.Response
 -- /See:/ 'createTable' smart constructor.
 data CreateTable =
   CreateTable'
-    { _ctSSESpecification :: !(Maybe SSESpecification)
+    { _ctSSESpecification       :: !(Maybe SSESpecification)
     , _ctGlobalSecondaryIndexes :: !(Maybe [GlobalSecondaryIndex])
-    , _ctLocalSecondaryIndexes :: !(Maybe [LocalSecondaryIndex])
-    , _ctStreamSpecification :: !(Maybe StreamSpecification)
-    , _ctAttributeDefinitions :: ![AttributeDefinition]
-    , _ctTableName :: !Text
-    , _ctKeySchema :: !(List1 KeySchemaElement)
-    , _ctProvisionedThroughput :: !ProvisionedThroughput
+    , _ctLocalSecondaryIndexes  :: !(Maybe [LocalSecondaryIndex])
+    , _ctStreamSpecification    :: !(Maybe StreamSpecification)
+    , _ctAttributeDefinitions   :: ![AttributeDefinition]
+    , _ctTableName              :: !Text
+    , _ctKeySchema              :: !(List1 KeySchemaElement)
+    , _ctProvisionedThroughput  :: !ProvisionedThroughput
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -197,7 +197,7 @@ instance ToQuery CreateTable where
 data CreateTableResponse =
   CreateTableResponse'
     { _ctrsTableDescription :: !(Maybe TableDescription)
-    , _ctrsResponseStatus :: !Int
+    , _ctrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

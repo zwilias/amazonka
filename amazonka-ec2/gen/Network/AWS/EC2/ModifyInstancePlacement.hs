@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -65,10 +65,10 @@ import Network.AWS.Response
 -- /See:/ 'modifyInstancePlacement' smart constructor.
 data ModifyInstancePlacement =
   ModifyInstancePlacement'
-    { _mipAffinity :: !(Maybe Affinity)
-    , _mipHostId :: !(Maybe Text)
-    , _mipTenancy :: !(Maybe HostTenancy)
-    , _mipGroupName :: !(Maybe Text)
+    { _mipAffinity   :: !(Maybe Affinity)
+    , _mipHostId     :: !(Maybe Text)
+    , _mipTenancy    :: !(Maybe HostTenancy)
+    , _mipGroupName  :: !(Maybe Text)
     , _mipInstanceId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -156,7 +156,7 @@ instance ToQuery ModifyInstancePlacement where
 -- /See:/ 'modifyInstancePlacementResponse' smart constructor.
 data ModifyInstancePlacementResponse =
   ModifyInstancePlacementResponse'
-    { _miprsReturn :: !(Maybe Bool)
+    { _miprsReturn         :: !(Maybe Bool)
     , _miprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,9 +44,9 @@ import Network.AWS.Response
 -- | /See:/ 'setUserMFAPreference' smart constructor.
 data SetUserMFAPreference =
   SetUserMFAPreference'
-    { _sumpSMSMFASettings :: !(Maybe SMSMFASettingsType)
+    { _sumpSMSMFASettings           :: !(Maybe SMSMFASettingsType)
     , _sumpSoftwareTokenMFASettings :: !(Maybe SoftwareTokenMFASettingsType)
-    , _sumpAccessToken :: !(Sensitive Text)
+    , _sumpAccessToken              :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

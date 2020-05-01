@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,9 +47,9 @@ import Network.AWS.Response
 -- | /See:/ 'describeAggregateComplianceByConfigRules' smart constructor.
 data DescribeAggregateComplianceByConfigRules =
   DescribeAggregateComplianceByConfigRules'
-    { _dacbcrFilters :: !(Maybe ConfigRuleComplianceFilters)
-    , _dacbcrNextToken :: !(Maybe Text)
-    , _dacbcrLimit :: !(Maybe Nat)
+    { _dacbcrFilters                     :: !(Maybe ConfigRuleComplianceFilters)
+    , _dacbcrNextToken                   :: !(Maybe Text)
+    , _dacbcrLimit                       :: !(Maybe Nat)
     , _dacbcrConfigurationAggregatorName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

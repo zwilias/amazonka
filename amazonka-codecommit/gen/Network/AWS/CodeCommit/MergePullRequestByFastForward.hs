@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,7 +46,7 @@ import Network.AWS.Response
 data MergePullRequestByFastForward =
   MergePullRequestByFastForward'
     { _mprbffSourceCommitId :: !(Maybe Text)
-    , _mprbffPullRequestId :: !Text
+    , _mprbffPullRequestId  :: !Text
     , _mprbffRepositoryName :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -126,7 +126,7 @@ instance ToQuery MergePullRequestByFastForward where
 -- | /See:/ 'mergePullRequestByFastForwardResponse' smart constructor.
 data MergePullRequestByFastForwardResponse =
   MergePullRequestByFastForwardResponse'
-    { _mprbffrsPullRequest :: !(Maybe PullRequest)
+    { _mprbffrsPullRequest    :: !(Maybe PullRequest)
     , _mprbffrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

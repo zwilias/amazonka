@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.Response
 data ListUsers =
   ListUsers'
     { _luPathPrefix :: !(Maybe Text)
-    , _luMarker :: !(Maybe Text)
-    , _luMaxItems :: !(Maybe Nat)
+    , _luMarker     :: !(Maybe Text)
+    , _luMaxItems   :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -128,10 +128,10 @@ instance ToQuery ListUsers where
 -- /See:/ 'listUsersResponse' smart constructor.
 data ListUsersResponse =
   ListUsersResponse'
-    { _lursMarker :: !(Maybe Text)
-    , _lursIsTruncated :: !(Maybe Bool)
+    { _lursMarker         :: !(Maybe Text)
+    , _lursIsTruncated    :: !(Maybe Bool)
     , _lursResponseStatus :: !Int
-    , _lursUsers :: ![User]
+    , _lursUsers          :: ![User]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

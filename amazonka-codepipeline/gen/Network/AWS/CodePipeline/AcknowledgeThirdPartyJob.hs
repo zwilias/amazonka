@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,8 +49,8 @@ import Network.AWS.Response
 -- /See:/ 'acknowledgeThirdPartyJob' smart constructor.
 data AcknowledgeThirdPartyJob =
   AcknowledgeThirdPartyJob'
-    { _atpjJobId :: !Text
-    , _atpjNonce :: !Text
+    { _atpjJobId       :: !Text
+    , _atpjNonce       :: !Text
     , _atpjClientToken :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -132,7 +132,7 @@ instance ToQuery AcknowledgeThirdPartyJob where
 -- /See:/ 'acknowledgeThirdPartyJobResponse' smart constructor.
 data AcknowledgeThirdPartyJobResponse =
   AcknowledgeThirdPartyJobResponse'
-    { _atpjrsStatus :: !(Maybe JobStatus)
+    { _atpjrsStatus         :: !(Maybe JobStatus)
     , _atpjrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

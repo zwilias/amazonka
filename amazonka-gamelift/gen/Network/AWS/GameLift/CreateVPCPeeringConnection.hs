@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -68,9 +68,9 @@ import Network.AWS.Response
 -- /See:/ 'createVPCPeeringConnection' smart constructor.
 data CreateVPCPeeringConnection =
   CreateVPCPeeringConnection'
-    { _cvpcFleetId :: !Text
+    { _cvpcFleetId             :: !Text
     , _cvpcPeerVPCAWSAccountId :: !Text
-    , _cvpcPeerVPCId :: !Text
+    , _cvpcPeerVPCId           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

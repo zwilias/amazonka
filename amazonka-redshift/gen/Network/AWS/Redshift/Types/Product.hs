@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
@@ -28,7 +28,7 @@ import Network.AWS.Redshift.Types.Sum
 data AccountWithRestoreAccess =
   AccountWithRestoreAccess'
     { _awraAccountAlias :: !(Maybe Text)
-    , _awraAccountId :: !(Maybe Text)
+    , _awraAccountId    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -67,7 +67,7 @@ instance NFData AccountWithRestoreAccess
 -- /See:/ 'availabilityZone' smart constructor.
 data AvailabilityZone =
   AvailabilityZone'
-    { _azName :: !(Maybe Text)
+    { _azName               :: !(Maybe Text)
     , _azSupportedPlatforms :: !(Maybe [SupportedPlatform])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -456,7 +456,7 @@ instance NFData Cluster
 -- /See:/ 'clusterIAMRole' smart constructor.
 data ClusterIAMRole =
   ClusterIAMRole'
-    { _cirIAMRoleARN :: !(Maybe Text)
+    { _cirIAMRoleARN  :: !(Maybe Text)
     , _cirApplyStatus :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -495,9 +495,9 @@ instance NFData ClusterIAMRole
 -- /See:/ 'clusterNode' smart constructor.
 data ClusterNode =
   ClusterNode'
-    { _cnNodeRole :: !(Maybe Text)
+    { _cnNodeRole         :: !(Maybe Text)
     , _cnPrivateIPAddress :: !(Maybe Text)
-    , _cnPublicIPAddress :: !(Maybe Text)
+    , _cnPublicIPAddress  :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -548,9 +548,9 @@ instance NFData ClusterNode
 data ClusterParameterGroup =
   ClusterParameterGroup'
     { _cpgParameterGroupFamily :: !(Maybe Text)
-    , _cpgDescription :: !(Maybe Text)
-    , _cpgTags :: !(Maybe [Tag])
-    , _cpgParameterGroupName :: !(Maybe Text)
+    , _cpgDescription          :: !(Maybe Text)
+    , _cpgTags                 :: !(Maybe [Tag])
+    , _cpgParameterGroupName   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -611,7 +611,7 @@ instance NFData ClusterParameterGroup
 data ClusterParameterGroupNameMessage =
   ClusterParameterGroupNameMessage'
     { _cpgnmParameterGroupStatus :: !(Maybe Text)
-    , _cpgnmParameterGroupName :: !(Maybe Text)
+    , _cpgnmParameterGroupName   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -654,8 +654,8 @@ instance NFData ClusterParameterGroupNameMessage
 data ClusterParameterGroupStatus =
   ClusterParameterGroupStatus'
     { _cpgsClusterParameterStatusList :: !(Maybe [ClusterParameterStatus])
-    , _cpgsParameterApplyStatus :: !(Maybe Text)
-    , _cpgsParameterGroupName :: !(Maybe Text)
+    , _cpgsParameterApplyStatus       :: !(Maybe Text)
+    , _cpgsParameterGroupName         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -715,8 +715,8 @@ instance NFData ClusterParameterGroupStatus
 data ClusterParameterStatus =
   ClusterParameterStatus'
     { _cpsParameterApplyErrorDescription :: !(Maybe Text)
-    , _cpsParameterName :: !(Maybe Text)
-    , _cpsParameterApplyStatus :: !(Maybe Text)
+    , _cpsParameterName                  :: !(Maybe Text)
+    , _cpsParameterApplyStatus           :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -771,10 +771,10 @@ instance NFData ClusterParameterStatus
 data ClusterSecurityGroup =
   ClusterSecurityGroup'
     { _cluClusterSecurityGroupName :: !(Maybe Text)
-    , _cluIPRanges :: !(Maybe [IPRange])
-    , _cluEC2SecurityGroups :: !(Maybe [EC2SecurityGroup])
-    , _cluDescription :: !(Maybe Text)
-    , _cluTags :: !(Maybe [Tag])
+    , _cluIPRanges                 :: !(Maybe [IPRange])
+    , _cluEC2SecurityGroups        :: !(Maybe [EC2SecurityGroup])
+    , _cluDescription              :: !(Maybe Text)
+    , _cluTags                     :: !(Maybe [Tag])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -847,7 +847,7 @@ instance NFData ClusterSecurityGroup
 -- /See:/ 'clusterSecurityGroupMembership' smart constructor.
 data ClusterSecurityGroupMembership =
   ClusterSecurityGroupMembership'
-    { _csgmStatus :: !(Maybe Text)
+    { _csgmStatus                   :: !(Maybe Text)
     , _csgmClusterSecurityGroupName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -892,8 +892,8 @@ instance NFData ClusterSecurityGroupMembership
 -- /See:/ 'clusterSnapshotCopyStatus' smart constructor.
 data ClusterSnapshotCopyStatus =
   ClusterSnapshotCopyStatus'
-    { _cscsRetentionPeriod :: !(Maybe Integer)
-    , _cscsDestinationRegion :: !(Maybe Text)
+    { _cscsRetentionPeriod       :: !(Maybe Integer)
+    , _cscsDestinationRegion     :: !(Maybe Text)
     , _cscsSnapshotCopyGrantName :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -947,12 +947,12 @@ instance NFData ClusterSnapshotCopyStatus
 -- /See:/ 'clusterSubnetGroup' smart constructor.
 data ClusterSubnetGroup =
   ClusterSubnetGroup'
-    { _csgVPCId :: !(Maybe Text)
-    , _csgSubnets :: !(Maybe [Subnet])
+    { _csgVPCId                  :: !(Maybe Text)
+    , _csgSubnets                :: !(Maybe [Subnet])
     , _csgClusterSubnetGroupName :: !(Maybe Text)
-    , _csgSubnetGroupStatus :: !(Maybe Text)
-    , _csgDescription :: !(Maybe Text)
-    , _csgTags :: !(Maybe [Tag])
+    , _csgSubnetGroupStatus      :: !(Maybe Text)
+    , _csgDescription            :: !(Maybe Text)
+    , _csgTags                   :: !(Maybe [Tag])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1029,8 +1029,8 @@ instance NFData ClusterSubnetGroup
 data ClusterVersion =
   ClusterVersion'
     { _cvClusterParameterGroupFamily :: !(Maybe Text)
-    , _cvClusterVersion :: !(Maybe Text)
-    , _cvDescription :: !(Maybe Text)
+    , _cvClusterVersion              :: !(Maybe Text)
+    , _cvDescription                 :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1083,8 +1083,8 @@ instance NFData ClusterVersion
 -- /See:/ 'defaultClusterParameters' smart constructor.
 data DefaultClusterParameters =
   DefaultClusterParameters'
-    { _dcpMarker :: !(Maybe Text)
-    , _dcpParameters :: !(Maybe [Parameter])
+    { _dcpMarker               :: !(Maybe Text)
+    , _dcpParameters           :: !(Maybe [Parameter])
     , _dcpParameterGroupFamily :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1137,10 +1137,10 @@ instance NFData DefaultClusterParameters
 -- /See:/ 'ec2SecurityGroup' smart constructor.
 data EC2SecurityGroup =
   EC2SecurityGroup'
-    { _esgStatus :: !(Maybe Text)
+    { _esgStatus                  :: !(Maybe Text)
     , _esgEC2SecurityGroupOwnerId :: !(Maybe Text)
-    , _esgEC2SecurityGroupName :: !(Maybe Text)
-    , _esgTags :: !(Maybe [Tag])
+    , _esgEC2SecurityGroupName    :: !(Maybe Text)
+    , _esgTags                    :: !(Maybe [Tag])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1199,7 +1199,7 @@ instance NFData EC2SecurityGroup
 -- /See:/ 'elasticIPStatus' smart constructor.
 data ElasticIPStatus =
   ElasticIPStatus'
-    { _eisStatus :: !(Maybe Text)
+    { _eisStatus    :: !(Maybe Text)
     , _eisElasticIP :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1238,7 +1238,7 @@ instance NFData ElasticIPStatus
 data Endpoint =
   Endpoint'
     { _eAddress :: !(Maybe Text)
-    , _ePort :: !(Maybe Int)
+    , _ePort    :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1274,13 +1274,13 @@ instance NFData Endpoint
 -- /See:/ 'event' smart constructor.
 data Event =
   Event'
-    { _eSourceType :: !(Maybe SourceType)
-    , _eSeverity :: !(Maybe Text)
+    { _eSourceType       :: !(Maybe SourceType)
+    , _eSeverity         :: !(Maybe Text)
     , _eSourceIdentifier :: !(Maybe Text)
-    , _eDate :: !(Maybe ISO8601)
-    , _eEventCategories :: !(Maybe [Text])
-    , _eMessage :: !(Maybe Text)
-    , _eEventId :: !(Maybe Text)
+    , _eDate             :: !(Maybe ISO8601)
+    , _eEventCategories  :: !(Maybe [Text])
+    , _eMessage          :: !(Maybe Text)
+    , _eEventId          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1364,7 +1364,7 @@ instance NFData Event
 data EventCategoriesMap =
   EventCategoriesMap'
     { _ecmSourceType :: !(Maybe Text)
-    , _ecmEvents :: !(Maybe [EventInfoMap])
+    , _ecmEvents     :: !(Maybe [EventInfoMap])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1404,9 +1404,9 @@ instance NFData EventCategoriesMap
 data EventInfoMap =
   EventInfoMap'
     { _eimEventDescription :: !(Maybe Text)
-    , _eimSeverity :: !(Maybe Text)
-    , _eimEventCategories :: !(Maybe [Text])
-    , _eimEventId :: !(Maybe Text)
+    , _eimSeverity         :: !(Maybe Text)
+    , _eimEventCategories  :: !(Maybe [Text])
+    , _eimEventId          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1466,17 +1466,17 @@ instance NFData EventInfoMap
 -- /See:/ 'eventSubscription' smart constructor.
 data EventSubscription =
   EventSubscription'
-    { _esStatus :: !(Maybe Text)
-    , _esCustomerAWSId :: !(Maybe Text)
-    , _esCustSubscriptionId :: !(Maybe Text)
-    , _esSNSTopicARN :: !(Maybe Text)
-    , _esEnabled :: !(Maybe Bool)
-    , _esSourceType :: !(Maybe Text)
-    , _esSeverity :: !(Maybe Text)
+    { _esStatus                   :: !(Maybe Text)
+    , _esCustomerAWSId            :: !(Maybe Text)
+    , _esCustSubscriptionId       :: !(Maybe Text)
+    , _esSNSTopicARN              :: !(Maybe Text)
+    , _esEnabled                  :: !(Maybe Bool)
+    , _esSourceType               :: !(Maybe Text)
+    , _esSeverity                 :: !(Maybe Text)
     , _esSubscriptionCreationTime :: !(Maybe ISO8601)
-    , _esEventCategoriesList :: !(Maybe [Text])
-    , _esTags :: !(Maybe [Tag])
-    , _esSourceIdsList :: !(Maybe [Text])
+    , _esEventCategoriesList      :: !(Maybe [Text])
+    , _esTags                     :: !(Maybe [Tag])
+    , _esSourceIdsList            :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1597,8 +1597,8 @@ instance NFData EventSubscription
 data HSMClientCertificate =
   HSMClientCertificate'
     { _hccHSMClientCertificateIdentifier :: !(Maybe Text)
-    , _hccHSMClientCertificatePublicKey :: !(Maybe Text)
-    , _hccTags :: !(Maybe [Tag])
+    , _hccHSMClientCertificatePublicKey  :: !(Maybe Text)
+    , _hccTags                           :: !(Maybe [Tag])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1655,10 +1655,10 @@ instance NFData HSMClientCertificate
 data HSMConfiguration =
   HSMConfiguration'
     { _hcHSMConfigurationIdentifier :: !(Maybe Text)
-    , _hcHSMPartitionName :: !(Maybe Text)
-    , _hcDescription :: !(Maybe Text)
-    , _hcTags :: !(Maybe [Tag])
-    , _hcHSMIPAddress :: !(Maybe Text)
+    , _hcHSMPartitionName           :: !(Maybe Text)
+    , _hcDescription                :: !(Maybe Text)
+    , _hcTags                       :: !(Maybe [Tag])
+    , _hcHSMIPAddress               :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1728,8 +1728,8 @@ instance NFData HSMConfiguration
 -- /See:/ 'hsmStatus' smart constructor.
 data HSMStatus =
   HSMStatus'
-    { _hsStatus :: !(Maybe Text)
-    , _hsHSMConfigurationIdentifier :: !(Maybe Text)
+    { _hsStatus                         :: !(Maybe Text)
+    , _hsHSMConfigurationIdentifier     :: !(Maybe Text)
     , _hsHSMClientCertificateIdentifier :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -1787,7 +1787,7 @@ data IPRange =
   IPRange'
     { _irStatus :: !(Maybe Text)
     , _irCIdRIP :: !(Maybe Text)
-    , _irTags :: !(Maybe [Tag])
+    , _irTags   :: !(Maybe [Tag])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1831,12 +1831,12 @@ instance NFData IPRange
 -- /See:/ 'loggingStatus' smart constructor.
 data LoggingStatus =
   LoggingStatus'
-    { _lsLastFailureTime :: !(Maybe ISO8601)
+    { _lsLastFailureTime            :: !(Maybe ISO8601)
     , _lsLastSuccessfulDeliveryTime :: !(Maybe ISO8601)
-    , _lsS3KeyPrefix :: !(Maybe Text)
-    , _lsBucketName :: !(Maybe Text)
-    , _lsLoggingEnabled :: !(Maybe Bool)
-    , _lsLastFailureMessage :: !(Maybe Text)
+    , _lsS3KeyPrefix                :: !(Maybe Text)
+    , _lsBucketName                 :: !(Maybe Text)
+    , _lsLoggingEnabled             :: !(Maybe Bool)
+    , _lsLastFailureMessage         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1917,9 +1917,9 @@ instance NFData LoggingStatus
 data OrderableClusterOption =
   OrderableClusterOption'
     { _ocoAvailabilityZones :: !(Maybe [AvailabilityZone])
-    , _ocoClusterType :: !(Maybe Text)
-    , _ocoClusterVersion :: !(Maybe Text)
-    , _ocoNodeType :: !(Maybe Text)
+    , _ocoClusterType       :: !(Maybe Text)
+    , _ocoClusterVersion    :: !(Maybe Text)
+    , _ocoNodeType          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -1981,15 +1981,15 @@ instance NFData OrderableClusterOption
 -- /See:/ 'parameter' smart constructor.
 data Parameter =
   Parameter'
-    { _pApplyType :: !(Maybe ParameterApplyType)
-    , _pParameterValue :: !(Maybe Text)
+    { _pApplyType            :: !(Maybe ParameterApplyType)
+    , _pParameterValue       :: !(Maybe Text)
     , _pMinimumEngineVersion :: !(Maybe Text)
-    , _pSource :: !(Maybe Text)
-    , _pIsModifiable :: !(Maybe Bool)
-    , _pDataType :: !(Maybe Text)
-    , _pAllowedValues :: !(Maybe Text)
-    , _pParameterName :: !(Maybe Text)
-    , _pDescription :: !(Maybe Text)
+    , _pSource               :: !(Maybe Text)
+    , _pIsModifiable         :: !(Maybe Bool)
+    , _pDataType             :: !(Maybe Text)
+    , _pAllowedValues        :: !(Maybe Text)
+    , _pParameterName        :: !(Maybe Text)
+    , _pDescription          :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2101,15 +2101,15 @@ instance ToQuery Parameter where
 -- /See:/ 'pendingModifiedValues' smart constructor.
 data PendingModifiedValues =
   PendingModifiedValues'
-    { _pmvEnhancedVPCRouting :: !(Maybe Bool)
-    , _pmvMasterUserPassword :: !(Maybe Text)
-    , _pmvPubliclyAccessible :: !(Maybe Bool)
+    { _pmvEnhancedVPCRouting               :: !(Maybe Bool)
+    , _pmvMasterUserPassword               :: !(Maybe Text)
+    , _pmvPubliclyAccessible               :: !(Maybe Bool)
     , _pmvAutomatedSnapshotRetentionPeriod :: !(Maybe Int)
-    , _pmvClusterIdentifier :: !(Maybe Text)
-    , _pmvNumberOfNodes :: !(Maybe Int)
-    , _pmvClusterType :: !(Maybe Text)
-    , _pmvClusterVersion :: !(Maybe Text)
-    , _pmvNodeType :: !(Maybe Text)
+    , _pmvClusterIdentifier                :: !(Maybe Text)
+    , _pmvNumberOfNodes                    :: !(Maybe Int)
+    , _pmvClusterType                      :: !(Maybe Text)
+    , _pmvClusterVersion                   :: !(Maybe Text)
+    , _pmvNodeType                         :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2215,7 +2215,7 @@ instance NFData PendingModifiedValues
 data RecurringCharge =
   RecurringCharge'
     { _rcRecurringChargeFrequency :: !(Maybe Text)
-    , _rcRecurringChargeAmount :: !(Maybe Double)
+    , _rcRecurringChargeAmount    :: !(Maybe Double)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2258,18 +2258,18 @@ instance NFData RecurringCharge
 data ReservedNode =
   ReservedNode'
     { _rnReservedNodeOfferingType :: !(Maybe ReservedNodeOfferingType)
-    , _rnState :: !(Maybe Text)
-    , _rnCurrencyCode :: !(Maybe Text)
-    , _rnStartTime :: !(Maybe ISO8601)
-    , _rnNodeCount :: !(Maybe Int)
-    , _rnReservedNodeId :: !(Maybe Text)
-    , _rnReservedNodeOfferingId :: !(Maybe Text)
-    , _rnRecurringCharges :: !(Maybe [RecurringCharge])
-    , _rnOfferingType :: !(Maybe Text)
-    , _rnUsagePrice :: !(Maybe Double)
-    , _rnNodeType :: !(Maybe Text)
-    , _rnFixedPrice :: !(Maybe Double)
-    , _rnDuration :: !(Maybe Int)
+    , _rnState                    :: !(Maybe Text)
+    , _rnCurrencyCode             :: !(Maybe Text)
+    , _rnStartTime                :: !(Maybe ISO8601)
+    , _rnNodeCount                :: !(Maybe Int)
+    , _rnReservedNodeId           :: !(Maybe Text)
+    , _rnReservedNodeOfferingId   :: !(Maybe Text)
+    , _rnRecurringCharges         :: !(Maybe [RecurringCharge])
+    , _rnOfferingType             :: !(Maybe Text)
+    , _rnUsagePrice               :: !(Maybe Double)
+    , _rnNodeType                 :: !(Maybe Text)
+    , _rnFixedPrice               :: !(Maybe Double)
+    , _rnDuration                 :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2405,14 +2405,14 @@ instance NFData ReservedNode
 data ReservedNodeOffering =
   ReservedNodeOffering'
     { _rnoReservedNodeOfferingType :: !(Maybe ReservedNodeOfferingType)
-    , _rnoCurrencyCode :: !(Maybe Text)
-    , _rnoReservedNodeOfferingId :: !(Maybe Text)
-    , _rnoRecurringCharges :: !(Maybe [RecurringCharge])
-    , _rnoOfferingType :: !(Maybe Text)
-    , _rnoUsagePrice :: !(Maybe Double)
-    , _rnoNodeType :: !(Maybe Text)
-    , _rnoFixedPrice :: !(Maybe Double)
-    , _rnoDuration :: !(Maybe Int)
+    , _rnoCurrencyCode             :: !(Maybe Text)
+    , _rnoReservedNodeOfferingId   :: !(Maybe Text)
+    , _rnoRecurringCharges         :: !(Maybe [RecurringCharge])
+    , _rnoOfferingType             :: !(Maybe Text)
+    , _rnoUsagePrice               :: !(Maybe Double)
+    , _rnoNodeType                 :: !(Maybe Text)
+    , _rnoFixedPrice               :: !(Maybe Double)
+    , _rnoDuration                 :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2518,12 +2518,12 @@ instance NFData ReservedNodeOffering
 -- /See:/ 'restoreStatus' smart constructor.
 data RestoreStatus =
   RestoreStatus'
-    { _rsStatus :: !(Maybe Text)
-    , _rsEstimatedTimeToCompletionInSeconds :: !(Maybe Integer)
+    { _rsStatus                                 :: !(Maybe Text)
+    , _rsEstimatedTimeToCompletionInSeconds     :: !(Maybe Integer)
     , _rsCurrentRestoreRateInMegaBytesPerSecond :: !(Maybe Double)
-    , _rsProgressInMegaBytes :: !(Maybe Integer)
-    , _rsElapsedTimeInSeconds :: !(Maybe Integer)
-    , _rsSnapshotSizeInMegaBytes :: !(Maybe Integer)
+    , _rsProgressInMegaBytes                    :: !(Maybe Integer)
+    , _rsElapsedTimeInSeconds                   :: !(Maybe Integer)
+    , _rsSnapshotSizeInMegaBytes                :: !(Maybe Integer)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2919,9 +2919,9 @@ instance NFData Snapshot
 -- /See:/ 'snapshotCopyGrant' smart constructor.
 data SnapshotCopyGrant =
   SnapshotCopyGrant'
-    { _scgKMSKeyId :: !(Maybe Text)
+    { _scgKMSKeyId              :: !(Maybe Text)
     , _scgSnapshotCopyGrantName :: !(Maybe Text)
-    , _scgTags :: !(Maybe [Tag])
+    , _scgTags                  :: !(Maybe [Tag])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -2972,8 +2972,8 @@ instance NFData SnapshotCopyGrant
 -- /See:/ 'subnet' smart constructor.
 data Subnet =
   Subnet'
-    { _sSubnetStatus :: !(Maybe Text)
-    , _sSubnetIdentifier :: !(Maybe Text)
+    { _sSubnetStatus           :: !(Maybe Text)
+    , _sSubnetIdentifier       :: !(Maybe Text)
     , _sSubnetAvailabilityZone :: !(Maybe AvailabilityZone)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -3054,20 +3054,20 @@ instance NFData SupportedPlatform
 -- /See:/ 'tableRestoreStatus' smart constructor.
 data TableRestoreStatus =
   TableRestoreStatus'
-    { _trsStatus :: !(Maybe TableRestoreStatusType)
-    , _trsTargetSchemaName :: !(Maybe Text)
-    , _trsSnapshotIdentifier :: !(Maybe Text)
-    , _trsSourceDatabaseName :: !(Maybe Text)
+    { _trsStatus                :: !(Maybe TableRestoreStatusType)
+    , _trsTargetSchemaName      :: !(Maybe Text)
+    , _trsSnapshotIdentifier    :: !(Maybe Text)
+    , _trsSourceDatabaseName    :: !(Maybe Text)
     , _trsTableRestoreRequestId :: !(Maybe Text)
-    , _trsNewTableName :: !(Maybe Text)
-    , _trsTargetDatabaseName :: !(Maybe Text)
-    , _trsSourceSchemaName :: !(Maybe Text)
-    , _trsClusterIdentifier :: !(Maybe Text)
-    , _trsRequestTime :: !(Maybe ISO8601)
-    , _trsSourceTableName :: !(Maybe Text)
-    , _trsTotalDataInMegaBytes :: !(Maybe Integer)
-    , _trsProgressInMegaBytes :: !(Maybe Integer)
-    , _trsMessage :: !(Maybe Text)
+    , _trsNewTableName          :: !(Maybe Text)
+    , _trsTargetDatabaseName    :: !(Maybe Text)
+    , _trsSourceSchemaName      :: !(Maybe Text)
+    , _trsClusterIdentifier     :: !(Maybe Text)
+    , _trsRequestTime           :: !(Maybe ISO8601)
+    , _trsSourceTableName       :: !(Maybe Text)
+    , _trsTotalDataInMegaBytes  :: !(Maybe Integer)
+    , _trsProgressInMegaBytes   :: !(Maybe Integer)
+    , _trsMessage               :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3216,7 +3216,7 @@ instance NFData TableRestoreStatus
 data Tag =
   Tag'
     { _tagValue :: !(Maybe Text)
-    , _tagKey :: !(Maybe Text)
+    , _tagKey   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -3255,7 +3255,7 @@ instance ToQuery Tag where
 -- /See:/ 'taggedResource' smart constructor.
 data TaggedResource =
   TaggedResource'
-    { _trTag :: !(Maybe Tag)
+    { _trTag          :: !(Maybe Tag)
     , _trResourceType :: !(Maybe Text)
     , _trResourceName :: !(Maybe Text)
     }
@@ -3303,7 +3303,7 @@ instance NFData TaggedResource
 -- /See:/ 'vpcSecurityGroupMembership' smart constructor.
 data VPCSecurityGroupMembership =
   VPCSecurityGroupMembership'
-    { _vsgmStatus :: !(Maybe Text)
+    { _vsgmStatus             :: !(Maybe Text)
     , _vsgmVPCSecurityGroupId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

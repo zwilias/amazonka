@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,12 +58,12 @@ import Network.AWS.Response
 -- /See:/ 'listDiscoveredResources' smart constructor.
 data ListDiscoveredResources =
   ListDiscoveredResources'
-    { _ldrResourceIds :: !(Maybe [Text])
-    , _ldrResourceName :: !(Maybe Text)
+    { _ldrResourceIds             :: !(Maybe [Text])
+    , _ldrResourceName            :: !(Maybe Text)
     , _ldrIncludeDeletedResources :: !(Maybe Bool)
-    , _ldrNextToken :: !(Maybe Text)
-    , _ldrLimit :: !(Maybe Nat)
-    , _ldrResourceType :: !ResourceType
+    , _ldrNextToken               :: !(Maybe Text)
+    , _ldrLimit                   :: !(Maybe Nat)
+    , _ldrResourceType            :: !ResourceType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -175,9 +175,9 @@ instance ToQuery ListDiscoveredResources where
 -- /See:/ 'listDiscoveredResourcesResponse' smart constructor.
 data ListDiscoveredResourcesResponse =
   ListDiscoveredResourcesResponse'
-    { _ldrrsNextToken :: !(Maybe Text)
+    { _ldrrsNextToken           :: !(Maybe Text)
     , _ldrrsResourceIdentifiers :: !(Maybe [ResourceIdentifier])
-    , _ldrrsResponseStatus :: !Int
+    , _ldrrsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

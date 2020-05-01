@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ data UpdateUserProfile =
   UpdateUserProfile'
     { _uupSshPublicKey :: !(Maybe Text)
     , _uupEmailAddress :: !(Maybe (Sensitive Text))
-    , _uupDisplayName :: !(Maybe Text)
-    , _uupUserARN :: !Text
+    , _uupDisplayName  :: !(Maybe Text)
+    , _uupUserARN      :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -144,12 +144,12 @@ instance ToQuery UpdateUserProfile where
 data UpdateUserProfileResponse =
   UpdateUserProfileResponse'
     { _uuprsLastModifiedTimestamp :: !(Maybe POSIX)
-    , _uuprsSshPublicKey :: !(Maybe Text)
-    , _uuprsEmailAddress :: !(Maybe (Sensitive Text))
-    , _uuprsDisplayName :: !(Maybe Text)
-    , _uuprsCreatedTimestamp :: !(Maybe POSIX)
-    , _uuprsResponseStatus :: !Int
-    , _uuprsUserARN :: !Text
+    , _uuprsSshPublicKey          :: !(Maybe Text)
+    , _uuprsEmailAddress          :: !(Maybe (Sensitive Text))
+    , _uuprsDisplayName           :: !(Maybe Text)
+    , _uuprsCreatedTimestamp      :: !(Maybe POSIX)
+    , _uuprsResponseStatus        :: !Int
+    , _uuprsUserARN               :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

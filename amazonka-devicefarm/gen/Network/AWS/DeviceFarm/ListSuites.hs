@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,7 +53,7 @@ import Network.AWS.Response
 data ListSuites =
   ListSuites'
     { _lNextToken :: !(Maybe Text)
-    , _lArn :: !Text
+    , _lArn       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -122,8 +122,8 @@ instance ToQuery ListSuites where
 -- /See:/ 'listSuitesResponse' smart constructor.
 data ListSuitesResponse =
   ListSuitesResponse'
-    { _lsrsNextToken :: !(Maybe Text)
-    , _lsrsSuites :: !(Maybe [Suite])
+    { _lsrsNextToken      :: !(Maybe Text)
+    , _lsrsSuites         :: !(Maybe [Suite])
     , _lsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

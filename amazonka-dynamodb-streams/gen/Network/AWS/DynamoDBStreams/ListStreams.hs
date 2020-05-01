@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,8 +51,8 @@ import Network.AWS.Response
 data ListStreams =
   ListStreams'
     { _lsExclusiveStartStreamARN :: !(Maybe Text)
-    , _lsLimit :: !(Maybe Nat)
-    , _lsTableName :: !(Maybe Text)
+    , _lsLimit                   :: !(Maybe Nat)
+    , _lsTableName               :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -132,8 +132,8 @@ instance ToQuery ListStreams where
 data ListStreamsResponse =
   ListStreamsResponse'
     { _lsrsLastEvaluatedStreamARN :: !(Maybe Text)
-    , _lsrsStreams :: !(Maybe [Stream])
-    , _lsrsResponseStatus :: !Int
+    , _lsrsStreams                :: !(Maybe [Stream])
+    , _lsrsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

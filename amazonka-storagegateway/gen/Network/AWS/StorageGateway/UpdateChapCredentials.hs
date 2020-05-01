@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,10 +63,10 @@ import Network.AWS.StorageGateway.Types.Product
 -- /See:/ 'updateChapCredentials' smart constructor.
 data UpdateChapCredentials =
   UpdateChapCredentials'
-    { _uccSecretToAuthenticateTarget :: !(Maybe Text)
-    , _uccTargetARN :: !Text
+    { _uccSecretToAuthenticateTarget    :: !(Maybe Text)
+    , _uccTargetARN                     :: !Text
     , _uccSecretToAuthenticateInitiator :: !Text
-    , _uccInitiatorName :: !Text
+    , _uccInitiatorName                 :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -164,8 +164,8 @@ instance ToQuery UpdateChapCredentials where
 -- /See:/ 'updateChapCredentialsResponse' smart constructor.
 data UpdateChapCredentialsResponse =
   UpdateChapCredentialsResponse'
-    { _uccrsTargetARN :: !(Maybe Text)
-    , _uccrsInitiatorName :: !(Maybe Text)
+    { _uccrsTargetARN      :: !(Maybe Text)
+    , _uccrsInitiatorName  :: !(Maybe Text)
     , _uccrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

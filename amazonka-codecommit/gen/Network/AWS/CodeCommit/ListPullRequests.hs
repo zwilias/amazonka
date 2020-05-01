@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,11 +51,11 @@ import Network.AWS.Response
 -- | /See:/ 'listPullRequests' smart constructor.
 data ListPullRequests =
   ListPullRequests'
-    { _lprAuthorARN :: !(Maybe Text)
-    , _lprNextToken :: !(Maybe Text)
+    { _lprAuthorARN         :: !(Maybe Text)
+    , _lprNextToken         :: !(Maybe Text)
     , _lprPullRequestStatus :: !(Maybe PullRequestStatusEnum)
-    , _lprMaxResults :: !(Maybe Int)
-    , _lprRepositoryName :: !Text
+    , _lprMaxResults        :: !(Maybe Int)
+    , _lprRepositoryName    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -154,7 +154,7 @@ instance ToQuery ListPullRequests where
 -- | /See:/ 'listPullRequestsResponse' smart constructor.
 data ListPullRequestsResponse =
   ListPullRequestsResponse'
-    { _lprrsNextToken :: !(Maybe Text)
+    { _lprrsNextToken      :: !(Maybe Text)
     , _lprrsResponseStatus :: !Int
     , _lprrsPullRequestIds :: ![Text]
     }

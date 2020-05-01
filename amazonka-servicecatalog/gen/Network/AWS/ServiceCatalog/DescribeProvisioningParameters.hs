@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.ServiceCatalog.Types.Product
 -- | /See:/ 'describeProvisioningParameters' smart constructor.
 data DescribeProvisioningParameters =
   DescribeProvisioningParameters'
-    { _dppsAcceptLanguage :: !(Maybe Text)
-    , _dppsPathId :: !(Maybe Text)
-    , _dppsProductId :: !Text
+    { _dppsAcceptLanguage         :: !(Maybe Text)
+    , _dppsPathId                 :: !(Maybe Text)
+    , _dppsProductId              :: !Text
     , _dppsProvisioningArtifactId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

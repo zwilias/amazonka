@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,8 +50,8 @@ import Network.AWS.Response
 data DescribeNotificationConfigurations =
   DescribeNotificationConfigurations'
     { _dncAutoScalingGroupNames :: !(Maybe [Text])
-    , _dncNextToken :: !(Maybe Text)
-    , _dncMaxRecords :: !(Maybe Int)
+    , _dncNextToken             :: !(Maybe Text)
+    , _dncMaxRecords            :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -128,8 +128,8 @@ instance ToQuery DescribeNotificationConfigurations where
 -- | /See:/ 'describeNotificationConfigurationsResponse' smart constructor.
 data DescribeNotificationConfigurationsResponse =
   DescribeNotificationConfigurationsResponse'
-    { _dncrsNextToken :: !(Maybe Text)
-    , _dncrsResponseStatus :: !Int
+    { _dncrsNextToken                  :: !(Maybe Text)
+    , _dncrsResponseStatus             :: !Int
     , _dncrsNotificationConfigurations :: ![NotificationConfiguration]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

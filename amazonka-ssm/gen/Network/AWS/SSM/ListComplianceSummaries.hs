@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -46,8 +46,8 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'listComplianceSummaries' smart constructor.
 data ListComplianceSummaries =
   ListComplianceSummaries'
-    { _lcsFilters :: !(Maybe [ComplianceStringFilter])
-    , _lcsNextToken :: !(Maybe Text)
+    { _lcsFilters    :: !(Maybe [ComplianceStringFilter])
+    , _lcsNextToken  :: !(Maybe Text)
     , _lcsMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -119,9 +119,9 @@ instance ToQuery ListComplianceSummaries where
 -- | /See:/ 'listComplianceSummariesResponse' smart constructor.
 data ListComplianceSummariesResponse =
   ListComplianceSummariesResponse'
-    { _lcsrsNextToken :: !(Maybe Text)
+    { _lcsrsNextToken              :: !(Maybe Text)
     , _lcsrsComplianceSummaryItems :: !(Maybe [ComplianceSummaryItem])
-    , _lcsrsResponseStatus :: !Int
+    , _lcsrsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

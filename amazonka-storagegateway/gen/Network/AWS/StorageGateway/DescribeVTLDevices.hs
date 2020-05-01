@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -57,10 +57,10 @@ import Network.AWS.StorageGateway.Types.Product
 -- /See:/ 'describeVTLDevices' smart constructor.
 data DescribeVTLDevices =
   DescribeVTLDevices'
-    { _dvtldMarker :: !(Maybe Text)
-    , _dvtldLimit :: !(Maybe Nat)
+    { _dvtldMarker        :: !(Maybe Text)
+    , _dvtldLimit         :: !(Maybe Nat)
     , _dvtldVTLDeviceARNs :: !(Maybe [Text])
-    , _dvtldGatewayARN :: !Text
+    , _dvtldGatewayARN    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -157,9 +157,9 @@ instance ToQuery DescribeVTLDevices where
 -- /See:/ 'describeVTLDevicesResponse' smart constructor.
 data DescribeVTLDevicesResponse =
   DescribeVTLDevicesResponse'
-    { _dvtldrsVTLDevices :: !(Maybe [VTLDevice])
-    , _dvtldrsGatewayARN :: !(Maybe Text)
-    , _dvtldrsMarker :: !(Maybe Text)
+    { _dvtldrsVTLDevices     :: !(Maybe [VTLDevice])
+    , _dvtldrsGatewayARN     :: !(Maybe Text)
+    , _dvtldrsMarker         :: !(Maybe Text)
     , _dvtldrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

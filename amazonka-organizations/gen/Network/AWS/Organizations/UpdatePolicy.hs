@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,10 +48,10 @@ import Network.AWS.Response
 -- | /See:/ 'updatePolicy' smart constructor.
 data UpdatePolicy =
   UpdatePolicy'
-    { _upContent :: !(Maybe Text)
-    , _upName :: !(Maybe Text)
+    { _upContent     :: !(Maybe Text)
+    , _upName        :: !(Maybe Text)
     , _upDescription :: !(Maybe Text)
-    , _upPolicyId :: !Text
+    , _upPolicyId    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -133,7 +133,7 @@ instance ToQuery UpdatePolicy where
 -- | /See:/ 'updatePolicyResponse' smart constructor.
 data UpdatePolicyResponse =
   UpdatePolicyResponse'
-    { _uprsPolicy :: !(Maybe Policy)
+    { _uprsPolicy         :: !(Maybe Policy)
     , _uprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

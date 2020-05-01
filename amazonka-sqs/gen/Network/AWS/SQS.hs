@@ -206,8 +206,8 @@ import Network.AWS.SQS.DeleteQueue
 import Network.AWS.SQS.GetQueueAttributes
 import Network.AWS.SQS.GetQueueURL
 import Network.AWS.SQS.ListDeadLetterSourceQueues
-import Network.AWS.SQS.ListQueueTags
 import Network.AWS.SQS.ListQueues
+import Network.AWS.SQS.ListQueueTags
 import Network.AWS.SQS.PurgeQueue
 import Network.AWS.SQS.ReceiveMessage
 import Network.AWS.SQS.RemovePermission

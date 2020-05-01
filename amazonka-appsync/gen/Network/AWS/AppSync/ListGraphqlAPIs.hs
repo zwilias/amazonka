@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -45,7 +45,7 @@ import Network.AWS.Response
 -- | /See:/ 'listGraphqlAPIs' smart constructor.
 data ListGraphqlAPIs =
   ListGraphqlAPIs'
-    { _lgaNextToken :: !(Maybe Text)
+    { _lgaNextToken  :: !(Maybe Text)
     , _lgaMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -99,8 +99,8 @@ instance ToQuery ListGraphqlAPIs where
 -- | /See:/ 'listGraphqlAPIsResponse' smart constructor.
 data ListGraphqlAPIsResponse =
   ListGraphqlAPIsResponse'
-    { _lgarsNextToken :: !(Maybe Text)
-    , _lgarsGraphqlAPIs :: !(Maybe [GraphqlAPI])
+    { _lgarsNextToken      :: !(Maybe Text)
+    , _lgarsGraphqlAPIs    :: !(Maybe [GraphqlAPI])
     , _lgarsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

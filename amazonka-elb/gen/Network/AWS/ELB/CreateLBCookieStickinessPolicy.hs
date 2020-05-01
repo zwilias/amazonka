@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -55,8 +55,8 @@ import Network.AWS.Response
 data CreateLBCookieStickinessPolicy =
   CreateLBCookieStickinessPolicy'
     { _clbcspCookieExpirationPeriod :: !(Maybe Integer)
-    , _clbcspLoadBalancerName :: !Text
-    , _clbcspPolicyName :: !Text
+    , _clbcspLoadBalancerName       :: !Text
+    , _clbcspPolicyName             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

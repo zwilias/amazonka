@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -63,7 +63,7 @@ import Network.AWS.Translate.Types.Product
 -- | /See:/ 'translateText' smart constructor.
 data TranslateText =
   TranslateText'
-    { _ttText :: !Text
+    { _ttText               :: !Text
     , _ttSourceLanguageCode :: !Text
     , _ttTargetLanguageCode :: !Text
     }
@@ -146,8 +146,8 @@ instance ToQuery TranslateText where
 -- | /See:/ 'translateTextResponse' smart constructor.
 data TranslateTextResponse =
   TranslateTextResponse'
-    { _ttrsResponseStatus :: !Int
-    , _ttrsTranslatedText :: !Text
+    { _ttrsResponseStatus     :: !Int
+    , _ttrsTranslatedText     :: !Text
     , _ttrsSourceLanguageCode :: !Text
     , _ttrsTargetLanguageCode :: !Text
     }

@@ -98,9 +98,9 @@ module Network.AWS.SQS.Types
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.Sign.V4
 import Network.AWS.SQS.Types.Product
 import Network.AWS.SQS.Types.Sum
-import Network.AWS.Sign.V4
 
 -- | API version @2012-11-05@ of the Amazon Simple Queue Service SDK configuration.
 sqs :: Service

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,17 +53,17 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'createPatchBaseline' smart constructor.
 data CreatePatchBaseline =
   CreatePatchBaseline'
-    { _cpbApprovalRules :: !(Maybe PatchRuleGroup)
-    , _cpbClientToken :: !(Maybe Text)
-    , _cpbOperatingSystem :: !(Maybe OperatingSystem)
-    , _cpbGlobalFilters :: !(Maybe PatchFilterGroup)
-    , _cpbApprovedPatchesComplianceLevel :: !(Maybe PatchComplianceLevel)
-    , _cpbApprovedPatches :: !(Maybe [Text])
+    { _cpbApprovalRules                    :: !(Maybe PatchRuleGroup)
+    , _cpbClientToken                      :: !(Maybe Text)
+    , _cpbOperatingSystem                  :: !(Maybe OperatingSystem)
+    , _cpbGlobalFilters                    :: !(Maybe PatchFilterGroup)
+    , _cpbApprovedPatchesComplianceLevel   :: !(Maybe PatchComplianceLevel)
+    , _cpbApprovedPatches                  :: !(Maybe [Text])
     , _cpbApprovedPatchesEnableNonSecurity :: !(Maybe Bool)
-    , _cpbRejectedPatches :: !(Maybe [Text])
-    , _cpbSources :: !(Maybe [PatchSource])
-    , _cpbDescription :: !(Maybe Text)
-    , _cpbName :: !Text
+    , _cpbRejectedPatches                  :: !(Maybe [Text])
+    , _cpbSources                          :: !(Maybe [PatchSource])
+    , _cpbDescription                      :: !(Maybe Text)
+    , _cpbName                             :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -215,7 +215,7 @@ instance ToQuery CreatePatchBaseline where
 -- | /See:/ 'createPatchBaselineResponse' smart constructor.
 data CreatePatchBaselineResponse =
   CreatePatchBaselineResponse'
-    { _cpbrsBaselineId :: !(Maybe Text)
+    { _cpbrsBaselineId     :: !(Maybe Text)
     , _cpbrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

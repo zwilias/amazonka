@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,13 +49,13 @@ import Network.AWS.Response
 -- | /See:/ 'createInstances' smart constructor.
 data CreateInstances =
   CreateInstances'
-    { _ciCustomImageName :: !(Maybe Text)
-    , _ciUserData :: !(Maybe Text)
-    , _ciKeyPairName :: !(Maybe Text)
-    , _ciInstanceNames :: ![Text]
+    { _ciCustomImageName  :: !(Maybe Text)
+    , _ciUserData         :: !(Maybe Text)
+    , _ciKeyPairName      :: !(Maybe Text)
+    , _ciInstanceNames    :: ![Text]
     , _ciAvailabilityZone :: !Text
-    , _ciBlueprintId :: !Text
-    , _ciBundleId :: !Text
+    , _ciBlueprintId      :: !Text
+    , _ciBundleId         :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -166,7 +166,7 @@ instance ToQuery CreateInstances where
 -- | /See:/ 'createInstancesResponse' smart constructor.
 data CreateInstancesResponse =
   CreateInstancesResponse'
-    { _cirsOperations :: !(Maybe [Operation])
+    { _cirsOperations     :: !(Maybe [Operation])
     , _cirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -61,9 +61,9 @@ import Network.AWS.Response
 data CreateAccount =
   CreateAccount'
     { _caIAMUserAccessToBilling :: !(Maybe IAMUserAccessToBilling)
-    , _caRoleName :: !(Maybe Text)
-    , _caEmail :: !(Sensitive Text)
-    , _caAccountName :: !(Sensitive Text)
+    , _caRoleName               :: !(Maybe Text)
+    , _caEmail                  :: !(Sensitive Text)
+    , _caAccountName            :: !(Sensitive Text)
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -150,7 +150,7 @@ instance ToQuery CreateAccount where
 data CreateAccountResponse =
   CreateAccountResponse'
     { _carsCreateAccountStatus :: !(Maybe CreateAccountStatus)
-    , _carsResponseStatus :: !Int
+    , _carsResponseStatus      :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

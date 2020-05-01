@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -165,11 +165,11 @@ instance ToQuery DiscoverInputSchema where
 -- /See:/ 'discoverInputSchemaResponse' smart constructor.
 data DiscoverInputSchemaResponse =
   DiscoverInputSchemaResponse'
-    { _disrsRawInputRecords :: !(Maybe [Text])
-    , _disrsInputSchema :: !(Maybe SourceSchema)
+    { _disrsRawInputRecords       :: !(Maybe [Text])
+    , _disrsInputSchema           :: !(Maybe SourceSchema)
     , _disrsProcessedInputRecords :: !(Maybe [Text])
-    , _disrsParsedInputRecords :: !(Maybe [[Text]])
-    , _disrsResponseStatus :: !Int
+    , _disrsParsedInputRecords    :: !(Maybe [[Text]])
+    , _disrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

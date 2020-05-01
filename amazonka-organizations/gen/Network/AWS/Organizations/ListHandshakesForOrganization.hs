@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,8 +53,8 @@ import Network.AWS.Response
 -- | /See:/ 'listHandshakesForOrganization' smart constructor.
 data ListHandshakesForOrganization =
   ListHandshakesForOrganization'
-    { _lhfoNextToken :: !(Maybe Text)
-    , _lhfoFilter :: !(Maybe HandshakeFilter)
+    { _lhfoNextToken  :: !(Maybe Text)
+    , _lhfoFilter     :: !(Maybe HandshakeFilter)
     , _lhfoMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -134,8 +134,8 @@ instance ToQuery ListHandshakesForOrganization where
 -- | /See:/ 'listHandshakesForOrganizationResponse' smart constructor.
 data ListHandshakesForOrganizationResponse =
   ListHandshakesForOrganizationResponse'
-    { _lhforsHandshakes :: !(Maybe [Handshake])
-    , _lhforsNextToken :: !(Maybe Text)
+    { _lhforsHandshakes     :: !(Maybe [Handshake])
+    , _lhforsNextToken      :: !(Maybe Text)
     , _lhforsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

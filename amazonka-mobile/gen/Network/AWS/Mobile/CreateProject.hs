@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -50,9 +50,9 @@ import Network.AWS.Response
 -- /See:/ 'createProject' smart constructor.
 data CreateProject =
   CreateProject'
-    { _cpContents :: !(Maybe ByteString)
-    , _cpName :: !(Maybe Text)
-    , _cpRegion :: !(Maybe Text)
+    { _cpContents   :: !(Maybe ByteString)
+    , _cpName       :: !(Maybe Text)
+    , _cpRegion     :: !(Maybe Text)
     , _cpSnapshotId :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -128,7 +128,7 @@ instance ToQuery CreateProject where
 -- /See:/ 'createProjectResponse' smart constructor.
 data CreateProjectResponse =
   CreateProjectResponse'
-    { _cprsDetails :: !(Maybe ProjectDetails)
+    { _cprsDetails        :: !(Maybe ProjectDetails)
     , _cprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

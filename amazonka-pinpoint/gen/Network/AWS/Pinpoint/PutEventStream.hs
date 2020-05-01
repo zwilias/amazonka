@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -42,7 +42,7 @@ import Network.AWS.Response
 -- | /See:/ 'putEventStream' smart constructor.
 data PutEventStream =
   PutEventStream'
-    { _pesApplicationId :: !Text
+    { _pesApplicationId    :: !Text
     , _pesWriteEventStream :: !WriteEventStream
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -105,7 +105,7 @@ instance ToQuery PutEventStream where
 data PutEventStreamResponse =
   PutEventStreamResponse'
     { _pesrsResponseStatus :: !Int
-    , _pesrsEventStream :: !EventStream
+    , _pesrsEventStream    :: !EventStream
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

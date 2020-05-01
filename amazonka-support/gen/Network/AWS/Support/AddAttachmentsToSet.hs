@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,7 +52,7 @@ import Network.AWS.Support.Types.Product
 data AddAttachmentsToSet =
   AddAttachmentsToSet'
     { _aatsAttachmentSetId :: !(Maybe Text)
-    , _aatsAttachments :: ![Attachment]
+    , _aatsAttachments     :: ![Attachment]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -122,9 +122,9 @@ instance ToQuery AddAttachmentsToSet where
 -- /See:/ 'addAttachmentsToSetResponse' smart constructor.
 data AddAttachmentsToSetResponse =
   AddAttachmentsToSetResponse'
-    { _aatsrsExpiryTime :: !(Maybe Text)
+    { _aatsrsExpiryTime      :: !(Maybe Text)
     , _aatsrsAttachmentSetId :: !(Maybe Text)
-    , _aatsrsResponseStatus :: !Int
+    , _aatsrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

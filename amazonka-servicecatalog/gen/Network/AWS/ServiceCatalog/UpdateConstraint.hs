@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,8 +48,8 @@ import Network.AWS.ServiceCatalog.Types.Product
 data UpdateConstraint =
   UpdateConstraint'
     { _ucAcceptLanguage :: !(Maybe Text)
-    , _ucDescription :: !(Maybe Text)
-    , _ucId :: !Text
+    , _ucDescription    :: !(Maybe Text)
+    , _ucId             :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -123,10 +123,10 @@ instance ToQuery UpdateConstraint where
 -- | /See:/ 'updateConstraintResponse' smart constructor.
 data UpdateConstraintResponse =
   UpdateConstraintResponse'
-    { _ucrsStatus :: !(Maybe RequestStatus)
-    , _ucrsConstraintDetail :: !(Maybe ConstraintDetail)
+    { _ucrsStatus               :: !(Maybe RequestStatus)
+    , _ucrsConstraintDetail     :: !(Maybe ConstraintDetail)
     , _ucrsConstraintParameters :: !(Maybe Text)
-    , _ucrsResponseStatus :: !Int
+    , _ucrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

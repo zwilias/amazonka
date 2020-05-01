@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -71,9 +71,9 @@ import Network.AWS.Route53AutoNaming.Types.Product
 data RegisterInstance =
   RegisterInstance'
     { _riCreatorRequestId :: !(Maybe Text)
-    , _riServiceId :: !Text
-    , _riInstanceId :: !Text
-    , _riAttributes :: !(Map Text Text)
+    , _riServiceId        :: !Text
+    , _riInstanceId       :: !Text
+    , _riAttributes       :: !(Map Text Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -158,7 +158,7 @@ instance ToQuery RegisterInstance where
 -- | /See:/ 'registerInstanceResponse' smart constructor.
 data RegisterInstanceResponse =
   RegisterInstanceResponse'
-    { _rirsOperationId :: !(Maybe Text)
+    { _rirsOperationId    :: !(Maybe Text)
     , _rirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

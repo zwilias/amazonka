@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -93,14 +93,14 @@ import Network.AWS.Response
 -- | /See:/ 'postContent' smart constructor.
 data PostContent =
   PostContent'
-    { _pcAccept :: !(Maybe Text)
+    { _pcAccept            :: !(Maybe Text)
     , _pcRequestAttributes :: !(Maybe (Sensitive Text))
     , _pcSessionAttributes :: !(Maybe (Sensitive Text))
-    , _pcBotName :: !Text
-    , _pcBotAlias :: !Text
-    , _pcUserId :: !Text
-    , _pcContentType :: !Text
-    , _pcInputStream :: !HashedBody
+    , _pcBotName           :: !Text
+    , _pcBotAlias          :: !Text
+    , _pcUserId            :: !Text
+    , _pcContentType       :: !Text
+    , _pcInputStream       :: !HashedBody
     }
   deriving (Show, Generic)
 
@@ -226,17 +226,17 @@ instance ToQuery PostContent where
 -- | /See:/ 'postContentResponse' smart constructor.
 data PostContentResponse =
   PostContentResponse'
-    { _pcrsSlots :: !(Maybe Text)
-    , _pcrsIntentName :: !(Maybe Text)
-    , _pcrsDialogState :: !(Maybe DialogState)
-    , _pcrsInputTranscript :: !(Maybe Text)
-    , _pcrsMessageFormat :: !(Maybe MessageFormatType)
-    , _pcrsMessage :: !(Maybe (Sensitive Text))
-    , _pcrsSlotToElicit :: !(Maybe Text)
-    , _pcrsContentType :: !(Maybe Text)
+    { _pcrsSlots             :: !(Maybe Text)
+    , _pcrsIntentName        :: !(Maybe Text)
+    , _pcrsDialogState       :: !(Maybe DialogState)
+    , _pcrsInputTranscript   :: !(Maybe Text)
+    , _pcrsMessageFormat     :: !(Maybe MessageFormatType)
+    , _pcrsMessage           :: !(Maybe (Sensitive Text))
+    , _pcrsSlotToElicit      :: !(Maybe Text)
+    , _pcrsContentType       :: !(Maybe Text)
     , _pcrsSessionAttributes :: !(Maybe Text)
-    , _pcrsResponseStatus :: !Int
-    , _pcrsAudioStream :: !RsBody
+    , _pcrsResponseStatus    :: !Int
+    , _pcrsAudioStream       :: !RsBody
     }
   deriving (Show, Generic)
 

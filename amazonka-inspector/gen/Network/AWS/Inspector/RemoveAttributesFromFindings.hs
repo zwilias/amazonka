@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -44,7 +44,7 @@ import Network.AWS.Response
 -- | /See:/ 'removeAttributesFromFindings' smart constructor.
 data RemoveAttributesFromFindings =
   RemoveAttributesFromFindings'
-    { _raffFindingARNs :: !(List1 Text)
+    { _raffFindingARNs   :: !(List1 Text)
     , _raffAttributeKeys :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -113,7 +113,7 @@ instance ToQuery RemoveAttributesFromFindings where
 data RemoveAttributesFromFindingsResponse =
   RemoveAttributesFromFindingsResponse'
     { _raffrsResponseStatus :: !Int
-    , _raffrsFailedItems :: !(Map Text FailedItemDetails)
+    , _raffrsFailedItems    :: !(Map Text FailedItemDetails)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

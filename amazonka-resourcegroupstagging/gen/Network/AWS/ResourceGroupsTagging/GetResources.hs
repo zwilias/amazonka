@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,11 +51,11 @@ import Network.AWS.Response
 -- | /See:/ 'getResources' smart constructor.
 data GetResources =
   GetResources'
-    { _grPaginationToken :: !(Maybe Text)
-    , _grResourcesPerPage :: !(Maybe Int)
+    { _grPaginationToken     :: !(Maybe Text)
+    , _grResourcesPerPage    :: !(Maybe Int)
     , _grResourceTypeFilters :: !(Maybe [Text])
-    , _grTagFilters :: !(Maybe [TagFilter])
-    , _grTagsPerPage :: !(Maybe Int)
+    , _grTagFilters          :: !(Maybe [TagFilter])
+    , _grTagsPerPage         :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -155,9 +155,9 @@ instance ToQuery GetResources where
 -- | /See:/ 'getResourcesResponse' smart constructor.
 data GetResourcesResponse =
   GetResourcesResponse'
-    { _grrsPaginationToken :: !(Maybe Text)
+    { _grrsPaginationToken        :: !(Maybe Text)
     , _grrsResourceTagMappingList :: !(Maybe [ResourceTagMapping])
-    , _grrsResponseStatus :: !Int
+    , _grrsResponseStatus         :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

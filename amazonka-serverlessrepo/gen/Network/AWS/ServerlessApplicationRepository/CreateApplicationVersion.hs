@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,10 +52,10 @@ import Network.AWS.ServerlessApplicationRepository.Types.Product
 -- | /See:/ 'createApplicationVersion' smart constructor.
 data CreateApplicationVersion =
   CreateApplicationVersion'
-    { _cavSourceCodeURL :: !(Maybe Text)
-    , _cavTemplateBody :: !(Maybe Text)
-    , _cavTemplateURL :: !(Maybe Text)
-    , _cavApplicationId :: !Text
+    { _cavSourceCodeURL   :: !(Maybe Text)
+    , _cavTemplateBody    :: !(Maybe Text)
+    , _cavTemplateURL     :: !(Maybe Text)
+    , _cavApplicationId   :: !Text
     , _cavSemanticVersion :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -154,13 +154,13 @@ instance ToQuery CreateApplicationVersion where
 -- | /See:/ 'createApplicationVersionResponse' smart constructor.
 data CreateApplicationVersionResponse =
   CreateApplicationVersionResponse'
-    { _cavrsCreationTime :: !(Maybe Text)
+    { _cavrsCreationTime         :: !(Maybe Text)
     , _cavrsParameterDefinitions :: !(Maybe [ParameterDefinition])
-    , _cavrsSemanticVersion :: !(Maybe Text)
-    , _cavrsSourceCodeURL :: !(Maybe Text)
-    , _cavrsApplicationId :: !(Maybe Text)
-    , _cavrsTemplateURL :: !(Maybe Text)
-    , _cavrsResponseStatus :: !Int
+    , _cavrsSemanticVersion      :: !(Maybe Text)
+    , _cavrsSourceCodeURL        :: !(Maybe Text)
+    , _cavrsApplicationId        :: !(Maybe Text)
+    , _cavrsTemplateURL          :: !(Maybe Text)
+    , _cavrsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

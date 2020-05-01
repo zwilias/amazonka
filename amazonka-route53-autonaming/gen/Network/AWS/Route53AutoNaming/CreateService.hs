@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,12 +58,12 @@ import Network.AWS.Route53AutoNaming.Types.Product
 -- | /See:/ 'createService' smart constructor.
 data CreateService =
   CreateService'
-    { _csHealthCheckConfig :: !(Maybe HealthCheckConfig)
-    , _csCreatorRequestId :: !(Maybe Text)
+    { _csHealthCheckConfig       :: !(Maybe HealthCheckConfig)
+    , _csCreatorRequestId        :: !(Maybe Text)
     , _csHealthCheckCustomConfig :: !(Maybe HealthCheckCustomConfig)
-    , _csDescription :: !(Maybe Text)
-    , _csName :: !Text
-    , _csDNSConfig :: !DNSConfig
+    , _csDescription             :: !(Maybe Text)
+    , _csName                    :: !Text
+    , _csDNSConfig               :: !DNSConfig
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -165,7 +165,7 @@ instance ToQuery CreateService where
 -- | /See:/ 'createServiceResponse' smart constructor.
 data CreateServiceResponse =
   CreateServiceResponse'
-    { _csrsService :: !(Maybe ServiceInfo)
+    { _csrsService        :: !(Maybe ServiceInfo)
     , _csrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

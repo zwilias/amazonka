@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,8 +52,8 @@ import Network.AWS.Response
 -- /See:/ 'listOnPremisesInstances' smart constructor.
 data ListOnPremisesInstances =
   ListOnPremisesInstances'
-    { _lopiTagFilters :: !(Maybe [TagFilter])
-    , _lopiNextToken :: !(Maybe Text)
+    { _lopiTagFilters         :: !(Maybe [TagFilter])
+    , _lopiNextToken          :: !(Maybe Text)
     , _lopiRegistrationStatus :: !(Maybe RegistrationStatus)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -135,8 +135,8 @@ instance ToQuery ListOnPremisesInstances where
 -- /See:/ 'listOnPremisesInstancesResponse' smart constructor.
 data ListOnPremisesInstancesResponse =
   ListOnPremisesInstancesResponse'
-    { _lopirsNextToken :: !(Maybe Text)
-    , _lopirsInstanceNames :: !(Maybe [Text])
+    { _lopirsNextToken      :: !(Maybe Text)
+    , _lopirsInstanceNames  :: !(Maybe [Text])
     , _lopirsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

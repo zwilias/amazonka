@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -49,9 +49,9 @@ import Network.AWS.Response
 -- | /See:/ 'describeAutoScalingInstances' smart constructor.
 data DescribeAutoScalingInstances =
   DescribeAutoScalingInstances'
-    { _dasiNextToken :: !(Maybe Text)
+    { _dasiNextToken   :: !(Maybe Text)
     , _dasiInstanceIds :: !(Maybe [Text])
-    , _dasiMaxRecords :: !(Maybe Int)
+    , _dasiMaxRecords  :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -126,9 +126,9 @@ instance ToQuery DescribeAutoScalingInstances where
 -- | /See:/ 'describeAutoScalingInstancesResponse' smart constructor.
 data DescribeAutoScalingInstancesResponse =
   DescribeAutoScalingInstancesResponse'
-    { _dasirsNextToken :: !(Maybe Text)
+    { _dasirsNextToken            :: !(Maybe Text)
     , _dasirsAutoScalingInstances :: !(Maybe [AutoScalingInstanceDetails])
-    , _dasirsResponseStatus :: !Int
+    , _dasirsResponseStatus       :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

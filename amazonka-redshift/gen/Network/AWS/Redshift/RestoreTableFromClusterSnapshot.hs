@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -56,14 +56,14 @@ import Network.AWS.Response
 -- /See:/ 'restoreTableFromClusterSnapshot' smart constructor.
 data RestoreTableFromClusterSnapshot =
   RestoreTableFromClusterSnapshot'
-    { _rtfcsTargetSchemaName :: !(Maybe Text)
+    { _rtfcsTargetSchemaName   :: !(Maybe Text)
     , _rtfcsTargetDatabaseName :: !(Maybe Text)
-    , _rtfcsSourceSchemaName :: !(Maybe Text)
-    , _rtfcsClusterIdentifier :: !Text
+    , _rtfcsSourceSchemaName   :: !(Maybe Text)
+    , _rtfcsClusterIdentifier  :: !Text
     , _rtfcsSnapshotIdentifier :: !Text
     , _rtfcsSourceDatabaseName :: !Text
-    , _rtfcsSourceTableName :: !Text
-    , _rtfcsNewTableName :: !Text
+    , _rtfcsSourceTableName    :: !Text
+    , _rtfcsNewTableName       :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -184,7 +184,7 @@ instance ToQuery RestoreTableFromClusterSnapshot where
 data RestoreTableFromClusterSnapshotResponse =
   RestoreTableFromClusterSnapshotResponse'
     { _rtfcsrsTableRestoreStatus :: !(Maybe TableRestoreStatus)
-    , _rtfcsrsResponseStatus :: !Int
+    , _rtfcsrsResponseStatus     :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -69,15 +69,15 @@ import Network.AWS.SES.Types.Product
 -- /See:/ 'sendEmail' smart constructor.
 data SendEmail =
   SendEmail'
-    { _seReturnPath :: !(Maybe Text)
+    { _seReturnPath           :: !(Maybe Text)
     , _seConfigurationSetName :: !(Maybe Text)
-    , _seSourceARN :: !(Maybe Text)
-    , _seReturnPathARN :: !(Maybe Text)
-    , _seTags :: !(Maybe [MessageTag])
-    , _seReplyToAddresses :: !(Maybe [Text])
-    , _seSource :: !Text
-    , _seDestination :: !Destination
-    , _seMessage :: !Message
+    , _seSourceARN            :: !(Maybe Text)
+    , _seReturnPathARN        :: !(Maybe Text)
+    , _seTags                 :: !(Maybe [MessageTag])
+    , _seReplyToAddresses     :: !(Maybe [Text])
+    , _seSource               :: !Text
+    , _seDestination          :: !Destination
+    , _seMessage              :: !Message
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -203,7 +203,7 @@ instance ToQuery SendEmail where
 data SendEmailResponse =
   SendEmailResponse'
     { _sersResponseStatus :: !Int
-    , _sersMessageId :: !Text
+    , _sersMessageId      :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

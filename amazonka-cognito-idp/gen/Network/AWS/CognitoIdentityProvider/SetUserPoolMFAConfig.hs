@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,10 +48,10 @@ import Network.AWS.Response
 -- | /See:/ 'setUserPoolMFAConfig' smart constructor.
 data SetUserPoolMFAConfig =
   SetUserPoolMFAConfig'
-    { _supmcSmsMFAConfiguration :: !(Maybe SmsMFAConfigType)
+    { _supmcSmsMFAConfiguration           :: !(Maybe SmsMFAConfigType)
     , _supmcSoftwareTokenMFAConfiguration :: !(Maybe SoftwareTokenMFAConfigType)
-    , _supmcMFAConfiguration :: !(Maybe UserPoolMFAType)
-    , _supmcUserPoolId :: !Text
+    , _supmcMFAConfiguration              :: !(Maybe UserPoolMFAType)
+    , _supmcUserPoolId                    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

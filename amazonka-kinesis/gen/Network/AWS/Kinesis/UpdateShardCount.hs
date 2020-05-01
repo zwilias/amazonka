@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -69,9 +69,9 @@ import Network.AWS.Response
 -- | /See:/ 'updateShardCount' smart constructor.
 data UpdateShardCount =
   UpdateShardCount'
-    { _uscStreamName :: !Text
+    { _uscStreamName       :: !Text
     , _uscTargetShardCount :: !Nat
-    , _uscScalingType :: !ScalingType
+    , _uscScalingType      :: !ScalingType
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -150,10 +150,10 @@ instance ToQuery UpdateShardCount where
 -- | /See:/ 'updateShardCountResponse' smart constructor.
 data UpdateShardCountResponse =
   UpdateShardCountResponse'
-    { _uscrsTargetShardCount :: !(Maybe Nat)
-    , _uscrsStreamName :: !(Maybe Text)
+    { _uscrsTargetShardCount  :: !(Maybe Nat)
+    , _uscrsStreamName        :: !(Maybe Text)
     , _uscrsCurrentShardCount :: !(Maybe Nat)
-    , _uscrsResponseStatus :: !Int
+    , _uscrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

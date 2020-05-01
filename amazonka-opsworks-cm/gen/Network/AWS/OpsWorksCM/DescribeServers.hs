@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,7 +51,7 @@ import Network.AWS.Response
 data DescribeServers =
   DescribeServers'
     { _dssServerName :: !(Maybe Text)
-    , _dssNextToken :: !(Maybe Text)
+    , _dssNextToken  :: !(Maybe Text)
     , _dssMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -127,8 +127,8 @@ instance ToQuery DescribeServers where
 -- | /See:/ 'describeServersResponse' smart constructor.
 data DescribeServersResponse =
   DescribeServersResponse'
-    { _dssrsServers :: !(Maybe [Server])
-    , _dssrsNextToken :: !(Maybe Text)
+    { _dssrsServers        :: !(Maybe [Server])
+    , _dssrsNextToken      :: !(Maybe Text)
     , _dssrsResponseStatus :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)

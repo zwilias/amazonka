@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,9 +52,9 @@ import Network.AWS.Response
 data DescribeTableRestoreStatus =
   DescribeTableRestoreStatus'
     { _dtrssTableRestoreRequestId :: !(Maybe Text)
-    , _dtrssClusterIdentifier :: !(Maybe Text)
-    , _dtrssMarker :: !(Maybe Text)
-    , _dtrssMaxRecords :: !(Maybe Int)
+    , _dtrssClusterIdentifier     :: !(Maybe Text)
+    , _dtrssMarker                :: !(Maybe Text)
+    , _dtrssMaxRecords            :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -136,9 +136,9 @@ instance ToQuery DescribeTableRestoreStatus where
 -- /See:/ 'describeTableRestoreStatusResponse' smart constructor.
 data DescribeTableRestoreStatusResponse =
   DescribeTableRestoreStatusResponse'
-    { _dtrsrsMarker :: !(Maybe Text)
+    { _dtrsrsMarker                    :: !(Maybe Text)
     , _dtrsrsTableRestoreStatusDetails :: !(Maybe [TableRestoreStatus])
-    , _dtrsrsResponseStatus :: !Int
+    , _dtrsrsResponseStatus            :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

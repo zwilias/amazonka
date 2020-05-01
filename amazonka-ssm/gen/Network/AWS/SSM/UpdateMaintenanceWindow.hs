@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -58,15 +58,15 @@ import Network.AWS.SSM.Types.Product
 -- | /See:/ 'updateMaintenanceWindow' smart constructor.
 data UpdateMaintenanceWindow =
   UpdateMaintenanceWindow'
-    { _umwReplace :: !(Maybe Bool)
-    , _umwEnabled :: !(Maybe Bool)
-    , _umwSchedule :: !(Maybe Text)
-    , _umwName :: !(Maybe Text)
-    , _umwCutoff :: !(Maybe Nat)
+    { _umwReplace                  :: !(Maybe Bool)
+    , _umwEnabled                  :: !(Maybe Bool)
+    , _umwSchedule                 :: !(Maybe Text)
+    , _umwName                     :: !(Maybe Text)
+    , _umwCutoff                   :: !(Maybe Nat)
     , _umwAllowUnassociatedTargets :: !(Maybe Bool)
-    , _umwDescription :: !(Maybe (Sensitive Text))
-    , _umwDuration :: !(Maybe Nat)
-    , _umwWindowId :: !Text
+    , _umwDescription              :: !(Maybe (Sensitive Text))
+    , _umwDuration                 :: !(Maybe Nat)
+    , _umwWindowId                 :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
@@ -199,15 +199,15 @@ instance ToQuery UpdateMaintenanceWindow where
 -- | /See:/ 'updateMaintenanceWindowResponse' smart constructor.
 data UpdateMaintenanceWindowResponse =
   UpdateMaintenanceWindowResponse'
-    { _umwrsEnabled :: !(Maybe Bool)
-    , _umwrsSchedule :: !(Maybe Text)
-    , _umwrsName :: !(Maybe Text)
-    , _umwrsCutoff :: !(Maybe Nat)
+    { _umwrsEnabled                  :: !(Maybe Bool)
+    , _umwrsSchedule                 :: !(Maybe Text)
+    , _umwrsName                     :: !(Maybe Text)
+    , _umwrsCutoff                   :: !(Maybe Nat)
     , _umwrsAllowUnassociatedTargets :: !(Maybe Bool)
-    , _umwrsDescription :: !(Maybe (Sensitive Text))
-    , _umwrsDuration :: !(Maybe Nat)
-    , _umwrsWindowId :: !(Maybe Text)
-    , _umwrsResponseStatus :: !Int
+    , _umwrsDescription              :: !(Maybe (Sensitive Text))
+    , _umwrsDuration                 :: !(Maybe Nat)
+    , _umwrsWindowId                 :: !(Maybe Text)
+    , _umwrsResponseStatus           :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 

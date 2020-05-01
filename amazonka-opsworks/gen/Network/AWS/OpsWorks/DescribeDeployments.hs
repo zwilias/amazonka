@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -47,9 +47,9 @@ import Network.AWS.Response
 -- | /See:/ 'describeDeployments' smart constructor.
 data DescribeDeployments =
   DescribeDeployments'
-    { _ddAppId :: !(Maybe Text)
+    { _ddAppId         :: !(Maybe Text)
     , _ddDeploymentIds :: !(Maybe [Text])
-    , _ddStackId :: !(Maybe Text)
+    , _ddStackId       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -124,7 +124,7 @@ instance ToQuery DescribeDeployments where
 -- /See:/ 'describeDeploymentsResponse' smart constructor.
 data DescribeDeploymentsResponse =
   DescribeDeploymentsResponse'
-    { _ddrsDeployments :: !(Maybe [Deployment])
+    { _ddrsDeployments    :: !(Maybe [Deployment])
     , _ddrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

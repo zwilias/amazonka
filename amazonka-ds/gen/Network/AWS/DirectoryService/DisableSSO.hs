@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -48,8 +48,8 @@ import Network.AWS.Response
 -- /See:/ 'disableSSO' smart constructor.
 data DisableSSO =
   DisableSSO'
-    { _dssoUserName :: !(Maybe Text)
-    , _dssoPassword :: !(Maybe (Sensitive Text))
+    { _dssoUserName    :: !(Maybe Text)
+    , _dssoPassword    :: !(Maybe (Sensitive Text))
     , _dssoDirectoryId :: !Text
     }
   deriving (Eq, Show, Data, Typeable, Generic)

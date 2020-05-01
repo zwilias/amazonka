@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -93,7 +93,7 @@ instance ToQuery GetCrawler where
 -- | /See:/ 'getCrawlerResponse' smart constructor.
 data GetCrawlerResponse =
   GetCrawlerResponse'
-    { _getersCrawler :: !(Maybe Crawler)
+    { _getersCrawler        :: !(Maybe Crawler)
     , _getersResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

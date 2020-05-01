@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -105,9 +105,9 @@ instance ToQuery GetInstanceSnapshots where
 -- | /See:/ 'getInstanceSnapshotsResponse' smart constructor.
 data GetInstanceSnapshotsResponse =
   GetInstanceSnapshotsResponse'
-    { _gissrsNextPageToken :: !(Maybe Text)
+    { _gissrsNextPageToken     :: !(Maybe Text)
     , _gissrsInstanceSnapshots :: !(Maybe [InstanceSnapshot])
-    , _gissrsResponseStatus :: !Int
+    , _gissrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

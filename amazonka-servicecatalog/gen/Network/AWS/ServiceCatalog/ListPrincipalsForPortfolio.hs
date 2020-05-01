@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -51,9 +51,9 @@ import Network.AWS.ServiceCatalog.Types.Product
 data ListPrincipalsForPortfolio =
   ListPrincipalsForPortfolio'
     { _lpfpAcceptLanguage :: !(Maybe Text)
-    , _lpfpPageToken :: !(Maybe Text)
-    , _lpfpPageSize :: !(Maybe Nat)
-    , _lpfpPortfolioId :: !Text
+    , _lpfpPageToken      :: !(Maybe Text)
+    , _lpfpPageSize       :: !(Maybe Nat)
+    , _lpfpPortfolioId    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -144,8 +144,8 @@ instance ToQuery ListPrincipalsForPortfolio where
 -- | /See:/ 'listPrincipalsForPortfolioResponse' smart constructor.
 data ListPrincipalsForPortfolioResponse =
   ListPrincipalsForPortfolioResponse'
-    { _lisrsNextPageToken :: !(Maybe Text)
-    , _lisrsPrincipals :: !(Maybe [Principal])
+    { _lisrsNextPageToken  :: !(Maybe Text)
+    , _lisrsPrincipals     :: !(Maybe [Principal])
     , _lisrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

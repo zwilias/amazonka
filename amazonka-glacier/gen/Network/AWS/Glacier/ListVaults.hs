@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -59,8 +59,8 @@ import Network.AWS.Response
 -- /See:/ 'listVaults' smart constructor.
 data ListVaults =
   ListVaults'
-    { _lvMarker :: !(Maybe Text)
-    , _lvLimit :: !(Maybe Text)
+    { _lvMarker    :: !(Maybe Text)
+    , _lvLimit     :: !(Maybe Text)
     , _lvAccountId :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -130,8 +130,8 @@ instance ToQuery ListVaults where
 -- /See:/ 'listVaultsResponse' smart constructor.
 data ListVaultsResponse =
   ListVaultsResponse'
-    { _lvrsMarker :: !(Maybe Text)
-    , _lvrsVaultList :: !(Maybe [DescribeVaultOutput])
+    { _lvrsMarker         :: !(Maybe Text)
+    , _lvrsVaultList      :: !(Maybe [DescribeVaultOutput])
     , _lvrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

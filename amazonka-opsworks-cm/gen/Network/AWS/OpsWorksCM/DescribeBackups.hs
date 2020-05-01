@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -52,8 +52,8 @@ import Network.AWS.Response
 data DescribeBackups =
   DescribeBackups'
     { _dServerName :: !(Maybe Text)
-    , _dBackupId :: !(Maybe Text)
-    , _dNextToken :: !(Maybe Text)
+    , _dBackupId   :: !(Maybe Text)
+    , _dNextToken  :: !(Maybe Text)
     , _dMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -136,8 +136,8 @@ instance ToQuery DescribeBackups where
 -- | /See:/ 'describeBackupsResponse' smart constructor.
 data DescribeBackupsResponse =
   DescribeBackupsResponse'
-    { _drsBackups :: !(Maybe [Backup])
-    , _drsNextToken :: !(Maybe Text)
+    { _drsBackups        :: !(Maybe [Backup])
+    , _drsNextToken      :: !(Maybe Text)
     , _drsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)

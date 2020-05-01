@@ -1,8 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE TypeFamilies       #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
@@ -53,9 +53,9 @@ import Network.AWS.Response
 data GetSDK =
   GetSDK'
     { _gsdkParameters :: !(Maybe (Map Text Text))
-    , _gsdkRestAPIId :: !Text
-    , _gsdkStageName :: !Text
-    , _gsdkSdkType :: !Text
+    , _gsdkRestAPIId  :: !Text
+    , _gsdkStageName  :: !Text
+    , _gsdkSdkType    :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -142,10 +142,10 @@ instance ToQuery GetSDK where
 -- /See:/ 'getSDKResponse' smart constructor.
 data GetSDKResponse =
   GetSDKResponse'
-    { _gsdkrsBody :: !(Maybe ByteString)
+    { _gsdkrsBody               :: !(Maybe ByteString)
     , _gsdkrsContentDisposition :: !(Maybe Text)
-    , _gsdkrsContentType :: !(Maybe Text)
-    , _gsdkrsResponseStatus :: !Int
+    , _gsdkrsContentType        :: !(Maybe Text)
+    , _gsdkrsResponseStatus     :: !Int
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
