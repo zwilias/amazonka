@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.ResourceGroupsTagging.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,44 +10,37 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.ResourceGroupsTagging.Types
-    (
     -- * Service Configuration
-      resourceGroupsTagging
-
+  ( resourceGroupsTagging
     -- * Errors
-    , _InvalidParameterException
-    , _ThrottledException
-    , _PaginationTokenExpiredException
-    , _InternalServiceException
-
+  , _InvalidParameterException
+  , _ThrottledException
+  , _PaginationTokenExpiredException
+  , _InternalServiceException
     -- * ResourceErrorCode
-    , ResourceErrorCode (..)
-
+  , ResourceErrorCode(..)
     -- * FailureInfo
-    , FailureInfo
-    , failureInfo
-    , fiErrorCode
-    , fiErrorMessage
-    , fiStatusCode
-
+  , FailureInfo
+  , failureInfo
+  , fiErrorCode
+  , fiErrorMessage
+  , fiStatusCode
     -- * ResourceTagMapping
-    , ResourceTagMapping
-    , resourceTagMapping
-    , rtmResourceARN
-    , rtmTags
-
+  , ResourceTagMapping
+  , resourceTagMapping
+  , rtmResourceARN
+  , rtmTags
     -- * Tag
-    , Tag
-    , tag
-    , tagKey
-    , tagValue
-
+  , Tag
+  , tag
+  , tagKey
+  , tagValue
     -- * TagFilter
-    , TagFilter
-    , tagFilter
-    , tfValues
-    , tfKey
-    ) where
+  , TagFilter
+  , tagFilter
+  , tfValues
+  , tfKey
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -94,14 +86,13 @@ resourceGroupsTagging =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | A parameter is missing or a malformed string or invalid or out-of-range value was supplied for the request parameter.
 --
 --
-_InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidParameterException =
   _MatchServiceError resourceGroupsTagging "InvalidParameterException"
-
 
 -- | The request was denied to limit the frequency of submitted requests.
 --
@@ -110,19 +101,18 @@ _ThrottledException :: AsError a => Getting (First ServiceError) a ServiceError
 _ThrottledException =
   _MatchServiceError resourceGroupsTagging "ThrottledException"
 
-
 -- | A @PaginationToken@ is valid for a maximum of 15 minutes. Your request was denied because the specified @PaginationToken@ has expired.
 --
 --
-_PaginationTokenExpiredException :: AsError a => Getting (First ServiceError) a ServiceError
+_PaginationTokenExpiredException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _PaginationTokenExpiredException =
   _MatchServiceError resourceGroupsTagging "PaginationTokenExpiredException"
-
 
 -- | The request processing failed because of an unknown error, exception, or failure. You can retry the request.
 --
 --
-_InternalServiceException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServiceException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InternalServiceException =
   _MatchServiceError resourceGroupsTagging "InternalServiceException"
-

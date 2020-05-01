@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.SecretsManager
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -74,7 +72,6 @@ import Test.Tasty
 --             updateSecretVersionStage
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseDeleteSecret $
 --             deleteSecretResponse
@@ -123,186 +120,172 @@ import Test.Tasty
 --
 --           ]
 --     ]
-
 -- Requests
-
 requestDeleteSecret :: DeleteSecret -> TestTree
-requestDeleteSecret = req
-    "DeleteSecret"
-    "fixture/DeleteSecret.yaml"
+requestDeleteSecret = req "DeleteSecret" "fixture/DeleteSecret.yaml"
 
 requestListSecrets :: ListSecrets -> TestTree
-requestListSecrets = req
-    "ListSecrets"
-    "fixture/ListSecrets.yaml"
+requestListSecrets = req "ListSecrets" "fixture/ListSecrets.yaml"
 
 requestUpdateSecret :: UpdateSecret -> TestTree
-requestUpdateSecret = req
-    "UpdateSecret"
-    "fixture/UpdateSecret.yaml"
+requestUpdateSecret = req "UpdateSecret" "fixture/UpdateSecret.yaml"
 
 requestRotateSecret :: RotateSecret -> TestTree
-requestRotateSecret = req
-    "RotateSecret"
-    "fixture/RotateSecret.yaml"
+requestRotateSecret = req "RotateSecret" "fixture/RotateSecret.yaml"
 
 requestCreateSecret :: CreateSecret -> TestTree
-requestCreateSecret = req
-    "CreateSecret"
-    "fixture/CreateSecret.yaml"
+requestCreateSecret = req "CreateSecret" "fixture/CreateSecret.yaml"
 
 requestGetSecretValue :: GetSecretValue -> TestTree
-requestGetSecretValue = req
-    "GetSecretValue"
-    "fixture/GetSecretValue.yaml"
+requestGetSecretValue = req "GetSecretValue" "fixture/GetSecretValue.yaml"
 
 requestDescribeSecret :: DescribeSecret -> TestTree
-requestDescribeSecret = req
-    "DescribeSecret"
-    "fixture/DescribeSecret.yaml"
+requestDescribeSecret = req "DescribeSecret" "fixture/DescribeSecret.yaml"
 
 requestRestoreSecret :: RestoreSecret -> TestTree
-requestRestoreSecret = req
-    "RestoreSecret"
-    "fixture/RestoreSecret.yaml"
+requestRestoreSecret = req "RestoreSecret" "fixture/RestoreSecret.yaml"
 
 requestCancelRotateSecret :: CancelRotateSecret -> TestTree
-requestCancelRotateSecret = req
-    "CancelRotateSecret"
-    "fixture/CancelRotateSecret.yaml"
+requestCancelRotateSecret =
+  req "CancelRotateSecret" "fixture/CancelRotateSecret.yaml"
 
 requestPutSecretValue :: PutSecretValue -> TestTree
-requestPutSecretValue = req
-    "PutSecretValue"
-    "fixture/PutSecretValue.yaml"
+requestPutSecretValue = req "PutSecretValue" "fixture/PutSecretValue.yaml"
 
 requestGetRandomPassword :: GetRandomPassword -> TestTree
-requestGetRandomPassword = req
-    "GetRandomPassword"
-    "fixture/GetRandomPassword.yaml"
+requestGetRandomPassword =
+  req "GetRandomPassword" "fixture/GetRandomPassword.yaml"
 
 requestListSecretVersionIds :: ListSecretVersionIds -> TestTree
-requestListSecretVersionIds = req
-    "ListSecretVersionIds"
-    "fixture/ListSecretVersionIds.yaml"
+requestListSecretVersionIds =
+  req "ListSecretVersionIds" "fixture/ListSecretVersionIds.yaml"
 
 requestTagResource :: TagResource -> TestTree
-requestTagResource = req
-    "TagResource"
-    "fixture/TagResource.yaml"
+requestTagResource = req "TagResource" "fixture/TagResource.yaml"
 
 requestUntagResource :: UntagResource -> TestTree
-requestUntagResource = req
-    "UntagResource"
-    "fixture/UntagResource.yaml"
+requestUntagResource = req "UntagResource" "fixture/UntagResource.yaml"
 
 requestUpdateSecretVersionStage :: UpdateSecretVersionStage -> TestTree
-requestUpdateSecretVersionStage = req
-    "UpdateSecretVersionStage"
-    "fixture/UpdateSecretVersionStage.yaml"
+requestUpdateSecretVersionStage =
+  req "UpdateSecretVersionStage" "fixture/UpdateSecretVersionStage.yaml"
 
 -- Responses
-
 responseDeleteSecret :: DeleteSecretResponse -> TestTree
-responseDeleteSecret = res
+responseDeleteSecret =
+  res
     "DeleteSecretResponse"
     "fixture/DeleteSecretResponse.proto"
     secretsManager
     (Proxy :: Proxy DeleteSecret)
 
 responseListSecrets :: ListSecretsResponse -> TestTree
-responseListSecrets = res
+responseListSecrets =
+  res
     "ListSecretsResponse"
     "fixture/ListSecretsResponse.proto"
     secretsManager
     (Proxy :: Proxy ListSecrets)
 
 responseUpdateSecret :: UpdateSecretResponse -> TestTree
-responseUpdateSecret = res
+responseUpdateSecret =
+  res
     "UpdateSecretResponse"
     "fixture/UpdateSecretResponse.proto"
     secretsManager
     (Proxy :: Proxy UpdateSecret)
 
 responseRotateSecret :: RotateSecretResponse -> TestTree
-responseRotateSecret = res
+responseRotateSecret =
+  res
     "RotateSecretResponse"
     "fixture/RotateSecretResponse.proto"
     secretsManager
     (Proxy :: Proxy RotateSecret)
 
 responseCreateSecret :: CreateSecretResponse -> TestTree
-responseCreateSecret = res
+responseCreateSecret =
+  res
     "CreateSecretResponse"
     "fixture/CreateSecretResponse.proto"
     secretsManager
     (Proxy :: Proxy CreateSecret)
 
 responseGetSecretValue :: GetSecretValueResponse -> TestTree
-responseGetSecretValue = res
+responseGetSecretValue =
+  res
     "GetSecretValueResponse"
     "fixture/GetSecretValueResponse.proto"
     secretsManager
     (Proxy :: Proxy GetSecretValue)
 
 responseDescribeSecret :: DescribeSecretResponse -> TestTree
-responseDescribeSecret = res
+responseDescribeSecret =
+  res
     "DescribeSecretResponse"
     "fixture/DescribeSecretResponse.proto"
     secretsManager
     (Proxy :: Proxy DescribeSecret)
 
 responseRestoreSecret :: RestoreSecretResponse -> TestTree
-responseRestoreSecret = res
+responseRestoreSecret =
+  res
     "RestoreSecretResponse"
     "fixture/RestoreSecretResponse.proto"
     secretsManager
     (Proxy :: Proxy RestoreSecret)
 
 responseCancelRotateSecret :: CancelRotateSecretResponse -> TestTree
-responseCancelRotateSecret = res
+responseCancelRotateSecret =
+  res
     "CancelRotateSecretResponse"
     "fixture/CancelRotateSecretResponse.proto"
     secretsManager
     (Proxy :: Proxy CancelRotateSecret)
 
 responsePutSecretValue :: PutSecretValueResponse -> TestTree
-responsePutSecretValue = res
+responsePutSecretValue =
+  res
     "PutSecretValueResponse"
     "fixture/PutSecretValueResponse.proto"
     secretsManager
     (Proxy :: Proxy PutSecretValue)
 
 responseGetRandomPassword :: GetRandomPasswordResponse -> TestTree
-responseGetRandomPassword = res
+responseGetRandomPassword =
+  res
     "GetRandomPasswordResponse"
     "fixture/GetRandomPasswordResponse.proto"
     secretsManager
     (Proxy :: Proxy GetRandomPassword)
 
 responseListSecretVersionIds :: ListSecretVersionIdsResponse -> TestTree
-responseListSecretVersionIds = res
+responseListSecretVersionIds =
+  res
     "ListSecretVersionIdsResponse"
     "fixture/ListSecretVersionIdsResponse.proto"
     secretsManager
     (Proxy :: Proxy ListSecretVersionIds)
 
 responseTagResource :: TagResourceResponse -> TestTree
-responseTagResource = res
+responseTagResource =
+  res
     "TagResourceResponse"
     "fixture/TagResourceResponse.proto"
     secretsManager
     (Proxy :: Proxy TagResource)
 
 responseUntagResource :: UntagResourceResponse -> TestTree
-responseUntagResource = res
+responseUntagResource =
+  res
     "UntagResourceResponse"
     "fixture/UntagResourceResponse.proto"
     secretsManager
     (Proxy :: Proxy UntagResource)
 
 responseUpdateSecretVersionStage :: UpdateSecretVersionStageResponse -> TestTree
-responseUpdateSecretVersionStage = res
+responseUpdateSecretVersionStage =
+  res
     "UpdateSecretVersionStageResponse"
     "fixture/UpdateSecretVersionStageResponse.proto"
     secretsManager

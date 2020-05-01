@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Batch.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,274 +10,238 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.Batch.Types
-    (
     -- * Service Configuration
-      batch
-
+  ( batch
     -- * Errors
-    , _ServerException
-    , _ClientException
-
+  , _ServerException
+  , _ClientException
     -- * ArrayJobDependency
-    , ArrayJobDependency (..)
-
+  , ArrayJobDependency(..)
     -- * CEState
-    , CEState (..)
-
+  , CEState(..)
     -- * CEStatus
-    , CEStatus (..)
-
+  , CEStatus(..)
     -- * CEType
-    , CEType (..)
-
+  , CEType(..)
     -- * CRType
-    , CRType (..)
-
+  , CRType(..)
     -- * JQState
-    , JQState (..)
-
+  , JQState(..)
     -- * JQStatus
-    , JQStatus (..)
-
+  , JQStatus(..)
     -- * JobDefinitionType
-    , JobDefinitionType (..)
-
+  , JobDefinitionType(..)
     -- * JobStatus
-    , JobStatus (..)
-
+  , JobStatus(..)
     -- * ArrayProperties
-    , ArrayProperties
-    , arrayProperties
-    , apSize
-
+  , ArrayProperties
+  , arrayProperties
+  , apSize
     -- * ArrayPropertiesDetail
-    , ArrayPropertiesDetail
-    , arrayPropertiesDetail
-    , apdSize
-    , apdStatusSummary
-    , apdIndex
-
+  , ArrayPropertiesDetail
+  , arrayPropertiesDetail
+  , apdSize
+  , apdStatusSummary
+  , apdIndex
     -- * ArrayPropertiesSummary
-    , ArrayPropertiesSummary
-    , arrayPropertiesSummary
-    , apsSize
-    , apsIndex
-
+  , ArrayPropertiesSummary
+  , arrayPropertiesSummary
+  , apsSize
+  , apsIndex
     -- * AttemptContainerDetail
-    , AttemptContainerDetail
-    , attemptContainerDetail
-    , acdTaskARN
-    , acdContainerInstanceARN
-    , acdReason
-    , acdLogStreamName
-    , acdExitCode
-
+  , AttemptContainerDetail
+  , attemptContainerDetail
+  , acdTaskARN
+  , acdContainerInstanceARN
+  , acdReason
+  , acdLogStreamName
+  , acdExitCode
     -- * AttemptDetail
-    , AttemptDetail
-    , attemptDetail
-    , adStoppedAt
-    , adStartedAt
-    , adContainer
-    , adStatusReason
-
+  , AttemptDetail
+  , attemptDetail
+  , adStoppedAt
+  , adStartedAt
+  , adContainer
+  , adStatusReason
     -- * ComputeEnvironmentDetail
-    , ComputeEnvironmentDetail
-    , computeEnvironmentDetail
-    , cedStatus
-    , cedState
-    , cedComputeResources
-    , cedStatusReason
-    , cedType
-    , cedServiceRole
-    , cedComputeEnvironmentName
-    , cedComputeEnvironmentARN
-    , cedEcsClusterARN
-
+  , ComputeEnvironmentDetail
+  , computeEnvironmentDetail
+  , cedStatus
+  , cedState
+  , cedComputeResources
+  , cedStatusReason
+  , cedType
+  , cedServiceRole
+  , cedComputeEnvironmentName
+  , cedComputeEnvironmentARN
+  , cedEcsClusterARN
     -- * ComputeEnvironmentOrder
-    , ComputeEnvironmentOrder
-    , computeEnvironmentOrder
-    , ceoOrder
-    , ceoComputeEnvironment
-
+  , ComputeEnvironmentOrder
+  , computeEnvironmentOrder
+  , ceoOrder
+  , ceoComputeEnvironment
     -- * ComputeResource
-    , ComputeResource
-    , computeResource
-    , crEc2KeyPair
-    , crBidPercentage
-    , crSpotIAMFleetRole
-    , crImageId
-    , crDesiredvCPUs
-    , crTags
-    , crType
-    , crMinvCPUs
-    , crMaxvCPUs
-    , crInstanceTypes
-    , crSubnets
-    , crSecurityGroupIds
-    , crInstanceRole
-
+  , ComputeResource
+  , computeResource
+  , crEc2KeyPair
+  , crBidPercentage
+  , crSpotIAMFleetRole
+  , crImageId
+  , crDesiredvCPUs
+  , crTags
+  , crType
+  , crMinvCPUs
+  , crMaxvCPUs
+  , crInstanceTypes
+  , crSubnets
+  , crSecurityGroupIds
+  , crInstanceRole
     -- * ComputeResourceUpdate
-    , ComputeResourceUpdate
-    , computeResourceUpdate
-    , cruMinvCPUs
-    , cruMaxvCPUs
-    , cruDesiredvCPUs
-
+  , ComputeResourceUpdate
+  , computeResourceUpdate
+  , cruMinvCPUs
+  , cruMaxvCPUs
+  , cruDesiredvCPUs
     -- * ContainerDetail
-    , ContainerDetail
-    , containerDetail
-    , cdImage
-    , cdCommand
-    , cdEnvironment
-    , cdTaskARN
-    , cdUlimits
-    , cdContainerInstanceARN
-    , cdPrivileged
-    , cdJobRoleARN
-    , cdMemory
-    , cdUser
-    , cdReason
-    , cdLogStreamName
-    , cdMountPoints
-    , cdExitCode
-    , cdVcpus
-    , cdReadonlyRootFilesystem
-    , cdVolumes
-
+  , ContainerDetail
+  , containerDetail
+  , cdImage
+  , cdCommand
+  , cdEnvironment
+  , cdTaskARN
+  , cdUlimits
+  , cdContainerInstanceARN
+  , cdPrivileged
+  , cdJobRoleARN
+  , cdMemory
+  , cdUser
+  , cdReason
+  , cdLogStreamName
+  , cdMountPoints
+  , cdExitCode
+  , cdVcpus
+  , cdReadonlyRootFilesystem
+  , cdVolumes
     -- * ContainerOverrides
-    , ContainerOverrides
-    , containerOverrides
-    , coCommand
-    , coEnvironment
-    , coMemory
-    , coVcpus
-
+  , ContainerOverrides
+  , containerOverrides
+  , coCommand
+  , coEnvironment
+  , coMemory
+  , coVcpus
     -- * ContainerProperties
-    , ContainerProperties
-    , containerProperties
-    , cpCommand
-    , cpEnvironment
-    , cpUlimits
-    , cpPrivileged
-    , cpJobRoleARN
-    , cpUser
-    , cpMountPoints
-    , cpReadonlyRootFilesystem
-    , cpVolumes
-    , cpImage
-    , cpVcpus
-    , cpMemory
-
+  , ContainerProperties
+  , containerProperties
+  , cpCommand
+  , cpEnvironment
+  , cpUlimits
+  , cpPrivileged
+  , cpJobRoleARN
+  , cpUser
+  , cpMountPoints
+  , cpReadonlyRootFilesystem
+  , cpVolumes
+  , cpImage
+  , cpVcpus
+  , cpMemory
     -- * ContainerSummary
-    , ContainerSummary
-    , containerSummary
-    , csReason
-    , csExitCode
-
+  , ContainerSummary
+  , containerSummary
+  , csReason
+  , csExitCode
     -- * Host
-    , Host
-    , host
-    , hSourcePath
-
+  , Host
+  , host
+  , hSourcePath
     -- * JobDefinition
-    , JobDefinition
-    , jobDefinition
-    , jddStatus
-    , jddRetryStrategy
-    , jddParameters
-    , jddTimeout
-    , jddContainerProperties
-    , jddJobDefinitionName
-    , jddJobDefinitionARN
-    , jddRevision
-    , jddType
-
+  , JobDefinition
+  , jobDefinition
+  , jddStatus
+  , jddRetryStrategy
+  , jddParameters
+  , jddTimeout
+  , jddContainerProperties
+  , jddJobDefinitionName
+  , jddJobDefinitionARN
+  , jddRevision
+  , jddType
     -- * JobDependency
-    , JobDependency
-    , jobDependency
-    , jJobId
-    , jType
-
+  , JobDependency
+  , jobDependency
+  , jJobId
+  , jType
     -- * JobDetail
-    , JobDetail
-    , jobDetail
-    , jdStoppedAt
-    , jdCreatedAt
-    , jdRetryStrategy
-    , jdAttempts
-    , jdDependsOn
-    , jdContainer
-    , jdParameters
-    , jdStatusReason
-    , jdArrayProperties
-    , jdTimeout
-    , jdJobName
-    , jdJobId
-    , jdJobQueue
-    , jdStatus
-    , jdStartedAt
-    , jdJobDefinition
-
+  , JobDetail
+  , jobDetail
+  , jdStoppedAt
+  , jdCreatedAt
+  , jdRetryStrategy
+  , jdAttempts
+  , jdDependsOn
+  , jdContainer
+  , jdParameters
+  , jdStatusReason
+  , jdArrayProperties
+  , jdTimeout
+  , jdJobName
+  , jdJobId
+  , jdJobQueue
+  , jdStatus
+  , jdStartedAt
+  , jdJobDefinition
     -- * JobQueueDetail
-    , JobQueueDetail
-    , jobQueueDetail
-    , jqdStatus
-    , jqdStatusReason
-    , jqdJobQueueName
-    , jqdJobQueueARN
-    , jqdState
-    , jqdPriority
-    , jqdComputeEnvironmentOrder
-
+  , JobQueueDetail
+  , jobQueueDetail
+  , jqdStatus
+  , jqdStatusReason
+  , jqdJobQueueName
+  , jqdJobQueueARN
+  , jqdState
+  , jqdPriority
+  , jqdComputeEnvironmentOrder
     -- * JobSummary
-    , JobSummary
-    , jobSummary
-    , jsStoppedAt
-    , jsStatus
-    , jsCreatedAt
-    , jsStartedAt
-    , jsContainer
-    , jsStatusReason
-    , jsArrayProperties
-    , jsJobId
-    , jsJobName
-
+  , JobSummary
+  , jobSummary
+  , jsStoppedAt
+  , jsStatus
+  , jsCreatedAt
+  , jsStartedAt
+  , jsContainer
+  , jsStatusReason
+  , jsArrayProperties
+  , jsJobId
+  , jsJobName
     -- * JobTimeout
-    , JobTimeout
-    , jobTimeout
-    , jtAttemptDurationSeconds
-
+  , JobTimeout
+  , jobTimeout
+  , jtAttemptDurationSeconds
     -- * KeyValuePair
-    , KeyValuePair
-    , keyValuePair
-    , kvpValue
-    , kvpName
-
+  , KeyValuePair
+  , keyValuePair
+  , kvpValue
+  , kvpName
     -- * MountPoint
-    , MountPoint
-    , mountPoint
-    , mpContainerPath
-    , mpSourceVolume
-    , mpReadOnly
-
+  , MountPoint
+  , mountPoint
+  , mpContainerPath
+  , mpSourceVolume
+  , mpReadOnly
     -- * RetryStrategy
-    , RetryStrategy
-    , retryStrategy
-    , rsAttempts
-
+  , RetryStrategy
+  , retryStrategy
+  , rsAttempts
     -- * Ulimit
-    , Ulimit
-    , ulimit
-    , uHardLimit
-    , uName
-    , uSoftLimit
-
+  , Ulimit
+  , ulimit
+  , uHardLimit
+  , uName
+  , uSoftLimit
     -- * Volume
-    , Volume
-    , volume
-    , vName
-    , vHost
-    ) where
+  , Volume
+  , volume
+  , vName
+  , vHost
+  ) where
 
 import Network.AWS.Batch.Types.Product
 import Network.AWS.Batch.Types.Sum
@@ -324,17 +287,14 @@ batch =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | These errors are usually caused by a server issue.
 --
 --
 _ServerException :: AsError a => Getting (First ServiceError) a ServiceError
 _ServerException = _MatchServiceError batch "ServerException" . hasStatus 500
 
-
 -- | These errors are usually caused by a client action, such as using an action or resource on behalf of a user that doesn't have permissions to use the action or resource, or specifying an identifier that is not valid.
 --
 --
 _ClientException :: AsError a => Getting (First ServiceError) a ServiceError
 _ClientException = _MatchServiceError batch "ClientException" . hasStatus 400
-

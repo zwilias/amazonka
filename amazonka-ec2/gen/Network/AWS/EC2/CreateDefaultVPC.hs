@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.EC2.CreateDefaultVPC
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,20 +24,18 @@
 -- If your account supports EC2-Classic, you cannot use this action to create a default VPC in a region that supports EC2-Classic. If you want a default VPC in a region that supports EC2-Classic, see "I really want a default VPC for my existing EC2 account. Is that possible?" in the <http://aws.amazon.com/vpc/faqs/#Default_VPCs Default VPCs FAQ> .
 --
 module Network.AWS.EC2.CreateDefaultVPC
-    (
     -- * Creating a Request
-      createDefaultVPC
-    , CreateDefaultVPC
+  ( createDefaultVPC
+  , CreateDefaultVPC
     -- * Request Lenses
-    , cdvDryRun
-
+  , cdvDryRun
     -- * Destructuring the Response
-    , createDefaultVPCResponse
-    , CreateDefaultVPCResponse
+  , createDefaultVPCResponse
+  , CreateDefaultVPCResponse
     -- * Response Lenses
-    , cdvrsVPC
-    , cdvrsResponseStatus
-    ) where
+  , cdvrsVPC
+  , cdvrsResponseStatus
+  ) where
 
 import Network.AWS.EC2.Types
 import Network.AWS.EC2.Types.Product
@@ -53,61 +49,61 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createDefaultVPC' smart constructor.
-newtype CreateDefaultVPC = CreateDefaultVPC'
-  { _cdvDryRun :: Maybe Bool
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateDefaultVPC =
+  CreateDefaultVPC'
+    { _cdvDryRun :: Maybe Bool
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDefaultVPC' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'cdvDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
-createDefaultVPC
-    :: CreateDefaultVPC
+createDefaultVPC :: CreateDefaultVPC
 createDefaultVPC = CreateDefaultVPC' {_cdvDryRun = Nothing}
-
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 cdvDryRun :: Lens' CreateDefaultVPC (Maybe Bool)
-cdvDryRun = lens _cdvDryRun (\ s a -> s{_cdvDryRun = a})
+cdvDryRun = lens _cdvDryRun (\s a -> s {_cdvDryRun = a})
 
 instance AWSRequest CreateDefaultVPC where
-        type Rs CreateDefaultVPC = CreateDefaultVPCResponse
-        request = postQuery ec2
-        response
-          = receiveXML
-              (\ s h x ->
-                 CreateDefaultVPCResponse' <$>
-                   (x .@? "vpc") <*> (pure (fromEnum s)))
+  type Rs CreateDefaultVPC = CreateDefaultVPCResponse
+  request = postQuery ec2
+  response =
+    receiveXML
+      (\s h x ->
+         CreateDefaultVPCResponse' <$> (x .@? "vpc") <*> (pure (fromEnum s)))
 
-instance Hashable CreateDefaultVPC where
+instance Hashable CreateDefaultVPC
 
-instance NFData CreateDefaultVPC where
+instance NFData CreateDefaultVPC
 
 instance ToHeaders CreateDefaultVPC where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath CreateDefaultVPC where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery CreateDefaultVPC where
-        toQuery CreateDefaultVPC'{..}
-          = mconcat
-              ["Action" =: ("CreateDefaultVpc" :: ByteString),
-               "Version" =: ("2016-11-15" :: ByteString),
-               "DryRun" =: _cdvDryRun]
+  toQuery CreateDefaultVPC' {..} =
+    mconcat
+      [ "Action" =: ("CreateDefaultVpc" :: ByteString)
+      , "Version" =: ("2016-11-15" :: ByteString)
+      , "DryRun" =: _cdvDryRun
+      ]
 
 -- | Contains the output of CreateDefaultVpc.
 --
 --
 --
 -- /See:/ 'createDefaultVPCResponse' smart constructor.
-data CreateDefaultVPCResponse = CreateDefaultVPCResponse'
-  { _cdvrsVPC            :: !(Maybe VPC)
-  , _cdvrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDefaultVPCResponse =
+  CreateDefaultVPCResponse'
+    { _cdvrsVPC :: !(Maybe VPC)
+    , _cdvrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDefaultVPCResponse' with the minimum fields required to make a request.
 --
@@ -116,20 +112,20 @@ data CreateDefaultVPCResponse = CreateDefaultVPCResponse'
 -- * 'cdvrsVPC' - Information about the VPC.
 --
 -- * 'cdvrsResponseStatus' - -- | The response status code.
-createDefaultVPCResponse
-    :: Int -- ^ 'cdvrsResponseStatus'
-    -> CreateDefaultVPCResponse
+createDefaultVPCResponse ::
+     Int -- ^ 'cdvrsResponseStatus'
+  -> CreateDefaultVPCResponse
 createDefaultVPCResponse pResponseStatus_ =
   CreateDefaultVPCResponse'
     {_cdvrsVPC = Nothing, _cdvrsResponseStatus = pResponseStatus_}
 
-
 -- | Information about the VPC.
 cdvrsVPC :: Lens' CreateDefaultVPCResponse (Maybe VPC)
-cdvrsVPC = lens _cdvrsVPC (\ s a -> s{_cdvrsVPC = a})
+cdvrsVPC = lens _cdvrsVPC (\s a -> s {_cdvrsVPC = a})
 
 -- | -- | The response status code.
 cdvrsResponseStatus :: Lens' CreateDefaultVPCResponse Int
-cdvrsResponseStatus = lens _cdvrsResponseStatus (\ s a -> s{_cdvrsResponseStatus = a})
+cdvrsResponseStatus =
+  lens _cdvrsResponseStatus (\s a -> s {_cdvrsResponseStatus = a})
 
-instance NFData CreateDefaultVPCResponse where
+instance NFData CreateDefaultVPCResponse

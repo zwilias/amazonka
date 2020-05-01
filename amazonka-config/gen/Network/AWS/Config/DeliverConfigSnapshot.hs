@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Config.DeliverConfigSnapshot
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -30,20 +28,18 @@
 --
 --
 module Network.AWS.Config.DeliverConfigSnapshot
-    (
     -- * Creating a Request
-      deliverConfigSnapshot
-    , DeliverConfigSnapshot
+  ( deliverConfigSnapshot
+  , DeliverConfigSnapshot
     -- * Request Lenses
-    , dcsDeliveryChannelName
-
+  , dcsDeliveryChannelName
     -- * Destructuring the Response
-    , deliverConfigSnapshotResponse
-    , DeliverConfigSnapshotResponse
+  , deliverConfigSnapshotResponse
+  , DeliverConfigSnapshotResponse
     -- * Response Lenses
-    , dcsrsConfigSnapshotId
-    , dcsrsResponseStatus
-    ) where
+  , dcsrsConfigSnapshotId
+  , dcsrsResponseStatus
+  ) where
 
 import Network.AWS.Config.Types
 import Network.AWS.Config.Types.Product
@@ -57,74 +53,71 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deliverConfigSnapshot' smart constructor.
-newtype DeliverConfigSnapshot = DeliverConfigSnapshot'
-  { _dcsDeliveryChannelName :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeliverConfigSnapshot =
+  DeliverConfigSnapshot'
+    { _dcsDeliveryChannelName :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeliverConfigSnapshot' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dcsDeliveryChannelName' - The name of the delivery channel through which the snapshot is delivered.
-deliverConfigSnapshot
-    :: Text -- ^ 'dcsDeliveryChannelName'
-    -> DeliverConfigSnapshot
+deliverConfigSnapshot ::
+     Text -- ^ 'dcsDeliveryChannelName'
+  -> DeliverConfigSnapshot
 deliverConfigSnapshot pDeliveryChannelName_ =
   DeliverConfigSnapshot' {_dcsDeliveryChannelName = pDeliveryChannelName_}
 
-
 -- | The name of the delivery channel through which the snapshot is delivered.
 dcsDeliveryChannelName :: Lens' DeliverConfigSnapshot Text
-dcsDeliveryChannelName = lens _dcsDeliveryChannelName (\ s a -> s{_dcsDeliveryChannelName = a})
+dcsDeliveryChannelName =
+  lens _dcsDeliveryChannelName (\s a -> s {_dcsDeliveryChannelName = a})
 
 instance AWSRequest DeliverConfigSnapshot where
-        type Rs DeliverConfigSnapshot =
-             DeliverConfigSnapshotResponse
-        request = postJSON config
-        response
-          = receiveJSON
-              (\ s h x ->
-                 DeliverConfigSnapshotResponse' <$>
-                   (x .?> "configSnapshotId") <*> (pure (fromEnum s)))
+  type Rs DeliverConfigSnapshot = DeliverConfigSnapshotResponse
+  request = postJSON config
+  response =
+    receiveJSON
+      (\s h x ->
+         DeliverConfigSnapshotResponse' <$> (x .?> "configSnapshotId") <*>
+         (pure (fromEnum s)))
 
-instance Hashable DeliverConfigSnapshot where
+instance Hashable DeliverConfigSnapshot
 
-instance NFData DeliverConfigSnapshot where
+instance NFData DeliverConfigSnapshot
 
 instance ToHeaders DeliverConfigSnapshot where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("StarlingDoveService.DeliverConfigSnapshot" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("StarlingDoveService.DeliverConfigSnapshot" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON DeliverConfigSnapshot where
-        toJSON DeliverConfigSnapshot'{..}
-          = object
-              (catMaybes
-                 [Just
-                    ("deliveryChannelName" .= _dcsDeliveryChannelName)])
+  toJSON DeliverConfigSnapshot' {..} =
+    object (catMaybes [Just ("deliveryChannelName" .= _dcsDeliveryChannelName)])
 
 instance ToPath DeliverConfigSnapshot where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery DeliverConfigSnapshot where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | The output for the 'DeliverConfigSnapshot' action, in JSON format.
 --
 --
 --
 -- /See:/ 'deliverConfigSnapshotResponse' smart constructor.
-data DeliverConfigSnapshotResponse = DeliverConfigSnapshotResponse'
-  { _dcsrsConfigSnapshotId :: !(Maybe Text)
-  , _dcsrsResponseStatus   :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeliverConfigSnapshotResponse =
+  DeliverConfigSnapshotResponse'
+    { _dcsrsConfigSnapshotId :: !(Maybe Text)
+    , _dcsrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeliverConfigSnapshotResponse' with the minimum fields required to make a request.
 --
@@ -133,20 +126,21 @@ data DeliverConfigSnapshotResponse = DeliverConfigSnapshotResponse'
 -- * 'dcsrsConfigSnapshotId' - The ID of the snapshot that is being created.
 --
 -- * 'dcsrsResponseStatus' - -- | The response status code.
-deliverConfigSnapshotResponse
-    :: Int -- ^ 'dcsrsResponseStatus'
-    -> DeliverConfigSnapshotResponse
+deliverConfigSnapshotResponse ::
+     Int -- ^ 'dcsrsResponseStatus'
+  -> DeliverConfigSnapshotResponse
 deliverConfigSnapshotResponse pResponseStatus_ =
   DeliverConfigSnapshotResponse'
     {_dcsrsConfigSnapshotId = Nothing, _dcsrsResponseStatus = pResponseStatus_}
 
-
 -- | The ID of the snapshot that is being created.
 dcsrsConfigSnapshotId :: Lens' DeliverConfigSnapshotResponse (Maybe Text)
-dcsrsConfigSnapshotId = lens _dcsrsConfigSnapshotId (\ s a -> s{_dcsrsConfigSnapshotId = a})
+dcsrsConfigSnapshotId =
+  lens _dcsrsConfigSnapshotId (\s a -> s {_dcsrsConfigSnapshotId = a})
 
 -- | -- | The response status code.
 dcsrsResponseStatus :: Lens' DeliverConfigSnapshotResponse Int
-dcsrsResponseStatus = lens _dcsrsResponseStatus (\ s a -> s{_dcsrsResponseStatus = a})
+dcsrsResponseStatus =
+  lens _dcsrsResponseStatus (\s a -> s {_dcsrsResponseStatus = a})
 
-instance NFData DeliverConfigSnapshotResponse where
+instance NFData DeliverConfigSnapshotResponse

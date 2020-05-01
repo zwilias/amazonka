@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.AWSHealth
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -47,7 +45,6 @@ import Test.Tasty
 --             describeEventTypes
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseDescribeEntityAggregates $
 --             describeEntityAggregatesResponse
@@ -69,78 +66,74 @@ import Test.Tasty
 --
 --           ]
 --     ]
-
 -- Requests
-
 requestDescribeEntityAggregates :: DescribeEntityAggregates -> TestTree
-requestDescribeEntityAggregates = req
-    "DescribeEntityAggregates"
-    "fixture/DescribeEntityAggregates.yaml"
+requestDescribeEntityAggregates =
+  req "DescribeEntityAggregates" "fixture/DescribeEntityAggregates.yaml"
 
 requestDescribeEvents :: DescribeEvents -> TestTree
-requestDescribeEvents = req
-    "DescribeEvents"
-    "fixture/DescribeEvents.yaml"
+requestDescribeEvents = req "DescribeEvents" "fixture/DescribeEvents.yaml"
 
 requestDescribeEventDetails :: DescribeEventDetails -> TestTree
-requestDescribeEventDetails = req
-    "DescribeEventDetails"
-    "fixture/DescribeEventDetails.yaml"
+requestDescribeEventDetails =
+  req "DescribeEventDetails" "fixture/DescribeEventDetails.yaml"
 
 requestDescribeEventAggregates :: DescribeEventAggregates -> TestTree
-requestDescribeEventAggregates = req
-    "DescribeEventAggregates"
-    "fixture/DescribeEventAggregates.yaml"
+requestDescribeEventAggregates =
+  req "DescribeEventAggregates" "fixture/DescribeEventAggregates.yaml"
 
 requestDescribeAffectedEntities :: DescribeAffectedEntities -> TestTree
-requestDescribeAffectedEntities = req
-    "DescribeAffectedEntities"
-    "fixture/DescribeAffectedEntities.yaml"
+requestDescribeAffectedEntities =
+  req "DescribeAffectedEntities" "fixture/DescribeAffectedEntities.yaml"
 
 requestDescribeEventTypes :: DescribeEventTypes -> TestTree
-requestDescribeEventTypes = req
-    "DescribeEventTypes"
-    "fixture/DescribeEventTypes.yaml"
+requestDescribeEventTypes =
+  req "DescribeEventTypes" "fixture/DescribeEventTypes.yaml"
 
 -- Responses
-
 responseDescribeEntityAggregates :: DescribeEntityAggregatesResponse -> TestTree
-responseDescribeEntityAggregates = res
+responseDescribeEntityAggregates =
+  res
     "DescribeEntityAggregatesResponse"
     "fixture/DescribeEntityAggregatesResponse.proto"
     awsHealth
     (Proxy :: Proxy DescribeEntityAggregates)
 
 responseDescribeEvents :: DescribeEventsResponse -> TestTree
-responseDescribeEvents = res
+responseDescribeEvents =
+  res
     "DescribeEventsResponse"
     "fixture/DescribeEventsResponse.proto"
     awsHealth
     (Proxy :: Proxy DescribeEvents)
 
 responseDescribeEventDetails :: DescribeEventDetailsResponse -> TestTree
-responseDescribeEventDetails = res
+responseDescribeEventDetails =
+  res
     "DescribeEventDetailsResponse"
     "fixture/DescribeEventDetailsResponse.proto"
     awsHealth
     (Proxy :: Proxy DescribeEventDetails)
 
 responseDescribeEventAggregates :: DescribeEventAggregatesResponse -> TestTree
-responseDescribeEventAggregates = res
+responseDescribeEventAggregates =
+  res
     "DescribeEventAggregatesResponse"
     "fixture/DescribeEventAggregatesResponse.proto"
     awsHealth
     (Proxy :: Proxy DescribeEventAggregates)
 
 responseDescribeAffectedEntities :: DescribeAffectedEntitiesResponse -> TestTree
-responseDescribeAffectedEntities = res
+responseDescribeAffectedEntities =
+  res
     "DescribeAffectedEntitiesResponse"
     "fixture/DescribeAffectedEntitiesResponse.proto"
     awsHealth
     (Proxy :: Proxy DescribeAffectedEntities)
 
 responseDescribeEventTypes :: DescribeEventTypesResponse -> TestTree
-responseDescribeEventTypes = res
+responseDescribeEventTypes =
+  res
     "DescribeEventTypesResponse"
     "fixture/DescribeEventTypesResponse.proto"
     awsHealth

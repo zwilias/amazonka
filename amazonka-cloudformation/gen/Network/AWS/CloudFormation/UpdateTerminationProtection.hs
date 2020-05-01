@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CloudFormation.UpdateTerminationProtection
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,21 +22,19 @@
 -- For <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html nested stacks> , termination protection is set on the root stack and cannot be changed directly on the nested stack.
 --
 module Network.AWS.CloudFormation.UpdateTerminationProtection
-    (
     -- * Creating a Request
-      updateTerminationProtection
-    , UpdateTerminationProtection
+  ( updateTerminationProtection
+  , UpdateTerminationProtection
     -- * Request Lenses
-    , utpEnableTerminationProtection
-    , utpStackName
-
+  , utpEnableTerminationProtection
+  , utpStackName
     -- * Destructuring the Response
-    , updateTerminationProtectionResponse
-    , UpdateTerminationProtectionResponse
+  , updateTerminationProtectionResponse
+  , UpdateTerminationProtectionResponse
     -- * Response Lenses
-    , utprsStackId
-    , utprsResponseStatus
-    ) where
+  , utprsStackId
+  , utprsResponseStatus
+  ) where
 
 import Network.AWS.CloudFormation.Types
 import Network.AWS.CloudFormation.Types.Product
@@ -48,11 +44,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateTerminationProtection' smart constructor.
-data UpdateTerminationProtection = UpdateTerminationProtection'
-  { _utpEnableTerminationProtection :: !Bool
-  , _utpStackName                   :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateTerminationProtection =
+  UpdateTerminationProtection'
+    { _utpEnableTerminationProtection :: !Bool
+    , _utpStackName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateTerminationProtection' with the minimum fields required to make a request.
 --
@@ -61,62 +58,63 @@ data UpdateTerminationProtection = UpdateTerminationProtection'
 -- * 'utpEnableTerminationProtection' - Whether to enable termination protection on the specified stack.
 --
 -- * 'utpStackName' - The name or unique ID of the stack for which you want to set termination protection.
-updateTerminationProtection
-    :: Bool -- ^ 'utpEnableTerminationProtection'
-    -> Text -- ^ 'utpStackName'
-    -> UpdateTerminationProtection
+updateTerminationProtection ::
+     Bool -- ^ 'utpEnableTerminationProtection'
+  -> Text -- ^ 'utpStackName'
+  -> UpdateTerminationProtection
 updateTerminationProtection pEnableTerminationProtection_ pStackName_ =
   UpdateTerminationProtection'
     { _utpEnableTerminationProtection = pEnableTerminationProtection_
     , _utpStackName = pStackName_
     }
 
-
 -- | Whether to enable termination protection on the specified stack.
 utpEnableTerminationProtection :: Lens' UpdateTerminationProtection Bool
-utpEnableTerminationProtection = lens _utpEnableTerminationProtection (\ s a -> s{_utpEnableTerminationProtection = a})
+utpEnableTerminationProtection =
+  lens
+    _utpEnableTerminationProtection
+    (\s a -> s {_utpEnableTerminationProtection = a})
 
 -- | The name or unique ID of the stack for which you want to set termination protection.
 utpStackName :: Lens' UpdateTerminationProtection Text
-utpStackName = lens _utpStackName (\ s a -> s{_utpStackName = a})
+utpStackName = lens _utpStackName (\s a -> s {_utpStackName = a})
 
 instance AWSRequest UpdateTerminationProtection where
-        type Rs UpdateTerminationProtection =
-             UpdateTerminationProtectionResponse
-        request = postQuery cloudFormation
-        response
-          = receiveXMLWrapper
-              "UpdateTerminationProtectionResult"
-              (\ s h x ->
-                 UpdateTerminationProtectionResponse' <$>
-                   (x .@? "StackId") <*> (pure (fromEnum s)))
+  type Rs UpdateTerminationProtection = UpdateTerminationProtectionResponse
+  request = postQuery cloudFormation
+  response =
+    receiveXMLWrapper
+      "UpdateTerminationProtectionResult"
+      (\s h x ->
+         UpdateTerminationProtectionResponse' <$> (x .@? "StackId") <*>
+         (pure (fromEnum s)))
 
-instance Hashable UpdateTerminationProtection where
+instance Hashable UpdateTerminationProtection
 
-instance NFData UpdateTerminationProtection where
+instance NFData UpdateTerminationProtection
 
 instance ToHeaders UpdateTerminationProtection where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath UpdateTerminationProtection where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery UpdateTerminationProtection where
-        toQuery UpdateTerminationProtection'{..}
-          = mconcat
-              ["Action" =:
-                 ("UpdateTerminationProtection" :: ByteString),
-               "Version" =: ("2010-05-15" :: ByteString),
-               "EnableTerminationProtection" =:
-                 _utpEnableTerminationProtection,
-               "StackName" =: _utpStackName]
+  toQuery UpdateTerminationProtection' {..} =
+    mconcat
+      [ "Action" =: ("UpdateTerminationProtection" :: ByteString)
+      , "Version" =: ("2010-05-15" :: ByteString)
+      , "EnableTerminationProtection" =: _utpEnableTerminationProtection
+      , "StackName" =: _utpStackName
+      ]
 
 -- | /See:/ 'updateTerminationProtectionResponse' smart constructor.
-data UpdateTerminationProtectionResponse = UpdateTerminationProtectionResponse'
-  { _utprsStackId        :: !(Maybe Text)
-  , _utprsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateTerminationProtectionResponse =
+  UpdateTerminationProtectionResponse'
+    { _utprsStackId :: !(Maybe Text)
+    , _utprsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateTerminationProtectionResponse' with the minimum fields required to make a request.
 --
@@ -125,21 +123,20 @@ data UpdateTerminationProtectionResponse = UpdateTerminationProtectionResponse'
 -- * 'utprsStackId' - The unique ID of the stack.
 --
 -- * 'utprsResponseStatus' - -- | The response status code.
-updateTerminationProtectionResponse
-    :: Int -- ^ 'utprsResponseStatus'
-    -> UpdateTerminationProtectionResponse
+updateTerminationProtectionResponse ::
+     Int -- ^ 'utprsResponseStatus'
+  -> UpdateTerminationProtectionResponse
 updateTerminationProtectionResponse pResponseStatus_ =
   UpdateTerminationProtectionResponse'
     {_utprsStackId = Nothing, _utprsResponseStatus = pResponseStatus_}
 
-
 -- | The unique ID of the stack.
 utprsStackId :: Lens' UpdateTerminationProtectionResponse (Maybe Text)
-utprsStackId = lens _utprsStackId (\ s a -> s{_utprsStackId = a})
+utprsStackId = lens _utprsStackId (\s a -> s {_utprsStackId = a})
 
 -- | -- | The response status code.
 utprsResponseStatus :: Lens' UpdateTerminationProtectionResponse Int
-utprsResponseStatus = lens _utprsResponseStatus (\ s a -> s{_utprsResponseStatus = a})
+utprsResponseStatus =
+  lens _utprsResponseStatus (\s a -> s {_utprsResponseStatus = a})
 
 instance NFData UpdateTerminationProtectionResponse
-         where

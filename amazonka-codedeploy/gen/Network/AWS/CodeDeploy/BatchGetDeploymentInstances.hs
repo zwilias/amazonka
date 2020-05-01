@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CodeDeploy.BatchGetDeploymentInstances
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,22 +20,20 @@
 --
 --
 module Network.AWS.CodeDeploy.BatchGetDeploymentInstances
-    (
     -- * Creating a Request
-      batchGetDeploymentInstances
-    , BatchGetDeploymentInstances
+  ( batchGetDeploymentInstances
+  , BatchGetDeploymentInstances
     -- * Request Lenses
-    , bgdiDeploymentId
-    , bgdiInstanceIds
-
+  , bgdiDeploymentId
+  , bgdiInstanceIds
     -- * Destructuring the Response
-    , batchGetDeploymentInstancesResponse
-    , BatchGetDeploymentInstancesResponse
+  , batchGetDeploymentInstancesResponse
+  , BatchGetDeploymentInstancesResponse
     -- * Response Lenses
-    , bgdirsInstancesSummary
-    , bgdirsErrorMessage
-    , bgdirsResponseStatus
-    ) where
+  , bgdirsInstancesSummary
+  , bgdirsErrorMessage
+  , bgdirsResponseStatus
+  ) where
 
 import Network.AWS.CodeDeploy.Types
 import Network.AWS.CodeDeploy.Types.Product
@@ -51,11 +47,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'batchGetDeploymentInstances' smart constructor.
-data BatchGetDeploymentInstances = BatchGetDeploymentInstances'
-  { _bgdiDeploymentId :: !Text
-  , _bgdiInstanceIds  :: ![Text]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchGetDeploymentInstances =
+  BatchGetDeploymentInstances'
+    { _bgdiDeploymentId :: !Text
+    , _bgdiInstanceIds :: ![Text]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'BatchGetDeploymentInstances' with the minimum fields required to make a request.
 --
@@ -64,72 +61,72 @@ data BatchGetDeploymentInstances = BatchGetDeploymentInstances'
 -- * 'bgdiDeploymentId' - The unique ID of a deployment.
 --
 -- * 'bgdiInstanceIds' - The unique IDs of instances in the deployment group.
-batchGetDeploymentInstances
-    :: Text -- ^ 'bgdiDeploymentId'
-    -> BatchGetDeploymentInstances
+batchGetDeploymentInstances ::
+     Text -- ^ 'bgdiDeploymentId'
+  -> BatchGetDeploymentInstances
 batchGetDeploymentInstances pDeploymentId_ =
   BatchGetDeploymentInstances'
     {_bgdiDeploymentId = pDeploymentId_, _bgdiInstanceIds = mempty}
 
-
 -- | The unique ID of a deployment.
 bgdiDeploymentId :: Lens' BatchGetDeploymentInstances Text
-bgdiDeploymentId = lens _bgdiDeploymentId (\ s a -> s{_bgdiDeploymentId = a})
+bgdiDeploymentId = lens _bgdiDeploymentId (\s a -> s {_bgdiDeploymentId = a})
 
 -- | The unique IDs of instances in the deployment group.
 bgdiInstanceIds :: Lens' BatchGetDeploymentInstances [Text]
-bgdiInstanceIds = lens _bgdiInstanceIds (\ s a -> s{_bgdiInstanceIds = a}) . _Coerce
+bgdiInstanceIds =
+  lens _bgdiInstanceIds (\s a -> s {_bgdiInstanceIds = a}) . _Coerce
 
 instance AWSRequest BatchGetDeploymentInstances where
-        type Rs BatchGetDeploymentInstances =
-             BatchGetDeploymentInstancesResponse
-        request = postJSON codeDeploy
-        response
-          = receiveJSON
-              (\ s h x ->
-                 BatchGetDeploymentInstancesResponse' <$>
-                   (x .?> "instancesSummary" .!@ mempty) <*>
-                     (x .?> "errorMessage")
-                     <*> (pure (fromEnum s)))
+  type Rs BatchGetDeploymentInstances = BatchGetDeploymentInstancesResponse
+  request = postJSON codeDeploy
+  response =
+    receiveJSON
+      (\s h x ->
+         BatchGetDeploymentInstancesResponse' <$>
+         (x .?> "instancesSummary" .!@ mempty) <*>
+         (x .?> "errorMessage") <*>
+         (pure (fromEnum s)))
 
-instance Hashable BatchGetDeploymentInstances where
+instance Hashable BatchGetDeploymentInstances
 
-instance NFData BatchGetDeploymentInstances where
+instance NFData BatchGetDeploymentInstances
 
 instance ToHeaders BatchGetDeploymentInstances where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("CodeDeploy_20141006.BatchGetDeploymentInstances" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("CodeDeploy_20141006.BatchGetDeploymentInstances" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON BatchGetDeploymentInstances where
-        toJSON BatchGetDeploymentInstances'{..}
-          = object
-              (catMaybes
-                 [Just ("deploymentId" .= _bgdiDeploymentId),
-                  Just ("instanceIds" .= _bgdiInstanceIds)])
+  toJSON BatchGetDeploymentInstances' {..} =
+    object
+      (catMaybes
+         [ Just ("deploymentId" .= _bgdiDeploymentId)
+         , Just ("instanceIds" .= _bgdiInstanceIds)
+         ])
 
 instance ToPath BatchGetDeploymentInstances where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery BatchGetDeploymentInstances where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | Represents the output of a BatchGetDeploymentInstances operation.
 --
 --
 --
 -- /See:/ 'batchGetDeploymentInstancesResponse' smart constructor.
-data BatchGetDeploymentInstancesResponse = BatchGetDeploymentInstancesResponse'
-  { _bgdirsInstancesSummary :: !(Maybe [InstanceSummary])
-  , _bgdirsErrorMessage     :: !(Maybe Text)
-  , _bgdirsResponseStatus   :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchGetDeploymentInstancesResponse =
+  BatchGetDeploymentInstancesResponse'
+    { _bgdirsInstancesSummary :: !(Maybe [InstanceSummary])
+    , _bgdirsErrorMessage :: !(Maybe Text)
+    , _bgdirsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'BatchGetDeploymentInstancesResponse' with the minimum fields required to make a request.
 --
@@ -140,9 +137,9 @@ data BatchGetDeploymentInstancesResponse = BatchGetDeploymentInstancesResponse'
 -- * 'bgdirsErrorMessage' - Information about errors that may have occurred during the API call.
 --
 -- * 'bgdirsResponseStatus' - -- | The response status code.
-batchGetDeploymentInstancesResponse
-    :: Int -- ^ 'bgdirsResponseStatus'
-    -> BatchGetDeploymentInstancesResponse
+batchGetDeploymentInstancesResponse ::
+     Int -- ^ 'bgdirsResponseStatus'
+  -> BatchGetDeploymentInstancesResponse
 batchGetDeploymentInstancesResponse pResponseStatus_ =
   BatchGetDeploymentInstancesResponse'
     { _bgdirsInstancesSummary = Nothing
@@ -150,18 +147,21 @@ batchGetDeploymentInstancesResponse pResponseStatus_ =
     , _bgdirsResponseStatus = pResponseStatus_
     }
 
-
 -- | Information about the instance.
-bgdirsInstancesSummary :: Lens' BatchGetDeploymentInstancesResponse [InstanceSummary]
-bgdirsInstancesSummary = lens _bgdirsInstancesSummary (\ s a -> s{_bgdirsInstancesSummary = a}) . _Default . _Coerce
+bgdirsInstancesSummary ::
+     Lens' BatchGetDeploymentInstancesResponse [InstanceSummary]
+bgdirsInstancesSummary =
+  lens _bgdirsInstancesSummary (\s a -> s {_bgdirsInstancesSummary = a}) .
+  _Default . _Coerce
 
 -- | Information about errors that may have occurred during the API call.
 bgdirsErrorMessage :: Lens' BatchGetDeploymentInstancesResponse (Maybe Text)
-bgdirsErrorMessage = lens _bgdirsErrorMessage (\ s a -> s{_bgdirsErrorMessage = a})
+bgdirsErrorMessage =
+  lens _bgdirsErrorMessage (\s a -> s {_bgdirsErrorMessage = a})
 
 -- | -- | The response status code.
 bgdirsResponseStatus :: Lens' BatchGetDeploymentInstancesResponse Int
-bgdirsResponseStatus = lens _bgdirsResponseStatus (\ s a -> s{_bgdirsResponseStatus = a})
+bgdirsResponseStatus =
+  lens _bgdirsResponseStatus (\s a -> s {_bgdirsResponseStatus = a})
 
 instance NFData BatchGetDeploymentInstancesResponse
-         where

@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CloudSearch.DeleteExpression
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,21 +20,19 @@
 --
 --
 module Network.AWS.CloudSearch.DeleteExpression
-    (
     -- * Creating a Request
-      deleteExpression
-    , DeleteExpression
+  ( deleteExpression
+  , DeleteExpression
     -- * Request Lenses
-    , delDomainName
-    , delExpressionName
-
+  , delDomainName
+  , delExpressionName
     -- * Destructuring the Response
-    , deleteExpressionResponse
-    , DeleteExpressionResponse
+  , deleteExpressionResponse
+  , DeleteExpressionResponse
     -- * Response Lenses
-    , delrsResponseStatus
-    , delrsExpression
-    ) where
+  , delrsResponseStatus
+  , delrsExpression
+  ) where
 
 import Network.AWS.CloudSearch.Types
 import Network.AWS.CloudSearch.Types.Product
@@ -50,11 +46,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteExpression' smart constructor.
-data DeleteExpression = DeleteExpression'
-  { _delDomainName     :: !Text
-  , _delExpressionName :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteExpression =
+  DeleteExpression'
+    { _delDomainName :: !Text
+    , _delExpressionName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteExpression' with the minimum fields required to make a request.
 --
@@ -63,60 +60,62 @@ data DeleteExpression = DeleteExpression'
 -- * 'delDomainName' - Undocumented member.
 --
 -- * 'delExpressionName' - The name of the @'Expression' @ to delete.
-deleteExpression
-    :: Text -- ^ 'delDomainName'
-    -> Text -- ^ 'delExpressionName'
-    -> DeleteExpression
+deleteExpression ::
+     Text -- ^ 'delDomainName'
+  -> Text -- ^ 'delExpressionName'
+  -> DeleteExpression
 deleteExpression pDomainName_ pExpressionName_ =
   DeleteExpression'
     {_delDomainName = pDomainName_, _delExpressionName = pExpressionName_}
 
-
 -- | Undocumented member.
 delDomainName :: Lens' DeleteExpression Text
-delDomainName = lens _delDomainName (\ s a -> s{_delDomainName = a})
+delDomainName = lens _delDomainName (\s a -> s {_delDomainName = a})
 
 -- | The name of the @'Expression' @ to delete.
 delExpressionName :: Lens' DeleteExpression Text
-delExpressionName = lens _delExpressionName (\ s a -> s{_delExpressionName = a})
+delExpressionName = lens _delExpressionName (\s a -> s {_delExpressionName = a})
 
 instance AWSRequest DeleteExpression where
-        type Rs DeleteExpression = DeleteExpressionResponse
-        request = postQuery cloudSearch
-        response
-          = receiveXMLWrapper "DeleteExpressionResult"
-              (\ s h x ->
-                 DeleteExpressionResponse' <$>
-                   (pure (fromEnum s)) <*> (x .@ "Expression"))
+  type Rs DeleteExpression = DeleteExpressionResponse
+  request = postQuery cloudSearch
+  response =
+    receiveXMLWrapper
+      "DeleteExpressionResult"
+      (\s h x ->
+         DeleteExpressionResponse' <$> (pure (fromEnum s)) <*>
+         (x .@ "Expression"))
 
-instance Hashable DeleteExpression where
+instance Hashable DeleteExpression
 
-instance NFData DeleteExpression where
+instance NFData DeleteExpression
 
 instance ToHeaders DeleteExpression where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath DeleteExpression where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery DeleteExpression where
-        toQuery DeleteExpression'{..}
-          = mconcat
-              ["Action" =: ("DeleteExpression" :: ByteString),
-               "Version" =: ("2013-01-01" :: ByteString),
-               "DomainName" =: _delDomainName,
-               "ExpressionName" =: _delExpressionName]
+  toQuery DeleteExpression' {..} =
+    mconcat
+      [ "Action" =: ("DeleteExpression" :: ByteString)
+      , "Version" =: ("2013-01-01" :: ByteString)
+      , "DomainName" =: _delDomainName
+      , "ExpressionName" =: _delExpressionName
+      ]
 
 -- | The result of a @'DeleteExpression' @ request. Specifies the expression being deleted.
 --
 --
 --
 -- /See:/ 'deleteExpressionResponse' smart constructor.
-data DeleteExpressionResponse = DeleteExpressionResponse'
-  { _delrsResponseStatus :: !Int
-  , _delrsExpression     :: !ExpressionStatus
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteExpressionResponse =
+  DeleteExpressionResponse'
+    { _delrsResponseStatus :: !Int
+    , _delrsExpression :: !ExpressionStatus
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteExpressionResponse' with the minimum fields required to make a request.
 --
@@ -125,21 +124,21 @@ data DeleteExpressionResponse = DeleteExpressionResponse'
 -- * 'delrsResponseStatus' - -- | The response status code.
 --
 -- * 'delrsExpression' - The status of the expression being deleted.
-deleteExpressionResponse
-    :: Int -- ^ 'delrsResponseStatus'
-    -> ExpressionStatus -- ^ 'delrsExpression'
-    -> DeleteExpressionResponse
+deleteExpressionResponse ::
+     Int -- ^ 'delrsResponseStatus'
+  -> ExpressionStatus -- ^ 'delrsExpression'
+  -> DeleteExpressionResponse
 deleteExpressionResponse pResponseStatus_ pExpression_ =
   DeleteExpressionResponse'
     {_delrsResponseStatus = pResponseStatus_, _delrsExpression = pExpression_}
 
-
 -- | -- | The response status code.
 delrsResponseStatus :: Lens' DeleteExpressionResponse Int
-delrsResponseStatus = lens _delrsResponseStatus (\ s a -> s{_delrsResponseStatus = a})
+delrsResponseStatus =
+  lens _delrsResponseStatus (\s a -> s {_delrsResponseStatus = a})
 
 -- | The status of the expression being deleted.
 delrsExpression :: Lens' DeleteExpressionResponse ExpressionStatus
-delrsExpression = lens _delrsExpression (\ s a -> s{_delrsExpression = a})
+delrsExpression = lens _delrsExpression (\s a -> s {_delrsExpression = a})
 
-instance NFData DeleteExpressionResponse where
+instance NFData DeleteExpressionResponse

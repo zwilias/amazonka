@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.DirectConnect.CreateInterconnect
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -28,30 +26,28 @@
 -- For each end customer, the AWS Direct Connect partner provisions a connection on their interconnect by calling AllocateConnectionOnInterconnect. The end customer can then connect to AWS resources by creating a virtual interface on their connection, using the VLAN assigned to them by the AWS Direct Connect partner.
 --
 module Network.AWS.DirectConnect.CreateInterconnect
-    (
     -- * Creating a Request
-      createInterconnect
-    , CreateInterconnect
+  ( createInterconnect
+  , CreateInterconnect
     -- * Request Lenses
-    , ciLagId
-    , ciInterconnectName
-    , ciBandwidth
-    , ciLocation
-
+  , ciLagId
+  , ciInterconnectName
+  , ciBandwidth
+  , ciLocation
     -- * Destructuring the Response
-    , interconnect
-    , Interconnect
+  , interconnect
+  , Interconnect
     -- * Response Lenses
-    , iLagId
-    , iInterconnectId
-    , iLocation
-    , iInterconnectName
-    , iAwsDevice
-    , iLoaIssueTime
-    , iBandwidth
-    , iInterconnectState
-    , iRegion
-    ) where
+  , iLagId
+  , iInterconnectId
+  , iLocation
+  , iInterconnectName
+  , iAwsDevice
+  , iLoaIssueTime
+  , iBandwidth
+  , iInterconnectState
+  , iRegion
+  ) where
 
 import Network.AWS.DirectConnect.Types
 import Network.AWS.DirectConnect.Types.Product
@@ -65,13 +61,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createInterconnect' smart constructor.
-data CreateInterconnect = CreateInterconnect'
-  { _ciLagId            :: !(Maybe Text)
-  , _ciInterconnectName :: !Text
-  , _ciBandwidth        :: !Text
-  , _ciLocation         :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateInterconnect =
+  CreateInterconnect'
+    { _ciLagId :: !(Maybe Text)
+    , _ciInterconnectName :: !Text
+    , _ciBandwidth :: !Text
+    , _ciLocation :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateInterconnect' with the minimum fields required to make a request.
 --
@@ -84,11 +81,11 @@ data CreateInterconnect = CreateInterconnect'
 -- * 'ciBandwidth' - The port bandwidth Example: 1Gbps Default: None Available values: 1Gbps,10Gbps
 --
 -- * 'ciLocation' - Where the interconnect is located Example: EqSV5 Default: None
-createInterconnect
-    :: Text -- ^ 'ciInterconnectName'
-    -> Text -- ^ 'ciBandwidth'
-    -> Text -- ^ 'ciLocation'
-    -> CreateInterconnect
+createInterconnect ::
+     Text -- ^ 'ciInterconnectName'
+  -> Text -- ^ 'ciBandwidth'
+  -> Text -- ^ 'ciLocation'
+  -> CreateInterconnect
 createInterconnect pInterconnectName_ pBandwidth_ pLocation_ =
   CreateInterconnect'
     { _ciLagId = Nothing
@@ -97,52 +94,53 @@ createInterconnect pInterconnectName_ pBandwidth_ pLocation_ =
     , _ciLocation = pLocation_
     }
 
-
 -- | Undocumented member.
 ciLagId :: Lens' CreateInterconnect (Maybe Text)
-ciLagId = lens _ciLagId (\ s a -> s{_ciLagId = a})
+ciLagId = lens _ciLagId (\s a -> s {_ciLagId = a})
 
 -- | The name of the interconnect. Example: "/1G Interconnect to AWS/ " Default: None
 ciInterconnectName :: Lens' CreateInterconnect Text
-ciInterconnectName = lens _ciInterconnectName (\ s a -> s{_ciInterconnectName = a})
+ciInterconnectName =
+  lens _ciInterconnectName (\s a -> s {_ciInterconnectName = a})
 
 -- | The port bandwidth Example: 1Gbps Default: None Available values: 1Gbps,10Gbps
 ciBandwidth :: Lens' CreateInterconnect Text
-ciBandwidth = lens _ciBandwidth (\ s a -> s{_ciBandwidth = a})
+ciBandwidth = lens _ciBandwidth (\s a -> s {_ciBandwidth = a})
 
 -- | Where the interconnect is located Example: EqSV5 Default: None
 ciLocation :: Lens' CreateInterconnect Text
-ciLocation = lens _ciLocation (\ s a -> s{_ciLocation = a})
+ciLocation = lens _ciLocation (\s a -> s {_ciLocation = a})
 
 instance AWSRequest CreateInterconnect where
-        type Rs CreateInterconnect = Interconnect
-        request = postJSON directConnect
-        response = receiveJSON (\ s h x -> eitherParseJSON x)
+  type Rs CreateInterconnect = Interconnect
+  request = postJSON directConnect
+  response = receiveJSON (\s h x -> eitherParseJSON x)
 
-instance Hashable CreateInterconnect where
+instance Hashable CreateInterconnect
 
-instance NFData CreateInterconnect where
+instance NFData CreateInterconnect
 
 instance ToHeaders CreateInterconnect where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("OvertureService.CreateInterconnect" :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("OvertureService.CreateInterconnect" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON CreateInterconnect where
-        toJSON CreateInterconnect'{..}
-          = object
-              (catMaybes
-                 [("lagId" .=) <$> _ciLagId,
-                  Just ("interconnectName" .= _ciInterconnectName),
-                  Just ("bandwidth" .= _ciBandwidth),
-                  Just ("location" .= _ciLocation)])
+  toJSON CreateInterconnect' {..} =
+    object
+      (catMaybes
+         [ ("lagId" .=) <$> _ciLagId
+         , Just ("interconnectName" .= _ciInterconnectName)
+         , Just ("bandwidth" .= _ciBandwidth)
+         , Just ("location" .= _ciLocation)
+         ])
 
 instance ToPath CreateInterconnect where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery CreateInterconnect where
-        toQuery = const mempty
+  toQuery = const mempty

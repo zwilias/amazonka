@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Kinesis.CreateStream
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -42,18 +40,16 @@
 -- 'CreateStream' has a limit of five transactions per second per account.
 --
 module Network.AWS.Kinesis.CreateStream
-    (
     -- * Creating a Request
-      createStream
-    , CreateStream
+  ( createStream
+  , CreateStream
     -- * Request Lenses
-    , csStreamName
-    , csShardCount
-
+  , csStreamName
+  , csShardCount
     -- * Destructuring the Response
-    , createStreamResponse
-    , CreateStreamResponse
-    ) where
+  , createStreamResponse
+  , CreateStreamResponse
+  ) where
 
 import Network.AWS.Kinesis.Types
 import Network.AWS.Kinesis.Types.Product
@@ -67,11 +63,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createStream' smart constructor.
-data CreateStream = CreateStream'
-  { _csStreamName :: !Text
-  , _csShardCount :: !Nat
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateStream =
+  CreateStream'
+    { _csStreamName :: !Text
+    , _csShardCount :: !Nat
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateStream' with the minimum fields required to make a request.
 --
@@ -80,65 +77,61 @@ data CreateStream = CreateStream'
 -- * 'csStreamName' - A name to identify the stream. The stream name is scoped to the AWS account used by the application that creates the stream. It is also scoped by AWS Region. That is, two streams in two different AWS accounts can have the same name. Two streams in the same AWS account but in two different Regions can also have the same name.
 --
 -- * 'csShardCount' - The number of shards that the stream will use. The throughput of the stream is a function of the number of shards; more shards are required for greater provisioned throughput. DefaultShardLimit;
-createStream
-    :: Text -- ^ 'csStreamName'
-    -> Natural -- ^ 'csShardCount'
-    -> CreateStream
+createStream ::
+     Text -- ^ 'csStreamName'
+  -> Natural -- ^ 'csShardCount'
+  -> CreateStream
 createStream pStreamName_ pShardCount_ =
   CreateStream'
     {_csStreamName = pStreamName_, _csShardCount = _Nat # pShardCount_}
 
-
 -- | A name to identify the stream. The stream name is scoped to the AWS account used by the application that creates the stream. It is also scoped by AWS Region. That is, two streams in two different AWS accounts can have the same name. Two streams in the same AWS account but in two different Regions can also have the same name.
 csStreamName :: Lens' CreateStream Text
-csStreamName = lens _csStreamName (\ s a -> s{_csStreamName = a})
+csStreamName = lens _csStreamName (\s a -> s {_csStreamName = a})
 
 -- | The number of shards that the stream will use. The throughput of the stream is a function of the number of shards; more shards are required for greater provisioned throughput. DefaultShardLimit;
 csShardCount :: Lens' CreateStream Natural
-csShardCount = lens _csShardCount (\ s a -> s{_csShardCount = a}) . _Nat
+csShardCount = lens _csShardCount (\s a -> s {_csShardCount = a}) . _Nat
 
 instance AWSRequest CreateStream where
-        type Rs CreateStream = CreateStreamResponse
-        request = postJSON kinesis
-        response = receiveNull CreateStreamResponse'
+  type Rs CreateStream = CreateStreamResponse
+  request = postJSON kinesis
+  response = receiveNull CreateStreamResponse'
 
-instance Hashable CreateStream where
+instance Hashable CreateStream
 
-instance NFData CreateStream where
+instance NFData CreateStream
 
 instance ToHeaders CreateStream where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("Kinesis_20131202.CreateStream" :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =# ("Kinesis_20131202.CreateStream" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON CreateStream where
-        toJSON CreateStream'{..}
-          = object
-              (catMaybes
-                 [Just ("StreamName" .= _csStreamName),
-                  Just ("ShardCount" .= _csShardCount)])
+  toJSON CreateStream' {..} =
+    object
+      (catMaybes
+         [ Just ("StreamName" .= _csStreamName)
+         , Just ("ShardCount" .= _csShardCount)
+         ])
 
 instance ToPath CreateStream where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery CreateStream where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'createStreamResponse' smart constructor.
 data CreateStreamResponse =
   CreateStreamResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'CreateStreamResponse' with the minimum fields required to make a request.
 --
-createStreamResponse
-    :: CreateStreamResponse
+createStreamResponse :: CreateStreamResponse
 createStreamResponse = CreateStreamResponse'
 
-
-instance NFData CreateStreamResponse where
+instance NFData CreateStreamResponse

@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.IAM.GetPolicy
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,20 +24,18 @@
 -- For more information about policies, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html Managed Policies and Inline Policies> in the /IAM User Guide/ .
 --
 module Network.AWS.IAM.GetPolicy
-    (
     -- * Creating a Request
-      getPolicy
-    , GetPolicy
+  ( getPolicy
+  , GetPolicy
     -- * Request Lenses
-    , gpPolicyARN
-
+  , gpPolicyARN
     -- * Destructuring the Response
-    , getPolicyResponse
-    , GetPolicyResponse
+  , getPolicyResponse
+  , GetPolicyResponse
     -- * Response Lenses
-    , gprsPolicy
-    , gprsResponseStatus
-    ) where
+  , gprsPolicy
+  , gprsResponseStatus
+  ) where
 
 import Network.AWS.IAM.Types
 import Network.AWS.IAM.Types.Product
@@ -49,62 +45,63 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getPolicy' smart constructor.
-newtype GetPolicy = GetPolicy'
-  { _gpPolicyARN :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetPolicy =
+  GetPolicy'
+    { _gpPolicyARN :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetPolicy' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'gpPolicyARN' - The Amazon Resource Name (ARN) of the managed policy that you want information about. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
-getPolicy
-    :: Text -- ^ 'gpPolicyARN'
-    -> GetPolicy
+getPolicy ::
+     Text -- ^ 'gpPolicyARN'
+  -> GetPolicy
 getPolicy pPolicyARN_ = GetPolicy' {_gpPolicyARN = pPolicyARN_}
-
 
 -- | The Amazon Resource Name (ARN) of the managed policy that you want information about. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 gpPolicyARN :: Lens' GetPolicy Text
-gpPolicyARN = lens _gpPolicyARN (\ s a -> s{_gpPolicyARN = a})
+gpPolicyARN = lens _gpPolicyARN (\s a -> s {_gpPolicyARN = a})
 
 instance AWSRequest GetPolicy where
-        type Rs GetPolicy = GetPolicyResponse
-        request = postQuery iam
-        response
-          = receiveXMLWrapper "GetPolicyResult"
-              (\ s h x ->
-                 GetPolicyResponse' <$>
-                   (x .@? "Policy") <*> (pure (fromEnum s)))
+  type Rs GetPolicy = GetPolicyResponse
+  request = postQuery iam
+  response =
+    receiveXMLWrapper
+      "GetPolicyResult"
+      (\s h x -> GetPolicyResponse' <$> (x .@? "Policy") <*> (pure (fromEnum s)))
 
-instance Hashable GetPolicy where
+instance Hashable GetPolicy
 
-instance NFData GetPolicy where
+instance NFData GetPolicy
 
 instance ToHeaders GetPolicy where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath GetPolicy where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery GetPolicy where
-        toQuery GetPolicy'{..}
-          = mconcat
-              ["Action" =: ("GetPolicy" :: ByteString),
-               "Version" =: ("2010-05-08" :: ByteString),
-               "PolicyArn" =: _gpPolicyARN]
+  toQuery GetPolicy' {..} =
+    mconcat
+      [ "Action" =: ("GetPolicy" :: ByteString)
+      , "Version" =: ("2010-05-08" :: ByteString)
+      , "PolicyArn" =: _gpPolicyARN
+      ]
 
 -- | Contains the response to a successful 'GetPolicy' request.
 --
 --
 --
 -- /See:/ 'getPolicyResponse' smart constructor.
-data GetPolicyResponse = GetPolicyResponse'
-  { _gprsPolicy         :: !(Maybe Policy)
-  , _gprsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetPolicyResponse =
+  GetPolicyResponse'
+    { _gprsPolicy :: !(Maybe Policy)
+    , _gprsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetPolicyResponse' with the minimum fields required to make a request.
 --
@@ -113,20 +110,20 @@ data GetPolicyResponse = GetPolicyResponse'
 -- * 'gprsPolicy' - A structure containing details about the policy.
 --
 -- * 'gprsResponseStatus' - -- | The response status code.
-getPolicyResponse
-    :: Int -- ^ 'gprsResponseStatus'
-    -> GetPolicyResponse
+getPolicyResponse ::
+     Int -- ^ 'gprsResponseStatus'
+  -> GetPolicyResponse
 getPolicyResponse pResponseStatus_ =
   GetPolicyResponse'
     {_gprsPolicy = Nothing, _gprsResponseStatus = pResponseStatus_}
 
-
 -- | A structure containing details about the policy.
 gprsPolicy :: Lens' GetPolicyResponse (Maybe Policy)
-gprsPolicy = lens _gprsPolicy (\ s a -> s{_gprsPolicy = a})
+gprsPolicy = lens _gprsPolicy (\s a -> s {_gprsPolicy = a})
 
 -- | -- | The response status code.
 gprsResponseStatus :: Lens' GetPolicyResponse Int
-gprsResponseStatus = lens _gprsResponseStatus (\ s a -> s{_gprsResponseStatus = a})
+gprsResponseStatus =
+  lens _gprsResponseStatus (\s a -> s {_gprsResponseStatus = a})
 
-instance NFData GetPolicyResponse where
+instance NFData GetPolicyResponse

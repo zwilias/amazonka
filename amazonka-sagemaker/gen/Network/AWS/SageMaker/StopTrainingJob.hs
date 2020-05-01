@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.SageMaker.StopTrainingJob
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,17 +24,15 @@
 -- When it receives a @StopTrainingJob@ request, Amazon SageMaker changes the status of the job to @Stopping@ . After Amazon SageMaker stops the job, it sets the status to @Stopped@ .
 --
 module Network.AWS.SageMaker.StopTrainingJob
-    (
     -- * Creating a Request
-      stopTrainingJob
-    , StopTrainingJob
+  ( stopTrainingJob
+  , StopTrainingJob
     -- * Request Lenses
-    , stjTrainingJobName
-
+  , stjTrainingJobName
     -- * Destructuring the Response
-    , stopTrainingJobResponse
-    , StopTrainingJobResponse
-    ) where
+  , stopTrainingJobResponse
+  , StopTrainingJobResponse
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -46,68 +42,63 @@ import Network.AWS.SageMaker.Types
 import Network.AWS.SageMaker.Types.Product
 
 -- | /See:/ 'stopTrainingJob' smart constructor.
-newtype StopTrainingJob = StopTrainingJob'
-  { _stjTrainingJobName :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StopTrainingJob =
+  StopTrainingJob'
+    { _stjTrainingJobName :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StopTrainingJob' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'stjTrainingJobName' - The name of the training job to stop.
-stopTrainingJob
-    :: Text -- ^ 'stjTrainingJobName'
-    -> StopTrainingJob
+stopTrainingJob ::
+     Text -- ^ 'stjTrainingJobName'
+  -> StopTrainingJob
 stopTrainingJob pTrainingJobName_ =
   StopTrainingJob' {_stjTrainingJobName = pTrainingJobName_}
 
-
 -- | The name of the training job to stop.
 stjTrainingJobName :: Lens' StopTrainingJob Text
-stjTrainingJobName = lens _stjTrainingJobName (\ s a -> s{_stjTrainingJobName = a})
+stjTrainingJobName =
+  lens _stjTrainingJobName (\s a -> s {_stjTrainingJobName = a})
 
 instance AWSRequest StopTrainingJob where
-        type Rs StopTrainingJob = StopTrainingJobResponse
-        request = postJSON sageMaker
-        response = receiveNull StopTrainingJobResponse'
+  type Rs StopTrainingJob = StopTrainingJobResponse
+  request = postJSON sageMaker
+  response = receiveNull StopTrainingJobResponse'
 
-instance Hashable StopTrainingJob where
+instance Hashable StopTrainingJob
 
-instance NFData StopTrainingJob where
+instance NFData StopTrainingJob
 
 instance ToHeaders StopTrainingJob where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("SageMaker.StopTrainingJob" :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =# ("SageMaker.StopTrainingJob" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON StopTrainingJob where
-        toJSON StopTrainingJob'{..}
-          = object
-              (catMaybes
-                 [Just ("TrainingJobName" .= _stjTrainingJobName)])
+  toJSON StopTrainingJob' {..} =
+    object (catMaybes [Just ("TrainingJobName" .= _stjTrainingJobName)])
 
 instance ToPath StopTrainingJob where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery StopTrainingJob where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'stopTrainingJobResponse' smart constructor.
 data StopTrainingJobResponse =
   StopTrainingJobResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'StopTrainingJobResponse' with the minimum fields required to make a request.
 --
-stopTrainingJobResponse
-    :: StopTrainingJobResponse
+stopTrainingJobResponse :: StopTrainingJobResponse
 stopTrainingJobResponse = StopTrainingJobResponse'
 
-
-instance NFData StopTrainingJobResponse where
+instance NFData StopTrainingJobResponse

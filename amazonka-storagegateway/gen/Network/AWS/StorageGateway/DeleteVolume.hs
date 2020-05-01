@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.StorageGateway.DeleteVolume
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,20 +24,18 @@
 -- In the request, you must provide the Amazon Resource Name (ARN) of the storage volume you want to delete.
 --
 module Network.AWS.StorageGateway.DeleteVolume
-    (
     -- * Creating a Request
-      deleteVolume
-    , DeleteVolume
+  ( deleteVolume
+  , DeleteVolume
     -- * Request Lenses
-    , dvVolumeARN
-
+  , dvVolumeARN
     -- * Destructuring the Response
-    , deleteVolumeResponse
-    , DeleteVolumeResponse
+  , deleteVolumeResponse
+  , DeleteVolumeResponse
     -- * Response Lenses
-    , dvrsVolumeARN
-    , dvrsResponseStatus
-    ) where
+  , dvrsVolumeARN
+  , dvrsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -53,70 +49,68 @@ import Network.AWS.StorageGateway.Types.Product
 --
 --
 -- /See:/ 'deleteVolume' smart constructor.
-newtype DeleteVolume = DeleteVolume'
-  { _dvVolumeARN :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteVolume =
+  DeleteVolume'
+    { _dvVolumeARN :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteVolume' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dvVolumeARN' - The Amazon Resource Name (ARN) of the volume. Use the 'ListVolumes' operation to return a list of gateway volumes.
-deleteVolume
-    :: Text -- ^ 'dvVolumeARN'
-    -> DeleteVolume
+deleteVolume ::
+     Text -- ^ 'dvVolumeARN'
+  -> DeleteVolume
 deleteVolume pVolumeARN_ = DeleteVolume' {_dvVolumeARN = pVolumeARN_}
-
 
 -- | The Amazon Resource Name (ARN) of the volume. Use the 'ListVolumes' operation to return a list of gateway volumes.
 dvVolumeARN :: Lens' DeleteVolume Text
-dvVolumeARN = lens _dvVolumeARN (\ s a -> s{_dvVolumeARN = a})
+dvVolumeARN = lens _dvVolumeARN (\s a -> s {_dvVolumeARN = a})
 
 instance AWSRequest DeleteVolume where
-        type Rs DeleteVolume = DeleteVolumeResponse
-        request = postJSON storageGateway
-        response
-          = receiveJSON
-              (\ s h x ->
-                 DeleteVolumeResponse' <$>
-                   (x .?> "VolumeARN") <*> (pure (fromEnum s)))
+  type Rs DeleteVolume = DeleteVolumeResponse
+  request = postJSON storageGateway
+  response =
+    receiveJSON
+      (\s h x ->
+         DeleteVolumeResponse' <$> (x .?> "VolumeARN") <*> (pure (fromEnum s)))
 
-instance Hashable DeleteVolume where
+instance Hashable DeleteVolume
 
-instance NFData DeleteVolume where
+instance NFData DeleteVolume
 
 instance ToHeaders DeleteVolume where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("StorageGateway_20130630.DeleteVolume" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("StorageGateway_20130630.DeleteVolume" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON DeleteVolume where
-        toJSON DeleteVolume'{..}
-          = object
-              (catMaybes [Just ("VolumeARN" .= _dvVolumeARN)])
+  toJSON DeleteVolume' {..} =
+    object (catMaybes [Just ("VolumeARN" .= _dvVolumeARN)])
 
 instance ToPath DeleteVolume where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery DeleteVolume where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | A JSON object containing the of the storage volume that was deleted
 --
 --
 --
 -- /See:/ 'deleteVolumeResponse' smart constructor.
-data DeleteVolumeResponse = DeleteVolumeResponse'
-  { _dvrsVolumeARN      :: !(Maybe Text)
-  , _dvrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteVolumeResponse =
+  DeleteVolumeResponse'
+    { _dvrsVolumeARN :: !(Maybe Text)
+    , _dvrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteVolumeResponse' with the minimum fields required to make a request.
 --
@@ -125,20 +119,20 @@ data DeleteVolumeResponse = DeleteVolumeResponse'
 -- * 'dvrsVolumeARN' - The Amazon Resource Name (ARN) of the storage volume that was deleted. It is the same ARN you provided in the request.
 --
 -- * 'dvrsResponseStatus' - -- | The response status code.
-deleteVolumeResponse
-    :: Int -- ^ 'dvrsResponseStatus'
-    -> DeleteVolumeResponse
+deleteVolumeResponse ::
+     Int -- ^ 'dvrsResponseStatus'
+  -> DeleteVolumeResponse
 deleteVolumeResponse pResponseStatus_ =
   DeleteVolumeResponse'
     {_dvrsVolumeARN = Nothing, _dvrsResponseStatus = pResponseStatus_}
 
-
 -- | The Amazon Resource Name (ARN) of the storage volume that was deleted. It is the same ARN you provided in the request.
 dvrsVolumeARN :: Lens' DeleteVolumeResponse (Maybe Text)
-dvrsVolumeARN = lens _dvrsVolumeARN (\ s a -> s{_dvrsVolumeARN = a})
+dvrsVolumeARN = lens _dvrsVolumeARN (\s a -> s {_dvrsVolumeARN = a})
 
 -- | -- | The response status code.
 dvrsResponseStatus :: Lens' DeleteVolumeResponse Int
-dvrsResponseStatus = lens _dvrsResponseStatus (\ s a -> s{_dvrsResponseStatus = a})
+dvrsResponseStatus =
+  lens _dvrsResponseStatus (\s a -> s {_dvrsResponseStatus = a})
 
-instance NFData DeleteVolumeResponse where
+instance NFData DeleteVolumeResponse

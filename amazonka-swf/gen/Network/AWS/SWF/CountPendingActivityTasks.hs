@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.SWF.CountPendingActivityTasks
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -36,21 +34,19 @@
 -- If the caller doesn't have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's @cause@ parameter is set to @OPERATION_NOT_PERMITTED@ . For details and example IAM policies, see <http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html Using IAM to Manage Access to Amazon SWF Workflows> in the /Amazon SWF Developer Guide/ .
 --
 module Network.AWS.SWF.CountPendingActivityTasks
-    (
     -- * Creating a Request
-      countPendingActivityTasks
-    , CountPendingActivityTasks
+  ( countPendingActivityTasks
+  , CountPendingActivityTasks
     -- * Request Lenses
-    , cpatDomain
-    , cpatTaskList
-
+  , cpatDomain
+  , cpatTaskList
     -- * Destructuring the Response
-    , pendingTaskCount
-    , PendingTaskCount
+  , pendingTaskCount
+  , PendingTaskCount
     -- * Response Lenses
-    , ptcTruncated
-    , ptcCount
-    ) where
+  , ptcTruncated
+  , ptcCount
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -60,11 +56,12 @@ import Network.AWS.SWF.Types
 import Network.AWS.SWF.Types.Product
 
 -- | /See:/ 'countPendingActivityTasks' smart constructor.
-data CountPendingActivityTasks = CountPendingActivityTasks'
-  { _cpatDomain   :: !Text
-  , _cpatTaskList :: !TaskList
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CountPendingActivityTasks =
+  CountPendingActivityTasks'
+    { _cpatDomain :: !Text
+    , _cpatTaskList :: !TaskList
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CountPendingActivityTasks' with the minimum fields required to make a request.
 --
@@ -73,51 +70,48 @@ data CountPendingActivityTasks = CountPendingActivityTasks'
 -- * 'cpatDomain' - The name of the domain that contains the task list.
 --
 -- * 'cpatTaskList' - The name of the task list.
-countPendingActivityTasks
-    :: Text -- ^ 'cpatDomain'
-    -> TaskList -- ^ 'cpatTaskList'
-    -> CountPendingActivityTasks
+countPendingActivityTasks ::
+     Text -- ^ 'cpatDomain'
+  -> TaskList -- ^ 'cpatTaskList'
+  -> CountPendingActivityTasks
 countPendingActivityTasks pDomain_ pTaskList_ =
   CountPendingActivityTasks'
     {_cpatDomain = pDomain_, _cpatTaskList = pTaskList_}
 
-
 -- | The name of the domain that contains the task list.
 cpatDomain :: Lens' CountPendingActivityTasks Text
-cpatDomain = lens _cpatDomain (\ s a -> s{_cpatDomain = a})
+cpatDomain = lens _cpatDomain (\s a -> s {_cpatDomain = a})
 
 -- | The name of the task list.
 cpatTaskList :: Lens' CountPendingActivityTasks TaskList
-cpatTaskList = lens _cpatTaskList (\ s a -> s{_cpatTaskList = a})
+cpatTaskList = lens _cpatTaskList (\s a -> s {_cpatTaskList = a})
 
 instance AWSRequest CountPendingActivityTasks where
-        type Rs CountPendingActivityTasks = PendingTaskCount
-        request = postJSON swf
-        response = receiveJSON (\ s h x -> eitherParseJSON x)
+  type Rs CountPendingActivityTasks = PendingTaskCount
+  request = postJSON swf
+  response = receiveJSON (\s h x -> eitherParseJSON x)
 
-instance Hashable CountPendingActivityTasks where
+instance Hashable CountPendingActivityTasks
 
-instance NFData CountPendingActivityTasks where
+instance NFData CountPendingActivityTasks
 
 instance ToHeaders CountPendingActivityTasks where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("SimpleWorkflowService.CountPendingActivityTasks" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.0" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("SimpleWorkflowService.CountPendingActivityTasks" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.0" :: ByteString)
+         ])
 
 instance ToJSON CountPendingActivityTasks where
-        toJSON CountPendingActivityTasks'{..}
-          = object
-              (catMaybes
-                 [Just ("domain" .= _cpatDomain),
-                  Just ("taskList" .= _cpatTaskList)])
+  toJSON CountPendingActivityTasks' {..} =
+    object
+      (catMaybes
+         [Just ("domain" .= _cpatDomain), Just ("taskList" .= _cpatTaskList)])
 
 instance ToPath CountPendingActivityTasks where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery CountPendingActivityTasks where
-        toQuery = const mempty
+  toQuery = const mempty

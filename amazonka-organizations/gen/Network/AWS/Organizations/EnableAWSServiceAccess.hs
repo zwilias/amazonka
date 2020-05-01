@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Organizations.EnableAWSServiceAccess
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -28,17 +26,15 @@
 -- This operation can be called only from the organization's master account and only if the organization has <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html enabled all features> .
 --
 module Network.AWS.Organizations.EnableAWSServiceAccess
-    (
     -- * Creating a Request
-      enableAWSServiceAccess
-    , EnableAWSServiceAccess
+  ( enableAWSServiceAccess
+  , EnableAWSServiceAccess
     -- * Request Lenses
-    , easaServicePrincipal
-
+  , easaServicePrincipal
     -- * Destructuring the Response
-    , enableAWSServiceAccessResponse
-    , EnableAWSServiceAccessResponse
-    ) where
+  , enableAWSServiceAccessResponse
+  , EnableAWSServiceAccessResponse
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
@@ -48,71 +44,64 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'enableAWSServiceAccess' smart constructor.
-newtype EnableAWSServiceAccess = EnableAWSServiceAccess'
-  { _easaServicePrincipal :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype EnableAWSServiceAccess =
+  EnableAWSServiceAccess'
+    { _easaServicePrincipal :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'EnableAWSServiceAccess' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'easaServicePrincipal' - The service principal name of the AWS service for which you want to enable integration with your organization. This is typically in the form of a URL, such as @/service-abbreviation/ .amazonaws.com@ .
-enableAWSServiceAccess
-    :: Text -- ^ 'easaServicePrincipal'
-    -> EnableAWSServiceAccess
+enableAWSServiceAccess ::
+     Text -- ^ 'easaServicePrincipal'
+  -> EnableAWSServiceAccess
 enableAWSServiceAccess pServicePrincipal_ =
   EnableAWSServiceAccess' {_easaServicePrincipal = pServicePrincipal_}
 
-
 -- | The service principal name of the AWS service for which you want to enable integration with your organization. This is typically in the form of a URL, such as @/service-abbreviation/ .amazonaws.com@ .
 easaServicePrincipal :: Lens' EnableAWSServiceAccess Text
-easaServicePrincipal = lens _easaServicePrincipal (\ s a -> s{_easaServicePrincipal = a})
+easaServicePrincipal =
+  lens _easaServicePrincipal (\s a -> s {_easaServicePrincipal = a})
 
 instance AWSRequest EnableAWSServiceAccess where
-        type Rs EnableAWSServiceAccess =
-             EnableAWSServiceAccessResponse
-        request = postJSON organizations
-        response
-          = receiveNull EnableAWSServiceAccessResponse'
+  type Rs EnableAWSServiceAccess = EnableAWSServiceAccessResponse
+  request = postJSON organizations
+  response = receiveNull EnableAWSServiceAccessResponse'
 
-instance Hashable EnableAWSServiceAccess where
+instance Hashable EnableAWSServiceAccess
 
-instance NFData EnableAWSServiceAccess where
+instance NFData EnableAWSServiceAccess
 
 instance ToHeaders EnableAWSServiceAccess where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("AWSOrganizationsV20161128.EnableAWSServiceAccess"
-                       :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("AWSOrganizationsV20161128.EnableAWSServiceAccess" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON EnableAWSServiceAccess where
-        toJSON EnableAWSServiceAccess'{..}
-          = object
-              (catMaybes
-                 [Just ("ServicePrincipal" .= _easaServicePrincipal)])
+  toJSON EnableAWSServiceAccess' {..} =
+    object (catMaybes [Just ("ServicePrincipal" .= _easaServicePrincipal)])
 
 instance ToPath EnableAWSServiceAccess where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery EnableAWSServiceAccess where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'enableAWSServiceAccessResponse' smart constructor.
 data EnableAWSServiceAccessResponse =
   EnableAWSServiceAccessResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'EnableAWSServiceAccessResponse' with the minimum fields required to make a request.
 --
-enableAWSServiceAccessResponse
-    :: EnableAWSServiceAccessResponse
+enableAWSServiceAccessResponse :: EnableAWSServiceAccessResponse
 enableAWSServiceAccessResponse = EnableAWSServiceAccessResponse'
 
-
-instance NFData EnableAWSServiceAccessResponse where
+instance NFData EnableAWSServiceAccessResponse

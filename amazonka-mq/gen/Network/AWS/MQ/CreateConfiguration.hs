@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.MQ.CreateConfiguration
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,25 +18,23 @@
 --
 -- Creates a new configuration for the specified configuration name. Amazon MQ uses the default configuration (the engine type and version). Note: If the configuration name already exists, Amazon MQ doesn't create a configuration.
 module Network.AWS.MQ.CreateConfiguration
-    (
     -- * Creating a Request
-      createConfiguration
-    , CreateConfiguration
+  ( createConfiguration
+  , CreateConfiguration
     -- * Request Lenses
-    , ccEngineVersion
-    , ccName
-    , ccEngineType
-
+  , ccEngineVersion
+  , ccName
+  , ccEngineType
     -- * Destructuring the Response
-    , createConfigurationResponse
-    , CreateConfigurationResponse
+  , createConfigurationResponse
+  , CreateConfigurationResponse
     -- * Response Lenses
-    , ccrsARN
-    , ccrsLatestRevision
-    , ccrsName
-    , ccrsId
-    , ccrsResponseStatus
-    ) where
+  , ccrsARN
+  , ccrsLatestRevision
+  , ccrsName
+  , ccrsId
+  , ccrsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.MQ.Types
@@ -50,12 +46,13 @@ import Network.AWS.Response
 -- | Creates a new configuration for the specified configuration name. Amazon MQ uses the default configuration (the engine type and version). Note: If the configuration name already exists, Amazon MQ doesn't create a configuration.
 --
 -- /See:/ 'createConfiguration' smart constructor.
-data CreateConfiguration = CreateConfiguration'
-  { _ccEngineVersion :: !(Maybe Text)
-  , _ccName          :: !(Maybe Text)
-  , _ccEngineType    :: !(Maybe EngineType)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateConfiguration =
+  CreateConfiguration'
+    { _ccEngineVersion :: !(Maybe Text)
+    , _ccName :: !(Maybe Text)
+    , _ccEngineType :: !(Maybe EngineType)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateConfiguration' with the minimum fields required to make a request.
 --
@@ -66,72 +63,69 @@ data CreateConfiguration = CreateConfiguration'
 -- * 'ccName' - Required. The name of the configuration. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 1-150 characters long.
 --
 -- * 'ccEngineType' - Required. The type of broker engine. Note: Currently, Amazon MQ supports only ACTIVEMQ.
-createConfiguration
-    :: CreateConfiguration
+createConfiguration :: CreateConfiguration
 createConfiguration =
   CreateConfiguration'
     {_ccEngineVersion = Nothing, _ccName = Nothing, _ccEngineType = Nothing}
 
-
 -- | Required. The version of the broker engine. Note: Currently, Amazon MQ supports only 5.15.0.
 ccEngineVersion :: Lens' CreateConfiguration (Maybe Text)
-ccEngineVersion = lens _ccEngineVersion (\ s a -> s{_ccEngineVersion = a})
+ccEngineVersion = lens _ccEngineVersion (\s a -> s {_ccEngineVersion = a})
 
 -- | Required. The name of the configuration. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 1-150 characters long.
 ccName :: Lens' CreateConfiguration (Maybe Text)
-ccName = lens _ccName (\ s a -> s{_ccName = a})
+ccName = lens _ccName (\s a -> s {_ccName = a})
 
 -- | Required. The type of broker engine. Note: Currently, Amazon MQ supports only ACTIVEMQ.
 ccEngineType :: Lens' CreateConfiguration (Maybe EngineType)
-ccEngineType = lens _ccEngineType (\ s a -> s{_ccEngineType = a})
+ccEngineType = lens _ccEngineType (\s a -> s {_ccEngineType = a})
 
 instance AWSRequest CreateConfiguration where
-        type Rs CreateConfiguration =
-             CreateConfigurationResponse
-        request = postJSON mq
-        response
-          = receiveJSON
-              (\ s h x ->
-                 CreateConfigurationResponse' <$>
-                   (x .?> "arn") <*> (x .?> "latestRevision") <*>
-                     (x .?> "name")
-                     <*> (x .?> "id")
-                     <*> (pure (fromEnum s)))
+  type Rs CreateConfiguration = CreateConfigurationResponse
+  request = postJSON mq
+  response =
+    receiveJSON
+      (\s h x ->
+         CreateConfigurationResponse' <$> (x .?> "arn") <*>
+         (x .?> "latestRevision") <*>
+         (x .?> "name") <*>
+         (x .?> "id") <*>
+         (pure (fromEnum s)))
 
-instance Hashable CreateConfiguration where
+instance Hashable CreateConfiguration
 
-instance NFData CreateConfiguration where
+instance NFData CreateConfiguration
 
 instance ToHeaders CreateConfiguration where
-        toHeaders
-          = const
-              (mconcat
-                 ["Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat ["Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON CreateConfiguration where
-        toJSON CreateConfiguration'{..}
-          = object
-              (catMaybes
-                 [("engineVersion" .=) <$> _ccEngineVersion,
-                  ("name" .=) <$> _ccName,
-                  ("engineType" .=) <$> _ccEngineType])
+  toJSON CreateConfiguration' {..} =
+    object
+      (catMaybes
+         [ ("engineVersion" .=) <$> _ccEngineVersion
+         , ("name" .=) <$> _ccName
+         , ("engineType" .=) <$> _ccEngineType
+         ])
 
 instance ToPath CreateConfiguration where
-        toPath = const "/v1/configurations"
+  toPath = const "/v1/configurations"
 
 instance ToQuery CreateConfiguration where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'createConfigurationResponse' smart constructor.
-data CreateConfigurationResponse = CreateConfigurationResponse'
-  { _ccrsARN            :: !(Maybe Text)
-  , _ccrsLatestRevision :: !(Maybe ConfigurationRevision)
-  , _ccrsName           :: !(Maybe Text)
-  , _ccrsId             :: !(Maybe Text)
-  , _ccrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateConfigurationResponse =
+  CreateConfigurationResponse'
+    { _ccrsARN :: !(Maybe Text)
+    , _ccrsLatestRevision :: !(Maybe ConfigurationRevision)
+    , _ccrsName :: !(Maybe Text)
+    , _ccrsId :: !(Maybe Text)
+    , _ccrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -146,9 +140,9 @@ data CreateConfigurationResponse = CreateConfigurationResponse'
 -- * 'ccrsId' - Required. The unique ID that Amazon MQ generates for the configuration.
 --
 -- * 'ccrsResponseStatus' - -- | The response status code.
-createConfigurationResponse
-    :: Int -- ^ 'ccrsResponseStatus'
-    -> CreateConfigurationResponse
+createConfigurationResponse ::
+     Int -- ^ 'ccrsResponseStatus'
+  -> CreateConfigurationResponse
 createConfigurationResponse pResponseStatus_ =
   CreateConfigurationResponse'
     { _ccrsARN = Nothing
@@ -158,25 +152,27 @@ createConfigurationResponse pResponseStatus_ =
     , _ccrsResponseStatus = pResponseStatus_
     }
 
-
 -- | Required. The Amazon Resource Name (ARN) of the configuration.
 ccrsARN :: Lens' CreateConfigurationResponse (Maybe Text)
-ccrsARN = lens _ccrsARN (\ s a -> s{_ccrsARN = a})
+ccrsARN = lens _ccrsARN (\s a -> s {_ccrsARN = a})
 
 -- | The latest revision of the configuration.
-ccrsLatestRevision :: Lens' CreateConfigurationResponse (Maybe ConfigurationRevision)
-ccrsLatestRevision = lens _ccrsLatestRevision (\ s a -> s{_ccrsLatestRevision = a})
+ccrsLatestRevision ::
+     Lens' CreateConfigurationResponse (Maybe ConfigurationRevision)
+ccrsLatestRevision =
+  lens _ccrsLatestRevision (\s a -> s {_ccrsLatestRevision = a})
 
 -- | Required. The name of the configuration. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 1-150 characters long.
 ccrsName :: Lens' CreateConfigurationResponse (Maybe Text)
-ccrsName = lens _ccrsName (\ s a -> s{_ccrsName = a})
+ccrsName = lens _ccrsName (\s a -> s {_ccrsName = a})
 
 -- | Required. The unique ID that Amazon MQ generates for the configuration.
 ccrsId :: Lens' CreateConfigurationResponse (Maybe Text)
-ccrsId = lens _ccrsId (\ s a -> s{_ccrsId = a})
+ccrsId = lens _ccrsId (\s a -> s {_ccrsId = a})
 
 -- | -- | The response status code.
 ccrsResponseStatus :: Lens' CreateConfigurationResponse Int
-ccrsResponseStatus = lens _ccrsResponseStatus (\ s a -> s{_ccrsResponseStatus = a})
+ccrsResponseStatus =
+  lens _ccrsResponseStatus (\s a -> s {_ccrsResponseStatus = a})
 
-instance NFData CreateConfigurationResponse where
+instance NFData CreateConfigurationResponse

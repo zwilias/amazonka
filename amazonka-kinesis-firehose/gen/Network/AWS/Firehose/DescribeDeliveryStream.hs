@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Firehose.DescribeDeliveryStream
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,22 +20,20 @@
 --
 --
 module Network.AWS.Firehose.DescribeDeliveryStream
-    (
     -- * Creating a Request
-      describeDeliveryStream
-    , DescribeDeliveryStream
+  ( describeDeliveryStream
+  , DescribeDeliveryStream
     -- * Request Lenses
-    , ddsExclusiveStartDestinationId
-    , ddsLimit
-    , ddsDeliveryStreamName
-
+  , ddsExclusiveStartDestinationId
+  , ddsLimit
+  , ddsDeliveryStreamName
     -- * Destructuring the Response
-    , describeDeliveryStreamResponse
-    , DescribeDeliveryStreamResponse
+  , describeDeliveryStreamResponse
+  , DescribeDeliveryStreamResponse
     -- * Response Lenses
-    , ddsrsResponseStatus
-    , ddsrsDeliveryStreamDescription
-    ) where
+  , ddsrsResponseStatus
+  , ddsrsDeliveryStreamDescription
+  ) where
 
 import Network.AWS.Firehose.Types
 import Network.AWS.Firehose.Types.Product
@@ -47,12 +43,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeDeliveryStream' smart constructor.
-data DescribeDeliveryStream = DescribeDeliveryStream'
-  { _ddsExclusiveStartDestinationId :: !(Maybe Text)
-  , _ddsLimit                       :: !(Maybe Nat)
-  , _ddsDeliveryStreamName          :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDeliveryStream =
+  DescribeDeliveryStream'
+    { _ddsExclusiveStartDestinationId :: !(Maybe Text)
+    , _ddsLimit :: !(Maybe Nat)
+    , _ddsDeliveryStreamName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeDeliveryStream' with the minimum fields required to make a request.
 --
@@ -63,9 +60,9 @@ data DescribeDeliveryStream = DescribeDeliveryStream'
 -- * 'ddsLimit' - The limit on the number of destinations to return. You can have one destination per delivery stream.
 --
 -- * 'ddsDeliveryStreamName' - The name of the delivery stream.
-describeDeliveryStream
-    :: Text -- ^ 'ddsDeliveryStreamName'
-    -> DescribeDeliveryStream
+describeDeliveryStream ::
+     Text -- ^ 'ddsDeliveryStreamName'
+  -> DescribeDeliveryStream
 describeDeliveryStream pDeliveryStreamName_ =
   DescribeDeliveryStream'
     { _ddsExclusiveStartDestinationId = Nothing
@@ -73,66 +70,67 @@ describeDeliveryStream pDeliveryStreamName_ =
     , _ddsDeliveryStreamName = pDeliveryStreamName_
     }
 
-
 -- | The ID of the destination to start returning the destination information. Kinesis Data Firehose supports one destination per delivery stream.
 ddsExclusiveStartDestinationId :: Lens' DescribeDeliveryStream (Maybe Text)
-ddsExclusiveStartDestinationId = lens _ddsExclusiveStartDestinationId (\ s a -> s{_ddsExclusiveStartDestinationId = a})
+ddsExclusiveStartDestinationId =
+  lens
+    _ddsExclusiveStartDestinationId
+    (\s a -> s {_ddsExclusiveStartDestinationId = a})
 
 -- | The limit on the number of destinations to return. You can have one destination per delivery stream.
 ddsLimit :: Lens' DescribeDeliveryStream (Maybe Natural)
-ddsLimit = lens _ddsLimit (\ s a -> s{_ddsLimit = a}) . mapping _Nat
+ddsLimit = lens _ddsLimit (\s a -> s {_ddsLimit = a}) . mapping _Nat
 
 -- | The name of the delivery stream.
 ddsDeliveryStreamName :: Lens' DescribeDeliveryStream Text
-ddsDeliveryStreamName = lens _ddsDeliveryStreamName (\ s a -> s{_ddsDeliveryStreamName = a})
+ddsDeliveryStreamName =
+  lens _ddsDeliveryStreamName (\s a -> s {_ddsDeliveryStreamName = a})
 
 instance AWSRequest DescribeDeliveryStream where
-        type Rs DescribeDeliveryStream =
-             DescribeDeliveryStreamResponse
-        request = postJSON firehose
-        response
-          = receiveJSON
-              (\ s h x ->
-                 DescribeDeliveryStreamResponse' <$>
-                   (pure (fromEnum s)) <*>
-                     (x .:> "DeliveryStreamDescription"))
+  type Rs DescribeDeliveryStream = DescribeDeliveryStreamResponse
+  request = postJSON firehose
+  response =
+    receiveJSON
+      (\s h x ->
+         DescribeDeliveryStreamResponse' <$> (pure (fromEnum s)) <*>
+         (x .:> "DeliveryStreamDescription"))
 
-instance Hashable DescribeDeliveryStream where
+instance Hashable DescribeDeliveryStream
 
-instance NFData DescribeDeliveryStream where
+instance NFData DescribeDeliveryStream
 
 instance ToHeaders DescribeDeliveryStream where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("Firehose_20150804.DescribeDeliveryStream" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("Firehose_20150804.DescribeDeliveryStream" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON DescribeDeliveryStream where
-        toJSON DescribeDeliveryStream'{..}
-          = object
-              (catMaybes
-                 [("ExclusiveStartDestinationId" .=) <$>
-                    _ddsExclusiveStartDestinationId,
-                  ("Limit" .=) <$> _ddsLimit,
-                  Just
-                    ("DeliveryStreamName" .= _ddsDeliveryStreamName)])
+  toJSON DescribeDeliveryStream' {..} =
+    object
+      (catMaybes
+         [ ("ExclusiveStartDestinationId" .=) <$>
+           _ddsExclusiveStartDestinationId
+         , ("Limit" .=) <$> _ddsLimit
+         , Just ("DeliveryStreamName" .= _ddsDeliveryStreamName)
+         ])
 
 instance ToPath DescribeDeliveryStream where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery DescribeDeliveryStream where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'describeDeliveryStreamResponse' smart constructor.
-data DescribeDeliveryStreamResponse = DescribeDeliveryStreamResponse'
-  { _ddsrsResponseStatus            :: !Int
-  , _ddsrsDeliveryStreamDescription :: !DeliveryStreamDescription
-  } deriving (Eq, Show, Data, Typeable, Generic)
-
+data DescribeDeliveryStreamResponse =
+  DescribeDeliveryStreamResponse'
+    { _ddsrsResponseStatus :: !Int
+    , _ddsrsDeliveryStreamDescription :: !DeliveryStreamDescription
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeDeliveryStreamResponse' with the minimum fields required to make a request.
 --
@@ -141,23 +139,27 @@ data DescribeDeliveryStreamResponse = DescribeDeliveryStreamResponse'
 -- * 'ddsrsResponseStatus' - -- | The response status code.
 --
 -- * 'ddsrsDeliveryStreamDescription' - Information about the delivery stream.
-describeDeliveryStreamResponse
-    :: Int -- ^ 'ddsrsResponseStatus'
-    -> DeliveryStreamDescription -- ^ 'ddsrsDeliveryStreamDescription'
-    -> DescribeDeliveryStreamResponse
+describeDeliveryStreamResponse ::
+     Int -- ^ 'ddsrsResponseStatus'
+  -> DeliveryStreamDescription -- ^ 'ddsrsDeliveryStreamDescription'
+  -> DescribeDeliveryStreamResponse
 describeDeliveryStreamResponse pResponseStatus_ pDeliveryStreamDescription_ =
   DescribeDeliveryStreamResponse'
     { _ddsrsResponseStatus = pResponseStatus_
     , _ddsrsDeliveryStreamDescription = pDeliveryStreamDescription_
     }
 
-
 -- | -- | The response status code.
 ddsrsResponseStatus :: Lens' DescribeDeliveryStreamResponse Int
-ddsrsResponseStatus = lens _ddsrsResponseStatus (\ s a -> s{_ddsrsResponseStatus = a})
+ddsrsResponseStatus =
+  lens _ddsrsResponseStatus (\s a -> s {_ddsrsResponseStatus = a})
 
 -- | Information about the delivery stream.
-ddsrsDeliveryStreamDescription :: Lens' DescribeDeliveryStreamResponse DeliveryStreamDescription
-ddsrsDeliveryStreamDescription = lens _ddsrsDeliveryStreamDescription (\ s a -> s{_ddsrsDeliveryStreamDescription = a})
+ddsrsDeliveryStreamDescription ::
+     Lens' DescribeDeliveryStreamResponse DeliveryStreamDescription
+ddsrsDeliveryStreamDescription =
+  lens
+    _ddsrsDeliveryStreamDescription
+    (\s a -> s {_ddsrsDeliveryStreamDescription = a})
 
-instance NFData DescribeDeliveryStreamResponse where
+instance NFData DescribeDeliveryStreamResponse

@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.GuardDuty
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -155,7 +153,6 @@ import Test.Tasty
 --             getFilter
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseCreateFilter $
 --             createFilterResponse
@@ -285,510 +282,485 @@ import Test.Tasty
 --
 --           ]
 --     ]
-
 -- Requests
-
 requestCreateFilter :: CreateFilter -> TestTree
-requestCreateFilter = req
-    "CreateFilter"
-    "fixture/CreateFilter.yaml"
+requestCreateFilter = req "CreateFilter" "fixture/CreateFilter.yaml"
 
 requestListFindings :: ListFindings -> TestTree
-requestListFindings = req
-    "ListFindings"
-    "fixture/ListFindings.yaml"
+requestListFindings = req "ListFindings" "fixture/ListFindings.yaml"
 
 requestCreateIPSet :: CreateIPSet -> TestTree
-requestCreateIPSet = req
-    "CreateIPSet"
-    "fixture/CreateIPSet.yaml"
+requestCreateIPSet = req "CreateIPSet" "fixture/CreateIPSet.yaml"
 
 requestDeleteThreatIntelSet :: DeleteThreatIntelSet -> TestTree
-requestDeleteThreatIntelSet = req
-    "DeleteThreatIntelSet"
-    "fixture/DeleteThreatIntelSet.yaml"
+requestDeleteThreatIntelSet =
+  req "DeleteThreatIntelSet" "fixture/DeleteThreatIntelSet.yaml"
 
 requestUpdateThreatIntelSet :: UpdateThreatIntelSet -> TestTree
-requestUpdateThreatIntelSet = req
-    "UpdateThreatIntelSet"
-    "fixture/UpdateThreatIntelSet.yaml"
+requestUpdateThreatIntelSet =
+  req "UpdateThreatIntelSet" "fixture/UpdateThreatIntelSet.yaml"
 
 requestStopMonitoringMembers :: StopMonitoringMembers -> TestTree
-requestStopMonitoringMembers = req
-    "StopMonitoringMembers"
-    "fixture/StopMonitoringMembers.yaml"
+requestStopMonitoringMembers =
+  req "StopMonitoringMembers" "fixture/StopMonitoringMembers.yaml"
 
 requestListThreatIntelSets :: ListThreatIntelSets -> TestTree
-requestListThreatIntelSets = req
-    "ListThreatIntelSets"
-    "fixture/ListThreatIntelSets.yaml"
+requestListThreatIntelSets =
+  req "ListThreatIntelSets" "fixture/ListThreatIntelSets.yaml"
 
 requestCreateThreatIntelSet :: CreateThreatIntelSet -> TestTree
-requestCreateThreatIntelSet = req
-    "CreateThreatIntelSet"
-    "fixture/CreateThreatIntelSet.yaml"
+requestCreateThreatIntelSet =
+  req "CreateThreatIntelSet" "fixture/CreateThreatIntelSet.yaml"
 
 requestDeleteMembers :: DeleteMembers -> TestTree
-requestDeleteMembers = req
-    "DeleteMembers"
-    "fixture/DeleteMembers.yaml"
+requestDeleteMembers = req "DeleteMembers" "fixture/DeleteMembers.yaml"
 
 requestGetFindingsStatistics :: GetFindingsStatistics -> TestTree
-requestGetFindingsStatistics = req
-    "GetFindingsStatistics"
-    "fixture/GetFindingsStatistics.yaml"
+requestGetFindingsStatistics =
+  req "GetFindingsStatistics" "fixture/GetFindingsStatistics.yaml"
 
 requestGetIPSet :: GetIPSet -> TestTree
-requestGetIPSet = req
-    "GetIPSet"
-    "fixture/GetIPSet.yaml"
+requestGetIPSet = req "GetIPSet" "fixture/GetIPSet.yaml"
 
 requestListInvitations :: ListInvitations -> TestTree
-requestListInvitations = req
-    "ListInvitations"
-    "fixture/ListInvitations.yaml"
+requestListInvitations = req "ListInvitations" "fixture/ListInvitations.yaml"
 
 requestGetThreatIntelSet :: GetThreatIntelSet -> TestTree
-requestGetThreatIntelSet = req
-    "GetThreatIntelSet"
-    "fixture/GetThreatIntelSet.yaml"
+requestGetThreatIntelSet =
+  req "GetThreatIntelSet" "fixture/GetThreatIntelSet.yaml"
 
 requestDeleteInvitations :: DeleteInvitations -> TestTree
-requestDeleteInvitations = req
-    "DeleteInvitations"
-    "fixture/DeleteInvitations.yaml"
+requestDeleteInvitations =
+  req "DeleteInvitations" "fixture/DeleteInvitations.yaml"
 
 requestGetMasterAccount :: GetMasterAccount -> TestTree
-requestGetMasterAccount = req
-    "GetMasterAccount"
-    "fixture/GetMasterAccount.yaml"
+requestGetMasterAccount = req "GetMasterAccount" "fixture/GetMasterAccount.yaml"
 
 requestCreateDetector :: CreateDetector -> TestTree
-requestCreateDetector = req
-    "CreateDetector"
-    "fixture/CreateDetector.yaml"
+requestCreateDetector = req "CreateDetector" "fixture/CreateDetector.yaml"
 
 requestDeclineInvitations :: DeclineInvitations -> TestTree
-requestDeclineInvitations = req
-    "DeclineInvitations"
-    "fixture/DeclineInvitations.yaml"
+requestDeclineInvitations =
+  req "DeclineInvitations" "fixture/DeclineInvitations.yaml"
 
 requestUpdateFilter :: UpdateFilter -> TestTree
-requestUpdateFilter = req
-    "UpdateFilter"
-    "fixture/UpdateFilter.yaml"
+requestUpdateFilter = req "UpdateFilter" "fixture/UpdateFilter.yaml"
 
 requestDeleteFilter :: DeleteFilter -> TestTree
-requestDeleteFilter = req
-    "DeleteFilter"
-    "fixture/DeleteFilter.yaml"
+requestDeleteFilter = req "DeleteFilter" "fixture/DeleteFilter.yaml"
 
 requestDisassociateMembers :: DisassociateMembers -> TestTree
-requestDisassociateMembers = req
-    "DisassociateMembers"
-    "fixture/DisassociateMembers.yaml"
+requestDisassociateMembers =
+  req "DisassociateMembers" "fixture/DisassociateMembers.yaml"
 
-requestDisassociateFromMasterAccount :: DisassociateFromMasterAccount -> TestTree
-requestDisassociateFromMasterAccount = req
+requestDisassociateFromMasterAccount ::
+     DisassociateFromMasterAccount -> TestTree
+requestDisassociateFromMasterAccount =
+  req
     "DisassociateFromMasterAccount"
     "fixture/DisassociateFromMasterAccount.yaml"
 
 requestAcceptInvitation :: AcceptInvitation -> TestTree
-requestAcceptInvitation = req
-    "AcceptInvitation"
-    "fixture/AcceptInvitation.yaml"
+requestAcceptInvitation = req "AcceptInvitation" "fixture/AcceptInvitation.yaml"
 
 requestListFilters :: ListFilters -> TestTree
-requestListFilters = req
-    "ListFilters"
-    "fixture/ListFilters.yaml"
+requestListFilters = req "ListFilters" "fixture/ListFilters.yaml"
 
 requestListMembers :: ListMembers -> TestTree
-requestListMembers = req
-    "ListMembers"
-    "fixture/ListMembers.yaml"
+requestListMembers = req "ListMembers" "fixture/ListMembers.yaml"
 
 requestGetDetector :: GetDetector -> TestTree
-requestGetDetector = req
-    "GetDetector"
-    "fixture/GetDetector.yaml"
+requestGetDetector = req "GetDetector" "fixture/GetDetector.yaml"
 
 requestCreateSampleFindings :: CreateSampleFindings -> TestTree
-requestCreateSampleFindings = req
-    "CreateSampleFindings"
-    "fixture/CreateSampleFindings.yaml"
+requestCreateSampleFindings =
+  req "CreateSampleFindings" "fixture/CreateSampleFindings.yaml"
 
 requestArchiveFindings :: ArchiveFindings -> TestTree
-requestArchiveFindings = req
-    "ArchiveFindings"
-    "fixture/ArchiveFindings.yaml"
+requestArchiveFindings = req "ArchiveFindings" "fixture/ArchiveFindings.yaml"
 
 requestCreateMembers :: CreateMembers -> TestTree
-requestCreateMembers = req
-    "CreateMembers"
-    "fixture/CreateMembers.yaml"
+requestCreateMembers = req "CreateMembers" "fixture/CreateMembers.yaml"
 
 requestUnarchiveFindings :: UnarchiveFindings -> TestTree
-requestUnarchiveFindings = req
-    "UnarchiveFindings"
-    "fixture/UnarchiveFindings.yaml"
+requestUnarchiveFindings =
+  req "UnarchiveFindings" "fixture/UnarchiveFindings.yaml"
 
 requestGetInvitationsCount :: GetInvitationsCount -> TestTree
-requestGetInvitationsCount = req
-    "GetInvitationsCount"
-    "fixture/GetInvitationsCount.yaml"
+requestGetInvitationsCount =
+  req "GetInvitationsCount" "fixture/GetInvitationsCount.yaml"
 
 requestStartMonitoringMembers :: StartMonitoringMembers -> TestTree
-requestStartMonitoringMembers = req
-    "StartMonitoringMembers"
-    "fixture/StartMonitoringMembers.yaml"
+requestStartMonitoringMembers =
+  req "StartMonitoringMembers" "fixture/StartMonitoringMembers.yaml"
 
 requestInviteMembers :: InviteMembers -> TestTree
-requestInviteMembers = req
-    "InviteMembers"
-    "fixture/InviteMembers.yaml"
+requestInviteMembers = req "InviteMembers" "fixture/InviteMembers.yaml"
 
 requestDeleteIPSet :: DeleteIPSet -> TestTree
-requestDeleteIPSet = req
-    "DeleteIPSet"
-    "fixture/DeleteIPSet.yaml"
+requestDeleteIPSet = req "DeleteIPSet" "fixture/DeleteIPSet.yaml"
 
 requestUpdateIPSet :: UpdateIPSet -> TestTree
-requestUpdateIPSet = req
-    "UpdateIPSet"
-    "fixture/UpdateIPSet.yaml"
+requestUpdateIPSet = req "UpdateIPSet" "fixture/UpdateIPSet.yaml"
 
 requestListIPSets :: ListIPSets -> TestTree
-requestListIPSets = req
-    "ListIPSets"
-    "fixture/ListIPSets.yaml"
+requestListIPSets = req "ListIPSets" "fixture/ListIPSets.yaml"
 
 requestGetMembers :: GetMembers -> TestTree
-requestGetMembers = req
-    "GetMembers"
-    "fixture/GetMembers.yaml"
+requestGetMembers = req "GetMembers" "fixture/GetMembers.yaml"
 
 requestGetFindings :: GetFindings -> TestTree
-requestGetFindings = req
-    "GetFindings"
-    "fixture/GetFindings.yaml"
+requestGetFindings = req "GetFindings" "fixture/GetFindings.yaml"
 
 requestListDetectors :: ListDetectors -> TestTree
-requestListDetectors = req
-    "ListDetectors"
-    "fixture/ListDetectors.yaml"
+requestListDetectors = req "ListDetectors" "fixture/ListDetectors.yaml"
 
 requestUpdateDetector :: UpdateDetector -> TestTree
-requestUpdateDetector = req
-    "UpdateDetector"
-    "fixture/UpdateDetector.yaml"
+requestUpdateDetector = req "UpdateDetector" "fixture/UpdateDetector.yaml"
 
 requestDeleteDetector :: DeleteDetector -> TestTree
-requestDeleteDetector = req
-    "DeleteDetector"
-    "fixture/DeleteDetector.yaml"
+requestDeleteDetector = req "DeleteDetector" "fixture/DeleteDetector.yaml"
 
 requestUpdateFindingsFeedback :: UpdateFindingsFeedback -> TestTree
-requestUpdateFindingsFeedback = req
-    "UpdateFindingsFeedback"
-    "fixture/UpdateFindingsFeedback.yaml"
+requestUpdateFindingsFeedback =
+  req "UpdateFindingsFeedback" "fixture/UpdateFindingsFeedback.yaml"
 
 requestGetFilter :: GetFilter -> TestTree
-requestGetFilter = req
-    "GetFilter"
-    "fixture/GetFilter.yaml"
+requestGetFilter = req "GetFilter" "fixture/GetFilter.yaml"
 
 -- Responses
-
 responseCreateFilter :: CreateFilterResponse -> TestTree
-responseCreateFilter = res
+responseCreateFilter =
+  res
     "CreateFilterResponse"
     "fixture/CreateFilterResponse.proto"
     guardDuty
     (Proxy :: Proxy CreateFilter)
 
 responseListFindings :: ListFindingsResponse -> TestTree
-responseListFindings = res
+responseListFindings =
+  res
     "ListFindingsResponse"
     "fixture/ListFindingsResponse.proto"
     guardDuty
     (Proxy :: Proxy ListFindings)
 
 responseCreateIPSet :: CreateIPSetResponse -> TestTree
-responseCreateIPSet = res
+responseCreateIPSet =
+  res
     "CreateIPSetResponse"
     "fixture/CreateIPSetResponse.proto"
     guardDuty
     (Proxy :: Proxy CreateIPSet)
 
 responseDeleteThreatIntelSet :: DeleteThreatIntelSetResponse -> TestTree
-responseDeleteThreatIntelSet = res
+responseDeleteThreatIntelSet =
+  res
     "DeleteThreatIntelSetResponse"
     "fixture/DeleteThreatIntelSetResponse.proto"
     guardDuty
     (Proxy :: Proxy DeleteThreatIntelSet)
 
 responseUpdateThreatIntelSet :: UpdateThreatIntelSetResponse -> TestTree
-responseUpdateThreatIntelSet = res
+responseUpdateThreatIntelSet =
+  res
     "UpdateThreatIntelSetResponse"
     "fixture/UpdateThreatIntelSetResponse.proto"
     guardDuty
     (Proxy :: Proxy UpdateThreatIntelSet)
 
 responseStopMonitoringMembers :: StopMonitoringMembersResponse -> TestTree
-responseStopMonitoringMembers = res
+responseStopMonitoringMembers =
+  res
     "StopMonitoringMembersResponse"
     "fixture/StopMonitoringMembersResponse.proto"
     guardDuty
     (Proxy :: Proxy StopMonitoringMembers)
 
 responseListThreatIntelSets :: ListThreatIntelSetsResponse -> TestTree
-responseListThreatIntelSets = res
+responseListThreatIntelSets =
+  res
     "ListThreatIntelSetsResponse"
     "fixture/ListThreatIntelSetsResponse.proto"
     guardDuty
     (Proxy :: Proxy ListThreatIntelSets)
 
 responseCreateThreatIntelSet :: CreateThreatIntelSetResponse -> TestTree
-responseCreateThreatIntelSet = res
+responseCreateThreatIntelSet =
+  res
     "CreateThreatIntelSetResponse"
     "fixture/CreateThreatIntelSetResponse.proto"
     guardDuty
     (Proxy :: Proxy CreateThreatIntelSet)
 
 responseDeleteMembers :: DeleteMembersResponse -> TestTree
-responseDeleteMembers = res
+responseDeleteMembers =
+  res
     "DeleteMembersResponse"
     "fixture/DeleteMembersResponse.proto"
     guardDuty
     (Proxy :: Proxy DeleteMembers)
 
 responseGetFindingsStatistics :: GetFindingsStatisticsResponse -> TestTree
-responseGetFindingsStatistics = res
+responseGetFindingsStatistics =
+  res
     "GetFindingsStatisticsResponse"
     "fixture/GetFindingsStatisticsResponse.proto"
     guardDuty
     (Proxy :: Proxy GetFindingsStatistics)
 
 responseGetIPSet :: GetIPSetResponse -> TestTree
-responseGetIPSet = res
+responseGetIPSet =
+  res
     "GetIPSetResponse"
     "fixture/GetIPSetResponse.proto"
     guardDuty
     (Proxy :: Proxy GetIPSet)
 
 responseListInvitations :: ListInvitationsResponse -> TestTree
-responseListInvitations = res
+responseListInvitations =
+  res
     "ListInvitationsResponse"
     "fixture/ListInvitationsResponse.proto"
     guardDuty
     (Proxy :: Proxy ListInvitations)
 
 responseGetThreatIntelSet :: GetThreatIntelSetResponse -> TestTree
-responseGetThreatIntelSet = res
+responseGetThreatIntelSet =
+  res
     "GetThreatIntelSetResponse"
     "fixture/GetThreatIntelSetResponse.proto"
     guardDuty
     (Proxy :: Proxy GetThreatIntelSet)
 
 responseDeleteInvitations :: DeleteInvitationsResponse -> TestTree
-responseDeleteInvitations = res
+responseDeleteInvitations =
+  res
     "DeleteInvitationsResponse"
     "fixture/DeleteInvitationsResponse.proto"
     guardDuty
     (Proxy :: Proxy DeleteInvitations)
 
 responseGetMasterAccount :: GetMasterAccountResponse -> TestTree
-responseGetMasterAccount = res
+responseGetMasterAccount =
+  res
     "GetMasterAccountResponse"
     "fixture/GetMasterAccountResponse.proto"
     guardDuty
     (Proxy :: Proxy GetMasterAccount)
 
 responseCreateDetector :: CreateDetectorResponse -> TestTree
-responseCreateDetector = res
+responseCreateDetector =
+  res
     "CreateDetectorResponse"
     "fixture/CreateDetectorResponse.proto"
     guardDuty
     (Proxy :: Proxy CreateDetector)
 
 responseDeclineInvitations :: DeclineInvitationsResponse -> TestTree
-responseDeclineInvitations = res
+responseDeclineInvitations =
+  res
     "DeclineInvitationsResponse"
     "fixture/DeclineInvitationsResponse.proto"
     guardDuty
     (Proxy :: Proxy DeclineInvitations)
 
 responseUpdateFilter :: UpdateFilterResponse -> TestTree
-responseUpdateFilter = res
+responseUpdateFilter =
+  res
     "UpdateFilterResponse"
     "fixture/UpdateFilterResponse.proto"
     guardDuty
     (Proxy :: Proxy UpdateFilter)
 
 responseDeleteFilter :: DeleteFilterResponse -> TestTree
-responseDeleteFilter = res
+responseDeleteFilter =
+  res
     "DeleteFilterResponse"
     "fixture/DeleteFilterResponse.proto"
     guardDuty
     (Proxy :: Proxy DeleteFilter)
 
 responseDisassociateMembers :: DisassociateMembersResponse -> TestTree
-responseDisassociateMembers = res
+responseDisassociateMembers =
+  res
     "DisassociateMembersResponse"
     "fixture/DisassociateMembersResponse.proto"
     guardDuty
     (Proxy :: Proxy DisassociateMembers)
 
-responseDisassociateFromMasterAccount :: DisassociateFromMasterAccountResponse -> TestTree
-responseDisassociateFromMasterAccount = res
+responseDisassociateFromMasterAccount ::
+     DisassociateFromMasterAccountResponse -> TestTree
+responseDisassociateFromMasterAccount =
+  res
     "DisassociateFromMasterAccountResponse"
     "fixture/DisassociateFromMasterAccountResponse.proto"
     guardDuty
     (Proxy :: Proxy DisassociateFromMasterAccount)
 
 responseAcceptInvitation :: AcceptInvitationResponse -> TestTree
-responseAcceptInvitation = res
+responseAcceptInvitation =
+  res
     "AcceptInvitationResponse"
     "fixture/AcceptInvitationResponse.proto"
     guardDuty
     (Proxy :: Proxy AcceptInvitation)
 
 responseListFilters :: ListFiltersResponse -> TestTree
-responseListFilters = res
+responseListFilters =
+  res
     "ListFiltersResponse"
     "fixture/ListFiltersResponse.proto"
     guardDuty
     (Proxy :: Proxy ListFilters)
 
 responseListMembers :: ListMembersResponse -> TestTree
-responseListMembers = res
+responseListMembers =
+  res
     "ListMembersResponse"
     "fixture/ListMembersResponse.proto"
     guardDuty
     (Proxy :: Proxy ListMembers)
 
 responseGetDetector :: GetDetectorResponse -> TestTree
-responseGetDetector = res
+responseGetDetector =
+  res
     "GetDetectorResponse"
     "fixture/GetDetectorResponse.proto"
     guardDuty
     (Proxy :: Proxy GetDetector)
 
 responseCreateSampleFindings :: CreateSampleFindingsResponse -> TestTree
-responseCreateSampleFindings = res
+responseCreateSampleFindings =
+  res
     "CreateSampleFindingsResponse"
     "fixture/CreateSampleFindingsResponse.proto"
     guardDuty
     (Proxy :: Proxy CreateSampleFindings)
 
 responseArchiveFindings :: ArchiveFindingsResponse -> TestTree
-responseArchiveFindings = res
+responseArchiveFindings =
+  res
     "ArchiveFindingsResponse"
     "fixture/ArchiveFindingsResponse.proto"
     guardDuty
     (Proxy :: Proxy ArchiveFindings)
 
 responseCreateMembers :: CreateMembersResponse -> TestTree
-responseCreateMembers = res
+responseCreateMembers =
+  res
     "CreateMembersResponse"
     "fixture/CreateMembersResponse.proto"
     guardDuty
     (Proxy :: Proxy CreateMembers)
 
 responseUnarchiveFindings :: UnarchiveFindingsResponse -> TestTree
-responseUnarchiveFindings = res
+responseUnarchiveFindings =
+  res
     "UnarchiveFindingsResponse"
     "fixture/UnarchiveFindingsResponse.proto"
     guardDuty
     (Proxy :: Proxy UnarchiveFindings)
 
 responseGetInvitationsCount :: GetInvitationsCountResponse -> TestTree
-responseGetInvitationsCount = res
+responseGetInvitationsCount =
+  res
     "GetInvitationsCountResponse"
     "fixture/GetInvitationsCountResponse.proto"
     guardDuty
     (Proxy :: Proxy GetInvitationsCount)
 
 responseStartMonitoringMembers :: StartMonitoringMembersResponse -> TestTree
-responseStartMonitoringMembers = res
+responseStartMonitoringMembers =
+  res
     "StartMonitoringMembersResponse"
     "fixture/StartMonitoringMembersResponse.proto"
     guardDuty
     (Proxy :: Proxy StartMonitoringMembers)
 
 responseInviteMembers :: InviteMembersResponse -> TestTree
-responseInviteMembers = res
+responseInviteMembers =
+  res
     "InviteMembersResponse"
     "fixture/InviteMembersResponse.proto"
     guardDuty
     (Proxy :: Proxy InviteMembers)
 
 responseDeleteIPSet :: DeleteIPSetResponse -> TestTree
-responseDeleteIPSet = res
+responseDeleteIPSet =
+  res
     "DeleteIPSetResponse"
     "fixture/DeleteIPSetResponse.proto"
     guardDuty
     (Proxy :: Proxy DeleteIPSet)
 
 responseUpdateIPSet :: UpdateIPSetResponse -> TestTree
-responseUpdateIPSet = res
+responseUpdateIPSet =
+  res
     "UpdateIPSetResponse"
     "fixture/UpdateIPSetResponse.proto"
     guardDuty
     (Proxy :: Proxy UpdateIPSet)
 
 responseListIPSets :: ListIPSetsResponse -> TestTree
-responseListIPSets = res
+responseListIPSets =
+  res
     "ListIPSetsResponse"
     "fixture/ListIPSetsResponse.proto"
     guardDuty
     (Proxy :: Proxy ListIPSets)
 
 responseGetMembers :: GetMembersResponse -> TestTree
-responseGetMembers = res
+responseGetMembers =
+  res
     "GetMembersResponse"
     "fixture/GetMembersResponse.proto"
     guardDuty
     (Proxy :: Proxy GetMembers)
 
 responseGetFindings :: GetFindingsResponse -> TestTree
-responseGetFindings = res
+responseGetFindings =
+  res
     "GetFindingsResponse"
     "fixture/GetFindingsResponse.proto"
     guardDuty
     (Proxy :: Proxy GetFindings)
 
 responseListDetectors :: ListDetectorsResponse -> TestTree
-responseListDetectors = res
+responseListDetectors =
+  res
     "ListDetectorsResponse"
     "fixture/ListDetectorsResponse.proto"
     guardDuty
     (Proxy :: Proxy ListDetectors)
 
 responseUpdateDetector :: UpdateDetectorResponse -> TestTree
-responseUpdateDetector = res
+responseUpdateDetector =
+  res
     "UpdateDetectorResponse"
     "fixture/UpdateDetectorResponse.proto"
     guardDuty
     (Proxy :: Proxy UpdateDetector)
 
 responseDeleteDetector :: DeleteDetectorResponse -> TestTree
-responseDeleteDetector = res
+responseDeleteDetector =
+  res
     "DeleteDetectorResponse"
     "fixture/DeleteDetectorResponse.proto"
     guardDuty
     (Proxy :: Proxy DeleteDetector)
 
 responseUpdateFindingsFeedback :: UpdateFindingsFeedbackResponse -> TestTree
-responseUpdateFindingsFeedback = res
+responseUpdateFindingsFeedback =
+  res
     "UpdateFindingsFeedbackResponse"
     "fixture/UpdateFindingsFeedbackResponse.proto"
     guardDuty
     (Proxy :: Proxy UpdateFindingsFeedback)
 
 responseGetFilter :: GetFilterResponse -> TestTree
-responseGetFilter = res
+responseGetFilter =
+  res
     "GetFilterResponse"
     "fixture/GetFilterResponse.proto"
     guardDuty

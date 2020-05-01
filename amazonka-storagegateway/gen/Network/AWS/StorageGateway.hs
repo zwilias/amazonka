@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.StorageGateway
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -40,415 +39,324 @@
 -- For more information, see <https://forums.aws.amazon.com/ann.jspa?annID=3557 Announcement: Heads-up – Longer AWS Storage Gateway volume and snapshot IDs coming in 2016> .
 --
 module Network.AWS.StorageGateway
-    (
     -- * Service Configuration
-      storageGateway
-
+  ( storageGateway
     -- * Errors
     -- $errors
-
     -- ** InvalidGatewayRequestException
-    , _InvalidGatewayRequestException
-
+  , _InvalidGatewayRequestException
     -- ** ServiceUnavailableError
-    , _ServiceUnavailableError
-
+  , _ServiceUnavailableError
     -- ** InternalServerError
-    , _InternalServerError
-
+  , _InternalServerError
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** CancelArchival
-    , module Network.AWS.StorageGateway.CancelArchival
-
+  , module Network.AWS.StorageGateway.CancelArchival
     -- ** CreateStorediSCSIVolume
-    , module Network.AWS.StorageGateway.CreateStorediSCSIVolume
-
+  , module Network.AWS.StorageGateway.CreateStorediSCSIVolume
     -- ** CreateNFSFileShare
-    , module Network.AWS.StorageGateway.CreateNFSFileShare
-
+  , module Network.AWS.StorageGateway.CreateNFSFileShare
     -- ** DescribeChapCredentials
-    , module Network.AWS.StorageGateway.DescribeChapCredentials
-
+  , module Network.AWS.StorageGateway.DescribeChapCredentials
     -- ** SetLocalConsolePassword
-    , module Network.AWS.StorageGateway.SetLocalConsolePassword
-
+  , module Network.AWS.StorageGateway.SetLocalConsolePassword
     -- ** CreateTapes
-    , module Network.AWS.StorageGateway.CreateTapes
-
+  , module Network.AWS.StorageGateway.CreateTapes
     -- ** UpdateVTLDeviceType
-    , module Network.AWS.StorageGateway.UpdateVTLDeviceType
-
+  , module Network.AWS.StorageGateway.UpdateVTLDeviceType
     -- ** CreateCachediSCSIVolume
-    , module Network.AWS.StorageGateway.CreateCachediSCSIVolume
-
+  , module Network.AWS.StorageGateway.CreateCachediSCSIVolume
     -- ** ListFileShares
-    , module Network.AWS.StorageGateway.ListFileShares
-
+  , module Network.AWS.StorageGateway.ListFileShares
     -- ** DeleteFileShare
-    , module Network.AWS.StorageGateway.DeleteFileShare
-
+  , module Network.AWS.StorageGateway.DeleteFileShare
     -- ** ListVolumeInitiators
-    , module Network.AWS.StorageGateway.ListVolumeInitiators
-
+  , module Network.AWS.StorageGateway.ListVolumeInitiators
     -- ** AddUploadBuffer
-    , module Network.AWS.StorageGateway.AddUploadBuffer
-
+  , module Network.AWS.StorageGateway.AddUploadBuffer
     -- ** ListTagsForResource
-    , module Network.AWS.StorageGateway.ListTagsForResource
-
+  , module Network.AWS.StorageGateway.ListTagsForResource
     -- ** NotifyWhenUploaded
-    , module Network.AWS.StorageGateway.NotifyWhenUploaded
-
+  , module Network.AWS.StorageGateway.NotifyWhenUploaded
     -- ** UpdateGatewayInformation
-    , module Network.AWS.StorageGateway.UpdateGatewayInformation
-
+  , module Network.AWS.StorageGateway.UpdateGatewayInformation
     -- ** DescribeMaintenanceStartTime
-    , module Network.AWS.StorageGateway.DescribeMaintenanceStartTime
-
+  , module Network.AWS.StorageGateway.DescribeMaintenanceStartTime
     -- ** DescribeWorkingStorage
-    , module Network.AWS.StorageGateway.DescribeWorkingStorage
-
+  , module Network.AWS.StorageGateway.DescribeWorkingStorage
     -- ** DescribeCachediSCSIVolumes
-    , module Network.AWS.StorageGateway.DescribeCachediSCSIVolumes
-
+  , module Network.AWS.StorageGateway.DescribeCachediSCSIVolumes
     -- ** AddCache
-    , module Network.AWS.StorageGateway.AddCache
-
+  , module Network.AWS.StorageGateway.AddCache
     -- ** StartGateway
-    , module Network.AWS.StorageGateway.StartGateway
-
+  , module Network.AWS.StorageGateway.StartGateway
     -- ** ShutdownGateway
-    , module Network.AWS.StorageGateway.ShutdownGateway
-
+  , module Network.AWS.StorageGateway.ShutdownGateway
     -- ** UpdateGatewaySoftwareNow
-    , module Network.AWS.StorageGateway.UpdateGatewaySoftwareNow
-
+  , module Network.AWS.StorageGateway.UpdateGatewaySoftwareNow
     -- ** RemoveTagsFromResource
-    , module Network.AWS.StorageGateway.RemoveTagsFromResource
-
+  , module Network.AWS.StorageGateway.RemoveTagsFromResource
     -- ** DeleteChapCredentials
-    , module Network.AWS.StorageGateway.DeleteChapCredentials
-
+  , module Network.AWS.StorageGateway.DeleteChapCredentials
     -- ** UpdateChapCredentials
-    , module Network.AWS.StorageGateway.UpdateChapCredentials
-
+  , module Network.AWS.StorageGateway.UpdateChapCredentials
     -- ** DescribeUploadBuffer
-    , module Network.AWS.StorageGateway.DescribeUploadBuffer
-
+  , module Network.AWS.StorageGateway.DescribeUploadBuffer
     -- ** DescribeTapes (Paginated)
-    , module Network.AWS.StorageGateway.DescribeTapes
-
+  , module Network.AWS.StorageGateway.DescribeTapes
     -- ** DescribeStorediSCSIVolumes
-    , module Network.AWS.StorageGateway.DescribeStorediSCSIVolumes
-
+  , module Network.AWS.StorageGateway.DescribeStorediSCSIVolumes
     -- ** CreateSnapshotFromVolumeRecoveryPoint
-    , module Network.AWS.StorageGateway.CreateSnapshotFromVolumeRecoveryPoint
-
+  , module Network.AWS.StorageGateway.CreateSnapshotFromVolumeRecoveryPoint
     -- ** RetrieveTapeRecoveryPoint
-    , module Network.AWS.StorageGateway.RetrieveTapeRecoveryPoint
-
+  , module Network.AWS.StorageGateway.RetrieveTapeRecoveryPoint
     -- ** AddTagsToResource
-    , module Network.AWS.StorageGateway.AddTagsToResource
-
+  , module Network.AWS.StorageGateway.AddTagsToResource
     -- ** DeleteGateway
-    , module Network.AWS.StorageGateway.DeleteGateway
-
+  , module Network.AWS.StorageGateway.DeleteGateway
     -- ** UpdateMaintenanceStartTime
-    , module Network.AWS.StorageGateway.UpdateMaintenanceStartTime
-
+  , module Network.AWS.StorageGateway.UpdateMaintenanceStartTime
     -- ** DescribeGatewayInformation
-    , module Network.AWS.StorageGateway.DescribeGatewayInformation
-
+  , module Network.AWS.StorageGateway.DescribeGatewayInformation
     -- ** RefreshCache
-    , module Network.AWS.StorageGateway.RefreshCache
-
+  , module Network.AWS.StorageGateway.RefreshCache
     -- ** UpdateNFSFileShare
-    , module Network.AWS.StorageGateway.UpdateNFSFileShare
-
+  , module Network.AWS.StorageGateway.UpdateNFSFileShare
     -- ** RetrieveTapeArchive
-    , module Network.AWS.StorageGateway.RetrieveTapeArchive
-
+  , module Network.AWS.StorageGateway.RetrieveTapeArchive
     -- ** DescribeTapeArchives (Paginated)
-    , module Network.AWS.StorageGateway.DescribeTapeArchives
-
+  , module Network.AWS.StorageGateway.DescribeTapeArchives
     -- ** DisableGateway
-    , module Network.AWS.StorageGateway.DisableGateway
-
+  , module Network.AWS.StorageGateway.DisableGateway
     -- ** DescribeSnapshotSchedule
-    , module Network.AWS.StorageGateway.DescribeSnapshotSchedule
-
+  , module Network.AWS.StorageGateway.DescribeSnapshotSchedule
     -- ** CreateTapeWithBarcode
-    , module Network.AWS.StorageGateway.CreateTapeWithBarcode
-
+  , module Network.AWS.StorageGateway.CreateTapeWithBarcode
     -- ** DescribeBandwidthRateLimit
-    , module Network.AWS.StorageGateway.DescribeBandwidthRateLimit
-
+  , module Network.AWS.StorageGateway.DescribeBandwidthRateLimit
     -- ** DeleteSnapshotSchedule
-    , module Network.AWS.StorageGateway.DeleteSnapshotSchedule
-
+  , module Network.AWS.StorageGateway.DeleteSnapshotSchedule
     -- ** UpdateSnapshotSchedule
-    , module Network.AWS.StorageGateway.UpdateSnapshotSchedule
-
+  , module Network.AWS.StorageGateway.UpdateSnapshotSchedule
     -- ** CreateSnapshot
-    , module Network.AWS.StorageGateway.CreateSnapshot
-
+  , module Network.AWS.StorageGateway.CreateSnapshot
     -- ** CancelRetrieval
-    , module Network.AWS.StorageGateway.CancelRetrieval
-
+  , module Network.AWS.StorageGateway.CancelRetrieval
     -- ** DescribeVTLDevices (Paginated)
-    , module Network.AWS.StorageGateway.DescribeVTLDevices
-
+  , module Network.AWS.StorageGateway.DescribeVTLDevices
     -- ** DeleteTapeArchive
-    , module Network.AWS.StorageGateway.DeleteTapeArchive
-
+  , module Network.AWS.StorageGateway.DeleteTapeArchive
     -- ** DescribeNFSFileShares
-    , module Network.AWS.StorageGateway.DescribeNFSFileShares
-
+  , module Network.AWS.StorageGateway.DescribeNFSFileShares
     -- ** ListVolumeRecoveryPoints
-    , module Network.AWS.StorageGateway.ListVolumeRecoveryPoints
-
+  , module Network.AWS.StorageGateway.ListVolumeRecoveryPoints
     -- ** ListTapes
-    , module Network.AWS.StorageGateway.ListTapes
-
+  , module Network.AWS.StorageGateway.ListTapes
     -- ** ResetCache
-    , module Network.AWS.StorageGateway.ResetCache
-
+  , module Network.AWS.StorageGateway.ResetCache
     -- ** ListGateways (Paginated)
-    , module Network.AWS.StorageGateway.ListGateways
-
+  , module Network.AWS.StorageGateway.ListGateways
     -- ** DeleteTape
-    , module Network.AWS.StorageGateway.DeleteTape
-
+  , module Network.AWS.StorageGateway.DeleteTape
     -- ** ListLocalDisks
-    , module Network.AWS.StorageGateway.ListLocalDisks
-
+  , module Network.AWS.StorageGateway.ListLocalDisks
     -- ** ListVolumes (Paginated)
-    , module Network.AWS.StorageGateway.ListVolumes
-
+  , module Network.AWS.StorageGateway.ListVolumes
     -- ** UpdateBandwidthRateLimit
-    , module Network.AWS.StorageGateway.UpdateBandwidthRateLimit
-
+  , module Network.AWS.StorageGateway.UpdateBandwidthRateLimit
     -- ** AddWorkingStorage
-    , module Network.AWS.StorageGateway.AddWorkingStorage
-
+  , module Network.AWS.StorageGateway.AddWorkingStorage
     -- ** DescribeTapeRecoveryPoints (Paginated)
-    , module Network.AWS.StorageGateway.DescribeTapeRecoveryPoints
-
+  , module Network.AWS.StorageGateway.DescribeTapeRecoveryPoints
     -- ** DeleteBandwidthRateLimit
-    , module Network.AWS.StorageGateway.DeleteBandwidthRateLimit
-
+  , module Network.AWS.StorageGateway.DeleteBandwidthRateLimit
     -- ** ActivateGateway
-    , module Network.AWS.StorageGateway.ActivateGateway
-
+  , module Network.AWS.StorageGateway.ActivateGateway
     -- ** DescribeCache
-    , module Network.AWS.StorageGateway.DescribeCache
-
+  , module Network.AWS.StorageGateway.DescribeCache
     -- ** DeleteVolume
-    , module Network.AWS.StorageGateway.DeleteVolume
-
+  , module Network.AWS.StorageGateway.DeleteVolume
     -- * Types
-
     -- ** ObjectACL
-    , ObjectACL (..)
-
+  , ObjectACL(..)
     -- ** CachediSCSIVolume
-    , CachediSCSIVolume
-    , cachediSCSIVolume
-    , cscsivVolumeiSCSIAttributes
-    , cscsivVolumeStatus
-    , cscsivSourceSnapshotId
-    , cscsivVolumeARN
-    , cscsivVolumeProgress
-    , cscsivVolumeSizeInBytes
-    , cscsivVolumeUsedInBytes
-    , cscsivCreatedDate
-    , cscsivVolumeId
-    , cscsivVolumeType
-
+  , CachediSCSIVolume
+  , cachediSCSIVolume
+  , cscsivVolumeiSCSIAttributes
+  , cscsivVolumeStatus
+  , cscsivSourceSnapshotId
+  , cscsivVolumeARN
+  , cscsivVolumeProgress
+  , cscsivVolumeSizeInBytes
+  , cscsivVolumeUsedInBytes
+  , cscsivCreatedDate
+  , cscsivVolumeId
+  , cscsivVolumeType
     -- ** ChapInfo
-    , ChapInfo
-    , chapInfo
-    , ciTargetARN
-    , ciSecretToAuthenticateInitiator
-    , ciInitiatorName
-    , ciSecretToAuthenticateTarget
-
+  , ChapInfo
+  , chapInfo
+  , ciTargetARN
+  , ciSecretToAuthenticateInitiator
+  , ciInitiatorName
+  , ciSecretToAuthenticateTarget
     -- ** DeviceiSCSIAttributes
-    , DeviceiSCSIAttributes
-    , deviceiSCSIAttributes
-    , dscsiaTargetARN
-    , dscsiaChapEnabled
-    , dscsiaNetworkInterfaceId
-    , dscsiaNetworkInterfacePort
-
+  , DeviceiSCSIAttributes
+  , deviceiSCSIAttributes
+  , dscsiaTargetARN
+  , dscsiaChapEnabled
+  , dscsiaNetworkInterfaceId
+  , dscsiaNetworkInterfacePort
     -- ** Disk
-    , Disk
-    , disk
-    , dDiskAllocationResource
-    , dDiskAllocationType
-    , dDiskNode
-    , dDiskPath
-    , dDiskSizeInBytes
-    , dDiskStatus
-    , dDiskId
-
+  , Disk
+  , disk
+  , dDiskAllocationResource
+  , dDiskAllocationType
+  , dDiskNode
+  , dDiskPath
+  , dDiskSizeInBytes
+  , dDiskStatus
+  , dDiskId
     -- ** FileShareInfo
-    , FileShareInfo
-    , fileShareInfo
-    , fsiFileShareStatus
-    , fsiGatewayARN
-    , fsiFileShareId
-    , fsiFileShareARN
-
+  , FileShareInfo
+  , fileShareInfo
+  , fsiFileShareStatus
+  , fsiGatewayARN
+  , fsiFileShareId
+  , fsiFileShareARN
     -- ** GatewayInfo
-    , GatewayInfo
-    , gatewayInfo
-    , giGatewayARN
-    , giGatewayOperationalState
-    , giGatewayName
-    , giGatewayId
-    , giGatewayType
-
+  , GatewayInfo
+  , gatewayInfo
+  , giGatewayARN
+  , giGatewayOperationalState
+  , giGatewayName
+  , giGatewayId
+  , giGatewayType
     -- ** NFSFileShareDefaults
-    , NFSFileShareDefaults
-    , nFSFileShareDefaults
-    , nfsfsdFileMode
-    , nfsfsdOwnerId
-    , nfsfsdDirectoryMode
-    , nfsfsdGroupId
-
+  , NFSFileShareDefaults
+  , nFSFileShareDefaults
+  , nfsfsdFileMode
+  , nfsfsdOwnerId
+  , nfsfsdDirectoryMode
+  , nfsfsdGroupId
     -- ** NFSFileShareInfo
-    , NFSFileShareInfo
-    , nFSFileShareInfo
-    , nfsfsiFileShareStatus
-    , nfsfsiKMSKey
-    , nfsfsiGatewayARN
-    , nfsfsiPath
-    , nfsfsiObjectACL
-    , nfsfsiKMSEncrypted
-    , nfsfsiFileShareId
-    , nfsfsiFileShareARN
-    , nfsfsiDefaultStorageClass
-    , nfsfsiRole
-    , nfsfsiSquash
-    , nfsfsiRequesterPays
-    , nfsfsiNFSFileShareDefaults
-    , nfsfsiLocationARN
-    , nfsfsiClientList
-    , nfsfsiGuessMIMETypeEnabled
-    , nfsfsiReadOnly
-
+  , NFSFileShareInfo
+  , nFSFileShareInfo
+  , nfsfsiFileShareStatus
+  , nfsfsiKMSKey
+  , nfsfsiGatewayARN
+  , nfsfsiPath
+  , nfsfsiObjectACL
+  , nfsfsiKMSEncrypted
+  , nfsfsiFileShareId
+  , nfsfsiFileShareARN
+  , nfsfsiDefaultStorageClass
+  , nfsfsiRole
+  , nfsfsiSquash
+  , nfsfsiRequesterPays
+  , nfsfsiNFSFileShareDefaults
+  , nfsfsiLocationARN
+  , nfsfsiClientList
+  , nfsfsiGuessMIMETypeEnabled
+  , nfsfsiReadOnly
     -- ** NetworkInterface
-    , NetworkInterface
-    , networkInterface
-    , niIPv6Address
-    , niMACAddress
-    , niIPv4Address
-
+  , NetworkInterface
+  , networkInterface
+  , niIPv6Address
+  , niMACAddress
+  , niIPv4Address
     -- ** StorediSCSIVolume
-    , StorediSCSIVolume
-    , storediSCSIVolume
-    , sscsivVolumeiSCSIAttributes
-    , sscsivVolumeStatus
-    , sscsivSourceSnapshotId
-    , sscsivPreservedExistingData
-    , sscsivVolumeARN
-    , sscsivVolumeProgress
-    , sscsivVolumeSizeInBytes
-    , sscsivVolumeUsedInBytes
-    , sscsivCreatedDate
-    , sscsivVolumeId
-    , sscsivVolumeDiskId
-    , sscsivVolumeType
-
+  , StorediSCSIVolume
+  , storediSCSIVolume
+  , sscsivVolumeiSCSIAttributes
+  , sscsivVolumeStatus
+  , sscsivSourceSnapshotId
+  , sscsivPreservedExistingData
+  , sscsivVolumeARN
+  , sscsivVolumeProgress
+  , sscsivVolumeSizeInBytes
+  , sscsivVolumeUsedInBytes
+  , sscsivCreatedDate
+  , sscsivVolumeId
+  , sscsivVolumeDiskId
+  , sscsivVolumeType
     -- ** Tag
-    , Tag
-    , tag
-    , tagKey
-    , tagValue
-
+  , Tag
+  , tag
+  , tagKey
+  , tagValue
     -- ** Tape
-    , Tape
-    , tape
-    , tTapeBarcode
-    , tTapeStatus
-    , tTapeARN
-    , tProgress
-    , tTapeSizeInBytes
-    , tVTLDevice
-    , tTapeUsedInBytes
-    , tTapeCreatedDate
-
+  , Tape
+  , tape
+  , tTapeBarcode
+  , tTapeStatus
+  , tTapeARN
+  , tProgress
+  , tTapeSizeInBytes
+  , tVTLDevice
+  , tTapeUsedInBytes
+  , tTapeCreatedDate
     -- ** TapeArchive
-    , TapeArchive
-    , tapeArchive
-    , taTapeBarcode
-    , taTapeStatus
-    , taTapeARN
-    , taTapeSizeInBytes
-    , taCompletionTime
-    , taTapeUsedInBytes
-    , taTapeCreatedDate
-    , taRetrievedTo
-
+  , TapeArchive
+  , tapeArchive
+  , taTapeBarcode
+  , taTapeStatus
+  , taTapeARN
+  , taTapeSizeInBytes
+  , taCompletionTime
+  , taTapeUsedInBytes
+  , taTapeCreatedDate
+  , taRetrievedTo
     -- ** TapeInfo
-    , TapeInfo
-    , tapeInfo
-    , tiTapeBarcode
-    , tiTapeStatus
-    , tiTapeARN
-    , tiGatewayARN
-    , tiTapeSizeInBytes
-
+  , TapeInfo
+  , tapeInfo
+  , tiTapeBarcode
+  , tiTapeStatus
+  , tiTapeARN
+  , tiGatewayARN
+  , tiTapeSizeInBytes
     -- ** TapeRecoveryPointInfo
-    , TapeRecoveryPointInfo
-    , tapeRecoveryPointInfo
-    , trpiTapeStatus
-    , trpiTapeRecoveryPointTime
-    , trpiTapeARN
-    , trpiTapeSizeInBytes
-
+  , TapeRecoveryPointInfo
+  , tapeRecoveryPointInfo
+  , trpiTapeStatus
+  , trpiTapeRecoveryPointTime
+  , trpiTapeARN
+  , trpiTapeSizeInBytes
     -- ** VTLDevice
-    , VTLDevice
-    , vTLDevice
-    , vtldDeviceiSCSIAttributes
-    , vtldVTLDeviceVendor
-    , vtldVTLDeviceARN
-    , vtldVTLDeviceType
-    , vtldVTLDeviceProductIdentifier
-
+  , VTLDevice
+  , vTLDevice
+  , vtldDeviceiSCSIAttributes
+  , vtldVTLDeviceVendor
+  , vtldVTLDeviceARN
+  , vtldVTLDeviceType
+  , vtldVTLDeviceProductIdentifier
     -- ** VolumeInfo
-    , VolumeInfo
-    , volumeInfo
-    , viGatewayARN
-    , viVolumeARN
-    , viVolumeSizeInBytes
-    , viVolumeId
-    , viGatewayId
-    , viVolumeType
-
+  , VolumeInfo
+  , volumeInfo
+  , viGatewayARN
+  , viVolumeARN
+  , viVolumeSizeInBytes
+  , viVolumeId
+  , viGatewayId
+  , viVolumeType
     -- ** VolumeRecoveryPointInfo
-    , VolumeRecoveryPointInfo
-    , volumeRecoveryPointInfo
-    , vrpiVolumeRecoveryPointTime
-    , vrpiVolumeARN
-    , vrpiVolumeSizeInBytes
-    , vrpiVolumeUsageInBytes
-
+  , VolumeRecoveryPointInfo
+  , volumeRecoveryPointInfo
+  , vrpiVolumeRecoveryPointTime
+  , vrpiVolumeARN
+  , vrpiVolumeSizeInBytes
+  , vrpiVolumeUsageInBytes
     -- ** VolumeiSCSIAttributes
-    , VolumeiSCSIAttributes
-    , volumeiSCSIAttributes
-    , vscsiaLunNumber
-    , vscsiaTargetARN
-    , vscsiaChapEnabled
-    , vscsiaNetworkInterfaceId
-    , vscsiaNetworkInterfacePort
-    ) where
+  , VolumeiSCSIAttributes
+  , volumeiSCSIAttributes
+  , vscsiaLunNumber
+  , vscsiaTargetARN
+  , vscsiaChapEnabled
+  , vscsiaNetworkInterfaceId
+  , vscsiaNetworkInterfacePort
+  ) where
 
 import Network.AWS.StorageGateway.ActivateGateway
 import Network.AWS.StorageGateway.AddCache
@@ -462,8 +370,8 @@ import Network.AWS.StorageGateway.CreateNFSFileShare
 import Network.AWS.StorageGateway.CreateSnapshot
 import Network.AWS.StorageGateway.CreateSnapshotFromVolumeRecoveryPoint
 import Network.AWS.StorageGateway.CreateStorediSCSIVolume
-import Network.AWS.StorageGateway.CreateTapes
 import Network.AWS.StorageGateway.CreateTapeWithBarcode
+import Network.AWS.StorageGateway.CreateTapes
 import Network.AWS.StorageGateway.DeleteBandwidthRateLimit
 import Network.AWS.StorageGateway.DeleteChapCredentials
 import Network.AWS.StorageGateway.DeleteFileShare
@@ -515,14 +423,12 @@ import Network.AWS.StorageGateway.UpdateNFSFileShare
 import Network.AWS.StorageGateway.UpdateSnapshotSchedule
 import Network.AWS.StorageGateway.UpdateVTLDeviceType
 import Network.AWS.StorageGateway.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'StorageGateway'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -539,7 +445,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

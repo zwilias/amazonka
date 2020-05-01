@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.DAX.RebootNode
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,21 +20,19 @@
 --
 --
 module Network.AWS.DAX.RebootNode
-    (
     -- * Creating a Request
-      rebootNode
-    , RebootNode
+  ( rebootNode
+  , RebootNode
     -- * Request Lenses
-    , rnClusterName
-    , rnNodeId
-
+  , rnClusterName
+  , rnNodeId
     -- * Destructuring the Response
-    , rebootNodeResponse
-    , RebootNodeResponse
+  , rebootNodeResponse
+  , RebootNodeResponse
     -- * Response Lenses
-    , rnrsCluster
-    , rnrsResponseStatus
-    ) where
+  , rnrsCluster
+  , rnrsResponseStatus
+  ) where
 
 import Network.AWS.DAX.Types
 import Network.AWS.DAX.Types.Product
@@ -46,11 +42,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'rebootNode' smart constructor.
-data RebootNode = RebootNode'
-  { _rnClusterName :: !Text
-  , _rnNodeId      :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RebootNode =
+  RebootNode'
+    { _rnClusterName :: !Text
+    , _rnNodeId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RebootNode' with the minimum fields required to make a request.
 --
@@ -59,63 +56,60 @@ data RebootNode = RebootNode'
 -- * 'rnClusterName' - The name of the DAX cluster containing the node to be rebooted.
 --
 -- * 'rnNodeId' - The system-assigned ID of the node to be rebooted.
-rebootNode
-    :: Text -- ^ 'rnClusterName'
-    -> Text -- ^ 'rnNodeId'
-    -> RebootNode
+rebootNode ::
+     Text -- ^ 'rnClusterName'
+  -> Text -- ^ 'rnNodeId'
+  -> RebootNode
 rebootNode pClusterName_ pNodeId_ =
   RebootNode' {_rnClusterName = pClusterName_, _rnNodeId = pNodeId_}
 
-
 -- | The name of the DAX cluster containing the node to be rebooted.
 rnClusterName :: Lens' RebootNode Text
-rnClusterName = lens _rnClusterName (\ s a -> s{_rnClusterName = a})
+rnClusterName = lens _rnClusterName (\s a -> s {_rnClusterName = a})
 
 -- | The system-assigned ID of the node to be rebooted.
 rnNodeId :: Lens' RebootNode Text
-rnNodeId = lens _rnNodeId (\ s a -> s{_rnNodeId = a})
+rnNodeId = lens _rnNodeId (\s a -> s {_rnNodeId = a})
 
 instance AWSRequest RebootNode where
-        type Rs RebootNode = RebootNodeResponse
-        request = postJSON dax
-        response
-          = receiveJSON
-              (\ s h x ->
-                 RebootNodeResponse' <$>
-                   (x .?> "Cluster") <*> (pure (fromEnum s)))
+  type Rs RebootNode = RebootNodeResponse
+  request = postJSON dax
+  response =
+    receiveJSON
+      (\s h x ->
+         RebootNodeResponse' <$> (x .?> "Cluster") <*> (pure (fromEnum s)))
 
-instance Hashable RebootNode where
+instance Hashable RebootNode
 
-instance NFData RebootNode where
+instance NFData RebootNode
 
 instance ToHeaders RebootNode where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("AmazonDAXV3.RebootNode" :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =# ("AmazonDAXV3.RebootNode" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON RebootNode where
-        toJSON RebootNode'{..}
-          = object
-              (catMaybes
-                 [Just ("ClusterName" .= _rnClusterName),
-                  Just ("NodeId" .= _rnNodeId)])
+  toJSON RebootNode' {..} =
+    object
+      (catMaybes
+         [Just ("ClusterName" .= _rnClusterName), Just ("NodeId" .= _rnNodeId)])
 
 instance ToPath RebootNode where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery RebootNode where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'rebootNodeResponse' smart constructor.
-data RebootNodeResponse = RebootNodeResponse'
-  { _rnrsCluster        :: !(Maybe Cluster)
-  , _rnrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RebootNodeResponse =
+  RebootNodeResponse'
+    { _rnrsCluster :: !(Maybe Cluster)
+    , _rnrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RebootNodeResponse' with the minimum fields required to make a request.
 --
@@ -124,20 +118,20 @@ data RebootNodeResponse = RebootNodeResponse'
 -- * 'rnrsCluster' - A description of the DAX cluster after a node has been rebooted.
 --
 -- * 'rnrsResponseStatus' - -- | The response status code.
-rebootNodeResponse
-    :: Int -- ^ 'rnrsResponseStatus'
-    -> RebootNodeResponse
+rebootNodeResponse ::
+     Int -- ^ 'rnrsResponseStatus'
+  -> RebootNodeResponse
 rebootNodeResponse pResponseStatus_ =
   RebootNodeResponse'
     {_rnrsCluster = Nothing, _rnrsResponseStatus = pResponseStatus_}
 
-
 -- | A description of the DAX cluster after a node has been rebooted.
 rnrsCluster :: Lens' RebootNodeResponse (Maybe Cluster)
-rnrsCluster = lens _rnrsCluster (\ s a -> s{_rnrsCluster = a})
+rnrsCluster = lens _rnrsCluster (\s a -> s {_rnrsCluster = a})
 
 -- | -- | The response status code.
 rnrsResponseStatus :: Lens' RebootNodeResponse Int
-rnrsResponseStatus = lens _rnrsResponseStatus (\ s a -> s{_rnrsResponseStatus = a})
+rnrsResponseStatus =
+  lens _rnrsResponseStatus (\s a -> s {_rnrsResponseStatus = a})
 
-instance NFData RebootNodeResponse where
+instance NFData RebootNodeResponse

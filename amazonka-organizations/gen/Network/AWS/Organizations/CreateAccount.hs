@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Organizations.CreateAccount
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -36,23 +34,21 @@
 -- /Important:/ If you get an exception that indicates that you exceeded your account limits for the organization or that you can"t add an account because your organization is still initializing, please contact <https://console.aws.amazon.com/support/home#/ AWS Customer Support> .
 --
 module Network.AWS.Organizations.CreateAccount
-    (
     -- * Creating a Request
-      createAccount
-    , CreateAccount
+  ( createAccount
+  , CreateAccount
     -- * Request Lenses
-    , caIAMUserAccessToBilling
-    , caRoleName
-    , caEmail
-    , caAccountName
-
+  , caIAMUserAccessToBilling
+  , caRoleName
+  , caEmail
+  , caAccountName
     -- * Destructuring the Response
-    , createAccountResponse
-    , CreateAccountResponse
+  , createAccountResponse
+  , CreateAccountResponse
     -- * Response Lenses
-    , carsCreateAccountStatus
-    , carsResponseStatus
-    ) where
+  , carsCreateAccountStatus
+  , carsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
@@ -62,13 +58,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createAccount' smart constructor.
-data CreateAccount = CreateAccount'
-  { _caIAMUserAccessToBilling :: !(Maybe IAMUserAccessToBilling)
-  , _caRoleName               :: !(Maybe Text)
-  , _caEmail                  :: !(Sensitive Text)
-  , _caAccountName            :: !(Sensitive Text)
-  } deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateAccount =
+  CreateAccount'
+    { _caIAMUserAccessToBilling :: !(Maybe IAMUserAccessToBilling)
+    , _caRoleName :: !(Maybe Text)
+    , _caEmail :: !(Sensitive Text)
+    , _caAccountName :: !(Sensitive Text)
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateAccount' with the minimum fields required to make a request.
 --
@@ -81,10 +78,10 @@ data CreateAccount = CreateAccount'
 -- * 'caEmail' - The email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account. You must use a valid email address to complete account creation. You cannot access the root user of the account or remove an account that was created with an invalid email address.
 --
 -- * 'caAccountName' - The friendly name of the member account.
-createAccount
-    :: Text -- ^ 'caEmail'
-    -> Text -- ^ 'caAccountName'
-    -> CreateAccount
+createAccount ::
+     Text -- ^ 'caEmail'
+  -> Text -- ^ 'caAccountName'
+  -> CreateAccount
 createAccount pEmail_ pAccountName_ =
   CreateAccount'
     { _caIAMUserAccessToBilling = Nothing
@@ -93,69 +90,69 @@ createAccount pEmail_ pAccountName_ =
     , _caAccountName = _Sensitive # pAccountName_
     }
 
-
 -- | If set to @ALLOW@ , the new account enables IAM users to access account billing information /if/ they have the required permissions. If set to @DENY@ , then only the root user of the new account can access account billing information. For more information, see <http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate Activating Access to the Billing and Cost Management Console> in the /AWS Billing and Cost Management User Guide/ . If you do not specify this parameter, the value defaults to ALLOW, and IAM users and roles with the required permissions can access billing information for the new account.
 caIAMUserAccessToBilling :: Lens' CreateAccount (Maybe IAMUserAccessToBilling)
-caIAMUserAccessToBilling = lens _caIAMUserAccessToBilling (\ s a -> s{_caIAMUserAccessToBilling = a})
+caIAMUserAccessToBilling =
+  lens _caIAMUserAccessToBilling (\s a -> s {_caIAMUserAccessToBilling = a})
 
 -- | (Optional) The name of an IAM role that Organizations automatically preconfigures in the new member account. This role trusts the master account, allowing users in the master account to assume the role, as permitted by the master account administrator. The role has administrator permissions in the new member account. If you do not specify this parameter, the role name defaults to @OrganizationAccountAccessRole@ . For more information about how to use this role to access the member account, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role Accessing and Administering the Member Accounts in Your Organization> in the /AWS Organizations User Guide/ , and steps 2 and 3 in <http://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html Tutorial: Delegate Access Across AWS Accounts Using IAM Roles> in the /IAM User Guide/ . The <http://wikipedia.org/wiki/regex regex pattern> that is used to validate this parameter is a string of characters that can consist of uppercase letters, lowercase letters, digits with no spaces, and any of the following characters: =,.@-
 caRoleName :: Lens' CreateAccount (Maybe Text)
-caRoleName = lens _caRoleName (\ s a -> s{_caRoleName = a})
+caRoleName = lens _caRoleName (\s a -> s {_caRoleName = a})
 
 -- | The email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account. You must use a valid email address to complete account creation. You cannot access the root user of the account or remove an account that was created with an invalid email address.
 caEmail :: Lens' CreateAccount Text
-caEmail = lens _caEmail (\ s a -> s{_caEmail = a}) . _Sensitive
+caEmail = lens _caEmail (\s a -> s {_caEmail = a}) . _Sensitive
 
 -- | The friendly name of the member account.
 caAccountName :: Lens' CreateAccount Text
-caAccountName = lens _caAccountName (\ s a -> s{_caAccountName = a}) . _Sensitive
+caAccountName =
+  lens _caAccountName (\s a -> s {_caAccountName = a}) . _Sensitive
 
 instance AWSRequest CreateAccount where
-        type Rs CreateAccount = CreateAccountResponse
-        request = postJSON organizations
-        response
-          = receiveJSON
-              (\ s h x ->
-                 CreateAccountResponse' <$>
-                   (x .?> "CreateAccountStatus") <*>
-                     (pure (fromEnum s)))
+  type Rs CreateAccount = CreateAccountResponse
+  request = postJSON organizations
+  response =
+    receiveJSON
+      (\s h x ->
+         CreateAccountResponse' <$> (x .?> "CreateAccountStatus") <*>
+         (pure (fromEnum s)))
 
-instance Hashable CreateAccount where
+instance Hashable CreateAccount
 
-instance NFData CreateAccount where
+instance NFData CreateAccount
 
 instance ToHeaders CreateAccount where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("AWSOrganizationsV20161128.CreateAccount" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("AWSOrganizationsV20161128.CreateAccount" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON CreateAccount where
-        toJSON CreateAccount'{..}
-          = object
-              (catMaybes
-                 [("IamUserAccessToBilling" .=) <$>
-                    _caIAMUserAccessToBilling,
-                  ("RoleName" .=) <$> _caRoleName,
-                  Just ("Email" .= _caEmail),
-                  Just ("AccountName" .= _caAccountName)])
+  toJSON CreateAccount' {..} =
+    object
+      (catMaybes
+         [ ("IamUserAccessToBilling" .=) <$> _caIAMUserAccessToBilling
+         , ("RoleName" .=) <$> _caRoleName
+         , Just ("Email" .= _caEmail)
+         , Just ("AccountName" .= _caAccountName)
+         ])
 
 instance ToPath CreateAccount where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery CreateAccount where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'createAccountResponse' smart constructor.
-data CreateAccountResponse = CreateAccountResponse'
-  { _carsCreateAccountStatus :: !(Maybe CreateAccountStatus)
-  , _carsResponseStatus      :: !Int
-  } deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateAccountResponse =
+  CreateAccountResponse'
+    { _carsCreateAccountStatus :: !(Maybe CreateAccountStatus)
+    , _carsResponseStatus :: !Int
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateAccountResponse' with the minimum fields required to make a request.
 --
@@ -164,20 +161,22 @@ data CreateAccountResponse = CreateAccountResponse'
 -- * 'carsCreateAccountStatus' - A structure that contains details about the request to create an account. This response structure might not be fully populated when you first receive it because account creation is an asynchronous process. You can pass the returned CreateAccountStatus ID as a parameter to @'DescribeCreateAccountStatus' @ to get status about the progress of the request at later times.
 --
 -- * 'carsResponseStatus' - -- | The response status code.
-createAccountResponse
-    :: Int -- ^ 'carsResponseStatus'
-    -> CreateAccountResponse
+createAccountResponse ::
+     Int -- ^ 'carsResponseStatus'
+  -> CreateAccountResponse
 createAccountResponse pResponseStatus_ =
   CreateAccountResponse'
     {_carsCreateAccountStatus = Nothing, _carsResponseStatus = pResponseStatus_}
 
-
 -- | A structure that contains details about the request to create an account. This response structure might not be fully populated when you first receive it because account creation is an asynchronous process. You can pass the returned CreateAccountStatus ID as a parameter to @'DescribeCreateAccountStatus' @ to get status about the progress of the request at later times.
-carsCreateAccountStatus :: Lens' CreateAccountResponse (Maybe CreateAccountStatus)
-carsCreateAccountStatus = lens _carsCreateAccountStatus (\ s a -> s{_carsCreateAccountStatus = a})
+carsCreateAccountStatus ::
+     Lens' CreateAccountResponse (Maybe CreateAccountStatus)
+carsCreateAccountStatus =
+  lens _carsCreateAccountStatus (\s a -> s {_carsCreateAccountStatus = a})
 
 -- | -- | The response status code.
 carsResponseStatus :: Lens' CreateAccountResponse Int
-carsResponseStatus = lens _carsResponseStatus (\ s a -> s{_carsResponseStatus = a})
+carsResponseStatus =
+  lens _carsResponseStatus (\s a -> s {_carsResponseStatus = a})
 
-instance NFData CreateAccountResponse where
+instance NFData CreateAccountResponse

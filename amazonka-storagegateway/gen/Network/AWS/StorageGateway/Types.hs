@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.StorageGateway.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,211 +10,189 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.StorageGateway.Types
-    (
     -- * Service Configuration
-      storageGateway
-
+  ( storageGateway
     -- * Errors
-    , _InvalidGatewayRequestException
-    , _ServiceUnavailableError
-    , _InternalServerError
-
+  , _InvalidGatewayRequestException
+  , _ServiceUnavailableError
+  , _InternalServerError
     -- * ObjectACL
-    , ObjectACL (..)
-
+  , ObjectACL(..)
     -- * CachediSCSIVolume
-    , CachediSCSIVolume
-    , cachediSCSIVolume
-    , cscsivVolumeiSCSIAttributes
-    , cscsivVolumeStatus
-    , cscsivSourceSnapshotId
-    , cscsivVolumeARN
-    , cscsivVolumeProgress
-    , cscsivVolumeSizeInBytes
-    , cscsivVolumeUsedInBytes
-    , cscsivCreatedDate
-    , cscsivVolumeId
-    , cscsivVolumeType
-
+  , CachediSCSIVolume
+  , cachediSCSIVolume
+  , cscsivVolumeiSCSIAttributes
+  , cscsivVolumeStatus
+  , cscsivSourceSnapshotId
+  , cscsivVolumeARN
+  , cscsivVolumeProgress
+  , cscsivVolumeSizeInBytes
+  , cscsivVolumeUsedInBytes
+  , cscsivCreatedDate
+  , cscsivVolumeId
+  , cscsivVolumeType
     -- * ChapInfo
-    , ChapInfo
-    , chapInfo
-    , ciTargetARN
-    , ciSecretToAuthenticateInitiator
-    , ciInitiatorName
-    , ciSecretToAuthenticateTarget
-
+  , ChapInfo
+  , chapInfo
+  , ciTargetARN
+  , ciSecretToAuthenticateInitiator
+  , ciInitiatorName
+  , ciSecretToAuthenticateTarget
     -- * DeviceiSCSIAttributes
-    , DeviceiSCSIAttributes
-    , deviceiSCSIAttributes
-    , dscsiaTargetARN
-    , dscsiaChapEnabled
-    , dscsiaNetworkInterfaceId
-    , dscsiaNetworkInterfacePort
-
+  , DeviceiSCSIAttributes
+  , deviceiSCSIAttributes
+  , dscsiaTargetARN
+  , dscsiaChapEnabled
+  , dscsiaNetworkInterfaceId
+  , dscsiaNetworkInterfacePort
     -- * Disk
-    , Disk
-    , disk
-    , dDiskAllocationResource
-    , dDiskAllocationType
-    , dDiskNode
-    , dDiskPath
-    , dDiskSizeInBytes
-    , dDiskStatus
-    , dDiskId
-
+  , Disk
+  , disk
+  , dDiskAllocationResource
+  , dDiskAllocationType
+  , dDiskNode
+  , dDiskPath
+  , dDiskSizeInBytes
+  , dDiskStatus
+  , dDiskId
     -- * FileShareInfo
-    , FileShareInfo
-    , fileShareInfo
-    , fsiFileShareStatus
-    , fsiGatewayARN
-    , fsiFileShareId
-    , fsiFileShareARN
-
+  , FileShareInfo
+  , fileShareInfo
+  , fsiFileShareStatus
+  , fsiGatewayARN
+  , fsiFileShareId
+  , fsiFileShareARN
     -- * GatewayInfo
-    , GatewayInfo
-    , gatewayInfo
-    , giGatewayARN
-    , giGatewayOperationalState
-    , giGatewayName
-    , giGatewayId
-    , giGatewayType
-
+  , GatewayInfo
+  , gatewayInfo
+  , giGatewayARN
+  , giGatewayOperationalState
+  , giGatewayName
+  , giGatewayId
+  , giGatewayType
     -- * NFSFileShareDefaults
-    , NFSFileShareDefaults
-    , nFSFileShareDefaults
-    , nfsfsdFileMode
-    , nfsfsdOwnerId
-    , nfsfsdDirectoryMode
-    , nfsfsdGroupId
-
+  , NFSFileShareDefaults
+  , nFSFileShareDefaults
+  , nfsfsdFileMode
+  , nfsfsdOwnerId
+  , nfsfsdDirectoryMode
+  , nfsfsdGroupId
     -- * NFSFileShareInfo
-    , NFSFileShareInfo
-    , nFSFileShareInfo
-    , nfsfsiFileShareStatus
-    , nfsfsiKMSKey
-    , nfsfsiGatewayARN
-    , nfsfsiPath
-    , nfsfsiObjectACL
-    , nfsfsiKMSEncrypted
-    , nfsfsiFileShareId
-    , nfsfsiFileShareARN
-    , nfsfsiDefaultStorageClass
-    , nfsfsiRole
-    , nfsfsiSquash
-    , nfsfsiRequesterPays
-    , nfsfsiNFSFileShareDefaults
-    , nfsfsiLocationARN
-    , nfsfsiClientList
-    , nfsfsiGuessMIMETypeEnabled
-    , nfsfsiReadOnly
-
+  , NFSFileShareInfo
+  , nFSFileShareInfo
+  , nfsfsiFileShareStatus
+  , nfsfsiKMSKey
+  , nfsfsiGatewayARN
+  , nfsfsiPath
+  , nfsfsiObjectACL
+  , nfsfsiKMSEncrypted
+  , nfsfsiFileShareId
+  , nfsfsiFileShareARN
+  , nfsfsiDefaultStorageClass
+  , nfsfsiRole
+  , nfsfsiSquash
+  , nfsfsiRequesterPays
+  , nfsfsiNFSFileShareDefaults
+  , nfsfsiLocationARN
+  , nfsfsiClientList
+  , nfsfsiGuessMIMETypeEnabled
+  , nfsfsiReadOnly
     -- * NetworkInterface
-    , NetworkInterface
-    , networkInterface
-    , niIPv6Address
-    , niMACAddress
-    , niIPv4Address
-
+  , NetworkInterface
+  , networkInterface
+  , niIPv6Address
+  , niMACAddress
+  , niIPv4Address
     -- * StorediSCSIVolume
-    , StorediSCSIVolume
-    , storediSCSIVolume
-    , sscsivVolumeiSCSIAttributes
-    , sscsivVolumeStatus
-    , sscsivSourceSnapshotId
-    , sscsivPreservedExistingData
-    , sscsivVolumeARN
-    , sscsivVolumeProgress
-    , sscsivVolumeSizeInBytes
-    , sscsivVolumeUsedInBytes
-    , sscsivCreatedDate
-    , sscsivVolumeId
-    , sscsivVolumeDiskId
-    , sscsivVolumeType
-
+  , StorediSCSIVolume
+  , storediSCSIVolume
+  , sscsivVolumeiSCSIAttributes
+  , sscsivVolumeStatus
+  , sscsivSourceSnapshotId
+  , sscsivPreservedExistingData
+  , sscsivVolumeARN
+  , sscsivVolumeProgress
+  , sscsivVolumeSizeInBytes
+  , sscsivVolumeUsedInBytes
+  , sscsivCreatedDate
+  , sscsivVolumeId
+  , sscsivVolumeDiskId
+  , sscsivVolumeType
     -- * Tag
-    , Tag
-    , tag
-    , tagKey
-    , tagValue
-
+  , Tag
+  , tag
+  , tagKey
+  , tagValue
     -- * Tape
-    , Tape
-    , tape
-    , tTapeBarcode
-    , tTapeStatus
-    , tTapeARN
-    , tProgress
-    , tTapeSizeInBytes
-    , tVTLDevice
-    , tTapeUsedInBytes
-    , tTapeCreatedDate
-
+  , Tape
+  , tape
+  , tTapeBarcode
+  , tTapeStatus
+  , tTapeARN
+  , tProgress
+  , tTapeSizeInBytes
+  , tVTLDevice
+  , tTapeUsedInBytes
+  , tTapeCreatedDate
     -- * TapeArchive
-    , TapeArchive
-    , tapeArchive
-    , taTapeBarcode
-    , taTapeStatus
-    , taTapeARN
-    , taTapeSizeInBytes
-    , taCompletionTime
-    , taTapeUsedInBytes
-    , taTapeCreatedDate
-    , taRetrievedTo
-
+  , TapeArchive
+  , tapeArchive
+  , taTapeBarcode
+  , taTapeStatus
+  , taTapeARN
+  , taTapeSizeInBytes
+  , taCompletionTime
+  , taTapeUsedInBytes
+  , taTapeCreatedDate
+  , taRetrievedTo
     -- * TapeInfo
-    , TapeInfo
-    , tapeInfo
-    , tiTapeBarcode
-    , tiTapeStatus
-    , tiTapeARN
-    , tiGatewayARN
-    , tiTapeSizeInBytes
-
+  , TapeInfo
+  , tapeInfo
+  , tiTapeBarcode
+  , tiTapeStatus
+  , tiTapeARN
+  , tiGatewayARN
+  , tiTapeSizeInBytes
     -- * TapeRecoveryPointInfo
-    , TapeRecoveryPointInfo
-    , tapeRecoveryPointInfo
-    , trpiTapeStatus
-    , trpiTapeRecoveryPointTime
-    , trpiTapeARN
-    , trpiTapeSizeInBytes
-
+  , TapeRecoveryPointInfo
+  , tapeRecoveryPointInfo
+  , trpiTapeStatus
+  , trpiTapeRecoveryPointTime
+  , trpiTapeARN
+  , trpiTapeSizeInBytes
     -- * VTLDevice
-    , VTLDevice
-    , vTLDevice
-    , vtldDeviceiSCSIAttributes
-    , vtldVTLDeviceVendor
-    , vtldVTLDeviceARN
-    , vtldVTLDeviceType
-    , vtldVTLDeviceProductIdentifier
-
+  , VTLDevice
+  , vTLDevice
+  , vtldDeviceiSCSIAttributes
+  , vtldVTLDeviceVendor
+  , vtldVTLDeviceARN
+  , vtldVTLDeviceType
+  , vtldVTLDeviceProductIdentifier
     -- * VolumeInfo
-    , VolumeInfo
-    , volumeInfo
-    , viGatewayARN
-    , viVolumeARN
-    , viVolumeSizeInBytes
-    , viVolumeId
-    , viGatewayId
-    , viVolumeType
-
+  , VolumeInfo
+  , volumeInfo
+  , viGatewayARN
+  , viVolumeARN
+  , viVolumeSizeInBytes
+  , viVolumeId
+  , viGatewayId
+  , viVolumeType
     -- * VolumeRecoveryPointInfo
-    , VolumeRecoveryPointInfo
-    , volumeRecoveryPointInfo
-    , vrpiVolumeRecoveryPointTime
-    , vrpiVolumeARN
-    , vrpiVolumeSizeInBytes
-    , vrpiVolumeUsageInBytes
-
+  , VolumeRecoveryPointInfo
+  , volumeRecoveryPointInfo
+  , vrpiVolumeRecoveryPointTime
+  , vrpiVolumeARN
+  , vrpiVolumeSizeInBytes
+  , vrpiVolumeUsageInBytes
     -- * VolumeiSCSIAttributes
-    , VolumeiSCSIAttributes
-    , volumeiSCSIAttributes
-    , vscsiaLunNumber
-    , vscsiaTargetARN
-    , vscsiaChapEnabled
-    , vscsiaNetworkInterfaceId
-    , vscsiaNetworkInterfacePort
-    ) where
+  , VolumeiSCSIAttributes
+  , volumeiSCSIAttributes
+  , vscsiaLunNumber
+  , vscsiaTargetARN
+  , vscsiaChapEnabled
+  , vscsiaNetworkInterfaceId
+  , vscsiaNetworkInterfacePort
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -261,26 +238,24 @@ storageGateway =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | An exception occurred because an invalid gateway request was issued to the service. For more information, see the error and message fields.
 --
 --
-_InvalidGatewayRequestException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidGatewayRequestException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidGatewayRequestException =
   _MatchServiceError storageGateway "InvalidGatewayRequestException"
-
 
 -- | An internal server error has occurred because the service is unavailable. For more information, see the error and message fields.
 --
 --
-_ServiceUnavailableError :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceUnavailableError ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ServiceUnavailableError =
   _MatchServiceError storageGateway "ServiceUnavailableError"
-
 
 -- | An internal server error has occurred during the request. For more information, see the error and message fields.
 --
 --
 _InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalServerError = _MatchServiceError storageGateway "InternalServerError"
-

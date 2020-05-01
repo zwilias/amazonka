@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Route53.GetCheckerIPRanges
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,18 +20,16 @@
 --
 --
 module Network.AWS.Route53.GetCheckerIPRanges
-    (
     -- * Creating a Request
-      getCheckerIPRanges
-    , GetCheckerIPRanges
-
+  ( getCheckerIPRanges
+  , GetCheckerIPRanges
     -- * Destructuring the Response
-    , getCheckerIPRangesResponse
-    , GetCheckerIPRangesResponse
+  , getCheckerIPRangesResponse
+  , GetCheckerIPRangesResponse
     -- * Response Lenses
-    , gcirrsResponseStatus
-    , gcirrsCheckerIPRanges
-    ) where
+  , gcirrsResponseStatus
+  , gcirrsCheckerIPRanges
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -47,45 +43,40 @@ data GetCheckerIPRanges =
   GetCheckerIPRanges'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'GetCheckerIPRanges' with the minimum fields required to make a request.
 --
-getCheckerIPRanges
-    :: GetCheckerIPRanges
+getCheckerIPRanges :: GetCheckerIPRanges
 getCheckerIPRanges = GetCheckerIPRanges'
 
-
 instance AWSRequest GetCheckerIPRanges where
-        type Rs GetCheckerIPRanges =
-             GetCheckerIPRangesResponse
-        request = get route53
-        response
-          = receiveXML
-              (\ s h x ->
-                 GetCheckerIPRangesResponse' <$>
-                   (pure (fromEnum s)) <*>
-                     (x .@? "CheckerIpRanges" .!@ mempty >>=
-                        parseXMLList "member"))
+  type Rs GetCheckerIPRanges = GetCheckerIPRangesResponse
+  request = get route53
+  response =
+    receiveXML
+      (\s h x ->
+         GetCheckerIPRangesResponse' <$> (pure (fromEnum s)) <*>
+         (x .@? "CheckerIpRanges" .!@ mempty >>= parseXMLList "member"))
 
-instance Hashable GetCheckerIPRanges where
+instance Hashable GetCheckerIPRanges
 
-instance NFData GetCheckerIPRanges where
+instance NFData GetCheckerIPRanges
 
 instance ToHeaders GetCheckerIPRanges where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath GetCheckerIPRanges where
-        toPath = const "/2013-04-01/checkeripranges"
+  toPath = const "/2013-04-01/checkeripranges"
 
 instance ToQuery GetCheckerIPRanges where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'getCheckerIPRangesResponse' smart constructor.
-data GetCheckerIPRangesResponse = GetCheckerIPRangesResponse'
-  { _gcirrsResponseStatus  :: !Int
-  , _gcirrsCheckerIPRanges :: ![Text]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCheckerIPRangesResponse =
+  GetCheckerIPRangesResponse'
+    { _gcirrsResponseStatus :: !Int
+    , _gcirrsCheckerIPRanges :: ![Text]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCheckerIPRangesResponse' with the minimum fields required to make a request.
 --
@@ -94,20 +85,21 @@ data GetCheckerIPRangesResponse = GetCheckerIPRangesResponse'
 -- * 'gcirrsResponseStatus' - -- | The response status code.
 --
 -- * 'gcirrsCheckerIPRanges' - Undocumented member.
-getCheckerIPRangesResponse
-    :: Int -- ^ 'gcirrsResponseStatus'
-    -> GetCheckerIPRangesResponse
+getCheckerIPRangesResponse ::
+     Int -- ^ 'gcirrsResponseStatus'
+  -> GetCheckerIPRangesResponse
 getCheckerIPRangesResponse pResponseStatus_ =
   GetCheckerIPRangesResponse'
     {_gcirrsResponseStatus = pResponseStatus_, _gcirrsCheckerIPRanges = mempty}
 
-
 -- | -- | The response status code.
 gcirrsResponseStatus :: Lens' GetCheckerIPRangesResponse Int
-gcirrsResponseStatus = lens _gcirrsResponseStatus (\ s a -> s{_gcirrsResponseStatus = a})
+gcirrsResponseStatus =
+  lens _gcirrsResponseStatus (\s a -> s {_gcirrsResponseStatus = a})
 
 -- | Undocumented member.
 gcirrsCheckerIPRanges :: Lens' GetCheckerIPRangesResponse [Text]
-gcirrsCheckerIPRanges = lens _gcirrsCheckerIPRanges (\ s a -> s{_gcirrsCheckerIPRanges = a}) . _Coerce
+gcirrsCheckerIPRanges =
+  lens _gcirrsCheckerIPRanges (\s a -> s {_gcirrsCheckerIPRanges = a}) . _Coerce
 
-instance NFData GetCheckerIPRangesResponse where
+instance NFData GetCheckerIPRangesResponse

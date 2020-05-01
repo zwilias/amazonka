@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.EC2.CreateDHCPOptions
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -36,21 +34,19 @@
 -- Your VPC automatically starts out with a set of DHCP options that includes only a DNS server that we provide (AmazonProvidedDNS). If you create a set of options, and if your VPC has an Internet gateway, make sure to set the @domain-name-servers@ option either to @AmazonProvidedDNS@ or to a domain name server of your choice. For more information about DHCP options, see <http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html DHCP Options Sets> in the /Amazon Virtual Private Cloud User Guide/ .
 --
 module Network.AWS.EC2.CreateDHCPOptions
-    (
     -- * Creating a Request
-      createDHCPOptions
-    , CreateDHCPOptions
+  ( createDHCPOptions
+  , CreateDHCPOptions
     -- * Request Lenses
-    , cdoDryRun
-    , cdoDHCPConfigurations
-
+  , cdoDryRun
+  , cdoDHCPConfigurations
     -- * Destructuring the Response
-    , createDHCPOptionsResponse
-    , CreateDHCPOptionsResponse
+  , createDHCPOptionsResponse
+  , CreateDHCPOptionsResponse
     -- * Response Lenses
-    , cdorsDHCPOptions
-    , cdorsResponseStatus
-    ) where
+  , cdorsDHCPOptions
+  , cdorsResponseStatus
+  ) where
 
 import Network.AWS.EC2.Types
 import Network.AWS.EC2.Types.Product
@@ -64,11 +60,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createDHCPOptions' smart constructor.
-data CreateDHCPOptions = CreateDHCPOptions'
-  { _cdoDryRun             :: !(Maybe Bool)
-  , _cdoDHCPConfigurations :: ![NewDHCPConfiguration]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDHCPOptions =
+  CreateDHCPOptions'
+    { _cdoDryRun :: !(Maybe Bool)
+    , _cdoDHCPConfigurations :: ![NewDHCPConfiguration]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDHCPOptions' with the minimum fields required to make a request.
 --
@@ -77,58 +74,58 @@ data CreateDHCPOptions = CreateDHCPOptions'
 -- * 'cdoDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
 -- * 'cdoDHCPConfigurations' - A DHCP configuration option.
-createDHCPOptions
-    :: CreateDHCPOptions
+createDHCPOptions :: CreateDHCPOptions
 createDHCPOptions =
   CreateDHCPOptions' {_cdoDryRun = Nothing, _cdoDHCPConfigurations = mempty}
 
-
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 cdoDryRun :: Lens' CreateDHCPOptions (Maybe Bool)
-cdoDryRun = lens _cdoDryRun (\ s a -> s{_cdoDryRun = a})
+cdoDryRun = lens _cdoDryRun (\s a -> s {_cdoDryRun = a})
 
 -- | A DHCP configuration option.
 cdoDHCPConfigurations :: Lens' CreateDHCPOptions [NewDHCPConfiguration]
-cdoDHCPConfigurations = lens _cdoDHCPConfigurations (\ s a -> s{_cdoDHCPConfigurations = a}) . _Coerce
+cdoDHCPConfigurations =
+  lens _cdoDHCPConfigurations (\s a -> s {_cdoDHCPConfigurations = a}) . _Coerce
 
 instance AWSRequest CreateDHCPOptions where
-        type Rs CreateDHCPOptions = CreateDHCPOptionsResponse
-        request = postQuery ec2
-        response
-          = receiveXML
-              (\ s h x ->
-                 CreateDHCPOptionsResponse' <$>
-                   (x .@? "dhcpOptions") <*> (pure (fromEnum s)))
+  type Rs CreateDHCPOptions = CreateDHCPOptionsResponse
+  request = postQuery ec2
+  response =
+    receiveXML
+      (\s h x ->
+         CreateDHCPOptionsResponse' <$> (x .@? "dhcpOptions") <*>
+         (pure (fromEnum s)))
 
-instance Hashable CreateDHCPOptions where
+instance Hashable CreateDHCPOptions
 
-instance NFData CreateDHCPOptions where
+instance NFData CreateDHCPOptions
 
 instance ToHeaders CreateDHCPOptions where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath CreateDHCPOptions where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery CreateDHCPOptions where
-        toQuery CreateDHCPOptions'{..}
-          = mconcat
-              ["Action" =: ("CreateDhcpOptions" :: ByteString),
-               "Version" =: ("2016-11-15" :: ByteString),
-               "DryRun" =: _cdoDryRun,
-               toQueryList "DhcpConfiguration"
-                 _cdoDHCPConfigurations]
+  toQuery CreateDHCPOptions' {..} =
+    mconcat
+      [ "Action" =: ("CreateDhcpOptions" :: ByteString)
+      , "Version" =: ("2016-11-15" :: ByteString)
+      , "DryRun" =: _cdoDryRun
+      , toQueryList "DhcpConfiguration" _cdoDHCPConfigurations
+      ]
 
 -- | Contains the output of CreateDhcpOptions.
 --
 --
 --
 -- /See:/ 'createDHCPOptionsResponse' smart constructor.
-data CreateDHCPOptionsResponse = CreateDHCPOptionsResponse'
-  { _cdorsDHCPOptions    :: !(Maybe DHCPOptions)
-  , _cdorsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDHCPOptionsResponse =
+  CreateDHCPOptionsResponse'
+    { _cdorsDHCPOptions :: !(Maybe DHCPOptions)
+    , _cdorsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDHCPOptionsResponse' with the minimum fields required to make a request.
 --
@@ -137,20 +134,20 @@ data CreateDHCPOptionsResponse = CreateDHCPOptionsResponse'
 -- * 'cdorsDHCPOptions' - A set of DHCP options.
 --
 -- * 'cdorsResponseStatus' - -- | The response status code.
-createDHCPOptionsResponse
-    :: Int -- ^ 'cdorsResponseStatus'
-    -> CreateDHCPOptionsResponse
+createDHCPOptionsResponse ::
+     Int -- ^ 'cdorsResponseStatus'
+  -> CreateDHCPOptionsResponse
 createDHCPOptionsResponse pResponseStatus_ =
   CreateDHCPOptionsResponse'
     {_cdorsDHCPOptions = Nothing, _cdorsResponseStatus = pResponseStatus_}
 
-
 -- | A set of DHCP options.
 cdorsDHCPOptions :: Lens' CreateDHCPOptionsResponse (Maybe DHCPOptions)
-cdorsDHCPOptions = lens _cdorsDHCPOptions (\ s a -> s{_cdorsDHCPOptions = a})
+cdorsDHCPOptions = lens _cdorsDHCPOptions (\s a -> s {_cdorsDHCPOptions = a})
 
 -- | -- | The response status code.
 cdorsResponseStatus :: Lens' CreateDHCPOptionsResponse Int
-cdorsResponseStatus = lens _cdorsResponseStatus (\ s a -> s{_cdorsResponseStatus = a})
+cdorsResponseStatus =
+  lens _cdorsResponseStatus (\s a -> s {_cdorsResponseStatus = a})
 
-instance NFData CreateDHCPOptionsResponse where
+instance NFData CreateDHCPOptionsResponse

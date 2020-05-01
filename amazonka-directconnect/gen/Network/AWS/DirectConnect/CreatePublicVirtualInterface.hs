@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.DirectConnect.CreatePublicVirtualInterface
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,38 +22,36 @@
 -- When creating an IPv6 public virtual interface (addressFamily is 'ipv6'), the customer and amazon address fields should be left blank to use auto-assigned IPv6 space. Custom IPv6 Addresses are currently not supported.
 --
 module Network.AWS.DirectConnect.CreatePublicVirtualInterface
-    (
     -- * Creating a Request
-      createPublicVirtualInterface
-    , CreatePublicVirtualInterface
+  ( createPublicVirtualInterface
+  , CreatePublicVirtualInterface
     -- * Request Lenses
-    , cpviConnectionId
-    , cpviNewPublicVirtualInterface
-
+  , cpviConnectionId
+  , cpviNewPublicVirtualInterface
     -- * Destructuring the Response
-    , virtualInterface
-    , VirtualInterface
+  , virtualInterface
+  , VirtualInterface
     -- * Response Lenses
-    , viBgpPeers
-    , viVirtualGatewayId
-    , viRouteFilterPrefixes
-    , viCustomerAddress
-    , viVlan
-    , viLocation
-    , viAmazonAddress
-    , viAddressFamily
-    , viVirtualInterfaceState
-    , viConnectionId
-    , viDirectConnectGatewayId
-    , viAmazonSideASN
-    , viVirtualInterfaceType
-    , viAsn
-    , viAuthKey
-    , viCustomerRouterConfig
-    , viOwnerAccount
-    , viVirtualInterfaceName
-    , viVirtualInterfaceId
-    ) where
+  , viBgpPeers
+  , viVirtualGatewayId
+  , viRouteFilterPrefixes
+  , viCustomerAddress
+  , viVlan
+  , viLocation
+  , viAmazonAddress
+  , viAddressFamily
+  , viVirtualInterfaceState
+  , viConnectionId
+  , viDirectConnectGatewayId
+  , viAmazonSideASN
+  , viVirtualInterfaceType
+  , viAsn
+  , viAuthKey
+  , viCustomerRouterConfig
+  , viOwnerAccount
+  , viVirtualInterfaceName
+  , viVirtualInterfaceId
+  ) where
 
 import Network.AWS.DirectConnect.Types
 import Network.AWS.DirectConnect.Types.Product
@@ -69,11 +65,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createPublicVirtualInterface' smart constructor.
-data CreatePublicVirtualInterface = CreatePublicVirtualInterface'
-  { _cpviConnectionId              :: !Text
-  , _cpviNewPublicVirtualInterface :: !NewPublicVirtualInterface
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePublicVirtualInterface =
+  CreatePublicVirtualInterface'
+    { _cpviConnectionId :: !Text
+    , _cpviNewPublicVirtualInterface :: !NewPublicVirtualInterface
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreatePublicVirtualInterface' with the minimum fields required to make a request.
 --
@@ -82,57 +79,56 @@ data CreatePublicVirtualInterface = CreatePublicVirtualInterface'
 -- * 'cpviConnectionId' - Undocumented member.
 --
 -- * 'cpviNewPublicVirtualInterface' - Detailed information for the public virtual interface to be created. Default: None
-createPublicVirtualInterface
-    :: Text -- ^ 'cpviConnectionId'
-    -> NewPublicVirtualInterface -- ^ 'cpviNewPublicVirtualInterface'
-    -> CreatePublicVirtualInterface
+createPublicVirtualInterface ::
+     Text -- ^ 'cpviConnectionId'
+  -> NewPublicVirtualInterface -- ^ 'cpviNewPublicVirtualInterface'
+  -> CreatePublicVirtualInterface
 createPublicVirtualInterface pConnectionId_ pNewPublicVirtualInterface_ =
   CreatePublicVirtualInterface'
     { _cpviConnectionId = pConnectionId_
     , _cpviNewPublicVirtualInterface = pNewPublicVirtualInterface_
     }
 
-
 -- | Undocumented member.
 cpviConnectionId :: Lens' CreatePublicVirtualInterface Text
-cpviConnectionId = lens _cpviConnectionId (\ s a -> s{_cpviConnectionId = a})
+cpviConnectionId = lens _cpviConnectionId (\s a -> s {_cpviConnectionId = a})
 
 -- | Detailed information for the public virtual interface to be created. Default: None
-cpviNewPublicVirtualInterface :: Lens' CreatePublicVirtualInterface NewPublicVirtualInterface
-cpviNewPublicVirtualInterface = lens _cpviNewPublicVirtualInterface (\ s a -> s{_cpviNewPublicVirtualInterface = a})
+cpviNewPublicVirtualInterface ::
+     Lens' CreatePublicVirtualInterface NewPublicVirtualInterface
+cpviNewPublicVirtualInterface =
+  lens
+    _cpviNewPublicVirtualInterface
+    (\s a -> s {_cpviNewPublicVirtualInterface = a})
 
-instance AWSRequest CreatePublicVirtualInterface
-         where
-        type Rs CreatePublicVirtualInterface =
-             VirtualInterface
-        request = postJSON directConnect
-        response = receiveJSON (\ s h x -> eitherParseJSON x)
+instance AWSRequest CreatePublicVirtualInterface where
+  type Rs CreatePublicVirtualInterface = VirtualInterface
+  request = postJSON directConnect
+  response = receiveJSON (\s h x -> eitherParseJSON x)
 
-instance Hashable CreatePublicVirtualInterface where
+instance Hashable CreatePublicVirtualInterface
 
-instance NFData CreatePublicVirtualInterface where
+instance NFData CreatePublicVirtualInterface
 
 instance ToHeaders CreatePublicVirtualInterface where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("OvertureService.CreatePublicVirtualInterface" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("OvertureService.CreatePublicVirtualInterface" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON CreatePublicVirtualInterface where
-        toJSON CreatePublicVirtualInterface'{..}
-          = object
-              (catMaybes
-                 [Just ("connectionId" .= _cpviConnectionId),
-                  Just
-                    ("newPublicVirtualInterface" .=
-                       _cpviNewPublicVirtualInterface)])
+  toJSON CreatePublicVirtualInterface' {..} =
+    object
+      (catMaybes
+         [ Just ("connectionId" .= _cpviConnectionId)
+         , Just ("newPublicVirtualInterface" .= _cpviNewPublicVirtualInterface)
+         ])
 
 instance ToPath CreatePublicVirtualInterface where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery CreatePublicVirtualInterface where
-        toQuery = const mempty
+  toQuery = const mempty

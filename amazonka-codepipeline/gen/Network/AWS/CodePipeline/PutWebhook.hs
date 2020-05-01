@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CodePipeline.PutWebhook
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,20 +20,18 @@
 --
 --
 module Network.AWS.CodePipeline.PutWebhook
-    (
     -- * Creating a Request
-      putWebhook
-    , PutWebhook
+  ( putWebhook
+  , PutWebhook
     -- * Request Lenses
-    , pwWebhook
-
+  , pwWebhook
     -- * Destructuring the Response
-    , putWebhookResponse
-    , PutWebhookResponse
+  , putWebhookResponse
+  , PutWebhookResponse
     -- * Response Lenses
-    , pwrsWebhook
-    , pwrsResponseStatus
-    ) where
+  , pwrsWebhook
+  , pwrsResponseStatus
+  ) where
 
 import Network.AWS.CodePipeline.Types
 import Network.AWS.CodePipeline.Types.Product
@@ -45,64 +41,62 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putWebhook' smart constructor.
-newtype PutWebhook = PutWebhook'
-  { _pwWebhook :: WebhookDefinition
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype PutWebhook =
+  PutWebhook'
+    { _pwWebhook :: WebhookDefinition
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutWebhook' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'pwWebhook' - The detail provided in an input file to create the webhook, such as the webhook name, the pipeline name, and the action name. Give the webhook a unique name which identifies the webhook being defined. You may choose to name the webhook after the pipeline and action it targets so that you can easily recognize what it's used for later.
-putWebhook
-    :: WebhookDefinition -- ^ 'pwWebhook'
-    -> PutWebhook
+putWebhook ::
+     WebhookDefinition -- ^ 'pwWebhook'
+  -> PutWebhook
 putWebhook pWebhook_ = PutWebhook' {_pwWebhook = pWebhook_}
-
 
 -- | The detail provided in an input file to create the webhook, such as the webhook name, the pipeline name, and the action name. Give the webhook a unique name which identifies the webhook being defined. You may choose to name the webhook after the pipeline and action it targets so that you can easily recognize what it's used for later.
 pwWebhook :: Lens' PutWebhook WebhookDefinition
-pwWebhook = lens _pwWebhook (\ s a -> s{_pwWebhook = a})
+pwWebhook = lens _pwWebhook (\s a -> s {_pwWebhook = a})
 
 instance AWSRequest PutWebhook where
-        type Rs PutWebhook = PutWebhookResponse
-        request = postJSON codePipeline
-        response
-          = receiveJSON
-              (\ s h x ->
-                 PutWebhookResponse' <$>
-                   (x .?> "webhook") <*> (pure (fromEnum s)))
+  type Rs PutWebhook = PutWebhookResponse
+  request = postJSON codePipeline
+  response =
+    receiveJSON
+      (\s h x ->
+         PutWebhookResponse' <$> (x .?> "webhook") <*> (pure (fromEnum s)))
 
-instance Hashable PutWebhook where
+instance Hashable PutWebhook
 
-instance NFData PutWebhook where
+instance NFData PutWebhook
 
 instance ToHeaders PutWebhook where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("CodePipeline_20150709.PutWebhook" :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =# ("CodePipeline_20150709.PutWebhook" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON PutWebhook where
-        toJSON PutWebhook'{..}
-          = object (catMaybes [Just ("webhook" .= _pwWebhook)])
+  toJSON PutWebhook' {..} = object (catMaybes [Just ("webhook" .= _pwWebhook)])
 
 instance ToPath PutWebhook where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery PutWebhook where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'putWebhookResponse' smart constructor.
-data PutWebhookResponse = PutWebhookResponse'
-  { _pwrsWebhook        :: !(Maybe ListWebhookItem)
-  , _pwrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutWebhookResponse =
+  PutWebhookResponse'
+    { _pwrsWebhook :: !(Maybe ListWebhookItem)
+    , _pwrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutWebhookResponse' with the minimum fields required to make a request.
 --
@@ -111,20 +105,20 @@ data PutWebhookResponse = PutWebhookResponse'
 -- * 'pwrsWebhook' - The detail returned from creating the webhook, such as the webhook name, webhook URL, and webhook ARN.
 --
 -- * 'pwrsResponseStatus' - -- | The response status code.
-putWebhookResponse
-    :: Int -- ^ 'pwrsResponseStatus'
-    -> PutWebhookResponse
+putWebhookResponse ::
+     Int -- ^ 'pwrsResponseStatus'
+  -> PutWebhookResponse
 putWebhookResponse pResponseStatus_ =
   PutWebhookResponse'
     {_pwrsWebhook = Nothing, _pwrsResponseStatus = pResponseStatus_}
 
-
 -- | The detail returned from creating the webhook, such as the webhook name, webhook URL, and webhook ARN.
 pwrsWebhook :: Lens' PutWebhookResponse (Maybe ListWebhookItem)
-pwrsWebhook = lens _pwrsWebhook (\ s a -> s{_pwrsWebhook = a})
+pwrsWebhook = lens _pwrsWebhook (\s a -> s {_pwrsWebhook = a})
 
 -- | -- | The response status code.
 pwrsResponseStatus :: Lens' PutWebhookResponse Int
-pwrsResponseStatus = lens _pwrsResponseStatus (\ s a -> s{_pwrsResponseStatus = a})
+pwrsResponseStatus =
+  lens _pwrsResponseStatus (\s a -> s {_pwrsResponseStatus = a})
 
-instance NFData PutWebhookResponse where
+instance NFData PutWebhookResponse

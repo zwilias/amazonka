@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CloudWatchLogs.CreateLogStream
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -34,18 +32,16 @@
 --
 --
 module Network.AWS.CloudWatchLogs.CreateLogStream
-    (
     -- * Creating a Request
-      createLogStream
-    , CreateLogStream
+  ( createLogStream
+  , CreateLogStream
     -- * Request Lenses
-    , clsLogGroupName
-    , clsLogStreamName
-
+  , clsLogGroupName
+  , clsLogStreamName
     -- * Destructuring the Response
-    , createLogStreamResponse
-    , CreateLogStreamResponse
-    ) where
+  , createLogStreamResponse
+  , CreateLogStreamResponse
+  ) where
 
 import Network.AWS.CloudWatchLogs.Types
 import Network.AWS.CloudWatchLogs.Types.Product
@@ -55,11 +51,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createLogStream' smart constructor.
-data CreateLogStream = CreateLogStream'
-  { _clsLogGroupName  :: !Text
-  , _clsLogStreamName :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLogStream =
+  CreateLogStream'
+    { _clsLogGroupName :: !Text
+    , _clsLogStreamName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateLogStream' with the minimum fields required to make a request.
 --
@@ -68,65 +65,61 @@ data CreateLogStream = CreateLogStream'
 -- * 'clsLogGroupName' - The name of the log group.
 --
 -- * 'clsLogStreamName' - The name of the log stream.
-createLogStream
-    :: Text -- ^ 'clsLogGroupName'
-    -> Text -- ^ 'clsLogStreamName'
-    -> CreateLogStream
+createLogStream ::
+     Text -- ^ 'clsLogGroupName'
+  -> Text -- ^ 'clsLogStreamName'
+  -> CreateLogStream
 createLogStream pLogGroupName_ pLogStreamName_ =
   CreateLogStream'
     {_clsLogGroupName = pLogGroupName_, _clsLogStreamName = pLogStreamName_}
 
-
 -- | The name of the log group.
 clsLogGroupName :: Lens' CreateLogStream Text
-clsLogGroupName = lens _clsLogGroupName (\ s a -> s{_clsLogGroupName = a})
+clsLogGroupName = lens _clsLogGroupName (\s a -> s {_clsLogGroupName = a})
 
 -- | The name of the log stream.
 clsLogStreamName :: Lens' CreateLogStream Text
-clsLogStreamName = lens _clsLogStreamName (\ s a -> s{_clsLogStreamName = a})
+clsLogStreamName = lens _clsLogStreamName (\s a -> s {_clsLogStreamName = a})
 
 instance AWSRequest CreateLogStream where
-        type Rs CreateLogStream = CreateLogStreamResponse
-        request = postJSON cloudWatchLogs
-        response = receiveNull CreateLogStreamResponse'
+  type Rs CreateLogStream = CreateLogStreamResponse
+  request = postJSON cloudWatchLogs
+  response = receiveNull CreateLogStreamResponse'
 
-instance Hashable CreateLogStream where
+instance Hashable CreateLogStream
 
-instance NFData CreateLogStream where
+instance NFData CreateLogStream
 
 instance ToHeaders CreateLogStream where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("Logs_20140328.CreateLogStream" :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =# ("Logs_20140328.CreateLogStream" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON CreateLogStream where
-        toJSON CreateLogStream'{..}
-          = object
-              (catMaybes
-                 [Just ("logGroupName" .= _clsLogGroupName),
-                  Just ("logStreamName" .= _clsLogStreamName)])
+  toJSON CreateLogStream' {..} =
+    object
+      (catMaybes
+         [ Just ("logGroupName" .= _clsLogGroupName)
+         , Just ("logStreamName" .= _clsLogStreamName)
+         ])
 
 instance ToPath CreateLogStream where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery CreateLogStream where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'createLogStreamResponse' smart constructor.
 data CreateLogStreamResponse =
   CreateLogStreamResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'CreateLogStreamResponse' with the minimum fields required to make a request.
 --
-createLogStreamResponse
-    :: CreateLogStreamResponse
+createLogStreamResponse :: CreateLogStreamResponse
 createLogStreamResponse = CreateLogStreamResponse'
 
-
-instance NFData CreateLogStreamResponse where
+instance NFData CreateLogStreamResponse

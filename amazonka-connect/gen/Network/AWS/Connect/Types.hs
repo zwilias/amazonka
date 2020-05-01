@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Connect.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,20 +10,18 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.Connect.Types
-    (
     -- * Service Configuration
-      connect
-
+  ( connect
     -- * Errors
-    , _OutboundContactNotPermittedException
-    , _InvalidParameterException
-    , _InvalidRequestException
-    , _DestinationNotAllowedException
-    , _ContactNotFoundException
-    , _InternalServiceException
-    , _ResourceNotFoundException
-    , _LimitExceededException
-    ) where
+  , _OutboundContactNotPermittedException
+  , _InvalidParameterException
+  , _InvalidRequestException
+  , _DestinationNotAllowedException
+  , _ContactNotFoundException
+  , _InternalServiceException
+  , _ResourceNotFoundException
+  , _LimitExceededException
+  ) where
 
 import Network.AWS.Connect.Types.Product
 import Network.AWS.Connect.Types.Sum
@@ -70,68 +67,67 @@ connect =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | The contact is not permitted because outbound calling is not enabled for the instance.
 --
 --
-_OutboundContactNotPermittedException :: AsError a => Getting (First ServiceError) a ServiceError
+_OutboundContactNotPermittedException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _OutboundContactNotPermittedException =
   _MatchServiceError connect "OutboundContactNotPermittedException" .
   hasStatus 403
 
-
 -- | One or more of the parameters provided to the operation are not valid.
 --
 --
-_InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidParameterException =
   _MatchServiceError connect "InvalidParameterException" . hasStatus 400
-
 
 -- | The request is not valid.
 --
 --
-_InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRequestException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidRequestException =
   _MatchServiceError connect "InvalidRequestException" . hasStatus 400
-
 
 -- | Outbound calls to the destination number are not allowed for your instance. You can request that the country be included in the allowed countries for your instance by submitting a <https://console.aws.amazon.com/support/v1#/case/create?issueType=service-limit-increase Service Limit Increase> .
 --
 --
-_DestinationNotAllowedException :: AsError a => Getting (First ServiceError) a ServiceError
+_DestinationNotAllowedException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _DestinationNotAllowedException =
   _MatchServiceError connect "DestinationNotAllowedException" . hasStatus 403
-
 
 -- | The contact with the specified ID is not active or does not exist.
 --
 --
-_ContactNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ContactNotFoundException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ContactNotFoundException =
   _MatchServiceError connect "ContactNotFoundException" . hasStatus 410
-
 
 -- | Request processing failed due to an error or failure with the service.
 --
 --
-_InternalServiceException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServiceException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InternalServiceException =
   _MatchServiceError connect "InternalServiceException" . hasStatus 500
-
 
 -- | The specified resource was not found.
 --
 --
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ResourceNotFoundException =
   _MatchServiceError connect "ResourceNotFoundException" . hasStatus 404
-
 
 -- | The limit exceeded the maximum allowed active calls in a queue.
 --
 --
-_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException =
   _MatchServiceError connect "LimitExceededException" . hasStatus 429
-

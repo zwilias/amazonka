@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.WorkSpaces.CreateIPGroup
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,22 +24,20 @@
 -- There is a default IP access control group associated with your directory. If you don't associate an IP access control group with your directory, the default group is used. The default group includes a default rule that allows users to access their WorkSpaces from anywhere. You cannot modify the default IP access control group for your directory.
 --
 module Network.AWS.WorkSpaces.CreateIPGroup
-    (
     -- * Creating a Request
-      createIPGroup
-    , CreateIPGroup
+  ( createIPGroup
+  , CreateIPGroup
     -- * Request Lenses
-    , cigGroupDesc
-    , cigUserRules
-    , cigGroupName
-
+  , cigGroupDesc
+  , cigUserRules
+  , cigGroupName
     -- * Destructuring the Response
-    , createIPGroupResponse
-    , CreateIPGroupResponse
+  , createIPGroupResponse
+  , CreateIPGroupResponse
     -- * Response Lenses
-    , cigrsGroupId
-    , cigrsResponseStatus
-    ) where
+  , cigrsGroupId
+  , cigrsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -51,12 +47,13 @@ import Network.AWS.WorkSpaces.Types
 import Network.AWS.WorkSpaces.Types.Product
 
 -- | /See:/ 'createIPGroup' smart constructor.
-data CreateIPGroup = CreateIPGroup'
-  { _cigGroupDesc :: !(Maybe Text)
-  , _cigUserRules :: !(Maybe [IPRuleItem])
-  , _cigGroupName :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateIPGroup =
+  CreateIPGroup'
+    { _cigGroupDesc :: !(Maybe Text)
+    , _cigUserRules :: !(Maybe [IPRuleItem])
+    , _cigGroupName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateIPGroup' with the minimum fields required to make a request.
 --
@@ -67,9 +64,9 @@ data CreateIPGroup = CreateIPGroup'
 -- * 'cigUserRules' - The rules to add to the group.
 --
 -- * 'cigGroupName' - The name of the group.
-createIPGroup
-    :: Text -- ^ 'cigGroupName'
-    -> CreateIPGroup
+createIPGroup ::
+     Text -- ^ 'cigGroupName'
+  -> CreateIPGroup
 createIPGroup pGroupName_ =
   CreateIPGroup'
     { _cigGroupDesc = Nothing
@@ -77,61 +74,61 @@ createIPGroup pGroupName_ =
     , _cigGroupName = pGroupName_
     }
 
-
 -- | The description of the group.
 cigGroupDesc :: Lens' CreateIPGroup (Maybe Text)
-cigGroupDesc = lens _cigGroupDesc (\ s a -> s{_cigGroupDesc = a})
+cigGroupDesc = lens _cigGroupDesc (\s a -> s {_cigGroupDesc = a})
 
 -- | The rules to add to the group.
 cigUserRules :: Lens' CreateIPGroup [IPRuleItem]
-cigUserRules = lens _cigUserRules (\ s a -> s{_cigUserRules = a}) . _Default . _Coerce
+cigUserRules =
+  lens _cigUserRules (\s a -> s {_cigUserRules = a}) . _Default . _Coerce
 
 -- | The name of the group.
 cigGroupName :: Lens' CreateIPGroup Text
-cigGroupName = lens _cigGroupName (\ s a -> s{_cigGroupName = a})
+cigGroupName = lens _cigGroupName (\s a -> s {_cigGroupName = a})
 
 instance AWSRequest CreateIPGroup where
-        type Rs CreateIPGroup = CreateIPGroupResponse
-        request = postJSON workSpaces
-        response
-          = receiveJSON
-              (\ s h x ->
-                 CreateIPGroupResponse' <$>
-                   (x .?> "GroupId") <*> (pure (fromEnum s)))
+  type Rs CreateIPGroup = CreateIPGroupResponse
+  request = postJSON workSpaces
+  response =
+    receiveJSON
+      (\s h x ->
+         CreateIPGroupResponse' <$> (x .?> "GroupId") <*> (pure (fromEnum s)))
 
-instance Hashable CreateIPGroup where
+instance Hashable CreateIPGroup
 
-instance NFData CreateIPGroup where
+instance NFData CreateIPGroup
 
 instance ToHeaders CreateIPGroup where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("WorkspacesService.CreateIpGroup" :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =# ("WorkspacesService.CreateIpGroup" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON CreateIPGroup where
-        toJSON CreateIPGroup'{..}
-          = object
-              (catMaybes
-                 [("GroupDesc" .=) <$> _cigGroupDesc,
-                  ("UserRules" .=) <$> _cigUserRules,
-                  Just ("GroupName" .= _cigGroupName)])
+  toJSON CreateIPGroup' {..} =
+    object
+      (catMaybes
+         [ ("GroupDesc" .=) <$> _cigGroupDesc
+         , ("UserRules" .=) <$> _cigUserRules
+         , Just ("GroupName" .= _cigGroupName)
+         ])
 
 instance ToPath CreateIPGroup where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery CreateIPGroup where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'createIPGroupResponse' smart constructor.
-data CreateIPGroupResponse = CreateIPGroupResponse'
-  { _cigrsGroupId        :: !(Maybe Text)
-  , _cigrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateIPGroupResponse =
+  CreateIPGroupResponse'
+    { _cigrsGroupId :: !(Maybe Text)
+    , _cigrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateIPGroupResponse' with the minimum fields required to make a request.
 --
@@ -140,20 +137,20 @@ data CreateIPGroupResponse = CreateIPGroupResponse'
 -- * 'cigrsGroupId' - The ID of the group.
 --
 -- * 'cigrsResponseStatus' - -- | The response status code.
-createIPGroupResponse
-    :: Int -- ^ 'cigrsResponseStatus'
-    -> CreateIPGroupResponse
+createIPGroupResponse ::
+     Int -- ^ 'cigrsResponseStatus'
+  -> CreateIPGroupResponse
 createIPGroupResponse pResponseStatus_ =
   CreateIPGroupResponse'
     {_cigrsGroupId = Nothing, _cigrsResponseStatus = pResponseStatus_}
 
-
 -- | The ID of the group.
 cigrsGroupId :: Lens' CreateIPGroupResponse (Maybe Text)
-cigrsGroupId = lens _cigrsGroupId (\ s a -> s{_cigrsGroupId = a})
+cigrsGroupId = lens _cigrsGroupId (\s a -> s {_cigrsGroupId = a})
 
 -- | -- | The response status code.
 cigrsResponseStatus :: Lens' CreateIPGroupResponse Int
-cigrsResponseStatus = lens _cigrsResponseStatus (\ s a -> s{_cigrsResponseStatus = a})
+cigrsResponseStatus =
+  lens _cigrsResponseStatus (\s a -> s {_cigrsResponseStatus = a})
 
-instance NFData CreateIPGroupResponse where
+instance NFData CreateIPGroupResponse

@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.GameLift
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -230,7 +228,6 @@ import Test.Tasty
 --             createPlayerSession
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseStopMatchmaking $
 --             stopMatchmakingResponse
@@ -435,810 +432,832 @@ import Test.Tasty
 --
 --           ]
 --     ]
-
 -- Requests
-
 requestStopMatchmaking :: StopMatchmaking -> TestTree
-requestStopMatchmaking = req
-    "StopMatchmaking"
-    "fixture/StopMatchmaking.yaml"
+requestStopMatchmaking = req "StopMatchmaking" "fixture/StopMatchmaking.yaml"
 
 requestCreateGameSession :: CreateGameSession -> TestTree
-requestCreateGameSession = req
-    "CreateGameSession"
-    "fixture/CreateGameSession.yaml"
+requestCreateGameSession =
+  req "CreateGameSession" "fixture/CreateGameSession.yaml"
 
 requestDeleteScalingPolicy :: DeleteScalingPolicy -> TestTree
-requestDeleteScalingPolicy = req
-    "DeleteScalingPolicy"
-    "fixture/DeleteScalingPolicy.yaml"
+requestDeleteScalingPolicy =
+  req "DeleteScalingPolicy" "fixture/DeleteScalingPolicy.yaml"
 
 requestPutScalingPolicy :: PutScalingPolicy -> TestTree
-requestPutScalingPolicy = req
-    "PutScalingPolicy"
-    "fixture/PutScalingPolicy.yaml"
+requestPutScalingPolicy = req "PutScalingPolicy" "fixture/PutScalingPolicy.yaml"
 
 requestListBuilds :: ListBuilds -> TestTree
-requestListBuilds = req
-    "ListBuilds"
-    "fixture/ListBuilds.yaml"
+requestListBuilds = req "ListBuilds" "fixture/ListBuilds.yaml"
 
 requestDeleteFleet :: DeleteFleet -> TestTree
-requestDeleteFleet = req
-    "DeleteFleet"
-    "fixture/DeleteFleet.yaml"
+requestDeleteFleet = req "DeleteFleet" "fixture/DeleteFleet.yaml"
 
 requestCreateBuild :: CreateBuild -> TestTree
-requestCreateBuild = req
-    "CreateBuild"
-    "fixture/CreateBuild.yaml"
+requestCreateBuild = req "CreateBuild" "fixture/CreateBuild.yaml"
 
 requestRequestUploadCredentials :: RequestUploadCredentials -> TestTree
-requestRequestUploadCredentials = req
-    "RequestUploadCredentials"
-    "fixture/RequestUploadCredentials.yaml"
+requestRequestUploadCredentials =
+  req "RequestUploadCredentials" "fixture/RequestUploadCredentials.yaml"
 
 requestCreateAlias :: CreateAlias -> TestTree
-requestCreateAlias = req
-    "CreateAlias"
-    "fixture/CreateAlias.yaml"
+requestCreateAlias = req "CreateAlias" "fixture/CreateAlias.yaml"
 
 requestResolveAlias :: ResolveAlias -> TestTree
-requestResolveAlias = req
-    "ResolveAlias"
-    "fixture/ResolveAlias.yaml"
+requestResolveAlias = req "ResolveAlias" "fixture/ResolveAlias.yaml"
 
 requestListAliases :: ListAliases -> TestTree
-requestListAliases = req
-    "ListAliases"
-    "fixture/ListAliases.yaml"
+requestListAliases = req "ListAliases" "fixture/ListAliases.yaml"
 
 requestUpdateRuntimeConfiguration :: UpdateRuntimeConfiguration -> TestTree
-requestUpdateRuntimeConfiguration = req
-    "UpdateRuntimeConfiguration"
-    "fixture/UpdateRuntimeConfiguration.yaml"
+requestUpdateRuntimeConfiguration =
+  req "UpdateRuntimeConfiguration" "fixture/UpdateRuntimeConfiguration.yaml"
 
 requestCreateVPCPeeringConnection :: CreateVPCPeeringConnection -> TestTree
-requestCreateVPCPeeringConnection = req
-    "CreateVPCPeeringConnection"
-    "fixture/CreateVPCPeeringConnection.yaml"
+requestCreateVPCPeeringConnection =
+  req "CreateVPCPeeringConnection" "fixture/CreateVPCPeeringConnection.yaml"
 
 requestCreateGameSessionQueue :: CreateGameSessionQueue -> TestTree
-requestCreateGameSessionQueue = req
-    "CreateGameSessionQueue"
-    "fixture/CreateGameSessionQueue.yaml"
+requestCreateGameSessionQueue =
+  req "CreateGameSessionQueue" "fixture/CreateGameSessionQueue.yaml"
 
 requestSearchGameSessions :: SearchGameSessions -> TestTree
-requestSearchGameSessions = req
-    "SearchGameSessions"
-    "fixture/SearchGameSessions.yaml"
+requestSearchGameSessions =
+  req "SearchGameSessions" "fixture/SearchGameSessions.yaml"
 
-requestCreateVPCPeeringAuthorization :: CreateVPCPeeringAuthorization -> TestTree
-requestCreateVPCPeeringAuthorization = req
+requestCreateVPCPeeringAuthorization ::
+     CreateVPCPeeringAuthorization -> TestTree
+requestCreateVPCPeeringAuthorization =
+  req
     "CreateVPCPeeringAuthorization"
     "fixture/CreateVPCPeeringAuthorization.yaml"
 
 requestUpdateGameSessionQueue :: UpdateGameSessionQueue -> TestTree
-requestUpdateGameSessionQueue = req
-    "UpdateGameSessionQueue"
-    "fixture/UpdateGameSessionQueue.yaml"
+requestUpdateGameSessionQueue =
+  req "UpdateGameSessionQueue" "fixture/UpdateGameSessionQueue.yaml"
 
 requestDeleteGameSessionQueue :: DeleteGameSessionQueue -> TestTree
-requestDeleteGameSessionQueue = req
-    "DeleteGameSessionQueue"
-    "fixture/DeleteGameSessionQueue.yaml"
+requestDeleteGameSessionQueue =
+  req "DeleteGameSessionQueue" "fixture/DeleteGameSessionQueue.yaml"
 
 requestDeleteVPCPeeringConnection :: DeleteVPCPeeringConnection -> TestTree
-requestDeleteVPCPeeringConnection = req
-    "DeleteVPCPeeringConnection"
-    "fixture/DeleteVPCPeeringConnection.yaml"
+requestDeleteVPCPeeringConnection =
+  req "DeleteVPCPeeringConnection" "fixture/DeleteVPCPeeringConnection.yaml"
 
 requestStartFleetActions :: StartFleetActions -> TestTree
-requestStartFleetActions = req
-    "StartFleetActions"
-    "fixture/StartFleetActions.yaml"
+requestStartFleetActions =
+  req "StartFleetActions" "fixture/StartFleetActions.yaml"
 
 requestGetInstanceAccess :: GetInstanceAccess -> TestTree
-requestGetInstanceAccess = req
-    "GetInstanceAccess"
-    "fixture/GetInstanceAccess.yaml"
+requestGetInstanceAccess =
+  req "GetInstanceAccess" "fixture/GetInstanceAccess.yaml"
 
 requestDescribeScalingPolicies :: DescribeScalingPolicies -> TestTree
-requestDescribeScalingPolicies = req
-    "DescribeScalingPolicies"
-    "fixture/DescribeScalingPolicies.yaml"
+requestDescribeScalingPolicies =
+  req "DescribeScalingPolicies" "fixture/DescribeScalingPolicies.yaml"
 
 requestDescribeMatchmakingRuleSets :: DescribeMatchmakingRuleSets -> TestTree
-requestDescribeMatchmakingRuleSets = req
-    "DescribeMatchmakingRuleSets"
-    "fixture/DescribeMatchmakingRuleSets.yaml"
+requestDescribeMatchmakingRuleSets =
+  req "DescribeMatchmakingRuleSets" "fixture/DescribeMatchmakingRuleSets.yaml"
 
 requestDescribeGameSessions :: DescribeGameSessions -> TestTree
-requestDescribeGameSessions = req
-    "DescribeGameSessions"
-    "fixture/DescribeGameSessions.yaml"
+requestDescribeGameSessions =
+  req "DescribeGameSessions" "fixture/DescribeGameSessions.yaml"
 
 requestStartGameSessionPlacement :: StartGameSessionPlacement -> TestTree
-requestStartGameSessionPlacement = req
-    "StartGameSessionPlacement"
-    "fixture/StartGameSessionPlacement.yaml"
+requestStartGameSessionPlacement =
+  req "StartGameSessionPlacement" "fixture/StartGameSessionPlacement.yaml"
 
 requestDescribeFleetUtilization :: DescribeFleetUtilization -> TestTree
-requestDescribeFleetUtilization = req
-    "DescribeFleetUtilization"
-    "fixture/DescribeFleetUtilization.yaml"
+requestDescribeFleetUtilization =
+  req "DescribeFleetUtilization" "fixture/DescribeFleetUtilization.yaml"
 
 requestDescribeRuntimeConfiguration :: DescribeRuntimeConfiguration -> TestTree
-requestDescribeRuntimeConfiguration = req
-    "DescribeRuntimeConfiguration"
-    "fixture/DescribeRuntimeConfiguration.yaml"
+requestDescribeRuntimeConfiguration =
+  req "DescribeRuntimeConfiguration" "fixture/DescribeRuntimeConfiguration.yaml"
 
 requestGetGameSessionLogURL :: GetGameSessionLogURL -> TestTree
-requestGetGameSessionLogURL = req
-    "GetGameSessionLogURL"
-    "fixture/GetGameSessionLogURL.yaml"
+requestGetGameSessionLogURL =
+  req "GetGameSessionLogURL" "fixture/GetGameSessionLogURL.yaml"
 
 requestDescribeFleetAttributes :: DescribeFleetAttributes -> TestTree
-requestDescribeFleetAttributes = req
-    "DescribeFleetAttributes"
-    "fixture/DescribeFleetAttributes.yaml"
+requestDescribeFleetAttributes =
+  req "DescribeFleetAttributes" "fixture/DescribeFleetAttributes.yaml"
 
 requestDescribeGameSessionPlacement :: DescribeGameSessionPlacement -> TestTree
-requestDescribeGameSessionPlacement = req
-    "DescribeGameSessionPlacement"
-    "fixture/DescribeGameSessionPlacement.yaml"
+requestDescribeGameSessionPlacement =
+  req "DescribeGameSessionPlacement" "fixture/DescribeGameSessionPlacement.yaml"
 
 requestDescribeFleetEvents :: DescribeFleetEvents -> TestTree
-requestDescribeFleetEvents = req
-    "DescribeFleetEvents"
-    "fixture/DescribeFleetEvents.yaml"
+requestDescribeFleetEvents =
+  req "DescribeFleetEvents" "fixture/DescribeFleetEvents.yaml"
 
 requestStartMatchmaking :: StartMatchmaking -> TestTree
-requestStartMatchmaking = req
-    "StartMatchmaking"
-    "fixture/StartMatchmaking.yaml"
+requestStartMatchmaking = req "StartMatchmaking" "fixture/StartMatchmaking.yaml"
 
 requestCreateMatchmakingRuleSet :: CreateMatchmakingRuleSet -> TestTree
-requestCreateMatchmakingRuleSet = req
-    "CreateMatchmakingRuleSet"
-    "fixture/CreateMatchmakingRuleSet.yaml"
+requestCreateMatchmakingRuleSet =
+  req "CreateMatchmakingRuleSet" "fixture/CreateMatchmakingRuleSet.yaml"
 
 requestDescribeFleetCapacity :: DescribeFleetCapacity -> TestTree
-requestDescribeFleetCapacity = req
-    "DescribeFleetCapacity"
-    "fixture/DescribeFleetCapacity.yaml"
+requestDescribeFleetCapacity =
+  req "DescribeFleetCapacity" "fixture/DescribeFleetCapacity.yaml"
 
 requestDeleteBuild :: DeleteBuild -> TestTree
-requestDeleteBuild = req
-    "DeleteBuild"
-    "fixture/DeleteBuild.yaml"
+requestDeleteBuild = req "DeleteBuild" "fixture/DeleteBuild.yaml"
 
 requestUpdateBuild :: UpdateBuild -> TestTree
-requestUpdateBuild = req
-    "UpdateBuild"
-    "fixture/UpdateBuild.yaml"
+requestUpdateBuild = req "UpdateBuild" "fixture/UpdateBuild.yaml"
 
 requestListFleets :: ListFleets -> TestTree
-requestListFleets = req
-    "ListFleets"
-    "fixture/ListFleets.yaml"
+requestListFleets = req "ListFleets" "fixture/ListFleets.yaml"
 
 requestDeleteAlias :: DeleteAlias -> TestTree
-requestDeleteAlias = req
-    "DeleteAlias"
-    "fixture/DeleteAlias.yaml"
+requestDeleteAlias = req "DeleteAlias" "fixture/DeleteAlias.yaml"
 
 requestUpdateAlias :: UpdateAlias -> TestTree
-requestUpdateAlias = req
-    "UpdateAlias"
-    "fixture/UpdateAlias.yaml"
+requestUpdateAlias = req "UpdateAlias" "fixture/UpdateAlias.yaml"
 
 requestStartMatchBackfill :: StartMatchBackfill -> TestTree
-requestStartMatchBackfill = req
-    "StartMatchBackfill"
-    "fixture/StartMatchBackfill.yaml"
+requestStartMatchBackfill =
+  req "StartMatchBackfill" "fixture/StartMatchBackfill.yaml"
 
 requestDescribeInstances :: DescribeInstances -> TestTree
-requestDescribeInstances = req
-    "DescribeInstances"
-    "fixture/DescribeInstances.yaml"
+requestDescribeInstances =
+  req "DescribeInstances" "fixture/DescribeInstances.yaml"
 
 requestDescribeGameSessionDetails :: DescribeGameSessionDetails -> TestTree
-requestDescribeGameSessionDetails = req
-    "DescribeGameSessionDetails"
-    "fixture/DescribeGameSessionDetails.yaml"
+requestDescribeGameSessionDetails =
+  req "DescribeGameSessionDetails" "fixture/DescribeGameSessionDetails.yaml"
 
 requestDescribeFleetPortSettings :: DescribeFleetPortSettings -> TestTree
-requestDescribeFleetPortSettings = req
-    "DescribeFleetPortSettings"
-    "fixture/DescribeFleetPortSettings.yaml"
+requestDescribeFleetPortSettings =
+  req "DescribeFleetPortSettings" "fixture/DescribeFleetPortSettings.yaml"
 
 requestDescribeGameSessionQueues :: DescribeGameSessionQueues -> TestTree
-requestDescribeGameSessionQueues = req
-    "DescribeGameSessionQueues"
-    "fixture/DescribeGameSessionQueues.yaml"
+requestDescribeGameSessionQueues =
+  req "DescribeGameSessionQueues" "fixture/DescribeGameSessionQueues.yaml"
 
-requestDescribeVPCPeeringConnections :: DescribeVPCPeeringConnections -> TestTree
-requestDescribeVPCPeeringConnections = req
+requestDescribeVPCPeeringConnections ::
+     DescribeVPCPeeringConnections -> TestTree
+requestDescribeVPCPeeringConnections =
+  req
     "DescribeVPCPeeringConnections"
     "fixture/DescribeVPCPeeringConnections.yaml"
 
 requestCreatePlayerSessions :: CreatePlayerSessions -> TestTree
-requestCreatePlayerSessions = req
-    "CreatePlayerSessions"
-    "fixture/CreatePlayerSessions.yaml"
+requestCreatePlayerSessions =
+  req "CreatePlayerSessions" "fixture/CreatePlayerSessions.yaml"
 
-requestDescribeMatchmakingConfigurations :: DescribeMatchmakingConfigurations -> TestTree
-requestDescribeMatchmakingConfigurations = req
+requestDescribeMatchmakingConfigurations ::
+     DescribeMatchmakingConfigurations -> TestTree
+requestDescribeMatchmakingConfigurations =
+  req
     "DescribeMatchmakingConfigurations"
     "fixture/DescribeMatchmakingConfigurations.yaml"
 
-requestDescribeVPCPeeringAuthorizations :: DescribeVPCPeeringAuthorizations -> TestTree
-requestDescribeVPCPeeringAuthorizations = req
+requestDescribeVPCPeeringAuthorizations ::
+     DescribeVPCPeeringAuthorizations -> TestTree
+requestDescribeVPCPeeringAuthorizations =
+  req
     "DescribeVPCPeeringAuthorizations"
     "fixture/DescribeVPCPeeringAuthorizations.yaml"
 
 requestCreateFleet :: CreateFleet -> TestTree
-requestCreateFleet = req
-    "CreateFleet"
-    "fixture/CreateFleet.yaml"
+requestCreateFleet = req "CreateFleet" "fixture/CreateFleet.yaml"
 
-requestDeleteMatchmakingConfiguration :: DeleteMatchmakingConfiguration -> TestTree
-requestDeleteMatchmakingConfiguration = req
+requestDeleteMatchmakingConfiguration ::
+     DeleteMatchmakingConfiguration -> TestTree
+requestDeleteMatchmakingConfiguration =
+  req
     "DeleteMatchmakingConfiguration"
     "fixture/DeleteMatchmakingConfiguration.yaml"
 
-requestUpdateMatchmakingConfiguration :: UpdateMatchmakingConfiguration -> TestTree
-requestUpdateMatchmakingConfiguration = req
+requestUpdateMatchmakingConfiguration ::
+     UpdateMatchmakingConfiguration -> TestTree
+requestUpdateMatchmakingConfiguration =
+  req
     "UpdateMatchmakingConfiguration"
     "fixture/UpdateMatchmakingConfiguration.yaml"
 
-requestDeleteVPCPeeringAuthorization :: DeleteVPCPeeringAuthorization -> TestTree
-requestDeleteVPCPeeringAuthorization = req
+requestDeleteVPCPeeringAuthorization ::
+     DeleteVPCPeeringAuthorization -> TestTree
+requestDeleteVPCPeeringAuthorization =
+  req
     "DeleteVPCPeeringAuthorization"
     "fixture/DeleteVPCPeeringAuthorization.yaml"
 
 requestUpdateFleetAttributes :: UpdateFleetAttributes -> TestTree
-requestUpdateFleetAttributes = req
-    "UpdateFleetAttributes"
-    "fixture/UpdateFleetAttributes.yaml"
+requestUpdateFleetAttributes =
+  req "UpdateFleetAttributes" "fixture/UpdateFleetAttributes.yaml"
 
-requestCreateMatchmakingConfiguration :: CreateMatchmakingConfiguration -> TestTree
-requestCreateMatchmakingConfiguration = req
+requestCreateMatchmakingConfiguration ::
+     CreateMatchmakingConfiguration -> TestTree
+requestCreateMatchmakingConfiguration =
+  req
     "CreateMatchmakingConfiguration"
     "fixture/CreateMatchmakingConfiguration.yaml"
 
 requestDescribePlayerSessions :: DescribePlayerSessions -> TestTree
-requestDescribePlayerSessions = req
-    "DescribePlayerSessions"
-    "fixture/DescribePlayerSessions.yaml"
+requestDescribePlayerSessions =
+  req "DescribePlayerSessions" "fixture/DescribePlayerSessions.yaml"
 
 requestStopFleetActions :: StopFleetActions -> TestTree
-requestStopFleetActions = req
-    "StopFleetActions"
-    "fixture/StopFleetActions.yaml"
+requestStopFleetActions = req "StopFleetActions" "fixture/StopFleetActions.yaml"
 
 requestDescribeBuild :: DescribeBuild -> TestTree
-requestDescribeBuild = req
-    "DescribeBuild"
-    "fixture/DescribeBuild.yaml"
+requestDescribeBuild = req "DescribeBuild" "fixture/DescribeBuild.yaml"
 
 requestUpdateFleetPortSettings :: UpdateFleetPortSettings -> TestTree
-requestUpdateFleetPortSettings = req
-    "UpdateFleetPortSettings"
-    "fixture/UpdateFleetPortSettings.yaml"
+requestUpdateFleetPortSettings =
+  req "UpdateFleetPortSettings" "fixture/UpdateFleetPortSettings.yaml"
 
 requestUpdateFleetCapacity :: UpdateFleetCapacity -> TestTree
-requestUpdateFleetCapacity = req
-    "UpdateFleetCapacity"
-    "fixture/UpdateFleetCapacity.yaml"
+requestUpdateFleetCapacity =
+  req "UpdateFleetCapacity" "fixture/UpdateFleetCapacity.yaml"
 
 requestAcceptMatch :: AcceptMatch -> TestTree
-requestAcceptMatch = req
-    "AcceptMatch"
-    "fixture/AcceptMatch.yaml"
+requestAcceptMatch = req "AcceptMatch" "fixture/AcceptMatch.yaml"
 
 requestDescribeAlias :: DescribeAlias -> TestTree
-requestDescribeAlias = req
-    "DescribeAlias"
-    "fixture/DescribeAlias.yaml"
+requestDescribeAlias = req "DescribeAlias" "fixture/DescribeAlias.yaml"
 
 requestValidateMatchmakingRuleSet :: ValidateMatchmakingRuleSet -> TestTree
-requestValidateMatchmakingRuleSet = req
-    "ValidateMatchmakingRuleSet"
-    "fixture/ValidateMatchmakingRuleSet.yaml"
+requestValidateMatchmakingRuleSet =
+  req "ValidateMatchmakingRuleSet" "fixture/ValidateMatchmakingRuleSet.yaml"
 
 requestDescribeEC2InstanceLimits :: DescribeEC2InstanceLimits -> TestTree
-requestDescribeEC2InstanceLimits = req
-    "DescribeEC2InstanceLimits"
-    "fixture/DescribeEC2InstanceLimits.yaml"
+requestDescribeEC2InstanceLimits =
+  req "DescribeEC2InstanceLimits" "fixture/DescribeEC2InstanceLimits.yaml"
 
 requestStopGameSessionPlacement :: StopGameSessionPlacement -> TestTree
-requestStopGameSessionPlacement = req
-    "StopGameSessionPlacement"
-    "fixture/StopGameSessionPlacement.yaml"
+requestStopGameSessionPlacement =
+  req "StopGameSessionPlacement" "fixture/StopGameSessionPlacement.yaml"
 
 requestUpdateGameSession :: UpdateGameSession -> TestTree
-requestUpdateGameSession = req
-    "UpdateGameSession"
-    "fixture/UpdateGameSession.yaml"
+requestUpdateGameSession =
+  req "UpdateGameSession" "fixture/UpdateGameSession.yaml"
 
 requestDescribeMatchmaking :: DescribeMatchmaking -> TestTree
-requestDescribeMatchmaking = req
-    "DescribeMatchmaking"
-    "fixture/DescribeMatchmaking.yaml"
+requestDescribeMatchmaking =
+  req "DescribeMatchmaking" "fixture/DescribeMatchmaking.yaml"
 
 requestCreatePlayerSession :: CreatePlayerSession -> TestTree
-requestCreatePlayerSession = req
-    "CreatePlayerSession"
-    "fixture/CreatePlayerSession.yaml"
+requestCreatePlayerSession =
+  req "CreatePlayerSession" "fixture/CreatePlayerSession.yaml"
 
 -- Responses
-
 responseStopMatchmaking :: StopMatchmakingResponse -> TestTree
-responseStopMatchmaking = res
+responseStopMatchmaking =
+  res
     "StopMatchmakingResponse"
     "fixture/StopMatchmakingResponse.proto"
     gameLift
     (Proxy :: Proxy StopMatchmaking)
 
 responseCreateGameSession :: CreateGameSessionResponse -> TestTree
-responseCreateGameSession = res
+responseCreateGameSession =
+  res
     "CreateGameSessionResponse"
     "fixture/CreateGameSessionResponse.proto"
     gameLift
     (Proxy :: Proxy CreateGameSession)
 
 responseDeleteScalingPolicy :: DeleteScalingPolicyResponse -> TestTree
-responseDeleteScalingPolicy = res
+responseDeleteScalingPolicy =
+  res
     "DeleteScalingPolicyResponse"
     "fixture/DeleteScalingPolicyResponse.proto"
     gameLift
     (Proxy :: Proxy DeleteScalingPolicy)
 
 responsePutScalingPolicy :: PutScalingPolicyResponse -> TestTree
-responsePutScalingPolicy = res
+responsePutScalingPolicy =
+  res
     "PutScalingPolicyResponse"
     "fixture/PutScalingPolicyResponse.proto"
     gameLift
     (Proxy :: Proxy PutScalingPolicy)
 
 responseListBuilds :: ListBuildsResponse -> TestTree
-responseListBuilds = res
+responseListBuilds =
+  res
     "ListBuildsResponse"
     "fixture/ListBuildsResponse.proto"
     gameLift
     (Proxy :: Proxy ListBuilds)
 
 responseDeleteFleet :: DeleteFleetResponse -> TestTree
-responseDeleteFleet = res
+responseDeleteFleet =
+  res
     "DeleteFleetResponse"
     "fixture/DeleteFleetResponse.proto"
     gameLift
     (Proxy :: Proxy DeleteFleet)
 
 responseCreateBuild :: CreateBuildResponse -> TestTree
-responseCreateBuild = res
+responseCreateBuild =
+  res
     "CreateBuildResponse"
     "fixture/CreateBuildResponse.proto"
     gameLift
     (Proxy :: Proxy CreateBuild)
 
 responseRequestUploadCredentials :: RequestUploadCredentialsResponse -> TestTree
-responseRequestUploadCredentials = res
+responseRequestUploadCredentials =
+  res
     "RequestUploadCredentialsResponse"
     "fixture/RequestUploadCredentialsResponse.proto"
     gameLift
     (Proxy :: Proxy RequestUploadCredentials)
 
 responseCreateAlias :: CreateAliasResponse -> TestTree
-responseCreateAlias = res
+responseCreateAlias =
+  res
     "CreateAliasResponse"
     "fixture/CreateAliasResponse.proto"
     gameLift
     (Proxy :: Proxy CreateAlias)
 
 responseResolveAlias :: ResolveAliasResponse -> TestTree
-responseResolveAlias = res
+responseResolveAlias =
+  res
     "ResolveAliasResponse"
     "fixture/ResolveAliasResponse.proto"
     gameLift
     (Proxy :: Proxy ResolveAlias)
 
 responseListAliases :: ListAliasesResponse -> TestTree
-responseListAliases = res
+responseListAliases =
+  res
     "ListAliasesResponse"
     "fixture/ListAliasesResponse.proto"
     gameLift
     (Proxy :: Proxy ListAliases)
 
-responseUpdateRuntimeConfiguration :: UpdateRuntimeConfigurationResponse -> TestTree
-responseUpdateRuntimeConfiguration = res
+responseUpdateRuntimeConfiguration ::
+     UpdateRuntimeConfigurationResponse -> TestTree
+responseUpdateRuntimeConfiguration =
+  res
     "UpdateRuntimeConfigurationResponse"
     "fixture/UpdateRuntimeConfigurationResponse.proto"
     gameLift
     (Proxy :: Proxy UpdateRuntimeConfiguration)
 
-responseCreateVPCPeeringConnection :: CreateVPCPeeringConnectionResponse -> TestTree
-responseCreateVPCPeeringConnection = res
+responseCreateVPCPeeringConnection ::
+     CreateVPCPeeringConnectionResponse -> TestTree
+responseCreateVPCPeeringConnection =
+  res
     "CreateVPCPeeringConnectionResponse"
     "fixture/CreateVPCPeeringConnectionResponse.proto"
     gameLift
     (Proxy :: Proxy CreateVPCPeeringConnection)
 
 responseCreateGameSessionQueue :: CreateGameSessionQueueResponse -> TestTree
-responseCreateGameSessionQueue = res
+responseCreateGameSessionQueue =
+  res
     "CreateGameSessionQueueResponse"
     "fixture/CreateGameSessionQueueResponse.proto"
     gameLift
     (Proxy :: Proxy CreateGameSessionQueue)
 
 responseSearchGameSessions :: SearchGameSessionsResponse -> TestTree
-responseSearchGameSessions = res
+responseSearchGameSessions =
+  res
     "SearchGameSessionsResponse"
     "fixture/SearchGameSessionsResponse.proto"
     gameLift
     (Proxy :: Proxy SearchGameSessions)
 
-responseCreateVPCPeeringAuthorization :: CreateVPCPeeringAuthorizationResponse -> TestTree
-responseCreateVPCPeeringAuthorization = res
+responseCreateVPCPeeringAuthorization ::
+     CreateVPCPeeringAuthorizationResponse -> TestTree
+responseCreateVPCPeeringAuthorization =
+  res
     "CreateVPCPeeringAuthorizationResponse"
     "fixture/CreateVPCPeeringAuthorizationResponse.proto"
     gameLift
     (Proxy :: Proxy CreateVPCPeeringAuthorization)
 
 responseUpdateGameSessionQueue :: UpdateGameSessionQueueResponse -> TestTree
-responseUpdateGameSessionQueue = res
+responseUpdateGameSessionQueue =
+  res
     "UpdateGameSessionQueueResponse"
     "fixture/UpdateGameSessionQueueResponse.proto"
     gameLift
     (Proxy :: Proxy UpdateGameSessionQueue)
 
 responseDeleteGameSessionQueue :: DeleteGameSessionQueueResponse -> TestTree
-responseDeleteGameSessionQueue = res
+responseDeleteGameSessionQueue =
+  res
     "DeleteGameSessionQueueResponse"
     "fixture/DeleteGameSessionQueueResponse.proto"
     gameLift
     (Proxy :: Proxy DeleteGameSessionQueue)
 
-responseDeleteVPCPeeringConnection :: DeleteVPCPeeringConnectionResponse -> TestTree
-responseDeleteVPCPeeringConnection = res
+responseDeleteVPCPeeringConnection ::
+     DeleteVPCPeeringConnectionResponse -> TestTree
+responseDeleteVPCPeeringConnection =
+  res
     "DeleteVPCPeeringConnectionResponse"
     "fixture/DeleteVPCPeeringConnectionResponse.proto"
     gameLift
     (Proxy :: Proxy DeleteVPCPeeringConnection)
 
 responseStartFleetActions :: StartFleetActionsResponse -> TestTree
-responseStartFleetActions = res
+responseStartFleetActions =
+  res
     "StartFleetActionsResponse"
     "fixture/StartFleetActionsResponse.proto"
     gameLift
     (Proxy :: Proxy StartFleetActions)
 
 responseGetInstanceAccess :: GetInstanceAccessResponse -> TestTree
-responseGetInstanceAccess = res
+responseGetInstanceAccess =
+  res
     "GetInstanceAccessResponse"
     "fixture/GetInstanceAccessResponse.proto"
     gameLift
     (Proxy :: Proxy GetInstanceAccess)
 
 responseDescribeScalingPolicies :: DescribeScalingPoliciesResponse -> TestTree
-responseDescribeScalingPolicies = res
+responseDescribeScalingPolicies =
+  res
     "DescribeScalingPoliciesResponse"
     "fixture/DescribeScalingPoliciesResponse.proto"
     gameLift
     (Proxy :: Proxy DescribeScalingPolicies)
 
-responseDescribeMatchmakingRuleSets :: DescribeMatchmakingRuleSetsResponse -> TestTree
-responseDescribeMatchmakingRuleSets = res
+responseDescribeMatchmakingRuleSets ::
+     DescribeMatchmakingRuleSetsResponse -> TestTree
+responseDescribeMatchmakingRuleSets =
+  res
     "DescribeMatchmakingRuleSetsResponse"
     "fixture/DescribeMatchmakingRuleSetsResponse.proto"
     gameLift
     (Proxy :: Proxy DescribeMatchmakingRuleSets)
 
 responseDescribeGameSessions :: DescribeGameSessionsResponse -> TestTree
-responseDescribeGameSessions = res
+responseDescribeGameSessions =
+  res
     "DescribeGameSessionsResponse"
     "fixture/DescribeGameSessionsResponse.proto"
     gameLift
     (Proxy :: Proxy DescribeGameSessions)
 
-responseStartGameSessionPlacement :: StartGameSessionPlacementResponse -> TestTree
-responseStartGameSessionPlacement = res
+responseStartGameSessionPlacement ::
+     StartGameSessionPlacementResponse -> TestTree
+responseStartGameSessionPlacement =
+  res
     "StartGameSessionPlacementResponse"
     "fixture/StartGameSessionPlacementResponse.proto"
     gameLift
     (Proxy :: Proxy StartGameSessionPlacement)
 
 responseDescribeFleetUtilization :: DescribeFleetUtilizationResponse -> TestTree
-responseDescribeFleetUtilization = res
+responseDescribeFleetUtilization =
+  res
     "DescribeFleetUtilizationResponse"
     "fixture/DescribeFleetUtilizationResponse.proto"
     gameLift
     (Proxy :: Proxy DescribeFleetUtilization)
 
-responseDescribeRuntimeConfiguration :: DescribeRuntimeConfigurationResponse -> TestTree
-responseDescribeRuntimeConfiguration = res
+responseDescribeRuntimeConfiguration ::
+     DescribeRuntimeConfigurationResponse -> TestTree
+responseDescribeRuntimeConfiguration =
+  res
     "DescribeRuntimeConfigurationResponse"
     "fixture/DescribeRuntimeConfigurationResponse.proto"
     gameLift
     (Proxy :: Proxy DescribeRuntimeConfiguration)
 
 responseGetGameSessionLogURL :: GetGameSessionLogURLResponse -> TestTree
-responseGetGameSessionLogURL = res
+responseGetGameSessionLogURL =
+  res
     "GetGameSessionLogURLResponse"
     "fixture/GetGameSessionLogURLResponse.proto"
     gameLift
     (Proxy :: Proxy GetGameSessionLogURL)
 
 responseDescribeFleetAttributes :: DescribeFleetAttributesResponse -> TestTree
-responseDescribeFleetAttributes = res
+responseDescribeFleetAttributes =
+  res
     "DescribeFleetAttributesResponse"
     "fixture/DescribeFleetAttributesResponse.proto"
     gameLift
     (Proxy :: Proxy DescribeFleetAttributes)
 
-responseDescribeGameSessionPlacement :: DescribeGameSessionPlacementResponse -> TestTree
-responseDescribeGameSessionPlacement = res
+responseDescribeGameSessionPlacement ::
+     DescribeGameSessionPlacementResponse -> TestTree
+responseDescribeGameSessionPlacement =
+  res
     "DescribeGameSessionPlacementResponse"
     "fixture/DescribeGameSessionPlacementResponse.proto"
     gameLift
     (Proxy :: Proxy DescribeGameSessionPlacement)
 
 responseDescribeFleetEvents :: DescribeFleetEventsResponse -> TestTree
-responseDescribeFleetEvents = res
+responseDescribeFleetEvents =
+  res
     "DescribeFleetEventsResponse"
     "fixture/DescribeFleetEventsResponse.proto"
     gameLift
     (Proxy :: Proxy DescribeFleetEvents)
 
 responseStartMatchmaking :: StartMatchmakingResponse -> TestTree
-responseStartMatchmaking = res
+responseStartMatchmaking =
+  res
     "StartMatchmakingResponse"
     "fixture/StartMatchmakingResponse.proto"
     gameLift
     (Proxy :: Proxy StartMatchmaking)
 
 responseCreateMatchmakingRuleSet :: CreateMatchmakingRuleSetResponse -> TestTree
-responseCreateMatchmakingRuleSet = res
+responseCreateMatchmakingRuleSet =
+  res
     "CreateMatchmakingRuleSetResponse"
     "fixture/CreateMatchmakingRuleSetResponse.proto"
     gameLift
     (Proxy :: Proxy CreateMatchmakingRuleSet)
 
 responseDescribeFleetCapacity :: DescribeFleetCapacityResponse -> TestTree
-responseDescribeFleetCapacity = res
+responseDescribeFleetCapacity =
+  res
     "DescribeFleetCapacityResponse"
     "fixture/DescribeFleetCapacityResponse.proto"
     gameLift
     (Proxy :: Proxy DescribeFleetCapacity)
 
 responseDeleteBuild :: DeleteBuildResponse -> TestTree
-responseDeleteBuild = res
+responseDeleteBuild =
+  res
     "DeleteBuildResponse"
     "fixture/DeleteBuildResponse.proto"
     gameLift
     (Proxy :: Proxy DeleteBuild)
 
 responseUpdateBuild :: UpdateBuildResponse -> TestTree
-responseUpdateBuild = res
+responseUpdateBuild =
+  res
     "UpdateBuildResponse"
     "fixture/UpdateBuildResponse.proto"
     gameLift
     (Proxy :: Proxy UpdateBuild)
 
 responseListFleets :: ListFleetsResponse -> TestTree
-responseListFleets = res
+responseListFleets =
+  res
     "ListFleetsResponse"
     "fixture/ListFleetsResponse.proto"
     gameLift
     (Proxy :: Proxy ListFleets)
 
 responseDeleteAlias :: DeleteAliasResponse -> TestTree
-responseDeleteAlias = res
+responseDeleteAlias =
+  res
     "DeleteAliasResponse"
     "fixture/DeleteAliasResponse.proto"
     gameLift
     (Proxy :: Proxy DeleteAlias)
 
 responseUpdateAlias :: UpdateAliasResponse -> TestTree
-responseUpdateAlias = res
+responseUpdateAlias =
+  res
     "UpdateAliasResponse"
     "fixture/UpdateAliasResponse.proto"
     gameLift
     (Proxy :: Proxy UpdateAlias)
 
 responseStartMatchBackfill :: StartMatchBackfillResponse -> TestTree
-responseStartMatchBackfill = res
+responseStartMatchBackfill =
+  res
     "StartMatchBackfillResponse"
     "fixture/StartMatchBackfillResponse.proto"
     gameLift
     (Proxy :: Proxy StartMatchBackfill)
 
 responseDescribeInstances :: DescribeInstancesResponse -> TestTree
-responseDescribeInstances = res
+responseDescribeInstances =
+  res
     "DescribeInstancesResponse"
     "fixture/DescribeInstancesResponse.proto"
     gameLift
     (Proxy :: Proxy DescribeInstances)
 
-responseDescribeGameSessionDetails :: DescribeGameSessionDetailsResponse -> TestTree
-responseDescribeGameSessionDetails = res
+responseDescribeGameSessionDetails ::
+     DescribeGameSessionDetailsResponse -> TestTree
+responseDescribeGameSessionDetails =
+  res
     "DescribeGameSessionDetailsResponse"
     "fixture/DescribeGameSessionDetailsResponse.proto"
     gameLift
     (Proxy :: Proxy DescribeGameSessionDetails)
 
-responseDescribeFleetPortSettings :: DescribeFleetPortSettingsResponse -> TestTree
-responseDescribeFleetPortSettings = res
+responseDescribeFleetPortSettings ::
+     DescribeFleetPortSettingsResponse -> TestTree
+responseDescribeFleetPortSettings =
+  res
     "DescribeFleetPortSettingsResponse"
     "fixture/DescribeFleetPortSettingsResponse.proto"
     gameLift
     (Proxy :: Proxy DescribeFleetPortSettings)
 
-responseDescribeGameSessionQueues :: DescribeGameSessionQueuesResponse -> TestTree
-responseDescribeGameSessionQueues = res
+responseDescribeGameSessionQueues ::
+     DescribeGameSessionQueuesResponse -> TestTree
+responseDescribeGameSessionQueues =
+  res
     "DescribeGameSessionQueuesResponse"
     "fixture/DescribeGameSessionQueuesResponse.proto"
     gameLift
     (Proxy :: Proxy DescribeGameSessionQueues)
 
-responseDescribeVPCPeeringConnections :: DescribeVPCPeeringConnectionsResponse -> TestTree
-responseDescribeVPCPeeringConnections = res
+responseDescribeVPCPeeringConnections ::
+     DescribeVPCPeeringConnectionsResponse -> TestTree
+responseDescribeVPCPeeringConnections =
+  res
     "DescribeVPCPeeringConnectionsResponse"
     "fixture/DescribeVPCPeeringConnectionsResponse.proto"
     gameLift
     (Proxy :: Proxy DescribeVPCPeeringConnections)
 
 responseCreatePlayerSessions :: CreatePlayerSessionsResponse -> TestTree
-responseCreatePlayerSessions = res
+responseCreatePlayerSessions =
+  res
     "CreatePlayerSessionsResponse"
     "fixture/CreatePlayerSessionsResponse.proto"
     gameLift
     (Proxy :: Proxy CreatePlayerSessions)
 
-responseDescribeMatchmakingConfigurations :: DescribeMatchmakingConfigurationsResponse -> TestTree
-responseDescribeMatchmakingConfigurations = res
+responseDescribeMatchmakingConfigurations ::
+     DescribeMatchmakingConfigurationsResponse -> TestTree
+responseDescribeMatchmakingConfigurations =
+  res
     "DescribeMatchmakingConfigurationsResponse"
     "fixture/DescribeMatchmakingConfigurationsResponse.proto"
     gameLift
     (Proxy :: Proxy DescribeMatchmakingConfigurations)
 
-responseDescribeVPCPeeringAuthorizations :: DescribeVPCPeeringAuthorizationsResponse -> TestTree
-responseDescribeVPCPeeringAuthorizations = res
+responseDescribeVPCPeeringAuthorizations ::
+     DescribeVPCPeeringAuthorizationsResponse -> TestTree
+responseDescribeVPCPeeringAuthorizations =
+  res
     "DescribeVPCPeeringAuthorizationsResponse"
     "fixture/DescribeVPCPeeringAuthorizationsResponse.proto"
     gameLift
     (Proxy :: Proxy DescribeVPCPeeringAuthorizations)
 
 responseCreateFleet :: CreateFleetResponse -> TestTree
-responseCreateFleet = res
+responseCreateFleet =
+  res
     "CreateFleetResponse"
     "fixture/CreateFleetResponse.proto"
     gameLift
     (Proxy :: Proxy CreateFleet)
 
-responseDeleteMatchmakingConfiguration :: DeleteMatchmakingConfigurationResponse -> TestTree
-responseDeleteMatchmakingConfiguration = res
+responseDeleteMatchmakingConfiguration ::
+     DeleteMatchmakingConfigurationResponse -> TestTree
+responseDeleteMatchmakingConfiguration =
+  res
     "DeleteMatchmakingConfigurationResponse"
     "fixture/DeleteMatchmakingConfigurationResponse.proto"
     gameLift
     (Proxy :: Proxy DeleteMatchmakingConfiguration)
 
-responseUpdateMatchmakingConfiguration :: UpdateMatchmakingConfigurationResponse -> TestTree
-responseUpdateMatchmakingConfiguration = res
+responseUpdateMatchmakingConfiguration ::
+     UpdateMatchmakingConfigurationResponse -> TestTree
+responseUpdateMatchmakingConfiguration =
+  res
     "UpdateMatchmakingConfigurationResponse"
     "fixture/UpdateMatchmakingConfigurationResponse.proto"
     gameLift
     (Proxy :: Proxy UpdateMatchmakingConfiguration)
 
-responseDeleteVPCPeeringAuthorization :: DeleteVPCPeeringAuthorizationResponse -> TestTree
-responseDeleteVPCPeeringAuthorization = res
+responseDeleteVPCPeeringAuthorization ::
+     DeleteVPCPeeringAuthorizationResponse -> TestTree
+responseDeleteVPCPeeringAuthorization =
+  res
     "DeleteVPCPeeringAuthorizationResponse"
     "fixture/DeleteVPCPeeringAuthorizationResponse.proto"
     gameLift
     (Proxy :: Proxy DeleteVPCPeeringAuthorization)
 
 responseUpdateFleetAttributes :: UpdateFleetAttributesResponse -> TestTree
-responseUpdateFleetAttributes = res
+responseUpdateFleetAttributes =
+  res
     "UpdateFleetAttributesResponse"
     "fixture/UpdateFleetAttributesResponse.proto"
     gameLift
     (Proxy :: Proxy UpdateFleetAttributes)
 
-responseCreateMatchmakingConfiguration :: CreateMatchmakingConfigurationResponse -> TestTree
-responseCreateMatchmakingConfiguration = res
+responseCreateMatchmakingConfiguration ::
+     CreateMatchmakingConfigurationResponse -> TestTree
+responseCreateMatchmakingConfiguration =
+  res
     "CreateMatchmakingConfigurationResponse"
     "fixture/CreateMatchmakingConfigurationResponse.proto"
     gameLift
     (Proxy :: Proxy CreateMatchmakingConfiguration)
 
 responseDescribePlayerSessions :: DescribePlayerSessionsResponse -> TestTree
-responseDescribePlayerSessions = res
+responseDescribePlayerSessions =
+  res
     "DescribePlayerSessionsResponse"
     "fixture/DescribePlayerSessionsResponse.proto"
     gameLift
     (Proxy :: Proxy DescribePlayerSessions)
 
 responseStopFleetActions :: StopFleetActionsResponse -> TestTree
-responseStopFleetActions = res
+responseStopFleetActions =
+  res
     "StopFleetActionsResponse"
     "fixture/StopFleetActionsResponse.proto"
     gameLift
     (Proxy :: Proxy StopFleetActions)
 
 responseDescribeBuild :: DescribeBuildResponse -> TestTree
-responseDescribeBuild = res
+responseDescribeBuild =
+  res
     "DescribeBuildResponse"
     "fixture/DescribeBuildResponse.proto"
     gameLift
     (Proxy :: Proxy DescribeBuild)
 
 responseUpdateFleetPortSettings :: UpdateFleetPortSettingsResponse -> TestTree
-responseUpdateFleetPortSettings = res
+responseUpdateFleetPortSettings =
+  res
     "UpdateFleetPortSettingsResponse"
     "fixture/UpdateFleetPortSettingsResponse.proto"
     gameLift
     (Proxy :: Proxy UpdateFleetPortSettings)
 
 responseUpdateFleetCapacity :: UpdateFleetCapacityResponse -> TestTree
-responseUpdateFleetCapacity = res
+responseUpdateFleetCapacity =
+  res
     "UpdateFleetCapacityResponse"
     "fixture/UpdateFleetCapacityResponse.proto"
     gameLift
     (Proxy :: Proxy UpdateFleetCapacity)
 
 responseAcceptMatch :: AcceptMatchResponse -> TestTree
-responseAcceptMatch = res
+responseAcceptMatch =
+  res
     "AcceptMatchResponse"
     "fixture/AcceptMatchResponse.proto"
     gameLift
     (Proxy :: Proxy AcceptMatch)
 
 responseDescribeAlias :: DescribeAliasResponse -> TestTree
-responseDescribeAlias = res
+responseDescribeAlias =
+  res
     "DescribeAliasResponse"
     "fixture/DescribeAliasResponse.proto"
     gameLift
     (Proxy :: Proxy DescribeAlias)
 
-responseValidateMatchmakingRuleSet :: ValidateMatchmakingRuleSetResponse -> TestTree
-responseValidateMatchmakingRuleSet = res
+responseValidateMatchmakingRuleSet ::
+     ValidateMatchmakingRuleSetResponse -> TestTree
+responseValidateMatchmakingRuleSet =
+  res
     "ValidateMatchmakingRuleSetResponse"
     "fixture/ValidateMatchmakingRuleSetResponse.proto"
     gameLift
     (Proxy :: Proxy ValidateMatchmakingRuleSet)
 
-responseDescribeEC2InstanceLimits :: DescribeEC2InstanceLimitsResponse -> TestTree
-responseDescribeEC2InstanceLimits = res
+responseDescribeEC2InstanceLimits ::
+     DescribeEC2InstanceLimitsResponse -> TestTree
+responseDescribeEC2InstanceLimits =
+  res
     "DescribeEC2InstanceLimitsResponse"
     "fixture/DescribeEC2InstanceLimitsResponse.proto"
     gameLift
     (Proxy :: Proxy DescribeEC2InstanceLimits)
 
 responseStopGameSessionPlacement :: StopGameSessionPlacementResponse -> TestTree
-responseStopGameSessionPlacement = res
+responseStopGameSessionPlacement =
+  res
     "StopGameSessionPlacementResponse"
     "fixture/StopGameSessionPlacementResponse.proto"
     gameLift
     (Proxy :: Proxy StopGameSessionPlacement)
 
 responseUpdateGameSession :: UpdateGameSessionResponse -> TestTree
-responseUpdateGameSession = res
+responseUpdateGameSession =
+  res
     "UpdateGameSessionResponse"
     "fixture/UpdateGameSessionResponse.proto"
     gameLift
     (Proxy :: Proxy UpdateGameSession)
 
 responseDescribeMatchmaking :: DescribeMatchmakingResponse -> TestTree
-responseDescribeMatchmaking = res
+responseDescribeMatchmaking =
+  res
     "DescribeMatchmakingResponse"
     "fixture/DescribeMatchmakingResponse.proto"
     gameLift
     (Proxy :: Proxy DescribeMatchmaking)
 
 responseCreatePlayerSession :: CreatePlayerSessionResponse -> TestTree
-responseCreatePlayerSession = res
+responseCreatePlayerSession =
+  res
     "CreatePlayerSessionResponse"
     "fixture/CreatePlayerSessionResponse.proto"
     gameLift

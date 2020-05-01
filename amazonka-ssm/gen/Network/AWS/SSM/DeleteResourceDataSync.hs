@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.SSM.DeleteResourceDataSync
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,19 +20,17 @@
 --
 --
 module Network.AWS.SSM.DeleteResourceDataSync
-    (
     -- * Creating a Request
-      deleteResourceDataSync
-    , DeleteResourceDataSync
+  ( deleteResourceDataSync
+  , DeleteResourceDataSync
     -- * Request Lenses
-    , drdsSyncName
-
+  , drdsSyncName
     -- * Destructuring the Response
-    , deleteResourceDataSyncResponse
-    , DeleteResourceDataSyncResponse
+  , deleteResourceDataSyncResponse
+  , DeleteResourceDataSyncResponse
     -- * Response Lenses
-    , drdsrsResponseStatus
-    ) where
+  , drdsrsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -44,81 +40,77 @@ import Network.AWS.SSM.Types
 import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'deleteResourceDataSync' smart constructor.
-newtype DeleteResourceDataSync = DeleteResourceDataSync'
-  { _drdsSyncName :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteResourceDataSync =
+  DeleteResourceDataSync'
+    { _drdsSyncName :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteResourceDataSync' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'drdsSyncName' - The name of the configuration to delete.
-deleteResourceDataSync
-    :: Text -- ^ 'drdsSyncName'
-    -> DeleteResourceDataSync
+deleteResourceDataSync ::
+     Text -- ^ 'drdsSyncName'
+  -> DeleteResourceDataSync
 deleteResourceDataSync pSyncName_ =
   DeleteResourceDataSync' {_drdsSyncName = pSyncName_}
 
-
 -- | The name of the configuration to delete.
 drdsSyncName :: Lens' DeleteResourceDataSync Text
-drdsSyncName = lens _drdsSyncName (\ s a -> s{_drdsSyncName = a})
+drdsSyncName = lens _drdsSyncName (\s a -> s {_drdsSyncName = a})
 
 instance AWSRequest DeleteResourceDataSync where
-        type Rs DeleteResourceDataSync =
-             DeleteResourceDataSyncResponse
-        request = postJSON ssm
-        response
-          = receiveEmpty
-              (\ s h x ->
-                 DeleteResourceDataSyncResponse' <$>
-                   (pure (fromEnum s)))
+  type Rs DeleteResourceDataSync = DeleteResourceDataSyncResponse
+  request = postJSON ssm
+  response =
+    receiveEmpty
+      (\s h x -> DeleteResourceDataSyncResponse' <$> (pure (fromEnum s)))
 
-instance Hashable DeleteResourceDataSync where
+instance Hashable DeleteResourceDataSync
 
-instance NFData DeleteResourceDataSync where
+instance NFData DeleteResourceDataSync
 
 instance ToHeaders DeleteResourceDataSync where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("AmazonSSM.DeleteResourceDataSync" :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =# ("AmazonSSM.DeleteResourceDataSync" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON DeleteResourceDataSync where
-        toJSON DeleteResourceDataSync'{..}
-          = object
-              (catMaybes [Just ("SyncName" .= _drdsSyncName)])
+  toJSON DeleteResourceDataSync' {..} =
+    object (catMaybes [Just ("SyncName" .= _drdsSyncName)])
 
 instance ToPath DeleteResourceDataSync where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery DeleteResourceDataSync where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'deleteResourceDataSyncResponse' smart constructor.
-newtype DeleteResourceDataSyncResponse = DeleteResourceDataSyncResponse'
-  { _drdsrsResponseStatus :: Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteResourceDataSyncResponse =
+  DeleteResourceDataSyncResponse'
+    { _drdsrsResponseStatus :: Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteResourceDataSyncResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'drdsrsResponseStatus' - -- | The response status code.
-deleteResourceDataSyncResponse
-    :: Int -- ^ 'drdsrsResponseStatus'
-    -> DeleteResourceDataSyncResponse
+deleteResourceDataSyncResponse ::
+     Int -- ^ 'drdsrsResponseStatus'
+  -> DeleteResourceDataSyncResponse
 deleteResourceDataSyncResponse pResponseStatus_ =
   DeleteResourceDataSyncResponse' {_drdsrsResponseStatus = pResponseStatus_}
 
-
 -- | -- | The response status code.
 drdsrsResponseStatus :: Lens' DeleteResourceDataSyncResponse Int
-drdsrsResponseStatus = lens _drdsrsResponseStatus (\ s a -> s{_drdsrsResponseStatus = a})
+drdsrsResponseStatus =
+  lens _drdsrsResponseStatus (\s a -> s {_drdsrsResponseStatus = a})
 
-instance NFData DeleteResourceDataSyncResponse where
+instance NFData DeleteResourceDataSyncResponse

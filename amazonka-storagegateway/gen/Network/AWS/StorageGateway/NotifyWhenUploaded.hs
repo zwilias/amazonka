@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.StorageGateway.NotifyWhenUploaded
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,21 +24,19 @@
 -- For more information, see Getting File Upload Notification in the Storage Gateway User Guide (https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-upload-notification).
 --
 module Network.AWS.StorageGateway.NotifyWhenUploaded
-    (
     -- * Creating a Request
-      notifyWhenUploaded
-    , NotifyWhenUploaded
+  ( notifyWhenUploaded
+  , NotifyWhenUploaded
     -- * Request Lenses
-    , nwuFileShareARN
-
+  , nwuFileShareARN
     -- * Destructuring the Response
-    , notifyWhenUploadedResponse
-    , NotifyWhenUploadedResponse
+  , notifyWhenUploadedResponse
+  , NotifyWhenUploadedResponse
     -- * Response Lenses
-    , nwursFileShareARN
-    , nwursNotificationId
-    , nwursResponseStatus
-    ) where
+  , nwursFileShareARN
+  , nwursNotificationId
+  , nwursResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -50,71 +46,68 @@ import Network.AWS.StorageGateway.Types
 import Network.AWS.StorageGateway.Types.Product
 
 -- | /See:/ 'notifyWhenUploaded' smart constructor.
-newtype NotifyWhenUploaded = NotifyWhenUploaded'
-  { _nwuFileShareARN :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype NotifyWhenUploaded =
+  NotifyWhenUploaded'
+    { _nwuFileShareARN :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'NotifyWhenUploaded' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'nwuFileShareARN' - Undocumented member.
-notifyWhenUploaded
-    :: Text -- ^ 'nwuFileShareARN'
-    -> NotifyWhenUploaded
+notifyWhenUploaded ::
+     Text -- ^ 'nwuFileShareARN'
+  -> NotifyWhenUploaded
 notifyWhenUploaded pFileShareARN_ =
   NotifyWhenUploaded' {_nwuFileShareARN = pFileShareARN_}
 
-
 -- | Undocumented member.
 nwuFileShareARN :: Lens' NotifyWhenUploaded Text
-nwuFileShareARN = lens _nwuFileShareARN (\ s a -> s{_nwuFileShareARN = a})
+nwuFileShareARN = lens _nwuFileShareARN (\s a -> s {_nwuFileShareARN = a})
 
 instance AWSRequest NotifyWhenUploaded where
-        type Rs NotifyWhenUploaded =
-             NotifyWhenUploadedResponse
-        request = postJSON storageGateway
-        response
-          = receiveJSON
-              (\ s h x ->
-                 NotifyWhenUploadedResponse' <$>
-                   (x .?> "FileShareARN") <*> (x .?> "NotificationId")
-                     <*> (pure (fromEnum s)))
+  type Rs NotifyWhenUploaded = NotifyWhenUploadedResponse
+  request = postJSON storageGateway
+  response =
+    receiveJSON
+      (\s h x ->
+         NotifyWhenUploadedResponse' <$> (x .?> "FileShareARN") <*>
+         (x .?> "NotificationId") <*>
+         (pure (fromEnum s)))
 
-instance Hashable NotifyWhenUploaded where
+instance Hashable NotifyWhenUploaded
 
-instance NFData NotifyWhenUploaded where
+instance NFData NotifyWhenUploaded
 
 instance ToHeaders NotifyWhenUploaded where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("StorageGateway_20130630.NotifyWhenUploaded" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("StorageGateway_20130630.NotifyWhenUploaded" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON NotifyWhenUploaded where
-        toJSON NotifyWhenUploaded'{..}
-          = object
-              (catMaybes
-                 [Just ("FileShareARN" .= _nwuFileShareARN)])
+  toJSON NotifyWhenUploaded' {..} =
+    object (catMaybes [Just ("FileShareARN" .= _nwuFileShareARN)])
 
 instance ToPath NotifyWhenUploaded where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery NotifyWhenUploaded where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'notifyWhenUploadedResponse' smart constructor.
-data NotifyWhenUploadedResponse = NotifyWhenUploadedResponse'
-  { _nwursFileShareARN   :: !(Maybe Text)
-  , _nwursNotificationId :: !(Maybe Text)
-  , _nwursResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data NotifyWhenUploadedResponse =
+  NotifyWhenUploadedResponse'
+    { _nwursFileShareARN :: !(Maybe Text)
+    , _nwursNotificationId :: !(Maybe Text)
+    , _nwursResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'NotifyWhenUploadedResponse' with the minimum fields required to make a request.
 --
@@ -125,9 +118,9 @@ data NotifyWhenUploadedResponse = NotifyWhenUploadedResponse'
 -- * 'nwursNotificationId' - Undocumented member.
 --
 -- * 'nwursResponseStatus' - -- | The response status code.
-notifyWhenUploadedResponse
-    :: Int -- ^ 'nwursResponseStatus'
-    -> NotifyWhenUploadedResponse
+notifyWhenUploadedResponse ::
+     Int -- ^ 'nwursResponseStatus'
+  -> NotifyWhenUploadedResponse
 notifyWhenUploadedResponse pResponseStatus_ =
   NotifyWhenUploadedResponse'
     { _nwursFileShareARN = Nothing
@@ -135,17 +128,18 @@ notifyWhenUploadedResponse pResponseStatus_ =
     , _nwursResponseStatus = pResponseStatus_
     }
 
-
 -- | Undocumented member.
 nwursFileShareARN :: Lens' NotifyWhenUploadedResponse (Maybe Text)
-nwursFileShareARN = lens _nwursFileShareARN (\ s a -> s{_nwursFileShareARN = a})
+nwursFileShareARN = lens _nwursFileShareARN (\s a -> s {_nwursFileShareARN = a})
 
 -- | Undocumented member.
 nwursNotificationId :: Lens' NotifyWhenUploadedResponse (Maybe Text)
-nwursNotificationId = lens _nwursNotificationId (\ s a -> s{_nwursNotificationId = a})
+nwursNotificationId =
+  lens _nwursNotificationId (\s a -> s {_nwursNotificationId = a})
 
 -- | -- | The response status code.
 nwursResponseStatus :: Lens' NotifyWhenUploadedResponse Int
-nwursResponseStatus = lens _nwursResponseStatus (\ s a -> s{_nwursResponseStatus = a})
+nwursResponseStatus =
+  lens _nwursResponseStatus (\s a -> s {_nwursResponseStatus = a})
 
-instance NFData NotifyWhenUploadedResponse where
+instance NFData NotifyWhenUploadedResponse

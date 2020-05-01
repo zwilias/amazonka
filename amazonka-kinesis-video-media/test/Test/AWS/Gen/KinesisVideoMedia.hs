@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.KinesisVideoMedia
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -32,19 +30,13 @@ import Test.Tasty
 --             getMedia
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseGetMedia $
 --             getMediaResponse
 --
 --           ]
 --     ]
-
 -- Requests
-
 requestGetMedia :: GetMedia -> TestTree
-requestGetMedia = req
-    "GetMedia"
-    "fixture/GetMedia.yaml"
-
+requestGetMedia = req "GetMedia" "fixture/GetMedia.yaml"
 -- Responses

@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Organizations
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -66,433 +65,317 @@
 -- AWS Organizations supports AWS CloudTrail, a service that records AWS API calls for your AWS account and delivers log files to an Amazon S3 bucket. By using information collected by AWS CloudTrail, you can determine which requests were successfully made to Organizations, who made the request, when it was made, and so on. For more about AWS Organizations and its support for AWS CloudTrail, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_cloudtrail-integration.html Logging AWS Organizations Events with AWS CloudTrail> in the /AWS Organizations User Guide/ . To learn more about CloudTrail, including how to turn it on and find your log files, see the <http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html AWS CloudTrail User Guide> .
 --
 module Network.AWS.Organizations
-    (
     -- * Service Configuration
-      organizations
-
+  ( organizations
     -- * Errors
     -- $errors
-
     -- ** PolicyNotFoundException
-    , _PolicyNotFoundException
-
+  , _PolicyNotFoundException
     -- ** PolicyTypeAlreadyEnabledException
-    , _PolicyTypeAlreadyEnabledException
-
+  , _PolicyTypeAlreadyEnabledException
     -- ** HandshakeConstraintViolationException
-    , _HandshakeConstraintViolationException
-
+  , _HandshakeConstraintViolationException
     -- ** AccessDeniedException
-    , _AccessDeniedException
-
+  , _AccessDeniedException
     -- ** MalformedPolicyDocumentException
-    , _MalformedPolicyDocumentException
-
+  , _MalformedPolicyDocumentException
     -- ** RootNotFoundException
-    , _RootNotFoundException
-
+  , _RootNotFoundException
     -- ** MasterCannotLeaveOrganizationException
-    , _MasterCannotLeaveOrganizationException
-
+  , _MasterCannotLeaveOrganizationException
     -- ** AccountNotFoundException
-    , _AccountNotFoundException
-
+  , _AccountNotFoundException
     -- ** DuplicatePolicyException
-    , _DuplicatePolicyException
-
+  , _DuplicatePolicyException
     -- ** ConstraintViolationException
-    , _ConstraintViolationException
-
+  , _ConstraintViolationException
     -- ** FinalizingOrganizationException
-    , _FinalizingOrganizationException
-
+  , _FinalizingOrganizationException
     -- ** HandshakeNotFoundException
-    , _HandshakeNotFoundException
-
+  , _HandshakeNotFoundException
     -- ** PolicyTypeNotAvailableForOrganizationException
-    , _PolicyTypeNotAvailableForOrganizationException
-
+  , _PolicyTypeNotAvailableForOrganizationException
     -- ** ChildNotFoundException
-    , _ChildNotFoundException
-
+  , _ChildNotFoundException
     -- ** OrganizationalUnitNotFoundException
-    , _OrganizationalUnitNotFoundException
-
+  , _OrganizationalUnitNotFoundException
     -- ** DestinationParentNotFoundException
-    , _DestinationParentNotFoundException
-
+  , _DestinationParentNotFoundException
     -- ** OrganizationNotEmptyException
-    , _OrganizationNotEmptyException
-
+  , _OrganizationNotEmptyException
     -- ** PolicyTypeNotEnabledException
-    , _PolicyTypeNotEnabledException
-
+  , _PolicyTypeNotEnabledException
     -- ** DuplicateHandshakeException
-    , _DuplicateHandshakeException
-
+  , _DuplicateHandshakeException
     -- ** OrganizationalUnitNotEmptyException
-    , _OrganizationalUnitNotEmptyException
-
+  , _OrganizationalUnitNotEmptyException
     -- ** TooManyRequestsException
-    , _TooManyRequestsException
-
+  , _TooManyRequestsException
     -- ** ConcurrentModificationException
-    , _ConcurrentModificationException
-
+  , _ConcurrentModificationException
     -- ** ServiceException
-    , _ServiceException
-
+  , _ServiceException
     -- ** SourceParentNotFoundException
-    , _SourceParentNotFoundException
-
+  , _SourceParentNotFoundException
     -- ** TargetNotFoundException
-    , _TargetNotFoundException
-
+  , _TargetNotFoundException
     -- ** CreateAccountStatusNotFoundException
-    , _CreateAccountStatusNotFoundException
-
+  , _CreateAccountStatusNotFoundException
     -- ** AlreadyInOrganizationException
-    , _AlreadyInOrganizationException
-
+  , _AlreadyInOrganizationException
     -- ** DuplicateOrganizationalUnitException
-    , _DuplicateOrganizationalUnitException
-
+  , _DuplicateOrganizationalUnitException
     -- ** InvalidInputException
-    , _InvalidInputException
-
+  , _InvalidInputException
     -- ** PolicyNotAttachedException
-    , _PolicyNotAttachedException
-
+  , _PolicyNotAttachedException
     -- ** ParentNotFoundException
-    , _ParentNotFoundException
-
+  , _ParentNotFoundException
     -- ** AccessDeniedForDependencyException
-    , _AccessDeniedForDependencyException
-
+  , _AccessDeniedForDependencyException
     -- ** AWSOrganizationsNotInUseException
-    , _AWSOrganizationsNotInUseException
-
+  , _AWSOrganizationsNotInUseException
     -- ** PolicyInUseException
-    , _PolicyInUseException
-
+  , _PolicyInUseException
     -- ** InvalidHandshakeTransitionException
-    , _InvalidHandshakeTransitionException
-
+  , _InvalidHandshakeTransitionException
     -- ** HandshakeAlreadyInStateException
-    , _HandshakeAlreadyInStateException
-
+  , _HandshakeAlreadyInStateException
     -- ** DuplicateAccountException
-    , _DuplicateAccountException
-
+  , _DuplicateAccountException
     -- ** DuplicatePolicyAttachmentException
-    , _DuplicatePolicyAttachmentException
-
+  , _DuplicatePolicyAttachmentException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** ListHandshakesForAccount (Paginated)
-    , module Network.AWS.Organizations.ListHandshakesForAccount
-
+  , module Network.AWS.Organizations.ListHandshakesForAccount
     -- ** DescribeAccount
-    , module Network.AWS.Organizations.DescribeAccount
-
+  , module Network.AWS.Organizations.DescribeAccount
     -- ** ListPolicies (Paginated)
-    , module Network.AWS.Organizations.ListPolicies
-
+  , module Network.AWS.Organizations.ListPolicies
     -- ** CreatePolicy
-    , module Network.AWS.Organizations.CreatePolicy
-
+  , module Network.AWS.Organizations.CreatePolicy
     -- ** ListRoots (Paginated)
-    , module Network.AWS.Organizations.ListRoots
-
+  , module Network.AWS.Organizations.ListRoots
     -- ** AcceptHandshake
-    , module Network.AWS.Organizations.AcceptHandshake
-
+  , module Network.AWS.Organizations.AcceptHandshake
     -- ** CreateOrganization
-    , module Network.AWS.Organizations.CreateOrganization
-
+  , module Network.AWS.Organizations.CreateOrganization
     -- ** EnableAllFeatures
-    , module Network.AWS.Organizations.EnableAllFeatures
-
+  , module Network.AWS.Organizations.EnableAllFeatures
     -- ** DeleteOrganization
-    , module Network.AWS.Organizations.DeleteOrganization
-
+  , module Network.AWS.Organizations.DeleteOrganization
     -- ** DescribeHandshake
-    , module Network.AWS.Organizations.DescribeHandshake
-
+  , module Network.AWS.Organizations.DescribeHandshake
     -- ** DescribePolicy
-    , module Network.AWS.Organizations.DescribePolicy
-
+  , module Network.AWS.Organizations.DescribePolicy
     -- ** DisableAWSServiceAccess
-    , module Network.AWS.Organizations.DisableAWSServiceAccess
-
+  , module Network.AWS.Organizations.DisableAWSServiceAccess
     -- ** LeaveOrganization
-    , module Network.AWS.Organizations.LeaveOrganization
-
+  , module Network.AWS.Organizations.LeaveOrganization
     -- ** MoveAccount
-    , module Network.AWS.Organizations.MoveAccount
-
+  , module Network.AWS.Organizations.MoveAccount
     -- ** ListAccounts (Paginated)
-    , module Network.AWS.Organizations.ListAccounts
-
+  , module Network.AWS.Organizations.ListAccounts
     -- ** InviteAccountToOrganization
-    , module Network.AWS.Organizations.InviteAccountToOrganization
-
+  , module Network.AWS.Organizations.InviteAccountToOrganization
     -- ** ListAWSServiceAccessForOrganization (Paginated)
-    , module Network.AWS.Organizations.ListAWSServiceAccessForOrganization
-
+  , module Network.AWS.Organizations.ListAWSServiceAccessForOrganization
     -- ** ListOrganizationalUnitsForParent (Paginated)
-    , module Network.AWS.Organizations.ListOrganizationalUnitsForParent
-
+  , module Network.AWS.Organizations.ListOrganizationalUnitsForParent
     -- ** CancelHandshake
-    , module Network.AWS.Organizations.CancelHandshake
-
+  , module Network.AWS.Organizations.CancelHandshake
     -- ** ListChildren (Paginated)
-    , module Network.AWS.Organizations.ListChildren
-
+  , module Network.AWS.Organizations.ListChildren
     -- ** DeletePolicy
-    , module Network.AWS.Organizations.DeletePolicy
-
+  , module Network.AWS.Organizations.DeletePolicy
     -- ** UpdatePolicy
-    , module Network.AWS.Organizations.UpdatePolicy
-
+  , module Network.AWS.Organizations.UpdatePolicy
     -- ** EnablePolicyType
-    , module Network.AWS.Organizations.EnablePolicyType
-
+  , module Network.AWS.Organizations.EnablePolicyType
     -- ** DisablePolicyType
-    , module Network.AWS.Organizations.DisablePolicyType
-
+  , module Network.AWS.Organizations.DisablePolicyType
     -- ** DescribeCreateAccountStatus
-    , module Network.AWS.Organizations.DescribeCreateAccountStatus
-
+  , module Network.AWS.Organizations.DescribeCreateAccountStatus
     -- ** CreateOrganizationalUnit
-    , module Network.AWS.Organizations.CreateOrganizationalUnit
-
+  , module Network.AWS.Organizations.CreateOrganizationalUnit
     -- ** ListAccountsForParent (Paginated)
-    , module Network.AWS.Organizations.ListAccountsForParent
-
+  , module Network.AWS.Organizations.ListAccountsForParent
     -- ** DetachPolicy
-    , module Network.AWS.Organizations.DetachPolicy
-
+  , module Network.AWS.Organizations.DetachPolicy
     -- ** RemoveAccountFromOrganization
-    , module Network.AWS.Organizations.RemoveAccountFromOrganization
-
+  , module Network.AWS.Organizations.RemoveAccountFromOrganization
     -- ** EnableAWSServiceAccess
-    , module Network.AWS.Organizations.EnableAWSServiceAccess
-
+  , module Network.AWS.Organizations.EnableAWSServiceAccess
     -- ** DescribeOrganizationalUnit
-    , module Network.AWS.Organizations.DescribeOrganizationalUnit
-
+  , module Network.AWS.Organizations.DescribeOrganizationalUnit
     -- ** ListParents (Paginated)
-    , module Network.AWS.Organizations.ListParents
-
+  , module Network.AWS.Organizations.ListParents
     -- ** CreateAccount
-    , module Network.AWS.Organizations.CreateAccount
-
+  , module Network.AWS.Organizations.CreateAccount
     -- ** ListCreateAccountStatus (Paginated)
-    , module Network.AWS.Organizations.ListCreateAccountStatus
-
+  , module Network.AWS.Organizations.ListCreateAccountStatus
     -- ** ListTargetsForPolicy (Paginated)
-    , module Network.AWS.Organizations.ListTargetsForPolicy
-
+  , module Network.AWS.Organizations.ListTargetsForPolicy
     -- ** DeclineHandshake
-    , module Network.AWS.Organizations.DeclineHandshake
-
+  , module Network.AWS.Organizations.DeclineHandshake
     -- ** AttachPolicy
-    , module Network.AWS.Organizations.AttachPolicy
-
+  , module Network.AWS.Organizations.AttachPolicy
     -- ** ListPoliciesForTarget (Paginated)
-    , module Network.AWS.Organizations.ListPoliciesForTarget
-
+  , module Network.AWS.Organizations.ListPoliciesForTarget
     -- ** DescribeOrganization
-    , module Network.AWS.Organizations.DescribeOrganization
-
+  , module Network.AWS.Organizations.DescribeOrganization
     -- ** ListHandshakesForOrganization (Paginated)
-    , module Network.AWS.Organizations.ListHandshakesForOrganization
-
+  , module Network.AWS.Organizations.ListHandshakesForOrganization
     -- ** DeleteOrganizationalUnit
-    , module Network.AWS.Organizations.DeleteOrganizationalUnit
-
+  , module Network.AWS.Organizations.DeleteOrganizationalUnit
     -- ** UpdateOrganizationalUnit
-    , module Network.AWS.Organizations.UpdateOrganizationalUnit
-
+  , module Network.AWS.Organizations.UpdateOrganizationalUnit
     -- * Types
-
     -- ** AccountJoinedMethod
-    , AccountJoinedMethod (..)
-
+  , AccountJoinedMethod(..)
     -- ** AccountStatus
-    , AccountStatus (..)
-
+  , AccountStatus(..)
     -- ** ActionType
-    , ActionType (..)
-
+  , ActionType(..)
     -- ** ChildType
-    , ChildType (..)
-
+  , ChildType(..)
     -- ** CreateAccountFailureReason
-    , CreateAccountFailureReason (..)
-
+  , CreateAccountFailureReason(..)
     -- ** CreateAccountState
-    , CreateAccountState (..)
-
+  , CreateAccountState(..)
     -- ** HandshakePartyType
-    , HandshakePartyType (..)
-
+  , HandshakePartyType(..)
     -- ** HandshakeResourceType
-    , HandshakeResourceType (..)
-
+  , HandshakeResourceType(..)
     -- ** HandshakeState
-    , HandshakeState (..)
-
+  , HandshakeState(..)
     -- ** IAMUserAccessToBilling
-    , IAMUserAccessToBilling (..)
-
+  , IAMUserAccessToBilling(..)
     -- ** OrganizationFeatureSet
-    , OrganizationFeatureSet (..)
-
+  , OrganizationFeatureSet(..)
     -- ** ParentType
-    , ParentType (..)
-
+  , ParentType(..)
     -- ** PolicyType
-    , PolicyType (..)
-
+  , PolicyType(..)
     -- ** PolicyTypeStatus
-    , PolicyTypeStatus (..)
-
+  , PolicyTypeStatus(..)
     -- ** TargetType
-    , TargetType (..)
-
+  , TargetType(..)
     -- ** Account
-    , Account
-    , account
-    , aStatus
-    , aJoinedMethod
-    , aEmail
-    , aARN
-    , aJoinedTimestamp
-    , aName
-    , aId
-
+  , Account
+  , account
+  , aStatus
+  , aJoinedMethod
+  , aEmail
+  , aARN
+  , aJoinedTimestamp
+  , aName
+  , aId
     -- ** Child
-    , Child
-    , child
-    , cId
-    , cType
-
+  , Child
+  , child
+  , cId
+  , cType
     -- ** CreateAccountStatus
-    , CreateAccountStatus
-    , createAccountStatus
-    , casFailureReason
-    , casState
-    , casCompletedTimestamp
-    , casAccountName
-    , casAccountId
-    , casId
-    , casRequestedTimestamp
-
+  , CreateAccountStatus
+  , createAccountStatus
+  , casFailureReason
+  , casState
+  , casCompletedTimestamp
+  , casAccountName
+  , casAccountId
+  , casId
+  , casRequestedTimestamp
     -- ** EnabledServicePrincipal
-    , EnabledServicePrincipal
-    , enabledServicePrincipal
-    , espServicePrincipal
-    , espDateEnabled
-
+  , EnabledServicePrincipal
+  , enabledServicePrincipal
+  , espServicePrincipal
+  , espDateEnabled
     -- ** Handshake
-    , Handshake
-    , handshake
-    , hState
-    , hARN
-    , hAction
-    , hResources
-    , hId
-    , hExpirationTimestamp
-    , hParties
-    , hRequestedTimestamp
-
+  , Handshake
+  , handshake
+  , hState
+  , hARN
+  , hAction
+  , hResources
+  , hId
+  , hExpirationTimestamp
+  , hParties
+  , hRequestedTimestamp
     -- ** HandshakeFilter
-    , HandshakeFilter
-    , handshakeFilter
-    , hfParentHandshakeId
-    , hfActionType
-
+  , HandshakeFilter
+  , handshakeFilter
+  , hfParentHandshakeId
+  , hfActionType
     -- ** HandshakeParty
-    , HandshakeParty
-    , handshakeParty
-    , hpId
-    , hpType
-
+  , HandshakeParty
+  , handshakeParty
+  , hpId
+  , hpType
     -- ** HandshakeResource
-    , HandshakeResource
-    , handshakeResource
-    , hrValue
-    , hrResources
-    , hrType
-
+  , HandshakeResource
+  , handshakeResource
+  , hrValue
+  , hrResources
+  , hrType
     -- ** Organization
-    , Organization
-    , organization
-    , oARN
-    , oMasterAccountId
-    , oMasterAccountARN
-    , oMasterAccountEmail
-    , oAvailablePolicyTypes
-    , oId
-    , oFeatureSet
-
+  , Organization
+  , organization
+  , oARN
+  , oMasterAccountId
+  , oMasterAccountARN
+  , oMasterAccountEmail
+  , oAvailablePolicyTypes
+  , oId
+  , oFeatureSet
     -- ** OrganizationalUnit
-    , OrganizationalUnit
-    , organizationalUnit
-    , ouARN
-    , ouName
-    , ouId
-
+  , OrganizationalUnit
+  , organizationalUnit
+  , ouARN
+  , ouName
+  , ouId
     -- ** Parent
-    , Parent
-    , parent
-    , pId
-    , pType
-
+  , Parent
+  , parent
+  , pId
+  , pType
     -- ** Policy
-    , Policy
-    , policy
-    , pContent
-    , pPolicySummary
-
+  , Policy
+  , policy
+  , pContent
+  , pPolicySummary
     -- ** PolicySummary
-    , PolicySummary
-    , policySummary
-    , psARN
-    , psName
-    , psId
-    , psAWSManaged
-    , psType
-    , psDescription
-
+  , PolicySummary
+  , policySummary
+  , psARN
+  , psName
+  , psId
+  , psAWSManaged
+  , psType
+  , psDescription
     -- ** PolicyTargetSummary
-    , PolicyTargetSummary
-    , policyTargetSummary
-    , polTargetId
-    , polARN
-    , polName
-    , polType
-
+  , PolicyTargetSummary
+  , policyTargetSummary
+  , polTargetId
+  , polARN
+  , polName
+  , polType
     -- ** PolicyTypeSummary
-    , PolicyTypeSummary
-    , policyTypeSummary
-    , ptsStatus
-    , ptsType
-
+  , PolicyTypeSummary
+  , policyTypeSummary
+  , ptsStatus
+  , ptsType
     -- ** Root
-    , Root
-    , root
-    , rARN
-    , rName
-    , rId
-    , rPolicyTypes
-    ) where
+  , Root
+  , root
+  , rARN
+  , rName
+  , rId
+  , rPolicyTypes
+  ) where
 
 import Network.AWS.Organizations.AcceptHandshake
 import Network.AWS.Organizations.AttachPolicy
@@ -514,14 +397,14 @@ import Network.AWS.Organizations.DescribePolicy
 import Network.AWS.Organizations.DetachPolicy
 import Network.AWS.Organizations.DisableAWSServiceAccess
 import Network.AWS.Organizations.DisablePolicyType
-import Network.AWS.Organizations.EnableAllFeatures
 import Network.AWS.Organizations.EnableAWSServiceAccess
+import Network.AWS.Organizations.EnableAllFeatures
 import Network.AWS.Organizations.EnablePolicyType
 import Network.AWS.Organizations.InviteAccountToOrganization
 import Network.AWS.Organizations.LeaveOrganization
+import Network.AWS.Organizations.ListAWSServiceAccessForOrganization
 import Network.AWS.Organizations.ListAccounts
 import Network.AWS.Organizations.ListAccountsForParent
-import Network.AWS.Organizations.ListAWSServiceAccessForOrganization
 import Network.AWS.Organizations.ListChildren
 import Network.AWS.Organizations.ListCreateAccountStatus
 import Network.AWS.Organizations.ListHandshakesForAccount
@@ -538,14 +421,12 @@ import Network.AWS.Organizations.Types
 import Network.AWS.Organizations.UpdateOrganizationalUnit
 import Network.AWS.Organizations.UpdatePolicy
 import Network.AWS.Organizations.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'Organizations'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -562,7 +443,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

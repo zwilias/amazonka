@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CloudWatch.SetAlarmState
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,20 +20,18 @@
 --
 --
 module Network.AWS.CloudWatch.SetAlarmState
-    (
     -- * Creating a Request
-      setAlarmState
-    , SetAlarmState
+  ( setAlarmState
+  , SetAlarmState
     -- * Request Lenses
-    , sasStateReasonData
-    , sasAlarmName
-    , sasStateValue
-    , sasStateReason
-
+  , sasStateReasonData
+  , sasAlarmName
+  , sasStateValue
+  , sasStateReason
     -- * Destructuring the Response
-    , setAlarmStateResponse
-    , SetAlarmStateResponse
-    ) where
+  , setAlarmStateResponse
+  , SetAlarmStateResponse
+  ) where
 
 import Network.AWS.CloudWatch.Types
 import Network.AWS.CloudWatch.Types.Product
@@ -45,13 +41,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'setAlarmState' smart constructor.
-data SetAlarmState = SetAlarmState'
-  { _sasStateReasonData :: !(Maybe Text)
-  , _sasAlarmName       :: !Text
-  , _sasStateValue      :: !StateValue
-  , _sasStateReason     :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetAlarmState =
+  SetAlarmState'
+    { _sasStateReasonData :: !(Maybe Text)
+    , _sasAlarmName :: !Text
+    , _sasStateValue :: !StateValue
+    , _sasStateReason :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SetAlarmState' with the minimum fields required to make a request.
 --
@@ -64,11 +61,11 @@ data SetAlarmState = SetAlarmState'
 -- * 'sasStateValue' - The value of the state.
 --
 -- * 'sasStateReason' - The reason that this alarm is set to this specific state, in text format.
-setAlarmState
-    :: Text -- ^ 'sasAlarmName'
-    -> StateValue -- ^ 'sasStateValue'
-    -> Text -- ^ 'sasStateReason'
-    -> SetAlarmState
+setAlarmState ::
+     Text -- ^ 'sasAlarmName'
+  -> StateValue -- ^ 'sasStateValue'
+  -> Text -- ^ 'sasStateReason'
+  -> SetAlarmState
 setAlarmState pAlarmName_ pStateValue_ pStateReason_ =
   SetAlarmState'
     { _sasStateReasonData = Nothing
@@ -77,59 +74,57 @@ setAlarmState pAlarmName_ pStateValue_ pStateReason_ =
     , _sasStateReason = pStateReason_
     }
 
-
 -- | The reason that this alarm is set to this specific state, in JSON format.
 sasStateReasonData :: Lens' SetAlarmState (Maybe Text)
-sasStateReasonData = lens _sasStateReasonData (\ s a -> s{_sasStateReasonData = a})
+sasStateReasonData =
+  lens _sasStateReasonData (\s a -> s {_sasStateReasonData = a})
 
 -- | The name for the alarm. This name must be unique within the AWS account. The maximum length is 255 characters.
 sasAlarmName :: Lens' SetAlarmState Text
-sasAlarmName = lens _sasAlarmName (\ s a -> s{_sasAlarmName = a})
+sasAlarmName = lens _sasAlarmName (\s a -> s {_sasAlarmName = a})
 
 -- | The value of the state.
 sasStateValue :: Lens' SetAlarmState StateValue
-sasStateValue = lens _sasStateValue (\ s a -> s{_sasStateValue = a})
+sasStateValue = lens _sasStateValue (\s a -> s {_sasStateValue = a})
 
 -- | The reason that this alarm is set to this specific state, in text format.
 sasStateReason :: Lens' SetAlarmState Text
-sasStateReason = lens _sasStateReason (\ s a -> s{_sasStateReason = a})
+sasStateReason = lens _sasStateReason (\s a -> s {_sasStateReason = a})
 
 instance AWSRequest SetAlarmState where
-        type Rs SetAlarmState = SetAlarmStateResponse
-        request = postQuery cloudWatch
-        response = receiveNull SetAlarmStateResponse'
+  type Rs SetAlarmState = SetAlarmStateResponse
+  request = postQuery cloudWatch
+  response = receiveNull SetAlarmStateResponse'
 
-instance Hashable SetAlarmState where
+instance Hashable SetAlarmState
 
-instance NFData SetAlarmState where
+instance NFData SetAlarmState
 
 instance ToHeaders SetAlarmState where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath SetAlarmState where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery SetAlarmState where
-        toQuery SetAlarmState'{..}
-          = mconcat
-              ["Action" =: ("SetAlarmState" :: ByteString),
-               "Version" =: ("2010-08-01" :: ByteString),
-               "StateReasonData" =: _sasStateReasonData,
-               "AlarmName" =: _sasAlarmName,
-               "StateValue" =: _sasStateValue,
-               "StateReason" =: _sasStateReason]
+  toQuery SetAlarmState' {..} =
+    mconcat
+      [ "Action" =: ("SetAlarmState" :: ByteString)
+      , "Version" =: ("2010-08-01" :: ByteString)
+      , "StateReasonData" =: _sasStateReasonData
+      , "AlarmName" =: _sasAlarmName
+      , "StateValue" =: _sasStateValue
+      , "StateReason" =: _sasStateReason
+      ]
 
 -- | /See:/ 'setAlarmStateResponse' smart constructor.
 data SetAlarmStateResponse =
   SetAlarmStateResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'SetAlarmStateResponse' with the minimum fields required to make a request.
 --
-setAlarmStateResponse
-    :: SetAlarmStateResponse
+setAlarmStateResponse :: SetAlarmStateResponse
 setAlarmStateResponse = SetAlarmStateResponse'
 
-
-instance NFData SetAlarmStateResponse where
+instance NFData SetAlarmStateResponse

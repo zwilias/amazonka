@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.AutoScaling.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,328 +10,290 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.AutoScaling.Types
-    (
     -- * Service Configuration
-      autoScaling
-
+  ( autoScaling
     -- * Errors
-    , _AlreadyExistsFault
-    , _LimitExceededFault
-    , _ResourceInUseFault
-    , _InvalidNextToken
-    , _ScalingActivityInProgressFault
-    , _ResourceContentionFault
-    , _ServiceLinkedRoleFailure
-
+  , _AlreadyExistsFault
+  , _LimitExceededFault
+  , _ResourceInUseFault
+  , _InvalidNextToken
+  , _ScalingActivityInProgressFault
+  , _ResourceContentionFault
+  , _ServiceLinkedRoleFailure
     -- * LifecycleState
-    , LifecycleState (..)
-
+  , LifecycleState(..)
     -- * MetricStatistic
-    , MetricStatistic (..)
-
+  , MetricStatistic(..)
     -- * MetricType
-    , MetricType (..)
-
+  , MetricType(..)
     -- * ScalingActivityStatusCode
-    , ScalingActivityStatusCode (..)
-
+  , ScalingActivityStatusCode(..)
     -- * Activity
-    , Activity
-    , activity
-    , aProgress
-    , aStatusMessage
-    , aEndTime
-    , aDetails
-    , aDescription
-    , aActivityId
-    , aAutoScalingGroupName
-    , aCause
-    , aStartTime
-    , aStatusCode
-
+  , Activity
+  , activity
+  , aProgress
+  , aStatusMessage
+  , aEndTime
+  , aDetails
+  , aDescription
+  , aActivityId
+  , aAutoScalingGroupName
+  , aCause
+  , aStartTime
+  , aStatusCode
     -- * AdjustmentType
-    , AdjustmentType
-    , adjustmentType
-    , atAdjustmentType
-
+  , AdjustmentType
+  , adjustmentType
+  , atAdjustmentType
     -- * Alarm
-    , Alarm
-    , alarm
-    , aAlarmName
-    , aAlarmARN
-
+  , Alarm
+  , alarm
+  , aAlarmName
+  , aAlarmARN
     -- * AutoScalingGroup
-    , AutoScalingGroup
-    , autoScalingGroup
-    , asgStatus
-    , asgTerminationPolicies
-    , asgHealthCheckGracePeriod
-    , asgServiceLinkedRoleARN
-    , asgNewInstancesProtectedFromScaleIn
-    , asgVPCZoneIdentifier
-    , asgTargetGroupARNs
-    , asgEnabledMetrics
-    , asgLaunchConfigurationName
-    , asgInstances
-    , asgLaunchTemplate
-    , asgAutoScalingGroupARN
-    , asgPlacementGroup
-    , asgSuspendedProcesses
-    , asgLoadBalancerNames
-    , asgTags
-    , asgAutoScalingGroupName
-    , asgMinSize
-    , asgMaxSize
-    , asgDesiredCapacity
-    , asgDefaultCooldown
-    , asgAvailabilityZones
-    , asgHealthCheckType
-    , asgCreatedTime
-
+  , AutoScalingGroup
+  , autoScalingGroup
+  , asgStatus
+  , asgTerminationPolicies
+  , asgHealthCheckGracePeriod
+  , asgServiceLinkedRoleARN
+  , asgNewInstancesProtectedFromScaleIn
+  , asgVPCZoneIdentifier
+  , asgTargetGroupARNs
+  , asgEnabledMetrics
+  , asgLaunchConfigurationName
+  , asgInstances
+  , asgLaunchTemplate
+  , asgAutoScalingGroupARN
+  , asgPlacementGroup
+  , asgSuspendedProcesses
+  , asgLoadBalancerNames
+  , asgTags
+  , asgAutoScalingGroupName
+  , asgMinSize
+  , asgMaxSize
+  , asgDesiredCapacity
+  , asgDefaultCooldown
+  , asgAvailabilityZones
+  , asgHealthCheckType
+  , asgCreatedTime
     -- * AutoScalingInstanceDetails
-    , AutoScalingInstanceDetails
-    , autoScalingInstanceDetails
-    , asidLaunchConfigurationName
-    , asidLaunchTemplate
-    , asidInstanceId
-    , asidAutoScalingGroupName
-    , asidAvailabilityZone
-    , asidLifecycleState
-    , asidHealthStatus
-    , asidProtectedFromScaleIn
-
+  , AutoScalingInstanceDetails
+  , autoScalingInstanceDetails
+  , asidLaunchConfigurationName
+  , asidLaunchTemplate
+  , asidInstanceId
+  , asidAutoScalingGroupName
+  , asidAvailabilityZone
+  , asidLifecycleState
+  , asidHealthStatus
+  , asidProtectedFromScaleIn
     -- * BlockDeviceMapping
-    , BlockDeviceMapping
-    , blockDeviceMapping
-    , bdmVirtualName
-    , bdmNoDevice
-    , bdmEBS
-    , bdmDeviceName
-
+  , BlockDeviceMapping
+  , blockDeviceMapping
+  , bdmVirtualName
+  , bdmNoDevice
+  , bdmEBS
+  , bdmDeviceName
     -- * CustomizedMetricSpecification
-    , CustomizedMetricSpecification
-    , customizedMetricSpecification
-    , cmsDimensions
-    , cmsUnit
-    , cmsMetricName
-    , cmsNamespace
-    , cmsStatistic
-
+  , CustomizedMetricSpecification
+  , customizedMetricSpecification
+  , cmsDimensions
+  , cmsUnit
+  , cmsMetricName
+  , cmsNamespace
+  , cmsStatistic
     -- * EBS
-    , EBS
-    , ebs
-    , ebsDeleteOnTermination
-    , ebsVolumeSize
-    , ebsIOPS
-    , ebsEncrypted
-    , ebsVolumeType
-    , ebsSnapshotId
-
+  , EBS
+  , ebs
+  , ebsDeleteOnTermination
+  , ebsVolumeSize
+  , ebsIOPS
+  , ebsEncrypted
+  , ebsVolumeType
+  , ebsSnapshotId
     -- * EnabledMetric
-    , EnabledMetric
-    , enabledMetric
-    , emGranularity
-    , emMetric
-
+  , EnabledMetric
+  , enabledMetric
+  , emGranularity
+  , emMetric
     -- * Filter
-    , Filter
-    , filter'
-    , fValues
-    , fName
-
+  , Filter
+  , filter'
+  , fValues
+  , fName
     -- * Instance
-    , Instance
-    , instance'
-    , iLaunchConfigurationName
-    , iLaunchTemplate
-    , iInstanceId
-    , iAvailabilityZone
-    , iLifecycleState
-    , iHealthStatus
-    , iProtectedFromScaleIn
-
+  , Instance
+  , instance'
+  , iLaunchConfigurationName
+  , iLaunchTemplate
+  , iInstanceId
+  , iAvailabilityZone
+  , iLifecycleState
+  , iHealthStatus
+  , iProtectedFromScaleIn
     -- * InstanceMonitoring
-    , InstanceMonitoring
-    , instanceMonitoring
-    , imEnabled
-
+  , InstanceMonitoring
+  , instanceMonitoring
+  , imEnabled
     -- * LaunchConfiguration
-    , LaunchConfiguration
-    , launchConfiguration
-    , lcAssociatePublicIPAddress
-    , lcSecurityGroups
-    , lcSpotPrice
-    , lcInstanceMonitoring
-    , lcKeyName
-    , lcClassicLinkVPCSecurityGroups
-    , lcRAMDiskId
-    , lcKernelId
-    , lcEBSOptimized
-    , lcUserData
-    , lcClassicLinkVPCId
-    , lcIAMInstanceProfile
-    , lcLaunchConfigurationARN
-    , lcPlacementTenancy
-    , lcBlockDeviceMappings
-    , lcLaunchConfigurationName
-    , lcImageId
-    , lcInstanceType
-    , lcCreatedTime
-
+  , LaunchConfiguration
+  , launchConfiguration
+  , lcAssociatePublicIPAddress
+  , lcSecurityGroups
+  , lcSpotPrice
+  , lcInstanceMonitoring
+  , lcKeyName
+  , lcClassicLinkVPCSecurityGroups
+  , lcRAMDiskId
+  , lcKernelId
+  , lcEBSOptimized
+  , lcUserData
+  , lcClassicLinkVPCId
+  , lcIAMInstanceProfile
+  , lcLaunchConfigurationARN
+  , lcPlacementTenancy
+  , lcBlockDeviceMappings
+  , lcLaunchConfigurationName
+  , lcImageId
+  , lcInstanceType
+  , lcCreatedTime
     -- * LaunchTemplateSpecification
-    , LaunchTemplateSpecification
-    , launchTemplateSpecification
-    , ltsLaunchTemplateName
-    , ltsLaunchTemplateId
-    , ltsVersion
-
+  , LaunchTemplateSpecification
+  , launchTemplateSpecification
+  , ltsLaunchTemplateName
+  , ltsLaunchTemplateId
+  , ltsVersion
     -- * LifecycleHook
-    , LifecycleHook
-    , lifecycleHook
-    , lhDefaultResult
-    , lhLifecycleHookName
-    , lhHeartbeatTimeout
-    , lhAutoScalingGroupName
-    , lhNotificationMetadata
-    , lhGlobalTimeout
-    , lhNotificationTargetARN
-    , lhLifecycleTransition
-    , lhRoleARN
-
+  , LifecycleHook
+  , lifecycleHook
+  , lhDefaultResult
+  , lhLifecycleHookName
+  , lhHeartbeatTimeout
+  , lhAutoScalingGroupName
+  , lhNotificationMetadata
+  , lhGlobalTimeout
+  , lhNotificationTargetARN
+  , lhLifecycleTransition
+  , lhRoleARN
     -- * LifecycleHookSpecification
-    , LifecycleHookSpecification
-    , lifecycleHookSpecification
-    , lhsDefaultResult
-    , lhsHeartbeatTimeout
-    , lhsNotificationMetadata
-    , lhsNotificationTargetARN
-    , lhsRoleARN
-    , lhsLifecycleHookName
-    , lhsLifecycleTransition
-
+  , LifecycleHookSpecification
+  , lifecycleHookSpecification
+  , lhsDefaultResult
+  , lhsHeartbeatTimeout
+  , lhsNotificationMetadata
+  , lhsNotificationTargetARN
+  , lhsRoleARN
+  , lhsLifecycleHookName
+  , lhsLifecycleTransition
     -- * LoadBalancerState
-    , LoadBalancerState
-    , loadBalancerState
-    , lbsState
-    , lbsLoadBalancerName
-
+  , LoadBalancerState
+  , loadBalancerState
+  , lbsState
+  , lbsLoadBalancerName
     -- * LoadBalancerTargetGroupState
-    , LoadBalancerTargetGroupState
-    , loadBalancerTargetGroupState
-    , lbtgsState
-    , lbtgsLoadBalancerTargetGroupARN
-
+  , LoadBalancerTargetGroupState
+  , loadBalancerTargetGroupState
+  , lbtgsState
+  , lbtgsLoadBalancerTargetGroupARN
     -- * MetricCollectionType
-    , MetricCollectionType
-    , metricCollectionType
-    , mctMetric
-
+  , MetricCollectionType
+  , metricCollectionType
+  , mctMetric
     -- * MetricDimension
-    , MetricDimension
-    , metricDimension
-    , mdName
-    , mdValue
-
+  , MetricDimension
+  , metricDimension
+  , mdName
+  , mdValue
     -- * MetricGranularityType
-    , MetricGranularityType
-    , metricGranularityType
-    , mgtGranularity
-
+  , MetricGranularityType
+  , metricGranularityType
+  , mgtGranularity
     -- * NotificationConfiguration
-    , NotificationConfiguration
-    , notificationConfiguration
-    , ncTopicARN
-    , ncAutoScalingGroupName
-    , ncNotificationType
-
+  , NotificationConfiguration
+  , notificationConfiguration
+  , ncTopicARN
+  , ncAutoScalingGroupName
+  , ncNotificationType
     -- * PredefinedMetricSpecification
-    , PredefinedMetricSpecification
-    , predefinedMetricSpecification
-    , pmsResourceLabel
-    , pmsPredefinedMetricType
-
+  , PredefinedMetricSpecification
+  , predefinedMetricSpecification
+  , pmsResourceLabel
+  , pmsPredefinedMetricType
     -- * ProcessType
-    , ProcessType
-    , processType
-    , ptProcessName
-
+  , ProcessType
+  , processType
+  , ptProcessName
     -- * ScalingPolicy
-    , ScalingPolicy
-    , scalingPolicy
-    , sMinAdjustmentStep
-    , sEstimatedInstanceWarmup
-    , sPolicyName
-    , sPolicyType
-    , sStepAdjustments
-    , sTargetTrackingConfiguration
-    , sAdjustmentType
-    , sAutoScalingGroupName
-    , sScalingAdjustment
-    , sCooldown
-    , sPolicyARN
-    , sAlarms
-    , sMetricAggregationType
-    , sMinAdjustmentMagnitude
-
+  , ScalingPolicy
+  , scalingPolicy
+  , sMinAdjustmentStep
+  , sEstimatedInstanceWarmup
+  , sPolicyName
+  , sPolicyType
+  , sStepAdjustments
+  , sTargetTrackingConfiguration
+  , sAdjustmentType
+  , sAutoScalingGroupName
+  , sScalingAdjustment
+  , sCooldown
+  , sPolicyARN
+  , sAlarms
+  , sMetricAggregationType
+  , sMinAdjustmentMagnitude
     -- * ScalingProcessQuery
-    , ScalingProcessQuery
-    , scalingProcessQuery
-    , spqScalingProcesses
-    , spqAutoScalingGroupName
-
+  , ScalingProcessQuery
+  , scalingProcessQuery
+  , spqScalingProcesses
+  , spqAutoScalingGroupName
     -- * ScheduledUpdateGroupAction
-    , ScheduledUpdateGroupAction
-    , scheduledUpdateGroupAction
-    , sugaScheduledActionARN
-    , sugaStartTime
-    , sugaTime
-    , sugaScheduledActionName
-    , sugaMaxSize
-    , sugaRecurrence
-    , sugaDesiredCapacity
-    , sugaMinSize
-    , sugaAutoScalingGroupName
-    , sugaEndTime
-
+  , ScheduledUpdateGroupAction
+  , scheduledUpdateGroupAction
+  , sugaScheduledActionARN
+  , sugaStartTime
+  , sugaTime
+  , sugaScheduledActionName
+  , sugaMaxSize
+  , sugaRecurrence
+  , sugaDesiredCapacity
+  , sugaMinSize
+  , sugaAutoScalingGroupName
+  , sugaEndTime
     -- * StepAdjustment
-    , StepAdjustment
-    , stepAdjustment
-    , saMetricIntervalLowerBound
-    , saMetricIntervalUpperBound
-    , saScalingAdjustment
-
+  , StepAdjustment
+  , stepAdjustment
+  , saMetricIntervalLowerBound
+  , saMetricIntervalUpperBound
+  , saScalingAdjustment
     -- * SuspendedProcess
-    , SuspendedProcess
-    , suspendedProcess
-    , spProcessName
-    , spSuspensionReason
-
+  , SuspendedProcess
+  , suspendedProcess
+  , spProcessName
+  , spSuspensionReason
     -- * Tag
-    , Tag
-    , tag
-    , tagKey
-    , tagResourceId
-    , tagResourceType
-    , tagPropagateAtLaunch
-    , tagValue
-
+  , Tag
+  , tag
+  , tagKey
+  , tagResourceId
+  , tagResourceType
+  , tagPropagateAtLaunch
+  , tagValue
     -- * TagDescription
-    , TagDescription
-    , tagDescription
-    , tdResourceId
-    , tdResourceType
-    , tdKey
-    , tdPropagateAtLaunch
-    , tdValue
-
+  , TagDescription
+  , tagDescription
+  , tdResourceId
+  , tdResourceType
+  , tdKey
+  , tdPropagateAtLaunch
+  , tdValue
     -- * TargetTrackingConfiguration
-    , TargetTrackingConfiguration
-    , targetTrackingConfiguration
-    , ttcPredefinedMetricSpecification
-    , ttcCustomizedMetricSpecification
-    , ttcDisableScaleIn
-    , ttcTargetValue
-    ) where
+  , TargetTrackingConfiguration
+  , targetTrackingConfiguration
+  , ttcPredefinedMetricSpecification
+  , ttcCustomizedMetricSpecification
+  , ttcDisableScaleIn
+  , ttcTargetValue
+  ) where
 
 import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.AutoScaling.Types.Sum
@@ -378,14 +339,12 @@ autoScaling =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | You already have an Auto Scaling group or launch configuration with this name.
 --
 --
 _AlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
 _AlreadyExistsFault =
   _MatchServiceError autoScaling "AlreadyExists" . hasStatus 400
-
 
 -- | You have already reached a limit for your Auto Scaling resources (for example, groups, launch configurations, or lifecycle hooks). For more information, see 'DescribeAccountLimits' .
 --
@@ -394,14 +353,12 @@ _LimitExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededFault =
   _MatchServiceError autoScaling "LimitExceeded" . hasStatus 400
 
-
 -- | The operation can't be performed because the resource is in use.
 --
 --
 _ResourceInUseFault :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceInUseFault =
   _MatchServiceError autoScaling "ResourceInUse" . hasStatus 400
-
 
 -- | The @NextToken@ value is not valid.
 --
@@ -410,27 +367,26 @@ _InvalidNextToken :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidNextToken =
   _MatchServiceError autoScaling "InvalidNextToken" . hasStatus 400
 
-
 -- | The operation can't be performed because there are scaling activities in progress.
 --
 --
-_ScalingActivityInProgressFault :: AsError a => Getting (First ServiceError) a ServiceError
+_ScalingActivityInProgressFault ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ScalingActivityInProgressFault =
   _MatchServiceError autoScaling "ScalingActivityInProgress" . hasStatus 400
-
 
 -- | You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load balancer).
 --
 --
-_ResourceContentionFault :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceContentionFault ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ResourceContentionFault =
   _MatchServiceError autoScaling "ResourceContention" . hasStatus 500
-
 
 -- | The service-linked role is not yet ready for use.
 --
 --
-_ServiceLinkedRoleFailure :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceLinkedRoleFailure ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ServiceLinkedRoleFailure =
   _MatchServiceError autoScaling "ServiceLinkedRoleFailure" . hasStatus 500
-

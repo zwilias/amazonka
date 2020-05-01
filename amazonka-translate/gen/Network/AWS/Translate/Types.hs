@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Translate.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,19 +10,17 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.Translate.Types
-    (
     -- * Service Configuration
-      translate
-
+  ( translate
     -- * Errors
-    , _InvalidRequestException
-    , _UnsupportedLanguagePairException
-    , _DetectedLanguageLowConfidenceException
-    , _TooManyRequestsException
-    , _InternalServerException
-    , _ServiceUnavailableException
-    , _TextSizeLimitExceededException
-    ) where
+  , _InvalidRequestException
+  , _UnsupportedLanguagePairException
+  , _DetectedLanguageLowConfidenceException
+  , _TooManyRequestsException
+  , _InternalServerException
+  , _ServiceUnavailableException
+  , _TextSizeLimitExceededException
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -69,59 +66,58 @@ translate =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | The request is invalid.
 --
 --
-_InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRequestException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidRequestException =
   _MatchServiceError translate "InvalidRequestException"
-
 
 -- | Amazon Translate cannot translate input text in the source language into this target language. For more information, see 'how-to-error-msg' .
 --
 --
-_UnsupportedLanguagePairException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnsupportedLanguagePairException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _UnsupportedLanguagePairException =
   _MatchServiceError translate "UnsupportedLanguagePairException"
-
 
 -- | The confidence that Amazon Comprehend accurately detected the source language is low. If a low confidence level is acceptable for your application, you can use the language in the exception to call Amazon Translate again. For more information, see the <https://docs.aws.amazon.com/comprehend/latest/dg/API_DetectDominantLanguage.html DetectDominantLanguage> operation in the /Amazon Comprehend Developer Guide/ .
 --
 --
-_DetectedLanguageLowConfidenceException :: AsError a => Getting (First ServiceError) a ServiceError
+_DetectedLanguageLowConfidenceException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _DetectedLanguageLowConfidenceException =
   _MatchServiceError translate "DetectedLanguageLowConfidenceException"
-
 
 -- | The number of requests exceeds the limit. Resubmit your request later.
 --
 --
-_TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyRequestsException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _TooManyRequestsException =
   _MatchServiceError translate "TooManyRequestsException"
-
 
 -- | An internal server error occurred. Retry your request.
 --
 --
-_InternalServerException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InternalServerException =
   _MatchServiceError translate "InternalServerException"
-
 
 -- | Amazon Translate is unavailable. Retry your request later.
 --
 --
-_ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceUnavailableException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ServiceUnavailableException =
   _MatchServiceError translate "ServiceUnavailableException"
-
 
 -- | The size of the input text exceeds the length constraint for the @Text@ field. Try again with a shorter text.
 --
 --
-_TextSizeLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_TextSizeLimitExceededException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _TextSizeLimitExceededException =
   _MatchServiceError translate "TextSizeLimitExceededException"
-

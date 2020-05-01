@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Connect
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -15,64 +14,47 @@
 --
 --
 module Network.AWS.Connect
-    (
     -- * Service Configuration
-      connect
-
+  ( connect
     -- * Errors
     -- $errors
-
     -- ** OutboundContactNotPermittedException
-    , _OutboundContactNotPermittedException
-
+  , _OutboundContactNotPermittedException
     -- ** InvalidParameterException
-    , _InvalidParameterException
-
+  , _InvalidParameterException
     -- ** InvalidRequestException
-    , _InvalidRequestException
-
+  , _InvalidRequestException
     -- ** DestinationNotAllowedException
-    , _DestinationNotAllowedException
-
+  , _DestinationNotAllowedException
     -- ** ContactNotFoundException
-    , _ContactNotFoundException
-
+  , _ContactNotFoundException
     -- ** InternalServiceException
-    , _InternalServiceException
-
+  , _InternalServiceException
     -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
-
+  , _ResourceNotFoundException
     -- ** LimitExceededException
-    , _LimitExceededException
-
+  , _LimitExceededException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** StartOutboundVoiceContact
-    , module Network.AWS.Connect.StartOutboundVoiceContact
-
+  , module Network.AWS.Connect.StartOutboundVoiceContact
     -- ** StopContact
-    , module Network.AWS.Connect.StopContact
-
+  , module Network.AWS.Connect.StopContact
     -- * Types
-    ) where
+  ) where
 
 import Network.AWS.Connect.StartOutboundVoiceContact
 import Network.AWS.Connect.StopContact
 import Network.AWS.Connect.Types
 import Network.AWS.Connect.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'Connect'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -89,7 +71,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

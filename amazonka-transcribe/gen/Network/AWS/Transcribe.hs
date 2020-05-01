@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Transcribe
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -15,122 +14,94 @@
 --
 --
 module Network.AWS.Transcribe
-    (
     -- * Service Configuration
-      transcribe
-
+  ( transcribe
     -- * Errors
     -- $errors
-
     -- ** ConflictException
-    , _ConflictException
-
+  , _ConflictException
     -- ** NotFoundException
-    , _NotFoundException
-
+  , _NotFoundException
     -- ** InternalFailureException
-    , _InternalFailureException
-
+  , _InternalFailureException
     -- ** BadRequestException
-    , _BadRequestException
-
+  , _BadRequestException
     -- ** LimitExceededException
-    , _LimitExceededException
-
+  , _LimitExceededException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** GetVocabulary
-    , module Network.AWS.Transcribe.GetVocabulary
-
+  , module Network.AWS.Transcribe.GetVocabulary
     -- ** GetTranscriptionJob
-    , module Network.AWS.Transcribe.GetTranscriptionJob
-
+  , module Network.AWS.Transcribe.GetTranscriptionJob
     -- ** DeleteVocabulary
-    , module Network.AWS.Transcribe.DeleteVocabulary
-
+  , module Network.AWS.Transcribe.DeleteVocabulary
     -- ** UpdateVocabulary
-    , module Network.AWS.Transcribe.UpdateVocabulary
-
+  , module Network.AWS.Transcribe.UpdateVocabulary
     -- ** ListTranscriptionJobs
-    , module Network.AWS.Transcribe.ListTranscriptionJobs
-
+  , module Network.AWS.Transcribe.ListTranscriptionJobs
     -- ** ListVocabularies
-    , module Network.AWS.Transcribe.ListVocabularies
-
+  , module Network.AWS.Transcribe.ListVocabularies
     -- ** CreateVocabulary
-    , module Network.AWS.Transcribe.CreateVocabulary
-
+  , module Network.AWS.Transcribe.CreateVocabulary
     -- ** StartTranscriptionJob
-    , module Network.AWS.Transcribe.StartTranscriptionJob
-
+  , module Network.AWS.Transcribe.StartTranscriptionJob
     -- * Types
-
     -- ** LanguageCode
-    , LanguageCode (..)
-
+  , LanguageCode(..)
     -- ** MediaFormat
-    , MediaFormat (..)
-
+  , MediaFormat(..)
     -- ** TranscriptionJobStatus
-    , TranscriptionJobStatus (..)
-
+  , TranscriptionJobStatus(..)
     -- ** VocabularyState
-    , VocabularyState (..)
-
+  , VocabularyState(..)
     -- ** Media
-    , Media
-    , media
-    , mMediaFileURI
-
+  , Media
+  , media
+  , mMediaFileURI
     -- ** Settings
-    , Settings
-    , settings
-    , sVocabularyName
-    , sMaxSpeakerLabels
-    , sShowSpeakerLabels
-
+  , Settings
+  , settings
+  , sVocabularyName
+  , sMaxSpeakerLabels
+  , sShowSpeakerLabels
     -- ** Transcript
-    , Transcript
-    , transcript
-    , tTranscriptFileURI
-
+  , Transcript
+  , transcript
+  , tTranscriptFileURI
     -- ** TranscriptionJob
-    , TranscriptionJob
-    , transcriptionJob
-    , tjCreationTime
-    , tjFailureReason
-    , tjLanguageCode
-    , tjSettings
-    , tjCompletionTime
-    , tjMedia
-    , tjMediaFormat
-    , tjTranscriptionJobStatus
-    , tjTranscriptionJobName
-    , tjTranscript
-    , tjMediaSampleRateHertz
-
+  , TranscriptionJob
+  , transcriptionJob
+  , tjCreationTime
+  , tjFailureReason
+  , tjLanguageCode
+  , tjSettings
+  , tjCompletionTime
+  , tjMedia
+  , tjMediaFormat
+  , tjTranscriptionJobStatus
+  , tjTranscriptionJobName
+  , tjTranscript
+  , tjMediaSampleRateHertz
     -- ** TranscriptionJobSummary
-    , TranscriptionJobSummary
-    , transcriptionJobSummary
-    , tjsCreationTime
-    , tjsFailureReason
-    , tjsLanguageCode
-    , tjsCompletionTime
-    , tjsTranscriptionJobStatus
-    , tjsTranscriptionJobName
-
+  , TranscriptionJobSummary
+  , transcriptionJobSummary
+  , tjsCreationTime
+  , tjsFailureReason
+  , tjsLanguageCode
+  , tjsCompletionTime
+  , tjsTranscriptionJobStatus
+  , tjsTranscriptionJobName
     -- ** VocabularyInfo
-    , VocabularyInfo
-    , vocabularyInfo
-    , viLanguageCode
-    , viVocabularyName
-    , viLastModifiedTime
-    , viVocabularyState
-    ) where
+  , VocabularyInfo
+  , vocabularyInfo
+  , viLanguageCode
+  , viVocabularyName
+  , viLastModifiedTime
+  , viVocabularyState
+  ) where
 
 import Network.AWS.Transcribe.CreateVocabulary
 import Network.AWS.Transcribe.DeleteVocabulary
@@ -142,14 +113,12 @@ import Network.AWS.Transcribe.StartTranscriptionJob
 import Network.AWS.Transcribe.Types
 import Network.AWS.Transcribe.UpdateVocabulary
 import Network.AWS.Transcribe.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'Transcribe'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -166,7 +135,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

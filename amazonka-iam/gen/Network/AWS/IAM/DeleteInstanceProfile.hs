@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.IAM.DeleteInstanceProfile
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,17 +24,15 @@
 -- For more information about instance profiles, go to <http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html About Instance Profiles> .
 --
 module Network.AWS.IAM.DeleteInstanceProfile
-    (
     -- * Creating a Request
-      deleteInstanceProfile
-    , DeleteInstanceProfile
+  ( deleteInstanceProfile
+  , DeleteInstanceProfile
     -- * Request Lenses
-    , dipInstanceProfileName
-
+  , dipInstanceProfileName
     -- * Destructuring the Response
-    , deleteInstanceProfileResponse
-    , DeleteInstanceProfileResponse
-    ) where
+  , deleteInstanceProfileResponse
+  , DeleteInstanceProfileResponse
+  ) where
 
 import Network.AWS.IAM.Types
 import Network.AWS.IAM.Types.Product
@@ -46,61 +42,59 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteInstanceProfile' smart constructor.
-newtype DeleteInstanceProfile = DeleteInstanceProfile'
-  { _dipInstanceProfileName :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteInstanceProfile =
+  DeleteInstanceProfile'
+    { _dipInstanceProfileName :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteInstanceProfile' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dipInstanceProfileName' - The name of the instance profile to delete. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
-deleteInstanceProfile
-    :: Text -- ^ 'dipInstanceProfileName'
-    -> DeleteInstanceProfile
+deleteInstanceProfile ::
+     Text -- ^ 'dipInstanceProfileName'
+  -> DeleteInstanceProfile
 deleteInstanceProfile pInstanceProfileName_ =
   DeleteInstanceProfile' {_dipInstanceProfileName = pInstanceProfileName_}
 
-
 -- | The name of the instance profile to delete. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 dipInstanceProfileName :: Lens' DeleteInstanceProfile Text
-dipInstanceProfileName = lens _dipInstanceProfileName (\ s a -> s{_dipInstanceProfileName = a})
+dipInstanceProfileName =
+  lens _dipInstanceProfileName (\s a -> s {_dipInstanceProfileName = a})
 
 instance AWSRequest DeleteInstanceProfile where
-        type Rs DeleteInstanceProfile =
-             DeleteInstanceProfileResponse
-        request = postQuery iam
-        response = receiveNull DeleteInstanceProfileResponse'
+  type Rs DeleteInstanceProfile = DeleteInstanceProfileResponse
+  request = postQuery iam
+  response = receiveNull DeleteInstanceProfileResponse'
 
-instance Hashable DeleteInstanceProfile where
+instance Hashable DeleteInstanceProfile
 
-instance NFData DeleteInstanceProfile where
+instance NFData DeleteInstanceProfile
 
 instance ToHeaders DeleteInstanceProfile where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath DeleteInstanceProfile where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery DeleteInstanceProfile where
-        toQuery DeleteInstanceProfile'{..}
-          = mconcat
-              ["Action" =: ("DeleteInstanceProfile" :: ByteString),
-               "Version" =: ("2010-05-08" :: ByteString),
-               "InstanceProfileName" =: _dipInstanceProfileName]
+  toQuery DeleteInstanceProfile' {..} =
+    mconcat
+      [ "Action" =: ("DeleteInstanceProfile" :: ByteString)
+      , "Version" =: ("2010-05-08" :: ByteString)
+      , "InstanceProfileName" =: _dipInstanceProfileName
+      ]
 
 -- | /See:/ 'deleteInstanceProfileResponse' smart constructor.
 data DeleteInstanceProfileResponse =
   DeleteInstanceProfileResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'DeleteInstanceProfileResponse' with the minimum fields required to make a request.
 --
-deleteInstanceProfileResponse
-    :: DeleteInstanceProfileResponse
+deleteInstanceProfileResponse :: DeleteInstanceProfileResponse
 deleteInstanceProfileResponse = DeleteInstanceProfileResponse'
 
-
-instance NFData DeleteInstanceProfileResponse where
+instance NFData DeleteInstanceProfileResponse

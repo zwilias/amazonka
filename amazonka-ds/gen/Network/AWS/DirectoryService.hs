@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.DirectoryService
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -16,422 +15,327 @@
 -- AWS Directory Service is a web service that makes it easy for you to setup and run directories in the AWS cloud, or connect your AWS resources with an existing on-premises Microsoft Active Directory. This guide provides detailed information about AWS Directory Service operations, data types, parameters, and errors. For information about AWS Directory Services features, see <https://aws.amazon.com/directoryservice/ AWS Directory Service> and the <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.html AWS Directory Service Administration Guide> .
 --
 module Network.AWS.DirectoryService
-    (
     -- * Service Configuration
-      directoryService
-
+  ( directoryService
     -- * Errors
     -- $errors
-
     -- ** DirectoryUnavailableException
-    , _DirectoryUnavailableException
-
+  , _DirectoryUnavailableException
     -- ** AuthenticationFailedException
-    , _AuthenticationFailedException
-
+  , _AuthenticationFailedException
     -- ** InvalidParameterException
-    , _InvalidParameterException
-
+  , _InvalidParameterException
     -- ** UnsupportedOperationException
-    , _UnsupportedOperationException
-
+  , _UnsupportedOperationException
     -- ** EntityAlreadyExistsException
-    , _EntityAlreadyExistsException
-
+  , _EntityAlreadyExistsException
     -- ** DirectoryLimitExceededException
-    , _DirectoryLimitExceededException
-
+  , _DirectoryLimitExceededException
     -- ** IPRouteLimitExceededException
-    , _IPRouteLimitExceededException
-
+  , _IPRouteLimitExceededException
     -- ** EntityDoesNotExistException
-    , _EntityDoesNotExistException
-
+  , _EntityDoesNotExistException
     -- ** InsufficientPermissionsException
-    , _InsufficientPermissionsException
-
+  , _InsufficientPermissionsException
     -- ** InvalidNextTokenException
-    , _InvalidNextTokenException
-
+  , _InvalidNextTokenException
     -- ** ServiceException
-    , _ServiceException
-
+  , _ServiceException
     -- ** SnapshotLimitExceededException
-    , _SnapshotLimitExceededException
-
+  , _SnapshotLimitExceededException
     -- ** DomainControllerLimitExceededException
-    , _DomainControllerLimitExceededException
-
+  , _DomainControllerLimitExceededException
     -- ** TagLimitExceededException
-    , _TagLimitExceededException
-
+  , _TagLimitExceededException
     -- ** ClientException
-    , _ClientException
-
+  , _ClientException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** UpdateNumberOfDomainControllers
-    , module Network.AWS.DirectoryService.UpdateNumberOfDomainControllers
-
+  , module Network.AWS.DirectoryService.UpdateNumberOfDomainControllers
     -- ** DescribeConditionalForwarders
-    , module Network.AWS.DirectoryService.DescribeConditionalForwarders
-
+  , module Network.AWS.DirectoryService.DescribeConditionalForwarders
     -- ** GetSnapshotLimits
-    , module Network.AWS.DirectoryService.GetSnapshotLimits
-
+  , module Network.AWS.DirectoryService.GetSnapshotLimits
     -- ** RegisterEventTopic
-    , module Network.AWS.DirectoryService.RegisterEventTopic
-
+  , module Network.AWS.DirectoryService.RegisterEventTopic
     -- ** ConnectDirectory
-    , module Network.AWS.DirectoryService.ConnectDirectory
-
+  , module Network.AWS.DirectoryService.ConnectDirectory
     -- ** CreateAlias
-    , module Network.AWS.DirectoryService.CreateAlias
-
+  , module Network.AWS.DirectoryService.CreateAlias
     -- ** DescribeDirectories
-    , module Network.AWS.DirectoryService.DescribeDirectories
-
+  , module Network.AWS.DirectoryService.DescribeDirectories
     -- ** AddIPRoutes
-    , module Network.AWS.DirectoryService.AddIPRoutes
-
+  , module Network.AWS.DirectoryService.AddIPRoutes
     -- ** ListTagsForResource
-    , module Network.AWS.DirectoryService.ListTagsForResource
-
+  , module Network.AWS.DirectoryService.ListTagsForResource
     -- ** DescribeTrusts
-    , module Network.AWS.DirectoryService.DescribeTrusts
-
+  , module Network.AWS.DirectoryService.DescribeTrusts
     -- ** DeleteTrust
-    , module Network.AWS.DirectoryService.DeleteTrust
-
+  , module Network.AWS.DirectoryService.DeleteTrust
     -- ** CreateMicrosoftAD
-    , module Network.AWS.DirectoryService.CreateMicrosoftAD
-
+  , module Network.AWS.DirectoryService.CreateMicrosoftAD
     -- ** DeregisterEventTopic
-    , module Network.AWS.DirectoryService.DeregisterEventTopic
-
+  , module Network.AWS.DirectoryService.DeregisterEventTopic
     -- ** CreateDirectory
-    , module Network.AWS.DirectoryService.CreateDirectory
-
+  , module Network.AWS.DirectoryService.CreateDirectory
     -- ** RemoveTagsFromResource
-    , module Network.AWS.DirectoryService.RemoveTagsFromResource
-
+  , module Network.AWS.DirectoryService.RemoveTagsFromResource
     -- ** DescribeEventTopics
-    , module Network.AWS.DirectoryService.DescribeEventTopics
-
+  , module Network.AWS.DirectoryService.DescribeEventTopics
     -- ** UpdateConditionalForwarder
-    , module Network.AWS.DirectoryService.UpdateConditionalForwarder
-
+  , module Network.AWS.DirectoryService.UpdateConditionalForwarder
     -- ** DeleteConditionalForwarder
-    , module Network.AWS.DirectoryService.DeleteConditionalForwarder
-
+  , module Network.AWS.DirectoryService.DeleteConditionalForwarder
     -- ** EnableSSO
-    , module Network.AWS.DirectoryService.EnableSSO
-
+  , module Network.AWS.DirectoryService.EnableSSO
     -- ** CancelSchemaExtension
-    , module Network.AWS.DirectoryService.CancelSchemaExtension
-
+  , module Network.AWS.DirectoryService.CancelSchemaExtension
     -- ** EnableRadius
-    , module Network.AWS.DirectoryService.EnableRadius
-
+  , module Network.AWS.DirectoryService.EnableRadius
     -- ** ListIPRoutes
-    , module Network.AWS.DirectoryService.ListIPRoutes
-
+  , module Network.AWS.DirectoryService.ListIPRoutes
     -- ** AddTagsToResource
-    , module Network.AWS.DirectoryService.AddTagsToResource
-
+  , module Network.AWS.DirectoryService.AddTagsToResource
     -- ** ListSchemaExtensions
-    , module Network.AWS.DirectoryService.ListSchemaExtensions
-
+  , module Network.AWS.DirectoryService.ListSchemaExtensions
     -- ** DisableRadius
-    , module Network.AWS.DirectoryService.DisableRadius
-
+  , module Network.AWS.DirectoryService.DisableRadius
     -- ** RestoreFromSnapshot
-    , module Network.AWS.DirectoryService.RestoreFromSnapshot
-
+  , module Network.AWS.DirectoryService.RestoreFromSnapshot
     -- ** DescribeDomainControllers (Paginated)
-    , module Network.AWS.DirectoryService.DescribeDomainControllers
-
+  , module Network.AWS.DirectoryService.DescribeDomainControllers
     -- ** DescribeSnapshots
-    , module Network.AWS.DirectoryService.DescribeSnapshots
-
+  , module Network.AWS.DirectoryService.DescribeSnapshots
     -- ** RemoveIPRoutes
-    , module Network.AWS.DirectoryService.RemoveIPRoutes
-
+  , module Network.AWS.DirectoryService.RemoveIPRoutes
     -- ** DeleteSnapshot
-    , module Network.AWS.DirectoryService.DeleteSnapshot
-
+  , module Network.AWS.DirectoryService.DeleteSnapshot
     -- ** StartSchemaExtension
-    , module Network.AWS.DirectoryService.StartSchemaExtension
-
+  , module Network.AWS.DirectoryService.StartSchemaExtension
     -- ** CreateTrust
-    , module Network.AWS.DirectoryService.CreateTrust
-
+  , module Network.AWS.DirectoryService.CreateTrust
     -- ** DeleteDirectory
-    , module Network.AWS.DirectoryService.DeleteDirectory
-
+  , module Network.AWS.DirectoryService.DeleteDirectory
     -- ** CreateSnapshot
-    , module Network.AWS.DirectoryService.CreateSnapshot
-
+  , module Network.AWS.DirectoryService.CreateSnapshot
     -- ** CreateComputer
-    , module Network.AWS.DirectoryService.CreateComputer
-
+  , module Network.AWS.DirectoryService.CreateComputer
     -- ** DisableSSO
-    , module Network.AWS.DirectoryService.DisableSSO
-
+  , module Network.AWS.DirectoryService.DisableSSO
     -- ** VerifyTrust
-    , module Network.AWS.DirectoryService.VerifyTrust
-
+  , module Network.AWS.DirectoryService.VerifyTrust
     -- ** CreateConditionalForwarder
-    , module Network.AWS.DirectoryService.CreateConditionalForwarder
-
+  , module Network.AWS.DirectoryService.CreateConditionalForwarder
     -- ** GetDirectoryLimits
-    , module Network.AWS.DirectoryService.GetDirectoryLimits
-
+  , module Network.AWS.DirectoryService.GetDirectoryLimits
     -- ** UpdateRadius
-    , module Network.AWS.DirectoryService.UpdateRadius
-
+  , module Network.AWS.DirectoryService.UpdateRadius
     -- * Types
-
     -- ** DirectoryEdition
-    , DirectoryEdition (..)
-
+  , DirectoryEdition(..)
     -- ** DirectorySize
-    , DirectorySize (..)
-
+  , DirectorySize(..)
     -- ** DirectoryStage
-    , DirectoryStage (..)
-
+  , DirectoryStage(..)
     -- ** DirectoryType
-    , DirectoryType (..)
-
+  , DirectoryType(..)
     -- ** DomainControllerStatus
-    , DomainControllerStatus (..)
-
+  , DomainControllerStatus(..)
     -- ** IPRouteStatusMsg
-    , IPRouteStatusMsg (..)
-
+  , IPRouteStatusMsg(..)
     -- ** RadiusAuthenticationProtocol
-    , RadiusAuthenticationProtocol (..)
-
+  , RadiusAuthenticationProtocol(..)
     -- ** RadiusStatus
-    , RadiusStatus (..)
-
+  , RadiusStatus(..)
     -- ** ReplicationScope
-    , ReplicationScope (..)
-
+  , ReplicationScope(..)
     -- ** SchemaExtensionStatus
-    , SchemaExtensionStatus (..)
-
+  , SchemaExtensionStatus(..)
     -- ** SnapshotStatus
-    , SnapshotStatus (..)
-
+  , SnapshotStatus(..)
     -- ** SnapshotType
-    , SnapshotType (..)
-
+  , SnapshotType(..)
     -- ** TopicStatus
-    , TopicStatus (..)
-
+  , TopicStatus(..)
     -- ** TrustDirection
-    , TrustDirection (..)
-
+  , TrustDirection(..)
     -- ** TrustState
-    , TrustState (..)
-
+  , TrustState(..)
     -- ** TrustType
-    , TrustType (..)
-
+  , TrustType(..)
     -- ** Attribute
-    , Attribute
-    , attribute
-    , aValue
-    , aName
-
+  , Attribute
+  , attribute
+  , aValue
+  , aName
     -- ** Computer
-    , Computer
-    , computer
-    , cComputerId
-    , cComputerAttributes
-    , cComputerName
-
+  , Computer
+  , computer
+  , cComputerId
+  , cComputerAttributes
+  , cComputerName
     -- ** ConditionalForwarder
-    , ConditionalForwarder
-    , conditionalForwarder
-    , cfDNSIPAddrs
-    , cfRemoteDomainName
-    , cfReplicationScope
-
+  , ConditionalForwarder
+  , conditionalForwarder
+  , cfDNSIPAddrs
+  , cfRemoteDomainName
+  , cfReplicationScope
     -- ** DirectoryConnectSettings
-    , DirectoryConnectSettings
-    , directoryConnectSettings
-    , dcsVPCId
-    , dcsSubnetIds
-    , dcsCustomerDNSIPs
-    , dcsCustomerUserName
-
+  , DirectoryConnectSettings
+  , directoryConnectSettings
+  , dcsVPCId
+  , dcsSubnetIds
+  , dcsCustomerDNSIPs
+  , dcsCustomerUserName
     -- ** DirectoryConnectSettingsDescription
-    , DirectoryConnectSettingsDescription
-    , directoryConnectSettingsDescription
-    , dcsdCustomerUserName
-    , dcsdSubnetIds
-    , dcsdVPCId
-    , dcsdSecurityGroupId
-    , dcsdConnectIPs
-    , dcsdAvailabilityZones
-
+  , DirectoryConnectSettingsDescription
+  , directoryConnectSettingsDescription
+  , dcsdCustomerUserName
+  , dcsdSubnetIds
+  , dcsdVPCId
+  , dcsdSecurityGroupId
+  , dcsdConnectIPs
+  , dcsdAvailabilityZones
     -- ** DirectoryDescription
-    , DirectoryDescription
-    , directoryDescription
-    , ddEdition
-    , ddRadiusStatus
-    , ddStage
-    , ddDirectoryId
-    , ddAccessURL
-    , ddShortName
-    , ddSize
-    , ddDesiredNumberOfDomainControllers
-    , ddRadiusSettings
-    , ddLaunchTime
-    , ddAlias
-    , ddName
-    , ddStageLastUpdatedDateTime
-    , ddSSOEnabled
-    , ddDNSIPAddrs
-    , ddVPCSettings
-    , ddType
-    , ddStageReason
-    , ddConnectSettings
-    , ddDescription
-
+  , DirectoryDescription
+  , directoryDescription
+  , ddEdition
+  , ddRadiusStatus
+  , ddStage
+  , ddDirectoryId
+  , ddAccessURL
+  , ddShortName
+  , ddSize
+  , ddDesiredNumberOfDomainControllers
+  , ddRadiusSettings
+  , ddLaunchTime
+  , ddAlias
+  , ddName
+  , ddStageLastUpdatedDateTime
+  , ddSSOEnabled
+  , ddDNSIPAddrs
+  , ddVPCSettings
+  , ddType
+  , ddStageReason
+  , ddConnectSettings
+  , ddDescription
     -- ** DirectoryLimits
-    , DirectoryLimits
-    , directoryLimits
-    , dlConnectedDirectoriesCurrentCount
-    , dlCloudOnlyMicrosoftADLimitReached
-    , dlConnectedDirectoriesLimit
-    , dlConnectedDirectoriesLimitReached
-    , dlCloudOnlyMicrosoftADLimit
-    , dlCloudOnlyDirectoriesLimit
-    , dlCloudOnlyDirectoriesCurrentCount
-    , dlCloudOnlyDirectoriesLimitReached
-    , dlCloudOnlyMicrosoftADCurrentCount
-
+  , DirectoryLimits
+  , directoryLimits
+  , dlConnectedDirectoriesCurrentCount
+  , dlCloudOnlyMicrosoftADLimitReached
+  , dlConnectedDirectoriesLimit
+  , dlConnectedDirectoriesLimitReached
+  , dlCloudOnlyMicrosoftADLimit
+  , dlCloudOnlyDirectoriesLimit
+  , dlCloudOnlyDirectoriesCurrentCount
+  , dlCloudOnlyDirectoriesLimitReached
+  , dlCloudOnlyMicrosoftADCurrentCount
     -- ** DirectoryVPCSettings
-    , DirectoryVPCSettings
-    , directoryVPCSettings
-    , dvsVPCId
-    , dvsSubnetIds
-
+  , DirectoryVPCSettings
+  , directoryVPCSettings
+  , dvsVPCId
+  , dvsSubnetIds
     -- ** DirectoryVPCSettingsDescription
-    , DirectoryVPCSettingsDescription
-    , directoryVPCSettingsDescription
-    , dvsdSubnetIds
-    , dvsdVPCId
-    , dvsdSecurityGroupId
-    , dvsdAvailabilityZones
-
+  , DirectoryVPCSettingsDescription
+  , directoryVPCSettingsDescription
+  , dvsdSubnetIds
+  , dvsdVPCId
+  , dvsdSecurityGroupId
+  , dvsdAvailabilityZones
     -- ** DomainController
-    , DomainController
-    , domainController
-    , dcStatus
-    , dcDirectoryId
-    , dcVPCId
-    , dcLaunchTime
-    , dcSubnetId
-    , dcAvailabilityZone
-    , dcStatusLastUpdatedDateTime
-    , dcStatusReason
-    , dcDNSIPAddr
-    , dcDomainControllerId
-
+  , DomainController
+  , domainController
+  , dcStatus
+  , dcDirectoryId
+  , dcVPCId
+  , dcLaunchTime
+  , dcSubnetId
+  , dcAvailabilityZone
+  , dcStatusLastUpdatedDateTime
+  , dcStatusReason
+  , dcDNSIPAddr
+  , dcDomainControllerId
     -- ** EventTopic
-    , EventTopic
-    , eventTopic
-    , etStatus
-    , etDirectoryId
-    , etTopicName
-    , etTopicARN
-    , etCreatedDateTime
-
+  , EventTopic
+  , eventTopic
+  , etStatus
+  , etDirectoryId
+  , etTopicName
+  , etTopicARN
+  , etCreatedDateTime
     -- ** IPRoute
-    , IPRoute
-    , ipRoute
-    , irCidrIP
-    , irDescription
-
+  , IPRoute
+  , ipRoute
+  , irCidrIP
+  , irDescription
     -- ** IPRouteInfo
-    , IPRouteInfo
-    , ipRouteInfo
-    , iriDirectoryId
-    , iriIPRouteStatusReason
-    , iriAddedDateTime
-    , iriCidrIP
-    , iriIPRouteStatusMsg
-    , iriDescription
-
+  , IPRouteInfo
+  , ipRouteInfo
+  , iriDirectoryId
+  , iriIPRouteStatusReason
+  , iriAddedDateTime
+  , iriCidrIP
+  , iriIPRouteStatusMsg
+  , iriDescription
     -- ** RadiusSettings
-    , RadiusSettings
-    , radiusSettings
-    , rsDisplayLabel
-    , rsRadiusRetries
-    , rsAuthenticationProtocol
-    , rsRadiusServers
-    , rsUseSameUsername
-    , rsSharedSecret
-    , rsRadiusTimeout
-    , rsRadiusPort
-
+  , RadiusSettings
+  , radiusSettings
+  , rsDisplayLabel
+  , rsRadiusRetries
+  , rsAuthenticationProtocol
+  , rsRadiusServers
+  , rsUseSameUsername
+  , rsSharedSecret
+  , rsRadiusTimeout
+  , rsRadiusPort
     -- ** SchemaExtensionInfo
-    , SchemaExtensionInfo
-    , schemaExtensionInfo
-    , seiDirectoryId
-    , seiSchemaExtensionId
-    , seiSchemaExtensionStatusReason
-    , seiSchemaExtensionStatus
-    , seiDescription
-    , seiEndDateTime
-    , seiStartDateTime
-
+  , SchemaExtensionInfo
+  , schemaExtensionInfo
+  , seiDirectoryId
+  , seiSchemaExtensionId
+  , seiSchemaExtensionStatusReason
+  , seiSchemaExtensionStatus
+  , seiDescription
+  , seiEndDateTime
+  , seiStartDateTime
     -- ** Snapshot
-    , Snapshot
-    , snapshot
-    , sStatus
-    , sDirectoryId
-    , sStartTime
-    , sName
-    , sType
-    , sSnapshotId
-
+  , Snapshot
+  , snapshot
+  , sStatus
+  , sDirectoryId
+  , sStartTime
+  , sName
+  , sType
+  , sSnapshotId
     -- ** SnapshotLimits
-    , SnapshotLimits
-    , snapshotLimits
-    , slManualSnapshotsLimitReached
-    , slManualSnapshotsCurrentCount
-    , slManualSnapshotsLimit
-
+  , SnapshotLimits
+  , snapshotLimits
+  , slManualSnapshotsLimitReached
+  , slManualSnapshotsCurrentCount
+  , slManualSnapshotsLimit
     -- ** Tag
-    , Tag
-    , tag
-    , tagKey
-    , tagValue
-
+  , Tag
+  , tag
+  , tagKey
+  , tagValue
     -- ** Trust
-    , Trust
-    , trust
-    , tDirectoryId
-    , tTrustState
-    , tLastUpdatedDateTime
-    , tTrustDirection
-    , tStateLastUpdatedDateTime
-    , tTrustType
-    , tTrustStateReason
-    , tRemoteDomainName
-    , tTrustId
-    , tCreatedDateTime
-    ) where
+  , Trust
+  , trust
+  , tDirectoryId
+  , tTrustState
+  , tLastUpdatedDateTime
+  , tTrustDirection
+  , tStateLastUpdatedDateTime
+  , tTrustType
+  , tTrustStateReason
+  , tRemoteDomainName
+  , tTrustId
+  , tCreatedDateTime
+  ) where
 
 import Network.AWS.DirectoryService.AddIPRoutes
 import Network.AWS.DirectoryService.AddTagsToResource
@@ -475,14 +379,12 @@ import Network.AWS.DirectoryService.UpdateNumberOfDomainControllers
 import Network.AWS.DirectoryService.UpdateRadius
 import Network.AWS.DirectoryService.VerifyTrust
 import Network.AWS.DirectoryService.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'DirectoryService'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -499,7 +401,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.IoTDataPlane
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -16,63 +15,44 @@
 -- AWS IoT-Data enables secure, bi-directional communication between Internet-connected things (such as sensors, actuators, embedded devices, or smart appliances) and the AWS cloud. It implements a broker for applications and things to publish messages over HTTP (Publish) and retrieve, update, and delete thing shadows. A thing shadow is a persistent representation of your things and their state in the AWS cloud.
 --
 module Network.AWS.IoTDataPlane
-    (
     -- * Service Configuration
-      ioTDataPlane
-
+  ( ioTDataPlane
     -- * Errors
     -- $errors
-
     -- ** InvalidRequestException
-    , _InvalidRequestException
-
+  , _InvalidRequestException
     -- ** ConflictException
-    , _ConflictException
-
+  , _ConflictException
     -- ** RequestEntityTooLargeException
-    , _RequestEntityTooLargeException
-
+  , _RequestEntityTooLargeException
     -- ** ThrottlingException
-    , _ThrottlingException
-
+  , _ThrottlingException
     -- ** MethodNotAllowedException
-    , _MethodNotAllowedException
-
+  , _MethodNotAllowedException
     -- ** InternalFailureException
-    , _InternalFailureException
-
+  , _InternalFailureException
     -- ** ServiceUnavailableException
-    , _ServiceUnavailableException
-
+  , _ServiceUnavailableException
     -- ** UnauthorizedException
-    , _UnauthorizedException
-
+  , _UnauthorizedException
     -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
-
+  , _ResourceNotFoundException
     -- ** UnsupportedDocumentEncodingException
-    , _UnsupportedDocumentEncodingException
-
+  , _UnsupportedDocumentEncodingException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** GetThingShadow
-    , module Network.AWS.IoTDataPlane.GetThingShadow
-
+  , module Network.AWS.IoTDataPlane.GetThingShadow
     -- ** DeleteThingShadow
-    , module Network.AWS.IoTDataPlane.DeleteThingShadow
-
+  , module Network.AWS.IoTDataPlane.DeleteThingShadow
     -- ** UpdateThingShadow
-    , module Network.AWS.IoTDataPlane.UpdateThingShadow
-
+  , module Network.AWS.IoTDataPlane.UpdateThingShadow
     -- ** Publish
-    , module Network.AWS.IoTDataPlane.Publish
-
+  , module Network.AWS.IoTDataPlane.Publish
     -- * Types
-    ) where
+  ) where
 
 import Network.AWS.IoTDataPlane.DeleteThingShadow
 import Network.AWS.IoTDataPlane.GetThingShadow
@@ -80,14 +60,12 @@ import Network.AWS.IoTDataPlane.Publish
 import Network.AWS.IoTDataPlane.Types
 import Network.AWS.IoTDataPlane.UpdateThingShadow
 import Network.AWS.IoTDataPlane.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'IoTDataPlane'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -104,7 +82,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

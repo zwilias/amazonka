@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.WAF.DeletePermissionPolicy
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,19 +22,17 @@
 -- The user making the request must be the owner of the RuleGroup.
 --
 module Network.AWS.WAF.DeletePermissionPolicy
-    (
     -- * Creating a Request
-      deletePermissionPolicy
-    , DeletePermissionPolicy
+  ( deletePermissionPolicy
+  , DeletePermissionPolicy
     -- * Request Lenses
-    , dppResourceARN
-
+  , dppResourceARN
     -- * Destructuring the Response
-    , deletePermissionPolicyResponse
-    , DeletePermissionPolicyResponse
+  , deletePermissionPolicyResponse
+  , DeletePermissionPolicyResponse
     -- * Response Lenses
-    , dpprsResponseStatus
-    ) where
+  , dpprsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -46,82 +42,78 @@ import Network.AWS.WAF.Types
 import Network.AWS.WAF.Types.Product
 
 -- | /See:/ 'deletePermissionPolicy' smart constructor.
-newtype DeletePermissionPolicy = DeletePermissionPolicy'
-  { _dppResourceARN :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeletePermissionPolicy =
+  DeletePermissionPolicy'
+    { _dppResourceARN :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeletePermissionPolicy' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dppResourceARN' - The Amazon Resource Name (ARN) of the RuleGroup from which you want to delete the policy. The user making the request must be the owner of the RuleGroup.
-deletePermissionPolicy
-    :: Text -- ^ 'dppResourceARN'
-    -> DeletePermissionPolicy
+deletePermissionPolicy ::
+     Text -- ^ 'dppResourceARN'
+  -> DeletePermissionPolicy
 deletePermissionPolicy pResourceARN_ =
   DeletePermissionPolicy' {_dppResourceARN = pResourceARN_}
 
-
 -- | The Amazon Resource Name (ARN) of the RuleGroup from which you want to delete the policy. The user making the request must be the owner of the RuleGroup.
 dppResourceARN :: Lens' DeletePermissionPolicy Text
-dppResourceARN = lens _dppResourceARN (\ s a -> s{_dppResourceARN = a})
+dppResourceARN = lens _dppResourceARN (\s a -> s {_dppResourceARN = a})
 
 instance AWSRequest DeletePermissionPolicy where
-        type Rs DeletePermissionPolicy =
-             DeletePermissionPolicyResponse
-        request = postJSON waf
-        response
-          = receiveEmpty
-              (\ s h x ->
-                 DeletePermissionPolicyResponse' <$>
-                   (pure (fromEnum s)))
+  type Rs DeletePermissionPolicy = DeletePermissionPolicyResponse
+  request = postJSON waf
+  response =
+    receiveEmpty
+      (\s h x -> DeletePermissionPolicyResponse' <$> (pure (fromEnum s)))
 
-instance Hashable DeletePermissionPolicy where
+instance Hashable DeletePermissionPolicy
 
-instance NFData DeletePermissionPolicy where
+instance NFData DeletePermissionPolicy
 
 instance ToHeaders DeletePermissionPolicy where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("AWSWAF_20150824.DeletePermissionPolicy" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("AWSWAF_20150824.DeletePermissionPolicy" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON DeletePermissionPolicy where
-        toJSON DeletePermissionPolicy'{..}
-          = object
-              (catMaybes [Just ("ResourceArn" .= _dppResourceARN)])
+  toJSON DeletePermissionPolicy' {..} =
+    object (catMaybes [Just ("ResourceArn" .= _dppResourceARN)])
 
 instance ToPath DeletePermissionPolicy where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery DeletePermissionPolicy where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'deletePermissionPolicyResponse' smart constructor.
-newtype DeletePermissionPolicyResponse = DeletePermissionPolicyResponse'
-  { _dpprsResponseStatus :: Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeletePermissionPolicyResponse =
+  DeletePermissionPolicyResponse'
+    { _dpprsResponseStatus :: Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeletePermissionPolicyResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dpprsResponseStatus' - -- | The response status code.
-deletePermissionPolicyResponse
-    :: Int -- ^ 'dpprsResponseStatus'
-    -> DeletePermissionPolicyResponse
+deletePermissionPolicyResponse ::
+     Int -- ^ 'dpprsResponseStatus'
+  -> DeletePermissionPolicyResponse
 deletePermissionPolicyResponse pResponseStatus_ =
   DeletePermissionPolicyResponse' {_dpprsResponseStatus = pResponseStatus_}
 
-
 -- | -- | The response status code.
 dpprsResponseStatus :: Lens' DeletePermissionPolicyResponse Int
-dpprsResponseStatus = lens _dpprsResponseStatus (\ s a -> s{_dpprsResponseStatus = a})
+dpprsResponseStatus =
+  lens _dpprsResponseStatus (\s a -> s {_dpprsResponseStatus = a})
 
-instance NFData DeletePermissionPolicyResponse where
+instance NFData DeletePermissionPolicyResponse

@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.GameLift.UpdateFleetPortSettings
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -70,22 +68,20 @@
 --
 --
 module Network.AWS.GameLift.UpdateFleetPortSettings
-    (
     -- * Creating a Request
-      updateFleetPortSettings
-    , UpdateFleetPortSettings
+  ( updateFleetPortSettings
+  , UpdateFleetPortSettings
     -- * Request Lenses
-    , ufpsInboundPermissionRevocations
-    , ufpsInboundPermissionAuthorizations
-    , ufpsFleetId
-
+  , ufpsInboundPermissionRevocations
+  , ufpsInboundPermissionAuthorizations
+  , ufpsFleetId
     -- * Destructuring the Response
-    , updateFleetPortSettingsResponse
-    , UpdateFleetPortSettingsResponse
+  , updateFleetPortSettingsResponse
+  , UpdateFleetPortSettingsResponse
     -- * Response Lenses
-    , ufpsrsFleetId
-    , ufpsrsResponseStatus
-    ) where
+  , ufpsrsFleetId
+  , ufpsrsResponseStatus
+  ) where
 
 import Network.AWS.GameLift.Types
 import Network.AWS.GameLift.Types.Product
@@ -99,12 +95,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateFleetPortSettings' smart constructor.
-data UpdateFleetPortSettings = UpdateFleetPortSettings'
-  { _ufpsInboundPermissionRevocations    :: !(Maybe [IPPermission])
-  , _ufpsInboundPermissionAuthorizations :: !(Maybe [IPPermission])
-  , _ufpsFleetId                         :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateFleetPortSettings =
+  UpdateFleetPortSettings'
+    { _ufpsInboundPermissionRevocations :: !(Maybe [IPPermission])
+    , _ufpsInboundPermissionAuthorizations :: !(Maybe [IPPermission])
+    , _ufpsFleetId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateFleetPortSettings' with the minimum fields required to make a request.
 --
@@ -115,9 +112,9 @@ data UpdateFleetPortSettings = UpdateFleetPortSettings'
 -- * 'ufpsInboundPermissionAuthorizations' - Collection of port settings to be added to the fleet record.
 --
 -- * 'ufpsFleetId' - Unique identifier for a fleet to update port settings for.
-updateFleetPortSettings
-    :: Text -- ^ 'ufpsFleetId'
-    -> UpdateFleetPortSettings
+updateFleetPortSettings ::
+     Text -- ^ 'ufpsFleetId'
+  -> UpdateFleetPortSettings
 updateFleetPortSettings pFleetId_ =
   UpdateFleetPortSettings'
     { _ufpsInboundPermissionRevocations = Nothing
@@ -125,68 +122,76 @@ updateFleetPortSettings pFleetId_ =
     , _ufpsFleetId = pFleetId_
     }
 
-
 -- | Collection of port settings to be removed from the fleet record.
 ufpsInboundPermissionRevocations :: Lens' UpdateFleetPortSettings [IPPermission]
-ufpsInboundPermissionRevocations = lens _ufpsInboundPermissionRevocations (\ s a -> s{_ufpsInboundPermissionRevocations = a}) . _Default . _Coerce
+ufpsInboundPermissionRevocations =
+  lens
+    _ufpsInboundPermissionRevocations
+    (\s a -> s {_ufpsInboundPermissionRevocations = a}) .
+  _Default . _Coerce
 
 -- | Collection of port settings to be added to the fleet record.
-ufpsInboundPermissionAuthorizations :: Lens' UpdateFleetPortSettings [IPPermission]
-ufpsInboundPermissionAuthorizations = lens _ufpsInboundPermissionAuthorizations (\ s a -> s{_ufpsInboundPermissionAuthorizations = a}) . _Default . _Coerce
+ufpsInboundPermissionAuthorizations ::
+     Lens' UpdateFleetPortSettings [IPPermission]
+ufpsInboundPermissionAuthorizations =
+  lens
+    _ufpsInboundPermissionAuthorizations
+    (\s a -> s {_ufpsInboundPermissionAuthorizations = a}) .
+  _Default . _Coerce
 
 -- | Unique identifier for a fleet to update port settings for.
 ufpsFleetId :: Lens' UpdateFleetPortSettings Text
-ufpsFleetId = lens _ufpsFleetId (\ s a -> s{_ufpsFleetId = a})
+ufpsFleetId = lens _ufpsFleetId (\s a -> s {_ufpsFleetId = a})
 
 instance AWSRequest UpdateFleetPortSettings where
-        type Rs UpdateFleetPortSettings =
-             UpdateFleetPortSettingsResponse
-        request = postJSON gameLift
-        response
-          = receiveJSON
-              (\ s h x ->
-                 UpdateFleetPortSettingsResponse' <$>
-                   (x .?> "FleetId") <*> (pure (fromEnum s)))
+  type Rs UpdateFleetPortSettings = UpdateFleetPortSettingsResponse
+  request = postJSON gameLift
+  response =
+    receiveJSON
+      (\s h x ->
+         UpdateFleetPortSettingsResponse' <$> (x .?> "FleetId") <*>
+         (pure (fromEnum s)))
 
-instance Hashable UpdateFleetPortSettings where
+instance Hashable UpdateFleetPortSettings
 
-instance NFData UpdateFleetPortSettings where
+instance NFData UpdateFleetPortSettings
 
 instance ToHeaders UpdateFleetPortSettings where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("GameLift.UpdateFleetPortSettings" :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =# ("GameLift.UpdateFleetPortSettings" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON UpdateFleetPortSettings where
-        toJSON UpdateFleetPortSettings'{..}
-          = object
-              (catMaybes
-                 [("InboundPermissionRevocations" .=) <$>
-                    _ufpsInboundPermissionRevocations,
-                  ("InboundPermissionAuthorizations" .=) <$>
-                    _ufpsInboundPermissionAuthorizations,
-                  Just ("FleetId" .= _ufpsFleetId)])
+  toJSON UpdateFleetPortSettings' {..} =
+    object
+      (catMaybes
+         [ ("InboundPermissionRevocations" .=) <$>
+           _ufpsInboundPermissionRevocations
+         , ("InboundPermissionAuthorizations" .=) <$>
+           _ufpsInboundPermissionAuthorizations
+         , Just ("FleetId" .= _ufpsFleetId)
+         ])
 
 instance ToPath UpdateFleetPortSettings where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery UpdateFleetPortSettings where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | Represents the returned data in response to a request action.
 --
 --
 --
 -- /See:/ 'updateFleetPortSettingsResponse' smart constructor.
-data UpdateFleetPortSettingsResponse = UpdateFleetPortSettingsResponse'
-  { _ufpsrsFleetId        :: !(Maybe Text)
-  , _ufpsrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateFleetPortSettingsResponse =
+  UpdateFleetPortSettingsResponse'
+    { _ufpsrsFleetId :: !(Maybe Text)
+    , _ufpsrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateFleetPortSettingsResponse' with the minimum fields required to make a request.
 --
@@ -195,20 +200,20 @@ data UpdateFleetPortSettingsResponse = UpdateFleetPortSettingsResponse'
 -- * 'ufpsrsFleetId' - Unique identifier for a fleet that was updated.
 --
 -- * 'ufpsrsResponseStatus' - -- | The response status code.
-updateFleetPortSettingsResponse
-    :: Int -- ^ 'ufpsrsResponseStatus'
-    -> UpdateFleetPortSettingsResponse
+updateFleetPortSettingsResponse ::
+     Int -- ^ 'ufpsrsResponseStatus'
+  -> UpdateFleetPortSettingsResponse
 updateFleetPortSettingsResponse pResponseStatus_ =
   UpdateFleetPortSettingsResponse'
     {_ufpsrsFleetId = Nothing, _ufpsrsResponseStatus = pResponseStatus_}
 
-
 -- | Unique identifier for a fleet that was updated.
 ufpsrsFleetId :: Lens' UpdateFleetPortSettingsResponse (Maybe Text)
-ufpsrsFleetId = lens _ufpsrsFleetId (\ s a -> s{_ufpsrsFleetId = a})
+ufpsrsFleetId = lens _ufpsrsFleetId (\s a -> s {_ufpsrsFleetId = a})
 
 -- | -- | The response status code.
 ufpsrsResponseStatus :: Lens' UpdateFleetPortSettingsResponse Int
-ufpsrsResponseStatus = lens _ufpsrsResponseStatus (\ s a -> s{_ufpsrsResponseStatus = a})
+ufpsrsResponseStatus =
+  lens _ufpsrsResponseStatus (\s a -> s {_ufpsrsResponseStatus = a})
 
-instance NFData UpdateFleetPortSettingsResponse where
+instance NFData UpdateFleetPortSettingsResponse

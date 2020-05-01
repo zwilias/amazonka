@@ -1,10 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE TypeFamilies      #-}
-
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.OpsWorks.Waiters
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -74,7 +72,6 @@ instanceTerminated =
         ]
     }
 
-
 -- | Polls 'Network.AWS.OpsWorks.DescribeDeployments' every 15 seconds until a successful state is reached. An error is returned after 40 failed checks.
 deploymentSuccessful :: Wait DescribeDeployments
 deploymentSuccessful =
@@ -93,7 +90,6 @@ deploymentSuccessful =
             (folding (concatOf ddrsDeployments) . dStatus . _Just . to toTextCI)
         ]
     }
-
 
 -- | Polls 'Network.AWS.OpsWorks.DescribeInstances' every 15 seconds until a successful state is reached. An error is returned after 40 failed checks.
 instanceStopped :: Wait DescribeInstances
@@ -142,7 +138,6 @@ instanceStopped =
         ]
     }
 
-
 -- | Polls 'Network.AWS.OpsWorks.DescribeInstances' every 15 seconds until a successful state is reached. An error is returned after 40 failed checks.
 instanceOnline :: Wait DescribeInstances
 instanceOnline =
@@ -190,7 +185,6 @@ instanceOnline =
         ]
     }
 
-
 -- | Polls 'Network.AWS.OpsWorks.DescribeApps' every 1 seconds until a successful state is reached. An error is returned after 40 failed checks.
 appExists :: Wait DescribeApps
 appExists =
@@ -201,7 +195,6 @@ appExists =
     , _waitAcceptors =
         [matchStatus 200 AcceptSuccess, matchStatus 400 AcceptFailure]
     }
-
 
 -- | Polls 'Network.AWS.OpsWorks.DescribeInstances' every 15 seconds until a successful state is reached. An error is returned after 40 failed checks.
 instanceRegistered :: Wait DescribeInstances
@@ -245,4 +238,3 @@ instanceRegistered =
             (folding (concatOf dirsInstances) . iStatus . _Just . to toTextCI)
         ]
     }
-

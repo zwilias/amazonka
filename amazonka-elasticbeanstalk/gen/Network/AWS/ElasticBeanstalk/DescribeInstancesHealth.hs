@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.ElasticBeanstalk.DescribeInstancesHealth
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,25 +20,23 @@
 --
 --
 module Network.AWS.ElasticBeanstalk.DescribeInstancesHealth
-    (
     -- * Creating a Request
-      describeInstancesHealth
-    , DescribeInstancesHealth
+  ( describeInstancesHealth
+  , DescribeInstancesHealth
     -- * Request Lenses
-    , dihNextToken
-    , dihEnvironmentName
-    , dihAttributeNames
-    , dihEnvironmentId
-
+  , dihNextToken
+  , dihEnvironmentName
+  , dihAttributeNames
+  , dihEnvironmentId
     -- * Destructuring the Response
-    , describeInstancesHealthResponse
-    , DescribeInstancesHealthResponse
+  , describeInstancesHealthResponse
+  , DescribeInstancesHealthResponse
     -- * Response Lenses
-    , dihrsInstanceHealthList
-    , dihrsNextToken
-    , dihrsRefreshedAt
-    , dihrsResponseStatus
-    ) where
+  , dihrsInstanceHealthList
+  , dihrsNextToken
+  , dihrsRefreshedAt
+  , dihrsResponseStatus
+  ) where
 
 import Network.AWS.ElasticBeanstalk.Types
 import Network.AWS.ElasticBeanstalk.Types.Product
@@ -54,13 +50,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeInstancesHealth' smart constructor.
-data DescribeInstancesHealth = DescribeInstancesHealth'
-  { _dihNextToken       :: !(Maybe Text)
-  , _dihEnvironmentName :: !(Maybe Text)
-  , _dihAttributeNames  :: !(Maybe [InstancesHealthAttribute])
-  , _dihEnvironmentId   :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeInstancesHealth =
+  DescribeInstancesHealth'
+    { _dihNextToken :: !(Maybe Text)
+    , _dihEnvironmentName :: !(Maybe Text)
+    , _dihAttributeNames :: !(Maybe [InstancesHealthAttribute])
+    , _dihEnvironmentId :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeInstancesHealth' with the minimum fields required to make a request.
 --
@@ -73,8 +70,7 @@ data DescribeInstancesHealth = DescribeInstancesHealth'
 -- * 'dihAttributeNames' - Specifies the response elements you wish to receive. To retrieve all attributes, set to @All@ . If no attribute names are specified, returns a list of instances.
 --
 -- * 'dihEnvironmentId' - Specify the AWS Elastic Beanstalk environment by ID.
-describeInstancesHealth
-    :: DescribeInstancesHealth
+describeInstancesHealth :: DescribeInstancesHealth
 describeInstancesHealth =
   DescribeInstancesHealth'
     { _dihNextToken = Nothing
@@ -83,72 +79,73 @@ describeInstancesHealth =
     , _dihEnvironmentId = Nothing
     }
 
-
 -- | Specify the pagination token returned by a previous call.
 dihNextToken :: Lens' DescribeInstancesHealth (Maybe Text)
-dihNextToken = lens _dihNextToken (\ s a -> s{_dihNextToken = a})
+dihNextToken = lens _dihNextToken (\s a -> s {_dihNextToken = a})
 
 -- | Specify the AWS Elastic Beanstalk environment by name.
 dihEnvironmentName :: Lens' DescribeInstancesHealth (Maybe Text)
-dihEnvironmentName = lens _dihEnvironmentName (\ s a -> s{_dihEnvironmentName = a})
+dihEnvironmentName =
+  lens _dihEnvironmentName (\s a -> s {_dihEnvironmentName = a})
 
 -- | Specifies the response elements you wish to receive. To retrieve all attributes, set to @All@ . If no attribute names are specified, returns a list of instances.
 dihAttributeNames :: Lens' DescribeInstancesHealth [InstancesHealthAttribute]
-dihAttributeNames = lens _dihAttributeNames (\ s a -> s{_dihAttributeNames = a}) . _Default . _Coerce
+dihAttributeNames =
+  lens _dihAttributeNames (\s a -> s {_dihAttributeNames = a}) .
+  _Default . _Coerce
 
 -- | Specify the AWS Elastic Beanstalk environment by ID.
 dihEnvironmentId :: Lens' DescribeInstancesHealth (Maybe Text)
-dihEnvironmentId = lens _dihEnvironmentId (\ s a -> s{_dihEnvironmentId = a})
+dihEnvironmentId = lens _dihEnvironmentId (\s a -> s {_dihEnvironmentId = a})
 
 instance AWSRequest DescribeInstancesHealth where
-        type Rs DescribeInstancesHealth =
-             DescribeInstancesHealthResponse
-        request = postQuery elasticBeanstalk
-        response
-          = receiveXMLWrapper "DescribeInstancesHealthResult"
-              (\ s h x ->
-                 DescribeInstancesHealthResponse' <$>
-                   (x .@? "InstanceHealthList" .!@ mempty >>=
-                      may (parseXMLList "member"))
-                     <*> (x .@? "NextToken")
-                     <*> (x .@? "RefreshedAt")
-                     <*> (pure (fromEnum s)))
+  type Rs DescribeInstancesHealth = DescribeInstancesHealthResponse
+  request = postQuery elasticBeanstalk
+  response =
+    receiveXMLWrapper
+      "DescribeInstancesHealthResult"
+      (\s h x ->
+         DescribeInstancesHealthResponse' <$>
+         (x .@? "InstanceHealthList" .!@ mempty >>= may (parseXMLList "member")) <*>
+         (x .@? "NextToken") <*>
+         (x .@? "RefreshedAt") <*>
+         (pure (fromEnum s)))
 
-instance Hashable DescribeInstancesHealth where
+instance Hashable DescribeInstancesHealth
 
-instance NFData DescribeInstancesHealth where
+instance NFData DescribeInstancesHealth
 
 instance ToHeaders DescribeInstancesHealth where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath DescribeInstancesHealth where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery DescribeInstancesHealth where
-        toQuery DescribeInstancesHealth'{..}
-          = mconcat
-              ["Action" =:
-                 ("DescribeInstancesHealth" :: ByteString),
-               "Version" =: ("2010-12-01" :: ByteString),
-               "NextToken" =: _dihNextToken,
-               "EnvironmentName" =: _dihEnvironmentName,
-               "AttributeNames" =:
-                 toQuery
-                   (toQueryList "member" <$> _dihAttributeNames),
-               "EnvironmentId" =: _dihEnvironmentId]
+  toQuery DescribeInstancesHealth' {..} =
+    mconcat
+      [ "Action" =: ("DescribeInstancesHealth" :: ByteString)
+      , "Version" =: ("2010-12-01" :: ByteString)
+      , "NextToken" =: _dihNextToken
+      , "EnvironmentName" =: _dihEnvironmentName
+      , "AttributeNames" =:
+        toQuery (toQueryList "member" <$> _dihAttributeNames)
+      , "EnvironmentId" =: _dihEnvironmentId
+      ]
 
 -- | Detailed health information about the Amazon EC2 instances in an AWS Elastic Beanstalk environment.
 --
 --
 --
 -- /See:/ 'describeInstancesHealthResponse' smart constructor.
-data DescribeInstancesHealthResponse = DescribeInstancesHealthResponse'
-  { _dihrsInstanceHealthList :: !(Maybe [SingleInstanceHealth])
-  , _dihrsNextToken          :: !(Maybe Text)
-  , _dihrsRefreshedAt        :: !(Maybe ISO8601)
-  , _dihrsResponseStatus     :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeInstancesHealthResponse =
+  DescribeInstancesHealthResponse'
+    { _dihrsInstanceHealthList :: !(Maybe [SingleInstanceHealth])
+    , _dihrsNextToken :: !(Maybe Text)
+    , _dihrsRefreshedAt :: !(Maybe ISO8601)
+    , _dihrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeInstancesHealthResponse' with the minimum fields required to make a request.
 --
@@ -161,9 +158,9 @@ data DescribeInstancesHealthResponse = DescribeInstancesHealthResponse'
 -- * 'dihrsRefreshedAt' - The date and time that the health information was retrieved.
 --
 -- * 'dihrsResponseStatus' - -- | The response status code.
-describeInstancesHealthResponse
-    :: Int -- ^ 'dihrsResponseStatus'
-    -> DescribeInstancesHealthResponse
+describeInstancesHealthResponse ::
+     Int -- ^ 'dihrsResponseStatus'
+  -> DescribeInstancesHealthResponse
 describeInstancesHealthResponse pResponseStatus_ =
   DescribeInstancesHealthResponse'
     { _dihrsInstanceHealthList = Nothing
@@ -172,21 +169,25 @@ describeInstancesHealthResponse pResponseStatus_ =
     , _dihrsResponseStatus = pResponseStatus_
     }
 
-
 -- | Detailed health information about each instance.
-dihrsInstanceHealthList :: Lens' DescribeInstancesHealthResponse [SingleInstanceHealth]
-dihrsInstanceHealthList = lens _dihrsInstanceHealthList (\ s a -> s{_dihrsInstanceHealthList = a}) . _Default . _Coerce
+dihrsInstanceHealthList ::
+     Lens' DescribeInstancesHealthResponse [SingleInstanceHealth]
+dihrsInstanceHealthList =
+  lens _dihrsInstanceHealthList (\s a -> s {_dihrsInstanceHealthList = a}) .
+  _Default . _Coerce
 
 -- | Pagination token for the next page of results, if available.
 dihrsNextToken :: Lens' DescribeInstancesHealthResponse (Maybe Text)
-dihrsNextToken = lens _dihrsNextToken (\ s a -> s{_dihrsNextToken = a})
+dihrsNextToken = lens _dihrsNextToken (\s a -> s {_dihrsNextToken = a})
 
 -- | The date and time that the health information was retrieved.
 dihrsRefreshedAt :: Lens' DescribeInstancesHealthResponse (Maybe UTCTime)
-dihrsRefreshedAt = lens _dihrsRefreshedAt (\ s a -> s{_dihrsRefreshedAt = a}) . mapping _Time
+dihrsRefreshedAt =
+  lens _dihrsRefreshedAt (\s a -> s {_dihrsRefreshedAt = a}) . mapping _Time
 
 -- | -- | The response status code.
 dihrsResponseStatus :: Lens' DescribeInstancesHealthResponse Int
-dihrsResponseStatus = lens _dihrsResponseStatus (\ s a -> s{_dihrsResponseStatus = a})
+dihrsResponseStatus =
+  lens _dihrsResponseStatus (\s a -> s {_dihrsResponseStatus = a})
 
-instance NFData DescribeInstancesHealthResponse where
+instance NFData DescribeInstancesHealthResponse

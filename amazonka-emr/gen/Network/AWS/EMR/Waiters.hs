@@ -1,10 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE TypeFamilies      #-}
-
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.EMR.Waiters
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -46,7 +44,6 @@ stepComplete =
         ]
     }
 
-
 -- | Polls 'Network.AWS.EMR.DescribeCluster' every 30 seconds until a successful state is reached. An error is returned after 60 failed checks.
 clusterTerminated :: Wait DescribeCluster
 clusterTerminated =
@@ -65,7 +62,6 @@ clusterTerminated =
             (dcrsCluster . cluStatus . csState . _Just . to toTextCI)
         ]
     }
-
 
 -- | Polls 'Network.AWS.EMR.DescribeCluster' every 30 seconds until a successful state is reached. An error is returned after 60 failed checks.
 clusterRunning :: Wait DescribeCluster
@@ -97,4 +93,3 @@ clusterRunning =
             (dcrsCluster . cluStatus . csState . _Just . to toTextCI)
         ]
     }
-

@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CodePipeline.GetPipelineExecution
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,21 +20,19 @@
 --
 --
 module Network.AWS.CodePipeline.GetPipelineExecution
-    (
     -- * Creating a Request
-      getPipelineExecution
-    , GetPipelineExecution
+  ( getPipelineExecution
+  , GetPipelineExecution
     -- * Request Lenses
-    , gpePipelineName
-    , gpePipelineExecutionId
-
+  , gpePipelineName
+  , gpePipelineExecutionId
     -- * Destructuring the Response
-    , getPipelineExecutionResponse
-    , GetPipelineExecutionResponse
+  , getPipelineExecutionResponse
+  , GetPipelineExecutionResponse
     -- * Response Lenses
-    , gpersPipelineExecution
-    , gpersResponseStatus
-    ) where
+  , gpersPipelineExecution
+  , gpersResponseStatus
+  ) where
 
 import Network.AWS.CodePipeline.Types
 import Network.AWS.CodePipeline.Types.Product
@@ -50,11 +46,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getPipelineExecution' smart constructor.
-data GetPipelineExecution = GetPipelineExecution'
-  { _gpePipelineName        :: !Text
-  , _gpePipelineExecutionId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetPipelineExecution =
+  GetPipelineExecution'
+    { _gpePipelineName :: !Text
+    , _gpePipelineExecutionId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetPipelineExecution' with the minimum fields required to make a request.
 --
@@ -63,73 +60,72 @@ data GetPipelineExecution = GetPipelineExecution'
 -- * 'gpePipelineName' - The name of the pipeline about which you want to get execution details.
 --
 -- * 'gpePipelineExecutionId' - The ID of the pipeline execution about which you want to get execution details.
-getPipelineExecution
-    :: Text -- ^ 'gpePipelineName'
-    -> Text -- ^ 'gpePipelineExecutionId'
-    -> GetPipelineExecution
+getPipelineExecution ::
+     Text -- ^ 'gpePipelineName'
+  -> Text -- ^ 'gpePipelineExecutionId'
+  -> GetPipelineExecution
 getPipelineExecution pPipelineName_ pPipelineExecutionId_ =
   GetPipelineExecution'
     { _gpePipelineName = pPipelineName_
     , _gpePipelineExecutionId = pPipelineExecutionId_
     }
 
-
 -- | The name of the pipeline about which you want to get execution details.
 gpePipelineName :: Lens' GetPipelineExecution Text
-gpePipelineName = lens _gpePipelineName (\ s a -> s{_gpePipelineName = a})
+gpePipelineName = lens _gpePipelineName (\s a -> s {_gpePipelineName = a})
 
 -- | The ID of the pipeline execution about which you want to get execution details.
 gpePipelineExecutionId :: Lens' GetPipelineExecution Text
-gpePipelineExecutionId = lens _gpePipelineExecutionId (\ s a -> s{_gpePipelineExecutionId = a})
+gpePipelineExecutionId =
+  lens _gpePipelineExecutionId (\s a -> s {_gpePipelineExecutionId = a})
 
 instance AWSRequest GetPipelineExecution where
-        type Rs GetPipelineExecution =
-             GetPipelineExecutionResponse
-        request = postJSON codePipeline
-        response
-          = receiveJSON
-              (\ s h x ->
-                 GetPipelineExecutionResponse' <$>
-                   (x .?> "pipelineExecution") <*> (pure (fromEnum s)))
+  type Rs GetPipelineExecution = GetPipelineExecutionResponse
+  request = postJSON codePipeline
+  response =
+    receiveJSON
+      (\s h x ->
+         GetPipelineExecutionResponse' <$> (x .?> "pipelineExecution") <*>
+         (pure (fromEnum s)))
 
-instance Hashable GetPipelineExecution where
+instance Hashable GetPipelineExecution
 
-instance NFData GetPipelineExecution where
+instance NFData GetPipelineExecution
 
 instance ToHeaders GetPipelineExecution where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("CodePipeline_20150709.GetPipelineExecution" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("CodePipeline_20150709.GetPipelineExecution" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON GetPipelineExecution where
-        toJSON GetPipelineExecution'{..}
-          = object
-              (catMaybes
-                 [Just ("pipelineName" .= _gpePipelineName),
-                  Just
-                    ("pipelineExecutionId" .= _gpePipelineExecutionId)])
+  toJSON GetPipelineExecution' {..} =
+    object
+      (catMaybes
+         [ Just ("pipelineName" .= _gpePipelineName)
+         , Just ("pipelineExecutionId" .= _gpePipelineExecutionId)
+         ])
 
 instance ToPath GetPipelineExecution where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery GetPipelineExecution where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | Represents the output of a GetPipelineExecution action.
 --
 --
 --
 -- /See:/ 'getPipelineExecutionResponse' smart constructor.
-data GetPipelineExecutionResponse = GetPipelineExecutionResponse'
-  { _gpersPipelineExecution :: !(Maybe PipelineExecution)
-  , _gpersResponseStatus    :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetPipelineExecutionResponse =
+  GetPipelineExecutionResponse'
+    { _gpersPipelineExecution :: !(Maybe PipelineExecution)
+    , _gpersResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetPipelineExecutionResponse' with the minimum fields required to make a request.
 --
@@ -138,20 +134,22 @@ data GetPipelineExecutionResponse = GetPipelineExecutionResponse'
 -- * 'gpersPipelineExecution' - Represents information about the execution of a pipeline.
 --
 -- * 'gpersResponseStatus' - -- | The response status code.
-getPipelineExecutionResponse
-    :: Int -- ^ 'gpersResponseStatus'
-    -> GetPipelineExecutionResponse
+getPipelineExecutionResponse ::
+     Int -- ^ 'gpersResponseStatus'
+  -> GetPipelineExecutionResponse
 getPipelineExecutionResponse pResponseStatus_ =
   GetPipelineExecutionResponse'
     {_gpersPipelineExecution = Nothing, _gpersResponseStatus = pResponseStatus_}
 
-
 -- | Represents information about the execution of a pipeline.
-gpersPipelineExecution :: Lens' GetPipelineExecutionResponse (Maybe PipelineExecution)
-gpersPipelineExecution = lens _gpersPipelineExecution (\ s a -> s{_gpersPipelineExecution = a})
+gpersPipelineExecution ::
+     Lens' GetPipelineExecutionResponse (Maybe PipelineExecution)
+gpersPipelineExecution =
+  lens _gpersPipelineExecution (\s a -> s {_gpersPipelineExecution = a})
 
 -- | -- | The response status code.
 gpersResponseStatus :: Lens' GetPipelineExecutionResponse Int
-gpersResponseStatus = lens _gpersResponseStatus (\ s a -> s{_gpersResponseStatus = a})
+gpersResponseStatus =
+  lens _gpersResponseStatus (\s a -> s {_gpersResponseStatus = a})
 
-instance NFData GetPipelineExecutionResponse where
+instance NFData GetPipelineExecutionResponse

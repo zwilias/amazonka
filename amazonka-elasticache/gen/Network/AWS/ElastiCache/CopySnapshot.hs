@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.ElastiCache.CopySnapshot
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -62,22 +60,20 @@
 --
 --
 module Network.AWS.ElastiCache.CopySnapshot
-    (
     -- * Creating a Request
-      copySnapshot
-    , CopySnapshot
+  ( copySnapshot
+  , CopySnapshot
     -- * Request Lenses
-    , csTargetBucket
-    , csSourceSnapshotName
-    , csTargetSnapshotName
-
+  , csTargetBucket
+  , csSourceSnapshotName
+  , csTargetSnapshotName
     -- * Destructuring the Response
-    , copySnapshotResponse
-    , CopySnapshotResponse
+  , copySnapshotResponse
+  , CopySnapshotResponse
     -- * Response Lenses
-    , csrsSnapshot
-    , csrsResponseStatus
-    ) where
+  , csrsSnapshot
+  , csrsResponseStatus
+  ) where
 
 import Network.AWS.ElastiCache.Types
 import Network.AWS.ElastiCache.Types.Product
@@ -91,12 +87,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'copySnapshot' smart constructor.
-data CopySnapshot = CopySnapshot'
-  { _csTargetBucket       :: !(Maybe Text)
-  , _csSourceSnapshotName :: !Text
-  , _csTargetSnapshotName :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CopySnapshot =
+  CopySnapshot'
+    { _csTargetBucket :: !(Maybe Text)
+    , _csSourceSnapshotName :: !Text
+    , _csTargetSnapshotName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CopySnapshot' with the minimum fields required to make a request.
 --
@@ -107,10 +104,10 @@ data CopySnapshot = CopySnapshot'
 -- * 'csSourceSnapshotName' - The name of an existing snapshot from which to make a copy.
 --
 -- * 'csTargetSnapshotName' - A name for the snapshot copy. ElastiCache does not permit overwriting a snapshot, therefore this name must be unique within its context - ElastiCache or an Amazon S3 bucket if exporting.
-copySnapshot
-    :: Text -- ^ 'csSourceSnapshotName'
-    -> Text -- ^ 'csTargetSnapshotName'
-    -> CopySnapshot
+copySnapshot ::
+     Text -- ^ 'csSourceSnapshotName'
+  -> Text -- ^ 'csTargetSnapshotName'
+  -> CopySnapshot
 copySnapshot pSourceSnapshotName_ pTargetSnapshotName_ =
   CopySnapshot'
     { _csTargetBucket = Nothing
@@ -118,53 +115,56 @@ copySnapshot pSourceSnapshotName_ pTargetSnapshotName_ =
     , _csTargetSnapshotName = pTargetSnapshotName_
     }
 
-
 -- | The Amazon S3 bucket to which the snapshot is exported. This parameter is used only when exporting a snapshot for external access. When using this parameter to export a snapshot, be sure Amazon ElastiCache has the needed permissions to this S3 bucket. For more information, see <http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket> in the /Amazon ElastiCache User Guide/ . For more information, see <http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html Exporting a Snapshot> in the /Amazon ElastiCache User Guide/ .
 csTargetBucket :: Lens' CopySnapshot (Maybe Text)
-csTargetBucket = lens _csTargetBucket (\ s a -> s{_csTargetBucket = a})
+csTargetBucket = lens _csTargetBucket (\s a -> s {_csTargetBucket = a})
 
 -- | The name of an existing snapshot from which to make a copy.
 csSourceSnapshotName :: Lens' CopySnapshot Text
-csSourceSnapshotName = lens _csSourceSnapshotName (\ s a -> s{_csSourceSnapshotName = a})
+csSourceSnapshotName =
+  lens _csSourceSnapshotName (\s a -> s {_csSourceSnapshotName = a})
 
 -- | A name for the snapshot copy. ElastiCache does not permit overwriting a snapshot, therefore this name must be unique within its context - ElastiCache or an Amazon S3 bucket if exporting.
 csTargetSnapshotName :: Lens' CopySnapshot Text
-csTargetSnapshotName = lens _csTargetSnapshotName (\ s a -> s{_csTargetSnapshotName = a})
+csTargetSnapshotName =
+  lens _csTargetSnapshotName (\s a -> s {_csTargetSnapshotName = a})
 
 instance AWSRequest CopySnapshot where
-        type Rs CopySnapshot = CopySnapshotResponse
-        request = postQuery elastiCache
-        response
-          = receiveXMLWrapper "CopySnapshotResult"
-              (\ s h x ->
-                 CopySnapshotResponse' <$>
-                   (x .@? "Snapshot") <*> (pure (fromEnum s)))
+  type Rs CopySnapshot = CopySnapshotResponse
+  request = postQuery elastiCache
+  response =
+    receiveXMLWrapper
+      "CopySnapshotResult"
+      (\s h x ->
+         CopySnapshotResponse' <$> (x .@? "Snapshot") <*> (pure (fromEnum s)))
 
-instance Hashable CopySnapshot where
+instance Hashable CopySnapshot
 
-instance NFData CopySnapshot where
+instance NFData CopySnapshot
 
 instance ToHeaders CopySnapshot where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath CopySnapshot where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery CopySnapshot where
-        toQuery CopySnapshot'{..}
-          = mconcat
-              ["Action" =: ("CopySnapshot" :: ByteString),
-               "Version" =: ("2015-02-02" :: ByteString),
-               "TargetBucket" =: _csTargetBucket,
-               "SourceSnapshotName" =: _csSourceSnapshotName,
-               "TargetSnapshotName" =: _csTargetSnapshotName]
+  toQuery CopySnapshot' {..} =
+    mconcat
+      [ "Action" =: ("CopySnapshot" :: ByteString)
+      , "Version" =: ("2015-02-02" :: ByteString)
+      , "TargetBucket" =: _csTargetBucket
+      , "SourceSnapshotName" =: _csSourceSnapshotName
+      , "TargetSnapshotName" =: _csTargetSnapshotName
+      ]
 
 -- | /See:/ 'copySnapshotResponse' smart constructor.
-data CopySnapshotResponse = CopySnapshotResponse'
-  { _csrsSnapshot       :: !(Maybe Snapshot)
-  , _csrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CopySnapshotResponse =
+  CopySnapshotResponse'
+    { _csrsSnapshot :: !(Maybe Snapshot)
+    , _csrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CopySnapshotResponse' with the minimum fields required to make a request.
 --
@@ -173,20 +173,20 @@ data CopySnapshotResponse = CopySnapshotResponse'
 -- * 'csrsSnapshot' - Undocumented member.
 --
 -- * 'csrsResponseStatus' - -- | The response status code.
-copySnapshotResponse
-    :: Int -- ^ 'csrsResponseStatus'
-    -> CopySnapshotResponse
+copySnapshotResponse ::
+     Int -- ^ 'csrsResponseStatus'
+  -> CopySnapshotResponse
 copySnapshotResponse pResponseStatus_ =
   CopySnapshotResponse'
     {_csrsSnapshot = Nothing, _csrsResponseStatus = pResponseStatus_}
 
-
 -- | Undocumented member.
 csrsSnapshot :: Lens' CopySnapshotResponse (Maybe Snapshot)
-csrsSnapshot = lens _csrsSnapshot (\ s a -> s{_csrsSnapshot = a})
+csrsSnapshot = lens _csrsSnapshot (\s a -> s {_csrsSnapshot = a})
 
 -- | -- | The response status code.
 csrsResponseStatus :: Lens' CopySnapshotResponse Int
-csrsResponseStatus = lens _csrsResponseStatus (\ s a -> s{_csrsResponseStatus = a})
+csrsResponseStatus =
+  lens _csrsResponseStatus (\s a -> s {_csrsResponseStatus = a})
 
-instance NFData CopySnapshotResponse where
+instance NFData CopySnapshotResponse

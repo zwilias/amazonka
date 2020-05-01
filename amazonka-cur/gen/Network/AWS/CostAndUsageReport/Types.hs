@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CostAndUsageReport.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,47 +10,38 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.CostAndUsageReport.Types
-    (
     -- * Service Configuration
-      costAndUsageReport
-
+  ( costAndUsageReport
     -- * Errors
-    , _ValidationException
-    , _InternalErrorException
-    , _DuplicateReportNameException
-    , _ReportLimitReachedException
-
+  , _ValidationException
+  , _InternalErrorException
+  , _DuplicateReportNameException
+  , _ReportLimitReachedException
     -- * AWSRegion
-    , AWSRegion (..)
-
+  , AWSRegion(..)
     -- * AdditionalArtifact
-    , AdditionalArtifact (..)
-
+  , AdditionalArtifact(..)
     -- * CompressionFormat
-    , CompressionFormat (..)
-
+  , CompressionFormat(..)
     -- * ReportFormat
-    , ReportFormat (..)
-
+  , ReportFormat(..)
     -- * SchemaElement
-    , SchemaElement (..)
-
+  , SchemaElement(..)
     -- * TimeUnit
-    , TimeUnit (..)
-
+  , TimeUnit(..)
     -- * ReportDefinition
-    , ReportDefinition
-    , reportDefinition
-    , rdAdditionalArtifacts
-    , rdReportName
-    , rdTimeUnit
-    , rdFormat
-    , rdCompression
-    , rdAdditionalSchemaElements
-    , rdS3Bucket
-    , rdS3Prefix
-    , rdS3Region
-    ) where
+  , ReportDefinition
+  , reportDefinition
+  , rdAdditionalArtifacts
+  , rdReportName
+  , rdTimeUnit
+  , rdFormat
+  , rdCompression
+  , rdAdditionalSchemaElements
+  , rdS3Bucket
+  , rdS3Prefix
+  , rdS3Region
+  ) where
 
 import Network.AWS.CostAndUsageReport.Types.Product
 import Network.AWS.CostAndUsageReport.Types.Sum
@@ -97,27 +87,25 @@ costAndUsageReport =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | This exception is thrown when providing an invalid input. eg. Put a report preference with an invalid report name, or Delete a report preference with an empty report name.
 _ValidationException :: AsError a => Getting (First ServiceError) a ServiceError
 _ValidationException =
   _MatchServiceError costAndUsageReport "ValidationException"
 
-
 -- | This exception is thrown on a known dependency failure.
-_InternalErrorException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalErrorException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InternalErrorException =
   _MatchServiceError costAndUsageReport "InternalErrorException"
 
-
 -- | This exception is thrown when putting a report preference with a name that already exists.
-_DuplicateReportNameException :: AsError a => Getting (First ServiceError) a ServiceError
+_DuplicateReportNameException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _DuplicateReportNameException =
   _MatchServiceError costAndUsageReport "DuplicateReportNameException"
 
-
 -- | This exception is thrown when the number of report preference reaches max limit. The max number is 5.
-_ReportLimitReachedException :: AsError a => Getting (First ServiceError) a ServiceError
+_ReportLimitReachedException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ReportLimitReachedException =
   _MatchServiceError costAndUsageReport "ReportLimitReachedException"
-

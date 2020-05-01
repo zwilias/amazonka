@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.SES.UpdateConfigurationSetReputationMetricsEnabled
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,18 +22,16 @@
 -- You can execute this operation no more than once per second.
 --
 module Network.AWS.SES.UpdateConfigurationSetReputationMetricsEnabled
-    (
     -- * Creating a Request
-      updateConfigurationSetReputationMetricsEnabled
-    , UpdateConfigurationSetReputationMetricsEnabled
+  ( updateConfigurationSetReputationMetricsEnabled
+  , UpdateConfigurationSetReputationMetricsEnabled
     -- * Request Lenses
-    , ucsrmeConfigurationSetName
-    , ucsrmeEnabled
-
+  , ucsrmeConfigurationSetName
+  , ucsrmeEnabled
     -- * Destructuring the Response
-    , updateConfigurationSetReputationMetricsEnabledResponse
-    , UpdateConfigurationSetReputationMetricsEnabledResponse
-    ) where
+  , updateConfigurationSetReputationMetricsEnabledResponse
+  , UpdateConfigurationSetReputationMetricsEnabledResponse
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -49,11 +45,12 @@ import Network.AWS.SES.Types.Product
 --
 --
 -- /See:/ 'updateConfigurationSetReputationMetricsEnabled' smart constructor.
-data UpdateConfigurationSetReputationMetricsEnabled = UpdateConfigurationSetReputationMetricsEnabled'
-  { _ucsrmeConfigurationSetName :: !Text
-  , _ucsrmeEnabled              :: !Bool
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateConfigurationSetReputationMetricsEnabled =
+  UpdateConfigurationSetReputationMetricsEnabled'
+    { _ucsrmeConfigurationSetName :: !Text
+    , _ucsrmeEnabled :: !Bool
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateConfigurationSetReputationMetricsEnabled' with the minimum fields required to make a request.
 --
@@ -62,83 +59,61 @@ data UpdateConfigurationSetReputationMetricsEnabled = UpdateConfigurationSetRepu
 -- * 'ucsrmeConfigurationSetName' - The name of the configuration set that you want to update.
 --
 -- * 'ucsrmeEnabled' - Describes whether or not Amazon SES will publish reputation metrics for the configuration set, such as bounce and complaint rates, to Amazon CloudWatch.
-updateConfigurationSetReputationMetricsEnabled
-    :: Text -- ^ 'ucsrmeConfigurationSetName'
-    -> Bool -- ^ 'ucsrmeEnabled'
-    -> UpdateConfigurationSetReputationMetricsEnabled
+updateConfigurationSetReputationMetricsEnabled ::
+     Text -- ^ 'ucsrmeConfigurationSetName'
+  -> Bool -- ^ 'ucsrmeEnabled'
+  -> UpdateConfigurationSetReputationMetricsEnabled
 updateConfigurationSetReputationMetricsEnabled pConfigurationSetName_ pEnabled_ =
   UpdateConfigurationSetReputationMetricsEnabled'
     { _ucsrmeConfigurationSetName = pConfigurationSetName_
     , _ucsrmeEnabled = pEnabled_
     }
 
-
 -- | The name of the configuration set that you want to update.
-ucsrmeConfigurationSetName :: Lens' UpdateConfigurationSetReputationMetricsEnabled Text
-ucsrmeConfigurationSetName = lens _ucsrmeConfigurationSetName (\ s a -> s{_ucsrmeConfigurationSetName = a})
+ucsrmeConfigurationSetName ::
+     Lens' UpdateConfigurationSetReputationMetricsEnabled Text
+ucsrmeConfigurationSetName =
+  lens _ucsrmeConfigurationSetName (\s a -> s {_ucsrmeConfigurationSetName = a})
 
 -- | Describes whether or not Amazon SES will publish reputation metrics for the configuration set, such as bounce and complaint rates, to Amazon CloudWatch.
 ucsrmeEnabled :: Lens' UpdateConfigurationSetReputationMetricsEnabled Bool
-ucsrmeEnabled = lens _ucsrmeEnabled (\ s a -> s{_ucsrmeEnabled = a})
+ucsrmeEnabled = lens _ucsrmeEnabled (\s a -> s {_ucsrmeEnabled = a})
 
-instance AWSRequest
-           UpdateConfigurationSetReputationMetricsEnabled
-         where
-        type Rs
-               UpdateConfigurationSetReputationMetricsEnabled
-             =
-             UpdateConfigurationSetReputationMetricsEnabledResponse
-        request = postQuery ses
-        response
-          = receiveNull
-              UpdateConfigurationSetReputationMetricsEnabledResponse'
+instance AWSRequest UpdateConfigurationSetReputationMetricsEnabled where
+  type Rs UpdateConfigurationSetReputationMetricsEnabled = UpdateConfigurationSetReputationMetricsEnabledResponse
+  request = postQuery ses
+  response = receiveNull UpdateConfigurationSetReputationMetricsEnabledResponse'
 
-instance Hashable
-           UpdateConfigurationSetReputationMetricsEnabled
-         where
+instance Hashable UpdateConfigurationSetReputationMetricsEnabled
 
-instance NFData
-           UpdateConfigurationSetReputationMetricsEnabled
-         where
+instance NFData UpdateConfigurationSetReputationMetricsEnabled
 
-instance ToHeaders
-           UpdateConfigurationSetReputationMetricsEnabled
-         where
-        toHeaders = const mempty
+instance ToHeaders UpdateConfigurationSetReputationMetricsEnabled where
+  toHeaders = const mempty
 
-instance ToPath
-           UpdateConfigurationSetReputationMetricsEnabled
-         where
-        toPath = const "/"
+instance ToPath UpdateConfigurationSetReputationMetricsEnabled where
+  toPath = const "/"
 
-instance ToQuery
-           UpdateConfigurationSetReputationMetricsEnabled
-         where
-        toQuery
-          UpdateConfigurationSetReputationMetricsEnabled'{..}
-          = mconcat
-              ["Action" =:
-                 ("UpdateConfigurationSetReputationMetricsEnabled" ::
-                    ByteString),
-               "Version" =: ("2010-12-01" :: ByteString),
-               "ConfigurationSetName" =:
-                 _ucsrmeConfigurationSetName,
-               "Enabled" =: _ucsrmeEnabled]
+instance ToQuery UpdateConfigurationSetReputationMetricsEnabled where
+  toQuery UpdateConfigurationSetReputationMetricsEnabled' {..} =
+    mconcat
+      [ "Action" =:
+        ("UpdateConfigurationSetReputationMetricsEnabled" :: ByteString)
+      , "Version" =: ("2010-12-01" :: ByteString)
+      , "ConfigurationSetName" =: _ucsrmeConfigurationSetName
+      , "Enabled" =: _ucsrmeEnabled
+      ]
 
 -- | /See:/ 'updateConfigurationSetReputationMetricsEnabledResponse' smart constructor.
 data UpdateConfigurationSetReputationMetricsEnabledResponse =
   UpdateConfigurationSetReputationMetricsEnabledResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'UpdateConfigurationSetReputationMetricsEnabledResponse' with the minimum fields required to make a request.
 --
-updateConfigurationSetReputationMetricsEnabledResponse
-    :: UpdateConfigurationSetReputationMetricsEnabledResponse
+updateConfigurationSetReputationMetricsEnabledResponse ::
+     UpdateConfigurationSetReputationMetricsEnabledResponse
 updateConfigurationSetReputationMetricsEnabledResponse =
   UpdateConfigurationSetReputationMetricsEnabledResponse'
 
-
-instance NFData
-           UpdateConfigurationSetReputationMetricsEnabledResponse
-         where
+instance NFData UpdateConfigurationSetReputationMetricsEnabledResponse

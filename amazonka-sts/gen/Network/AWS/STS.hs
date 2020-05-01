@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.STS
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -30,78 +29,56 @@
 -- STS supports AWS CloudTrail, which is a service that records AWS calls for your AWS account and delivers log files to an Amazon S3 bucket. By using information collected by CloudTrail, you can determine what requests were successfully made to STS, who made the request, when it was made, and so on. To learn more about CloudTrail, including how to turn it on and find your log files, see the <http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html AWS CloudTrail User Guide> .
 --
 module Network.AWS.STS
-    (
     -- * Service Configuration
-      sts
-
+  ( sts
     -- * Errors
     -- $errors
-
     -- ** MalformedPolicyDocumentException
-    , _MalformedPolicyDocumentException
-
+  , _MalformedPolicyDocumentException
     -- ** InvalidAuthorizationMessageException
-    , _InvalidAuthorizationMessageException
-
+  , _InvalidAuthorizationMessageException
     -- ** PackedPolicyTooLargeException
-    , _PackedPolicyTooLargeException
-
+  , _PackedPolicyTooLargeException
     -- ** RegionDisabledException
-    , _RegionDisabledException
-
+  , _RegionDisabledException
     -- ** IdPCommunicationErrorException
-    , _IdPCommunicationErrorException
-
+  , _IdPCommunicationErrorException
     -- ** InvalidIdentityTokenException
-    , _InvalidIdentityTokenException
-
+  , _InvalidIdentityTokenException
     -- ** ExpiredTokenException
-    , _ExpiredTokenException
-
+  , _ExpiredTokenException
     -- ** IdPRejectedClaimException
-    , _IdPRejectedClaimException
-
+  , _IdPRejectedClaimException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** GetCallerIdentity
-    , module Network.AWS.STS.GetCallerIdentity
-
+  , module Network.AWS.STS.GetCallerIdentity
     -- ** AssumeRole
-    , module Network.AWS.STS.AssumeRole
-
+  , module Network.AWS.STS.AssumeRole
     -- ** DecodeAuthorizationMessage
-    , module Network.AWS.STS.DecodeAuthorizationMessage
-
+  , module Network.AWS.STS.DecodeAuthorizationMessage
     -- ** AssumeRoleWithWebIdentity
-    , module Network.AWS.STS.AssumeRoleWithWebIdentity
-
+  , module Network.AWS.STS.AssumeRoleWithWebIdentity
     -- ** GetFederationToken
-    , module Network.AWS.STS.GetFederationToken
-
+  , module Network.AWS.STS.GetFederationToken
     -- ** GetSessionToken
-    , module Network.AWS.STS.GetSessionToken
-
+  , module Network.AWS.STS.GetSessionToken
     -- ** AssumeRoleWithSAML
-    , module Network.AWS.STS.AssumeRoleWithSAML
-
+  , module Network.AWS.STS.AssumeRoleWithSAML
     -- * Types
-
     -- ** AssumedRoleUser
-    , AssumedRoleUser
-    , assumedRoleUser
-    , aruAssumedRoleId
-    , aruARN
-
+  , AssumedRoleUser
+  , assumedRoleUser
+  , aruAssumedRoleId
+  , aruARN
     -- ** FederatedUser
-    , FederatedUser
-    , federatedUser
-    , fuFederatedUserId
-    , fuARN
-    ) where
+  , FederatedUser
+  , federatedUser
+  , fuFederatedUserId
+  , fuARN
+  ) where
 
 import Network.AWS.STS.AssumeRole
 import Network.AWS.STS.AssumeRoleWithSAML
@@ -112,14 +89,12 @@ import Network.AWS.STS.GetFederationToken
 import Network.AWS.STS.GetSessionToken
 import Network.AWS.STS.Types
 import Network.AWS.STS.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'STS'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -136,7 +111,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

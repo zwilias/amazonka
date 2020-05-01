@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.MechanicalTurk.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,230 +10,197 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.MechanicalTurk.Types
-    (
     -- * Service Configuration
-      mechanicalTurk
-
+  ( mechanicalTurk
     -- * Errors
-    , _ServiceFault
-    , _RequestError
-
+  , _ServiceFault
+  , _RequestError
     -- * AssignmentStatus
-    , AssignmentStatus (..)
-
+  , AssignmentStatus(..)
     -- * Comparator
-    , Comparator (..)
-
+  , Comparator(..)
     -- * EventType
-    , EventType (..)
-
+  , EventType(..)
     -- * HITAccessActions
-    , HITAccessActions (..)
-
+  , HITAccessActions(..)
     -- * HITReviewStatus
-    , HITReviewStatus (..)
-
+  , HITReviewStatus(..)
     -- * HITStatus
-    , HITStatus (..)
-
+  , HITStatus(..)
     -- * NotificationTransport
-    , NotificationTransport (..)
-
+  , NotificationTransport(..)
     -- * NotifyWorkersFailureCode
-    , NotifyWorkersFailureCode (..)
-
+  , NotifyWorkersFailureCode(..)
     -- * QualificationStatus
-    , QualificationStatus (..)
-
+  , QualificationStatus(..)
     -- * QualificationTypeStatus
-    , QualificationTypeStatus (..)
-
+  , QualificationTypeStatus(..)
     -- * ReviewActionStatus
-    , ReviewActionStatus (..)
-
+  , ReviewActionStatus(..)
     -- * ReviewPolicyLevel
-    , ReviewPolicyLevel (..)
-
+  , ReviewPolicyLevel(..)
     -- * ReviewableHITStatus
-    , ReviewableHITStatus (..)
-
+  , ReviewableHITStatus(..)
     -- * Assignment
-    , Assignment
-    , assignment
-    , aAcceptTime
-    , aAnswer
-    , aAssignmentStatus
-    , aRequesterFeedback
-    , aDeadline
-    , aApprovalTime
-    , aRejectionTime
-    , aAutoApprovalTime
-    , aHITId
-    , aWorkerId
-    , aAssignmentId
-    , aSubmitTime
-
+  , Assignment
+  , assignment
+  , aAcceptTime
+  , aAnswer
+  , aAssignmentStatus
+  , aRequesterFeedback
+  , aDeadline
+  , aApprovalTime
+  , aRejectionTime
+  , aAutoApprovalTime
+  , aHITId
+  , aWorkerId
+  , aAssignmentId
+  , aSubmitTime
     -- * BonusPayment
-    , BonusPayment
-    , bonusPayment
-    , bpReason
-    , bpGrantTime
-    , bpWorkerId
-    , bpAssignmentId
-    , bpBonusAmount
-
+  , BonusPayment
+  , bonusPayment
+  , bpReason
+  , bpGrantTime
+  , bpWorkerId
+  , bpAssignmentId
+  , bpBonusAmount
     -- * HIT
-    , HIT
-    , hIT
-    , hitCreationTime
-    , hitHITGroupId
-    , hitNumberOfAssignmentsPending
-    , hitHITTypeId
-    , hitExpiration
-    , hitAutoApprovalDelayInSeconds
-    , hitRequesterAnnotation
-    , hitHITStatus
-    , hitMaxAssignments
-    , hitNumberOfAssignmentsCompleted
-    , hitReward
-    , hitKeywords
-    , hitHITLayoutId
-    , hitQualificationRequirements
-    , hitTitle
-    , hitHITId
-    , hitHITReviewStatus
-    , hitNumberOfAssignmentsAvailable
-    , hitDescription
-    , hitQuestion
-    , hitAssignmentDurationInSeconds
-
+  , HIT
+  , hIT
+  , hitCreationTime
+  , hitHITGroupId
+  , hitNumberOfAssignmentsPending
+  , hitHITTypeId
+  , hitExpiration
+  , hitAutoApprovalDelayInSeconds
+  , hitRequesterAnnotation
+  , hitHITStatus
+  , hitMaxAssignments
+  , hitNumberOfAssignmentsCompleted
+  , hitReward
+  , hitKeywords
+  , hitHITLayoutId
+  , hitQualificationRequirements
+  , hitTitle
+  , hitHITId
+  , hitHITReviewStatus
+  , hitNumberOfAssignmentsAvailable
+  , hitDescription
+  , hitQuestion
+  , hitAssignmentDurationInSeconds
     -- * HITLayoutParameter
-    , HITLayoutParameter
-    , hITLayoutParameter
-    , hitlpName
-    , hitlpValue
-
+  , HITLayoutParameter
+  , hITLayoutParameter
+  , hitlpName
+  , hitlpValue
     -- * Locale
-    , Locale
-    , locale
-    , lSubdivision
-    , lCountry
-
+  , Locale
+  , locale
+  , lSubdivision
+  , lCountry
     -- * NotificationSpecification
-    , NotificationSpecification
-    , notificationSpecification
-    , nsDestination
-    , nsTransport
-    , nsVersion
-    , nsEventTypes
-
+  , NotificationSpecification
+  , notificationSpecification
+  , nsDestination
+  , nsTransport
+  , nsVersion
+  , nsEventTypes
     -- * NotifyWorkersFailureStatus
-    , NotifyWorkersFailureStatus
-    , notifyWorkersFailureStatus
-    , nwfsNotifyWorkersFailureMessage
-    , nwfsNotifyWorkersFailureCode
-    , nwfsWorkerId
-
+  , NotifyWorkersFailureStatus
+  , notifyWorkersFailureStatus
+  , nwfsNotifyWorkersFailureMessage
+  , nwfsNotifyWorkersFailureCode
+  , nwfsWorkerId
     -- * ParameterMapEntry
-    , ParameterMapEntry
-    , parameterMapEntry
-    , pmeValues
-    , pmeKey
-
+  , ParameterMapEntry
+  , parameterMapEntry
+  , pmeValues
+  , pmeKey
     -- * PolicyParameter
-    , PolicyParameter
-    , policyParameter
-    , ppValues
-    , ppMapEntries
-    , ppKey
-
+  , PolicyParameter
+  , policyParameter
+  , ppValues
+  , ppMapEntries
+  , ppKey
     -- * Qualification
-    , Qualification
-    , qualification
-    , qStatus
-    , qIntegerValue
-    , qLocaleValue
-    , qQualificationTypeId
-    , qGrantTime
-    , qWorkerId
-
+  , Qualification
+  , qualification
+  , qStatus
+  , qIntegerValue
+  , qLocaleValue
+  , qQualificationTypeId
+  , qGrantTime
+  , qWorkerId
     -- * QualificationRequest
-    , QualificationRequest
-    , qualificationRequest
-    , quaQualificationRequestId
-    , quaTest
-    , quaQualificationTypeId
-    , quaAnswer
-    , quaWorkerId
-    , quaSubmitTime
-
+  , QualificationRequest
+  , qualificationRequest
+  , quaQualificationRequestId
+  , quaTest
+  , quaQualificationTypeId
+  , quaAnswer
+  , quaWorkerId
+  , quaSubmitTime
     -- * QualificationRequirement
-    , QualificationRequirement
-    , qualificationRequirement
-    , qrLocaleValues
-    , qrActionsGuarded
-    , qrRequiredToPreview
-    , qrIntegerValues
-    , qrQualificationTypeId
-    , qrComparator
-
+  , QualificationRequirement
+  , qualificationRequirement
+  , qrLocaleValues
+  , qrActionsGuarded
+  , qrRequiredToPreview
+  , qrIntegerValues
+  , qrQualificationTypeId
+  , qrComparator
     -- * QualificationType
-    , QualificationType
-    , qualificationType
-    , qtCreationTime
-    , qtTestDurationInSeconds
-    , qtQualificationTypeStatus
-    , qtAnswerKey
-    , qtTest
-    , qtQualificationTypeId
-    , qtName
-    , qtKeywords
-    , qtAutoGranted
-    , qtAutoGrantedValue
-    , qtDescription
-    , qtIsRequestable
-    , qtRetryDelayInSeconds
-
+  , QualificationType
+  , qualificationType
+  , qtCreationTime
+  , qtTestDurationInSeconds
+  , qtQualificationTypeStatus
+  , qtAnswerKey
+  , qtTest
+  , qtQualificationTypeId
+  , qtName
+  , qtKeywords
+  , qtAutoGranted
+  , qtAutoGrantedValue
+  , qtDescription
+  , qtIsRequestable
+  , qtRetryDelayInSeconds
     -- * ReviewActionDetail
-    , ReviewActionDetail
-    , reviewActionDetail
-    , radStatus
-    , radTargetId
-    , radActionId
-    , radTargetType
-    , radResult
-    , radActionName
-    , radCompleteTime
-    , radErrorCode
-
+  , ReviewActionDetail
+  , reviewActionDetail
+  , radStatus
+  , radTargetId
+  , radActionId
+  , radTargetType
+  , radResult
+  , radActionName
+  , radCompleteTime
+  , radErrorCode
     -- * ReviewPolicy
-    , ReviewPolicy
-    , reviewPolicy
-    , rpParameters
-    , rpPolicyName
-
+  , ReviewPolicy
+  , reviewPolicy
+  , rpParameters
+  , rpPolicyName
     -- * ReviewReport
-    , ReviewReport
-    , reviewReport
-    , rrReviewActions
-    , rrReviewResults
-
+  , ReviewReport
+  , reviewReport
+  , rrReviewActions
+  , rrReviewResults
     -- * ReviewResultDetail
-    , ReviewResultDetail
-    , reviewResultDetail
-    , rrdValue
-    , rrdActionId
-    , rrdSubjectType
-    , rrdKey
-    , rrdQuestionId
-    , rrdSubjectId
-
+  , ReviewResultDetail
+  , reviewResultDetail
+  , rrdValue
+  , rrdActionId
+  , rrdSubjectType
+  , rrdKey
+  , rrdQuestionId
+  , rrdSubjectId
     -- * WorkerBlock
-    , WorkerBlock
-    , workerBlock
-    , wbReason
-    , wbWorkerId
-    ) where
+  , WorkerBlock
+  , workerBlock
+  , wbReason
+  , wbWorkerId
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.MechanicalTurk.Types.Product
@@ -280,17 +246,14 @@ mechanicalTurk =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | Amazon Mechanical Turk is temporarily unable to process your request. Try your call again.
 --
 --
 _ServiceFault :: AsError a => Getting (First ServiceError) a ServiceError
 _ServiceFault = _MatchServiceError mechanicalTurk "ServiceFault"
 
-
 -- | Your request is invalid.
 --
 --
 _RequestError :: AsError a => Getting (First ServiceError) a ServiceError
 _RequestError = _MatchServiceError mechanicalTurk "RequestError"
-

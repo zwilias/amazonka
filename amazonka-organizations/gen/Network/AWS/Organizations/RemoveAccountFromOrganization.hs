@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Organizations.RemoveAccountFromOrganization
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -32,17 +30,15 @@
 --
 --
 module Network.AWS.Organizations.RemoveAccountFromOrganization
-    (
     -- * Creating a Request
-      removeAccountFromOrganization
-    , RemoveAccountFromOrganization
+  ( removeAccountFromOrganization
+  , RemoveAccountFromOrganization
     -- * Request Lenses
-    , rafoAccountId
-
+  , rafoAccountId
     -- * Destructuring the Response
-    , removeAccountFromOrganizationResponse
-    , RemoveAccountFromOrganizationResponse
-    ) where
+  , removeAccountFromOrganizationResponse
+  , RemoveAccountFromOrganizationResponse
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
@@ -52,73 +48,63 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'removeAccountFromOrganization' smart constructor.
-newtype RemoveAccountFromOrganization = RemoveAccountFromOrganization'
-  { _rafoAccountId :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype RemoveAccountFromOrganization =
+  RemoveAccountFromOrganization'
+    { _rafoAccountId :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RemoveAccountFromOrganization' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'rafoAccountId' - The unique identifier (ID) of the member account that you want to remove from the organization. The <http://wikipedia.org/wiki/regex regex pattern> for an account ID string requires exactly 12 digits.
-removeAccountFromOrganization
-    :: Text -- ^ 'rafoAccountId'
-    -> RemoveAccountFromOrganization
+removeAccountFromOrganization ::
+     Text -- ^ 'rafoAccountId'
+  -> RemoveAccountFromOrganization
 removeAccountFromOrganization pAccountId_ =
   RemoveAccountFromOrganization' {_rafoAccountId = pAccountId_}
 
-
 -- | The unique identifier (ID) of the member account that you want to remove from the organization. The <http://wikipedia.org/wiki/regex regex pattern> for an account ID string requires exactly 12 digits.
 rafoAccountId :: Lens' RemoveAccountFromOrganization Text
-rafoAccountId = lens _rafoAccountId (\ s a -> s{_rafoAccountId = a})
+rafoAccountId = lens _rafoAccountId (\s a -> s {_rafoAccountId = a})
 
-instance AWSRequest RemoveAccountFromOrganization
-         where
-        type Rs RemoveAccountFromOrganization =
-             RemoveAccountFromOrganizationResponse
-        request = postJSON organizations
-        response
-          = receiveNull RemoveAccountFromOrganizationResponse'
+instance AWSRequest RemoveAccountFromOrganization where
+  type Rs RemoveAccountFromOrganization = RemoveAccountFromOrganizationResponse
+  request = postJSON organizations
+  response = receiveNull RemoveAccountFromOrganizationResponse'
 
-instance Hashable RemoveAccountFromOrganization where
+instance Hashable RemoveAccountFromOrganization
 
-instance NFData RemoveAccountFromOrganization where
+instance NFData RemoveAccountFromOrganization
 
-instance ToHeaders RemoveAccountFromOrganization
-         where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("AWSOrganizationsV20161128.RemoveAccountFromOrganization"
-                       :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+instance ToHeaders RemoveAccountFromOrganization where
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("AWSOrganizationsV20161128.RemoveAccountFromOrganization" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON RemoveAccountFromOrganization where
-        toJSON RemoveAccountFromOrganization'{..}
-          = object
-              (catMaybes [Just ("AccountId" .= _rafoAccountId)])
+  toJSON RemoveAccountFromOrganization' {..} =
+    object (catMaybes [Just ("AccountId" .= _rafoAccountId)])
 
 instance ToPath RemoveAccountFromOrganization where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery RemoveAccountFromOrganization where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'removeAccountFromOrganizationResponse' smart constructor.
 data RemoveAccountFromOrganizationResponse =
   RemoveAccountFromOrganizationResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'RemoveAccountFromOrganizationResponse' with the minimum fields required to make a request.
 --
-removeAccountFromOrganizationResponse
-    :: RemoveAccountFromOrganizationResponse
+removeAccountFromOrganizationResponse :: RemoveAccountFromOrganizationResponse
 removeAccountFromOrganizationResponse = RemoveAccountFromOrganizationResponse'
 
-
 instance NFData RemoveAccountFromOrganizationResponse
-         where

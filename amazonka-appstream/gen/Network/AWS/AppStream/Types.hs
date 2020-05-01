@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.AppStream.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,235 +10,200 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.AppStream.Types
-    (
     -- * Service Configuration
-      appStream
-
+  ( appStream
     -- * Errors
-    , _InvalidRoleException
-    , _ResourceAlreadyExistsException
-    , _IncompatibleImageException
-    , _ConcurrentModificationException
-    , _OperationNotPermittedException
-    , _InvalidAccountStatusException
-    , _ResourceNotFoundException
-    , _InvalidParameterCombinationException
-    , _ResourceNotAvailableException
-    , _LimitExceededException
-    , _ResourceInUseException
-
+  , _InvalidRoleException
+  , _ResourceAlreadyExistsException
+  , _IncompatibleImageException
+  , _ConcurrentModificationException
+  , _OperationNotPermittedException
+  , _InvalidAccountStatusException
+  , _ResourceNotFoundException
+  , _InvalidParameterCombinationException
+  , _ResourceNotAvailableException
+  , _LimitExceededException
+  , _ResourceInUseException
     -- * AuthenticationType
-    , AuthenticationType (..)
-
+  , AuthenticationType(..)
     -- * FleetAttribute
-    , FleetAttribute (..)
-
+  , FleetAttribute(..)
     -- * FleetErrorCode
-    , FleetErrorCode (..)
-
+  , FleetErrorCode(..)
     -- * FleetState
-    , FleetState (..)
-
+  , FleetState(..)
     -- * FleetType
-    , FleetType (..)
-
+  , FleetType(..)
     -- * ImageBuilderState
-    , ImageBuilderState (..)
-
+  , ImageBuilderState(..)
     -- * ImageBuilderStateChangeReasonCode
-    , ImageBuilderStateChangeReasonCode (..)
-
+  , ImageBuilderStateChangeReasonCode(..)
     -- * ImageState
-    , ImageState (..)
-
+  , ImageState(..)
     -- * ImageStateChangeReasonCode
-    , ImageStateChangeReasonCode (..)
-
+  , ImageStateChangeReasonCode(..)
     -- * PlatformType
-    , PlatformType (..)
-
+  , PlatformType(..)
     -- * SessionState
-    , SessionState (..)
-
+  , SessionState(..)
     -- * StackAttribute
-    , StackAttribute (..)
-
+  , StackAttribute(..)
     -- * StackErrorCode
-    , StackErrorCode (..)
-
+  , StackErrorCode(..)
     -- * StorageConnectorType
-    , StorageConnectorType (..)
-
+  , StorageConnectorType(..)
     -- * VisibilityType
-    , VisibilityType (..)
-
+  , VisibilityType(..)
     -- * Application
-    , Application
-    , application
-    , aEnabled
-    , aLaunchPath
-    , aLaunchParameters
-    , aName
-    , aDisplayName
-    , aMetadata
-    , aIconURL
-
+  , Application
+  , application
+  , aEnabled
+  , aLaunchPath
+  , aLaunchParameters
+  , aName
+  , aDisplayName
+  , aMetadata
+  , aIconURL
     -- * ComputeCapacity
-    , ComputeCapacity
-    , computeCapacity
-    , ccDesiredInstances
-
+  , ComputeCapacity
+  , computeCapacity
+  , ccDesiredInstances
     -- * ComputeCapacityStatus
-    , ComputeCapacityStatus
-    , computeCapacityStatus
-    , ccsInUse
-    , ccsRunning
-    , ccsAvailable
-    , ccsDesired
-
+  , ComputeCapacityStatus
+  , computeCapacityStatus
+  , ccsInUse
+  , ccsRunning
+  , ccsAvailable
+  , ccsDesired
     -- * DirectoryConfig
-    , DirectoryConfig
-    , directoryConfig
-    , dcCreatedTime
-    , dcServiceAccountCredentials
-    , dcOrganizationalUnitDistinguishedNames
-    , dcDirectoryName
-
+  , DirectoryConfig
+  , directoryConfig
+  , dcCreatedTime
+  , dcServiceAccountCredentials
+  , dcOrganizationalUnitDistinguishedNames
+  , dcDirectoryName
     -- * DomainJoinInfo
-    , DomainJoinInfo
-    , domainJoinInfo
-    , djiOrganizationalUnitDistinguishedName
-    , djiDirectoryName
-
+  , DomainJoinInfo
+  , domainJoinInfo
+  , djiOrganizationalUnitDistinguishedName
+  , djiDirectoryName
     -- * Fleet
-    , Fleet
-    , fleet
-    , fDomainJoinInfo
-    , fDisconnectTimeoutInSeconds
-    , fMaxUserDurationInSeconds
-    , fCreatedTime
-    , fFleetType
-    , fVPCConfig
-    , fFleetErrors
-    , fDisplayName
-    , fEnableDefaultInternetAccess
-    , fDescription
-    , fARN
-    , fName
-    , fImageName
-    , fInstanceType
-    , fComputeCapacityStatus
-    , fState
-
+  , Fleet
+  , fleet
+  , fDomainJoinInfo
+  , fDisconnectTimeoutInSeconds
+  , fMaxUserDurationInSeconds
+  , fCreatedTime
+  , fFleetType
+  , fVPCConfig
+  , fFleetErrors
+  , fDisplayName
+  , fEnableDefaultInternetAccess
+  , fDescription
+  , fARN
+  , fName
+  , fImageName
+  , fInstanceType
+  , fComputeCapacityStatus
+  , fState
     -- * FleetError
-    , FleetError
-    , fleetError
-    , feErrorCode
-    , feErrorMessage
-
+  , FleetError
+  , fleetError
+  , feErrorCode
+  , feErrorMessage
     -- * Image
-    , Image
-    , image
-    , iState
-    , iPlatform
-    , iPublicBaseImageReleasedDate
-    , iStateChangeReason
-    , iARN
-    , iCreatedTime
-    , iImageBuilderSupported
-    , iVisibility
-    , iBaseImageARN
-    , iDisplayName
-    , iDescription
-    , iAppstreamAgentVersion
-    , iApplications
-    , iName
-
+  , Image
+  , image
+  , iState
+  , iPlatform
+  , iPublicBaseImageReleasedDate
+  , iStateChangeReason
+  , iARN
+  , iCreatedTime
+  , iImageBuilderSupported
+  , iVisibility
+  , iBaseImageARN
+  , iDisplayName
+  , iDescription
+  , iAppstreamAgentVersion
+  , iApplications
+  , iName
     -- * ImageBuilder
-    , ImageBuilder
-    , imageBuilder
-    , ibDomainJoinInfo
-    , ibState
-    , ibPlatform
-    , ibStateChangeReason
-    , ibARN
-    , ibCreatedTime
-    , ibImageBuilderErrors
-    , ibInstanceType
-    , ibVPCConfig
-    , ibImageARN
-    , ibDisplayName
-    , ibEnableDefaultInternetAccess
-    , ibDescription
-    , ibAppstreamAgentVersion
-    , ibName
-
+  , ImageBuilder
+  , imageBuilder
+  , ibDomainJoinInfo
+  , ibState
+  , ibPlatform
+  , ibStateChangeReason
+  , ibARN
+  , ibCreatedTime
+  , ibImageBuilderErrors
+  , ibInstanceType
+  , ibVPCConfig
+  , ibImageARN
+  , ibDisplayName
+  , ibEnableDefaultInternetAccess
+  , ibDescription
+  , ibAppstreamAgentVersion
+  , ibName
     -- * ImageBuilderStateChangeReason
-    , ImageBuilderStateChangeReason
-    , imageBuilderStateChangeReason
-    , ibscrCode
-    , ibscrMessage
-
+  , ImageBuilderStateChangeReason
+  , imageBuilderStateChangeReason
+  , ibscrCode
+  , ibscrMessage
     -- * ImageStateChangeReason
-    , ImageStateChangeReason
-    , imageStateChangeReason
-    , iscrCode
-    , iscrMessage
-
+  , ImageStateChangeReason
+  , imageStateChangeReason
+  , iscrCode
+  , iscrMessage
     -- * ResourceError
-    , ResourceError
-    , resourceError
-    , reErrorCode
-    , reErrorMessage
-    , reErrorTimestamp
-
+  , ResourceError
+  , resourceError
+  , reErrorCode
+  , reErrorMessage
+  , reErrorTimestamp
     -- * ServiceAccountCredentials
-    , ServiceAccountCredentials
-    , serviceAccountCredentials
-    , sacAccountName
-    , sacAccountPassword
-
+  , ServiceAccountCredentials
+  , serviceAccountCredentials
+  , sacAccountName
+  , sacAccountPassword
     -- * Session
-    , Session
-    , session
-    , sAuthenticationType
-    , sId
-    , sUserId
-    , sStackName
-    , sFleetName
-    , sState
-
+  , Session
+  , session
+  , sAuthenticationType
+  , sId
+  , sUserId
+  , sStackName
+  , sFleetName
+  , sState
     -- * Stack
-    , Stack
-    , stack
-    , sFeedbackURL
-    , sARN
-    , sCreatedTime
-    , sStorageConnectors
-    , sDisplayName
-    , sStackErrors
-    , sDescription
-    , sRedirectURL
-    , sName
-
+  , Stack
+  , stack
+  , sFeedbackURL
+  , sARN
+  , sCreatedTime
+  , sStorageConnectors
+  , sDisplayName
+  , sStackErrors
+  , sDescription
+  , sRedirectURL
+  , sName
     -- * StackError
-    , StackError
-    , stackError
-    , seErrorCode
-    , seErrorMessage
-
+  , StackError
+  , stackError
+  , seErrorCode
+  , seErrorMessage
     -- * StorageConnector
-    , StorageConnector
-    , storageConnector
-    , scResourceIdentifier
-    , scConnectorType
-
+  , StorageConnector
+  , storageConnector
+  , scResourceIdentifier
+  , scConnectorType
     -- * VPCConfig
-    , VPCConfig
-    , vpcConfig
-    , vcSecurityGroupIds
-    , vcSubnetIds
-    ) where
+  , VPCConfig
+  , vpcConfig
+  , vcSecurityGroupIds
+  , vcSubnetIds
+  ) where
 
 import Network.AWS.AppStream.Types.Product
 import Network.AWS.AppStream.Types.Sum
@@ -285,88 +249,87 @@ appStream =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | The specified role is invalid.
 --
 --
-_InvalidRoleException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRoleException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidRoleException = _MatchServiceError appStream "InvalidRoleException"
-
 
 -- | The specified resource already exists.
 --
 --
-_ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceAlreadyExistsException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ResourceAlreadyExistsException =
   _MatchServiceError appStream "ResourceAlreadyExistsException"
-
 
 -- | The image does not support storage connectors.
 --
 --
-_IncompatibleImageException :: AsError a => Getting (First ServiceError) a ServiceError
+_IncompatibleImageException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _IncompatibleImageException =
   _MatchServiceError appStream "IncompatibleImageException"
-
 
 -- | An API error occurred. Wait a few minutes and try again.
 --
 --
-_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConcurrentModificationException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ConcurrentModificationException =
   _MatchServiceError appStream "ConcurrentModificationException"
-
 
 -- | The attempted operation is not permitted.
 --
 --
-_OperationNotPermittedException :: AsError a => Getting (First ServiceError) a ServiceError
+_OperationNotPermittedException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _OperationNotPermittedException =
   _MatchServiceError appStream "OperationNotPermittedException"
-
 
 -- | The resource cannot be created because your AWS account is suspended. For assistance, contact AWS Support.
 --
 --
-_InvalidAccountStatusException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidAccountStatusException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidAccountStatusException =
   _MatchServiceError appStream "InvalidAccountStatusException"
-
 
 -- | The specified resource was not found.
 --
 --
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ResourceNotFoundException =
   _MatchServiceError appStream "ResourceNotFoundException"
-
 
 -- | Indicates an incorrect combination of parameters, or a missing parameter.
 --
 --
-_InvalidParameterCombinationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterCombinationException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidParameterCombinationException =
   _MatchServiceError appStream "InvalidParameterCombinationException"
-
 
 -- | The specified resource exists and is not in use, but isn't available.
 --
 --
-_ResourceNotAvailableException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotAvailableException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ResourceNotAvailableException =
   _MatchServiceError appStream "ResourceNotAvailableException"
-
 
 -- | The requested limit exceeds the permitted limit for an account.
 --
 --
-_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException = _MatchServiceError appStream "LimitExceededException"
-
 
 -- | The specified resource is in use.
 --
 --
-_ResourceInUseException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceInUseException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ResourceInUseException = _MatchServiceError appStream "ResourceInUseException"
-

@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.SQS.TagQueue
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -38,18 +36,16 @@
 -- For a full list of tag restrictions, see <http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/limits-queues.html Limits Related to Queues> in the /Amazon Simple Queue Service Developer Guide/ .
 --
 module Network.AWS.SQS.TagQueue
-    (
     -- * Creating a Request
-      tagQueue
-    , TagQueue
+  ( tagQueue
+  , TagQueue
     -- * Request Lenses
-    , tqQueueURL
-    , tqTags
-
+  , tqQueueURL
+  , tqTags
     -- * Destructuring the Response
-    , tagQueueResponse
-    , TagQueueResponse
-    ) where
+  , tagQueueResponse
+  , TagQueueResponse
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -59,11 +55,12 @@ import Network.AWS.SQS.Types
 import Network.AWS.SQS.Types.Product
 
 -- | /See:/ 'tagQueue' smart constructor.
-data TagQueue = TagQueue'
-  { _tqQueueURL :: !Text
-  , _tqTags     :: !(Map Text Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TagQueue =
+  TagQueue'
+    { _tqQueueURL :: !Text
+    , _tqTags :: !(Map Text Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TagQueue' with the minimum fields required to make a request.
 --
@@ -72,54 +69,51 @@ data TagQueue = TagQueue'
 -- * 'tqQueueURL' - The URL of the queue.
 --
 -- * 'tqTags' - The list of tags to be added to the specified queue.
-tagQueue
-    :: Text -- ^ 'tqQueueURL'
-    -> TagQueue
+tagQueue ::
+     Text -- ^ 'tqQueueURL'
+  -> TagQueue
 tagQueue pQueueURL_ = TagQueue' {_tqQueueURL = pQueueURL_, _tqTags = mempty}
-
 
 -- | The URL of the queue.
 tqQueueURL :: Lens' TagQueue Text
-tqQueueURL = lens _tqQueueURL (\ s a -> s{_tqQueueURL = a})
+tqQueueURL = lens _tqQueueURL (\s a -> s {_tqQueueURL = a})
 
 -- | The list of tags to be added to the specified queue.
 tqTags :: Lens' TagQueue (HashMap Text Text)
-tqTags = lens _tqTags (\ s a -> s{_tqTags = a}) . _Map
+tqTags = lens _tqTags (\s a -> s {_tqTags = a}) . _Map
 
 instance AWSRequest TagQueue where
-        type Rs TagQueue = TagQueueResponse
-        request = postQuery sqs
-        response = receiveNull TagQueueResponse'
+  type Rs TagQueue = TagQueueResponse
+  request = postQuery sqs
+  response = receiveNull TagQueueResponse'
 
-instance Hashable TagQueue where
+instance Hashable TagQueue
 
-instance NFData TagQueue where
+instance NFData TagQueue
 
 instance ToHeaders TagQueue where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath TagQueue where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery TagQueue where
-        toQuery TagQueue'{..}
-          = mconcat
-              ["Action" =: ("TagQueue" :: ByteString),
-               "Version" =: ("2012-11-05" :: ByteString),
-               "QueueUrl" =: _tqQueueURL,
-               toQueryMap "Tags" "Key" "Value" _tqTags]
+  toQuery TagQueue' {..} =
+    mconcat
+      [ "Action" =: ("TagQueue" :: ByteString)
+      , "Version" =: ("2012-11-05" :: ByteString)
+      , "QueueUrl" =: _tqQueueURL
+      , toQueryMap "Tags" "Key" "Value" _tqTags
+      ]
 
 -- | /See:/ 'tagQueueResponse' smart constructor.
 data TagQueueResponse =
   TagQueueResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'TagQueueResponse' with the minimum fields required to make a request.
 --
-tagQueueResponse
-    :: TagQueueResponse
+tagQueueResponse :: TagQueueResponse
 tagQueueResponse = TagQueueResponse'
 
-
-instance NFData TagQueueResponse where
+instance NFData TagQueueResponse

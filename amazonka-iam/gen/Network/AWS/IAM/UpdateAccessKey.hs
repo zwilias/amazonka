@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.IAM.UpdateAccessKey
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,19 +24,17 @@
 -- For information about rotating keys, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingCredentials.html Managing Keys and Certificates> in the /IAM User Guide/ .
 --
 module Network.AWS.IAM.UpdateAccessKey
-    (
     -- * Creating a Request
-      updateAccessKey
-    , UpdateAccessKey
+  ( updateAccessKey
+  , UpdateAccessKey
     -- * Request Lenses
-    , uakUserName
-    , uakAccessKeyId
-    , uakStatus
-
+  , uakUserName
+  , uakAccessKeyId
+  , uakStatus
     -- * Destructuring the Response
-    , updateAccessKeyResponse
-    , UpdateAccessKeyResponse
-    ) where
+  , updateAccessKeyResponse
+  , UpdateAccessKeyResponse
+  ) where
 
 import Network.AWS.IAM.Types
 import Network.AWS.IAM.Types.Product
@@ -48,12 +44,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateAccessKey' smart constructor.
-data UpdateAccessKey = UpdateAccessKey'
-  { _uakUserName    :: !(Maybe Text)
-  , _uakAccessKeyId :: !AccessKey
-  , _uakStatus      :: !StatusType
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAccessKey =
+  UpdateAccessKey'
+    { _uakUserName :: !(Maybe Text)
+    , _uakAccessKeyId :: !AccessKey
+    , _uakStatus :: !StatusType
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateAccessKey' with the minimum fields required to make a request.
 --
@@ -64,10 +61,10 @@ data UpdateAccessKey = UpdateAccessKey'
 -- * 'uakAccessKeyId' - The access key ID of the secret access key you want to update. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters that can consist of any upper or lowercased letter or digit.
 --
 -- * 'uakStatus' - The status you want to assign to the secret access key. @Active@ means that the key can be used for API calls to AWS, while @Inactive@ means that the key cannot be used.
-updateAccessKey
-    :: AccessKey -- ^ 'uakAccessKeyId'
-    -> StatusType -- ^ 'uakStatus'
-    -> UpdateAccessKey
+updateAccessKey ::
+     AccessKey -- ^ 'uakAccessKeyId'
+  -> StatusType -- ^ 'uakStatus'
+  -> UpdateAccessKey
 updateAccessKey pAccessKeyId_ pStatus_ =
   UpdateAccessKey'
     { _uakUserName = Nothing
@@ -75,54 +72,51 @@ updateAccessKey pAccessKeyId_ pStatus_ =
     , _uakStatus = pStatus_
     }
 
-
 -- | The name of the user whose key you want to update. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 uakUserName :: Lens' UpdateAccessKey (Maybe Text)
-uakUserName = lens _uakUserName (\ s a -> s{_uakUserName = a})
+uakUserName = lens _uakUserName (\s a -> s {_uakUserName = a})
 
 -- | The access key ID of the secret access key you want to update. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters that can consist of any upper or lowercased letter or digit.
 uakAccessKeyId :: Lens' UpdateAccessKey AccessKey
-uakAccessKeyId = lens _uakAccessKeyId (\ s a -> s{_uakAccessKeyId = a})
+uakAccessKeyId = lens _uakAccessKeyId (\s a -> s {_uakAccessKeyId = a})
 
 -- | The status you want to assign to the secret access key. @Active@ means that the key can be used for API calls to AWS, while @Inactive@ means that the key cannot be used.
 uakStatus :: Lens' UpdateAccessKey StatusType
-uakStatus = lens _uakStatus (\ s a -> s{_uakStatus = a})
+uakStatus = lens _uakStatus (\s a -> s {_uakStatus = a})
 
 instance AWSRequest UpdateAccessKey where
-        type Rs UpdateAccessKey = UpdateAccessKeyResponse
-        request = postQuery iam
-        response = receiveNull UpdateAccessKeyResponse'
+  type Rs UpdateAccessKey = UpdateAccessKeyResponse
+  request = postQuery iam
+  response = receiveNull UpdateAccessKeyResponse'
 
-instance Hashable UpdateAccessKey where
+instance Hashable UpdateAccessKey
 
-instance NFData UpdateAccessKey where
+instance NFData UpdateAccessKey
 
 instance ToHeaders UpdateAccessKey where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath UpdateAccessKey where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery UpdateAccessKey where
-        toQuery UpdateAccessKey'{..}
-          = mconcat
-              ["Action" =: ("UpdateAccessKey" :: ByteString),
-               "Version" =: ("2010-05-08" :: ByteString),
-               "UserName" =: _uakUserName,
-               "AccessKeyId" =: _uakAccessKeyId,
-               "Status" =: _uakStatus]
+  toQuery UpdateAccessKey' {..} =
+    mconcat
+      [ "Action" =: ("UpdateAccessKey" :: ByteString)
+      , "Version" =: ("2010-05-08" :: ByteString)
+      , "UserName" =: _uakUserName
+      , "AccessKeyId" =: _uakAccessKeyId
+      , "Status" =: _uakStatus
+      ]
 
 -- | /See:/ 'updateAccessKeyResponse' smart constructor.
 data UpdateAccessKeyResponse =
   UpdateAccessKeyResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'UpdateAccessKeyResponse' with the minimum fields required to make a request.
 --
-updateAccessKeyResponse
-    :: UpdateAccessKeyResponse
+updateAccessKeyResponse :: UpdateAccessKeyResponse
 updateAccessKeyResponse = UpdateAccessKeyResponse'
 
-
-instance NFData UpdateAccessKeyResponse where
+instance NFData UpdateAccessKeyResponse

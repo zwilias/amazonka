@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Route53.CreateQueryLoggingConfig
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -80,22 +78,20 @@
 --
 --
 module Network.AWS.Route53.CreateQueryLoggingConfig
-    (
     -- * Creating a Request
-      createQueryLoggingConfig
-    , CreateQueryLoggingConfig
+  ( createQueryLoggingConfig
+  , CreateQueryLoggingConfig
     -- * Request Lenses
-    , cqlcHostedZoneId
-    , cqlcCloudWatchLogsLogGroupARN
-
+  , cqlcHostedZoneId
+  , cqlcCloudWatchLogsLogGroupARN
     -- * Destructuring the Response
-    , createQueryLoggingConfigResponse
-    , CreateQueryLoggingConfigResponse
+  , createQueryLoggingConfigResponse
+  , CreateQueryLoggingConfigResponse
     -- * Response Lenses
-    , cqlcrsResponseStatus
-    , cqlcrsQueryLoggingConfig
-    , cqlcrsLocation
-    ) where
+  , cqlcrsResponseStatus
+  , cqlcrsQueryLoggingConfig
+  , cqlcrsLocation
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -105,11 +101,12 @@ import Network.AWS.Route53.Types
 import Network.AWS.Route53.Types.Product
 
 -- | /See:/ 'createQueryLoggingConfig' smart constructor.
-data CreateQueryLoggingConfig = CreateQueryLoggingConfig'
-  { _cqlcHostedZoneId              :: !ResourceId
-  , _cqlcCloudWatchLogsLogGroupARN :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateQueryLoggingConfig =
+  CreateQueryLoggingConfig'
+    { _cqlcHostedZoneId :: !ResourceId
+    , _cqlcCloudWatchLogsLogGroupARN :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateQueryLoggingConfig' with the minimum fields required to make a request.
 --
@@ -118,68 +115,70 @@ data CreateQueryLoggingConfig = CreateQueryLoggingConfig'
 -- * 'cqlcHostedZoneId' - The ID of the hosted zone that you want to log queries for. You can log queries only for public hosted zones.
 --
 -- * 'cqlcCloudWatchLogsLogGroupARN' - The Amazon Resource Name (ARN) for the log group that you want to Amazon Route 53 to send query logs to. This is the format of the ARN: arn:aws:logs:/region/ :/account-id/ :log-group:/log_group_name/  To get the ARN for a log group, you can use the CloudWatch console, the <http://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html DescribeLogGroups> API action, the <http://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html describe-log-groups> command, or the applicable command in one of the AWS SDKs.
-createQueryLoggingConfig
-    :: ResourceId -- ^ 'cqlcHostedZoneId'
-    -> Text -- ^ 'cqlcCloudWatchLogsLogGroupARN'
-    -> CreateQueryLoggingConfig
+createQueryLoggingConfig ::
+     ResourceId -- ^ 'cqlcHostedZoneId'
+  -> Text -- ^ 'cqlcCloudWatchLogsLogGroupARN'
+  -> CreateQueryLoggingConfig
 createQueryLoggingConfig pHostedZoneId_ pCloudWatchLogsLogGroupARN_ =
   CreateQueryLoggingConfig'
     { _cqlcHostedZoneId = pHostedZoneId_
     , _cqlcCloudWatchLogsLogGroupARN = pCloudWatchLogsLogGroupARN_
     }
 
-
 -- | The ID of the hosted zone that you want to log queries for. You can log queries only for public hosted zones.
 cqlcHostedZoneId :: Lens' CreateQueryLoggingConfig ResourceId
-cqlcHostedZoneId = lens _cqlcHostedZoneId (\ s a -> s{_cqlcHostedZoneId = a})
+cqlcHostedZoneId = lens _cqlcHostedZoneId (\s a -> s {_cqlcHostedZoneId = a})
 
 -- | The Amazon Resource Name (ARN) for the log group that you want to Amazon Route 53 to send query logs to. This is the format of the ARN: arn:aws:logs:/region/ :/account-id/ :log-group:/log_group_name/  To get the ARN for a log group, you can use the CloudWatch console, the <http://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html DescribeLogGroups> API action, the <http://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html describe-log-groups> command, or the applicable command in one of the AWS SDKs.
 cqlcCloudWatchLogsLogGroupARN :: Lens' CreateQueryLoggingConfig Text
-cqlcCloudWatchLogsLogGroupARN = lens _cqlcCloudWatchLogsLogGroupARN (\ s a -> s{_cqlcCloudWatchLogsLogGroupARN = a})
+cqlcCloudWatchLogsLogGroupARN =
+  lens
+    _cqlcCloudWatchLogsLogGroupARN
+    (\s a -> s {_cqlcCloudWatchLogsLogGroupARN = a})
 
 instance AWSRequest CreateQueryLoggingConfig where
-        type Rs CreateQueryLoggingConfig =
-             CreateQueryLoggingConfigResponse
-        request = postXML route53
-        response
-          = receiveXML
-              (\ s h x ->
-                 CreateQueryLoggingConfigResponse' <$>
-                   (pure (fromEnum s)) <*> (x .@ "QueryLoggingConfig")
-                     <*> (h .# "Location"))
+  type Rs CreateQueryLoggingConfig = CreateQueryLoggingConfigResponse
+  request = postXML route53
+  response =
+    receiveXML
+      (\s h x ->
+         CreateQueryLoggingConfigResponse' <$> (pure (fromEnum s)) <*>
+         (x .@ "QueryLoggingConfig") <*>
+         (h .# "Location"))
 
-instance Hashable CreateQueryLoggingConfig where
+instance Hashable CreateQueryLoggingConfig
 
-instance NFData CreateQueryLoggingConfig where
+instance NFData CreateQueryLoggingConfig
 
 instance ToElement CreateQueryLoggingConfig where
-        toElement
-          = mkElement
-              "{https://route53.amazonaws.com/doc/2013-04-01/}CreateQueryLoggingConfigRequest"
+  toElement =
+    mkElement
+      "{https://route53.amazonaws.com/doc/2013-04-01/}CreateQueryLoggingConfigRequest"
 
 instance ToHeaders CreateQueryLoggingConfig where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath CreateQueryLoggingConfig where
-        toPath = const "/2013-04-01/queryloggingconfig"
+  toPath = const "/2013-04-01/queryloggingconfig"
 
 instance ToQuery CreateQueryLoggingConfig where
-        toQuery = const mempty
+  toQuery = const mempty
 
 instance ToXML CreateQueryLoggingConfig where
-        toXML CreateQueryLoggingConfig'{..}
-          = mconcat
-              ["HostedZoneId" @= _cqlcHostedZoneId,
-               "CloudWatchLogsLogGroupArn" @=
-                 _cqlcCloudWatchLogsLogGroupARN]
+  toXML CreateQueryLoggingConfig' {..} =
+    mconcat
+      [ "HostedZoneId" @= _cqlcHostedZoneId
+      , "CloudWatchLogsLogGroupArn" @= _cqlcCloudWatchLogsLogGroupARN
+      ]
 
 -- | /See:/ 'createQueryLoggingConfigResponse' smart constructor.
-data CreateQueryLoggingConfigResponse = CreateQueryLoggingConfigResponse'
-  { _cqlcrsResponseStatus     :: !Int
-  , _cqlcrsQueryLoggingConfig :: !QueryLoggingConfig
-  , _cqlcrsLocation           :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateQueryLoggingConfigResponse =
+  CreateQueryLoggingConfigResponse'
+    { _cqlcrsResponseStatus :: !Int
+    , _cqlcrsQueryLoggingConfig :: !QueryLoggingConfig
+    , _cqlcrsLocation :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateQueryLoggingConfigResponse' with the minimum fields required to make a request.
 --
@@ -190,11 +189,11 @@ data CreateQueryLoggingConfigResponse = CreateQueryLoggingConfigResponse'
 -- * 'cqlcrsQueryLoggingConfig' - A complex type that contains the ID for a query logging configuration, the ID of the hosted zone that you want to log queries for, and the ARN for the log group that you want Amazon Route 53 to send query logs to.
 --
 -- * 'cqlcrsLocation' - The unique URL representing the new query logging configuration.
-createQueryLoggingConfigResponse
-    :: Int -- ^ 'cqlcrsResponseStatus'
-    -> QueryLoggingConfig -- ^ 'cqlcrsQueryLoggingConfig'
-    -> Text -- ^ 'cqlcrsLocation'
-    -> CreateQueryLoggingConfigResponse
+createQueryLoggingConfigResponse ::
+     Int -- ^ 'cqlcrsResponseStatus'
+  -> QueryLoggingConfig -- ^ 'cqlcrsQueryLoggingConfig'
+  -> Text -- ^ 'cqlcrsLocation'
+  -> CreateQueryLoggingConfigResponse
 createQueryLoggingConfigResponse pResponseStatus_ pQueryLoggingConfig_ pLocation_ =
   CreateQueryLoggingConfigResponse'
     { _cqlcrsResponseStatus = pResponseStatus_
@@ -202,18 +201,19 @@ createQueryLoggingConfigResponse pResponseStatus_ pQueryLoggingConfig_ pLocation
     , _cqlcrsLocation = pLocation_
     }
 
-
 -- | -- | The response status code.
 cqlcrsResponseStatus :: Lens' CreateQueryLoggingConfigResponse Int
-cqlcrsResponseStatus = lens _cqlcrsResponseStatus (\ s a -> s{_cqlcrsResponseStatus = a})
+cqlcrsResponseStatus =
+  lens _cqlcrsResponseStatus (\s a -> s {_cqlcrsResponseStatus = a})
 
 -- | A complex type that contains the ID for a query logging configuration, the ID of the hosted zone that you want to log queries for, and the ARN for the log group that you want Amazon Route 53 to send query logs to.
-cqlcrsQueryLoggingConfig :: Lens' CreateQueryLoggingConfigResponse QueryLoggingConfig
-cqlcrsQueryLoggingConfig = lens _cqlcrsQueryLoggingConfig (\ s a -> s{_cqlcrsQueryLoggingConfig = a})
+cqlcrsQueryLoggingConfig ::
+     Lens' CreateQueryLoggingConfigResponse QueryLoggingConfig
+cqlcrsQueryLoggingConfig =
+  lens _cqlcrsQueryLoggingConfig (\s a -> s {_cqlcrsQueryLoggingConfig = a})
 
 -- | The unique URL representing the new query logging configuration.
 cqlcrsLocation :: Lens' CreateQueryLoggingConfigResponse Text
-cqlcrsLocation = lens _cqlcrsLocation (\ s a -> s{_cqlcrsLocation = a})
+cqlcrsLocation = lens _cqlcrsLocation (\s a -> s {_cqlcrsLocation = a})
 
 instance NFData CreateQueryLoggingConfigResponse
-         where

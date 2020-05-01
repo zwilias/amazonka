@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.ResourceGroupsTagging.UntagResources
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -28,21 +26,19 @@
 --
 --
 module Network.AWS.ResourceGroupsTagging.UntagResources
-    (
     -- * Creating a Request
-      untagResources
-    , UntagResources
+  ( untagResources
+  , UntagResources
     -- * Request Lenses
-    , urResourceARNList
-    , urTagKeys
-
+  , urResourceARNList
+  , urTagKeys
     -- * Destructuring the Response
-    , untagResourcesResponse
-    , UntagResourcesResponse
+  , untagResourcesResponse
+  , UntagResourcesResponse
     -- * Response Lenses
-    , urrsFailedResourcesMap
-    , urrsResponseStatus
-    ) where
+  , urrsFailedResourcesMap
+  , urrsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -52,11 +48,12 @@ import Network.AWS.ResourceGroupsTagging.Types.Product
 import Network.AWS.Response
 
 -- | /See:/ 'untagResources' smart constructor.
-data UntagResources = UntagResources'
-  { _urResourceARNList :: !(List1 Text)
-  , _urTagKeys         :: !(List1 Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UntagResources =
+  UntagResources'
+    { _urResourceARNList :: !(List1 Text)
+    , _urTagKeys :: !(List1 Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UntagResources' with the minimum fields required to make a request.
 --
@@ -65,68 +62,68 @@ data UntagResources = UntagResources'
 -- * 'urResourceARNList' - A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a resource. You can specify a minimum of 1 and a maximum of 20 ARNs (resources) to untag. An ARN can be set to a maximum of 1600 characters. For more information, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 --
 -- * 'urTagKeys' - A list of the tag keys that you want to remove from the specified resources.
-untagResources
-    :: NonEmpty Text -- ^ 'urResourceARNList'
-    -> NonEmpty Text -- ^ 'urTagKeys'
-    -> UntagResources
+untagResources ::
+     NonEmpty Text -- ^ 'urResourceARNList'
+  -> NonEmpty Text -- ^ 'urTagKeys'
+  -> UntagResources
 untagResources pResourceARNList_ pTagKeys_ =
   UntagResources'
     { _urResourceARNList = _List1 # pResourceARNList_
     , _urTagKeys = _List1 # pTagKeys_
     }
 
-
 -- | A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a resource. You can specify a minimum of 1 and a maximum of 20 ARNs (resources) to untag. An ARN can be set to a maximum of 1600 characters. For more information, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 urResourceARNList :: Lens' UntagResources (NonEmpty Text)
-urResourceARNList = lens _urResourceARNList (\ s a -> s{_urResourceARNList = a}) . _List1
+urResourceARNList =
+  lens _urResourceARNList (\s a -> s {_urResourceARNList = a}) . _List1
 
 -- | A list of the tag keys that you want to remove from the specified resources.
 urTagKeys :: Lens' UntagResources (NonEmpty Text)
-urTagKeys = lens _urTagKeys (\ s a -> s{_urTagKeys = a}) . _List1
+urTagKeys = lens _urTagKeys (\s a -> s {_urTagKeys = a}) . _List1
 
 instance AWSRequest UntagResources where
-        type Rs UntagResources = UntagResourcesResponse
-        request = postJSON resourceGroupsTagging
-        response
-          = receiveJSON
-              (\ s h x ->
-                 UntagResourcesResponse' <$>
-                   (x .?> "FailedResourcesMap" .!@ mempty) <*>
-                     (pure (fromEnum s)))
+  type Rs UntagResources = UntagResourcesResponse
+  request = postJSON resourceGroupsTagging
+  response =
+    receiveJSON
+      (\s h x ->
+         UntagResourcesResponse' <$> (x .?> "FailedResourcesMap" .!@ mempty) <*>
+         (pure (fromEnum s)))
 
-instance Hashable UntagResources where
+instance Hashable UntagResources
 
-instance NFData UntagResources where
+instance NFData UntagResources
 
 instance ToHeaders UntagResources where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("ResourceGroupsTaggingAPI_20170126.UntagResources"
-                       :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("ResourceGroupsTaggingAPI_20170126.UntagResources" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON UntagResources where
-        toJSON UntagResources'{..}
-          = object
-              (catMaybes
-                 [Just ("ResourceARNList" .= _urResourceARNList),
-                  Just ("TagKeys" .= _urTagKeys)])
+  toJSON UntagResources' {..} =
+    object
+      (catMaybes
+         [ Just ("ResourceARNList" .= _urResourceARNList)
+         , Just ("TagKeys" .= _urTagKeys)
+         ])
 
 instance ToPath UntagResources where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery UntagResources where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'untagResourcesResponse' smart constructor.
-data UntagResourcesResponse = UntagResourcesResponse'
-  { _urrsFailedResourcesMap :: !(Maybe (Map Text FailureInfo))
-  , _urrsResponseStatus     :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UntagResourcesResponse =
+  UntagResourcesResponse'
+    { _urrsFailedResourcesMap :: !(Maybe (Map Text FailureInfo))
+    , _urrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UntagResourcesResponse' with the minimum fields required to make a request.
 --
@@ -135,20 +132,23 @@ data UntagResourcesResponse = UntagResourcesResponse'
 -- * 'urrsFailedResourcesMap' - Details of resources that could not be untagged. An error code, status code, and error message are returned for each failed item.
 --
 -- * 'urrsResponseStatus' - -- | The response status code.
-untagResourcesResponse
-    :: Int -- ^ 'urrsResponseStatus'
-    -> UntagResourcesResponse
+untagResourcesResponse ::
+     Int -- ^ 'urrsResponseStatus'
+  -> UntagResourcesResponse
 untagResourcesResponse pResponseStatus_ =
   UntagResourcesResponse'
     {_urrsFailedResourcesMap = Nothing, _urrsResponseStatus = pResponseStatus_}
 
-
 -- | Details of resources that could not be untagged. An error code, status code, and error message are returned for each failed item.
-urrsFailedResourcesMap :: Lens' UntagResourcesResponse (HashMap Text FailureInfo)
-urrsFailedResourcesMap = lens _urrsFailedResourcesMap (\ s a -> s{_urrsFailedResourcesMap = a}) . _Default . _Map
+urrsFailedResourcesMap ::
+     Lens' UntagResourcesResponse (HashMap Text FailureInfo)
+urrsFailedResourcesMap =
+  lens _urrsFailedResourcesMap (\s a -> s {_urrsFailedResourcesMap = a}) .
+  _Default . _Map
 
 -- | -- | The response status code.
 urrsResponseStatus :: Lens' UntagResourcesResponse Int
-urrsResponseStatus = lens _urrsResponseStatus (\ s a -> s{_urrsResponseStatus = a})
+urrsResponseStatus =
+  lens _urrsResponseStatus (\s a -> s {_urrsResponseStatus = a})
 
-instance NFData UntagResourcesResponse where
+instance NFData UntagResourcesResponse

@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.EC2.ModifyVPCTenancy
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,22 +24,20 @@
 -- For more information about Dedicated Instances, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html Dedicated Instances> in the /Amazon Elastic Compute Cloud User Guide/ .
 --
 module Network.AWS.EC2.ModifyVPCTenancy
-    (
     -- * Creating a Request
-      modifyVPCTenancy
-    , ModifyVPCTenancy
+  ( modifyVPCTenancy
+  , ModifyVPCTenancy
     -- * Request Lenses
-    , mvtDryRun
-    , mvtVPCId
-    , mvtInstanceTenancy
-
+  , mvtDryRun
+  , mvtVPCId
+  , mvtInstanceTenancy
     -- * Destructuring the Response
-    , modifyVPCTenancyResponse
-    , ModifyVPCTenancyResponse
+  , modifyVPCTenancyResponse
+  , ModifyVPCTenancyResponse
     -- * Response Lenses
-    , mvtrsReturnValue
-    , mvtrsResponseStatus
-    ) where
+  , mvtrsReturnValue
+  , mvtrsResponseStatus
+  ) where
 
 import Network.AWS.EC2.Types
 import Network.AWS.EC2.Types.Product
@@ -55,12 +51,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'modifyVPCTenancy' smart constructor.
-data ModifyVPCTenancy = ModifyVPCTenancy'
-  { _mvtDryRun          :: !(Maybe Bool)
-  , _mvtVPCId           :: !Text
-  , _mvtInstanceTenancy :: !VPCTenancy
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyVPCTenancy =
+  ModifyVPCTenancy'
+    { _mvtDryRun :: !(Maybe Bool)
+    , _mvtVPCId :: !Text
+    , _mvtInstanceTenancy :: !VPCTenancy
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyVPCTenancy' with the minimum fields required to make a request.
 --
@@ -71,10 +68,10 @@ data ModifyVPCTenancy = ModifyVPCTenancy'
 -- * 'mvtVPCId' - The ID of the VPC.
 --
 -- * 'mvtInstanceTenancy' - The instance tenancy attribute for the VPC.
-modifyVPCTenancy
-    :: Text -- ^ 'mvtVPCId'
-    -> VPCTenancy -- ^ 'mvtInstanceTenancy'
-    -> ModifyVPCTenancy
+modifyVPCTenancy ::
+     Text -- ^ 'mvtVPCId'
+  -> VPCTenancy -- ^ 'mvtInstanceTenancy'
+  -> ModifyVPCTenancy
 modifyVPCTenancy pVPCId_ pInstanceTenancy_ =
   ModifyVPCTenancy'
     { _mvtDryRun = Nothing
@@ -82,56 +79,58 @@ modifyVPCTenancy pVPCId_ pInstanceTenancy_ =
     , _mvtInstanceTenancy = pInstanceTenancy_
     }
 
-
 -- | Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 mvtDryRun :: Lens' ModifyVPCTenancy (Maybe Bool)
-mvtDryRun = lens _mvtDryRun (\ s a -> s{_mvtDryRun = a})
+mvtDryRun = lens _mvtDryRun (\s a -> s {_mvtDryRun = a})
 
 -- | The ID of the VPC.
 mvtVPCId :: Lens' ModifyVPCTenancy Text
-mvtVPCId = lens _mvtVPCId (\ s a -> s{_mvtVPCId = a})
+mvtVPCId = lens _mvtVPCId (\s a -> s {_mvtVPCId = a})
 
 -- | The instance tenancy attribute for the VPC.
 mvtInstanceTenancy :: Lens' ModifyVPCTenancy VPCTenancy
-mvtInstanceTenancy = lens _mvtInstanceTenancy (\ s a -> s{_mvtInstanceTenancy = a})
+mvtInstanceTenancy =
+  lens _mvtInstanceTenancy (\s a -> s {_mvtInstanceTenancy = a})
 
 instance AWSRequest ModifyVPCTenancy where
-        type Rs ModifyVPCTenancy = ModifyVPCTenancyResponse
-        request = postQuery ec2
-        response
-          = receiveXML
-              (\ s h x ->
-                 ModifyVPCTenancyResponse' <$>
-                   (x .@? "return") <*> (pure (fromEnum s)))
+  type Rs ModifyVPCTenancy = ModifyVPCTenancyResponse
+  request = postQuery ec2
+  response =
+    receiveXML
+      (\s h x ->
+         ModifyVPCTenancyResponse' <$> (x .@? "return") <*> (pure (fromEnum s)))
 
-instance Hashable ModifyVPCTenancy where
+instance Hashable ModifyVPCTenancy
 
-instance NFData ModifyVPCTenancy where
+instance NFData ModifyVPCTenancy
 
 instance ToHeaders ModifyVPCTenancy where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath ModifyVPCTenancy where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery ModifyVPCTenancy where
-        toQuery ModifyVPCTenancy'{..}
-          = mconcat
-              ["Action" =: ("ModifyVpcTenancy" :: ByteString),
-               "Version" =: ("2016-11-15" :: ByteString),
-               "DryRun" =: _mvtDryRun, "VpcId" =: _mvtVPCId,
-               "InstanceTenancy" =: _mvtInstanceTenancy]
+  toQuery ModifyVPCTenancy' {..} =
+    mconcat
+      [ "Action" =: ("ModifyVpcTenancy" :: ByteString)
+      , "Version" =: ("2016-11-15" :: ByteString)
+      , "DryRun" =: _mvtDryRun
+      , "VpcId" =: _mvtVPCId
+      , "InstanceTenancy" =: _mvtInstanceTenancy
+      ]
 
 -- | Contains the output of ModifyVpcTenancy.
 --
 --
 --
 -- /See:/ 'modifyVPCTenancyResponse' smart constructor.
-data ModifyVPCTenancyResponse = ModifyVPCTenancyResponse'
-  { _mvtrsReturnValue    :: !(Maybe Bool)
-  , _mvtrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyVPCTenancyResponse =
+  ModifyVPCTenancyResponse'
+    { _mvtrsReturnValue :: !(Maybe Bool)
+    , _mvtrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyVPCTenancyResponse' with the minimum fields required to make a request.
 --
@@ -140,20 +139,20 @@ data ModifyVPCTenancyResponse = ModifyVPCTenancyResponse'
 -- * 'mvtrsReturnValue' - Returns @true@ if the request succeeds; otherwise, returns an error.
 --
 -- * 'mvtrsResponseStatus' - -- | The response status code.
-modifyVPCTenancyResponse
-    :: Int -- ^ 'mvtrsResponseStatus'
-    -> ModifyVPCTenancyResponse
+modifyVPCTenancyResponse ::
+     Int -- ^ 'mvtrsResponseStatus'
+  -> ModifyVPCTenancyResponse
 modifyVPCTenancyResponse pResponseStatus_ =
   ModifyVPCTenancyResponse'
     {_mvtrsReturnValue = Nothing, _mvtrsResponseStatus = pResponseStatus_}
 
-
 -- | Returns @true@ if the request succeeds; otherwise, returns an error.
 mvtrsReturnValue :: Lens' ModifyVPCTenancyResponse (Maybe Bool)
-mvtrsReturnValue = lens _mvtrsReturnValue (\ s a -> s{_mvtrsReturnValue = a})
+mvtrsReturnValue = lens _mvtrsReturnValue (\s a -> s {_mvtrsReturnValue = a})
 
 -- | -- | The response status code.
 mvtrsResponseStatus :: Lens' ModifyVPCTenancyResponse Int
-mvtrsResponseStatus = lens _mvtrsResponseStatus (\ s a -> s{_mvtrsResponseStatus = a})
+mvtrsResponseStatus =
+  lens _mvtrsResponseStatus (\s a -> s {_mvtrsResponseStatus = a})
 
-instance NFData ModifyVPCTenancyResponse where
+instance NFData ModifyVPCTenancyResponse

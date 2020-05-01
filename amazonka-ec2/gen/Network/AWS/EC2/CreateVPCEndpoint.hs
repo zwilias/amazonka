@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.EC2.CreateVPCEndpoint
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -28,30 +26,28 @@
 -- Use 'DescribeVpcEndpointServices' to get a list of supported services.
 --
 module Network.AWS.EC2.CreateVPCEndpoint
-    (
     -- * Creating a Request
-      createVPCEndpoint
-    , CreateVPCEndpoint
+  ( createVPCEndpoint
+  , CreateVPCEndpoint
     -- * Request Lenses
-    , cvePolicyDocument
-    , cveSecurityGroupIds
-    , cveClientToken
-    , cveSubnetIds
-    , cveVPCEndpointType
-    , cvePrivateDNSEnabled
-    , cveDryRun
-    , cveRouteTableIds
-    , cveVPCId
-    , cveServiceName
-
+  , cvePolicyDocument
+  , cveSecurityGroupIds
+  , cveClientToken
+  , cveSubnetIds
+  , cveVPCEndpointType
+  , cvePrivateDNSEnabled
+  , cveDryRun
+  , cveRouteTableIds
+  , cveVPCId
+  , cveServiceName
     -- * Destructuring the Response
-    , createVPCEndpointResponse
-    , CreateVPCEndpointResponse
+  , createVPCEndpointResponse
+  , CreateVPCEndpointResponse
     -- * Response Lenses
-    , cversClientToken
-    , cversVPCEndpoint
-    , cversResponseStatus
-    ) where
+  , cversClientToken
+  , cversVPCEndpoint
+  , cversResponseStatus
+  ) where
 
 import Network.AWS.EC2.Types
 import Network.AWS.EC2.Types.Product
@@ -65,19 +61,20 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createVPCEndpoint' smart constructor.
-data CreateVPCEndpoint = CreateVPCEndpoint'
-  { _cvePolicyDocument    :: !(Maybe Text)
-  , _cveSecurityGroupIds  :: !(Maybe [Text])
-  , _cveClientToken       :: !(Maybe Text)
-  , _cveSubnetIds         :: !(Maybe [Text])
-  , _cveVPCEndpointType   :: !(Maybe VPCEndpointType)
-  , _cvePrivateDNSEnabled :: !(Maybe Bool)
-  , _cveDryRun            :: !(Maybe Bool)
-  , _cveRouteTableIds     :: !(Maybe [Text])
-  , _cveVPCId             :: !Text
-  , _cveServiceName       :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateVPCEndpoint =
+  CreateVPCEndpoint'
+    { _cvePolicyDocument :: !(Maybe Text)
+    , _cveSecurityGroupIds :: !(Maybe [Text])
+    , _cveClientToken :: !(Maybe Text)
+    , _cveSubnetIds :: !(Maybe [Text])
+    , _cveVPCEndpointType :: !(Maybe VPCEndpointType)
+    , _cvePrivateDNSEnabled :: !(Maybe Bool)
+    , _cveDryRun :: !(Maybe Bool)
+    , _cveRouteTableIds :: !(Maybe [Text])
+    , _cveVPCId :: !Text
+    , _cveServiceName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateVPCEndpoint' with the minimum fields required to make a request.
 --
@@ -102,10 +99,10 @@ data CreateVPCEndpoint = CreateVPCEndpoint'
 -- * 'cveVPCId' - The ID of the VPC in which the endpoint will be used.
 --
 -- * 'cveServiceName' - The service name. To get a list of available services, use the 'DescribeVpcEndpointServices' request, or get the name from the service provider.
-createVPCEndpoint
-    :: Text -- ^ 'cveVPCId'
-    -> Text -- ^ 'cveServiceName'
-    -> CreateVPCEndpoint
+createVPCEndpoint ::
+     Text -- ^ 'cveVPCId'
+  -> Text -- ^ 'cveServiceName'
+  -> CreateVPCEndpoint
 createVPCEndpoint pVPCId_ pServiceName_ =
   CreateVPCEndpoint'
     { _cvePolicyDocument = Nothing
@@ -120,97 +117,102 @@ createVPCEndpoint pVPCId_ pServiceName_ =
     , _cveServiceName = pServiceName_
     }
 
-
 -- | (Gateway endpoint) A policy to attach to the endpoint that controls access to the service. The policy must be in valid JSON format. If this parameter is not specified, we attach a default policy that allows full access to the service.
 cvePolicyDocument :: Lens' CreateVPCEndpoint (Maybe Text)
-cvePolicyDocument = lens _cvePolicyDocument (\ s a -> s{_cvePolicyDocument = a})
+cvePolicyDocument = lens _cvePolicyDocument (\s a -> s {_cvePolicyDocument = a})
 
 -- | (Interface endpoint) The ID of one or more security groups to associate with the endpoint network interface.
 cveSecurityGroupIds :: Lens' CreateVPCEndpoint [Text]
-cveSecurityGroupIds = lens _cveSecurityGroupIds (\ s a -> s{_cveSecurityGroupIds = a}) . _Default . _Coerce
+cveSecurityGroupIds =
+  lens _cveSecurityGroupIds (\s a -> s {_cveSecurityGroupIds = a}) .
+  _Default . _Coerce
 
 -- | Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html How to Ensure Idempotency> .
 cveClientToken :: Lens' CreateVPCEndpoint (Maybe Text)
-cveClientToken = lens _cveClientToken (\ s a -> s{_cveClientToken = a})
+cveClientToken = lens _cveClientToken (\s a -> s {_cveClientToken = a})
 
 -- | (Interface endpoint) The ID of one or more subnets in which to create an endpoint network interface.
 cveSubnetIds :: Lens' CreateVPCEndpoint [Text]
-cveSubnetIds = lens _cveSubnetIds (\ s a -> s{_cveSubnetIds = a}) . _Default . _Coerce
+cveSubnetIds =
+  lens _cveSubnetIds (\s a -> s {_cveSubnetIds = a}) . _Default . _Coerce
 
 -- | The type of endpoint. Default: Gateway
 cveVPCEndpointType :: Lens' CreateVPCEndpoint (Maybe VPCEndpointType)
-cveVPCEndpointType = lens _cveVPCEndpointType (\ s a -> s{_cveVPCEndpointType = a})
+cveVPCEndpointType =
+  lens _cveVPCEndpointType (\s a -> s {_cveVPCEndpointType = a})
 
 -- | (Interface endpoint) Indicate whether to associate a private hosted zone with the specified VPC. The private hosted zone contains a record set for the default public DNS name for the service for the region (for example, @kinesis.us-east-1.amazonaws.com@ ) which resolves to the private IP addresses of the endpoint network interfaces in the VPC. This enables you to make requests to the default public DNS name for the service instead of the public DNS names that are automatically generated by the VPC endpoint service. To use a private hosted zone, you must set the following VPC attributes to @true@ : @enableDnsHostnames@ and @enableDnsSupport@ . Use 'ModifyVpcAttribute' to set the VPC attributes. Default: @true@
 cvePrivateDNSEnabled :: Lens' CreateVPCEndpoint (Maybe Bool)
-cvePrivateDNSEnabled = lens _cvePrivateDNSEnabled (\ s a -> s{_cvePrivateDNSEnabled = a})
+cvePrivateDNSEnabled =
+  lens _cvePrivateDNSEnabled (\s a -> s {_cvePrivateDNSEnabled = a})
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 cveDryRun :: Lens' CreateVPCEndpoint (Maybe Bool)
-cveDryRun = lens _cveDryRun (\ s a -> s{_cveDryRun = a})
+cveDryRun = lens _cveDryRun (\s a -> s {_cveDryRun = a})
 
 -- | (Gateway endpoint) One or more route table IDs.
 cveRouteTableIds :: Lens' CreateVPCEndpoint [Text]
-cveRouteTableIds = lens _cveRouteTableIds (\ s a -> s{_cveRouteTableIds = a}) . _Default . _Coerce
+cveRouteTableIds =
+  lens _cveRouteTableIds (\s a -> s {_cveRouteTableIds = a}) .
+  _Default . _Coerce
 
 -- | The ID of the VPC in which the endpoint will be used.
 cveVPCId :: Lens' CreateVPCEndpoint Text
-cveVPCId = lens _cveVPCId (\ s a -> s{_cveVPCId = a})
+cveVPCId = lens _cveVPCId (\s a -> s {_cveVPCId = a})
 
 -- | The service name. To get a list of available services, use the 'DescribeVpcEndpointServices' request, or get the name from the service provider.
 cveServiceName :: Lens' CreateVPCEndpoint Text
-cveServiceName = lens _cveServiceName (\ s a -> s{_cveServiceName = a})
+cveServiceName = lens _cveServiceName (\s a -> s {_cveServiceName = a})
 
 instance AWSRequest CreateVPCEndpoint where
-        type Rs CreateVPCEndpoint = CreateVPCEndpointResponse
-        request = postQuery ec2
-        response
-          = receiveXML
-              (\ s h x ->
-                 CreateVPCEndpointResponse' <$>
-                   (x .@? "clientToken") <*> (x .@? "vpcEndpoint") <*>
-                     (pure (fromEnum s)))
+  type Rs CreateVPCEndpoint = CreateVPCEndpointResponse
+  request = postQuery ec2
+  response =
+    receiveXML
+      (\s h x ->
+         CreateVPCEndpointResponse' <$> (x .@? "clientToken") <*>
+         (x .@? "vpcEndpoint") <*>
+         (pure (fromEnum s)))
 
-instance Hashable CreateVPCEndpoint where
+instance Hashable CreateVPCEndpoint
 
-instance NFData CreateVPCEndpoint where
+instance NFData CreateVPCEndpoint
 
 instance ToHeaders CreateVPCEndpoint where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath CreateVPCEndpoint where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery CreateVPCEndpoint where
-        toQuery CreateVPCEndpoint'{..}
-          = mconcat
-              ["Action" =: ("CreateVpcEndpoint" :: ByteString),
-               "Version" =: ("2016-11-15" :: ByteString),
-               "PolicyDocument" =: _cvePolicyDocument,
-               toQuery
-                 (toQueryList "SecurityGroupId" <$>
-                    _cveSecurityGroupIds),
-               "ClientToken" =: _cveClientToken,
-               toQuery (toQueryList "SubnetId" <$> _cveSubnetIds),
-               "VpcEndpointType" =: _cveVPCEndpointType,
-               "PrivateDnsEnabled" =: _cvePrivateDNSEnabled,
-               "DryRun" =: _cveDryRun,
-               toQuery
-                 (toQueryList "RouteTableId" <$> _cveRouteTableIds),
-               "VpcId" =: _cveVPCId,
-               "ServiceName" =: _cveServiceName]
+  toQuery CreateVPCEndpoint' {..} =
+    mconcat
+      [ "Action" =: ("CreateVpcEndpoint" :: ByteString)
+      , "Version" =: ("2016-11-15" :: ByteString)
+      , "PolicyDocument" =: _cvePolicyDocument
+      , toQuery (toQueryList "SecurityGroupId" <$> _cveSecurityGroupIds)
+      , "ClientToken" =: _cveClientToken
+      , toQuery (toQueryList "SubnetId" <$> _cveSubnetIds)
+      , "VpcEndpointType" =: _cveVPCEndpointType
+      , "PrivateDnsEnabled" =: _cvePrivateDNSEnabled
+      , "DryRun" =: _cveDryRun
+      , toQuery (toQueryList "RouteTableId" <$> _cveRouteTableIds)
+      , "VpcId" =: _cveVPCId
+      , "ServiceName" =: _cveServiceName
+      ]
 
 -- | Contains the output of CreateVpcEndpoint.
 --
 --
 --
 -- /See:/ 'createVPCEndpointResponse' smart constructor.
-data CreateVPCEndpointResponse = CreateVPCEndpointResponse'
-  { _cversClientToken    :: !(Maybe Text)
-  , _cversVPCEndpoint    :: !(Maybe VPCEndpoint)
-  , _cversResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateVPCEndpointResponse =
+  CreateVPCEndpointResponse'
+    { _cversClientToken :: !(Maybe Text)
+    , _cversVPCEndpoint :: !(Maybe VPCEndpoint)
+    , _cversResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateVPCEndpointResponse' with the minimum fields required to make a request.
 --
@@ -221,9 +223,9 @@ data CreateVPCEndpointResponse = CreateVPCEndpointResponse'
 -- * 'cversVPCEndpoint' - Information about the endpoint.
 --
 -- * 'cversResponseStatus' - -- | The response status code.
-createVPCEndpointResponse
-    :: Int -- ^ 'cversResponseStatus'
-    -> CreateVPCEndpointResponse
+createVPCEndpointResponse ::
+     Int -- ^ 'cversResponseStatus'
+  -> CreateVPCEndpointResponse
 createVPCEndpointResponse pResponseStatus_ =
   CreateVPCEndpointResponse'
     { _cversClientToken = Nothing
@@ -231,17 +233,17 @@ createVPCEndpointResponse pResponseStatus_ =
     , _cversResponseStatus = pResponseStatus_
     }
 
-
 -- | Unique, case-sensitive identifier you provide to ensure the idempotency of the request.
 cversClientToken :: Lens' CreateVPCEndpointResponse (Maybe Text)
-cversClientToken = lens _cversClientToken (\ s a -> s{_cversClientToken = a})
+cversClientToken = lens _cversClientToken (\s a -> s {_cversClientToken = a})
 
 -- | Information about the endpoint.
 cversVPCEndpoint :: Lens' CreateVPCEndpointResponse (Maybe VPCEndpoint)
-cversVPCEndpoint = lens _cversVPCEndpoint (\ s a -> s{_cversVPCEndpoint = a})
+cversVPCEndpoint = lens _cversVPCEndpoint (\s a -> s {_cversVPCEndpoint = a})
 
 -- | -- | The response status code.
 cversResponseStatus :: Lens' CreateVPCEndpointResponse Int
-cversResponseStatus = lens _cversResponseStatus (\ s a -> s{_cversResponseStatus = a})
+cversResponseStatus =
+  lens _cversResponseStatus (\s a -> s {_cversResponseStatus = a})
 
-instance NFData CreateVPCEndpointResponse where
+instance NFData CreateVPCEndpointResponse

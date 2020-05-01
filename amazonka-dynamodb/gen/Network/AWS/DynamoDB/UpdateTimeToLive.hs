@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.DynamoDB.UpdateTimeToLive
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -32,21 +30,19 @@
 -- For more information, see <http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html Time To Live> in the Amazon DynamoDB Developer Guide.
 --
 module Network.AWS.DynamoDB.UpdateTimeToLive
-    (
     -- * Creating a Request
-      updateTimeToLive
-    , UpdateTimeToLive
+  ( updateTimeToLive
+  , UpdateTimeToLive
     -- * Request Lenses
-    , uttlTableName
-    , uttlTimeToLiveSpecification
-
+  , uttlTableName
+  , uttlTimeToLiveSpecification
     -- * Destructuring the Response
-    , updateTimeToLiveResponse
-    , UpdateTimeToLiveResponse
+  , updateTimeToLiveResponse
+  , UpdateTimeToLiveResponse
     -- * Response Lenses
-    , uttlrsTimeToLiveSpecification
-    , uttlrsResponseStatus
-    ) where
+  , uttlrsTimeToLiveSpecification
+  , uttlrsResponseStatus
+  ) where
 
 import Network.AWS.DynamoDB.Types
 import Network.AWS.DynamoDB.Types.Product
@@ -60,11 +56,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateTimeToLive' smart constructor.
-data UpdateTimeToLive = UpdateTimeToLive'
-  { _uttlTableName               :: !Text
-  , _uttlTimeToLiveSpecification :: !TimeToLiveSpecification
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateTimeToLive =
+  UpdateTimeToLive'
+    { _uttlTableName :: !Text
+    , _uttlTimeToLiveSpecification :: !TimeToLiveSpecification
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateTimeToLive' with the minimum fields required to make a request.
 --
@@ -73,69 +70,70 @@ data UpdateTimeToLive = UpdateTimeToLive'
 -- * 'uttlTableName' - The name of the table to be configured.
 --
 -- * 'uttlTimeToLiveSpecification' - Represents the settings used to enable or disable Time to Live for the specified table.
-updateTimeToLive
-    :: Text -- ^ 'uttlTableName'
-    -> TimeToLiveSpecification -- ^ 'uttlTimeToLiveSpecification'
-    -> UpdateTimeToLive
+updateTimeToLive ::
+     Text -- ^ 'uttlTableName'
+  -> TimeToLiveSpecification -- ^ 'uttlTimeToLiveSpecification'
+  -> UpdateTimeToLive
 updateTimeToLive pTableName_ pTimeToLiveSpecification_ =
   UpdateTimeToLive'
     { _uttlTableName = pTableName_
     , _uttlTimeToLiveSpecification = pTimeToLiveSpecification_
     }
 
-
 -- | The name of the table to be configured.
 uttlTableName :: Lens' UpdateTimeToLive Text
-uttlTableName = lens _uttlTableName (\ s a -> s{_uttlTableName = a})
+uttlTableName = lens _uttlTableName (\s a -> s {_uttlTableName = a})
 
 -- | Represents the settings used to enable or disable Time to Live for the specified table.
 uttlTimeToLiveSpecification :: Lens' UpdateTimeToLive TimeToLiveSpecification
-uttlTimeToLiveSpecification = lens _uttlTimeToLiveSpecification (\ s a -> s{_uttlTimeToLiveSpecification = a})
+uttlTimeToLiveSpecification =
+  lens
+    _uttlTimeToLiveSpecification
+    (\s a -> s {_uttlTimeToLiveSpecification = a})
 
 instance AWSRequest UpdateTimeToLive where
-        type Rs UpdateTimeToLive = UpdateTimeToLiveResponse
-        request = postJSON dynamoDB
-        response
-          = receiveJSON
-              (\ s h x ->
-                 UpdateTimeToLiveResponse' <$>
-                   (x .?> "TimeToLiveSpecification") <*>
-                     (pure (fromEnum s)))
+  type Rs UpdateTimeToLive = UpdateTimeToLiveResponse
+  request = postJSON dynamoDB
+  response =
+    receiveJSON
+      (\s h x ->
+         UpdateTimeToLiveResponse' <$> (x .?> "TimeToLiveSpecification") <*>
+         (pure (fromEnum s)))
 
-instance Hashable UpdateTimeToLive where
+instance Hashable UpdateTimeToLive
 
-instance NFData UpdateTimeToLive where
+instance NFData UpdateTimeToLive
 
 instance ToHeaders UpdateTimeToLive where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("DynamoDB_20120810.UpdateTimeToLive" :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.0" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("DynamoDB_20120810.UpdateTimeToLive" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.0" :: ByteString)
+         ])
 
 instance ToJSON UpdateTimeToLive where
-        toJSON UpdateTimeToLive'{..}
-          = object
-              (catMaybes
-                 [Just ("TableName" .= _uttlTableName),
-                  Just
-                    ("TimeToLiveSpecification" .=
-                       _uttlTimeToLiveSpecification)])
+  toJSON UpdateTimeToLive' {..} =
+    object
+      (catMaybes
+         [ Just ("TableName" .= _uttlTableName)
+         , Just ("TimeToLiveSpecification" .= _uttlTimeToLiveSpecification)
+         ])
 
 instance ToPath UpdateTimeToLive where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery UpdateTimeToLive where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'updateTimeToLiveResponse' smart constructor.
-data UpdateTimeToLiveResponse = UpdateTimeToLiveResponse'
-  { _uttlrsTimeToLiveSpecification :: !(Maybe TimeToLiveSpecification)
-  , _uttlrsResponseStatus          :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateTimeToLiveResponse =
+  UpdateTimeToLiveResponse'
+    { _uttlrsTimeToLiveSpecification :: !(Maybe TimeToLiveSpecification)
+    , _uttlrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateTimeToLiveResponse' with the minimum fields required to make a request.
 --
@@ -144,22 +142,26 @@ data UpdateTimeToLiveResponse = UpdateTimeToLiveResponse'
 -- * 'uttlrsTimeToLiveSpecification' - Represents the output of an @UpdateTimeToLive@ operation.
 --
 -- * 'uttlrsResponseStatus' - -- | The response status code.
-updateTimeToLiveResponse
-    :: Int -- ^ 'uttlrsResponseStatus'
-    -> UpdateTimeToLiveResponse
+updateTimeToLiveResponse ::
+     Int -- ^ 'uttlrsResponseStatus'
+  -> UpdateTimeToLiveResponse
 updateTimeToLiveResponse pResponseStatus_ =
   UpdateTimeToLiveResponse'
     { _uttlrsTimeToLiveSpecification = Nothing
     , _uttlrsResponseStatus = pResponseStatus_
     }
 
-
 -- | Represents the output of an @UpdateTimeToLive@ operation.
-uttlrsTimeToLiveSpecification :: Lens' UpdateTimeToLiveResponse (Maybe TimeToLiveSpecification)
-uttlrsTimeToLiveSpecification = lens _uttlrsTimeToLiveSpecification (\ s a -> s{_uttlrsTimeToLiveSpecification = a})
+uttlrsTimeToLiveSpecification ::
+     Lens' UpdateTimeToLiveResponse (Maybe TimeToLiveSpecification)
+uttlrsTimeToLiveSpecification =
+  lens
+    _uttlrsTimeToLiveSpecification
+    (\s a -> s {_uttlrsTimeToLiveSpecification = a})
 
 -- | -- | The response status code.
 uttlrsResponseStatus :: Lens' UpdateTimeToLiveResponse Int
-uttlrsResponseStatus = lens _uttlrsResponseStatus (\ s a -> s{_uttlrsResponseStatus = a})
+uttlrsResponseStatus =
+  lens _uttlrsResponseStatus (\s a -> s {_uttlrsResponseStatus = a})
 
-instance NFData UpdateTimeToLiveResponse where
+instance NFData UpdateTimeToLiveResponse

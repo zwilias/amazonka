@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.DynamoDB.RestoreTableToPointInTime
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -56,23 +54,21 @@
 --
 --
 module Network.AWS.DynamoDB.RestoreTableToPointInTime
-    (
     -- * Creating a Request
-      restoreTableToPointInTime
-    , RestoreTableToPointInTime
+  ( restoreTableToPointInTime
+  , RestoreTableToPointInTime
     -- * Request Lenses
-    , rttpitUseLatestRestorableTime
-    , rttpitRestoreDateTime
-    , rttpitSourceTableName
-    , rttpitTargetTableName
-
+  , rttpitUseLatestRestorableTime
+  , rttpitRestoreDateTime
+  , rttpitSourceTableName
+  , rttpitTargetTableName
     -- * Destructuring the Response
-    , restoreTableToPointInTimeResponse
-    , RestoreTableToPointInTimeResponse
+  , restoreTableToPointInTimeResponse
+  , RestoreTableToPointInTimeResponse
     -- * Response Lenses
-    , rttpitrsTableDescription
-    , rttpitrsResponseStatus
-    ) where
+  , rttpitrsTableDescription
+  , rttpitrsResponseStatus
+  ) where
 
 import Network.AWS.DynamoDB.Types
 import Network.AWS.DynamoDB.Types.Product
@@ -82,13 +78,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'restoreTableToPointInTime' smart constructor.
-data RestoreTableToPointInTime = RestoreTableToPointInTime'
-  { _rttpitUseLatestRestorableTime :: !(Maybe Bool)
-  , _rttpitRestoreDateTime         :: !(Maybe POSIX)
-  , _rttpitSourceTableName         :: !Text
-  , _rttpitTargetTableName         :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RestoreTableToPointInTime =
+  RestoreTableToPointInTime'
+    { _rttpitUseLatestRestorableTime :: !(Maybe Bool)
+    , _rttpitRestoreDateTime :: !(Maybe POSIX)
+    , _rttpitSourceTableName :: !Text
+    , _rttpitTargetTableName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RestoreTableToPointInTime' with the minimum fields required to make a request.
 --
@@ -101,10 +98,10 @@ data RestoreTableToPointInTime = RestoreTableToPointInTime'
 -- * 'rttpitSourceTableName' - Name of the source table that is being restored.
 --
 -- * 'rttpitTargetTableName' - The name of the new table to which it must be restored to.
-restoreTableToPointInTime
-    :: Text -- ^ 'rttpitSourceTableName'
-    -> Text -- ^ 'rttpitTargetTableName'
-    -> RestoreTableToPointInTime
+restoreTableToPointInTime ::
+     Text -- ^ 'rttpitSourceTableName'
+  -> Text -- ^ 'rttpitTargetTableName'
+  -> RestoreTableToPointInTime
 restoreTableToPointInTime pSourceTableName_ pTargetTableName_ =
   RestoreTableToPointInTime'
     { _rttpitUseLatestRestorableTime = Nothing
@@ -113,69 +110,74 @@ restoreTableToPointInTime pSourceTableName_ pTargetTableName_ =
     , _rttpitTargetTableName = pTargetTableName_
     }
 
-
 -- | Restore the table to the latest possible time. @LatestRestorableDateTime@ is typically 5 minutes before the current time.
 rttpitUseLatestRestorableTime :: Lens' RestoreTableToPointInTime (Maybe Bool)
-rttpitUseLatestRestorableTime = lens _rttpitUseLatestRestorableTime (\ s a -> s{_rttpitUseLatestRestorableTime = a})
+rttpitUseLatestRestorableTime =
+  lens
+    _rttpitUseLatestRestorableTime
+    (\s a -> s {_rttpitUseLatestRestorableTime = a})
 
 -- | Time in the past to restore the table to.
 rttpitRestoreDateTime :: Lens' RestoreTableToPointInTime (Maybe UTCTime)
-rttpitRestoreDateTime = lens _rttpitRestoreDateTime (\ s a -> s{_rttpitRestoreDateTime = a}) . mapping _Time
+rttpitRestoreDateTime =
+  lens _rttpitRestoreDateTime (\s a -> s {_rttpitRestoreDateTime = a}) .
+  mapping _Time
 
 -- | Name of the source table that is being restored.
 rttpitSourceTableName :: Lens' RestoreTableToPointInTime Text
-rttpitSourceTableName = lens _rttpitSourceTableName (\ s a -> s{_rttpitSourceTableName = a})
+rttpitSourceTableName =
+  lens _rttpitSourceTableName (\s a -> s {_rttpitSourceTableName = a})
 
 -- | The name of the new table to which it must be restored to.
 rttpitTargetTableName :: Lens' RestoreTableToPointInTime Text
-rttpitTargetTableName = lens _rttpitTargetTableName (\ s a -> s{_rttpitTargetTableName = a})
+rttpitTargetTableName =
+  lens _rttpitTargetTableName (\s a -> s {_rttpitTargetTableName = a})
 
 instance AWSRequest RestoreTableToPointInTime where
-        type Rs RestoreTableToPointInTime =
-             RestoreTableToPointInTimeResponse
-        request = postJSON dynamoDB
-        response
-          = receiveJSON
-              (\ s h x ->
-                 RestoreTableToPointInTimeResponse' <$>
-                   (x .?> "TableDescription") <*> (pure (fromEnum s)))
+  type Rs RestoreTableToPointInTime = RestoreTableToPointInTimeResponse
+  request = postJSON dynamoDB
+  response =
+    receiveJSON
+      (\s h x ->
+         RestoreTableToPointInTimeResponse' <$> (x .?> "TableDescription") <*>
+         (pure (fromEnum s)))
 
-instance Hashable RestoreTableToPointInTime where
+instance Hashable RestoreTableToPointInTime
 
-instance NFData RestoreTableToPointInTime where
+instance NFData RestoreTableToPointInTime
 
 instance ToHeaders RestoreTableToPointInTime where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("DynamoDB_20120810.RestoreTableToPointInTime" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.0" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("DynamoDB_20120810.RestoreTableToPointInTime" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.0" :: ByteString)
+         ])
 
 instance ToJSON RestoreTableToPointInTime where
-        toJSON RestoreTableToPointInTime'{..}
-          = object
-              (catMaybes
-                 [("UseLatestRestorableTime" .=) <$>
-                    _rttpitUseLatestRestorableTime,
-                  ("RestoreDateTime" .=) <$> _rttpitRestoreDateTime,
-                  Just ("SourceTableName" .= _rttpitSourceTableName),
-                  Just ("TargetTableName" .= _rttpitTargetTableName)])
+  toJSON RestoreTableToPointInTime' {..} =
+    object
+      (catMaybes
+         [ ("UseLatestRestorableTime" .=) <$> _rttpitUseLatestRestorableTime
+         , ("RestoreDateTime" .=) <$> _rttpitRestoreDateTime
+         , Just ("SourceTableName" .= _rttpitSourceTableName)
+         , Just ("TargetTableName" .= _rttpitTargetTableName)
+         ])
 
 instance ToPath RestoreTableToPointInTime where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery RestoreTableToPointInTime where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'restoreTableToPointInTimeResponse' smart constructor.
-data RestoreTableToPointInTimeResponse = RestoreTableToPointInTimeResponse'
-  { _rttpitrsTableDescription :: !(Maybe TableDescription)
-  , _rttpitrsResponseStatus   :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RestoreTableToPointInTimeResponse =
+  RestoreTableToPointInTimeResponse'
+    { _rttpitrsTableDescription :: !(Maybe TableDescription)
+    , _rttpitrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RestoreTableToPointInTimeResponse' with the minimum fields required to make a request.
 --
@@ -184,23 +186,24 @@ data RestoreTableToPointInTimeResponse = RestoreTableToPointInTimeResponse'
 -- * 'rttpitrsTableDescription' - Represents the properties of a table.
 --
 -- * 'rttpitrsResponseStatus' - -- | The response status code.
-restoreTableToPointInTimeResponse
-    :: Int -- ^ 'rttpitrsResponseStatus'
-    -> RestoreTableToPointInTimeResponse
+restoreTableToPointInTimeResponse ::
+     Int -- ^ 'rttpitrsResponseStatus'
+  -> RestoreTableToPointInTimeResponse
 restoreTableToPointInTimeResponse pResponseStatus_ =
   RestoreTableToPointInTimeResponse'
     { _rttpitrsTableDescription = Nothing
     , _rttpitrsResponseStatus = pResponseStatus_
     }
 
-
 -- | Represents the properties of a table.
-rttpitrsTableDescription :: Lens' RestoreTableToPointInTimeResponse (Maybe TableDescription)
-rttpitrsTableDescription = lens _rttpitrsTableDescription (\ s a -> s{_rttpitrsTableDescription = a})
+rttpitrsTableDescription ::
+     Lens' RestoreTableToPointInTimeResponse (Maybe TableDescription)
+rttpitrsTableDescription =
+  lens _rttpitrsTableDescription (\s a -> s {_rttpitrsTableDescription = a})
 
 -- | -- | The response status code.
 rttpitrsResponseStatus :: Lens' RestoreTableToPointInTimeResponse Int
-rttpitrsResponseStatus = lens _rttpitrsResponseStatus (\ s a -> s{_rttpitrsResponseStatus = a})
+rttpitrsResponseStatus =
+  lens _rttpitrsResponseStatus (\s a -> s {_rttpitrsResponseStatus = a})
 
 instance NFData RestoreTableToPointInTimeResponse
-         where

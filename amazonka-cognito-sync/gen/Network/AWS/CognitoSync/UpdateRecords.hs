@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CognitoSync.UpdateRecords
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -28,26 +26,24 @@
 -- This API can be called with temporary user credentials provided by Cognito Identity or with developer credentials.
 --
 module Network.AWS.CognitoSync.UpdateRecords
-    (
     -- * Creating a Request
-      updateRecords
-    , UpdateRecords
+  ( updateRecords
+  , UpdateRecords
     -- * Request Lenses
-    , urRecordPatches
-    , urDeviceId
-    , urClientContext
-    , urIdentityPoolId
-    , urIdentityId
-    , urDatasetName
-    , urSyncSessionToken
-
+  , urRecordPatches
+  , urDeviceId
+  , urClientContext
+  , urIdentityPoolId
+  , urIdentityId
+  , urDatasetName
+  , urSyncSessionToken
     -- * Destructuring the Response
-    , updateRecordsResponse
-    , UpdateRecordsResponse
+  , updateRecordsResponse
+  , UpdateRecordsResponse
     -- * Response Lenses
-    , urrsRecords
-    , urrsResponseStatus
-    ) where
+  , urrsRecords
+  , urrsResponseStatus
+  ) where
 
 import Network.AWS.CognitoSync.Types
 import Network.AWS.CognitoSync.Types.Product
@@ -59,16 +55,17 @@ import Network.AWS.Response
 -- | A request to post updates to records or add and delete records for a dataset and user.
 --
 -- /See:/ 'updateRecords' smart constructor.
-data UpdateRecords = UpdateRecords'
-  { _urRecordPatches    :: !(Maybe [RecordPatch])
-  , _urDeviceId         :: !(Maybe Text)
-  , _urClientContext    :: !(Maybe Text)
-  , _urIdentityPoolId   :: !Text
-  , _urIdentityId       :: !Text
-  , _urDatasetName      :: !Text
-  , _urSyncSessionToken :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateRecords =
+  UpdateRecords'
+    { _urRecordPatches :: !(Maybe [RecordPatch])
+    , _urDeviceId :: !(Maybe Text)
+    , _urClientContext :: !(Maybe Text)
+    , _urIdentityPoolId :: !Text
+    , _urIdentityId :: !Text
+    , _urDatasetName :: !Text
+    , _urSyncSessionToken :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateRecords' with the minimum fields required to make a request.
 --
@@ -87,12 +84,12 @@ data UpdateRecords = UpdateRecords'
 -- * 'urDatasetName' - A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
 --
 -- * 'urSyncSessionToken' - The SyncSessionToken returned by a previous call to ListRecords for this dataset and identity.
-updateRecords
-    :: Text -- ^ 'urIdentityPoolId'
-    -> Text -- ^ 'urIdentityId'
-    -> Text -- ^ 'urDatasetName'
-    -> Text -- ^ 'urSyncSessionToken'
-    -> UpdateRecords
+updateRecords ::
+     Text -- ^ 'urIdentityPoolId'
+  -> Text -- ^ 'urIdentityId'
+  -> Text -- ^ 'urDatasetName'
+  -> Text -- ^ 'urSyncSessionToken'
+  -> UpdateRecords
 updateRecords pIdentityPoolId_ pIdentityId_ pDatasetName_ pSyncSessionToken_ =
   UpdateRecords'
     { _urRecordPatches = Nothing
@@ -104,81 +101,88 @@ updateRecords pIdentityPoolId_ pIdentityId_ pDatasetName_ pSyncSessionToken_ =
     , _urSyncSessionToken = pSyncSessionToken_
     }
 
-
 -- | A list of patch operations.
 urRecordPatches :: Lens' UpdateRecords [RecordPatch]
-urRecordPatches = lens _urRecordPatches (\ s a -> s{_urRecordPatches = a}) . _Default . _Coerce
+urRecordPatches =
+  lens _urRecordPatches (\s a -> s {_urRecordPatches = a}) . _Default . _Coerce
 
 -- | The unique ID generated for this device by Cognito.
 urDeviceId :: Lens' UpdateRecords (Maybe Text)
-urDeviceId = lens _urDeviceId (\ s a -> s{_urDeviceId = a})
+urDeviceId = lens _urDeviceId (\s a -> s {_urDeviceId = a})
 
 -- | Intended to supply a device ID that will populate the lastModifiedBy field referenced in other methods. The ClientContext field is not yet implemented.
 urClientContext :: Lens' UpdateRecords (Maybe Text)
-urClientContext = lens _urClientContext (\ s a -> s{_urClientContext = a})
+urClientContext = lens _urClientContext (\s a -> s {_urClientContext = a})
 
 -- | A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
 urIdentityPoolId :: Lens' UpdateRecords Text
-urIdentityPoolId = lens _urIdentityPoolId (\ s a -> s{_urIdentityPoolId = a})
+urIdentityPoolId = lens _urIdentityPoolId (\s a -> s {_urIdentityPoolId = a})
 
 -- | A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
 urIdentityId :: Lens' UpdateRecords Text
-urIdentityId = lens _urIdentityId (\ s a -> s{_urIdentityId = a})
+urIdentityId = lens _urIdentityId (\s a -> s {_urIdentityId = a})
 
 -- | A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
 urDatasetName :: Lens' UpdateRecords Text
-urDatasetName = lens _urDatasetName (\ s a -> s{_urDatasetName = a})
+urDatasetName = lens _urDatasetName (\s a -> s {_urDatasetName = a})
 
 -- | The SyncSessionToken returned by a previous call to ListRecords for this dataset and identity.
 urSyncSessionToken :: Lens' UpdateRecords Text
-urSyncSessionToken = lens _urSyncSessionToken (\ s a -> s{_urSyncSessionToken = a})
+urSyncSessionToken =
+  lens _urSyncSessionToken (\s a -> s {_urSyncSessionToken = a})
 
 instance AWSRequest UpdateRecords where
-        type Rs UpdateRecords = UpdateRecordsResponse
-        request = postJSON cognitoSync
-        response
-          = receiveJSON
-              (\ s h x ->
-                 UpdateRecordsResponse' <$>
-                   (x .?> "Records" .!@ mempty) <*> (pure (fromEnum s)))
+  type Rs UpdateRecords = UpdateRecordsResponse
+  request = postJSON cognitoSync
+  response =
+    receiveJSON
+      (\s h x ->
+         UpdateRecordsResponse' <$> (x .?> "Records" .!@ mempty) <*>
+         (pure (fromEnum s)))
 
-instance Hashable UpdateRecords where
+instance Hashable UpdateRecords
 
-instance NFData UpdateRecords where
+instance NFData UpdateRecords
 
 instance ToHeaders UpdateRecords where
-        toHeaders UpdateRecords'{..}
-          = mconcat
-              ["x-amz-Client-Context" =# _urClientContext,
-               "Content-Type" =#
-                 ("application/x-amz-json-1.1" :: ByteString)]
+  toHeaders UpdateRecords' {..} =
+    mconcat
+      [ "x-amz-Client-Context" =# _urClientContext
+      , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+      ]
 
 instance ToJSON UpdateRecords where
-        toJSON UpdateRecords'{..}
-          = object
-              (catMaybes
-                 [("RecordPatches" .=) <$> _urRecordPatches,
-                  ("DeviceId" .=) <$> _urDeviceId,
-                  Just ("SyncSessionToken" .= _urSyncSessionToken)])
+  toJSON UpdateRecords' {..} =
+    object
+      (catMaybes
+         [ ("RecordPatches" .=) <$> _urRecordPatches
+         , ("DeviceId" .=) <$> _urDeviceId
+         , Just ("SyncSessionToken" .= _urSyncSessionToken)
+         ])
 
 instance ToPath UpdateRecords where
-        toPath UpdateRecords'{..}
-          = mconcat
-              ["/identitypools/", toBS _urIdentityPoolId,
-               "/identities/", toBS _urIdentityId, "/datasets/",
-               toBS _urDatasetName]
+  toPath UpdateRecords' {..} =
+    mconcat
+      [ "/identitypools/"
+      , toBS _urIdentityPoolId
+      , "/identities/"
+      , toBS _urIdentityId
+      , "/datasets/"
+      , toBS _urDatasetName
+      ]
 
 instance ToQuery UpdateRecords where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | Returned for a successful UpdateRecordsRequest.
 --
 -- /See:/ 'updateRecordsResponse' smart constructor.
-data UpdateRecordsResponse = UpdateRecordsResponse'
-  { _urrsRecords        :: !(Maybe [Record])
-  , _urrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateRecordsResponse =
+  UpdateRecordsResponse'
+    { _urrsRecords :: !(Maybe [Record])
+    , _urrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateRecordsResponse' with the minimum fields required to make a request.
 --
@@ -187,20 +191,21 @@ data UpdateRecordsResponse = UpdateRecordsResponse'
 -- * 'urrsRecords' - A list of records that have been updated.
 --
 -- * 'urrsResponseStatus' - -- | The response status code.
-updateRecordsResponse
-    :: Int -- ^ 'urrsResponseStatus'
-    -> UpdateRecordsResponse
+updateRecordsResponse ::
+     Int -- ^ 'urrsResponseStatus'
+  -> UpdateRecordsResponse
 updateRecordsResponse pResponseStatus_ =
   UpdateRecordsResponse'
     {_urrsRecords = Nothing, _urrsResponseStatus = pResponseStatus_}
 
-
 -- | A list of records that have been updated.
 urrsRecords :: Lens' UpdateRecordsResponse [Record]
-urrsRecords = lens _urrsRecords (\ s a -> s{_urrsRecords = a}) . _Default . _Coerce
+urrsRecords =
+  lens _urrsRecords (\s a -> s {_urrsRecords = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 urrsResponseStatus :: Lens' UpdateRecordsResponse Int
-urrsResponseStatus = lens _urrsResponseStatus (\ s a -> s{_urrsResponseStatus = a})
+urrsResponseStatus =
+  lens _urrsResponseStatus (\s a -> s {_urrsResponseStatus = a})
 
-instance NFData UpdateRecordsResponse where
+instance NFData UpdateRecordsResponse

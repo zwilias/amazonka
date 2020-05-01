@@ -1,12 +1,10 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE LambdaCase         #-}
-{-# LANGUAGE OverloadedStrings  #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE LambdaCase #-}
+{-# LANGUAGE OverloadedStrings #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CloudHSM.Types.Sum
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,27 +22,34 @@ data ClientVersion
   | VD5_3
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
-
 instance FromText ClientVersion where
-    parser = takeLowerText >>= \case
-        "5.1" -> pure VD5_1
-        "5.3" -> pure VD5_3
-        e -> fromTextError $ "Failure parsing ClientVersion from value: '" <> e
-           <> "'. Accepted values: 5.1, 5.3"
+  parser =
+    takeLowerText >>= \case
+      "5.1" -> pure VD5_1
+      "5.3" -> pure VD5_3
+      e ->
+        fromTextError $
+        "Failure parsing ClientVersion from value: '" <>
+        e <> "'. Accepted values: 5.1, 5.3"
 
 instance ToText ClientVersion where
-    toText = \case
-        VD5_1 -> "5.1"
-        VD5_3 -> "5.3"
+  toText =
+    \case
+      VD5_1 -> "5.1"
+      VD5_3 -> "5.3"
 
-instance Hashable     ClientVersion
-instance NFData       ClientVersion
+instance Hashable ClientVersion
+
+instance NFData ClientVersion
+
 instance ToByteString ClientVersion
-instance ToQuery      ClientVersion
-instance ToHeader     ClientVersion
+
+instance ToQuery ClientVersion
+
+instance ToHeader ClientVersion
 
 instance ToJSON ClientVersion where
-    toJSON = toJSONText
+  toJSON = toJSONText
 
 data CloudHSMObjectState
   = Degraded
@@ -52,29 +57,36 @@ data CloudHSMObjectState
   | Updating
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
-
 instance FromText CloudHSMObjectState where
-    parser = takeLowerText >>= \case
-        "degraded" -> pure Degraded
-        "ready" -> pure Ready
-        "updating" -> pure Updating
-        e -> fromTextError $ "Failure parsing CloudHSMObjectState from value: '" <> e
-           <> "'. Accepted values: degraded, ready, updating"
+  parser =
+    takeLowerText >>= \case
+      "degraded" -> pure Degraded
+      "ready" -> pure Ready
+      "updating" -> pure Updating
+      e ->
+        fromTextError $
+        "Failure parsing CloudHSMObjectState from value: '" <>
+        e <> "'. Accepted values: degraded, ready, updating"
 
 instance ToText CloudHSMObjectState where
-    toText = \case
-        Degraded -> "DEGRADED"
-        Ready -> "READY"
-        Updating -> "UPDATING"
+  toText =
+    \case
+      Degraded -> "DEGRADED"
+      Ready -> "READY"
+      Updating -> "UPDATING"
 
-instance Hashable     CloudHSMObjectState
-instance NFData       CloudHSMObjectState
+instance Hashable CloudHSMObjectState
+
+instance NFData CloudHSMObjectState
+
 instance ToByteString CloudHSMObjectState
-instance ToQuery      CloudHSMObjectState
-instance ToHeader     CloudHSMObjectState
+
+instance ToQuery CloudHSMObjectState
+
+instance ToHeader CloudHSMObjectState
 
 instance FromJSON CloudHSMObjectState where
-    parseJSON = parseJSONText "CloudHSMObjectState"
+  parseJSON = parseJSONText "CloudHSMObjectState"
 
 data HSMStatus
   = HSDegraded
@@ -86,37 +98,45 @@ data HSMStatus
   | HSUpdating
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
-
 instance FromText HSMStatus where
-    parser = takeLowerText >>= \case
-        "degraded" -> pure HSDegraded
-        "pending" -> pure HSPending
-        "running" -> pure HSRunning
-        "suspended" -> pure HSSuspended
-        "terminated" -> pure HSTerminated
-        "terminating" -> pure HSTerminating
-        "updating" -> pure HSUpdating
-        e -> fromTextError $ "Failure parsing HSMStatus from value: '" <> e
-           <> "'. Accepted values: degraded, pending, running, suspended, terminated, terminating, updating"
+  parser =
+    takeLowerText >>= \case
+      "degraded" -> pure HSDegraded
+      "pending" -> pure HSPending
+      "running" -> pure HSRunning
+      "suspended" -> pure HSSuspended
+      "terminated" -> pure HSTerminated
+      "terminating" -> pure HSTerminating
+      "updating" -> pure HSUpdating
+      e ->
+        fromTextError $
+        "Failure parsing HSMStatus from value: '" <>
+        e <>
+        "'. Accepted values: degraded, pending, running, suspended, terminated, terminating, updating"
 
 instance ToText HSMStatus where
-    toText = \case
-        HSDegraded -> "DEGRADED"
-        HSPending -> "PENDING"
-        HSRunning -> "RUNNING"
-        HSSuspended -> "SUSPENDED"
-        HSTerminated -> "TERMINATED"
-        HSTerminating -> "TERMINATING"
-        HSUpdating -> "UPDATING"
+  toText =
+    \case
+      HSDegraded -> "DEGRADED"
+      HSPending -> "PENDING"
+      HSRunning -> "RUNNING"
+      HSSuspended -> "SUSPENDED"
+      HSTerminated -> "TERMINATED"
+      HSTerminating -> "TERMINATING"
+      HSUpdating -> "UPDATING"
 
-instance Hashable     HSMStatus
-instance NFData       HSMStatus
+instance Hashable HSMStatus
+
+instance NFData HSMStatus
+
 instance ToByteString HSMStatus
-instance ToQuery      HSMStatus
-instance ToHeader     HSMStatus
+
+instance ToQuery HSMStatus
+
+instance ToHeader HSMStatus
 
 instance FromJSON HSMStatus where
-    parseJSON = parseJSONText "HSMStatus"
+  parseJSON = parseJSONText "HSMStatus"
 
 -- | Specifies the type of subscription for the HSM.
 --
@@ -131,25 +151,32 @@ data SubscriptionType =
   Production
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
-
 instance FromText SubscriptionType where
-    parser = takeLowerText >>= \case
-        "production" -> pure Production
-        e -> fromTextError $ "Failure parsing SubscriptionType from value: '" <> e
-           <> "'. Accepted values: production"
+  parser =
+    takeLowerText >>= \case
+      "production" -> pure Production
+      e ->
+        fromTextError $
+        "Failure parsing SubscriptionType from value: '" <>
+        e <> "'. Accepted values: production"
 
 instance ToText SubscriptionType where
-    toText = \case
-        Production -> "PRODUCTION"
+  toText =
+    \case
+      Production -> "PRODUCTION"
 
-instance Hashable     SubscriptionType
-instance NFData       SubscriptionType
+instance Hashable SubscriptionType
+
+instance NFData SubscriptionType
+
 instance ToByteString SubscriptionType
-instance ToQuery      SubscriptionType
-instance ToHeader     SubscriptionType
+
+instance ToQuery SubscriptionType
+
+instance ToHeader SubscriptionType
 
 instance ToJSON SubscriptionType where
-    toJSON = toJSONText
+  toJSON = toJSONText
 
 instance FromJSON SubscriptionType where
-    parseJSON = parseJSONText "SubscriptionType"
+  parseJSON = parseJSONText "SubscriptionType"

@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CodeCommit
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -120,667 +119,486 @@
 -- For information about how to use AWS CodeCommit, see the <http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html AWS CodeCommit User Guide> .
 --
 module Network.AWS.CodeCommit
-    (
     -- * Service Configuration
-      codeCommit
-
+  ( codeCommit
     -- * Errors
     -- $errors
-
     -- ** InvalidRepositoryTriggerRegionException
-    , _InvalidRepositoryTriggerRegionException
-
+  , _InvalidRepositoryTriggerRegionException
     -- ** InvalidContinuationTokenException
-    , _InvalidContinuationTokenException
-
+  , _InvalidContinuationTokenException
     -- ** ManualMergeRequiredException
-    , _ManualMergeRequiredException
-
+  , _ManualMergeRequiredException
     -- ** TargetsRequiredException
-    , _TargetsRequiredException
-
+  , _TargetsRequiredException
     -- ** EncryptionKeyNotFoundException
-    , _EncryptionKeyNotFoundException
-
+  , _EncryptionKeyNotFoundException
     -- ** TipsDivergenceExceededException
-    , _TipsDivergenceExceededException
-
+  , _TipsDivergenceExceededException
     -- ** InvalidRepositoryTriggerBranchNameException
-    , _InvalidRepositoryTriggerBranchNameException
-
+  , _InvalidRepositoryTriggerBranchNameException
     -- ** PullRequestAlreadyClosedException
-    , _PullRequestAlreadyClosedException
-
+  , _PullRequestAlreadyClosedException
     -- ** InvalidRepositoryTriggerCustomDataException
-    , _InvalidRepositoryTriggerCustomDataException
-
+  , _InvalidRepositoryTriggerCustomDataException
     -- ** DirectoryNameConflictsWithFileNameException
-    , _DirectoryNameConflictsWithFileNameException
-
+  , _DirectoryNameConflictsWithFileNameException
     -- ** ReferenceDoesNotExistException
-    , _ReferenceDoesNotExistException
-
+  , _ReferenceDoesNotExistException
     -- ** ActorDoesNotExistException
-    , _ActorDoesNotExistException
-
+  , _ActorDoesNotExistException
     -- ** PullRequestIdRequiredException
-    , _PullRequestIdRequiredException
-
+  , _PullRequestIdRequiredException
     -- ** InvalidEmailException
-    , _InvalidEmailException
-
+  , _InvalidEmailException
     -- ** CommitMessageLengthExceededException
-    , _CommitMessageLengthExceededException
-
+  , _CommitMessageLengthExceededException
     -- ** BlobIdDoesNotExistException
-    , _BlobIdDoesNotExistException
-
+  , _BlobIdDoesNotExistException
     -- ** MaximumRepositoryNamesExceededException
-    , _MaximumRepositoryNamesExceededException
-
+  , _MaximumRepositoryNamesExceededException
     -- ** InvalidRepositoryDescriptionException
-    , _InvalidRepositoryDescriptionException
-
+  , _InvalidRepositoryDescriptionException
     -- ** RepositoryNameExistsException
-    , _RepositoryNameExistsException
-
+  , _RepositoryNameExistsException
     -- ** ReferenceNameRequiredException
-    , _ReferenceNameRequiredException
-
+  , _ReferenceNameRequiredException
     -- ** MaximumRepositoryTriggersExceededException
-    , _MaximumRepositoryTriggersExceededException
-
+  , _MaximumRepositoryTriggersExceededException
     -- ** InvalidBranchNameException
-    , _InvalidBranchNameException
-
+  , _InvalidBranchNameException
     -- ** BranchNameRequiredException
-    , _BranchNameRequiredException
-
+  , _BranchNameRequiredException
     -- ** MergeOptionRequiredException
-    , _MergeOptionRequiredException
-
+  , _MergeOptionRequiredException
     -- ** InvalidFileLocationException
-    , _InvalidFileLocationException
-
+  , _InvalidFileLocationException
     -- ** BeforeCommitIdAndAfterCommitIdAreSameException
-    , _BeforeCommitIdAndAfterCommitIdAreSameException
-
+  , _BeforeCommitIdAndAfterCommitIdAreSameException
     -- ** RepositoryTriggersListRequiredException
-    , _RepositoryTriggersListRequiredException
-
+  , _RepositoryTriggersListRequiredException
     -- ** IdempotencyParameterMismatchException
-    , _IdempotencyParameterMismatchException
-
+  , _IdempotencyParameterMismatchException
     -- ** EncryptionKeyUnavailableException
-    , _EncryptionKeyUnavailableException
-
+  , _EncryptionKeyUnavailableException
     -- ** InvalidRelativeFileVersionEnumException
-    , _InvalidRelativeFileVersionEnumException
-
+  , _InvalidRelativeFileVersionEnumException
     -- ** InvalidRepositoryTriggerDestinationARNException
-    , _InvalidRepositoryTriggerDestinationARNException
-
+  , _InvalidRepositoryTriggerDestinationARNException
     -- ** BlobIdRequiredException
-    , _BlobIdRequiredException
-
+  , _BlobIdRequiredException
     -- ** RepositoryNamesRequiredException
-    , _RepositoryNamesRequiredException
-
+  , _RepositoryNamesRequiredException
     -- ** InvalidActorARNException
-    , _InvalidActorARNException
-
+  , _InvalidActorARNException
     -- ** InvalidCommentIdException
-    , _InvalidCommentIdException
-
+  , _InvalidCommentIdException
     -- ** InvalidDescriptionException
-    , _InvalidDescriptionException
-
+  , _InvalidDescriptionException
     -- ** InvalidBlobIdException
-    , _InvalidBlobIdException
-
+  , _InvalidBlobIdException
     -- ** PullRequestDoesNotExistException
-    , _PullRequestDoesNotExistException
-
+  , _PullRequestDoesNotExistException
     -- ** InvalidOrderException
-    , _InvalidOrderException
-
+  , _InvalidOrderException
     -- ** BranchDoesNotExistException
-    , _BranchDoesNotExistException
-
+  , _BranchDoesNotExistException
     -- ** DefaultBranchCannotBeDeletedException
-    , _DefaultBranchCannotBeDeletedException
-
+  , _DefaultBranchCannotBeDeletedException
     -- ** InvalidPathException
-    , _InvalidPathException
-
+  , _InvalidPathException
     -- ** PathRequiredException
-    , _PathRequiredException
-
+  , _PathRequiredException
     -- ** RepositoryTriggerNameRequiredException
-    , _RepositoryTriggerNameRequiredException
-
+  , _RepositoryTriggerNameRequiredException
     -- ** InvalidFileModeException
-    , _InvalidFileModeException
-
+  , _InvalidFileModeException
     -- ** InvalidPullRequestStatusException
-    , _InvalidPullRequestStatusException
-
+  , _InvalidPullRequestStatusException
     -- ** ParentCommitIdRequiredException
-    , _ParentCommitIdRequiredException
-
+  , _ParentCommitIdRequiredException
     -- ** InvalidSourceCommitSpecifierException
-    , _InvalidSourceCommitSpecifierException
-
+  , _InvalidSourceCommitSpecifierException
     -- ** RepositoryDoesNotExistException
-    , _RepositoryDoesNotExistException
-
+  , _RepositoryDoesNotExistException
     -- ** MaximumBranchesExceededException
-    , _MaximumBranchesExceededException
-
+  , _MaximumBranchesExceededException
     -- ** InvalidTitleException
-    , _InvalidTitleException
-
+  , _InvalidTitleException
     -- ** CommentContentSizeLimitExceededException
-    , _CommentContentSizeLimitExceededException
-
+  , _CommentContentSizeLimitExceededException
     -- ** InvalidParentCommitIdException
-    , _InvalidParentCommitIdException
-
+  , _InvalidParentCommitIdException
     -- ** InvalidPullRequestEventTypeException
-    , _InvalidPullRequestEventTypeException
-
+  , _InvalidPullRequestEventTypeException
     -- ** FileContentRequiredException
-    , _FileContentRequiredException
-
+  , _FileContentRequiredException
     -- ** SourceAndDestinationAreSameException
-    , _SourceAndDestinationAreSameException
-
+  , _SourceAndDestinationAreSameException
     -- ** PathDoesNotExistException
-    , _PathDoesNotExistException
-
+  , _PathDoesNotExistException
     -- ** EncryptionIntegrityChecksFailedException
-    , _EncryptionIntegrityChecksFailedException
-
+  , _EncryptionIntegrityChecksFailedException
     -- ** ParentCommitIdOutdatedException
-    , _ParentCommitIdOutdatedException
-
+  , _ParentCommitIdOutdatedException
     -- ** RepositoryTriggerEventsListRequiredException
-    , _RepositoryTriggerEventsListRequiredException
-
+  , _RepositoryTriggerEventsListRequiredException
     -- ** CommentContentRequiredException
-    , _CommentContentRequiredException
-
+  , _CommentContentRequiredException
     -- ** InvalidTargetsException
-    , _InvalidTargetsException
-
+  , _InvalidTargetsException
     -- ** EncryptionKeyAccessDeniedException
-    , _EncryptionKeyAccessDeniedException
-
+  , _EncryptionKeyAccessDeniedException
     -- ** BranchNameExistsException
-    , _BranchNameExistsException
-
+  , _BranchNameExistsException
     -- ** InvalidCommitException
-    , _InvalidCommitException
-
+  , _InvalidCommitException
     -- ** TargetRequiredException
-    , _TargetRequiredException
-
+  , _TargetRequiredException
     -- ** InvalidDestinationCommitSpecifierException
-    , _InvalidDestinationCommitSpecifierException
-
+  , _InvalidDestinationCommitSpecifierException
     -- ** CommentDoesNotExistException
-    , _CommentDoesNotExistException
-
+  , _CommentDoesNotExistException
     -- ** ReferenceTypeNotSupportedException
-    , _ReferenceTypeNotSupportedException
-
+  , _ReferenceTypeNotSupportedException
     -- ** FileNameConflictsWithDirectoryNameException
-    , _FileNameConflictsWithDirectoryNameException
-
+  , _FileNameConflictsWithDirectoryNameException
     -- ** NameLengthExceededException
-    , _NameLengthExceededException
-
+  , _NameLengthExceededException
     -- ** InvalidSortByException
-    , _InvalidSortByException
-
+  , _InvalidSortByException
     -- ** EncryptionKeyDisabledException
-    , _EncryptionKeyDisabledException
-
+  , _EncryptionKeyDisabledException
     -- ** CommitRequiredException
-    , _CommitRequiredException
-
+  , _CommitRequiredException
     -- ** MaximumOpenPullRequestsExceededException
-    , _MaximumOpenPullRequestsExceededException
-
+  , _MaximumOpenPullRequestsExceededException
     -- ** InvalidTargetException
-    , _InvalidTargetException
-
+  , _InvalidTargetException
     -- ** InvalidPullRequestIdException
-    , _InvalidPullRequestIdException
-
+  , _InvalidPullRequestIdException
     -- ** CommentNotCreatedByCallerException
-    , _CommentNotCreatedByCallerException
-
+  , _CommentNotCreatedByCallerException
     -- ** InvalidPullRequestStatusUpdateException
-    , _InvalidPullRequestStatusUpdateException
-
+  , _InvalidPullRequestStatusUpdateException
     -- ** InvalidReferenceNameException
-    , _InvalidReferenceNameException
-
+  , _InvalidReferenceNameException
     -- ** SameFileContentException
-    , _SameFileContentException
-
+  , _SameFileContentException
     -- ** CommitIdRequiredException
-    , _CommitIdRequiredException
-
+  , _CommitIdRequiredException
     -- ** InvalidCommitIdException
-    , _InvalidCommitIdException
-
+  , _InvalidCommitIdException
     -- ** TipOfSourceReferenceIsDifferentException
-    , _TipOfSourceReferenceIsDifferentException
-
+  , _TipOfSourceReferenceIsDifferentException
     -- ** RepositoryTriggerDestinationARNRequiredException
-    , _RepositoryTriggerDestinationARNRequiredException
-
+  , _RepositoryTriggerDestinationARNRequiredException
     -- ** InvalidClientRequestTokenException
-    , _InvalidClientRequestTokenException
-
+  , _InvalidClientRequestTokenException
     -- ** CommitDoesNotExistException
-    , _CommitDoesNotExistException
-
+  , _CommitDoesNotExistException
     -- ** RepositoryTriggerBranchNameListRequiredException
-    , _RepositoryTriggerBranchNameListRequiredException
-
+  , _RepositoryTriggerBranchNameListRequiredException
     -- ** ClientRequestTokenRequiredException
-    , _ClientRequestTokenRequiredException
-
+  , _ClientRequestTokenRequiredException
     -- ** InvalidMergeOptionException
-    , _InvalidMergeOptionException
-
+  , _InvalidMergeOptionException
     -- ** CommentIdRequiredException
-    , _CommentIdRequiredException
-
+  , _CommentIdRequiredException
     -- ** InvalidMaxResultsException
-    , _InvalidMaxResultsException
-
+  , _InvalidMaxResultsException
     -- ** FileTooLargeException
-    , _FileTooLargeException
-
+  , _FileTooLargeException
     -- ** CommitIdDoesNotExistException
-    , _CommitIdDoesNotExistException
-
+  , _CommitIdDoesNotExistException
     -- ** MultipleRepositoriesInPullRequestException
-    , _MultipleRepositoriesInPullRequestException
-
+  , _MultipleRepositoriesInPullRequestException
     -- ** FileContentSizeLimitExceededException
-    , _FileContentSizeLimitExceededException
-
+  , _FileContentSizeLimitExceededException
     -- ** InvalidRepositoryTriggerNameException
-    , _InvalidRepositoryTriggerNameException
-
+  , _InvalidRepositoryTriggerNameException
     -- ** RepositoryNameRequiredException
-    , _RepositoryNameRequiredException
-
+  , _RepositoryNameRequiredException
     -- ** RepositoryLimitExceededException
-    , _RepositoryLimitExceededException
-
+  , _RepositoryLimitExceededException
     -- ** InvalidRepositoryTriggerEventsException
-    , _InvalidRepositoryTriggerEventsException
-
+  , _InvalidRepositoryTriggerEventsException
     -- ** BranchNameIsTagNameException
-    , _BranchNameIsTagNameException
-
+  , _BranchNameIsTagNameException
     -- ** InvalidRepositoryNameException
-    , _InvalidRepositoryNameException
-
+  , _InvalidRepositoryNameException
     -- ** InvalidAuthorARNException
-    , _InvalidAuthorARNException
-
+  , _InvalidAuthorARNException
     -- ** PullRequestStatusRequiredException
-    , _PullRequestStatusRequiredException
-
+  , _PullRequestStatusRequiredException
     -- ** RepositoryNotAssociatedWithPullRequestException
-    , _RepositoryNotAssociatedWithPullRequestException
-
+  , _RepositoryNotAssociatedWithPullRequestException
     -- ** TitleRequiredException
-    , _TitleRequiredException
-
+  , _TitleRequiredException
     -- ** InvalidFilePositionException
-    , _InvalidFilePositionException
-
+  , _InvalidFilePositionException
     -- ** CommentDeletedException
-    , _CommentDeletedException
-
+  , _CommentDeletedException
     -- ** ParentCommitDoesNotExistException
-    , _ParentCommitDoesNotExistException
-
+  , _ParentCommitDoesNotExistException
     -- ** AuthorDoesNotExistException
-    , _AuthorDoesNotExistException
-
+  , _AuthorDoesNotExistException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** MergePullRequestByFastForward
-    , module Network.AWS.CodeCommit.MergePullRequestByFastForward
-
+  , module Network.AWS.CodeCommit.MergePullRequestByFastForward
     -- ** UpdateRepositoryName
-    , module Network.AWS.CodeCommit.UpdateRepositoryName
-
+  , module Network.AWS.CodeCommit.UpdateRepositoryName
     -- ** PostCommentForPullRequest
-    , module Network.AWS.CodeCommit.PostCommentForPullRequest
-
+  , module Network.AWS.CodeCommit.PostCommentForPullRequest
     -- ** GetCommit
-    , module Network.AWS.CodeCommit.GetCommit
-
+  , module Network.AWS.CodeCommit.GetCommit
     -- ** GetBranch
-    , module Network.AWS.CodeCommit.GetBranch
-
+  , module Network.AWS.CodeCommit.GetBranch
     -- ** GetDifferences (Paginated)
-    , module Network.AWS.CodeCommit.GetDifferences
-
+  , module Network.AWS.CodeCommit.GetDifferences
     -- ** GetPullRequest
-    , module Network.AWS.CodeCommit.GetPullRequest
-
+  , module Network.AWS.CodeCommit.GetPullRequest
     -- ** ListPullRequests (Paginated)
-    , module Network.AWS.CodeCommit.ListPullRequests
-
+  , module Network.AWS.CodeCommit.ListPullRequests
     -- ** GetComment
-    , module Network.AWS.CodeCommit.GetComment
-
+  , module Network.AWS.CodeCommit.GetComment
     -- ** DeleteBranch
-    , module Network.AWS.CodeCommit.DeleteBranch
-
+  , module Network.AWS.CodeCommit.DeleteBranch
     -- ** UpdateRepositoryDescription
-    , module Network.AWS.CodeCommit.UpdateRepositoryDescription
-
+  , module Network.AWS.CodeCommit.UpdateRepositoryDescription
     -- ** CreateBranch
-    , module Network.AWS.CodeCommit.CreateBranch
-
+  , module Network.AWS.CodeCommit.CreateBranch
     -- ** CreatePullRequest
-    , module Network.AWS.CodeCommit.CreatePullRequest
-
+  , module Network.AWS.CodeCommit.CreatePullRequest
     -- ** ListBranches (Paginated)
-    , module Network.AWS.CodeCommit.ListBranches
-
+  , module Network.AWS.CodeCommit.ListBranches
     -- ** UpdatePullRequestDescription
-    , module Network.AWS.CodeCommit.UpdatePullRequestDescription
-
+  , module Network.AWS.CodeCommit.UpdatePullRequestDescription
     -- ** ListRepositories (Paginated)
-    , module Network.AWS.CodeCommit.ListRepositories
-
+  , module Network.AWS.CodeCommit.ListRepositories
     -- ** CreateRepository
-    , module Network.AWS.CodeCommit.CreateRepository
-
+  , module Network.AWS.CodeCommit.CreateRepository
     -- ** UpdateDefaultBranch
-    , module Network.AWS.CodeCommit.UpdateDefaultBranch
-
+  , module Network.AWS.CodeCommit.UpdateDefaultBranch
     -- ** PostCommentReply
-    , module Network.AWS.CodeCommit.PostCommentReply
-
+  , module Network.AWS.CodeCommit.PostCommentReply
     -- ** GetRepository
-    , module Network.AWS.CodeCommit.GetRepository
-
+  , module Network.AWS.CodeCommit.GetRepository
     -- ** GetRepositoryTriggers
-    , module Network.AWS.CodeCommit.GetRepositoryTriggers
-
+  , module Network.AWS.CodeCommit.GetRepositoryTriggers
     -- ** PutFile
-    , module Network.AWS.CodeCommit.PutFile
-
+  , module Network.AWS.CodeCommit.PutFile
     -- ** GetCommentsForComparedCommit (Paginated)
-    , module Network.AWS.CodeCommit.GetCommentsForComparedCommit
-
+  , module Network.AWS.CodeCommit.GetCommentsForComparedCommit
     -- ** TestRepositoryTriggers
-    , module Network.AWS.CodeCommit.TestRepositoryTriggers
-
+  , module Network.AWS.CodeCommit.TestRepositoryTriggers
     -- ** UpdateComment
-    , module Network.AWS.CodeCommit.UpdateComment
-
+  , module Network.AWS.CodeCommit.UpdateComment
     -- ** PostCommentForComparedCommit
-    , module Network.AWS.CodeCommit.PostCommentForComparedCommit
-
+  , module Network.AWS.CodeCommit.PostCommentForComparedCommit
     -- ** UpdatePullRequestTitle
-    , module Network.AWS.CodeCommit.UpdatePullRequestTitle
-
+  , module Network.AWS.CodeCommit.UpdatePullRequestTitle
     -- ** GetBlob
-    , module Network.AWS.CodeCommit.GetBlob
-
+  , module Network.AWS.CodeCommit.GetBlob
     -- ** PutRepositoryTriggers
-    , module Network.AWS.CodeCommit.PutRepositoryTriggers
-
+  , module Network.AWS.CodeCommit.PutRepositoryTriggers
     -- ** GetMergeConflicts
-    , module Network.AWS.CodeCommit.GetMergeConflicts
-
+  , module Network.AWS.CodeCommit.GetMergeConflicts
     -- ** DeleteRepository
-    , module Network.AWS.CodeCommit.DeleteRepository
-
+  , module Network.AWS.CodeCommit.DeleteRepository
     -- ** DeleteCommentContent
-    , module Network.AWS.CodeCommit.DeleteCommentContent
-
+  , module Network.AWS.CodeCommit.DeleteCommentContent
     -- ** DescribePullRequestEvents (Paginated)
-    , module Network.AWS.CodeCommit.DescribePullRequestEvents
-
+  , module Network.AWS.CodeCommit.DescribePullRequestEvents
     -- ** BatchGetRepositories
-    , module Network.AWS.CodeCommit.BatchGetRepositories
-
+  , module Network.AWS.CodeCommit.BatchGetRepositories
     -- ** GetCommentsForPullRequest (Paginated)
-    , module Network.AWS.CodeCommit.GetCommentsForPullRequest
-
+  , module Network.AWS.CodeCommit.GetCommentsForPullRequest
     -- ** UpdatePullRequestStatus
-    , module Network.AWS.CodeCommit.UpdatePullRequestStatus
-
+  , module Network.AWS.CodeCommit.UpdatePullRequestStatus
     -- * Types
-
     -- ** ChangeTypeEnum
-    , ChangeTypeEnum (..)
-
+  , ChangeTypeEnum(..)
     -- ** FileModeTypeEnum
-    , FileModeTypeEnum (..)
-
+  , FileModeTypeEnum(..)
     -- ** MergeOptionTypeEnum
-    , MergeOptionTypeEnum (..)
-
+  , MergeOptionTypeEnum(..)
     -- ** OrderEnum
-    , OrderEnum (..)
-
+  , OrderEnum(..)
     -- ** PullRequestEventType
-    , PullRequestEventType (..)
-
+  , PullRequestEventType(..)
     -- ** PullRequestStatusEnum
-    , PullRequestStatusEnum (..)
-
+  , PullRequestStatusEnum(..)
     -- ** RelativeFileVersionEnum
-    , RelativeFileVersionEnum (..)
-
+  , RelativeFileVersionEnum(..)
     -- ** RepositoryTriggerEventEnum
-    , RepositoryTriggerEventEnum (..)
-
+  , RepositoryTriggerEventEnum(..)
     -- ** SortByEnum
-    , SortByEnum (..)
-
+  , SortByEnum(..)
     -- ** BlobMetadata
-    , BlobMetadata
-    , blobMetadata
-    , bmPath
-    , bmMode
-    , bmBlobId
-
+  , BlobMetadata
+  , blobMetadata
+  , bmPath
+  , bmMode
+  , bmBlobId
     -- ** BranchInfo
-    , BranchInfo
-    , branchInfo
-    , biCommitId
-    , biBranchName
-
+  , BranchInfo
+  , branchInfo
+  , biCommitId
+  , biBranchName
     -- ** Comment
-    , Comment
-    , comment
-    , cLastModifiedDate
-    , cAuthorARN
-    , cContent
-    , cCreationDate
-    , cDeleted
-    , cClientRequestToken
-    , cCommentId
-    , cInReplyTo
-
+  , Comment
+  , comment
+  , cLastModifiedDate
+  , cAuthorARN
+  , cContent
+  , cCreationDate
+  , cDeleted
+  , cClientRequestToken
+  , cCommentId
+  , cInReplyTo
     -- ** CommentsForComparedCommit
-    , CommentsForComparedCommit
-    , commentsForComparedCommit
-    , cfccBeforeBlobId
-    , cfccLocation
-    , cfccAfterCommitId
-    , cfccAfterBlobId
-    , cfccBeforeCommitId
-    , cfccRepositoryName
-    , cfccComments
-
+  , CommentsForComparedCommit
+  , commentsForComparedCommit
+  , cfccBeforeBlobId
+  , cfccLocation
+  , cfccAfterCommitId
+  , cfccAfterBlobId
+  , cfccBeforeCommitId
+  , cfccRepositoryName
+  , cfccComments
     -- ** CommentsForPullRequest
-    , CommentsForPullRequest
-    , commentsForPullRequest
-    , cfprBeforeBlobId
-    , cfprLocation
-    , cfprAfterCommitId
-    , cfprPullRequestId
-    , cfprAfterBlobId
-    , cfprBeforeCommitId
-    , cfprRepositoryName
-    , cfprComments
-
+  , CommentsForPullRequest
+  , commentsForPullRequest
+  , cfprBeforeBlobId
+  , cfprLocation
+  , cfprAfterCommitId
+  , cfprPullRequestId
+  , cfprAfterBlobId
+  , cfprBeforeCommitId
+  , cfprRepositoryName
+  , cfprComments
     -- ** Commit
-    , Commit
-    , commit
-    , cCommitId
-    , cCommitter
-    , cTreeId
-    , cAdditionalData
-    , cParents
-    , cAuthor
-    , cMessage
-
+  , Commit
+  , commit
+  , cCommitId
+  , cCommitter
+  , cTreeId
+  , cAdditionalData
+  , cParents
+  , cAuthor
+  , cMessage
     -- ** Difference
-    , Difference
-    , difference
-    , dAfterBlob
-    , dBeforeBlob
-    , dChangeType
-
+  , Difference
+  , difference
+  , dAfterBlob
+  , dBeforeBlob
+  , dChangeType
     -- ** Location
-    , Location
-    , location
-    , lRelativeFileVersion
-    , lFilePath
-    , lFilePosition
-
+  , Location
+  , location
+  , lRelativeFileVersion
+  , lFilePath
+  , lFilePosition
     -- ** MergeMetadata
-    , MergeMetadata
-    , mergeMetadata
-    , mmMergedBy
-    , mmIsMerged
-
+  , MergeMetadata
+  , mergeMetadata
+  , mmMergedBy
+  , mmIsMerged
     -- ** PullRequest
-    , PullRequest
-    , pullRequest
-    , prAuthorARN
-    , prPullRequestId
-    , prCreationDate
-    , prPullRequestStatus
-    , prTitle
-    , prClientRequestToken
-    , prLastActivityDate
-    , prPullRequestTargets
-    , prDescription
-
+  , PullRequest
+  , pullRequest
+  , prAuthorARN
+  , prPullRequestId
+  , prCreationDate
+  , prPullRequestStatus
+  , prTitle
+  , prClientRequestToken
+  , prLastActivityDate
+  , prPullRequestTargets
+  , prDescription
     -- ** PullRequestEvent
-    , PullRequestEvent
-    , pullRequestEvent
-    , prePullRequestMergedStateChangedEventMetadata
-    , prePullRequestEventType
-    , prePullRequestStatusChangedEventMetadata
-    , preActorARN
-    , prePullRequestId
-    , preEventDate
-    , prePullRequestSourceReferenceUpdatedEventMetadata
-
+  , PullRequestEvent
+  , pullRequestEvent
+  , prePullRequestMergedStateChangedEventMetadata
+  , prePullRequestEventType
+  , prePullRequestStatusChangedEventMetadata
+  , preActorARN
+  , prePullRequestId
+  , preEventDate
+  , prePullRequestSourceReferenceUpdatedEventMetadata
     -- ** PullRequestMergedStateChangedEventMetadata
-    , PullRequestMergedStateChangedEventMetadata
-    , pullRequestMergedStateChangedEventMetadata
-    , prmscemDestinationReference
-    , prmscemMergeMetadata
-    , prmscemRepositoryName
-
+  , PullRequestMergedStateChangedEventMetadata
+  , pullRequestMergedStateChangedEventMetadata
+  , prmscemDestinationReference
+  , prmscemMergeMetadata
+  , prmscemRepositoryName
     -- ** PullRequestSourceReferenceUpdatedEventMetadata
-    , PullRequestSourceReferenceUpdatedEventMetadata
-    , pullRequestSourceReferenceUpdatedEventMetadata
-    , prsruemAfterCommitId
-    , prsruemBeforeCommitId
-    , prsruemRepositoryName
-
+  , PullRequestSourceReferenceUpdatedEventMetadata
+  , pullRequestSourceReferenceUpdatedEventMetadata
+  , prsruemAfterCommitId
+  , prsruemBeforeCommitId
+  , prsruemRepositoryName
     -- ** PullRequestStatusChangedEventMetadata
-    , PullRequestStatusChangedEventMetadata
-    , pullRequestStatusChangedEventMetadata
-    , prscemPullRequestStatus
-
+  , PullRequestStatusChangedEventMetadata
+  , pullRequestStatusChangedEventMetadata
+  , prscemPullRequestStatus
     -- ** PullRequestTarget
-    , PullRequestTarget
-    , pullRequestTarget
-    , prtSourceCommit
-    , prtDestinationReference
-    , prtMergeMetadata
-    , prtDestinationCommit
-    , prtRepositoryName
-    , prtSourceReference
-
+  , PullRequestTarget
+  , pullRequestTarget
+  , prtSourceCommit
+  , prtDestinationReference
+  , prtMergeMetadata
+  , prtDestinationCommit
+  , prtRepositoryName
+  , prtSourceReference
     -- ** RepositoryMetadata
-    , RepositoryMetadata
-    , repositoryMetadata
-    , rmRepositoryDescription
-    , rmLastModifiedDate
-    , rmARN
-    , rmCloneURLHTTP
-    , rmAccountId
-    , rmDefaultBranch
-    , rmRepositoryId
-    , rmRepositoryName
-    , rmCreationDate
-    , rmCloneURLSSH
-
+  , RepositoryMetadata
+  , repositoryMetadata
+  , rmRepositoryDescription
+  , rmLastModifiedDate
+  , rmARN
+  , rmCloneURLHTTP
+  , rmAccountId
+  , rmDefaultBranch
+  , rmRepositoryId
+  , rmRepositoryName
+  , rmCreationDate
+  , rmCloneURLSSH
     -- ** RepositoryNameIdPair
-    , RepositoryNameIdPair
-    , repositoryNameIdPair
-    , rnipRepositoryId
-    , rnipRepositoryName
-
+  , RepositoryNameIdPair
+  , repositoryNameIdPair
+  , rnipRepositoryId
+  , rnipRepositoryName
     -- ** RepositoryTrigger
-    , RepositoryTrigger
-    , repositoryTrigger
-    , rtBranches
-    , rtCustomData
-    , rtName
-    , rtDestinationARN
-    , rtEvents
-
+  , RepositoryTrigger
+  , repositoryTrigger
+  , rtBranches
+  , rtCustomData
+  , rtName
+  , rtDestinationARN
+  , rtEvents
     -- ** RepositoryTriggerExecutionFailure
-    , RepositoryTriggerExecutionFailure
-    , repositoryTriggerExecutionFailure
-    , rtefFailureMessage
-    , rtefTrigger
-
+  , RepositoryTriggerExecutionFailure
+  , repositoryTriggerExecutionFailure
+  , rtefFailureMessage
+  , rtefTrigger
     -- ** Target
-    , Target
-    , target
-    , tDestinationReference
-    , tRepositoryName
-    , tSourceReference
-
+  , Target
+  , target
+  , tDestinationReference
+  , tRepositoryName
+  , tSourceReference
     -- ** UserInfo
-    , UserInfo
-    , userInfo
-    , uiEmail
-    , uiDate
-    , uiName
-    ) where
+  , UserInfo
+  , userInfo
+  , uiEmail
+  , uiDate
+  , uiName
+  ) where
 
 import Network.AWS.CodeCommit.BatchGetRepositories
 import Network.AWS.CodeCommit.CreateBranch
@@ -820,14 +638,12 @@ import Network.AWS.CodeCommit.UpdatePullRequestTitle
 import Network.AWS.CodeCommit.UpdateRepositoryDescription
 import Network.AWS.CodeCommit.UpdateRepositoryName
 import Network.AWS.CodeCommit.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'CodeCommit'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -844,7 +660,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

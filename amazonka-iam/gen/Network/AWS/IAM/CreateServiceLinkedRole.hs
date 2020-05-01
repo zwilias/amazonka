@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.IAM.CreateServiceLinkedRole
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,22 +24,20 @@
 -- To attach a policy to this service-linked role, you must make the request using the AWS service that depends on this role.
 --
 module Network.AWS.IAM.CreateServiceLinkedRole
-    (
     -- * Creating a Request
-      createServiceLinkedRole
-    , CreateServiceLinkedRole
+  ( createServiceLinkedRole
+  , CreateServiceLinkedRole
     -- * Request Lenses
-    , cslrCustomSuffix
-    , cslrDescription
-    , cslrAWSServiceName
-
+  , cslrCustomSuffix
+  , cslrDescription
+  , cslrAWSServiceName
     -- * Destructuring the Response
-    , createServiceLinkedRoleResponse
-    , CreateServiceLinkedRoleResponse
+  , createServiceLinkedRoleResponse
+  , CreateServiceLinkedRoleResponse
     -- * Response Lenses
-    , cslrrsRole
-    , cslrrsResponseStatus
-    ) where
+  , cslrrsRole
+  , cslrrsResponseStatus
+  ) where
 
 import Network.AWS.IAM.Types
 import Network.AWS.IAM.Types.Product
@@ -51,12 +47,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createServiceLinkedRole' smart constructor.
-data CreateServiceLinkedRole = CreateServiceLinkedRole'
-  { _cslrCustomSuffix   :: !(Maybe Text)
-  , _cslrDescription    :: !(Maybe Text)
-  , _cslrAWSServiceName :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateServiceLinkedRole =
+  CreateServiceLinkedRole'
+    { _cslrCustomSuffix :: !(Maybe Text)
+    , _cslrDescription :: !(Maybe Text)
+    , _cslrAWSServiceName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateServiceLinkedRole' with the minimum fields required to make a request.
 --
@@ -67,9 +64,9 @@ data CreateServiceLinkedRole = CreateServiceLinkedRole'
 -- * 'cslrDescription' - The description of the role.
 --
 -- * 'cslrAWSServiceName' - The AWS service to which this role is attached. You use a string similar to a URL but without the http:// in front. For example: @elasticbeanstalk.amazonaws.com@
-createServiceLinkedRole
-    :: Text -- ^ 'cslrAWSServiceName'
-    -> CreateServiceLinkedRole
+createServiceLinkedRole ::
+     Text -- ^ 'cslrAWSServiceName'
+  -> CreateServiceLinkedRole
 createServiceLinkedRole pAWSServiceName_ =
   CreateServiceLinkedRole'
     { _cslrCustomSuffix = Nothing
@@ -77,55 +74,56 @@ createServiceLinkedRole pAWSServiceName_ =
     , _cslrAWSServiceName = pAWSServiceName_
     }
 
-
 -- | A string that you provide, which is combined with the service name to form the complete role name. If you make multiple requests for the same service, then you must supply a different @CustomSuffix@ for each request. Otherwise the request fails with a duplicate role name error. For example, you could add @-1@ or @-debug@ to the suffix.
 cslrCustomSuffix :: Lens' CreateServiceLinkedRole (Maybe Text)
-cslrCustomSuffix = lens _cslrCustomSuffix (\ s a -> s{_cslrCustomSuffix = a})
+cslrCustomSuffix = lens _cslrCustomSuffix (\s a -> s {_cslrCustomSuffix = a})
 
 -- | The description of the role.
 cslrDescription :: Lens' CreateServiceLinkedRole (Maybe Text)
-cslrDescription = lens _cslrDescription (\ s a -> s{_cslrDescription = a})
+cslrDescription = lens _cslrDescription (\s a -> s {_cslrDescription = a})
 
 -- | The AWS service to which this role is attached. You use a string similar to a URL but without the http:// in front. For example: @elasticbeanstalk.amazonaws.com@
 cslrAWSServiceName :: Lens' CreateServiceLinkedRole Text
-cslrAWSServiceName = lens _cslrAWSServiceName (\ s a -> s{_cslrAWSServiceName = a})
+cslrAWSServiceName =
+  lens _cslrAWSServiceName (\s a -> s {_cslrAWSServiceName = a})
 
 instance AWSRequest CreateServiceLinkedRole where
-        type Rs CreateServiceLinkedRole =
-             CreateServiceLinkedRoleResponse
-        request = postQuery iam
-        response
-          = receiveXMLWrapper "CreateServiceLinkedRoleResult"
-              (\ s h x ->
-                 CreateServiceLinkedRoleResponse' <$>
-                   (x .@? "Role") <*> (pure (fromEnum s)))
+  type Rs CreateServiceLinkedRole = CreateServiceLinkedRoleResponse
+  request = postQuery iam
+  response =
+    receiveXMLWrapper
+      "CreateServiceLinkedRoleResult"
+      (\s h x ->
+         CreateServiceLinkedRoleResponse' <$> (x .@? "Role") <*>
+         (pure (fromEnum s)))
 
-instance Hashable CreateServiceLinkedRole where
+instance Hashable CreateServiceLinkedRole
 
-instance NFData CreateServiceLinkedRole where
+instance NFData CreateServiceLinkedRole
 
 instance ToHeaders CreateServiceLinkedRole where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath CreateServiceLinkedRole where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery CreateServiceLinkedRole where
-        toQuery CreateServiceLinkedRole'{..}
-          = mconcat
-              ["Action" =:
-                 ("CreateServiceLinkedRole" :: ByteString),
-               "Version" =: ("2010-05-08" :: ByteString),
-               "CustomSuffix" =: _cslrCustomSuffix,
-               "Description" =: _cslrDescription,
-               "AWSServiceName" =: _cslrAWSServiceName]
+  toQuery CreateServiceLinkedRole' {..} =
+    mconcat
+      [ "Action" =: ("CreateServiceLinkedRole" :: ByteString)
+      , "Version" =: ("2010-05-08" :: ByteString)
+      , "CustomSuffix" =: _cslrCustomSuffix
+      , "Description" =: _cslrDescription
+      , "AWSServiceName" =: _cslrAWSServiceName
+      ]
 
 -- | /See:/ 'createServiceLinkedRoleResponse' smart constructor.
-data CreateServiceLinkedRoleResponse = CreateServiceLinkedRoleResponse'
-  { _cslrrsRole           :: !(Maybe Role)
-  , _cslrrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateServiceLinkedRoleResponse =
+  CreateServiceLinkedRoleResponse'
+    { _cslrrsRole :: !(Maybe Role)
+    , _cslrrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateServiceLinkedRoleResponse' with the minimum fields required to make a request.
 --
@@ -134,20 +132,20 @@ data CreateServiceLinkedRoleResponse = CreateServiceLinkedRoleResponse'
 -- * 'cslrrsRole' - A 'Role' object that contains details about the newly created role.
 --
 -- * 'cslrrsResponseStatus' - -- | The response status code.
-createServiceLinkedRoleResponse
-    :: Int -- ^ 'cslrrsResponseStatus'
-    -> CreateServiceLinkedRoleResponse
+createServiceLinkedRoleResponse ::
+     Int -- ^ 'cslrrsResponseStatus'
+  -> CreateServiceLinkedRoleResponse
 createServiceLinkedRoleResponse pResponseStatus_ =
   CreateServiceLinkedRoleResponse'
     {_cslrrsRole = Nothing, _cslrrsResponseStatus = pResponseStatus_}
 
-
 -- | A 'Role' object that contains details about the newly created role.
 cslrrsRole :: Lens' CreateServiceLinkedRoleResponse (Maybe Role)
-cslrrsRole = lens _cslrrsRole (\ s a -> s{_cslrrsRole = a})
+cslrrsRole = lens _cslrrsRole (\s a -> s {_cslrrsRole = a})
 
 -- | -- | The response status code.
 cslrrsResponseStatus :: Lens' CreateServiceLinkedRoleResponse Int
-cslrrsResponseStatus = lens _cslrrsResponseStatus (\ s a -> s{_cslrrsResponseStatus = a})
+cslrrsResponseStatus =
+  lens _cslrrsResponseStatus (\s a -> s {_cslrrsResponseStatus = a})
 
-instance NFData CreateServiceLinkedRoleResponse where
+instance NFData CreateServiceLinkedRoleResponse

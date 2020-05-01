@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.SES.CreateReceiptRule
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,21 +24,19 @@
 -- You can execute this operation no more than once per second.
 --
 module Network.AWS.SES.CreateReceiptRule
-    (
     -- * Creating a Request
-      createReceiptRule
-    , CreateReceiptRule
+  ( createReceiptRule
+  , CreateReceiptRule
     -- * Request Lenses
-    , crrAfter
-    , crrRuleSetName
-    , crrRule
-
+  , crrAfter
+  , crrRuleSetName
+  , crrRule
     -- * Destructuring the Response
-    , createReceiptRuleResponse
-    , CreateReceiptRuleResponse
+  , createReceiptRuleResponse
+  , CreateReceiptRuleResponse
     -- * Response Lenses
-    , crrrsResponseStatus
-    ) where
+  , crrrsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -54,12 +50,13 @@ import Network.AWS.SES.Types.Product
 --
 --
 -- /See:/ 'createReceiptRule' smart constructor.
-data CreateReceiptRule = CreateReceiptRule'
-  { _crrAfter       :: !(Maybe Text)
-  , _crrRuleSetName :: !Text
-  , _crrRule        :: !ReceiptRule
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateReceiptRule =
+  CreateReceiptRule'
+    { _crrAfter :: !(Maybe Text)
+    , _crrRuleSetName :: !Text
+    , _crrRule :: !ReceiptRule
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateReceiptRule' with the minimum fields required to make a request.
 --
@@ -70,77 +67,79 @@ data CreateReceiptRule = CreateReceiptRule'
 -- * 'crrRuleSetName' - The name of the rule set that the receipt rule will be added to.
 --
 -- * 'crrRule' - A data structure that contains the specified rule's name, actions, recipients, domains, enabled status, scan status, and TLS policy.
-createReceiptRule
-    :: Text -- ^ 'crrRuleSetName'
-    -> ReceiptRule -- ^ 'crrRule'
-    -> CreateReceiptRule
+createReceiptRule ::
+     Text -- ^ 'crrRuleSetName'
+  -> ReceiptRule -- ^ 'crrRule'
+  -> CreateReceiptRule
 createReceiptRule pRuleSetName_ pRule_ =
   CreateReceiptRule'
     {_crrAfter = Nothing, _crrRuleSetName = pRuleSetName_, _crrRule = pRule_}
 
-
 -- | The name of an existing rule after which the new rule will be placed. If this parameter is null, the new rule will be inserted at the beginning of the rule list.
 crrAfter :: Lens' CreateReceiptRule (Maybe Text)
-crrAfter = lens _crrAfter (\ s a -> s{_crrAfter = a})
+crrAfter = lens _crrAfter (\s a -> s {_crrAfter = a})
 
 -- | The name of the rule set that the receipt rule will be added to.
 crrRuleSetName :: Lens' CreateReceiptRule Text
-crrRuleSetName = lens _crrRuleSetName (\ s a -> s{_crrRuleSetName = a})
+crrRuleSetName = lens _crrRuleSetName (\s a -> s {_crrRuleSetName = a})
 
 -- | A data structure that contains the specified rule's name, actions, recipients, domains, enabled status, scan status, and TLS policy.
 crrRule :: Lens' CreateReceiptRule ReceiptRule
-crrRule = lens _crrRule (\ s a -> s{_crrRule = a})
+crrRule = lens _crrRule (\s a -> s {_crrRule = a})
 
 instance AWSRequest CreateReceiptRule where
-        type Rs CreateReceiptRule = CreateReceiptRuleResponse
-        request = postQuery ses
-        response
-          = receiveXMLWrapper "CreateReceiptRuleResult"
-              (\ s h x ->
-                 CreateReceiptRuleResponse' <$> (pure (fromEnum s)))
+  type Rs CreateReceiptRule = CreateReceiptRuleResponse
+  request = postQuery ses
+  response =
+    receiveXMLWrapper
+      "CreateReceiptRuleResult"
+      (\s h x -> CreateReceiptRuleResponse' <$> (pure (fromEnum s)))
 
-instance Hashable CreateReceiptRule where
+instance Hashable CreateReceiptRule
 
-instance NFData CreateReceiptRule where
+instance NFData CreateReceiptRule
 
 instance ToHeaders CreateReceiptRule where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath CreateReceiptRule where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery CreateReceiptRule where
-        toQuery CreateReceiptRule'{..}
-          = mconcat
-              ["Action" =: ("CreateReceiptRule" :: ByteString),
-               "Version" =: ("2010-12-01" :: ByteString),
-               "After" =: _crrAfter,
-               "RuleSetName" =: _crrRuleSetName, "Rule" =: _crrRule]
+  toQuery CreateReceiptRule' {..} =
+    mconcat
+      [ "Action" =: ("CreateReceiptRule" :: ByteString)
+      , "Version" =: ("2010-12-01" :: ByteString)
+      , "After" =: _crrAfter
+      , "RuleSetName" =: _crrRuleSetName
+      , "Rule" =: _crrRule
+      ]
 
 -- | An empty element returned on a successful request.
 --
 --
 --
 -- /See:/ 'createReceiptRuleResponse' smart constructor.
-newtype CreateReceiptRuleResponse = CreateReceiptRuleResponse'
-  { _crrrsResponseStatus :: Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateReceiptRuleResponse =
+  CreateReceiptRuleResponse'
+    { _crrrsResponseStatus :: Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateReceiptRuleResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'crrrsResponseStatus' - -- | The response status code.
-createReceiptRuleResponse
-    :: Int -- ^ 'crrrsResponseStatus'
-    -> CreateReceiptRuleResponse
+createReceiptRuleResponse ::
+     Int -- ^ 'crrrsResponseStatus'
+  -> CreateReceiptRuleResponse
 createReceiptRuleResponse pResponseStatus_ =
   CreateReceiptRuleResponse' {_crrrsResponseStatus = pResponseStatus_}
 
-
 -- | -- | The response status code.
 crrrsResponseStatus :: Lens' CreateReceiptRuleResponse Int
-crrrsResponseStatus = lens _crrrsResponseStatus (\ s a -> s{_crrrsResponseStatus = a})
+crrrsResponseStatus =
+  lens _crrrsResponseStatus (\s a -> s {_crrrsResponseStatus = a})
 
-instance NFData CreateReceiptRuleResponse where
+instance NFData CreateReceiptRuleResponse

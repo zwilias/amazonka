@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.MediaConvert.CreateJobTemplate
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,24 +18,22 @@
 --
 -- Create a new job template. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 module Network.AWS.MediaConvert.CreateJobTemplate
-    (
     -- * Creating a Request
-      createJobTemplate
-    , CreateJobTemplate
+  ( createJobTemplate
+  , CreateJobTemplate
     -- * Request Lenses
-    , cjtSettings
-    , cjtCategory
-    , cjtQueue
-    , cjtName
-    , cjtDescription
-
+  , cjtSettings
+  , cjtCategory
+  , cjtQueue
+  , cjtName
+  , cjtDescription
     -- * Destructuring the Response
-    , createJobTemplateResponse
-    , CreateJobTemplateResponse
+  , createJobTemplateResponse
+  , CreateJobTemplateResponse
     -- * Response Lenses
-    , cjtrsJobTemplate
-    , cjtrsResponseStatus
-    ) where
+  , cjtrsJobTemplate
+  , cjtrsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.MediaConvert.Types
@@ -47,14 +43,15 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createJobTemplate' smart constructor.
-data CreateJobTemplate = CreateJobTemplate'
-  { _cjtSettings    :: !(Maybe JobTemplateSettings)
-  , _cjtCategory    :: !(Maybe Text)
-  , _cjtQueue       :: !(Maybe Text)
-  , _cjtName        :: !(Maybe Text)
-  , _cjtDescription :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateJobTemplate =
+  CreateJobTemplate'
+    { _cjtSettings :: !(Maybe JobTemplateSettings)
+    , _cjtCategory :: !(Maybe Text)
+    , _cjtQueue :: !(Maybe Text)
+    , _cjtName :: !(Maybe Text)
+    , _cjtDescription :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateJobTemplate' with the minimum fields required to make a request.
 --
@@ -69,8 +66,7 @@ data CreateJobTemplate = CreateJobTemplate'
 -- * 'cjtName' - The name of the job template you are creating.
 --
 -- * 'cjtDescription' - Optional. A description of the job template you are creating.
-createJobTemplate
-    :: CreateJobTemplate
+createJobTemplate :: CreateJobTemplate
 createJobTemplate =
   CreateJobTemplate'
     { _cjtSettings = Nothing
@@ -80,68 +76,68 @@ createJobTemplate =
     , _cjtDescription = Nothing
     }
 
-
 -- | Undocumented member.
 cjtSettings :: Lens' CreateJobTemplate (Maybe JobTemplateSettings)
-cjtSettings = lens _cjtSettings (\ s a -> s{_cjtSettings = a})
+cjtSettings = lens _cjtSettings (\s a -> s {_cjtSettings = a})
 
 -- | Optional. A category for the job template you are creating
 cjtCategory :: Lens' CreateJobTemplate (Maybe Text)
-cjtCategory = lens _cjtCategory (\ s a -> s{_cjtCategory = a})
+cjtCategory = lens _cjtCategory (\s a -> s {_cjtCategory = a})
 
 -- | Optional. The queue that jobs created from this template are assigned to. If you don't specify this, jobs will go to the default queue.
 cjtQueue :: Lens' CreateJobTemplate (Maybe Text)
-cjtQueue = lens _cjtQueue (\ s a -> s{_cjtQueue = a})
+cjtQueue = lens _cjtQueue (\s a -> s {_cjtQueue = a})
 
 -- | The name of the job template you are creating.
 cjtName :: Lens' CreateJobTemplate (Maybe Text)
-cjtName = lens _cjtName (\ s a -> s{_cjtName = a})
+cjtName = lens _cjtName (\s a -> s {_cjtName = a})
 
 -- | Optional. A description of the job template you are creating.
 cjtDescription :: Lens' CreateJobTemplate (Maybe Text)
-cjtDescription = lens _cjtDescription (\ s a -> s{_cjtDescription = a})
+cjtDescription = lens _cjtDescription (\s a -> s {_cjtDescription = a})
 
 instance AWSRequest CreateJobTemplate where
-        type Rs CreateJobTemplate = CreateJobTemplateResponse
-        request = postJSON mediaConvert
-        response
-          = receiveJSON
-              (\ s h x ->
-                 CreateJobTemplateResponse' <$>
-                   (x .?> "jobTemplate") <*> (pure (fromEnum s)))
+  type Rs CreateJobTemplate = CreateJobTemplateResponse
+  request = postJSON mediaConvert
+  response =
+    receiveJSON
+      (\s h x ->
+         CreateJobTemplateResponse' <$> (x .?> "jobTemplate") <*>
+         (pure (fromEnum s)))
 
-instance Hashable CreateJobTemplate where
+instance Hashable CreateJobTemplate
 
-instance NFData CreateJobTemplate where
+instance NFData CreateJobTemplate
 
 instance ToHeaders CreateJobTemplate where
-        toHeaders
-          = const
-              (mconcat
-                 ["Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat ["Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON CreateJobTemplate where
-        toJSON CreateJobTemplate'{..}
-          = object
-              (catMaybes
-                 [("settings" .=) <$> _cjtSettings,
-                  ("category" .=) <$> _cjtCategory,
-                  ("queue" .=) <$> _cjtQueue, ("name" .=) <$> _cjtName,
-                  ("description" .=) <$> _cjtDescription])
+  toJSON CreateJobTemplate' {..} =
+    object
+      (catMaybes
+         [ ("settings" .=) <$> _cjtSettings
+         , ("category" .=) <$> _cjtCategory
+         , ("queue" .=) <$> _cjtQueue
+         , ("name" .=) <$> _cjtName
+         , ("description" .=) <$> _cjtDescription
+         ])
 
 instance ToPath CreateJobTemplate where
-        toPath = const "/2017-08-29/jobTemplates"
+  toPath = const "/2017-08-29/jobTemplates"
 
 instance ToQuery CreateJobTemplate where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'createJobTemplateResponse' smart constructor.
-data CreateJobTemplateResponse = CreateJobTemplateResponse'
-  { _cjtrsJobTemplate    :: !(Maybe JobTemplate)
-  , _cjtrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateJobTemplateResponse =
+  CreateJobTemplateResponse'
+    { _cjtrsJobTemplate :: !(Maybe JobTemplate)
+    , _cjtrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateJobTemplateResponse' with the minimum fields required to make a request.
 --
@@ -150,20 +146,20 @@ data CreateJobTemplateResponse = CreateJobTemplateResponse'
 -- * 'cjtrsJobTemplate' - Undocumented member.
 --
 -- * 'cjtrsResponseStatus' - -- | The response status code.
-createJobTemplateResponse
-    :: Int -- ^ 'cjtrsResponseStatus'
-    -> CreateJobTemplateResponse
+createJobTemplateResponse ::
+     Int -- ^ 'cjtrsResponseStatus'
+  -> CreateJobTemplateResponse
 createJobTemplateResponse pResponseStatus_ =
   CreateJobTemplateResponse'
     {_cjtrsJobTemplate = Nothing, _cjtrsResponseStatus = pResponseStatus_}
 
-
 -- | Undocumented member.
 cjtrsJobTemplate :: Lens' CreateJobTemplateResponse (Maybe JobTemplate)
-cjtrsJobTemplate = lens _cjtrsJobTemplate (\ s a -> s{_cjtrsJobTemplate = a})
+cjtrsJobTemplate = lens _cjtrsJobTemplate (\s a -> s {_cjtrsJobTemplate = a})
 
 -- | -- | The response status code.
 cjtrsResponseStatus :: Lens' CreateJobTemplateResponse Int
-cjtrsResponseStatus = lens _cjtrsResponseStatus (\ s a -> s{_cjtrsResponseStatus = a})
+cjtrsResponseStatus =
+  lens _cjtrsResponseStatus (\s a -> s {_cjtrsResponseStatus = a})
 
-instance NFData CreateJobTemplateResponse where
+instance NFData CreateJobTemplateResponse

@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Lambda.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,183 +10,158 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.Lambda.Types
-    (
     -- * Service Configuration
-      lambda
-
+  ( lambda
     -- * Errors
-    , _KMSInvalidStateException
-    , _EC2ThrottledException
-    , _InvalidRuntimeException
-    , _PolicyLengthExceededException
-    , _PreconditionFailedException
-    , _EC2AccessDeniedException
-    , _InvalidSubnetIdException
-    , _UnsupportedMediaTypeException
-    , _InvalidRequestContentException
-    , _KMSNotFoundException
-    , _ENILimitReachedException
-    , _InvalidParameterValueException
-    , _RequestTooLargeException
-    , _TooManyRequestsException
-    , _InvalidSecurityGroupIdException
-    , _KMSDisabledException
-    , _SubnetIPAddressLimitReachedException
-    , _ServiceException
-    , _CodeStorageExceededException
-    , _InvalidZipFileException
-    , _ResourceConflictException
-    , _EC2UnexpectedException
-    , _ResourceNotFoundException
-    , _KMSAccessDeniedException
-
+  , _KMSInvalidStateException
+  , _EC2ThrottledException
+  , _InvalidRuntimeException
+  , _PolicyLengthExceededException
+  , _PreconditionFailedException
+  , _EC2AccessDeniedException
+  , _InvalidSubnetIdException
+  , _UnsupportedMediaTypeException
+  , _InvalidRequestContentException
+  , _KMSNotFoundException
+  , _ENILimitReachedException
+  , _InvalidParameterValueException
+  , _RequestTooLargeException
+  , _TooManyRequestsException
+  , _InvalidSecurityGroupIdException
+  , _KMSDisabledException
+  , _SubnetIPAddressLimitReachedException
+  , _ServiceException
+  , _CodeStorageExceededException
+  , _InvalidZipFileException
+  , _ResourceConflictException
+  , _EC2UnexpectedException
+  , _ResourceNotFoundException
+  , _KMSAccessDeniedException
     -- * EventSourcePosition
-    , EventSourcePosition (..)
-
+  , EventSourcePosition(..)
     -- * FunctionVersion
-    , FunctionVersion (..)
-
+  , FunctionVersion(..)
     -- * InvocationType
-    , InvocationType (..)
-
+  , InvocationType(..)
     -- * LogType
-    , LogType (..)
-
+  , LogType(..)
     -- * Runtime
-    , Runtime (..)
-
+  , Runtime(..)
     -- * TracingMode
-    , TracingMode (..)
-
+  , TracingMode(..)
     -- * AccountLimit
-    , AccountLimit
-    , accountLimit
-    , alConcurrentExecutions
-    , alTotalCodeSize
-    , alUnreservedConcurrentExecutions
-    , alCodeSizeUnzipped
-    , alCodeSizeZipped
-
+  , AccountLimit
+  , accountLimit
+  , alConcurrentExecutions
+  , alTotalCodeSize
+  , alUnreservedConcurrentExecutions
+  , alCodeSizeUnzipped
+  , alCodeSizeZipped
     -- * AccountUsage
-    , AccountUsage
-    , accountUsage
-    , auTotalCodeSize
-    , auFunctionCount
-
+  , AccountUsage
+  , accountUsage
+  , auTotalCodeSize
+  , auFunctionCount
     -- * AliasConfiguration
-    , AliasConfiguration
-    , aliasConfiguration
-    , acRoutingConfig
-    , acName
-    , acFunctionVersion
-    , acAliasARN
-    , acDescription
-    , acRevisionId
-
+  , AliasConfiguration
+  , aliasConfiguration
+  , acRoutingConfig
+  , acName
+  , acFunctionVersion
+  , acAliasARN
+  , acDescription
+  , acRevisionId
     -- * AliasRoutingConfiguration
-    , AliasRoutingConfiguration
-    , aliasRoutingConfiguration
-    , arcAdditionalVersionWeights
-
+  , AliasRoutingConfiguration
+  , aliasRoutingConfiguration
+  , arcAdditionalVersionWeights
     -- * Concurrency
-    , Concurrency
-    , concurrency
-    , cReservedConcurrentExecutions
-
+  , Concurrency
+  , concurrency
+  , cReservedConcurrentExecutions
     -- * DeadLetterConfig
-    , DeadLetterConfig
-    , deadLetterConfig
-    , dlcTargetARN
-
+  , DeadLetterConfig
+  , deadLetterConfig
+  , dlcTargetARN
     -- * Environment
-    , Environment
-    , environment
-    , eVariables
-
+  , Environment
+  , environment
+  , eVariables
     -- * EnvironmentError
-    , EnvironmentError
-    , environmentError
-    , eeErrorCode
-    , eeMessage
-
+  , EnvironmentError
+  , environmentError
+  , eeErrorCode
+  , eeMessage
     -- * EnvironmentResponse
-    , EnvironmentResponse
-    , environmentResponse
-    , envVariables
-    , envError
-
+  , EnvironmentResponse
+  , environmentResponse
+  , envVariables
+  , envError
     -- * EventSourceMappingConfiguration
-    , EventSourceMappingConfiguration
-    , eventSourceMappingConfiguration
-    , esmcEventSourceARN
-    , esmcState
-    , esmcFunctionARN
-    , esmcUUId
-    , esmcLastProcessingResult
-    , esmcBatchSize
-    , esmcStateTransitionReason
-    , esmcLastModified
-
+  , EventSourceMappingConfiguration
+  , eventSourceMappingConfiguration
+  , esmcEventSourceARN
+  , esmcState
+  , esmcFunctionARN
+  , esmcUUId
+  , esmcLastProcessingResult
+  , esmcBatchSize
+  , esmcStateTransitionReason
+  , esmcLastModified
     -- * FunctionCode
-    , FunctionCode
-    , functionCode
-    , fcS3ObjectVersion
-    , fcS3Key
-    , fcZipFile
-    , fcS3Bucket
-
+  , FunctionCode
+  , functionCode
+  , fcS3ObjectVersion
+  , fcS3Key
+  , fcZipFile
+  , fcS3Bucket
     -- * FunctionCodeLocation
-    , FunctionCodeLocation
-    , functionCodeLocation
-    , fclLocation
-    , fclRepositoryType
-
+  , FunctionCodeLocation
+  , functionCodeLocation
+  , fclLocation
+  , fclRepositoryType
     -- * FunctionConfiguration
-    , FunctionConfiguration
-    , functionConfiguration
-    , fcMemorySize
-    , fcRuntime
-    , fcFunctionARN
-    , fcKMSKeyARN
-    , fcEnvironment
-    , fcDeadLetterConfig
-    , fcRole
-    , fcVPCConfig
-    , fcVersion
-    , fcFunctionName
-    , fcCodeSize
-    , fcHandler
-    , fcTimeout
-    , fcLastModified
-    , fcCodeSha256
-    , fcTracingConfig
-    , fcDescription
-    , fcRevisionId
-    , fcMasterARN
-
+  , FunctionConfiguration
+  , functionConfiguration
+  , fcMemorySize
+  , fcRuntime
+  , fcFunctionARN
+  , fcKMSKeyARN
+  , fcEnvironment
+  , fcDeadLetterConfig
+  , fcRole
+  , fcVPCConfig
+  , fcVersion
+  , fcFunctionName
+  , fcCodeSize
+  , fcHandler
+  , fcTimeout
+  , fcLastModified
+  , fcCodeSha256
+  , fcTracingConfig
+  , fcDescription
+  , fcRevisionId
+  , fcMasterARN
     -- * TracingConfig
-    , TracingConfig
-    , tracingConfig
-    , tMode
-
+  , TracingConfig
+  , tracingConfig
+  , tMode
     -- * TracingConfigResponse
-    , TracingConfigResponse
-    , tracingConfigResponse
-    , tcMode
-
+  , TracingConfigResponse
+  , tracingConfigResponse
+  , tcMode
     -- * VPCConfig
-    , VPCConfig
-    , vpcConfig
-    , vpccSecurityGroupIds
-    , vpccSubnetIds
-
+  , VPCConfig
+  , vpcConfig
+  , vpccSecurityGroupIds
+  , vpccSubnetIds
     -- * VPCConfigResponse
-    , VPCConfigResponse
-    , vpcConfigResponse
-    , vcSecurityGroupIds
-    , vcSubnetIds
-    , vcVPCId
-    ) where
+  , VPCConfigResponse
+  , vpcConfigResponse
+  , vcSecurityGroupIds
+  , vcSubnetIds
+  , vcVPCId
+  ) where
 
 import Network.AWS.Lambda.Types.Product
 import Network.AWS.Lambda.Types.Sum
@@ -233,143 +207,142 @@ lambda =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | Lambda was unable to decrypt the environment variables because the KMS key used is in an invalid state for Decrypt. Check the function's KMS key settings.
 --
 --
-_KMSInvalidStateException :: AsError a => Getting (First ServiceError) a ServiceError
+_KMSInvalidStateException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _KMSInvalidStateException =
   _MatchServiceError lambda "KMSInvalidStateException" . hasStatus 502
-
 
 -- | AWS Lambda was throttled by Amazon EC2 during Lambda function initialization using the execution role provided for the Lambda function.
 --
 --
-_EC2ThrottledException :: AsError a => Getting (First ServiceError) a ServiceError
+_EC2ThrottledException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _EC2ThrottledException =
   _MatchServiceError lambda "EC2ThrottledException" . hasStatus 502
-
 
 -- | The runtime or runtime version specified is not supported.
 --
 --
-_InvalidRuntimeException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRuntimeException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidRuntimeException =
   _MatchServiceError lambda "InvalidRuntimeException" . hasStatus 502
-
 
 -- | Lambda function access policy is limited to 20 KB.
 --
 --
-_PolicyLengthExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_PolicyLengthExceededException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _PolicyLengthExceededException =
   _MatchServiceError lambda "PolicyLengthExceededException" . hasStatus 400
-
 
 -- | The RevisionId provided does not match the latest RevisionId for the Lambda function or alias. Call the @GetFunction@ or the @GetAlias@ API to retrieve the latest RevisionId for your resource.
 --
 --
-_PreconditionFailedException :: AsError a => Getting (First ServiceError) a ServiceError
+_PreconditionFailedException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _PreconditionFailedException =
   _MatchServiceError lambda "PreconditionFailedException" . hasStatus 412
-
 
 -- |
 --
 --
-_EC2AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
+_EC2AccessDeniedException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _EC2AccessDeniedException =
   _MatchServiceError lambda "EC2AccessDeniedException" . hasStatus 502
-
 
 -- | The Subnet ID provided in the Lambda function VPC configuration is invalid.
 --
 --
-_InvalidSubnetIdException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidSubnetIdException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidSubnetIdException =
   _MatchServiceError lambda "InvalidSubnetIDException" . hasStatus 502
-
 
 -- | The content type of the @Invoke@ request body is not JSON.
 --
 --
-_UnsupportedMediaTypeException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnsupportedMediaTypeException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _UnsupportedMediaTypeException =
   _MatchServiceError lambda "UnsupportedMediaTypeException" . hasStatus 415
-
 
 -- | The request body could not be parsed as JSON.
 --
 --
-_InvalidRequestContentException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRequestContentException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidRequestContentException =
   _MatchServiceError lambda "InvalidRequestContentException" . hasStatus 400
-
 
 -- | Lambda was unable to decrypt the environment variables because the KMS key was not found. Check the function's KMS key settings.
 --
 --
-_KMSNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_KMSNotFoundException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _KMSNotFoundException =
   _MatchServiceError lambda "KMSNotFoundException" . hasStatus 502
-
 
 -- | AWS Lambda was not able to create an Elastic Network Interface (ENI) in the VPC, specified as part of Lambda function configuration, because the limit for network interfaces has been reached.
 --
 --
-_ENILimitReachedException :: AsError a => Getting (First ServiceError) a ServiceError
+_ENILimitReachedException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ENILimitReachedException =
   _MatchServiceError lambda "ENILimitReachedException" . hasStatus 502
-
 
 -- | One of the parameters in the request is invalid. For example, if you provided an IAM role for AWS Lambda to assume in the @CreateFunction@ or the @UpdateFunctionConfiguration@ API, that AWS Lambda is unable to assume you will get this exception.
 --
 --
-_InvalidParameterValueException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterValueException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidParameterValueException =
   _MatchServiceError lambda "InvalidParameterValueException" . hasStatus 400
-
 
 -- | The request payload exceeded the @Invoke@ request body JSON input limit. For more information, see <http://docs.aws.amazon.com/lambda/latest/dg/limits.html Limits> .
 --
 --
-_RequestTooLargeException :: AsError a => Getting (First ServiceError) a ServiceError
+_RequestTooLargeException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _RequestTooLargeException =
   _MatchServiceError lambda "RequestTooLargeException" . hasStatus 413
-
 
 -- |
 --
 --
-_TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyRequestsException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _TooManyRequestsException =
   _MatchServiceError lambda "TooManyRequestsException" . hasStatus 429
-
 
 -- | The Security Group ID provided in the Lambda function VPC configuration is invalid.
 --
 --
-_InvalidSecurityGroupIdException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidSecurityGroupIdException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidSecurityGroupIdException =
   _MatchServiceError lambda "InvalidSecurityGroupIDException" . hasStatus 502
-
 
 -- | Lambda was unable to decrypt the environment variables because the KMS key used is disabled. Check the Lambda function's KMS key settings.
 --
 --
-_KMSDisabledException :: AsError a => Getting (First ServiceError) a ServiceError
+_KMSDisabledException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _KMSDisabledException =
   _MatchServiceError lambda "KMSDisabledException" . hasStatus 502
-
 
 -- | AWS Lambda was not able to set up VPC access for the Lambda function because one or more configured subnets has no available IP addresses.
 --
 --
-_SubnetIPAddressLimitReachedException :: AsError a => Getting (First ServiceError) a ServiceError
+_SubnetIPAddressLimitReachedException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _SubnetIPAddressLimitReachedException =
   _MatchServiceError lambda "SubnetIPAddressLimitReachedException" .
   hasStatus 502
-
 
 -- | The AWS Lambda service encountered an internal error.
 --
@@ -377,51 +350,50 @@ _SubnetIPAddressLimitReachedException =
 _ServiceException :: AsError a => Getting (First ServiceError) a ServiceError
 _ServiceException = _MatchServiceError lambda "ServiceException" . hasStatus 500
 
-
 -- | You have exceeded your maximum total code size per account. <http://docs.aws.amazon.com/lambda/latest/dg/limits.html Limits>
 --
 --
-_CodeStorageExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_CodeStorageExceededException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _CodeStorageExceededException =
   _MatchServiceError lambda "CodeStorageExceededException" . hasStatus 400
-
 
 -- | AWS Lambda could not unzip the function zip file.
 --
 --
-_InvalidZipFileException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidZipFileException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidZipFileException =
   _MatchServiceError lambda "InvalidZipFileException" . hasStatus 502
-
 
 -- | The resource already exists.
 --
 --
-_ResourceConflictException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceConflictException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ResourceConflictException =
   _MatchServiceError lambda "ResourceConflictException" . hasStatus 409
-
 
 -- | AWS Lambda received an unexpected EC2 client exception while setting up for the Lambda function.
 --
 --
-_EC2UnexpectedException :: AsError a => Getting (First ServiceError) a ServiceError
+_EC2UnexpectedException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _EC2UnexpectedException =
   _MatchServiceError lambda "EC2UnexpectedException" . hasStatus 502
-
 
 -- | The resource (for example, a Lambda function or access policy statement) specified in the request does not exist.
 --
 --
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ResourceNotFoundException =
   _MatchServiceError lambda "ResourceNotFoundException" . hasStatus 404
-
 
 -- | Lambda was unable to decrypt the environment variables because KMS access was denied. Check the Lambda function's KMS permissions.
 --
 --
-_KMSAccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
+_KMSAccessDeniedException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _KMSAccessDeniedException =
   _MatchServiceError lambda "KMSAccessDeniedException" . hasStatus 502
-

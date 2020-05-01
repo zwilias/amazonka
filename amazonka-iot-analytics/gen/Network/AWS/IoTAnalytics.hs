@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.IoTAnalytics
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -19,378 +18,300 @@
 -- AWS IoT Analytics automates each of the steps required to analyze data from IoT devices. AWS IoT Analytics filters, transforms, and enriches IoT data before storing it in a time-series data store for analysis. You can set up the service to collect only the data you need from your devices, apply mathematical transforms to process the data, and enrich the data with device-specific metadata such as device type and location before storing it. Then, you can analyze your data by running queries using the built-in SQL query engine, or perform more complex analytics and machine learning inference. AWS IoT Analytics includes models for common IoT use cases so you can answer questions like which devices are about to fail or which customers are at risk of abandoning their wearable devices.
 --
 module Network.AWS.IoTAnalytics
-    (
     -- * Service Configuration
-      ioTAnalytics
-
+  ( ioTAnalytics
     -- * Errors
     -- $errors
-
     -- ** InvalidRequestException
-    , _InvalidRequestException
-
+  , _InvalidRequestException
     -- ** ResourceAlreadyExistsException
-    , _ResourceAlreadyExistsException
-
+  , _ResourceAlreadyExistsException
     -- ** ThrottlingException
-    , _ThrottlingException
-
+  , _ThrottlingException
     -- ** InternalFailureException
-    , _InternalFailureException
-
+  , _InternalFailureException
     -- ** ServiceUnavailableException
-    , _ServiceUnavailableException
-
+  , _ServiceUnavailableException
     -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
-
+  , _ResourceNotFoundException
     -- ** LimitExceededException
-    , _LimitExceededException
-
+  , _LimitExceededException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** DescribePipeline
-    , module Network.AWS.IoTAnalytics.DescribePipeline
-
+  , module Network.AWS.IoTAnalytics.DescribePipeline
     -- ** DescribeDataset
-    , module Network.AWS.IoTAnalytics.DescribeDataset
-
+  , module Network.AWS.IoTAnalytics.DescribeDataset
     -- ** ListChannels
-    , module Network.AWS.IoTAnalytics.ListChannels
-
+  , module Network.AWS.IoTAnalytics.ListChannels
     -- ** PutLoggingOptions
-    , module Network.AWS.IoTAnalytics.PutLoggingOptions
-
+  , module Network.AWS.IoTAnalytics.PutLoggingOptions
     -- ** DeleteChannel
-    , module Network.AWS.IoTAnalytics.DeleteChannel
-
+  , module Network.AWS.IoTAnalytics.DeleteChannel
     -- ** UpdateChannel
-    , module Network.AWS.IoTAnalytics.UpdateChannel
-
+  , module Network.AWS.IoTAnalytics.UpdateChannel
     -- ** SampleChannelData
-    , module Network.AWS.IoTAnalytics.SampleChannelData
-
+  , module Network.AWS.IoTAnalytics.SampleChannelData
     -- ** CancelPipelineReprocessing
-    , module Network.AWS.IoTAnalytics.CancelPipelineReprocessing
-
+  , module Network.AWS.IoTAnalytics.CancelPipelineReprocessing
     -- ** CreateDatastore
-    , module Network.AWS.IoTAnalytics.CreateDatastore
-
+  , module Network.AWS.IoTAnalytics.CreateDatastore
     -- ** UpdatePipeline
-    , module Network.AWS.IoTAnalytics.UpdatePipeline
-
+  , module Network.AWS.IoTAnalytics.UpdatePipeline
     -- ** DeletePipeline
-    , module Network.AWS.IoTAnalytics.DeletePipeline
-
+  , module Network.AWS.IoTAnalytics.DeletePipeline
     -- ** DeleteDataset
-    , module Network.AWS.IoTAnalytics.DeleteDataset
-
+  , module Network.AWS.IoTAnalytics.DeleteDataset
     -- ** UpdateDataset
-    , module Network.AWS.IoTAnalytics.UpdateDataset
-
+  , module Network.AWS.IoTAnalytics.UpdateDataset
     -- ** ListPipelines
-    , module Network.AWS.IoTAnalytics.ListPipelines
-
+  , module Network.AWS.IoTAnalytics.ListPipelines
     -- ** DeleteDatastore
-    , module Network.AWS.IoTAnalytics.DeleteDatastore
-
+  , module Network.AWS.IoTAnalytics.DeleteDatastore
     -- ** UpdateDatastore
-    , module Network.AWS.IoTAnalytics.UpdateDatastore
-
+  , module Network.AWS.IoTAnalytics.UpdateDatastore
     -- ** CreateDataset
-    , module Network.AWS.IoTAnalytics.CreateDataset
-
+  , module Network.AWS.IoTAnalytics.CreateDataset
     -- ** BatchPutMessage
-    , module Network.AWS.IoTAnalytics.BatchPutMessage
-
+  , module Network.AWS.IoTAnalytics.BatchPutMessage
     -- ** ListDatastores
-    , module Network.AWS.IoTAnalytics.ListDatastores
-
+  , module Network.AWS.IoTAnalytics.ListDatastores
     -- ** CreateDatasetContent
-    , module Network.AWS.IoTAnalytics.CreateDatasetContent
-
+  , module Network.AWS.IoTAnalytics.CreateDatasetContent
     -- ** CreateChannel
-    , module Network.AWS.IoTAnalytics.CreateChannel
-
+  , module Network.AWS.IoTAnalytics.CreateChannel
     -- ** DeleteDatasetContent
-    , module Network.AWS.IoTAnalytics.DeleteDatasetContent
-
+  , module Network.AWS.IoTAnalytics.DeleteDatasetContent
     -- ** DescribeDatastore
-    , module Network.AWS.IoTAnalytics.DescribeDatastore
-
+  , module Network.AWS.IoTAnalytics.DescribeDatastore
     -- ** GetDatasetContent
-    , module Network.AWS.IoTAnalytics.GetDatasetContent
-
+  , module Network.AWS.IoTAnalytics.GetDatasetContent
     -- ** ListDatasets
-    , module Network.AWS.IoTAnalytics.ListDatasets
-
+  , module Network.AWS.IoTAnalytics.ListDatasets
     -- ** RunPipelineActivity
-    , module Network.AWS.IoTAnalytics.RunPipelineActivity
-
+  , module Network.AWS.IoTAnalytics.RunPipelineActivity
     -- ** DescribeChannel
-    , module Network.AWS.IoTAnalytics.DescribeChannel
-
+  , module Network.AWS.IoTAnalytics.DescribeChannel
     -- ** CreatePipeline
-    , module Network.AWS.IoTAnalytics.CreatePipeline
-
+  , module Network.AWS.IoTAnalytics.CreatePipeline
     -- ** StartPipelineReprocessing
-    , module Network.AWS.IoTAnalytics.StartPipelineReprocessing
-
+  , module Network.AWS.IoTAnalytics.StartPipelineReprocessing
     -- ** DescribeLoggingOptions
-    , module Network.AWS.IoTAnalytics.DescribeLoggingOptions
-
+  , module Network.AWS.IoTAnalytics.DescribeLoggingOptions
     -- * Types
-
     -- ** ChannelStatus
-    , ChannelStatus (..)
-
+  , ChannelStatus(..)
     -- ** DatasetContentState
-    , DatasetContentState (..)
-
+  , DatasetContentState(..)
     -- ** DatasetStatus
-    , DatasetStatus (..)
-
+  , DatasetStatus(..)
     -- ** DatastoreStatus
-    , DatastoreStatus (..)
-
+  , DatastoreStatus(..)
     -- ** LoggingLevel
-    , LoggingLevel (..)
-
+  , LoggingLevel(..)
     -- ** ReprocessingStatus
-    , ReprocessingStatus (..)
-
+  , ReprocessingStatus(..)
     -- ** AddAttributesActivity
-    , AddAttributesActivity
-    , addAttributesActivity
-    , aaaNext
-    , aaaName
-    , aaaAttributes
-
+  , AddAttributesActivity
+  , addAttributesActivity
+  , aaaNext
+  , aaaName
+  , aaaAttributes
     -- ** BatchPutMessageErrorEntry
-    , BatchPutMessageErrorEntry
-    , batchPutMessageErrorEntry
-    , bpmeeErrorCode
-    , bpmeeErrorMessage
-    , bpmeeMessageId
-
+  , BatchPutMessageErrorEntry
+  , batchPutMessageErrorEntry
+  , bpmeeErrorCode
+  , bpmeeErrorMessage
+  , bpmeeMessageId
     -- ** Channel
-    , Channel
-    , channel
-    , cCreationTime
-    , cStatus
-    , cArn
-    , cRetentionPeriod
-    , cName
-    , cLastUpdateTime
-
+  , Channel
+  , channel
+  , cCreationTime
+  , cStatus
+  , cArn
+  , cRetentionPeriod
+  , cName
+  , cLastUpdateTime
     -- ** ChannelActivity
-    , ChannelActivity
-    , channelActivity
-    , caNext
-    , caName
-    , caChannelName
-
+  , ChannelActivity
+  , channelActivity
+  , caNext
+  , caName
+  , caChannelName
     -- ** ChannelSummary
-    , ChannelSummary
-    , channelSummary
-    , csCreationTime
-    , csStatus
-    , csChannelName
-    , csLastUpdateTime
-
+  , ChannelSummary
+  , channelSummary
+  , csCreationTime
+  , csStatus
+  , csChannelName
+  , csLastUpdateTime
     -- ** Dataset
-    , Dataset
-    , dataset
-    , dCreationTime
-    , dStatus
-    , dArn
-    , dActions
-    , dTriggers
-    , dName
-    , dLastUpdateTime
-
+  , Dataset
+  , dataset
+  , dCreationTime
+  , dStatus
+  , dArn
+  , dActions
+  , dTriggers
+  , dName
+  , dLastUpdateTime
     -- ** DatasetAction
-    , DatasetAction
-    , datasetAction
-    , daQueryAction
-    , daActionName
-
+  , DatasetAction
+  , datasetAction
+  , daQueryAction
+  , daActionName
     -- ** DatasetContentStatus
-    , DatasetContentStatus
-    , datasetContentStatus
-    , dcsState
-    , dcsReason
-
+  , DatasetContentStatus
+  , datasetContentStatus
+  , dcsState
+  , dcsReason
     -- ** DatasetEntry
-    , DatasetEntry
-    , datasetEntry
-    , deEntryName
-    , deDataURI
-
+  , DatasetEntry
+  , datasetEntry
+  , deEntryName
+  , deDataURI
     -- ** DatasetSummary
-    , DatasetSummary
-    , datasetSummary
-    , dssCreationTime
-    , dssStatus
-    , dssDatasetName
-    , dssLastUpdateTime
-
+  , DatasetSummary
+  , datasetSummary
+  , dssCreationTime
+  , dssStatus
+  , dssDatasetName
+  , dssLastUpdateTime
     -- ** DatasetTrigger
-    , DatasetTrigger
-    , datasetTrigger
-    , dtSchedule
-
+  , DatasetTrigger
+  , datasetTrigger
+  , dtSchedule
     -- ** Datastore
-    , Datastore
-    , datastore
-    , datCreationTime
-    , datStatus
-    , datArn
-    , datRetentionPeriod
-    , datName
-    , datLastUpdateTime
-
+  , Datastore
+  , datastore
+  , datCreationTime
+  , datStatus
+  , datArn
+  , datRetentionPeriod
+  , datName
+  , datLastUpdateTime
     -- ** DatastoreActivity
-    , DatastoreActivity
-    , datastoreActivity
-    , daName
-    , daDatastoreName
-
+  , DatastoreActivity
+  , datastoreActivity
+  , daName
+  , daDatastoreName
     -- ** DatastoreSummary
-    , DatastoreSummary
-    , datastoreSummary
-    , dsCreationTime
-    , dsStatus
-    , dsDatastoreName
-    , dsLastUpdateTime
-
+  , DatastoreSummary
+  , datastoreSummary
+  , dsCreationTime
+  , dsStatus
+  , dsDatastoreName
+  , dsLastUpdateTime
     -- ** DeviceRegistryEnrichActivity
-    , DeviceRegistryEnrichActivity
-    , deviceRegistryEnrichActivity
-    , dreaNext
-    , dreaName
-    , dreaAttribute
-    , dreaThingName
-    , dreaRoleARN
-
+  , DeviceRegistryEnrichActivity
+  , deviceRegistryEnrichActivity
+  , dreaNext
+  , dreaName
+  , dreaAttribute
+  , dreaThingName
+  , dreaRoleARN
     -- ** DeviceShadowEnrichActivity
-    , DeviceShadowEnrichActivity
-    , deviceShadowEnrichActivity
-    , dseaNext
-    , dseaName
-    , dseaAttribute
-    , dseaThingName
-    , dseaRoleARN
-
+  , DeviceShadowEnrichActivity
+  , deviceShadowEnrichActivity
+  , dseaNext
+  , dseaName
+  , dseaAttribute
+  , dseaThingName
+  , dseaRoleARN
     -- ** FilterActivity
-    , FilterActivity
-    , filterActivity
-    , faNext
-    , faName
-    , faFilter
-
+  , FilterActivity
+  , filterActivity
+  , faNext
+  , faName
+  , faFilter
     -- ** LambdaActivity
-    , LambdaActivity
-    , lambdaActivity
-    , laNext
-    , laName
-    , laLambdaName
-    , laBatchSize
-
+  , LambdaActivity
+  , lambdaActivity
+  , laNext
+  , laName
+  , laLambdaName
+  , laBatchSize
     -- ** LoggingOptions
-    , LoggingOptions
-    , loggingOptions
-    , loRoleARN
-    , loLevel
-    , loEnabled
-
+  , LoggingOptions
+  , loggingOptions
+  , loRoleARN
+  , loLevel
+  , loEnabled
     -- ** MathActivity
-    , MathActivity
-    , mathActivity
-    , maNext
-    , maName
-    , maAttribute
-    , maMath
-
+  , MathActivity
+  , mathActivity
+  , maNext
+  , maName
+  , maAttribute
+  , maMath
     -- ** Message
-    , Message
-    , message
-    , mMessageId
-    , mPayload
-
+  , Message
+  , message
+  , mMessageId
+  , mPayload
     -- ** Pipeline
-    , Pipeline
-    , pipeline
-    , pCreationTime
-    , pArn
-    , pActivities
-    , pName
-    , pReprocessingSummaries
-    , pLastUpdateTime
-
+  , Pipeline
+  , pipeline
+  , pCreationTime
+  , pArn
+  , pActivities
+  , pName
+  , pReprocessingSummaries
+  , pLastUpdateTime
     -- ** PipelineActivity
-    , PipelineActivity
-    , pipelineActivity
-    , paSelectAttributes
-    , paChannel
-    , paAddAttributes
-    , paDeviceRegistryEnrich
-    , paRemoveAttributes
-    , paLambda
-    , paDatastore
-    , paDeviceShadowEnrich
-    , paFilter
-    , paMath
-
+  , PipelineActivity
+  , pipelineActivity
+  , paSelectAttributes
+  , paChannel
+  , paAddAttributes
+  , paDeviceRegistryEnrich
+  , paRemoveAttributes
+  , paLambda
+  , paDatastore
+  , paDeviceShadowEnrich
+  , paFilter
+  , paMath
     -- ** PipelineSummary
-    , PipelineSummary
-    , pipelineSummary
-    , psCreationTime
-    , psPipelineName
-    , psReprocessingSummaries
-    , psLastUpdateTime
-
+  , PipelineSummary
+  , pipelineSummary
+  , psCreationTime
+  , psPipelineName
+  , psReprocessingSummaries
+  , psLastUpdateTime
     -- ** RemoveAttributesActivity
-    , RemoveAttributesActivity
-    , removeAttributesActivity
-    , raaNext
-    , raaName
-    , raaAttributes
-
+  , RemoveAttributesActivity
+  , removeAttributesActivity
+  , raaNext
+  , raaName
+  , raaAttributes
     -- ** ReprocessingSummary
-    , ReprocessingSummary
-    , reprocessingSummary
-    , rsCreationTime
-    , rsStatus
-    , rsId
-
+  , ReprocessingSummary
+  , reprocessingSummary
+  , rsCreationTime
+  , rsStatus
+  , rsId
     -- ** RetentionPeriod
-    , RetentionPeriod
-    , retentionPeriod
-    , rpUnlimited
-    , rpNumberOfDays
-
+  , RetentionPeriod
+  , retentionPeriod
+  , rpUnlimited
+  , rpNumberOfDays
     -- ** Schedule
-    , Schedule
-    , schedule
-    , sExpression
-
+  , Schedule
+  , schedule
+  , sExpression
     -- ** SelectAttributesActivity
-    , SelectAttributesActivity
-    , selectAttributesActivity
-    , saaNext
-    , saaName
-    , saaAttributes
-
+  , SelectAttributesActivity
+  , selectAttributesActivity
+  , saaNext
+  , saaName
+  , saaAttributes
     -- ** SqlQueryDatasetAction
-    , SqlQueryDatasetAction
-    , sqlQueryDatasetAction
-    , sqdaSqlQuery
-    ) where
+  , SqlQueryDatasetAction
+  , sqlQueryDatasetAction
+  , sqdaSqlQuery
+  ) where
 
 import Network.AWS.IoTAnalytics.BatchPutMessage
 import Network.AWS.IoTAnalytics.CancelPipelineReprocessing
@@ -424,14 +345,12 @@ import Network.AWS.IoTAnalytics.UpdateDataset
 import Network.AWS.IoTAnalytics.UpdateDatastore
 import Network.AWS.IoTAnalytics.UpdatePipeline
 import Network.AWS.IoTAnalytics.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'IoTAnalytics'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -448,7 +367,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

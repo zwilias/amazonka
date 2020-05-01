@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Glue
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -16,944 +15,760 @@
 -- Defines the public endpoint for the AWS Glue service.
 --
 module Network.AWS.Glue
-    (
     -- * Service Configuration
-      glue
-
+  ( glue
     -- * Errors
     -- $errors
-
     -- ** ValidationException
-    , _ValidationException
-
+  , _ValidationException
     -- ** AccessDeniedException
-    , _AccessDeniedException
-
+  , _AccessDeniedException
     -- ** CrawlerRunningException
-    , _CrawlerRunningException
-
+  , _CrawlerRunningException
     -- ** SchedulerTransitioningException
-    , _SchedulerTransitioningException
-
+  , _SchedulerTransitioningException
     -- ** SchedulerRunningException
-    , _SchedulerRunningException
-
+  , _SchedulerRunningException
     -- ** ConcurrentRunsExceededException
-    , _ConcurrentRunsExceededException
-
+  , _ConcurrentRunsExceededException
     -- ** NoScheduleException
-    , _NoScheduleException
-
+  , _NoScheduleException
     -- ** OperationTimeoutException
-    , _OperationTimeoutException
-
+  , _OperationTimeoutException
     -- ** CrawlerNotRunningException
-    , _CrawlerNotRunningException
-
+  , _CrawlerNotRunningException
     -- ** VersionMismatchException
-    , _VersionMismatchException
-
+  , _VersionMismatchException
     -- ** EntityNotFoundException
-    , _EntityNotFoundException
-
+  , _EntityNotFoundException
     -- ** ConcurrentModificationException
-    , _ConcurrentModificationException
-
+  , _ConcurrentModificationException
     -- ** SchedulerNotRunningException
-    , _SchedulerNotRunningException
-
+  , _SchedulerNotRunningException
     -- ** InternalServiceException
-    , _InternalServiceException
-
+  , _InternalServiceException
     -- ** InvalidInputException
-    , _InvalidInputException
-
+  , _InvalidInputException
     -- ** ResourceNumberLimitExceededException
-    , _ResourceNumberLimitExceededException
-
+  , _ResourceNumberLimitExceededException
     -- ** IdempotentParameterMismatchException
-    , _IdempotentParameterMismatchException
-
+  , _IdempotentParameterMismatchException
     -- ** CrawlerStoppingException
-    , _CrawlerStoppingException
-
+  , _CrawlerStoppingException
     -- ** AlreadyExistsException
-    , _AlreadyExistsException
-
+  , _AlreadyExistsException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** StartCrawler
-    , module Network.AWS.Glue.StartCrawler
-
+  , module Network.AWS.Glue.StartCrawler
     -- ** GetCatalogImportStatus
-    , module Network.AWS.Glue.GetCatalogImportStatus
-
+  , module Network.AWS.Glue.GetCatalogImportStatus
     -- ** GetPartition
-    , module Network.AWS.Glue.GetPartition
-
+  , module Network.AWS.Glue.GetPartition
     -- ** CreateTrigger
-    , module Network.AWS.Glue.CreateTrigger
-
+  , module Network.AWS.Glue.CreateTrigger
     -- ** DeleteTable
-    , module Network.AWS.Glue.DeleteTable
-
+  , module Network.AWS.Glue.DeleteTable
     -- ** UpdateTable
-    , module Network.AWS.Glue.UpdateTable
-
+  , module Network.AWS.Glue.UpdateTable
     -- ** DeleteConnection
-    , module Network.AWS.Glue.DeleteConnection
-
+  , module Network.AWS.Glue.DeleteConnection
     -- ** UpdateConnection
-    , module Network.AWS.Glue.UpdateConnection
-
+  , module Network.AWS.Glue.UpdateConnection
     -- ** GetUserDefinedFunctions (Paginated)
-    , module Network.AWS.Glue.GetUserDefinedFunctions
-
+  , module Network.AWS.Glue.GetUserDefinedFunctions
     -- ** BatchCreatePartition
-    , module Network.AWS.Glue.BatchCreatePartition
-
+  , module Network.AWS.Glue.BatchCreatePartition
     -- ** GetMapping
-    , module Network.AWS.Glue.GetMapping
-
+  , module Network.AWS.Glue.GetMapping
     -- ** GetTableVersion
-    , module Network.AWS.Glue.GetTableVersion
-
+  , module Network.AWS.Glue.GetTableVersion
     -- ** GetJobs (Paginated)
-    , module Network.AWS.Glue.GetJobs
-
+  , module Network.AWS.Glue.GetJobs
     -- ** GetClassifiers (Paginated)
-    , module Network.AWS.Glue.GetClassifiers
-
+  , module Network.AWS.Glue.GetClassifiers
     -- ** CreateConnection
-    , module Network.AWS.Glue.CreateConnection
-
+  , module Network.AWS.Glue.CreateConnection
     -- ** DeleteTableVersion
-    , module Network.AWS.Glue.DeleteTableVersion
-
+  , module Network.AWS.Glue.DeleteTableVersion
     -- ** DeleteDevEndpoint
-    , module Network.AWS.Glue.DeleteDevEndpoint
-
+  , module Network.AWS.Glue.DeleteDevEndpoint
     -- ** UpdateDevEndpoint
-    , module Network.AWS.Glue.UpdateDevEndpoint
-
+  , module Network.AWS.Glue.UpdateDevEndpoint
     -- ** DeleteCrawler
-    , module Network.AWS.Glue.DeleteCrawler
-
+  , module Network.AWS.Glue.DeleteCrawler
     -- ** UpdateCrawler
-    , module Network.AWS.Glue.UpdateCrawler
-
+  , module Network.AWS.Glue.UpdateCrawler
     -- ** GetConnection
-    , module Network.AWS.Glue.GetConnection
-
+  , module Network.AWS.Glue.GetConnection
     -- ** BatchGetPartition
-    , module Network.AWS.Glue.BatchGetPartition
-
+  , module Network.AWS.Glue.BatchGetPartition
     -- ** StopTrigger
-    , module Network.AWS.Glue.StopTrigger
-
+  , module Network.AWS.Glue.StopTrigger
     -- ** UpdateCrawlerSchedule
-    , module Network.AWS.Glue.UpdateCrawlerSchedule
-
+  , module Network.AWS.Glue.UpdateCrawlerSchedule
     -- ** DeleteUserDefinedFunction
-    , module Network.AWS.Glue.DeleteUserDefinedFunction
-
+  , module Network.AWS.Glue.DeleteUserDefinedFunction
     -- ** UpdateUserDefinedFunction
-    , module Network.AWS.Glue.UpdateUserDefinedFunction
-
+  , module Network.AWS.Glue.UpdateUserDefinedFunction
     -- ** BatchDeleteTable
-    , module Network.AWS.Glue.BatchDeleteTable
-
+  , module Network.AWS.Glue.BatchDeleteTable
     -- ** GetTables (Paginated)
-    , module Network.AWS.Glue.GetTables
-
+  , module Network.AWS.Glue.GetTables
     -- ** CreateClassifier
-    , module Network.AWS.Glue.CreateClassifier
-
+  , module Network.AWS.Glue.CreateClassifier
     -- ** BatchDeleteConnection
-    , module Network.AWS.Glue.BatchDeleteConnection
-
+  , module Network.AWS.Glue.BatchDeleteConnection
     -- ** CreateJob
-    , module Network.AWS.Glue.CreateJob
-
+  , module Network.AWS.Glue.CreateJob
     -- ** GetJobRuns (Paginated)
-    , module Network.AWS.Glue.GetJobRuns
-
+  , module Network.AWS.Glue.GetJobRuns
     -- ** CreateUserDefinedFunction
-    , module Network.AWS.Glue.CreateUserDefinedFunction
-
+  , module Network.AWS.Glue.CreateUserDefinedFunction
     -- ** ResetJobBookmark
-    , module Network.AWS.Glue.ResetJobBookmark
-
+  , module Network.AWS.Glue.ResetJobBookmark
     -- ** DeleteJob
-    , module Network.AWS.Glue.DeleteJob
-
+  , module Network.AWS.Glue.DeleteJob
     -- ** UpdateJob
-    , module Network.AWS.Glue.UpdateJob
-
+  , module Network.AWS.Glue.UpdateJob
     -- ** GetCrawlers (Paginated)
-    , module Network.AWS.Glue.GetCrawlers
-
+  , module Network.AWS.Glue.GetCrawlers
     -- ** GetClassifier
-    , module Network.AWS.Glue.GetClassifier
-
+  , module Network.AWS.Glue.GetClassifier
     -- ** GetJob
-    , module Network.AWS.Glue.GetJob
-
+  , module Network.AWS.Glue.GetJob
     -- ** BatchDeleteTableVersion
-    , module Network.AWS.Glue.BatchDeleteTableVersion
-
+  , module Network.AWS.Glue.BatchDeleteTableVersion
     -- ** GetDevEndpoints (Paginated)
-    , module Network.AWS.Glue.GetDevEndpoints
-
+  , module Network.AWS.Glue.GetDevEndpoints
     -- ** StartCrawlerSchedule
-    , module Network.AWS.Glue.StartCrawlerSchedule
-
+  , module Network.AWS.Glue.StartCrawlerSchedule
     -- ** GetUserDefinedFunction
-    , module Network.AWS.Glue.GetUserDefinedFunction
-
+  , module Network.AWS.Glue.GetUserDefinedFunction
     -- ** DeleteDatabase
-    , module Network.AWS.Glue.DeleteDatabase
-
+  , module Network.AWS.Glue.DeleteDatabase
     -- ** UpdateDatabase
-    , module Network.AWS.Glue.UpdateDatabase
-
+  , module Network.AWS.Glue.UpdateDatabase
     -- ** StopCrawler
-    , module Network.AWS.Glue.StopCrawler
-
+  , module Network.AWS.Glue.StopCrawler
     -- ** GetPartitions (Paginated)
-    , module Network.AWS.Glue.GetPartitions
-
+  , module Network.AWS.Glue.GetPartitions
     -- ** BatchDeletePartition
-    , module Network.AWS.Glue.BatchDeletePartition
-
+  , module Network.AWS.Glue.BatchDeletePartition
     -- ** GetCrawler
-    , module Network.AWS.Glue.GetCrawler
-
+  , module Network.AWS.Glue.GetCrawler
     -- ** BatchStopJobRun
-    , module Network.AWS.Glue.BatchStopJobRun
-
+  , module Network.AWS.Glue.BatchStopJobRun
     -- ** GetDevEndpoint
-    , module Network.AWS.Glue.GetDevEndpoint
-
+  , module Network.AWS.Glue.GetDevEndpoint
     -- ** CreateTable
-    , module Network.AWS.Glue.CreateTable
-
+  , module Network.AWS.Glue.CreateTable
     -- ** GetCrawlerMetrics (Paginated)
-    , module Network.AWS.Glue.GetCrawlerMetrics
-
+  , module Network.AWS.Glue.GetCrawlerMetrics
     -- ** GetPlan
-    , module Network.AWS.Glue.GetPlan
-
+  , module Network.AWS.Glue.GetPlan
     -- ** GetTriggers (Paginated)
-    , module Network.AWS.Glue.GetTriggers
-
+  , module Network.AWS.Glue.GetTriggers
     -- ** StartTrigger
-    , module Network.AWS.Glue.StartTrigger
-
+  , module Network.AWS.Glue.StartTrigger
     -- ** GetDataflowGraph
-    , module Network.AWS.Glue.GetDataflowGraph
-
+  , module Network.AWS.Glue.GetDataflowGraph
     -- ** GetDatabases (Paginated)
-    , module Network.AWS.Glue.GetDatabases
-
+  , module Network.AWS.Glue.GetDatabases
     -- ** GetTable
-    , module Network.AWS.Glue.GetTable
-
+  , module Network.AWS.Glue.GetTable
     -- ** CreateCrawler
-    , module Network.AWS.Glue.CreateCrawler
-
+  , module Network.AWS.Glue.CreateCrawler
     -- ** GetJobRun
-    , module Network.AWS.Glue.GetJobRun
-
+  , module Network.AWS.Glue.GetJobRun
     -- ** CreateDevEndpoint
-    , module Network.AWS.Glue.CreateDevEndpoint
-
+  , module Network.AWS.Glue.CreateDevEndpoint
     -- ** GetDatabase
-    , module Network.AWS.Glue.GetDatabase
-
+  , module Network.AWS.Glue.GetDatabase
     -- ** DeletePartition
-    , module Network.AWS.Glue.DeletePartition
-
+  , module Network.AWS.Glue.DeletePartition
     -- ** UpdatePartition
-    , module Network.AWS.Glue.UpdatePartition
-
+  , module Network.AWS.Glue.UpdatePartition
     -- ** CreateScript
-    , module Network.AWS.Glue.CreateScript
-
+  , module Network.AWS.Glue.CreateScript
     -- ** GetConnections (Paginated)
-    , module Network.AWS.Glue.GetConnections
-
+  , module Network.AWS.Glue.GetConnections
     -- ** GetTrigger
-    , module Network.AWS.Glue.GetTrigger
-
+  , module Network.AWS.Glue.GetTrigger
     -- ** ImportCatalogToGlue
-    , module Network.AWS.Glue.ImportCatalogToGlue
-
+  , module Network.AWS.Glue.ImportCatalogToGlue
     -- ** DeleteClassifier
-    , module Network.AWS.Glue.DeleteClassifier
-
+  , module Network.AWS.Glue.DeleteClassifier
     -- ** UpdateClassifier
-    , module Network.AWS.Glue.UpdateClassifier
-
+  , module Network.AWS.Glue.UpdateClassifier
     -- ** StartJobRun
-    , module Network.AWS.Glue.StartJobRun
-
+  , module Network.AWS.Glue.StartJobRun
     -- ** CreatePartition
-    , module Network.AWS.Glue.CreatePartition
-
+  , module Network.AWS.Glue.CreatePartition
     -- ** StopCrawlerSchedule
-    , module Network.AWS.Glue.StopCrawlerSchedule
-
+  , module Network.AWS.Glue.StopCrawlerSchedule
     -- ** CreateDatabase
-    , module Network.AWS.Glue.CreateDatabase
-
+  , module Network.AWS.Glue.CreateDatabase
     -- ** GetTableVersions (Paginated)
-    , module Network.AWS.Glue.GetTableVersions
-
+  , module Network.AWS.Glue.GetTableVersions
     -- ** DeleteTrigger
-    , module Network.AWS.Glue.DeleteTrigger
-
+  , module Network.AWS.Glue.DeleteTrigger
     -- ** UpdateTrigger
-    , module Network.AWS.Glue.UpdateTrigger
-
+  , module Network.AWS.Glue.UpdateTrigger
     -- * Types
-
     -- ** ConnectionPropertyKey
-    , ConnectionPropertyKey (..)
-
+  , ConnectionPropertyKey(..)
     -- ** ConnectionType
-    , ConnectionType (..)
-
+  , ConnectionType(..)
     -- ** CrawlerState
-    , CrawlerState (..)
-
+  , CrawlerState(..)
     -- ** DeleteBehavior
-    , DeleteBehavior (..)
-
+  , DeleteBehavior(..)
     -- ** JobRunState
-    , JobRunState (..)
-
+  , JobRunState(..)
     -- ** Language
-    , Language (..)
-
+  , Language(..)
     -- ** LastCrawlStatus
-    , LastCrawlStatus (..)
-
+  , LastCrawlStatus(..)
     -- ** Logical
-    , Logical (..)
-
+  , Logical(..)
     -- ** LogicalOperator
-    , LogicalOperator (..)
-
+  , LogicalOperator(..)
     -- ** PrincipalType
-    , PrincipalType (..)
-
+  , PrincipalType(..)
     -- ** ResourceType
-    , ResourceType (..)
-
+  , ResourceType(..)
     -- ** ScheduleState
-    , ScheduleState (..)
-
+  , ScheduleState(..)
     -- ** TriggerState
-    , TriggerState (..)
-
+  , TriggerState(..)
     -- ** TriggerType
-    , TriggerType (..)
-
+  , TriggerType(..)
     -- ** UpdateBehavior
-    , UpdateBehavior (..)
-
+  , UpdateBehavior(..)
     -- ** Action
-    , Action
-    , action
-    , aArguments
-    , aJobName
-    , aTimeout
-
+  , Action
+  , action
+  , aArguments
+  , aJobName
+  , aTimeout
     -- ** BatchStopJobRunError
-    , BatchStopJobRunError
-    , batchStopJobRunError
-    , bsjreJobName
-    , bsjreJobRunId
-    , bsjreErrorDetail
-
+  , BatchStopJobRunError
+  , batchStopJobRunError
+  , bsjreJobName
+  , bsjreJobRunId
+  , bsjreErrorDetail
     -- ** BatchStopJobRunSuccessfulSubmission
-    , BatchStopJobRunSuccessfulSubmission
-    , batchStopJobRunSuccessfulSubmission
-    , bsjrssJobName
-    , bsjrssJobRunId
-
+  , BatchStopJobRunSuccessfulSubmission
+  , batchStopJobRunSuccessfulSubmission
+  , bsjrssJobName
+  , bsjrssJobRunId
     -- ** CatalogEntry
-    , CatalogEntry
-    , catalogEntry
-    , ceDatabaseName
-    , ceTableName
-
+  , CatalogEntry
+  , catalogEntry
+  , ceDatabaseName
+  , ceTableName
     -- ** CatalogImportStatus
-    , CatalogImportStatus
-    , catalogImportStatus
-    , cisImportedBy
-    , cisImportTime
-    , cisImportCompleted
-
+  , CatalogImportStatus
+  , catalogImportStatus
+  , cisImportedBy
+  , cisImportTime
+  , cisImportCompleted
     -- ** Classifier
-    , Classifier
-    , classifier
-    , cGrokClassifier
-    , cXMLClassifier
-    , cJSONClassifier
-
+  , Classifier
+  , classifier
+  , cGrokClassifier
+  , cXMLClassifier
+  , cJSONClassifier
     -- ** CodeGenEdge
-    , CodeGenEdge
-    , codeGenEdge
-    , cgeTargetParameter
-    , cgeSource
-    , cgeTarget
-
+  , CodeGenEdge
+  , codeGenEdge
+  , cgeTargetParameter
+  , cgeSource
+  , cgeTarget
     -- ** CodeGenNode
-    , CodeGenNode
-    , codeGenNode
-    , cgnLineNumber
-    , cgnId
-    , cgnNodeType
-    , cgnArgs
-
+  , CodeGenNode
+  , codeGenNode
+  , cgnLineNumber
+  , cgnId
+  , cgnNodeType
+  , cgnArgs
     -- ** CodeGenNodeArg
-    , CodeGenNodeArg
-    , codeGenNodeArg
-    , cgnaParam
-    , cgnaName
-    , cgnaValue
-
+  , CodeGenNodeArg
+  , codeGenNodeArg
+  , cgnaParam
+  , cgnaName
+  , cgnaValue
     -- ** Column
-    , Column
-    , column
-    , cType
-    , cComment
-    , cName
-
+  , Column
+  , column
+  , cType
+  , cComment
+  , cName
     -- ** Condition
-    , Condition
-    , condition
-    , cState
-    , cJobName
-    , cLogicalOperator
-
+  , Condition
+  , condition
+  , cState
+  , cJobName
+  , cLogicalOperator
     -- ** Connection
-    , Connection
-    , connection
-    , conCreationTime
-    , conLastUpdatedBy
-    , conConnectionProperties
-    , conLastUpdatedTime
-    , conMatchCriteria
-    , conPhysicalConnectionRequirements
-    , conName
-    , conDescription
-    , conConnectionType
-
+  , Connection
+  , connection
+  , conCreationTime
+  , conLastUpdatedBy
+  , conConnectionProperties
+  , conLastUpdatedTime
+  , conMatchCriteria
+  , conPhysicalConnectionRequirements
+  , conName
+  , conDescription
+  , conConnectionType
     -- ** ConnectionInput
-    , ConnectionInput
-    , connectionInput
-    , ciMatchCriteria
-    , ciPhysicalConnectionRequirements
-    , ciDescription
-    , ciName
-    , ciConnectionType
-    , ciConnectionProperties
-
+  , ConnectionInput
+  , connectionInput
+  , ciMatchCriteria
+  , ciPhysicalConnectionRequirements
+  , ciDescription
+  , ciName
+  , ciConnectionType
+  , ciConnectionProperties
     -- ** ConnectionsList
-    , ConnectionsList
-    , connectionsList
-    , clConnections
-
+  , ConnectionsList
+  , connectionsList
+  , clConnections
     -- ** Crawler
-    , Crawler
-    , crawler
-    , craCreationTime
-    , craState
-    , craSchemaChangePolicy
-    , craLastUpdated
-    , craSchedule
-    , craLastCrawl
-    , craCrawlElapsedTime
-    , craClassifiers
-    , craRole
-    , craName
-    , craTargets
-    , craVersion
-    , craDatabaseName
-    , craConfiguration
-    , craTablePrefix
-    , craDescription
-
+  , Crawler
+  , crawler
+  , craCreationTime
+  , craState
+  , craSchemaChangePolicy
+  , craLastUpdated
+  , craSchedule
+  , craLastCrawl
+  , craCrawlElapsedTime
+  , craClassifiers
+  , craRole
+  , craName
+  , craTargets
+  , craVersion
+  , craDatabaseName
+  , craConfiguration
+  , craTablePrefix
+  , craDescription
     -- ** CrawlerMetrics
-    , CrawlerMetrics
-    , crawlerMetrics
-    , cmLastRuntimeSeconds
-    , cmTablesCreated
-    , cmStillEstimating
-    , cmMedianRuntimeSeconds
-    , cmTimeLeftSeconds
-    , cmTablesDeleted
-    , cmTablesUpdated
-    , cmCrawlerName
-
+  , CrawlerMetrics
+  , crawlerMetrics
+  , cmLastRuntimeSeconds
+  , cmTablesCreated
+  , cmStillEstimating
+  , cmMedianRuntimeSeconds
+  , cmTimeLeftSeconds
+  , cmTablesDeleted
+  , cmTablesUpdated
+  , cmCrawlerName
     -- ** CrawlerTargets
-    , CrawlerTargets
-    , crawlerTargets
-    , ctS3Targets
-    , ctJdbcTargets
-
+  , CrawlerTargets
+  , crawlerTargets
+  , ctS3Targets
+  , ctJdbcTargets
     -- ** CreateGrokClassifierRequest
-    , CreateGrokClassifierRequest
-    , createGrokClassifierRequest
-    , cgcrCustomPatterns
-    , cgcrClassification
-    , cgcrName
-    , cgcrGrokPattern
-
+  , CreateGrokClassifierRequest
+  , createGrokClassifierRequest
+  , cgcrCustomPatterns
+  , cgcrClassification
+  , cgcrName
+  , cgcrGrokPattern
     -- ** CreateJSONClassifierRequest
-    , CreateJSONClassifierRequest
-    , createJSONClassifierRequest
-    , cjcrName
-    , cjcrJSONPath
-
+  , CreateJSONClassifierRequest
+  , createJSONClassifierRequest
+  , cjcrName
+  , cjcrJSONPath
     -- ** CreateXMLClassifierRequest
-    , CreateXMLClassifierRequest
-    , createXMLClassifierRequest
-    , cxcrRowTag
-    , cxcrClassification
-    , cxcrName
-
+  , CreateXMLClassifierRequest
+  , createXMLClassifierRequest
+  , cxcrRowTag
+  , cxcrClassification
+  , cxcrName
     -- ** Database
-    , Database
-    , database
-    , dLocationURI
-    , dParameters
-    , dDescription
-    , dCreateTime
-    , dName
-
+  , Database
+  , database
+  , dLocationURI
+  , dParameters
+  , dDescription
+  , dCreateTime
+  , dName
     -- ** DatabaseInput
-    , DatabaseInput
-    , databaseInput
-    , diLocationURI
-    , diParameters
-    , diDescription
-    , diName
-
+  , DatabaseInput
+  , databaseInput
+  , diLocationURI
+  , diParameters
+  , diDescription
+  , diName
     -- ** DevEndpoint
-    , DevEndpoint
-    , devEndpoint
-    , deStatus
-    , deFailureReason
-    , deEndpointName
-    , deExtraPythonLibsS3Path
-    , deLastUpdateStatus
-    , deSecurityGroupIds
-    , deLastModifiedTimestamp
-    , deVPCId
-    , dePrivateAddress
-    , dePublicKey
-    , deSubnetId
-    , deNumberOfNodes
-    , dePublicAddress
-    , deAvailabilityZone
-    , deZeppelinRemoteSparkInterpreterPort
-    , deExtraJARsS3Path
-    , deCreatedTimestamp
-    , deYarnEndpointAddress
-    , deRoleARN
-
+  , DevEndpoint
+  , devEndpoint
+  , deStatus
+  , deFailureReason
+  , deEndpointName
+  , deExtraPythonLibsS3Path
+  , deLastUpdateStatus
+  , deSecurityGroupIds
+  , deLastModifiedTimestamp
+  , deVPCId
+  , dePrivateAddress
+  , dePublicKey
+  , deSubnetId
+  , deNumberOfNodes
+  , dePublicAddress
+  , deAvailabilityZone
+  , deZeppelinRemoteSparkInterpreterPort
+  , deExtraJARsS3Path
+  , deCreatedTimestamp
+  , deYarnEndpointAddress
+  , deRoleARN
     -- ** DevEndpointCustomLibraries
-    , DevEndpointCustomLibraries
-    , devEndpointCustomLibraries
-    , declExtraPythonLibsS3Path
-    , declExtraJARsS3Path
-
+  , DevEndpointCustomLibraries
+  , devEndpointCustomLibraries
+  , declExtraPythonLibsS3Path
+  , declExtraJARsS3Path
     -- ** ErrorDetail
-    , ErrorDetail
-    , errorDetail
-    , edErrorCode
-    , edErrorMessage
-
+  , ErrorDetail
+  , errorDetail
+  , edErrorCode
+  , edErrorMessage
     -- ** ExecutionProperty
-    , ExecutionProperty
-    , executionProperty
-    , epMaxConcurrentRuns
-
+  , ExecutionProperty
+  , executionProperty
+  , epMaxConcurrentRuns
     -- ** GetConnectionsFilter
-    , GetConnectionsFilter
-    , getConnectionsFilter
-    , gcfMatchCriteria
-    , gcfConnectionType
-
+  , GetConnectionsFilter
+  , getConnectionsFilter
+  , gcfMatchCriteria
+  , gcfConnectionType
     -- ** GrokClassifier
-    , GrokClassifier
-    , grokClassifier
-    , gcCreationTime
-    , gcLastUpdated
-    , gcVersion
-    , gcCustomPatterns
-    , gcName
-    , gcClassification
-    , gcGrokPattern
-
+  , GrokClassifier
+  , grokClassifier
+  , gcCreationTime
+  , gcLastUpdated
+  , gcVersion
+  , gcCustomPatterns
+  , gcName
+  , gcClassification
+  , gcGrokPattern
     -- ** JSONClassifier
-    , JSONClassifier
-    , jsonClassifier
-    , jcCreationTime
-    , jcLastUpdated
-    , jcVersion
-    , jcName
-    , jcJSONPath
-
+  , JSONClassifier
+  , jsonClassifier
+  , jcCreationTime
+  , jcLastUpdated
+  , jcVersion
+  , jcName
+  , jcJSONPath
     -- ** JdbcTarget
-    , JdbcTarget
-    , jdbcTarget
-    , jtPath
-    , jtConnectionName
-    , jtExclusions
-
+  , JdbcTarget
+  , jdbcTarget
+  , jtPath
+  , jtConnectionName
+  , jtExclusions
     -- ** Job
-    , Job
-    , job
-    , jCommand
-    , jLastModifiedOn
-    , jConnections
-    , jRole
-    , jName
-    , jLogURI
-    , jMaxRetries
-    , jExecutionProperty
-    , jAllocatedCapacity
-    , jTimeout
-    , jDefaultArguments
-    , jDescription
-    , jCreatedOn
-
+  , Job
+  , job
+  , jCommand
+  , jLastModifiedOn
+  , jConnections
+  , jRole
+  , jName
+  , jLogURI
+  , jMaxRetries
+  , jExecutionProperty
+  , jAllocatedCapacity
+  , jTimeout
+  , jDefaultArguments
+  , jDescription
+  , jCreatedOn
     -- ** JobBookmarkEntry
-    , JobBookmarkEntry
-    , jobBookmarkEntry
-    , jbeJobName
-    , jbeRun
-    , jbeVersion
-    , jbeAttempt
-    , jbeJobBookmark
-
+  , JobBookmarkEntry
+  , jobBookmarkEntry
+  , jbeJobName
+  , jbeRun
+  , jbeVersion
+  , jbeAttempt
+  , jbeJobBookmark
     -- ** JobCommand
-    , JobCommand
-    , jobCommand
-    , jobScriptLocation
-    , jobName
-
+  , JobCommand
+  , jobCommand
+  , jobScriptLocation
+  , jobName
     -- ** JobRun
-    , JobRun
-    , jobRun
-    , jrCompletedOn
-    , jrTriggerName
-    , jrLastModifiedOn
-    , jrArguments
-    , jrJobName
-    , jrStartedOn
-    , jrJobRunState
-    , jrExecutionTime
-    , jrPredecessorRuns
-    , jrPreviousRunId
-    , jrId
-    , jrAttempt
-    , jrAllocatedCapacity
-    , jrTimeout
-    , jrErrorMessage
-
+  , JobRun
+  , jobRun
+  , jrCompletedOn
+  , jrTriggerName
+  , jrLastModifiedOn
+  , jrArguments
+  , jrJobName
+  , jrStartedOn
+  , jrJobRunState
+  , jrExecutionTime
+  , jrPredecessorRuns
+  , jrPreviousRunId
+  , jrId
+  , jrAttempt
+  , jrAllocatedCapacity
+  , jrTimeout
+  , jrErrorMessage
     -- ** JobUpdate
-    , JobUpdate
-    , jobUpdate
-    , juCommand
-    , juConnections
-    , juRole
-    , juLogURI
-    , juMaxRetries
-    , juExecutionProperty
-    , juAllocatedCapacity
-    , juTimeout
-    , juDefaultArguments
-    , juDescription
-
+  , JobUpdate
+  , jobUpdate
+  , juCommand
+  , juConnections
+  , juRole
+  , juLogURI
+  , juMaxRetries
+  , juExecutionProperty
+  , juAllocatedCapacity
+  , juTimeout
+  , juDefaultArguments
+  , juDescription
     -- ** LastCrawlInfo
-    , LastCrawlInfo
-    , lastCrawlInfo
-    , lciStatus
-    , lciStartTime
-    , lciLogStream
-    , lciLogGroup
-    , lciMessagePrefix
-    , lciErrorMessage
-
+  , LastCrawlInfo
+  , lastCrawlInfo
+  , lciStatus
+  , lciStartTime
+  , lciLogStream
+  , lciLogGroup
+  , lciMessagePrefix
+  , lciErrorMessage
     -- ** Location
-    , Location
-    , location
-    , lJdbc
-    , lS3
-
+  , Location
+  , location
+  , lJdbc
+  , lS3
     -- ** MappingEntry
-    , MappingEntry
-    , mappingEntry
-    , meTargetTable
-    , meSourceType
-    , meSourceTable
-    , meTargetType
-    , meTargetPath
-    , meSourcePath
-
+  , MappingEntry
+  , mappingEntry
+  , meTargetTable
+  , meSourceType
+  , meSourceTable
+  , meTargetType
+  , meTargetPath
+  , meSourcePath
     -- ** Order
-    , Order
-    , order
-    , oColumn
-    , oSortOrder
-
+  , Order
+  , order
+  , oColumn
+  , oSortOrder
     -- ** Partition
-    , Partition
-    , partition
-    , pCreationTime
-    , pValues
-    , pLastAnalyzedTime
-    , pStorageDescriptor
-    , pDatabaseName
-    , pParameters
-    , pLastAccessTime
-    , pTableName
-
+  , Partition
+  , partition
+  , pCreationTime
+  , pValues
+  , pLastAnalyzedTime
+  , pStorageDescriptor
+  , pDatabaseName
+  , pParameters
+  , pLastAccessTime
+  , pTableName
     -- ** PartitionError
-    , PartitionError
-    , partitionError
-    , pePartitionValues
-    , peErrorDetail
-
+  , PartitionError
+  , partitionError
+  , pePartitionValues
+  , peErrorDetail
     -- ** PartitionInput
-    , PartitionInput
-    , partitionInput
-    , piValues
-    , piLastAnalyzedTime
-    , piStorageDescriptor
-    , piParameters
-    , piLastAccessTime
-
+  , PartitionInput
+  , partitionInput
+  , piValues
+  , piLastAnalyzedTime
+  , piStorageDescriptor
+  , piParameters
+  , piLastAccessTime
     -- ** PartitionValueList
-    , PartitionValueList
-    , partitionValueList
-    , pvlValues
-
+  , PartitionValueList
+  , partitionValueList
+  , pvlValues
     -- ** PhysicalConnectionRequirements
-    , PhysicalConnectionRequirements
-    , physicalConnectionRequirements
-    , pcrSecurityGroupIdList
-    , pcrSubnetId
-    , pcrAvailabilityZone
-
+  , PhysicalConnectionRequirements
+  , physicalConnectionRequirements
+  , pcrSecurityGroupIdList
+  , pcrSubnetId
+  , pcrAvailabilityZone
     -- ** Predecessor
-    , Predecessor
-    , predecessor
-    , pJobName
-    , pRunId
-
+  , Predecessor
+  , predecessor
+  , pJobName
+  , pRunId
     -- ** Predicate
-    , Predicate
-    , predicate
-    , pLogical
-    , pConditions
-
+  , Predicate
+  , predicate
+  , pLogical
+  , pConditions
     -- ** ResourceURI
-    , ResourceURI
-    , resourceURI
-    , ruResourceType
-    , ruURI
-
+  , ResourceURI
+  , resourceURI
+  , ruResourceType
+  , ruURI
     -- ** S3Target
-    , S3Target
-    , s3Target
-    , stPath
-    , stExclusions
-
+  , S3Target
+  , s3Target
+  , stPath
+  , stExclusions
     -- ** Schedule
-    , Schedule
-    , schedule
-    , sState
-    , sScheduleExpression
-
+  , Schedule
+  , schedule
+  , sState
+  , sScheduleExpression
     -- ** SchemaChangePolicy
-    , SchemaChangePolicy
-    , schemaChangePolicy
-    , scpDeleteBehavior
-    , scpUpdateBehavior
-
+  , SchemaChangePolicy
+  , schemaChangePolicy
+  , scpDeleteBehavior
+  , scpUpdateBehavior
     -- ** Segment
-    , Segment
-    , segment
-    , sSegmentNumber
-    , sTotalSegments
-
+  , Segment
+  , segment
+  , sSegmentNumber
+  , sTotalSegments
     -- ** SerDeInfo
-    , SerDeInfo
-    , serDeInfo
-    , sdiSerializationLibrary
-    , sdiName
-    , sdiParameters
-
+  , SerDeInfo
+  , serDeInfo
+  , sdiSerializationLibrary
+  , sdiName
+  , sdiParameters
     -- ** SkewedInfo
-    , SkewedInfo
-    , skewedInfo
-    , siSkewedColumnValueLocationMaps
-    , siSkewedColumnValues
-    , siSkewedColumnNames
-
+  , SkewedInfo
+  , skewedInfo
+  , siSkewedColumnValueLocationMaps
+  , siSkewedColumnValues
+  , siSkewedColumnNames
     -- ** StorageDescriptor
-    , StorageDescriptor
-    , storageDescriptor
-    , sdSortColumns
-    , sdCompressed
-    , sdLocation
-    , sdBucketColumns
-    , sdSerdeInfo
-    , sdOutputFormat
-    , sdNumberOfBuckets
-    , sdStoredAsSubDirectories
-    , sdParameters
-    , sdInputFormat
-    , sdSkewedInfo
-    , sdColumns
-
+  , StorageDescriptor
+  , storageDescriptor
+  , sdSortColumns
+  , sdCompressed
+  , sdLocation
+  , sdBucketColumns
+  , sdSerdeInfo
+  , sdOutputFormat
+  , sdNumberOfBuckets
+  , sdStoredAsSubDirectories
+  , sdParameters
+  , sdInputFormat
+  , sdSkewedInfo
+  , sdColumns
     -- ** Table
-    , Table
-    , table
-    , tRetention
-    , tCreatedBy
-    , tTableType
-    , tOwner
-    , tViewOriginalText
-    , tUpdateTime
-    , tViewExpandedText
-    , tLastAnalyzedTime
-    , tStorageDescriptor
-    , tDatabaseName
-    , tParameters
-    , tLastAccessTime
-    , tDescription
-    , tPartitionKeys
-    , tCreateTime
-    , tName
-
+  , Table
+  , table
+  , tRetention
+  , tCreatedBy
+  , tTableType
+  , tOwner
+  , tViewOriginalText
+  , tUpdateTime
+  , tViewExpandedText
+  , tLastAnalyzedTime
+  , tStorageDescriptor
+  , tDatabaseName
+  , tParameters
+  , tLastAccessTime
+  , tDescription
+  , tPartitionKeys
+  , tCreateTime
+  , tName
     -- ** TableError
-    , TableError
-    , tableError
-    , teTableName
-    , teErrorDetail
-
+  , TableError
+  , tableError
+  , teTableName
+  , teErrorDetail
     -- ** TableInput
-    , TableInput
-    , tableInput
-    , tiRetention
-    , tiTableType
-    , tiOwner
-    , tiViewOriginalText
-    , tiViewExpandedText
-    , tiLastAnalyzedTime
-    , tiStorageDescriptor
-    , tiParameters
-    , tiLastAccessTime
-    , tiDescription
-    , tiPartitionKeys
-    , tiName
-
+  , TableInput
+  , tableInput
+  , tiRetention
+  , tiTableType
+  , tiOwner
+  , tiViewOriginalText
+  , tiViewExpandedText
+  , tiLastAnalyzedTime
+  , tiStorageDescriptor
+  , tiParameters
+  , tiLastAccessTime
+  , tiDescription
+  , tiPartitionKeys
+  , tiName
     -- ** TableVersion
-    , TableVersion
-    , tableVersion
-    , tvVersionId
-    , tvTable
-
+  , TableVersion
+  , tableVersion
+  , tvVersionId
+  , tvTable
     -- ** TableVersionError
-    , TableVersionError
-    , tableVersionError
-    , tveVersionId
-    , tveTableName
-    , tveErrorDetail
-
+  , TableVersionError
+  , tableVersionError
+  , tveVersionId
+  , tveTableName
+  , tveErrorDetail
     -- ** Trigger
-    , Trigger
-    , trigger
-    , triState
-    , triActions
-    , triSchedule
-    , triPredicate
-    , triName
-    , triId
-    , triType
-    , triDescription
-
+  , Trigger
+  , trigger
+  , triState
+  , triActions
+  , triSchedule
+  , triPredicate
+  , triName
+  , triId
+  , triType
+  , triDescription
     -- ** TriggerUpdate
-    , TriggerUpdate
-    , triggerUpdate
-    , tuActions
-    , tuSchedule
-    , tuPredicate
-    , tuName
-    , tuDescription
-
+  , TriggerUpdate
+  , triggerUpdate
+  , tuActions
+  , tuSchedule
+  , tuPredicate
+  , tuName
+  , tuDescription
     -- ** UpdateGrokClassifierRequest
-    , UpdateGrokClassifierRequest
-    , updateGrokClassifierRequest
-    , ugcrClassification
-    , ugcrCustomPatterns
-    , ugcrGrokPattern
-    , ugcrName
-
+  , UpdateGrokClassifierRequest
+  , updateGrokClassifierRequest
+  , ugcrClassification
+  , ugcrCustomPatterns
+  , ugcrGrokPattern
+  , ugcrName
     -- ** UpdateJSONClassifierRequest
-    , UpdateJSONClassifierRequest
-    , updateJSONClassifierRequest
-    , ujcrJSONPath
-    , ujcrName
-
+  , UpdateJSONClassifierRequest
+  , updateJSONClassifierRequest
+  , ujcrJSONPath
+  , ujcrName
     -- ** UpdateXMLClassifierRequest
-    , UpdateXMLClassifierRequest
-    , updateXMLClassifierRequest
-    , uxcrClassification
-    , uxcrRowTag
-    , uxcrName
-
+  , UpdateXMLClassifierRequest
+  , updateXMLClassifierRequest
+  , uxcrClassification
+  , uxcrRowTag
+  , uxcrName
     -- ** UserDefinedFunction
-    , UserDefinedFunction
-    , userDefinedFunction
-    , udfOwnerName
-    , udfResourceURIs
-    , udfFunctionName
-    , udfOwnerType
-    , udfCreateTime
-    , udfClassName
-
+  , UserDefinedFunction
+  , userDefinedFunction
+  , udfOwnerName
+  , udfResourceURIs
+  , udfFunctionName
+  , udfOwnerType
+  , udfCreateTime
+  , udfClassName
     -- ** UserDefinedFunctionInput
-    , UserDefinedFunctionInput
-    , userDefinedFunctionInput
-    , udfiOwnerName
-    , udfiResourceURIs
-    , udfiFunctionName
-    , udfiOwnerType
-    , udfiClassName
-
+  , UserDefinedFunctionInput
+  , userDefinedFunctionInput
+  , udfiOwnerName
+  , udfiResourceURIs
+  , udfiFunctionName
+  , udfiOwnerType
+  , udfiClassName
     -- ** XMLClassifier
-    , XMLClassifier
-    , xmlClassifier
-    , xcCreationTime
-    , xcLastUpdated
-    , xcVersion
-    , xcRowTag
-    , xcName
-    , xcClassification
-    ) where
+  , XMLClassifier
+  , xmlClassifier
+  , xcCreationTime
+  , xcLastUpdated
+  , xcVersion
+  , xcRowTag
+  , xcName
+  , xcClassification
+  ) where
 
 import Network.AWS.Glue.BatchCreatePartition
 import Network.AWS.Glue.BatchDeleteConnection
@@ -1006,9 +821,9 @@ import Network.AWS.Glue.GetPartition
 import Network.AWS.Glue.GetPartitions
 import Network.AWS.Glue.GetPlan
 import Network.AWS.Glue.GetTable
-import Network.AWS.Glue.GetTables
 import Network.AWS.Glue.GetTableVersion
 import Network.AWS.Glue.GetTableVersions
+import Network.AWS.Glue.GetTables
 import Network.AWS.Glue.GetTrigger
 import Network.AWS.Glue.GetTriggers
 import Network.AWS.Glue.GetUserDefinedFunction
@@ -1035,14 +850,12 @@ import Network.AWS.Glue.UpdateTable
 import Network.AWS.Glue.UpdateTrigger
 import Network.AWS.Glue.UpdateUserDefinedFunction
 import Network.AWS.Glue.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'Glue'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -1059,7 +872,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

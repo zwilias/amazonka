@@ -1,10 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE TypeFamilies      #-}
-
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Glacier.Waiters
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -35,7 +33,6 @@ vaultNotExists =
         ]
     }
 
-
 -- | Polls 'Network.AWS.Glacier.DescribeVault' every 3 seconds until a successful state is reached. An error is returned after 15 failed checks.
 vaultExists :: Wait DescribeVault
 vaultExists =
@@ -48,4 +45,3 @@ vaultExists =
         , matchError "ResourceNotFoundException" AcceptRetry
         ]
     }
-

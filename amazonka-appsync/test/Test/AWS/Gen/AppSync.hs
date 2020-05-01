@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.AppSync
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -110,7 +108,6 @@ import Test.Tasty
 --             getType
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseUpdateDataSource $
 --             updateDataSourceResponse
@@ -195,330 +192,303 @@ import Test.Tasty
 --
 --           ]
 --     ]
-
 -- Requests
-
 requestUpdateDataSource :: UpdateDataSource -> TestTree
-requestUpdateDataSource = req
-    "UpdateDataSource"
-    "fixture/UpdateDataSource.yaml"
+requestUpdateDataSource = req "UpdateDataSource" "fixture/UpdateDataSource.yaml"
 
 requestDeleteDataSource :: DeleteDataSource -> TestTree
-requestDeleteDataSource = req
-    "DeleteDataSource"
-    "fixture/DeleteDataSource.yaml"
+requestDeleteDataSource = req "DeleteDataSource" "fixture/DeleteDataSource.yaml"
 
 requestCreateType :: CreateType -> TestTree
-requestCreateType = req
-    "CreateType"
-    "fixture/CreateType.yaml"
+requestCreateType = req "CreateType" "fixture/CreateType.yaml"
 
 requestGetGraphqlAPI :: GetGraphqlAPI -> TestTree
-requestGetGraphqlAPI = req
-    "GetGraphqlAPI"
-    "fixture/GetGraphqlAPI.yaml"
+requestGetGraphqlAPI = req "GetGraphqlAPI" "fixture/GetGraphqlAPI.yaml"
 
 requestCreateGraphqlAPI :: CreateGraphqlAPI -> TestTree
-requestCreateGraphqlAPI = req
-    "CreateGraphqlAPI"
-    "fixture/CreateGraphqlAPI.yaml"
+requestCreateGraphqlAPI = req "CreateGraphqlAPI" "fixture/CreateGraphqlAPI.yaml"
 
 requestStartSchemaCreation :: StartSchemaCreation -> TestTree
-requestStartSchemaCreation = req
-    "StartSchemaCreation"
-    "fixture/StartSchemaCreation.yaml"
+requestStartSchemaCreation =
+  req "StartSchemaCreation" "fixture/StartSchemaCreation.yaml"
 
 requestDeleteGraphqlAPI :: DeleteGraphqlAPI -> TestTree
-requestDeleteGraphqlAPI = req
-    "DeleteGraphqlAPI"
-    "fixture/DeleteGraphqlAPI.yaml"
+requestDeleteGraphqlAPI = req "DeleteGraphqlAPI" "fixture/DeleteGraphqlAPI.yaml"
 
 requestUpdateGraphqlAPI :: UpdateGraphqlAPI -> TestTree
-requestUpdateGraphqlAPI = req
-    "UpdateGraphqlAPI"
-    "fixture/UpdateGraphqlAPI.yaml"
+requestUpdateGraphqlAPI = req "UpdateGraphqlAPI" "fixture/UpdateGraphqlAPI.yaml"
 
 requestGetIntrospectionSchema :: GetIntrospectionSchema -> TestTree
-requestGetIntrospectionSchema = req
-    "GetIntrospectionSchema"
-    "fixture/GetIntrospectionSchema.yaml"
+requestGetIntrospectionSchema =
+  req "GetIntrospectionSchema" "fixture/GetIntrospectionSchema.yaml"
 
 requestGetDataSource :: GetDataSource -> TestTree
-requestGetDataSource = req
-    "GetDataSource"
-    "fixture/GetDataSource.yaml"
+requestGetDataSource = req "GetDataSource" "fixture/GetDataSource.yaml"
 
 requestDeleteAPIKey :: DeleteAPIKey -> TestTree
-requestDeleteAPIKey = req
-    "DeleteAPIKey"
-    "fixture/DeleteAPIKey.yaml"
+requestDeleteAPIKey = req "DeleteAPIKey" "fixture/DeleteAPIKey.yaml"
 
 requestUpdateAPIKey :: UpdateAPIKey -> TestTree
-requestUpdateAPIKey = req
-    "UpdateAPIKey"
-    "fixture/UpdateAPIKey.yaml"
+requestUpdateAPIKey = req "UpdateAPIKey" "fixture/UpdateAPIKey.yaml"
 
 requestUpdateType :: UpdateType -> TestTree
-requestUpdateType = req
-    "UpdateType"
-    "fixture/UpdateType.yaml"
+requestUpdateType = req "UpdateType" "fixture/UpdateType.yaml"
 
 requestDeleteType :: DeleteType -> TestTree
-requestDeleteType = req
-    "DeleteType"
-    "fixture/DeleteType.yaml"
+requestDeleteType = req "DeleteType" "fixture/DeleteType.yaml"
 
 requestCreateDataSource :: CreateDataSource -> TestTree
-requestCreateDataSource = req
-    "CreateDataSource"
-    "fixture/CreateDataSource.yaml"
+requestCreateDataSource = req "CreateDataSource" "fixture/CreateDataSource.yaml"
 
 requestListTypes :: ListTypes -> TestTree
-requestListTypes = req
-    "ListTypes"
-    "fixture/ListTypes.yaml"
+requestListTypes = req "ListTypes" "fixture/ListTypes.yaml"
 
 requestListDataSources :: ListDataSources -> TestTree
-requestListDataSources = req
-    "ListDataSources"
-    "fixture/ListDataSources.yaml"
+requestListDataSources = req "ListDataSources" "fixture/ListDataSources.yaml"
 
 requestUpdateResolver :: UpdateResolver -> TestTree
-requestUpdateResolver = req
-    "UpdateResolver"
-    "fixture/UpdateResolver.yaml"
+requestUpdateResolver = req "UpdateResolver" "fixture/UpdateResolver.yaml"
 
 requestDeleteResolver :: DeleteResolver -> TestTree
-requestDeleteResolver = req
-    "DeleteResolver"
-    "fixture/DeleteResolver.yaml"
+requestDeleteResolver = req "DeleteResolver" "fixture/DeleteResolver.yaml"
 
 requestListResolvers :: ListResolvers -> TestTree
-requestListResolvers = req
-    "ListResolvers"
-    "fixture/ListResolvers.yaml"
+requestListResolvers = req "ListResolvers" "fixture/ListResolvers.yaml"
 
 requestCreateResolver :: CreateResolver -> TestTree
-requestCreateResolver = req
-    "CreateResolver"
-    "fixture/CreateResolver.yaml"
+requestCreateResolver = req "CreateResolver" "fixture/CreateResolver.yaml"
 
 requestGetSchemaCreationStatus :: GetSchemaCreationStatus -> TestTree
-requestGetSchemaCreationStatus = req
-    "GetSchemaCreationStatus"
-    "fixture/GetSchemaCreationStatus.yaml"
+requestGetSchemaCreationStatus =
+  req "GetSchemaCreationStatus" "fixture/GetSchemaCreationStatus.yaml"
 
 requestListGraphqlAPIs :: ListGraphqlAPIs -> TestTree
-requestListGraphqlAPIs = req
-    "ListGraphqlAPIs"
-    "fixture/ListGraphqlAPIs.yaml"
+requestListGraphqlAPIs = req "ListGraphqlAPIs" "fixture/ListGraphqlAPIs.yaml"
 
 requestGetResolver :: GetResolver -> TestTree
-requestGetResolver = req
-    "GetResolver"
-    "fixture/GetResolver.yaml"
+requestGetResolver = req "GetResolver" "fixture/GetResolver.yaml"
 
 requestCreateAPIKey :: CreateAPIKey -> TestTree
-requestCreateAPIKey = req
-    "CreateAPIKey"
-    "fixture/CreateAPIKey.yaml"
+requestCreateAPIKey = req "CreateAPIKey" "fixture/CreateAPIKey.yaml"
 
 requestListAPIKeys :: ListAPIKeys -> TestTree
-requestListAPIKeys = req
-    "ListAPIKeys"
-    "fixture/ListAPIKeys.yaml"
+requestListAPIKeys = req "ListAPIKeys" "fixture/ListAPIKeys.yaml"
 
 requestGetType :: GetType -> TestTree
-requestGetType = req
-    "GetType"
-    "fixture/GetType.yaml"
+requestGetType = req "GetType" "fixture/GetType.yaml"
 
 -- Responses
-
 responseUpdateDataSource :: UpdateDataSourceResponse -> TestTree
-responseUpdateDataSource = res
+responseUpdateDataSource =
+  res
     "UpdateDataSourceResponse"
     "fixture/UpdateDataSourceResponse.proto"
     appSync
     (Proxy :: Proxy UpdateDataSource)
 
 responseDeleteDataSource :: DeleteDataSourceResponse -> TestTree
-responseDeleteDataSource = res
+responseDeleteDataSource =
+  res
     "DeleteDataSourceResponse"
     "fixture/DeleteDataSourceResponse.proto"
     appSync
     (Proxy :: Proxy DeleteDataSource)
 
 responseCreateType :: CreateTypeResponse -> TestTree
-responseCreateType = res
+responseCreateType =
+  res
     "CreateTypeResponse"
     "fixture/CreateTypeResponse.proto"
     appSync
     (Proxy :: Proxy CreateType)
 
 responseGetGraphqlAPI :: GetGraphqlAPIResponse -> TestTree
-responseGetGraphqlAPI = res
+responseGetGraphqlAPI =
+  res
     "GetGraphqlAPIResponse"
     "fixture/GetGraphqlAPIResponse.proto"
     appSync
     (Proxy :: Proxy GetGraphqlAPI)
 
 responseCreateGraphqlAPI :: CreateGraphqlAPIResponse -> TestTree
-responseCreateGraphqlAPI = res
+responseCreateGraphqlAPI =
+  res
     "CreateGraphqlAPIResponse"
     "fixture/CreateGraphqlAPIResponse.proto"
     appSync
     (Proxy :: Proxy CreateGraphqlAPI)
 
 responseStartSchemaCreation :: StartSchemaCreationResponse -> TestTree
-responseStartSchemaCreation = res
+responseStartSchemaCreation =
+  res
     "StartSchemaCreationResponse"
     "fixture/StartSchemaCreationResponse.proto"
     appSync
     (Proxy :: Proxy StartSchemaCreation)
 
 responseDeleteGraphqlAPI :: DeleteGraphqlAPIResponse -> TestTree
-responseDeleteGraphqlAPI = res
+responseDeleteGraphqlAPI =
+  res
     "DeleteGraphqlAPIResponse"
     "fixture/DeleteGraphqlAPIResponse.proto"
     appSync
     (Proxy :: Proxy DeleteGraphqlAPI)
 
 responseUpdateGraphqlAPI :: UpdateGraphqlAPIResponse -> TestTree
-responseUpdateGraphqlAPI = res
+responseUpdateGraphqlAPI =
+  res
     "UpdateGraphqlAPIResponse"
     "fixture/UpdateGraphqlAPIResponse.proto"
     appSync
     (Proxy :: Proxy UpdateGraphqlAPI)
 
 responseGetIntrospectionSchema :: GetIntrospectionSchemaResponse -> TestTree
-responseGetIntrospectionSchema = res
+responseGetIntrospectionSchema =
+  res
     "GetIntrospectionSchemaResponse"
     "fixture/GetIntrospectionSchemaResponse.proto"
     appSync
     (Proxy :: Proxy GetIntrospectionSchema)
 
 responseGetDataSource :: GetDataSourceResponse -> TestTree
-responseGetDataSource = res
+responseGetDataSource =
+  res
     "GetDataSourceResponse"
     "fixture/GetDataSourceResponse.proto"
     appSync
     (Proxy :: Proxy GetDataSource)
 
 responseDeleteAPIKey :: DeleteAPIKeyResponse -> TestTree
-responseDeleteAPIKey = res
+responseDeleteAPIKey =
+  res
     "DeleteAPIKeyResponse"
     "fixture/DeleteAPIKeyResponse.proto"
     appSync
     (Proxy :: Proxy DeleteAPIKey)
 
 responseUpdateAPIKey :: UpdateAPIKeyResponse -> TestTree
-responseUpdateAPIKey = res
+responseUpdateAPIKey =
+  res
     "UpdateAPIKeyResponse"
     "fixture/UpdateAPIKeyResponse.proto"
     appSync
     (Proxy :: Proxy UpdateAPIKey)
 
 responseUpdateType :: UpdateTypeResponse -> TestTree
-responseUpdateType = res
+responseUpdateType =
+  res
     "UpdateTypeResponse"
     "fixture/UpdateTypeResponse.proto"
     appSync
     (Proxy :: Proxy UpdateType)
 
 responseDeleteType :: DeleteTypeResponse -> TestTree
-responseDeleteType = res
+responseDeleteType =
+  res
     "DeleteTypeResponse"
     "fixture/DeleteTypeResponse.proto"
     appSync
     (Proxy :: Proxy DeleteType)
 
 responseCreateDataSource :: CreateDataSourceResponse -> TestTree
-responseCreateDataSource = res
+responseCreateDataSource =
+  res
     "CreateDataSourceResponse"
     "fixture/CreateDataSourceResponse.proto"
     appSync
     (Proxy :: Proxy CreateDataSource)
 
 responseListTypes :: ListTypesResponse -> TestTree
-responseListTypes = res
+responseListTypes =
+  res
     "ListTypesResponse"
     "fixture/ListTypesResponse.proto"
     appSync
     (Proxy :: Proxy ListTypes)
 
 responseListDataSources :: ListDataSourcesResponse -> TestTree
-responseListDataSources = res
+responseListDataSources =
+  res
     "ListDataSourcesResponse"
     "fixture/ListDataSourcesResponse.proto"
     appSync
     (Proxy :: Proxy ListDataSources)
 
 responseUpdateResolver :: UpdateResolverResponse -> TestTree
-responseUpdateResolver = res
+responseUpdateResolver =
+  res
     "UpdateResolverResponse"
     "fixture/UpdateResolverResponse.proto"
     appSync
     (Proxy :: Proxy UpdateResolver)
 
 responseDeleteResolver :: DeleteResolverResponse -> TestTree
-responseDeleteResolver = res
+responseDeleteResolver =
+  res
     "DeleteResolverResponse"
     "fixture/DeleteResolverResponse.proto"
     appSync
     (Proxy :: Proxy DeleteResolver)
 
 responseListResolvers :: ListResolversResponse -> TestTree
-responseListResolvers = res
+responseListResolvers =
+  res
     "ListResolversResponse"
     "fixture/ListResolversResponse.proto"
     appSync
     (Proxy :: Proxy ListResolvers)
 
 responseCreateResolver :: CreateResolverResponse -> TestTree
-responseCreateResolver = res
+responseCreateResolver =
+  res
     "CreateResolverResponse"
     "fixture/CreateResolverResponse.proto"
     appSync
     (Proxy :: Proxy CreateResolver)
 
 responseGetSchemaCreationStatus :: GetSchemaCreationStatusResponse -> TestTree
-responseGetSchemaCreationStatus = res
+responseGetSchemaCreationStatus =
+  res
     "GetSchemaCreationStatusResponse"
     "fixture/GetSchemaCreationStatusResponse.proto"
     appSync
     (Proxy :: Proxy GetSchemaCreationStatus)
 
 responseListGraphqlAPIs :: ListGraphqlAPIsResponse -> TestTree
-responseListGraphqlAPIs = res
+responseListGraphqlAPIs =
+  res
     "ListGraphqlAPIsResponse"
     "fixture/ListGraphqlAPIsResponse.proto"
     appSync
     (Proxy :: Proxy ListGraphqlAPIs)
 
 responseGetResolver :: GetResolverResponse -> TestTree
-responseGetResolver = res
+responseGetResolver =
+  res
     "GetResolverResponse"
     "fixture/GetResolverResponse.proto"
     appSync
     (Proxy :: Proxy GetResolver)
 
 responseCreateAPIKey :: CreateAPIKeyResponse -> TestTree
-responseCreateAPIKey = res
+responseCreateAPIKey =
+  res
     "CreateAPIKeyResponse"
     "fixture/CreateAPIKeyResponse.proto"
     appSync
     (Proxy :: Proxy CreateAPIKey)
 
 responseListAPIKeys :: ListAPIKeysResponse -> TestTree
-responseListAPIKeys = res
+responseListAPIKeys =
+  res
     "ListAPIKeysResponse"
     "fixture/ListAPIKeysResponse.proto"
     appSync
     (Proxy :: Proxy ListAPIKeys)
 
 responseGetType :: GetTypeResponse -> TestTree
-responseGetType = res
+responseGetType =
+  res
     "GetTypeResponse"
     "fixture/GetTypeResponse.proto"
     appSync

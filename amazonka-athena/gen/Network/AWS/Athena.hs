@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Athena
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -17,171 +16,135 @@
 -- For code samples using the AWS SDK for Java, see <http://docs.aws.amazon.com/athena/latest/ug/code-samples.html Examples and Code Samples> in the /Amazon Athena User Guide/ .
 --
 module Network.AWS.Athena
-    (
     -- * Service Configuration
-      athena
-
+  ( athena
     -- * Errors
     -- $errors
-
     -- ** InvalidRequestException
-    , _InvalidRequestException
-
+  , _InvalidRequestException
     -- ** TooManyRequestsException
-    , _TooManyRequestsException
-
+  , _TooManyRequestsException
     -- ** InternalServerException
-    , _InternalServerException
-
+  , _InternalServerException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** GetNamedQuery
-    , module Network.AWS.Athena.GetNamedQuery
-
+  , module Network.AWS.Athena.GetNamedQuery
     -- ** CreateNamedQuery
-    , module Network.AWS.Athena.CreateNamedQuery
-
+  , module Network.AWS.Athena.CreateNamedQuery
     -- ** ListNamedQueries (Paginated)
-    , module Network.AWS.Athena.ListNamedQueries
-
+  , module Network.AWS.Athena.ListNamedQueries
     -- ** DeleteNamedQuery
-    , module Network.AWS.Athena.DeleteNamedQuery
-
+  , module Network.AWS.Athena.DeleteNamedQuery
     -- ** StartQueryExecution
-    , module Network.AWS.Athena.StartQueryExecution
-
+  , module Network.AWS.Athena.StartQueryExecution
     -- ** BatchGetNamedQuery
-    , module Network.AWS.Athena.BatchGetNamedQuery
-
+  , module Network.AWS.Athena.BatchGetNamedQuery
     -- ** GetQueryExecution
-    , module Network.AWS.Athena.GetQueryExecution
-
+  , module Network.AWS.Athena.GetQueryExecution
     -- ** BatchGetQueryExecution
-    , module Network.AWS.Athena.BatchGetQueryExecution
-
+  , module Network.AWS.Athena.BatchGetQueryExecution
     -- ** StopQueryExecution
-    , module Network.AWS.Athena.StopQueryExecution
-
+  , module Network.AWS.Athena.StopQueryExecution
     -- ** GetQueryResults (Paginated)
-    , module Network.AWS.Athena.GetQueryResults
-
+  , module Network.AWS.Athena.GetQueryResults
     -- ** ListQueryExecutions (Paginated)
-    , module Network.AWS.Athena.ListQueryExecutions
-
+  , module Network.AWS.Athena.ListQueryExecutions
     -- * Types
-
     -- ** ColumnNullable
-    , ColumnNullable (..)
-
+  , ColumnNullable(..)
     -- ** EncryptionOption
-    , EncryptionOption (..)
-
+  , EncryptionOption(..)
     -- ** QueryExecutionState
-    , QueryExecutionState (..)
-
+  , QueryExecutionState(..)
     -- ** ColumnInfo
-    , ColumnInfo
-    , columnInfo
-    , ciScale
-    , ciPrecision
-    , ciSchemaName
-    , ciCatalogName
-    , ciCaseSensitive
-    , ciLabel
-    , ciTableName
-    , ciNullable
-    , ciName
-    , ciType
-
+  , ColumnInfo
+  , columnInfo
+  , ciScale
+  , ciPrecision
+  , ciSchemaName
+  , ciCatalogName
+  , ciCaseSensitive
+  , ciLabel
+  , ciTableName
+  , ciNullable
+  , ciName
+  , ciType
     -- ** Datum
-    , Datum
-    , datum
-    , dVarCharValue
-
+  , Datum
+  , datum
+  , dVarCharValue
     -- ** EncryptionConfiguration
-    , EncryptionConfiguration
-    , encryptionConfiguration
-    , ecKMSKey
-    , ecEncryptionOption
-
+  , EncryptionConfiguration
+  , encryptionConfiguration
+  , ecKMSKey
+  , ecEncryptionOption
     -- ** NamedQuery
-    , NamedQuery
-    , namedQuery
-    , nqNamedQueryId
-    , nqDescription
-    , nqName
-    , nqDatabase
-    , nqQueryString
-
+  , NamedQuery
+  , namedQuery
+  , nqNamedQueryId
+  , nqDescription
+  , nqName
+  , nqDatabase
+  , nqQueryString
     -- ** QueryExecution
-    , QueryExecution
-    , queryExecution
-    , qeStatus
-    , qeQueryExecutionContext
-    , qeResultConfiguration
-    , qeQuery
-    , qeStatistics
-    , qeQueryExecutionId
-
+  , QueryExecution
+  , queryExecution
+  , qeStatus
+  , qeQueryExecutionContext
+  , qeResultConfiguration
+  , qeQuery
+  , qeStatistics
+  , qeQueryExecutionId
     -- ** QueryExecutionContext
-    , QueryExecutionContext
-    , queryExecutionContext
-    , qecDatabase
-
+  , QueryExecutionContext
+  , queryExecutionContext
+  , qecDatabase
     -- ** QueryExecutionStatistics
-    , QueryExecutionStatistics
-    , queryExecutionStatistics
-    , qesEngineExecutionTimeInMillis
-    , qesDataScannedInBytes
-
+  , QueryExecutionStatistics
+  , queryExecutionStatistics
+  , qesEngineExecutionTimeInMillis
+  , qesDataScannedInBytes
     -- ** QueryExecutionStatus
-    , QueryExecutionStatus
-    , queryExecutionStatus
-    , qesState
-    , qesStateChangeReason
-    , qesSubmissionDateTime
-    , qesCompletionDateTime
-
+  , QueryExecutionStatus
+  , queryExecutionStatus
+  , qesState
+  , qesStateChangeReason
+  , qesSubmissionDateTime
+  , qesCompletionDateTime
     -- ** ResultConfiguration
-    , ResultConfiguration
-    , resultConfiguration
-    , rcEncryptionConfiguration
-    , rcOutputLocation
-
+  , ResultConfiguration
+  , resultConfiguration
+  , rcEncryptionConfiguration
+  , rcOutputLocation
     -- ** ResultSet
-    , ResultSet
-    , resultSet
-    , rsRows
-    , rsResultSetMetadata
-
+  , ResultSet
+  , resultSet
+  , rsRows
+  , rsResultSetMetadata
     -- ** ResultSetMetadata
-    , ResultSetMetadata
-    , resultSetMetadata
-    , rsmColumnInfo
-
+  , ResultSetMetadata
+  , resultSetMetadata
+  , rsmColumnInfo
     -- ** Row
-    , Row
-    , row
-    , rowData
-
+  , Row
+  , row
+  , rowData
     -- ** UnprocessedNamedQueryId
-    , UnprocessedNamedQueryId
-    , unprocessedNamedQueryId
-    , unqiNamedQueryId
-    , unqiErrorCode
-    , unqiErrorMessage
-
+  , UnprocessedNamedQueryId
+  , unprocessedNamedQueryId
+  , unqiNamedQueryId
+  , unqiErrorCode
+  , unqiErrorMessage
     -- ** UnprocessedQueryExecutionId
-    , UnprocessedQueryExecutionId
-    , unprocessedQueryExecutionId
-    , uqeiErrorCode
-    , uqeiQueryExecutionId
-    , uqeiErrorMessage
-    ) where
+  , UnprocessedQueryExecutionId
+  , unprocessedQueryExecutionId
+  , uqeiErrorCode
+  , uqeiQueryExecutionId
+  , uqeiErrorMessage
+  ) where
 
 import Network.AWS.Athena.BatchGetNamedQuery
 import Network.AWS.Athena.BatchGetQueryExecution
@@ -196,14 +159,12 @@ import Network.AWS.Athena.StartQueryExecution
 import Network.AWS.Athena.StopQueryExecution
 import Network.AWS.Athena.Types
 import Network.AWS.Athena.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'Athena'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -220,7 +181,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

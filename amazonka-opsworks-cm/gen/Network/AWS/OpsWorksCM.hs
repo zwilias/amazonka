@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.OpsWorksCM
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -46,178 +45,141 @@
 -- All API operations allow for five requests per second with a burst of 10 requests per second.
 --
 module Network.AWS.OpsWorksCM
-    (
     -- * Service Configuration
-      opsWorksCM
-
+  ( opsWorksCM
     -- * Errors
     -- $errors
-
     -- ** ValidationException
-    , _ValidationException
-
+  , _ValidationException
     -- ** ResourceAlreadyExistsException
-    , _ResourceAlreadyExistsException
-
+  , _ResourceAlreadyExistsException
     -- ** InvalidNextTokenException
-    , _InvalidNextTokenException
-
+  , _InvalidNextTokenException
     -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
-
+  , _ResourceNotFoundException
     -- ** InvalidStateException
-    , _InvalidStateException
-
+  , _InvalidStateException
     -- ** LimitExceededException
-    , _LimitExceededException
-
+  , _LimitExceededException
     -- * Waiters
     -- $waiters
-
     -- ** NodeAssociated
-    , nodeAssociated
-
+  , nodeAssociated
     -- * Operations
     -- $operations
-
     -- ** AssociateNode
-    , module Network.AWS.OpsWorksCM.AssociateNode
-
+  , module Network.AWS.OpsWorksCM.AssociateNode
     -- ** UpdateServer
-    , module Network.AWS.OpsWorksCM.UpdateServer
-
+  , module Network.AWS.OpsWorksCM.UpdateServer
     -- ** DeleteServer
-    , module Network.AWS.OpsWorksCM.DeleteServer
-
+  , module Network.AWS.OpsWorksCM.DeleteServer
     -- ** DeleteBackup
-    , module Network.AWS.OpsWorksCM.DeleteBackup
-
+  , module Network.AWS.OpsWorksCM.DeleteBackup
     -- ** DescribeEvents
-    , module Network.AWS.OpsWorksCM.DescribeEvents
-
+  , module Network.AWS.OpsWorksCM.DescribeEvents
     -- ** DisassociateNode
-    , module Network.AWS.OpsWorksCM.DisassociateNode
-
+  , module Network.AWS.OpsWorksCM.DisassociateNode
     -- ** CreateBackup
-    , module Network.AWS.OpsWorksCM.CreateBackup
-
+  , module Network.AWS.OpsWorksCM.CreateBackup
     -- ** UpdateServerEngineAttributes
-    , module Network.AWS.OpsWorksCM.UpdateServerEngineAttributes
-
+  , module Network.AWS.OpsWorksCM.UpdateServerEngineAttributes
     -- ** StartMaintenance
-    , module Network.AWS.OpsWorksCM.StartMaintenance
-
+  , module Network.AWS.OpsWorksCM.StartMaintenance
     -- ** DescribeBackups
-    , module Network.AWS.OpsWorksCM.DescribeBackups
-
+  , module Network.AWS.OpsWorksCM.DescribeBackups
     -- ** CreateServer
-    , module Network.AWS.OpsWorksCM.CreateServer
-
+  , module Network.AWS.OpsWorksCM.CreateServer
     -- ** RestoreServer
-    , module Network.AWS.OpsWorksCM.RestoreServer
-
+  , module Network.AWS.OpsWorksCM.RestoreServer
     -- ** DescribeNodeAssociationStatus
-    , module Network.AWS.OpsWorksCM.DescribeNodeAssociationStatus
-
+  , module Network.AWS.OpsWorksCM.DescribeNodeAssociationStatus
     -- ** DescribeAccountAttributes
-    , module Network.AWS.OpsWorksCM.DescribeAccountAttributes
-
+  , module Network.AWS.OpsWorksCM.DescribeAccountAttributes
     -- ** DescribeServers
-    , module Network.AWS.OpsWorksCM.DescribeServers
-
+  , module Network.AWS.OpsWorksCM.DescribeServers
     -- * Types
-
     -- ** BackupStatus
-    , BackupStatus (..)
-
+  , BackupStatus(..)
     -- ** BackupType
-    , BackupType (..)
-
+  , BackupType(..)
     -- ** MaintenanceStatus
-    , MaintenanceStatus (..)
-
+  , MaintenanceStatus(..)
     -- ** NodeAssociationStatus
-    , NodeAssociationStatus (..)
-
+  , NodeAssociationStatus(..)
     -- ** ServerStatus
-    , ServerStatus (..)
-
+  , ServerStatus(..)
     -- ** AccountAttribute
-    , AccountAttribute
-    , accountAttribute
-    , aaUsed
-    , aaMaximum
-    , aaName
-
+  , AccountAttribute
+  , accountAttribute
+  , aaUsed
+  , aaMaximum
+  , aaName
     -- ** Backup
-    , Backup
-    , backup
-    , bEngineVersion
-    , bServiceRoleARN
-    , bStatus
-    , bInstanceProfileARN
-    , bSecurityGroupIds
-    , bStatusDescription
-    , bServerName
-    , bSubnetIds
-    , bKeyPair
-    , bCreatedAt
-    , bBackupId
-    , bEngine
-    , bInstanceType
-    , bEngineModel
-    , bPreferredMaintenanceWindow
-    , bUserARN
-    , bPreferredBackupWindow
-    , bS3LogURL
-    , bS3DataSize
-    , bBackupARN
-    , bS3DataURL
-    , bDescription
-    , bBackupType
-    , bToolsVersion
-
+  , Backup
+  , backup
+  , bEngineVersion
+  , bServiceRoleARN
+  , bStatus
+  , bInstanceProfileARN
+  , bSecurityGroupIds
+  , bStatusDescription
+  , bServerName
+  , bSubnetIds
+  , bKeyPair
+  , bCreatedAt
+  , bBackupId
+  , bEngine
+  , bInstanceType
+  , bEngineModel
+  , bPreferredMaintenanceWindow
+  , bUserARN
+  , bPreferredBackupWindow
+  , bS3LogURL
+  , bS3DataSize
+  , bBackupARN
+  , bS3DataURL
+  , bDescription
+  , bBackupType
+  , bToolsVersion
     -- ** EngineAttribute
-    , EngineAttribute
-    , engineAttribute
-    , eaValue
-    , eaName
-
+  , EngineAttribute
+  , engineAttribute
+  , eaValue
+  , eaName
     -- ** Server
-    , Server
-    , server
-    , sEngineVersion
-    , sServiceRoleARN
-    , sDisableAutomatedBackup
-    , sStatus
-    , sInstanceProfileARN
-    , sSecurityGroupIds
-    , sAssociatePublicIPAddress
-    , sServerName
-    , sSubnetIds
-    , sKeyPair
-    , sCreatedAt
-    , sServerARN
-    , sEngine
-    , sMaintenanceStatus
-    , sInstanceType
-    , sEngineModel
-    , sEngineAttributes
-    , sPreferredMaintenanceWindow
-    , sPreferredBackupWindow
-    , sStatusReason
-    , sEndpoint
-    , sCloudFormationStackARN
-    , sBackupRetentionCount
-
+  , Server
+  , server
+  , sEngineVersion
+  , sServiceRoleARN
+  , sDisableAutomatedBackup
+  , sStatus
+  , sInstanceProfileARN
+  , sSecurityGroupIds
+  , sAssociatePublicIPAddress
+  , sServerName
+  , sSubnetIds
+  , sKeyPair
+  , sCreatedAt
+  , sServerARN
+  , sEngine
+  , sMaintenanceStatus
+  , sInstanceType
+  , sEngineModel
+  , sEngineAttributes
+  , sPreferredMaintenanceWindow
+  , sPreferredBackupWindow
+  , sStatusReason
+  , sEndpoint
+  , sCloudFormationStackARN
+  , sBackupRetentionCount
     -- ** ServerEvent
-    , ServerEvent
-    , serverEvent
-    , seLogURL
-    , seServerName
-    , seCreatedAt
-    , seMessage
-    ) where
+  , ServerEvent
+  , serverEvent
+  , seLogURL
+  , seServerName
+  , seCreatedAt
+  , seMessage
+  ) where
 
 import Network.AWS.OpsWorksCM.AssociateNode
 import Network.AWS.OpsWorksCM.CreateBackup
@@ -236,14 +198,12 @@ import Network.AWS.OpsWorksCM.Types
 import Network.AWS.OpsWorksCM.UpdateServer
 import Network.AWS.OpsWorksCM.UpdateServerEngineAttributes
 import Network.AWS.OpsWorksCM.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'OpsWorksCM'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -260,7 +220,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

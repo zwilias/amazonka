@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.CloudSearchDomains
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -38,7 +36,6 @@ import Test.Tasty
 --             search
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseSuggest $
 --             suggestResponse
@@ -51,37 +48,33 @@ import Test.Tasty
 --
 --           ]
 --     ]
-
 -- Requests
-
 requestSuggest :: Suggest -> TestTree
-requestSuggest = req
-    "Suggest"
-    "fixture/Suggest.yaml"
+requestSuggest = req "Suggest" "fixture/Suggest.yaml"
 
 requestSearch :: Search -> TestTree
-requestSearch = req
-    "Search"
-    "fixture/Search.yaml"
+requestSearch = req "Search" "fixture/Search.yaml"
 
 -- Responses
-
 responseSuggest :: SuggestResponse -> TestTree
-responseSuggest = res
+responseSuggest =
+  res
     "SuggestResponse"
     "fixture/SuggestResponse.proto"
     cloudSearchDomains
     (Proxy :: Proxy Suggest)
 
 responseUploadDocuments :: UploadDocumentsResponse -> TestTree
-responseUploadDocuments = res
+responseUploadDocuments =
+  res
     "UploadDocumentsResponse"
     "fixture/UploadDocumentsResponse.proto"
     cloudSearchDomains
     (Proxy :: Proxy UploadDocuments)
 
 responseSearch :: SearchResponse -> TestTree
-responseSearch = res
+responseSearch =
+  res
     "SearchResponse"
     "fixture/SearchResponse.proto"
     cloudSearchDomains

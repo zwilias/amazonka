@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.ServiceCatalog.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,396 +10,336 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.ServiceCatalog.Types
-    (
     -- * Service Configuration
-      serviceCatalog
-
+  ( serviceCatalog
     -- * Errors
-    , _InvalidParametersException
-    , _DuplicateResourceException
-    , _TagOptionNotMigratedException
-    , _ResourceNotFoundException
-    , _InvalidStateException
-    , _LimitExceededException
-    , _ResourceInUseException
-
+  , _InvalidParametersException
+  , _DuplicateResourceException
+  , _TagOptionNotMigratedException
+  , _ResourceNotFoundException
+  , _InvalidStateException
+  , _LimitExceededException
+  , _ResourceInUseException
     -- * AccessLevelFilterKey
-    , AccessLevelFilterKey (..)
-
+  , AccessLevelFilterKey(..)
     -- * ChangeAction
-    , ChangeAction (..)
-
+  , ChangeAction(..)
     -- * CopyOption
-    , CopyOption (..)
-
+  , CopyOption(..)
     -- * CopyProductStatus
-    , CopyProductStatus (..)
-
+  , CopyProductStatus(..)
     -- * EvaluationType
-    , EvaluationType (..)
-
+  , EvaluationType(..)
     -- * PrincipalType
-    , PrincipalType (..)
-
+  , PrincipalType(..)
     -- * ProductSource
-    , ProductSource (..)
-
+  , ProductSource(..)
     -- * ProductType
-    , ProductType (..)
-
+  , ProductType(..)
     -- * ProductViewFilterBy
-    , ProductViewFilterBy (..)
-
+  , ProductViewFilterBy(..)
     -- * ProductViewSortBy
-    , ProductViewSortBy (..)
-
+  , ProductViewSortBy(..)
     -- * ProvisionedProductPlanStatus
-    , ProvisionedProductPlanStatus (..)
-
+  , ProvisionedProductPlanStatus(..)
     -- * ProvisionedProductPlanType
-    , ProvisionedProductPlanType (..)
-
+  , ProvisionedProductPlanType(..)
     -- * ProvisionedProductStatus
-    , ProvisionedProductStatus (..)
-
+  , ProvisionedProductStatus(..)
     -- * ProvisionedProductViewFilterBy
-    , ProvisionedProductViewFilterBy (..)
-
+  , ProvisionedProductViewFilterBy(..)
     -- * ProvisioningArtifactPropertyName
-    , ProvisioningArtifactPropertyName (..)
-
+  , ProvisioningArtifactPropertyName(..)
     -- * ProvisioningArtifactType
-    , ProvisioningArtifactType (..)
-
+  , ProvisioningArtifactType(..)
     -- * RecordStatus
-    , RecordStatus (..)
-
+  , RecordStatus(..)
     -- * Replacement
-    , Replacement (..)
-
+  , Replacement(..)
     -- * RequestStatus
-    , RequestStatus (..)
-
+  , RequestStatus(..)
     -- * RequiresRecreation
-    , RequiresRecreation (..)
-
+  , RequiresRecreation(..)
     -- * ResourceAttribute
-    , ResourceAttribute (..)
-
+  , ResourceAttribute(..)
     -- * SortOrder
-    , SortOrder (..)
-
+  , SortOrder(..)
     -- * AccessLevelFilter
-    , AccessLevelFilter
-    , accessLevelFilter
-    , alfValue
-    , alfKey
-
+  , AccessLevelFilter
+  , accessLevelFilter
+  , alfValue
+  , alfKey
     -- * CloudWatchDashboard
-    , CloudWatchDashboard
-    , cloudWatchDashboard
-    , cwdName
-
+  , CloudWatchDashboard
+  , cloudWatchDashboard
+  , cwdName
     -- * ConstraintDetail
-    , ConstraintDetail
-    , constraintDetail
-    , cdConstraintId
-    , cdOwner
-    , cdType
-    , cdDescription
-
+  , ConstraintDetail
+  , constraintDetail
+  , cdConstraintId
+  , cdOwner
+  , cdType
+  , cdDescription
     -- * ConstraintSummary
-    , ConstraintSummary
-    , constraintSummary
-    , csType
-    , csDescription
-
+  , ConstraintSummary
+  , constraintSummary
+  , csType
+  , csDescription
     -- * LaunchPathSummary
-    , LaunchPathSummary
-    , launchPathSummary
-    , lpsConstraintSummaries
-    , lpsName
-    , lpsId
-    , lpsTags
-
+  , LaunchPathSummary
+  , launchPathSummary
+  , lpsConstraintSummaries
+  , lpsName
+  , lpsId
+  , lpsTags
     -- * ListRecordHistorySearchFilter
-    , ListRecordHistorySearchFilter
-    , listRecordHistorySearchFilter
-    , lrhsfValue
-    , lrhsfKey
-
+  , ListRecordHistorySearchFilter
+  , listRecordHistorySearchFilter
+  , lrhsfValue
+  , lrhsfKey
     -- * ListTagOptionsFilters
-    , ListTagOptionsFilters
-    , listTagOptionsFilters
-    , ltofValue
-    , ltofActive
-    , ltofKey
-
+  , ListTagOptionsFilters
+  , listTagOptionsFilters
+  , ltofValue
+  , ltofActive
+  , ltofKey
     -- * ParameterConstraints
-    , ParameterConstraints
-    , parameterConstraints
-    , pcAllowedValues
-
+  , ParameterConstraints
+  , parameterConstraints
+  , pcAllowedValues
     -- * PortfolioDetail
-    , PortfolioDetail
-    , portfolioDetail
-    , pdARN
-    , pdCreatedTime
-    , pdId
-    , pdDisplayName
-    , pdDescription
-    , pdProviderName
-
+  , PortfolioDetail
+  , portfolioDetail
+  , pdARN
+  , pdCreatedTime
+  , pdId
+  , pdDisplayName
+  , pdDescription
+  , pdProviderName
     -- * Principal
-    , Principal
-    , principal
-    , pPrincipalType
-    , pPrincipalARN
-
+  , Principal
+  , principal
+  , pPrincipalType
+  , pPrincipalARN
     -- * ProductViewAggregationValue
-    , ProductViewAggregationValue
-    , productViewAggregationValue
-    , pvavValue
-    , pvavApproximateCount
-
+  , ProductViewAggregationValue
+  , productViewAggregationValue
+  , pvavValue
+  , pvavApproximateCount
     -- * ProductViewDetail
-    , ProductViewDetail
-    , productViewDetail
-    , pvdStatus
-    , pvdProductViewSummary
-    , pvdCreatedTime
-    , pvdProductARN
-
+  , ProductViewDetail
+  , productViewDetail
+  , pvdStatus
+  , pvdProductViewSummary
+  , pvdCreatedTime
+  , pvdProductARN
     -- * ProductViewSummary
-    , ProductViewSummary
-    , productViewSummary
-    , pvsOwner
-    , pvsSupportURL
-    , pvsShortDescription
-    , pvsHasDefaultPath
-    , pvsDistributor
-    , pvsName
-    , pvsId
-    , pvsType
-    , pvsSupportEmail
-    , pvsProductId
-    , pvsSupportDescription
-
+  , ProductViewSummary
+  , productViewSummary
+  , pvsOwner
+  , pvsSupportURL
+  , pvsShortDescription
+  , pvsHasDefaultPath
+  , pvsDistributor
+  , pvsName
+  , pvsId
+  , pvsType
+  , pvsSupportEmail
+  , pvsProductId
+  , pvsSupportDescription
     -- * ProvisionedProductAttribute
-    , ProvisionedProductAttribute
-    , provisionedProductAttribute
-    , ppaIdempotencyToken
-    , ppaStatus
-    , ppaProvisioningArtifactId
-    , ppaARN
-    , ppaCreatedTime
-    , ppaUserARN
-    , ppaStatusMessage
-    , ppaName
-    , ppaLastRecordId
-    , ppaUserARNSession
-    , ppaId
-    , ppaType
-    , ppaPhysicalId
-    , ppaProductId
-    , ppaTags
-
+  , ProvisionedProductAttribute
+  , provisionedProductAttribute
+  , ppaIdempotencyToken
+  , ppaStatus
+  , ppaProvisioningArtifactId
+  , ppaARN
+  , ppaCreatedTime
+  , ppaUserARN
+  , ppaStatusMessage
+  , ppaName
+  , ppaLastRecordId
+  , ppaUserARNSession
+  , ppaId
+  , ppaType
+  , ppaPhysicalId
+  , ppaProductId
+  , ppaTags
     -- * ProvisionedProductDetail
-    , ProvisionedProductDetail
-    , provisionedProductDetail
-    , ppdIdempotencyToken
-    , ppdStatus
-    , ppdARN
-    , ppdCreatedTime
-    , ppdStatusMessage
-    , ppdName
-    , ppdLastRecordId
-    , ppdId
-    , ppdType
-
+  , ProvisionedProductDetail
+  , provisionedProductDetail
+  , ppdIdempotencyToken
+  , ppdStatus
+  , ppdARN
+  , ppdCreatedTime
+  , ppdStatusMessage
+  , ppdName
+  , ppdLastRecordId
+  , ppdId
+  , ppdType
     -- * ProvisionedProductPlanDetails
-    , ProvisionedProductPlanDetails
-    , provisionedProductPlanDetails
-    , pppdStatus
-    , pppdProvisionProductId
-    , pppdProvisioningArtifactId
-    , pppdProvisionProductName
-    , pppdCreatedTime
-    , pppdNotificationARNs
-    , pppdPlanId
-    , pppdPlanName
-    , pppdStatusMessage
-    , pppdUpdatedTime
-    , pppdPathId
-    , pppdProvisioningParameters
-    , pppdPlanType
-    , pppdProductId
-    , pppdTags
-
+  , ProvisionedProductPlanDetails
+  , provisionedProductPlanDetails
+  , pppdStatus
+  , pppdProvisionProductId
+  , pppdProvisioningArtifactId
+  , pppdProvisionProductName
+  , pppdCreatedTime
+  , pppdNotificationARNs
+  , pppdPlanId
+  , pppdPlanName
+  , pppdStatusMessage
+  , pppdUpdatedTime
+  , pppdPathId
+  , pppdProvisioningParameters
+  , pppdPlanType
+  , pppdProductId
+  , pppdTags
     -- * ProvisionedProductPlanSummary
-    , ProvisionedProductPlanSummary
-    , provisionedProductPlanSummary
-    , pppsProvisionProductId
-    , pppsProvisioningArtifactId
-    , pppsProvisionProductName
-    , pppsPlanId
-    , pppsPlanName
-    , pppsPlanType
-
+  , ProvisionedProductPlanSummary
+  , provisionedProductPlanSummary
+  , pppsProvisionProductId
+  , pppsProvisioningArtifactId
+  , pppsProvisionProductName
+  , pppsPlanId
+  , pppsPlanName
+  , pppsPlanType
     -- * ProvisioningArtifact
-    , ProvisioningArtifact
-    , provisioningArtifact
-    , paCreatedTime
-    , paName
-    , paId
-    , paDescription
-
+  , ProvisioningArtifact
+  , provisioningArtifact
+  , paCreatedTime
+  , paName
+  , paId
+  , paDescription
     -- * ProvisioningArtifactDetail
-    , ProvisioningArtifactDetail
-    , provisioningArtifactDetail
-    , padCreatedTime
-    , padActive
-    , padName
-    , padId
-    , padType
-    , padDescription
-
+  , ProvisioningArtifactDetail
+  , provisioningArtifactDetail
+  , padCreatedTime
+  , padActive
+  , padName
+  , padId
+  , padType
+  , padDescription
     -- * ProvisioningArtifactParameter
-    , ProvisioningArtifactParameter
-    , provisioningArtifactParameter
-    , pIsNoEcho
-    , pParameterKey
-    , pParameterType
-    , pParameterConstraints
-    , pDefaultValue
-    , pDescription
-
+  , ProvisioningArtifactParameter
+  , provisioningArtifactParameter
+  , pIsNoEcho
+  , pParameterKey
+  , pParameterType
+  , pParameterConstraints
+  , pDefaultValue
+  , pDescription
     -- * ProvisioningArtifactProperties
-    , ProvisioningArtifactProperties
-    , provisioningArtifactProperties
-    , papName
-    , papType
-    , papDescription
-    , papInfo
-
+  , ProvisioningArtifactProperties
+  , provisioningArtifactProperties
+  , papName
+  , papType
+  , papDescription
+  , papInfo
     -- * ProvisioningArtifactSummary
-    , ProvisioningArtifactSummary
-    , provisioningArtifactSummary
-    , pasProvisioningArtifactMetadata
-    , pasCreatedTime
-    , pasName
-    , pasId
-    , pasDescription
-
+  , ProvisioningArtifactSummary
+  , provisioningArtifactSummary
+  , pasProvisioningArtifactMetadata
+  , pasCreatedTime
+  , pasName
+  , pasId
+  , pasDescription
     -- * ProvisioningParameter
-    , ProvisioningParameter
-    , provisioningParameter
-    , ppValue
-    , ppKey
-
+  , ProvisioningParameter
+  , provisioningParameter
+  , ppValue
+  , ppKey
     -- * RecordDetail
-    , RecordDetail
-    , recordDetail
-    , rdStatus
-    , rdRecordTags
-    , rdProvisionedProductName
-    , rdProvisioningArtifactId
-    , rdCreatedTime
-    , rdRecordType
-    , rdRecordId
-    , rdProvisionedProductType
-    , rdUpdatedTime
-    , rdPathId
-    , rdProvisionedProductId
-    , rdRecordErrors
-    , rdProductId
-
+  , RecordDetail
+  , recordDetail
+  , rdStatus
+  , rdRecordTags
+  , rdProvisionedProductName
+  , rdProvisioningArtifactId
+  , rdCreatedTime
+  , rdRecordType
+  , rdRecordId
+  , rdProvisionedProductType
+  , rdUpdatedTime
+  , rdPathId
+  , rdProvisionedProductId
+  , rdRecordErrors
+  , rdProductId
     -- * RecordError
-    , RecordError
-    , recordError
-    , reCode
-    , reDescription
-
+  , RecordError
+  , recordError
+  , reCode
+  , reDescription
     -- * RecordOutput
-    , RecordOutput
-    , recordOutput
-    , roOutputValue
-    , roOutputKey
-    , roDescription
-
+  , RecordOutput
+  , recordOutput
+  , roOutputValue
+  , roOutputKey
+  , roDescription
     -- * RecordTag
-    , RecordTag
-    , recordTag
-    , rtValue
-    , rtKey
-
+  , RecordTag
+  , recordTag
+  , rtValue
+  , rtKey
     -- * ResourceChange
-    , ResourceChange
-    , resourceChange
-    , rcLogicalResourceId
-    , rcPhysicalResourceId
-    , rcResourceType
-    , rcAction
-    , rcScope
-    , rcDetails
-    , rcReplacement
-
+  , ResourceChange
+  , resourceChange
+  , rcLogicalResourceId
+  , rcPhysicalResourceId
+  , rcResourceType
+  , rcAction
+  , rcScope
+  , rcDetails
+  , rcReplacement
     -- * ResourceChangeDetail
-    , ResourceChangeDetail
-    , resourceChangeDetail
-    , rcdCausingEntity
-    , rcdEvaluation
-    , rcdTarget
-
+  , ResourceChangeDetail
+  , resourceChangeDetail
+  , rcdCausingEntity
+  , rcdEvaluation
+  , rcdTarget
     -- * ResourceDetail
-    , ResourceDetail
-    , resourceDetail
-    , rARN
-    , rCreatedTime
-    , rName
-    , rId
-    , rDescription
-
+  , ResourceDetail
+  , resourceDetail
+  , rARN
+  , rCreatedTime
+  , rName
+  , rId
+  , rDescription
     -- * ResourceTargetDefinition
-    , ResourceTargetDefinition
-    , resourceTargetDefinition
-    , rtdAttribute
-    , rtdRequiresRecreation
-    , rtdName
-
+  , ResourceTargetDefinition
+  , resourceTargetDefinition
+  , rtdAttribute
+  , rtdRequiresRecreation
+  , rtdName
     -- * Tag
-    , Tag
-    , tag
-    , tagKey
-    , tagValue
-
+  , Tag
+  , tag
+  , tagKey
+  , tagValue
     -- * TagOptionDetail
-    , TagOptionDetail
-    , tagOptionDetail
-    , todValue
-    , todActive
-    , todKey
-    , todId
-
+  , TagOptionDetail
+  , tagOptionDetail
+  , todValue
+  , todActive
+  , todKey
+  , todId
     -- * TagOptionSummary
-    , TagOptionSummary
-    , tagOptionSummary
-    , tosValues
-    , tosKey
-
+  , TagOptionSummary
+  , tagOptionSummary
+  , tosValues
+  , tosKey
     -- * UpdateProvisioningParameter
-    , UpdateProvisioningParameter
-    , updateProvisioningParameter
-    , uppValue
-    , uppKey
-    , uppUsePreviousValue
-
+  , UpdateProvisioningParameter
+  , updateProvisioningParameter
+  , uppValue
+  , uppKey
+  , uppUsePreviousValue
     -- * UsageInstruction
-    , UsageInstruction
-    , usageInstruction
-    , uiValue
-    , uiType
-    ) where
+  , UsageInstruction
+  , usageInstruction
+  , uiValue
+  , uiType
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -446,59 +385,58 @@ serviceCatalog =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | One or more parameters provided to the operation are not valid.
 --
 --
-_InvalidParametersException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParametersException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidParametersException =
   _MatchServiceError serviceCatalog "InvalidParametersException"
-
 
 -- | The specified resource is a duplicate.
 --
 --
-_DuplicateResourceException :: AsError a => Getting (First ServiceError) a ServiceError
+_DuplicateResourceException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _DuplicateResourceException =
   _MatchServiceError serviceCatalog "DuplicateResourceException"
-
 
 -- | An operation requiring TagOptions failed because the TagOptions migration process has not been performed for this account. Please use the AWS console to perform the migration process before retrying the operation.
 --
 --
-_TagOptionNotMigratedException :: AsError a => Getting (First ServiceError) a ServiceError
+_TagOptionNotMigratedException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _TagOptionNotMigratedException =
   _MatchServiceError serviceCatalog "TagOptionNotMigratedException"
-
 
 -- | The specified resource was not found.
 --
 --
-_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ResourceNotFoundException =
   _MatchServiceError serviceCatalog "ResourceNotFoundException"
-
 
 -- | An attempt was made to modify a resource that is in a state that is not valid. Check your resources to ensure that they are in valid states before retrying the operation.
 --
 --
-_InvalidStateException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidStateException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidStateException =
   _MatchServiceError serviceCatalog "InvalidStateException"
-
 
 -- | The current limits of the service would have been exceeded by this operation. Decrease your resource use or increase your service limits and retry the operation.
 --
 --
-_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException =
   _MatchServiceError serviceCatalog "LimitExceededException"
-
 
 -- | A resource that is currently in use. Ensure that the resource is not in use and retry the operation.
 --
 --
-_ResourceInUseException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceInUseException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ResourceInUseException =
   _MatchServiceError serviceCatalog "ResourceInUseException"
-

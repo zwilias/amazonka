@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Shield.DeleteSubscription
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,17 +20,15 @@
 --
 --
 module Network.AWS.Shield.DeleteSubscription
-    (
     -- * Creating a Request
-      deleteSubscription
-    , DeleteSubscription
-
+  ( deleteSubscription
+  , DeleteSubscription
     -- * Destructuring the Response
-    , deleteSubscriptionResponse
-    , DeleteSubscriptionResponse
+  , deleteSubscriptionResponse
+  , DeleteSubscriptionResponse
     -- * Response Lenses
-    , drsResponseStatus
-    ) where
+  , drsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -46,66 +42,59 @@ data DeleteSubscription =
   DeleteSubscription'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'DeleteSubscription' with the minimum fields required to make a request.
 --
-deleteSubscription
-    :: DeleteSubscription
+deleteSubscription :: DeleteSubscription
 deleteSubscription = DeleteSubscription'
 
-
 instance AWSRequest DeleteSubscription where
-        type Rs DeleteSubscription =
-             DeleteSubscriptionResponse
-        request = postJSON shield
-        response
-          = receiveEmpty
-              (\ s h x ->
-                 DeleteSubscriptionResponse' <$> (pure (fromEnum s)))
+  type Rs DeleteSubscription = DeleteSubscriptionResponse
+  request = postJSON shield
+  response =
+    receiveEmpty (\s h x -> DeleteSubscriptionResponse' <$> (pure (fromEnum s)))
 
-instance Hashable DeleteSubscription where
+instance Hashable DeleteSubscription
 
-instance NFData DeleteSubscription where
+instance NFData DeleteSubscription
 
 instance ToHeaders DeleteSubscription where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("AWSShield_20160616.DeleteSubscription" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("AWSShield_20160616.DeleteSubscription" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON DeleteSubscription where
-        toJSON = const (Object mempty)
+  toJSON = const (Object mempty)
 
 instance ToPath DeleteSubscription where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery DeleteSubscription where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'deleteSubscriptionResponse' smart constructor.
-newtype DeleteSubscriptionResponse = DeleteSubscriptionResponse'
-  { _drsResponseStatus :: Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteSubscriptionResponse =
+  DeleteSubscriptionResponse'
+    { _drsResponseStatus :: Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteSubscriptionResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'drsResponseStatus' - -- | The response status code.
-deleteSubscriptionResponse
-    :: Int -- ^ 'drsResponseStatus'
-    -> DeleteSubscriptionResponse
+deleteSubscriptionResponse ::
+     Int -- ^ 'drsResponseStatus'
+  -> DeleteSubscriptionResponse
 deleteSubscriptionResponse pResponseStatus_ =
   DeleteSubscriptionResponse' {_drsResponseStatus = pResponseStatus_}
 
-
 -- | -- | The response status code.
 drsResponseStatus :: Lens' DeleteSubscriptionResponse Int
-drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a})
+drsResponseStatus = lens _drsResponseStatus (\s a -> s {_drsResponseStatus = a})
 
-instance NFData DeleteSubscriptionResponse where
+instance NFData DeleteSubscriptionResponse

@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CertificateManager.AddTagsToCertificate
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,18 +24,16 @@
 -- To remove one or more tags, use the 'RemoveTagsFromCertificate' action. To view all of the tags that have been applied to the certificate, use the 'ListTagsForCertificate' action.
 --
 module Network.AWS.CertificateManager.AddTagsToCertificate
-    (
     -- * Creating a Request
-      addTagsToCertificate
-    , AddTagsToCertificate
+  ( addTagsToCertificate
+  , AddTagsToCertificate
     -- * Request Lenses
-    , attcCertificateARN
-    , attcTags
-
+  , attcCertificateARN
+  , attcTags
     -- * Destructuring the Response
-    , addTagsToCertificateResponse
-    , AddTagsToCertificateResponse
-    ) where
+  , addTagsToCertificateResponse
+  , AddTagsToCertificateResponse
+  ) where
 
 import Network.AWS.CertificateManager.Types
 import Network.AWS.CertificateManager.Types.Product
@@ -47,11 +43,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'addTagsToCertificate' smart constructor.
-data AddTagsToCertificate = AddTagsToCertificate'
-  { _attcCertificateARN :: !Text
-  , _attcTags           :: !(List1 Tag)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddTagsToCertificate =
+  AddTagsToCertificate'
+    { _attcCertificateARN :: !Text
+    , _attcTags :: !(List1 Tag)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddTagsToCertificate' with the minimum fields required to make a request.
 --
@@ -60,67 +57,63 @@ data AddTagsToCertificate = AddTagsToCertificate'
 -- * 'attcCertificateARN' - String that contains the ARN of the ACM certificate to which the tag is to be applied. This must be of the form: @arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012@  For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> .
 --
 -- * 'attcTags' - The key-value pair that defines the tag. The tag value is optional.
-addTagsToCertificate
-    :: Text -- ^ 'attcCertificateARN'
-    -> NonEmpty Tag -- ^ 'attcTags'
-    -> AddTagsToCertificate
+addTagsToCertificate ::
+     Text -- ^ 'attcCertificateARN'
+  -> NonEmpty Tag -- ^ 'attcTags'
+  -> AddTagsToCertificate
 addTagsToCertificate pCertificateARN_ pTags_ =
   AddTagsToCertificate'
     {_attcCertificateARN = pCertificateARN_, _attcTags = _List1 # pTags_}
 
-
 -- | String that contains the ARN of the ACM certificate to which the tag is to be applied. This must be of the form: @arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012@  For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> .
 attcCertificateARN :: Lens' AddTagsToCertificate Text
-attcCertificateARN = lens _attcCertificateARN (\ s a -> s{_attcCertificateARN = a})
+attcCertificateARN =
+  lens _attcCertificateARN (\s a -> s {_attcCertificateARN = a})
 
 -- | The key-value pair that defines the tag. The tag value is optional.
 attcTags :: Lens' AddTagsToCertificate (NonEmpty Tag)
-attcTags = lens _attcTags (\ s a -> s{_attcTags = a}) . _List1
+attcTags = lens _attcTags (\s a -> s {_attcTags = a}) . _List1
 
 instance AWSRequest AddTagsToCertificate where
-        type Rs AddTagsToCertificate =
-             AddTagsToCertificateResponse
-        request = postJSON certificateManager
-        response = receiveNull AddTagsToCertificateResponse'
+  type Rs AddTagsToCertificate = AddTagsToCertificateResponse
+  request = postJSON certificateManager
+  response = receiveNull AddTagsToCertificateResponse'
 
-instance Hashable AddTagsToCertificate where
+instance Hashable AddTagsToCertificate
 
-instance NFData AddTagsToCertificate where
+instance NFData AddTagsToCertificate
 
 instance ToHeaders AddTagsToCertificate where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("CertificateManager.AddTagsToCertificate" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("CertificateManager.AddTagsToCertificate" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON AddTagsToCertificate where
-        toJSON AddTagsToCertificate'{..}
-          = object
-              (catMaybes
-                 [Just ("CertificateArn" .= _attcCertificateARN),
-                  Just ("Tags" .= _attcTags)])
+  toJSON AddTagsToCertificate' {..} =
+    object
+      (catMaybes
+         [ Just ("CertificateArn" .= _attcCertificateARN)
+         , Just ("Tags" .= _attcTags)
+         ])
 
 instance ToPath AddTagsToCertificate where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery AddTagsToCertificate where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'addTagsToCertificateResponse' smart constructor.
 data AddTagsToCertificateResponse =
   AddTagsToCertificateResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'AddTagsToCertificateResponse' with the minimum fields required to make a request.
 --
-addTagsToCertificateResponse
-    :: AddTagsToCertificateResponse
+addTagsToCertificateResponse :: AddTagsToCertificateResponse
 addTagsToCertificateResponse = AddTagsToCertificateResponse'
 
-
-instance NFData AddTagsToCertificateResponse where
+instance NFData AddTagsToCertificateResponse

@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.KMS
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -56,278 +55,201 @@
 --
 --
 module Network.AWS.KMS
-    (
     -- * Service Configuration
-      kms
-
+  ( kms
     -- * Errors
     -- $errors
-
     -- ** InvalidMarkerException
-    , _InvalidMarkerException
-
+  , _InvalidMarkerException
     -- ** KMSInvalidStateException
-    , _KMSInvalidStateException
-
+  , _KMSInvalidStateException
     -- ** InvalidKeyUsageException
-    , _InvalidKeyUsageException
-
+  , _InvalidKeyUsageException
     -- ** MalformedPolicyDocumentException
-    , _MalformedPolicyDocumentException
-
+  , _MalformedPolicyDocumentException
     -- ** UnsupportedOperationException
-    , _UnsupportedOperationException
-
+  , _UnsupportedOperationException
     -- ** DisabledException
-    , _DisabledException
-
+  , _DisabledException
     -- ** KeyUnavailableException
-    , _KeyUnavailableException
-
+  , _KeyUnavailableException
     -- ** IncorrectKeyMaterialException
-    , _IncorrectKeyMaterialException
-
+  , _IncorrectKeyMaterialException
     -- ** KMSInternalException
-    , _KMSInternalException
-
+  , _KMSInternalException
     -- ** TagException
-    , _TagException
-
+  , _TagException
     -- ** InvalidImportTokenException
-    , _InvalidImportTokenException
-
+  , _InvalidImportTokenException
     -- ** NotFoundException
-    , _NotFoundException
-
+  , _NotFoundException
     -- ** InvalidAliasNameException
-    , _InvalidAliasNameException
-
+  , _InvalidAliasNameException
     -- ** InvalidGrantIdException
-    , _InvalidGrantIdException
-
+  , _InvalidGrantIdException
     -- ** InvalidGrantTokenException
-    , _InvalidGrantTokenException
-
+  , _InvalidGrantTokenException
     -- ** InvalidARNException
-    , _InvalidARNException
-
+  , _InvalidARNException
     -- ** DependencyTimeoutException
-    , _DependencyTimeoutException
-
+  , _DependencyTimeoutException
     -- ** ExpiredImportTokenException
-    , _ExpiredImportTokenException
-
+  , _ExpiredImportTokenException
     -- ** InvalidCiphertextException
-    , _InvalidCiphertextException
-
+  , _InvalidCiphertextException
     -- ** AlreadyExistsException
-    , _AlreadyExistsException
-
+  , _AlreadyExistsException
     -- ** LimitExceededException
-    , _LimitExceededException
-
+  , _LimitExceededException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** Encrypt
-    , module Network.AWS.KMS.Encrypt
-
+  , module Network.AWS.KMS.Encrypt
     -- ** ListGrants (Paginated)
-    , module Network.AWS.KMS.ListGrants
-
+  , module Network.AWS.KMS.ListGrants
     -- ** DisableKeyRotation
-    , module Network.AWS.KMS.DisableKeyRotation
-
+  , module Network.AWS.KMS.DisableKeyRotation
     -- ** GenerateDataKeyWithoutPlaintext
-    , module Network.AWS.KMS.GenerateDataKeyWithoutPlaintext
-
+  , module Network.AWS.KMS.GenerateDataKeyWithoutPlaintext
     -- ** GetParametersForImport
-    , module Network.AWS.KMS.GetParametersForImport
-
+  , module Network.AWS.KMS.GetParametersForImport
     -- ** EnableKeyRotation
-    , module Network.AWS.KMS.EnableKeyRotation
-
+  , module Network.AWS.KMS.EnableKeyRotation
     -- ** CreateAlias
-    , module Network.AWS.KMS.CreateAlias
-
+  , module Network.AWS.KMS.CreateAlias
     -- ** CreateGrant
-    , module Network.AWS.KMS.CreateGrant
-
+  , module Network.AWS.KMS.CreateGrant
     -- ** ListAliases (Paginated)
-    , module Network.AWS.KMS.ListAliases
-
+  , module Network.AWS.KMS.ListAliases
     -- ** ListRetirableGrants
-    , module Network.AWS.KMS.ListRetirableGrants
-
+  , module Network.AWS.KMS.ListRetirableGrants
     -- ** GenerateRandom
-    , module Network.AWS.KMS.GenerateRandom
-
+  , module Network.AWS.KMS.GenerateRandom
     -- ** CreateKey
-    , module Network.AWS.KMS.CreateKey
-
+  , module Network.AWS.KMS.CreateKey
     -- ** DisableKey
-    , module Network.AWS.KMS.DisableKey
-
+  , module Network.AWS.KMS.DisableKey
     -- ** RetireGrant
-    , module Network.AWS.KMS.RetireGrant
-
+  , module Network.AWS.KMS.RetireGrant
     -- ** ListKeys (Paginated)
-    , module Network.AWS.KMS.ListKeys
-
+  , module Network.AWS.KMS.ListKeys
     -- ** ListResourceTags
-    , module Network.AWS.KMS.ListResourceTags
-
+  , module Network.AWS.KMS.ListResourceTags
     -- ** GetKeyRotationStatus
-    , module Network.AWS.KMS.GetKeyRotationStatus
-
+  , module Network.AWS.KMS.GetKeyRotationStatus
     -- ** GenerateDataKey
-    , module Network.AWS.KMS.GenerateDataKey
-
+  , module Network.AWS.KMS.GenerateDataKey
     -- ** DeleteAlias
-    , module Network.AWS.KMS.DeleteAlias
-
+  , module Network.AWS.KMS.DeleteAlias
     -- ** UpdateAlias
-    , module Network.AWS.KMS.UpdateAlias
-
+  , module Network.AWS.KMS.UpdateAlias
     -- ** DescribeKey
-    , module Network.AWS.KMS.DescribeKey
-
+  , module Network.AWS.KMS.DescribeKey
     -- ** CancelKeyDeletion
-    , module Network.AWS.KMS.CancelKeyDeletion
-
+  , module Network.AWS.KMS.CancelKeyDeletion
     -- ** Decrypt
-    , module Network.AWS.KMS.Decrypt
-
+  , module Network.AWS.KMS.Decrypt
     -- ** UpdateKeyDescription
-    , module Network.AWS.KMS.UpdateKeyDescription
-
+  , module Network.AWS.KMS.UpdateKeyDescription
     -- ** ReEncrypt
-    , module Network.AWS.KMS.ReEncrypt
-
+  , module Network.AWS.KMS.ReEncrypt
     -- ** TagResource
-    , module Network.AWS.KMS.TagResource
-
+  , module Network.AWS.KMS.TagResource
     -- ** ListKeyPolicies (Paginated)
-    , module Network.AWS.KMS.ListKeyPolicies
-
+  , module Network.AWS.KMS.ListKeyPolicies
     -- ** UntagResource
-    , module Network.AWS.KMS.UntagResource
-
+  , module Network.AWS.KMS.UntagResource
     -- ** ScheduleKeyDeletion
-    , module Network.AWS.KMS.ScheduleKeyDeletion
-
+  , module Network.AWS.KMS.ScheduleKeyDeletion
     -- ** PutKeyPolicy
-    , module Network.AWS.KMS.PutKeyPolicy
-
+  , module Network.AWS.KMS.PutKeyPolicy
     -- ** EnableKey
-    , module Network.AWS.KMS.EnableKey
-
+  , module Network.AWS.KMS.EnableKey
     -- ** RevokeGrant
-    , module Network.AWS.KMS.RevokeGrant
-
+  , module Network.AWS.KMS.RevokeGrant
     -- ** GetKeyPolicy
-    , module Network.AWS.KMS.GetKeyPolicy
-
+  , module Network.AWS.KMS.GetKeyPolicy
     -- ** ImportKeyMaterial
-    , module Network.AWS.KMS.ImportKeyMaterial
-
+  , module Network.AWS.KMS.ImportKeyMaterial
     -- ** DeleteImportedKeyMaterial
-    , module Network.AWS.KMS.DeleteImportedKeyMaterial
-
+  , module Network.AWS.KMS.DeleteImportedKeyMaterial
     -- * Types
-
     -- ** AlgorithmSpec
-    , AlgorithmSpec (..)
-
+  , AlgorithmSpec(..)
     -- ** DataKeySpec
-    , DataKeySpec (..)
-
+  , DataKeySpec(..)
     -- ** ExpirationModelType
-    , ExpirationModelType (..)
-
+  , ExpirationModelType(..)
     -- ** GrantOperation
-    , GrantOperation (..)
-
+  , GrantOperation(..)
     -- ** KeyManagerType
-    , KeyManagerType (..)
-
+  , KeyManagerType(..)
     -- ** KeyState
-    , KeyState (..)
-
+  , KeyState(..)
     -- ** KeyUsageType
-    , KeyUsageType (..)
-
+  , KeyUsageType(..)
     -- ** OriginType
-    , OriginType (..)
-
+  , OriginType(..)
     -- ** WrappingKeySpec
-    , WrappingKeySpec (..)
-
+  , WrappingKeySpec(..)
     -- ** AliasListEntry
-    , AliasListEntry
-    , aliasListEntry
-    , aleTargetKeyId
-    , aleAliasName
-    , aleAliasARN
-
+  , AliasListEntry
+  , aliasListEntry
+  , aleTargetKeyId
+  , aleAliasName
+  , aleAliasARN
     -- ** GrantConstraints
-    , GrantConstraints
-    , grantConstraints
-    , gcEncryptionContextEquals
-    , gcEncryptionContextSubset
-
+  , GrantConstraints
+  , grantConstraints
+  , gcEncryptionContextEquals
+  , gcEncryptionContextSubset
     -- ** GrantListEntry
-    , GrantListEntry
-    , grantListEntry
-    , gleKeyId
-    , gleRetiringPrincipal
-    , gleIssuingAccount
-    , gleGrantId
-    , gleConstraints
-    , gleGranteePrincipal
-    , gleName
-    , gleCreationDate
-    , gleOperations
-
+  , GrantListEntry
+  , grantListEntry
+  , gleKeyId
+  , gleRetiringPrincipal
+  , gleIssuingAccount
+  , gleGrantId
+  , gleConstraints
+  , gleGranteePrincipal
+  , gleName
+  , gleCreationDate
+  , gleOperations
     -- ** KeyListEntry
-    , KeyListEntry
-    , keyListEntry
-    , kleKeyId
-    , kleKeyARN
-
+  , KeyListEntry
+  , keyListEntry
+  , kleKeyId
+  , kleKeyARN
     -- ** KeyMetadata
-    , KeyMetadata
-    , keyMetadata
-    , kmOrigin
-    , kmExpirationModel
-    , kmKeyManager
-    , kmEnabled
-    , kmValidTo
-    , kmARN
-    , kmKeyState
-    , kmAWSAccountId
-    , kmKeyUsage
-    , kmCreationDate
-    , kmDeletionDate
-    , kmDescription
-    , kmKeyId
-
+  , KeyMetadata
+  , keyMetadata
+  , kmOrigin
+  , kmExpirationModel
+  , kmKeyManager
+  , kmEnabled
+  , kmValidTo
+  , kmARN
+  , kmKeyState
+  , kmAWSAccountId
+  , kmKeyUsage
+  , kmCreationDate
+  , kmDeletionDate
+  , kmDescription
+  , kmKeyId
     -- ** ListGrantsResponse
-    , ListGrantsResponse
-    , listGrantsResponse
-    , lgTruncated
-    , lgGrants
-    , lgNextMarker
-
+  , ListGrantsResponse
+  , listGrantsResponse
+  , lgTruncated
+  , lgGrants
+  , lgNextMarker
     -- ** Tag
-    , Tag
-    , tag
-    , tagTagKey
-    , tagTagValue
-    ) where
+  , Tag
+  , tag
+  , tagTagKey
+  , tagTagValue
+  ) where
 
 import Network.AWS.KMS.CancelKeyDeletion
 import Network.AWS.KMS.CreateAlias
@@ -366,14 +288,12 @@ import Network.AWS.KMS.UntagResource
 import Network.AWS.KMS.UpdateAlias
 import Network.AWS.KMS.UpdateKeyDescription
 import Network.AWS.KMS.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'KMS'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -390,7 +310,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

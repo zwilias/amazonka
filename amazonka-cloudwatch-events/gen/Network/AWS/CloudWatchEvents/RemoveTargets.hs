@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CloudWatchEvents.RemoveTargets
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,22 +24,20 @@
 -- This action can partially fail if too many requests are made at the same time. If that happens, @FailedEntryCount@ is non-zero in the response and each entry in @FailedEntries@ provides the ID of the failed target and the error code.
 --
 module Network.AWS.CloudWatchEvents.RemoveTargets
-    (
     -- * Creating a Request
-      removeTargets
-    , RemoveTargets
+  ( removeTargets
+  , RemoveTargets
     -- * Request Lenses
-    , rtRule
-    , rtIds
-
+  , rtRule
+  , rtIds
     -- * Destructuring the Response
-    , removeTargetsResponse
-    , RemoveTargetsResponse
+  , removeTargetsResponse
+  , RemoveTargetsResponse
     -- * Response Lenses
-    , rtrsFailedEntryCount
-    , rtrsFailedEntries
-    , rtrsResponseStatus
-    ) where
+  , rtrsFailedEntryCount
+  , rtrsFailedEntries
+  , rtrsResponseStatus
+  ) where
 
 import Network.AWS.CloudWatchEvents.Types
 import Network.AWS.CloudWatchEvents.Types.Product
@@ -51,11 +47,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'removeTargets' smart constructor.
-data RemoveTargets = RemoveTargets'
-  { _rtRule :: !Text
-  , _rtIds  :: !(List1 Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemoveTargets =
+  RemoveTargets'
+    { _rtRule :: !Text
+    , _rtIds :: !(List1 Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RemoveTargets' with the minimum fields required to make a request.
 --
@@ -64,65 +61,61 @@ data RemoveTargets = RemoveTargets'
 -- * 'rtRule' - The name of the rule.
 --
 -- * 'rtIds' - The IDs of the targets to remove from the rule.
-removeTargets
-    :: Text -- ^ 'rtRule'
-    -> NonEmpty Text -- ^ 'rtIds'
-    -> RemoveTargets
+removeTargets ::
+     Text -- ^ 'rtRule'
+  -> NonEmpty Text -- ^ 'rtIds'
+  -> RemoveTargets
 removeTargets pRule_ pIds_ =
   RemoveTargets' {_rtRule = pRule_, _rtIds = _List1 # pIds_}
 
-
 -- | The name of the rule.
 rtRule :: Lens' RemoveTargets Text
-rtRule = lens _rtRule (\ s a -> s{_rtRule = a})
+rtRule = lens _rtRule (\s a -> s {_rtRule = a})
 
 -- | The IDs of the targets to remove from the rule.
 rtIds :: Lens' RemoveTargets (NonEmpty Text)
-rtIds = lens _rtIds (\ s a -> s{_rtIds = a}) . _List1
+rtIds = lens _rtIds (\s a -> s {_rtIds = a}) . _List1
 
 instance AWSRequest RemoveTargets where
-        type Rs RemoveTargets = RemoveTargetsResponse
-        request = postJSON cloudWatchEvents
-        response
-          = receiveJSON
-              (\ s h x ->
-                 RemoveTargetsResponse' <$>
-                   (x .?> "FailedEntryCount") <*>
-                     (x .?> "FailedEntries" .!@ mempty)
-                     <*> (pure (fromEnum s)))
+  type Rs RemoveTargets = RemoveTargetsResponse
+  request = postJSON cloudWatchEvents
+  response =
+    receiveJSON
+      (\s h x ->
+         RemoveTargetsResponse' <$> (x .?> "FailedEntryCount") <*>
+         (x .?> "FailedEntries" .!@ mempty) <*>
+         (pure (fromEnum s)))
 
-instance Hashable RemoveTargets where
+instance Hashable RemoveTargets
 
-instance NFData RemoveTargets where
+instance NFData RemoveTargets
 
 instance ToHeaders RemoveTargets where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("AWSEvents.RemoveTargets" :: ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =# ("AWSEvents.RemoveTargets" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON RemoveTargets where
-        toJSON RemoveTargets'{..}
-          = object
-              (catMaybes
-                 [Just ("Rule" .= _rtRule), Just ("Ids" .= _rtIds)])
+  toJSON RemoveTargets' {..} =
+    object (catMaybes [Just ("Rule" .= _rtRule), Just ("Ids" .= _rtIds)])
 
 instance ToPath RemoveTargets where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery RemoveTargets where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'removeTargetsResponse' smart constructor.
-data RemoveTargetsResponse = RemoveTargetsResponse'
-  { _rtrsFailedEntryCount :: !(Maybe Int)
-  , _rtrsFailedEntries    :: !(Maybe [RemoveTargetsResultEntry])
-  , _rtrsResponseStatus   :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemoveTargetsResponse =
+  RemoveTargetsResponse'
+    { _rtrsFailedEntryCount :: !(Maybe Int)
+    , _rtrsFailedEntries :: !(Maybe [RemoveTargetsResultEntry])
+    , _rtrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RemoveTargetsResponse' with the minimum fields required to make a request.
 --
@@ -133,9 +126,9 @@ data RemoveTargetsResponse = RemoveTargetsResponse'
 -- * 'rtrsFailedEntries' - The failed target entries.
 --
 -- * 'rtrsResponseStatus' - -- | The response status code.
-removeTargetsResponse
-    :: Int -- ^ 'rtrsResponseStatus'
-    -> RemoveTargetsResponse
+removeTargetsResponse ::
+     Int -- ^ 'rtrsResponseStatus'
+  -> RemoveTargetsResponse
 removeTargetsResponse pResponseStatus_ =
   RemoveTargetsResponse'
     { _rtrsFailedEntryCount = Nothing
@@ -143,17 +136,20 @@ removeTargetsResponse pResponseStatus_ =
     , _rtrsResponseStatus = pResponseStatus_
     }
 
-
 -- | The number of failed entries.
 rtrsFailedEntryCount :: Lens' RemoveTargetsResponse (Maybe Int)
-rtrsFailedEntryCount = lens _rtrsFailedEntryCount (\ s a -> s{_rtrsFailedEntryCount = a})
+rtrsFailedEntryCount =
+  lens _rtrsFailedEntryCount (\s a -> s {_rtrsFailedEntryCount = a})
 
 -- | The failed target entries.
 rtrsFailedEntries :: Lens' RemoveTargetsResponse [RemoveTargetsResultEntry]
-rtrsFailedEntries = lens _rtrsFailedEntries (\ s a -> s{_rtrsFailedEntries = a}) . _Default . _Coerce
+rtrsFailedEntries =
+  lens _rtrsFailedEntries (\s a -> s {_rtrsFailedEntries = a}) .
+  _Default . _Coerce
 
 -- | -- | The response status code.
 rtrsResponseStatus :: Lens' RemoveTargetsResponse Int
-rtrsResponseStatus = lens _rtrsResponseStatus (\ s a -> s{_rtrsResponseStatus = a})
+rtrsResponseStatus =
+  lens _rtrsResponseStatus (\s a -> s {_rtrsResponseStatus = a})
 
-instance NFData RemoveTargetsResponse where
+instance NFData RemoveTargetsResponse

@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.SMS
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -13,179 +12,138 @@
 --
 -- Amazon Server Migration Service automates the process of migrating servers to EC2.
 module Network.AWS.SMS
-    (
     -- * Service Configuration
-      sms
-
+  ( sms
     -- * Errors
     -- $errors
-
     -- ** ReplicationRunLimitExceededException
-    , _ReplicationRunLimitExceededException
-
+  , _ReplicationRunLimitExceededException
     -- ** InvalidParameterException
-    , _InvalidParameterException
-
+  , _InvalidParameterException
     -- ** NoConnectorsAvailableException
-    , _NoConnectorsAvailableException
-
+  , _NoConnectorsAvailableException
     -- ** ReplicationJobNotFoundException
-    , _ReplicationJobNotFoundException
-
+  , _ReplicationJobNotFoundException
     -- ** ServerCannotBeReplicatedException
-    , _ServerCannotBeReplicatedException
-
+  , _ServerCannotBeReplicatedException
     -- ** InternalError
-    , _InternalError
-
+  , _InternalError
     -- ** ReplicationJobAlreadyExistsException
-    , _ReplicationJobAlreadyExistsException
-
+  , _ReplicationJobAlreadyExistsException
     -- ** OperationNotPermittedException
-    , _OperationNotPermittedException
-
+  , _OperationNotPermittedException
     -- ** MissingRequiredParameterException
-    , _MissingRequiredParameterException
-
+  , _MissingRequiredParameterException
     -- ** UnauthorizedOperationException
-    , _UnauthorizedOperationException
-
+  , _UnauthorizedOperationException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** DeleteServerCatalog
-    , module Network.AWS.SMS.DeleteServerCatalog
-
+  , module Network.AWS.SMS.DeleteServerCatalog
     -- ** GetReplicationRuns (Paginated)
-    , module Network.AWS.SMS.GetReplicationRuns
-
+  , module Network.AWS.SMS.GetReplicationRuns
     -- ** GetServers (Paginated)
-    , module Network.AWS.SMS.GetServers
-
+  , module Network.AWS.SMS.GetServers
     -- ** ImportServerCatalog
-    , module Network.AWS.SMS.ImportServerCatalog
-
+  , module Network.AWS.SMS.ImportServerCatalog
     -- ** GetConnectors (Paginated)
-    , module Network.AWS.SMS.GetConnectors
-
+  , module Network.AWS.SMS.GetConnectors
     -- ** GetReplicationJobs (Paginated)
-    , module Network.AWS.SMS.GetReplicationJobs
-
+  , module Network.AWS.SMS.GetReplicationJobs
     -- ** DisassociateConnector
-    , module Network.AWS.SMS.DisassociateConnector
-
+  , module Network.AWS.SMS.DisassociateConnector
     -- ** CreateReplicationJob
-    , module Network.AWS.SMS.CreateReplicationJob
-
+  , module Network.AWS.SMS.CreateReplicationJob
     -- ** UpdateReplicationJob
-    , module Network.AWS.SMS.UpdateReplicationJob
-
+  , module Network.AWS.SMS.UpdateReplicationJob
     -- ** DeleteReplicationJob
-    , module Network.AWS.SMS.DeleteReplicationJob
-
+  , module Network.AWS.SMS.DeleteReplicationJob
     -- ** StartOnDemandReplicationRun
-    , module Network.AWS.SMS.StartOnDemandReplicationRun
-
+  , module Network.AWS.SMS.StartOnDemandReplicationRun
     -- * Types
-
     -- ** ConnectorCapability
-    , ConnectorCapability (..)
-
+  , ConnectorCapability(..)
     -- ** ConnectorStatus
-    , ConnectorStatus (..)
-
+  , ConnectorStatus(..)
     -- ** LicenseType
-    , LicenseType (..)
-
+  , LicenseType(..)
     -- ** ReplicationJobState
-    , ReplicationJobState (..)
-
+  , ReplicationJobState(..)
     -- ** ReplicationRunState
-    , ReplicationRunState (..)
-
+  , ReplicationRunState(..)
     -- ** ReplicationRunType
-    , ReplicationRunType (..)
-
+  , ReplicationRunType(..)
     -- ** ServerCatalogStatus
-    , ServerCatalogStatus (..)
-
+  , ServerCatalogStatus(..)
     -- ** ServerType
-    , ServerType (..)
-
+  , ServerType(..)
     -- ** VMManagerType
-    , VMManagerType (..)
-
+  , VMManagerType(..)
     -- ** Connector
-    , Connector
-    , connector
-    , cStatus
-    , cVmManagerName
-    , cIpAddress
-    , cVmManagerId
-    , cVmManagerType
-    , cConnectorId
-    , cAssociatedOn
-    , cMacAddress
-    , cVersion
-    , cCapabilityList
-
+  , Connector
+  , connector
+  , cStatus
+  , cVmManagerName
+  , cIpAddress
+  , cVmManagerId
+  , cVmManagerType
+  , cConnectorId
+  , cAssociatedOn
+  , cMacAddress
+  , cVersion
+  , cCapabilityList
     -- ** ReplicationJob
-    , ReplicationJob
-    , replicationJob
-    , rjFrequency
-    , rjState
-    , rjServerType
-    , rjServerId
-    , rjLicenseType
-    , rjRoleName
-    , rjVmServer
-    , rjReplicationJobId
-    , rjReplicationRunList
-    , rjNextReplicationRunStartTime
-    , rjStatusMessage
-    , rjLatestAMIId
-    , rjSeedReplicationTime
-    , rjDescription
-
+  , ReplicationJob
+  , replicationJob
+  , rjFrequency
+  , rjState
+  , rjServerType
+  , rjServerId
+  , rjLicenseType
+  , rjRoleName
+  , rjVmServer
+  , rjReplicationJobId
+  , rjReplicationRunList
+  , rjNextReplicationRunStartTime
+  , rjStatusMessage
+  , rjLatestAMIId
+  , rjSeedReplicationTime
+  , rjDescription
     -- ** ReplicationRun
-    , ReplicationRun
-    , replicationRun
-    , rrState
-    , rrReplicationRunId
-    , rrScheduledStartTime
-    , rrStatusMessage
-    , rrCompletedTime
-    , rrAmiId
-    , rrType
-    , rrDescription
-
+  , ReplicationRun
+  , replicationRun
+  , rrState
+  , rrReplicationRunId
+  , rrScheduledStartTime
+  , rrStatusMessage
+  , rrCompletedTime
+  , rrAmiId
+  , rrType
+  , rrDescription
     -- ** Server
-    , Server
-    , server
-    , sServerType
-    , sServerId
-    , sReplicationJobTerminated
-    , sVmServer
-    , sReplicationJobId
-
+  , Server
+  , server
+  , sServerType
+  , sServerId
+  , sReplicationJobTerminated
+  , sVmServer
+  , sReplicationJobId
     -- ** VMServer
-    , VMServer
-    , vMServer
-    , vmsVmManagerName
-    , vmsVmManagerType
-    , vmsVmServerAddress
-    , vmsVmName
-    , vmsVmPath
-
+  , VMServer
+  , vMServer
+  , vmsVmManagerName
+  , vmsVmManagerType
+  , vmsVmServerAddress
+  , vmsVmName
+  , vmsVmPath
     -- ** VMServerAddress
-    , VMServerAddress
-    , vMServerAddress
-    , vmsaVmManagerId
-    , vmsaVmId
-    ) where
+  , VMServerAddress
+  , vMServerAddress
+  , vmsaVmManagerId
+  , vmsaVmId
+  ) where
 
 import Network.AWS.SMS.CreateReplicationJob
 import Network.AWS.SMS.DeleteReplicationJob
@@ -200,14 +158,12 @@ import Network.AWS.SMS.StartOnDemandReplicationRun
 import Network.AWS.SMS.Types
 import Network.AWS.SMS.UpdateReplicationJob
 import Network.AWS.SMS.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'SMS'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -224,7 +180,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

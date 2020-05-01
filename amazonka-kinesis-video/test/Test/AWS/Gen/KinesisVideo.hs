@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.KinesisVideo
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -59,7 +57,6 @@ import Test.Tasty
 --             describeStream
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseUntagStream $
 --             untagStreamResponse
@@ -93,126 +90,115 @@ import Test.Tasty
 --
 --           ]
 --     ]
-
 -- Requests
-
 requestUntagStream :: UntagStream -> TestTree
-requestUntagStream = req
-    "UntagStream"
-    "fixture/UntagStream.yaml"
+requestUntagStream = req "UntagStream" "fixture/UntagStream.yaml"
 
 requestUpdateDataRetention :: UpdateDataRetention -> TestTree
-requestUpdateDataRetention = req
-    "UpdateDataRetention"
-    "fixture/UpdateDataRetention.yaml"
+requestUpdateDataRetention =
+  req "UpdateDataRetention" "fixture/UpdateDataRetention.yaml"
 
 requestGetDataEndpoint :: GetDataEndpoint -> TestTree
-requestGetDataEndpoint = req
-    "GetDataEndpoint"
-    "fixture/GetDataEndpoint.yaml"
+requestGetDataEndpoint = req "GetDataEndpoint" "fixture/GetDataEndpoint.yaml"
 
 requestListTagsForStream :: ListTagsForStream -> TestTree
-requestListTagsForStream = req
-    "ListTagsForStream"
-    "fixture/ListTagsForStream.yaml"
+requestListTagsForStream =
+  req "ListTagsForStream" "fixture/ListTagsForStream.yaml"
 
 requestUpdateStream :: UpdateStream -> TestTree
-requestUpdateStream = req
-    "UpdateStream"
-    "fixture/UpdateStream.yaml"
+requestUpdateStream = req "UpdateStream" "fixture/UpdateStream.yaml"
 
 requestDeleteStream :: DeleteStream -> TestTree
-requestDeleteStream = req
-    "DeleteStream"
-    "fixture/DeleteStream.yaml"
+requestDeleteStream = req "DeleteStream" "fixture/DeleteStream.yaml"
 
 requestListStreams :: ListStreams -> TestTree
-requestListStreams = req
-    "ListStreams"
-    "fixture/ListStreams.yaml"
+requestListStreams = req "ListStreams" "fixture/ListStreams.yaml"
 
 requestCreateStream :: CreateStream -> TestTree
-requestCreateStream = req
-    "CreateStream"
-    "fixture/CreateStream.yaml"
+requestCreateStream = req "CreateStream" "fixture/CreateStream.yaml"
 
 requestTagStream :: TagStream -> TestTree
-requestTagStream = req
-    "TagStream"
-    "fixture/TagStream.yaml"
+requestTagStream = req "TagStream" "fixture/TagStream.yaml"
 
 requestDescribeStream :: DescribeStream -> TestTree
-requestDescribeStream = req
-    "DescribeStream"
-    "fixture/DescribeStream.yaml"
+requestDescribeStream = req "DescribeStream" "fixture/DescribeStream.yaml"
 
 -- Responses
-
 responseUntagStream :: UntagStreamResponse -> TestTree
-responseUntagStream = res
+responseUntagStream =
+  res
     "UntagStreamResponse"
     "fixture/UntagStreamResponse.proto"
     kinesisVideo
     (Proxy :: Proxy UntagStream)
 
 responseUpdateDataRetention :: UpdateDataRetentionResponse -> TestTree
-responseUpdateDataRetention = res
+responseUpdateDataRetention =
+  res
     "UpdateDataRetentionResponse"
     "fixture/UpdateDataRetentionResponse.proto"
     kinesisVideo
     (Proxy :: Proxy UpdateDataRetention)
 
 responseGetDataEndpoint :: GetDataEndpointResponse -> TestTree
-responseGetDataEndpoint = res
+responseGetDataEndpoint =
+  res
     "GetDataEndpointResponse"
     "fixture/GetDataEndpointResponse.proto"
     kinesisVideo
     (Proxy :: Proxy GetDataEndpoint)
 
 responseListTagsForStream :: ListTagsForStreamResponse -> TestTree
-responseListTagsForStream = res
+responseListTagsForStream =
+  res
     "ListTagsForStreamResponse"
     "fixture/ListTagsForStreamResponse.proto"
     kinesisVideo
     (Proxy :: Proxy ListTagsForStream)
 
 responseUpdateStream :: UpdateStreamResponse -> TestTree
-responseUpdateStream = res
+responseUpdateStream =
+  res
     "UpdateStreamResponse"
     "fixture/UpdateStreamResponse.proto"
     kinesisVideo
     (Proxy :: Proxy UpdateStream)
 
 responseDeleteStream :: DeleteStreamResponse -> TestTree
-responseDeleteStream = res
+responseDeleteStream =
+  res
     "DeleteStreamResponse"
     "fixture/DeleteStreamResponse.proto"
     kinesisVideo
     (Proxy :: Proxy DeleteStream)
 
 responseListStreams :: ListStreamsResponse -> TestTree
-responseListStreams = res
+responseListStreams =
+  res
     "ListStreamsResponse"
     "fixture/ListStreamsResponse.proto"
     kinesisVideo
     (Proxy :: Proxy ListStreams)
 
 responseCreateStream :: CreateStreamResponse -> TestTree
-responseCreateStream = res
+responseCreateStream =
+  res
     "CreateStreamResponse"
     "fixture/CreateStreamResponse.proto"
     kinesisVideo
     (Proxy :: Proxy CreateStream)
 
 responseTagStream :: TagStreamResponse -> TestTree
-responseTagStream = res
+responseTagStream =
+  res
     "TagStreamResponse"
     "fixture/TagStreamResponse.proto"
     kinesisVideo
     (Proxy :: Proxy TagStream)
 
 responseDescribeStream :: DescribeStreamResponse -> TestTree
-responseDescribeStream = res
+responseDescribeStream =
+  res
     "DescribeStreamResponse"
     "fixture/DescribeStreamResponse.proto"
     kinesisVideo

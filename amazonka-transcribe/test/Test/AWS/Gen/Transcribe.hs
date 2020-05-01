@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.Transcribe
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -53,7 +51,6 @@ import Test.Tasty
 --             startTranscriptionJob
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseGetVocabulary $
 --             getVocabularyResponse
@@ -81,102 +78,94 @@ import Test.Tasty
 --
 --           ]
 --     ]
-
 -- Requests
-
 requestGetVocabulary :: GetVocabulary -> TestTree
-requestGetVocabulary = req
-    "GetVocabulary"
-    "fixture/GetVocabulary.yaml"
+requestGetVocabulary = req "GetVocabulary" "fixture/GetVocabulary.yaml"
 
 requestGetTranscriptionJob :: GetTranscriptionJob -> TestTree
-requestGetTranscriptionJob = req
-    "GetTranscriptionJob"
-    "fixture/GetTranscriptionJob.yaml"
+requestGetTranscriptionJob =
+  req "GetTranscriptionJob" "fixture/GetTranscriptionJob.yaml"
 
 requestDeleteVocabulary :: DeleteVocabulary -> TestTree
-requestDeleteVocabulary = req
-    "DeleteVocabulary"
-    "fixture/DeleteVocabulary.yaml"
+requestDeleteVocabulary = req "DeleteVocabulary" "fixture/DeleteVocabulary.yaml"
 
 requestUpdateVocabulary :: UpdateVocabulary -> TestTree
-requestUpdateVocabulary = req
-    "UpdateVocabulary"
-    "fixture/UpdateVocabulary.yaml"
+requestUpdateVocabulary = req "UpdateVocabulary" "fixture/UpdateVocabulary.yaml"
 
 requestListTranscriptionJobs :: ListTranscriptionJobs -> TestTree
-requestListTranscriptionJobs = req
-    "ListTranscriptionJobs"
-    "fixture/ListTranscriptionJobs.yaml"
+requestListTranscriptionJobs =
+  req "ListTranscriptionJobs" "fixture/ListTranscriptionJobs.yaml"
 
 requestListVocabularies :: ListVocabularies -> TestTree
-requestListVocabularies = req
-    "ListVocabularies"
-    "fixture/ListVocabularies.yaml"
+requestListVocabularies = req "ListVocabularies" "fixture/ListVocabularies.yaml"
 
 requestCreateVocabulary :: CreateVocabulary -> TestTree
-requestCreateVocabulary = req
-    "CreateVocabulary"
-    "fixture/CreateVocabulary.yaml"
+requestCreateVocabulary = req "CreateVocabulary" "fixture/CreateVocabulary.yaml"
 
 requestStartTranscriptionJob :: StartTranscriptionJob -> TestTree
-requestStartTranscriptionJob = req
-    "StartTranscriptionJob"
-    "fixture/StartTranscriptionJob.yaml"
+requestStartTranscriptionJob =
+  req "StartTranscriptionJob" "fixture/StartTranscriptionJob.yaml"
 
 -- Responses
-
 responseGetVocabulary :: GetVocabularyResponse -> TestTree
-responseGetVocabulary = res
+responseGetVocabulary =
+  res
     "GetVocabularyResponse"
     "fixture/GetVocabularyResponse.proto"
     transcribe
     (Proxy :: Proxy GetVocabulary)
 
 responseGetTranscriptionJob :: GetTranscriptionJobResponse -> TestTree
-responseGetTranscriptionJob = res
+responseGetTranscriptionJob =
+  res
     "GetTranscriptionJobResponse"
     "fixture/GetTranscriptionJobResponse.proto"
     transcribe
     (Proxy :: Proxy GetTranscriptionJob)
 
 responseDeleteVocabulary :: DeleteVocabularyResponse -> TestTree
-responseDeleteVocabulary = res
+responseDeleteVocabulary =
+  res
     "DeleteVocabularyResponse"
     "fixture/DeleteVocabularyResponse.proto"
     transcribe
     (Proxy :: Proxy DeleteVocabulary)
 
 responseUpdateVocabulary :: UpdateVocabularyResponse -> TestTree
-responseUpdateVocabulary = res
+responseUpdateVocabulary =
+  res
     "UpdateVocabularyResponse"
     "fixture/UpdateVocabularyResponse.proto"
     transcribe
     (Proxy :: Proxy UpdateVocabulary)
 
 responseListTranscriptionJobs :: ListTranscriptionJobsResponse -> TestTree
-responseListTranscriptionJobs = res
+responseListTranscriptionJobs =
+  res
     "ListTranscriptionJobsResponse"
     "fixture/ListTranscriptionJobsResponse.proto"
     transcribe
     (Proxy :: Proxy ListTranscriptionJobs)
 
 responseListVocabularies :: ListVocabulariesResponse -> TestTree
-responseListVocabularies = res
+responseListVocabularies =
+  res
     "ListVocabulariesResponse"
     "fixture/ListVocabulariesResponse.proto"
     transcribe
     (Proxy :: Proxy ListVocabularies)
 
 responseCreateVocabulary :: CreateVocabularyResponse -> TestTree
-responseCreateVocabulary = res
+responseCreateVocabulary =
+  res
     "CreateVocabularyResponse"
     "fixture/CreateVocabularyResponse.proto"
     transcribe
     (Proxy :: Proxy CreateVocabulary)
 
 responseStartTranscriptionJob :: StartTranscriptionJobResponse -> TestTree
-responseStartTranscriptionJob = res
+responseStartTranscriptionJob =
+  res
     "StartTranscriptionJobResponse"
     "fixture/StartTranscriptionJobResponse.proto"
     transcribe

@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.Pricing
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -38,7 +36,6 @@ import Test.Tasty
 --             getProducts
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseGetAttributeValues $
 --             getAttributeValuesResponse
@@ -51,42 +48,37 @@ import Test.Tasty
 --
 --           ]
 --     ]
-
 -- Requests
-
 requestGetAttributeValues :: GetAttributeValues -> TestTree
-requestGetAttributeValues = req
-    "GetAttributeValues"
-    "fixture/GetAttributeValues.yaml"
+requestGetAttributeValues =
+  req "GetAttributeValues" "fixture/GetAttributeValues.yaml"
 
 requestDescribeServices :: DescribeServices -> TestTree
-requestDescribeServices = req
-    "DescribeServices"
-    "fixture/DescribeServices.yaml"
+requestDescribeServices = req "DescribeServices" "fixture/DescribeServices.yaml"
 
 requestGetProducts :: GetProducts -> TestTree
-requestGetProducts = req
-    "GetProducts"
-    "fixture/GetProducts.yaml"
+requestGetProducts = req "GetProducts" "fixture/GetProducts.yaml"
 
 -- Responses
-
 responseGetAttributeValues :: GetAttributeValuesResponse -> TestTree
-responseGetAttributeValues = res
+responseGetAttributeValues =
+  res
     "GetAttributeValuesResponse"
     "fixture/GetAttributeValuesResponse.proto"
     pricing
     (Proxy :: Proxy GetAttributeValues)
 
 responseDescribeServices :: DescribeServicesResponse -> TestTree
-responseDescribeServices = res
+responseDescribeServices =
+  res
     "DescribeServicesResponse"
     "fixture/DescribeServicesResponse.proto"
     pricing
     (Proxy :: Proxy DescribeServices)
 
 responseGetProducts :: GetProductsResponse -> TestTree
-responseGetProducts = res
+responseGetProducts =
+  res
     "GetProductsResponse"
     "fixture/GetProductsResponse.proto"
     pricing

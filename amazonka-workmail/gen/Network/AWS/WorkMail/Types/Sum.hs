@@ -1,12 +1,10 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE LambdaCase         #-}
-{-# LANGUAGE OverloadedStrings  #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE LambdaCase #-}
+{-# LANGUAGE OverloadedStrings #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.WorkMail.Types.Sum
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -25,56 +23,70 @@ data EntityState
   | Enabled
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
-
 instance FromText EntityState where
-    parser = takeLowerText >>= \case
-        "deleted" -> pure Deleted
-        "disabled" -> pure Disabled
-        "enabled" -> pure Enabled
-        e -> fromTextError $ "Failure parsing EntityState from value: '" <> e
-           <> "'. Accepted values: deleted, disabled, enabled"
+  parser =
+    takeLowerText >>= \case
+      "deleted" -> pure Deleted
+      "disabled" -> pure Disabled
+      "enabled" -> pure Enabled
+      e ->
+        fromTextError $
+        "Failure parsing EntityState from value: '" <>
+        e <> "'. Accepted values: deleted, disabled, enabled"
 
 instance ToText EntityState where
-    toText = \case
-        Deleted -> "DELETED"
-        Disabled -> "DISABLED"
-        Enabled -> "ENABLED"
+  toText =
+    \case
+      Deleted -> "DELETED"
+      Disabled -> "DISABLED"
+      Enabled -> "ENABLED"
 
-instance Hashable     EntityState
-instance NFData       EntityState
+instance Hashable EntityState
+
+instance NFData EntityState
+
 instance ToByteString EntityState
-instance ToQuery      EntityState
-instance ToHeader     EntityState
+
+instance ToQuery EntityState
+
+instance ToHeader EntityState
 
 instance FromJSON EntityState where
-    parseJSON = parseJSONText "EntityState"
+  parseJSON = parseJSONText "EntityState"
 
 data MemberType
   = Group
   | User
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
-
 instance FromText MemberType where
-    parser = takeLowerText >>= \case
-        "group" -> pure Group
-        "user" -> pure User
-        e -> fromTextError $ "Failure parsing MemberType from value: '" <> e
-           <> "'. Accepted values: group, user"
+  parser =
+    takeLowerText >>= \case
+      "group" -> pure Group
+      "user" -> pure User
+      e ->
+        fromTextError $
+        "Failure parsing MemberType from value: '" <>
+        e <> "'. Accepted values: group, user"
 
 instance ToText MemberType where
-    toText = \case
-        Group -> "GROUP"
-        User -> "USER"
+  toText =
+    \case
+      Group -> "GROUP"
+      User -> "USER"
 
-instance Hashable     MemberType
-instance NFData       MemberType
+instance Hashable MemberType
+
+instance NFData MemberType
+
 instance ToByteString MemberType
-instance ToQuery      MemberType
-instance ToHeader     MemberType
+
+instance ToQuery MemberType
+
+instance ToHeader MemberType
 
 instance FromJSON MemberType where
-    parseJSON = parseJSONText "MemberType"
+  parseJSON = parseJSONText "MemberType"
 
 data PermissionType
   = FullAccess
@@ -82,62 +94,76 @@ data PermissionType
   | SendOnBehalf
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
-
 instance FromText PermissionType where
-    parser = takeLowerText >>= \case
-        "full_access" -> pure FullAccess
-        "send_as" -> pure SendAs
-        "send_on_behalf" -> pure SendOnBehalf
-        e -> fromTextError $ "Failure parsing PermissionType from value: '" <> e
-           <> "'. Accepted values: full_access, send_as, send_on_behalf"
+  parser =
+    takeLowerText >>= \case
+      "full_access" -> pure FullAccess
+      "send_as" -> pure SendAs
+      "send_on_behalf" -> pure SendOnBehalf
+      e ->
+        fromTextError $
+        "Failure parsing PermissionType from value: '" <>
+        e <> "'. Accepted values: full_access, send_as, send_on_behalf"
 
 instance ToText PermissionType where
-    toText = \case
-        FullAccess -> "FULL_ACCESS"
-        SendAs -> "SEND_AS"
-        SendOnBehalf -> "SEND_ON_BEHALF"
+  toText =
+    \case
+      FullAccess -> "FULL_ACCESS"
+      SendAs -> "SEND_AS"
+      SendOnBehalf -> "SEND_ON_BEHALF"
 
-instance Hashable     PermissionType
-instance NFData       PermissionType
+instance Hashable PermissionType
+
+instance NFData PermissionType
+
 instance ToByteString PermissionType
-instance ToQuery      PermissionType
-instance ToHeader     PermissionType
+
+instance ToQuery PermissionType
+
+instance ToHeader PermissionType
 
 instance ToJSON PermissionType where
-    toJSON = toJSONText
+  toJSON = toJSONText
 
 instance FromJSON PermissionType where
-    parseJSON = parseJSONText "PermissionType"
+  parseJSON = parseJSONText "PermissionType"
 
 data ResourceType
   = Equipment
   | Room
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
-
 instance FromText ResourceType where
-    parser = takeLowerText >>= \case
-        "equipment" -> pure Equipment
-        "room" -> pure Room
-        e -> fromTextError $ "Failure parsing ResourceType from value: '" <> e
-           <> "'. Accepted values: equipment, room"
+  parser =
+    takeLowerText >>= \case
+      "equipment" -> pure Equipment
+      "room" -> pure Room
+      e ->
+        fromTextError $
+        "Failure parsing ResourceType from value: '" <>
+        e <> "'. Accepted values: equipment, room"
 
 instance ToText ResourceType where
-    toText = \case
-        Equipment -> "EQUIPMENT"
-        Room -> "ROOM"
+  toText =
+    \case
+      Equipment -> "EQUIPMENT"
+      Room -> "ROOM"
 
-instance Hashable     ResourceType
-instance NFData       ResourceType
+instance Hashable ResourceType
+
+instance NFData ResourceType
+
 instance ToByteString ResourceType
-instance ToQuery      ResourceType
-instance ToHeader     ResourceType
+
+instance ToQuery ResourceType
+
+instance ToHeader ResourceType
 
 instance ToJSON ResourceType where
-    toJSON = toJSONText
+  toJSON = toJSONText
 
 instance FromJSON ResourceType where
-    parseJSON = parseJSONText "ResourceType"
+  parseJSON = parseJSONText "ResourceType"
 
 data UserRole
   = URResource
@@ -145,26 +171,33 @@ data UserRole
   | URUser
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
-
 instance FromText UserRole where
-    parser = takeLowerText >>= \case
-        "resource" -> pure URResource
-        "system_user" -> pure URSystemUser
-        "user" -> pure URUser
-        e -> fromTextError $ "Failure parsing UserRole from value: '" <> e
-           <> "'. Accepted values: resource, system_user, user"
+  parser =
+    takeLowerText >>= \case
+      "resource" -> pure URResource
+      "system_user" -> pure URSystemUser
+      "user" -> pure URUser
+      e ->
+        fromTextError $
+        "Failure parsing UserRole from value: '" <>
+        e <> "'. Accepted values: resource, system_user, user"
 
 instance ToText UserRole where
-    toText = \case
-        URResource -> "RESOURCE"
-        URSystemUser -> "SYSTEM_USER"
-        URUser -> "USER"
+  toText =
+    \case
+      URResource -> "RESOURCE"
+      URSystemUser -> "SYSTEM_USER"
+      URUser -> "USER"
 
-instance Hashable     UserRole
-instance NFData       UserRole
+instance Hashable UserRole
+
+instance NFData UserRole
+
 instance ToByteString UserRole
-instance ToQuery      UserRole
-instance ToHeader     UserRole
+
+instance ToQuery UserRole
+
+instance ToHeader UserRole
 
 instance FromJSON UserRole where
-    parseJSON = parseJSONText "UserRole"
+  parseJSON = parseJSONText "UserRole"

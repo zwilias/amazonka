@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.EMR.ModifyInstanceFleet
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,18 +20,16 @@
 --
 --
 module Network.AWS.EMR.ModifyInstanceFleet
-    (
     -- * Creating a Request
-      modifyInstanceFleet
-    , ModifyInstanceFleet
+  ( modifyInstanceFleet
+  , ModifyInstanceFleet
     -- * Request Lenses
-    , mifClusterId
-    , mifInstanceFleet
-
+  , mifClusterId
+  , mifInstanceFleet
     -- * Destructuring the Response
-    , modifyInstanceFleetResponse
-    , ModifyInstanceFleetResponse
-    ) where
+  , modifyInstanceFleetResponse
+  , ModifyInstanceFleetResponse
+  ) where
 
 import Network.AWS.EMR.Types
 import Network.AWS.EMR.Types.Product
@@ -43,11 +39,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyInstanceFleet' smart constructor.
-data ModifyInstanceFleet = ModifyInstanceFleet'
-  { _mifClusterId     :: !Text
-  , _mifInstanceFleet :: !InstanceFleetModifyConfig
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyInstanceFleet =
+  ModifyInstanceFleet'
+    { _mifClusterId :: !Text
+    , _mifInstanceFleet :: !InstanceFleetModifyConfig
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyInstanceFleet' with the minimum fields required to make a request.
 --
@@ -56,67 +53,62 @@ data ModifyInstanceFleet = ModifyInstanceFleet'
 -- * 'mifClusterId' - The unique identifier of the cluster.
 --
 -- * 'mifInstanceFleet' - The unique identifier of the instance fleet.
-modifyInstanceFleet
-    :: Text -- ^ 'mifClusterId'
-    -> InstanceFleetModifyConfig -- ^ 'mifInstanceFleet'
-    -> ModifyInstanceFleet
+modifyInstanceFleet ::
+     Text -- ^ 'mifClusterId'
+  -> InstanceFleetModifyConfig -- ^ 'mifInstanceFleet'
+  -> ModifyInstanceFleet
 modifyInstanceFleet pClusterId_ pInstanceFleet_ =
   ModifyInstanceFleet'
     {_mifClusterId = pClusterId_, _mifInstanceFleet = pInstanceFleet_}
 
-
 -- | The unique identifier of the cluster.
 mifClusterId :: Lens' ModifyInstanceFleet Text
-mifClusterId = lens _mifClusterId (\ s a -> s{_mifClusterId = a})
+mifClusterId = lens _mifClusterId (\s a -> s {_mifClusterId = a})
 
 -- | The unique identifier of the instance fleet.
 mifInstanceFleet :: Lens' ModifyInstanceFleet InstanceFleetModifyConfig
-mifInstanceFleet = lens _mifInstanceFleet (\ s a -> s{_mifInstanceFleet = a})
+mifInstanceFleet = lens _mifInstanceFleet (\s a -> s {_mifInstanceFleet = a})
 
 instance AWSRequest ModifyInstanceFleet where
-        type Rs ModifyInstanceFleet =
-             ModifyInstanceFleetResponse
-        request = postJSON emr
-        response = receiveNull ModifyInstanceFleetResponse'
+  type Rs ModifyInstanceFleet = ModifyInstanceFleetResponse
+  request = postJSON emr
+  response = receiveNull ModifyInstanceFleetResponse'
 
-instance Hashable ModifyInstanceFleet where
+instance Hashable ModifyInstanceFleet
 
-instance NFData ModifyInstanceFleet where
+instance NFData ModifyInstanceFleet
 
 instance ToHeaders ModifyInstanceFleet where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("ElasticMapReduce.ModifyInstanceFleet" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("ElasticMapReduce.ModifyInstanceFleet" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON ModifyInstanceFleet where
-        toJSON ModifyInstanceFleet'{..}
-          = object
-              (catMaybes
-                 [Just ("ClusterId" .= _mifClusterId),
-                  Just ("InstanceFleet" .= _mifInstanceFleet)])
+  toJSON ModifyInstanceFleet' {..} =
+    object
+      (catMaybes
+         [ Just ("ClusterId" .= _mifClusterId)
+         , Just ("InstanceFleet" .= _mifInstanceFleet)
+         ])
 
 instance ToPath ModifyInstanceFleet where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery ModifyInstanceFleet where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'modifyInstanceFleetResponse' smart constructor.
 data ModifyInstanceFleetResponse =
   ModifyInstanceFleetResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'ModifyInstanceFleetResponse' with the minimum fields required to make a request.
 --
-modifyInstanceFleetResponse
-    :: ModifyInstanceFleetResponse
+modifyInstanceFleetResponse :: ModifyInstanceFleetResponse
 modifyInstanceFleetResponse = ModifyInstanceFleetResponse'
 
-
-instance NFData ModifyInstanceFleetResponse where
+instance NFData ModifyInstanceFleetResponse

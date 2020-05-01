@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Lightsail
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -19,693 +18,550 @@
 -- To use the Lightsail API or the CLI, you will need to use AWS Identity and Access Management (IAM) to generate access keys. For details about how to set this up, see the <http://lightsail.aws.amazon.com/ls/docs/how-to/article/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli Lightsail Dev Guide> .
 --
 module Network.AWS.Lightsail
-    (
     -- * Service Configuration
-      lightsail
-
+  ( lightsail
     -- * Errors
     -- $errors
-
     -- ** AccessDeniedException
-    , _AccessDeniedException
-
+  , _AccessDeniedException
     -- ** AccountSetupInProgressException
-    , _AccountSetupInProgressException
-
+  , _AccountSetupInProgressException
     -- ** NotFoundException
-    , _NotFoundException
-
+  , _NotFoundException
     -- ** OperationFailureException
-    , _OperationFailureException
-
+  , _OperationFailureException
     -- ** ServiceException
-    , _ServiceException
-
+  , _ServiceException
     -- ** UnauthenticatedException
-    , _UnauthenticatedException
-
+  , _UnauthenticatedException
     -- ** InvalidInputException
-    , _InvalidInputException
-
+  , _InvalidInputException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** CloseInstancePublicPorts
-    , module Network.AWS.Lightsail.CloseInstancePublicPorts
-
+  , module Network.AWS.Lightsail.CloseInstancePublicPorts
     -- ** AllocateStaticIP
-    , module Network.AWS.Lightsail.AllocateStaticIP
-
+  , module Network.AWS.Lightsail.AllocateStaticIP
     -- ** DeleteKeyPair
-    , module Network.AWS.Lightsail.DeleteKeyPair
-
+  , module Network.AWS.Lightsail.DeleteKeyPair
     -- ** DeleteInstanceSnapshot
-    , module Network.AWS.Lightsail.DeleteInstanceSnapshot
-
+  , module Network.AWS.Lightsail.DeleteInstanceSnapshot
     -- ** GetInstances (Paginated)
-    , module Network.AWS.Lightsail.GetInstances
-
+  , module Network.AWS.Lightsail.GetInstances
     -- ** GetLoadBalancer
-    , module Network.AWS.Lightsail.GetLoadBalancer
-
+  , module Network.AWS.Lightsail.GetLoadBalancer
     -- ** GetInstance
-    , module Network.AWS.Lightsail.GetInstance
-
+  , module Network.AWS.Lightsail.GetInstance
     -- ** AttachStaticIP
-    , module Network.AWS.Lightsail.AttachStaticIP
-
+  , module Network.AWS.Lightsail.AttachStaticIP
     -- ** DetachDisk
-    , module Network.AWS.Lightsail.DetachDisk
-
+  , module Network.AWS.Lightsail.DetachDisk
     -- ** DownloadDefaultKeyPair
-    , module Network.AWS.Lightsail.DownloadDefaultKeyPair
-
+  , module Network.AWS.Lightsail.DownloadDefaultKeyPair
     -- ** DeleteLoadBalancerTLSCertificate
-    , module Network.AWS.Lightsail.DeleteLoadBalancerTLSCertificate
-
+  , module Network.AWS.Lightsail.DeleteLoadBalancerTLSCertificate
     -- ** GetDomains (Paginated)
-    , module Network.AWS.Lightsail.GetDomains
-
+  , module Network.AWS.Lightsail.GetDomains
     -- ** CreateLoadBalancerTLSCertificate
-    , module Network.AWS.Lightsail.CreateLoadBalancerTLSCertificate
-
+  , module Network.AWS.Lightsail.CreateLoadBalancerTLSCertificate
     -- ** CreateDomainEntry
-    , module Network.AWS.Lightsail.CreateDomainEntry
-
+  , module Network.AWS.Lightsail.CreateDomainEntry
     -- ** ImportKeyPair
-    , module Network.AWS.Lightsail.ImportKeyPair
-
+  , module Network.AWS.Lightsail.ImportKeyPair
     -- ** GetInstanceSnapshots (Paginated)
-    , module Network.AWS.Lightsail.GetInstanceSnapshots
-
+  , module Network.AWS.Lightsail.GetInstanceSnapshots
     -- ** ReleaseStaticIP
-    , module Network.AWS.Lightsail.ReleaseStaticIP
-
+  , module Network.AWS.Lightsail.ReleaseStaticIP
     -- ** DeleteInstance
-    , module Network.AWS.Lightsail.DeleteInstance
-
+  , module Network.AWS.Lightsail.DeleteInstance
     -- ** RebootInstance
-    , module Network.AWS.Lightsail.RebootInstance
-
+  , module Network.AWS.Lightsail.RebootInstance
     -- ** DeleteLoadBalancer
-    , module Network.AWS.Lightsail.DeleteLoadBalancer
-
+  , module Network.AWS.Lightsail.DeleteLoadBalancer
     -- ** CreateDiskFromSnapshot
-    , module Network.AWS.Lightsail.CreateDiskFromSnapshot
-
+  , module Network.AWS.Lightsail.CreateDiskFromSnapshot
     -- ** GetInstanceSnapshot
-    , module Network.AWS.Lightsail.GetInstanceSnapshot
-
+  , module Network.AWS.Lightsail.GetInstanceSnapshot
     -- ** GetDomain
-    , module Network.AWS.Lightsail.GetDomain
-
+  , module Network.AWS.Lightsail.GetDomain
     -- ** GetActiveNames (Paginated)
-    , module Network.AWS.Lightsail.GetActiveNames
-
+  , module Network.AWS.Lightsail.GetActiveNames
     -- ** GetInstanceAccessDetails
-    , module Network.AWS.Lightsail.GetInstanceAccessDetails
-
+  , module Network.AWS.Lightsail.GetInstanceAccessDetails
     -- ** StopInstance
-    , module Network.AWS.Lightsail.StopInstance
-
+  , module Network.AWS.Lightsail.StopInstance
     -- ** DetachInstancesFromLoadBalancer
-    , module Network.AWS.Lightsail.DetachInstancesFromLoadBalancer
-
+  , module Network.AWS.Lightsail.DetachInstancesFromLoadBalancer
     -- ** CreateInstanceSnapshot
-    , module Network.AWS.Lightsail.CreateInstanceSnapshot
-
+  , module Network.AWS.Lightsail.CreateInstanceSnapshot
     -- ** IsVPCPeered
-    , module Network.AWS.Lightsail.IsVPCPeered
-
+  , module Network.AWS.Lightsail.IsVPCPeered
     -- ** GetStaticIPs (Paginated)
-    , module Network.AWS.Lightsail.GetStaticIPs
-
+  , module Network.AWS.Lightsail.GetStaticIPs
     -- ** UnpeerVPC
-    , module Network.AWS.Lightsail.UnpeerVPC
-
+  , module Network.AWS.Lightsail.UnpeerVPC
     -- ** DeleteDisk
-    , module Network.AWS.Lightsail.DeleteDisk
-
+  , module Network.AWS.Lightsail.DeleteDisk
     -- ** CreateInstancesFromSnapshot
-    , module Network.AWS.Lightsail.CreateInstancesFromSnapshot
-
+  , module Network.AWS.Lightsail.CreateInstancesFromSnapshot
     -- ** CreateDomain
-    , module Network.AWS.Lightsail.CreateDomain
-
+  , module Network.AWS.Lightsail.CreateDomain
     -- ** GetDiskSnapshots
-    , module Network.AWS.Lightsail.GetDiskSnapshots
-
+  , module Network.AWS.Lightsail.GetDiskSnapshots
     -- ** PeerVPC
-    , module Network.AWS.Lightsail.PeerVPC
-
+  , module Network.AWS.Lightsail.PeerVPC
     -- ** GetLoadBalancers
-    , module Network.AWS.Lightsail.GetLoadBalancers
-
+  , module Network.AWS.Lightsail.GetLoadBalancers
     -- ** AttachLoadBalancerTLSCertificate
-    , module Network.AWS.Lightsail.AttachLoadBalancerTLSCertificate
-
+  , module Network.AWS.Lightsail.AttachLoadBalancerTLSCertificate
     -- ** UpdateLoadBalancerAttribute
-    , module Network.AWS.Lightsail.UpdateLoadBalancerAttribute
-
+  , module Network.AWS.Lightsail.UpdateLoadBalancerAttribute
     -- ** GetDiskSnapshot
-    , module Network.AWS.Lightsail.GetDiskSnapshot
-
+  , module Network.AWS.Lightsail.GetDiskSnapshot
     -- ** GetStaticIP
-    , module Network.AWS.Lightsail.GetStaticIP
-
+  , module Network.AWS.Lightsail.GetStaticIP
     -- ** GetBlueprints (Paginated)
-    , module Network.AWS.Lightsail.GetBlueprints
-
+  , module Network.AWS.Lightsail.GetBlueprints
     -- ** GetInstancePortStates
-    , module Network.AWS.Lightsail.GetInstancePortStates
-
+  , module Network.AWS.Lightsail.GetInstancePortStates
     -- ** CreateDiskSnapshot
-    , module Network.AWS.Lightsail.CreateDiskSnapshot
-
+  , module Network.AWS.Lightsail.CreateDiskSnapshot
     -- ** DeleteDomainEntry
-    , module Network.AWS.Lightsail.DeleteDomainEntry
-
+  , module Network.AWS.Lightsail.DeleteDomainEntry
     -- ** UpdateDomainEntry
-    , module Network.AWS.Lightsail.UpdateDomainEntry
-
+  , module Network.AWS.Lightsail.UpdateDomainEntry
     -- ** GetRegions
-    , module Network.AWS.Lightsail.GetRegions
-
+  , module Network.AWS.Lightsail.GetRegions
     -- ** DeleteDiskSnapshot
-    , module Network.AWS.Lightsail.DeleteDiskSnapshot
-
+  , module Network.AWS.Lightsail.DeleteDiskSnapshot
     -- ** GetLoadBalancerMetricData
-    , module Network.AWS.Lightsail.GetLoadBalancerMetricData
-
+  , module Network.AWS.Lightsail.GetLoadBalancerMetricData
     -- ** GetInstanceState
-    , module Network.AWS.Lightsail.GetInstanceState
-
+  , module Network.AWS.Lightsail.GetInstanceState
     -- ** GetKeyPairs (Paginated)
-    , module Network.AWS.Lightsail.GetKeyPairs
-
+  , module Network.AWS.Lightsail.GetKeyPairs
     -- ** GetOperations (Paginated)
-    , module Network.AWS.Lightsail.GetOperations
-
+  , module Network.AWS.Lightsail.GetOperations
     -- ** GetDisks
-    , module Network.AWS.Lightsail.GetDisks
-
+  , module Network.AWS.Lightsail.GetDisks
     -- ** AttachInstancesToLoadBalancer
-    , module Network.AWS.Lightsail.AttachInstancesToLoadBalancer
-
+  , module Network.AWS.Lightsail.AttachInstancesToLoadBalancer
     -- ** GetOperation
-    , module Network.AWS.Lightsail.GetOperation
-
+  , module Network.AWS.Lightsail.GetOperation
     -- ** GetInstanceMetricData
-    , module Network.AWS.Lightsail.GetInstanceMetricData
-
+  , module Network.AWS.Lightsail.GetInstanceMetricData
     -- ** GetKeyPair
-    , module Network.AWS.Lightsail.GetKeyPair
-
+  , module Network.AWS.Lightsail.GetKeyPair
     -- ** PutInstancePublicPorts
-    , module Network.AWS.Lightsail.PutInstancePublicPorts
-
+  , module Network.AWS.Lightsail.PutInstancePublicPorts
     -- ** GetDisk
-    , module Network.AWS.Lightsail.GetDisk
-
+  , module Network.AWS.Lightsail.GetDisk
     -- ** CreateLoadBalancer
-    , module Network.AWS.Lightsail.CreateLoadBalancer
-
+  , module Network.AWS.Lightsail.CreateLoadBalancer
     -- ** AttachDisk
-    , module Network.AWS.Lightsail.AttachDisk
-
+  , module Network.AWS.Lightsail.AttachDisk
     -- ** DetachStaticIP
-    , module Network.AWS.Lightsail.DetachStaticIP
-
+  , module Network.AWS.Lightsail.DetachStaticIP
     -- ** CreateInstances
-    , module Network.AWS.Lightsail.CreateInstances
-
+  , module Network.AWS.Lightsail.CreateInstances
     -- ** OpenInstancePublicPorts
-    , module Network.AWS.Lightsail.OpenInstancePublicPorts
-
+  , module Network.AWS.Lightsail.OpenInstancePublicPorts
     -- ** GetBundles (Paginated)
-    , module Network.AWS.Lightsail.GetBundles
-
+  , module Network.AWS.Lightsail.GetBundles
     -- ** DeleteDomain
-    , module Network.AWS.Lightsail.DeleteDomain
-
+  , module Network.AWS.Lightsail.DeleteDomain
     -- ** GetLoadBalancerTLSCertificates
-    , module Network.AWS.Lightsail.GetLoadBalancerTLSCertificates
-
+  , module Network.AWS.Lightsail.GetLoadBalancerTLSCertificates
     -- ** CreateDisk
-    , module Network.AWS.Lightsail.CreateDisk
-
+  , module Network.AWS.Lightsail.CreateDisk
     -- ** GetOperationsForResource
-    , module Network.AWS.Lightsail.GetOperationsForResource
-
+  , module Network.AWS.Lightsail.GetOperationsForResource
     -- ** CreateKeyPair
-    , module Network.AWS.Lightsail.CreateKeyPair
-
+  , module Network.AWS.Lightsail.CreateKeyPair
     -- ** StartInstance
-    , module Network.AWS.Lightsail.StartInstance
-
+  , module Network.AWS.Lightsail.StartInstance
     -- * Types
-
     -- ** AccessDirection
-    , AccessDirection (..)
-
+  , AccessDirection(..)
     -- ** BlueprintType
-    , BlueprintType (..)
-
+  , BlueprintType(..)
     -- ** DiskSnapshotState
-    , DiskSnapshotState (..)
-
+  , DiskSnapshotState(..)
     -- ** DiskState
-    , DiskState (..)
-
+  , DiskState(..)
     -- ** InstanceAccessProtocol
-    , InstanceAccessProtocol (..)
-
+  , InstanceAccessProtocol(..)
     -- ** InstanceHealthReason
-    , InstanceHealthReason (..)
-
+  , InstanceHealthReason(..)
     -- ** InstanceHealthState
-    , InstanceHealthState (..)
-
+  , InstanceHealthState(..)
     -- ** InstanceMetricName
-    , InstanceMetricName (..)
-
+  , InstanceMetricName(..)
     -- ** InstancePlatform
-    , InstancePlatform (..)
-
+  , InstancePlatform(..)
     -- ** InstanceSnapshotState
-    , InstanceSnapshotState (..)
-
+  , InstanceSnapshotState(..)
     -- ** LoadBalancerAttributeName
-    , LoadBalancerAttributeName (..)
-
+  , LoadBalancerAttributeName(..)
     -- ** LoadBalancerMetricName
-    , LoadBalancerMetricName (..)
-
+  , LoadBalancerMetricName(..)
     -- ** LoadBalancerProtocol
-    , LoadBalancerProtocol (..)
-
+  , LoadBalancerProtocol(..)
     -- ** LoadBalancerState
-    , LoadBalancerState (..)
-
+  , LoadBalancerState(..)
     -- ** LoadBalancerTLSCertificateDomainStatus
-    , LoadBalancerTLSCertificateDomainStatus (..)
-
+  , LoadBalancerTLSCertificateDomainStatus(..)
     -- ** LoadBalancerTLSCertificateFailureReason
-    , LoadBalancerTLSCertificateFailureReason (..)
-
+  , LoadBalancerTLSCertificateFailureReason(..)
     -- ** LoadBalancerTLSCertificateRenewalStatus
-    , LoadBalancerTLSCertificateRenewalStatus (..)
-
+  , LoadBalancerTLSCertificateRenewalStatus(..)
     -- ** LoadBalancerTLSCertificateRevocationReason
-    , LoadBalancerTLSCertificateRevocationReason (..)
-
+  , LoadBalancerTLSCertificateRevocationReason(..)
     -- ** LoadBalancerTLSCertificateStatus
-    , LoadBalancerTLSCertificateStatus (..)
-
+  , LoadBalancerTLSCertificateStatus(..)
     -- ** MetricStatistic
-    , MetricStatistic (..)
-
+  , MetricStatistic(..)
     -- ** MetricUnit
-    , MetricUnit (..)
-
+  , MetricUnit(..)
     -- ** NetworkProtocol
-    , NetworkProtocol (..)
-
+  , NetworkProtocol(..)
     -- ** OperationStatus
-    , OperationStatus (..)
-
+  , OperationStatus(..)
     -- ** OperationType
-    , OperationType (..)
-
+  , OperationType(..)
     -- ** PortAccessType
-    , PortAccessType (..)
-
+  , PortAccessType(..)
     -- ** PortState
-    , PortState (..)
-
+  , PortState(..)
     -- ** RegionName
-    , RegionName (..)
-
+  , RegionName(..)
     -- ** ResourceType
-    , ResourceType (..)
-
+  , ResourceType(..)
     -- ** AvailabilityZone
-    , AvailabilityZone
-    , availabilityZone
-    , azState
-    , azZoneName
-
+  , AvailabilityZone
+  , availabilityZone
+  , azState
+  , azZoneName
     -- ** Blueprint
-    , Blueprint
-    , blueprint
-    , bVersionCode
-    , bPlatform
-    , bGroup
-    , bMinPower
-    , bProductURL
-    , bLicenseURL
-    , bName
-    , bVersion
-    , bBlueprintId
-    , bType
-    , bIsActive
-    , bDescription
-
+  , Blueprint
+  , blueprint
+  , bVersionCode
+  , bPlatform
+  , bGroup
+  , bMinPower
+  , bProductURL
+  , bLicenseURL
+  , bName
+  , bVersion
+  , bBlueprintId
+  , bType
+  , bIsActive
+  , bDescription
     -- ** Bundle
-    , Bundle
-    , bundle
-    , bunCpuCount
-    , bunTransferPerMonthInGb
-    , bunBundleId
-    , bunInstanceType
-    , bunName
-    , bunPower
-    , bunDiskSizeInGb
-    , bunSupportedPlatforms
-    , bunPrice
-    , bunIsActive
-    , bunRamSizeInGb
-
+  , Bundle
+  , bundle
+  , bunCpuCount
+  , bunTransferPerMonthInGb
+  , bunBundleId
+  , bunInstanceType
+  , bunName
+  , bunPower
+  , bunDiskSizeInGb
+  , bunSupportedPlatforms
+  , bunPrice
+  , bunIsActive
+  , bunRamSizeInGb
     -- ** Disk
-    , Disk
-    , disk
-    , dState
-    , dResourceType
-    , dArn
-    , dPath
-    , dCreatedAt
-    , dLocation
-    , dIops
-    , dIsAttached
-    , dAttachmentState
-    , dName
-    , dSizeInGb
-    , dSupportCode
-    , dIsSystemDisk
-    , dAttachedTo
-    , dGbInUse
-
+  , Disk
+  , disk
+  , dState
+  , dResourceType
+  , dArn
+  , dPath
+  , dCreatedAt
+  , dLocation
+  , dIops
+  , dIsAttached
+  , dAttachmentState
+  , dName
+  , dSizeInGb
+  , dSupportCode
+  , dIsSystemDisk
+  , dAttachedTo
+  , dGbInUse
     -- ** DiskMap
-    , DiskMap
-    , diskMap
-    , dmNewDiskName
-    , dmOriginalDiskPath
-
+  , DiskMap
+  , diskMap
+  , dmNewDiskName
+  , dmOriginalDiskPath
     -- ** DiskSnapshot
-    , DiskSnapshot
-    , diskSnapshot
-    , dsFromDiskName
-    , dsState
-    , dsResourceType
-    , dsArn
-    , dsCreatedAt
-    , dsLocation
-    , dsProgress
-    , dsName
-    , dsSizeInGb
-    , dsSupportCode
-    , dsFromDiskARN
-
+  , DiskSnapshot
+  , diskSnapshot
+  , dsFromDiskName
+  , dsState
+  , dsResourceType
+  , dsArn
+  , dsCreatedAt
+  , dsLocation
+  , dsProgress
+  , dsName
+  , dsSizeInGb
+  , dsSupportCode
+  , dsFromDiskARN
     -- ** Domain
-    , Domain
-    , domain
-    , domResourceType
-    , domDomainEntries
-    , domArn
-    , domCreatedAt
-    , domLocation
-    , domName
-    , domSupportCode
-
+  , Domain
+  , domain
+  , domResourceType
+  , domDomainEntries
+  , domArn
+  , domCreatedAt
+  , domLocation
+  , domName
+  , domSupportCode
     -- ** DomainEntry
-    , DomainEntry
-    , domainEntry
-    , deIsAlias
-    , deName
-    , deId
-    , deOptions
-    , deType
-    , deTarget
-
+  , DomainEntry
+  , domainEntry
+  , deIsAlias
+  , deName
+  , deId
+  , deOptions
+  , deType
+  , deTarget
     -- ** Instance
-    , Instance
-    , instance'
-    , iState
-    , iIpv6Address
-    , iResourceType
-    , iArn
-    , iCreatedAt
-    , iLocation
-    , iSshKeyName
-    , iUsername
-    , iNetworking
-    , iBundleId
-    , iName
-    , iSupportCode
-    , iBlueprintId
-    , iPrivateIPAddress
-    , iBlueprintName
-    , iIsStaticIP
-    , iPublicIPAddress
-    , iHardware
-
+  , Instance
+  , instance'
+  , iState
+  , iIpv6Address
+  , iResourceType
+  , iArn
+  , iCreatedAt
+  , iLocation
+  , iSshKeyName
+  , iUsername
+  , iNetworking
+  , iBundleId
+  , iName
+  , iSupportCode
+  , iBlueprintId
+  , iPrivateIPAddress
+  , iBlueprintName
+  , iIsStaticIP
+  , iPublicIPAddress
+  , iHardware
     -- ** InstanceAccessDetails
-    , InstanceAccessDetails
-    , instanceAccessDetails
-    , iadCertKey
-    , iadIpAddress
-    , iadPrivateKey
-    , iadExpiresAt
-    , iadUsername
-    , iadProtocol
-    , iadPasswordData
-    , iadPassword
-    , iadInstanceName
-
+  , InstanceAccessDetails
+  , instanceAccessDetails
+  , iadCertKey
+  , iadIpAddress
+  , iadPrivateKey
+  , iadExpiresAt
+  , iadUsername
+  , iadProtocol
+  , iadPasswordData
+  , iadPassword
+  , iadInstanceName
     -- ** InstanceHardware
-    , InstanceHardware
-    , instanceHardware
-    , ihCpuCount
-    , ihDisks
-    , ihRamSizeInGb
-
+  , InstanceHardware
+  , instanceHardware
+  , ihCpuCount
+  , ihDisks
+  , ihRamSizeInGb
     -- ** InstanceHealthSummary
-    , InstanceHealthSummary
-    , instanceHealthSummary
-    , ihsInstanceHealth
-    , ihsInstanceName
-    , ihsInstanceHealthReason
-
+  , InstanceHealthSummary
+  , instanceHealthSummary
+  , ihsInstanceHealth
+  , ihsInstanceName
+  , ihsInstanceHealthReason
     -- ** InstanceNetworking
-    , InstanceNetworking
-    , instanceNetworking
-    , inMonthlyTransfer
-    , inPorts
-
+  , InstanceNetworking
+  , instanceNetworking
+  , inMonthlyTransfer
+  , inPorts
     -- ** InstancePortInfo
-    , InstancePortInfo
-    , instancePortInfo
-    , ipiFromPort
-    , ipiCommonName
-    , ipiProtocol
-    , ipiAccessDirection
-    , ipiAccessType
-    , ipiToPort
-    , ipiAccessFrom
-
+  , InstancePortInfo
+  , instancePortInfo
+  , ipiFromPort
+  , ipiCommonName
+  , ipiProtocol
+  , ipiAccessDirection
+  , ipiAccessType
+  , ipiToPort
+  , ipiAccessFrom
     -- ** InstancePortState
-    , InstancePortState
-    , instancePortState
-    , ipsFromPort
-    , ipsState
-    , ipsProtocol
-    , ipsToPort
-
+  , InstancePortState
+  , instancePortState
+  , ipsFromPort
+  , ipsState
+  , ipsProtocol
+  , ipsToPort
     -- ** InstanceSnapshot
-    , InstanceSnapshot
-    , instanceSnapshot
-    , insFromBlueprintId
-    , insState
-    , insResourceType
-    , insFromAttachedDisks
-    , insArn
-    , insCreatedAt
-    , insLocation
-    , insProgress
-    , insName
-    , insFromBundleId
-    , insSizeInGb
-    , insSupportCode
-    , insFromInstanceARN
-    , insFromInstanceName
-
+  , InstanceSnapshot
+  , instanceSnapshot
+  , insFromBlueprintId
+  , insState
+  , insResourceType
+  , insFromAttachedDisks
+  , insArn
+  , insCreatedAt
+  , insLocation
+  , insProgress
+  , insName
+  , insFromBundleId
+  , insSizeInGb
+  , insSupportCode
+  , insFromInstanceARN
+  , insFromInstanceName
     -- ** InstanceState
-    , InstanceState
-    , instanceState
-    , isName
-    , isCode
-
+  , InstanceState
+  , instanceState
+  , isName
+  , isCode
     -- ** KeyPair
-    , KeyPair
-    , keyPair
-    , kpResourceType
-    , kpArn
-    , kpCreatedAt
-    , kpLocation
-    , kpFingerprint
-    , kpName
-    , kpSupportCode
-
+  , KeyPair
+  , keyPair
+  , kpResourceType
+  , kpArn
+  , kpCreatedAt
+  , kpLocation
+  , kpFingerprint
+  , kpName
+  , kpSupportCode
     -- ** LoadBalancer
-    , LoadBalancer
-    , loadBalancer
-    , lbHealthCheckPath
-    , lbState
-    , lbResourceType
-    , lbArn
-    , lbCreatedAt
-    , lbLocation
-    , lbInstancePort
-    , lbConfigurationOptions
-    , lbProtocol
-    , lbTlsCertificateSummaries
-    , lbName
-    , lbSupportCode
-    , lbPublicPorts
-    , lbDnsName
-    , lbInstanceHealthSummary
-
+  , LoadBalancer
+  , loadBalancer
+  , lbHealthCheckPath
+  , lbState
+  , lbResourceType
+  , lbArn
+  , lbCreatedAt
+  , lbLocation
+  , lbInstancePort
+  , lbConfigurationOptions
+  , lbProtocol
+  , lbTlsCertificateSummaries
+  , lbName
+  , lbSupportCode
+  , lbPublicPorts
+  , lbDnsName
+  , lbInstanceHealthSummary
     -- ** LoadBalancerTLSCertificate
-    , LoadBalancerTLSCertificate
-    , loadBalancerTLSCertificate
-    , lbtcFailureReason
-    , lbtcSubject
-    , lbtcStatus
-    , lbtcSubjectAlternativeNames
-    , lbtcResourceType
-    , lbtcArn
-    , lbtcCreatedAt
-    , lbtcLocation
-    , lbtcLoadBalancerName
-    , lbtcSerial
-    , lbtcIsAttached
-    , lbtcRevokedAt
-    , lbtcNotBefore
-    , lbtcRevocationReason
-    , lbtcDomainName
-    , lbtcName
-    , lbtcRenewalSummary
-    , lbtcSupportCode
-    , lbtcDomainValidationRecords
-    , lbtcIssuedAt
-    , lbtcKeyAlgorithm
-    , lbtcSignatureAlgorithm
-    , lbtcIssuer
-    , lbtcNotAfter
-
+  , LoadBalancerTLSCertificate
+  , loadBalancerTLSCertificate
+  , lbtcFailureReason
+  , lbtcSubject
+  , lbtcStatus
+  , lbtcSubjectAlternativeNames
+  , lbtcResourceType
+  , lbtcArn
+  , lbtcCreatedAt
+  , lbtcLocation
+  , lbtcLoadBalancerName
+  , lbtcSerial
+  , lbtcIsAttached
+  , lbtcRevokedAt
+  , lbtcNotBefore
+  , lbtcRevocationReason
+  , lbtcDomainName
+  , lbtcName
+  , lbtcRenewalSummary
+  , lbtcSupportCode
+  , lbtcDomainValidationRecords
+  , lbtcIssuedAt
+  , lbtcKeyAlgorithm
+  , lbtcSignatureAlgorithm
+  , lbtcIssuer
+  , lbtcNotAfter
     -- ** LoadBalancerTLSCertificateDomainValidationOption
-    , LoadBalancerTLSCertificateDomainValidationOption
-    , loadBalancerTLSCertificateDomainValidationOption
-    , lbtcdvoDomainName
-    , lbtcdvoValidationStatus
-
+  , LoadBalancerTLSCertificateDomainValidationOption
+  , loadBalancerTLSCertificateDomainValidationOption
+  , lbtcdvoDomainName
+  , lbtcdvoValidationStatus
     -- ** LoadBalancerTLSCertificateDomainValidationRecord
-    , LoadBalancerTLSCertificateDomainValidationRecord
-    , loadBalancerTLSCertificateDomainValidationRecord
-    , lbtcdvrValue
-    , lbtcdvrDomainName
-    , lbtcdvrName
-    , lbtcdvrValidationStatus
-    , lbtcdvrType
-
+  , LoadBalancerTLSCertificateDomainValidationRecord
+  , loadBalancerTLSCertificateDomainValidationRecord
+  , lbtcdvrValue
+  , lbtcdvrDomainName
+  , lbtcdvrName
+  , lbtcdvrValidationStatus
+  , lbtcdvrType
     -- ** LoadBalancerTLSCertificateRenewalSummary
-    , LoadBalancerTLSCertificateRenewalSummary
-    , loadBalancerTLSCertificateRenewalSummary
-    , lbtcrsRenewalStatus
-    , lbtcrsDomainValidationOptions
-
+  , LoadBalancerTLSCertificateRenewalSummary
+  , loadBalancerTLSCertificateRenewalSummary
+  , lbtcrsRenewalStatus
+  , lbtcrsDomainValidationOptions
     -- ** LoadBalancerTLSCertificateSummary
-    , LoadBalancerTLSCertificateSummary
-    , loadBalancerTLSCertificateSummary
-    , lbtcsIsAttached
-    , lbtcsName
-
+  , LoadBalancerTLSCertificateSummary
+  , loadBalancerTLSCertificateSummary
+  , lbtcsIsAttached
+  , lbtcsName
     -- ** MetricDatapoint
-    , MetricDatapoint
-    , metricDatapoint
-    , mdSampleCount
-    , mdMaximum
-    , mdAverage
-    , mdMinimum
-    , mdSum
-    , mdTimestamp
-    , mdUnit
-
+  , MetricDatapoint
+  , metricDatapoint
+  , mdSampleCount
+  , mdMaximum
+  , mdAverage
+  , mdMinimum
+  , mdSum
+  , mdTimestamp
+  , mdUnit
     -- ** MonthlyTransfer
-    , MonthlyTransfer
-    , monthlyTransfer
-    , mtGbPerMonthAllocated
-
+  , MonthlyTransfer
+  , monthlyTransfer
+  , mtGbPerMonthAllocated
     -- ** Operation
-    , Operation
-    , operation
-    , oStatus
-    , oOperationDetails
-    , oResourceType
-    , oCreatedAt
-    , oResourceName
-    , oLocation
-    , oStatusChangedAt
-    , oErrorDetails
-    , oErrorCode
-    , oId
-    , oOperationType
-    , oIsTerminal
-
+  , Operation
+  , operation
+  , oStatus
+  , oOperationDetails
+  , oResourceType
+  , oCreatedAt
+  , oResourceName
+  , oLocation
+  , oStatusChangedAt
+  , oErrorDetails
+  , oErrorCode
+  , oId
+  , oOperationType
+  , oIsTerminal
     -- ** PasswordData
-    , PasswordData
-    , passwordData
-    , pdKeyPairName
-    , pdCiphertext
-
+  , PasswordData
+  , passwordData
+  , pdKeyPairName
+  , pdCiphertext
     -- ** PortInfo
-    , PortInfo
-    , portInfo
-    , piFromPort
-    , piProtocol
-    , piToPort
-
+  , PortInfo
+  , portInfo
+  , piFromPort
+  , piProtocol
+  , piToPort
     -- ** RegionInfo
-    , RegionInfo
-    , regionInfo
-    , riAvailabilityZones
-    , riName
-    , riDisplayName
-    , riContinentCode
-    , riDescription
-
+  , RegionInfo
+  , regionInfo
+  , riAvailabilityZones
+  , riName
+  , riDisplayName
+  , riContinentCode
+  , riDescription
     -- ** ResourceLocation
-    , ResourceLocation
-    , resourceLocation
-    , rlRegionName
-    , rlAvailabilityZone
-
+  , ResourceLocation
+  , resourceLocation
+  , rlRegionName
+  , rlAvailabilityZone
     -- ** StaticIP
-    , StaticIP
-    , staticIP
-    , siIpAddress
-    , siResourceType
-    , siArn
-    , siCreatedAt
-    , siLocation
-    , siIsAttached
-    , siName
-    , siSupportCode
-    , siAttachedTo
-    ) where
+  , StaticIP
+  , staticIP
+  , siIpAddress
+  , siResourceType
+  , siArn
+  , siCreatedAt
+  , siLocation
+  , siIsAttached
+  , siName
+  , siSupportCode
+  , siAttachedTo
+  ) where
 
 import Network.AWS.Lightsail.AllocateStaticIP
 import Network.AWS.Lightsail.AttachDisk
@@ -718,9 +574,9 @@ import Network.AWS.Lightsail.CreateDiskFromSnapshot
 import Network.AWS.Lightsail.CreateDiskSnapshot
 import Network.AWS.Lightsail.CreateDomain
 import Network.AWS.Lightsail.CreateDomainEntry
+import Network.AWS.Lightsail.CreateInstanceSnapshot
 import Network.AWS.Lightsail.CreateInstances
 import Network.AWS.Lightsail.CreateInstancesFromSnapshot
-import Network.AWS.Lightsail.CreateInstanceSnapshot
 import Network.AWS.Lightsail.CreateKeyPair
 import Network.AWS.Lightsail.CreateLoadBalancer
 import Network.AWS.Lightsail.CreateLoadBalancerTLSCertificate
@@ -741,25 +597,25 @@ import Network.AWS.Lightsail.GetActiveNames
 import Network.AWS.Lightsail.GetBlueprints
 import Network.AWS.Lightsail.GetBundles
 import Network.AWS.Lightsail.GetDisk
-import Network.AWS.Lightsail.GetDisks
 import Network.AWS.Lightsail.GetDiskSnapshot
 import Network.AWS.Lightsail.GetDiskSnapshots
+import Network.AWS.Lightsail.GetDisks
 import Network.AWS.Lightsail.GetDomain
 import Network.AWS.Lightsail.GetDomains
 import Network.AWS.Lightsail.GetInstance
 import Network.AWS.Lightsail.GetInstanceAccessDetails
 import Network.AWS.Lightsail.GetInstanceMetricData
 import Network.AWS.Lightsail.GetInstancePortStates
-import Network.AWS.Lightsail.GetInstances
 import Network.AWS.Lightsail.GetInstanceSnapshot
 import Network.AWS.Lightsail.GetInstanceSnapshots
 import Network.AWS.Lightsail.GetInstanceState
+import Network.AWS.Lightsail.GetInstances
 import Network.AWS.Lightsail.GetKeyPair
 import Network.AWS.Lightsail.GetKeyPairs
 import Network.AWS.Lightsail.GetLoadBalancer
 import Network.AWS.Lightsail.GetLoadBalancerMetricData
-import Network.AWS.Lightsail.GetLoadBalancers
 import Network.AWS.Lightsail.GetLoadBalancerTLSCertificates
+import Network.AWS.Lightsail.GetLoadBalancers
 import Network.AWS.Lightsail.GetOperation
 import Network.AWS.Lightsail.GetOperations
 import Network.AWS.Lightsail.GetOperationsForResource
@@ -780,14 +636,12 @@ import Network.AWS.Lightsail.UnpeerVPC
 import Network.AWS.Lightsail.UpdateDomainEntry
 import Network.AWS.Lightsail.UpdateLoadBalancerAttribute
 import Network.AWS.Lightsail.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'Lightsail'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -804,7 +658,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.DeviceFarm
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -15,705 +14,569 @@
 --
 --
 module Network.AWS.DeviceFarm
-    (
     -- * Service Configuration
-      deviceFarm
-
+  ( deviceFarm
     -- * Errors
     -- $errors
-
     -- ** NotEligibleException
-    , _NotEligibleException
-
+  , _NotEligibleException
     -- ** IdempotencyException
-    , _IdempotencyException
-
+  , _IdempotencyException
     -- ** ArgumentException
-    , _ArgumentException
-
+  , _ArgumentException
     -- ** NotFoundException
-    , _NotFoundException
-
+  , _NotFoundException
     -- ** ServiceAccountException
-    , _ServiceAccountException
-
+  , _ServiceAccountException
     -- ** InvalidOperationException
-    , _InvalidOperationException
-
+  , _InvalidOperationException
     -- ** LimitExceededException
-    , _LimitExceededException
-
+  , _LimitExceededException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** ListProjects (Paginated)
-    , module Network.AWS.DeviceFarm.ListProjects
-
+  , module Network.AWS.DeviceFarm.ListProjects
     -- ** DeleteProject
-    , module Network.AWS.DeviceFarm.DeleteProject
-
+  , module Network.AWS.DeviceFarm.DeleteProject
     -- ** UpdateProject
-    , module Network.AWS.DeviceFarm.UpdateProject
-
+  , module Network.AWS.DeviceFarm.UpdateProject
     -- ** UpdateNetworkProfile
-    , module Network.AWS.DeviceFarm.UpdateNetworkProfile
-
+  , module Network.AWS.DeviceFarm.UpdateNetworkProfile
     -- ** DeleteNetworkProfile
-    , module Network.AWS.DeviceFarm.DeleteNetworkProfile
-
+  , module Network.AWS.DeviceFarm.DeleteNetworkProfile
     -- ** GetDevicePoolCompatibility
-    , module Network.AWS.DeviceFarm.GetDevicePoolCompatibility
-
+  , module Network.AWS.DeviceFarm.GetDevicePoolCompatibility
     -- ** InstallToRemoteAccessSession
-    , module Network.AWS.DeviceFarm.InstallToRemoteAccessSession
-
+  , module Network.AWS.DeviceFarm.InstallToRemoteAccessSession
     -- ** ListTests (Paginated)
-    , module Network.AWS.DeviceFarm.ListTests
-
+  , module Network.AWS.DeviceFarm.ListTests
     -- ** ListArtifacts (Paginated)
-    , module Network.AWS.DeviceFarm.ListArtifacts
-
+  , module Network.AWS.DeviceFarm.ListArtifacts
     -- ** CreateUpload
-    , module Network.AWS.DeviceFarm.CreateUpload
-
+  , module Network.AWS.DeviceFarm.CreateUpload
     -- ** GetDeviceInstance
-    , module Network.AWS.DeviceFarm.GetDeviceInstance
-
+  , module Network.AWS.DeviceFarm.GetDeviceInstance
     -- ** DeleteRemoteAccessSession
-    , module Network.AWS.DeviceFarm.DeleteRemoteAccessSession
-
+  , module Network.AWS.DeviceFarm.DeleteRemoteAccessSession
     -- ** DeleteUpload
-    , module Network.AWS.DeviceFarm.DeleteUpload
-
+  , module Network.AWS.DeviceFarm.DeleteUpload
     -- ** GetDevicePool
-    , module Network.AWS.DeviceFarm.GetDevicePool
-
+  , module Network.AWS.DeviceFarm.GetDevicePool
     -- ** ListDevicePools (Paginated)
-    , module Network.AWS.DeviceFarm.ListDevicePools
-
+  , module Network.AWS.DeviceFarm.ListDevicePools
     -- ** UpdateDevicePool
-    , module Network.AWS.DeviceFarm.UpdateDevicePool
-
+  , module Network.AWS.DeviceFarm.UpdateDevicePool
     -- ** DeleteDevicePool
-    , module Network.AWS.DeviceFarm.DeleteDevicePool
-
+  , module Network.AWS.DeviceFarm.DeleteDevicePool
     -- ** GetUpload
-    , module Network.AWS.DeviceFarm.GetUpload
-
+  , module Network.AWS.DeviceFarm.GetUpload
     -- ** ListOfferingTransactions (Paginated)
-    , module Network.AWS.DeviceFarm.ListOfferingTransactions
-
+  , module Network.AWS.DeviceFarm.ListOfferingTransactions
     -- ** CreateDevicePool
-    , module Network.AWS.DeviceFarm.CreateDevicePool
-
+  , module Network.AWS.DeviceFarm.CreateDevicePool
     -- ** DeleteRun
-    , module Network.AWS.DeviceFarm.DeleteRun
-
+  , module Network.AWS.DeviceFarm.DeleteRun
     -- ** ListRuns (Paginated)
-    , module Network.AWS.DeviceFarm.ListRuns
-
+  , module Network.AWS.DeviceFarm.ListRuns
     -- ** GetTest
-    , module Network.AWS.DeviceFarm.GetTest
-
+  , module Network.AWS.DeviceFarm.GetTest
     -- ** UpdateDeviceInstance
-    , module Network.AWS.DeviceFarm.UpdateDeviceInstance
-
+  , module Network.AWS.DeviceFarm.UpdateDeviceInstance
     -- ** GetNetworkProfile
-    , module Network.AWS.DeviceFarm.GetNetworkProfile
-
+  , module Network.AWS.DeviceFarm.GetNetworkProfile
     -- ** RenewOffering
-    , module Network.AWS.DeviceFarm.RenewOffering
-
+  , module Network.AWS.DeviceFarm.RenewOffering
     -- ** DeleteInstanceProfile
-    , module Network.AWS.DeviceFarm.DeleteInstanceProfile
-
+  , module Network.AWS.DeviceFarm.DeleteInstanceProfile
     -- ** UpdateInstanceProfile
-    , module Network.AWS.DeviceFarm.UpdateInstanceProfile
-
+  , module Network.AWS.DeviceFarm.UpdateInstanceProfile
     -- ** CreateInstanceProfile
-    , module Network.AWS.DeviceFarm.CreateInstanceProfile
-
+  , module Network.AWS.DeviceFarm.CreateInstanceProfile
     -- ** GetDevice
-    , module Network.AWS.DeviceFarm.GetDevice
-
+  , module Network.AWS.DeviceFarm.GetDevice
     -- ** ListJobs (Paginated)
-    , module Network.AWS.DeviceFarm.ListJobs
-
+  , module Network.AWS.DeviceFarm.ListJobs
     -- ** GetVPCEConfiguration
-    , module Network.AWS.DeviceFarm.GetVPCEConfiguration
-
+  , module Network.AWS.DeviceFarm.GetVPCEConfiguration
     -- ** StopRemoteAccessSession
-    , module Network.AWS.DeviceFarm.StopRemoteAccessSession
-
+  , module Network.AWS.DeviceFarm.StopRemoteAccessSession
     -- ** CreateNetworkProfile
-    , module Network.AWS.DeviceFarm.CreateNetworkProfile
-
+  , module Network.AWS.DeviceFarm.CreateNetworkProfile
     -- ** DeleteVPCEConfiguration
-    , module Network.AWS.DeviceFarm.DeleteVPCEConfiguration
-
+  , module Network.AWS.DeviceFarm.DeleteVPCEConfiguration
     -- ** UpdateVPCEConfiguration
-    , module Network.AWS.DeviceFarm.UpdateVPCEConfiguration
-
+  , module Network.AWS.DeviceFarm.UpdateVPCEConfiguration
     -- ** GetJob
-    , module Network.AWS.DeviceFarm.GetJob
-
+  , module Network.AWS.DeviceFarm.GetJob
     -- ** GetInstanceProfile
-    , module Network.AWS.DeviceFarm.GetInstanceProfile
-
+  , module Network.AWS.DeviceFarm.GetInstanceProfile
     -- ** ListNetworkProfiles
-    , module Network.AWS.DeviceFarm.ListNetworkProfiles
-
+  , module Network.AWS.DeviceFarm.ListNetworkProfiles
     -- ** CreateVPCEConfiguration
-    , module Network.AWS.DeviceFarm.CreateVPCEConfiguration
-
+  , module Network.AWS.DeviceFarm.CreateVPCEConfiguration
     -- ** ScheduleRun
-    , module Network.AWS.DeviceFarm.ScheduleRun
-
+  , module Network.AWS.DeviceFarm.ScheduleRun
     -- ** GetRun
-    , module Network.AWS.DeviceFarm.GetRun
-
+  , module Network.AWS.DeviceFarm.GetRun
     -- ** ListSamples (Paginated)
-    , module Network.AWS.DeviceFarm.ListSamples
-
+  , module Network.AWS.DeviceFarm.ListSamples
     -- ** ListSuites (Paginated)
-    , module Network.AWS.DeviceFarm.ListSuites
-
+  , module Network.AWS.DeviceFarm.ListSuites
     -- ** ListRemoteAccessSessions
-    , module Network.AWS.DeviceFarm.ListRemoteAccessSessions
-
+  , module Network.AWS.DeviceFarm.ListRemoteAccessSessions
     -- ** GetAccountSettings
-    , module Network.AWS.DeviceFarm.GetAccountSettings
-
+  , module Network.AWS.DeviceFarm.GetAccountSettings
     -- ** CreateRemoteAccessSession
-    , module Network.AWS.DeviceFarm.CreateRemoteAccessSession
-
+  , module Network.AWS.DeviceFarm.CreateRemoteAccessSession
     -- ** ListOfferingPromotions
-    , module Network.AWS.DeviceFarm.ListOfferingPromotions
-
+  , module Network.AWS.DeviceFarm.ListOfferingPromotions
     -- ** GetOfferingStatus (Paginated)
-    , module Network.AWS.DeviceFarm.GetOfferingStatus
-
+  , module Network.AWS.DeviceFarm.GetOfferingStatus
     -- ** ListUploads (Paginated)
-    , module Network.AWS.DeviceFarm.ListUploads
-
+  , module Network.AWS.DeviceFarm.ListUploads
     -- ** GetSuite
-    , module Network.AWS.DeviceFarm.GetSuite
-
+  , module Network.AWS.DeviceFarm.GetSuite
     -- ** GetRemoteAccessSession
-    , module Network.AWS.DeviceFarm.GetRemoteAccessSession
-
+  , module Network.AWS.DeviceFarm.GetRemoteAccessSession
     -- ** ListDeviceInstances
-    , module Network.AWS.DeviceFarm.ListDeviceInstances
-
+  , module Network.AWS.DeviceFarm.ListDeviceInstances
     -- ** PurchaseOffering
-    , module Network.AWS.DeviceFarm.PurchaseOffering
-
+  , module Network.AWS.DeviceFarm.PurchaseOffering
     -- ** ListInstanceProfiles
-    , module Network.AWS.DeviceFarm.ListInstanceProfiles
-
+  , module Network.AWS.DeviceFarm.ListInstanceProfiles
     -- ** GetProject
-    , module Network.AWS.DeviceFarm.GetProject
-
+  , module Network.AWS.DeviceFarm.GetProject
     -- ** ListUniqueProblems (Paginated)
-    , module Network.AWS.DeviceFarm.ListUniqueProblems
-
+  , module Network.AWS.DeviceFarm.ListUniqueProblems
     -- ** ListVPCEConfigurations
-    , module Network.AWS.DeviceFarm.ListVPCEConfigurations
-
+  , module Network.AWS.DeviceFarm.ListVPCEConfigurations
     -- ** StopRun
-    , module Network.AWS.DeviceFarm.StopRun
-
+  , module Network.AWS.DeviceFarm.StopRun
     -- ** ListDevices (Paginated)
-    , module Network.AWS.DeviceFarm.ListDevices
-
+  , module Network.AWS.DeviceFarm.ListDevices
     -- ** CreateProject
-    , module Network.AWS.DeviceFarm.CreateProject
-
+  , module Network.AWS.DeviceFarm.CreateProject
     -- ** ListOfferings (Paginated)
-    , module Network.AWS.DeviceFarm.ListOfferings
-
+  , module Network.AWS.DeviceFarm.ListOfferings
     -- * Types
-
     -- ** ArtifactCategory
-    , ArtifactCategory (..)
-
+  , ArtifactCategory(..)
     -- ** ArtifactType
-    , ArtifactType (..)
-
+  , ArtifactType(..)
     -- ** BillingMethod
-    , BillingMethod (..)
-
+  , BillingMethod(..)
     -- ** CurrencyCode
-    , CurrencyCode (..)
-
+  , CurrencyCode(..)
     -- ** DeviceAttribute
-    , DeviceAttribute (..)
-
+  , DeviceAttribute(..)
     -- ** DeviceFormFactor
-    , DeviceFormFactor (..)
-
+  , DeviceFormFactor(..)
     -- ** DevicePlatform
-    , DevicePlatform (..)
-
+  , DevicePlatform(..)
     -- ** DevicePoolType
-    , DevicePoolType (..)
-
+  , DevicePoolType(..)
     -- ** ExecutionResult
-    , ExecutionResult (..)
-
+  , ExecutionResult(..)
     -- ** ExecutionResultCode
-    , ExecutionResultCode (..)
-
+  , ExecutionResultCode(..)
     -- ** ExecutionStatus
-    , ExecutionStatus (..)
-
+  , ExecutionStatus(..)
     -- ** InstanceStatus
-    , InstanceStatus (..)
-
+  , InstanceStatus(..)
     -- ** InteractionMode
-    , InteractionMode (..)
-
+  , InteractionMode(..)
     -- ** NetworkProfileType
-    , NetworkProfileType (..)
-
+  , NetworkProfileType(..)
     -- ** OfferingTransactionType
-    , OfferingTransactionType (..)
-
+  , OfferingTransactionType(..)
     -- ** OfferingType
-    , OfferingType (..)
-
+  , OfferingType(..)
     -- ** RecurringChargeFrequency
-    , RecurringChargeFrequency (..)
-
+  , RecurringChargeFrequency(..)
     -- ** RuleOperator
-    , RuleOperator (..)
-
+  , RuleOperator(..)
     -- ** SampleType
-    , SampleType (..)
-
+  , SampleType(..)
     -- ** TestType
-    , TestType (..)
-
+  , TestType(..)
     -- ** UploadStatus
-    , UploadStatus (..)
-
+  , UploadStatus(..)
     -- ** UploadType
-    , UploadType (..)
-
+  , UploadType(..)
     -- ** AccountSettings
-    , AccountSettings
-    , accountSettings
-    , asSkipAppResign
-    , asAwsAccountNumber
-    , asMaxJobTimeoutMinutes
-    , asMaxSlots
-    , asTrialMinutes
-    , asUnmeteredDevices
-    , asUnmeteredRemoteAccessDevices
-    , asDefaultJobTimeoutMinutes
-
+  , AccountSettings
+  , accountSettings
+  , asSkipAppResign
+  , asAwsAccountNumber
+  , asMaxJobTimeoutMinutes
+  , asMaxSlots
+  , asTrialMinutes
+  , asUnmeteredDevices
+  , asUnmeteredRemoteAccessDevices
+  , asDefaultJobTimeoutMinutes
     -- ** Artifact
-    , Artifact
-    , artifact
-    , aArn
-    , aUrl
-    , aExtension
-    , aName
-    , aType
-
+  , Artifact
+  , artifact
+  , aArn
+  , aUrl
+  , aExtension
+  , aName
+  , aType
     -- ** CPU
-    , CPU
-    , cpu
-    , cpuFrequency
-    , cpuClock
-    , cpuArchitecture
-
+  , CPU
+  , cpu
+  , cpuFrequency
+  , cpuClock
+  , cpuArchitecture
     -- ** Counters
-    , Counters
-    , counters
-    , cPassed
-    , cSkipped
-    , cWarned
-    , cStopped
-    , cTotal
-    , cFailed
-    , cErrored
-
+  , Counters
+  , counters
+  , cPassed
+  , cSkipped
+  , cWarned
+  , cStopped
+  , cTotal
+  , cFailed
+  , cErrored
     -- ** CreateRemoteAccessSessionConfiguration
-    , CreateRemoteAccessSessionConfiguration
-    , createRemoteAccessSessionConfiguration
-    , crascBillingMethod
-
+  , CreateRemoteAccessSessionConfiguration
+  , createRemoteAccessSessionConfiguration
+  , crascBillingMethod
     -- ** CustomerArtifactPaths
-    , CustomerArtifactPaths
-    , customerArtifactPaths
-    , capAndroidPaths
-    , capDeviceHostPaths
-    , capIosPaths
-
+  , CustomerArtifactPaths
+  , customerArtifactPaths
+  , capAndroidPaths
+  , capDeviceHostPaths
+  , capIosPaths
     -- ** Device
-    , Device
-    , device
-    , devCarrier
-    , devImage
-    , devManufacturer
-    , devPlatform
-    , devModelId
-    , devRemoteAccessEnabled
-    , devArn
-    , devFormFactor
-    , devFleetType
-    , devResolution
-    , devMemory
-    , devRadio
-    , devOs
-    , devName
-    , devModel
-    , devInstances
-    , devRemoteDebugEnabled
-    , devCpu
-    , devHeapSize
-    , devFleetName
-
+  , Device
+  , device
+  , devCarrier
+  , devImage
+  , devManufacturer
+  , devPlatform
+  , devModelId
+  , devRemoteAccessEnabled
+  , devArn
+  , devFormFactor
+  , devFleetType
+  , devResolution
+  , devMemory
+  , devRadio
+  , devOs
+  , devName
+  , devModel
+  , devInstances
+  , devRemoteDebugEnabled
+  , devCpu
+  , devHeapSize
+  , devFleetName
     -- ** DeviceInstance
-    , DeviceInstance
-    , deviceInstance
-    , diStatus
-    , diUdid
-    , diInstanceProfile
-    , diArn
-    , diDeviceARN
-    , diLabels
-
+  , DeviceInstance
+  , deviceInstance
+  , diStatus
+  , diUdid
+  , diInstanceProfile
+  , diArn
+  , diDeviceARN
+  , diLabels
     -- ** DeviceMinutes
-    , DeviceMinutes
-    , deviceMinutes
-    , dmMetered
-    , dmTotal
-    , dmUnmetered
-
+  , DeviceMinutes
+  , deviceMinutes
+  , dmMetered
+  , dmTotal
+  , dmUnmetered
     -- ** DevicePool
-    , DevicePool
-    , devicePool
-    , dArn
-    , dRules
-    , dName
-    , dType
-    , dDescription
-
+  , DevicePool
+  , devicePool
+  , dArn
+  , dRules
+  , dName
+  , dType
+  , dDescription
     -- ** DevicePoolCompatibilityResult
-    , DevicePoolCompatibilityResult
-    , devicePoolCompatibilityResult
-    , dpcrDevice
-    , dpcrCompatible
-    , dpcrIncompatibilityMessages
-
+  , DevicePoolCompatibilityResult
+  , devicePoolCompatibilityResult
+  , dpcrDevice
+  , dpcrCompatible
+  , dpcrIncompatibilityMessages
     -- ** ExecutionConfiguration
-    , ExecutionConfiguration
-    , executionConfiguration
-    , ecSkipAppResign
-    , ecAccountsCleanup
-    , ecAppPackagesCleanup
-    , ecJobTimeoutMinutes
-
+  , ExecutionConfiguration
+  , executionConfiguration
+  , ecSkipAppResign
+  , ecAccountsCleanup
+  , ecAppPackagesCleanup
+  , ecJobTimeoutMinutes
     -- ** IncompatibilityMessage
-    , IncompatibilityMessage
-    , incompatibilityMessage
-    , imType
-    , imMessage
-
+  , IncompatibilityMessage
+  , incompatibilityMessage
+  , imType
+  , imMessage
     -- ** InstanceProfile
-    , InstanceProfile
-    , instanceProfile
-    , ipArn
-    , ipRebootAfterUse
-    , ipName
-    , ipPackageCleanup
-    , ipExcludeAppPackagesFromCleanup
-    , ipDescription
-
+  , InstanceProfile
+  , instanceProfile
+  , ipArn
+  , ipRebootAfterUse
+  , ipName
+  , ipPackageCleanup
+  , ipExcludeAppPackagesFromCleanup
+  , ipDescription
     -- ** Job
-    , Job
-    , job
-    , jobInstanceARN
-    , jobStatus
-    , jobCounters
-    , jobArn
-    , jobCreated
-    , jobDevice
-    , jobStopped
-    , jobResult
-    , jobName
-    , jobDeviceMinutes
-    , jobType
-    , jobMessage
-    , jobStarted
-
+  , Job
+  , job
+  , jobInstanceARN
+  , jobStatus
+  , jobCounters
+  , jobArn
+  , jobCreated
+  , jobDevice
+  , jobStopped
+  , jobResult
+  , jobName
+  , jobDeviceMinutes
+  , jobType
+  , jobMessage
+  , jobStarted
     -- ** Location
-    , Location
-    , location
-    , lLatitude
-    , lLongitude
-
+  , Location
+  , location
+  , lLatitude
+  , lLongitude
     -- ** MonetaryAmount
-    , MonetaryAmount
-    , monetaryAmount
-    , maAmount
-    , maCurrencyCode
-
+  , MonetaryAmount
+  , monetaryAmount
+  , maAmount
+  , maCurrencyCode
     -- ** NetworkProfile
-    , NetworkProfile
-    , networkProfile
-    , npUplinkJitterMs
-    , npArn
-    , npUplinkLossPercent
-    , npDownlinkJitterMs
-    , npName
-    , npDownlinkLossPercent
-    , npType
-    , npUplinkDelayMs
-    , npUplinkBandwidthBits
-    , npDescription
-    , npDownlinkDelayMs
-    , npDownlinkBandwidthBits
-
+  , NetworkProfile
+  , networkProfile
+  , npUplinkJitterMs
+  , npArn
+  , npUplinkLossPercent
+  , npDownlinkJitterMs
+  , npName
+  , npDownlinkLossPercent
+  , npType
+  , npUplinkDelayMs
+  , npUplinkBandwidthBits
+  , npDescription
+  , npDownlinkDelayMs
+  , npDownlinkBandwidthBits
     -- ** Offering
-    , Offering
-    , offering
-    , oPlatform
-    , oId
-    , oRecurringCharges
-    , oType
-    , oDescription
-
+  , Offering
+  , offering
+  , oPlatform
+  , oId
+  , oRecurringCharges
+  , oType
+  , oDescription
     -- ** OfferingPromotion
-    , OfferingPromotion
-    , offeringPromotion
-    , opId
-    , opDescription
-
+  , OfferingPromotion
+  , offeringPromotion
+  , opId
+  , opDescription
     -- ** OfferingStatus
-    , OfferingStatus
-    , offeringStatus
-    , osEffectiveOn
-    , osOffering
-    , osQuantity
-    , osType
-
+  , OfferingStatus
+  , offeringStatus
+  , osEffectiveOn
+  , osOffering
+  , osQuantity
+  , osType
     -- ** OfferingTransaction
-    , OfferingTransaction
-    , offeringTransaction
-    , otOfferingStatus
-    , otCost
-    , otTransactionId
-    , otOfferingPromotionId
-    , otCreatedOn
-
+  , OfferingTransaction
+  , offeringTransaction
+  , otOfferingStatus
+  , otCost
+  , otTransactionId
+  , otOfferingPromotionId
+  , otCreatedOn
     -- ** Problem
-    , Problem
-    , problem
-    , pDevice
-    , pTest
-    , pResult
-    , pRun
-    , pJob
-    , pMessage
-    , pSuite
-
+  , Problem
+  , problem
+  , pDevice
+  , pTest
+  , pResult
+  , pRun
+  , pJob
+  , pMessage
+  , pSuite
     -- ** ProblemDetail
-    , ProblemDetail
-    , problemDetail
-    , pdArn
-    , pdName
-
+  , ProblemDetail
+  , problemDetail
+  , pdArn
+  , pdName
     -- ** Project
-    , Project
-    , project
-    , pArn
-    , pCreated
-    , pName
-    , pDefaultJobTimeoutMinutes
-
+  , Project
+  , project
+  , pArn
+  , pCreated
+  , pName
+  , pDefaultJobTimeoutMinutes
     -- ** Radios
-    , Radios
-    , radios
-    , rNfc
-    , rGps
-    , rBluetooth
-    , rWifi
-
+  , Radios
+  , radios
+  , rNfc
+  , rGps
+  , rBluetooth
+  , rWifi
     -- ** RecurringCharge
-    , RecurringCharge
-    , recurringCharge
-    , rcFrequency
-    , rcCost
-
+  , RecurringCharge
+  , recurringCharge
+  , rcFrequency
+  , rcCost
     -- ** RemoteAccessSession
-    , RemoteAccessSession
-    , remoteAccessSession
-    , rasBillingMethod
-    , rasClientId
-    , rasDeviceUdid
-    , rasSkipAppResign
-    , rasInstanceARN
-    , rasStatus
-    , rasRemoteRecordEnabled
-    , rasArn
-    , rasRemoteRecordAppARN
-    , rasCreated
-    , rasDevice
-    , rasStopped
-    , rasResult
-    , rasName
-    , rasDeviceMinutes
-    , rasRemoteDebugEnabled
-    , rasEndpoint
-    , rasMessage
-    , rasHostAddress
-    , rasInteractionMode
-    , rasStarted
-
+  , RemoteAccessSession
+  , remoteAccessSession
+  , rasBillingMethod
+  , rasClientId
+  , rasDeviceUdid
+  , rasSkipAppResign
+  , rasInstanceARN
+  , rasStatus
+  , rasRemoteRecordEnabled
+  , rasArn
+  , rasRemoteRecordAppARN
+  , rasCreated
+  , rasDevice
+  , rasStopped
+  , rasResult
+  , rasName
+  , rasDeviceMinutes
+  , rasRemoteDebugEnabled
+  , rasEndpoint
+  , rasMessage
+  , rasHostAddress
+  , rasInteractionMode
+  , rasStarted
     -- ** Resolution
-    , Resolution
-    , resolution
-    , rHeight
-    , rWidth
-
+  , Resolution
+  , resolution
+  , rHeight
+  , rWidth
     -- ** Rule
-    , Rule
-    , rule
-    , rAttribute
-    , rOperator
-    , rValue
-
+  , Rule
+  , rule
+  , rAttribute
+  , rOperator
+  , rValue
     -- ** Run
-    , Run
-    , run
-    , runBillingMethod
-    , runSkipAppResign
-    , runStatus
-    , runCustomerArtifactPaths
-    , runEventCount
-    , runCounters
-    , runPlatform
-    , runSeed
-    , runRadios
-    , runArn
-    , runLocation
-    , runCreated
-    , runLocale
-    , runStopped
-    , runResult
-    , runJobTimeoutMinutes
-    , runCompletedJobs
-    , runResultCode
-    , runName
-    , runAppUpload
-    , runParsingResultURL
-    , runNetworkProfile
-    , runDeviceMinutes
-    , runType
-    , runMessage
-    , runWebURL
-    , runTotalJobs
-    , runDevicePoolARN
-    , runStarted
-
+  , Run
+  , run
+  , runBillingMethod
+  , runSkipAppResign
+  , runStatus
+  , runCustomerArtifactPaths
+  , runEventCount
+  , runCounters
+  , runPlatform
+  , runSeed
+  , runRadios
+  , runArn
+  , runLocation
+  , runCreated
+  , runLocale
+  , runStopped
+  , runResult
+  , runJobTimeoutMinutes
+  , runCompletedJobs
+  , runResultCode
+  , runName
+  , runAppUpload
+  , runParsingResultURL
+  , runNetworkProfile
+  , runDeviceMinutes
+  , runType
+  , runMessage
+  , runWebURL
+  , runTotalJobs
+  , runDevicePoolARN
+  , runStarted
     -- ** Sample
-    , Sample
-    , sample
-    , samArn
-    , samUrl
-    , samType
-
+  , Sample
+  , sample
+  , samArn
+  , samUrl
+  , samType
     -- ** ScheduleRunConfiguration
-    , ScheduleRunConfiguration
-    , scheduleRunConfiguration
-    , srcBillingMethod
-    , srcCustomerArtifactPaths
-    , srcRadios
-    , srcLocation
-    , srcLocale
-    , srcNetworkProfileARN
-    , srcExtraDataPackageARN
-    , srcAuxiliaryApps
-    , srcVpceConfigurationARNs
-
+  , ScheduleRunConfiguration
+  , scheduleRunConfiguration
+  , srcBillingMethod
+  , srcCustomerArtifactPaths
+  , srcRadios
+  , srcLocation
+  , srcLocale
+  , srcNetworkProfileARN
+  , srcExtraDataPackageARN
+  , srcAuxiliaryApps
+  , srcVpceConfigurationARNs
     -- ** ScheduleRunTest
-    , ScheduleRunTest
-    , scheduleRunTest
-    , srtTestPackageARN
-    , srtParameters
-    , srtFilter
-    , srtType
-
+  , ScheduleRunTest
+  , scheduleRunTest
+  , srtTestPackageARN
+  , srtParameters
+  , srtFilter
+  , srtType
     -- ** Suite
-    , Suite
-    , suite
-    , sStatus
-    , sCounters
-    , sArn
-    , sCreated
-    , sStopped
-    , sResult
-    , sName
-    , sDeviceMinutes
-    , sType
-    , sMessage
-    , sStarted
-
+  , Suite
+  , suite
+  , sStatus
+  , sCounters
+  , sArn
+  , sCreated
+  , sStopped
+  , sResult
+  , sName
+  , sDeviceMinutes
+  , sType
+  , sMessage
+  , sStarted
     -- ** Test
-    , Test
-    , test
-    , tStatus
-    , tCounters
-    , tArn
-    , tCreated
-    , tStopped
-    , tResult
-    , tName
-    , tDeviceMinutes
-    , tType
-    , tMessage
-    , tStarted
-
+  , Test
+  , test
+  , tStatus
+  , tCounters
+  , tArn
+  , tCreated
+  , tStopped
+  , tResult
+  , tName
+  , tDeviceMinutes
+  , tType
+  , tMessage
+  , tStarted
     -- ** TrialMinutes
-    , TrialMinutes
-    , trialMinutes
-    , tmRemaining
-    , tmTotal
-
+  , TrialMinutes
+  , trialMinutes
+  , tmRemaining
+  , tmTotal
     -- ** UniqueProblem
-    , UniqueProblem
-    , uniqueProblem
-    , upProblems
-    , upMessage
-
+  , UniqueProblem
+  , uniqueProblem
+  , upProblems
+  , upMessage
     -- ** Upload
-    , Upload
-    , upload
-    , uStatus
-    , uArn
-    , uCreated
-    , uUrl
-    , uName
-    , uMetadata
-    , uType
-    , uMessage
-    , uContentType
-
+  , Upload
+  , upload
+  , uStatus
+  , uArn
+  , uCreated
+  , uUrl
+  , uName
+  , uMetadata
+  , uType
+  , uMessage
+  , uContentType
     -- ** VPCEConfiguration
-    , VPCEConfiguration
-    , vpcEConfiguration
-    , vecVpceServiceName
-    , vecArn
-    , vecVpceConfigurationName
-    , vecServiceDNSName
-    , vecVpceConfigurationDescription
-    ) where
+  , VPCEConfiguration
+  , vpcEConfiguration
+  , vecVpceServiceName
+  , vecArn
+  , vecVpceConfigurationName
+  , vecServiceDNSName
+  , vecVpceConfigurationDescription
+  ) where
 
 import Network.AWS.DeviceFarm.CreateDevicePool
 import Network.AWS.DeviceFarm.CreateInstanceProfile
@@ -755,8 +618,8 @@ import Network.AWS.DeviceFarm.ListInstanceProfiles
 import Network.AWS.DeviceFarm.ListJobs
 import Network.AWS.DeviceFarm.ListNetworkProfiles
 import Network.AWS.DeviceFarm.ListOfferingPromotions
-import Network.AWS.DeviceFarm.ListOfferings
 import Network.AWS.DeviceFarm.ListOfferingTransactions
+import Network.AWS.DeviceFarm.ListOfferings
 import Network.AWS.DeviceFarm.ListProjects
 import Network.AWS.DeviceFarm.ListRemoteAccessSessions
 import Network.AWS.DeviceFarm.ListRuns
@@ -779,14 +642,12 @@ import Network.AWS.DeviceFarm.UpdateNetworkProfile
 import Network.AWS.DeviceFarm.UpdateProject
 import Network.AWS.DeviceFarm.UpdateVPCEConfiguration
 import Network.AWS.DeviceFarm.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'DeviceFarm'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -803,7 +664,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

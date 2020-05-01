@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.STS.AssumeRole
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -48,28 +46,26 @@
 -- To use MFA with @AssumeRole@ , you pass values for the @SerialNumber@ and @TokenCode@ parameters. The @SerialNumber@ value identifies the user's hardware or virtual MFA device. The @TokenCode@ is the time-based one-time password (TOTP) that the MFA devices produces.
 --
 module Network.AWS.STS.AssumeRole
-    (
     -- * Creating a Request
-      assumeRole
-    , AssumeRole
+  ( assumeRole
+  , AssumeRole
     -- * Request Lenses
-    , arTokenCode
-    , arDurationSeconds
-    , arPolicy
-    , arExternalId
-    , arSerialNumber
-    , arRoleARN
-    , arRoleSessionName
-
+  , arTokenCode
+  , arDurationSeconds
+  , arPolicy
+  , arExternalId
+  , arSerialNumber
+  , arRoleARN
+  , arRoleSessionName
     -- * Destructuring the Response
-    , assumeRoleResponse
-    , AssumeRoleResponse
+  , assumeRoleResponse
+  , AssumeRoleResponse
     -- * Response Lenses
-    , arrsPackedPolicySize
-    , arrsCredentials
-    , arrsAssumedRoleUser
-    , arrsResponseStatus
-    ) where
+  , arrsPackedPolicySize
+  , arrsCredentials
+  , arrsAssumedRoleUser
+  , arrsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -79,16 +75,17 @@ import Network.AWS.STS.Types
 import Network.AWS.STS.Types.Product
 
 -- | /See:/ 'assumeRole' smart constructor.
-data AssumeRole = AssumeRole'
-  { _arTokenCode       :: !(Maybe Text)
-  , _arDurationSeconds :: !(Maybe Nat)
-  , _arPolicy          :: !(Maybe Text)
-  , _arExternalId      :: !(Maybe Text)
-  , _arSerialNumber    :: !(Maybe Text)
-  , _arRoleARN         :: !Text
-  , _arRoleSessionName :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssumeRole =
+  AssumeRole'
+    { _arTokenCode :: !(Maybe Text)
+    , _arDurationSeconds :: !(Maybe Nat)
+    , _arPolicy :: !(Maybe Text)
+    , _arExternalId :: !(Maybe Text)
+    , _arSerialNumber :: !(Maybe Text)
+    , _arRoleARN :: !Text
+    , _arRoleSessionName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AssumeRole' with the minimum fields required to make a request.
 --
@@ -107,10 +104,10 @@ data AssumeRole = AssumeRole'
 -- * 'arRoleARN' - The Amazon Resource Name (ARN) of the role to assume.
 --
 -- * 'arRoleSessionName' - An identifier for the assumed role session. Use the role session name to uniquely identify a session when the same role is assumed by different principals or for different reasons. In cross-account scenarios, the role session name is visible to, and can be logged by the account that owns the role. The role session name is also used in the ARN of the assumed role principal. This means that subsequent cross-account API requests using the temporary security credentials will expose the role session name to the external account in their CloudTrail logs. The regex used to validate this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-
-assumeRole
-    :: Text -- ^ 'arRoleARN'
-    -> Text -- ^ 'arRoleSessionName'
-    -> AssumeRole
+assumeRole ::
+     Text -- ^ 'arRoleARN'
+  -> Text -- ^ 'arRoleSessionName'
+  -> AssumeRole
 assumeRole pRoleARN_ pRoleSessionName_ =
   AssumeRole'
     { _arTokenCode = Nothing
@@ -122,80 +119,84 @@ assumeRole pRoleARN_ pRoleSessionName_ =
     , _arRoleSessionName = pRoleSessionName_
     }
 
-
 -- | The value provided by the MFA device, if the trust policy of the role being assumed requires MFA (that is, if the policy includes a condition that tests for MFA). If the role being assumed requires MFA and if the @TokenCode@ value is missing or expired, the @AssumeRole@ call returns an "access denied" error. The format for this parameter, as described by its regex pattern, is a sequence of six numeric digits.
 arTokenCode :: Lens' AssumeRole (Maybe Text)
-arTokenCode = lens _arTokenCode (\ s a -> s{_arTokenCode = a})
+arTokenCode = lens _arTokenCode (\s a -> s {_arTokenCode = a})
 
 -- | The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) up to the maximum session duration setting for the role. This setting can have a value from 1 hour to 12 hours. If you specify a value higher than this setting, the operation fails. For example, if you specify a session duration of 12 hours, but your administrator set the maximum session duration to 6 hours, your operation fails. To learn how to view the maximum value for your role, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session View the Maximum Session Duration Setting for a Role> in the /IAM User Guide/ . By default, the value is set to 3600 seconds.
 arDurationSeconds :: Lens' AssumeRole (Maybe Natural)
-arDurationSeconds = lens _arDurationSeconds (\ s a -> s{_arDurationSeconds = a}) . mapping _Nat
+arDurationSeconds =
+  lens _arDurationSeconds (\s a -> s {_arDurationSeconds = a}) . mapping _Nat
 
 -- | An IAM policy in JSON format. This parameter is optional. If you pass a policy, the temporary security credentials that are returned by the operation have the permissions that are allowed by both (the intersection of) the access policy of the role that is being assumed, /and/ the policy that you pass. This gives you a way to further restrict the permissions for the resulting temporary security credentials. You cannot use the passed policy to grant permissions that are in excess of those allowed by the access policy of the role that is being assumed. For more information, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_assumerole.html Permissions for AssumeRole, AssumeRoleWithSAML, and AssumeRoleWithWebIdentity> in the /IAM User Guide/ . The format for this parameter, as described by its regex pattern, is a string of characters up to 2048 characters in length. The characters can be any ASCII character from the space character to the end of the valid character list (\u0020-\u00FF). It can also include the tab (\u0009), linefeed (\u000A), and carriage return (\u000D) characters.
 arPolicy :: Lens' AssumeRole (Maybe Text)
-arPolicy = lens _arPolicy (\ s a -> s{_arPolicy = a})
+arPolicy = lens _arPolicy (\s a -> s {_arPolicy = a})
 
 -- | A unique identifier that is used by third parties when assuming roles in their customers' accounts. For each role that the third party can assume, they should instruct their customers to ensure the role's trust policy checks for the external ID that the third party generated. Each time the third party assumes the role, they should pass the customer's external ID. The external ID is useful in order to help third parties bind a role to the customer who created it. For more information about the external ID, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html How to Use an External ID When Granting Access to Your AWS Resources to a Third Party> in the /IAM User Guide/ . The regex used to validated this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@:/-
 arExternalId :: Lens' AssumeRole (Maybe Text)
-arExternalId = lens _arExternalId (\ s a -> s{_arExternalId = a})
+arExternalId = lens _arExternalId (\s a -> s {_arExternalId = a})
 
 -- | The identification number of the MFA device that is associated with the user who is making the @AssumeRole@ call. Specify this value if the trust policy of the role being assumed includes a condition that requires MFA authentication. The value is either the serial number for a hardware device (such as @GAHT12345678@ ) or an Amazon Resource Name (ARN) for a virtual device (such as @arn:aws:iam::123456789012:mfa/user@ ). The regex used to validate this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-
 arSerialNumber :: Lens' AssumeRole (Maybe Text)
-arSerialNumber = lens _arSerialNumber (\ s a -> s{_arSerialNumber = a})
+arSerialNumber = lens _arSerialNumber (\s a -> s {_arSerialNumber = a})
 
 -- | The Amazon Resource Name (ARN) of the role to assume.
 arRoleARN :: Lens' AssumeRole Text
-arRoleARN = lens _arRoleARN (\ s a -> s{_arRoleARN = a})
+arRoleARN = lens _arRoleARN (\s a -> s {_arRoleARN = a})
 
 -- | An identifier for the assumed role session. Use the role session name to uniquely identify a session when the same role is assumed by different principals or for different reasons. In cross-account scenarios, the role session name is visible to, and can be logged by the account that owns the role. The role session name is also used in the ARN of the assumed role principal. This means that subsequent cross-account API requests using the temporary security credentials will expose the role session name to the external account in their CloudTrail logs. The regex used to validate this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-
 arRoleSessionName :: Lens' AssumeRole Text
-arRoleSessionName = lens _arRoleSessionName (\ s a -> s{_arRoleSessionName = a})
+arRoleSessionName = lens _arRoleSessionName (\s a -> s {_arRoleSessionName = a})
 
 instance AWSRequest AssumeRole where
-        type Rs AssumeRole = AssumeRoleResponse
-        request = postQuery sts
-        response
-          = receiveXMLWrapper "AssumeRoleResult"
-              (\ s h x ->
-                 AssumeRoleResponse' <$>
-                   (x .@? "PackedPolicySize") <*> (x .@? "Credentials")
-                     <*> (x .@? "AssumedRoleUser")
-                     <*> (pure (fromEnum s)))
+  type Rs AssumeRole = AssumeRoleResponse
+  request = postQuery sts
+  response =
+    receiveXMLWrapper
+      "AssumeRoleResult"
+      (\s h x ->
+         AssumeRoleResponse' <$> (x .@? "PackedPolicySize") <*>
+         (x .@? "Credentials") <*>
+         (x .@? "AssumedRoleUser") <*>
+         (pure (fromEnum s)))
 
-instance Hashable AssumeRole where
+instance Hashable AssumeRole
 
-instance NFData AssumeRole where
+instance NFData AssumeRole
 
 instance ToHeaders AssumeRole where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath AssumeRole where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery AssumeRole where
-        toQuery AssumeRole'{..}
-          = mconcat
-              ["Action" =: ("AssumeRole" :: ByteString),
-               "Version" =: ("2011-06-15" :: ByteString),
-               "TokenCode" =: _arTokenCode,
-               "DurationSeconds" =: _arDurationSeconds,
-               "Policy" =: _arPolicy, "ExternalId" =: _arExternalId,
-               "SerialNumber" =: _arSerialNumber,
-               "RoleArn" =: _arRoleARN,
-               "RoleSessionName" =: _arRoleSessionName]
+  toQuery AssumeRole' {..} =
+    mconcat
+      [ "Action" =: ("AssumeRole" :: ByteString)
+      , "Version" =: ("2011-06-15" :: ByteString)
+      , "TokenCode" =: _arTokenCode
+      , "DurationSeconds" =: _arDurationSeconds
+      , "Policy" =: _arPolicy
+      , "ExternalId" =: _arExternalId
+      , "SerialNumber" =: _arSerialNumber
+      , "RoleArn" =: _arRoleARN
+      , "RoleSessionName" =: _arRoleSessionName
+      ]
 
 -- | Contains the response to a successful 'AssumeRole' request, including temporary AWS credentials that can be used to make AWS requests.
 --
 --
 --
 -- /See:/ 'assumeRoleResponse' smart constructor.
-data AssumeRoleResponse = AssumeRoleResponse'
-  { _arrsPackedPolicySize :: !(Maybe Nat)
-  , _arrsCredentials      :: !(Maybe AuthEnv)
-  , _arrsAssumedRoleUser  :: !(Maybe AssumedRoleUser)
-  , _arrsResponseStatus   :: !Int
-  } deriving (Eq, Show, Data, Typeable, Generic)
-
+data AssumeRoleResponse =
+  AssumeRoleResponse'
+    { _arrsPackedPolicySize :: !(Maybe Nat)
+    , _arrsCredentials :: !(Maybe AuthEnv)
+    , _arrsAssumedRoleUser :: !(Maybe AssumedRoleUser)
+    , _arrsResponseStatus :: !Int
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AssumeRoleResponse' with the minimum fields required to make a request.
 --
@@ -208,9 +209,9 @@ data AssumeRoleResponse = AssumeRoleResponse'
 -- * 'arrsAssumedRoleUser' - The Amazon Resource Name (ARN) and the assumed role ID, which are identifiers that you can use to refer to the resulting temporary security credentials. For example, you can reference these credentials as a principal in a resource-based policy by using the ARN or assumed role ID. The ARN and ID include the @RoleSessionName@ that you specified when you called @AssumeRole@ .
 --
 -- * 'arrsResponseStatus' - -- | The response status code.
-assumeRoleResponse
-    :: Int -- ^ 'arrsResponseStatus'
-    -> AssumeRoleResponse
+assumeRoleResponse ::
+     Int -- ^ 'arrsResponseStatus'
+  -> AssumeRoleResponse
 assumeRoleResponse pResponseStatus_ =
   AssumeRoleResponse'
     { _arrsPackedPolicySize = Nothing
@@ -219,21 +220,24 @@ assumeRoleResponse pResponseStatus_ =
     , _arrsResponseStatus = pResponseStatus_
     }
 
-
 -- | A percentage value that indicates the size of the policy in packed form. The service rejects any policy with a packed size greater than 100 percent, which means the policy exceeded the allowed space.
 arrsPackedPolicySize :: Lens' AssumeRoleResponse (Maybe Natural)
-arrsPackedPolicySize = lens _arrsPackedPolicySize (\ s a -> s{_arrsPackedPolicySize = a}) . mapping _Nat
+arrsPackedPolicySize =
+  lens _arrsPackedPolicySize (\s a -> s {_arrsPackedPolicySize = a}) .
+  mapping _Nat
 
 -- | The temporary security credentials, which include an access key ID, a secret access key, and a security (or session) token. __Note:__ The size of the security token that STS APIs return is not fixed. We strongly recommend that you make no assumptions about the maximum size. As of this writing, the typical size is less than 4096 bytes, but that can vary. Also, future updates to AWS might require larger sizes.
 arrsCredentials :: Lens' AssumeRoleResponse (Maybe AuthEnv)
-arrsCredentials = lens _arrsCredentials (\ s a -> s{_arrsCredentials = a})
+arrsCredentials = lens _arrsCredentials (\s a -> s {_arrsCredentials = a})
 
 -- | The Amazon Resource Name (ARN) and the assumed role ID, which are identifiers that you can use to refer to the resulting temporary security credentials. For example, you can reference these credentials as a principal in a resource-based policy by using the ARN or assumed role ID. The ARN and ID include the @RoleSessionName@ that you specified when you called @AssumeRole@ .
 arrsAssumedRoleUser :: Lens' AssumeRoleResponse (Maybe AssumedRoleUser)
-arrsAssumedRoleUser = lens _arrsAssumedRoleUser (\ s a -> s{_arrsAssumedRoleUser = a})
+arrsAssumedRoleUser =
+  lens _arrsAssumedRoleUser (\s a -> s {_arrsAssumedRoleUser = a})
 
 -- | -- | The response status code.
 arrsResponseStatus :: Lens' AssumeRoleResponse Int
-arrsResponseStatus = lens _arrsResponseStatus (\ s a -> s{_arrsResponseStatus = a})
+arrsResponseStatus =
+  lens _arrsResponseStatus (\s a -> s {_arrsResponseStatus = a})
 
-instance NFData AssumeRoleResponse where
+instance NFData AssumeRoleResponse

@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Rekognition.RecognizeCelebrities
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -34,22 +32,20 @@
 -- This operation requires permissions to perform the @rekognition:RecognizeCelebrities@ operation.
 --
 module Network.AWS.Rekognition.RecognizeCelebrities
-    (
     -- * Creating a Request
-      recognizeCelebrities
-    , RecognizeCelebrities
+  ( recognizeCelebrities
+  , RecognizeCelebrities
     -- * Request Lenses
-    , rcImage
-
+  , rcImage
     -- * Destructuring the Response
-    , recognizeCelebritiesResponse
-    , RecognizeCelebritiesResponse
+  , recognizeCelebritiesResponse
+  , RecognizeCelebritiesResponse
     -- * Response Lenses
-    , rcrsCelebrityFaces
-    , rcrsOrientationCorrection
-    , rcrsUnrecognizedFaces
-    , rcrsResponseStatus
-    ) where
+  , rcrsCelebrityFaces
+  , rcrsOrientationCorrection
+  , rcrsUnrecognizedFaces
+  , rcrsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -59,71 +55,69 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'recognizeCelebrities' smart constructor.
-newtype RecognizeCelebrities = RecognizeCelebrities'
-  { _rcImage :: Image
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype RecognizeCelebrities =
+  RecognizeCelebrities'
+    { _rcImage :: Image
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RecognizeCelebrities' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'rcImage' - The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.
-recognizeCelebrities
-    :: Image -- ^ 'rcImage'
-    -> RecognizeCelebrities
+recognizeCelebrities ::
+     Image -- ^ 'rcImage'
+  -> RecognizeCelebrities
 recognizeCelebrities pImage_ = RecognizeCelebrities' {_rcImage = pImage_}
-
 
 -- | The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.
 rcImage :: Lens' RecognizeCelebrities Image
-rcImage = lens _rcImage (\ s a -> s{_rcImage = a})
+rcImage = lens _rcImage (\s a -> s {_rcImage = a})
 
 instance AWSRequest RecognizeCelebrities where
-        type Rs RecognizeCelebrities =
-             RecognizeCelebritiesResponse
-        request = postJSON rekognition
-        response
-          = receiveJSON
-              (\ s h x ->
-                 RecognizeCelebritiesResponse' <$>
-                   (x .?> "CelebrityFaces" .!@ mempty) <*>
-                     (x .?> "OrientationCorrection")
-                     <*> (x .?> "UnrecognizedFaces" .!@ mempty)
-                     <*> (pure (fromEnum s)))
+  type Rs RecognizeCelebrities = RecognizeCelebritiesResponse
+  request = postJSON rekognition
+  response =
+    receiveJSON
+      (\s h x ->
+         RecognizeCelebritiesResponse' <$> (x .?> "CelebrityFaces" .!@ mempty) <*>
+         (x .?> "OrientationCorrection") <*>
+         (x .?> "UnrecognizedFaces" .!@ mempty) <*>
+         (pure (fromEnum s)))
 
-instance Hashable RecognizeCelebrities where
+instance Hashable RecognizeCelebrities
 
-instance NFData RecognizeCelebrities where
+instance NFData RecognizeCelebrities
 
 instance ToHeaders RecognizeCelebrities where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("RekognitionService.RecognizeCelebrities" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("RekognitionService.RecognizeCelebrities" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON RecognizeCelebrities where
-        toJSON RecognizeCelebrities'{..}
-          = object (catMaybes [Just ("Image" .= _rcImage)])
+  toJSON RecognizeCelebrities' {..} =
+    object (catMaybes [Just ("Image" .= _rcImage)])
 
 instance ToPath RecognizeCelebrities where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery RecognizeCelebrities where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'recognizeCelebritiesResponse' smart constructor.
-data RecognizeCelebritiesResponse = RecognizeCelebritiesResponse'
-  { _rcrsCelebrityFaces        :: !(Maybe [Celebrity])
-  , _rcrsOrientationCorrection :: !(Maybe OrientationCorrection)
-  , _rcrsUnrecognizedFaces     :: !(Maybe [ComparedFace])
-  , _rcrsResponseStatus        :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RecognizeCelebritiesResponse =
+  RecognizeCelebritiesResponse'
+    { _rcrsCelebrityFaces :: !(Maybe [Celebrity])
+    , _rcrsOrientationCorrection :: !(Maybe OrientationCorrection)
+    , _rcrsUnrecognizedFaces :: !(Maybe [ComparedFace])
+    , _rcrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RecognizeCelebritiesResponse' with the minimum fields required to make a request.
 --
@@ -136,9 +130,9 @@ data RecognizeCelebritiesResponse = RecognizeCelebritiesResponse'
 -- * 'rcrsUnrecognizedFaces' - Details about each unrecognized face in the image.
 --
 -- * 'rcrsResponseStatus' - -- | The response status code.
-recognizeCelebritiesResponse
-    :: Int -- ^ 'rcrsResponseStatus'
-    -> RecognizeCelebritiesResponse
+recognizeCelebritiesResponse ::
+     Int -- ^ 'rcrsResponseStatus'
+  -> RecognizeCelebritiesResponse
 recognizeCelebritiesResponse pResponseStatus_ =
   RecognizeCelebritiesResponse'
     { _rcrsCelebrityFaces = Nothing
@@ -147,21 +141,27 @@ recognizeCelebritiesResponse pResponseStatus_ =
     , _rcrsResponseStatus = pResponseStatus_
     }
 
-
 -- | Details about each celebrity found in the image. Amazon Rekognition can detect a maximum of 15 celebrities in an image.
 rcrsCelebrityFaces :: Lens' RecognizeCelebritiesResponse [Celebrity]
-rcrsCelebrityFaces = lens _rcrsCelebrityFaces (\ s a -> s{_rcrsCelebrityFaces = a}) . _Default . _Coerce
+rcrsCelebrityFaces =
+  lens _rcrsCelebrityFaces (\s a -> s {_rcrsCelebrityFaces = a}) .
+  _Default . _Coerce
 
 -- | The orientation of the input image (counterclockwise direction). If your application displays the image, you can use this value to correct the orientation. The bounding box coordinates returned in @CelebrityFaces@ and @UnrecognizedFaces@ represent face locations before the image orientation is corrected.
-rcrsOrientationCorrection :: Lens' RecognizeCelebritiesResponse (Maybe OrientationCorrection)
-rcrsOrientationCorrection = lens _rcrsOrientationCorrection (\ s a -> s{_rcrsOrientationCorrection = a})
+rcrsOrientationCorrection ::
+     Lens' RecognizeCelebritiesResponse (Maybe OrientationCorrection)
+rcrsOrientationCorrection =
+  lens _rcrsOrientationCorrection (\s a -> s {_rcrsOrientationCorrection = a})
 
 -- | Details about each unrecognized face in the image.
 rcrsUnrecognizedFaces :: Lens' RecognizeCelebritiesResponse [ComparedFace]
-rcrsUnrecognizedFaces = lens _rcrsUnrecognizedFaces (\ s a -> s{_rcrsUnrecognizedFaces = a}) . _Default . _Coerce
+rcrsUnrecognizedFaces =
+  lens _rcrsUnrecognizedFaces (\s a -> s {_rcrsUnrecognizedFaces = a}) .
+  _Default . _Coerce
 
 -- | -- | The response status code.
 rcrsResponseStatus :: Lens' RecognizeCelebritiesResponse Int
-rcrsResponseStatus = lens _rcrsResponseStatus (\ s a -> s{_rcrsResponseStatus = a})
+rcrsResponseStatus =
+  lens _rcrsResponseStatus (\s a -> s {_rcrsResponseStatus = a})
 
-instance NFData RecognizeCelebritiesResponse where
+instance NFData RecognizeCelebritiesResponse

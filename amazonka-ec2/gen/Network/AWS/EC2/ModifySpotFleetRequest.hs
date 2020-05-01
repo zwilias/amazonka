@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.EC2.ModifySpotFleetRequest
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -30,22 +28,20 @@
 -- If you are finished with your Spot Fleet for now, but will use it again later, you can set the target capacity to 0.
 --
 module Network.AWS.EC2.ModifySpotFleetRequest
-    (
     -- * Creating a Request
-      modifySpotFleetRequest
-    , ModifySpotFleetRequest
+  ( modifySpotFleetRequest
+  , ModifySpotFleetRequest
     -- * Request Lenses
-    , msfrTargetCapacity
-    , msfrExcessCapacityTerminationPolicy
-    , msfrSpotFleetRequestId
-
+  , msfrTargetCapacity
+  , msfrExcessCapacityTerminationPolicy
+  , msfrSpotFleetRequestId
     -- * Destructuring the Response
-    , modifySpotFleetRequestResponse
-    , ModifySpotFleetRequestResponse
+  , modifySpotFleetRequestResponse
+  , ModifySpotFleetRequestResponse
     -- * Response Lenses
-    , msfrrsReturn
-    , msfrrsResponseStatus
-    ) where
+  , msfrrsReturn
+  , msfrrsResponseStatus
+  ) where
 
 import Network.AWS.EC2.Types
 import Network.AWS.EC2.Types.Product
@@ -59,12 +55,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'modifySpotFleetRequest' smart constructor.
-data ModifySpotFleetRequest = ModifySpotFleetRequest'
-  { _msfrTargetCapacity :: !(Maybe Int)
-  , _msfrExcessCapacityTerminationPolicy :: !(Maybe ExcessCapacityTerminationPolicy)
-  , _msfrSpotFleetRequestId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifySpotFleetRequest =
+  ModifySpotFleetRequest'
+    { _msfrTargetCapacity :: !(Maybe Int)
+    , _msfrExcessCapacityTerminationPolicy :: !(Maybe ExcessCapacityTerminationPolicy)
+    , _msfrSpotFleetRequestId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifySpotFleetRequest' with the minimum fields required to make a request.
 --
@@ -75,9 +72,9 @@ data ModifySpotFleetRequest = ModifySpotFleetRequest'
 -- * 'msfrExcessCapacityTerminationPolicy' - Indicates whether running Spot Instances should be terminated if the target capacity of the Spot Fleet request is decreased below the current size of the Spot Fleet.
 --
 -- * 'msfrSpotFleetRequestId' - The ID of the Spot Fleet request.
-modifySpotFleetRequest
-    :: Text -- ^ 'msfrSpotFleetRequestId'
-    -> ModifySpotFleetRequest
+modifySpotFleetRequest ::
+     Text -- ^ 'msfrSpotFleetRequestId'
+  -> ModifySpotFleetRequest
 modifySpotFleetRequest pSpotFleetRequestId_ =
   ModifySpotFleetRequest'
     { _msfrTargetCapacity = Nothing
@@ -85,60 +82,65 @@ modifySpotFleetRequest pSpotFleetRequestId_ =
     , _msfrSpotFleetRequestId = pSpotFleetRequestId_
     }
 
-
 -- | The size of the fleet.
 msfrTargetCapacity :: Lens' ModifySpotFleetRequest (Maybe Int)
-msfrTargetCapacity = lens _msfrTargetCapacity (\ s a -> s{_msfrTargetCapacity = a})
+msfrTargetCapacity =
+  lens _msfrTargetCapacity (\s a -> s {_msfrTargetCapacity = a})
 
 -- | Indicates whether running Spot Instances should be terminated if the target capacity of the Spot Fleet request is decreased below the current size of the Spot Fleet.
-msfrExcessCapacityTerminationPolicy :: Lens' ModifySpotFleetRequest (Maybe ExcessCapacityTerminationPolicy)
-msfrExcessCapacityTerminationPolicy = lens _msfrExcessCapacityTerminationPolicy (\ s a -> s{_msfrExcessCapacityTerminationPolicy = a})
+msfrExcessCapacityTerminationPolicy ::
+     Lens' ModifySpotFleetRequest (Maybe ExcessCapacityTerminationPolicy)
+msfrExcessCapacityTerminationPolicy =
+  lens
+    _msfrExcessCapacityTerminationPolicy
+    (\s a -> s {_msfrExcessCapacityTerminationPolicy = a})
 
 -- | The ID of the Spot Fleet request.
 msfrSpotFleetRequestId :: Lens' ModifySpotFleetRequest Text
-msfrSpotFleetRequestId = lens _msfrSpotFleetRequestId (\ s a -> s{_msfrSpotFleetRequestId = a})
+msfrSpotFleetRequestId =
+  lens _msfrSpotFleetRequestId (\s a -> s {_msfrSpotFleetRequestId = a})
 
 instance AWSRequest ModifySpotFleetRequest where
-        type Rs ModifySpotFleetRequest =
-             ModifySpotFleetRequestResponse
-        request = postQuery ec2
-        response
-          = receiveXML
-              (\ s h x ->
-                 ModifySpotFleetRequestResponse' <$>
-                   (x .@? "return") <*> (pure (fromEnum s)))
+  type Rs ModifySpotFleetRequest = ModifySpotFleetRequestResponse
+  request = postQuery ec2
+  response =
+    receiveXML
+      (\s h x ->
+         ModifySpotFleetRequestResponse' <$> (x .@? "return") <*>
+         (pure (fromEnum s)))
 
-instance Hashable ModifySpotFleetRequest where
+instance Hashable ModifySpotFleetRequest
 
-instance NFData ModifySpotFleetRequest where
+instance NFData ModifySpotFleetRequest
 
 instance ToHeaders ModifySpotFleetRequest where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath ModifySpotFleetRequest where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery ModifySpotFleetRequest where
-        toQuery ModifySpotFleetRequest'{..}
-          = mconcat
-              ["Action" =:
-                 ("ModifySpotFleetRequest" :: ByteString),
-               "Version" =: ("2016-11-15" :: ByteString),
-               "TargetCapacity" =: _msfrTargetCapacity,
-               "ExcessCapacityTerminationPolicy" =:
-                 _msfrExcessCapacityTerminationPolicy,
-               "SpotFleetRequestId" =: _msfrSpotFleetRequestId]
+  toQuery ModifySpotFleetRequest' {..} =
+    mconcat
+      [ "Action" =: ("ModifySpotFleetRequest" :: ByteString)
+      , "Version" =: ("2016-11-15" :: ByteString)
+      , "TargetCapacity" =: _msfrTargetCapacity
+      , "ExcessCapacityTerminationPolicy" =:
+        _msfrExcessCapacityTerminationPolicy
+      , "SpotFleetRequestId" =: _msfrSpotFleetRequestId
+      ]
 
 -- | Contains the output of ModifySpotFleetRequest.
 --
 --
 --
 -- /See:/ 'modifySpotFleetRequestResponse' smart constructor.
-data ModifySpotFleetRequestResponse = ModifySpotFleetRequestResponse'
-  { _msfrrsReturn         :: !(Maybe Bool)
-  , _msfrrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifySpotFleetRequestResponse =
+  ModifySpotFleetRequestResponse'
+    { _msfrrsReturn :: !(Maybe Bool)
+    , _msfrrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifySpotFleetRequestResponse' with the minimum fields required to make a request.
 --
@@ -147,20 +149,20 @@ data ModifySpotFleetRequestResponse = ModifySpotFleetRequestResponse'
 -- * 'msfrrsReturn' - Is @true@ if the request succeeds, and an error otherwise.
 --
 -- * 'msfrrsResponseStatus' - -- | The response status code.
-modifySpotFleetRequestResponse
-    :: Int -- ^ 'msfrrsResponseStatus'
-    -> ModifySpotFleetRequestResponse
+modifySpotFleetRequestResponse ::
+     Int -- ^ 'msfrrsResponseStatus'
+  -> ModifySpotFleetRequestResponse
 modifySpotFleetRequestResponse pResponseStatus_ =
   ModifySpotFleetRequestResponse'
     {_msfrrsReturn = Nothing, _msfrrsResponseStatus = pResponseStatus_}
 
-
 -- | Is @true@ if the request succeeds, and an error otherwise.
 msfrrsReturn :: Lens' ModifySpotFleetRequestResponse (Maybe Bool)
-msfrrsReturn = lens _msfrrsReturn (\ s a -> s{_msfrrsReturn = a})
+msfrrsReturn = lens _msfrrsReturn (\s a -> s {_msfrrsReturn = a})
 
 -- | -- | The response status code.
 msfrrsResponseStatus :: Lens' ModifySpotFleetRequestResponse Int
-msfrrsResponseStatus = lens _msfrrsResponseStatus (\ s a -> s{_msfrrsResponseStatus = a})
+msfrrsResponseStatus =
+  lens _msfrrsResponseStatus (\s a -> s {_msfrrsResponseStatus = a})
 
-instance NFData ModifySpotFleetRequestResponse where
+instance NFData ModifySpotFleetRequestResponse

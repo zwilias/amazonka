@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CostAndUsageReport
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -13,87 +12,66 @@
 --
 -- All public APIs for AWS Cost and Usage Report service
 module Network.AWS.CostAndUsageReport
-    (
     -- * Service Configuration
-      costAndUsageReport
-
+  ( costAndUsageReport
     -- * Errors
     -- $errors
-
     -- ** ValidationException
-    , _ValidationException
-
+  , _ValidationException
     -- ** InternalErrorException
-    , _InternalErrorException
-
+  , _InternalErrorException
     -- ** DuplicateReportNameException
-    , _DuplicateReportNameException
-
+  , _DuplicateReportNameException
     -- ** ReportLimitReachedException
-    , _ReportLimitReachedException
-
+  , _ReportLimitReachedException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** PutReportDefinition
-    , module Network.AWS.CostAndUsageReport.PutReportDefinition
-
+  , module Network.AWS.CostAndUsageReport.PutReportDefinition
     -- ** DeleteReportDefinition
-    , module Network.AWS.CostAndUsageReport.DeleteReportDefinition
-
+  , module Network.AWS.CostAndUsageReport.DeleteReportDefinition
     -- ** DescribeReportDefinitions (Paginated)
-    , module Network.AWS.CostAndUsageReport.DescribeReportDefinitions
-
+  , module Network.AWS.CostAndUsageReport.DescribeReportDefinitions
     -- * Types
-
     -- ** AWSRegion
-    , AWSRegion (..)
-
+  , AWSRegion(..)
     -- ** AdditionalArtifact
-    , AdditionalArtifact (..)
-
+  , AdditionalArtifact(..)
     -- ** CompressionFormat
-    , CompressionFormat (..)
-
+  , CompressionFormat(..)
     -- ** ReportFormat
-    , ReportFormat (..)
-
+  , ReportFormat(..)
     -- ** SchemaElement
-    , SchemaElement (..)
-
+  , SchemaElement(..)
     -- ** TimeUnit
-    , TimeUnit (..)
-
+  , TimeUnit(..)
     -- ** ReportDefinition
-    , ReportDefinition
-    , reportDefinition
-    , rdAdditionalArtifacts
-    , rdReportName
-    , rdTimeUnit
-    , rdFormat
-    , rdCompression
-    , rdAdditionalSchemaElements
-    , rdS3Bucket
-    , rdS3Prefix
-    , rdS3Region
-    ) where
+  , ReportDefinition
+  , reportDefinition
+  , rdAdditionalArtifacts
+  , rdReportName
+  , rdTimeUnit
+  , rdFormat
+  , rdCompression
+  , rdAdditionalSchemaElements
+  , rdS3Bucket
+  , rdS3Prefix
+  , rdS3Region
+  ) where
 
 import Network.AWS.CostAndUsageReport.DeleteReportDefinition
 import Network.AWS.CostAndUsageReport.DescribeReportDefinitions
 import Network.AWS.CostAndUsageReport.PutReportDefinition
 import Network.AWS.CostAndUsageReport.Types
 import Network.AWS.CostAndUsageReport.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'CostAndUsageReport'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -110,7 +88,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.MarketplaceEntitlement
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -32,25 +30,20 @@ import Test.Tasty
 --             getEntitlements
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseGetEntitlements $
 --             getEntitlementsResponse
 --
 --           ]
 --     ]
-
 -- Requests
-
 requestGetEntitlements :: GetEntitlements -> TestTree
-requestGetEntitlements = req
-    "GetEntitlements"
-    "fixture/GetEntitlements.yaml"
+requestGetEntitlements = req "GetEntitlements" "fixture/GetEntitlements.yaml"
 
 -- Responses
-
 responseGetEntitlements :: GetEntitlementsResponse -> TestTree
-responseGetEntitlements = res
+responseGetEntitlements =
+  res
     "GetEntitlementsResponse"
     "fixture/GetEntitlementsResponse.proto"
     marketplaceEntitlement

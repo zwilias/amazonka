@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.EC2.AttachInternetGateway
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,19 +20,17 @@
 --
 --
 module Network.AWS.EC2.AttachInternetGateway
-    (
     -- * Creating a Request
-      attachInternetGateway
-    , AttachInternetGateway
+  ( attachInternetGateway
+  , AttachInternetGateway
     -- * Request Lenses
-    , aigDryRun
-    , aigInternetGatewayId
-    , aigVPCId
-
+  , aigDryRun
+  , aigInternetGatewayId
+  , aigVPCId
     -- * Destructuring the Response
-    , attachInternetGatewayResponse
-    , AttachInternetGatewayResponse
-    ) where
+  , attachInternetGatewayResponse
+  , AttachInternetGatewayResponse
+  ) where
 
 import Network.AWS.EC2.Types
 import Network.AWS.EC2.Types.Product
@@ -48,12 +44,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'attachInternetGateway' smart constructor.
-data AttachInternetGateway = AttachInternetGateway'
-  { _aigDryRun            :: !(Maybe Bool)
-  , _aigInternetGatewayId :: !Text
-  , _aigVPCId             :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachInternetGateway =
+  AttachInternetGateway'
+    { _aigDryRun :: !(Maybe Bool)
+    , _aigInternetGatewayId :: !Text
+    , _aigVPCId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AttachInternetGateway' with the minimum fields required to make a request.
 --
@@ -64,10 +61,10 @@ data AttachInternetGateway = AttachInternetGateway'
 -- * 'aigInternetGatewayId' - The ID of the Internet gateway.
 --
 -- * 'aigVPCId' - The ID of the VPC.
-attachInternetGateway
-    :: Text -- ^ 'aigInternetGatewayId'
-    -> Text -- ^ 'aigVPCId'
-    -> AttachInternetGateway
+attachInternetGateway ::
+     Text -- ^ 'aigInternetGatewayId'
+  -> Text -- ^ 'aigVPCId'
+  -> AttachInternetGateway
 attachInternetGateway pInternetGatewayId_ pVPCId_ =
   AttachInternetGateway'
     { _aigDryRun = Nothing
@@ -75,55 +72,52 @@ attachInternetGateway pInternetGatewayId_ pVPCId_ =
     , _aigVPCId = pVPCId_
     }
 
-
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 aigDryRun :: Lens' AttachInternetGateway (Maybe Bool)
-aigDryRun = lens _aigDryRun (\ s a -> s{_aigDryRun = a})
+aigDryRun = lens _aigDryRun (\s a -> s {_aigDryRun = a})
 
 -- | The ID of the Internet gateway.
 aigInternetGatewayId :: Lens' AttachInternetGateway Text
-aigInternetGatewayId = lens _aigInternetGatewayId (\ s a -> s{_aigInternetGatewayId = a})
+aigInternetGatewayId =
+  lens _aigInternetGatewayId (\s a -> s {_aigInternetGatewayId = a})
 
 -- | The ID of the VPC.
 aigVPCId :: Lens' AttachInternetGateway Text
-aigVPCId = lens _aigVPCId (\ s a -> s{_aigVPCId = a})
+aigVPCId = lens _aigVPCId (\s a -> s {_aigVPCId = a})
 
 instance AWSRequest AttachInternetGateway where
-        type Rs AttachInternetGateway =
-             AttachInternetGatewayResponse
-        request = postQuery ec2
-        response = receiveNull AttachInternetGatewayResponse'
+  type Rs AttachInternetGateway = AttachInternetGatewayResponse
+  request = postQuery ec2
+  response = receiveNull AttachInternetGatewayResponse'
 
-instance Hashable AttachInternetGateway where
+instance Hashable AttachInternetGateway
 
-instance NFData AttachInternetGateway where
+instance NFData AttachInternetGateway
 
 instance ToHeaders AttachInternetGateway where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath AttachInternetGateway where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery AttachInternetGateway where
-        toQuery AttachInternetGateway'{..}
-          = mconcat
-              ["Action" =: ("AttachInternetGateway" :: ByteString),
-               "Version" =: ("2016-11-15" :: ByteString),
-               "DryRun" =: _aigDryRun,
-               "InternetGatewayId" =: _aigInternetGatewayId,
-               "VpcId" =: _aigVPCId]
+  toQuery AttachInternetGateway' {..} =
+    mconcat
+      [ "Action" =: ("AttachInternetGateway" :: ByteString)
+      , "Version" =: ("2016-11-15" :: ByteString)
+      , "DryRun" =: _aigDryRun
+      , "InternetGatewayId" =: _aigInternetGatewayId
+      , "VpcId" =: _aigVPCId
+      ]
 
 -- | /See:/ 'attachInternetGatewayResponse' smart constructor.
 data AttachInternetGatewayResponse =
   AttachInternetGatewayResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'AttachInternetGatewayResponse' with the minimum fields required to make a request.
 --
-attachInternetGatewayResponse
-    :: AttachInternetGatewayResponse
+attachInternetGatewayResponse :: AttachInternetGatewayResponse
 attachInternetGatewayResponse = AttachInternetGatewayResponse'
 
-
-instance NFData AttachInternetGatewayResponse where
+instance NFData AttachInternetGatewayResponse

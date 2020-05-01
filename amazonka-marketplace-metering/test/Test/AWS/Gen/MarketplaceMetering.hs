@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Test.AWS.Gen.MarketplaceMetering
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,7 +23,6 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
-
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -38,7 +36,6 @@ import Test.Tasty
 --             meterUsage
 --
 --           ]
-
 --     , testGroup "response"
 --         [ responseBatchMeterUsage $
 --             batchMeterUsageResponse
@@ -51,42 +48,36 @@ import Test.Tasty
 --
 --           ]
 --     ]
-
 -- Requests
-
 requestBatchMeterUsage :: BatchMeterUsage -> TestTree
-requestBatchMeterUsage = req
-    "BatchMeterUsage"
-    "fixture/BatchMeterUsage.yaml"
+requestBatchMeterUsage = req "BatchMeterUsage" "fixture/BatchMeterUsage.yaml"
 
 requestResolveCustomer :: ResolveCustomer -> TestTree
-requestResolveCustomer = req
-    "ResolveCustomer"
-    "fixture/ResolveCustomer.yaml"
+requestResolveCustomer = req "ResolveCustomer" "fixture/ResolveCustomer.yaml"
 
 requestMeterUsage :: MeterUsage -> TestTree
-requestMeterUsage = req
-    "MeterUsage"
-    "fixture/MeterUsage.yaml"
+requestMeterUsage = req "MeterUsage" "fixture/MeterUsage.yaml"
 
 -- Responses
-
 responseBatchMeterUsage :: BatchMeterUsageResponse -> TestTree
-responseBatchMeterUsage = res
+responseBatchMeterUsage =
+  res
     "BatchMeterUsageResponse"
     "fixture/BatchMeterUsageResponse.proto"
     marketplaceMetering
     (Proxy :: Proxy BatchMeterUsage)
 
 responseResolveCustomer :: ResolveCustomerResponse -> TestTree
-responseResolveCustomer = res
+responseResolveCustomer =
+  res
     "ResolveCustomerResponse"
     "fixture/ResolveCustomerResponse.proto"
     marketplaceMetering
     (Proxy :: Proxy ResolveCustomer)
 
 responseMeterUsage :: MeterUsageResponse -> TestTree
-responseMeterUsage = res
+responseMeterUsage =
+  res
     "MeterUsageResponse"
     "fixture/MeterUsageResponse.proto"
     marketplaceMetering

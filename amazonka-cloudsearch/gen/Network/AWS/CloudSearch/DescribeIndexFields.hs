@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CloudSearch.DescribeIndexFields
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,22 +20,20 @@
 --
 --
 module Network.AWS.CloudSearch.DescribeIndexFields
-    (
     -- * Creating a Request
-      describeIndexFields
-    , DescribeIndexFields
+  ( describeIndexFields
+  , DescribeIndexFields
     -- * Request Lenses
-    , difDeployed
-    , difFieldNames
-    , difDomainName
-
+  , difDeployed
+  , difFieldNames
+  , difDomainName
     -- * Destructuring the Response
-    , describeIndexFieldsResponse
-    , DescribeIndexFieldsResponse
+  , describeIndexFieldsResponse
+  , DescribeIndexFieldsResponse
     -- * Response Lenses
-    , difsrsResponseStatus
-    , difsrsIndexFields
-    ) where
+  , difsrsResponseStatus
+  , difsrsIndexFields
+  ) where
 
 import Network.AWS.CloudSearch.Types
 import Network.AWS.CloudSearch.Types.Product
@@ -51,12 +47,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeIndexFields' smart constructor.
-data DescribeIndexFields = DescribeIndexFields'
-  { _difDeployed   :: !(Maybe Bool)
-  , _difFieldNames :: !(Maybe [Text])
-  , _difDomainName :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeIndexFields =
+  DescribeIndexFields'
+    { _difDeployed :: !(Maybe Bool)
+    , _difFieldNames :: !(Maybe [Text])
+    , _difDomainName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeIndexFields' with the minimum fields required to make a request.
 --
@@ -67,9 +64,9 @@ data DescribeIndexFields = DescribeIndexFields'
 -- * 'difFieldNames' - A list of the index fields you want to describe. If not specified, information is returned for all configured index fields.
 --
 -- * 'difDomainName' - The name of the domain you want to describe.
-describeIndexFields
-    :: Text -- ^ 'difDomainName'
-    -> DescribeIndexFields
+describeIndexFields ::
+     Text -- ^ 'difDomainName'
+  -> DescribeIndexFields
 describeIndexFields pDomainName_ =
   DescribeIndexFields'
     { _difDeployed = Nothing
@@ -77,61 +74,60 @@ describeIndexFields pDomainName_ =
     , _difDomainName = pDomainName_
     }
 
-
 -- | Whether to display the deployed configuration (@true@ ) or include any pending changes (@false@ ). Defaults to @false@ .
 difDeployed :: Lens' DescribeIndexFields (Maybe Bool)
-difDeployed = lens _difDeployed (\ s a -> s{_difDeployed = a})
+difDeployed = lens _difDeployed (\s a -> s {_difDeployed = a})
 
 -- | A list of the index fields you want to describe. If not specified, information is returned for all configured index fields.
 difFieldNames :: Lens' DescribeIndexFields [Text]
-difFieldNames = lens _difFieldNames (\ s a -> s{_difFieldNames = a}) . _Default . _Coerce
+difFieldNames =
+  lens _difFieldNames (\s a -> s {_difFieldNames = a}) . _Default . _Coerce
 
 -- | The name of the domain you want to describe.
 difDomainName :: Lens' DescribeIndexFields Text
-difDomainName = lens _difDomainName (\ s a -> s{_difDomainName = a})
+difDomainName = lens _difDomainName (\s a -> s {_difDomainName = a})
 
 instance AWSRequest DescribeIndexFields where
-        type Rs DescribeIndexFields =
-             DescribeIndexFieldsResponse
-        request = postQuery cloudSearch
-        response
-          = receiveXMLWrapper "DescribeIndexFieldsResult"
-              (\ s h x ->
-                 DescribeIndexFieldsResponse' <$>
-                   (pure (fromEnum s)) <*>
-                     (x .@? "IndexFields" .!@ mempty >>=
-                        parseXMLList "member"))
+  type Rs DescribeIndexFields = DescribeIndexFieldsResponse
+  request = postQuery cloudSearch
+  response =
+    receiveXMLWrapper
+      "DescribeIndexFieldsResult"
+      (\s h x ->
+         DescribeIndexFieldsResponse' <$> (pure (fromEnum s)) <*>
+         (x .@? "IndexFields" .!@ mempty >>= parseXMLList "member"))
 
-instance Hashable DescribeIndexFields where
+instance Hashable DescribeIndexFields
 
-instance NFData DescribeIndexFields where
+instance NFData DescribeIndexFields
 
 instance ToHeaders DescribeIndexFields where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath DescribeIndexFields where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery DescribeIndexFields where
-        toQuery DescribeIndexFields'{..}
-          = mconcat
-              ["Action" =: ("DescribeIndexFields" :: ByteString),
-               "Version" =: ("2013-01-01" :: ByteString),
-               "Deployed" =: _difDeployed,
-               "FieldNames" =:
-                 toQuery (toQueryList "member" <$> _difFieldNames),
-               "DomainName" =: _difDomainName]
+  toQuery DescribeIndexFields' {..} =
+    mconcat
+      [ "Action" =: ("DescribeIndexFields" :: ByteString)
+      , "Version" =: ("2013-01-01" :: ByteString)
+      , "Deployed" =: _difDeployed
+      , "FieldNames" =: toQuery (toQueryList "member" <$> _difFieldNames)
+      , "DomainName" =: _difDomainName
+      ]
 
 -- | The result of a @DescribeIndexFields@ request. Contains the index fields configured for the domain specified in the request.
 --
 --
 --
 -- /See:/ 'describeIndexFieldsResponse' smart constructor.
-data DescribeIndexFieldsResponse = DescribeIndexFieldsResponse'
-  { _difsrsResponseStatus :: !Int
-  , _difsrsIndexFields    :: ![IndexFieldStatus]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeIndexFieldsResponse =
+  DescribeIndexFieldsResponse'
+    { _difsrsResponseStatus :: !Int
+    , _difsrsIndexFields :: ![IndexFieldStatus]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeIndexFieldsResponse' with the minimum fields required to make a request.
 --
@@ -140,20 +136,21 @@ data DescribeIndexFieldsResponse = DescribeIndexFieldsResponse'
 -- * 'difsrsResponseStatus' - -- | The response status code.
 --
 -- * 'difsrsIndexFields' - The index fields configured for the domain.
-describeIndexFieldsResponse
-    :: Int -- ^ 'difsrsResponseStatus'
-    -> DescribeIndexFieldsResponse
+describeIndexFieldsResponse ::
+     Int -- ^ 'difsrsResponseStatus'
+  -> DescribeIndexFieldsResponse
 describeIndexFieldsResponse pResponseStatus_ =
   DescribeIndexFieldsResponse'
     {_difsrsResponseStatus = pResponseStatus_, _difsrsIndexFields = mempty}
 
-
 -- | -- | The response status code.
 difsrsResponseStatus :: Lens' DescribeIndexFieldsResponse Int
-difsrsResponseStatus = lens _difsrsResponseStatus (\ s a -> s{_difsrsResponseStatus = a})
+difsrsResponseStatus =
+  lens _difsrsResponseStatus (\s a -> s {_difsrsResponseStatus = a})
 
 -- | The index fields configured for the domain.
 difsrsIndexFields :: Lens' DescribeIndexFieldsResponse [IndexFieldStatus]
-difsrsIndexFields = lens _difsrsIndexFields (\ s a -> s{_difsrsIndexFields = a}) . _Coerce
+difsrsIndexFields =
+  lens _difsrsIndexFields (\s a -> s {_difsrsIndexFields = a}) . _Coerce
 
-instance NFData DescribeIndexFieldsResponse where
+instance NFData DescribeIndexFieldsResponse

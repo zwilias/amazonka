@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.Budgets.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,102 +10,86 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.Budgets.Types
-    (
     -- * Service Configuration
-      budgets
-
+  ( budgets
     -- * Errors
-    , _InvalidParameterException
-    , _InternalErrorException
-    , _ExpiredNextTokenException
-    , _NotFoundException
-    , _InvalidNextTokenException
-    , _DuplicateRecordException
-    , _CreationLimitExceededException
-
+  , _InvalidParameterException
+  , _InternalErrorException
+  , _ExpiredNextTokenException
+  , _NotFoundException
+  , _InvalidNextTokenException
+  , _DuplicateRecordException
+  , _CreationLimitExceededException
     -- * BudgetType
-    , BudgetType (..)
-
+  , BudgetType(..)
     -- * ComparisonOperator
-    , ComparisonOperator (..)
-
+  , ComparisonOperator(..)
     -- * NotificationType
-    , NotificationType (..)
-
+  , NotificationType(..)
     -- * SubscriptionType
-    , SubscriptionType (..)
-
+  , SubscriptionType(..)
     -- * ThresholdType
-    , ThresholdType (..)
-
+  , ThresholdType(..)
     -- * TimeUnit
-    , TimeUnit (..)
-
+  , TimeUnit(..)
     -- * Budget
-    , Budget
-    , budget
-    , bCalculatedSpend
-    , bBudgetLimit
-    , bTimePeriod
-    , bCostTypes
-    , bCostFilters
-    , bBudgetName
-    , bTimeUnit
-    , bBudgetType
-
+  , Budget
+  , budget
+  , bCalculatedSpend
+  , bBudgetLimit
+  , bTimePeriod
+  , bCostTypes
+  , bCostFilters
+  , bBudgetName
+  , bTimeUnit
+  , bBudgetType
     -- * CalculatedSpend
-    , CalculatedSpend
-    , calculatedSpend
-    , csForecastedSpend
-    , csActualSpend
-
+  , CalculatedSpend
+  , calculatedSpend
+  , csForecastedSpend
+  , csActualSpend
     -- * CostTypes
-    , CostTypes
-    , costTypes
-    , ctUseAmortized
-    , ctIncludeRecurring
-    , ctUseBlended
-    , ctIncludeSupport
-    , ctIncludeDiscount
-    , ctIncludeSubscription
-    , ctIncludeRefund
-    , ctIncludeUpfront
-    , ctIncludeOtherSubscription
-    , ctIncludeTax
-    , ctIncludeCredit
-
+  , CostTypes
+  , costTypes
+  , ctUseAmortized
+  , ctIncludeRecurring
+  , ctUseBlended
+  , ctIncludeSupport
+  , ctIncludeDiscount
+  , ctIncludeSubscription
+  , ctIncludeRefund
+  , ctIncludeUpfront
+  , ctIncludeOtherSubscription
+  , ctIncludeTax
+  , ctIncludeCredit
     -- * Notification
-    , Notification
-    , notification
-    , nThresholdType
-    , nNotificationType
-    , nComparisonOperator
-    , nThreshold
-
+  , Notification
+  , notification
+  , nThresholdType
+  , nNotificationType
+  , nComparisonOperator
+  , nThreshold
     -- * NotificationWithSubscribers
-    , NotificationWithSubscribers
-    , notificationWithSubscribers
-    , nwsNotification
-    , nwsSubscribers
-
+  , NotificationWithSubscribers
+  , notificationWithSubscribers
+  , nwsNotification
+  , nwsSubscribers
     -- * Spend
-    , Spend
-    , spend
-    , sAmount
-    , sUnit
-
+  , Spend
+  , spend
+  , sAmount
+  , sUnit
     -- * Subscriber
-    , Subscriber
-    , subscriber
-    , sSubscriptionType
-    , sAddress
-
+  , Subscriber
+  , subscriber
+  , sSubscriptionType
+  , sAddress
     -- * TimePeriod
-    , TimePeriod
-    , timePeriod
-    , tpStart
-    , tpEnd
-    ) where
+  , TimePeriod
+  , timePeriod
+  , tpStart
+  , tpEnd
+  ) where
 
 import Network.AWS.Budgets.Types.Product
 import Network.AWS.Budgets.Types.Sum
@@ -152,29 +135,28 @@ budgets =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | An error on the client occurred. Typically, the cause is an invalid input value.
 --
 --
-_InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidParameterException =
   _MatchServiceError budgets "InvalidParameterException"
-
 
 -- | An error on the server occurred during the processing of your request. Try again later.
 --
 --
-_InternalErrorException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalErrorException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InternalErrorException = _MatchServiceError budgets "InternalErrorException"
-
 
 -- | The pagination token expired.
 --
 --
-_ExpiredNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
+_ExpiredNextTokenException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ExpiredNextTokenException =
   _MatchServiceError budgets "ExpiredNextTokenException"
-
 
 -- | We can’t locate the resource that you specified.
 --
@@ -182,27 +164,26 @@ _ExpiredNextTokenException =
 _NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _NotFoundException = _MatchServiceError budgets "NotFoundException"
 
-
 -- | The pagination token is invalid.
 --
 --
-_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidNextTokenException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidNextTokenException =
   _MatchServiceError budgets "InvalidNextTokenException"
-
 
 -- | The budget name already exists. Budget names must be unique within an account.
 --
 --
-_DuplicateRecordException :: AsError a => Getting (First ServiceError) a ServiceError
+_DuplicateRecordException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _DuplicateRecordException =
   _MatchServiceError budgets "DuplicateRecordException"
-
 
 -- | You've exceeded the notification or subscriber limit.
 --
 --
-_CreationLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_CreationLimitExceededException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _CreationLimitExceededException =
   _MatchServiceError budgets "CreationLimitExceededException"
-

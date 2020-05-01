@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CertificateManager
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,217 +17,167 @@
 -- You can use ACM to manage SSL/TLS certificates for your AWS-based websites and applications. For general information about using ACM, see the <http://docs.aws.amazon.com/acm/latest/userguide/ /AWS Certificate Manager User Guide/ > .
 --
 module Network.AWS.CertificateManager
-    (
     -- * Service Configuration
-      certificateManager
-
+  ( certificateManager
     -- * Errors
     -- $errors
-
     -- ** InvalidTagException
-    , _InvalidTagException
-
+  , _InvalidTagException
     -- ** InvalidDomainValidationOptionsException
-    , _InvalidDomainValidationOptionsException
-
+  , _InvalidDomainValidationOptionsException
     -- ** TooManyTagsException
-    , _TooManyTagsException
-
+  , _TooManyTagsException
     -- ** RequestInProgressException
-    , _RequestInProgressException
-
+  , _RequestInProgressException
     -- ** InvalidARNException
-    , _InvalidARNException
-
+  , _InvalidARNException
     -- ** ResourceNotFoundException
-    , _ResourceNotFoundException
-
+  , _ResourceNotFoundException
     -- ** InvalidStateException
-    , _InvalidStateException
-
+  , _InvalidStateException
     -- ** LimitExceededException
-    , _LimitExceededException
-
+  , _LimitExceededException
     -- ** ResourceInUseException
-    , _ResourceInUseException
-
+  , _ResourceInUseException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** ResendValidationEmail
-    , module Network.AWS.CertificateManager.ResendValidationEmail
-
+  , module Network.AWS.CertificateManager.ResendValidationEmail
     -- ** UpdateCertificateOptions
-    , module Network.AWS.CertificateManager.UpdateCertificateOptions
-
+  , module Network.AWS.CertificateManager.UpdateCertificateOptions
     -- ** ListTagsForCertificate
-    , module Network.AWS.CertificateManager.ListTagsForCertificate
-
+  , module Network.AWS.CertificateManager.ListTagsForCertificate
     -- ** GetCertificate
-    , module Network.AWS.CertificateManager.GetCertificate
-
+  , module Network.AWS.CertificateManager.GetCertificate
     -- ** AddTagsToCertificate
-    , module Network.AWS.CertificateManager.AddTagsToCertificate
-
+  , module Network.AWS.CertificateManager.AddTagsToCertificate
     -- ** RequestCertificate
-    , module Network.AWS.CertificateManager.RequestCertificate
-
+  , module Network.AWS.CertificateManager.RequestCertificate
     -- ** ListCertificates (Paginated)
-    , module Network.AWS.CertificateManager.ListCertificates
-
+  , module Network.AWS.CertificateManager.ListCertificates
     -- ** DeleteCertificate
-    , module Network.AWS.CertificateManager.DeleteCertificate
-
+  , module Network.AWS.CertificateManager.DeleteCertificate
     -- ** RemoveTagsFromCertificate
-    , module Network.AWS.CertificateManager.RemoveTagsFromCertificate
-
+  , module Network.AWS.CertificateManager.RemoveTagsFromCertificate
     -- ** ImportCertificate
-    , module Network.AWS.CertificateManager.ImportCertificate
-
+  , module Network.AWS.CertificateManager.ImportCertificate
     -- ** DescribeCertificate
-    , module Network.AWS.CertificateManager.DescribeCertificate
-
+  , module Network.AWS.CertificateManager.DescribeCertificate
     -- ** ExportCertificate
-    , module Network.AWS.CertificateManager.ExportCertificate
-
+  , module Network.AWS.CertificateManager.ExportCertificate
     -- * Types
-
     -- ** CertificateStatus
-    , CertificateStatus (..)
-
+  , CertificateStatus(..)
     -- ** CertificateTransparencyLoggingPreference
-    , CertificateTransparencyLoggingPreference (..)
-
+  , CertificateTransparencyLoggingPreference(..)
     -- ** CertificateType
-    , CertificateType (..)
-
+  , CertificateType(..)
     -- ** DomainStatus
-    , DomainStatus (..)
-
+  , DomainStatus(..)
     -- ** ExtendedKeyUsageName
-    , ExtendedKeyUsageName (..)
-
+  , ExtendedKeyUsageName(..)
     -- ** FailureReason
-    , FailureReason (..)
-
+  , FailureReason(..)
     -- ** KeyAlgorithm
-    , KeyAlgorithm (..)
-
+  , KeyAlgorithm(..)
     -- ** KeyUsageName
-    , KeyUsageName (..)
-
+  , KeyUsageName(..)
     -- ** RecordType
-    , RecordType (..)
-
+  , RecordType(..)
     -- ** RenewalEligibility
-    , RenewalEligibility (..)
-
+  , RenewalEligibility(..)
     -- ** RenewalStatus
-    , RenewalStatus (..)
-
+  , RenewalStatus(..)
     -- ** RevocationReason
-    , RevocationReason (..)
-
+  , RevocationReason(..)
     -- ** ValidationMethod
-    , ValidationMethod (..)
-
+  , ValidationMethod(..)
     -- ** CertificateDetail
-    , CertificateDetail
-    , certificateDetail
-    , cdSubject
-    , cdStatus
-    , cdFailureReason
-    , cdSubjectAlternativeNames
-    , cdInUseBy
-    , cdCreatedAt
-    , cdCertificateARN
-    , cdSerial
-    , cdRenewalEligibility
-    , cdExtendedKeyUsages
-    , cdImportedAt
-    , cdKeyUsages
-    , cdRevokedAt
-    , cdNotBefore
-    , cdRevocationReason
-    , cdDomainName
-    , cdRenewalSummary
-    , cdKeyAlgorithm
-    , cdType
-    , cdOptions
-    , cdIssuedAt
-    , cdSignatureAlgorithm
-    , cdDomainValidationOptions
-    , cdIssuer
-    , cdNotAfter
-    , cdCertificateAuthorityARN
-
+  , CertificateDetail
+  , certificateDetail
+  , cdSubject
+  , cdStatus
+  , cdFailureReason
+  , cdSubjectAlternativeNames
+  , cdInUseBy
+  , cdCreatedAt
+  , cdCertificateARN
+  , cdSerial
+  , cdRenewalEligibility
+  , cdExtendedKeyUsages
+  , cdImportedAt
+  , cdKeyUsages
+  , cdRevokedAt
+  , cdNotBefore
+  , cdRevocationReason
+  , cdDomainName
+  , cdRenewalSummary
+  , cdKeyAlgorithm
+  , cdType
+  , cdOptions
+  , cdIssuedAt
+  , cdSignatureAlgorithm
+  , cdDomainValidationOptions
+  , cdIssuer
+  , cdNotAfter
+  , cdCertificateAuthorityARN
     -- ** CertificateOptions
-    , CertificateOptions
-    , certificateOptions
-    , coCertificateTransparencyLoggingPreference
-
+  , CertificateOptions
+  , certificateOptions
+  , coCertificateTransparencyLoggingPreference
     -- ** CertificateSummary
-    , CertificateSummary
-    , certificateSummary
-    , csCertificateARN
-    , csDomainName
-
+  , CertificateSummary
+  , certificateSummary
+  , csCertificateARN
+  , csDomainName
     -- ** DomainValidation
-    , DomainValidation
-    , domainValidation
-    , dvValidationEmails
-    , dvValidationMethod
-    , dvResourceRecord
-    , dvValidationStatus
-    , dvValidationDomain
-    , dvDomainName
-
+  , DomainValidation
+  , domainValidation
+  , dvValidationEmails
+  , dvValidationMethod
+  , dvResourceRecord
+  , dvValidationStatus
+  , dvValidationDomain
+  , dvDomainName
     -- ** DomainValidationOption
-    , DomainValidationOption
-    , domainValidationOption
-    , dvoDomainName
-    , dvoValidationDomain
-
+  , DomainValidationOption
+  , domainValidationOption
+  , dvoDomainName
+  , dvoValidationDomain
     -- ** ExtendedKeyUsage
-    , ExtendedKeyUsage
-    , extendedKeyUsage
-    , ekuOId
-    , ekuName
-
+  , ExtendedKeyUsage
+  , extendedKeyUsage
+  , ekuOId
+  , ekuName
     -- ** Filters
-    , Filters
-    , filters
-    , fKeyTypes
-    , fKeyUsage
-    , fExtendedKeyUsage
-
+  , Filters
+  , filters
+  , fKeyTypes
+  , fKeyUsage
+  , fExtendedKeyUsage
     -- ** KeyUsage
-    , KeyUsage
-    , keyUsage
-    , kuName
-
+  , KeyUsage
+  , keyUsage
+  , kuName
     -- ** RenewalSummary
-    , RenewalSummary
-    , renewalSummary
-    , rsRenewalStatus
-    , rsDomainValidationOptions
-
+  , RenewalSummary
+  , renewalSummary
+  , rsRenewalStatus
+  , rsDomainValidationOptions
     -- ** ResourceRecord
-    , ResourceRecord
-    , resourceRecord
-    , rrName
-    , rrType
-    , rrValue
-
+  , ResourceRecord
+  , resourceRecord
+  , rrName
+  , rrType
+  , rrValue
     -- ** Tag
-    , Tag
-    , tag
-    , tagValue
-    , tagKey
-    ) where
+  , Tag
+  , tag
+  , tagValue
+  , tagKey
+  ) where
 
 import Network.AWS.CertificateManager.AddTagsToCertificate
 import Network.AWS.CertificateManager.DeleteCertificate
@@ -244,14 +193,12 @@ import Network.AWS.CertificateManager.ResendValidationEmail
 import Network.AWS.CertificateManager.Types
 import Network.AWS.CertificateManager.UpdateCertificateOptions
 import Network.AWS.CertificateManager.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'CertificateManager'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -268,7 +215,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

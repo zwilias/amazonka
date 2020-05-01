@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.DeviceFarm.GetAccountSettings
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,18 +20,16 @@
 --
 --
 module Network.AWS.DeviceFarm.GetAccountSettings
-    (
     -- * Creating a Request
-      getAccountSettings
-    , GetAccountSettings
-
+  ( getAccountSettings
+  , GetAccountSettings
     -- * Destructuring the Response
-    , getAccountSettingsResponse
-    , GetAccountSettingsResponse
+  , getAccountSettingsResponse
+  , GetAccountSettingsResponse
     -- * Response Lenses
-    , gasrsAccountSettings
-    , gasrsResponseStatus
-    ) where
+  , gasrsAccountSettings
+  , gasrsResponseStatus
+  ) where
 
 import Network.AWS.DeviceFarm.Types
 import Network.AWS.DeviceFarm.Types.Product
@@ -51,57 +47,53 @@ data GetAccountSettings =
   GetAccountSettings'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'GetAccountSettings' with the minimum fields required to make a request.
 --
-getAccountSettings
-    :: GetAccountSettings
+getAccountSettings :: GetAccountSettings
 getAccountSettings = GetAccountSettings'
 
-
 instance AWSRequest GetAccountSettings where
-        type Rs GetAccountSettings =
-             GetAccountSettingsResponse
-        request = postJSON deviceFarm
-        response
-          = receiveJSON
-              (\ s h x ->
-                 GetAccountSettingsResponse' <$>
-                   (x .?> "accountSettings") <*> (pure (fromEnum s)))
+  type Rs GetAccountSettings = GetAccountSettingsResponse
+  request = postJSON deviceFarm
+  response =
+    receiveJSON
+      (\s h x ->
+         GetAccountSettingsResponse' <$> (x .?> "accountSettings") <*>
+         (pure (fromEnum s)))
 
-instance Hashable GetAccountSettings where
+instance Hashable GetAccountSettings
 
-instance NFData GetAccountSettings where
+instance NFData GetAccountSettings
 
 instance ToHeaders GetAccountSettings where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("DeviceFarm_20150623.GetAccountSettings" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("DeviceFarm_20150623.GetAccountSettings" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON GetAccountSettings where
-        toJSON = const (Object mempty)
+  toJSON = const (Object mempty)
 
 instance ToPath GetAccountSettings where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery GetAccountSettings where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | Represents the account settings return values from the @GetAccountSettings@ request.
 --
 --
 --
 -- /See:/ 'getAccountSettingsResponse' smart constructor.
-data GetAccountSettingsResponse = GetAccountSettingsResponse'
-  { _gasrsAccountSettings :: !(Maybe AccountSettings)
-  , _gasrsResponseStatus  :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAccountSettingsResponse =
+  GetAccountSettingsResponse'
+    { _gasrsAccountSettings :: !(Maybe AccountSettings)
+    , _gasrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetAccountSettingsResponse' with the minimum fields required to make a request.
 --
@@ -110,20 +102,21 @@ data GetAccountSettingsResponse = GetAccountSettingsResponse'
 -- * 'gasrsAccountSettings' - The account settings.
 --
 -- * 'gasrsResponseStatus' - -- | The response status code.
-getAccountSettingsResponse
-    :: Int -- ^ 'gasrsResponseStatus'
-    -> GetAccountSettingsResponse
+getAccountSettingsResponse ::
+     Int -- ^ 'gasrsResponseStatus'
+  -> GetAccountSettingsResponse
 getAccountSettingsResponse pResponseStatus_ =
   GetAccountSettingsResponse'
     {_gasrsAccountSettings = Nothing, _gasrsResponseStatus = pResponseStatus_}
 
-
 -- | The account settings.
 gasrsAccountSettings :: Lens' GetAccountSettingsResponse (Maybe AccountSettings)
-gasrsAccountSettings = lens _gasrsAccountSettings (\ s a -> s{_gasrsAccountSettings = a})
+gasrsAccountSettings =
+  lens _gasrsAccountSettings (\s a -> s {_gasrsAccountSettings = a})
 
 -- | -- | The response status code.
 gasrsResponseStatus :: Lens' GetAccountSettingsResponse Int
-gasrsResponseStatus = lens _gasrsResponseStatus (\ s a -> s{_gasrsResponseStatus = a})
+gasrsResponseStatus =
+  lens _gasrsResponseStatus (\s a -> s {_gasrsResponseStatus = a})
 
-instance NFData GetAccountSettingsResponse where
+instance NFData GetAccountSettingsResponse

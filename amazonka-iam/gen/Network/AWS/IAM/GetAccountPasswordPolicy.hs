@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.IAM.GetAccountPasswordPolicy
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,18 +20,16 @@
 --
 --
 module Network.AWS.IAM.GetAccountPasswordPolicy
-    (
     -- * Creating a Request
-      getAccountPasswordPolicy
-    , GetAccountPasswordPolicy
-
+  ( getAccountPasswordPolicy
+  , GetAccountPasswordPolicy
     -- * Destructuring the Response
-    , getAccountPasswordPolicyResponse
-    , GetAccountPasswordPolicyResponse
+  , getAccountPasswordPolicyResponse
+  , GetAccountPasswordPolicyResponse
     -- * Response Lenses
-    , gapprsResponseStatus
-    , gapprsPasswordPolicy
-    ) where
+  , gapprsResponseStatus
+  , gapprsPasswordPolicy
+  ) where
 
 import Network.AWS.IAM.Types
 import Network.AWS.IAM.Types.Product
@@ -47,52 +43,50 @@ data GetAccountPasswordPolicy =
   GetAccountPasswordPolicy'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
-
 -- | Creates a value of 'GetAccountPasswordPolicy' with the minimum fields required to make a request.
 --
-getAccountPasswordPolicy
-    :: GetAccountPasswordPolicy
+getAccountPasswordPolicy :: GetAccountPasswordPolicy
 getAccountPasswordPolicy = GetAccountPasswordPolicy'
 
-
 instance AWSRequest GetAccountPasswordPolicy where
-        type Rs GetAccountPasswordPolicy =
-             GetAccountPasswordPolicyResponse
-        request = postQuery iam
-        response
-          = receiveXMLWrapper "GetAccountPasswordPolicyResult"
-              (\ s h x ->
-                 GetAccountPasswordPolicyResponse' <$>
-                   (pure (fromEnum s)) <*> (x .@ "PasswordPolicy"))
+  type Rs GetAccountPasswordPolicy = GetAccountPasswordPolicyResponse
+  request = postQuery iam
+  response =
+    receiveXMLWrapper
+      "GetAccountPasswordPolicyResult"
+      (\s h x ->
+         GetAccountPasswordPolicyResponse' <$> (pure (fromEnum s)) <*>
+         (x .@ "PasswordPolicy"))
 
-instance Hashable GetAccountPasswordPolicy where
+instance Hashable GetAccountPasswordPolicy
 
-instance NFData GetAccountPasswordPolicy where
+instance NFData GetAccountPasswordPolicy
 
 instance ToHeaders GetAccountPasswordPolicy where
-        toHeaders = const mempty
+  toHeaders = const mempty
 
 instance ToPath GetAccountPasswordPolicy where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery GetAccountPasswordPolicy where
-        toQuery
-          = const
-              (mconcat
-                 ["Action" =:
-                    ("GetAccountPasswordPolicy" :: ByteString),
-                  "Version" =: ("2010-05-08" :: ByteString)])
+  toQuery =
+    const
+      (mconcat
+         [ "Action" =: ("GetAccountPasswordPolicy" :: ByteString)
+         , "Version" =: ("2010-05-08" :: ByteString)
+         ])
 
 -- | Contains the response to a successful 'GetAccountPasswordPolicy' request.
 --
 --
 --
 -- /See:/ 'getAccountPasswordPolicyResponse' smart constructor.
-data GetAccountPasswordPolicyResponse = GetAccountPasswordPolicyResponse'
-  { _gapprsResponseStatus :: !Int
-  , _gapprsPasswordPolicy :: !PasswordPolicy
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAccountPasswordPolicyResponse =
+  GetAccountPasswordPolicyResponse'
+    { _gapprsResponseStatus :: !Int
+    , _gapprsPasswordPolicy :: !PasswordPolicy
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetAccountPasswordPolicyResponse' with the minimum fields required to make a request.
 --
@@ -101,24 +95,24 @@ data GetAccountPasswordPolicyResponse = GetAccountPasswordPolicyResponse'
 -- * 'gapprsResponseStatus' - -- | The response status code.
 --
 -- * 'gapprsPasswordPolicy' - A structure that contains details about the account's password policy.
-getAccountPasswordPolicyResponse
-    :: Int -- ^ 'gapprsResponseStatus'
-    -> PasswordPolicy -- ^ 'gapprsPasswordPolicy'
-    -> GetAccountPasswordPolicyResponse
+getAccountPasswordPolicyResponse ::
+     Int -- ^ 'gapprsResponseStatus'
+  -> PasswordPolicy -- ^ 'gapprsPasswordPolicy'
+  -> GetAccountPasswordPolicyResponse
 getAccountPasswordPolicyResponse pResponseStatus_ pPasswordPolicy_ =
   GetAccountPasswordPolicyResponse'
     { _gapprsResponseStatus = pResponseStatus_
     , _gapprsPasswordPolicy = pPasswordPolicy_
     }
 
-
 -- | -- | The response status code.
 gapprsResponseStatus :: Lens' GetAccountPasswordPolicyResponse Int
-gapprsResponseStatus = lens _gapprsResponseStatus (\ s a -> s{_gapprsResponseStatus = a})
+gapprsResponseStatus =
+  lens _gapprsResponseStatus (\s a -> s {_gapprsResponseStatus = a})
 
 -- | A structure that contains details about the account's password policy.
 gapprsPasswordPolicy :: Lens' GetAccountPasswordPolicyResponse PasswordPolicy
-gapprsPasswordPolicy = lens _gapprsPasswordPolicy (\ s a -> s{_gapprsPasswordPolicy = a})
+gapprsPasswordPolicy =
+  lens _gapprsPasswordPolicy (\s a -> s {_gapprsPasswordPolicy = a})
 
 instance NFData GetAccountPasswordPolicyResponse
-         where

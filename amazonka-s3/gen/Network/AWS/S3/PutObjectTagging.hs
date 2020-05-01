@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.S3.PutObjectTagging
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,24 +18,22 @@
 --
 -- Sets the supplied tag-set to an object that already exists in a bucket
 module Network.AWS.S3.PutObjectTagging
-    (
     -- * Creating a Request
-      putObjectTagging
-    , PutObjectTagging
+  ( putObjectTagging
+  , PutObjectTagging
     -- * Request Lenses
-    , potVersionId
-    , potContentMD5
-    , potBucket
-    , potKey
-    , potTagging
-
+  , potVersionId
+  , potContentMD5
+  , potBucket
+  , potKey
+  , potTagging
     -- * Destructuring the Response
-    , putObjectTaggingResponse
-    , PutObjectTaggingResponse
+  , putObjectTaggingResponse
+  , PutObjectTaggingResponse
     -- * Response Lenses
-    , potrsVersionId
-    , potrsResponseStatus
-    ) where
+  , potrsVersionId
+  , potrsResponseStatus
+  ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -47,14 +43,15 @@ import Network.AWS.S3.Types
 import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'putObjectTagging' smart constructor.
-data PutObjectTagging = PutObjectTagging'
-  { _potVersionId  :: !(Maybe ObjectVersionId)
-  , _potContentMD5 :: !(Maybe Text)
-  , _potBucket     :: !BucketName
-  , _potKey        :: !ObjectKey
-  , _potTagging    :: !Tagging
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutObjectTagging =
+  PutObjectTagging'
+    { _potVersionId :: !(Maybe ObjectVersionId)
+    , _potContentMD5 :: !(Maybe Text)
+    , _potBucket :: !BucketName
+    , _potKey :: !ObjectKey
+    , _potTagging :: !Tagging
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutObjectTagging' with the minimum fields required to make a request.
 --
@@ -69,11 +66,11 @@ data PutObjectTagging = PutObjectTagging'
 -- * 'potKey' - Undocumented member.
 --
 -- * 'potTagging' - Undocumented member.
-putObjectTagging
-    :: BucketName -- ^ 'potBucket'
-    -> ObjectKey -- ^ 'potKey'
-    -> Tagging -- ^ 'potTagging'
-    -> PutObjectTagging
+putObjectTagging ::
+     BucketName -- ^ 'potBucket'
+  -> ObjectKey -- ^ 'potKey'
+  -> Tagging -- ^ 'potTagging'
+  -> PutObjectTagging
 putObjectTagging pBucket_ pKey_ pTagging_ =
   PutObjectTagging'
     { _potVersionId = Nothing
@@ -83,65 +80,61 @@ putObjectTagging pBucket_ pKey_ pTagging_ =
     , _potTagging = pTagging_
     }
 
-
 -- | Undocumented member.
 potVersionId :: Lens' PutObjectTagging (Maybe ObjectVersionId)
-potVersionId = lens _potVersionId (\ s a -> s{_potVersionId = a})
+potVersionId = lens _potVersionId (\s a -> s {_potVersionId = a})
 
 -- | Undocumented member.
 potContentMD5 :: Lens' PutObjectTagging (Maybe Text)
-potContentMD5 = lens _potContentMD5 (\ s a -> s{_potContentMD5 = a})
+potContentMD5 = lens _potContentMD5 (\s a -> s {_potContentMD5 = a})
 
 -- | Undocumented member.
 potBucket :: Lens' PutObjectTagging BucketName
-potBucket = lens _potBucket (\ s a -> s{_potBucket = a})
+potBucket = lens _potBucket (\s a -> s {_potBucket = a})
 
 -- | Undocumented member.
 potKey :: Lens' PutObjectTagging ObjectKey
-potKey = lens _potKey (\ s a -> s{_potKey = a})
+potKey = lens _potKey (\s a -> s {_potKey = a})
 
 -- | Undocumented member.
 potTagging :: Lens' PutObjectTagging Tagging
-potTagging = lens _potTagging (\ s a -> s{_potTagging = a})
+potTagging = lens _potTagging (\s a -> s {_potTagging = a})
 
 instance AWSRequest PutObjectTagging where
-        type Rs PutObjectTagging = PutObjectTaggingResponse
-        request = putXML s3
-        response
-          = receiveEmpty
-              (\ s h x ->
-                 PutObjectTaggingResponse' <$>
-                   (h .#? "x-amz-version-id") <*> (pure (fromEnum s)))
+  type Rs PutObjectTagging = PutObjectTaggingResponse
+  request = putXML s3
+  response =
+    receiveEmpty
+      (\s h x ->
+         PutObjectTaggingResponse' <$> (h .#? "x-amz-version-id") <*>
+         (pure (fromEnum s)))
 
-instance Hashable PutObjectTagging where
+instance Hashable PutObjectTagging
 
-instance NFData PutObjectTagging where
+instance NFData PutObjectTagging
 
 instance ToElement PutObjectTagging where
-        toElement
-          = mkElement
-              "{http://s3.amazonaws.com/doc/2006-03-01/}Tagging"
-              .
-              _potTagging
+  toElement =
+    mkElement "{http://s3.amazonaws.com/doc/2006-03-01/}Tagging" . _potTagging
 
 instance ToHeaders PutObjectTagging where
-        toHeaders PutObjectTagging'{..}
-          = mconcat ["Content-MD5" =# _potContentMD5]
+  toHeaders PutObjectTagging' {..} = mconcat ["Content-MD5" =# _potContentMD5]
 
 instance ToPath PutObjectTagging where
-        toPath PutObjectTagging'{..}
-          = mconcat ["/", toBS _potBucket, "/", toBS _potKey]
+  toPath PutObjectTagging' {..} =
+    mconcat ["/", toBS _potBucket, "/", toBS _potKey]
 
 instance ToQuery PutObjectTagging where
-        toQuery PutObjectTagging'{..}
-          = mconcat ["versionId" =: _potVersionId, "tagging"]
+  toQuery PutObjectTagging' {..} =
+    mconcat ["versionId" =: _potVersionId, "tagging"]
 
 -- | /See:/ 'putObjectTaggingResponse' smart constructor.
-data PutObjectTaggingResponse = PutObjectTaggingResponse'
-  { _potrsVersionId      :: !(Maybe ObjectVersionId)
-  , _potrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutObjectTaggingResponse =
+  PutObjectTaggingResponse'
+    { _potrsVersionId :: !(Maybe ObjectVersionId)
+    , _potrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutObjectTaggingResponse' with the minimum fields required to make a request.
 --
@@ -150,20 +143,20 @@ data PutObjectTaggingResponse = PutObjectTaggingResponse'
 -- * 'potrsVersionId' - Undocumented member.
 --
 -- * 'potrsResponseStatus' - -- | The response status code.
-putObjectTaggingResponse
-    :: Int -- ^ 'potrsResponseStatus'
-    -> PutObjectTaggingResponse
+putObjectTaggingResponse ::
+     Int -- ^ 'potrsResponseStatus'
+  -> PutObjectTaggingResponse
 putObjectTaggingResponse pResponseStatus_ =
   PutObjectTaggingResponse'
     {_potrsVersionId = Nothing, _potrsResponseStatus = pResponseStatus_}
 
-
 -- | Undocumented member.
 potrsVersionId :: Lens' PutObjectTaggingResponse (Maybe ObjectVersionId)
-potrsVersionId = lens _potrsVersionId (\ s a -> s{_potrsVersionId = a})
+potrsVersionId = lens _potrsVersionId (\s a -> s {_potrsVersionId = a})
 
 -- | -- | The response status code.
 potrsResponseStatus :: Lens' PutObjectTaggingResponse Int
-potrsResponseStatus = lens _potrsResponseStatus (\ s a -> s{_potrsResponseStatus = a})
+potrsResponseStatus =
+  lens _potrsResponseStatus (\s a -> s {_potrsResponseStatus = a})
 
-instance NFData PutObjectTaggingResponse where
+instance NFData PutObjectTaggingResponse

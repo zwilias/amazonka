@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.ApplicationAutoScaling.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,156 +10,134 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.ApplicationAutoScaling.Types
-    (
     -- * Service Configuration
-      applicationAutoScaling
-
+  ( applicationAutoScaling
     -- * Errors
-    , _ValidationException
-    , _FailedResourceAccessException
-    , _InvalidNextTokenException
-    , _ConcurrentUpdateException
-    , _InternalServiceException
-    , _ObjectNotFoundException
-    , _LimitExceededException
-
+  , _ValidationException
+  , _FailedResourceAccessException
+  , _InvalidNextTokenException
+  , _ConcurrentUpdateException
+  , _InternalServiceException
+  , _ObjectNotFoundException
+  , _LimitExceededException
     -- * AdjustmentType
-    , AdjustmentType (..)
-
+  , AdjustmentType(..)
     -- * MetricAggregationType
-    , MetricAggregationType (..)
-
+  , MetricAggregationType(..)
     -- * MetricStatistic
-    , MetricStatistic (..)
-
+  , MetricStatistic(..)
     -- * MetricType
-    , MetricType (..)
-
+  , MetricType(..)
     -- * PolicyType
-    , PolicyType (..)
-
+  , PolicyType(..)
     -- * ScalableDimension
-    , ScalableDimension (..)
-
+  , ScalableDimension(..)
     -- * ScalingActivityStatusCode
-    , ScalingActivityStatusCode (..)
-
+  , ScalingActivityStatusCode(..)
     -- * ServiceNamespace
-    , ServiceNamespace (..)
-
+  , ServiceNamespace(..)
     -- * Alarm
-    , Alarm
-    , alarm
-    , aAlarmName
-    , aAlarmARN
-
+  , Alarm
+  , alarm
+  , aAlarmName
+  , aAlarmARN
     -- * CustomizedMetricSpecification
-    , CustomizedMetricSpecification
-    , customizedMetricSpecification
-    , cmsDimensions
-    , cmsUnit
-    , cmsMetricName
-    , cmsNamespace
-    , cmsStatistic
-
+  , CustomizedMetricSpecification
+  , customizedMetricSpecification
+  , cmsDimensions
+  , cmsUnit
+  , cmsMetricName
+  , cmsNamespace
+  , cmsStatistic
     -- * MetricDimension
-    , MetricDimension
-    , metricDimension
-    , mdName
-    , mdValue
-
+  , MetricDimension
+  , metricDimension
+  , mdName
+  , mdValue
     -- * PredefinedMetricSpecification
-    , PredefinedMetricSpecification
-    , predefinedMetricSpecification
-    , pmsResourceLabel
-    , pmsPredefinedMetricType
-
+  , PredefinedMetricSpecification
+  , predefinedMetricSpecification
+  , pmsResourceLabel
+  , pmsPredefinedMetricType
     -- * ScalableTarget
-    , ScalableTarget
-    , scalableTarget
-    , stServiceNamespace
-    , stResourceId
-    , stScalableDimension
-    , stMinCapacity
-    , stMaxCapacity
-    , stRoleARN
-    , stCreationTime
-
+  , ScalableTarget
+  , scalableTarget
+  , stServiceNamespace
+  , stResourceId
+  , stScalableDimension
+  , stMinCapacity
+  , stMaxCapacity
+  , stRoleARN
+  , stCreationTime
     -- * ScalableTargetAction
-    , ScalableTargetAction
-    , scalableTargetAction
-    , staMaxCapacity
-    , staMinCapacity
-
+  , ScalableTargetAction
+  , scalableTargetAction
+  , staMaxCapacity
+  , staMinCapacity
     -- * ScalingActivity
-    , ScalingActivity
-    , scalingActivity
-    , sStatusMessage
-    , sEndTime
-    , sDetails
-    , sActivityId
-    , sServiceNamespace
-    , sResourceId
-    , sScalableDimension
-    , sDescription
-    , sCause
-    , sStartTime
-    , sStatusCode
-
+  , ScalingActivity
+  , scalingActivity
+  , sStatusMessage
+  , sEndTime
+  , sDetails
+  , sActivityId
+  , sServiceNamespace
+  , sResourceId
+  , sScalableDimension
+  , sDescription
+  , sCause
+  , sStartTime
+  , sStatusCode
     -- * ScalingPolicy
-    , ScalingPolicy
-    , scalingPolicy
-    , spTargetTrackingScalingPolicyConfiguration
-    , spStepScalingPolicyConfiguration
-    , spAlarms
-    , spPolicyARN
-    , spPolicyName
-    , spServiceNamespace
-    , spResourceId
-    , spScalableDimension
-    , spPolicyType
-    , spCreationTime
-
+  , ScalingPolicy
+  , scalingPolicy
+  , spTargetTrackingScalingPolicyConfiguration
+  , spStepScalingPolicyConfiguration
+  , spAlarms
+  , spPolicyARN
+  , spPolicyName
+  , spServiceNamespace
+  , spResourceId
+  , spScalableDimension
+  , spPolicyType
+  , spCreationTime
     -- * ScheduledAction
-    , ScheduledAction
-    , scheduledAction
-    , saScalableDimension
-    , saStartTime
-    , saEndTime
-    , saScalableTargetAction
-    , saScheduledActionName
-    , saScheduledActionARN
-    , saServiceNamespace
-    , saSchedule
-    , saResourceId
-    , saCreationTime
-
+  , ScheduledAction
+  , scheduledAction
+  , saScalableDimension
+  , saStartTime
+  , saEndTime
+  , saScalableTargetAction
+  , saScheduledActionName
+  , saScheduledActionARN
+  , saServiceNamespace
+  , saSchedule
+  , saResourceId
+  , saCreationTime
     -- * StepAdjustment
-    , StepAdjustment
-    , stepAdjustment
-    , saMetricIntervalLowerBound
-    , saMetricIntervalUpperBound
-    , saScalingAdjustment
-
+  , StepAdjustment
+  , stepAdjustment
+  , saMetricIntervalLowerBound
+  , saMetricIntervalUpperBound
+  , saScalingAdjustment
     -- * StepScalingPolicyConfiguration
-    , StepScalingPolicyConfiguration
-    , stepScalingPolicyConfiguration
-    , sspcStepAdjustments
-    , sspcAdjustmentType
-    , sspcCooldown
-    , sspcMetricAggregationType
-    , sspcMinAdjustmentMagnitude
-
+  , StepScalingPolicyConfiguration
+  , stepScalingPolicyConfiguration
+  , sspcStepAdjustments
+  , sspcAdjustmentType
+  , sspcCooldown
+  , sspcMetricAggregationType
+  , sspcMinAdjustmentMagnitude
     -- * TargetTrackingScalingPolicyConfiguration
-    , TargetTrackingScalingPolicyConfiguration
-    , targetTrackingScalingPolicyConfiguration
-    , ttspcPredefinedMetricSpecification
-    , ttspcScaleInCooldown
-    , ttspcCustomizedMetricSpecification
-    , ttspcDisableScaleIn
-    , ttspcScaleOutCooldown
-    , ttspcTargetValue
-    ) where
+  , TargetTrackingScalingPolicyConfiguration
+  , targetTrackingScalingPolicyConfiguration
+  , ttspcPredefinedMetricSpecification
+  , ttspcScaleInCooldown
+  , ttspcCustomizedMetricSpecification
+  , ttspcDisableScaleIn
+  , ttspcScaleOutCooldown
+  , ttspcTargetValue
+  ) where
 
 import Network.AWS.ApplicationAutoScaling.Types.Product
 import Network.AWS.ApplicationAutoScaling.Types.Sum
@@ -206,7 +183,6 @@ applicationAutoScaling =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | An exception was thrown for a validation issue. Review the available parameters for the API request.
 --
 --
@@ -214,51 +190,50 @@ _ValidationException :: AsError a => Getting (First ServiceError) a ServiceError
 _ValidationException =
   _MatchServiceError applicationAutoScaling "ValidationException"
 
-
 -- | Failed access to resources caused an exception. This exception is thrown when Application Auto Scaling is unable to retrieve the alarms associated with a scaling policy due to a client error, for example, if the role ARN specified for a scalable target does not have permission to call the CloudWatch <http://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeAlarms.html DescribeAlarms> on your behalf.
 --
 --
-_FailedResourceAccessException :: AsError a => Getting (First ServiceError) a ServiceError
+_FailedResourceAccessException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _FailedResourceAccessException =
   _MatchServiceError applicationAutoScaling "FailedResourceAccessException"
-
 
 -- | The next token supplied was invalid.
 --
 --
-_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidNextTokenException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidNextTokenException =
   _MatchServiceError applicationAutoScaling "InvalidNextTokenException"
-
 
 -- | Concurrent updates caused an exception, for example, if you request an update to an Application Auto Scaling resource that already has a pending update.
 --
 --
-_ConcurrentUpdateException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConcurrentUpdateException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ConcurrentUpdateException =
   _MatchServiceError applicationAutoScaling "ConcurrentUpdateException"
-
 
 -- | The service encountered an internal error.
 --
 --
-_InternalServiceException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServiceException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InternalServiceException =
   _MatchServiceError applicationAutoScaling "InternalServiceException"
-
 
 -- | The specified object could not be found. For any operation that depends on the existence of a scalable target, this exception is thrown if the scalable target with the specified service namespace, resource ID, and scalable dimension does not exist. For any operation that deletes or deregisters a resource, this exception is thrown if the resource cannot be found.
 --
 --
-_ObjectNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ObjectNotFoundException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ObjectNotFoundException =
   _MatchServiceError applicationAutoScaling "ObjectNotFoundException"
-
 
 -- | A per-account resource limit is exceeded. For more information, see <http://docs.aws.amazon.com/ApplicationAutoScaling/latest/userguide/application-auto-scaling-limits.html Application Auto Scaling Limits> .
 --
 --
-_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException =
   _MatchServiceError applicationAutoScaling "LimitExceededException"
-

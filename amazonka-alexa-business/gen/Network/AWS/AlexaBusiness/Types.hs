@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.AlexaBusiness.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,224 +10,191 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.AlexaBusiness.Types
-    (
     -- * Service Configuration
-      alexaBusiness
-
+  ( alexaBusiness
     -- * Errors
-    , _InvalidUserStatusException
-    , _NotFoundException
-    , _NameInUseException
-    , _AlreadyExistsException
-    , _LimitExceededException
-    , _ResourceInUseException
-
+  , _InvalidUserStatusException
+  , _NotFoundException
+  , _NameInUseException
+  , _AlreadyExistsException
+  , _LimitExceededException
+  , _ResourceInUseException
     -- * ConnectionStatus
-    , ConnectionStatus (..)
-
+  , ConnectionStatus(..)
     -- * DeviceEventType
-    , DeviceEventType (..)
-
+  , DeviceEventType(..)
     -- * DeviceStatus
-    , DeviceStatus (..)
-
+  , DeviceStatus(..)
     -- * DeviceStatusDetailCode
-    , DeviceStatusDetailCode (..)
-
+  , DeviceStatusDetailCode(..)
     -- * DistanceUnit
-    , DistanceUnit (..)
-
+  , DistanceUnit(..)
     -- * EnrollmentStatus
-    , EnrollmentStatus (..)
-
+  , EnrollmentStatus(..)
     -- * Feature
-    , Feature (..)
-
+  , Feature(..)
     -- * SortValue
-    , SortValue (..)
-
+  , SortValue(..)
     -- * TemperatureUnit
-    , TemperatureUnit (..)
-
+  , TemperatureUnit(..)
     -- * WakeWord
-    , WakeWord (..)
-
+  , WakeWord(..)
     -- * AddressBook
-    , AddressBook
-    , addressBook
-    , abAddressBookARN
-    , abName
-    , abDescription
-
+  , AddressBook
+  , addressBook
+  , abAddressBookARN
+  , abName
+  , abDescription
     -- * AddressBookData
-    , AddressBookData
-    , addressBookData
-    , abdAddressBookARN
-    , abdName
-    , abdDescription
-
+  , AddressBookData
+  , addressBookData
+  , abdAddressBookARN
+  , abdName
+  , abdDescription
     -- * Contact
-    , Contact
-    , contact
-    , cLastName
-    , cContactARN
-    , cPhoneNumber
-    , cFirstName
-    , cDisplayName
-
+  , Contact
+  , contact
+  , cLastName
+  , cContactARN
+  , cPhoneNumber
+  , cFirstName
+  , cDisplayName
     -- * ContactData
-    , ContactData
-    , contactData
-    , cdLastName
-    , cdContactARN
-    , cdPhoneNumber
-    , cdFirstName
-    , cdDisplayName
-
+  , ContactData
+  , contactData
+  , cdLastName
+  , cdContactARN
+  , cdPhoneNumber
+  , cdFirstName
+  , cdDisplayName
     -- * Device
-    , Device
-    , device
-    , dDeviceStatus
-    , dDeviceStatusInfo
-    , dDeviceARN
-    , dMACAddress
-    , dDeviceName
-    , dRoomARN
-    , dSoftwareVersion
-    , dDeviceType
-    , dDeviceSerialNumber
-
+  , Device
+  , device
+  , dDeviceStatus
+  , dDeviceStatusInfo
+  , dDeviceARN
+  , dMACAddress
+  , dDeviceName
+  , dRoomARN
+  , dSoftwareVersion
+  , dDeviceType
+  , dDeviceSerialNumber
     -- * DeviceData
-    , DeviceData
-    , deviceData
-    , ddDeviceStatus
-    , ddDeviceStatusInfo
-    , ddDeviceARN
-    , ddMACAddress
-    , ddDeviceName
-    , ddRoomARN
-    , ddSoftwareVersion
-    , ddDeviceType
-    , ddRoomName
-    , ddDeviceSerialNumber
-
+  , DeviceData
+  , deviceData
+  , ddDeviceStatus
+  , ddDeviceStatusInfo
+  , ddDeviceARN
+  , ddMACAddress
+  , ddDeviceName
+  , ddRoomARN
+  , ddSoftwareVersion
+  , ddDeviceType
+  , ddRoomName
+  , ddDeviceSerialNumber
     -- * DeviceEvent
-    , DeviceEvent
-    , deviceEvent
-    , deValue
-    , deType
-    , deTimestamp
-
+  , DeviceEvent
+  , deviceEvent
+  , deValue
+  , deType
+  , deTimestamp
     -- * DeviceStatusDetail
-    , DeviceStatusDetail
-    , deviceStatusDetail
-    , dsdCode
-
+  , DeviceStatusDetail
+  , deviceStatusDetail
+  , dsdCode
     -- * DeviceStatusInfo
-    , DeviceStatusInfo
-    , deviceStatusInfo
-    , dsiDeviceStatusDetails
-    , dsiConnectionStatus
-
+  , DeviceStatusInfo
+  , deviceStatusInfo
+  , dsiDeviceStatusDetails
+  , dsiConnectionStatus
     -- * Filter
-    , Filter
-    , filter'
-    , fKey
-    , fValues
-
+  , Filter
+  , filter'
+  , fKey
+  , fValues
     -- * Profile
-    , Profile
-    , profile
-    , pSetupModeDisabled
-    , pPSTNEnabled
-    , pDistanceUnit
-    , pAddress
-    , pProfileARN
-    , pWakeWord
-    , pProfileName
-    , pTemperatureUnit
-    , pTimezone
-    , pMaxVolumeLimit
-
+  , Profile
+  , profile
+  , pSetupModeDisabled
+  , pPSTNEnabled
+  , pDistanceUnit
+  , pAddress
+  , pProfileARN
+  , pWakeWord
+  , pProfileName
+  , pTemperatureUnit
+  , pTimezone
+  , pMaxVolumeLimit
     -- * ProfileData
-    , ProfileData
-    , profileData
-    , pdDistanceUnit
-    , pdAddress
-    , pdProfileARN
-    , pdWakeWord
-    , pdProfileName
-    , pdTemperatureUnit
-    , pdTimezone
-
+  , ProfileData
+  , profileData
+  , pdDistanceUnit
+  , pdAddress
+  , pdProfileARN
+  , pdWakeWord
+  , pdProfileName
+  , pdTemperatureUnit
+  , pdTimezone
     -- * Room
-    , Room
-    , room
-    , rProfileARN
-    , rProviderCalendarId
-    , rRoomARN
-    , rRoomName
-    , rDescription
-
+  , Room
+  , room
+  , rProfileARN
+  , rProviderCalendarId
+  , rRoomARN
+  , rRoomName
+  , rDescription
     -- * RoomData
-    , RoomData
-    , roomData
-    , rdProfileARN
-    , rdProviderCalendarId
-    , rdProfileName
-    , rdRoomARN
-    , rdRoomName
-    , rdDescription
-
+  , RoomData
+  , roomData
+  , rdProfileARN
+  , rdProviderCalendarId
+  , rdProfileName
+  , rdRoomARN
+  , rdRoomName
+  , rdDescription
     -- * RoomSkillParameter
-    , RoomSkillParameter
-    , roomSkillParameter
-    , rspParameterKey
-    , rspParameterValue
-
+  , RoomSkillParameter
+  , roomSkillParameter
+  , rspParameterKey
+  , rspParameterValue
     -- * SkillGroup
-    , SkillGroup
-    , skillGroup
-    , sgSkillGroupARN
-    , sgDescription
-    , sgSkillGroupName
-
+  , SkillGroup
+  , skillGroup
+  , sgSkillGroupARN
+  , sgDescription
+  , sgSkillGroupName
     -- * SkillGroupData
-    , SkillGroupData
-    , skillGroupData
-    , sgdSkillGroupARN
-    , sgdDescription
-    , sgdSkillGroupName
-
+  , SkillGroupData
+  , skillGroupData
+  , sgdSkillGroupARN
+  , sgdDescription
+  , sgdSkillGroupName
     -- * SkillSummary
-    , SkillSummary
-    , skillSummary
-    , ssSkillId
-    , ssSupportsLinking
-    , ssSkillName
-
+  , SkillSummary
+  , skillSummary
+  , ssSkillId
+  , ssSupportsLinking
+  , ssSkillName
     -- * Sort
-    , Sort
-    , sort
-    , sKey
-    , sValue
-
+  , Sort
+  , sort
+  , sKey
+  , sValue
     -- * Tag
-    , Tag
-    , tag
-    , tagValue
-    , tagKey
-
+  , Tag
+  , tag
+  , tagValue
+  , tagKey
     -- * UserData
-    , UserData
-    , userData
-    , udEmail
-    , udLastName
-    , udEnrollmentId
-    , udUserARN
-    , udFirstName
-    , udEnrollmentStatus
-    ) where
+  , UserData
+  , userData
+  , udEmail
+  , udLastName
+  , udEnrollmentId
+  , udUserARN
+  , udFirstName
+  , udEnrollmentStatus
+  ) where
 
 import Network.AWS.AlexaBusiness.Types.Product
 import Network.AWS.AlexaBusiness.Types.Sum
@@ -274,14 +240,13 @@ alexaBusiness =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | The attempt to update a user is invalid due to the user's current status. HTTP Status Code: 400
 --
 --
-_InvalidUserStatusException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidUserStatusException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InvalidUserStatusException =
   _MatchServiceError alexaBusiness "InvalidUserStatusException"
-
 
 -- | The resource is not found. HTTP Status Code: 400
 --
@@ -289,34 +254,32 @@ _InvalidUserStatusException =
 _NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _NotFoundException = _MatchServiceError alexaBusiness "NotFoundException"
 
-
 -- | The name sent in the request is already in use. HTTP Status Code: 400
 --
 --
 _NameInUseException :: AsError a => Getting (First ServiceError) a ServiceError
 _NameInUseException = _MatchServiceError alexaBusiness "NameInUseException"
 
-
 -- | The resource being created already exists. HTTP Status Code: 400
 --
 --
-_AlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_AlreadyExistsException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _AlreadyExistsException =
   _MatchServiceError alexaBusiness "AlreadyExistsException"
-
 
 -- | You are performing an action that would put you beyond your account's limits. HTTP Status Code: 400
 --
 --
-_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException =
   _MatchServiceError alexaBusiness "LimitExceededException"
-
 
 -- | The resource in the request is already in use. HTTP Status Code: 400
 --
 --
-_ResourceInUseException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceInUseException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ResourceInUseException =
   _MatchServiceError alexaBusiness "ResourceInUseException"
-

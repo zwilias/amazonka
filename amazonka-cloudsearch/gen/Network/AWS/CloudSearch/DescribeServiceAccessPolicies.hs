@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CloudSearch.DescribeServiceAccessPolicies
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,21 +20,19 @@
 --
 --
 module Network.AWS.CloudSearch.DescribeServiceAccessPolicies
-    (
     -- * Creating a Request
-      describeServiceAccessPolicies
-    , DescribeServiceAccessPolicies
+  ( describeServiceAccessPolicies
+  , DescribeServiceAccessPolicies
     -- * Request Lenses
-    , dsapDeployed
-    , dsapDomainName
-
+  , dsapDeployed
+  , dsapDomainName
     -- * Destructuring the Response
-    , describeServiceAccessPoliciesResponse
-    , DescribeServiceAccessPoliciesResponse
+  , describeServiceAccessPoliciesResponse
+  , DescribeServiceAccessPoliciesResponse
     -- * Response Lenses
-    , dsaprsResponseStatus
-    , dsaprsAccessPolicies
-    ) where
+  , dsaprsResponseStatus
+  , dsaprsAccessPolicies
+  ) where
 
 import Network.AWS.CloudSearch.Types
 import Network.AWS.CloudSearch.Types.Product
@@ -50,11 +46,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeServiceAccessPolicies' smart constructor.
-data DescribeServiceAccessPolicies = DescribeServiceAccessPolicies'
-  { _dsapDeployed   :: !(Maybe Bool)
-  , _dsapDomainName :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeServiceAccessPolicies =
+  DescribeServiceAccessPolicies'
+    { _dsapDeployed :: !(Maybe Bool)
+    , _dsapDomainName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeServiceAccessPolicies' with the minimum fields required to make a request.
 --
@@ -63,64 +60,61 @@ data DescribeServiceAccessPolicies = DescribeServiceAccessPolicies'
 -- * 'dsapDeployed' - Whether to display the deployed configuration (@true@ ) or include any pending changes (@false@ ). Defaults to @false@ .
 --
 -- * 'dsapDomainName' - The name of the domain you want to describe.
-describeServiceAccessPolicies
-    :: Text -- ^ 'dsapDomainName'
-    -> DescribeServiceAccessPolicies
+describeServiceAccessPolicies ::
+     Text -- ^ 'dsapDomainName'
+  -> DescribeServiceAccessPolicies
 describeServiceAccessPolicies pDomainName_ =
   DescribeServiceAccessPolicies'
     {_dsapDeployed = Nothing, _dsapDomainName = pDomainName_}
 
-
 -- | Whether to display the deployed configuration (@true@ ) or include any pending changes (@false@ ). Defaults to @false@ .
 dsapDeployed :: Lens' DescribeServiceAccessPolicies (Maybe Bool)
-dsapDeployed = lens _dsapDeployed (\ s a -> s{_dsapDeployed = a})
+dsapDeployed = lens _dsapDeployed (\s a -> s {_dsapDeployed = a})
 
 -- | The name of the domain you want to describe.
 dsapDomainName :: Lens' DescribeServiceAccessPolicies Text
-dsapDomainName = lens _dsapDomainName (\ s a -> s{_dsapDomainName = a})
+dsapDomainName = lens _dsapDomainName (\s a -> s {_dsapDomainName = a})
 
-instance AWSRequest DescribeServiceAccessPolicies
-         where
-        type Rs DescribeServiceAccessPolicies =
-             DescribeServiceAccessPoliciesResponse
-        request = postQuery cloudSearch
-        response
-          = receiveXMLWrapper
-              "DescribeServiceAccessPoliciesResult"
-              (\ s h x ->
-                 DescribeServiceAccessPoliciesResponse' <$>
-                   (pure (fromEnum s)) <*> (x .@ "AccessPolicies"))
+instance AWSRequest DescribeServiceAccessPolicies where
+  type Rs DescribeServiceAccessPolicies = DescribeServiceAccessPoliciesResponse
+  request = postQuery cloudSearch
+  response =
+    receiveXMLWrapper
+      "DescribeServiceAccessPoliciesResult"
+      (\s h x ->
+         DescribeServiceAccessPoliciesResponse' <$> (pure (fromEnum s)) <*>
+         (x .@ "AccessPolicies"))
 
-instance Hashable DescribeServiceAccessPolicies where
+instance Hashable DescribeServiceAccessPolicies
 
-instance NFData DescribeServiceAccessPolicies where
+instance NFData DescribeServiceAccessPolicies
 
-instance ToHeaders DescribeServiceAccessPolicies
-         where
-        toHeaders = const mempty
+instance ToHeaders DescribeServiceAccessPolicies where
+  toHeaders = const mempty
 
 instance ToPath DescribeServiceAccessPolicies where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery DescribeServiceAccessPolicies where
-        toQuery DescribeServiceAccessPolicies'{..}
-          = mconcat
-              ["Action" =:
-                 ("DescribeServiceAccessPolicies" :: ByteString),
-               "Version" =: ("2013-01-01" :: ByteString),
-               "Deployed" =: _dsapDeployed,
-               "DomainName" =: _dsapDomainName]
+  toQuery DescribeServiceAccessPolicies' {..} =
+    mconcat
+      [ "Action" =: ("DescribeServiceAccessPolicies" :: ByteString)
+      , "Version" =: ("2013-01-01" :: ByteString)
+      , "Deployed" =: _dsapDeployed
+      , "DomainName" =: _dsapDomainName
+      ]
 
 -- | The result of a @DescribeServiceAccessPolicies@ request.
 --
 --
 --
 -- /See:/ 'describeServiceAccessPoliciesResponse' smart constructor.
-data DescribeServiceAccessPoliciesResponse = DescribeServiceAccessPoliciesResponse'
-  { _dsaprsResponseStatus :: !Int
-  , _dsaprsAccessPolicies :: !AccessPoliciesStatus
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeServiceAccessPoliciesResponse =
+  DescribeServiceAccessPoliciesResponse'
+    { _dsaprsResponseStatus :: !Int
+    , _dsaprsAccessPolicies :: !AccessPoliciesStatus
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeServiceAccessPoliciesResponse' with the minimum fields required to make a request.
 --
@@ -129,24 +123,25 @@ data DescribeServiceAccessPoliciesResponse = DescribeServiceAccessPoliciesRespon
 -- * 'dsaprsResponseStatus' - -- | The response status code.
 --
 -- * 'dsaprsAccessPolicies' - The access rules configured for the domain specified in the request.
-describeServiceAccessPoliciesResponse
-    :: Int -- ^ 'dsaprsResponseStatus'
-    -> AccessPoliciesStatus -- ^ 'dsaprsAccessPolicies'
-    -> DescribeServiceAccessPoliciesResponse
+describeServiceAccessPoliciesResponse ::
+     Int -- ^ 'dsaprsResponseStatus'
+  -> AccessPoliciesStatus -- ^ 'dsaprsAccessPolicies'
+  -> DescribeServiceAccessPoliciesResponse
 describeServiceAccessPoliciesResponse pResponseStatus_ pAccessPolicies_ =
   DescribeServiceAccessPoliciesResponse'
     { _dsaprsResponseStatus = pResponseStatus_
     , _dsaprsAccessPolicies = pAccessPolicies_
     }
 
-
 -- | -- | The response status code.
 dsaprsResponseStatus :: Lens' DescribeServiceAccessPoliciesResponse Int
-dsaprsResponseStatus = lens _dsaprsResponseStatus (\ s a -> s{_dsaprsResponseStatus = a})
+dsaprsResponseStatus =
+  lens _dsaprsResponseStatus (\s a -> s {_dsaprsResponseStatus = a})
 
 -- | The access rules configured for the domain specified in the request.
-dsaprsAccessPolicies :: Lens' DescribeServiceAccessPoliciesResponse AccessPoliciesStatus
-dsaprsAccessPolicies = lens _dsaprsAccessPolicies (\ s a -> s{_dsaprsAccessPolicies = a})
+dsaprsAccessPolicies ::
+     Lens' DescribeServiceAccessPoliciesResponse AccessPoliciesStatus
+dsaprsAccessPolicies =
+  lens _dsaprsAccessPolicies (\s a -> s {_dsaprsAccessPolicies = a})
 
 instance NFData DescribeServiceAccessPoliciesResponse
-         where

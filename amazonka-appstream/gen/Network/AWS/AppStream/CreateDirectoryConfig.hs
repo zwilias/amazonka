@@ -1,15 +1,13 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE DeriveGeneric      #-}
-{-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
-{-# LANGUAGE TypeFamilies       #-}
-
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.AppStream.CreateDirectoryConfig
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,22 +20,20 @@
 --
 --
 module Network.AWS.AppStream.CreateDirectoryConfig
-    (
     -- * Creating a Request
-      createDirectoryConfig
-    , CreateDirectoryConfig
+  ( createDirectoryConfig
+  , CreateDirectoryConfig
     -- * Request Lenses
-    , cdcDirectoryName
-    , cdcOrganizationalUnitDistinguishedNames
-    , cdcServiceAccountCredentials
-
+  , cdcDirectoryName
+  , cdcOrganizationalUnitDistinguishedNames
+  , cdcServiceAccountCredentials
     -- * Destructuring the Response
-    , createDirectoryConfigResponse
-    , CreateDirectoryConfigResponse
+  , createDirectoryConfigResponse
+  , CreateDirectoryConfigResponse
     -- * Response Lenses
-    , cdcrsDirectoryConfig
-    , cdcrsResponseStatus
-    ) where
+  , cdcrsDirectoryConfig
+  , cdcrsResponseStatus
+  ) where
 
 import Network.AWS.AppStream.Types
 import Network.AWS.AppStream.Types.Product
@@ -47,12 +43,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDirectoryConfig' smart constructor.
-data CreateDirectoryConfig = CreateDirectoryConfig'
-  { _cdcDirectoryName                        :: !Text
-  , _cdcOrganizationalUnitDistinguishedNames :: ![Text]
-  , _cdcServiceAccountCredentials            :: !ServiceAccountCredentials
-  } deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateDirectoryConfig =
+  CreateDirectoryConfig'
+    { _cdcDirectoryName :: !Text
+    , _cdcOrganizationalUnitDistinguishedNames :: ![Text]
+    , _cdcServiceAccountCredentials :: !ServiceAccountCredentials
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDirectoryConfig' with the minimum fields required to make a request.
 --
@@ -63,10 +60,10 @@ data CreateDirectoryConfig = CreateDirectoryConfig'
 -- * 'cdcOrganizationalUnitDistinguishedNames' - The distinguished names of the organizational units for computer accounts.
 --
 -- * 'cdcServiceAccountCredentials' - The credentials for the service account used by the streaming instance to connect to the directory.
-createDirectoryConfig
-    :: Text -- ^ 'cdcDirectoryName'
-    -> ServiceAccountCredentials -- ^ 'cdcServiceAccountCredentials'
-    -> CreateDirectoryConfig
+createDirectoryConfig ::
+     Text -- ^ 'cdcDirectoryName'
+  -> ServiceAccountCredentials -- ^ 'cdcServiceAccountCredentials'
+  -> CreateDirectoryConfig
 createDirectoryConfig pDirectoryName_ pServiceAccountCredentials_ =
   CreateDirectoryConfig'
     { _cdcDirectoryName = pDirectoryName_
@@ -74,67 +71,72 @@ createDirectoryConfig pDirectoryName_ pServiceAccountCredentials_ =
     , _cdcServiceAccountCredentials = pServiceAccountCredentials_
     }
 
-
 -- | The fully qualified name of the directory (for example, corp.example.com).
 cdcDirectoryName :: Lens' CreateDirectoryConfig Text
-cdcDirectoryName = lens _cdcDirectoryName (\ s a -> s{_cdcDirectoryName = a})
+cdcDirectoryName = lens _cdcDirectoryName (\s a -> s {_cdcDirectoryName = a})
 
 -- | The distinguished names of the organizational units for computer accounts.
 cdcOrganizationalUnitDistinguishedNames :: Lens' CreateDirectoryConfig [Text]
-cdcOrganizationalUnitDistinguishedNames = lens _cdcOrganizationalUnitDistinguishedNames (\ s a -> s{_cdcOrganizationalUnitDistinguishedNames = a}) . _Coerce
+cdcOrganizationalUnitDistinguishedNames =
+  lens
+    _cdcOrganizationalUnitDistinguishedNames
+    (\s a -> s {_cdcOrganizationalUnitDistinguishedNames = a}) .
+  _Coerce
 
 -- | The credentials for the service account used by the streaming instance to connect to the directory.
-cdcServiceAccountCredentials :: Lens' CreateDirectoryConfig ServiceAccountCredentials
-cdcServiceAccountCredentials = lens _cdcServiceAccountCredentials (\ s a -> s{_cdcServiceAccountCredentials = a})
+cdcServiceAccountCredentials ::
+     Lens' CreateDirectoryConfig ServiceAccountCredentials
+cdcServiceAccountCredentials =
+  lens
+    _cdcServiceAccountCredentials
+    (\s a -> s {_cdcServiceAccountCredentials = a})
 
 instance AWSRequest CreateDirectoryConfig where
-        type Rs CreateDirectoryConfig =
-             CreateDirectoryConfigResponse
-        request = postJSON appStream
-        response
-          = receiveJSON
-              (\ s h x ->
-                 CreateDirectoryConfigResponse' <$>
-                   (x .?> "DirectoryConfig") <*> (pure (fromEnum s)))
+  type Rs CreateDirectoryConfig = CreateDirectoryConfigResponse
+  request = postJSON appStream
+  response =
+    receiveJSON
+      (\s h x ->
+         CreateDirectoryConfigResponse' <$> (x .?> "DirectoryConfig") <*>
+         (pure (fromEnum s)))
 
-instance Hashable CreateDirectoryConfig where
+instance Hashable CreateDirectoryConfig
 
-instance NFData CreateDirectoryConfig where
+instance NFData CreateDirectoryConfig
 
 instance ToHeaders CreateDirectoryConfig where
-        toHeaders
-          = const
-              (mconcat
-                 ["X-Amz-Target" =#
-                    ("PhotonAdminProxyService.CreateDirectoryConfig" ::
-                       ByteString),
-                  "Content-Type" =#
-                    ("application/x-amz-json-1.1" :: ByteString)])
+  toHeaders =
+    const
+      (mconcat
+         [ "X-Amz-Target" =#
+           ("PhotonAdminProxyService.CreateDirectoryConfig" :: ByteString)
+         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
+         ])
 
 instance ToJSON CreateDirectoryConfig where
-        toJSON CreateDirectoryConfig'{..}
-          = object
-              (catMaybes
-                 [Just ("DirectoryName" .= _cdcDirectoryName),
-                  Just
-                    ("OrganizationalUnitDistinguishedNames" .=
-                       _cdcOrganizationalUnitDistinguishedNames),
-                  Just
-                    ("ServiceAccountCredentials" .=
-                       _cdcServiceAccountCredentials)])
+  toJSON CreateDirectoryConfig' {..} =
+    object
+      (catMaybes
+         [ Just ("DirectoryName" .= _cdcDirectoryName)
+         , Just
+             ("OrganizationalUnitDistinguishedNames" .=
+              _cdcOrganizationalUnitDistinguishedNames)
+         , Just ("ServiceAccountCredentials" .= _cdcServiceAccountCredentials)
+         ])
 
 instance ToPath CreateDirectoryConfig where
-        toPath = const "/"
+  toPath = const "/"
 
 instance ToQuery CreateDirectoryConfig where
-        toQuery = const mempty
+  toQuery = const mempty
 
 -- | /See:/ 'createDirectoryConfigResponse' smart constructor.
-data CreateDirectoryConfigResponse = CreateDirectoryConfigResponse'
-  { _cdcrsDirectoryConfig :: !(Maybe DirectoryConfig)
-  , _cdcrsResponseStatus  :: !Int
-  } deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateDirectoryConfigResponse =
+  CreateDirectoryConfigResponse'
+    { _cdcrsDirectoryConfig :: !(Maybe DirectoryConfig)
+    , _cdcrsResponseStatus :: !Int
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDirectoryConfigResponse' with the minimum fields required to make a request.
 --
@@ -143,20 +145,22 @@ data CreateDirectoryConfigResponse = CreateDirectoryConfigResponse'
 -- * 'cdcrsDirectoryConfig' - Information about the directory configuration.
 --
 -- * 'cdcrsResponseStatus' - -- | The response status code.
-createDirectoryConfigResponse
-    :: Int -- ^ 'cdcrsResponseStatus'
-    -> CreateDirectoryConfigResponse
+createDirectoryConfigResponse ::
+     Int -- ^ 'cdcrsResponseStatus'
+  -> CreateDirectoryConfigResponse
 createDirectoryConfigResponse pResponseStatus_ =
   CreateDirectoryConfigResponse'
     {_cdcrsDirectoryConfig = Nothing, _cdcrsResponseStatus = pResponseStatus_}
 
-
 -- | Information about the directory configuration.
-cdcrsDirectoryConfig :: Lens' CreateDirectoryConfigResponse (Maybe DirectoryConfig)
-cdcrsDirectoryConfig = lens _cdcrsDirectoryConfig (\ s a -> s{_cdcrsDirectoryConfig = a})
+cdcrsDirectoryConfig ::
+     Lens' CreateDirectoryConfigResponse (Maybe DirectoryConfig)
+cdcrsDirectoryConfig =
+  lens _cdcrsDirectoryConfig (\s a -> s {_cdcrsDirectoryConfig = a})
 
 -- | -- | The response status code.
 cdcrsResponseStatus :: Lens' CreateDirectoryConfigResponse Int
-cdcrsResponseStatus = lens _cdcrsResponseStatus (\ s a -> s{_cdcrsResponseStatus = a})
+cdcrsResponseStatus =
+  lens _cdcrsResponseStatus (\s a -> s {_cdcrsResponseStatus = a})
 
-instance NFData CreateDirectoryConfigResponse where
+instance NFData CreateDirectoryConfigResponse

@@ -2,7 +2,6 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.CloudSearchDomains
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -19,126 +18,102 @@
 -- For more information, see the <http://docs.aws.amazon.com/cloudsearch/latest/developerguide Amazon CloudSearch Developer Guide> .
 --
 module Network.AWS.CloudSearchDomains
-    (
     -- * Service Configuration
-      cloudSearchDomains
-
+  ( cloudSearchDomains
     -- * Errors
     -- $errors
-
     -- ** DocumentServiceException
-    , _DocumentServiceException
-
+  , _DocumentServiceException
     -- ** SearchException
-    , _SearchException
-
+  , _SearchException
     -- * Waiters
     -- $waiters
-
     -- * Operations
     -- $operations
-
     -- ** Suggest
-    , module Network.AWS.CloudSearchDomains.Suggest
-
+  , module Network.AWS.CloudSearchDomains.Suggest
     -- ** UploadDocuments
-    , module Network.AWS.CloudSearchDomains.UploadDocuments
-
+  , module Network.AWS.CloudSearchDomains.UploadDocuments
     -- ** Search
-    , module Network.AWS.CloudSearchDomains.Search
-
+  , module Network.AWS.CloudSearchDomains.Search
     -- * Types
-
     -- ** ContentType
-    , ContentType (..)
-
+  , ContentType(..)
     -- ** QueryParser
-    , QueryParser (..)
-
+  , QueryParser(..)
     -- ** Bucket
-    , Bucket
-    , bucket
-    , bValue
-    , bCount
-
+  , Bucket
+  , bucket
+  , bValue
+  , bCount
     -- ** BucketInfo
-    , BucketInfo
-    , bucketInfo
-    , biBuckets
-
+  , BucketInfo
+  , bucketInfo
+  , biBuckets
     -- ** DocumentServiceWarning
-    , DocumentServiceWarning
-    , documentServiceWarning
-    , dswMessage
-
+  , DocumentServiceWarning
+  , documentServiceWarning
+  , dswMessage
     -- ** FieldStats
-    , FieldStats
-    , fieldStats
-    , fsMax
-    , fsMean
-    , fsCount
-    , fsMissing
-    , fsStddev
-    , fsMin
-    , fsSumOfSquares
-    , fsSum
-
+  , FieldStats
+  , fieldStats
+  , fsMax
+  , fsMean
+  , fsCount
+  , fsMissing
+  , fsStddev
+  , fsMin
+  , fsSumOfSquares
+  , fsSum
     -- ** Hit
-    , Hit
-    , hit
-    , hitExprs
-    , hitId
-    , hitHighlights
-    , hitFields
-
+  , Hit
+  , hit
+  , hitExprs
+  , hitId
+  , hitHighlights
+  , hitFields
     -- ** Hits
-    , Hits
-    , hits
-    , hCursor
-    , hHit
-    , hStart
-    , hFound
-
+  , Hits
+  , hits
+  , hCursor
+  , hHit
+  , hStart
+  , hFound
     -- ** SearchStatus
-    , SearchStatus
-    , searchStatus
-    , sRid
-    , sTimems
-
+  , SearchStatus
+  , searchStatus
+  , sRid
+  , sTimems
     -- ** SuggestModel
-    , SuggestModel
-    , suggestModel
-    , smFound
-    , smSuggestions
-    , smQuery
-
+  , SuggestModel
+  , suggestModel
+  , smFound
+  , smSuggestions
+  , smQuery
     -- ** SuggestStatus
-    , SuggestStatus
-    , suggestStatus
-    , ssRid
-    , ssTimems
-
+  , SuggestStatus
+  , suggestStatus
+  , ssRid
+  , ssTimems
     -- ** SuggestionMatch
-    , SuggestionMatch
-    , suggestionMatch
-    , smSuggestion
-    , smScore
-    , smId
-    ) where
+  , SuggestionMatch
+  , suggestionMatch
+  , smSuggestion
+  , smScore
+  , smId
+  ) where
 
 import Network.AWS.CloudSearchDomains.Search
 import Network.AWS.CloudSearchDomains.Suggest
 import Network.AWS.CloudSearchDomains.Types
 import Network.AWS.CloudSearchDomains.UploadDocuments
 import Network.AWS.CloudSearchDomains.Waiters
-
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'CloudSearchDomains'.
 -}
-
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -155,7 +130,6 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
-
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

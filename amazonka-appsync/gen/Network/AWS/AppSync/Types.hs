@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
-
 -- |
 -- Module      : Network.AWS.AppSync.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -11,133 +10,113 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.AppSync.Types
-    (
     -- * Service Configuration
-      appSync
-
+  ( appSync
     -- * Errors
-    , _APIKeyValidityOutOfBoundsException
-    , _APIKeyLimitExceededException
-    , _APILimitExceededException
-    , _NotFoundException
-    , _GraphQLSchemaException
-    , _ConcurrentModificationException
-    , _InternalFailureException
-    , _UnauthorizedException
-    , _BadRequestException
-    , _LimitExceededException
-
+  , _APIKeyValidityOutOfBoundsException
+  , _APIKeyLimitExceededException
+  , _APILimitExceededException
+  , _NotFoundException
+  , _GraphQLSchemaException
+  , _ConcurrentModificationException
+  , _InternalFailureException
+  , _UnauthorizedException
+  , _BadRequestException
+  , _LimitExceededException
     -- * AuthenticationType
-    , AuthenticationType (..)
-
+  , AuthenticationType(..)
     -- * DataSourceType
-    , DataSourceType (..)
-
+  , DataSourceType(..)
     -- * DefaultAction
-    , DefaultAction (..)
-
+  , DefaultAction(..)
     -- * FieldLogLevel
-    , FieldLogLevel (..)
-
+  , FieldLogLevel(..)
     -- * OutputType
-    , OutputType (..)
-
+  , OutputType(..)
     -- * SchemaStatus
-    , SchemaStatus (..)
-
+  , SchemaStatus(..)
     -- * TypeDefinitionFormat
-    , TypeDefinitionFormat (..)
-
+  , TypeDefinitionFormat(..)
     -- * APIKey
-    , APIKey
-    , apiKey
-    , akExpires
-    , akId
-    , akDescription
-
+  , APIKey
+  , apiKey
+  , akExpires
+  , akId
+  , akDescription
     -- * DataSource
-    , DataSource
-    , dataSource
-    , dsServiceRoleARN
-    , dsDataSourceARN
-    , dsDynamodbConfig
-    , dsName
-    , dsLambdaConfig
-    , dsType
-    , dsDescription
-    , dsElasticsearchConfig
-
+  , DataSource
+  , dataSource
+  , dsServiceRoleARN
+  , dsDataSourceARN
+  , dsDynamodbConfig
+  , dsName
+  , dsLambdaConfig
+  , dsType
+  , dsDescription
+  , dsElasticsearchConfig
     -- * DynamodbDataSourceConfig
-    , DynamodbDataSourceConfig
-    , dynamodbDataSourceConfig
-    , ddscUseCallerCredentials
-    , ddscTableName
-    , ddscAwsRegion
-
+  , DynamodbDataSourceConfig
+  , dynamodbDataSourceConfig
+  , ddscUseCallerCredentials
+  , ddscTableName
+  , ddscAwsRegion
     -- * ElasticsearchDataSourceConfig
-    , ElasticsearchDataSourceConfig
-    , elasticsearchDataSourceConfig
-    , edscEndpoint
-    , edscAwsRegion
-
+  , ElasticsearchDataSourceConfig
+  , elasticsearchDataSourceConfig
+  , edscEndpoint
+  , edscAwsRegion
     -- * GraphqlAPI
-    , GraphqlAPI
-    , graphqlAPI
-    , gaArn
-    , gaApiId
-    , gaUris
-    , gaOpenIdConnectConfig
-    , gaName
-    , gaUserPoolConfig
-    , gaAuthenticationType
-    , gaLogConfig
-
+  , GraphqlAPI
+  , graphqlAPI
+  , gaArn
+  , gaApiId
+  , gaUris
+  , gaOpenIdConnectConfig
+  , gaName
+  , gaUserPoolConfig
+  , gaAuthenticationType
+  , gaLogConfig
     -- * LambdaDataSourceConfig
-    , LambdaDataSourceConfig
-    , lambdaDataSourceConfig
-    , ldscLambdaFunctionARN
-
+  , LambdaDataSourceConfig
+  , lambdaDataSourceConfig
+  , ldscLambdaFunctionARN
     -- * LogConfig
-    , LogConfig
-    , logConfig
-    , lcFieldLogLevel
-    , lcCloudWatchLogsRoleARN
-
+  , LogConfig
+  , logConfig
+  , lcFieldLogLevel
+  , lcCloudWatchLogsRoleARN
     -- * OpenIdConnectConfig
-    , OpenIdConnectConfig
-    , openIdConnectConfig
-    , oiccAuthTTL
-    , oiccClientId
-    , oiccIatTTL
-    , oiccIssuer
-
+  , OpenIdConnectConfig
+  , openIdConnectConfig
+  , oiccAuthTTL
+  , oiccClientId
+  , oiccIatTTL
+  , oiccIssuer
     -- * Resolver
-    , Resolver
-    , resolver
-    , rTypeName
-    , rDataSourceName
-    , rRequestMappingTemplate
-    , rResolverARN
-    , rResponseMappingTemplate
-    , rFieldName
-
+  , Resolver
+  , resolver
+  , rTypeName
+  , rDataSourceName
+  , rRequestMappingTemplate
+  , rResolverARN
+  , rResponseMappingTemplate
+  , rFieldName
     -- * Type
-    , Type
-    , type'
-    , tArn
-    , tDefinition
-    , tFormat
-    , tName
-    , tDescription
-
+  , Type
+  , type'
+  , tArn
+  , tDefinition
+  , tFormat
+  , tName
+  , tDescription
     -- * UserPoolConfig
-    , UserPoolConfig
-    , userPoolConfig
-    , upcAppIdClientRegex
-    , upcUserPoolId
-    , upcAwsRegion
-    , upcDefaultAction
-    ) where
+  , UserPoolConfig
+  , userPoolConfig
+  , upcAppIdClientRegex
+  , upcUserPoolId
+  , upcAwsRegion
+  , upcDefaultAction
+  ) where
 
 import Network.AWS.AppSync.Types.Product
 import Network.AWS.AppSync.Types.Sum
@@ -183,31 +162,30 @@ appSync =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
-
 -- | The API key expiration must be set to a value between 1 and 365 days from creation (for @CreateApiKey@ ) or from update (for @UpdateApiKey@ ).
 --
 --
-_APIKeyValidityOutOfBoundsException :: AsError a => Getting (First ServiceError) a ServiceError
+_APIKeyValidityOutOfBoundsException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _APIKeyValidityOutOfBoundsException =
   _MatchServiceError appSync "ApiKeyValidityOutOfBoundsException" .
   hasStatus 400
 
-
 -- | The API key exceeded a limit. Try your request again.
 --
 --
-_APIKeyLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_APIKeyLimitExceededException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _APIKeyLimitExceededException =
   _MatchServiceError appSync "ApiKeyLimitExceededException" . hasStatus 400
-
 
 -- | The GraphQL API exceeded a limit. Try your request again.
 --
 --
-_APILimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_APILimitExceededException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _APILimitExceededException =
   _MatchServiceError appSync "ApiLimitExceededException" . hasStatus 400
-
 
 -- | The resource specified in the request was not found. Check the resource and try again.
 --
@@ -216,38 +194,37 @@ _NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _NotFoundException =
   _MatchServiceError appSync "NotFoundException" . hasStatus 404
 
-
 -- | The GraphQL schema is not valid.
 --
 --
-_GraphQLSchemaException :: AsError a => Getting (First ServiceError) a ServiceError
+_GraphQLSchemaException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _GraphQLSchemaException =
   _MatchServiceError appSync "GraphQLSchemaException" . hasStatus 400
-
 
 -- | Another modification is being made. That modification must complete before you can make your change.
 --
 --
-_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConcurrentModificationException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _ConcurrentModificationException =
   _MatchServiceError appSync "ConcurrentModificationException" . hasStatus 409
-
 
 -- | An internal AWS AppSync error occurred. Try your request again.
 --
 --
-_InternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalFailureException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _InternalFailureException =
   _MatchServiceError appSync "InternalFailureException" . hasStatus 500
-
 
 -- | You are not authorized to perform this operation.
 --
 --
-_UnauthorizedException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnauthorizedException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _UnauthorizedException =
   _MatchServiceError appSync "UnauthorizedException" . hasStatus 401
-
 
 -- | The request is not well formed. For example, a value is invalid or a required field is missing. Check the field values, and try again.
 --
@@ -256,11 +233,10 @@ _BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
 _BadRequestException =
   _MatchServiceError appSync "BadRequestException" . hasStatus 400
 
-
 -- | The request exceeded a limit. Try your request again.
 --
 --
-_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException ::
+     AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException =
   _MatchServiceError appSync "LimitExceededException" . hasStatus 429
-
