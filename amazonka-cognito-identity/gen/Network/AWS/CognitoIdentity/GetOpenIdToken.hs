@@ -21,7 +21,7 @@
 -- Gets an OpenID token, using a known Cognito ID. This known Cognito ID is returned by 'GetId' . You can optionally add additional logins for the identity. Supplying multiple logins creates an implicit link.
 --
 --
--- The OpenId token is valid for 15 minutes.
+-- The OpenId token is valid for 10 minutes.
 --
 -- This is a public API. You do not need any credentials to call this API.
 --
@@ -55,17 +55,19 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getOpenIdToken' smart constructor.
-data GetOpenIdToken = GetOpenIdToken'
-  { _goitLogins     :: !(Maybe (Map Text Text))
-  , _goitIdentityId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetOpenIdToken =
+  GetOpenIdToken'
+    { _goitLogins     :: !(Maybe (Map Text Text))
+    , _goitIdentityId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetOpenIdToken' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'goitLogins' - A set of optional name-value pairs that map provider names to provider tokens. When using graph.facebook.com and www.amazon.com, supply the access_token returned from the provider's authflow. For accounts.google.com, an Amazon Cognito Identity Provider, or any other OpenId Connect provider, always include the @id_token@ .
+-- * 'goitLogins' - A set of optional name-value pairs that map provider names to provider tokens. When using graph.facebook.com and www.amazon.com, supply the access_token returned from the provider's authflow. For accounts.google.com, an Amazon Cognito user pool provider, or any other OpenId Connect provider, always include the @id_token@ .
 --
 -- * 'goitIdentityId' - A unique identifier in the format REGION:GUID.
 getOpenIdToken
@@ -75,7 +77,7 @@ getOpenIdToken pIdentityId_ =
   GetOpenIdToken' {_goitLogins = Nothing, _goitIdentityId = pIdentityId_}
 
 
--- | A set of optional name-value pairs that map provider names to provider tokens. When using graph.facebook.com and www.amazon.com, supply the access_token returned from the provider's authflow. For accounts.google.com, an Amazon Cognito Identity Provider, or any other OpenId Connect provider, always include the @id_token@ .
+-- | A set of optional name-value pairs that map provider names to provider tokens. When using graph.facebook.com and www.amazon.com, supply the access_token returned from the provider's authflow. For accounts.google.com, an Amazon Cognito user pool provider, or any other OpenId Connect provider, always include the @id_token@ .
 goitLogins :: Lens' GetOpenIdToken (HashMap Text Text)
 goitLogins = lens _goitLogins (\ s a -> s{_goitLogins = a}) . _Default . _Map
 
@@ -125,18 +127,20 @@ instance ToQuery GetOpenIdToken where
 --
 --
 -- /See:/ 'getOpenIdTokenResponse' smart constructor.
-data GetOpenIdTokenResponse = GetOpenIdTokenResponse'
-  { _goitrsToken          :: !(Maybe Text)
-  , _goitrsIdentityId     :: !(Maybe Text)
-  , _goitrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetOpenIdTokenResponse =
+  GetOpenIdTokenResponse'
+    { _goitrsToken          :: !(Maybe Text)
+    , _goitrsIdentityId     :: !(Maybe Text)
+    , _goitrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetOpenIdTokenResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'goitrsToken' - An OpenID token, valid for 15 minutes.
+-- * 'goitrsToken' - An OpenID token, valid for 10 minutes.
 --
 -- * 'goitrsIdentityId' - A unique identifier in the format REGION:GUID. Note that the IdentityId returned may not match the one passed on input.
 --
@@ -152,7 +156,7 @@ getOpenIdTokenResponse pResponseStatus_ =
     }
 
 
--- | An OpenID token, valid for 15 minutes.
+-- | An OpenID token, valid for 10 minutes.
 goitrsToken :: Lens' GetOpenIdTokenResponse (Maybe Text)
 goitrsToken = lens _goitrsToken (\ s a -> s{_goitrsToken = a})
 

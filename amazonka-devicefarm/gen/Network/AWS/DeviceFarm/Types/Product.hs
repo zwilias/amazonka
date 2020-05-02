@@ -21,32 +21,34 @@ import Network.AWS.DeviceFarm.Types.Sum
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | A container for account-level settings within AWS Device Farm.
+-- | A container for account-level settings in AWS Device Farm.
 --
 --
 --
 -- /See:/ 'accountSettings' smart constructor.
-data AccountSettings = AccountSettings'
-  { _asSkipAppResign                :: !(Maybe Bool)
-  , _asAwsAccountNumber             :: !(Maybe Text)
-  , _asMaxJobTimeoutMinutes         :: !(Maybe Int)
-  , _asMaxSlots                     :: !(Maybe (Map Text Int))
-  , _asTrialMinutes                 :: !(Maybe TrialMinutes)
-  , _asUnmeteredDevices             :: !(Maybe (Map DevicePlatform Int))
-  , _asUnmeteredRemoteAccessDevices :: !(Maybe (Map DevicePlatform Int))
-  , _asDefaultJobTimeoutMinutes     :: !(Maybe Int)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AccountSettings =
+  AccountSettings'
+    { _asSkipAppResign                :: !(Maybe Bool)
+    , _asAwsAccountNumber             :: !(Maybe Text)
+    , _asMaxJobTimeoutMinutes         :: !(Maybe Int)
+    , _asMaxSlots                     :: !(Maybe (Map Text Int))
+    , _asTrialMinutes                 :: !(Maybe TrialMinutes)
+    , _asUnmeteredDevices             :: !(Maybe (Map DevicePlatform Int))
+    , _asUnmeteredRemoteAccessDevices :: !(Maybe (Map DevicePlatform Int))
+    , _asDefaultJobTimeoutMinutes     :: !(Maybe Int)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AccountSettings' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'asSkipAppResign' - When set to @true@ , for private devices, Device Farm will not sign your app again. For public devices, Device Farm always signs your apps again and this parameter has no effect. For more information about how Device Farm re-signs your app(s), see <https://aws.amazon.com/device-farm/faq/ Do you modify my app?> in the /AWS Device Farm FAQs/ .
+-- * 'asSkipAppResign' - When set to @true@ , for private devices, Device Farm does not sign your app again. For public devices, Device Farm always signs your apps again. For more information about how Device Farm re-signs your apps, see <https://aws.amazon.com/device-farm/faq/ Do you modify my app?> in the /AWS Device Farm FAQs/ .
 --
 -- * 'asAwsAccountNumber' - The AWS account number specified in the @AccountSettings@ container.
 --
--- * 'asMaxJobTimeoutMinutes' - The maximum number of minutes a test run will execute before it times out.
+-- * 'asMaxJobTimeoutMinutes' - The maximum number of minutes a test run executes before it times out.
 --
 -- * 'asMaxSlots' - The maximum number of device slots that the AWS account can purchase. Each maximum is expressed as an @offering-id:number@ pair, where the @offering-id@ represents one of the IDs returned by the @ListOfferings@ command.
 --
@@ -56,7 +58,7 @@ data AccountSettings = AccountSettings'
 --
 -- * 'asUnmeteredRemoteAccessDevices' - Returns the unmetered remote access devices you have purchased or want to purchase.
 --
--- * 'asDefaultJobTimeoutMinutes' - The default number of minutes (at the account level) a test run will execute before it times out. Default value is 60 minutes.
+-- * 'asDefaultJobTimeoutMinutes' - The default number of minutes (at the account level) a test run executes before it times out. The default value is 150 minutes.
 accountSettings
     :: AccountSettings
 accountSettings =
@@ -72,7 +74,7 @@ accountSettings =
     }
 
 
--- | When set to @true@ , for private devices, Device Farm will not sign your app again. For public devices, Device Farm always signs your apps again and this parameter has no effect. For more information about how Device Farm re-signs your app(s), see <https://aws.amazon.com/device-farm/faq/ Do you modify my app?> in the /AWS Device Farm FAQs/ .
+-- | When set to @true@ , for private devices, Device Farm does not sign your app again. For public devices, Device Farm always signs your apps again. For more information about how Device Farm re-signs your apps, see <https://aws.amazon.com/device-farm/faq/ Do you modify my app?> in the /AWS Device Farm FAQs/ .
 asSkipAppResign :: Lens' AccountSettings (Maybe Bool)
 asSkipAppResign = lens _asSkipAppResign (\ s a -> s{_asSkipAppResign = a})
 
@@ -80,7 +82,7 @@ asSkipAppResign = lens _asSkipAppResign (\ s a -> s{_asSkipAppResign = a})
 asAwsAccountNumber :: Lens' AccountSettings (Maybe Text)
 asAwsAccountNumber = lens _asAwsAccountNumber (\ s a -> s{_asAwsAccountNumber = a})
 
--- | The maximum number of minutes a test run will execute before it times out.
+-- | The maximum number of minutes a test run executes before it times out.
 asMaxJobTimeoutMinutes :: Lens' AccountSettings (Maybe Int)
 asMaxJobTimeoutMinutes = lens _asMaxJobTimeoutMinutes (\ s a -> s{_asMaxJobTimeoutMinutes = a})
 
@@ -100,7 +102,7 @@ asUnmeteredDevices = lens _asUnmeteredDevices (\ s a -> s{_asUnmeteredDevices = 
 asUnmeteredRemoteAccessDevices :: Lens' AccountSettings (HashMap DevicePlatform Int)
 asUnmeteredRemoteAccessDevices = lens _asUnmeteredRemoteAccessDevices (\ s a -> s{_asUnmeteredRemoteAccessDevices = a}) . _Default . _Map
 
--- | The default number of minutes (at the account level) a test run will execute before it times out. Default value is 60 minutes.
+-- | The default number of minutes (at the account level) a test run executes before it times out. The default value is 150 minutes.
 asDefaultJobTimeoutMinutes :: Lens' AccountSettings (Maybe Int)
 asDefaultJobTimeoutMinutes = lens _asDefaultJobTimeoutMinutes (\ s a -> s{_asDefaultJobTimeoutMinutes = a})
 
@@ -127,13 +129,15 @@ instance NFData AccountSettings where
 --
 --
 -- /See:/ 'artifact' smart constructor.
-data Artifact = Artifact'
-  { _aArn       :: !(Maybe Text)
-  , _aUrl       :: !(Maybe Text)
-  , _aExtension :: !(Maybe Text)
-  , _aName      :: !(Maybe Text)
-  , _aType      :: !(Maybe ArtifactType)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Artifact =
+  Artifact'
+    { _aArn       :: !(Maybe Text)
+    , _aUrl       :: !(Maybe Text)
+    , _aExtension :: !(Maybe Text)
+    , _aName      :: !(Maybe Text)
+    , _aType      :: !(Maybe ArtifactType)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Artifact' with the minimum fields required to make a request.
@@ -142,13 +146,13 @@ data Artifact = Artifact'
 --
 -- * 'aArn' - The artifact's ARN.
 --
--- * 'aUrl' - The pre-signed Amazon S3 URL that can be used with a corresponding GET request to download the artifact's file.
+-- * 'aUrl' - The presigned Amazon S3 URL that can be used with a GET request to download the artifact's file.
 --
 -- * 'aExtension' - The artifact's file extension.
 --
 -- * 'aName' - The artifact's name.
 --
--- * 'aType' - The artifact's type. Allowed values include the following:     * UNKNOWN: An unknown type.     * SCREENSHOT: The screenshot type.     * DEVICE_LOG: The device log type.     * MESSAGE_LOG: The message log type.     * RESULT_LOG: The result log type.     * SERVICE_LOG: The service log type.     * WEBKIT_LOG: The web kit log type.     * INSTRUMENTATION_OUTPUT: The instrumentation type.     * EXERCISER_MONKEY_OUTPUT: For Android, the artifact (log) generated by an Android fuzz test.     * CALABASH_JSON_OUTPUT: The Calabash JSON output type.     * CALABASH_PRETTY_OUTPUT: The Calabash pretty output type.     * CALABASH_STANDARD_OUTPUT: The Calabash standard output type.     * CALABASH_JAVA_XML_OUTPUT: The Calabash Java XML output type.     * AUTOMATION_OUTPUT: The automation output type.     * APPIUM_SERVER_OUTPUT: The Appium server output type.     * APPIUM_JAVA_OUTPUT: The Appium Java output type.     * APPIUM_JAVA_XML_OUTPUT: The Appium Java XML output type.     * APPIUM_PYTHON_OUTPUT: The Appium Python output type.     * APPIUM_PYTHON_XML_OUTPUT: The Appium Python XML output type.     * EXPLORER_EVENT_LOG: The Explorer event log output type.     * EXPLORER_SUMMARY_LOG: The Explorer summary log output type.     * APPLICATION_CRASH_REPORT: The application crash report output type.     * XCTEST_LOG: The XCode test output type.
+-- * 'aType' - The artifact's type. Allowed values include the following:     * UNKNOWN     * SCREENSHOT     * DEVICE_LOG     * MESSAGE_LOG     * VIDEO_LOG     * RESULT_LOG     * SERVICE_LOG     * WEBKIT_LOG     * INSTRUMENTATION_OUTPUT     * EXERCISER_MONKEY_OUTPUT: the artifact (log) generated by an Android fuzz test.     * CALABASH_JSON_OUTPUT     * CALABASH_PRETTY_OUTPUT     * CALABASH_STANDARD_OUTPUT     * CALABASH_JAVA_XML_OUTPUT     * AUTOMATION_OUTPUT     * APPIUM_SERVER_OUTPUT     * APPIUM_JAVA_OUTPUT     * APPIUM_JAVA_XML_OUTPUT     * APPIUM_PYTHON_OUTPUT     * APPIUM_PYTHON_XML_OUTPUT     * EXPLORER_EVENT_LOG     * EXPLORER_SUMMARY_LOG     * APPLICATION_CRASH_REPORT     * XCTEST_LOG     * VIDEO     * CUSTOMER_ARTIFACT     * CUSTOMER_ARTIFACT_LOG     * TESTSPEC_OUTPUT
 artifact
     :: Artifact
 artifact =
@@ -165,7 +169,7 @@ artifact =
 aArn :: Lens' Artifact (Maybe Text)
 aArn = lens _aArn (\ s a -> s{_aArn = a})
 
--- | The pre-signed Amazon S3 URL that can be used with a corresponding GET request to download the artifact's file.
+-- | The presigned Amazon S3 URL that can be used with a GET request to download the artifact's file.
 aUrl :: Lens' Artifact (Maybe Text)
 aUrl = lens _aUrl (\ s a -> s{_aUrl = a})
 
@@ -177,7 +181,7 @@ aExtension = lens _aExtension (\ s a -> s{_aExtension = a})
 aName :: Lens' Artifact (Maybe Text)
 aName = lens _aName (\ s a -> s{_aName = a})
 
--- | The artifact's type. Allowed values include the following:     * UNKNOWN: An unknown type.     * SCREENSHOT: The screenshot type.     * DEVICE_LOG: The device log type.     * MESSAGE_LOG: The message log type.     * RESULT_LOG: The result log type.     * SERVICE_LOG: The service log type.     * WEBKIT_LOG: The web kit log type.     * INSTRUMENTATION_OUTPUT: The instrumentation type.     * EXERCISER_MONKEY_OUTPUT: For Android, the artifact (log) generated by an Android fuzz test.     * CALABASH_JSON_OUTPUT: The Calabash JSON output type.     * CALABASH_PRETTY_OUTPUT: The Calabash pretty output type.     * CALABASH_STANDARD_OUTPUT: The Calabash standard output type.     * CALABASH_JAVA_XML_OUTPUT: The Calabash Java XML output type.     * AUTOMATION_OUTPUT: The automation output type.     * APPIUM_SERVER_OUTPUT: The Appium server output type.     * APPIUM_JAVA_OUTPUT: The Appium Java output type.     * APPIUM_JAVA_XML_OUTPUT: The Appium Java XML output type.     * APPIUM_PYTHON_OUTPUT: The Appium Python output type.     * APPIUM_PYTHON_XML_OUTPUT: The Appium Python XML output type.     * EXPLORER_EVENT_LOG: The Explorer event log output type.     * EXPLORER_SUMMARY_LOG: The Explorer summary log output type.     * APPLICATION_CRASH_REPORT: The application crash report output type.     * XCTEST_LOG: The XCode test output type.
+-- | The artifact's type. Allowed values include the following:     * UNKNOWN     * SCREENSHOT     * DEVICE_LOG     * MESSAGE_LOG     * VIDEO_LOG     * RESULT_LOG     * SERVICE_LOG     * WEBKIT_LOG     * INSTRUMENTATION_OUTPUT     * EXERCISER_MONKEY_OUTPUT: the artifact (log) generated by an Android fuzz test.     * CALABASH_JSON_OUTPUT     * CALABASH_PRETTY_OUTPUT     * CALABASH_STANDARD_OUTPUT     * CALABASH_JAVA_XML_OUTPUT     * AUTOMATION_OUTPUT     * APPIUM_SERVER_OUTPUT     * APPIUM_JAVA_OUTPUT     * APPIUM_JAVA_XML_OUTPUT     * APPIUM_PYTHON_OUTPUT     * APPIUM_PYTHON_XML_OUTPUT     * EXPLORER_EVENT_LOG     * EXPLORER_SUMMARY_LOG     * APPLICATION_CRASH_REPORT     * XCTEST_LOG     * VIDEO     * CUSTOMER_ARTIFACT     * CUSTOMER_ARTIFACT_LOG     * TESTSPEC_OUTPUT
 aType :: Lens' Artifact (Maybe ArtifactType)
 aType = lens _aType (\ s a -> s{_aType = a})
 
@@ -195,18 +199,18 @@ instance Hashable Artifact where
 
 instance NFData Artifact where
 
--- | Represents the amount of CPU that an app is using on a physical device.
+-- | Represents the amount of CPU that an app is using on a physical device. Does not represent system-wide CPU usage.
 --
---
--- Note that this does not represent system-wide CPU usage.
 --
 --
 -- /See:/ 'cpu' smart constructor.
-data CPU = CPU'
-  { _cpuFrequency    :: !(Maybe Text)
-  , _cpuClock        :: !(Maybe Double)
-  , _cpuArchitecture :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CPU =
+  CPU'
+    { _cpuFrequency    :: !(Maybe Text)
+    , _cpuClock        :: !(Maybe Double)
+    , _cpuArchitecture :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CPU' with the minimum fields required to make a request.
@@ -217,7 +221,7 @@ data CPU = CPU'
 --
 -- * 'cpuClock' - The clock speed of the device's CPU, expressed in hertz (Hz). For example, a 1.2 GHz CPU is expressed as 1200000000.
 --
--- * 'cpuArchitecture' - The CPU's architecture, for example x86 or ARM.
+-- * 'cpuArchitecture' - The CPU's architecture (for example, x86 or ARM).
 cpu
     :: CPU
 cpu =
@@ -233,7 +237,7 @@ cpuFrequency = lens _cpuFrequency (\ s a -> s{_cpuFrequency = a})
 cpuClock :: Lens' CPU (Maybe Double)
 cpuClock = lens _cpuClock (\ s a -> s{_cpuClock = a})
 
--- | The CPU's architecture, for example x86 or ARM.
+-- | The CPU's architecture (for example, x86 or ARM).
 cpuArchitecture :: Lens' CPU (Maybe Text)
 cpuArchitecture = lens _cpuArchitecture (\ s a -> s{_cpuArchitecture = a})
 
@@ -254,15 +258,17 @@ instance NFData CPU where
 --
 --
 -- /See:/ 'counters' smart constructor.
-data Counters = Counters'
-  { _cPassed  :: !(Maybe Int)
-  , _cSkipped :: !(Maybe Int)
-  , _cWarned  :: !(Maybe Int)
-  , _cStopped :: !(Maybe Int)
-  , _cTotal   :: !(Maybe Int)
-  , _cFailed  :: !(Maybe Int)
-  , _cErrored :: !(Maybe Int)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Counters =
+  Counters'
+    { _cPassed  :: !(Maybe Int)
+    , _cSkipped :: !(Maybe Int)
+    , _cWarned  :: !(Maybe Int)
+    , _cStopped :: !(Maybe Int)
+    , _cTotal   :: !(Maybe Int)
+    , _cFailed  :: !(Maybe Int)
+    , _cErrored :: !(Maybe Int)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Counters' with the minimum fields required to make a request.
@@ -345,9 +351,12 @@ instance NFData Counters where
 --
 --
 -- /See:/ 'createRemoteAccessSessionConfiguration' smart constructor.
-newtype CreateRemoteAccessSessionConfiguration = CreateRemoteAccessSessionConfiguration'
-  { _crascBillingMethod :: Maybe BillingMethod
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreateRemoteAccessSessionConfiguration =
+  CreateRemoteAccessSessionConfiguration'
+    { _crascBillingMethod         :: !(Maybe BillingMethod)
+    , _crascVpceConfigurationARNs :: !(Maybe [Text])
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateRemoteAccessSessionConfiguration' with the minimum fields required to make a request.
@@ -355,15 +364,22 @@ newtype CreateRemoteAccessSessionConfiguration = CreateRemoteAccessSessionConfig
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'crascBillingMethod' - The billing method for the remote access session.
+--
+-- * 'crascVpceConfigurationARNs' - An array of ARNs included in the VPC endpoint configuration.
 createRemoteAccessSessionConfiguration
     :: CreateRemoteAccessSessionConfiguration
 createRemoteAccessSessionConfiguration =
-  CreateRemoteAccessSessionConfiguration' {_crascBillingMethod = Nothing}
+  CreateRemoteAccessSessionConfiguration'
+    {_crascBillingMethod = Nothing, _crascVpceConfigurationARNs = Nothing}
 
 
 -- | The billing method for the remote access session.
 crascBillingMethod :: Lens' CreateRemoteAccessSessionConfiguration (Maybe BillingMethod)
 crascBillingMethod = lens _crascBillingMethod (\ s a -> s{_crascBillingMethod = a})
+
+-- | An array of ARNs included in the VPC endpoint configuration.
+crascVpceConfigurationARNs :: Lens' CreateRemoteAccessSessionConfiguration [Text]
+crascVpceConfigurationARNs = lens _crascVpceConfigurationARNs (\ s a -> s{_crascVpceConfigurationARNs = a}) . _Default . _Coerce
 
 instance Hashable
            CreateRemoteAccessSessionConfiguration
@@ -379,9 +395,11 @@ instance ToJSON
         toJSON CreateRemoteAccessSessionConfiguration'{..}
           = object
               (catMaybes
-                 [("billingMethod" .=) <$> _crascBillingMethod])
+                 [("billingMethod" .=) <$> _crascBillingMethod,
+                  ("vpceConfigurationArns" .=) <$>
+                    _crascVpceConfigurationARNs])
 
--- | A JSON object specifying the paths where the artifacts generated by the customer's tests, on the device or in the test environment, will be pulled from.
+-- | A JSON object that specifies the paths where the artifacts generated by the customer's tests, on the device or in the test environment, are pulled from.
 --
 --
 -- Specify @deviceHostPaths@ and optionally specify either @iosPaths@ or @androidPaths@ .
@@ -390,22 +408,24 @@ instance ToJSON
 --
 --
 -- /See:/ 'customerArtifactPaths' smart constructor.
-data CustomerArtifactPaths = CustomerArtifactPaths'
-  { _capAndroidPaths    :: !(Maybe [Text])
-  , _capDeviceHostPaths :: !(Maybe [Text])
-  , _capIosPaths        :: !(Maybe [Text])
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CustomerArtifactPaths =
+  CustomerArtifactPaths'
+    { _capAndroidPaths    :: !(Maybe [Text])
+    , _capDeviceHostPaths :: !(Maybe [Text])
+    , _capIosPaths        :: !(Maybe [Text])
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CustomerArtifactPaths' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'capAndroidPaths' - Comma-separated list of paths on the Android device where the artifacts generated by the customer's tests will be pulled from.
+-- * 'capAndroidPaths' - Comma-separated list of paths on the Android device where the artifacts generated by the customer's tests are pulled from.
 --
--- * 'capDeviceHostPaths' - Comma-separated list of paths in the test execution environment where the artifacts generated by the customer's tests will be pulled from.
+-- * 'capDeviceHostPaths' - Comma-separated list of paths in the test execution environment where the artifacts generated by the customer's tests are pulled from.
 --
--- * 'capIosPaths' - Comma-separated list of paths on the iOS device where the artifacts generated by the customer's tests will be pulled from.
+-- * 'capIosPaths' - Comma-separated list of paths on the iOS device where the artifacts generated by the customer's tests are pulled from.
 customerArtifactPaths
     :: CustomerArtifactPaths
 customerArtifactPaths =
@@ -416,15 +436,15 @@ customerArtifactPaths =
     }
 
 
--- | Comma-separated list of paths on the Android device where the artifacts generated by the customer's tests will be pulled from.
+-- | Comma-separated list of paths on the Android device where the artifacts generated by the customer's tests are pulled from.
 capAndroidPaths :: Lens' CustomerArtifactPaths [Text]
 capAndroidPaths = lens _capAndroidPaths (\ s a -> s{_capAndroidPaths = a}) . _Default . _Coerce
 
--- | Comma-separated list of paths in the test execution environment where the artifacts generated by the customer's tests will be pulled from.
+-- | Comma-separated list of paths in the test execution environment where the artifacts generated by the customer's tests are pulled from.
 capDeviceHostPaths :: Lens' CustomerArtifactPaths [Text]
 capDeviceHostPaths = lens _capDeviceHostPaths (\ s a -> s{_capDeviceHostPaths = a}) . _Default . _Coerce
 
--- | Comma-separated list of paths on the iOS device where the artifacts generated by the customer's tests will be pulled from.
+-- | Comma-separated list of paths on the iOS device where the artifacts generated by the customer's tests are pulled from.
 capIosPaths :: Lens' CustomerArtifactPaths [Text]
 capIosPaths = lens _capIosPaths (\ s a -> s{_capIosPaths = a}) . _Default . _Coerce
 
@@ -454,179 +474,189 @@ instance ToJSON CustomerArtifactPaths where
 --
 --
 -- /See:/ 'device' smart constructor.
-data Device = Device'
-  { _devCarrier             :: !(Maybe Text)
-  , _devImage               :: !(Maybe Text)
-  , _devManufacturer        :: !(Maybe Text)
-  , _devPlatform            :: !(Maybe DevicePlatform)
-  , _devModelId             :: !(Maybe Text)
-  , _devRemoteAccessEnabled :: !(Maybe Bool)
-  , _devArn                 :: !(Maybe Text)
-  , _devFormFactor          :: !(Maybe DeviceFormFactor)
-  , _devFleetType           :: !(Maybe Text)
-  , _devResolution          :: !(Maybe Resolution)
-  , _devMemory              :: !(Maybe Integer)
-  , _devRadio               :: !(Maybe Text)
-  , _devOs                  :: !(Maybe Text)
-  , _devName                :: !(Maybe Text)
-  , _devModel               :: !(Maybe Text)
-  , _devInstances           :: !(Maybe [DeviceInstance])
-  , _devRemoteDebugEnabled  :: !(Maybe Bool)
-  , _devCpu                 :: !(Maybe CPU)
-  , _devHeapSize            :: !(Maybe Integer)
-  , _devFleetName           :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Device =
+  Device'
+    { _dCarrier             :: !(Maybe Text)
+    , _dImage               :: !(Maybe Text)
+    , _dManufacturer        :: !(Maybe Text)
+    , _dPlatform            :: !(Maybe DevicePlatform)
+    , _dModelId             :: !(Maybe Text)
+    , _dRemoteAccessEnabled :: !(Maybe Bool)
+    , _dArn                 :: !(Maybe Text)
+    , _dFormFactor          :: !(Maybe DeviceFormFactor)
+    , _dFleetType           :: !(Maybe Text)
+    , _dResolution          :: !(Maybe Resolution)
+    , _dAvailability        :: !(Maybe DeviceAvailability)
+    , _dMemory              :: !(Maybe Integer)
+    , _dRadio               :: !(Maybe Text)
+    , _dOs                  :: !(Maybe Text)
+    , _dName                :: !(Maybe Text)
+    , _dModel               :: !(Maybe Text)
+    , _dInstances           :: !(Maybe [DeviceInstance])
+    , _dRemoteDebugEnabled  :: !(Maybe Bool)
+    , _dCpu                 :: !(Maybe CPU)
+    , _dHeapSize            :: !(Maybe Integer)
+    , _dFleetName           :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Device' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'devCarrier' - The device's carrier.
+-- * 'dCarrier' - The device's carrier.
 --
--- * 'devImage' - The device's image name.
+-- * 'dImage' - The device's image name.
 --
--- * 'devManufacturer' - The device's manufacturer name.
+-- * 'dManufacturer' - The device's manufacturer name.
 --
--- * 'devPlatform' - The device's platform. Allowed values include:     * ANDROID: The Android platform.     * IOS: The iOS platform.
+-- * 'dPlatform' - The device's platform. Allowed values include:     * ANDROID     * IOS
 --
--- * 'devModelId' - The device's model ID.
+-- * 'dModelId' - The device's model ID.
 --
--- * 'devRemoteAccessEnabled' - Specifies whether remote access has been enabled for the specified device.
+-- * 'dRemoteAccessEnabled' - Specifies whether remote access has been enabled for the specified device.
 --
--- * 'devArn' - The device's ARN.
+-- * 'dArn' - The device's ARN.
 --
--- * 'devFormFactor' - The device's form factor. Allowed values include:     * PHONE: The phone form factor.     * TABLET: The tablet form factor.
+-- * 'dFormFactor' - The device's form factor. Allowed values include:     * PHONE     * TABLET
 --
--- * 'devFleetType' - The type of fleet to which this device belongs. Possible values for fleet type are PRIVATE and PUBLIC.
+-- * 'dFleetType' - The type of fleet to which this device belongs. Possible values are PRIVATE and PUBLIC.
 --
--- * 'devResolution' - The resolution of the device.
+-- * 'dResolution' - The resolution of the device.
 --
--- * 'devMemory' - The device's total memory size, expressed in bytes.
+-- * 'dAvailability' - Indicates how likely a device is available for a test run. Currently available in the 'ListDevices' and GetDevice API methods.
 --
--- * 'devRadio' - The device's radio.
+-- * 'dMemory' - The device's total memory size, expressed in bytes.
 --
--- * 'devOs' - The device's operating system type.
+-- * 'dRadio' - The device's radio.
 --
--- * 'devName' - The device's display name.
+-- * 'dOs' - The device's operating system type.
 --
--- * 'devModel' - The device's model name.
+-- * 'dName' - The device's display name.
 --
--- * 'devInstances' - The instances belonging to this device.
+-- * 'dModel' - The device's model name.
 --
--- * 'devRemoteDebugEnabled' - This flag is set to @true@ if remote debugging is enabled for the device.
+-- * 'dInstances' - The instances that belong to this device.
 --
--- * 'devCpu' - Information about the device's CPU.
+-- * 'dRemoteDebugEnabled' - This flag is set to @true@ if remote debugging is enabled for the device. Remote debugging is <https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html no longer supported> .
 --
--- * 'devHeapSize' - The device's heap size, expressed in bytes.
+-- * 'dCpu' - Information about the device's CPU.
 --
--- * 'devFleetName' - The name of the fleet to which this device belongs.
+-- * 'dHeapSize' - The device's heap size, expressed in bytes.
+--
+-- * 'dFleetName' - The name of the fleet to which this device belongs.
 device
     :: Device
 device =
   Device'
-    { _devCarrier = Nothing
-    , _devImage = Nothing
-    , _devManufacturer = Nothing
-    , _devPlatform = Nothing
-    , _devModelId = Nothing
-    , _devRemoteAccessEnabled = Nothing
-    , _devArn = Nothing
-    , _devFormFactor = Nothing
-    , _devFleetType = Nothing
-    , _devResolution = Nothing
-    , _devMemory = Nothing
-    , _devRadio = Nothing
-    , _devOs = Nothing
-    , _devName = Nothing
-    , _devModel = Nothing
-    , _devInstances = Nothing
-    , _devRemoteDebugEnabled = Nothing
-    , _devCpu = Nothing
-    , _devHeapSize = Nothing
-    , _devFleetName = Nothing
+    { _dCarrier = Nothing
+    , _dImage = Nothing
+    , _dManufacturer = Nothing
+    , _dPlatform = Nothing
+    , _dModelId = Nothing
+    , _dRemoteAccessEnabled = Nothing
+    , _dArn = Nothing
+    , _dFormFactor = Nothing
+    , _dFleetType = Nothing
+    , _dResolution = Nothing
+    , _dAvailability = Nothing
+    , _dMemory = Nothing
+    , _dRadio = Nothing
+    , _dOs = Nothing
+    , _dName = Nothing
+    , _dModel = Nothing
+    , _dInstances = Nothing
+    , _dRemoteDebugEnabled = Nothing
+    , _dCpu = Nothing
+    , _dHeapSize = Nothing
+    , _dFleetName = Nothing
     }
 
 
 -- | The device's carrier.
-devCarrier :: Lens' Device (Maybe Text)
-devCarrier = lens _devCarrier (\ s a -> s{_devCarrier = a})
+dCarrier :: Lens' Device (Maybe Text)
+dCarrier = lens _dCarrier (\ s a -> s{_dCarrier = a})
 
 -- | The device's image name.
-devImage :: Lens' Device (Maybe Text)
-devImage = lens _devImage (\ s a -> s{_devImage = a})
+dImage :: Lens' Device (Maybe Text)
+dImage = lens _dImage (\ s a -> s{_dImage = a})
 
 -- | The device's manufacturer name.
-devManufacturer :: Lens' Device (Maybe Text)
-devManufacturer = lens _devManufacturer (\ s a -> s{_devManufacturer = a})
+dManufacturer :: Lens' Device (Maybe Text)
+dManufacturer = lens _dManufacturer (\ s a -> s{_dManufacturer = a})
 
--- | The device's platform. Allowed values include:     * ANDROID: The Android platform.     * IOS: The iOS platform.
-devPlatform :: Lens' Device (Maybe DevicePlatform)
-devPlatform = lens _devPlatform (\ s a -> s{_devPlatform = a})
+-- | The device's platform. Allowed values include:     * ANDROID     * IOS
+dPlatform :: Lens' Device (Maybe DevicePlatform)
+dPlatform = lens _dPlatform (\ s a -> s{_dPlatform = a})
 
 -- | The device's model ID.
-devModelId :: Lens' Device (Maybe Text)
-devModelId = lens _devModelId (\ s a -> s{_devModelId = a})
+dModelId :: Lens' Device (Maybe Text)
+dModelId = lens _dModelId (\ s a -> s{_dModelId = a})
 
 -- | Specifies whether remote access has been enabled for the specified device.
-devRemoteAccessEnabled :: Lens' Device (Maybe Bool)
-devRemoteAccessEnabled = lens _devRemoteAccessEnabled (\ s a -> s{_devRemoteAccessEnabled = a})
+dRemoteAccessEnabled :: Lens' Device (Maybe Bool)
+dRemoteAccessEnabled = lens _dRemoteAccessEnabled (\ s a -> s{_dRemoteAccessEnabled = a})
 
 -- | The device's ARN.
-devArn :: Lens' Device (Maybe Text)
-devArn = lens _devArn (\ s a -> s{_devArn = a})
+dArn :: Lens' Device (Maybe Text)
+dArn = lens _dArn (\ s a -> s{_dArn = a})
 
--- | The device's form factor. Allowed values include:     * PHONE: The phone form factor.     * TABLET: The tablet form factor.
-devFormFactor :: Lens' Device (Maybe DeviceFormFactor)
-devFormFactor = lens _devFormFactor (\ s a -> s{_devFormFactor = a})
+-- | The device's form factor. Allowed values include:     * PHONE     * TABLET
+dFormFactor :: Lens' Device (Maybe DeviceFormFactor)
+dFormFactor = lens _dFormFactor (\ s a -> s{_dFormFactor = a})
 
--- | The type of fleet to which this device belongs. Possible values for fleet type are PRIVATE and PUBLIC.
-devFleetType :: Lens' Device (Maybe Text)
-devFleetType = lens _devFleetType (\ s a -> s{_devFleetType = a})
+-- | The type of fleet to which this device belongs. Possible values are PRIVATE and PUBLIC.
+dFleetType :: Lens' Device (Maybe Text)
+dFleetType = lens _dFleetType (\ s a -> s{_dFleetType = a})
 
 -- | The resolution of the device.
-devResolution :: Lens' Device (Maybe Resolution)
-devResolution = lens _devResolution (\ s a -> s{_devResolution = a})
+dResolution :: Lens' Device (Maybe Resolution)
+dResolution = lens _dResolution (\ s a -> s{_dResolution = a})
+
+-- | Indicates how likely a device is available for a test run. Currently available in the 'ListDevices' and GetDevice API methods.
+dAvailability :: Lens' Device (Maybe DeviceAvailability)
+dAvailability = lens _dAvailability (\ s a -> s{_dAvailability = a})
 
 -- | The device's total memory size, expressed in bytes.
-devMemory :: Lens' Device (Maybe Integer)
-devMemory = lens _devMemory (\ s a -> s{_devMemory = a})
+dMemory :: Lens' Device (Maybe Integer)
+dMemory = lens _dMemory (\ s a -> s{_dMemory = a})
 
 -- | The device's radio.
-devRadio :: Lens' Device (Maybe Text)
-devRadio = lens _devRadio (\ s a -> s{_devRadio = a})
+dRadio :: Lens' Device (Maybe Text)
+dRadio = lens _dRadio (\ s a -> s{_dRadio = a})
 
 -- | The device's operating system type.
-devOs :: Lens' Device (Maybe Text)
-devOs = lens _devOs (\ s a -> s{_devOs = a})
+dOs :: Lens' Device (Maybe Text)
+dOs = lens _dOs (\ s a -> s{_dOs = a})
 
 -- | The device's display name.
-devName :: Lens' Device (Maybe Text)
-devName = lens _devName (\ s a -> s{_devName = a})
+dName :: Lens' Device (Maybe Text)
+dName = lens _dName (\ s a -> s{_dName = a})
 
 -- | The device's model name.
-devModel :: Lens' Device (Maybe Text)
-devModel = lens _devModel (\ s a -> s{_devModel = a})
+dModel :: Lens' Device (Maybe Text)
+dModel = lens _dModel (\ s a -> s{_dModel = a})
 
--- | The instances belonging to this device.
-devInstances :: Lens' Device [DeviceInstance]
-devInstances = lens _devInstances (\ s a -> s{_devInstances = a}) . _Default . _Coerce
+-- | The instances that belong to this device.
+dInstances :: Lens' Device [DeviceInstance]
+dInstances = lens _dInstances (\ s a -> s{_dInstances = a}) . _Default . _Coerce
 
--- | This flag is set to @true@ if remote debugging is enabled for the device.
-devRemoteDebugEnabled :: Lens' Device (Maybe Bool)
-devRemoteDebugEnabled = lens _devRemoteDebugEnabled (\ s a -> s{_devRemoteDebugEnabled = a})
+-- | This flag is set to @true@ if remote debugging is enabled for the device. Remote debugging is <https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html no longer supported> .
+dRemoteDebugEnabled :: Lens' Device (Maybe Bool)
+dRemoteDebugEnabled = lens _dRemoteDebugEnabled (\ s a -> s{_dRemoteDebugEnabled = a})
 
 -- | Information about the device's CPU.
-devCpu :: Lens' Device (Maybe CPU)
-devCpu = lens _devCpu (\ s a -> s{_devCpu = a})
+dCpu :: Lens' Device (Maybe CPU)
+dCpu = lens _dCpu (\ s a -> s{_dCpu = a})
 
 -- | The device's heap size, expressed in bytes.
-devHeapSize :: Lens' Device (Maybe Integer)
-devHeapSize = lens _devHeapSize (\ s a -> s{_devHeapSize = a})
+dHeapSize :: Lens' Device (Maybe Integer)
+dHeapSize = lens _dHeapSize (\ s a -> s{_dHeapSize = a})
 
 -- | The name of the fleet to which this device belongs.
-devFleetName :: Lens' Device (Maybe Text)
-devFleetName = lens _devFleetName (\ s a -> s{_devFleetName = a})
+dFleetName :: Lens' Device (Maybe Text)
+dFleetName = lens _dFleetName (\ s a -> s{_dFleetName = a})
 
 instance FromJSON Device where
         parseJSON
@@ -642,6 +672,7 @@ instance FromJSON Device where
                      <*> (x .:? "formFactor")
                      <*> (x .:? "fleetType")
                      <*> (x .:? "resolution")
+                     <*> (x .:? "availability")
                      <*> (x .:? "memory")
                      <*> (x .:? "radio")
                      <*> (x .:? "os")
@@ -657,36 +688,102 @@ instance Hashable Device where
 
 instance NFData Device where
 
+-- | Represents a device filter used to select a set of devices to be included in a test run. This data structure is passed in as the @deviceSelectionConfiguration@ parameter to @ScheduleRun@ . For an example of the JSON request syntax, see 'ScheduleRun' .
+--
+--
+-- It is also passed in as the @filters@ parameter to @ListDevices@ . For an example of the JSON request syntax, see 'ListDevices' .
+--
+--
+-- /See:/ 'deviceFilter' smart constructor.
+data DeviceFilter =
+  DeviceFilter'
+    { _dfAttribute :: !(Maybe DeviceFilterAttribute)
+    , _dfOperator  :: !(Maybe RuleOperator)
+    , _dfValues    :: !(Maybe [Text])
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'DeviceFilter' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'dfAttribute' - The aspect of a device such as platform or model used as the selection criteria in a device filter. The supported operators for each attribute are provided in the following list.     * ARN    * The Amazon Resource Name (ARN) of the device (for example, @arn:aws:devicefarm:us-west-2::device:12345Example@ ). Supported operators: @EQUALS@ , @IN@ , @NOT_IN@      * PLATFORM    * The device platform. Valid values are ANDROID or IOS. Supported operators: @EQUALS@      * OS_VERSION    * The operating system version (for example, 10.3.2). Supported operators: @EQUALS@ , @GREATER_THAN@ , @GREATER_THAN_OR_EQUALS@ , @IN@ , @LESS_THAN@ , @LESS_THAN_OR_EQUALS@ , @NOT_IN@      * MODEL    * The device model (for example, iPad 5th Gen). Supported operators: @CONTAINS@ , @EQUALS@ , @IN@ , @NOT_IN@      * AVAILABILITY    * The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY, or TEMPORARY_NOT_AVAILABLE. Supported operators: @EQUALS@      * FORM_FACTOR    * The device form factor. Valid values are PHONE or TABLET. Supported operators: @EQUALS@      * MANUFACTURER    * The device manufacturer (for example, Apple). Supported operators: @EQUALS@ , @IN@ , @NOT_IN@      * REMOTE_ACCESS_ENABLED    * Whether the device is enabled for remote access. Valid values are TRUE or FALSE. Supported operators: @EQUALS@      * REMOTE_DEBUG_ENABLED    * Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE. Supported operators: @EQUALS@  Because remote debugging is <https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html no longer supported> , this filter is ignored.     * INSTANCE_ARN    * The Amazon Resource Name (ARN) of the device instance. Supported operators: @EQUALS@ , @IN@ , @NOT_IN@      * INSTANCE_LABELS    * The label of the device instance. Supported operators: @CONTAINS@      * FLEET_TYPE    * The fleet type. Valid values are PUBLIC or PRIVATE. Supported operators: @EQUALS@
+--
+-- * 'dfOperator' - Specifies how Device Farm compares the filter's attribute to the value. See the attribute descriptions.
+--
+-- * 'dfValues' - An array of one or more filter values used in a device filter. __Operator Values__      * The IN and NOT_IN operators can take a values array that has more than one element.     * The other operators require an array with a single element. __Attribute Values__      * The PLATFORM attribute can be set to ANDROID or IOS.     * The AVAILABILITY attribute can be set to AVAILABLE, HIGHLY_AVAILABLE, BUSY, or TEMPORARY_NOT_AVAILABLE.     * The FORM_FACTOR attribute can be set to PHONE or TABLET.     * The FLEET_TYPE attribute can be set to PUBLIC or PRIVATE.
+deviceFilter
+    :: DeviceFilter
+deviceFilter =
+  DeviceFilter'
+    {_dfAttribute = Nothing, _dfOperator = Nothing, _dfValues = Nothing}
+
+
+-- | The aspect of a device such as platform or model used as the selection criteria in a device filter. The supported operators for each attribute are provided in the following list.     * ARN    * The Amazon Resource Name (ARN) of the device (for example, @arn:aws:devicefarm:us-west-2::device:12345Example@ ). Supported operators: @EQUALS@ , @IN@ , @NOT_IN@      * PLATFORM    * The device platform. Valid values are ANDROID or IOS. Supported operators: @EQUALS@      * OS_VERSION    * The operating system version (for example, 10.3.2). Supported operators: @EQUALS@ , @GREATER_THAN@ , @GREATER_THAN_OR_EQUALS@ , @IN@ , @LESS_THAN@ , @LESS_THAN_OR_EQUALS@ , @NOT_IN@      * MODEL    * The device model (for example, iPad 5th Gen). Supported operators: @CONTAINS@ , @EQUALS@ , @IN@ , @NOT_IN@      * AVAILABILITY    * The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY, or TEMPORARY_NOT_AVAILABLE. Supported operators: @EQUALS@      * FORM_FACTOR    * The device form factor. Valid values are PHONE or TABLET. Supported operators: @EQUALS@      * MANUFACTURER    * The device manufacturer (for example, Apple). Supported operators: @EQUALS@ , @IN@ , @NOT_IN@      * REMOTE_ACCESS_ENABLED    * Whether the device is enabled for remote access. Valid values are TRUE or FALSE. Supported operators: @EQUALS@      * REMOTE_DEBUG_ENABLED    * Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE. Supported operators: @EQUALS@  Because remote debugging is <https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html no longer supported> , this filter is ignored.     * INSTANCE_ARN    * The Amazon Resource Name (ARN) of the device instance. Supported operators: @EQUALS@ , @IN@ , @NOT_IN@      * INSTANCE_LABELS    * The label of the device instance. Supported operators: @CONTAINS@      * FLEET_TYPE    * The fleet type. Valid values are PUBLIC or PRIVATE. Supported operators: @EQUALS@
+dfAttribute :: Lens' DeviceFilter (Maybe DeviceFilterAttribute)
+dfAttribute = lens _dfAttribute (\ s a -> s{_dfAttribute = a})
+
+-- | Specifies how Device Farm compares the filter's attribute to the value. See the attribute descriptions.
+dfOperator :: Lens' DeviceFilter (Maybe RuleOperator)
+dfOperator = lens _dfOperator (\ s a -> s{_dfOperator = a})
+
+-- | An array of one or more filter values used in a device filter. __Operator Values__      * The IN and NOT_IN operators can take a values array that has more than one element.     * The other operators require an array with a single element. __Attribute Values__      * The PLATFORM attribute can be set to ANDROID or IOS.     * The AVAILABILITY attribute can be set to AVAILABLE, HIGHLY_AVAILABLE, BUSY, or TEMPORARY_NOT_AVAILABLE.     * The FORM_FACTOR attribute can be set to PHONE or TABLET.     * The FLEET_TYPE attribute can be set to PUBLIC or PRIVATE.
+dfValues :: Lens' DeviceFilter [Text]
+dfValues = lens _dfValues (\ s a -> s{_dfValues = a}) . _Default . _Coerce
+
+instance FromJSON DeviceFilter where
+        parseJSON
+          = withObject "DeviceFilter"
+              (\ x ->
+                 DeviceFilter' <$>
+                   (x .:? "attribute") <*> (x .:? "operator") <*>
+                     (x .:? "values" .!= mempty))
+
+instance Hashable DeviceFilter where
+
+instance NFData DeviceFilter where
+
+instance ToJSON DeviceFilter where
+        toJSON DeviceFilter'{..}
+          = object
+              (catMaybes
+                 [("attribute" .=) <$> _dfAttribute,
+                  ("operator" .=) <$> _dfOperator,
+                  ("values" .=) <$> _dfValues])
+
 -- | Represents the device instance.
 --
 --
 --
 -- /See:/ 'deviceInstance' smart constructor.
-data DeviceInstance = DeviceInstance'
-  { _diStatus          :: !(Maybe InstanceStatus)
-  , _diUdid            :: !(Maybe Text)
-  , _diInstanceProfile :: !(Maybe InstanceProfile)
-  , _diArn             :: !(Maybe Text)
-  , _diDeviceARN       :: !(Maybe Text)
-  , _diLabels          :: !(Maybe [Text])
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DeviceInstance =
+  DeviceInstance'
+    { _diStatus          :: !(Maybe InstanceStatus)
+    , _diUdid            :: !(Maybe Text)
+    , _diInstanceProfile :: !(Maybe InstanceProfile)
+    , _diArn             :: !(Maybe Text)
+    , _diDeviceARN       :: !(Maybe Text)
+    , _diLabels          :: !(Maybe [Text])
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeviceInstance' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'diStatus' - The status of the device instance. Valid values are listed below.
+-- * 'diStatus' - The status of the device instance. Valid values are listed here.
 --
 -- * 'diUdid' - Unique device identifier for the device instance.
 --
--- * 'diInstanceProfile' - A object containing information about the instance profile.
+-- * 'diInstanceProfile' - A object that contains information about the instance profile.
 --
 -- * 'diArn' - The Amazon Resource Name (ARN) of the device instance.
 --
--- * 'diDeviceARN' - The Amazon Resource Name (ARN) of the device.
+-- * 'diDeviceARN' - The ARN of the device.
 --
--- * 'diLabels' - An array of strings describing the device instance.
+-- * 'diLabels' - An array of strings that describe the device instance.
 deviceInstance
     :: DeviceInstance
 deviceInstance =
@@ -700,7 +797,7 @@ deviceInstance =
     }
 
 
--- | The status of the device instance. Valid values are listed below.
+-- | The status of the device instance. Valid values are listed here.
 diStatus :: Lens' DeviceInstance (Maybe InstanceStatus)
 diStatus = lens _diStatus (\ s a -> s{_diStatus = a})
 
@@ -708,7 +805,7 @@ diStatus = lens _diStatus (\ s a -> s{_diStatus = a})
 diUdid :: Lens' DeviceInstance (Maybe Text)
 diUdid = lens _diUdid (\ s a -> s{_diUdid = a})
 
--- | A object containing information about the instance profile.
+-- | A object that contains information about the instance profile.
 diInstanceProfile :: Lens' DeviceInstance (Maybe InstanceProfile)
 diInstanceProfile = lens _diInstanceProfile (\ s a -> s{_diInstanceProfile = a})
 
@@ -716,11 +813,11 @@ diInstanceProfile = lens _diInstanceProfile (\ s a -> s{_diInstanceProfile = a})
 diArn :: Lens' DeviceInstance (Maybe Text)
 diArn = lens _diArn (\ s a -> s{_diArn = a})
 
--- | The Amazon Resource Name (ARN) of the device.
+-- | The ARN of the device.
 diDeviceARN :: Lens' DeviceInstance (Maybe Text)
 diDeviceARN = lens _diDeviceARN (\ s a -> s{_diDeviceARN = a})
 
--- | An array of strings describing the device instance.
+-- | An array of strings that describe the device instance.
 diLabels :: Lens' DeviceInstance [Text]
 diLabels = lens _diLabels (\ s a -> s{_diLabels = a}) . _Default . _Coerce
 
@@ -744,11 +841,13 @@ instance NFData DeviceInstance where
 --
 --
 -- /See:/ 'deviceMinutes' smart constructor.
-data DeviceMinutes = DeviceMinutes'
-  { _dmMetered   :: !(Maybe Double)
-  , _dmTotal     :: !(Maybe Double)
-  , _dmUnmetered :: !(Maybe Double)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DeviceMinutes =
+  DeviceMinutes'
+    { _dmMetered   :: !(Maybe Double)
+    , _dmTotal     :: !(Maybe Double)
+    , _dmUnmetered :: !(Maybe Double)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeviceMinutes' with the minimum fields required to make a request.
@@ -796,59 +895,69 @@ instance NFData DeviceMinutes where
 --
 --
 -- /See:/ 'devicePool' smart constructor.
-data DevicePool = DevicePool'
-  { _dArn         :: !(Maybe Text)
-  , _dRules       :: !(Maybe [Rule])
-  , _dName        :: !(Maybe Text)
-  , _dType        :: !(Maybe DevicePoolType)
-  , _dDescription :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DevicePool =
+  DevicePool'
+    { _devArn         :: !(Maybe Text)
+    , _devRules       :: !(Maybe [Rule])
+    , _devName        :: !(Maybe Text)
+    , _devMaxDevices  :: !(Maybe Int)
+    , _devType        :: !(Maybe DevicePoolType)
+    , _devDescription :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DevicePool' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dArn' - The device pool's ARN.
+-- * 'devArn' - The device pool's ARN.
 --
--- * 'dRules' - Information about the device pool's rules.
+-- * 'devRules' - Information about the device pool's rules.
 --
--- * 'dName' - The device pool's name.
+-- * 'devName' - The device pool's name.
 --
--- * 'dType' - The device pool's type. Allowed values include:     * CURATED: A device pool that is created and managed by AWS Device Farm.     * PRIVATE: A device pool that is created and managed by the device pool developer.
+-- * 'devMaxDevices' - The number of devices that Device Farm can add to your device pool. Device Farm adds devices that are available and meet the criteria that you assign for the @rules@ parameter. Depending on how many devices meet these constraints, your device pool might contain fewer devices than the value for this parameter. By specifying the maximum number of devices, you can control the costs that you incur by running tests.
 --
--- * 'dDescription' - The device pool's description.
+-- * 'devType' - The device pool's type. Allowed values include:     * CURATED: A device pool that is created and managed by AWS Device Farm.     * PRIVATE: A device pool that is created and managed by the device pool developer.
+--
+-- * 'devDescription' - The device pool's description.
 devicePool
     :: DevicePool
 devicePool =
   DevicePool'
-    { _dArn = Nothing
-    , _dRules = Nothing
-    , _dName = Nothing
-    , _dType = Nothing
-    , _dDescription = Nothing
+    { _devArn = Nothing
+    , _devRules = Nothing
+    , _devName = Nothing
+    , _devMaxDevices = Nothing
+    , _devType = Nothing
+    , _devDescription = Nothing
     }
 
 
 -- | The device pool's ARN.
-dArn :: Lens' DevicePool (Maybe Text)
-dArn = lens _dArn (\ s a -> s{_dArn = a})
+devArn :: Lens' DevicePool (Maybe Text)
+devArn = lens _devArn (\ s a -> s{_devArn = a})
 
 -- | Information about the device pool's rules.
-dRules :: Lens' DevicePool [Rule]
-dRules = lens _dRules (\ s a -> s{_dRules = a}) . _Default . _Coerce
+devRules :: Lens' DevicePool [Rule]
+devRules = lens _devRules (\ s a -> s{_devRules = a}) . _Default . _Coerce
 
 -- | The device pool's name.
-dName :: Lens' DevicePool (Maybe Text)
-dName = lens _dName (\ s a -> s{_dName = a})
+devName :: Lens' DevicePool (Maybe Text)
+devName = lens _devName (\ s a -> s{_devName = a})
+
+-- | The number of devices that Device Farm can add to your device pool. Device Farm adds devices that are available and meet the criteria that you assign for the @rules@ parameter. Depending on how many devices meet these constraints, your device pool might contain fewer devices than the value for this parameter. By specifying the maximum number of devices, you can control the costs that you incur by running tests.
+devMaxDevices :: Lens' DevicePool (Maybe Int)
+devMaxDevices = lens _devMaxDevices (\ s a -> s{_devMaxDevices = a})
 
 -- | The device pool's type. Allowed values include:     * CURATED: A device pool that is created and managed by AWS Device Farm.     * PRIVATE: A device pool that is created and managed by the device pool developer.
-dType :: Lens' DevicePool (Maybe DevicePoolType)
-dType = lens _dType (\ s a -> s{_dType = a})
+devType :: Lens' DevicePool (Maybe DevicePoolType)
+devType = lens _devType (\ s a -> s{_devType = a})
 
 -- | The device pool's description.
-dDescription :: Lens' DevicePool (Maybe Text)
-dDescription = lens _dDescription (\ s a -> s{_dDescription = a})
+devDescription :: Lens' DevicePool (Maybe Text)
+devDescription = lens _devDescription (\ s a -> s{_devDescription = a})
 
 instance FromJSON DevicePool where
         parseJSON
@@ -857,6 +966,7 @@ instance FromJSON DevicePool where
                  DevicePool' <$>
                    (x .:? "arn") <*> (x .:? "rules" .!= mempty) <*>
                      (x .:? "name")
+                     <*> (x .:? "maxDevices")
                      <*> (x .:? "type")
                      <*> (x .:? "description"))
 
@@ -869,18 +979,20 @@ instance NFData DevicePool where
 --
 --
 -- /See:/ 'devicePoolCompatibilityResult' smart constructor.
-data DevicePoolCompatibilityResult = DevicePoolCompatibilityResult'
-  { _dpcrDevice                  :: !(Maybe Device)
-  , _dpcrCompatible              :: !(Maybe Bool)
-  , _dpcrIncompatibilityMessages :: !(Maybe [IncompatibilityMessage])
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DevicePoolCompatibilityResult =
+  DevicePoolCompatibilityResult'
+    { _dpcrDevice                  :: !(Maybe Device)
+    , _dpcrCompatible              :: !(Maybe Bool)
+    , _dpcrIncompatibilityMessages :: !(Maybe [IncompatibilityMessage])
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DevicePoolCompatibilityResult' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dpcrDevice' - The device (phone or tablet) that you wish to return information about.
+-- * 'dpcrDevice' - The device (phone or tablet) to return information about.
 --
 -- * 'dpcrCompatible' - Whether the result was compatible with the device pool.
 --
@@ -895,7 +1007,7 @@ devicePoolCompatibilityResult =
     }
 
 
--- | The device (phone or tablet) that you wish to return information about.
+-- | The device (phone or tablet) to return information about.
 dpcrDevice :: Lens' DevicePoolCompatibilityResult (Maybe Device)
 dpcrDevice = lens _dpcrDevice (\ s a -> s{_dpcrDevice = a})
 
@@ -919,30 +1031,140 @@ instance Hashable DevicePoolCompatibilityResult where
 
 instance NFData DevicePoolCompatibilityResult where
 
+-- | Represents the device filters used in a test run and the maximum number of devices to be included in the run. It is passed in as the @deviceSelectionConfiguration@ request parameter in 'ScheduleRun' .
+--
+--
+--
+-- /See:/ 'deviceSelectionConfiguration' smart constructor.
+data DeviceSelectionConfiguration =
+  DeviceSelectionConfiguration'
+    { _dscFilters    :: ![DeviceFilter]
+    , _dscMaxDevices :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'DeviceSelectionConfiguration' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'dscFilters' - Used to dynamically select a set of devices for a test run. A filter is made up of an attribute, an operator, and one or more values.     * __Attribute__  The aspect of a device such as platform or model used as the selection criteria in a device filter. Allowed values include:     * ARN: The Amazon Resource Name (ARN) of the device (for example, @arn:aws:devicefarm:us-west-2::device:12345Example@ ).     * PLATFORM: The device platform. Valid values are ANDROID or IOS.     * OS_VERSION: The operating system version (for example, 10.3.2).     * MODEL: The device model (for example, iPad 5th Gen).     * AVAILABILITY: The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY, or TEMPORARY_NOT_AVAILABLE.     * FORM_FACTOR: The device form factor. Valid values are PHONE or TABLET.     * MANUFACTURER: The device manufacturer (for example, Apple).     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are TRUE or FALSE.     * REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE. Because remote debugging is <https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html no longer supported> , this filter is ignored.     * INSTANCE_ARN: The Amazon Resource Name (ARN) of the device instance.     * INSTANCE_LABELS: The label of the device instance.     * FLEET_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.     * __Operator__  The filter operator.     * The EQUALS operator is available for every attribute except INSTANCE_LABELS.     * The CONTAINS operator is available for the INSTANCE_LABELS and MODEL attributes.     * The IN and NOT_IN operators are available for the ARN, OS_VERSION, MODEL, MANUFACTURER, and INSTANCE_ARN attributes.     * The LESS_THAN, GREATER_THAN, LESS_THAN_OR_EQUALS, and GREATER_THAN_OR_EQUALS operators are also available for the OS_VERSION attribute.     * __Values__  An array of one or more filter values. __Operator Values__      * The IN and NOT_IN operators can take a values array that has more than one element.     * The other operators require an array with a single element. __Attribute Values__      * The PLATFORM attribute can be set to ANDROID or IOS.     * The AVAILABILITY attribute can be set to AVAILABLE, HIGHLY_AVAILABLE, BUSY, or TEMPORARY_NOT_AVAILABLE.     * The FORM_FACTOR attribute can be set to PHONE or TABLET.     * The FLEET_TYPE attribute can be set to PUBLIC or PRIVATE.
+--
+-- * 'dscMaxDevices' - The maximum number of devices to be included in a test run.
+deviceSelectionConfiguration
+    :: Int -- ^ 'dscMaxDevices'
+    -> DeviceSelectionConfiguration
+deviceSelectionConfiguration pMaxDevices_ =
+  DeviceSelectionConfiguration'
+    {_dscFilters = mempty, _dscMaxDevices = pMaxDevices_}
+
+
+-- | Used to dynamically select a set of devices for a test run. A filter is made up of an attribute, an operator, and one or more values.     * __Attribute__  The aspect of a device such as platform or model used as the selection criteria in a device filter. Allowed values include:     * ARN: The Amazon Resource Name (ARN) of the device (for example, @arn:aws:devicefarm:us-west-2::device:12345Example@ ).     * PLATFORM: The device platform. Valid values are ANDROID or IOS.     * OS_VERSION: The operating system version (for example, 10.3.2).     * MODEL: The device model (for example, iPad 5th Gen).     * AVAILABILITY: The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY, or TEMPORARY_NOT_AVAILABLE.     * FORM_FACTOR: The device form factor. Valid values are PHONE or TABLET.     * MANUFACTURER: The device manufacturer (for example, Apple).     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are TRUE or FALSE.     * REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE. Because remote debugging is <https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html no longer supported> , this filter is ignored.     * INSTANCE_ARN: The Amazon Resource Name (ARN) of the device instance.     * INSTANCE_LABELS: The label of the device instance.     * FLEET_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.     * __Operator__  The filter operator.     * The EQUALS operator is available for every attribute except INSTANCE_LABELS.     * The CONTAINS operator is available for the INSTANCE_LABELS and MODEL attributes.     * The IN and NOT_IN operators are available for the ARN, OS_VERSION, MODEL, MANUFACTURER, and INSTANCE_ARN attributes.     * The LESS_THAN, GREATER_THAN, LESS_THAN_OR_EQUALS, and GREATER_THAN_OR_EQUALS operators are also available for the OS_VERSION attribute.     * __Values__  An array of one or more filter values. __Operator Values__      * The IN and NOT_IN operators can take a values array that has more than one element.     * The other operators require an array with a single element. __Attribute Values__      * The PLATFORM attribute can be set to ANDROID or IOS.     * The AVAILABILITY attribute can be set to AVAILABLE, HIGHLY_AVAILABLE, BUSY, or TEMPORARY_NOT_AVAILABLE.     * The FORM_FACTOR attribute can be set to PHONE or TABLET.     * The FLEET_TYPE attribute can be set to PUBLIC or PRIVATE.
+dscFilters :: Lens' DeviceSelectionConfiguration [DeviceFilter]
+dscFilters = lens _dscFilters (\ s a -> s{_dscFilters = a}) . _Coerce
+
+-- | The maximum number of devices to be included in a test run.
+dscMaxDevices :: Lens' DeviceSelectionConfiguration Int
+dscMaxDevices = lens _dscMaxDevices (\ s a -> s{_dscMaxDevices = a})
+
+instance Hashable DeviceSelectionConfiguration where
+
+instance NFData DeviceSelectionConfiguration where
+
+instance ToJSON DeviceSelectionConfiguration where
+        toJSON DeviceSelectionConfiguration'{..}
+          = object
+              (catMaybes
+                 [Just ("filters" .= _dscFilters),
+                  Just ("maxDevices" .= _dscMaxDevices)])
+
+-- | Contains the run results requested by the device selection configuration and how many devices were returned. For an example of the JSON response syntax, see 'ScheduleRun' .
+--
+--
+--
+-- /See:/ 'deviceSelectionResult' smart constructor.
+data DeviceSelectionResult =
+  DeviceSelectionResult'
+    { _dsrMatchedDevicesCount :: !(Maybe Int)
+    , _dsrFilters             :: !(Maybe [DeviceFilter])
+    , _dsrMaxDevices          :: !(Maybe Int)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'DeviceSelectionResult' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'dsrMatchedDevicesCount' - The number of devices that matched the device filter selection criteria.
+--
+-- * 'dsrFilters' - The filters in a device selection result.
+--
+-- * 'dsrMaxDevices' - The maximum number of devices to be selected by a device filter and included in a test run.
+deviceSelectionResult
+    :: DeviceSelectionResult
+deviceSelectionResult =
+  DeviceSelectionResult'
+    { _dsrMatchedDevicesCount = Nothing
+    , _dsrFilters = Nothing
+    , _dsrMaxDevices = Nothing
+    }
+
+
+-- | The number of devices that matched the device filter selection criteria.
+dsrMatchedDevicesCount :: Lens' DeviceSelectionResult (Maybe Int)
+dsrMatchedDevicesCount = lens _dsrMatchedDevicesCount (\ s a -> s{_dsrMatchedDevicesCount = a})
+
+-- | The filters in a device selection result.
+dsrFilters :: Lens' DeviceSelectionResult [DeviceFilter]
+dsrFilters = lens _dsrFilters (\ s a -> s{_dsrFilters = a}) . _Default . _Coerce
+
+-- | The maximum number of devices to be selected by a device filter and included in a test run.
+dsrMaxDevices :: Lens' DeviceSelectionResult (Maybe Int)
+dsrMaxDevices = lens _dsrMaxDevices (\ s a -> s{_dsrMaxDevices = a})
+
+instance FromJSON DeviceSelectionResult where
+        parseJSON
+          = withObject "DeviceSelectionResult"
+              (\ x ->
+                 DeviceSelectionResult' <$>
+                   (x .:? "matchedDevicesCount") <*>
+                     (x .:? "filters" .!= mempty)
+                     <*> (x .:? "maxDevices"))
+
+instance Hashable DeviceSelectionResult where
+
+instance NFData DeviceSelectionResult where
+
 -- | Represents configuration information about a test run, such as the execution timeout (in minutes).
 --
 --
 --
 -- /See:/ 'executionConfiguration' smart constructor.
-data ExecutionConfiguration = ExecutionConfiguration'
-  { _ecSkipAppResign      :: !(Maybe Bool)
-  , _ecAccountsCleanup    :: !(Maybe Bool)
-  , _ecAppPackagesCleanup :: !(Maybe Bool)
-  , _ecJobTimeoutMinutes  :: !(Maybe Int)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ExecutionConfiguration =
+  ExecutionConfiguration'
+    { _ecSkipAppResign      :: !(Maybe Bool)
+    , _ecAccountsCleanup    :: !(Maybe Bool)
+    , _ecAppPackagesCleanup :: !(Maybe Bool)
+    , _ecJobTimeoutMinutes  :: !(Maybe Int)
+    , _ecVideoCapture       :: !(Maybe Bool)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ExecutionConfiguration' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ecSkipAppResign' - When set to @true@ , for private devices, Device Farm will not sign your app again. For public devices, Device Farm always signs your apps again and this parameter has no effect. For more information about how Device Farm re-signs your app(s), see <https://aws.amazon.com/device-farm/faq/ Do you modify my app?> in the /AWS Device Farm FAQs/ .
+-- * 'ecSkipAppResign' - When set to @true@ , for private devices, Device Farm does not sign your app again. For public devices, Device Farm always signs your apps again. For more information about how Device Farm re-signs your apps, see <https://aws.amazon.com/device-farm/faq/ Do you modify my app?> in the /AWS Device Farm FAQs/ .
 --
--- * 'ecAccountsCleanup' - True if account cleanup is enabled at the beginning of the test; otherwise, false.
+-- * 'ecAccountsCleanup' - True if account cleanup is enabled at the beginning of the test. Otherwise, false.
 --
--- * 'ecAppPackagesCleanup' - True if app package cleanup is enabled at the beginning of the test; otherwise, false.
+-- * 'ecAppPackagesCleanup' - True if app package cleanup is enabled at the beginning of the test. Otherwise, false.
 --
--- * 'ecJobTimeoutMinutes' - The number of minutes a test run will execute before it times out.
+-- * 'ecJobTimeoutMinutes' - The number of minutes a test run executes before it times out.
+--
+-- * 'ecVideoCapture' - Set to true to enable video capture. Otherwise, set to false. The default is true.
 executionConfiguration
     :: ExecutionConfiguration
 executionConfiguration =
@@ -951,24 +1173,29 @@ executionConfiguration =
     , _ecAccountsCleanup = Nothing
     , _ecAppPackagesCleanup = Nothing
     , _ecJobTimeoutMinutes = Nothing
+    , _ecVideoCapture = Nothing
     }
 
 
--- | When set to @true@ , for private devices, Device Farm will not sign your app again. For public devices, Device Farm always signs your apps again and this parameter has no effect. For more information about how Device Farm re-signs your app(s), see <https://aws.amazon.com/device-farm/faq/ Do you modify my app?> in the /AWS Device Farm FAQs/ .
+-- | When set to @true@ , for private devices, Device Farm does not sign your app again. For public devices, Device Farm always signs your apps again. For more information about how Device Farm re-signs your apps, see <https://aws.amazon.com/device-farm/faq/ Do you modify my app?> in the /AWS Device Farm FAQs/ .
 ecSkipAppResign :: Lens' ExecutionConfiguration (Maybe Bool)
 ecSkipAppResign = lens _ecSkipAppResign (\ s a -> s{_ecSkipAppResign = a})
 
--- | True if account cleanup is enabled at the beginning of the test; otherwise, false.
+-- | True if account cleanup is enabled at the beginning of the test. Otherwise, false.
 ecAccountsCleanup :: Lens' ExecutionConfiguration (Maybe Bool)
 ecAccountsCleanup = lens _ecAccountsCleanup (\ s a -> s{_ecAccountsCleanup = a})
 
--- | True if app package cleanup is enabled at the beginning of the test; otherwise, false.
+-- | True if app package cleanup is enabled at the beginning of the test. Otherwise, false.
 ecAppPackagesCleanup :: Lens' ExecutionConfiguration (Maybe Bool)
 ecAppPackagesCleanup = lens _ecAppPackagesCleanup (\ s a -> s{_ecAppPackagesCleanup = a})
 
--- | The number of minutes a test run will execute before it times out.
+-- | The number of minutes a test run executes before it times out.
 ecJobTimeoutMinutes :: Lens' ExecutionConfiguration (Maybe Int)
 ecJobTimeoutMinutes = lens _ecJobTimeoutMinutes (\ s a -> s{_ecJobTimeoutMinutes = a})
+
+-- | Set to true to enable video capture. Otherwise, set to false. The default is true.
+ecVideoCapture :: Lens' ExecutionConfiguration (Maybe Bool)
+ecVideoCapture = lens _ecVideoCapture (\ s a -> s{_ecVideoCapture = a})
 
 instance Hashable ExecutionConfiguration where
 
@@ -981,24 +1208,27 @@ instance ToJSON ExecutionConfiguration where
                  [("skipAppResign" .=) <$> _ecSkipAppResign,
                   ("accountsCleanup" .=) <$> _ecAccountsCleanup,
                   ("appPackagesCleanup" .=) <$> _ecAppPackagesCleanup,
-                  ("jobTimeoutMinutes" .=) <$> _ecJobTimeoutMinutes])
+                  ("jobTimeoutMinutes" .=) <$> _ecJobTimeoutMinutes,
+                  ("videoCapture" .=) <$> _ecVideoCapture])
 
 -- | Represents information about incompatibility.
 --
 --
 --
 -- /See:/ 'incompatibilityMessage' smart constructor.
-data IncompatibilityMessage = IncompatibilityMessage'
-  { _imType    :: !(Maybe DeviceAttribute)
-  , _imMessage :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data IncompatibilityMessage =
+  IncompatibilityMessage'
+    { _imType    :: !(Maybe DeviceAttribute)
+    , _imMessage :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'IncompatibilityMessage' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'imType' - The type of incompatibility. Allowed values include:     * ARN: The ARN.     * FORM_FACTOR: The form factor (for example, phone or tablet).     * MANUFACTURER: The manufacturer.     * PLATFORM: The platform (for example, Android or iOS).     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access.     * APPIUM_VERSION: The Appium version for the test.
+-- * 'imType' - The type of incompatibility. Allowed values include:     * ARN     * FORM_FACTOR (for example, phone or tablet)     * MANUFACTURER     * PLATFORM (for example, Android or iOS)     * REMOTE_ACCESS_ENABLED     * APPIUM_VERSION
 --
 -- * 'imMessage' - A message about the incompatibility.
 incompatibilityMessage
@@ -1007,7 +1237,7 @@ incompatibilityMessage =
   IncompatibilityMessage' {_imType = Nothing, _imMessage = Nothing}
 
 
--- | The type of incompatibility. Allowed values include:     * ARN: The ARN.     * FORM_FACTOR: The form factor (for example, phone or tablet).     * MANUFACTURER: The manufacturer.     * PLATFORM: The platform (for example, Android or iOS).     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access.     * APPIUM_VERSION: The Appium version for the test.
+-- | The type of incompatibility. Allowed values include:     * ARN     * FORM_FACTOR (for example, phone or tablet)     * MANUFACTURER     * PLATFORM (for example, Android or iOS)     * REMOTE_ACCESS_ENABLED     * APPIUM_VERSION
 imType :: Lens' IncompatibilityMessage (Maybe DeviceAttribute)
 imType = lens _imType (\ s a -> s{_imType = a})
 
@@ -1031,14 +1261,16 @@ instance NFData IncompatibilityMessage where
 --
 --
 -- /See:/ 'instanceProfile' smart constructor.
-data InstanceProfile = InstanceProfile'
-  { _ipArn                           :: !(Maybe Text)
-  , _ipRebootAfterUse                :: !(Maybe Bool)
-  , _ipName                          :: !(Maybe Text)
-  , _ipPackageCleanup                :: !(Maybe Bool)
-  , _ipExcludeAppPackagesFromCleanup :: !(Maybe [Text])
-  , _ipDescription                   :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data InstanceProfile =
+  InstanceProfile'
+    { _ipArn                           :: !(Maybe Text)
+    , _ipRebootAfterUse                :: !(Maybe Bool)
+    , _ipName                          :: !(Maybe Text)
+    , _ipPackageCleanup                :: !(Maybe Bool)
+    , _ipExcludeAppPackagesFromCleanup :: !(Maybe [Text])
+    , _ipDescription                   :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'InstanceProfile' with the minimum fields required to make a request.
@@ -1047,13 +1279,13 @@ data InstanceProfile = InstanceProfile'
 --
 -- * 'ipArn' - The Amazon Resource Name (ARN) of the instance profile.
 --
--- * 'ipRebootAfterUse' - When set to @true@ , Device Farm will reboot the instance after a test run. The default value is @true@ .
+-- * 'ipRebootAfterUse' - When set to @true@ , Device Farm reboots the instance after a test run. The default value is @true@ .
 --
 -- * 'ipName' - The name of the instance profile.
 --
--- * 'ipPackageCleanup' - When set to @true@ , Device Farm will remove app packages after a test run. The default value is @false@ for private devices.
+-- * 'ipPackageCleanup' - When set to @true@ , Device Farm removes app packages after a test run. The default value is @false@ for private devices.
 --
--- * 'ipExcludeAppPackagesFromCleanup' - An array of strings specifying the list of app packages that should not be cleaned up from the device after a test run is over. The list of packages is only considered if you set @packageCleanup@ to @true@ .
+-- * 'ipExcludeAppPackagesFromCleanup' - An array of strings containing the list of app packages that should not be cleaned up from the device after a test run completes. The list of packages is considered only if you set @packageCleanup@ to @true@ .
 --
 -- * 'ipDescription' - The description of the instance profile.
 instanceProfile
@@ -1073,7 +1305,7 @@ instanceProfile =
 ipArn :: Lens' InstanceProfile (Maybe Text)
 ipArn = lens _ipArn (\ s a -> s{_ipArn = a})
 
--- | When set to @true@ , Device Farm will reboot the instance after a test run. The default value is @true@ .
+-- | When set to @true@ , Device Farm reboots the instance after a test run. The default value is @true@ .
 ipRebootAfterUse :: Lens' InstanceProfile (Maybe Bool)
 ipRebootAfterUse = lens _ipRebootAfterUse (\ s a -> s{_ipRebootAfterUse = a})
 
@@ -1081,11 +1313,11 @@ ipRebootAfterUse = lens _ipRebootAfterUse (\ s a -> s{_ipRebootAfterUse = a})
 ipName :: Lens' InstanceProfile (Maybe Text)
 ipName = lens _ipName (\ s a -> s{_ipName = a})
 
--- | When set to @true@ , Device Farm will remove app packages after a test run. The default value is @false@ for private devices.
+-- | When set to @true@ , Device Farm removes app packages after a test run. The default value is @false@ for private devices.
 ipPackageCleanup :: Lens' InstanceProfile (Maybe Bool)
 ipPackageCleanup = lens _ipPackageCleanup (\ s a -> s{_ipPackageCleanup = a})
 
--- | An array of strings specifying the list of app packages that should not be cleaned up from the device after a test run is over. The list of packages is only considered if you set @packageCleanup@ to @true@ .
+-- | An array of strings containing the list of app packages that should not be cleaned up from the device after a test run completes. The list of packages is considered only if you set @packageCleanup@ to @true@ .
 ipExcludeAppPackagesFromCleanup :: Lens' InstanceProfile [Text]
 ipExcludeAppPackagesFromCleanup = lens _ipExcludeAppPackagesFromCleanup (\ s a -> s{_ipExcludeAppPackagesFromCleanup = a}) . _Default . _Coerce
 
@@ -1114,30 +1346,34 @@ instance NFData InstanceProfile where
 --
 --
 -- /See:/ 'job' smart constructor.
-data Job = Job'
-  { _jobInstanceARN   :: !(Maybe Text)
-  , _jobStatus        :: !(Maybe ExecutionStatus)
-  , _jobCounters      :: !(Maybe Counters)
-  , _jobArn           :: !(Maybe Text)
-  , _jobCreated       :: !(Maybe POSIX)
-  , _jobDevice        :: !(Maybe Device)
-  , _jobStopped       :: !(Maybe POSIX)
-  , _jobResult        :: !(Maybe ExecutionResult)
-  , _jobName          :: !(Maybe Text)
-  , _jobDeviceMinutes :: !(Maybe DeviceMinutes)
-  , _jobType          :: !(Maybe TestType)
-  , _jobMessage       :: !(Maybe Text)
-  , _jobStarted       :: !(Maybe POSIX)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Job =
+  Job'
+    { _jobInstanceARN   :: !(Maybe Text)
+    , _jobStatus        :: !(Maybe ExecutionStatus)
+    , _jobCounters      :: !(Maybe Counters)
+    , _jobArn           :: !(Maybe Text)
+    , _jobCreated       :: !(Maybe POSIX)
+    , _jobDevice        :: !(Maybe Device)
+    , _jobStopped       :: !(Maybe POSIX)
+    , _jobResult        :: !(Maybe ExecutionResult)
+    , _jobName          :: !(Maybe Text)
+    , _jobVideoEndpoint :: !(Maybe Text)
+    , _jobDeviceMinutes :: !(Maybe DeviceMinutes)
+    , _jobVideoCapture  :: !(Maybe Bool)
+    , _jobType          :: !(Maybe TestType)
+    , _jobMessage       :: !(Maybe Text)
+    , _jobStarted       :: !(Maybe POSIX)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Job' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'jobInstanceARN' - The Amazon Resource Name (ARN) of the instance.
+-- * 'jobInstanceARN' - The ARN of the instance.
 --
--- * 'jobStatus' - The job's status. Allowed values include:     * PENDING: A pending status.     * PENDING_CONCURRENCY: A pending concurrency status.     * PENDING_DEVICE: A pending device status.     * PROCESSING: A processing status.     * SCHEDULING: A scheduling status.     * PREPARING: A preparing status.     * RUNNING: A running status.     * COMPLETED: A completed status.     * STOPPING: A stopping status.
+-- * 'jobStatus' - The job's status. Allowed values include:     * PENDING     * PENDING_CONCURRENCY     * PENDING_DEVICE     * PROCESSING     * SCHEDULING     * PREPARING     * RUNNING     * COMPLETED     * STOPPING
 --
 -- * 'jobCounters' - The job's result counters.
 --
@@ -1149,13 +1385,17 @@ data Job = Job'
 --
 -- * 'jobStopped' - The job's stop time.
 --
--- * 'jobResult' - The job's result. Allowed values include:     * PENDING: A pending condition.     * PASSED: A passing condition.     * WARNED: A warning condition.     * FAILED: A failed condition.     * SKIPPED: A skipped condition.     * ERRORED: An error condition.     * STOPPED: A stopped condition.
+-- * 'jobResult' - The job's result. Allowed values include:     * PENDING     * PASSED     * WARNED     * FAILED     * SKIPPED     * ERRORED     * STOPPED
 --
 -- * 'jobName' - The job's name.
 --
+-- * 'jobVideoEndpoint' - The endpoint for streaming device video.
+--
 -- * 'jobDeviceMinutes' - Represents the total (metered or unmetered) minutes used by the job.
 --
--- * 'jobType' - The job's type. Allowed values include the following:     * BUILTIN_FUZZ: The built-in fuzz type.     * BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and capturing screenshots at the same time.     * APPIUM_JAVA_JUNIT: The Appium Java JUnit type.     * APPIUM_JAVA_TESTNG: The Appium Java TestNG type.     * APPIUM_PYTHON: The Appium Python type.     * APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.     * APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.     * APPIUM_WEB_PYTHON: The Appium Python type for Web apps.     * CALABASH: The Calabash type.     * INSTRUMENTATION: The Instrumentation type.     * UIAUTOMATION: The uiautomation type.     * UIAUTOMATOR: The uiautomator type.     * XCTEST: The XCode test type.     * XCTEST_UI: The XCode UI test type.
+-- * 'jobVideoCapture' - This value is set to true if video capture is enabled. Otherwise, it is set to false.
+--
+-- * 'jobType' - The job's type. Allowed values include the following:     * BUILTIN_FUZZ     * BUILTIN_EXPLORER. For Android, an app explorer that traverses an Android app, interacting with it and capturing screenshots at the same time.     * APPIUM_JAVA_JUNIT     * APPIUM_JAVA_TESTNG     * APPIUM_PYTHON     * APPIUM_NODE     * APPIUM_RUBY     * APPIUM_WEB_JAVA_JUNIT     * APPIUM_WEB_JAVA_TESTNG     * APPIUM_WEB_PYTHON     * APPIUM_WEB_NODE     * APPIUM_WEB_RUBY     * CALABASH     * INSTRUMENTATION     * UIAUTOMATION     * UIAUTOMATOR     * XCTEST     * XCTEST_UI
 --
 -- * 'jobMessage' - A message about the job's result.
 --
@@ -1173,18 +1413,20 @@ job =
     , _jobStopped = Nothing
     , _jobResult = Nothing
     , _jobName = Nothing
+    , _jobVideoEndpoint = Nothing
     , _jobDeviceMinutes = Nothing
+    , _jobVideoCapture = Nothing
     , _jobType = Nothing
     , _jobMessage = Nothing
     , _jobStarted = Nothing
     }
 
 
--- | The Amazon Resource Name (ARN) of the instance.
+-- | The ARN of the instance.
 jobInstanceARN :: Lens' Job (Maybe Text)
 jobInstanceARN = lens _jobInstanceARN (\ s a -> s{_jobInstanceARN = a})
 
--- | The job's status. Allowed values include:     * PENDING: A pending status.     * PENDING_CONCURRENCY: A pending concurrency status.     * PENDING_DEVICE: A pending device status.     * PROCESSING: A processing status.     * SCHEDULING: A scheduling status.     * PREPARING: A preparing status.     * RUNNING: A running status.     * COMPLETED: A completed status.     * STOPPING: A stopping status.
+-- | The job's status. Allowed values include:     * PENDING     * PENDING_CONCURRENCY     * PENDING_DEVICE     * PROCESSING     * SCHEDULING     * PREPARING     * RUNNING     * COMPLETED     * STOPPING
 jobStatus :: Lens' Job (Maybe ExecutionStatus)
 jobStatus = lens _jobStatus (\ s a -> s{_jobStatus = a})
 
@@ -1208,7 +1450,7 @@ jobDevice = lens _jobDevice (\ s a -> s{_jobDevice = a})
 jobStopped :: Lens' Job (Maybe UTCTime)
 jobStopped = lens _jobStopped (\ s a -> s{_jobStopped = a}) . mapping _Time
 
--- | The job's result. Allowed values include:     * PENDING: A pending condition.     * PASSED: A passing condition.     * WARNED: A warning condition.     * FAILED: A failed condition.     * SKIPPED: A skipped condition.     * ERRORED: An error condition.     * STOPPED: A stopped condition.
+-- | The job's result. Allowed values include:     * PENDING     * PASSED     * WARNED     * FAILED     * SKIPPED     * ERRORED     * STOPPED
 jobResult :: Lens' Job (Maybe ExecutionResult)
 jobResult = lens _jobResult (\ s a -> s{_jobResult = a})
 
@@ -1216,11 +1458,19 @@ jobResult = lens _jobResult (\ s a -> s{_jobResult = a})
 jobName :: Lens' Job (Maybe Text)
 jobName = lens _jobName (\ s a -> s{_jobName = a})
 
+-- | The endpoint for streaming device video.
+jobVideoEndpoint :: Lens' Job (Maybe Text)
+jobVideoEndpoint = lens _jobVideoEndpoint (\ s a -> s{_jobVideoEndpoint = a})
+
 -- | Represents the total (metered or unmetered) minutes used by the job.
 jobDeviceMinutes :: Lens' Job (Maybe DeviceMinutes)
 jobDeviceMinutes = lens _jobDeviceMinutes (\ s a -> s{_jobDeviceMinutes = a})
 
--- | The job's type. Allowed values include the following:     * BUILTIN_FUZZ: The built-in fuzz type.     * BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and capturing screenshots at the same time.     * APPIUM_JAVA_JUNIT: The Appium Java JUnit type.     * APPIUM_JAVA_TESTNG: The Appium Java TestNG type.     * APPIUM_PYTHON: The Appium Python type.     * APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.     * APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.     * APPIUM_WEB_PYTHON: The Appium Python type for Web apps.     * CALABASH: The Calabash type.     * INSTRUMENTATION: The Instrumentation type.     * UIAUTOMATION: The uiautomation type.     * UIAUTOMATOR: The uiautomator type.     * XCTEST: The XCode test type.     * XCTEST_UI: The XCode UI test type.
+-- | This value is set to true if video capture is enabled. Otherwise, it is set to false.
+jobVideoCapture :: Lens' Job (Maybe Bool)
+jobVideoCapture = lens _jobVideoCapture (\ s a -> s{_jobVideoCapture = a})
+
+-- | The job's type. Allowed values include the following:     * BUILTIN_FUZZ     * BUILTIN_EXPLORER. For Android, an app explorer that traverses an Android app, interacting with it and capturing screenshots at the same time.     * APPIUM_JAVA_JUNIT     * APPIUM_JAVA_TESTNG     * APPIUM_PYTHON     * APPIUM_NODE     * APPIUM_RUBY     * APPIUM_WEB_JAVA_JUNIT     * APPIUM_WEB_JAVA_TESTNG     * APPIUM_WEB_PYTHON     * APPIUM_WEB_NODE     * APPIUM_WEB_RUBY     * CALABASH     * INSTRUMENTATION     * UIAUTOMATION     * UIAUTOMATOR     * XCTEST     * XCTEST_UI
 jobType :: Lens' Job (Maybe TestType)
 jobType = lens _jobType (\ s a -> s{_jobType = a})
 
@@ -1245,7 +1495,9 @@ instance FromJSON Job where
                      <*> (x .:? "stopped")
                      <*> (x .:? "result")
                      <*> (x .:? "name")
+                     <*> (x .:? "videoEndpoint")
                      <*> (x .:? "deviceMinutes")
+                     <*> (x .:? "videoCapture")
                      <*> (x .:? "type")
                      <*> (x .:? "message")
                      <*> (x .:? "started"))
@@ -1254,17 +1506,19 @@ instance Hashable Job where
 
 instance NFData Job where
 
--- | Represents a latitude and longitude pair, expressed in geographic coordinate system degrees (for example 47.6204, -122.3491).
+-- | Represents a latitude and longitude pair, expressed in geographic coordinate system degrees (for example, 47.6204, -122.3491).
 --
 --
 -- Elevation is currently not supported.
 --
 --
 -- /See:/ 'location' smart constructor.
-data Location = Location'
-  { _lLatitude  :: !Double
-  , _lLongitude :: !Double
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Location =
+  Location'
+    { _lLatitude  :: !Double
+    , _lLongitude :: !Double
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Location' with the minimum fields required to make a request.
@@ -1308,15 +1562,17 @@ instance ToJSON Location where
                  [Just ("latitude" .= _lLatitude),
                   Just ("longitude" .= _lLongitude)])
 
--- | A number representing the monetary amount for an offering or transaction.
+-- | A number that represents the monetary amount for an offering or transaction.
 --
 --
 --
 -- /See:/ 'monetaryAmount' smart constructor.
-data MonetaryAmount = MonetaryAmount'
-  { _maAmount       :: !(Maybe Double)
-  , _maCurrencyCode :: !(Maybe CurrencyCode)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data MonetaryAmount =
+  MonetaryAmount'
+    { _maAmount       :: !(Maybe Double)
+    , _maCurrencyCode :: !(Maybe CurrencyCode)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'MonetaryAmount' with the minimum fields required to make a request.
@@ -1325,7 +1581,7 @@ data MonetaryAmount = MonetaryAmount'
 --
 -- * 'maAmount' - The numerical amount of an offering or transaction.
 --
--- * 'maCurrencyCode' - The currency code of a monetary amount. For example, @USD@ means "U.S. dollars."
+-- * 'maCurrencyCode' - The currency code of a monetary amount. For example, @USD@ means U.S. dollars.
 monetaryAmount
     :: MonetaryAmount
 monetaryAmount =
@@ -1336,7 +1592,7 @@ monetaryAmount =
 maAmount :: Lens' MonetaryAmount (Maybe Double)
 maAmount = lens _maAmount (\ s a -> s{_maAmount = a})
 
--- | The currency code of a monetary amount. For example, @USD@ means "U.S. dollars."
+-- | The currency code of a monetary amount. For example, @USD@ means U.S. dollars.
 maCurrencyCode :: Lens' MonetaryAmount (Maybe CurrencyCode)
 maCurrencyCode = lens _maCurrencyCode (\ s a -> s{_maCurrencyCode = a})
 
@@ -1356,20 +1612,22 @@ instance NFData MonetaryAmount where
 --
 --
 -- /See:/ 'networkProfile' smart constructor.
-data NetworkProfile = NetworkProfile'
-  { _npUplinkJitterMs        :: !(Maybe Integer)
-  , _npArn                   :: !(Maybe Text)
-  , _npUplinkLossPercent     :: !(Maybe Nat)
-  , _npDownlinkJitterMs      :: !(Maybe Integer)
-  , _npName                  :: !(Maybe Text)
-  , _npDownlinkLossPercent   :: !(Maybe Nat)
-  , _npType                  :: !(Maybe NetworkProfileType)
-  , _npUplinkDelayMs         :: !(Maybe Integer)
-  , _npUplinkBandwidthBits   :: !(Maybe Integer)
-  , _npDescription           :: !(Maybe Text)
-  , _npDownlinkDelayMs       :: !(Maybe Integer)
-  , _npDownlinkBandwidthBits :: !(Maybe Integer)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data NetworkProfile =
+  NetworkProfile'
+    { _npUplinkJitterMs        :: !(Maybe Integer)
+    , _npArn                   :: !(Maybe Text)
+    , _npUplinkLossPercent     :: !(Maybe Nat)
+    , _npDownlinkJitterMs      :: !(Maybe Integer)
+    , _npName                  :: !(Maybe Text)
+    , _npDownlinkLossPercent   :: !(Maybe Nat)
+    , _npType                  :: !(Maybe NetworkProfileType)
+    , _npUplinkDelayMs         :: !(Maybe Integer)
+    , _npUplinkBandwidthBits   :: !(Maybe Integer)
+    , _npDescription           :: !(Maybe Text)
+    , _npDownlinkDelayMs       :: !(Maybe Integer)
+    , _npDownlinkBandwidthBits :: !(Maybe Integer)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'NetworkProfile' with the minimum fields required to make a request.
@@ -1388,7 +1646,7 @@ data NetworkProfile = NetworkProfile'
 --
 -- * 'npDownlinkLossPercent' - Proportion of received packets that fail to arrive from 0 to 100 percent.
 --
--- * 'npType' - The type of network profile. Valid values are listed below.
+-- * 'npType' - The type of network profile. Valid values are listed here.
 --
 -- * 'npUplinkDelayMs' - Delay time for all packets to destination in milliseconds as an integer from 0 to 2000.
 --
@@ -1442,7 +1700,7 @@ npName = lens _npName (\ s a -> s{_npName = a})
 npDownlinkLossPercent :: Lens' NetworkProfile (Maybe Natural)
 npDownlinkLossPercent = lens _npDownlinkLossPercent (\ s a -> s{_npDownlinkLossPercent = a}) . mapping _Nat
 
--- | The type of network profile. Valid values are listed below.
+-- | The type of network profile. Valid values are listed here.
 npType :: Lens' NetworkProfile (Maybe NetworkProfileType)
 npType = lens _npType (\ s a -> s{_npType = a})
 
@@ -1492,28 +1750,30 @@ instance NFData NetworkProfile where
 --
 --
 -- /See:/ 'offering' smart constructor.
-data Offering = Offering'
-  { _oPlatform         :: !(Maybe DevicePlatform)
-  , _oId               :: !(Maybe Text)
-  , _oRecurringCharges :: !(Maybe [RecurringCharge])
-  , _oType             :: !(Maybe OfferingType)
-  , _oDescription      :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Offering =
+  Offering'
+    { _oPlatform         :: !(Maybe DevicePlatform)
+    , _oId               :: !(Maybe Text)
+    , _oRecurringCharges :: !(Maybe [RecurringCharge])
+    , _oType             :: !(Maybe OfferingType)
+    , _oDescription      :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Offering' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'oPlatform' - The platform of the device (e.g., ANDROID or IOS).
+-- * 'oPlatform' - The platform of the device (for example, @ANDROID@ or @IOS@ ).
 --
 -- * 'oId' - The ID that corresponds to a device offering.
 --
 -- * 'oRecurringCharges' - Specifies whether there are recurring charges for the offering.
 --
--- * 'oType' - The type of offering (e.g., "RECURRING") for a device.
+-- * 'oType' - The type of offering (for example, @RECURRING@ ) for a device.
 --
--- * 'oDescription' - A string describing the offering.
+-- * 'oDescription' - A string that describes the offering.
 offering
     :: Offering
 offering =
@@ -1526,7 +1786,7 @@ offering =
     }
 
 
--- | The platform of the device (e.g., ANDROID or IOS).
+-- | The platform of the device (for example, @ANDROID@ or @IOS@ ).
 oPlatform :: Lens' Offering (Maybe DevicePlatform)
 oPlatform = lens _oPlatform (\ s a -> s{_oPlatform = a})
 
@@ -1538,11 +1798,11 @@ oId = lens _oId (\ s a -> s{_oId = a})
 oRecurringCharges :: Lens' Offering [RecurringCharge]
 oRecurringCharges = lens _oRecurringCharges (\ s a -> s{_oRecurringCharges = a}) . _Default . _Coerce
 
--- | The type of offering (e.g., "RECURRING") for a device.
+-- | The type of offering (for example, @RECURRING@ ) for a device.
 oType :: Lens' Offering (Maybe OfferingType)
 oType = lens _oType (\ s a -> s{_oType = a})
 
--- | A string describing the offering.
+-- | A string that describes the offering.
 oDescription :: Lens' Offering (Maybe Text)
 oDescription = lens _oDescription (\ s a -> s{_oDescription = a})
 
@@ -1565,10 +1825,12 @@ instance NFData Offering where
 --
 --
 -- /See:/ 'offeringPromotion' smart constructor.
-data OfferingPromotion = OfferingPromotion'
-  { _opId          :: !(Maybe Text)
-  , _opDescription :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data OfferingPromotion =
+  OfferingPromotion'
+    { _opId          :: !(Maybe Text)
+    , _opDescription :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'OfferingPromotion' with the minimum fields required to make a request.
@@ -1577,7 +1839,7 @@ data OfferingPromotion = OfferingPromotion'
 --
 -- * 'opId' - The ID of the offering promotion.
 --
--- * 'opDescription' - A string describing the offering promotion.
+-- * 'opDescription' - A string that describes the offering promotion.
 offeringPromotion
     :: OfferingPromotion
 offeringPromotion =
@@ -1588,7 +1850,7 @@ offeringPromotion =
 opId :: Lens' OfferingPromotion (Maybe Text)
 opId = lens _opId (\ s a -> s{_opId = a})
 
--- | A string describing the offering promotion.
+-- | A string that describes the offering promotion.
 opDescription :: Lens' OfferingPromotion (Maybe Text)
 opDescription = lens _opDescription (\ s a -> s{_opDescription = a})
 
@@ -1608,12 +1870,14 @@ instance NFData OfferingPromotion where
 --
 --
 -- /See:/ 'offeringStatus' smart constructor.
-data OfferingStatus = OfferingStatus'
-  { _osEffectiveOn :: !(Maybe POSIX)
-  , _osOffering    :: !(Maybe Offering)
-  , _osQuantity    :: !(Maybe Int)
-  , _osType        :: !(Maybe OfferingTransactionType)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data OfferingStatus =
+  OfferingStatus'
+    { _osEffectiveOn :: !(Maybe POSIX)
+    , _osOffering    :: !(Maybe Offering)
+    , _osQuantity    :: !(Maybe Int)
+    , _osType        :: !(Maybe OfferingTransactionType)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'OfferingStatus' with the minimum fields required to make a request.
@@ -1672,13 +1936,15 @@ instance NFData OfferingStatus where
 --
 --
 -- /See:/ 'offeringTransaction' smart constructor.
-data OfferingTransaction = OfferingTransaction'
-  { _otOfferingStatus      :: !(Maybe OfferingStatus)
-  , _otCost                :: !(Maybe MonetaryAmount)
-  , _otTransactionId       :: !(Maybe Text)
-  , _otOfferingPromotionId :: !(Maybe Text)
-  , _otCreatedOn           :: !(Maybe POSIX)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data OfferingTransaction =
+  OfferingTransaction'
+    { _otOfferingStatus      :: !(Maybe OfferingStatus)
+    , _otCost                :: !(Maybe MonetaryAmount)
+    , _otTransactionId       :: !(Maybe Text)
+    , _otOfferingPromotionId :: !(Maybe Text)
+    , _otCreatedOn           :: !(Maybe POSIX)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'OfferingTransaction' with the minimum fields required to make a request.
@@ -1745,15 +2011,17 @@ instance NFData OfferingTransaction where
 --
 --
 -- /See:/ 'problem' smart constructor.
-data Problem = Problem'
-  { _pDevice  :: !(Maybe Device)
-  , _pTest    :: !(Maybe ProblemDetail)
-  , _pResult  :: !(Maybe ExecutionResult)
-  , _pRun     :: !(Maybe ProblemDetail)
-  , _pJob     :: !(Maybe ProblemDetail)
-  , _pMessage :: !(Maybe Text)
-  , _pSuite   :: !(Maybe ProblemDetail)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Problem =
+  Problem'
+    { _pDevice  :: !(Maybe Device)
+    , _pTest    :: !(Maybe ProblemDetail)
+    , _pResult  :: !(Maybe ExecutionResult)
+    , _pRun     :: !(Maybe ProblemDetail)
+    , _pJob     :: !(Maybe ProblemDetail)
+    , _pMessage :: !(Maybe Text)
+    , _pSuite   :: !(Maybe ProblemDetail)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Problem' with the minimum fields required to make a request.
@@ -1764,7 +2032,7 @@ data Problem = Problem'
 --
 -- * 'pTest' - Information about the associated test.
 --
--- * 'pResult' - The problem's result. Allowed values include:     * PENDING: A pending condition.     * PASSED: A passing condition.     * WARNED: A warning condition.     * FAILED: A failed condition.     * SKIPPED: A skipped condition.     * ERRORED: An error condition.     * STOPPED: A stopped condition.
+-- * 'pResult' - The problem's result. Allowed values include:     * PENDING     * PASSED     * WARNED     * FAILED     * SKIPPED     * ERRORED     * STOPPED
 --
 -- * 'pRun' - Information about the associated run.
 --
@@ -1795,7 +2063,7 @@ pDevice = lens _pDevice (\ s a -> s{_pDevice = a})
 pTest :: Lens' Problem (Maybe ProblemDetail)
 pTest = lens _pTest (\ s a -> s{_pTest = a})
 
--- | The problem's result. Allowed values include:     * PENDING: A pending condition.     * PASSED: A passing condition.     * WARNED: A warning condition.     * FAILED: A failed condition.     * SKIPPED: A skipped condition.     * ERRORED: An error condition.     * STOPPED: A stopped condition.
+-- | The problem's result. Allowed values include:     * PENDING     * PASSED     * WARNED     * FAILED     * SKIPPED     * ERRORED     * STOPPED
 pResult :: Lens' Problem (Maybe ExecutionResult)
 pResult = lens _pResult (\ s a -> s{_pResult = a})
 
@@ -1836,10 +2104,12 @@ instance NFData Problem where
 --
 --
 -- /See:/ 'problemDetail' smart constructor.
-data ProblemDetail = ProblemDetail'
-  { _pdArn  :: !(Maybe Text)
-  , _pdName :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ProblemDetail =
+  ProblemDetail'
+    { _pdArn  :: !(Maybe Text)
+    , _pdName :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ProblemDetail' with the minimum fields required to make a request.
@@ -1877,12 +2147,14 @@ instance NFData ProblemDetail where
 --
 --
 -- /See:/ 'project' smart constructor.
-data Project = Project'
-  { _pArn                      :: !(Maybe Text)
-  , _pCreated                  :: !(Maybe POSIX)
-  , _pName                     :: !(Maybe Text)
-  , _pDefaultJobTimeoutMinutes :: !(Maybe Int)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Project =
+  Project'
+    { _pArn                      :: !(Maybe Text)
+    , _pCreated                  :: !(Maybe POSIX)
+    , _pName                     :: !(Maybe Text)
+    , _pDefaultJobTimeoutMinutes :: !(Maybe Int)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Project' with the minimum fields required to make a request.
@@ -1895,7 +2167,7 @@ data Project = Project'
 --
 -- * 'pName' - The project's name.
 --
--- * 'pDefaultJobTimeoutMinutes' - The default number of minutes (at the project level) a test run will execute before it times out. Default value is 60 minutes.
+-- * 'pDefaultJobTimeoutMinutes' - The default number of minutes (at the project level) a test run executes before it times out. The default value is 150 minutes.
 project
     :: Project
 project =
@@ -1919,7 +2191,7 @@ pCreated = lens _pCreated (\ s a -> s{_pCreated = a}) . mapping _Time
 pName :: Lens' Project (Maybe Text)
 pName = lens _pName (\ s a -> s{_pName = a})
 
--- | The default number of minutes (at the project level) a test run will execute before it times out. Default value is 60 minutes.
+-- | The default number of minutes (at the project level) a test run executes before it times out. The default value is 150 minutes.
 pDefaultJobTimeoutMinutes :: Lens' Project (Maybe Int)
 pDefaultJobTimeoutMinutes = lens _pDefaultJobTimeoutMinutes (\ s a -> s{_pDefaultJobTimeoutMinutes = a})
 
@@ -1941,25 +2213,27 @@ instance NFData Project where
 --
 --
 -- /See:/ 'radios' smart constructor.
-data Radios = Radios'
-  { _rNfc       :: !(Maybe Bool)
-  , _rGps       :: !(Maybe Bool)
-  , _rBluetooth :: !(Maybe Bool)
-  , _rWifi      :: !(Maybe Bool)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Radios =
+  Radios'
+    { _rNfc       :: !(Maybe Bool)
+    , _rGps       :: !(Maybe Bool)
+    , _rBluetooth :: !(Maybe Bool)
+    , _rWifi      :: !(Maybe Bool)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Radios' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rNfc' - True if NFC is enabled at the beginning of the test; otherwise, false.
+-- * 'rNfc' - True if NFC is enabled at the beginning of the test. Otherwise, false.
 --
--- * 'rGps' - True if GPS is enabled at the beginning of the test; otherwise, false.
+-- * 'rGps' - True if GPS is enabled at the beginning of the test. Otherwise, false.
 --
--- * 'rBluetooth' - True if Bluetooth is enabled at the beginning of the test; otherwise, false.
+-- * 'rBluetooth' - True if Bluetooth is enabled at the beginning of the test. Otherwise, false.
 --
--- * 'rWifi' - True if Wi-Fi is enabled at the beginning of the test; otherwise, false.
+-- * 'rWifi' - True if Wi-Fi is enabled at the beginning of the test. Otherwise, false.
 radios
     :: Radios
 radios =
@@ -1967,19 +2241,19 @@ radios =
     {_rNfc = Nothing, _rGps = Nothing, _rBluetooth = Nothing, _rWifi = Nothing}
 
 
--- | True if NFC is enabled at the beginning of the test; otherwise, false.
+-- | True if NFC is enabled at the beginning of the test. Otherwise, false.
 rNfc :: Lens' Radios (Maybe Bool)
 rNfc = lens _rNfc (\ s a -> s{_rNfc = a})
 
--- | True if GPS is enabled at the beginning of the test; otherwise, false.
+-- | True if GPS is enabled at the beginning of the test. Otherwise, false.
 rGps :: Lens' Radios (Maybe Bool)
 rGps = lens _rGps (\ s a -> s{_rGps = a})
 
--- | True if Bluetooth is enabled at the beginning of the test; otherwise, false.
+-- | True if Bluetooth is enabled at the beginning of the test. Otherwise, false.
 rBluetooth :: Lens' Radios (Maybe Bool)
 rBluetooth = lens _rBluetooth (\ s a -> s{_rBluetooth = a})
 
--- | True if Wi-Fi is enabled at the beginning of the test; otherwise, false.
+-- | True if Wi-Fi is enabled at the beginning of the test. Otherwise, false.
 rWifi :: Lens' Radios (Maybe Bool)
 rWifi = lens _rWifi (\ s a -> s{_rWifi = a})
 
@@ -2004,22 +2278,24 @@ instance ToJSON Radios where
                   ("bluetooth" .=) <$> _rBluetooth,
                   ("wifi" .=) <$> _rWifi])
 
--- | Specifies whether charges for devices will be recurring.
+-- | Specifies whether charges for devices are recurring.
 --
 --
 --
 -- /See:/ 'recurringCharge' smart constructor.
-data RecurringCharge = RecurringCharge'
-  { _rcFrequency :: !(Maybe RecurringChargeFrequency)
-  , _rcCost      :: !(Maybe MonetaryAmount)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data RecurringCharge =
+  RecurringCharge'
+    { _rcFrequency :: !(Maybe RecurringChargeFrequency)
+    , _rcCost      :: !(Maybe MonetaryAmount)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'RecurringCharge' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rcFrequency' - The frequency in which charges will recur.
+-- * 'rcFrequency' - The frequency in which charges recur.
 --
 -- * 'rcCost' - The cost of the recurring charge.
 recurringCharge
@@ -2027,7 +2303,7 @@ recurringCharge
 recurringCharge = RecurringCharge' {_rcFrequency = Nothing, _rcCost = Nothing}
 
 
--- | The frequency in which charges will recur.
+-- | The frequency in which charges recur.
 rcFrequency :: Lens' RecurringCharge (Maybe RecurringChargeFrequency)
 rcFrequency = lens _rcFrequency (\ s a -> s{_rcFrequency = a})
 
@@ -2051,52 +2327,54 @@ instance NFData RecurringCharge where
 --
 --
 -- /See:/ 'remoteAccessSession' smart constructor.
-data RemoteAccessSession = RemoteAccessSession'
-  { _rasBillingMethod       :: !(Maybe BillingMethod)
-  , _rasClientId            :: !(Maybe Text)
-  , _rasDeviceUdid          :: !(Maybe Text)
-  , _rasSkipAppResign       :: !(Maybe Bool)
-  , _rasInstanceARN         :: !(Maybe Text)
-  , _rasStatus              :: !(Maybe ExecutionStatus)
-  , _rasRemoteRecordEnabled :: !(Maybe Bool)
-  , _rasArn                 :: !(Maybe Text)
-  , _rasRemoteRecordAppARN  :: !(Maybe Text)
-  , _rasCreated             :: !(Maybe POSIX)
-  , _rasDevice              :: !(Maybe Device)
-  , _rasStopped             :: !(Maybe POSIX)
-  , _rasResult              :: !(Maybe ExecutionResult)
-  , _rasName                :: !(Maybe Text)
-  , _rasDeviceMinutes       :: !(Maybe DeviceMinutes)
-  , _rasRemoteDebugEnabled  :: !(Maybe Bool)
-  , _rasEndpoint            :: !(Maybe Text)
-  , _rasMessage             :: !(Maybe Text)
-  , _rasHostAddress         :: !(Maybe Text)
-  , _rasInteractionMode     :: !(Maybe InteractionMode)
-  , _rasStarted             :: !(Maybe POSIX)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data RemoteAccessSession =
+  RemoteAccessSession'
+    { _rasBillingMethod       :: !(Maybe BillingMethod)
+    , _rasClientId            :: !(Maybe Text)
+    , _rasDeviceUdid          :: !(Maybe Text)
+    , _rasSkipAppResign       :: !(Maybe Bool)
+    , _rasInstanceARN         :: !(Maybe Text)
+    , _rasStatus              :: !(Maybe ExecutionStatus)
+    , _rasRemoteRecordEnabled :: !(Maybe Bool)
+    , _rasArn                 :: !(Maybe Text)
+    , _rasRemoteRecordAppARN  :: !(Maybe Text)
+    , _rasCreated             :: !(Maybe POSIX)
+    , _rasDevice              :: !(Maybe Device)
+    , _rasStopped             :: !(Maybe POSIX)
+    , _rasResult              :: !(Maybe ExecutionResult)
+    , _rasName                :: !(Maybe Text)
+    , _rasDeviceMinutes       :: !(Maybe DeviceMinutes)
+    , _rasRemoteDebugEnabled  :: !(Maybe Bool)
+    , _rasEndpoint            :: !(Maybe Text)
+    , _rasMessage             :: !(Maybe Text)
+    , _rasHostAddress         :: !(Maybe Text)
+    , _rasInteractionMode     :: !(Maybe InteractionMode)
+    , _rasStarted             :: !(Maybe POSIX)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'RemoteAccessSession' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rasBillingMethod' - The billing method of the remote access session. Possible values include @METERED@ or @UNMETERED@ . For more information about metered devices, see <http://docs.aws.amazon.com/devicefarm/latest/developerguide/welcome.html#welcome-terminology AWS Device Farm terminology> ."
+-- * 'rasBillingMethod' - The billing method of the remote access session. Possible values include @METERED@ or @UNMETERED@ . For more information about metered devices, see <https://docs.aws.amazon.com/devicefarm/latest/developerguide/welcome.html#welcome-terminology AWS Device Farm terminology> .
 --
--- * 'rasClientId' - Unique identifier of your client for the remote access session. Only returned if remote debugging is enabled for the remote access session.
+-- * 'rasClientId' - Unique identifier of your client for the remote access session. Only returned if remote debugging is enabled for the remote access session. Remote debugging is <https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html no longer supported> .
 --
--- * 'rasDeviceUdid' - Unique device identifier for the remote device. Only returned if remote debugging is enabled for the remote access session.
+-- * 'rasDeviceUdid' - Unique device identifier for the remote device. Only returned if remote debugging is enabled for the remote access session. Remote debugging is <https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html no longer supported> .
 --
--- * 'rasSkipAppResign' - When set to @true@ , for private devices, Device Farm will not sign your app again. For public devices, Device Farm always signs your apps again and this parameter has no effect. For more information about how Device Farm re-signs your app(s), see <https://aws.amazon.com/device-farm/faq/ Do you modify my app?> in the /AWS Device Farm FAQs/ .
+-- * 'rasSkipAppResign' - When set to @true@ , for private devices, Device Farm does not sign your app again. For public devices, Device Farm always signs your apps again. For more information about how Device Farm re-signs your apps, see <https://aws.amazon.com/device-farm/faq/ Do you modify my app?> in the /AWS Device Farm FAQs/ .
 --
--- * 'rasInstanceARN' - The Amazon Resource Name (ARN) of the instance.
+-- * 'rasInstanceARN' - The ARN of the instance.
 --
--- * 'rasStatus' - The status of the remote access session. Can be any of the following:     * PENDING: A pending status.     * PENDING_CONCURRENCY: A pending concurrency status.     * PENDING_DEVICE: A pending device status.     * PROCESSING: A processing status.     * SCHEDULING: A scheduling status.     * PREPARING: A preparing status.     * RUNNING: A running status.     * COMPLETED: A completed status.     * STOPPING: A stopping status.
+-- * 'rasStatus' - The status of the remote access session. Can be any of the following:     * PENDING.     * PENDING_CONCURRENCY.     * PENDING_DEVICE.     * PROCESSING.     * SCHEDULING.     * PREPARING.     * RUNNING.     * COMPLETED.     * STOPPING.
 --
 -- * 'rasRemoteRecordEnabled' - This flag is set to @true@ if remote recording is enabled for the remote access session.
 --
 -- * 'rasArn' - The Amazon Resource Name (ARN) of the remote access session.
 --
--- * 'rasRemoteRecordAppARN' - The Amazon Resource Name (ARN) for the app to be recorded in the remote access session.
+-- * 'rasRemoteRecordAppARN' - The ARN for the app to be recorded in the remote access session.
 --
 -- * 'rasCreated' - The date and time the remote access session was created.
 --
@@ -2104,21 +2382,21 @@ data RemoteAccessSession = RemoteAccessSession'
 --
 -- * 'rasStopped' - The date and time the remote access session was stopped.
 --
--- * 'rasResult' - The result of the remote access session. Can be any of the following:     * PENDING: A pending condition.     * PASSED: A passing condition.     * WARNED: A warning condition.     * FAILED: A failed condition.     * SKIPPED: A skipped condition.     * ERRORED: An error condition.     * STOPPED: A stopped condition.
+-- * 'rasResult' - The result of the remote access session. Can be any of the following:     * PENDING.     * PASSED.     * WARNED.     * FAILED.     * SKIPPED.     * ERRORED.     * STOPPED.
 --
 -- * 'rasName' - The name of the remote access session.
 --
--- * 'rasDeviceMinutes' - The number of minutes a device is used in a remote access sesssion (including setup and teardown minutes).
+-- * 'rasDeviceMinutes' - The number of minutes a device is used in a remote access session (including setup and teardown minutes).
 --
--- * 'rasRemoteDebugEnabled' - This flag is set to @true@ if remote debugging is enabled for the remote access session.
+-- * 'rasRemoteDebugEnabled' - This flag is set to @true@ if remote debugging is enabled for the remote access session. Remote debugging is <https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html no longer supported> .
 --
 -- * 'rasEndpoint' - The endpoint for the remote access sesssion.
 --
 -- * 'rasMessage' - A message about the remote access session.
 --
--- * 'rasHostAddress' - IP address of the EC2 host where you need to connect to remotely debug devices. Only returned if remote debugging is enabled for the remote access session.
+-- * 'rasHostAddress' - IP address of the EC2 host where you need to connect to remotely debug devices. Only returned if remote debugging is enabled for the remote access session. Remote debugging is <https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html no longer supported> .
 --
--- * 'rasInteractionMode' - The interaction mode of the remote access session. Valid values are:     * INTERACTIVE: You can interact with the iOS device by viewing, touching, and rotating the screen. You __cannot__ run XCUITest framework-based tests in this mode.     * NO_VIDEO: You are connected to the device but cannot interact with it or view the screen. This mode has the fastest test execution speed. You __can__ run XCUITest framework-based tests in this mode.     * VIDEO_ONLY: You can view the screen but cannot touch or rotate it. You __can__ run XCUITest framework-based tests and watch the screen in this mode.
+-- * 'rasInteractionMode' - The interaction mode of the remote access session. Valid values are:     * INTERACTIVE: You can interact with the iOS device by viewing, touching, and rotating the screen. You cannot run XCUITest framework-based tests in this mode.     * NO_VIDEO: You are connected to the device, but cannot interact with it or view the screen. This mode has the fastest test execution speed. You can run XCUITest framework-based tests in this mode.     * VIDEO_ONLY: You can view the screen, but cannot touch or rotate it. You can run XCUITest framework-based tests and watch the screen in this mode.
 --
 -- * 'rasStarted' - The date and time the remote access session was started.
 remoteAccessSession
@@ -2149,27 +2427,27 @@ remoteAccessSession =
     }
 
 
--- | The billing method of the remote access session. Possible values include @METERED@ or @UNMETERED@ . For more information about metered devices, see <http://docs.aws.amazon.com/devicefarm/latest/developerguide/welcome.html#welcome-terminology AWS Device Farm terminology> ."
+-- | The billing method of the remote access session. Possible values include @METERED@ or @UNMETERED@ . For more information about metered devices, see <https://docs.aws.amazon.com/devicefarm/latest/developerguide/welcome.html#welcome-terminology AWS Device Farm terminology> .
 rasBillingMethod :: Lens' RemoteAccessSession (Maybe BillingMethod)
 rasBillingMethod = lens _rasBillingMethod (\ s a -> s{_rasBillingMethod = a})
 
--- | Unique identifier of your client for the remote access session. Only returned if remote debugging is enabled for the remote access session.
+-- | Unique identifier of your client for the remote access session. Only returned if remote debugging is enabled for the remote access session. Remote debugging is <https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html no longer supported> .
 rasClientId :: Lens' RemoteAccessSession (Maybe Text)
 rasClientId = lens _rasClientId (\ s a -> s{_rasClientId = a})
 
--- | Unique device identifier for the remote device. Only returned if remote debugging is enabled for the remote access session.
+-- | Unique device identifier for the remote device. Only returned if remote debugging is enabled for the remote access session. Remote debugging is <https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html no longer supported> .
 rasDeviceUdid :: Lens' RemoteAccessSession (Maybe Text)
 rasDeviceUdid = lens _rasDeviceUdid (\ s a -> s{_rasDeviceUdid = a})
 
--- | When set to @true@ , for private devices, Device Farm will not sign your app again. For public devices, Device Farm always signs your apps again and this parameter has no effect. For more information about how Device Farm re-signs your app(s), see <https://aws.amazon.com/device-farm/faq/ Do you modify my app?> in the /AWS Device Farm FAQs/ .
+-- | When set to @true@ , for private devices, Device Farm does not sign your app again. For public devices, Device Farm always signs your apps again. For more information about how Device Farm re-signs your apps, see <https://aws.amazon.com/device-farm/faq/ Do you modify my app?> in the /AWS Device Farm FAQs/ .
 rasSkipAppResign :: Lens' RemoteAccessSession (Maybe Bool)
 rasSkipAppResign = lens _rasSkipAppResign (\ s a -> s{_rasSkipAppResign = a})
 
--- | The Amazon Resource Name (ARN) of the instance.
+-- | The ARN of the instance.
 rasInstanceARN :: Lens' RemoteAccessSession (Maybe Text)
 rasInstanceARN = lens _rasInstanceARN (\ s a -> s{_rasInstanceARN = a})
 
--- | The status of the remote access session. Can be any of the following:     * PENDING: A pending status.     * PENDING_CONCURRENCY: A pending concurrency status.     * PENDING_DEVICE: A pending device status.     * PROCESSING: A processing status.     * SCHEDULING: A scheduling status.     * PREPARING: A preparing status.     * RUNNING: A running status.     * COMPLETED: A completed status.     * STOPPING: A stopping status.
+-- | The status of the remote access session. Can be any of the following:     * PENDING.     * PENDING_CONCURRENCY.     * PENDING_DEVICE.     * PROCESSING.     * SCHEDULING.     * PREPARING.     * RUNNING.     * COMPLETED.     * STOPPING.
 rasStatus :: Lens' RemoteAccessSession (Maybe ExecutionStatus)
 rasStatus = lens _rasStatus (\ s a -> s{_rasStatus = a})
 
@@ -2181,7 +2459,7 @@ rasRemoteRecordEnabled = lens _rasRemoteRecordEnabled (\ s a -> s{_rasRemoteReco
 rasArn :: Lens' RemoteAccessSession (Maybe Text)
 rasArn = lens _rasArn (\ s a -> s{_rasArn = a})
 
--- | The Amazon Resource Name (ARN) for the app to be recorded in the remote access session.
+-- | The ARN for the app to be recorded in the remote access session.
 rasRemoteRecordAppARN :: Lens' RemoteAccessSession (Maybe Text)
 rasRemoteRecordAppARN = lens _rasRemoteRecordAppARN (\ s a -> s{_rasRemoteRecordAppARN = a})
 
@@ -2197,7 +2475,7 @@ rasDevice = lens _rasDevice (\ s a -> s{_rasDevice = a})
 rasStopped :: Lens' RemoteAccessSession (Maybe UTCTime)
 rasStopped = lens _rasStopped (\ s a -> s{_rasStopped = a}) . mapping _Time
 
--- | The result of the remote access session. Can be any of the following:     * PENDING: A pending condition.     * PASSED: A passing condition.     * WARNED: A warning condition.     * FAILED: A failed condition.     * SKIPPED: A skipped condition.     * ERRORED: An error condition.     * STOPPED: A stopped condition.
+-- | The result of the remote access session. Can be any of the following:     * PENDING.     * PASSED.     * WARNED.     * FAILED.     * SKIPPED.     * ERRORED.     * STOPPED.
 rasResult :: Lens' RemoteAccessSession (Maybe ExecutionResult)
 rasResult = lens _rasResult (\ s a -> s{_rasResult = a})
 
@@ -2205,11 +2483,11 @@ rasResult = lens _rasResult (\ s a -> s{_rasResult = a})
 rasName :: Lens' RemoteAccessSession (Maybe Text)
 rasName = lens _rasName (\ s a -> s{_rasName = a})
 
--- | The number of minutes a device is used in a remote access sesssion (including setup and teardown minutes).
+-- | The number of minutes a device is used in a remote access session (including setup and teardown minutes).
 rasDeviceMinutes :: Lens' RemoteAccessSession (Maybe DeviceMinutes)
 rasDeviceMinutes = lens _rasDeviceMinutes (\ s a -> s{_rasDeviceMinutes = a})
 
--- | This flag is set to @true@ if remote debugging is enabled for the remote access session.
+-- | This flag is set to @true@ if remote debugging is enabled for the remote access session. Remote debugging is <https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html no longer supported> .
 rasRemoteDebugEnabled :: Lens' RemoteAccessSession (Maybe Bool)
 rasRemoteDebugEnabled = lens _rasRemoteDebugEnabled (\ s a -> s{_rasRemoteDebugEnabled = a})
 
@@ -2221,11 +2499,11 @@ rasEndpoint = lens _rasEndpoint (\ s a -> s{_rasEndpoint = a})
 rasMessage :: Lens' RemoteAccessSession (Maybe Text)
 rasMessage = lens _rasMessage (\ s a -> s{_rasMessage = a})
 
--- | IP address of the EC2 host where you need to connect to remotely debug devices. Only returned if remote debugging is enabled for the remote access session.
+-- | IP address of the EC2 host where you need to connect to remotely debug devices. Only returned if remote debugging is enabled for the remote access session. Remote debugging is <https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html no longer supported> .
 rasHostAddress :: Lens' RemoteAccessSession (Maybe Text)
 rasHostAddress = lens _rasHostAddress (\ s a -> s{_rasHostAddress = a})
 
--- | The interaction mode of the remote access session. Valid values are:     * INTERACTIVE: You can interact with the iOS device by viewing, touching, and rotating the screen. You __cannot__ run XCUITest framework-based tests in this mode.     * NO_VIDEO: You are connected to the device but cannot interact with it or view the screen. This mode has the fastest test execution speed. You __can__ run XCUITest framework-based tests in this mode.     * VIDEO_ONLY: You can view the screen but cannot touch or rotate it. You __can__ run XCUITest framework-based tests and watch the screen in this mode.
+-- | The interaction mode of the remote access session. Valid values are:     * INTERACTIVE: You can interact with the iOS device by viewing, touching, and rotating the screen. You cannot run XCUITest framework-based tests in this mode.     * NO_VIDEO: You are connected to the device, but cannot interact with it or view the screen. This mode has the fastest test execution speed. You can run XCUITest framework-based tests in this mode.     * VIDEO_ONLY: You can view the screen, but cannot touch or rotate it. You can run XCUITest framework-based tests and watch the screen in this mode.
 rasInteractionMode :: Lens' RemoteAccessSession (Maybe InteractionMode)
 rasInteractionMode = lens _rasInteractionMode (\ s a -> s{_rasInteractionMode = a})
 
@@ -2268,10 +2546,12 @@ instance NFData RemoteAccessSession where
 --
 --
 -- /See:/ 'resolution' smart constructor.
-data Resolution = Resolution'
-  { _rHeight :: !(Maybe Int)
-  , _rWidth  :: !(Maybe Int)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Resolution =
+  Resolution'
+    { _rHeight :: !(Maybe Int)
+    , _rWidth  :: !(Maybe Int)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Resolution' with the minimum fields required to make a request.
@@ -2309,20 +2589,22 @@ instance NFData Resolution where
 --
 --
 -- /See:/ 'rule' smart constructor.
-data Rule = Rule'
-  { _rAttribute :: !(Maybe DeviceAttribute)
-  , _rOperator  :: !(Maybe RuleOperator)
-  , _rValue     :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Rule =
+  Rule'
+    { _rAttribute :: !(Maybe DeviceAttribute)
+    , _rOperator  :: !(Maybe RuleOperator)
+    , _rValue     :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Rule' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rAttribute' - The rule's stringified attribute. For example, specify the value as @"\"abc\""@ . Allowed values include:     * ARN: The ARN.     * FORM_FACTOR: The form factor (for example, phone or tablet).     * MANUFACTURER: The manufacturer.     * PLATFORM: The platform (for example, Android or iOS).     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access.     * APPIUM_VERSION: The Appium version for the test.     * INSTANCE_ARN: The Amazon Resource Name (ARN) of the device instance.     * INSTANCE_LABELS: The label of the device instance.
+-- * 'rAttribute' - The rule's stringified attribute. For example, specify the value as @"\"abc\""@ . The supported operators for each attribute are provided in the following list.     * APPIUM_VERSION    * The Appium version for the test. Supported operators: @CONTAINS@      * ARN    * The Amazon Resource Name (ARN) of the device (for example, @arn:aws:devicefarm:us-west-2::device:12345Example@ . Supported operators: @EQUALS@ , @IN@ , @NOT_IN@      * AVAILABILITY    * The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY, or TEMPORARY_NOT_AVAILABLE. Supported operators: @EQUALS@      * FLEET_TYPE    * The fleet type. Valid values are PUBLIC or PRIVATE. Supported operators: @EQUALS@      * FORM_FACTOR    * The device form factor. Valid values are PHONE or TABLET. Supported operators: @EQUALS@ , @IN@ , @NOT_IN@      * INSTANCE_ARN    * The Amazon Resource Name (ARN) of the device instance. Supported operators: @IN@ , @NOT_IN@      * INSTANCE_LABELS    * The label of the device instance. Supported operators: @CONTAINS@      * MANUFACTURER    * The device manufacturer (for example, Apple). Supported operators: @EQUALS@ , @IN@ , @NOT_IN@      * MODEL    * The device model, such as Apple iPad Air 2 or Google Pixel. Supported operators: @CONTAINS@ , @EQUALS@ , @IN@ , @NOT_IN@      * OS_VERSION    * The operating system version (for example, 10.3.2). Supported operators: @EQUALS@ , @GREATER_THAN@ , @GREATER_THAN_OR_EQUALS@ , @IN@ , @LESS_THAN@ , @LESS_THAN_OR_EQUALS@ , @NOT_IN@      * PLATFORM    * The device platform. Valid values are ANDROID or IOS. Supported operators: @EQUALS@ , @IN@ , @NOT_IN@      * REMOTE_ACCESS_ENABLED    * Whether the device is enabled for remote access. Valid values are TRUE or FALSE. Supported operators: @EQUALS@      * REMOTE_DEBUG_ENABLED    * Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE. Supported operators: @EQUALS@  Because remote debugging is <https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html no longer supported> , this filter is ignored.
 --
--- * 'rOperator' - The rule's operator.     * EQUALS: The equals operator.     * GREATER_THAN: The greater-than operator.     * IN: The in operator.     * LESS_THAN: The less-than operator.     * NOT_IN: The not-in operator.     * CONTAINS: The contains operator.
+-- * 'rOperator' - Specifies how Device Farm compares the rule's attribute to the value. For the operators that are supported by each attribute, see the attribute descriptions.
 --
 -- * 'rValue' - The rule's value.
 rule
@@ -2330,11 +2612,11 @@ rule
 rule = Rule' {_rAttribute = Nothing, _rOperator = Nothing, _rValue = Nothing}
 
 
--- | The rule's stringified attribute. For example, specify the value as @"\"abc\""@ . Allowed values include:     * ARN: The ARN.     * FORM_FACTOR: The form factor (for example, phone or tablet).     * MANUFACTURER: The manufacturer.     * PLATFORM: The platform (for example, Android or iOS).     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access.     * APPIUM_VERSION: The Appium version for the test.     * INSTANCE_ARN: The Amazon Resource Name (ARN) of the device instance.     * INSTANCE_LABELS: The label of the device instance.
+-- | The rule's stringified attribute. For example, specify the value as @"\"abc\""@ . The supported operators for each attribute are provided in the following list.     * APPIUM_VERSION    * The Appium version for the test. Supported operators: @CONTAINS@      * ARN    * The Amazon Resource Name (ARN) of the device (for example, @arn:aws:devicefarm:us-west-2::device:12345Example@ . Supported operators: @EQUALS@ , @IN@ , @NOT_IN@      * AVAILABILITY    * The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY, or TEMPORARY_NOT_AVAILABLE. Supported operators: @EQUALS@      * FLEET_TYPE    * The fleet type. Valid values are PUBLIC or PRIVATE. Supported operators: @EQUALS@      * FORM_FACTOR    * The device form factor. Valid values are PHONE or TABLET. Supported operators: @EQUALS@ , @IN@ , @NOT_IN@      * INSTANCE_ARN    * The Amazon Resource Name (ARN) of the device instance. Supported operators: @IN@ , @NOT_IN@      * INSTANCE_LABELS    * The label of the device instance. Supported operators: @CONTAINS@      * MANUFACTURER    * The device manufacturer (for example, Apple). Supported operators: @EQUALS@ , @IN@ , @NOT_IN@      * MODEL    * The device model, such as Apple iPad Air 2 or Google Pixel. Supported operators: @CONTAINS@ , @EQUALS@ , @IN@ , @NOT_IN@      * OS_VERSION    * The operating system version (for example, 10.3.2). Supported operators: @EQUALS@ , @GREATER_THAN@ , @GREATER_THAN_OR_EQUALS@ , @IN@ , @LESS_THAN@ , @LESS_THAN_OR_EQUALS@ , @NOT_IN@      * PLATFORM    * The device platform. Valid values are ANDROID or IOS. Supported operators: @EQUALS@ , @IN@ , @NOT_IN@      * REMOTE_ACCESS_ENABLED    * Whether the device is enabled for remote access. Valid values are TRUE or FALSE. Supported operators: @EQUALS@      * REMOTE_DEBUG_ENABLED    * Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE. Supported operators: @EQUALS@  Because remote debugging is <https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html no longer supported> , this filter is ignored.
 rAttribute :: Lens' Rule (Maybe DeviceAttribute)
 rAttribute = lens _rAttribute (\ s a -> s{_rAttribute = a})
 
--- | The rule's operator.     * EQUALS: The equals operator.     * GREATER_THAN: The greater-than operator.     * IN: The in operator.     * LESS_THAN: The less-than operator.     * NOT_IN: The not-in operator.     * CONTAINS: The contains operator.
+-- | Specifies how Device Farm compares the rule's attribute to the value. For the operators that are supported by each attribute, see the attribute descriptions.
 rOperator :: Lens' Rule (Maybe RuleOperator)
 rOperator = lens _rOperator (\ s a -> s{_rOperator = a})
 
@@ -2362,42 +2644,46 @@ instance ToJSON Rule where
                   ("operator" .=) <$> _rOperator,
                   ("value" .=) <$> _rValue])
 
--- | Represents a test run on a set of devices with a given app package, test parameters, etc.
+-- | Represents a test run on a set of devices with a given app package, test parameters, and so on.
 --
 --
 --
 -- /See:/ 'run' smart constructor.
-data Run = Run'
-  { _runBillingMethod         :: !(Maybe BillingMethod)
-  , _runSkipAppResign         :: !(Maybe Bool)
-  , _runStatus                :: !(Maybe ExecutionStatus)
-  , _runCustomerArtifactPaths :: !(Maybe CustomerArtifactPaths)
-  , _runEventCount            :: !(Maybe Int)
-  , _runCounters              :: !(Maybe Counters)
-  , _runPlatform              :: !(Maybe DevicePlatform)
-  , _runSeed                  :: !(Maybe Int)
-  , _runRadios                :: !(Maybe Radios)
-  , _runArn                   :: !(Maybe Text)
-  , _runLocation              :: !(Maybe Location)
-  , _runCreated               :: !(Maybe POSIX)
-  , _runLocale                :: !(Maybe Text)
-  , _runStopped               :: !(Maybe POSIX)
-  , _runResult                :: !(Maybe ExecutionResult)
-  , _runJobTimeoutMinutes     :: !(Maybe Int)
-  , _runCompletedJobs         :: !(Maybe Int)
-  , _runResultCode            :: !(Maybe ExecutionResultCode)
-  , _runName                  :: !(Maybe Text)
-  , _runAppUpload             :: !(Maybe Text)
-  , _runParsingResultURL      :: !(Maybe Text)
-  , _runNetworkProfile        :: !(Maybe NetworkProfile)
-  , _runDeviceMinutes         :: !(Maybe DeviceMinutes)
-  , _runType                  :: !(Maybe TestType)
-  , _runMessage               :: !(Maybe Text)
-  , _runWebURL                :: !(Maybe Text)
-  , _runTotalJobs             :: !(Maybe Int)
-  , _runDevicePoolARN         :: !(Maybe Text)
-  , _runStarted               :: !(Maybe POSIX)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Run =
+  Run'
+    { _runBillingMethod         :: !(Maybe BillingMethod)
+    , _runSkipAppResign         :: !(Maybe Bool)
+    , _runStatus                :: !(Maybe ExecutionStatus)
+    , _runCustomerArtifactPaths :: !(Maybe CustomerArtifactPaths)
+    , _runEventCount            :: !(Maybe Int)
+    , _runCounters              :: !(Maybe Counters)
+    , _runPlatform              :: !(Maybe DevicePlatform)
+    , _runSeed                  :: !(Maybe Int)
+    , _runRadios                :: !(Maybe Radios)
+    , _runArn                   :: !(Maybe Text)
+    , _runLocation              :: !(Maybe Location)
+    , _runCreated               :: !(Maybe POSIX)
+    , _runLocale                :: !(Maybe Text)
+    , _runTestSpecARN           :: !(Maybe Text)
+    , _runStopped               :: !(Maybe POSIX)
+    , _runResult                :: !(Maybe ExecutionResult)
+    , _runJobTimeoutMinutes     :: !(Maybe Int)
+    , _runCompletedJobs         :: !(Maybe Int)
+    , _runResultCode            :: !(Maybe ExecutionResultCode)
+    , _runName                  :: !(Maybe Text)
+    , _runAppUpload             :: !(Maybe Text)
+    , _runParsingResultURL      :: !(Maybe Text)
+    , _runNetworkProfile        :: !(Maybe NetworkProfile)
+    , _runDeviceMinutes         :: !(Maybe DeviceMinutes)
+    , _runType                  :: !(Maybe TestType)
+    , _runMessage               :: !(Maybe Text)
+    , _runWebURL                :: !(Maybe Text)
+    , _runTotalJobs             :: !(Maybe Int)
+    , _runDevicePoolARN         :: !(Maybe Text)
+    , _runStarted               :: !(Maybe POSIX)
+    , _runDeviceSelectionResult :: !(Maybe DeviceSelectionResult)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Run' with the minimum fields required to make a request.
@@ -2406,9 +2692,9 @@ data Run = Run'
 --
 -- * 'runBillingMethod' - Specifies the billing method for a test run: @metered@ or @unmetered@ . If the parameter is not specified, the default value is @metered@ .
 --
--- * 'runSkipAppResign' - When set to @true@ , for private devices, Device Farm will not sign your app again. For public devices, Device Farm always signs your apps again and this parameter has no effect. For more information about how Device Farm re-signs your app(s), see <https://aws.amazon.com/device-farm/faq/ Do you modify my app?> in the /AWS Device Farm FAQs/ .
+-- * 'runSkipAppResign' - When set to @true@ , for private devices, Device Farm does not sign your app again. For public devices, Device Farm always signs your apps again. For more information about how Device Farm re-signs your apps, see <https://aws.amazon.com/device-farm/faq/ Do you modify my app?> in the /AWS Device Farm FAQs/ .
 --
--- * 'runStatus' - The run's status. Allowed values include:     * PENDING: A pending status.     * PENDING_CONCURRENCY: A pending concurrency status.     * PENDING_DEVICE: A pending device status.     * PROCESSING: A processing status.     * SCHEDULING: A scheduling status.     * PREPARING: A preparing status.     * RUNNING: A running status.     * COMPLETED: A completed status.     * STOPPING: A stopping status.
+-- * 'runStatus' - The run's status. Allowed values include:     * PENDING     * PENDING_CONCURRENCY     * PENDING_DEVICE     * PROCESSING     * SCHEDULING     * PREPARING     * RUNNING     * COMPLETED     * STOPPING
 --
 -- * 'runCustomerArtifactPaths' - Output @CustomerArtifactPaths@ object for the test run.
 --
@@ -2416,7 +2702,7 @@ data Run = Run'
 --
 -- * 'runCounters' - The run's result counters.
 --
--- * 'runPlatform' - The run's platform. Allowed values include:     * ANDROID: The Android platform.     * IOS: The iOS platform.
+-- * 'runPlatform' - The run's platform. Allowed values include:     * ANDROID     * IOS
 --
 -- * 'runSeed' - For fuzz tests, this is a seed to use for randomizing the UI fuzz test. Using the same seed value between tests ensures identical event sequences.
 --
@@ -2430,11 +2716,13 @@ data Run = Run'
 --
 -- * 'runLocale' - Information about the locale that is used for the run.
 --
+-- * 'runTestSpecARN' - The ARN of the YAML-formatted test specification for the run.
+--
 -- * 'runStopped' - The run's stop time.
 --
--- * 'runResult' - The run's result. Allowed values include:     * PENDING: A pending condition.     * PASSED: A passing condition.     * WARNED: A warning condition.     * FAILED: A failed condition.     * SKIPPED: A skipped condition.     * ERRORED: An error condition.     * STOPPED: A stopped condition.
+-- * 'runResult' - The run's result. Allowed values include:     * PENDING     * PASSED     * WARNED     * FAILED     * SKIPPED     * ERRORED     * STOPPED
 --
--- * 'runJobTimeoutMinutes' - The number of minutes the job will execute before it times out.
+-- * 'runJobTimeoutMinutes' - The number of minutes the job executes before it times out.
 --
 -- * 'runCompletedJobs' - The total number of completed jobs.
 --
@@ -2444,13 +2732,13 @@ data Run = Run'
 --
 -- * 'runAppUpload' - An app to upload or that has been uploaded.
 --
--- * 'runParsingResultURL' - Read-only URL for an object in S3 bucket where you can get the parsing results of the test package. If the test package doesn't parse, the reason why it doesn't parse appears in the file that this URL points to.
+-- * 'runParsingResultURL' - Read-only URL for an object in an S3 bucket where you can get the parsing results of the test package. If the test package doesn't parse, the reason why it doesn't parse appears in the file that this URL points to.
 --
 -- * 'runNetworkProfile' - The network profile being used for a test run.
 --
 -- * 'runDeviceMinutes' - Represents the total (metered or unmetered) minutes used by the test run.
 --
--- * 'runType' - The run's type. Must be one of the following values:     * BUILTIN_FUZZ: The built-in fuzz type.     * BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and capturing screenshots at the same time.     * APPIUM_JAVA_JUNIT: The Appium Java JUnit type.     * APPIUM_JAVA_TESTNG: The Appium Java TestNG type.     * APPIUM_PYTHON: The Appium Python type.     * APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.     * APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.     * APPIUM_WEB_PYTHON: The Appium Python type for Web apps.     * CALABASH: The Calabash type.     * INSTRUMENTATION: The Instrumentation type.     * UIAUTOMATION: The uiautomation type.     * UIAUTOMATOR: The uiautomator type.     * XCTEST: The XCode test type.     * XCTEST_UI: The XCode UI test type.
+-- * 'runType' - The run's type. Must be one of the following values:     * BUILTIN_FUZZ     * BUILTIN_EXPLORER     * APPIUM_JAVA_JUNIT     * APPIUM_JAVA_TESTNG     * APPIUM_PYTHON     * APPIUM_NODE     * APPIUM_RUBY     * APPIUM_WEB_JAVA_JUNIT     * APPIUM_WEB_JAVA_TESTNG     * APPIUM_WEB_PYTHON     * APPIUM_WEB_NODE     * APPIUM_WEB_RUBY     * CALABASH     * INSTRUMENTATION     * UIAUTOMATION     * UIAUTOMATOR     * XCTEST     * XCTEST_UI
 --
 -- * 'runMessage' - A message about the run's result.
 --
@@ -2461,6 +2749,8 @@ data Run = Run'
 -- * 'runDevicePoolARN' - The ARN of the device pool for the run.
 --
 -- * 'runStarted' - The run's start time.
+--
+-- * 'runDeviceSelectionResult' - The results of a device filter used to select the devices for a test run.
 run
     :: Run
 run =
@@ -2478,6 +2768,7 @@ run =
     , _runLocation = Nothing
     , _runCreated = Nothing
     , _runLocale = Nothing
+    , _runTestSpecARN = Nothing
     , _runStopped = Nothing
     , _runResult = Nothing
     , _runJobTimeoutMinutes = Nothing
@@ -2494,6 +2785,7 @@ run =
     , _runTotalJobs = Nothing
     , _runDevicePoolARN = Nothing
     , _runStarted = Nothing
+    , _runDeviceSelectionResult = Nothing
     }
 
 
@@ -2501,11 +2793,11 @@ run =
 runBillingMethod :: Lens' Run (Maybe BillingMethod)
 runBillingMethod = lens _runBillingMethod (\ s a -> s{_runBillingMethod = a})
 
--- | When set to @true@ , for private devices, Device Farm will not sign your app again. For public devices, Device Farm always signs your apps again and this parameter has no effect. For more information about how Device Farm re-signs your app(s), see <https://aws.amazon.com/device-farm/faq/ Do you modify my app?> in the /AWS Device Farm FAQs/ .
+-- | When set to @true@ , for private devices, Device Farm does not sign your app again. For public devices, Device Farm always signs your apps again. For more information about how Device Farm re-signs your apps, see <https://aws.amazon.com/device-farm/faq/ Do you modify my app?> in the /AWS Device Farm FAQs/ .
 runSkipAppResign :: Lens' Run (Maybe Bool)
 runSkipAppResign = lens _runSkipAppResign (\ s a -> s{_runSkipAppResign = a})
 
--- | The run's status. Allowed values include:     * PENDING: A pending status.     * PENDING_CONCURRENCY: A pending concurrency status.     * PENDING_DEVICE: A pending device status.     * PROCESSING: A processing status.     * SCHEDULING: A scheduling status.     * PREPARING: A preparing status.     * RUNNING: A running status.     * COMPLETED: A completed status.     * STOPPING: A stopping status.
+-- | The run's status. Allowed values include:     * PENDING     * PENDING_CONCURRENCY     * PENDING_DEVICE     * PROCESSING     * SCHEDULING     * PREPARING     * RUNNING     * COMPLETED     * STOPPING
 runStatus :: Lens' Run (Maybe ExecutionStatus)
 runStatus = lens _runStatus (\ s a -> s{_runStatus = a})
 
@@ -2521,7 +2813,7 @@ runEventCount = lens _runEventCount (\ s a -> s{_runEventCount = a})
 runCounters :: Lens' Run (Maybe Counters)
 runCounters = lens _runCounters (\ s a -> s{_runCounters = a})
 
--- | The run's platform. Allowed values include:     * ANDROID: The Android platform.     * IOS: The iOS platform.
+-- | The run's platform. Allowed values include:     * ANDROID     * IOS
 runPlatform :: Lens' Run (Maybe DevicePlatform)
 runPlatform = lens _runPlatform (\ s a -> s{_runPlatform = a})
 
@@ -2549,15 +2841,19 @@ runCreated = lens _runCreated (\ s a -> s{_runCreated = a}) . mapping _Time
 runLocale :: Lens' Run (Maybe Text)
 runLocale = lens _runLocale (\ s a -> s{_runLocale = a})
 
+-- | The ARN of the YAML-formatted test specification for the run.
+runTestSpecARN :: Lens' Run (Maybe Text)
+runTestSpecARN = lens _runTestSpecARN (\ s a -> s{_runTestSpecARN = a})
+
 -- | The run's stop time.
 runStopped :: Lens' Run (Maybe UTCTime)
 runStopped = lens _runStopped (\ s a -> s{_runStopped = a}) . mapping _Time
 
--- | The run's result. Allowed values include:     * PENDING: A pending condition.     * PASSED: A passing condition.     * WARNED: A warning condition.     * FAILED: A failed condition.     * SKIPPED: A skipped condition.     * ERRORED: An error condition.     * STOPPED: A stopped condition.
+-- | The run's result. Allowed values include:     * PENDING     * PASSED     * WARNED     * FAILED     * SKIPPED     * ERRORED     * STOPPED
 runResult :: Lens' Run (Maybe ExecutionResult)
 runResult = lens _runResult (\ s a -> s{_runResult = a})
 
--- | The number of minutes the job will execute before it times out.
+-- | The number of minutes the job executes before it times out.
 runJobTimeoutMinutes :: Lens' Run (Maybe Int)
 runJobTimeoutMinutes = lens _runJobTimeoutMinutes (\ s a -> s{_runJobTimeoutMinutes = a})
 
@@ -2577,7 +2873,7 @@ runName = lens _runName (\ s a -> s{_runName = a})
 runAppUpload :: Lens' Run (Maybe Text)
 runAppUpload = lens _runAppUpload (\ s a -> s{_runAppUpload = a})
 
--- | Read-only URL for an object in S3 bucket where you can get the parsing results of the test package. If the test package doesn't parse, the reason why it doesn't parse appears in the file that this URL points to.
+-- | Read-only URL for an object in an S3 bucket where you can get the parsing results of the test package. If the test package doesn't parse, the reason why it doesn't parse appears in the file that this URL points to.
 runParsingResultURL :: Lens' Run (Maybe Text)
 runParsingResultURL = lens _runParsingResultURL (\ s a -> s{_runParsingResultURL = a})
 
@@ -2589,7 +2885,7 @@ runNetworkProfile = lens _runNetworkProfile (\ s a -> s{_runNetworkProfile = a})
 runDeviceMinutes :: Lens' Run (Maybe DeviceMinutes)
 runDeviceMinutes = lens _runDeviceMinutes (\ s a -> s{_runDeviceMinutes = a})
 
--- | The run's type. Must be one of the following values:     * BUILTIN_FUZZ: The built-in fuzz type.     * BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and capturing screenshots at the same time.     * APPIUM_JAVA_JUNIT: The Appium Java JUnit type.     * APPIUM_JAVA_TESTNG: The Appium Java TestNG type.     * APPIUM_PYTHON: The Appium Python type.     * APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.     * APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.     * APPIUM_WEB_PYTHON: The Appium Python type for Web apps.     * CALABASH: The Calabash type.     * INSTRUMENTATION: The Instrumentation type.     * UIAUTOMATION: The uiautomation type.     * UIAUTOMATOR: The uiautomator type.     * XCTEST: The XCode test type.     * XCTEST_UI: The XCode UI test type.
+-- | The run's type. Must be one of the following values:     * BUILTIN_FUZZ     * BUILTIN_EXPLORER     * APPIUM_JAVA_JUNIT     * APPIUM_JAVA_TESTNG     * APPIUM_PYTHON     * APPIUM_NODE     * APPIUM_RUBY     * APPIUM_WEB_JAVA_JUNIT     * APPIUM_WEB_JAVA_TESTNG     * APPIUM_WEB_PYTHON     * APPIUM_WEB_NODE     * APPIUM_WEB_RUBY     * CALABASH     * INSTRUMENTATION     * UIAUTOMATION     * UIAUTOMATOR     * XCTEST     * XCTEST_UI
 runType :: Lens' Run (Maybe TestType)
 runType = lens _runType (\ s a -> s{_runType = a})
 
@@ -2613,6 +2909,10 @@ runDevicePoolARN = lens _runDevicePoolARN (\ s a -> s{_runDevicePoolARN = a})
 runStarted :: Lens' Run (Maybe UTCTime)
 runStarted = lens _runStarted (\ s a -> s{_runStarted = a}) . mapping _Time
 
+-- | The results of a device filter used to select the devices for a test run.
+runDeviceSelectionResult :: Lens' Run (Maybe DeviceSelectionResult)
+runDeviceSelectionResult = lens _runDeviceSelectionResult (\ s a -> s{_runDeviceSelectionResult = a})
+
 instance FromJSON Run where
         parseJSON
           = withObject "Run"
@@ -2630,6 +2930,7 @@ instance FromJSON Run where
                      <*> (x .:? "location")
                      <*> (x .:? "created")
                      <*> (x .:? "locale")
+                     <*> (x .:? "testSpecArn")
                      <*> (x .:? "stopped")
                      <*> (x .:? "result")
                      <*> (x .:? "jobTimeoutMinutes")
@@ -2645,7 +2946,8 @@ instance FromJSON Run where
                      <*> (x .:? "webUrl")
                      <*> (x .:? "totalJobs")
                      <*> (x .:? "devicePoolArn")
-                     <*> (x .:? "started"))
+                     <*> (x .:? "started")
+                     <*> (x .:? "deviceSelectionResult"))
 
 instance Hashable Run where
 
@@ -2656,11 +2958,13 @@ instance NFData Run where
 --
 --
 -- /See:/ 'sample' smart constructor.
-data Sample = Sample'
-  { _samArn  :: !(Maybe Text)
-  , _samUrl  :: !(Maybe Text)
-  , _samType :: !(Maybe SampleType)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Sample =
+  Sample'
+    { _samArn  :: !(Maybe Text)
+    , _samUrl  :: !(Maybe Text)
+    , _samType :: !(Maybe SampleType)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Sample' with the minimum fields required to make a request.
@@ -2669,7 +2973,7 @@ data Sample = Sample'
 --
 -- * 'samArn' - The sample's ARN.
 --
--- * 'samUrl' - The pre-signed Amazon S3 URL that can be used with a corresponding GET request to download the sample's file.
+-- * 'samUrl' - The presigned Amazon S3 URL that can be used with a GET request to download the sample's file.
 --
 -- * 'samType' - The sample's type. Must be one of the following values:     * CPU: A CPU sample type. This is expressed as the app processing CPU time (including child processes) as reported by process, as a percentage.     * MEMORY: A memory usage sample type. This is expressed as the total proportional set size of an app process, in kilobytes.     * NATIVE_AVG_DRAWTIME     * NATIVE_FPS     * NATIVE_FRAMES     * NATIVE_MAX_DRAWTIME     * NATIVE_MIN_DRAWTIME     * OPENGL_AVG_DRAWTIME     * OPENGL_FPS     * OPENGL_FRAMES     * OPENGL_MAX_DRAWTIME     * OPENGL_MIN_DRAWTIME     * RX     * RX_RATE: The total number of bytes per second (TCP and UDP) that are sent, by app process.     * THREADS: A threads sample type. This is expressed as the total number of threads per app process.     * TX     * TX_RATE: The total number of bytes per second (TCP and UDP) that are received, by app process.
 sample
@@ -2681,7 +2985,7 @@ sample = Sample' {_samArn = Nothing, _samUrl = Nothing, _samType = Nothing}
 samArn :: Lens' Sample (Maybe Text)
 samArn = lens _samArn (\ s a -> s{_samArn = a})
 
--- | The pre-signed Amazon S3 URL that can be used with a corresponding GET request to download the sample's file.
+-- | The presigned Amazon S3 URL that can be used with a GET request to download the sample's file.
 samUrl :: Lens' Sample (Maybe Text)
 samUrl = lens _samUrl (\ s a -> s{_samUrl = a})
 
@@ -2705,17 +3009,19 @@ instance NFData Sample where
 --
 --
 -- /See:/ 'scheduleRunConfiguration' smart constructor.
-data ScheduleRunConfiguration = ScheduleRunConfiguration'
-  { _srcBillingMethod         :: !(Maybe BillingMethod)
-  , _srcCustomerArtifactPaths :: !(Maybe CustomerArtifactPaths)
-  , _srcRadios                :: !(Maybe Radios)
-  , _srcLocation              :: !(Maybe Location)
-  , _srcLocale                :: !(Maybe Text)
-  , _srcNetworkProfileARN     :: !(Maybe Text)
-  , _srcExtraDataPackageARN   :: !(Maybe Text)
-  , _srcAuxiliaryApps         :: !(Maybe [Text])
-  , _srcVpceConfigurationARNs :: !(Maybe [Text])
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ScheduleRunConfiguration =
+  ScheduleRunConfiguration'
+    { _srcBillingMethod         :: !(Maybe BillingMethod)
+    , _srcCustomerArtifactPaths :: !(Maybe CustomerArtifactPaths)
+    , _srcRadios                :: !(Maybe Radios)
+    , _srcLocation              :: !(Maybe Location)
+    , _srcLocale                :: !(Maybe Text)
+    , _srcNetworkProfileARN     :: !(Maybe Text)
+    , _srcExtraDataPackageARN   :: !(Maybe Text)
+    , _srcAuxiliaryApps         :: !(Maybe [Text])
+    , _srcVpceConfigurationARNs :: !(Maybe [Text])
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ScheduleRunConfiguration' with the minimum fields required to make a request.
@@ -2734,11 +3040,11 @@ data ScheduleRunConfiguration = ScheduleRunConfiguration'
 --
 -- * 'srcNetworkProfileARN' - Reserved for internal use.
 --
--- * 'srcExtraDataPackageARN' - The ARN of the extra data for the run. The extra data is a .zip file that AWS Device Farm will extract to external data for Android or the app's sandbox for iOS.
+-- * 'srcExtraDataPackageARN' - The ARN of the extra data for the run. The extra data is a .zip file that AWS Device Farm extracts to external data for Android or the app's sandbox for iOS.
 --
--- * 'srcAuxiliaryApps' - A list of auxiliary apps for the run.
+-- * 'srcAuxiliaryApps' - A list of upload ARNs for app packages to be installed with your app.
 --
--- * 'srcVpceConfigurationARNs' - An array of Amazon Resource Names (ARNs) for your VPC endpoint configurations.
+-- * 'srcVpceConfigurationARNs' - An array of ARNs for your VPC endpoint configurations.
 scheduleRunConfiguration
     :: ScheduleRunConfiguration
 scheduleRunConfiguration =
@@ -2779,15 +3085,15 @@ srcLocale = lens _srcLocale (\ s a -> s{_srcLocale = a})
 srcNetworkProfileARN :: Lens' ScheduleRunConfiguration (Maybe Text)
 srcNetworkProfileARN = lens _srcNetworkProfileARN (\ s a -> s{_srcNetworkProfileARN = a})
 
--- | The ARN of the extra data for the run. The extra data is a .zip file that AWS Device Farm will extract to external data for Android or the app's sandbox for iOS.
+-- | The ARN of the extra data for the run. The extra data is a .zip file that AWS Device Farm extracts to external data for Android or the app's sandbox for iOS.
 srcExtraDataPackageARN :: Lens' ScheduleRunConfiguration (Maybe Text)
 srcExtraDataPackageARN = lens _srcExtraDataPackageARN (\ s a -> s{_srcExtraDataPackageARN = a})
 
--- | A list of auxiliary apps for the run.
+-- | A list of upload ARNs for app packages to be installed with your app.
 srcAuxiliaryApps :: Lens' ScheduleRunConfiguration [Text]
 srcAuxiliaryApps = lens _srcAuxiliaryApps (\ s a -> s{_srcAuxiliaryApps = a}) . _Default . _Coerce
 
--- | An array of Amazon Resource Names (ARNs) for your VPC endpoint configurations.
+-- | An array of ARNs for your VPC endpoint configurations.
 srcVpceConfigurationARNs :: Lens' ScheduleRunConfiguration [Text]
 srcVpceConfigurationARNs = lens _srcVpceConfigurationARNs (\ s a -> s{_srcVpceConfigurationARNs = a}) . _Default . _Coerce
 
@@ -2812,47 +3118,57 @@ instance ToJSON ScheduleRunConfiguration where
                   ("vpceConfigurationArns" .=) <$>
                     _srcVpceConfigurationARNs])
 
--- | Represents additional test settings.
+-- | Represents test settings. This data structure is passed in as the test parameter to ScheduleRun. For an example of the JSON request syntax, see 'ScheduleRun' .
 --
 --
 --
 -- /See:/ 'scheduleRunTest' smart constructor.
-data ScheduleRunTest = ScheduleRunTest'
-  { _srtTestPackageARN :: !(Maybe Text)
-  , _srtParameters     :: !(Maybe (Map Text Text))
-  , _srtFilter         :: !(Maybe Text)
-  , _srtType           :: !TestType
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ScheduleRunTest =
+  ScheduleRunTest'
+    { _srtTestSpecARN    :: !(Maybe Text)
+    , _srtTestPackageARN :: !(Maybe Text)
+    , _srtParameters     :: !(Maybe (Map Text Text))
+    , _srtFilter         :: !(Maybe Text)
+    , _srtType           :: !TestType
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ScheduleRunTest' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'srtTestPackageARN' - The ARN of the uploaded test that will be run.
+-- * 'srtTestSpecARN' - The ARN of the YAML-formatted test specification.
 --
--- * 'srtParameters' - The test's parameters, such as the following test framework parameters and fixture settings: For Calabash tests:     * profile: A cucumber profile, for example, "my_profile_name".     * tags: You can limit execution to features or scenarios that have (or don't have) certain tags, for example, "@smoke" or "@smoke,~@wip". For Appium tests (all types):     * appium_version: The Appium version. Currently supported values are "1.4.16", "1.6.3", "latest", and "default".     * “latest” will run the latest Appium version supported by Device Farm (1.6.3).     * For “default”, Device Farm will choose a compatible version of Appium for the device. The current behavior is to run 1.4.16 on Android devices and iOS 9 and earlier, 1.6.3 for iOS 10 and later.     * This behavior is subject to change. For Fuzz tests (Android only):     * event_count: The number of events, between 1 and 10000, that the UI fuzz test should perform.     * throttle: The time, in ms, between 0 and 1000, that the UI fuzz test should wait between events.     * seed: A seed to use for randomizing the UI fuzz test. Using the same seed value between tests ensures identical event sequences. For Explorer tests:     * username: A username to use if the Explorer encounters a login form. If not supplied, no username will be inserted.     * password: A password to use if the Explorer encounters a login form. If not supplied, no password will be inserted. For Instrumentation:     * filter: A test filter string. Examples:     * Running a single test case: "com.android.abc.Test1"     * Running a single test: "com.android.abc.Test1#smoke"     * Running multiple tests: "com.android.abc.Test1,com.android.abc.Test2" For XCTest and XCTestUI:     * filter: A test filter string. Examples:     * Running a single test class: "LoginTests"     * Running a multiple test classes: "LoginTests,SmokeTests"     * Running a single test: "LoginTests/testValid"     * Running multiple tests: "LoginTests/testValid,LoginTests/testInvalid" For UIAutomator:     * filter: A test filter string. Examples:     * Running a single test case: "com.android.abc.Test1"     * Running a single test: "com.android.abc.Test1#smoke"     * Running multiple tests: "com.android.abc.Test1,com.android.abc.Test2"
+-- * 'srtTestPackageARN' - The ARN of the uploaded test to be run.
+--
+-- * 'srtParameters' - The test's parameters, such as test framework parameters and fixture settings. Parameters are represented by name-value pairs of strings. For all tests:     * @app_performance_monitoring@ : Performance monitoring is enabled by default. Set this parameter to false to disable it. For Calabash tests:     * profile: A cucumber profile (for example, @my_profile_name@ ).     * tags: You can limit execution to features or scenarios that have (or don't have) certain tags (for example, @smoke or @smoke,~@wip). For Appium tests (all types):     * appium_version: The Appium version. Currently supported values are 1.6.5 (and later), latest, and default.     * latest runs the latest Appium version supported by Device Farm (1.9.1).     * For default, Device Farm selects a compatible version of Appium for the device. The current behavior is to run 1.7.2 on Android devices and iOS 9 and earlier and 1.7.2 for iOS 10 and later.     * This behavior is subject to change. For fuzz tests (Android only):     * event_count: The number of events, between 1 and 10000, that the UI fuzz test should perform.     * throttle: The time, in ms, between 0 and 1000, that the UI fuzz test should wait between events.     * seed: A seed to use for randomizing the UI fuzz test. Using the same seed value between tests ensures identical event sequences. For Explorer tests:     * username: A user name to use if the Explorer encounters a login form. If not supplied, no user name is inserted.     * password: A password to use if the Explorer encounters a login form. If not supplied, no password is inserted. For Instrumentation:     * filter: A test filter string. Examples:     * Running a single test case: @com.android.abc.Test1@      * Running a single test: @com.android.abc.Test1#smoke@      * Running multiple tests: @com.android.abc.Test1,com.android.abc.Test2@  For XCTest and XCTestUI:     * filter: A test filter string. Examples:     * Running a single test class: @LoginTests@      * Running a multiple test classes: @LoginTests,SmokeTests@      * Running a single test: @LoginTests/testValid@      * Running multiple tests: @LoginTests/testValid,LoginTests/testInvalid@  For UIAutomator:     * filter: A test filter string. Examples:     * Running a single test case: @com.android.abc.Test1@      * Running a single test: @com.android.abc.Test1#smoke@      * Running multiple tests: @com.android.abc.Test1,com.android.abc.Test2@
 --
 -- * 'srtFilter' - The test's filter.
 --
--- * 'srtType' - The test's type. Must be one of the following values:     * BUILTIN_FUZZ: The built-in fuzz type.     * BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and capturing screenshots at the same time.     * APPIUM_JAVA_JUNIT: The Appium Java JUnit type.     * APPIUM_JAVA_TESTNG: The Appium Java TestNG type.     * APPIUM_PYTHON: The Appium Python type.     * APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.     * APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.     * APPIUM_WEB_PYTHON: The Appium Python type for Web apps.     * CALABASH: The Calabash type.     * INSTRUMENTATION: The Instrumentation type.     * UIAUTOMATION: The uiautomation type.     * UIAUTOMATOR: The uiautomator type.     * XCTEST: The XCode test type.     * XCTEST_UI: The XCode UI test type.
+-- * 'srtType' - The test's type. Must be one of the following values:     * BUILTIN_FUZZ     * BUILTIN_EXPLORER. For Android, an app explorer that traverses an Android app, interacting with it and capturing screenshots at the same time.     * APPIUM_JAVA_JUNIT     * APPIUM_JAVA_TESTNG     * APPIUM_PYTHON     * APPIUM_NODE     * APPIUM_RUBY     * APPIUM_WEB_JAVA_JUNIT     * APPIUM_WEB_JAVA_TESTNG     * APPIUM_WEB_PYTHON     * APPIUM_WEB_NODE     * APPIUM_WEB_RUBY     * CALABASH     * INSTRUMENTATION     * UIAUTOMATION     * UIAUTOMATOR     * XCTEST     * XCTEST_UI
 scheduleRunTest
     :: TestType -- ^ 'srtType'
     -> ScheduleRunTest
 scheduleRunTest pType_ =
   ScheduleRunTest'
-    { _srtTestPackageARN = Nothing
+    { _srtTestSpecARN = Nothing
+    , _srtTestPackageARN = Nothing
     , _srtParameters = Nothing
     , _srtFilter = Nothing
     , _srtType = pType_
     }
 
 
--- | The ARN of the uploaded test that will be run.
+-- | The ARN of the YAML-formatted test specification.
+srtTestSpecARN :: Lens' ScheduleRunTest (Maybe Text)
+srtTestSpecARN = lens _srtTestSpecARN (\ s a -> s{_srtTestSpecARN = a})
+
+-- | The ARN of the uploaded test to be run.
 srtTestPackageARN :: Lens' ScheduleRunTest (Maybe Text)
 srtTestPackageARN = lens _srtTestPackageARN (\ s a -> s{_srtTestPackageARN = a})
 
--- | The test's parameters, such as the following test framework parameters and fixture settings: For Calabash tests:     * profile: A cucumber profile, for example, "my_profile_name".     * tags: You can limit execution to features or scenarios that have (or don't have) certain tags, for example, "@smoke" or "@smoke,~@wip". For Appium tests (all types):     * appium_version: The Appium version. Currently supported values are "1.4.16", "1.6.3", "latest", and "default".     * “latest” will run the latest Appium version supported by Device Farm (1.6.3).     * For “default”, Device Farm will choose a compatible version of Appium for the device. The current behavior is to run 1.4.16 on Android devices and iOS 9 and earlier, 1.6.3 for iOS 10 and later.     * This behavior is subject to change. For Fuzz tests (Android only):     * event_count: The number of events, between 1 and 10000, that the UI fuzz test should perform.     * throttle: The time, in ms, between 0 and 1000, that the UI fuzz test should wait between events.     * seed: A seed to use for randomizing the UI fuzz test. Using the same seed value between tests ensures identical event sequences. For Explorer tests:     * username: A username to use if the Explorer encounters a login form. If not supplied, no username will be inserted.     * password: A password to use if the Explorer encounters a login form. If not supplied, no password will be inserted. For Instrumentation:     * filter: A test filter string. Examples:     * Running a single test case: "com.android.abc.Test1"     * Running a single test: "com.android.abc.Test1#smoke"     * Running multiple tests: "com.android.abc.Test1,com.android.abc.Test2" For XCTest and XCTestUI:     * filter: A test filter string. Examples:     * Running a single test class: "LoginTests"     * Running a multiple test classes: "LoginTests,SmokeTests"     * Running a single test: "LoginTests/testValid"     * Running multiple tests: "LoginTests/testValid,LoginTests/testInvalid" For UIAutomator:     * filter: A test filter string. Examples:     * Running a single test case: "com.android.abc.Test1"     * Running a single test: "com.android.abc.Test1#smoke"     * Running multiple tests: "com.android.abc.Test1,com.android.abc.Test2"
+-- | The test's parameters, such as test framework parameters and fixture settings. Parameters are represented by name-value pairs of strings. For all tests:     * @app_performance_monitoring@ : Performance monitoring is enabled by default. Set this parameter to false to disable it. For Calabash tests:     * profile: A cucumber profile (for example, @my_profile_name@ ).     * tags: You can limit execution to features or scenarios that have (or don't have) certain tags (for example, @smoke or @smoke,~@wip). For Appium tests (all types):     * appium_version: The Appium version. Currently supported values are 1.6.5 (and later), latest, and default.     * latest runs the latest Appium version supported by Device Farm (1.9.1).     * For default, Device Farm selects a compatible version of Appium for the device. The current behavior is to run 1.7.2 on Android devices and iOS 9 and earlier and 1.7.2 for iOS 10 and later.     * This behavior is subject to change. For fuzz tests (Android only):     * event_count: The number of events, between 1 and 10000, that the UI fuzz test should perform.     * throttle: The time, in ms, between 0 and 1000, that the UI fuzz test should wait between events.     * seed: A seed to use for randomizing the UI fuzz test. Using the same seed value between tests ensures identical event sequences. For Explorer tests:     * username: A user name to use if the Explorer encounters a login form. If not supplied, no user name is inserted.     * password: A password to use if the Explorer encounters a login form. If not supplied, no password is inserted. For Instrumentation:     * filter: A test filter string. Examples:     * Running a single test case: @com.android.abc.Test1@      * Running a single test: @com.android.abc.Test1#smoke@      * Running multiple tests: @com.android.abc.Test1,com.android.abc.Test2@  For XCTest and XCTestUI:     * filter: A test filter string. Examples:     * Running a single test class: @LoginTests@      * Running a multiple test classes: @LoginTests,SmokeTests@      * Running a single test: @LoginTests/testValid@      * Running multiple tests: @LoginTests/testValid,LoginTests/testInvalid@  For UIAutomator:     * filter: A test filter string. Examples:     * Running a single test case: @com.android.abc.Test1@      * Running a single test: @com.android.abc.Test1#smoke@      * Running multiple tests: @com.android.abc.Test1,com.android.abc.Test2@
 srtParameters :: Lens' ScheduleRunTest (HashMap Text Text)
 srtParameters = lens _srtParameters (\ s a -> s{_srtParameters = a}) . _Default . _Map
 
@@ -2860,7 +3176,7 @@ srtParameters = lens _srtParameters (\ s a -> s{_srtParameters = a}) . _Default 
 srtFilter :: Lens' ScheduleRunTest (Maybe Text)
 srtFilter = lens _srtFilter (\ s a -> s{_srtFilter = a})
 
--- | The test's type. Must be one of the following values:     * BUILTIN_FUZZ: The built-in fuzz type.     * BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and capturing screenshots at the same time.     * APPIUM_JAVA_JUNIT: The Appium Java JUnit type.     * APPIUM_JAVA_TESTNG: The Appium Java TestNG type.     * APPIUM_PYTHON: The Appium Python type.     * APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.     * APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.     * APPIUM_WEB_PYTHON: The Appium Python type for Web apps.     * CALABASH: The Calabash type.     * INSTRUMENTATION: The Instrumentation type.     * UIAUTOMATION: The uiautomation type.     * UIAUTOMATOR: The uiautomator type.     * XCTEST: The XCode test type.     * XCTEST_UI: The XCode UI test type.
+-- | The test's type. Must be one of the following values:     * BUILTIN_FUZZ     * BUILTIN_EXPLORER. For Android, an app explorer that traverses an Android app, interacting with it and capturing screenshots at the same time.     * APPIUM_JAVA_JUNIT     * APPIUM_JAVA_TESTNG     * APPIUM_PYTHON     * APPIUM_NODE     * APPIUM_RUBY     * APPIUM_WEB_JAVA_JUNIT     * APPIUM_WEB_JAVA_TESTNG     * APPIUM_WEB_PYTHON     * APPIUM_WEB_NODE     * APPIUM_WEB_RUBY     * CALABASH     * INSTRUMENTATION     * UIAUTOMATION     * UIAUTOMATOR     * XCTEST     * XCTEST_UI
 srtType :: Lens' ScheduleRunTest TestType
 srtType = lens _srtType (\ s a -> s{_srtType = a})
 
@@ -2872,7 +3188,8 @@ instance ToJSON ScheduleRunTest where
         toJSON ScheduleRunTest'{..}
           = object
               (catMaybes
-                 [("testPackageArn" .=) <$> _srtTestPackageARN,
+                 [("testSpecArn" .=) <$> _srtTestSpecARN,
+                  ("testPackageArn" .=) <$> _srtTestPackageARN,
                   ("parameters" .=) <$> _srtParameters,
                   ("filter" .=) <$> _srtFilter,
                   Just ("type" .= _srtType)])
@@ -2882,26 +3199,28 @@ instance ToJSON ScheduleRunTest where
 --
 --
 -- /See:/ 'suite' smart constructor.
-data Suite = Suite'
-  { _sStatus        :: !(Maybe ExecutionStatus)
-  , _sCounters      :: !(Maybe Counters)
-  , _sArn           :: !(Maybe Text)
-  , _sCreated       :: !(Maybe POSIX)
-  , _sStopped       :: !(Maybe POSIX)
-  , _sResult        :: !(Maybe ExecutionResult)
-  , _sName          :: !(Maybe Text)
-  , _sDeviceMinutes :: !(Maybe DeviceMinutes)
-  , _sType          :: !(Maybe TestType)
-  , _sMessage       :: !(Maybe Text)
-  , _sStarted       :: !(Maybe POSIX)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Suite =
+  Suite'
+    { _sStatus        :: !(Maybe ExecutionStatus)
+    , _sCounters      :: !(Maybe Counters)
+    , _sArn           :: !(Maybe Text)
+    , _sCreated       :: !(Maybe POSIX)
+    , _sStopped       :: !(Maybe POSIX)
+    , _sResult        :: !(Maybe ExecutionResult)
+    , _sName          :: !(Maybe Text)
+    , _sDeviceMinutes :: !(Maybe DeviceMinutes)
+    , _sType          :: !(Maybe TestType)
+    , _sMessage       :: !(Maybe Text)
+    , _sStarted       :: !(Maybe POSIX)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Suite' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sStatus' - The suite's status. Allowed values include:     * PENDING: A pending status.     * PENDING_CONCURRENCY: A pending concurrency status.     * PENDING_DEVICE: A pending device status.     * PROCESSING: A processing status.     * SCHEDULING: A scheduling status.     * PREPARING: A preparing status.     * RUNNING: A running status.     * COMPLETED: A completed status.     * STOPPING: A stopping status.
+-- * 'sStatus' - The suite's status. Allowed values include:     * PENDING     * PENDING_CONCURRENCY     * PENDING_DEVICE     * PROCESSING     * SCHEDULING     * PREPARING     * RUNNING     * COMPLETED     * STOPPING
 --
 -- * 'sCounters' - The suite's result counters.
 --
@@ -2911,13 +3230,13 @@ data Suite = Suite'
 --
 -- * 'sStopped' - The suite's stop time.
 --
--- * 'sResult' - The suite's result. Allowed values include:     * PENDING: A pending condition.     * PASSED: A passing condition.     * WARNED: A warning condition.     * FAILED: A failed condition.     * SKIPPED: A skipped condition.     * ERRORED: An error condition.     * STOPPED: A stopped condition.
+-- * 'sResult' - The suite's result. Allowed values include:     * PENDING     * PASSED     * WARNED     * FAILED     * SKIPPED     * ERRORED     * STOPPED
 --
 -- * 'sName' - The suite's name.
 --
 -- * 'sDeviceMinutes' - Represents the total (metered or unmetered) minutes used by the test suite.
 --
--- * 'sType' - The suite's type. Must be one of the following values:     * BUILTIN_FUZZ: The built-in fuzz type.     * BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and capturing screenshots at the same time.     * APPIUM_JAVA_JUNIT: The Appium Java JUnit type.     * APPIUM_JAVA_TESTNG: The Appium Java TestNG type.     * APPIUM_PYTHON: The Appium Python type.     * APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.     * APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.     * APPIUM_WEB_PYTHON: The Appium Python type for Web apps.     * CALABASH: The Calabash type.     * INSTRUMENTATION: The Instrumentation type.     * UIAUTOMATION: The uiautomation type.     * UIAUTOMATOR: The uiautomator type.     * XCTEST: The XCode test type.     * XCTEST_UI: The XCode UI test type.
+-- * 'sType' - The suite's type. Must be one of the following values:     * BUILTIN_FUZZ     * BUILTIN_EXPLORER      * APPIUM_JAVA_JUNIT     * APPIUM_JAVA_TESTNG     * APPIUM_PYTHON     * APPIUM_NODE     * APPIUM_RUBY     * APPIUM_WEB_JAVA_JUNIT     * APPIUM_WEB_JAVA_TESTNG     * APPIUM_WEB_PYTHON     * APPIUM_WEB_NODE     * APPIUM_WEB_RUBY     * CALABASH     * INSTRUMENTATION     * UIAUTOMATION     * UIAUTOMATOR     * XCTEST     * XCTEST_UI
 --
 -- * 'sMessage' - A message about the suite's result.
 --
@@ -2940,7 +3259,7 @@ suite =
     }
 
 
--- | The suite's status. Allowed values include:     * PENDING: A pending status.     * PENDING_CONCURRENCY: A pending concurrency status.     * PENDING_DEVICE: A pending device status.     * PROCESSING: A processing status.     * SCHEDULING: A scheduling status.     * PREPARING: A preparing status.     * RUNNING: A running status.     * COMPLETED: A completed status.     * STOPPING: A stopping status.
+-- | The suite's status. Allowed values include:     * PENDING     * PENDING_CONCURRENCY     * PENDING_DEVICE     * PROCESSING     * SCHEDULING     * PREPARING     * RUNNING     * COMPLETED     * STOPPING
 sStatus :: Lens' Suite (Maybe ExecutionStatus)
 sStatus = lens _sStatus (\ s a -> s{_sStatus = a})
 
@@ -2960,7 +3279,7 @@ sCreated = lens _sCreated (\ s a -> s{_sCreated = a}) . mapping _Time
 sStopped :: Lens' Suite (Maybe UTCTime)
 sStopped = lens _sStopped (\ s a -> s{_sStopped = a}) . mapping _Time
 
--- | The suite's result. Allowed values include:     * PENDING: A pending condition.     * PASSED: A passing condition.     * WARNED: A warning condition.     * FAILED: A failed condition.     * SKIPPED: A skipped condition.     * ERRORED: An error condition.     * STOPPED: A stopped condition.
+-- | The suite's result. Allowed values include:     * PENDING     * PASSED     * WARNED     * FAILED     * SKIPPED     * ERRORED     * STOPPED
 sResult :: Lens' Suite (Maybe ExecutionResult)
 sResult = lens _sResult (\ s a -> s{_sResult = a})
 
@@ -2972,7 +3291,7 @@ sName = lens _sName (\ s a -> s{_sName = a})
 sDeviceMinutes :: Lens' Suite (Maybe DeviceMinutes)
 sDeviceMinutes = lens _sDeviceMinutes (\ s a -> s{_sDeviceMinutes = a})
 
--- | The suite's type. Must be one of the following values:     * BUILTIN_FUZZ: The built-in fuzz type.     * BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and capturing screenshots at the same time.     * APPIUM_JAVA_JUNIT: The Appium Java JUnit type.     * APPIUM_JAVA_TESTNG: The Appium Java TestNG type.     * APPIUM_PYTHON: The Appium Python type.     * APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.     * APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.     * APPIUM_WEB_PYTHON: The Appium Python type for Web apps.     * CALABASH: The Calabash type.     * INSTRUMENTATION: The Instrumentation type.     * UIAUTOMATION: The uiautomation type.     * UIAUTOMATOR: The uiautomator type.     * XCTEST: The XCode test type.     * XCTEST_UI: The XCode UI test type.
+-- | The suite's type. Must be one of the following values:     * BUILTIN_FUZZ     * BUILTIN_EXPLORER      * APPIUM_JAVA_JUNIT     * APPIUM_JAVA_TESTNG     * APPIUM_PYTHON     * APPIUM_NODE     * APPIUM_RUBY     * APPIUM_WEB_JAVA_JUNIT     * APPIUM_WEB_JAVA_TESTNG     * APPIUM_WEB_PYTHON     * APPIUM_WEB_NODE     * APPIUM_WEB_RUBY     * CALABASH     * INSTRUMENTATION     * UIAUTOMATION     * UIAUTOMATOR     * XCTEST     * XCTEST_UI
 sType :: Lens' Suite (Maybe TestType)
 sType = lens _sType (\ s a -> s{_sType = a})
 
@@ -3004,31 +3323,84 @@ instance Hashable Suite where
 
 instance NFData Suite where
 
+-- | The metadata that you apply to a resource to help you categorize and organize it. Each tag consists of a key and an optional value, both of which you define. Tag keys can have a maximum character length of 128 characters. Tag values can have a maximum length of 256 characters.
+--
+--
+--
+-- /See:/ 'tag' smart constructor.
+data Tag =
+  Tag'
+    { _tagKey   :: !Text
+    , _tagValue :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'Tag' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'tagKey' - One part of a key-value pair that makes up a tag. A @key@ is a general label that acts like a category for more specific tag values.
+--
+-- * 'tagValue' - The optional part of a key-value pair that makes up a tag. A @value@ acts as a descriptor in a tag category (key).
+tag
+    :: Text -- ^ 'tagKey'
+    -> Text -- ^ 'tagValue'
+    -> Tag
+tag pKey_ pValue_ = Tag' {_tagKey = pKey_, _tagValue = pValue_}
+
+
+-- | One part of a key-value pair that makes up a tag. A @key@ is a general label that acts like a category for more specific tag values.
+tagKey :: Lens' Tag Text
+tagKey = lens _tagKey (\ s a -> s{_tagKey = a})
+
+-- | The optional part of a key-value pair that makes up a tag. A @value@ acts as a descriptor in a tag category (key).
+tagValue :: Lens' Tag Text
+tagValue = lens _tagValue (\ s a -> s{_tagValue = a})
+
+instance FromJSON Tag where
+        parseJSON
+          = withObject "Tag"
+              (\ x -> Tag' <$> (x .: "Key") <*> (x .: "Value"))
+
+instance Hashable Tag where
+
+instance NFData Tag where
+
+instance ToJSON Tag where
+        toJSON Tag'{..}
+          = object
+              (catMaybes
+                 [Just ("Key" .= _tagKey),
+                  Just ("Value" .= _tagValue)])
+
 -- | Represents a condition that is evaluated.
 --
 --
 --
 -- /See:/ 'test' smart constructor.
-data Test = Test'
-  { _tStatus        :: !(Maybe ExecutionStatus)
-  , _tCounters      :: !(Maybe Counters)
-  , _tArn           :: !(Maybe Text)
-  , _tCreated       :: !(Maybe POSIX)
-  , _tStopped       :: !(Maybe POSIX)
-  , _tResult        :: !(Maybe ExecutionResult)
-  , _tName          :: !(Maybe Text)
-  , _tDeviceMinutes :: !(Maybe DeviceMinutes)
-  , _tType          :: !(Maybe TestType)
-  , _tMessage       :: !(Maybe Text)
-  , _tStarted       :: !(Maybe POSIX)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Test =
+  Test'
+    { _tStatus        :: !(Maybe ExecutionStatus)
+    , _tCounters      :: !(Maybe Counters)
+    , _tArn           :: !(Maybe Text)
+    , _tCreated       :: !(Maybe POSIX)
+    , _tStopped       :: !(Maybe POSIX)
+    , _tResult        :: !(Maybe ExecutionResult)
+    , _tName          :: !(Maybe Text)
+    , _tDeviceMinutes :: !(Maybe DeviceMinutes)
+    , _tType          :: !(Maybe TestType)
+    , _tMessage       :: !(Maybe Text)
+    , _tStarted       :: !(Maybe POSIX)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Test' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tStatus' - The test's status. Allowed values include:     * PENDING: A pending status.     * PENDING_CONCURRENCY: A pending concurrency status.     * PENDING_DEVICE: A pending device status.     * PROCESSING: A processing status.     * SCHEDULING: A scheduling status.     * PREPARING: A preparing status.     * RUNNING: A running status.     * COMPLETED: A completed status.     * STOPPING: A stopping status.
+-- * 'tStatus' - The test's status. Allowed values include:     * PENDING     * PENDING_CONCURRENCY     * PENDING_DEVICE     * PROCESSING     * SCHEDULING     * PREPARING     * RUNNING     * COMPLETED     * STOPPING
 --
 -- * 'tCounters' - The test's result counters.
 --
@@ -3038,13 +3410,13 @@ data Test = Test'
 --
 -- * 'tStopped' - The test's stop time.
 --
--- * 'tResult' - The test's result. Allowed values include:     * PENDING: A pending condition.     * PASSED: A passing condition.     * WARNED: A warning condition.     * FAILED: A failed condition.     * SKIPPED: A skipped condition.     * ERRORED: An error condition.     * STOPPED: A stopped condition.
+-- * 'tResult' - The test's result. Allowed values include:     * PENDING     * PASSED     * WARNED     * FAILED     * SKIPPED     * ERRORED     * STOPPED
 --
 -- * 'tName' - The test's name.
 --
 -- * 'tDeviceMinutes' - Represents the total (metered or unmetered) minutes used by the test.
 --
--- * 'tType' - The test's type. Must be one of the following values:     * BUILTIN_FUZZ: The built-in fuzz type.     * BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and capturing screenshots at the same time.     * APPIUM_JAVA_JUNIT: The Appium Java JUnit type.     * APPIUM_JAVA_TESTNG: The Appium Java TestNG type.     * APPIUM_PYTHON: The Appium Python type.     * APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.     * APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.     * APPIUM_WEB_PYTHON: The Appium Python type for Web apps.     * CALABASH: The Calabash type.     * INSTRUMENTATION: The Instrumentation type.     * UIAUTOMATION: The uiautomation type.     * UIAUTOMATOR: The uiautomator type.     * XCTEST: The XCode test type.     * XCTEST_UI: The XCode UI test type.
+-- * 'tType' - The test's type. Must be one of the following values:     * BUILTIN_FUZZ     * BUILTIN_EXPLORER     * APPIUM_JAVA_JUNIT     * APPIUM_JAVA_TESTNG     * APPIUM_PYTHON     * APPIUM_NODE     * APPIUM_RUBY     * APPIUM_WEB_JAVA_JUNIT     * APPIUM_WEB_JAVA_TESTNG     * APPIUM_WEB_PYTHON     * APPIUM_WEB_NODE     * APPIUM_WEB_RUBY     * CALABASH     * INSTRUMENTATION     * UIAUTOMATION     * UIAUTOMATOR     * XCTEST     * XCTEST_UI
 --
 -- * 'tMessage' - A message about the test's result.
 --
@@ -3067,7 +3439,7 @@ test =
     }
 
 
--- | The test's status. Allowed values include:     * PENDING: A pending status.     * PENDING_CONCURRENCY: A pending concurrency status.     * PENDING_DEVICE: A pending device status.     * PROCESSING: A processing status.     * SCHEDULING: A scheduling status.     * PREPARING: A preparing status.     * RUNNING: A running status.     * COMPLETED: A completed status.     * STOPPING: A stopping status.
+-- | The test's status. Allowed values include:     * PENDING     * PENDING_CONCURRENCY     * PENDING_DEVICE     * PROCESSING     * SCHEDULING     * PREPARING     * RUNNING     * COMPLETED     * STOPPING
 tStatus :: Lens' Test (Maybe ExecutionStatus)
 tStatus = lens _tStatus (\ s a -> s{_tStatus = a})
 
@@ -3087,7 +3459,7 @@ tCreated = lens _tCreated (\ s a -> s{_tCreated = a}) . mapping _Time
 tStopped :: Lens' Test (Maybe UTCTime)
 tStopped = lens _tStopped (\ s a -> s{_tStopped = a}) . mapping _Time
 
--- | The test's result. Allowed values include:     * PENDING: A pending condition.     * PASSED: A passing condition.     * WARNED: A warning condition.     * FAILED: A failed condition.     * SKIPPED: A skipped condition.     * ERRORED: An error condition.     * STOPPED: A stopped condition.
+-- | The test's result. Allowed values include:     * PENDING     * PASSED     * WARNED     * FAILED     * SKIPPED     * ERRORED     * STOPPED
 tResult :: Lens' Test (Maybe ExecutionResult)
 tResult = lens _tResult (\ s a -> s{_tResult = a})
 
@@ -3099,7 +3471,7 @@ tName = lens _tName (\ s a -> s{_tName = a})
 tDeviceMinutes :: Lens' Test (Maybe DeviceMinutes)
 tDeviceMinutes = lens _tDeviceMinutes (\ s a -> s{_tDeviceMinutes = a})
 
--- | The test's type. Must be one of the following values:     * BUILTIN_FUZZ: The built-in fuzz type.     * BUILTIN_EXPLORER: For Android, an app explorer that will traverse an Android app, interacting with it and capturing screenshots at the same time.     * APPIUM_JAVA_JUNIT: The Appium Java JUnit type.     * APPIUM_JAVA_TESTNG: The Appium Java TestNG type.     * APPIUM_PYTHON: The Appium Python type.     * APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.     * APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.     * APPIUM_WEB_PYTHON: The Appium Python type for Web apps.     * CALABASH: The Calabash type.     * INSTRUMENTATION: The Instrumentation type.     * UIAUTOMATION: The uiautomation type.     * UIAUTOMATOR: The uiautomator type.     * XCTEST: The XCode test type.     * XCTEST_UI: The XCode UI test type.
+-- | The test's type. Must be one of the following values:     * BUILTIN_FUZZ     * BUILTIN_EXPLORER     * APPIUM_JAVA_JUNIT     * APPIUM_JAVA_TESTNG     * APPIUM_PYTHON     * APPIUM_NODE     * APPIUM_RUBY     * APPIUM_WEB_JAVA_JUNIT     * APPIUM_WEB_JAVA_TESTNG     * APPIUM_WEB_PYTHON     * APPIUM_WEB_NODE     * APPIUM_WEB_RUBY     * CALABASH     * INSTRUMENTATION     * UIAUTOMATION     * UIAUTOMATOR     * XCTEST     * XCTEST_UI
 tType :: Lens' Test (Maybe TestType)
 tType = lens _tType (\ s a -> s{_tType = a})
 
@@ -3131,15 +3503,296 @@ instance Hashable Test where
 
 instance NFData Test where
 
+-- | A Selenium testing project. Projects are used to collect and collate sessions.
+--
+--
+--
+-- /See:/ 'testGridProject' smart constructor.
+data TestGridProject =
+  TestGridProject'
+    { _tgpArn         :: !(Maybe Text)
+    , _tgpCreated     :: !(Maybe POSIX)
+    , _tgpName        :: !(Maybe Text)
+    , _tgpDescription :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'TestGridProject' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'tgpArn' - The ARN for the project.
+--
+-- * 'tgpCreated' - When the project was created.
+--
+-- * 'tgpName' - A human-readable name for the project.
+--
+-- * 'tgpDescription' - A human-readable description for the project.
+testGridProject
+    :: TestGridProject
+testGridProject =
+  TestGridProject'
+    { _tgpArn = Nothing
+    , _tgpCreated = Nothing
+    , _tgpName = Nothing
+    , _tgpDescription = Nothing
+    }
+
+
+-- | The ARN for the project.
+tgpArn :: Lens' TestGridProject (Maybe Text)
+tgpArn = lens _tgpArn (\ s a -> s{_tgpArn = a})
+
+-- | When the project was created.
+tgpCreated :: Lens' TestGridProject (Maybe UTCTime)
+tgpCreated = lens _tgpCreated (\ s a -> s{_tgpCreated = a}) . mapping _Time
+
+-- | A human-readable name for the project.
+tgpName :: Lens' TestGridProject (Maybe Text)
+tgpName = lens _tgpName (\ s a -> s{_tgpName = a})
+
+-- | A human-readable description for the project.
+tgpDescription :: Lens' TestGridProject (Maybe Text)
+tgpDescription = lens _tgpDescription (\ s a -> s{_tgpDescription = a})
+
+instance FromJSON TestGridProject where
+        parseJSON
+          = withObject "TestGridProject"
+              (\ x ->
+                 TestGridProject' <$>
+                   (x .:? "arn") <*> (x .:? "created") <*>
+                     (x .:? "name")
+                     <*> (x .:? "description"))
+
+instance Hashable TestGridProject where
+
+instance NFData TestGridProject where
+
+-- | A 'TestGridSession' is a single instance of a browser launched from the URL provided by a call to 'CreateTestGridUrl' .
+--
+--
+--
+-- /See:/ 'testGridSession' smart constructor.
+data TestGridSession =
+  TestGridSession'
+    { _tgsStatus             :: !(Maybe TestGridSessionStatus)
+    , _tgsArn                :: !(Maybe Text)
+    , _tgsCreated            :: !(Maybe POSIX)
+    , _tgsBillingMinutes     :: !(Maybe Double)
+    , _tgsEnded              :: !(Maybe POSIX)
+    , _tgsSeleniumProperties :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'TestGridSession' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'tgsStatus' - The state of the session.
+--
+-- * 'tgsArn' - The ARN of the session.
+--
+-- * 'tgsCreated' - The time that the session was started.
+--
+-- * 'tgsBillingMinutes' - The number of billed minutes that were used for this session.
+--
+-- * 'tgsEnded' - The time the session ended.
+--
+-- * 'tgsSeleniumProperties' - A JSON object of options and parameters passed to the Selenium WebDriver.
+testGridSession
+    :: TestGridSession
+testGridSession =
+  TestGridSession'
+    { _tgsStatus = Nothing
+    , _tgsArn = Nothing
+    , _tgsCreated = Nothing
+    , _tgsBillingMinutes = Nothing
+    , _tgsEnded = Nothing
+    , _tgsSeleniumProperties = Nothing
+    }
+
+
+-- | The state of the session.
+tgsStatus :: Lens' TestGridSession (Maybe TestGridSessionStatus)
+tgsStatus = lens _tgsStatus (\ s a -> s{_tgsStatus = a})
+
+-- | The ARN of the session.
+tgsArn :: Lens' TestGridSession (Maybe Text)
+tgsArn = lens _tgsArn (\ s a -> s{_tgsArn = a})
+
+-- | The time that the session was started.
+tgsCreated :: Lens' TestGridSession (Maybe UTCTime)
+tgsCreated = lens _tgsCreated (\ s a -> s{_tgsCreated = a}) . mapping _Time
+
+-- | The number of billed minutes that were used for this session.
+tgsBillingMinutes :: Lens' TestGridSession (Maybe Double)
+tgsBillingMinutes = lens _tgsBillingMinutes (\ s a -> s{_tgsBillingMinutes = a})
+
+-- | The time the session ended.
+tgsEnded :: Lens' TestGridSession (Maybe UTCTime)
+tgsEnded = lens _tgsEnded (\ s a -> s{_tgsEnded = a}) . mapping _Time
+
+-- | A JSON object of options and parameters passed to the Selenium WebDriver.
+tgsSeleniumProperties :: Lens' TestGridSession (Maybe Text)
+tgsSeleniumProperties = lens _tgsSeleniumProperties (\ s a -> s{_tgsSeleniumProperties = a})
+
+instance FromJSON TestGridSession where
+        parseJSON
+          = withObject "TestGridSession"
+              (\ x ->
+                 TestGridSession' <$>
+                   (x .:? "status") <*> (x .:? "arn") <*>
+                     (x .:? "created")
+                     <*> (x .:? "billingMinutes")
+                     <*> (x .:? "ended")
+                     <*> (x .:? "seleniumProperties"))
+
+instance Hashable TestGridSession where
+
+instance NFData TestGridSession where
+
+-- | An action taken by a 'TestGridSession' browser instance.
+--
+--
+--
+-- /See:/ 'testGridSessionAction' smart constructor.
+data TestGridSessionAction =
+  TestGridSessionAction'
+    { _tgsaAction        :: !(Maybe Text)
+    , _tgsaDuration      :: !(Maybe Integer)
+    , _tgsaRequestMethod :: !(Maybe Text)
+    , _tgsaStarted       :: !(Maybe POSIX)
+    , _tgsaStatusCode    :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'TestGridSessionAction' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'tgsaAction' - The action taken by the session.
+--
+-- * 'tgsaDuration' - The time, in milliseconds, that the action took to complete in the browser.
+--
+-- * 'tgsaRequestMethod' - HTTP method that the browser used to make the request.
+--
+-- * 'tgsaStarted' - The time that the session invoked the action.
+--
+-- * 'tgsaStatusCode' - HTTP status code returned to the browser when the action was taken.
+testGridSessionAction
+    :: TestGridSessionAction
+testGridSessionAction =
+  TestGridSessionAction'
+    { _tgsaAction = Nothing
+    , _tgsaDuration = Nothing
+    , _tgsaRequestMethod = Nothing
+    , _tgsaStarted = Nothing
+    , _tgsaStatusCode = Nothing
+    }
+
+
+-- | The action taken by the session.
+tgsaAction :: Lens' TestGridSessionAction (Maybe Text)
+tgsaAction = lens _tgsaAction (\ s a -> s{_tgsaAction = a})
+
+-- | The time, in milliseconds, that the action took to complete in the browser.
+tgsaDuration :: Lens' TestGridSessionAction (Maybe Integer)
+tgsaDuration = lens _tgsaDuration (\ s a -> s{_tgsaDuration = a})
+
+-- | HTTP method that the browser used to make the request.
+tgsaRequestMethod :: Lens' TestGridSessionAction (Maybe Text)
+tgsaRequestMethod = lens _tgsaRequestMethod (\ s a -> s{_tgsaRequestMethod = a})
+
+-- | The time that the session invoked the action.
+tgsaStarted :: Lens' TestGridSessionAction (Maybe UTCTime)
+tgsaStarted = lens _tgsaStarted (\ s a -> s{_tgsaStarted = a}) . mapping _Time
+
+-- | HTTP status code returned to the browser when the action was taken.
+tgsaStatusCode :: Lens' TestGridSessionAction (Maybe Text)
+tgsaStatusCode = lens _tgsaStatusCode (\ s a -> s{_tgsaStatusCode = a})
+
+instance FromJSON TestGridSessionAction where
+        parseJSON
+          = withObject "TestGridSessionAction"
+              (\ x ->
+                 TestGridSessionAction' <$>
+                   (x .:? "action") <*> (x .:? "duration") <*>
+                     (x .:? "requestMethod")
+                     <*> (x .:? "started")
+                     <*> (x .:? "statusCode"))
+
+instance Hashable TestGridSessionAction where
+
+instance NFData TestGridSessionAction where
+
+-- | Artifacts are video and other files that are produced in the process of running a browser in an automated context.
+--
+--
+--
+-- /See:/ 'testGridSessionArtifact' smart constructor.
+data TestGridSessionArtifact =
+  TestGridSessionArtifact'
+    { _tgsaUrl      :: !(Maybe Text)
+    , _tgsaType     :: !(Maybe TestGridSessionArtifactType)
+    , _tgsaFilename :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'TestGridSessionArtifact' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'tgsaUrl' - A semi-stable URL to the content of the object.
+--
+-- * 'tgsaType' - The kind of artifact.
+--
+-- * 'tgsaFilename' - The file name of the artifact.
+testGridSessionArtifact
+    :: TestGridSessionArtifact
+testGridSessionArtifact =
+  TestGridSessionArtifact'
+    {_tgsaUrl = Nothing, _tgsaType = Nothing, _tgsaFilename = Nothing}
+
+
+-- | A semi-stable URL to the content of the object.
+tgsaUrl :: Lens' TestGridSessionArtifact (Maybe Text)
+tgsaUrl = lens _tgsaUrl (\ s a -> s{_tgsaUrl = a})
+
+-- | The kind of artifact.
+tgsaType :: Lens' TestGridSessionArtifact (Maybe TestGridSessionArtifactType)
+tgsaType = lens _tgsaType (\ s a -> s{_tgsaType = a})
+
+-- | The file name of the artifact.
+tgsaFilename :: Lens' TestGridSessionArtifact (Maybe Text)
+tgsaFilename = lens _tgsaFilename (\ s a -> s{_tgsaFilename = a})
+
+instance FromJSON TestGridSessionArtifact where
+        parseJSON
+          = withObject "TestGridSessionArtifact"
+              (\ x ->
+                 TestGridSessionArtifact' <$>
+                   (x .:? "url") <*> (x .:? "type") <*>
+                     (x .:? "filename"))
+
+instance Hashable TestGridSessionArtifact where
+
+instance NFData TestGridSessionArtifact where
+
 -- | Represents information about free trial device minutes for an AWS account.
 --
 --
 --
 -- /See:/ 'trialMinutes' smart constructor.
-data TrialMinutes = TrialMinutes'
-  { _tmRemaining :: !(Maybe Double)
-  , _tmTotal     :: !(Maybe Double)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data TrialMinutes =
+  TrialMinutes'
+    { _tmRemaining :: !(Maybe Double)
+    , _tmTotal     :: !(Maybe Double)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'TrialMinutes' with the minimum fields required to make a request.
@@ -3178,10 +3831,12 @@ instance NFData TrialMinutes where
 --
 --
 -- /See:/ 'uniqueProblem' smart constructor.
-data UniqueProblem = UniqueProblem'
-  { _upProblems :: !(Maybe [Problem])
-  , _upMessage  :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data UniqueProblem =
+  UniqueProblem'
+    { _upProblems :: !(Maybe [Problem])
+    , _upMessage  :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UniqueProblem' with the minimum fields required to make a request.
@@ -3220,40 +3875,45 @@ instance NFData UniqueProblem where
 --
 --
 -- /See:/ 'upload' smart constructor.
-data Upload = Upload'
-  { _uStatus      :: !(Maybe UploadStatus)
-  , _uArn         :: !(Maybe Text)
-  , _uCreated     :: !(Maybe POSIX)
-  , _uUrl         :: !(Maybe Text)
-  , _uName        :: !(Maybe Text)
-  , _uMetadata    :: !(Maybe Text)
-  , _uType        :: !(Maybe UploadType)
-  , _uMessage     :: !(Maybe Text)
-  , _uContentType :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Upload =
+  Upload'
+    { _uStatus      :: !(Maybe UploadStatus)
+    , _uArn         :: !(Maybe Text)
+    , _uCreated     :: !(Maybe POSIX)
+    , _uCategory    :: !(Maybe UploadCategory)
+    , _uUrl         :: !(Maybe Text)
+    , _uName        :: !(Maybe Text)
+    , _uMetadata    :: !(Maybe Text)
+    , _uType        :: !(Maybe UploadType)
+    , _uMessage     :: !(Maybe Text)
+    , _uContentType :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Upload' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'uStatus' - The upload's status. Must be one of the following values:     * FAILED: A failed status.     * INITIALIZED: An initialized status.     * PROCESSING: A processing status.     * SUCCEEDED: A succeeded status.
+-- * 'uStatus' - The upload's status. Must be one of the following values:     * FAILED     * INITIALIZED     * PROCESSING     * SUCCEEDED
 --
 -- * 'uArn' - The upload's ARN.
 --
 -- * 'uCreated' - When the upload was created.
 --
--- * 'uUrl' - The pre-signed Amazon S3 URL that was used to store a file through a corresponding PUT request.
+-- * 'uCategory' - The upload's category. Allowed values include:     * CURATED: An upload managed by AWS Device Farm.     * PRIVATE: An upload managed by the AWS Device Farm customer.
+--
+-- * 'uUrl' - The presigned Amazon S3 URL that was used to store a file using a PUT request.
 --
 -- * 'uName' - The upload's file name.
 --
 -- * 'uMetadata' - The upload's metadata. For example, for Android, this contains information that is parsed from the manifest and is displayed in the AWS Device Farm console after the associated app is uploaded.
 --
--- * 'uType' - The upload's type. Must be one of the following values:     * ANDROID_APP: An Android upload.     * IOS_APP: An iOS upload.     * WEB_APP: A web appliction upload.     * EXTERNAL_DATA: An external data upload.     * APPIUM_JAVA_JUNIT_TEST_PACKAGE: An Appium Java JUnit test package upload.     * APPIUM_JAVA_TESTNG_TEST_PACKAGE: An Appium Java TestNG test package upload.     * APPIUM_PYTHON_TEST_PACKAGE: An Appium Python test package upload.     * APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE: An Appium Java JUnit test package upload.     * APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE: An Appium Java TestNG test package upload.     * APPIUM_WEB_PYTHON_TEST_PACKAGE: An Appium Python test package upload.     * CALABASH_TEST_PACKAGE: A Calabash test package upload.     * INSTRUMENTATION_TEST_PACKAGE: An instrumentation upload.     * UIAUTOMATION_TEST_PACKAGE: A uiautomation test package upload.     * UIAUTOMATOR_TEST_PACKAGE: A uiautomator test package upload.     * XCTEST_TEST_PACKAGE: An XCode test package upload.     * XCTEST_UI_TEST_PACKAGE: An XCode UI test package upload.
+-- * 'uType' - The upload's type. Must be one of the following values:     * ANDROID_APP     * IOS_APP     * WEB_APP     * EXTERNAL_DATA     * APPIUM_JAVA_JUNIT_TEST_PACKAGE     * APPIUM_JAVA_TESTNG_TEST_PACKAGE     * APPIUM_PYTHON_TEST_PACKAGE     * APPIUM_NODE_TEST_PACKAGE     * APPIUM_RUBY_TEST_PACKAGE     * APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE     * APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE     * APPIUM_WEB_PYTHON_TEST_PACKAGE     * APPIUM_WEB_NODE_TEST_PACKAGE     * APPIUM_WEB_RUBY_TEST_PACKAGE     * CALABASH_TEST_PACKAGE     * INSTRUMENTATION_TEST_PACKAGE     * UIAUTOMATION_TEST_PACKAGE     * UIAUTOMATOR_TEST_PACKAGE     * XCTEST_TEST_PACKAGE     * XCTEST_UI_TEST_PACKAGE     * APPIUM_JAVA_JUNIT_TEST_SPEC     * APPIUM_JAVA_TESTNG_TEST_SPEC     * APPIUM_PYTHON_TEST_SPEC     * APPIUM_NODE_TEST_SPEC     * APPIUM_RUBY_TEST_SPEC     * APPIUM_WEB_JAVA_JUNIT_TEST_SPEC     * APPIUM_WEB_JAVA_TESTNG_TEST_SPEC     * APPIUM_WEB_PYTHON_TEST_SPEC     * APPIUM_WEB_NODE_TEST_SPEC     * APPIUM_WEB_RUBY_TEST_SPEC     * INSTRUMENTATION_TEST_SPEC     * XCTEST_UI_TEST_SPEC
 --
 -- * 'uMessage' - A message about the upload's result.
 --
--- * 'uContentType' - The upload's content type (for example, "application/octet-stream").
+-- * 'uContentType' - The upload's content type (for example, @application/octet-stream@ ).
 upload
     :: Upload
 upload =
@@ -3261,6 +3921,7 @@ upload =
     { _uStatus = Nothing
     , _uArn = Nothing
     , _uCreated = Nothing
+    , _uCategory = Nothing
     , _uUrl = Nothing
     , _uName = Nothing
     , _uMetadata = Nothing
@@ -3270,7 +3931,7 @@ upload =
     }
 
 
--- | The upload's status. Must be one of the following values:     * FAILED: A failed status.     * INITIALIZED: An initialized status.     * PROCESSING: A processing status.     * SUCCEEDED: A succeeded status.
+-- | The upload's status. Must be one of the following values:     * FAILED     * INITIALIZED     * PROCESSING     * SUCCEEDED
 uStatus :: Lens' Upload (Maybe UploadStatus)
 uStatus = lens _uStatus (\ s a -> s{_uStatus = a})
 
@@ -3282,7 +3943,11 @@ uArn = lens _uArn (\ s a -> s{_uArn = a})
 uCreated :: Lens' Upload (Maybe UTCTime)
 uCreated = lens _uCreated (\ s a -> s{_uCreated = a}) . mapping _Time
 
--- | The pre-signed Amazon S3 URL that was used to store a file through a corresponding PUT request.
+-- | The upload's category. Allowed values include:     * CURATED: An upload managed by AWS Device Farm.     * PRIVATE: An upload managed by the AWS Device Farm customer.
+uCategory :: Lens' Upload (Maybe UploadCategory)
+uCategory = lens _uCategory (\ s a -> s{_uCategory = a})
+
+-- | The presigned Amazon S3 URL that was used to store a file using a PUT request.
 uUrl :: Lens' Upload (Maybe Text)
 uUrl = lens _uUrl (\ s a -> s{_uUrl = a})
 
@@ -3294,7 +3959,7 @@ uName = lens _uName (\ s a -> s{_uName = a})
 uMetadata :: Lens' Upload (Maybe Text)
 uMetadata = lens _uMetadata (\ s a -> s{_uMetadata = a})
 
--- | The upload's type. Must be one of the following values:     * ANDROID_APP: An Android upload.     * IOS_APP: An iOS upload.     * WEB_APP: A web appliction upload.     * EXTERNAL_DATA: An external data upload.     * APPIUM_JAVA_JUNIT_TEST_PACKAGE: An Appium Java JUnit test package upload.     * APPIUM_JAVA_TESTNG_TEST_PACKAGE: An Appium Java TestNG test package upload.     * APPIUM_PYTHON_TEST_PACKAGE: An Appium Python test package upload.     * APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE: An Appium Java JUnit test package upload.     * APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE: An Appium Java TestNG test package upload.     * APPIUM_WEB_PYTHON_TEST_PACKAGE: An Appium Python test package upload.     * CALABASH_TEST_PACKAGE: A Calabash test package upload.     * INSTRUMENTATION_TEST_PACKAGE: An instrumentation upload.     * UIAUTOMATION_TEST_PACKAGE: A uiautomation test package upload.     * UIAUTOMATOR_TEST_PACKAGE: A uiautomator test package upload.     * XCTEST_TEST_PACKAGE: An XCode test package upload.     * XCTEST_UI_TEST_PACKAGE: An XCode UI test package upload.
+-- | The upload's type. Must be one of the following values:     * ANDROID_APP     * IOS_APP     * WEB_APP     * EXTERNAL_DATA     * APPIUM_JAVA_JUNIT_TEST_PACKAGE     * APPIUM_JAVA_TESTNG_TEST_PACKAGE     * APPIUM_PYTHON_TEST_PACKAGE     * APPIUM_NODE_TEST_PACKAGE     * APPIUM_RUBY_TEST_PACKAGE     * APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE     * APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE     * APPIUM_WEB_PYTHON_TEST_PACKAGE     * APPIUM_WEB_NODE_TEST_PACKAGE     * APPIUM_WEB_RUBY_TEST_PACKAGE     * CALABASH_TEST_PACKAGE     * INSTRUMENTATION_TEST_PACKAGE     * UIAUTOMATION_TEST_PACKAGE     * UIAUTOMATOR_TEST_PACKAGE     * XCTEST_TEST_PACKAGE     * XCTEST_UI_TEST_PACKAGE     * APPIUM_JAVA_JUNIT_TEST_SPEC     * APPIUM_JAVA_TESTNG_TEST_SPEC     * APPIUM_PYTHON_TEST_SPEC     * APPIUM_NODE_TEST_SPEC     * APPIUM_RUBY_TEST_SPEC     * APPIUM_WEB_JAVA_JUNIT_TEST_SPEC     * APPIUM_WEB_JAVA_TESTNG_TEST_SPEC     * APPIUM_WEB_PYTHON_TEST_SPEC     * APPIUM_WEB_NODE_TEST_SPEC     * APPIUM_WEB_RUBY_TEST_SPEC     * INSTRUMENTATION_TEST_SPEC     * XCTEST_UI_TEST_SPEC
 uType :: Lens' Upload (Maybe UploadType)
 uType = lens _uType (\ s a -> s{_uType = a})
 
@@ -3302,7 +3967,7 @@ uType = lens _uType (\ s a -> s{_uType = a})
 uMessage :: Lens' Upload (Maybe Text)
 uMessage = lens _uMessage (\ s a -> s{_uMessage = a})
 
--- | The upload's content type (for example, "application/octet-stream").
+-- | The upload's content type (for example, @application/octet-stream@ ).
 uContentType :: Lens' Upload (Maybe Text)
 uContentType = lens _uContentType (\ s a -> s{_uContentType = a})
 
@@ -3313,6 +3978,7 @@ instance FromJSON Upload where
                  Upload' <$>
                    (x .:? "status") <*> (x .:? "arn") <*>
                      (x .:? "created")
+                     <*> (x .:? "category")
                      <*> (x .:? "url")
                      <*> (x .:? "name")
                      <*> (x .:? "metadata")
@@ -3329,28 +3995,30 @@ instance NFData Upload where
 --
 --
 -- /See:/ 'vpcEConfiguration' smart constructor.
-data VPCEConfiguration = VPCEConfiguration'
-  { _vecVpceServiceName              :: !(Maybe Text)
-  , _vecArn                          :: !(Maybe Text)
-  , _vecVpceConfigurationName        :: !(Maybe Text)
-  , _vecServiceDNSName               :: !(Maybe Text)
-  , _vecVpceConfigurationDescription :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data VPCEConfiguration =
+  VPCEConfiguration'
+    { _vecVpceServiceName              :: !(Maybe Text)
+    , _vecArn                          :: !(Maybe Text)
+    , _vecVpceConfigurationName        :: !(Maybe Text)
+    , _vecServiceDNSName               :: !(Maybe Text)
+    , _vecVpceConfigurationDescription :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'VPCEConfiguration' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'vecVpceServiceName' - The name of the VPC endpoint service running inside your AWS account that you want Device Farm to test.
+-- * 'vecVpceServiceName' - The name of the VPC endpoint service running in your AWS account that you want Device Farm to test.
 --
 -- * 'vecArn' - The Amazon Resource Name (ARN) of the VPC endpoint configuration.
 --
--- * 'vecVpceConfigurationName' - The friendly name you give to your VPC endpoint configuration, to manage your configurations more easily.
+-- * 'vecVpceConfigurationName' - The friendly name you give to your VPC endpoint configuration to manage your configurations more easily.
 --
 -- * 'vecServiceDNSName' - The DNS name that maps to the private IP address of the service you want to access.
 --
--- * 'vecVpceConfigurationDescription' - An optional description, providing more details about your VPC endpoint configuration.
+-- * 'vecVpceConfigurationDescription' - An optional description that provides details about your VPC endpoint configuration.
 vpcEConfiguration
     :: VPCEConfiguration
 vpcEConfiguration =
@@ -3363,7 +4031,7 @@ vpcEConfiguration =
     }
 
 
--- | The name of the VPC endpoint service running inside your AWS account that you want Device Farm to test.
+-- | The name of the VPC endpoint service running in your AWS account that you want Device Farm to test.
 vecVpceServiceName :: Lens' VPCEConfiguration (Maybe Text)
 vecVpceServiceName = lens _vecVpceServiceName (\ s a -> s{_vecVpceServiceName = a})
 
@@ -3371,7 +4039,7 @@ vecVpceServiceName = lens _vecVpceServiceName (\ s a -> s{_vecVpceServiceName = 
 vecArn :: Lens' VPCEConfiguration (Maybe Text)
 vecArn = lens _vecArn (\ s a -> s{_vecArn = a})
 
--- | The friendly name you give to your VPC endpoint configuration, to manage your configurations more easily.
+-- | The friendly name you give to your VPC endpoint configuration to manage your configurations more easily.
 vecVpceConfigurationName :: Lens' VPCEConfiguration (Maybe Text)
 vecVpceConfigurationName = lens _vecVpceConfigurationName (\ s a -> s{_vecVpceConfigurationName = a})
 
@@ -3379,7 +4047,7 @@ vecVpceConfigurationName = lens _vecVpceConfigurationName (\ s a -> s{_vecVpceCo
 vecServiceDNSName :: Lens' VPCEConfiguration (Maybe Text)
 vecServiceDNSName = lens _vecServiceDNSName (\ s a -> s{_vecServiceDNSName = a})
 
--- | An optional description, providing more details about your VPC endpoint configuration.
+-- | An optional description that provides details about your VPC endpoint configuration.
 vecVpceConfigurationDescription :: Lens' VPCEConfiguration (Maybe Text)
 vecVpceConfigurationDescription = lens _vecVpceConfigurationDescription (\ s a -> s{_vecVpceConfigurationDescription = a})
 

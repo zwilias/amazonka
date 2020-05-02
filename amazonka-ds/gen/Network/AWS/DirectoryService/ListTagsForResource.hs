@@ -21,6 +21,8 @@
 -- Lists all tags on a directory.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.DirectoryService.ListTagsForResource
     (
     -- * Creating a Request
@@ -43,16 +45,19 @@ module Network.AWS.DirectoryService.ListTagsForResource
 import Network.AWS.DirectoryService.Types
 import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTagsForResource' smart constructor.
-data ListTagsForResource = ListTagsForResource'
-  { _ltfrNextToken  :: !(Maybe Text)
-  , _ltfrLimit      :: !(Maybe Nat)
-  , _ltfrResourceId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListTagsForResource =
+  ListTagsForResource'
+    { _ltfrNextToken  :: !(Maybe Text)
+    , _ltfrLimit      :: !(Maybe Nat)
+    , _ltfrResourceId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListTagsForResource' with the minimum fields required to make a request.
@@ -86,6 +91,13 @@ ltfrLimit = lens _ltfrLimit (\ s a -> s{_ltfrLimit = a}) . mapping _Nat
 -- | Identifier (ID) of the directory for which you want to retrieve tags.
 ltfrResourceId :: Lens' ListTagsForResource Text
 ltfrResourceId = lens _ltfrResourceId (\ s a -> s{_ltfrResourceId = a})
+
+instance AWSPager ListTagsForResource where
+        page rq rs
+          | stop (rs ^. ltfrrsNextToken) = Nothing
+          | stop (rs ^. ltfrrsTags) = Nothing
+          | otherwise =
+            Just $ rq & ltfrNextToken .~ rs ^. ltfrrsNextToken
 
 instance AWSRequest ListTagsForResource where
         type Rs ListTagsForResource =
@@ -127,11 +139,13 @@ instance ToQuery ListTagsForResource where
         toQuery = const mempty
 
 -- | /See:/ 'listTagsForResourceResponse' smart constructor.
-data ListTagsForResourceResponse = ListTagsForResourceResponse'
-  { _ltfrrsNextToken      :: !(Maybe Text)
-  , _ltfrrsTags           :: !(Maybe [Tag])
-  , _ltfrrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListTagsForResourceResponse =
+  ListTagsForResourceResponse'
+    { _ltfrrsNextToken      :: !(Maybe Text)
+    , _ltfrrsTags           :: !(Maybe [Tag])
+    , _ltfrrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListTagsForResourceResponse' with the minimum fields required to make a request.

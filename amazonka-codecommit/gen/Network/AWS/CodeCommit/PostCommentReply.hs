@@ -47,18 +47,20 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'postCommentReply' smart constructor.
-data PostCommentReply = PostCommentReply'
-  { _pcrClientRequestToken :: !(Maybe Text)
-  , _pcrInReplyTo          :: !Text
-  , _pcrContent            :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data PostCommentReply =
+  PostCommentReply'
+    { _pcrClientRequestToken :: !(Maybe Text)
+    , _pcrInReplyTo          :: !Text
+    , _pcrContent            :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'PostCommentReply' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pcrClientRequestToken' - A unique, client-generated idempotency token that when provided in a request, ensures the request cannot be repeated with a changed parameter. If a request is received with the same parameters and a token is included, the request will return information about the initial request that used that token.
+-- * 'pcrClientRequestToken' - A unique, client-generated idempotency token that, when provided in a request, ensures the request cannot be repeated with a changed parameter. If a request is received with the same parameters and a token is included, the request returns information about the initial request that used that token.
 --
 -- * 'pcrInReplyTo' - The system-generated ID of the comment to which you want to reply. To get this ID, use 'GetCommentsForComparedCommit' or 'GetCommentsForPullRequest' .
 --
@@ -75,7 +77,7 @@ postCommentReply pInReplyTo_ pContent_ =
     }
 
 
--- | A unique, client-generated idempotency token that when provided in a request, ensures the request cannot be repeated with a changed parameter. If a request is received with the same parameters and a token is included, the request will return information about the initial request that used that token.
+-- | A unique, client-generated idempotency token that, when provided in a request, ensures the request cannot be repeated with a changed parameter. If a request is received with the same parameters and a token is included, the request returns information about the initial request that used that token.
 pcrClientRequestToken :: Lens' PostCommentReply (Maybe Text)
 pcrClientRequestToken = lens _pcrClientRequestToken (\ s a -> s{_pcrClientRequestToken = a})
 
@@ -126,10 +128,12 @@ instance ToQuery PostCommentReply where
         toQuery = const mempty
 
 -- | /See:/ 'postCommentReplyResponse' smart constructor.
-data PostCommentReplyResponse = PostCommentReplyResponse'
-  { _pcrrsComment        :: !(Maybe Comment)
-  , _pcrrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data PostCommentReplyResponse =
+  PostCommentReplyResponse'
+    { _pcrrsComment        :: !(Maybe Comment)
+    , _pcrrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'PostCommentReplyResponse' with the minimum fields required to make a request.

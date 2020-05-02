@@ -19,6 +19,8 @@
 -- Portability : non-portable (GHC extensions)
 --
 -- Undocumented operation.
+--
+-- This operation returns paginated results.
 module Network.AWS.APIGateway.GetDocumentationVersions
     (
     -- * Creating a Request
@@ -41,6 +43,7 @@ module Network.AWS.APIGateway.GetDocumentationVersions
 import Network.AWS.APIGateway.Types
 import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -50,11 +53,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getDocumentationVersions' smart constructor.
-data GetDocumentationVersions = GetDocumentationVersions'
-  { _gdvLimit     :: !(Maybe Int)
-  , _gdvPosition  :: !(Maybe Text)
-  , _gdvRestAPIId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetDocumentationVersions =
+  GetDocumentationVersions'
+    { _gdvLimit     :: !(Maybe Int)
+    , _gdvPosition  :: !(Maybe Text)
+    , _gdvRestAPIId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetDocumentationVersions' with the minimum fields required to make a request.
@@ -85,6 +90,13 @@ gdvPosition = lens _gdvPosition (\ s a -> s{_gdvPosition = a})
 -- | [Required] The string identifier of the associated 'RestApi' .
 gdvRestAPIId :: Lens' GetDocumentationVersions Text
 gdvRestAPIId = lens _gdvRestAPIId (\ s a -> s{_gdvRestAPIId = a})
+
+instance AWSPager GetDocumentationVersions where
+        page rq rs
+          | stop (rs ^. gdvrsPosition) = Nothing
+          | stop (rs ^. gdvrsItems) = Nothing
+          | otherwise =
+            Just $ rq & gdvPosition .~ rs ^. gdvrsPosition
 
 instance AWSRequest GetDocumentationVersions where
         type Rs GetDocumentationVersions =
@@ -123,14 +135,16 @@ instance ToQuery GetDocumentationVersions where
 --
 -- Use the 'DocumentationVersions' to manage documentation snapshots associated with various API stages.
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html Documenting an API> , 'DocumentationPart' , 'DocumentationVersion'
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html Documenting an API> , 'DocumentationPart' , 'DocumentationVersion'
 --
 -- /See:/ 'getDocumentationVersionsResponse' smart constructor.
-data GetDocumentationVersionsResponse = GetDocumentationVersionsResponse'
-  { _gdvrsItems          :: !(Maybe [DocumentationVersion])
-  , _gdvrsPosition       :: !(Maybe Text)
-  , _gdvrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetDocumentationVersionsResponse =
+  GetDocumentationVersionsResponse'
+    { _gdvrsItems          :: !(Maybe [DocumentationVersion])
+    , _gdvrsPosition       :: !(Maybe Text)
+    , _gdvrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetDocumentationVersionsResponse' with the minimum fields required to make a request.

@@ -43,10 +43,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deletePublicKey' smart constructor.
-data DeletePublicKey = DeletePublicKey'
-  { _dpkIfMatch :: !(Maybe Text)
-  , _dpkId      :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DeletePublicKey =
+  DeletePublicKey'
+    { _dpkIfMatch :: !(Maybe Text)
+    , _dpkId      :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeletePublicKey' with the minimum fields required to make a request.
@@ -85,7 +87,7 @@ instance ToHeaders DeletePublicKey where
 
 instance ToPath DeletePublicKey where
         toPath DeletePublicKey'{..}
-          = mconcat ["/2017-10-30/public-key/", toBS _dpkId]
+          = mconcat ["/2019-03-26/public-key/", toBS _dpkId]
 
 instance ToQuery DeletePublicKey where
         toQuery = const mempty

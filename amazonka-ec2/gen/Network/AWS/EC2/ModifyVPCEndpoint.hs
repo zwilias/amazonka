@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Modifies attributes of a specified VPC endpoint. The attributes that you can modify depend on the type of VPC endpoint (interface or gateway). For more information, see <http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html VPC Endpoints> in the /Amazon Virtual Private Cloud User Guide/ .
+-- Modifies attributes of a specified VPC endpoint. The attributes that you can modify depend on the type of VPC endpoint (interface or gateway). For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html VPC Endpoints> in the /Amazon Virtual Private Cloud User Guide/ .
 --
 --
 module Network.AWS.EC2.ModifyVPCEndpoint
@@ -59,26 +59,28 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'modifyVPCEndpoint' smart constructor.
-data ModifyVPCEndpoint = ModifyVPCEndpoint'
-  { _mvePolicyDocument         :: !(Maybe Text)
-  , _mveRemoveRouteTableIds    :: !(Maybe [Text])
-  , _mveResetPolicy            :: !(Maybe Bool)
-  , _mveAddRouteTableIds       :: !(Maybe [Text])
-  , _mvePrivateDNSEnabled      :: !(Maybe Bool)
-  , _mveAddSubnetIds           :: !(Maybe [Text])
-  , _mveRemoveSubnetIds        :: !(Maybe [Text])
-  , _mveAddSecurityGroupIds    :: !(Maybe [Text])
-  , _mveDryRun                 :: !(Maybe Bool)
-  , _mveRemoveSecurityGroupIds :: !(Maybe [Text])
-  , _mveVPCEndpointId          :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ModifyVPCEndpoint =
+  ModifyVPCEndpoint'
+    { _mvePolicyDocument         :: !(Maybe Text)
+    , _mveRemoveRouteTableIds    :: !(Maybe [Text])
+    , _mveResetPolicy            :: !(Maybe Bool)
+    , _mveAddRouteTableIds       :: !(Maybe [Text])
+    , _mvePrivateDNSEnabled      :: !(Maybe Bool)
+    , _mveAddSubnetIds           :: !(Maybe [Text])
+    , _mveRemoveSubnetIds        :: !(Maybe [Text])
+    , _mveAddSecurityGroupIds    :: !(Maybe [Text])
+    , _mveDryRun                 :: !(Maybe Bool)
+    , _mveRemoveSecurityGroupIds :: !(Maybe [Text])
+    , _mveVPCEndpointId          :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ModifyVPCEndpoint' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'mvePolicyDocument' - (Gateway endpoint) A policy document to attach to the endpoint. The policy must be in valid JSON format.
+-- * 'mvePolicyDocument' - A policy to attach to the endpoint that controls access to the service. The policy must be in valid JSON format.
 --
 -- * 'mveRemoveRouteTableIds' - (Gateway endpoint) One or more route table IDs to disassociate from the endpoint.
 --
@@ -86,7 +88,7 @@ data ModifyVPCEndpoint = ModifyVPCEndpoint'
 --
 -- * 'mveAddRouteTableIds' - (Gateway endpoint) One or more route tables IDs to associate with the endpoint.
 --
--- * 'mvePrivateDNSEnabled' - (Interface endpoint) Indicate whether a private hosted zone is associated with the VPC.
+-- * 'mvePrivateDNSEnabled' - (Interface endpoint) Indicates whether a private hosted zone is associated with the VPC.
 --
 -- * 'mveAddSubnetIds' - (Interface endpoint) One or more subnet IDs in which to serve the endpoint.
 --
@@ -118,7 +120,7 @@ modifyVPCEndpoint pVPCEndpointId_ =
     }
 
 
--- | (Gateway endpoint) A policy document to attach to the endpoint. The policy must be in valid JSON format.
+-- | A policy to attach to the endpoint that controls access to the service. The policy must be in valid JSON format.
 mvePolicyDocument :: Lens' ModifyVPCEndpoint (Maybe Text)
 mvePolicyDocument = lens _mvePolicyDocument (\ s a -> s{_mvePolicyDocument = a})
 
@@ -134,7 +136,7 @@ mveResetPolicy = lens _mveResetPolicy (\ s a -> s{_mveResetPolicy = a})
 mveAddRouteTableIds :: Lens' ModifyVPCEndpoint [Text]
 mveAddRouteTableIds = lens _mveAddRouteTableIds (\ s a -> s{_mveAddRouteTableIds = a}) . _Default . _Coerce
 
--- | (Interface endpoint) Indicate whether a private hosted zone is associated with the VPC.
+-- | (Interface endpoint) Indicates whether a private hosted zone is associated with the VPC.
 mvePrivateDNSEnabled :: Lens' ModifyVPCEndpoint (Maybe Bool)
 mvePrivateDNSEnabled = lens _mvePrivateDNSEnabled (\ s a -> s{_mvePrivateDNSEnabled = a})
 
@@ -210,10 +212,12 @@ instance ToQuery ModifyVPCEndpoint where
                "VpcEndpointId" =: _mveVPCEndpointId]
 
 -- | /See:/ 'modifyVPCEndpointResponse' smart constructor.
-data ModifyVPCEndpointResponse = ModifyVPCEndpointResponse'
-  { _mversReturn         :: !(Maybe Bool)
-  , _mversResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ModifyVPCEndpointResponse =
+  ModifyVPCEndpointResponse'
+    { _mversReturn         :: !(Maybe Bool)
+    , _mversResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ModifyVPCEndpointResponse' with the minimum fields required to make a request.

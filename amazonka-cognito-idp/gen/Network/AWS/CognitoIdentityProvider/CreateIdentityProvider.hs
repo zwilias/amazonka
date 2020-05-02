@@ -50,14 +50,16 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createIdentityProvider' smart constructor.
-data CreateIdentityProvider = CreateIdentityProvider'
-  { _cipIdpIdentifiers   :: !(Maybe [Text])
-  , _cipAttributeMapping :: !(Maybe (Map Text Text))
-  , _cipUserPoolId       :: !Text
-  , _cipProviderName     :: !Text
-  , _cipProviderType     :: !IdentityProviderTypeType
-  , _cipProviderDetails  :: !(Map Text Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreateIdentityProvider =
+  CreateIdentityProvider'
+    { _cipIdpIdentifiers   :: !(Maybe [Text])
+    , _cipAttributeMapping :: !(Maybe (Map Text Text))
+    , _cipUserPoolId       :: !Text
+    , _cipProviderName     :: !Text
+    , _cipProviderType     :: !IdentityProviderTypeType
+    , _cipProviderDetails  :: !(Map Text Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateIdentityProvider' with the minimum fields required to make a request.
@@ -74,7 +76,7 @@ data CreateIdentityProvider = CreateIdentityProvider'
 --
 -- * 'cipProviderType' - The identity provider type.
 --
--- * 'cipProviderDetails' - The identity provider details, such as @MetadataURL@ and @MetadataFile@ .
+-- * 'cipProviderDetails' - The identity provider details. The following list describes the provider detail keys for each identity provider type.     * For Google, Facebook and Login with Amazon:     * client_id     * client_secret     * authorize_scopes     * For Sign in with Apple:     * client_id     * team_id     * key_id     * private_key     * authorize_scopes     * For OIDC providers:     * client_id     * client_secret     * attributes_request_method     * oidc_issuer     * authorize_scopes     * authorize_url /if not available from discovery URL specified by oidc_issuer key/      * token_url /if not available from discovery URL specified by oidc_issuer key/      * attributes_url /if not available from discovery URL specified by oidc_issuer key/      * jwks_uri /if not available from discovery URL specified by oidc_issuer key/      * authorize_scopes     * For SAML providers:     * MetadataFile OR MetadataURL     * IDPSignout /optional/
 createIdentityProvider
     :: Text -- ^ 'cipUserPoolId'
     -> Text -- ^ 'cipProviderName'
@@ -111,7 +113,7 @@ cipProviderName = lens _cipProviderName (\ s a -> s{_cipProviderName = a})
 cipProviderType :: Lens' CreateIdentityProvider IdentityProviderTypeType
 cipProviderType = lens _cipProviderType (\ s a -> s{_cipProviderType = a})
 
--- | The identity provider details, such as @MetadataURL@ and @MetadataFile@ .
+-- | The identity provider details. The following list describes the provider detail keys for each identity provider type.     * For Google, Facebook and Login with Amazon:     * client_id     * client_secret     * authorize_scopes     * For Sign in with Apple:     * client_id     * team_id     * key_id     * private_key     * authorize_scopes     * For OIDC providers:     * client_id     * client_secret     * attributes_request_method     * oidc_issuer     * authorize_scopes     * authorize_url /if not available from discovery URL specified by oidc_issuer key/      * token_url /if not available from discovery URL specified by oidc_issuer key/      * attributes_url /if not available from discovery URL specified by oidc_issuer key/      * jwks_uri /if not available from discovery URL specified by oidc_issuer key/      * authorize_scopes     * For SAML providers:     * MetadataFile OR MetadataURL     * IDPSignout /optional/
 cipProviderDetails :: Lens' CreateIdentityProvider (HashMap Text Text)
 cipProviderDetails = lens _cipProviderDetails (\ s a -> s{_cipProviderDetails = a}) . _Map
 
@@ -157,10 +159,12 @@ instance ToQuery CreateIdentityProvider where
         toQuery = const mempty
 
 -- | /See:/ 'createIdentityProviderResponse' smart constructor.
-data CreateIdentityProviderResponse = CreateIdentityProviderResponse'
-  { _ciprsResponseStatus   :: !Int
-  , _ciprsIdentityProvider :: !IdentityProviderType
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreateIdentityProviderResponse =
+  CreateIdentityProviderResponse'
+    { _ciprsResponseStatus   :: !Int
+    , _ciprsIdentityProvider :: !IdentityProviderType
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateIdentityProviderResponse' with the minimum fields required to make a request.

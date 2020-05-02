@@ -47,11 +47,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putLifecycleEventHookExecutionStatus' smart constructor.
-data PutLifecycleEventHookExecutionStatus = PutLifecycleEventHookExecutionStatus'
-  { _plehesStatus                        :: !(Maybe LifecycleEventStatus)
-  , _plehesDeploymentId                  :: !(Maybe Text)
-  , _plehesLifecycleEventHookExecutionId :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data PutLifecycleEventHookExecutionStatus =
+  PutLifecycleEventHookExecutionStatus'
+    { _plehesStatus                        :: !(Maybe LifecycleEventStatus)
+    , _plehesDeploymentId                  :: !(Maybe Text)
+    , _plehesLifecycleEventHookExecutionId :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'PutLifecycleEventHookExecutionStatus' with the minimum fields required to make a request.
@@ -60,7 +62,7 @@ data PutLifecycleEventHookExecutionStatus = PutLifecycleEventHookExecutionStatus
 --
 -- * 'plehesStatus' - The result of a Lambda function that validates a deployment lifecycle event (@Succeeded@ or @Failed@ ).
 --
--- * 'plehesDeploymentId' - The ID of the deployment. Pass this ID to a Lambda function that validates a deployment lifecycle event.
+-- * 'plehesDeploymentId' - The unique ID of a deployment. Pass this ID to a Lambda function that validates a deployment lifecycle event.
 --
 -- * 'plehesLifecycleEventHookExecutionId' - The execution ID of a deployment's lifecycle hook. A deployment lifecycle hook is specified in the @hooks@ section of the AppSpec file.
 putLifecycleEventHookExecutionStatus
@@ -77,7 +79,7 @@ putLifecycleEventHookExecutionStatus =
 plehesStatus :: Lens' PutLifecycleEventHookExecutionStatus (Maybe LifecycleEventStatus)
 plehesStatus = lens _plehesStatus (\ s a -> s{_plehesStatus = a})
 
--- | The ID of the deployment. Pass this ID to a Lambda function that validates a deployment lifecycle event.
+-- | The unique ID of a deployment. Pass this ID to a Lambda function that validates a deployment lifecycle event.
 plehesDeploymentId :: Lens' PutLifecycleEventHookExecutionStatus (Maybe Text)
 plehesDeploymentId = lens _plehesDeploymentId (\ s a -> s{_plehesDeploymentId = a})
 
@@ -136,10 +138,12 @@ instance ToQuery PutLifecycleEventHookExecutionStatus
         toQuery = const mempty
 
 -- | /See:/ 'putLifecycleEventHookExecutionStatusResponse' smart constructor.
-data PutLifecycleEventHookExecutionStatusResponse = PutLifecycleEventHookExecutionStatusResponse'
-  { _plehesrsLifecycleEventHookExecutionId :: !(Maybe Text)
-  , _plehesrsResponseStatus                :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data PutLifecycleEventHookExecutionStatusResponse =
+  PutLifecycleEventHookExecutionStatusResponse'
+    { _plehesrsLifecycleEventHookExecutionId :: !(Maybe Text)
+    , _plehesrsResponseStatus                :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'PutLifecycleEventHookExecutionStatusResponse' with the minimum fields required to make a request.

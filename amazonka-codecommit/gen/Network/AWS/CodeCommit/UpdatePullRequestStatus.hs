@@ -46,10 +46,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updatePullRequestStatus' smart constructor.
-data UpdatePullRequestStatus = UpdatePullRequestStatus'
-  { _uprsPullRequestId     :: !Text
-  , _uprsPullRequestStatus :: !PullRequestStatusEnum
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data UpdatePullRequestStatus =
+  UpdatePullRequestStatus'
+    { _uprsPullRequestId     :: !Text
+    , _uprsPullRequestStatus :: !PullRequestStatusEnum
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UpdatePullRequestStatus' with the minimum fields required to make a request.
@@ -58,7 +60,7 @@ data UpdatePullRequestStatus = UpdatePullRequestStatus'
 --
 -- * 'uprsPullRequestId' - The system-generated ID of the pull request. To get this ID, use 'ListPullRequests' .
 --
--- * 'uprsPullRequestStatus' - The status of the pull request. The only valid operations are to update the status from @OPEN@ to @OPEN@ , @OPEN@ to @CLOSED@ or from from @CLOSED@ to @CLOSED@ .
+-- * 'uprsPullRequestStatus' - The status of the pull request. The only valid operations are to update the status from @OPEN@ to @OPEN@ , @OPEN@ to @CLOSED@ or from @CLOSED@ to @CLOSED@ .
 updatePullRequestStatus
     :: Text -- ^ 'uprsPullRequestId'
     -> PullRequestStatusEnum -- ^ 'uprsPullRequestStatus'
@@ -74,7 +76,7 @@ updatePullRequestStatus pPullRequestId_ pPullRequestStatus_ =
 uprsPullRequestId :: Lens' UpdatePullRequestStatus Text
 uprsPullRequestId = lens _uprsPullRequestId (\ s a -> s{_uprsPullRequestId = a})
 
--- | The status of the pull request. The only valid operations are to update the status from @OPEN@ to @OPEN@ , @OPEN@ to @CLOSED@ or from from @CLOSED@ to @CLOSED@ .
+-- | The status of the pull request. The only valid operations are to update the status from @OPEN@ to @OPEN@ , @OPEN@ to @CLOSED@ or from @CLOSED@ to @CLOSED@ .
 uprsPullRequestStatus :: Lens' UpdatePullRequestStatus PullRequestStatusEnum
 uprsPullRequestStatus = lens _uprsPullRequestStatus (\ s a -> s{_uprsPullRequestStatus = a})
 
@@ -117,10 +119,12 @@ instance ToQuery UpdatePullRequestStatus where
         toQuery = const mempty
 
 -- | /See:/ 'updatePullRequestStatusResponse' smart constructor.
-data UpdatePullRequestStatusResponse = UpdatePullRequestStatusResponse'
-  { _uprsrsResponseStatus :: !Int
-  , _uprsrsPullRequest    :: !PullRequest
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data UpdatePullRequestStatusResponse =
+  UpdatePullRequestStatusResponse'
+    { _uprsrsResponseStatus :: !Int
+    , _uprsrsPullRequest    :: !PullRequest
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UpdatePullRequestStatusResponse' with the minimum fields required to make a request.

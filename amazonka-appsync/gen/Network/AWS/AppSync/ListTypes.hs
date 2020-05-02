@@ -21,6 +21,8 @@
 -- Lists the types for a given API.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.AppSync.ListTypes
     (
     -- * Creating a Request
@@ -44,17 +46,20 @@ module Network.AWS.AppSync.ListTypes
 import Network.AWS.AppSync.Types
 import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTypes' smart constructor.
-data ListTypes = ListTypes'
-  { _ltNextToken  :: !(Maybe Text)
-  , _ltMaxResults :: !(Maybe Nat)
-  , _ltApiId      :: !Text
-  , _ltFormat     :: !TypeDefinitionFormat
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListTypes =
+  ListTypes'
+    { _ltNextToken  :: !(Maybe Text)
+    , _ltMaxResults :: !(Maybe Nat)
+    , _ltApiId      :: !Text
+    , _ltFormat     :: !TypeDefinitionFormat
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListTypes' with the minimum fields required to make a request.
@@ -97,6 +102,13 @@ ltApiId = lens _ltApiId (\ s a -> s{_ltApiId = a})
 ltFormat :: Lens' ListTypes TypeDefinitionFormat
 ltFormat = lens _ltFormat (\ s a -> s{_ltFormat = a})
 
+instance AWSPager ListTypes where
+        page rq rs
+          | stop (rs ^. ltrsNextToken) = Nothing
+          | stop (rs ^. ltrsTypes) = Nothing
+          | otherwise =
+            Just $ rq & ltNextToken .~ rs ^. ltrsNextToken
+
 instance AWSRequest ListTypes where
         type Rs ListTypes = ListTypesResponse
         request = get appSync
@@ -129,11 +141,13 @@ instance ToQuery ListTypes where
                "maxResults" =: _ltMaxResults, "format" =: _ltFormat]
 
 -- | /See:/ 'listTypesResponse' smart constructor.
-data ListTypesResponse = ListTypesResponse'
-  { _ltrsTypes          :: !(Maybe [Type])
-  , _ltrsNextToken      :: !(Maybe Text)
-  , _ltrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListTypesResponse =
+  ListTypesResponse'
+    { _ltrsTypes          :: !(Maybe [Type])
+    , _ltrsNextToken      :: !(Maybe Text)
+    , _ltrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListTypesResponse' with the minimum fields required to make a request.

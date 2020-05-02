@@ -35,6 +35,7 @@ module Network.AWS.APIGateway.CreateRestAPI
     , craPolicy
     , craEndpointConfiguration
     , craDescription
+    , craTags
     , craName
 
     -- * Destructuring the Response
@@ -52,6 +53,7 @@ module Network.AWS.APIGateway.CreateRestAPI
     , raPolicy
     , raEndpointConfiguration
     , raDescription
+    , raTags
     ) where
 
 import Network.AWS.APIGateway.Types
@@ -66,17 +68,20 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createRestAPI' smart constructor.
-data CreateRestAPI = CreateRestAPI'
-  { _craMinimumCompressionSize :: !(Maybe Int)
-  , _craBinaryMediaTypes       :: !(Maybe [Text])
-  , _craVersion                :: !(Maybe Text)
-  , _craApiKeySource           :: !(Maybe APIKeySourceType)
-  , _craCloneFrom              :: !(Maybe Text)
-  , _craPolicy                 :: !(Maybe Text)
-  , _craEndpointConfiguration  :: !(Maybe EndpointConfiguration)
-  , _craDescription            :: !(Maybe Text)
-  , _craName                   :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreateRestAPI =
+  CreateRestAPI'
+    { _craMinimumCompressionSize :: !(Maybe Int)
+    , _craBinaryMediaTypes       :: !(Maybe [Text])
+    , _craVersion                :: !(Maybe Text)
+    , _craApiKeySource           :: !(Maybe APIKeySourceType)
+    , _craCloneFrom              :: !(Maybe Text)
+    , _craPolicy                 :: !(Maybe Text)
+    , _craEndpointConfiguration  :: !(Maybe EndpointConfiguration)
+    , _craDescription            :: !(Maybe Text)
+    , _craTags                   :: !(Maybe (Map Text Text))
+    , _craName                   :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateRestAPI' with the minimum fields required to make a request.
@@ -99,6 +104,8 @@ data CreateRestAPI = CreateRestAPI'
 --
 -- * 'craDescription' - The description of the 'RestApi' .
 --
+-- * 'craTags' - The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not start with @aws:@ . The tag value can be up to 256 characters.
+--
 -- * 'craName' - [Required] The name of the 'RestApi' .
 createRestAPI
     :: Text -- ^ 'craName'
@@ -113,6 +120,7 @@ createRestAPI pName_ =
     , _craPolicy = Nothing
     , _craEndpointConfiguration = Nothing
     , _craDescription = Nothing
+    , _craTags = Nothing
     , _craName = pName_
     }
 
@@ -149,6 +157,10 @@ craEndpointConfiguration = lens _craEndpointConfiguration (\ s a -> s{_craEndpoi
 craDescription :: Lens' CreateRestAPI (Maybe Text)
 craDescription = lens _craDescription (\ s a -> s{_craDescription = a})
 
+-- | The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not start with @aws:@ . The tag value can be up to 256 characters.
+craTags :: Lens' CreateRestAPI (HashMap Text Text)
+craTags = lens _craTags (\ s a -> s{_craTags = a}) . _Default . _Map
+
 -- | [Required] The name of the 'RestApi' .
 craName :: Lens' CreateRestAPI Text
 craName = lens _craName (\ s a -> s{_craName = a})
@@ -182,7 +194,7 @@ instance ToJSON CreateRestAPI where
                   ("endpointConfiguration" .=) <$>
                     _craEndpointConfiguration,
                   ("description" .=) <$> _craDescription,
-                  Just ("name" .= _craName)])
+                  ("tags" .=) <$> _craTags, Just ("name" .= _craName)])
 
 instance ToPath CreateRestAPI where
         toPath = const "/restapis"

@@ -48,16 +48,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for CancelImportTask.
---
---
---
--- /See:/ 'cancelImportTask' smart constructor.
-data CancelImportTask = CancelImportTask'
-  { _citCancelReason :: !(Maybe Text)
-  , _citImportTaskId :: !(Maybe Text)
-  , _citDryRun       :: !(Maybe Bool)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'cancelImportTask' smart constructor.
+data CancelImportTask =
+  CancelImportTask'
+    { _citCancelReason :: !(Maybe Text)
+    , _citImportTaskId :: !(Maybe Text)
+    , _citDryRun       :: !(Maybe Bool)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CancelImportTask' with the minimum fields required to make a request.
@@ -121,17 +119,15 @@ instance ToQuery CancelImportTask where
                "ImportTaskId" =: _citImportTaskId,
                "DryRun" =: _citDryRun]
 
--- | Contains the output for CancelImportTask.
---
---
---
--- /See:/ 'cancelImportTaskResponse' smart constructor.
-data CancelImportTaskResponse = CancelImportTaskResponse'
-  { _citrsState          :: !(Maybe Text)
-  , _citrsImportTaskId   :: !(Maybe Text)
-  , _citrsPreviousState  :: !(Maybe Text)
-  , _citrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'cancelImportTaskResponse' smart constructor.
+data CancelImportTaskResponse =
+  CancelImportTaskResponse'
+    { _citrsState          :: !(Maybe Text)
+    , _citrsImportTaskId   :: !(Maybe Text)
+    , _citrsPreviousState  :: !(Maybe Text)
+    , _citrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CancelImportTaskResponse' with the minimum fields required to make a request.

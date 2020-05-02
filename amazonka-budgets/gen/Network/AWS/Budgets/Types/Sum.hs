@@ -19,13 +19,17 @@ module Network.AWS.Budgets.Types.Sum where
 
 import Network.AWS.Prelude
 
--- | The type of a budget. It should be COST, USAGE, or RI_UTILIZATION.
+-- | The type of a budget. It must be one of the following types:
 --
+--
+-- @COST@ , @USAGE@ , @RI_UTILIZATION@ , or @RI_COVERAGE@ .
 --
 data BudgetType
   = Cost
   | RiCoverage
   | RiUtilization
+  | SavingsPlansCoverage
+  | SavingsPlansUtilization
   | Usage
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
@@ -35,15 +39,19 @@ instance FromText BudgetType where
         "cost" -> pure Cost
         "ri_coverage" -> pure RiCoverage
         "ri_utilization" -> pure RiUtilization
+        "savings_plans_coverage" -> pure SavingsPlansCoverage
+        "savings_plans_utilization" -> pure SavingsPlansUtilization
         "usage" -> pure Usage
         e -> fromTextError $ "Failure parsing BudgetType from value: '" <> e
-           <> "'. Accepted values: cost, ri_coverage, ri_utilization, usage"
+           <> "'. Accepted values: cost, ri_coverage, ri_utilization, savings_plans_coverage, savings_plans_utilization, usage"
 
 instance ToText BudgetType where
     toText = \case
         Cost -> "COST"
         RiCoverage -> "RI_COVERAGE"
         RiUtilization -> "RI_UTILIZATION"
+        SavingsPlansCoverage -> "SAVINGS_PLANS_COVERAGE"
+        SavingsPlansUtilization -> "SAVINGS_PLANS_UTILIZATION"
         Usage -> "USAGE"
 
 instance Hashable     BudgetType
@@ -58,8 +66,10 @@ instance ToJSON BudgetType where
 instance FromJSON BudgetType where
     parseJSON = parseJSONText "BudgetType"
 
--- | The comparison operator of a notification. Currently we support less than, equal to and greater than.
+-- | The comparison operator of a notification. Currently the service supports the following operators:
 --
+--
+-- @GREATER_THAN@ , @LESS_THAN@ , @EQUAL_TO@
 --
 data ComparisonOperator
   = EqualTo
@@ -94,7 +104,37 @@ instance ToJSON ComparisonOperator where
 instance FromJSON ComparisonOperator where
     parseJSON = parseJSONText "ComparisonOperator"
 
--- | The type of a notification. It should be ACTUAL or FORECASTED.
+data NotificationState
+  = Alarm
+  | OK
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText NotificationState where
+    parser = takeLowerText >>= \case
+        "alarm" -> pure Alarm
+        "ok" -> pure OK
+        e -> fromTextError $ "Failure parsing NotificationState from value: '" <> e
+           <> "'. Accepted values: alarm, ok"
+
+instance ToText NotificationState where
+    toText = \case
+        Alarm -> "ALARM"
+        OK -> "OK"
+
+instance Hashable     NotificationState
+instance NFData       NotificationState
+instance ToByteString NotificationState
+instance ToQuery      NotificationState
+instance ToHeader     NotificationState
+
+instance ToJSON NotificationState where
+    toJSON = toJSONText
+
+instance FromJSON NotificationState where
+    parseJSON = parseJSONText "NotificationState"
+
+-- | The type of a notification. It must be ACTUAL or FORECASTED.
 --
 --
 data NotificationType
@@ -193,7 +233,7 @@ instance ToJSON ThresholdType where
 instance FromJSON ThresholdType where
     parseJSON = parseJSONText "ThresholdType"
 
--- | The time unit of the budget. e.g. MONTHLY, QUARTERLY, etc.
+-- | The time unit of the budget, such as MONTHLY or QUARTERLY.
 --
 --
 data TimeUnit

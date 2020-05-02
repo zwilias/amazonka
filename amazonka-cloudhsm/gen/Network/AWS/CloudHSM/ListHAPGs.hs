@@ -27,6 +27,8 @@
 --
 -- This operation supports pagination with the use of the @NextToken@ member. If more results are available, the @NextToken@ member of the response contains a token that you pass in the next call to @ListHapgs@ to retrieve the next set of items.
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.CloudHSM.ListHAPGs
     (
     -- * Creating a Request
@@ -47,14 +49,17 @@ module Network.AWS.CloudHSM.ListHAPGs
 import Network.AWS.CloudHSM.Types
 import Network.AWS.CloudHSM.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listHAPGs' smart constructor.
-newtype ListHAPGs = ListHAPGs'
-  { _lhNextToken :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype ListHAPGs =
+  ListHAPGs'
+    { _lhNextToken :: Maybe Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListHAPGs' with the minimum fields required to make a request.
@@ -70,6 +75,13 @@ listHAPGs = ListHAPGs' {_lhNextToken = Nothing}
 -- | The @NextToken@ value from a previous call to @ListHapgs@ . Pass null if this is the first call.
 lhNextToken :: Lens' ListHAPGs (Maybe Text)
 lhNextToken = lens _lhNextToken (\ s a -> s{_lhNextToken = a})
+
+instance AWSPager ListHAPGs where
+        page rq rs
+          | stop (rs ^. lhrsNextToken) = Nothing
+          | stop (rs ^. lhrsHAPGList) = Nothing
+          | otherwise =
+            Just $ rq & lhNextToken .~ rs ^. lhrsNextToken
 
 instance AWSRequest ListHAPGs where
         type Rs ListHAPGs = ListHAPGsResponse
@@ -106,11 +118,13 @@ instance ToQuery ListHAPGs where
         toQuery = const mempty
 
 -- | /See:/ 'listHAPGsResponse' smart constructor.
-data ListHAPGsResponse = ListHAPGsResponse'
-  { _lhrsNextToken      :: !(Maybe Text)
-  , _lhrsResponseStatus :: !Int
-  , _lhrsHAPGList       :: ![Text]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListHAPGsResponse =
+  ListHAPGsResponse'
+    { _lhrsNextToken      :: !(Maybe Text)
+    , _lhrsResponseStatus :: !Int
+    , _lhrsHAPGList       :: ![Text]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListHAPGsResponse' with the minimum fields required to make a request.

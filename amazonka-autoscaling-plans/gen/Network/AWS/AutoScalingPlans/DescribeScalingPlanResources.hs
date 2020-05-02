@@ -21,6 +21,8 @@
 -- Describes the scalable resources in the specified scaling plan.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.AutoScalingPlans.DescribeScalingPlanResources
     (
     -- * Creating a Request
@@ -44,17 +46,20 @@ module Network.AWS.AutoScalingPlans.DescribeScalingPlanResources
 import Network.AWS.AutoScalingPlans.Types
 import Network.AWS.AutoScalingPlans.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeScalingPlanResources' smart constructor.
-data DescribeScalingPlanResources = DescribeScalingPlanResources'
-  { _dsprNextToken          :: !(Maybe Text)
-  , _dsprMaxResults         :: !(Maybe Int)
-  , _dsprScalingPlanName    :: !Text
-  , _dsprScalingPlanVersion :: !Integer
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeScalingPlanResources =
+  DescribeScalingPlanResources'
+    { _dsprNextToken          :: !(Maybe Text)
+    , _dsprMaxResults         :: !(Maybe Int)
+    , _dsprScalingPlanName    :: !Text
+    , _dsprScalingPlanVersion :: !Integer
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeScalingPlanResources' with the minimum fields required to make a request.
@@ -63,11 +68,11 @@ data DescribeScalingPlanResources = DescribeScalingPlanResources'
 --
 -- * 'dsprNextToken' - The token for the next set of results.
 --
--- * 'dsprMaxResults' - The maximum number of scalable resources to return. This value can be between 1 and 50. The default value is 50.
+-- * 'dsprMaxResults' - The maximum number of scalable resources to return. The value must be between 1 and 50. The default value is 50.
 --
 -- * 'dsprScalingPlanName' - The name of the scaling plan.
 --
--- * 'dsprScalingPlanVersion' - The version of the scaling plan.
+-- * 'dsprScalingPlanVersion' - The version number of the scaling plan.
 describeScalingPlanResources
     :: Text -- ^ 'dsprScalingPlanName'
     -> Integer -- ^ 'dsprScalingPlanVersion'
@@ -85,7 +90,7 @@ describeScalingPlanResources pScalingPlanName_ pScalingPlanVersion_ =
 dsprNextToken :: Lens' DescribeScalingPlanResources (Maybe Text)
 dsprNextToken = lens _dsprNextToken (\ s a -> s{_dsprNextToken = a})
 
--- | The maximum number of scalable resources to return. This value can be between 1 and 50. The default value is 50.
+-- | The maximum number of scalable resources to return. The value must be between 1 and 50. The default value is 50.
 dsprMaxResults :: Lens' DescribeScalingPlanResources (Maybe Int)
 dsprMaxResults = lens _dsprMaxResults (\ s a -> s{_dsprMaxResults = a})
 
@@ -93,9 +98,16 @@ dsprMaxResults = lens _dsprMaxResults (\ s a -> s{_dsprMaxResults = a})
 dsprScalingPlanName :: Lens' DescribeScalingPlanResources Text
 dsprScalingPlanName = lens _dsprScalingPlanName (\ s a -> s{_dsprScalingPlanName = a})
 
--- | The version of the scaling plan.
+-- | The version number of the scaling plan.
 dsprScalingPlanVersion :: Lens' DescribeScalingPlanResources Integer
 dsprScalingPlanVersion = lens _dsprScalingPlanVersion (\ s a -> s{_dsprScalingPlanVersion = a})
+
+instance AWSPager DescribeScalingPlanResources where
+        page rq rs
+          | stop (rs ^. dsprrsNextToken) = Nothing
+          | stop (rs ^. dsprrsScalingPlanResources) = Nothing
+          | otherwise =
+            Just $ rq & dsprNextToken .~ rs ^. dsprrsNextToken
 
 instance AWSRequest DescribeScalingPlanResources
          where
@@ -141,11 +153,13 @@ instance ToQuery DescribeScalingPlanResources where
         toQuery = const mempty
 
 -- | /See:/ 'describeScalingPlanResourcesResponse' smart constructor.
-data DescribeScalingPlanResourcesResponse = DescribeScalingPlanResourcesResponse'
-  { _dsprrsNextToken            :: !(Maybe Text)
-  , _dsprrsScalingPlanResources :: !(Maybe [ScalingPlanResource])
-  , _dsprrsResponseStatus       :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeScalingPlanResourcesResponse =
+  DescribeScalingPlanResourcesResponse'
+    { _dsprrsNextToken            :: !(Maybe Text)
+    , _dsprrsScalingPlanResources :: !(Maybe [ScalingPlanResource])
+    , _dsprrsResponseStatus       :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeScalingPlanResourcesResponse' with the minimum fields required to make a request.

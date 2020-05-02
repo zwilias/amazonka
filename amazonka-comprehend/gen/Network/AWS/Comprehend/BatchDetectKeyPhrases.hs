@@ -47,10 +47,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchDetectKeyPhrases' smart constructor.
-data BatchDetectKeyPhrases = BatchDetectKeyPhrases'
-  { _bdkpTextList     :: ![Text]
-  , _bdkpLanguageCode :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchDetectKeyPhrases =
+  BatchDetectKeyPhrases'
+    { _bdkpTextList     :: ![Text]
+    , _bdkpLanguageCode :: !LanguageCode
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchDetectKeyPhrases' with the minimum fields required to make a request.
@@ -59,9 +61,9 @@ data BatchDetectKeyPhrases = BatchDetectKeyPhrases'
 --
 -- * 'bdkpTextList' - A list containing the text of the input documents. The list can contain a maximum of 25 documents. Each document must contain fewer that 5,000 bytes of UTF-8 encoded characters.
 --
--- * 'bdkpLanguageCode' - The language of the input documents. All documents must be in the same language.
+-- * 'bdkpLanguageCode' - The language of the input documents. You can specify any of the primary languages supported by Amazon Comprehend. All documents must be in the same language.
 batchDetectKeyPhrases
-    :: Text -- ^ 'bdkpLanguageCode'
+    :: LanguageCode -- ^ 'bdkpLanguageCode'
     -> BatchDetectKeyPhrases
 batchDetectKeyPhrases pLanguageCode_ =
   BatchDetectKeyPhrases'
@@ -72,8 +74,8 @@ batchDetectKeyPhrases pLanguageCode_ =
 bdkpTextList :: Lens' BatchDetectKeyPhrases [Text]
 bdkpTextList = lens _bdkpTextList (\ s a -> s{_bdkpTextList = a}) . _Coerce
 
--- | The language of the input documents. All documents must be in the same language.
-bdkpLanguageCode :: Lens' BatchDetectKeyPhrases Text
+-- | The language of the input documents. You can specify any of the primary languages supported by Amazon Comprehend. All documents must be in the same language.
+bdkpLanguageCode :: Lens' BatchDetectKeyPhrases LanguageCode
 bdkpLanguageCode = lens _bdkpLanguageCode (\ s a -> s{_bdkpLanguageCode = a})
 
 instance AWSRequest BatchDetectKeyPhrases where
@@ -116,11 +118,13 @@ instance ToQuery BatchDetectKeyPhrases where
         toQuery = const mempty
 
 -- | /See:/ 'batchDetectKeyPhrasesResponse' smart constructor.
-data BatchDetectKeyPhrasesResponse = BatchDetectKeyPhrasesResponse'
-  { _bdkprsResponseStatus :: !Int
-  , _bdkprsResultList     :: ![BatchDetectKeyPhrasesItemResult]
-  , _bdkprsErrorList      :: ![BatchItemError]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchDetectKeyPhrasesResponse =
+  BatchDetectKeyPhrasesResponse'
+    { _bdkprsResponseStatus :: !Int
+    , _bdkprsResultList     :: ![BatchDetectKeyPhrasesItemResult]
+    , _bdkprsErrorList      :: ![BatchItemError]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchDetectKeyPhrasesResponse' with the minimum fields required to make a request.

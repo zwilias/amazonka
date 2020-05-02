@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes the specified directory configuration.
+-- Deletes the specified Directory Config object from AppStream 2.0. This object includes the information required to join streaming instances to an Active Directory domain.
 --
 --
 module Network.AWS.AppStream.DeleteDirectoryConfig
@@ -33,7 +33,7 @@ module Network.AWS.AppStream.DeleteDirectoryConfig
     , deleteDirectoryConfigResponse
     , DeleteDirectoryConfigResponse
     -- * Response Lenses
-    , delrsResponseStatus
+    , ddcdrsResponseStatus
     ) where
 
 import Network.AWS.AppStream.Types
@@ -44,9 +44,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteDirectoryConfig' smart constructor.
-newtype DeleteDirectoryConfig = DeleteDirectoryConfig'
-  { _ddcDirectoryName :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype DeleteDirectoryConfig =
+  DeleteDirectoryConfig'
+    { _ddcDirectoryName :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteDirectoryConfig' with the minimum fields required to make a request.
@@ -102,25 +104,27 @@ instance ToQuery DeleteDirectoryConfig where
         toQuery = const mempty
 
 -- | /See:/ 'deleteDirectoryConfigResponse' smart constructor.
-newtype DeleteDirectoryConfigResponse = DeleteDirectoryConfigResponse'
-  { _delrsResponseStatus :: Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype DeleteDirectoryConfigResponse =
+  DeleteDirectoryConfigResponse'
+    { _ddcdrsResponseStatus :: Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteDirectoryConfigResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'delrsResponseStatus' - -- | The response status code.
+-- * 'ddcdrsResponseStatus' - -- | The response status code.
 deleteDirectoryConfigResponse
-    :: Int -- ^ 'delrsResponseStatus'
+    :: Int -- ^ 'ddcdrsResponseStatus'
     -> DeleteDirectoryConfigResponse
 deleteDirectoryConfigResponse pResponseStatus_ =
-  DeleteDirectoryConfigResponse' {_delrsResponseStatus = pResponseStatus_}
+  DeleteDirectoryConfigResponse' {_ddcdrsResponseStatus = pResponseStatus_}
 
 
 -- | -- | The response status code.
-delrsResponseStatus :: Lens' DeleteDirectoryConfigResponse Int
-delrsResponseStatus = lens _delrsResponseStatus (\ s a -> s{_delrsResponseStatus = a})
+ddcdrsResponseStatus :: Lens' DeleteDirectoryConfigResponse Int
+ddcdrsResponseStatus = lens _ddcdrsResponseStatus (\ s a -> s{_ddcdrsResponseStatus = a})
 
 instance NFData DeleteDirectoryConfigResponse where

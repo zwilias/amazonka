@@ -53,10 +53,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listStreamingDistributions' smart constructor.
-data ListStreamingDistributions = ListStreamingDistributions'
-  { _lsdMarker   :: !(Maybe Text)
-  , _lsdMaxItems :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListStreamingDistributions =
+  ListStreamingDistributions'
+    { _lsdMarker   :: !(Maybe Text)
+    , _lsdMaxItems :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListStreamingDistributions' with the minimum fields required to make a request.
@@ -116,7 +118,7 @@ instance ToHeaders ListStreamingDistributions where
         toHeaders = const mempty
 
 instance ToPath ListStreamingDistributions where
-        toPath = const "/2017-10-30/streaming-distribution"
+        toPath = const "/2019-03-26/streaming-distribution"
 
 instance ToQuery ListStreamingDistributions where
         toQuery ListStreamingDistributions'{..}
@@ -128,10 +130,12 @@ instance ToQuery ListStreamingDistributions where
 --
 --
 -- /See:/ 'listStreamingDistributionsResponse' smart constructor.
-data ListStreamingDistributionsResponse = ListStreamingDistributionsResponse'
-  { _lsdrsResponseStatus            :: !Int
-  , _lsdrsStreamingDistributionList :: !StreamingDistributionList
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListStreamingDistributionsResponse =
+  ListStreamingDistributionsResponse'
+    { _lsdrsResponseStatus            :: !Int
+    , _lsdrsStreamingDistributionList :: !StreamingDistributionList
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListStreamingDistributionsResponse' with the minimum fields required to make a request.

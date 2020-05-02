@@ -23,6 +23,8 @@
 --
 -- If you are using an unmanaged compute environment, you can use the @DescribeComputeEnvironment@ operation to determine the @ecsClusterArn@ that you should launch your Amazon ECS container instances into.
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.Batch.DescribeComputeEnvironments
     (
     -- * Creating a Request
@@ -45,16 +47,19 @@ module Network.AWS.Batch.DescribeComputeEnvironments
 import Network.AWS.Batch.Types
 import Network.AWS.Batch.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeComputeEnvironments' smart constructor.
-data DescribeComputeEnvironments = DescribeComputeEnvironments'
-  { _dceComputeEnvironments :: !(Maybe [Text])
-  , _dceNextToken           :: !(Maybe Text)
-  , _dceMaxResults          :: !(Maybe Int)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeComputeEnvironments =
+  DescribeComputeEnvironments'
+    { _dceComputeEnvironments :: !(Maybe [Text])
+    , _dceNextToken           :: !(Maybe Text)
+    , _dceMaxResults          :: !(Maybe Int)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeComputeEnvironments' with the minimum fields required to make a request.
@@ -87,6 +92,13 @@ dceNextToken = lens _dceNextToken (\ s a -> s{_dceNextToken = a})
 -- | The maximum number of cluster results returned by @DescribeComputeEnvironments@ in paginated output. When this parameter is used, @DescribeComputeEnvironments@ only returns @maxResults@ results in a single page along with a @nextToken@ response element. The remaining results of the initial request can be seen by sending another @DescribeComputeEnvironments@ request with the returned @nextToken@ value. This value can be between 1 and 100. If this parameter is not used, then @DescribeComputeEnvironments@ returns up to 100 results and a @nextToken@ value if applicable.
 dceMaxResults :: Lens' DescribeComputeEnvironments (Maybe Int)
 dceMaxResults = lens _dceMaxResults (\ s a -> s{_dceMaxResults = a})
+
+instance AWSPager DescribeComputeEnvironments where
+        page rq rs
+          | stop (rs ^. drsNextToken) = Nothing
+          | stop (rs ^. drsComputeEnvironments) = Nothing
+          | otherwise =
+            Just $ rq & dceNextToken .~ rs ^. drsNextToken
 
 instance AWSRequest DescribeComputeEnvironments where
         type Rs DescribeComputeEnvironments =
@@ -127,11 +139,13 @@ instance ToQuery DescribeComputeEnvironments where
         toQuery = const mempty
 
 -- | /See:/ 'describeComputeEnvironmentsResponse' smart constructor.
-data DescribeComputeEnvironmentsResponse = DescribeComputeEnvironmentsResponse'
-  { _drsComputeEnvironments :: !(Maybe [ComputeEnvironmentDetail])
-  , _drsNextToken           :: !(Maybe Text)
-  , _drsResponseStatus      :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeComputeEnvironmentsResponse =
+  DescribeComputeEnvironmentsResponse'
+    { _drsComputeEnvironments :: !(Maybe [ComputeEnvironmentDetail])
+    , _drsNextToken           :: !(Maybe Text)
+    , _drsResponseStatus      :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeComputeEnvironmentsResponse' with the minimum fields required to make a request.

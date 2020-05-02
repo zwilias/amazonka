@@ -55,11 +55,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeEndpointTypes' smart constructor.
-data DescribeEndpointTypes = DescribeEndpointTypes'
-  { _detFilters    :: !(Maybe [Filter])
-  , _detMarker     :: !(Maybe Text)
-  , _detMaxRecords :: !(Maybe Int)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeEndpointTypes =
+  DescribeEndpointTypes'
+    { _detFilters    :: !(Maybe [Filter])
+    , _detMarker     :: !(Maybe Text)
+    , _detMaxRecords :: !(Maybe Int)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeEndpointTypes' with the minimum fields required to make a request.
@@ -142,18 +144,20 @@ instance ToQuery DescribeEndpointTypes where
 --
 --
 -- /See:/ 'describeEndpointTypesResponse' smart constructor.
-data DescribeEndpointTypesResponse = DescribeEndpointTypesResponse'
-  { _detrsSupportedEndpointTypes :: !(Maybe [SupportedEndpointType])
-  , _detrsMarker                 :: !(Maybe Text)
-  , _detrsResponseStatus         :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeEndpointTypesResponse =
+  DescribeEndpointTypesResponse'
+    { _detrsSupportedEndpointTypes :: !(Maybe [SupportedEndpointType])
+    , _detrsMarker                 :: !(Maybe Text)
+    , _detrsResponseStatus         :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeEndpointTypesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'detrsSupportedEndpointTypes' - The type of endpoints that are supported.
+-- * 'detrsSupportedEndpointTypes' - The types of endpoints that are supported.
 --
 -- * 'detrsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
 --
@@ -169,7 +173,7 @@ describeEndpointTypesResponse pResponseStatus_ =
     }
 
 
--- | The type of endpoints that are supported.
+-- | The types of endpoints that are supported.
 detrsSupportedEndpointTypes :: Lens' DescribeEndpointTypesResponse [SupportedEndpointType]
 detrsSupportedEndpointTypes = lens _detrsSupportedEndpointTypes (\ s a -> s{_detrsSupportedEndpointTypes = a}) . _Default . _Coerce
 

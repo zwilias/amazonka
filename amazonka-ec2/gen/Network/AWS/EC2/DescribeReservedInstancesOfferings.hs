@@ -23,7 +23,7 @@
 --
 -- If you have listed your own Reserved Instances for sale in the Reserved Instance Marketplace, they will be excluded from these results. This is to ensure that you do not purchase your own Reserved Instances.
 --
--- For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html Reserved Instance Marketplace> in the /Amazon Elastic Compute Cloud User Guide/ .
+-- For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html Reserved Instance Marketplace> in the /Amazon Elastic Compute Cloud User Guide/ .
 --
 --
 -- This operation returns paginated results.
@@ -71,23 +71,25 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeReservedInstancesOfferings' smart constructor.
-data DescribeReservedInstancesOfferings = DescribeReservedInstancesOfferings'
-  { _drioMaxDuration                  :: !(Maybe Integer)
-  , _drioProductDescription           :: !(Maybe RIProductDescription)
-  , _drioFilters                      :: !(Maybe [Filter])
-  , _drioIncludeMarketplace           :: !(Maybe Bool)
-  , _drioInstanceType                 :: !(Maybe InstanceType)
-  , _drioNextToken                    :: !(Maybe Text)
-  , _drioMinDuration                  :: !(Maybe Integer)
-  , _drioAvailabilityZone             :: !(Maybe Text)
-  , _drioOfferingType                 :: !(Maybe OfferingTypeValues)
-  , _drioReservedInstancesOfferingIds :: !(Maybe [Text])
-  , _drioInstanceTenancy              :: !(Maybe Tenancy)
-  , _drioOfferingClass                :: !(Maybe OfferingClassType)
-  , _drioMaxInstanceCount             :: !(Maybe Int)
-  , _drioDryRun                       :: !(Maybe Bool)
-  , _drioMaxResults                   :: !(Maybe Int)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeReservedInstancesOfferings =
+  DescribeReservedInstancesOfferings'
+    { _drioMaxDuration                  :: !(Maybe Integer)
+    , _drioProductDescription           :: !(Maybe RIProductDescription)
+    , _drioFilters                      :: !(Maybe [Filter])
+    , _drioIncludeMarketplace           :: !(Maybe Bool)
+    , _drioInstanceType                 :: !(Maybe InstanceType)
+    , _drioNextToken                    :: !(Maybe Text)
+    , _drioMinDuration                  :: !(Maybe Integer)
+    , _drioAvailabilityZone             :: !(Maybe Text)
+    , _drioOfferingType                 :: !(Maybe OfferingTypeValues)
+    , _drioReservedInstancesOfferingIds :: !(Maybe [Text])
+    , _drioInstanceTenancy              :: !(Maybe Tenancy)
+    , _drioOfferingClass                :: !(Maybe OfferingClassType)
+    , _drioMaxInstanceCount             :: !(Maybe Int)
+    , _drioDryRun                       :: !(Maybe Bool)
+    , _drioMaxResults                   :: !(Maybe Int)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeReservedInstancesOfferings' with the minimum fields required to make a request.
@@ -102,7 +104,7 @@ data DescribeReservedInstancesOfferings = DescribeReservedInstancesOfferings'
 --
 -- * 'drioIncludeMarketplace' - Include Reserved Instance Marketplace offerings in the response.
 --
--- * 'drioInstanceType' - The instance type that the reservation will cover (for example, @m1.small@ ). For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html Instance Types> in the /Amazon Elastic Compute Cloud User Guide/ .
+-- * 'drioInstanceType' - The instance type that the reservation will cover (for example, @m1.small@ ). For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html Instance Types> in the /Amazon Elastic Compute Cloud User Guide/ .
 --
 -- * 'drioNextToken' - The token to retrieve the next page of results.
 --
@@ -161,7 +163,7 @@ drioFilters = lens _drioFilters (\ s a -> s{_drioFilters = a}) . _Default . _Coe
 drioIncludeMarketplace :: Lens' DescribeReservedInstancesOfferings (Maybe Bool)
 drioIncludeMarketplace = lens _drioIncludeMarketplace (\ s a -> s{_drioIncludeMarketplace = a})
 
--- | The instance type that the reservation will cover (for example, @m1.small@ ). For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html Instance Types> in the /Amazon Elastic Compute Cloud User Guide/ .
+-- | The instance type that the reservation will cover (for example, @m1.small@ ). For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html Instance Types> in the /Amazon Elastic Compute Cloud User Guide/ .
 drioInstanceType :: Lens' DescribeReservedInstancesOfferings (Maybe InstanceType)
 drioInstanceType = lens _drioInstanceType (\ s a -> s{_drioInstanceType = a})
 
@@ -273,11 +275,13 @@ instance ToQuery DescribeReservedInstancesOfferings
 --
 --
 -- /See:/ 'describeReservedInstancesOfferingsResponse' smart constructor.
-data DescribeReservedInstancesOfferingsResponse = DescribeReservedInstancesOfferingsResponse'
-  { _driorsNextToken                  :: !(Maybe Text)
-  , _driorsReservedInstancesOfferings :: !(Maybe [ReservedInstancesOffering])
-  , _driorsResponseStatus             :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeReservedInstancesOfferingsResponse =
+  DescribeReservedInstancesOfferingsResponse'
+    { _driorsNextToken                  :: !(Maybe Text)
+    , _driorsReservedInstancesOfferings :: !(Maybe [ReservedInstancesOffering])
+    , _driorsResponseStatus             :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeReservedInstancesOfferingsResponse' with the minimum fields required to make a request.

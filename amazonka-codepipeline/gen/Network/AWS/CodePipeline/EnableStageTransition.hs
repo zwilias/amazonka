@@ -43,16 +43,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Represents the input of an EnableStageTransition action.
+-- | Represents the input of an @EnableStageTransition@ action.
 --
 --
 --
 -- /See:/ 'enableStageTransition' smart constructor.
-data EnableStageTransition = EnableStageTransition'
-  { _estPipelineName   :: !Text
-  , _estStageName      :: !Text
-  , _estTransitionType :: !StageTransitionType
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data EnableStageTransition =
+  EnableStageTransition'
+    { _estPipelineName   :: !Text
+    , _estStageName      :: !Text
+    , _estTransitionType :: !StageTransitionType
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'EnableStageTransition' with the minimum fields required to make a request.
@@ -63,7 +65,7 @@ data EnableStageTransition = EnableStageTransition'
 --
 -- * 'estStageName' - The name of the stage where you want to enable the transition of artifacts, either into the stage (inbound) or from that stage to the next stage (outbound).
 --
--- * 'estTransitionType' - Specifies whether artifacts will be allowed to enter the stage and be processed by the actions in that stage (inbound) or whether already-processed artifacts will be allowed to transition to the next stage (outbound).
+-- * 'estTransitionType' - Specifies whether artifacts are allowed to enter the stage and be processed by the actions in that stage (inbound) or whether already processed artifacts are allowed to transition to the next stage (outbound).
 enableStageTransition
     :: Text -- ^ 'estPipelineName'
     -> Text -- ^ 'estStageName'
@@ -85,7 +87,7 @@ estPipelineName = lens _estPipelineName (\ s a -> s{_estPipelineName = a})
 estStageName :: Lens' EnableStageTransition Text
 estStageName = lens _estStageName (\ s a -> s{_estStageName = a})
 
--- | Specifies whether artifacts will be allowed to enter the stage and be processed by the actions in that stage (inbound) or whether already-processed artifacts will be allowed to transition to the next stage (outbound).
+-- | Specifies whether artifacts are allowed to enter the stage and be processed by the actions in that stage (inbound) or whether already processed artifacts are allowed to transition to the next stage (outbound).
 estTransitionType :: Lens' EnableStageTransition StageTransitionType
 estTransitionType = lens _estTransitionType (\ s a -> s{_estTransitionType = a})
 

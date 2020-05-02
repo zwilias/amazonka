@@ -21,6 +21,8 @@
 -- Returns the list of available network profiles.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.DeviceFarm.ListNetworkProfiles
     (
     -- * Creating a Request
@@ -43,16 +45,19 @@ module Network.AWS.DeviceFarm.ListNetworkProfiles
 import Network.AWS.DeviceFarm.Types
 import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listNetworkProfiles' smart constructor.
-data ListNetworkProfiles = ListNetworkProfiles'
-  { _lnpNextToken :: !(Maybe Text)
-  , _lnpType      :: !(Maybe NetworkProfileType)
-  , _lnpArn       :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListNetworkProfiles =
+  ListNetworkProfiles'
+    { _lnpNextToken :: !(Maybe Text)
+    , _lnpType      :: !(Maybe NetworkProfileType)
+    , _lnpArn       :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListNetworkProfiles' with the minimum fields required to make a request.
@@ -61,7 +66,7 @@ data ListNetworkProfiles = ListNetworkProfiles'
 --
 -- * 'lnpNextToken' - An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 --
--- * 'lnpType' - The type of network profile you wish to return information about. Valid values are listed below.
+-- * 'lnpType' - The type of network profile to return information about. Valid values are listed here.
 --
 -- * 'lnpArn' - The Amazon Resource Name (ARN) of the project for which you want to list network profiles.
 listNetworkProfiles
@@ -76,13 +81,20 @@ listNetworkProfiles pArn_ =
 lnpNextToken :: Lens' ListNetworkProfiles (Maybe Text)
 lnpNextToken = lens _lnpNextToken (\ s a -> s{_lnpNextToken = a})
 
--- | The type of network profile you wish to return information about. Valid values are listed below.
+-- | The type of network profile to return information about. Valid values are listed here.
 lnpType :: Lens' ListNetworkProfiles (Maybe NetworkProfileType)
 lnpType = lens _lnpType (\ s a -> s{_lnpType = a})
 
 -- | The Amazon Resource Name (ARN) of the project for which you want to list network profiles.
 lnpArn :: Lens' ListNetworkProfiles Text
 lnpArn = lens _lnpArn (\ s a -> s{_lnpArn = a})
+
+instance AWSPager ListNetworkProfiles where
+        page rq rs
+          | stop (rs ^. lnprsNextToken) = Nothing
+          | stop (rs ^. lnprsNetworkProfiles) = Nothing
+          | otherwise =
+            Just $ rq & lnpNextToken .~ rs ^. lnprsNextToken
 
 instance AWSRequest ListNetworkProfiles where
         type Rs ListNetworkProfiles =
@@ -124,11 +136,13 @@ instance ToQuery ListNetworkProfiles where
         toQuery = const mempty
 
 -- | /See:/ 'listNetworkProfilesResponse' smart constructor.
-data ListNetworkProfilesResponse = ListNetworkProfilesResponse'
-  { _lnprsNetworkProfiles :: !(Maybe [NetworkProfile])
-  , _lnprsNextToken       :: !(Maybe Text)
-  , _lnprsResponseStatus  :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListNetworkProfilesResponse =
+  ListNetworkProfilesResponse'
+    { _lnprsNetworkProfiles :: !(Maybe [NetworkProfile])
+    , _lnprsNextToken       :: !(Maybe Text)
+    , _lnprsResponseStatus  :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListNetworkProfilesResponse' with the minimum fields required to make a request.

@@ -54,11 +54,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getCredentialsForIdentity' smart constructor.
-data GetCredentialsForIdentity = GetCredentialsForIdentity'
-  { _gcfiCustomRoleARN :: !(Maybe Text)
-  , _gcfiLogins        :: !(Maybe (Map Text Text))
-  , _gcfiIdentityId    :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetCredentialsForIdentity =
+  GetCredentialsForIdentity'
+    { _gcfiCustomRoleARN :: !(Maybe Text)
+    , _gcfiLogins        :: !(Maybe (Map Text Text))
+    , _gcfiIdentityId    :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetCredentialsForIdentity' with the minimum fields required to make a request.
@@ -67,7 +69,7 @@ data GetCredentialsForIdentity = GetCredentialsForIdentity'
 --
 -- * 'gcfiCustomRoleARN' - The Amazon Resource Name (ARN) of the role to be assumed when multiple roles were received in the token from the identity provider. For example, a SAML-based identity provider. This parameter is optional for identity providers that do not support role customization.
 --
--- * 'gcfiLogins' - A set of optional name-value pairs that map provider names to provider tokens.
+-- * 'gcfiLogins' - A set of optional name-value pairs that map provider names to provider tokens. The name-value pair will follow the syntax "provider_name": "provider_user_identifier". Logins should not be specified when trying to get credentials for an unauthenticated identity. The Logins parameter is required when using identities associated with external identity providers such as FaceBook. For examples of @Logins@ maps, see the code examples in the <http://docs.aws.amazon.com/cognito/latest/developerguide/external-identity-providers.html External Identity Providers> section of the Amazon Cognito Developer Guide.
 --
 -- * 'gcfiIdentityId' - A unique identifier in the format REGION:GUID.
 getCredentialsForIdentity
@@ -85,7 +87,7 @@ getCredentialsForIdentity pIdentityId_ =
 gcfiCustomRoleARN :: Lens' GetCredentialsForIdentity (Maybe Text)
 gcfiCustomRoleARN = lens _gcfiCustomRoleARN (\ s a -> s{_gcfiCustomRoleARN = a})
 
--- | A set of optional name-value pairs that map provider names to provider tokens.
+-- | A set of optional name-value pairs that map provider names to provider tokens. The name-value pair will follow the syntax "provider_name": "provider_user_identifier". Logins should not be specified when trying to get credentials for an unauthenticated identity. The Logins parameter is required when using identities associated with external identity providers such as FaceBook. For examples of @Logins@ maps, see the code examples in the <http://docs.aws.amazon.com/cognito/latest/developerguide/external-identity-providers.html External Identity Providers> section of the Amazon Cognito Developer Guide.
 gcfiLogins :: Lens' GetCredentialsForIdentity (HashMap Text Text)
 gcfiLogins = lens _gcfiLogins (\ s a -> s{_gcfiLogins = a}) . _Default . _Map
 
@@ -137,11 +139,13 @@ instance ToQuery GetCredentialsForIdentity where
 --
 --
 -- /See:/ 'getCredentialsForIdentityResponse' smart constructor.
-data GetCredentialsForIdentityResponse = GetCredentialsForIdentityResponse'
-  { _gcfirsCredentials    :: !(Maybe Credentials)
-  , _gcfirsIdentityId     :: !(Maybe Text)
-  , _gcfirsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetCredentialsForIdentityResponse =
+  GetCredentialsForIdentityResponse'
+    { _gcfirsCredentials    :: !(Maybe Credentials)
+    , _gcfirsIdentityId     :: !(Maybe Text)
+    , _gcfirsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetCredentialsForIdentityResponse' with the minimum fields required to make a request.

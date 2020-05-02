@@ -29,6 +29,7 @@ module Network.AWS.Config.PutConfigurationAggregator
     -- * Request Lenses
     , pcaOrganizationAggregationSource
     , pcaAccountAggregationSources
+    , pcaTags
     , pcaConfigurationAggregatorName
 
     -- * Destructuring the Response
@@ -47,11 +48,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putConfigurationAggregator' smart constructor.
-data PutConfigurationAggregator = PutConfigurationAggregator'
-  { _pcaOrganizationAggregationSource :: !(Maybe OrganizationAggregationSource)
-  , _pcaAccountAggregationSources     :: !(Maybe [AccountAggregationSource])
-  , _pcaConfigurationAggregatorName   :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data PutConfigurationAggregator =
+  PutConfigurationAggregator'
+    { _pcaOrganizationAggregationSource :: !(Maybe OrganizationAggregationSource)
+    , _pcaAccountAggregationSources :: !(Maybe [AccountAggregationSource])
+    , _pcaTags :: !(Maybe [Tag])
+    , _pcaConfigurationAggregatorName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'PutConfigurationAggregator' with the minimum fields required to make a request.
@@ -62,6 +66,8 @@ data PutConfigurationAggregator = PutConfigurationAggregator'
 --
 -- * 'pcaAccountAggregationSources' - A list of AccountAggregationSource object.
 --
+-- * 'pcaTags' - An array of tag object.
+--
 -- * 'pcaConfigurationAggregatorName' - The name of the configuration aggregator.
 putConfigurationAggregator
     :: Text -- ^ 'pcaConfigurationAggregatorName'
@@ -70,6 +76,7 @@ putConfigurationAggregator pConfigurationAggregatorName_ =
   PutConfigurationAggregator'
     { _pcaOrganizationAggregationSource = Nothing
     , _pcaAccountAggregationSources = Nothing
+    , _pcaTags = Nothing
     , _pcaConfigurationAggregatorName = pConfigurationAggregatorName_
     }
 
@@ -81,6 +88,10 @@ pcaOrganizationAggregationSource = lens _pcaOrganizationAggregationSource (\ s a
 -- | A list of AccountAggregationSource object.
 pcaAccountAggregationSources :: Lens' PutConfigurationAggregator [AccountAggregationSource]
 pcaAccountAggregationSources = lens _pcaAccountAggregationSources (\ s a -> s{_pcaAccountAggregationSources = a}) . _Default . _Coerce
+
+-- | An array of tag object.
+pcaTags :: Lens' PutConfigurationAggregator [Tag]
+pcaTags = lens _pcaTags (\ s a -> s{_pcaTags = a}) . _Default . _Coerce
 
 -- | The name of the configuration aggregator.
 pcaConfigurationAggregatorName :: Lens' PutConfigurationAggregator Text
@@ -119,6 +130,7 @@ instance ToJSON PutConfigurationAggregator where
                     _pcaOrganizationAggregationSource,
                   ("AccountAggregationSources" .=) <$>
                     _pcaAccountAggregationSources,
+                  ("Tags" .=) <$> _pcaTags,
                   Just
                     ("ConfigurationAggregatorName" .=
                        _pcaConfigurationAggregatorName)])
@@ -130,10 +142,12 @@ instance ToQuery PutConfigurationAggregator where
         toQuery = const mempty
 
 -- | /See:/ 'putConfigurationAggregatorResponse' smart constructor.
-data PutConfigurationAggregatorResponse = PutConfigurationAggregatorResponse'
-  { _pcarsConfigurationAggregator :: !(Maybe ConfigurationAggregator)
-  , _pcarsResponseStatus          :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data PutConfigurationAggregatorResponse =
+  PutConfigurationAggregatorResponse'
+    { _pcarsConfigurationAggregator :: !(Maybe ConfigurationAggregator)
+    , _pcarsResponseStatus          :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'PutConfigurationAggregatorResponse' with the minimum fields required to make a request.

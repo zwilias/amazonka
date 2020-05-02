@@ -21,9 +21,9 @@
 -- Detaches one or more Classic Load Balancers from the specified Auto Scaling group.
 --
 --
--- Note that this operation detaches only Classic Load Balancers. If you have Application Load Balancers, use 'DetachLoadBalancerTargetGroups' instead.
+-- This operation detaches only Classic Load Balancers. If you have Application Load Balancers or Network Load Balancers, use 'DetachLoadBalancerTargetGroups' instead.
 --
--- When you detach a load balancer, it enters the @Removing@ state while deregistering the instances in the group. When all instances are deregistered, then you can no longer describe the load balancer using 'DescribeLoadBalancers' . Note that the instances remain running.
+-- When you detach a load balancer, it enters the @Removing@ state while deregistering the instances in the group. When all instances are deregistered, then you can no longer describe the load balancer using 'DescribeLoadBalancers' . The instances remain running.
 --
 module Network.AWS.AutoScaling.DetachLoadBalancers
     (
@@ -49,10 +49,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'detachLoadBalancers' smart constructor.
-data DetachLoadBalancers = DetachLoadBalancers'
-  { _dAutoScalingGroupName :: !Text
-  , _dLoadBalancerNames    :: ![Text]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DetachLoadBalancers =
+  DetachLoadBalancers'
+    { _dAutoScalingGroupName :: !Text
+    , _dLoadBalancerNames    :: ![Text]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DetachLoadBalancers' with the minimum fields required to make a request.
@@ -109,9 +111,11 @@ instance ToQuery DetachLoadBalancers where
                  toQueryList "member" _dLoadBalancerNames]
 
 -- | /See:/ 'detachLoadBalancersResponse' smart constructor.
-newtype DetachLoadBalancersResponse = DetachLoadBalancersResponse'
-  { _dlbsrsResponseStatus :: Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype DetachLoadBalancersResponse =
+  DetachLoadBalancersResponse'
+    { _dlbsrsResponseStatus :: Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DetachLoadBalancersResponse' with the minimum fields required to make a request.

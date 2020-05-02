@@ -21,7 +21,9 @@
 -- Moves the specified instances out of the standby state.
 --
 --
--- For more information, see <http://docs.aws.amazon.com/autoscaling/latest/userguide/as-enter-exit-standby.html Temporarily Removing Instances from Your Auto Scaling Group> in the /Auto Scaling User Guide/ .
+-- After you put the instances back in service, the desired capacity is incremented.
+--
+-- For more information, see <https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html Temporarily Removing Instances from Your Auto Scaling Group> in the /Amazon EC2 Auto Scaling User Guide/ .
 --
 module Network.AWS.AutoScaling.ExitStandby
     (
@@ -48,10 +50,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'exitStandby' smart constructor.
-data ExitStandby = ExitStandby'
-  { _eInstanceIds          :: !(Maybe [Text])
-  , _eAutoScalingGroupName :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ExitStandby =
+  ExitStandby'
+    { _eInstanceIds          :: !(Maybe [Text])
+    , _eAutoScalingGroupName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ExitStandby' with the minimum fields required to make a request.
@@ -108,10 +112,12 @@ instance ToQuery ExitStandby where
                "AutoScalingGroupName" =: _eAutoScalingGroupName]
 
 -- | /See:/ 'exitStandbyResponse' smart constructor.
-data ExitStandbyResponse = ExitStandbyResponse'
-  { _esrsActivities     :: !(Maybe [Activity])
-  , _esrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ExitStandbyResponse =
+  ExitStandbyResponse'
+    { _esrsActivities     :: !(Maybe [Activity])
+    , _esrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ExitStandbyResponse' with the minimum fields required to make a request.

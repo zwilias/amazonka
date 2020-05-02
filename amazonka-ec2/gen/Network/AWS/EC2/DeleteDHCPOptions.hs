@@ -42,15 +42,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for DeleteDhcpOptions.
---
---
---
--- /See:/ 'deleteDHCPOptions' smart constructor.
-data DeleteDHCPOptions = DeleteDHCPOptions'
-  { _ddhcpoDryRun        :: !(Maybe Bool)
-  , _ddhcpoDHCPOptionsId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'deleteDHCPOptions' smart constructor.
+data DeleteDHCPOptions =
+  DeleteDHCPOptions'
+    { _ddhcpoDryRun        :: !(Maybe Bool)
+    , _ddhcpoDHCPOptionsId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteDHCPOptions' with the minimum fields required to make a request.

@@ -36,6 +36,7 @@ module Network.AWS.EC2.ReleaseAddress
     , ReleaseAddress
     -- * Request Lenses
     , raAllocationId
+    , raNetworkBorderGroup
     , raPublicIP
     , raDryRun
 
@@ -51,16 +52,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for ReleaseAddress.
---
---
---
--- /See:/ 'releaseAddress' smart constructor.
-data ReleaseAddress = ReleaseAddress'
-  { _raAllocationId :: !(Maybe Text)
-  , _raPublicIP     :: !(Maybe Text)
-  , _raDryRun       :: !(Maybe Bool)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'releaseAddress' smart constructor.
+data ReleaseAddress =
+  ReleaseAddress'
+    { _raAllocationId       :: !(Maybe Text)
+    , _raNetworkBorderGroup :: !(Maybe Text)
+    , _raPublicIP           :: !(Maybe Text)
+    , _raDryRun             :: !(Maybe Bool)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ReleaseAddress' with the minimum fields required to make a request.
@@ -69,6 +69,8 @@ data ReleaseAddress = ReleaseAddress'
 --
 -- * 'raAllocationId' - [EC2-VPC] The allocation ID. Required for EC2-VPC.
 --
+-- * 'raNetworkBorderGroup' - The location that the IP address is released from. If you provide an incorrect network border group, you will receive an @InvalidAddress.NotFound@ error. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/errors-overview.html Error Codes> .
+--
 -- * 'raPublicIP' - [EC2-Classic] The Elastic IP address. Required for EC2-Classic.
 --
 -- * 'raDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
@@ -76,12 +78,20 @@ releaseAddress
     :: ReleaseAddress
 releaseAddress =
   ReleaseAddress'
-    {_raAllocationId = Nothing, _raPublicIP = Nothing, _raDryRun = Nothing}
+    { _raAllocationId = Nothing
+    , _raNetworkBorderGroup = Nothing
+    , _raPublicIP = Nothing
+    , _raDryRun = Nothing
+    }
 
 
 -- | [EC2-VPC] The allocation ID. Required for EC2-VPC.
 raAllocationId :: Lens' ReleaseAddress (Maybe Text)
 raAllocationId = lens _raAllocationId (\ s a -> s{_raAllocationId = a})
+
+-- | The location that the IP address is released from. If you provide an incorrect network border group, you will receive an @InvalidAddress.NotFound@ error. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/errors-overview.html Error Codes> .
+raNetworkBorderGroup :: Lens' ReleaseAddress (Maybe Text)
+raNetworkBorderGroup = lens _raNetworkBorderGroup (\ s a -> s{_raNetworkBorderGroup = a})
 
 -- | [EC2-Classic] The Elastic IP address. Required for EC2-Classic.
 raPublicIP :: Lens' ReleaseAddress (Maybe Text)
@@ -112,6 +122,7 @@ instance ToQuery ReleaseAddress where
               ["Action" =: ("ReleaseAddress" :: ByteString),
                "Version" =: ("2016-11-15" :: ByteString),
                "AllocationId" =: _raAllocationId,
+               "NetworkBorderGroup" =: _raNetworkBorderGroup,
                "PublicIp" =: _raPublicIP, "DryRun" =: _raDryRun]
 
 -- | /See:/ 'releaseAddressResponse' smart constructor.

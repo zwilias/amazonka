@@ -49,9 +49,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getRun' smart constructor.
-newtype GetRun = GetRun'
-  { _grArn :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype GetRun =
+  GetRun'
+    { _grArn :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetRun' with the minimum fields required to make a request.
@@ -106,17 +108,19 @@ instance ToQuery GetRun where
 --
 --
 -- /See:/ 'getRunResponse' smart constructor.
-data GetRunResponse = GetRunResponse'
-  { _grrsRun            :: !(Maybe Run)
-  , _grrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetRunResponse =
+  GetRunResponse'
+    { _grrsRun            :: !(Maybe Run)
+    , _grrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetRunResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'grrsRun' - The run you wish to get results from.
+-- * 'grrsRun' - The run to get results from.
 --
 -- * 'grrsResponseStatus' - -- | The response status code.
 getRunResponse
@@ -126,7 +130,7 @@ getRunResponse pResponseStatus_ =
   GetRunResponse' {_grrsRun = Nothing, _grrsResponseStatus = pResponseStatus_}
 
 
--- | The run you wish to get results from.
+-- | The run to get results from.
 grrsRun :: Lens' GetRunResponse (Maybe Run)
 grrsRun = lens _grrsRun (\ s a -> s{_grrsRun = a})
 

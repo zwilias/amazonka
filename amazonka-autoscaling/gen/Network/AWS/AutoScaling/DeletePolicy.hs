@@ -18,10 +18,12 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes the specified Auto Scaling policy.
+-- Deletes the specified scaling policy.
 --
 --
--- Deleting a policy deletes the underlying alarm action, but does not delete the alarm, even if it no longer has an associated action.
+-- Deleting either a step scaling policy or a simple scaling policy deletes the underlying alarm action, but does not delete the alarm, even if it no longer has an associated action.
+--
+-- For more information, see <https://docs.aws.amazon.com/autoscaling/ec2/userguide/deleting-scaling-policy.html Deleting a Scaling Policy> in the /Amazon EC2 Auto Scaling User Guide/ .
 --
 module Network.AWS.AutoScaling.DeletePolicy
     (
@@ -45,10 +47,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deletePolicy' smart constructor.
-data DeletePolicy = DeletePolicy'
-  { _dpAutoScalingGroupName :: !(Maybe Text)
-  , _dpPolicyName           :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DeletePolicy =
+  DeletePolicy'
+    { _dpAutoScalingGroupName :: !(Maybe Text)
+    , _dpPolicyName           :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeletePolicy' with the minimum fields required to make a request.

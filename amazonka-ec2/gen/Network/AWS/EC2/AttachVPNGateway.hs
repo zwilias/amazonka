@@ -21,7 +21,7 @@
 -- Attaches a virtual private gateway to a VPC. You can attach one virtual private gateway to one VPC at a time.
 --
 --
--- For more information, see <http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html AWS Managed VPN Connections> in the /Amazon Virtual Private Cloud User Guide/ .
+-- For more information, see <https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html AWS Site-to-Site VPN> in the /AWS Site-to-Site VPN User Guide/ .
 --
 module Network.AWS.EC2.AttachVPNGateway
     (
@@ -53,11 +53,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'attachVPNGateway' smart constructor.
-data AttachVPNGateway = AttachVPNGateway'
-  { _avgDryRun       :: !(Maybe Bool)
-  , _avgVPCId        :: !Text
-  , _avgVPNGatewayId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AttachVPNGateway =
+  AttachVPNGateway'
+    { _avgDryRun       :: !(Maybe Bool)
+    , _avgVPCId        :: !Text
+    , _avgVPNGatewayId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AttachVPNGateway' with the minimum fields required to make a request.
@@ -125,10 +127,12 @@ instance ToQuery AttachVPNGateway where
 --
 --
 -- /See:/ 'attachVPNGatewayResponse' smart constructor.
-data AttachVPNGatewayResponse = AttachVPNGatewayResponse'
-  { _avgrsVPCAttachment  :: !(Maybe VPCAttachment)
-  , _avgrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AttachVPNGatewayResponse =
+  AttachVPNGatewayResponse'
+    { _avgrsVPCAttachment  :: !(Maybe VPCAttachment)
+    , _avgrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AttachVPNGatewayResponse' with the minimum fields required to make a request.

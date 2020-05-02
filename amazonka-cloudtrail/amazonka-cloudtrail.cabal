@@ -50,11 +50,15 @@ library
         , Network.AWS.CloudTrail.DeleteTrail
         , Network.AWS.CloudTrail.DescribeTrails
         , Network.AWS.CloudTrail.GetEventSelectors
+        , Network.AWS.CloudTrail.GetInsightSelectors
+        , Network.AWS.CloudTrail.GetTrail
         , Network.AWS.CloudTrail.GetTrailStatus
         , Network.AWS.CloudTrail.ListPublicKeys
         , Network.AWS.CloudTrail.ListTags
+        , Network.AWS.CloudTrail.ListTrails
         , Network.AWS.CloudTrail.LookupEvents
         , Network.AWS.CloudTrail.PutEventSelectors
+        , Network.AWS.CloudTrail.PutInsightSelectors
         , Network.AWS.CloudTrail.RemoveTags
         , Network.AWS.CloudTrail.StartLogging
         , Network.AWS.CloudTrail.StopLogging

@@ -48,19 +48,37 @@ library
         , Network.AWS.CodeBuild.BatchDeleteBuilds
         , Network.AWS.CodeBuild.BatchGetBuilds
         , Network.AWS.CodeBuild.BatchGetProjects
+        , Network.AWS.CodeBuild.BatchGetReportGroups
+        , Network.AWS.CodeBuild.BatchGetReports
         , Network.AWS.CodeBuild.CreateProject
+        , Network.AWS.CodeBuild.CreateReportGroup
         , Network.AWS.CodeBuild.CreateWebhook
         , Network.AWS.CodeBuild.DeleteProject
+        , Network.AWS.CodeBuild.DeleteReport
+        , Network.AWS.CodeBuild.DeleteReportGroup
+        , Network.AWS.CodeBuild.DeleteResourcePolicy
+        , Network.AWS.CodeBuild.DeleteSourceCredentials
         , Network.AWS.CodeBuild.DeleteWebhook
+        , Network.AWS.CodeBuild.DescribeTestCases
+        , Network.AWS.CodeBuild.GetResourcePolicy
+        , Network.AWS.CodeBuild.ImportSourceCredentials
         , Network.AWS.CodeBuild.InvalidateProjectCache
         , Network.AWS.CodeBuild.ListBuilds
         , Network.AWS.CodeBuild.ListBuildsForProject
         , Network.AWS.CodeBuild.ListCuratedEnvironmentImages
         , Network.AWS.CodeBuild.ListProjects
+        , Network.AWS.CodeBuild.ListReportGroups
+        , Network.AWS.CodeBuild.ListReports
+        , Network.AWS.CodeBuild.ListReportsForReportGroup
+        , Network.AWS.CodeBuild.ListSharedProjects
+        , Network.AWS.CodeBuild.ListSharedReportGroups
+        , Network.AWS.CodeBuild.ListSourceCredentials
+        , Network.AWS.CodeBuild.PutResourcePolicy
         , Network.AWS.CodeBuild.StartBuild
         , Network.AWS.CodeBuild.StopBuild
         , Network.AWS.CodeBuild.Types
         , Network.AWS.CodeBuild.UpdateProject
+        , Network.AWS.CodeBuild.UpdateReportGroup
         , Network.AWS.CodeBuild.UpdateWebhook
         , Network.AWS.CodeBuild.Waiters
 

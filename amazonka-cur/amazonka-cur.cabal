@@ -47,6 +47,7 @@ library
           Network.AWS.CostAndUsageReport
         , Network.AWS.CostAndUsageReport.DeleteReportDefinition
         , Network.AWS.CostAndUsageReport.DescribeReportDefinitions
+        , Network.AWS.CostAndUsageReport.ModifyReportDefinition
         , Network.AWS.CostAndUsageReport.PutReportDefinition
         , Network.AWS.CostAndUsageReport.Types
         , Network.AWS.CostAndUsageReport.Waiters

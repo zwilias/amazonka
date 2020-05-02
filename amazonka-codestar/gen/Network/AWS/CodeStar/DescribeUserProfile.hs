@@ -50,9 +50,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeUserProfile' smart constructor.
-newtype DescribeUserProfile = DescribeUserProfile'
-  { _dupUserARN :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype DescribeUserProfile =
+  DescribeUserProfile'
+    { _dupUserARN :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeUserProfile' with the minimum fields required to make a request.
@@ -111,15 +113,17 @@ instance ToQuery DescribeUserProfile where
         toQuery = const mempty
 
 -- | /See:/ 'describeUserProfileResponse' smart constructor.
-data DescribeUserProfileResponse = DescribeUserProfileResponse'
-  { _duprsSshPublicKey          :: !(Maybe Text)
-  , _duprsEmailAddress          :: !(Maybe (Sensitive Text))
-  , _duprsDisplayName           :: !(Maybe Text)
-  , _duprsResponseStatus        :: !Int
-  , _duprsUserARN               :: !Text
-  , _duprsCreatedTimestamp      :: !POSIX
-  , _duprsLastModifiedTimestamp :: !POSIX
-  } deriving (Eq, Show, Data, Typeable, Generic)
+data DescribeUserProfileResponse =
+  DescribeUserProfileResponse'
+    { _duprsSshPublicKey          :: !(Maybe Text)
+    , _duprsEmailAddress          :: !(Maybe (Sensitive Text))
+    , _duprsDisplayName           :: !(Maybe (Sensitive Text))
+    , _duprsResponseStatus        :: !Int
+    , _duprsUserARN               :: !Text
+    , _duprsCreatedTimestamp      :: !POSIX
+    , _duprsLastModifiedTimestamp :: !POSIX
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeUserProfileResponse' with the minimum fields required to make a request.
@@ -167,7 +171,7 @@ duprsEmailAddress = lens _duprsEmailAddress (\ s a -> s{_duprsEmailAddress = a})
 
 -- | The display name shown for the user in AWS CodeStar projects. For example, this could be set to both first and last name ("Mary Major") or a single name ("Mary"). The display name is also used to generate the initial icon associated with the user in AWS CodeStar projects. If spaces are included in the display name, the first character that appears after the space will be used as the second character in the user initial icon. The initial icon displays a maximum of two characters, so a display name with more than one space (for example "Mary Jane Major") would generate an initial icon using the first character and the first character after the space ("MJ", not "MM").
 duprsDisplayName :: Lens' DescribeUserProfileResponse (Maybe Text)
-duprsDisplayName = lens _duprsDisplayName (\ s a -> s{_duprsDisplayName = a})
+duprsDisplayName = lens _duprsDisplayName (\ s a -> s{_duprsDisplayName = a}) . mapping _Sensitive
 
 -- | -- | The response status code.
 duprsResponseStatus :: Lens' DescribeUserProfileResponse Int

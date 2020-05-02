@@ -47,9 +47,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getUserPoolMFAConfig' smart constructor.
-newtype GetUserPoolMFAConfig = GetUserPoolMFAConfig'
-  { _gupmcUserPoolId :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype GetUserPoolMFAConfig =
+  GetUserPoolMFAConfig'
+    { _gupmcUserPoolId :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetUserPoolMFAConfig' with the minimum fields required to make a request.
@@ -107,12 +109,14 @@ instance ToQuery GetUserPoolMFAConfig where
         toQuery = const mempty
 
 -- | /See:/ 'getUserPoolMFAConfigResponse' smart constructor.
-data GetUserPoolMFAConfigResponse = GetUserPoolMFAConfigResponse'
-  { _gupmcrsSmsMFAConfiguration           :: !(Maybe SmsMFAConfigType)
-  , _gupmcrsSoftwareTokenMFAConfiguration :: !(Maybe SoftwareTokenMFAConfigType)
-  , _gupmcrsMFAConfiguration              :: !(Maybe UserPoolMFAType)
-  , _gupmcrsResponseStatus                :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetUserPoolMFAConfigResponse =
+  GetUserPoolMFAConfigResponse'
+    { _gupmcrsSmsMFAConfiguration :: !(Maybe SmsMFAConfigType)
+    , _gupmcrsSoftwareTokenMFAConfiguration :: !(Maybe SoftwareTokenMFAConfigType)
+    , _gupmcrsMFAConfiguration :: !(Maybe UserPoolMFAType)
+    , _gupmcrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetUserPoolMFAConfigResponse' with the minimum fields required to make a request.
@@ -123,7 +127,7 @@ data GetUserPoolMFAConfigResponse = GetUserPoolMFAConfigResponse'
 --
 -- * 'gupmcrsSoftwareTokenMFAConfiguration' - The software token multi-factor (MFA) configuration.
 --
--- * 'gupmcrsMFAConfiguration' - The multi-factor (MFA) configuration.
+-- * 'gupmcrsMFAConfiguration' - The multi-factor (MFA) configuration. Valid values include:     * @OFF@ MFA will not be used for any users.     * @ON@ MFA is required for all users to sign in.     * @OPTIONAL@ MFA will be required only for individual users who have an MFA factor enabled.
 --
 -- * 'gupmcrsResponseStatus' - -- | The response status code.
 getUserPoolMFAConfigResponse
@@ -146,7 +150,7 @@ gupmcrsSmsMFAConfiguration = lens _gupmcrsSmsMFAConfiguration (\ s a -> s{_gupmc
 gupmcrsSoftwareTokenMFAConfiguration :: Lens' GetUserPoolMFAConfigResponse (Maybe SoftwareTokenMFAConfigType)
 gupmcrsSoftwareTokenMFAConfiguration = lens _gupmcrsSoftwareTokenMFAConfiguration (\ s a -> s{_gupmcrsSoftwareTokenMFAConfiguration = a})
 
--- | The multi-factor (MFA) configuration.
+-- | The multi-factor (MFA) configuration. Valid values include:     * @OFF@ MFA will not be used for any users.     * @ON@ MFA is required for all users to sign in.     * @OPTIONAL@ MFA will be required only for individual users who have an MFA factor enabled.
 gupmcrsMFAConfiguration :: Lens' GetUserPoolMFAConfigResponse (Maybe UserPoolMFAType)
 gupmcrsMFAConfiguration = lens _gupmcrsMFAConfiguration (\ s a -> s{_gupmcrsMFAConfiguration = a})
 

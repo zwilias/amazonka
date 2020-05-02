@@ -46,16 +46,18 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteApplication' smart constructor.
-newtype DeleteApplication = DeleteApplication'
-  { _daApplicationName :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype DeleteApplication =
+  DeleteApplication'
+    { _daApplicationName :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteApplication' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'daApplicationName' - The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
+-- * 'daApplicationName' - The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
 deleteApplication
     :: Text -- ^ 'daApplicationName'
     -> DeleteApplication
@@ -63,7 +65,7 @@ deleteApplication pApplicationName_ =
   DeleteApplication' {_daApplicationName = pApplicationName_}
 
 
--- | The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
+-- | The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
 daApplicationName :: Lens' DeleteApplication Text
 daApplicationName = lens _daApplicationName (\ s a -> s{_daApplicationName = a})
 

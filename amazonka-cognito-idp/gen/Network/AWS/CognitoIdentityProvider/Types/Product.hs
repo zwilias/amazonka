@@ -21,15 +21,62 @@ import Network.AWS.CognitoIdentityProvider.Types.Sum
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
+-- | The data type for @AccountRecoverySetting@ .
+--
+--
+--
+-- /See:/ 'accountRecoverySettingType' smart constructor.
+newtype AccountRecoverySettingType =
+  AccountRecoverySettingType'
+    { _arstRecoveryMechanisms :: Maybe (List1 RecoveryOptionType)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'AccountRecoverySettingType' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'arstRecoveryMechanisms' - The list of @RecoveryOptionTypes@ .
+accountRecoverySettingType
+    :: AccountRecoverySettingType
+accountRecoverySettingType =
+  AccountRecoverySettingType' {_arstRecoveryMechanisms = Nothing}
+
+
+-- | The list of @RecoveryOptionTypes@ .
+arstRecoveryMechanisms :: Lens' AccountRecoverySettingType (Maybe (NonEmpty RecoveryOptionType))
+arstRecoveryMechanisms = lens _arstRecoveryMechanisms (\ s a -> s{_arstRecoveryMechanisms = a}) . mapping _List1
+
+instance FromJSON AccountRecoverySettingType where
+        parseJSON
+          = withObject "AccountRecoverySettingType"
+              (\ x ->
+                 AccountRecoverySettingType' <$>
+                   (x .:? "RecoveryMechanisms"))
+
+instance Hashable AccountRecoverySettingType where
+
+instance NFData AccountRecoverySettingType where
+
+instance ToJSON AccountRecoverySettingType where
+        toJSON AccountRecoverySettingType'{..}
+          = object
+              (catMaybes
+                 [("RecoveryMechanisms" .=) <$>
+                    _arstRecoveryMechanisms])
+
 -- | Account takeover action type.
 --
 --
 --
 -- /See:/ 'accountTakeoverActionType' smart constructor.
-data AccountTakeoverActionType = AccountTakeoverActionType'
-  { _atatNotify      :: !Bool
-  , _atatEventAction :: !AccountTakeoverEventActionType
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AccountTakeoverActionType =
+  AccountTakeoverActionType'
+    { _atatNotify      :: !Bool
+    , _atatEventAction :: !AccountTakeoverEventActionType
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AccountTakeoverActionType' with the minimum fields required to make a request.
@@ -79,11 +126,13 @@ instance ToJSON AccountTakeoverActionType where
 --
 --
 -- /See:/ 'accountTakeoverActionsType' smart constructor.
-data AccountTakeoverActionsType = AccountTakeoverActionsType'
-  { _atatLowAction    :: !(Maybe AccountTakeoverActionType)
-  , _atatHighAction   :: !(Maybe AccountTakeoverActionType)
-  , _atatMediumAction :: !(Maybe AccountTakeoverActionType)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AccountTakeoverActionsType =
+  AccountTakeoverActionsType'
+    { _atatLowAction    :: !(Maybe AccountTakeoverActionType)
+    , _atatHighAction   :: !(Maybe AccountTakeoverActionType)
+    , _atatMediumAction :: !(Maybe AccountTakeoverActionType)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AccountTakeoverActionsType' with the minimum fields required to make a request.
@@ -142,10 +191,12 @@ instance ToJSON AccountTakeoverActionsType where
 --
 --
 -- /See:/ 'accountTakeoverRiskConfigurationType' smart constructor.
-data AccountTakeoverRiskConfigurationType = AccountTakeoverRiskConfigurationType'
-  { _atrctNotifyConfiguration :: !(Maybe NotifyConfigurationType)
-  , _atrctActions             :: !AccountTakeoverActionsType
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AccountTakeoverRiskConfigurationType =
+  AccountTakeoverRiskConfigurationType'
+    { _atrctNotifyConfiguration :: !(Maybe NotifyConfigurationType)
+    , _atrctActions             :: !AccountTakeoverActionsType
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AccountTakeoverRiskConfigurationType' with the minimum fields required to make a request.
@@ -201,11 +252,13 @@ instance ToJSON AccountTakeoverRiskConfigurationType
 --
 --
 -- /See:/ 'adminCreateUserConfigType' smart constructor.
-data AdminCreateUserConfigType = AdminCreateUserConfigType'
-  { _acuctAllowAdminCreateUserOnly  :: !(Maybe Bool)
-  , _acuctUnusedAccountValidityDays :: !(Maybe Nat)
-  , _acuctInviteMessageTemplate     :: !(Maybe MessageTemplateType)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AdminCreateUserConfigType =
+  AdminCreateUserConfigType'
+    { _acuctAllowAdminCreateUserOnly  :: !(Maybe Bool)
+    , _acuctUnusedAccountValidityDays :: !(Maybe Nat)
+    , _acuctInviteMessageTemplate     :: !(Maybe MessageTemplateType)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AdminCreateUserConfigType' with the minimum fields required to make a request.
@@ -216,7 +269,7 @@ data AdminCreateUserConfigType = AdminCreateUserConfigType'
 --
 -- * 'acuctUnusedAccountValidityDays' - The user account expiration limit, in days, after which the account is no longer usable. To reset the account after that time limit, you must call @AdminCreateUser@ again, specifying @"RESEND"@ for the @MessageAction@ parameter. The default value for this parameter is 7.
 --
--- * 'acuctInviteMessageTemplate' - The message template to be used for the welcome message to new users. See also <http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-message-customizations.html#cognito-user-pool-settings-user-invitation-message-customization Customizing User Invitation Messages> .
+-- * 'acuctInviteMessageTemplate' - The message template to be used for the welcome message to new users. See also <https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-message-customizations.html#cognito-user-pool-settings-user-invitation-message-customization Customizing User Invitation Messages> .
 adminCreateUserConfigType
     :: AdminCreateUserConfigType
 adminCreateUserConfigType =
@@ -235,7 +288,7 @@ acuctAllowAdminCreateUserOnly = lens _acuctAllowAdminCreateUserOnly (\ s a -> s{
 acuctUnusedAccountValidityDays :: Lens' AdminCreateUserConfigType (Maybe Natural)
 acuctUnusedAccountValidityDays = lens _acuctUnusedAccountValidityDays (\ s a -> s{_acuctUnusedAccountValidityDays = a}) . mapping _Nat
 
--- | The message template to be used for the welcome message to new users. See also <http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-message-customizations.html#cognito-user-pool-settings-user-invitation-message-customization Customizing User Invitation Messages> .
+-- | The message template to be used for the welcome message to new users. See also <https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-message-customizations.html#cognito-user-pool-settings-user-invitation-message-customization Customizing User Invitation Messages> .
 acuctInviteMessageTemplate :: Lens' AdminCreateUserConfigType (Maybe MessageTemplateType)
 acuctInviteMessageTemplate = lens _acuctInviteMessageTemplate (\ s a -> s{_acuctInviteMessageTemplate = a})
 
@@ -268,12 +321,14 @@ instance ToJSON AdminCreateUserConfigType where
 --
 --
 -- /See:/ 'analyticsConfigurationType' smart constructor.
-data AnalyticsConfigurationType = AnalyticsConfigurationType'
-  { _actUserDataShared :: !(Maybe Bool)
-  , _actApplicationId  :: !Text
-  , _actRoleARN        :: !Text
-  , _actExternalId     :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AnalyticsConfigurationType =
+  AnalyticsConfigurationType'
+    { _actUserDataShared :: !(Maybe Bool)
+    , _actApplicationId  :: !Text
+    , _actRoleARN        :: !Text
+    , _actExternalId     :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AnalyticsConfigurationType' with the minimum fields required to make a request.
@@ -346,9 +401,11 @@ instance ToJSON AnalyticsConfigurationType where
 --
 --
 -- /See:/ 'analyticsMetadataType' smart constructor.
-newtype AnalyticsMetadataType = AnalyticsMetadataType'
-  { _amtAnalyticsEndpointId :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype AnalyticsMetadataType =
+  AnalyticsMetadataType'
+    { _amtAnalyticsEndpointId :: Maybe Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AnalyticsMetadataType' with the minimum fields required to make a request.
@@ -382,10 +439,12 @@ instance ToJSON AnalyticsMetadataType where
 --
 --
 -- /See:/ 'attributeType' smart constructor.
-data AttributeType = AttributeType'
-  { _atValue :: !(Maybe (Sensitive Text))
-  , _atName  :: !Text
-  } deriving (Eq, Show, Data, Typeable, Generic)
+data AttributeType =
+  AttributeType'
+    { _atValue :: !(Maybe (Sensitive Text))
+    , _atName  :: !Text
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AttributeType' with the minimum fields required to make a request.
@@ -431,16 +490,18 @@ instance ToJSON AttributeType where
 --
 --
 -- /See:/ 'authEventType' smart constructor.
-data AuthEventType = AuthEventType'
-  { _aetEventRisk          :: !(Maybe EventRiskType)
-  , _aetEventResponse      :: !(Maybe EventResponseType)
-  , _aetEventContextData   :: !(Maybe EventContextDataType)
-  , _aetChallengeResponses :: !(Maybe [ChallengeResponseType])
-  , _aetEventType          :: !(Maybe EventType)
-  , _aetCreationDate       :: !(Maybe POSIX)
-  , _aetEventFeedback      :: !(Maybe EventFeedbackType)
-  , _aetEventId            :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AuthEventType =
+  AuthEventType'
+    { _aetEventRisk          :: !(Maybe EventRiskType)
+    , _aetEventResponse      :: !(Maybe EventResponseType)
+    , _aetEventContextData   :: !(Maybe EventContextDataType)
+    , _aetChallengeResponses :: !(Maybe [ChallengeResponseType])
+    , _aetEventType          :: !(Maybe EventType)
+    , _aetCreationDate       :: !(Maybe POSIX)
+    , _aetEventFeedback      :: !(Maybe EventFeedbackType)
+    , _aetEventId            :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AuthEventType' with the minimum fields required to make a request.
@@ -531,14 +592,16 @@ instance NFData AuthEventType where
 --
 --
 -- /See:/ 'authenticationResultType' smart constructor.
-data AuthenticationResultType = AuthenticationResultType'
-  { _artAccessToken       :: !(Maybe (Sensitive Text))
-  , _artRefreshToken      :: !(Maybe (Sensitive Text))
-  , _artNewDeviceMetadata :: !(Maybe NewDeviceMetadataType)
-  , _artExpiresIn         :: !(Maybe Int)
-  , _artTokenType         :: !(Maybe Text)
-  , _artIdToken           :: !(Maybe (Sensitive Text))
-  } deriving (Eq, Show, Data, Typeable, Generic)
+data AuthenticationResultType =
+  AuthenticationResultType'
+    { _artAccessToken       :: !(Maybe (Sensitive Text))
+    , _artRefreshToken      :: !(Maybe (Sensitive Text))
+    , _artNewDeviceMetadata :: !(Maybe NewDeviceMetadataType)
+    , _artExpiresIn         :: !(Maybe Int)
+    , _artTokenType         :: !(Maybe Text)
+    , _artIdToken           :: !(Maybe (Sensitive Text))
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AuthenticationResultType' with the minimum fields required to make a request.
@@ -551,7 +614,7 @@ data AuthenticationResultType = AuthenticationResultType'
 --
 -- * 'artNewDeviceMetadata' - The new device metadata from an authentication result.
 --
--- * 'artExpiresIn' - The expiration period of the authentication result.
+-- * 'artExpiresIn' - The expiration period of the authentication result in seconds.
 --
 -- * 'artTokenType' - The token type.
 --
@@ -581,7 +644,7 @@ artRefreshToken = lens _artRefreshToken (\ s a -> s{_artRefreshToken = a}) . map
 artNewDeviceMetadata :: Lens' AuthenticationResultType (Maybe NewDeviceMetadataType)
 artNewDeviceMetadata = lens _artNewDeviceMetadata (\ s a -> s{_artNewDeviceMetadata = a})
 
--- | The expiration period of the authentication result.
+-- | The expiration period of the authentication result in seconds.
 artExpiresIn :: Lens' AuthenticationResultType (Maybe Int)
 artExpiresIn = lens _artExpiresIn (\ s a -> s{_artExpiresIn = a})
 
@@ -613,10 +676,12 @@ instance NFData AuthenticationResultType where
 --
 --
 -- /See:/ 'challengeResponseType' smart constructor.
-data ChallengeResponseType = ChallengeResponseType'
-  { _crtChallengeName     :: !(Maybe ChallengeName)
-  , _crtChallengeResponse :: !(Maybe ChallengeResponse)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ChallengeResponseType =
+  ChallengeResponseType'
+    { _crtChallengeName     :: !(Maybe ChallengeName)
+    , _crtChallengeResponse :: !(Maybe ChallengeResponse)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ChallengeResponseType' with the minimum fields required to make a request.
@@ -658,11 +723,13 @@ instance NFData ChallengeResponseType where
 --
 --
 -- /See:/ 'codeDeliveryDetailsType' smart constructor.
-data CodeDeliveryDetailsType = CodeDeliveryDetailsType'
-  { _cddtDestination    :: !(Maybe Text)
-  , _cddtDeliveryMedium :: !(Maybe DeliveryMediumType)
-  , _cddtAttributeName  :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CodeDeliveryDetailsType =
+  CodeDeliveryDetailsType'
+    { _cddtDestination    :: !(Maybe Text)
+    , _cddtDeliveryMedium :: !(Maybe DeliveryMediumType)
+    , _cddtAttributeName  :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CodeDeliveryDetailsType' with the minimum fields required to make a request.
@@ -713,9 +780,11 @@ instance NFData CodeDeliveryDetailsType where
 --
 --
 -- /See:/ 'compromisedCredentialsActionsType' smart constructor.
-newtype CompromisedCredentialsActionsType = CompromisedCredentialsActionsType'
-  { _ccatEventAction :: CompromisedCredentialsEventActionType
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype CompromisedCredentialsActionsType =
+  CompromisedCredentialsActionsType'
+    { _ccatEventAction :: CompromisedCredentialsEventActionType
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CompromisedCredentialsActionsType' with the minimum fields required to make a request.
@@ -760,10 +829,12 @@ instance ToJSON CompromisedCredentialsActionsType
 --
 --
 -- /See:/ 'compromisedCredentialsRiskConfigurationType' smart constructor.
-data CompromisedCredentialsRiskConfigurationType = CompromisedCredentialsRiskConfigurationType'
-  { _ccrctEventFilter :: !(Maybe [EventFilterType])
-  , _ccrctActions     :: !CompromisedCredentialsActionsType
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CompromisedCredentialsRiskConfigurationType =
+  CompromisedCredentialsRiskConfigurationType'
+    { _ccrctEventFilter :: !(Maybe [EventFilterType])
+    , _ccrctActions     :: !CompromisedCredentialsActionsType
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CompromisedCredentialsRiskConfigurationType' with the minimum fields required to make a request.
@@ -823,13 +894,15 @@ instance ToJSON
 --
 --
 -- /See:/ 'contextDataType' smart constructor.
-data ContextDataType = ContextDataType'
-  { _cdtEncodedData :: !(Maybe Text)
-  , _cdtIPAddress   :: !Text
-  , _cdtServerName  :: !Text
-  , _cdtServerPath  :: !Text
-  , _cdtHTTPHeaders :: ![HTTPHeader]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ContextDataType =
+  ContextDataType'
+    { _cdtEncodedData :: !(Maybe Text)
+    , _cdtIPAddress   :: !Text
+    , _cdtServerName  :: !Text
+    , _cdtServerPath  :: !Text
+    , _cdtHTTPHeaders :: ![HTTPHeader]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ContextDataType' with the minimum fields required to make a request.
@@ -894,15 +967,61 @@ instance ToJSON ContextDataType where
                   Just ("ServerPath" .= _cdtServerPath),
                   Just ("HttpHeaders" .= _cdtHTTPHeaders)])
 
+-- | The configuration for a custom domain that hosts the sign-up and sign-in webpages for your application.
+--
+--
+--
+-- /See:/ 'customDomainConfigType' smart constructor.
+newtype CustomDomainConfigType =
+  CustomDomainConfigType'
+    { _cdctCertificateARN :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'CustomDomainConfigType' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'cdctCertificateARN' - The Amazon Resource Name (ARN) of an AWS Certificate Manager SSL certificate. You use this certificate for the subdomain of your custom domain.
+customDomainConfigType
+    :: Text -- ^ 'cdctCertificateARN'
+    -> CustomDomainConfigType
+customDomainConfigType pCertificateARN_ =
+  CustomDomainConfigType' {_cdctCertificateARN = pCertificateARN_}
+
+
+-- | The Amazon Resource Name (ARN) of an AWS Certificate Manager SSL certificate. You use this certificate for the subdomain of your custom domain.
+cdctCertificateARN :: Lens' CustomDomainConfigType Text
+cdctCertificateARN = lens _cdctCertificateARN (\ s a -> s{_cdctCertificateARN = a})
+
+instance FromJSON CustomDomainConfigType where
+        parseJSON
+          = withObject "CustomDomainConfigType"
+              (\ x ->
+                 CustomDomainConfigType' <$> (x .: "CertificateArn"))
+
+instance Hashable CustomDomainConfigType where
+
+instance NFData CustomDomainConfigType where
+
+instance ToJSON CustomDomainConfigType where
+        toJSON CustomDomainConfigType'{..}
+          = object
+              (catMaybes
+                 [Just ("CertificateArn" .= _cdctCertificateARN)])
+
 -- | The configuration for the user pool's device tracking.
 --
 --
 --
 -- /See:/ 'deviceConfigurationType' smart constructor.
-data DeviceConfigurationType = DeviceConfigurationType'
-  { _dctChallengeRequiredOnNewDevice     :: !(Maybe Bool)
-  , _dctDeviceOnlyRememberedOnUserPrompt :: !(Maybe Bool)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DeviceConfigurationType =
+  DeviceConfigurationType'
+    { _dctChallengeRequiredOnNewDevice     :: !(Maybe Bool)
+    , _dctDeviceOnlyRememberedOnUserPrompt :: !(Maybe Bool)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeviceConfigurationType' with the minimum fields required to make a request.
@@ -955,10 +1074,12 @@ instance ToJSON DeviceConfigurationType where
 --
 --
 -- /See:/ 'deviceSecretVerifierConfigType' smart constructor.
-data DeviceSecretVerifierConfigType = DeviceSecretVerifierConfigType'
-  { _dsvctPasswordVerifier :: !(Maybe Text)
-  , _dsvctSalt             :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DeviceSecretVerifierConfigType =
+  DeviceSecretVerifierConfigType'
+    { _dsvctPasswordVerifier :: !(Maybe Text)
+    , _dsvctSalt             :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeviceSecretVerifierConfigType' with the minimum fields required to make a request.
@@ -1000,13 +1121,15 @@ instance ToJSON DeviceSecretVerifierConfigType where
 --
 --
 -- /See:/ 'deviceType' smart constructor.
-data DeviceType = DeviceType'
-  { _dtDeviceLastModifiedDate      :: !(Maybe POSIX)
-  , _dtDeviceCreateDate            :: !(Maybe POSIX)
-  , _dtDeviceAttributes            :: !(Maybe [AttributeType])
-  , _dtDeviceKey                   :: !(Maybe Text)
-  , _dtDeviceLastAuthenticatedDate :: !(Maybe POSIX)
-  } deriving (Eq, Show, Data, Typeable, Generic)
+data DeviceType =
+  DeviceType'
+    { _dtDeviceLastModifiedDate      :: !(Maybe POSIX)
+    , _dtDeviceCreateDate            :: !(Maybe POSIX)
+    , _dtDeviceAttributes            :: !(Maybe [AttributeType])
+    , _dtDeviceKey                   :: !(Maybe Text)
+    , _dtDeviceLastAuthenticatedDate :: !(Maybe POSIX)
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeviceType' with the minimum fields required to make a request.
@@ -1074,15 +1197,18 @@ instance NFData DeviceType where
 --
 --
 -- /See:/ 'domainDescriptionType' smart constructor.
-data DomainDescriptionType = DomainDescriptionType'
-  { _ddtStatus                 :: !(Maybe DomainStatusType)
-  , _ddtCloudFrontDistribution :: !(Maybe Text)
-  , _ddtUserPoolId             :: !(Maybe Text)
-  , _ddtDomain                 :: !(Maybe Text)
-  , _ddtAWSAccountId           :: !(Maybe Text)
-  , _ddtVersion                :: !(Maybe Text)
-  , _ddtS3Bucket               :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DomainDescriptionType =
+  DomainDescriptionType'
+    { _ddtStatus                 :: !(Maybe DomainStatusType)
+    , _ddtCloudFrontDistribution :: !(Maybe Text)
+    , _ddtUserPoolId             :: !(Maybe Text)
+    , _ddtDomain                 :: !(Maybe Text)
+    , _ddtAWSAccountId           :: !(Maybe Text)
+    , _ddtCustomDomainConfig     :: !(Maybe CustomDomainConfigType)
+    , _ddtVersion                :: !(Maybe Text)
+    , _ddtS3Bucket               :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DomainDescriptionType' with the minimum fields required to make a request.
@@ -1099,6 +1225,8 @@ data DomainDescriptionType = DomainDescriptionType'
 --
 -- * 'ddtAWSAccountId' - The AWS account ID for the user pool owner.
 --
+-- * 'ddtCustomDomainConfig' - The configuration for a custom domain that hosts the sign-up and sign-in webpages for your application.
+--
 -- * 'ddtVersion' - The app version.
 --
 -- * 'ddtS3Bucket' - The S3 bucket where the static files for this domain are stored.
@@ -1111,6 +1239,7 @@ domainDescriptionType =
     , _ddtUserPoolId = Nothing
     , _ddtDomain = Nothing
     , _ddtAWSAccountId = Nothing
+    , _ddtCustomDomainConfig = Nothing
     , _ddtVersion = Nothing
     , _ddtS3Bucket = Nothing
     }
@@ -1136,6 +1265,10 @@ ddtDomain = lens _ddtDomain (\ s a -> s{_ddtDomain = a})
 ddtAWSAccountId :: Lens' DomainDescriptionType (Maybe Text)
 ddtAWSAccountId = lens _ddtAWSAccountId (\ s a -> s{_ddtAWSAccountId = a})
 
+-- | The configuration for a custom domain that hosts the sign-up and sign-in webpages for your application.
+ddtCustomDomainConfig :: Lens' DomainDescriptionType (Maybe CustomDomainConfigType)
+ddtCustomDomainConfig = lens _ddtCustomDomainConfig (\ s a -> s{_ddtCustomDomainConfig = a})
+
 -- | The app version.
 ddtVersion :: Lens' DomainDescriptionType (Maybe Text)
 ddtVersion = lens _ddtVersion (\ s a -> s{_ddtVersion = a})
@@ -1153,6 +1286,7 @@ instance FromJSON DomainDescriptionType where
                      <*> (x .:? "UserPoolId")
                      <*> (x .:? "Domain")
                      <*> (x .:? "AWSAccountId")
+                     <*> (x .:? "CustomDomainConfig")
                      <*> (x .:? "Version")
                      <*> (x .:? "S3Bucket"))
 
@@ -1165,41 +1299,71 @@ instance NFData DomainDescriptionType where
 --
 --
 -- /See:/ 'emailConfigurationType' smart constructor.
-data EmailConfigurationType = EmailConfigurationType'
-  { _ectSourceARN           :: !(Maybe Text)
-  , _ectReplyToEmailAddress :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data EmailConfigurationType =
+  EmailConfigurationType'
+    { _ectSourceARN           :: !(Maybe Text)
+    , _ectFrom                :: !(Maybe Text)
+    , _ectConfigurationSet    :: !(Maybe Text)
+    , _ectReplyToEmailAddress :: !(Maybe Text)
+    , _ectEmailSendingAccount :: !(Maybe EmailSendingAccountType)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'EmailConfigurationType' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ectSourceARN' - The Amazon Resource Name (ARN) of the email source.
+-- * 'ectSourceARN' - The Amazon Resource Name (ARN) of a verified email address in Amazon SES. This email address is used in one of the following ways, depending on the value that you specify for the @EmailSendingAccount@ parameter:     * If you specify @COGNITO_DEFAULT@ , Amazon Cognito uses this address as the custom FROM address when it emails your users by using its built-in email account.     * If you specify @DEVELOPER@ , Amazon Cognito emails your users with this address by calling Amazon SES on your behalf.
+--
+-- * 'ectFrom' - Identifies either the sender’s email address or the sender’s name with their email address. For example, @testuser@example.com@ or @Test User <testuser@example.com>@ . This address will appear before the body of the email.
+--
+-- * 'ectConfigurationSet' - The set of configuration rules that can be applied to emails sent using Amazon SES. A configuration set is applied to an email by including a reference to the configuration set in the headers of the email. Once applied, all of the rules in that configuration set are applied to the email. Configuration sets can be used to apply the following types of rules to emails:      * Event publishing – Amazon SES can track the number of send, delivery, open, click, bounce, and complaint events for each email sent. Use event publishing to send information about these events to other AWS services such as SNS and CloudWatch.     * IP pool management – When leasing dedicated IP addresses with Amazon SES, you can create groups of IP addresses, called dedicated IP pools. You can then associate the dedicated IP pools with configuration sets.
 --
 -- * 'ectReplyToEmailAddress' - The destination to which the receiver of the email should reply to.
+--
+-- * 'ectEmailSendingAccount' - Specifies whether Amazon Cognito emails your users by using its built-in email functionality or your Amazon SES email configuration. Specify one of the following values:     * COGNITO_DEFAULT    * When Amazon Cognito emails your users, it uses its built-in email functionality. When you use the default option, Amazon Cognito allows only a limited number of emails each day for your user pool. For typical production environments, the default email limit is below the required delivery volume. To achieve a higher delivery volume, specify DEVELOPER to use your Amazon SES email configuration. To look up the email delivery limit for the default option, see <https://docs.aws.amazon.com/cognito/latest/developerguide/limits.html Limits in Amazon Cognito> in the /Amazon Cognito Developer Guide/ . The default FROM address is no-reply@verificationemail.com. To customize the FROM address, provide the ARN of an Amazon SES verified email address for the @SourceArn@ parameter.     * DEVELOPER    * When Amazon Cognito emails your users, it uses your Amazon SES configuration. Amazon Cognito calls Amazon SES on your behalf to send email from your verified email address. When you use this option, the email delivery limits are the same limits that apply to your Amazon SES verified email address in your AWS account. If you use this option, you must provide the ARN of an Amazon SES verified email address for the @SourceArn@ parameter. Before Amazon Cognito can email your users, it requires additional permissions to call Amazon SES on your behalf. When you update your user pool with this option, Amazon Cognito creates a /service-linked role/ , which is a type of IAM role, in your AWS account. This role contains the permissions that allow Amazon Cognito to access Amazon SES and send email messages with your address. For more information about the service-linked role that Amazon Cognito creates, see <https://docs.aws.amazon.com/cognito/latest/developerguide/using-service-linked-roles.html Using Service-Linked Roles for Amazon Cognito> in the /Amazon Cognito Developer Guide/ .
 emailConfigurationType
     :: EmailConfigurationType
 emailConfigurationType =
   EmailConfigurationType'
-    {_ectSourceARN = Nothing, _ectReplyToEmailAddress = Nothing}
+    { _ectSourceARN = Nothing
+    , _ectFrom = Nothing
+    , _ectConfigurationSet = Nothing
+    , _ectReplyToEmailAddress = Nothing
+    , _ectEmailSendingAccount = Nothing
+    }
 
 
--- | The Amazon Resource Name (ARN) of the email source.
+-- | The Amazon Resource Name (ARN) of a verified email address in Amazon SES. This email address is used in one of the following ways, depending on the value that you specify for the @EmailSendingAccount@ parameter:     * If you specify @COGNITO_DEFAULT@ , Amazon Cognito uses this address as the custom FROM address when it emails your users by using its built-in email account.     * If you specify @DEVELOPER@ , Amazon Cognito emails your users with this address by calling Amazon SES on your behalf.
 ectSourceARN :: Lens' EmailConfigurationType (Maybe Text)
 ectSourceARN = lens _ectSourceARN (\ s a -> s{_ectSourceARN = a})
+
+-- | Identifies either the sender’s email address or the sender’s name with their email address. For example, @testuser@example.com@ or @Test User <testuser@example.com>@ . This address will appear before the body of the email.
+ectFrom :: Lens' EmailConfigurationType (Maybe Text)
+ectFrom = lens _ectFrom (\ s a -> s{_ectFrom = a})
+
+-- | The set of configuration rules that can be applied to emails sent using Amazon SES. A configuration set is applied to an email by including a reference to the configuration set in the headers of the email. Once applied, all of the rules in that configuration set are applied to the email. Configuration sets can be used to apply the following types of rules to emails:      * Event publishing – Amazon SES can track the number of send, delivery, open, click, bounce, and complaint events for each email sent. Use event publishing to send information about these events to other AWS services such as SNS and CloudWatch.     * IP pool management – When leasing dedicated IP addresses with Amazon SES, you can create groups of IP addresses, called dedicated IP pools. You can then associate the dedicated IP pools with configuration sets.
+ectConfigurationSet :: Lens' EmailConfigurationType (Maybe Text)
+ectConfigurationSet = lens _ectConfigurationSet (\ s a -> s{_ectConfigurationSet = a})
 
 -- | The destination to which the receiver of the email should reply to.
 ectReplyToEmailAddress :: Lens' EmailConfigurationType (Maybe Text)
 ectReplyToEmailAddress = lens _ectReplyToEmailAddress (\ s a -> s{_ectReplyToEmailAddress = a})
+
+-- | Specifies whether Amazon Cognito emails your users by using its built-in email functionality or your Amazon SES email configuration. Specify one of the following values:     * COGNITO_DEFAULT    * When Amazon Cognito emails your users, it uses its built-in email functionality. When you use the default option, Amazon Cognito allows only a limited number of emails each day for your user pool. For typical production environments, the default email limit is below the required delivery volume. To achieve a higher delivery volume, specify DEVELOPER to use your Amazon SES email configuration. To look up the email delivery limit for the default option, see <https://docs.aws.amazon.com/cognito/latest/developerguide/limits.html Limits in Amazon Cognito> in the /Amazon Cognito Developer Guide/ . The default FROM address is no-reply@verificationemail.com. To customize the FROM address, provide the ARN of an Amazon SES verified email address for the @SourceArn@ parameter.     * DEVELOPER    * When Amazon Cognito emails your users, it uses your Amazon SES configuration. Amazon Cognito calls Amazon SES on your behalf to send email from your verified email address. When you use this option, the email delivery limits are the same limits that apply to your Amazon SES verified email address in your AWS account. If you use this option, you must provide the ARN of an Amazon SES verified email address for the @SourceArn@ parameter. Before Amazon Cognito can email your users, it requires additional permissions to call Amazon SES on your behalf. When you update your user pool with this option, Amazon Cognito creates a /service-linked role/ , which is a type of IAM role, in your AWS account. This role contains the permissions that allow Amazon Cognito to access Amazon SES and send email messages with your address. For more information about the service-linked role that Amazon Cognito creates, see <https://docs.aws.amazon.com/cognito/latest/developerguide/using-service-linked-roles.html Using Service-Linked Roles for Amazon Cognito> in the /Amazon Cognito Developer Guide/ .
+ectEmailSendingAccount :: Lens' EmailConfigurationType (Maybe EmailSendingAccountType)
+ectEmailSendingAccount = lens _ectEmailSendingAccount (\ s a -> s{_ectEmailSendingAccount = a})
 
 instance FromJSON EmailConfigurationType where
         parseJSON
           = withObject "EmailConfigurationType"
               (\ x ->
                  EmailConfigurationType' <$>
-                   (x .:? "SourceArn") <*>
-                     (x .:? "ReplyToEmailAddress"))
+                   (x .:? "SourceArn") <*> (x .:? "From") <*>
+                     (x .:? "ConfigurationSet")
+                     <*> (x .:? "ReplyToEmailAddress")
+                     <*> (x .:? "EmailSendingAccount"))
 
 instance Hashable EmailConfigurationType where
 
@@ -1210,21 +1374,27 @@ instance ToJSON EmailConfigurationType where
           = object
               (catMaybes
                  [("SourceArn" .=) <$> _ectSourceARN,
+                  ("From" .=) <$> _ectFrom,
+                  ("ConfigurationSet" .=) <$> _ectConfigurationSet,
                   ("ReplyToEmailAddress" .=) <$>
-                    _ectReplyToEmailAddress])
+                    _ectReplyToEmailAddress,
+                  ("EmailSendingAccount" .=) <$>
+                    _ectEmailSendingAccount])
 
 -- | Specifies the user context data captured at the time of an event request.
 --
 --
 --
 -- /See:/ 'eventContextDataType' smart constructor.
-data EventContextDataType = EventContextDataType'
-  { _ecdtIPAddress  :: !(Maybe Text)
-  , _ecdtCountry    :: !(Maybe Text)
-  , _ecdtCity       :: !(Maybe Text)
-  , _ecdtDeviceName :: !(Maybe Text)
-  , _ecdtTimezone   :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data EventContextDataType =
+  EventContextDataType'
+    { _ecdtIPAddress  :: !(Maybe Text)
+    , _ecdtCountry    :: !(Maybe Text)
+    , _ecdtCity       :: !(Maybe Text)
+    , _ecdtDeviceName :: !(Maybe Text)
+    , _ecdtTimezone   :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'EventContextDataType' with the minimum fields required to make a request.
@@ -1291,11 +1461,13 @@ instance NFData EventContextDataType where
 --
 --
 -- /See:/ 'eventFeedbackType' smart constructor.
-data EventFeedbackType = EventFeedbackType'
-  { _eftFeedbackDate  :: !(Maybe POSIX)
-  , _eftFeedbackValue :: !FeedbackValueType
-  , _eftProvider      :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data EventFeedbackType =
+  EventFeedbackType'
+    { _eftFeedbackDate  :: !(Maybe POSIX)
+    , _eftFeedbackValue :: !FeedbackValueType
+    , _eftProvider      :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'EventFeedbackType' with the minimum fields required to make a request.
@@ -1348,15 +1520,20 @@ instance NFData EventFeedbackType where
 --
 --
 -- /See:/ 'eventRiskType' smart constructor.
-data EventRiskType = EventRiskType'
-  { _ertRiskLevel    :: !(Maybe RiskLevelType)
-  , _ertRiskDecision :: !(Maybe RiskDecisionType)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data EventRiskType =
+  EventRiskType'
+    { _ertCompromisedCredentialsDetected :: !(Maybe Bool)
+    , _ertRiskLevel                      :: !(Maybe RiskLevelType)
+    , _ertRiskDecision                   :: !(Maybe RiskDecisionType)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'EventRiskType' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'ertCompromisedCredentialsDetected' - Indicates whether compromised credentials were detected during an authentication event.
 --
 -- * 'ertRiskLevel' - The risk level.
 --
@@ -1364,8 +1541,16 @@ data EventRiskType = EventRiskType'
 eventRiskType
     :: EventRiskType
 eventRiskType =
-  EventRiskType' {_ertRiskLevel = Nothing, _ertRiskDecision = Nothing}
+  EventRiskType'
+    { _ertCompromisedCredentialsDetected = Nothing
+    , _ertRiskLevel = Nothing
+    , _ertRiskDecision = Nothing
+    }
 
+
+-- | Indicates whether compromised credentials were detected during an authentication event.
+ertCompromisedCredentialsDetected :: Lens' EventRiskType (Maybe Bool)
+ertCompromisedCredentialsDetected = lens _ertCompromisedCredentialsDetected (\ s a -> s{_ertCompromisedCredentialsDetected = a})
 
 -- | The risk level.
 ertRiskLevel :: Lens' EventRiskType (Maybe RiskLevelType)
@@ -1380,7 +1565,9 @@ instance FromJSON EventRiskType where
           = withObject "EventRiskType"
               (\ x ->
                  EventRiskType' <$>
-                   (x .:? "RiskLevel") <*> (x .:? "RiskDecision"))
+                   (x .:? "CompromisedCredentialsDetected") <*>
+                     (x .:? "RiskLevel")
+                     <*> (x .:? "RiskDecision"))
 
 instance Hashable EventRiskType where
 
@@ -1391,15 +1578,17 @@ instance NFData EventRiskType where
 --
 --
 -- /See:/ 'groupType' smart constructor.
-data GroupType = GroupType'
-  { _gtLastModifiedDate :: !(Maybe POSIX)
-  , _gtUserPoolId       :: !(Maybe Text)
-  , _gtCreationDate     :: !(Maybe POSIX)
-  , _gtPrecedence       :: !(Maybe Nat)
-  , _gtGroupName        :: !(Maybe Text)
-  , _gtDescription      :: !(Maybe Text)
-  , _gtRoleARN          :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GroupType =
+  GroupType'
+    { _gtLastModifiedDate :: !(Maybe POSIX)
+    , _gtUserPoolId       :: !(Maybe Text)
+    , _gtCreationDate     :: !(Maybe POSIX)
+    , _gtPrecedence       :: !(Maybe Nat)
+    , _gtGroupName        :: !(Maybe Text)
+    , _gtDescription      :: !(Maybe Text)
+    , _gtRoleARN          :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GroupType' with the minimum fields required to make a request.
@@ -1482,10 +1671,12 @@ instance NFData GroupType where
 --
 --
 -- /See:/ 'hTTPHeader' smart constructor.
-data HTTPHeader = HTTPHeader'
-  { _httphHeaderValue :: !(Maybe Text)
-  , _httphHeaderName  :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data HTTPHeader =
+  HTTPHeader'
+    { _httphHeaderValue :: !(Maybe Text)
+    , _httphHeaderName  :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'HTTPHeader' with the minimum fields required to make a request.
@@ -1525,16 +1716,18 @@ instance ToJSON HTTPHeader where
 --
 --
 -- /See:/ 'identityProviderType' smart constructor.
-data IdentityProviderType = IdentityProviderType'
-  { _iptLastModifiedDate :: !(Maybe POSIX)
-  , _iptUserPoolId       :: !(Maybe Text)
-  , _iptProviderType     :: !(Maybe IdentityProviderTypeType)
-  , _iptCreationDate     :: !(Maybe POSIX)
-  , _iptIdpIdentifiers   :: !(Maybe [Text])
-  , _iptAttributeMapping :: !(Maybe (Map Text Text))
-  , _iptProviderDetails  :: !(Maybe (Map Text Text))
-  , _iptProviderName     :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data IdentityProviderType =
+  IdentityProviderType'
+    { _iptLastModifiedDate :: !(Maybe POSIX)
+    , _iptUserPoolId       :: !(Maybe Text)
+    , _iptProviderType     :: !(Maybe IdentityProviderTypeType)
+    , _iptCreationDate     :: !(Maybe POSIX)
+    , _iptIdpIdentifiers   :: !(Maybe [Text])
+    , _iptAttributeMapping :: !(Maybe (Map Text Text))
+    , _iptProviderDetails  :: !(Maybe (Map Text Text))
+    , _iptProviderName     :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'IdentityProviderType' with the minimum fields required to make a request.
@@ -1553,7 +1746,7 @@ data IdentityProviderType = IdentityProviderType'
 --
 -- * 'iptAttributeMapping' - A mapping of identity provider attributes to standard and custom user pool attributes.
 --
--- * 'iptProviderDetails' - The identity provider details, such as @MetadataURL@ and @MetadataFile@ .
+-- * 'iptProviderDetails' - The identity provider details. The following list describes the provider detail keys for each identity provider type.     * For Google, Facebook and Login with Amazon:     * client_id     * client_secret     * authorize_scopes     * For Sign in with Apple:     * client_id     * team_id     * key_id     * private_key     * authorize_scopes     * For OIDC providers:     * client_id     * client_secret     * attributes_request_method     * oidc_issuer     * authorize_scopes     * authorize_url /if not available from discovery URL specified by oidc_issuer key/      * token_url /if not available from discovery URL specified by oidc_issuer key/      * attributes_url /if not available from discovery URL specified by oidc_issuer key/      * jwks_uri /if not available from discovery URL specified by oidc_issuer key/      * authorize_scopes     * For SAML providers:     * MetadataFile OR MetadataURL     * IDPSignOut /optional/
 --
 -- * 'iptProviderName' - The identity provider name.
 identityProviderType
@@ -1595,7 +1788,7 @@ iptIdpIdentifiers = lens _iptIdpIdentifiers (\ s a -> s{_iptIdpIdentifiers = a})
 iptAttributeMapping :: Lens' IdentityProviderType (HashMap Text Text)
 iptAttributeMapping = lens _iptAttributeMapping (\ s a -> s{_iptAttributeMapping = a}) . _Default . _Map
 
--- | The identity provider details, such as @MetadataURL@ and @MetadataFile@ .
+-- | The identity provider details. The following list describes the provider detail keys for each identity provider type.     * For Google, Facebook and Login with Amazon:     * client_id     * client_secret     * authorize_scopes     * For Sign in with Apple:     * client_id     * team_id     * key_id     * private_key     * authorize_scopes     * For OIDC providers:     * client_id     * client_secret     * attributes_request_method     * oidc_issuer     * authorize_scopes     * authorize_url /if not available from discovery URL specified by oidc_issuer key/      * token_url /if not available from discovery URL specified by oidc_issuer key/      * attributes_url /if not available from discovery URL specified by oidc_issuer key/      * jwks_uri /if not available from discovery URL specified by oidc_issuer key/      * authorize_scopes     * For SAML providers:     * MetadataFile OR MetadataURL     * IDPSignOut /optional/
 iptProviderDetails :: Lens' IdentityProviderType (HashMap Text Text)
 iptProviderDetails = lens _iptProviderDetails (\ s a -> s{_iptProviderDetails = a}) . _Default . _Map
 
@@ -1625,18 +1818,20 @@ instance NFData IdentityProviderType where
 --
 --
 -- /See:/ 'lambdaConfigType' smart constructor.
-data LambdaConfigType = LambdaConfigType'
-  { _lctPreAuthentication           :: !(Maybe Text)
-  , _lctCreateAuthChallenge         :: !(Maybe Text)
-  , _lctVerifyAuthChallengeResponse :: !(Maybe Text)
-  , _lctPostAuthentication          :: !(Maybe Text)
-  , _lctCustomMessage               :: !(Maybe Text)
-  , _lctDefineAuthChallenge         :: !(Maybe Text)
-  , _lctPostConfirmation            :: !(Maybe Text)
-  , _lctPreTokenGeneration          :: !(Maybe Text)
-  , _lctUserMigration               :: !(Maybe Text)
-  , _lctPreSignUp                   :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data LambdaConfigType =
+  LambdaConfigType'
+    { _lctPreAuthentication           :: !(Maybe Text)
+    , _lctCreateAuthChallenge         :: !(Maybe Text)
+    , _lctVerifyAuthChallengeResponse :: !(Maybe Text)
+    , _lctPostAuthentication          :: !(Maybe Text)
+    , _lctCustomMessage               :: !(Maybe Text)
+    , _lctDefineAuthChallenge         :: !(Maybe Text)
+    , _lctPostConfirmation            :: !(Maybe Text)
+    , _lctPreTokenGeneration          :: !(Maybe Text)
+    , _lctUserMigration               :: !(Maybe Text)
+    , _lctPreSignUp                   :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'LambdaConfigType' with the minimum fields required to make a request.
@@ -1757,35 +1952,41 @@ instance ToJSON LambdaConfigType where
                   ("UserMigration" .=) <$> _lctUserMigration,
                   ("PreSignUp" .=) <$> _lctPreSignUp])
 
--- | Specifies the different settings for multi-factor authentication (MFA).
+-- | /This data type is no longer supported./ You can use it only for SMS MFA configurations. You can't use it for TOTP software token MFA configurations.
 --
+--
+-- To set either type of MFA configuration, use the 'AdminSetUserMFAPreference' or 'SetUserMFAPreference' actions.
+--
+-- To look up information about either type of MFA configuration, use the 'AdminGetUserResponse$UserMFASettingList' or 'GetUserResponse$UserMFASettingList' responses.
 --
 --
 -- /See:/ 'mfaOptionType' smart constructor.
-data MFAOptionType = MFAOptionType'
-  { _motDeliveryMedium :: !(Maybe DeliveryMediumType)
-  , _motAttributeName  :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data MFAOptionType =
+  MFAOptionType'
+    { _motDeliveryMedium :: !(Maybe DeliveryMediumType)
+    , _motAttributeName  :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'MFAOptionType' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'motDeliveryMedium' - The delivery medium (email message or SMS message) to send the MFA code.
+-- * 'motDeliveryMedium' - The delivery medium to send the MFA code. You can use this parameter to set only the @SMS@ delivery medium value.
 --
--- * 'motAttributeName' - The attribute name of the MFA option type.
+-- * 'motAttributeName' - The attribute name of the MFA option type. The only valid value is @phone_number@ .
 mfaOptionType
     :: MFAOptionType
 mfaOptionType =
   MFAOptionType' {_motDeliveryMedium = Nothing, _motAttributeName = Nothing}
 
 
--- | The delivery medium (email message or SMS message) to send the MFA code.
+-- | The delivery medium to send the MFA code. You can use this parameter to set only the @SMS@ delivery medium value.
 motDeliveryMedium :: Lens' MFAOptionType (Maybe DeliveryMediumType)
 motDeliveryMedium = lens _motDeliveryMedium (\ s a -> s{_motDeliveryMedium = a})
 
--- | The attribute name of the MFA option type.
+-- | The attribute name of the MFA option type. The only valid value is @phone_number@ .
 motAttributeName :: Lens' MFAOptionType (Maybe Text)
 motAttributeName = lens _motAttributeName (\ s a -> s{_motAttributeName = a})
 
@@ -1812,11 +2013,13 @@ instance ToJSON MFAOptionType where
 --
 --
 -- /See:/ 'messageTemplateType' smart constructor.
-data MessageTemplateType = MessageTemplateType'
-  { _mttEmailSubject :: !(Maybe Text)
-  , _mttSMSMessage   :: !(Maybe Text)
-  , _mttEmailMessage :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data MessageTemplateType =
+  MessageTemplateType'
+    { _mttEmailSubject :: !(Maybe Text)
+    , _mttSMSMessage   :: !(Maybe Text)
+    , _mttEmailMessage :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'MessageTemplateType' with the minimum fields required to make a request.
@@ -1875,10 +2078,12 @@ instance ToJSON MessageTemplateType where
 --
 --
 -- /See:/ 'newDeviceMetadataType' smart constructor.
-data NewDeviceMetadataType = NewDeviceMetadataType'
-  { _ndmtDeviceGroupKey :: !(Maybe Text)
-  , _ndmtDeviceKey      :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data NewDeviceMetadataType =
+  NewDeviceMetadataType'
+    { _ndmtDeviceGroupKey :: !(Maybe Text)
+    , _ndmtDeviceKey      :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'NewDeviceMetadataType' with the minimum fields required to make a request.
@@ -1919,14 +2124,16 @@ instance NFData NewDeviceMetadataType where
 --
 --
 -- /See:/ 'notifyConfigurationType' smart constructor.
-data NotifyConfigurationType = NotifyConfigurationType'
-  { _nctNoActionEmail :: !(Maybe NotifyEmailType)
-  , _nctFrom          :: !(Maybe Text)
-  , _nctReplyTo       :: !(Maybe Text)
-  , _nctBlockEmail    :: !(Maybe NotifyEmailType)
-  , _nctMFAEmail      :: !(Maybe NotifyEmailType)
-  , _nctSourceARN     :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data NotifyConfigurationType =
+  NotifyConfigurationType'
+    { _nctNoActionEmail :: !(Maybe NotifyEmailType)
+    , _nctFrom          :: !(Maybe Text)
+    , _nctReplyTo       :: !(Maybe Text)
+    , _nctBlockEmail    :: !(Maybe NotifyEmailType)
+    , _nctMFAEmail      :: !(Maybe NotifyEmailType)
+    , _nctSourceARN     :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'NotifyConfigurationType' with the minimum fields required to make a request.
@@ -2013,11 +2220,13 @@ instance ToJSON NotifyConfigurationType where
 --
 --
 -- /See:/ 'notifyEmailType' smart constructor.
-data NotifyEmailType = NotifyEmailType'
-  { _netTextBody :: !(Maybe Text)
-  , _netHTMLBody :: !(Maybe Text)
-  , _netSubject  :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data NotifyEmailType =
+  NotifyEmailType'
+    { _netTextBody :: !(Maybe Text)
+    , _netHTMLBody :: !(Maybe Text)
+    , _netSubject  :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'NotifyEmailType' with the minimum fields required to make a request.
@@ -2074,10 +2283,12 @@ instance ToJSON NotifyEmailType where
 --
 --
 -- /See:/ 'numberAttributeConstraintsType' smart constructor.
-data NumberAttributeConstraintsType = NumberAttributeConstraintsType'
-  { _nactMaxValue :: !(Maybe Text)
-  , _nactMinValue :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data NumberAttributeConstraintsType =
+  NumberAttributeConstraintsType'
+    { _nactMaxValue :: !(Maybe Text)
+    , _nactMinValue :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'NumberAttributeConstraintsType' with the minimum fields required to make a request.
@@ -2127,13 +2338,16 @@ instance ToJSON NumberAttributeConstraintsType where
 --
 --
 -- /See:/ 'passwordPolicyType' smart constructor.
-data PasswordPolicyType = PasswordPolicyType'
-  { _pptRequireNumbers   :: !(Maybe Bool)
-  , _pptRequireUppercase :: !(Maybe Bool)
-  , _pptRequireLowercase :: !(Maybe Bool)
-  , _pptMinimumLength    :: !(Maybe Nat)
-  , _pptRequireSymbols   :: !(Maybe Bool)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data PasswordPolicyType =
+  PasswordPolicyType'
+    { _pptRequireNumbers                :: !(Maybe Bool)
+    , _pptRequireUppercase              :: !(Maybe Bool)
+    , _pptRequireLowercase              :: !(Maybe Bool)
+    , _pptMinimumLength                 :: !(Maybe Nat)
+    , _pptRequireSymbols                :: !(Maybe Bool)
+    , _pptTemporaryPasswordValidityDays :: !(Maybe Nat)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'PasswordPolicyType' with the minimum fields required to make a request.
@@ -2149,6 +2363,8 @@ data PasswordPolicyType = PasswordPolicyType'
 -- * 'pptMinimumLength' - The minimum length of the password policy that you have set. Cannot be less than 6.
 --
 -- * 'pptRequireSymbols' - In the password policy that you have set, refers to whether you have required users to use at least one symbol in their password.
+--
+-- * 'pptTemporaryPasswordValidityDays' - In the password policy you have set, refers to the number of days a temporary password is valid. If the user does not sign-in during this time, their password will need to be reset by an administrator.
 passwordPolicyType
     :: PasswordPolicyType
 passwordPolicyType =
@@ -2158,6 +2374,7 @@ passwordPolicyType =
     , _pptRequireLowercase = Nothing
     , _pptMinimumLength = Nothing
     , _pptRequireSymbols = Nothing
+    , _pptTemporaryPasswordValidityDays = Nothing
     }
 
 
@@ -2181,6 +2398,10 @@ pptMinimumLength = lens _pptMinimumLength (\ s a -> s{_pptMinimumLength = a}) . 
 pptRequireSymbols :: Lens' PasswordPolicyType (Maybe Bool)
 pptRequireSymbols = lens _pptRequireSymbols (\ s a -> s{_pptRequireSymbols = a})
 
+-- | In the password policy you have set, refers to the number of days a temporary password is valid. If the user does not sign-in during this time, their password will need to be reset by an administrator.
+pptTemporaryPasswordValidityDays :: Lens' PasswordPolicyType (Maybe Natural)
+pptTemporaryPasswordValidityDays = lens _pptTemporaryPasswordValidityDays (\ s a -> s{_pptTemporaryPasswordValidityDays = a}) . mapping _Nat
+
 instance FromJSON PasswordPolicyType where
         parseJSON
           = withObject "PasswordPolicyType"
@@ -2190,7 +2411,8 @@ instance FromJSON PasswordPolicyType where
                      (x .:? "RequireUppercase")
                      <*> (x .:? "RequireLowercase")
                      <*> (x .:? "MinimumLength")
-                     <*> (x .:? "RequireSymbols"))
+                     <*> (x .:? "RequireSymbols")
+                     <*> (x .:? "TemporaryPasswordValidityDays"))
 
 instance Hashable PasswordPolicyType where
 
@@ -2204,19 +2426,23 @@ instance ToJSON PasswordPolicyType where
                   ("RequireUppercase" .=) <$> _pptRequireUppercase,
                   ("RequireLowercase" .=) <$> _pptRequireLowercase,
                   ("MinimumLength" .=) <$> _pptMinimumLength,
-                  ("RequireSymbols" .=) <$> _pptRequireSymbols])
+                  ("RequireSymbols" .=) <$> _pptRequireSymbols,
+                  ("TemporaryPasswordValidityDays" .=) <$>
+                    _pptTemporaryPasswordValidityDays])
 
 -- | A container for identity provider details.
 --
 --
 --
 -- /See:/ 'providerDescription' smart constructor.
-data ProviderDescription = ProviderDescription'
-  { _pdLastModifiedDate :: !(Maybe POSIX)
-  , _pdProviderType     :: !(Maybe IdentityProviderTypeType)
-  , _pdCreationDate     :: !(Maybe POSIX)
-  , _pdProviderName     :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ProviderDescription =
+  ProviderDescription'
+    { _pdLastModifiedDate :: !(Maybe POSIX)
+    , _pdProviderType     :: !(Maybe IdentityProviderTypeType)
+    , _pdCreationDate     :: !(Maybe POSIX)
+    , _pdProviderName     :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ProviderDescription' with the minimum fields required to make a request.
@@ -2275,11 +2501,13 @@ instance NFData ProviderDescription where
 --
 --
 -- /See:/ 'providerUserIdentifierType' smart constructor.
-data ProviderUserIdentifierType = ProviderUserIdentifierType'
-  { _puitProviderAttributeValue :: !(Maybe Text)
-  , _puitProviderAttributeName  :: !(Maybe Text)
-  , _puitProviderName           :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ProviderUserIdentifierType =
+  ProviderUserIdentifierType'
+    { _puitProviderAttributeValue :: !(Maybe Text)
+    , _puitProviderAttributeName  :: !(Maybe Text)
+    , _puitProviderName           :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ProviderUserIdentifierType' with the minimum fields required to make a request.
@@ -2327,15 +2555,71 @@ instance ToJSON ProviderUserIdentifierType where
                     _puitProviderAttributeName,
                   ("ProviderName" .=) <$> _puitProviderName])
 
+-- | A map containing a priority as a key, and recovery method name as a value.
+--
+--
+--
+-- /See:/ 'recoveryOptionType' smart constructor.
+data RecoveryOptionType =
+  RecoveryOptionType'
+    { _rotPriority :: !Nat
+    , _rotName     :: !RecoveryOptionNameType
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'RecoveryOptionType' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'rotPriority' - A positive integer specifying priority of a method with 1 being the highest priority.
+--
+-- * 'rotName' - Specifies the recovery method for a user.
+recoveryOptionType
+    :: Natural -- ^ 'rotPriority'
+    -> RecoveryOptionNameType -- ^ 'rotName'
+    -> RecoveryOptionType
+recoveryOptionType pPriority_ pName_ =
+  RecoveryOptionType' {_rotPriority = _Nat # pPriority_, _rotName = pName_}
+
+
+-- | A positive integer specifying priority of a method with 1 being the highest priority.
+rotPriority :: Lens' RecoveryOptionType Natural
+rotPriority = lens _rotPriority (\ s a -> s{_rotPriority = a}) . _Nat
+
+-- | Specifies the recovery method for a user.
+rotName :: Lens' RecoveryOptionType RecoveryOptionNameType
+rotName = lens _rotName (\ s a -> s{_rotName = a})
+
+instance FromJSON RecoveryOptionType where
+        parseJSON
+          = withObject "RecoveryOptionType"
+              (\ x ->
+                 RecoveryOptionType' <$>
+                   (x .: "Priority") <*> (x .: "Name"))
+
+instance Hashable RecoveryOptionType where
+
+instance NFData RecoveryOptionType where
+
+instance ToJSON RecoveryOptionType where
+        toJSON RecoveryOptionType'{..}
+          = object
+              (catMaybes
+                 [Just ("Priority" .= _rotPriority),
+                  Just ("Name" .= _rotName)])
+
 -- | A resource server scope.
 --
 --
 --
 -- /See:/ 'resourceServerScopeType' smart constructor.
-data ResourceServerScopeType = ResourceServerScopeType'
-  { _rsstScopeName        :: !Text
-  , _rsstScopeDescription :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ResourceServerScopeType =
+  ResourceServerScopeType'
+    { _rsstScopeName        :: !Text
+    , _rsstScopeDescription :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ResourceServerScopeType' with the minimum fields required to make a request.
@@ -2385,12 +2669,14 @@ instance ToJSON ResourceServerScopeType where
 --
 --
 -- /See:/ 'resourceServerType' smart constructor.
-data ResourceServerType = ResourceServerType'
-  { _rstUserPoolId :: !(Maybe Text)
-  , _rstIdentifier :: !(Maybe Text)
-  , _rstScopes     :: !(Maybe [ResourceServerScopeType])
-  , _rstName       :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ResourceServerType =
+  ResourceServerType'
+    { _rstUserPoolId :: !(Maybe Text)
+    , _rstIdentifier :: !(Maybe Text)
+    , _rstScopes     :: !(Maybe [ResourceServerScopeType])
+    , _rstName       :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ResourceServerType' with the minimum fields required to make a request.
@@ -2449,14 +2735,16 @@ instance NFData ResourceServerType where
 --
 --
 -- /See:/ 'riskConfigurationType' smart constructor.
-data RiskConfigurationType = RiskConfigurationType'
-  { _rctRiskExceptionConfiguration :: !(Maybe RiskExceptionConfigurationType)
-  , _rctClientId :: !(Maybe (Sensitive Text))
-  , _rctAccountTakeoverRiskConfiguration :: !(Maybe AccountTakeoverRiskConfigurationType)
-  , _rctLastModifiedDate :: !(Maybe POSIX)
-  , _rctUserPoolId :: !(Maybe Text)
-  , _rctCompromisedCredentialsRiskConfiguration :: !(Maybe CompromisedCredentialsRiskConfigurationType)
-  } deriving (Eq, Show, Data, Typeable, Generic)
+data RiskConfigurationType =
+  RiskConfigurationType'
+    { _rctRiskExceptionConfiguration :: !(Maybe RiskExceptionConfigurationType)
+    , _rctClientId :: !(Maybe (Sensitive Text))
+    , _rctAccountTakeoverRiskConfiguration :: !(Maybe AccountTakeoverRiskConfigurationType)
+    , _rctLastModifiedDate :: !(Maybe POSIX)
+    , _rctUserPoolId :: !(Maybe Text)
+    , _rctCompromisedCredentialsRiskConfiguration :: !(Maybe CompromisedCredentialsRiskConfigurationType)
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'RiskConfigurationType' with the minimum fields required to make a request.
@@ -2533,10 +2821,12 @@ instance NFData RiskConfigurationType where
 --
 --
 -- /See:/ 'riskExceptionConfigurationType' smart constructor.
-data RiskExceptionConfigurationType = RiskExceptionConfigurationType'
-  { _rectSkippedIPRangeList :: !(Maybe [Text])
-  , _rectBlockedIPRangeList :: !(Maybe [Text])
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data RiskExceptionConfigurationType =
+  RiskExceptionConfigurationType'
+    { _rectSkippedIPRangeList :: !(Maybe [Text])
+    , _rectBlockedIPRangeList :: !(Maybe [Text])
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'RiskExceptionConfigurationType' with the minimum fields required to make a request.
@@ -2584,15 +2874,17 @@ instance ToJSON RiskExceptionConfigurationType where
                   ("BlockedIPRangeList" .=) <$>
                     _rectBlockedIPRangeList])
 
--- | The SMS multi-factor authentication (MFA) settings type.
+-- | The type used for enabling SMS MFA at the user level.
 --
 --
 --
 -- /See:/ 'sMSMFASettingsType' smart constructor.
-data SMSMFASettingsType = SMSMFASettingsType'
-  { _smsmstEnabled      :: !(Maybe Bool)
-  , _smsmstPreferredMFA :: !(Maybe Bool)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data SMSMFASettingsType =
+  SMSMFASettingsType'
+    { _smsmstEnabled      :: !(Maybe Bool)
+    , _smsmstPreferredMFA :: !(Maybe Bool)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'SMSMFASettingsType' with the minimum fields required to make a request.
@@ -2601,7 +2893,7 @@ data SMSMFASettingsType = SMSMFASettingsType'
 --
 -- * 'smsmstEnabled' - Specifies whether SMS text message MFA is enabled.
 --
--- * 'smsmstPreferredMFA' - The preferred MFA method.
+-- * 'smsmstPreferredMFA' - Specifies whether SMS is the preferred MFA method.
 sMSMFASettingsType
     :: SMSMFASettingsType
 sMSMFASettingsType =
@@ -2612,7 +2904,7 @@ sMSMFASettingsType =
 smsmstEnabled :: Lens' SMSMFASettingsType (Maybe Bool)
 smsmstEnabled = lens _smsmstEnabled (\ s a -> s{_smsmstEnabled = a})
 
--- | The preferred MFA method.
+-- | Specifies whether SMS is the preferred MFA method.
 smsmstPreferredMFA :: Lens' SMSMFASettingsType (Maybe Bool)
 smsmstPreferredMFA = lens _smsmstPreferredMFA (\ s a -> s{_smsmstPreferredMFA = a})
 
@@ -2632,15 +2924,17 @@ instance ToJSON SMSMFASettingsType where
 --
 --
 -- /See:/ 'schemaAttributeType' smart constructor.
-data SchemaAttributeType = SchemaAttributeType'
-  { _satNumberAttributeConstraints :: !(Maybe NumberAttributeConstraintsType)
-  , _satRequired                   :: !(Maybe Bool)
-  , _satAttributeDataType          :: !(Maybe AttributeDataType)
-  , _satStringAttributeConstraints :: !(Maybe StringAttributeConstraintsType)
-  , _satName                       :: !(Maybe Text)
-  , _satDeveloperOnlyAttribute     :: !(Maybe Bool)
-  , _satMutable                    :: !(Maybe Bool)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data SchemaAttributeType =
+  SchemaAttributeType'
+    { _satNumberAttributeConstraints :: !(Maybe NumberAttributeConstraintsType)
+    , _satRequired                   :: !(Maybe Bool)
+    , _satAttributeDataType          :: !(Maybe AttributeDataType)
+    , _satStringAttributeConstraints :: !(Maybe StringAttributeConstraintsType)
+    , _satName                       :: !(Maybe Text)
+    , _satDeveloperOnlyAttribute     :: !(Maybe Bool)
+    , _satMutable                    :: !(Maybe Bool)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'SchemaAttributeType' with the minimum fields required to make a request.
@@ -2657,9 +2951,9 @@ data SchemaAttributeType = SchemaAttributeType'
 --
 -- * 'satName' - A schema attribute of the name type.
 --
--- * 'satDeveloperOnlyAttribute' - Specifies whether the attribute type is developer only.
+-- * 'satDeveloperOnlyAttribute' - Specifies whether the attribute type is developer only. This attribute can only be modified by an administrator. Users will not be able to modify this attribute using their access token. For example, @DeveloperOnlyAttribute@ can be modified using the API but cannot be updated using the API.
 --
--- * 'satMutable' - Specifies whether the attribute can be changed once it has been created.
+-- * 'satMutable' - Specifies whether the value of the attribute can be changed. For any user pool attribute that's mapped to an identity provider attribute, you must set this parameter to @true@ . Amazon Cognito updates mapped attributes when users sign in to your application through an identity provider. If an attribute is immutable, Amazon Cognito throws an error when it attempts to update the attribute. For more information, see <https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html Specifying Identity Provider Attribute Mappings for Your User Pool> .
 schemaAttributeType
     :: SchemaAttributeType
 schemaAttributeType =
@@ -2694,11 +2988,11 @@ satStringAttributeConstraints = lens _satStringAttributeConstraints (\ s a -> s{
 satName :: Lens' SchemaAttributeType (Maybe Text)
 satName = lens _satName (\ s a -> s{_satName = a})
 
--- | Specifies whether the attribute type is developer only.
+-- | Specifies whether the attribute type is developer only. This attribute can only be modified by an administrator. Users will not be able to modify this attribute using their access token. For example, @DeveloperOnlyAttribute@ can be modified using the API but cannot be updated using the API.
 satDeveloperOnlyAttribute :: Lens' SchemaAttributeType (Maybe Bool)
 satDeveloperOnlyAttribute = lens _satDeveloperOnlyAttribute (\ s a -> s{_satDeveloperOnlyAttribute = a})
 
--- | Specifies whether the attribute can be changed once it has been created.
+-- | Specifies whether the value of the attribute can be changed. For any user pool attribute that's mapped to an identity provider attribute, you must set this parameter to @true@ . Amazon Cognito updates mapped attributes when users sign in to your application through an identity provider. If an attribute is immutable, Amazon Cognito throws an error when it attempts to update the attribute. For more information, see <https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html Specifying Identity Provider Attribute Mappings for Your User Pool> .
 satMutable :: Lens' SchemaAttributeType (Maybe Bool)
 satMutable = lens _satMutable (\ s a -> s{_satMutable = a})
 
@@ -2734,24 +3028,26 @@ instance ToJSON SchemaAttributeType where
                     _satDeveloperOnlyAttribute,
                   ("Mutable" .=) <$> _satMutable])
 
--- | The SMS configuration type.
+-- | The SMS configuration type that includes the settings the Cognito User Pool needs to call for the Amazon SNS service to send an SMS message from your AWS account. The Cognito User Pool makes the request to the Amazon SNS Service by using an AWS IAM role that you provide for your AWS account.
 --
 --
 --
 -- /See:/ 'smsConfigurationType' smart constructor.
-data SmsConfigurationType = SmsConfigurationType'
-  { _sctExternalId   :: !(Maybe Text)
-  , _sctSNSCallerARN :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data SmsConfigurationType =
+  SmsConfigurationType'
+    { _sctExternalId   :: !(Maybe Text)
+    , _sctSNSCallerARN :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'SmsConfigurationType' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sctExternalId' - The external ID.
+-- * 'sctExternalId' - The external ID is a value that we recommend you use to add security to your IAM role which is used to call Amazon SNS to send SMS messages for your user pool. If you provide an @ExternalId@ , the Cognito User Pool will include it when attempting to assume your IAM role, so that you can set your roles trust policy to require the @ExternalID@ . If you use the Cognito Management Console to create a role for SMS MFA, Cognito will create a role with the required permissions and a trust policy that demonstrates use of the @ExternalId@ .
 --
--- * 'sctSNSCallerARN' - The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) caller.
+-- * 'sctSNSCallerARN' - The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) caller. This is the ARN of the IAM role in your AWS account which Cognito will use to send SMS messages.
 smsConfigurationType
     :: Text -- ^ 'sctSNSCallerARN'
     -> SmsConfigurationType
@@ -2760,11 +3056,11 @@ smsConfigurationType pSNSCallerARN_ =
     {_sctExternalId = Nothing, _sctSNSCallerARN = pSNSCallerARN_}
 
 
--- | The external ID.
+-- | The external ID is a value that we recommend you use to add security to your IAM role which is used to call Amazon SNS to send SMS messages for your user pool. If you provide an @ExternalId@ , the Cognito User Pool will include it when attempting to assume your IAM role, so that you can set your roles trust policy to require the @ExternalID@ . If you use the Cognito Management Console to create a role for SMS MFA, Cognito will create a role with the required permissions and a trust policy that demonstrates use of the @ExternalId@ .
 sctExternalId :: Lens' SmsConfigurationType (Maybe Text)
 sctExternalId = lens _sctExternalId (\ s a -> s{_sctExternalId = a})
 
--- | The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) caller.
+-- | The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) caller. This is the ARN of the IAM role in your AWS account which Cognito will use to send SMS messages.
 sctSNSCallerARN :: Lens' SmsConfigurationType Text
 sctSNSCallerARN = lens _sctSNSCallerARN (\ s a -> s{_sctSNSCallerARN = a})
 
@@ -2791,17 +3087,19 @@ instance ToJSON SmsConfigurationType where
 --
 --
 -- /See:/ 'smsMFAConfigType' smart constructor.
-data SmsMFAConfigType = SmsMFAConfigType'
-  { _smctSmsAuthenticationMessage :: !(Maybe Text)
-  , _smctSmsConfiguration         :: !(Maybe SmsConfigurationType)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data SmsMFAConfigType =
+  SmsMFAConfigType'
+    { _smctSmsAuthenticationMessage :: !(Maybe Text)
+    , _smctSmsConfiguration         :: !(Maybe SmsConfigurationType)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'SmsMFAConfigType' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'smctSmsAuthenticationMessage' - The SMS authentication message.
+-- * 'smctSmsAuthenticationMessage' - The SMS authentication message that will be sent to users with the code they need to sign in. The message must contain the ‘{####}’ placeholder, which will be replaced with the code. If the message is not included, and default message will be used.
 --
 -- * 'smctSmsConfiguration' - The SMS configuration.
 smsMFAConfigType
@@ -2811,7 +3109,7 @@ smsMFAConfigType =
     {_smctSmsAuthenticationMessage = Nothing, _smctSmsConfiguration = Nothing}
 
 
--- | The SMS authentication message.
+-- | The SMS authentication message that will be sent to users with the code they need to sign in. The message must contain the ‘{####}’ placeholder, which will be replaced with the code. If the message is not included, and default message will be used.
 smctSmsAuthenticationMessage :: Lens' SmsMFAConfigType (Maybe Text)
 smctSmsAuthenticationMessage = lens _smctSmsAuthenticationMessage (\ s a -> s{_smctSmsAuthenticationMessage = a})
 
@@ -2844,9 +3142,11 @@ instance ToJSON SmsMFAConfigType where
 --
 --
 -- /See:/ 'softwareTokenMFAConfigType' smart constructor.
-newtype SoftwareTokenMFAConfigType = SoftwareTokenMFAConfigType'
-  { _stmctEnabled :: Maybe Bool
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype SoftwareTokenMFAConfigType =
+  SoftwareTokenMFAConfigType'
+    { _stmctEnabled :: Maybe Bool
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'SoftwareTokenMFAConfigType' with the minimum fields required to make a request.
@@ -2884,10 +3184,12 @@ instance ToJSON SoftwareTokenMFAConfigType where
 --
 --
 -- /See:/ 'softwareTokenMFASettingsType' smart constructor.
-data SoftwareTokenMFASettingsType = SoftwareTokenMFASettingsType'
-  { _stmstEnabled      :: !(Maybe Bool)
-  , _stmstPreferredMFA :: !(Maybe Bool)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data SoftwareTokenMFASettingsType =
+  SoftwareTokenMFASettingsType'
+    { _stmstEnabled      :: !(Maybe Bool)
+    , _stmstPreferredMFA :: !(Maybe Bool)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'SoftwareTokenMFASettingsType' with the minimum fields required to make a request.
@@ -2896,7 +3198,7 @@ data SoftwareTokenMFASettingsType = SoftwareTokenMFASettingsType'
 --
 -- * 'stmstEnabled' - Specifies whether software token MFA is enabled.
 --
--- * 'stmstPreferredMFA' - The preferred MFA method.
+-- * 'stmstPreferredMFA' - Specifies whether software token MFA is the preferred MFA method.
 softwareTokenMFASettingsType
     :: SoftwareTokenMFASettingsType
 softwareTokenMFASettingsType =
@@ -2908,7 +3210,7 @@ softwareTokenMFASettingsType =
 stmstEnabled :: Lens' SoftwareTokenMFASettingsType (Maybe Bool)
 stmstEnabled = lens _stmstEnabled (\ s a -> s{_stmstEnabled = a})
 
--- | The preferred MFA method.
+-- | Specifies whether software token MFA is the preferred MFA method.
 stmstPreferredMFA :: Lens' SoftwareTokenMFASettingsType (Maybe Bool)
 stmstPreferredMFA = lens _stmstPreferredMFA (\ s a -> s{_stmstPreferredMFA = a})
 
@@ -2928,10 +3230,12 @@ instance ToJSON SoftwareTokenMFASettingsType where
 --
 --
 -- /See:/ 'stringAttributeConstraintsType' smart constructor.
-data StringAttributeConstraintsType = StringAttributeConstraintsType'
-  { _sactMaxLength :: !(Maybe Text)
-  , _sactMinLength :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data StringAttributeConstraintsType =
+  StringAttributeConstraintsType'
+    { _sactMaxLength :: !(Maybe Text)
+    , _sactMinLength :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'StringAttributeConstraintsType' with the minimum fields required to make a request.
@@ -2981,15 +3285,17 @@ instance ToJSON StringAttributeConstraintsType where
 --
 --
 -- /See:/ 'uICustomizationType' smart constructor.
-data UICustomizationType = UICustomizationType'
-  { _uictClientId         :: !(Maybe (Sensitive Text))
-  , _uictLastModifiedDate :: !(Maybe POSIX)
-  , _uictUserPoolId       :: !(Maybe Text)
-  , _uictCSS              :: !(Maybe Text)
-  , _uictCSSVersion       :: !(Maybe Text)
-  , _uictImageURL         :: !(Maybe Text)
-  , _uictCreationDate     :: !(Maybe POSIX)
-  } deriving (Eq, Show, Data, Typeable, Generic)
+data UICustomizationType =
+  UICustomizationType'
+    { _uictClientId         :: !(Maybe (Sensitive Text))
+    , _uictLastModifiedDate :: !(Maybe POSIX)
+    , _uictUserPoolId       :: !(Maybe Text)
+    , _uictCSS              :: !(Maybe Text)
+    , _uictCSSVersion       :: !(Maybe Text)
+    , _uictImageURL         :: !(Maybe Text)
+    , _uictCreationDate     :: !(Maybe POSIX)
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UICustomizationType' with the minimum fields required to make a request.
@@ -3072,9 +3378,11 @@ instance NFData UICustomizationType where
 --
 --
 -- /See:/ 'userContextDataType' smart constructor.
-newtype UserContextDataType = UserContextDataType'
-  { _ucdtEncodedData :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype UserContextDataType =
+  UserContextDataType'
+    { _ucdtEncodedData :: Maybe Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UserContextDataType' with the minimum fields required to make a request.
@@ -3105,21 +3413,23 @@ instance ToJSON UserContextDataType where
 --
 --
 -- /See:/ 'userImportJobType' smart constructor.
-data UserImportJobType = UserImportJobType'
-  { _uijtStatus                :: !(Maybe UserImportJobStatusType)
-  , _uijtSkippedUsers          :: !(Maybe Integer)
-  , _uijtJobId                 :: !(Maybe Text)
-  , _uijtUserPoolId            :: !(Maybe Text)
-  , _uijtJobName               :: !(Maybe Text)
-  , _uijtPreSignedURL          :: !(Maybe Text)
-  , _uijtFailedUsers           :: !(Maybe Integer)
-  , _uijtStartDate             :: !(Maybe POSIX)
-  , _uijtCompletionMessage     :: !(Maybe Text)
-  , _uijtCreationDate          :: !(Maybe POSIX)
-  , _uijtCompletionDate        :: !(Maybe POSIX)
-  , _uijtCloudWatchLogsRoleARN :: !(Maybe Text)
-  , _uijtImportedUsers         :: !(Maybe Integer)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data UserImportJobType =
+  UserImportJobType'
+    { _uijtStatus                :: !(Maybe UserImportJobStatusType)
+    , _uijtSkippedUsers          :: !(Maybe Integer)
+    , _uijtJobId                 :: !(Maybe Text)
+    , _uijtUserPoolId            :: !(Maybe Text)
+    , _uijtJobName               :: !(Maybe Text)
+    , _uijtPreSignedURL          :: !(Maybe Text)
+    , _uijtFailedUsers           :: !(Maybe Integer)
+    , _uijtStartDate             :: !(Maybe POSIX)
+    , _uijtCompletionMessage     :: !(Maybe Text)
+    , _uijtCreationDate          :: !(Maybe POSIX)
+    , _uijtCompletionDate        :: !(Maybe POSIX)
+    , _uijtCloudWatchLogsRoleARN :: !(Maybe Text)
+    , _uijtImportedUsers         :: !(Maybe Integer)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UserImportJobType' with the minimum fields required to make a request.
@@ -3250,9 +3560,11 @@ instance NFData UserImportJobType where
 --
 --
 -- /See:/ 'userPoolAddOnsType' smart constructor.
-newtype UserPoolAddOnsType = UserPoolAddOnsType'
-  { _upaotAdvancedSecurityMode :: AdvancedSecurityModeType
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype UserPoolAddOnsType =
+  UserPoolAddOnsType'
+    { _upaotAdvancedSecurityMode :: AdvancedSecurityModeType
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UserPoolAddOnsType' with the minimum fields required to make a request.
@@ -3295,11 +3607,13 @@ instance ToJSON UserPoolAddOnsType where
 --
 --
 -- /See:/ 'userPoolClientDescription' smart constructor.
-data UserPoolClientDescription = UserPoolClientDescription'
-  { _upcdClientId   :: !(Maybe (Sensitive Text))
-  , _upcdUserPoolId :: !(Maybe Text)
-  , _upcdClientName :: !(Maybe Text)
-  } deriving (Eq, Show, Data, Typeable, Generic)
+data UserPoolClientDescription =
+  UserPoolClientDescription'
+    { _upcdClientId   :: !(Maybe (Sensitive Text))
+    , _upcdUserPoolId :: !(Maybe Text)
+    , _upcdClientName :: !(Maybe Text)
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UserPoolClientDescription' with the minimum fields required to make a request.
@@ -3350,26 +3664,29 @@ instance NFData UserPoolClientDescription where
 --
 --
 -- /See:/ 'userPoolClientType' smart constructor.
-data UserPoolClientType = UserPoolClientType'
-  { _upctRefreshTokenValidity            :: !(Maybe Nat)
-  , _upctClientId                        :: !(Maybe (Sensitive Text))
-  , _upctExplicitAuthFlows               :: !(Maybe [ExplicitAuthFlowsType])
-  , _upctClientSecret                    :: !(Maybe (Sensitive Text))
-  , _upctLastModifiedDate                :: !(Maybe POSIX)
-  , _upctSupportedIdentityProviders      :: !(Maybe [Text])
-  , _upctLogoutURLs                      :: !(Maybe [Text])
-  , _upctAllowedOAuthFlowsUserPoolClient :: !(Maybe Bool)
-  , _upctUserPoolId                      :: !(Maybe Text)
-  , _upctDefaultRedirectURI              :: !(Maybe Text)
-  , _upctWriteAttributes                 :: !(Maybe [Text])
-  , _upctCreationDate                    :: !(Maybe POSIX)
-  , _upctReadAttributes                  :: !(Maybe [Text])
-  , _upctAllowedOAuthScopes              :: !(Maybe [Text])
-  , _upctAllowedOAuthFlows               :: !(Maybe [OAuthFlowType])
-  , _upctAnalyticsConfiguration          :: !(Maybe AnalyticsConfigurationType)
-  , _upctClientName                      :: !(Maybe Text)
-  , _upctCallbackURLs                    :: !(Maybe [Text])
-  } deriving (Eq, Show, Data, Typeable, Generic)
+data UserPoolClientType =
+  UserPoolClientType'
+    { _upctRefreshTokenValidity :: !(Maybe Nat)
+    , _upctClientId :: !(Maybe (Sensitive Text))
+    , _upctExplicitAuthFlows :: !(Maybe [ExplicitAuthFlowsType])
+    , _upctClientSecret :: !(Maybe (Sensitive Text))
+    , _upctLastModifiedDate :: !(Maybe POSIX)
+    , _upctSupportedIdentityProviders :: !(Maybe [Text])
+    , _upctLogoutURLs :: !(Maybe [Text])
+    , _upctAllowedOAuthFlowsUserPoolClient :: !(Maybe Bool)
+    , _upctUserPoolId :: !(Maybe Text)
+    , _upctDefaultRedirectURI :: !(Maybe Text)
+    , _upctWriteAttributes :: !(Maybe [Text])
+    , _upctPreventUserExistenceErrors :: !(Maybe PreventUserExistenceErrorTypes)
+    , _upctCreationDate :: !(Maybe POSIX)
+    , _upctReadAttributes :: !(Maybe [Text])
+    , _upctAllowedOAuthScopes :: !(Maybe [Text])
+    , _upctAllowedOAuthFlows :: !(Maybe [OAuthFlowType])
+    , _upctAnalyticsConfiguration :: !(Maybe AnalyticsConfigurationType)
+    , _upctClientName :: !(Maybe Text)
+    , _upctCallbackURLs :: !(Maybe [Text])
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UserPoolClientType' with the minimum fields required to make a request.
@@ -3380,7 +3697,7 @@ data UserPoolClientType = UserPoolClientType'
 --
 -- * 'upctClientId' - The ID of the client associated with the user pool.
 --
--- * 'upctExplicitAuthFlows' - The explicit authentication flows.
+-- * 'upctExplicitAuthFlows' - The authentication flows that are supported by the user pool clients. Flow names without the @ALLOW_@ prefix are deprecated in favor of new names with the @ALLOW_@ prefix. Note that values with @ALLOW_@ prefix cannot be used along with values without @ALLOW_@ prefix. Valid values include:     * @ALLOW_ADMIN_USER_PASSWORD_AUTH@ : Enable admin based user password authentication flow @ADMIN_USER_PASSWORD_AUTH@ . This setting replaces the @ADMIN_NO_SRP_AUTH@ setting. With this authentication flow, Cognito receives the password in the request instead of using the SRP (Secure Remote Password protocol) protocol to verify passwords.     * @ALLOW_CUSTOM_AUTH@ : Enable Lambda trigger based authentication.     * @ALLOW_USER_PASSWORD_AUTH@ : Enable user password-based authentication. In this flow, Cognito receives the password in the request instead of using the SRP protocol to verify passwords.     * @ALLOW_USER_SRP_AUTH@ : Enable SRP based authentication.     * @ALLOW_REFRESH_TOKEN_AUTH@ : Enable authflow to refresh tokens.
 --
 -- * 'upctClientSecret' - The client secret from the user pool request of the client type.
 --
@@ -3390,27 +3707,29 @@ data UserPoolClientType = UserPoolClientType'
 --
 -- * 'upctLogoutURLs' - A list of allowed logout URLs for the identity providers.
 --
--- * 'upctAllowedOAuthFlowsUserPoolClient' - Set to TRUE if the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.
+-- * 'upctAllowedOAuthFlowsUserPoolClient' - Set to true if the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.
 --
 -- * 'upctUserPoolId' - The user pool ID for the user pool client.
 --
--- * 'upctDefaultRedirectURI' - The default redirect URI. Must be in the @CallbackURLs@ list.
+-- * 'upctDefaultRedirectURI' - The default redirect URI. Must be in the @CallbackURLs@ list. A redirect URI must:     * Be an absolute URI.     * Be registered with the authorization server.     * Not include a fragment component. See <https://tools.ietf.org/html/rfc6749#section-3.1.2 OAuth 2.0 - Redirection Endpoint> . Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only. App callback URLs such as myapp://example are also supported.
 --
 -- * 'upctWriteAttributes' - The writeable attributes.
+--
+-- * 'upctPreventUserExistenceErrors' - Use this setting to choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the user pool. When set to @ENABLED@ and the user does not exist, authentication returns an error indicating either the username or password was incorrect, and account confirmation and password recovery return a response indicating a code was sent to a simulated destination. When set to @LEGACY@ , those APIs will return a @UserNotFoundException@ exception if the user does not exist in the user pool. Valid values include:     * @ENABLED@ - This prevents user existence-related errors.     * @LEGACY@ - This represents the old behavior of Cognito where user existence related errors are not prevented. This setting affects the behavior of following APIs:     * 'AdminInitiateAuth'      * 'AdminRespondToAuthChallenge'      * 'InitiateAuth'      * 'RespondToAuthChallenge'      * 'ForgotPassword'      * 'ConfirmForgotPassword'      * 'ConfirmSignUp'      * 'ResendConfirmationCode'
 --
 -- * 'upctCreationDate' - The date the user pool client was created.
 --
 -- * 'upctReadAttributes' - The Read-only attributes.
 --
--- * 'upctAllowedOAuthScopes' - A list of allowed @OAuth@ scopes. Currently supported values are @"phone"@ , @"email"@ , @"openid"@ , and @"Cognito"@ .
+-- * 'upctAllowedOAuthScopes' - The allowed OAuth scopes. Possible values provided by OAuth are: @phone@ , @email@ , @openid@ , and @profile@ . Possible values provided by AWS are: @aws.cognito.signin.user.admin@ . Custom scopes created in Resource Servers are also supported.
 --
--- * 'upctAllowedOAuthFlows' - Set to @code@ to initiate a code grant flow, which provides an authorization code as the response. This code can be exchanged for access tokens with the token endpoint. Set to @token@ to specify that the client should get the access token (and, optionally, ID token, based on scopes) directly.
+-- * 'upctAllowedOAuthFlows' - The allowed OAuth flows. Set to @code@ to initiate a code grant flow, which provides an authorization code as the response. This code can be exchanged for access tokens with the token endpoint. Set to @implicit@ to specify that the client should get the access token (and, optionally, ID token, based on scopes) directly. Set to @client_credentials@ to specify that the client should get the access token (and, optionally, ID token, based on scopes) from the token endpoint using a combination of client and client_secret.
 --
 -- * 'upctAnalyticsConfiguration' - The Amazon Pinpoint analytics configuration for the user pool client.
 --
 -- * 'upctClientName' - The client name from the user pool request of the client type.
 --
--- * 'upctCallbackURLs' - A list of allowed callback URLs for the identity providers.
+-- * 'upctCallbackURLs' - A list of allowed redirect (callback) URLs for the identity providers. A redirect URI must:     * Be an absolute URI.     * Be registered with the authorization server.     * Not include a fragment component. See <https://tools.ietf.org/html/rfc6749#section-3.1.2 OAuth 2.0 - Redirection Endpoint> . Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only. App callback URLs such as myapp://example are also supported.
 userPoolClientType
     :: UserPoolClientType
 userPoolClientType =
@@ -3426,6 +3745,7 @@ userPoolClientType =
     , _upctUserPoolId = Nothing
     , _upctDefaultRedirectURI = Nothing
     , _upctWriteAttributes = Nothing
+    , _upctPreventUserExistenceErrors = Nothing
     , _upctCreationDate = Nothing
     , _upctReadAttributes = Nothing
     , _upctAllowedOAuthScopes = Nothing
@@ -3444,7 +3764,7 @@ upctRefreshTokenValidity = lens _upctRefreshTokenValidity (\ s a -> s{_upctRefre
 upctClientId :: Lens' UserPoolClientType (Maybe Text)
 upctClientId = lens _upctClientId (\ s a -> s{_upctClientId = a}) . mapping _Sensitive
 
--- | The explicit authentication flows.
+-- | The authentication flows that are supported by the user pool clients. Flow names without the @ALLOW_@ prefix are deprecated in favor of new names with the @ALLOW_@ prefix. Note that values with @ALLOW_@ prefix cannot be used along with values without @ALLOW_@ prefix. Valid values include:     * @ALLOW_ADMIN_USER_PASSWORD_AUTH@ : Enable admin based user password authentication flow @ADMIN_USER_PASSWORD_AUTH@ . This setting replaces the @ADMIN_NO_SRP_AUTH@ setting. With this authentication flow, Cognito receives the password in the request instead of using the SRP (Secure Remote Password protocol) protocol to verify passwords.     * @ALLOW_CUSTOM_AUTH@ : Enable Lambda trigger based authentication.     * @ALLOW_USER_PASSWORD_AUTH@ : Enable user password-based authentication. In this flow, Cognito receives the password in the request instead of using the SRP protocol to verify passwords.     * @ALLOW_USER_SRP_AUTH@ : Enable SRP based authentication.     * @ALLOW_REFRESH_TOKEN_AUTH@ : Enable authflow to refresh tokens.
 upctExplicitAuthFlows :: Lens' UserPoolClientType [ExplicitAuthFlowsType]
 upctExplicitAuthFlows = lens _upctExplicitAuthFlows (\ s a -> s{_upctExplicitAuthFlows = a}) . _Default . _Coerce
 
@@ -3464,7 +3784,7 @@ upctSupportedIdentityProviders = lens _upctSupportedIdentityProviders (\ s a -> 
 upctLogoutURLs :: Lens' UserPoolClientType [Text]
 upctLogoutURLs = lens _upctLogoutURLs (\ s a -> s{_upctLogoutURLs = a}) . _Default . _Coerce
 
--- | Set to TRUE if the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.
+-- | Set to true if the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.
 upctAllowedOAuthFlowsUserPoolClient :: Lens' UserPoolClientType (Maybe Bool)
 upctAllowedOAuthFlowsUserPoolClient = lens _upctAllowedOAuthFlowsUserPoolClient (\ s a -> s{_upctAllowedOAuthFlowsUserPoolClient = a})
 
@@ -3472,13 +3792,17 @@ upctAllowedOAuthFlowsUserPoolClient = lens _upctAllowedOAuthFlowsUserPoolClient 
 upctUserPoolId :: Lens' UserPoolClientType (Maybe Text)
 upctUserPoolId = lens _upctUserPoolId (\ s a -> s{_upctUserPoolId = a})
 
--- | The default redirect URI. Must be in the @CallbackURLs@ list.
+-- | The default redirect URI. Must be in the @CallbackURLs@ list. A redirect URI must:     * Be an absolute URI.     * Be registered with the authorization server.     * Not include a fragment component. See <https://tools.ietf.org/html/rfc6749#section-3.1.2 OAuth 2.0 - Redirection Endpoint> . Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only. App callback URLs such as myapp://example are also supported.
 upctDefaultRedirectURI :: Lens' UserPoolClientType (Maybe Text)
 upctDefaultRedirectURI = lens _upctDefaultRedirectURI (\ s a -> s{_upctDefaultRedirectURI = a})
 
 -- | The writeable attributes.
 upctWriteAttributes :: Lens' UserPoolClientType [Text]
 upctWriteAttributes = lens _upctWriteAttributes (\ s a -> s{_upctWriteAttributes = a}) . _Default . _Coerce
+
+-- | Use this setting to choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the user pool. When set to @ENABLED@ and the user does not exist, authentication returns an error indicating either the username or password was incorrect, and account confirmation and password recovery return a response indicating a code was sent to a simulated destination. When set to @LEGACY@ , those APIs will return a @UserNotFoundException@ exception if the user does not exist in the user pool. Valid values include:     * @ENABLED@ - This prevents user existence-related errors.     * @LEGACY@ - This represents the old behavior of Cognito where user existence related errors are not prevented. This setting affects the behavior of following APIs:     * 'AdminInitiateAuth'      * 'AdminRespondToAuthChallenge'      * 'InitiateAuth'      * 'RespondToAuthChallenge'      * 'ForgotPassword'      * 'ConfirmForgotPassword'      * 'ConfirmSignUp'      * 'ResendConfirmationCode'
+upctPreventUserExistenceErrors :: Lens' UserPoolClientType (Maybe PreventUserExistenceErrorTypes)
+upctPreventUserExistenceErrors = lens _upctPreventUserExistenceErrors (\ s a -> s{_upctPreventUserExistenceErrors = a})
 
 -- | The date the user pool client was created.
 upctCreationDate :: Lens' UserPoolClientType (Maybe UTCTime)
@@ -3488,11 +3812,11 @@ upctCreationDate = lens _upctCreationDate (\ s a -> s{_upctCreationDate = a}) . 
 upctReadAttributes :: Lens' UserPoolClientType [Text]
 upctReadAttributes = lens _upctReadAttributes (\ s a -> s{_upctReadAttributes = a}) . _Default . _Coerce
 
--- | A list of allowed @OAuth@ scopes. Currently supported values are @"phone"@ , @"email"@ , @"openid"@ , and @"Cognito"@ .
+-- | The allowed OAuth scopes. Possible values provided by OAuth are: @phone@ , @email@ , @openid@ , and @profile@ . Possible values provided by AWS are: @aws.cognito.signin.user.admin@ . Custom scopes created in Resource Servers are also supported.
 upctAllowedOAuthScopes :: Lens' UserPoolClientType [Text]
 upctAllowedOAuthScopes = lens _upctAllowedOAuthScopes (\ s a -> s{_upctAllowedOAuthScopes = a}) . _Default . _Coerce
 
--- | Set to @code@ to initiate a code grant flow, which provides an authorization code as the response. This code can be exchanged for access tokens with the token endpoint. Set to @token@ to specify that the client should get the access token (and, optionally, ID token, based on scopes) directly.
+-- | The allowed OAuth flows. Set to @code@ to initiate a code grant flow, which provides an authorization code as the response. This code can be exchanged for access tokens with the token endpoint. Set to @implicit@ to specify that the client should get the access token (and, optionally, ID token, based on scopes) directly. Set to @client_credentials@ to specify that the client should get the access token (and, optionally, ID token, based on scopes) from the token endpoint using a combination of client and client_secret.
 upctAllowedOAuthFlows :: Lens' UserPoolClientType [OAuthFlowType]
 upctAllowedOAuthFlows = lens _upctAllowedOAuthFlows (\ s a -> s{_upctAllowedOAuthFlows = a}) . _Default . _Coerce
 
@@ -3504,7 +3828,7 @@ upctAnalyticsConfiguration = lens _upctAnalyticsConfiguration (\ s a -> s{_upctA
 upctClientName :: Lens' UserPoolClientType (Maybe Text)
 upctClientName = lens _upctClientName (\ s a -> s{_upctClientName = a})
 
--- | A list of allowed callback URLs for the identity providers.
+-- | A list of allowed redirect (callback) URLs for the identity providers. A redirect URI must:     * Be an absolute URI.     * Be registered with the authorization server.     * Not include a fragment component. See <https://tools.ietf.org/html/rfc6749#section-3.1.2 OAuth 2.0 - Redirection Endpoint> . Amazon Cognito requires HTTPS over HTTP except for http://localhost for testing purposes only. App callback URLs such as myapp://example are also supported.
 upctCallbackURLs :: Lens' UserPoolClientType [Text]
 upctCallbackURLs = lens _upctCallbackURLs (\ s a -> s{_upctCallbackURLs = a}) . _Default . _Coerce
 
@@ -3523,6 +3847,7 @@ instance FromJSON UserPoolClientType where
                      <*> (x .:? "UserPoolId")
                      <*> (x .:? "DefaultRedirectURI")
                      <*> (x .:? "WriteAttributes" .!= mempty)
+                     <*> (x .:? "PreventUserExistenceErrors")
                      <*> (x .:? "CreationDate")
                      <*> (x .:? "ReadAttributes" .!= mempty)
                      <*> (x .:? "AllowedOAuthScopes" .!= mempty)
@@ -3540,14 +3865,16 @@ instance NFData UserPoolClientType where
 --
 --
 -- /See:/ 'userPoolDescriptionType' smart constructor.
-data UserPoolDescriptionType = UserPoolDescriptionType'
-  { _updtStatus           :: !(Maybe StatusType)
-  , _updtLastModifiedDate :: !(Maybe POSIX)
-  , _updtName             :: !(Maybe Text)
-  , _updtId               :: !(Maybe Text)
-  , _updtCreationDate     :: !(Maybe POSIX)
-  , _updtLambdaConfig     :: !(Maybe LambdaConfigType)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data UserPoolDescriptionType =
+  UserPoolDescriptionType'
+    { _updtStatus           :: !(Maybe StatusType)
+    , _updtLastModifiedDate :: !(Maybe POSIX)
+    , _updtName             :: !(Maybe Text)
+    , _updtId               :: !(Maybe Text)
+    , _updtCreationDate     :: !(Maybe POSIX)
+    , _updtLambdaConfig     :: !(Maybe LambdaConfigType)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UserPoolDescriptionType' with the minimum fields required to make a request.
@@ -3622,9 +3949,11 @@ instance NFData UserPoolDescriptionType where
 --
 --
 -- /See:/ 'userPoolPolicyType' smart constructor.
-newtype UserPoolPolicyType = UserPoolPolicyType'
-  { _upptPasswordPolicy :: Maybe PasswordPolicyType
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype UserPoolPolicyType =
+  UserPoolPolicyType'
+    { _upptPasswordPolicy :: Maybe PasswordPolicyType
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UserPoolPolicyType' with the minimum fields required to make a request.
@@ -3662,35 +3991,41 @@ instance ToJSON UserPoolPolicyType where
 --
 --
 -- /See:/ 'userPoolType' smart constructor.
-data UserPoolType = UserPoolType'
-  { _uptStatus                      :: !(Maybe StatusType)
-  , _uptUserPoolTags                :: !(Maybe (Map Text Text))
-  , _uptEmailConfigurationFailure   :: !(Maybe Text)
-  , _uptLastModifiedDate            :: !(Maybe POSIX)
-  , _uptVerificationMessageTemplate :: !(Maybe VerificationMessageTemplateType)
-  , _uptEstimatedNumberOfUsers      :: !(Maybe Int)
-  , _uptDomain                      :: !(Maybe Text)
-  , _uptEmailVerificationMessage    :: !(Maybe Text)
-  , _uptSmsAuthenticationMessage    :: !(Maybe Text)
-  , _uptUserPoolAddOns              :: !(Maybe UserPoolAddOnsType)
-  , _uptSchemaAttributes            :: !(Maybe (List1 SchemaAttributeType))
-  , _uptEmailVerificationSubject    :: !(Maybe Text)
-  , _uptUsernameAttributes          :: !(Maybe [UsernameAttributeType])
-  , _uptAliasAttributes             :: !(Maybe [AliasAttributeType])
-  , _uptEmailConfiguration          :: !(Maybe EmailConfigurationType)
-  , _uptSmsVerificationMessage      :: !(Maybe Text)
-  , _uptName                        :: !(Maybe Text)
-  , _uptMFAConfiguration            :: !(Maybe UserPoolMFAType)
-  , _uptId                          :: !(Maybe Text)
-  , _uptSmsConfigurationFailure     :: !(Maybe Text)
-  , _uptCreationDate                :: !(Maybe POSIX)
-  , _uptLambdaConfig                :: !(Maybe LambdaConfigType)
-  , _uptSmsConfiguration            :: !(Maybe SmsConfigurationType)
-  , _uptAdminCreateUserConfig       :: !(Maybe AdminCreateUserConfigType)
-  , _uptDeviceConfiguration         :: !(Maybe DeviceConfigurationType)
-  , _uptAutoVerifiedAttributes      :: !(Maybe [VerifiedAttributeType])
-  , _uptPolicies                    :: !(Maybe UserPoolPolicyType)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data UserPoolType =
+  UserPoolType'
+    { _uptStatus :: !(Maybe StatusType)
+    , _uptUserPoolTags :: !(Maybe (Map Text Text))
+    , _uptEmailConfigurationFailure :: !(Maybe Text)
+    , _uptLastModifiedDate :: !(Maybe POSIX)
+    , _uptVerificationMessageTemplate :: !(Maybe VerificationMessageTemplateType)
+    , _uptEstimatedNumberOfUsers :: !(Maybe Int)
+    , _uptARN :: !(Maybe Text)
+    , _uptDomain :: !(Maybe Text)
+    , _uptCustomDomain :: !(Maybe Text)
+    , _uptEmailVerificationMessage :: !(Maybe Text)
+    , _uptSmsAuthenticationMessage :: !(Maybe Text)
+    , _uptUserPoolAddOns :: !(Maybe UserPoolAddOnsType)
+    , _uptSchemaAttributes :: !(Maybe (List1 SchemaAttributeType))
+    , _uptEmailVerificationSubject :: !(Maybe Text)
+    , _uptUsernameAttributes :: !(Maybe [UsernameAttributeType])
+    , _uptAliasAttributes :: !(Maybe [AliasAttributeType])
+    , _uptAccountRecoverySetting :: !(Maybe AccountRecoverySettingType)
+    , _uptEmailConfiguration :: !(Maybe EmailConfigurationType)
+    , _uptSmsVerificationMessage :: !(Maybe Text)
+    , _uptName :: !(Maybe Text)
+    , _uptMFAConfiguration :: !(Maybe UserPoolMFAType)
+    , _uptId :: !(Maybe Text)
+    , _uptSmsConfigurationFailure :: !(Maybe Text)
+    , _uptCreationDate :: !(Maybe POSIX)
+    , _uptLambdaConfig :: !(Maybe LambdaConfigType)
+    , _uptSmsConfiguration :: !(Maybe SmsConfigurationType)
+    , _uptAdminCreateUserConfig :: !(Maybe AdminCreateUserConfigType)
+    , _uptDeviceConfiguration :: !(Maybe DeviceConfigurationType)
+    , _uptAutoVerifiedAttributes :: !(Maybe [VerifiedAttributeType])
+    , _uptPolicies :: !(Maybe UserPoolPolicyType)
+    , _uptUsernameConfiguration :: !(Maybe UsernameConfigurationType)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UserPoolType' with the minimum fields required to make a request.
@@ -3699,7 +4034,7 @@ data UserPoolType = UserPoolType'
 --
 -- * 'uptStatus' - The status of a user pool.
 --
--- * 'uptUserPoolTags' - The cost allocation tags for the user pool. For more information, see <http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html Adding Cost Allocation Tags to Your User Pool>
+-- * 'uptUserPoolTags' - The tags that are assigned to the user pool. A tag is a label that you can apply to user pools to categorize and manage them in different ways, such as by purpose, owner, environment, or other criteria.
 --
 -- * 'uptEmailConfigurationFailure' - The reason why the email configuration cannot send the messages to your users.
 --
@@ -3709,7 +4044,11 @@ data UserPoolType = UserPoolType'
 --
 -- * 'uptEstimatedNumberOfUsers' - A number estimating the size of the user pool.
 --
+-- * 'uptARN' - The Amazon Resource Name (ARN) for the user pool.
+--
 -- * 'uptDomain' - Holds the domain prefix if the user pool has a domain associated with it.
+--
+-- * 'uptCustomDomain' - A custom domain name that you provide to Amazon Cognito. This parameter applies only if you use a custom domain to host the sign-up and sign-in pages for your application. For example: @auth.example.com@ . For more information about adding a custom domain to your user pool, see <https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html Using Your Own Domain for the Hosted UI> .
 --
 -- * 'uptEmailVerificationMessage' - The contents of the email verification message.
 --
@@ -3725,6 +4064,8 @@ data UserPoolType = UserPoolType'
 --
 -- * 'uptAliasAttributes' - Specifies the attributes that are aliased in a user pool.
 --
+-- * 'uptAccountRecoverySetting' - Use this setting to define which verified available method a user can use to recover their password when they call @ForgotPassword@ . It allows you to define a preferred method when a user has more than one method available. With this setting, SMS does not qualify for a valid password recovery mechanism if the user also has SMS MFA enabled. In the absence of this setting, Cognito uses the legacy behavior to determine the recovery method where SMS is preferred over email.
+--
 -- * 'uptEmailConfiguration' - The email configuration.
 --
 -- * 'uptSmsVerificationMessage' - The contents of the SMS verification message.
@@ -3739,7 +4080,7 @@ data UserPoolType = UserPoolType'
 --
 -- * 'uptCreationDate' - The date the user pool was created.
 --
--- * 'uptLambdaConfig' - The AWS Lambda triggers associated with tue user pool.
+-- * 'uptLambdaConfig' - The AWS Lambda triggers associated with the user pool.
 --
 -- * 'uptSmsConfiguration' - The SMS configuration.
 --
@@ -3750,6 +4091,8 @@ data UserPoolType = UserPoolType'
 -- * 'uptAutoVerifiedAttributes' - Specifies the attributes that are auto-verified in a user pool.
 --
 -- * 'uptPolicies' - The policies associated with the user pool.
+--
+-- * 'uptUsernameConfiguration' - You can choose to enable case sensitivity on the username input for the selected sign-in option. For example, when this is set to @False@ , users will be able to sign in using either "username" or "Username". This configuration is immutable once it has been set. For more information, see .
 userPoolType
     :: UserPoolType
 userPoolType =
@@ -3760,7 +4103,9 @@ userPoolType =
     , _uptLastModifiedDate = Nothing
     , _uptVerificationMessageTemplate = Nothing
     , _uptEstimatedNumberOfUsers = Nothing
+    , _uptARN = Nothing
     , _uptDomain = Nothing
+    , _uptCustomDomain = Nothing
     , _uptEmailVerificationMessage = Nothing
     , _uptSmsAuthenticationMessage = Nothing
     , _uptUserPoolAddOns = Nothing
@@ -3768,6 +4113,7 @@ userPoolType =
     , _uptEmailVerificationSubject = Nothing
     , _uptUsernameAttributes = Nothing
     , _uptAliasAttributes = Nothing
+    , _uptAccountRecoverySetting = Nothing
     , _uptEmailConfiguration = Nothing
     , _uptSmsVerificationMessage = Nothing
     , _uptName = Nothing
@@ -3781,6 +4127,7 @@ userPoolType =
     , _uptDeviceConfiguration = Nothing
     , _uptAutoVerifiedAttributes = Nothing
     , _uptPolicies = Nothing
+    , _uptUsernameConfiguration = Nothing
     }
 
 
@@ -3788,7 +4135,7 @@ userPoolType =
 uptStatus :: Lens' UserPoolType (Maybe StatusType)
 uptStatus = lens _uptStatus (\ s a -> s{_uptStatus = a})
 
--- | The cost allocation tags for the user pool. For more information, see <http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html Adding Cost Allocation Tags to Your User Pool>
+-- | The tags that are assigned to the user pool. A tag is a label that you can apply to user pools to categorize and manage them in different ways, such as by purpose, owner, environment, or other criteria.
 uptUserPoolTags :: Lens' UserPoolType (HashMap Text Text)
 uptUserPoolTags = lens _uptUserPoolTags (\ s a -> s{_uptUserPoolTags = a}) . _Default . _Map
 
@@ -3808,9 +4155,17 @@ uptVerificationMessageTemplate = lens _uptVerificationMessageTemplate (\ s a -> 
 uptEstimatedNumberOfUsers :: Lens' UserPoolType (Maybe Int)
 uptEstimatedNumberOfUsers = lens _uptEstimatedNumberOfUsers (\ s a -> s{_uptEstimatedNumberOfUsers = a})
 
+-- | The Amazon Resource Name (ARN) for the user pool.
+uptARN :: Lens' UserPoolType (Maybe Text)
+uptARN = lens _uptARN (\ s a -> s{_uptARN = a})
+
 -- | Holds the domain prefix if the user pool has a domain associated with it.
 uptDomain :: Lens' UserPoolType (Maybe Text)
 uptDomain = lens _uptDomain (\ s a -> s{_uptDomain = a})
+
+-- | A custom domain name that you provide to Amazon Cognito. This parameter applies only if you use a custom domain to host the sign-up and sign-in pages for your application. For example: @auth.example.com@ . For more information about adding a custom domain to your user pool, see <https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html Using Your Own Domain for the Hosted UI> .
+uptCustomDomain :: Lens' UserPoolType (Maybe Text)
+uptCustomDomain = lens _uptCustomDomain (\ s a -> s{_uptCustomDomain = a})
 
 -- | The contents of the email verification message.
 uptEmailVerificationMessage :: Lens' UserPoolType (Maybe Text)
@@ -3840,6 +4195,10 @@ uptUsernameAttributes = lens _uptUsernameAttributes (\ s a -> s{_uptUsernameAttr
 uptAliasAttributes :: Lens' UserPoolType [AliasAttributeType]
 uptAliasAttributes = lens _uptAliasAttributes (\ s a -> s{_uptAliasAttributes = a}) . _Default . _Coerce
 
+-- | Use this setting to define which verified available method a user can use to recover their password when they call @ForgotPassword@ . It allows you to define a preferred method when a user has more than one method available. With this setting, SMS does not qualify for a valid password recovery mechanism if the user also has SMS MFA enabled. In the absence of this setting, Cognito uses the legacy behavior to determine the recovery method where SMS is preferred over email.
+uptAccountRecoverySetting :: Lens' UserPoolType (Maybe AccountRecoverySettingType)
+uptAccountRecoverySetting = lens _uptAccountRecoverySetting (\ s a -> s{_uptAccountRecoverySetting = a})
+
 -- | The email configuration.
 uptEmailConfiguration :: Lens' UserPoolType (Maybe EmailConfigurationType)
 uptEmailConfiguration = lens _uptEmailConfiguration (\ s a -> s{_uptEmailConfiguration = a})
@@ -3868,7 +4227,7 @@ uptSmsConfigurationFailure = lens _uptSmsConfigurationFailure (\ s a -> s{_uptSm
 uptCreationDate :: Lens' UserPoolType (Maybe UTCTime)
 uptCreationDate = lens _uptCreationDate (\ s a -> s{_uptCreationDate = a}) . mapping _Time
 
--- | The AWS Lambda triggers associated with tue user pool.
+-- | The AWS Lambda triggers associated with the user pool.
 uptLambdaConfig :: Lens' UserPoolType (Maybe LambdaConfigType)
 uptLambdaConfig = lens _uptLambdaConfig (\ s a -> s{_uptLambdaConfig = a})
 
@@ -3892,6 +4251,10 @@ uptAutoVerifiedAttributes = lens _uptAutoVerifiedAttributes (\ s a -> s{_uptAuto
 uptPolicies :: Lens' UserPoolType (Maybe UserPoolPolicyType)
 uptPolicies = lens _uptPolicies (\ s a -> s{_uptPolicies = a})
 
+-- | You can choose to enable case sensitivity on the username input for the selected sign-in option. For example, when this is set to @False@ , users will be able to sign in using either "username" or "Username". This configuration is immutable once it has been set. For more information, see .
+uptUsernameConfiguration :: Lens' UserPoolType (Maybe UsernameConfigurationType)
+uptUsernameConfiguration = lens _uptUsernameConfiguration (\ s a -> s{_uptUsernameConfiguration = a})
+
 instance FromJSON UserPoolType where
         parseJSON
           = withObject "UserPoolType"
@@ -3903,7 +4266,9 @@ instance FromJSON UserPoolType where
                      <*> (x .:? "LastModifiedDate")
                      <*> (x .:? "VerificationMessageTemplate")
                      <*> (x .:? "EstimatedNumberOfUsers")
+                     <*> (x .:? "Arn")
                      <*> (x .:? "Domain")
+                     <*> (x .:? "CustomDomain")
                      <*> (x .:? "EmailVerificationMessage")
                      <*> (x .:? "SmsAuthenticationMessage")
                      <*> (x .:? "UserPoolAddOns")
@@ -3911,6 +4276,7 @@ instance FromJSON UserPoolType where
                      <*> (x .:? "EmailVerificationSubject")
                      <*> (x .:? "UsernameAttributes" .!= mempty)
                      <*> (x .:? "AliasAttributes" .!= mempty)
+                     <*> (x .:? "AccountRecoverySetting")
                      <*> (x .:? "EmailConfiguration")
                      <*> (x .:? "SmsVerificationMessage")
                      <*> (x .:? "Name")
@@ -3923,7 +4289,8 @@ instance FromJSON UserPoolType where
                      <*> (x .:? "AdminCreateUserConfig")
                      <*> (x .:? "DeviceConfiguration")
                      <*> (x .:? "AutoVerifiedAttributes" .!= mempty)
-                     <*> (x .:? "Policies"))
+                     <*> (x .:? "Policies")
+                     <*> (x .:? "UsernameConfiguration"))
 
 instance Hashable UserPoolType where
 
@@ -3934,15 +4301,17 @@ instance NFData UserPoolType where
 --
 --
 -- /See:/ 'userType' smart constructor.
-data UserType = UserType'
-  { _utEnabled              :: !(Maybe Bool)
-  , _utUserStatus           :: !(Maybe UserStatusType)
-  , _utUsername             :: !(Maybe (Sensitive Text))
-  , _utUserCreateDate       :: !(Maybe POSIX)
-  , _utAttributes           :: !(Maybe [AttributeType])
-  , _utMFAOptions           :: !(Maybe [MFAOptionType])
-  , _utUserLastModifiedDate :: !(Maybe POSIX)
-  } deriving (Eq, Show, Data, Typeable, Generic)
+data UserType =
+  UserType'
+    { _utEnabled              :: !(Maybe Bool)
+    , _utUserStatus           :: !(Maybe UserStatusType)
+    , _utUsername             :: !(Maybe (Sensitive Text))
+    , _utUserCreateDate       :: !(Maybe POSIX)
+    , _utAttributes           :: !(Maybe [AttributeType])
+    , _utMFAOptions           :: !(Maybe [MFAOptionType])
+    , _utUserLastModifiedDate :: !(Maybe POSIX)
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UserType' with the minimum fields required to make a request.
@@ -3951,7 +4320,7 @@ data UserType = UserType'
 --
 -- * 'utEnabled' - Specifies whether the user is enabled.
 --
--- * 'utUserStatus' - The user status. Can be one of the following:     * UNCONFIRMED - User has been created but not confirmed.     * CONFIRMED - User has been confirmed.     * ARCHIVED - User is no longer active.     * COMPROMISED - User is disabled due to a potential security threat.     * UNKNOWN - User status is not known.
+-- * 'utUserStatus' - The user status. Can be one of the following:     * UNCONFIRMED - User has been created but not confirmed.     * CONFIRMED - User has been confirmed.     * ARCHIVED - User is no longer active.     * COMPROMISED - User is disabled due to a potential security threat.     * UNKNOWN - User status is not known.     * RESET_REQUIRED - User is confirmed, but the user must request a code and reset his or her password before he or she can sign in.     * FORCE_CHANGE_PASSWORD - The user is confirmed and the user can sign in using a temporary password, but on first sign-in, the user must change his or her password to a new value before doing anything else.
 --
 -- * 'utUsername' - The user name of the user you wish to describe.
 --
@@ -3980,7 +4349,7 @@ userType =
 utEnabled :: Lens' UserType (Maybe Bool)
 utEnabled = lens _utEnabled (\ s a -> s{_utEnabled = a})
 
--- | The user status. Can be one of the following:     * UNCONFIRMED - User has been created but not confirmed.     * CONFIRMED - User has been confirmed.     * ARCHIVED - User is no longer active.     * COMPROMISED - User is disabled due to a potential security threat.     * UNKNOWN - User status is not known.
+-- | The user status. Can be one of the following:     * UNCONFIRMED - User has been created but not confirmed.     * CONFIRMED - User has been confirmed.     * ARCHIVED - User is no longer active.     * COMPROMISED - User is disabled due to a potential security threat.     * UNKNOWN - User status is not known.     * RESET_REQUIRED - User is confirmed, but the user must request a code and reset his or her password before he or she can sign in.     * FORCE_CHANGE_PASSWORD - The user is confirmed and the user can sign in using a temporary password, but on first sign-in, the user must change his or her password to a new value before doing anything else.
 utUserStatus :: Lens' UserType (Maybe UserStatusType)
 utUserStatus = lens _utUserStatus (\ s a -> s{_utUserStatus = a})
 
@@ -4020,19 +4389,66 @@ instance Hashable UserType where
 
 instance NFData UserType where
 
+-- | The username configuration type.
+--
+--
+--
+-- /See:/ 'usernameConfigurationType' smart constructor.
+newtype UsernameConfigurationType =
+  UsernameConfigurationType'
+    { _uctCaseSensitive :: Bool
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'UsernameConfigurationType' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'uctCaseSensitive' - Specifies whether username case sensitivity will be applied for all users in the user pool through Cognito APIs. Valid values include:     * __@True@ __ : Enables case sensitivity for all username input. When this option is set to @True@ , users must sign in using the exact capitalization of their given username. For example, “UserName”. This is the default value.     * __@False@ __ : Enables case insensitivity for all username input. For example, when this option is set to @False@ , users will be able to sign in using either "username" or "Username". This option also enables both @preferred_username@ and @email@ alias to be case insensitive, in addition to the @username@ attribute.
+usernameConfigurationType
+    :: Bool -- ^ 'uctCaseSensitive'
+    -> UsernameConfigurationType
+usernameConfigurationType pCaseSensitive_ =
+  UsernameConfigurationType' {_uctCaseSensitive = pCaseSensitive_}
+
+
+-- | Specifies whether username case sensitivity will be applied for all users in the user pool through Cognito APIs. Valid values include:     * __@True@ __ : Enables case sensitivity for all username input. When this option is set to @True@ , users must sign in using the exact capitalization of their given username. For example, “UserName”. This is the default value.     * __@False@ __ : Enables case insensitivity for all username input. For example, when this option is set to @False@ , users will be able to sign in using either "username" or "Username". This option also enables both @preferred_username@ and @email@ alias to be case insensitive, in addition to the @username@ attribute.
+uctCaseSensitive :: Lens' UsernameConfigurationType Bool
+uctCaseSensitive = lens _uctCaseSensitive (\ s a -> s{_uctCaseSensitive = a})
+
+instance FromJSON UsernameConfigurationType where
+        parseJSON
+          = withObject "UsernameConfigurationType"
+              (\ x ->
+                 UsernameConfigurationType' <$>
+                   (x .: "CaseSensitive"))
+
+instance Hashable UsernameConfigurationType where
+
+instance NFData UsernameConfigurationType where
+
+instance ToJSON UsernameConfigurationType where
+        toJSON UsernameConfigurationType'{..}
+          = object
+              (catMaybes
+                 [Just ("CaseSensitive" .= _uctCaseSensitive)])
+
 -- | The template for verification messages.
 --
 --
 --
 -- /See:/ 'verificationMessageTemplateType' smart constructor.
-data VerificationMessageTemplateType = VerificationMessageTemplateType'
-  { _vmttDefaultEmailOption :: !(Maybe DefaultEmailOptionType)
-  , _vmttEmailSubject       :: !(Maybe Text)
-  , _vmttEmailSubjectByLink :: !(Maybe Text)
-  , _vmttSmsMessage         :: !(Maybe Text)
-  , _vmttEmailMessageByLink :: !(Maybe Text)
-  , _vmttEmailMessage       :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data VerificationMessageTemplateType =
+  VerificationMessageTemplateType'
+    { _vmttDefaultEmailOption :: !(Maybe DefaultEmailOptionType)
+    , _vmttEmailSubject       :: !(Maybe Text)
+    , _vmttEmailSubjectByLink :: !(Maybe Text)
+    , _vmttSmsMessage         :: !(Maybe Text)
+    , _vmttEmailMessageByLink :: !(Maybe Text)
+    , _vmttEmailMessage       :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'VerificationMessageTemplateType' with the minimum fields required to make a request.

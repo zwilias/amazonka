@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Gets information about one or more deployments.
+-- Gets information about one or more deployments. The maximum number of deployments that can be returned is 25.
 --
 --
 module Network.AWS.CodeDeploy.BatchGetDeployments
@@ -49,22 +49,24 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'batchGetDeployments' smart constructor.
-newtype BatchGetDeployments = BatchGetDeployments'
-  { _bgdDeploymentIds :: [Text]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype BatchGetDeployments =
+  BatchGetDeployments'
+    { _bgdDeploymentIds :: [Text]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchGetDeployments' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bgdDeploymentIds' - A list of deployment IDs, separated by spaces.
+-- * 'bgdDeploymentIds' - A list of deployment IDs, separated by spaces. The maximum number of deployment IDs you can specify is 25.
 batchGetDeployments
     :: BatchGetDeployments
 batchGetDeployments = BatchGetDeployments' {_bgdDeploymentIds = mempty}
 
 
--- | A list of deployment IDs, separated by spaces.
+-- | A list of deployment IDs, separated by spaces. The maximum number of deployment IDs you can specify is 25.
 bgdDeploymentIds :: Lens' BatchGetDeployments [Text]
 bgdDeploymentIds = lens _bgdDeploymentIds (\ s a -> s{_bgdDeploymentIds = a}) . _Coerce
 
@@ -110,10 +112,12 @@ instance ToQuery BatchGetDeployments where
 --
 --
 -- /See:/ 'batchGetDeploymentsResponse' smart constructor.
-data BatchGetDeploymentsResponse = BatchGetDeploymentsResponse'
-  { _bgdrsDeploymentsInfo :: !(Maybe [DeploymentInfo])
-  , _bgdrsResponseStatus  :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchGetDeploymentsResponse =
+  BatchGetDeploymentsResponse'
+    { _bgdrsDeploymentsInfo :: !(Maybe [DeploymentInfo])
+    , _bgdrsResponseStatus  :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchGetDeploymentsResponse' with the minimum fields required to make a request.

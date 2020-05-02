@@ -54,10 +54,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listJobs' smart constructor.
-data ListJobs = ListJobs'
-  { _ljNextToken :: !(Maybe Text)
-  , _ljArn       :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListJobs =
+  ListJobs'
+    { _ljNextToken :: !(Maybe Text)
+    , _ljArn       :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListJobs' with the minimum fields required to make a request.
@@ -129,11 +131,13 @@ instance ToQuery ListJobs where
 --
 --
 -- /See:/ 'listJobsResponse' smart constructor.
-data ListJobsResponse = ListJobsResponse'
-  { _ljrsJobs           :: !(Maybe [Job])
-  , _ljrsNextToken      :: !(Maybe Text)
-  , _ljrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListJobsResponse =
+  ListJobsResponse'
+    { _ljrsJobs           :: !(Maybe [Job])
+    , _ljrsNextToken      :: !(Maybe Text)
+    , _ljrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListJobsResponse' with the minimum fields required to make a request.
@@ -142,7 +146,7 @@ data ListJobsResponse = ListJobsResponse'
 --
 -- * 'ljrsJobs' - Information about the jobs.
 --
--- * 'ljrsNextToken' - If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.
+-- * 'ljrsNextToken' - If the number of items that are returned is significantly large, this is an identifier that is also returned. It can be used in a subsequent call to this operation to return the next set of items in the list.
 --
 -- * 'ljrsResponseStatus' - -- | The response status code.
 listJobsResponse
@@ -160,7 +164,7 @@ listJobsResponse pResponseStatus_ =
 ljrsJobs :: Lens' ListJobsResponse [Job]
 ljrsJobs = lens _ljrsJobs (\ s a -> s{_ljrsJobs = a}) . _Default . _Coerce
 
--- | If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.
+-- | If the number of items that are returned is significantly large, this is an identifier that is also returned. It can be used in a subsequent call to this operation to return the next set of items in the list.
 ljrsNextToken :: Lens' ListJobsResponse (Maybe Text)
 ljrsNextToken = lens _ljrsNextToken (\ s a -> s{_ljrsNextToken = a})
 

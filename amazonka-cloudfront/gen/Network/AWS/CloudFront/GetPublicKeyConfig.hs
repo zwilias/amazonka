@@ -46,9 +46,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getPublicKeyConfig' smart constructor.
-newtype GetPublicKeyConfig = GetPublicKeyConfig'
-  { _gpkcId :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype GetPublicKeyConfig =
+  GetPublicKeyConfig'
+    { _gpkcId :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetPublicKeyConfig' with the minimum fields required to make a request.
@@ -87,17 +89,19 @@ instance ToHeaders GetPublicKeyConfig where
 instance ToPath GetPublicKeyConfig where
         toPath GetPublicKeyConfig'{..}
           = mconcat
-              ["/2017-10-30/public-key/", toBS _gpkcId, "/config"]
+              ["/2019-03-26/public-key/", toBS _gpkcId, "/config"]
 
 instance ToQuery GetPublicKeyConfig where
         toQuery = const mempty
 
 -- | /See:/ 'getPublicKeyConfigResponse' smart constructor.
-data GetPublicKeyConfigResponse = GetPublicKeyConfigResponse'
-  { _gpkcrsETag            :: !(Maybe Text)
-  , _gpkcrsPublicKeyConfig :: !(Maybe PublicKeyConfig)
-  , _gpkcrsResponseStatus  :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetPublicKeyConfigResponse =
+  GetPublicKeyConfigResponse'
+    { _gpkcrsETag            :: !(Maybe Text)
+    , _gpkcrsPublicKeyConfig :: !(Maybe PublicKeyConfig)
+    , _gpkcrsResponseStatus  :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetPublicKeyConfigResponse' with the minimum fields required to make a request.

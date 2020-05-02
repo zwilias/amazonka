@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns a list of all historical purchases, renewals, and system renewal transactions for an AWS account. The list is paginated and ordered by a descending timestamp (most recent transactions are first). The API returns a @NotEligible@ error if the user is not permitted to invoke the operation. Please contact <mailto:aws-devicefarm-support@amazon.com aws-devicefarm-support@amazon.com> if you believe that you should be able to invoke this operation.
+-- Returns a list of all historical purchases, renewals, and system renewal transactions for an AWS account. The list is paginated and ordered by a descending timestamp (most recent transactions are first). The API returns a @NotEligible@ error if the user is not permitted to invoke the operation. If you must be able to invoke this operation, contact <mailto:aws-devicefarm-support@amazon.com aws-devicefarm-support@amazon.com> .
 --
 --
 --
@@ -53,9 +53,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listOfferingTransactions' smart constructor.
-newtype ListOfferingTransactions = ListOfferingTransactions'
-  { _lotNextToken :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype ListOfferingTransactions =
+  ListOfferingTransactions'
+    { _lotNextToken :: Maybe Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListOfferingTransactions' with the minimum fields required to make a request.
@@ -121,11 +123,13 @@ instance ToQuery ListOfferingTransactions where
 --
 --
 -- /See:/ 'listOfferingTransactionsResponse' smart constructor.
-data ListOfferingTransactionsResponse = ListOfferingTransactionsResponse'
-  { _lotrsOfferingTransactions :: !(Maybe [OfferingTransaction])
-  , _lotrsNextToken            :: !(Maybe Text)
-  , _lotrsResponseStatus       :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListOfferingTransactionsResponse =
+  ListOfferingTransactionsResponse'
+    { _lotrsOfferingTransactions :: !(Maybe [OfferingTransaction])
+    , _lotrsNextToken            :: !(Maybe Text)
+    , _lotrsResponseStatus       :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListOfferingTransactionsResponse' with the minimum fields required to make a request.

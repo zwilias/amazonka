@@ -21,6 +21,8 @@
 -- Returns status information for each of your AWS managed Config rules. The status includes information such as the last time AWS Config invoked the rule, the last time AWS Config failed to invoke the rule, and the related error for the last failure.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.Config.DescribeConfigRuleEvaluationStatus
     (
     -- * Creating a Request
@@ -43,6 +45,7 @@ module Network.AWS.Config.DescribeConfigRuleEvaluationStatus
 import Network.AWS.Config.Types
 import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -52,11 +55,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeConfigRuleEvaluationStatus' smart constructor.
-data DescribeConfigRuleEvaluationStatus = DescribeConfigRuleEvaluationStatus'
-  { _dcresConfigRuleNames :: !(Maybe [Text])
-  , _dcresNextToken       :: !(Maybe Text)
-  , _dcresLimit           :: !(Maybe Nat)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeConfigRuleEvaluationStatus =
+  DescribeConfigRuleEvaluationStatus'
+    { _dcresConfigRuleNames :: !(Maybe [Text])
+    , _dcresNextToken       :: !(Maybe Text)
+    , _dcresLimit           :: !(Maybe Nat)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeConfigRuleEvaluationStatus' with the minimum fields required to make a request.
@@ -67,7 +72,7 @@ data DescribeConfigRuleEvaluationStatus = DescribeConfigRuleEvaluationStatus'
 --
 -- * 'dcresNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
 --
--- * 'dcresLimit' - The number of rule evaluation results that you want returned. This parameter is required if the rule limit for your account is more than the default of 50 rules. For information about requesting a rule limit increase, see <http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config AWS Config Limits> in the /AWS General Reference Guide/ .
+-- * 'dcresLimit' - The number of rule evaluation results that you want returned. This parameter is required if the rule limit for your account is more than the default of 150 rules. For information about requesting a rule limit increase, see <http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config AWS Config Limits> in the /AWS General Reference Guide/ .
 describeConfigRuleEvaluationStatus
     :: DescribeConfigRuleEvaluationStatus
 describeConfigRuleEvaluationStatus =
@@ -86,9 +91,18 @@ dcresConfigRuleNames = lens _dcresConfigRuleNames (\ s a -> s{_dcresConfigRuleNa
 dcresNextToken :: Lens' DescribeConfigRuleEvaluationStatus (Maybe Text)
 dcresNextToken = lens _dcresNextToken (\ s a -> s{_dcresNextToken = a})
 
--- | The number of rule evaluation results that you want returned. This parameter is required if the rule limit for your account is more than the default of 50 rules. For information about requesting a rule limit increase, see <http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config AWS Config Limits> in the /AWS General Reference Guide/ .
+-- | The number of rule evaluation results that you want returned. This parameter is required if the rule limit for your account is more than the default of 150 rules. For information about requesting a rule limit increase, see <http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config AWS Config Limits> in the /AWS General Reference Guide/ .
 dcresLimit :: Lens' DescribeConfigRuleEvaluationStatus (Maybe Natural)
 dcresLimit = lens _dcresLimit (\ s a -> s{_dcresLimit = a}) . mapping _Nat
+
+instance AWSPager DescribeConfigRuleEvaluationStatus
+         where
+        page rq rs
+          | stop (rs ^. dcresrsNextToken) = Nothing
+          | stop (rs ^. dcresrsConfigRulesEvaluationStatus) =
+            Nothing
+          | otherwise =
+            Just $ rq & dcresNextToken .~ rs ^. dcresrsNextToken
 
 instance AWSRequest
            DescribeConfigRuleEvaluationStatus
@@ -143,11 +157,13 @@ instance ToQuery DescribeConfigRuleEvaluationStatus
 --
 --
 -- /See:/ 'describeConfigRuleEvaluationStatusResponse' smart constructor.
-data DescribeConfigRuleEvaluationStatusResponse = DescribeConfigRuleEvaluationStatusResponse'
-  { _dcresrsConfigRulesEvaluationStatus :: !(Maybe [ConfigRuleEvaluationStatus])
-  , _dcresrsNextToken                   :: !(Maybe Text)
-  , _dcresrsResponseStatus              :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeConfigRuleEvaluationStatusResponse =
+  DescribeConfigRuleEvaluationStatusResponse'
+    { _dcresrsConfigRulesEvaluationStatus :: !(Maybe [ConfigRuleEvaluationStatus])
+    , _dcresrsNextToken :: !(Maybe Text)
+    , _dcresrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeConfigRuleEvaluationStatusResponse' with the minimum fields required to make a request.

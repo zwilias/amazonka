@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Enables group metrics for the specified Auto Scaling group. For more information, see <http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-monitoring.html Monitoring Your Auto Scaling Groups and Instances> in the /Auto Scaling User Guide/ .
+-- Enables group metrics for the specified Auto Scaling group. For more information, see <https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-monitoring.html Monitoring Your Auto Scaling Groups and Instances> in the /Amazon EC2 Auto Scaling User Guide/ .
 --
 --
 module Network.AWS.AutoScaling.EnableMetricsCollection
@@ -44,11 +44,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'enableMetricsCollection' smart constructor.
-data EnableMetricsCollection = EnableMetricsCollection'
-  { _emcMetrics              :: !(Maybe [Text])
-  , _emcAutoScalingGroupName :: !Text
-  , _emcGranularity          :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data EnableMetricsCollection =
+  EnableMetricsCollection'
+    { _emcMetrics              :: !(Maybe [Text])
+    , _emcAutoScalingGroupName :: !Text
+    , _emcGranularity          :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'EnableMetricsCollection' with the minimum fields required to make a request.

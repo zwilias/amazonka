@@ -319,11 +319,42 @@ instance ToJSON DocumentationPartType where
 instance FromJSON DocumentationPartType where
     parseJSON = parseJSONText "DocumentationPartType"
 
--- | The endpoint type. The valid value is @EDGE@ for edge-optimized API setup, most suitable for mobile applications, @REGIONAL@ for regional API endpoint setup, most suitable for calling from AWS Region
+data DomainNameStatus
+  = DNSAvailable
+  | DNSPending
+  | DNSUpdating
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText DomainNameStatus where
+    parser = takeLowerText >>= \case
+        "available" -> pure DNSAvailable
+        "pending" -> pure DNSPending
+        "updating" -> pure DNSUpdating
+        e -> fromTextError $ "Failure parsing DomainNameStatus from value: '" <> e
+           <> "'. Accepted values: available, pending, updating"
+
+instance ToText DomainNameStatus where
+    toText = \case
+        DNSAvailable -> "AVAILABLE"
+        DNSPending -> "PENDING"
+        DNSUpdating -> "UPDATING"
+
+instance Hashable     DomainNameStatus
+instance NFData       DomainNameStatus
+instance ToByteString DomainNameStatus
+instance ToQuery      DomainNameStatus
+instance ToHeader     DomainNameStatus
+
+instance FromJSON DomainNameStatus where
+    parseJSON = parseJSONText "DomainNameStatus"
+
+-- | The endpoint type. The valid values are @EDGE@ for edge-optimized API setup, most suitable for mobile applications; @REGIONAL@ for regional API endpoint setup, most suitable for calling from AWS Region; and @PRIVATE@ for private APIs.
 --
 --
 data EndpointType
   = Edge
+  | Private
   | Regional
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
@@ -331,13 +362,15 @@ data EndpointType
 instance FromText EndpointType where
     parser = takeLowerText >>= \case
         "edge" -> pure Edge
+        "private" -> pure Private
         "regional" -> pure Regional
         e -> fromTextError $ "Failure parsing EndpointType from value: '" <> e
-           <> "'. Accepted values: edge, regional"
+           <> "'. Accepted values: edge, private, regional"
 
 instance ToText EndpointType where
     toText = \case
         Edge -> "EDGE"
+        Private -> "PRIVATE"
         Regional -> "REGIONAL"
 
 instance Hashable     EndpointType
@@ -603,6 +636,36 @@ instance ToJSON QuotaPeriodType where
 
 instance FromJSON QuotaPeriodType where
     parseJSON = parseJSONText "QuotaPeriodType"
+
+data SecurityPolicy
+  = TLS10
+  | TLS12
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText SecurityPolicy where
+    parser = takeLowerText >>= \case
+        "tls_1_0" -> pure TLS10
+        "tls_1_2" -> pure TLS12
+        e -> fromTextError $ "Failure parsing SecurityPolicy from value: '" <> e
+           <> "'. Accepted values: tls_1_0, tls_1_2"
+
+instance ToText SecurityPolicy where
+    toText = \case
+        TLS10 -> "TLS_1_0"
+        TLS12 -> "TLS_1_2"
+
+instance Hashable     SecurityPolicy
+instance NFData       SecurityPolicy
+instance ToByteString SecurityPolicy
+instance ToQuery      SecurityPolicy
+instance ToHeader     SecurityPolicy
+
+instance ToJSON SecurityPolicy where
+    toJSON = toJSONText
+
+instance FromJSON SecurityPolicy where
+    parseJSON = parseJSONText "SecurityPolicy"
 
 data UnauthorizedCacheControlHeaderStrategy
   = FailWith403

@@ -78,6 +78,7 @@ module Network.AWS.ApplicationAutoScaling.Types
     -- * ScalableTarget
     , ScalableTarget
     , scalableTarget
+    , stSuspendedState
     , stServiceNamespace
     , stResourceId
     , stScalableDimension
@@ -151,6 +152,13 @@ module Network.AWS.ApplicationAutoScaling.Types
     , sspcMetricAggregationType
     , sspcMinAdjustmentMagnitude
 
+    -- * SuspendedState
+    , SuspendedState
+    , suspendedState
+    , ssDynamicScalingInSuspended
+    , ssScheduledScalingSuspended
+    , ssDynamicScalingOutSuspended
+
     -- * TargetTrackingScalingPolicyConfiguration
     , TargetTrackingScalingPolicyConfiguration
     , targetTrackingScalingPolicyConfiguration
@@ -174,7 +182,7 @@ applicationAutoScaling =
   Service
     { _svcAbbrev = "ApplicationAutoScaling"
     , _svcSigner = v4
-    , _svcPrefix = "autoscaling"
+    , _svcPrefix = "application-autoscaling"
     , _svcVersion = "2016-02-06"
     , _svcEndpoint = defaultEndpoint applicationAutoScaling
     , _svcTimeout = Just 70
@@ -215,7 +223,7 @@ _ValidationException =
   _MatchServiceError applicationAutoScaling "ValidationException"
 
 
--- | Failed access to resources caused an exception. This exception is thrown when Application Auto Scaling is unable to retrieve the alarms associated with a scaling policy due to a client error, for example, if the role ARN specified for a scalable target does not have permission to call the CloudWatch <http://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeAlarms.html DescribeAlarms> on your behalf.
+-- | Failed access to resources caused an exception. This exception is thrown when Application Auto Scaling is unable to retrieve the alarms associated with a scaling policy due to a client error, for example, if the role ARN specified for a scalable target does not have permission to call the CloudWatch <https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeAlarms.html DescribeAlarms> on your behalf.
 --
 --
 _FailedResourceAccessException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -255,7 +263,7 @@ _ObjectNotFoundException =
   _MatchServiceError applicationAutoScaling "ObjectNotFoundException"
 
 
--- | A per-account resource limit is exceeded. For more information, see <http://docs.aws.amazon.com/ApplicationAutoScaling/latest/userguide/application-auto-scaling-limits.html Application Auto Scaling Limits> .
+-- | A per-account resource limit is exceeded. For more information, see <https://docs.aws.amazon.com/ApplicationAutoScaling/latest/userguide/application-auto-scaling-limits.html Application Auto Scaling Limits> .
 --
 --
 _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError

@@ -178,6 +178,36 @@ instance FromXML HTTPVersion where
 instance ToXML HTTPVersion where
     toXML = toXMLText
 
+data ICPRecordalStatus
+  = Approved
+  | Pending
+  | Suspended
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText ICPRecordalStatus where
+    parser = takeLowerText >>= \case
+        "approved" -> pure Approved
+        "pending" -> pure Pending
+        "suspended" -> pure Suspended
+        e -> fromTextError $ "Failure parsing ICPRecordalStatus from value: '" <> e
+           <> "'. Accepted values: approved, pending, suspended"
+
+instance ToText ICPRecordalStatus where
+    toText = \case
+        Approved -> "APPROVED"
+        Pending -> "PENDING"
+        Suspended -> "SUSPENDED"
+
+instance Hashable     ICPRecordalStatus
+instance NFData       ICPRecordalStatus
+instance ToByteString ICPRecordalStatus
+instance ToQuery      ICPRecordalStatus
+instance ToHeader     ICPRecordalStatus
+
+instance FromXML ICPRecordalStatus where
+    parseXML = parseXMLText "ICPRecordalStatus"
+
 data ItemSelection
   = ISAll
   | ISNone

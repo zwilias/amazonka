@@ -50,23 +50,25 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getDistributionConfig' smart constructor.
-newtype GetDistributionConfig = GetDistributionConfig'
-  { _gdcId :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype GetDistributionConfig =
+  GetDistributionConfig'
+    { _gdcId :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetDistributionConfig' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gdcId' - The distribution's ID.
+-- * 'gdcId' - The distribution's ID. If the ID is empty, an empty distribution configuration is returned.
 getDistributionConfig
     :: Text -- ^ 'gdcId'
     -> GetDistributionConfig
 getDistributionConfig pId_ = GetDistributionConfig' {_gdcId = pId_}
 
 
--- | The distribution's ID.
+-- | The distribution's ID. If the ID is empty, an empty distribution configuration is returned.
 gdcId :: Lens' GetDistributionConfig Text
 gdcId = lens _gdcId (\ s a -> s{_gdcId = a})
 
@@ -91,7 +93,7 @@ instance ToHeaders GetDistributionConfig where
 instance ToPath GetDistributionConfig where
         toPath GetDistributionConfig'{..}
           = mconcat
-              ["/2017-10-30/distribution/", toBS _gdcId, "/config"]
+              ["/2019-03-26/distribution/", toBS _gdcId, "/config"]
 
 instance ToQuery GetDistributionConfig where
         toQuery = const mempty
@@ -101,11 +103,13 @@ instance ToQuery GetDistributionConfig where
 --
 --
 -- /See:/ 'getDistributionConfigResponse' smart constructor.
-data GetDistributionConfigResponse = GetDistributionConfigResponse'
-  { _gdcrsETag               :: !(Maybe Text)
-  , _gdcrsDistributionConfig :: !(Maybe DistributionConfig)
-  , _gdcrsResponseStatus     :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetDistributionConfigResponse =
+  GetDistributionConfigResponse'
+    { _gdcrsETag               :: !(Maybe Text)
+    , _gdcrsDistributionConfig :: !(Maybe DistributionConfig)
+    , _gdcrsResponseStatus     :: !Int
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetDistributionConfigResponse' with the minimum fields required to make a request.

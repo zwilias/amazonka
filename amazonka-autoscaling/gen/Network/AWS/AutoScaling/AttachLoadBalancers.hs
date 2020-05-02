@@ -21,11 +21,11 @@
 -- Attaches one or more Classic Load Balancers to the specified Auto Scaling group.
 --
 --
--- To attach an Application Load Balancer instead, see 'AttachLoadBalancerTargetGroups' .
+-- To attach an Application Load Balancer or a Network Load Balancer instead, see 'AttachLoadBalancerTargetGroups' .
 --
 -- To describe the load balancers for an Auto Scaling group, use 'DescribeLoadBalancers' . To detach the load balancer from the Auto Scaling group, use 'DetachLoadBalancers' .
 --
--- For more information, see <http://docs.aws.amazon.com/autoscaling/latest/userguide/attach-load-balancer-asg.html Attach a Load Balancer to Your Auto Scaling Group> in the /Auto Scaling User Guide/ .
+-- For more information, see <https://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-load-balancer-asg.html Attaching a Load Balancer to Your Auto Scaling Group> in the /Amazon EC2 Auto Scaling User Guide/ .
 --
 module Network.AWS.AutoScaling.AttachLoadBalancers
     (
@@ -51,10 +51,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'attachLoadBalancers' smart constructor.
-data AttachLoadBalancers = AttachLoadBalancers'
-  { _albAutoScalingGroupName :: !Text
-  , _albLoadBalancerNames    :: ![Text]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AttachLoadBalancers =
+  AttachLoadBalancers'
+    { _albAutoScalingGroupName :: !Text
+    , _albLoadBalancerNames    :: ![Text]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AttachLoadBalancers' with the minimum fields required to make a request.
@@ -111,9 +113,11 @@ instance ToQuery AttachLoadBalancers where
                  toQueryList "member" _albLoadBalancerNames]
 
 -- | /See:/ 'attachLoadBalancersResponse' smart constructor.
-newtype AttachLoadBalancersResponse = AttachLoadBalancersResponse'
-  { _albrsResponseStatus :: Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype AttachLoadBalancersResponse =
+  AttachLoadBalancersResponse'
+    { _albrsResponseStatus :: Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AttachLoadBalancersResponse' with the minimum fields required to make a request.

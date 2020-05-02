@@ -48,18 +48,20 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Represents the input of a PutApprovalResult action.
+-- | Represents the input of a @PutApprovalResult@ action.
 --
 --
 --
 -- /See:/ 'putApprovalResult' smart constructor.
-data PutApprovalResult = PutApprovalResult'
-  { _parPipelineName :: !Text
-  , _parStageName    :: !Text
-  , _parActionName   :: !Text
-  , _parResult       :: !ApprovalResult
-  , _parToken        :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data PutApprovalResult =
+  PutApprovalResult'
+    { _parPipelineName :: !Text
+    , _parStageName    :: !Text
+    , _parActionName   :: !Text
+    , _parResult       :: !ApprovalResult
+    , _parToken        :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'PutApprovalResult' with the minimum fields required to make a request.
@@ -74,7 +76,7 @@ data PutApprovalResult = PutApprovalResult'
 --
 -- * 'parResult' - Represents information about the result of the approval request.
 --
--- * 'parToken' - The system-generated token used to identify a unique approval request. The token for each open approval request can be obtained using the 'GetPipelineState' action and is used to validate that the approval request corresponding to this token is still valid.
+-- * 'parToken' - The system-generated token used to identify a unique approval request. The token for each open approval request can be obtained using the 'GetPipelineState' action. It is used to validate that the approval request corresponding to this token is still valid.
 putApprovalResult
     :: Text -- ^ 'parPipelineName'
     -> Text -- ^ 'parStageName'
@@ -108,7 +110,7 @@ parActionName = lens _parActionName (\ s a -> s{_parActionName = a})
 parResult :: Lens' PutApprovalResult ApprovalResult
 parResult = lens _parResult (\ s a -> s{_parResult = a})
 
--- | The system-generated token used to identify a unique approval request. The token for each open approval request can be obtained using the 'GetPipelineState' action and is used to validate that the approval request corresponding to this token is still valid.
+-- | The system-generated token used to identify a unique approval request. The token for each open approval request can be obtained using the 'GetPipelineState' action. It is used to validate that the approval request corresponding to this token is still valid.
 parToken :: Lens' PutApprovalResult Text
 parToken = lens _parToken (\ s a -> s{_parToken = a})
 
@@ -151,15 +153,17 @@ instance ToPath PutApprovalResult where
 instance ToQuery PutApprovalResult where
         toQuery = const mempty
 
--- | Represents the output of a PutApprovalResult action.
+-- | Represents the output of a @PutApprovalResult@ action.
 --
 --
 --
 -- /See:/ 'putApprovalResultResponse' smart constructor.
-data PutApprovalResultResponse = PutApprovalResultResponse'
-  { _parrsApprovedAt     :: !(Maybe POSIX)
-  , _parrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data PutApprovalResultResponse =
+  PutApprovalResultResponse'
+    { _parrsApprovedAt     :: !(Maybe POSIX)
+    , _parrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'PutApprovalResultResponse' with the minimum fields required to make a request.

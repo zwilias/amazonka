@@ -23,7 +23,7 @@
 --
 -- Once continuous backups and point in time recovery are enabled, you can restore to any point in time within @EarliestRestorableDateTime@ and @LatestRestorableDateTime@ .
 --
--- @LatestRestorableDateTime@ is typically 5 minutes before the current time. You can restore your table to any point in time during the last 35 days..
+-- @LatestRestorableDateTime@ is typically 5 minutes before the current time. You can restore your table to any point in time during the last 35 days.
 --
 module Network.AWS.DynamoDB.UpdateContinuousBackups
     (
@@ -50,10 +50,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateContinuousBackups' smart constructor.
-data UpdateContinuousBackups = UpdateContinuousBackups'
-  { _ucbTableName                        :: !Text
-  , _ucbPointInTimeRecoverySpecification :: !PointInTimeRecoverySpecification
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data UpdateContinuousBackups =
+  UpdateContinuousBackups'
+    { _ucbTableName                        :: !Text
+    , _ucbPointInTimeRecoverySpecification :: !PointInTimeRecoverySpecification
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UpdateContinuousBackups' with the minimum fields required to make a request.
@@ -123,10 +125,12 @@ instance ToQuery UpdateContinuousBackups where
         toQuery = const mempty
 
 -- | /See:/ 'updateContinuousBackupsResponse' smart constructor.
-data UpdateContinuousBackupsResponse = UpdateContinuousBackupsResponse'
-  { _ucbrsContinuousBackupsDescription :: !(Maybe ContinuousBackupsDescription)
-  , _ucbrsResponseStatus               :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data UpdateContinuousBackupsResponse =
+  UpdateContinuousBackupsResponse'
+    { _ucbrsContinuousBackupsDescription :: !(Maybe ContinuousBackupsDescription)
+    , _ucbrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UpdateContinuousBackupsResponse' with the minimum fields required to make a request.

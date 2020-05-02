@@ -47,9 +47,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createFieldLevelEncryptionProfile' smart constructor.
-newtype CreateFieldLevelEncryptionProfile = CreateFieldLevelEncryptionProfile'
-  { _cflepFieldLevelEncryptionProfileConfig :: FieldLevelEncryptionProfileConfig
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype CreateFieldLevelEncryptionProfile =
+  CreateFieldLevelEncryptionProfile'
+    { _cflepFieldLevelEncryptionProfileConfig :: FieldLevelEncryptionProfileConfig
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateFieldLevelEncryptionProfile' with the minimum fields required to make a request.
@@ -94,7 +96,7 @@ instance ToElement CreateFieldLevelEncryptionProfile
          where
         toElement
           = mkElement
-              "{http://cloudfront.amazonaws.com/doc/2017-10-30/}FieldLevelEncryptionProfileConfig"
+              "{http://cloudfront.amazonaws.com/doc/2019-03-26/}FieldLevelEncryptionProfileConfig"
               .
               _cflepFieldLevelEncryptionProfileConfig
 
@@ -105,19 +107,21 @@ instance ToHeaders CreateFieldLevelEncryptionProfile
 instance ToPath CreateFieldLevelEncryptionProfile
          where
         toPath
-          = const "/2017-10-30/field-level-encryption-profile"
+          = const "/2019-03-26/field-level-encryption-profile"
 
 instance ToQuery CreateFieldLevelEncryptionProfile
          where
         toQuery = const mempty
 
 -- | /See:/ 'createFieldLevelEncryptionProfileResponse' smart constructor.
-data CreateFieldLevelEncryptionProfileResponse = CreateFieldLevelEncryptionProfileResponse'
-  { _cfleprsETag                        :: !(Maybe Text)
-  , _cfleprsLocation                    :: !(Maybe Text)
-  , _cfleprsFieldLevelEncryptionProfile :: !(Maybe FieldLevelEncryptionProfile)
-  , _cfleprsResponseStatus              :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreateFieldLevelEncryptionProfileResponse =
+  CreateFieldLevelEncryptionProfileResponse'
+    { _cfleprsETag :: !(Maybe Text)
+    , _cfleprsLocation :: !(Maybe Text)
+    , _cfleprsFieldLevelEncryptionProfile :: !(Maybe FieldLevelEncryptionProfile)
+    , _cfleprsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateFieldLevelEncryptionProfileResponse' with the minimum fields required to make a request.

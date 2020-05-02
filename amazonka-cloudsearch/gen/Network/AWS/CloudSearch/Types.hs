@@ -16,6 +16,7 @@ module Network.AWS.CloudSearch.Types
       cloudSearch
 
     -- * Errors
+    , _ValidationException
     , _BaseException
     , _DisabledOperationException
     , _InternalException
@@ -40,6 +41,9 @@ module Network.AWS.CloudSearch.Types
 
     -- * SuggesterFuzzyMatching
     , SuggesterFuzzyMatching (..)
+
+    -- * TLSSecurityPolicy
+    , TLSSecurityPolicy (..)
 
     -- * AccessPoliciesStatus
     , AccessPoliciesStatus
@@ -100,6 +104,18 @@ module Network.AWS.CloudSearch.Types
     , dsoSortExpression
     , dsoFuzzyMatching
     , dsoSourceField
+
+    -- * DomainEndpointOptions
+    , DomainEndpointOptions
+    , domainEndpointOptions
+    , deoEnforceHTTPS
+    , deoTLSSecurityPolicy
+
+    -- * DomainEndpointOptionsStatus
+    , DomainEndpointOptionsStatus
+    , domainEndpointOptionsStatus
+    , deosOptions
+    , deosStatus
 
     -- * DomainStatus
     , DomainStatus
@@ -330,6 +346,13 @@ cloudSearch =
       | has (hasStatus 500) e = Just "general_server_error"
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
+
+
+-- | The request was rejected because it has invalid parameters.
+--
+--
+_ValidationException :: AsError a => Getting (First ServiceError) a ServiceError
+_ValidationException = _MatchServiceError cloudSearch "ValidationException"
 
 
 -- | An error occurred while processing the request.

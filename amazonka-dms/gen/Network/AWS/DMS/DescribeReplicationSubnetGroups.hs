@@ -55,18 +55,20 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeReplicationSubnetGroups' smart constructor.
-data DescribeReplicationSubnetGroups = DescribeReplicationSubnetGroups'
-  { _drsgFilters    :: !(Maybe [Filter])
-  , _drsgMarker     :: !(Maybe Text)
-  , _drsgMaxRecords :: !(Maybe Int)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeReplicationSubnetGroups =
+  DescribeReplicationSubnetGroups'
+    { _drsgFilters    :: !(Maybe [Filter])
+    , _drsgMarker     :: !(Maybe Text)
+    , _drsgMaxRecords :: !(Maybe Int)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeReplicationSubnetGroups' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'drsgFilters' - Filters applied to the describe action.
+-- * 'drsgFilters' - Filters applied to the describe action. Valid filter names: replication-subnet-group-id
 --
 -- * 'drsgMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
 --
@@ -78,7 +80,7 @@ describeReplicationSubnetGroups =
     {_drsgFilters = Nothing, _drsgMarker = Nothing, _drsgMaxRecords = Nothing}
 
 
--- | Filters applied to the describe action.
+-- | Filters applied to the describe action. Valid filter names: replication-subnet-group-id
 drsgFilters :: Lens' DescribeReplicationSubnetGroups [Filter]
 drsgFilters = lens _drsgFilters (\ s a -> s{_drsgFilters = a}) . _Default . _Coerce
 
@@ -148,11 +150,13 @@ instance ToQuery DescribeReplicationSubnetGroups
 --
 --
 -- /See:/ 'describeReplicationSubnetGroupsResponse' smart constructor.
-data DescribeReplicationSubnetGroupsResponse = DescribeReplicationSubnetGroupsResponse'
-  { _drsgsrsMarker                  :: !(Maybe Text)
-  , _drsgsrsReplicationSubnetGroups :: !(Maybe [ReplicationSubnetGroup])
-  , _drsgsrsResponseStatus          :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeReplicationSubnetGroupsResponse =
+  DescribeReplicationSubnetGroupsResponse'
+    { _drsgsrsMarker                  :: !(Maybe Text)
+    , _drsgsrsReplicationSubnetGroups :: !(Maybe [ReplicationSubnetGroup])
+    , _drsgsrsResponseStatus          :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeReplicationSubnetGroupsResponse' with the minimum fields required to make a request.

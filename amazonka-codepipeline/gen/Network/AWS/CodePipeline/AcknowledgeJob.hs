@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns information about a specified job and whether that job has been received by the job worker. Only used for custom actions.
+-- Returns information about a specified job and whether that job has been received by the job worker. Used for custom actions only.
 --
 --
 module Network.AWS.CodePipeline.AcknowledgeJob
@@ -50,10 +50,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'acknowledgeJob' smart constructor.
-data AcknowledgeJob = AcknowledgeJob'
-  { _ajJobId :: !Text
-  , _ajNonce :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AcknowledgeJob =
+  AcknowledgeJob'
+    { _ajJobId :: !Text
+    , _ajNonce :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AcknowledgeJob' with the minimum fields required to make a request.
@@ -120,10 +122,12 @@ instance ToQuery AcknowledgeJob where
 --
 --
 -- /See:/ 'acknowledgeJobResponse' smart constructor.
-data AcknowledgeJobResponse = AcknowledgeJobResponse'
-  { _ajrsStatus         :: !(Maybe JobStatus)
-  , _ajrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AcknowledgeJobResponse =
+  AcknowledgeJobResponse'
+    { _ajrsStatus         :: !(Maybe JobStatus)
+    , _ajrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AcknowledgeJobResponse' with the minimum fields required to make a request.

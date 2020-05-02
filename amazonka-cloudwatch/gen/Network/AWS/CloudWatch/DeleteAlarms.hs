@@ -18,8 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes the specified alarms. In the event of an error, no alarms are deleted.
+-- Deletes the specified alarms. You can delete up to 100 alarms in one operation. However, this total can include no more than one composite alarm. For example, you could delete 99 metric alarms and one composite alarms with one operation, but you can't delete two composite alarms with one operation.
 --
+--
+-- In the event of an error, no alarms are deleted.
 --
 module Network.AWS.CloudWatch.DeleteAlarms
     (
@@ -42,9 +44,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteAlarms' smart constructor.
-newtype DeleteAlarms = DeleteAlarms'
-  { _dAlarmNames :: [Text]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype DeleteAlarms =
+  DeleteAlarms'
+    { _dAlarmNames :: [Text]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteAlarms' with the minimum fields required to make a request.

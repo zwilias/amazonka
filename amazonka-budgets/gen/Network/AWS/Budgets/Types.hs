@@ -16,6 +16,7 @@ module Network.AWS.Budgets.Types
       budgets
 
     -- * Errors
+    , _AccessDeniedException
     , _InvalidParameterException
     , _InternalErrorException
     , _ExpiredNextTokenException
@@ -29,6 +30,9 @@ module Network.AWS.Budgets.Types
 
     -- * ComparisonOperator
     , ComparisonOperator (..)
+
+    -- * NotificationState
+    , NotificationState (..)
 
     -- * NotificationType
     , NotificationType (..)
@@ -46,6 +50,8 @@ module Network.AWS.Budgets.Types
     , Budget
     , budget
     , bCalculatedSpend
+    , bPlannedBudgetLimits
+    , bLastUpdatedTime
     , bBudgetLimit
     , bTimePeriod
     , bCostTypes
@@ -53,6 +59,23 @@ module Network.AWS.Budgets.Types
     , bBudgetName
     , bTimeUnit
     , bBudgetType
+
+    -- * BudgetPerformanceHistory
+    , BudgetPerformanceHistory
+    , budgetPerformanceHistory
+    , bphBudgetedAndActualAmountsList
+    , bphTimeUnit
+    , bphBudgetName
+    , bphBudgetType
+    , bphCostTypes
+    , bphCostFilters
+
+    -- * BudgetedAndActualAmounts
+    , BudgetedAndActualAmounts
+    , budgetedAndActualAmounts
+    , baaaTimePeriod
+    , baaaActualAmount
+    , baaaBudgetedAmount
 
     -- * CalculatedSpend
     , CalculatedSpend
@@ -79,6 +102,7 @@ module Network.AWS.Budgets.Types
     , Notification
     , notification
     , nThresholdType
+    , nNotificationState
     , nNotificationType
     , nComparisonOperator
     , nThreshold
@@ -151,6 +175,13 @@ budgets =
       | has (hasStatus 500) e = Just "general_server_error"
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
+
+
+-- | You are not authorized to use this operation with the given parameters.
+--
+--
+_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
+_AccessDeniedException = _MatchServiceError budgets "AccessDeniedException"
 
 
 -- | An error on the client occurred. Typically, the cause is an invalid input value.

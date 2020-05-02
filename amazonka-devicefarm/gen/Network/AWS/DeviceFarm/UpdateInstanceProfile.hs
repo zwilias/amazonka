@@ -50,14 +50,16 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateInstanceProfile' smart constructor.
-data UpdateInstanceProfile = UpdateInstanceProfile'
-  { _uipRebootAfterUse                :: !(Maybe Bool)
-  , _uipName                          :: !(Maybe Text)
-  , _uipPackageCleanup                :: !(Maybe Bool)
-  , _uipExcludeAppPackagesFromCleanup :: !(Maybe [Text])
-  , _uipDescription                   :: !(Maybe Text)
-  , _uipArn                           :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data UpdateInstanceProfile =
+  UpdateInstanceProfile'
+    { _uipRebootAfterUse                :: !(Maybe Bool)
+    , _uipName                          :: !(Maybe Text)
+    , _uipPackageCleanup                :: !(Maybe Bool)
+    , _uipExcludeAppPackagesFromCleanup :: !(Maybe [Text])
+    , _uipDescription                   :: !(Maybe Text)
+    , _uipArn                           :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UpdateInstanceProfile' with the minimum fields required to make a request.
@@ -70,7 +72,7 @@ data UpdateInstanceProfile = UpdateInstanceProfile'
 --
 -- * 'uipPackageCleanup' - The updated choice for whether you want to specify package cleanup. The default value is @false@ for private devices.
 --
--- * 'uipExcludeAppPackagesFromCleanup' - An array of strings specifying the list of app packages that should not be cleaned up from the device after a test run is over. The list of packages is only considered if you set @packageCleanup@ to @true@ .
+-- * 'uipExcludeAppPackagesFromCleanup' - An array of strings that specifies the list of app packages that should not be cleaned up from the device after a test run is over. The list of packages is only considered if you set @packageCleanup@ to @true@ .
 --
 -- * 'uipDescription' - The updated description for your instance profile.
 --
@@ -101,7 +103,7 @@ uipName = lens _uipName (\ s a -> s{_uipName = a})
 uipPackageCleanup :: Lens' UpdateInstanceProfile (Maybe Bool)
 uipPackageCleanup = lens _uipPackageCleanup (\ s a -> s{_uipPackageCleanup = a})
 
--- | An array of strings specifying the list of app packages that should not be cleaned up from the device after a test run is over. The list of packages is only considered if you set @packageCleanup@ to @true@ .
+-- | An array of strings that specifies the list of app packages that should not be cleaned up from the device after a test run is over. The list of packages is only considered if you set @packageCleanup@ to @true@ .
 uipExcludeAppPackagesFromCleanup :: Lens' UpdateInstanceProfile [Text]
 uipExcludeAppPackagesFromCleanup = lens _uipExcludeAppPackagesFromCleanup (\ s a -> s{_uipExcludeAppPackagesFromCleanup = a}) . _Default . _Coerce
 
@@ -156,17 +158,19 @@ instance ToQuery UpdateInstanceProfile where
         toQuery = const mempty
 
 -- | /See:/ 'updateInstanceProfileResponse' smart constructor.
-data UpdateInstanceProfileResponse = UpdateInstanceProfileResponse'
-  { _uiprsInstanceProfile :: !(Maybe InstanceProfile)
-  , _uiprsResponseStatus  :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data UpdateInstanceProfileResponse =
+  UpdateInstanceProfileResponse'
+    { _uiprsInstanceProfile :: !(Maybe InstanceProfile)
+    , _uiprsResponseStatus  :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UpdateInstanceProfileResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'uiprsInstanceProfile' - An object containing information about your instance profile.
+-- * 'uiprsInstanceProfile' - An object that contains information about your instance profile.
 --
 -- * 'uiprsResponseStatus' - -- | The response status code.
 updateInstanceProfileResponse
@@ -177,7 +181,7 @@ updateInstanceProfileResponse pResponseStatus_ =
     {_uiprsInstanceProfile = Nothing, _uiprsResponseStatus = pResponseStatus_}
 
 
--- | An object containing information about your instance profile.
+-- | An object that contains information about your instance profile.
 uiprsInstanceProfile :: Lens' UpdateInstanceProfileResponse (Maybe InstanceProfile)
 uiprsInstanceProfile = lens _uiprsInstanceProfile (\ s a -> s{_uiprsInstanceProfile = a})
 

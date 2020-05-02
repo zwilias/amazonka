@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a default subnet with a size @/20@ IPv4 CIDR block in the specified Availability Zone in your default VPC. You can have only one default subnet per Availability Zone. For more information, see <http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html#create-default-subnet Creating a Default Subnet> in the /Amazon Virtual Private Cloud User Guide/ .
+-- Creates a default subnet with a size @/20@ IPv4 CIDR block in the specified Availability Zone in your default VPC. You can have only one default subnet per Availability Zone. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#create-default-subnet Creating a Default Subnet> in the /Amazon Virtual Private Cloud User Guide/ .
 --
 --
 module Network.AWS.EC2.CreateDefaultSubnet
@@ -46,10 +46,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDefaultSubnet' smart constructor.
-data CreateDefaultSubnet = CreateDefaultSubnet'
-  { _cdsDryRun           :: !(Maybe Bool)
-  , _cdsAvailabilityZone :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreateDefaultSubnet =
+  CreateDefaultSubnet'
+    { _cdsDryRun           :: !(Maybe Bool)
+    , _cdsAvailabilityZone :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateDefaultSubnet' with the minimum fields required to make a request.
@@ -104,10 +106,12 @@ instance ToQuery CreateDefaultSubnet where
                "AvailabilityZone" =: _cdsAvailabilityZone]
 
 -- | /See:/ 'createDefaultSubnetResponse' smart constructor.
-data CreateDefaultSubnetResponse = CreateDefaultSubnetResponse'
-  { _cdsrsSubnet         :: !(Maybe Subnet)
-  , _cdsrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreateDefaultSubnetResponse =
+  CreateDefaultSubnetResponse'
+    { _cdsrsSubnet         :: !(Maybe Subnet)
+    , _cdsrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateDefaultSubnetResponse' with the minimum fields required to make a request.

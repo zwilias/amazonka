@@ -45,23 +45,25 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getNetworkProfile' smart constructor.
-newtype GetNetworkProfile = GetNetworkProfile'
-  { _gnpArn :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype GetNetworkProfile =
+  GetNetworkProfile'
+    { _gnpArn :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetNetworkProfile' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gnpArn' - The Amazon Resource Name (ARN) of the network profile you want to return information about.
+-- * 'gnpArn' - The ARN of the network profile to return information about.
 getNetworkProfile
     :: Text -- ^ 'gnpArn'
     -> GetNetworkProfile
 getNetworkProfile pArn_ = GetNetworkProfile' {_gnpArn = pArn_}
 
 
--- | The Amazon Resource Name (ARN) of the network profile you want to return information about.
+-- | The ARN of the network profile to return information about.
 gnpArn :: Lens' GetNetworkProfile Text
 gnpArn = lens _gnpArn (\ s a -> s{_gnpArn = a})
 
@@ -99,10 +101,12 @@ instance ToQuery GetNetworkProfile where
         toQuery = const mempty
 
 -- | /See:/ 'getNetworkProfileResponse' smart constructor.
-data GetNetworkProfileResponse = GetNetworkProfileResponse'
-  { _gnprsNetworkProfile :: !(Maybe NetworkProfile)
-  , _gnprsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetNetworkProfileResponse =
+  GetNetworkProfileResponse'
+    { _gnprsNetworkProfile :: !(Maybe NetworkProfile)
+    , _gnprsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetNetworkProfileResponse' with the minimum fields required to make a request.

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes an egress-only Internet gateway.
+-- Deletes an egress-only internet gateway.
 --
 --
 module Network.AWS.EC2.DeleteEgressOnlyInternetGateway
@@ -46,10 +46,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteEgressOnlyInternetGateway' smart constructor.
-data DeleteEgressOnlyInternetGateway = DeleteEgressOnlyInternetGateway'
-  { _deoigeDryRun                      :: !(Maybe Bool)
-  , _deoigeEgressOnlyInternetGatewayId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DeleteEgressOnlyInternetGateway =
+  DeleteEgressOnlyInternetGateway'
+    { _deoigeDryRun                      :: !(Maybe Bool)
+    , _deoigeEgressOnlyInternetGatewayId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteEgressOnlyInternetGateway' with the minimum fields required to make a request.
@@ -58,7 +60,7 @@ data DeleteEgressOnlyInternetGateway = DeleteEgressOnlyInternetGateway'
 --
 -- * 'deoigeDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
--- * 'deoigeEgressOnlyInternetGatewayId' - The ID of the egress-only Internet gateway.
+-- * 'deoigeEgressOnlyInternetGatewayId' - The ID of the egress-only internet gateway.
 deleteEgressOnlyInternetGateway
     :: Text -- ^ 'deoigeEgressOnlyInternetGatewayId'
     -> DeleteEgressOnlyInternetGateway
@@ -73,7 +75,7 @@ deleteEgressOnlyInternetGateway pEgressOnlyInternetGatewayId_ =
 deoigeDryRun :: Lens' DeleteEgressOnlyInternetGateway (Maybe Bool)
 deoigeDryRun = lens _deoigeDryRun (\ s a -> s{_deoigeDryRun = a})
 
--- | The ID of the egress-only Internet gateway.
+-- | The ID of the egress-only internet gateway.
 deoigeEgressOnlyInternetGatewayId :: Lens' DeleteEgressOnlyInternetGateway Text
 deoigeEgressOnlyInternetGatewayId = lens _deoigeEgressOnlyInternetGatewayId (\ s a -> s{_deoigeEgressOnlyInternetGatewayId = a})
 
@@ -112,10 +114,12 @@ instance ToQuery DeleteEgressOnlyInternetGateway
                  _deoigeEgressOnlyInternetGatewayId]
 
 -- | /See:/ 'deleteEgressOnlyInternetGatewayResponse' smart constructor.
-data DeleteEgressOnlyInternetGatewayResponse = DeleteEgressOnlyInternetGatewayResponse'
-  { _deoigersReturnCode     :: !(Maybe Bool)
-  , _deoigersResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DeleteEgressOnlyInternetGatewayResponse =
+  DeleteEgressOnlyInternetGatewayResponse'
+    { _deoigersReturnCode     :: !(Maybe Bool)
+    , _deoigersResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteEgressOnlyInternetGatewayResponse' with the minimum fields required to make a request.

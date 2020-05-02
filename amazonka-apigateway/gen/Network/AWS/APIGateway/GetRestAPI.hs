@@ -44,6 +44,7 @@ module Network.AWS.APIGateway.GetRestAPI
     , raPolicy
     , raEndpointConfiguration
     , raDescription
+    , raTags
     ) where
 
 import Network.AWS.APIGateway.Types
@@ -58,9 +59,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getRestAPI' smart constructor.
-newtype GetRestAPI = GetRestAPI'
-  { _graRestAPIId :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype GetRestAPI =
+  GetRestAPI'
+    { _graRestAPIId :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetRestAPI' with the minimum fields required to make a request.

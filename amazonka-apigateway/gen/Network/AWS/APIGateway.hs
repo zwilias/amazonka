@@ -92,7 +92,7 @@ module Network.AWS.APIGateway
     -- ** GetBasePathMapping
     , module Network.AWS.APIGateway.GetBasePathMapping
 
-    -- ** GetRequestValidators
+    -- ** GetRequestValidators (Paginated)
     , module Network.AWS.APIGateway.GetRequestValidators
 
     -- ** PutMethodResponse
@@ -116,7 +116,7 @@ module Network.AWS.APIGateway
     -- ** GetRestAPIs (Paginated)
     , module Network.AWS.APIGateway.GetRestAPIs
 
-    -- ** GetDocumentationVersions
+    -- ** GetDocumentationVersions (Paginated)
     , module Network.AWS.APIGateway.GetDocumentationVersions
 
     -- ** CreateDeployment
@@ -131,7 +131,7 @@ module Network.AWS.APIGateway
     -- ** GetIntegration
     , module Network.AWS.APIGateway.GetIntegration
 
-    -- ** GetDocumentationParts
+    -- ** GetDocumentationParts (Paginated)
     , module Network.AWS.APIGateway.GetDocumentationParts
 
     -- ** UpdateAccount
@@ -179,7 +179,7 @@ module Network.AWS.APIGateway
     -- ** FlushStageAuthorizersCache
     , module Network.AWS.APIGateway.FlushStageAuthorizersCache
 
-    -- ** GetGatewayResponses
+    -- ** GetGatewayResponses (Paginated)
     , module Network.AWS.APIGateway.GetGatewayResponses
 
     -- ** DeleteModel
@@ -242,7 +242,7 @@ module Network.AWS.APIGateway
     -- ** UpdateDocumentationPart
     , module Network.AWS.APIGateway.UpdateDocumentationPart
 
-    -- ** GetAuthorizers
+    -- ** GetAuthorizers (Paginated)
     , module Network.AWS.APIGateway.GetAuthorizers
 
     -- ** CreateDocumentationVersion
@@ -389,7 +389,7 @@ module Network.AWS.APIGateway
     -- ** DeleteRequestValidator
     , module Network.AWS.APIGateway.DeleteRequestValidator
 
-    -- ** GetSDKTypes
+    -- ** GetSDKTypes (Paginated)
     , module Network.AWS.APIGateway.GetSDKTypes
 
     -- ** GetClientCertificates (Paginated)
@@ -436,6 +436,9 @@ module Network.AWS.APIGateway
     -- ** DocumentationPartType
     , DocumentationPartType (..)
 
+    -- ** DomainNameStatus
+    , DomainNameStatus (..)
+
     -- ** EndpointType
     , EndpointType (..)
 
@@ -457,6 +460,9 @@ module Network.AWS.APIGateway
     -- ** QuotaPeriodType
     , QuotaPeriodType (..)
 
+    -- ** SecurityPolicy
+    , SecurityPolicy (..)
+
     -- ** UnauthorizedCacheControlHeaderStrategy
     , UnauthorizedCacheControlHeaderStrategy (..)
 
@@ -475,12 +481,14 @@ module Network.AWS.APIGateway
     , akStageKeys
     , akLastUpdatedDate
     , akDescription
+    , akTags
 
     -- ** APIStage
     , APIStage
     , apiStage
     , asStage
     , asApiId
+    , asThrottle
 
     -- ** AccessLogSettings
     , AccessLogSettings
@@ -533,6 +541,7 @@ module Network.AWS.APIGateway
     , ccCreatedDate
     , ccExpirationDate
     , ccDescription
+    , ccTags
 
     -- ** Deployment
     , Deployment
@@ -580,17 +589,22 @@ module Network.AWS.APIGateway
     , dnRegionalCertificateARN
     , dnCertificateARN
     , dnDistributionHostedZoneId
+    , dnSecurityPolicy
     , dnDomainName
     , dnRegionalCertificateName
     , dnRegionalDomainName
     , dnCertificateUploadDate
     , dnDistributionDomainName
+    , dnDomainNameStatusMessage
     , dnEndpointConfiguration
+    , dnDomainNameStatus
+    , dnTags
 
     -- ** EndpointConfiguration
     , EndpointConfiguration
     , endpointConfiguration
     , ecTypes
+    , ecVpcEndpointIds
 
     -- ** GatewayResponse
     , GatewayResponse
@@ -725,6 +739,7 @@ module Network.AWS.APIGateway
     , raPolicy
     , raEndpointConfiguration
     , raDescription
+    , raTags
 
     -- ** SDKConfigurationProperty
     , SDKConfigurationProperty
@@ -751,11 +766,13 @@ module Network.AWS.APIGateway
     , sAccessLogSettings
     , sDocumentationVersion
     , sClientCertificateId
+    , sTracingEnabled
     , sCreatedDate
     , sCacheClusterStatus
     , sMethodSettings
     , sLastUpdatedDate
     , sCacheClusterSize
+    , sWebACLARN
     , sCanarySettings
     , sCacheClusterEnabled
     , sStageName
@@ -793,6 +810,7 @@ module Network.AWS.APIGateway
     , upQuota
     , upDescription
     , upProductCode
+    , upTags
 
     -- ** UsagePlanKey
     , UsagePlanKey
@@ -811,6 +829,7 @@ module Network.AWS.APIGateway
     , vlStatusMessage
     , vlId
     , vlDescription
+    , vlTags
     ) where
 
 import Network.AWS.APIGateway.CreateAPIKey

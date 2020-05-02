@@ -65,14 +65,16 @@ import Network.AWS.Response
 --
 --
 --
--- For information about deleting a distribution using the CloudFront console, see <http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html Deleting a Distribution> in the /Amazon CloudFront Developer Guide/ .
+-- For information about deleting a distribution using the CloudFront console, see <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html Deleting a Distribution> in the /Amazon CloudFront Developer Guide/ .
 --
 --
 -- /See:/ 'deleteDistribution' smart constructor.
-data DeleteDistribution = DeleteDistribution'
-  { _ddIfMatch :: !(Maybe Text)
-  , _ddId      :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DeleteDistribution =
+  DeleteDistribution'
+    { _ddIfMatch :: !(Maybe Text)
+    , _ddId      :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteDistribution' with the minimum fields required to make a request.
@@ -113,7 +115,7 @@ instance ToHeaders DeleteDistribution where
 
 instance ToPath DeleteDistribution where
         toPath DeleteDistribution'{..}
-          = mconcat ["/2017-10-30/distribution/", toBS _ddId]
+          = mconcat ["/2019-03-26/distribution/", toBS _ddId]
 
 instance ToQuery DeleteDistribution where
         toQuery = const mempty

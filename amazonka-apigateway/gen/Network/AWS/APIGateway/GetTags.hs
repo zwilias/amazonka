@@ -51,11 +51,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getTags' smart constructor.
-data GetTags = GetTags'
-  { _gtLimit       :: !(Maybe Int)
-  , _gtPosition    :: !(Maybe Text)
-  , _gtResourceARN :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetTags =
+  GetTags'
+    { _gtLimit       :: !(Maybe Int)
+    , _gtPosition    :: !(Maybe Text)
+    , _gtResourceARN :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetTags' with the minimum fields required to make a request.
@@ -66,7 +68,7 @@ data GetTags = GetTags'
 --
 -- * 'gtPosition' - (Not currently supported) The current pagination position in the paged result set.
 --
--- * 'gtResourceARN' - [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present, 'Stage' is the only taggable resource.
+-- * 'gtResourceARN' - [Required] The ARN of a resource that can be tagged.
 getTags
     :: Text -- ^ 'gtResourceARN'
     -> GetTags
@@ -83,7 +85,7 @@ gtLimit = lens _gtLimit (\ s a -> s{_gtLimit = a})
 gtPosition :: Lens' GetTags (Maybe Text)
 gtPosition = lens _gtPosition (\ s a -> s{_gtPosition = a})
 
--- | [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present, 'Stage' is the only taggable resource.
+-- | [Required] The ARN of a resource that can be tagged.
 gtResourceARN :: Lens' GetTags Text
 gtResourceARN = lens _gtResourceARN (\ s a -> s{_gtResourceARN = a})
 
@@ -120,10 +122,12 @@ instance ToQuery GetTags where
 --
 --
 -- /See:/ 'getTagsResponse' smart constructor.
-data GetTagsResponse = GetTagsResponse'
-  { _gtrsTags           :: !(Maybe (Map Text Text))
-  , _gtrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetTagsResponse =
+  GetTagsResponse'
+    { _gtrsTags           :: !(Maybe (Map Text Text))
+    , _gtrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetTagsResponse' with the minimum fields required to make a request.

@@ -21,7 +21,7 @@
 -- Deletes an AWS Directory Service directory.
 --
 --
--- Before you call /DeleteDirectory/ , ensure that all of the required permissions have been explicitly granted through a policy. For details about what permissions are required to run the /DeleteDirectory/ operation, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference> .
+-- Before you call @DeleteDirectory@ , ensure that all of the required permissions have been explicitly granted through a policy. For details about what permissions are required to run the @DeleteDirectory@ operation, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference> .
 --
 module Network.AWS.DirectoryService.DeleteDirectory
     (
@@ -51,9 +51,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteDirectory' smart constructor.
-newtype DeleteDirectory = DeleteDirectory'
-  { _dddDirectoryId :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype DeleteDirectory =
+  DeleteDirectory'
+    { _dddDirectoryId :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteDirectory' with the minimum fields required to make a request.
@@ -111,10 +113,12 @@ instance ToQuery DeleteDirectory where
 --
 --
 -- /See:/ 'deleteDirectoryResponse' smart constructor.
-data DeleteDirectoryResponse = DeleteDirectoryResponse'
-  { _delrsDirectoryId    :: !(Maybe Text)
-  , _delrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DeleteDirectoryResponse =
+  DeleteDirectoryResponse'
+    { _delrsDirectoryId    :: !(Maybe Text)
+    , _delrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteDirectoryResponse' with the minimum fields required to make a request.

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Determines the dominant language of the input text for a batch of documents. For a list of languages that Amazon Comprehend can detect, see <http://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html Amazon Comprehend Supported Languages> .
+-- Determines the dominant language of the input text for a batch of documents. For a list of languages that Amazon Comprehend can detect, see <https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html Amazon Comprehend Supported Languages> .
 --
 --
 module Network.AWS.Comprehend.BatchDetectDominantLanguage
@@ -46,9 +46,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchDetectDominantLanguage' smart constructor.
-newtype BatchDetectDominantLanguage = BatchDetectDominantLanguage'
-  { _bddlTextList :: [Text]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype BatchDetectDominantLanguage =
+  BatchDetectDominantLanguage'
+    { _bddlTextList :: [Text]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchDetectDominantLanguage' with the minimum fields required to make a request.
@@ -104,11 +106,13 @@ instance ToQuery BatchDetectDominantLanguage where
         toQuery = const mempty
 
 -- | /See:/ 'batchDetectDominantLanguageResponse' smart constructor.
-data BatchDetectDominantLanguageResponse = BatchDetectDominantLanguageResponse'
-  { _bddlrsResponseStatus :: !Int
-  , _bddlrsResultList     :: ![BatchDetectDominantLanguageItemResult]
-  , _bddlrsErrorList      :: ![BatchItemError]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchDetectDominantLanguageResponse =
+  BatchDetectDominantLanguageResponse'
+    { _bddlrsResponseStatus :: !Int
+    , _bddlrsResultList     :: ![BatchDetectDominantLanguageItemResult]
+    , _bddlrsErrorList      :: ![BatchItemError]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchDetectDominantLanguageResponse' with the minimum fields required to make a request.

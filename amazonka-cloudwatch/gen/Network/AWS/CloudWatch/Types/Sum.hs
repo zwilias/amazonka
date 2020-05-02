@@ -19,9 +19,69 @@ module Network.AWS.CloudWatch.Types.Sum where
 
 import Network.AWS.Prelude
 
+data AlarmType
+  = CompositeAlarm
+  | MetricAlarm
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText AlarmType where
+    parser = takeLowerText >>= \case
+        "compositealarm" -> pure CompositeAlarm
+        "metricalarm" -> pure MetricAlarm
+        e -> fromTextError $ "Failure parsing AlarmType from value: '" <> e
+           <> "'. Accepted values: compositealarm, metricalarm"
+
+instance ToText AlarmType where
+    toText = \case
+        CompositeAlarm -> "CompositeAlarm"
+        MetricAlarm -> "MetricAlarm"
+
+instance Hashable     AlarmType
+instance NFData       AlarmType
+instance ToByteString AlarmType
+instance ToQuery      AlarmType
+instance ToHeader     AlarmType
+
+instance FromXML AlarmType where
+    parseXML = parseXMLText "AlarmType"
+
+data AnomalyDetectorStateValue
+  = PendingTraining
+  | Trained
+  | TrainedInsufficientData
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText AnomalyDetectorStateValue where
+    parser = takeLowerText >>= \case
+        "pending_training" -> pure PendingTraining
+        "trained" -> pure Trained
+        "trained_insufficient_data" -> pure TrainedInsufficientData
+        e -> fromTextError $ "Failure parsing AnomalyDetectorStateValue from value: '" <> e
+           <> "'. Accepted values: pending_training, trained, trained_insufficient_data"
+
+instance ToText AnomalyDetectorStateValue where
+    toText = \case
+        PendingTraining -> "PENDING_TRAINING"
+        Trained -> "TRAINED"
+        TrainedInsufficientData -> "TRAINED_INSUFFICIENT_DATA"
+
+instance Hashable     AnomalyDetectorStateValue
+instance NFData       AnomalyDetectorStateValue
+instance ToByteString AnomalyDetectorStateValue
+instance ToQuery      AnomalyDetectorStateValue
+instance ToHeader     AnomalyDetectorStateValue
+
+instance FromXML AnomalyDetectorStateValue where
+    parseXML = parseXMLText "AnomalyDetectorStateValue"
+
 data ComparisonOperator
   = GreaterThanOrEqualToThreshold
   | GreaterThanThreshold
+  | GreaterThanUpperThreshold
+  | LessThanLowerOrGreaterThanUpperThreshold
+  | LessThanLowerThreshold
   | LessThanOrEqualToThreshold
   | LessThanThreshold
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
@@ -31,15 +91,21 @@ instance FromText ComparisonOperator where
     parser = takeLowerText >>= \case
         "greaterthanorequaltothreshold" -> pure GreaterThanOrEqualToThreshold
         "greaterthanthreshold" -> pure GreaterThanThreshold
+        "greaterthanupperthreshold" -> pure GreaterThanUpperThreshold
+        "lessthanlowerorgreaterthanupperthreshold" -> pure LessThanLowerOrGreaterThanUpperThreshold
+        "lessthanlowerthreshold" -> pure LessThanLowerThreshold
         "lessthanorequaltothreshold" -> pure LessThanOrEqualToThreshold
         "lessthanthreshold" -> pure LessThanThreshold
         e -> fromTextError $ "Failure parsing ComparisonOperator from value: '" <> e
-           <> "'. Accepted values: greaterthanorequaltothreshold, greaterthanthreshold, lessthanorequaltothreshold, lessthanthreshold"
+           <> "'. Accepted values: greaterthanorequaltothreshold, greaterthanthreshold, greaterthanupperthreshold, lessthanlowerorgreaterthanupperthreshold, lessthanlowerthreshold, lessthanorequaltothreshold, lessthanthreshold"
 
 instance ToText ComparisonOperator where
     toText = \case
         GreaterThanOrEqualToThreshold -> "GreaterThanOrEqualToThreshold"
         GreaterThanThreshold -> "GreaterThanThreshold"
+        GreaterThanUpperThreshold -> "GreaterThanUpperThreshold"
+        LessThanLowerOrGreaterThanUpperThreshold -> "LessThanLowerOrGreaterThanUpperThreshold"
+        LessThanLowerThreshold -> "LessThanLowerThreshold"
         LessThanOrEqualToThreshold -> "LessThanOrEqualToThreshold"
         LessThanThreshold -> "LessThanThreshold"
 

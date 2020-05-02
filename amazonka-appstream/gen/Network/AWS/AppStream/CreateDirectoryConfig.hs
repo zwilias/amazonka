@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a directory configuration.
+-- Creates a Directory Config object in AppStream 2.0. This object includes the configuration information required to join fleets and image builders to Microsoft Active Directory domains.
 --
 --
 module Network.AWS.AppStream.CreateDirectoryConfig
@@ -47,11 +47,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDirectoryConfig' smart constructor.
-data CreateDirectoryConfig = CreateDirectoryConfig'
-  { _cdcDirectoryName                        :: !Text
-  , _cdcOrganizationalUnitDistinguishedNames :: ![Text]
-  , _cdcServiceAccountCredentials            :: !ServiceAccountCredentials
-  } deriving (Eq, Show, Data, Typeable, Generic)
+data CreateDirectoryConfig =
+  CreateDirectoryConfig'
+    { _cdcDirectoryName                        :: !Text
+    , _cdcOrganizationalUnitDistinguishedNames :: ![Text]
+    , _cdcServiceAccountCredentials            :: !ServiceAccountCredentials
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateDirectoryConfig' with the minimum fields required to make a request.
@@ -62,7 +64,7 @@ data CreateDirectoryConfig = CreateDirectoryConfig'
 --
 -- * 'cdcOrganizationalUnitDistinguishedNames' - The distinguished names of the organizational units for computer accounts.
 --
--- * 'cdcServiceAccountCredentials' - The credentials for the service account used by the streaming instance to connect to the directory.
+-- * 'cdcServiceAccountCredentials' - The credentials for the service account used by the fleet or image builder to connect to the directory.
 createDirectoryConfig
     :: Text -- ^ 'cdcDirectoryName'
     -> ServiceAccountCredentials -- ^ 'cdcServiceAccountCredentials'
@@ -83,7 +85,7 @@ cdcDirectoryName = lens _cdcDirectoryName (\ s a -> s{_cdcDirectoryName = a})
 cdcOrganizationalUnitDistinguishedNames :: Lens' CreateDirectoryConfig [Text]
 cdcOrganizationalUnitDistinguishedNames = lens _cdcOrganizationalUnitDistinguishedNames (\ s a -> s{_cdcOrganizationalUnitDistinguishedNames = a}) . _Coerce
 
--- | The credentials for the service account used by the streaming instance to connect to the directory.
+-- | The credentials for the service account used by the fleet or image builder to connect to the directory.
 cdcServiceAccountCredentials :: Lens' CreateDirectoryConfig ServiceAccountCredentials
 cdcServiceAccountCredentials = lens _cdcServiceAccountCredentials (\ s a -> s{_cdcServiceAccountCredentials = a})
 
@@ -130,10 +132,12 @@ instance ToQuery CreateDirectoryConfig where
         toQuery = const mempty
 
 -- | /See:/ 'createDirectoryConfigResponse' smart constructor.
-data CreateDirectoryConfigResponse = CreateDirectoryConfigResponse'
-  { _cdcrsDirectoryConfig :: !(Maybe DirectoryConfig)
-  , _cdcrsResponseStatus  :: !Int
-  } deriving (Eq, Show, Data, Typeable, Generic)
+data CreateDirectoryConfigResponse =
+  CreateDirectoryConfigResponse'
+    { _cdcrsDirectoryConfig :: !(Maybe DirectoryConfig)
+    , _cdcrsResponseStatus  :: !Int
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateDirectoryConfigResponse' with the minimum fields required to make a request.

@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Resumes the specified suspended Auto Scaling processes, or all suspended process, for the specified Auto Scaling group.
+-- Resumes the specified suspended automatic scaling processes, or all suspended process, for the specified Auto Scaling group.
 --
 --
--- For more information, see <http://docs.aws.amazon.com/autoscaling/latest/userguide/as-suspend-resume-processes.html Suspending and Resuming Auto Scaling Processes> in the /Auto Scaling User Guide/ .
+-- For more information, see <https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html Suspending and Resuming Scaling Processes> in the /Amazon EC2 Auto Scaling User Guide/ .
 --
 module Network.AWS.AutoScaling.ResumeProcesses
     (
@@ -45,10 +45,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'resumeProcesses' smart constructor.
-data ResumeProcesses = ResumeProcesses'
-  { _rpScalingProcesses     :: !(Maybe [Text])
-  , _rpAutoScalingGroupName :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ResumeProcesses =
+  ResumeProcesses'
+    { _rpScalingProcesses     :: !(Maybe [Text])
+    , _rpAutoScalingGroupName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ResumeProcesses' with the minimum fields required to make a request.

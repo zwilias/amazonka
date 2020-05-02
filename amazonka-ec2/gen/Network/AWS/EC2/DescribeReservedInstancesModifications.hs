@@ -21,7 +21,7 @@
 -- Describes the modifications made to your Reserved Instances. If no parameter is specified, information about all your Reserved Instances modification requests is returned. If a modification ID is specified, only information about the specific modification is returned.
 --
 --
--- For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html Modifying Reserved Instances> in the Amazon Elastic Compute Cloud User Guide.
+-- For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html Modifying Reserved Instances> in the Amazon Elastic Compute Cloud User Guide.
 --
 --
 -- This operation returns paginated results.
@@ -57,11 +57,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeReservedInstancesModifications' smart constructor.
-data DescribeReservedInstancesModifications = DescribeReservedInstancesModifications'
-  { _drimFilters                          :: !(Maybe [Filter])
-  , _drimReservedInstancesModificationIds :: !(Maybe [Text])
-  , _drimNextToken                        :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeReservedInstancesModifications =
+  DescribeReservedInstancesModifications'
+    { _drimFilters                          :: !(Maybe [Filter])
+    , _drimReservedInstancesModificationIds :: !(Maybe [Text])
+    , _drimNextToken                        :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeReservedInstancesModifications' with the minimum fields required to make a request.
@@ -158,11 +160,13 @@ instance ToQuery
 --
 --
 -- /See:/ 'describeReservedInstancesModificationsResponse' smart constructor.
-data DescribeReservedInstancesModificationsResponse = DescribeReservedInstancesModificationsResponse'
-  { _drimrsNextToken :: !(Maybe Text)
-  , _drimrsReservedInstancesModifications :: !(Maybe [ReservedInstancesModification])
-  , _drimrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeReservedInstancesModificationsResponse =
+  DescribeReservedInstancesModificationsResponse'
+    { _drimrsNextToken :: !(Maybe Text)
+    , _drimrsReservedInstancesModifications :: !(Maybe [ReservedInstancesModification])
+    , _drimrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeReservedInstancesModificationsResponse' with the minimum fields required to make a request.

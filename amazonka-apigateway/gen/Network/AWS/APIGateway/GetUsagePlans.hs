@@ -55,11 +55,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getUsagePlans' smart constructor.
-data GetUsagePlans = GetUsagePlans'
-  { _gupKeyId    :: !(Maybe Text)
-  , _gupLimit    :: !(Maybe Int)
-  , _gupPosition :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetUsagePlans =
+  GetUsagePlans'
+    { _gupKeyId    :: !(Maybe Text)
+    , _gupLimit    :: !(Maybe Int)
+    , _gupPosition :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetUsagePlans' with the minimum fields required to make a request.
@@ -129,14 +131,16 @@ instance ToQuery GetUsagePlans where
 -- | Represents a collection of usage plans for an AWS account.
 --
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html Create and Use Usage Plans>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html Create and Use Usage Plans>
 --
 -- /See:/ 'getUsagePlansResponse' smart constructor.
-data GetUsagePlansResponse = GetUsagePlansResponse'
-  { _guprsItems          :: !(Maybe [UsagePlan])
-  , _guprsPosition       :: !(Maybe Text)
-  , _guprsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetUsagePlansResponse =
+  GetUsagePlansResponse'
+    { _guprsItems          :: !(Maybe [UsagePlan])
+    , _guprsPosition       :: !(Maybe Text)
+    , _guprsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetUsagePlansResponse' with the minimum fields required to make a request.

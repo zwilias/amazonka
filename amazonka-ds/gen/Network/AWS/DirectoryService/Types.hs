@@ -16,21 +16,40 @@ module Network.AWS.DirectoryService.Types
       directoryService
 
     -- * Errors
+    , _CertificateLimitExceededException
+    , _CertificateAlreadyExistsException
+    , _AccessDeniedException
     , _DirectoryUnavailableException
     , _AuthenticationFailedException
     , _InvalidParameterException
     , _UnsupportedOperationException
     , _EntityAlreadyExistsException
+    , _NoAvailableCertificateException
+    , _UserDoesNotExistException
     , _DirectoryLimitExceededException
+    , _InvalidLDAPSStatusException
+    , _InvalidCertificateException
+    , _CertificateInUseException
     , _IPRouteLimitExceededException
+    , _ShareLimitExceededException
     , _EntityDoesNotExistException
+    , _OrganizationsException
+    , _InvalidTargetException
     , _InsufficientPermissionsException
+    , _DirectoryNotSharedException
     , _InvalidNextTokenException
     , _ServiceException
     , _SnapshotLimitExceededException
     , _DomainControllerLimitExceededException
+    , _DirectoryDoesNotExistException
     , _TagLimitExceededException
     , _ClientException
+    , _DirectoryAlreadySharedException
+    , _CertificateDoesNotExistException
+    , _InvalidPasswordException
+
+    -- * CertificateState
+    , CertificateState (..)
 
     -- * DirectoryEdition
     , DirectoryEdition (..)
@@ -50,6 +69,12 @@ module Network.AWS.DirectoryService.Types
     -- * IPRouteStatusMsg
     , IPRouteStatusMsg (..)
 
+    -- * LDAPSStatus
+    , LDAPSStatus (..)
+
+    -- * LDAPSType
+    , LDAPSType (..)
+
     -- * RadiusAuthenticationProtocol
     , RadiusAuthenticationProtocol (..)
 
@@ -62,11 +87,23 @@ module Network.AWS.DirectoryService.Types
     -- * SchemaExtensionStatus
     , SchemaExtensionStatus (..)
 
+    -- * SelectiveAuth
+    , SelectiveAuth (..)
+
+    -- * ShareMethod
+    , ShareMethod (..)
+
+    -- * ShareStatus
+    , ShareStatus (..)
+
     -- * SnapshotStatus
     , SnapshotStatus (..)
 
     -- * SnapshotType
     , SnapshotType (..)
+
+    -- * TargetType
+    , TargetType (..)
 
     -- * TopicStatus
     , TopicStatus (..)
@@ -85,6 +122,24 @@ module Network.AWS.DirectoryService.Types
     , attribute
     , aValue
     , aName
+
+    -- * Certificate
+    , Certificate
+    , certificate
+    , cState
+    , cCommonName
+    , cCertificateId
+    , cExpiryDateTime
+    , cRegisteredDateTime
+    , cStateReason
+
+    -- * CertificateInfo
+    , CertificateInfo
+    , certificateInfo
+    , ciState
+    , ciCommonName
+    , ciCertificateId
+    , ciExpiryDateTime
 
     -- * Computer
     , Computer
@@ -132,7 +187,9 @@ module Network.AWS.DirectoryService.Types
     , ddRadiusSettings
     , ddLaunchTime
     , ddAlias
+    , ddShareStatus
     , ddName
+    , ddShareMethod
     , ddStageLastUpdatedDateTime
     , ddSSOEnabled
     , ddDNSIPAddrs
@@ -140,7 +197,9 @@ module Network.AWS.DirectoryService.Types
     , ddType
     , ddStageReason
     , ddConnectSettings
+    , ddOwnerDirectoryDescription
     , ddDescription
+    , ddShareNotes
 
     -- * DirectoryLimits
     , DirectoryLimits
@@ -208,6 +267,30 @@ module Network.AWS.DirectoryService.Types
     , iriIPRouteStatusMsg
     , iriDescription
 
+    -- * LDAPSSettingInfo
+    , LDAPSSettingInfo
+    , lDAPSSettingInfo
+    , ldapssiLastUpdatedDateTime
+    , ldapssiLDAPSStatusReason
+    , ldapssiLDAPSStatus
+
+    -- * LogSubscription
+    , LogSubscription
+    , logSubscription
+    , lsDirectoryId
+    , lsLogGroupName
+    , lsSubscriptionCreatedDateTime
+
+    -- * OwnerDirectoryDescription
+    , OwnerDirectoryDescription
+    , ownerDirectoryDescription
+    , oddRadiusStatus
+    , oddDirectoryId
+    , oddRadiusSettings
+    , oddAccountId
+    , oddDNSIPAddrs
+    , oddVPCSettings
+
     -- * RadiusSettings
     , RadiusSettings
     , radiusSettings
@@ -230,6 +313,25 @@ module Network.AWS.DirectoryService.Types
     , seiDescription
     , seiEndDateTime
     , seiStartDateTime
+
+    -- * ShareTarget
+    , ShareTarget
+    , shareTarget
+    , stId
+    , stType
+
+    -- * SharedDirectory
+    , SharedDirectory
+    , sharedDirectory
+    , sSharedAccountId
+    , sOwnerAccountId
+    , sLastUpdatedDateTime
+    , sShareStatus
+    , sShareMethod
+    , sOwnerDirectoryId
+    , sSharedDirectoryId
+    , sShareNotes
+    , sCreatedDateTime
 
     -- * Snapshot
     , Snapshot
@@ -264,9 +366,16 @@ module Network.AWS.DirectoryService.Types
     , tStateLastUpdatedDateTime
     , tTrustType
     , tTrustStateReason
+    , tSelectiveAuth
     , tRemoteDomainName
     , tTrustId
     , tCreatedDateTime
+
+    -- * UnshareTarget
+    , UnshareTarget
+    , unshareTarget
+    , utId
+    , utType
     ) where
 
 import Network.AWS.DirectoryService.Types.Product
@@ -314,6 +423,30 @@ directoryService =
       | otherwise = Nothing
 
 
+-- | The certificate could not be added because the certificate limit has been reached.
+--
+--
+_CertificateLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_CertificateLimitExceededException =
+  _MatchServiceError directoryService "CertificateLimitExceededException"
+
+
+-- | The certificate has already been registered into the system.
+--
+--
+_CertificateAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_CertificateAlreadyExistsException =
+  _MatchServiceError directoryService "CertificateAlreadyExistsException"
+
+
+-- | You do not have sufficient access to perform this action.
+--
+--
+_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
+_AccessDeniedException =
+  _MatchServiceError directoryService "AccessDeniedException"
+
+
 -- | The specified directory is unavailable or could not be found.
 --
 --
@@ -354,12 +487,52 @@ _EntityAlreadyExistsException =
   _MatchServiceError directoryService "EntityAlreadyExistsException"
 
 
+-- | The LDAP activities could not be performed because at least one valid certificate must be registered with the system.
+--
+--
+_NoAvailableCertificateException :: AsError a => Getting (First ServiceError) a ServiceError
+_NoAvailableCertificateException =
+  _MatchServiceError directoryService "NoAvailableCertificateException"
+
+
+-- | The user provided a username that does not exist in your directory.
+--
+--
+_UserDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
+_UserDoesNotExistException =
+  _MatchServiceError directoryService "UserDoesNotExistException"
+
+
 -- | The maximum number of directories in the region has been reached. You can use the 'GetDirectoryLimits' operation to determine your directory limits in the region.
 --
 --
 _DirectoryLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _DirectoryLimitExceededException =
   _MatchServiceError directoryService "DirectoryLimitExceededException"
+
+
+-- | The LDAP activities could not be performed because they are limited by the LDAPS status.
+--
+--
+_InvalidLDAPSStatusException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidLDAPSStatusException =
+  _MatchServiceError directoryService "InvalidLDAPSStatusException"
+
+
+-- | The certificate PEM that was provided has incorrect encoding.
+--
+--
+_InvalidCertificateException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidCertificateException =
+  _MatchServiceError directoryService "InvalidCertificateException"
+
+
+-- | The certificate is being used for the LDAP security connection and cannot be removed without disabling LDAP security.
+--
+--
+_CertificateInUseException :: AsError a => Getting (First ServiceError) a ServiceError
+_CertificateInUseException =
+  _MatchServiceError directoryService "CertificateInUseException"
 
 
 -- | The maximum allowed number of IP addresses was exceeded. The default limit is 100 IP address blocks.
@@ -370,12 +543,36 @@ _IPRouteLimitExceededException =
   _MatchServiceError directoryService "IpRouteLimitExceededException"
 
 
+-- | The maximum number of AWS accounts that you can share with this directory has been reached.
+--
+--
+_ShareLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_ShareLimitExceededException =
+  _MatchServiceError directoryService "ShareLimitExceededException"
+
+
 -- | The specified entity could not be found.
 --
 --
 _EntityDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
 _EntityDoesNotExistException =
   _MatchServiceError directoryService "EntityDoesNotExistException"
+
+
+-- | Exception encountered while trying to access your AWS organization.
+--
+--
+_OrganizationsException :: AsError a => Getting (First ServiceError) a ServiceError
+_OrganizationsException =
+  _MatchServiceError directoryService "OrganizationsException"
+
+
+-- | The specified shared target is not valid.
+--
+--
+_InvalidTargetException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTargetException =
+  _MatchServiceError directoryService "InvalidTargetException"
 
 
 -- | The account does not have sufficient permission to perform the operation.
@@ -386,7 +583,15 @@ _InsufficientPermissionsException =
   _MatchServiceError directoryService "InsufficientPermissionsException"
 
 
--- | The /NextToken/ value is not valid.
+-- | The specified directory has not been shared with this AWS account.
+--
+--
+_DirectoryNotSharedException :: AsError a => Getting (First ServiceError) a ServiceError
+_DirectoryNotSharedException =
+  _MatchServiceError directoryService "DirectoryNotSharedException"
+
+
+-- | The @NextToken@ value is not valid.
 --
 --
 _InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -417,6 +622,14 @@ _DomainControllerLimitExceededException =
   _MatchServiceError directoryService "DomainControllerLimitExceededException"
 
 
+-- | The specified directory does not exist in the system.
+--
+--
+_DirectoryDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
+_DirectoryDoesNotExistException =
+  _MatchServiceError directoryService "DirectoryDoesNotExistException"
+
+
 -- | The maximum allowed number of tags was exceeded.
 --
 --
@@ -430,4 +643,28 @@ _TagLimitExceededException =
 --
 _ClientException :: AsError a => Getting (First ServiceError) a ServiceError
 _ClientException = _MatchServiceError directoryService "ClientException"
+
+
+-- | The specified directory has already been shared with this AWS account.
+--
+--
+_DirectoryAlreadySharedException :: AsError a => Getting (First ServiceError) a ServiceError
+_DirectoryAlreadySharedException =
+  _MatchServiceError directoryService "DirectoryAlreadySharedException"
+
+
+-- | The certificate is not present in the system for describe or deregister activities.
+--
+--
+_CertificateDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
+_CertificateDoesNotExistException =
+  _MatchServiceError directoryService "CertificateDoesNotExistException"
+
+
+-- | The new password provided by the user does not meet the password complexity requirements defined in your directory.
+--
+--
+_InvalidPasswordException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidPasswordException =
+  _MatchServiceError directoryService "InvalidPasswordException"
 

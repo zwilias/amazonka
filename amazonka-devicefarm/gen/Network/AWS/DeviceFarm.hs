@@ -11,7 +11,17 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- AWS Device Farm is a service that enables mobile app developers to test Android, iOS, and Fire OS apps on physical phones, tablets, and other devices in the cloud.
+-- Welcome to the AWS Device Farm API documentation, which contains APIs for:
+--
+--
+--     * Testing on desktop browsers
+--
+-- Device Farm makes it possible for you to test your web applications on desktop browsers using Selenium. The APIs for desktop browser testing contain @TestGrid@ in their names. For more information, see <https://docs.aws.amazon.com/devicefarm/latest/testgrid/ Testing Web Applications on Selenium with Device Farm> .
+--
+--     * Testing on real mobile devices
+--
+-- Device Farm makes it possible for you to test apps on physical phones, tablets, and other devices in the cloud. For more information, see the <https://docs.aws.amazon.com/devicefarm/latest/developerguide/ Device Farm Developer Guide> .
+--
 --
 --
 module Network.AWS.DeviceFarm
@@ -25,14 +35,29 @@ module Network.AWS.DeviceFarm
     -- ** NotEligibleException
     , _NotEligibleException
 
+    -- ** CannotDeleteException
+    , _CannotDeleteException
+
     -- ** IdempotencyException
     , _IdempotencyException
+
+    -- ** TooManyTagsException
+    , _TooManyTagsException
 
     -- ** ArgumentException
     , _ArgumentException
 
     -- ** NotFoundException
     , _NotFoundException
+
+    -- ** InternalServiceException
+    , _InternalServiceException
+
+    -- ** TagPolicyException
+    , _TagPolicyException
+
+    -- ** TagOperationException
+    , _TagOperationException
 
     -- ** ServiceAccountException
     , _ServiceAccountException
@@ -76,17 +101,41 @@ module Network.AWS.DeviceFarm
     -- ** ListArtifacts (Paginated)
     , module Network.AWS.DeviceFarm.ListArtifacts
 
+    -- ** ListTestGridSessionActions
+    , module Network.AWS.DeviceFarm.ListTestGridSessionActions
+
     -- ** CreateUpload
     , module Network.AWS.DeviceFarm.CreateUpload
 
     -- ** GetDeviceInstance
     , module Network.AWS.DeviceFarm.GetDeviceInstance
 
+    -- ** StopJob
+    , module Network.AWS.DeviceFarm.StopJob
+
     -- ** DeleteRemoteAccessSession
     , module Network.AWS.DeviceFarm.DeleteRemoteAccessSession
 
+    -- ** ListTestGridSessionArtifacts
+    , module Network.AWS.DeviceFarm.ListTestGridSessionArtifacts
+
+    -- ** ListTestGridProjects
+    , module Network.AWS.DeviceFarm.ListTestGridProjects
+
     -- ** DeleteUpload
     , module Network.AWS.DeviceFarm.DeleteUpload
+
+    -- ** UpdateUpload
+    , module Network.AWS.DeviceFarm.UpdateUpload
+
+    -- ** DeleteTestGridProject
+    , module Network.AWS.DeviceFarm.DeleteTestGridProject
+
+    -- ** UpdateTestGridProject
+    , module Network.AWS.DeviceFarm.UpdateTestGridProject
+
+    -- ** ListTagsForResource
+    , module Network.AWS.DeviceFarm.ListTagsForResource
 
     -- ** GetDevicePool
     , module Network.AWS.DeviceFarm.GetDevicePool
@@ -142,6 +191,9 @@ module Network.AWS.DeviceFarm
     -- ** ListJobs (Paginated)
     , module Network.AWS.DeviceFarm.ListJobs
 
+    -- ** GetTestGridSession
+    , module Network.AWS.DeviceFarm.GetTestGridSession
+
     -- ** GetVPCEConfiguration
     , module Network.AWS.DeviceFarm.GetVPCEConfiguration
 
@@ -163,7 +215,7 @@ module Network.AWS.DeviceFarm
     -- ** GetInstanceProfile
     , module Network.AWS.DeviceFarm.GetInstanceProfile
 
-    -- ** ListNetworkProfiles
+    -- ** ListNetworkProfiles (Paginated)
     , module Network.AWS.DeviceFarm.ListNetworkProfiles
 
     -- ** CreateVPCEConfiguration
@@ -171,6 +223,9 @@ module Network.AWS.DeviceFarm
 
     -- ** ScheduleRun
     , module Network.AWS.DeviceFarm.ScheduleRun
+
+    -- ** CreateTestGridProject
+    , module Network.AWS.DeviceFarm.CreateTestGridProject
 
     -- ** GetRun
     , module Network.AWS.DeviceFarm.GetRun
@@ -181,7 +236,7 @@ module Network.AWS.DeviceFarm
     -- ** ListSuites (Paginated)
     , module Network.AWS.DeviceFarm.ListSuites
 
-    -- ** ListRemoteAccessSessions
+    -- ** ListRemoteAccessSessions (Paginated)
     , module Network.AWS.DeviceFarm.ListRemoteAccessSessions
 
     -- ** GetAccountSettings
@@ -190,7 +245,7 @@ module Network.AWS.DeviceFarm
     -- ** CreateRemoteAccessSession
     , module Network.AWS.DeviceFarm.CreateRemoteAccessSession
 
-    -- ** ListOfferingPromotions
+    -- ** ListOfferingPromotions (Paginated)
     , module Network.AWS.DeviceFarm.ListOfferingPromotions
 
     -- ** GetOfferingStatus (Paginated)
@@ -199,20 +254,29 @@ module Network.AWS.DeviceFarm
     -- ** ListUploads (Paginated)
     , module Network.AWS.DeviceFarm.ListUploads
 
+    -- ** GetTestGridProject
+    , module Network.AWS.DeviceFarm.GetTestGridProject
+
     -- ** GetSuite
     , module Network.AWS.DeviceFarm.GetSuite
+
+    -- ** TagResource
+    , module Network.AWS.DeviceFarm.TagResource
 
     -- ** GetRemoteAccessSession
     , module Network.AWS.DeviceFarm.GetRemoteAccessSession
 
-    -- ** ListDeviceInstances
+    -- ** ListDeviceInstances (Paginated)
     , module Network.AWS.DeviceFarm.ListDeviceInstances
 
     -- ** PurchaseOffering
     , module Network.AWS.DeviceFarm.PurchaseOffering
 
-    -- ** ListInstanceProfiles
+    -- ** ListInstanceProfiles (Paginated)
     , module Network.AWS.DeviceFarm.ListInstanceProfiles
+
+    -- ** UntagResource
+    , module Network.AWS.DeviceFarm.UntagResource
 
     -- ** GetProject
     , module Network.AWS.DeviceFarm.GetProject
@@ -220,7 +284,7 @@ module Network.AWS.DeviceFarm
     -- ** ListUniqueProblems (Paginated)
     , module Network.AWS.DeviceFarm.ListUniqueProblems
 
-    -- ** ListVPCEConfigurations
+    -- ** ListVPCEConfigurations (Paginated)
     , module Network.AWS.DeviceFarm.ListVPCEConfigurations
 
     -- ** StopRun
@@ -231,6 +295,12 @@ module Network.AWS.DeviceFarm
 
     -- ** CreateProject
     , module Network.AWS.DeviceFarm.CreateProject
+
+    -- ** ListTestGridSessions
+    , module Network.AWS.DeviceFarm.ListTestGridSessions
+
+    -- ** CreateTestGridURL
+    , module Network.AWS.DeviceFarm.CreateTestGridURL
 
     -- ** ListOfferings (Paginated)
     , module Network.AWS.DeviceFarm.ListOfferings
@@ -251,6 +321,12 @@ module Network.AWS.DeviceFarm
 
     -- ** DeviceAttribute
     , DeviceAttribute (..)
+
+    -- ** DeviceAvailability
+    , DeviceAvailability (..)
+
+    -- ** DeviceFilterAttribute
+    , DeviceFilterAttribute (..)
 
     -- ** DeviceFormFactor
     , DeviceFormFactor (..)
@@ -294,8 +370,20 @@ module Network.AWS.DeviceFarm
     -- ** SampleType
     , SampleType (..)
 
+    -- ** TestGridSessionArtifactCategory
+    , TestGridSessionArtifactCategory (..)
+
+    -- ** TestGridSessionArtifactType
+    , TestGridSessionArtifactType (..)
+
+    -- ** TestGridSessionStatus
+    , TestGridSessionStatus (..)
+
     -- ** TestType
     , TestType (..)
+
+    -- ** UploadCategory
+    , UploadCategory (..)
 
     -- ** UploadStatus
     , UploadStatus (..)
@@ -346,6 +434,7 @@ module Network.AWS.DeviceFarm
     , CreateRemoteAccessSessionConfiguration
     , createRemoteAccessSessionConfiguration
     , crascBillingMethod
+    , crascVpceConfigurationARNs
 
     -- ** CustomerArtifactPaths
     , CustomerArtifactPaths
@@ -357,26 +446,34 @@ module Network.AWS.DeviceFarm
     -- ** Device
     , Device
     , device
-    , devCarrier
-    , devImage
-    , devManufacturer
-    , devPlatform
-    , devModelId
-    , devRemoteAccessEnabled
-    , devArn
-    , devFormFactor
-    , devFleetType
-    , devResolution
-    , devMemory
-    , devRadio
-    , devOs
-    , devName
-    , devModel
-    , devInstances
-    , devRemoteDebugEnabled
-    , devCpu
-    , devHeapSize
-    , devFleetName
+    , dCarrier
+    , dImage
+    , dManufacturer
+    , dPlatform
+    , dModelId
+    , dRemoteAccessEnabled
+    , dArn
+    , dFormFactor
+    , dFleetType
+    , dResolution
+    , dAvailability
+    , dMemory
+    , dRadio
+    , dOs
+    , dName
+    , dModel
+    , dInstances
+    , dRemoteDebugEnabled
+    , dCpu
+    , dHeapSize
+    , dFleetName
+
+    -- ** DeviceFilter
+    , DeviceFilter
+    , deviceFilter
+    , dfAttribute
+    , dfOperator
+    , dfValues
 
     -- ** DeviceInstance
     , DeviceInstance
@@ -398,11 +495,12 @@ module Network.AWS.DeviceFarm
     -- ** DevicePool
     , DevicePool
     , devicePool
-    , dArn
-    , dRules
-    , dName
-    , dType
-    , dDescription
+    , devArn
+    , devRules
+    , devName
+    , devMaxDevices
+    , devType
+    , devDescription
 
     -- ** DevicePoolCompatibilityResult
     , DevicePoolCompatibilityResult
@@ -411,6 +509,19 @@ module Network.AWS.DeviceFarm
     , dpcrCompatible
     , dpcrIncompatibilityMessages
 
+    -- ** DeviceSelectionConfiguration
+    , DeviceSelectionConfiguration
+    , deviceSelectionConfiguration
+    , dscFilters
+    , dscMaxDevices
+
+    -- ** DeviceSelectionResult
+    , DeviceSelectionResult
+    , deviceSelectionResult
+    , dsrMatchedDevicesCount
+    , dsrFilters
+    , dsrMaxDevices
+
     -- ** ExecutionConfiguration
     , ExecutionConfiguration
     , executionConfiguration
@@ -418,6 +529,7 @@ module Network.AWS.DeviceFarm
     , ecAccountsCleanup
     , ecAppPackagesCleanup
     , ecJobTimeoutMinutes
+    , ecVideoCapture
 
     -- ** IncompatibilityMessage
     , IncompatibilityMessage
@@ -447,7 +559,9 @@ module Network.AWS.DeviceFarm
     , jobStopped
     , jobResult
     , jobName
+    , jobVideoEndpoint
     , jobDeviceMinutes
+    , jobVideoCapture
     , jobType
     , jobMessage
     , jobStarted
@@ -605,6 +719,7 @@ module Network.AWS.DeviceFarm
     , runLocation
     , runCreated
     , runLocale
+    , runTestSpecARN
     , runStopped
     , runResult
     , runJobTimeoutMinutes
@@ -621,6 +736,7 @@ module Network.AWS.DeviceFarm
     , runTotalJobs
     , runDevicePoolARN
     , runStarted
+    , runDeviceSelectionResult
 
     -- ** Sample
     , Sample
@@ -645,6 +761,7 @@ module Network.AWS.DeviceFarm
     -- ** ScheduleRunTest
     , ScheduleRunTest
     , scheduleRunTest
+    , srtTestSpecARN
     , srtTestPackageARN
     , srtParameters
     , srtFilter
@@ -665,6 +782,12 @@ module Network.AWS.DeviceFarm
     , sMessage
     , sStarted
 
+    -- ** Tag
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
+
     -- ** Test
     , Test
     , test
@@ -679,6 +802,40 @@ module Network.AWS.DeviceFarm
     , tType
     , tMessage
     , tStarted
+
+    -- ** TestGridProject
+    , TestGridProject
+    , testGridProject
+    , tgpArn
+    , tgpCreated
+    , tgpName
+    , tgpDescription
+
+    -- ** TestGridSession
+    , TestGridSession
+    , testGridSession
+    , tgsStatus
+    , tgsArn
+    , tgsCreated
+    , tgsBillingMinutes
+    , tgsEnded
+    , tgsSeleniumProperties
+
+    -- ** TestGridSessionAction
+    , TestGridSessionAction
+    , testGridSessionAction
+    , tgsaAction
+    , tgsaDuration
+    , tgsaRequestMethod
+    , tgsaStarted
+    , tgsaStatusCode
+
+    -- ** TestGridSessionArtifact
+    , TestGridSessionArtifact
+    , testGridSessionArtifact
+    , tgsaUrl
+    , tgsaType
+    , tgsaFilename
 
     -- ** TrialMinutes
     , TrialMinutes
@@ -698,6 +855,7 @@ module Network.AWS.DeviceFarm
     , uStatus
     , uArn
     , uCreated
+    , uCategory
     , uUrl
     , uName
     , uMetadata
@@ -720,6 +878,8 @@ import Network.AWS.DeviceFarm.CreateInstanceProfile
 import Network.AWS.DeviceFarm.CreateNetworkProfile
 import Network.AWS.DeviceFarm.CreateProject
 import Network.AWS.DeviceFarm.CreateRemoteAccessSession
+import Network.AWS.DeviceFarm.CreateTestGridProject
+import Network.AWS.DeviceFarm.CreateTestGridURL
 import Network.AWS.DeviceFarm.CreateUpload
 import Network.AWS.DeviceFarm.CreateVPCEConfiguration
 import Network.AWS.DeviceFarm.DeleteDevicePool
@@ -728,6 +888,7 @@ import Network.AWS.DeviceFarm.DeleteNetworkProfile
 import Network.AWS.DeviceFarm.DeleteProject
 import Network.AWS.DeviceFarm.DeleteRemoteAccessSession
 import Network.AWS.DeviceFarm.DeleteRun
+import Network.AWS.DeviceFarm.DeleteTestGridProject
 import Network.AWS.DeviceFarm.DeleteUpload
 import Network.AWS.DeviceFarm.DeleteVPCEConfiguration
 import Network.AWS.DeviceFarm.GetAccountSettings
@@ -744,6 +905,8 @@ import Network.AWS.DeviceFarm.GetRemoteAccessSession
 import Network.AWS.DeviceFarm.GetRun
 import Network.AWS.DeviceFarm.GetSuite
 import Network.AWS.DeviceFarm.GetTest
+import Network.AWS.DeviceFarm.GetTestGridProject
+import Network.AWS.DeviceFarm.GetTestGridSession
 import Network.AWS.DeviceFarm.GetUpload
 import Network.AWS.DeviceFarm.GetVPCEConfiguration
 import Network.AWS.DeviceFarm.InstallToRemoteAccessSession
@@ -762,6 +925,11 @@ import Network.AWS.DeviceFarm.ListRemoteAccessSessions
 import Network.AWS.DeviceFarm.ListRuns
 import Network.AWS.DeviceFarm.ListSamples
 import Network.AWS.DeviceFarm.ListSuites
+import Network.AWS.DeviceFarm.ListTagsForResource
+import Network.AWS.DeviceFarm.ListTestGridProjects
+import Network.AWS.DeviceFarm.ListTestGridSessionActions
+import Network.AWS.DeviceFarm.ListTestGridSessionArtifacts
+import Network.AWS.DeviceFarm.ListTestGridSessions
 import Network.AWS.DeviceFarm.ListTests
 import Network.AWS.DeviceFarm.ListUniqueProblems
 import Network.AWS.DeviceFarm.ListUploads
@@ -769,14 +937,19 @@ import Network.AWS.DeviceFarm.ListVPCEConfigurations
 import Network.AWS.DeviceFarm.PurchaseOffering
 import Network.AWS.DeviceFarm.RenewOffering
 import Network.AWS.DeviceFarm.ScheduleRun
+import Network.AWS.DeviceFarm.StopJob
 import Network.AWS.DeviceFarm.StopRemoteAccessSession
 import Network.AWS.DeviceFarm.StopRun
+import Network.AWS.DeviceFarm.TagResource
 import Network.AWS.DeviceFarm.Types
+import Network.AWS.DeviceFarm.UntagResource
 import Network.AWS.DeviceFarm.UpdateDeviceInstance
 import Network.AWS.DeviceFarm.UpdateDevicePool
 import Network.AWS.DeviceFarm.UpdateInstanceProfile
 import Network.AWS.DeviceFarm.UpdateNetworkProfile
 import Network.AWS.DeviceFarm.UpdateProject
+import Network.AWS.DeviceFarm.UpdateTestGridProject
+import Network.AWS.DeviceFarm.UpdateUpload
 import Network.AWS.DeviceFarm.UpdateVPCEConfiguration
 import Network.AWS.DeviceFarm.Waiters
 

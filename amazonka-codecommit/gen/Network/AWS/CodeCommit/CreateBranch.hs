@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a new branch in a repository and points the branch to a commit.
+-- Creates a branch in a repository and points the branch to a commit.
 --
 --
 module Network.AWS.CodeCommit.CreateBranch
@@ -48,11 +48,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createBranch' smart constructor.
-data CreateBranch = CreateBranch'
-  { _cbRepositoryName :: !Text
-  , _cbBranchName     :: !Text
-  , _cbCommitId       :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreateBranch =
+  CreateBranch'
+    { _cbRepositoryName :: !Text
+    , _cbBranchName     :: !Text
+    , _cbCommitId       :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateBranch' with the minimum fields required to make a request.

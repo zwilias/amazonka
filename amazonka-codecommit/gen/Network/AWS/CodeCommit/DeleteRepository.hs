@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes a repository. If a specified repository was already deleted, a null repository ID will be returned.
+-- Deletes a repository. If a specified repository was already deleted, a null repository ID is returned.
 --
 --
--- /Important:/ Deleting a repository also deletes all associated objects and metadata. After a repository is deleted, all future push calls to the deleted repository will fail.
+-- /Important:/ Deleting a repository also deletes all associated objects and metadata. After a repository is deleted, all future push calls to the deleted repository fail.
 --
 module Network.AWS.CodeCommit.DeleteRepository
     (
@@ -51,9 +51,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteRepository' smart constructor.
-newtype DeleteRepository = DeleteRepository'
-  { _drRepositoryName :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype DeleteRepository =
+  DeleteRepository'
+    { _drRepositoryName :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteRepository' with the minimum fields required to make a request.
@@ -112,10 +114,12 @@ instance ToQuery DeleteRepository where
 --
 --
 -- /See:/ 'deleteRepositoryResponse' smart constructor.
-data DeleteRepositoryResponse = DeleteRepositoryResponse'
-  { _drrsRepositoryId   :: !(Maybe Text)
-  , _drrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DeleteRepositoryResponse =
+  DeleteRepositoryResponse'
+    { _drrsRepositoryId   :: !(Maybe Text)
+    , _drrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteRepositoryResponse' with the minimum fields required to make a request.

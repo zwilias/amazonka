@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Enables single sign-on for a directory.
+-- Enables single sign-on for a directory. Single sign-on allows users in your directory to access certain AWS services from a computer joined to the directory without having to enter their credentials separately.
 --
 --
 module Network.AWS.DirectoryService.EnableSSO
@@ -50,11 +50,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'enableSSO' smart constructor.
-data EnableSSO = EnableSSO'
-  { _esUserName    :: !(Maybe Text)
-  , _esPassword    :: !(Maybe (Sensitive Text))
-  , _esDirectoryId :: !Text
-  } deriving (Eq, Show, Data, Typeable, Generic)
+data EnableSSO =
+  EnableSSO'
+    { _esUserName    :: !(Maybe Text)
+    , _esPassword    :: !(Maybe (Sensitive Text))
+    , _esDirectoryId :: !Text
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'EnableSSO' with the minimum fields required to make a request.
@@ -130,9 +132,11 @@ instance ToQuery EnableSSO where
 --
 --
 -- /See:/ 'enableSSOResponse' smart constructor.
-newtype EnableSSOResponse = EnableSSOResponse'
-  { _esrsResponseStatus :: Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype EnableSSOResponse =
+  EnableSSOResponse'
+    { _esrsResponseStatus :: Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'EnableSSOResponse' with the minimum fields required to make a request.

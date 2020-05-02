@@ -46,16 +46,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for DetachClassicLinkVpc.
---
---
---
--- /See:/ 'detachClassicLinkVPC' smart constructor.
-data DetachClassicLinkVPC = DetachClassicLinkVPC'
-  { _dclvDryRun     :: !(Maybe Bool)
-  , _dclvInstanceId :: !Text
-  , _dclvVPCId      :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'detachClassicLinkVPC' smart constructor.
+data DetachClassicLinkVPC =
+  DetachClassicLinkVPC'
+    { _dclvDryRun     :: !(Maybe Bool)
+    , _dclvInstanceId :: !Text
+    , _dclvVPCId      :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DetachClassicLinkVPC' with the minimum fields required to make a request.
@@ -120,15 +118,13 @@ instance ToQuery DetachClassicLinkVPC where
                "InstanceId" =: _dclvInstanceId,
                "VpcId" =: _dclvVPCId]
 
--- | Contains the output of DetachClassicLinkVpc.
---
---
---
--- /See:/ 'detachClassicLinkVPCResponse' smart constructor.
-data DetachClassicLinkVPCResponse = DetachClassicLinkVPCResponse'
-  { _dclvrsReturn         :: !(Maybe Bool)
-  , _dclvrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'detachClassicLinkVPCResponse' smart constructor.
+data DetachClassicLinkVPCResponse =
+  DetachClassicLinkVPCResponse'
+    { _dclvrsReturn         :: !(Maybe Bool)
+    , _dclvrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DetachClassicLinkVPCResponse' with the minimum fields required to make a request.

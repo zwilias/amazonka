@@ -51,19 +51,21 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createSubscriber' smart constructor.
-data CreateSubscriber = CreateSubscriber'
-  { _csAccountId    :: !Text
-  , _csBudgetName   :: !Text
-  , _csNotification :: !Notification
-  , _csSubscriber   :: !Subscriber
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreateSubscriber =
+  CreateSubscriber'
+    { _csAccountId    :: !Text
+    , _csBudgetName   :: !Text
+    , _csNotification :: !Notification
+    , _csSubscriber   :: !Subscriber
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateSubscriber' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'csAccountId' - The @accountId@ associated with the budget that you want to create a subscriber for.
+-- * 'csAccountId' - The @accountId@ that is associated with the budget that you want to create a subscriber for.
 --
 -- * 'csBudgetName' - The name of the budget that you want to subscribe to. Budget names must be unique within an account.
 --
@@ -85,7 +87,7 @@ createSubscriber pAccountId_ pBudgetName_ pNotification_ pSubscriber_ =
     }
 
 
--- | The @accountId@ associated with the budget that you want to create a subscriber for.
+-- | The @accountId@ that is associated with the budget that you want to create a subscriber for.
 csAccountId :: Lens' CreateSubscriber Text
 csAccountId = lens _csAccountId (\ s a -> s{_csAccountId = a})
 
@@ -143,9 +145,11 @@ instance ToQuery CreateSubscriber where
 --
 --
 -- /See:/ 'createSubscriberResponse' smart constructor.
-newtype CreateSubscriberResponse = CreateSubscriberResponse'
-  { _csrsResponseStatus :: Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype CreateSubscriberResponse =
+  CreateSubscriberResponse'
+    { _csrsResponseStatus :: Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateSubscriberResponse' with the minimum fields required to make a request.

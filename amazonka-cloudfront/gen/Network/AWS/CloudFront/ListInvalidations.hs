@@ -54,11 +54,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listInvalidations' smart constructor.
-data ListInvalidations = ListInvalidations'
-  { _liMarker         :: !(Maybe Text)
-  , _liMaxItems       :: !(Maybe Text)
-  , _liDistributionId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListInvalidations =
+  ListInvalidations'
+    { _liMarker         :: !(Maybe Text)
+    , _liMaxItems       :: !(Maybe Text)
+    , _liDistributionId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListInvalidations' with the minimum fields required to make a request.
@@ -124,7 +126,7 @@ instance ToHeaders ListInvalidations where
 instance ToPath ListInvalidations where
         toPath ListInvalidations'{..}
           = mconcat
-              ["/2017-10-30/distribution/", toBS _liDistributionId,
+              ["/2019-03-26/distribution/", toBS _liDistributionId,
                "/invalidation"]
 
 instance ToQuery ListInvalidations where
@@ -137,10 +139,12 @@ instance ToQuery ListInvalidations where
 --
 --
 -- /See:/ 'listInvalidationsResponse' smart constructor.
-data ListInvalidationsResponse = ListInvalidationsResponse'
-  { _lirsResponseStatus   :: !Int
-  , _lirsInvalidationList :: !InvalidationList
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListInvalidationsResponse =
+  ListInvalidationsResponse'
+    { _lirsResponseStatus   :: !Int
+    , _lirsInvalidationList :: !InvalidationList
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListInvalidationsResponse' with the minimum fields required to make a request.

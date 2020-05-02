@@ -51,18 +51,20 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'modifyReplicationSubnetGroup' smart constructor.
-data ModifyReplicationSubnetGroup = ModifyReplicationSubnetGroup'
-  { _mrsgReplicationSubnetGroupDescription :: !(Maybe Text)
-  , _mrsgReplicationSubnetGroupIdentifier  :: !Text
-  , _mrsgSubnetIds                         :: ![Text]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ModifyReplicationSubnetGroup =
+  ModifyReplicationSubnetGroup'
+    { _mrsgReplicationSubnetGroupDescription :: !(Maybe Text)
+    , _mrsgReplicationSubnetGroupIdentifier  :: !Text
+    , _mrsgSubnetIds                         :: ![Text]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ModifyReplicationSubnetGroup' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'mrsgReplicationSubnetGroupDescription' - The description of the replication instance subnet group.
+-- * 'mrsgReplicationSubnetGroupDescription' - A description for the replication instance subnet group.
 --
 -- * 'mrsgReplicationSubnetGroupIdentifier' - The name of the replication instance subnet group.
 --
@@ -78,7 +80,7 @@ modifyReplicationSubnetGroup pReplicationSubnetGroupIdentifier_ =
     }
 
 
--- | The description of the replication instance subnet group.
+-- | A description for the replication instance subnet group.
 mrsgReplicationSubnetGroupDescription :: Lens' ModifyReplicationSubnetGroup (Maybe Text)
 mrsgReplicationSubnetGroupDescription = lens _mrsgReplicationSubnetGroupDescription (\ s a -> s{_mrsgReplicationSubnetGroupDescription = a})
 
@@ -138,10 +140,12 @@ instance ToQuery ModifyReplicationSubnetGroup where
 --
 --
 -- /See:/ 'modifyReplicationSubnetGroupResponse' smart constructor.
-data ModifyReplicationSubnetGroupResponse = ModifyReplicationSubnetGroupResponse'
-  { _mrsgrsReplicationSubnetGroup :: !(Maybe ReplicationSubnetGroup)
-  , _mrsgrsResponseStatus         :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ModifyReplicationSubnetGroupResponse =
+  ModifyReplicationSubnetGroupResponse'
+    { _mrsgrsReplicationSubnetGroup :: !(Maybe ReplicationSubnetGroup)
+    , _mrsgrsResponseStatus         :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ModifyReplicationSubnetGroupResponse' with the minimum fields required to make a request.

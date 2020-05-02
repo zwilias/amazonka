@@ -48,28 +48,30 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Represents the input of a PutActionRevision action.
+-- | Represents the input of a @PutActionRevision@ action.
 --
 --
 --
 -- /See:/ 'putActionRevision' smart constructor.
-data PutActionRevision = PutActionRevision'
-  { _pPipelineName   :: !Text
-  , _pStageName      :: !Text
-  , _pActionName     :: !Text
-  , _pActionRevision :: !ActionRevision
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data PutActionRevision =
+  PutActionRevision'
+    { _pPipelineName   :: !Text
+    , _pStageName      :: !Text
+    , _pActionName     :: !Text
+    , _pActionRevision :: !ActionRevision
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'PutActionRevision' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pPipelineName' - The name of the pipeline that will start processing the revision to the source.
+-- * 'pPipelineName' - The name of the pipeline that starts processing the revision to the source.
 --
--- * 'pStageName' - The name of the stage that contains the action that will act upon the revision.
+-- * 'pStageName' - The name of the stage that contains the action that acts on the revision.
 --
--- * 'pActionName' - The name of the action that will process the revision.
+-- * 'pActionName' - The name of the action that processes the revision.
 --
 -- * 'pActionRevision' - Represents information about the version (or revision) of an action.
 putActionRevision
@@ -87,15 +89,15 @@ putActionRevision pPipelineName_ pStageName_ pActionName_ pActionRevision_ =
     }
 
 
--- | The name of the pipeline that will start processing the revision to the source.
+-- | The name of the pipeline that starts processing the revision to the source.
 pPipelineName :: Lens' PutActionRevision Text
 pPipelineName = lens _pPipelineName (\ s a -> s{_pPipelineName = a})
 
--- | The name of the stage that contains the action that will act upon the revision.
+-- | The name of the stage that contains the action that acts on the revision.
 pStageName :: Lens' PutActionRevision Text
 pStageName = lens _pStageName (\ s a -> s{_pStageName = a})
 
--- | The name of the action that will process the revision.
+-- | The name of the action that processes the revision.
 pActionName :: Lens' PutActionRevision Text
 pActionName = lens _pActionName (\ s a -> s{_pActionName = a})
 
@@ -143,16 +145,18 @@ instance ToPath PutActionRevision where
 instance ToQuery PutActionRevision where
         toQuery = const mempty
 
--- | Represents the output of a PutActionRevision action.
+-- | Represents the output of a @PutActionRevision@ action.
 --
 --
 --
 -- /See:/ 'putActionRevisionResponse' smart constructor.
-data PutActionRevisionResponse = PutActionRevisionResponse'
-  { _prsNewRevision         :: !(Maybe Bool)
-  , _prsPipelineExecutionId :: !(Maybe Text)
-  , _prsResponseStatus      :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data PutActionRevisionResponse =
+  PutActionRevisionResponse'
+    { _prsNewRevision         :: !(Maybe Bool)
+    , _prsPipelineExecutionId :: !(Maybe Text)
+    , _prsResponseStatus      :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'PutActionRevisionResponse' with the minimum fields required to make a request.

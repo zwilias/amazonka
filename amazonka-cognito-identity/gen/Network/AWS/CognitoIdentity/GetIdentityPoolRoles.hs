@@ -53,9 +53,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getIdentityPoolRoles' smart constructor.
-newtype GetIdentityPoolRoles = GetIdentityPoolRoles'
-  { _giprIdentityPoolId :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype GetIdentityPoolRoles =
+  GetIdentityPoolRoles'
+    { _giprIdentityPoolId :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetIdentityPoolRoles' with the minimum fields required to make a request.
@@ -118,12 +120,14 @@ instance ToQuery GetIdentityPoolRoles where
 --
 --
 -- /See:/ 'getIdentityPoolRolesResponse' smart constructor.
-data GetIdentityPoolRolesResponse = GetIdentityPoolRolesResponse'
-  { _giprrsRoles          :: !(Maybe (Map Text Text))
-  , _giprrsIdentityPoolId :: !(Maybe Text)
-  , _giprrsRoleMappings   :: !(Maybe (Map Text RoleMapping))
-  , _giprrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetIdentityPoolRolesResponse =
+  GetIdentityPoolRolesResponse'
+    { _giprrsRoles          :: !(Maybe (Map Text Text))
+    , _giprrsIdentityPoolId :: !(Maybe Text)
+    , _giprrsRoleMappings   :: !(Maybe (Map Text RoleMapping))
+    , _giprrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetIdentityPoolRolesResponse' with the minimum fields required to make a request.
@@ -134,7 +138,7 @@ data GetIdentityPoolRolesResponse = GetIdentityPoolRolesResponse'
 --
 -- * 'giprrsIdentityPoolId' - An identity pool ID in the format REGION:GUID.
 --
--- * 'giprrsRoleMappings' - How users for a specific identity provider are to mapped to roles. This is a String-to-'RoleMapping' object map. The string identifies the identity provider, for example, "graph.facebook.com" or "cognito-idp-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".
+-- * 'giprrsRoleMappings' - How users for a specific identity provider are to mapped to roles. This is a String-to-'RoleMapping' object map. The string identifies the identity provider, for example, "graph.facebook.com" or "cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".
 --
 -- * 'giprrsResponseStatus' - -- | The response status code.
 getIdentityPoolRolesResponse
@@ -157,7 +161,7 @@ giprrsRoles = lens _giprrsRoles (\ s a -> s{_giprrsRoles = a}) . _Default . _Map
 giprrsIdentityPoolId :: Lens' GetIdentityPoolRolesResponse (Maybe Text)
 giprrsIdentityPoolId = lens _giprrsIdentityPoolId (\ s a -> s{_giprrsIdentityPoolId = a})
 
--- | How users for a specific identity provider are to mapped to roles. This is a String-to-'RoleMapping' object map. The string identifies the identity provider, for example, "graph.facebook.com" or "cognito-idp-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".
+-- | How users for a specific identity provider are to mapped to roles. This is a String-to-'RoleMapping' object map. The string identifies the identity provider, for example, "graph.facebook.com" or "cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".
 giprrsRoleMappings :: Lens' GetIdentityPoolRolesResponse (HashMap Text RoleMapping)
 giprrsRoleMappings = lens _giprrsRoleMappings (\ s a -> s{_giprrsRoleMappings = a}) . _Default . _Map
 

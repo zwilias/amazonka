@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Determines the dominant language of the input text. For a list of languages that Amazon Comprehend can detect, see <http://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html Amazon Comprehend Supported Languages> .
+-- Determines the dominant language of the input text. For a list of languages that Amazon Comprehend can detect, see <https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html Amazon Comprehend Supported Languages> .
 --
 --
 module Network.AWS.Comprehend.DetectDominantLanguage
@@ -45,9 +45,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'detectDominantLanguage' smart constructor.
-newtype DetectDominantLanguage = DetectDominantLanguage'
-  { _ddlText :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype DetectDominantLanguage =
+  DetectDominantLanguage'
+    { _ddlText :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DetectDominantLanguage' with the minimum fields required to make a request.
@@ -101,10 +103,12 @@ instance ToQuery DetectDominantLanguage where
         toQuery = const mempty
 
 -- | /See:/ 'detectDominantLanguageResponse' smart constructor.
-data DetectDominantLanguageResponse = DetectDominantLanguageResponse'
-  { _ddlrsLanguages      :: !(Maybe [DominantLanguage])
-  , _ddlrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DetectDominantLanguageResponse =
+  DetectDominantLanguageResponse'
+    { _ddlrsLanguages      :: !(Maybe [DominantLanguage])
+    , _ddlrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DetectDominantLanguageResponse' with the minimum fields required to make a request.

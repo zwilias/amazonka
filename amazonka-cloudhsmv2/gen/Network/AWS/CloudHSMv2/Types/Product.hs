@@ -21,26 +21,46 @@ import Network.AWS.CloudHSMv2.Types.Sum
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Contains information about a backup of an AWS CloudHSM cluster.
+-- | Contains information about a backup of an AWS CloudHSM cluster. All backup objects contain the BackupId, BackupState, ClusterId, and CreateTimestamp parameters. Backups that were copied into a destination region additionally contain the CopyTimestamp, SourceBackup, SourceCluster, and SourceRegion paramters. A backup that is pending deletion will include the DeleteTimestamp parameter.
 --
 --
 --
 -- /See:/ 'backup' smart constructor.
-data Backup = Backup'
-  { _bClusterId       :: !(Maybe Text)
-  , _bCreateTimestamp :: !(Maybe POSIX)
-  , _bBackupState     :: !(Maybe BackupState)
-  , _bBackupId        :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Backup =
+  Backup'
+    { _bDeleteTimestamp :: !(Maybe POSIX)
+    , _bSourceCluster   :: !(Maybe Text)
+    , _bSourceRegion    :: !(Maybe Text)
+    , _bTagList         :: !(Maybe [Tag])
+    , _bSourceBackup    :: !(Maybe Text)
+    , _bClusterId       :: !(Maybe Text)
+    , _bCreateTimestamp :: !(Maybe POSIX)
+    , _bCopyTimestamp   :: !(Maybe POSIX)
+    , _bBackupState     :: !(Maybe BackupState)
+    , _bBackupId        :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Backup' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'bDeleteTimestamp' - The date and time when the backup will be permanently deleted.
+--
+-- * 'bSourceCluster' - The identifier (ID) of the cluster containing the source backup from which the new backup was copied. .
+--
+-- * 'bSourceRegion' - The AWS region that contains the source backup from which the new backup was copied.
+--
+-- * 'bTagList' - Undocumented member.
+--
+-- * 'bSourceBackup' - The identifier (ID) of the source backup from which the new backup was copied.
+--
 -- * 'bClusterId' - The identifier (ID) of the cluster that was backed up.
 --
 -- * 'bCreateTimestamp' - The date and time when the backup was created.
+--
+-- * 'bCopyTimestamp' - The date and time when the backup was copied from a source backup.
 --
 -- * 'bBackupState' - The state of the backup.
 --
@@ -50,12 +70,38 @@ backup
     -> Backup
 backup pBackupId_ =
   Backup'
-    { _bClusterId = Nothing
+    { _bDeleteTimestamp = Nothing
+    , _bSourceCluster = Nothing
+    , _bSourceRegion = Nothing
+    , _bTagList = Nothing
+    , _bSourceBackup = Nothing
+    , _bClusterId = Nothing
     , _bCreateTimestamp = Nothing
+    , _bCopyTimestamp = Nothing
     , _bBackupState = Nothing
     , _bBackupId = pBackupId_
     }
 
+
+-- | The date and time when the backup will be permanently deleted.
+bDeleteTimestamp :: Lens' Backup (Maybe UTCTime)
+bDeleteTimestamp = lens _bDeleteTimestamp (\ s a -> s{_bDeleteTimestamp = a}) . mapping _Time
+
+-- | The identifier (ID) of the cluster containing the source backup from which the new backup was copied. .
+bSourceCluster :: Lens' Backup (Maybe Text)
+bSourceCluster = lens _bSourceCluster (\ s a -> s{_bSourceCluster = a})
+
+-- | The AWS region that contains the source backup from which the new backup was copied.
+bSourceRegion :: Lens' Backup (Maybe Text)
+bSourceRegion = lens _bSourceRegion (\ s a -> s{_bSourceRegion = a})
+
+-- | Undocumented member.
+bTagList :: Lens' Backup [Tag]
+bTagList = lens _bTagList (\ s a -> s{_bTagList = a}) . _Default . _Coerce
+
+-- | The identifier (ID) of the source backup from which the new backup was copied.
+bSourceBackup :: Lens' Backup (Maybe Text)
+bSourceBackup = lens _bSourceBackup (\ s a -> s{_bSourceBackup = a})
 
 -- | The identifier (ID) of the cluster that was backed up.
 bClusterId :: Lens' Backup (Maybe Text)
@@ -64,6 +110,10 @@ bClusterId = lens _bClusterId (\ s a -> s{_bClusterId = a})
 -- | The date and time when the backup was created.
 bCreateTimestamp :: Lens' Backup (Maybe UTCTime)
 bCreateTimestamp = lens _bCreateTimestamp (\ s a -> s{_bCreateTimestamp = a}) . mapping _Time
+
+-- | The date and time when the backup was copied from a source backup.
+bCopyTimestamp :: Lens' Backup (Maybe UTCTime)
+bCopyTimestamp = lens _bCopyTimestamp (\ s a -> s{_bCopyTimestamp = a}) . mapping _Time
 
 -- | The state of the backup.
 bBackupState :: Lens' Backup (Maybe BackupState)
@@ -78,8 +128,14 @@ instance FromJSON Backup where
           = withObject "Backup"
               (\ x ->
                  Backup' <$>
-                   (x .:? "ClusterId") <*> (x .:? "CreateTimestamp") <*>
-                     (x .:? "BackupState")
+                   (x .:? "DeleteTimestamp") <*> (x .:? "SourceCluster")
+                     <*> (x .:? "SourceRegion")
+                     <*> (x .:? "TagList" .!= mempty)
+                     <*> (x .:? "SourceBackup")
+                     <*> (x .:? "ClusterId")
+                     <*> (x .:? "CreateTimestamp")
+                     <*> (x .:? "CopyTimestamp")
+                     <*> (x .:? "BackupState")
                      <*> (x .: "BackupId"))
 
 instance Hashable Backup where
@@ -91,13 +147,15 @@ instance NFData Backup where
 --
 --
 -- /See:/ 'certificates' smart constructor.
-data Certificates = Certificates'
-  { _cManufacturerHardwareCertificate :: !(Maybe Text)
-  , _cClusterCSR                      :: !(Maybe Text)
-  , _cHSMCertificate                  :: !(Maybe Text)
-  , _cClusterCertificate              :: !(Maybe Text)
-  , _cAWSHardwareCertificate          :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Certificates =
+  Certificates'
+    { _cManufacturerHardwareCertificate :: !(Maybe Text)
+    , _cClusterCSR                      :: !(Maybe Text)
+    , _cHSMCertificate                  :: !(Maybe Text)
+    , _cClusterCertificate              :: !(Maybe Text)
+    , _cAWSHardwareCertificate          :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Certificates' with the minimum fields required to make a request.
@@ -165,21 +223,24 @@ instance NFData Certificates where
 --
 --
 -- /See:/ 'cluster' smart constructor.
-data Cluster = Cluster'
-  { _cPreCoPassword   :: !(Maybe Text)
-  , _cStateMessage    :: !(Maybe Text)
-  , _cState           :: !(Maybe ClusterState)
-  , _cSubnetMapping   :: !(Maybe (Map Text Text))
-  , _cHSMs            :: !(Maybe [HSM])
-  , _cVPCId           :: !(Maybe Text)
-  , _cSourceBackupId  :: !(Maybe Text)
-  , _cCertificates    :: !(Maybe Certificates)
-  , _cSecurityGroup   :: !(Maybe Text)
-  , _cClusterId       :: !(Maybe Text)
-  , _cCreateTimestamp :: !(Maybe POSIX)
-  , _cBackupPolicy    :: !(Maybe BackupPolicy)
-  , _cHSMType         :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Cluster =
+  Cluster'
+    { _cPreCoPassword   :: !(Maybe Text)
+    , _cStateMessage    :: !(Maybe Text)
+    , _cState           :: !(Maybe ClusterState)
+    , _cSubnetMapping   :: !(Maybe (Map Text Text))
+    , _cHSMs            :: !(Maybe [HSM])
+    , _cVPCId           :: !(Maybe Text)
+    , _cTagList         :: !(Maybe [Tag])
+    , _cSourceBackupId  :: !(Maybe Text)
+    , _cCertificates    :: !(Maybe Certificates)
+    , _cSecurityGroup   :: !(Maybe Text)
+    , _cClusterId       :: !(Maybe Text)
+    , _cCreateTimestamp :: !(Maybe POSIX)
+    , _cBackupPolicy    :: !(Maybe BackupPolicy)
+    , _cHSMType         :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Cluster' with the minimum fields required to make a request.
@@ -192,11 +253,13 @@ data Cluster = Cluster'
 --
 -- * 'cState' - The cluster's state.
 --
--- * 'cSubnetMapping' - A map of the cluster's subnets and their corresponding Availability Zones.
+-- * 'cSubnetMapping' - A map from availability zone to the cluster’s subnet in that availability zone.
 --
 -- * 'cHSMs' - Contains information about the HSMs in the cluster.
 --
 -- * 'cVPCId' - The identifier (ID) of the virtual private cloud (VPC) that contains the cluster.
+--
+-- * 'cTagList' - Undocumented member.
 --
 -- * 'cSourceBackupId' - The identifier (ID) of the backup used to create the cluster. This value exists only when the cluster was created from a backup.
 --
@@ -221,6 +284,7 @@ cluster =
     , _cSubnetMapping = Nothing
     , _cHSMs = Nothing
     , _cVPCId = Nothing
+    , _cTagList = Nothing
     , _cSourceBackupId = Nothing
     , _cCertificates = Nothing
     , _cSecurityGroup = Nothing
@@ -243,7 +307,7 @@ cStateMessage = lens _cStateMessage (\ s a -> s{_cStateMessage = a})
 cState :: Lens' Cluster (Maybe ClusterState)
 cState = lens _cState (\ s a -> s{_cState = a})
 
--- | A map of the cluster's subnets and their corresponding Availability Zones.
+-- | A map from availability zone to the cluster’s subnet in that availability zone.
 cSubnetMapping :: Lens' Cluster (HashMap Text Text)
 cSubnetMapping = lens _cSubnetMapping (\ s a -> s{_cSubnetMapping = a}) . _Default . _Map
 
@@ -254,6 +318,10 @@ cHSMs = lens _cHSMs (\ s a -> s{_cHSMs = a}) . _Default . _Coerce
 -- | The identifier (ID) of the virtual private cloud (VPC) that contains the cluster.
 cVPCId :: Lens' Cluster (Maybe Text)
 cVPCId = lens _cVPCId (\ s a -> s{_cVPCId = a})
+
+-- | Undocumented member.
+cTagList :: Lens' Cluster [Tag]
+cTagList = lens _cTagList (\ s a -> s{_cTagList = a}) . _Default . _Coerce
 
 -- | The identifier (ID) of the backup used to create the cluster. This value exists only when the cluster was created from a backup.
 cSourceBackupId :: Lens' Cluster (Maybe Text)
@@ -293,6 +361,7 @@ instance FromJSON Cluster where
                      <*> (x .:? "SubnetMapping" .!= mempty)
                      <*> (x .:? "Hsms" .!= mempty)
                      <*> (x .:? "VpcId")
+                     <*> (x .:? "TagList" .!= mempty)
                      <*> (x .:? "SourceBackupId")
                      <*> (x .:? "Certificates")
                      <*> (x .:? "SecurityGroup")
@@ -305,21 +374,89 @@ instance Hashable Cluster where
 
 instance NFData Cluster where
 
+-- | Contains information about the backup that will be copied and created by the 'CopyBackupToRegion' operation.
+--
+--
+--
+-- /See:/ 'destinationBackup' smart constructor.
+data DestinationBackup =
+  DestinationBackup'
+    { _dbSourceCluster   :: !(Maybe Text)
+    , _dbSourceRegion    :: !(Maybe Text)
+    , _dbSourceBackup    :: !(Maybe Text)
+    , _dbCreateTimestamp :: !(Maybe POSIX)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'DestinationBackup' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'dbSourceCluster' - The identifier (ID) of the cluster containing the source backup from which the new backup was copied.
+--
+-- * 'dbSourceRegion' - The AWS region that contains the source backup from which the new backup was copied.
+--
+-- * 'dbSourceBackup' - The identifier (ID) of the source backup from which the new backup was copied.
+--
+-- * 'dbCreateTimestamp' - The date and time when both the source backup was created.
+destinationBackup
+    :: DestinationBackup
+destinationBackup =
+  DestinationBackup'
+    { _dbSourceCluster = Nothing
+    , _dbSourceRegion = Nothing
+    , _dbSourceBackup = Nothing
+    , _dbCreateTimestamp = Nothing
+    }
+
+
+-- | The identifier (ID) of the cluster containing the source backup from which the new backup was copied.
+dbSourceCluster :: Lens' DestinationBackup (Maybe Text)
+dbSourceCluster = lens _dbSourceCluster (\ s a -> s{_dbSourceCluster = a})
+
+-- | The AWS region that contains the source backup from which the new backup was copied.
+dbSourceRegion :: Lens' DestinationBackup (Maybe Text)
+dbSourceRegion = lens _dbSourceRegion (\ s a -> s{_dbSourceRegion = a})
+
+-- | The identifier (ID) of the source backup from which the new backup was copied.
+dbSourceBackup :: Lens' DestinationBackup (Maybe Text)
+dbSourceBackup = lens _dbSourceBackup (\ s a -> s{_dbSourceBackup = a})
+
+-- | The date and time when both the source backup was created.
+dbCreateTimestamp :: Lens' DestinationBackup (Maybe UTCTime)
+dbCreateTimestamp = lens _dbCreateTimestamp (\ s a -> s{_dbCreateTimestamp = a}) . mapping _Time
+
+instance FromJSON DestinationBackup where
+        parseJSON
+          = withObject "DestinationBackup"
+              (\ x ->
+                 DestinationBackup' <$>
+                   (x .:? "SourceCluster") <*> (x .:? "SourceRegion")
+                     <*> (x .:? "SourceBackup")
+                     <*> (x .:? "CreateTimestamp"))
+
+instance Hashable DestinationBackup where
+
+instance NFData DestinationBackup where
+
 -- | Contains information about a hardware security module (HSM) in an AWS CloudHSM cluster.
 --
 --
 --
 -- /See:/ 'hsm' smart constructor.
-data HSM = HSM'
-  { _hsmStateMessage     :: !(Maybe Text)
-  , _hsmState            :: !(Maybe HSMState)
-  , _hsmEniId            :: !(Maybe Text)
-  , _hsmSubnetId         :: !(Maybe Text)
-  , _hsmAvailabilityZone :: !(Maybe Text)
-  , _hsmClusterId        :: !(Maybe Text)
-  , _hsmEniIP            :: !(Maybe Text)
-  , _hsmHSMId            :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data HSM =
+  HSM'
+    { _hsmStateMessage     :: !(Maybe Text)
+    , _hsmState            :: !(Maybe HSMState)
+    , _hsmEniId            :: !(Maybe Text)
+    , _hsmSubnetId         :: !(Maybe Text)
+    , _hsmAvailabilityZone :: !(Maybe Text)
+    , _hsmClusterId        :: !(Maybe Text)
+    , _hsmEniIP            :: !(Maybe Text)
+    , _hsmHSMId            :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'HSM' with the minimum fields required to make a request.
@@ -411,10 +548,12 @@ instance NFData HSM where
 --
 --
 -- /See:/ 'tag' smart constructor.
-data Tag = Tag'
-  { _tagKey   :: !Text
-  , _tagValue :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Tag =
+  Tag'
+    { _tagKey   :: !Text
+    , _tagValue :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Tag' with the minimum fields required to make a request.

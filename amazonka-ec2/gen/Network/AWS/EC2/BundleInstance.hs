@@ -23,8 +23,6 @@
 --
 -- During bundling, only the root device volume (C:\) is bundled. Data on other instance store volumes is not preserved.
 --
--- For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/Creating_InstanceStoreBacked_WinAMI.html Creating an Instance Store-Backed Windows AMI> .
---
 module Network.AWS.EC2.BundleInstance
     (
     -- * Creating a Request
@@ -55,11 +53,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'bundleInstance' smart constructor.
-data BundleInstance = BundleInstance'
-  { _biDryRun     :: !(Maybe Bool)
-  , _biInstanceId :: !Text
-  , _biStorage    :: !Storage
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BundleInstance =
+  BundleInstance'
+    { _biDryRun     :: !(Maybe Bool)
+    , _biInstanceId :: !Text
+    , _biStorage    :: !Storage
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BundleInstance' with the minimum fields required to make a request.
@@ -124,10 +124,12 @@ instance ToQuery BundleInstance where
 --
 --
 -- /See:/ 'bundleInstanceResponse' smart constructor.
-data BundleInstanceResponse = BundleInstanceResponse'
-  { _birsBundleTask     :: !(Maybe BundleTask)
-  , _birsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BundleInstanceResponse =
+  BundleInstanceResponse'
+    { _birsBundleTask     :: !(Maybe BundleTask)
+    , _birsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BundleInstanceResponse' with the minimum fields required to make a request.

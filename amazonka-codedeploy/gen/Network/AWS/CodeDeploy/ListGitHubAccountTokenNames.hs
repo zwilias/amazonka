@@ -21,6 +21,8 @@
 -- Lists the names of stored connections to GitHub accounts.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.CodeDeploy.ListGitHubAccountTokenNames
     (
     -- * Creating a Request
@@ -41,6 +43,7 @@ module Network.AWS.CodeDeploy.ListGitHubAccountTokenNames
 import Network.AWS.CodeDeploy.Types
 import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -50,9 +53,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listGitHubAccountTokenNames' smart constructor.
-newtype ListGitHubAccountTokenNames = ListGitHubAccountTokenNames'
-  { _lghatnNextToken :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype ListGitHubAccountTokenNames =
+  ListGitHubAccountTokenNames'
+    { _lghatnNextToken :: Maybe Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListGitHubAccountTokenNames' with the minimum fields required to make a request.
@@ -69,6 +74,14 @@ listGitHubAccountTokenNames =
 -- | An identifier returned from the previous ListGitHubAccountTokenNames call. It can be used to return the next set of names in the list.
 lghatnNextToken :: Lens' ListGitHubAccountTokenNames (Maybe Text)
 lghatnNextToken = lens _lghatnNextToken (\ s a -> s{_lghatnNextToken = a})
+
+instance AWSPager ListGitHubAccountTokenNames where
+        page rq rs
+          | stop (rs ^. lghatnrsNextToken) = Nothing
+          | stop (rs ^. lghatnrsTokenNameList) = Nothing
+          | otherwise =
+            Just $ rq &
+              lghatnNextToken .~ rs ^. lghatnrsNextToken
 
 instance AWSRequest ListGitHubAccountTokenNames where
         type Rs ListGitHubAccountTokenNames =
@@ -112,11 +125,13 @@ instance ToQuery ListGitHubAccountTokenNames where
 --
 --
 -- /See:/ 'listGitHubAccountTokenNamesResponse' smart constructor.
-data ListGitHubAccountTokenNamesResponse = ListGitHubAccountTokenNamesResponse'
-  { _lghatnrsTokenNameList  :: !(Maybe [Text])
-  , _lghatnrsNextToken      :: !(Maybe Text)
-  , _lghatnrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListGitHubAccountTokenNamesResponse =
+  ListGitHubAccountTokenNamesResponse'
+    { _lghatnrsTokenNameList  :: !(Maybe [Text])
+    , _lghatnrsNextToken      :: !(Maybe Text)
+    , _lghatnrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListGitHubAccountTokenNamesResponse' with the minimum fields required to make a request.

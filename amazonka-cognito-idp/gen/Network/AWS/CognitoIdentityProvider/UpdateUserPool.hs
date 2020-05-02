@@ -18,8 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates the specified user pool with the specified attributes.
+-- Updates the specified user pool with the specified attributes. You can get a list of the current user pool settings with .
 --
+--
+-- /Important:/ If you don't provide a value for an attribute, it will be set to the default value.
 --
 module Network.AWS.CognitoIdentityProvider.UpdateUserPool
     (
@@ -33,6 +35,7 @@ module Network.AWS.CognitoIdentityProvider.UpdateUserPool
     , uupSmsAuthenticationMessage
     , uupUserPoolAddOns
     , uupEmailVerificationSubject
+    , uupAccountRecoverySetting
     , uupEmailConfiguration
     , uupSmsVerificationMessage
     , uupMFAConfiguration
@@ -63,31 +66,34 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateUserPool' smart constructor.
-data UpdateUserPool = UpdateUserPool'
-  { _uupUserPoolTags                :: !(Maybe (Map Text Text))
-  , _uupVerificationMessageTemplate :: !(Maybe VerificationMessageTemplateType)
-  , _uupEmailVerificationMessage    :: !(Maybe Text)
-  , _uupSmsAuthenticationMessage    :: !(Maybe Text)
-  , _uupUserPoolAddOns              :: !(Maybe UserPoolAddOnsType)
-  , _uupEmailVerificationSubject    :: !(Maybe Text)
-  , _uupEmailConfiguration          :: !(Maybe EmailConfigurationType)
-  , _uupSmsVerificationMessage      :: !(Maybe Text)
-  , _uupMFAConfiguration            :: !(Maybe UserPoolMFAType)
-  , _uupLambdaConfig                :: !(Maybe LambdaConfigType)
-  , _uupSmsConfiguration            :: !(Maybe SmsConfigurationType)
-  , _uupAdminCreateUserConfig       :: !(Maybe AdminCreateUserConfigType)
-  , _uupDeviceConfiguration         :: !(Maybe DeviceConfigurationType)
-  , _uupAutoVerifiedAttributes      :: !(Maybe [VerifiedAttributeType])
-  , _uupPolicies                    :: !(Maybe UserPoolPolicyType)
-  , _uupUserPoolId                  :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data UpdateUserPool =
+  UpdateUserPool'
+    { _uupUserPoolTags :: !(Maybe (Map Text Text))
+    , _uupVerificationMessageTemplate :: !(Maybe VerificationMessageTemplateType)
+    , _uupEmailVerificationMessage :: !(Maybe Text)
+    , _uupSmsAuthenticationMessage :: !(Maybe Text)
+    , _uupUserPoolAddOns :: !(Maybe UserPoolAddOnsType)
+    , _uupEmailVerificationSubject :: !(Maybe Text)
+    , _uupAccountRecoverySetting :: !(Maybe AccountRecoverySettingType)
+    , _uupEmailConfiguration :: !(Maybe EmailConfigurationType)
+    , _uupSmsVerificationMessage :: !(Maybe Text)
+    , _uupMFAConfiguration :: !(Maybe UserPoolMFAType)
+    , _uupLambdaConfig :: !(Maybe LambdaConfigType)
+    , _uupSmsConfiguration :: !(Maybe SmsConfigurationType)
+    , _uupAdminCreateUserConfig :: !(Maybe AdminCreateUserConfigType)
+    , _uupDeviceConfiguration :: !(Maybe DeviceConfigurationType)
+    , _uupAutoVerifiedAttributes :: !(Maybe [VerifiedAttributeType])
+    , _uupPolicies :: !(Maybe UserPoolPolicyType)
+    , _uupUserPoolId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UpdateUserPool' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'uupUserPoolTags' - The cost allocation tags for the user pool. For more information, see <http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html Adding Cost Allocation Tags to Your User Pool>
+-- * 'uupUserPoolTags' - The tag keys and values to assign to the user pool. A tag is a label that you can use to categorize and manage user pools in different ways, such as by purpose, owner, environment, or other criteria.
 --
 -- * 'uupVerificationMessageTemplate' - The template for verification messages.
 --
@@ -98,6 +104,8 @@ data UpdateUserPool = UpdateUserPool'
 -- * 'uupUserPoolAddOns' - Used to enable advanced security risk detection. Set the key @AdvancedSecurityMode@ to the value "AUDIT".
 --
 -- * 'uupEmailVerificationSubject' - The subject of the email verification message.
+--
+-- * 'uupAccountRecoverySetting' - Use this setting to define which verified available method a user can use to recover their password when they call @ForgotPassword@ . It allows you to define a preferred method when a user has more than one method available. With this setting, SMS does not qualify for a valid password recovery mechanism if the user also has SMS MFA enabled. In the absence of this setting, Cognito uses the legacy behavior to determine the recovery method where SMS is preferred over email.
 --
 -- * 'uupEmailConfiguration' - Email configuration.
 --
@@ -129,6 +137,7 @@ updateUserPool pUserPoolId_ =
     , _uupSmsAuthenticationMessage = Nothing
     , _uupUserPoolAddOns = Nothing
     , _uupEmailVerificationSubject = Nothing
+    , _uupAccountRecoverySetting = Nothing
     , _uupEmailConfiguration = Nothing
     , _uupSmsVerificationMessage = Nothing
     , _uupMFAConfiguration = Nothing
@@ -142,7 +151,7 @@ updateUserPool pUserPoolId_ =
     }
 
 
--- | The cost allocation tags for the user pool. For more information, see <http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html Adding Cost Allocation Tags to Your User Pool>
+-- | The tag keys and values to assign to the user pool. A tag is a label that you can use to categorize and manage user pools in different ways, such as by purpose, owner, environment, or other criteria.
 uupUserPoolTags :: Lens' UpdateUserPool (HashMap Text Text)
 uupUserPoolTags = lens _uupUserPoolTags (\ s a -> s{_uupUserPoolTags = a}) . _Default . _Map
 
@@ -165,6 +174,10 @@ uupUserPoolAddOns = lens _uupUserPoolAddOns (\ s a -> s{_uupUserPoolAddOns = a})
 -- | The subject of the email verification message.
 uupEmailVerificationSubject :: Lens' UpdateUserPool (Maybe Text)
 uupEmailVerificationSubject = lens _uupEmailVerificationSubject (\ s a -> s{_uupEmailVerificationSubject = a})
+
+-- | Use this setting to define which verified available method a user can use to recover their password when they call @ForgotPassword@ . It allows you to define a preferred method when a user has more than one method available. With this setting, SMS does not qualify for a valid password recovery mechanism if the user also has SMS MFA enabled. In the absence of this setting, Cognito uses the legacy behavior to determine the recovery method where SMS is preferred over email.
+uupAccountRecoverySetting :: Lens' UpdateUserPool (Maybe AccountRecoverySettingType)
+uupAccountRecoverySetting = lens _uupAccountRecoverySetting (\ s a -> s{_uupAccountRecoverySetting = a})
 
 -- | Email configuration.
 uupEmailConfiguration :: Lens' UpdateUserPool (Maybe EmailConfigurationType)
@@ -242,6 +255,8 @@ instance ToJSON UpdateUserPool where
                   ("UserPoolAddOns" .=) <$> _uupUserPoolAddOns,
                   ("EmailVerificationSubject" .=) <$>
                     _uupEmailVerificationSubject,
+                  ("AccountRecoverySetting" .=) <$>
+                    _uupAccountRecoverySetting,
                   ("EmailConfiguration" .=) <$> _uupEmailConfiguration,
                   ("SmsVerificationMessage" .=) <$>
                     _uupSmsVerificationMessage,
@@ -268,9 +283,11 @@ instance ToQuery UpdateUserPool where
 --
 --
 -- /See:/ 'updateUserPoolResponse' smart constructor.
-newtype UpdateUserPoolResponse = UpdateUserPoolResponse'
-  { _uuprsResponseStatus :: Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype UpdateUserPoolResponse =
+  UpdateUserPoolResponse'
+    { _uuprsResponseStatus :: Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UpdateUserPoolResponse' with the minimum fields required to make a request.

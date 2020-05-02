@@ -41,8 +41,8 @@ module Network.AWS.EC2.DescribeSpotFleetRequests
     , DescribeSpotFleetRequestsResponse
     -- * Response Lenses
     , dsfrrsNextToken
-    , dsfrrsResponseStatus
     , dsfrrsSpotFleetRequestConfigs
+    , dsfrrsResponseStatus
     ) where
 
 import Network.AWS.EC2.Types
@@ -58,12 +58,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeSpotFleetRequests' smart constructor.
-data DescribeSpotFleetRequests = DescribeSpotFleetRequests'
-  { _dsfrSpotFleetRequestIds :: !(Maybe [Text])
-  , _dsfrNextToken           :: !(Maybe Text)
-  , _dsfrDryRun              :: !(Maybe Bool)
-  , _dsfrMaxResults          :: !(Maybe Int)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeSpotFleetRequests =
+  DescribeSpotFleetRequests'
+    { _dsfrSpotFleetRequestIds :: !(Maybe [Text])
+    , _dsfrNextToken           :: !(Maybe Text)
+    , _dsfrDryRun              :: !(Maybe Bool)
+    , _dsfrMaxResults          :: !(Maybe Int)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeSpotFleetRequests' with the minimum fields required to make a request.
@@ -120,9 +122,10 @@ instance AWSRequest DescribeSpotFleetRequests where
           = receiveXML
               (\ s h x ->
                  DescribeSpotFleetRequestsResponse' <$>
-                   (x .@? "nextToken") <*> (pure (fromEnum s)) <*>
+                   (x .@? "nextToken") <*>
                      (x .@? "spotFleetRequestConfigSet" .!@ mempty >>=
-                        parseXMLList "item"))
+                        may (parseXMLList "item"))
+                     <*> (pure (fromEnum s)))
 
 instance Hashable DescribeSpotFleetRequests where
 
@@ -152,11 +155,13 @@ instance ToQuery DescribeSpotFleetRequests where
 --
 --
 -- /See:/ 'describeSpotFleetRequestsResponse' smart constructor.
-data DescribeSpotFleetRequestsResponse = DescribeSpotFleetRequestsResponse'
-  { _dsfrrsNextToken               :: !(Maybe Text)
-  , _dsfrrsResponseStatus          :: !Int
-  , _dsfrrsSpotFleetRequestConfigs :: ![SpotFleetRequestConfig]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeSpotFleetRequestsResponse =
+  DescribeSpotFleetRequestsResponse'
+    { _dsfrrsNextToken               :: !(Maybe Text)
+    , _dsfrrsSpotFleetRequestConfigs :: !(Maybe [SpotFleetRequestConfig])
+    , _dsfrrsResponseStatus          :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeSpotFleetRequestsResponse' with the minimum fields required to make a request.
@@ -165,17 +170,17 @@ data DescribeSpotFleetRequestsResponse = DescribeSpotFleetRequestsResponse'
 --
 -- * 'dsfrrsNextToken' - The token required to retrieve the next set of results. This value is @null@ when there are no more results to return.
 --
--- * 'dsfrrsResponseStatus' - -- | The response status code.
---
 -- * 'dsfrrsSpotFleetRequestConfigs' - Information about the configuration of your Spot Fleet.
+--
+-- * 'dsfrrsResponseStatus' - -- | The response status code.
 describeSpotFleetRequestsResponse
     :: Int -- ^ 'dsfrrsResponseStatus'
     -> DescribeSpotFleetRequestsResponse
 describeSpotFleetRequestsResponse pResponseStatus_ =
   DescribeSpotFleetRequestsResponse'
     { _dsfrrsNextToken = Nothing
+    , _dsfrrsSpotFleetRequestConfigs = Nothing
     , _dsfrrsResponseStatus = pResponseStatus_
-    , _dsfrrsSpotFleetRequestConfigs = mempty
     }
 
 
@@ -183,13 +188,13 @@ describeSpotFleetRequestsResponse pResponseStatus_ =
 dsfrrsNextToken :: Lens' DescribeSpotFleetRequestsResponse (Maybe Text)
 dsfrrsNextToken = lens _dsfrrsNextToken (\ s a -> s{_dsfrrsNextToken = a})
 
+-- | Information about the configuration of your Spot Fleet.
+dsfrrsSpotFleetRequestConfigs :: Lens' DescribeSpotFleetRequestsResponse [SpotFleetRequestConfig]
+dsfrrsSpotFleetRequestConfigs = lens _dsfrrsSpotFleetRequestConfigs (\ s a -> s{_dsfrrsSpotFleetRequestConfigs = a}) . _Default . _Coerce
+
 -- | -- | The response status code.
 dsfrrsResponseStatus :: Lens' DescribeSpotFleetRequestsResponse Int
 dsfrrsResponseStatus = lens _dsfrrsResponseStatus (\ s a -> s{_dsfrrsResponseStatus = a})
-
--- | Information about the configuration of your Spot Fleet.
-dsfrrsSpotFleetRequestConfigs :: Lens' DescribeSpotFleetRequestsResponse [SpotFleetRequestConfig]
-dsfrrsSpotFleetRequestConfigs = lens _dsfrrsSpotFleetRequestConfigs (\ s a -> s{_dsfrrsSpotFleetRequestConfigs = a}) . _Coerce
 
 instance NFData DescribeSpotFleetRequestsResponse
          where

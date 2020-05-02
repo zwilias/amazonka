@@ -21,6 +21,14 @@
 -- Describes the available types of lifecycle hooks.
 --
 --
+-- The following hook types are supported:
+--
+--     * autoscaling:EC2_INSTANCE_LAUNCHING
+--
+--     * autoscaling:EC2_INSTANCE_TERMINATING
+--
+--
+--
 module Network.AWS.AutoScaling.DescribeLifecycleHookTypes
     (
     -- * Creating a Request
@@ -87,10 +95,12 @@ instance ToQuery DescribeLifecycleHookTypes where
                   "Version" =: ("2011-01-01" :: ByteString)])
 
 -- | /See:/ 'describeLifecycleHookTypesResponse' smart constructor.
-data DescribeLifecycleHookTypesResponse = DescribeLifecycleHookTypesResponse'
-  { _dlhtrsLifecycleHookTypes :: !(Maybe [Text])
-  , _dlhtrsResponseStatus     :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeLifecycleHookTypesResponse =
+  DescribeLifecycleHookTypesResponse'
+    { _dlhtrsLifecycleHookTypes :: !(Maybe [Text])
+    , _dlhtrsResponseStatus     :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeLifecycleHookTypesResponse' with the minimum fields required to make a request.

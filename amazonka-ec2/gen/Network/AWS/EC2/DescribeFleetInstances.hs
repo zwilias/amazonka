@@ -51,20 +51,22 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeFleetInstances' smart constructor.
-data DescribeFleetInstances = DescribeFleetInstances'
-  { _dfisFilters    :: !(Maybe [Filter])
-  , _dfisNextToken  :: !(Maybe Text)
-  , _dfisDryRun     :: !(Maybe Bool)
-  , _dfisMaxResults :: !(Maybe Int)
-  , _dfisFleetId    :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeFleetInstances =
+  DescribeFleetInstances'
+    { _dfisFilters    :: !(Maybe [Filter])
+    , _dfisNextToken  :: !(Maybe Text)
+    , _dfisDryRun     :: !(Maybe Bool)
+    , _dfisMaxResults :: !(Maybe Int)
+    , _dfisFleetId    :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeFleetInstances' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dfisFilters' - One or more filters.
+-- * 'dfisFilters' - The filters.     * @instance-type@ - The instance type.
 --
 -- * 'dfisNextToken' - The token for the next set of results.
 --
@@ -86,7 +88,7 @@ describeFleetInstances pFleetId_ =
     }
 
 
--- | One or more filters.
+-- | The filters.     * @instance-type@ - The instance type.
 dfisFilters :: Lens' DescribeFleetInstances [Filter]
 dfisFilters = lens _dfisFilters (\ s a -> s{_dfisFilters = a}) . _Default . _Coerce
 
@@ -142,12 +144,14 @@ instance ToQuery DescribeFleetInstances where
                "FleetId" =: _dfisFleetId]
 
 -- | /See:/ 'describeFleetInstancesResponse' smart constructor.
-data DescribeFleetInstancesResponse = DescribeFleetInstancesResponse'
-  { _drsNextToken       :: !(Maybe Text)
-  , _drsFleetId         :: !(Maybe Text)
-  , _drsActiveInstances :: !(Maybe [ActiveInstance])
-  , _drsResponseStatus  :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeFleetInstancesResponse =
+  DescribeFleetInstancesResponse'
+    { _drsNextToken       :: !(Maybe Text)
+    , _drsFleetId         :: !(Maybe Text)
+    , _drsActiveInstances :: !(Maybe [ActiveInstance])
+    , _drsResponseStatus  :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeFleetInstancesResponse' with the minimum fields required to make a request.

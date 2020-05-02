@@ -48,6 +48,9 @@ module Network.AWS.APIGateway.Types
     -- * DocumentationPartType
     , DocumentationPartType (..)
 
+    -- * DomainNameStatus
+    , DomainNameStatus (..)
+
     -- * EndpointType
     , EndpointType (..)
 
@@ -69,6 +72,9 @@ module Network.AWS.APIGateway.Types
     -- * QuotaPeriodType
     , QuotaPeriodType (..)
 
+    -- * SecurityPolicy
+    , SecurityPolicy (..)
+
     -- * UnauthorizedCacheControlHeaderStrategy
     , UnauthorizedCacheControlHeaderStrategy (..)
 
@@ -87,12 +93,14 @@ module Network.AWS.APIGateway.Types
     , akStageKeys
     , akLastUpdatedDate
     , akDescription
+    , akTags
 
     -- * APIStage
     , APIStage
     , apiStage
     , asStage
     , asApiId
+    , asThrottle
 
     -- * AccessLogSettings
     , AccessLogSettings
@@ -145,6 +153,7 @@ module Network.AWS.APIGateway.Types
     , ccCreatedDate
     , ccExpirationDate
     , ccDescription
+    , ccTags
 
     -- * Deployment
     , Deployment
@@ -192,17 +201,22 @@ module Network.AWS.APIGateway.Types
     , dnRegionalCertificateARN
     , dnCertificateARN
     , dnDistributionHostedZoneId
+    , dnSecurityPolicy
     , dnDomainName
     , dnRegionalCertificateName
     , dnRegionalDomainName
     , dnCertificateUploadDate
     , dnDistributionDomainName
+    , dnDomainNameStatusMessage
     , dnEndpointConfiguration
+    , dnDomainNameStatus
+    , dnTags
 
     -- * EndpointConfiguration
     , EndpointConfiguration
     , endpointConfiguration
     , ecTypes
+    , ecVpcEndpointIds
 
     -- * GatewayResponse
     , GatewayResponse
@@ -337,6 +351,7 @@ module Network.AWS.APIGateway.Types
     , raPolicy
     , raEndpointConfiguration
     , raDescription
+    , raTags
 
     -- * SDKConfigurationProperty
     , SDKConfigurationProperty
@@ -363,11 +378,13 @@ module Network.AWS.APIGateway.Types
     , sAccessLogSettings
     , sDocumentationVersion
     , sClientCertificateId
+    , sTracingEnabled
     , sCreatedDate
     , sCacheClusterStatus
     , sMethodSettings
     , sLastUpdatedDate
     , sCacheClusterSize
+    , sWebACLARN
     , sCanarySettings
     , sCacheClusterEnabled
     , sStageName
@@ -405,6 +422,7 @@ module Network.AWS.APIGateway.Types
     , upQuota
     , upDescription
     , upProductCode
+    , upTags
 
     -- * UsagePlanKey
     , UsagePlanKey
@@ -423,6 +441,7 @@ module Network.AWS.APIGateway.Types
     , vlStatusMessage
     , vlId
     , vlDescription
+    , vlTags
     ) where
 
 import Network.AWS.APIGateway.Types.Product

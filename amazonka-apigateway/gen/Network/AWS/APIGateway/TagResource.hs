@@ -47,17 +47,19 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'tagResource' smart constructor.
-data TagResource = TagResource'
-  { _trResourceARN :: !Text
-  , _trTags        :: !(Map Text Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data TagResource =
+  TagResource'
+    { _trResourceARN :: !Text
+    , _trTags        :: !(Map Text Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'TagResource' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'trResourceARN' - [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present, 'Stage' is the only taggable resource.
+-- * 'trResourceARN' - [Required] The ARN of a resource that can be tagged.
 --
 -- * 'trTags' - [Required] The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not start with @aws:@ . The tag value can be up to 256 characters.
 tagResource
@@ -67,7 +69,7 @@ tagResource pResourceARN_ =
   TagResource' {_trResourceARN = pResourceARN_, _trTags = mempty}
 
 
--- | [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded. At present, 'Stage' is the only taggable resource.
+-- | [Required] The ARN of a resource that can be tagged.
 trResourceARN :: Lens' TagResource Text
 trResourceARN = lens _trResourceARN (\ s a -> s{_trResourceARN = a})
 

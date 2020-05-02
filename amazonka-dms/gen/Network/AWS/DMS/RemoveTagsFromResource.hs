@@ -44,22 +44,24 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | Removes one or more tags from an AWS DMS resource.
 --
 --
 --
 -- /See:/ 'removeTagsFromResource' smart constructor.
-data RemoveTagsFromResource = RemoveTagsFromResource'
-  { _rtfrResourceARN :: !Text
-  , _rtfrTagKeys     :: ![Text]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data RemoveTagsFromResource =
+  RemoveTagsFromResource'
+    { _rtfrResourceARN :: !Text
+    , _rtfrTagKeys     :: ![Text]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'RemoveTagsFromResource' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rtfrResourceARN' - >The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be removed from.
+-- * 'rtfrResourceARN' - An AWS DMS resource from which you want to remove tag(s). The value for this parameter is an Amazon Resource Name (ARN).
 --
 -- * 'rtfrTagKeys' - The tag key (name) of the tag to be removed.
 removeTagsFromResource
@@ -70,7 +72,7 @@ removeTagsFromResource pResourceARN_ =
     {_rtfrResourceARN = pResourceARN_, _rtfrTagKeys = mempty}
 
 
--- | >The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be removed from.
+-- | An AWS DMS resource from which you want to remove tag(s). The value for this parameter is an Amazon Resource Name (ARN).
 rtfrResourceARN :: Lens' RemoveTagsFromResource Text
 rtfrResourceARN = lens _rtfrResourceARN (\ s a -> s{_rtfrResourceARN = a})
 
@@ -120,9 +122,11 @@ instance ToQuery RemoveTagsFromResource where
 --
 --
 -- /See:/ 'removeTagsFromResourceResponse' smart constructor.
-newtype RemoveTagsFromResourceResponse = RemoveTagsFromResourceResponse'
-  { _rtfrrsResponseStatus :: Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype RemoveTagsFromResourceResponse =
+  RemoveTagsFromResourceResponse'
+    { _rtfrrsResponseStatus :: Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'RemoveTagsFromResourceResponse' with the minimum fields required to make a request.

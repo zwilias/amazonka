@@ -50,10 +50,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getCommit' smart constructor.
-data GetCommit = GetCommit'
-  { _gcRepositoryName :: !Text
-  , _gcCommitId       :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetCommit =
+  GetCommit'
+    { _gcRepositoryName :: !Text
+    , _gcCommitId       :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetCommit' with the minimum fields required to make a request.
@@ -62,7 +64,7 @@ data GetCommit = GetCommit'
 --
 -- * 'gcRepositoryName' - The name of the repository to which the commit was made.
 --
--- * 'gcCommitId' - The commit ID. Commit IDs are the full SHA of the commit.
+-- * 'gcCommitId' - The commit ID. Commit IDs are the full SHA ID of the commit.
 getCommit
     :: Text -- ^ 'gcRepositoryName'
     -> Text -- ^ 'gcCommitId'
@@ -75,7 +77,7 @@ getCommit pRepositoryName_ pCommitId_ =
 gcRepositoryName :: Lens' GetCommit Text
 gcRepositoryName = lens _gcRepositoryName (\ s a -> s{_gcRepositoryName = a})
 
--- | The commit ID. Commit IDs are the full SHA of the commit.
+-- | The commit ID. Commit IDs are the full SHA ID of the commit.
 gcCommitId :: Lens' GetCommit Text
 gcCommitId = lens _gcCommitId (\ s a -> s{_gcCommitId = a})
 
@@ -119,10 +121,12 @@ instance ToQuery GetCommit where
 --
 --
 -- /See:/ 'getCommitResponse' smart constructor.
-data GetCommitResponse = GetCommitResponse'
-  { _gcrsResponseStatus :: !Int
-  , _gcrsCommit         :: !Commit
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetCommitResponse =
+  GetCommitResponse'
+    { _gcrsResponseStatus :: !Int
+    , _gcrsCommit         :: !Commit
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetCommitResponse' with the minimum fields required to make a request.

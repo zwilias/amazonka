@@ -19,6 +19,45 @@ module Network.AWS.DirectoryService.Types.Sum where
 
 import Network.AWS.Prelude
 
+data CertificateState
+  = DeregisterFailed
+  | Deregistered
+  | Deregistering
+  | RegisterFailed
+  | Registered
+  | Registering
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText CertificateState where
+    parser = takeLowerText >>= \case
+        "deregisterfailed" -> pure DeregisterFailed
+        "deregistered" -> pure Deregistered
+        "deregistering" -> pure Deregistering
+        "registerfailed" -> pure RegisterFailed
+        "registered" -> pure Registered
+        "registering" -> pure Registering
+        e -> fromTextError $ "Failure parsing CertificateState from value: '" <> e
+           <> "'. Accepted values: deregisterfailed, deregistered, deregistering, registerfailed, registered, registering"
+
+instance ToText CertificateState where
+    toText = \case
+        DeregisterFailed -> "DeregisterFailed"
+        Deregistered -> "Deregistered"
+        Deregistering -> "Deregistering"
+        RegisterFailed -> "RegisterFailed"
+        Registered -> "Registered"
+        Registering -> "Registering"
+
+instance Hashable     CertificateState
+instance NFData       CertificateState
+instance ToByteString CertificateState
+instance ToQuery      CertificateState
+instance ToHeader     CertificateState
+
+instance FromJSON CertificateState where
+    parseJSON = parseJSONText "CertificateState"
+
 data DirectoryEdition
   = Enterprise
   | Standard
@@ -136,6 +175,7 @@ instance FromJSON DirectoryStage where
 data DirectoryType
   = ADConnector
   | MicrosoftAD
+  | SharedMicrosoftAD
   | SimpleAD
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
@@ -144,14 +184,16 @@ instance FromText DirectoryType where
     parser = takeLowerText >>= \case
         "adconnector" -> pure ADConnector
         "microsoftad" -> pure MicrosoftAD
+        "sharedmicrosoftad" -> pure SharedMicrosoftAD
         "simplead" -> pure SimpleAD
         e -> fromTextError $ "Failure parsing DirectoryType from value: '" <> e
-           <> "'. Accepted values: adconnector, microsoftad, simplead"
+           <> "'. Accepted values: adconnector, microsoftad, sharedmicrosoftad, simplead"
 
 instance ToText DirectoryType where
     toText = \case
         ADConnector -> "ADConnector"
         MicrosoftAD -> "MicrosoftAD"
+        SharedMicrosoftAD -> "SharedMicrosoftAD"
         SimpleAD -> "SimpleAD"
 
 instance Hashable     DirectoryType
@@ -243,6 +285,63 @@ instance ToHeader     IPRouteStatusMsg
 
 instance FromJSON IPRouteStatusMsg where
     parseJSON = parseJSONText "IPRouteStatusMsg"
+
+data LDAPSStatus
+  = LDAPSSDisabled
+  | LDAPSSEnableFailed
+  | LDAPSSEnabled
+  | LDAPSSEnabling
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText LDAPSStatus where
+    parser = takeLowerText >>= \case
+        "disabled" -> pure LDAPSSDisabled
+        "enablefailed" -> pure LDAPSSEnableFailed
+        "enabled" -> pure LDAPSSEnabled
+        "enabling" -> pure LDAPSSEnabling
+        e -> fromTextError $ "Failure parsing LDAPSStatus from value: '" <> e
+           <> "'. Accepted values: disabled, enablefailed, enabled, enabling"
+
+instance ToText LDAPSStatus where
+    toText = \case
+        LDAPSSDisabled -> "Disabled"
+        LDAPSSEnableFailed -> "EnableFailed"
+        LDAPSSEnabled -> "Enabled"
+        LDAPSSEnabling -> "Enabling"
+
+instance Hashable     LDAPSStatus
+instance NFData       LDAPSStatus
+instance ToByteString LDAPSStatus
+instance ToQuery      LDAPSStatus
+instance ToHeader     LDAPSStatus
+
+instance FromJSON LDAPSStatus where
+    parseJSON = parseJSONText "LDAPSStatus"
+
+data LDAPSType =
+  Client
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText LDAPSType where
+    parser = takeLowerText >>= \case
+        "client" -> pure Client
+        e -> fromTextError $ "Failure parsing LDAPSType from value: '" <> e
+           <> "'. Accepted values: client"
+
+instance ToText LDAPSType where
+    toText = \case
+        Client -> "Client"
+
+instance Hashable     LDAPSType
+instance NFData       LDAPSType
+instance ToByteString LDAPSType
+instance ToQuery      LDAPSType
+instance ToHeader     LDAPSType
+
+instance ToJSON LDAPSType where
+    toJSON = toJSONText
 
 data RadiusAuthenticationProtocol
   = Chap
@@ -382,6 +481,114 @@ instance ToHeader     SchemaExtensionStatus
 instance FromJSON SchemaExtensionStatus where
     parseJSON = parseJSONText "SchemaExtensionStatus"
 
+data SelectiveAuth
+  = Disabled
+  | Enabled
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText SelectiveAuth where
+    parser = takeLowerText >>= \case
+        "disabled" -> pure Disabled
+        "enabled" -> pure Enabled
+        e -> fromTextError $ "Failure parsing SelectiveAuth from value: '" <> e
+           <> "'. Accepted values: disabled, enabled"
+
+instance ToText SelectiveAuth where
+    toText = \case
+        Disabled -> "Disabled"
+        Enabled -> "Enabled"
+
+instance Hashable     SelectiveAuth
+instance NFData       SelectiveAuth
+instance ToByteString SelectiveAuth
+instance ToQuery      SelectiveAuth
+instance ToHeader     SelectiveAuth
+
+instance ToJSON SelectiveAuth where
+    toJSON = toJSONText
+
+instance FromJSON SelectiveAuth where
+    parseJSON = parseJSONText "SelectiveAuth"
+
+data ShareMethod
+  = Handshake
+  | Organizations
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText ShareMethod where
+    parser = takeLowerText >>= \case
+        "handshake" -> pure Handshake
+        "organizations" -> pure Organizations
+        e -> fromTextError $ "Failure parsing ShareMethod from value: '" <> e
+           <> "'. Accepted values: handshake, organizations"
+
+instance ToText ShareMethod where
+    toText = \case
+        Handshake -> "HANDSHAKE"
+        Organizations -> "ORGANIZATIONS"
+
+instance Hashable     ShareMethod
+instance NFData       ShareMethod
+instance ToByteString ShareMethod
+instance ToQuery      ShareMethod
+instance ToHeader     ShareMethod
+
+instance ToJSON ShareMethod where
+    toJSON = toJSONText
+
+instance FromJSON ShareMethod where
+    parseJSON = parseJSONText "ShareMethod"
+
+data ShareStatus
+  = SSDeleted
+  | SSDeleting
+  | SSPendingAcceptance
+  | SSRejectFailed
+  | SSRejected
+  | SSRejecting
+  | SSShareFailed
+  | SSShared
+  | SSSharing
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText ShareStatus where
+    parser = takeLowerText >>= \case
+        "deleted" -> pure SSDeleted
+        "deleting" -> pure SSDeleting
+        "pendingacceptance" -> pure SSPendingAcceptance
+        "rejectfailed" -> pure SSRejectFailed
+        "rejected" -> pure SSRejected
+        "rejecting" -> pure SSRejecting
+        "sharefailed" -> pure SSShareFailed
+        "shared" -> pure SSShared
+        "sharing" -> pure SSSharing
+        e -> fromTextError $ "Failure parsing ShareStatus from value: '" <> e
+           <> "'. Accepted values: deleted, deleting, pendingacceptance, rejectfailed, rejected, rejecting, sharefailed, shared, sharing"
+
+instance ToText ShareStatus where
+    toText = \case
+        SSDeleted -> "Deleted"
+        SSDeleting -> "Deleting"
+        SSPendingAcceptance -> "PendingAcceptance"
+        SSRejectFailed -> "RejectFailed"
+        SSRejected -> "Rejected"
+        SSRejecting -> "Rejecting"
+        SSShareFailed -> "ShareFailed"
+        SSShared -> "Shared"
+        SSSharing -> "Sharing"
+
+instance Hashable     ShareStatus
+instance NFData       ShareStatus
+instance ToByteString ShareStatus
+instance ToQuery      ShareStatus
+instance ToHeader     ShareStatus
+
+instance FromJSON ShareStatus where
+    parseJSON = parseJSONText "ShareStatus"
+
 data SnapshotStatus
   = SSCompleted
   | SSCreating
@@ -438,6 +645,30 @@ instance ToHeader     SnapshotType
 
 instance FromJSON SnapshotType where
     parseJSON = parseJSONText "SnapshotType"
+
+data TargetType =
+  Account
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText TargetType where
+    parser = takeLowerText >>= \case
+        "account" -> pure Account
+        e -> fromTextError $ "Failure parsing TargetType from value: '" <> e
+           <> "'. Accepted values: account"
+
+instance ToText TargetType where
+    toText = \case
+        Account -> "ACCOUNT"
+
+instance Hashable     TargetType
+instance NFData       TargetType
+instance ToByteString TargetType
+instance ToQuery      TargetType
+instance ToHeader     TargetType
+
+instance ToJSON TargetType where
+    toJSON = toJSONText
 
 data TopicStatus
   = TDeleted
@@ -511,6 +742,9 @@ data TrustState
   | TSDeleted
   | TSDeleting
   | TSFailed
+  | TSUpdateFailed
+  | TSUpdated
+  | TSUpdating
   | TSVerified
   | TSVerifyFailed
   | TSVerifying
@@ -524,11 +758,14 @@ instance FromText TrustState where
         "deleted" -> pure TSDeleted
         "deleting" -> pure TSDeleting
         "failed" -> pure TSFailed
+        "updatefailed" -> pure TSUpdateFailed
+        "updated" -> pure TSUpdated
+        "updating" -> pure TSUpdating
         "verified" -> pure TSVerified
         "verifyfailed" -> pure TSVerifyFailed
         "verifying" -> pure TSVerifying
         e -> fromTextError $ "Failure parsing TrustState from value: '" <> e
-           <> "'. Accepted values: created, creating, deleted, deleting, failed, verified, verifyfailed, verifying"
+           <> "'. Accepted values: created, creating, deleted, deleting, failed, updatefailed, updated, updating, verified, verifyfailed, verifying"
 
 instance ToText TrustState where
     toText = \case
@@ -537,6 +774,9 @@ instance ToText TrustState where
         TSDeleted -> "Deleted"
         TSDeleting -> "Deleting"
         TSFailed -> "Failed"
+        TSUpdateFailed -> "UpdateFailed"
+        TSUpdated -> "Updated"
+        TSUpdating -> "Updating"
         TSVerified -> "Verified"
         TSVerifyFailed -> "VerifyFailed"
         TSVerifying -> "Verifying"
@@ -550,19 +790,22 @@ instance ToHeader     TrustState
 instance FromJSON TrustState where
     parseJSON = parseJSONText "TrustState"
 
-data TrustType =
-  Forest
+data TrustType
+  = External
+  | Forest
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
 
 instance FromText TrustType where
     parser = takeLowerText >>= \case
+        "external" -> pure External
         "forest" -> pure Forest
         e -> fromTextError $ "Failure parsing TrustType from value: '" <> e
-           <> "'. Accepted values: forest"
+           <> "'. Accepted values: external, forest"
 
 instance ToText TrustType where
     toText = \case
+        External -> "External"
         Forest -> "Forest"
 
 instance Hashable     TrustType

@@ -23,11 +23,11 @@
 --
 -- After the instances are detached, you can manage them independent of the Auto Scaling group.
 --
--- If you do not specify the option to decrement the desired capacity, Auto Scaling launches instances to replace the ones that are detached.
+-- If you do not specify the option to decrement the desired capacity, Amazon EC2 Auto Scaling launches instances to replace the ones that are detached.
 --
 -- If there is a Classic Load Balancer attached to the Auto Scaling group, the instances are deregistered from the load balancer. If there are target groups attached to the Auto Scaling group, the instances are deregistered from the target groups.
 --
--- For more information, see <http://docs.aws.amazon.com/autoscaling/latest/userguide/detach-instance-asg.html Detach EC2 Instances from Your Auto Scaling Group> in the /Auto Scaling User Guide/ .
+-- For more information, see <https://docs.aws.amazon.com/autoscaling/ec2/userguide/detach-instance-asg.html Detach EC2 Instances from Your Auto Scaling Group> in the /Amazon EC2 Auto Scaling User Guide/ .
 --
 module Network.AWS.AutoScaling.DetachInstances
     (
@@ -55,11 +55,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'detachInstances' smart constructor.
-data DetachInstances = DetachInstances'
-  { _diInstanceIds                    :: !(Maybe [Text])
-  , _diAutoScalingGroupName           :: !Text
-  , _diShouldDecrementDesiredCapacity :: !Bool
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DetachInstances =
+  DetachInstances'
+    { _diInstanceIds                    :: !(Maybe [Text])
+    , _diAutoScalingGroupName           :: !Text
+    , _diShouldDecrementDesiredCapacity :: !Bool
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DetachInstances' with the minimum fields required to make a request.
@@ -128,10 +130,12 @@ instance ToQuery DetachInstances where
                  _diShouldDecrementDesiredCapacity]
 
 -- | /See:/ 'detachInstancesResponse' smart constructor.
-data DetachInstancesResponse = DetachInstancesResponse'
-  { _dirsActivities     :: !(Maybe [Activity])
-  , _dirsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DetachInstancesResponse =
+  DetachInstancesResponse'
+    { _dirsActivities     :: !(Maybe [Activity])
+    , _dirsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DetachInstancesResponse' with the minimum fields required to make a request.

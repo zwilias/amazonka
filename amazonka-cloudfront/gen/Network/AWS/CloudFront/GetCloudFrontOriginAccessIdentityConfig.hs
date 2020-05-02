@@ -45,14 +45,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | The origin access identity's configuration information. For more information, see 'CloudFrontOriginAccessIdentityConfigComplexType' .
+-- | The origin access identity's configuration information. For more information, see <https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CloudFrontOriginAccessIdentityConfig.html CloudFrontOriginAccessIdentityConfig> .
 --
 --
 --
 -- /See:/ 'getCloudFrontOriginAccessIdentityConfig' smart constructor.
-newtype GetCloudFrontOriginAccessIdentityConfig = GetCloudFrontOriginAccessIdentityConfig'
-  { _gcfoaicId :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype GetCloudFrontOriginAccessIdentityConfig =
+  GetCloudFrontOriginAccessIdentityConfig'
+    { _gcfoaicId :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetCloudFrontOriginAccessIdentityConfig' with the minimum fields required to make a request.
@@ -102,7 +104,7 @@ instance ToPath
          where
         toPath GetCloudFrontOriginAccessIdentityConfig'{..}
           = mconcat
-              ["/2017-10-30/origin-access-identity/cloudfront/",
+              ["/2019-03-26/origin-access-identity/cloudfront/",
                toBS _gcfoaicId, "/config"]
 
 instance ToQuery
@@ -115,11 +117,13 @@ instance ToQuery
 --
 --
 -- /See:/ 'getCloudFrontOriginAccessIdentityConfigResponse' smart constructor.
-data GetCloudFrontOriginAccessIdentityConfigResponse = GetCloudFrontOriginAccessIdentityConfigResponse'
-  { _gcfoaicrsCloudFrontOriginAccessIdentityConfig :: !(Maybe CloudFrontOriginAccessIdentityConfig)
-  , _gcfoaicrsETag :: !(Maybe Text)
-  , _gcfoaicrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetCloudFrontOriginAccessIdentityConfigResponse =
+  GetCloudFrontOriginAccessIdentityConfigResponse'
+    { _gcfoaicrsCloudFrontOriginAccessIdentityConfig :: !(Maybe CloudFrontOriginAccessIdentityConfig)
+    , _gcfoaicrsETag :: !(Maybe Text)
+    , _gcfoaicrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetCloudFrontOriginAccessIdentityConfigResponse' with the minimum fields required to make a request.

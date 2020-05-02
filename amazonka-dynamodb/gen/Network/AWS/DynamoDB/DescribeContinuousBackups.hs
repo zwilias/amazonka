@@ -21,7 +21,7 @@
 -- Checks the status of continuous backups and point in time recovery on the specified table. Continuous backups are @ENABLED@ on all tables at table creation. If point in time recovery is enabled, @PointInTimeRecoveryStatus@ will be set to ENABLED.
 --
 --
--- Once continuous backups and point in time recovery are enabled, you can restore to any point in time within @EarliestRestorableDateTime@ and @LatestRestorableDateTime@ .
+-- After continuous backups and point in time recovery are enabled, you can restore to any point in time within @EarliestRestorableDateTime@ and @LatestRestorableDateTime@ .
 --
 -- @LatestRestorableDateTime@ is typically 5 minutes before the current time. You can restore your table to any point in time during the last 35 days.
 --
@@ -51,9 +51,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeContinuousBackups' smart constructor.
-newtype DescribeContinuousBackups = DescribeContinuousBackups'
-  { _dcbTableName :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype DescribeContinuousBackups =
+  DescribeContinuousBackups'
+    { _dcbTableName :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeContinuousBackups' with the minimum fields required to make a request.
@@ -109,17 +111,19 @@ instance ToQuery DescribeContinuousBackups where
         toQuery = const mempty
 
 -- | /See:/ 'describeContinuousBackupsResponse' smart constructor.
-data DescribeContinuousBackupsResponse = DescribeContinuousBackupsResponse'
-  { _dcbrsContinuousBackupsDescription :: !(Maybe ContinuousBackupsDescription)
-  , _dcbrsResponseStatus               :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeContinuousBackupsResponse =
+  DescribeContinuousBackupsResponse'
+    { _dcbrsContinuousBackupsDescription :: !(Maybe ContinuousBackupsDescription)
+    , _dcbrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeContinuousBackupsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dcbrsContinuousBackupsDescription' - @ContinuousBackupsDescription@ can be one of the following : ENABLED, DISABLED.
+-- * 'dcbrsContinuousBackupsDescription' - Represents the continuous backups and point in time recovery settings on the table.
 --
 -- * 'dcbrsResponseStatus' - -- | The response status code.
 describeContinuousBackupsResponse
@@ -132,7 +136,7 @@ describeContinuousBackupsResponse pResponseStatus_ =
     }
 
 
--- | @ContinuousBackupsDescription@ can be one of the following : ENABLED, DISABLED.
+-- | Represents the continuous backups and point in time recovery settings on the table.
 dcbrsContinuousBackupsDescription :: Lens' DescribeContinuousBackupsResponse (Maybe ContinuousBackupsDescription)
 dcbrsContinuousBackupsDescription = lens _dcbrsContinuousBackupsDescription (\ s a -> s{_dcbrsContinuousBackupsDescription = a})
 

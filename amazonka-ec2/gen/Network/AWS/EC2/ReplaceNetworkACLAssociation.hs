@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Changes which network ACL a subnet is associated with. By default when you create a subnet, it's automatically associated with the default network ACL. For more information about network ACLs, see <http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html Network ACLs> in the /Amazon Virtual Private Cloud User Guide/ .
+-- Changes which network ACL a subnet is associated with. By default when you create a subnet, it's automatically associated with the default network ACL. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html Network ACLs> in the /Amazon Virtual Private Cloud User Guide/ .
 --
 --
 -- This is an idempotent operation.
@@ -48,16 +48,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for ReplaceNetworkAclAssociation.
---
---
---
--- /See:/ 'replaceNetworkACLAssociation' smart constructor.
-data ReplaceNetworkACLAssociation = ReplaceNetworkACLAssociation'
-  { _rnaaDryRun        :: !(Maybe Bool)
-  , _rnaaAssociationId :: !Text
-  , _rnaaNetworkACLId  :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'replaceNetworkACLAssociation' smart constructor.
+data ReplaceNetworkACLAssociation =
+  ReplaceNetworkACLAssociation'
+    { _rnaaDryRun        :: !(Maybe Bool)
+    , _rnaaAssociationId :: !Text
+    , _rnaaNetworkACLId  :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ReplaceNetworkACLAssociation' with the minimum fields required to make a request.
@@ -124,15 +122,13 @@ instance ToQuery ReplaceNetworkACLAssociation where
                "AssociationId" =: _rnaaAssociationId,
                "NetworkAclId" =: _rnaaNetworkACLId]
 
--- | Contains the output of ReplaceNetworkAclAssociation.
---
---
---
--- /See:/ 'replaceNetworkACLAssociationResponse' smart constructor.
-data ReplaceNetworkACLAssociationResponse = ReplaceNetworkACLAssociationResponse'
-  { _rnaarsNewAssociationId :: !(Maybe Text)
-  , _rnaarsResponseStatus   :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'replaceNetworkACLAssociationResponse' smart constructor.
+data ReplaceNetworkACLAssociationResponse =
+  ReplaceNetworkACLAssociationResponse'
+    { _rnaarsNewAssociationId :: !(Maybe Text)
+    , _rnaarsResponseStatus   :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ReplaceNetworkACLAssociationResponse' with the minimum fields required to make a request.

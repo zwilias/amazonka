@@ -27,6 +27,7 @@ module Network.AWS.DMS.ReloadTables
       reloadTables
     , ReloadTables
     -- * Request Lenses
+    , rtReloadOption
     , rtReplicationTaskARN
     , rtTablesToReload
 
@@ -46,17 +47,22 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'reloadTables' smart constructor.
-data ReloadTables = ReloadTables'
-  { _rtReplicationTaskARN :: !Text
-  , _rtTablesToReload     :: ![TableToReload]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ReloadTables =
+  ReloadTables'
+    { _rtReloadOption       :: !(Maybe ReloadOptionValue)
+    , _rtReplicationTaskARN :: !Text
+    , _rtTablesToReload     :: ![TableToReload]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ReloadTables' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rtReplicationTaskARN' - The Amazon Resource Name (ARN) of the replication instance.
+-- * 'rtReloadOption' - Options for reload. Specify @data-reload@ to reload the data and re-validate it if validation is enabled. Specify @validate-only@ to re-validate the table. This option applies only when validation is enabled for the task.  Valid values: data-reload, validate-only Default value is data-reload.
+--
+-- * 'rtReplicationTaskARN' - The Amazon Resource Name (ARN) of the replication task.
 --
 -- * 'rtTablesToReload' - The name and schema of the table to be reloaded.
 reloadTables
@@ -64,10 +70,17 @@ reloadTables
     -> ReloadTables
 reloadTables pReplicationTaskARN_ =
   ReloadTables'
-    {_rtReplicationTaskARN = pReplicationTaskARN_, _rtTablesToReload = mempty}
+    { _rtReloadOption = Nothing
+    , _rtReplicationTaskARN = pReplicationTaskARN_
+    , _rtTablesToReload = mempty
+    }
 
 
--- | The Amazon Resource Name (ARN) of the replication instance.
+-- | Options for reload. Specify @data-reload@ to reload the data and re-validate it if validation is enabled. Specify @validate-only@ to re-validate the table. This option applies only when validation is enabled for the task.  Valid values: data-reload, validate-only Default value is data-reload.
+rtReloadOption :: Lens' ReloadTables (Maybe ReloadOptionValue)
+rtReloadOption = lens _rtReloadOption (\ s a -> s{_rtReloadOption = a})
+
+-- | The Amazon Resource Name (ARN) of the replication task.
 rtReplicationTaskARN :: Lens' ReloadTables Text
 rtReplicationTaskARN = lens _rtReplicationTaskARN (\ s a -> s{_rtReplicationTaskARN = a})
 
@@ -101,8 +114,8 @@ instance ToJSON ReloadTables where
         toJSON ReloadTables'{..}
           = object
               (catMaybes
-                 [Just
-                    ("ReplicationTaskArn" .= _rtReplicationTaskARN),
+                 [("ReloadOption" .=) <$> _rtReloadOption,
+                  Just ("ReplicationTaskArn" .= _rtReplicationTaskARN),
                   Just ("TablesToReload" .= _rtTablesToReload)])
 
 instance ToPath ReloadTables where
@@ -112,10 +125,12 @@ instance ToQuery ReloadTables where
         toQuery = const mempty
 
 -- | /See:/ 'reloadTablesResponse' smart constructor.
-data ReloadTablesResponse = ReloadTablesResponse'
-  { _rtrsReplicationTaskARN :: !(Maybe Text)
-  , _rtrsResponseStatus     :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ReloadTablesResponse =
+  ReloadTablesResponse'
+    { _rtrsReplicationTaskARN :: !(Maybe Text)
+    , _rtrsResponseStatus     :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ReloadTablesResponse' with the minimum fields required to make a request.

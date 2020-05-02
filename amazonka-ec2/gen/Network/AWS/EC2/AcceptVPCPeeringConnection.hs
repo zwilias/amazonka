@@ -21,7 +21,7 @@
 -- Accept a VPC peering connection request. To accept a request, the VPC peering connection must be in the @pending-acceptance@ state, and you must be the owner of the peer VPC. Use 'DescribeVpcPeeringConnections' to view your outstanding VPC peering connection requests.
 --
 --
--- For an inter-region VPC peering connection request, you must accept the VPC peering connection in the region of the accepter VPC.
+-- For an inter-Region VPC peering connection request, you must accept the VPC peering connection in the Region of the accepter VPC.
 --
 module Network.AWS.EC2.AcceptVPCPeeringConnection
     (
@@ -47,15 +47,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for AcceptVpcPeeringConnection.
---
---
---
--- /See:/ 'acceptVPCPeeringConnection' smart constructor.
-data AcceptVPCPeeringConnection = AcceptVPCPeeringConnection'
-  { _avpcVPCPeeringConnectionId :: !(Maybe Text)
-  , _avpcDryRun                 :: !(Maybe Bool)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'acceptVPCPeeringConnection' smart constructor.
+data AcceptVPCPeeringConnection =
+  AcceptVPCPeeringConnection'
+    { _avpcVPCPeeringConnectionId :: !(Maybe Text)
+    , _avpcDryRun                 :: !(Maybe Bool)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AcceptVPCPeeringConnection' with the minimum fields required to make a request.
@@ -111,15 +109,13 @@ instance ToQuery AcceptVPCPeeringConnection where
                  _avpcVPCPeeringConnectionId,
                "DryRun" =: _avpcDryRun]
 
--- | Contains the output of AcceptVpcPeeringConnection.
---
---
---
--- /See:/ 'acceptVPCPeeringConnectionResponse' smart constructor.
-data AcceptVPCPeeringConnectionResponse = AcceptVPCPeeringConnectionResponse'
-  { _avpcrsVPCPeeringConnection :: !(Maybe VPCPeeringConnection)
-  , _avpcrsResponseStatus       :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'acceptVPCPeeringConnectionResponse' smart constructor.
+data AcceptVPCPeeringConnectionResponse =
+  AcceptVPCPeeringConnectionResponse'
+    { _avpcrsVPCPeeringConnection :: !(Maybe VPCPeeringConnection)
+    , _avpcrsResponseStatus       :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AcceptVPCPeeringConnectionResponse' with the minimum fields required to make a request.

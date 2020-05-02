@@ -45,15 +45,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for RejectVpcPeeringConnection.
---
---
---
--- /See:/ 'rejectVPCPeeringConnection' smart constructor.
-data RejectVPCPeeringConnection = RejectVPCPeeringConnection'
-  { _rvpcDryRun                 :: !(Maybe Bool)
-  , _rvpcVPCPeeringConnectionId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'rejectVPCPeeringConnection' smart constructor.
+data RejectVPCPeeringConnection =
+  RejectVPCPeeringConnection'
+    { _rvpcDryRun                 :: !(Maybe Bool)
+    , _rvpcVPCPeeringConnectionId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'RejectVPCPeeringConnection' with the minimum fields required to make a request.
@@ -111,15 +109,13 @@ instance ToQuery RejectVPCPeeringConnection where
                "VpcPeeringConnectionId" =:
                  _rvpcVPCPeeringConnectionId]
 
--- | Contains the output of RejectVpcPeeringConnection.
---
---
---
--- /See:/ 'rejectVPCPeeringConnectionResponse' smart constructor.
-data RejectVPCPeeringConnectionResponse = RejectVPCPeeringConnectionResponse'
-  { _rvpcrsReturn         :: !(Maybe Bool)
-  , _rvpcrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'rejectVPCPeeringConnectionResponse' smart constructor.
+data RejectVPCPeeringConnectionResponse =
+  RejectVPCPeeringConnectionResponse'
+    { _rvpcrsReturn         :: !(Maybe Bool)
+    , _rvpcrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'RejectVPCPeeringConnectionResponse' with the minimum fields required to make a request.

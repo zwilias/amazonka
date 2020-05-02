@@ -47,10 +47,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteBasePathMapping' smart constructor.
-data DeleteBasePathMapping = DeleteBasePathMapping'
-  { _dbpmDomainName :: !Text
-  , _dbpmBasePath   :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DeleteBasePathMapping =
+  DeleteBasePathMapping'
+    { _dbpmDomainName :: !Text
+    , _dbpmBasePath   :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteBasePathMapping' with the minimum fields required to make a request.
@@ -59,7 +61,7 @@ data DeleteBasePathMapping = DeleteBasePathMapping'
 --
 -- * 'dbpmDomainName' - [Required] The domain name of the 'BasePathMapping' resource to delete.
 --
--- * 'dbpmBasePath' - [Required] The base path name of the 'BasePathMapping' resource to delete.
+-- * 'dbpmBasePath' - [Required] The base path name of the 'BasePathMapping' resource to delete. To specify an empty base path, set this parameter to @'(none)'@ .
 deleteBasePathMapping
     :: Text -- ^ 'dbpmDomainName'
     -> Text -- ^ 'dbpmBasePath'
@@ -73,7 +75,7 @@ deleteBasePathMapping pDomainName_ pBasePath_ =
 dbpmDomainName :: Lens' DeleteBasePathMapping Text
 dbpmDomainName = lens _dbpmDomainName (\ s a -> s{_dbpmDomainName = a})
 
--- | [Required] The base path name of the 'BasePathMapping' resource to delete.
+-- | [Required] The base path name of the 'BasePathMapping' resource to delete. To specify an empty base path, set this parameter to @'(none)'@ .
 dbpmBasePath :: Lens' DeleteBasePathMapping Text
 dbpmBasePath = lens _dbpmBasePath (\ s a -> s{_dbpmBasePath = a})
 

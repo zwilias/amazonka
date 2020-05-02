@@ -21,7 +21,7 @@
 -- Creates a virtual private gateway. A virtual private gateway is the endpoint on the VPC side of your VPN connection. You can create a virtual private gateway before creating the VPC itself.
 --
 --
--- For more information about virtual private gateways, see <http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html AWS Managed VPN Connections> in the /Amazon Virtual Private Cloud User Guide/ .
+-- For more information, see <https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html AWS Site-to-Site VPN> in the /AWS Site-to-Site VPN User Guide/ .
 --
 module Network.AWS.EC2.CreateVPNGateway
     (
@@ -54,12 +54,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createVPNGateway' smart constructor.
-data CreateVPNGateway = CreateVPNGateway'
-  { _cvgAmazonSideASN    :: !(Maybe Integer)
-  , _cvgAvailabilityZone :: !(Maybe Text)
-  , _cvgDryRun           :: !(Maybe Bool)
-  , _cvgType             :: !GatewayType
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreateVPNGateway =
+  CreateVPNGateway'
+    { _cvgAmazonSideASN    :: !(Maybe Integer)
+    , _cvgAvailabilityZone :: !(Maybe Text)
+    , _cvgDryRun           :: !(Maybe Bool)
+    , _cvgType             :: !GatewayType
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateVPNGateway' with the minimum fields required to make a request.
@@ -134,10 +136,12 @@ instance ToQuery CreateVPNGateway where
 --
 --
 -- /See:/ 'createVPNGatewayResponse' smart constructor.
-data CreateVPNGatewayResponse = CreateVPNGatewayResponse'
-  { _cvgrsVPNGateway     :: !(Maybe VPNGateway)
-  , _cvgrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreateVPNGatewayResponse =
+  CreateVPNGatewayResponse'
+    { _cvgrsVPNGateway     :: !(Maybe VPNGateway)
+    , _cvgrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateVPNGatewayResponse' with the minimum fields required to make a request.

@@ -93,6 +93,9 @@ module Network.AWS.CognitoIdentityProvider.Types
     -- * DomainStatusType
     , DomainStatusType (..)
 
+    -- * EmailSendingAccountType
+    , EmailSendingAccountType (..)
+
     -- * EventFilterType
     , EventFilterType (..)
 
@@ -116,6 +119,12 @@ module Network.AWS.CognitoIdentityProvider.Types
 
     -- * OAuthFlowType
     , OAuthFlowType (..)
+
+    -- * PreventUserExistenceErrorTypes
+    , PreventUserExistenceErrorTypes (..)
+
+    -- * RecoveryOptionNameType
+    , RecoveryOptionNameType (..)
 
     -- * RiskDecisionType
     , RiskDecisionType (..)
@@ -143,6 +152,11 @@ module Network.AWS.CognitoIdentityProvider.Types
 
     -- * VerifySoftwareTokenResponseType
     , VerifySoftwareTokenResponseType (..)
+
+    -- * AccountRecoverySettingType
+    , AccountRecoverySettingType
+    , accountRecoverySettingType
+    , arstRecoveryMechanisms
 
     -- * AccountTakeoverActionType
     , AccountTakeoverActionType
@@ -244,6 +258,11 @@ module Network.AWS.CognitoIdentityProvider.Types
     , cdtServerPath
     , cdtHTTPHeaders
 
+    -- * CustomDomainConfigType
+    , CustomDomainConfigType
+    , customDomainConfigType
+    , cdctCertificateARN
+
     -- * DeviceConfigurationType
     , DeviceConfigurationType
     , deviceConfigurationType
@@ -273,6 +292,7 @@ module Network.AWS.CognitoIdentityProvider.Types
     , ddtUserPoolId
     , ddtDomain
     , ddtAWSAccountId
+    , ddtCustomDomainConfig
     , ddtVersion
     , ddtS3Bucket
 
@@ -280,7 +300,10 @@ module Network.AWS.CognitoIdentityProvider.Types
     , EmailConfigurationType
     , emailConfigurationType
     , ectSourceARN
+    , ectFrom
+    , ectConfigurationSet
     , ectReplyToEmailAddress
+    , ectEmailSendingAccount
 
     -- * EventContextDataType
     , EventContextDataType
@@ -301,6 +324,7 @@ module Network.AWS.CognitoIdentityProvider.Types
     -- * EventRiskType
     , EventRiskType
     , eventRiskType
+    , ertCompromisedCredentialsDetected
     , ertRiskLevel
     , ertRiskDecision
 
@@ -397,6 +421,7 @@ module Network.AWS.CognitoIdentityProvider.Types
     , pptRequireLowercase
     , pptMinimumLength
     , pptRequireSymbols
+    , pptTemporaryPasswordValidityDays
 
     -- * ProviderDescription
     , ProviderDescription
@@ -412,6 +437,12 @@ module Network.AWS.CognitoIdentityProvider.Types
     , puitProviderAttributeValue
     , puitProviderAttributeName
     , puitProviderName
+
+    -- * RecoveryOptionType
+    , RecoveryOptionType
+    , recoveryOptionType
+    , rotPriority
+    , rotName
 
     -- * ResourceServerScopeType
     , ResourceServerScopeType
@@ -548,6 +579,7 @@ module Network.AWS.CognitoIdentityProvider.Types
     , upctUserPoolId
     , upctDefaultRedirectURI
     , upctWriteAttributes
+    , upctPreventUserExistenceErrors
     , upctCreationDate
     , upctReadAttributes
     , upctAllowedOAuthScopes
@@ -580,7 +612,9 @@ module Network.AWS.CognitoIdentityProvider.Types
     , uptLastModifiedDate
     , uptVerificationMessageTemplate
     , uptEstimatedNumberOfUsers
+    , uptARN
     , uptDomain
+    , uptCustomDomain
     , uptEmailVerificationMessage
     , uptSmsAuthenticationMessage
     , uptUserPoolAddOns
@@ -588,6 +622,7 @@ module Network.AWS.CognitoIdentityProvider.Types
     , uptEmailVerificationSubject
     , uptUsernameAttributes
     , uptAliasAttributes
+    , uptAccountRecoverySetting
     , uptEmailConfiguration
     , uptSmsVerificationMessage
     , uptName
@@ -601,6 +636,7 @@ module Network.AWS.CognitoIdentityProvider.Types
     , uptDeviceConfiguration
     , uptAutoVerifiedAttributes
     , uptPolicies
+    , uptUsernameConfiguration
 
     -- * UserType
     , UserType
@@ -612,6 +648,11 @@ module Network.AWS.CognitoIdentityProvider.Types
     , utAttributes
     , utMFAOptions
     , utUserLastModifiedDate
+
+    -- * UsernameConfigurationType
+    , UsernameConfigurationType
+    , usernameConfigurationType
+    , uctCaseSensitive
 
     -- * VerificationMessageTemplateType
     , VerificationMessageTemplateType

@@ -21,6 +21,8 @@
 -- Lists information about all identity providers for a user pool.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.CognitoIdentityProvider.ListIdentityProviders
     (
     -- * Creating a Request
@@ -43,16 +45,19 @@ module Network.AWS.CognitoIdentityProvider.ListIdentityProviders
 import Network.AWS.CognitoIdentityProvider.Types
 import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listIdentityProviders' smart constructor.
-data ListIdentityProviders = ListIdentityProviders'
-  { _lipNextToken  :: !(Maybe Text)
-  , _lipMaxResults :: !(Maybe Nat)
-  , _lipUserPoolId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListIdentityProviders =
+  ListIdentityProviders'
+    { _lipNextToken  :: !(Maybe Text)
+    , _lipMaxResults :: !(Maybe Nat)
+    , _lipUserPoolId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListIdentityProviders' with the minimum fields required to make a request.
@@ -86,6 +91,13 @@ lipMaxResults = lens _lipMaxResults (\ s a -> s{_lipMaxResults = a}) . mapping _
 -- | The user pool ID.
 lipUserPoolId :: Lens' ListIdentityProviders Text
 lipUserPoolId = lens _lipUserPoolId (\ s a -> s{_lipUserPoolId = a})
+
+instance AWSPager ListIdentityProviders where
+        page rq rs
+          | stop (rs ^. liprsNextToken) = Nothing
+          | stop (rs ^. liprsProviders) = Nothing
+          | otherwise =
+            Just $ rq & lipNextToken .~ rs ^. liprsNextToken
 
 instance AWSRequest ListIdentityProviders where
         type Rs ListIdentityProviders =
@@ -127,11 +139,13 @@ instance ToQuery ListIdentityProviders where
         toQuery = const mempty
 
 -- | /See:/ 'listIdentityProvidersResponse' smart constructor.
-data ListIdentityProvidersResponse = ListIdentityProvidersResponse'
-  { _liprsNextToken      :: !(Maybe Text)
-  , _liprsResponseStatus :: !Int
-  , _liprsProviders      :: ![ProviderDescription]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListIdentityProvidersResponse =
+  ListIdentityProvidersResponse'
+    { _liprsNextToken      :: !(Maybe Text)
+    , _liprsResponseStatus :: !Int
+    , _liprsProviders      :: ![ProviderDescription]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListIdentityProvidersResponse' with the minimum fields required to make a request.

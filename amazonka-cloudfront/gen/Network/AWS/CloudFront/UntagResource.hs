@@ -47,10 +47,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'untagResource' smart constructor.
-data UntagResource = UntagResource'
-  { _urResource :: !Text
-  , _urTagKeys  :: !TagKeys
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data UntagResource =
+  UntagResource'
+    { _urResource :: !Text
+    , _urTagKeys  :: !TagKeys
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UntagResource' with the minimum fields required to make a request.
@@ -88,7 +90,7 @@ instance NFData UntagResource where
 instance ToElement UntagResource where
         toElement
           = mkElement
-              "{http://cloudfront.amazonaws.com/doc/2017-10-30/}TagKeys"
+              "{http://cloudfront.amazonaws.com/doc/2019-03-26/}TagKeys"
               .
               _urTagKeys
 
@@ -96,7 +98,7 @@ instance ToHeaders UntagResource where
         toHeaders = const mempty
 
 instance ToPath UntagResource where
-        toPath = const "/2017-10-30/tagging"
+        toPath = const "/2019-03-26/tagging"
 
 instance ToQuery UntagResource where
         toQuery UntagResource'{..}

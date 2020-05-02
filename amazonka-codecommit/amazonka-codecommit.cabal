@@ -45,14 +45,30 @@ library
 
     exposed-modules:
           Network.AWS.CodeCommit
+        , Network.AWS.CodeCommit.AssociateApprovalRuleTemplateWithRepository
+        , Network.AWS.CodeCommit.BatchAssociateApprovalRuleTemplateWithRepositories
+        , Network.AWS.CodeCommit.BatchDescribeMergeConflicts
+        , Network.AWS.CodeCommit.BatchDisassociateApprovalRuleTemplateFromRepositories
+        , Network.AWS.CodeCommit.BatchGetCommits
         , Network.AWS.CodeCommit.BatchGetRepositories
+        , Network.AWS.CodeCommit.CreateApprovalRuleTemplate
         , Network.AWS.CodeCommit.CreateBranch
+        , Network.AWS.CodeCommit.CreateCommit
         , Network.AWS.CodeCommit.CreatePullRequest
+        , Network.AWS.CodeCommit.CreatePullRequestApprovalRule
         , Network.AWS.CodeCommit.CreateRepository
+        , Network.AWS.CodeCommit.CreateUnreferencedMergeCommit
+        , Network.AWS.CodeCommit.DeleteApprovalRuleTemplate
         , Network.AWS.CodeCommit.DeleteBranch
         , Network.AWS.CodeCommit.DeleteCommentContent
+        , Network.AWS.CodeCommit.DeleteFile
+        , Network.AWS.CodeCommit.DeletePullRequestApprovalRule
         , Network.AWS.CodeCommit.DeleteRepository
+        , Network.AWS.CodeCommit.DescribeMergeConflicts
         , Network.AWS.CodeCommit.DescribePullRequestEvents
+        , Network.AWS.CodeCommit.DisassociateApprovalRuleTemplateFromRepository
+        , Network.AWS.CodeCommit.EvaluatePullRequestApprovalRules
+        , Network.AWS.CodeCommit.GetApprovalRuleTemplate
         , Network.AWS.CodeCommit.GetBlob
         , Network.AWS.CodeCommit.GetBranch
         , Network.AWS.CodeCommit.GetComment
@@ -60,23 +76,46 @@ library
         , Network.AWS.CodeCommit.GetCommentsForPullRequest
         , Network.AWS.CodeCommit.GetCommit
         , Network.AWS.CodeCommit.GetDifferences
+        , Network.AWS.CodeCommit.GetFile
+        , Network.AWS.CodeCommit.GetFolder
+        , Network.AWS.CodeCommit.GetMergeCommit
         , Network.AWS.CodeCommit.GetMergeConflicts
+        , Network.AWS.CodeCommit.GetMergeOptions
         , Network.AWS.CodeCommit.GetPullRequest
+        , Network.AWS.CodeCommit.GetPullRequestApprovalStates
+        , Network.AWS.CodeCommit.GetPullRequestOverrideState
         , Network.AWS.CodeCommit.GetRepository
         , Network.AWS.CodeCommit.GetRepositoryTriggers
+        , Network.AWS.CodeCommit.ListApprovalRuleTemplates
+        , Network.AWS.CodeCommit.ListAssociatedApprovalRuleTemplatesForRepository
         , Network.AWS.CodeCommit.ListBranches
         , Network.AWS.CodeCommit.ListPullRequests
         , Network.AWS.CodeCommit.ListRepositories
+        , Network.AWS.CodeCommit.ListRepositoriesForApprovalRuleTemplate
+        , Network.AWS.CodeCommit.ListTagsForResource
+        , Network.AWS.CodeCommit.MergeBranchesByFastForward
+        , Network.AWS.CodeCommit.MergeBranchesBySquash
+        , Network.AWS.CodeCommit.MergeBranchesByThreeWay
         , Network.AWS.CodeCommit.MergePullRequestByFastForward
+        , Network.AWS.CodeCommit.MergePullRequestBySquash
+        , Network.AWS.CodeCommit.MergePullRequestByThreeWay
+        , Network.AWS.CodeCommit.OverridePullRequestApprovalRules
         , Network.AWS.CodeCommit.PostCommentForComparedCommit
         , Network.AWS.CodeCommit.PostCommentForPullRequest
         , Network.AWS.CodeCommit.PostCommentReply
         , Network.AWS.CodeCommit.PutFile
         , Network.AWS.CodeCommit.PutRepositoryTriggers
+        , Network.AWS.CodeCommit.TagResource
         , Network.AWS.CodeCommit.TestRepositoryTriggers
         , Network.AWS.CodeCommit.Types
+        , Network.AWS.CodeCommit.UntagResource
+        , Network.AWS.CodeCommit.UpdateApprovalRuleTemplateContent
+        , Network.AWS.CodeCommit.UpdateApprovalRuleTemplateDescription
+        , Network.AWS.CodeCommit.UpdateApprovalRuleTemplateName
         , Network.AWS.CodeCommit.UpdateComment
         , Network.AWS.CodeCommit.UpdateDefaultBranch
+        , Network.AWS.CodeCommit.UpdatePullRequestApprovalRuleContent
+        , Network.AWS.CodeCommit.UpdatePullRequestApprovalState
         , Network.AWS.CodeCommit.UpdatePullRequestDescription
         , Network.AWS.CodeCommit.UpdatePullRequestStatus
         , Network.AWS.CodeCommit.UpdatePullRequestTitle

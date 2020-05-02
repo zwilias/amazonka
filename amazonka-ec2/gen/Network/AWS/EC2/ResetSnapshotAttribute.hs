@@ -21,7 +21,7 @@
 -- Resets permission settings for the specified snapshot.
 --
 --
--- For more information on modifying snapshot permissions, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html Sharing Snapshots> in the /Amazon Elastic Compute Cloud User Guide/ .
+-- For more information about modifying snapshot permissions, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html Sharing Snapshots> in the /Amazon Elastic Compute Cloud User Guide/ .
 --
 module Network.AWS.EC2.ResetSnapshotAttribute
     (
@@ -45,16 +45,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for ResetSnapshotAttribute.
---
---
---
--- /See:/ 'resetSnapshotAttribute' smart constructor.
-data ResetSnapshotAttribute = ResetSnapshotAttribute'
-  { _rsaDryRun     :: !(Maybe Bool)
-  , _rsaAttribute  :: !SnapshotAttributeName
-  , _rsaSnapshotId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'resetSnapshotAttribute' smart constructor.
+data ResetSnapshotAttribute =
+  ResetSnapshotAttribute'
+    { _rsaDryRun     :: !(Maybe Bool)
+    , _rsaAttribute  :: !SnapshotAttributeName
+    , _rsaSnapshotId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ResetSnapshotAttribute' with the minimum fields required to make a request.

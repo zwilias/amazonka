@@ -48,16 +48,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for DescribeVpcAttribute.
---
---
---
--- /See:/ 'describeVPCAttribute' smart constructor.
-data DescribeVPCAttribute = DescribeVPCAttribute'
-  { _dvpcaDryRun    :: !(Maybe Bool)
-  , _dvpcaAttribute :: !VPCAttributeName
-  , _dvpcaVPCId     :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'describeVPCAttribute' smart constructor.
+data DescribeVPCAttribute =
+  DescribeVPCAttribute'
+    { _dvpcaDryRun    :: !(Maybe Bool)
+    , _dvpcaAttribute :: !VPCAttributeName
+    , _dvpcaVPCId     :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeVPCAttribute' with the minimum fields required to make a request.
@@ -125,17 +123,15 @@ instance ToQuery DescribeVPCAttribute where
                "Attribute" =: _dvpcaAttribute,
                "VpcId" =: _dvpcaVPCId]
 
--- | Contains the output of DescribeVpcAttribute.
---
---
---
--- /See:/ 'describeVPCAttributeResponse' smart constructor.
-data DescribeVPCAttributeResponse = DescribeVPCAttributeResponse'
-  { _dvpcarsEnableDNSHostnames :: !(Maybe AttributeBooleanValue)
-  , _dvpcarsEnableDNSSupport   :: !(Maybe AttributeBooleanValue)
-  , _dvpcarsVPCId              :: !(Maybe Text)
-  , _dvpcarsResponseStatus     :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'describeVPCAttributeResponse' smart constructor.
+data DescribeVPCAttributeResponse =
+  DescribeVPCAttributeResponse'
+    { _dvpcarsEnableDNSHostnames :: !(Maybe AttributeBooleanValue)
+    , _dvpcarsEnableDNSSupport   :: !(Maybe AttributeBooleanValue)
+    , _dvpcarsVPCId              :: !(Maybe Text)
+    , _dvpcarsResponseStatus     :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeVPCAttributeResponse' with the minimum fields required to make a request.

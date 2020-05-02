@@ -26,11 +26,13 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'accountQuota' smart constructor.
-data AccountQuota = AccountQuota'
-  { _aqMax              :: !(Maybe Integer)
-  , _aqUsed             :: !(Maybe Integer)
-  , _aqAccountQuotaName :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AccountQuota =
+  AccountQuota'
+    { _aqMax              :: !(Maybe Integer)
+    , _aqUsed             :: !(Maybe Integer)
+    , _aqAccountQuotaName :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AccountQuota' with the minimum fields required to make a request.
@@ -73,27 +75,29 @@ instance Hashable AccountQuota where
 
 instance NFData AccountQuota where
 
--- |
+-- | The name of the Availability Zone for use during database migration.
 --
 --
 --
 -- /See:/ 'availabilityZone' smart constructor.
-newtype AvailabilityZone = AvailabilityZone'
-  { _azName :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype AvailabilityZone =
+  AvailabilityZone'
+    { _azName :: Maybe Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AvailabilityZone' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'azName' - The name of the availability zone.
+-- * 'azName' - The name of the Availability Zone.
 availabilityZone
     :: AvailabilityZone
 availabilityZone = AvailabilityZone' {_azName = Nothing}
 
 
--- | The name of the availability zone.
+-- | The name of the Availability Zone.
 azName :: Lens' AvailabilityZone (Maybe Text)
 azName = lens _azName (\ s a -> s{_azName = a})
 
@@ -111,18 +115,20 @@ instance NFData AvailabilityZone where
 --
 --
 -- /See:/ 'certificate' smart constructor.
-data Certificate = Certificate'
-  { _cCertificateOwner        :: !(Maybe Text)
-  , _cSigningAlgorithm        :: !(Maybe Text)
-  , _cValidFromDate           :: !(Maybe POSIX)
-  , _cCertificatePem          :: !(Maybe Text)
-  , _cCertificateARN          :: !(Maybe Text)
-  , _cCertificateCreationDate :: !(Maybe POSIX)
-  , _cCertificateIdentifier   :: !(Maybe Text)
-  , _cCertificateWallet       :: !(Maybe Base64)
-  , _cKeyLength               :: !(Maybe Int)
-  , _cValidToDate             :: !(Maybe POSIX)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Certificate =
+  Certificate'
+    { _cCertificateOwner        :: !(Maybe Text)
+    , _cSigningAlgorithm        :: !(Maybe Text)
+    , _cValidFromDate           :: !(Maybe POSIX)
+    , _cCertificatePem          :: !(Maybe Text)
+    , _cCertificateARN          :: !(Maybe Text)
+    , _cCertificateCreationDate :: !(Maybe POSIX)
+    , _cCertificateIdentifier   :: !(Maybe Text)
+    , _cCertificateWallet       :: !(Maybe Base64)
+    , _cKeyLength               :: !(Maybe Int)
+    , _cValidToDate             :: !(Maybe POSIX)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Certificate' with the minimum fields required to make a request.
@@ -135,15 +141,15 @@ data Certificate = Certificate'
 --
 -- * 'cValidFromDate' - The beginning date that the certificate is valid.
 --
--- * 'cCertificatePem' - The contents of the .pem X.509 certificate file for the certificate.
+-- * 'cCertificatePem' - The contents of a @.pem@ file, which contains an X.509 certificate.
 --
 -- * 'cCertificateARN' - The Amazon Resource Name (ARN) for the certificate.
 --
 -- * 'cCertificateCreationDate' - The date that the certificate was created.
 --
--- * 'cCertificateIdentifier' - The customer-assigned name of the certificate. Valid characters are A-z and 0-9.
+-- * 'cCertificateIdentifier' - A customer-assigned name for the certificate. Identifiers must begin with a letter and must contain only ASCII letters, digits, and hyphens. They can't end with a hyphen or contain two consecutive hyphens.
 --
--- * 'cCertificateWallet' - The location of the imported Oracle Wallet certificate for use with SSL.-- /Note:/ This 'Lens' automatically encodes and decodes Base64 data. The underlying isomorphism will encode to Base64 representation during serialisation, and decode from Base64 representation during deserialisation. This 'Lens' accepts and returns only raw unencoded data.
+-- * 'cCertificateWallet' - The location of an imported Oracle Wallet certificate for use with SSL.-- /Note:/ This 'Lens' automatically encodes and decodes Base64 data. The underlying isomorphism will encode to Base64 representation during serialisation, and decode from Base64 representation during deserialisation. This 'Lens' accepts and returns only raw unencoded data.
 --
 -- * 'cKeyLength' - The key length of the cryptographic algorithm being used.
 --
@@ -177,7 +183,7 @@ cSigningAlgorithm = lens _cSigningAlgorithm (\ s a -> s{_cSigningAlgorithm = a})
 cValidFromDate :: Lens' Certificate (Maybe UTCTime)
 cValidFromDate = lens _cValidFromDate (\ s a -> s{_cValidFromDate = a}) . mapping _Time
 
--- | The contents of the .pem X.509 certificate file for the certificate.
+-- | The contents of a @.pem@ file, which contains an X.509 certificate.
 cCertificatePem :: Lens' Certificate (Maybe Text)
 cCertificatePem = lens _cCertificatePem (\ s a -> s{_cCertificatePem = a})
 
@@ -189,11 +195,11 @@ cCertificateARN = lens _cCertificateARN (\ s a -> s{_cCertificateARN = a})
 cCertificateCreationDate :: Lens' Certificate (Maybe UTCTime)
 cCertificateCreationDate = lens _cCertificateCreationDate (\ s a -> s{_cCertificateCreationDate = a}) . mapping _Time
 
--- | The customer-assigned name of the certificate. Valid characters are A-z and 0-9.
+-- | A customer-assigned name for the certificate. Identifiers must begin with a letter and must contain only ASCII letters, digits, and hyphens. They can't end with a hyphen or contain two consecutive hyphens.
 cCertificateIdentifier :: Lens' Certificate (Maybe Text)
 cCertificateIdentifier = lens _cCertificateIdentifier (\ s a -> s{_cCertificateIdentifier = a})
 
--- | The location of the imported Oracle Wallet certificate for use with SSL.-- /Note:/ This 'Lens' automatically encodes and decodes Base64 data. The underlying isomorphism will encode to Base64 representation during serialisation, and decode from Base64 representation during deserialisation. This 'Lens' accepts and returns only raw unencoded data.
+-- | The location of an imported Oracle Wallet certificate for use with SSL.-- /Note:/ This 'Lens' automatically encodes and decodes Base64 data. The underlying isomorphism will encode to Base64 representation during serialisation, and decode from Base64 representation during deserialisation. This 'Lens' accepts and returns only raw unencoded data.
 cCertificateWallet :: Lens' Certificate (Maybe ByteString)
 cCertificateWallet = lens _cCertificateWallet (\ s a -> s{_cCertificateWallet = a}) . mapping _Base64
 
@@ -225,19 +231,21 @@ instance Hashable Certificate where
 
 instance NFData Certificate where
 
--- |
+-- | Status of the connection between an endpoint and a replication instance, including Amazon Resource Names (ARNs) and the last error message issued.
 --
 --
 --
 -- /See:/ 'connection' smart constructor.
-data Connection = Connection'
-  { _cStatus                        :: !(Maybe Text)
-  , _cReplicationInstanceARN        :: !(Maybe Text)
-  , _cEndpointIdentifier            :: !(Maybe Text)
-  , _cReplicationInstanceIdentifier :: !(Maybe Text)
-  , _cEndpointARN                   :: !(Maybe Text)
-  , _cLastFailureMessage            :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Connection =
+  Connection'
+    { _cStatus                        :: !(Maybe Text)
+    , _cReplicationInstanceARN        :: !(Maybe Text)
+    , _cEndpointIdentifier            :: !(Maybe Text)
+    , _cReplicationInstanceIdentifier :: !(Maybe Text)
+    , _cEndpointARN                   :: !(Maybe Text)
+    , _cLastFailureMessage            :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Connection' with the minimum fields required to make a request.
@@ -246,13 +254,13 @@ data Connection = Connection'
 --
 -- * 'cStatus' - The connection status.
 --
--- * 'cReplicationInstanceARN' - The Amazon Resource Name (ARN) of the replication instance.
+-- * 'cReplicationInstanceARN' - The ARN of the replication instance.
 --
--- * 'cEndpointIdentifier' - The identifier of the endpoint. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.
+-- * 'cEndpointIdentifier' - The identifier of the endpoint. Identifiers must begin with a letter and must contain only ASCII letters, digits, and hyphens. They can't end with a hyphen or contain two consecutive hyphens.
 --
 -- * 'cReplicationInstanceIdentifier' - The replication instance identifier. This parameter is stored as a lowercase string.
 --
--- * 'cEndpointARN' - The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.
+-- * 'cEndpointARN' - The ARN string that uniquely identifies the endpoint.
 --
 -- * 'cLastFailureMessage' - The error message when the connection last failed.
 connection
@@ -272,11 +280,11 @@ connection =
 cStatus :: Lens' Connection (Maybe Text)
 cStatus = lens _cStatus (\ s a -> s{_cStatus = a})
 
--- | The Amazon Resource Name (ARN) of the replication instance.
+-- | The ARN of the replication instance.
 cReplicationInstanceARN :: Lens' Connection (Maybe Text)
 cReplicationInstanceARN = lens _cReplicationInstanceARN (\ s a -> s{_cReplicationInstanceARN = a})
 
--- | The identifier of the endpoint. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.
+-- | The identifier of the endpoint. Identifiers must begin with a letter and must contain only ASCII letters, digits, and hyphens. They can't end with a hyphen or contain two consecutive hyphens.
 cEndpointIdentifier :: Lens' Connection (Maybe Text)
 cEndpointIdentifier = lens _cEndpointIdentifier (\ s a -> s{_cEndpointIdentifier = a})
 
@@ -284,7 +292,7 @@ cEndpointIdentifier = lens _cEndpointIdentifier (\ s a -> s{_cEndpointIdentifier
 cReplicationInstanceIdentifier :: Lens' Connection (Maybe Text)
 cReplicationInstanceIdentifier = lens _cReplicationInstanceIdentifier (\ s a -> s{_cReplicationInstanceIdentifier = a})
 
--- | The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.
+-- | The ARN string that uniquely identifies the endpoint.
 cEndpointARN :: Lens' Connection (Maybe Text)
 cEndpointARN = lens _cEndpointARN (\ s a -> s{_cEndpointARN = a})
 
@@ -307,14 +315,71 @@ instance Hashable Connection where
 
 instance NFData Connection where
 
--- |
+-- | The settings in JSON format for the DMS Transfer type source endpoint.
+--
+--
+--
+-- /See:/ 'dmsTransferSettings' smart constructor.
+data DmsTransferSettings =
+  DmsTransferSettings'
+    { _dtsServiceAccessRoleARN :: !(Maybe Text)
+    , _dtsBucketName           :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'DmsTransferSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'dtsServiceAccessRoleARN' - The IAM role that has permission to access the Amazon S3 bucket.
+--
+-- * 'dtsBucketName' - The name of the S3 bucket to use.
+dmsTransferSettings
+    :: DmsTransferSettings
+dmsTransferSettings =
+  DmsTransferSettings'
+    {_dtsServiceAccessRoleARN = Nothing, _dtsBucketName = Nothing}
+
+
+-- | The IAM role that has permission to access the Amazon S3 bucket.
+dtsServiceAccessRoleARN :: Lens' DmsTransferSettings (Maybe Text)
+dtsServiceAccessRoleARN = lens _dtsServiceAccessRoleARN (\ s a -> s{_dtsServiceAccessRoleARN = a})
+
+-- | The name of the S3 bucket to use.
+dtsBucketName :: Lens' DmsTransferSettings (Maybe Text)
+dtsBucketName = lens _dtsBucketName (\ s a -> s{_dtsBucketName = a})
+
+instance FromJSON DmsTransferSettings where
+        parseJSON
+          = withObject "DmsTransferSettings"
+              (\ x ->
+                 DmsTransferSettings' <$>
+                   (x .:? "ServiceAccessRoleArn") <*>
+                     (x .:? "BucketName"))
+
+instance Hashable DmsTransferSettings where
+
+instance NFData DmsTransferSettings where
+
+instance ToJSON DmsTransferSettings where
+        toJSON DmsTransferSettings'{..}
+          = object
+              (catMaybes
+                 [("ServiceAccessRoleArn" .=) <$>
+                    _dtsServiceAccessRoleARN,
+                  ("BucketName" .=) <$> _dtsBucketName])
+
+-- | Provides the Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role used to define an Amazon DynamoDB target endpoint.
 --
 --
 --
 -- /See:/ 'dynamoDBSettings' smart constructor.
-newtype DynamoDBSettings = DynamoDBSettings'
-  { _ddsServiceAccessRoleARN :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype DynamoDBSettings =
+  DynamoDBSettings'
+    { _ddsServiceAccessRoleARN :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DynamoDBSettings' with the minimum fields required to make a request.
@@ -351,33 +416,131 @@ instance ToJSON DynamoDBSettings where
                     ("ServiceAccessRoleArn" .=
                        _ddsServiceAccessRoleARN)])
 
--- |
+-- | Provides information that defines an Elasticsearch endpoint.
+--
+--
+--
+-- /See:/ 'elasticsearchSettings' smart constructor.
+data ElasticsearchSettings =
+  ElasticsearchSettings'
+    { _esFullLoadErrorPercentage :: !(Maybe Int)
+    , _esErrorRetryDuration      :: !(Maybe Int)
+    , _esServiceAccessRoleARN    :: !Text
+    , _esEndpointURI             :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'ElasticsearchSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'esFullLoadErrorPercentage' - The maximum percentage of records that can fail to be written before a full load operation stops.
+--
+-- * 'esErrorRetryDuration' - The maximum number of seconds for which DMS retries failed API requests to the Elasticsearch cluster.
+--
+-- * 'esServiceAccessRoleARN' - The Amazon Resource Name (ARN) used by service to access the IAM role.
+--
+-- * 'esEndpointURI' - The endpoint for the Elasticsearch cluster.
+elasticsearchSettings
+    :: Text -- ^ 'esServiceAccessRoleARN'
+    -> Text -- ^ 'esEndpointURI'
+    -> ElasticsearchSettings
+elasticsearchSettings pServiceAccessRoleARN_ pEndpointURI_ =
+  ElasticsearchSettings'
+    { _esFullLoadErrorPercentage = Nothing
+    , _esErrorRetryDuration = Nothing
+    , _esServiceAccessRoleARN = pServiceAccessRoleARN_
+    , _esEndpointURI = pEndpointURI_
+    }
+
+
+-- | The maximum percentage of records that can fail to be written before a full load operation stops.
+esFullLoadErrorPercentage :: Lens' ElasticsearchSettings (Maybe Int)
+esFullLoadErrorPercentage = lens _esFullLoadErrorPercentage (\ s a -> s{_esFullLoadErrorPercentage = a})
+
+-- | The maximum number of seconds for which DMS retries failed API requests to the Elasticsearch cluster.
+esErrorRetryDuration :: Lens' ElasticsearchSettings (Maybe Int)
+esErrorRetryDuration = lens _esErrorRetryDuration (\ s a -> s{_esErrorRetryDuration = a})
+
+-- | The Amazon Resource Name (ARN) used by service to access the IAM role.
+esServiceAccessRoleARN :: Lens' ElasticsearchSettings Text
+esServiceAccessRoleARN = lens _esServiceAccessRoleARN (\ s a -> s{_esServiceAccessRoleARN = a})
+
+-- | The endpoint for the Elasticsearch cluster.
+esEndpointURI :: Lens' ElasticsearchSettings Text
+esEndpointURI = lens _esEndpointURI (\ s a -> s{_esEndpointURI = a})
+
+instance FromJSON ElasticsearchSettings where
+        parseJSON
+          = withObject "ElasticsearchSettings"
+              (\ x ->
+                 ElasticsearchSettings' <$>
+                   (x .:? "FullLoadErrorPercentage") <*>
+                     (x .:? "ErrorRetryDuration")
+                     <*> (x .: "ServiceAccessRoleArn")
+                     <*> (x .: "EndpointUri"))
+
+instance Hashable ElasticsearchSettings where
+
+instance NFData ElasticsearchSettings where
+
+instance ToJSON ElasticsearchSettings where
+        toJSON ElasticsearchSettings'{..}
+          = object
+              (catMaybes
+                 [("FullLoadErrorPercentage" .=) <$>
+                    _esFullLoadErrorPercentage,
+                  ("ErrorRetryDuration" .=) <$> _esErrorRetryDuration,
+                  Just
+                    ("ServiceAccessRoleArn" .= _esServiceAccessRoleARN),
+                  Just ("EndpointUri" .= _esEndpointURI)])
+
+-- | Describes an endpoint of a database instance in response to operations such as the following:
+--
+--
+--     * @CreateEndpoint@
+--
+--     * @DescribeEndpoint@
+--
+--     * @DescribeEndpointTypes@
+--
+--     * @ModifyEndpoint@
+--
 --
 --
 --
 -- /See:/ 'endpoint' smart constructor.
-data Endpoint = Endpoint'
-  { _eStatus                    :: !(Maybe Text)
-  , _eServerName                :: !(Maybe Text)
-  , _eCertificateARN            :: !(Maybe Text)
-  , _eServiceAccessRoleARN      :: !(Maybe Text)
-  , _eEngineDisplayName         :: !(Maybe Text)
-  , _eExtraConnectionAttributes :: !(Maybe Text)
-  , _eEndpointType              :: !(Maybe ReplicationEndpointTypeValue)
-  , _eUsername                  :: !(Maybe Text)
-  , _eExternalTableDefinition   :: !(Maybe Text)
-  , _eEngineName                :: !(Maybe Text)
-  , _eKMSKeyId                  :: !(Maybe Text)
-  , _eMongoDBSettings           :: !(Maybe MongoDBSettings)
-  , _eSSLMode                   :: !(Maybe DmsSSLModeValue)
-  , _eDatabaseName              :: !(Maybe Text)
-  , _eS3Settings                :: !(Maybe S3Settings)
-  , _eEndpointIdentifier        :: !(Maybe Text)
-  , _eExternalId                :: !(Maybe Text)
-  , _eDynamoDBSettings          :: !(Maybe DynamoDBSettings)
-  , _eEndpointARN               :: !(Maybe Text)
-  , _ePort                      :: !(Maybe Int)
-  } deriving (Eq, Show, Data, Typeable, Generic)
+data Endpoint =
+  Endpoint'
+    { _eStatus                    :: !(Maybe Text)
+    , _eDmsTransferSettings       :: !(Maybe DmsTransferSettings)
+    , _eServerName                :: !(Maybe Text)
+    , _eCertificateARN            :: !(Maybe Text)
+    , _eServiceAccessRoleARN      :: !(Maybe Text)
+    , _eEngineDisplayName         :: !(Maybe Text)
+    , _eExtraConnectionAttributes :: !(Maybe Text)
+    , _eKafkaSettings             :: !(Maybe KafkaSettings)
+    , _eEndpointType              :: !(Maybe ReplicationEndpointTypeValue)
+    , _eRedshiftSettings          :: !(Maybe RedshiftSettings)
+    , _eElasticsearchSettings     :: !(Maybe ElasticsearchSettings)
+    , _eUsername                  :: !(Maybe Text)
+    , _eExternalTableDefinition   :: !(Maybe Text)
+    , _eEngineName                :: !(Maybe Text)
+    , _eNeptuneSettings           :: !(Maybe NeptuneSettings)
+    , _eKMSKeyId                  :: !(Maybe Text)
+    , _eMongoDBSettings           :: !(Maybe MongoDBSettings)
+    , _eSSLMode                   :: !(Maybe DmsSSLModeValue)
+    , _eDatabaseName              :: !(Maybe Text)
+    , _eS3Settings                :: !(Maybe S3Settings)
+    , _eKinesisSettings           :: !(Maybe KinesisSettings)
+    , _eEndpointIdentifier        :: !(Maybe Text)
+    , _eExternalId                :: !(Maybe Text)
+    , _eDynamoDBSettings          :: !(Maybe DynamoDBSettings)
+    , _eEndpointARN               :: !(Maybe Text)
+    , _ePort                      :: !(Maybe Int)
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Endpoint' with the minimum fields required to make a request.
@@ -385,6 +548,8 @@ data Endpoint = Endpoint'
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'eStatus' - The status of the endpoint.
+--
+-- * 'eDmsTransferSettings' - The settings in JSON format for the DMS transfer type of source endpoint.  Possible settings include the following:     * @ServiceAccessRoleArn@ - The IAM role that has permission to access the Amazon S3 bucket.     * @BucketName@ - The name of the S3 bucket to use.     * @CompressionType@ - An optional parameter to use GZIP to compress the target files. To use GZIP, set this value to @NONE@ (the default). To keep the files uncompressed, don't use this value. Shorthand syntax for these settings is as follows: @ServiceAccessRoleArn=string,BucketName=string,CompressionType=string@  JSON syntax for these settings is as follows: @{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } @
 --
 -- * 'eServerName' - The name of the server at the endpoint.
 --
@@ -396,25 +561,35 @@ data Endpoint = Endpoint'
 --
 -- * 'eExtraConnectionAttributes' - Additional connection attributes used to connect to the endpoint.
 --
--- * 'eEndpointType' - The type of endpoint.
+-- * 'eKafkaSettings' - The settings for the Apache Kafka target endpoint. For more information, see the @KafkaSettings@ structure.
+--
+-- * 'eEndpointType' - The type of endpoint. Valid values are @source@ and @target@ .
+--
+-- * 'eRedshiftSettings' - Settings for the Amazon Redshift endpoint.
+--
+-- * 'eElasticsearchSettings' - The settings for the Elasticsearch source endpoint. For more information, see the @ElasticsearchSettings@ structure.
 --
 -- * 'eUsername' - The user name used to connect to the endpoint.
 --
 -- * 'eExternalTableDefinition' - The external table definition.
 --
--- * 'eEngineName' - The database engine name. Valid values, depending on the EndPointType, include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, sybase, dynamodb, mongodb, and sqlserver.
+-- * 'eEngineName' - The database engine name. Valid values, depending on the EndpointType, include @"mysql"@ , @"oracle"@ , @"postgres"@ , @"mariadb"@ , @"aurora"@ , @"aurora-postgresql"@ , @"redshift"@ , @"s3"@ , @"db2"@ , @"azuredb"@ , @"sybase"@ , @"dynamodb"@ , @"mongodb"@ , @"kinesis"@ , @"kafka"@ , @"elasticsearch"@ , @"documentdb"@ , and @"sqlserver"@ .
 --
--- * 'eKMSKeyId' - The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
+-- * 'eNeptuneSettings' - The settings for the MongoDB source endpoint. For more information, see the @NeptuneSettings@ structure.
+--
+-- * 'eKMSKeyId' - An AWS KMS key identifier that is used to encrypt the connection parameters for the endpoint. If you don't specify a value for the @KmsKeyId@ parameter, then AWS DMS uses your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS Region.
 --
 -- * 'eMongoDBSettings' - The settings for the MongoDB source endpoint. For more information, see the @MongoDbSettings@ structure.
 --
--- * 'eSSLMode' - The SSL mode used to connect to the endpoint. SSL mode can be one of four values: none, require, verify-ca, verify-full.  The default value is none.
+-- * 'eSSLMode' - The SSL mode used to connect to the endpoint. The default value is @none@ .
 --
 -- * 'eDatabaseName' - The name of the database at the endpoint.
 --
 -- * 'eS3Settings' - The settings for the S3 target endpoint. For more information, see the @S3Settings@ structure.
 --
--- * 'eEndpointIdentifier' - The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.
+-- * 'eKinesisSettings' - The settings for the Amazon Kinesis target endpoint. For more information, see the @KinesisSettings@ structure.
+--
+-- * 'eEndpointIdentifier' - The database endpoint identifier. Identifiers must begin with a letter and must contain only ASCII letters, digits, and hyphens. They can't end with a hyphen or contain two consecutive hyphens.
 --
 -- * 'eExternalId' - Value returned by a call to CreateEndpoint that can be used for cross-account validation. Use it on a subsequent call to CreateEndpoint to create the endpoint with a cross-account.
 --
@@ -428,20 +603,26 @@ endpoint
 endpoint =
   Endpoint'
     { _eStatus = Nothing
+    , _eDmsTransferSettings = Nothing
     , _eServerName = Nothing
     , _eCertificateARN = Nothing
     , _eServiceAccessRoleARN = Nothing
     , _eEngineDisplayName = Nothing
     , _eExtraConnectionAttributes = Nothing
+    , _eKafkaSettings = Nothing
     , _eEndpointType = Nothing
+    , _eRedshiftSettings = Nothing
+    , _eElasticsearchSettings = Nothing
     , _eUsername = Nothing
     , _eExternalTableDefinition = Nothing
     , _eEngineName = Nothing
+    , _eNeptuneSettings = Nothing
     , _eKMSKeyId = Nothing
     , _eMongoDBSettings = Nothing
     , _eSSLMode = Nothing
     , _eDatabaseName = Nothing
     , _eS3Settings = Nothing
+    , _eKinesisSettings = Nothing
     , _eEndpointIdentifier = Nothing
     , _eExternalId = Nothing
     , _eDynamoDBSettings = Nothing
@@ -453,6 +634,10 @@ endpoint =
 -- | The status of the endpoint.
 eStatus :: Lens' Endpoint (Maybe Text)
 eStatus = lens _eStatus (\ s a -> s{_eStatus = a})
+
+-- | The settings in JSON format for the DMS transfer type of source endpoint.  Possible settings include the following:     * @ServiceAccessRoleArn@ - The IAM role that has permission to access the Amazon S3 bucket.     * @BucketName@ - The name of the S3 bucket to use.     * @CompressionType@ - An optional parameter to use GZIP to compress the target files. To use GZIP, set this value to @NONE@ (the default). To keep the files uncompressed, don't use this value. Shorthand syntax for these settings is as follows: @ServiceAccessRoleArn=string,BucketName=string,CompressionType=string@  JSON syntax for these settings is as follows: @{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } @
+eDmsTransferSettings :: Lens' Endpoint (Maybe DmsTransferSettings)
+eDmsTransferSettings = lens _eDmsTransferSettings (\ s a -> s{_eDmsTransferSettings = a})
 
 -- | The name of the server at the endpoint.
 eServerName :: Lens' Endpoint (Maybe Text)
@@ -474,9 +659,21 @@ eEngineDisplayName = lens _eEngineDisplayName (\ s a -> s{_eEngineDisplayName = 
 eExtraConnectionAttributes :: Lens' Endpoint (Maybe Text)
 eExtraConnectionAttributes = lens _eExtraConnectionAttributes (\ s a -> s{_eExtraConnectionAttributes = a})
 
--- | The type of endpoint.
+-- | The settings for the Apache Kafka target endpoint. For more information, see the @KafkaSettings@ structure.
+eKafkaSettings :: Lens' Endpoint (Maybe KafkaSettings)
+eKafkaSettings = lens _eKafkaSettings (\ s a -> s{_eKafkaSettings = a})
+
+-- | The type of endpoint. Valid values are @source@ and @target@ .
 eEndpointType :: Lens' Endpoint (Maybe ReplicationEndpointTypeValue)
 eEndpointType = lens _eEndpointType (\ s a -> s{_eEndpointType = a})
+
+-- | Settings for the Amazon Redshift endpoint.
+eRedshiftSettings :: Lens' Endpoint (Maybe RedshiftSettings)
+eRedshiftSettings = lens _eRedshiftSettings (\ s a -> s{_eRedshiftSettings = a})
+
+-- | The settings for the Elasticsearch source endpoint. For more information, see the @ElasticsearchSettings@ structure.
+eElasticsearchSettings :: Lens' Endpoint (Maybe ElasticsearchSettings)
+eElasticsearchSettings = lens _eElasticsearchSettings (\ s a -> s{_eElasticsearchSettings = a})
 
 -- | The user name used to connect to the endpoint.
 eUsername :: Lens' Endpoint (Maybe Text)
@@ -486,11 +683,15 @@ eUsername = lens _eUsername (\ s a -> s{_eUsername = a})
 eExternalTableDefinition :: Lens' Endpoint (Maybe Text)
 eExternalTableDefinition = lens _eExternalTableDefinition (\ s a -> s{_eExternalTableDefinition = a})
 
--- | The database engine name. Valid values, depending on the EndPointType, include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, sybase, dynamodb, mongodb, and sqlserver.
+-- | The database engine name. Valid values, depending on the EndpointType, include @"mysql"@ , @"oracle"@ , @"postgres"@ , @"mariadb"@ , @"aurora"@ , @"aurora-postgresql"@ , @"redshift"@ , @"s3"@ , @"db2"@ , @"azuredb"@ , @"sybase"@ , @"dynamodb"@ , @"mongodb"@ , @"kinesis"@ , @"kafka"@ , @"elasticsearch"@ , @"documentdb"@ , and @"sqlserver"@ .
 eEngineName :: Lens' Endpoint (Maybe Text)
 eEngineName = lens _eEngineName (\ s a -> s{_eEngineName = a})
 
--- | The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
+-- | The settings for the MongoDB source endpoint. For more information, see the @NeptuneSettings@ structure.
+eNeptuneSettings :: Lens' Endpoint (Maybe NeptuneSettings)
+eNeptuneSettings = lens _eNeptuneSettings (\ s a -> s{_eNeptuneSettings = a})
+
+-- | An AWS KMS key identifier that is used to encrypt the connection parameters for the endpoint. If you don't specify a value for the @KmsKeyId@ parameter, then AWS DMS uses your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS Region.
 eKMSKeyId :: Lens' Endpoint (Maybe Text)
 eKMSKeyId = lens _eKMSKeyId (\ s a -> s{_eKMSKeyId = a})
 
@@ -498,7 +699,7 @@ eKMSKeyId = lens _eKMSKeyId (\ s a -> s{_eKMSKeyId = a})
 eMongoDBSettings :: Lens' Endpoint (Maybe MongoDBSettings)
 eMongoDBSettings = lens _eMongoDBSettings (\ s a -> s{_eMongoDBSettings = a})
 
--- | The SSL mode used to connect to the endpoint. SSL mode can be one of four values: none, require, verify-ca, verify-full.  The default value is none.
+-- | The SSL mode used to connect to the endpoint. The default value is @none@ .
 eSSLMode :: Lens' Endpoint (Maybe DmsSSLModeValue)
 eSSLMode = lens _eSSLMode (\ s a -> s{_eSSLMode = a})
 
@@ -510,7 +711,11 @@ eDatabaseName = lens _eDatabaseName (\ s a -> s{_eDatabaseName = a})
 eS3Settings :: Lens' Endpoint (Maybe S3Settings)
 eS3Settings = lens _eS3Settings (\ s a -> s{_eS3Settings = a})
 
--- | The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.
+-- | The settings for the Amazon Kinesis target endpoint. For more information, see the @KinesisSettings@ structure.
+eKinesisSettings :: Lens' Endpoint (Maybe KinesisSettings)
+eKinesisSettings = lens _eKinesisSettings (\ s a -> s{_eKinesisSettings = a})
+
+-- | The database endpoint identifier. Identifiers must begin with a letter and must contain only ASCII letters, digits, and hyphens. They can't end with a hyphen or contain two consecutive hyphens.
 eEndpointIdentifier :: Lens' Endpoint (Maybe Text)
 eEndpointIdentifier = lens _eEndpointIdentifier (\ s a -> s{_eEndpointIdentifier = a})
 
@@ -535,20 +740,26 @@ instance FromJSON Endpoint where
           = withObject "Endpoint"
               (\ x ->
                  Endpoint' <$>
-                   (x .:? "Status") <*> (x .:? "ServerName") <*>
-                     (x .:? "CertificateArn")
+                   (x .:? "Status") <*> (x .:? "DmsTransferSettings")
+                     <*> (x .:? "ServerName")
+                     <*> (x .:? "CertificateArn")
                      <*> (x .:? "ServiceAccessRoleArn")
                      <*> (x .:? "EngineDisplayName")
                      <*> (x .:? "ExtraConnectionAttributes")
+                     <*> (x .:? "KafkaSettings")
                      <*> (x .:? "EndpointType")
+                     <*> (x .:? "RedshiftSettings")
+                     <*> (x .:? "ElasticsearchSettings")
                      <*> (x .:? "Username")
                      <*> (x .:? "ExternalTableDefinition")
                      <*> (x .:? "EngineName")
+                     <*> (x .:? "NeptuneSettings")
                      <*> (x .:? "KmsKeyId")
                      <*> (x .:? "MongoDbSettings")
                      <*> (x .:? "SslMode")
                      <*> (x .:? "DatabaseName")
                      <*> (x .:? "S3Settings")
+                     <*> (x .:? "KinesisSettings")
                      <*> (x .:? "EndpointIdentifier")
                      <*> (x .:? "ExternalId")
                      <*> (x .:? "DynamoDbSettings")
@@ -559,27 +770,29 @@ instance Hashable Endpoint where
 
 instance NFData Endpoint where
 
--- |
+-- | Describes an identifiable significant activity that affects a replication instance or task. This object can provide the message, the available event categories, the date and source of the event, and the AWS DMS resource type.
 --
 --
 --
 -- /See:/ 'event' smart constructor.
-data Event = Event'
-  { _eSourceType       :: !(Maybe SourceType)
-  , _eSourceIdentifier :: !(Maybe Text)
-  , _eDate             :: !(Maybe POSIX)
-  , _eEventCategories  :: !(Maybe [Text])
-  , _eMessage          :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Event =
+  Event'
+    { _eSourceType       :: !(Maybe SourceType)
+    , _eSourceIdentifier :: !(Maybe Text)
+    , _eDate             :: !(Maybe POSIX)
+    , _eEventCategories  :: !(Maybe [Text])
+    , _eMessage          :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Event' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'eSourceType' - The type of AWS DMS resource that generates events.  Valid values: replication-instance | endpoint | migration-task
+-- * 'eSourceType' - The type of AWS DMS resource that generates events.  Valid values: replication-instance | endpoint | replication-task
 --
--- * 'eSourceIdentifier' - The identifier of the event source. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens.  Constraints:replication instance, endpoint, migration task
+-- * 'eSourceIdentifier' - The identifier of an event source.
 --
 -- * 'eDate' - The date of the event.
 --
@@ -598,11 +811,11 @@ event =
     }
 
 
--- | The type of AWS DMS resource that generates events.  Valid values: replication-instance | endpoint | migration-task
+-- | The type of AWS DMS resource that generates events.  Valid values: replication-instance | endpoint | replication-task
 eSourceType :: Lens' Event (Maybe SourceType)
 eSourceType = lens _eSourceType (\ s a -> s{_eSourceType = a})
 
--- | The identifier of the event source. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens.  Constraints:replication instance, endpoint, migration task
+-- | The identifier of an event source.
 eSourceIdentifier :: Lens' Event (Maybe Text)
 eSourceIdentifier = lens _eSourceIdentifier (\ s a -> s{_eSourceIdentifier = a})
 
@@ -632,35 +845,37 @@ instance Hashable Event where
 
 instance NFData Event where
 
--- |
+-- | Lists categories of events subscribed to, and generated by, the applicable AWS DMS resource type.
 --
 --
 --
 -- /See:/ 'eventCategoryGroup' smart constructor.
-data EventCategoryGroup = EventCategoryGroup'
-  { _ecgSourceType      :: !(Maybe Text)
-  , _ecgEventCategories :: !(Maybe [Text])
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data EventCategoryGroup =
+  EventCategoryGroup'
+    { _ecgSourceType      :: !(Maybe Text)
+    , _ecgEventCategories :: !(Maybe [Text])
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'EventCategoryGroup' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ecgSourceType' - The type of AWS DMS resource that generates events.  Valid values: replication-instance | replication-server | security-group | migration-task
+-- * 'ecgSourceType' - The type of AWS DMS resource that generates events.  Valid values: replication-instance | replication-server | security-group | replication-task
 --
--- * 'ecgEventCategories' - A list of event categories for a @SourceType@ that you want to subscribe to.
+-- * 'ecgEventCategories' - A list of event categories from a source type that you've chosen.
 eventCategoryGroup
     :: EventCategoryGroup
 eventCategoryGroup =
   EventCategoryGroup' {_ecgSourceType = Nothing, _ecgEventCategories = Nothing}
 
 
--- | The type of AWS DMS resource that generates events.  Valid values: replication-instance | replication-server | security-group | migration-task
+-- | The type of AWS DMS resource that generates events.  Valid values: replication-instance | replication-server | security-group | replication-task
 ecgSourceType :: Lens' EventCategoryGroup (Maybe Text)
 ecgSourceType = lens _ecgSourceType (\ s a -> s{_ecgSourceType = a})
 
--- | A list of event categories for a @SourceType@ that you want to subscribe to.
+-- | A list of event categories from a source type that you've chosen.
 ecgEventCategories :: Lens' EventCategoryGroup [Text]
 ecgEventCategories = lens _ecgEventCategories (\ s a -> s{_ecgEventCategories = a}) . _Default . _Coerce
 
@@ -676,22 +891,24 @@ instance Hashable EventCategoryGroup where
 
 instance NFData EventCategoryGroup where
 
--- |
+-- | Describes an event notification subscription created by the @CreateEventSubscription@ operation.
 --
 --
 --
 -- /See:/ 'eventSubscription' smart constructor.
-data EventSubscription = EventSubscription'
-  { _esStatus                   :: !(Maybe Text)
-  , _esCustomerAWSId            :: !(Maybe Text)
-  , _esCustSubscriptionId       :: !(Maybe Text)
-  , _esSNSTopicARN              :: !(Maybe Text)
-  , _esEnabled                  :: !(Maybe Bool)
-  , _esSourceType               :: !(Maybe Text)
-  , _esSubscriptionCreationTime :: !(Maybe Text)
-  , _esEventCategoriesList      :: !(Maybe [Text])
-  , _esSourceIdsList            :: !(Maybe [Text])
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data EventSubscription =
+  EventSubscription'
+    { _esStatus                   :: !(Maybe Text)
+    , _esCustomerAWSId            :: !(Maybe Text)
+    , _esCustSubscriptionId       :: !(Maybe Text)
+    , _esSNSTopicARN              :: !(Maybe Text)
+    , _esEnabled                  :: !(Maybe Bool)
+    , _esSourceType               :: !(Maybe Text)
+    , _esSubscriptionCreationTime :: !(Maybe Text)
+    , _esEventCategoriesList      :: !(Maybe [Text])
+    , _esSourceIdsList            :: !(Maybe [Text])
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'EventSubscription' with the minimum fields required to make a request.
@@ -708,7 +925,7 @@ data EventSubscription = EventSubscription'
 --
 -- * 'esEnabled' - Boolean value that indicates if the event subscription is enabled.
 --
--- * 'esSourceType' - The type of AWS DMS resource that generates events.  Valid values: replication-instance | replication-server | security-group | migration-task
+-- * 'esSourceType' - The type of AWS DMS resource that generates events.  Valid values: replication-instance | replication-server | security-group | replication-task
 --
 -- * 'esSubscriptionCreationTime' - The time the RDS event notification subscription was created.
 --
@@ -751,7 +968,7 @@ esSNSTopicARN = lens _esSNSTopicARN (\ s a -> s{_esSNSTopicARN = a})
 esEnabled :: Lens' EventSubscription (Maybe Bool)
 esEnabled = lens _esEnabled (\ s a -> s{_esEnabled = a})
 
--- | The type of AWS DMS resource that generates events.  Valid values: replication-instance | replication-server | security-group | migration-task
+-- | The type of AWS DMS resource that generates events.  Valid values: replication-instance | replication-server | security-group | replication-task
 esSourceType :: Lens' EventSubscription (Maybe Text)
 esSourceType = lens _esSourceType (\ s a -> s{_esSourceType = a})
 
@@ -785,15 +1002,17 @@ instance Hashable EventSubscription where
 
 instance NFData EventSubscription where
 
--- |
+-- | Identifies the name and value of a source filter object used to limit the number and type of records transferred from your source to your target.
 --
 --
 --
 -- /See:/ 'filter'' smart constructor.
-data Filter = Filter'
-  { _fName   :: !Text
-  , _fValues :: ![Text]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Filter =
+  Filter'
+    { _fName   :: !Text
+    , _fValues :: ![Text]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Filter' with the minimum fields required to make a request.
@@ -828,25 +1047,200 @@ instance ToJSON Filter where
                  [Just ("Name" .= _fName),
                   Just ("Values" .= _fValues)])
 
--- |
+-- | Provides information that describes an Apache Kafka endpoint. This information includes the output format of records applied to the endpoint and details of transaction and control table data information.
+--
+--
+--
+-- /See:/ 'kafkaSettings' smart constructor.
+data KafkaSettings =
+  KafkaSettings'
+    { _ksTopic  :: !(Maybe Text)
+    , _ksBroker :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'KafkaSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'ksTopic' - The topic to which you migrate the data. If you don't specify a topic, AWS DMS specifies @"kafka-default-topic"@ as the migration topic.
+--
+-- * 'ksBroker' - The broker location and port of the Kafka broker that hosts your Kafka instance. Specify the broker in the form @/broker-hostname-or-ip/ :/port/ @ . For example, @"ec2-12-345-678-901.compute-1.amazonaws.com:2345"@ .
+kafkaSettings
+    :: KafkaSettings
+kafkaSettings = KafkaSettings' {_ksTopic = Nothing, _ksBroker = Nothing}
+
+
+-- | The topic to which you migrate the data. If you don't specify a topic, AWS DMS specifies @"kafka-default-topic"@ as the migration topic.
+ksTopic :: Lens' KafkaSettings (Maybe Text)
+ksTopic = lens _ksTopic (\ s a -> s{_ksTopic = a})
+
+-- | The broker location and port of the Kafka broker that hosts your Kafka instance. Specify the broker in the form @/broker-hostname-or-ip/ :/port/ @ . For example, @"ec2-12-345-678-901.compute-1.amazonaws.com:2345"@ .
+ksBroker :: Lens' KafkaSettings (Maybe Text)
+ksBroker = lens _ksBroker (\ s a -> s{_ksBroker = a})
+
+instance FromJSON KafkaSettings where
+        parseJSON
+          = withObject "KafkaSettings"
+              (\ x ->
+                 KafkaSettings' <$>
+                   (x .:? "Topic") <*> (x .:? "Broker"))
+
+instance Hashable KafkaSettings where
+
+instance NFData KafkaSettings where
+
+instance ToJSON KafkaSettings where
+        toJSON KafkaSettings'{..}
+          = object
+              (catMaybes
+                 [("Topic" .=) <$> _ksTopic,
+                  ("Broker" .=) <$> _ksBroker])
+
+-- | Provides information that describes an Amazon Kinesis Data Stream endpoint. This information includes the output format of records applied to the endpoint and details of transaction and control table data information.
+--
+--
+--
+-- /See:/ 'kinesisSettings' smart constructor.
+data KinesisSettings =
+  KinesisSettings'
+    { _ksIncludeTransactionDetails   :: !(Maybe Bool)
+    , _ksIncludeTableAlterOperations :: !(Maybe Bool)
+    , _ksServiceAccessRoleARN        :: !(Maybe Text)
+    , _ksPartitionIncludeSchemaTable :: !(Maybe Bool)
+    , _ksStreamARN                   :: !(Maybe Text)
+    , _ksIncludeControlDetails       :: !(Maybe Bool)
+    , _ksIncludePartitionValue       :: !(Maybe Bool)
+    , _ksMessageFormat               :: !(Maybe MessageFormatValue)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'KinesisSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'ksIncludeTransactionDetails' - Provides detailed transaction information from the source database. This information includes a commit timestamp, a log position, and values for @transaction_id@ , previous @transaction_id@ , and @transaction_record_id@ (the record offset within a transaction). The default is @False@ .
+--
+-- * 'ksIncludeTableAlterOperations' - Includes any data definition language (DDL) operations that change the table in the control data, such as @rename-table@ , @drop-table@ , @add-column@ , @drop-column@ , and @rename-column@ . The default is @False@ .
+--
+-- * 'ksServiceAccessRoleARN' - The Amazon Resource Name (ARN) for the AWS Identity and Access Management (IAM) role that AWS DMS uses to write to the Kinesis data stream.
+--
+-- * 'ksPartitionIncludeSchemaTable' - Prefixes schema and table names to partition values, when the partition type is @primary-key-type@ . Doing this increases data distribution among Kinesis shards. For example, suppose that a SysBench schema has thousands of tables and each table has only limited range for a primary key. In this case, the same primary key is sent from thousands of tables to the same shard, which causes throttling. The default is @False@ .
+--
+-- * 'ksStreamARN' - The Amazon Resource Name (ARN) for the Amazon Kinesis Data Streams endpoint.
+--
+-- * 'ksIncludeControlDetails' - Shows detailed control information for table definition, column definition, and table and column changes in the Kinesis message output. The default is @False@ .
+--
+-- * 'ksIncludePartitionValue' - Shows the partition value within the Kinesis message output, unless the partition type is @schema-table-type@ . The default is @False@ .
+--
+-- * 'ksMessageFormat' - The output format for the records created on the endpoint. The message format is @JSON@ (default) or @JSON_UNFORMATTED@ (a single line with no tab).
+kinesisSettings
+    :: KinesisSettings
+kinesisSettings =
+  KinesisSettings'
+    { _ksIncludeTransactionDetails = Nothing
+    , _ksIncludeTableAlterOperations = Nothing
+    , _ksServiceAccessRoleARN = Nothing
+    , _ksPartitionIncludeSchemaTable = Nothing
+    , _ksStreamARN = Nothing
+    , _ksIncludeControlDetails = Nothing
+    , _ksIncludePartitionValue = Nothing
+    , _ksMessageFormat = Nothing
+    }
+
+
+-- | Provides detailed transaction information from the source database. This information includes a commit timestamp, a log position, and values for @transaction_id@ , previous @transaction_id@ , and @transaction_record_id@ (the record offset within a transaction). The default is @False@ .
+ksIncludeTransactionDetails :: Lens' KinesisSettings (Maybe Bool)
+ksIncludeTransactionDetails = lens _ksIncludeTransactionDetails (\ s a -> s{_ksIncludeTransactionDetails = a})
+
+-- | Includes any data definition language (DDL) operations that change the table in the control data, such as @rename-table@ , @drop-table@ , @add-column@ , @drop-column@ , and @rename-column@ . The default is @False@ .
+ksIncludeTableAlterOperations :: Lens' KinesisSettings (Maybe Bool)
+ksIncludeTableAlterOperations = lens _ksIncludeTableAlterOperations (\ s a -> s{_ksIncludeTableAlterOperations = a})
+
+-- | The Amazon Resource Name (ARN) for the AWS Identity and Access Management (IAM) role that AWS DMS uses to write to the Kinesis data stream.
+ksServiceAccessRoleARN :: Lens' KinesisSettings (Maybe Text)
+ksServiceAccessRoleARN = lens _ksServiceAccessRoleARN (\ s a -> s{_ksServiceAccessRoleARN = a})
+
+-- | Prefixes schema and table names to partition values, when the partition type is @primary-key-type@ . Doing this increases data distribution among Kinesis shards. For example, suppose that a SysBench schema has thousands of tables and each table has only limited range for a primary key. In this case, the same primary key is sent from thousands of tables to the same shard, which causes throttling. The default is @False@ .
+ksPartitionIncludeSchemaTable :: Lens' KinesisSettings (Maybe Bool)
+ksPartitionIncludeSchemaTable = lens _ksPartitionIncludeSchemaTable (\ s a -> s{_ksPartitionIncludeSchemaTable = a})
+
+-- | The Amazon Resource Name (ARN) for the Amazon Kinesis Data Streams endpoint.
+ksStreamARN :: Lens' KinesisSettings (Maybe Text)
+ksStreamARN = lens _ksStreamARN (\ s a -> s{_ksStreamARN = a})
+
+-- | Shows detailed control information for table definition, column definition, and table and column changes in the Kinesis message output. The default is @False@ .
+ksIncludeControlDetails :: Lens' KinesisSettings (Maybe Bool)
+ksIncludeControlDetails = lens _ksIncludeControlDetails (\ s a -> s{_ksIncludeControlDetails = a})
+
+-- | Shows the partition value within the Kinesis message output, unless the partition type is @schema-table-type@ . The default is @False@ .
+ksIncludePartitionValue :: Lens' KinesisSettings (Maybe Bool)
+ksIncludePartitionValue = lens _ksIncludePartitionValue (\ s a -> s{_ksIncludePartitionValue = a})
+
+-- | The output format for the records created on the endpoint. The message format is @JSON@ (default) or @JSON_UNFORMATTED@ (a single line with no tab).
+ksMessageFormat :: Lens' KinesisSettings (Maybe MessageFormatValue)
+ksMessageFormat = lens _ksMessageFormat (\ s a -> s{_ksMessageFormat = a})
+
+instance FromJSON KinesisSettings where
+        parseJSON
+          = withObject "KinesisSettings"
+              (\ x ->
+                 KinesisSettings' <$>
+                   (x .:? "IncludeTransactionDetails") <*>
+                     (x .:? "IncludeTableAlterOperations")
+                     <*> (x .:? "ServiceAccessRoleArn")
+                     <*> (x .:? "PartitionIncludeSchemaTable")
+                     <*> (x .:? "StreamArn")
+                     <*> (x .:? "IncludeControlDetails")
+                     <*> (x .:? "IncludePartitionValue")
+                     <*> (x .:? "MessageFormat"))
+
+instance Hashable KinesisSettings where
+
+instance NFData KinesisSettings where
+
+instance ToJSON KinesisSettings where
+        toJSON KinesisSettings'{..}
+          = object
+              (catMaybes
+                 [("IncludeTransactionDetails" .=) <$>
+                    _ksIncludeTransactionDetails,
+                  ("IncludeTableAlterOperations" .=) <$>
+                    _ksIncludeTableAlterOperations,
+                  ("ServiceAccessRoleArn" .=) <$>
+                    _ksServiceAccessRoleARN,
+                  ("PartitionIncludeSchemaTable" .=) <$>
+                    _ksPartitionIncludeSchemaTable,
+                  ("StreamArn" .=) <$> _ksStreamARN,
+                  ("IncludeControlDetails" .=) <$>
+                    _ksIncludeControlDetails,
+                  ("IncludePartitionValue" .=) <$>
+                    _ksIncludePartitionValue,
+                  ("MessageFormat" .=) <$> _ksMessageFormat])
+
+-- | Provides information that defines a MongoDB endpoint.
 --
 --
 --
 -- /See:/ 'mongoDBSettings' smart constructor.
-data MongoDBSettings = MongoDBSettings'
-  { _mdsServerName        :: !(Maybe Text)
-  , _mdsAuthMechanism     :: !(Maybe AuthMechanismValue)
-  , _mdsUsername          :: !(Maybe Text)
-  , _mdsKMSKeyId          :: !(Maybe Text)
-  , _mdsPassword          :: !(Maybe (Sensitive Text))
-  , _mdsNestingLevel      :: !(Maybe NestingLevelValue)
-  , _mdsDatabaseName      :: !(Maybe Text)
-  , _mdsDocsToInvestigate :: !(Maybe Text)
-  , _mdsAuthSource        :: !(Maybe Text)
-  , _mdsExtractDocId      :: !(Maybe Text)
-  , _mdsAuthType          :: !(Maybe AuthTypeValue)
-  , _mdsPort              :: !(Maybe Int)
-  } deriving (Eq, Show, Data, Typeable, Generic)
+data MongoDBSettings =
+  MongoDBSettings'
+    { _mdsServerName        :: !(Maybe Text)
+    , _mdsAuthMechanism     :: !(Maybe AuthMechanismValue)
+    , _mdsUsername          :: !(Maybe Text)
+    , _mdsKMSKeyId          :: !(Maybe Text)
+    , _mdsPassword          :: !(Maybe (Sensitive Text))
+    , _mdsNestingLevel      :: !(Maybe NestingLevelValue)
+    , _mdsDatabaseName      :: !(Maybe Text)
+    , _mdsDocsToInvestigate :: !(Maybe Text)
+    , _mdsAuthSource        :: !(Maybe Text)
+    , _mdsExtractDocId      :: !(Maybe Text)
+    , _mdsAuthType          :: !(Maybe AuthTypeValue)
+    , _mdsPort              :: !(Maybe Int)
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'MongoDBSettings' with the minimum fields required to make a request.
@@ -855,11 +1249,11 @@ data MongoDBSettings = MongoDBSettings'
 --
 -- * 'mdsServerName' - The name of the server on the MongoDB source endpoint.
 --
--- * 'mdsAuthMechanism' - The authentication mechanism you use to access the MongoDB source endpoint. Valid values: DEFAULT, MONGODB_CR, SCRAM_SHA_1  DEFAULT – For MongoDB version 2.x, use MONGODB_CR. For MongoDB version 3.x, use SCRAM_SHA_1. This attribute is not used when authType=No.
+-- * 'mdsAuthMechanism' - The authentication mechanism you use to access the MongoDB source endpoint. Valid values: DEFAULT, MONGODB_CR, SCRAM_SHA_1  DEFAULT – For MongoDB version 2.x, use MONGODB_CR. For MongoDB version 3.x, use SCRAM_SHA_1. This setting isn't used when authType=No.
 --
 -- * 'mdsUsername' - The user name you use to access the MongoDB source endpoint.
 --
--- * 'mdsKMSKeyId' - The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
+-- * 'mdsKMSKeyId' - The AWS KMS key identifier that is used to encrypt the content on the replication instance. If you don't specify a value for the @KmsKeyId@ parameter, then AWS DMS uses your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS Region.
 --
 -- * 'mdsPassword' - The password for the user account you use to access the MongoDB source endpoint.
 --
@@ -867,11 +1261,11 @@ data MongoDBSettings = MongoDBSettings'
 --
 -- * 'mdsDatabaseName' - The database name on the MongoDB source endpoint.
 --
--- * 'mdsDocsToInvestigate' - Indicates the number of documents to preview to determine the document organization. Use this attribute when @NestingLevel@ is set to ONE.  Must be a positive value greater than 0. Default value is 1000.
+-- * 'mdsDocsToInvestigate' - Indicates the number of documents to preview to determine the document organization. Use this setting when @NestingLevel@ is set to ONE.  Must be a positive value greater than 0. Default value is 1000.
 --
--- * 'mdsAuthSource' - The MongoDB database name. This attribute is not used when @authType=NO@ .  The default is admin.
+-- * 'mdsAuthSource' - The MongoDB database name. This setting isn't used when @authType=NO@ .  The default is admin.
 --
--- * 'mdsExtractDocId' - Specifies the document ID. Use this attribute when @NestingLevel@ is set to NONE.  Default value is false.
+-- * 'mdsExtractDocId' - Specifies the document ID. Use this setting when @NestingLevel@ is set to NONE.  Default value is false.
 --
 -- * 'mdsAuthType' - The authentication type you use to access the MongoDB source endpoint. Valid values: NO, PASSWORD  When NO is selected, user name and password parameters are not used and can be empty.
 --
@@ -899,7 +1293,7 @@ mongoDBSettings =
 mdsServerName :: Lens' MongoDBSettings (Maybe Text)
 mdsServerName = lens _mdsServerName (\ s a -> s{_mdsServerName = a})
 
--- | The authentication mechanism you use to access the MongoDB source endpoint. Valid values: DEFAULT, MONGODB_CR, SCRAM_SHA_1  DEFAULT – For MongoDB version 2.x, use MONGODB_CR. For MongoDB version 3.x, use SCRAM_SHA_1. This attribute is not used when authType=No.
+-- | The authentication mechanism you use to access the MongoDB source endpoint. Valid values: DEFAULT, MONGODB_CR, SCRAM_SHA_1  DEFAULT – For MongoDB version 2.x, use MONGODB_CR. For MongoDB version 3.x, use SCRAM_SHA_1. This setting isn't used when authType=No.
 mdsAuthMechanism :: Lens' MongoDBSettings (Maybe AuthMechanismValue)
 mdsAuthMechanism = lens _mdsAuthMechanism (\ s a -> s{_mdsAuthMechanism = a})
 
@@ -907,7 +1301,7 @@ mdsAuthMechanism = lens _mdsAuthMechanism (\ s a -> s{_mdsAuthMechanism = a})
 mdsUsername :: Lens' MongoDBSettings (Maybe Text)
 mdsUsername = lens _mdsUsername (\ s a -> s{_mdsUsername = a})
 
--- | The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
+-- | The AWS KMS key identifier that is used to encrypt the content on the replication instance. If you don't specify a value for the @KmsKeyId@ parameter, then AWS DMS uses your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS Region.
 mdsKMSKeyId :: Lens' MongoDBSettings (Maybe Text)
 mdsKMSKeyId = lens _mdsKMSKeyId (\ s a -> s{_mdsKMSKeyId = a})
 
@@ -923,15 +1317,15 @@ mdsNestingLevel = lens _mdsNestingLevel (\ s a -> s{_mdsNestingLevel = a})
 mdsDatabaseName :: Lens' MongoDBSettings (Maybe Text)
 mdsDatabaseName = lens _mdsDatabaseName (\ s a -> s{_mdsDatabaseName = a})
 
--- | Indicates the number of documents to preview to determine the document organization. Use this attribute when @NestingLevel@ is set to ONE.  Must be a positive value greater than 0. Default value is 1000.
+-- | Indicates the number of documents to preview to determine the document organization. Use this setting when @NestingLevel@ is set to ONE.  Must be a positive value greater than 0. Default value is 1000.
 mdsDocsToInvestigate :: Lens' MongoDBSettings (Maybe Text)
 mdsDocsToInvestigate = lens _mdsDocsToInvestigate (\ s a -> s{_mdsDocsToInvestigate = a})
 
--- | The MongoDB database name. This attribute is not used when @authType=NO@ .  The default is admin.
+-- | The MongoDB database name. This setting isn't used when @authType=NO@ .  The default is admin.
 mdsAuthSource :: Lens' MongoDBSettings (Maybe Text)
 mdsAuthSource = lens _mdsAuthSource (\ s a -> s{_mdsAuthSource = a})
 
--- | Specifies the document ID. Use this attribute when @NestingLevel@ is set to NONE.  Default value is false.
+-- | Specifies the document ID. Use this setting when @NestingLevel@ is set to NONE.  Default value is false.
 mdsExtractDocId :: Lens' MongoDBSettings (Maybe Text)
 mdsExtractDocId = lens _mdsExtractDocId (\ s a -> s{_mdsExtractDocId = a})
 
@@ -981,20 +1375,132 @@ instance ToJSON MongoDBSettings where
                   ("AuthType" .=) <$> _mdsAuthType,
                   ("Port" .=) <$> _mdsPort])
 
--- |
+-- | Provides information that defines an Amazon Neptune endpoint.
+--
+--
+--
+-- /See:/ 'neptuneSettings' smart constructor.
+data NeptuneSettings =
+  NeptuneSettings'
+    { _nsMaxFileSize          :: !(Maybe Int)
+    , _nsMaxRetryCount        :: !(Maybe Int)
+    , _nsServiceAccessRoleARN :: !(Maybe Text)
+    , _nsIAMAuthEnabled       :: !(Maybe Bool)
+    , _nsErrorRetryDuration   :: !(Maybe Int)
+    , _nsS3BucketName         :: !Text
+    , _nsS3BucketFolder       :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'NeptuneSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'nsMaxFileSize' - The maximum size in KB of migrated graph data stored in a CSV file before AWS DMS bulk-loads the data to the Neptune target database. The default is 1048576 KB. If successful, AWS DMS clears the bucket, ready to store the next batch of migrated graph data.
+--
+-- * 'nsMaxRetryCount' - The number of times for AWS DMS to retry a bulk-load of migrated graph data to the Neptune target database before raising an error. The default is 5.
+--
+-- * 'nsServiceAccessRoleARN' - The ARN of the service role you have created for the Neptune target endpoint. For more information, see <https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Neptune.html#CHAP_Target.Neptune.ServiceRole https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Neptune.html#CHAP_Target.Neptune.ServiceRole> in the /AWS Database Migration Service User Guide./
+--
+-- * 'nsIAMAuthEnabled' - If you want IAM authorization enabled for this endpoint, set this parameter to @true@ and attach the appropriate role policy document to your service role specified by @ServiceAccessRoleArn@ . The default is @false@ .
+--
+-- * 'nsErrorRetryDuration' - The number of milliseconds for AWS DMS to wait to retry a bulk-load of migrated graph data to the Neptune target database before raising an error. The default is 250.
+--
+-- * 'nsS3BucketName' - The name of the S3 bucket for AWS DMS to temporarily store migrated graph data in CSV files before bulk-loading it to the Neptune target database. AWS DMS maps the SQL source data to graph data before storing it in these CSV files.
+--
+-- * 'nsS3BucketFolder' - A folder path where you where you want AWS DMS to store migrated graph data in the S3 bucket specified by @S3BucketName@
+neptuneSettings
+    :: Text -- ^ 'nsS3BucketName'
+    -> Text -- ^ 'nsS3BucketFolder'
+    -> NeptuneSettings
+neptuneSettings pS3BucketName_ pS3BucketFolder_ =
+  NeptuneSettings'
+    { _nsMaxFileSize = Nothing
+    , _nsMaxRetryCount = Nothing
+    , _nsServiceAccessRoleARN = Nothing
+    , _nsIAMAuthEnabled = Nothing
+    , _nsErrorRetryDuration = Nothing
+    , _nsS3BucketName = pS3BucketName_
+    , _nsS3BucketFolder = pS3BucketFolder_
+    }
+
+
+-- | The maximum size in KB of migrated graph data stored in a CSV file before AWS DMS bulk-loads the data to the Neptune target database. The default is 1048576 KB. If successful, AWS DMS clears the bucket, ready to store the next batch of migrated graph data.
+nsMaxFileSize :: Lens' NeptuneSettings (Maybe Int)
+nsMaxFileSize = lens _nsMaxFileSize (\ s a -> s{_nsMaxFileSize = a})
+
+-- | The number of times for AWS DMS to retry a bulk-load of migrated graph data to the Neptune target database before raising an error. The default is 5.
+nsMaxRetryCount :: Lens' NeptuneSettings (Maybe Int)
+nsMaxRetryCount = lens _nsMaxRetryCount (\ s a -> s{_nsMaxRetryCount = a})
+
+-- | The ARN of the service role you have created for the Neptune target endpoint. For more information, see <https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Neptune.html#CHAP_Target.Neptune.ServiceRole https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Neptune.html#CHAP_Target.Neptune.ServiceRole> in the /AWS Database Migration Service User Guide./
+nsServiceAccessRoleARN :: Lens' NeptuneSettings (Maybe Text)
+nsServiceAccessRoleARN = lens _nsServiceAccessRoleARN (\ s a -> s{_nsServiceAccessRoleARN = a})
+
+-- | If you want IAM authorization enabled for this endpoint, set this parameter to @true@ and attach the appropriate role policy document to your service role specified by @ServiceAccessRoleArn@ . The default is @false@ .
+nsIAMAuthEnabled :: Lens' NeptuneSettings (Maybe Bool)
+nsIAMAuthEnabled = lens _nsIAMAuthEnabled (\ s a -> s{_nsIAMAuthEnabled = a})
+
+-- | The number of milliseconds for AWS DMS to wait to retry a bulk-load of migrated graph data to the Neptune target database before raising an error. The default is 250.
+nsErrorRetryDuration :: Lens' NeptuneSettings (Maybe Int)
+nsErrorRetryDuration = lens _nsErrorRetryDuration (\ s a -> s{_nsErrorRetryDuration = a})
+
+-- | The name of the S3 bucket for AWS DMS to temporarily store migrated graph data in CSV files before bulk-loading it to the Neptune target database. AWS DMS maps the SQL source data to graph data before storing it in these CSV files.
+nsS3BucketName :: Lens' NeptuneSettings Text
+nsS3BucketName = lens _nsS3BucketName (\ s a -> s{_nsS3BucketName = a})
+
+-- | A folder path where you where you want AWS DMS to store migrated graph data in the S3 bucket specified by @S3BucketName@
+nsS3BucketFolder :: Lens' NeptuneSettings Text
+nsS3BucketFolder = lens _nsS3BucketFolder (\ s a -> s{_nsS3BucketFolder = a})
+
+instance FromJSON NeptuneSettings where
+        parseJSON
+          = withObject "NeptuneSettings"
+              (\ x ->
+                 NeptuneSettings' <$>
+                   (x .:? "MaxFileSize") <*> (x .:? "MaxRetryCount") <*>
+                     (x .:? "ServiceAccessRoleArn")
+                     <*> (x .:? "IamAuthEnabled")
+                     <*> (x .:? "ErrorRetryDuration")
+                     <*> (x .: "S3BucketName")
+                     <*> (x .: "S3BucketFolder"))
+
+instance Hashable NeptuneSettings where
+
+instance NFData NeptuneSettings where
+
+instance ToJSON NeptuneSettings where
+        toJSON NeptuneSettings'{..}
+          = object
+              (catMaybes
+                 [("MaxFileSize" .=) <$> _nsMaxFileSize,
+                  ("MaxRetryCount" .=) <$> _nsMaxRetryCount,
+                  ("ServiceAccessRoleArn" .=) <$>
+                    _nsServiceAccessRoleARN,
+                  ("IamAuthEnabled" .=) <$> _nsIAMAuthEnabled,
+                  ("ErrorRetryDuration" .=) <$> _nsErrorRetryDuration,
+                  Just ("S3BucketName" .= _nsS3BucketName),
+                  Just ("S3BucketFolder" .= _nsS3BucketFolder)])
+
+-- | In response to the @DescribeOrderableReplicationInstances@ operation, this object describes an available replication instance. This description includes the replication instance's type, engine version, and allocated storage.
 --
 --
 --
 -- /See:/ 'orderableReplicationInstance' smart constructor.
-data OrderableReplicationInstance = OrderableReplicationInstance'
-  { _oriEngineVersion            :: !(Maybe Text)
-  , _oriMinAllocatedStorage      :: !(Maybe Int)
-  , _oriIncludedAllocatedStorage :: !(Maybe Int)
-  , _oriMaxAllocatedStorage      :: !(Maybe Int)
-  , _oriReplicationInstanceClass :: !(Maybe Text)
-  , _oriDefaultAllocatedStorage  :: !(Maybe Int)
-  , _oriStorageType              :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data OrderableReplicationInstance =
+  OrderableReplicationInstance'
+    { _oriEngineVersion            :: !(Maybe Text)
+    , _oriMinAllocatedStorage      :: !(Maybe Int)
+    , _oriReleaseStatus            :: !(Maybe ReleaseStatusValues)
+    , _oriIncludedAllocatedStorage :: !(Maybe Int)
+    , _oriAvailabilityZones        :: !(Maybe [Text])
+    , _oriMaxAllocatedStorage      :: !(Maybe Int)
+    , _oriReplicationInstanceClass :: !(Maybe Text)
+    , _oriDefaultAllocatedStorage  :: !(Maybe Int)
+    , _oriStorageType              :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'OrderableReplicationInstance' with the minimum fields required to make a request.
@@ -1005,7 +1511,11 @@ data OrderableReplicationInstance = OrderableReplicationInstance'
 --
 -- * 'oriMinAllocatedStorage' - The minimum amount of storage (in gigabytes) that can be allocated for the replication instance.
 --
+-- * 'oriReleaseStatus' - The value returned when the specified @EngineVersion@ of the replication instance is in Beta or test mode. This indicates some features might not work as expected.
+--
 -- * 'oriIncludedAllocatedStorage' - The amount of storage (in gigabytes) that is allocated for the replication instance.
+--
+-- * 'oriAvailabilityZones' - List of Availability Zones for this replication instance.
 --
 -- * 'oriMaxAllocatedStorage' - The minimum amount of storage (in gigabytes) that can be allocated for the replication instance.
 --
@@ -1020,7 +1530,9 @@ orderableReplicationInstance =
   OrderableReplicationInstance'
     { _oriEngineVersion = Nothing
     , _oriMinAllocatedStorage = Nothing
+    , _oriReleaseStatus = Nothing
     , _oriIncludedAllocatedStorage = Nothing
+    , _oriAvailabilityZones = Nothing
     , _oriMaxAllocatedStorage = Nothing
     , _oriReplicationInstanceClass = Nothing
     , _oriDefaultAllocatedStorage = Nothing
@@ -1036,9 +1548,17 @@ oriEngineVersion = lens _oriEngineVersion (\ s a -> s{_oriEngineVersion = a})
 oriMinAllocatedStorage :: Lens' OrderableReplicationInstance (Maybe Int)
 oriMinAllocatedStorage = lens _oriMinAllocatedStorage (\ s a -> s{_oriMinAllocatedStorage = a})
 
+-- | The value returned when the specified @EngineVersion@ of the replication instance is in Beta or test mode. This indicates some features might not work as expected.
+oriReleaseStatus :: Lens' OrderableReplicationInstance (Maybe ReleaseStatusValues)
+oriReleaseStatus = lens _oriReleaseStatus (\ s a -> s{_oriReleaseStatus = a})
+
 -- | The amount of storage (in gigabytes) that is allocated for the replication instance.
 oriIncludedAllocatedStorage :: Lens' OrderableReplicationInstance (Maybe Int)
 oriIncludedAllocatedStorage = lens _oriIncludedAllocatedStorage (\ s a -> s{_oriIncludedAllocatedStorage = a})
+
+-- | List of Availability Zones for this replication instance.
+oriAvailabilityZones :: Lens' OrderableReplicationInstance [Text]
+oriAvailabilityZones = lens _oriAvailabilityZones (\ s a -> s{_oriAvailabilityZones = a}) . _Default . _Coerce
 
 -- | The minimum amount of storage (in gigabytes) that can be allocated for the replication instance.
 oriMaxAllocatedStorage :: Lens' OrderableReplicationInstance (Maybe Int)
@@ -1063,7 +1583,9 @@ instance FromJSON OrderableReplicationInstance where
                  OrderableReplicationInstance' <$>
                    (x .:? "EngineVersion") <*>
                      (x .:? "MinAllocatedStorage")
+                     <*> (x .:? "ReleaseStatus")
                      <*> (x .:? "IncludedAllocatedStorage")
+                     <*> (x .:? "AvailabilityZones" .!= mempty)
                      <*> (x .:? "MaxAllocatedStorage")
                      <*> (x .:? "ReplicationInstanceClass")
                      <*> (x .:? "DefaultAllocatedStorage")
@@ -1073,18 +1595,393 @@ instance Hashable OrderableReplicationInstance where
 
 instance NFData OrderableReplicationInstance where
 
--- |
+-- | Describes a maintenance action pending for an AWS DMS resource, including when and how it will be applied. This data type is a response element to the @DescribePendingMaintenanceActions@ operation.
+--
+--
+--
+-- /See:/ 'pendingMaintenanceAction' smart constructor.
+data PendingMaintenanceAction =
+  PendingMaintenanceAction'
+    { _pmaAutoAppliedAfterDate :: !(Maybe POSIX)
+    , _pmaAction               :: !(Maybe Text)
+    , _pmaOptInStatus          :: !(Maybe Text)
+    , _pmaDescription          :: !(Maybe Text)
+    , _pmaForcedApplyDate      :: !(Maybe POSIX)
+    , _pmaCurrentApplyDate     :: !(Maybe POSIX)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'PendingMaintenanceAction' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'pmaAutoAppliedAfterDate' - The date of the maintenance window when the action is to be applied. The maintenance action is applied to the resource during its first maintenance window after this date. If this date is specified, any @next-maintenance@ opt-in requests are ignored.
+--
+-- * 'pmaAction' - The type of pending maintenance action that is available for the resource.
+--
+-- * 'pmaOptInStatus' - The type of opt-in request that has been received for the resource.
+--
+-- * 'pmaDescription' - A description providing more detail about the maintenance action.
+--
+-- * 'pmaForcedApplyDate' - The date when the maintenance action will be automatically applied. The maintenance action is applied to the resource on this date regardless of the maintenance window for the resource. If this date is specified, any @immediate@ opt-in requests are ignored.
+--
+-- * 'pmaCurrentApplyDate' - The effective date when the pending maintenance action will be applied to the resource. This date takes into account opt-in requests received from the @ApplyPendingMaintenanceAction@ API operation, and also the @AutoAppliedAfterDate@ and @ForcedApplyDate@ parameter values. This value is blank if an opt-in request has not been received and nothing has been specified for @AutoAppliedAfterDate@ or @ForcedApplyDate@ .
+pendingMaintenanceAction
+    :: PendingMaintenanceAction
+pendingMaintenanceAction =
+  PendingMaintenanceAction'
+    { _pmaAutoAppliedAfterDate = Nothing
+    , _pmaAction = Nothing
+    , _pmaOptInStatus = Nothing
+    , _pmaDescription = Nothing
+    , _pmaForcedApplyDate = Nothing
+    , _pmaCurrentApplyDate = Nothing
+    }
+
+
+-- | The date of the maintenance window when the action is to be applied. The maintenance action is applied to the resource during its first maintenance window after this date. If this date is specified, any @next-maintenance@ opt-in requests are ignored.
+pmaAutoAppliedAfterDate :: Lens' PendingMaintenanceAction (Maybe UTCTime)
+pmaAutoAppliedAfterDate = lens _pmaAutoAppliedAfterDate (\ s a -> s{_pmaAutoAppliedAfterDate = a}) . mapping _Time
+
+-- | The type of pending maintenance action that is available for the resource.
+pmaAction :: Lens' PendingMaintenanceAction (Maybe Text)
+pmaAction = lens _pmaAction (\ s a -> s{_pmaAction = a})
+
+-- | The type of opt-in request that has been received for the resource.
+pmaOptInStatus :: Lens' PendingMaintenanceAction (Maybe Text)
+pmaOptInStatus = lens _pmaOptInStatus (\ s a -> s{_pmaOptInStatus = a})
+
+-- | A description providing more detail about the maintenance action.
+pmaDescription :: Lens' PendingMaintenanceAction (Maybe Text)
+pmaDescription = lens _pmaDescription (\ s a -> s{_pmaDescription = a})
+
+-- | The date when the maintenance action will be automatically applied. The maintenance action is applied to the resource on this date regardless of the maintenance window for the resource. If this date is specified, any @immediate@ opt-in requests are ignored.
+pmaForcedApplyDate :: Lens' PendingMaintenanceAction (Maybe UTCTime)
+pmaForcedApplyDate = lens _pmaForcedApplyDate (\ s a -> s{_pmaForcedApplyDate = a}) . mapping _Time
+
+-- | The effective date when the pending maintenance action will be applied to the resource. This date takes into account opt-in requests received from the @ApplyPendingMaintenanceAction@ API operation, and also the @AutoAppliedAfterDate@ and @ForcedApplyDate@ parameter values. This value is blank if an opt-in request has not been received and nothing has been specified for @AutoAppliedAfterDate@ or @ForcedApplyDate@ .
+pmaCurrentApplyDate :: Lens' PendingMaintenanceAction (Maybe UTCTime)
+pmaCurrentApplyDate = lens _pmaCurrentApplyDate (\ s a -> s{_pmaCurrentApplyDate = a}) . mapping _Time
+
+instance FromJSON PendingMaintenanceAction where
+        parseJSON
+          = withObject "PendingMaintenanceAction"
+              (\ x ->
+                 PendingMaintenanceAction' <$>
+                   (x .:? "AutoAppliedAfterDate") <*> (x .:? "Action")
+                     <*> (x .:? "OptInStatus")
+                     <*> (x .:? "Description")
+                     <*> (x .:? "ForcedApplyDate")
+                     <*> (x .:? "CurrentApplyDate"))
+
+instance Hashable PendingMaintenanceAction where
+
+instance NFData PendingMaintenanceAction where
+
+-- | Provides information that defines an Amazon Redshift endpoint.
+--
+--
+--
+-- /See:/ 'redshiftSettings' smart constructor.
+data RedshiftSettings =
+  RedshiftSettings'
+    { _rsEmptyAsNull                  :: !(Maybe Bool)
+    , _rsMaxFileSize                  :: !(Maybe Int)
+    , _rsReplaceChars                 :: !(Maybe Text)
+    , _rsServerName                   :: !(Maybe Text)
+    , _rsConnectionTimeout            :: !(Maybe Int)
+    , _rsLoadTimeout                  :: !(Maybe Int)
+    , _rsServiceAccessRoleARN         :: !(Maybe Text)
+    , _rsBucketFolder                 :: !(Maybe Text)
+    , _rsTruncateColumns              :: !(Maybe Bool)
+    , _rsReplaceInvalidChars          :: !(Maybe Text)
+    , _rsUsername                     :: !(Maybe Text)
+    , _rsBucketName                   :: !(Maybe Text)
+    , _rsEncryptionMode               :: !(Maybe EncryptionModeValue)
+    , _rsDateFormat                   :: !(Maybe Text)
+    , _rsRemoveQuotes                 :: !(Maybe Bool)
+    , _rsPassword                     :: !(Maybe (Sensitive Text))
+    , _rsDatabaseName                 :: !(Maybe Text)
+    , _rsAcceptAnyDate                :: !(Maybe Bool)
+    , _rsAfterConnectScript           :: !(Maybe Text)
+    , _rsWriteBufferSize              :: !(Maybe Int)
+    , _rsTrimBlanks                   :: !(Maybe Bool)
+    , _rsTimeFormat                   :: !(Maybe Text)
+    , _rsServerSideEncryptionKMSKeyId :: !(Maybe Text)
+    , _rsPort                         :: !(Maybe Int)
+    , _rsFileTransferUploadStreams    :: !(Maybe Int)
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'RedshiftSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'rsEmptyAsNull' - A value that specifies whether AWS DMS should migrate empty CHAR and VARCHAR fields as NULL. A value of @true@ sets empty CHAR and VARCHAR fields to null. The default is @false@ .
+--
+-- * 'rsMaxFileSize' - The maximum size (in KB) of any .csv file used to transfer data to Amazon Redshift. This accepts a value from 1 through 1,048,576. It defaults to 32,768 KB (32 MB).
+--
+-- * 'rsReplaceChars' - A value that specifies to replaces the invalid characters specified in @ReplaceInvalidChars@ , substituting the specified characters instead. The default is @"?"@ .
+--
+-- * 'rsServerName' - The name of the Amazon Redshift cluster you are using.
+--
+-- * 'rsConnectionTimeout' - A value that sets the amount of time to wait (in milliseconds) before timing out, beginning from when you initially establish a connection.
+--
+-- * 'rsLoadTimeout' - The amount of time to wait (in milliseconds) before timing out, beginning from when you begin loading.
+--
+-- * 'rsServiceAccessRoleARN' - The Amazon Resource Name (ARN) of the IAM role that has access to the Amazon Redshift service.
+--
+-- * 'rsBucketFolder' - The location where the comma-separated value (.csv) files are stored before being uploaded to the S3 bucket.
+--
+-- * 'rsTruncateColumns' - A value that specifies to truncate data in columns to the appropriate number of characters, so that the data fits in the column. This parameter applies only to columns with a VARCHAR or CHAR data type, and rows with a size of 4 MB or less. Choose @true@ to truncate data. The default is @false@ .
+--
+-- * 'rsReplaceInvalidChars' - A list of characters that you want to replace. Use with @ReplaceChars@ .
+--
+-- * 'rsUsername' - An Amazon Redshift user name for a registered user.
+--
+-- * 'rsBucketName' - The name of the S3 bucket you want to use
+--
+-- * 'rsEncryptionMode' - The type of server-side encryption that you want to use for your data. This encryption type is part of the endpoint settings or the extra connections attributes for Amazon S3. You can choose either @SSE_S3@ (the default) or @SSE_KMS@ . To use @SSE_S3@ , create an AWS Identity and Access Management (IAM) role with a policy that allows @"arn:aws:s3:::*"@ to use the following actions: @"s3:PutObject", "s3:ListBucket"@
+--
+-- * 'rsDateFormat' - The date format that you are using. Valid values are @auto@ (case-sensitive), your date format string enclosed in quotes, or NULL. If this parameter is left unset (NULL), it defaults to a format of 'YYYY-MM-DD'. Using @auto@ recognizes most strings, even some that aren't supported when you use a date format string.  If your date and time values use formats different from each other, set this to @auto@ .
+--
+-- * 'rsRemoveQuotes' - A value that specifies to remove surrounding quotation marks from strings in the incoming data. All characters within the quotation marks, including delimiters, are retained. Choose @true@ to remove quotation marks. The default is @false@ .
+--
+-- * 'rsPassword' - The password for the user named in the @username@ property.
+--
+-- * 'rsDatabaseName' - The name of the Amazon Redshift data warehouse (service) that you are working with.
+--
+-- * 'rsAcceptAnyDate' - A value that indicates to allow any date format, including invalid formats such as 00/00/00 00:00:00, to be loaded without generating an error. You can choose @true@ or @false@ (the default). This parameter applies only to TIMESTAMP and DATE columns. Always use ACCEPTANYDATE with the DATEFORMAT parameter. If the date format for the data doesn't match the DATEFORMAT specification, Amazon Redshift inserts a NULL value into that field.
+--
+-- * 'rsAfterConnectScript' - Code to run after connecting. This parameter should contain the code itself, not the name of a file containing the code.
+--
+-- * 'rsWriteBufferSize' - The size of the write buffer to use in rows. Valid values range from 1 through 2,048. The default is 1,024. Use this setting to tune performance.
+--
+-- * 'rsTrimBlanks' - A value that specifies to remove the trailing white space characters from a VARCHAR string. This parameter applies only to columns with a VARCHAR data type. Choose @true@ to remove unneeded white space. The default is @false@ .
+--
+-- * 'rsTimeFormat' - The time format that you want to use. Valid values are @auto@ (case-sensitive), @'timeformat_string'@ , @'epochsecs'@ , or @'epochmillisecs'@ . It defaults to 10. Using @auto@ recognizes most strings, even some that aren't supported when you use a time format string.  If your date and time values use formats different from each other, set this parameter to @auto@ .
+--
+-- * 'rsServerSideEncryptionKMSKeyId' - The AWS KMS key ID. If you are using @SSE_KMS@ for the @EncryptionMode@ , provide this key ID. The key that you use needs an attached policy that enables IAM user permissions and allows use of the key.
+--
+-- * 'rsPort' - The port number for Amazon Redshift. The default value is 5439.
+--
+-- * 'rsFileTransferUploadStreams' - The number of threads used to upload a single file. This parameter accepts a value from 1 through 64. It defaults to 10.
+redshiftSettings
+    :: RedshiftSettings
+redshiftSettings =
+  RedshiftSettings'
+    { _rsEmptyAsNull = Nothing
+    , _rsMaxFileSize = Nothing
+    , _rsReplaceChars = Nothing
+    , _rsServerName = Nothing
+    , _rsConnectionTimeout = Nothing
+    , _rsLoadTimeout = Nothing
+    , _rsServiceAccessRoleARN = Nothing
+    , _rsBucketFolder = Nothing
+    , _rsTruncateColumns = Nothing
+    , _rsReplaceInvalidChars = Nothing
+    , _rsUsername = Nothing
+    , _rsBucketName = Nothing
+    , _rsEncryptionMode = Nothing
+    , _rsDateFormat = Nothing
+    , _rsRemoveQuotes = Nothing
+    , _rsPassword = Nothing
+    , _rsDatabaseName = Nothing
+    , _rsAcceptAnyDate = Nothing
+    , _rsAfterConnectScript = Nothing
+    , _rsWriteBufferSize = Nothing
+    , _rsTrimBlanks = Nothing
+    , _rsTimeFormat = Nothing
+    , _rsServerSideEncryptionKMSKeyId = Nothing
+    , _rsPort = Nothing
+    , _rsFileTransferUploadStreams = Nothing
+    }
+
+
+-- | A value that specifies whether AWS DMS should migrate empty CHAR and VARCHAR fields as NULL. A value of @true@ sets empty CHAR and VARCHAR fields to null. The default is @false@ .
+rsEmptyAsNull :: Lens' RedshiftSettings (Maybe Bool)
+rsEmptyAsNull = lens _rsEmptyAsNull (\ s a -> s{_rsEmptyAsNull = a})
+
+-- | The maximum size (in KB) of any .csv file used to transfer data to Amazon Redshift. This accepts a value from 1 through 1,048,576. It defaults to 32,768 KB (32 MB).
+rsMaxFileSize :: Lens' RedshiftSettings (Maybe Int)
+rsMaxFileSize = lens _rsMaxFileSize (\ s a -> s{_rsMaxFileSize = a})
+
+-- | A value that specifies to replaces the invalid characters specified in @ReplaceInvalidChars@ , substituting the specified characters instead. The default is @"?"@ .
+rsReplaceChars :: Lens' RedshiftSettings (Maybe Text)
+rsReplaceChars = lens _rsReplaceChars (\ s a -> s{_rsReplaceChars = a})
+
+-- | The name of the Amazon Redshift cluster you are using.
+rsServerName :: Lens' RedshiftSettings (Maybe Text)
+rsServerName = lens _rsServerName (\ s a -> s{_rsServerName = a})
+
+-- | A value that sets the amount of time to wait (in milliseconds) before timing out, beginning from when you initially establish a connection.
+rsConnectionTimeout :: Lens' RedshiftSettings (Maybe Int)
+rsConnectionTimeout = lens _rsConnectionTimeout (\ s a -> s{_rsConnectionTimeout = a})
+
+-- | The amount of time to wait (in milliseconds) before timing out, beginning from when you begin loading.
+rsLoadTimeout :: Lens' RedshiftSettings (Maybe Int)
+rsLoadTimeout = lens _rsLoadTimeout (\ s a -> s{_rsLoadTimeout = a})
+
+-- | The Amazon Resource Name (ARN) of the IAM role that has access to the Amazon Redshift service.
+rsServiceAccessRoleARN :: Lens' RedshiftSettings (Maybe Text)
+rsServiceAccessRoleARN = lens _rsServiceAccessRoleARN (\ s a -> s{_rsServiceAccessRoleARN = a})
+
+-- | The location where the comma-separated value (.csv) files are stored before being uploaded to the S3 bucket.
+rsBucketFolder :: Lens' RedshiftSettings (Maybe Text)
+rsBucketFolder = lens _rsBucketFolder (\ s a -> s{_rsBucketFolder = a})
+
+-- | A value that specifies to truncate data in columns to the appropriate number of characters, so that the data fits in the column. This parameter applies only to columns with a VARCHAR or CHAR data type, and rows with a size of 4 MB or less. Choose @true@ to truncate data. The default is @false@ .
+rsTruncateColumns :: Lens' RedshiftSettings (Maybe Bool)
+rsTruncateColumns = lens _rsTruncateColumns (\ s a -> s{_rsTruncateColumns = a})
+
+-- | A list of characters that you want to replace. Use with @ReplaceChars@ .
+rsReplaceInvalidChars :: Lens' RedshiftSettings (Maybe Text)
+rsReplaceInvalidChars = lens _rsReplaceInvalidChars (\ s a -> s{_rsReplaceInvalidChars = a})
+
+-- | An Amazon Redshift user name for a registered user.
+rsUsername :: Lens' RedshiftSettings (Maybe Text)
+rsUsername = lens _rsUsername (\ s a -> s{_rsUsername = a})
+
+-- | The name of the S3 bucket you want to use
+rsBucketName :: Lens' RedshiftSettings (Maybe Text)
+rsBucketName = lens _rsBucketName (\ s a -> s{_rsBucketName = a})
+
+-- | The type of server-side encryption that you want to use for your data. This encryption type is part of the endpoint settings or the extra connections attributes for Amazon S3. You can choose either @SSE_S3@ (the default) or @SSE_KMS@ . To use @SSE_S3@ , create an AWS Identity and Access Management (IAM) role with a policy that allows @"arn:aws:s3:::*"@ to use the following actions: @"s3:PutObject", "s3:ListBucket"@
+rsEncryptionMode :: Lens' RedshiftSettings (Maybe EncryptionModeValue)
+rsEncryptionMode = lens _rsEncryptionMode (\ s a -> s{_rsEncryptionMode = a})
+
+-- | The date format that you are using. Valid values are @auto@ (case-sensitive), your date format string enclosed in quotes, or NULL. If this parameter is left unset (NULL), it defaults to a format of 'YYYY-MM-DD'. Using @auto@ recognizes most strings, even some that aren't supported when you use a date format string.  If your date and time values use formats different from each other, set this to @auto@ .
+rsDateFormat :: Lens' RedshiftSettings (Maybe Text)
+rsDateFormat = lens _rsDateFormat (\ s a -> s{_rsDateFormat = a})
+
+-- | A value that specifies to remove surrounding quotation marks from strings in the incoming data. All characters within the quotation marks, including delimiters, are retained. Choose @true@ to remove quotation marks. The default is @false@ .
+rsRemoveQuotes :: Lens' RedshiftSettings (Maybe Bool)
+rsRemoveQuotes = lens _rsRemoveQuotes (\ s a -> s{_rsRemoveQuotes = a})
+
+-- | The password for the user named in the @username@ property.
+rsPassword :: Lens' RedshiftSettings (Maybe Text)
+rsPassword = lens _rsPassword (\ s a -> s{_rsPassword = a}) . mapping _Sensitive
+
+-- | The name of the Amazon Redshift data warehouse (service) that you are working with.
+rsDatabaseName :: Lens' RedshiftSettings (Maybe Text)
+rsDatabaseName = lens _rsDatabaseName (\ s a -> s{_rsDatabaseName = a})
+
+-- | A value that indicates to allow any date format, including invalid formats such as 00/00/00 00:00:00, to be loaded without generating an error. You can choose @true@ or @false@ (the default). This parameter applies only to TIMESTAMP and DATE columns. Always use ACCEPTANYDATE with the DATEFORMAT parameter. If the date format for the data doesn't match the DATEFORMAT specification, Amazon Redshift inserts a NULL value into that field.
+rsAcceptAnyDate :: Lens' RedshiftSettings (Maybe Bool)
+rsAcceptAnyDate = lens _rsAcceptAnyDate (\ s a -> s{_rsAcceptAnyDate = a})
+
+-- | Code to run after connecting. This parameter should contain the code itself, not the name of a file containing the code.
+rsAfterConnectScript :: Lens' RedshiftSettings (Maybe Text)
+rsAfterConnectScript = lens _rsAfterConnectScript (\ s a -> s{_rsAfterConnectScript = a})
+
+-- | The size of the write buffer to use in rows. Valid values range from 1 through 2,048. The default is 1,024. Use this setting to tune performance.
+rsWriteBufferSize :: Lens' RedshiftSettings (Maybe Int)
+rsWriteBufferSize = lens _rsWriteBufferSize (\ s a -> s{_rsWriteBufferSize = a})
+
+-- | A value that specifies to remove the trailing white space characters from a VARCHAR string. This parameter applies only to columns with a VARCHAR data type. Choose @true@ to remove unneeded white space. The default is @false@ .
+rsTrimBlanks :: Lens' RedshiftSettings (Maybe Bool)
+rsTrimBlanks = lens _rsTrimBlanks (\ s a -> s{_rsTrimBlanks = a})
+
+-- | The time format that you want to use. Valid values are @auto@ (case-sensitive), @'timeformat_string'@ , @'epochsecs'@ , or @'epochmillisecs'@ . It defaults to 10. Using @auto@ recognizes most strings, even some that aren't supported when you use a time format string.  If your date and time values use formats different from each other, set this parameter to @auto@ .
+rsTimeFormat :: Lens' RedshiftSettings (Maybe Text)
+rsTimeFormat = lens _rsTimeFormat (\ s a -> s{_rsTimeFormat = a})
+
+-- | The AWS KMS key ID. If you are using @SSE_KMS@ for the @EncryptionMode@ , provide this key ID. The key that you use needs an attached policy that enables IAM user permissions and allows use of the key.
+rsServerSideEncryptionKMSKeyId :: Lens' RedshiftSettings (Maybe Text)
+rsServerSideEncryptionKMSKeyId = lens _rsServerSideEncryptionKMSKeyId (\ s a -> s{_rsServerSideEncryptionKMSKeyId = a})
+
+-- | The port number for Amazon Redshift. The default value is 5439.
+rsPort :: Lens' RedshiftSettings (Maybe Int)
+rsPort = lens _rsPort (\ s a -> s{_rsPort = a})
+
+-- | The number of threads used to upload a single file. This parameter accepts a value from 1 through 64. It defaults to 10.
+rsFileTransferUploadStreams :: Lens' RedshiftSettings (Maybe Int)
+rsFileTransferUploadStreams = lens _rsFileTransferUploadStreams (\ s a -> s{_rsFileTransferUploadStreams = a})
+
+instance FromJSON RedshiftSettings where
+        parseJSON
+          = withObject "RedshiftSettings"
+              (\ x ->
+                 RedshiftSettings' <$>
+                   (x .:? "EmptyAsNull") <*> (x .:? "MaxFileSize") <*>
+                     (x .:? "ReplaceChars")
+                     <*> (x .:? "ServerName")
+                     <*> (x .:? "ConnectionTimeout")
+                     <*> (x .:? "LoadTimeout")
+                     <*> (x .:? "ServiceAccessRoleArn")
+                     <*> (x .:? "BucketFolder")
+                     <*> (x .:? "TruncateColumns")
+                     <*> (x .:? "ReplaceInvalidChars")
+                     <*> (x .:? "Username")
+                     <*> (x .:? "BucketName")
+                     <*> (x .:? "EncryptionMode")
+                     <*> (x .:? "DateFormat")
+                     <*> (x .:? "RemoveQuotes")
+                     <*> (x .:? "Password")
+                     <*> (x .:? "DatabaseName")
+                     <*> (x .:? "AcceptAnyDate")
+                     <*> (x .:? "AfterConnectScript")
+                     <*> (x .:? "WriteBufferSize")
+                     <*> (x .:? "TrimBlanks")
+                     <*> (x .:? "TimeFormat")
+                     <*> (x .:? "ServerSideEncryptionKmsKeyId")
+                     <*> (x .:? "Port")
+                     <*> (x .:? "FileTransferUploadStreams"))
+
+instance Hashable RedshiftSettings where
+
+instance NFData RedshiftSettings where
+
+instance ToJSON RedshiftSettings where
+        toJSON RedshiftSettings'{..}
+          = object
+              (catMaybes
+                 [("EmptyAsNull" .=) <$> _rsEmptyAsNull,
+                  ("MaxFileSize" .=) <$> _rsMaxFileSize,
+                  ("ReplaceChars" .=) <$> _rsReplaceChars,
+                  ("ServerName" .=) <$> _rsServerName,
+                  ("ConnectionTimeout" .=) <$> _rsConnectionTimeout,
+                  ("LoadTimeout" .=) <$> _rsLoadTimeout,
+                  ("ServiceAccessRoleArn" .=) <$>
+                    _rsServiceAccessRoleARN,
+                  ("BucketFolder" .=) <$> _rsBucketFolder,
+                  ("TruncateColumns" .=) <$> _rsTruncateColumns,
+                  ("ReplaceInvalidChars" .=) <$>
+                    _rsReplaceInvalidChars,
+                  ("Username" .=) <$> _rsUsername,
+                  ("BucketName" .=) <$> _rsBucketName,
+                  ("EncryptionMode" .=) <$> _rsEncryptionMode,
+                  ("DateFormat" .=) <$> _rsDateFormat,
+                  ("RemoveQuotes" .=) <$> _rsRemoveQuotes,
+                  ("Password" .=) <$> _rsPassword,
+                  ("DatabaseName" .=) <$> _rsDatabaseName,
+                  ("AcceptAnyDate" .=) <$> _rsAcceptAnyDate,
+                  ("AfterConnectScript" .=) <$> _rsAfterConnectScript,
+                  ("WriteBufferSize" .=) <$> _rsWriteBufferSize,
+                  ("TrimBlanks" .=) <$> _rsTrimBlanks,
+                  ("TimeFormat" .=) <$> _rsTimeFormat,
+                  ("ServerSideEncryptionKmsKeyId" .=) <$>
+                    _rsServerSideEncryptionKMSKeyId,
+                  ("Port" .=) <$> _rsPort,
+                  ("FileTransferUploadStreams" .=) <$>
+                    _rsFileTransferUploadStreams])
+
+-- | Provides information that describes status of a schema at an endpoint specified by the @DescribeRefreshSchemaStatus@ operation.
 --
 --
 --
 -- /See:/ 'refreshSchemasStatus' smart constructor.
-data RefreshSchemasStatus = RefreshSchemasStatus'
-  { _rssStatus                 :: !(Maybe RefreshSchemasStatusTypeValue)
-  , _rssLastRefreshDate        :: !(Maybe POSIX)
-  , _rssReplicationInstanceARN :: !(Maybe Text)
-  , _rssEndpointARN            :: !(Maybe Text)
-  , _rssLastFailureMessage     :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data RefreshSchemasStatus =
+  RefreshSchemasStatus'
+    { _rssStatus                 :: !(Maybe RefreshSchemasStatusTypeValue)
+    , _rssLastRefreshDate        :: !(Maybe POSIX)
+    , _rssReplicationInstanceARN :: !(Maybe Text)
+    , _rssEndpointARN            :: !(Maybe Text)
+    , _rssLastFailureMessage     :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'RefreshSchemasStatus' with the minimum fields required to make a request.
@@ -1146,35 +2043,38 @@ instance Hashable RefreshSchemasStatus where
 
 instance NFData RefreshSchemasStatus where
 
--- |
+-- | Provides information that defines a replication instance.
 --
 --
 --
 -- /See:/ 'replicationInstance' smart constructor.
-data ReplicationInstance = ReplicationInstance'
-  { _riEngineVersion :: !(Maybe Text)
-  , _riPubliclyAccessible :: !(Maybe Bool)
-  , _riAutoMinorVersionUpgrade :: !(Maybe Bool)
-  , _riReplicationInstancePublicIPAddresses :: !(Maybe [Text])
-  , _riReplicationSubnetGroup :: !(Maybe ReplicationSubnetGroup)
-  , _riInstanceCreateTime :: !(Maybe POSIX)
-  , _riFreeUntil :: !(Maybe POSIX)
-  , _riReplicationInstanceStatus :: !(Maybe Text)
-  , _riReplicationInstancePrivateIPAddresses :: !(Maybe [Text])
-  , _riPreferredMaintenanceWindow :: !(Maybe Text)
-  , _riReplicationInstancePrivateIPAddress :: !(Maybe Text)
-  , _riKMSKeyId :: !(Maybe Text)
-  , _riAvailabilityZone :: !(Maybe Text)
-  , _riVPCSecurityGroups :: !(Maybe [VPCSecurityGroupMembership])
-  , _riMultiAZ :: !(Maybe Bool)
-  , _riSecondaryAvailabilityZone :: !(Maybe Text)
-  , _riReplicationInstanceARN :: !(Maybe Text)
-  , _riAllocatedStorage :: !(Maybe Int)
-  , _riReplicationInstancePublicIPAddress :: !(Maybe Text)
-  , _riReplicationInstanceClass :: !(Maybe Text)
-  , _riReplicationInstanceIdentifier :: !(Maybe Text)
-  , _riPendingModifiedValues :: !(Maybe ReplicationPendingModifiedValues)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ReplicationInstance =
+  ReplicationInstance'
+    { _riEngineVersion :: !(Maybe Text)
+    , _riPubliclyAccessible :: !(Maybe Bool)
+    , _riAutoMinorVersionUpgrade :: !(Maybe Bool)
+    , _riReplicationInstancePublicIPAddresses :: !(Maybe [Text])
+    , _riReplicationSubnetGroup :: !(Maybe ReplicationSubnetGroup)
+    , _riInstanceCreateTime :: !(Maybe POSIX)
+    , _riFreeUntil :: !(Maybe POSIX)
+    , _riReplicationInstanceStatus :: !(Maybe Text)
+    , _riReplicationInstancePrivateIPAddresses :: !(Maybe [Text])
+    , _riPreferredMaintenanceWindow :: !(Maybe Text)
+    , _riReplicationInstancePrivateIPAddress :: !(Maybe Text)
+    , _riKMSKeyId :: !(Maybe Text)
+    , _riAvailabilityZone :: !(Maybe Text)
+    , _riVPCSecurityGroups :: !(Maybe [VPCSecurityGroupMembership])
+    , _riMultiAZ :: !(Maybe Bool)
+    , _riSecondaryAvailabilityZone :: !(Maybe Text)
+    , _riReplicationInstanceARN :: !(Maybe Text)
+    , _riAllocatedStorage :: !(Maybe Int)
+    , _riDNSNameServers :: !(Maybe Text)
+    , _riReplicationInstancePublicIPAddress :: !(Maybe Text)
+    , _riReplicationInstanceClass :: !(Maybe Text)
+    , _riReplicationInstanceIdentifier :: !(Maybe Text)
+    , _riPendingModifiedValues :: !(Maybe ReplicationPendingModifiedValues)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ReplicationInstance' with the minimum fields required to make a request.
@@ -1187,7 +2087,7 @@ data ReplicationInstance = ReplicationInstance'
 --
 -- * 'riAutoMinorVersionUpgrade' - Boolean value indicating if minor version upgrades will be automatically applied to the instance.
 --
--- * 'riReplicationInstancePublicIPAddresses' - The public IP address of the replication instance.
+-- * 'riReplicationInstancePublicIPAddresses' - One or more public IP addresses for the replication instance.
 --
 -- * 'riReplicationSubnetGroup' - The subnet group for the replication instance.
 --
@@ -1197,25 +2097,27 @@ data ReplicationInstance = ReplicationInstance'
 --
 -- * 'riReplicationInstanceStatus' - The status of the replication instance.
 --
--- * 'riReplicationInstancePrivateIPAddresses' - The private IP address of the replication instance.
+-- * 'riReplicationInstancePrivateIPAddresses' - One or more private IP addresses for the replication instance.
 --
 -- * 'riPreferredMaintenanceWindow' - The maintenance window times for the replication instance.
 --
 -- * 'riReplicationInstancePrivateIPAddress' - The private IP address of the replication instance.
 --
--- * 'riKMSKeyId' - The KMS key identifier that is used to encrypt the content on the replication instance. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
+-- * 'riKMSKeyId' - An AWS KMS key identifier that is used to encrypt the data on the replication instance. If you don't specify a value for the @KmsKeyId@ parameter, then AWS DMS uses your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS Region.
 --
 -- * 'riAvailabilityZone' - The Availability Zone for the instance.
 --
 -- * 'riVPCSecurityGroups' - The VPC security group for the instance.
 --
--- * 'riMultiAZ' - Specifies if the replication instance is a Multi-AZ deployment. You cannot set the @AvailabilityZone@ parameter if the Multi-AZ parameter is set to @true@ .
+-- * 'riMultiAZ' - Specifies whether the replication instance is a Multi-AZ deployment. You can't set the @AvailabilityZone@ parameter if the Multi-AZ parameter is set to @true@ .
 --
--- * 'riSecondaryAvailabilityZone' - The availability zone of the standby replication instance in a Multi-AZ deployment.
+-- * 'riSecondaryAvailabilityZone' - The Availability Zone of the standby replication instance in a Multi-AZ deployment.
 --
 -- * 'riReplicationInstanceARN' - The Amazon Resource Name (ARN) of the replication instance.
 --
 -- * 'riAllocatedStorage' - The amount of storage (in gigabytes) that is allocated for the replication instance.
+--
+-- * 'riDNSNameServers' - The DNS name servers for the replication instance.
 --
 -- * 'riReplicationInstancePublicIPAddress' - The public IP address of the replication instance.
 --
@@ -1246,6 +2148,7 @@ replicationInstance =
     , _riSecondaryAvailabilityZone = Nothing
     , _riReplicationInstanceARN = Nothing
     , _riAllocatedStorage = Nothing
+    , _riDNSNameServers = Nothing
     , _riReplicationInstancePublicIPAddress = Nothing
     , _riReplicationInstanceClass = Nothing
     , _riReplicationInstanceIdentifier = Nothing
@@ -1265,7 +2168,7 @@ riPubliclyAccessible = lens _riPubliclyAccessible (\ s a -> s{_riPubliclyAccessi
 riAutoMinorVersionUpgrade :: Lens' ReplicationInstance (Maybe Bool)
 riAutoMinorVersionUpgrade = lens _riAutoMinorVersionUpgrade (\ s a -> s{_riAutoMinorVersionUpgrade = a})
 
--- | The public IP address of the replication instance.
+-- | One or more public IP addresses for the replication instance.
 riReplicationInstancePublicIPAddresses :: Lens' ReplicationInstance [Text]
 riReplicationInstancePublicIPAddresses = lens _riReplicationInstancePublicIPAddresses (\ s a -> s{_riReplicationInstancePublicIPAddresses = a}) . _Default . _Coerce
 
@@ -1285,7 +2188,7 @@ riFreeUntil = lens _riFreeUntil (\ s a -> s{_riFreeUntil = a}) . mapping _Time
 riReplicationInstanceStatus :: Lens' ReplicationInstance (Maybe Text)
 riReplicationInstanceStatus = lens _riReplicationInstanceStatus (\ s a -> s{_riReplicationInstanceStatus = a})
 
--- | The private IP address of the replication instance.
+-- | One or more private IP addresses for the replication instance.
 riReplicationInstancePrivateIPAddresses :: Lens' ReplicationInstance [Text]
 riReplicationInstancePrivateIPAddresses = lens _riReplicationInstancePrivateIPAddresses (\ s a -> s{_riReplicationInstancePrivateIPAddresses = a}) . _Default . _Coerce
 
@@ -1297,7 +2200,7 @@ riPreferredMaintenanceWindow = lens _riPreferredMaintenanceWindow (\ s a -> s{_r
 riReplicationInstancePrivateIPAddress :: Lens' ReplicationInstance (Maybe Text)
 riReplicationInstancePrivateIPAddress = lens _riReplicationInstancePrivateIPAddress (\ s a -> s{_riReplicationInstancePrivateIPAddress = a})
 
--- | The KMS key identifier that is used to encrypt the content on the replication instance. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
+-- | An AWS KMS key identifier that is used to encrypt the data on the replication instance. If you don't specify a value for the @KmsKeyId@ parameter, then AWS DMS uses your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS Region.
 riKMSKeyId :: Lens' ReplicationInstance (Maybe Text)
 riKMSKeyId = lens _riKMSKeyId (\ s a -> s{_riKMSKeyId = a})
 
@@ -1309,11 +2212,11 @@ riAvailabilityZone = lens _riAvailabilityZone (\ s a -> s{_riAvailabilityZone = 
 riVPCSecurityGroups :: Lens' ReplicationInstance [VPCSecurityGroupMembership]
 riVPCSecurityGroups = lens _riVPCSecurityGroups (\ s a -> s{_riVPCSecurityGroups = a}) . _Default . _Coerce
 
--- | Specifies if the replication instance is a Multi-AZ deployment. You cannot set the @AvailabilityZone@ parameter if the Multi-AZ parameter is set to @true@ .
+-- | Specifies whether the replication instance is a Multi-AZ deployment. You can't set the @AvailabilityZone@ parameter if the Multi-AZ parameter is set to @true@ .
 riMultiAZ :: Lens' ReplicationInstance (Maybe Bool)
 riMultiAZ = lens _riMultiAZ (\ s a -> s{_riMultiAZ = a})
 
--- | The availability zone of the standby replication instance in a Multi-AZ deployment.
+-- | The Availability Zone of the standby replication instance in a Multi-AZ deployment.
 riSecondaryAvailabilityZone :: Lens' ReplicationInstance (Maybe Text)
 riSecondaryAvailabilityZone = lens _riSecondaryAvailabilityZone (\ s a -> s{_riSecondaryAvailabilityZone = a})
 
@@ -1324,6 +2227,10 @@ riReplicationInstanceARN = lens _riReplicationInstanceARN (\ s a -> s{_riReplica
 -- | The amount of storage (in gigabytes) that is allocated for the replication instance.
 riAllocatedStorage :: Lens' ReplicationInstance (Maybe Int)
 riAllocatedStorage = lens _riAllocatedStorage (\ s a -> s{_riAllocatedStorage = a})
+
+-- | The DNS name servers for the replication instance.
+riDNSNameServers :: Lens' ReplicationInstance (Maybe Text)
+riDNSNameServers = lens _riDNSNameServers (\ s a -> s{_riDNSNameServers = a})
 
 -- | The public IP address of the replication instance.
 riReplicationInstancePublicIPAddress :: Lens' ReplicationInstance (Maybe Text)
@@ -1368,6 +2275,7 @@ instance FromJSON ReplicationInstance where
                      <*> (x .:? "SecondaryAvailabilityZone")
                      <*> (x .:? "ReplicationInstanceArn")
                      <*> (x .:? "AllocatedStorage")
+                     <*> (x .:? "DnsNameServers")
                      <*> (x .:? "ReplicationInstancePublicIpAddress")
                      <*> (x .:? "ReplicationInstanceClass")
                      <*> (x .:? "ReplicationInstanceIdentifier")
@@ -1382,11 +2290,13 @@ instance NFData ReplicationInstance where
 --
 --
 -- /See:/ 'replicationInstanceTaskLog' smart constructor.
-data ReplicationInstanceTaskLog = ReplicationInstanceTaskLog'
-  { _ritlReplicationTaskName            :: !(Maybe Text)
-  , _ritlReplicationTaskARN             :: !(Maybe Text)
-  , _ritlReplicationInstanceTaskLogSize :: !(Maybe Integer)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ReplicationInstanceTaskLog =
+  ReplicationInstanceTaskLog'
+    { _ritlReplicationTaskName            :: !(Maybe Text)
+    , _ritlReplicationTaskARN             :: !(Maybe Text)
+    , _ritlReplicationInstanceTaskLogSize :: !(Maybe Integer)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ReplicationInstanceTaskLog' with the minimum fields required to make a request.
@@ -1433,17 +2343,19 @@ instance Hashable ReplicationInstanceTaskLog where
 
 instance NFData ReplicationInstanceTaskLog where
 
--- |
+-- | Provides information about the values of pending modifications to a replication instance. This data type is an object of the @ReplicationInstance@ user-defined data type.
 --
 --
 --
 -- /See:/ 'replicationPendingModifiedValues' smart constructor.
-data ReplicationPendingModifiedValues = ReplicationPendingModifiedValues'
-  { _rpmvEngineVersion            :: !(Maybe Text)
-  , _rpmvMultiAZ                  :: !(Maybe Bool)
-  , _rpmvAllocatedStorage         :: !(Maybe Int)
-  , _rpmvReplicationInstanceClass :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ReplicationPendingModifiedValues =
+  ReplicationPendingModifiedValues'
+    { _rpmvEngineVersion            :: !(Maybe Text)
+    , _rpmvMultiAZ                  :: !(Maybe Bool)
+    , _rpmvAllocatedStorage         :: !(Maybe Int)
+    , _rpmvReplicationInstanceClass :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ReplicationPendingModifiedValues' with the minimum fields required to make a request.
@@ -1452,7 +2364,7 @@ data ReplicationPendingModifiedValues = ReplicationPendingModifiedValues'
 --
 -- * 'rpmvEngineVersion' - The engine version number of the replication instance.
 --
--- * 'rpmvMultiAZ' - Specifies if the replication instance is a Multi-AZ deployment. You cannot set the @AvailabilityZone@ parameter if the Multi-AZ parameter is set to @true@ .
+-- * 'rpmvMultiAZ' - Specifies whether the replication instance is a Multi-AZ deployment. You can't set the @AvailabilityZone@ parameter if the Multi-AZ parameter is set to @true@ .
 --
 -- * 'rpmvAllocatedStorage' - The amount of storage (in gigabytes) that is allocated for the replication instance.
 --
@@ -1472,7 +2384,7 @@ replicationPendingModifiedValues =
 rpmvEngineVersion :: Lens' ReplicationPendingModifiedValues (Maybe Text)
 rpmvEngineVersion = lens _rpmvEngineVersion (\ s a -> s{_rpmvEngineVersion = a})
 
--- | Specifies if the replication instance is a Multi-AZ deployment. You cannot set the @AvailabilityZone@ parameter if the Multi-AZ parameter is set to @true@ .
+-- | Specifies whether the replication instance is a Multi-AZ deployment. You can't set the @AvailabilityZone@ parameter if the Multi-AZ parameter is set to @true@ .
 rpmvMultiAZ :: Lens' ReplicationPendingModifiedValues (Maybe Bool)
 rpmvMultiAZ = lens _rpmvMultiAZ (\ s a -> s{_rpmvMultiAZ = a})
 
@@ -1500,18 +2412,20 @@ instance Hashable ReplicationPendingModifiedValues
 instance NFData ReplicationPendingModifiedValues
          where
 
--- |
+-- | Describes a subnet group in response to a request by the @DescribeReplicationSubnetGroup@ operation.
 --
 --
 --
 -- /See:/ 'replicationSubnetGroup' smart constructor.
-data ReplicationSubnetGroup = ReplicationSubnetGroup'
-  { _rsgVPCId                             :: !(Maybe Text)
-  , _rsgSubnets                           :: !(Maybe [Subnet])
-  , _rsgReplicationSubnetGroupIdentifier  :: !(Maybe Text)
-  , _rsgSubnetGroupStatus                 :: !(Maybe Text)
-  , _rsgReplicationSubnetGroupDescription :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ReplicationSubnetGroup =
+  ReplicationSubnetGroup'
+    { _rsgVPCId                             :: !(Maybe Text)
+    , _rsgSubnets                           :: !(Maybe [Subnet])
+    , _rsgReplicationSubnetGroupIdentifier  :: !(Maybe Text)
+    , _rsgSubnetGroupStatus                 :: !(Maybe Text)
+    , _rsgReplicationSubnetGroupDescription :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ReplicationSubnetGroup' with the minimum fields required to make a request.
@@ -1526,7 +2440,7 @@ data ReplicationSubnetGroup = ReplicationSubnetGroup'
 --
 -- * 'rsgSubnetGroupStatus' - The status of the subnet group.
 --
--- * 'rsgReplicationSubnetGroupDescription' - The description of the replication subnet group.
+-- * 'rsgReplicationSubnetGroupDescription' - A description for the replication subnet group.
 replicationSubnetGroup
     :: ReplicationSubnetGroup
 replicationSubnetGroup =
@@ -1555,7 +2469,7 @@ rsgReplicationSubnetGroupIdentifier = lens _rsgReplicationSubnetGroupIdentifier 
 rsgSubnetGroupStatus :: Lens' ReplicationSubnetGroup (Maybe Text)
 rsgSubnetGroupStatus = lens _rsgSubnetGroupStatus (\ s a -> s{_rsgSubnetGroupStatus = a})
 
--- | The description of the replication subnet group.
+-- | A description for the replication subnet group.
 rsgReplicationSubnetGroupDescription :: Lens' ReplicationSubnetGroup (Maybe Text)
 rsgReplicationSubnetGroupDescription = lens _rsgReplicationSubnetGroupDescription (\ s a -> s{_rsgReplicationSubnetGroupDescription = a})
 
@@ -1573,30 +2487,33 @@ instance Hashable ReplicationSubnetGroup where
 
 instance NFData ReplicationSubnetGroup where
 
--- |
+-- | Provides information that describes a replication task created by the @CreateReplicationTask@ operation.
 --
 --
 --
 -- /See:/ 'replicationTask' smart constructor.
-data ReplicationTask = ReplicationTask'
-  { _rReplicationTaskSettings     :: !(Maybe Text)
-  , _rStatus                      :: !(Maybe Text)
-  , _rStopReason                  :: !(Maybe Text)
-  , _rTargetEndpointARN           :: !(Maybe Text)
-  , _rReplicationTaskIdentifier   :: !(Maybe Text)
-  , _rCdcStartPosition            :: !(Maybe Text)
-  , _rReplicationTaskStartDate    :: !(Maybe POSIX)
-  , _rSourceEndpointARN           :: !(Maybe Text)
-  , _rRecoveryCheckpoint          :: !(Maybe Text)
-  , _rTableMappings               :: !(Maybe Text)
-  , _rReplicationTaskCreationDate :: !(Maybe POSIX)
-  , _rMigrationType               :: !(Maybe MigrationTypeValue)
-  , _rReplicationTaskARN          :: !(Maybe Text)
-  , _rCdcStopPosition             :: !(Maybe Text)
-  , _rReplicationTaskStats        :: !(Maybe ReplicationTaskStats)
-  , _rReplicationInstanceARN      :: !(Maybe Text)
-  , _rLastFailureMessage          :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ReplicationTask =
+  ReplicationTask'
+    { _rReplicationTaskSettings     :: !(Maybe Text)
+    , _rStatus                      :: !(Maybe Text)
+    , _rStopReason                  :: !(Maybe Text)
+    , _rTargetEndpointARN           :: !(Maybe Text)
+    , _rReplicationTaskIdentifier   :: !(Maybe Text)
+    , _rCdcStartPosition            :: !(Maybe Text)
+    , _rReplicationTaskStartDate    :: !(Maybe POSIX)
+    , _rSourceEndpointARN           :: !(Maybe Text)
+    , _rRecoveryCheckpoint          :: !(Maybe Text)
+    , _rTableMappings               :: !(Maybe Text)
+    , _rReplicationTaskCreationDate :: !(Maybe POSIX)
+    , _rMigrationType               :: !(Maybe MigrationTypeValue)
+    , _rReplicationTaskARN          :: !(Maybe Text)
+    , _rTaskData                    :: !(Maybe Text)
+    , _rCdcStopPosition             :: !(Maybe Text)
+    , _rReplicationTaskStats        :: !(Maybe ReplicationTaskStats)
+    , _rReplicationInstanceARN      :: !(Maybe Text)
+    , _rLastFailureMessage          :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ReplicationTask' with the minimum fields required to make a request.
@@ -1611,9 +2528,9 @@ data ReplicationTask = ReplicationTask'
 --
 -- * 'rTargetEndpointARN' - The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.
 --
--- * 'rReplicationTaskIdentifier' - The replication task identifier. Constraints:     * Must contain from 1 to 255 alphanumeric characters or hyphens.     * First character must be a letter.     * Cannot end with a hyphen or contain two consecutive hyphens.
+-- * 'rReplicationTaskIdentifier' - The user-assigned replication task identifier or name. Constraints:     * Must contain from 1 to 255 alphanumeric characters or hyphens.     * First character must be a letter.     * Cannot end with a hyphen or contain two consecutive hyphens.
 --
--- * 'rCdcStartPosition' - Indicates when you want a change data capture (CDC) operation to start. Use either CdcStartPosition or CdcStartTime to specify when you want a CDC operation to start. Specifying both values results in an error. The value can be in date, checkpoint, or LSN/SCN format. Date Example: --cdc-start-position “2018-03-08T12:12:12” Checkpoint Example: --cdc-start-position "checkpoint:V1#27#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876#0#0#*#0#93" LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”
+-- * 'rCdcStartPosition' - Indicates when you want a change data capture (CDC) operation to start. Use either @CdcStartPosition@ or @CdcStartTime@ to specify when you want the CDC operation to start. Specifying both values results in an error. The value can be in date, checkpoint, or LSN/SCN format. Date Example: --cdc-start-position “2018-03-08T12:12:12” Checkpoint Example: --cdc-start-position "checkpoint:V1#27#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876#0#0#*#0#93" LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”
 --
 -- * 'rReplicationTaskStartDate' - The date the replication task is scheduled to start.
 --
@@ -1628,6 +2545,8 @@ data ReplicationTask = ReplicationTask'
 -- * 'rMigrationType' - The type of migration.
 --
 -- * 'rReplicationTaskARN' - The Amazon Resource Name (ARN) of the replication task.
+--
+-- * 'rTaskData' - Supplemental information that the task requires to migrate the data for certain source and target endpoints. For more information, see <https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.TaskData.html Specifying Supplemental Data for Task Settings> in the /AWS Database Migration User Guide./
 --
 -- * 'rCdcStopPosition' - Indicates when you want a change data capture (CDC) operation to stop. The value can be either server time or commit time. Server time example: --cdc-stop-position “server_time:3018-02-09T12:12:12” Commit time example: --cdc-stop-position “commit_time: 3018-02-09T12:12:12 “
 --
@@ -1653,6 +2572,7 @@ replicationTask =
     , _rReplicationTaskCreationDate = Nothing
     , _rMigrationType = Nothing
     , _rReplicationTaskARN = Nothing
+    , _rTaskData = Nothing
     , _rCdcStopPosition = Nothing
     , _rReplicationTaskStats = Nothing
     , _rReplicationInstanceARN = Nothing
@@ -1676,11 +2596,11 @@ rStopReason = lens _rStopReason (\ s a -> s{_rStopReason = a})
 rTargetEndpointARN :: Lens' ReplicationTask (Maybe Text)
 rTargetEndpointARN = lens _rTargetEndpointARN (\ s a -> s{_rTargetEndpointARN = a})
 
--- | The replication task identifier. Constraints:     * Must contain from 1 to 255 alphanumeric characters or hyphens.     * First character must be a letter.     * Cannot end with a hyphen or contain two consecutive hyphens.
+-- | The user-assigned replication task identifier or name. Constraints:     * Must contain from 1 to 255 alphanumeric characters or hyphens.     * First character must be a letter.     * Cannot end with a hyphen or contain two consecutive hyphens.
 rReplicationTaskIdentifier :: Lens' ReplicationTask (Maybe Text)
 rReplicationTaskIdentifier = lens _rReplicationTaskIdentifier (\ s a -> s{_rReplicationTaskIdentifier = a})
 
--- | Indicates when you want a change data capture (CDC) operation to start. Use either CdcStartPosition or CdcStartTime to specify when you want a CDC operation to start. Specifying both values results in an error. The value can be in date, checkpoint, or LSN/SCN format. Date Example: --cdc-start-position “2018-03-08T12:12:12” Checkpoint Example: --cdc-start-position "checkpoint:V1#27#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876#0#0#*#0#93" LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”
+-- | Indicates when you want a change data capture (CDC) operation to start. Use either @CdcStartPosition@ or @CdcStartTime@ to specify when you want the CDC operation to start. Specifying both values results in an error. The value can be in date, checkpoint, or LSN/SCN format. Date Example: --cdc-start-position “2018-03-08T12:12:12” Checkpoint Example: --cdc-start-position "checkpoint:V1#27#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876#0#0#*#0#93" LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”
 rCdcStartPosition :: Lens' ReplicationTask (Maybe Text)
 rCdcStartPosition = lens _rCdcStartPosition (\ s a -> s{_rCdcStartPosition = a})
 
@@ -1711,6 +2631,10 @@ rMigrationType = lens _rMigrationType (\ s a -> s{_rMigrationType = a})
 -- | The Amazon Resource Name (ARN) of the replication task.
 rReplicationTaskARN :: Lens' ReplicationTask (Maybe Text)
 rReplicationTaskARN = lens _rReplicationTaskARN (\ s a -> s{_rReplicationTaskARN = a})
+
+-- | Supplemental information that the task requires to migrate the data for certain source and target endpoints. For more information, see <https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.TaskData.html Specifying Supplemental Data for Task Settings> in the /AWS Database Migration User Guide./
+rTaskData :: Lens' ReplicationTask (Maybe Text)
+rTaskData = lens _rTaskData (\ s a -> s{_rTaskData = a})
 
 -- | Indicates when you want a change data capture (CDC) operation to stop. The value can be either server time or commit time. Server time example: --cdc-stop-position “server_time:3018-02-09T12:12:12” Commit time example: --cdc-stop-position “commit_time: 3018-02-09T12:12:12 “
 rCdcStopPosition :: Lens' ReplicationTask (Maybe Text)
@@ -1746,6 +2670,7 @@ instance FromJSON ReplicationTask where
                      <*> (x .:? "ReplicationTaskCreationDate")
                      <*> (x .:? "MigrationType")
                      <*> (x .:? "ReplicationTaskArn")
+                     <*> (x .:? "TaskData")
                      <*> (x .:? "CdcStopPosition")
                      <*> (x .:? "ReplicationTaskStats")
                      <*> (x .:? "ReplicationInstanceArn")
@@ -1760,15 +2685,17 @@ instance NFData ReplicationTask where
 --
 --
 -- /See:/ 'replicationTaskAssessmentResult' smart constructor.
-data ReplicationTaskAssessmentResult = ReplicationTaskAssessmentResult'
-  { _rtarAssessmentResults                 :: !(Maybe Text)
-  , _rtarAssessmentResultsFile             :: !(Maybe Text)
-  , _rtarReplicationTaskIdentifier         :: !(Maybe Text)
-  , _rtarAssessmentStatus                  :: !(Maybe Text)
-  , _rtarS3ObjectURL                       :: !(Maybe Text)
-  , _rtarReplicationTaskLastAssessmentDate :: !(Maybe POSIX)
-  , _rtarReplicationTaskARN                :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ReplicationTaskAssessmentResult =
+  ReplicationTaskAssessmentResult'
+    { _rtarAssessmentResults                 :: !(Maybe Text)
+    , _rtarAssessmentResultsFile             :: !(Maybe Text)
+    , _rtarReplicationTaskIdentifier         :: !(Maybe Text)
+    , _rtarAssessmentStatus                  :: !(Maybe Text)
+    , _rtarS3ObjectURL                       :: !(Maybe Text)
+    , _rtarReplicationTaskLastAssessmentDate :: !(Maybe POSIX)
+    , _rtarReplicationTaskARN                :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ReplicationTaskAssessmentResult' with the minimum fields required to make a request.
@@ -1849,60 +2776,98 @@ instance Hashable ReplicationTaskAssessmentResult
 
 instance NFData ReplicationTaskAssessmentResult where
 
--- |
+-- | In response to a request by the @DescribeReplicationTasks@ operation, this object provides a collection of statistics about a replication task.
 --
 --
 --
 -- /See:/ 'replicationTaskStats' smart constructor.
-data ReplicationTaskStats = ReplicationTaskStats'
-  { _rtsFullLoadProgressPercent :: !(Maybe Int)
-  , _rtsElapsedTimeMillis       :: !(Maybe Integer)
-  , _rtsTablesErrored           :: !(Maybe Int)
-  , _rtsTablesLoaded            :: !(Maybe Int)
-  , _rtsTablesQueued            :: !(Maybe Int)
-  , _rtsTablesLoading           :: !(Maybe Int)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ReplicationTaskStats =
+  ReplicationTaskStats'
+    { _rtsStopDate                :: !(Maybe POSIX)
+    , _rtsFullLoadProgressPercent :: !(Maybe Int)
+    , _rtsFullLoadStartDate       :: !(Maybe POSIX)
+    , _rtsElapsedTimeMillis       :: !(Maybe Integer)
+    , _rtsStartDate               :: !(Maybe POSIX)
+    , _rtsTablesErrored           :: !(Maybe Int)
+    , _rtsFullLoadFinishDate      :: !(Maybe POSIX)
+    , _rtsTablesLoaded            :: !(Maybe Int)
+    , _rtsTablesQueued            :: !(Maybe Int)
+    , _rtsTablesLoading           :: !(Maybe Int)
+    , _rtsFreshStartDate          :: !(Maybe POSIX)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ReplicationTaskStats' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'rtsStopDate' - The date the replication task was stopped.
+--
 -- * 'rtsFullLoadProgressPercent' - The percent complete for the full load migration task.
+--
+-- * 'rtsFullLoadStartDate' - The date the replication task full load was started.
 --
 -- * 'rtsElapsedTimeMillis' - The elapsed time of the task, in milliseconds.
 --
+-- * 'rtsStartDate' - The date the replication task was started either with a fresh start or a resume. For more information, see <https://docs.aws.amazon.com/dms/latest/APIReference/API_StartReplicationTask.html#DMS-StartReplicationTask-request-StartReplicationTaskType StartReplicationTaskType> .
+--
 -- * 'rtsTablesErrored' - The number of errors that have occurred during this task.
+--
+-- * 'rtsFullLoadFinishDate' - The date the replication task full load was completed.
 --
 -- * 'rtsTablesLoaded' - The number of tables loaded for this task.
 --
 -- * 'rtsTablesQueued' - The number of tables queued for this task.
 --
 -- * 'rtsTablesLoading' - The number of tables currently loading for this task.
+--
+-- * 'rtsFreshStartDate' - The date the replication task was started either with a fresh start or a target reload.
 replicationTaskStats
     :: ReplicationTaskStats
 replicationTaskStats =
   ReplicationTaskStats'
-    { _rtsFullLoadProgressPercent = Nothing
+    { _rtsStopDate = Nothing
+    , _rtsFullLoadProgressPercent = Nothing
+    , _rtsFullLoadStartDate = Nothing
     , _rtsElapsedTimeMillis = Nothing
+    , _rtsStartDate = Nothing
     , _rtsTablesErrored = Nothing
+    , _rtsFullLoadFinishDate = Nothing
     , _rtsTablesLoaded = Nothing
     , _rtsTablesQueued = Nothing
     , _rtsTablesLoading = Nothing
+    , _rtsFreshStartDate = Nothing
     }
 
+
+-- | The date the replication task was stopped.
+rtsStopDate :: Lens' ReplicationTaskStats (Maybe UTCTime)
+rtsStopDate = lens _rtsStopDate (\ s a -> s{_rtsStopDate = a}) . mapping _Time
 
 -- | The percent complete for the full load migration task.
 rtsFullLoadProgressPercent :: Lens' ReplicationTaskStats (Maybe Int)
 rtsFullLoadProgressPercent = lens _rtsFullLoadProgressPercent (\ s a -> s{_rtsFullLoadProgressPercent = a})
 
+-- | The date the replication task full load was started.
+rtsFullLoadStartDate :: Lens' ReplicationTaskStats (Maybe UTCTime)
+rtsFullLoadStartDate = lens _rtsFullLoadStartDate (\ s a -> s{_rtsFullLoadStartDate = a}) . mapping _Time
+
 -- | The elapsed time of the task, in milliseconds.
 rtsElapsedTimeMillis :: Lens' ReplicationTaskStats (Maybe Integer)
 rtsElapsedTimeMillis = lens _rtsElapsedTimeMillis (\ s a -> s{_rtsElapsedTimeMillis = a})
 
+-- | The date the replication task was started either with a fresh start or a resume. For more information, see <https://docs.aws.amazon.com/dms/latest/APIReference/API_StartReplicationTask.html#DMS-StartReplicationTask-request-StartReplicationTaskType StartReplicationTaskType> .
+rtsStartDate :: Lens' ReplicationTaskStats (Maybe UTCTime)
+rtsStartDate = lens _rtsStartDate (\ s a -> s{_rtsStartDate = a}) . mapping _Time
+
 -- | The number of errors that have occurred during this task.
 rtsTablesErrored :: Lens' ReplicationTaskStats (Maybe Int)
 rtsTablesErrored = lens _rtsTablesErrored (\ s a -> s{_rtsTablesErrored = a})
+
+-- | The date the replication task full load was completed.
+rtsFullLoadFinishDate :: Lens' ReplicationTaskStats (Maybe UTCTime)
+rtsFullLoadFinishDate = lens _rtsFullLoadFinishDate (\ s a -> s{_rtsFullLoadFinishDate = a}) . mapping _Time
 
 -- | The number of tables loaded for this task.
 rtsTablesLoaded :: Lens' ReplicationTaskStats (Maybe Int)
@@ -1916,68 +2881,199 @@ rtsTablesQueued = lens _rtsTablesQueued (\ s a -> s{_rtsTablesQueued = a})
 rtsTablesLoading :: Lens' ReplicationTaskStats (Maybe Int)
 rtsTablesLoading = lens _rtsTablesLoading (\ s a -> s{_rtsTablesLoading = a})
 
+-- | The date the replication task was started either with a fresh start or a target reload.
+rtsFreshStartDate :: Lens' ReplicationTaskStats (Maybe UTCTime)
+rtsFreshStartDate = lens _rtsFreshStartDate (\ s a -> s{_rtsFreshStartDate = a}) . mapping _Time
+
 instance FromJSON ReplicationTaskStats where
         parseJSON
           = withObject "ReplicationTaskStats"
               (\ x ->
                  ReplicationTaskStats' <$>
-                   (x .:? "FullLoadProgressPercent") <*>
-                     (x .:? "ElapsedTimeMillis")
+                   (x .:? "StopDate") <*>
+                     (x .:? "FullLoadProgressPercent")
+                     <*> (x .:? "FullLoadStartDate")
+                     <*> (x .:? "ElapsedTimeMillis")
+                     <*> (x .:? "StartDate")
                      <*> (x .:? "TablesErrored")
+                     <*> (x .:? "FullLoadFinishDate")
                      <*> (x .:? "TablesLoaded")
                      <*> (x .:? "TablesQueued")
-                     <*> (x .:? "TablesLoading"))
+                     <*> (x .:? "TablesLoading")
+                     <*> (x .:? "FreshStartDate"))
 
 instance Hashable ReplicationTaskStats where
 
 instance NFData ReplicationTaskStats where
 
--- |
+-- | Identifies an AWS DMS resource and any pending actions for it.
+--
+--
+--
+-- /See:/ 'resourcePendingMaintenanceActions' smart constructor.
+data ResourcePendingMaintenanceActions =
+  ResourcePendingMaintenanceActions'
+    { _rpmaPendingMaintenanceActionDetails :: !(Maybe [PendingMaintenanceAction])
+    , _rpmaResourceIdentifier :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'ResourcePendingMaintenanceActions' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'rpmaPendingMaintenanceActionDetails' - Detailed information about the pending maintenance action.
+--
+-- * 'rpmaResourceIdentifier' - The Amazon Resource Name (ARN) of the DMS resource that the pending maintenance action applies to. For information about creating an ARN, see <https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Introduction.AWS.ARN.html Constructing an Amazon Resource Name (ARN) for AWS DMS> in the DMS documentation.
+resourcePendingMaintenanceActions
+    :: ResourcePendingMaintenanceActions
+resourcePendingMaintenanceActions =
+  ResourcePendingMaintenanceActions'
+    { _rpmaPendingMaintenanceActionDetails = Nothing
+    , _rpmaResourceIdentifier = Nothing
+    }
+
+
+-- | Detailed information about the pending maintenance action.
+rpmaPendingMaintenanceActionDetails :: Lens' ResourcePendingMaintenanceActions [PendingMaintenanceAction]
+rpmaPendingMaintenanceActionDetails = lens _rpmaPendingMaintenanceActionDetails (\ s a -> s{_rpmaPendingMaintenanceActionDetails = a}) . _Default . _Coerce
+
+-- | The Amazon Resource Name (ARN) of the DMS resource that the pending maintenance action applies to. For information about creating an ARN, see <https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Introduction.AWS.ARN.html Constructing an Amazon Resource Name (ARN) for AWS DMS> in the DMS documentation.
+rpmaResourceIdentifier :: Lens' ResourcePendingMaintenanceActions (Maybe Text)
+rpmaResourceIdentifier = lens _rpmaResourceIdentifier (\ s a -> s{_rpmaResourceIdentifier = a})
+
+instance FromJSON ResourcePendingMaintenanceActions
+         where
+        parseJSON
+          = withObject "ResourcePendingMaintenanceActions"
+              (\ x ->
+                 ResourcePendingMaintenanceActions' <$>
+                   (x .:? "PendingMaintenanceActionDetails" .!= mempty)
+                     <*> (x .:? "ResourceIdentifier"))
+
+instance Hashable ResourcePendingMaintenanceActions
+         where
+
+instance NFData ResourcePendingMaintenanceActions
+         where
+
+-- | Settings for exporting data to Amazon S3.
 --
 --
 --
 -- /See:/ 's3Settings' smart constructor.
-data S3Settings = S3Settings'
-  { _ssCSVDelimiter            :: !(Maybe Text)
-  , _ssServiceAccessRoleARN    :: !(Maybe Text)
-  , _ssBucketFolder            :: !(Maybe Text)
-  , _ssExternalTableDefinition :: !(Maybe Text)
-  , _ssBucketName              :: !(Maybe Text)
-  , _ssCSVRowDelimiter         :: !(Maybe Text)
-  , _ssCompressionType         :: !(Maybe CompressionTypeValue)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data S3Settings =
+  S3Settings'
+    { _ssParquetVersion                :: !(Maybe ParquetVersionValue)
+    , _ssParquetTimestampInMillisecond :: !(Maybe Bool)
+    , _ssIncludeOpForFullLoad          :: !(Maybe Bool)
+    , _ssCSVDelimiter                  :: !(Maybe Text)
+    , _ssServiceAccessRoleARN          :: !(Maybe Text)
+    , _ssBucketFolder                  :: !(Maybe Text)
+    , _ssDataFormat                    :: !(Maybe DataFormatValue)
+    , _ssEncodingType                  :: !(Maybe EncodingTypeValue)
+    , _ssExternalTableDefinition       :: !(Maybe Text)
+    , _ssDictPageSizeLimit             :: !(Maybe Int)
+    , _ssBucketName                    :: !(Maybe Text)
+    , _ssEncryptionMode                :: !(Maybe EncryptionModeValue)
+    , _ssEnableStatistics              :: !(Maybe Bool)
+    , _ssCdcInsertsOnly                :: !(Maybe Bool)
+    , _ssTimestampColumnName           :: !(Maybe Text)
+    , _ssCSVRowDelimiter               :: !(Maybe Text)
+    , _ssCompressionType               :: !(Maybe CompressionTypeValue)
+    , _ssServerSideEncryptionKMSKeyId  :: !(Maybe Text)
+    , _ssDataPageSize                  :: !(Maybe Int)
+    , _ssCdcInsertsAndUpdates          :: !(Maybe Bool)
+    , _ssRowGroupLength                :: !(Maybe Int)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'S3Settings' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'ssParquetVersion' - The version of the Apache Parquet format that you want to use: @parquet_1_0@ (the default) or @parquet_2_0@ .
+--
+-- * 'ssParquetTimestampInMillisecond' - A value that specifies the precision of any @TIMESTAMP@ column values that are written to an Amazon S3 object file in .parquet format. When @ParquetTimestampInMillisecond@ is set to @true@ or @y@ , AWS DMS writes all @TIMESTAMP@ columns in a .parquet formatted file with millisecond precision. Otherwise, DMS writes them with microsecond precision. Currently, Amazon Athena and AWS Glue can handle only millisecond precision for @TIMESTAMP@ values. Set this parameter to @true@ for S3 endpoint object files that are .parquet formatted only if you plan to query or process the data with Athena or AWS Glue.
+--
+-- * 'ssIncludeOpForFullLoad' - A value that enables a full load to write INSERT operations to the comma-separated value (.csv) output files only to indicate how the rows were added to the source database. For full load, records can only be inserted. By default (the @false@ setting), no information is recorded in these output files for a full load to indicate that the rows were inserted at the source database. If @IncludeOpForFullLoad@ is set to @true@ or @y@ , the INSERT is recorded as an I annotation in the first field of the .csv file. This allows the format of your target records from a full load to be consistent with the target records from a CDC load.
+--
 -- * 'ssCSVDelimiter' - The delimiter used to separate columns in the source files. The default is a comma.
 --
 -- * 'ssServiceAccessRoleARN' - The Amazon Resource Name (ARN) used by the service access IAM role.
 --
--- * 'ssBucketFolder' - An optional parameter to set a folder name in the S3 bucket. If provided, tables are created in the path <bucketFolder>/<schema_name>/<table_name>/. If this parameter is not specified, then the path used is <schema_name>/<table_name>/.
+-- * 'ssBucketFolder' - An optional parameter to set a folder name in the S3 bucket. If provided, tables are created in the path @/bucketFolder/ //schema_name/ //table_name/ /@ . If this parameter isn't specified, then the path used is @/schema_name/ //table_name/ /@ .
+--
+-- * 'ssDataFormat' - The format of the data that you want to use for output. You can choose one of the following:      * @csv@ : This is a row-based file format with comma-separated values (.csv).      * @parquet@ : Apache Parquet (.parquet) is a columnar storage file format that features efficient compression and provides faster query response.
+--
+-- * 'ssEncodingType' - The type of encoding you are using:      * @RLE_DICTIONARY@ uses a combination of bit-packing and run-length encoding to store repeated values more efficiently. This is the default.     * @PLAIN@ doesn't use encoding at all. Values are stored as they are.     * @PLAIN_DICTIONARY@ builds a dictionary of the values encountered in a given column. The dictionary is stored in a dictionary page for each column chunk.
 --
 -- * 'ssExternalTableDefinition' - The external table definition.
 --
+-- * 'ssDictPageSizeLimit' - The maximum size of an encoded dictionary page of a column. If the dictionary page exceeds this, this column is stored using an encoding type of @PLAIN@ . This parameter defaults to 1024 * 1024 bytes (1 MiB), the maximum size of a dictionary page before it reverts to @PLAIN@ encoding. This size is used for .parquet file format only.
+--
 -- * 'ssBucketName' - The name of the S3 bucket.
 --
--- * 'ssCSVRowDelimiter' - The delimiter used to separate rows in the source files. The default is a carriage return (\n).
+-- * 'ssEncryptionMode' - The type of server-side encryption that you want to use for your data. This encryption type is part of the endpoint settings or the extra connections attributes for Amazon S3. You can choose either @SSE_S3@ (the default) or @SSE_KMS@ . To use @SSE_S3@ , you need an AWS Identity and Access Management (IAM) role with permission to allow @"arn:aws:s3:::dms-*"@ to use the following actions:     * @s3:CreateBucket@      * @s3:ListBucket@      * @s3:DeleteBucket@      * @s3:GetBucketLocation@      * @s3:GetObject@      * @s3:PutObject@      * @s3:DeleteObject@      * @s3:GetObjectVersion@      * @s3:GetBucketPolicy@      * @s3:PutBucketPolicy@      * @s3:DeleteBucketPolicy@
 --
--- * 'ssCompressionType' - An optional parameter to use GZIP to compress the target files. Set to GZIP to compress the target files. Set to NONE (the default) or do not use to leave the files uncompressed.
+-- * 'ssEnableStatistics' - A value that enables statistics for Parquet pages and row groups. Choose @true@ to enable statistics, @false@ to disable. Statistics include @NULL@ , @DISTINCT@ , @MAX@ , and @MIN@ values. This parameter defaults to @true@ . This value is used for .parquet file format only.
+--
+-- * 'ssCdcInsertsOnly' - A value that enables a change data capture (CDC) load to write only INSERT operations to .csv or columnar storage (.parquet) output files. By default (the @false@ setting), the first field in a .csv or .parquet record contains the letter I (INSERT), U (UPDATE), or D (DELETE). These values indicate whether the row was inserted, updated, or deleted at the source database for a CDC load to the target. If @CdcInsertsOnly@ is set to @true@ or @y@ , only INSERTs from the source database are migrated to the .csv or .parquet file. For .csv format only, how these INSERTs are recorded depends on the value of @IncludeOpForFullLoad@ . If @IncludeOpForFullLoad@ is set to @true@ , the first field of every CDC record is set to I to indicate the INSERT operation at the source. If @IncludeOpForFullLoad@ is set to @false@ , every CDC record is written without a first field to indicate the INSERT operation at the source. For more information about how these settings work together, see <https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring.InsertOps Indicating Source DB Operations in Migrated S3 Data> in the /AWS Database Migration Service User Guide./ .
+--
+-- * 'ssTimestampColumnName' - A value that when nonblank causes AWS DMS to add a column with timestamp information to the endpoint data for an Amazon S3 target. DMS includes an additional @STRING@ column in the .csv or .parquet object files of your migrated data when you set @TimestampColumnName@ to a nonblank value. For a full load, each row of this timestamp column contains a timestamp for when the data was transferred from the source to the target by DMS.  For a change data capture (CDC) load, each row of the timestamp column contains the timestamp for the commit of that row in the source database. The string format for this timestamp column value is @yyyy-MM-dd HH:mm:ss.SSSSSS@ . By default, the precision of this value is in microseconds. For a CDC load, the rounding of the precision depends on the commit timestamp supported by DMS for the source database. When the @AddColumnName@ parameter is set to @true@ , DMS also includes a name for the timestamp column that you set with @TimestampColumnName@ .
+--
+-- * 'ssCSVRowDelimiter' - The delimiter used to separate rows in the source files. The default is a carriage return (@\n@ ).
+--
+-- * 'ssCompressionType' - An optional parameter to use GZIP to compress the target files. Set to GZIP to compress the target files. Either set this parameter to NONE (the default) or don't use it to leave the files uncompressed. This parameter applies to both .csv and .parquet file formats.
+--
+-- * 'ssServerSideEncryptionKMSKeyId' - If you are using @SSE_KMS@ for the @EncryptionMode@ , provide the AWS KMS key ID. The key that you use needs an attached policy that enables AWS Identity and Access Management (IAM) user permissions and allows use of the key. Here is a CLI example: @aws dms create-endpoint --endpoint-identifier /value/ --endpoint-type target --engine-name s3 --s3-settings ServiceAccessRoleArn=/value/ ,BucketFolder=/value/ ,BucketName=/value/ ,EncryptionMode=SSE_KMS,ServerSideEncryptionKmsKeyId=/value/ @
+--
+-- * 'ssDataPageSize' - The size of one data page in bytes. This parameter defaults to 1024 * 1024 bytes (1 MiB). This number is used for .parquet file format only.
+--
+-- * 'ssCdcInsertsAndUpdates' - A value that enables a change data capture (CDC) load to write INSERT and UPDATE operations to .csv or .parquet (columnar storage) output files. The default setting is @false@ , but when @CdcInsertsAndUpdates@ is set to @true@ or @y@ , INSERTs and UPDATEs from the source database are migrated to the .csv or .parquet file.  For .csv file format only, how these INSERTs and UPDATEs are recorded depends on the value of the @IncludeOpForFullLoad@ parameter. If @IncludeOpForFullLoad@ is set to @true@ , the first field of every CDC record is set to either @I@ or @U@ to indicate INSERT and UPDATE operations at the source. But if @IncludeOpForFullLoad@ is set to @false@ , CDC records are written without an indication of INSERT or UPDATE operations at the source. For more information about how these settings work together, see <https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring.InsertOps Indicating Source DB Operations in Migrated S3 Data> in the /AWS Database Migration Service User Guide./ .
+--
+-- * 'ssRowGroupLength' - The number of rows in a row group. A smaller row group size provides faster reads. But as the number of row groups grows, the slower writes become. This parameter defaults to 10,000 rows. This number is used for .parquet file format only.  If you choose a value larger than the maximum, @RowGroupLength@ is set to the max row group length in bytes (64 * 1024 * 1024).
 s3Settings
     :: S3Settings
 s3Settings =
   S3Settings'
-    { _ssCSVDelimiter = Nothing
+    { _ssParquetVersion = Nothing
+    , _ssParquetTimestampInMillisecond = Nothing
+    , _ssIncludeOpForFullLoad = Nothing
+    , _ssCSVDelimiter = Nothing
     , _ssServiceAccessRoleARN = Nothing
     , _ssBucketFolder = Nothing
+    , _ssDataFormat = Nothing
+    , _ssEncodingType = Nothing
     , _ssExternalTableDefinition = Nothing
+    , _ssDictPageSizeLimit = Nothing
     , _ssBucketName = Nothing
+    , _ssEncryptionMode = Nothing
+    , _ssEnableStatistics = Nothing
+    , _ssCdcInsertsOnly = Nothing
+    , _ssTimestampColumnName = Nothing
     , _ssCSVRowDelimiter = Nothing
     , _ssCompressionType = Nothing
+    , _ssServerSideEncryptionKMSKeyId = Nothing
+    , _ssDataPageSize = Nothing
+    , _ssCdcInsertsAndUpdates = Nothing
+    , _ssRowGroupLength = Nothing
     }
 
+
+-- | The version of the Apache Parquet format that you want to use: @parquet_1_0@ (the default) or @parquet_2_0@ .
+ssParquetVersion :: Lens' S3Settings (Maybe ParquetVersionValue)
+ssParquetVersion = lens _ssParquetVersion (\ s a -> s{_ssParquetVersion = a})
+
+-- | A value that specifies the precision of any @TIMESTAMP@ column values that are written to an Amazon S3 object file in .parquet format. When @ParquetTimestampInMillisecond@ is set to @true@ or @y@ , AWS DMS writes all @TIMESTAMP@ columns in a .parquet formatted file with millisecond precision. Otherwise, DMS writes them with microsecond precision. Currently, Amazon Athena and AWS Glue can handle only millisecond precision for @TIMESTAMP@ values. Set this parameter to @true@ for S3 endpoint object files that are .parquet formatted only if you plan to query or process the data with Athena or AWS Glue.
+ssParquetTimestampInMillisecond :: Lens' S3Settings (Maybe Bool)
+ssParquetTimestampInMillisecond = lens _ssParquetTimestampInMillisecond (\ s a -> s{_ssParquetTimestampInMillisecond = a})
+
+-- | A value that enables a full load to write INSERT operations to the comma-separated value (.csv) output files only to indicate how the rows were added to the source database. For full load, records can only be inserted. By default (the @false@ setting), no information is recorded in these output files for a full load to indicate that the rows were inserted at the source database. If @IncludeOpForFullLoad@ is set to @true@ or @y@ , the INSERT is recorded as an I annotation in the first field of the .csv file. This allows the format of your target records from a full load to be consistent with the target records from a CDC load.
+ssIncludeOpForFullLoad :: Lens' S3Settings (Maybe Bool)
+ssIncludeOpForFullLoad = lens _ssIncludeOpForFullLoad (\ s a -> s{_ssIncludeOpForFullLoad = a})
 
 -- | The delimiter used to separate columns in the source files. The default is a comma.
 ssCSVDelimiter :: Lens' S3Settings (Maybe Text)
@@ -1987,38 +3083,96 @@ ssCSVDelimiter = lens _ssCSVDelimiter (\ s a -> s{_ssCSVDelimiter = a})
 ssServiceAccessRoleARN :: Lens' S3Settings (Maybe Text)
 ssServiceAccessRoleARN = lens _ssServiceAccessRoleARN (\ s a -> s{_ssServiceAccessRoleARN = a})
 
--- | An optional parameter to set a folder name in the S3 bucket. If provided, tables are created in the path <bucketFolder>/<schema_name>/<table_name>/. If this parameter is not specified, then the path used is <schema_name>/<table_name>/.
+-- | An optional parameter to set a folder name in the S3 bucket. If provided, tables are created in the path @/bucketFolder/ //schema_name/ //table_name/ /@ . If this parameter isn't specified, then the path used is @/schema_name/ //table_name/ /@ .
 ssBucketFolder :: Lens' S3Settings (Maybe Text)
 ssBucketFolder = lens _ssBucketFolder (\ s a -> s{_ssBucketFolder = a})
+
+-- | The format of the data that you want to use for output. You can choose one of the following:      * @csv@ : This is a row-based file format with comma-separated values (.csv).      * @parquet@ : Apache Parquet (.parquet) is a columnar storage file format that features efficient compression and provides faster query response.
+ssDataFormat :: Lens' S3Settings (Maybe DataFormatValue)
+ssDataFormat = lens _ssDataFormat (\ s a -> s{_ssDataFormat = a})
+
+-- | The type of encoding you are using:      * @RLE_DICTIONARY@ uses a combination of bit-packing and run-length encoding to store repeated values more efficiently. This is the default.     * @PLAIN@ doesn't use encoding at all. Values are stored as they are.     * @PLAIN_DICTIONARY@ builds a dictionary of the values encountered in a given column. The dictionary is stored in a dictionary page for each column chunk.
+ssEncodingType :: Lens' S3Settings (Maybe EncodingTypeValue)
+ssEncodingType = lens _ssEncodingType (\ s a -> s{_ssEncodingType = a})
 
 -- | The external table definition.
 ssExternalTableDefinition :: Lens' S3Settings (Maybe Text)
 ssExternalTableDefinition = lens _ssExternalTableDefinition (\ s a -> s{_ssExternalTableDefinition = a})
 
+-- | The maximum size of an encoded dictionary page of a column. If the dictionary page exceeds this, this column is stored using an encoding type of @PLAIN@ . This parameter defaults to 1024 * 1024 bytes (1 MiB), the maximum size of a dictionary page before it reverts to @PLAIN@ encoding. This size is used for .parquet file format only.
+ssDictPageSizeLimit :: Lens' S3Settings (Maybe Int)
+ssDictPageSizeLimit = lens _ssDictPageSizeLimit (\ s a -> s{_ssDictPageSizeLimit = a})
+
 -- | The name of the S3 bucket.
 ssBucketName :: Lens' S3Settings (Maybe Text)
 ssBucketName = lens _ssBucketName (\ s a -> s{_ssBucketName = a})
 
--- | The delimiter used to separate rows in the source files. The default is a carriage return (\n).
+-- | The type of server-side encryption that you want to use for your data. This encryption type is part of the endpoint settings or the extra connections attributes for Amazon S3. You can choose either @SSE_S3@ (the default) or @SSE_KMS@ . To use @SSE_S3@ , you need an AWS Identity and Access Management (IAM) role with permission to allow @"arn:aws:s3:::dms-*"@ to use the following actions:     * @s3:CreateBucket@      * @s3:ListBucket@      * @s3:DeleteBucket@      * @s3:GetBucketLocation@      * @s3:GetObject@      * @s3:PutObject@      * @s3:DeleteObject@      * @s3:GetObjectVersion@      * @s3:GetBucketPolicy@      * @s3:PutBucketPolicy@      * @s3:DeleteBucketPolicy@
+ssEncryptionMode :: Lens' S3Settings (Maybe EncryptionModeValue)
+ssEncryptionMode = lens _ssEncryptionMode (\ s a -> s{_ssEncryptionMode = a})
+
+-- | A value that enables statistics for Parquet pages and row groups. Choose @true@ to enable statistics, @false@ to disable. Statistics include @NULL@ , @DISTINCT@ , @MAX@ , and @MIN@ values. This parameter defaults to @true@ . This value is used for .parquet file format only.
+ssEnableStatistics :: Lens' S3Settings (Maybe Bool)
+ssEnableStatistics = lens _ssEnableStatistics (\ s a -> s{_ssEnableStatistics = a})
+
+-- | A value that enables a change data capture (CDC) load to write only INSERT operations to .csv or columnar storage (.parquet) output files. By default (the @false@ setting), the first field in a .csv or .parquet record contains the letter I (INSERT), U (UPDATE), or D (DELETE). These values indicate whether the row was inserted, updated, or deleted at the source database for a CDC load to the target. If @CdcInsertsOnly@ is set to @true@ or @y@ , only INSERTs from the source database are migrated to the .csv or .parquet file. For .csv format only, how these INSERTs are recorded depends on the value of @IncludeOpForFullLoad@ . If @IncludeOpForFullLoad@ is set to @true@ , the first field of every CDC record is set to I to indicate the INSERT operation at the source. If @IncludeOpForFullLoad@ is set to @false@ , every CDC record is written without a first field to indicate the INSERT operation at the source. For more information about how these settings work together, see <https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring.InsertOps Indicating Source DB Operations in Migrated S3 Data> in the /AWS Database Migration Service User Guide./ .
+ssCdcInsertsOnly :: Lens' S3Settings (Maybe Bool)
+ssCdcInsertsOnly = lens _ssCdcInsertsOnly (\ s a -> s{_ssCdcInsertsOnly = a})
+
+-- | A value that when nonblank causes AWS DMS to add a column with timestamp information to the endpoint data for an Amazon S3 target. DMS includes an additional @STRING@ column in the .csv or .parquet object files of your migrated data when you set @TimestampColumnName@ to a nonblank value. For a full load, each row of this timestamp column contains a timestamp for when the data was transferred from the source to the target by DMS.  For a change data capture (CDC) load, each row of the timestamp column contains the timestamp for the commit of that row in the source database. The string format for this timestamp column value is @yyyy-MM-dd HH:mm:ss.SSSSSS@ . By default, the precision of this value is in microseconds. For a CDC load, the rounding of the precision depends on the commit timestamp supported by DMS for the source database. When the @AddColumnName@ parameter is set to @true@ , DMS also includes a name for the timestamp column that you set with @TimestampColumnName@ .
+ssTimestampColumnName :: Lens' S3Settings (Maybe Text)
+ssTimestampColumnName = lens _ssTimestampColumnName (\ s a -> s{_ssTimestampColumnName = a})
+
+-- | The delimiter used to separate rows in the source files. The default is a carriage return (@\n@ ).
 ssCSVRowDelimiter :: Lens' S3Settings (Maybe Text)
 ssCSVRowDelimiter = lens _ssCSVRowDelimiter (\ s a -> s{_ssCSVRowDelimiter = a})
 
--- | An optional parameter to use GZIP to compress the target files. Set to GZIP to compress the target files. Set to NONE (the default) or do not use to leave the files uncompressed.
+-- | An optional parameter to use GZIP to compress the target files. Set to GZIP to compress the target files. Either set this parameter to NONE (the default) or don't use it to leave the files uncompressed. This parameter applies to both .csv and .parquet file formats.
 ssCompressionType :: Lens' S3Settings (Maybe CompressionTypeValue)
 ssCompressionType = lens _ssCompressionType (\ s a -> s{_ssCompressionType = a})
+
+-- | If you are using @SSE_KMS@ for the @EncryptionMode@ , provide the AWS KMS key ID. The key that you use needs an attached policy that enables AWS Identity and Access Management (IAM) user permissions and allows use of the key. Here is a CLI example: @aws dms create-endpoint --endpoint-identifier /value/ --endpoint-type target --engine-name s3 --s3-settings ServiceAccessRoleArn=/value/ ,BucketFolder=/value/ ,BucketName=/value/ ,EncryptionMode=SSE_KMS,ServerSideEncryptionKmsKeyId=/value/ @
+ssServerSideEncryptionKMSKeyId :: Lens' S3Settings (Maybe Text)
+ssServerSideEncryptionKMSKeyId = lens _ssServerSideEncryptionKMSKeyId (\ s a -> s{_ssServerSideEncryptionKMSKeyId = a})
+
+-- | The size of one data page in bytes. This parameter defaults to 1024 * 1024 bytes (1 MiB). This number is used for .parquet file format only.
+ssDataPageSize :: Lens' S3Settings (Maybe Int)
+ssDataPageSize = lens _ssDataPageSize (\ s a -> s{_ssDataPageSize = a})
+
+-- | A value that enables a change data capture (CDC) load to write INSERT and UPDATE operations to .csv or .parquet (columnar storage) output files. The default setting is @false@ , but when @CdcInsertsAndUpdates@ is set to @true@ or @y@ , INSERTs and UPDATEs from the source database are migrated to the .csv or .parquet file.  For .csv file format only, how these INSERTs and UPDATEs are recorded depends on the value of the @IncludeOpForFullLoad@ parameter. If @IncludeOpForFullLoad@ is set to @true@ , the first field of every CDC record is set to either @I@ or @U@ to indicate INSERT and UPDATE operations at the source. But if @IncludeOpForFullLoad@ is set to @false@ , CDC records are written without an indication of INSERT or UPDATE operations at the source. For more information about how these settings work together, see <https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring.InsertOps Indicating Source DB Operations in Migrated S3 Data> in the /AWS Database Migration Service User Guide./ .
+ssCdcInsertsAndUpdates :: Lens' S3Settings (Maybe Bool)
+ssCdcInsertsAndUpdates = lens _ssCdcInsertsAndUpdates (\ s a -> s{_ssCdcInsertsAndUpdates = a})
+
+-- | The number of rows in a row group. A smaller row group size provides faster reads. But as the number of row groups grows, the slower writes become. This parameter defaults to 10,000 rows. This number is used for .parquet file format only.  If you choose a value larger than the maximum, @RowGroupLength@ is set to the max row group length in bytes (64 * 1024 * 1024).
+ssRowGroupLength :: Lens' S3Settings (Maybe Int)
+ssRowGroupLength = lens _ssRowGroupLength (\ s a -> s{_ssRowGroupLength = a})
 
 instance FromJSON S3Settings where
         parseJSON
           = withObject "S3Settings"
               (\ x ->
                  S3Settings' <$>
-                   (x .:? "CsvDelimiter") <*>
-                     (x .:? "ServiceAccessRoleArn")
+                   (x .:? "ParquetVersion") <*>
+                     (x .:? "ParquetTimestampInMillisecond")
+                     <*> (x .:? "IncludeOpForFullLoad")
+                     <*> (x .:? "CsvDelimiter")
+                     <*> (x .:? "ServiceAccessRoleArn")
                      <*> (x .:? "BucketFolder")
+                     <*> (x .:? "DataFormat")
+                     <*> (x .:? "EncodingType")
                      <*> (x .:? "ExternalTableDefinition")
+                     <*> (x .:? "DictPageSizeLimit")
                      <*> (x .:? "BucketName")
+                     <*> (x .:? "EncryptionMode")
+                     <*> (x .:? "EnableStatistics")
+                     <*> (x .:? "CdcInsertsOnly")
+                     <*> (x .:? "TimestampColumnName")
                      <*> (x .:? "CsvRowDelimiter")
-                     <*> (x .:? "CompressionType"))
+                     <*> (x .:? "CompressionType")
+                     <*> (x .:? "ServerSideEncryptionKmsKeyId")
+                     <*> (x .:? "DataPageSize")
+                     <*> (x .:? "CdcInsertsAndUpdates")
+                     <*> (x .:? "RowGroupLength"))
 
 instance Hashable S3Settings where
 
@@ -2028,26 +3182,47 @@ instance ToJSON S3Settings where
         toJSON S3Settings'{..}
           = object
               (catMaybes
-                 [("CsvDelimiter" .=) <$> _ssCSVDelimiter,
+                 [("ParquetVersion" .=) <$> _ssParquetVersion,
+                  ("ParquetTimestampInMillisecond" .=) <$>
+                    _ssParquetTimestampInMillisecond,
+                  ("IncludeOpForFullLoad" .=) <$>
+                    _ssIncludeOpForFullLoad,
+                  ("CsvDelimiter" .=) <$> _ssCSVDelimiter,
                   ("ServiceAccessRoleArn" .=) <$>
                     _ssServiceAccessRoleARN,
                   ("BucketFolder" .=) <$> _ssBucketFolder,
+                  ("DataFormat" .=) <$> _ssDataFormat,
+                  ("EncodingType" .=) <$> _ssEncodingType,
                   ("ExternalTableDefinition" .=) <$>
                     _ssExternalTableDefinition,
+                  ("DictPageSizeLimit" .=) <$> _ssDictPageSizeLimit,
                   ("BucketName" .=) <$> _ssBucketName,
+                  ("EncryptionMode" .=) <$> _ssEncryptionMode,
+                  ("EnableStatistics" .=) <$> _ssEnableStatistics,
+                  ("CdcInsertsOnly" .=) <$> _ssCdcInsertsOnly,
+                  ("TimestampColumnName" .=) <$>
+                    _ssTimestampColumnName,
                   ("CsvRowDelimiter" .=) <$> _ssCSVRowDelimiter,
-                  ("CompressionType" .=) <$> _ssCompressionType])
+                  ("CompressionType" .=) <$> _ssCompressionType,
+                  ("ServerSideEncryptionKmsKeyId" .=) <$>
+                    _ssServerSideEncryptionKMSKeyId,
+                  ("DataPageSize" .=) <$> _ssDataPageSize,
+                  ("CdcInsertsAndUpdates" .=) <$>
+                    _ssCdcInsertsAndUpdates,
+                  ("RowGroupLength" .=) <$> _ssRowGroupLength])
 
--- |
+-- | In response to a request by the @DescribeReplicationSubnetGroup@ operation, this object identifies a subnet by its given Availability Zone, subnet identifier, and status.
 --
 --
 --
 -- /See:/ 'subnet' smart constructor.
-data Subnet = Subnet'
-  { _sSubnetStatus           :: !(Maybe Text)
-  , _sSubnetIdentifier       :: !(Maybe Text)
-  , _sSubnetAvailabilityZone :: !(Maybe AvailabilityZone)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Subnet =
+  Subnet'
+    { _sSubnetStatus           :: !(Maybe Text)
+    , _sSubnetIdentifier       :: !(Maybe Text)
+    , _sSubnetAvailabilityZone :: !(Maybe AvailabilityZone)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Subnet' with the minimum fields required to make a request.
@@ -2093,17 +3268,20 @@ instance Hashable Subnet where
 
 instance NFData Subnet where
 
--- |
+-- | Provides information about types of supported endpoints in response to a request by the @DescribeEndpointTypes@ operation. This information includes the type of endpoint, the database engine name, and whether change data capture (CDC) is supported.
 --
 --
 --
 -- /See:/ 'supportedEndpointType' smart constructor.
-data SupportedEndpointType = SupportedEndpointType'
-  { _setEngineDisplayName :: !(Maybe Text)
-  , _setEndpointType      :: !(Maybe ReplicationEndpointTypeValue)
-  , _setEngineName        :: !(Maybe Text)
-  , _setSupportsCDC       :: !(Maybe Bool)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data SupportedEndpointType =
+  SupportedEndpointType'
+    { _setEngineDisplayName :: !(Maybe Text)
+    , _setEndpointType :: !(Maybe ReplicationEndpointTypeValue)
+    , _setEngineName :: !(Maybe Text)
+    , _setReplicationInstanceEngineMinimumVersion :: !(Maybe Text)
+    , _setSupportsCDC :: !(Maybe Bool)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'SupportedEndpointType' with the minimum fields required to make a request.
@@ -2112,9 +3290,11 @@ data SupportedEndpointType = SupportedEndpointType'
 --
 -- * 'setEngineDisplayName' - The expanded name for the engine name. For example, if the @EngineName@ parameter is "aurora," this value would be "Amazon Aurora MySQL."
 --
--- * 'setEndpointType' - The type of endpoint.
+-- * 'setEndpointType' - The type of endpoint. Valid values are @source@ and @target@ .
 --
--- * 'setEngineName' - The database engine name. Valid values, depending on the EndPointType, include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, sybase, dynamodb, mongodb, and sqlserver.
+-- * 'setEngineName' - The database engine name. Valid values, depending on the EndpointType, include @"mysql"@ , @"oracle"@ , @"postgres"@ , @"mariadb"@ , @"aurora"@ , @"aurora-postgresql"@ , @"redshift"@ , @"s3"@ , @"db2"@ , @"azuredb"@ , @"sybase"@ , @"dynamodb"@ , @"mongodb"@ , @"kinesis"@ , @"kafka"@ , @"elasticsearch"@ , @"documentdb"@ , and @"sqlserver"@ .
+--
+-- * 'setReplicationInstanceEngineMinimumVersion' - The earliest AWS DMS engine version that supports this endpoint engine. Note that endpoint engines released with AWS DMS versions earlier than 3.1.1 do not return a value for this parameter.
 --
 -- * 'setSupportsCDC' - Indicates if Change Data Capture (CDC) is supported.
 supportedEndpointType
@@ -2124,6 +3304,7 @@ supportedEndpointType =
     { _setEngineDisplayName = Nothing
     , _setEndpointType = Nothing
     , _setEngineName = Nothing
+    , _setReplicationInstanceEngineMinimumVersion = Nothing
     , _setSupportsCDC = Nothing
     }
 
@@ -2132,13 +3313,17 @@ supportedEndpointType =
 setEngineDisplayName :: Lens' SupportedEndpointType (Maybe Text)
 setEngineDisplayName = lens _setEngineDisplayName (\ s a -> s{_setEngineDisplayName = a})
 
--- | The type of endpoint.
+-- | The type of endpoint. Valid values are @source@ and @target@ .
 setEndpointType :: Lens' SupportedEndpointType (Maybe ReplicationEndpointTypeValue)
 setEndpointType = lens _setEndpointType (\ s a -> s{_setEndpointType = a})
 
--- | The database engine name. Valid values, depending on the EndPointType, include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, sybase, dynamodb, mongodb, and sqlserver.
+-- | The database engine name. Valid values, depending on the EndpointType, include @"mysql"@ , @"oracle"@ , @"postgres"@ , @"mariadb"@ , @"aurora"@ , @"aurora-postgresql"@ , @"redshift"@ , @"s3"@ , @"db2"@ , @"azuredb"@ , @"sybase"@ , @"dynamodb"@ , @"mongodb"@ , @"kinesis"@ , @"kafka"@ , @"elasticsearch"@ , @"documentdb"@ , and @"sqlserver"@ .
 setEngineName :: Lens' SupportedEndpointType (Maybe Text)
 setEngineName = lens _setEngineName (\ s a -> s{_setEngineName = a})
+
+-- | The earliest AWS DMS engine version that supports this endpoint engine. Note that endpoint engines released with AWS DMS versions earlier than 3.1.1 do not return a value for this parameter.
+setReplicationInstanceEngineMinimumVersion :: Lens' SupportedEndpointType (Maybe Text)
+setReplicationInstanceEngineMinimumVersion = lens _setReplicationInstanceEngineMinimumVersion (\ s a -> s{_setReplicationInstanceEngineMinimumVersion = a})
 
 -- | Indicates if Change Data Capture (CDC) is supported.
 setSupportsCDC :: Lens' SupportedEndpointType (Maybe Bool)
@@ -2152,59 +3337,72 @@ instance FromJSON SupportedEndpointType where
                    (x .:? "EngineDisplayName") <*>
                      (x .:? "EndpointType")
                      <*> (x .:? "EngineName")
+                     <*> (x .:? "ReplicationInstanceEngineMinimumVersion")
                      <*> (x .:? "SupportsCDC"))
 
 instance Hashable SupportedEndpointType where
 
 instance NFData SupportedEndpointType where
 
--- |
+-- | Provides a collection of table statistics in response to a request by the @DescribeTableStatistics@ operation.
 --
 --
 --
 -- /See:/ 'tableStatistics' smart constructor.
-data TableStatistics = TableStatistics'
-  { _tsValidationState              :: !(Maybe Text)
-  , _tsFullLoadRows                 :: !(Maybe Integer)
-  , _tsInserts                      :: !(Maybe Integer)
-  , _tsFullLoadCondtnlChkFailedRows :: !(Maybe Integer)
-  , _tsValidationFailedRecords      :: !(Maybe Integer)
-  , _tsValidationSuspendedRecords   :: !(Maybe Integer)
-  , _tsSchemaName                   :: !(Maybe Text)
-  , _tsTableState                   :: !(Maybe Text)
-  , _tsFullLoadErrorRows            :: !(Maybe Integer)
-  , _tsDdls                         :: !(Maybe Integer)
-  , _tsDeletes                      :: !(Maybe Integer)
-  , _tsUpdates                      :: !(Maybe Integer)
-  , _tsValidationPendingRecords     :: !(Maybe Integer)
-  , _tsLastUpdateTime               :: !(Maybe POSIX)
-  , _tsTableName                    :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data TableStatistics =
+  TableStatistics'
+    { _tsValidationState              :: !(Maybe Text)
+    , _tsFullLoadRows                 :: !(Maybe Integer)
+    , _tsInserts                      :: !(Maybe Integer)
+    , _tsFullLoadEndTime              :: !(Maybe POSIX)
+    , _tsFullLoadCondtnlChkFailedRows :: !(Maybe Integer)
+    , _tsFullLoadReloaded             :: !(Maybe Bool)
+    , _tsValidationFailedRecords      :: !(Maybe Integer)
+    , _tsValidationSuspendedRecords   :: !(Maybe Integer)
+    , _tsSchemaName                   :: !(Maybe Text)
+    , _tsValidationStateDetails       :: !(Maybe Text)
+    , _tsTableState                   :: !(Maybe Text)
+    , _tsFullLoadErrorRows            :: !(Maybe Integer)
+    , _tsDdls                         :: !(Maybe Integer)
+    , _tsDeletes                      :: !(Maybe Integer)
+    , _tsUpdates                      :: !(Maybe Integer)
+    , _tsValidationPendingRecords     :: !(Maybe Integer)
+    , _tsFullLoadStartTime            :: !(Maybe POSIX)
+    , _tsLastUpdateTime               :: !(Maybe POSIX)
+    , _tsTableName                    :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'TableStatistics' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tsValidationState' - The validation state of the table. The parameter can have the following values     * Not enabled—Validation is not enabled for the table in the migration task.     * Pending records—Some records in the table are waiting for validation.     * Mismatched records—Some records in the table do not match between the source and target.     * Suspended records—Some records in the table could not be validated.     * No primary key—The table could not be validated because it had no primary key.     * Table error—The table was not validated because it was in an error state and some data was not migrated.     * Validated—All rows in the table were validated. If the table is updated, the status can change from Validated.     * Error—The table could not be validated because of an unexpected error.
+-- * 'tsValidationState' - The validation state of the table. This parameter can have the following values:     * Not enabled - Validation isn't enabled for the table in the migration task.     * Pending records - Some records in the table are waiting for validation.     * Mismatched records - Some records in the table don't match between the source and target.     * Suspended records - Some records in the table couldn't be validated.     * No primary key - The table couldn't be validated because it has no primary key.     * Table error - The table wasn't validated because it's in an error state and some data wasn't migrated.     * Validated - All rows in the table are validated. If the table is updated, the status can change from Validated.     * Error - The table couldn't be validated because of an unexpected error.
 --
--- * 'tsFullLoadRows' - The number of rows added during the Full Load operation.
+-- * 'tsFullLoadRows' - The number of rows added during the full load operation.
 --
 -- * 'tsInserts' - The number of insert actions performed on a table.
 --
--- * 'tsFullLoadCondtnlChkFailedRows' - The number of rows that failed conditional checks during the Full Load operation (valid only for DynamoDB as a target migrations).
+-- * 'tsFullLoadEndTime' - The time when the full load operation completed.
+--
+-- * 'tsFullLoadCondtnlChkFailedRows' - The number of rows that failed conditional checks during the full load operation (valid only for migrations where DynamoDB is the target).
+--
+-- * 'tsFullLoadReloaded' - A value that indicates if the table was reloaded (@true@ ) or loaded as part of a new full load operation (@false@ ).
 --
 -- * 'tsValidationFailedRecords' - The number of records that failed validation.
 --
--- * 'tsValidationSuspendedRecords' - The number of records that could not be validated.
+-- * 'tsValidationSuspendedRecords' - The number of records that couldn't be validated.
 --
 -- * 'tsSchemaName' - The schema name.
 --
+-- * 'tsValidationStateDetails' - Additional details about the state of validation.
+--
 -- * 'tsTableState' - The state of the tables described. Valid states: Table does not exist | Before load | Full load | Table completed | Table cancelled | Table error | Table all | Table updates | Table is being reloaded
 --
--- * 'tsFullLoadErrorRows' - The number of rows that failed to load during the Full Load operation (valid only for DynamoDB as a target migrations).
+-- * 'tsFullLoadErrorRows' - The number of rows that failed to load during the full load operation (valid only for migrations where DynamoDB is the target).
 --
--- * 'tsDdls' - The Data Definition Language (DDL) used to build and modify the structure of your tables.
+-- * 'tsDdls' - The data definition language (DDL) used to build and modify the structure of your tables.
 --
 -- * 'tsDeletes' - The number of delete actions performed on a table.
 --
@@ -2212,7 +3410,9 @@ data TableStatistics = TableStatistics'
 --
 -- * 'tsValidationPendingRecords' - The number of records that have yet to be validated.
 --
--- * 'tsLastUpdateTime' - The last time the table was updated.
+-- * 'tsFullLoadStartTime' - The time when the full load operation started.
+--
+-- * 'tsLastUpdateTime' - The last time a table was updated.
 --
 -- * 'tsTableName' - The name of the table.
 tableStatistics
@@ -2222,26 +3422,30 @@ tableStatistics =
     { _tsValidationState = Nothing
     , _tsFullLoadRows = Nothing
     , _tsInserts = Nothing
+    , _tsFullLoadEndTime = Nothing
     , _tsFullLoadCondtnlChkFailedRows = Nothing
+    , _tsFullLoadReloaded = Nothing
     , _tsValidationFailedRecords = Nothing
     , _tsValidationSuspendedRecords = Nothing
     , _tsSchemaName = Nothing
+    , _tsValidationStateDetails = Nothing
     , _tsTableState = Nothing
     , _tsFullLoadErrorRows = Nothing
     , _tsDdls = Nothing
     , _tsDeletes = Nothing
     , _tsUpdates = Nothing
     , _tsValidationPendingRecords = Nothing
+    , _tsFullLoadStartTime = Nothing
     , _tsLastUpdateTime = Nothing
     , _tsTableName = Nothing
     }
 
 
--- | The validation state of the table. The parameter can have the following values     * Not enabled—Validation is not enabled for the table in the migration task.     * Pending records—Some records in the table are waiting for validation.     * Mismatched records—Some records in the table do not match between the source and target.     * Suspended records—Some records in the table could not be validated.     * No primary key—The table could not be validated because it had no primary key.     * Table error—The table was not validated because it was in an error state and some data was not migrated.     * Validated—All rows in the table were validated. If the table is updated, the status can change from Validated.     * Error—The table could not be validated because of an unexpected error.
+-- | The validation state of the table. This parameter can have the following values:     * Not enabled - Validation isn't enabled for the table in the migration task.     * Pending records - Some records in the table are waiting for validation.     * Mismatched records - Some records in the table don't match between the source and target.     * Suspended records - Some records in the table couldn't be validated.     * No primary key - The table couldn't be validated because it has no primary key.     * Table error - The table wasn't validated because it's in an error state and some data wasn't migrated.     * Validated - All rows in the table are validated. If the table is updated, the status can change from Validated.     * Error - The table couldn't be validated because of an unexpected error.
 tsValidationState :: Lens' TableStatistics (Maybe Text)
 tsValidationState = lens _tsValidationState (\ s a -> s{_tsValidationState = a})
 
--- | The number of rows added during the Full Load operation.
+-- | The number of rows added during the full load operation.
 tsFullLoadRows :: Lens' TableStatistics (Maybe Integer)
 tsFullLoadRows = lens _tsFullLoadRows (\ s a -> s{_tsFullLoadRows = a})
 
@@ -2249,15 +3453,23 @@ tsFullLoadRows = lens _tsFullLoadRows (\ s a -> s{_tsFullLoadRows = a})
 tsInserts :: Lens' TableStatistics (Maybe Integer)
 tsInserts = lens _tsInserts (\ s a -> s{_tsInserts = a})
 
--- | The number of rows that failed conditional checks during the Full Load operation (valid only for DynamoDB as a target migrations).
+-- | The time when the full load operation completed.
+tsFullLoadEndTime :: Lens' TableStatistics (Maybe UTCTime)
+tsFullLoadEndTime = lens _tsFullLoadEndTime (\ s a -> s{_tsFullLoadEndTime = a}) . mapping _Time
+
+-- | The number of rows that failed conditional checks during the full load operation (valid only for migrations where DynamoDB is the target).
 tsFullLoadCondtnlChkFailedRows :: Lens' TableStatistics (Maybe Integer)
 tsFullLoadCondtnlChkFailedRows = lens _tsFullLoadCondtnlChkFailedRows (\ s a -> s{_tsFullLoadCondtnlChkFailedRows = a})
+
+-- | A value that indicates if the table was reloaded (@true@ ) or loaded as part of a new full load operation (@false@ ).
+tsFullLoadReloaded :: Lens' TableStatistics (Maybe Bool)
+tsFullLoadReloaded = lens _tsFullLoadReloaded (\ s a -> s{_tsFullLoadReloaded = a})
 
 -- | The number of records that failed validation.
 tsValidationFailedRecords :: Lens' TableStatistics (Maybe Integer)
 tsValidationFailedRecords = lens _tsValidationFailedRecords (\ s a -> s{_tsValidationFailedRecords = a})
 
--- | The number of records that could not be validated.
+-- | The number of records that couldn't be validated.
 tsValidationSuspendedRecords :: Lens' TableStatistics (Maybe Integer)
 tsValidationSuspendedRecords = lens _tsValidationSuspendedRecords (\ s a -> s{_tsValidationSuspendedRecords = a})
 
@@ -2265,15 +3477,19 @@ tsValidationSuspendedRecords = lens _tsValidationSuspendedRecords (\ s a -> s{_t
 tsSchemaName :: Lens' TableStatistics (Maybe Text)
 tsSchemaName = lens _tsSchemaName (\ s a -> s{_tsSchemaName = a})
 
+-- | Additional details about the state of validation.
+tsValidationStateDetails :: Lens' TableStatistics (Maybe Text)
+tsValidationStateDetails = lens _tsValidationStateDetails (\ s a -> s{_tsValidationStateDetails = a})
+
 -- | The state of the tables described. Valid states: Table does not exist | Before load | Full load | Table completed | Table cancelled | Table error | Table all | Table updates | Table is being reloaded
 tsTableState :: Lens' TableStatistics (Maybe Text)
 tsTableState = lens _tsTableState (\ s a -> s{_tsTableState = a})
 
--- | The number of rows that failed to load during the Full Load operation (valid only for DynamoDB as a target migrations).
+-- | The number of rows that failed to load during the full load operation (valid only for migrations where DynamoDB is the target).
 tsFullLoadErrorRows :: Lens' TableStatistics (Maybe Integer)
 tsFullLoadErrorRows = lens _tsFullLoadErrorRows (\ s a -> s{_tsFullLoadErrorRows = a})
 
--- | The Data Definition Language (DDL) used to build and modify the structure of your tables.
+-- | The data definition language (DDL) used to build and modify the structure of your tables.
 tsDdls :: Lens' TableStatistics (Maybe Integer)
 tsDdls = lens _tsDdls (\ s a -> s{_tsDdls = a})
 
@@ -2289,7 +3505,11 @@ tsUpdates = lens _tsUpdates (\ s a -> s{_tsUpdates = a})
 tsValidationPendingRecords :: Lens' TableStatistics (Maybe Integer)
 tsValidationPendingRecords = lens _tsValidationPendingRecords (\ s a -> s{_tsValidationPendingRecords = a})
 
--- | The last time the table was updated.
+-- | The time when the full load operation started.
+tsFullLoadStartTime :: Lens' TableStatistics (Maybe UTCTime)
+tsFullLoadStartTime = lens _tsFullLoadStartTime (\ s a -> s{_tsFullLoadStartTime = a}) . mapping _Time
+
+-- | The last time a table was updated.
 tsLastUpdateTime :: Lens' TableStatistics (Maybe UTCTime)
 tsLastUpdateTime = lens _tsLastUpdateTime (\ s a -> s{_tsLastUpdateTime = a}) . mapping _Time
 
@@ -2304,16 +3524,20 @@ instance FromJSON TableStatistics where
                  TableStatistics' <$>
                    (x .:? "ValidationState") <*> (x .:? "FullLoadRows")
                      <*> (x .:? "Inserts")
+                     <*> (x .:? "FullLoadEndTime")
                      <*> (x .:? "FullLoadCondtnlChkFailedRows")
+                     <*> (x .:? "FullLoadReloaded")
                      <*> (x .:? "ValidationFailedRecords")
                      <*> (x .:? "ValidationSuspendedRecords")
                      <*> (x .:? "SchemaName")
+                     <*> (x .:? "ValidationStateDetails")
                      <*> (x .:? "TableState")
                      <*> (x .:? "FullLoadErrorRows")
                      <*> (x .:? "Ddls")
                      <*> (x .:? "Deletes")
                      <*> (x .:? "Updates")
                      <*> (x .:? "ValidationPendingRecords")
+                     <*> (x .:? "FullLoadStartTime")
                      <*> (x .:? "LastUpdateTime")
                      <*> (x .:? "TableName"))
 
@@ -2321,15 +3545,17 @@ instance Hashable TableStatistics where
 
 instance NFData TableStatistics where
 
--- |
+-- | Provides the name of the schema and table to be reloaded.
 --
 --
 --
 -- /See:/ 'tableToReload' smart constructor.
-data TableToReload = TableToReload'
-  { _ttrSchemaName :: !(Maybe Text)
-  , _ttrTableName  :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data TableToReload =
+  TableToReload'
+    { _ttrSchemaName :: !(Maybe Text)
+    , _ttrTableName  :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'TableToReload' with the minimum fields required to make a request.
@@ -2364,34 +3590,44 @@ instance ToJSON TableToReload where
                  [("SchemaName" .=) <$> _ttrSchemaName,
                   ("TableName" .=) <$> _ttrTableName])
 
--- |
+-- | A user-defined key-value pair that describes metadata added to an AWS DMS resource and that is used by operations such as the following:
+--
+--
+--     * @AddTagsToResource@
+--
+--     * @ListTagsForResource@
+--
+--     * @RemoveTagsFromResource@
+--
 --
 --
 --
 -- /See:/ 'tag' smart constructor.
-data Tag = Tag'
-  { _tagValue :: !(Maybe Text)
-  , _tagKey   :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Tag =
+  Tag'
+    { _tagValue :: !(Maybe Text)
+    , _tagKey   :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Tag' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tagValue' - A value is the optional value of the tag. The string value can be from 1 to 256 Unicode characters in length and cannot be prefixed with "aws:" or "dms:". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+-- * 'tagValue' - A value is the optional value of the tag. The string value can be from 1 to 256 Unicode characters in length and can't be prefixed with "aws:" or "dms:". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 --
--- * 'tagKey' - A key is the required name of the tag. The string value can be from 1 to 128 Unicode characters in length and cannot be prefixed with "aws:" or "dms:". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+-- * 'tagKey' - A key is the required name of the tag. The string value can be from 1 to 128 Unicode characters in length and can't be prefixed with "aws:" or "dms:". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 tag
     :: Tag
 tag = Tag' {_tagValue = Nothing, _tagKey = Nothing}
 
 
--- | A value is the optional value of the tag. The string value can be from 1 to 256 Unicode characters in length and cannot be prefixed with "aws:" or "dms:". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+-- | A value is the optional value of the tag. The string value can be from 1 to 256 Unicode characters in length and can't be prefixed with "aws:" or "dms:". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 tagValue :: Lens' Tag (Maybe Text)
 tagValue = lens _tagValue (\ s a -> s{_tagValue = a})
 
--- | A key is the required name of the tag. The string value can be from 1 to 128 Unicode characters in length and cannot be prefixed with "aws:" or "dms:". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+-- | A key is the required name of the tag. The string value can be from 1 to 128 Unicode characters in length and can't be prefixed with "aws:" or "dms:". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 tagKey :: Lens' Tag (Maybe Text)
 tagKey = lens _tagKey (\ s a -> s{_tagKey = a})
 
@@ -2410,15 +3646,17 @@ instance ToJSON Tag where
               (catMaybes
                  [("Value" .=) <$> _tagValue, ("Key" .=) <$> _tagKey])
 
--- |
+-- | Describes status of a security group associated with the virtual private cloud hosting your replication and DB instances.
 --
 --
 --
 -- /See:/ 'vpcSecurityGroupMembership' smart constructor.
-data VPCSecurityGroupMembership = VPCSecurityGroupMembership'
-  { _vsgmStatus             :: !(Maybe Text)
-  , _vsgmVPCSecurityGroupId :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data VPCSecurityGroupMembership =
+  VPCSecurityGroupMembership'
+    { _vsgmStatus             :: !(Maybe Text)
+    , _vsgmVPCSecurityGroupId :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'VPCSecurityGroupMembership' with the minimum fields required to make a request.

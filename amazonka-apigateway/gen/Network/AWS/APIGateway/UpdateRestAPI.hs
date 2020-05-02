@@ -45,6 +45,7 @@ module Network.AWS.APIGateway.UpdateRestAPI
     , raPolicy
     , raEndpointConfiguration
     , raDescription
+    , raTags
     ) where
 
 import Network.AWS.APIGateway.Types
@@ -59,10 +60,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateRestAPI' smart constructor.
-data UpdateRestAPI = UpdateRestAPI'
-  { _uraPatchOperations :: !(Maybe [PatchOperation])
-  , _uraRestAPIId       :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data UpdateRestAPI =
+  UpdateRestAPI'
+    { _uraPatchOperations :: !(Maybe [PatchOperation])
+    , _uraRestAPIId       :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UpdateRestAPI' with the minimum fields required to make a request.

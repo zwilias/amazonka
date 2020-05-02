@@ -21,6 +21,8 @@
 -- Returns the default system parameter information for the DAX caching software.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.DAX.DescribeDefaultParameters
     (
     -- * Creating a Request
@@ -42,15 +44,18 @@ module Network.AWS.DAX.DescribeDefaultParameters
 import Network.AWS.DAX.Types
 import Network.AWS.DAX.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeDefaultParameters' smart constructor.
-data DescribeDefaultParameters = DescribeDefaultParameters'
-  { _ddpNextToken  :: !(Maybe Text)
-  , _ddpMaxResults :: !(Maybe Int)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeDefaultParameters =
+  DescribeDefaultParameters'
+    { _ddpNextToken  :: !(Maybe Text)
+    , _ddpMaxResults :: !(Maybe Int)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeDefaultParameters' with the minimum fields required to make a request.
@@ -73,6 +78,13 @@ ddpNextToken = lens _ddpNextToken (\ s a -> s{_ddpNextToken = a})
 -- | The maximum number of results to include in the response. If more results exist than the specified @MaxResults@ value, a token is included in the response so that the remaining results can be retrieved. The value for @MaxResults@ must be between 20 and 100.
 ddpMaxResults :: Lens' DescribeDefaultParameters (Maybe Int)
 ddpMaxResults = lens _ddpMaxResults (\ s a -> s{_ddpMaxResults = a})
+
+instance AWSPager DescribeDefaultParameters where
+        page rq rs
+          | stop (rs ^. ddprsNextToken) = Nothing
+          | stop (rs ^. ddprsParameters) = Nothing
+          | otherwise =
+            Just $ rq & ddpNextToken .~ rs ^. ddprsNextToken
 
 instance AWSRequest DescribeDefaultParameters where
         type Rs DescribeDefaultParameters =
@@ -114,11 +126,13 @@ instance ToQuery DescribeDefaultParameters where
         toQuery = const mempty
 
 -- | /See:/ 'describeDefaultParametersResponse' smart constructor.
-data DescribeDefaultParametersResponse = DescribeDefaultParametersResponse'
-  { _ddprsNextToken      :: !(Maybe Text)
-  , _ddprsParameters     :: !(Maybe [Parameter])
-  , _ddprsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeDefaultParametersResponse =
+  DescribeDefaultParametersResponse'
+    { _ddprsNextToken      :: !(Maybe Text)
+    , _ddprsParameters     :: !(Maybe [Parameter])
+    , _ddprsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeDefaultParametersResponse' with the minimum fields required to make a request.

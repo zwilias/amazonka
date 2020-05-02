@@ -21,6 +21,8 @@
 -- Returns all public keys whose private keys were used to sign the digest files within the specified time range. The public key is needed to validate digest files that were signed with its corresponding private key.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.CloudTrail.ListPublicKeys
     (
     -- * Creating a Request
@@ -43,6 +45,7 @@ module Network.AWS.CloudTrail.ListPublicKeys
 import Network.AWS.CloudTrail.Types
 import Network.AWS.CloudTrail.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -52,11 +55,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listPublicKeys' smart constructor.
-data ListPublicKeys = ListPublicKeys'
-  { _lpkStartTime :: !(Maybe POSIX)
-  , _lpkNextToken :: !(Maybe Text)
-  , _lpkEndTime   :: !(Maybe POSIX)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListPublicKeys =
+  ListPublicKeys'
+    { _lpkStartTime :: !(Maybe POSIX)
+    , _lpkNextToken :: !(Maybe Text)
+    , _lpkEndTime   :: !(Maybe POSIX)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListPublicKeys' with the minimum fields required to make a request.
@@ -86,6 +91,13 @@ lpkNextToken = lens _lpkNextToken (\ s a -> s{_lpkNextToken = a})
 -- | Optionally specifies, in UTC, the end of the time range to look up public keys for CloudTrail digest files. If not specified, the current time is used.
 lpkEndTime :: Lens' ListPublicKeys (Maybe UTCTime)
 lpkEndTime = lens _lpkEndTime (\ s a -> s{_lpkEndTime = a}) . mapping _Time
+
+instance AWSPager ListPublicKeys where
+        page rq rs
+          | stop (rs ^. lpkrsNextToken) = Nothing
+          | stop (rs ^. lpkrsPublicKeyList) = Nothing
+          | otherwise =
+            Just $ rq & lpkNextToken .~ rs ^. lpkrsNextToken
 
 instance AWSRequest ListPublicKeys where
         type Rs ListPublicKeys = ListPublicKeysResponse
@@ -131,11 +143,13 @@ instance ToQuery ListPublicKeys where
 --
 --
 -- /See:/ 'listPublicKeysResponse' smart constructor.
-data ListPublicKeysResponse = ListPublicKeysResponse'
-  { _lpkrsPublicKeyList  :: !(Maybe [PublicKey])
-  , _lpkrsNextToken      :: !(Maybe Text)
-  , _lpkrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListPublicKeysResponse =
+  ListPublicKeysResponse'
+    { _lpkrsPublicKeyList  :: !(Maybe [PublicKey])
+    , _lpkrsNextToken      :: !(Maybe Text)
+    , _lpkrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListPublicKeysResponse' with the minimum fields required to make a request.

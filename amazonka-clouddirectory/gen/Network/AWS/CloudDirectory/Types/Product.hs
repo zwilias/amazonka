@@ -26,11 +26,13 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'attributeKey' smart constructor.
-data AttributeKey = AttributeKey'
-  { _akSchemaARN :: !Text
-  , _akFacetName :: !Text
-  , _akName      :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AttributeKey =
+  AttributeKey'
+    { _akSchemaARN :: !Text
+    , _akFacetName :: !Text
+    , _akName      :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AttributeKey' with the minimum fields required to make a request.
@@ -89,10 +91,12 @@ instance ToJSON AttributeKey where
 --
 --
 -- /See:/ 'attributeKeyAndValue' smart constructor.
-data AttributeKeyAndValue = AttributeKeyAndValue'
-  { _akavKey   :: !AttributeKey
-  , _akavValue :: !TypedAttributeValue
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AttributeKeyAndValue =
+  AttributeKeyAndValue'
+    { _akavKey   :: !AttributeKey
+    , _akavValue :: !TypedAttributeValue
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AttributeKeyAndValue' with the minimum fields required to make a request.
@@ -141,10 +145,12 @@ instance ToJSON AttributeKeyAndValue where
 --
 --
 -- /See:/ 'attributeNameAndValue' smart constructor.
-data AttributeNameAndValue = AttributeNameAndValue'
-  { _anavAttributeName :: !Text
-  , _anavValue         :: !TypedAttributeValue
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AttributeNameAndValue =
+  AttributeNameAndValue'
+    { _anavAttributeName :: !Text
+    , _anavValue         :: !TypedAttributeValue
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AttributeNameAndValue' with the minimum fields required to make a request.
@@ -194,11 +200,13 @@ instance ToJSON AttributeNameAndValue where
 --
 --
 -- /See:/ 'batchAddFacetToObject' smart constructor.
-data BatchAddFacetToObject = BatchAddFacetToObject'
-  { _baftoSchemaFacet         :: !SchemaFacet
-  , _baftoObjectAttributeList :: ![AttributeKeyAndValue]
-  , _baftoObjectReference     :: !ObjectReference
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchAddFacetToObject =
+  BatchAddFacetToObject'
+    { _baftoSchemaFacet         :: !SchemaFacet
+    , _baftoObjectAttributeList :: ![AttributeKeyAndValue]
+    , _baftoObjectReference     :: !ObjectReference
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchAddFacetToObject' with the minimum fields required to make a request.
@@ -278,11 +286,13 @@ instance NFData BatchAddFacetToObjectResponse where
 --
 --
 -- /See:/ 'batchAttachObject' smart constructor.
-data BatchAttachObject = BatchAttachObject'
-  { _baoParentReference :: !ObjectReference
-  , _baoChildReference  :: !ObjectReference
-  , _baoLinkName        :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchAttachObject =
+  BatchAttachObject'
+    { _baoParentReference :: !ObjectReference
+    , _baoChildReference  :: !ObjectReference
+    , _baoLinkName        :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchAttachObject' with the minimum fields required to make a request.
@@ -336,9 +346,11 @@ instance ToJSON BatchAttachObject where
 --
 --
 -- /See:/ 'batchAttachObjectResponse' smart constructor.
-newtype BatchAttachObjectResponse = BatchAttachObjectResponse'
-  { _baoAttachedObjectIdentifier :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype BatchAttachObjectResponse =
+  BatchAttachObjectResponse'
+    { _baoAttachedObjectIdentifier :: Maybe Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchAttachObjectResponse' with the minimum fields required to make a request.
@@ -372,10 +384,12 @@ instance NFData BatchAttachObjectResponse where
 --
 --
 -- /See:/ 'batchAttachPolicy' smart constructor.
-data BatchAttachPolicy = BatchAttachPolicy'
-  { _bapPolicyReference :: !ObjectReference
-  , _bapObjectReference :: !ObjectReference
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchAttachPolicy =
+  BatchAttachPolicy'
+    { _bapPolicyReference :: !ObjectReference
+    , _bapObjectReference :: !ObjectReference
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchAttachPolicy' with the minimum fields required to make a request.
@@ -446,10 +460,12 @@ instance NFData BatchAttachPolicyResponse where
 --
 --
 -- /See:/ 'batchAttachToIndex' smart constructor.
-data BatchAttachToIndex = BatchAttachToIndex'
-  { _batiIndexReference  :: !ObjectReference
-  , _batiTargetReference :: !ObjectReference
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchAttachToIndex =
+  BatchAttachToIndex'
+    { _batiIndexReference  :: !ObjectReference
+    , _batiTargetReference :: !ObjectReference
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchAttachToIndex' with the minimum fields required to make a request.
@@ -494,9 +510,11 @@ instance ToJSON BatchAttachToIndex where
 --
 --
 -- /See:/ 'batchAttachToIndexResponse' smart constructor.
-newtype BatchAttachToIndexResponse = BatchAttachToIndexResponse'
-  { _batiAttachedObjectIdentifier :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype BatchAttachToIndexResponse =
+  BatchAttachToIndexResponse'
+    { _batiAttachedObjectIdentifier :: Maybe Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchAttachToIndexResponse' with the minimum fields required to make a request.
@@ -530,12 +548,14 @@ instance NFData BatchAttachToIndexResponse where
 --
 --
 -- /See:/ 'batchAttachTypedLink' smart constructor.
-data BatchAttachTypedLink = BatchAttachTypedLink'
-  { _batlSourceObjectReference :: !ObjectReference
-  , _batlTargetObjectReference :: !ObjectReference
-  , _batlTypedLinkFacet        :: !TypedLinkSchemaAndFacetName
-  , _batlAttributes            :: ![AttributeNameAndValue]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchAttachTypedLink =
+  BatchAttachTypedLink'
+    { _batlSourceObjectReference :: !ObjectReference
+    , _batlTargetObjectReference :: !ObjectReference
+    , _batlTypedLinkFacet        :: !TypedLinkSchemaAndFacetName
+    , _batlAttributes            :: ![AttributeNameAndValue]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchAttachTypedLink' with the minimum fields required to make a request.
@@ -601,9 +621,11 @@ instance ToJSON BatchAttachTypedLink where
 --
 --
 -- /See:/ 'batchAttachTypedLinkResponse' smart constructor.
-newtype BatchAttachTypedLinkResponse = BatchAttachTypedLinkResponse'
-  { _batlTypedLinkSpecifier :: Maybe TypedLinkSpecifier
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype BatchAttachTypedLinkResponse =
+  BatchAttachTypedLinkResponse'
+    { _batlTypedLinkSpecifier :: Maybe TypedLinkSpecifier
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchAttachTypedLinkResponse' with the minimum fields required to make a request.
@@ -637,13 +659,15 @@ instance NFData BatchAttachTypedLinkResponse where
 --
 --
 -- /See:/ 'batchCreateIndex' smart constructor.
-data BatchCreateIndex = BatchCreateIndex'
-  { _bciParentReference             :: !(Maybe ObjectReference)
-  , _bciLinkName                    :: !(Maybe Text)
-  , _bciBatchReferenceName          :: !(Maybe Text)
-  , _bciOrderedIndexedAttributeList :: ![AttributeKey]
-  , _bciIsUnique                    :: !Bool
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchCreateIndex =
+  BatchCreateIndex'
+    { _bciParentReference             :: !(Maybe ObjectReference)
+    , _bciLinkName                    :: !(Maybe Text)
+    , _bciBatchReferenceName          :: !(Maybe Text)
+    , _bciOrderedIndexedAttributeList :: ![AttributeKey]
+    , _bciIsUnique                    :: !Bool
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchCreateIndex' with the minimum fields required to make a request.
@@ -654,7 +678,7 @@ data BatchCreateIndex = BatchCreateIndex'
 --
 -- * 'bciLinkName' - The name of the link between the parent object and the index object.
 --
--- * 'bciBatchReferenceName' - The batch reference name. See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#batches Batches> for more information.
+-- * 'bciBatchReferenceName' - The batch reference name. See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/transaction_support.html Transaction Support> for more information.
 --
 -- * 'bciOrderedIndexedAttributeList' - Specifies the attributes that should be indexed on. Currently only a single attribute is supported.
 --
@@ -680,7 +704,7 @@ bciParentReference = lens _bciParentReference (\ s a -> s{_bciParentReference = 
 bciLinkName :: Lens' BatchCreateIndex (Maybe Text)
 bciLinkName = lens _bciLinkName (\ s a -> s{_bciLinkName = a})
 
--- | The batch reference name. See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#batches Batches> for more information.
+-- | The batch reference name. See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/transaction_support.html Transaction Support> for more information.
 bciBatchReferenceName :: Lens' BatchCreateIndex (Maybe Text)
 bciBatchReferenceName = lens _bciBatchReferenceName (\ s a -> s{_bciBatchReferenceName = a})
 
@@ -713,9 +737,11 @@ instance ToJSON BatchCreateIndex where
 --
 --
 -- /See:/ 'batchCreateIndexResponse' smart constructor.
-newtype BatchCreateIndexResponse = BatchCreateIndexResponse'
-  { _bciObjectIdentifier :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype BatchCreateIndexResponse =
+  BatchCreateIndexResponse'
+    { _bciObjectIdentifier :: Maybe Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchCreateIndexResponse' with the minimum fields required to make a request.
@@ -749,13 +775,15 @@ instance NFData BatchCreateIndexResponse where
 --
 --
 -- /See:/ 'batchCreateObject' smart constructor.
-data BatchCreateObject = BatchCreateObject'
-  { _bcoParentReference     :: !(Maybe ObjectReference)
-  , _bcoLinkName            :: !(Maybe Text)
-  , _bcoBatchReferenceName  :: !(Maybe Text)
-  , _bcoSchemaFacet         :: ![SchemaFacet]
-  , _bcoObjectAttributeList :: ![AttributeKeyAndValue]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchCreateObject =
+  BatchCreateObject'
+    { _bcoParentReference     :: !(Maybe ObjectReference)
+    , _bcoLinkName            :: !(Maybe Text)
+    , _bcoBatchReferenceName  :: !(Maybe Text)
+    , _bcoSchemaFacet         :: ![SchemaFacet]
+    , _bcoObjectAttributeList :: ![AttributeKeyAndValue]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchCreateObject' with the minimum fields required to make a request.
@@ -766,7 +794,7 @@ data BatchCreateObject = BatchCreateObject'
 --
 -- * 'bcoLinkName' - The name of the link.
 --
--- * 'bcoBatchReferenceName' - The batch reference name. See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#batches Batches> for more information.
+-- * 'bcoBatchReferenceName' - The batch reference name. See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/transaction_support.html Transaction Support> for more information.
 --
 -- * 'bcoSchemaFacet' - A list of @FacetArns@ that will be associated with the object. For more information, see 'arns' .
 --
@@ -791,7 +819,7 @@ bcoParentReference = lens _bcoParentReference (\ s a -> s{_bcoParentReference = 
 bcoLinkName :: Lens' BatchCreateObject (Maybe Text)
 bcoLinkName = lens _bcoLinkName (\ s a -> s{_bcoLinkName = a})
 
--- | The batch reference name. See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#batches Batches> for more information.
+-- | The batch reference name. See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/transaction_support.html Transaction Support> for more information.
 bcoBatchReferenceName :: Lens' BatchCreateObject (Maybe Text)
 bcoBatchReferenceName = lens _bcoBatchReferenceName (\ s a -> s{_bcoBatchReferenceName = a})
 
@@ -823,9 +851,11 @@ instance ToJSON BatchCreateObject where
 --
 --
 -- /See:/ 'batchCreateObjectResponse' smart constructor.
-newtype BatchCreateObjectResponse = BatchCreateObjectResponse'
-  { _bcoObjectIdentifier :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype BatchCreateObjectResponse =
+  BatchCreateObjectResponse'
+    { _bcoObjectIdentifier :: Maybe Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchCreateObjectResponse' with the minimum fields required to make a request.
@@ -859,9 +889,11 @@ instance NFData BatchCreateObjectResponse where
 --
 --
 -- /See:/ 'batchDeleteObject' smart constructor.
-newtype BatchDeleteObject = BatchDeleteObject'
-  { _bdoObjectReference :: ObjectReference
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype BatchDeleteObject =
+  BatchDeleteObject'
+    { _bdoObjectReference :: ObjectReference
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchDeleteObject' with the minimum fields required to make a request.
@@ -921,10 +953,12 @@ instance NFData BatchDeleteObjectResponse where
 --
 --
 -- /See:/ 'batchDetachFromIndex' smart constructor.
-data BatchDetachFromIndex = BatchDetachFromIndex'
-  { _bdfiIndexReference  :: !ObjectReference
-  , _bdfiTargetReference :: !ObjectReference
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchDetachFromIndex =
+  BatchDetachFromIndex'
+    { _bdfiIndexReference  :: !ObjectReference
+    , _bdfiTargetReference :: !ObjectReference
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchDetachFromIndex' with the minimum fields required to make a request.
@@ -969,9 +1003,11 @@ instance ToJSON BatchDetachFromIndex where
 --
 --
 -- /See:/ 'batchDetachFromIndexResponse' smart constructor.
-newtype BatchDetachFromIndexResponse = BatchDetachFromIndexResponse'
-  { _bdfiDetachedObjectIdentifier :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype BatchDetachFromIndexResponse =
+  BatchDetachFromIndexResponse'
+    { _bdfiDetachedObjectIdentifier :: Maybe Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchDetachFromIndexResponse' with the minimum fields required to make a request.
@@ -1005,18 +1041,20 @@ instance NFData BatchDetachFromIndexResponse where
 --
 --
 -- /See:/ 'batchDetachObject' smart constructor.
-data BatchDetachObject = BatchDetachObject'
-  { _bdoBatchReferenceName :: !(Maybe Text)
-  , _bdoParentReference    :: !ObjectReference
-  , _bdoLinkName           :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchDetachObject =
+  BatchDetachObject'
+    { _bdoBatchReferenceName :: !(Maybe Text)
+    , _bdoParentReference    :: !ObjectReference
+    , _bdoLinkName           :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchDetachObject' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bdoBatchReferenceName' - The batch reference name. See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#batches Batches> for more information.
+-- * 'bdoBatchReferenceName' - The batch reference name. See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/transaction_support.html Transaction Support> for more information.
 --
 -- * 'bdoParentReference' - Parent reference from which the object with the specified link name is detached.
 --
@@ -1033,7 +1071,7 @@ batchDetachObject pParentReference_ pLinkName_ =
     }
 
 
--- | The batch reference name. See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#batches Batches> for more information.
+-- | The batch reference name. See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/transaction_support.html Transaction Support> for more information.
 bdoBatchReferenceName :: Lens' BatchDetachObject (Maybe Text)
 bdoBatchReferenceName = lens _bdoBatchReferenceName (\ s a -> s{_bdoBatchReferenceName = a})
 
@@ -1063,9 +1101,11 @@ instance ToJSON BatchDetachObject where
 --
 --
 -- /See:/ 'batchDetachObjectResponse' smart constructor.
-newtype BatchDetachObjectResponse = BatchDetachObjectResponse'
-  { _bdoDetachedObjectIdentifier :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype BatchDetachObjectResponse =
+  BatchDetachObjectResponse'
+    { _bdoDetachedObjectIdentifier :: Maybe Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchDetachObjectResponse' with the minimum fields required to make a request.
@@ -1099,10 +1139,12 @@ instance NFData BatchDetachObjectResponse where
 --
 --
 -- /See:/ 'batchDetachPolicy' smart constructor.
-data BatchDetachPolicy = BatchDetachPolicy'
-  { _bdpPolicyReference :: !ObjectReference
-  , _bdpObjectReference :: !ObjectReference
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchDetachPolicy =
+  BatchDetachPolicy'
+    { _bdpPolicyReference :: !ObjectReference
+    , _bdpObjectReference :: !ObjectReference
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchDetachPolicy' with the minimum fields required to make a request.
@@ -1173,9 +1215,11 @@ instance NFData BatchDetachPolicyResponse where
 --
 --
 -- /See:/ 'batchDetachTypedLink' smart constructor.
-newtype BatchDetachTypedLink = BatchDetachTypedLink'
-  { _bdtlTypedLinkSpecifier :: TypedLinkSpecifier
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype BatchDetachTypedLink =
+  BatchDetachTypedLink'
+    { _bdtlTypedLinkSpecifier :: TypedLinkSpecifier
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchDetachTypedLink' with the minimum fields required to make a request.
@@ -1231,16 +1275,108 @@ instance Hashable BatchDetachTypedLinkResponse where
 
 instance NFData BatchDetachTypedLinkResponse where
 
+-- | Retrieves attributes that are associated with a typed link inside a 'BatchRead' operation. For more information, see 'GetLinkAttributes' and 'BatchReadRequest$Operations' .
+--
+--
+--
+-- /See:/ 'batchGetLinkAttributes' smart constructor.
+data BatchGetLinkAttributes =
+  BatchGetLinkAttributes'
+    { _bglaTypedLinkSpecifier :: !TypedLinkSpecifier
+    , _bglaAttributeNames     :: ![Text]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'BatchGetLinkAttributes' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'bglaTypedLinkSpecifier' - Allows a typed link specifier to be accepted as input.
+--
+-- * 'bglaAttributeNames' - A list of attribute names whose values will be retrieved.
+batchGetLinkAttributes
+    :: TypedLinkSpecifier -- ^ 'bglaTypedLinkSpecifier'
+    -> BatchGetLinkAttributes
+batchGetLinkAttributes pTypedLinkSpecifier_ =
+  BatchGetLinkAttributes'
+    { _bglaTypedLinkSpecifier = pTypedLinkSpecifier_
+    , _bglaAttributeNames = mempty
+    }
+
+
+-- | Allows a typed link specifier to be accepted as input.
+bglaTypedLinkSpecifier :: Lens' BatchGetLinkAttributes TypedLinkSpecifier
+bglaTypedLinkSpecifier = lens _bglaTypedLinkSpecifier (\ s a -> s{_bglaTypedLinkSpecifier = a})
+
+-- | A list of attribute names whose values will be retrieved.
+bglaAttributeNames :: Lens' BatchGetLinkAttributes [Text]
+bglaAttributeNames = lens _bglaAttributeNames (\ s a -> s{_bglaAttributeNames = a}) . _Coerce
+
+instance Hashable BatchGetLinkAttributes where
+
+instance NFData BatchGetLinkAttributes where
+
+instance ToJSON BatchGetLinkAttributes where
+        toJSON BatchGetLinkAttributes'{..}
+          = object
+              (catMaybes
+                 [Just
+                    ("TypedLinkSpecifier" .= _bglaTypedLinkSpecifier),
+                  Just ("AttributeNames" .= _bglaAttributeNames)])
+
+-- | Represents the output of a 'GetLinkAttributes' response operation.
+--
+--
+--
+-- /See:/ 'batchGetLinkAttributesResponse' smart constructor.
+newtype BatchGetLinkAttributesResponse =
+  BatchGetLinkAttributesResponse'
+    { _bglaAttributes :: Maybe [AttributeKeyAndValue]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'BatchGetLinkAttributesResponse' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'bglaAttributes' - The attributes that are associated with the typed link.
+batchGetLinkAttributesResponse
+    :: BatchGetLinkAttributesResponse
+batchGetLinkAttributesResponse =
+  BatchGetLinkAttributesResponse' {_bglaAttributes = Nothing}
+
+
+-- | The attributes that are associated with the typed link.
+bglaAttributes :: Lens' BatchGetLinkAttributesResponse [AttributeKeyAndValue]
+bglaAttributes = lens _bglaAttributes (\ s a -> s{_bglaAttributes = a}) . _Default . _Coerce
+
+instance FromJSON BatchGetLinkAttributesResponse
+         where
+        parseJSON
+          = withObject "BatchGetLinkAttributesResponse"
+              (\ x ->
+                 BatchGetLinkAttributesResponse' <$>
+                   (x .:? "Attributes" .!= mempty))
+
+instance Hashable BatchGetLinkAttributesResponse
+         where
+
+instance NFData BatchGetLinkAttributesResponse where
+
 -- | Retrieves attributes within a facet that are associated with an object inside an 'BatchRead' operation. For more information, see 'GetObjectAttributes' and 'BatchReadRequest$Operations' .
 --
 --
 --
 -- /See:/ 'batchGetObjectAttributes' smart constructor.
-data BatchGetObjectAttributes = BatchGetObjectAttributes'
-  { _bgoaObjectReference :: !ObjectReference
-  , _bgoaSchemaFacet     :: !SchemaFacet
-  , _bgoaAttributeNames  :: ![Text]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchGetObjectAttributes =
+  BatchGetObjectAttributes'
+    { _bgoaObjectReference :: !ObjectReference
+    , _bgoaSchemaFacet     :: !SchemaFacet
+    , _bgoaAttributeNames  :: ![Text]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchGetObjectAttributes' with the minimum fields required to make a request.
@@ -1293,9 +1429,11 @@ instance ToJSON BatchGetObjectAttributes where
 --
 --
 -- /See:/ 'batchGetObjectAttributesResponse' smart constructor.
-newtype BatchGetObjectAttributesResponse = BatchGetObjectAttributesResponse'
-  { _bgoaAttributes :: Maybe [AttributeKeyAndValue]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype BatchGetObjectAttributesResponse =
+  BatchGetObjectAttributesResponse'
+    { _bgoaAttributes :: Maybe [AttributeKeyAndValue]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchGetObjectAttributesResponse' with the minimum fields required to make a request.
@@ -1332,9 +1470,11 @@ instance NFData BatchGetObjectAttributesResponse
 --
 --
 -- /See:/ 'batchGetObjectInformation' smart constructor.
-newtype BatchGetObjectInformation = BatchGetObjectInformation'
-  { _bgoiObjectReference :: ObjectReference
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype BatchGetObjectInformation =
+  BatchGetObjectInformation'
+    { _bgoiObjectReference :: ObjectReference
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchGetObjectInformation' with the minimum fields required to make a request.
@@ -1368,10 +1508,12 @@ instance ToJSON BatchGetObjectInformation where
 --
 --
 -- /See:/ 'batchGetObjectInformationResponse' smart constructor.
-data BatchGetObjectInformationResponse = BatchGetObjectInformationResponse'
-  { _bgoiObjectIdentifier :: !(Maybe Text)
-  , _bgoiSchemaFacets     :: !(Maybe [SchemaFacet])
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchGetObjectInformationResponse =
+  BatchGetObjectInformationResponse'
+    { _bgoiObjectIdentifier :: !(Maybe Text)
+    , _bgoiSchemaFacets     :: !(Maybe [SchemaFacet])
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchGetObjectInformationResponse' with the minimum fields required to make a request.
@@ -1416,11 +1558,13 @@ instance NFData BatchGetObjectInformationResponse
 --
 --
 -- /See:/ 'batchListAttachedIndices' smart constructor.
-data BatchListAttachedIndices = BatchListAttachedIndices'
-  { _blaisNextToken       :: !(Maybe Text)
-  , _blaisMaxResults      :: !(Maybe Nat)
-  , _blaisTargetReference :: !ObjectReference
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchListAttachedIndices =
+  BatchListAttachedIndices'
+    { _blaisNextToken       :: !(Maybe Text)
+    , _blaisMaxResults      :: !(Maybe Nat)
+    , _blaisTargetReference :: !ObjectReference
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchListAttachedIndices' with the minimum fields required to make a request.
@@ -1472,10 +1616,12 @@ instance ToJSON BatchListAttachedIndices where
 --
 --
 -- /See:/ 'batchListAttachedIndicesResponse' smart constructor.
-data BatchListAttachedIndicesResponse = BatchListAttachedIndicesResponse'
-  { _blaiIndexAttachments :: !(Maybe [IndexAttachment])
-  , _blaiNextToken        :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchListAttachedIndicesResponse =
+  BatchListAttachedIndicesResponse'
+    { _blaiIndexAttachments :: !(Maybe [IndexAttachment])
+    , _blaiNextToken        :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchListAttachedIndicesResponse' with the minimum fields required to make a request.
@@ -1520,13 +1666,15 @@ instance NFData BatchListAttachedIndicesResponse
 --
 --
 -- /See:/ 'batchListIncomingTypedLinks' smart constructor.
-data BatchListIncomingTypedLinks = BatchListIncomingTypedLinks'
-  { _blitlsFilterAttributeRanges :: !(Maybe [TypedLinkAttributeRange])
-  , _blitlsNextToken             :: !(Maybe Text)
-  , _blitlsFilterTypedLink       :: !(Maybe TypedLinkSchemaAndFacetName)
-  , _blitlsMaxResults            :: !(Maybe Nat)
-  , _blitlsObjectReference       :: !ObjectReference
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchListIncomingTypedLinks =
+  BatchListIncomingTypedLinks'
+    { _blitlsFilterAttributeRanges :: !(Maybe [TypedLinkAttributeRange])
+    , _blitlsNextToken             :: !(Maybe Text)
+    , _blitlsFilterTypedLink       :: !(Maybe TypedLinkSchemaAndFacetName)
+    , _blitlsMaxResults            :: !(Maybe Nat)
+    , _blitlsObjectReference       :: !ObjectReference
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchListIncomingTypedLinks' with the minimum fields required to make a request.
@@ -1595,10 +1743,12 @@ instance ToJSON BatchListIncomingTypedLinks where
 --
 --
 -- /See:/ 'batchListIncomingTypedLinksResponse' smart constructor.
-data BatchListIncomingTypedLinksResponse = BatchListIncomingTypedLinksResponse'
-  { _blitlLinkSpecifiers :: !(Maybe [TypedLinkSpecifier])
-  , _blitlNextToken      :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchListIncomingTypedLinksResponse =
+  BatchListIncomingTypedLinksResponse'
+    { _blitlLinkSpecifiers :: !(Maybe [TypedLinkSpecifier])
+    , _blitlNextToken      :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchListIncomingTypedLinksResponse' with the minimum fields required to make a request.
@@ -1643,12 +1793,14 @@ instance NFData BatchListIncomingTypedLinksResponse
 --
 --
 -- /See:/ 'batchListIndex' smart constructor.
-data BatchListIndex = BatchListIndex'
-  { _batRangesOnIndexedValues :: !(Maybe [ObjectAttributeRange])
-  , _batNextToken             :: !(Maybe Text)
-  , _batMaxResults            :: !(Maybe Nat)
-  , _batIndexReference        :: !ObjectReference
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchListIndex =
+  BatchListIndex'
+    { _batRangesOnIndexedValues :: !(Maybe [ObjectAttributeRange])
+    , _batNextToken             :: !(Maybe Text)
+    , _batMaxResults            :: !(Maybe Nat)
+    , _batIndexReference        :: !ObjectReference
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchListIndex' with the minimum fields required to make a request.
@@ -1709,10 +1861,12 @@ instance ToJSON BatchListIndex where
 --
 --
 -- /See:/ 'batchListIndexResponse' smart constructor.
-data BatchListIndexResponse = BatchListIndexResponse'
-  { _bliIndexAttachments :: !(Maybe [IndexAttachment])
-  , _bliNextToken        :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchListIndexResponse =
+  BatchListIndexResponse'
+    { _bliIndexAttachments :: !(Maybe [IndexAttachment])
+    , _bliNextToken        :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchListIndexResponse' with the minimum fields required to make a request.
@@ -1754,12 +1908,14 @@ instance NFData BatchListIndexResponse where
 --
 --
 -- /See:/ 'batchListObjectAttributes' smart constructor.
-data BatchListObjectAttributes = BatchListObjectAttributes'
-  { _bloaFacetFilter     :: !(Maybe SchemaFacet)
-  , _bloaNextToken       :: !(Maybe Text)
-  , _bloaMaxResults      :: !(Maybe Nat)
-  , _bloaObjectReference :: !ObjectReference
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchListObjectAttributes =
+  BatchListObjectAttributes'
+    { _bloaFacetFilter     :: !(Maybe SchemaFacet)
+    , _bloaNextToken       :: !(Maybe Text)
+    , _bloaMaxResults      :: !(Maybe Nat)
+    , _bloaObjectReference :: !ObjectReference
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchListObjectAttributes' with the minimum fields required to make a request.
@@ -1819,10 +1975,12 @@ instance ToJSON BatchListObjectAttributes where
 --
 --
 -- /See:/ 'batchListObjectAttributesResponse' smart constructor.
-data BatchListObjectAttributesResponse = BatchListObjectAttributesResponse'
-  { _bNextToken  :: !(Maybe Text)
-  , _bAttributes :: !(Maybe [AttributeKeyAndValue])
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchListObjectAttributesResponse =
+  BatchListObjectAttributesResponse'
+    { _bNextToken  :: !(Maybe Text)
+    , _bAttributes :: !(Maybe [AttributeKeyAndValue])
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchListObjectAttributesResponse' with the minimum fields required to make a request.
@@ -1867,11 +2025,13 @@ instance NFData BatchListObjectAttributesResponse
 --
 --
 -- /See:/ 'batchListObjectChildren' smart constructor.
-data BatchListObjectChildren = BatchListObjectChildren'
-  { _bloclNextToken       :: !(Maybe Text)
-  , _bloclMaxResults      :: !(Maybe Nat)
-  , _bloclObjectReference :: !ObjectReference
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchListObjectChildren =
+  BatchListObjectChildren'
+    { _bloclNextToken       :: !(Maybe Text)
+    , _bloclMaxResults      :: !(Maybe Nat)
+    , _bloclObjectReference :: !ObjectReference
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchListObjectChildren' with the minimum fields required to make a request.
@@ -1923,10 +2083,12 @@ instance ToJSON BatchListObjectChildren where
 --
 --
 -- /See:/ 'batchListObjectChildrenResponse' smart constructor.
-data BatchListObjectChildrenResponse = BatchListObjectChildrenResponse'
-  { _blocChildren  :: !(Maybe (Map Text Text))
-  , _blocNextToken :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchListObjectChildrenResponse =
+  BatchListObjectChildrenResponse'
+    { _blocChildren  :: !(Maybe (Map Text Text))
+    , _blocNextToken :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchListObjectChildrenResponse' with the minimum fields required to make a request.
@@ -1970,11 +2132,13 @@ instance NFData BatchListObjectChildrenResponse where
 --
 --
 -- /See:/ 'batchListObjectParentPaths' smart constructor.
-data BatchListObjectParentPaths = BatchListObjectParentPaths'
-  { _bloppsNextToken       :: !(Maybe Text)
-  , _bloppsMaxResults      :: !(Maybe Nat)
-  , _bloppsObjectReference :: !ObjectReference
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchListObjectParentPaths =
+  BatchListObjectParentPaths'
+    { _bloppsNextToken       :: !(Maybe Text)
+    , _bloppsMaxResults      :: !(Maybe Nat)
+    , _bloppsObjectReference :: !ObjectReference
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchListObjectParentPaths' with the minimum fields required to make a request.
@@ -2026,10 +2190,12 @@ instance ToJSON BatchListObjectParentPaths where
 --
 --
 -- /See:/ 'batchListObjectParentPathsResponse' smart constructor.
-data BatchListObjectParentPathsResponse = BatchListObjectParentPathsResponse'
-  { _bloppPathToObjectIdentifiersList :: !(Maybe [PathToObjectIdentifiers])
-  , _bloppNextToken                   :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchListObjectParentPathsResponse =
+  BatchListObjectParentPathsResponse'
+    { _bloppPathToObjectIdentifiersList :: !(Maybe [PathToObjectIdentifiers])
+    , _bloppNextToken                   :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchListObjectParentPathsResponse' with the minimum fields required to make a request.
@@ -2069,49 +2235,150 @@ instance Hashable BatchListObjectParentPathsResponse
 instance NFData BatchListObjectParentPathsResponse
          where
 
+-- | /See:/ 'batchListObjectParents' smart constructor.
+data BatchListObjectParents =
+  BatchListObjectParents'
+    { _bloplNextToken       :: !(Maybe Text)
+    , _bloplMaxResults      :: !(Maybe Nat)
+    , _bloplObjectReference :: !ObjectReference
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'BatchListObjectParents' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'bloplNextToken' - Undocumented member.
+--
+-- * 'bloplMaxResults' - Undocumented member.
+--
+-- * 'bloplObjectReference' - Undocumented member.
+batchListObjectParents
+    :: ObjectReference -- ^ 'bloplObjectReference'
+    -> BatchListObjectParents
+batchListObjectParents pObjectReference_ =
+  BatchListObjectParents'
+    { _bloplNextToken = Nothing
+    , _bloplMaxResults = Nothing
+    , _bloplObjectReference = pObjectReference_
+    }
+
+
+-- | Undocumented member.
+bloplNextToken :: Lens' BatchListObjectParents (Maybe Text)
+bloplNextToken = lens _bloplNextToken (\ s a -> s{_bloplNextToken = a})
+
+-- | Undocumented member.
+bloplMaxResults :: Lens' BatchListObjectParents (Maybe Natural)
+bloplMaxResults = lens _bloplMaxResults (\ s a -> s{_bloplMaxResults = a}) . mapping _Nat
+
+-- | Undocumented member.
+bloplObjectReference :: Lens' BatchListObjectParents ObjectReference
+bloplObjectReference = lens _bloplObjectReference (\ s a -> s{_bloplObjectReference = a})
+
+instance Hashable BatchListObjectParents where
+
+instance NFData BatchListObjectParents where
+
+instance ToJSON BatchListObjectParents where
+        toJSON BatchListObjectParents'{..}
+          = object
+              (catMaybes
+                 [("NextToken" .=) <$> _bloplNextToken,
+                  ("MaxResults" .=) <$> _bloplMaxResults,
+                  Just ("ObjectReference" .= _bloplObjectReference)])
+
+-- | /See:/ 'batchListObjectParentsResponse' smart constructor.
+data BatchListObjectParentsResponse =
+  BatchListObjectParentsResponse'
+    { _blopNextToken   :: !(Maybe Text)
+    , _blopParentLinks :: !(Maybe [ObjectIdentifierAndLinkNameTuple])
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'BatchListObjectParentsResponse' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'blopNextToken' - Undocumented member.
+--
+-- * 'blopParentLinks' - Undocumented member.
+batchListObjectParentsResponse
+    :: BatchListObjectParentsResponse
+batchListObjectParentsResponse =
+  BatchListObjectParentsResponse'
+    {_blopNextToken = Nothing, _blopParentLinks = Nothing}
+
+
+-- | Undocumented member.
+blopNextToken :: Lens' BatchListObjectParentsResponse (Maybe Text)
+blopNextToken = lens _blopNextToken (\ s a -> s{_blopNextToken = a})
+
+-- | Undocumented member.
+blopParentLinks :: Lens' BatchListObjectParentsResponse [ObjectIdentifierAndLinkNameTuple]
+blopParentLinks = lens _blopParentLinks (\ s a -> s{_blopParentLinks = a}) . _Default . _Coerce
+
+instance FromJSON BatchListObjectParentsResponse
+         where
+        parseJSON
+          = withObject "BatchListObjectParentsResponse"
+              (\ x ->
+                 BatchListObjectParentsResponse' <$>
+                   (x .:? "NextToken") <*>
+                     (x .:? "ParentLinks" .!= mempty))
+
+instance Hashable BatchListObjectParentsResponse
+         where
+
+instance NFData BatchListObjectParentsResponse where
+
 -- | Returns policies attached to an object in pagination fashion inside a 'BatchRead' operation. For more information, see 'ListObjectPolicies' and 'BatchReadRequest$Operations' .
 --
 --
 --
 -- /See:/ 'batchListObjectPolicies' smart constructor.
-data BatchListObjectPolicies = BatchListObjectPolicies'
-  { _blopsNextToken       :: !(Maybe Text)
-  , _blopsMaxResults      :: !(Maybe Nat)
-  , _blopsObjectReference :: !ObjectReference
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchListObjectPolicies =
+  BatchListObjectPolicies'
+    { _bbNextToken       :: !(Maybe Text)
+    , _bbMaxResults      :: !(Maybe Nat)
+    , _bbObjectReference :: !ObjectReference
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchListObjectPolicies' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'blopsNextToken' - The pagination token.
+-- * 'bbNextToken' - The pagination token.
 --
--- * 'blopsMaxResults' - The maximum number of results to retrieve.
+-- * 'bbMaxResults' - The maximum number of results to retrieve.
 --
--- * 'blopsObjectReference' - The reference that identifies the object whose attributes will be listed.
+-- * 'bbObjectReference' - The reference that identifies the object whose attributes will be listed.
 batchListObjectPolicies
-    :: ObjectReference -- ^ 'blopsObjectReference'
+    :: ObjectReference -- ^ 'bbObjectReference'
     -> BatchListObjectPolicies
 batchListObjectPolicies pObjectReference_ =
   BatchListObjectPolicies'
-    { _blopsNextToken = Nothing
-    , _blopsMaxResults = Nothing
-    , _blopsObjectReference = pObjectReference_
+    { _bbNextToken = Nothing
+    , _bbMaxResults = Nothing
+    , _bbObjectReference = pObjectReference_
     }
 
 
 -- | The pagination token.
-blopsNextToken :: Lens' BatchListObjectPolicies (Maybe Text)
-blopsNextToken = lens _blopsNextToken (\ s a -> s{_blopsNextToken = a})
+bbNextToken :: Lens' BatchListObjectPolicies (Maybe Text)
+bbNextToken = lens _bbNextToken (\ s a -> s{_bbNextToken = a})
 
 -- | The maximum number of results to retrieve.
-blopsMaxResults :: Lens' BatchListObjectPolicies (Maybe Natural)
-blopsMaxResults = lens _blopsMaxResults (\ s a -> s{_blopsMaxResults = a}) . mapping _Nat
+bbMaxResults :: Lens' BatchListObjectPolicies (Maybe Natural)
+bbMaxResults = lens _bbMaxResults (\ s a -> s{_bbMaxResults = a}) . mapping _Nat
 
 -- | The reference that identifies the object whose attributes will be listed.
-blopsObjectReference :: Lens' BatchListObjectPolicies ObjectReference
-blopsObjectReference = lens _blopsObjectReference (\ s a -> s{_blopsObjectReference = a})
+bbObjectReference :: Lens' BatchListObjectPolicies ObjectReference
+bbObjectReference = lens _bbObjectReference (\ s a -> s{_bbObjectReference = a})
 
 instance Hashable BatchListObjectPolicies where
 
@@ -2121,42 +2388,44 @@ instance ToJSON BatchListObjectPolicies where
         toJSON BatchListObjectPolicies'{..}
           = object
               (catMaybes
-                 [("NextToken" .=) <$> _blopsNextToken,
-                  ("MaxResults" .=) <$> _blopsMaxResults,
-                  Just ("ObjectReference" .= _blopsObjectReference)])
+                 [("NextToken" .=) <$> _bbNextToken,
+                  ("MaxResults" .=) <$> _bbMaxResults,
+                  Just ("ObjectReference" .= _bbObjectReference)])
 
 -- | Represents the output of a 'ListObjectPolicies' response operation.
 --
 --
 --
 -- /See:/ 'batchListObjectPoliciesResponse' smart constructor.
-data BatchListObjectPoliciesResponse = BatchListObjectPoliciesResponse'
-  { _blopNextToken         :: !(Maybe Text)
-  , _blopAttachedPolicyIds :: !(Maybe [Text])
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchListObjectPoliciesResponse =
+  BatchListObjectPoliciesResponse'
+    { _blopsNextToken         :: !(Maybe Text)
+    , _blopsAttachedPolicyIds :: !(Maybe [Text])
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchListObjectPoliciesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'blopNextToken' - The pagination token.
+-- * 'blopsNextToken' - The pagination token.
 --
--- * 'blopAttachedPolicyIds' - A list of policy @ObjectIdentifiers@ , that are attached to the object.
+-- * 'blopsAttachedPolicyIds' - A list of policy @ObjectIdentifiers@ , that are attached to the object.
 batchListObjectPoliciesResponse
     :: BatchListObjectPoliciesResponse
 batchListObjectPoliciesResponse =
   BatchListObjectPoliciesResponse'
-    {_blopNextToken = Nothing, _blopAttachedPolicyIds = Nothing}
+    {_blopsNextToken = Nothing, _blopsAttachedPolicyIds = Nothing}
 
 
 -- | The pagination token.
-blopNextToken :: Lens' BatchListObjectPoliciesResponse (Maybe Text)
-blopNextToken = lens _blopNextToken (\ s a -> s{_blopNextToken = a})
+blopsNextToken :: Lens' BatchListObjectPoliciesResponse (Maybe Text)
+blopsNextToken = lens _blopsNextToken (\ s a -> s{_blopsNextToken = a})
 
 -- | A list of policy @ObjectIdentifiers@ , that are attached to the object.
-blopAttachedPolicyIds :: Lens' BatchListObjectPoliciesResponse [Text]
-blopAttachedPolicyIds = lens _blopAttachedPolicyIds (\ s a -> s{_blopAttachedPolicyIds = a}) . _Default . _Coerce
+blopsAttachedPolicyIds :: Lens' BatchListObjectPoliciesResponse [Text]
+blopsAttachedPolicyIds = lens _blopsAttachedPolicyIds (\ s a -> s{_blopsAttachedPolicyIds = a}) . _Default . _Coerce
 
 instance FromJSON BatchListObjectPoliciesResponse
          where
@@ -2177,13 +2446,15 @@ instance NFData BatchListObjectPoliciesResponse where
 --
 --
 -- /See:/ 'batchListOutgoingTypedLinks' smart constructor.
-data BatchListOutgoingTypedLinks = BatchListOutgoingTypedLinks'
-  { _blotlsFilterAttributeRanges :: !(Maybe [TypedLinkAttributeRange])
-  , _blotlsNextToken             :: !(Maybe Text)
-  , _blotlsFilterTypedLink       :: !(Maybe TypedLinkSchemaAndFacetName)
-  , _blotlsMaxResults            :: !(Maybe Nat)
-  , _blotlsObjectReference       :: !ObjectReference
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchListOutgoingTypedLinks =
+  BatchListOutgoingTypedLinks'
+    { _blotlsFilterAttributeRanges :: !(Maybe [TypedLinkAttributeRange])
+    , _blotlsNextToken             :: !(Maybe Text)
+    , _blotlsFilterTypedLink       :: !(Maybe TypedLinkSchemaAndFacetName)
+    , _blotlsMaxResults            :: !(Maybe Nat)
+    , _blotlsObjectReference       :: !ObjectReference
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchListOutgoingTypedLinks' with the minimum fields required to make a request.
@@ -2252,10 +2523,12 @@ instance ToJSON BatchListOutgoingTypedLinks where
 --
 --
 -- /See:/ 'batchListOutgoingTypedLinksResponse' smart constructor.
-data BatchListOutgoingTypedLinksResponse = BatchListOutgoingTypedLinksResponse'
-  { _blotlTypedLinkSpecifiers :: !(Maybe [TypedLinkSpecifier])
-  , _blotlNextToken           :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchListOutgoingTypedLinksResponse =
+  BatchListOutgoingTypedLinksResponse'
+    { _blotlTypedLinkSpecifiers :: !(Maybe [TypedLinkSpecifier])
+    , _blotlNextToken           :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchListOutgoingTypedLinksResponse' with the minimum fields required to make a request.
@@ -2300,11 +2573,13 @@ instance NFData BatchListOutgoingTypedLinksResponse
 --
 --
 -- /See:/ 'batchListPolicyAttachments' smart constructor.
-data BatchListPolicyAttachments = BatchListPolicyAttachments'
-  { _blpasNextToken       :: !(Maybe Text)
-  , _blpasMaxResults      :: !(Maybe Nat)
-  , _blpasPolicyReference :: !ObjectReference
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchListPolicyAttachments =
+  BatchListPolicyAttachments'
+    { _blpasNextToken       :: !(Maybe Text)
+    , _blpasMaxResults      :: !(Maybe Nat)
+    , _blpasPolicyReference :: !ObjectReference
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchListPolicyAttachments' with the minimum fields required to make a request.
@@ -2356,10 +2631,12 @@ instance ToJSON BatchListPolicyAttachments where
 --
 --
 -- /See:/ 'batchListPolicyAttachmentsResponse' smart constructor.
-data BatchListPolicyAttachmentsResponse = BatchListPolicyAttachmentsResponse'
-  { _blpaObjectIdentifiers :: !(Maybe [Text])
-  , _blpaNextToken         :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchListPolicyAttachmentsResponse =
+  BatchListPolicyAttachmentsResponse'
+    { _blpaObjectIdentifiers :: !(Maybe [Text])
+    , _blpaNextToken         :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchListPolicyAttachmentsResponse' with the minimum fields required to make a request.
@@ -2404,11 +2681,13 @@ instance NFData BatchListPolicyAttachmentsResponse
 --
 --
 -- /See:/ 'batchLookupPolicy' smart constructor.
-data BatchLookupPolicy = BatchLookupPolicy'
-  { _blplNextToken       :: !(Maybe Text)
-  , _blplMaxResults      :: !(Maybe Nat)
-  , _blplObjectReference :: !ObjectReference
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchLookupPolicy =
+  BatchLookupPolicy'
+    { _blplNextToken       :: !(Maybe Text)
+    , _blplMaxResults      :: !(Maybe Nat)
+    , _blplObjectReference :: !ObjectReference
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchLookupPolicy' with the minimum fields required to make a request.
@@ -2460,10 +2739,12 @@ instance ToJSON BatchLookupPolicy where
 --
 --
 -- /See:/ 'batchLookupPolicyResponse' smart constructor.
-data BatchLookupPolicyResponse = BatchLookupPolicyResponse'
-  { _blpNextToken        :: !(Maybe Text)
-  , _blpPolicyToPathList :: !(Maybe [PolicyToPath])
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchLookupPolicyResponse =
+  BatchLookupPolicyResponse'
+    { _blpNextToken        :: !(Maybe Text)
+    , _blpPolicyToPathList :: !(Maybe [PolicyToPath])
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchLookupPolicyResponse' with the minimum fields required to make a request.
@@ -2472,7 +2753,7 @@ data BatchLookupPolicyResponse = BatchLookupPolicyResponse'
 --
 -- * 'blpNextToken' - The pagination token.
 --
--- * 'blpPolicyToPathList' - Provides list of path to policies. Policies contain @PolicyId@ , @ObjectIdentifier@ , and @PolicyType@ . For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies Policies> .
+-- * 'blpPolicyToPathList' - Provides list of path to policies. Policies contain @PolicyId@ , @ObjectIdentifier@ , and @PolicyType@ . For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies Policies> .
 batchLookupPolicyResponse
     :: BatchLookupPolicyResponse
 batchLookupPolicyResponse =
@@ -2484,7 +2765,7 @@ batchLookupPolicyResponse =
 blpNextToken :: Lens' BatchLookupPolicyResponse (Maybe Text)
 blpNextToken = lens _blpNextToken (\ s a -> s{_blpNextToken = a})
 
--- | Provides list of path to policies. Policies contain @PolicyId@ , @ObjectIdentifier@ , and @PolicyType@ . For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies Policies> .
+-- | Provides list of path to policies. Policies contain @PolicyId@ , @ObjectIdentifier@ , and @PolicyType@ . For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies Policies> .
 blpPolicyToPathList :: Lens' BatchLookupPolicyResponse [PolicyToPath]
 blpPolicyToPathList = lens _blpPolicyToPathList (\ s a -> s{_blpPolicyToPathList = a}) . _Default . _Coerce
 
@@ -2505,10 +2786,12 @@ instance NFData BatchLookupPolicyResponse where
 --
 --
 -- /See:/ 'batchReadException' smart constructor.
-data BatchReadException = BatchReadException'
-  { _breType    :: !(Maybe BatchReadExceptionType)
-  , _breMessage :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchReadException =
+  BatchReadException'
+    { _breType    :: !(Maybe BatchReadExceptionType)
+    , _breMessage :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchReadException' with the minimum fields required to make a request.
@@ -2548,20 +2831,24 @@ instance NFData BatchReadException where
 --
 --
 -- /See:/ 'batchReadOperation' smart constructor.
-data BatchReadOperation = BatchReadOperation'
-  { _broListIndex              :: !(Maybe BatchListIndex)
-  , _broGetObjectInformation   :: !(Maybe BatchGetObjectInformation)
-  , _broListAttachedIndices    :: !(Maybe BatchListAttachedIndices)
-  , _broLookupPolicy           :: !(Maybe BatchLookupPolicy)
-  , _broListObjectParentPaths  :: !(Maybe BatchListObjectParentPaths)
-  , _broListObjectAttributes   :: !(Maybe BatchListObjectAttributes)
-  , _broListIncomingTypedLinks :: !(Maybe BatchListIncomingTypedLinks)
-  , _broGetObjectAttributes    :: !(Maybe BatchGetObjectAttributes)
-  , _broListObjectChildren     :: !(Maybe BatchListObjectChildren)
-  , _broListPolicyAttachments  :: !(Maybe BatchListPolicyAttachments)
-  , _broListOutgoingTypedLinks :: !(Maybe BatchListOutgoingTypedLinks)
-  , _broListObjectPolicies     :: !(Maybe BatchListObjectPolicies)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchReadOperation =
+  BatchReadOperation'
+    { _broListIndex              :: !(Maybe BatchListIndex)
+    , _broGetObjectInformation   :: !(Maybe BatchGetObjectInformation)
+    , _broListAttachedIndices    :: !(Maybe BatchListAttachedIndices)
+    , _broLookupPolicy           :: !(Maybe BatchLookupPolicy)
+    , _broListObjectParentPaths  :: !(Maybe BatchListObjectParentPaths)
+    , _broListObjectAttributes   :: !(Maybe BatchListObjectAttributes)
+    , _broListIncomingTypedLinks :: !(Maybe BatchListIncomingTypedLinks)
+    , _broGetLinkAttributes      :: !(Maybe BatchGetLinkAttributes)
+    , _broGetObjectAttributes    :: !(Maybe BatchGetObjectAttributes)
+    , _broListObjectChildren     :: !(Maybe BatchListObjectChildren)
+    , _broListObjectParents      :: !(Maybe BatchListObjectParents)
+    , _broListPolicyAttachments  :: !(Maybe BatchListPolicyAttachments)
+    , _broListOutgoingTypedLinks :: !(Maybe BatchListOutgoingTypedLinks)
+    , _broListObjectPolicies     :: !(Maybe BatchListObjectPolicies)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchReadOperation' with the minimum fields required to make a request.
@@ -2574,21 +2861,25 @@ data BatchReadOperation = BatchReadOperation'
 --
 -- * 'broListAttachedIndices' - Lists indices attached to an object.
 --
--- * 'broLookupPolicy' - Lists all policies from the root of the 'Directory' to the object specified. If there are no policies present, an empty list is returned. If policies are present, and if some objects don't have the policies attached, it returns the @ObjectIdentifier@ for such objects. If policies are present, it returns @ObjectIdentifier@ , @policyId@ , and @policyType@ . Paths that don't lead to the root from the target object are ignored. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies Policies> .
+-- * 'broLookupPolicy' - Lists all policies from the root of the 'Directory' to the object specified. If there are no policies present, an empty list is returned. If policies are present, and if some objects don't have the policies attached, it returns the @ObjectIdentifier@ for such objects. If policies are present, it returns @ObjectIdentifier@ , @policyId@ , and @policyType@ . Paths that don't lead to the root from the target object are ignored. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies Policies> .
 --
--- * 'broListObjectParentPaths' - Retrieves all available parent paths for any object type such as node, leaf node, policy node, and index node objects. For more information about objects, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#dirstructure Directory Structure> .
+-- * 'broListObjectParentPaths' - Retrieves all available parent paths for any object type such as node, leaf node, policy node, and index node objects. For more information about objects, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directorystructure.html Directory Structure> .
 --
 -- * 'broListObjectAttributes' - Lists all attributes that are associated with an object.
 --
--- * 'broListIncomingTypedLinks' - Returns a paginated list of all the incoming 'TypedLinkSpecifier' information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink Typed link> .
+-- * 'broListIncomingTypedLinks' - Returns a paginated list of all the incoming 'TypedLinkSpecifier' information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink Typed Links> .
+--
+-- * 'broGetLinkAttributes' - Retrieves attributes that are associated with a typed link.
 --
 -- * 'broGetObjectAttributes' - Retrieves attributes within a facet that are associated with an object.
 --
 -- * 'broListObjectChildren' - Returns a paginated list of child objects that are associated with a given object.
 --
+-- * 'broListObjectParents' - Undocumented member.
+--
 -- * 'broListPolicyAttachments' - Returns all of the @ObjectIdentifiers@ to which a given policy is attached.
 --
--- * 'broListOutgoingTypedLinks' - Returns a paginated list of all the outgoing 'TypedLinkSpecifier' information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink Typed link> .
+-- * 'broListOutgoingTypedLinks' - Returns a paginated list of all the outgoing 'TypedLinkSpecifier' information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink Typed Links> .
 --
 -- * 'broListObjectPolicies' - Returns policies attached to an object in pagination fashion.
 batchReadOperation
@@ -2602,8 +2893,10 @@ batchReadOperation =
     , _broListObjectParentPaths = Nothing
     , _broListObjectAttributes = Nothing
     , _broListIncomingTypedLinks = Nothing
+    , _broGetLinkAttributes = Nothing
     , _broGetObjectAttributes = Nothing
     , _broListObjectChildren = Nothing
+    , _broListObjectParents = Nothing
     , _broListPolicyAttachments = Nothing
     , _broListOutgoingTypedLinks = Nothing
     , _broListObjectPolicies = Nothing
@@ -2622,11 +2915,11 @@ broGetObjectInformation = lens _broGetObjectInformation (\ s a -> s{_broGetObjec
 broListAttachedIndices :: Lens' BatchReadOperation (Maybe BatchListAttachedIndices)
 broListAttachedIndices = lens _broListAttachedIndices (\ s a -> s{_broListAttachedIndices = a})
 
--- | Lists all policies from the root of the 'Directory' to the object specified. If there are no policies present, an empty list is returned. If policies are present, and if some objects don't have the policies attached, it returns the @ObjectIdentifier@ for such objects. If policies are present, it returns @ObjectIdentifier@ , @policyId@ , and @policyType@ . Paths that don't lead to the root from the target object are ignored. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies Policies> .
+-- | Lists all policies from the root of the 'Directory' to the object specified. If there are no policies present, an empty list is returned. If policies are present, and if some objects don't have the policies attached, it returns the @ObjectIdentifier@ for such objects. If policies are present, it returns @ObjectIdentifier@ , @policyId@ , and @policyType@ . Paths that don't lead to the root from the target object are ignored. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies Policies> .
 broLookupPolicy :: Lens' BatchReadOperation (Maybe BatchLookupPolicy)
 broLookupPolicy = lens _broLookupPolicy (\ s a -> s{_broLookupPolicy = a})
 
--- | Retrieves all available parent paths for any object type such as node, leaf node, policy node, and index node objects. For more information about objects, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#dirstructure Directory Structure> .
+-- | Retrieves all available parent paths for any object type such as node, leaf node, policy node, and index node objects. For more information about objects, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directorystructure.html Directory Structure> .
 broListObjectParentPaths :: Lens' BatchReadOperation (Maybe BatchListObjectParentPaths)
 broListObjectParentPaths = lens _broListObjectParentPaths (\ s a -> s{_broListObjectParentPaths = a})
 
@@ -2634,9 +2927,13 @@ broListObjectParentPaths = lens _broListObjectParentPaths (\ s a -> s{_broListOb
 broListObjectAttributes :: Lens' BatchReadOperation (Maybe BatchListObjectAttributes)
 broListObjectAttributes = lens _broListObjectAttributes (\ s a -> s{_broListObjectAttributes = a})
 
--- | Returns a paginated list of all the incoming 'TypedLinkSpecifier' information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink Typed link> .
+-- | Returns a paginated list of all the incoming 'TypedLinkSpecifier' information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink Typed Links> .
 broListIncomingTypedLinks :: Lens' BatchReadOperation (Maybe BatchListIncomingTypedLinks)
 broListIncomingTypedLinks = lens _broListIncomingTypedLinks (\ s a -> s{_broListIncomingTypedLinks = a})
+
+-- | Retrieves attributes that are associated with a typed link.
+broGetLinkAttributes :: Lens' BatchReadOperation (Maybe BatchGetLinkAttributes)
+broGetLinkAttributes = lens _broGetLinkAttributes (\ s a -> s{_broGetLinkAttributes = a})
 
 -- | Retrieves attributes within a facet that are associated with an object.
 broGetObjectAttributes :: Lens' BatchReadOperation (Maybe BatchGetObjectAttributes)
@@ -2646,11 +2943,15 @@ broGetObjectAttributes = lens _broGetObjectAttributes (\ s a -> s{_broGetObjectA
 broListObjectChildren :: Lens' BatchReadOperation (Maybe BatchListObjectChildren)
 broListObjectChildren = lens _broListObjectChildren (\ s a -> s{_broListObjectChildren = a})
 
+-- | Undocumented member.
+broListObjectParents :: Lens' BatchReadOperation (Maybe BatchListObjectParents)
+broListObjectParents = lens _broListObjectParents (\ s a -> s{_broListObjectParents = a})
+
 -- | Returns all of the @ObjectIdentifiers@ to which a given policy is attached.
 broListPolicyAttachments :: Lens' BatchReadOperation (Maybe BatchListPolicyAttachments)
 broListPolicyAttachments = lens _broListPolicyAttachments (\ s a -> s{_broListPolicyAttachments = a})
 
--- | Returns a paginated list of all the outgoing 'TypedLinkSpecifier' information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink Typed link> .
+-- | Returns a paginated list of all the outgoing 'TypedLinkSpecifier' information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink Typed Links> .
 broListOutgoingTypedLinks :: Lens' BatchReadOperation (Maybe BatchListOutgoingTypedLinks)
 broListOutgoingTypedLinks = lens _broListOutgoingTypedLinks (\ s a -> s{_broListOutgoingTypedLinks = a})
 
@@ -2678,9 +2979,11 @@ instance ToJSON BatchReadOperation where
                     _broListObjectAttributes,
                   ("ListIncomingTypedLinks" .=) <$>
                     _broListIncomingTypedLinks,
+                  ("GetLinkAttributes" .=) <$> _broGetLinkAttributes,
                   ("GetObjectAttributes" .=) <$>
                     _broGetObjectAttributes,
                   ("ListObjectChildren" .=) <$> _broListObjectChildren,
+                  ("ListObjectParents" .=) <$> _broListObjectParents,
                   ("ListPolicyAttachments" .=) <$>
                     _broListPolicyAttachments,
                   ("ListOutgoingTypedLinks" .=) <$>
@@ -2693,10 +2996,12 @@ instance ToJSON BatchReadOperation where
 --
 --
 -- /See:/ 'batchReadOperationResponse' smart constructor.
-data BatchReadOperationResponse = BatchReadOperationResponse'
-  { _broExceptionResponse  :: !(Maybe BatchReadException)
-  , _broSuccessfulResponse :: !(Maybe BatchReadSuccessfulResponse)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchReadOperationResponse =
+  BatchReadOperationResponse'
+    { _broExceptionResponse  :: !(Maybe BatchReadException)
+    , _broSuccessfulResponse :: !(Maybe BatchReadSuccessfulResponse)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchReadOperationResponse' with the minimum fields required to make a request.
@@ -2738,20 +3043,24 @@ instance NFData BatchReadOperationResponse where
 --
 --
 -- /See:/ 'batchReadSuccessfulResponse' smart constructor.
-data BatchReadSuccessfulResponse = BatchReadSuccessfulResponse'
-  { _brsListIndex              :: !(Maybe BatchListIndexResponse)
-  , _brsGetObjectInformation   :: !(Maybe BatchGetObjectInformationResponse)
-  , _brsListAttachedIndices    :: !(Maybe BatchListAttachedIndicesResponse)
-  , _brsLookupPolicy           :: !(Maybe BatchLookupPolicyResponse)
-  , _brsListObjectParentPaths  :: !(Maybe BatchListObjectParentPathsResponse)
-  , _brsListObjectAttributes   :: !(Maybe BatchListObjectAttributesResponse)
-  , _brsListIncomingTypedLinks :: !(Maybe BatchListIncomingTypedLinksResponse)
-  , _brsGetObjectAttributes    :: !(Maybe BatchGetObjectAttributesResponse)
-  , _brsListObjectChildren     :: !(Maybe BatchListObjectChildrenResponse)
-  , _brsListPolicyAttachments  :: !(Maybe BatchListPolicyAttachmentsResponse)
-  , _brsListOutgoingTypedLinks :: !(Maybe BatchListOutgoingTypedLinksResponse)
-  , _brsListObjectPolicies     :: !(Maybe BatchListObjectPoliciesResponse)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchReadSuccessfulResponse =
+  BatchReadSuccessfulResponse'
+    { _brsListIndex              :: !(Maybe BatchListIndexResponse)
+    , _brsGetObjectInformation   :: !(Maybe BatchGetObjectInformationResponse)
+    , _brsListAttachedIndices    :: !(Maybe BatchListAttachedIndicesResponse)
+    , _brsLookupPolicy           :: !(Maybe BatchLookupPolicyResponse)
+    , _brsListObjectParentPaths  :: !(Maybe BatchListObjectParentPathsResponse)
+    , _brsListObjectAttributes   :: !(Maybe BatchListObjectAttributesResponse)
+    , _brsListIncomingTypedLinks :: !(Maybe BatchListIncomingTypedLinksResponse)
+    , _brsGetLinkAttributes      :: !(Maybe BatchGetLinkAttributesResponse)
+    , _brsGetObjectAttributes    :: !(Maybe BatchGetObjectAttributesResponse)
+    , _brsListObjectChildren     :: !(Maybe BatchListObjectChildrenResponse)
+    , _brsListObjectParents      :: !(Maybe BatchListObjectParentsResponse)
+    , _brsListPolicyAttachments  :: !(Maybe BatchListPolicyAttachmentsResponse)
+    , _brsListOutgoingTypedLinks :: !(Maybe BatchListOutgoingTypedLinksResponse)
+    , _brsListObjectPolicies     :: !(Maybe BatchListObjectPoliciesResponse)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchReadSuccessfulResponse' with the minimum fields required to make a request.
@@ -2764,21 +3073,25 @@ data BatchReadSuccessfulResponse = BatchReadSuccessfulResponse'
 --
 -- * 'brsListAttachedIndices' - Lists indices attached to an object.
 --
--- * 'brsLookupPolicy' - Lists all policies from the root of the 'Directory' to the object specified. If there are no policies present, an empty list is returned. If policies are present, and if some objects don't have the policies attached, it returns the @ObjectIdentifier@ for such objects. If policies are present, it returns @ObjectIdentifier@ , @policyId@ , and @policyType@ . Paths that don't lead to the root from the target object are ignored. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies Policies> .
+-- * 'brsLookupPolicy' - Lists all policies from the root of the 'Directory' to the object specified. If there are no policies present, an empty list is returned. If policies are present, and if some objects don't have the policies attached, it returns the @ObjectIdentifier@ for such objects. If policies are present, it returns @ObjectIdentifier@ , @policyId@ , and @policyType@ . Paths that don't lead to the root from the target object are ignored. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies Policies> .
 --
--- * 'brsListObjectParentPaths' - Retrieves all available parent paths for any object type such as node, leaf node, policy node, and index node objects. For more information about objects, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#dirstructure Directory Structure> .
+-- * 'brsListObjectParentPaths' - Retrieves all available parent paths for any object type such as node, leaf node, policy node, and index node objects. For more information about objects, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directorystructure.html Directory Structure> .
 --
 -- * 'brsListObjectAttributes' - Lists all attributes that are associated with an object.
 --
--- * 'brsListIncomingTypedLinks' - Returns a paginated list of all the incoming 'TypedLinkSpecifier' information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink Typed link> .
+-- * 'brsListIncomingTypedLinks' - Returns a paginated list of all the incoming 'TypedLinkSpecifier' information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink Typed Links> .
+--
+-- * 'brsGetLinkAttributes' - The list of attributes to retrieve from the typed link.
 --
 -- * 'brsGetObjectAttributes' - Retrieves attributes within a facet that are associated with an object.
 --
 -- * 'brsListObjectChildren' - Returns a paginated list of child objects that are associated with a given object.
 --
+-- * 'brsListObjectParents' - Undocumented member.
+--
 -- * 'brsListPolicyAttachments' - Returns all of the @ObjectIdentifiers@ to which a given policy is attached.
 --
--- * 'brsListOutgoingTypedLinks' - Returns a paginated list of all the outgoing 'TypedLinkSpecifier' information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink Typed link> .
+-- * 'brsListOutgoingTypedLinks' - Returns a paginated list of all the outgoing 'TypedLinkSpecifier' information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink Typed Links> .
 --
 -- * 'brsListObjectPolicies' - Returns policies attached to an object in pagination fashion.
 batchReadSuccessfulResponse
@@ -2792,8 +3105,10 @@ batchReadSuccessfulResponse =
     , _brsListObjectParentPaths = Nothing
     , _brsListObjectAttributes = Nothing
     , _brsListIncomingTypedLinks = Nothing
+    , _brsGetLinkAttributes = Nothing
     , _brsGetObjectAttributes = Nothing
     , _brsListObjectChildren = Nothing
+    , _brsListObjectParents = Nothing
     , _brsListPolicyAttachments = Nothing
     , _brsListOutgoingTypedLinks = Nothing
     , _brsListObjectPolicies = Nothing
@@ -2812,11 +3127,11 @@ brsGetObjectInformation = lens _brsGetObjectInformation (\ s a -> s{_brsGetObjec
 brsListAttachedIndices :: Lens' BatchReadSuccessfulResponse (Maybe BatchListAttachedIndicesResponse)
 brsListAttachedIndices = lens _brsListAttachedIndices (\ s a -> s{_brsListAttachedIndices = a})
 
--- | Lists all policies from the root of the 'Directory' to the object specified. If there are no policies present, an empty list is returned. If policies are present, and if some objects don't have the policies attached, it returns the @ObjectIdentifier@ for such objects. If policies are present, it returns @ObjectIdentifier@ , @policyId@ , and @policyType@ . Paths that don't lead to the root from the target object are ignored. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies Policies> .
+-- | Lists all policies from the root of the 'Directory' to the object specified. If there are no policies present, an empty list is returned. If policies are present, and if some objects don't have the policies attached, it returns the @ObjectIdentifier@ for such objects. If policies are present, it returns @ObjectIdentifier@ , @policyId@ , and @policyType@ . Paths that don't lead to the root from the target object are ignored. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies Policies> .
 brsLookupPolicy :: Lens' BatchReadSuccessfulResponse (Maybe BatchLookupPolicyResponse)
 brsLookupPolicy = lens _brsLookupPolicy (\ s a -> s{_brsLookupPolicy = a})
 
--- | Retrieves all available parent paths for any object type such as node, leaf node, policy node, and index node objects. For more information about objects, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#dirstructure Directory Structure> .
+-- | Retrieves all available parent paths for any object type such as node, leaf node, policy node, and index node objects. For more information about objects, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directorystructure.html Directory Structure> .
 brsListObjectParentPaths :: Lens' BatchReadSuccessfulResponse (Maybe BatchListObjectParentPathsResponse)
 brsListObjectParentPaths = lens _brsListObjectParentPaths (\ s a -> s{_brsListObjectParentPaths = a})
 
@@ -2824,9 +3139,13 @@ brsListObjectParentPaths = lens _brsListObjectParentPaths (\ s a -> s{_brsListOb
 brsListObjectAttributes :: Lens' BatchReadSuccessfulResponse (Maybe BatchListObjectAttributesResponse)
 brsListObjectAttributes = lens _brsListObjectAttributes (\ s a -> s{_brsListObjectAttributes = a})
 
--- | Returns a paginated list of all the incoming 'TypedLinkSpecifier' information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink Typed link> .
+-- | Returns a paginated list of all the incoming 'TypedLinkSpecifier' information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink Typed Links> .
 brsListIncomingTypedLinks :: Lens' BatchReadSuccessfulResponse (Maybe BatchListIncomingTypedLinksResponse)
 brsListIncomingTypedLinks = lens _brsListIncomingTypedLinks (\ s a -> s{_brsListIncomingTypedLinks = a})
+
+-- | The list of attributes to retrieve from the typed link.
+brsGetLinkAttributes :: Lens' BatchReadSuccessfulResponse (Maybe BatchGetLinkAttributesResponse)
+brsGetLinkAttributes = lens _brsGetLinkAttributes (\ s a -> s{_brsGetLinkAttributes = a})
 
 -- | Retrieves attributes within a facet that are associated with an object.
 brsGetObjectAttributes :: Lens' BatchReadSuccessfulResponse (Maybe BatchGetObjectAttributesResponse)
@@ -2836,11 +3155,15 @@ brsGetObjectAttributes = lens _brsGetObjectAttributes (\ s a -> s{_brsGetObjectA
 brsListObjectChildren :: Lens' BatchReadSuccessfulResponse (Maybe BatchListObjectChildrenResponse)
 brsListObjectChildren = lens _brsListObjectChildren (\ s a -> s{_brsListObjectChildren = a})
 
+-- | Undocumented member.
+brsListObjectParents :: Lens' BatchReadSuccessfulResponse (Maybe BatchListObjectParentsResponse)
+brsListObjectParents = lens _brsListObjectParents (\ s a -> s{_brsListObjectParents = a})
+
 -- | Returns all of the @ObjectIdentifiers@ to which a given policy is attached.
 brsListPolicyAttachments :: Lens' BatchReadSuccessfulResponse (Maybe BatchListPolicyAttachmentsResponse)
 brsListPolicyAttachments = lens _brsListPolicyAttachments (\ s a -> s{_brsListPolicyAttachments = a})
 
--- | Returns a paginated list of all the outgoing 'TypedLinkSpecifier' information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink Typed link> .
+-- | Returns a paginated list of all the outgoing 'TypedLinkSpecifier' information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink Typed Links> .
 brsListOutgoingTypedLinks :: Lens' BatchReadSuccessfulResponse (Maybe BatchListOutgoingTypedLinksResponse)
 brsListOutgoingTypedLinks = lens _brsListOutgoingTypedLinks (\ s a -> s{_brsListOutgoingTypedLinks = a})
 
@@ -2860,8 +3183,10 @@ instance FromJSON BatchReadSuccessfulResponse where
                      <*> (x .:? "ListObjectParentPaths")
                      <*> (x .:? "ListObjectAttributes")
                      <*> (x .:? "ListIncomingTypedLinks")
+                     <*> (x .:? "GetLinkAttributes")
                      <*> (x .:? "GetObjectAttributes")
                      <*> (x .:? "ListObjectChildren")
+                     <*> (x .:? "ListObjectParents")
                      <*> (x .:? "ListPolicyAttachments")
                      <*> (x .:? "ListOutgoingTypedLinks")
                      <*> (x .:? "ListObjectPolicies"))
@@ -2875,10 +3200,12 @@ instance NFData BatchReadSuccessfulResponse where
 --
 --
 -- /See:/ 'batchRemoveFacetFromObject' smart constructor.
-data BatchRemoveFacetFromObject = BatchRemoveFacetFromObject'
-  { _brffoSchemaFacet     :: !SchemaFacet
-  , _brffoObjectReference :: !ObjectReference
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchRemoveFacetFromObject =
+  BatchRemoveFacetFromObject'
+    { _brffoSchemaFacet     :: !SchemaFacet
+    , _brffoObjectReference :: !ObjectReference
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchRemoveFacetFromObject' with the minimum fields required to make a request.
@@ -2947,15 +3274,96 @@ instance Hashable BatchRemoveFacetFromObjectResponse
 instance NFData BatchRemoveFacetFromObjectResponse
          where
 
+-- | Updates a given typed link’s attributes inside a 'BatchRead' operation. Attributes to be updated must not contribute to the typed link’s identity, as defined by its @IdentityAttributeOrder@ . For more information, see 'UpdateLinkAttributes' and 'BatchReadRequest$Operations' .
+--
+--
+--
+-- /See:/ 'batchUpdateLinkAttributes' smart constructor.
+data BatchUpdateLinkAttributes =
+  BatchUpdateLinkAttributes'
+    { _bulaTypedLinkSpecifier :: !TypedLinkSpecifier
+    , _bulaAttributeUpdates   :: ![LinkAttributeUpdate]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'BatchUpdateLinkAttributes' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'bulaTypedLinkSpecifier' - Allows a typed link specifier to be accepted as input.
+--
+-- * 'bulaAttributeUpdates' - The attributes update structure.
+batchUpdateLinkAttributes
+    :: TypedLinkSpecifier -- ^ 'bulaTypedLinkSpecifier'
+    -> BatchUpdateLinkAttributes
+batchUpdateLinkAttributes pTypedLinkSpecifier_ =
+  BatchUpdateLinkAttributes'
+    { _bulaTypedLinkSpecifier = pTypedLinkSpecifier_
+    , _bulaAttributeUpdates = mempty
+    }
+
+
+-- | Allows a typed link specifier to be accepted as input.
+bulaTypedLinkSpecifier :: Lens' BatchUpdateLinkAttributes TypedLinkSpecifier
+bulaTypedLinkSpecifier = lens _bulaTypedLinkSpecifier (\ s a -> s{_bulaTypedLinkSpecifier = a})
+
+-- | The attributes update structure.
+bulaAttributeUpdates :: Lens' BatchUpdateLinkAttributes [LinkAttributeUpdate]
+bulaAttributeUpdates = lens _bulaAttributeUpdates (\ s a -> s{_bulaAttributeUpdates = a}) . _Coerce
+
+instance Hashable BatchUpdateLinkAttributes where
+
+instance NFData BatchUpdateLinkAttributes where
+
+instance ToJSON BatchUpdateLinkAttributes where
+        toJSON BatchUpdateLinkAttributes'{..}
+          = object
+              (catMaybes
+                 [Just
+                    ("TypedLinkSpecifier" .= _bulaTypedLinkSpecifier),
+                  Just ("AttributeUpdates" .= _bulaAttributeUpdates)])
+
+-- | Represents the output of a 'UpdateLinkAttributes' response operation.
+--
+--
+--
+-- /See:/ 'batchUpdateLinkAttributesResponse' smart constructor.
+data BatchUpdateLinkAttributesResponse =
+  BatchUpdateLinkAttributesResponse'
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'BatchUpdateLinkAttributesResponse' with the minimum fields required to make a request.
+--
+batchUpdateLinkAttributesResponse
+    :: BatchUpdateLinkAttributesResponse
+batchUpdateLinkAttributesResponse = BatchUpdateLinkAttributesResponse'
+
+
+instance FromJSON BatchUpdateLinkAttributesResponse
+         where
+        parseJSON
+          = withObject "BatchUpdateLinkAttributesResponse"
+              (\ x -> pure BatchUpdateLinkAttributesResponse')
+
+instance Hashable BatchUpdateLinkAttributesResponse
+         where
+
+instance NFData BatchUpdateLinkAttributesResponse
+         where
+
 -- | Represents the output of a @BatchUpdate@ operation.
 --
 --
 --
 -- /See:/ 'batchUpdateObjectAttributes' smart constructor.
-data BatchUpdateObjectAttributes = BatchUpdateObjectAttributes'
-  { _buoaObjectReference  :: !ObjectReference
-  , _buoaAttributeUpdates :: ![ObjectAttributeUpdate]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchUpdateObjectAttributes =
+  BatchUpdateObjectAttributes'
+    { _buoaObjectReference  :: !ObjectReference
+    , _buoaAttributeUpdates :: ![ObjectAttributeUpdate]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchUpdateObjectAttributes' with the minimum fields required to make a request.
@@ -2997,9 +3405,11 @@ instance ToJSON BatchUpdateObjectAttributes where
 --
 --
 -- /See:/ 'batchUpdateObjectAttributesResponse' smart constructor.
-newtype BatchUpdateObjectAttributesResponse = BatchUpdateObjectAttributesResponse'
-  { _buoaObjectIdentifier :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype BatchUpdateObjectAttributesResponse =
+  BatchUpdateObjectAttributesResponse'
+    { _buoaObjectIdentifier :: Maybe Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchUpdateObjectAttributesResponse' with the minimum fields required to make a request.
@@ -3036,22 +3446,25 @@ instance NFData BatchUpdateObjectAttributesResponse
 --
 --
 -- /See:/ 'batchWriteOperation' smart constructor.
-data BatchWriteOperation = BatchWriteOperation'
-  { _bDeleteObject           :: !(Maybe BatchDeleteObject)
-  , _bDetachFromIndex        :: !(Maybe BatchDetachFromIndex)
-  , _bRemoveFacetFromObject  :: !(Maybe BatchRemoveFacetFromObject)
-  , _bAttachObject           :: !(Maybe BatchAttachObject)
-  , _bCreateObject           :: !(Maybe BatchCreateObject)
-  , _bAttachTypedLink        :: !(Maybe BatchAttachTypedLink)
-  , _bDetachPolicy           :: !(Maybe BatchDetachPolicy)
-  , _bCreateIndex            :: !(Maybe BatchCreateIndex)
-  , _bDetachObject           :: !(Maybe BatchDetachObject)
-  , _bAddFacetToObject       :: !(Maybe BatchAddFacetToObject)
-  , _bDetachTypedLink        :: !(Maybe BatchDetachTypedLink)
-  , _bUpdateObjectAttributes :: !(Maybe BatchUpdateObjectAttributes)
-  , _bAttachPolicy           :: !(Maybe BatchAttachPolicy)
-  , _bAttachToIndex          :: !(Maybe BatchAttachToIndex)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchWriteOperation =
+  BatchWriteOperation'
+    { _bDeleteObject           :: !(Maybe BatchDeleteObject)
+    , _bDetachFromIndex        :: !(Maybe BatchDetachFromIndex)
+    , _bRemoveFacetFromObject  :: !(Maybe BatchRemoveFacetFromObject)
+    , _bAttachObject           :: !(Maybe BatchAttachObject)
+    , _bCreateObject           :: !(Maybe BatchCreateObject)
+    , _bAttachTypedLink        :: !(Maybe BatchAttachTypedLink)
+    , _bDetachPolicy           :: !(Maybe BatchDetachPolicy)
+    , _bCreateIndex            :: !(Maybe BatchCreateIndex)
+    , _bDetachObject           :: !(Maybe BatchDetachObject)
+    , _bAddFacetToObject       :: !(Maybe BatchAddFacetToObject)
+    , _bDetachTypedLink        :: !(Maybe BatchDetachTypedLink)
+    , _bUpdateObjectAttributes :: !(Maybe BatchUpdateObjectAttributes)
+    , _bAttachPolicy           :: !(Maybe BatchAttachPolicy)
+    , _bUpdateLinkAttributes   :: !(Maybe BatchUpdateLinkAttributes)
+    , _bAttachToIndex          :: !(Maybe BatchAttachToIndex)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchWriteOperation' with the minimum fields required to make a request.
@@ -3068,21 +3481,23 @@ data BatchWriteOperation = BatchWriteOperation'
 --
 -- * 'bCreateObject' - Creates an object.
 --
--- * 'bAttachTypedLink' - Attaches a typed link to a specified source and target object. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink Typed link> .
+-- * 'bAttachTypedLink' - Attaches a typed link to a specified source and target object. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink Typed Links> .
 --
 -- * 'bDetachPolicy' - Detaches a policy from a 'Directory' .
 --
--- * 'bCreateIndex' - Creates an index object. See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_indexing.html Indexing> for more information.
+-- * 'bCreateIndex' - Creates an index object. See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/indexing_search.htm Indexing and search> for more information.
 --
 -- * 'bDetachObject' - Detaches an object from a 'Directory' .
 --
 -- * 'bAddFacetToObject' - A batch operation that adds a facet to an object.
 --
--- * 'bDetachTypedLink' - Detaches a typed link from a specified source and target object. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink Typed link> .
+-- * 'bDetachTypedLink' - Detaches a typed link from a specified source and target object. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink Typed Links> .
 --
 -- * 'bUpdateObjectAttributes' - Updates a given object's attributes.
 --
 -- * 'bAttachPolicy' - Attaches a policy object to a regular object. An object can have a limited number of attached policies.
+--
+-- * 'bUpdateLinkAttributes' - Updates a given object's attributes.
 --
 -- * 'bAttachToIndex' - Attaches the specified object to the specified index.
 batchWriteOperation
@@ -3102,6 +3517,7 @@ batchWriteOperation =
     , _bDetachTypedLink = Nothing
     , _bUpdateObjectAttributes = Nothing
     , _bAttachPolicy = Nothing
+    , _bUpdateLinkAttributes = Nothing
     , _bAttachToIndex = Nothing
     }
 
@@ -3126,7 +3542,7 @@ bAttachObject = lens _bAttachObject (\ s a -> s{_bAttachObject = a})
 bCreateObject :: Lens' BatchWriteOperation (Maybe BatchCreateObject)
 bCreateObject = lens _bCreateObject (\ s a -> s{_bCreateObject = a})
 
--- | Attaches a typed link to a specified source and target object. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink Typed link> .
+-- | Attaches a typed link to a specified source and target object. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink Typed Links> .
 bAttachTypedLink :: Lens' BatchWriteOperation (Maybe BatchAttachTypedLink)
 bAttachTypedLink = lens _bAttachTypedLink (\ s a -> s{_bAttachTypedLink = a})
 
@@ -3134,7 +3550,7 @@ bAttachTypedLink = lens _bAttachTypedLink (\ s a -> s{_bAttachTypedLink = a})
 bDetachPolicy :: Lens' BatchWriteOperation (Maybe BatchDetachPolicy)
 bDetachPolicy = lens _bDetachPolicy (\ s a -> s{_bDetachPolicy = a})
 
--- | Creates an index object. See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_indexing.html Indexing> for more information.
+-- | Creates an index object. See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/indexing_search.htm Indexing and search> for more information.
 bCreateIndex :: Lens' BatchWriteOperation (Maybe BatchCreateIndex)
 bCreateIndex = lens _bCreateIndex (\ s a -> s{_bCreateIndex = a})
 
@@ -3146,7 +3562,7 @@ bDetachObject = lens _bDetachObject (\ s a -> s{_bDetachObject = a})
 bAddFacetToObject :: Lens' BatchWriteOperation (Maybe BatchAddFacetToObject)
 bAddFacetToObject = lens _bAddFacetToObject (\ s a -> s{_bAddFacetToObject = a})
 
--- | Detaches a typed link from a specified source and target object. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink Typed link> .
+-- | Detaches a typed link from a specified source and target object. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink Typed Links> .
 bDetachTypedLink :: Lens' BatchWriteOperation (Maybe BatchDetachTypedLink)
 bDetachTypedLink = lens _bDetachTypedLink (\ s a -> s{_bDetachTypedLink = a})
 
@@ -3157,6 +3573,10 @@ bUpdateObjectAttributes = lens _bUpdateObjectAttributes (\ s a -> s{_bUpdateObje
 -- | Attaches a policy object to a regular object. An object can have a limited number of attached policies.
 bAttachPolicy :: Lens' BatchWriteOperation (Maybe BatchAttachPolicy)
 bAttachPolicy = lens _bAttachPolicy (\ s a -> s{_bAttachPolicy = a})
+
+-- | Updates a given object's attributes.
+bUpdateLinkAttributes :: Lens' BatchWriteOperation (Maybe BatchUpdateLinkAttributes)
+bUpdateLinkAttributes = lens _bUpdateLinkAttributes (\ s a -> s{_bUpdateLinkAttributes = a})
 
 -- | Attaches the specified object to the specified index.
 bAttachToIndex :: Lens' BatchWriteOperation (Maybe BatchAttachToIndex)
@@ -3185,6 +3605,8 @@ instance ToJSON BatchWriteOperation where
                   ("UpdateObjectAttributes" .=) <$>
                     _bUpdateObjectAttributes,
                   ("AttachPolicy" .=) <$> _bAttachPolicy,
+                  ("UpdateLinkAttributes" .=) <$>
+                    _bUpdateLinkAttributes,
                   ("AttachToIndex" .=) <$> _bAttachToIndex])
 
 -- | Represents the output of a @BatchWrite@ response operation.
@@ -3192,22 +3614,25 @@ instance ToJSON BatchWriteOperation where
 --
 --
 -- /See:/ 'batchWriteOperationResponse' smart constructor.
-data BatchWriteOperationResponse = BatchWriteOperationResponse'
-  { _bwoDeleteObject           :: !(Maybe BatchDeleteObjectResponse)
-  , _bwoDetachFromIndex        :: !(Maybe BatchDetachFromIndexResponse)
-  , _bwoRemoveFacetFromObject  :: !(Maybe BatchRemoveFacetFromObjectResponse)
-  , _bwoAttachObject           :: !(Maybe BatchAttachObjectResponse)
-  , _bwoCreateObject           :: !(Maybe BatchCreateObjectResponse)
-  , _bwoAttachTypedLink        :: !(Maybe BatchAttachTypedLinkResponse)
-  , _bwoDetachPolicy           :: !(Maybe BatchDetachPolicyResponse)
-  , _bwoCreateIndex            :: !(Maybe BatchCreateIndexResponse)
-  , _bwoDetachObject           :: !(Maybe BatchDetachObjectResponse)
-  , _bwoAddFacetToObject       :: !(Maybe BatchAddFacetToObjectResponse)
-  , _bwoDetachTypedLink        :: !(Maybe BatchDetachTypedLinkResponse)
-  , _bwoUpdateObjectAttributes :: !(Maybe BatchUpdateObjectAttributesResponse)
-  , _bwoAttachPolicy           :: !(Maybe BatchAttachPolicyResponse)
-  , _bwoAttachToIndex          :: !(Maybe BatchAttachToIndexResponse)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchWriteOperationResponse =
+  BatchWriteOperationResponse'
+    { _bwoDeleteObject           :: !(Maybe BatchDeleteObjectResponse)
+    , _bwoDetachFromIndex        :: !(Maybe BatchDetachFromIndexResponse)
+    , _bwoRemoveFacetFromObject  :: !(Maybe BatchRemoveFacetFromObjectResponse)
+    , _bwoAttachObject           :: !(Maybe BatchAttachObjectResponse)
+    , _bwoCreateObject           :: !(Maybe BatchCreateObjectResponse)
+    , _bwoAttachTypedLink        :: !(Maybe BatchAttachTypedLinkResponse)
+    , _bwoDetachPolicy           :: !(Maybe BatchDetachPolicyResponse)
+    , _bwoCreateIndex            :: !(Maybe BatchCreateIndexResponse)
+    , _bwoDetachObject           :: !(Maybe BatchDetachObjectResponse)
+    , _bwoAddFacetToObject       :: !(Maybe BatchAddFacetToObjectResponse)
+    , _bwoDetachTypedLink        :: !(Maybe BatchDetachTypedLinkResponse)
+    , _bwoUpdateObjectAttributes :: !(Maybe BatchUpdateObjectAttributesResponse)
+    , _bwoAttachPolicy           :: !(Maybe BatchAttachPolicyResponse)
+    , _bwoUpdateLinkAttributes   :: !(Maybe BatchUpdateLinkAttributesResponse)
+    , _bwoAttachToIndex          :: !(Maybe BatchAttachToIndexResponse)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchWriteOperationResponse' with the minimum fields required to make a request.
@@ -3224,21 +3649,23 @@ data BatchWriteOperationResponse = BatchWriteOperationResponse'
 --
 -- * 'bwoCreateObject' - Creates an object in a 'Directory' .
 --
--- * 'bwoAttachTypedLink' - Attaches a typed link to a specified source and target object. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink Typed link> .
+-- * 'bwoAttachTypedLink' - Attaches a typed link to a specified source and target object. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink Typed Links> .
 --
 -- * 'bwoDetachPolicy' - Detaches a policy from a 'Directory' .
 --
--- * 'bwoCreateIndex' - Creates an index object. See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_indexing.html Indexing> for more information.
+-- * 'bwoCreateIndex' - Creates an index object. See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/indexing_search.htm Indexing and search> for more information.
 --
 -- * 'bwoDetachObject' - Detaches an object from a 'Directory' .
 --
 -- * 'bwoAddFacetToObject' - The result of an add facet to object batch operation.
 --
--- * 'bwoDetachTypedLink' - Detaches a typed link from a specified source and target object. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink Typed link> .
+-- * 'bwoDetachTypedLink' - Detaches a typed link from a specified source and target object. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink Typed Links> .
 --
 -- * 'bwoUpdateObjectAttributes' - Updates a given object’s attributes.
 --
 -- * 'bwoAttachPolicy' - Attaches a policy object to a regular object. An object can have a limited number of attached policies.
+--
+-- * 'bwoUpdateLinkAttributes' - Represents the output of a @BatchWrite@ response operation.
 --
 -- * 'bwoAttachToIndex' - Attaches the specified object to the specified index.
 batchWriteOperationResponse
@@ -3258,6 +3685,7 @@ batchWriteOperationResponse =
     , _bwoDetachTypedLink = Nothing
     , _bwoUpdateObjectAttributes = Nothing
     , _bwoAttachPolicy = Nothing
+    , _bwoUpdateLinkAttributes = Nothing
     , _bwoAttachToIndex = Nothing
     }
 
@@ -3282,7 +3710,7 @@ bwoAttachObject = lens _bwoAttachObject (\ s a -> s{_bwoAttachObject = a})
 bwoCreateObject :: Lens' BatchWriteOperationResponse (Maybe BatchCreateObjectResponse)
 bwoCreateObject = lens _bwoCreateObject (\ s a -> s{_bwoCreateObject = a})
 
--- | Attaches a typed link to a specified source and target object. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink Typed link> .
+-- | Attaches a typed link to a specified source and target object. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink Typed Links> .
 bwoAttachTypedLink :: Lens' BatchWriteOperationResponse (Maybe BatchAttachTypedLinkResponse)
 bwoAttachTypedLink = lens _bwoAttachTypedLink (\ s a -> s{_bwoAttachTypedLink = a})
 
@@ -3290,7 +3718,7 @@ bwoAttachTypedLink = lens _bwoAttachTypedLink (\ s a -> s{_bwoAttachTypedLink = 
 bwoDetachPolicy :: Lens' BatchWriteOperationResponse (Maybe BatchDetachPolicyResponse)
 bwoDetachPolicy = lens _bwoDetachPolicy (\ s a -> s{_bwoDetachPolicy = a})
 
--- | Creates an index object. See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_indexing.html Indexing> for more information.
+-- | Creates an index object. See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/indexing_search.htm Indexing and search> for more information.
 bwoCreateIndex :: Lens' BatchWriteOperationResponse (Maybe BatchCreateIndexResponse)
 bwoCreateIndex = lens _bwoCreateIndex (\ s a -> s{_bwoCreateIndex = a})
 
@@ -3302,7 +3730,7 @@ bwoDetachObject = lens _bwoDetachObject (\ s a -> s{_bwoDetachObject = a})
 bwoAddFacetToObject :: Lens' BatchWriteOperationResponse (Maybe BatchAddFacetToObjectResponse)
 bwoAddFacetToObject = lens _bwoAddFacetToObject (\ s a -> s{_bwoAddFacetToObject = a})
 
--- | Detaches a typed link from a specified source and target object. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink Typed link> .
+-- | Detaches a typed link from a specified source and target object. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink Typed Links> .
 bwoDetachTypedLink :: Lens' BatchWriteOperationResponse (Maybe BatchDetachTypedLinkResponse)
 bwoDetachTypedLink = lens _bwoDetachTypedLink (\ s a -> s{_bwoDetachTypedLink = a})
 
@@ -3313,6 +3741,10 @@ bwoUpdateObjectAttributes = lens _bwoUpdateObjectAttributes (\ s a -> s{_bwoUpda
 -- | Attaches a policy object to a regular object. An object can have a limited number of attached policies.
 bwoAttachPolicy :: Lens' BatchWriteOperationResponse (Maybe BatchAttachPolicyResponse)
 bwoAttachPolicy = lens _bwoAttachPolicy (\ s a -> s{_bwoAttachPolicy = a})
+
+-- | Represents the output of a @BatchWrite@ response operation.
+bwoUpdateLinkAttributes :: Lens' BatchWriteOperationResponse (Maybe BatchUpdateLinkAttributesResponse)
+bwoUpdateLinkAttributes = lens _bwoUpdateLinkAttributes (\ s a -> s{_bwoUpdateLinkAttributes = a})
 
 -- | Attaches the specified object to the specified index.
 bwoAttachToIndex :: Lens' BatchWriteOperationResponse (Maybe BatchAttachToIndexResponse)
@@ -3335,6 +3767,7 @@ instance FromJSON BatchWriteOperationResponse where
                      <*> (x .:? "DetachTypedLink")
                      <*> (x .:? "UpdateObjectAttributes")
                      <*> (x .:? "AttachPolicy")
+                     <*> (x .:? "UpdateLinkAttributes")
                      <*> (x .:? "AttachToIndex"))
 
 instance Hashable BatchWriteOperationResponse where
@@ -3346,12 +3779,14 @@ instance NFData BatchWriteOperationResponse where
 --
 --
 -- /See:/ 'directory' smart constructor.
-data Directory = Directory'
-  { _dDirectoryARN     :: !(Maybe Text)
-  , _dState            :: !(Maybe DirectoryState)
-  , _dName             :: !(Maybe Text)
-  , _dCreationDateTime :: !(Maybe POSIX)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Directory =
+  Directory'
+    { _dDirectoryARN     :: !(Maybe Text)
+    , _dState            :: !(Maybe DirectoryState)
+    , _dName             :: !(Maybe Text)
+    , _dCreationDateTime :: !(Maybe POSIX)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Directory' with the minimum fields required to make a request.
@@ -3405,28 +3840,38 @@ instance Hashable Directory where
 
 instance NFData Directory where
 
--- | A structure that contains @Name@ , @ARN@ , @Attributes@ , @'Rule' s@ , and @ObjectTypes@ . See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/whatarefacets.html Facets> for more information.
+-- | A structure that contains @Name@ , @ARN@ , @Attributes@ , @'Rule' s@ , and @ObjectTypes@ . See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_whatarefacets.html Facets> for more information.
 --
 --
 --
 -- /See:/ 'facet' smart constructor.
-data Facet = Facet'
-  { _fObjectType :: !(Maybe ObjectType)
-  , _fName       :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Facet =
+  Facet'
+    { _fFacetStyle :: !(Maybe FacetStyle)
+    , _fObjectType :: !(Maybe ObjectType)
+    , _fName       :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Facet' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'fFacetStyle' - There are two different styles that you can define on any given facet, @Static@ and @Dynamic@ . For static facets, all attributes must be defined in the schema. For dynamic facets, attributes can be defined during data plane operations.
+--
 -- * 'fObjectType' - The object type that is associated with the facet. See 'CreateFacetRequest$ObjectType' for more details.
 --
 -- * 'fName' - The name of the 'Facet' .
 facet
     :: Facet
-facet = Facet' {_fObjectType = Nothing, _fName = Nothing}
+facet =
+  Facet' {_fFacetStyle = Nothing, _fObjectType = Nothing, _fName = Nothing}
 
+
+-- | There are two different styles that you can define on any given facet, @Static@ and @Dynamic@ . For static facets, all attributes must be defined in the schema. For dynamic facets, attributes can be defined during data plane operations.
+fFacetStyle :: Lens' Facet (Maybe FacetStyle)
+fFacetStyle = lens _fFacetStyle (\ s a -> s{_fFacetStyle = a})
 
 -- | The object type that is associated with the facet. See 'CreateFacetRequest$ObjectType' for more details.
 fObjectType :: Lens' Facet (Maybe ObjectType)
@@ -3440,7 +3885,9 @@ instance FromJSON Facet where
         parseJSON
           = withObject "Facet"
               (\ x ->
-                 Facet' <$> (x .:? "ObjectType") <*> (x .:? "Name"))
+                 Facet' <$>
+                   (x .:? "FacetStyle") <*> (x .:? "ObjectType") <*>
+                     (x .:? "Name"))
 
 instance Hashable Facet where
 
@@ -3451,21 +3898,23 @@ instance NFData Facet where
 --
 --
 -- /See:/ 'facetAttribute' smart constructor.
-data FacetAttribute = FacetAttribute'
-  { _faAttributeReference  :: !(Maybe FacetAttributeReference)
-  , _faAttributeDefinition :: !(Maybe FacetAttributeDefinition)
-  , _faRequiredBehavior    :: !(Maybe RequiredAttributeBehavior)
-  , _faName                :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data FacetAttribute =
+  FacetAttribute'
+    { _faAttributeReference  :: !(Maybe FacetAttributeReference)
+    , _faAttributeDefinition :: !(Maybe FacetAttributeDefinition)
+    , _faRequiredBehavior    :: !(Maybe RequiredAttributeBehavior)
+    , _faName                :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'FacetAttribute' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'faAttributeReference' - An attribute reference that is associated with the attribute. See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences Attribute References> for more information.
+-- * 'faAttributeReference' - An attribute reference that is associated with the attribute. See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html Attribute References> for more information.
 --
--- * 'faAttributeDefinition' - A facet attribute consists of either a definition or a reference. This structure contains the attribute definition. See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences Attribute References> for more information.
+-- * 'faAttributeDefinition' - A facet attribute consists of either a definition or a reference. This structure contains the attribute definition. See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html Attribute References> for more information.
 --
 -- * 'faRequiredBehavior' - The required behavior of the @FacetAttribute@ .
 --
@@ -3482,11 +3931,11 @@ facetAttribute pName_ =
     }
 
 
--- | An attribute reference that is associated with the attribute. See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences Attribute References> for more information.
+-- | An attribute reference that is associated with the attribute. See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html Attribute References> for more information.
 faAttributeReference :: Lens' FacetAttribute (Maybe FacetAttributeReference)
 faAttributeReference = lens _faAttributeReference (\ s a -> s{_faAttributeReference = a})
 
--- | A facet attribute consists of either a definition or a reference. This structure contains the attribute definition. See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences Attribute References> for more information.
+-- | A facet attribute consists of either a definition or a reference. This structure contains the attribute definition. See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html Attribute References> for more information.
 faAttributeDefinition :: Lens' FacetAttribute (Maybe FacetAttributeDefinition)
 faAttributeDefinition = lens _faAttributeDefinition (\ s a -> s{_faAttributeDefinition = a})
 
@@ -3522,17 +3971,19 @@ instance ToJSON FacetAttribute where
                   ("RequiredBehavior" .=) <$> _faRequiredBehavior,
                   Just ("Name" .= _faName)])
 
--- | A facet attribute definition. See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences Attribute References> for more information.
+-- | A facet attribute definition. See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html Attribute References> for more information.
 --
 --
 --
 -- /See:/ 'facetAttributeDefinition' smart constructor.
-data FacetAttributeDefinition = FacetAttributeDefinition'
-  { _fadRules        :: !(Maybe (Map Text Rule))
-  , _fadDefaultValue :: !(Maybe TypedAttributeValue)
-  , _fadIsImmutable  :: !(Maybe Bool)
-  , _fadType         :: !FacetAttributeType
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data FacetAttributeDefinition =
+  FacetAttributeDefinition'
+    { _fadRules        :: !(Maybe (Map Text Rule))
+    , _fadDefaultValue :: !(Maybe TypedAttributeValue)
+    , _fadIsImmutable  :: !(Maybe Bool)
+    , _fadType         :: !FacetAttributeType
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'FacetAttributeDefinition' with the minimum fields required to make a request.
@@ -3601,19 +4052,21 @@ instance ToJSON FacetAttributeDefinition where
 --
 --
 -- /See:/ 'facetAttributeReference' smart constructor.
-data FacetAttributeReference = FacetAttributeReference'
-  { _farTargetFacetName     :: !Text
-  , _farTargetAttributeName :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data FacetAttributeReference =
+  FacetAttributeReference'
+    { _farTargetFacetName     :: !Text
+    , _farTargetAttributeName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'FacetAttributeReference' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'farTargetFacetName' - The target facet name that is associated with the facet reference. See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences Attribute References> for more information.
+-- * 'farTargetFacetName' - The target facet name that is associated with the facet reference. See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html Attribute References> for more information.
 --
--- * 'farTargetAttributeName' - The target attribute name that is associated with the facet reference. See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences Attribute References> for more information.
+-- * 'farTargetAttributeName' - The target attribute name that is associated with the facet reference. See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html Attribute References> for more information.
 facetAttributeReference
     :: Text -- ^ 'farTargetFacetName'
     -> Text -- ^ 'farTargetAttributeName'
@@ -3625,11 +4078,11 @@ facetAttributeReference pTargetFacetName_ pTargetAttributeName_ =
     }
 
 
--- | The target facet name that is associated with the facet reference. See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences Attribute References> for more information.
+-- | The target facet name that is associated with the facet reference. See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html Attribute References> for more information.
 farTargetFacetName :: Lens' FacetAttributeReference Text
 farTargetFacetName = lens _farTargetFacetName (\ s a -> s{_farTargetFacetName = a})
 
--- | The target attribute name that is associated with the facet reference. See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences Attribute References> for more information.
+-- | The target attribute name that is associated with the facet reference. See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_attributereferences.html Attribute References> for more information.
 farTargetAttributeName :: Lens' FacetAttributeReference Text
 farTargetAttributeName = lens _farTargetAttributeName (\ s a -> s{_farTargetAttributeName = a})
 
@@ -3658,10 +4111,12 @@ instance ToJSON FacetAttributeReference where
 --
 --
 -- /See:/ 'facetAttributeUpdate' smart constructor.
-data FacetAttributeUpdate = FacetAttributeUpdate'
-  { _fauAttribute :: !(Maybe FacetAttribute)
-  , _fauAction    :: !(Maybe UpdateActionType)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data FacetAttributeUpdate =
+  FacetAttributeUpdate'
+    { _fauAttribute :: !(Maybe FacetAttribute)
+    , _fauAction    :: !(Maybe UpdateActionType)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'FacetAttributeUpdate' with the minimum fields required to make a request.
@@ -3701,10 +4156,12 @@ instance ToJSON FacetAttributeUpdate where
 --
 --
 -- /See:/ 'indexAttachment' smart constructor.
-data IndexAttachment = IndexAttachment'
-  { _iaIndexedAttributes :: !(Maybe [AttributeKeyAndValue])
-  , _iaObjectIdentifier  :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data IndexAttachment =
+  IndexAttachment'
+    { _iaIndexedAttributes :: !(Maybe [AttributeKeyAndValue])
+    , _iaObjectIdentifier  :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'IndexAttachment' with the minimum fields required to make a request.
@@ -3741,15 +4198,111 @@ instance Hashable IndexAttachment where
 
 instance NFData IndexAttachment where
 
+-- | The action to take on a typed link attribute value. Updates are only supported for attributes which don’t contribute to link identity.
+--
+--
+--
+-- /See:/ 'linkAttributeAction' smart constructor.
+data LinkAttributeAction =
+  LinkAttributeAction'
+    { _laaAttributeActionType  :: !(Maybe UpdateActionType)
+    , _laaAttributeUpdateValue :: !(Maybe TypedAttributeValue)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'LinkAttributeAction' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'laaAttributeActionType' - A type that can be either @UPDATE_OR_CREATE@ or @DELETE@ .
+--
+-- * 'laaAttributeUpdateValue' - The value that you want to update to.
+linkAttributeAction
+    :: LinkAttributeAction
+linkAttributeAction =
+  LinkAttributeAction'
+    {_laaAttributeActionType = Nothing, _laaAttributeUpdateValue = Nothing}
+
+
+-- | A type that can be either @UPDATE_OR_CREATE@ or @DELETE@ .
+laaAttributeActionType :: Lens' LinkAttributeAction (Maybe UpdateActionType)
+laaAttributeActionType = lens _laaAttributeActionType (\ s a -> s{_laaAttributeActionType = a})
+
+-- | The value that you want to update to.
+laaAttributeUpdateValue :: Lens' LinkAttributeAction (Maybe TypedAttributeValue)
+laaAttributeUpdateValue = lens _laaAttributeUpdateValue (\ s a -> s{_laaAttributeUpdateValue = a})
+
+instance Hashable LinkAttributeAction where
+
+instance NFData LinkAttributeAction where
+
+instance ToJSON LinkAttributeAction where
+        toJSON LinkAttributeAction'{..}
+          = object
+              (catMaybes
+                 [("AttributeActionType" .=) <$>
+                    _laaAttributeActionType,
+                  ("AttributeUpdateValue" .=) <$>
+                    _laaAttributeUpdateValue])
+
+-- | Structure that contains attribute update information.
+--
+--
+--
+-- /See:/ 'linkAttributeUpdate' smart constructor.
+data LinkAttributeUpdate =
+  LinkAttributeUpdate'
+    { _lauAttributeAction :: !(Maybe LinkAttributeAction)
+    , _lauAttributeKey    :: !(Maybe AttributeKey)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'LinkAttributeUpdate' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'lauAttributeAction' - The action to perform as part of the attribute update.
+--
+-- * 'lauAttributeKey' - The key of the attribute being updated.
+linkAttributeUpdate
+    :: LinkAttributeUpdate
+linkAttributeUpdate =
+  LinkAttributeUpdate'
+    {_lauAttributeAction = Nothing, _lauAttributeKey = Nothing}
+
+
+-- | The action to perform as part of the attribute update.
+lauAttributeAction :: Lens' LinkAttributeUpdate (Maybe LinkAttributeAction)
+lauAttributeAction = lens _lauAttributeAction (\ s a -> s{_lauAttributeAction = a})
+
+-- | The key of the attribute being updated.
+lauAttributeKey :: Lens' LinkAttributeUpdate (Maybe AttributeKey)
+lauAttributeKey = lens _lauAttributeKey (\ s a -> s{_lauAttributeKey = a})
+
+instance Hashable LinkAttributeUpdate where
+
+instance NFData LinkAttributeUpdate where
+
+instance ToJSON LinkAttributeUpdate where
+        toJSON LinkAttributeUpdate'{..}
+          = object
+              (catMaybes
+                 [("AttributeAction" .=) <$> _lauAttributeAction,
+                  ("AttributeKey" .=) <$> _lauAttributeKey])
+
 -- | The action to take on the object attribute.
 --
 --
 --
 -- /See:/ 'objectAttributeAction' smart constructor.
-data ObjectAttributeAction = ObjectAttributeAction'
-  { _oaaObjectAttributeActionType  :: !(Maybe UpdateActionType)
-  , _oaaObjectAttributeUpdateValue :: !(Maybe TypedAttributeValue)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ObjectAttributeAction =
+  ObjectAttributeAction'
+    { _oaaObjectAttributeActionType  :: !(Maybe UpdateActionType)
+    , _oaaObjectAttributeUpdateValue :: !(Maybe TypedAttributeValue)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ObjectAttributeAction' with the minimum fields required to make a request.
@@ -3794,10 +4347,12 @@ instance ToJSON ObjectAttributeAction where
 --
 --
 -- /See:/ 'objectAttributeRange' smart constructor.
-data ObjectAttributeRange = ObjectAttributeRange'
-  { _oarRange        :: !(Maybe TypedAttributeValueRange)
-  , _oarAttributeKey :: !(Maybe AttributeKey)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ObjectAttributeRange =
+  ObjectAttributeRange'
+    { _oarRange        :: !(Maybe TypedAttributeValueRange)
+    , _oarAttributeKey :: !(Maybe AttributeKey)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ObjectAttributeRange' with the minimum fields required to make a request.
@@ -3837,10 +4392,12 @@ instance ToJSON ObjectAttributeRange where
 --
 --
 -- /See:/ 'objectAttributeUpdate' smart constructor.
-data ObjectAttributeUpdate = ObjectAttributeUpdate'
-  { _oauObjectAttributeAction :: !(Maybe ObjectAttributeAction)
-  , _oauObjectAttributeKey    :: !(Maybe AttributeKey)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ObjectAttributeUpdate =
+  ObjectAttributeUpdate'
+    { _oauObjectAttributeAction :: !(Maybe ObjectAttributeAction)
+    , _oauObjectAttributeKey    :: !(Maybe AttributeKey)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ObjectAttributeUpdate' with the minimum fields required to make a request.
@@ -3878,27 +4435,78 @@ instance ToJSON ObjectAttributeUpdate where
                   ("ObjectAttributeKey" .=) <$>
                     _oauObjectAttributeKey])
 
+-- | A pair of ObjectIdentifier and LinkName.
+--
+--
+--
+-- /See:/ 'objectIdentifierAndLinkNameTuple' smart constructor.
+data ObjectIdentifierAndLinkNameTuple =
+  ObjectIdentifierAndLinkNameTuple'
+    { _oialntObjectIdentifier :: !(Maybe Text)
+    , _oialntLinkName         :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'ObjectIdentifierAndLinkNameTuple' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'oialntObjectIdentifier' - The ID that is associated with the object.
+--
+-- * 'oialntLinkName' - The name of the link between the parent and the child object.
+objectIdentifierAndLinkNameTuple
+    :: ObjectIdentifierAndLinkNameTuple
+objectIdentifierAndLinkNameTuple =
+  ObjectIdentifierAndLinkNameTuple'
+    {_oialntObjectIdentifier = Nothing, _oialntLinkName = Nothing}
+
+
+-- | The ID that is associated with the object.
+oialntObjectIdentifier :: Lens' ObjectIdentifierAndLinkNameTuple (Maybe Text)
+oialntObjectIdentifier = lens _oialntObjectIdentifier (\ s a -> s{_oialntObjectIdentifier = a})
+
+-- | The name of the link between the parent and the child object.
+oialntLinkName :: Lens' ObjectIdentifierAndLinkNameTuple (Maybe Text)
+oialntLinkName = lens _oialntLinkName (\ s a -> s{_oialntLinkName = a})
+
+instance FromJSON ObjectIdentifierAndLinkNameTuple
+         where
+        parseJSON
+          = withObject "ObjectIdentifierAndLinkNameTuple"
+              (\ x ->
+                 ObjectIdentifierAndLinkNameTuple' <$>
+                   (x .:? "ObjectIdentifier") <*> (x .:? "LinkName"))
+
+instance Hashable ObjectIdentifierAndLinkNameTuple
+         where
+
+instance NFData ObjectIdentifierAndLinkNameTuple
+         where
+
 -- | The reference that identifies an object.
 --
 --
 --
 -- /See:/ 'objectReference' smart constructor.
-newtype ObjectReference = ObjectReference'
-  { _orSelector :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype ObjectReference =
+  ObjectReference'
+    { _orSelector :: Maybe Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ObjectReference' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'orSelector' - A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#accessingobjects Accessing Objects> . You can identify an object in one of the following ways:     * /> ObjectIdentifier/ - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier     * /\/some\/path/ - Identifies the object based on path     * /#SomeBatchReference/ - Identifies the object in a batch call
+-- * 'orSelector' - A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html Access Objects> . You can identify an object in one of the following ways:     * /> ObjectIdentifier/ - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier     * /\/some\/path/ - Identifies the object based on path     * /#SomeBatchReference/ - Identifies the object in a batch call
 objectReference
     :: ObjectReference
 objectReference = ObjectReference' {_orSelector = Nothing}
 
 
--- | A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#accessingobjects Accessing Objects> . You can identify an object in one of the following ways:     * /> ObjectIdentifier/ - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier     * /\/some\/path/ - Identifies the object based on path     * /#SomeBatchReference/ - Identifies the object in a batch call
+-- | A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html Access Objects> . You can identify an object in one of the following ways:     * /> ObjectIdentifier/ - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier     * /\/some\/path/ - Identifies the object based on path     * /#SomeBatchReference/ - Identifies the object in a batch call
 orSelector :: Lens' ObjectReference (Maybe Text)
 orSelector = lens _orSelector (\ s a -> s{_orSelector = a})
 
@@ -3921,10 +4529,12 @@ instance ToJSON ObjectReference where
 --
 --
 -- /See:/ 'pathToObjectIdentifiers' smart constructor.
-data PathToObjectIdentifiers = PathToObjectIdentifiers'
-  { _ptoiObjectIdentifiers :: !(Maybe [Text])
-  , _ptoiPath              :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data PathToObjectIdentifiers =
+  PathToObjectIdentifiers'
+    { _ptoiObjectIdentifiers :: !(Maybe [Text])
+    , _ptoiPath              :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'PathToObjectIdentifiers' with the minimum fields required to make a request.
@@ -3961,16 +4571,18 @@ instance Hashable PathToObjectIdentifiers where
 
 instance NFData PathToObjectIdentifiers where
 
--- | Contains the @PolicyType@ , @PolicyId@ , and the @ObjectIdentifier@ to which it is attached. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies Policies> .
+-- | Contains the @PolicyType@ , @PolicyId@ , and the @ObjectIdentifier@ to which it is attached. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies Policies> .
 --
 --
 --
 -- /See:/ 'policyAttachment' smart constructor.
-data PolicyAttachment = PolicyAttachment'
-  { _paPolicyId         :: !(Maybe Text)
-  , _paPolicyType       :: !(Maybe Text)
-  , _paObjectIdentifier :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data PolicyAttachment =
+  PolicyAttachment'
+    { _paPolicyId         :: !(Maybe Text)
+    , _paPolicyType       :: !(Maybe Text)
+    , _paObjectIdentifier :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'PolicyAttachment' with the minimum fields required to make a request.
@@ -4021,10 +4633,12 @@ instance NFData PolicyAttachment where
 --
 --
 -- /See:/ 'policyToPath' smart constructor.
-data PolicyToPath = PolicyToPath'
-  { _ptpPath     :: !(Maybe Text)
-  , _ptpPolicies :: !(Maybe [PolicyAttachment])
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data PolicyToPath =
+  PolicyToPath'
+    { _ptpPath     :: !(Maybe Text)
+    , _ptpPolicies :: !(Maybe [PolicyAttachment])
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'PolicyToPath' with the minimum fields required to make a request.
@@ -4063,10 +4677,12 @@ instance NFData PolicyToPath where
 --
 --
 -- /See:/ 'rule' smart constructor.
-data Rule = Rule'
-  { _rParameters :: !(Maybe (Map Text Text))
-  , _rType       :: !(Maybe RuleType)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Rule =
+  Rule'
+    { _rParameters :: !(Maybe (Map Text Text))
+    , _rType       :: !(Maybe RuleType)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Rule' with the minimum fields required to make a request.
@@ -4112,10 +4728,12 @@ instance ToJSON Rule where
 --
 --
 -- /See:/ 'schemaFacet' smart constructor.
-data SchemaFacet = SchemaFacet'
-  { _sfFacetName :: !(Maybe Text)
-  , _sfSchemaARN :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data SchemaFacet =
+  SchemaFacet'
+    { _sfFacetName :: !(Maybe Text)
+    , _sfSchemaARN :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'SchemaFacet' with the minimum fields required to make a request.
@@ -4124,7 +4742,7 @@ data SchemaFacet = SchemaFacet'
 --
 -- * 'sfFacetName' - The name of the facet.
 --
--- * 'sfSchemaARN' - The ARN of the schema that contains the facet with no minor component. See 'arns' and <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/inplaceschemaupgrade.html In-Place Schema Upgrade> for a description of when to provide minor versions.
+-- * 'sfSchemaARN' - The ARN of the schema that contains the facet with no minor component. See 'arns' and <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_inplaceschemaupgrade.html In-Place Schema Upgrade> for a description of when to provide minor versions.
 schemaFacet
     :: SchemaFacet
 schemaFacet = SchemaFacet' {_sfFacetName = Nothing, _sfSchemaARN = Nothing}
@@ -4134,7 +4752,7 @@ schemaFacet = SchemaFacet' {_sfFacetName = Nothing, _sfSchemaARN = Nothing}
 sfFacetName :: Lens' SchemaFacet (Maybe Text)
 sfFacetName = lens _sfFacetName (\ s a -> s{_sfFacetName = a})
 
--- | The ARN of the schema that contains the facet with no minor component. See 'arns' and <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/inplaceschemaupgrade.html In-Place Schema Upgrade> for a description of when to provide minor versions.
+-- | The ARN of the schema that contains the facet with no minor component. See 'arns' and <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_inplaceschemaupgrade.html In-Place Schema Upgrade> for a description of when to provide minor versions.
 sfSchemaARN :: Lens' SchemaFacet (Maybe Text)
 sfSchemaARN = lens _sfSchemaARN (\ s a -> s{_sfSchemaARN = a})
 
@@ -4161,10 +4779,12 @@ instance ToJSON SchemaFacet where
 --
 --
 -- /See:/ 'tag' smart constructor.
-data Tag = Tag'
-  { _tagValue :: !(Maybe Text)
-  , _tagKey   :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Tag =
+  Tag'
+    { _tagValue :: !(Maybe Text)
+    , _tagKey   :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Tag' with the minimum fields required to make a request.
@@ -4207,13 +4827,15 @@ instance ToJSON Tag where
 --
 --
 -- /See:/ 'typedAttributeValue' smart constructor.
-data TypedAttributeValue = TypedAttributeValue'
-  { _tavBinaryValue   :: !(Maybe Base64)
-  , _tavDatetimeValue :: !(Maybe POSIX)
-  , _tavNumberValue   :: !(Maybe Text)
-  , _tavStringValue   :: !(Maybe Text)
-  , _tavBooleanValue  :: !(Maybe Bool)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data TypedAttributeValue =
+  TypedAttributeValue'
+    { _tavBinaryValue   :: !(Maybe Base64)
+    , _tavDatetimeValue :: !(Maybe POSIX)
+    , _tavNumberValue   :: !(Maybe Text)
+    , _tavStringValue   :: !(Maybe Text)
+    , _tavBooleanValue  :: !(Maybe Bool)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'TypedAttributeValue' with the minimum fields required to make a request.
@@ -4285,17 +4907,19 @@ instance ToJSON TypedAttributeValue where
                   ("StringValue" .=) <$> _tavStringValue,
                   ("BooleanValue" .=) <$> _tavBooleanValue])
 
--- | A range of attribute values. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#rangefilters Range Filters> .
+-- | A range of attribute values. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_range_filters.html Range Filters> .
 --
 --
 --
 -- /See:/ 'typedAttributeValueRange' smart constructor.
-data TypedAttributeValueRange = TypedAttributeValueRange'
-  { _tavrEndValue   :: !(Maybe TypedAttributeValue)
-  , _tavrStartValue :: !(Maybe TypedAttributeValue)
-  , _tavrStartMode  :: !RangeMode
-  , _tavrEndMode    :: !RangeMode
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data TypedAttributeValueRange =
+  TypedAttributeValueRange'
+    { _tavrEndValue   :: !(Maybe TypedAttributeValue)
+    , _tavrStartValue :: !(Maybe TypedAttributeValue)
+    , _tavrStartMode  :: !RangeMode
+    , _tavrEndMode    :: !RangeMode
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'TypedAttributeValueRange' with the minimum fields required to make a request.
@@ -4356,14 +4980,16 @@ instance ToJSON TypedAttributeValueRange where
 --
 --
 -- /See:/ 'typedLinkAttributeDefinition' smart constructor.
-data TypedLinkAttributeDefinition = TypedLinkAttributeDefinition'
-  { _tladRules            :: !(Maybe (Map Text Rule))
-  , _tladDefaultValue     :: !(Maybe TypedAttributeValue)
-  , _tladIsImmutable      :: !(Maybe Bool)
-  , _tladName             :: !Text
-  , _tladType             :: !FacetAttributeType
-  , _tladRequiredBehavior :: !RequiredAttributeBehavior
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data TypedLinkAttributeDefinition =
+  TypedLinkAttributeDefinition'
+    { _tladRules            :: !(Maybe (Map Text Rule))
+    , _tladDefaultValue     :: !(Maybe TypedAttributeValue)
+    , _tladIsImmutable      :: !(Maybe Bool)
+    , _tladName             :: !Text
+    , _tladType             :: !FacetAttributeType
+    , _tladRequiredBehavior :: !RequiredAttributeBehavior
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'TypedLinkAttributeDefinition' with the minimum fields required to make a request.
@@ -4452,10 +5078,12 @@ instance ToJSON TypedLinkAttributeDefinition where
 --
 --
 -- /See:/ 'typedLinkAttributeRange' smart constructor.
-data TypedLinkAttributeRange = TypedLinkAttributeRange'
-  { _tlarAttributeName :: !(Maybe Text)
-  , _tlarRange         :: !TypedAttributeValueRange
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data TypedLinkAttributeRange =
+  TypedLinkAttributeRange'
+    { _tlarAttributeName :: !(Maybe Text)
+    , _tlarRange         :: !TypedAttributeValueRange
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'TypedLinkAttributeRange' with the minimum fields required to make a request.
@@ -4496,11 +5124,13 @@ instance ToJSON TypedLinkAttributeRange where
 --
 --
 -- /See:/ 'typedLinkFacet' smart constructor.
-data TypedLinkFacet = TypedLinkFacet'
-  { _tlfName                   :: !Text
-  , _tlfAttributes             :: ![TypedLinkAttributeDefinition]
-  , _tlfIdentityAttributeOrder :: ![Text]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data TypedLinkFacet =
+  TypedLinkFacet'
+    { _tlfName                   :: !Text
+    , _tlfAttributes             :: ![TypedLinkAttributeDefinition]
+    , _tlfIdentityAttributeOrder :: ![Text]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'TypedLinkFacet' with the minimum fields required to make a request.
@@ -4554,10 +5184,12 @@ instance ToJSON TypedLinkFacet where
 --
 --
 -- /See:/ 'typedLinkFacetAttributeUpdate' smart constructor.
-data TypedLinkFacetAttributeUpdate = TypedLinkFacetAttributeUpdate'
-  { _tlfauAttribute :: !TypedLinkAttributeDefinition
-  , _tlfauAction    :: !UpdateActionType
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data TypedLinkFacetAttributeUpdate =
+  TypedLinkFacetAttributeUpdate'
+    { _tlfauAttribute :: !TypedLinkAttributeDefinition
+    , _tlfauAction    :: !UpdateActionType
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'TypedLinkFacetAttributeUpdate' with the minimum fields required to make a request.
@@ -4600,10 +5232,12 @@ instance ToJSON TypedLinkFacetAttributeUpdate where
 --
 --
 -- /See:/ 'typedLinkSchemaAndFacetName' smart constructor.
-data TypedLinkSchemaAndFacetName = TypedLinkSchemaAndFacetName'
-  { _tlsafnSchemaARN     :: !Text
-  , _tlsafnTypedLinkName :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data TypedLinkSchemaAndFacetName =
+  TypedLinkSchemaAndFacetName'
+    { _tlsafnSchemaARN     :: !Text
+    , _tlsafnTypedLinkName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'TypedLinkSchemaAndFacetName' with the minimum fields required to make a request.
@@ -4653,12 +5287,14 @@ instance ToJSON TypedLinkSchemaAndFacetName where
 --
 --
 -- /See:/ 'typedLinkSpecifier' smart constructor.
-data TypedLinkSpecifier = TypedLinkSpecifier'
-  { _tlsTypedLinkFacet          :: !TypedLinkSchemaAndFacetName
-  , _tlsSourceObjectReference   :: !ObjectReference
-  , _tlsTargetObjectReference   :: !ObjectReference
-  , _tlsIdentityAttributeValues :: ![AttributeNameAndValue]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data TypedLinkSpecifier =
+  TypedLinkSpecifier'
+    { _tlsTypedLinkFacet          :: !TypedLinkSchemaAndFacetName
+    , _tlsSourceObjectReference   :: !ObjectReference
+    , _tlsTargetObjectReference   :: !ObjectReference
+    , _tlsIdentityAttributeValues :: ![AttributeNameAndValue]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'TypedLinkSpecifier' with the minimum fields required to make a request.

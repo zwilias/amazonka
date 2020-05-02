@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes a previously created webhook by name. Deleting the webhook stops AWS CodePipeline from starting a pipeline every time an external event occurs. The API will return successfully when trying to delete a webhook that is already deleted. If a deleted webhook is re-created by calling PutWebhook with the same name, it will have a different URL.
+-- Deletes a previously created webhook by name. Deleting the webhook stops AWS CodePipeline from starting a pipeline every time an external event occurs. The API returns successfully when trying to delete a webhook that is already deleted. If a deleted webhook is re-created by calling PutWebhook with the same name, it will have a different URL.
 --
 --
 module Network.AWS.CodePipeline.DeleteWebhook
@@ -44,9 +44,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteWebhook' smart constructor.
-newtype DeleteWebhook = DeleteWebhook'
-  { _dwName :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype DeleteWebhook =
+  DeleteWebhook'
+    { _dwName :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteWebhook' with the minimum fields required to make a request.
@@ -97,9 +99,11 @@ instance ToQuery DeleteWebhook where
         toQuery = const mempty
 
 -- | /See:/ 'deleteWebhookResponse' smart constructor.
-newtype DeleteWebhookResponse = DeleteWebhookResponse'
-  { _dwrsResponseStatus :: Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype DeleteWebhookResponse =
+  DeleteWebhookResponse'
+    { _dwrsResponseStatus :: Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteWebhookResponse' with the minimum fields required to make a request.

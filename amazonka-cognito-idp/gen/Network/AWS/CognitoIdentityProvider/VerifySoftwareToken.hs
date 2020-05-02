@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Use this API to register a user's entered TOTP code and mark the user's software token MFA status as "verified" if successful,
+-- Use this API to register a user's entered TOTP code and mark the user's software token MFA status as "verified" if successful. The request takes an access token or a session string, but not both.
 --
 --
 module Network.AWS.CognitoIdentityProvider.VerifySoftwareToken
@@ -49,12 +49,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'verifySoftwareToken' smart constructor.
-data VerifySoftwareToken = VerifySoftwareToken'
-  { _vstAccessToken        :: !(Maybe (Sensitive Text))
-  , _vstFriendlyDeviceName :: !(Maybe Text)
-  , _vstSession            :: !(Maybe Text)
-  , _vstUserCode           :: !Text
-  } deriving (Eq, Show, Data, Typeable, Generic)
+data VerifySoftwareToken =
+  VerifySoftwareToken'
+    { _vstAccessToken        :: !(Maybe (Sensitive Text))
+    , _vstFriendlyDeviceName :: !(Maybe Text)
+    , _vstSession            :: !(Maybe Text)
+    , _vstUserCode           :: !Text
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'VerifySoftwareToken' with the minimum fields required to make a request.
@@ -137,11 +139,13 @@ instance ToQuery VerifySoftwareToken where
         toQuery = const mempty
 
 -- | /See:/ 'verifySoftwareTokenResponse' smart constructor.
-data VerifySoftwareTokenResponse = VerifySoftwareTokenResponse'
-  { _vstrsStatus         :: !(Maybe VerifySoftwareTokenResponseType)
-  , _vstrsSession        :: !(Maybe Text)
-  , _vstrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data VerifySoftwareTokenResponse =
+  VerifySoftwareTokenResponse'
+    { _vstrsStatus         :: !(Maybe VerifySoftwareTokenResponseType)
+    , _vstrsSession        :: !(Maybe Text)
+    , _vstrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'VerifySoftwareTokenResponse' with the minimum fields required to make a request.

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Enables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector directory.
+-- Enables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD directory.
 --
 --
 module Network.AWS.DirectoryService.EnableRadius
@@ -49,10 +49,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'enableRadius' smart constructor.
-data EnableRadius = EnableRadius'
-  { _erDirectoryId    :: !Text
-  , _erRadiusSettings :: !RadiusSettings
-  } deriving (Eq, Show, Data, Typeable, Generic)
+data EnableRadius =
+  EnableRadius'
+    { _erDirectoryId    :: !Text
+    , _erRadiusSettings :: !RadiusSettings
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'EnableRadius' with the minimum fields required to make a request.
@@ -119,9 +121,11 @@ instance ToQuery EnableRadius where
 --
 --
 -- /See:/ 'enableRadiusResponse' smart constructor.
-newtype EnableRadiusResponse = EnableRadiusResponse'
-  { _errsResponseStatus :: Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype EnableRadiusResponse =
+  EnableRadiusResponse'
+    { _errsResponseStatus :: Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'EnableRadiusResponse' with the minimum fields required to make a request.

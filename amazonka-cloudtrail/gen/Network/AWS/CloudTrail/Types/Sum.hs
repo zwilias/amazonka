@@ -19,10 +19,63 @@ module Network.AWS.CloudTrail.Types.Sum where
 
 import Network.AWS.Prelude
 
+data EventCategory =
+  Insight
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText EventCategory where
+    parser = takeLowerText >>= \case
+        "insight" -> pure Insight
+        e -> fromTextError $ "Failure parsing EventCategory from value: '" <> e
+           <> "'. Accepted values: insight"
+
+instance ToText EventCategory where
+    toText = \case
+        Insight -> "insight"
+
+instance Hashable     EventCategory
+instance NFData       EventCategory
+instance ToByteString EventCategory
+instance ToQuery      EventCategory
+instance ToHeader     EventCategory
+
+instance ToJSON EventCategory where
+    toJSON = toJSONText
+
+data InsightType =
+  APICallRateInsight
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText InsightType where
+    parser = takeLowerText >>= \case
+        "apicallrateinsight" -> pure APICallRateInsight
+        e -> fromTextError $ "Failure parsing InsightType from value: '" <> e
+           <> "'. Accepted values: apicallrateinsight"
+
+instance ToText InsightType where
+    toText = \case
+        APICallRateInsight -> "ApiCallRateInsight"
+
+instance Hashable     InsightType
+instance NFData       InsightType
+instance ToByteString InsightType
+instance ToQuery      InsightType
+instance ToHeader     InsightType
+
+instance ToJSON InsightType where
+    toJSON = toJSONText
+
+instance FromJSON InsightType where
+    parseJSON = parseJSONText "InsightType"
+
 data LookupAttributeKey
-  = EventId
+  = AccessKeyId
+  | EventId
   | EventName
   | EventSource
+  | ReadOnly
   | ResourceName
   | ResourceType
   | Username
@@ -31,20 +84,24 @@ data LookupAttributeKey
 
 instance FromText LookupAttributeKey where
     parser = takeLowerText >>= \case
+        "accesskeyid" -> pure AccessKeyId
         "eventid" -> pure EventId
         "eventname" -> pure EventName
         "eventsource" -> pure EventSource
+        "readonly" -> pure ReadOnly
         "resourcename" -> pure ResourceName
         "resourcetype" -> pure ResourceType
         "username" -> pure Username
         e -> fromTextError $ "Failure parsing LookupAttributeKey from value: '" <> e
-           <> "'. Accepted values: eventid, eventname, eventsource, resourcename, resourcetype, username"
+           <> "'. Accepted values: accesskeyid, eventid, eventname, eventsource, readonly, resourcename, resourcetype, username"
 
 instance ToText LookupAttributeKey where
     toText = \case
+        AccessKeyId -> "AccessKeyId"
         EventId -> "EventId"
         EventName -> "EventName"
         EventSource -> "EventSource"
+        ReadOnly -> "ReadOnly"
         ResourceName -> "ResourceName"
         ResourceType -> "ResourceType"
         Username -> "Username"
@@ -59,25 +116,25 @@ instance ToJSON LookupAttributeKey where
     toJSON = toJSONText
 
 data ReadWriteType
-  = All
-  | ReadOnly
-  | WriteOnly
+  = RWTAll
+  | RWTReadOnly
+  | RWTWriteOnly
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
 
 instance FromText ReadWriteType where
     parser = takeLowerText >>= \case
-        "all" -> pure All
-        "readonly" -> pure ReadOnly
-        "writeonly" -> pure WriteOnly
+        "all" -> pure RWTAll
+        "readonly" -> pure RWTReadOnly
+        "writeonly" -> pure RWTWriteOnly
         e -> fromTextError $ "Failure parsing ReadWriteType from value: '" <> e
            <> "'. Accepted values: all, readonly, writeonly"
 
 instance ToText ReadWriteType where
     toText = \case
-        All -> "All"
-        ReadOnly -> "ReadOnly"
-        WriteOnly -> "WriteOnly"
+        RWTAll -> "All"
+        RWTReadOnly -> "ReadOnly"
+        RWTWriteOnly -> "WriteOnly"
 
 instance Hashable     ReadWriteType
 instance NFData       ReadWriteType

@@ -55,11 +55,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listDevicePools' smart constructor.
-data ListDevicePools = ListDevicePools'
-  { _ldpNextToken :: !(Maybe Text)
-  , _ldpType      :: !(Maybe DevicePoolType)
-  , _ldpArn       :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListDevicePools =
+  ListDevicePools'
+    { _ldpNextToken :: !(Maybe Text)
+    , _ldpType      :: !(Maybe DevicePoolType)
+    , _ldpArn       :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListDevicePools' with the minimum fields required to make a request.
@@ -141,11 +143,13 @@ instance ToQuery ListDevicePools where
 --
 --
 -- /See:/ 'listDevicePoolsResponse' smart constructor.
-data ListDevicePoolsResponse = ListDevicePoolsResponse'
-  { _ldprsDevicePools    :: !(Maybe [DevicePool])
-  , _ldprsNextToken      :: !(Maybe Text)
-  , _ldprsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListDevicePoolsResponse =
+  ListDevicePoolsResponse'
+    { _ldprsDevicePools    :: !(Maybe [DevicePool])
+    , _ldprsNextToken      :: !(Maybe Text)
+    , _ldprsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListDevicePoolsResponse' with the minimum fields required to make a request.
@@ -154,7 +158,7 @@ data ListDevicePoolsResponse = ListDevicePoolsResponse'
 --
 -- * 'ldprsDevicePools' - Information about the device pools.
 --
--- * 'ldprsNextToken' - If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.
+-- * 'ldprsNextToken' - If the number of items that are returned is significantly large, this is an identifier that is also returned. It can be used in a subsequent call to this operation to return the next set of items in the list.
 --
 -- * 'ldprsResponseStatus' - -- | The response status code.
 listDevicePoolsResponse
@@ -172,7 +176,7 @@ listDevicePoolsResponse pResponseStatus_ =
 ldprsDevicePools :: Lens' ListDevicePoolsResponse [DevicePool]
 ldprsDevicePools = lens _ldprsDevicePools (\ s a -> s{_ldprsDevicePools = a}) . _Default . _Coerce
 
--- | If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.
+-- | If the number of items that are returned is significantly large, this is an identifier that is also returned. It can be used in a subsequent call to this operation to return the next set of items in the list.
 ldprsNextToken :: Lens' ListDevicePoolsResponse (Maybe Text)
 ldprsNextToken = lens _ldprsNextToken (\ s a -> s{_ldprsNextToken = a})
 

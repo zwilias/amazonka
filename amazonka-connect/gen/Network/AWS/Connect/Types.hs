@@ -19,11 +19,254 @@ module Network.AWS.Connect.Types
     , _OutboundContactNotPermittedException
     , _InvalidParameterException
     , _InvalidRequestException
+    , _DuplicateResourceException
+    , _UserNotFoundException
     , _DestinationNotAllowedException
     , _ContactNotFoundException
+    , _ThrottlingException
     , _InternalServiceException
     , _ResourceNotFoundException
     , _LimitExceededException
+
+    -- * Channel
+    , Channel (..)
+
+    -- * Comparison
+    , Comparison (..)
+
+    -- * ContactFlowType
+    , ContactFlowType (..)
+
+    -- * CurrentMetricName
+    , CurrentMetricName (..)
+
+    -- * Grouping
+    , Grouping (..)
+
+    -- * HistoricalMetricName
+    , HistoricalMetricName (..)
+
+    -- * PhoneNumberCountryCode
+    , PhoneNumberCountryCode (..)
+
+    -- * PhoneNumberType
+    , PhoneNumberType (..)
+
+    -- * PhoneType
+    , PhoneType (..)
+
+    -- * QueueType
+    , QueueType (..)
+
+    -- * Statistic
+    , Statistic (..)
+
+    -- * Unit
+    , Unit (..)
+
+    -- * ChatMessage
+    , ChatMessage
+    , chatMessage
+    , cmContentType
+    , cmContent
+
+    -- * ContactFlowSummary
+    , ContactFlowSummary
+    , contactFlowSummary
+    , cfsARN
+    , cfsName
+    , cfsContactFlowType
+    , cfsId
+
+    -- * Credentials
+    , Credentials
+    , credentials
+    , cAccessTokenExpiration
+    , cAccessToken
+    , cRefreshToken
+    , cRefreshTokenExpiration
+
+    -- * CurrentMetric
+    , CurrentMetric
+    , currentMetric
+    , cmName
+    , cmUnit
+
+    -- * CurrentMetricData
+    , CurrentMetricData
+    , currentMetricData
+    , cmdValue
+    , cmdMetric
+
+    -- * CurrentMetricResult
+    , CurrentMetricResult
+    , currentMetricResult
+    , cmrCollections
+    , cmrDimensions
+
+    -- * Dimensions
+    , Dimensions
+    , dimensions
+    , dChannel
+    , dQueue
+
+    -- * Filters
+    , Filters
+    , filters
+    , fQueues
+    , fChannels
+
+    -- * HierarchyGroup
+    , HierarchyGroup
+    , hierarchyGroup
+    , hgARN
+    , hgName
+    , hgHierarchyPath
+    , hgId
+    , hgLevelId
+
+    -- * HierarchyGroupSummary
+    , HierarchyGroupSummary
+    , hierarchyGroupSummary
+    , hgsARN
+    , hgsName
+    , hgsId
+
+    -- * HierarchyLevel
+    , HierarchyLevel
+    , hierarchyLevel
+    , hlARN
+    , hlName
+    , hlId
+
+    -- * HierarchyPath
+    , HierarchyPath
+    , hierarchyPath
+    , hpLevelFive
+    , hpLevelThree
+    , hpLevelFour
+    , hpLevelTwo
+    , hpLevelOne
+
+    -- * HierarchyStructure
+    , HierarchyStructure
+    , hierarchyStructure
+    , hsLevelFive
+    , hsLevelThree
+    , hsLevelFour
+    , hsLevelTwo
+    , hsLevelOne
+
+    -- * HistoricalMetric
+    , HistoricalMetric
+    , historicalMetric
+    , hmName
+    , hmThreshold
+    , hmUnit
+    , hmStatistic
+
+    -- * HistoricalMetricData
+    , HistoricalMetricData
+    , historicalMetricData
+    , hmdValue
+    , hmdMetric
+
+    -- * HistoricalMetricResult
+    , HistoricalMetricResult
+    , historicalMetricResult
+    , hmrCollections
+    , hmrDimensions
+
+    -- * HoursOfOperationSummary
+    , HoursOfOperationSummary
+    , hoursOfOperationSummary
+    , hoosARN
+    , hoosName
+    , hoosId
+
+    -- * ParticipantDetails
+    , ParticipantDetails
+    , participantDetails
+    , pdDisplayName
+
+    -- * PhoneNumberSummary
+    , PhoneNumberSummary
+    , phoneNumberSummary
+    , pnsPhoneNumberType
+    , pnsARN
+    , pnsPhoneNumber
+    , pnsPhoneNumberCountryCode
+    , pnsId
+
+    -- * QueueReference
+    , QueueReference
+    , queueReference
+    , qrARN
+    , qrId
+
+    -- * QueueSummary
+    , QueueSummary
+    , queueSummary
+    , qsARN
+    , qsName
+    , qsId
+    , qsQueueType
+
+    -- * RoutingProfileSummary
+    , RoutingProfileSummary
+    , routingProfileSummary
+    , rpsARN
+    , rpsName
+    , rpsId
+
+    -- * SecurityProfileSummary
+    , SecurityProfileSummary
+    , securityProfileSummary
+    , spsARN
+    , spsName
+    , spsId
+
+    -- * Threshold
+    , Threshold
+    , threshold
+    , tThresholdValue
+    , tComparison
+
+    -- * User
+    , User
+    , user
+    , uRoutingProfileId
+    , uDirectoryUserId
+    , uARN
+    , uIdentityInfo
+    , uSecurityProfileIds
+    , uUsername
+    , uId
+    , uHierarchyGroupId
+    , uPhoneConfig
+    , uTags
+
+    -- * UserIdentityInfo
+    , UserIdentityInfo
+    , userIdentityInfo
+    , uiiEmail
+    , uiiLastName
+    , uiiFirstName
+
+    -- * UserPhoneConfig
+    , UserPhoneConfig
+    , userPhoneConfig
+    , upcAutoAccept
+    , upcAfterContactWorkTimeLimit
+    , upcDeskPhoneNumber
+    , upcPhoneType
+
+    -- * UserSummary
+    , UserSummary
+    , userSummary
+    , usARN
+    , usUsername
+    , usId
     ) where
 
 import Network.AWS.Connect.Types.Product
@@ -71,7 +314,7 @@ connect =
       | otherwise = Nothing
 
 
--- | The contact is not permitted because outbound calling is not enabled for the instance.
+-- | The contact is not permitted.
 --
 --
 _OutboundContactNotPermittedException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -80,7 +323,7 @@ _OutboundContactNotPermittedException =
   hasStatus 403
 
 
--- | One or more of the parameters provided to the operation are not valid.
+-- | One or more of the specified parameters are not valid.
 --
 --
 _InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -96,7 +339,23 @@ _InvalidRequestException =
   _MatchServiceError connect "InvalidRequestException" . hasStatus 400
 
 
--- | Outbound calls to the destination number are not allowed for your instance. You can request that the country be included in the allowed countries for your instance by submitting a <https://console.aws.amazon.com/support/v1#/case/create?issueType=service-limit-increase Service Limit Increase> .
+-- | A resource with the specified name already exists.
+--
+--
+_DuplicateResourceException :: AsError a => Getting (First ServiceError) a ServiceError
+_DuplicateResourceException =
+  _MatchServiceError connect "DuplicateResourceException" . hasStatus 409
+
+
+-- | No user with the specified credentials was found in the Amazon Connect instance.
+--
+--
+_UserNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_UserNotFoundException =
+  _MatchServiceError connect "UserNotFoundException" . hasStatus 404
+
+
+-- | Outbound calls to the destination number are not allowed.
 --
 --
 _DestinationNotAllowedException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -110,6 +369,14 @@ _DestinationNotAllowedException =
 _ContactNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _ContactNotFoundException =
   _MatchServiceError connect "ContactNotFoundException" . hasStatus 410
+
+
+-- | The throttling limit has been exceeded.
+--
+--
+_ThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
+_ThrottlingException =
+  _MatchServiceError connect "ThrottlingException" . hasStatus 429
 
 
 -- | Request processing failed due to an error or failure with the service.
@@ -128,7 +395,7 @@ _ResourceNotFoundException =
   _MatchServiceError connect "ResourceNotFoundException" . hasStatus 404
 
 
--- | The limit exceeded the maximum allowed active calls in a queue.
+-- | The allowed limit for the resource has been exceeded.
 --
 --
 _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Gets the current status and future status of all offerings purchased by an AWS account. The response indicates how many offerings are currently available and the offerings that will be available in the next period. The API returns a @NotEligible@ error if the user is not permitted to invoke the operation. Please contact <mailto:aws-devicefarm-support@amazon.com aws-devicefarm-support@amazon.com> if you believe that you should be able to invoke this operation.
+-- Gets the current status and future status of all offerings purchased by an AWS account. The response indicates how many offerings are currently available and the offerings that will be available in the next period. The API returns a @NotEligible@ error if the user is not permitted to invoke the operation. If you must be able to invoke this operation, contact <mailto:aws-devicefarm-support@amazon.com aws-devicefarm-support@amazon.com> .
 --
 --
 --
@@ -54,9 +54,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getOfferingStatus' smart constructor.
-newtype GetOfferingStatus = GetOfferingStatus'
-  { _gosNextToken :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype GetOfferingStatus =
+  GetOfferingStatus'
+    { _gosNextToken :: Maybe Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetOfferingStatus' with the minimum fields required to make a request.
@@ -123,12 +125,14 @@ instance ToQuery GetOfferingStatus where
 --
 --
 -- /See:/ 'getOfferingStatusResponse' smart constructor.
-data GetOfferingStatusResponse = GetOfferingStatusResponse'
-  { _gosrsNextPeriod     :: !(Maybe (Map Text OfferingStatus))
-  , _gosrsCurrent        :: !(Maybe (Map Text OfferingStatus))
-  , _gosrsNextToken      :: !(Maybe Text)
-  , _gosrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetOfferingStatusResponse =
+  GetOfferingStatusResponse'
+    { _gosrsNextPeriod     :: !(Maybe (Map Text OfferingStatus))
+    , _gosrsCurrent        :: !(Maybe (Map Text OfferingStatus))
+    , _gosrsNextToken      :: !(Maybe Text)
+    , _gosrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetOfferingStatusResponse' with the minimum fields required to make a request.

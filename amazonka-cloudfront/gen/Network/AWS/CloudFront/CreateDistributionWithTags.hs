@@ -51,9 +51,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createDistributionWithTags' smart constructor.
-newtype CreateDistributionWithTags = CreateDistributionWithTags'
-  { _cdwtDistributionConfigWithTags :: DistributionConfigWithTags
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype CreateDistributionWithTags =
+  CreateDistributionWithTags'
+    { _cdwtDistributionConfigWithTags :: DistributionConfigWithTags
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateDistributionWithTags' with the minimum fields required to make a request.
@@ -92,7 +94,7 @@ instance NFData CreateDistributionWithTags where
 instance ToElement CreateDistributionWithTags where
         toElement
           = mkElement
-              "{http://cloudfront.amazonaws.com/doc/2017-10-30/}DistributionConfigWithTags"
+              "{http://cloudfront.amazonaws.com/doc/2019-03-26/}DistributionConfigWithTags"
               .
               _cdwtDistributionConfigWithTags
 
@@ -100,7 +102,7 @@ instance ToHeaders CreateDistributionWithTags where
         toHeaders = const mempty
 
 instance ToPath CreateDistributionWithTags where
-        toPath = const "/2017-10-30/distribution"
+        toPath = const "/2019-03-26/distribution"
 
 instance ToQuery CreateDistributionWithTags where
         toQuery = const (mconcat ["WithTags"])
@@ -110,12 +112,14 @@ instance ToQuery CreateDistributionWithTags where
 --
 --
 -- /See:/ 'createDistributionWithTagsResponse' smart constructor.
-data CreateDistributionWithTagsResponse = CreateDistributionWithTagsResponse'
-  { _cdwtrsETag           :: !(Maybe Text)
-  , _cdwtrsDistribution   :: !(Maybe Distribution)
-  , _cdwtrsLocation       :: !(Maybe Text)
-  , _cdwtrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreateDistributionWithTagsResponse =
+  CreateDistributionWithTagsResponse'
+    { _cdwtrsETag           :: !(Maybe Text)
+    , _cdwtrsDistribution   :: !(Maybe Distribution)
+    , _cdwtrsLocation       :: !(Maybe Text)
+    , _cdwtrsResponseStatus :: !Int
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateDistributionWithTagsResponse' with the minimum fields required to make a request.

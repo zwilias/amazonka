@@ -49,23 +49,25 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getDeployment' smart constructor.
-newtype GetDeployment = GetDeployment'
-  { _gdDeploymentId :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype GetDeployment =
+  GetDeployment'
+    { _gdDeploymentId :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetDeployment' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gdDeploymentId' - A deployment ID associated with the applicable IAM user or AWS account.
+-- * 'gdDeploymentId' - The unique ID of a deployment associated with the IAM user or AWS account.
 getDeployment
     :: Text -- ^ 'gdDeploymentId'
     -> GetDeployment
 getDeployment pDeploymentId_ = GetDeployment' {_gdDeploymentId = pDeploymentId_}
 
 
--- | A deployment ID associated with the applicable IAM user or AWS account.
+-- | The unique ID of a deployment associated with the IAM user or AWS account.
 gdDeploymentId :: Lens' GetDeployment Text
 gdDeploymentId = lens _gdDeploymentId (\ s a -> s{_gdDeploymentId = a})
 
@@ -108,10 +110,12 @@ instance ToQuery GetDeployment where
 --
 --
 -- /See:/ 'getDeploymentResponse' smart constructor.
-data GetDeploymentResponse = GetDeploymentResponse'
-  { _gdrsDeploymentInfo :: !(Maybe DeploymentInfo)
-  , _gdrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetDeploymentResponse =
+  GetDeploymentResponse'
+    { _gdrsDeploymentInfo :: !(Maybe DeploymentInfo)
+    , _gdrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetDeploymentResponse' with the minimum fields required to make a request.

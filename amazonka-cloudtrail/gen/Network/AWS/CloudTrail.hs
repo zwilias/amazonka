@@ -17,7 +17,7 @@
 --
 -- CloudTrail is a web service that records AWS API calls for your AWS account and delivers log files to an Amazon S3 bucket. The recorded information includes the identity of the user, the start time of the AWS API call, the source IP address, the request parameters, and the response elements returned by the service.
 --
--- See the <http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html AWS CloudTrail User Guide> for information about the data that is included with each AWS API call listed in the log files.
+-- See the <https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html AWS CloudTrail User Guide> for information about the data that is included with each AWS API call listed in the log files.
 --
 module Network.AWS.CloudTrail
     (
@@ -36,8 +36,14 @@ module Network.AWS.CloudTrail
     -- ** MaximumNumberOfTrailsExceededException
     , _MaximumNumberOfTrailsExceededException
 
+    -- ** InsufficientDependencyServiceAccessPermissionException
+    , _InsufficientDependencyServiceAccessPermissionException
+
     -- ** UnsupportedOperationException
     , _UnsupportedOperationException
+
+    -- ** InvalidEventCategoryException
+    , _InvalidEventCategoryException
 
     -- ** KMSKeyDisabledException
     , _KMSKeyDisabledException
@@ -50,6 +56,9 @@ module Network.AWS.CloudTrail
 
     -- ** InvalidCloudWatchLogsRoleARNException
     , _InvalidCloudWatchLogsRoleARNException
+
+    -- ** CloudTrailAccessNotEnabledException
+    , _CloudTrailAccessNotEnabledException
 
     -- ** TagsLimitExceededException
     , _TagsLimitExceededException
@@ -72,11 +81,20 @@ module Network.AWS.CloudTrail
     -- ** CloudWatchLogsDeliveryUnavailableException
     , _CloudWatchLogsDeliveryUnavailableException
 
+    -- ** OrganizationsNotInUseException
+    , _OrganizationsNotInUseException
+
     -- ** KMSKeyNotFoundException
     , _KMSKeyNotFoundException
 
     -- ** TrailNotFoundException
     , _TrailNotFoundException
+
+    -- ** InsightNotEnabledException
+    , _InsightNotEnabledException
+
+    -- ** NotOrganizationMasterAccountException
+    , _NotOrganizationMasterAccountException
 
     -- ** InvalidEventSelectorsException
     , _InvalidEventSelectorsException
@@ -114,6 +132,12 @@ module Network.AWS.CloudTrail
     -- ** TrailAlreadyExistsException
     , _TrailAlreadyExistsException
 
+    -- ** OrganizationNotInAllFeaturesModeException
+    , _OrganizationNotInAllFeaturesModeException
+
+    -- ** InvalidInsightSelectorsException
+    , _InvalidInsightSelectorsException
+
     -- ** InvalidS3PrefixException
     , _InvalidS3PrefixException
 
@@ -138,7 +162,7 @@ module Network.AWS.CloudTrail
     -- ** DescribeTrails
     , module Network.AWS.CloudTrail.DescribeTrails
 
-    -- ** ListPublicKeys
+    -- ** ListPublicKeys (Paginated)
     , module Network.AWS.CloudTrail.ListPublicKeys
 
     -- ** RemoveTags
@@ -159,8 +183,14 @@ module Network.AWS.CloudTrail
     -- ** CreateTrail
     , module Network.AWS.CloudTrail.CreateTrail
 
+    -- ** PutInsightSelectors
+    , module Network.AWS.CloudTrail.PutInsightSelectors
+
     -- ** GetEventSelectors
     , module Network.AWS.CloudTrail.GetEventSelectors
+
+    -- ** GetTrail
+    , module Network.AWS.CloudTrail.GetTrail
 
     -- ** GetTrailStatus
     , module Network.AWS.CloudTrail.GetTrailStatus
@@ -168,7 +198,7 @@ module Network.AWS.CloudTrail
     -- ** AddTags
     , module Network.AWS.CloudTrail.AddTags
 
-    -- ** ListTags
+    -- ** ListTags (Paginated)
     , module Network.AWS.CloudTrail.ListTags
 
     -- ** PutEventSelectors
@@ -177,7 +207,19 @@ module Network.AWS.CloudTrail
     -- ** StartLogging
     , module Network.AWS.CloudTrail.StartLogging
 
+    -- ** ListTrails (Paginated)
+    , module Network.AWS.CloudTrail.ListTrails
+
+    -- ** GetInsightSelectors
+    , module Network.AWS.CloudTrail.GetInsightSelectors
+
     -- * Types
+
+    -- ** EventCategory
+    , EventCategory (..)
+
+    -- ** InsightType
+    , InsightType (..)
 
     -- ** LookupAttributeKey
     , LookupAttributeKey (..)
@@ -199,6 +241,8 @@ module Network.AWS.CloudTrail
     , eEventTime
     , eCloudTrailEvent
     , eEventName
+    , eReadOnly
+    , eAccessKeyId
     , eEventSource
     , eEventId
 
@@ -207,7 +251,13 @@ module Network.AWS.CloudTrail
     , eventSelector
     , esDataResources
     , esReadWriteType
+    , esExcludeManagementEventSources
     , esIncludeManagementEvents
+
+    -- ** InsightSelector
+    , InsightSelector
+    , insightSelector
+    , isInsightType
 
     -- ** LookupAttribute
     , LookupAttribute
@@ -247,6 +297,7 @@ module Network.AWS.CloudTrail
     , tLogFileValidationEnabled
     , tTrailARN
     , tS3KeyPrefix
+    , tHasInsightSelectors
     , tSNSTopicARN
     , tSNSTopicName
     , tCloudWatchLogsLogGroupARN
@@ -255,9 +306,17 @@ module Network.AWS.CloudTrail
     , tName
     , tIncludeGlobalServiceEvents
     , tHasCustomEventSelectors
+    , tIsOrganizationTrail
     , tCloudWatchLogsRoleARN
     , tS3BucketName
     , tIsMultiRegionTrail
+
+    -- ** TrailInfo
+    , TrailInfo
+    , trailInfo
+    , tiTrailARN
+    , tiHomeRegion
+    , tiName
     ) where
 
 import Network.AWS.CloudTrail.AddTags
@@ -265,11 +324,15 @@ import Network.AWS.CloudTrail.CreateTrail
 import Network.AWS.CloudTrail.DeleteTrail
 import Network.AWS.CloudTrail.DescribeTrails
 import Network.AWS.CloudTrail.GetEventSelectors
+import Network.AWS.CloudTrail.GetInsightSelectors
+import Network.AWS.CloudTrail.GetTrail
 import Network.AWS.CloudTrail.GetTrailStatus
 import Network.AWS.CloudTrail.ListPublicKeys
 import Network.AWS.CloudTrail.ListTags
+import Network.AWS.CloudTrail.ListTrails
 import Network.AWS.CloudTrail.LookupEvents
 import Network.AWS.CloudTrail.PutEventSelectors
+import Network.AWS.CloudTrail.PutInsightSelectors
 import Network.AWS.CloudTrail.RemoveTags
 import Network.AWS.CloudTrail.StartLogging
 import Network.AWS.CloudTrail.StopLogging

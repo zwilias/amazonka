@@ -126,6 +126,10 @@ instance FromJSON MetricStatistic where
 
 data MetricType
   = ALBRequestCountPerTarget
+  | AppStreamAverageCapacityUtilization
+  | CassandraReadCapacityUtilization
+  | CassandraWriteCapacityUtilization
+  | ComprehendInferenceUtilization
   | DynamoDBReadCapacityUtilization
   | DynamoDBWriteCapacityUtilization
   | EC2SpotFleetRequestAverageCPUUtilization
@@ -133,6 +137,7 @@ data MetricType
   | EC2SpotFleetRequestAverageNetworkOut
   | ECSServiceAverageCPUUtilization
   | ECSServiceAverageMemoryUtilization
+  | LambdaProvisionedConcurrencyUtilization
   | RDSReaderAverageCPUUtilization
   | RDSReaderAverageDatabaseConnections
   | SageMakerVariantInvocationsPerInstance
@@ -142,6 +147,10 @@ data MetricType
 instance FromText MetricType where
     parser = takeLowerText >>= \case
         "albrequestcountpertarget" -> pure ALBRequestCountPerTarget
+        "appstreamaveragecapacityutilization" -> pure AppStreamAverageCapacityUtilization
+        "cassandrareadcapacityutilization" -> pure CassandraReadCapacityUtilization
+        "cassandrawritecapacityutilization" -> pure CassandraWriteCapacityUtilization
+        "comprehendinferenceutilization" -> pure ComprehendInferenceUtilization
         "dynamodbreadcapacityutilization" -> pure DynamoDBReadCapacityUtilization
         "dynamodbwritecapacityutilization" -> pure DynamoDBWriteCapacityUtilization
         "ec2spotfleetrequestaveragecpuutilization" -> pure EC2SpotFleetRequestAverageCPUUtilization
@@ -149,15 +158,20 @@ instance FromText MetricType where
         "ec2spotfleetrequestaveragenetworkout" -> pure EC2SpotFleetRequestAverageNetworkOut
         "ecsserviceaveragecpuutilization" -> pure ECSServiceAverageCPUUtilization
         "ecsserviceaveragememoryutilization" -> pure ECSServiceAverageMemoryUtilization
+        "lambdaprovisionedconcurrencyutilization" -> pure LambdaProvisionedConcurrencyUtilization
         "rdsreaderaveragecpuutilization" -> pure RDSReaderAverageCPUUtilization
         "rdsreaderaveragedatabaseconnections" -> pure RDSReaderAverageDatabaseConnections
         "sagemakervariantinvocationsperinstance" -> pure SageMakerVariantInvocationsPerInstance
         e -> fromTextError $ "Failure parsing MetricType from value: '" <> e
-           <> "'. Accepted values: albrequestcountpertarget, dynamodbreadcapacityutilization, dynamodbwritecapacityutilization, ec2spotfleetrequestaveragecpuutilization, ec2spotfleetrequestaveragenetworkin, ec2spotfleetrequestaveragenetworkout, ecsserviceaveragecpuutilization, ecsserviceaveragememoryutilization, rdsreaderaveragecpuutilization, rdsreaderaveragedatabaseconnections, sagemakervariantinvocationsperinstance"
+           <> "'. Accepted values: albrequestcountpertarget, appstreamaveragecapacityutilization, cassandrareadcapacityutilization, cassandrawritecapacityutilization, comprehendinferenceutilization, dynamodbreadcapacityutilization, dynamodbwritecapacityutilization, ec2spotfleetrequestaveragecpuutilization, ec2spotfleetrequestaveragenetworkin, ec2spotfleetrequestaveragenetworkout, ecsserviceaveragecpuutilization, ecsserviceaveragememoryutilization, lambdaprovisionedconcurrencyutilization, rdsreaderaveragecpuutilization, rdsreaderaveragedatabaseconnections, sagemakervariantinvocationsperinstance"
 
 instance ToText MetricType where
     toText = \case
         ALBRequestCountPerTarget -> "ALBRequestCountPerTarget"
+        AppStreamAverageCapacityUtilization -> "AppStreamAverageCapacityUtilization"
+        CassandraReadCapacityUtilization -> "CassandraReadCapacityUtilization"
+        CassandraWriteCapacityUtilization -> "CassandraWriteCapacityUtilization"
+        ComprehendInferenceUtilization -> "ComprehendInferenceUtilization"
         DynamoDBReadCapacityUtilization -> "DynamoDBReadCapacityUtilization"
         DynamoDBWriteCapacityUtilization -> "DynamoDBWriteCapacityUtilization"
         EC2SpotFleetRequestAverageCPUUtilization -> "EC2SpotFleetRequestAverageCPUUtilization"
@@ -165,6 +179,7 @@ instance ToText MetricType where
         EC2SpotFleetRequestAverageNetworkOut -> "EC2SpotFleetRequestAverageNetworkOut"
         ECSServiceAverageCPUUtilization -> "ECSServiceAverageCPUUtilization"
         ECSServiceAverageMemoryUtilization -> "ECSServiceAverageMemoryUtilization"
+        LambdaProvisionedConcurrencyUtilization -> "LambdaProvisionedConcurrencyUtilization"
         RDSReaderAverageCPUUtilization -> "RDSReaderAverageCPUUtilization"
         RDSReaderAverageDatabaseConnections -> "RDSReaderAverageDatabaseConnections"
         SageMakerVariantInvocationsPerInstance -> "SageMakerVariantInvocationsPerInstance"
@@ -213,6 +228,10 @@ instance FromJSON PolicyType where
 
 data ScalableDimension
   = AppstreamFleetDesiredCapacity
+  | CassandraTableReadCapacityUnits
+  | CassandraTableWriteCapacityUnits
+  | ComprehendDocumentClassifierEndpointDesiredInferenceUnits
+  | CustomResourceResourceTypeProperty
   | DynamodbIndexReadCapacityUnits
   | DynamodbIndexWriteCapacityUnits
   | DynamodbTableReadCapacityUnits
@@ -220,6 +239,7 @@ data ScalableDimension
   | EC2SpotFleetRequestTargetCapacity
   | EcsServiceDesiredCount
   | ElasticmapreduceInstancegroupInstanceCount
+  | LambdaFunctionProvisionedConcurrency
   | RDSClusterReadReplicaCount
   | SagemakerVariantDesiredInstanceCount
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
@@ -228,6 +248,10 @@ data ScalableDimension
 instance FromText ScalableDimension where
     parser = takeLowerText >>= \case
         "appstream:fleet:desiredcapacity" -> pure AppstreamFleetDesiredCapacity
+        "cassandra:table:readcapacityunits" -> pure CassandraTableReadCapacityUnits
+        "cassandra:table:writecapacityunits" -> pure CassandraTableWriteCapacityUnits
+        "comprehend:document-classifier-endpoint:desiredinferenceunits" -> pure ComprehendDocumentClassifierEndpointDesiredInferenceUnits
+        "custom-resource:resourcetype:property" -> pure CustomResourceResourceTypeProperty
         "dynamodb:index:readcapacityunits" -> pure DynamodbIndexReadCapacityUnits
         "dynamodb:index:writecapacityunits" -> pure DynamodbIndexWriteCapacityUnits
         "dynamodb:table:readcapacityunits" -> pure DynamodbTableReadCapacityUnits
@@ -235,14 +259,19 @@ instance FromText ScalableDimension where
         "ec2:spot-fleet-request:targetcapacity" -> pure EC2SpotFleetRequestTargetCapacity
         "ecs:service:desiredcount" -> pure EcsServiceDesiredCount
         "elasticmapreduce:instancegroup:instancecount" -> pure ElasticmapreduceInstancegroupInstanceCount
+        "lambda:function:provisionedconcurrency" -> pure LambdaFunctionProvisionedConcurrency
         "rds:cluster:readreplicacount" -> pure RDSClusterReadReplicaCount
         "sagemaker:variant:desiredinstancecount" -> pure SagemakerVariantDesiredInstanceCount
         e -> fromTextError $ "Failure parsing ScalableDimension from value: '" <> e
-           <> "'. Accepted values: appstream:fleet:desiredcapacity, dynamodb:index:readcapacityunits, dynamodb:index:writecapacityunits, dynamodb:table:readcapacityunits, dynamodb:table:writecapacityunits, ec2:spot-fleet-request:targetcapacity, ecs:service:desiredcount, elasticmapreduce:instancegroup:instancecount, rds:cluster:readreplicacount, sagemaker:variant:desiredinstancecount"
+           <> "'. Accepted values: appstream:fleet:desiredcapacity, cassandra:table:readcapacityunits, cassandra:table:writecapacityunits, comprehend:document-classifier-endpoint:desiredinferenceunits, custom-resource:resourcetype:property, dynamodb:index:readcapacityunits, dynamodb:index:writecapacityunits, dynamodb:table:readcapacityunits, dynamodb:table:writecapacityunits, ec2:spot-fleet-request:targetcapacity, ecs:service:desiredcount, elasticmapreduce:instancegroup:instancecount, lambda:function:provisionedconcurrency, rds:cluster:readreplicacount, sagemaker:variant:desiredinstancecount"
 
 instance ToText ScalableDimension where
     toText = \case
         AppstreamFleetDesiredCapacity -> "appstream:fleet:DesiredCapacity"
+        CassandraTableReadCapacityUnits -> "cassandra:table:ReadCapacityUnits"
+        CassandraTableWriteCapacityUnits -> "cassandra:table:WriteCapacityUnits"
+        ComprehendDocumentClassifierEndpointDesiredInferenceUnits -> "comprehend:document-classifier-endpoint:DesiredInferenceUnits"
+        CustomResourceResourceTypeProperty -> "custom-resource:ResourceType:Property"
         DynamodbIndexReadCapacityUnits -> "dynamodb:index:ReadCapacityUnits"
         DynamodbIndexWriteCapacityUnits -> "dynamodb:index:WriteCapacityUnits"
         DynamodbTableReadCapacityUnits -> "dynamodb:table:ReadCapacityUnits"
@@ -250,6 +279,7 @@ instance ToText ScalableDimension where
         EC2SpotFleetRequestTargetCapacity -> "ec2:spot-fleet-request:TargetCapacity"
         EcsServiceDesiredCount -> "ecs:service:DesiredCount"
         ElasticmapreduceInstancegroupInstanceCount -> "elasticmapreduce:instancegroup:InstanceCount"
+        LambdaFunctionProvisionedConcurrency -> "lambda:function:ProvisionedConcurrency"
         RDSClusterReadReplicaCount -> "rds:cluster:ReadReplicaCount"
         SagemakerVariantDesiredInstanceCount -> "sagemaker:variant:DesiredInstanceCount"
 
@@ -306,10 +336,14 @@ instance FromJSON ScalingActivityStatusCode where
 
 data ServiceNamespace
   = Appstream
+  | Cassandra
+  | Comprehend
+  | CustomResource
   | Dynamodb
   | EC2
   | Ecs
   | Elasticmapreduce
+  | Lambda
   | RDS
   | Sagemaker
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
@@ -318,22 +352,30 @@ data ServiceNamespace
 instance FromText ServiceNamespace where
     parser = takeLowerText >>= \case
         "appstream" -> pure Appstream
+        "cassandra" -> pure Cassandra
+        "comprehend" -> pure Comprehend
+        "custom-resource" -> pure CustomResource
         "dynamodb" -> pure Dynamodb
         "ec2" -> pure EC2
         "ecs" -> pure Ecs
         "elasticmapreduce" -> pure Elasticmapreduce
+        "lambda" -> pure Lambda
         "rds" -> pure RDS
         "sagemaker" -> pure Sagemaker
         e -> fromTextError $ "Failure parsing ServiceNamespace from value: '" <> e
-           <> "'. Accepted values: appstream, dynamodb, ec2, ecs, elasticmapreduce, rds, sagemaker"
+           <> "'. Accepted values: appstream, cassandra, comprehend, custom-resource, dynamodb, ec2, ecs, elasticmapreduce, lambda, rds, sagemaker"
 
 instance ToText ServiceNamespace where
     toText = \case
         Appstream -> "appstream"
+        Cassandra -> "cassandra"
+        Comprehend -> "comprehend"
+        CustomResource -> "custom-resource"
         Dynamodb -> "dynamodb"
         EC2 -> "ec2"
         Ecs -> "ecs"
         Elasticmapreduce -> "elasticmapreduce"
+        Lambda -> "lambda"
         RDS -> "rds"
         Sagemaker -> "sagemaker"
 

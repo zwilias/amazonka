@@ -48,10 +48,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startSchemaCreation' smart constructor.
-data StartSchemaCreation = StartSchemaCreation'
-  { _sscApiId      :: !Text
-  , _sscDefinition :: !Base64
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data StartSchemaCreation =
+  StartSchemaCreation'
+    { _sscApiId      :: !Text
+    , _sscDefinition :: !Base64
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'StartSchemaCreation' with the minimum fields required to make a request.
@@ -113,17 +115,19 @@ instance ToQuery StartSchemaCreation where
         toQuery = const mempty
 
 -- | /See:/ 'startSchemaCreationResponse' smart constructor.
-data StartSchemaCreationResponse = StartSchemaCreationResponse'
-  { _sscrsStatus         :: !(Maybe SchemaStatus)
-  , _sscrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data StartSchemaCreationResponse =
+  StartSchemaCreationResponse'
+    { _sscrsStatus         :: !(Maybe SchemaStatus)
+    , _sscrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'StartSchemaCreationResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sscrsStatus' - The current state of the schema (PROCESSING, ACTIVE, or DELETING). Once the schema is in the ACTIVE state, you can add data.
+-- * 'sscrsStatus' - The current state of the schema (PROCESSING, FAILED, SUCCESS, or NOT_APPLICABLE). When the schema is in the ACTIVE state, you can add data.
 --
 -- * 'sscrsResponseStatus' - -- | The response status code.
 startSchemaCreationResponse
@@ -134,7 +138,7 @@ startSchemaCreationResponse pResponseStatus_ =
     {_sscrsStatus = Nothing, _sscrsResponseStatus = pResponseStatus_}
 
 
--- | The current state of the schema (PROCESSING, ACTIVE, or DELETING). Once the schema is in the ACTIVE state, you can add data.
+-- | The current state of the schema (PROCESSING, FAILED, SUCCESS, or NOT_APPLICABLE). When the schema is in the ACTIVE state, you can add data.
 sscrsStatus :: Lens' StartSchemaCreationResponse (Maybe SchemaStatus)
 sscrsStatus = lens _sscrsStatus (\ s a -> s{_sscrsStatus = a})
 

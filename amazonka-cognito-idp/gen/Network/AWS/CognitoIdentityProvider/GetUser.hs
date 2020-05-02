@@ -53,9 +53,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getUser' smart constructor.
-newtype GetUser = GetUser'
-  { _guAccessToken :: Sensitive Text
-  } deriving (Eq, Show, Data, Typeable, Generic)
+newtype GetUser =
+  GetUser'
+    { _guAccessToken :: Sensitive Text
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetUser' with the minimum fields required to make a request.
@@ -117,23 +119,25 @@ instance ToQuery GetUser where
 --
 --
 -- /See:/ 'getUserResponse' smart constructor.
-data GetUserResponse = GetUserResponse'
-  { _gursUserMFASettingList  :: !(Maybe [Text])
-  , _gursMFAOptions          :: !(Maybe [MFAOptionType])
-  , _gursPreferredMFASetting :: !(Maybe Text)
-  , _gursResponseStatus      :: !Int
-  , _gursUsername            :: !(Sensitive Text)
-  , _gursUserAttributes      :: ![AttributeType]
-  } deriving (Eq, Show, Data, Typeable, Generic)
+data GetUserResponse =
+  GetUserResponse'
+    { _gursUserMFASettingList  :: !(Maybe [Text])
+    , _gursMFAOptions          :: !(Maybe [MFAOptionType])
+    , _gursPreferredMFASetting :: !(Maybe Text)
+    , _gursResponseStatus      :: !Int
+    , _gursUsername            :: !(Sensitive Text)
+    , _gursUserAttributes      :: ![AttributeType]
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetUserResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gursUserMFASettingList' - The list of the user's MFA settings.
+-- * 'gursUserMFASettingList' - The MFA options that are enabled for the user. The possible values in this list are @SMS_MFA@ and @SOFTWARE_TOKEN_MFA@ .
 --
--- * 'gursMFAOptions' - Specifies the options for MFA (e.g., email or phone number).
+-- * 'gursMFAOptions' - /This response parameter is no longer supported./ It provides information only about SMS MFA configurations. It doesn't provide information about TOTP software token MFA configurations. To look up information about either type of MFA configuration, use the use the 'GetUserResponse$UserMFASettingList' response instead.
 --
 -- * 'gursPreferredMFASetting' - The user's preferred MFA setting.
 --
@@ -157,11 +161,11 @@ getUserResponse pResponseStatus_ pUsername_ =
     }
 
 
--- | The list of the user's MFA settings.
+-- | The MFA options that are enabled for the user. The possible values in this list are @SMS_MFA@ and @SOFTWARE_TOKEN_MFA@ .
 gursUserMFASettingList :: Lens' GetUserResponse [Text]
 gursUserMFASettingList = lens _gursUserMFASettingList (\ s a -> s{_gursUserMFASettingList = a}) . _Default . _Coerce
 
--- | Specifies the options for MFA (e.g., email or phone number).
+-- | /This response parameter is no longer supported./ It provides information only about SMS MFA configurations. It doesn't provide information about TOTP software token MFA configurations. To look up information about either type of MFA configuration, use the use the 'GetUserResponse$UserMFASettingList' response instead.
 gursMFAOptions :: Lens' GetUserResponse [MFAOptionType]
 gursMFAOptions = lens _gursMFAOptions (\ s a -> s{_gursMFAOptions = a}) . _Default . _Coerce
 

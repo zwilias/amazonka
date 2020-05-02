@@ -25,6 +25,9 @@ module Network.AWS.CloudSearch
     -- * Errors
     -- $errors
 
+    -- ** ValidationException
+    , _ValidationException
+
     -- ** BaseException
     , _BaseException
 
@@ -85,11 +88,17 @@ module Network.AWS.CloudSearch
     -- ** DeleteAnalysisScheme
     , module Network.AWS.CloudSearch.DeleteAnalysisScheme
 
+    -- ** DescribeDomainEndpointOptions
+    , module Network.AWS.CloudSearch.DescribeDomainEndpointOptions
+
     -- ** DescribeAnalysisSchemes
     , module Network.AWS.CloudSearch.DescribeAnalysisSchemes
 
     -- ** CreateDomain
     , module Network.AWS.CloudSearch.CreateDomain
+
+    -- ** UpdateDomainEndpointOptions
+    , module Network.AWS.CloudSearch.UpdateDomainEndpointOptions
 
     -- ** DescribeIndexFields
     , module Network.AWS.CloudSearch.DescribeIndexFields
@@ -140,6 +149,9 @@ module Network.AWS.CloudSearch
 
     -- ** SuggesterFuzzyMatching
     , SuggesterFuzzyMatching (..)
+
+    -- ** TLSSecurityPolicy
+    , TLSSecurityPolicy (..)
 
     -- ** AccessPoliciesStatus
     , AccessPoliciesStatus
@@ -200,6 +212,18 @@ module Network.AWS.CloudSearch
     , dsoSortExpression
     , dsoFuzzyMatching
     , dsoSourceField
+
+    -- ** DomainEndpointOptions
+    , DomainEndpointOptions
+    , domainEndpointOptions
+    , deoEnforceHTTPS
+    , deoTLSSecurityPolicy
+
+    -- ** DomainEndpointOptionsStatus
+    , DomainEndpointOptionsStatus
+    , domainEndpointOptionsStatus
+    , deosOptions
+    , deosStatus
 
     -- ** DomainStatus
     , DomainStatus
@@ -398,6 +422,7 @@ import Network.AWS.CloudSearch.DeleteIndexField
 import Network.AWS.CloudSearch.DeleteSuggester
 import Network.AWS.CloudSearch.DescribeAnalysisSchemes
 import Network.AWS.CloudSearch.DescribeAvailabilityOptions
+import Network.AWS.CloudSearch.DescribeDomainEndpointOptions
 import Network.AWS.CloudSearch.DescribeDomains
 import Network.AWS.CloudSearch.DescribeExpressions
 import Network.AWS.CloudSearch.DescribeIndexFields
@@ -408,6 +433,7 @@ import Network.AWS.CloudSearch.IndexDocuments
 import Network.AWS.CloudSearch.ListDomainNames
 import Network.AWS.CloudSearch.Types
 import Network.AWS.CloudSearch.UpdateAvailabilityOptions
+import Network.AWS.CloudSearch.UpdateDomainEndpointOptions
 import Network.AWS.CloudSearch.UpdateScalingParameters
 import Network.AWS.CloudSearch.UpdateServiceAccessPolicies
 import Network.AWS.CloudSearch.Waiters

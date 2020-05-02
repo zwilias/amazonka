@@ -171,7 +171,7 @@ systemStatusOK =
             "ok"
             AcceptSuccess
             (folding (concatOf disrsInstanceStatuses) .
-             isSystemStatus . _Just . issStatus . to toTextCI)
+             iSystemStatus . _Just . issStatus . to toTextCI)
         ]
     }
 
@@ -613,7 +613,7 @@ instanceStatusOK =
             "ok"
             AcceptSuccess
             (folding (concatOf disrsInstanceStatuses) .
-             isInstanceStatus . _Just . issStatus . to toTextCI)
+             iInstanceStatus . _Just . issStatus . to toTextCI)
         , matchError "InvalidInstanceID.NotFound" AcceptRetry
         ]
     }

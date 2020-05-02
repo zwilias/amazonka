@@ -25,7 +25,7 @@
 --
 -- You cannot delete a snapshot of the root device of an EBS volume used by a registered AMI. You must first de-register the AMI before you can delete the snapshot.
 --
--- For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-snapshot.html Deleting an Amazon EBS Snapshot> in the /Amazon Elastic Compute Cloud User Guide/ .
+-- For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-snapshot.html Deleting an Amazon EBS Snapshot> in the /Amazon Elastic Compute Cloud User Guide/ .
 --
 module Network.AWS.EC2.DeleteSnapshot
     (
@@ -48,15 +48,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for DeleteSnapshot.
---
---
---
--- /See:/ 'deleteSnapshot' smart constructor.
-data DeleteSnapshot = DeleteSnapshot'
-  { _deleDryRun     :: !(Maybe Bool)
-  , _deleSnapshotId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'deleteSnapshot' smart constructor.
+data DeleteSnapshot =
+  DeleteSnapshot'
+    { _deleDryRun     :: !(Maybe Bool)
+    , _deleSnapshotId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteSnapshot' with the minimum fields required to make a request.

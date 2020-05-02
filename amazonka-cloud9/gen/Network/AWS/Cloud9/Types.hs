@@ -24,6 +24,9 @@ module Network.AWS.Cloud9.Types
     , _BadRequestException
     , _LimitExceededException
 
+    -- * EnvironmentLifecycleStatus
+    , EnvironmentLifecycleStatus (..)
+
     -- * EnvironmentStatus
     , EnvironmentStatus (..)
 
@@ -40,11 +43,19 @@ module Network.AWS.Cloud9.Types
     , Environment
     , environment
     , eArn
+    , eLifecycle
     , eOwnerARN
     , eName
     , eId
     , eType
     , eDescription
+
+    -- * EnvironmentLifecycle
+    , EnvironmentLifecycle
+    , environmentLifecycle
+    , elStatus
+    , elFailureResource
+    , elReason
 
     -- * EnvironmentMember
     , EnvironmentMember
@@ -54,6 +65,12 @@ module Network.AWS.Cloud9.Types
     , emUserARN
     , emPermissions
     , emEnvironmentId
+
+    -- * Tag
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
     ) where
 
 import Network.AWS.Cloud9.Types.Product

@@ -18,12 +18,12 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Disassociates the specified tags from the specified AppStream 2.0 resource.
+-- Disassociates one or more specified tags from the specified AppStream 2.0 resource.
 --
 --
 -- To list the current tags for your resources, use 'ListTagsForResource' .
 --
--- For more information about tags, see <http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html Tagging Your Resources> in the /Amazon AppStream 2.0 Developer Guide/ .
+-- For more information about tags, see <https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html Tagging Your Resources> in the /Amazon AppStream 2.0 Administration Guide/ .
 --
 module Network.AWS.AppStream.UntagResource
     (
@@ -49,10 +49,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'untagResource' smart constructor.
-data UntagResource = UntagResource'
-  { _urResourceARN :: !Text
-  , _urTagKeys     :: !(List1 Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data UntagResource =
+  UntagResource'
+    { _urResourceARN :: !Text
+    , _urTagKeys     :: !(List1 Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UntagResource' with the minimum fields required to make a request.
@@ -115,9 +117,11 @@ instance ToQuery UntagResource where
         toQuery = const mempty
 
 -- | /See:/ 'untagResourceResponse' smart constructor.
-newtype UntagResourceResponse = UntagResourceResponse'
-  { _urrsResponseStatus :: Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype UntagResourceResponse =
+  UntagResourceResponse'
+    { _urrsResponseStatus :: Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UntagResourceResponse' with the minimum fields required to make a request.

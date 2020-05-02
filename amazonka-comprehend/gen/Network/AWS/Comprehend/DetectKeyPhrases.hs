@@ -46,10 +46,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'detectKeyPhrases' smart constructor.
-data DetectKeyPhrases = DetectKeyPhrases'
-  { _dkpText         :: !Text
-  , _dkpLanguageCode :: !LanguageCode
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DetectKeyPhrases =
+  DetectKeyPhrases'
+    { _dkpText         :: !Text
+    , _dkpLanguageCode :: !LanguageCode
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DetectKeyPhrases' with the minimum fields required to make a request.
@@ -58,7 +60,7 @@ data DetectKeyPhrases = DetectKeyPhrases'
 --
 -- * 'dkpText' - A UTF-8 text string. Each string must contain fewer that 5,000 bytes of UTF-8 encoded characters.
 --
--- * 'dkpLanguageCode' - The RFC 5646 language code for the input text. If you don't specify a language code, Amazon Comprehend detects the dominant language. If you specify the code for a language that Amazon Comprehend does not support, it returns and @UnsupportedLanguageException@ . For more information about RFC 5646, see <https://tools.ietf.org/html/rfc5646 Tags for Identifying Languages> on the /IETF Tools/ web site.
+-- * 'dkpLanguageCode' - The language of the input documents. You can specify any of the primary languages supported by Amazon Comprehend. All documents must be in the same language.
 detectKeyPhrases
     :: Text -- ^ 'dkpText'
     -> LanguageCode -- ^ 'dkpLanguageCode'
@@ -71,7 +73,7 @@ detectKeyPhrases pText_ pLanguageCode_ =
 dkpText :: Lens' DetectKeyPhrases Text
 dkpText = lens _dkpText (\ s a -> s{_dkpText = a})
 
--- | The RFC 5646 language code for the input text. If you don't specify a language code, Amazon Comprehend detects the dominant language. If you specify the code for a language that Amazon Comprehend does not support, it returns and @UnsupportedLanguageException@ . For more information about RFC 5646, see <https://tools.ietf.org/html/rfc5646 Tags for Identifying Languages> on the /IETF Tools/ web site.
+-- | The language of the input documents. You can specify any of the primary languages supported by Amazon Comprehend. All documents must be in the same language.
 dkpLanguageCode :: Lens' DetectKeyPhrases LanguageCode
 dkpLanguageCode = lens _dkpLanguageCode (\ s a -> s{_dkpLanguageCode = a})
 
@@ -113,10 +115,12 @@ instance ToQuery DetectKeyPhrases where
         toQuery = const mempty
 
 -- | /See:/ 'detectKeyPhrasesResponse' smart constructor.
-data DetectKeyPhrasesResponse = DetectKeyPhrasesResponse'
-  { _dkprsKeyPhrases     :: !(Maybe [KeyPhrase])
-  , _dkprsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DetectKeyPhrasesResponse =
+  DetectKeyPhrasesResponse'
+    { _dkprsKeyPhrases     :: !(Maybe [KeyPhrase])
+    , _dkprsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DetectKeyPhrasesResponse' with the minimum fields required to make a request.

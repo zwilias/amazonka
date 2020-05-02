@@ -29,6 +29,7 @@ module Network.AWS.EC2.CreateLaunchTemplate
     -- * Request Lenses
     , cltClientToken
     , cltVersionDescription
+    , cltTagSpecifications
     , cltDryRun
     , cltLaunchTemplateName
     , cltLaunchTemplateData
@@ -49,22 +50,27 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createLaunchTemplate' smart constructor.
-data CreateLaunchTemplate = CreateLaunchTemplate'
-  { _cltClientToken        :: !(Maybe Text)
-  , _cltVersionDescription :: !(Maybe Text)
-  , _cltDryRun             :: !(Maybe Bool)
-  , _cltLaunchTemplateName :: !Text
-  , _cltLaunchTemplateData :: !RequestLaunchTemplateData
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreateLaunchTemplate =
+  CreateLaunchTemplate'
+    { _cltClientToken        :: !(Maybe Text)
+    , _cltVersionDescription :: !(Maybe Text)
+    , _cltTagSpecifications  :: !(Maybe [TagSpecification])
+    , _cltDryRun             :: !(Maybe Bool)
+    , _cltLaunchTemplateName :: !Text
+    , _cltLaunchTemplateData :: !RequestLaunchTemplateData
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateLaunchTemplate' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cltClientToken' - Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html Ensuring Idempotency> .
+-- * 'cltClientToken' - Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html Ensuring Idempotency> . Constraint: Maximum 128 ASCII characters.
 --
 -- * 'cltVersionDescription' - A description for the first version of the launch template.
+--
+-- * 'cltTagSpecifications' - The tags to apply to the launch template during creation.
 --
 -- * 'cltDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
@@ -79,19 +85,24 @@ createLaunchTemplate pLaunchTemplateName_ pLaunchTemplateData_ =
   CreateLaunchTemplate'
     { _cltClientToken = Nothing
     , _cltVersionDescription = Nothing
+    , _cltTagSpecifications = Nothing
     , _cltDryRun = Nothing
     , _cltLaunchTemplateName = pLaunchTemplateName_
     , _cltLaunchTemplateData = pLaunchTemplateData_
     }
 
 
--- | Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html Ensuring Idempotency> .
+-- | Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html Ensuring Idempotency> . Constraint: Maximum 128 ASCII characters.
 cltClientToken :: Lens' CreateLaunchTemplate (Maybe Text)
 cltClientToken = lens _cltClientToken (\ s a -> s{_cltClientToken = a})
 
 -- | A description for the first version of the launch template.
 cltVersionDescription :: Lens' CreateLaunchTemplate (Maybe Text)
 cltVersionDescription = lens _cltVersionDescription (\ s a -> s{_cltVersionDescription = a})
+
+-- | The tags to apply to the launch template during creation.
+cltTagSpecifications :: Lens' CreateLaunchTemplate [TagSpecification]
+cltTagSpecifications = lens _cltTagSpecifications (\ s a -> s{_cltTagSpecifications = a}) . _Default . _Coerce
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 cltDryRun :: Lens' CreateLaunchTemplate (Maybe Bool)
@@ -132,15 +143,20 @@ instance ToQuery CreateLaunchTemplate where
                "Version" =: ("2016-11-15" :: ByteString),
                "ClientToken" =: _cltClientToken,
                "VersionDescription" =: _cltVersionDescription,
+               toQuery
+                 (toQueryList "TagSpecification" <$>
+                    _cltTagSpecifications),
                "DryRun" =: _cltDryRun,
                "LaunchTemplateName" =: _cltLaunchTemplateName,
                "LaunchTemplateData" =: _cltLaunchTemplateData]
 
 -- | /See:/ 'createLaunchTemplateResponse' smart constructor.
-data CreateLaunchTemplateResponse = CreateLaunchTemplateResponse'
-  { _cltrsLaunchTemplate :: !(Maybe LaunchTemplate)
-  , _cltrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreateLaunchTemplateResponse =
+  CreateLaunchTemplateResponse'
+    { _cltrsLaunchTemplate :: !(Maybe LaunchTemplate)
+    , _cltrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateLaunchTemplateResponse' with the minimum fields required to make a request.

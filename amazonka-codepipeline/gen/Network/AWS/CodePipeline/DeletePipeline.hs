@@ -41,14 +41,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Represents the input of a DeletePipeline action.
+-- | Represents the input of a @DeletePipeline@ action.
 --
 --
 --
 -- /See:/ 'deletePipeline' smart constructor.
-newtype DeletePipeline = DeletePipeline'
-  { _dpName :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype DeletePipeline =
+  DeletePipeline'
+    { _dpName :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeletePipeline' with the minimum fields required to make a request.

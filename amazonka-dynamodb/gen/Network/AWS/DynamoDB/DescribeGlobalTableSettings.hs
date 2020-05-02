@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Describes region specific settings for a global table.
+-- Describes Region-specific settings for a global table.
 --
 --
 module Network.AWS.DynamoDB.DescribeGlobalTableSettings
@@ -46,9 +46,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeGlobalTableSettings' smart constructor.
-newtype DescribeGlobalTableSettings = DescribeGlobalTableSettings'
-  { _dgtsGlobalTableName :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype DescribeGlobalTableSettings =
+  DescribeGlobalTableSettings'
+    { _dgtsGlobalTableName :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeGlobalTableSettings' with the minimum fields required to make a request.
@@ -106,18 +108,20 @@ instance ToQuery DescribeGlobalTableSettings where
         toQuery = const mempty
 
 -- | /See:/ 'describeGlobalTableSettingsResponse' smart constructor.
-data DescribeGlobalTableSettingsResponse = DescribeGlobalTableSettingsResponse'
-  { _dgtsrsReplicaSettings :: !(Maybe [ReplicaSettingsDescription])
-  , _dgtsrsGlobalTableName :: !(Maybe Text)
-  , _dgtsrsResponseStatus  :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeGlobalTableSettingsResponse =
+  DescribeGlobalTableSettingsResponse'
+    { _dgtsrsReplicaSettings :: !(Maybe [ReplicaSettingsDescription])
+    , _dgtsrsGlobalTableName :: !(Maybe Text)
+    , _dgtsrsResponseStatus  :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeGlobalTableSettingsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dgtsrsReplicaSettings' - The region specific settings for the global table.
+-- * 'dgtsrsReplicaSettings' - The Region-specific settings for the global table.
 --
 -- * 'dgtsrsGlobalTableName' - The name of the global table.
 --
@@ -133,7 +137,7 @@ describeGlobalTableSettingsResponse pResponseStatus_ =
     }
 
 
--- | The region specific settings for the global table.
+-- | The Region-specific settings for the global table.
 dgtsrsReplicaSettings :: Lens' DescribeGlobalTableSettingsResponse [ReplicaSettingsDescription]
 dgtsrsReplicaSettings = lens _dgtsrsReplicaSettings (\ s a -> s{_dgtsrsReplicaSettings = a}) . _Default . _Coerce
 

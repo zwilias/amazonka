@@ -21,6 +21,8 @@
 -- Describes your import snapshot tasks.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.EC2.DescribeImportSnapshotTasks
     (
     -- * Creating a Request
@@ -45,29 +47,28 @@ module Network.AWS.EC2.DescribeImportSnapshotTasks
 import Network.AWS.EC2.Types
 import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for DescribeImportSnapshotTasks.
---
---
---
--- /See:/ 'describeImportSnapshotTasks' smart constructor.
-data DescribeImportSnapshotTasks = DescribeImportSnapshotTasks'
-  { _distFilters       :: !(Maybe [Filter])
-  , _distImportTaskIds :: !(Maybe [Text])
-  , _distNextToken     :: !(Maybe Text)
-  , _distDryRun        :: !(Maybe Bool)
-  , _distMaxResults    :: !(Maybe Int)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'describeImportSnapshotTasks' smart constructor.
+data DescribeImportSnapshotTasks =
+  DescribeImportSnapshotTasks'
+    { _distFilters       :: !(Maybe [Filter])
+    , _distImportTaskIds :: !(Maybe [Text])
+    , _distNextToken     :: !(Maybe Text)
+    , _distDryRun        :: !(Maybe Bool)
+    , _distMaxResults    :: !(Maybe Int)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeImportSnapshotTasks' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'distFilters' - One or more filters.
+-- * 'distFilters' - The filters.
 --
 -- * 'distImportTaskIds' - A list of import snapshot task IDs.
 --
@@ -88,7 +89,7 @@ describeImportSnapshotTasks =
     }
 
 
--- | One or more filters.
+-- | The filters.
 distFilters :: Lens' DescribeImportSnapshotTasks [Filter]
 distFilters = lens _distFilters (\ s a -> s{_distFilters = a}) . _Default . _Coerce
 
@@ -107,6 +108,13 @@ distDryRun = lens _distDryRun (\ s a -> s{_distDryRun = a})
 -- | The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned @NextToken@ value.
 distMaxResults :: Lens' DescribeImportSnapshotTasks (Maybe Int)
 distMaxResults = lens _distMaxResults (\ s a -> s{_distMaxResults = a})
+
+instance AWSPager DescribeImportSnapshotTasks where
+        page rq rs
+          | stop (rs ^. distrsNextToken) = Nothing
+          | stop (rs ^. distrsImportSnapshotTasks) = Nothing
+          | otherwise =
+            Just $ rq & distNextToken .~ rs ^. distrsNextToken
 
 instance AWSRequest DescribeImportSnapshotTasks where
         type Rs DescribeImportSnapshotTasks =
@@ -144,16 +152,14 @@ instance ToQuery DescribeImportSnapshotTasks where
                "DryRun" =: _distDryRun,
                "MaxResults" =: _distMaxResults]
 
--- | Contains the output for DescribeImportSnapshotTasks.
---
---
---
--- /See:/ 'describeImportSnapshotTasksResponse' smart constructor.
-data DescribeImportSnapshotTasksResponse = DescribeImportSnapshotTasksResponse'
-  { _distrsNextToken           :: !(Maybe Text)
-  , _distrsImportSnapshotTasks :: !(Maybe [ImportSnapshotTask])
-  , _distrsResponseStatus      :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'describeImportSnapshotTasksResponse' smart constructor.
+data DescribeImportSnapshotTasksResponse =
+  DescribeImportSnapshotTasksResponse'
+    { _distrsNextToken           :: !(Maybe Text)
+    , _distrsImportSnapshotTasks :: !(Maybe [ImportSnapshotTask])
+    , _distrsResponseStatus      :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeImportSnapshotTasksResponse' with the minimum fields required to make a request.

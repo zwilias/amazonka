@@ -21,6 +21,8 @@
 -- Returns the evaluation results for the specified AWS Config rule for a specific resource in a rule. The results indicate which AWS resources were evaluated by the rule, when each resource was last evaluated, and whether each resource complies with the rule.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.Config.GetAggregateComplianceDetailsByConfigRule
     (
     -- * Creating a Request
@@ -47,27 +49,30 @@ module Network.AWS.Config.GetAggregateComplianceDetailsByConfigRule
 import Network.AWS.Config.Types
 import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getAggregateComplianceDetailsByConfigRule' smart constructor.
-data GetAggregateComplianceDetailsByConfigRule = GetAggregateComplianceDetailsByConfigRule'
-  { _gacdbcrNextToken                   :: !(Maybe Text)
-  , _gacdbcrLimit                       :: !(Maybe Nat)
-  , _gacdbcrComplianceType              :: !(Maybe ComplianceType)
-  , _gacdbcrConfigurationAggregatorName :: !Text
-  , _gacdbcrConfigRuleName              :: !Text
-  , _gacdbcrAccountId                   :: !Text
-  , _gacdbcrAWSRegion                   :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetAggregateComplianceDetailsByConfigRule =
+  GetAggregateComplianceDetailsByConfigRule'
+    { _gacdbcrNextToken                   :: !(Maybe Text)
+    , _gacdbcrLimit                       :: !(Maybe Nat)
+    , _gacdbcrComplianceType              :: !(Maybe ComplianceType)
+    , _gacdbcrConfigurationAggregatorName :: !Text
+    , _gacdbcrConfigRuleName              :: !Text
+    , _gacdbcrAccountId                   :: !Text
+    , _gacdbcrAWSRegion                   :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetAggregateComplianceDetailsByConfigRule' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gacdbcrNextToken' - The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+-- * 'gacdbcrNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
 --
 -- * 'gacdbcrLimit' - The maximum number of evaluation results returned on each page. The default is 50. You cannot specify a number greater than 100. If you specify 0, AWS Config uses the default.
 --
@@ -98,7 +103,7 @@ getAggregateComplianceDetailsByConfigRule pConfigurationAggregatorName_ pConfigR
     }
 
 
--- | The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+-- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
 gacdbcrNextToken :: Lens' GetAggregateComplianceDetailsByConfigRule (Maybe Text)
 gacdbcrNextToken = lens _gacdbcrNextToken (\ s a -> s{_gacdbcrNextToken = a})
 
@@ -125,6 +130,17 @@ gacdbcrAccountId = lens _gacdbcrAccountId (\ s a -> s{_gacdbcrAccountId = a})
 -- | The source region from where the data is aggregated.
 gacdbcrAWSRegion :: Lens' GetAggregateComplianceDetailsByConfigRule Text
 gacdbcrAWSRegion = lens _gacdbcrAWSRegion (\ s a -> s{_gacdbcrAWSRegion = a})
+
+instance AWSPager
+           GetAggregateComplianceDetailsByConfigRule
+         where
+        page rq rs
+          | stop (rs ^. gacdbcrrsNextToken) = Nothing
+          | stop (rs ^. gacdbcrrsAggregateEvaluationResults) =
+            Nothing
+          | otherwise =
+            Just $ rq &
+              gacdbcrNextToken .~ rs ^. gacdbcrrsNextToken
 
 instance AWSRequest
            GetAggregateComplianceDetailsByConfigRule
@@ -188,18 +204,20 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'getAggregateComplianceDetailsByConfigRuleResponse' smart constructor.
-data GetAggregateComplianceDetailsByConfigRuleResponse = GetAggregateComplianceDetailsByConfigRuleResponse'
-  { _gacdbcrrsNextToken                  :: !(Maybe Text)
-  , _gacdbcrrsAggregateEvaluationResults :: !(Maybe [AggregateEvaluationResult])
-  , _gacdbcrrsResponseStatus             :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetAggregateComplianceDetailsByConfigRuleResponse =
+  GetAggregateComplianceDetailsByConfigRuleResponse'
+    { _gacdbcrrsNextToken :: !(Maybe Text)
+    , _gacdbcrrsAggregateEvaluationResults :: !(Maybe [AggregateEvaluationResult])
+    , _gacdbcrrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetAggregateComplianceDetailsByConfigRuleResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gacdbcrrsNextToken' - The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+-- * 'gacdbcrrsNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
 --
 -- * 'gacdbcrrsAggregateEvaluationResults' - Returns an AggregateEvaluationResults object.
 --
@@ -215,7 +233,7 @@ getAggregateComplianceDetailsByConfigRuleResponse pResponseStatus_ =
     }
 
 
--- | The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+-- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
 gacdbcrrsNextToken :: Lens' GetAggregateComplianceDetailsByConfigRuleResponse (Maybe Text)
 gacdbcrrsNextToken = lens _gacdbcrrsNextToken (\ s a -> s{_gacdbcrrsNextToken = a})
 

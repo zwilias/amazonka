@@ -39,12 +39,12 @@ streamingDistributionDeployed =
     }
 
 
--- | Polls 'Network.AWS.CloudFront.GetDistribution' every 60 seconds until a successful state is reached. An error is returned after 25 failed checks.
+-- | Polls 'Network.AWS.CloudFront.GetDistribution' every 60 seconds until a successful state is reached. An error is returned after 35 failed checks.
 distributionDeployed :: Wait GetDistribution
 distributionDeployed =
   Wait
     { _waitName = "DistributionDeployed"
-    , _waitAttempts = 25
+    , _waitAttempts = 35
     , _waitDelay = 60
     , _waitAcceptors =
         [ matchAll

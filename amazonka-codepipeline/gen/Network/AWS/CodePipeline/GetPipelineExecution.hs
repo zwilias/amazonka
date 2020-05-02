@@ -45,15 +45,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Represents the input of a GetPipelineExecution action.
+-- | Represents the input of a @GetPipelineExecution@ action.
 --
 --
 --
 -- /See:/ 'getPipelineExecution' smart constructor.
-data GetPipelineExecution = GetPipelineExecution'
-  { _gpePipelineName        :: !Text
-  , _gpePipelineExecutionId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetPipelineExecution =
+  GetPipelineExecution'
+    { _gpePipelineName        :: !Text
+    , _gpePipelineExecutionId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetPipelineExecution' with the minimum fields required to make a request.
@@ -120,15 +122,17 @@ instance ToPath GetPipelineExecution where
 instance ToQuery GetPipelineExecution where
         toQuery = const mempty
 
--- | Represents the output of a GetPipelineExecution action.
+-- | Represents the output of a @GetPipelineExecution@ action.
 --
 --
 --
 -- /See:/ 'getPipelineExecutionResponse' smart constructor.
-data GetPipelineExecutionResponse = GetPipelineExecutionResponse'
-  { _gpersPipelineExecution :: !(Maybe PipelineExecution)
-  , _gpersResponseStatus    :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetPipelineExecutionResponse =
+  GetPipelineExecutionResponse'
+    { _gpersPipelineExecution :: !(Maybe PipelineExecution)
+    , _gpersResponseStatus    :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetPipelineExecutionResponse' with the minimum fields required to make a request.

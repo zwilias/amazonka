@@ -71,6 +71,8 @@ module Network.AWS.AutoScaling.Types
     , asgNewInstancesProtectedFromScaleIn
     , asgVPCZoneIdentifier
     , asgTargetGroupARNs
+    , asgMaxInstanceLifetime
+    , asgMixedInstancesPolicy
     , asgEnabledMetrics
     , asgLaunchConfigurationName
     , asgInstances
@@ -92,6 +94,8 @@ module Network.AWS.AutoScaling.Types
     -- * AutoScalingInstanceDetails
     , AutoScalingInstanceDetails
     , autoScalingInstanceDetails
+    , asidWeightedCapacity
+    , asidInstanceType
     , asidLaunchConfigurationName
     , asidLaunchTemplate
     , asidInstanceId
@@ -134,6 +138,13 @@ module Network.AWS.AutoScaling.Types
     , emGranularity
     , emMetric
 
+    -- * FailedScheduledUpdateGroupActionRequest
+    , FailedScheduledUpdateGroupActionRequest
+    , failedScheduledUpdateGroupActionRequest
+    , fsugarErrorCode
+    , fsugarErrorMessage
+    , fsugarScheduledActionName
+
     -- * Filter
     , Filter
     , filter'
@@ -143,6 +154,8 @@ module Network.AWS.AutoScaling.Types
     -- * Instance
     , Instance
     , instance'
+    , iWeightedCapacity
+    , iInstanceType
     , iLaunchConfigurationName
     , iLaunchTemplate
     , iInstanceId
@@ -155,6 +168,16 @@ module Network.AWS.AutoScaling.Types
     , InstanceMonitoring
     , instanceMonitoring
     , imEnabled
+
+    -- * InstancesDistribution
+    , InstancesDistribution
+    , instancesDistribution
+    , idSpotAllocationStrategy
+    , idSpotInstancePools
+    , idSpotMaxPrice
+    , idOnDemandBaseCapacity
+    , idOnDemandAllocationStrategy
+    , idOnDemandPercentageAboveBaseCapacity
 
     -- * LaunchConfiguration
     , LaunchConfiguration
@@ -178,6 +201,18 @@ module Network.AWS.AutoScaling.Types
     , lcImageId
     , lcInstanceType
     , lcCreatedTime
+
+    -- * LaunchTemplate
+    , LaunchTemplate
+    , launchTemplate
+    , ltOverrides
+    , ltLaunchTemplateSpecification
+
+    -- * LaunchTemplateOverrides
+    , LaunchTemplateOverrides
+    , launchTemplateOverrides
+    , ltoWeightedCapacity
+    , ltoInstanceType
 
     -- * LaunchTemplateSpecification
     , LaunchTemplateSpecification
@@ -238,6 +273,12 @@ module Network.AWS.AutoScaling.Types
     , metricGranularityType
     , mgtGranularity
 
+    -- * MixedInstancesPolicy
+    , MixedInstancesPolicy
+    , mixedInstancesPolicy
+    , mipLaunchTemplate
+    , mipInstancesDistribution
+
     -- * NotificationConfiguration
     , NotificationConfiguration
     , notificationConfiguration
@@ -262,6 +303,7 @@ module Network.AWS.AutoScaling.Types
     , sMinAdjustmentStep
     , sEstimatedInstanceWarmup
     , sPolicyName
+    , sEnabled
     , sPolicyType
     , sStepAdjustments
     , sTargetTrackingConfiguration
@@ -293,6 +335,17 @@ module Network.AWS.AutoScaling.Types
     , sugaMinSize
     , sugaAutoScalingGroupName
     , sugaEndTime
+
+    -- * ScheduledUpdateGroupActionRequest
+    , ScheduledUpdateGroupActionRequest
+    , scheduledUpdateGroupActionRequest
+    , sugarStartTime
+    , sugarMaxSize
+    , sugarRecurrence
+    , sugarDesiredCapacity
+    , sugarMinSize
+    , sugarEndTime
+    , sugarScheduledActionName
 
     -- * StepAdjustment
     , StepAdjustment
@@ -387,7 +440,7 @@ _AlreadyExistsFault =
   _MatchServiceError autoScaling "AlreadyExists" . hasStatus 400
 
 
--- | You have already reached a limit for your Auto Scaling resources (for example, groups, launch configurations, or lifecycle hooks). For more information, see 'DescribeAccountLimits' .
+-- | You have already reached a limit for your Amazon EC2 Auto Scaling resources (for example, Auto Scaling groups, launch configurations, or lifecycle hooks). For more information, see 'DescribeAccountLimits' .
 --
 --
 _LimitExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
@@ -419,7 +472,7 @@ _ScalingActivityInProgressFault =
   _MatchServiceError autoScaling "ScalingActivityInProgress" . hasStatus 400
 
 
--- | You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load balancer).
+-- | You already have a pending update to an Amazon EC2 Auto Scaling resource (for example, an Auto Scaling group, instance, or load balancer).
 --
 --
 _ResourceContentionFault :: AsError a => Getting (First ServiceError) a ServiceError

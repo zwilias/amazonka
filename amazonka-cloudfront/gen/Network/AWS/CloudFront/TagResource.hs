@@ -47,10 +47,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'tagResource' smart constructor.
-data TagResource = TagResource'
-  { _trResource :: !Text
-  , _trTags     :: !Tags
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data TagResource =
+  TagResource'
+    { _trResource :: !Text
+    , _trTags     :: !Tags
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'TagResource' with the minimum fields required to make a request.
@@ -88,7 +90,7 @@ instance NFData TagResource where
 instance ToElement TagResource where
         toElement
           = mkElement
-              "{http://cloudfront.amazonaws.com/doc/2017-10-30/}Tags"
+              "{http://cloudfront.amazonaws.com/doc/2019-03-26/}Tags"
               .
               _trTags
 
@@ -96,7 +98,7 @@ instance ToHeaders TagResource where
         toHeaders = const mempty
 
 instance ToPath TagResource where
-        toPath = const "/2017-10-30/tagging"
+        toPath = const "/2019-03-26/tagging"
 
 instance ToQuery TagResource where
         toQuery TagResource'{..}

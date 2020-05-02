@@ -42,15 +42,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for DeleteNetworkAcl.
---
---
---
--- /See:/ 'deleteNetworkACL' smart constructor.
-data DeleteNetworkACL = DeleteNetworkACL'
-  { _dnaDryRun       :: !(Maybe Bool)
-  , _dnaNetworkACLId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'deleteNetworkACL' smart constructor.
+data DeleteNetworkACL =
+  DeleteNetworkACL'
+    { _dnaDryRun       :: !(Maybe Bool)
+    , _dnaNetworkACLId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteNetworkACL' with the minimum fields required to make a request.

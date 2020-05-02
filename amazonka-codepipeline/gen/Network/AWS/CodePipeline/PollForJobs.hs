@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns information about any jobs for AWS CodePipeline to act upon. PollForJobs is only valid for action types with "Custom" in the owner field. If the action type contains "AWS" or "ThirdParty" in the owner field, the PollForJobs action returns an error.
+-- Returns information about any jobs for AWS CodePipeline to act on. @PollForJobs@ is valid only for action types with "Custom" in the owner field. If the action type contains "AWS" or "ThirdParty" in the owner field, the @PollForJobs@ action returns an error.
 --
 --
--- /Important:/ When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. Additionally, this API returns any secret values defined for the action.
+-- /Important:/ When this API is called, AWS CodePipeline returns temporary credentials for the S3 bucket used to store artifacts for the pipeline, if the action requires access to that S3 bucket for input or output artifacts. This API also returns any secret values defined for the action.
 --
 module Network.AWS.CodePipeline.PollForJobs
     (
@@ -48,16 +48,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Represents the input of a PollForJobs action.
+-- | Represents the input of a @PollForJobs@ action.
 --
 --
 --
 -- /See:/ 'pollForJobs' smart constructor.
-data PollForJobs = PollForJobs'
-  { _pfjMaxBatchSize :: !(Maybe Nat)
-  , _pfjQueryParam   :: !(Maybe (Map Text Text))
-  , _pfjActionTypeId :: !ActionTypeId
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data PollForJobs =
+  PollForJobs'
+    { _pfjMaxBatchSize :: !(Maybe Nat)
+    , _pfjQueryParam   :: !(Maybe (Map Text Text))
+    , _pfjActionTypeId :: !ActionTypeId
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'PollForJobs' with the minimum fields required to make a request.
@@ -66,7 +68,7 @@ data PollForJobs = PollForJobs'
 --
 -- * 'pfjMaxBatchSize' - The maximum number of jobs to return in a poll for jobs call.
 --
--- * 'pfjQueryParam' - A map of property names and values. For an action type with no queryable properties, this value must be null or an empty map. For an action type with a queryable property, you must supply that property as a key in the map. Only jobs whose action configuration matches the mapped value will be returned.
+-- * 'pfjQueryParam' - A map of property names and values. For an action type with no queryable properties, this value must be null or an empty map. For an action type with a queryable property, you must supply that property as a key in the map. Only jobs whose action configuration matches the mapped value are returned.
 --
 -- * 'pfjActionTypeId' - Represents information about an action type.
 pollForJobs
@@ -84,7 +86,7 @@ pollForJobs pActionTypeId_ =
 pfjMaxBatchSize :: Lens' PollForJobs (Maybe Natural)
 pfjMaxBatchSize = lens _pfjMaxBatchSize (\ s a -> s{_pfjMaxBatchSize = a}) . mapping _Nat
 
--- | A map of property names and values. For an action type with no queryable properties, this value must be null or an empty map. For an action type with a queryable property, you must supply that property as a key in the map. Only jobs whose action configuration matches the mapped value will be returned.
+-- | A map of property names and values. For an action type with no queryable properties, this value must be null or an empty map. For an action type with a queryable property, you must supply that property as a key in the map. Only jobs whose action configuration matches the mapped value are returned.
 pfjQueryParam :: Lens' PollForJobs (HashMap Text Text)
 pfjQueryParam = lens _pfjQueryParam (\ s a -> s{_pfjQueryParam = a}) . _Default . _Map
 
@@ -128,15 +130,17 @@ instance ToPath PollForJobs where
 instance ToQuery PollForJobs where
         toQuery = const mempty
 
--- | Represents the output of a PollForJobs action.
+-- | Represents the output of a @PollForJobs@ action.
 --
 --
 --
 -- /See:/ 'pollForJobsResponse' smart constructor.
-data PollForJobsResponse = PollForJobsResponse'
-  { _pfjrsJobs           :: !(Maybe [Job])
-  , _pfjrsResponseStatus :: !Int
-  } deriving (Eq, Show, Data, Typeable, Generic)
+data PollForJobsResponse =
+  PollForJobsResponse'
+    { _pfjrsJobs           :: !(Maybe [Job])
+    , _pfjrsResponseStatus :: !Int
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'PollForJobsResponse' with the minimum fields required to make a request.

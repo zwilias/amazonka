@@ -54,10 +54,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listTests' smart constructor.
-data ListTests = ListTests'
-  { _ltNextToken :: !(Maybe Text)
-  , _ltArn       :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListTests =
+  ListTests'
+    { _ltNextToken :: !(Maybe Text)
+    , _ltArn       :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListTests' with the minimum fields required to make a request.
@@ -129,11 +131,13 @@ instance ToQuery ListTests where
 --
 --
 -- /See:/ 'listTestsResponse' smart constructor.
-data ListTestsResponse = ListTestsResponse'
-  { _ltrsTests          :: !(Maybe [Test])
-  , _ltrsNextToken      :: !(Maybe Text)
-  , _ltrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListTestsResponse =
+  ListTestsResponse'
+    { _ltrsTests          :: !(Maybe [Test])
+    , _ltrsNextToken      :: !(Maybe Text)
+    , _ltrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListTestsResponse' with the minimum fields required to make a request.
@@ -142,7 +146,7 @@ data ListTestsResponse = ListTestsResponse'
 --
 -- * 'ltrsTests' - Information about the tests.
 --
--- * 'ltrsNextToken' - If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.
+-- * 'ltrsNextToken' - If the number of items that are returned is significantly large, this is an identifier that is also returned. It can be used in a subsequent call to this operation to return the next set of items in the list.
 --
 -- * 'ltrsResponseStatus' - -- | The response status code.
 listTestsResponse
@@ -160,7 +164,7 @@ listTestsResponse pResponseStatus_ =
 ltrsTests :: Lens' ListTestsResponse [Test]
 ltrsTests = lens _ltrsTests (\ s a -> s{_ltrsTests = a}) . _Default . _Coerce
 
--- | If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.
+-- | If the number of items that are returned is significantly large, this is an identifier that is also returned. It can be used in a subsequent call to this operation to return the next set of items in the list.
 ltrsNextToken :: Lens' ListTestsResponse (Maybe Text)
 ltrsNextToken = lens _ltrsNextToken (\ s a -> s{_ltrsNextToken = a})
 

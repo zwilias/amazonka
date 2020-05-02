@@ -21,7 +21,7 @@
 -- Creates a network ACL in a VPC. Network ACLs provide an optional layer of security (in addition to security groups) for the instances in your VPC.
 --
 --
--- For more information about network ACLs, see <http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html Network ACLs> in the /Amazon Virtual Private Cloud User Guide/ .
+-- For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html Network ACLs> in the /Amazon Virtual Private Cloud User Guide/ .
 --
 module Network.AWS.EC2.CreateNetworkACL
     (
@@ -47,15 +47,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for CreateNetworkAcl.
---
---
---
--- /See:/ 'createNetworkACL' smart constructor.
-data CreateNetworkACL = CreateNetworkACL'
-  { _cnaDryRun :: !(Maybe Bool)
-  , _cnaVPCId  :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'createNetworkACL' smart constructor.
+data CreateNetworkACL =
+  CreateNetworkACL'
+    { _cnaDryRun :: !(Maybe Bool)
+    , _cnaVPCId  :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateNetworkACL' with the minimum fields required to make a request.
@@ -106,15 +104,13 @@ instance ToQuery CreateNetworkACL where
                "Version" =: ("2016-11-15" :: ByteString),
                "DryRun" =: _cnaDryRun, "VpcId" =: _cnaVPCId]
 
--- | Contains the output of CreateNetworkAcl.
---
---
---
--- /See:/ 'createNetworkACLResponse' smart constructor.
-data CreateNetworkACLResponse = CreateNetworkACLResponse'
-  { _cnarsNetworkACL     :: !(Maybe NetworkACL)
-  , _cnarsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'createNetworkACLResponse' smart constructor.
+data CreateNetworkACLResponse =
+  CreateNetworkACLResponse'
+    { _cnarsNetworkACL     :: !(Maybe NetworkACL)
+    , _cnarsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateNetworkACLResponse' with the minimum fields required to make a request.

@@ -79,6 +79,99 @@ instance ToHeader     BackupStatus
 instance FromJSON BackupStatus where
     parseJSON = parseJSONText "BackupStatus"
 
+data BackupType
+  = AWSBackup
+  | System
+  | User
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText BackupType where
+    parser = takeLowerText >>= \case
+        "aws_backup" -> pure AWSBackup
+        "system" -> pure System
+        "user" -> pure User
+        e -> fromTextError $ "Failure parsing BackupType from value: '" <> e
+           <> "'. Accepted values: aws_backup, system, user"
+
+instance ToText BackupType where
+    toText = \case
+        AWSBackup -> "AWS_BACKUP"
+        System -> "SYSTEM"
+        User -> "USER"
+
+instance Hashable     BackupType
+instance NFData       BackupType
+instance ToByteString BackupType
+instance ToQuery      BackupType
+instance ToHeader     BackupType
+
+instance FromJSON BackupType where
+    parseJSON = parseJSONText "BackupType"
+
+data BackupTypeFilter
+  = BTFAWSBackup
+  | BTFAll
+  | BTFSystem
+  | BTFUser
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText BackupTypeFilter where
+    parser = takeLowerText >>= \case
+        "aws_backup" -> pure BTFAWSBackup
+        "all" -> pure BTFAll
+        "system" -> pure BTFSystem
+        "user" -> pure BTFUser
+        e -> fromTextError $ "Failure parsing BackupTypeFilter from value: '" <> e
+           <> "'. Accepted values: aws_backup, all, system, user"
+
+instance ToText BackupTypeFilter where
+    toText = \case
+        BTFAWSBackup -> "AWS_BACKUP"
+        BTFAll -> "ALL"
+        BTFSystem -> "SYSTEM"
+        BTFUser -> "USER"
+
+instance Hashable     BackupTypeFilter
+instance NFData       BackupTypeFilter
+instance ToByteString BackupTypeFilter
+instance ToQuery      BackupTypeFilter
+instance ToHeader     BackupTypeFilter
+
+instance ToJSON BackupTypeFilter where
+    toJSON = toJSONText
+
+data BillingMode
+  = PayPerRequest
+  | Provisioned
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText BillingMode where
+    parser = takeLowerText >>= \case
+        "pay_per_request" -> pure PayPerRequest
+        "provisioned" -> pure Provisioned
+        e -> fromTextError $ "Failure parsing BillingMode from value: '" <> e
+           <> "'. Accepted values: pay_per_request, provisioned"
+
+instance ToText BillingMode where
+    toText = \case
+        PayPerRequest -> "PAY_PER_REQUEST"
+        Provisioned -> "PROVISIONED"
+
+instance Hashable     BillingMode
+instance NFData       BillingMode
+instance ToByteString BillingMode
+instance ToQuery      BillingMode
+instance ToHeader     BillingMode
+
+instance ToJSON BillingMode where
+    toJSON = toJSONText
+
+instance FromJSON BillingMode where
+    parseJSON = parseJSONText "BillingMode"
+
 data ComparisonOperator
   = BeginsWith
   | Between
@@ -192,6 +285,69 @@ instance ToHeader     ContinuousBackupsStatus
 
 instance FromJSON ContinuousBackupsStatus where
     parseJSON = parseJSONText "ContinuousBackupsStatus"
+
+data ContributorInsightsAction
+  = Disable
+  | Enable
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText ContributorInsightsAction where
+    parser = takeLowerText >>= \case
+        "disable" -> pure Disable
+        "enable" -> pure Enable
+        e -> fromTextError $ "Failure parsing ContributorInsightsAction from value: '" <> e
+           <> "'. Accepted values: disable, enable"
+
+instance ToText ContributorInsightsAction where
+    toText = \case
+        Disable -> "DISABLE"
+        Enable -> "ENABLE"
+
+instance Hashable     ContributorInsightsAction
+instance NFData       ContributorInsightsAction
+instance ToByteString ContributorInsightsAction
+instance ToQuery      ContributorInsightsAction
+instance ToHeader     ContributorInsightsAction
+
+instance ToJSON ContributorInsightsAction where
+    toJSON = toJSONText
+
+data ContributorInsightsStatus
+  = CISDisabled
+  | CISDisabling
+  | CISEnabled
+  | CISEnabling
+  | CISFailed
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText ContributorInsightsStatus where
+    parser = takeLowerText >>= \case
+        "disabled" -> pure CISDisabled
+        "disabling" -> pure CISDisabling
+        "enabled" -> pure CISEnabled
+        "enabling" -> pure CISEnabling
+        "failed" -> pure CISFailed
+        e -> fromTextError $ "Failure parsing ContributorInsightsStatus from value: '" <> e
+           <> "'. Accepted values: disabled, disabling, enabled, enabling, failed"
+
+instance ToText ContributorInsightsStatus where
+    toText = \case
+        CISDisabled -> "DISABLED"
+        CISDisabling -> "DISABLING"
+        CISEnabled -> "ENABLED"
+        CISEnabling -> "ENABLING"
+        CISFailed -> "FAILED"
+
+instance Hashable     ContributorInsightsStatus
+instance NFData       ContributorInsightsStatus
+instance ToByteString ContributorInsightsStatus
+instance ToQuery      ContributorInsightsStatus
+instance ToHeader     ContributorInsightsStatus
+
+instance FromJSON ContributorInsightsStatus where
+    parseJSON = parseJSONText "ContributorInsightsStatus"
 
 data GlobalTableStatus
   = GTSActive
@@ -352,6 +508,7 @@ instance FromJSON ProjectionType where
 data ReplicaStatus
   = RSActive
   | RSCreating
+  | RSCreationFailed
   | RSDeleting
   | RSUpdating
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
@@ -361,15 +518,17 @@ instance FromText ReplicaStatus where
     parser = takeLowerText >>= \case
         "active" -> pure RSActive
         "creating" -> pure RSCreating
+        "creation_failed" -> pure RSCreationFailed
         "deleting" -> pure RSDeleting
         "updating" -> pure RSUpdating
         e -> fromTextError $ "Failure parsing ReplicaStatus from value: '" <> e
-           <> "'. Accepted values: active, creating, deleting, updating"
+           <> "'. Accepted values: active, creating, creation_failed, deleting, updating"
 
 instance ToText ReplicaStatus where
     toText = \case
         RSActive -> "ACTIVE"
         RSCreating -> "CREATING"
+        RSCreationFailed -> "CREATION_FAILED"
         RSDeleting -> "DELETING"
         RSUpdating -> "UPDATING"
 
@@ -453,31 +612,31 @@ instance ToJSON ReturnItemCollectionMetrics where
     toJSON = toJSONText
 
 data ReturnValue
-  = AllNew
-  | AllOld
-  | None
-  | UpdatedNew
-  | UpdatedOld
+  = RVAllNew
+  | RVAllOld
+  | RVNone
+  | RVUpdatedNew
+  | RVUpdatedOld
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
 
 instance FromText ReturnValue where
     parser = takeLowerText >>= \case
-        "all_new" -> pure AllNew
-        "all_old" -> pure AllOld
-        "none" -> pure None
-        "updated_new" -> pure UpdatedNew
-        "updated_old" -> pure UpdatedOld
+        "all_new" -> pure RVAllNew
+        "all_old" -> pure RVAllOld
+        "none" -> pure RVNone
+        "updated_new" -> pure RVUpdatedNew
+        "updated_old" -> pure RVUpdatedOld
         e -> fromTextError $ "Failure parsing ReturnValue from value: '" <> e
            <> "'. Accepted values: all_new, all_old, none, updated_new, updated_old"
 
 instance ToText ReturnValue where
     toText = \case
-        AllNew -> "ALL_NEW"
-        AllOld -> "ALL_OLD"
-        None -> "NONE"
-        UpdatedNew -> "UPDATED_NEW"
-        UpdatedOld -> "UPDATED_OLD"
+        RVAllNew -> "ALL_NEW"
+        RVAllOld -> "ALL_OLD"
+        RVNone -> "NONE"
+        RVUpdatedNew -> "UPDATED_NEW"
+        RVUpdatedOld -> "UPDATED_OLD"
 
 instance Hashable     ReturnValue
 instance NFData       ReturnValue
@@ -488,11 +647,39 @@ instance ToHeader     ReturnValue
 instance ToJSON ReturnValue where
     toJSON = toJSONText
 
+data ReturnValuesOnConditionCheckFailure
+  = AllOld
+  | None
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText ReturnValuesOnConditionCheckFailure where
+    parser = takeLowerText >>= \case
+        "all_old" -> pure AllOld
+        "none" -> pure None
+        e -> fromTextError $ "Failure parsing ReturnValuesOnConditionCheckFailure from value: '" <> e
+           <> "'. Accepted values: all_old, none"
+
+instance ToText ReturnValuesOnConditionCheckFailure where
+    toText = \case
+        AllOld -> "ALL_OLD"
+        None -> "NONE"
+
+instance Hashable     ReturnValuesOnConditionCheckFailure
+instance NFData       ReturnValuesOnConditionCheckFailure
+instance ToByteString ReturnValuesOnConditionCheckFailure
+instance ToQuery      ReturnValuesOnConditionCheckFailure
+instance ToHeader     ReturnValuesOnConditionCheckFailure
+
+instance ToJSON ReturnValuesOnConditionCheckFailure where
+    toJSON = toJSONText
+
 data SSEStatus
   = SSESDisabled
   | SSESDisabling
   | SSESEnabled
   | SSESEnabling
+  | SSESUpdating
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
 
@@ -502,8 +689,9 @@ instance FromText SSEStatus where
         "disabling" -> pure SSESDisabling
         "enabled" -> pure SSESEnabled
         "enabling" -> pure SSESEnabling
+        "updating" -> pure SSESUpdating
         e -> fromTextError $ "Failure parsing SSEStatus from value: '" <> e
-           <> "'. Accepted values: disabled, disabling, enabled, enabling"
+           <> "'. Accepted values: disabled, disabling, enabled, enabling, updating"
 
 instance ToText SSEStatus where
     toText = \case
@@ -511,6 +699,7 @@ instance ToText SSEStatus where
         SSESDisabling -> "DISABLING"
         SSESEnabled -> "ENABLED"
         SSESEnabling -> "ENABLING"
+        SSESUpdating -> "UPDATING"
 
 instance Hashable     SSEStatus
 instance NFData       SSEStatus
@@ -520,6 +709,36 @@ instance ToHeader     SSEStatus
 
 instance FromJSON SSEStatus where
     parseJSON = parseJSONText "SSEStatus"
+
+data SSEType
+  = AES256
+  | KMS
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText SSEType where
+    parser = takeLowerText >>= \case
+        "aes256" -> pure AES256
+        "kms" -> pure KMS
+        e -> fromTextError $ "Failure parsing SSEType from value: '" <> e
+           <> "'. Accepted values: aes256, kms"
+
+instance ToText SSEType where
+    toText = \case
+        AES256 -> "AES256"
+        KMS -> "KMS"
+
+instance Hashable     SSEType
+instance NFData       SSEType
+instance ToByteString SSEType
+instance ToQuery      SSEType
+instance ToHeader     SSEType
+
+instance ToJSON SSEType where
+    toJSON = toJSONText
+
+instance FromJSON SSEType where
+    parseJSON = parseJSONText "SSEType"
 
 data ScalarAttributeType
   = B
@@ -625,8 +844,11 @@ instance FromJSON StreamViewType where
 
 data TableStatus
   = TSActive
+  | TSArchived
+  | TSArchiving
   | TSCreating
   | TSDeleting
+  | TSInaccessibleEncryptionCredentials
   | TSUpdating
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
@@ -634,17 +856,23 @@ data TableStatus
 instance FromText TableStatus where
     parser = takeLowerText >>= \case
         "active" -> pure TSActive
+        "archived" -> pure TSArchived
+        "archiving" -> pure TSArchiving
         "creating" -> pure TSCreating
         "deleting" -> pure TSDeleting
+        "inaccessible_encryption_credentials" -> pure TSInaccessibleEncryptionCredentials
         "updating" -> pure TSUpdating
         e -> fromTextError $ "Failure parsing TableStatus from value: '" <> e
-           <> "'. Accepted values: active, creating, deleting, updating"
+           <> "'. Accepted values: active, archived, archiving, creating, deleting, inaccessible_encryption_credentials, updating"
 
 instance ToText TableStatus where
     toText = \case
         TSActive -> "ACTIVE"
+        TSArchived -> "ARCHIVED"
+        TSArchiving -> "ARCHIVING"
         TSCreating -> "CREATING"
         TSDeleting -> "DELETING"
+        TSInaccessibleEncryptionCredentials -> "INACCESSIBLE_ENCRYPTION_CREDENTIALS"
         TSUpdating -> "UPDATING"
 
 instance Hashable     TableStatus

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns the details of a single query execution or a list of up to 50 query executions, which you provide as an array of query execution ID strings. To get a list of query execution IDs, use 'ListQueryExecutions' . Query executions are different from named (saved) queries. Use 'BatchGetNamedQuery' to get details about named queries.
+-- Returns the details of a single query execution or a list of up to 50 query executions, which you provide as an array of query execution ID strings. Requires you to have access to the workgroup in which the queries ran. To get a list of query execution IDs, use 'ListQueryExecutionsInput$WorkGroup' . Query executions differ from named (saved) queries. Use 'BatchGetNamedQueryInput' to get details about named queries.
 --
 --
 module Network.AWS.Athena.BatchGetQueryExecution
@@ -46,9 +46,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchGetQueryExecution' smart constructor.
-newtype BatchGetQueryExecution = BatchGetQueryExecution'
-  { _bgqeQueryExecutionIds :: List1 Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype BatchGetQueryExecution =
+  BatchGetQueryExecution'
+    { _bgqeQueryExecutionIds :: List1 Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchGetQueryExecution' with the minimum fields required to make a request.
@@ -108,11 +110,13 @@ instance ToQuery BatchGetQueryExecution where
         toQuery = const mempty
 
 -- | /See:/ 'batchGetQueryExecutionResponse' smart constructor.
-data BatchGetQueryExecutionResponse = BatchGetQueryExecutionResponse'
-  { _bgqersUnprocessedQueryExecutionIds :: !(Maybe [UnprocessedQueryExecutionId])
-  , _bgqersQueryExecutions :: !(Maybe [QueryExecution])
-  , _bgqersResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchGetQueryExecutionResponse =
+  BatchGetQueryExecutionResponse'
+    { _bgqersUnprocessedQueryExecutionIds :: !(Maybe [UnprocessedQueryExecutionId])
+    , _bgqersQueryExecutions :: !(Maybe [QueryExecution])
+    , _bgqersResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchGetQueryExecutionResponse' with the minimum fields required to make a request.

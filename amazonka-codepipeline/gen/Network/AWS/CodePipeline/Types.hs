@@ -21,25 +21,33 @@ module Network.AWS.CodePipeline.Types
     , _InvalidNonceException
     , _ActionNotFoundException
     , _InvalidApprovalTokenException
+    , _PipelineExecutionNotStoppableException
     , _InvalidBlockerDeclarationException
+    , _OutputVariablesSizeExceededException
     , _InvalidJobStateException
+    , _TooManyTagsException
     , _InvalidJobException
     , _PipelineVersionNotFoundException
     , _StageNotRetryableException
     , _PipelineExecutionNotFoundException
     , _InvalidWebhookAuthenticationParametersException
     , _WebhookNotFoundException
+    , _InvalidTagsException
     , _ActionTypeNotFoundException
+    , _ConcurrentModificationException
     , _InvalidNextTokenException
     , _InvalidStageDeclarationException
+    , _DuplicatedStopRequestException
     , _InvalidWebhookFilterPatternException
     , _InvalidActionDeclarationException
     , _StageNotFoundException
     , _InvalidStructureException
     , _JobNotFoundException
     , _ApprovalAlreadyCompletedException
+    , _InvalidARNException
     , _PipelineNameInUseException
     , _PipelineNotFoundException
+    , _ResourceNotFoundException
     , _LimitExceededException
     , _NotLatestPipelineExecutionException
 
@@ -88,6 +96,9 @@ module Network.AWS.CodePipeline.Types
     -- * StageTransitionType
     , StageTransitionType (..)
 
+    -- * TriggerType
+    , TriggerType (..)
+
     -- * WebhookAuthenticationType
     , WebhookAuthenticationType (..)
 
@@ -118,12 +129,15 @@ module Network.AWS.CodePipeline.Types
     , ActionContext
     , actionContext
     , acName
+    , acActionExecutionId
 
     -- * ActionDeclaration
     , ActionDeclaration
     , actionDeclaration
     , adOutputArtifacts
+    , adNamespace
     , adRunOrder
+    , adRegion
     , adConfiguration
     , adInputArtifacts
     , adRoleARN
@@ -142,6 +156,50 @@ module Network.AWS.CodePipeline.Types
     , aeExternalExecutionId
     , aeErrorDetails
     , aePercentComplete
+
+    -- * ActionExecutionDetail
+    , ActionExecutionDetail
+    , actionExecutionDetail
+    , aedStatus
+    , aedStartTime
+    , aedPipelineVersion
+    , aedInput
+    , aedActionName
+    , aedOutput
+    , aedPipelineExecutionId
+    , aedStageName
+    , aedLastUpdateTime
+    , aedActionExecutionId
+
+    -- * ActionExecutionFilter
+    , ActionExecutionFilter
+    , actionExecutionFilter
+    , aefPipelineExecutionId
+
+    -- * ActionExecutionInput
+    , ActionExecutionInput
+    , actionExecutionInput
+    , aeiNamespace
+    , aeiResolvedConfiguration
+    , aeiRegion
+    , aeiConfiguration
+    , aeiActionTypeId
+    , aeiInputArtifacts
+    , aeiRoleARN
+
+    -- * ActionExecutionOutput
+    , ActionExecutionOutput
+    , actionExecutionOutput
+    , aeoOutputVariables
+    , aeoOutputArtifacts
+    , aeoExecutionResult
+
+    -- * ActionExecutionResult
+    , ActionExecutionResult
+    , actionExecutionResult
+    , aerExternalExecutionURL
+    , aerExternalExecutionId
+    , aerExternalExecutionSummary
 
     -- * ActionRevision
     , ActionRevision
@@ -193,9 +251,15 @@ module Network.AWS.CodePipeline.Types
     -- * Artifact
     , Artifact
     , artifact
-    , aLocation
+    , artLocation
+    , artName
+    , artRevision
+
+    -- * ArtifactDetail
+    , ArtifactDetail
+    , artifactDetail
     , aName
-    , aRevision
+    , aS3location
 
     -- * ArtifactDetails
     , ArtifactDetails
@@ -259,6 +323,12 @@ module Network.AWS.CodePipeline.Types
     , edExternalExecutionId
     , edPercentComplete
 
+    -- * ExecutionTrigger
+    , ExecutionTrigger
+    , executionTrigger
+    , etTriggerType
+    , etTriggerDetail
+
     -- * FailureDetails
     , FailureDetails
     , failureDetails
@@ -305,6 +375,7 @@ module Network.AWS.CodePipeline.Types
     , lwiErrorCode
     , lwiLastTriggered
     , lwiErrorMessage
+    , lwiTags
     , lwiDefinition
     , lwiUrl
 
@@ -319,14 +390,17 @@ module Network.AWS.CodePipeline.Types
     , pcStage
     , pcPipelineName
     , pcAction
+    , pcPipelineARN
+    , pcPipelineExecutionId
 
     -- * PipelineDeclaration
     , PipelineDeclaration
     , pipelineDeclaration
+    , pdArtifactStores
+    , pdArtifactStore
     , pdVersion
     , pdName
     , pdRoleARN
-    , pdArtifactStore
     , pdStages
 
     -- * PipelineExecution
@@ -343,8 +417,10 @@ module Network.AWS.CodePipeline.Types
     , pipelineExecutionSummary
     , pesStatus
     , pesStartTime
+    , pesStopTrigger
     , pesPipelineExecutionId
     , pesSourceRevisions
+    , pesTrigger
     , pesLastUpdateTime
 
     -- * PipelineMetadata
@@ -367,6 +443,12 @@ module Network.AWS.CodePipeline.Types
     , s3ArtifactLocation
     , salBucketName
     , salObjectKey
+
+    -- * S3Location
+    , S3Location
+    , s3Location
+    , slBucket
+    , slKey
 
     -- * SourceRevision
     , SourceRevision
@@ -401,6 +483,17 @@ module Network.AWS.CodePipeline.Types
     , ssActionStates
     , ssStageName
     , ssLatestExecution
+
+    -- * StopExecutionTrigger
+    , StopExecutionTrigger
+    , stopExecutionTrigger
+    , setReason
+
+    -- * Tag
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
 
     -- * ThirdPartyJob
     , ThirdPartyJob
@@ -518,7 +611,7 @@ _ValidationException :: AsError a => Getting (First ServiceError) a ServiceError
 _ValidationException = _MatchServiceError codePipeline "ValidationException"
 
 
--- | The specified nonce was specified in an invalid format.
+-- | The nonce was specified in an invalid format.
 --
 --
 _InvalidNonceException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -541,6 +634,14 @@ _InvalidApprovalTokenException =
   _MatchServiceError codePipeline "InvalidApprovalTokenException"
 
 
+-- | Unable to stop the pipeline execution. The execution might already be in a @Stopped@ state, or it might no longer be in progress.
+--
+--
+_PipelineExecutionNotStoppableException :: AsError a => Getting (First ServiceError) a ServiceError
+_PipelineExecutionNotStoppableException =
+  _MatchServiceError codePipeline "PipelineExecutionNotStoppableException"
+
+
 -- | Reserved for future use.
 --
 --
@@ -549,7 +650,15 @@ _InvalidBlockerDeclarationException =
   _MatchServiceError codePipeline "InvalidBlockerDeclarationException"
 
 
--- | The specified job state was specified in an invalid format.
+-- | Exceeded the total size limit for all variables in the pipeline.
+--
+--
+_OutputVariablesSizeExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_OutputVariablesSizeExceededException =
+  _MatchServiceError codePipeline "OutputVariablesSizeExceededException"
+
+
+-- | The job state was specified in an invalid format.
 --
 --
 _InvalidJobStateException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -557,14 +666,21 @@ _InvalidJobStateException =
   _MatchServiceError codePipeline "InvalidJobStateException"
 
 
--- | The specified job was specified in an invalid format or cannot be found.
+-- | The tags limit for a resource has been exceeded.
+--
+--
+_TooManyTagsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyTagsException = _MatchServiceError codePipeline "TooManyTagsException"
+
+
+-- | The job was specified in an invalid format or cannot be found.
 --
 --
 _InvalidJobException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidJobException = _MatchServiceError codePipeline "InvalidJobException"
 
 
--- | The specified pipeline version was specified in an invalid format or cannot be found.
+-- | The pipeline version was specified in an invalid format or cannot be found.
 --
 --
 _PipelineVersionNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -572,7 +688,7 @@ _PipelineVersionNotFoundException =
   _MatchServiceError codePipeline "PipelineVersionNotFoundException"
 
 
--- | The specified stage can't be retried because the pipeline structure or stage state changed after the stage was not completed; the stage contains no failed actions; one or more actions are still in progress; or another retry attempt is already in progress.
+-- | Unable to retry. The pipeline structure or stage state might have changed while actions awaited retry, or the stage contains no failed actions.
 --
 --
 _StageNotRetryableException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -606,6 +722,13 @@ _WebhookNotFoundException =
   _MatchServiceError codePipeline "WebhookNotFoundException"
 
 
+-- | The specified resource tags are invalid.
+--
+--
+_InvalidTagsException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTagsException = _MatchServiceError codePipeline "InvalidTagsException"
+
+
 -- | The specified action type cannot be found.
 --
 --
@@ -614,7 +737,15 @@ _ActionTypeNotFoundException =
   _MatchServiceError codePipeline "ActionTypeNotFoundException"
 
 
--- | The next token was specified in an invalid format. Make sure that the next token you provided is the token returned by a previous call.
+-- | Unable to modify the tag due to a simultaneous update request.
+--
+--
+_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConcurrentModificationException =
+  _MatchServiceError codePipeline "ConcurrentModificationException"
+
+
+-- | The next token was specified in an invalid format. Make sure that the next token you provide is the token returned by a previous call.
 --
 --
 _InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -622,12 +753,20 @@ _InvalidNextTokenException =
   _MatchServiceError codePipeline "InvalidNextTokenException"
 
 
--- | The specified stage declaration was specified in an invalid format.
+-- | The stage declaration was specified in an invalid format.
 --
 --
 _InvalidStageDeclarationException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidStageDeclarationException =
   _MatchServiceError codePipeline "InvalidStageDeclarationException"
+
+
+-- | The pipeline execution is already in a @Stopping@ state. If you already chose to stop and wait, you cannot make that request again. You can choose to stop and abandon now, but be aware that this option can lead to failed tasks or out of sequence tasks. If you already chose to stop and abandon, you cannot make that request again.
+--
+--
+_DuplicatedStopRequestException :: AsError a => Getting (First ServiceError) a ServiceError
+_DuplicatedStopRequestException =
+  _MatchServiceError codePipeline "DuplicatedStopRequestException"
 
 
 -- | The specified event filter rule is in an invalid format.
@@ -638,7 +777,7 @@ _InvalidWebhookFilterPatternException =
   _MatchServiceError codePipeline "InvalidWebhookFilterPatternException"
 
 
--- | The specified action declaration was specified in an invalid format.
+-- | The action declaration was specified in an invalid format.
 --
 --
 _InvalidActionDeclarationException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -646,7 +785,7 @@ _InvalidActionDeclarationException =
   _MatchServiceError codePipeline "InvalidActionDeclarationException"
 
 
--- | The specified stage was specified in an invalid format or cannot be found.
+-- | The stage was specified in an invalid format or cannot be found.
 --
 --
 _StageNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -654,7 +793,7 @@ _StageNotFoundException =
   _MatchServiceError codePipeline "StageNotFoundException"
 
 
--- | The specified structure was specified in an invalid format.
+-- | The structure was specified in an invalid format.
 --
 --
 _InvalidStructureException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -662,7 +801,7 @@ _InvalidStructureException =
   _MatchServiceError codePipeline "InvalidStructureException"
 
 
--- | The specified job was specified in an invalid format or cannot be found.
+-- | The job was specified in an invalid format or cannot be found.
 --
 --
 _JobNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -677,6 +816,13 @@ _ApprovalAlreadyCompletedException =
   _MatchServiceError codePipeline "ApprovalAlreadyCompletedException"
 
 
+-- | The specified resource ARN is invalid.
+--
+--
+_InvalidARNException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidARNException = _MatchServiceError codePipeline "InvalidArnException"
+
+
 -- | The specified pipeline name is already in use.
 --
 --
@@ -685,12 +831,20 @@ _PipelineNameInUseException =
   _MatchServiceError codePipeline "PipelineNameInUseException"
 
 
--- | The specified pipeline was specified in an invalid format or cannot be found.
+-- | The pipeline was specified in an invalid format or cannot be found.
 --
 --
 _PipelineNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _PipelineNotFoundException =
   _MatchServiceError codePipeline "PipelineNotFoundException"
+
+
+-- | The resource was specified in an invalid format.
+--
+--
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException =
+  _MatchServiceError codePipeline "ResourceNotFoundException"
 
 
 -- | The number of pipelines associated with the AWS account has exceeded the limit allowed for the account.

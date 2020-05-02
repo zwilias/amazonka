@@ -30,6 +30,8 @@ module Network.AWS.EC2.ImportSnapshot
     , isDiskContainer
     , isClientToken
     , isRoleName
+    , isEncrypted
+    , isKMSKeyId
     , isDescription
     , isDryRun
     , isClientData
@@ -51,19 +53,19 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for ImportSnapshot.
---
---
---
--- /See:/ 'importSnapshot' smart constructor.
-data ImportSnapshot = ImportSnapshot'
-  { _isDiskContainer :: !(Maybe SnapshotDiskContainer)
-  , _isClientToken   :: !(Maybe Text)
-  , _isRoleName      :: !(Maybe Text)
-  , _isDescription   :: !(Maybe Text)
-  , _isDryRun        :: !(Maybe Bool)
-  , _isClientData    :: !(Maybe ClientData)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'importSnapshot' smart constructor.
+data ImportSnapshot =
+  ImportSnapshot'
+    { _isDiskContainer :: !(Maybe SnapshotDiskContainer)
+    , _isClientToken   :: !(Maybe Text)
+    , _isRoleName      :: !(Maybe Text)
+    , _isEncrypted     :: !(Maybe Bool)
+    , _isKMSKeyId      :: !(Maybe Text)
+    , _isDescription   :: !(Maybe Text)
+    , _isDryRun        :: !(Maybe Bool)
+    , _isClientData    :: !(Maybe ClientData)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ImportSnapshot' with the minimum fields required to make a request.
@@ -75,6 +77,10 @@ data ImportSnapshot = ImportSnapshot'
 -- * 'isClientToken' - Token to enable idempotency for VM import requests.
 --
 -- * 'isRoleName' - The name of the role to use when not using the default role, 'vmimport'.
+--
+-- * 'isEncrypted' - Specifies whether the destination snapshot of the imported image should be encrypted. The default CMK for EBS is used unless you specify a non-default AWS Key Management Service (AWS KMS) CMK using @KmsKeyId@ . For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html Amazon EBS Encryption> in the /Amazon Elastic Compute Cloud User Guide/ .
+--
+-- * 'isKMSKeyId' - An identifier for the symmetric AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating the encrypted snapshot. This parameter is only required if you want to use a non-default CMK; if this parameter is not specified, the default CMK for EBS is used. If a @KmsKeyId@ is specified, the @Encrypted@ flag must also be set.  The CMK identifier may be provided in any of the following formats:      * Key ID     * Key alias. The alias ARN contains the @arn:aws:kms@ namespace, followed by the Region of the CMK, the AWS account ID of the CMK owner, the @alias@ namespace, and then the CMK alias. For example, arn:aws:kms:/us-east-1/ :/012345678910/ :alias//ExampleAlias/ .     * ARN using key ID. The ID ARN contains the @arn:aws:kms@ namespace, followed by the Region of the CMK, the AWS account ID of the CMK owner, the @key@ namespace, and then the CMK ID. For example, arn:aws:kms:/us-east-1/ :/012345678910/ :key//abcd1234-a123-456a-a12b-a123b4cd56ef/ .     * ARN using key alias. The alias ARN contains the @arn:aws:kms@ namespace, followed by the Region of the CMK, the AWS account ID of the CMK owner, the @alias@ namespace, and then the CMK alias. For example, arn:aws:kms:/us-east-1/ :/012345678910/ :alias//ExampleAlias/ .  AWS parses @KmsKeyId@ asynchronously, meaning that the action you call may appear to complete even though you provided an invalid identifier. This action will eventually report failure.  The specified CMK must exist in the Region that the snapshot is being copied to. Amazon EBS does not support asymmetric CMKs.
 --
 -- * 'isDescription' - The description string for the import snapshot task.
 --
@@ -88,6 +94,8 @@ importSnapshot =
     { _isDiskContainer = Nothing
     , _isClientToken = Nothing
     , _isRoleName = Nothing
+    , _isEncrypted = Nothing
+    , _isKMSKeyId = Nothing
     , _isDescription = Nothing
     , _isDryRun = Nothing
     , _isClientData = Nothing
@@ -105,6 +113,14 @@ isClientToken = lens _isClientToken (\ s a -> s{_isClientToken = a})
 -- | The name of the role to use when not using the default role, 'vmimport'.
 isRoleName :: Lens' ImportSnapshot (Maybe Text)
 isRoleName = lens _isRoleName (\ s a -> s{_isRoleName = a})
+
+-- | Specifies whether the destination snapshot of the imported image should be encrypted. The default CMK for EBS is used unless you specify a non-default AWS Key Management Service (AWS KMS) CMK using @KmsKeyId@ . For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html Amazon EBS Encryption> in the /Amazon Elastic Compute Cloud User Guide/ .
+isEncrypted :: Lens' ImportSnapshot (Maybe Bool)
+isEncrypted = lens _isEncrypted (\ s a -> s{_isEncrypted = a})
+
+-- | An identifier for the symmetric AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating the encrypted snapshot. This parameter is only required if you want to use a non-default CMK; if this parameter is not specified, the default CMK for EBS is used. If a @KmsKeyId@ is specified, the @Encrypted@ flag must also be set.  The CMK identifier may be provided in any of the following formats:      * Key ID     * Key alias. The alias ARN contains the @arn:aws:kms@ namespace, followed by the Region of the CMK, the AWS account ID of the CMK owner, the @alias@ namespace, and then the CMK alias. For example, arn:aws:kms:/us-east-1/ :/012345678910/ :alias//ExampleAlias/ .     * ARN using key ID. The ID ARN contains the @arn:aws:kms@ namespace, followed by the Region of the CMK, the AWS account ID of the CMK owner, the @key@ namespace, and then the CMK ID. For example, arn:aws:kms:/us-east-1/ :/012345678910/ :key//abcd1234-a123-456a-a12b-a123b4cd56ef/ .     * ARN using key alias. The alias ARN contains the @arn:aws:kms@ namespace, followed by the Region of the CMK, the AWS account ID of the CMK owner, the @alias@ namespace, and then the CMK alias. For example, arn:aws:kms:/us-east-1/ :/012345678910/ :alias//ExampleAlias/ .  AWS parses @KmsKeyId@ asynchronously, meaning that the action you call may appear to complete even though you provided an invalid identifier. This action will eventually report failure.  The specified CMK must exist in the Region that the snapshot is being copied to. Amazon EBS does not support asymmetric CMKs.
+isKMSKeyId :: Lens' ImportSnapshot (Maybe Text)
+isKMSKeyId = lens _isKMSKeyId (\ s a -> s{_isKMSKeyId = a})
 
 -- | The description string for the import snapshot task.
 isDescription :: Lens' ImportSnapshot (Maybe Text)
@@ -148,20 +164,20 @@ instance ToQuery ImportSnapshot where
                "DiskContainer" =: _isDiskContainer,
                "ClientToken" =: _isClientToken,
                "RoleName" =: _isRoleName,
+               "Encrypted" =: _isEncrypted,
+               "KmsKeyId" =: _isKMSKeyId,
                "Description" =: _isDescription,
                "DryRun" =: _isDryRun, "ClientData" =: _isClientData]
 
--- | Contains the output for ImportSnapshot.
---
---
---
--- /See:/ 'importSnapshotResponse' smart constructor.
-data ImportSnapshotResponse = ImportSnapshotResponse'
-  { _isrsSnapshotTaskDetail :: !(Maybe SnapshotTaskDetail)
-  , _isrsImportTaskId       :: !(Maybe Text)
-  , _isrsDescription        :: !(Maybe Text)
-  , _isrsResponseStatus     :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'importSnapshotResponse' smart constructor.
+data ImportSnapshotResponse =
+  ImportSnapshotResponse'
+    { _isrsSnapshotTaskDetail :: !(Maybe SnapshotTaskDetail)
+    , _isrsImportTaskId       :: !(Maybe Text)
+    , _isrsDescription        :: !(Maybe Text)
+    , _isrsResponseStatus     :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ImportSnapshotResponse' with the minimum fields required to make a request.

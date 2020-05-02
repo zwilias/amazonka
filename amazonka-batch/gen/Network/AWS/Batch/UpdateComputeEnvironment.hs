@@ -49,12 +49,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateComputeEnvironment' smart constructor.
-data UpdateComputeEnvironment = UpdateComputeEnvironment'
-  { _uceState              :: !(Maybe CEState)
-  , _uceComputeResources   :: !(Maybe ComputeResourceUpdate)
-  , _uceServiceRole        :: !(Maybe Text)
-  , _uceComputeEnvironment :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data UpdateComputeEnvironment =
+  UpdateComputeEnvironment'
+    { _uceState              :: !(Maybe CEState)
+    , _uceComputeResources   :: !(Maybe ComputeResourceUpdate)
+    , _uceServiceRole        :: !(Maybe Text)
+    , _uceComputeEnvironment :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UpdateComputeEnvironment' with the minimum fields required to make a request.
@@ -136,18 +138,20 @@ instance ToQuery UpdateComputeEnvironment where
         toQuery = const mempty
 
 -- | /See:/ 'updateComputeEnvironmentResponse' smart constructor.
-data UpdateComputeEnvironmentResponse = UpdateComputeEnvironmentResponse'
-  { _ucersComputeEnvironmentName :: !(Maybe Text)
-  , _ucersComputeEnvironmentARN  :: !(Maybe Text)
-  , _ucersResponseStatus         :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data UpdateComputeEnvironmentResponse =
+  UpdateComputeEnvironmentResponse'
+    { _ucersComputeEnvironmentName :: !(Maybe Text)
+    , _ucersComputeEnvironmentARN  :: !(Maybe Text)
+    , _ucersResponseStatus         :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UpdateComputeEnvironmentResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ucersComputeEnvironmentName' - The name of compute environment.
+-- * 'ucersComputeEnvironmentName' - The name of the compute environment.
 --
 -- * 'ucersComputeEnvironmentARN' - The Amazon Resource Name (ARN) of the compute environment.
 --
@@ -163,7 +167,7 @@ updateComputeEnvironmentResponse pResponseStatus_ =
     }
 
 
--- | The name of compute environment.
+-- | The name of the compute environment.
 ucersComputeEnvironmentName :: Lens' UpdateComputeEnvironmentResponse (Maybe Text)
 ucersComputeEnvironmentName = lens _ucersComputeEnvironmentName (\ s a -> s{_ucersComputeEnvironmentName = a})
 

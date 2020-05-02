@@ -57,7 +57,6 @@ module Network.AWS.CloudFront.Types
     , _TooManyFieldLevelEncryptionEncryptionEntities
     , _TooManyStreamingDistributionCNAMEs
     , _FieldLevelEncryptionProfileAlreadyExists
-    , _ResourceInUse
     , _InvalidRequiredProtocol
     , _TooManyDistributions
     , _TooManyCertificates
@@ -77,6 +76,7 @@ module Network.AWS.CloudFront.Types
     , _PublicKeyInUse
     , _TrustedSignerDoesNotExist
     , _InvalidProtocolSettings
+    , _TooManyOriginGroupsPerDistribution
     , _TooManyPublicKeys
     , _NoSuchFieldLevelEncryptionConfig
     , _TooManyFieldLevelEncryptionContentTypeProfiles
@@ -113,6 +113,9 @@ module Network.AWS.CloudFront.Types
     -- * HTTPVersion
     , HTTPVersion (..)
 
+    -- * ICPRecordalStatus
+    , ICPRecordalStatus (..)
+
     -- * ItemSelection
     , ItemSelection (..)
 
@@ -143,6 +146,12 @@ module Network.AWS.CloudFront.Types
     , atsItems
     , atsEnabled
     , atsQuantity
+
+    -- * AliasICPRecordal
+    , AliasICPRecordal
+    , aliasICPRecordal
+    , aicprCNAME
+    , aicprICPRecordalStatus
 
     -- * Aliases
     , Aliases
@@ -296,6 +305,7 @@ module Network.AWS.CloudFront.Types
     -- * Distribution
     , Distribution
     , distribution
+    , dAliasICPRecordals
     , dId
     , dARN
     , dStatus
@@ -309,6 +319,7 @@ module Network.AWS.CloudFront.Types
     , DistributionConfig
     , distributionConfig
     , dcHTTPVersion
+    , dcOriginGroups
     , dcAliases
     , dcDefaultRootObject
     , dcPriceClass
@@ -344,6 +355,8 @@ module Network.AWS.CloudFront.Types
     -- * DistributionSummary
     , DistributionSummary
     , distributionSummary
+    , dsOriginGroups
+    , dsAliasICPRecordals
     , dsId
     , dsARN
     , dsStatus
@@ -507,6 +520,7 @@ module Network.AWS.CloudFront.Types
     -- * LambdaFunctionAssociation
     , LambdaFunctionAssociation
     , lambdaFunctionAssociation
+    , lfaIncludeBody
     , lfaLambdaFunctionARN
     , lfaEventType
 
@@ -540,6 +554,35 @@ module Network.AWS.CloudFront.Types
     , ochHeaderName
     , ochHeaderValue
 
+    -- * OriginGroup
+    , OriginGroup
+    , originGroup
+    , ogId
+    , ogFailoverCriteria
+    , ogMembers
+
+    -- * OriginGroupFailoverCriteria
+    , OriginGroupFailoverCriteria
+    , originGroupFailoverCriteria
+    , ogfcStatusCodes
+
+    -- * OriginGroupMember
+    , OriginGroupMember
+    , originGroupMember
+    , ogmOriginId
+
+    -- * OriginGroupMembers
+    , OriginGroupMembers
+    , originGroupMembers
+    , ogmQuantity
+    , ogmItems
+
+    -- * OriginGroups
+    , OriginGroups
+    , originGroups
+    , ogItems
+    , ogQuantity
+
     -- * OriginSSLProtocols
     , OriginSSLProtocols
     , originSSLProtocols
@@ -549,8 +592,8 @@ module Network.AWS.CloudFront.Types
     -- * Origins
     , Origins
     , origins
-    , oItems
     , oQuantity
+    , oItems
 
     -- * Paths
     , Paths
@@ -635,6 +678,12 @@ module Network.AWS.CloudFront.Types
     , signer
     , sAWSAccountNumber
     , sKeyPairIds
+
+    -- * StatusCodes
+    , StatusCodes
+    , statusCodes
+    , scQuantity
+    , scItems
 
     -- * StreamingDistribution
     , StreamingDistribution
@@ -738,14 +787,14 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
 
--- | API version @2017-10-30@ of the Amazon CloudFront SDK configuration.
+-- | API version @2019-03-26@ of the Amazon CloudFront SDK configuration.
 cloudFront :: Service
 cloudFront =
   Service
     { _svcAbbrev = "CloudFront"
     , _svcSigner = v4
     , _svcPrefix = "cloudfront"
-    , _svcVersion = "2017-10-30"
+    , _svcVersion = "2019-03-26"
     , _svcEndpoint = defaultEndpoint cloudFront
     , _svcTimeout = Just 70
     , _svcCheck = statusSuccess
@@ -777,18 +826,24 @@ cloudFront =
       | otherwise = Nothing
 
 
--- | Prism for TooManyOriginCustomHeaders' errors.
+-- | Your request contains too many origin custom headers.
+--
+--
 _TooManyOriginCustomHeaders :: AsError a => Getting (First ServiceError) a ServiceError
 _TooManyOriginCustomHeaders =
   _MatchServiceError cloudFront "TooManyOriginCustomHeaders" . hasStatus 400
 
 
--- | Prism for InvalidTagging' errors.
+-- | The tagging specified is not valid.
+--
+--
 _InvalidTagging :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidTagging = _MatchServiceError cloudFront "InvalidTagging" . hasStatus 400
 
 
--- | Prism for InvalidErrorCode' errors.
+-- | An invalid error code was specified.
+--
+--
 _InvalidErrorCode :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidErrorCode =
   _MatchServiceError cloudFront "InvalidErrorCode" . hasStatus 400
@@ -812,7 +867,9 @@ _FieldLevelEncryptionProfileInUse =
   hasStatus 409
 
 
--- | Prism for InvalidOriginReadTimeout' errors.
+-- | The read timeout specified for the origin is not valid.
+--
+--
 _InvalidOriginReadTimeout :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidOriginReadTimeout =
   _MatchServiceError cloudFront "InvalidOriginReadTimeout" . hasStatus 400
@@ -852,7 +909,9 @@ _InvalidOriginAccessIdentity =
   _MatchServiceError cloudFront "InvalidOriginAccessIdentity" . hasStatus 400
 
 
--- | Prism for DistributionNotDisabled' errors.
+-- | The specified CloudFront distribution is not disabled. You must disable the distribution before you can delete it.
+--
+--
 _DistributionNotDisabled :: AsError a => Getting (First ServiceError) a ServiceError
 _DistributionNotDisabled =
   _MatchServiceError cloudFront "DistributionNotDisabled" . hasStatus 409
@@ -882,7 +941,9 @@ _InvalidArgument =
   _MatchServiceError cloudFront "InvalidArgument" . hasStatus 400
 
 
--- | Prism for InvalidOriginKeepaliveTimeout' errors.
+-- | The keep alive timeout specified for the origin is not valid.
+--
+--
 _InvalidOriginKeepaliveTimeout :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidOriginKeepaliveTimeout =
   _MatchServiceError cloudFront "InvalidOriginKeepaliveTimeout" . hasStatus 400
@@ -896,13 +957,17 @@ _TooManyInvalidationsInProgress =
   _MatchServiceError cloudFront "TooManyInvalidationsInProgress" . hasStatus 400
 
 
--- | Prism for InvalidWebACLId' errors.
+-- | A web ACL ID specified is not valid. To specify a web ACL created using the latest version of AWS WAF, use the ACL ARN, for example @arn:aws:wafv2:us-east-1:123456789012:global/webacl/ExampleWebACL/473e64fd-f30b-4765-81a0-62ad96dd167a@ . To specify a web ACL created using AWS WAF Classic, use the ACL ID, for example @473e64fd-f30b-4765-81a0-62ad96dd167a@ .
+--
+--
 _InvalidWebACLId :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidWebACLId =
   _MatchServiceError cloudFront "InvalidWebACLId" . hasStatus 400
 
 
--- | Prism for TooManyQueryStringParameters' errors.
+-- | Your request contains too many query string parameters.
+--
+--
 _TooManyQueryStringParameters :: AsError a => Getting (First ServiceError) a ServiceError
 _TooManyQueryStringParameters =
   _MatchServiceError cloudFront "TooManyQueryStringParameters" . hasStatus 400
@@ -934,7 +999,9 @@ _NoSuchCloudFrontOriginAccessIdentity =
   hasStatus 404
 
 
--- | Prism for CloudFrontOriginAccessIdentityInUse' errors.
+-- | The Origin Access Identity specified is already in use.
+--
+--
 _CloudFrontOriginAccessIdentityInUse :: AsError a => Getting (First ServiceError) a ServiceError
 _CloudFrontOriginAccessIdentityInUse =
   _MatchServiceError cloudFront "CloudFrontOriginAccessIdentityInUse" .
@@ -958,7 +1025,9 @@ _CannotChangeImmutablePublicKeyFields =
   hasStatus 400
 
 
--- | Prism for BatchTooLarge' errors.
+-- | Invalidation batch specified is too large.
+--
+--
 _BatchTooLarge :: AsError a => Getting (First ServiceError) a ServiceError
 _BatchTooLarge = _MatchServiceError cloudFront "BatchTooLarge" . hasStatus 413
 
@@ -1035,27 +1104,35 @@ _NoSuchOrigin :: AsError a => Getting (First ServiceError) a ServiceError
 _NoSuchOrigin = _MatchServiceError cloudFront "NoSuchOrigin" . hasStatus 404
 
 
--- | Prism for InvalidTTLOrder' errors.
+-- | The TTL order specified is not valid.
+--
+--
 _InvalidTTLOrder :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidTTLOrder =
   _MatchServiceError cloudFront "InvalidTTLOrder" . hasStatus 400
 
 
--- | Prism for StreamingDistributionNotDisabled' errors.
+-- | The specified CloudFront distribution is not disabled. You must disable the distribution before you can delete it.
+--
+--
 _StreamingDistributionNotDisabled :: AsError a => Getting (First ServiceError) a ServiceError
 _StreamingDistributionNotDisabled =
   _MatchServiceError cloudFront "StreamingDistributionNotDisabled" .
   hasStatus 409
 
 
--- | Prism for TooManyHeadersInForwardedValues' errors.
+-- | Your request contains too many headers in forwarded values.
+--
+--
 _TooManyHeadersInForwardedValues :: AsError a => Getting (First ServiceError) a ServiceError
 _TooManyHeadersInForwardedValues =
   _MatchServiceError cloudFront "TooManyHeadersInForwardedValues" .
   hasStatus 400
 
 
--- | Prism for NoSuchResource' errors.
+-- | A resource that was specified is not valid.
+--
+--
 _NoSuchResource :: AsError a => Getting (First ServiceError) a ServiceError
 _NoSuchResource = _MatchServiceError cloudFront "NoSuchResource" . hasStatus 404
 
@@ -1069,7 +1146,9 @@ _TooManyFieldLevelEncryptionEncryptionEntities =
   hasStatus 400
 
 
--- | Prism for TooManyStreamingDistributionCNAMEs' errors.
+-- | Your request contains more CNAMEs than are allowed per distribution.
+--
+--
 _TooManyStreamingDistributionCNAMEs :: AsError a => Getting (First ServiceError) a ServiceError
 _TooManyStreamingDistributionCNAMEs =
   _MatchServiceError cloudFront "TooManyStreamingDistributionCNAMEs" .
@@ -1083,11 +1162,6 @@ _FieldLevelEncryptionProfileAlreadyExists :: AsError a => Getting (First Service
 _FieldLevelEncryptionProfileAlreadyExists =
   _MatchServiceError cloudFront "FieldLevelEncryptionProfileAlreadyExists" .
   hasStatus 409
-
-
--- | Prism for ResourceInUse' errors.
-_ResourceInUse :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceInUse = _MatchServiceError cloudFront "ResourceInUse" . hasStatus 409
 
 
 -- | This operation requires the HTTPS protocol. Ensure that you specify the HTTPS protocol in your request, or omit the @RequiredProtocols@ element from your distribution configuration.
@@ -1133,7 +1207,9 @@ _TooManyDistributionsAssociatedToFieldLevelEncryptionConfig =
   hasStatus 400
 
 
--- | Prism for InvalidQueryStringParameters' errors.
+-- | The query string parameters specified are not valid.
+--
+--
 _InvalidQueryStringParameters :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidQueryStringParameters =
   _MatchServiceError cloudFront "InvalidQueryStringParameters" . hasStatus 400
@@ -1189,19 +1265,25 @@ _PreconditionFailed =
   _MatchServiceError cloudFront "PreconditionFailed" . hasStatus 412
 
 
--- | Prism for InvalidResponseCode' errors.
+-- | A response code is not valid.
+--
+--
 _InvalidResponseCode :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidResponseCode =
   _MatchServiceError cloudFront "InvalidResponseCode" . hasStatus 400
 
 
--- | Prism for InvalidHeadersForS3Origin' errors.
+-- | The headers specified are not valid for an Amazon S3 origin.
+--
+--
 _InvalidHeadersForS3Origin :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidHeadersForS3Origin =
   _MatchServiceError cloudFront "InvalidHeadersForS3Origin" . hasStatus 400
 
 
--- | Prism for CNAMEAlreadyExists' errors.
+-- | The CNAME specified is already defined for CloudFront.
+--
+--
 _CNAMEAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError
 _CNAMEAlreadyExists =
   _MatchServiceError cloudFront "CNAMEAlreadyExists" . hasStatus 409
@@ -1236,6 +1318,15 @@ _TrustedSignerDoesNotExist =
 _InvalidProtocolSettings :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidProtocolSettings =
   _MatchServiceError cloudFront "InvalidProtocolSettings" . hasStatus 400
+
+
+-- | Processing your request would cause you to exceed the maximum number of origin groups allowed.
+--
+--
+_TooManyOriginGroupsPerDistribution :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyOriginGroupsPerDistribution =
+  _MatchServiceError cloudFront "TooManyOriginGroupsPerDistribution" .
+  hasStatus 400
 
 
 -- | The maximum number of public keys for field-level encryption have been created. To create a new public key, delete one of the existing keys.
@@ -1315,7 +1406,9 @@ _InvalidRelativePath =
   _MatchServiceError cloudFront "InvalidRelativePath" . hasStatus 400
 
 
--- | Prism for StreamingDistributionAlreadyExists' errors.
+-- | The caller reference you attempted to create the streaming distribution with is associated with another distribution
+--
+--
 _StreamingDistributionAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError
 _StreamingDistributionAlreadyExists =
   _MatchServiceError cloudFront "StreamingDistributionAlreadyExists" .
@@ -1330,7 +1423,9 @@ _QueryArgProfileEmpty =
   _MatchServiceError cloudFront "QueryArgProfileEmpty" . hasStatus 400
 
 
--- | Prism for InvalidMinimumProtocolVersion' errors.
+-- | The minimum protocol version specified is not valid.
+--
+--
 _InvalidMinimumProtocolVersion :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidMinimumProtocolVersion =
   _MatchServiceError cloudFront "InvalidMinimumProtocolVersion" . hasStatus 400
@@ -1343,7 +1438,9 @@ _AccessDenied :: AsError a => Getting (First ServiceError) a ServiceError
 _AccessDenied = _MatchServiceError cloudFront "AccessDenied" . hasStatus 403
 
 
--- | Prism for InvalidViewerCertificate' errors.
+-- | A viewer certificate specified is not valid.
+--
+--
 _InvalidViewerCertificate :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidViewerCertificate =
   _MatchServiceError cloudFront "InvalidViewerCertificate" . hasStatus 400
@@ -1383,13 +1480,17 @@ _TooManyDistributionsWithLambdaAssociations =
   hasStatus 400
 
 
--- | Prism for InvalidGeoRestrictionParameter' errors.
+-- | The specified geo restriction parameter is not valid.
+--
+--
 _InvalidGeoRestrictionParameter :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidGeoRestrictionParameter =
   _MatchServiceError cloudFront "InvalidGeoRestrictionParameter" . hasStatus 400
 
 
--- | Prism for InvalidLocationCode' errors.
+-- | The location code specified is not valid.
+--
+--
 _InvalidLocationCode :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidLocationCode =
   _MatchServiceError cloudFront "InvalidLocationCode" . hasStatus 400

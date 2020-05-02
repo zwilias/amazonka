@@ -26,14 +26,17 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'environment' smart constructor.
-data Environment = Environment'
-  { _eArn         :: !(Maybe Text)
-  , _eOwnerARN    :: !(Maybe Text)
-  , _eName        :: !(Maybe Text)
-  , _eId          :: !(Maybe Text)
-  , _eType        :: !(Maybe EnvironmentType)
-  , _eDescription :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Environment =
+  Environment'
+    { _eArn         :: !(Maybe Text)
+    , _eLifecycle   :: !(Maybe EnvironmentLifecycle)
+    , _eOwnerARN    :: !(Maybe Text)
+    , _eName        :: !(Maybe Text)
+    , _eId          :: !(Maybe Text)
+    , _eType        :: !(Maybe EnvironmentType)
+    , _eDescription :: !(Maybe (Sensitive Text))
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Environment' with the minimum fields required to make a request.
@@ -41,6 +44,8 @@ data Environment = Environment'
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'eArn' - The Amazon Resource Name (ARN) of the environment.
+--
+-- * 'eLifecycle' - The state of the environment in its creation or deletion lifecycle.
 --
 -- * 'eOwnerARN' - The Amazon Resource Name (ARN) of the environment owner.
 --
@@ -56,6 +61,7 @@ environment
 environment =
   Environment'
     { _eArn = Nothing
+    , _eLifecycle = Nothing
     , _eOwnerARN = Nothing
     , _eName = Nothing
     , _eId = Nothing
@@ -67,6 +73,10 @@ environment =
 -- | The Amazon Resource Name (ARN) of the environment.
 eArn :: Lens' Environment (Maybe Text)
 eArn = lens _eArn (\ s a -> s{_eArn = a})
+
+-- | The state of the environment in its creation or deletion lifecycle.
+eLifecycle :: Lens' Environment (Maybe EnvironmentLifecycle)
+eLifecycle = lens _eLifecycle (\ s a -> s{_eLifecycle = a})
 
 -- | The Amazon Resource Name (ARN) of the environment owner.
 eOwnerARN :: Lens' Environment (Maybe Text)
@@ -86,15 +96,16 @@ eType = lens _eType (\ s a -> s{_eType = a})
 
 -- | The description for the environment.
 eDescription :: Lens' Environment (Maybe Text)
-eDescription = lens _eDescription (\ s a -> s{_eDescription = a})
+eDescription = lens _eDescription (\ s a -> s{_eDescription = a}) . mapping _Sensitive
 
 instance FromJSON Environment where
         parseJSON
           = withObject "Environment"
               (\ x ->
                  Environment' <$>
-                   (x .:? "arn") <*> (x .:? "ownerArn") <*>
-                     (x .:? "name")
+                   (x .:? "arn") <*> (x .:? "lifecycle") <*>
+                     (x .:? "ownerArn")
+                     <*> (x .:? "name")
                      <*> (x .:? "id")
                      <*> (x .:? "type")
                      <*> (x .:? "description"))
@@ -103,18 +114,74 @@ instance Hashable Environment where
 
 instance NFData Environment where
 
+-- | Information about the current creation or deletion lifecycle state of an AWS Cloud9 development environment.
+--
+--
+--
+-- /See:/ 'environmentLifecycle' smart constructor.
+data EnvironmentLifecycle =
+  EnvironmentLifecycle'
+    { _elStatus          :: !(Maybe EnvironmentLifecycleStatus)
+    , _elFailureResource :: !(Maybe Text)
+    , _elReason          :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'EnvironmentLifecycle' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'elStatus' - The current creation or deletion lifecycle state of the environment.     * @CREATING@ : The environment is in the process of being created.     * @CREATED@ : The environment was successfully created.     * @CREATE_FAILED@ : The environment failed to be created.     * @DELETING@ : The environment is in the process of being deleted.     * @DELETE_FAILED@ : The environment failed to delete.
+--
+-- * 'elFailureResource' - If the environment failed to delete, the Amazon Resource Name (ARN) of the related AWS resource.
+--
+-- * 'elReason' - Any informational message about the lifecycle state of the environment.
+environmentLifecycle
+    :: EnvironmentLifecycle
+environmentLifecycle =
+  EnvironmentLifecycle'
+    {_elStatus = Nothing, _elFailureResource = Nothing, _elReason = Nothing}
+
+
+-- | The current creation or deletion lifecycle state of the environment.     * @CREATING@ : The environment is in the process of being created.     * @CREATED@ : The environment was successfully created.     * @CREATE_FAILED@ : The environment failed to be created.     * @DELETING@ : The environment is in the process of being deleted.     * @DELETE_FAILED@ : The environment failed to delete.
+elStatus :: Lens' EnvironmentLifecycle (Maybe EnvironmentLifecycleStatus)
+elStatus = lens _elStatus (\ s a -> s{_elStatus = a})
+
+-- | If the environment failed to delete, the Amazon Resource Name (ARN) of the related AWS resource.
+elFailureResource :: Lens' EnvironmentLifecycle (Maybe Text)
+elFailureResource = lens _elFailureResource (\ s a -> s{_elFailureResource = a})
+
+-- | Any informational message about the lifecycle state of the environment.
+elReason :: Lens' EnvironmentLifecycle (Maybe Text)
+elReason = lens _elReason (\ s a -> s{_elReason = a})
+
+instance FromJSON EnvironmentLifecycle where
+        parseJSON
+          = withObject "EnvironmentLifecycle"
+              (\ x ->
+                 EnvironmentLifecycle' <$>
+                   (x .:? "status") <*> (x .:? "failureResource") <*>
+                     (x .:? "reason"))
+
+instance Hashable EnvironmentLifecycle where
+
+instance NFData EnvironmentLifecycle where
+
 -- | Information about an environment member for an AWS Cloud9 development environment.
 --
 --
 --
 -- /See:/ 'environmentMember' smart constructor.
-data EnvironmentMember = EnvironmentMember'
-  { _emLastAccess    :: !(Maybe POSIX)
-  , _emUserId        :: !(Maybe Text)
-  , _emUserARN       :: !(Maybe Text)
-  , _emPermissions   :: !(Maybe Permissions)
-  , _emEnvironmentId :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data EnvironmentMember =
+  EnvironmentMember'
+    { _emLastAccess    :: !(Maybe POSIX)
+    , _emUserId        :: !(Maybe Text)
+    , _emUserARN       :: !(Maybe Text)
+    , _emPermissions   :: !(Maybe Permissions)
+    , _emEnvironmentId :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'EnvironmentMember' with the minimum fields required to make a request.
@@ -175,3 +242,54 @@ instance FromJSON EnvironmentMember where
 instance Hashable EnvironmentMember where
 
 instance NFData EnvironmentMember where
+
+-- | Metadata that is associated with AWS resources. In particular, a name-value pair that can be associated with an AWS Cloud9 development environment. There are two types of tags: /user tags/ and /system tags/ . A user tag is created by the user. A system tag is automatically created by AWS services. A system tag is prefixed with "aws:" and cannot be modified by the user.
+--
+--
+--
+-- /See:/ 'tag' smart constructor.
+data Tag =
+  Tag'
+    { _tagKey   :: !Text
+    , _tagValue :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'Tag' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'tagKey' - The __name__ part of a tag.
+--
+-- * 'tagValue' - The __value__ part of a tag.
+tag
+    :: Text -- ^ 'tagKey'
+    -> Text -- ^ 'tagValue'
+    -> Tag
+tag pKey_ pValue_ = Tag' {_tagKey = pKey_, _tagValue = pValue_}
+
+
+-- | The __name__ part of a tag.
+tagKey :: Lens' Tag Text
+tagKey = lens _tagKey (\ s a -> s{_tagKey = a})
+
+-- | The __value__ part of a tag.
+tagValue :: Lens' Tag Text
+tagValue = lens _tagValue (\ s a -> s{_tagValue = a})
+
+instance FromJSON Tag where
+        parseJSON
+          = withObject "Tag"
+              (\ x -> Tag' <$> (x .: "Key") <*> (x .: "Value"))
+
+instance Hashable Tag where
+
+instance NFData Tag where
+
+instance ToJSON Tag where
+        toJSON Tag'{..}
+          = object
+              (catMaybes
+                 [Just ("Key" .= _tagKey),
+                  Just ("Value" .= _tagValue)])

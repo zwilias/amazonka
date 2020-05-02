@@ -42,15 +42,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for DeleteRouteTable.
---
---
---
--- /See:/ 'deleteRouteTable' smart constructor.
-data DeleteRouteTable = DeleteRouteTable'
-  { _drtrDryRun       :: !(Maybe Bool)
-  , _drtrRouteTableId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'deleteRouteTable' smart constructor.
+data DeleteRouteTable =
+  DeleteRouteTable'
+    { _drtrDryRun       :: !(Maybe Bool)
+    , _drtrRouteTableId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteRouteTable' with the minimum fields required to make a request.

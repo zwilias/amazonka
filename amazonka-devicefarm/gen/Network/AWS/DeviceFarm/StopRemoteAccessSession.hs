@@ -49,23 +49,25 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'stopRemoteAccessSession' smart constructor.
-newtype StopRemoteAccessSession = StopRemoteAccessSession'
-  { _srasArn :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype StopRemoteAccessSession =
+  StopRemoteAccessSession'
+    { _srasArn :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'StopRemoteAccessSession' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'srasArn' - The Amazon Resource Name (ARN) of the remote access session you wish to stop.
+-- * 'srasArn' - The Amazon Resource Name (ARN) of the remote access session to stop.
 stopRemoteAccessSession
     :: Text -- ^ 'srasArn'
     -> StopRemoteAccessSession
 stopRemoteAccessSession pArn_ = StopRemoteAccessSession' {_srasArn = pArn_}
 
 
--- | The Amazon Resource Name (ARN) of the remote access session you wish to stop.
+-- | The Amazon Resource Name (ARN) of the remote access session to stop.
 srasArn :: Lens' StopRemoteAccessSession Text
 srasArn = lens _srasArn (\ s a -> s{_srasArn = a})
 
@@ -109,17 +111,19 @@ instance ToQuery StopRemoteAccessSession where
 --
 --
 -- /See:/ 'stopRemoteAccessSessionResponse' smart constructor.
-data StopRemoteAccessSessionResponse = StopRemoteAccessSessionResponse'
-  { _srasrsRemoteAccessSession :: !(Maybe RemoteAccessSession)
-  , _srasrsResponseStatus      :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data StopRemoteAccessSessionResponse =
+  StopRemoteAccessSessionResponse'
+    { _srasrsRemoteAccessSession :: !(Maybe RemoteAccessSession)
+    , _srasrsResponseStatus      :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'StopRemoteAccessSessionResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'srasrsRemoteAccessSession' - A container representing the metadata from the service about the remote access session you are stopping.
+-- * 'srasrsRemoteAccessSession' - A container that represents the metadata from the service about the remote access session you are stopping.
 --
 -- * 'srasrsResponseStatus' - -- | The response status code.
 stopRemoteAccessSessionResponse
@@ -132,7 +136,7 @@ stopRemoteAccessSessionResponse pResponseStatus_ =
     }
 
 
--- | A container representing the metadata from the service about the remote access session you are stopping.
+-- | A container that represents the metadata from the service about the remote access session you are stopping.
 srasrsRemoteAccessSession :: Lens' StopRemoteAccessSessionResponse (Maybe RemoteAccessSession)
 srasrsRemoteAccessSession = lens _srasrsRemoteAccessSession (\ s a -> s{_srasrsRemoteAccessSession = a})
 

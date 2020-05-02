@@ -21,6 +21,8 @@
 -- Lists a history of user activity and any risks detected as part of Amazon Cognito advanced security.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.CognitoIdentityProvider.AdminListUserAuthEvents
     (
     -- * Creating a Request
@@ -44,17 +46,20 @@ module Network.AWS.CognitoIdentityProvider.AdminListUserAuthEvents
 import Network.AWS.CognitoIdentityProvider.Types
 import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'adminListUserAuthEvents' smart constructor.
-data AdminListUserAuthEvents = AdminListUserAuthEvents'
-  { _aluaeNextToken  :: !(Maybe Text)
-  , _aluaeMaxResults :: !(Maybe Nat)
-  , _aluaeUserPoolId :: !Text
-  , _aluaeUsername   :: !(Sensitive Text)
-  } deriving (Eq, Show, Data, Typeable, Generic)
+data AdminListUserAuthEvents =
+  AdminListUserAuthEvents'
+    { _aluaeNextToken  :: !(Maybe Text)
+    , _aluaeMaxResults :: !(Maybe Nat)
+    , _aluaeUserPoolId :: !Text
+    , _aluaeUsername   :: !(Sensitive Text)
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AdminListUserAuthEvents' with the minimum fields required to make a request.
@@ -96,6 +101,13 @@ aluaeUserPoolId = lens _aluaeUserPoolId (\ s a -> s{_aluaeUserPoolId = a})
 -- | The user pool username or an alias.
 aluaeUsername :: Lens' AdminListUserAuthEvents Text
 aluaeUsername = lens _aluaeUsername (\ s a -> s{_aluaeUsername = a}) . _Sensitive
+
+instance AWSPager AdminListUserAuthEvents where
+        page rq rs
+          | stop (rs ^. aluaersNextToken) = Nothing
+          | stop (rs ^. aluaersAuthEvents) = Nothing
+          | otherwise =
+            Just $ rq & aluaeNextToken .~ rs ^. aluaersNextToken
 
 instance AWSRequest AdminListUserAuthEvents where
         type Rs AdminListUserAuthEvents =
@@ -139,11 +151,13 @@ instance ToQuery AdminListUserAuthEvents where
         toQuery = const mempty
 
 -- | /See:/ 'adminListUserAuthEventsResponse' smart constructor.
-data AdminListUserAuthEventsResponse = AdminListUserAuthEventsResponse'
-  { _aluaersNextToken      :: !(Maybe Text)
-  , _aluaersAuthEvents     :: !(Maybe [AuthEventType])
-  , _aluaersResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AdminListUserAuthEventsResponse =
+  AdminListUserAuthEventsResponse'
+    { _aluaersNextToken      :: !(Maybe Text)
+    , _aluaersAuthEvents     :: !(Maybe [AuthEventType])
+    , _aluaersResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AdminListUserAuthEventsResponse' with the minimum fields required to make a request.

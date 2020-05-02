@@ -48,25 +48,27 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createPullRequest' smart constructor.
-data CreatePullRequest = CreatePullRequest'
-  { _cprClientRequestToken :: !(Maybe Text)
-  , _cprDescription        :: !(Maybe Text)
-  , _cprTitle              :: !Text
-  , _cprTargets            :: ![Target]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreatePullRequest =
+  CreatePullRequest'
+    { _cprClientRequestToken :: !(Maybe Text)
+    , _cprDescription        :: !(Maybe Text)
+    , _cprTitle              :: !Text
+    , _cprTargets            :: ![Target]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreatePullRequest' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cprClientRequestToken' - A unique, client-generated idempotency token that when provided in a request, ensures the request cannot be repeated with a changed parameter. If a request is received with the same parameters and a token is included, the request will return information about the initial request that used that token.
+-- * 'cprClientRequestToken' - A unique, client-generated idempotency token that, when provided in a request, ensures the request cannot be repeated with a changed parameter. If a request is received with the same parameters and a token is included, the request returns information about the initial request that used that token.
 --
 -- * 'cprDescription' - A description of the pull request.
 --
--- * 'cprTitle' - The title of the pull request. This title will be used to identify the pull request to other users in the repository.
+-- * 'cprTitle' - The title of the pull request. This title is used to identify the pull request to other users in the repository.
 --
--- * 'cprTargets' - The targets for the pull request, including the source of the code to be reviewed (the source branch), and the destination where the creator of the pull request intends the code to be merged after the pull request is closed (the destination branch).
+-- * 'cprTargets' - The targets for the pull request, including the source of the code to be reviewed (the source branch) and the destination where the creator of the pull request intends the code to be merged after the pull request is closed (the destination branch).
 createPullRequest
     :: Text -- ^ 'cprTitle'
     -> CreatePullRequest
@@ -79,7 +81,7 @@ createPullRequest pTitle_ =
     }
 
 
--- | A unique, client-generated idempotency token that when provided in a request, ensures the request cannot be repeated with a changed parameter. If a request is received with the same parameters and a token is included, the request will return information about the initial request that used that token.
+-- | A unique, client-generated idempotency token that, when provided in a request, ensures the request cannot be repeated with a changed parameter. If a request is received with the same parameters and a token is included, the request returns information about the initial request that used that token.
 cprClientRequestToken :: Lens' CreatePullRequest (Maybe Text)
 cprClientRequestToken = lens _cprClientRequestToken (\ s a -> s{_cprClientRequestToken = a})
 
@@ -87,11 +89,11 @@ cprClientRequestToken = lens _cprClientRequestToken (\ s a -> s{_cprClientReques
 cprDescription :: Lens' CreatePullRequest (Maybe Text)
 cprDescription = lens _cprDescription (\ s a -> s{_cprDescription = a})
 
--- | The title of the pull request. This title will be used to identify the pull request to other users in the repository.
+-- | The title of the pull request. This title is used to identify the pull request to other users in the repository.
 cprTitle :: Lens' CreatePullRequest Text
 cprTitle = lens _cprTitle (\ s a -> s{_cprTitle = a})
 
--- | The targets for the pull request, including the source of the code to be reviewed (the source branch), and the destination where the creator of the pull request intends the code to be merged after the pull request is closed (the destination branch).
+-- | The targets for the pull request, including the source of the code to be reviewed (the source branch) and the destination where the creator of the pull request intends the code to be merged after the pull request is closed (the destination branch).
 cprTargets :: Lens' CreatePullRequest [Target]
 cprTargets = lens _cprTargets (\ s a -> s{_cprTargets = a}) . _Coerce
 
@@ -135,10 +137,12 @@ instance ToQuery CreatePullRequest where
         toQuery = const mempty
 
 -- | /See:/ 'createPullRequestResponse' smart constructor.
-data CreatePullRequestResponse = CreatePullRequestResponse'
-  { _cprrsResponseStatus :: !Int
-  , _cprrsPullRequest    :: !PullRequest
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreatePullRequestResponse =
+  CreatePullRequestResponse'
+    { _cprrsResponseStatus :: !Int
+    , _cprrsPullRequest    :: !PullRequest
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreatePullRequestResponse' with the minimum fields required to make a request.

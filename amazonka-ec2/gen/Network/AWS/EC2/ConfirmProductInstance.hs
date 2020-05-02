@@ -47,16 +47,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for ConfirmProductInstance.
---
---
---
--- /See:/ 'confirmProductInstance' smart constructor.
-data ConfirmProductInstance = ConfirmProductInstance'
-  { _cpiDryRun      :: !(Maybe Bool)
-  , _cpiInstanceId  :: !Text
-  , _cpiProductCode :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'confirmProductInstance' smart constructor.
+data ConfirmProductInstance =
+  ConfirmProductInstance'
+    { _cpiDryRun      :: !(Maybe Bool)
+    , _cpiInstanceId  :: !Text
+    , _cpiProductCode :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ConfirmProductInstance' with the minimum fields required to make a request.
@@ -123,16 +121,14 @@ instance ToQuery ConfirmProductInstance where
                "InstanceId" =: _cpiInstanceId,
                "ProductCode" =: _cpiProductCode]
 
--- | Contains the output of ConfirmProductInstance.
---
---
---
--- /See:/ 'confirmProductInstanceResponse' smart constructor.
-data ConfirmProductInstanceResponse = ConfirmProductInstanceResponse'
-  { _cpirsReturn         :: !(Maybe Bool)
-  , _cpirsOwnerId        :: !(Maybe Text)
-  , _cpirsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'confirmProductInstanceResponse' smart constructor.
+data ConfirmProductInstanceResponse =
+  ConfirmProductInstanceResponse'
+    { _cpirsReturn         :: !(Maybe Bool)
+    , _cpirsOwnerId        :: !(Maybe Text)
+    , _cpirsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ConfirmProductInstanceResponse' with the minimum fields required to make a request.

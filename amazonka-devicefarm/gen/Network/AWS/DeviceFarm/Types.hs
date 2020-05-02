@@ -17,9 +17,14 @@ module Network.AWS.DeviceFarm.Types
 
     -- * Errors
     , _NotEligibleException
+    , _CannotDeleteException
     , _IdempotencyException
+    , _TooManyTagsException
     , _ArgumentException
     , _NotFoundException
+    , _InternalServiceException
+    , _TagPolicyException
+    , _TagOperationException
     , _ServiceAccountException
     , _InvalidOperationException
     , _LimitExceededException
@@ -38,6 +43,12 @@ module Network.AWS.DeviceFarm.Types
 
     -- * DeviceAttribute
     , DeviceAttribute (..)
+
+    -- * DeviceAvailability
+    , DeviceAvailability (..)
+
+    -- * DeviceFilterAttribute
+    , DeviceFilterAttribute (..)
 
     -- * DeviceFormFactor
     , DeviceFormFactor (..)
@@ -81,8 +92,20 @@ module Network.AWS.DeviceFarm.Types
     -- * SampleType
     , SampleType (..)
 
+    -- * TestGridSessionArtifactCategory
+    , TestGridSessionArtifactCategory (..)
+
+    -- * TestGridSessionArtifactType
+    , TestGridSessionArtifactType (..)
+
+    -- * TestGridSessionStatus
+    , TestGridSessionStatus (..)
+
     -- * TestType
     , TestType (..)
+
+    -- * UploadCategory
+    , UploadCategory (..)
 
     -- * UploadStatus
     , UploadStatus (..)
@@ -133,6 +156,7 @@ module Network.AWS.DeviceFarm.Types
     , CreateRemoteAccessSessionConfiguration
     , createRemoteAccessSessionConfiguration
     , crascBillingMethod
+    , crascVpceConfigurationARNs
 
     -- * CustomerArtifactPaths
     , CustomerArtifactPaths
@@ -144,26 +168,34 @@ module Network.AWS.DeviceFarm.Types
     -- * Device
     , Device
     , device
-    , devCarrier
-    , devImage
-    , devManufacturer
-    , devPlatform
-    , devModelId
-    , devRemoteAccessEnabled
-    , devArn
-    , devFormFactor
-    , devFleetType
-    , devResolution
-    , devMemory
-    , devRadio
-    , devOs
-    , devName
-    , devModel
-    , devInstances
-    , devRemoteDebugEnabled
-    , devCpu
-    , devHeapSize
-    , devFleetName
+    , dCarrier
+    , dImage
+    , dManufacturer
+    , dPlatform
+    , dModelId
+    , dRemoteAccessEnabled
+    , dArn
+    , dFormFactor
+    , dFleetType
+    , dResolution
+    , dAvailability
+    , dMemory
+    , dRadio
+    , dOs
+    , dName
+    , dModel
+    , dInstances
+    , dRemoteDebugEnabled
+    , dCpu
+    , dHeapSize
+    , dFleetName
+
+    -- * DeviceFilter
+    , DeviceFilter
+    , deviceFilter
+    , dfAttribute
+    , dfOperator
+    , dfValues
 
     -- * DeviceInstance
     , DeviceInstance
@@ -185,11 +217,12 @@ module Network.AWS.DeviceFarm.Types
     -- * DevicePool
     , DevicePool
     , devicePool
-    , dArn
-    , dRules
-    , dName
-    , dType
-    , dDescription
+    , devArn
+    , devRules
+    , devName
+    , devMaxDevices
+    , devType
+    , devDescription
 
     -- * DevicePoolCompatibilityResult
     , DevicePoolCompatibilityResult
@@ -198,6 +231,19 @@ module Network.AWS.DeviceFarm.Types
     , dpcrCompatible
     , dpcrIncompatibilityMessages
 
+    -- * DeviceSelectionConfiguration
+    , DeviceSelectionConfiguration
+    , deviceSelectionConfiguration
+    , dscFilters
+    , dscMaxDevices
+
+    -- * DeviceSelectionResult
+    , DeviceSelectionResult
+    , deviceSelectionResult
+    , dsrMatchedDevicesCount
+    , dsrFilters
+    , dsrMaxDevices
+
     -- * ExecutionConfiguration
     , ExecutionConfiguration
     , executionConfiguration
@@ -205,6 +251,7 @@ module Network.AWS.DeviceFarm.Types
     , ecAccountsCleanup
     , ecAppPackagesCleanup
     , ecJobTimeoutMinutes
+    , ecVideoCapture
 
     -- * IncompatibilityMessage
     , IncompatibilityMessage
@@ -234,7 +281,9 @@ module Network.AWS.DeviceFarm.Types
     , jobStopped
     , jobResult
     , jobName
+    , jobVideoEndpoint
     , jobDeviceMinutes
+    , jobVideoCapture
     , jobType
     , jobMessage
     , jobStarted
@@ -392,6 +441,7 @@ module Network.AWS.DeviceFarm.Types
     , runLocation
     , runCreated
     , runLocale
+    , runTestSpecARN
     , runStopped
     , runResult
     , runJobTimeoutMinutes
@@ -408,6 +458,7 @@ module Network.AWS.DeviceFarm.Types
     , runTotalJobs
     , runDevicePoolARN
     , runStarted
+    , runDeviceSelectionResult
 
     -- * Sample
     , Sample
@@ -432,6 +483,7 @@ module Network.AWS.DeviceFarm.Types
     -- * ScheduleRunTest
     , ScheduleRunTest
     , scheduleRunTest
+    , srtTestSpecARN
     , srtTestPackageARN
     , srtParameters
     , srtFilter
@@ -452,6 +504,12 @@ module Network.AWS.DeviceFarm.Types
     , sMessage
     , sStarted
 
+    -- * Tag
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
+
     -- * Test
     , Test
     , test
@@ -466,6 +524,40 @@ module Network.AWS.DeviceFarm.Types
     , tType
     , tMessage
     , tStarted
+
+    -- * TestGridProject
+    , TestGridProject
+    , testGridProject
+    , tgpArn
+    , tgpCreated
+    , tgpName
+    , tgpDescription
+
+    -- * TestGridSession
+    , TestGridSession
+    , testGridSession
+    , tgsStatus
+    , tgsArn
+    , tgsCreated
+    , tgsBillingMinutes
+    , tgsEnded
+    , tgsSeleniumProperties
+
+    -- * TestGridSessionAction
+    , TestGridSessionAction
+    , testGridSessionAction
+    , tgsaAction
+    , tgsaDuration
+    , tgsaRequestMethod
+    , tgsaStarted
+    , tgsaStatusCode
+
+    -- * TestGridSessionArtifact
+    , TestGridSessionArtifact
+    , testGridSessionArtifact
+    , tgsaUrl
+    , tgsaType
+    , tgsaFilename
 
     -- * TrialMinutes
     , TrialMinutes
@@ -485,6 +577,7 @@ module Network.AWS.DeviceFarm.Types
     , uStatus
     , uArn
     , uCreated
+    , uCategory
     , uUrl
     , uName
     , uMetadata
@@ -554,11 +647,25 @@ _NotEligibleException :: AsError a => Getting (First ServiceError) a ServiceErro
 _NotEligibleException = _MatchServiceError deviceFarm "NotEligibleException"
 
 
+-- | The requested object could not be deleted.
+--
+--
+_CannotDeleteException :: AsError a => Getting (First ServiceError) a ServiceError
+_CannotDeleteException = _MatchServiceError deviceFarm "CannotDeleteException"
+
+
 -- | An entity with the same name already exists.
 --
 --
 _IdempotencyException :: AsError a => Getting (First ServiceError) a ServiceError
 _IdempotencyException = _MatchServiceError deviceFarm "IdempotencyException"
+
+
+-- | The list of tags on the repository is over the limit. The maximum number of tags that can be applied to a repository is 50.
+--
+--
+_TooManyTagsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyTagsException = _MatchServiceError deviceFarm "TooManyTagsException"
 
 
 -- | An invalid argument was specified.
@@ -573,6 +680,28 @@ _ArgumentException = _MatchServiceError deviceFarm "ArgumentException"
 --
 _NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _NotFoundException = _MatchServiceError deviceFarm "NotFoundException"
+
+
+-- | An internal exception was raised in the service. Contact <mailto:aws-devicefarm-support@amazon.com aws-devicefarm-support@amazon.com> if you see this error.
+--
+--
+_InternalServiceException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalServiceException =
+  _MatchServiceError deviceFarm "InternalServiceException"
+
+
+-- | The request doesn't comply with the AWS Identity and Access Management (IAM) tag policy. Correct your request and then retry it.
+--
+--
+_TagPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
+_TagPolicyException = _MatchServiceError deviceFarm "TagPolicyException"
+
+
+-- | The operation was not successful. Try again.
+--
+--
+_TagOperationException :: AsError a => Getting (First ServiceError) a ServiceError
+_TagOperationException = _MatchServiceError deviceFarm "TagOperationException"
 
 
 -- | There was a problem with the service account.

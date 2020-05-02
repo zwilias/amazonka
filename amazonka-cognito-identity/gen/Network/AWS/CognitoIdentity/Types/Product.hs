@@ -21,27 +21,29 @@ import Network.AWS.CognitoIdentity.Types.Sum
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | A provider representing an Amazon Cognito Identity User Pool and its client ID.
+-- | A provider representing an Amazon Cognito user pool and its client ID.
 --
 --
 --
 -- /See:/ 'cognitoIdentityProvider' smart constructor.
-data CognitoIdentityProvider = CognitoIdentityProvider'
-  { _cipClientId             :: !(Maybe Text)
-  , _cipServerSideTokenCheck :: !(Maybe Bool)
-  , _cipProviderName         :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CognitoIdentityProvider =
+  CognitoIdentityProvider'
+    { _cipClientId             :: !(Maybe Text)
+    , _cipServerSideTokenCheck :: !(Maybe Bool)
+    , _cipProviderName         :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CognitoIdentityProvider' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cipClientId' - The client ID for the Amazon Cognito Identity User Pool.
+-- * 'cipClientId' - The client ID for the Amazon Cognito user pool.
 --
--- * 'cipServerSideTokenCheck' - TRUE if server-side token validation is enabled for the identity provider’s token.
+-- * 'cipServerSideTokenCheck' - TRUE if server-side token validation is enabled for the identity provider’s token. Once you set @ServerSideTokenCheck@ to TRUE for an identity pool, that identity pool will check with the integrated user pools to make sure that the user has not been globally signed out or deleted before the identity pool provides an OIDC token or AWS credentials for the user. If the user is signed out or deleted, the identity pool will return a 400 Not Authorized error.
 --
--- * 'cipProviderName' - The provider name for an Amazon Cognito Identity User Pool. For example, @cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789@ .
+-- * 'cipProviderName' - The provider name for an Amazon Cognito user pool. For example, @cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789@ .
 cognitoIdentityProvider
     :: CognitoIdentityProvider
 cognitoIdentityProvider =
@@ -52,15 +54,15 @@ cognitoIdentityProvider =
     }
 
 
--- | The client ID for the Amazon Cognito Identity User Pool.
+-- | The client ID for the Amazon Cognito user pool.
 cipClientId :: Lens' CognitoIdentityProvider (Maybe Text)
 cipClientId = lens _cipClientId (\ s a -> s{_cipClientId = a})
 
--- | TRUE if server-side token validation is enabled for the identity provider’s token.
+-- | TRUE if server-side token validation is enabled for the identity provider’s token. Once you set @ServerSideTokenCheck@ to TRUE for an identity pool, that identity pool will check with the integrated user pools to make sure that the user has not been globally signed out or deleted before the identity pool provides an OIDC token or AWS credentials for the user. If the user is signed out or deleted, the identity pool will return a 400 Not Authorized error.
 cipServerSideTokenCheck :: Lens' CognitoIdentityProvider (Maybe Bool)
 cipServerSideTokenCheck = lens _cipServerSideTokenCheck (\ s a -> s{_cipServerSideTokenCheck = a})
 
--- | The provider name for an Amazon Cognito Identity User Pool. For example, @cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789@ .
+-- | The provider name for an Amazon Cognito user pool. For example, @cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789@ .
 cipProviderName :: Lens' CognitoIdentityProvider (Maybe Text)
 cipProviderName = lens _cipProviderName (\ s a -> s{_cipProviderName = a})
 
@@ -90,12 +92,14 @@ instance ToJSON CognitoIdentityProvider where
 --
 --
 -- /See:/ 'credentials' smart constructor.
-data Credentials = Credentials'
-  { _cSessionToken :: !(Maybe Text)
-  , _cExpiration   :: !(Maybe POSIX)
-  , _cSecretKey    :: !(Maybe Text)
-  , _cAccessKeyId  :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Credentials =
+  Credentials'
+    { _cSessionToken :: !(Maybe Text)
+    , _cExpiration   :: !(Maybe POSIX)
+    , _cSecretKey    :: !(Maybe Text)
+    , _cAccessKeyId  :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Credentials' with the minimum fields required to make a request.
@@ -154,12 +158,14 @@ instance NFData Credentials where
 --
 --
 -- /See:/ 'identityDescription' smart constructor.
-data IdentityDescription = IdentityDescription'
-  { _idLastModifiedDate :: !(Maybe POSIX)
-  , _idCreationDate     :: !(Maybe POSIX)
-  , _idLogins           :: !(Maybe [Text])
-  , _idIdentityId       :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data IdentityDescription =
+  IdentityDescription'
+    { _idLastModifiedDate :: !(Maybe POSIX)
+    , _idCreationDate     :: !(Maybe POSIX)
+    , _idLogins           :: !(Maybe [Text])
+    , _idIdentityId       :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'IdentityDescription' with the minimum fields required to make a request.
@@ -170,7 +176,7 @@ data IdentityDescription = IdentityDescription'
 --
 -- * 'idCreationDate' - Date on which the identity was created.
 --
--- * 'idLogins' - A set of optional name-value pairs that map provider names to provider tokens.
+-- * 'idLogins' - The provider names.
 --
 -- * 'idIdentityId' - A unique identifier in the format REGION:GUID.
 identityDescription
@@ -192,7 +198,7 @@ idLastModifiedDate = lens _idLastModifiedDate (\ s a -> s{_idLastModifiedDate = 
 idCreationDate :: Lens' IdentityDescription (Maybe UTCTime)
 idCreationDate = lens _idCreationDate (\ s a -> s{_idCreationDate = a}) . mapping _Time
 
--- | A set of optional name-value pairs that map provider names to provider tokens.
+-- | The provider names.
 idLogins :: Lens' IdentityDescription [Text]
 idLogins = lens _idLogins (\ s a -> s{_idLogins = a}) . _Default . _Coerce
 
@@ -218,16 +224,20 @@ instance NFData IdentityDescription where
 --
 --
 -- /See:/ 'identityPool' smart constructor.
-data IdentityPool = IdentityPool'
-  { _ipSamlProviderARNs               :: !(Maybe [Text])
-  , _ipSupportedLoginProviders        :: !(Maybe (Map Text Text))
-  , _ipDeveloperProviderName          :: !(Maybe Text)
-  , _ipOpenIdConnectProviderARNs      :: !(Maybe [Text])
-  , _ipCognitoIdentityProviders       :: !(Maybe [CognitoIdentityProvider])
-  , _ipIdentityPoolId                 :: !Text
-  , _ipIdentityPoolName               :: !Text
-  , _ipAllowUnauthenticatedIdentities :: !Bool
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data IdentityPool =
+  IdentityPool'
+    { _ipSamlProviderARNs               :: !(Maybe [Text])
+    , _ipSupportedLoginProviders        :: !(Maybe (Map Text Text))
+    , _ipAllowClassicFlow               :: !(Maybe Bool)
+    , _ipDeveloperProviderName          :: !(Maybe Text)
+    , _ipIdentityPoolTags               :: !(Maybe (Map Text Text))
+    , _ipOpenIdConnectProviderARNs      :: !(Maybe [Text])
+    , _ipCognitoIdentityProviders       :: !(Maybe [CognitoIdentityProvider])
+    , _ipIdentityPoolId                 :: !Text
+    , _ipIdentityPoolName               :: !Text
+    , _ipAllowUnauthenticatedIdentities :: !Bool
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'IdentityPool' with the minimum fields required to make a request.
@@ -238,11 +248,15 @@ data IdentityPool = IdentityPool'
 --
 -- * 'ipSupportedLoginProviders' - Optional key:value pairs mapping provider names to provider app IDs.
 --
+-- * 'ipAllowClassicFlow' - Enables or disables the Basic (Classic) authentication flow. For more information, see <https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html Identity Pools (Federated Identities) Authentication Flow> in the /Amazon Cognito Developer Guide/ .
+--
 -- * 'ipDeveloperProviderName' - The "domain" by which Cognito will refer to your users.
+--
+-- * 'ipIdentityPoolTags' - The tags that are assigned to the identity pool. A tag is a label that you can apply to identity pools to categorize and manage them in different ways, such as by purpose, owner, environment, or other criteria.
 --
 -- * 'ipOpenIdConnectProviderARNs' - A list of OpendID Connect provider ARNs.
 --
--- * 'ipCognitoIdentityProviders' - A list representing an Amazon Cognito Identity User Pool and its client ID.
+-- * 'ipCognitoIdentityProviders' - A list representing an Amazon Cognito user pool and its client ID.
 --
 -- * 'ipIdentityPoolId' - An identity pool ID in the format REGION:GUID.
 --
@@ -258,7 +272,9 @@ identityPool pIdentityPoolId_ pIdentityPoolName_ pAllowUnauthenticatedIdentities
   IdentityPool'
     { _ipSamlProviderARNs = Nothing
     , _ipSupportedLoginProviders = Nothing
+    , _ipAllowClassicFlow = Nothing
     , _ipDeveloperProviderName = Nothing
+    , _ipIdentityPoolTags = Nothing
     , _ipOpenIdConnectProviderARNs = Nothing
     , _ipCognitoIdentityProviders = Nothing
     , _ipIdentityPoolId = pIdentityPoolId_
@@ -275,15 +291,23 @@ ipSamlProviderARNs = lens _ipSamlProviderARNs (\ s a -> s{_ipSamlProviderARNs = 
 ipSupportedLoginProviders :: Lens' IdentityPool (HashMap Text Text)
 ipSupportedLoginProviders = lens _ipSupportedLoginProviders (\ s a -> s{_ipSupportedLoginProviders = a}) . _Default . _Map
 
+-- | Enables or disables the Basic (Classic) authentication flow. For more information, see <https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html Identity Pools (Federated Identities) Authentication Flow> in the /Amazon Cognito Developer Guide/ .
+ipAllowClassicFlow :: Lens' IdentityPool (Maybe Bool)
+ipAllowClassicFlow = lens _ipAllowClassicFlow (\ s a -> s{_ipAllowClassicFlow = a})
+
 -- | The "domain" by which Cognito will refer to your users.
 ipDeveloperProviderName :: Lens' IdentityPool (Maybe Text)
 ipDeveloperProviderName = lens _ipDeveloperProviderName (\ s a -> s{_ipDeveloperProviderName = a})
+
+-- | The tags that are assigned to the identity pool. A tag is a label that you can apply to identity pools to categorize and manage them in different ways, such as by purpose, owner, environment, or other criteria.
+ipIdentityPoolTags :: Lens' IdentityPool (HashMap Text Text)
+ipIdentityPoolTags = lens _ipIdentityPoolTags (\ s a -> s{_ipIdentityPoolTags = a}) . _Default . _Map
 
 -- | A list of OpendID Connect provider ARNs.
 ipOpenIdConnectProviderARNs :: Lens' IdentityPool [Text]
 ipOpenIdConnectProviderARNs = lens _ipOpenIdConnectProviderARNs (\ s a -> s{_ipOpenIdConnectProviderARNs = a}) . _Default . _Coerce
 
--- | A list representing an Amazon Cognito Identity User Pool and its client ID.
+-- | A list representing an Amazon Cognito user pool and its client ID.
 ipCognitoIdentityProviders :: Lens' IdentityPool [CognitoIdentityProvider]
 ipCognitoIdentityProviders = lens _ipCognitoIdentityProviders (\ s a -> s{_ipCognitoIdentityProviders = a}) . _Default . _Coerce
 
@@ -306,7 +330,9 @@ instance FromJSON IdentityPool where
                  IdentityPool' <$>
                    (x .:? "SamlProviderARNs" .!= mempty) <*>
                      (x .:? "SupportedLoginProviders" .!= mempty)
+                     <*> (x .:? "AllowClassicFlow")
                      <*> (x .:? "DeveloperProviderName")
+                     <*> (x .:? "IdentityPoolTags" .!= mempty)
                      <*> (x .:? "OpenIdConnectProviderARNs" .!= mempty)
                      <*> (x .:? "CognitoIdentityProviders" .!= mempty)
                      <*> (x .: "IdentityPoolId")
@@ -324,8 +350,10 @@ instance ToJSON IdentityPool where
                  [("SamlProviderARNs" .=) <$> _ipSamlProviderARNs,
                   ("SupportedLoginProviders" .=) <$>
                     _ipSupportedLoginProviders,
+                  ("AllowClassicFlow" .=) <$> _ipAllowClassicFlow,
                   ("DeveloperProviderName" .=) <$>
                     _ipDeveloperProviderName,
+                  ("IdentityPoolTags" .=) <$> _ipIdentityPoolTags,
                   ("OpenIdConnectProviderARNs" .=) <$>
                     _ipOpenIdConnectProviderARNs,
                   ("CognitoIdentityProviders" .=) <$>
@@ -341,10 +369,12 @@ instance ToJSON IdentityPool where
 --
 --
 -- /See:/ 'identityPoolShortDescription' smart constructor.
-data IdentityPoolShortDescription = IdentityPoolShortDescription'
-  { _ipsdIdentityPoolId   :: !(Maybe Text)
-  , _ipsdIdentityPoolName :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data IdentityPoolShortDescription =
+  IdentityPoolShortDescription'
+    { _ipsdIdentityPoolId   :: !(Maybe Text)
+    , _ipsdIdentityPoolName :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'IdentityPoolShortDescription' with the minimum fields required to make a request.
@@ -386,12 +416,14 @@ instance NFData IdentityPoolShortDescription where
 --
 --
 -- /See:/ 'mappingRule' smart constructor.
-data MappingRule = MappingRule'
-  { _mrClaim     :: !Text
-  , _mrMatchType :: !MappingRuleMatchType
-  , _mrValue     :: !Text
-  , _mrRoleARN   :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data MappingRule =
+  MappingRule'
+    { _mrClaim     :: !Text
+    , _mrMatchType :: !MappingRuleMatchType
+    , _mrValue     :: !Text
+    , _mrRoleARN   :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'MappingRule' with the minimum fields required to make a request.
@@ -463,11 +495,13 @@ instance ToJSON MappingRule where
 --
 --
 -- /See:/ 'roleMapping' smart constructor.
-data RoleMapping = RoleMapping'
-  { _rmRulesConfiguration      :: !(Maybe RulesConfigurationType)
-  , _rmAmbiguousRoleResolution :: !(Maybe AmbiguousRoleResolutionType)
-  , _rmType                    :: !RoleMappingType
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data RoleMapping =
+  RoleMapping'
+    { _rmRulesConfiguration      :: !(Maybe RulesConfigurationType)
+    , _rmAmbiguousRoleResolution :: !(Maybe AmbiguousRoleResolutionType)
+    , _rmType                    :: !RoleMappingType
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'RoleMapping' with the minimum fields required to make a request.
@@ -529,9 +563,11 @@ instance ToJSON RoleMapping where
 --
 --
 -- /See:/ 'rulesConfigurationType' smart constructor.
-newtype RulesConfigurationType = RulesConfigurationType'
-  { _rctRules :: List1 MappingRule
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype RulesConfigurationType =
+  RulesConfigurationType'
+    { _rctRules :: List1 MappingRule
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'RulesConfigurationType' with the minimum fields required to make a request.
@@ -568,10 +604,12 @@ instance ToJSON RulesConfigurationType where
 --
 --
 -- /See:/ 'unprocessedIdentityId' smart constructor.
-data UnprocessedIdentityId = UnprocessedIdentityId'
-  { _uiiErrorCode  :: !(Maybe CognitoErrorCode)
-  , _uiiIdentityId :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data UnprocessedIdentityId =
+  UnprocessedIdentityId'
+    { _uiiErrorCode  :: !(Maybe CognitoErrorCode)
+    , _uiiIdentityId :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UnprocessedIdentityId' with the minimum fields required to make a request.

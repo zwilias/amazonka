@@ -45,23 +45,25 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getInstanceProfile' smart constructor.
-newtype GetInstanceProfile = GetInstanceProfile'
-  { _gipArn :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype GetInstanceProfile =
+  GetInstanceProfile'
+    { _gipArn :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetInstanceProfile' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gipArn' - The Amazon Resource Name (ARN) of your instance profile.
+-- * 'gipArn' - The Amazon Resource Name (ARN) of an instance profile.
 getInstanceProfile
     :: Text -- ^ 'gipArn'
     -> GetInstanceProfile
 getInstanceProfile pArn_ = GetInstanceProfile' {_gipArn = pArn_}
 
 
--- | The Amazon Resource Name (ARN) of your instance profile.
+-- | The Amazon Resource Name (ARN) of an instance profile.
 gipArn :: Lens' GetInstanceProfile Text
 gipArn = lens _gipArn (\ s a -> s{_gipArn = a})
 
@@ -100,17 +102,19 @@ instance ToQuery GetInstanceProfile where
         toQuery = const mempty
 
 -- | /See:/ 'getInstanceProfileResponse' smart constructor.
-data GetInstanceProfileResponse = GetInstanceProfileResponse'
-  { _giprsInstanceProfile :: !(Maybe InstanceProfile)
-  , _giprsResponseStatus  :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetInstanceProfileResponse =
+  GetInstanceProfileResponse'
+    { _giprsInstanceProfile :: !(Maybe InstanceProfile)
+    , _giprsResponseStatus  :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetInstanceProfileResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'giprsInstanceProfile' - An object containing information about your instance profile.
+-- * 'giprsInstanceProfile' - An object that contains information about an instance profile.
 --
 -- * 'giprsResponseStatus' - -- | The response status code.
 getInstanceProfileResponse
@@ -121,7 +125,7 @@ getInstanceProfileResponse pResponseStatus_ =
     {_giprsInstanceProfile = Nothing, _giprsResponseStatus = pResponseStatus_}
 
 
--- | An object containing information about your instance profile.
+-- | An object that contains information about an instance profile.
 giprsInstanceProfile :: Lens' GetInstanceProfileResponse (Maybe InstanceProfile)
 giprsInstanceProfile = lens _giprsInstanceProfile (\ s a -> s{_giprsInstanceProfile = a})
 

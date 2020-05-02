@@ -95,7 +95,8 @@ instance FromJSON ActionConfigurationPropertyType where
     parseJSON = parseJSONText "ActionConfigurationPropertyType"
 
 data ActionExecutionStatus
-  = AESFailed
+  = AESAbandoned
+  | AESFailed
   | AESInProgress
   | AESSucceeded
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
@@ -103,14 +104,16 @@ data ActionExecutionStatus
 
 instance FromText ActionExecutionStatus where
     parser = takeLowerText >>= \case
+        "abandoned" -> pure AESAbandoned
         "failed" -> pure AESFailed
         "inprogress" -> pure AESInProgress
         "succeeded" -> pure AESSucceeded
         e -> fromTextError $ "Failure parsing ActionExecutionStatus from value: '" <> e
-           <> "'. Accepted values: failed, inprogress, succeeded"
+           <> "'. Accepted values: abandoned, failed, inprogress, succeeded"
 
 instance ToText ActionExecutionStatus where
     toText = \case
+        AESAbandoned -> "Abandoned"
         AESFailed -> "Failed"
         AESInProgress -> "InProgress"
         AESSucceeded -> "Succeeded"
@@ -373,6 +376,8 @@ instance FromJSON JobStatus where
 data PipelineExecutionStatus
   = Failed
   | InProgress
+  | Stopped
+  | Stopping
   | Succeeded
   | Superseded
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
@@ -382,15 +387,19 @@ instance FromText PipelineExecutionStatus where
     parser = takeLowerText >>= \case
         "failed" -> pure Failed
         "inprogress" -> pure InProgress
+        "stopped" -> pure Stopped
+        "stopping" -> pure Stopping
         "succeeded" -> pure Succeeded
         "superseded" -> pure Superseded
         e -> fromTextError $ "Failure parsing PipelineExecutionStatus from value: '" <> e
-           <> "'. Accepted values: failed, inprogress, succeeded, superseded"
+           <> "'. Accepted values: failed, inprogress, stopped, stopping, succeeded, superseded"
 
 instance ToText PipelineExecutionStatus where
     toText = \case
         Failed -> "Failed"
         InProgress -> "InProgress"
+        Stopped -> "Stopped"
+        Stopping -> "Stopping"
         Succeeded -> "Succeeded"
         Superseded -> "Superseded"
 
@@ -406,6 +415,8 @@ instance FromJSON PipelineExecutionStatus where
 data StageExecutionStatus
   = SESFailed
   | SESInProgress
+  | SESStopped
+  | SESStopping
   | SESSucceeded
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
@@ -414,14 +425,18 @@ instance FromText StageExecutionStatus where
     parser = takeLowerText >>= \case
         "failed" -> pure SESFailed
         "inprogress" -> pure SESInProgress
+        "stopped" -> pure SESStopped
+        "stopping" -> pure SESStopping
         "succeeded" -> pure SESSucceeded
         e -> fromTextError $ "Failure parsing StageExecutionStatus from value: '" <> e
-           <> "'. Accepted values: failed, inprogress, succeeded"
+           <> "'. Accepted values: failed, inprogress, stopped, stopping, succeeded"
 
 instance ToText StageExecutionStatus where
     toText = \case
         SESFailed -> "Failed"
         SESInProgress -> "InProgress"
+        SESStopped -> "Stopped"
+        SESStopping -> "Stopping"
         SESSucceeded -> "Succeeded"
 
 instance Hashable     StageExecutionStatus
@@ -483,6 +498,45 @@ instance ToHeader     StageTransitionType
 
 instance ToJSON StageTransitionType where
     toJSON = toJSONText
+
+data TriggerType
+  = CloudWatchEvent
+  | CreatePipeline
+  | PollForSourceChanges
+  | PutActionRevision
+  | StartPipelineExecution
+  | Webhook
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText TriggerType where
+    parser = takeLowerText >>= \case
+        "cloudwatchevent" -> pure CloudWatchEvent
+        "createpipeline" -> pure CreatePipeline
+        "pollforsourcechanges" -> pure PollForSourceChanges
+        "putactionrevision" -> pure PutActionRevision
+        "startpipelineexecution" -> pure StartPipelineExecution
+        "webhook" -> pure Webhook
+        e -> fromTextError $ "Failure parsing TriggerType from value: '" <> e
+           <> "'. Accepted values: cloudwatchevent, createpipeline, pollforsourcechanges, putactionrevision, startpipelineexecution, webhook"
+
+instance ToText TriggerType where
+    toText = \case
+        CloudWatchEvent -> "CloudWatchEvent"
+        CreatePipeline -> "CreatePipeline"
+        PollForSourceChanges -> "PollForSourceChanges"
+        PutActionRevision -> "PutActionRevision"
+        StartPipelineExecution -> "StartPipelineExecution"
+        Webhook -> "Webhook"
+
+instance Hashable     TriggerType
+instance NFData       TriggerType
+instance ToByteString TriggerType
+instance ToQuery      TriggerType
+instance ToHeader     TriggerType
+
+instance FromJSON TriggerType where
+    parseJSON = parseJSONText "TriggerType"
 
 data WebhookAuthenticationType
   = GithubHmac

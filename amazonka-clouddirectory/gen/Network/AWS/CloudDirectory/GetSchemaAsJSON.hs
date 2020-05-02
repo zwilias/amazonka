@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves a JSON representation of the schema. See <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_schemas.html#jsonformat JSON Schema Format> for more information.
+-- Retrieves a JSON representation of the schema. See <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_jsonformat.html#schemas_json JSON Schema Format> for more information.
 --
 --
 module Network.AWS.CloudDirectory.GetSchemaAsJSON
@@ -46,9 +46,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getSchemaAsJSON' smart constructor.
-newtype GetSchemaAsJSON = GetSchemaAsJSON'
-  { _gsajSchemaARN :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype GetSchemaAsJSON =
+  GetSchemaAsJSON'
+    { _gsajSchemaARN :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetSchemaAsJSON' with the minimum fields required to make a request.
@@ -96,11 +98,13 @@ instance ToQuery GetSchemaAsJSON where
         toQuery = const mempty
 
 -- | /See:/ 'getSchemaAsJSONResponse' smart constructor.
-data GetSchemaAsJSONResponse = GetSchemaAsJSONResponse'
-  { _gsajrsDocument       :: !(Maybe Text)
-  , _gsajrsName           :: !(Maybe Text)
-  , _gsajrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetSchemaAsJSONResponse =
+  GetSchemaAsJSONResponse'
+    { _gsajrsDocument       :: !(Maybe Text)
+    , _gsajrsName           :: !(Maybe Text)
+    , _gsajrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetSchemaAsJSONResponse' with the minimum fields required to make a request.

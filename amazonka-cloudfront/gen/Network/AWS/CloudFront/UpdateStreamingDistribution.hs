@@ -52,11 +52,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateStreamingDistribution' smart constructor.
-data UpdateStreamingDistribution = UpdateStreamingDistribution'
-  { _usdIfMatch                     :: !(Maybe Text)
-  , _usdStreamingDistributionConfig :: !StreamingDistributionConfig
-  , _usdId                          :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data UpdateStreamingDistribution =
+  UpdateStreamingDistribution'
+    { _usdIfMatch                     :: !(Maybe Text)
+    , _usdStreamingDistributionConfig :: !StreamingDistributionConfig
+    , _usdId                          :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UpdateStreamingDistribution' with the minimum fields required to make a request.
@@ -110,7 +112,7 @@ instance NFData UpdateStreamingDistribution where
 instance ToElement UpdateStreamingDistribution where
         toElement
           = mkElement
-              "{http://cloudfront.amazonaws.com/doc/2017-10-30/}StreamingDistributionConfig"
+              "{http://cloudfront.amazonaws.com/doc/2019-03-26/}StreamingDistributionConfig"
               .
               _usdStreamingDistributionConfig
 
@@ -121,7 +123,7 @@ instance ToHeaders UpdateStreamingDistribution where
 instance ToPath UpdateStreamingDistribution where
         toPath UpdateStreamingDistribution'{..}
           = mconcat
-              ["/2017-10-30/streaming-distribution/", toBS _usdId,
+              ["/2019-03-26/streaming-distribution/", toBS _usdId,
                "/config"]
 
 instance ToQuery UpdateStreamingDistribution where
@@ -132,11 +134,13 @@ instance ToQuery UpdateStreamingDistribution where
 --
 --
 -- /See:/ 'updateStreamingDistributionResponse' smart constructor.
-data UpdateStreamingDistributionResponse = UpdateStreamingDistributionResponse'
-  { _usdrsETag                  :: !(Maybe Text)
-  , _usdrsStreamingDistribution :: !(Maybe StreamingDistribution)
-  , _usdrsResponseStatus        :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data UpdateStreamingDistributionResponse =
+  UpdateStreamingDistributionResponse'
+    { _usdrsETag                  :: !(Maybe Text)
+    , _usdrsStreamingDistribution :: !(Maybe StreamingDistribution)
+    , _usdrsResponseStatus        :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UpdateStreamingDistributionResponse' with the minimum fields required to make a request.

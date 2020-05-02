@@ -21,6 +21,8 @@
 -- Lists the users in the Amazon Cognito user pool.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.CognitoIdentityProvider.ListUsers
     (
     -- * Creating a Request
@@ -45,6 +47,7 @@ module Network.AWS.CognitoIdentityProvider.ListUsers
 import Network.AWS.CognitoIdentityProvider.Types
 import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -54,13 +57,15 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listUsers' smart constructor.
-data ListUsers = ListUsers'
-  { _luPaginationToken :: !(Maybe Text)
-  , _luAttributesToGet :: !(Maybe [Text])
-  , _luLimit           :: !(Maybe Nat)
-  , _luFilter          :: !(Maybe Text)
-  , _luUserPoolId      :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListUsers =
+  ListUsers'
+    { _luPaginationToken :: !(Maybe Text)
+    , _luAttributesToGet :: !(Maybe [Text])
+    , _luLimit           :: !(Maybe Nat)
+    , _luFilter          :: !(Maybe Text)
+    , _luUserPoolId      :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListUsers' with the minimum fields required to make a request.
@@ -73,7 +78,7 @@ data ListUsers = ListUsers'
 --
 -- * 'luLimit' - Maximum number of users to be returned.
 --
--- * 'luFilter' - A filter string of the form "/AttributeName/ /Filter-Type/ "/AttributeValue/ "". Quotation marks within the filter string must be escaped using the backslash (\) character. For example, "@family_name@ = \"Reddy\"".     * /AttributeName/ : The name of the attribute to search for. You can only search for one attribute at a time.     * /Filter-Type/ : For an exact match, use =, for example, "@given_name@ = \"Jon\"". For a prefix ("starts with") match, use ^=, for example, "@given_name@ ^= \"Jon\"".      * /AttributeValue/ : The attribute value that must be matched for each user. If the filter string is empty, @ListUsers@ returns all users in the user pool. You can only search for the following standard attributes:     * @username@ (case-sensitive)     * @email@      * @phone_number@      * @name@      * @given_name@      * @family_name@      * @preferred_username@      * @cognito:user_status@ (called __Enabled__ in the Console) (case-sensitive)     * @status@ (case-insensitive)     * @sub@  Custom attributes are not searchable. For more information, see <http://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-using-listusers-api Searching for Users Using the ListUsers API> and <http://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-listusers-api-examples Examples of Using the ListUsers API> in the /Amazon Cognito Developer Guide/ .
+-- * 'luFilter' - A filter string of the form "/AttributeName/ /Filter-Type/ "/AttributeValue/ "". Quotation marks within the filter string must be escaped using the backslash (\) character. For example, "@family_name@ = \"Reddy\"".     * /AttributeName/ : The name of the attribute to search for. You can only search for one attribute at a time.     * /Filter-Type/ : For an exact match, use =, for example, "@given_name@ = \"Jon\"". For a prefix ("starts with") match, use ^=, for example, "@given_name@ ^= \"Jon\"".      * /AttributeValue/ : The attribute value that must be matched for each user. If the filter string is empty, @ListUsers@ returns all users in the user pool. You can only search for the following standard attributes:     * @username@ (case-sensitive)     * @email@      * @phone_number@      * @name@      * @given_name@      * @family_name@      * @preferred_username@      * @cognito:user_status@ (called __Status__ in the Console) (case-insensitive)     * @status (called __Enabled__ in the Console) (case-sensitive)@      * @sub@  Custom attributes are not searchable. For more information, see <https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-using-listusers-api Searching for Users Using the ListUsers API> and <https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-listusers-api-examples Examples of Using the ListUsers API> in the /Amazon Cognito Developer Guide/ .
 --
 -- * 'luUserPoolId' - The user pool ID for the user pool on which the search should be performed.
 listUsers
@@ -101,13 +106,21 @@ luAttributesToGet = lens _luAttributesToGet (\ s a -> s{_luAttributesToGet = a})
 luLimit :: Lens' ListUsers (Maybe Natural)
 luLimit = lens _luLimit (\ s a -> s{_luLimit = a}) . mapping _Nat
 
--- | A filter string of the form "/AttributeName/ /Filter-Type/ "/AttributeValue/ "". Quotation marks within the filter string must be escaped using the backslash (\) character. For example, "@family_name@ = \"Reddy\"".     * /AttributeName/ : The name of the attribute to search for. You can only search for one attribute at a time.     * /Filter-Type/ : For an exact match, use =, for example, "@given_name@ = \"Jon\"". For a prefix ("starts with") match, use ^=, for example, "@given_name@ ^= \"Jon\"".      * /AttributeValue/ : The attribute value that must be matched for each user. If the filter string is empty, @ListUsers@ returns all users in the user pool. You can only search for the following standard attributes:     * @username@ (case-sensitive)     * @email@      * @phone_number@      * @name@      * @given_name@      * @family_name@      * @preferred_username@      * @cognito:user_status@ (called __Enabled__ in the Console) (case-sensitive)     * @status@ (case-insensitive)     * @sub@  Custom attributes are not searchable. For more information, see <http://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-using-listusers-api Searching for Users Using the ListUsers API> and <http://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-listusers-api-examples Examples of Using the ListUsers API> in the /Amazon Cognito Developer Guide/ .
+-- | A filter string of the form "/AttributeName/ /Filter-Type/ "/AttributeValue/ "". Quotation marks within the filter string must be escaped using the backslash (\) character. For example, "@family_name@ = \"Reddy\"".     * /AttributeName/ : The name of the attribute to search for. You can only search for one attribute at a time.     * /Filter-Type/ : For an exact match, use =, for example, "@given_name@ = \"Jon\"". For a prefix ("starts with") match, use ^=, for example, "@given_name@ ^= \"Jon\"".      * /AttributeValue/ : The attribute value that must be matched for each user. If the filter string is empty, @ListUsers@ returns all users in the user pool. You can only search for the following standard attributes:     * @username@ (case-sensitive)     * @email@      * @phone_number@      * @name@      * @given_name@      * @family_name@      * @preferred_username@      * @cognito:user_status@ (called __Status__ in the Console) (case-insensitive)     * @status (called __Enabled__ in the Console) (case-sensitive)@      * @sub@  Custom attributes are not searchable. For more information, see <https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-using-listusers-api Searching for Users Using the ListUsers API> and <https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-listusers-api-examples Examples of Using the ListUsers API> in the /Amazon Cognito Developer Guide/ .
 luFilter :: Lens' ListUsers (Maybe Text)
 luFilter = lens _luFilter (\ s a -> s{_luFilter = a})
 
 -- | The user pool ID for the user pool on which the search should be performed.
 luUserPoolId :: Lens' ListUsers Text
 luUserPoolId = lens _luUserPoolId (\ s a -> s{_luUserPoolId = a})
+
+instance AWSPager ListUsers where
+        page rq rs
+          | stop (rs ^. lursPaginationToken) = Nothing
+          | stop (rs ^. lursUsers) = Nothing
+          | otherwise =
+            Just $ rq &
+              luPaginationToken .~ rs ^. lursPaginationToken
 
 instance AWSRequest ListUsers where
         type Rs ListUsers = ListUsersResponse
@@ -155,11 +168,13 @@ instance ToQuery ListUsers where
 --
 --
 -- /See:/ 'listUsersResponse' smart constructor.
-data ListUsersResponse = ListUsersResponse'
-  { _lursPaginationToken :: !(Maybe Text)
-  , _lursUsers           :: !(Maybe [UserType])
-  , _lursResponseStatus  :: !Int
-  } deriving (Eq, Show, Data, Typeable, Generic)
+data ListUsersResponse =
+  ListUsersResponse'
+    { _lursPaginationToken :: !(Maybe Text)
+    , _lursUsers           :: !(Maybe [UserType])
+    , _lursResponseStatus  :: !Int
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListUsersResponse' with the minimum fields required to make a request.

@@ -26,9 +26,11 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'arrayProperties' smart constructor.
-newtype ArrayProperties = ArrayProperties'
-  { _apSize :: Maybe Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype ArrayProperties =
+  ArrayProperties'
+    { _apSize :: Maybe Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ArrayProperties' with the minimum fields required to make a request.
@@ -58,11 +60,13 @@ instance ToJSON ArrayProperties where
 --
 --
 -- /See:/ 'arrayPropertiesDetail' smart constructor.
-data ArrayPropertiesDetail = ArrayPropertiesDetail'
-  { _apdSize          :: !(Maybe Int)
-  , _apdStatusSummary :: !(Maybe (Map Text Int))
-  , _apdIndex         :: !(Maybe Int)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ArrayPropertiesDetail =
+  ArrayPropertiesDetail'
+    { _apdSize          :: !(Maybe Int)
+    , _apdStatusSummary :: !(Maybe (Map Text Int))
+    , _apdIndex         :: !(Maybe Int)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ArrayPropertiesDetail' with the minimum fields required to make a request.
@@ -110,10 +114,12 @@ instance NFData ArrayPropertiesDetail where
 --
 --
 -- /See:/ 'arrayPropertiesSummary' smart constructor.
-data ArrayPropertiesSummary = ArrayPropertiesSummary'
-  { _apsSize  :: !(Maybe Int)
-  , _apsIndex :: !(Maybe Int)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ArrayPropertiesSummary =
+  ArrayPropertiesSummary'
+    { _apsSize  :: !(Maybe Int)
+    , _apsIndex :: !(Maybe Int)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ArrayPropertiesSummary' with the minimum fields required to make a request.
@@ -153,18 +159,23 @@ instance NFData ArrayPropertiesSummary where
 --
 --
 -- /See:/ 'attemptContainerDetail' smart constructor.
-data AttemptContainerDetail = AttemptContainerDetail'
-  { _acdTaskARN              :: !(Maybe Text)
-  , _acdContainerInstanceARN :: !(Maybe Text)
-  , _acdReason               :: !(Maybe Text)
-  , _acdLogStreamName        :: !(Maybe Text)
-  , _acdExitCode             :: !(Maybe Int)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AttemptContainerDetail =
+  AttemptContainerDetail'
+    { _acdNetworkInterfaces    :: !(Maybe [NetworkInterface])
+    , _acdTaskARN              :: !(Maybe Text)
+    , _acdContainerInstanceARN :: !(Maybe Text)
+    , _acdReason               :: !(Maybe Text)
+    , _acdLogStreamName        :: !(Maybe Text)
+    , _acdExitCode             :: !(Maybe Int)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AttemptContainerDetail' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'acdNetworkInterfaces' - The network interfaces associated with the job attempt.
 --
 -- * 'acdTaskARN' - The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the job attempt. Each container attempt receives a task ARN when they reach the @STARTING@ status.
 --
@@ -179,13 +190,18 @@ attemptContainerDetail
     :: AttemptContainerDetail
 attemptContainerDetail =
   AttemptContainerDetail'
-    { _acdTaskARN = Nothing
+    { _acdNetworkInterfaces = Nothing
+    , _acdTaskARN = Nothing
     , _acdContainerInstanceARN = Nothing
     , _acdReason = Nothing
     , _acdLogStreamName = Nothing
     , _acdExitCode = Nothing
     }
 
+
+-- | The network interfaces associated with the job attempt.
+acdNetworkInterfaces :: Lens' AttemptContainerDetail [NetworkInterface]
+acdNetworkInterfaces = lens _acdNetworkInterfaces (\ s a -> s{_acdNetworkInterfaces = a}) . _Default . _Coerce
 
 -- | The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the job attempt. Each container attempt receives a task ARN when they reach the @STARTING@ status.
 acdTaskARN :: Lens' AttemptContainerDetail (Maybe Text)
@@ -212,7 +228,9 @@ instance FromJSON AttemptContainerDetail where
           = withObject "AttemptContainerDetail"
               (\ x ->
                  AttemptContainerDetail' <$>
-                   (x .:? "taskArn") <*> (x .:? "containerInstanceArn")
+                   (x .:? "networkInterfaces" .!= mempty) <*>
+                     (x .:? "taskArn")
+                     <*> (x .:? "containerInstanceArn")
                      <*> (x .:? "reason")
                      <*> (x .:? "logStreamName")
                      <*> (x .:? "exitCode"))
@@ -226,21 +244,23 @@ instance NFData AttemptContainerDetail where
 --
 --
 -- /See:/ 'attemptDetail' smart constructor.
-data AttemptDetail = AttemptDetail'
-  { _adStoppedAt    :: !(Maybe Integer)
-  , _adStartedAt    :: !(Maybe Integer)
-  , _adContainer    :: !(Maybe AttemptContainerDetail)
-  , _adStatusReason :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AttemptDetail =
+  AttemptDetail'
+    { _adStoppedAt    :: !(Maybe Integer)
+    , _adStartedAt    :: !(Maybe Integer)
+    , _adContainer    :: !(Maybe AttemptContainerDetail)
+    , _adStatusReason :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AttemptDetail' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'adStoppedAt' - The Unix time stamp (in seconds and milliseconds) for when the attempt was stopped (when the attempt transitioned from the @RUNNING@ state to a terminal state, such as @SUCCEEDED@ or @FAILED@ ).
+-- * 'adStoppedAt' - The Unix timestamp (in seconds and milliseconds) for when the attempt was stopped (when the attempt transitioned from the @RUNNING@ state to a terminal state, such as @SUCCEEDED@ or @FAILED@ ).
 --
--- * 'adStartedAt' - The Unix time stamp (in seconds and milliseconds) for when the attempt was started (when the attempt transitioned from the @STARTING@ state to the @RUNNING@ state).
+-- * 'adStartedAt' - The Unix timestamp (in seconds and milliseconds) for when the attempt was started (when the attempt transitioned from the @STARTING@ state to the @RUNNING@ state).
 --
 -- * 'adContainer' - Details about the container in this job attempt.
 --
@@ -256,11 +276,11 @@ attemptDetail =
     }
 
 
--- | The Unix time stamp (in seconds and milliseconds) for when the attempt was stopped (when the attempt transitioned from the @RUNNING@ state to a terminal state, such as @SUCCEEDED@ or @FAILED@ ).
+-- | The Unix timestamp (in seconds and milliseconds) for when the attempt was stopped (when the attempt transitioned from the @RUNNING@ state to a terminal state, such as @SUCCEEDED@ or @FAILED@ ).
 adStoppedAt :: Lens' AttemptDetail (Maybe Integer)
 adStoppedAt = lens _adStoppedAt (\ s a -> s{_adStoppedAt = a})
 
--- | The Unix time stamp (in seconds and milliseconds) for when the attempt was started (when the attempt transitioned from the @STARTING@ state to the @RUNNING@ state).
+-- | The Unix timestamp (in seconds and milliseconds) for when the attempt was started (when the attempt transitioned from the @STARTING@ state to the @RUNNING@ state).
 adStartedAt :: Lens' AttemptDetail (Maybe Integer)
 adStartedAt = lens _adStartedAt (\ s a -> s{_adStartedAt = a})
 
@@ -290,17 +310,19 @@ instance NFData AttemptDetail where
 --
 --
 -- /See:/ 'computeEnvironmentDetail' smart constructor.
-data ComputeEnvironmentDetail = ComputeEnvironmentDetail'
-  { _cedStatus                 :: !(Maybe CEStatus)
-  , _cedState                  :: !(Maybe CEState)
-  , _cedComputeResources       :: !(Maybe ComputeResource)
-  , _cedStatusReason           :: !(Maybe Text)
-  , _cedType                   :: !(Maybe CEType)
-  , _cedServiceRole            :: !(Maybe Text)
-  , _cedComputeEnvironmentName :: !Text
-  , _cedComputeEnvironmentARN  :: !Text
-  , _cedEcsClusterARN          :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ComputeEnvironmentDetail =
+  ComputeEnvironmentDetail'
+    { _cedStatus                 :: !(Maybe CEStatus)
+    , _cedState                  :: !(Maybe CEState)
+    , _cedComputeResources       :: !(Maybe ComputeResource)
+    , _cedStatusReason           :: !(Maybe Text)
+    , _cedType                   :: !(Maybe CEType)
+    , _cedServiceRole            :: !(Maybe Text)
+    , _cedComputeEnvironmentName :: !Text
+    , _cedComputeEnvironmentARN  :: !Text
+    , _cedEcsClusterARN          :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ComputeEnvironmentDetail' with the minimum fields required to make a request.
@@ -309,7 +331,7 @@ data ComputeEnvironmentDetail = ComputeEnvironmentDetail'
 --
 -- * 'cedStatus' - The current status of the compute environment (for example, @CREATING@ or @VALID@ ).
 --
--- * 'cedState' - The state of the compute environment. The valid values are @ENABLED@ or @DISABLED@ . An @ENABLED@ state indicates that you can register instances with the compute environment and that the associated instances can accept jobs.
+-- * 'cedState' - The state of the compute environment. The valid values are @ENABLED@ or @DISABLED@ . If the state is @ENABLED@ , then the AWS Batch scheduler can attempt to place jobs from an associated job queue on the compute resources within the environment. If the compute environment is managed, then it can scale its instances out or in automatically, based on the job queue demand. If the state is @DISABLED@ , then the AWS Batch scheduler does not attempt to place jobs within the environment. Jobs in a @STARTING@ or @RUNNING@ state continue to progress normally. Managed compute environments in the @DISABLED@ state do not scale out. However, they scale in to @minvCpus@ value after instances become idle.
 --
 -- * 'cedComputeResources' - The compute resources defined for the compute environment.
 --
@@ -347,7 +369,7 @@ computeEnvironmentDetail pComputeEnvironmentName_ pComputeEnvironmentARN_ pEcsCl
 cedStatus :: Lens' ComputeEnvironmentDetail (Maybe CEStatus)
 cedStatus = lens _cedStatus (\ s a -> s{_cedStatus = a})
 
--- | The state of the compute environment. The valid values are @ENABLED@ or @DISABLED@ . An @ENABLED@ state indicates that you can register instances with the compute environment and that the associated instances can accept jobs.
+-- | The state of the compute environment. The valid values are @ENABLED@ or @DISABLED@ . If the state is @ENABLED@ , then the AWS Batch scheduler can attempt to place jobs from an associated job queue on the compute resources within the environment. If the compute environment is managed, then it can scale its instances out or in automatically, based on the job queue demand. If the state is @DISABLED@ , then the AWS Batch scheduler does not attempt to place jobs within the environment. Jobs in a @STARTING@ or @RUNNING@ state continue to progress normally. Managed compute environments in the @DISABLED@ state do not scale out. However, they scale in to @minvCpus@ value after instances become idle.
 cedState :: Lens' ComputeEnvironmentDetail (Maybe CEState)
 cedState = lens _cedState (\ s a -> s{_cedState = a})
 
@@ -402,10 +424,12 @@ instance NFData ComputeEnvironmentDetail where
 --
 --
 -- /See:/ 'computeEnvironmentOrder' smart constructor.
-data ComputeEnvironmentOrder = ComputeEnvironmentOrder'
-  { _ceoOrder              :: !Int
-  , _ceoComputeEnvironment :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ComputeEnvironmentOrder =
+  ComputeEnvironmentOrder'
+    { _ceoOrder              :: !Int
+    , _ceoComputeEnvironment :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ComputeEnvironmentOrder' with the minimum fields required to make a request.
@@ -456,52 +480,63 @@ instance ToJSON ComputeEnvironmentOrder where
 --
 --
 -- /See:/ 'computeResource' smart constructor.
-data ComputeResource = ComputeResource'
-  { _crEc2KeyPair       :: !(Maybe Text)
-  , _crBidPercentage    :: !(Maybe Int)
-  , _crSpotIAMFleetRole :: !(Maybe Text)
-  , _crImageId          :: !(Maybe Text)
-  , _crDesiredvCPUs     :: !(Maybe Int)
-  , _crTags             :: !(Maybe (Map Text Text))
-  , _crType             :: !CRType
-  , _crMinvCPUs         :: !Int
-  , _crMaxvCPUs         :: !Int
-  , _crInstanceTypes    :: ![Text]
-  , _crSubnets          :: ![Text]
-  , _crSecurityGroupIds :: ![Text]
-  , _crInstanceRole     :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ComputeResource =
+  ComputeResource'
+    { _crSecurityGroupIds   :: !(Maybe [Text])
+    , _crEc2KeyPair         :: !(Maybe Text)
+    , _crBidPercentage      :: !(Maybe Int)
+    , _crSpotIAMFleetRole   :: !(Maybe Text)
+    , _crImageId            :: !(Maybe Text)
+    , _crLaunchTemplate     :: !(Maybe LaunchTemplateSpecification)
+    , _crDesiredvCPUs       :: !(Maybe Int)
+    , _crAllocationStrategy :: !(Maybe CRAllocationStrategy)
+    , _crPlacementGroup     :: !(Maybe Text)
+    , _crTags               :: !(Maybe (Map Text Text))
+    , _crType               :: !CRType
+    , _crMinvCPUs           :: !Int
+    , _crMaxvCPUs           :: !Int
+    , _crInstanceTypes      :: ![Text]
+    , _crSubnets            :: ![Text]
+    , _crInstanceRole       :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ComputeResource' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'crEc2KeyPair' - The EC2 key pair that is used for instances launched in the compute environment.
+-- * 'crSecurityGroupIds' - The Amazon EC2 security groups associated with instances launched in the compute environment. One or more security groups must be specified, either in @securityGroupIds@ or using a launch template referenced in @launchTemplate@ . If security groups are specified using both @securityGroupIds@ and @launchTemplate@ , the values in @securityGroupIds@ will be used.
 --
--- * 'crBidPercentage' - The minimum percentage that a Spot Instance price must be when compared with the On-Demand price for that instance type before instances are launched. For example, if your bid percentage is 20%, then the Spot price must be below 20% of the current On-Demand price for that EC2 instance.
+-- * 'crEc2KeyPair' - The Amazon EC2 key pair that is used for instances launched in the compute environment.
 --
--- * 'crSpotIAMFleetRole' - The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a @SPOT@ compute environment.
+-- * 'crBidPercentage' - The maximum percentage that a Spot Instance price can be when compared with the On-Demand price for that instance type before instances are launched. For example, if your maximum percentage is 20%, then the Spot price must be below 20% of the current On-Demand price for that Amazon EC2 instance. You always pay the lowest (market) price and never more than your maximum percentage. If you leave this field empty, the default value is 100% of the On-Demand price.
+--
+-- * 'crSpotIAMFleetRole' - The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a @SPOT@ compute environment. This role is required if the allocation strategy set to @BEST_FIT@ or if the allocation strategy is not specified. For more information, see <https://docs.aws.amazon.com/batch/latest/userguide/spot_fleet_IAM_role.html Amazon EC2 Spot Fleet Role> in the /AWS Batch User Guide/ .
 --
 -- * 'crImageId' - The Amazon Machine Image (AMI) ID used for instances launched in the compute environment.
 --
--- * 'crDesiredvCPUs' - The desired number of EC2 vCPUS in the compute environment.
+-- * 'crLaunchTemplate' - The launch template to use for your compute resources. Any other compute resource parameters that you specify in a 'CreateComputeEnvironment' API operation override the same parameters in the launch template. You must specify either the launch template ID or launch template name in the request, but not both. For more information, see <https://docs.aws.amazon.com/batch/latest/userguide/launch-templates.html Launch Template Support> in the /AWS Batch User Guide/ .
 --
--- * 'crTags' - Key-value pair tags to be applied to resources that are launched in the compute environment.
+-- * 'crDesiredvCPUs' - The desired number of Amazon EC2 vCPUS in the compute environment.
 --
--- * 'crType' - The type of compute environment.
+-- * 'crAllocationStrategy' - The allocation strategy to use for the compute resource in case not enough instances of the best fitting instance type can be allocated. This could be due to availability of the instance type in the region or <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html Amazon EC2 service limits> . If this is not specified, the default is @BEST_FIT@ , which will use only the best fitting instance type, waiting for additional capacity if it's not available. This allocation strategy keeps costs lower but can limit scaling. If you are using Spot Fleets with @BEST_FIT@ then the Spot Fleet IAM Role must be specified. @BEST_FIT_PROGRESSIVE@ will select additional instance types that are large enough to meet the requirements of the jobs in the queue, with a preference for instance types with a lower cost per vCPU. @SPOT_CAPACITY_OPTIMIZED@ is only available for Spot Instance compute resources and will select additional instance types that are large enough to meet the requirements of the jobs in the queue, with a preference for instance types that are less likely to be interrupted. For more information, see <https://docs.aws.amazon.com/batch/latest/userguide/allocation-strategies.html  Allocation Strategies> in the /AWS Batch User Guide/ .
 --
--- * 'crMinvCPUs' - The minimum number of EC2 vCPUs that an environment should maintain.
+-- * 'crPlacementGroup' - The Amazon EC2 placement group to associate with your compute resources. If you intend to submit multi-node parallel jobs to your compute environment, you should consider creating a cluster placement group and associate it with your compute resources. This keeps your multi-node parallel job on a logical grouping of instances within a single Availability Zone with high network flow potential. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html Placement Groups> in the /Amazon EC2 User Guide for Linux Instances/ .
 --
--- * 'crMaxvCPUs' - The maximum number of EC2 vCPUs that an environment can reach.
+-- * 'crTags' - Key-value pair tags to be applied to resources that are launched in the compute environment. For AWS Batch, these take the form of "String1": "String2", where String1 is the tag key and String2 is the tag value—for example, { "Name": "AWS Batch Instance - C4OnDemand" }.
 --
--- * 'crInstanceTypes' - The instances types that may be launched. You can specify instance families to launch any instance type within those families (for example, @c4@ or @p3@ ), or you can specify specific sizes within a family (such as @c4.8xlarge@ ). You can also choose @optimal@ to pick instance types (from the latest C, M, and R instance families) on the fly that match the demand of your job queues.
+-- * 'crType' - The type of compute environment: @EC2@ or @SPOT@ .
 --
--- * 'crSubnets' - The VPC subnets into which the compute resources are launched.
+-- * 'crMinvCPUs' - The minimum number of Amazon EC2 vCPUs that an environment should maintain (even if the compute environment is @DISABLED@ ).
 --
--- * 'crSecurityGroupIds' - The EC2 security group that is associated with instances launched in the compute environment.
+-- * 'crMaxvCPUs' - The maximum number of Amazon EC2 vCPUs that an environment can reach.
 --
--- * 'crInstanceRole' - The Amazon ECS instance profile applied to Amazon EC2 instances in a compute environment. You can specify the short name or full Amazon Resource Name (ARN) of an instance profile. For example, @ecsInstanceRole@ or @arn:aws:iam::<aws_account_id>:instance-profile/ecsInstanceRole@ . For more information, see <http://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html Amazon ECS Instance Role> in the /AWS Batch User Guide/ .
+-- * 'crInstanceTypes' - The instances types that may be launched. You can specify instance families to launch any instance type within those families (for example, @c5@ or @p3@ ), or you can specify specific sizes within a family (such as @c5.8xlarge@ ). You can also choose @optimal@ to pick instance types (from the C, M, and R instance families) on the fly that match the demand of your job queues.
+--
+-- * 'crSubnets' - The VPC subnets into which the compute resources are launched. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html VPCs and Subnets> in the /Amazon VPC User Guide/ .
+--
+-- * 'crInstanceRole' - The Amazon ECS instance profile applied to Amazon EC2 instances in a compute environment. You can specify the short name or full Amazon Resource Name (ARN) of an instance profile. For example, @/ecsInstanceRole/ @ or @arn:aws:iam::/<aws_account_id>/ :instance-profile//ecsInstanceRole/ @ . For more information, see <https://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html Amazon ECS Instance Role> in the /AWS Batch User Guide/ .
 computeResource
     :: CRType -- ^ 'crType'
     -> Int -- ^ 'crMinvCPUs'
@@ -510,31 +545,38 @@ computeResource
     -> ComputeResource
 computeResource pType_ pMinvCPUs_ pMaxvCPUs_ pInstanceRole_ =
   ComputeResource'
-    { _crEc2KeyPair = Nothing
+    { _crSecurityGroupIds = Nothing
+    , _crEc2KeyPair = Nothing
     , _crBidPercentage = Nothing
     , _crSpotIAMFleetRole = Nothing
     , _crImageId = Nothing
+    , _crLaunchTemplate = Nothing
     , _crDesiredvCPUs = Nothing
+    , _crAllocationStrategy = Nothing
+    , _crPlacementGroup = Nothing
     , _crTags = Nothing
     , _crType = pType_
     , _crMinvCPUs = pMinvCPUs_
     , _crMaxvCPUs = pMaxvCPUs_
     , _crInstanceTypes = mempty
     , _crSubnets = mempty
-    , _crSecurityGroupIds = mempty
     , _crInstanceRole = pInstanceRole_
     }
 
 
--- | The EC2 key pair that is used for instances launched in the compute environment.
+-- | The Amazon EC2 security groups associated with instances launched in the compute environment. One or more security groups must be specified, either in @securityGroupIds@ or using a launch template referenced in @launchTemplate@ . If security groups are specified using both @securityGroupIds@ and @launchTemplate@ , the values in @securityGroupIds@ will be used.
+crSecurityGroupIds :: Lens' ComputeResource [Text]
+crSecurityGroupIds = lens _crSecurityGroupIds (\ s a -> s{_crSecurityGroupIds = a}) . _Default . _Coerce
+
+-- | The Amazon EC2 key pair that is used for instances launched in the compute environment.
 crEc2KeyPair :: Lens' ComputeResource (Maybe Text)
 crEc2KeyPair = lens _crEc2KeyPair (\ s a -> s{_crEc2KeyPair = a})
 
--- | The minimum percentage that a Spot Instance price must be when compared with the On-Demand price for that instance type before instances are launched. For example, if your bid percentage is 20%, then the Spot price must be below 20% of the current On-Demand price for that EC2 instance.
+-- | The maximum percentage that a Spot Instance price can be when compared with the On-Demand price for that instance type before instances are launched. For example, if your maximum percentage is 20%, then the Spot price must be below 20% of the current On-Demand price for that Amazon EC2 instance. You always pay the lowest (market) price and never more than your maximum percentage. If you leave this field empty, the default value is 100% of the On-Demand price.
 crBidPercentage :: Lens' ComputeResource (Maybe Int)
 crBidPercentage = lens _crBidPercentage (\ s a -> s{_crBidPercentage = a})
 
--- | The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a @SPOT@ compute environment.
+-- | The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a @SPOT@ compute environment. This role is required if the allocation strategy set to @BEST_FIT@ or if the allocation strategy is not specified. For more information, see <https://docs.aws.amazon.com/batch/latest/userguide/spot_fleet_IAM_role.html Amazon EC2 Spot Fleet Role> in the /AWS Batch User Guide/ .
 crSpotIAMFleetRole :: Lens' ComputeResource (Maybe Text)
 crSpotIAMFleetRole = lens _crSpotIAMFleetRole (\ s a -> s{_crSpotIAMFleetRole = a})
 
@@ -542,39 +584,47 @@ crSpotIAMFleetRole = lens _crSpotIAMFleetRole (\ s a -> s{_crSpotIAMFleetRole = 
 crImageId :: Lens' ComputeResource (Maybe Text)
 crImageId = lens _crImageId (\ s a -> s{_crImageId = a})
 
--- | The desired number of EC2 vCPUS in the compute environment.
+-- | The launch template to use for your compute resources. Any other compute resource parameters that you specify in a 'CreateComputeEnvironment' API operation override the same parameters in the launch template. You must specify either the launch template ID or launch template name in the request, but not both. For more information, see <https://docs.aws.amazon.com/batch/latest/userguide/launch-templates.html Launch Template Support> in the /AWS Batch User Guide/ .
+crLaunchTemplate :: Lens' ComputeResource (Maybe LaunchTemplateSpecification)
+crLaunchTemplate = lens _crLaunchTemplate (\ s a -> s{_crLaunchTemplate = a})
+
+-- | The desired number of Amazon EC2 vCPUS in the compute environment.
 crDesiredvCPUs :: Lens' ComputeResource (Maybe Int)
 crDesiredvCPUs = lens _crDesiredvCPUs (\ s a -> s{_crDesiredvCPUs = a})
 
--- | Key-value pair tags to be applied to resources that are launched in the compute environment.
+-- | The allocation strategy to use for the compute resource in case not enough instances of the best fitting instance type can be allocated. This could be due to availability of the instance type in the region or <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html Amazon EC2 service limits> . If this is not specified, the default is @BEST_FIT@ , which will use only the best fitting instance type, waiting for additional capacity if it's not available. This allocation strategy keeps costs lower but can limit scaling. If you are using Spot Fleets with @BEST_FIT@ then the Spot Fleet IAM Role must be specified. @BEST_FIT_PROGRESSIVE@ will select additional instance types that are large enough to meet the requirements of the jobs in the queue, with a preference for instance types with a lower cost per vCPU. @SPOT_CAPACITY_OPTIMIZED@ is only available for Spot Instance compute resources and will select additional instance types that are large enough to meet the requirements of the jobs in the queue, with a preference for instance types that are less likely to be interrupted. For more information, see <https://docs.aws.amazon.com/batch/latest/userguide/allocation-strategies.html  Allocation Strategies> in the /AWS Batch User Guide/ .
+crAllocationStrategy :: Lens' ComputeResource (Maybe CRAllocationStrategy)
+crAllocationStrategy = lens _crAllocationStrategy (\ s a -> s{_crAllocationStrategy = a})
+
+-- | The Amazon EC2 placement group to associate with your compute resources. If you intend to submit multi-node parallel jobs to your compute environment, you should consider creating a cluster placement group and associate it with your compute resources. This keeps your multi-node parallel job on a logical grouping of instances within a single Availability Zone with high network flow potential. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html Placement Groups> in the /Amazon EC2 User Guide for Linux Instances/ .
+crPlacementGroup :: Lens' ComputeResource (Maybe Text)
+crPlacementGroup = lens _crPlacementGroup (\ s a -> s{_crPlacementGroup = a})
+
+-- | Key-value pair tags to be applied to resources that are launched in the compute environment. For AWS Batch, these take the form of "String1": "String2", where String1 is the tag key and String2 is the tag value—for example, { "Name": "AWS Batch Instance - C4OnDemand" }.
 crTags :: Lens' ComputeResource (HashMap Text Text)
 crTags = lens _crTags (\ s a -> s{_crTags = a}) . _Default . _Map
 
--- | The type of compute environment.
+-- | The type of compute environment: @EC2@ or @SPOT@ .
 crType :: Lens' ComputeResource CRType
 crType = lens _crType (\ s a -> s{_crType = a})
 
--- | The minimum number of EC2 vCPUs that an environment should maintain.
+-- | The minimum number of Amazon EC2 vCPUs that an environment should maintain (even if the compute environment is @DISABLED@ ).
 crMinvCPUs :: Lens' ComputeResource Int
 crMinvCPUs = lens _crMinvCPUs (\ s a -> s{_crMinvCPUs = a})
 
--- | The maximum number of EC2 vCPUs that an environment can reach.
+-- | The maximum number of Amazon EC2 vCPUs that an environment can reach.
 crMaxvCPUs :: Lens' ComputeResource Int
 crMaxvCPUs = lens _crMaxvCPUs (\ s a -> s{_crMaxvCPUs = a})
 
--- | The instances types that may be launched. You can specify instance families to launch any instance type within those families (for example, @c4@ or @p3@ ), or you can specify specific sizes within a family (such as @c4.8xlarge@ ). You can also choose @optimal@ to pick instance types (from the latest C, M, and R instance families) on the fly that match the demand of your job queues.
+-- | The instances types that may be launched. You can specify instance families to launch any instance type within those families (for example, @c5@ or @p3@ ), or you can specify specific sizes within a family (such as @c5.8xlarge@ ). You can also choose @optimal@ to pick instance types (from the C, M, and R instance families) on the fly that match the demand of your job queues.
 crInstanceTypes :: Lens' ComputeResource [Text]
 crInstanceTypes = lens _crInstanceTypes (\ s a -> s{_crInstanceTypes = a}) . _Coerce
 
--- | The VPC subnets into which the compute resources are launched.
+-- | The VPC subnets into which the compute resources are launched. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html VPCs and Subnets> in the /Amazon VPC User Guide/ .
 crSubnets :: Lens' ComputeResource [Text]
 crSubnets = lens _crSubnets (\ s a -> s{_crSubnets = a}) . _Coerce
 
--- | The EC2 security group that is associated with instances launched in the compute environment.
-crSecurityGroupIds :: Lens' ComputeResource [Text]
-crSecurityGroupIds = lens _crSecurityGroupIds (\ s a -> s{_crSecurityGroupIds = a}) . _Coerce
-
--- | The Amazon ECS instance profile applied to Amazon EC2 instances in a compute environment. You can specify the short name or full Amazon Resource Name (ARN) of an instance profile. For example, @ecsInstanceRole@ or @arn:aws:iam::<aws_account_id>:instance-profile/ecsInstanceRole@ . For more information, see <http://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html Amazon ECS Instance Role> in the /AWS Batch User Guide/ .
+-- | The Amazon ECS instance profile applied to Amazon EC2 instances in a compute environment. You can specify the short name or full Amazon Resource Name (ARN) of an instance profile. For example, @/ecsInstanceRole/ @ or @arn:aws:iam::/<aws_account_id>/ :instance-profile//ecsInstanceRole/ @ . For more information, see <https://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html Amazon ECS Instance Role> in the /AWS Batch User Guide/ .
 crInstanceRole :: Lens' ComputeResource Text
 crInstanceRole = lens _crInstanceRole (\ s a -> s{_crInstanceRole = a})
 
@@ -583,17 +633,21 @@ instance FromJSON ComputeResource where
           = withObject "ComputeResource"
               (\ x ->
                  ComputeResource' <$>
-                   (x .:? "ec2KeyPair") <*> (x .:? "bidPercentage") <*>
-                     (x .:? "spotIamFleetRole")
+                   (x .:? "securityGroupIds" .!= mempty) <*>
+                     (x .:? "ec2KeyPair")
+                     <*> (x .:? "bidPercentage")
+                     <*> (x .:? "spotIamFleetRole")
                      <*> (x .:? "imageId")
+                     <*> (x .:? "launchTemplate")
                      <*> (x .:? "desiredvCpus")
+                     <*> (x .:? "allocationStrategy")
+                     <*> (x .:? "placementGroup")
                      <*> (x .:? "tags" .!= mempty)
                      <*> (x .: "type")
                      <*> (x .: "minvCpus")
                      <*> (x .: "maxvCpus")
                      <*> (x .:? "instanceTypes" .!= mempty)
                      <*> (x .:? "subnets" .!= mempty)
-                     <*> (x .:? "securityGroupIds" .!= mempty)
                      <*> (x .: "instanceRole"))
 
 instance Hashable ComputeResource where
@@ -604,17 +658,20 @@ instance ToJSON ComputeResource where
         toJSON ComputeResource'{..}
           = object
               (catMaybes
-                 [("ec2KeyPair" .=) <$> _crEc2KeyPair,
+                 [("securityGroupIds" .=) <$> _crSecurityGroupIds,
+                  ("ec2KeyPair" .=) <$> _crEc2KeyPair,
                   ("bidPercentage" .=) <$> _crBidPercentage,
                   ("spotIamFleetRole" .=) <$> _crSpotIAMFleetRole,
                   ("imageId" .=) <$> _crImageId,
+                  ("launchTemplate" .=) <$> _crLaunchTemplate,
                   ("desiredvCpus" .=) <$> _crDesiredvCPUs,
+                  ("allocationStrategy" .=) <$> _crAllocationStrategy,
+                  ("placementGroup" .=) <$> _crPlacementGroup,
                   ("tags" .=) <$> _crTags, Just ("type" .= _crType),
                   Just ("minvCpus" .= _crMinvCPUs),
                   Just ("maxvCpus" .= _crMaxvCPUs),
                   Just ("instanceTypes" .= _crInstanceTypes),
                   Just ("subnets" .= _crSubnets),
-                  Just ("securityGroupIds" .= _crSecurityGroupIds),
                   Just ("instanceRole" .= _crInstanceRole)])
 
 -- | An object representing the attributes of a compute environment that can be updated.
@@ -622,22 +679,24 @@ instance ToJSON ComputeResource where
 --
 --
 -- /See:/ 'computeResourceUpdate' smart constructor.
-data ComputeResourceUpdate = ComputeResourceUpdate'
-  { _cruMinvCPUs     :: !(Maybe Int)
-  , _cruMaxvCPUs     :: !(Maybe Int)
-  , _cruDesiredvCPUs :: !(Maybe Int)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ComputeResourceUpdate =
+  ComputeResourceUpdate'
+    { _cruMinvCPUs     :: !(Maybe Int)
+    , _cruMaxvCPUs     :: !(Maybe Int)
+    , _cruDesiredvCPUs :: !(Maybe Int)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ComputeResourceUpdate' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cruMinvCPUs' - The minimum number of EC2 vCPUs that an environment should maintain.
+-- * 'cruMinvCPUs' - The minimum number of Amazon EC2 vCPUs that an environment should maintain.
 --
--- * 'cruMaxvCPUs' - The maximum number of EC2 vCPUs that an environment can reach.
+-- * 'cruMaxvCPUs' - The maximum number of Amazon EC2 vCPUs that an environment can reach.
 --
--- * 'cruDesiredvCPUs' - The desired number of EC2 vCPUS in the compute environment.
+-- * 'cruDesiredvCPUs' - The desired number of Amazon EC2 vCPUS in the compute environment.
 computeResourceUpdate
     :: ComputeResourceUpdate
 computeResourceUpdate =
@@ -645,15 +704,15 @@ computeResourceUpdate =
     {_cruMinvCPUs = Nothing, _cruMaxvCPUs = Nothing, _cruDesiredvCPUs = Nothing}
 
 
--- | The minimum number of EC2 vCPUs that an environment should maintain.
+-- | The minimum number of Amazon EC2 vCPUs that an environment should maintain.
 cruMinvCPUs :: Lens' ComputeResourceUpdate (Maybe Int)
 cruMinvCPUs = lens _cruMinvCPUs (\ s a -> s{_cruMinvCPUs = a})
 
--- | The maximum number of EC2 vCPUs that an environment can reach.
+-- | The maximum number of Amazon EC2 vCPUs that an environment can reach.
 cruMaxvCPUs :: Lens' ComputeResourceUpdate (Maybe Int)
 cruMaxvCPUs = lens _cruMaxvCPUs (\ s a -> s{_cruMaxvCPUs = a})
 
--- | The desired number of EC2 vCPUS in the compute environment.
+-- | The desired number of Amazon EC2 vCPUS in the compute environment.
 cruDesiredvCPUs :: Lens' ComputeResourceUpdate (Maybe Int)
 cruDesiredvCPUs = lens _cruDesiredvCPUs (\ s a -> s{_cruDesiredvCPUs = a})
 
@@ -674,25 +733,31 @@ instance ToJSON ComputeResourceUpdate where
 --
 --
 -- /See:/ 'containerDetail' smart constructor.
-data ContainerDetail = ContainerDetail'
-  { _cdImage                  :: !(Maybe Text)
-  , _cdCommand                :: !(Maybe [Text])
-  , _cdEnvironment            :: !(Maybe [KeyValuePair])
-  , _cdTaskARN                :: !(Maybe Text)
-  , _cdUlimits                :: !(Maybe [Ulimit])
-  , _cdContainerInstanceARN   :: !(Maybe Text)
-  , _cdPrivileged             :: !(Maybe Bool)
-  , _cdJobRoleARN             :: !(Maybe Text)
-  , _cdMemory                 :: !(Maybe Int)
-  , _cdUser                   :: !(Maybe Text)
-  , _cdReason                 :: !(Maybe Text)
-  , _cdLogStreamName          :: !(Maybe Text)
-  , _cdMountPoints            :: !(Maybe [MountPoint])
-  , _cdExitCode               :: !(Maybe Int)
-  , _cdVcpus                  :: !(Maybe Int)
-  , _cdReadonlyRootFilesystem :: !(Maybe Bool)
-  , _cdVolumes                :: !(Maybe [Volume])
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ContainerDetail =
+  ContainerDetail'
+    { _cdImage                  :: !(Maybe Text)
+    , _cdCommand                :: !(Maybe [Text])
+    , _cdEnvironment            :: !(Maybe [KeyValuePair])
+    , _cdNetworkInterfaces      :: !(Maybe [NetworkInterface])
+    , _cdTaskARN                :: !(Maybe Text)
+    , _cdUlimits                :: !(Maybe [Ulimit])
+    , _cdContainerInstanceARN   :: !(Maybe Text)
+    , _cdPrivileged             :: !(Maybe Bool)
+    , _cdJobRoleARN             :: !(Maybe Text)
+    , _cdResourceRequirements   :: !(Maybe [ResourceRequirement])
+    , _cdInstanceType           :: !(Maybe Text)
+    , _cdMemory                 :: !(Maybe Int)
+    , _cdUser                   :: !(Maybe Text)
+    , _cdLinuxParameters        :: !(Maybe LinuxParameters)
+    , _cdReason                 :: !(Maybe Text)
+    , _cdLogStreamName          :: !(Maybe Text)
+    , _cdMountPoints            :: !(Maybe [MountPoint])
+    , _cdExitCode               :: !(Maybe Int)
+    , _cdVcpus                  :: !(Maybe Int)
+    , _cdReadonlyRootFilesystem :: !(Maybe Bool)
+    , _cdVolumes                :: !(Maybe [Volume])
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ContainerDetail' with the minimum fields required to make a request.
@@ -705,6 +770,8 @@ data ContainerDetail = ContainerDetail'
 --
 -- * 'cdEnvironment' - The environment variables to pass to a container.
 --
+-- * 'cdNetworkInterfaces' - The network interfaces associated with the job.
+--
 -- * 'cdTaskARN' - The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the container job. Each container attempt receives a task ARN when they reach the @STARTING@ status.
 --
 -- * 'cdUlimits' - A list of @ulimit@ values to set in the container.
@@ -715,9 +782,15 @@ data ContainerDetail = ContainerDetail'
 --
 -- * 'cdJobRoleARN' - The Amazon Resource Name (ARN) associated with the job upon execution.
 --
+-- * 'cdResourceRequirements' - The type and amount of a resource to assign to a container. Currently, the only supported resource is @GPU@ .
+--
+-- * 'cdInstanceType' - The instance type of the underlying host infrastructure of a multi-node parallel job.
+--
 -- * 'cdMemory' - The number of MiB of memory reserved for the job.
 --
 -- * 'cdUser' - The user name to use inside the container.
+--
+-- * 'cdLinuxParameters' - Linux-specific modifications that are applied to the container, such as details for device mappings.
 --
 -- * 'cdReason' - A short (255 max characters) human-readable string to provide additional details about a running or stopped container.
 --
@@ -739,13 +812,17 @@ containerDetail =
     { _cdImage = Nothing
     , _cdCommand = Nothing
     , _cdEnvironment = Nothing
+    , _cdNetworkInterfaces = Nothing
     , _cdTaskARN = Nothing
     , _cdUlimits = Nothing
     , _cdContainerInstanceARN = Nothing
     , _cdPrivileged = Nothing
     , _cdJobRoleARN = Nothing
+    , _cdResourceRequirements = Nothing
+    , _cdInstanceType = Nothing
     , _cdMemory = Nothing
     , _cdUser = Nothing
+    , _cdLinuxParameters = Nothing
     , _cdReason = Nothing
     , _cdLogStreamName = Nothing
     , _cdMountPoints = Nothing
@@ -768,6 +845,10 @@ cdCommand = lens _cdCommand (\ s a -> s{_cdCommand = a}) . _Default . _Coerce
 cdEnvironment :: Lens' ContainerDetail [KeyValuePair]
 cdEnvironment = lens _cdEnvironment (\ s a -> s{_cdEnvironment = a}) . _Default . _Coerce
 
+-- | The network interfaces associated with the job.
+cdNetworkInterfaces :: Lens' ContainerDetail [NetworkInterface]
+cdNetworkInterfaces = lens _cdNetworkInterfaces (\ s a -> s{_cdNetworkInterfaces = a}) . _Default . _Coerce
+
 -- | The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the container job. Each container attempt receives a task ARN when they reach the @STARTING@ status.
 cdTaskARN :: Lens' ContainerDetail (Maybe Text)
 cdTaskARN = lens _cdTaskARN (\ s a -> s{_cdTaskARN = a})
@@ -788,6 +869,14 @@ cdPrivileged = lens _cdPrivileged (\ s a -> s{_cdPrivileged = a})
 cdJobRoleARN :: Lens' ContainerDetail (Maybe Text)
 cdJobRoleARN = lens _cdJobRoleARN (\ s a -> s{_cdJobRoleARN = a})
 
+-- | The type and amount of a resource to assign to a container. Currently, the only supported resource is @GPU@ .
+cdResourceRequirements :: Lens' ContainerDetail [ResourceRequirement]
+cdResourceRequirements = lens _cdResourceRequirements (\ s a -> s{_cdResourceRequirements = a}) . _Default . _Coerce
+
+-- | The instance type of the underlying host infrastructure of a multi-node parallel job.
+cdInstanceType :: Lens' ContainerDetail (Maybe Text)
+cdInstanceType = lens _cdInstanceType (\ s a -> s{_cdInstanceType = a})
+
 -- | The number of MiB of memory reserved for the job.
 cdMemory :: Lens' ContainerDetail (Maybe Int)
 cdMemory = lens _cdMemory (\ s a -> s{_cdMemory = a})
@@ -795,6 +884,10 @@ cdMemory = lens _cdMemory (\ s a -> s{_cdMemory = a})
 -- | The user name to use inside the container.
 cdUser :: Lens' ContainerDetail (Maybe Text)
 cdUser = lens _cdUser (\ s a -> s{_cdUser = a})
+
+-- | Linux-specific modifications that are applied to the container, such as details for device mappings.
+cdLinuxParameters :: Lens' ContainerDetail (Maybe LinuxParameters)
+cdLinuxParameters = lens _cdLinuxParameters (\ s a -> s{_cdLinuxParameters = a})
 
 -- | A short (255 max characters) human-readable string to provide additional details about a running or stopped container.
 cdReason :: Lens' ContainerDetail (Maybe Text)
@@ -831,13 +924,17 @@ instance FromJSON ContainerDetail where
                  ContainerDetail' <$>
                    (x .:? "image") <*> (x .:? "command" .!= mempty) <*>
                      (x .:? "environment" .!= mempty)
+                     <*> (x .:? "networkInterfaces" .!= mempty)
                      <*> (x .:? "taskArn")
                      <*> (x .:? "ulimits" .!= mempty)
                      <*> (x .:? "containerInstanceArn")
                      <*> (x .:? "privileged")
                      <*> (x .:? "jobRoleArn")
+                     <*> (x .:? "resourceRequirements" .!= mempty)
+                     <*> (x .:? "instanceType")
                      <*> (x .:? "memory")
                      <*> (x .:? "user")
+                     <*> (x .:? "linuxParameters")
                      <*> (x .:? "reason")
                      <*> (x .:? "logStreamName")
                      <*> (x .:? "mountPoints" .!= mempty)
@@ -855,12 +952,16 @@ instance NFData ContainerDetail where
 --
 --
 -- /See:/ 'containerOverrides' smart constructor.
-data ContainerOverrides = ContainerOverrides'
-  { _coCommand     :: !(Maybe [Text])
-  , _coEnvironment :: !(Maybe [KeyValuePair])
-  , _coMemory      :: !(Maybe Int)
-  , _coVcpus       :: !(Maybe Int)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ContainerOverrides =
+  ContainerOverrides'
+    { _coCommand              :: !(Maybe [Text])
+    , _coEnvironment          :: !(Maybe [KeyValuePair])
+    , _coResourceRequirements :: !(Maybe [ResourceRequirement])
+    , _coInstanceType         :: !(Maybe Text)
+    , _coMemory               :: !(Maybe Int)
+    , _coVcpus                :: !(Maybe Int)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ContainerOverrides' with the minimum fields required to make a request.
@@ -871,6 +972,10 @@ data ContainerOverrides = ContainerOverrides'
 --
 -- * 'coEnvironment' - The environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can override the existing environment variables from the Docker image or the job definition.
 --
+-- * 'coResourceRequirements' - The type and amount of a resource to assign to a container. This value overrides the value set in the job definition. Currently, the only supported resource is @GPU@ .
+--
+-- * 'coInstanceType' - The instance type to use for a multi-node parallel job. This parameter is not valid for single-node container jobs.
+--
 -- * 'coMemory' - The number of MiB of memory reserved for the job. This value overrides the value set in the job definition.
 --
 -- * 'coVcpus' - The number of vCPUs to reserve for the container. This value overrides the value set in the job definition.
@@ -880,6 +985,8 @@ containerOverrides =
   ContainerOverrides'
     { _coCommand = Nothing
     , _coEnvironment = Nothing
+    , _coResourceRequirements = Nothing
+    , _coInstanceType = Nothing
     , _coMemory = Nothing
     , _coVcpus = Nothing
     }
@@ -892,6 +999,14 @@ coCommand = lens _coCommand (\ s a -> s{_coCommand = a}) . _Default . _Coerce
 -- | The environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can override the existing environment variables from the Docker image or the job definition.
 coEnvironment :: Lens' ContainerOverrides [KeyValuePair]
 coEnvironment = lens _coEnvironment (\ s a -> s{_coEnvironment = a}) . _Default . _Coerce
+
+-- | The type and amount of a resource to assign to a container. This value overrides the value set in the job definition. Currently, the only supported resource is @GPU@ .
+coResourceRequirements :: Lens' ContainerOverrides [ResourceRequirement]
+coResourceRequirements = lens _coResourceRequirements (\ s a -> s{_coResourceRequirements = a}) . _Default . _Coerce
+
+-- | The instance type to use for a multi-node parallel job. This parameter is not valid for single-node container jobs.
+coInstanceType :: Lens' ContainerOverrides (Maybe Text)
+coInstanceType = lens _coInstanceType (\ s a -> s{_coInstanceType = a})
 
 -- | The number of MiB of memory reserved for the job. This value overrides the value set in the job definition.
 coMemory :: Lens' ContainerOverrides (Maybe Int)
@@ -911,6 +1026,9 @@ instance ToJSON ContainerOverrides where
               (catMaybes
                  [("command" .=) <$> _coCommand,
                   ("environment" .=) <$> _coEnvironment,
+                  ("resourceRequirements" .=) <$>
+                    _coResourceRequirements,
+                  ("instanceType" .=) <$> _coInstanceType,
                   ("memory" .=) <$> _coMemory,
                   ("vcpus" .=) <$> _coVcpus])
 
@@ -919,84 +1037,99 @@ instance ToJSON ContainerOverrides where
 --
 --
 -- /See:/ 'containerProperties' smart constructor.
-data ContainerProperties = ContainerProperties'
-  { _cpCommand                :: !(Maybe [Text])
-  , _cpEnvironment            :: !(Maybe [KeyValuePair])
-  , _cpUlimits                :: !(Maybe [Ulimit])
-  , _cpPrivileged             :: !(Maybe Bool)
-  , _cpJobRoleARN             :: !(Maybe Text)
-  , _cpUser                   :: !(Maybe Text)
-  , _cpMountPoints            :: !(Maybe [MountPoint])
-  , _cpReadonlyRootFilesystem :: !(Maybe Bool)
-  , _cpVolumes                :: !(Maybe [Volume])
-  , _cpImage                  :: !Text
-  , _cpVcpus                  :: !Int
-  , _cpMemory                 :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ContainerProperties =
+  ContainerProperties'
+    { _cpImage                  :: !(Maybe Text)
+    , _cpCommand                :: !(Maybe [Text])
+    , _cpEnvironment            :: !(Maybe [KeyValuePair])
+    , _cpUlimits                :: !(Maybe [Ulimit])
+    , _cpPrivileged             :: !(Maybe Bool)
+    , _cpJobRoleARN             :: !(Maybe Text)
+    , _cpResourceRequirements   :: !(Maybe [ResourceRequirement])
+    , _cpInstanceType           :: !(Maybe Text)
+    , _cpMemory                 :: !(Maybe Int)
+    , _cpUser                   :: !(Maybe Text)
+    , _cpLinuxParameters        :: !(Maybe LinuxParameters)
+    , _cpMountPoints            :: !(Maybe [MountPoint])
+    , _cpVcpus                  :: !(Maybe Int)
+    , _cpReadonlyRootFilesystem :: !(Maybe Bool)
+    , _cpVolumes                :: !(Maybe [Volume])
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ContainerProperties' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cpCommand' - The command that is passed to the container. This parameter maps to @Cmd@ in the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/ Docker Remote API> and the @COMMAND@ parameter to <https://docs.docker.com/engine/reference/run/ docker run> . For more information, see <https://docs.docker.com/engine/reference/builder/#cmd https://docs.docker.com/engine/reference/builder/#cmd> .
+-- * 'cpImage' - The image used to start a container. This string is passed directly to the Docker daemon. Images in the Docker Hub registry are available by default. Other repositories are specified with @/repository-url/ //image/ :/tag/ @ . Up to 255 letters (uppercase and lowercase), numbers, hyphens, underscores, colons, periods, forward slashes, and number signs are allowed. This parameter maps to @Image@ in the <https://docs.docker.com/engine/api/v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/api/v1.23/ Docker Remote API> and the @IMAGE@ parameter of <https://docs.docker.com/engine/reference/run/ docker run> .     * Images in Amazon ECR repositories use the full registry and repository URI (for example, @012345678910.dkr.ecr.<region-name>.amazonaws.com/<repository-name>@ ).     * Images in official repositories on Docker Hub use a single name (for example, @ubuntu@ or @mongo@ ).     * Images in other repositories on Docker Hub are qualified with an organization name (for example, @amazon/amazon-ecs-agent@ ).     * Images in other online repositories are qualified further by a domain name (for example, @quay.io/assemblyline/ubuntu@ ).
 --
--- * 'cpEnvironment' - The environment variables to pass to a container. This parameter maps to @Env@ in the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/ Docker Remote API> and the @--env@ option to <https://docs.docker.com/engine/reference/run/ docker run> . /Important:/ We do not recommend using plaintext environment variables for sensitive information, such as credential data.
+-- * 'cpCommand' - The command that is passed to the container. This parameter maps to @Cmd@ in the <https://docs.docker.com/engine/api/v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/api/v1.23/ Docker Remote API> and the @COMMAND@ parameter to <https://docs.docker.com/engine/reference/run/ docker run> . For more information, see <https://docs.docker.com/engine/reference/builder/#cmd https://docs.docker.com/engine/reference/builder/#cmd> .
 --
--- * 'cpUlimits' - A list of @ulimits@ to set in the container. This parameter maps to @Ulimits@ in the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/ Docker Remote API> and the @--ulimit@ option to <https://docs.docker.com/engine/reference/run/ docker run> .
+-- * 'cpEnvironment' - The environment variables to pass to a container. This parameter maps to @Env@ in the <https://docs.docker.com/engine/api/v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/api/v1.23/ Docker Remote API> and the @--env@ option to <https://docs.docker.com/engine/reference/run/ docker run> . /Important:/ We do not recommend using plaintext environment variables for sensitive information, such as credential data.
 --
--- * 'cpPrivileged' - When this parameter is true, the container is given elevated privileges on the host container instance (similar to the @root@ user). This parameter maps to @Privileged@ in the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/ Docker Remote API> and the @--privileged@ option to <https://docs.docker.com/engine/reference/run/ docker run> .
+-- * 'cpUlimits' - A list of @ulimits@ to set in the container. This parameter maps to @Ulimits@ in the <https://docs.docker.com/engine/api/v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/api/v1.23/ Docker Remote API> and the @--ulimit@ option to <https://docs.docker.com/engine/reference/run/ docker run> .
+--
+-- * 'cpPrivileged' - When this parameter is true, the container is given elevated privileges on the host container instance (similar to the @root@ user). This parameter maps to @Privileged@ in the <https://docs.docker.com/engine/api/v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/api/v1.23/ Docker Remote API> and the @--privileged@ option to <https://docs.docker.com/engine/reference/run/ docker run> .
 --
 -- * 'cpJobRoleARN' - The Amazon Resource Name (ARN) of the IAM role that the container can assume for AWS permissions.
 --
--- * 'cpUser' - The user name to use inside the container. This parameter maps to @User@ in the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/ Docker Remote API> and the @--user@ option to <https://docs.docker.com/engine/reference/run/ docker run> .
+-- * 'cpResourceRequirements' - The type and amount of a resource to assign to a container. Currently, the only supported resource is @GPU@ .
 --
--- * 'cpMountPoints' - The mount points for data volumes in your container. This parameter maps to @Volumes@ in the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/ Docker Remote API> and the @--volume@ option to <https://docs.docker.com/engine/reference/run/ docker run> .
+-- * 'cpInstanceType' - The instance type to use for a multi-node parallel job. Currently all node groups in a multi-node parallel job must use the same instance type. This parameter is not valid for single-node container jobs.
 --
--- * 'cpReadonlyRootFilesystem' - When this parameter is true, the container is given read-only access to its root file system. This parameter maps to @ReadonlyRootfs@ in the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/ Docker Remote API> and the @--read-only@ option to @docker run@ .
+-- * 'cpMemory' - The hard limit (in MiB) of memory to present to the container. If your container attempts to exceed the memory specified here, the container is killed. This parameter maps to @Memory@ in the <https://docs.docker.com/engine/api/v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/api/v1.23/ Docker Remote API> and the @--memory@ option to <https://docs.docker.com/engine/reference/run/ docker run> . You must specify at least 4 MiB of memory for a job.
+--
+-- * 'cpUser' - The user name to use inside the container. This parameter maps to @User@ in the <https://docs.docker.com/engine/api/v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/api/v1.23/ Docker Remote API> and the @--user@ option to <https://docs.docker.com/engine/reference/run/ docker run> .
+--
+-- * 'cpLinuxParameters' - Linux-specific modifications that are applied to the container, such as details for device mappings.
+--
+-- * 'cpMountPoints' - The mount points for data volumes in your container. This parameter maps to @Volumes@ in the <https://docs.docker.com/engine/api/v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/api/v1.23/ Docker Remote API> and the @--volume@ option to <https://docs.docker.com/engine/reference/run/ docker run> .
+--
+-- * 'cpVcpus' - The number of vCPUs reserved for the container. This parameter maps to @CpuShares@ in the <https://docs.docker.com/engine/api/v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/api/v1.23/ Docker Remote API> and the @--cpu-shares@ option to <https://docs.docker.com/engine/reference/run/ docker run> . Each vCPU is equivalent to 1,024 CPU shares. You must specify at least one vCPU.
+--
+-- * 'cpReadonlyRootFilesystem' - When this parameter is true, the container is given read-only access to its root file system. This parameter maps to @ReadonlyRootfs@ in the <https://docs.docker.com/engine/api/v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/api/v1.23/ Docker Remote API> and the @--read-only@ option to @docker run@ .
 --
 -- * 'cpVolumes' - A list of data volumes used in a job.
---
--- * 'cpImage' - The image used to start a container. This string is passed directly to the Docker daemon. Images in the Docker Hub registry are available by default. Other repositories are specified with @/repository-url/ //image/ :/tag/ @ . Up to 255 letters (uppercase and lowercase), numbers, hyphens, underscores, colons, periods, forward slashes, and number signs are allowed. This parameter maps to @Image@ in the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/ Docker Remote API> and the @IMAGE@ parameter of <https://docs.docker.com/engine/reference/run/ docker run> .     * Images in Amazon ECR repositories use the full registry and repository URI (for example, @012345678910.dkr.ecr.<region-name>.amazonaws.com/<repository-name>@ ).      * Images in official repositories on Docker Hub use a single name (for example, @ubuntu@ or @mongo@ ).     * Images in other repositories on Docker Hub are qualified with an organization name (for example, @amazon/amazon-ecs-agent@ ).     * Images in other online repositories are qualified further by a domain name (for example, @quay.io/assemblyline/ubuntu@ ).
---
--- * 'cpVcpus' - The number of vCPUs reserved for the container. This parameter maps to @CpuShares@ in the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/ Docker Remote API> and the @--cpu-shares@ option to <https://docs.docker.com/engine/reference/run/ docker run> . Each vCPU is equivalent to 1,024 CPU shares. You must specify at least one vCPU.
---
--- * 'cpMemory' - The hard limit (in MiB) of memory to present to the container. If your container attempts to exceed the memory specified here, the container is killed. This parameter maps to @Memory@ in the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/ Docker Remote API> and the @--memory@ option to <https://docs.docker.com/engine/reference/run/ docker run> . You must specify at least 4 MiB of memory for a job.
 containerProperties
-    :: Text -- ^ 'cpImage'
-    -> Int -- ^ 'cpVcpus'
-    -> Int -- ^ 'cpMemory'
-    -> ContainerProperties
-containerProperties pImage_ pVcpus_ pMemory_ =
+    :: ContainerProperties
+containerProperties =
   ContainerProperties'
-    { _cpCommand = Nothing
+    { _cpImage = Nothing
+    , _cpCommand = Nothing
     , _cpEnvironment = Nothing
     , _cpUlimits = Nothing
     , _cpPrivileged = Nothing
     , _cpJobRoleARN = Nothing
+    , _cpResourceRequirements = Nothing
+    , _cpInstanceType = Nothing
+    , _cpMemory = Nothing
     , _cpUser = Nothing
+    , _cpLinuxParameters = Nothing
     , _cpMountPoints = Nothing
+    , _cpVcpus = Nothing
     , _cpReadonlyRootFilesystem = Nothing
     , _cpVolumes = Nothing
-    , _cpImage = pImage_
-    , _cpVcpus = pVcpus_
-    , _cpMemory = pMemory_
     }
 
 
--- | The command that is passed to the container. This parameter maps to @Cmd@ in the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/ Docker Remote API> and the @COMMAND@ parameter to <https://docs.docker.com/engine/reference/run/ docker run> . For more information, see <https://docs.docker.com/engine/reference/builder/#cmd https://docs.docker.com/engine/reference/builder/#cmd> .
+-- | The image used to start a container. This string is passed directly to the Docker daemon. Images in the Docker Hub registry are available by default. Other repositories are specified with @/repository-url/ //image/ :/tag/ @ . Up to 255 letters (uppercase and lowercase), numbers, hyphens, underscores, colons, periods, forward slashes, and number signs are allowed. This parameter maps to @Image@ in the <https://docs.docker.com/engine/api/v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/api/v1.23/ Docker Remote API> and the @IMAGE@ parameter of <https://docs.docker.com/engine/reference/run/ docker run> .     * Images in Amazon ECR repositories use the full registry and repository URI (for example, @012345678910.dkr.ecr.<region-name>.amazonaws.com/<repository-name>@ ).     * Images in official repositories on Docker Hub use a single name (for example, @ubuntu@ or @mongo@ ).     * Images in other repositories on Docker Hub are qualified with an organization name (for example, @amazon/amazon-ecs-agent@ ).     * Images in other online repositories are qualified further by a domain name (for example, @quay.io/assemblyline/ubuntu@ ).
+cpImage :: Lens' ContainerProperties (Maybe Text)
+cpImage = lens _cpImage (\ s a -> s{_cpImage = a})
+
+-- | The command that is passed to the container. This parameter maps to @Cmd@ in the <https://docs.docker.com/engine/api/v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/api/v1.23/ Docker Remote API> and the @COMMAND@ parameter to <https://docs.docker.com/engine/reference/run/ docker run> . For more information, see <https://docs.docker.com/engine/reference/builder/#cmd https://docs.docker.com/engine/reference/builder/#cmd> .
 cpCommand :: Lens' ContainerProperties [Text]
 cpCommand = lens _cpCommand (\ s a -> s{_cpCommand = a}) . _Default . _Coerce
 
--- | The environment variables to pass to a container. This parameter maps to @Env@ in the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/ Docker Remote API> and the @--env@ option to <https://docs.docker.com/engine/reference/run/ docker run> . /Important:/ We do not recommend using plaintext environment variables for sensitive information, such as credential data.
+-- | The environment variables to pass to a container. This parameter maps to @Env@ in the <https://docs.docker.com/engine/api/v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/api/v1.23/ Docker Remote API> and the @--env@ option to <https://docs.docker.com/engine/reference/run/ docker run> . /Important:/ We do not recommend using plaintext environment variables for sensitive information, such as credential data.
 cpEnvironment :: Lens' ContainerProperties [KeyValuePair]
 cpEnvironment = lens _cpEnvironment (\ s a -> s{_cpEnvironment = a}) . _Default . _Coerce
 
--- | A list of @ulimits@ to set in the container. This parameter maps to @Ulimits@ in the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/ Docker Remote API> and the @--ulimit@ option to <https://docs.docker.com/engine/reference/run/ docker run> .
+-- | A list of @ulimits@ to set in the container. This parameter maps to @Ulimits@ in the <https://docs.docker.com/engine/api/v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/api/v1.23/ Docker Remote API> and the @--ulimit@ option to <https://docs.docker.com/engine/reference/run/ docker run> .
 cpUlimits :: Lens' ContainerProperties [Ulimit]
 cpUlimits = lens _cpUlimits (\ s a -> s{_cpUlimits = a}) . _Default . _Coerce
 
--- | When this parameter is true, the container is given elevated privileges on the host container instance (similar to the @root@ user). This parameter maps to @Privileged@ in the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/ Docker Remote API> and the @--privileged@ option to <https://docs.docker.com/engine/reference/run/ docker run> .
+-- | When this parameter is true, the container is given elevated privileges on the host container instance (similar to the @root@ user). This parameter maps to @Privileged@ in the <https://docs.docker.com/engine/api/v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/api/v1.23/ Docker Remote API> and the @--privileged@ option to <https://docs.docker.com/engine/reference/run/ docker run> .
 cpPrivileged :: Lens' ContainerProperties (Maybe Bool)
 cpPrivileged = lens _cpPrivileged (\ s a -> s{_cpPrivileged = a})
 
@@ -1004,15 +1137,35 @@ cpPrivileged = lens _cpPrivileged (\ s a -> s{_cpPrivileged = a})
 cpJobRoleARN :: Lens' ContainerProperties (Maybe Text)
 cpJobRoleARN = lens _cpJobRoleARN (\ s a -> s{_cpJobRoleARN = a})
 
--- | The user name to use inside the container. This parameter maps to @User@ in the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/ Docker Remote API> and the @--user@ option to <https://docs.docker.com/engine/reference/run/ docker run> .
+-- | The type and amount of a resource to assign to a container. Currently, the only supported resource is @GPU@ .
+cpResourceRequirements :: Lens' ContainerProperties [ResourceRequirement]
+cpResourceRequirements = lens _cpResourceRequirements (\ s a -> s{_cpResourceRequirements = a}) . _Default . _Coerce
+
+-- | The instance type to use for a multi-node parallel job. Currently all node groups in a multi-node parallel job must use the same instance type. This parameter is not valid for single-node container jobs.
+cpInstanceType :: Lens' ContainerProperties (Maybe Text)
+cpInstanceType = lens _cpInstanceType (\ s a -> s{_cpInstanceType = a})
+
+-- | The hard limit (in MiB) of memory to present to the container. If your container attempts to exceed the memory specified here, the container is killed. This parameter maps to @Memory@ in the <https://docs.docker.com/engine/api/v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/api/v1.23/ Docker Remote API> and the @--memory@ option to <https://docs.docker.com/engine/reference/run/ docker run> . You must specify at least 4 MiB of memory for a job.
+cpMemory :: Lens' ContainerProperties (Maybe Int)
+cpMemory = lens _cpMemory (\ s a -> s{_cpMemory = a})
+
+-- | The user name to use inside the container. This parameter maps to @User@ in the <https://docs.docker.com/engine/api/v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/api/v1.23/ Docker Remote API> and the @--user@ option to <https://docs.docker.com/engine/reference/run/ docker run> .
 cpUser :: Lens' ContainerProperties (Maybe Text)
 cpUser = lens _cpUser (\ s a -> s{_cpUser = a})
 
--- | The mount points for data volumes in your container. This parameter maps to @Volumes@ in the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/ Docker Remote API> and the @--volume@ option to <https://docs.docker.com/engine/reference/run/ docker run> .
+-- | Linux-specific modifications that are applied to the container, such as details for device mappings.
+cpLinuxParameters :: Lens' ContainerProperties (Maybe LinuxParameters)
+cpLinuxParameters = lens _cpLinuxParameters (\ s a -> s{_cpLinuxParameters = a})
+
+-- | The mount points for data volumes in your container. This parameter maps to @Volumes@ in the <https://docs.docker.com/engine/api/v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/api/v1.23/ Docker Remote API> and the @--volume@ option to <https://docs.docker.com/engine/reference/run/ docker run> .
 cpMountPoints :: Lens' ContainerProperties [MountPoint]
 cpMountPoints = lens _cpMountPoints (\ s a -> s{_cpMountPoints = a}) . _Default . _Coerce
 
--- | When this parameter is true, the container is given read-only access to its root file system. This parameter maps to @ReadonlyRootfs@ in the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/ Docker Remote API> and the @--read-only@ option to @docker run@ .
+-- | The number of vCPUs reserved for the container. This parameter maps to @CpuShares@ in the <https://docs.docker.com/engine/api/v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/api/v1.23/ Docker Remote API> and the @--cpu-shares@ option to <https://docs.docker.com/engine/reference/run/ docker run> . Each vCPU is equivalent to 1,024 CPU shares. You must specify at least one vCPU.
+cpVcpus :: Lens' ContainerProperties (Maybe Int)
+cpVcpus = lens _cpVcpus (\ s a -> s{_cpVcpus = a})
+
+-- | When this parameter is true, the container is given read-only access to its root file system. This parameter maps to @ReadonlyRootfs@ in the <https://docs.docker.com/engine/api/v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/api/v1.23/ Docker Remote API> and the @--read-only@ option to @docker run@ .
 cpReadonlyRootFilesystem :: Lens' ContainerProperties (Maybe Bool)
 cpReadonlyRootFilesystem = lens _cpReadonlyRootFilesystem (\ s a -> s{_cpReadonlyRootFilesystem = a})
 
@@ -1020,35 +1173,25 @@ cpReadonlyRootFilesystem = lens _cpReadonlyRootFilesystem (\ s a -> s{_cpReadonl
 cpVolumes :: Lens' ContainerProperties [Volume]
 cpVolumes = lens _cpVolumes (\ s a -> s{_cpVolumes = a}) . _Default . _Coerce
 
--- | The image used to start a container. This string is passed directly to the Docker daemon. Images in the Docker Hub registry are available by default. Other repositories are specified with @/repository-url/ //image/ :/tag/ @ . Up to 255 letters (uppercase and lowercase), numbers, hyphens, underscores, colons, periods, forward slashes, and number signs are allowed. This parameter maps to @Image@ in the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/ Docker Remote API> and the @IMAGE@ parameter of <https://docs.docker.com/engine/reference/run/ docker run> .     * Images in Amazon ECR repositories use the full registry and repository URI (for example, @012345678910.dkr.ecr.<region-name>.amazonaws.com/<repository-name>@ ).      * Images in official repositories on Docker Hub use a single name (for example, @ubuntu@ or @mongo@ ).     * Images in other repositories on Docker Hub are qualified with an organization name (for example, @amazon/amazon-ecs-agent@ ).     * Images in other online repositories are qualified further by a domain name (for example, @quay.io/assemblyline/ubuntu@ ).
-cpImage :: Lens' ContainerProperties Text
-cpImage = lens _cpImage (\ s a -> s{_cpImage = a})
-
--- | The number of vCPUs reserved for the container. This parameter maps to @CpuShares@ in the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/ Docker Remote API> and the @--cpu-shares@ option to <https://docs.docker.com/engine/reference/run/ docker run> . Each vCPU is equivalent to 1,024 CPU shares. You must specify at least one vCPU.
-cpVcpus :: Lens' ContainerProperties Int
-cpVcpus = lens _cpVcpus (\ s a -> s{_cpVcpus = a})
-
--- | The hard limit (in MiB) of memory to present to the container. If your container attempts to exceed the memory specified here, the container is killed. This parameter maps to @Memory@ in the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/ Docker Remote API> and the @--memory@ option to <https://docs.docker.com/engine/reference/run/ docker run> . You must specify at least 4 MiB of memory for a job.
-cpMemory :: Lens' ContainerProperties Int
-cpMemory = lens _cpMemory (\ s a -> s{_cpMemory = a})
-
 instance FromJSON ContainerProperties where
         parseJSON
           = withObject "ContainerProperties"
               (\ x ->
                  ContainerProperties' <$>
-                   (x .:? "command" .!= mempty) <*>
+                   (x .:? "image") <*> (x .:? "command" .!= mempty) <*>
                      (x .:? "environment" .!= mempty)
                      <*> (x .:? "ulimits" .!= mempty)
                      <*> (x .:? "privileged")
                      <*> (x .:? "jobRoleArn")
+                     <*> (x .:? "resourceRequirements" .!= mempty)
+                     <*> (x .:? "instanceType")
+                     <*> (x .:? "memory")
                      <*> (x .:? "user")
+                     <*> (x .:? "linuxParameters")
                      <*> (x .:? "mountPoints" .!= mempty)
+                     <*> (x .:? "vcpus")
                      <*> (x .:? "readonlyRootFilesystem")
-                     <*> (x .:? "volumes" .!= mempty)
-                     <*> (x .: "image")
-                     <*> (x .: "vcpus")
-                     <*> (x .: "memory"))
+                     <*> (x .:? "volumes" .!= mempty))
 
 instance Hashable ContainerProperties where
 
@@ -1058,29 +1201,34 @@ instance ToJSON ContainerProperties where
         toJSON ContainerProperties'{..}
           = object
               (catMaybes
-                 [("command" .=) <$> _cpCommand,
+                 [("image" .=) <$> _cpImage,
+                  ("command" .=) <$> _cpCommand,
                   ("environment" .=) <$> _cpEnvironment,
                   ("ulimits" .=) <$> _cpUlimits,
                   ("privileged" .=) <$> _cpPrivileged,
                   ("jobRoleArn" .=) <$> _cpJobRoleARN,
-                  ("user" .=) <$> _cpUser,
+                  ("resourceRequirements" .=) <$>
+                    _cpResourceRequirements,
+                  ("instanceType" .=) <$> _cpInstanceType,
+                  ("memory" .=) <$> _cpMemory, ("user" .=) <$> _cpUser,
+                  ("linuxParameters" .=) <$> _cpLinuxParameters,
                   ("mountPoints" .=) <$> _cpMountPoints,
+                  ("vcpus" .=) <$> _cpVcpus,
                   ("readonlyRootFilesystem" .=) <$>
                     _cpReadonlyRootFilesystem,
-                  ("volumes" .=) <$> _cpVolumes,
-                  Just ("image" .= _cpImage),
-                  Just ("vcpus" .= _cpVcpus),
-                  Just ("memory" .= _cpMemory)])
+                  ("volumes" .=) <$> _cpVolumes])
 
 -- | An object representing summary details of a container within a job.
 --
 --
 --
 -- /See:/ 'containerSummary' smart constructor.
-data ContainerSummary = ContainerSummary'
-  { _csReason   :: !(Maybe Text)
-  , _csExitCode :: !(Maybe Int)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ContainerSummary =
+  ContainerSummary'
+    { _csReason   :: !(Maybe Text)
+    , _csExitCode :: !(Maybe Int)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ContainerSummary' with the minimum fields required to make a request.
@@ -1115,27 +1263,96 @@ instance Hashable ContainerSummary where
 
 instance NFData ContainerSummary where
 
--- | The contents of the @host@ parameter determine whether your data volume persists on the host container instance and where it is stored. If the host parameter is empty, then the Docker daemon assigns a host path for your data volume, but the data is not guaranteed to persist after the containers associated with it stop running.
+-- | An object representing a container instance host device.
+--
+--
+--
+-- /See:/ 'device' smart constructor.
+data Device =
+  Device'
+    { _dContainerPath :: !(Maybe Text)
+    , _dPermissions   :: !(Maybe [DeviceCgroupPermission])
+    , _dHostPath      :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'Device' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'dContainerPath' - The path inside the container at which to expose the host device. By default the @hostPath@ value is used.
+--
+-- * 'dPermissions' - The explicit permissions to provide to the container for the device. By default, the container has permissions for @read@ , @write@ , and @mknod@ for the device.
+--
+-- * 'dHostPath' - The path for the device on the host container instance.
+device
+    :: Text -- ^ 'dHostPath'
+    -> Device
+device pHostPath_ =
+  Device'
+    { _dContainerPath = Nothing
+    , _dPermissions = Nothing
+    , _dHostPath = pHostPath_
+    }
+
+
+-- | The path inside the container at which to expose the host device. By default the @hostPath@ value is used.
+dContainerPath :: Lens' Device (Maybe Text)
+dContainerPath = lens _dContainerPath (\ s a -> s{_dContainerPath = a})
+
+-- | The explicit permissions to provide to the container for the device. By default, the container has permissions for @read@ , @write@ , and @mknod@ for the device.
+dPermissions :: Lens' Device [DeviceCgroupPermission]
+dPermissions = lens _dPermissions (\ s a -> s{_dPermissions = a}) . _Default . _Coerce
+
+-- | The path for the device on the host container instance.
+dHostPath :: Lens' Device Text
+dHostPath = lens _dHostPath (\ s a -> s{_dHostPath = a})
+
+instance FromJSON Device where
+        parseJSON
+          = withObject "Device"
+              (\ x ->
+                 Device' <$>
+                   (x .:? "containerPath") <*>
+                     (x .:? "permissions" .!= mempty)
+                     <*> (x .: "hostPath"))
+
+instance Hashable Device where
+
+instance NFData Device where
+
+instance ToJSON Device where
+        toJSON Device'{..}
+          = object
+              (catMaybes
+                 [("containerPath" .=) <$> _dContainerPath,
+                  ("permissions" .=) <$> _dPermissions,
+                  Just ("hostPath" .= _dHostPath)])
+
+-- | Determine whether your data volume persists on the host container instance and where it is stored. If this parameter is empty, then the Docker daemon assigns a host path for your data volume, but the data is not guaranteed to persist after the containers associated with it stop running.
 --
 --
 --
 -- /See:/ 'host' smart constructor.
-newtype Host = Host'
-  { _hSourcePath :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype Host =
+  Host'
+    { _hSourcePath :: Maybe Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Host' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'hSourcePath' - The path on the host container instance that is presented to the container. If this parameter is empty, then the Docker daemon has assigned a host path for you. If the @host@ parameter contains a @sourcePath@ file location, then the data volume persists at the specified location on the host container instance until you delete it manually. If the @sourcePath@ value does not exist on the host container instance, the Docker daemon creates it. If the location does exist, the contents of the source path folder are exported.
+-- * 'hSourcePath' - The path on the host container instance that is presented to the container. If this parameter is empty, then the Docker daemon has assigned a host path for you. If this parameter contains a file location, then the data volume persists at the specified location on the host container instance until you delete it manually. If the source path location does not exist on the host container instance, the Docker daemon creates it. If the location does exist, the contents of the source path folder are exported.
 host
     :: Host
 host = Host' {_hSourcePath = Nothing}
 
 
--- | The path on the host container instance that is presented to the container. If this parameter is empty, then the Docker daemon has assigned a host path for you. If the @host@ parameter contains a @sourcePath@ file location, then the data volume persists at the specified location on the host container instance until you delete it manually. If the @sourcePath@ value does not exist on the host container instance, the Docker daemon creates it. If the location does exist, the contents of the source path folder are exported.
+-- | The path on the host container instance that is presented to the container. If this parameter is empty, then the Docker daemon has assigned a host path for you. If this parameter contains a file location, then the data volume persists at the specified location on the host container instance until you delete it manually. If the source path location does not exist on the host container instance, the Docker daemon creates it. If the location does exist, the contents of the source path folder are exported.
 hSourcePath :: Lens' Host (Maybe Text)
 hSourcePath = lens _hSourcePath (\ s a -> s{_hSourcePath = a})
 
@@ -1158,17 +1375,20 @@ instance ToJSON Host where
 --
 --
 -- /See:/ 'jobDefinition' smart constructor.
-data JobDefinition = JobDefinition'
-  { _jddStatus              :: !(Maybe Text)
-  , _jddRetryStrategy       :: !(Maybe RetryStrategy)
-  , _jddParameters          :: !(Maybe (Map Text Text))
-  , _jddTimeout             :: !(Maybe JobTimeout)
-  , _jddContainerProperties :: !(Maybe ContainerProperties)
-  , _jddJobDefinitionName   :: !Text
-  , _jddJobDefinitionARN    :: !Text
-  , _jddRevision            :: !Int
-  , _jddType                :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data JobDefinition =
+  JobDefinition'
+    { _jddStatus              :: !(Maybe Text)
+    , _jddRetryStrategy       :: !(Maybe RetryStrategy)
+    , _jddParameters          :: !(Maybe (Map Text Text))
+    , _jddTimeout             :: !(Maybe JobTimeout)
+    , _jddContainerProperties :: !(Maybe ContainerProperties)
+    , _jddNodeProperties      :: !(Maybe NodeProperties)
+    , _jddJobDefinitionName   :: !Text
+    , _jddJobDefinitionARN    :: !Text
+    , _jddRevision            :: !Int
+    , _jddType                :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'JobDefinition' with the minimum fields required to make a request.
@@ -1179,11 +1399,13 @@ data JobDefinition = JobDefinition'
 --
 -- * 'jddRetryStrategy' - The retry strategy to use for failed jobs that are submitted with this job definition.
 --
--- * 'jddParameters' - Default parameters or parameter substitution placeholders that are set in the job definition. Parameters are specified as a key-value pair mapping. Parameters in a @SubmitJob@ request override any corresponding parameter defaults from the job definition.
+-- * 'jddParameters' - Default parameters or parameter substitution placeholders that are set in the job definition. Parameters are specified as a key-value pair mapping. Parameters in a @SubmitJob@ request override any corresponding parameter defaults from the job definition. For more information about specifying parameters, see <https://docs.aws.amazon.com/batch/latest/userguide/job_definition_parameters.html Job Definition Parameters> in the /AWS Batch User Guide/ .
 --
 -- * 'jddTimeout' - The timeout configuration for jobs that are submitted with this job definition. You can specify a timeout duration after which AWS Batch terminates your jobs if they have not finished.
 --
 -- * 'jddContainerProperties' - An object with various properties specific to container-based jobs.
+--
+-- * 'jddNodeProperties' - An object with various properties specific to multi-node parallel jobs.
 --
 -- * 'jddJobDefinitionName' - The name of the job definition.
 --
@@ -1205,6 +1427,7 @@ jobDefinition pJobDefinitionName_ pJobDefinitionARN_ pRevision_ pType_ =
     , _jddParameters = Nothing
     , _jddTimeout = Nothing
     , _jddContainerProperties = Nothing
+    , _jddNodeProperties = Nothing
     , _jddJobDefinitionName = pJobDefinitionName_
     , _jddJobDefinitionARN = pJobDefinitionARN_
     , _jddRevision = pRevision_
@@ -1220,7 +1443,7 @@ jddStatus = lens _jddStatus (\ s a -> s{_jddStatus = a})
 jddRetryStrategy :: Lens' JobDefinition (Maybe RetryStrategy)
 jddRetryStrategy = lens _jddRetryStrategy (\ s a -> s{_jddRetryStrategy = a})
 
--- | Default parameters or parameter substitution placeholders that are set in the job definition. Parameters are specified as a key-value pair mapping. Parameters in a @SubmitJob@ request override any corresponding parameter defaults from the job definition.
+-- | Default parameters or parameter substitution placeholders that are set in the job definition. Parameters are specified as a key-value pair mapping. Parameters in a @SubmitJob@ request override any corresponding parameter defaults from the job definition. For more information about specifying parameters, see <https://docs.aws.amazon.com/batch/latest/userguide/job_definition_parameters.html Job Definition Parameters> in the /AWS Batch User Guide/ .
 jddParameters :: Lens' JobDefinition (HashMap Text Text)
 jddParameters = lens _jddParameters (\ s a -> s{_jddParameters = a}) . _Default . _Map
 
@@ -1231,6 +1454,10 @@ jddTimeout = lens _jddTimeout (\ s a -> s{_jddTimeout = a})
 -- | An object with various properties specific to container-based jobs.
 jddContainerProperties :: Lens' JobDefinition (Maybe ContainerProperties)
 jddContainerProperties = lens _jddContainerProperties (\ s a -> s{_jddContainerProperties = a})
+
+-- | An object with various properties specific to multi-node parallel jobs.
+jddNodeProperties :: Lens' JobDefinition (Maybe NodeProperties)
+jddNodeProperties = lens _jddNodeProperties (\ s a -> s{_jddNodeProperties = a})
 
 -- | The name of the job definition.
 jddJobDefinitionName :: Lens' JobDefinition Text
@@ -1257,6 +1484,7 @@ instance FromJSON JobDefinition where
                      (x .:? "parameters" .!= mempty)
                      <*> (x .:? "timeout")
                      <*> (x .:? "containerProperties")
+                     <*> (x .:? "nodeProperties")
                      <*> (x .: "jobDefinitionName")
                      <*> (x .: "jobDefinitionArn")
                      <*> (x .: "revision")
@@ -1271,10 +1499,12 @@ instance NFData JobDefinition where
 --
 --
 -- /See:/ 'jobDependency' smart constructor.
-data JobDependency = JobDependency'
-  { _jJobId :: !(Maybe Text)
-  , _jType  :: !(Maybe ArrayJobDependency)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data JobDependency =
+  JobDependency'
+    { _jJobId :: !(Maybe Text)
+    , _jType  :: !(Maybe ArrayJobDependency)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'JobDependency' with the minimum fields required to make a request.
@@ -1319,41 +1549,49 @@ instance ToJSON JobDependency where
 --
 --
 -- /See:/ 'jobDetail' smart constructor.
-data JobDetail = JobDetail'
-  { _jdStoppedAt       :: !(Maybe Integer)
-  , _jdCreatedAt       :: !(Maybe Integer)
-  , _jdRetryStrategy   :: !(Maybe RetryStrategy)
-  , _jdAttempts        :: !(Maybe [AttemptDetail])
-  , _jdDependsOn       :: !(Maybe [JobDependency])
-  , _jdContainer       :: !(Maybe ContainerDetail)
-  , _jdParameters      :: !(Maybe (Map Text Text))
-  , _jdStatusReason    :: !(Maybe Text)
-  , _jdArrayProperties :: !(Maybe ArrayPropertiesDetail)
-  , _jdTimeout         :: !(Maybe JobTimeout)
-  , _jdJobName         :: !Text
-  , _jdJobId           :: !Text
-  , _jdJobQueue        :: !Text
-  , _jdStatus          :: !JobStatus
-  , _jdStartedAt       :: !Integer
-  , _jdJobDefinition   :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data JobDetail =
+  JobDetail'
+    { _jdStoppedAt       :: !(Maybe Integer)
+    , _jdCreatedAt       :: !(Maybe Integer)
+    , _jdRetryStrategy   :: !(Maybe RetryStrategy)
+    , _jdAttempts        :: !(Maybe [AttemptDetail])
+    , _jdStartedAt       :: !(Maybe Integer)
+    , _jdDependsOn       :: !(Maybe [JobDependency])
+    , _jdContainer       :: !(Maybe ContainerDetail)
+    , _jdNodeDetails     :: !(Maybe NodeDetails)
+    , _jdParameters      :: !(Maybe (Map Text Text))
+    , _jdStatusReason    :: !(Maybe Text)
+    , _jdArrayProperties :: !(Maybe ArrayPropertiesDetail)
+    , _jdTimeout         :: !(Maybe JobTimeout)
+    , _jdNodeProperties  :: !(Maybe NodeProperties)
+    , _jdJobName         :: !Text
+    , _jdJobId           :: !Text
+    , _jdJobQueue        :: !Text
+    , _jdStatus          :: !JobStatus
+    , _jdJobDefinition   :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'JobDetail' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'jdStoppedAt' - The Unix time stamp (in seconds and milliseconds) for when the job was stopped (when the job transitioned from the @RUNNING@ state to a terminal state, such as @SUCCEEDED@ or @FAILED@ ).
+-- * 'jdStoppedAt' - The Unix timestamp (in seconds and milliseconds) for when the job was stopped (when the job transitioned from the @RUNNING@ state to a terminal state, such as @SUCCEEDED@ or @FAILED@ ).
 --
--- * 'jdCreatedAt' - The Unix time stamp (in seconds and milliseconds) for when the job was created. For non-array jobs and parent array jobs, this is when the job entered the @SUBMITTED@ state (at the time 'SubmitJob' was called). For array child jobs, this is when the child job was spawned by its parent and entered the @PENDING@ state.
+-- * 'jdCreatedAt' - The Unix timestamp (in seconds and milliseconds) for when the job was created. For non-array jobs and parent array jobs, this is when the job entered the @SUBMITTED@ state (at the time 'SubmitJob' was called). For array child jobs, this is when the child job was spawned by its parent and entered the @PENDING@ state.
 --
 -- * 'jdRetryStrategy' - The retry strategy to use for this job if an attempt fails.
 --
 -- * 'jdAttempts' - A list of job attempts associated with this job.
 --
--- * 'jdDependsOn' - A list of job names or IDs on which this job depends.
+-- * 'jdStartedAt' - The Unix timestamp (in seconds and milliseconds) for when the job was started (when the job transitioned from the @STARTING@ state to the @RUNNING@ state).
+--
+-- * 'jdDependsOn' - A list of job IDs on which this job depends.
 --
 -- * 'jdContainer' - An object representing the details of the container that is associated with the job.
+--
+-- * 'jdNodeDetails' - An object representing the details of a node that is associated with a multi-node parallel job.
 --
 -- * 'jdParameters' - Additional parameters passed to the job that replace parameter substitution placeholders or override any corresponding parameter defaults from the job definition.
 --
@@ -1363,6 +1601,8 @@ data JobDetail = JobDetail'
 --
 -- * 'jdTimeout' - The timeout configuration for the job.
 --
+-- * 'jdNodeProperties' - An object representing the node properties of a multi-node parallel job.
+--
 -- * 'jdJobName' - The name of the job.
 --
 -- * 'jdJobId' - The ID for the job.
@@ -1371,43 +1611,42 @@ data JobDetail = JobDetail'
 --
 -- * 'jdStatus' - The current status for the job.
 --
--- * 'jdStartedAt' - The Unix time stamp (in seconds and milliseconds) for when the job was started (when the job transitioned from the @STARTING@ state to the @RUNNING@ state).
---
 -- * 'jdJobDefinition' - The job definition that is used by this job.
 jobDetail
     :: Text -- ^ 'jdJobName'
     -> Text -- ^ 'jdJobId'
     -> Text -- ^ 'jdJobQueue'
     -> JobStatus -- ^ 'jdStatus'
-    -> Integer -- ^ 'jdStartedAt'
     -> Text -- ^ 'jdJobDefinition'
     -> JobDetail
-jobDetail pJobName_ pJobId_ pJobQueue_ pStatus_ pStartedAt_ pJobDefinition_ =
+jobDetail pJobName_ pJobId_ pJobQueue_ pStatus_ pJobDefinition_ =
   JobDetail'
     { _jdStoppedAt = Nothing
     , _jdCreatedAt = Nothing
     , _jdRetryStrategy = Nothing
     , _jdAttempts = Nothing
+    , _jdStartedAt = Nothing
     , _jdDependsOn = Nothing
     , _jdContainer = Nothing
+    , _jdNodeDetails = Nothing
     , _jdParameters = Nothing
     , _jdStatusReason = Nothing
     , _jdArrayProperties = Nothing
     , _jdTimeout = Nothing
+    , _jdNodeProperties = Nothing
     , _jdJobName = pJobName_
     , _jdJobId = pJobId_
     , _jdJobQueue = pJobQueue_
     , _jdStatus = pStatus_
-    , _jdStartedAt = pStartedAt_
     , _jdJobDefinition = pJobDefinition_
     }
 
 
--- | The Unix time stamp (in seconds and milliseconds) for when the job was stopped (when the job transitioned from the @RUNNING@ state to a terminal state, such as @SUCCEEDED@ or @FAILED@ ).
+-- | The Unix timestamp (in seconds and milliseconds) for when the job was stopped (when the job transitioned from the @RUNNING@ state to a terminal state, such as @SUCCEEDED@ or @FAILED@ ).
 jdStoppedAt :: Lens' JobDetail (Maybe Integer)
 jdStoppedAt = lens _jdStoppedAt (\ s a -> s{_jdStoppedAt = a})
 
--- | The Unix time stamp (in seconds and milliseconds) for when the job was created. For non-array jobs and parent array jobs, this is when the job entered the @SUBMITTED@ state (at the time 'SubmitJob' was called). For array child jobs, this is when the child job was spawned by its parent and entered the @PENDING@ state.
+-- | The Unix timestamp (in seconds and milliseconds) for when the job was created. For non-array jobs and parent array jobs, this is when the job entered the @SUBMITTED@ state (at the time 'SubmitJob' was called). For array child jobs, this is when the child job was spawned by its parent and entered the @PENDING@ state.
 jdCreatedAt :: Lens' JobDetail (Maybe Integer)
 jdCreatedAt = lens _jdCreatedAt (\ s a -> s{_jdCreatedAt = a})
 
@@ -1419,13 +1658,21 @@ jdRetryStrategy = lens _jdRetryStrategy (\ s a -> s{_jdRetryStrategy = a})
 jdAttempts :: Lens' JobDetail [AttemptDetail]
 jdAttempts = lens _jdAttempts (\ s a -> s{_jdAttempts = a}) . _Default . _Coerce
 
--- | A list of job names or IDs on which this job depends.
+-- | The Unix timestamp (in seconds and milliseconds) for when the job was started (when the job transitioned from the @STARTING@ state to the @RUNNING@ state).
+jdStartedAt :: Lens' JobDetail (Maybe Integer)
+jdStartedAt = lens _jdStartedAt (\ s a -> s{_jdStartedAt = a})
+
+-- | A list of job IDs on which this job depends.
 jdDependsOn :: Lens' JobDetail [JobDependency]
 jdDependsOn = lens _jdDependsOn (\ s a -> s{_jdDependsOn = a}) . _Default . _Coerce
 
 -- | An object representing the details of the container that is associated with the job.
 jdContainer :: Lens' JobDetail (Maybe ContainerDetail)
 jdContainer = lens _jdContainer (\ s a -> s{_jdContainer = a})
+
+-- | An object representing the details of a node that is associated with a multi-node parallel job.
+jdNodeDetails :: Lens' JobDetail (Maybe NodeDetails)
+jdNodeDetails = lens _jdNodeDetails (\ s a -> s{_jdNodeDetails = a})
 
 -- | Additional parameters passed to the job that replace parameter substitution placeholders or override any corresponding parameter defaults from the job definition.
 jdParameters :: Lens' JobDetail (HashMap Text Text)
@@ -1443,6 +1690,10 @@ jdArrayProperties = lens _jdArrayProperties (\ s a -> s{_jdArrayProperties = a})
 jdTimeout :: Lens' JobDetail (Maybe JobTimeout)
 jdTimeout = lens _jdTimeout (\ s a -> s{_jdTimeout = a})
 
+-- | An object representing the node properties of a multi-node parallel job.
+jdNodeProperties :: Lens' JobDetail (Maybe NodeProperties)
+jdNodeProperties = lens _jdNodeProperties (\ s a -> s{_jdNodeProperties = a})
+
 -- | The name of the job.
 jdJobName :: Lens' JobDetail Text
 jdJobName = lens _jdJobName (\ s a -> s{_jdJobName = a})
@@ -1459,10 +1710,6 @@ jdJobQueue = lens _jdJobQueue (\ s a -> s{_jdJobQueue = a})
 jdStatus :: Lens' JobDetail JobStatus
 jdStatus = lens _jdStatus (\ s a -> s{_jdStatus = a})
 
--- | The Unix time stamp (in seconds and milliseconds) for when the job was started (when the job transitioned from the @STARTING@ state to the @RUNNING@ state).
-jdStartedAt :: Lens' JobDetail Integer
-jdStartedAt = lens _jdStartedAt (\ s a -> s{_jdStartedAt = a})
-
 -- | The job definition that is used by this job.
 jdJobDefinition :: Lens' JobDetail Text
 jdJobDefinition = lens _jdJobDefinition (\ s a -> s{_jdJobDefinition = a})
@@ -1475,17 +1722,19 @@ instance FromJSON JobDetail where
                    (x .:? "stoppedAt") <*> (x .:? "createdAt") <*>
                      (x .:? "retryStrategy")
                      <*> (x .:? "attempts" .!= mempty)
+                     <*> (x .:? "startedAt")
                      <*> (x .:? "dependsOn" .!= mempty)
                      <*> (x .:? "container")
+                     <*> (x .:? "nodeDetails")
                      <*> (x .:? "parameters" .!= mempty)
                      <*> (x .:? "statusReason")
                      <*> (x .:? "arrayProperties")
                      <*> (x .:? "timeout")
+                     <*> (x .:? "nodeProperties")
                      <*> (x .: "jobName")
                      <*> (x .: "jobId")
                      <*> (x .: "jobQueue")
                      <*> (x .: "status")
-                     <*> (x .: "startedAt")
                      <*> (x .: "jobDefinition"))
 
 instance Hashable JobDetail where
@@ -1497,15 +1746,17 @@ instance NFData JobDetail where
 --
 --
 -- /See:/ 'jobQueueDetail' smart constructor.
-data JobQueueDetail = JobQueueDetail'
-  { _jqdStatus                  :: !(Maybe JQStatus)
-  , _jqdStatusReason            :: !(Maybe Text)
-  , _jqdJobQueueName            :: !Text
-  , _jqdJobQueueARN             :: !Text
-  , _jqdState                   :: !JQState
-  , _jqdPriority                :: !Int
-  , _jqdComputeEnvironmentOrder :: ![ComputeEnvironmentOrder]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data JobQueueDetail =
+  JobQueueDetail'
+    { _jqdStatus                  :: !(Maybe JQStatus)
+    , _jqdStatusReason            :: !(Maybe Text)
+    , _jqdJobQueueName            :: !Text
+    , _jqdJobQueueARN             :: !Text
+    , _jqdState                   :: !JQState
+    , _jqdPriority                :: !Int
+    , _jqdComputeEnvironmentOrder :: ![ComputeEnvironmentOrder]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'JobQueueDetail' with the minimum fields required to make a request.
@@ -1592,36 +1843,41 @@ instance NFData JobQueueDetail where
 --
 --
 -- /See:/ 'jobSummary' smart constructor.
-data JobSummary = JobSummary'
-  { _jsStoppedAt       :: !(Maybe Integer)
-  , _jsStatus          :: !(Maybe JobStatus)
-  , _jsCreatedAt       :: !(Maybe Integer)
-  , _jsStartedAt       :: !(Maybe Integer)
-  , _jsContainer       :: !(Maybe ContainerSummary)
-  , _jsStatusReason    :: !(Maybe Text)
-  , _jsArrayProperties :: !(Maybe ArrayPropertiesSummary)
-  , _jsJobId           :: !Text
-  , _jsJobName         :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data JobSummary =
+  JobSummary'
+    { _jsStoppedAt       :: !(Maybe Integer)
+    , _jsStatus          :: !(Maybe JobStatus)
+    , _jsCreatedAt       :: !(Maybe Integer)
+    , _jsStartedAt       :: !(Maybe Integer)
+    , _jsContainer       :: !(Maybe ContainerSummary)
+    , _jsStatusReason    :: !(Maybe Text)
+    , _jsArrayProperties :: !(Maybe ArrayPropertiesSummary)
+    , _jsNodeProperties  :: !(Maybe NodePropertiesSummary)
+    , _jsJobId           :: !Text
+    , _jsJobName         :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'JobSummary' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'jsStoppedAt' - The Unix time stamp for when the job was stopped (when the job transitioned from the @RUNNING@ state to a terminal state, such as @SUCCEEDED@ or @FAILED@ ).
+-- * 'jsStoppedAt' - The Unix timestamp for when the job was stopped (when the job transitioned from the @RUNNING@ state to a terminal state, such as @SUCCEEDED@ or @FAILED@ ).
 --
 -- * 'jsStatus' - The current status for the job.
 --
--- * 'jsCreatedAt' - The Unix time stamp for when the job was created. For non-array jobs and parent array jobs, this is when the job entered the @SUBMITTED@ state (at the time 'SubmitJob' was called). For array child jobs, this is when the child job was spawned by its parent and entered the @PENDING@ state.
+-- * 'jsCreatedAt' - The Unix timestamp for when the job was created. For non-array jobs and parent array jobs, this is when the job entered the @SUBMITTED@ state (at the time 'SubmitJob' was called). For array child jobs, this is when the child job was spawned by its parent and entered the @PENDING@ state.
 --
--- * 'jsStartedAt' - The Unix time stamp for when the job was started (when the job transitioned from the @STARTING@ state to the @RUNNING@ state).
+-- * 'jsStartedAt' - The Unix timestamp for when the job was started (when the job transitioned from the @STARTING@ state to the @RUNNING@ state).
 --
 -- * 'jsContainer' - An object representing the details of the container that is associated with the job.
 --
 -- * 'jsStatusReason' - A short, human-readable string to provide additional details about the current status of the job.
 --
 -- * 'jsArrayProperties' - The array properties of the job, if it is an array job.
+--
+-- * 'jsNodeProperties' - The node properties for a single node in a job summary list.
 --
 -- * 'jsJobId' - The ID of the job.
 --
@@ -1639,12 +1895,13 @@ jobSummary pJobId_ pJobName_ =
     , _jsContainer = Nothing
     , _jsStatusReason = Nothing
     , _jsArrayProperties = Nothing
+    , _jsNodeProperties = Nothing
     , _jsJobId = pJobId_
     , _jsJobName = pJobName_
     }
 
 
--- | The Unix time stamp for when the job was stopped (when the job transitioned from the @RUNNING@ state to a terminal state, such as @SUCCEEDED@ or @FAILED@ ).
+-- | The Unix timestamp for when the job was stopped (when the job transitioned from the @RUNNING@ state to a terminal state, such as @SUCCEEDED@ or @FAILED@ ).
 jsStoppedAt :: Lens' JobSummary (Maybe Integer)
 jsStoppedAt = lens _jsStoppedAt (\ s a -> s{_jsStoppedAt = a})
 
@@ -1652,11 +1909,11 @@ jsStoppedAt = lens _jsStoppedAt (\ s a -> s{_jsStoppedAt = a})
 jsStatus :: Lens' JobSummary (Maybe JobStatus)
 jsStatus = lens _jsStatus (\ s a -> s{_jsStatus = a})
 
--- | The Unix time stamp for when the job was created. For non-array jobs and parent array jobs, this is when the job entered the @SUBMITTED@ state (at the time 'SubmitJob' was called). For array child jobs, this is when the child job was spawned by its parent and entered the @PENDING@ state.
+-- | The Unix timestamp for when the job was created. For non-array jobs and parent array jobs, this is when the job entered the @SUBMITTED@ state (at the time 'SubmitJob' was called). For array child jobs, this is when the child job was spawned by its parent and entered the @PENDING@ state.
 jsCreatedAt :: Lens' JobSummary (Maybe Integer)
 jsCreatedAt = lens _jsCreatedAt (\ s a -> s{_jsCreatedAt = a})
 
--- | The Unix time stamp for when the job was started (when the job transitioned from the @STARTING@ state to the @RUNNING@ state).
+-- | The Unix timestamp for when the job was started (when the job transitioned from the @STARTING@ state to the @RUNNING@ state).
 jsStartedAt :: Lens' JobSummary (Maybe Integer)
 jsStartedAt = lens _jsStartedAt (\ s a -> s{_jsStartedAt = a})
 
@@ -1671,6 +1928,10 @@ jsStatusReason = lens _jsStatusReason (\ s a -> s{_jsStatusReason = a})
 -- | The array properties of the job, if it is an array job.
 jsArrayProperties :: Lens' JobSummary (Maybe ArrayPropertiesSummary)
 jsArrayProperties = lens _jsArrayProperties (\ s a -> s{_jsArrayProperties = a})
+
+-- | The node properties for a single node in a job summary list.
+jsNodeProperties :: Lens' JobSummary (Maybe NodePropertiesSummary)
+jsNodeProperties = lens _jsNodeProperties (\ s a -> s{_jsNodeProperties = a})
 
 -- | The ID of the job.
 jsJobId :: Lens' JobSummary Text
@@ -1691,6 +1952,7 @@ instance FromJSON JobSummary where
                      <*> (x .:? "container")
                      <*> (x .:? "statusReason")
                      <*> (x .:? "arrayProperties")
+                     <*> (x .:? "nodeProperties")
                      <*> (x .: "jobId")
                      <*> (x .: "jobName"))
 
@@ -1703,9 +1965,11 @@ instance NFData JobSummary where
 --
 --
 -- /See:/ 'jobTimeout' smart constructor.
-newtype JobTimeout = JobTimeout'
-  { _jtAttemptDurationSeconds :: Maybe Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype JobTimeout =
+  JobTimeout'
+    { _jtAttemptDurationSeconds :: Maybe Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'JobTimeout' with the minimum fields required to make a request.
@@ -1744,10 +2008,12 @@ instance ToJSON JobTimeout where
 --
 --
 -- /See:/ 'keyValuePair' smart constructor.
-data KeyValuePair = KeyValuePair'
-  { _kvpValue :: !(Maybe Text)
-  , _kvpName  :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data KeyValuePair =
+  KeyValuePair'
+    { _kvpValue :: !(Maybe Text)
+    , _kvpName  :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'KeyValuePair' with the minimum fields required to make a request.
@@ -1787,16 +2053,125 @@ instance ToJSON KeyValuePair where
                  [("value" .=) <$> _kvpValue,
                   ("name" .=) <$> _kvpName])
 
--- | Details on a Docker volume mount point that is used in a job's container properties.
+-- | An object representing a launch template associated with a compute resource. You must specify either the launch template ID or launch template name in the request, but not both.
+--
+--
+--
+-- /See:/ 'launchTemplateSpecification' smart constructor.
+data LaunchTemplateSpecification =
+  LaunchTemplateSpecification'
+    { _ltsLaunchTemplateName :: !(Maybe Text)
+    , _ltsLaunchTemplateId   :: !(Maybe Text)
+    , _ltsVersion            :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'LaunchTemplateSpecification' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'ltsLaunchTemplateName' - The name of the launch template.
+--
+-- * 'ltsLaunchTemplateId' - The ID of the launch template.
+--
+-- * 'ltsVersion' - The version number of the launch template. Default: The default version of the launch template.
+launchTemplateSpecification
+    :: LaunchTemplateSpecification
+launchTemplateSpecification =
+  LaunchTemplateSpecification'
+    { _ltsLaunchTemplateName = Nothing
+    , _ltsLaunchTemplateId = Nothing
+    , _ltsVersion = Nothing
+    }
+
+
+-- | The name of the launch template.
+ltsLaunchTemplateName :: Lens' LaunchTemplateSpecification (Maybe Text)
+ltsLaunchTemplateName = lens _ltsLaunchTemplateName (\ s a -> s{_ltsLaunchTemplateName = a})
+
+-- | The ID of the launch template.
+ltsLaunchTemplateId :: Lens' LaunchTemplateSpecification (Maybe Text)
+ltsLaunchTemplateId = lens _ltsLaunchTemplateId (\ s a -> s{_ltsLaunchTemplateId = a})
+
+-- | The version number of the launch template. Default: The default version of the launch template.
+ltsVersion :: Lens' LaunchTemplateSpecification (Maybe Text)
+ltsVersion = lens _ltsVersion (\ s a -> s{_ltsVersion = a})
+
+instance FromJSON LaunchTemplateSpecification where
+        parseJSON
+          = withObject "LaunchTemplateSpecification"
+              (\ x ->
+                 LaunchTemplateSpecification' <$>
+                   (x .:? "launchTemplateName") <*>
+                     (x .:? "launchTemplateId")
+                     <*> (x .:? "version"))
+
+instance Hashable LaunchTemplateSpecification where
+
+instance NFData LaunchTemplateSpecification where
+
+instance ToJSON LaunchTemplateSpecification where
+        toJSON LaunchTemplateSpecification'{..}
+          = object
+              (catMaybes
+                 [("launchTemplateName" .=) <$>
+                    _ltsLaunchTemplateName,
+                  ("launchTemplateId" .=) <$> _ltsLaunchTemplateId,
+                  ("version" .=) <$> _ltsVersion])
+
+-- | Linux-specific modifications that are applied to the container, such as details for device mappings.
+--
+--
+--
+-- /See:/ 'linuxParameters' smart constructor.
+newtype LinuxParameters =
+  LinuxParameters'
+    { _lpDevices :: Maybe [Device]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'LinuxParameters' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'lpDevices' - Any host devices to expose to the container. This parameter maps to @Devices@ in the <https://docs.docker.com/engine/api/v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/api/v1.23/ Docker Remote API> and the @--device@ option to <https://docs.docker.com/engine/reference/run/ docker run> .
+linuxParameters
+    :: LinuxParameters
+linuxParameters = LinuxParameters' {_lpDevices = Nothing}
+
+
+-- | Any host devices to expose to the container. This parameter maps to @Devices@ in the <https://docs.docker.com/engine/api/v1.23/#create-a-container Create a container> section of the <https://docs.docker.com/engine/api/v1.23/ Docker Remote API> and the @--device@ option to <https://docs.docker.com/engine/reference/run/ docker run> .
+lpDevices :: Lens' LinuxParameters [Device]
+lpDevices = lens _lpDevices (\ s a -> s{_lpDevices = a}) . _Default . _Coerce
+
+instance FromJSON LinuxParameters where
+        parseJSON
+          = withObject "LinuxParameters"
+              (\ x ->
+                 LinuxParameters' <$> (x .:? "devices" .!= mempty))
+
+instance Hashable LinuxParameters where
+
+instance NFData LinuxParameters where
+
+instance ToJSON LinuxParameters where
+        toJSON LinuxParameters'{..}
+          = object (catMaybes [("devices" .=) <$> _lpDevices])
+
+-- | Details on a Docker volume mount point that is used in a job's container properties. This parameter maps to @Volumes@ in the <https://docs.docker.com/engine/reference/api/docker_remote_api_v1.19/#create-a-container Create a container> section of the Docker Remote API and the @--volume@ option to docker run.
 --
 --
 --
 -- /See:/ 'mountPoint' smart constructor.
-data MountPoint = MountPoint'
-  { _mpContainerPath :: !(Maybe Text)
-  , _mpSourceVolume  :: !(Maybe Text)
-  , _mpReadOnly      :: !(Maybe Bool)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data MountPoint =
+  MountPoint'
+    { _mpContainerPath :: !(Maybe Text)
+    , _mpSourceVolume  :: !(Maybe Text)
+    , _mpReadOnly      :: !(Maybe Bool)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'MountPoint' with the minimum fields required to make a request.
@@ -1850,27 +2225,454 @@ instance ToJSON MountPoint where
                   ("sourceVolume" .=) <$> _mpSourceVolume,
                   ("readOnly" .=) <$> _mpReadOnly])
 
+-- | An object representing the elastic network interface for a multi-node parallel job node.
+--
+--
+--
+-- /See:/ 'networkInterface' smart constructor.
+data NetworkInterface =
+  NetworkInterface'
+    { _niIpv6Address        :: !(Maybe Text)
+    , _niPrivateIPv4Address :: !(Maybe Text)
+    , _niAttachmentId       :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'NetworkInterface' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'niIpv6Address' - The private IPv6 address for the network interface.
+--
+-- * 'niPrivateIPv4Address' - The private IPv4 address for the network interface.
+--
+-- * 'niAttachmentId' - The attachment ID for the network interface.
+networkInterface
+    :: NetworkInterface
+networkInterface =
+  NetworkInterface'
+    { _niIpv6Address = Nothing
+    , _niPrivateIPv4Address = Nothing
+    , _niAttachmentId = Nothing
+    }
+
+
+-- | The private IPv6 address for the network interface.
+niIpv6Address :: Lens' NetworkInterface (Maybe Text)
+niIpv6Address = lens _niIpv6Address (\ s a -> s{_niIpv6Address = a})
+
+-- | The private IPv4 address for the network interface.
+niPrivateIPv4Address :: Lens' NetworkInterface (Maybe Text)
+niPrivateIPv4Address = lens _niPrivateIPv4Address (\ s a -> s{_niPrivateIPv4Address = a})
+
+-- | The attachment ID for the network interface.
+niAttachmentId :: Lens' NetworkInterface (Maybe Text)
+niAttachmentId = lens _niAttachmentId (\ s a -> s{_niAttachmentId = a})
+
+instance FromJSON NetworkInterface where
+        parseJSON
+          = withObject "NetworkInterface"
+              (\ x ->
+                 NetworkInterface' <$>
+                   (x .:? "ipv6Address") <*>
+                     (x .:? "privateIpv4Address")
+                     <*> (x .:? "attachmentId"))
+
+instance Hashable NetworkInterface where
+
+instance NFData NetworkInterface where
+
+-- | An object representing the details of a multi-node parallel job node.
+--
+--
+--
+-- /See:/ 'nodeDetails' smart constructor.
+data NodeDetails =
+  NodeDetails'
+    { _ndNodeIndex  :: !(Maybe Int)
+    , _ndIsMainNode :: !(Maybe Bool)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'NodeDetails' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'ndNodeIndex' - The node index for the node. Node index numbering begins at zero. This index is also available on the node with the @AWS_BATCH_JOB_NODE_INDEX@ environment variable.
+--
+-- * 'ndIsMainNode' - Specifies whether the current node is the main node for a multi-node parallel job.
+nodeDetails
+    :: NodeDetails
+nodeDetails = NodeDetails' {_ndNodeIndex = Nothing, _ndIsMainNode = Nothing}
+
+
+-- | The node index for the node. Node index numbering begins at zero. This index is also available on the node with the @AWS_BATCH_JOB_NODE_INDEX@ environment variable.
+ndNodeIndex :: Lens' NodeDetails (Maybe Int)
+ndNodeIndex = lens _ndNodeIndex (\ s a -> s{_ndNodeIndex = a})
+
+-- | Specifies whether the current node is the main node for a multi-node parallel job.
+ndIsMainNode :: Lens' NodeDetails (Maybe Bool)
+ndIsMainNode = lens _ndIsMainNode (\ s a -> s{_ndIsMainNode = a})
+
+instance FromJSON NodeDetails where
+        parseJSON
+          = withObject "NodeDetails"
+              (\ x ->
+                 NodeDetails' <$>
+                   (x .:? "nodeIndex") <*> (x .:? "isMainNode"))
+
+instance Hashable NodeDetails where
+
+instance NFData NodeDetails where
+
+-- | Object representing any node overrides to a job definition that is used in a 'SubmitJob' API operation.
+--
+--
+--
+-- /See:/ 'nodeOverrides' smart constructor.
+data NodeOverrides =
+  NodeOverrides'
+    { _noNumNodes              :: !(Maybe Int)
+    , _noNodePropertyOverrides :: !(Maybe [NodePropertyOverride])
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'NodeOverrides' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'noNumNodes' - The number of nodes to use with a multi-node parallel job. This value overrides the number of nodes that are specified in the job definition. To use this override:     * There must be at least one node range in your job definition that has an open upper boundary (such as @:@ or @n:@ ).     * The lower boundary of the node range specified in the job definition must be fewer than the number of nodes specified in the override.     * The main node index specified in the job definition must be fewer than the number of nodes specified in the override.
+--
+-- * 'noNodePropertyOverrides' - The node property overrides for the job.
+nodeOverrides
+    :: NodeOverrides
+nodeOverrides =
+  NodeOverrides' {_noNumNodes = Nothing, _noNodePropertyOverrides = Nothing}
+
+
+-- | The number of nodes to use with a multi-node parallel job. This value overrides the number of nodes that are specified in the job definition. To use this override:     * There must be at least one node range in your job definition that has an open upper boundary (such as @:@ or @n:@ ).     * The lower boundary of the node range specified in the job definition must be fewer than the number of nodes specified in the override.     * The main node index specified in the job definition must be fewer than the number of nodes specified in the override.
+noNumNodes :: Lens' NodeOverrides (Maybe Int)
+noNumNodes = lens _noNumNodes (\ s a -> s{_noNumNodes = a})
+
+-- | The node property overrides for the job.
+noNodePropertyOverrides :: Lens' NodeOverrides [NodePropertyOverride]
+noNodePropertyOverrides = lens _noNodePropertyOverrides (\ s a -> s{_noNodePropertyOverrides = a}) . _Default . _Coerce
+
+instance Hashable NodeOverrides where
+
+instance NFData NodeOverrides where
+
+instance ToJSON NodeOverrides where
+        toJSON NodeOverrides'{..}
+          = object
+              (catMaybes
+                 [("numNodes" .=) <$> _noNumNodes,
+                  ("nodePropertyOverrides" .=) <$>
+                    _noNodePropertyOverrides])
+
+-- | An object representing the node properties of a multi-node parallel job.
+--
+--
+--
+-- /See:/ 'nodeProperties' smart constructor.
+data NodeProperties =
+  NodeProperties'
+    { _npNumNodes            :: !Int
+    , _npMainNode            :: !Int
+    , _npNodeRangeProperties :: ![NodeRangeProperty]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'NodeProperties' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'npNumNodes' - The number of nodes associated with a multi-node parallel job.
+--
+-- * 'npMainNode' - Specifies the node index for the main node of a multi-node parallel job. This node index value must be fewer than the number of nodes.
+--
+-- * 'npNodeRangeProperties' - A list of node ranges and their properties associated with a multi-node parallel job.
+nodeProperties
+    :: Int -- ^ 'npNumNodes'
+    -> Int -- ^ 'npMainNode'
+    -> NodeProperties
+nodeProperties pNumNodes_ pMainNode_ =
+  NodeProperties'
+    { _npNumNodes = pNumNodes_
+    , _npMainNode = pMainNode_
+    , _npNodeRangeProperties = mempty
+    }
+
+
+-- | The number of nodes associated with a multi-node parallel job.
+npNumNodes :: Lens' NodeProperties Int
+npNumNodes = lens _npNumNodes (\ s a -> s{_npNumNodes = a})
+
+-- | Specifies the node index for the main node of a multi-node parallel job. This node index value must be fewer than the number of nodes.
+npMainNode :: Lens' NodeProperties Int
+npMainNode = lens _npMainNode (\ s a -> s{_npMainNode = a})
+
+-- | A list of node ranges and their properties associated with a multi-node parallel job.
+npNodeRangeProperties :: Lens' NodeProperties [NodeRangeProperty]
+npNodeRangeProperties = lens _npNodeRangeProperties (\ s a -> s{_npNodeRangeProperties = a}) . _Coerce
+
+instance FromJSON NodeProperties where
+        parseJSON
+          = withObject "NodeProperties"
+              (\ x ->
+                 NodeProperties' <$>
+                   (x .: "numNodes") <*> (x .: "mainNode") <*>
+                     (x .:? "nodeRangeProperties" .!= mempty))
+
+instance Hashable NodeProperties where
+
+instance NFData NodeProperties where
+
+instance ToJSON NodeProperties where
+        toJSON NodeProperties'{..}
+          = object
+              (catMaybes
+                 [Just ("numNodes" .= _npNumNodes),
+                  Just ("mainNode" .= _npMainNode),
+                  Just
+                    ("nodeRangeProperties" .= _npNodeRangeProperties)])
+
+-- | An object representing the properties of a node that is associated with a multi-node parallel job.
+--
+--
+--
+-- /See:/ 'nodePropertiesSummary' smart constructor.
+data NodePropertiesSummary =
+  NodePropertiesSummary'
+    { _npsNumNodes   :: !(Maybe Int)
+    , _npsNodeIndex  :: !(Maybe Int)
+    , _npsIsMainNode :: !(Maybe Bool)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'NodePropertiesSummary' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'npsNumNodes' - The number of nodes associated with a multi-node parallel job.
+--
+-- * 'npsNodeIndex' - The node index for the node. Node index numbering begins at zero. This index is also available on the node with the @AWS_BATCH_JOB_NODE_INDEX@ environment variable.
+--
+-- * 'npsIsMainNode' - Specifies whether the current node is the main node for a multi-node parallel job.
+nodePropertiesSummary
+    :: NodePropertiesSummary
+nodePropertiesSummary =
+  NodePropertiesSummary'
+    {_npsNumNodes = Nothing, _npsNodeIndex = Nothing, _npsIsMainNode = Nothing}
+
+
+-- | The number of nodes associated with a multi-node parallel job.
+npsNumNodes :: Lens' NodePropertiesSummary (Maybe Int)
+npsNumNodes = lens _npsNumNodes (\ s a -> s{_npsNumNodes = a})
+
+-- | The node index for the node. Node index numbering begins at zero. This index is also available on the node with the @AWS_BATCH_JOB_NODE_INDEX@ environment variable.
+npsNodeIndex :: Lens' NodePropertiesSummary (Maybe Int)
+npsNodeIndex = lens _npsNodeIndex (\ s a -> s{_npsNodeIndex = a})
+
+-- | Specifies whether the current node is the main node for a multi-node parallel job.
+npsIsMainNode :: Lens' NodePropertiesSummary (Maybe Bool)
+npsIsMainNode = lens _npsIsMainNode (\ s a -> s{_npsIsMainNode = a})
+
+instance FromJSON NodePropertiesSummary where
+        parseJSON
+          = withObject "NodePropertiesSummary"
+              (\ x ->
+                 NodePropertiesSummary' <$>
+                   (x .:? "numNodes") <*> (x .:? "nodeIndex") <*>
+                     (x .:? "isMainNode"))
+
+instance Hashable NodePropertiesSummary where
+
+instance NFData NodePropertiesSummary where
+
+-- | Object representing any node overrides to a job definition that is used in a 'SubmitJob' API operation.
+--
+--
+--
+-- /See:/ 'nodePropertyOverride' smart constructor.
+data NodePropertyOverride =
+  NodePropertyOverride'
+    { _npoContainerOverrides :: !(Maybe ContainerOverrides)
+    , _npoTargetNodes        :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'NodePropertyOverride' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'npoContainerOverrides' - The overrides that should be sent to a node range.
+--
+-- * 'npoTargetNodes' - The range of nodes, using node index values, with which to override. A range of @0:3@ indicates nodes with index values of @0@ through @3@ . If the starting range value is omitted (@:n@ ), then @0@ is used to start the range. If the ending range value is omitted (@n:@ ), then the highest possible node index is used to end the range.
+nodePropertyOverride
+    :: Text -- ^ 'npoTargetNodes'
+    -> NodePropertyOverride
+nodePropertyOverride pTargetNodes_ =
+  NodePropertyOverride'
+    {_npoContainerOverrides = Nothing, _npoTargetNodes = pTargetNodes_}
+
+
+-- | The overrides that should be sent to a node range.
+npoContainerOverrides :: Lens' NodePropertyOverride (Maybe ContainerOverrides)
+npoContainerOverrides = lens _npoContainerOverrides (\ s a -> s{_npoContainerOverrides = a})
+
+-- | The range of nodes, using node index values, with which to override. A range of @0:3@ indicates nodes with index values of @0@ through @3@ . If the starting range value is omitted (@:n@ ), then @0@ is used to start the range. If the ending range value is omitted (@n:@ ), then the highest possible node index is used to end the range.
+npoTargetNodes :: Lens' NodePropertyOverride Text
+npoTargetNodes = lens _npoTargetNodes (\ s a -> s{_npoTargetNodes = a})
+
+instance Hashable NodePropertyOverride where
+
+instance NFData NodePropertyOverride where
+
+instance ToJSON NodePropertyOverride where
+        toJSON NodePropertyOverride'{..}
+          = object
+              (catMaybes
+                 [("containerOverrides" .=) <$>
+                    _npoContainerOverrides,
+                  Just ("targetNodes" .= _npoTargetNodes)])
+
+-- | An object representing the properties of the node range for a multi-node parallel job.
+--
+--
+--
+-- /See:/ 'nodeRangeProperty' smart constructor.
+data NodeRangeProperty =
+  NodeRangeProperty'
+    { _nrpContainer   :: !(Maybe ContainerProperties)
+    , _nrpTargetNodes :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'NodeRangeProperty' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'nrpContainer' - The container details for the node range.
+--
+-- * 'nrpTargetNodes' - The range of nodes, using node index values. A range of @0:3@ indicates nodes with index values of @0@ through @3@ . If the starting range value is omitted (@:n@ ), then @0@ is used to start the range. If the ending range value is omitted (@n:@ ), then the highest possible node index is used to end the range. Your accumulative node ranges must account for all nodes (0:n). You may nest node ranges, for example 0:10 and 4:5, in which case the 4:5 range properties override the 0:10 properties.
+nodeRangeProperty
+    :: Text -- ^ 'nrpTargetNodes'
+    -> NodeRangeProperty
+nodeRangeProperty pTargetNodes_ =
+  NodeRangeProperty' {_nrpContainer = Nothing, _nrpTargetNodes = pTargetNodes_}
+
+
+-- | The container details for the node range.
+nrpContainer :: Lens' NodeRangeProperty (Maybe ContainerProperties)
+nrpContainer = lens _nrpContainer (\ s a -> s{_nrpContainer = a})
+
+-- | The range of nodes, using node index values. A range of @0:3@ indicates nodes with index values of @0@ through @3@ . If the starting range value is omitted (@:n@ ), then @0@ is used to start the range. If the ending range value is omitted (@n:@ ), then the highest possible node index is used to end the range. Your accumulative node ranges must account for all nodes (0:n). You may nest node ranges, for example 0:10 and 4:5, in which case the 4:5 range properties override the 0:10 properties.
+nrpTargetNodes :: Lens' NodeRangeProperty Text
+nrpTargetNodes = lens _nrpTargetNodes (\ s a -> s{_nrpTargetNodes = a})
+
+instance FromJSON NodeRangeProperty where
+        parseJSON
+          = withObject "NodeRangeProperty"
+              (\ x ->
+                 NodeRangeProperty' <$>
+                   (x .:? "container") <*> (x .: "targetNodes"))
+
+instance Hashable NodeRangeProperty where
+
+instance NFData NodeRangeProperty where
+
+instance ToJSON NodeRangeProperty where
+        toJSON NodeRangeProperty'{..}
+          = object
+              (catMaybes
+                 [("container" .=) <$> _nrpContainer,
+                  Just ("targetNodes" .= _nrpTargetNodes)])
+
+-- | The type and amount of a resource to assign to a container. Currently, the only supported resource type is @GPU@ .
+--
+--
+--
+-- /See:/ 'resourceRequirement' smart constructor.
+data ResourceRequirement =
+  ResourceRequirement'
+    { _rrValue :: !Text
+    , _rrType  :: !ResourceType
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'ResourceRequirement' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'rrValue' - The number of physical GPUs to reserve for the container. The number of GPUs reserved for all containers in a job should not exceed the number of available GPUs on the compute resource that the job is launched on.
+--
+-- * 'rrType' - The type of resource to assign to a container. Currently, the only supported resource type is @GPU@ .
+resourceRequirement
+    :: Text -- ^ 'rrValue'
+    -> ResourceType -- ^ 'rrType'
+    -> ResourceRequirement
+resourceRequirement pValue_ pType_ =
+  ResourceRequirement' {_rrValue = pValue_, _rrType = pType_}
+
+
+-- | The number of physical GPUs to reserve for the container. The number of GPUs reserved for all containers in a job should not exceed the number of available GPUs on the compute resource that the job is launched on.
+rrValue :: Lens' ResourceRequirement Text
+rrValue = lens _rrValue (\ s a -> s{_rrValue = a})
+
+-- | The type of resource to assign to a container. Currently, the only supported resource type is @GPU@ .
+rrType :: Lens' ResourceRequirement ResourceType
+rrType = lens _rrType (\ s a -> s{_rrType = a})
+
+instance FromJSON ResourceRequirement where
+        parseJSON
+          = withObject "ResourceRequirement"
+              (\ x ->
+                 ResourceRequirement' <$>
+                   (x .: "value") <*> (x .: "type"))
+
+instance Hashable ResourceRequirement where
+
+instance NFData ResourceRequirement where
+
+instance ToJSON ResourceRequirement where
+        toJSON ResourceRequirement'{..}
+          = object
+              (catMaybes
+                 [Just ("value" .= _rrValue),
+                  Just ("type" .= _rrType)])
+
 -- | The retry strategy associated with a job.
 --
 --
 --
 -- /See:/ 'retryStrategy' smart constructor.
-newtype RetryStrategy = RetryStrategy'
-  { _rsAttempts :: Maybe Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype RetryStrategy =
+  RetryStrategy'
+    { _rsAttempts :: Maybe Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'RetryStrategy' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rsAttempts' - The number of times to move a job to the @RUNNABLE@ status. You may specify between 1 and 10 attempts. If the value of @attempts@ is greater than one, the job is retried if it fails until it has moved to @RUNNABLE@ that many times.
+-- * 'rsAttempts' - The number of times to move a job to the @RUNNABLE@ status. You may specify between 1 and 10 attempts. If the value of @attempts@ is greater than one, the job is retried on failure the same number of attempts as the value.
 retryStrategy
     :: RetryStrategy
 retryStrategy = RetryStrategy' {_rsAttempts = Nothing}
 
 
--- | The number of times to move a job to the @RUNNABLE@ status. You may specify between 1 and 10 attempts. If the value of @attempts@ is greater than one, the job is retried if it fails until it has moved to @RUNNABLE@ that many times.
+-- | The number of times to move a job to the @RUNNABLE@ status. You may specify between 1 and 10 attempts. If the value of @attempts@ is greater than one, the job is retried on failure the same number of attempts as the value.
 rsAttempts :: Lens' RetryStrategy (Maybe Int)
 rsAttempts = lens _rsAttempts (\ s a -> s{_rsAttempts = a})
 
@@ -1893,11 +2695,13 @@ instance ToJSON RetryStrategy where
 --
 --
 -- /See:/ 'ulimit' smart constructor.
-data Ulimit = Ulimit'
-  { _uHardLimit :: !Int
-  , _uName      :: !Text
-  , _uSoftLimit :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Ulimit =
+  Ulimit'
+    { _uHardLimit :: !Int
+    , _uName      :: !Text
+    , _uSoftLimit :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Ulimit' with the minimum fields required to make a request.
@@ -1956,10 +2760,12 @@ instance ToJSON Ulimit where
 --
 --
 -- /See:/ 'volume' smart constructor.
-data Volume = Volume'
-  { _vName :: !(Maybe Text)
-  , _vHost :: !(Maybe Host)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Volume =
+  Volume'
+    { _vName :: !(Maybe Text)
+    , _vHost :: !(Maybe Host)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Volume' with the minimum fields required to make a request.

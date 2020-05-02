@@ -27,7 +27,7 @@
 --
 -- As a buyer, you specify the configuration of the Reserved Instance to purchase, and the Marketplace matches what you're searching for with what's available. The Marketplace first sells the lowest priced Reserved Instances to you, and continues to sell available Reserved Instance listings to you until your demand is met. You are charged based on the total price of all of the listings that you purchase.
 --
--- For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html Reserved Instance Marketplace> in the /Amazon Elastic Compute Cloud User Guide/ .
+-- For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html Reserved Instance Marketplace> in the /Amazon Elastic Compute Cloud User Guide/ .
 --
 module Network.AWS.EC2.DescribeReservedInstancesListings
     (
@@ -59,11 +59,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeReservedInstancesListings' smart constructor.
-data DescribeReservedInstancesListings = DescribeReservedInstancesListings'
-  { _drilFilters                    :: !(Maybe [Filter])
-  , _drilReservedInstancesId        :: !(Maybe Text)
-  , _drilReservedInstancesListingId :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeReservedInstancesListings =
+  DescribeReservedInstancesListings'
+    { _drilFilters                    :: !(Maybe [Filter])
+    , _drilReservedInstancesId        :: !(Maybe Text)
+    , _drilReservedInstancesListingId :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeReservedInstancesListings' with the minimum fields required to make a request.
@@ -141,10 +143,12 @@ instance ToQuery DescribeReservedInstancesListings
 --
 --
 -- /See:/ 'describeReservedInstancesListingsResponse' smart constructor.
-data DescribeReservedInstancesListingsResponse = DescribeReservedInstancesListingsResponse'
-  { _drilrsReservedInstancesListings :: !(Maybe [ReservedInstancesListing])
-  , _drilrsResponseStatus            :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeReservedInstancesListingsResponse =
+  DescribeReservedInstancesListingsResponse'
+    { _drilrsReservedInstancesListings :: !(Maybe [ReservedInstancesListing])
+    , _drilrsResponseStatus            :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeReservedInstancesListingsResponse' with the minimum fields required to make a request.

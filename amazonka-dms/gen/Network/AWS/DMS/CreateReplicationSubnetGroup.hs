@@ -52,25 +52,27 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createReplicationSubnetGroup' smart constructor.
-data CreateReplicationSubnetGroup = CreateReplicationSubnetGroup'
-  { _crsgTags                              :: !(Maybe [Tag])
-  , _crsgReplicationSubnetGroupIdentifier  :: !Text
-  , _crsgReplicationSubnetGroupDescription :: !Text
-  , _crsgSubnetIds                         :: ![Text]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreateReplicationSubnetGroup =
+  CreateReplicationSubnetGroup'
+    { _crsgTags                              :: !(Maybe [Tag])
+    , _crsgReplicationSubnetGroupIdentifier  :: !Text
+    , _crsgReplicationSubnetGroupDescription :: !Text
+    , _crsgSubnetIds                         :: ![Text]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateReplicationSubnetGroup' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'crsgTags' - The tag to be assigned to the subnet group.
+-- * 'crsgTags' - One or more tags to be assigned to the subnet group.
 --
 -- * 'crsgReplicationSubnetGroupIdentifier' - The name for the replication subnet group. This value is stored as a lowercase string. Constraints: Must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens. Must not be "default". Example: @mySubnetgroup@
 --
 -- * 'crsgReplicationSubnetGroupDescription' - The description for the subnet group.
 --
--- * 'crsgSubnetIds' - The EC2 subnet IDs for the subnet group.
+-- * 'crsgSubnetIds' - One or more subnet IDs to be assigned to the subnet group.
 createReplicationSubnetGroup
     :: Text -- ^ 'crsgReplicationSubnetGroupIdentifier'
     -> Text -- ^ 'crsgReplicationSubnetGroupDescription'
@@ -85,7 +87,7 @@ createReplicationSubnetGroup pReplicationSubnetGroupIdentifier_ pReplicationSubn
     }
 
 
--- | The tag to be assigned to the subnet group.
+-- | One or more tags to be assigned to the subnet group.
 crsgTags :: Lens' CreateReplicationSubnetGroup [Tag]
 crsgTags = lens _crsgTags (\ s a -> s{_crsgTags = a}) . _Default . _Coerce
 
@@ -97,7 +99,7 @@ crsgReplicationSubnetGroupIdentifier = lens _crsgReplicationSubnetGroupIdentifie
 crsgReplicationSubnetGroupDescription :: Lens' CreateReplicationSubnetGroup Text
 crsgReplicationSubnetGroupDescription = lens _crsgReplicationSubnetGroupDescription (\ s a -> s{_crsgReplicationSubnetGroupDescription = a})
 
--- | The EC2 subnet IDs for the subnet group.
+-- | One or more subnet IDs to be assigned to the subnet group.
 crsgSubnetIds :: Lens' CreateReplicationSubnetGroup [Text]
 crsgSubnetIds = lens _crsgSubnetIds (\ s a -> s{_crsgSubnetIds = a}) . _Coerce
 
@@ -151,10 +153,12 @@ instance ToQuery CreateReplicationSubnetGroup where
 --
 --
 -- /See:/ 'createReplicationSubnetGroupResponse' smart constructor.
-data CreateReplicationSubnetGroupResponse = CreateReplicationSubnetGroupResponse'
-  { _crsgrsReplicationSubnetGroup :: !(Maybe ReplicationSubnetGroup)
-  , _crsgrsResponseStatus         :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreateReplicationSubnetGroupResponse =
+  CreateReplicationSubnetGroupResponse'
+    { _crsgrsReplicationSubnetGroup :: !(Maybe ReplicationSubnetGroup)
+    , _crsgrsResponseStatus         :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateReplicationSubnetGroupResponse' with the minimum fields required to make a request.

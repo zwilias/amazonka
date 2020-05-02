@@ -22,10 +22,19 @@ module Network.AWS.CloudWatch.Types
     , _InternalServiceFault
     , _DashboardInvalidInputError
     , _InvalidParameterValueException
+    , _ConcurrentModificationException
     , _InvalidFormatFault
     , _MissingRequiredParameterException
+    , _ResourceNotFoundException
     , _InvalidParameterCombinationException
+    , _LimitExceededException
     , _ResourceNotFound
+
+    -- * AlarmType
+    , AlarmType (..)
+
+    -- * AnomalyDetectorStateValue
+    , AnomalyDetectorStateValue (..)
 
     -- * ComparisonOperator
     , ComparisonOperator (..)
@@ -54,8 +63,42 @@ module Network.AWS.CloudWatch.Types
     , ahiAlarmName
     , ahiHistoryItemType
     , ahiHistoryData
+    , ahiAlarmType
     , ahiHistorySummary
     , ahiTimestamp
+
+    -- * AnomalyDetector
+    , AnomalyDetector
+    , anomalyDetector
+    , adMetricName
+    , adNamespace
+    , adStateValue
+    , adStat
+    , adConfiguration
+    , adDimensions
+
+    -- * AnomalyDetectorConfiguration
+    , AnomalyDetectorConfiguration
+    , anomalyDetectorConfiguration
+    , adcMetricTimezone
+    , adcExcludedTimeRanges
+
+    -- * CompositeAlarm
+    , CompositeAlarm
+    , compositeAlarm
+    , caAlarmName
+    , caStateUpdatedTimestamp
+    , caAlarmDescription
+    , caAlarmRule
+    , caOKActions
+    , caStateValue
+    , caAlarmConfigurationUpdatedTimestamp
+    , caActionsEnabled
+    , caInsufficientDataActions
+    , caStateReason
+    , caStateReasonData
+    , caAlarmARN
+    , caAlarmActions
 
     -- * DashboardEntry
     , DashboardEntry
@@ -95,6 +138,39 @@ module Network.AWS.CloudWatch.Types
     , dfValue
     , dfName
 
+    -- * InsightRule
+    , InsightRule
+    , insightRule
+    , irName
+    , irState
+    , irSchema
+    , irDefinition
+
+    -- * InsightRuleContributor
+    , InsightRuleContributor
+    , insightRuleContributor
+    , ircKeys
+    , ircApproximateAggregateValue
+    , ircDatapoints
+
+    -- * InsightRuleContributorDatapoint
+    , InsightRuleContributorDatapoint
+    , insightRuleContributorDatapoint
+    , ircdTimestamp
+    , ircdApproximateValue
+
+    -- * InsightRuleMetricDatapoint
+    , InsightRuleMetricDatapoint
+    , insightRuleMetricDatapoint
+    , irmdMaxContributorValue
+    , irmdSampleCount
+    , irmdMaximum
+    , irmdAverage
+    , irmdMinimum
+    , irmdUniqueContributors
+    , irmdSum
+    , irmdTimestamp
+
     -- * MessageData
     , MessageData
     , messageData
@@ -113,12 +189,14 @@ module Network.AWS.CloudWatch.Types
     , metricAlarm
     , maAlarmName
     , maStateUpdatedTimestamp
+    , maMetrics
     , maTreatMissingData
     , maPeriod
     , maAlarmDescription
     , maEvaluationPeriods
     , maMetricName
     , maNamespace
+    , maThresholdMetricId
     , maComparisonOperator
     , maOKActions
     , maEvaluateLowSampleCountPercentile
@@ -141,6 +219,7 @@ module Network.AWS.CloudWatch.Types
     , MetricDataQuery
     , metricDataQuery
     , mdqReturnData
+    , mdqPeriod
     , mdqExpression
     , mdqLabel
     , mdqMetricStat
@@ -159,6 +238,8 @@ module Network.AWS.CloudWatch.Types
     -- * MetricDatum
     , MetricDatum
     , metricDatum
+    , mdValues
+    , mdCounts
     , mdValue
     , mdStorageResolution
     , mdDimensions
@@ -175,6 +256,20 @@ module Network.AWS.CloudWatch.Types
     , msPeriod
     , msStat
 
+    -- * PartialFailure
+    , PartialFailure
+    , partialFailure
+    , pfFailureResource
+    , pfFailureCode
+    , pfFailureDescription
+    , pfExceptionType
+
+    -- * Range
+    , Range
+    , range
+    , rStartTime
+    , rEndTime
+
     -- * StatisticSet
     , StatisticSet
     , statisticSet
@@ -182,6 +277,12 @@ module Network.AWS.CloudWatch.Types
     , ssSum
     , ssMinimum
     , ssMaximum
+
+    -- * Tag
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
     ) where
 
 import Network.AWS.CloudWatch.Types.Product
@@ -277,6 +378,15 @@ _InvalidParameterValueException =
   _MatchServiceError cloudWatch "InvalidParameterValue" . hasStatus 400
 
 
+-- | More than one process tried to modify a resource at the same time.
+--
+--
+_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConcurrentModificationException =
+  _MatchServiceError cloudWatch "ConcurrentModificationException" .
+  hasStatus 429
+
+
 -- | Data was not syntactically valid JSON.
 --
 --
@@ -293,12 +403,28 @@ _MissingRequiredParameterException =
   _MatchServiceError cloudWatch "MissingParameter" . hasStatus 400
 
 
+-- | The named resource does not exist.
+--
+--
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException =
+  _MatchServiceError cloudWatch "ResourceNotFoundException" . hasStatus 404
+
+
 -- | Parameters were used together that cannot be used together.
 --
 --
 _InvalidParameterCombinationException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidParameterCombinationException =
   _MatchServiceError cloudWatch "InvalidParameterCombination" . hasStatus 400
+
+
+-- | The operation exceeded one or more limits.
+--
+--
+_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException =
+  _MatchServiceError cloudWatch "LimitExceededException" . hasStatus 400
 
 
 -- | The named resource does not exist.

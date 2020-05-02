@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns the details of a single named query or a list of up to 50 queries, which you provide as an array of query ID strings. Use 'ListNamedQueries' to get the list of named query IDs. If information could not be retrieved for a submitted query ID, information about the query ID submitted is listed under 'UnprocessedNamedQueryId' . Named queries are different from executed queries. Use 'BatchGetQueryExecution' to get details about each unique query execution, and 'ListQueryExecutions' to get a list of query execution IDs.
+-- Returns the details of a single named query or a list of up to 50 queries, which you provide as an array of query ID strings. Requires you to have access to the workgroup in which the queries were saved. Use 'ListNamedQueriesInput' to get the list of named query IDs in the specified workgroup. If information could not be retrieved for a submitted query ID, information about the query ID submitted is listed under 'UnprocessedNamedQueryId' . Named queries differ from executed queries. Use 'BatchGetQueryExecutionInput' to get details about each unique query execution, and 'ListQueryExecutionsInput' to get a list of query execution IDs.
 --
 --
 module Network.AWS.Athena.BatchGetNamedQuery
@@ -46,9 +46,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchGetNamedQuery' smart constructor.
-newtype BatchGetNamedQuery = BatchGetNamedQuery'
-  { _bgnqNamedQueryIds :: List1 Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype BatchGetNamedQuery =
+  BatchGetNamedQuery'
+    { _bgnqNamedQueryIds :: List1 Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchGetNamedQuery' with the minimum fields required to make a request.
@@ -105,11 +107,13 @@ instance ToQuery BatchGetNamedQuery where
         toQuery = const mempty
 
 -- | /See:/ 'batchGetNamedQueryResponse' smart constructor.
-data BatchGetNamedQueryResponse = BatchGetNamedQueryResponse'
-  { _bgnqrsNamedQueries             :: !(Maybe [NamedQuery])
-  , _bgnqrsUnprocessedNamedQueryIds :: !(Maybe [UnprocessedNamedQueryId])
-  , _bgnqrsResponseStatus           :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchGetNamedQueryResponse =
+  BatchGetNamedQueryResponse'
+    { _bgnqrsNamedQueries             :: !(Maybe [NamedQuery])
+    , _bgnqrsUnprocessedNamedQueryIds :: !(Maybe [UnprocessedNamedQueryId])
+    , _bgnqrsResponseStatus           :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchGetNamedQueryResponse' with the minimum fields required to make a request.

@@ -66,6 +66,7 @@ library
         , Network.AWS.CognitoIdentityProvider.AdminResetUserPassword
         , Network.AWS.CognitoIdentityProvider.AdminRespondToAuthChallenge
         , Network.AWS.CognitoIdentityProvider.AdminSetUserMFAPreference
+        , Network.AWS.CognitoIdentityProvider.AdminSetUserPassword
         , Network.AWS.CognitoIdentityProvider.AdminSetUserSettings
         , Network.AWS.CognitoIdentityProvider.AdminUpdateAuthEventFeedback
         , Network.AWS.CognitoIdentityProvider.AdminUpdateDeviceStatus
@@ -115,6 +116,7 @@ library
         , Network.AWS.CognitoIdentityProvider.ListGroups
         , Network.AWS.CognitoIdentityProvider.ListIdentityProviders
         , Network.AWS.CognitoIdentityProvider.ListResourceServers
+        , Network.AWS.CognitoIdentityProvider.ListTagsForResource
         , Network.AWS.CognitoIdentityProvider.ListUserImportJobs
         , Network.AWS.CognitoIdentityProvider.ListUserPoolClients
         , Network.AWS.CognitoIdentityProvider.ListUserPools
@@ -130,7 +132,9 @@ library
         , Network.AWS.CognitoIdentityProvider.SignUp
         , Network.AWS.CognitoIdentityProvider.StartUserImportJob
         , Network.AWS.CognitoIdentityProvider.StopUserImportJob
+        , Network.AWS.CognitoIdentityProvider.TagResource
         , Network.AWS.CognitoIdentityProvider.Types
+        , Network.AWS.CognitoIdentityProvider.UntagResource
         , Network.AWS.CognitoIdentityProvider.UpdateAuthEventFeedback
         , Network.AWS.CognitoIdentityProvider.UpdateDeviceStatus
         , Network.AWS.CognitoIdentityProvider.UpdateGroup
@@ -139,6 +143,7 @@ library
         , Network.AWS.CognitoIdentityProvider.UpdateUserAttributes
         , Network.AWS.CognitoIdentityProvider.UpdateUserPool
         , Network.AWS.CognitoIdentityProvider.UpdateUserPoolClient
+        , Network.AWS.CognitoIdentityProvider.UpdateUserPoolDomain
         , Network.AWS.CognitoIdentityProvider.VerifySoftwareToken
         , Network.AWS.CognitoIdentityProvider.VerifyUserAttribute
         , Network.AWS.CognitoIdentityProvider.Waiters

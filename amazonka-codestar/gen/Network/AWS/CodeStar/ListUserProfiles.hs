@@ -21,6 +21,8 @@
 -- Lists all the user profiles configured for your AWS account in AWS CodeStar.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.CodeStar.ListUserProfiles
     (
     -- * Creating a Request
@@ -42,15 +44,18 @@ module Network.AWS.CodeStar.ListUserProfiles
 import Network.AWS.CodeStar.Types
 import Network.AWS.CodeStar.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listUserProfiles' smart constructor.
-data ListUserProfiles = ListUserProfiles'
-  { _lupNextToken  :: !(Maybe Text)
-  , _lupMaxResults :: !(Maybe Nat)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListUserProfiles =
+  ListUserProfiles'
+    { _lupNextToken  :: !(Maybe Text)
+    , _lupMaxResults :: !(Maybe Nat)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListUserProfiles' with the minimum fields required to make a request.
@@ -73,6 +78,13 @@ lupNextToken = lens _lupNextToken (\ s a -> s{_lupNextToken = a})
 -- | The maximum number of results to return in a response.
 lupMaxResults :: Lens' ListUserProfiles (Maybe Natural)
 lupMaxResults = lens _lupMaxResults (\ s a -> s{_lupMaxResults = a}) . mapping _Nat
+
+instance AWSPager ListUserProfiles where
+        page rq rs
+          | stop (rs ^. luprsNextToken) = Nothing
+          | stop (rs ^. luprsUserProfiles) = Nothing
+          | otherwise =
+            Just $ rq & lupNextToken .~ rs ^. luprsNextToken
 
 instance AWSRequest ListUserProfiles where
         type Rs ListUserProfiles = ListUserProfilesResponse
@@ -111,11 +123,13 @@ instance ToQuery ListUserProfiles where
         toQuery = const mempty
 
 -- | /See:/ 'listUserProfilesResponse' smart constructor.
-data ListUserProfilesResponse = ListUserProfilesResponse'
-  { _luprsNextToken      :: !(Maybe Text)
-  , _luprsResponseStatus :: !Int
-  , _luprsUserProfiles   :: ![UserProfileSummary]
-  } deriving (Eq, Show, Data, Typeable, Generic)
+data ListUserProfilesResponse =
+  ListUserProfilesResponse'
+    { _luprsNextToken      :: !(Maybe Text)
+    , _luprsResponseStatus :: !Int
+    , _luprsUserProfiles   :: ![UserProfileSummary]
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListUserProfilesResponse' with the minimum fields required to make a request.

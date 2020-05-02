@@ -69,13 +69,15 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeComplianceByResource' smart constructor.
-data DescribeComplianceByResource = DescribeComplianceByResource'
-  { _dcbrResourceId      :: !(Maybe Text)
-  , _dcbrResourceType    :: !(Maybe Text)
-  , _dcbrComplianceTypes :: !(Maybe [ComplianceType])
-  , _dcbrNextToken       :: !(Maybe Text)
-  , _dcbrLimit           :: !(Maybe Nat)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeComplianceByResource =
+  DescribeComplianceByResource'
+    { _dcbrResourceId      :: !(Maybe Text)
+    , _dcbrResourceType    :: !(Maybe Text)
+    , _dcbrComplianceTypes :: !(Maybe [ComplianceType])
+    , _dcbrNextToken       :: !(Maybe Text)
+    , _dcbrLimit           :: !(Maybe Nat)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeComplianceByResource' with the minimum fields required to make a request.
@@ -86,7 +88,7 @@ data DescribeComplianceByResource = DescribeComplianceByResource'
 --
 -- * 'dcbrResourceType' - The types of AWS resources for which you want compliance information (for example, @AWS::EC2::Instance@ ). For this action, you can specify that the resource type is an AWS account by specifying @AWS::::Account@ .
 --
--- * 'dcbrComplianceTypes' - Filters the results by compliance. The allowed values are @COMPLIANT@ and @NON_COMPLIANT@ .
+-- * 'dcbrComplianceTypes' - Filters the results by compliance. The allowed values are @COMPLIANT@ , @NON_COMPLIANT@ , and @INSUFFICIENT_DATA@ .
 --
 -- * 'dcbrNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
 --
@@ -111,7 +113,7 @@ dcbrResourceId = lens _dcbrResourceId (\ s a -> s{_dcbrResourceId = a})
 dcbrResourceType :: Lens' DescribeComplianceByResource (Maybe Text)
 dcbrResourceType = lens _dcbrResourceType (\ s a -> s{_dcbrResourceType = a})
 
--- | Filters the results by compliance. The allowed values are @COMPLIANT@ and @NON_COMPLIANT@ .
+-- | Filters the results by compliance. The allowed values are @COMPLIANT@ , @NON_COMPLIANT@ , and @INSUFFICIENT_DATA@ .
 dcbrComplianceTypes :: Lens' DescribeComplianceByResource [ComplianceType]
 dcbrComplianceTypes = lens _dcbrComplianceTypes (\ s a -> s{_dcbrComplianceTypes = a}) . _Default . _Coerce
 
@@ -178,11 +180,13 @@ instance ToQuery DescribeComplianceByResource where
 --
 --
 -- /See:/ 'describeComplianceByResourceResponse' smart constructor.
-data DescribeComplianceByResourceResponse = DescribeComplianceByResourceResponse'
-  { _dcbrrsComplianceByResources :: !(Maybe [ComplianceByResource])
-  , _dcbrrsNextToken             :: !(Maybe Text)
-  , _dcbrrsResponseStatus        :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeComplianceByResourceResponse =
+  DescribeComplianceByResourceResponse'
+    { _dcbrrsComplianceByResources :: !(Maybe [ComplianceByResource])
+    , _dcbrrsNextToken             :: !(Maybe Text)
+    , _dcbrrsResponseStatus        :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeComplianceByResourceResponse' with the minimum fields required to make a request.

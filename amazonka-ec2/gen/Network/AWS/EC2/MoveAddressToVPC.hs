@@ -46,15 +46,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for MoveAddressToVpc.
---
---
---
--- /See:/ 'moveAddressToVPC' smart constructor.
-data MoveAddressToVPC = MoveAddressToVPC'
-  { _matvDryRun   :: !(Maybe Bool)
-  , _matvPublicIP :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'moveAddressToVPC' smart constructor.
+data MoveAddressToVPC =
+  MoveAddressToVPC'
+    { _matvDryRun   :: !(Maybe Bool)
+    , _matvPublicIP :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'MoveAddressToVPC' with the minimum fields required to make a request.
@@ -106,16 +104,14 @@ instance ToQuery MoveAddressToVPC where
                "Version" =: ("2016-11-15" :: ByteString),
                "DryRun" =: _matvDryRun, "PublicIp" =: _matvPublicIP]
 
--- | Contains the output of MoveAddressToVpc.
---
---
---
--- /See:/ 'moveAddressToVPCResponse' smart constructor.
-data MoveAddressToVPCResponse = MoveAddressToVPCResponse'
-  { _matvrsStatus         :: !(Maybe AddressStatus)
-  , _matvrsAllocationId   :: !(Maybe Text)
-  , _matvrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'moveAddressToVPCResponse' smart constructor.
+data MoveAddressToVPCResponse =
+  MoveAddressToVPCResponse'
+    { _matvrsStatus         :: !(Maybe AddressStatus)
+    , _matvrsAllocationId   :: !(Maybe Text)
+    , _matvrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'MoveAddressToVPCResponse' with the minimum fields required to make a request.

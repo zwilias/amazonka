@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Determines whether there are any third party jobs for a job worker to act on. Only used for partner actions.
+-- Determines whether there are any third party jobs for a job worker to act on. Used for partner actions only.
 --
 --
--- /Important:/ When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts.
+-- /Important:/ When this API is called, AWS CodePipeline returns temporary credentials for the S3 bucket used to store artifacts for the pipeline, if the action requires access to that S3 bucket for input or output artifacts.
 --
 module Network.AWS.CodePipeline.PollForThirdPartyJobs
     (
@@ -47,15 +47,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Represents the input of a PollForThirdPartyJobs action.
+-- | Represents the input of a @PollForThirdPartyJobs@ action.
 --
 --
 --
 -- /See:/ 'pollForThirdPartyJobs' smart constructor.
-data PollForThirdPartyJobs = PollForThirdPartyJobs'
-  { _pftpjMaxBatchSize :: !(Maybe Nat)
-  , _pftpjActionTypeId :: !ActionTypeId
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data PollForThirdPartyJobs =
+  PollForThirdPartyJobs'
+    { _pftpjMaxBatchSize :: !(Maybe Nat)
+    , _pftpjActionTypeId :: !ActionTypeId
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'PollForThirdPartyJobs' with the minimum fields required to make a request.
@@ -118,15 +120,17 @@ instance ToPath PollForThirdPartyJobs where
 instance ToQuery PollForThirdPartyJobs where
         toQuery = const mempty
 
--- | Represents the output of a PollForThirdPartyJobs action.
+-- | Represents the output of a @PollForThirdPartyJobs@ action.
 --
 --
 --
 -- /See:/ 'pollForThirdPartyJobsResponse' smart constructor.
-data PollForThirdPartyJobsResponse = PollForThirdPartyJobsResponse'
-  { _pftpjrsJobs           :: !(Maybe [ThirdPartyJob])
-  , _pftpjrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data PollForThirdPartyJobsResponse =
+  PollForThirdPartyJobsResponse'
+    { _pftpjrsJobs           :: !(Maybe [ThirdPartyJob])
+    , _pftpjrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'PollForThirdPartyJobsResponse' with the minimum fields required to make a request.

@@ -159,6 +159,7 @@ instance FromJSON AttributeDataType where
 
 data AuthFlowType
   = AdminNoSrpAuth
+  | AdminUserPasswordAuth
   | CustomAuth
   | RefreshToken
   | RefreshTokenAuth
@@ -170,17 +171,19 @@ data AuthFlowType
 instance FromText AuthFlowType where
     parser = takeLowerText >>= \case
         "admin_no_srp_auth" -> pure AdminNoSrpAuth
+        "admin_user_password_auth" -> pure AdminUserPasswordAuth
         "custom_auth" -> pure CustomAuth
         "refresh_token" -> pure RefreshToken
         "refresh_token_auth" -> pure RefreshTokenAuth
         "user_password_auth" -> pure UserPasswordAuth
         "user_srp_auth" -> pure UserSrpAuth
         e -> fromTextError $ "Failure parsing AuthFlowType from value: '" <> e
-           <> "'. Accepted values: admin_no_srp_auth, custom_auth, refresh_token, refresh_token_auth, user_password_auth, user_srp_auth"
+           <> "'. Accepted values: admin_no_srp_auth, admin_user_password_auth, custom_auth, refresh_token, refresh_token_auth, user_password_auth, user_srp_auth"
 
 instance ToText AuthFlowType where
     toText = \case
         AdminNoSrpAuth -> "ADMIN_NO_SRP_AUTH"
+        AdminUserPasswordAuth -> "ADMIN_USER_PASSWORD_AUTH"
         CustomAuth -> "CUSTOM_AUTH"
         RefreshToken -> "REFRESH_TOKEN"
         RefreshTokenAuth -> "REFRESH_TOKEN_AUTH"
@@ -457,6 +460,36 @@ instance ToHeader     DomainStatusType
 instance FromJSON DomainStatusType where
     parseJSON = parseJSONText "DomainStatusType"
 
+data EmailSendingAccountType
+  = CognitoDefault
+  | Developer
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText EmailSendingAccountType where
+    parser = takeLowerText >>= \case
+        "cognito_default" -> pure CognitoDefault
+        "developer" -> pure Developer
+        e -> fromTextError $ "Failure parsing EmailSendingAccountType from value: '" <> e
+           <> "'. Accepted values: cognito_default, developer"
+
+instance ToText EmailSendingAccountType where
+    toText = \case
+        CognitoDefault -> "COGNITO_DEFAULT"
+        Developer -> "DEVELOPER"
+
+instance Hashable     EmailSendingAccountType
+instance NFData       EmailSendingAccountType
+instance ToByteString EmailSendingAccountType
+instance ToQuery      EmailSendingAccountType
+instance ToHeader     EmailSendingAccountType
+
+instance ToJSON EmailSendingAccountType where
+    toJSON = toJSONText
+
+instance FromJSON EmailSendingAccountType where
+    parseJSON = parseJSONText "EmailSendingAccountType"
+
 data EventFilterType
   = PasswordChange
   | SignIn
@@ -549,6 +582,11 @@ instance FromJSON EventType where
 
 data ExplicitAuthFlowsType
   = EAFTAdminNoSrpAuth
+  | EAFTAllowAdminUserPasswordAuth
+  | EAFTAllowCustomAuth
+  | EAFTAllowRefreshTokenAuth
+  | EAFTAllowUserPasswordAuth
+  | EAFTAllowUserSrpAuth
   | EAFTCustomAuthFlowOnly
   | EAFTUserPasswordAuth
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
@@ -557,14 +595,24 @@ data ExplicitAuthFlowsType
 instance FromText ExplicitAuthFlowsType where
     parser = takeLowerText >>= \case
         "admin_no_srp_auth" -> pure EAFTAdminNoSrpAuth
+        "allow_admin_user_password_auth" -> pure EAFTAllowAdminUserPasswordAuth
+        "allow_custom_auth" -> pure EAFTAllowCustomAuth
+        "allow_refresh_token_auth" -> pure EAFTAllowRefreshTokenAuth
+        "allow_user_password_auth" -> pure EAFTAllowUserPasswordAuth
+        "allow_user_srp_auth" -> pure EAFTAllowUserSrpAuth
         "custom_auth_flow_only" -> pure EAFTCustomAuthFlowOnly
         "user_password_auth" -> pure EAFTUserPasswordAuth
         e -> fromTextError $ "Failure parsing ExplicitAuthFlowsType from value: '" <> e
-           <> "'. Accepted values: admin_no_srp_auth, custom_auth_flow_only, user_password_auth"
+           <> "'. Accepted values: admin_no_srp_auth, allow_admin_user_password_auth, allow_custom_auth, allow_refresh_token_auth, allow_user_password_auth, allow_user_srp_auth, custom_auth_flow_only, user_password_auth"
 
 instance ToText ExplicitAuthFlowsType where
     toText = \case
         EAFTAdminNoSrpAuth -> "ADMIN_NO_SRP_AUTH"
+        EAFTAllowAdminUserPasswordAuth -> "ALLOW_ADMIN_USER_PASSWORD_AUTH"
+        EAFTAllowCustomAuth -> "ALLOW_CUSTOM_AUTH"
+        EAFTAllowRefreshTokenAuth -> "ALLOW_REFRESH_TOKEN_AUTH"
+        EAFTAllowUserPasswordAuth -> "ALLOW_USER_PASSWORD_AUTH"
+        EAFTAllowUserSrpAuth -> "ALLOW_USER_SRP_AUTH"
         EAFTCustomAuthFlowOnly -> "CUSTOM_AUTH_FLOW_ONLY"
         EAFTUserPasswordAuth -> "USER_PASSWORD_AUTH"
 
@@ -614,7 +662,9 @@ data IdentityProviderTypeType
   = Facebook
   | Google
   | LoginWithAmazon
+  | Oidc
   | Saml
+  | SignInWithApple
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
 
@@ -623,16 +673,20 @@ instance FromText IdentityProviderTypeType where
         "facebook" -> pure Facebook
         "google" -> pure Google
         "loginwithamazon" -> pure LoginWithAmazon
+        "oidc" -> pure Oidc
         "saml" -> pure Saml
+        "signinwithapple" -> pure SignInWithApple
         e -> fromTextError $ "Failure parsing IdentityProviderTypeType from value: '" <> e
-           <> "'. Accepted values: facebook, google, loginwithamazon, saml"
+           <> "'. Accepted values: facebook, google, loginwithamazon, oidc, saml, signinwithapple"
 
 instance ToText IdentityProviderTypeType where
     toText = \case
         Facebook -> "Facebook"
         Google -> "Google"
         LoginWithAmazon -> "LoginWithAmazon"
+        Oidc -> "OIDC"
         Saml -> "SAML"
+        SignInWithApple -> "SignInWithApple"
 
 instance Hashable     IdentityProviderTypeType
 instance NFData       IdentityProviderTypeType
@@ -705,6 +759,69 @@ instance ToJSON OAuthFlowType where
 
 instance FromJSON OAuthFlowType where
     parseJSON = parseJSONText "OAuthFlowType"
+
+data PreventUserExistenceErrorTypes
+  = PUEETEnabled
+  | PUEETLegacy
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText PreventUserExistenceErrorTypes where
+    parser = takeLowerText >>= \case
+        "enabled" -> pure PUEETEnabled
+        "legacy" -> pure PUEETLegacy
+        e -> fromTextError $ "Failure parsing PreventUserExistenceErrorTypes from value: '" <> e
+           <> "'. Accepted values: enabled, legacy"
+
+instance ToText PreventUserExistenceErrorTypes where
+    toText = \case
+        PUEETEnabled -> "ENABLED"
+        PUEETLegacy -> "LEGACY"
+
+instance Hashable     PreventUserExistenceErrorTypes
+instance NFData       PreventUserExistenceErrorTypes
+instance ToByteString PreventUserExistenceErrorTypes
+instance ToQuery      PreventUserExistenceErrorTypes
+instance ToHeader     PreventUserExistenceErrorTypes
+
+instance ToJSON PreventUserExistenceErrorTypes where
+    toJSON = toJSONText
+
+instance FromJSON PreventUserExistenceErrorTypes where
+    parseJSON = parseJSONText "PreventUserExistenceErrorTypes"
+
+data RecoveryOptionNameType
+  = AdminOnly
+  | VerifiedEmail
+  | VerifiedPhoneNumber
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText RecoveryOptionNameType where
+    parser = takeLowerText >>= \case
+        "admin_only" -> pure AdminOnly
+        "verified_email" -> pure VerifiedEmail
+        "verified_phone_number" -> pure VerifiedPhoneNumber
+        e -> fromTextError $ "Failure parsing RecoveryOptionNameType from value: '" <> e
+           <> "'. Accepted values: admin_only, verified_email, verified_phone_number"
+
+instance ToText RecoveryOptionNameType where
+    toText = \case
+        AdminOnly -> "admin_only"
+        VerifiedEmail -> "verified_email"
+        VerifiedPhoneNumber -> "verified_phone_number"
+
+instance Hashable     RecoveryOptionNameType
+instance NFData       RecoveryOptionNameType
+instance ToByteString RecoveryOptionNameType
+instance ToQuery      RecoveryOptionNameType
+instance ToHeader     RecoveryOptionNameType
+
+instance ToJSON RecoveryOptionNameType where
+    toJSON = toJSONText
+
+instance FromJSON RecoveryOptionNameType where
+    parseJSON = parseJSONText "RecoveryOptionNameType"
 
 data RiskDecisionType
   = AccountTakeover

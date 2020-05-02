@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Represents the failure of a third party job as returned to the pipeline by a job worker. Only used for partner actions.
+-- Represents the failure of a third party job as returned to the pipeline by a job worker. Used for partner actions only.
 --
 --
 module Network.AWS.CodePipeline.PutThirdPartyJobFailureResult
@@ -43,23 +43,25 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Represents the input of a PutThirdPartyJobFailureResult action.
+-- | Represents the input of a @PutThirdPartyJobFailureResult@ action.
 --
 --
 --
 -- /See:/ 'putThirdPartyJobFailureResult' smart constructor.
-data PutThirdPartyJobFailureResult = PutThirdPartyJobFailureResult'
-  { _ptpjfrJobId          :: !Text
-  , _ptpjfrClientToken    :: !Text
-  , _ptpjfrFailureDetails :: !FailureDetails
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data PutThirdPartyJobFailureResult =
+  PutThirdPartyJobFailureResult'
+    { _ptpjfrJobId          :: !Text
+    , _ptpjfrClientToken    :: !Text
+    , _ptpjfrFailureDetails :: !FailureDetails
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'PutThirdPartyJobFailureResult' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ptpjfrJobId' - The ID of the job that failed. This is the same ID returned from PollForThirdPartyJobs.
+-- * 'ptpjfrJobId' - The ID of the job that failed. This is the same ID returned from @PollForThirdPartyJobs@ .
 --
 -- * 'ptpjfrClientToken' - The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.
 --
@@ -77,7 +79,7 @@ putThirdPartyJobFailureResult pJobId_ pClientToken_ pFailureDetails_ =
     }
 
 
--- | The ID of the job that failed. This is the same ID returned from PollForThirdPartyJobs.
+-- | The ID of the job that failed. This is the same ID returned from @PollForThirdPartyJobs@ .
 ptpjfrJobId :: Lens' PutThirdPartyJobFailureResult Text
 ptpjfrJobId = lens _ptpjfrJobId (\ s a -> s{_ptpjfrJobId = a})
 

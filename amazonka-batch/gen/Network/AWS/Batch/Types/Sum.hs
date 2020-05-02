@@ -148,6 +148,39 @@ instance ToJSON CEType where
 instance FromJSON CEType where
     parseJSON = parseJSONText "CEType"
 
+data CRAllocationStrategy
+  = BestFit
+  | BestFitProgressive
+  | SpotCapacityOptimized
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText CRAllocationStrategy where
+    parser = takeLowerText >>= \case
+        "best_fit" -> pure BestFit
+        "best_fit_progressive" -> pure BestFitProgressive
+        "spot_capacity_optimized" -> pure SpotCapacityOptimized
+        e -> fromTextError $ "Failure parsing CRAllocationStrategy from value: '" <> e
+           <> "'. Accepted values: best_fit, best_fit_progressive, spot_capacity_optimized"
+
+instance ToText CRAllocationStrategy where
+    toText = \case
+        BestFit -> "BEST_FIT"
+        BestFitProgressive -> "BEST_FIT_PROGRESSIVE"
+        SpotCapacityOptimized -> "SPOT_CAPACITY_OPTIMIZED"
+
+instance Hashable     CRAllocationStrategy
+instance NFData       CRAllocationStrategy
+instance ToByteString CRAllocationStrategy
+instance ToQuery      CRAllocationStrategy
+instance ToHeader     CRAllocationStrategy
+
+instance ToJSON CRAllocationStrategy where
+    toJSON = toJSONText
+
+instance FromJSON CRAllocationStrategy where
+    parseJSON = parseJSONText "CRAllocationStrategy"
+
 data CRType
   = EC2
   | Spot
@@ -177,6 +210,39 @@ instance ToJSON CRType where
 
 instance FromJSON CRType where
     parseJSON = parseJSONText "CRType"
+
+data DeviceCgroupPermission
+  = Mknod
+  | Read
+  | Write
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText DeviceCgroupPermission where
+    parser = takeLowerText >>= \case
+        "mknod" -> pure Mknod
+        "read" -> pure Read
+        "write" -> pure Write
+        e -> fromTextError $ "Failure parsing DeviceCgroupPermission from value: '" <> e
+           <> "'. Accepted values: mknod, read, write"
+
+instance ToText DeviceCgroupPermission where
+    toText = \case
+        Mknod -> "MKNOD"
+        Read -> "READ"
+        Write -> "WRITE"
+
+instance Hashable     DeviceCgroupPermission
+instance NFData       DeviceCgroupPermission
+instance ToByteString DeviceCgroupPermission
+instance ToQuery      DeviceCgroupPermission
+instance ToHeader     DeviceCgroupPermission
+
+instance ToJSON DeviceCgroupPermission where
+    toJSON = toJSONText
+
+instance FromJSON DeviceCgroupPermission where
+    parseJSON = parseJSONText "DeviceCgroupPermission"
 
 data JQState
   = JQSDisabled
@@ -247,20 +313,23 @@ instance ToHeader     JQStatus
 instance FromJSON JQStatus where
     parseJSON = parseJSONText "JQStatus"
 
-data JobDefinitionType =
-  Container
+data JobDefinitionType
+  = Container
+  | Multinode
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
 
 instance FromText JobDefinitionType where
     parser = takeLowerText >>= \case
         "container" -> pure Container
+        "multinode" -> pure Multinode
         e -> fromTextError $ "Failure parsing JobDefinitionType from value: '" <> e
-           <> "'. Accepted values: container"
+           <> "'. Accepted values: container, multinode"
 
 instance ToText JobDefinitionType where
     toText = \case
         Container -> "container"
+        Multinode -> "multinode"
 
 instance Hashable     JobDefinitionType
 instance NFData       JobDefinitionType
@@ -315,3 +384,30 @@ instance ToJSON JobStatus where
 
 instance FromJSON JobStatus where
     parseJSON = parseJSONText "JobStatus"
+
+data ResourceType =
+  Gpu
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText ResourceType where
+    parser = takeLowerText >>= \case
+        "gpu" -> pure Gpu
+        e -> fromTextError $ "Failure parsing ResourceType from value: '" <> e
+           <> "'. Accepted values: gpu"
+
+instance ToText ResourceType where
+    toText = \case
+        Gpu -> "GPU"
+
+instance Hashable     ResourceType
+instance NFData       ResourceType
+instance ToByteString ResourceType
+instance ToQuery      ResourceType
+instance ToHeader     ResourceType
+
+instance ToJSON ResourceType where
+    toJSON = toJSONText
+
+instance FromJSON ResourceType where
+    parseJSON = parseJSONText "ResourceType"

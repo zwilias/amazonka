@@ -27,6 +27,7 @@ module Network.AWS.CognitoIdentityProvider.UpdateUserAttributes
       updateUserAttributes
     , UpdateUserAttributes
     -- * Request Lenses
+    , uuaClientMetadata
     , uuaUserAttributes
     , uuaAccessToken
 
@@ -50,15 +51,20 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateUserAttributes' smart constructor.
-data UpdateUserAttributes = UpdateUserAttributes'
-  { _uuaUserAttributes :: ![AttributeType]
-  , _uuaAccessToken    :: !(Sensitive Text)
-  } deriving (Eq, Show, Data, Typeable, Generic)
+data UpdateUserAttributes =
+  UpdateUserAttributes'
+    { _uuaClientMetadata :: !(Maybe (Map Text Text))
+    , _uuaUserAttributes :: ![AttributeType]
+    , _uuaAccessToken    :: !(Sensitive Text)
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UpdateUserAttributes' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'uuaClientMetadata' - A map of custom key-value pairs that you can provide as input for any custom workflows that this action triggers.  You create custom workflows by assigning AWS Lambda functions to user pool triggers. When you use the UpdateUserAttributes API action, Amazon Cognito invokes the function that is assigned to the /custom message/ trigger. When Amazon Cognito invokes this function, it passes a JSON payload, which the function receives as input. This payload contains a @clientMetadata@ attribute, which provides the data that you assigned to the ClientMetadata parameter in your UpdateUserAttributes request. In your function code in AWS Lambda, you can process the @clientMetadata@ value to enhance your workflow for your specific needs. For more information, see <https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html Customizing User Pool Workflows with Lambda Triggers> in the /Amazon Cognito Developer Guide/ .
 --
 -- * 'uuaUserAttributes' - An array of name-value pairs representing user attributes. For custom attributes, you must prepend the @custom:@ prefix to the attribute name.
 --
@@ -68,8 +74,15 @@ updateUserAttributes
     -> UpdateUserAttributes
 updateUserAttributes pAccessToken_ =
   UpdateUserAttributes'
-    {_uuaUserAttributes = mempty, _uuaAccessToken = _Sensitive # pAccessToken_}
+    { _uuaClientMetadata = Nothing
+    , _uuaUserAttributes = mempty
+    , _uuaAccessToken = _Sensitive # pAccessToken_
+    }
 
+
+-- | A map of custom key-value pairs that you can provide as input for any custom workflows that this action triggers.  You create custom workflows by assigning AWS Lambda functions to user pool triggers. When you use the UpdateUserAttributes API action, Amazon Cognito invokes the function that is assigned to the /custom message/ trigger. When Amazon Cognito invokes this function, it passes a JSON payload, which the function receives as input. This payload contains a @clientMetadata@ attribute, which provides the data that you assigned to the ClientMetadata parameter in your UpdateUserAttributes request. In your function code in AWS Lambda, you can process the @clientMetadata@ value to enhance your workflow for your specific needs. For more information, see <https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html Customizing User Pool Workflows with Lambda Triggers> in the /Amazon Cognito Developer Guide/ .
+uuaClientMetadata :: Lens' UpdateUserAttributes (HashMap Text Text)
+uuaClientMetadata = lens _uuaClientMetadata (\ s a -> s{_uuaClientMetadata = a}) . _Default . _Map
 
 -- | An array of name-value pairs representing user attributes. For custom attributes, you must prepend the @custom:@ prefix to the attribute name.
 uuaUserAttributes :: Lens' UpdateUserAttributes [AttributeType]
@@ -108,7 +121,8 @@ instance ToJSON UpdateUserAttributes where
         toJSON UpdateUserAttributes'{..}
           = object
               (catMaybes
-                 [Just ("UserAttributes" .= _uuaUserAttributes),
+                 [("ClientMetadata" .=) <$> _uuaClientMetadata,
+                  Just ("UserAttributes" .= _uuaUserAttributes),
                   Just ("AccessToken" .= _uuaAccessToken)])
 
 instance ToPath UpdateUserAttributes where
@@ -122,10 +136,12 @@ instance ToQuery UpdateUserAttributes where
 --
 --
 -- /See:/ 'updateUserAttributesResponse' smart constructor.
-data UpdateUserAttributesResponse = UpdateUserAttributesResponse'
-  { _uuarsCodeDeliveryDetailsList :: !(Maybe [CodeDeliveryDetailsType])
-  , _uuarsResponseStatus          :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data UpdateUserAttributesResponse =
+  UpdateUserAttributesResponse'
+    { _uuarsCodeDeliveryDetailsList :: !(Maybe [CodeDeliveryDetailsType])
+    , _uuarsResponseStatus          :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UpdateUserAttributesResponse' with the minimum fields required to make a request.

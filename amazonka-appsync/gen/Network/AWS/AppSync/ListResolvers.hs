@@ -21,6 +21,8 @@
 -- Lists the resolvers for a given API and type.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.AppSync.ListResolvers
     (
     -- * Creating a Request
@@ -44,17 +46,20 @@ module Network.AWS.AppSync.ListResolvers
 import Network.AWS.AppSync.Types
 import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listResolvers' smart constructor.
-data ListResolvers = ListResolvers'
-  { _lrNextToken  :: !(Maybe Text)
-  , _lrMaxResults :: !(Maybe Nat)
-  , _lrApiId      :: !Text
-  , _lrTypeName   :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListResolvers =
+  ListResolvers'
+    { _lrNextToken  :: !(Maybe Text)
+    , _lrMaxResults :: !(Maybe Nat)
+    , _lrApiId      :: !Text
+    , _lrTypeName   :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListResolvers' with the minimum fields required to make a request.
@@ -97,6 +102,13 @@ lrApiId = lens _lrApiId (\ s a -> s{_lrApiId = a})
 lrTypeName :: Lens' ListResolvers Text
 lrTypeName = lens _lrTypeName (\ s a -> s{_lrTypeName = a})
 
+instance AWSPager ListResolvers where
+        page rq rs
+          | stop (rs ^. lrrsNextToken) = Nothing
+          | stop (rs ^. lrrsResolvers) = Nothing
+          | otherwise =
+            Just $ rq & lrNextToken .~ rs ^. lrrsNextToken
+
 instance AWSRequest ListResolvers where
         type Rs ListResolvers = ListResolversResponse
         request = get appSync
@@ -132,11 +144,13 @@ instance ToQuery ListResolvers where
                "maxResults" =: _lrMaxResults]
 
 -- | /See:/ 'listResolversResponse' smart constructor.
-data ListResolversResponse = ListResolversResponse'
-  { _lrrsNextToken      :: !(Maybe Text)
-  , _lrrsResolvers      :: !(Maybe [Resolver])
-  , _lrrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListResolversResponse =
+  ListResolversResponse'
+    { _lrrsNextToken      :: !(Maybe Text)
+    , _lrrsResolvers      :: !(Maybe [Resolver])
+    , _lrrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListResolversResponse' with the minimum fields required to make a request.

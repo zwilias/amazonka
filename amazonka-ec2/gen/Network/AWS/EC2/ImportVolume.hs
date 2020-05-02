@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates an import volume task using metadata from the specified disk image.For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/importing-your-volumes-into-amazon-ebs.html Importing Disks to Amazon EBS> .
+-- Creates an import volume task using metadata from the specified disk image.For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/importing-your-volumes-into-amazon-ebs.html Importing Disks to Amazon EBS> .
 --
 --
--- For information about the import manifest referenced by this API action, see <http://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html VM Import Manifest> .
+-- For information about the import manifest referenced by this API action, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html VM Import Manifest> .
 --
 module Network.AWS.EC2.ImportVolume
     (
@@ -50,18 +50,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for ImportVolume.
---
---
---
--- /See:/ 'importVolume' smart constructor.
-data ImportVolume = ImportVolume'
-  { _ivDescription      :: !(Maybe Text)
-  , _ivDryRun           :: !(Maybe Bool)
-  , _ivAvailabilityZone :: !Text
-  , _ivImage            :: !DiskImageDetail
-  , _ivVolume           :: !VolumeDetail
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'importVolume' smart constructor.
+data ImportVolume =
+  ImportVolume'
+    { _ivDescription      :: !(Maybe Text)
+    , _ivDryRun           :: !(Maybe Bool)
+    , _ivAvailabilityZone :: !Text
+    , _ivImage            :: !DiskImageDetail
+    , _ivVolume           :: !VolumeDetail
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ImportVolume' with the minimum fields required to make a request.
@@ -141,15 +139,13 @@ instance ToQuery ImportVolume where
                "AvailabilityZone" =: _ivAvailabilityZone,
                "Image" =: _ivImage, "Volume" =: _ivVolume]
 
--- | Contains the output for ImportVolume.
---
---
---
--- /See:/ 'importVolumeResponse' smart constructor.
-data ImportVolumeResponse = ImportVolumeResponse'
-  { _ivrsConversionTask :: !(Maybe ConversionTask)
-  , _ivrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'importVolumeResponse' smart constructor.
+data ImportVolumeResponse =
+  ImportVolumeResponse'
+    { _ivrsConversionTask :: !(Maybe ConversionTask)
+    , _ivrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ImportVolumeResponse' with the minimum fields required to make a request.

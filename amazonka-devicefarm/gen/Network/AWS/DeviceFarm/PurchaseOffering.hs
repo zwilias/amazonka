@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Immediately purchases offerings for an AWS account. Offerings renew with the latest total purchased quantity for an offering, unless the renewal was overridden. The API returns a @NotEligible@ error if the user is not permitted to invoke the operation. Please contact <mailto:aws-devicefarm-support@amazon.com aws-devicefarm-support@amazon.com> if you believe that you should be able to invoke this operation.
+-- Immediately purchases offerings for an AWS account. Offerings renew with the latest total purchased quantity for an offering, unless the renewal was overridden. The API returns a @NotEligible@ error if the user is not permitted to invoke the operation. If you must be able to invoke this operation, contact <mailto:aws-devicefarm-support@amazon.com aws-devicefarm-support@amazon.com> .
 --
 --
 module Network.AWS.DeviceFarm.PurchaseOffering
@@ -51,18 +51,20 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'purchaseOffering' smart constructor.
-data PurchaseOffering = PurchaseOffering'
-  { _poQuantity            :: !(Maybe Int)
-  , _poOfferingId          :: !(Maybe Text)
-  , _poOfferingPromotionId :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data PurchaseOffering =
+  PurchaseOffering'
+    { _poQuantity            :: !(Maybe Int)
+    , _poOfferingId          :: !(Maybe Text)
+    , _poOfferingPromotionId :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'PurchaseOffering' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'poQuantity' - The number of device slots you wish to purchase in an offering request.
+-- * 'poQuantity' - The number of device slots to purchase in an offering request.
 --
 -- * 'poOfferingId' - The ID of the offering.
 --
@@ -77,7 +79,7 @@ purchaseOffering =
     }
 
 
--- | The number of device slots you wish to purchase in an offering request.
+-- | The number of device slots to purchase in an offering request.
 poQuantity :: Lens' PurchaseOffering (Maybe Int)
 poQuantity = lens _poQuantity (\ s a -> s{_poQuantity = a})
 
@@ -128,15 +130,17 @@ instance ToPath PurchaseOffering where
 instance ToQuery PurchaseOffering where
         toQuery = const mempty
 
--- | The result of the purchase offering (e.g., success or failure).
+-- | The result of the purchase offering (for example, success or failure).
 --
 --
 --
 -- /See:/ 'purchaseOfferingResponse' smart constructor.
-data PurchaseOfferingResponse = PurchaseOfferingResponse'
-  { _porsOfferingTransaction :: !(Maybe OfferingTransaction)
-  , _porsResponseStatus      :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data PurchaseOfferingResponse =
+  PurchaseOfferingResponse'
+    { _porsOfferingTransaction :: !(Maybe OfferingTransaction)
+    , _porsResponseStatus      :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'PurchaseOfferingResponse' with the minimum fields required to make a request.

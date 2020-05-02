@@ -41,7 +41,7 @@
 --
 --
 --
--- For information about deleting a distribution using the CloudFront console, see <http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html Deleting a Distribution> in the /Amazon CloudFront Developer Guide/ .
+-- For information about deleting a distribution using the CloudFront console, see <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html Deleting a Distribution> in the /Amazon CloudFront Developer Guide/ .
 --
 module Network.AWS.CloudFront.DeleteStreamingDistribution
     (
@@ -69,10 +69,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteStreamingDistribution' smart constructor.
-data DeleteStreamingDistribution = DeleteStreamingDistribution'
-  { _dsdIfMatch :: !(Maybe Text)
-  , _dsdId      :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DeleteStreamingDistribution =
+  DeleteStreamingDistribution'
+    { _dsdIfMatch :: !(Maybe Text)
+    , _dsdId      :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteStreamingDistribution' with the minimum fields required to make a request.
@@ -115,7 +117,7 @@ instance ToHeaders DeleteStreamingDistribution where
 instance ToPath DeleteStreamingDistribution where
         toPath DeleteStreamingDistribution'{..}
           = mconcat
-              ["/2017-10-30/streaming-distribution/", toBS _dsdId]
+              ["/2019-03-26/streaming-distribution/", toBS _dsdId]
 
 instance ToQuery DeleteStreamingDistribution where
         toQuery = const mempty

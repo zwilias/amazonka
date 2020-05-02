@@ -35,6 +35,12 @@
 --
 --     * @ListEnvironments@ : Gets a list of environment identifiers.
 --
+--     * @ListTagsForResource@ : Gets the tags for an environment.
+--
+--     * @TagResource@ : Adds tags to an environment.
+--
+--     * @UntagResource@ : Removes tags from an environment.
+--
 --     * @UpdateEnvironment@ : Changes the settings of an existing environment.
 --
 --     * @UpdateEnvironmentMembership@ : Changes the settings of an existing environment member for an environment.
@@ -88,14 +94,23 @@ module Network.AWS.Cloud9
     -- ** DescribeEnvironmentStatus
     , module Network.AWS.Cloud9.DescribeEnvironmentStatus
 
+    -- ** ListTagsForResource
+    , module Network.AWS.Cloud9.ListTagsForResource
+
     -- ** CreateEnvironmentEC
     , module Network.AWS.Cloud9.CreateEnvironmentEC
+
+    -- ** TagResource
+    , module Network.AWS.Cloud9.TagResource
 
     -- ** CreateEnvironmentMembership
     , module Network.AWS.Cloud9.CreateEnvironmentMembership
 
     -- ** DescribeEnvironments
     , module Network.AWS.Cloud9.DescribeEnvironments
+
+    -- ** UntagResource
+    , module Network.AWS.Cloud9.UntagResource
 
     -- ** DeleteEnvironmentMembership
     , module Network.AWS.Cloud9.DeleteEnvironmentMembership
@@ -107,6 +122,9 @@ module Network.AWS.Cloud9
     , module Network.AWS.Cloud9.DescribeEnvironmentMemberships
 
     -- * Types
+
+    -- ** EnvironmentLifecycleStatus
+    , EnvironmentLifecycleStatus (..)
 
     -- ** EnvironmentStatus
     , EnvironmentStatus (..)
@@ -124,11 +142,19 @@ module Network.AWS.Cloud9
     , Environment
     , environment
     , eArn
+    , eLifecycle
     , eOwnerARN
     , eName
     , eId
     , eType
     , eDescription
+
+    -- ** EnvironmentLifecycle
+    , EnvironmentLifecycle
+    , environmentLifecycle
+    , elStatus
+    , elFailureResource
+    , elReason
 
     -- ** EnvironmentMember
     , EnvironmentMember
@@ -138,6 +164,12 @@ module Network.AWS.Cloud9
     , emUserARN
     , emPermissions
     , emEnvironmentId
+
+    -- ** Tag
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
     ) where
 
 import Network.AWS.Cloud9.CreateEnvironmentEC
@@ -148,7 +180,10 @@ import Network.AWS.Cloud9.DescribeEnvironmentMemberships
 import Network.AWS.Cloud9.DescribeEnvironments
 import Network.AWS.Cloud9.DescribeEnvironmentStatus
 import Network.AWS.Cloud9.ListEnvironments
+import Network.AWS.Cloud9.ListTagsForResource
+import Network.AWS.Cloud9.TagResource
 import Network.AWS.Cloud9.Types
+import Network.AWS.Cloud9.UntagResource
 import Network.AWS.Cloud9.UpdateEnvironment
 import Network.AWS.Cloud9.UpdateEnvironmentMembership
 import Network.AWS.Cloud9.Waiters

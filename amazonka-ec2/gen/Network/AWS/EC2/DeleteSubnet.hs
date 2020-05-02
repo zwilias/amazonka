@@ -42,15 +42,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for DeleteSubnet.
---
---
---
--- /See:/ 'deleteSubnet' smart constructor.
-data DeleteSubnet = DeleteSubnet'
-  { _ddDryRun   :: !(Maybe Bool)
-  , _ddSubnetId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'deleteSubnet' smart constructor.
+data DeleteSubnet =
+  DeleteSubnet'
+    { _ddDryRun   :: !(Maybe Bool)
+    , _ddSubnetId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteSubnet' with the minimum fields required to make a request.

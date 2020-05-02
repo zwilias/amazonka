@@ -54,10 +54,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listRuns' smart constructor.
-data ListRuns = ListRuns'
-  { _lrNextToken :: !(Maybe Text)
-  , _lrArn       :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListRuns =
+  ListRuns'
+    { _lrNextToken :: !(Maybe Text)
+    , _lrArn       :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListRuns' with the minimum fields required to make a request.
@@ -129,11 +131,13 @@ instance ToQuery ListRuns where
 --
 --
 -- /See:/ 'listRunsResponse' smart constructor.
-data ListRunsResponse = ListRunsResponse'
-  { _lrrsRuns           :: !(Maybe [Run])
-  , _lrrsNextToken      :: !(Maybe Text)
-  , _lrrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListRunsResponse =
+  ListRunsResponse'
+    { _lrrsRuns           :: !(Maybe [Run])
+    , _lrrsNextToken      :: !(Maybe Text)
+    , _lrrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListRunsResponse' with the minimum fields required to make a request.
@@ -142,7 +146,7 @@ data ListRunsResponse = ListRunsResponse'
 --
 -- * 'lrrsRuns' - Information about the runs.
 --
--- * 'lrrsNextToken' - If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.
+-- * 'lrrsNextToken' - If the number of items that are returned is significantly large, this is an identifier that is also returned. It can be used in a subsequent call to this operation to return the next set of items in the list.
 --
 -- * 'lrrsResponseStatus' - -- | The response status code.
 listRunsResponse
@@ -160,7 +164,7 @@ listRunsResponse pResponseStatus_ =
 lrrsRuns :: Lens' ListRunsResponse [Run]
 lrrsRuns = lens _lrrsRuns (\ s a -> s{_lrrsRuns = a}) . _Default . _Coerce
 
--- | If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.
+-- | If the number of items that are returned is significantly large, this is an identifier that is also returned. It can be used in a subsequent call to this operation to return the next set of items in the list.
 lrrsNextToken :: Lens' ListRunsResponse (Maybe Text)
 lrrsNextToken = lens _lrrsNextToken (\ s a -> s{_lrrsNextToken = a})
 

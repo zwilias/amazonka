@@ -45,13 +45,26 @@ library
 
     exposed-modules:
           Network.AWS.CostExplorer
+        , Network.AWS.CostExplorer.CreateCostCategoryDefinition
+        , Network.AWS.CostExplorer.DeleteCostCategoryDefinition
+        , Network.AWS.CostExplorer.DescribeCostCategoryDefinition
         , Network.AWS.CostExplorer.GetCostAndUsage
+        , Network.AWS.CostExplorer.GetCostAndUsageWithResources
+        , Network.AWS.CostExplorer.GetCostForecast
         , Network.AWS.CostExplorer.GetDimensionValues
         , Network.AWS.CostExplorer.GetReservationCoverage
         , Network.AWS.CostExplorer.GetReservationPurchaseRecommendation
         , Network.AWS.CostExplorer.GetReservationUtilization
+        , Network.AWS.CostExplorer.GetRightsizingRecommendation
+        , Network.AWS.CostExplorer.GetSavingsPlansCoverage
+        , Network.AWS.CostExplorer.GetSavingsPlansPurchaseRecommendation
+        , Network.AWS.CostExplorer.GetSavingsPlansUtilization
+        , Network.AWS.CostExplorer.GetSavingsPlansUtilizationDetails
         , Network.AWS.CostExplorer.GetTags
+        , Network.AWS.CostExplorer.GetUsageForecast
+        , Network.AWS.CostExplorer.ListCostCategoryDefinitions
         , Network.AWS.CostExplorer.Types
+        , Network.AWS.CostExplorer.UpdateCostCategoryDefinition
         , Network.AWS.CostExplorer.Waiters
 
     other-modules:

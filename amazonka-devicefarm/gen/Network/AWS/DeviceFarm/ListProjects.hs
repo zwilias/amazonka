@@ -54,10 +54,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listProjects' smart constructor.
-data ListProjects = ListProjects'
-  { _lpArn       :: !(Maybe Text)
-  , _lpNextToken :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListProjects =
+  ListProjects'
+    { _lpArn       :: !(Maybe Text)
+    , _lpNextToken :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListProjects' with the minimum fields required to make a request.
@@ -128,18 +130,20 @@ instance ToQuery ListProjects where
 --
 --
 -- /See:/ 'listProjectsResponse' smart constructor.
-data ListProjectsResponse = ListProjectsResponse'
-  { _lprsNextToken      :: !(Maybe Text)
-  , _lprsProjects       :: !(Maybe [Project])
-  , _lprsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListProjectsResponse =
+  ListProjectsResponse'
+    { _lprsNextToken      :: !(Maybe Text)
+    , _lprsProjects       :: !(Maybe [Project])
+    , _lprsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListProjectsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lprsNextToken' - If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.
+-- * 'lprsNextToken' - If the number of items that are returned is significantly large, this is an identifier that is also returned. It can be used in a subsequent call to this operation to return the next set of items in the list.
 --
 -- * 'lprsProjects' - Information about the projects.
 --
@@ -155,7 +159,7 @@ listProjectsResponse pResponseStatus_ =
     }
 
 
--- | If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.
+-- | If the number of items that are returned is significantly large, this is an identifier that is also returned. It can be used in a subsequent call to this operation to return the next set of items in the list.
 lprsNextToken :: Lens' ListProjectsResponse (Maybe Text)
 lprsNextToken = lens _lprsNextToken (\ s a -> s{_lprsNextToken = a})
 

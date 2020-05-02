@@ -53,15 +53,17 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createLaunchTemplateVersion' smart constructor.
-data CreateLaunchTemplateVersion = CreateLaunchTemplateVersion'
-  { _cltvLaunchTemplateName :: !(Maybe Text)
-  , _cltvClientToken        :: !(Maybe Text)
-  , _cltvLaunchTemplateId   :: !(Maybe Text)
-  , _cltvVersionDescription :: !(Maybe Text)
-  , _cltvSourceVersion      :: !(Maybe Text)
-  , _cltvDryRun             :: !(Maybe Bool)
-  , _cltvLaunchTemplateData :: !RequestLaunchTemplateData
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreateLaunchTemplateVersion =
+  CreateLaunchTemplateVersion'
+    { _cltvLaunchTemplateName :: !(Maybe Text)
+    , _cltvClientToken        :: !(Maybe Text)
+    , _cltvLaunchTemplateId   :: !(Maybe Text)
+    , _cltvVersionDescription :: !(Maybe Text)
+    , _cltvSourceVersion      :: !(Maybe Text)
+    , _cltvDryRun             :: !(Maybe Bool)
+    , _cltvLaunchTemplateData :: !RequestLaunchTemplateData
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateLaunchTemplateVersion' with the minimum fields required to make a request.
@@ -70,13 +72,13 @@ data CreateLaunchTemplateVersion = CreateLaunchTemplateVersion'
 --
 -- * 'cltvLaunchTemplateName' - The name of the launch template. You must specify either the launch template ID or launch template name in the request.
 --
--- * 'cltvClientToken' - Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html Ensuring Idempotency> .
+-- * 'cltvClientToken' - Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html Ensuring Idempotency> . Constraint: Maximum 128 ASCII characters.
 --
 -- * 'cltvLaunchTemplateId' - The ID of the launch template. You must specify either the launch template ID or launch template name in the request.
 --
 -- * 'cltvVersionDescription' - A description for the version of the launch template.
 --
--- * 'cltvSourceVersion' - The version number of the launch template version on which to base the new version. The new version inherits the same launch parameters as the source version, except for parameters that you specify in LaunchTemplateData.
+-- * 'cltvSourceVersion' - The version number of the launch template version on which to base the new version. The new version inherits the same launch parameters as the source version, except for parameters that you specify in @LaunchTemplateData@ . Snapshots applied to the block device mapping are ignored when creating a new version unless they are explicitly included.
 --
 -- * 'cltvDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
@@ -100,7 +102,7 @@ createLaunchTemplateVersion pLaunchTemplateData_ =
 cltvLaunchTemplateName :: Lens' CreateLaunchTemplateVersion (Maybe Text)
 cltvLaunchTemplateName = lens _cltvLaunchTemplateName (\ s a -> s{_cltvLaunchTemplateName = a})
 
--- | Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html Ensuring Idempotency> .
+-- | Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html Ensuring Idempotency> . Constraint: Maximum 128 ASCII characters.
 cltvClientToken :: Lens' CreateLaunchTemplateVersion (Maybe Text)
 cltvClientToken = lens _cltvClientToken (\ s a -> s{_cltvClientToken = a})
 
@@ -112,7 +114,7 @@ cltvLaunchTemplateId = lens _cltvLaunchTemplateId (\ s a -> s{_cltvLaunchTemplat
 cltvVersionDescription :: Lens' CreateLaunchTemplateVersion (Maybe Text)
 cltvVersionDescription = lens _cltvVersionDescription (\ s a -> s{_cltvVersionDescription = a})
 
--- | The version number of the launch template version on which to base the new version. The new version inherits the same launch parameters as the source version, except for parameters that you specify in LaunchTemplateData.
+-- | The version number of the launch template version on which to base the new version. The new version inherits the same launch parameters as the source version, except for parameters that you specify in @LaunchTemplateData@ . Snapshots applied to the block device mapping are ignored when creating a new version unless they are explicitly included.
 cltvSourceVersion :: Lens' CreateLaunchTemplateVersion (Maybe Text)
 cltvSourceVersion = lens _cltvSourceVersion (\ s a -> s{_cltvSourceVersion = a})
 
@@ -160,10 +162,12 @@ instance ToQuery CreateLaunchTemplateVersion where
                "LaunchTemplateData" =: _cltvLaunchTemplateData]
 
 -- | /See:/ 'createLaunchTemplateVersionResponse' smart constructor.
-data CreateLaunchTemplateVersionResponse = CreateLaunchTemplateVersionResponse'
-  { _cltvrsLaunchTemplateVersion :: !(Maybe LaunchTemplateVersion)
-  , _cltvrsResponseStatus        :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreateLaunchTemplateVersionResponse =
+  CreateLaunchTemplateVersionResponse'
+    { _cltvrsLaunchTemplateVersion :: !(Maybe LaunchTemplateVersion)
+    , _cltvrsResponseStatus        :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateLaunchTemplateVersionResponse' with the minimum fields required to make a request.

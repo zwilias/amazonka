@@ -19,11 +19,14 @@ module Network.AWS.CloudTrail.Types
     , _InvalidTimeRangeException
     , _InsufficientS3BucketPolicyException
     , _MaximumNumberOfTrailsExceededException
+    , _InsufficientDependencyServiceAccessPermissionException
     , _UnsupportedOperationException
+    , _InvalidEventCategoryException
     , _KMSKeyDisabledException
     , _InsufficientEncryptionPolicyException
     , _InsufficientSNSTopicPolicyException
     , _InvalidCloudWatchLogsRoleARNException
+    , _CloudTrailAccessNotEnabledException
     , _TagsLimitExceededException
     , _CloudTrailARNInvalidException
     , _InvalidLookupAttributesException
@@ -31,8 +34,11 @@ module Network.AWS.CloudTrail.Types
     , _InvalidSNSTopicNameException
     , _ResourceTypeNotSupportedException
     , _CloudWatchLogsDeliveryUnavailableException
+    , _OrganizationsNotInUseException
     , _KMSKeyNotFoundException
     , _TrailNotFoundException
+    , _InsightNotEnabledException
+    , _NotOrganizationMasterAccountException
     , _InvalidEventSelectorsException
     , _TrailNotProvidedException
     , _InvalidS3BucketNameException
@@ -45,11 +51,19 @@ module Network.AWS.CloudTrail.Types
     , _InvalidTokenException
     , _InvalidMaxResultsException
     , _TrailAlreadyExistsException
+    , _OrganizationNotInAllFeaturesModeException
+    , _InvalidInsightSelectorsException
     , _InvalidS3PrefixException
     , _ResourceNotFoundException
     , _InvalidParameterCombinationException
     , _InvalidKMSKeyIdException
     , _InvalidHomeRegionException
+
+    -- * EventCategory
+    , EventCategory (..)
+
+    -- * InsightType
+    , InsightType (..)
 
     -- * LookupAttributeKey
     , LookupAttributeKey (..)
@@ -71,6 +85,8 @@ module Network.AWS.CloudTrail.Types
     , eEventTime
     , eCloudTrailEvent
     , eEventName
+    , eReadOnly
+    , eAccessKeyId
     , eEventSource
     , eEventId
 
@@ -79,7 +95,13 @@ module Network.AWS.CloudTrail.Types
     , eventSelector
     , esDataResources
     , esReadWriteType
+    , esExcludeManagementEventSources
     , esIncludeManagementEvents
+
+    -- * InsightSelector
+    , InsightSelector
+    , insightSelector
+    , isInsightType
 
     -- * LookupAttribute
     , LookupAttribute
@@ -119,6 +141,7 @@ module Network.AWS.CloudTrail.Types
     , tLogFileValidationEnabled
     , tTrailARN
     , tS3KeyPrefix
+    , tHasInsightSelectors
     , tSNSTopicARN
     , tSNSTopicName
     , tCloudWatchLogsLogGroupARN
@@ -127,9 +150,17 @@ module Network.AWS.CloudTrail.Types
     , tName
     , tIncludeGlobalServiceEvents
     , tHasCustomEventSelectors
+    , tIsOrganizationTrail
     , tCloudWatchLogsRoleARN
     , tS3BucketName
     , tIsMultiRegionTrail
+
+    -- * TrailInfo
+    , TrailInfo
+    , trailInfo
+    , tiTrailARN
+    , tiHomeRegion
+    , tiName
     ) where
 
 import Network.AWS.CloudTrail.Types.Product
@@ -201,6 +232,16 @@ _MaximumNumberOfTrailsExceededException =
   _MatchServiceError cloudTrail "MaximumNumberOfTrailsExceededException"
 
 
+-- | This exception is thrown when the IAM user or role that is used to create the organization trail is lacking one or more required permissions for creating an organization trail in a required service. For more information, see <https://docs.aws.amazon.com/awscloudtrail/latest/userguide/creating-an-organizational-trail-prepare.html Prepare For Creating a Trail For Your Organization> .
+--
+--
+_InsufficientDependencyServiceAccessPermissionException :: AsError a => Getting (First ServiceError) a ServiceError
+_InsufficientDependencyServiceAccessPermissionException =
+  _MatchServiceError
+    cloudTrail
+    "InsufficientDependencyServiceAccessPermissionException"
+
+
 -- | This exception is thrown when the requested operation is not supported.
 --
 --
@@ -209,7 +250,15 @@ _UnsupportedOperationException =
   _MatchServiceError cloudTrail "UnsupportedOperationException"
 
 
--- | This exception is deprecated.
+-- | Occurs if an event category that is not valid is specified as a value of @EventCategory@ .
+--
+--
+_InvalidEventCategoryException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidEventCategoryException =
+  _MatchServiceError cloudTrail "InvalidEventCategoryException"
+
+
+-- | This exception is no longer in use.
 --
 --
 _KMSKeyDisabledException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -241,6 +290,14 @@ _InvalidCloudWatchLogsRoleARNException =
   _MatchServiceError cloudTrail "InvalidCloudWatchLogsRoleArnException"
 
 
+-- | This exception is thrown when trusted access has not been enabled between AWS CloudTrail and AWS Organizations. For more information, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html Enabling Trusted Access with Other AWS Services> and <https://docs.aws.amazon.com/awscloudtrail/latest/userguide/creating-an-organizational-trail-prepare.html Prepare For Creating a Trail For Your Organization> .
+--
+--
+_CloudTrailAccessNotEnabledException :: AsError a => Getting (First ServiceError) a ServiceError
+_CloudTrailAccessNotEnabledException =
+  _MatchServiceError cloudTrail "CloudTrailAccessNotEnabledException"
+
+
 -- | The number of tags per trail has exceeded the permitted amount. Currently, the limit is 50.
 --
 --
@@ -252,7 +309,7 @@ _TagsLimitExceededException =
 -- | This exception is thrown when an operation is called with an invalid trail ARN. The format of a trail ARN is:
 --
 --
--- @arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail@
+-- @arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail@
 --
 _CloudTrailARNInvalidException :: AsError a => Getting (First ServiceError) a ServiceError
 _CloudTrailARNInvalidException =
@@ -311,6 +368,14 @@ _CloudWatchLogsDeliveryUnavailableException =
   _MatchServiceError cloudTrail "CloudWatchLogsDeliveryUnavailableException"
 
 
+-- | This exception is thrown when the request is made from an AWS account that is not a member of an organization. To make this request, sign in using the credentials of an account that belongs to an organization.
+--
+--
+_OrganizationsNotInUseException :: AsError a => Getting (First ServiceError) a ServiceError
+_OrganizationsNotInUseException =
+  _MatchServiceError cloudTrail "OrganizationsNotInUseException"
+
+
 -- | This exception is thrown when the KMS key does not exist, or when the S3 bucket and the KMS key are not in the same region.
 --
 --
@@ -326,12 +391,30 @@ _TrailNotFoundException :: AsError a => Getting (First ServiceError) a ServiceEr
 _TrailNotFoundException = _MatchServiceError cloudTrail "TrailNotFoundException"
 
 
--- | This exception is thrown when the @PutEventSelectors@ operation is called with an invalid number of event selectors, data resources, or an invalid value for a parameter:
+-- | If you run @GetInsightSelectors@ on a trail that does not have Insights events enabled, the operation throws the exception @InsightNotEnabledException@ .
 --
+--
+_InsightNotEnabledException :: AsError a => Getting (First ServiceError) a ServiceError
+_InsightNotEnabledException =
+  _MatchServiceError cloudTrail "InsightNotEnabledException"
+
+
+-- | This exception is thrown when the AWS account making the request to create or update an organization trail is not the master account for an organization in AWS Organizations. For more information, see <https://docs.aws.amazon.com/awscloudtrail/latest/userguide/creating-an-organizational-trail-prepare.html Prepare For Creating a Trail For Your Organization> .
+--
+--
+_NotOrganizationMasterAccountException :: AsError a => Getting (First ServiceError) a ServiceError
+_NotOrganizationMasterAccountException =
+  _MatchServiceError cloudTrail "NotOrganizationMasterAccountException"
+
+
+-- | This exception is thrown when the @PutEventSelectors@ operation is called with a number of event selectors or data resources that is not valid. The combination of event selectors and data resources is not valid. A trail can have up to 5 event selectors. A trail is limited to 250 data resources. These data resources can be distributed across event selectors, but the overall total cannot exceed 250.
+--
+--
+-- You can:
 --
 --     * Specify a valid number of event selectors (1 to 5) for a trail.
 --
---     * Specify a valid number of data resources (1 to 250) for an event selector.
+--     * Specify a valid number of data resources (1 to 250) for an event selector. The limit of number of resources on an individual event selector is configurable up to 250. However, this upper limit is allowed only if the total number of data resources does not exceed 250 across all event selectors for a trail.
 --
 --     * Specify a valid value for a parameter. For example, specifying the @ReadWriteType@ parameter with a value of @read-only@ is invalid.
 --
@@ -342,7 +425,7 @@ _InvalidEventSelectorsException =
   _MatchServiceError cloudTrail "InvalidEventSelectorsException"
 
 
--- | This exception is deprecated.
+-- | This exception is no longer in use.
 --
 --
 _TrailNotProvidedException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -389,7 +472,7 @@ _InvalidNextTokenException =
   _MatchServiceError cloudTrail "InvalidNextTokenException"
 
 
--- | This exception is thrown when the key or value specified for the tag does not match the regular expression @^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$@ .
+-- | This exception is thrown when the specified tag key or values are not valid. It can also occur if there are duplicate tags or too many tags on the resource.
 --
 --
 _InvalidTagParameterException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -426,6 +509,22 @@ _InvalidMaxResultsException =
 _TrailAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
 _TrailAlreadyExistsException =
   _MatchServiceError cloudTrail "TrailAlreadyExistsException"
+
+
+-- | This exception is thrown when AWS Organizations is not configured to support all features. All features must be enabled in AWS Organization to support creating an organization trail. For more information, see <https://docs.aws.amazon.com/awscloudtrail/latest/userguide/creating-an-organizational-trail-prepare.html Prepare For Creating a Trail For Your Organization> .
+--
+--
+_OrganizationNotInAllFeaturesModeException :: AsError a => Getting (First ServiceError) a ServiceError
+_OrganizationNotInAllFeaturesModeException =
+  _MatchServiceError cloudTrail "OrganizationNotInAllFeaturesModeException"
+
+
+-- | The formatting or syntax of the @InsightSelectors@ JSON statement in your @PutInsightSelectors@ or @GetInsightSelectors@ request is not valid, or the specified insight type in the @InsightSelectors@ statement is not a valid insight type.
+--
+--
+_InvalidInsightSelectorsException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidInsightSelectorsException =
+  _MatchServiceError cloudTrail "InvalidInsightSelectorsException"
 
 
 -- | This exception is thrown when the provided S3 prefix is not valid.

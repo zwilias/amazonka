@@ -39,11 +39,13 @@ module Network.AWS.APIGateway.GetStage
     , sAccessLogSettings
     , sDocumentationVersion
     , sClientCertificateId
+    , sTracingEnabled
     , sCreatedDate
     , sCacheClusterStatus
     , sMethodSettings
     , sLastUpdatedDate
     , sCacheClusterSize
+    , sWebACLARN
     , sCanarySettings
     , sCacheClusterEnabled
     , sStageName
@@ -63,10 +65,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getStage' smart constructor.
-data GetStage = GetStage'
-  { _gssRestAPIId :: !Text
-  , _gssStageName :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetStage =
+  GetStage'
+    { _gssRestAPIId :: !Text
+    , _gssStageName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetStage' with the minimum fields required to make a request.

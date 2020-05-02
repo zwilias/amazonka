@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Describes the data feed for Spot Instances. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html Spot Instance Data Feed> in the /Amazon EC2 User Guide for Linux Instances/ .
+-- Describes the data feed for Spot Instances. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html Spot Instance Data Feed> in the /Amazon EC2 User Guide for Linux Instances/ .
 --
 --
 module Network.AWS.EC2.DescribeSpotDatafeedSubscription
@@ -49,9 +49,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeSpotDatafeedSubscription' smart constructor.
-newtype DescribeSpotDatafeedSubscription = DescribeSpotDatafeedSubscription'
-  { _dsdsDryRun :: Maybe Bool
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype DescribeSpotDatafeedSubscription =
+  DescribeSpotDatafeedSubscription'
+    { _dsdsDryRun :: Maybe Bool
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeSpotDatafeedSubscription' with the minimum fields required to make a request.
@@ -109,10 +111,12 @@ instance ToQuery DescribeSpotDatafeedSubscription
 --
 --
 -- /See:/ 'describeSpotDatafeedSubscriptionResponse' smart constructor.
-data DescribeSpotDatafeedSubscriptionResponse = DescribeSpotDatafeedSubscriptionResponse'
-  { _dsdsrsSpotDatafeedSubscription :: !(Maybe SpotDatafeedSubscription)
-  , _dsdsrsResponseStatus           :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeSpotDatafeedSubscriptionResponse =
+  DescribeSpotDatafeedSubscriptionResponse'
+    { _dsdsrsSpotDatafeedSubscription :: !(Maybe SpotDatafeedSubscription)
+    , _dsdsrsResponseStatus           :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeSpotDatafeedSubscriptionResponse' with the minimum fields required to make a request.

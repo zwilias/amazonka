@@ -21,6 +21,8 @@
 -- Describes one or more of your job queues.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.Batch.DescribeJobQueues
     (
     -- * Creating a Request
@@ -43,16 +45,19 @@ module Network.AWS.Batch.DescribeJobQueues
 import Network.AWS.Batch.Types
 import Network.AWS.Batch.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeJobQueues' smart constructor.
-data DescribeJobQueues = DescribeJobQueues'
-  { _djqNextToken  :: !(Maybe Text)
-  , _djqJobQueues  :: !(Maybe [Text])
-  , _djqMaxResults :: !(Maybe Int)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeJobQueues =
+  DescribeJobQueues'
+    { _djqNextToken  :: !(Maybe Text)
+    , _djqJobQueues  :: !(Maybe [Text])
+    , _djqMaxResults :: !(Maybe Int)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeJobQueues' with the minimum fields required to make a request.
@@ -82,6 +87,13 @@ djqJobQueues = lens _djqJobQueues (\ s a -> s{_djqJobQueues = a}) . _Default . _
 -- | The maximum number of results returned by @DescribeJobQueues@ in paginated output. When this parameter is used, @DescribeJobQueues@ only returns @maxResults@ results in a single page along with a @nextToken@ response element. The remaining results of the initial request can be seen by sending another @DescribeJobQueues@ request with the returned @nextToken@ value. This value can be between 1 and 100. If this parameter is not used, then @DescribeJobQueues@ returns up to 100 results and a @nextToken@ value if applicable.
 djqMaxResults :: Lens' DescribeJobQueues (Maybe Int)
 djqMaxResults = lens _djqMaxResults (\ s a -> s{_djqMaxResults = a})
+
+instance AWSPager DescribeJobQueues where
+        page rq rs
+          | stop (rs ^. djqsrsNextToken) = Nothing
+          | stop (rs ^. djqsrsJobQueues) = Nothing
+          | otherwise =
+            Just $ rq & djqNextToken .~ rs ^. djqsrsNextToken
 
 instance AWSRequest DescribeJobQueues where
         type Rs DescribeJobQueues = DescribeJobQueuesResponse
@@ -120,11 +132,13 @@ instance ToQuery DescribeJobQueues where
         toQuery = const mempty
 
 -- | /See:/ 'describeJobQueuesResponse' smart constructor.
-data DescribeJobQueuesResponse = DescribeJobQueuesResponse'
-  { _djqsrsNextToken      :: !(Maybe Text)
-  , _djqsrsJobQueues      :: !(Maybe [JobQueueDetail])
-  , _djqsrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeJobQueuesResponse =
+  DescribeJobQueuesResponse'
+    { _djqsrsNextToken      :: !(Maybe Text)
+    , _djqsrsJobQueues      :: !(Maybe [JobQueueDetail])
+    , _djqsrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeJobQueuesResponse' with the minimum fields required to make a request.

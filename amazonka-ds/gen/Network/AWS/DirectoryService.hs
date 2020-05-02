@@ -23,6 +23,15 @@ module Network.AWS.DirectoryService
     -- * Errors
     -- $errors
 
+    -- ** CertificateLimitExceededException
+    , _CertificateLimitExceededException
+
+    -- ** CertificateAlreadyExistsException
+    , _CertificateAlreadyExistsException
+
+    -- ** AccessDeniedException
+    , _AccessDeniedException
+
     -- ** DirectoryUnavailableException
     , _DirectoryUnavailableException
 
@@ -38,17 +47,44 @@ module Network.AWS.DirectoryService
     -- ** EntityAlreadyExistsException
     , _EntityAlreadyExistsException
 
+    -- ** NoAvailableCertificateException
+    , _NoAvailableCertificateException
+
+    -- ** UserDoesNotExistException
+    , _UserDoesNotExistException
+
     -- ** DirectoryLimitExceededException
     , _DirectoryLimitExceededException
+
+    -- ** InvalidLDAPSStatusException
+    , _InvalidLDAPSStatusException
+
+    -- ** InvalidCertificateException
+    , _InvalidCertificateException
+
+    -- ** CertificateInUseException
+    , _CertificateInUseException
 
     -- ** IPRouteLimitExceededException
     , _IPRouteLimitExceededException
 
+    -- ** ShareLimitExceededException
+    , _ShareLimitExceededException
+
     -- ** EntityDoesNotExistException
     , _EntityDoesNotExistException
 
+    -- ** OrganizationsException
+    , _OrganizationsException
+
+    -- ** InvalidTargetException
+    , _InvalidTargetException
+
     -- ** InsufficientPermissionsException
     , _InsufficientPermissionsException
+
+    -- ** DirectoryNotSharedException
+    , _DirectoryNotSharedException
 
     -- ** InvalidNextTokenException
     , _InvalidNextTokenException
@@ -62,17 +98,32 @@ module Network.AWS.DirectoryService
     -- ** DomainControllerLimitExceededException
     , _DomainControllerLimitExceededException
 
+    -- ** DirectoryDoesNotExistException
+    , _DirectoryDoesNotExistException
+
     -- ** TagLimitExceededException
     , _TagLimitExceededException
 
     -- ** ClientException
     , _ClientException
 
+    -- ** DirectoryAlreadySharedException
+    , _DirectoryAlreadySharedException
+
+    -- ** CertificateDoesNotExistException
+    , _CertificateDoesNotExistException
+
+    -- ** InvalidPasswordException
+    , _InvalidPasswordException
+
     -- * Waiters
     -- $waiters
 
     -- * Operations
     -- $operations
+
+    -- ** ShareDirectory
+    , module Network.AWS.DirectoryService.ShareDirectory
 
     -- ** UpdateNumberOfDomainControllers
     , module Network.AWS.DirectoryService.UpdateNumberOfDomainControllers
@@ -86,26 +137,35 @@ module Network.AWS.DirectoryService
     -- ** RegisterEventTopic
     , module Network.AWS.DirectoryService.RegisterEventTopic
 
+    -- ** RegisterCertificate
+    , module Network.AWS.DirectoryService.RegisterCertificate
+
     -- ** ConnectDirectory
     , module Network.AWS.DirectoryService.ConnectDirectory
+
+    -- ** DescribeLDAPSSettings
+    , module Network.AWS.DirectoryService.DescribeLDAPSSettings
 
     -- ** CreateAlias
     , module Network.AWS.DirectoryService.CreateAlias
 
-    -- ** DescribeDirectories
+    -- ** DescribeDirectories (Paginated)
     , module Network.AWS.DirectoryService.DescribeDirectories
 
     -- ** AddIPRoutes
     , module Network.AWS.DirectoryService.AddIPRoutes
 
-    -- ** ListTagsForResource
+    -- ** ListTagsForResource (Paginated)
     , module Network.AWS.DirectoryService.ListTagsForResource
 
-    -- ** DescribeTrusts
+    -- ** DescribeTrusts (Paginated)
     , module Network.AWS.DirectoryService.DescribeTrusts
 
     -- ** DeleteTrust
     , module Network.AWS.DirectoryService.DeleteTrust
+
+    -- ** UpdateTrust
+    , module Network.AWS.DirectoryService.UpdateTrust
 
     -- ** CreateMicrosoftAD
     , module Network.AWS.DirectoryService.CreateMicrosoftAD
@@ -116,11 +176,20 @@ module Network.AWS.DirectoryService
     -- ** CreateDirectory
     , module Network.AWS.DirectoryService.CreateDirectory
 
+    -- ** AcceptSharedDirectory
+    , module Network.AWS.DirectoryService.AcceptSharedDirectory
+
+    -- ** CreateLogSubscription
+    , module Network.AWS.DirectoryService.CreateLogSubscription
+
     -- ** RemoveTagsFromResource
     , module Network.AWS.DirectoryService.RemoveTagsFromResource
 
     -- ** DescribeEventTopics
     , module Network.AWS.DirectoryService.DescribeEventTopics
+
+    -- ** ResetUserPassword
+    , module Network.AWS.DirectoryService.ResetUserPassword
 
     -- ** UpdateConditionalForwarder
     , module Network.AWS.DirectoryService.UpdateConditionalForwarder
@@ -128,26 +197,44 @@ module Network.AWS.DirectoryService
     -- ** DeleteConditionalForwarder
     , module Network.AWS.DirectoryService.DeleteConditionalForwarder
 
+    -- ** DisableLDAPS
+    , module Network.AWS.DirectoryService.DisableLDAPS
+
+    -- ** DeleteLogSubscription
+    , module Network.AWS.DirectoryService.DeleteLogSubscription
+
     -- ** EnableSSO
     , module Network.AWS.DirectoryService.EnableSSO
 
     -- ** CancelSchemaExtension
     , module Network.AWS.DirectoryService.CancelSchemaExtension
 
+    -- ** ListLogSubscriptions (Paginated)
+    , module Network.AWS.DirectoryService.ListLogSubscriptions
+
     -- ** EnableRadius
     , module Network.AWS.DirectoryService.EnableRadius
 
-    -- ** ListIPRoutes
+    -- ** ListIPRoutes (Paginated)
     , module Network.AWS.DirectoryService.ListIPRoutes
 
     -- ** AddTagsToResource
     , module Network.AWS.DirectoryService.AddTagsToResource
 
-    -- ** ListSchemaExtensions
+    -- ** ListSchemaExtensions (Paginated)
     , module Network.AWS.DirectoryService.ListSchemaExtensions
 
     -- ** DisableRadius
     , module Network.AWS.DirectoryService.DisableRadius
+
+    -- ** ListCertificates
+    , module Network.AWS.DirectoryService.ListCertificates
+
+    -- ** RejectSharedDirectory
+    , module Network.AWS.DirectoryService.RejectSharedDirectory
+
+    -- ** UnshareDirectory
+    , module Network.AWS.DirectoryService.UnshareDirectory
 
     -- ** RestoreFromSnapshot
     , module Network.AWS.DirectoryService.RestoreFromSnapshot
@@ -155,7 +242,7 @@ module Network.AWS.DirectoryService
     -- ** DescribeDomainControllers (Paginated)
     , module Network.AWS.DirectoryService.DescribeDomainControllers
 
-    -- ** DescribeSnapshots
+    -- ** DescribeSnapshots (Paginated)
     , module Network.AWS.DirectoryService.DescribeSnapshots
 
     -- ** RemoveIPRoutes
@@ -163,6 +250,9 @@ module Network.AWS.DirectoryService
 
     -- ** DeleteSnapshot
     , module Network.AWS.DirectoryService.DeleteSnapshot
+
+    -- ** DeregisterCertificate
+    , module Network.AWS.DirectoryService.DeregisterCertificate
 
     -- ** StartSchemaExtension
     , module Network.AWS.DirectoryService.StartSchemaExtension
@@ -176,8 +266,17 @@ module Network.AWS.DirectoryService
     -- ** CreateSnapshot
     , module Network.AWS.DirectoryService.CreateSnapshot
 
+    -- ** DescribeCertificate
+    , module Network.AWS.DirectoryService.DescribeCertificate
+
     -- ** CreateComputer
     , module Network.AWS.DirectoryService.CreateComputer
+
+    -- ** DescribeSharedDirectories (Paginated)
+    , module Network.AWS.DirectoryService.DescribeSharedDirectories
+
+    -- ** EnableLDAPS
+    , module Network.AWS.DirectoryService.EnableLDAPS
 
     -- ** DisableSSO
     , module Network.AWS.DirectoryService.DisableSSO
@@ -195,6 +294,9 @@ module Network.AWS.DirectoryService
     , module Network.AWS.DirectoryService.UpdateRadius
 
     -- * Types
+
+    -- ** CertificateState
+    , CertificateState (..)
 
     -- ** DirectoryEdition
     , DirectoryEdition (..)
@@ -214,6 +316,12 @@ module Network.AWS.DirectoryService
     -- ** IPRouteStatusMsg
     , IPRouteStatusMsg (..)
 
+    -- ** LDAPSStatus
+    , LDAPSStatus (..)
+
+    -- ** LDAPSType
+    , LDAPSType (..)
+
     -- ** RadiusAuthenticationProtocol
     , RadiusAuthenticationProtocol (..)
 
@@ -226,11 +334,23 @@ module Network.AWS.DirectoryService
     -- ** SchemaExtensionStatus
     , SchemaExtensionStatus (..)
 
+    -- ** SelectiveAuth
+    , SelectiveAuth (..)
+
+    -- ** ShareMethod
+    , ShareMethod (..)
+
+    -- ** ShareStatus
+    , ShareStatus (..)
+
     -- ** SnapshotStatus
     , SnapshotStatus (..)
 
     -- ** SnapshotType
     , SnapshotType (..)
+
+    -- ** TargetType
+    , TargetType (..)
 
     -- ** TopicStatus
     , TopicStatus (..)
@@ -249,6 +369,24 @@ module Network.AWS.DirectoryService
     , attribute
     , aValue
     , aName
+
+    -- ** Certificate
+    , Certificate
+    , certificate
+    , cState
+    , cCommonName
+    , cCertificateId
+    , cExpiryDateTime
+    , cRegisteredDateTime
+    , cStateReason
+
+    -- ** CertificateInfo
+    , CertificateInfo
+    , certificateInfo
+    , ciState
+    , ciCommonName
+    , ciCertificateId
+    , ciExpiryDateTime
 
     -- ** Computer
     , Computer
@@ -296,7 +434,9 @@ module Network.AWS.DirectoryService
     , ddRadiusSettings
     , ddLaunchTime
     , ddAlias
+    , ddShareStatus
     , ddName
+    , ddShareMethod
     , ddStageLastUpdatedDateTime
     , ddSSOEnabled
     , ddDNSIPAddrs
@@ -304,7 +444,9 @@ module Network.AWS.DirectoryService
     , ddType
     , ddStageReason
     , ddConnectSettings
+    , ddOwnerDirectoryDescription
     , ddDescription
+    , ddShareNotes
 
     -- ** DirectoryLimits
     , DirectoryLimits
@@ -372,6 +514,30 @@ module Network.AWS.DirectoryService
     , iriIPRouteStatusMsg
     , iriDescription
 
+    -- ** LDAPSSettingInfo
+    , LDAPSSettingInfo
+    , lDAPSSettingInfo
+    , ldapssiLastUpdatedDateTime
+    , ldapssiLDAPSStatusReason
+    , ldapssiLDAPSStatus
+
+    -- ** LogSubscription
+    , LogSubscription
+    , logSubscription
+    , lsDirectoryId
+    , lsLogGroupName
+    , lsSubscriptionCreatedDateTime
+
+    -- ** OwnerDirectoryDescription
+    , OwnerDirectoryDescription
+    , ownerDirectoryDescription
+    , oddRadiusStatus
+    , oddDirectoryId
+    , oddRadiusSettings
+    , oddAccountId
+    , oddDNSIPAddrs
+    , oddVPCSettings
+
     -- ** RadiusSettings
     , RadiusSettings
     , radiusSettings
@@ -394,6 +560,25 @@ module Network.AWS.DirectoryService
     , seiDescription
     , seiEndDateTime
     , seiStartDateTime
+
+    -- ** ShareTarget
+    , ShareTarget
+    , shareTarget
+    , stId
+    , stType
+
+    -- ** SharedDirectory
+    , SharedDirectory
+    , sharedDirectory
+    , sSharedAccountId
+    , sOwnerAccountId
+    , sLastUpdatedDateTime
+    , sShareStatus
+    , sShareMethod
+    , sOwnerDirectoryId
+    , sSharedDirectoryId
+    , sShareNotes
+    , sCreatedDateTime
 
     -- ** Snapshot
     , Snapshot
@@ -428,11 +613,19 @@ module Network.AWS.DirectoryService
     , tStateLastUpdatedDateTime
     , tTrustType
     , tTrustStateReason
+    , tSelectiveAuth
     , tRemoteDomainName
     , tTrustId
     , tCreatedDateTime
+
+    -- ** UnshareTarget
+    , UnshareTarget
+    , unshareTarget
+    , utId
+    , utType
     ) where
 
+import Network.AWS.DirectoryService.AcceptSharedDirectory
 import Network.AWS.DirectoryService.AddIPRoutes
 import Network.AWS.DirectoryService.AddTagsToResource
 import Network.AWS.DirectoryService.CancelSchemaExtension
@@ -441,38 +634,54 @@ import Network.AWS.DirectoryService.CreateAlias
 import Network.AWS.DirectoryService.CreateComputer
 import Network.AWS.DirectoryService.CreateConditionalForwarder
 import Network.AWS.DirectoryService.CreateDirectory
+import Network.AWS.DirectoryService.CreateLogSubscription
 import Network.AWS.DirectoryService.CreateMicrosoftAD
 import Network.AWS.DirectoryService.CreateSnapshot
 import Network.AWS.DirectoryService.CreateTrust
 import Network.AWS.DirectoryService.DeleteConditionalForwarder
 import Network.AWS.DirectoryService.DeleteDirectory
+import Network.AWS.DirectoryService.DeleteLogSubscription
 import Network.AWS.DirectoryService.DeleteSnapshot
 import Network.AWS.DirectoryService.DeleteTrust
+import Network.AWS.DirectoryService.DeregisterCertificate
 import Network.AWS.DirectoryService.DeregisterEventTopic
+import Network.AWS.DirectoryService.DescribeCertificate
 import Network.AWS.DirectoryService.DescribeConditionalForwarders
 import Network.AWS.DirectoryService.DescribeDirectories
 import Network.AWS.DirectoryService.DescribeDomainControllers
 import Network.AWS.DirectoryService.DescribeEventTopics
+import Network.AWS.DirectoryService.DescribeLDAPSSettings
+import Network.AWS.DirectoryService.DescribeSharedDirectories
 import Network.AWS.DirectoryService.DescribeSnapshots
 import Network.AWS.DirectoryService.DescribeTrusts
+import Network.AWS.DirectoryService.DisableLDAPS
 import Network.AWS.DirectoryService.DisableRadius
 import Network.AWS.DirectoryService.DisableSSO
+import Network.AWS.DirectoryService.EnableLDAPS
 import Network.AWS.DirectoryService.EnableRadius
 import Network.AWS.DirectoryService.EnableSSO
 import Network.AWS.DirectoryService.GetDirectoryLimits
 import Network.AWS.DirectoryService.GetSnapshotLimits
+import Network.AWS.DirectoryService.ListCertificates
 import Network.AWS.DirectoryService.ListIPRoutes
+import Network.AWS.DirectoryService.ListLogSubscriptions
 import Network.AWS.DirectoryService.ListSchemaExtensions
 import Network.AWS.DirectoryService.ListTagsForResource
+import Network.AWS.DirectoryService.RegisterCertificate
 import Network.AWS.DirectoryService.RegisterEventTopic
+import Network.AWS.DirectoryService.RejectSharedDirectory
 import Network.AWS.DirectoryService.RemoveIPRoutes
 import Network.AWS.DirectoryService.RemoveTagsFromResource
+import Network.AWS.DirectoryService.ResetUserPassword
 import Network.AWS.DirectoryService.RestoreFromSnapshot
+import Network.AWS.DirectoryService.ShareDirectory
 import Network.AWS.DirectoryService.StartSchemaExtension
 import Network.AWS.DirectoryService.Types
+import Network.AWS.DirectoryService.UnshareDirectory
 import Network.AWS.DirectoryService.UpdateConditionalForwarder
 import Network.AWS.DirectoryService.UpdateNumberOfDomainControllers
 import Network.AWS.DirectoryService.UpdateRadius
+import Network.AWS.DirectoryService.UpdateTrust
 import Network.AWS.DirectoryService.VerifyTrust
 import Network.AWS.DirectoryService.Waiters
 

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Lists the deployments in a deployment group for an application registered with the applicable IAM user or AWS account.
+-- Lists the deployments in a deployment group for an application registered with the IAM user or AWS account.
 --
 --
 --
@@ -57,13 +57,15 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listDeployments' smart constructor.
-data ListDeployments = ListDeployments'
-  { _ldCreateTimeRange     :: !(Maybe TimeRange)
-  , _ldNextToken           :: !(Maybe Text)
-  , _ldIncludeOnlyStatuses :: !(Maybe [DeploymentStatus])
-  , _ldApplicationName     :: !(Maybe Text)
-  , _ldDeploymentGroupName :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListDeployments =
+  ListDeployments'
+    { _ldCreateTimeRange     :: !(Maybe TimeRange)
+    , _ldNextToken           :: !(Maybe Text)
+    , _ldIncludeOnlyStatuses :: !(Maybe [DeploymentStatus])
+    , _ldApplicationName     :: !(Maybe Text)
+    , _ldDeploymentGroupName :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListDeployments' with the minimum fields required to make a request.
@@ -76,9 +78,9 @@ data ListDeployments = ListDeployments'
 --
 -- * 'ldIncludeOnlyStatuses' - A subset of deployments to list by status:     * Created: Include created deployments in the resulting list.     * Queued: Include queued deployments in the resulting list.     * In Progress: Include in-progress deployments in the resulting list.     * Succeeded: Include successful deployments in the resulting list.     * Failed: Include failed deployments in the resulting list.     * Stopped: Include stopped deployments in the resulting list.
 --
--- * 'ldApplicationName' - The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
+-- * 'ldApplicationName' - The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
 --
--- * 'ldDeploymentGroupName' - The name of an existing deployment group for the specified application.
+-- * 'ldDeploymentGroupName' - The name of a deployment group for the specified application.
 listDeployments
     :: ListDeployments
 listDeployments =
@@ -103,11 +105,11 @@ ldNextToken = lens _ldNextToken (\ s a -> s{_ldNextToken = a})
 ldIncludeOnlyStatuses :: Lens' ListDeployments [DeploymentStatus]
 ldIncludeOnlyStatuses = lens _ldIncludeOnlyStatuses (\ s a -> s{_ldIncludeOnlyStatuses = a}) . _Default . _Coerce
 
--- | The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.
+-- | The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
 ldApplicationName :: Lens' ListDeployments (Maybe Text)
 ldApplicationName = lens _ldApplicationName (\ s a -> s{_ldApplicationName = a})
 
--- | The name of an existing deployment group for the specified application.
+-- | The name of a deployment group for the specified application.
 ldDeploymentGroupName :: Lens' ListDeployments (Maybe Text)
 ldDeploymentGroupName = lens _ldDeploymentGroupName (\ s a -> s{_ldDeploymentGroupName = a})
 
@@ -166,11 +168,13 @@ instance ToQuery ListDeployments where
 --
 --
 -- /See:/ 'listDeploymentsResponse' smart constructor.
-data ListDeploymentsResponse = ListDeploymentsResponse'
-  { _ldrsNextToken      :: !(Maybe Text)
-  , _ldrsDeployments    :: !(Maybe [Text])
-  , _ldrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListDeploymentsResponse =
+  ListDeploymentsResponse'
+    { _ldrsNextToken      :: !(Maybe Text)
+    , _ldrsDeployments    :: !(Maybe [Text])
+    , _ldrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListDeploymentsResponse' with the minimum fields required to make a request.

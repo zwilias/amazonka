@@ -21,8 +21,10 @@
 -- Lists the users in the specified group.
 --
 --
--- Requires developer credentials.
+-- Calling this action requires developer credentials.
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.CognitoIdentityProvider.ListUsersInGroup
     (
     -- * Creating a Request
@@ -46,17 +48,20 @@ module Network.AWS.CognitoIdentityProvider.ListUsersInGroup
 import Network.AWS.CognitoIdentityProvider.Types
 import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listUsersInGroup' smart constructor.
-data ListUsersInGroup = ListUsersInGroup'
-  { _luigNextToken  :: !(Maybe Text)
-  , _luigLimit      :: !(Maybe Nat)
-  , _luigUserPoolId :: !Text
-  , _luigGroupName  :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListUsersInGroup =
+  ListUsersInGroup'
+    { _luigNextToken  :: !(Maybe Text)
+    , _luigLimit      :: !(Maybe Nat)
+    , _luigUserPoolId :: !Text
+    , _luigGroupName  :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListUsersInGroup' with the minimum fields required to make a request.
@@ -99,6 +104,13 @@ luigUserPoolId = lens _luigUserPoolId (\ s a -> s{_luigUserPoolId = a})
 luigGroupName :: Lens' ListUsersInGroup Text
 luigGroupName = lens _luigGroupName (\ s a -> s{_luigGroupName = a})
 
+instance AWSPager ListUsersInGroup where
+        page rq rs
+          | stop (rs ^. luigrsNextToken) = Nothing
+          | stop (rs ^. luigrsUsers) = Nothing
+          | otherwise =
+            Just $ rq & luigNextToken .~ rs ^. luigrsNextToken
+
 instance AWSRequest ListUsersInGroup where
         type Rs ListUsersInGroup = ListUsersInGroupResponse
         request = postJSON cognitoIdentityProvider
@@ -139,11 +151,13 @@ instance ToQuery ListUsersInGroup where
         toQuery = const mempty
 
 -- | /See:/ 'listUsersInGroupResponse' smart constructor.
-data ListUsersInGroupResponse = ListUsersInGroupResponse'
-  { _luigrsUsers          :: !(Maybe [UserType])
-  , _luigrsNextToken      :: !(Maybe Text)
-  , _luigrsResponseStatus :: !Int
-  } deriving (Eq, Show, Data, Typeable, Generic)
+data ListUsersInGroupResponse =
+  ListUsersInGroupResponse'
+    { _luigrsUsers          :: !(Maybe [UserType])
+    , _luigrsNextToken      :: !(Maybe Text)
+    , _luigrsResponseStatus :: !Int
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListUsersInGroupResponse' with the minimum fields required to make a request.

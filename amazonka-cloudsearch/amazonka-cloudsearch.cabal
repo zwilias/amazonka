@@ -58,6 +58,7 @@ library
         , Network.AWS.CloudSearch.DeleteSuggester
         , Network.AWS.CloudSearch.DescribeAnalysisSchemes
         , Network.AWS.CloudSearch.DescribeAvailabilityOptions
+        , Network.AWS.CloudSearch.DescribeDomainEndpointOptions
         , Network.AWS.CloudSearch.DescribeDomains
         , Network.AWS.CloudSearch.DescribeExpressions
         , Network.AWS.CloudSearch.DescribeIndexFields
@@ -68,6 +69,7 @@ library
         , Network.AWS.CloudSearch.ListDomainNames
         , Network.AWS.CloudSearch.Types
         , Network.AWS.CloudSearch.UpdateAvailabilityOptions
+        , Network.AWS.CloudSearch.UpdateDomainEndpointOptions
         , Network.AWS.CloudSearch.UpdateScalingParameters
         , Network.AWS.CloudSearch.UpdateServiceAccessPolicies
         , Network.AWS.CloudSearch.Waiters

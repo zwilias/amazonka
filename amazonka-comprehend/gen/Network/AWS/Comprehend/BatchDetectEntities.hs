@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Inspects the text of a batch of documents and returns information about them. For more information about entities, see 'how-entities'
+-- Inspects the text of a batch of documents for named entities and returns information about them. For more information about named entities, see 'how-entities'
 --
 --
 module Network.AWS.Comprehend.BatchDetectEntities
@@ -47,10 +47,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchDetectEntities' smart constructor.
-data BatchDetectEntities = BatchDetectEntities'
-  { _bdeTextList     :: ![Text]
-  , _bdeLanguageCode :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchDetectEntities =
+  BatchDetectEntities'
+    { _bdeTextList     :: ![Text]
+    , _bdeLanguageCode :: !LanguageCode
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchDetectEntities' with the minimum fields required to make a request.
@@ -59,9 +61,9 @@ data BatchDetectEntities = BatchDetectEntities'
 --
 -- * 'bdeTextList' - A list containing the text of the input documents. The list can contain a maximum of 25 documents. Each document must contain fewer than 5,000 bytes of UTF-8 encoded characters.
 --
--- * 'bdeLanguageCode' - The language of the input documents. All documents must be in the same language.
+-- * 'bdeLanguageCode' - The language of the input documents. You can specify any of the primary languages supported by Amazon Comprehend. All documents must be in the same language.
 batchDetectEntities
-    :: Text -- ^ 'bdeLanguageCode'
+    :: LanguageCode -- ^ 'bdeLanguageCode'
     -> BatchDetectEntities
 batchDetectEntities pLanguageCode_ =
   BatchDetectEntities'
@@ -72,8 +74,8 @@ batchDetectEntities pLanguageCode_ =
 bdeTextList :: Lens' BatchDetectEntities [Text]
 bdeTextList = lens _bdeTextList (\ s a -> s{_bdeTextList = a}) . _Coerce
 
--- | The language of the input documents. All documents must be in the same language.
-bdeLanguageCode :: Lens' BatchDetectEntities Text
+-- | The language of the input documents. You can specify any of the primary languages supported by Amazon Comprehend. All documents must be in the same language.
+bdeLanguageCode :: Lens' BatchDetectEntities LanguageCode
 bdeLanguageCode = lens _bdeLanguageCode (\ s a -> s{_bdeLanguageCode = a})
 
 instance AWSRequest BatchDetectEntities where
@@ -116,11 +118,13 @@ instance ToQuery BatchDetectEntities where
         toQuery = const mempty
 
 -- | /See:/ 'batchDetectEntitiesResponse' smart constructor.
-data BatchDetectEntitiesResponse = BatchDetectEntitiesResponse'
-  { _bdersResponseStatus :: !Int
-  , _bdersResultList     :: ![BatchDetectEntitiesItemResult]
-  , _bdersErrorList      :: ![BatchItemError]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data BatchDetectEntitiesResponse =
+  BatchDetectEntitiesResponse'
+    { _bdersResponseStatus :: !Int
+    , _bdersResultList     :: ![BatchDetectEntitiesItemResult]
+    , _bdersErrorList      :: ![BatchItemError]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'BatchDetectEntitiesResponse' with the minimum fields required to make a request.

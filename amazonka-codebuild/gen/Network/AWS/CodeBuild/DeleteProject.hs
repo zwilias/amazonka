@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes a build project.
+-- Deletes a build project. When you delete a project, its builds are not deleted.
 --
 --
 module Network.AWS.CodeBuild.DeleteProject
@@ -44,9 +44,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteProject' smart constructor.
-newtype DeleteProject = DeleteProject'
-  { _dpName :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype DeleteProject =
+  DeleteProject'
+    { _dpName :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteProject' with the minimum fields required to make a request.
@@ -96,9 +98,11 @@ instance ToQuery DeleteProject where
         toQuery = const mempty
 
 -- | /See:/ 'deleteProjectResponse' smart constructor.
-newtype DeleteProjectResponse = DeleteProjectResponse'
-  { _dprsResponseStatus :: Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype DeleteProjectResponse =
+  DeleteProjectResponse'
+    { _dprsResponseStatus :: Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteProjectResponse' with the minimum fields required to make a request.

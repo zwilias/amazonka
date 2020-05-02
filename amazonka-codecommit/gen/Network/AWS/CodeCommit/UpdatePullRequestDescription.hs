@@ -46,10 +46,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updatePullRequestDescription' smart constructor.
-data UpdatePullRequestDescription = UpdatePullRequestDescription'
-  { _uprdPullRequestId :: !Text
-  , _uprdDescription   :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data UpdatePullRequestDescription =
+  UpdatePullRequestDescription'
+    { _uprdPullRequestId :: !Text
+    , _uprdDescription   :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UpdatePullRequestDescription' with the minimum fields required to make a request.
@@ -58,7 +60,7 @@ data UpdatePullRequestDescription = UpdatePullRequestDescription'
 --
 -- * 'uprdPullRequestId' - The system-generated ID of the pull request. To get this ID, use 'ListPullRequests' .
 --
--- * 'uprdDescription' - The updated content of the description for the pull request. This content will replace the existing description.
+-- * 'uprdDescription' - The updated content of the description for the pull request. This content replaces the existing description.
 updatePullRequestDescription
     :: Text -- ^ 'uprdPullRequestId'
     -> Text -- ^ 'uprdDescription'
@@ -72,7 +74,7 @@ updatePullRequestDescription pPullRequestId_ pDescription_ =
 uprdPullRequestId :: Lens' UpdatePullRequestDescription Text
 uprdPullRequestId = lens _uprdPullRequestId (\ s a -> s{_uprdPullRequestId = a})
 
--- | The updated content of the description for the pull request. This content will replace the existing description.
+-- | The updated content of the description for the pull request. This content replaces the existing description.
 uprdDescription :: Lens' UpdatePullRequestDescription Text
 uprdDescription = lens _uprdDescription (\ s a -> s{_uprdDescription = a})
 
@@ -115,10 +117,12 @@ instance ToQuery UpdatePullRequestDescription where
         toQuery = const mempty
 
 -- | /See:/ 'updatePullRequestDescriptionResponse' smart constructor.
-data UpdatePullRequestDescriptionResponse = UpdatePullRequestDescriptionResponse'
-  { _uprdrsResponseStatus :: !Int
-  , _uprdrsPullRequest    :: !PullRequest
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data UpdatePullRequestDescriptionResponse =
+  UpdatePullRequestDescriptionResponse'
+    { _uprdrsResponseStatus :: !Int
+    , _uprdrsPullRequest    :: !PullRequest
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UpdatePullRequestDescriptionResponse' with the minimum fields required to make a request.

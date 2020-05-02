@@ -21,6 +21,8 @@
 -- Lists resources associated with a project in AWS CodeStar.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.CodeStar.ListResources
     (
     -- * Creating a Request
@@ -43,16 +45,19 @@ module Network.AWS.CodeStar.ListResources
 import Network.AWS.CodeStar.Types
 import Network.AWS.CodeStar.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listResources' smart constructor.
-data ListResources = ListResources'
-  { _lrNextToken  :: !(Maybe Text)
-  , _lrMaxResults :: !(Maybe Nat)
-  , _lrProjectId  :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListResources =
+  ListResources'
+    { _lrNextToken  :: !(Maybe Text)
+    , _lrMaxResults :: !(Maybe Nat)
+    , _lrProjectId  :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListResources' with the minimum fields required to make a request.
@@ -86,6 +91,13 @@ lrMaxResults = lens _lrMaxResults (\ s a -> s{_lrMaxResults = a}) . mapping _Nat
 -- | The ID of the project.
 lrProjectId :: Lens' ListResources Text
 lrProjectId = lens _lrProjectId (\ s a -> s{_lrProjectId = a})
+
+instance AWSPager ListResources where
+        page rq rs
+          | stop (rs ^. lrrsNextToken) = Nothing
+          | stop (rs ^. lrrsResources) = Nothing
+          | otherwise =
+            Just $ rq & lrNextToken .~ rs ^. lrrsNextToken
 
 instance AWSRequest ListResources where
         type Rs ListResources = ListResourcesResponse
@@ -126,11 +138,13 @@ instance ToQuery ListResources where
         toQuery = const mempty
 
 -- | /See:/ 'listResourcesResponse' smart constructor.
-data ListResourcesResponse = ListResourcesResponse'
-  { _lrrsResources      :: !(Maybe [Resource])
-  , _lrrsNextToken      :: !(Maybe Text)
-  , _lrrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListResourcesResponse =
+  ListResourcesResponse'
+    { _lrrsResources      :: !(Maybe [Resource])
+    , _lrrsNextToken      :: !(Maybe Text)
+    , _lrrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListResourcesResponse' with the minimum fields required to make a request.

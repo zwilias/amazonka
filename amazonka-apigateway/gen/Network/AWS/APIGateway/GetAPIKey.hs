@@ -43,6 +43,7 @@ module Network.AWS.APIGateway.GetAPIKey
     , akStageKeys
     , akLastUpdatedDate
     , akDescription
+    , akTags
     ) where
 
 import Network.AWS.APIGateway.Types
@@ -57,10 +58,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getAPIKey' smart constructor.
-data GetAPIKey = GetAPIKey'
-  { _gakIncludeValue :: !(Maybe Bool)
-  , _gakApiKey       :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetAPIKey =
+  GetAPIKey'
+    { _gakIncludeValue :: !(Maybe Bool)
+    , _gakApiKey       :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetAPIKey' with the minimum fields required to make a request.

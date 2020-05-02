@@ -46,10 +46,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listFieldLevelEncryptionConfigs' smart constructor.
-data ListFieldLevelEncryptionConfigs = ListFieldLevelEncryptionConfigs'
-  { _lflecMarker   :: !(Maybe Text)
-  , _lflecMaxItems :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListFieldLevelEncryptionConfigs =
+  ListFieldLevelEncryptionConfigs'
+    { _lflecMarker   :: !(Maybe Text)
+    , _lflecMaxItems :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListFieldLevelEncryptionConfigs' with the minimum fields required to make a request.
@@ -95,7 +97,7 @@ instance ToHeaders ListFieldLevelEncryptionConfigs
         toHeaders = const mempty
 
 instance ToPath ListFieldLevelEncryptionConfigs where
-        toPath = const "/2017-10-30/field-level-encryption"
+        toPath = const "/2019-03-26/field-level-encryption"
 
 instance ToQuery ListFieldLevelEncryptionConfigs
          where
@@ -105,10 +107,12 @@ instance ToQuery ListFieldLevelEncryptionConfigs
                "MaxItems" =: _lflecMaxItems]
 
 -- | /See:/ 'listFieldLevelEncryptionConfigsResponse' smart constructor.
-data ListFieldLevelEncryptionConfigsResponse = ListFieldLevelEncryptionConfigsResponse'
-  { _lflecrsFieldLevelEncryptionList :: !(Maybe FieldLevelEncryptionList)
-  , _lflecrsResponseStatus           :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ListFieldLevelEncryptionConfigsResponse =
+  ListFieldLevelEncryptionConfigsResponse'
+    { _lflecrsFieldLevelEncryptionList :: !(Maybe FieldLevelEncryptionList)
+    , _lflecrsResponseStatus           :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ListFieldLevelEncryptionConfigsResponse' with the minimum fields required to make a request.

@@ -37,9 +37,9 @@ module Network.AWS.DMS.DescribeConnections
     , describeConnectionsResponse
     , DescribeConnectionsResponse
     -- * Response Lenses
-    , drsConnections
-    , drsMarker
-    , drsResponseStatus
+    , dcsrsConnections
+    , dcsrsMarker
+    , dcsrsResponseStatus
     ) where
 
 import Network.AWS.DMS.Types
@@ -55,11 +55,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeConnections' smart constructor.
-data DescribeConnections = DescribeConnections'
-  { _dcFilters    :: !(Maybe [Filter])
-  , _dcMarker     :: !(Maybe Text)
-  , _dcMaxRecords :: !(Maybe Int)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeConnections =
+  DescribeConnections'
+    { _dcFilters    :: !(Maybe [Filter])
+    , _dcMarker     :: !(Maybe Text)
+    , _dcMaxRecords :: !(Maybe Int)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeConnections' with the minimum fields required to make a request.
@@ -92,9 +94,10 @@ dcMaxRecords = lens _dcMaxRecords (\ s a -> s{_dcMaxRecords = a})
 
 instance AWSPager DescribeConnections where
         page rq rs
-          | stop (rs ^. drsMarker) = Nothing
-          | stop (rs ^. drsConnections) = Nothing
-          | otherwise = Just $ rq & dcMarker .~ rs ^. drsMarker
+          | stop (rs ^. dcsrsMarker) = Nothing
+          | stop (rs ^. dcsrsConnections) = Nothing
+          | otherwise =
+            Just $ rq & dcMarker .~ rs ^. dcsrsMarker
 
 instance AWSRequest DescribeConnections where
         type Rs DescribeConnections =
@@ -140,43 +143,45 @@ instance ToQuery DescribeConnections where
 --
 --
 -- /See:/ 'describeConnectionsResponse' smart constructor.
-data DescribeConnectionsResponse = DescribeConnectionsResponse'
-  { _drsConnections    :: !(Maybe [Connection])
-  , _drsMarker         :: !(Maybe Text)
-  , _drsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeConnectionsResponse =
+  DescribeConnectionsResponse'
+    { _dcsrsConnections    :: !(Maybe [Connection])
+    , _dcsrsMarker         :: !(Maybe Text)
+    , _dcsrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeConnectionsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'drsConnections' - A description of the connections.
+-- * 'dcsrsConnections' - A description of the connections.
 --
--- * 'drsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- * 'dcsrsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
 --
--- * 'drsResponseStatus' - -- | The response status code.
+-- * 'dcsrsResponseStatus' - -- | The response status code.
 describeConnectionsResponse
-    :: Int -- ^ 'drsResponseStatus'
+    :: Int -- ^ 'dcsrsResponseStatus'
     -> DescribeConnectionsResponse
 describeConnectionsResponse pResponseStatus_ =
   DescribeConnectionsResponse'
-    { _drsConnections = Nothing
-    , _drsMarker = Nothing
-    , _drsResponseStatus = pResponseStatus_
+    { _dcsrsConnections = Nothing
+    , _dcsrsMarker = Nothing
+    , _dcsrsResponseStatus = pResponseStatus_
     }
 
 
 -- | A description of the connections.
-drsConnections :: Lens' DescribeConnectionsResponse [Connection]
-drsConnections = lens _drsConnections (\ s a -> s{_drsConnections = a}) . _Default . _Coerce
+dcsrsConnections :: Lens' DescribeConnectionsResponse [Connection]
+dcsrsConnections = lens _dcsrsConnections (\ s a -> s{_dcsrsConnections = a}) . _Default . _Coerce
 
 -- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
-drsMarker :: Lens' DescribeConnectionsResponse (Maybe Text)
-drsMarker = lens _drsMarker (\ s a -> s{_drsMarker = a})
+dcsrsMarker :: Lens' DescribeConnectionsResponse (Maybe Text)
+dcsrsMarker = lens _dcsrsMarker (\ s a -> s{_dcsrsMarker = a})
 
 -- | -- | The response status code.
-drsResponseStatus :: Lens' DescribeConnectionsResponse Int
-drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a})
+dcsrsResponseStatus :: Lens' DescribeConnectionsResponse Int
+dcsrsResponseStatus = lens _dcsrsResponseStatus (\ s a -> s{_dcsrsResponseStatus = a})
 
 instance NFData DescribeConnectionsResponse where

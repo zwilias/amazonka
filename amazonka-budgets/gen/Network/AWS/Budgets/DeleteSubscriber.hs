@@ -21,7 +21,7 @@
 -- Deletes a subscriber.
 --
 --
--- __Deleting the last subscriber to a notification also deletes the notification.__
+-- /Important:/ Deleting the last subscriber to a notification also deletes the notification.
 --
 module Network.AWS.Budgets.DeleteSubscriber
     (
@@ -53,12 +53,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteSubscriber' smart constructor.
-data DeleteSubscriber = DeleteSubscriber'
-  { _dsAccountId    :: !Text
-  , _dsBudgetName   :: !Text
-  , _dsNotification :: !Notification
-  , _dsSubscriber   :: !Subscriber
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DeleteSubscriber =
+  DeleteSubscriber'
+    { _dsAccountId    :: !Text
+    , _dsBudgetName   :: !Text
+    , _dsNotification :: !Notification
+    , _dsSubscriber   :: !Subscriber
+    }
+  deriving (Eq, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteSubscriber' with the minimum fields required to make a request.
@@ -145,9 +147,11 @@ instance ToQuery DeleteSubscriber where
 --
 --
 -- /See:/ 'deleteSubscriberResponse' smart constructor.
-newtype DeleteSubscriberResponse = DeleteSubscriberResponse'
-  { _dsrsResponseStatus :: Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype DeleteSubscriberResponse =
+  DeleteSubscriberResponse'
+    { _dsrsResponseStatus :: Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteSubscriberResponse' with the minimum fields required to make a request.

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Lists all policies from the root of the 'Directory' to the object specified. If there are no policies present, an empty list is returned. If policies are present, and if some objects don't have the policies attached, it returns the @ObjectIdentifier@ for such objects. If policies are present, it returns @ObjectIdentifier@ , @policyId@ , and @policyType@ . Paths that don't lead to the root from the target object are ignored. For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies Policies> .
+-- Lists all policies from the root of the 'Directory' to the object specified. If there are no policies present, an empty list is returned. If policies are present, and if some objects don't have the policies attached, it returns the @ObjectIdentifier@ for such objects. If policies are present, it returns @ObjectIdentifier@ , @policyId@ , and @policyType@ . Paths that don't lead to the root from the target object are ignored. For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies Policies> .
 --
 --
 --
@@ -52,12 +52,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'lookupPolicy' smart constructor.
-data LookupPolicy = LookupPolicy'
-  { _lpNextToken       :: !(Maybe Text)
-  , _lpMaxResults      :: !(Maybe Nat)
-  , _lpDirectoryARN    :: !Text
-  , _lpObjectReference :: !ObjectReference
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data LookupPolicy =
+  LookupPolicy'
+    { _lpNextToken       :: !(Maybe Text)
+    , _lpMaxResults      :: !(Maybe Nat)
+    , _lpDirectoryARN    :: !Text
+    , _lpObjectReference :: !ObjectReference
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'LookupPolicy' with the minimum fields required to make a request.
@@ -143,11 +145,13 @@ instance ToQuery LookupPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'lookupPolicyResponse' smart constructor.
-data LookupPolicyResponse = LookupPolicyResponse'
-  { _lprsNextToken        :: !(Maybe Text)
-  , _lprsPolicyToPathList :: !(Maybe [PolicyToPath])
-  , _lprsResponseStatus   :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data LookupPolicyResponse =
+  LookupPolicyResponse'
+    { _lprsNextToken        :: !(Maybe Text)
+    , _lprsPolicyToPathList :: !(Maybe [PolicyToPath])
+    , _lprsResponseStatus   :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'LookupPolicyResponse' with the minimum fields required to make a request.
@@ -156,7 +160,7 @@ data LookupPolicyResponse = LookupPolicyResponse'
 --
 -- * 'lprsNextToken' - The pagination token.
 --
--- * 'lprsPolicyToPathList' - Provides list of path to policies. Policies contain @PolicyId@ , @ObjectIdentifier@ , and @PolicyType@ . For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies Policies> .
+-- * 'lprsPolicyToPathList' - Provides list of path to policies. Policies contain @PolicyId@ , @ObjectIdentifier@ , and @PolicyType@ . For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies Policies> .
 --
 -- * 'lprsResponseStatus' - -- | The response status code.
 lookupPolicyResponse
@@ -174,7 +178,7 @@ lookupPolicyResponse pResponseStatus_ =
 lprsNextToken :: Lens' LookupPolicyResponse (Maybe Text)
 lprsNextToken = lens _lprsNextToken (\ s a -> s{_lprsNextToken = a})
 
--- | Provides list of path to policies. Policies contain @PolicyId@ , @ObjectIdentifier@ , and @PolicyType@ . For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies Policies> .
+-- | Provides list of path to policies. Policies contain @PolicyId@ , @ObjectIdentifier@ , and @PolicyType@ . For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies Policies> .
 lprsPolicyToPathList :: Lens' LookupPolicyResponse [PolicyToPath]
 lprsPolicyToPathList = lens _lprsPolicyToPathList (\ s a -> s{_lprsPolicyToPathList = a}) . _Default . _Coerce
 

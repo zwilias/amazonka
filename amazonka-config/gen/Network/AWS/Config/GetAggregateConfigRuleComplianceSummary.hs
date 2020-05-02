@@ -51,13 +51,15 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getAggregateConfigRuleComplianceSummary' smart constructor.
-data GetAggregateConfigRuleComplianceSummary = GetAggregateConfigRuleComplianceSummary'
-  { _gacrcsFilters :: !(Maybe ConfigRuleComplianceSummaryFilters)
-  , _gacrcsNextToken :: !(Maybe Text)
-  , _gacrcsLimit :: !(Maybe Nat)
-  , _gacrcsGroupByKey :: !(Maybe ConfigRuleComplianceSummaryGroupKey)
-  , _gacrcsConfigurationAggregatorName :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetAggregateConfigRuleComplianceSummary =
+  GetAggregateConfigRuleComplianceSummary'
+    { _gacrcsFilters :: !(Maybe ConfigRuleComplianceSummaryFilters)
+    , _gacrcsNextToken :: !(Maybe Text)
+    , _gacrcsLimit :: !(Maybe Nat)
+    , _gacrcsGroupByKey :: !(Maybe ConfigRuleComplianceSummaryGroupKey)
+    , _gacrcsConfigurationAggregatorName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetAggregateConfigRuleComplianceSummary' with the minimum fields required to make a request.
@@ -66,7 +68,7 @@ data GetAggregateConfigRuleComplianceSummary = GetAggregateConfigRuleComplianceS
 --
 -- * 'gacrcsFilters' - Filters the results based on the ConfigRuleComplianceSummaryFilters object.
 --
--- * 'gacrcsNextToken' - The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+-- * 'gacrcsNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
 --
 -- * 'gacrcsLimit' - The maximum number of evaluation results returned on each page. The default is 1000. You cannot specify a number greater than 1000. If you specify 0, AWS Config uses the default.
 --
@@ -90,7 +92,7 @@ getAggregateConfigRuleComplianceSummary pConfigurationAggregatorName_ =
 gacrcsFilters :: Lens' GetAggregateConfigRuleComplianceSummary (Maybe ConfigRuleComplianceSummaryFilters)
 gacrcsFilters = lens _gacrcsFilters (\ s a -> s{_gacrcsFilters = a})
 
--- | The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+-- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
 gacrcsNextToken :: Lens' GetAggregateConfigRuleComplianceSummary (Maybe Text)
 gacrcsNextToken = lens _gacrcsNextToken (\ s a -> s{_gacrcsNextToken = a})
 
@@ -166,12 +168,14 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'getAggregateConfigRuleComplianceSummaryResponse' smart constructor.
-data GetAggregateConfigRuleComplianceSummaryResponse = GetAggregateConfigRuleComplianceSummaryResponse'
-  { _gacrcsrsAggregateComplianceCounts :: !(Maybe [AggregateComplianceCount])
-  , _gacrcsrsNextToken                 :: !(Maybe Text)
-  , _gacrcsrsGroupByKey                :: !(Maybe Text)
-  , _gacrcsrsResponseStatus            :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetAggregateConfigRuleComplianceSummaryResponse =
+  GetAggregateConfigRuleComplianceSummaryResponse'
+    { _gacrcsrsAggregateComplianceCounts :: !(Maybe [AggregateComplianceCount])
+    , _gacrcsrsNextToken                 :: !(Maybe Text)
+    , _gacrcsrsGroupByKey                :: !(Maybe Text)
+    , _gacrcsrsResponseStatus            :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetAggregateConfigRuleComplianceSummaryResponse' with the minimum fields required to make a request.
@@ -180,7 +184,7 @@ data GetAggregateConfigRuleComplianceSummaryResponse = GetAggregateConfigRuleCom
 --
 -- * 'gacrcsrsAggregateComplianceCounts' - Returns a list of AggregateComplianceCounts object.
 --
--- * 'gacrcsrsNextToken' - The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+-- * 'gacrcsrsNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
 --
 -- * 'gacrcsrsGroupByKey' - Groups the result based on ACCOUNT_ID or AWS_REGION.
 --
@@ -201,7 +205,7 @@ getAggregateConfigRuleComplianceSummaryResponse pResponseStatus_ =
 gacrcsrsAggregateComplianceCounts :: Lens' GetAggregateConfigRuleComplianceSummaryResponse [AggregateComplianceCount]
 gacrcsrsAggregateComplianceCounts = lens _gacrcsrsAggregateComplianceCounts (\ s a -> s{_gacrcsrsAggregateComplianceCounts = a}) . _Default . _Coerce
 
--- | The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+-- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
 gacrcsrsNextToken :: Lens' GetAggregateConfigRuleComplianceSummaryResponse (Maybe Text)
 gacrcsrsNextToken = lens _gacrcsrsNextToken (\ s a -> s{_gacrcsrsNextToken = a})
 

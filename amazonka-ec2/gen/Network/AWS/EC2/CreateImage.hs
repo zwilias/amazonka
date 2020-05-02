@@ -23,7 +23,7 @@
 --
 -- If you customized your instance with instance store volumes or EBS volumes in addition to the root device volume, the new AMI contains block device mapping information for those volumes. When you launch an instance from this new AMI, the instance automatically launches with those additional volumes.
 --
--- For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html Creating Amazon EBS-Backed Linux AMIs> in the /Amazon Elastic Compute Cloud User Guide/ .
+-- For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html Creating Amazon EBS-Backed Linux AMIs> in the /Amazon Elastic Compute Cloud User Guide/ .
 --
 module Network.AWS.EC2.CreateImage
     (
@@ -53,19 +53,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for CreateImage.
---
---
---
--- /See:/ 'createImage' smart constructor.
-data CreateImage = CreateImage'
-  { _ciiNoReboot            :: !(Maybe Bool)
-  , _ciiDescription         :: !(Maybe Text)
-  , _ciiBlockDeviceMappings :: !(Maybe [BlockDeviceMapping])
-  , _ciiDryRun              :: !(Maybe Bool)
-  , _ciiInstanceId          :: !Text
-  , _ciiName                :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'createImage' smart constructor.
+data CreateImage =
+  CreateImage'
+    { _ciiNoReboot            :: !(Maybe Bool)
+    , _ciiDescription         :: !(Maybe Text)
+    , _ciiBlockDeviceMappings :: !(Maybe [BlockDeviceMapping])
+    , _ciiDryRun              :: !(Maybe Bool)
+    , _ciiInstanceId          :: !Text
+    , _ciiName                :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateImage' with the minimum fields required to make a request.
@@ -76,7 +74,7 @@ data CreateImage = CreateImage'
 --
 -- * 'ciiDescription' - A description for the new image.
 --
--- * 'ciiBlockDeviceMappings' - Information about one or more block device mappings.
+-- * 'ciiBlockDeviceMappings' - The block device mappings. This parameter cannot be used to modify the encryption status of existing volumes or snapshots. To create an AMI with encrypted snapshots, use the 'CopyImage' action.
 --
 -- * 'ciiDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
@@ -106,7 +104,7 @@ ciiNoReboot = lens _ciiNoReboot (\ s a -> s{_ciiNoReboot = a})
 ciiDescription :: Lens' CreateImage (Maybe Text)
 ciiDescription = lens _ciiDescription (\ s a -> s{_ciiDescription = a})
 
--- | Information about one or more block device mappings.
+-- | The block device mappings. This parameter cannot be used to modify the encryption status of existing volumes or snapshots. To create an AMI with encrypted snapshots, use the 'CopyImage' action.
 ciiBlockDeviceMappings :: Lens' CreateImage [BlockDeviceMapping]
 ciiBlockDeviceMappings = lens _ciiBlockDeviceMappings (\ s a -> s{_ciiBlockDeviceMappings = a}) . _Default . _Coerce
 
@@ -154,15 +152,13 @@ instance ToQuery CreateImage where
                "DryRun" =: _ciiDryRun,
                "InstanceId" =: _ciiInstanceId, "Name" =: _ciiName]
 
--- | Contains the output of CreateImage.
---
---
---
--- /See:/ 'createImageResponse' smart constructor.
-data CreateImageResponse = CreateImageResponse'
-  { _cirsImageId        :: !(Maybe Text)
-  , _cirsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'createImageResponse' smart constructor.
+data CreateImageResponse =
+  CreateImageResponse'
+    { _cirsImageId        :: !(Maybe Text)
+    , _cirsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateImageResponse' with the minimum fields required to make a request.

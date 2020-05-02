@@ -21,7 +21,7 @@
 -- Describe an existing 'Authorizer' resource.
 --
 --
--- <http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizer.html AWS CLI>
+-- <https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizer.html AWS CLI>
 module Network.AWS.APIGateway.GetAuthorizer
     (
     -- * Creating a Request
@@ -59,10 +59,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getAuthorizer' smart constructor.
-data GetAuthorizer = GetAuthorizer'
-  { _gaaRestAPIId    :: !Text
-  , _gaaAuthorizerId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetAuthorizer =
+  GetAuthorizer'
+    { _gaaRestAPIId    :: !Text
+    , _gaaAuthorizerId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetAuthorizer' with the minimum fields required to make a request.

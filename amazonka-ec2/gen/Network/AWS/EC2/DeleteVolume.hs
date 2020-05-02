@@ -21,7 +21,9 @@
 -- Deletes the specified EBS volume. The volume must be in the @available@ state (not attached to an instance).
 --
 --
--- For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-volume.html Deleting an Amazon EBS Volume> in the /Amazon Elastic Compute Cloud User Guide/ .
+-- The volume can remain in the @deleting@ state for several minutes.
+--
+-- For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-volume.html Deleting an Amazon EBS Volume> in the /Amazon Elastic Compute Cloud User Guide/ .
 --
 module Network.AWS.EC2.DeleteVolume
     (
@@ -44,15 +46,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for DeleteVolume.
---
---
---
--- /See:/ 'deleteVolume' smart constructor.
-data DeleteVolume = DeleteVolume'
-  { _dvvDryRun   :: !(Maybe Bool)
-  , _dvvVolumeId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'deleteVolume' smart constructor.
+data DeleteVolume =
+  DeleteVolume'
+    { _dvvDryRun   :: !(Maybe Bool)
+    , _dvvVolumeId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteVolume' with the minimum fields required to make a request.

@@ -46,9 +46,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getFieldLevelEncryptionConfig' smart constructor.
-newtype GetFieldLevelEncryptionConfig = GetFieldLevelEncryptionConfig'
-  { _gflecId :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype GetFieldLevelEncryptionConfig =
+  GetFieldLevelEncryptionConfig'
+    { _gflecId :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetFieldLevelEncryptionConfig' with the minimum fields required to make a request.
@@ -90,18 +92,20 @@ instance ToHeaders GetFieldLevelEncryptionConfig
 instance ToPath GetFieldLevelEncryptionConfig where
         toPath GetFieldLevelEncryptionConfig'{..}
           = mconcat
-              ["/2017-10-30/field-level-encryption/",
+              ["/2019-03-26/field-level-encryption/",
                toBS _gflecId, "/config"]
 
 instance ToQuery GetFieldLevelEncryptionConfig where
         toQuery = const mempty
 
 -- | /See:/ 'getFieldLevelEncryptionConfigResponse' smart constructor.
-data GetFieldLevelEncryptionConfigResponse = GetFieldLevelEncryptionConfigResponse'
-  { _gflecrsETag                       :: !(Maybe Text)
-  , _gflecrsFieldLevelEncryptionConfig :: !(Maybe FieldLevelEncryptionConfig)
-  , _gflecrsResponseStatus             :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetFieldLevelEncryptionConfigResponse =
+  GetFieldLevelEncryptionConfigResponse'
+    { _gflecrsETag                       :: !(Maybe Text)
+    , _gflecrsFieldLevelEncryptionConfig :: !(Maybe FieldLevelEncryptionConfig)
+    , _gflecrsResponseStatus             :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetFieldLevelEncryptionConfigResponse' with the minimum fields required to make a request.

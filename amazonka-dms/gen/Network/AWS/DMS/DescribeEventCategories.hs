@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Lists categories for all event source types, or, if specified, for a specified source type. You can see a list of the event categories and source types in <http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html Working with Events and Notifications > in the AWS Database Migration Service User Guide.
+-- Lists categories for all event source types, or, if specified, for a specified source type. You can see a list of the event categories and source types in <https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html Working with Events and Notifications> in the /AWS Database Migration Service User Guide./
 --
 --
 module Network.AWS.DMS.DescribeEventCategories
@@ -50,17 +50,19 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeEventCategories' smart constructor.
-data DescribeEventCategories = DescribeEventCategories'
-  { _decSourceType :: !(Maybe Text)
-  , _decFilters    :: !(Maybe [Filter])
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeEventCategories =
+  DescribeEventCategories'
+    { _decSourceType :: !(Maybe Text)
+    , _decFilters    :: !(Maybe [Filter])
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeEventCategories' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'decSourceType' - The type of AWS DMS resource that generates events.  Valid values: replication-instance | migration-task
+-- * 'decSourceType' - The type of AWS DMS resource that generates events.  Valid values: replication-instance | replication-task
 --
 -- * 'decFilters' - Filters applied to the action.
 describeEventCategories
@@ -69,7 +71,7 @@ describeEventCategories =
   DescribeEventCategories' {_decSourceType = Nothing, _decFilters = Nothing}
 
 
--- | The type of AWS DMS resource that generates events.  Valid values: replication-instance | migration-task
+-- | The type of AWS DMS resource that generates events.  Valid values: replication-instance | replication-task
 decSourceType :: Lens' DescribeEventCategories (Maybe Text)
 decSourceType = lens _decSourceType (\ s a -> s{_decSourceType = a})
 
@@ -120,10 +122,12 @@ instance ToQuery DescribeEventCategories where
 --
 --
 -- /See:/ 'describeEventCategoriesResponse' smart constructor.
-data DescribeEventCategoriesResponse = DescribeEventCategoriesResponse'
-  { _decrsEventCategoryGroupList :: !(Maybe [EventCategoryGroup])
-  , _decrsResponseStatus         :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeEventCategoriesResponse =
+  DescribeEventCategoriesResponse'
+    { _decrsEventCategoryGroupList :: !(Maybe [EventCategoryGroup])
+    , _decrsResponseStatus         :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeEventCategoriesResponse' with the minimum fields required to make a request.

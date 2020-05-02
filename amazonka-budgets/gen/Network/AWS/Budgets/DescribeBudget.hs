@@ -21,6 +21,8 @@
 -- Describes a budget.
 --
 --
+-- /Important:/ The Request Syntax section shows the @BudgetLimit@ syntax. For @PlannedBudgetLimits@ , see the <https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudget.html#API_DescribeBudget_Examples Examples> section.
+--
 module Network.AWS.Budgets.DescribeBudget
     (
     -- * Creating a Request
@@ -50,10 +52,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeBudget' smart constructor.
-data DescribeBudget = DescribeBudget'
-  { _desAccountId  :: !Text
-  , _desBudgetName :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeBudget =
+  DescribeBudget'
+    { _desAccountId  :: !Text
+    , _desBudgetName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeBudget' with the minimum fields required to make a request.
@@ -120,10 +124,12 @@ instance ToQuery DescribeBudget where
 --
 --
 -- /See:/ 'describeBudgetResponse' smart constructor.
-data DescribeBudgetResponse = DescribeBudgetResponse'
-  { _desrsBudget         :: !(Maybe Budget)
-  , _desrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeBudgetResponse =
+  DescribeBudgetResponse'
+    { _desrsBudget         :: !(Maybe Budget)
+    , _desrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeBudgetResponse' with the minimum fields required to make a request.

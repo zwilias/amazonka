@@ -44,17 +44,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for DeleteNetworkAclEntry.
---
---
---
--- /See:/ 'deleteNetworkACLEntry' smart constructor.
-data DeleteNetworkACLEntry = DeleteNetworkACLEntry'
-  { _dnaeDryRun       :: !(Maybe Bool)
-  , _dnaeEgress       :: !Bool
-  , _dnaeNetworkACLId :: !Text
-  , _dnaeRuleNumber   :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'deleteNetworkACLEntry' smart constructor.
+data DeleteNetworkACLEntry =
+  DeleteNetworkACLEntry'
+    { _dnaeDryRun       :: !(Maybe Bool)
+    , _dnaeEgress       :: !Bool
+    , _dnaeNetworkACLId :: !Text
+    , _dnaeRuleNumber   :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteNetworkACLEntry' with the minimum fields required to make a request.

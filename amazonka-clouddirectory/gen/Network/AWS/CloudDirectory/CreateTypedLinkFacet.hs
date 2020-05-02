@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a 'TypedLinkFacet' . For more information, see <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink Typed link> .
+-- Creates a 'TypedLinkFacet' . For more information, see <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink Typed Links> .
 --
 --
 module Network.AWS.CloudDirectory.CreateTypedLinkFacet
@@ -45,10 +45,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createTypedLinkFacet' smart constructor.
-data CreateTypedLinkFacet = CreateTypedLinkFacet'
-  { _ctlfSchemaARN :: !Text
-  , _ctlfFacet     :: !TypedLinkFacet
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreateTypedLinkFacet =
+  CreateTypedLinkFacet'
+    { _ctlfSchemaARN :: !Text
+    , _ctlfFacet     :: !TypedLinkFacet
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateTypedLinkFacet' with the minimum fields required to make a request.
@@ -105,9 +107,11 @@ instance ToQuery CreateTypedLinkFacet where
         toQuery = const mempty
 
 -- | /See:/ 'createTypedLinkFacetResponse' smart constructor.
-newtype CreateTypedLinkFacetResponse = CreateTypedLinkFacetResponse'
-  { _ctlfrsResponseStatus :: Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype CreateTypedLinkFacetResponse =
+  CreateTypedLinkFacetResponse'
+    { _ctlfrsResponseStatus :: Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateTypedLinkFacetResponse' with the minimum fields required to make a request.

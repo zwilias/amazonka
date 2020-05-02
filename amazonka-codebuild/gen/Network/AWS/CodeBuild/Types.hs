@@ -31,8 +31,14 @@ module Network.AWS.CodeBuild.Types
     -- * ArtifactsType
     , ArtifactsType (..)
 
+    -- * AuthType
+    , AuthType (..)
+
     -- * BuildPhaseType
     , BuildPhaseType (..)
+
+    -- * CacheMode
+    , CacheMode (..)
 
     -- * CacheType
     , CacheType (..)
@@ -40,20 +46,53 @@ module Network.AWS.CodeBuild.Types
     -- * ComputeType
     , ComputeType (..)
 
+    -- * CredentialProviderType
+    , CredentialProviderType (..)
+
     -- * EnvironmentType
     , EnvironmentType (..)
 
     -- * EnvironmentVariableType
     , EnvironmentVariableType (..)
 
+    -- * FileSystemType
+    , FileSystemType (..)
+
+    -- * ImagePullCredentialsType
+    , ImagePullCredentialsType (..)
+
     -- * LanguageType
     , LanguageType (..)
+
+    -- * LogsConfigStatusType
+    , LogsConfigStatusType (..)
 
     -- * PlatformType
     , PlatformType (..)
 
     -- * ProjectSortByType
     , ProjectSortByType (..)
+
+    -- * ReportExportConfigType
+    , ReportExportConfigType (..)
+
+    -- * ReportGroupSortByType
+    , ReportGroupSortByType (..)
+
+    -- * ReportPackagingType
+    , ReportPackagingType (..)
+
+    -- * ReportStatusType
+    , ReportStatusType (..)
+
+    -- * ReportType
+    , ReportType (..)
+
+    -- * ServerType
+    , ServerType (..)
+
+    -- * SharedResourceSortByType
+    , SharedResourceSortByType (..)
 
     -- * SortOrderType
     , SortOrderType (..)
@@ -67,27 +106,41 @@ module Network.AWS.CodeBuild.Types
     -- * StatusType
     , StatusType (..)
 
+    -- * WebhookFilterType
+    , WebhookFilterType (..)
+
     -- * Build
     , Build
     , build
     , bPhases
     , bBuildComplete
+    , bSecondaryArtifacts
     , bArn
+    , bExportedEnvironmentVariables
+    , bBuildNumber
     , bStartTime
     , bArtifacts
     , bEnvironment
     , bInitiator
     , bNetworkInterface
+    , bSecondarySourceVersions
     , bCurrentPhase
+    , bQueuedTimeoutInMinutes
     , bCache
+    , bSecondarySources
     , bSourceVersion
     , bLogs
+    , bResolvedSourceVersion
     , bVpcConfig
     , bEndTime
     , bProjectName
     , bBuildStatus
     , bSource
     , bId
+    , bFileSystemLocations
+    , bReportARNs
+    , bEncryptionKey
+    , bServiceRole
     , bTimeoutInMinutes
 
     -- * BuildArtifacts
@@ -95,6 +148,9 @@ module Network.AWS.CodeBuild.Types
     , buildArtifacts
     , baLocation
     , baMd5sum
+    , baEncryptionDisabled
+    , baOverrideArtifactName
+    , baArtifactIdentifier
     , baSha256sum
 
     -- * BuildNotDeleted
@@ -112,6 +168,13 @@ module Network.AWS.CodeBuild.Types
     , bpPhaseType
     , bpEndTime
     , bpDurationInSeconds
+
+    -- * CloudWatchLogsConfig
+    , CloudWatchLogsConfig
+    , cloudWatchLogsConfig
+    , cwlcGroupName
+    , cwlcStreamName
+    , cwlcStatus
 
     -- * EnvironmentImage
     , EnvironmentImage
@@ -139,10 +202,32 @@ module Network.AWS.CodeBuild.Types
     , evName
     , evValue
 
+    -- * ExportedEnvironmentVariable
+    , ExportedEnvironmentVariable
+    , exportedEnvironmentVariable
+    , eevValue
+    , eevName
+
+    -- * GitSubmodulesConfig
+    , GitSubmodulesConfig
+    , gitSubmodulesConfig
+    , gscFetchSubmodules
+
+    -- * LogsConfig
+    , LogsConfig
+    , logsConfig
+    , lcS3Logs
+    , lcCloudWatchLogs
+
     -- * LogsLocation
     , LogsLocation
     , logsLocation
     , llDeepLink
+    , llS3Logs
+    , llCloudWatchLogs
+    , llS3DeepLink
+    , llS3LogsARN
+    , llCloudWatchLogsARN
     , llGroupName
     , llStreamName
 
@@ -161,15 +246,22 @@ module Network.AWS.CodeBuild.Types
     -- * Project
     , Project
     , project
+    , pSecondaryArtifacts
     , pArn
     , pArtifacts
     , pEnvironment
     , pCreated
+    , pSecondarySourceVersions
+    , pQueuedTimeoutInMinutes
     , pCache
+    , pSecondarySources
+    , pSourceVersion
     , pName
     , pVpcConfig
     , pSource
     , pBadge
+    , pLogsConfig
+    , pFileSystemLocations
     , pEncryptionKey
     , pLastModified
     , pWebhook
@@ -185,6 +277,9 @@ module Network.AWS.CodeBuild.Types
     , paPath
     , paLocation
     , paName
+    , paEncryptionDisabled
+    , paOverrideArtifactName
+    , paArtifactIdentifier
     , paNamespaceType
     , paType
 
@@ -198,27 +293,106 @@ module Network.AWS.CodeBuild.Types
     , ProjectCache
     , projectCache
     , pcLocation
+    , pcModes
     , pcType
 
     -- * ProjectEnvironment
     , ProjectEnvironment
     , projectEnvironment
+    , peImagePullCredentialsType
     , pePrivilegedMode
+    , peRegistryCredential
     , peCertificate
     , peEnvironmentVariables
     , peType
     , peImage
     , peComputeType
 
+    -- * ProjectFileSystemLocation
+    , ProjectFileSystemLocation
+    , projectFileSystemLocation
+    , pfslLocation
+    , pfslIdentifier
+    , pfslMountOptions
+    , pfslType
+    , pfslMountPoint
+
     -- * ProjectSource
     , ProjectSource
     , projectSource
+    , psReportBuildStatus
     , psInsecureSSL
     , psLocation
     , psAuth
     , psBuildspec
+    , psSourceIdentifier
     , psGitCloneDepth
+    , psGitSubmodulesConfig
     , psType
+
+    -- * ProjectSourceVersion
+    , ProjectSourceVersion
+    , projectSourceVersion
+    , psvSourceIdentifier
+    , psvSourceVersion
+
+    -- * RegistryCredential
+    , RegistryCredential
+    , registryCredential
+    , rcCredential
+    , rcCredentialProvider
+
+    -- * Report
+    , Report
+    , report
+    , rReportGroupARN
+    , rStatus
+    , rExpired
+    , rExecutionId
+    , rTruncated
+    , rArn
+    , rCreated
+    , rName
+    , rTestSummary
+    , rType
+    , rExportConfig
+
+    -- * ReportExportConfig
+    , ReportExportConfig
+    , reportExportConfig
+    , recExportConfigType
+    , recS3Destination
+
+    -- * ReportFilter
+    , ReportFilter
+    , reportFilter
+    , rfStatus
+
+    -- * ReportGroup
+    , ReportGroup
+    , reportGroup
+    , rgArn
+    , rgCreated
+    , rgName
+    , rgType
+    , rgLastModified
+    , rgExportConfig
+
+    -- * S3LogsConfig
+    , S3LogsConfig
+    , s3LogsConfig
+    , slcLocation
+    , slcEncryptionDisabled
+    , slcStatus
+
+    -- * S3ReportExportConfig
+    , S3ReportExportConfig
+    , s3ReportExportConfig
+    , srecPackaging
+    , srecPath
+    , srecBucket
+    , srecEncryptionDisabled
+    , srecEncryptionKey
 
     -- * SourceAuth
     , SourceAuth
@@ -226,11 +400,42 @@ module Network.AWS.CodeBuild.Types
     , saResource
     , saType
 
+    -- * SourceCredentialsInfo
+    , SourceCredentialsInfo
+    , sourceCredentialsInfo
+    , sciArn
+    , sciServerType
+    , sciAuthType
+
     -- * Tag
     , Tag
     , tag
     , tagValue
     , tagKey
+
+    -- * TestCase
+    , TestCase
+    , testCase
+    , tcDurationInNanoSeconds
+    , tcStatus
+    , tcExpired
+    , tcPrefix
+    , tcName
+    , tcTestRawDataPath
+    , tcMessage
+    , tcReportARN
+
+    -- * TestCaseFilter
+    , TestCaseFilter
+    , testCaseFilter
+    , tcfStatus
+
+    -- * TestReportSummary
+    , TestReportSummary
+    , testReportSummary
+    , trsTotal
+    , trsStatusCounts
+    , trsDurationInNanoSeconds
 
     -- * VPCConfig
     , VPCConfig
@@ -246,7 +451,15 @@ module Network.AWS.CodeBuild.Types
     , wLastModifiedSecret
     , wUrl
     , wSecret
+    , wFilterGroups
     , wPayloadURL
+
+    -- * WebhookFilter
+    , WebhookFilter
+    , webhookFilter
+    , wfExcludeMatchedPattern
+    , wfType
+    , wfPattern
     ) where
 
 import Network.AWS.CodeBuild.Types.Product

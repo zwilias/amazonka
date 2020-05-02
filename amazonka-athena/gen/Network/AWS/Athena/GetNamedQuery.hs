@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns information about a single query.
+-- Returns information about a single query. Requires that you have access to the workgroup in which the query was saved.
 --
 --
 module Network.AWS.Athena.GetNamedQuery
@@ -45,9 +45,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getNamedQuery' smart constructor.
-newtype GetNamedQuery = GetNamedQuery'
-  { _gnqNamedQueryId :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype GetNamedQuery =
+  GetNamedQuery'
+    { _gnqNamedQueryId :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetNamedQuery' with the minimum fields required to make a request.
@@ -101,10 +103,12 @@ instance ToQuery GetNamedQuery where
         toQuery = const mempty
 
 -- | /See:/ 'getNamedQueryResponse' smart constructor.
-data GetNamedQueryResponse = GetNamedQueryResponse'
-  { _gnqrsNamedQuery     :: !(Maybe NamedQuery)
-  , _gnqrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetNamedQueryResponse =
+  GetNamedQueryResponse'
+    { _gnqrsNamedQuery     :: !(Maybe NamedQuery)
+    , _gnqrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetNamedQueryResponse' with the minimum fields required to make a request.

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns information about a single execution of a query. Each time a query executes, information about the query execution is saved with a unique ID.
+-- Returns information about a single execution of a query if you have access to the workgroup in which the query ran. Each time a query executes, information about the query execution is saved with a unique ID.
 --
 --
 module Network.AWS.Athena.GetQueryExecution
@@ -45,9 +45,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getQueryExecution' smart constructor.
-newtype GetQueryExecution = GetQueryExecution'
-  { _gqeQueryExecutionId :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype GetQueryExecution =
+  GetQueryExecution'
+    { _gqeQueryExecutionId :: Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetQueryExecution' with the minimum fields required to make a request.
@@ -101,10 +103,12 @@ instance ToQuery GetQueryExecution where
         toQuery = const mempty
 
 -- | /See:/ 'getQueryExecutionResponse' smart constructor.
-data GetQueryExecutionResponse = GetQueryExecutionResponse'
-  { _gqersQueryExecution :: !(Maybe QueryExecution)
-  , _gqersResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data GetQueryExecutionResponse =
+  GetQueryExecutionResponse'
+    { _gqersQueryExecution :: !(Maybe QueryExecution)
+    , _gqersResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'GetQueryExecutionResponse' with the minimum fields required to make a request.

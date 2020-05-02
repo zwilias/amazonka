@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Describes the tags associated with the specified Direct Connect resources.
+-- Describes the tags associated with the specified AWS Direct Connect resources.
 --
 --
 module Network.AWS.DirectConnect.DescribeTags
@@ -44,27 +44,25 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Container for the parameters to the DescribeTags operation.
---
---
---
--- /See:/ 'describeTags' smart constructor.
-newtype DescribeTags = DescribeTags'
-  { _dtResourceARNs :: [Text]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'describeTags' smart constructor.
+newtype DescribeTags =
+  DescribeTags'
+    { _dtResourceARNs :: [Text]
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeTags' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtResourceARNs' - The Amazon Resource Names (ARNs) of the Direct Connect resources.
+-- * 'dtResourceARNs' - The Amazon Resource Names (ARNs) of the resources.
 describeTags
     :: DescribeTags
 describeTags = DescribeTags' {_dtResourceARNs = mempty}
 
 
--- | The Amazon Resource Names (ARNs) of the Direct Connect resources.
+-- | The Amazon Resource Names (ARNs) of the resources.
 dtResourceARNs :: Lens' DescribeTags [Text]
 dtResourceARNs = lens _dtResourceARNs (\ s a -> s{_dtResourceARNs = a}) . _Coerce
 
@@ -103,15 +101,13 @@ instance ToPath DescribeTags where
 instance ToQuery DescribeTags where
         toQuery = const mempty
 
--- | The response received when DescribeTags is called.
---
---
---
--- /See:/ 'describeTagsResponse' smart constructor.
-data DescribeTagsResponse = DescribeTagsResponse'
-  { _dtrsResourceTags   :: !(Maybe [ResourceTag])
-  , _dtrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'describeTagsResponse' smart constructor.
+data DescribeTagsResponse =
+  DescribeTagsResponse'
+    { _dtrsResourceTags   :: !(Maybe [ResourceTag])
+    , _dtrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeTagsResponse' with the minimum fields required to make a request.

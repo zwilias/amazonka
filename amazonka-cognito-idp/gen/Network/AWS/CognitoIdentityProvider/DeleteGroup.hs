@@ -21,7 +21,7 @@
 -- Deletes a group. Currently only groups with no members can be deleted.
 --
 --
--- Requires developer credentials.
+-- Calling this action requires developer credentials.
 --
 module Network.AWS.CognitoIdentityProvider.DeleteGroup
     (
@@ -45,10 +45,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteGroup' smart constructor.
-data DeleteGroup = DeleteGroup'
-  { _dgGroupName  :: !Text
-  , _dgUserPoolId :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DeleteGroup =
+  DeleteGroup'
+    { _dgGroupName  :: !Text
+    , _dgUserPoolId :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DeleteGroup' with the minimum fields required to make a request.

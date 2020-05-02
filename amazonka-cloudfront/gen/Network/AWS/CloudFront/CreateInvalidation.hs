@@ -51,10 +51,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createInvalidation' smart constructor.
-data CreateInvalidation = CreateInvalidation'
-  { _ciDistributionId    :: !Text
-  , _ciInvalidationBatch :: !InvalidationBatch
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreateInvalidation =
+  CreateInvalidation'
+    { _ciDistributionId    :: !Text
+    , _ciInvalidationBatch :: !InvalidationBatch
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateInvalidation' with the minimum fields required to make a request.
@@ -101,7 +103,7 @@ instance NFData CreateInvalidation where
 instance ToElement CreateInvalidation where
         toElement
           = mkElement
-              "{http://cloudfront.amazonaws.com/doc/2017-10-30/}InvalidationBatch"
+              "{http://cloudfront.amazonaws.com/doc/2019-03-26/}InvalidationBatch"
               .
               _ciInvalidationBatch
 
@@ -111,7 +113,7 @@ instance ToHeaders CreateInvalidation where
 instance ToPath CreateInvalidation where
         toPath CreateInvalidation'{..}
           = mconcat
-              ["/2017-10-30/distribution/", toBS _ciDistributionId,
+              ["/2019-03-26/distribution/", toBS _ciDistributionId,
                "/invalidation"]
 
 instance ToQuery CreateInvalidation where
@@ -122,11 +124,13 @@ instance ToQuery CreateInvalidation where
 --
 --
 -- /See:/ 'createInvalidationResponse' smart constructor.
-data CreateInvalidationResponse = CreateInvalidationResponse'
-  { _cirsInvalidation   :: !(Maybe Invalidation)
-  , _cirsLocation       :: !(Maybe Text)
-  , _cirsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreateInvalidationResponse =
+  CreateInvalidationResponse'
+    { _cirsInvalidation   :: !(Maybe Invalidation)
+    , _cirsLocation       :: !(Maybe Text)
+    , _cirsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'CreateInvalidationResponse' with the minimum fields required to make a request.

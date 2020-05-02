@@ -25,6 +25,8 @@
 --
 -- You can also specify a maximum number of return results with the /Limit/ parameter.
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.DirectoryService.DescribeSnapshots
     (
     -- * Creating a Request
@@ -48,6 +50,7 @@ module Network.AWS.DirectoryService.DescribeSnapshots
 import Network.AWS.DirectoryService.Types
 import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -57,12 +60,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeSnapshots' smart constructor.
-data DescribeSnapshots = DescribeSnapshots'
-  { _dsDirectoryId :: !(Maybe Text)
-  , _dsNextToken   :: !(Maybe Text)
-  , _dsSnapshotIds :: !(Maybe [Text])
-  , _dsLimit       :: !(Maybe Nat)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeSnapshots =
+  DescribeSnapshots'
+    { _dsDirectoryId :: !(Maybe Text)
+    , _dsNextToken   :: !(Maybe Text)
+    , _dsSnapshotIds :: !(Maybe [Text])
+    , _dsLimit       :: !(Maybe Nat)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeSnapshots' with the minimum fields required to make a request.
@@ -102,6 +107,13 @@ dsSnapshotIds = lens _dsSnapshotIds (\ s a -> s{_dsSnapshotIds = a}) . _Default 
 -- | The maximum number of objects to return.
 dsLimit :: Lens' DescribeSnapshots (Maybe Natural)
 dsLimit = lens _dsLimit (\ s a -> s{_dsLimit = a}) . mapping _Nat
+
+instance AWSPager DescribeSnapshots where
+        page rq rs
+          | stop (rs ^. dssrsNextToken) = Nothing
+          | stop (rs ^. dssrsSnapshots) = Nothing
+          | otherwise =
+            Just $ rq & dsNextToken .~ rs ^. dssrsNextToken
 
 instance AWSRequest DescribeSnapshots where
         type Rs DescribeSnapshots = DescribeSnapshotsResponse
@@ -148,11 +160,13 @@ instance ToQuery DescribeSnapshots where
 --
 --
 -- /See:/ 'describeSnapshotsResponse' smart constructor.
-data DescribeSnapshotsResponse = DescribeSnapshotsResponse'
-  { _dssrsNextToken      :: !(Maybe Text)
-  , _dssrsSnapshots      :: !(Maybe [Snapshot])
-  , _dssrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeSnapshotsResponse =
+  DescribeSnapshotsResponse'
+    { _dssrsNextToken      :: !(Maybe Text)
+    , _dssrsSnapshots      :: !(Maybe [Snapshot])
+    , _dssrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeSnapshotsResponse' with the minimum fields required to make a request.

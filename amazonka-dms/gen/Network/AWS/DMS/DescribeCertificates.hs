@@ -37,9 +37,9 @@ module Network.AWS.DMS.DescribeCertificates
     , describeCertificatesResponse
     , DescribeCertificatesResponse
     -- * Response Lenses
-    , dcrsCertificates
-    , dcrsMarker
-    , dcrsResponseStatus
+    , drsCertificates
+    , drsMarker
+    , drsResponseStatus
     ) where
 
 import Network.AWS.DMS.Types
@@ -51,11 +51,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeCertificates' smart constructor.
-data DescribeCertificates = DescribeCertificates'
-  { _dFilters    :: !(Maybe [Filter])
-  , _dMarker     :: !(Maybe Text)
-  , _dMaxRecords :: !(Maybe Int)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeCertificates =
+  DescribeCertificates'
+    { _dFilters    :: !(Maybe [Filter])
+    , _dMarker     :: !(Maybe Text)
+    , _dMaxRecords :: !(Maybe Int)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeCertificates' with the minimum fields required to make a request.
@@ -88,9 +90,9 @@ dMaxRecords = lens _dMaxRecords (\ s a -> s{_dMaxRecords = a})
 
 instance AWSPager DescribeCertificates where
         page rq rs
-          | stop (rs ^. dcrsMarker) = Nothing
-          | stop (rs ^. dcrsCertificates) = Nothing
-          | otherwise = Just $ rq & dMarker .~ rs ^. dcrsMarker
+          | stop (rs ^. drsMarker) = Nothing
+          | stop (rs ^. drsCertificates) = Nothing
+          | otherwise = Just $ rq & dMarker .~ rs ^. drsMarker
 
 instance AWSRequest DescribeCertificates where
         type Rs DescribeCertificates =
@@ -133,43 +135,45 @@ instance ToQuery DescribeCertificates where
         toQuery = const mempty
 
 -- | /See:/ 'describeCertificatesResponse' smart constructor.
-data DescribeCertificatesResponse = DescribeCertificatesResponse'
-  { _dcrsCertificates   :: !(Maybe [Certificate])
-  , _dcrsMarker         :: !(Maybe Text)
-  , _dcrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DescribeCertificatesResponse =
+  DescribeCertificatesResponse'
+    { _drsCertificates   :: !(Maybe [Certificate])
+    , _drsMarker         :: !(Maybe Text)
+    , _drsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DescribeCertificatesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dcrsCertificates' - The Secure Sockets Layer (SSL) certificates associated with the replication instance.
+-- * 'drsCertificates' - The Secure Sockets Layer (SSL) certificates associated with the replication instance.
 --
--- * 'dcrsMarker' - The pagination token.
+-- * 'drsMarker' - The pagination token.
 --
--- * 'dcrsResponseStatus' - -- | The response status code.
+-- * 'drsResponseStatus' - -- | The response status code.
 describeCertificatesResponse
-    :: Int -- ^ 'dcrsResponseStatus'
+    :: Int -- ^ 'drsResponseStatus'
     -> DescribeCertificatesResponse
 describeCertificatesResponse pResponseStatus_ =
   DescribeCertificatesResponse'
-    { _dcrsCertificates = Nothing
-    , _dcrsMarker = Nothing
-    , _dcrsResponseStatus = pResponseStatus_
+    { _drsCertificates = Nothing
+    , _drsMarker = Nothing
+    , _drsResponseStatus = pResponseStatus_
     }
 
 
 -- | The Secure Sockets Layer (SSL) certificates associated with the replication instance.
-dcrsCertificates :: Lens' DescribeCertificatesResponse [Certificate]
-dcrsCertificates = lens _dcrsCertificates (\ s a -> s{_dcrsCertificates = a}) . _Default . _Coerce
+drsCertificates :: Lens' DescribeCertificatesResponse [Certificate]
+drsCertificates = lens _drsCertificates (\ s a -> s{_drsCertificates = a}) . _Default . _Coerce
 
 -- | The pagination token.
-dcrsMarker :: Lens' DescribeCertificatesResponse (Maybe Text)
-dcrsMarker = lens _dcrsMarker (\ s a -> s{_dcrsMarker = a})
+drsMarker :: Lens' DescribeCertificatesResponse (Maybe Text)
+drsMarker = lens _drsMarker (\ s a -> s{_drsMarker = a})
 
 -- | -- | The response status code.
-dcrsResponseStatus :: Lens' DescribeCertificatesResponse Int
-dcrsResponseStatus = lens _dcrsResponseStatus (\ s a -> s{_dcrsResponseStatus = a})
+drsResponseStatus :: Lens' DescribeCertificatesResponse Int
+drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a})
 
 instance NFData DescribeCertificatesResponse where

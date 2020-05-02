@@ -21,6 +21,7 @@ module Network.AWS.CloudHSMv2.Types
     , _CloudHSMInvalidRequestException
     , _CloudHSMAccessDeniedException
     , _CloudHSMResourceNotFoundException
+    , _CloudHSMTagException
 
     -- * BackupPolicy
     , BackupPolicy (..)
@@ -37,8 +38,14 @@ module Network.AWS.CloudHSMv2.Types
     -- * Backup
     , Backup
     , backup
+    , bDeleteTimestamp
+    , bSourceCluster
+    , bSourceRegion
+    , bTagList
+    , bSourceBackup
     , bClusterId
     , bCreateTimestamp
+    , bCopyTimestamp
     , bBackupState
     , bBackupId
 
@@ -60,6 +67,7 @@ module Network.AWS.CloudHSMv2.Types
     , cSubnetMapping
     , cHSMs
     , cVPCId
+    , cTagList
     , cSourceBackupId
     , cCertificates
     , cSecurityGroup
@@ -67,6 +75,14 @@ module Network.AWS.CloudHSMv2.Types
     , cCreateTimestamp
     , cBackupPolicy
     , cHSMType
+
+    -- * DestinationBackup
+    , DestinationBackup
+    , destinationBackup
+    , dbSourceCluster
+    , dbSourceRegion
+    , dbSourceBackup
+    , dbCreateTimestamp
 
     -- * HSM
     , HSM
@@ -170,4 +186,9 @@ _CloudHSMAccessDeniedException =
 _CloudHSMResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _CloudHSMResourceNotFoundException =
   _MatchServiceError cloudHSMv2 "CloudHsmResourceNotFoundException"
+
+
+-- | Prism for CloudHsmTagException' errors.
+_CloudHSMTagException :: AsError a => Getting (First ServiceError) a ServiceError
+_CloudHSMTagException = _MatchServiceError cloudHSMv2 "CloudHsmTagException"
 

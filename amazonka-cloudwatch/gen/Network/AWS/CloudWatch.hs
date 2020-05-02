@@ -44,20 +44,32 @@ module Network.AWS.CloudWatch
     -- ** InvalidParameterValueException
     , _InvalidParameterValueException
 
+    -- ** ConcurrentModificationException
+    , _ConcurrentModificationException
+
     -- ** InvalidFormatFault
     , _InvalidFormatFault
 
     -- ** MissingRequiredParameterException
     , _MissingRequiredParameterException
 
+    -- ** ResourceNotFoundException
+    , _ResourceNotFoundException
+
     -- ** InvalidParameterCombinationException
     , _InvalidParameterCombinationException
+
+    -- ** LimitExceededException
+    , _LimitExceededException
 
     -- ** ResourceNotFound
     , _ResourceNotFound
 
     -- * Waiters
     -- $waiters
+
+    -- ** CompositeAlarmExists
+    , compositeAlarmExists
 
     -- ** AlarmExists
     , alarmExists
@@ -68,10 +80,28 @@ module Network.AWS.CloudWatch
     -- ** EnableAlarmActions
     , module Network.AWS.CloudWatch.EnableAlarmActions
 
+    -- ** DisableInsightRules
+    , module Network.AWS.CloudWatch.DisableInsightRules
+
+    -- ** PutCompositeAlarm
+    , module Network.AWS.CloudWatch.PutCompositeAlarm
+
+    -- ** DeleteAnomalyDetector
+    , module Network.AWS.CloudWatch.DeleteAnomalyDetector
+
+    -- ** DeleteInsightRules
+    , module Network.AWS.CloudWatch.DeleteInsightRules
+
     -- ** GetDashboard
     , module Network.AWS.CloudWatch.GetDashboard
 
-    -- ** GetMetricData
+    -- ** PutAnomalyDetector
+    , module Network.AWS.CloudWatch.PutAnomalyDetector
+
+    -- ** ListTagsForResource
+    , module Network.AWS.CloudWatch.ListTagsForResource
+
+    -- ** GetMetricData (Paginated)
     , module Network.AWS.CloudWatch.GetMetricData
 
     -- ** PutMetricData
@@ -86,8 +116,17 @@ module Network.AWS.CloudWatch
     -- ** ListMetrics (Paginated)
     , module Network.AWS.CloudWatch.ListMetrics
 
+    -- ** GetInsightRuleReport
+    , module Network.AWS.CloudWatch.GetInsightRuleReport
+
     -- ** DeleteDashboards
     , module Network.AWS.CloudWatch.DeleteDashboards
+
+    -- ** PutInsightRule
+    , module Network.AWS.CloudWatch.PutInsightRule
+
+    -- ** GetMetricWidgetImage
+    , module Network.AWS.CloudWatch.GetMetricWidgetImage
 
     -- ** DeleteAlarms
     , module Network.AWS.CloudWatch.DeleteAlarms
@@ -101,11 +140,23 @@ module Network.AWS.CloudWatch
     -- ** DescribeAlarmsForMetric
     , module Network.AWS.CloudWatch.DescribeAlarmsForMetric
 
+    -- ** EnableInsightRules
+    , module Network.AWS.CloudWatch.EnableInsightRules
+
     -- ** DisableAlarmActions
     , module Network.AWS.CloudWatch.DisableAlarmActions
 
+    -- ** DescribeAnomalyDetectors
+    , module Network.AWS.CloudWatch.DescribeAnomalyDetectors
+
     -- ** PutDashboard
     , module Network.AWS.CloudWatch.PutDashboard
+
+    -- ** TagResource
+    , module Network.AWS.CloudWatch.TagResource
+
+    -- ** UntagResource
+    , module Network.AWS.CloudWatch.UntagResource
 
     -- ** PutMetricAlarm
     , module Network.AWS.CloudWatch.PutMetricAlarm
@@ -113,7 +164,16 @@ module Network.AWS.CloudWatch
     -- ** SetAlarmState
     , module Network.AWS.CloudWatch.SetAlarmState
 
+    -- ** DescribeInsightRules
+    , module Network.AWS.CloudWatch.DescribeInsightRules
+
     -- * Types
+
+    -- ** AlarmType
+    , AlarmType (..)
+
+    -- ** AnomalyDetectorStateValue
+    , AnomalyDetectorStateValue (..)
 
     -- ** ComparisonOperator
     , ComparisonOperator (..)
@@ -142,8 +202,42 @@ module Network.AWS.CloudWatch
     , ahiAlarmName
     , ahiHistoryItemType
     , ahiHistoryData
+    , ahiAlarmType
     , ahiHistorySummary
     , ahiTimestamp
+
+    -- ** AnomalyDetector
+    , AnomalyDetector
+    , anomalyDetector
+    , adMetricName
+    , adNamespace
+    , adStateValue
+    , adStat
+    , adConfiguration
+    , adDimensions
+
+    -- ** AnomalyDetectorConfiguration
+    , AnomalyDetectorConfiguration
+    , anomalyDetectorConfiguration
+    , adcMetricTimezone
+    , adcExcludedTimeRanges
+
+    -- ** CompositeAlarm
+    , CompositeAlarm
+    , compositeAlarm
+    , caAlarmName
+    , caStateUpdatedTimestamp
+    , caAlarmDescription
+    , caAlarmRule
+    , caOKActions
+    , caStateValue
+    , caAlarmConfigurationUpdatedTimestamp
+    , caActionsEnabled
+    , caInsufficientDataActions
+    , caStateReason
+    , caStateReasonData
+    , caAlarmARN
+    , caAlarmActions
 
     -- ** DashboardEntry
     , DashboardEntry
@@ -183,6 +277,39 @@ module Network.AWS.CloudWatch
     , dfValue
     , dfName
 
+    -- ** InsightRule
+    , InsightRule
+    , insightRule
+    , irName
+    , irState
+    , irSchema
+    , irDefinition
+
+    -- ** InsightRuleContributor
+    , InsightRuleContributor
+    , insightRuleContributor
+    , ircKeys
+    , ircApproximateAggregateValue
+    , ircDatapoints
+
+    -- ** InsightRuleContributorDatapoint
+    , InsightRuleContributorDatapoint
+    , insightRuleContributorDatapoint
+    , ircdTimestamp
+    , ircdApproximateValue
+
+    -- ** InsightRuleMetricDatapoint
+    , InsightRuleMetricDatapoint
+    , insightRuleMetricDatapoint
+    , irmdMaxContributorValue
+    , irmdSampleCount
+    , irmdMaximum
+    , irmdAverage
+    , irmdMinimum
+    , irmdUniqueContributors
+    , irmdSum
+    , irmdTimestamp
+
     -- ** MessageData
     , MessageData
     , messageData
@@ -201,12 +328,14 @@ module Network.AWS.CloudWatch
     , metricAlarm
     , maAlarmName
     , maStateUpdatedTimestamp
+    , maMetrics
     , maTreatMissingData
     , maPeriod
     , maAlarmDescription
     , maEvaluationPeriods
     , maMetricName
     , maNamespace
+    , maThresholdMetricId
     , maComparisonOperator
     , maOKActions
     , maEvaluateLowSampleCountPercentile
@@ -229,6 +358,7 @@ module Network.AWS.CloudWatch
     , MetricDataQuery
     , metricDataQuery
     , mdqReturnData
+    , mdqPeriod
     , mdqExpression
     , mdqLabel
     , mdqMetricStat
@@ -247,6 +377,8 @@ module Network.AWS.CloudWatch
     -- ** MetricDatum
     , MetricDatum
     , metricDatum
+    , mdValues
+    , mdCounts
     , mdValue
     , mdStorageResolution
     , mdDimensions
@@ -263,6 +395,20 @@ module Network.AWS.CloudWatch
     , msPeriod
     , msStat
 
+    -- ** PartialFailure
+    , PartialFailure
+    , partialFailure
+    , pfFailureResource
+    , pfFailureCode
+    , pfFailureDescription
+    , pfExceptionType
+
+    -- ** Range
+    , Range
+    , range
+    , rStartTime
+    , rEndTime
+
     -- ** StatisticSet
     , StatisticSet
     , statisticSet
@@ -270,25 +416,45 @@ module Network.AWS.CloudWatch
     , ssSum
     , ssMinimum
     , ssMaximum
+
+    -- ** Tag
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
     ) where
 
 import Network.AWS.CloudWatch.DeleteAlarms
+import Network.AWS.CloudWatch.DeleteAnomalyDetector
 import Network.AWS.CloudWatch.DeleteDashboards
+import Network.AWS.CloudWatch.DeleteInsightRules
 import Network.AWS.CloudWatch.DescribeAlarmHistory
 import Network.AWS.CloudWatch.DescribeAlarms
 import Network.AWS.CloudWatch.DescribeAlarmsForMetric
+import Network.AWS.CloudWatch.DescribeAnomalyDetectors
+import Network.AWS.CloudWatch.DescribeInsightRules
 import Network.AWS.CloudWatch.DisableAlarmActions
+import Network.AWS.CloudWatch.DisableInsightRules
 import Network.AWS.CloudWatch.EnableAlarmActions
+import Network.AWS.CloudWatch.EnableInsightRules
 import Network.AWS.CloudWatch.GetDashboard
+import Network.AWS.CloudWatch.GetInsightRuleReport
 import Network.AWS.CloudWatch.GetMetricData
 import Network.AWS.CloudWatch.GetMetricStatistics
+import Network.AWS.CloudWatch.GetMetricWidgetImage
 import Network.AWS.CloudWatch.ListDashboards
 import Network.AWS.CloudWatch.ListMetrics
+import Network.AWS.CloudWatch.ListTagsForResource
+import Network.AWS.CloudWatch.PutAnomalyDetector
+import Network.AWS.CloudWatch.PutCompositeAlarm
 import Network.AWS.CloudWatch.PutDashboard
+import Network.AWS.CloudWatch.PutInsightRule
 import Network.AWS.CloudWatch.PutMetricAlarm
 import Network.AWS.CloudWatch.PutMetricData
 import Network.AWS.CloudWatch.SetAlarmState
+import Network.AWS.CloudWatch.TagResource
 import Network.AWS.CloudWatch.Types
+import Network.AWS.CloudWatch.UntagResource
 import Network.AWS.CloudWatch.Waiters
 
 {- $errors

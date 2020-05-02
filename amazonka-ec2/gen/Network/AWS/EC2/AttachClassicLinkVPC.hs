@@ -51,17 +51,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for AttachClassicLinkVpc.
---
---
---
--- /See:/ 'attachClassicLinkVPC' smart constructor.
-data AttachClassicLinkVPC = AttachClassicLinkVPC'
-  { _aclvDryRun     :: !(Maybe Bool)
-  , _aclvGroups     :: ![Text]
-  , _aclvInstanceId :: !Text
-  , _aclvVPCId      :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'attachClassicLinkVPC' smart constructor.
+data AttachClassicLinkVPC =
+  AttachClassicLinkVPC'
+    { _aclvDryRun     :: !(Maybe Bool)
+    , _aclvGroups     :: ![Text]
+    , _aclvInstanceId :: !Text
+    , _aclvVPCId      :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AttachClassicLinkVPC' with the minimum fields required to make a request.
@@ -134,15 +132,13 @@ instance ToQuery AttachClassicLinkVPC where
                "InstanceId" =: _aclvInstanceId,
                "VpcId" =: _aclvVPCId]
 
--- | Contains the output of AttachClassicLinkVpc.
---
---
---
--- /See:/ 'attachClassicLinkVPCResponse' smart constructor.
-data AttachClassicLinkVPCResponse = AttachClassicLinkVPCResponse'
-  { _aclvrsReturn         :: !(Maybe Bool)
-  , _aclvrsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+-- | /See:/ 'attachClassicLinkVPCResponse' smart constructor.
+data AttachClassicLinkVPCResponse =
+  AttachClassicLinkVPCResponse'
+    { _aclvrsReturn         :: !(Maybe Bool)
+    , _aclvrsResponseStatus :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AttachClassicLinkVPCResponse' with the minimum fields required to make a request.

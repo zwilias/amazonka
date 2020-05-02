@@ -18,8 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves the @IdentityID@ associated with a @DeveloperUserIdentifier@ or the list of @DeveloperUserIdentifier@ s associated with an @IdentityId@ for an existing identity. Either @IdentityID@ or @DeveloperUserIdentifier@ must not be null. If you supply only one of these values, the other value will be searched in the database and returned as a part of the response. If you supply both, @DeveloperUserIdentifier@ will be matched against @IdentityID@ . If the values are verified against the database, the response returns both values and is the same as the request. Otherwise a @ResourceConflictException@ is thrown.
+-- Retrieves the @IdentityID@ associated with a @DeveloperUserIdentifier@ or the list of @DeveloperUserIdentifier@ values associated with an @IdentityId@ for an existing identity. Either @IdentityID@ or @DeveloperUserIdentifier@ must not be null. If you supply only one of these values, the other value will be searched in the database and returned as a part of the response. If you supply both, @DeveloperUserIdentifier@ will be matched against @IdentityID@ . If the values are verified against the database, the response returns both values and is the same as the request. Otherwise a @ResourceConflictException@ is thrown.
 --
+--
+-- @LookupDeveloperIdentity@ is intended for low-throughput control plane operations: for example, to enable customer service to locate an identity ID by username. If you are using it for higher-volume operations such as user authentication, your requests are likely to be throttled. 'GetOpenIdTokenForDeveloperIdentity' is a better option for higher-volume operations for user authentication.
 --
 -- You must use AWS Developer credentials to call this API.
 --
@@ -57,13 +59,15 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'lookupDeveloperIdentity' smart constructor.
-data LookupDeveloperIdentity = LookupDeveloperIdentity'
-  { _ldiDeveloperUserIdentifier :: !(Maybe Text)
-  , _ldiNextToken               :: !(Maybe Text)
-  , _ldiIdentityId              :: !(Maybe Text)
-  , _ldiMaxResults              :: !(Maybe Nat)
-  , _ldiIdentityPoolId          :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data LookupDeveloperIdentity =
+  LookupDeveloperIdentity'
+    { _ldiDeveloperUserIdentifier :: !(Maybe Text)
+    , _ldiNextToken               :: !(Maybe Text)
+    , _ldiIdentityId              :: !(Maybe Text)
+    , _ldiMaxResults              :: !(Maybe Nat)
+    , _ldiIdentityPoolId          :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'LookupDeveloperIdentity' with the minimum fields required to make a request.
@@ -160,12 +164,14 @@ instance ToQuery LookupDeveloperIdentity where
 --
 --
 -- /See:/ 'lookupDeveloperIdentityResponse' smart constructor.
-data LookupDeveloperIdentityResponse = LookupDeveloperIdentityResponse'
-  { _ldirsNextToken                   :: !(Maybe Text)
-  , _ldirsIdentityId                  :: !(Maybe Text)
-  , _ldirsDeveloperUserIdentifierList :: !(Maybe [Text])
-  , _ldirsResponseStatus              :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data LookupDeveloperIdentityResponse =
+  LookupDeveloperIdentityResponse'
+    { _ldirsNextToken                   :: !(Maybe Text)
+    , _ldirsIdentityId                  :: !(Maybe Text)
+    , _ldirsDeveloperUserIdentifierList :: !(Maybe [Text])
+    , _ldirsResponseStatus              :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'LookupDeveloperIdentityResponse' with the minimum fields required to make a request.

@@ -53,13 +53,15 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'modifyEventSubscription' smart constructor.
-data ModifyEventSubscription = ModifyEventSubscription'
-  { _mesSNSTopicARN      :: !(Maybe Text)
-  , _mesEnabled          :: !(Maybe Bool)
-  , _mesSourceType       :: !(Maybe Text)
-  , _mesEventCategories  :: !(Maybe [Text])
-  , _mesSubscriptionName :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ModifyEventSubscription =
+  ModifyEventSubscription'
+    { _mesSNSTopicARN      :: !(Maybe Text)
+    , _mesEnabled          :: !(Maybe Bool)
+    , _mesSourceType       :: !(Maybe Text)
+    , _mesEventCategories  :: !(Maybe [Text])
+    , _mesSubscriptionName :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ModifyEventSubscription' with the minimum fields required to make a request.
@@ -70,7 +72,7 @@ data ModifyEventSubscription = ModifyEventSubscription'
 --
 -- * 'mesEnabled' - A Boolean value; set to __true__ to activate the subscription.
 --
--- * 'mesSourceType' - The type of AWS DMS resource that generates the events you want to subscribe to.  Valid values: replication-instance | migration-task
+-- * 'mesSourceType' - The type of AWS DMS resource that generates the events you want to subscribe to.  Valid values: replication-instance | replication-task
 --
 -- * 'mesEventCategories' - A list of event categories for a source type that you want to subscribe to. Use the @DescribeEventCategories@ action to see a list of event categories.
 --
@@ -96,7 +98,7 @@ mesSNSTopicARN = lens _mesSNSTopicARN (\ s a -> s{_mesSNSTopicARN = a})
 mesEnabled :: Lens' ModifyEventSubscription (Maybe Bool)
 mesEnabled = lens _mesEnabled (\ s a -> s{_mesEnabled = a})
 
--- | The type of AWS DMS resource that generates the events you want to subscribe to.  Valid values: replication-instance | migration-task
+-- | The type of AWS DMS resource that generates the events you want to subscribe to.  Valid values: replication-instance | replication-task
 mesSourceType :: Lens' ModifyEventSubscription (Maybe Text)
 mesSourceType = lens _mesSourceType (\ s a -> s{_mesSourceType = a})
 
@@ -153,10 +155,12 @@ instance ToQuery ModifyEventSubscription where
 --
 --
 -- /See:/ 'modifyEventSubscriptionResponse' smart constructor.
-data ModifyEventSubscriptionResponse = ModifyEventSubscriptionResponse'
-  { _mesrsEventSubscription :: !(Maybe EventSubscription)
-  , _mesrsResponseStatus    :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ModifyEventSubscriptionResponse =
+  ModifyEventSubscriptionResponse'
+    { _mesrsEventSubscription :: !(Maybe EventSubscription)
+    , _mesrsResponseStatus    :: !Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ModifyEventSubscriptionResponse' with the minimum fields required to make a request.

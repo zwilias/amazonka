@@ -26,10 +26,12 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'accessPoliciesStatus' smart constructor.
-data AccessPoliciesStatus = AccessPoliciesStatus'
-  { _apsOptions :: !Text
-  , _apsStatus  :: !OptionStatus
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AccessPoliciesStatus =
+  AccessPoliciesStatus'
+    { _apsOptions :: !Text
+    , _apsStatus  :: !OptionStatus
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AccessPoliciesStatus' with the minimum fields required to make a request.
@@ -69,13 +71,15 @@ instance NFData AccessPoliciesStatus where
 --
 --
 -- /See:/ 'analysisOptions' smart constructor.
-data AnalysisOptions = AnalysisOptions'
-  { _aoAlgorithmicStemming            :: !(Maybe AlgorithmicStemming)
-  , _aoStopwords                      :: !(Maybe Text)
-  , _aoJapaneseTokenizationDictionary :: !(Maybe Text)
-  , _aoSynonyms                       :: !(Maybe Text)
-  , _aoStemmingDictionary             :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AnalysisOptions =
+  AnalysisOptions'
+    { _aoAlgorithmicStemming            :: !(Maybe AlgorithmicStemming)
+    , _aoStopwords                      :: !(Maybe Text)
+    , _aoJapaneseTokenizationDictionary :: !(Maybe Text)
+    , _aoSynonyms                       :: !(Maybe Text)
+    , _aoStemmingDictionary             :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AnalysisOptions' with the minimum fields required to make a request.
@@ -150,11 +154,13 @@ instance ToQuery AnalysisOptions where
 --
 --
 -- /See:/ 'analysisScheme' smart constructor.
-data AnalysisScheme = AnalysisScheme'
-  { _asAnalysisOptions        :: !(Maybe AnalysisOptions)
-  , _asAnalysisSchemeName     :: !Text
-  , _asAnalysisSchemeLanguage :: !AnalysisSchemeLanguage
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AnalysisScheme =
+  AnalysisScheme'
+    { _asAnalysisOptions        :: !(Maybe AnalysisOptions)
+    , _asAnalysisSchemeName     :: !Text
+    , _asAnalysisSchemeLanguage :: !AnalysisSchemeLanguage
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AnalysisScheme' with the minimum fields required to make a request.
@@ -214,10 +220,12 @@ instance ToQuery AnalysisScheme where
 --
 --
 -- /See:/ 'analysisSchemeStatus' smart constructor.
-data AnalysisSchemeStatus = AnalysisSchemeStatus'
-  { _assOptions :: !AnalysisScheme
-  , _assStatus  :: !OptionStatus
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AnalysisSchemeStatus =
+  AnalysisSchemeStatus'
+    { _assOptions :: !AnalysisScheme
+    , _assStatus  :: !OptionStatus
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AnalysisSchemeStatus' with the minimum fields required to make a request.
@@ -257,10 +265,12 @@ instance NFData AnalysisSchemeStatus where
 --
 --
 -- /See:/ 'availabilityOptionsStatus' smart constructor.
-data AvailabilityOptionsStatus = AvailabilityOptionsStatus'
-  { _aosOptions :: !Bool
-  , _aosStatus  :: !OptionStatus
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data AvailabilityOptionsStatus =
+  AvailabilityOptionsStatus'
+    { _aosOptions :: !Bool
+    , _aosStatus  :: !OptionStatus
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'AvailabilityOptionsStatus' with the minimum fields required to make a request.
@@ -300,13 +310,15 @@ instance NFData AvailabilityOptionsStatus where
 --
 --
 -- /See:/ 'dateArrayOptions' smart constructor.
-data DateArrayOptions = DateArrayOptions'
-  { _daosSourceFields  :: !(Maybe Text)
-  , _daosReturnEnabled :: !(Maybe Bool)
-  , _daosFacetEnabled  :: !(Maybe Bool)
-  , _daosSearchEnabled :: !(Maybe Bool)
-  , _daosDefaultValue  :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DateArrayOptions =
+  DateArrayOptions'
+    { _daosSourceFields  :: !(Maybe Text)
+    , _daosReturnEnabled :: !(Maybe Bool)
+    , _daosFacetEnabled  :: !(Maybe Bool)
+    , _daosSearchEnabled :: !(Maybe Bool)
+    , _daosDefaultValue  :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DateArrayOptions' with the minimum fields required to make a request.
@@ -380,14 +392,16 @@ instance ToQuery DateArrayOptions where
 --
 --
 -- /See:/ 'dateOptions' smart constructor.
-data DateOptions = DateOptions'
-  { _doSourceField   :: !(Maybe Text)
-  , _doReturnEnabled :: !(Maybe Bool)
-  , _doFacetEnabled  :: !(Maybe Bool)
-  , _doSearchEnabled :: !(Maybe Bool)
-  , _doSortEnabled   :: !(Maybe Bool)
-  , _doDefaultValue  :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DateOptions =
+  DateOptions'
+    { _doSourceField   :: !(Maybe Text)
+    , _doReturnEnabled :: !(Maybe Bool)
+    , _doFacetEnabled  :: !(Maybe Bool)
+    , _doSearchEnabled :: !(Maybe Bool)
+    , _doSortEnabled   :: !(Maybe Bool)
+    , _doDefaultValue  :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DateOptions' with the minimum fields required to make a request.
@@ -470,11 +484,13 @@ instance ToQuery DateOptions where
 --
 --
 -- /See:/ 'documentSuggesterOptions' smart constructor.
-data DocumentSuggesterOptions = DocumentSuggesterOptions'
-  { _dsoSortExpression :: !(Maybe Text)
-  , _dsoFuzzyMatching  :: !(Maybe SuggesterFuzzyMatching)
-  , _dsoSourceField    :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DocumentSuggesterOptions =
+  DocumentSuggesterOptions'
+    { _dsoSortExpression :: !(Maybe Text)
+    , _dsoFuzzyMatching  :: !(Maybe SuggesterFuzzyMatching)
+    , _dsoSourceField    :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DocumentSuggesterOptions' with the minimum fields required to make a request.
@@ -526,26 +542,125 @@ instance ToQuery DocumentSuggesterOptions where
                "FuzzyMatching" =: _dsoFuzzyMatching,
                "SourceField" =: _dsoSourceField]
 
+-- | The domain's endpoint options.
+--
+--
+--
+-- /See:/ 'domainEndpointOptions' smart constructor.
+data DomainEndpointOptions =
+  DomainEndpointOptions'
+    { _deoEnforceHTTPS      :: !(Maybe Bool)
+    , _deoTLSSecurityPolicy :: !(Maybe TLSSecurityPolicy)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'DomainEndpointOptions' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'deoEnforceHTTPS' - Whether the domain is HTTPS only enabled.
+--
+-- * 'deoTLSSecurityPolicy' - The minimum required TLS version
+domainEndpointOptions
+    :: DomainEndpointOptions
+domainEndpointOptions =
+  DomainEndpointOptions'
+    {_deoEnforceHTTPS = Nothing, _deoTLSSecurityPolicy = Nothing}
+
+
+-- | Whether the domain is HTTPS only enabled.
+deoEnforceHTTPS :: Lens' DomainEndpointOptions (Maybe Bool)
+deoEnforceHTTPS = lens _deoEnforceHTTPS (\ s a -> s{_deoEnforceHTTPS = a})
+
+-- | The minimum required TLS version
+deoTLSSecurityPolicy :: Lens' DomainEndpointOptions (Maybe TLSSecurityPolicy)
+deoTLSSecurityPolicy = lens _deoTLSSecurityPolicy (\ s a -> s{_deoTLSSecurityPolicy = a})
+
+instance FromXML DomainEndpointOptions where
+        parseXML x
+          = DomainEndpointOptions' <$>
+              (x .@? "EnforceHTTPS") <*>
+                (x .@? "TLSSecurityPolicy")
+
+instance Hashable DomainEndpointOptions where
+
+instance NFData DomainEndpointOptions where
+
+instance ToQuery DomainEndpointOptions where
+        toQuery DomainEndpointOptions'{..}
+          = mconcat
+              ["EnforceHTTPS" =: _deoEnforceHTTPS,
+               "TLSSecurityPolicy" =: _deoTLSSecurityPolicy]
+
+-- | The configuration and status of the domain's endpoint options.
+--
+--
+--
+-- /See:/ 'domainEndpointOptionsStatus' smart constructor.
+data DomainEndpointOptionsStatus =
+  DomainEndpointOptionsStatus'
+    { _deosOptions :: !DomainEndpointOptions
+    , _deosStatus  :: !OptionStatus
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'DomainEndpointOptionsStatus' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'deosOptions' - The domain endpoint options configured for the domain.
+--
+-- * 'deosStatus' - The status of the configured domain endpoint options.
+domainEndpointOptionsStatus
+    :: DomainEndpointOptions -- ^ 'deosOptions'
+    -> OptionStatus -- ^ 'deosStatus'
+    -> DomainEndpointOptionsStatus
+domainEndpointOptionsStatus pOptions_ pStatus_ =
+  DomainEndpointOptionsStatus'
+    {_deosOptions = pOptions_, _deosStatus = pStatus_}
+
+
+-- | The domain endpoint options configured for the domain.
+deosOptions :: Lens' DomainEndpointOptionsStatus DomainEndpointOptions
+deosOptions = lens _deosOptions (\ s a -> s{_deosOptions = a})
+
+-- | The status of the configured domain endpoint options.
+deosStatus :: Lens' DomainEndpointOptionsStatus OptionStatus
+deosStatus = lens _deosStatus (\ s a -> s{_deosStatus = a})
+
+instance FromXML DomainEndpointOptionsStatus where
+        parseXML x
+          = DomainEndpointOptionsStatus' <$>
+              (x .@ "Options") <*> (x .@ "Status")
+
+instance Hashable DomainEndpointOptionsStatus where
+
+instance NFData DomainEndpointOptionsStatus where
+
 -- | The current status of the search domain.
 --
 --
 --
 -- /See:/ 'domainStatus' smart constructor.
-data DomainStatus = DomainStatus'
-  { _dsSearchInstanceCount    :: !(Maybe Nat)
-  , _dsSearchInstanceType     :: !(Maybe Text)
-  , _dsDocService             :: !(Maybe ServiceEndpoint)
-  , _dsARN                    :: !(Maybe Text)
-  , _dsCreated                :: !(Maybe Bool)
-  , _dsSearchService          :: !(Maybe ServiceEndpoint)
-  , _dsLimits                 :: !(Maybe Limits)
-  , _dsSearchPartitionCount   :: !(Maybe Nat)
-  , _dsDeleted                :: !(Maybe Bool)
-  , _dsProcessing             :: !(Maybe Bool)
-  , _dsDomainId               :: !Text
-  , _dsDomainName             :: !Text
-  , _dsRequiresIndexDocuments :: !Bool
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DomainStatus =
+  DomainStatus'
+    { _dsSearchInstanceCount    :: !(Maybe Nat)
+    , _dsSearchInstanceType     :: !(Maybe Text)
+    , _dsDocService             :: !(Maybe ServiceEndpoint)
+    , _dsARN                    :: !(Maybe Text)
+    , _dsCreated                :: !(Maybe Bool)
+    , _dsSearchService          :: !(Maybe ServiceEndpoint)
+    , _dsLimits                 :: !(Maybe Limits)
+    , _dsSearchPartitionCount   :: !(Maybe Nat)
+    , _dsDeleted                :: !(Maybe Bool)
+    , _dsProcessing             :: !(Maybe Bool)
+    , _dsDomainId               :: !Text
+    , _dsDomainName             :: !Text
+    , _dsRequiresIndexDocuments :: !Bool
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DomainStatus' with the minimum fields required to make a request.
@@ -678,13 +793,15 @@ instance NFData DomainStatus where
 --
 --
 -- /See:/ 'doubleArrayOptions' smart constructor.
-data DoubleArrayOptions = DoubleArrayOptions'
-  { _daoSourceFields  :: !(Maybe Text)
-  , _daoReturnEnabled :: !(Maybe Bool)
-  , _daoFacetEnabled  :: !(Maybe Bool)
-  , _daoSearchEnabled :: !(Maybe Bool)
-  , _daoDefaultValue  :: !(Maybe Double)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DoubleArrayOptions =
+  DoubleArrayOptions'
+    { _daoSourceFields  :: !(Maybe Text)
+    , _daoReturnEnabled :: !(Maybe Bool)
+    , _daoFacetEnabled  :: !(Maybe Bool)
+    , _daoSearchEnabled :: !(Maybe Bool)
+    , _daoDefaultValue  :: !(Maybe Double)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DoubleArrayOptions' with the minimum fields required to make a request.
@@ -758,14 +875,16 @@ instance ToQuery DoubleArrayOptions where
 --
 --
 -- /See:/ 'doubleOptions' smart constructor.
-data DoubleOptions = DoubleOptions'
-  { _dSourceField   :: !(Maybe Text)
-  , _dReturnEnabled :: !(Maybe Bool)
-  , _dFacetEnabled  :: !(Maybe Bool)
-  , _dSearchEnabled :: !(Maybe Bool)
-  , _dSortEnabled   :: !(Maybe Bool)
-  , _dDefaultValue  :: !(Maybe Double)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DoubleOptions =
+  DoubleOptions'
+    { _dSourceField   :: !(Maybe Text)
+    , _dReturnEnabled :: !(Maybe Bool)
+    , _dFacetEnabled  :: !(Maybe Bool)
+    , _dSearchEnabled :: !(Maybe Bool)
+    , _dSortEnabled   :: !(Maybe Bool)
+    , _dDefaultValue  :: !(Maybe Double)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'DoubleOptions' with the minimum fields required to make a request.
@@ -848,10 +967,12 @@ instance ToQuery DoubleOptions where
 --
 --
 -- /See:/ 'expression' smart constructor.
-data Expression = Expression'
-  { _eExpressionName  :: !Text
-  , _eExpressionValue :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Expression =
+  Expression'
+    { _eExpressionName  :: !Text
+    , _eExpressionValue :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Expression' with the minimum fields required to make a request.
@@ -898,10 +1019,12 @@ instance ToQuery Expression where
 --
 --
 -- /See:/ 'expressionStatus' smart constructor.
-data ExpressionStatus = ExpressionStatus'
-  { _esOptions :: !Expression
-  , _esStatus  :: !OptionStatus
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ExpressionStatus =
+  ExpressionStatus'
+    { _esOptions :: !Expression
+    , _esStatus  :: !OptionStatus
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ExpressionStatus' with the minimum fields required to make a request.
@@ -941,21 +1064,23 @@ instance NFData ExpressionStatus where
 --
 --
 -- /See:/ 'indexField' smart constructor.
-data IndexField = IndexField'
-  { _ifDoubleArrayOptions  :: !(Maybe DoubleArrayOptions)
-  , _ifDateOptions         :: !(Maybe DateOptions)
-  , _ifTextArrayOptions    :: !(Maybe TextArrayOptions)
-  , _ifDoubleOptions       :: !(Maybe DoubleOptions)
-  , _ifTextOptions         :: !(Maybe TextOptions)
-  , _ifLatLonOptions       :: !(Maybe LatLonOptions)
-  , _ifLiteralArrayOptions :: !(Maybe LiteralArrayOptions)
-  , _ifIntArrayOptions     :: !(Maybe IntArrayOptions)
-  , _ifDateArrayOptions    :: !(Maybe DateArrayOptions)
-  , _ifIntOptions          :: !(Maybe IntOptions)
-  , _ifLiteralOptions      :: !(Maybe LiteralOptions)
-  , _ifIndexFieldName      :: !Text
-  , _ifIndexFieldType      :: !IndexFieldType
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data IndexField =
+  IndexField'
+    { _ifDoubleArrayOptions  :: !(Maybe DoubleArrayOptions)
+    , _ifDateOptions         :: !(Maybe DateOptions)
+    , _ifTextArrayOptions    :: !(Maybe TextArrayOptions)
+    , _ifDoubleOptions       :: !(Maybe DoubleOptions)
+    , _ifTextOptions         :: !(Maybe TextOptions)
+    , _ifLatLonOptions       :: !(Maybe LatLonOptions)
+    , _ifLiteralArrayOptions :: !(Maybe LiteralArrayOptions)
+    , _ifIntArrayOptions     :: !(Maybe IntArrayOptions)
+    , _ifDateArrayOptions    :: !(Maybe DateArrayOptions)
+    , _ifIntOptions          :: !(Maybe IntOptions)
+    , _ifLiteralOptions      :: !(Maybe LiteralOptions)
+    , _ifIndexFieldName      :: !Text
+    , _ifIndexFieldType      :: !IndexFieldType
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'IndexField' with the minimum fields required to make a request.
@@ -1104,10 +1229,12 @@ instance ToQuery IndexField where
 --
 --
 -- /See:/ 'indexFieldStatus' smart constructor.
-data IndexFieldStatus = IndexFieldStatus'
-  { _ifsOptions :: !IndexField
-  , _ifsStatus  :: !OptionStatus
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data IndexFieldStatus =
+  IndexFieldStatus'
+    { _ifsOptions :: !IndexField
+    , _ifsStatus  :: !OptionStatus
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'IndexFieldStatus' with the minimum fields required to make a request.
@@ -1147,13 +1274,15 @@ instance NFData IndexFieldStatus where
 --
 --
 -- /See:/ 'intArrayOptions' smart constructor.
-data IntArrayOptions = IntArrayOptions'
-  { _iaoSourceFields  :: !(Maybe Text)
-  , _iaoReturnEnabled :: !(Maybe Bool)
-  , _iaoFacetEnabled  :: !(Maybe Bool)
-  , _iaoSearchEnabled :: !(Maybe Bool)
-  , _iaoDefaultValue  :: !(Maybe Integer)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data IntArrayOptions =
+  IntArrayOptions'
+    { _iaoSourceFields  :: !(Maybe Text)
+    , _iaoReturnEnabled :: !(Maybe Bool)
+    , _iaoFacetEnabled  :: !(Maybe Bool)
+    , _iaoSearchEnabled :: !(Maybe Bool)
+    , _iaoDefaultValue  :: !(Maybe Integer)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'IntArrayOptions' with the minimum fields required to make a request.
@@ -1227,14 +1356,16 @@ instance ToQuery IntArrayOptions where
 --
 --
 -- /See:/ 'intOptions' smart constructor.
-data IntOptions = IntOptions'
-  { _ioSourceField   :: !(Maybe Text)
-  , _ioReturnEnabled :: !(Maybe Bool)
-  , _ioFacetEnabled  :: !(Maybe Bool)
-  , _ioSearchEnabled :: !(Maybe Bool)
-  , _ioSortEnabled   :: !(Maybe Bool)
-  , _ioDefaultValue  :: !(Maybe Integer)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data IntOptions =
+  IntOptions'
+    { _ioSourceField   :: !(Maybe Text)
+    , _ioReturnEnabled :: !(Maybe Bool)
+    , _ioFacetEnabled  :: !(Maybe Bool)
+    , _ioSearchEnabled :: !(Maybe Bool)
+    , _ioSortEnabled   :: !(Maybe Bool)
+    , _ioDefaultValue  :: !(Maybe Integer)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'IntOptions' with the minimum fields required to make a request.
@@ -1317,14 +1448,16 @@ instance ToQuery IntOptions where
 --
 --
 -- /See:/ 'latLonOptions' smart constructor.
-data LatLonOptions = LatLonOptions'
-  { _lloSourceField   :: !(Maybe Text)
-  , _lloReturnEnabled :: !(Maybe Bool)
-  , _lloFacetEnabled  :: !(Maybe Bool)
-  , _lloSearchEnabled :: !(Maybe Bool)
-  , _lloSortEnabled   :: !(Maybe Bool)
-  , _lloDefaultValue  :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data LatLonOptions =
+  LatLonOptions'
+    { _lloSourceField   :: !(Maybe Text)
+    , _lloReturnEnabled :: !(Maybe Bool)
+    , _lloFacetEnabled  :: !(Maybe Bool)
+    , _lloSearchEnabled :: !(Maybe Bool)
+    , _lloSortEnabled   :: !(Maybe Bool)
+    , _lloDefaultValue  :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'LatLonOptions' with the minimum fields required to make a request.
@@ -1403,10 +1536,12 @@ instance ToQuery LatLonOptions where
                "DefaultValue" =: _lloDefaultValue]
 
 -- | /See:/ 'limits' smart constructor.
-data Limits = Limits'
-  { _lMaximumReplicationCount :: !Nat
-  , _lMaximumPartitionCount   :: !Nat
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Limits =
+  Limits'
+    { _lMaximumReplicationCount :: !Nat
+    , _lMaximumPartitionCount   :: !Nat
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Limits' with the minimum fields required to make a request.
@@ -1450,13 +1585,15 @@ instance NFData Limits where
 --
 --
 -- /See:/ 'literalArrayOptions' smart constructor.
-data LiteralArrayOptions = LiteralArrayOptions'
-  { _laoSourceFields  :: !(Maybe Text)
-  , _laoReturnEnabled :: !(Maybe Bool)
-  , _laoFacetEnabled  :: !(Maybe Bool)
-  , _laoSearchEnabled :: !(Maybe Bool)
-  , _laoDefaultValue  :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data LiteralArrayOptions =
+  LiteralArrayOptions'
+    { _laoSourceFields  :: !(Maybe Text)
+    , _laoReturnEnabled :: !(Maybe Bool)
+    , _laoFacetEnabled  :: !(Maybe Bool)
+    , _laoSearchEnabled :: !(Maybe Bool)
+    , _laoDefaultValue  :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'LiteralArrayOptions' with the minimum fields required to make a request.
@@ -1530,14 +1667,16 @@ instance ToQuery LiteralArrayOptions where
 --
 --
 -- /See:/ 'literalOptions' smart constructor.
-data LiteralOptions = LiteralOptions'
-  { _loSourceField   :: !(Maybe Text)
-  , _loReturnEnabled :: !(Maybe Bool)
-  , _loFacetEnabled  :: !(Maybe Bool)
-  , _loSearchEnabled :: !(Maybe Bool)
-  , _loSortEnabled   :: !(Maybe Bool)
-  , _loDefaultValue  :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data LiteralOptions =
+  LiteralOptions'
+    { _loSourceField   :: !(Maybe Text)
+    , _loReturnEnabled :: !(Maybe Bool)
+    , _loFacetEnabled  :: !(Maybe Bool)
+    , _loSearchEnabled :: !(Maybe Bool)
+    , _loSortEnabled   :: !(Maybe Bool)
+    , _loDefaultValue  :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'LiteralOptions' with the minimum fields required to make a request.
@@ -1620,13 +1759,15 @@ instance ToQuery LiteralOptions where
 --
 --
 -- /See:/ 'optionStatus' smart constructor.
-data OptionStatus = OptionStatus'
-  { _osPendingDeletion :: !(Maybe Bool)
-  , _osUpdateVersion   :: !(Maybe Nat)
-  , _osCreationDate    :: !ISO8601
-  , _osUpdateDate      :: !ISO8601
-  , _osState           :: !OptionState
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data OptionStatus =
+  OptionStatus'
+    { _osPendingDeletion :: !(Maybe Bool)
+    , _osUpdateVersion   :: !(Maybe Nat)
+    , _osCreationDate    :: !ISO8601
+    , _osUpdateDate      :: !ISO8601
+    , _osState           :: !OptionState
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'OptionStatus' with the minimum fields required to make a request.
@@ -1694,11 +1835,13 @@ instance NFData OptionStatus where
 --
 --
 -- /See:/ 'scalingParameters' smart constructor.
-data ScalingParameters = ScalingParameters'
-  { _spDesiredInstanceType     :: !(Maybe PartitionInstanceType)
-  , _spDesiredReplicationCount :: !(Maybe Nat)
-  , _spDesiredPartitionCount   :: !(Maybe Nat)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ScalingParameters =
+  ScalingParameters'
+    { _spDesiredInstanceType     :: !(Maybe PartitionInstanceType)
+    , _spDesiredReplicationCount :: !(Maybe Nat)
+    , _spDesiredPartitionCount   :: !(Maybe Nat)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ScalingParameters' with the minimum fields required to make a request.
@@ -1756,10 +1899,12 @@ instance ToQuery ScalingParameters where
 --
 --
 -- /See:/ 'scalingParametersStatus' smart constructor.
-data ScalingParametersStatus = ScalingParametersStatus'
-  { _spsOptions :: !ScalingParameters
-  , _spsStatus  :: !OptionStatus
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data ScalingParametersStatus =
+  ScalingParametersStatus'
+    { _spsOptions :: !ScalingParameters
+    , _spsStatus  :: !OptionStatus
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ScalingParametersStatus' with the minimum fields required to make a request.
@@ -1799,9 +1944,11 @@ instance NFData ScalingParametersStatus where
 --
 --
 -- /See:/ 'serviceEndpoint' smart constructor.
-newtype ServiceEndpoint = ServiceEndpoint'
-  { _seEndpoint :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype ServiceEndpoint =
+  ServiceEndpoint'
+    { _seEndpoint :: Maybe Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'ServiceEndpoint' with the minimum fields required to make a request.
@@ -1830,10 +1977,12 @@ instance NFData ServiceEndpoint where
 --
 --
 -- /See:/ 'suggester' smart constructor.
-data Suggester = Suggester'
-  { _sSuggesterName            :: !Text
-  , _sDocumentSuggesterOptions :: !DocumentSuggesterOptions
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data Suggester =
+  Suggester'
+    { _sSuggesterName            :: !Text
+    , _sDocumentSuggesterOptions :: !DocumentSuggesterOptions
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'Suggester' with the minimum fields required to make a request.
@@ -1884,10 +2033,12 @@ instance ToQuery Suggester where
 --
 --
 -- /See:/ 'suggesterStatus' smart constructor.
-data SuggesterStatus = SuggesterStatus'
-  { _ssOptions :: !Suggester
-  , _ssStatus  :: !OptionStatus
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data SuggesterStatus =
+  SuggesterStatus'
+    { _ssOptions :: !Suggester
+    , _ssStatus  :: !OptionStatus
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'SuggesterStatus' with the minimum fields required to make a request.
@@ -1927,13 +2078,15 @@ instance NFData SuggesterStatus where
 --
 --
 -- /See:/ 'textArrayOptions' smart constructor.
-data TextArrayOptions = TextArrayOptions'
-  { _taoSourceFields     :: !(Maybe Text)
-  , _taoReturnEnabled    :: !(Maybe Bool)
-  , _taoAnalysisScheme   :: !(Maybe Text)
-  , _taoHighlightEnabled :: !(Maybe Bool)
-  , _taoDefaultValue     :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data TextArrayOptions =
+  TextArrayOptions'
+    { _taoSourceFields     :: !(Maybe Text)
+    , _taoReturnEnabled    :: !(Maybe Bool)
+    , _taoAnalysisScheme   :: !(Maybe Text)
+    , _taoHighlightEnabled :: !(Maybe Bool)
+    , _taoDefaultValue     :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'TextArrayOptions' with the minimum fields required to make a request.
@@ -2007,14 +2160,16 @@ instance ToQuery TextArrayOptions where
 --
 --
 -- /See:/ 'textOptions' smart constructor.
-data TextOptions = TextOptions'
-  { _toSourceField      :: !(Maybe Text)
-  , _toReturnEnabled    :: !(Maybe Bool)
-  , _toAnalysisScheme   :: !(Maybe Text)
-  , _toHighlightEnabled :: !(Maybe Bool)
-  , _toSortEnabled      :: !(Maybe Bool)
-  , _toDefaultValue     :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data TextOptions =
+  TextOptions'
+    { _toSourceField      :: !(Maybe Text)
+    , _toReturnEnabled    :: !(Maybe Bool)
+    , _toAnalysisScheme   :: !(Maybe Text)
+    , _toHighlightEnabled :: !(Maybe Bool)
+    , _toSortEnabled      :: !(Maybe Bool)
+    , _toDefaultValue     :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'TextOptions' with the minimum fields required to make a request.

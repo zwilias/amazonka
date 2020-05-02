@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates the scaling plan for the specified scaling plan.
+-- Updates the specified scaling plan.
 --
 --
 -- You cannot update a scaling plan if it is in the process of being created, updated, or deleted.
@@ -49,12 +49,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateScalingPlan' smart constructor.
-data UpdateScalingPlan = UpdateScalingPlan'
-  { _uspScalingInstructions :: !(Maybe [ScalingInstruction])
-  , _uspApplicationSource   :: !(Maybe ApplicationSource)
-  , _uspScalingPlanName     :: !Text
-  , _uspScalingPlanVersion  :: !Integer
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+data UpdateScalingPlan =
+  UpdateScalingPlan'
+    { _uspScalingInstructions :: !(Maybe [ScalingInstruction])
+    , _uspApplicationSource   :: !(Maybe ApplicationSource)
+    , _uspScalingPlanName     :: !Text
+    , _uspScalingPlanVersion  :: !Integer
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UpdateScalingPlan' with the minimum fields required to make a request.
@@ -67,7 +69,7 @@ data UpdateScalingPlan = UpdateScalingPlan'
 --
 -- * 'uspScalingPlanName' - The name of the scaling plan.
 --
--- * 'uspScalingPlanVersion' - The version number.
+-- * 'uspScalingPlanVersion' - The version number of the scaling plan.
 updateScalingPlan
     :: Text -- ^ 'uspScalingPlanName'
     -> Integer -- ^ 'uspScalingPlanVersion'
@@ -93,7 +95,7 @@ uspApplicationSource = lens _uspApplicationSource (\ s a -> s{_uspApplicationSou
 uspScalingPlanName :: Lens' UpdateScalingPlan Text
 uspScalingPlanName = lens _uspScalingPlanName (\ s a -> s{_uspScalingPlanName = a})
 
--- | The version number.
+-- | The version number of the scaling plan.
 uspScalingPlanVersion :: Lens' UpdateScalingPlan Integer
 uspScalingPlanVersion = lens _uspScalingPlanVersion (\ s a -> s{_uspScalingPlanVersion = a})
 
@@ -137,9 +139,11 @@ instance ToQuery UpdateScalingPlan where
         toQuery = const mempty
 
 -- | /See:/ 'updateScalingPlanResponse' smart constructor.
-newtype UpdateScalingPlanResponse = UpdateScalingPlanResponse'
-  { _usprsResponseStatus :: Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype UpdateScalingPlanResponse =
+  UpdateScalingPlanResponse'
+    { _usprsResponseStatus :: Int
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 
 -- | Creates a value of 'UpdateScalingPlanResponse' with the minimum fields required to make a request.
