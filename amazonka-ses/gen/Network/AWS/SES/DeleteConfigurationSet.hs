@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SES.DeleteConfigurationSet
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,17 +24,19 @@
 -- You can execute this operation no more than once per second.
 --
 module Network.AWS.SES.DeleteConfigurationSet
+    (
     -- * Creating a Request
-  ( deleteConfigurationSet
-  , DeleteConfigurationSet
+      deleteConfigurationSet
+    , DeleteConfigurationSet
     -- * Request Lenses
-  , dConfigurationSetName
+    , dConfigurationSetName
+
     -- * Destructuring the Response
-  , deleteConfigurationSetResponse
-  , DeleteConfigurationSetResponse
+    , deleteConfigurationSetResponse
+    , DeleteConfigurationSetResponse
     -- * Response Lenses
-  , drsResponseStatus
-  ) where
+    , drsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -52,47 +56,50 @@ newtype DeleteConfigurationSet =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteConfigurationSet' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dConfigurationSetName' - The name of the configuration set to delete.
-deleteConfigurationSet ::
-     Text -- ^ 'dConfigurationSetName'
-  -> DeleteConfigurationSet
+deleteConfigurationSet
+    :: Text -- ^ 'dConfigurationSetName'
+    -> DeleteConfigurationSet
 deleteConfigurationSet pConfigurationSetName_ =
   DeleteConfigurationSet' {_dConfigurationSetName = pConfigurationSetName_}
 
+
 -- | The name of the configuration set to delete.
 dConfigurationSetName :: Lens' DeleteConfigurationSet Text
-dConfigurationSetName =
-  lens _dConfigurationSetName (\s a -> s {_dConfigurationSetName = a})
+dConfigurationSetName = lens _dConfigurationSetName (\ s a -> s{_dConfigurationSetName = a})
 
 instance AWSRequest DeleteConfigurationSet where
-  type Rs DeleteConfigurationSet = DeleteConfigurationSetResponse
-  request = postQuery ses
-  response =
-    receiveXMLWrapper
-      "DeleteConfigurationSetResult"
-      (\s h x -> DeleteConfigurationSetResponse' <$> (pure (fromEnum s)))
+        type Rs DeleteConfigurationSet =
+             DeleteConfigurationSetResponse
+        request = postQuery ses
+        response
+          = receiveXMLWrapper "DeleteConfigurationSetResult"
+              (\ s h x ->
+                 DeleteConfigurationSetResponse' <$>
+                   (pure (fromEnum s)))
 
-instance Hashable DeleteConfigurationSet
+instance Hashable DeleteConfigurationSet where
 
-instance NFData DeleteConfigurationSet
+instance NFData DeleteConfigurationSet where
 
 instance ToHeaders DeleteConfigurationSet where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath DeleteConfigurationSet where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DeleteConfigurationSet where
-  toQuery DeleteConfigurationSet' {..} =
-    mconcat
-      [ "Action" =: ("DeleteConfigurationSet" :: ByteString)
-      , "Version" =: ("2010-12-01" :: ByteString)
-      , "ConfigurationSetName" =: _dConfigurationSetName
-      ]
+        toQuery DeleteConfigurationSet'{..}
+          = mconcat
+              ["Action" =:
+                 ("DeleteConfigurationSet" :: ByteString),
+               "Version" =: ("2010-12-01" :: ByteString),
+               "ConfigurationSetName" =: _dConfigurationSetName]
 
 -- | An empty element returned on a successful request.
 --
@@ -105,19 +112,21 @@ newtype DeleteConfigurationSetResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteConfigurationSetResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'drsResponseStatus' - -- | The response status code.
-deleteConfigurationSetResponse ::
-     Int -- ^ 'drsResponseStatus'
-  -> DeleteConfigurationSetResponse
+deleteConfigurationSetResponse
+    :: Int -- ^ 'drsResponseStatus'
+    -> DeleteConfigurationSetResponse
 deleteConfigurationSetResponse pResponseStatus_ =
   DeleteConfigurationSetResponse' {_drsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 drsResponseStatus :: Lens' DeleteConfigurationSetResponse Int
-drsResponseStatus = lens _drsResponseStatus (\s a -> s {_drsResponseStatus = a})
+drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a})
 
-instance NFData DeleteConfigurationSetResponse
+instance NFData DeleteConfigurationSetResponse where

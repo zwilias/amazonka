@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.IAM.RemoveRoleFromInstanceProfile
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,16 +26,18 @@
 -- For more information about IAM roles, go to <http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html Working with Roles> . For more information about instance profiles, go to <http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html About Instance Profiles> .
 --
 module Network.AWS.IAM.RemoveRoleFromInstanceProfile
+    (
     -- * Creating a Request
-  ( removeRoleFromInstanceProfile
-  , RemoveRoleFromInstanceProfile
+      removeRoleFromInstanceProfile
+    , RemoveRoleFromInstanceProfile
     -- * Request Lenses
-  , rrfipInstanceProfileName
-  , rrfipRoleName
+    , rrfipInstanceProfileName
+    , rrfipRoleName
+
     -- * Destructuring the Response
-  , removeRoleFromInstanceProfileResponse
-  , RemoveRoleFromInstanceProfileResponse
-  ) where
+    , removeRoleFromInstanceProfileResponse
+    , RemoveRoleFromInstanceProfileResponse
+    ) where
 
 import Network.AWS.IAM.Types
 import Network.AWS.IAM.Types.Product
@@ -50,6 +54,7 @@ data RemoveRoleFromInstanceProfile =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'RemoveRoleFromInstanceProfile' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -57,57 +62,65 @@ data RemoveRoleFromInstanceProfile =
 -- * 'rrfipInstanceProfileName' - The name of the instance profile to update. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 --
 -- * 'rrfipRoleName' - The name of the role to remove. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
-removeRoleFromInstanceProfile ::
-     Text -- ^ 'rrfipInstanceProfileName'
-  -> Text -- ^ 'rrfipRoleName'
-  -> RemoveRoleFromInstanceProfile
+removeRoleFromInstanceProfile
+    :: Text -- ^ 'rrfipInstanceProfileName'
+    -> Text -- ^ 'rrfipRoleName'
+    -> RemoveRoleFromInstanceProfile
 removeRoleFromInstanceProfile pInstanceProfileName_ pRoleName_ =
   RemoveRoleFromInstanceProfile'
     { _rrfipInstanceProfileName = pInstanceProfileName_
     , _rrfipRoleName = pRoleName_
     }
 
+
 -- | The name of the instance profile to update. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 rrfipInstanceProfileName :: Lens' RemoveRoleFromInstanceProfile Text
-rrfipInstanceProfileName =
-  lens _rrfipInstanceProfileName (\s a -> s {_rrfipInstanceProfileName = a})
+rrfipInstanceProfileName = lens _rrfipInstanceProfileName (\ s a -> s{_rrfipInstanceProfileName = a})
 
 -- | The name of the role to remove. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 rrfipRoleName :: Lens' RemoveRoleFromInstanceProfile Text
-rrfipRoleName = lens _rrfipRoleName (\s a -> s {_rrfipRoleName = a})
+rrfipRoleName = lens _rrfipRoleName (\ s a -> s{_rrfipRoleName = a})
 
-instance AWSRequest RemoveRoleFromInstanceProfile where
-  type Rs RemoveRoleFromInstanceProfile = RemoveRoleFromInstanceProfileResponse
-  request = postQuery iam
-  response = receiveNull RemoveRoleFromInstanceProfileResponse'
+instance AWSRequest RemoveRoleFromInstanceProfile
+         where
+        type Rs RemoveRoleFromInstanceProfile =
+             RemoveRoleFromInstanceProfileResponse
+        request = postQuery iam
+        response
+          = receiveNull RemoveRoleFromInstanceProfileResponse'
 
-instance Hashable RemoveRoleFromInstanceProfile
+instance Hashable RemoveRoleFromInstanceProfile where
 
-instance NFData RemoveRoleFromInstanceProfile
+instance NFData RemoveRoleFromInstanceProfile where
 
-instance ToHeaders RemoveRoleFromInstanceProfile where
-  toHeaders = const mempty
+instance ToHeaders RemoveRoleFromInstanceProfile
+         where
+        toHeaders = const mempty
 
 instance ToPath RemoveRoleFromInstanceProfile where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery RemoveRoleFromInstanceProfile where
-  toQuery RemoveRoleFromInstanceProfile' {..} =
-    mconcat
-      [ "Action" =: ("RemoveRoleFromInstanceProfile" :: ByteString)
-      , "Version" =: ("2010-05-08" :: ByteString)
-      , "InstanceProfileName" =: _rrfipInstanceProfileName
-      , "RoleName" =: _rrfipRoleName
-      ]
+        toQuery RemoveRoleFromInstanceProfile'{..}
+          = mconcat
+              ["Action" =:
+                 ("RemoveRoleFromInstanceProfile" :: ByteString),
+               "Version" =: ("2010-05-08" :: ByteString),
+               "InstanceProfileName" =: _rrfipInstanceProfileName,
+               "RoleName" =: _rrfipRoleName]
 
 -- | /See:/ 'removeRoleFromInstanceProfileResponse' smart constructor.
 data RemoveRoleFromInstanceProfileResponse =
   RemoveRoleFromInstanceProfileResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'RemoveRoleFromInstanceProfileResponse' with the minimum fields required to make a request.
 --
-removeRoleFromInstanceProfileResponse :: RemoveRoleFromInstanceProfileResponse
+removeRoleFromInstanceProfileResponse
+    :: RemoveRoleFromInstanceProfileResponse
 removeRoleFromInstanceProfileResponse = RemoveRoleFromInstanceProfileResponse'
 
+
 instance NFData RemoveRoleFromInstanceProfileResponse
+         where

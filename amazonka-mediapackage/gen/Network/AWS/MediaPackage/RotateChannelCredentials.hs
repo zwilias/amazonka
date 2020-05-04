@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.MediaPackage.RotateChannelCredentials
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,21 +20,23 @@
 --
 -- Changes the Channel ingest username and password.
 module Network.AWS.MediaPackage.RotateChannelCredentials
+    (
     -- * Creating a Request
-  ( rotateChannelCredentials
-  , RotateChannelCredentials
+      rotateChannelCredentials
+    , RotateChannelCredentials
     -- * Request Lenses
-  , rccId
+    , rccId
+
     -- * Destructuring the Response
-  , rotateChannelCredentialsResponse
-  , RotateChannelCredentialsResponse
+    , rotateChannelCredentialsResponse
+    , RotateChannelCredentialsResponse
     -- * Response Lenses
-  , rccrsHlsIngest
-  , rccrsARN
-  , rccrsId
-  , rccrsDescription
-  , rccrsResponseStatus
-  ) where
+    , rccrsHlsIngest
+    , rccrsARN
+    , rccrsId
+    , rccrsDescription
+    , rccrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.MediaPackage.Types
@@ -48,50 +52,55 @@ newtype RotateChannelCredentials =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'RotateChannelCredentials' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'rccId' - The ID of the channel to update.
-rotateChannelCredentials ::
-     Text -- ^ 'rccId'
-  -> RotateChannelCredentials
+rotateChannelCredentials
+    :: Text -- ^ 'rccId'
+    -> RotateChannelCredentials
 rotateChannelCredentials pId_ = RotateChannelCredentials' {_rccId = pId_}
+
 
 -- | The ID of the channel to update.
 rccId :: Lens' RotateChannelCredentials Text
-rccId = lens _rccId (\s a -> s {_rccId = a})
+rccId = lens _rccId (\ s a -> s{_rccId = a})
 
 instance AWSRequest RotateChannelCredentials where
-  type Rs RotateChannelCredentials = RotateChannelCredentialsResponse
-  request = putJSON mediaPackage
-  response =
-    receiveJSON
-      (\s h x ->
-         RotateChannelCredentialsResponse' <$> (x .?> "hlsIngest") <*>
-         (x .?> "arn") <*>
-         (x .?> "id") <*>
-         (x .?> "description") <*>
-         (pure (fromEnum s)))
+        type Rs RotateChannelCredentials =
+             RotateChannelCredentialsResponse
+        request = putJSON mediaPackage
+        response
+          = receiveJSON
+              (\ s h x ->
+                 RotateChannelCredentialsResponse' <$>
+                   (x .?> "hlsIngest") <*> (x .?> "arn") <*>
+                     (x .?> "id")
+                     <*> (x .?> "description")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable RotateChannelCredentials
+instance Hashable RotateChannelCredentials where
 
-instance NFData RotateChannelCredentials
+instance NFData RotateChannelCredentials where
 
 instance ToHeaders RotateChannelCredentials where
-  toHeaders =
-    const
-      (mconcat ["Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)])
+        toHeaders
+          = const
+              (mconcat
+                 ["Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON RotateChannelCredentials where
-  toJSON = const (Object mempty)
+        toJSON = const (Object mempty)
 
 instance ToPath RotateChannelCredentials where
-  toPath RotateChannelCredentials' {..} =
-    mconcat ["/channels/", toBS _rccId, "/credentials"]
+        toPath RotateChannelCredentials'{..}
+          = mconcat ["/channels/", toBS _rccId, "/credentials"]
 
 instance ToQuery RotateChannelCredentials where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'rotateChannelCredentialsResponse' smart constructor.
 data RotateChannelCredentialsResponse =
@@ -103,6 +112,7 @@ data RotateChannelCredentialsResponse =
     , _rccrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'RotateChannelCredentialsResponse' with the minimum fields required to make a request.
 --
@@ -117,9 +127,9 @@ data RotateChannelCredentialsResponse =
 -- * 'rccrsDescription' - A short text description of the Channel.
 --
 -- * 'rccrsResponseStatus' - -- | The response status code.
-rotateChannelCredentialsResponse ::
-     Int -- ^ 'rccrsResponseStatus'
-  -> RotateChannelCredentialsResponse
+rotateChannelCredentialsResponse
+    :: Int -- ^ 'rccrsResponseStatus'
+    -> RotateChannelCredentialsResponse
 rotateChannelCredentialsResponse pResponseStatus_ =
   RotateChannelCredentialsResponse'
     { _rccrsHlsIngest = Nothing
@@ -129,25 +139,26 @@ rotateChannelCredentialsResponse pResponseStatus_ =
     , _rccrsResponseStatus = pResponseStatus_
     }
 
+
 -- | Undocumented member.
 rccrsHlsIngest :: Lens' RotateChannelCredentialsResponse (Maybe HlsIngest)
-rccrsHlsIngest = lens _rccrsHlsIngest (\s a -> s {_rccrsHlsIngest = a})
+rccrsHlsIngest = lens _rccrsHlsIngest (\ s a -> s{_rccrsHlsIngest = a})
 
 -- | The Amazon Resource Name (ARN) assigned to the Channel.
 rccrsARN :: Lens' RotateChannelCredentialsResponse (Maybe Text)
-rccrsARN = lens _rccrsARN (\s a -> s {_rccrsARN = a})
+rccrsARN = lens _rccrsARN (\ s a -> s{_rccrsARN = a})
 
 -- | The ID of the Channel.
 rccrsId :: Lens' RotateChannelCredentialsResponse (Maybe Text)
-rccrsId = lens _rccrsId (\s a -> s {_rccrsId = a})
+rccrsId = lens _rccrsId (\ s a -> s{_rccrsId = a})
 
 -- | A short text description of the Channel.
 rccrsDescription :: Lens' RotateChannelCredentialsResponse (Maybe Text)
-rccrsDescription = lens _rccrsDescription (\s a -> s {_rccrsDescription = a})
+rccrsDescription = lens _rccrsDescription (\ s a -> s{_rccrsDescription = a})
 
 -- | -- | The response status code.
 rccrsResponseStatus :: Lens' RotateChannelCredentialsResponse Int
-rccrsResponseStatus =
-  lens _rccrsResponseStatus (\s a -> s {_rccrsResponseStatus = a})
+rccrsResponseStatus = lens _rccrsResponseStatus (\ s a -> s{_rccrsResponseStatus = a})
 
 instance NFData RotateChannelCredentialsResponse
+         where

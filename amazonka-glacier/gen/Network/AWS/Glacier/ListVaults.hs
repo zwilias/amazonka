@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Glacier.ListVaults
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -28,21 +30,23 @@
 --
 -- This operation returns paginated results.
 module Network.AWS.Glacier.ListVaults
+    (
     -- * Creating a Request
-  ( listVaults
-  , ListVaults
+      listVaults
+    , ListVaults
     -- * Request Lenses
-  , lvMarker
-  , lvLimit
-  , lvAccountId
+    , lvMarker
+    , lvLimit
+    , lvAccountId
+
     -- * Destructuring the Response
-  , listVaultsResponse
-  , ListVaultsResponse
+    , listVaultsResponse
+    , ListVaultsResponse
     -- * Response Lenses
-  , lvrsMarker
-  , lvrsVaultList
-  , lvrsResponseStatus
-  ) where
+    , lvrsMarker
+    , lvrsVaultList
+    , lvrsResponseStatus
+    ) where
 
 import Network.AWS.Glacier.Types
 import Network.AWS.Glacier.Types.Product
@@ -65,6 +69,7 @@ data ListVaults =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListVaults' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -74,54 +79,58 @@ data ListVaults =
 -- * 'lvLimit' - The maximum number of vaults to be returned. The default limit is 1000. The number of vaults returned might be fewer than the specified limit, but the number of returned vaults never exceeds the limit.
 --
 -- * 'lvAccountId' - The @AccountId@ value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.
-listVaults ::
-     Text -- ^ 'lvAccountId'
-  -> ListVaults
+listVaults
+    :: Text -- ^ 'lvAccountId'
+    -> ListVaults
 listVaults pAccountId_ =
   ListVaults'
     {_lvMarker = Nothing, _lvLimit = Nothing, _lvAccountId = pAccountId_}
 
+
 -- | A string used for pagination. The marker specifies the vault ARN after which the listing of vaults should begin.
 lvMarker :: Lens' ListVaults (Maybe Text)
-lvMarker = lens _lvMarker (\s a -> s {_lvMarker = a})
+lvMarker = lens _lvMarker (\ s a -> s{_lvMarker = a})
 
 -- | The maximum number of vaults to be returned. The default limit is 1000. The number of vaults returned might be fewer than the specified limit, but the number of returned vaults never exceeds the limit.
 lvLimit :: Lens' ListVaults (Maybe Text)
-lvLimit = lens _lvLimit (\s a -> s {_lvLimit = a})
+lvLimit = lens _lvLimit (\ s a -> s{_lvLimit = a})
 
 -- | The @AccountId@ value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.
 lvAccountId :: Lens' ListVaults Text
-lvAccountId = lens _lvAccountId (\s a -> s {_lvAccountId = a})
+lvAccountId = lens _lvAccountId (\ s a -> s{_lvAccountId = a})
 
 instance AWSPager ListVaults where
-  page rq rs
-    | stop (rs ^. lvrsMarker) = Nothing
-    | stop (rs ^. lvrsVaultList) = Nothing
-    | otherwise = Just $ rq & lvMarker .~ rs ^. lvrsMarker
+        page rq rs
+          | stop (rs ^. lvrsMarker) = Nothing
+          | stop (rs ^. lvrsVaultList) = Nothing
+          | otherwise =
+            Just $ rq & lvMarker .~ rs ^. lvrsMarker
 
 instance AWSRequest ListVaults where
-  type Rs ListVaults = ListVaultsResponse
-  request = get glacier
-  response =
-    receiveJSON
-      (\s h x ->
-         ListVaultsResponse' <$> (x .?> "Marker") <*>
-         (x .?> "VaultList" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs ListVaults = ListVaultsResponse
+        request = get glacier
+        response
+          = receiveJSON
+              (\ s h x ->
+                 ListVaultsResponse' <$>
+                   (x .?> "Marker") <*> (x .?> "VaultList" .!@ mempty)
+                     <*> (pure (fromEnum s)))
 
-instance Hashable ListVaults
+instance Hashable ListVaults where
 
-instance NFData ListVaults
+instance NFData ListVaults where
 
 instance ToHeaders ListVaults where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath ListVaults where
-  toPath ListVaults' {..} = mconcat ["/", toBS _lvAccountId, "/vaults"]
+        toPath ListVaults'{..}
+          = mconcat ["/", toBS _lvAccountId, "/vaults"]
 
 instance ToQuery ListVaults where
-  toQuery ListVaults' {..} =
-    mconcat ["marker" =: _lvMarker, "limit" =: _lvLimit]
+        toQuery ListVaults'{..}
+          = mconcat
+              ["marker" =: _lvMarker, "limit" =: _lvLimit]
 
 -- | Contains the Amazon Glacier response to your request.
 --
@@ -136,6 +145,7 @@ data ListVaultsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListVaultsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -145,9 +155,9 @@ data ListVaultsResponse =
 -- * 'lvrsVaultList' - List of vaults.
 --
 -- * 'lvrsResponseStatus' - -- | The response status code.
-listVaultsResponse ::
-     Int -- ^ 'lvrsResponseStatus'
-  -> ListVaultsResponse
+listVaultsResponse
+    :: Int -- ^ 'lvrsResponseStatus'
+    -> ListVaultsResponse
 listVaultsResponse pResponseStatus_ =
   ListVaultsResponse'
     { _lvrsMarker = Nothing
@@ -155,18 +165,17 @@ listVaultsResponse pResponseStatus_ =
     , _lvrsResponseStatus = pResponseStatus_
     }
 
+
 -- | The vault ARN at which to continue pagination of the results. You use the marker in another List Vaults request to obtain more vaults in the list.
 lvrsMarker :: Lens' ListVaultsResponse (Maybe Text)
-lvrsMarker = lens _lvrsMarker (\s a -> s {_lvrsMarker = a})
+lvrsMarker = lens _lvrsMarker (\ s a -> s{_lvrsMarker = a})
 
 -- | List of vaults.
 lvrsVaultList :: Lens' ListVaultsResponse [DescribeVaultOutput]
-lvrsVaultList =
-  lens _lvrsVaultList (\s a -> s {_lvrsVaultList = a}) . _Default . _Coerce
+lvrsVaultList = lens _lvrsVaultList (\ s a -> s{_lvrsVaultList = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 lvrsResponseStatus :: Lens' ListVaultsResponse Int
-lvrsResponseStatus =
-  lens _lvrsResponseStatus (\s a -> s {_lvrsResponseStatus = a})
+lvrsResponseStatus = lens _lvrsResponseStatus (\ s a -> s{_lvrsResponseStatus = a})
 
-instance NFData ListVaultsResponse
+instance NFData ListVaultsResponse where

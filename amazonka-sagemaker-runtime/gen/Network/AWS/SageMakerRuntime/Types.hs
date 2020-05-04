@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SageMakerRuntime.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,14 +11,16 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.SageMakerRuntime.Types
+    (
     -- * Service Configuration
-  ( sageMakerRuntime
+      sageMakerRuntime
+
     -- * Errors
-  , _ServiceUnavailable
-  , _ModelError
-  , _InternalFailure
-  , _ValidationError
-  ) where
+    , _ServiceUnavailable
+    , _ModelError
+    , _InternalFailure
+    , _ValidationError
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -63,6 +66,7 @@ sageMakerRuntime =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | Service is unavailable. Try your call again.
 --
 --
@@ -70,11 +74,13 @@ _ServiceUnavailable :: AsError a => Getting (First ServiceError) a ServiceError
 _ServiceUnavailable =
   _MatchServiceError sageMakerRuntime "ServiceUnavailable" . hasStatus 503
 
+
 -- | Model (owned by the customer in the container) returned an error 500.
 --
 --
 _ModelError :: AsError a => Getting (First ServiceError) a ServiceError
 _ModelError = _MatchServiceError sageMakerRuntime "ModelError" . hasStatus 424
+
 
 -- | Internal failure occurred.
 --
@@ -83,9 +89,11 @@ _InternalFailure :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalFailure =
   _MatchServiceError sageMakerRuntime "InternalFailure" . hasStatus 500
 
+
 -- | Inspect your request and try again.
 --
 --
 _ValidationError :: AsError a => Getting (First ServiceError) a ServiceError
 _ValidationError =
   _MatchServiceError sageMakerRuntime "ValidationError" . hasStatus 400
+

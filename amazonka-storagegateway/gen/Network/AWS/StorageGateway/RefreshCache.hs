@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.StorageGateway.RefreshCache
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.StorageGateway.RefreshCache
+    (
     -- * Creating a Request
-  ( refreshCache
-  , RefreshCache
+      refreshCache
+    , RefreshCache
     -- * Request Lenses
-  , rcFileShareARN
+    , rcFileShareARN
+
     -- * Destructuring the Response
-  , refreshCacheResponse
-  , RefreshCacheResponse
+    , refreshCacheResponse
+    , RefreshCacheResponse
     -- * Response Lenses
-  , rcrsFileShareARN
-  , rcrsResponseStatus
-  ) where
+    , rcrsFileShareARN
+    , rcrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -47,51 +51,56 @@ newtype RefreshCache =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'RefreshCache' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'rcFileShareARN' - Undocumented member.
-refreshCache ::
-     Text -- ^ 'rcFileShareARN'
-  -> RefreshCache
+refreshCache
+    :: Text -- ^ 'rcFileShareARN'
+    -> RefreshCache
 refreshCache pFileShareARN_ = RefreshCache' {_rcFileShareARN = pFileShareARN_}
+
 
 -- | Undocumented member.
 rcFileShareARN :: Lens' RefreshCache Text
-rcFileShareARN = lens _rcFileShareARN (\s a -> s {_rcFileShareARN = a})
+rcFileShareARN = lens _rcFileShareARN (\ s a -> s{_rcFileShareARN = a})
 
 instance AWSRequest RefreshCache where
-  type Rs RefreshCache = RefreshCacheResponse
-  request = postJSON storageGateway
-  response =
-    receiveJSON
-      (\s h x ->
-         RefreshCacheResponse' <$> (x .?> "FileShareARN") <*>
-         (pure (fromEnum s)))
+        type Rs RefreshCache = RefreshCacheResponse
+        request = postJSON storageGateway
+        response
+          = receiveJSON
+              (\ s h x ->
+                 RefreshCacheResponse' <$>
+                   (x .?> "FileShareARN") <*> (pure (fromEnum s)))
 
-instance Hashable RefreshCache
+instance Hashable RefreshCache where
 
-instance NFData RefreshCache
+instance NFData RefreshCache where
 
 instance ToHeaders RefreshCache where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("StorageGateway_20130630.RefreshCache" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("StorageGateway_20130630.RefreshCache" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON RefreshCache where
-  toJSON RefreshCache' {..} =
-    object (catMaybes [Just ("FileShareARN" .= _rcFileShareARN)])
+        toJSON RefreshCache'{..}
+          = object
+              (catMaybes
+                 [Just ("FileShareARN" .= _rcFileShareARN)])
 
 instance ToPath RefreshCache where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery RefreshCache where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'refreshCacheResponse' smart constructor.
 data RefreshCacheResponse =
@@ -101,6 +110,7 @@ data RefreshCacheResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'RefreshCacheResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -108,20 +118,20 @@ data RefreshCacheResponse =
 -- * 'rcrsFileShareARN' - Undocumented member.
 --
 -- * 'rcrsResponseStatus' - -- | The response status code.
-refreshCacheResponse ::
-     Int -- ^ 'rcrsResponseStatus'
-  -> RefreshCacheResponse
+refreshCacheResponse
+    :: Int -- ^ 'rcrsResponseStatus'
+    -> RefreshCacheResponse
 refreshCacheResponse pResponseStatus_ =
   RefreshCacheResponse'
     {_rcrsFileShareARN = Nothing, _rcrsResponseStatus = pResponseStatus_}
 
+
 -- | Undocumented member.
 rcrsFileShareARN :: Lens' RefreshCacheResponse (Maybe Text)
-rcrsFileShareARN = lens _rcrsFileShareARN (\s a -> s {_rcrsFileShareARN = a})
+rcrsFileShareARN = lens _rcrsFileShareARN (\ s a -> s{_rcrsFileShareARN = a})
 
 -- | -- | The response status code.
 rcrsResponseStatus :: Lens' RefreshCacheResponse Int
-rcrsResponseStatus =
-  lens _rcrsResponseStatus (\s a -> s {_rcrsResponseStatus = a})
+rcrsResponseStatus = lens _rcrsResponseStatus (\ s a -> s{_rcrsResponseStatus = a})
 
-instance NFData RefreshCacheResponse
+instance NFData RefreshCacheResponse where

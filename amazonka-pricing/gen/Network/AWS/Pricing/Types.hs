@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Pricing.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,32 +11,38 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.Pricing.Types
+    (
     -- * Service Configuration
-  ( pricing
+      pricing
+
     -- * Errors
-  , _InvalidParameterException
-  , _InternalErrorException
-  , _ExpiredNextTokenException
-  , _NotFoundException
-  , _InvalidNextTokenException
+    , _InvalidParameterException
+    , _InternalErrorException
+    , _ExpiredNextTokenException
+    , _NotFoundException
+    , _InvalidNextTokenException
+
     -- * FilterType
-  , FilterType(..)
+    , FilterType (..)
+
     -- * AttributeValue
-  , AttributeValue
-  , attributeValue
-  , avValue
+    , AttributeValue
+    , attributeValue
+    , avValue
+
     -- * Filter
-  , Filter
-  , filter'
-  , fType
-  , fField
-  , fValue
+    , Filter
+    , filter'
+    , fType
+    , fField
+    , fValue
+
     -- * PricingService
-  , PricingService
-  , pricingService
-  , psAttributeNames
-  , psServiceCode
-  ) where
+    , PricingService
+    , pricingService
+    , psAttributeNames
+    , psServiceCode
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -81,28 +88,29 @@ pricing =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | One or more parameters had an invalid value.
 --
 --
-_InvalidParameterException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidParameterException =
   _MatchServiceError pricing "InvalidParameterException"
+
 
 -- | An error on the server occurred during the processing of your request. Try again later.
 --
 --
-_InternalErrorException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InternalErrorException :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalErrorException = _MatchServiceError pricing "InternalErrorException"
+
 
 -- | The pagination token expired. Try again without a pagination token.
 --
 --
-_ExpiredNextTokenException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ExpiredNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
 _ExpiredNextTokenException =
   _MatchServiceError pricing "ExpiredNextTokenException"
+
 
 -- | The requested resource can't be found.
 --
@@ -110,10 +118,11 @@ _ExpiredNextTokenException =
 _NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _NotFoundException = _MatchServiceError pricing "NotFoundException"
 
+
 -- | The pagination token is invalid. Try again without a pagination token.
 --
 --
-_InvalidNextTokenException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidNextTokenException =
   _MatchServiceError pricing "InvalidNextTokenException"
+

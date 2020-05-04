@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.IoT.ListThingPrincipals
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.IoT.ListThingPrincipals
+    (
     -- * Creating a Request
-  ( listThingPrincipals
-  , ListThingPrincipals
+      listThingPrincipals
+    , ListThingPrincipals
     -- * Request Lenses
-  , ltpThingName
+    , ltpThingName
+
     -- * Destructuring the Response
-  , listThingPrincipalsResponse
-  , ListThingPrincipalsResponse
+    , listThingPrincipalsResponse
+    , ListThingPrincipalsResponse
     -- * Response Lenses
-  , ltprsPrincipals
-  , ltprsResponseStatus
-  ) where
+    , ltprsPrincipals
+    , ltprsResponseStatus
+    ) where
 
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
@@ -51,43 +55,48 @@ newtype ListThingPrincipals =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListThingPrincipals' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'ltpThingName' - The name of the thing.
-listThingPrincipals ::
-     Text -- ^ 'ltpThingName'
-  -> ListThingPrincipals
+listThingPrincipals
+    :: Text -- ^ 'ltpThingName'
+    -> ListThingPrincipals
 listThingPrincipals pThingName_ =
   ListThingPrincipals' {_ltpThingName = pThingName_}
 
+
 -- | The name of the thing.
 ltpThingName :: Lens' ListThingPrincipals Text
-ltpThingName = lens _ltpThingName (\s a -> s {_ltpThingName = a})
+ltpThingName = lens _ltpThingName (\ s a -> s{_ltpThingName = a})
 
 instance AWSRequest ListThingPrincipals where
-  type Rs ListThingPrincipals = ListThingPrincipalsResponse
-  request = get ioT
-  response =
-    receiveJSON
-      (\s h x ->
-         ListThingPrincipalsResponse' <$> (x .?> "principals" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs ListThingPrincipals =
+             ListThingPrincipalsResponse
+        request = get ioT
+        response
+          = receiveJSON
+              (\ s h x ->
+                 ListThingPrincipalsResponse' <$>
+                   (x .?> "principals" .!@ mempty) <*>
+                     (pure (fromEnum s)))
 
-instance Hashable ListThingPrincipals
+instance Hashable ListThingPrincipals where
 
-instance NFData ListThingPrincipals
+instance NFData ListThingPrincipals where
 
 instance ToHeaders ListThingPrincipals where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath ListThingPrincipals where
-  toPath ListThingPrincipals' {..} =
-    mconcat ["/things/", toBS _ltpThingName, "/principals"]
+        toPath ListThingPrincipals'{..}
+          = mconcat
+              ["/things/", toBS _ltpThingName, "/principals"]
 
 instance ToQuery ListThingPrincipals where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | The output from the ListThingPrincipals operation.
 --
@@ -101,6 +110,7 @@ data ListThingPrincipalsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListThingPrincipalsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -108,21 +118,20 @@ data ListThingPrincipalsResponse =
 -- * 'ltprsPrincipals' - The principals associated with the thing.
 --
 -- * 'ltprsResponseStatus' - -- | The response status code.
-listThingPrincipalsResponse ::
-     Int -- ^ 'ltprsResponseStatus'
-  -> ListThingPrincipalsResponse
+listThingPrincipalsResponse
+    :: Int -- ^ 'ltprsResponseStatus'
+    -> ListThingPrincipalsResponse
 listThingPrincipalsResponse pResponseStatus_ =
   ListThingPrincipalsResponse'
     {_ltprsPrincipals = Nothing, _ltprsResponseStatus = pResponseStatus_}
 
+
 -- | The principals associated with the thing.
 ltprsPrincipals :: Lens' ListThingPrincipalsResponse [Text]
-ltprsPrincipals =
-  lens _ltprsPrincipals (\s a -> s {_ltprsPrincipals = a}) . _Default . _Coerce
+ltprsPrincipals = lens _ltprsPrincipals (\ s a -> s{_ltprsPrincipals = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 ltprsResponseStatus :: Lens' ListThingPrincipalsResponse Int
-ltprsResponseStatus =
-  lens _ltprsResponseStatus (\s a -> s {_ltprsResponseStatus = a})
+ltprsResponseStatus = lens _ltprsResponseStatus (\ s a -> s{_ltprsResponseStatus = a})
 
-instance NFData ListThingPrincipalsResponse
+instance NFData ListThingPrincipalsResponse where

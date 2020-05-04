@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.KinesisVideoMedia
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -14,49 +15,65 @@
 --
 --
 module Network.AWS.KinesisVideoMedia
+    (
     -- * Service Configuration
-  ( kinesisVideoMedia
+      kinesisVideoMedia
+
     -- * Errors
     -- $errors
+
     -- ** ConnectionLimitExceededException
-  , _ConnectionLimitExceededException
+    , _ConnectionLimitExceededException
+
     -- ** InvalidArgumentException
-  , _InvalidArgumentException
+    , _InvalidArgumentException
+
     -- ** NotAuthorizedException
-  , _NotAuthorizedException
+    , _NotAuthorizedException
+
     -- ** ClientLimitExceededException
-  , _ClientLimitExceededException
+    , _ClientLimitExceededException
+
     -- ** InvalidEndpointException
-  , _InvalidEndpointException
+    , _InvalidEndpointException
+
     -- ** ResourceNotFoundException
-  , _ResourceNotFoundException
+    , _ResourceNotFoundException
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
+
     -- ** GetMedia
-  , module Network.AWS.KinesisVideoMedia.GetMedia
+    , module Network.AWS.KinesisVideoMedia.GetMedia
+
     -- * Types
+
     -- ** StartSelectorType
-  , StartSelectorType(..)
+    , StartSelectorType (..)
+
     -- ** StartSelector
-  , StartSelector
-  , startSelector
-  , ssContinuationToken
-  , ssAfterFragmentNumber
-  , ssStartTimestamp
-  , ssStartSelectorType
-  ) where
+    , StartSelector
+    , startSelector
+    , ssContinuationToken
+    , ssAfterFragmentNumber
+    , ssStartTimestamp
+    , ssStartSelectorType
+    ) where
 
 import Network.AWS.KinesisVideoMedia.GetMedia
 import Network.AWS.KinesisVideoMedia.Types
 import Network.AWS.KinesisVideoMedia.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'KinesisVideoMedia'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -73,6 +90,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

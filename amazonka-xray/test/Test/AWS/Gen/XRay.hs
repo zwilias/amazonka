@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Test.AWS.Gen.XRay
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -23,6 +24,7 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
+
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -51,6 +53,7 @@ import Test.Tasty
 --             getTraceGraph
 --
 --           ]
+
 --     , testGroup "response"
 --         [ responsePutEncryptionConfig $
 --             putEncryptionConfigResponse
@@ -78,95 +81,102 @@ import Test.Tasty
 --
 --           ]
 --     ]
+
 -- Requests
+
 requestPutEncryptionConfig :: PutEncryptionConfig -> TestTree
-requestPutEncryptionConfig =
-  req "PutEncryptionConfig" "fixture/PutEncryptionConfig.yaml"
+requestPutEncryptionConfig = req
+    "PutEncryptionConfig"
+    "fixture/PutEncryptionConfig.yaml"
 
 requestGetServiceGraph :: GetServiceGraph -> TestTree
-requestGetServiceGraph = req "GetServiceGraph" "fixture/GetServiceGraph.yaml"
+requestGetServiceGraph = req
+    "GetServiceGraph"
+    "fixture/GetServiceGraph.yaml"
 
 requestGetTraceSummaries :: GetTraceSummaries -> TestTree
-requestGetTraceSummaries =
-  req "GetTraceSummaries" "fixture/GetTraceSummaries.yaml"
+requestGetTraceSummaries = req
+    "GetTraceSummaries"
+    "fixture/GetTraceSummaries.yaml"
 
 requestPutTraceSegments :: PutTraceSegments -> TestTree
-requestPutTraceSegments = req "PutTraceSegments" "fixture/PutTraceSegments.yaml"
+requestPutTraceSegments = req
+    "PutTraceSegments"
+    "fixture/PutTraceSegments.yaml"
 
 requestBatchGetTraces :: BatchGetTraces -> TestTree
-requestBatchGetTraces = req "BatchGetTraces" "fixture/BatchGetTraces.yaml"
+requestBatchGetTraces = req
+    "BatchGetTraces"
+    "fixture/BatchGetTraces.yaml"
 
 requestGetEncryptionConfig :: GetEncryptionConfig -> TestTree
-requestGetEncryptionConfig =
-  req "GetEncryptionConfig" "fixture/GetEncryptionConfig.yaml"
+requestGetEncryptionConfig = req
+    "GetEncryptionConfig"
+    "fixture/GetEncryptionConfig.yaml"
 
 requestPutTelemetryRecords :: PutTelemetryRecords -> TestTree
-requestPutTelemetryRecords =
-  req "PutTelemetryRecords" "fixture/PutTelemetryRecords.yaml"
+requestPutTelemetryRecords = req
+    "PutTelemetryRecords"
+    "fixture/PutTelemetryRecords.yaml"
 
 requestGetTraceGraph :: GetTraceGraph -> TestTree
-requestGetTraceGraph = req "GetTraceGraph" "fixture/GetTraceGraph.yaml"
+requestGetTraceGraph = req
+    "GetTraceGraph"
+    "fixture/GetTraceGraph.yaml"
 
 -- Responses
+
 responsePutEncryptionConfig :: PutEncryptionConfigResponse -> TestTree
-responsePutEncryptionConfig =
-  res
+responsePutEncryptionConfig = res
     "PutEncryptionConfigResponse"
     "fixture/PutEncryptionConfigResponse.proto"
     xRay
     (Proxy :: Proxy PutEncryptionConfig)
 
 responseGetServiceGraph :: GetServiceGraphResponse -> TestTree
-responseGetServiceGraph =
-  res
+responseGetServiceGraph = res
     "GetServiceGraphResponse"
     "fixture/GetServiceGraphResponse.proto"
     xRay
     (Proxy :: Proxy GetServiceGraph)
 
 responseGetTraceSummaries :: GetTraceSummariesResponse -> TestTree
-responseGetTraceSummaries =
-  res
+responseGetTraceSummaries = res
     "GetTraceSummariesResponse"
     "fixture/GetTraceSummariesResponse.proto"
     xRay
     (Proxy :: Proxy GetTraceSummaries)
 
 responsePutTraceSegments :: PutTraceSegmentsResponse -> TestTree
-responsePutTraceSegments =
-  res
+responsePutTraceSegments = res
     "PutTraceSegmentsResponse"
     "fixture/PutTraceSegmentsResponse.proto"
     xRay
     (Proxy :: Proxy PutTraceSegments)
 
 responseBatchGetTraces :: BatchGetTracesResponse -> TestTree
-responseBatchGetTraces =
-  res
+responseBatchGetTraces = res
     "BatchGetTracesResponse"
     "fixture/BatchGetTracesResponse.proto"
     xRay
     (Proxy :: Proxy BatchGetTraces)
 
 responseGetEncryptionConfig :: GetEncryptionConfigResponse -> TestTree
-responseGetEncryptionConfig =
-  res
+responseGetEncryptionConfig = res
     "GetEncryptionConfigResponse"
     "fixture/GetEncryptionConfigResponse.proto"
     xRay
     (Proxy :: Proxy GetEncryptionConfig)
 
 responsePutTelemetryRecords :: PutTelemetryRecordsResponse -> TestTree
-responsePutTelemetryRecords =
-  res
+responsePutTelemetryRecords = res
     "PutTelemetryRecordsResponse"
     "fixture/PutTelemetryRecordsResponse.proto"
     xRay
     (Proxy :: Proxy PutTelemetryRecords)
 
 responseGetTraceGraph :: GetTraceGraphResponse -> TestTree
-responseGetTraceGraph =
-  res
+responseGetTraceGraph = res
     "GetTraceGraphResponse"
     "fixture/GetTraceGraphResponse.proto"
     xRay

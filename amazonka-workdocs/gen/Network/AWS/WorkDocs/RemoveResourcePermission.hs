@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.WorkDocs.RemoveResourcePermission
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.WorkDocs.RemoveResourcePermission
+    (
     -- * Creating a Request
-  ( removeResourcePermission
-  , RemoveResourcePermission
+      removeResourcePermission
+    , RemoveResourcePermission
     -- * Request Lenses
-  , rrpPrincipalType
-  , rrpAuthenticationToken
-  , rrpResourceId
-  , rrpPrincipalId
+    , rrpPrincipalType
+    , rrpAuthenticationToken
+    , rrpResourceId
+    , rrpPrincipalId
+
     -- * Destructuring the Response
-  , removeResourcePermissionResponse
-  , RemoveResourcePermissionResponse
-  ) where
+    , removeResourcePermissionResponse
+    , RemoveResourcePermissionResponse
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -50,6 +54,7 @@ data RemoveResourcePermission =
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'RemoveResourcePermission' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -61,10 +66,10 @@ data RemoveResourcePermission =
 -- * 'rrpResourceId' - The ID of the resource.
 --
 -- * 'rrpPrincipalId' - The principal ID of the resource.
-removeResourcePermission ::
-     Text -- ^ 'rrpResourceId'
-  -> Text -- ^ 'rrpPrincipalId'
-  -> RemoveResourcePermission
+removeResourcePermission
+    :: Text -- ^ 'rrpResourceId'
+    -> Text -- ^ 'rrpPrincipalId'
+    -> RemoveResourcePermission
 removeResourcePermission pResourceId_ pPrincipalId_ =
   RemoveResourcePermission'
     { _rrpPrincipalType = Nothing
@@ -73,60 +78,63 @@ removeResourcePermission pResourceId_ pPrincipalId_ =
     , _rrpPrincipalId = pPrincipalId_
     }
 
+
 -- | The principal type of the resource.
 rrpPrincipalType :: Lens' RemoveResourcePermission (Maybe PrincipalType)
-rrpPrincipalType = lens _rrpPrincipalType (\s a -> s {_rrpPrincipalType = a})
+rrpPrincipalType = lens _rrpPrincipalType (\ s a -> s{_rrpPrincipalType = a})
 
 -- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 rrpAuthenticationToken :: Lens' RemoveResourcePermission (Maybe Text)
-rrpAuthenticationToken =
-  lens _rrpAuthenticationToken (\s a -> s {_rrpAuthenticationToken = a}) .
-  mapping _Sensitive
+rrpAuthenticationToken = lens _rrpAuthenticationToken (\ s a -> s{_rrpAuthenticationToken = a}) . mapping _Sensitive
 
 -- | The ID of the resource.
 rrpResourceId :: Lens' RemoveResourcePermission Text
-rrpResourceId = lens _rrpResourceId (\s a -> s {_rrpResourceId = a})
+rrpResourceId = lens _rrpResourceId (\ s a -> s{_rrpResourceId = a})
 
 -- | The principal ID of the resource.
 rrpPrincipalId :: Lens' RemoveResourcePermission Text
-rrpPrincipalId = lens _rrpPrincipalId (\s a -> s {_rrpPrincipalId = a})
+rrpPrincipalId = lens _rrpPrincipalId (\ s a -> s{_rrpPrincipalId = a})
 
 instance AWSRequest RemoveResourcePermission where
-  type Rs RemoveResourcePermission = RemoveResourcePermissionResponse
-  request = delete workDocs
-  response = receiveNull RemoveResourcePermissionResponse'
+        type Rs RemoveResourcePermission =
+             RemoveResourcePermissionResponse
+        request = delete workDocs
+        response
+          = receiveNull RemoveResourcePermissionResponse'
 
-instance Hashable RemoveResourcePermission
+instance Hashable RemoveResourcePermission where
 
-instance NFData RemoveResourcePermission
+instance NFData RemoveResourcePermission where
 
 instance ToHeaders RemoveResourcePermission where
-  toHeaders RemoveResourcePermission' {..} =
-    mconcat
-      [ "Authentication" =# _rrpAuthenticationToken
-      , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-      ]
+        toHeaders RemoveResourcePermission'{..}
+          = mconcat
+              ["Authentication" =# _rrpAuthenticationToken,
+               "Content-Type" =#
+                 ("application/x-amz-json-1.1" :: ByteString)]
 
 instance ToPath RemoveResourcePermission where
-  toPath RemoveResourcePermission' {..} =
-    mconcat
-      [ "/api/v1/resources/"
-      , toBS _rrpResourceId
-      , "/permissions/"
-      , toBS _rrpPrincipalId
-      ]
+        toPath RemoveResourcePermission'{..}
+          = mconcat
+              ["/api/v1/resources/", toBS _rrpResourceId,
+               "/permissions/", toBS _rrpPrincipalId]
 
 instance ToQuery RemoveResourcePermission where
-  toQuery RemoveResourcePermission' {..} = mconcat ["type" =: _rrpPrincipalType]
+        toQuery RemoveResourcePermission'{..}
+          = mconcat ["type" =: _rrpPrincipalType]
 
 -- | /See:/ 'removeResourcePermissionResponse' smart constructor.
 data RemoveResourcePermissionResponse =
   RemoveResourcePermissionResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'RemoveResourcePermissionResponse' with the minimum fields required to make a request.
 --
-removeResourcePermissionResponse :: RemoveResourcePermissionResponse
+removeResourcePermissionResponse
+    :: RemoveResourcePermissionResponse
 removeResourcePermissionResponse = RemoveResourcePermissionResponse'
 
+
 instance NFData RemoveResourcePermissionResponse
+         where

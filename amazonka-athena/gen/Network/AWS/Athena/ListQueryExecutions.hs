@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Athena.ListQueryExecutions
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -16,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Provides a list of all available query execution IDs.
+-- Provides a list of available query execution IDs for the queries in the specified workgroup. If a workgroup is not specified, returns a list of query execution IDs for the primary workgroup. Requires you to have access to the workgroup in which the queries ran.
 --
 --
 -- For code samples using the AWS SDK for Java, see <http://docs.aws.amazon.com/athena/latest/ug/code-samples.html Examples and Code Samples> in the /Amazon Athena User Guide/ .
@@ -24,20 +26,23 @@
 --
 -- This operation returns paginated results.
 module Network.AWS.Athena.ListQueryExecutions
+    (
     -- * Creating a Request
-  ( listQueryExecutions
-  , ListQueryExecutions
+      listQueryExecutions
+    , ListQueryExecutions
     -- * Request Lenses
-  , lqeNextToken
-  , lqeMaxResults
+    , lqeNextToken
+    , lqeWorkGroup
+    , lqeMaxResults
+
     -- * Destructuring the Response
-  , listQueryExecutionsResponse
-  , ListQueryExecutionsResponse
+    , listQueryExecutionsResponse
+    , ListQueryExecutionsResponse
     -- * Response Lenses
-  , lqersQueryExecutionIds
-  , lqersNextToken
-  , lqersResponseStatus
-  ) where
+    , lqersQueryExecutionIds
+    , lqersNextToken
+    , lqersResponseStatus
+    ) where
 
 import Network.AWS.Athena.Types
 import Network.AWS.Athena.Types.Product
@@ -51,9 +56,11 @@ import Network.AWS.Response
 data ListQueryExecutions =
   ListQueryExecutions'
     { _lqeNextToken  :: !(Maybe Text)
+    , _lqeWorkGroup  :: !(Maybe Text)
     , _lqeMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'ListQueryExecutions' with the minimum fields required to make a request.
 --
@@ -61,61 +68,72 @@ data ListQueryExecutions =
 --
 -- * 'lqeNextToken' - The token that specifies where to start pagination if a previous request was truncated.
 --
+-- * 'lqeWorkGroup' - The name of the workgroup from which queries are returned. If a workgroup is not specified, a list of available query execution IDs for the queries in the primary workgroup is returned.
+--
 -- * 'lqeMaxResults' - The maximum number of query executions to return in this request.
-listQueryExecutions :: ListQueryExecutions
+listQueryExecutions
+    :: ListQueryExecutions
 listQueryExecutions =
-  ListQueryExecutions' {_lqeNextToken = Nothing, _lqeMaxResults = Nothing}
+  ListQueryExecutions'
+    {_lqeNextToken = Nothing, _lqeWorkGroup = Nothing, _lqeMaxResults = Nothing}
+
 
 -- | The token that specifies where to start pagination if a previous request was truncated.
 lqeNextToken :: Lens' ListQueryExecutions (Maybe Text)
-lqeNextToken = lens _lqeNextToken (\s a -> s {_lqeNextToken = a})
+lqeNextToken = lens _lqeNextToken (\ s a -> s{_lqeNextToken = a})
+
+-- | The name of the workgroup from which queries are returned. If a workgroup is not specified, a list of available query execution IDs for the queries in the primary workgroup is returned.
+lqeWorkGroup :: Lens' ListQueryExecutions (Maybe Text)
+lqeWorkGroup = lens _lqeWorkGroup (\ s a -> s{_lqeWorkGroup = a})
 
 -- | The maximum number of query executions to return in this request.
 lqeMaxResults :: Lens' ListQueryExecutions (Maybe Natural)
-lqeMaxResults =
-  lens _lqeMaxResults (\s a -> s {_lqeMaxResults = a}) . mapping _Nat
+lqeMaxResults = lens _lqeMaxResults (\ s a -> s{_lqeMaxResults = a}) . mapping _Nat
 
 instance AWSPager ListQueryExecutions where
-  page rq rs
-    | stop (rs ^. lqersNextToken) = Nothing
-    | stop (rs ^. lqersQueryExecutionIds) = Nothing
-    | otherwise = Just $ rq & lqeNextToken .~ rs ^. lqersNextToken
+        page rq rs
+          | stop (rs ^. lqersNextToken) = Nothing
+          | stop (rs ^. lqersQueryExecutionIds) = Nothing
+          | otherwise =
+            Just $ rq & lqeNextToken .~ rs ^. lqersNextToken
 
 instance AWSRequest ListQueryExecutions where
-  type Rs ListQueryExecutions = ListQueryExecutionsResponse
-  request = postJSON athena
-  response =
-    receiveJSON
-      (\s h x ->
-         ListQueryExecutionsResponse' <$> (x .?> "QueryExecutionIds") <*>
-         (x .?> "NextToken") <*>
-         (pure (fromEnum s)))
+        type Rs ListQueryExecutions =
+             ListQueryExecutionsResponse
+        request = postJSON athena
+        response
+          = receiveJSON
+              (\ s h x ->
+                 ListQueryExecutionsResponse' <$>
+                   (x .?> "QueryExecutionIds") <*> (x .?> "NextToken")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable ListQueryExecutions
+instance Hashable ListQueryExecutions where
 
-instance NFData ListQueryExecutions
+instance NFData ListQueryExecutions where
 
 instance ToHeaders ListQueryExecutions where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("AmazonAthena.ListQueryExecutions" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AmazonAthena.ListQueryExecutions" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON ListQueryExecutions where
-  toJSON ListQueryExecutions' {..} =
-    object
-      (catMaybes
-         [ ("NextToken" .=) <$> _lqeNextToken
-         , ("MaxResults" .=) <$> _lqeMaxResults
-         ])
+        toJSON ListQueryExecutions'{..}
+          = object
+              (catMaybes
+                 [("NextToken" .=) <$> _lqeNextToken,
+                  ("WorkGroup" .=) <$> _lqeWorkGroup,
+                  ("MaxResults" .=) <$> _lqeMaxResults])
 
 instance ToPath ListQueryExecutions where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery ListQueryExecutions where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'listQueryExecutionsResponse' smart constructor.
 data ListQueryExecutionsResponse =
@@ -126,6 +144,7 @@ data ListQueryExecutionsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListQueryExecutionsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -135,9 +154,9 @@ data ListQueryExecutionsResponse =
 -- * 'lqersNextToken' - A token to be used by the next request if this request is truncated.
 --
 -- * 'lqersResponseStatus' - -- | The response status code.
-listQueryExecutionsResponse ::
-     Int -- ^ 'lqersResponseStatus'
-  -> ListQueryExecutionsResponse
+listQueryExecutionsResponse
+    :: Int -- ^ 'lqersResponseStatus'
+    -> ListQueryExecutionsResponse
 listQueryExecutionsResponse pResponseStatus_ =
   ListQueryExecutionsResponse'
     { _lqersQueryExecutionIds = Nothing
@@ -145,20 +164,17 @@ listQueryExecutionsResponse pResponseStatus_ =
     , _lqersResponseStatus = pResponseStatus_
     }
 
+
 -- | The unique IDs of each query execution as an array of strings.
-lqersQueryExecutionIds ::
-     Lens' ListQueryExecutionsResponse (Maybe (NonEmpty Text))
-lqersQueryExecutionIds =
-  lens _lqersQueryExecutionIds (\s a -> s {_lqersQueryExecutionIds = a}) .
-  mapping _List1
+lqersQueryExecutionIds :: Lens' ListQueryExecutionsResponse (Maybe (NonEmpty Text))
+lqersQueryExecutionIds = lens _lqersQueryExecutionIds (\ s a -> s{_lqersQueryExecutionIds = a}) . mapping _List1
 
 -- | A token to be used by the next request if this request is truncated.
 lqersNextToken :: Lens' ListQueryExecutionsResponse (Maybe Text)
-lqersNextToken = lens _lqersNextToken (\s a -> s {_lqersNextToken = a})
+lqersNextToken = lens _lqersNextToken (\ s a -> s{_lqersNextToken = a})
 
 -- | -- | The response status code.
 lqersResponseStatus :: Lens' ListQueryExecutionsResponse Int
-lqersResponseStatus =
-  lens _lqersResponseStatus (\s a -> s {_lqersResponseStatus = a})
+lqersResponseStatus = lens _lqersResponseStatus (\ s a -> s{_lqersResponseStatus = a})
 
-instance NFData ListQueryExecutionsResponse
+instance NFData ListQueryExecutionsResponse where

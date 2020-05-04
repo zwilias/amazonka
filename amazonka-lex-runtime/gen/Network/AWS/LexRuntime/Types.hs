@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.LexRuntime.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,46 +11,54 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.LexRuntime.Types
+    (
     -- * Service Configuration
-  ( lexRuntime
+      lexRuntime
+
     -- * Errors
-  , _NotAcceptableException
-  , _DependencyFailedException
-  , _UnsupportedMediaTypeException
-  , _ConflictException
-  , _NotFoundException
-  , _RequestTimeoutException
-  , _LoopDetectedException
-  , _InternalFailureException
-  , _BadGatewayException
-  , _BadRequestException
-  , _LimitExceededException
+    , _NotAcceptableException
+    , _DependencyFailedException
+    , _UnsupportedMediaTypeException
+    , _ConflictException
+    , _NotFoundException
+    , _RequestTimeoutException
+    , _LoopDetectedException
+    , _InternalFailureException
+    , _BadGatewayException
+    , _BadRequestException
+    , _LimitExceededException
+
     -- * ContentType
-  , ContentType(..)
+    , ContentType (..)
+
     -- * DialogState
-  , DialogState(..)
+    , DialogState (..)
+
     -- * MessageFormatType
-  , MessageFormatType(..)
+    , MessageFormatType (..)
+
     -- * Button
-  , Button
-  , button
-  , bText
-  , bValue
+    , Button
+    , button
+    , bText
+    , bValue
+
     -- * GenericAttachment
-  , GenericAttachment
-  , genericAttachment
-  , gaButtons
-  , gaSubTitle
-  , gaImageURL
-  , gaAttachmentLinkURL
-  , gaTitle
+    , GenericAttachment
+    , genericAttachment
+    , gaButtons
+    , gaSubTitle
+    , gaImageURL
+    , gaAttachmentLinkURL
+    , gaTitle
+
     -- * ResponseCard
-  , ResponseCard
-  , responseCard
-  , rcGenericAttachments
-  , rcVersion
-  , rcContentType
-  ) where
+    , ResponseCard
+    , responseCard
+    , rcGenericAttachments
+    , rcVersion
+    , rcContentType
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.LexRuntime.Types.Product
@@ -95,13 +104,14 @@ lexRuntime =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | The accept header in the request does not have a valid value.
 --
 --
-_NotAcceptableException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_NotAcceptableException :: AsError a => Getting (First ServiceError) a ServiceError
 _NotAcceptableException =
   _MatchServiceError lexRuntime "NotAcceptableException" . hasStatus 406
+
 
 -- | One of the dependencies, such as AWS Lambda or Amazon Polly, threw an exception. For example,
 --
@@ -114,18 +124,18 @@ _NotAcceptableException =
 --
 --
 --
-_DependencyFailedException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_DependencyFailedException :: AsError a => Getting (First ServiceError) a ServiceError
 _DependencyFailedException =
   _MatchServiceError lexRuntime "DependencyFailedException" . hasStatus 424
+
 
 -- | The Content-Type header (@PostContent@ API) has an invalid value.
 --
 --
-_UnsupportedMediaTypeException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_UnsupportedMediaTypeException :: AsError a => Getting (First ServiceError) a ServiceError
 _UnsupportedMediaTypeException =
   _MatchServiceError lexRuntime "UnsupportedMediaTypeException" . hasStatus 415
+
 
 -- | Two clients are using the same AWS account, Amazon Lex bot, and user ID.
 --
@@ -134,6 +144,7 @@ _ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
 _ConflictException =
   _MatchServiceError lexRuntime "ConflictException" . hasStatus 409
 
+
 -- | The resource (such as the Amazon Lex bot or an alias) that is referred to is not found.
 --
 --
@@ -141,29 +152,30 @@ _NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _NotFoundException =
   _MatchServiceError lexRuntime "NotFoundException" . hasStatus 404
 
+
 -- | The input speech is too long.
 --
 --
-_RequestTimeoutException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_RequestTimeoutException :: AsError a => Getting (First ServiceError) a ServiceError
 _RequestTimeoutException =
   _MatchServiceError lexRuntime "RequestTimeoutException" . hasStatus 408
+
 
 -- | This exception is not used.
 --
 --
-_LoopDetectedException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_LoopDetectedException :: AsError a => Getting (First ServiceError) a ServiceError
 _LoopDetectedException =
   _MatchServiceError lexRuntime "LoopDetectedException" . hasStatus 508
+
 
 -- | Internal service error. Retry the call.
 --
 --
-_InternalFailureException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalFailureException =
   _MatchServiceError lexRuntime "InternalFailureException" . hasStatus 500
+
 
 -- | Either the Amazon Lex bot is still building, or one of the dependent services (Amazon Polly, AWS Lambda) failed with an internal service error.
 --
@@ -172,6 +184,7 @@ _BadGatewayException :: AsError a => Getting (First ServiceError) a ServiceError
 _BadGatewayException =
   _MatchServiceError lexRuntime "BadGatewayException" . hasStatus 502
 
+
 -- | Request validation failed, there is no usable message in the context, or the bot build failed, is still in progress, or contains unbuilt changes.
 --
 --
@@ -179,10 +192,11 @@ _BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
 _BadRequestException =
   _MatchServiceError lexRuntime "BadRequestException" . hasStatus 400
 
+
 -- | Exceeded a limit.
 --
 --
-_LimitExceededException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException =
   _MatchServiceError lexRuntime "LimitExceededException" . hasStatus 429
+

@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Test.AWS.Gen.OpsWorksCM
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -23,6 +24,7 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
+
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -72,6 +74,7 @@ import Test.Tasty
 --             describeServers
 --
 --           ]
+
 --     , testGroup "response"
 --         [ responseAssociateNode $
 --             associateNodeResponse
@@ -120,177 +123,186 @@ import Test.Tasty
 --
 --           ]
 --     ]
+
 -- Requests
+
 requestAssociateNode :: AssociateNode -> TestTree
-requestAssociateNode = req "AssociateNode" "fixture/AssociateNode.yaml"
+requestAssociateNode = req
+    "AssociateNode"
+    "fixture/AssociateNode.yaml"
 
 requestUpdateServer :: UpdateServer -> TestTree
-requestUpdateServer = req "UpdateServer" "fixture/UpdateServer.yaml"
+requestUpdateServer = req
+    "UpdateServer"
+    "fixture/UpdateServer.yaml"
 
 requestDeleteServer :: DeleteServer -> TestTree
-requestDeleteServer = req "DeleteServer" "fixture/DeleteServer.yaml"
+requestDeleteServer = req
+    "DeleteServer"
+    "fixture/DeleteServer.yaml"
 
 requestDeleteBackup :: DeleteBackup -> TestTree
-requestDeleteBackup = req "DeleteBackup" "fixture/DeleteBackup.yaml"
+requestDeleteBackup = req
+    "DeleteBackup"
+    "fixture/DeleteBackup.yaml"
 
 requestDescribeEvents :: DescribeEvents -> TestTree
-requestDescribeEvents = req "DescribeEvents" "fixture/DescribeEvents.yaml"
+requestDescribeEvents = req
+    "DescribeEvents"
+    "fixture/DescribeEvents.yaml"
 
 requestDisassociateNode :: DisassociateNode -> TestTree
-requestDisassociateNode = req "DisassociateNode" "fixture/DisassociateNode.yaml"
+requestDisassociateNode = req
+    "DisassociateNode"
+    "fixture/DisassociateNode.yaml"
 
 requestCreateBackup :: CreateBackup -> TestTree
-requestCreateBackup = req "CreateBackup" "fixture/CreateBackup.yaml"
+requestCreateBackup = req
+    "CreateBackup"
+    "fixture/CreateBackup.yaml"
 
 requestUpdateServerEngineAttributes :: UpdateServerEngineAttributes -> TestTree
-requestUpdateServerEngineAttributes =
-  req "UpdateServerEngineAttributes" "fixture/UpdateServerEngineAttributes.yaml"
+requestUpdateServerEngineAttributes = req
+    "UpdateServerEngineAttributes"
+    "fixture/UpdateServerEngineAttributes.yaml"
 
 requestStartMaintenance :: StartMaintenance -> TestTree
-requestStartMaintenance = req "StartMaintenance" "fixture/StartMaintenance.yaml"
+requestStartMaintenance = req
+    "StartMaintenance"
+    "fixture/StartMaintenance.yaml"
 
 requestDescribeBackups :: DescribeBackups -> TestTree
-requestDescribeBackups = req "DescribeBackups" "fixture/DescribeBackups.yaml"
+requestDescribeBackups = req
+    "DescribeBackups"
+    "fixture/DescribeBackups.yaml"
 
 requestCreateServer :: CreateServer -> TestTree
-requestCreateServer = req "CreateServer" "fixture/CreateServer.yaml"
+requestCreateServer = req
+    "CreateServer"
+    "fixture/CreateServer.yaml"
 
 requestRestoreServer :: RestoreServer -> TestTree
-requestRestoreServer = req "RestoreServer" "fixture/RestoreServer.yaml"
+requestRestoreServer = req
+    "RestoreServer"
+    "fixture/RestoreServer.yaml"
 
-requestDescribeNodeAssociationStatus ::
-     DescribeNodeAssociationStatus -> TestTree
-requestDescribeNodeAssociationStatus =
-  req
+requestDescribeNodeAssociationStatus :: DescribeNodeAssociationStatus -> TestTree
+requestDescribeNodeAssociationStatus = req
     "DescribeNodeAssociationStatus"
     "fixture/DescribeNodeAssociationStatus.yaml"
 
 requestDescribeAccountAttributes :: DescribeAccountAttributes -> TestTree
-requestDescribeAccountAttributes =
-  req "DescribeAccountAttributes" "fixture/DescribeAccountAttributes.yaml"
+requestDescribeAccountAttributes = req
+    "DescribeAccountAttributes"
+    "fixture/DescribeAccountAttributes.yaml"
 
 requestDescribeServers :: DescribeServers -> TestTree
-requestDescribeServers = req "DescribeServers" "fixture/DescribeServers.yaml"
+requestDescribeServers = req
+    "DescribeServers"
+    "fixture/DescribeServers.yaml"
 
 -- Responses
+
 responseAssociateNode :: AssociateNodeResponse -> TestTree
-responseAssociateNode =
-  res
+responseAssociateNode = res
     "AssociateNodeResponse"
     "fixture/AssociateNodeResponse.proto"
     opsWorksCM
     (Proxy :: Proxy AssociateNode)
 
 responseUpdateServer :: UpdateServerResponse -> TestTree
-responseUpdateServer =
-  res
+responseUpdateServer = res
     "UpdateServerResponse"
     "fixture/UpdateServerResponse.proto"
     opsWorksCM
     (Proxy :: Proxy UpdateServer)
 
 responseDeleteServer :: DeleteServerResponse -> TestTree
-responseDeleteServer =
-  res
+responseDeleteServer = res
     "DeleteServerResponse"
     "fixture/DeleteServerResponse.proto"
     opsWorksCM
     (Proxy :: Proxy DeleteServer)
 
 responseDeleteBackup :: DeleteBackupResponse -> TestTree
-responseDeleteBackup =
-  res
+responseDeleteBackup = res
     "DeleteBackupResponse"
     "fixture/DeleteBackupResponse.proto"
     opsWorksCM
     (Proxy :: Proxy DeleteBackup)
 
 responseDescribeEvents :: DescribeEventsResponse -> TestTree
-responseDescribeEvents =
-  res
+responseDescribeEvents = res
     "DescribeEventsResponse"
     "fixture/DescribeEventsResponse.proto"
     opsWorksCM
     (Proxy :: Proxy DescribeEvents)
 
 responseDisassociateNode :: DisassociateNodeResponse -> TestTree
-responseDisassociateNode =
-  res
+responseDisassociateNode = res
     "DisassociateNodeResponse"
     "fixture/DisassociateNodeResponse.proto"
     opsWorksCM
     (Proxy :: Proxy DisassociateNode)
 
 responseCreateBackup :: CreateBackupResponse -> TestTree
-responseCreateBackup =
-  res
+responseCreateBackup = res
     "CreateBackupResponse"
     "fixture/CreateBackupResponse.proto"
     opsWorksCM
     (Proxy :: Proxy CreateBackup)
 
-responseUpdateServerEngineAttributes ::
-     UpdateServerEngineAttributesResponse -> TestTree
-responseUpdateServerEngineAttributes =
-  res
+responseUpdateServerEngineAttributes :: UpdateServerEngineAttributesResponse -> TestTree
+responseUpdateServerEngineAttributes = res
     "UpdateServerEngineAttributesResponse"
     "fixture/UpdateServerEngineAttributesResponse.proto"
     opsWorksCM
     (Proxy :: Proxy UpdateServerEngineAttributes)
 
 responseStartMaintenance :: StartMaintenanceResponse -> TestTree
-responseStartMaintenance =
-  res
+responseStartMaintenance = res
     "StartMaintenanceResponse"
     "fixture/StartMaintenanceResponse.proto"
     opsWorksCM
     (Proxy :: Proxy StartMaintenance)
 
 responseDescribeBackups :: DescribeBackupsResponse -> TestTree
-responseDescribeBackups =
-  res
+responseDescribeBackups = res
     "DescribeBackupsResponse"
     "fixture/DescribeBackupsResponse.proto"
     opsWorksCM
     (Proxy :: Proxy DescribeBackups)
 
 responseCreateServer :: CreateServerResponse -> TestTree
-responseCreateServer =
-  res
+responseCreateServer = res
     "CreateServerResponse"
     "fixture/CreateServerResponse.proto"
     opsWorksCM
     (Proxy :: Proxy CreateServer)
 
 responseRestoreServer :: RestoreServerResponse -> TestTree
-responseRestoreServer =
-  res
+responseRestoreServer = res
     "RestoreServerResponse"
     "fixture/RestoreServerResponse.proto"
     opsWorksCM
     (Proxy :: Proxy RestoreServer)
 
-responseDescribeNodeAssociationStatus ::
-     DescribeNodeAssociationStatusResponse -> TestTree
-responseDescribeNodeAssociationStatus =
-  res
+responseDescribeNodeAssociationStatus :: DescribeNodeAssociationStatusResponse -> TestTree
+responseDescribeNodeAssociationStatus = res
     "DescribeNodeAssociationStatusResponse"
     "fixture/DescribeNodeAssociationStatusResponse.proto"
     opsWorksCM
     (Proxy :: Proxy DescribeNodeAssociationStatus)
 
-responseDescribeAccountAttributes ::
-     DescribeAccountAttributesResponse -> TestTree
-responseDescribeAccountAttributes =
-  res
+responseDescribeAccountAttributes :: DescribeAccountAttributesResponse -> TestTree
+responseDescribeAccountAttributes = res
     "DescribeAccountAttributesResponse"
     "fixture/DescribeAccountAttributesResponse.proto"
     opsWorksCM
     (Proxy :: Proxy DescribeAccountAttributes)
 
 responseDescribeServers :: DescribeServersResponse -> TestTree
-responseDescribeServers =
-  res
+responseDescribeServers = res
     "DescribeServersResponse"
     "fixture/DescribeServersResponse.proto"
     opsWorksCM

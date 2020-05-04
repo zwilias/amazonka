@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CodeBuild.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,205 +11,456 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.CodeBuild.Types
+    (
     -- * Service Configuration
-  ( codeBuild
+      codeBuild
+
     -- * Errors
-  , _ResourceAlreadyExistsException
-  , _OAuthProviderException
-  , _AccountLimitExceededException
-  , _InvalidInputException
-  , _ResourceNotFoundException
+    , _ResourceAlreadyExistsException
+    , _OAuthProviderException
+    , _AccountLimitExceededException
+    , _InvalidInputException
+    , _ResourceNotFoundException
+
     -- * ArtifactNamespace
-  , ArtifactNamespace(..)
+    , ArtifactNamespace (..)
+
     -- * ArtifactPackaging
-  , ArtifactPackaging(..)
+    , ArtifactPackaging (..)
+
     -- * ArtifactsType
-  , ArtifactsType(..)
+    , ArtifactsType (..)
+
+    -- * AuthType
+    , AuthType (..)
+
     -- * BuildPhaseType
-  , BuildPhaseType(..)
+    , BuildPhaseType (..)
+
+    -- * CacheMode
+    , CacheMode (..)
+
     -- * CacheType
-  , CacheType(..)
+    , CacheType (..)
+
     -- * ComputeType
-  , ComputeType(..)
+    , ComputeType (..)
+
+    -- * CredentialProviderType
+    , CredentialProviderType (..)
+
     -- * EnvironmentType
-  , EnvironmentType(..)
+    , EnvironmentType (..)
+
     -- * EnvironmentVariableType
-  , EnvironmentVariableType(..)
+    , EnvironmentVariableType (..)
+
+    -- * FileSystemType
+    , FileSystemType (..)
+
+    -- * ImagePullCredentialsType
+    , ImagePullCredentialsType (..)
+
     -- * LanguageType
-  , LanguageType(..)
+    , LanguageType (..)
+
+    -- * LogsConfigStatusType
+    , LogsConfigStatusType (..)
+
     -- * PlatformType
-  , PlatformType(..)
+    , PlatformType (..)
+
     -- * ProjectSortByType
-  , ProjectSortByType(..)
+    , ProjectSortByType (..)
+
+    -- * ReportExportConfigType
+    , ReportExportConfigType (..)
+
+    -- * ReportGroupSortByType
+    , ReportGroupSortByType (..)
+
+    -- * ReportPackagingType
+    , ReportPackagingType (..)
+
+    -- * ReportStatusType
+    , ReportStatusType (..)
+
+    -- * ReportType
+    , ReportType (..)
+
+    -- * ServerType
+    , ServerType (..)
+
+    -- * SharedResourceSortByType
+    , SharedResourceSortByType (..)
+
     -- * SortOrderType
-  , SortOrderType(..)
+    , SortOrderType (..)
+
     -- * SourceAuthType
-  , SourceAuthType(..)
+    , SourceAuthType (..)
+
     -- * SourceType
-  , SourceType(..)
+    , SourceType (..)
+
     -- * StatusType
-  , StatusType(..)
+    , StatusType (..)
+
+    -- * WebhookFilterType
+    , WebhookFilterType (..)
+
     -- * Build
-  , Build
-  , build
-  , bPhases
-  , bBuildComplete
-  , bArn
-  , bStartTime
-  , bArtifacts
-  , bEnvironment
-  , bInitiator
-  , bNetworkInterface
-  , bCurrentPhase
-  , bCache
-  , bSourceVersion
-  , bLogs
-  , bVpcConfig
-  , bEndTime
-  , bProjectName
-  , bBuildStatus
-  , bSource
-  , bId
-  , bTimeoutInMinutes
+    , Build
+    , build
+    , bPhases
+    , bBuildComplete
+    , bSecondaryArtifacts
+    , bArn
+    , bExportedEnvironmentVariables
+    , bBuildNumber
+    , bStartTime
+    , bArtifacts
+    , bEnvironment
+    , bInitiator
+    , bNetworkInterface
+    , bSecondarySourceVersions
+    , bCurrentPhase
+    , bQueuedTimeoutInMinutes
+    , bCache
+    , bSecondarySources
+    , bSourceVersion
+    , bLogs
+    , bResolvedSourceVersion
+    , bVpcConfig
+    , bEndTime
+    , bProjectName
+    , bBuildStatus
+    , bSource
+    , bId
+    , bFileSystemLocations
+    , bReportARNs
+    , bEncryptionKey
+    , bServiceRole
+    , bTimeoutInMinutes
+
     -- * BuildArtifacts
-  , BuildArtifacts
-  , buildArtifacts
-  , baLocation
-  , baMd5sum
-  , baSha256sum
+    , BuildArtifacts
+    , buildArtifacts
+    , baLocation
+    , baMd5sum
+    , baEncryptionDisabled
+    , baOverrideArtifactName
+    , baArtifactIdentifier
+    , baSha256sum
+
     -- * BuildNotDeleted
-  , BuildNotDeleted
-  , buildNotDeleted
-  , bndId
-  , bndStatusCode
+    , BuildNotDeleted
+    , buildNotDeleted
+    , bndId
+    , bndStatusCode
+
     -- * BuildPhase
-  , BuildPhase
-  , buildPhase
-  , bpContexts
-  , bpStartTime
-  , bpPhaseStatus
-  , bpPhaseType
-  , bpEndTime
-  , bpDurationInSeconds
+    , BuildPhase
+    , buildPhase
+    , bpContexts
+    , bpStartTime
+    , bpPhaseStatus
+    , bpPhaseType
+    , bpEndTime
+    , bpDurationInSeconds
+
+    -- * CloudWatchLogsConfig
+    , CloudWatchLogsConfig
+    , cloudWatchLogsConfig
+    , cwlcGroupName
+    , cwlcStreamName
+    , cwlcStatus
+
     -- * EnvironmentImage
-  , EnvironmentImage
-  , environmentImage
-  , eiVersions
-  , eiName
-  , eiDescription
+    , EnvironmentImage
+    , environmentImage
+    , eiVersions
+    , eiName
+    , eiDescription
+
     -- * EnvironmentLanguage
-  , EnvironmentLanguage
-  , environmentLanguage
-  , elImages
-  , elLanguage
+    , EnvironmentLanguage
+    , environmentLanguage
+    , elImages
+    , elLanguage
+
     -- * EnvironmentPlatform
-  , EnvironmentPlatform
-  , environmentPlatform
-  , epPlatform
-  , epLanguages
+    , EnvironmentPlatform
+    , environmentPlatform
+    , epPlatform
+    , epLanguages
+
     -- * EnvironmentVariable
-  , EnvironmentVariable
-  , environmentVariable
-  , evType
-  , evName
-  , evValue
+    , EnvironmentVariable
+    , environmentVariable
+    , evType
+    , evName
+    , evValue
+
+    -- * ExportedEnvironmentVariable
+    , ExportedEnvironmentVariable
+    , exportedEnvironmentVariable
+    , eevValue
+    , eevName
+
+    -- * GitSubmodulesConfig
+    , GitSubmodulesConfig
+    , gitSubmodulesConfig
+    , gscFetchSubmodules
+
+    -- * LogsConfig
+    , LogsConfig
+    , logsConfig
+    , lcS3Logs
+    , lcCloudWatchLogs
+
     -- * LogsLocation
-  , LogsLocation
-  , logsLocation
-  , llDeepLink
-  , llGroupName
-  , llStreamName
+    , LogsLocation
+    , logsLocation
+    , llDeepLink
+    , llS3Logs
+    , llCloudWatchLogs
+    , llS3DeepLink
+    , llS3LogsARN
+    , llCloudWatchLogsARN
+    , llGroupName
+    , llStreamName
+
     -- * NetworkInterface
-  , NetworkInterface
-  , networkInterface
-  , niSubnetId
-  , niNetworkInterfaceId
+    , NetworkInterface
+    , networkInterface
+    , niSubnetId
+    , niNetworkInterfaceId
+
     -- * PhaseContext
-  , PhaseContext
-  , phaseContext
-  , pcMessage
-  , pcStatusCode
+    , PhaseContext
+    , phaseContext
+    , pcMessage
+    , pcStatusCode
+
     -- * Project
-  , Project
-  , project
-  , pArn
-  , pArtifacts
-  , pEnvironment
-  , pCreated
-  , pCache
-  , pName
-  , pVpcConfig
-  , pSource
-  , pBadge
-  , pEncryptionKey
-  , pLastModified
-  , pWebhook
-  , pDescription
-  , pServiceRole
-  , pTags
-  , pTimeoutInMinutes
+    , Project
+    , project
+    , pSecondaryArtifacts
+    , pArn
+    , pArtifacts
+    , pEnvironment
+    , pCreated
+    , pSecondarySourceVersions
+    , pQueuedTimeoutInMinutes
+    , pCache
+    , pSecondarySources
+    , pSourceVersion
+    , pName
+    , pVpcConfig
+    , pSource
+    , pBadge
+    , pLogsConfig
+    , pFileSystemLocations
+    , pEncryptionKey
+    , pLastModified
+    , pWebhook
+    , pDescription
+    , pServiceRole
+    , pTags
+    , pTimeoutInMinutes
+
     -- * ProjectArtifacts
-  , ProjectArtifacts
-  , projectArtifacts
-  , paPackaging
-  , paPath
-  , paLocation
-  , paName
-  , paNamespaceType
-  , paType
+    , ProjectArtifacts
+    , projectArtifacts
+    , paPackaging
+    , paPath
+    , paLocation
+    , paName
+    , paEncryptionDisabled
+    , paOverrideArtifactName
+    , paArtifactIdentifier
+    , paNamespaceType
+    , paType
+
     -- * ProjectBadge
-  , ProjectBadge
-  , projectBadge
-  , pbBadgeEnabled
-  , pbBadgeRequestURL
+    , ProjectBadge
+    , projectBadge
+    , pbBadgeEnabled
+    , pbBadgeRequestURL
+
     -- * ProjectCache
-  , ProjectCache
-  , projectCache
-  , pcLocation
-  , pcType
+    , ProjectCache
+    , projectCache
+    , pcLocation
+    , pcModes
+    , pcType
+
     -- * ProjectEnvironment
-  , ProjectEnvironment
-  , projectEnvironment
-  , pePrivilegedMode
-  , peCertificate
-  , peEnvironmentVariables
-  , peType
-  , peImage
-  , peComputeType
+    , ProjectEnvironment
+    , projectEnvironment
+    , peImagePullCredentialsType
+    , pePrivilegedMode
+    , peRegistryCredential
+    , peCertificate
+    , peEnvironmentVariables
+    , peType
+    , peImage
+    , peComputeType
+
+    -- * ProjectFileSystemLocation
+    , ProjectFileSystemLocation
+    , projectFileSystemLocation
+    , pfslLocation
+    , pfslIdentifier
+    , pfslMountOptions
+    , pfslType
+    , pfslMountPoint
+
     -- * ProjectSource
-  , ProjectSource
-  , projectSource
-  , psInsecureSSL
-  , psLocation
-  , psAuth
-  , psBuildspec
-  , psGitCloneDepth
-  , psType
+    , ProjectSource
+    , projectSource
+    , psReportBuildStatus
+    , psInsecureSSL
+    , psLocation
+    , psAuth
+    , psBuildspec
+    , psSourceIdentifier
+    , psGitCloneDepth
+    , psGitSubmodulesConfig
+    , psType
+
+    -- * ProjectSourceVersion
+    , ProjectSourceVersion
+    , projectSourceVersion
+    , psvSourceIdentifier
+    , psvSourceVersion
+
+    -- * RegistryCredential
+    , RegistryCredential
+    , registryCredential
+    , rcCredential
+    , rcCredentialProvider
+
+    -- * Report
+    , Report
+    , report
+    , rReportGroupARN
+    , rStatus
+    , rExpired
+    , rExecutionId
+    , rTruncated
+    , rArn
+    , rCreated
+    , rName
+    , rTestSummary
+    , rType
+    , rExportConfig
+
+    -- * ReportExportConfig
+    , ReportExportConfig
+    , reportExportConfig
+    , recExportConfigType
+    , recS3Destination
+
+    -- * ReportFilter
+    , ReportFilter
+    , reportFilter
+    , rfStatus
+
+    -- * ReportGroup
+    , ReportGroup
+    , reportGroup
+    , rgArn
+    , rgCreated
+    , rgName
+    , rgType
+    , rgLastModified
+    , rgExportConfig
+
+    -- * S3LogsConfig
+    , S3LogsConfig
+    , s3LogsConfig
+    , slcLocation
+    , slcEncryptionDisabled
+    , slcStatus
+
+    -- * S3ReportExportConfig
+    , S3ReportExportConfig
+    , s3ReportExportConfig
+    , srecPackaging
+    , srecPath
+    , srecBucket
+    , srecEncryptionDisabled
+    , srecEncryptionKey
+
     -- * SourceAuth
-  , SourceAuth
-  , sourceAuth
-  , saResource
-  , saType
+    , SourceAuth
+    , sourceAuth
+    , saResource
+    , saType
+
+    -- * SourceCredentialsInfo
+    , SourceCredentialsInfo
+    , sourceCredentialsInfo
+    , sciArn
+    , sciServerType
+    , sciAuthType
+
     -- * Tag
-  , Tag
-  , tag
-  , tagValue
-  , tagKey
+    , Tag
+    , tag
+    , tagValue
+    , tagKey
+
+    -- * TestCase
+    , TestCase
+    , testCase
+    , tcDurationInNanoSeconds
+    , tcStatus
+    , tcExpired
+    , tcPrefix
+    , tcName
+    , tcTestRawDataPath
+    , tcMessage
+    , tcReportARN
+
+    -- * TestCaseFilter
+    , TestCaseFilter
+    , testCaseFilter
+    , tcfStatus
+
+    -- * TestReportSummary
+    , TestReportSummary
+    , testReportSummary
+    , trsTotal
+    , trsStatusCounts
+    , trsDurationInNanoSeconds
+
     -- * VPCConfig
-  , VPCConfig
-  , vpcConfig
-  , vcSecurityGroupIds
-  , vcVpcId
-  , vcSubnets
+    , VPCConfig
+    , vpcConfig
+    , vcSecurityGroupIds
+    , vcVpcId
+    , vcSubnets
+
     -- * Webhook
-  , Webhook
-  , webhook
-  , wBranchFilter
-  , wLastModifiedSecret
-  , wUrl
-  , wSecret
-  , wPayloadURL
-  ) where
+    , Webhook
+    , webhook
+    , wBranchFilter
+    , wLastModifiedSecret
+    , wUrl
+    , wSecret
+    , wFilterGroups
+    , wPayloadURL
+
+    -- * WebhookFilter
+    , WebhookFilter
+    , webhookFilter
+    , wfExcludeMatchedPattern
+    , wfType
+    , wfPattern
+    ) where
 
 import Network.AWS.CodeBuild.Types.Product
 import Network.AWS.CodeBuild.Types.Sum
@@ -254,40 +506,41 @@ codeBuild =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | The specified AWS resource cannot be created, because an AWS resource with the same settings already exists.
 --
 --
-_ResourceAlreadyExistsException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceAlreadyExistsException =
   _MatchServiceError codeBuild "ResourceAlreadyExistsException"
+
 
 -- | There was a problem with the underlying OAuth provider.
 --
 --
-_OAuthProviderException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_OAuthProviderException :: AsError a => Getting (First ServiceError) a ServiceError
 _OAuthProviderException = _MatchServiceError codeBuild "OAuthProviderException"
+
 
 -- | An AWS service limit was exceeded for the calling AWS account.
 --
 --
-_AccountLimitExceededException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_AccountLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _AccountLimitExceededException =
   _MatchServiceError codeBuild "AccountLimitExceededException"
+
 
 -- | The input value that was provided is not valid.
 --
 --
-_InvalidInputException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidInputException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidInputException = _MatchServiceError codeBuild "InvalidInputException"
+
 
 -- | The specified AWS resource cannot be found.
 --
 --
-_ResourceNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceNotFoundException =
   _MatchServiceError codeBuild "ResourceNotFoundException"
+

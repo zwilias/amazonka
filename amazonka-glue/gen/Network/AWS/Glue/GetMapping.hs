@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Glue.GetMapping
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,20 +22,22 @@
 --
 --
 module Network.AWS.Glue.GetMapping
+    (
     -- * Creating a Request
-  ( getMapping
-  , GetMapping
+      getMapping
+    , GetMapping
     -- * Request Lenses
-  , gmSinks
-  , gmLocation
-  , gmSource
+    , gmSinks
+    , gmLocation
+    , gmSource
+
     -- * Destructuring the Response
-  , getMappingResponse
-  , GetMappingResponse
+    , getMappingResponse
+    , GetMappingResponse
     -- * Response Lenses
-  , gmrsResponseStatus
-  , gmrsMapping
-  ) where
+    , gmrsResponseStatus
+    , gmrsMapping
+    ) where
 
 import Network.AWS.Glue.Types
 import Network.AWS.Glue.Types.Product
@@ -51,6 +55,7 @@ data GetMapping =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetMapping' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -60,59 +65,60 @@ data GetMapping =
 -- * 'gmLocation' - Parameters for the mapping.
 --
 -- * 'gmSource' - Specifies the source table.
-getMapping ::
-     CatalogEntry -- ^ 'gmSource'
-  -> GetMapping
+getMapping
+    :: CatalogEntry -- ^ 'gmSource'
+    -> GetMapping
 getMapping pSource_ =
   GetMapping' {_gmSinks = Nothing, _gmLocation = Nothing, _gmSource = pSource_}
 
+
 -- | A list of target tables.
 gmSinks :: Lens' GetMapping [CatalogEntry]
-gmSinks = lens _gmSinks (\s a -> s {_gmSinks = a}) . _Default . _Coerce
+gmSinks = lens _gmSinks (\ s a -> s{_gmSinks = a}) . _Default . _Coerce
 
 -- | Parameters for the mapping.
 gmLocation :: Lens' GetMapping (Maybe Location)
-gmLocation = lens _gmLocation (\s a -> s {_gmLocation = a})
+gmLocation = lens _gmLocation (\ s a -> s{_gmLocation = a})
 
 -- | Specifies the source table.
 gmSource :: Lens' GetMapping CatalogEntry
-gmSource = lens _gmSource (\s a -> s {_gmSource = a})
+gmSource = lens _gmSource (\ s a -> s{_gmSource = a})
 
 instance AWSRequest GetMapping where
-  type Rs GetMapping = GetMappingResponse
-  request = postJSON glue
-  response =
-    receiveJSON
-      (\s h x ->
-         GetMappingResponse' <$> (pure (fromEnum s)) <*>
-         (x .?> "Mapping" .!@ mempty))
+        type Rs GetMapping = GetMappingResponse
+        request = postJSON glue
+        response
+          = receiveJSON
+              (\ s h x ->
+                 GetMappingResponse' <$>
+                   (pure (fromEnum s)) <*> (x .?> "Mapping" .!@ mempty))
 
-instance Hashable GetMapping
+instance Hashable GetMapping where
 
-instance NFData GetMapping
+instance NFData GetMapping where
 
 instance ToHeaders GetMapping where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("AWSGlue.GetMapping" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWSGlue.GetMapping" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON GetMapping where
-  toJSON GetMapping' {..} =
-    object
-      (catMaybes
-         [ ("Sinks" .=) <$> _gmSinks
-         , ("Location" .=) <$> _gmLocation
-         , Just ("Source" .= _gmSource)
-         ])
+        toJSON GetMapping'{..}
+          = object
+              (catMaybes
+                 [("Sinks" .=) <$> _gmSinks,
+                  ("Location" .=) <$> _gmLocation,
+                  Just ("Source" .= _gmSource)])
 
 instance ToPath GetMapping where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery GetMapping where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'getMappingResponse' smart constructor.
 data GetMappingResponse =
@@ -122,6 +128,7 @@ data GetMappingResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetMappingResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -129,20 +136,20 @@ data GetMappingResponse =
 -- * 'gmrsResponseStatus' - -- | The response status code.
 --
 -- * 'gmrsMapping' - A list of mappings to the specified targets.
-getMappingResponse ::
-     Int -- ^ 'gmrsResponseStatus'
-  -> GetMappingResponse
+getMappingResponse
+    :: Int -- ^ 'gmrsResponseStatus'
+    -> GetMappingResponse
 getMappingResponse pResponseStatus_ =
   GetMappingResponse'
     {_gmrsResponseStatus = pResponseStatus_, _gmrsMapping = mempty}
 
+
 -- | -- | The response status code.
 gmrsResponseStatus :: Lens' GetMappingResponse Int
-gmrsResponseStatus =
-  lens _gmrsResponseStatus (\s a -> s {_gmrsResponseStatus = a})
+gmrsResponseStatus = lens _gmrsResponseStatus (\ s a -> s{_gmrsResponseStatus = a})
 
 -- | A list of mappings to the specified targets.
 gmrsMapping :: Lens' GetMappingResponse [MappingEntry]
-gmrsMapping = lens _gmrsMapping (\s a -> s {_gmrsMapping = a}) . _Coerce
+gmrsMapping = lens _gmrsMapping (\ s a -> s{_gmrsMapping = a}) . _Coerce
 
-instance NFData GetMappingResponse
+instance NFData GetMappingResponse where

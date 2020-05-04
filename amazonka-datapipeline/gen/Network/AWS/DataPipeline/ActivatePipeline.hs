@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.DataPipeline.ActivatePipeline
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,19 +26,21 @@
 -- To activate a finished pipeline, modify the end date for the pipeline and then activate it.
 --
 module Network.AWS.DataPipeline.ActivatePipeline
+    (
     -- * Creating a Request
-  ( activatePipeline
-  , ActivatePipeline
+      activatePipeline
+    , ActivatePipeline
     -- * Request Lenses
-  , apStartTimestamp
-  , apParameterValues
-  , apPipelineId
+    , apStartTimestamp
+    , apParameterValues
+    , apPipelineId
+
     -- * Destructuring the Response
-  , activatePipelineResponse
-  , ActivatePipelineResponse
+    , activatePipelineResponse
+    , ActivatePipelineResponse
     -- * Response Lenses
-  , aprsResponseStatus
-  ) where
+    , aprsResponseStatus
+    ) where
 
 import Network.AWS.DataPipeline.Types
 import Network.AWS.DataPipeline.Types.Product
@@ -58,6 +62,7 @@ data ActivatePipeline =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ActivatePipeline' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -67,9 +72,9 @@ data ActivatePipeline =
 -- * 'apParameterValues' - A list of parameter values to pass to the pipeline at activation.
 --
 -- * 'apPipelineId' - The ID of the pipeline.
-activatePipeline ::
-     Text -- ^ 'apPipelineId'
-  -> ActivatePipeline
+activatePipeline
+    :: Text -- ^ 'apPipelineId'
+    -> ActivatePipeline
 activatePipeline pPipelineId_ =
   ActivatePipeline'
     { _apStartTimestamp = Nothing
@@ -77,53 +82,53 @@ activatePipeline pPipelineId_ =
     , _apPipelineId = pPipelineId_
     }
 
+
 -- | The date and time to resume the pipeline. By default, the pipeline resumes from the last completed execution.
 apStartTimestamp :: Lens' ActivatePipeline (Maybe UTCTime)
-apStartTimestamp =
-  lens _apStartTimestamp (\s a -> s {_apStartTimestamp = a}) . mapping _Time
+apStartTimestamp = lens _apStartTimestamp (\ s a -> s{_apStartTimestamp = a}) . mapping _Time
 
 -- | A list of parameter values to pass to the pipeline at activation.
 apParameterValues :: Lens' ActivatePipeline [ParameterValue]
-apParameterValues =
-  lens _apParameterValues (\s a -> s {_apParameterValues = a}) .
-  _Default . _Coerce
+apParameterValues = lens _apParameterValues (\ s a -> s{_apParameterValues = a}) . _Default . _Coerce
 
 -- | The ID of the pipeline.
 apPipelineId :: Lens' ActivatePipeline Text
-apPipelineId = lens _apPipelineId (\s a -> s {_apPipelineId = a})
+apPipelineId = lens _apPipelineId (\ s a -> s{_apPipelineId = a})
 
 instance AWSRequest ActivatePipeline where
-  type Rs ActivatePipeline = ActivatePipelineResponse
-  request = postJSON dataPipeline
-  response =
-    receiveEmpty (\s h x -> ActivatePipelineResponse' <$> (pure (fromEnum s)))
+        type Rs ActivatePipeline = ActivatePipelineResponse
+        request = postJSON dataPipeline
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 ActivatePipelineResponse' <$> (pure (fromEnum s)))
 
-instance Hashable ActivatePipeline
+instance Hashable ActivatePipeline where
 
-instance NFData ActivatePipeline
+instance NFData ActivatePipeline where
 
 instance ToHeaders ActivatePipeline where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("DataPipeline.ActivatePipeline" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("DataPipeline.ActivatePipeline" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON ActivatePipeline where
-  toJSON ActivatePipeline' {..} =
-    object
-      (catMaybes
-         [ ("startTimestamp" .=) <$> _apStartTimestamp
-         , ("parameterValues" .=) <$> _apParameterValues
-         , Just ("pipelineId" .= _apPipelineId)
-         ])
+        toJSON ActivatePipeline'{..}
+          = object
+              (catMaybes
+                 [("startTimestamp" .=) <$> _apStartTimestamp,
+                  ("parameterValues" .=) <$> _apParameterValues,
+                  Just ("pipelineId" .= _apPipelineId)])
 
 instance ToPath ActivatePipeline where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery ActivatePipeline where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | Contains the output of ActivatePipeline.
 --
@@ -136,20 +141,21 @@ newtype ActivatePipelineResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ActivatePipelineResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'aprsResponseStatus' - -- | The response status code.
-activatePipelineResponse ::
-     Int -- ^ 'aprsResponseStatus'
-  -> ActivatePipelineResponse
+activatePipelineResponse
+    :: Int -- ^ 'aprsResponseStatus'
+    -> ActivatePipelineResponse
 activatePipelineResponse pResponseStatus_ =
   ActivatePipelineResponse' {_aprsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 aprsResponseStatus :: Lens' ActivatePipelineResponse Int
-aprsResponseStatus =
-  lens _aprsResponseStatus (\s a -> s {_aprsResponseStatus = a})
+aprsResponseStatus = lens _aprsResponseStatus (\ s a -> s{_aprsResponseStatus = a})
 
-instance NFData ActivatePipelineResponse
+instance NFData ActivatePipelineResponse where

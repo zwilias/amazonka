@@ -2,9 +2,11 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Greengrass.Types.Product
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -31,6 +33,7 @@ data ConnectivityInfo =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ConnectivityInfo' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -42,7 +45,8 @@ data ConnectivityInfo =
 -- * 'ciMetadata' - Metadata for this endpoint.
 --
 -- * 'ciHostAddress' - The endpoint for the Greengrass core. Can be an IP address or DNS.
-connectivityInfo :: ConnectivityInfo
+connectivityInfo
+    :: ConnectivityInfo
 connectivityInfo =
   ConnectivityInfo'
     { _ciPortNumber = Nothing
@@ -51,44 +55,43 @@ connectivityInfo =
     , _ciHostAddress = Nothing
     }
 
+
 -- | The port of the Greengrass core. Usually 8883.
 ciPortNumber :: Lens' ConnectivityInfo (Maybe Int)
-ciPortNumber = lens _ciPortNumber (\s a -> s {_ciPortNumber = a})
+ciPortNumber = lens _ciPortNumber (\ s a -> s{_ciPortNumber = a})
 
 -- | The ID of the connectivity information.
 ciId :: Lens' ConnectivityInfo (Maybe Text)
-ciId = lens _ciId (\s a -> s {_ciId = a})
+ciId = lens _ciId (\ s a -> s{_ciId = a})
 
 -- | Metadata for this endpoint.
 ciMetadata :: Lens' ConnectivityInfo (Maybe Text)
-ciMetadata = lens _ciMetadata (\s a -> s {_ciMetadata = a})
+ciMetadata = lens _ciMetadata (\ s a -> s{_ciMetadata = a})
 
 -- | The endpoint for the Greengrass core. Can be an IP address or DNS.
 ciHostAddress :: Lens' ConnectivityInfo (Maybe Text)
-ciHostAddress = lens _ciHostAddress (\s a -> s {_ciHostAddress = a})
+ciHostAddress = lens _ciHostAddress (\ s a -> s{_ciHostAddress = a})
 
 instance FromJSON ConnectivityInfo where
-  parseJSON =
-    withObject
-      "ConnectivityInfo"
-      (\x ->
-         ConnectivityInfo' <$> (x .:? "PortNumber") <*> (x .:? "Id") <*>
-         (x .:? "Metadata") <*>
-         (x .:? "HostAddress"))
+        parseJSON
+          = withObject "ConnectivityInfo"
+              (\ x ->
+                 ConnectivityInfo' <$>
+                   (x .:? "PortNumber") <*> (x .:? "Id") <*>
+                     (x .:? "Metadata")
+                     <*> (x .:? "HostAddress"))
 
-instance Hashable ConnectivityInfo
+instance Hashable ConnectivityInfo where
 
-instance NFData ConnectivityInfo
+instance NFData ConnectivityInfo where
 
 instance ToJSON ConnectivityInfo where
-  toJSON ConnectivityInfo' {..} =
-    object
-      (catMaybes
-         [ ("PortNumber" .=) <$> _ciPortNumber
-         , ("Id" .=) <$> _ciId
-         , ("Metadata" .=) <$> _ciMetadata
-         , ("HostAddress" .=) <$> _ciHostAddress
-         ])
+        toJSON ConnectivityInfo'{..}
+          = object
+              (catMaybes
+                 [("PortNumber" .=) <$> _ciPortNumber,
+                  ("Id" .=) <$> _ciId, ("Metadata" .=) <$> _ciMetadata,
+                  ("HostAddress" .=) <$> _ciHostAddress])
 
 -- | Information about a core.
 --
@@ -102,6 +105,7 @@ data Core =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Core' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -113,7 +117,8 @@ data Core =
 -- * 'cSyncShadow' - If true, the core's local shadow is automatically synced with the cloud.
 --
 -- * 'cId' - The ID of the core.
-core :: Core
+core
+    :: Core
 core =
   Core'
     { _cCertificateARN = Nothing
@@ -122,44 +127,44 @@ core =
     , _cId = Nothing
     }
 
+
 -- | The ARN of the certificate associated with the core.
 cCertificateARN :: Lens' Core (Maybe Text)
-cCertificateARN = lens _cCertificateARN (\s a -> s {_cCertificateARN = a})
+cCertificateARN = lens _cCertificateARN (\ s a -> s{_cCertificateARN = a})
 
 -- | The ARN of the thing which is the core.
 cThingARN :: Lens' Core (Maybe Text)
-cThingARN = lens _cThingARN (\s a -> s {_cThingARN = a})
+cThingARN = lens _cThingARN (\ s a -> s{_cThingARN = a})
 
 -- | If true, the core's local shadow is automatically synced with the cloud.
 cSyncShadow :: Lens' Core (Maybe Bool)
-cSyncShadow = lens _cSyncShadow (\s a -> s {_cSyncShadow = a})
+cSyncShadow = lens _cSyncShadow (\ s a -> s{_cSyncShadow = a})
 
 -- | The ID of the core.
 cId :: Lens' Core (Maybe Text)
-cId = lens _cId (\s a -> s {_cId = a})
+cId = lens _cId (\ s a -> s{_cId = a})
 
 instance FromJSON Core where
-  parseJSON =
-    withObject
-      "Core"
-      (\x ->
-         Core' <$> (x .:? "CertificateArn") <*> (x .:? "ThingArn") <*>
-         (x .:? "SyncShadow") <*>
-         (x .:? "Id"))
+        parseJSON
+          = withObject "Core"
+              (\ x ->
+                 Core' <$>
+                   (x .:? "CertificateArn") <*> (x .:? "ThingArn") <*>
+                     (x .:? "SyncShadow")
+                     <*> (x .:? "Id"))
 
-instance Hashable Core
+instance Hashable Core where
 
-instance NFData Core
+instance NFData Core where
 
 instance ToJSON Core where
-  toJSON Core' {..} =
-    object
-      (catMaybes
-         [ ("CertificateArn" .=) <$> _cCertificateARN
-         , ("ThingArn" .=) <$> _cThingARN
-         , ("SyncShadow" .=) <$> _cSyncShadow
-         , ("Id" .=) <$> _cId
-         ])
+        toJSON Core'{..}
+          = object
+              (catMaybes
+                 [("CertificateArn" .=) <$> _cCertificateARN,
+                  ("ThingArn" .=) <$> _cThingARN,
+                  ("SyncShadow" .=) <$> _cSyncShadow,
+                  ("Id" .=) <$> _cId])
 
 -- | Information about a core definition version.
 --
@@ -170,31 +175,35 @@ newtype CoreDefinitionVersion =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CoreDefinitionVersion' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'cdvCores' - A list of cores in the core definition version.
-coreDefinitionVersion :: CoreDefinitionVersion
+coreDefinitionVersion
+    :: CoreDefinitionVersion
 coreDefinitionVersion = CoreDefinitionVersion' {_cdvCores = Nothing}
+
 
 -- | A list of cores in the core definition version.
 cdvCores :: Lens' CoreDefinitionVersion [Core]
-cdvCores = lens _cdvCores (\s a -> s {_cdvCores = a}) . _Default . _Coerce
+cdvCores = lens _cdvCores (\ s a -> s{_cdvCores = a}) . _Default . _Coerce
 
 instance FromJSON CoreDefinitionVersion where
-  parseJSON =
-    withObject
-      "CoreDefinitionVersion"
-      (\x -> CoreDefinitionVersion' <$> (x .:? "Cores" .!= mempty))
+        parseJSON
+          = withObject "CoreDefinitionVersion"
+              (\ x ->
+                 CoreDefinitionVersion' <$>
+                   (x .:? "Cores" .!= mempty))
 
-instance Hashable CoreDefinitionVersion
+instance Hashable CoreDefinitionVersion where
 
-instance NFData CoreDefinitionVersion
+instance NFData CoreDefinitionVersion where
 
 instance ToJSON CoreDefinitionVersion where
-  toJSON CoreDefinitionVersion' {..} =
-    object (catMaybes [("Cores" .=) <$> _cdvCores])
+        toJSON CoreDefinitionVersion'{..}
+          = object (catMaybes [("Cores" .=) <$> _cdvCores])
 
 -- | Information about a definition.
 --
@@ -210,6 +219,7 @@ data DefinitionInformation =
     , _diLastUpdatedTimestamp :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'DefinitionInformation' with the minimum fields required to make a request.
 --
@@ -228,7 +238,8 @@ data DefinitionInformation =
 -- * 'diLatestVersion' - The latest version of the definition.
 --
 -- * 'diLastUpdatedTimestamp' - The time, in milliseconds since the epoch, when the definition was last updated.
-definitionInformation :: DefinitionInformation
+definitionInformation
+    :: DefinitionInformation
 definitionInformation =
   DefinitionInformation'
     { _diLatestVersionARN = Nothing
@@ -240,52 +251,50 @@ definitionInformation =
     , _diLastUpdatedTimestamp = Nothing
     }
 
+
 -- | The ARN of the latest version of the definition.
 diLatestVersionARN :: Lens' DefinitionInformation (Maybe Text)
-diLatestVersionARN =
-  lens _diLatestVersionARN (\s a -> s {_diLatestVersionARN = a})
+diLatestVersionARN = lens _diLatestVersionARN (\ s a -> s{_diLatestVersionARN = a})
 
 -- | The ARN of the definition.
 diARN :: Lens' DefinitionInformation (Maybe Text)
-diARN = lens _diARN (\s a -> s {_diARN = a})
+diARN = lens _diARN (\ s a -> s{_diARN = a})
 
 -- | The name of the definition.
 diName :: Lens' DefinitionInformation (Maybe Text)
-diName = lens _diName (\s a -> s {_diName = a})
+diName = lens _diName (\ s a -> s{_diName = a})
 
 -- | The time, in milliseconds since the epoch, when the definition was created.
 diCreationTimestamp :: Lens' DefinitionInformation (Maybe Text)
-diCreationTimestamp =
-  lens _diCreationTimestamp (\s a -> s {_diCreationTimestamp = a})
+diCreationTimestamp = lens _diCreationTimestamp (\ s a -> s{_diCreationTimestamp = a})
 
 -- | The ID of the definition.
 diId :: Lens' DefinitionInformation (Maybe Text)
-diId = lens _diId (\s a -> s {_diId = a})
+diId = lens _diId (\ s a -> s{_diId = a})
 
 -- | The latest version of the definition.
 diLatestVersion :: Lens' DefinitionInformation (Maybe Text)
-diLatestVersion = lens _diLatestVersion (\s a -> s {_diLatestVersion = a})
+diLatestVersion = lens _diLatestVersion (\ s a -> s{_diLatestVersion = a})
 
 -- | The time, in milliseconds since the epoch, when the definition was last updated.
 diLastUpdatedTimestamp :: Lens' DefinitionInformation (Maybe Text)
-diLastUpdatedTimestamp =
-  lens _diLastUpdatedTimestamp (\s a -> s {_diLastUpdatedTimestamp = a})
+diLastUpdatedTimestamp = lens _diLastUpdatedTimestamp (\ s a -> s{_diLastUpdatedTimestamp = a})
 
 instance FromJSON DefinitionInformation where
-  parseJSON =
-    withObject
-      "DefinitionInformation"
-      (\x ->
-         DefinitionInformation' <$> (x .:? "LatestVersionArn") <*> (x .:? "Arn") <*>
-         (x .:? "Name") <*>
-         (x .:? "CreationTimestamp") <*>
-         (x .:? "Id") <*>
-         (x .:? "LatestVersion") <*>
-         (x .:? "LastUpdatedTimestamp"))
+        parseJSON
+          = withObject "DefinitionInformation"
+              (\ x ->
+                 DefinitionInformation' <$>
+                   (x .:? "LatestVersionArn") <*> (x .:? "Arn") <*>
+                     (x .:? "Name")
+                     <*> (x .:? "CreationTimestamp")
+                     <*> (x .:? "Id")
+                     <*> (x .:? "LatestVersion")
+                     <*> (x .:? "LastUpdatedTimestamp"))
 
-instance Hashable DefinitionInformation
+instance Hashable DefinitionInformation where
 
-instance NFData DefinitionInformation
+instance NFData DefinitionInformation where
 
 -- | Information about a deployment.
 --
@@ -300,6 +309,7 @@ data Deployment =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Deployment' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -313,7 +323,8 @@ data Deployment =
 -- * 'dDeploymentType' - The type of the deployment.
 --
 -- * 'dGroupARN' - The ARN of the group for this deployment.
-deployment :: Deployment
+deployment
+    :: Deployment
 deployment =
   Deployment'
     { _dDeploymentId = Nothing
@@ -323,39 +334,40 @@ deployment =
     , _dGroupARN = Nothing
     }
 
+
 -- | The ID of the deployment.
 dDeploymentId :: Lens' Deployment (Maybe Text)
-dDeploymentId = lens _dDeploymentId (\s a -> s {_dDeploymentId = a})
+dDeploymentId = lens _dDeploymentId (\ s a -> s{_dDeploymentId = a})
 
 -- | The ARN of the deployment.
 dDeploymentARN :: Lens' Deployment (Maybe Text)
-dDeploymentARN = lens _dDeploymentARN (\s a -> s {_dDeploymentARN = a})
+dDeploymentARN = lens _dDeploymentARN (\ s a -> s{_dDeploymentARN = a})
 
 -- | The time, in milliseconds since the epoch, when the deployment was created.
 dCreatedAt :: Lens' Deployment (Maybe Text)
-dCreatedAt = lens _dCreatedAt (\s a -> s {_dCreatedAt = a})
+dCreatedAt = lens _dCreatedAt (\ s a -> s{_dCreatedAt = a})
 
 -- | The type of the deployment.
 dDeploymentType :: Lens' Deployment (Maybe DeploymentType)
-dDeploymentType = lens _dDeploymentType (\s a -> s {_dDeploymentType = a})
+dDeploymentType = lens _dDeploymentType (\ s a -> s{_dDeploymentType = a})
 
 -- | The ARN of the group for this deployment.
 dGroupARN :: Lens' Deployment (Maybe Text)
-dGroupARN = lens _dGroupARN (\s a -> s {_dGroupARN = a})
+dGroupARN = lens _dGroupARN (\ s a -> s{_dGroupARN = a})
 
 instance FromJSON Deployment where
-  parseJSON =
-    withObject
-      "Deployment"
-      (\x ->
-         Deployment' <$> (x .:? "DeploymentId") <*> (x .:? "DeploymentArn") <*>
-         (x .:? "CreatedAt") <*>
-         (x .:? "DeploymentType") <*>
-         (x .:? "GroupArn"))
+        parseJSON
+          = withObject "Deployment"
+              (\ x ->
+                 Deployment' <$>
+                   (x .:? "DeploymentId") <*> (x .:? "DeploymentArn")
+                     <*> (x .:? "CreatedAt")
+                     <*> (x .:? "DeploymentType")
+                     <*> (x .:? "GroupArn"))
 
-instance Hashable Deployment
+instance Hashable Deployment where
 
-instance NFData Deployment
+instance NFData Deployment where
 
 -- | Information about a device.
 --
@@ -369,6 +381,7 @@ data Device =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Device' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -380,7 +393,8 @@ data Device =
 -- * 'dSyncShadow' - If true, the device's local shadow will be automatically synced with the cloud.
 --
 -- * 'dId' - The ID of the device.
-device :: Device
+device
+    :: Device
 device =
   Device'
     { _dCertificateARN = Nothing
@@ -389,44 +403,44 @@ device =
     , _dId = Nothing
     }
 
+
 -- | The ARN of the certificate associated with the device.
 dCertificateARN :: Lens' Device (Maybe Text)
-dCertificateARN = lens _dCertificateARN (\s a -> s {_dCertificateARN = a})
+dCertificateARN = lens _dCertificateARN (\ s a -> s{_dCertificateARN = a})
 
 -- | The thing ARN of the device.
 dThingARN :: Lens' Device (Maybe Text)
-dThingARN = lens _dThingARN (\s a -> s {_dThingARN = a})
+dThingARN = lens _dThingARN (\ s a -> s{_dThingARN = a})
 
 -- | If true, the device's local shadow will be automatically synced with the cloud.
 dSyncShadow :: Lens' Device (Maybe Bool)
-dSyncShadow = lens _dSyncShadow (\s a -> s {_dSyncShadow = a})
+dSyncShadow = lens _dSyncShadow (\ s a -> s{_dSyncShadow = a})
 
 -- | The ID of the device.
 dId :: Lens' Device (Maybe Text)
-dId = lens _dId (\s a -> s {_dId = a})
+dId = lens _dId (\ s a -> s{_dId = a})
 
 instance FromJSON Device where
-  parseJSON =
-    withObject
-      "Device"
-      (\x ->
-         Device' <$> (x .:? "CertificateArn") <*> (x .:? "ThingArn") <*>
-         (x .:? "SyncShadow") <*>
-         (x .:? "Id"))
+        parseJSON
+          = withObject "Device"
+              (\ x ->
+                 Device' <$>
+                   (x .:? "CertificateArn") <*> (x .:? "ThingArn") <*>
+                     (x .:? "SyncShadow")
+                     <*> (x .:? "Id"))
 
-instance Hashable Device
+instance Hashable Device where
 
-instance NFData Device
+instance NFData Device where
 
 instance ToJSON Device where
-  toJSON Device' {..} =
-    object
-      (catMaybes
-         [ ("CertificateArn" .=) <$> _dCertificateARN
-         , ("ThingArn" .=) <$> _dThingARN
-         , ("SyncShadow" .=) <$> _dSyncShadow
-         , ("Id" .=) <$> _dId
-         ])
+        toJSON Device'{..}
+          = object
+              (catMaybes
+                 [("CertificateArn" .=) <$> _dCertificateARN,
+                  ("ThingArn" .=) <$> _dThingARN,
+                  ("SyncShadow" .=) <$> _dSyncShadow,
+                  ("Id" .=) <$> _dId])
 
 -- | Information about a device definition version.
 --
@@ -437,31 +451,35 @@ newtype DeviceDefinitionVersion =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeviceDefinitionVersion' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'ddvDevices' - A list of devices in the definition version.
-deviceDefinitionVersion :: DeviceDefinitionVersion
+deviceDefinitionVersion
+    :: DeviceDefinitionVersion
 deviceDefinitionVersion = DeviceDefinitionVersion' {_ddvDevices = Nothing}
+
 
 -- | A list of devices in the definition version.
 ddvDevices :: Lens' DeviceDefinitionVersion [Device]
-ddvDevices = lens _ddvDevices (\s a -> s {_ddvDevices = a}) . _Default . _Coerce
+ddvDevices = lens _ddvDevices (\ s a -> s{_ddvDevices = a}) . _Default . _Coerce
 
 instance FromJSON DeviceDefinitionVersion where
-  parseJSON =
-    withObject
-      "DeviceDefinitionVersion"
-      (\x -> DeviceDefinitionVersion' <$> (x .:? "Devices" .!= mempty))
+        parseJSON
+          = withObject "DeviceDefinitionVersion"
+              (\ x ->
+                 DeviceDefinitionVersion' <$>
+                   (x .:? "Devices" .!= mempty))
 
-instance Hashable DeviceDefinitionVersion
+instance Hashable DeviceDefinitionVersion where
 
-instance NFData DeviceDefinitionVersion
+instance NFData DeviceDefinitionVersion where
 
 instance ToJSON DeviceDefinitionVersion where
-  toJSON DeviceDefinitionVersion' {..} =
-    object (catMaybes [("Devices" .=) <$> _ddvDevices])
+        toJSON DeviceDefinitionVersion'{..}
+          = object (catMaybes [("Devices" .=) <$> _ddvDevices])
 
 -- | Details about the error.
 --
@@ -473,6 +491,7 @@ data ErrorDetail =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ErrorDetail' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -480,32 +499,32 @@ data ErrorDetail =
 -- * 'edDetailedErrorCode' - A detailed error code.
 --
 -- * 'edDetailedErrorMessage' - A detailed error message.
-errorDetail :: ErrorDetail
+errorDetail
+    :: ErrorDetail
 errorDetail =
   ErrorDetail'
     {_edDetailedErrorCode = Nothing, _edDetailedErrorMessage = Nothing}
 
+
 -- | A detailed error code.
 edDetailedErrorCode :: Lens' ErrorDetail (Maybe Text)
-edDetailedErrorCode =
-  lens _edDetailedErrorCode (\s a -> s {_edDetailedErrorCode = a})
+edDetailedErrorCode = lens _edDetailedErrorCode (\ s a -> s{_edDetailedErrorCode = a})
 
 -- | A detailed error message.
 edDetailedErrorMessage :: Lens' ErrorDetail (Maybe Text)
-edDetailedErrorMessage =
-  lens _edDetailedErrorMessage (\s a -> s {_edDetailedErrorMessage = a})
+edDetailedErrorMessage = lens _edDetailedErrorMessage (\ s a -> s{_edDetailedErrorMessage = a})
 
 instance FromJSON ErrorDetail where
-  parseJSON =
-    withObject
-      "ErrorDetail"
-      (\x ->
-         ErrorDetail' <$> (x .:? "DetailedErrorCode") <*>
-         (x .:? "DetailedErrorMessage"))
+        parseJSON
+          = withObject "ErrorDetail"
+              (\ x ->
+                 ErrorDetail' <$>
+                   (x .:? "DetailedErrorCode") <*>
+                     (x .:? "DetailedErrorMessage"))
 
-instance Hashable ErrorDetail
+instance Hashable ErrorDetail where
 
-instance NFData ErrorDetail
+instance NFData ErrorDetail where
 
 -- | Information about a Lambda function.
 --
@@ -518,6 +537,7 @@ data Function =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Function' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -527,44 +547,46 @@ data Function =
 -- * 'fFunctionConfiguration' - The configuration of the Lambda function.
 --
 -- * 'fId' - The ID of the Lambda function.
-function :: Function
+function
+    :: Function
 function =
   Function'
     {_fFunctionARN = Nothing, _fFunctionConfiguration = Nothing, _fId = Nothing}
 
+
 -- | The ARN of the Lambda function.
 fFunctionARN :: Lens' Function (Maybe Text)
-fFunctionARN = lens _fFunctionARN (\s a -> s {_fFunctionARN = a})
+fFunctionARN = lens _fFunctionARN (\ s a -> s{_fFunctionARN = a})
 
 -- | The configuration of the Lambda function.
 fFunctionConfiguration :: Lens' Function (Maybe FunctionConfiguration)
-fFunctionConfiguration =
-  lens _fFunctionConfiguration (\s a -> s {_fFunctionConfiguration = a})
+fFunctionConfiguration = lens _fFunctionConfiguration (\ s a -> s{_fFunctionConfiguration = a})
 
 -- | The ID of the Lambda function.
 fId :: Lens' Function (Maybe Text)
-fId = lens _fId (\s a -> s {_fId = a})
+fId = lens _fId (\ s a -> s{_fId = a})
 
 instance FromJSON Function where
-  parseJSON =
-    withObject
-      "Function"
-      (\x ->
-         Function' <$> (x .:? "FunctionArn") <*> (x .:? "FunctionConfiguration") <*>
-         (x .:? "Id"))
+        parseJSON
+          = withObject "Function"
+              (\ x ->
+                 Function' <$>
+                   (x .:? "FunctionArn") <*>
+                     (x .:? "FunctionConfiguration")
+                     <*> (x .:? "Id"))
 
-instance Hashable Function
+instance Hashable Function where
 
-instance NFData Function
+instance NFData Function where
 
 instance ToJSON Function where
-  toJSON Function' {..} =
-    object
-      (catMaybes
-         [ ("FunctionArn" .=) <$> _fFunctionARN
-         , ("FunctionConfiguration" .=) <$> _fFunctionConfiguration
-         , ("Id" .=) <$> _fId
-         ])
+        toJSON Function'{..}
+          = object
+              (catMaybes
+                 [("FunctionArn" .=) <$> _fFunctionARN,
+                  ("FunctionConfiguration" .=) <$>
+                    _fFunctionConfiguration,
+                  ("Id" .=) <$> _fId])
 
 -- | The configuration of the Lambda function.
 --
@@ -580,6 +602,7 @@ data FunctionConfiguration =
     , _fcTimeout      :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'FunctionConfiguration' with the minimum fields required to make a request.
 --
@@ -598,7 +621,8 @@ data FunctionConfiguration =
 -- * 'fcEncodingType' - The expected encoding type of the input payload for the function. The default is ''json''.
 --
 -- * 'fcTimeout' - The allowed function execution time, after which Lambda should terminate the function. This timeout still applies to pinned lambdas for each request.
-functionConfiguration :: FunctionConfiguration
+functionConfiguration
+    :: FunctionConfiguration
 functionConfiguration =
   FunctionConfiguration'
     { _fcMemorySize = Nothing
@@ -610,63 +634,62 @@ functionConfiguration =
     , _fcTimeout = Nothing
     }
 
+
 -- | The memory size, in KB, which the function requires.
 fcMemorySize :: Lens' FunctionConfiguration (Maybe Int)
-fcMemorySize = lens _fcMemorySize (\s a -> s {_fcMemorySize = a})
+fcMemorySize = lens _fcMemorySize (\ s a -> s{_fcMemorySize = a})
 
 -- | The execution arguments.
 fcExecArgs :: Lens' FunctionConfiguration (Maybe Text)
-fcExecArgs = lens _fcExecArgs (\s a -> s {_fcExecArgs = a})
+fcExecArgs = lens _fcExecArgs (\ s a -> s{_fcExecArgs = a})
 
 -- | The environment configuration of the function.
-fcEnvironment ::
-     Lens' FunctionConfiguration (Maybe FunctionConfigurationEnvironment)
-fcEnvironment = lens _fcEnvironment (\s a -> s {_fcEnvironment = a})
+fcEnvironment :: Lens' FunctionConfiguration (Maybe FunctionConfigurationEnvironment)
+fcEnvironment = lens _fcEnvironment (\ s a -> s{_fcEnvironment = a})
 
 -- | The name of the function executable.
 fcExecutable :: Lens' FunctionConfiguration (Maybe Text)
-fcExecutable = lens _fcExecutable (\s a -> s {_fcExecutable = a})
+fcExecutable = lens _fcExecutable (\ s a -> s{_fcExecutable = a})
 
 -- | True if the function is pinned. Pinned means the function is long-lived and starts when the core starts.
 fcPinned :: Lens' FunctionConfiguration (Maybe Bool)
-fcPinned = lens _fcPinned (\s a -> s {_fcPinned = a})
+fcPinned = lens _fcPinned (\ s a -> s{_fcPinned = a})
 
 -- | The expected encoding type of the input payload for the function. The default is ''json''.
 fcEncodingType :: Lens' FunctionConfiguration (Maybe EncodingType)
-fcEncodingType = lens _fcEncodingType (\s a -> s {_fcEncodingType = a})
+fcEncodingType = lens _fcEncodingType (\ s a -> s{_fcEncodingType = a})
 
 -- | The allowed function execution time, after which Lambda should terminate the function. This timeout still applies to pinned lambdas for each request.
 fcTimeout :: Lens' FunctionConfiguration (Maybe Int)
-fcTimeout = lens _fcTimeout (\s a -> s {_fcTimeout = a})
+fcTimeout = lens _fcTimeout (\ s a -> s{_fcTimeout = a})
 
 instance FromJSON FunctionConfiguration where
-  parseJSON =
-    withObject
-      "FunctionConfiguration"
-      (\x ->
-         FunctionConfiguration' <$> (x .:? "MemorySize") <*> (x .:? "ExecArgs") <*>
-         (x .:? "Environment") <*>
-         (x .:? "Executable") <*>
-         (x .:? "Pinned") <*>
-         (x .:? "EncodingType") <*>
-         (x .:? "Timeout"))
+        parseJSON
+          = withObject "FunctionConfiguration"
+              (\ x ->
+                 FunctionConfiguration' <$>
+                   (x .:? "MemorySize") <*> (x .:? "ExecArgs") <*>
+                     (x .:? "Environment")
+                     <*> (x .:? "Executable")
+                     <*> (x .:? "Pinned")
+                     <*> (x .:? "EncodingType")
+                     <*> (x .:? "Timeout"))
 
-instance Hashable FunctionConfiguration
+instance Hashable FunctionConfiguration where
 
-instance NFData FunctionConfiguration
+instance NFData FunctionConfiguration where
 
 instance ToJSON FunctionConfiguration where
-  toJSON FunctionConfiguration' {..} =
-    object
-      (catMaybes
-         [ ("MemorySize" .=) <$> _fcMemorySize
-         , ("ExecArgs" .=) <$> _fcExecArgs
-         , ("Environment" .=) <$> _fcEnvironment
-         , ("Executable" .=) <$> _fcExecutable
-         , ("Pinned" .=) <$> _fcPinned
-         , ("EncodingType" .=) <$> _fcEncodingType
-         , ("Timeout" .=) <$> _fcTimeout
-         ])
+        toJSON FunctionConfiguration'{..}
+          = object
+              (catMaybes
+                 [("MemorySize" .=) <$> _fcMemorySize,
+                  ("ExecArgs" .=) <$> _fcExecArgs,
+                  ("Environment" .=) <$> _fcEnvironment,
+                  ("Executable" .=) <$> _fcExecutable,
+                  ("Pinned" .=) <$> _fcPinned,
+                  ("EncodingType" .=) <$> _fcEncodingType,
+                  ("Timeout" .=) <$> _fcTimeout])
 
 -- | The environment configuration of the function.
 --
@@ -679,6 +702,7 @@ data FunctionConfigurationEnvironment =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'FunctionConfigurationEnvironment' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -688,7 +712,8 @@ data FunctionConfigurationEnvironment =
 -- * 'fceResourceAccessPolicies' - A list of the resources, with their permissions, to which the Lambda function will be granted access. A Lambda function can have at most 10 resources.
 --
 -- * 'fceAccessSysfs' - If true, the Lambda function is allowed to access the host's /sys folder. Use this when the Lambda function needs to read device information from /sys.
-functionConfigurationEnvironment :: FunctionConfigurationEnvironment
+functionConfigurationEnvironment
+    :: FunctionConfigurationEnvironment
 functionConfigurationEnvironment =
   FunctionConfigurationEnvironment'
     { _fceVariables = Nothing
@@ -696,43 +721,44 @@ functionConfigurationEnvironment =
     , _fceAccessSysfs = Nothing
     }
 
+
 -- | Environment variables for the Lambda function's configuration.
 fceVariables :: Lens' FunctionConfigurationEnvironment (HashMap Text Text)
-fceVariables =
-  lens _fceVariables (\s a -> s {_fceVariables = a}) . _Default . _Map
+fceVariables = lens _fceVariables (\ s a -> s{_fceVariables = a}) . _Default . _Map
 
 -- | A list of the resources, with their permissions, to which the Lambda function will be granted access. A Lambda function can have at most 10 resources.
-fceResourceAccessPolicies ::
-     Lens' FunctionConfigurationEnvironment [ResourceAccessPolicy]
-fceResourceAccessPolicies =
-  lens _fceResourceAccessPolicies (\s a -> s {_fceResourceAccessPolicies = a}) .
-  _Default . _Coerce
+fceResourceAccessPolicies :: Lens' FunctionConfigurationEnvironment [ResourceAccessPolicy]
+fceResourceAccessPolicies = lens _fceResourceAccessPolicies (\ s a -> s{_fceResourceAccessPolicies = a}) . _Default . _Coerce
 
 -- | If true, the Lambda function is allowed to access the host's /sys folder. Use this when the Lambda function needs to read device information from /sys.
 fceAccessSysfs :: Lens' FunctionConfigurationEnvironment (Maybe Bool)
-fceAccessSysfs = lens _fceAccessSysfs (\s a -> s {_fceAccessSysfs = a})
+fceAccessSysfs = lens _fceAccessSysfs (\ s a -> s{_fceAccessSysfs = a})
 
-instance FromJSON FunctionConfigurationEnvironment where
-  parseJSON =
-    withObject
-      "FunctionConfigurationEnvironment"
-      (\x ->
-         FunctionConfigurationEnvironment' <$> (x .:? "Variables" .!= mempty) <*>
-         (x .:? "ResourceAccessPolicies" .!= mempty) <*>
-         (x .:? "AccessSysfs"))
+instance FromJSON FunctionConfigurationEnvironment
+         where
+        parseJSON
+          = withObject "FunctionConfigurationEnvironment"
+              (\ x ->
+                 FunctionConfigurationEnvironment' <$>
+                   (x .:? "Variables" .!= mempty) <*>
+                     (x .:? "ResourceAccessPolicies" .!= mempty)
+                     <*> (x .:? "AccessSysfs"))
 
 instance Hashable FunctionConfigurationEnvironment
+         where
 
 instance NFData FunctionConfigurationEnvironment
+         where
 
-instance ToJSON FunctionConfigurationEnvironment where
-  toJSON FunctionConfigurationEnvironment' {..} =
-    object
-      (catMaybes
-         [ ("Variables" .=) <$> _fceVariables
-         , ("ResourceAccessPolicies" .=) <$> _fceResourceAccessPolicies
-         , ("AccessSysfs" .=) <$> _fceAccessSysfs
-         ])
+instance ToJSON FunctionConfigurationEnvironment
+         where
+        toJSON FunctionConfigurationEnvironment'{..}
+          = object
+              (catMaybes
+                 [("Variables" .=) <$> _fceVariables,
+                  ("ResourceAccessPolicies" .=) <$>
+                    _fceResourceAccessPolicies,
+                  ("AccessSysfs" .=) <$> _fceAccessSysfs])
 
 -- | Information about a function definition version.
 --
@@ -743,32 +769,36 @@ newtype FunctionDefinitionVersion =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'FunctionDefinitionVersion' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'fdvFunctions' - A list of Lambda functions in this function definition version.
-functionDefinitionVersion :: FunctionDefinitionVersion
+functionDefinitionVersion
+    :: FunctionDefinitionVersion
 functionDefinitionVersion = FunctionDefinitionVersion' {_fdvFunctions = Nothing}
+
 
 -- | A list of Lambda functions in this function definition version.
 fdvFunctions :: Lens' FunctionDefinitionVersion [Function]
-fdvFunctions =
-  lens _fdvFunctions (\s a -> s {_fdvFunctions = a}) . _Default . _Coerce
+fdvFunctions = lens _fdvFunctions (\ s a -> s{_fdvFunctions = a}) . _Default . _Coerce
 
 instance FromJSON FunctionDefinitionVersion where
-  parseJSON =
-    withObject
-      "FunctionDefinitionVersion"
-      (\x -> FunctionDefinitionVersion' <$> (x .:? "Functions" .!= mempty))
+        parseJSON
+          = withObject "FunctionDefinitionVersion"
+              (\ x ->
+                 FunctionDefinitionVersion' <$>
+                   (x .:? "Functions" .!= mempty))
 
-instance Hashable FunctionDefinitionVersion
+instance Hashable FunctionDefinitionVersion where
 
-instance NFData FunctionDefinitionVersion
+instance NFData FunctionDefinitionVersion where
 
 instance ToJSON FunctionDefinitionVersion where
-  toJSON FunctionDefinitionVersion' {..} =
-    object (catMaybes [("Functions" .=) <$> _fdvFunctions])
+        toJSON FunctionDefinitionVersion'{..}
+          = object
+              (catMaybes [("Functions" .=) <$> _fdvFunctions])
 
 -- | Information about a logger
 --
@@ -783,6 +813,7 @@ data GreengrassLogger =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GreengrassLogger' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -796,7 +827,8 @@ data GreengrassLogger =
 -- * 'glType' - The type of log output which will be used.
 --
 -- * 'glLevel' - The level of the logs.
-greengrassLogger :: GreengrassLogger
+greengrassLogger
+    :: GreengrassLogger
 greengrassLogger =
   GreengrassLogger'
     { _glSpace = Nothing
@@ -806,50 +838,49 @@ greengrassLogger =
     , _glLevel = Nothing
     }
 
+
 -- | The amount of file space, in KB, to use if the local file system is used for logging purposes.
 glSpace :: Lens' GreengrassLogger (Maybe Int)
-glSpace = lens _glSpace (\s a -> s {_glSpace = a})
+glSpace = lens _glSpace (\ s a -> s{_glSpace = a})
 
 -- | The component that will be subject to logging.
 glComponent :: Lens' GreengrassLogger (Maybe LoggerComponent)
-glComponent = lens _glComponent (\s a -> s {_glComponent = a})
+glComponent = lens _glComponent (\ s a -> s{_glComponent = a})
 
 -- | The id of the logger.
 glId :: Lens' GreengrassLogger (Maybe Text)
-glId = lens _glId (\s a -> s {_glId = a})
+glId = lens _glId (\ s a -> s{_glId = a})
 
 -- | The type of log output which will be used.
 glType :: Lens' GreengrassLogger (Maybe LoggerType)
-glType = lens _glType (\s a -> s {_glType = a})
+glType = lens _glType (\ s a -> s{_glType = a})
 
 -- | The level of the logs.
 glLevel :: Lens' GreengrassLogger (Maybe LoggerLevel)
-glLevel = lens _glLevel (\s a -> s {_glLevel = a})
+glLevel = lens _glLevel (\ s a -> s{_glLevel = a})
 
 instance FromJSON GreengrassLogger where
-  parseJSON =
-    withObject
-      "GreengrassLogger"
-      (\x ->
-         GreengrassLogger' <$> (x .:? "Space") <*> (x .:? "Component") <*>
-         (x .:? "Id") <*>
-         (x .:? "Type") <*>
-         (x .:? "Level"))
+        parseJSON
+          = withObject "GreengrassLogger"
+              (\ x ->
+                 GreengrassLogger' <$>
+                   (x .:? "Space") <*> (x .:? "Component") <*>
+                     (x .:? "Id")
+                     <*> (x .:? "Type")
+                     <*> (x .:? "Level"))
 
-instance Hashable GreengrassLogger
+instance Hashable GreengrassLogger where
 
-instance NFData GreengrassLogger
+instance NFData GreengrassLogger where
 
 instance ToJSON GreengrassLogger where
-  toJSON GreengrassLogger' {..} =
-    object
-      (catMaybes
-         [ ("Space" .=) <$> _glSpace
-         , ("Component" .=) <$> _glComponent
-         , ("Id" .=) <$> _glId
-         , ("Type" .=) <$> _glType
-         , ("Level" .=) <$> _glLevel
-         ])
+        toJSON GreengrassLogger'{..}
+          = object
+              (catMaybes
+                 [("Space" .=) <$> _glSpace,
+                  ("Component" .=) <$> _glComponent,
+                  ("Id" .=) <$> _glId, ("Type" .=) <$> _glType,
+                  ("Level" .=) <$> _glLevel])
 
 -- | Information about a certificate authority for a group.
 --
@@ -861,6 +892,7 @@ data GroupCertificateAuthorityProperties =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GroupCertificateAuthorityProperties' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -868,41 +900,37 @@ data GroupCertificateAuthorityProperties =
 -- * 'gcapGroupCertificateAuthorityARN' - The ARN of the certificate authority for the group.
 --
 -- * 'gcapGroupCertificateAuthorityId' - The ID of the certificate authority for the group.
-groupCertificateAuthorityProperties :: GroupCertificateAuthorityProperties
+groupCertificateAuthorityProperties
+    :: GroupCertificateAuthorityProperties
 groupCertificateAuthorityProperties =
   GroupCertificateAuthorityProperties'
     { _gcapGroupCertificateAuthorityARN = Nothing
     , _gcapGroupCertificateAuthorityId = Nothing
     }
 
+
 -- | The ARN of the certificate authority for the group.
-gcapGroupCertificateAuthorityARN ::
-     Lens' GroupCertificateAuthorityProperties (Maybe Text)
-gcapGroupCertificateAuthorityARN =
-  lens
-    _gcapGroupCertificateAuthorityARN
-    (\s a -> s {_gcapGroupCertificateAuthorityARN = a})
+gcapGroupCertificateAuthorityARN :: Lens' GroupCertificateAuthorityProperties (Maybe Text)
+gcapGroupCertificateAuthorityARN = lens _gcapGroupCertificateAuthorityARN (\ s a -> s{_gcapGroupCertificateAuthorityARN = a})
 
 -- | The ID of the certificate authority for the group.
-gcapGroupCertificateAuthorityId ::
-     Lens' GroupCertificateAuthorityProperties (Maybe Text)
-gcapGroupCertificateAuthorityId =
-  lens
-    _gcapGroupCertificateAuthorityId
-    (\s a -> s {_gcapGroupCertificateAuthorityId = a})
+gcapGroupCertificateAuthorityId :: Lens' GroupCertificateAuthorityProperties (Maybe Text)
+gcapGroupCertificateAuthorityId = lens _gcapGroupCertificateAuthorityId (\ s a -> s{_gcapGroupCertificateAuthorityId = a})
 
-instance FromJSON GroupCertificateAuthorityProperties where
-  parseJSON =
-    withObject
-      "GroupCertificateAuthorityProperties"
-      (\x ->
-         GroupCertificateAuthorityProperties' <$>
-         (x .:? "GroupCertificateAuthorityArn") <*>
-         (x .:? "GroupCertificateAuthorityId"))
+instance FromJSON GroupCertificateAuthorityProperties
+         where
+        parseJSON
+          = withObject "GroupCertificateAuthorityProperties"
+              (\ x ->
+                 GroupCertificateAuthorityProperties' <$>
+                   (x .:? "GroupCertificateAuthorityArn") <*>
+                     (x .:? "GroupCertificateAuthorityId"))
 
 instance Hashable GroupCertificateAuthorityProperties
+         where
 
 instance NFData GroupCertificateAuthorityProperties
+         where
 
 -- | Information about a group.
 --
@@ -918,6 +946,7 @@ data GroupInformation =
     , _giLastUpdatedTimestamp :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'GroupInformation' with the minimum fields required to make a request.
 --
@@ -936,7 +965,8 @@ data GroupInformation =
 -- * 'giLatestVersion' - The latest version of the group.
 --
 -- * 'giLastUpdatedTimestamp' - The time, in milliseconds since the epoch, when the group was last updated.
-groupInformation :: GroupInformation
+groupInformation
+    :: GroupInformation
 groupInformation =
   GroupInformation'
     { _giLatestVersionARN = Nothing
@@ -948,52 +978,50 @@ groupInformation =
     , _giLastUpdatedTimestamp = Nothing
     }
 
+
 -- | The ARN of the latest version of the group.
 giLatestVersionARN :: Lens' GroupInformation (Maybe Text)
-giLatestVersionARN =
-  lens _giLatestVersionARN (\s a -> s {_giLatestVersionARN = a})
+giLatestVersionARN = lens _giLatestVersionARN (\ s a -> s{_giLatestVersionARN = a})
 
 -- | The ARN of the group.
 giARN :: Lens' GroupInformation (Maybe Text)
-giARN = lens _giARN (\s a -> s {_giARN = a})
+giARN = lens _giARN (\ s a -> s{_giARN = a})
 
 -- | The name of the group.
 giName :: Lens' GroupInformation (Maybe Text)
-giName = lens _giName (\s a -> s {_giName = a})
+giName = lens _giName (\ s a -> s{_giName = a})
 
 -- | The time, in milliseconds since the epoch, when the group was created.
 giCreationTimestamp :: Lens' GroupInformation (Maybe Text)
-giCreationTimestamp =
-  lens _giCreationTimestamp (\s a -> s {_giCreationTimestamp = a})
+giCreationTimestamp = lens _giCreationTimestamp (\ s a -> s{_giCreationTimestamp = a})
 
 -- | The ID of the group.
 giId :: Lens' GroupInformation (Maybe Text)
-giId = lens _giId (\s a -> s {_giId = a})
+giId = lens _giId (\ s a -> s{_giId = a})
 
 -- | The latest version of the group.
 giLatestVersion :: Lens' GroupInformation (Maybe Text)
-giLatestVersion = lens _giLatestVersion (\s a -> s {_giLatestVersion = a})
+giLatestVersion = lens _giLatestVersion (\ s a -> s{_giLatestVersion = a})
 
 -- | The time, in milliseconds since the epoch, when the group was last updated.
 giLastUpdatedTimestamp :: Lens' GroupInformation (Maybe Text)
-giLastUpdatedTimestamp =
-  lens _giLastUpdatedTimestamp (\s a -> s {_giLastUpdatedTimestamp = a})
+giLastUpdatedTimestamp = lens _giLastUpdatedTimestamp (\ s a -> s{_giLastUpdatedTimestamp = a})
 
 instance FromJSON GroupInformation where
-  parseJSON =
-    withObject
-      "GroupInformation"
-      (\x ->
-         GroupInformation' <$> (x .:? "LatestVersionArn") <*> (x .:? "Arn") <*>
-         (x .:? "Name") <*>
-         (x .:? "CreationTimestamp") <*>
-         (x .:? "Id") <*>
-         (x .:? "LatestVersion") <*>
-         (x .:? "LastUpdatedTimestamp"))
+        parseJSON
+          = withObject "GroupInformation"
+              (\ x ->
+                 GroupInformation' <$>
+                   (x .:? "LatestVersionArn") <*> (x .:? "Arn") <*>
+                     (x .:? "Name")
+                     <*> (x .:? "CreationTimestamp")
+                     <*> (x .:? "Id")
+                     <*> (x .:? "LatestVersion")
+                     <*> (x .:? "LastUpdatedTimestamp"))
 
-instance Hashable GroupInformation
+instance Hashable GroupInformation where
 
-instance NFData GroupInformation
+instance NFData GroupInformation where
 
 -- | Group owner related settings for local resources.
 --
@@ -1005,6 +1033,7 @@ data GroupOwnerSetting =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GroupOwnerSetting' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1012,38 +1041,37 @@ data GroupOwnerSetting =
 -- * 'gosAutoAddGroupOwner' - If true, GreenGrass automatically adds the specified Linux OS group owner of the resource to the Lambda process privileges. Thus the Lambda process will have the file access permissions of the added Linux group.
 --
 -- * 'gosGroupOwner' - The name of the Linux OS group whose privileges will be added to the Lambda process. This field is optional.
-groupOwnerSetting :: GroupOwnerSetting
+groupOwnerSetting
+    :: GroupOwnerSetting
 groupOwnerSetting =
   GroupOwnerSetting' {_gosAutoAddGroupOwner = Nothing, _gosGroupOwner = Nothing}
 
+
 -- | If true, GreenGrass automatically adds the specified Linux OS group owner of the resource to the Lambda process privileges. Thus the Lambda process will have the file access permissions of the added Linux group.
 gosAutoAddGroupOwner :: Lens' GroupOwnerSetting (Maybe Bool)
-gosAutoAddGroupOwner =
-  lens _gosAutoAddGroupOwner (\s a -> s {_gosAutoAddGroupOwner = a})
+gosAutoAddGroupOwner = lens _gosAutoAddGroupOwner (\ s a -> s{_gosAutoAddGroupOwner = a})
 
 -- | The name of the Linux OS group whose privileges will be added to the Lambda process. This field is optional.
 gosGroupOwner :: Lens' GroupOwnerSetting (Maybe Text)
-gosGroupOwner = lens _gosGroupOwner (\s a -> s {_gosGroupOwner = a})
+gosGroupOwner = lens _gosGroupOwner (\ s a -> s{_gosGroupOwner = a})
 
 instance FromJSON GroupOwnerSetting where
-  parseJSON =
-    withObject
-      "GroupOwnerSetting"
-      (\x ->
-         GroupOwnerSetting' <$> (x .:? "AutoAddGroupOwner") <*>
-         (x .:? "GroupOwner"))
+        parseJSON
+          = withObject "GroupOwnerSetting"
+              (\ x ->
+                 GroupOwnerSetting' <$>
+                   (x .:? "AutoAddGroupOwner") <*> (x .:? "GroupOwner"))
 
-instance Hashable GroupOwnerSetting
+instance Hashable GroupOwnerSetting where
 
-instance NFData GroupOwnerSetting
+instance NFData GroupOwnerSetting where
 
 instance ToJSON GroupOwnerSetting where
-  toJSON GroupOwnerSetting' {..} =
-    object
-      (catMaybes
-         [ ("AutoAddGroupOwner" .=) <$> _gosAutoAddGroupOwner
-         , ("GroupOwner" .=) <$> _gosGroupOwner
-         ])
+        toJSON GroupOwnerSetting'{..}
+          = object
+              (catMaybes
+                 [("AutoAddGroupOwner" .=) <$> _gosAutoAddGroupOwner,
+                  ("GroupOwner" .=) <$> _gosGroupOwner])
 
 -- | Information about a group version.
 --
@@ -1058,6 +1086,7 @@ data GroupVersion =
     , _gvLoggerDefinitionVersionARN       :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'GroupVersion' with the minimum fields required to make a request.
 --
@@ -1074,7 +1103,8 @@ data GroupVersion =
 -- * 'gvFunctionDefinitionVersionARN' - The ARN of the function definition version for this group.
 --
 -- * 'gvLoggerDefinitionVersionARN' - The ARN of the logger definition version for this group.
-groupVersion :: GroupVersion
+groupVersion
+    :: GroupVersion
 groupVersion =
   GroupVersion'
     { _gvResourceDefinitionVersionARN = Nothing
@@ -1085,76 +1115,63 @@ groupVersion =
     , _gvLoggerDefinitionVersionARN = Nothing
     }
 
+
 -- | The resource definition version ARN for this group.
 gvResourceDefinitionVersionARN :: Lens' GroupVersion (Maybe Text)
-gvResourceDefinitionVersionARN =
-  lens
-    _gvResourceDefinitionVersionARN
-    (\s a -> s {_gvResourceDefinitionVersionARN = a})
+gvResourceDefinitionVersionARN = lens _gvResourceDefinitionVersionARN (\ s a -> s{_gvResourceDefinitionVersionARN = a})
 
 -- | The ARN of the subscription definition version for this group.
 gvSubscriptionDefinitionVersionARN :: Lens' GroupVersion (Maybe Text)
-gvSubscriptionDefinitionVersionARN =
-  lens
-    _gvSubscriptionDefinitionVersionARN
-    (\s a -> s {_gvSubscriptionDefinitionVersionARN = a})
+gvSubscriptionDefinitionVersionARN = lens _gvSubscriptionDefinitionVersionARN (\ s a -> s{_gvSubscriptionDefinitionVersionARN = a})
 
 -- | The ARN of the core definition version for this group.
 gvCoreDefinitionVersionARN :: Lens' GroupVersion (Maybe Text)
-gvCoreDefinitionVersionARN =
-  lens _gvCoreDefinitionVersionARN (\s a -> s {_gvCoreDefinitionVersionARN = a})
+gvCoreDefinitionVersionARN = lens _gvCoreDefinitionVersionARN (\ s a -> s{_gvCoreDefinitionVersionARN = a})
 
 -- | The ARN of the device definition version for this group.
 gvDeviceDefinitionVersionARN :: Lens' GroupVersion (Maybe Text)
-gvDeviceDefinitionVersionARN =
-  lens
-    _gvDeviceDefinitionVersionARN
-    (\s a -> s {_gvDeviceDefinitionVersionARN = a})
+gvDeviceDefinitionVersionARN = lens _gvDeviceDefinitionVersionARN (\ s a -> s{_gvDeviceDefinitionVersionARN = a})
 
 -- | The ARN of the function definition version for this group.
 gvFunctionDefinitionVersionARN :: Lens' GroupVersion (Maybe Text)
-gvFunctionDefinitionVersionARN =
-  lens
-    _gvFunctionDefinitionVersionARN
-    (\s a -> s {_gvFunctionDefinitionVersionARN = a})
+gvFunctionDefinitionVersionARN = lens _gvFunctionDefinitionVersionARN (\ s a -> s{_gvFunctionDefinitionVersionARN = a})
 
 -- | The ARN of the logger definition version for this group.
 gvLoggerDefinitionVersionARN :: Lens' GroupVersion (Maybe Text)
-gvLoggerDefinitionVersionARN =
-  lens
-    _gvLoggerDefinitionVersionARN
-    (\s a -> s {_gvLoggerDefinitionVersionARN = a})
+gvLoggerDefinitionVersionARN = lens _gvLoggerDefinitionVersionARN (\ s a -> s{_gvLoggerDefinitionVersionARN = a})
 
 instance FromJSON GroupVersion where
-  parseJSON =
-    withObject
-      "GroupVersion"
-      (\x ->
-         GroupVersion' <$> (x .:? "ResourceDefinitionVersionArn") <*>
-         (x .:? "SubscriptionDefinitionVersionArn") <*>
-         (x .:? "CoreDefinitionVersionArn") <*>
-         (x .:? "DeviceDefinitionVersionArn") <*>
-         (x .:? "FunctionDefinitionVersionArn") <*>
-         (x .:? "LoggerDefinitionVersionArn"))
+        parseJSON
+          = withObject "GroupVersion"
+              (\ x ->
+                 GroupVersion' <$>
+                   (x .:? "ResourceDefinitionVersionArn") <*>
+                     (x .:? "SubscriptionDefinitionVersionArn")
+                     <*> (x .:? "CoreDefinitionVersionArn")
+                     <*> (x .:? "DeviceDefinitionVersionArn")
+                     <*> (x .:? "FunctionDefinitionVersionArn")
+                     <*> (x .:? "LoggerDefinitionVersionArn"))
 
-instance Hashable GroupVersion
+instance Hashable GroupVersion where
 
-instance NFData GroupVersion
+instance NFData GroupVersion where
 
 instance ToJSON GroupVersion where
-  toJSON GroupVersion' {..} =
-    object
-      (catMaybes
-         [ ("ResourceDefinitionVersionArn" .=) <$>
-           _gvResourceDefinitionVersionARN
-         , ("SubscriptionDefinitionVersionArn" .=) <$>
-           _gvSubscriptionDefinitionVersionARN
-         , ("CoreDefinitionVersionArn" .=) <$> _gvCoreDefinitionVersionARN
-         , ("DeviceDefinitionVersionArn" .=) <$> _gvDeviceDefinitionVersionARN
-         , ("FunctionDefinitionVersionArn" .=) <$>
-           _gvFunctionDefinitionVersionARN
-         , ("LoggerDefinitionVersionArn" .=) <$> _gvLoggerDefinitionVersionARN
-         ])
+        toJSON GroupVersion'{..}
+          = object
+              (catMaybes
+                 [("ResourceDefinitionVersionArn" .=) <$>
+                    _gvResourceDefinitionVersionARN,
+                  ("SubscriptionDefinitionVersionArn" .=) <$>
+                    _gvSubscriptionDefinitionVersionARN,
+                  ("CoreDefinitionVersionArn" .=) <$>
+                    _gvCoreDefinitionVersionARN,
+                  ("DeviceDefinitionVersionArn" .=) <$>
+                    _gvDeviceDefinitionVersionARN,
+                  ("FunctionDefinitionVersionArn" .=) <$>
+                    _gvFunctionDefinitionVersionARN,
+                  ("LoggerDefinitionVersionArn" .=) <$>
+                    _gvLoggerDefinitionVersionARN])
 
 -- | Attributes that define a local device resource.
 --
@@ -1166,6 +1183,7 @@ data LocalDeviceResourceData =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'LocalDeviceResourceData' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1173,39 +1191,38 @@ data LocalDeviceResourceData =
 -- * 'ldrdGroupOwnerSetting' - Group/owner related settings for local resources.
 --
 -- * 'ldrdSourcePath' - The local absolute path of the device resource. The source path for a device resource can refer only to a character device or block device under ''/dev''.
-localDeviceResourceData :: LocalDeviceResourceData
+localDeviceResourceData
+    :: LocalDeviceResourceData
 localDeviceResourceData =
   LocalDeviceResourceData'
     {_ldrdGroupOwnerSetting = Nothing, _ldrdSourcePath = Nothing}
 
+
 -- | Group/owner related settings for local resources.
 ldrdGroupOwnerSetting :: Lens' LocalDeviceResourceData (Maybe GroupOwnerSetting)
-ldrdGroupOwnerSetting =
-  lens _ldrdGroupOwnerSetting (\s a -> s {_ldrdGroupOwnerSetting = a})
+ldrdGroupOwnerSetting = lens _ldrdGroupOwnerSetting (\ s a -> s{_ldrdGroupOwnerSetting = a})
 
 -- | The local absolute path of the device resource. The source path for a device resource can refer only to a character device or block device under ''/dev''.
 ldrdSourcePath :: Lens' LocalDeviceResourceData (Maybe Text)
-ldrdSourcePath = lens _ldrdSourcePath (\s a -> s {_ldrdSourcePath = a})
+ldrdSourcePath = lens _ldrdSourcePath (\ s a -> s{_ldrdSourcePath = a})
 
 instance FromJSON LocalDeviceResourceData where
-  parseJSON =
-    withObject
-      "LocalDeviceResourceData"
-      (\x ->
-         LocalDeviceResourceData' <$> (x .:? "GroupOwnerSetting") <*>
-         (x .:? "SourcePath"))
+        parseJSON
+          = withObject "LocalDeviceResourceData"
+              (\ x ->
+                 LocalDeviceResourceData' <$>
+                   (x .:? "GroupOwnerSetting") <*> (x .:? "SourcePath"))
 
-instance Hashable LocalDeviceResourceData
+instance Hashable LocalDeviceResourceData where
 
-instance NFData LocalDeviceResourceData
+instance NFData LocalDeviceResourceData where
 
 instance ToJSON LocalDeviceResourceData where
-  toJSON LocalDeviceResourceData' {..} =
-    object
-      (catMaybes
-         [ ("GroupOwnerSetting" .=) <$> _ldrdGroupOwnerSetting
-         , ("SourcePath" .=) <$> _ldrdSourcePath
-         ])
+        toJSON LocalDeviceResourceData'{..}
+          = object
+              (catMaybes
+                 [("GroupOwnerSetting" .=) <$> _ldrdGroupOwnerSetting,
+                  ("SourcePath" .=) <$> _ldrdSourcePath])
 
 -- | Attributes that define a local volume resource.
 --
@@ -1218,6 +1235,7 @@ data LocalVolumeResourceData =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'LocalVolumeResourceData' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1227,7 +1245,8 @@ data LocalVolumeResourceData =
 -- * 'lvrdDestinationPath' - The absolute local path of the resource inside the lambda environment.
 --
 -- * 'lvrdSourcePath' - The local absolute path of the volume resource on the host. The source path for a volume resource type cannot start with ''/proc'' or ''/sys''.
-localVolumeResourceData :: LocalVolumeResourceData
+localVolumeResourceData
+    :: LocalVolumeResourceData
 localVolumeResourceData =
   LocalVolumeResourceData'
     { _lvrdGroupOwnerSetting = Nothing
@@ -1235,41 +1254,39 @@ localVolumeResourceData =
     , _lvrdSourcePath = Nothing
     }
 
+
 -- | Allows you to configure additional group privileges for the Lambda process. This field is optional.
 lvrdGroupOwnerSetting :: Lens' LocalVolumeResourceData (Maybe GroupOwnerSetting)
-lvrdGroupOwnerSetting =
-  lens _lvrdGroupOwnerSetting (\s a -> s {_lvrdGroupOwnerSetting = a})
+lvrdGroupOwnerSetting = lens _lvrdGroupOwnerSetting (\ s a -> s{_lvrdGroupOwnerSetting = a})
 
 -- | The absolute local path of the resource inside the lambda environment.
 lvrdDestinationPath :: Lens' LocalVolumeResourceData (Maybe Text)
-lvrdDestinationPath =
-  lens _lvrdDestinationPath (\s a -> s {_lvrdDestinationPath = a})
+lvrdDestinationPath = lens _lvrdDestinationPath (\ s a -> s{_lvrdDestinationPath = a})
 
 -- | The local absolute path of the volume resource on the host. The source path for a volume resource type cannot start with ''/proc'' or ''/sys''.
 lvrdSourcePath :: Lens' LocalVolumeResourceData (Maybe Text)
-lvrdSourcePath = lens _lvrdSourcePath (\s a -> s {_lvrdSourcePath = a})
+lvrdSourcePath = lens _lvrdSourcePath (\ s a -> s{_lvrdSourcePath = a})
 
 instance FromJSON LocalVolumeResourceData where
-  parseJSON =
-    withObject
-      "LocalVolumeResourceData"
-      (\x ->
-         LocalVolumeResourceData' <$> (x .:? "GroupOwnerSetting") <*>
-         (x .:? "DestinationPath") <*>
-         (x .:? "SourcePath"))
+        parseJSON
+          = withObject "LocalVolumeResourceData"
+              (\ x ->
+                 LocalVolumeResourceData' <$>
+                   (x .:? "GroupOwnerSetting") <*>
+                     (x .:? "DestinationPath")
+                     <*> (x .:? "SourcePath"))
 
-instance Hashable LocalVolumeResourceData
+instance Hashable LocalVolumeResourceData where
 
-instance NFData LocalVolumeResourceData
+instance NFData LocalVolumeResourceData where
 
 instance ToJSON LocalVolumeResourceData where
-  toJSON LocalVolumeResourceData' {..} =
-    object
-      (catMaybes
-         [ ("GroupOwnerSetting" .=) <$> _lvrdGroupOwnerSetting
-         , ("DestinationPath" .=) <$> _lvrdDestinationPath
-         , ("SourcePath" .=) <$> _lvrdSourcePath
-         ])
+        toJSON LocalVolumeResourceData'{..}
+          = object
+              (catMaybes
+                 [("GroupOwnerSetting" .=) <$> _lvrdGroupOwnerSetting,
+                  ("DestinationPath" .=) <$> _lvrdDestinationPath,
+                  ("SourcePath" .=) <$> _lvrdSourcePath])
 
 -- | Information about a logger definition version.
 --
@@ -1280,31 +1297,35 @@ newtype LoggerDefinitionVersion =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'LoggerDefinitionVersion' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'ldvLoggers' - A list of loggers.
-loggerDefinitionVersion :: LoggerDefinitionVersion
+loggerDefinitionVersion
+    :: LoggerDefinitionVersion
 loggerDefinitionVersion = LoggerDefinitionVersion' {_ldvLoggers = Nothing}
+
 
 -- | A list of loggers.
 ldvLoggers :: Lens' LoggerDefinitionVersion [GreengrassLogger]
-ldvLoggers = lens _ldvLoggers (\s a -> s {_ldvLoggers = a}) . _Default . _Coerce
+ldvLoggers = lens _ldvLoggers (\ s a -> s{_ldvLoggers = a}) . _Default . _Coerce
 
 instance FromJSON LoggerDefinitionVersion where
-  parseJSON =
-    withObject
-      "LoggerDefinitionVersion"
-      (\x -> LoggerDefinitionVersion' <$> (x .:? "Loggers" .!= mempty))
+        parseJSON
+          = withObject "LoggerDefinitionVersion"
+              (\ x ->
+                 LoggerDefinitionVersion' <$>
+                   (x .:? "Loggers" .!= mempty))
 
-instance Hashable LoggerDefinitionVersion
+instance Hashable LoggerDefinitionVersion where
 
-instance NFData LoggerDefinitionVersion
+instance NFData LoggerDefinitionVersion where
 
 instance ToJSON LoggerDefinitionVersion where
-  toJSON LoggerDefinitionVersion' {..} =
-    object (catMaybes [("Loggers" .=) <$> _ldvLoggers])
+        toJSON LoggerDefinitionVersion'{..}
+          = object (catMaybes [("Loggers" .=) <$> _ldvLoggers])
 
 -- | Information about a resource.
 --
@@ -1317,6 +1338,7 @@ data Resource =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Resource' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1326,44 +1348,44 @@ data Resource =
 -- * 'rName' - The descriptive resource name, which is displayed on the Greengrass console. Max length 128 characters with pattern ''[a-zA-Z0-9:_-]+''. This must be unique within a Greengrass group.
 --
 -- * 'rId' - The resource ID, used to refer to a resource in the Lambda function configuration. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''. This must be unique within a Greengrass group.
-resource :: Resource
+resource
+    :: Resource
 resource =
   Resource'
     {_rResourceDataContainer = Nothing, _rName = Nothing, _rId = Nothing}
 
+
 -- | A container of data for all resource types.
 rResourceDataContainer :: Lens' Resource (Maybe ResourceDataContainer)
-rResourceDataContainer =
-  lens _rResourceDataContainer (\s a -> s {_rResourceDataContainer = a})
+rResourceDataContainer = lens _rResourceDataContainer (\ s a -> s{_rResourceDataContainer = a})
 
 -- | The descriptive resource name, which is displayed on the Greengrass console. Max length 128 characters with pattern ''[a-zA-Z0-9:_-]+''. This must be unique within a Greengrass group.
 rName :: Lens' Resource (Maybe Text)
-rName = lens _rName (\s a -> s {_rName = a})
+rName = lens _rName (\ s a -> s{_rName = a})
 
 -- | The resource ID, used to refer to a resource in the Lambda function configuration. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''. This must be unique within a Greengrass group.
 rId :: Lens' Resource (Maybe Text)
-rId = lens _rId (\s a -> s {_rId = a})
+rId = lens _rId (\ s a -> s{_rId = a})
 
 instance FromJSON Resource where
-  parseJSON =
-    withObject
-      "Resource"
-      (\x ->
-         Resource' <$> (x .:? "ResourceDataContainer") <*> (x .:? "Name") <*>
-         (x .:? "Id"))
+        parseJSON
+          = withObject "Resource"
+              (\ x ->
+                 Resource' <$>
+                   (x .:? "ResourceDataContainer") <*> (x .:? "Name")
+                     <*> (x .:? "Id"))
 
-instance Hashable Resource
+instance Hashable Resource where
 
-instance NFData Resource
+instance NFData Resource where
 
 instance ToJSON Resource where
-  toJSON Resource' {..} =
-    object
-      (catMaybes
-         [ ("ResourceDataContainer" .=) <$> _rResourceDataContainer
-         , ("Name" .=) <$> _rName
-         , ("Id" .=) <$> _rId
-         ])
+        toJSON Resource'{..}
+          = object
+              (catMaybes
+                 [("ResourceDataContainer" .=) <$>
+                    _rResourceDataContainer,
+                  ("Name" .=) <$> _rName, ("Id" .=) <$> _rId])
 
 -- | A policy used by the function to access a resource.
 --
@@ -1375,6 +1397,7 @@ data ResourceAccessPolicy =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ResourceAccessPolicy' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1382,36 +1405,37 @@ data ResourceAccessPolicy =
 -- * 'rapResourceId' - The ID of the resource. (This ID is assigned to the resource when you create the resource definiton.)
 --
 -- * 'rapPermission' - The permissions that the Lambda function has to the resource. Can be one of ''rw'' (read/write) or ''ro'' (read-only).
-resourceAccessPolicy :: ResourceAccessPolicy
+resourceAccessPolicy
+    :: ResourceAccessPolicy
 resourceAccessPolicy =
   ResourceAccessPolicy' {_rapResourceId = Nothing, _rapPermission = Nothing}
 
+
 -- | The ID of the resource. (This ID is assigned to the resource when you create the resource definiton.)
 rapResourceId :: Lens' ResourceAccessPolicy (Maybe Text)
-rapResourceId = lens _rapResourceId (\s a -> s {_rapResourceId = a})
+rapResourceId = lens _rapResourceId (\ s a -> s{_rapResourceId = a})
 
 -- | The permissions that the Lambda function has to the resource. Can be one of ''rw'' (read/write) or ''ro'' (read-only).
 rapPermission :: Lens' ResourceAccessPolicy (Maybe Permission)
-rapPermission = lens _rapPermission (\s a -> s {_rapPermission = a})
+rapPermission = lens _rapPermission (\ s a -> s{_rapPermission = a})
 
 instance FromJSON ResourceAccessPolicy where
-  parseJSON =
-    withObject
-      "ResourceAccessPolicy"
-      (\x ->
-         ResourceAccessPolicy' <$> (x .:? "ResourceId") <*> (x .:? "Permission"))
+        parseJSON
+          = withObject "ResourceAccessPolicy"
+              (\ x ->
+                 ResourceAccessPolicy' <$>
+                   (x .:? "ResourceId") <*> (x .:? "Permission"))
 
-instance Hashable ResourceAccessPolicy
+instance Hashable ResourceAccessPolicy where
 
-instance NFData ResourceAccessPolicy
+instance NFData ResourceAccessPolicy where
 
 instance ToJSON ResourceAccessPolicy where
-  toJSON ResourceAccessPolicy' {..} =
-    object
-      (catMaybes
-         [ ("ResourceId" .=) <$> _rapResourceId
-         , ("Permission" .=) <$> _rapPermission
-         ])
+        toJSON ResourceAccessPolicy'{..}
+          = object
+              (catMaybes
+                 [("ResourceId" .=) <$> _rapResourceId,
+                  ("Permission" .=) <$> _rapPermission])
 
 -- | A container for resource data. The container takes only one of the following supported resource data types: ''LocalDeviceResourceData'', ''LocalVolumeResourceData'', ''SageMakerMachineLearningModelResourceData'', ''S3MachineLearningModelResourceData''.
 --
@@ -1425,6 +1449,7 @@ data ResourceDataContainer =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ResourceDataContainer' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1436,7 +1461,8 @@ data ResourceDataContainer =
 -- * 'rdcLocalVolumeResourceData' - Attributes that define the local volume resource.
 --
 -- * 'rdcLocalDeviceResourceData' - Attributes that define the local device resource.
-resourceDataContainer :: ResourceDataContainer
+resourceDataContainer
+    :: ResourceDataContainer
 resourceDataContainer =
   ResourceDataContainer'
     { _rdcS3MachineLearningModelResourceData = Nothing
@@ -1445,59 +1471,49 @@ resourceDataContainer =
     , _rdcLocalDeviceResourceData = Nothing
     }
 
+
 -- | Attributes that define an S3 machine learning resource.
-rdcS3MachineLearningModelResourceData ::
-     Lens' ResourceDataContainer (Maybe S3MachineLearningModelResourceData)
-rdcS3MachineLearningModelResourceData =
-  lens
-    _rdcS3MachineLearningModelResourceData
-    (\s a -> s {_rdcS3MachineLearningModelResourceData = a})
+rdcS3MachineLearningModelResourceData :: Lens' ResourceDataContainer (Maybe S3MachineLearningModelResourceData)
+rdcS3MachineLearningModelResourceData = lens _rdcS3MachineLearningModelResourceData (\ s a -> s{_rdcS3MachineLearningModelResourceData = a})
 
 -- | Attributes that define an SageMaker machine learning resource.
-rdcSageMakerMachineLearningModelResourceData ::
-     Lens' ResourceDataContainer (Maybe SageMakerMachineLearningModelResourceData)
-rdcSageMakerMachineLearningModelResourceData =
-  lens
-    _rdcSageMakerMachineLearningModelResourceData
-    (\s a -> s {_rdcSageMakerMachineLearningModelResourceData = a})
+rdcSageMakerMachineLearningModelResourceData :: Lens' ResourceDataContainer (Maybe SageMakerMachineLearningModelResourceData)
+rdcSageMakerMachineLearningModelResourceData = lens _rdcSageMakerMachineLearningModelResourceData (\ s a -> s{_rdcSageMakerMachineLearningModelResourceData = a})
 
 -- | Attributes that define the local volume resource.
-rdcLocalVolumeResourceData ::
-     Lens' ResourceDataContainer (Maybe LocalVolumeResourceData)
-rdcLocalVolumeResourceData =
-  lens _rdcLocalVolumeResourceData (\s a -> s {_rdcLocalVolumeResourceData = a})
+rdcLocalVolumeResourceData :: Lens' ResourceDataContainer (Maybe LocalVolumeResourceData)
+rdcLocalVolumeResourceData = lens _rdcLocalVolumeResourceData (\ s a -> s{_rdcLocalVolumeResourceData = a})
 
 -- | Attributes that define the local device resource.
-rdcLocalDeviceResourceData ::
-     Lens' ResourceDataContainer (Maybe LocalDeviceResourceData)
-rdcLocalDeviceResourceData =
-  lens _rdcLocalDeviceResourceData (\s a -> s {_rdcLocalDeviceResourceData = a})
+rdcLocalDeviceResourceData :: Lens' ResourceDataContainer (Maybe LocalDeviceResourceData)
+rdcLocalDeviceResourceData = lens _rdcLocalDeviceResourceData (\ s a -> s{_rdcLocalDeviceResourceData = a})
 
 instance FromJSON ResourceDataContainer where
-  parseJSON =
-    withObject
-      "ResourceDataContainer"
-      (\x ->
-         ResourceDataContainer' <$> (x .:? "S3MachineLearningModelResourceData") <*>
-         (x .:? "SageMakerMachineLearningModelResourceData") <*>
-         (x .:? "LocalVolumeResourceData") <*>
-         (x .:? "LocalDeviceResourceData"))
+        parseJSON
+          = withObject "ResourceDataContainer"
+              (\ x ->
+                 ResourceDataContainer' <$>
+                   (x .:? "S3MachineLearningModelResourceData") <*>
+                     (x .:? "SageMakerMachineLearningModelResourceData")
+                     <*> (x .:? "LocalVolumeResourceData")
+                     <*> (x .:? "LocalDeviceResourceData"))
 
-instance Hashable ResourceDataContainer
+instance Hashable ResourceDataContainer where
 
-instance NFData ResourceDataContainer
+instance NFData ResourceDataContainer where
 
 instance ToJSON ResourceDataContainer where
-  toJSON ResourceDataContainer' {..} =
-    object
-      (catMaybes
-         [ ("S3MachineLearningModelResourceData" .=) <$>
-           _rdcS3MachineLearningModelResourceData
-         , ("SageMakerMachineLearningModelResourceData" .=) <$>
-           _rdcSageMakerMachineLearningModelResourceData
-         , ("LocalVolumeResourceData" .=) <$> _rdcLocalVolumeResourceData
-         , ("LocalDeviceResourceData" .=) <$> _rdcLocalDeviceResourceData
-         ])
+        toJSON ResourceDataContainer'{..}
+          = object
+              (catMaybes
+                 [("S3MachineLearningModelResourceData" .=) <$>
+                    _rdcS3MachineLearningModelResourceData,
+                  ("SageMakerMachineLearningModelResourceData" .=) <$>
+                    _rdcSageMakerMachineLearningModelResourceData,
+                  ("LocalVolumeResourceData" .=) <$>
+                    _rdcLocalVolumeResourceData,
+                  ("LocalDeviceResourceData" .=) <$>
+                    _rdcLocalDeviceResourceData])
 
 -- | Information about a resource definition version.
 --
@@ -1508,32 +1524,36 @@ newtype ResourceDefinitionVersion =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ResourceDefinitionVersion' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'rdvResources' - A list of resources.
-resourceDefinitionVersion :: ResourceDefinitionVersion
+resourceDefinitionVersion
+    :: ResourceDefinitionVersion
 resourceDefinitionVersion = ResourceDefinitionVersion' {_rdvResources = Nothing}
+
 
 -- | A list of resources.
 rdvResources :: Lens' ResourceDefinitionVersion [Resource]
-rdvResources =
-  lens _rdvResources (\s a -> s {_rdvResources = a}) . _Default . _Coerce
+rdvResources = lens _rdvResources (\ s a -> s{_rdvResources = a}) . _Default . _Coerce
 
 instance FromJSON ResourceDefinitionVersion where
-  parseJSON =
-    withObject
-      "ResourceDefinitionVersion"
-      (\x -> ResourceDefinitionVersion' <$> (x .:? "Resources" .!= mempty))
+        parseJSON
+          = withObject "ResourceDefinitionVersion"
+              (\ x ->
+                 ResourceDefinitionVersion' <$>
+                   (x .:? "Resources" .!= mempty))
 
-instance Hashable ResourceDefinitionVersion
+instance Hashable ResourceDefinitionVersion where
 
-instance NFData ResourceDefinitionVersion
+instance NFData ResourceDefinitionVersion where
 
 instance ToJSON ResourceDefinitionVersion where
-  toJSON ResourceDefinitionVersion' {..} =
-    object (catMaybes [("Resources" .=) <$> _rdvResources])
+        toJSON ResourceDefinitionVersion'{..}
+          = object
+              (catMaybes [("Resources" .=) <$> _rdvResources])
 
 -- | Attributes that define an S3 machine learning resource.
 --
@@ -1545,6 +1565,7 @@ data S3MachineLearningModelResourceData =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'S3MachineLearningModelResourceData' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1552,39 +1573,42 @@ data S3MachineLearningModelResourceData =
 -- * 'smlmrdDestinationPath' - The absolute local path of the resource inside the Lambda environment.
 --
 -- * 'smlmrdS3URI' - The URI of the source model in an S3 bucket. The model package must be in tar.gz or .zip format.
-s3MachineLearningModelResourceData :: S3MachineLearningModelResourceData
+s3MachineLearningModelResourceData
+    :: S3MachineLearningModelResourceData
 s3MachineLearningModelResourceData =
   S3MachineLearningModelResourceData'
     {_smlmrdDestinationPath = Nothing, _smlmrdS3URI = Nothing}
 
+
 -- | The absolute local path of the resource inside the Lambda environment.
 smlmrdDestinationPath :: Lens' S3MachineLearningModelResourceData (Maybe Text)
-smlmrdDestinationPath =
-  lens _smlmrdDestinationPath (\s a -> s {_smlmrdDestinationPath = a})
+smlmrdDestinationPath = lens _smlmrdDestinationPath (\ s a -> s{_smlmrdDestinationPath = a})
 
 -- | The URI of the source model in an S3 bucket. The model package must be in tar.gz or .zip format.
 smlmrdS3URI :: Lens' S3MachineLearningModelResourceData (Maybe Text)
-smlmrdS3URI = lens _smlmrdS3URI (\s a -> s {_smlmrdS3URI = a})
+smlmrdS3URI = lens _smlmrdS3URI (\ s a -> s{_smlmrdS3URI = a})
 
-instance FromJSON S3MachineLearningModelResourceData where
-  parseJSON =
-    withObject
-      "S3MachineLearningModelResourceData"
-      (\x ->
-         S3MachineLearningModelResourceData' <$> (x .:? "DestinationPath") <*>
-         (x .:? "S3Uri"))
+instance FromJSON S3MachineLearningModelResourceData
+         where
+        parseJSON
+          = withObject "S3MachineLearningModelResourceData"
+              (\ x ->
+                 S3MachineLearningModelResourceData' <$>
+                   (x .:? "DestinationPath") <*> (x .:? "S3Uri"))
 
 instance Hashable S3MachineLearningModelResourceData
+         where
 
 instance NFData S3MachineLearningModelResourceData
+         where
 
-instance ToJSON S3MachineLearningModelResourceData where
-  toJSON S3MachineLearningModelResourceData' {..} =
-    object
-      (catMaybes
-         [ ("DestinationPath" .=) <$> _smlmrdDestinationPath
-         , ("S3Uri" .=) <$> _smlmrdS3URI
-         ])
+instance ToJSON S3MachineLearningModelResourceData
+         where
+        toJSON S3MachineLearningModelResourceData'{..}
+          = object
+              (catMaybes
+                 [("DestinationPath" .=) <$> _smlmrdDestinationPath,
+                  ("S3Uri" .=) <$> _smlmrdS3URI])
 
 -- | Attributes that define an SageMaker machine learning resource.
 --
@@ -1596,6 +1620,7 @@ data SageMakerMachineLearningModelResourceData =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SageMakerMachineLearningModelResourceData' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1603,44 +1628,48 @@ data SageMakerMachineLearningModelResourceData =
 -- * 'smmlmrdSageMakerJobARN' - The ARN of the SageMaker training job that represents the source model.
 --
 -- * 'smmlmrdDestinationPath' - The absolute local path of the resource inside the Lambda environment.
-sageMakerMachineLearningModelResourceData ::
-     SageMakerMachineLearningModelResourceData
+sageMakerMachineLearningModelResourceData
+    :: SageMakerMachineLearningModelResourceData
 sageMakerMachineLearningModelResourceData =
   SageMakerMachineLearningModelResourceData'
     {_smmlmrdSageMakerJobARN = Nothing, _smmlmrdDestinationPath = Nothing}
 
+
 -- | The ARN of the SageMaker training job that represents the source model.
-smmlmrdSageMakerJobARN ::
-     Lens' SageMakerMachineLearningModelResourceData (Maybe Text)
-smmlmrdSageMakerJobARN =
-  lens _smmlmrdSageMakerJobARN (\s a -> s {_smmlmrdSageMakerJobARN = a})
+smmlmrdSageMakerJobARN :: Lens' SageMakerMachineLearningModelResourceData (Maybe Text)
+smmlmrdSageMakerJobARN = lens _smmlmrdSageMakerJobARN (\ s a -> s{_smmlmrdSageMakerJobARN = a})
 
 -- | The absolute local path of the resource inside the Lambda environment.
-smmlmrdDestinationPath ::
-     Lens' SageMakerMachineLearningModelResourceData (Maybe Text)
-smmlmrdDestinationPath =
-  lens _smmlmrdDestinationPath (\s a -> s {_smmlmrdDestinationPath = a})
+smmlmrdDestinationPath :: Lens' SageMakerMachineLearningModelResourceData (Maybe Text)
+smmlmrdDestinationPath = lens _smmlmrdDestinationPath (\ s a -> s{_smmlmrdDestinationPath = a})
 
-instance FromJSON SageMakerMachineLearningModelResourceData where
-  parseJSON =
-    withObject
-      "SageMakerMachineLearningModelResourceData"
-      (\x ->
-         SageMakerMachineLearningModelResourceData' <$>
-         (x .:? "SageMakerJobArn") <*>
-         (x .:? "DestinationPath"))
+instance FromJSON
+           SageMakerMachineLearningModelResourceData
+         where
+        parseJSON
+          = withObject
+              "SageMakerMachineLearningModelResourceData"
+              (\ x ->
+                 SageMakerMachineLearningModelResourceData' <$>
+                   (x .:? "SageMakerJobArn") <*>
+                     (x .:? "DestinationPath"))
 
-instance Hashable SageMakerMachineLearningModelResourceData
+instance Hashable
+           SageMakerMachineLearningModelResourceData
+         where
 
-instance NFData SageMakerMachineLearningModelResourceData
+instance NFData
+           SageMakerMachineLearningModelResourceData
+         where
 
-instance ToJSON SageMakerMachineLearningModelResourceData where
-  toJSON SageMakerMachineLearningModelResourceData' {..} =
-    object
-      (catMaybes
-         [ ("SageMakerJobArn" .=) <$> _smmlmrdSageMakerJobARN
-         , ("DestinationPath" .=) <$> _smmlmrdDestinationPath
-         ])
+instance ToJSON
+           SageMakerMachineLearningModelResourceData
+         where
+        toJSON SageMakerMachineLearningModelResourceData'{..}
+          = object
+              (catMaybes
+                 [("SageMakerJobArn" .=) <$> _smmlmrdSageMakerJobARN,
+                  ("DestinationPath" .=) <$> _smmlmrdDestinationPath])
 
 -- | Information about a subscription.
 --
@@ -1654,6 +1683,7 @@ data Subscription =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Subscription' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1665,7 +1695,8 @@ data Subscription =
 -- * 'sId' - The id of the subscription.
 --
 -- * 'sTarget' - Where the message is sent to. Can be a thing ARN, a Lambda function ARN, 'cloud' (which represents the IoT cloud), or 'GGShadowService'.
-subscription :: Subscription
+subscription
+    :: Subscription
 subscription =
   Subscription'
     { _sSubject = Nothing
@@ -1674,44 +1705,43 @@ subscription =
     , _sTarget = Nothing
     }
 
+
 -- | The subject of the message.
 sSubject :: Lens' Subscription (Maybe Text)
-sSubject = lens _sSubject (\s a -> s {_sSubject = a})
+sSubject = lens _sSubject (\ s a -> s{_sSubject = a})
 
 -- | The source of the subscription. Can be a thing ARN, a Lambda function ARN, 'cloud' (which represents the IoT cloud), or 'GGShadowService'.
 sSource :: Lens' Subscription (Maybe Text)
-sSource = lens _sSource (\s a -> s {_sSource = a})
+sSource = lens _sSource (\ s a -> s{_sSource = a})
 
 -- | The id of the subscription.
 sId :: Lens' Subscription (Maybe Text)
-sId = lens _sId (\s a -> s {_sId = a})
+sId = lens _sId (\ s a -> s{_sId = a})
 
 -- | Where the message is sent to. Can be a thing ARN, a Lambda function ARN, 'cloud' (which represents the IoT cloud), or 'GGShadowService'.
 sTarget :: Lens' Subscription (Maybe Text)
-sTarget = lens _sTarget (\s a -> s {_sTarget = a})
+sTarget = lens _sTarget (\ s a -> s{_sTarget = a})
 
 instance FromJSON Subscription where
-  parseJSON =
-    withObject
-      "Subscription"
-      (\x ->
-         Subscription' <$> (x .:? "Subject") <*> (x .:? "Source") <*>
-         (x .:? "Id") <*>
-         (x .:? "Target"))
+        parseJSON
+          = withObject "Subscription"
+              (\ x ->
+                 Subscription' <$>
+                   (x .:? "Subject") <*> (x .:? "Source") <*>
+                     (x .:? "Id")
+                     <*> (x .:? "Target"))
 
-instance Hashable Subscription
+instance Hashable Subscription where
 
-instance NFData Subscription
+instance NFData Subscription where
 
 instance ToJSON Subscription where
-  toJSON Subscription' {..} =
-    object
-      (catMaybes
-         [ ("Subject" .=) <$> _sSubject
-         , ("Source" .=) <$> _sSource
-         , ("Id" .=) <$> _sId
-         , ("Target" .=) <$> _sTarget
-         ])
+        toJSON Subscription'{..}
+          = object
+              (catMaybes
+                 [("Subject" .=) <$> _sSubject,
+                  ("Source" .=) <$> _sSource, ("Id" .=) <$> _sId,
+                  ("Target" .=) <$> _sTarget])
 
 -- | Information about a subscription definition version.
 --
@@ -1722,35 +1752,38 @@ newtype SubscriptionDefinitionVersion =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SubscriptionDefinitionVersion' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'sdvSubscriptions' - A list of subscriptions.
-subscriptionDefinitionVersion :: SubscriptionDefinitionVersion
+subscriptionDefinitionVersion
+    :: SubscriptionDefinitionVersion
 subscriptionDefinitionVersion =
   SubscriptionDefinitionVersion' {_sdvSubscriptions = Nothing}
 
+
 -- | A list of subscriptions.
 sdvSubscriptions :: Lens' SubscriptionDefinitionVersion [Subscription]
-sdvSubscriptions =
-  lens _sdvSubscriptions (\s a -> s {_sdvSubscriptions = a}) .
-  _Default . _Coerce
+sdvSubscriptions = lens _sdvSubscriptions (\ s a -> s{_sdvSubscriptions = a}) . _Default . _Coerce
 
 instance FromJSON SubscriptionDefinitionVersion where
-  parseJSON =
-    withObject
-      "SubscriptionDefinitionVersion"
-      (\x ->
-         SubscriptionDefinitionVersion' <$> (x .:? "Subscriptions" .!= mempty))
+        parseJSON
+          = withObject "SubscriptionDefinitionVersion"
+              (\ x ->
+                 SubscriptionDefinitionVersion' <$>
+                   (x .:? "Subscriptions" .!= mempty))
 
-instance Hashable SubscriptionDefinitionVersion
+instance Hashable SubscriptionDefinitionVersion where
 
-instance NFData SubscriptionDefinitionVersion
+instance NFData SubscriptionDefinitionVersion where
 
 instance ToJSON SubscriptionDefinitionVersion where
-  toJSON SubscriptionDefinitionVersion' {..} =
-    object (catMaybes [("Subscriptions" .=) <$> _sdvSubscriptions])
+        toJSON SubscriptionDefinitionVersion'{..}
+          = object
+              (catMaybes
+                 [("Subscriptions" .=) <$> _sdvSubscriptions])
 
 -- | Information about a version.
 --
@@ -1764,6 +1797,7 @@ data VersionInformation =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'VersionInformation' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1775,7 +1809,8 @@ data VersionInformation =
 -- * 'viVersion' - The unique ID of the version.
 --
 -- * 'viId' - The ID of the version.
-versionInformation :: VersionInformation
+versionInformation
+    :: VersionInformation
 versionInformation =
   VersionInformation'
     { _viARN = Nothing
@@ -1784,32 +1819,32 @@ versionInformation =
     , _viId = Nothing
     }
 
+
 -- | The ARN of the version.
 viARN :: Lens' VersionInformation (Maybe Text)
-viARN = lens _viARN (\s a -> s {_viARN = a})
+viARN = lens _viARN (\ s a -> s{_viARN = a})
 
 -- | The time, in milliseconds since the epoch, when the version was created.
 viCreationTimestamp :: Lens' VersionInformation (Maybe Text)
-viCreationTimestamp =
-  lens _viCreationTimestamp (\s a -> s {_viCreationTimestamp = a})
+viCreationTimestamp = lens _viCreationTimestamp (\ s a -> s{_viCreationTimestamp = a})
 
 -- | The unique ID of the version.
 viVersion :: Lens' VersionInformation (Maybe Text)
-viVersion = lens _viVersion (\s a -> s {_viVersion = a})
+viVersion = lens _viVersion (\ s a -> s{_viVersion = a})
 
 -- | The ID of the version.
 viId :: Lens' VersionInformation (Maybe Text)
-viId = lens _viId (\s a -> s {_viId = a})
+viId = lens _viId (\ s a -> s{_viId = a})
 
 instance FromJSON VersionInformation where
-  parseJSON =
-    withObject
-      "VersionInformation"
-      (\x ->
-         VersionInformation' <$> (x .:? "Arn") <*> (x .:? "CreationTimestamp") <*>
-         (x .:? "Version") <*>
-         (x .:? "Id"))
+        parseJSON
+          = withObject "VersionInformation"
+              (\ x ->
+                 VersionInformation' <$>
+                   (x .:? "Arn") <*> (x .:? "CreationTimestamp") <*>
+                     (x .:? "Version")
+                     <*> (x .:? "Id"))
 
-instance Hashable VersionInformation
+instance Hashable VersionInformation where
 
-instance NFData VersionInformation
+instance NFData VersionInformation where

@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SDB
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -16,105 +17,143 @@
 -- Visit <http://aws.amazon.com/simpledb/ http://aws.amazon.com/simpledb/> for more information.
 --
 module Network.AWS.SDB
+    (
     -- * Service Configuration
-  ( sdb
+      sdb
+
     -- * Errors
     -- $errors
+
     -- ** InvalidNumberValueTests
-  , _InvalidNumberValueTests
+    , _InvalidNumberValueTests
+
     -- ** NoSuchDomain
-  , _NoSuchDomain
+    , _NoSuchDomain
+
     -- ** NumberSubmittedItemsExceeded
-  , _NumberSubmittedItemsExceeded
+    , _NumberSubmittedItemsExceeded
+
     -- ** AttributeDoesNotExist
-  , _AttributeDoesNotExist
+    , _AttributeDoesNotExist
+
     -- ** NumberDomainAttributesExceeded
-  , _NumberDomainAttributesExceeded
+    , _NumberDomainAttributesExceeded
+
     -- ** DuplicateItemName
-  , _DuplicateItemName
+    , _DuplicateItemName
+
     -- ** MissingParameter
-  , _MissingParameter
+    , _MissingParameter
+
     -- ** InvalidNextToken
-  , _InvalidNextToken
+    , _InvalidNextToken
+
     -- ** InvalidParameterValue
-  , _InvalidParameterValue
+    , _InvalidParameterValue
+
     -- ** NumberItemAttributesExceeded
-  , _NumberItemAttributesExceeded
+    , _NumberItemAttributesExceeded
+
     -- ** RequestTimeout
-  , _RequestTimeout
+    , _RequestTimeout
+
     -- ** TooManyRequestedAttributes
-  , _TooManyRequestedAttributes
+    , _TooManyRequestedAttributes
+
     -- ** InvalidNumberPredicates
-  , _InvalidNumberPredicates
+    , _InvalidNumberPredicates
+
     -- ** NumberDomainsExceeded
-  , _NumberDomainsExceeded
+    , _NumberDomainsExceeded
+
     -- ** NumberSubmittedAttributesExceeded
-  , _NumberSubmittedAttributesExceeded
+    , _NumberSubmittedAttributesExceeded
+
     -- ** NumberDomainBytesExceeded
-  , _NumberDomainBytesExceeded
+    , _NumberDomainBytesExceeded
+
     -- ** InvalidQueryExpression
-  , _InvalidQueryExpression
+    , _InvalidQueryExpression
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
+
     -- ** BatchDeleteAttributes
-  , module Network.AWS.SDB.BatchDeleteAttributes
+    , module Network.AWS.SDB.BatchDeleteAttributes
+
     -- ** BatchPutAttributes
-  , module Network.AWS.SDB.BatchPutAttributes
+    , module Network.AWS.SDB.BatchPutAttributes
+
     -- ** GetAttributes
-  , module Network.AWS.SDB.GetAttributes
+    , module Network.AWS.SDB.GetAttributes
+
     -- ** CreateDomain
-  , module Network.AWS.SDB.CreateDomain
+    , module Network.AWS.SDB.CreateDomain
+
     -- ** DomainMetadata
-  , module Network.AWS.SDB.DomainMetadata
+    , module Network.AWS.SDB.DomainMetadata
+
     -- ** Select (Paginated)
-  , module Network.AWS.SDB.Select
+    , module Network.AWS.SDB.Select
+
     -- ** DeleteAttributes
-  , module Network.AWS.SDB.DeleteAttributes
+    , module Network.AWS.SDB.DeleteAttributes
+
     -- ** PutAttributes
-  , module Network.AWS.SDB.PutAttributes
+    , module Network.AWS.SDB.PutAttributes
+
     -- ** DeleteDomain
-  , module Network.AWS.SDB.DeleteDomain
+    , module Network.AWS.SDB.DeleteDomain
+
     -- ** ListDomains (Paginated)
-  , module Network.AWS.SDB.ListDomains
+    , module Network.AWS.SDB.ListDomains
+
     -- * Types
+
     -- ** Attribute
-  , Attribute
-  , attribute
-  , aAlternateValueEncoding
-  , aAlternateNameEncoding
-  , aName
-  , aValue
+    , Attribute
+    , attribute
+    , aAlternateValueEncoding
+    , aAlternateNameEncoding
+    , aName
+    , aValue
+
     -- ** DeletableItem
-  , DeletableItem
-  , deletableItem
-  , diAttributes
-  , diName
+    , DeletableItem
+    , deletableItem
+    , diAttributes
+    , diName
+
     -- ** Item
-  , Item
-  , item
-  , iAlternateNameEncoding
-  , iName
-  , iAttributes
+    , Item
+    , item
+    , iAlternateNameEncoding
+    , iName
+    , iAttributes
+
     -- ** ReplaceableAttribute
-  , ReplaceableAttribute
-  , replaceableAttribute
-  , raReplace
-  , raName
-  , raValue
+    , ReplaceableAttribute
+    , replaceableAttribute
+    , raReplace
+    , raName
+    , raValue
+
     -- ** ReplaceableItem
-  , ReplaceableItem
-  , replaceableItem
-  , riName
-  , riAttributes
+    , ReplaceableItem
+    , replaceableItem
+    , riName
+    , riAttributes
+
     -- ** UpdateCondition
-  , UpdateCondition
-  , updateCondition
-  , ucExists
-  , ucValue
-  , ucName
-  ) where
+    , UpdateCondition
+    , updateCondition
+    , ucExists
+    , ucValue
+    , ucName
+    ) where
 
 import Network.AWS.SDB.BatchDeleteAttributes
 import Network.AWS.SDB.BatchPutAttributes
@@ -128,12 +167,14 @@ import Network.AWS.SDB.PutAttributes
 import Network.AWS.SDB.Select
 import Network.AWS.SDB.Types
 import Network.AWS.SDB.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'SDB'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -150,6 +191,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

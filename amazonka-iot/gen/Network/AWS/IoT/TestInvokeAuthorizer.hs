@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.IoT.TestInvokeAuthorizer
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,24 +22,26 @@
 --
 --
 module Network.AWS.IoT.TestInvokeAuthorizer
+    (
     -- * Creating a Request
-  ( testInvokeAuthorizer
-  , TestInvokeAuthorizer
+      testInvokeAuthorizer
+    , TestInvokeAuthorizer
     -- * Request Lenses
-  , tiaAuthorizerName
-  , tiaToken
-  , tiaTokenSignature
+    , tiaAuthorizerName
+    , tiaToken
+    , tiaTokenSignature
+
     -- * Destructuring the Response
-  , testInvokeAuthorizerResponse
-  , TestInvokeAuthorizerResponse
+    , testInvokeAuthorizerResponse
+    , TestInvokeAuthorizerResponse
     -- * Response Lenses
-  , tiarsPolicyDocuments
-  , tiarsPrincipalId
-  , tiarsDisconnectAfterInSeconds
-  , tiarsIsAuthenticated
-  , tiarsRefreshAfterInSeconds
-  , tiarsResponseStatus
-  ) where
+    , tiarsPolicyDocuments
+    , tiarsPrincipalId
+    , tiarsDisconnectAfterInSeconds
+    , tiarsIsAuthenticated
+    , tiarsRefreshAfterInSeconds
+    , tiarsResponseStatus
+    ) where
 
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
@@ -55,6 +59,7 @@ data TestInvokeAuthorizer =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'TestInvokeAuthorizer' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -64,11 +69,11 @@ data TestInvokeAuthorizer =
 -- * 'tiaToken' - The token returned by your custom authentication service.
 --
 -- * 'tiaTokenSignature' - The signature made with the token and your custom authentication service's private key.
-testInvokeAuthorizer ::
-     Text -- ^ 'tiaAuthorizerName'
-  -> Text -- ^ 'tiaToken'
-  -> Text -- ^ 'tiaTokenSignature'
-  -> TestInvokeAuthorizer
+testInvokeAuthorizer
+    :: Text -- ^ 'tiaAuthorizerName'
+    -> Text -- ^ 'tiaToken'
+    -> Text -- ^ 'tiaTokenSignature'
+    -> TestInvokeAuthorizer
 testInvokeAuthorizer pAuthorizerName_ pToken_ pTokenSignature_ =
   TestInvokeAuthorizer'
     { _tiaAuthorizerName = pAuthorizerName_
@@ -76,52 +81,55 @@ testInvokeAuthorizer pAuthorizerName_ pToken_ pTokenSignature_ =
     , _tiaTokenSignature = pTokenSignature_
     }
 
+
 -- | The custom authorizer name.
 tiaAuthorizerName :: Lens' TestInvokeAuthorizer Text
-tiaAuthorizerName = lens _tiaAuthorizerName (\s a -> s {_tiaAuthorizerName = a})
+tiaAuthorizerName = lens _tiaAuthorizerName (\ s a -> s{_tiaAuthorizerName = a})
 
 -- | The token returned by your custom authentication service.
 tiaToken :: Lens' TestInvokeAuthorizer Text
-tiaToken = lens _tiaToken (\s a -> s {_tiaToken = a})
+tiaToken = lens _tiaToken (\ s a -> s{_tiaToken = a})
 
 -- | The signature made with the token and your custom authentication service's private key.
 tiaTokenSignature :: Lens' TestInvokeAuthorizer Text
-tiaTokenSignature = lens _tiaTokenSignature (\s a -> s {_tiaTokenSignature = a})
+tiaTokenSignature = lens _tiaTokenSignature (\ s a -> s{_tiaTokenSignature = a})
 
 instance AWSRequest TestInvokeAuthorizer where
-  type Rs TestInvokeAuthorizer = TestInvokeAuthorizerResponse
-  request = postJSON ioT
-  response =
-    receiveJSON
-      (\s h x ->
-         TestInvokeAuthorizerResponse' <$> (x .?> "policyDocuments" .!@ mempty) <*>
-         (x .?> "principalId") <*>
-         (x .?> "disconnectAfterInSeconds") <*>
-         (x .?> "isAuthenticated") <*>
-         (x .?> "refreshAfterInSeconds") <*>
-         (pure (fromEnum s)))
+        type Rs TestInvokeAuthorizer =
+             TestInvokeAuthorizerResponse
+        request = postJSON ioT
+        response
+          = receiveJSON
+              (\ s h x ->
+                 TestInvokeAuthorizerResponse' <$>
+                   (x .?> "policyDocuments" .!@ mempty) <*>
+                     (x .?> "principalId")
+                     <*> (x .?> "disconnectAfterInSeconds")
+                     <*> (x .?> "isAuthenticated")
+                     <*> (x .?> "refreshAfterInSeconds")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable TestInvokeAuthorizer
+instance Hashable TestInvokeAuthorizer where
 
-instance NFData TestInvokeAuthorizer
+instance NFData TestInvokeAuthorizer where
 
 instance ToHeaders TestInvokeAuthorizer where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToJSON TestInvokeAuthorizer where
-  toJSON TestInvokeAuthorizer' {..} =
-    object
-      (catMaybes
-         [ Just ("token" .= _tiaToken)
-         , Just ("tokenSignature" .= _tiaTokenSignature)
-         ])
+        toJSON TestInvokeAuthorizer'{..}
+          = object
+              (catMaybes
+                 [Just ("token" .= _tiaToken),
+                  Just ("tokenSignature" .= _tiaTokenSignature)])
 
 instance ToPath TestInvokeAuthorizer where
-  toPath TestInvokeAuthorizer' {..} =
-    mconcat ["/authorizer/", toBS _tiaAuthorizerName, "/test"]
+        toPath TestInvokeAuthorizer'{..}
+          = mconcat
+              ["/authorizer/", toBS _tiaAuthorizerName, "/test"]
 
 instance ToQuery TestInvokeAuthorizer where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'testInvokeAuthorizerResponse' smart constructor.
 data TestInvokeAuthorizerResponse =
@@ -134,6 +142,7 @@ data TestInvokeAuthorizerResponse =
     , _tiarsResponseStatus           :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'TestInvokeAuthorizerResponse' with the minimum fields required to make a request.
 --
@@ -150,9 +159,9 @@ data TestInvokeAuthorizerResponse =
 -- * 'tiarsRefreshAfterInSeconds' - The number of seconds after which the temporary credentials are refreshed.
 --
 -- * 'tiarsResponseStatus' - -- | The response status code.
-testInvokeAuthorizerResponse ::
-     Int -- ^ 'tiarsResponseStatus'
-  -> TestInvokeAuthorizerResponse
+testInvokeAuthorizerResponse
+    :: Int -- ^ 'tiarsResponseStatus'
+    -> TestInvokeAuthorizerResponse
 testInvokeAuthorizerResponse pResponseStatus_ =
   TestInvokeAuthorizerResponse'
     { _tiarsPolicyDocuments = Nothing
@@ -163,36 +172,29 @@ testInvokeAuthorizerResponse pResponseStatus_ =
     , _tiarsResponseStatus = pResponseStatus_
     }
 
+
 -- | IAM policy documents.
 tiarsPolicyDocuments :: Lens' TestInvokeAuthorizerResponse [Text]
-tiarsPolicyDocuments =
-  lens _tiarsPolicyDocuments (\s a -> s {_tiarsPolicyDocuments = a}) .
-  _Default . _Coerce
+tiarsPolicyDocuments = lens _tiarsPolicyDocuments (\ s a -> s{_tiarsPolicyDocuments = a}) . _Default . _Coerce
 
 -- | The principal ID.
 tiarsPrincipalId :: Lens' TestInvokeAuthorizerResponse (Maybe Text)
-tiarsPrincipalId = lens _tiarsPrincipalId (\s a -> s {_tiarsPrincipalId = a})
+tiarsPrincipalId = lens _tiarsPrincipalId (\ s a -> s{_tiarsPrincipalId = a})
 
 -- | The number of seconds after which the connection is terminated.
 tiarsDisconnectAfterInSeconds :: Lens' TestInvokeAuthorizerResponse (Maybe Int)
-tiarsDisconnectAfterInSeconds =
-  lens
-    _tiarsDisconnectAfterInSeconds
-    (\s a -> s {_tiarsDisconnectAfterInSeconds = a})
+tiarsDisconnectAfterInSeconds = lens _tiarsDisconnectAfterInSeconds (\ s a -> s{_tiarsDisconnectAfterInSeconds = a})
 
 -- | True if the token is authenticated, otherwise false.
 tiarsIsAuthenticated :: Lens' TestInvokeAuthorizerResponse (Maybe Bool)
-tiarsIsAuthenticated =
-  lens _tiarsIsAuthenticated (\s a -> s {_tiarsIsAuthenticated = a})
+tiarsIsAuthenticated = lens _tiarsIsAuthenticated (\ s a -> s{_tiarsIsAuthenticated = a})
 
 -- | The number of seconds after which the temporary credentials are refreshed.
 tiarsRefreshAfterInSeconds :: Lens' TestInvokeAuthorizerResponse (Maybe Int)
-tiarsRefreshAfterInSeconds =
-  lens _tiarsRefreshAfterInSeconds (\s a -> s {_tiarsRefreshAfterInSeconds = a})
+tiarsRefreshAfterInSeconds = lens _tiarsRefreshAfterInSeconds (\ s a -> s{_tiarsRefreshAfterInSeconds = a})
 
 -- | -- | The response status code.
 tiarsResponseStatus :: Lens' TestInvokeAuthorizerResponse Int
-tiarsResponseStatus =
-  lens _tiarsResponseStatus (\s a -> s {_tiarsResponseStatus = a})
+tiarsResponseStatus = lens _tiarsResponseStatus (\ s a -> s{_tiarsResponseStatus = a})
 
-instance NFData TestInvokeAuthorizerResponse
+instance NFData TestInvokeAuthorizerResponse where

@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.IoTData.UpdateThingShadow
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,19 +24,21 @@
 -- For more information, see <http://docs.aws.amazon.com/iot/latest/developerguide/API_UpdateThingShadow.html UpdateThingShadow> in the /AWS IoT Developer Guide/ .
 --
 module Network.AWS.IoTData.UpdateThingShadow
+    (
     -- * Creating a Request
-  ( updateThingShadow
-  , UpdateThingShadow
+      updateThingShadow
+    , UpdateThingShadow
     -- * Request Lenses
-  , utsThingName
-  , utsPayload
+    , utsThingName
+    , utsPayload
+
     -- * Destructuring the Response
-  , updateThingShadowResponse
-  , UpdateThingShadowResponse
+    , updateThingShadowResponse
+    , UpdateThingShadowResponse
     -- * Response Lenses
-  , utsrsPayload
-  , utsrsResponseStatus
-  ) where
+    , utsrsPayload
+    , utsrsResponseStatus
+    ) where
 
 import Network.AWS.IoTData.Types
 import Network.AWS.IoTData.Types.Product
@@ -55,6 +59,7 @@ data UpdateThingShadow =
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateThingShadow' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -62,45 +67,47 @@ data UpdateThingShadow =
 -- * 'utsThingName' - The name of the thing.
 --
 -- * 'utsPayload' - The state information, in JSON format.
-updateThingShadow ::
-     Text -- ^ 'utsThingName'
-  -> ByteString -- ^ 'utsPayload'
-  -> UpdateThingShadow
+updateThingShadow
+    :: Text -- ^ 'utsThingName'
+    -> ByteString -- ^ 'utsPayload'
+    -> UpdateThingShadow
 updateThingShadow pThingName_ pPayload_ =
   UpdateThingShadow' {_utsThingName = pThingName_, _utsPayload = pPayload_}
 
+
 -- | The name of the thing.
 utsThingName :: Lens' UpdateThingShadow Text
-utsThingName = lens _utsThingName (\s a -> s {_utsThingName = a})
+utsThingName = lens _utsThingName (\ s a -> s{_utsThingName = a})
 
 -- | The state information, in JSON format.
 utsPayload :: Lens' UpdateThingShadow ByteString
-utsPayload = lens _utsPayload (\s a -> s {_utsPayload = a})
+utsPayload = lens _utsPayload (\ s a -> s{_utsPayload = a})
 
 instance AWSRequest UpdateThingShadow where
-  type Rs UpdateThingShadow = UpdateThingShadowResponse
-  request = postBody ioTData
-  response =
-    receiveBytes
-      (\s h x ->
-         UpdateThingShadowResponse' <$> (pure (Just x)) <*> (pure (fromEnum s)))
+        type Rs UpdateThingShadow = UpdateThingShadowResponse
+        request = postBody ioTData
+        response
+          = receiveBytes
+              (\ s h x ->
+                 UpdateThingShadowResponse' <$>
+                   (pure (Just x)) <*> (pure (fromEnum s)))
 
-instance Hashable UpdateThingShadow
+instance Hashable UpdateThingShadow where
 
-instance NFData UpdateThingShadow
+instance NFData UpdateThingShadow where
 
 instance ToBody UpdateThingShadow where
-  toBody = toBody . _utsPayload
+        toBody = toBody . _utsPayload
 
 instance ToHeaders UpdateThingShadow where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath UpdateThingShadow where
-  toPath UpdateThingShadow' {..} =
-    mconcat ["/things/", toBS _utsThingName, "/shadow"]
+        toPath UpdateThingShadow'{..}
+          = mconcat ["/things/", toBS _utsThingName, "/shadow"]
 
 instance ToQuery UpdateThingShadow where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | The output from the UpdateThingShadow operation.
 --
@@ -114,6 +121,7 @@ data UpdateThingShadowResponse =
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateThingShadowResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -121,20 +129,20 @@ data UpdateThingShadowResponse =
 -- * 'utsrsPayload' - The state information, in JSON format.
 --
 -- * 'utsrsResponseStatus' - -- | The response status code.
-updateThingShadowResponse ::
-     Int -- ^ 'utsrsResponseStatus'
-  -> UpdateThingShadowResponse
+updateThingShadowResponse
+    :: Int -- ^ 'utsrsResponseStatus'
+    -> UpdateThingShadowResponse
 updateThingShadowResponse pResponseStatus_ =
   UpdateThingShadowResponse'
     {_utsrsPayload = Nothing, _utsrsResponseStatus = pResponseStatus_}
 
+
 -- | The state information, in JSON format.
 utsrsPayload :: Lens' UpdateThingShadowResponse (Maybe ByteString)
-utsrsPayload = lens _utsrsPayload (\s a -> s {_utsrsPayload = a})
+utsrsPayload = lens _utsrsPayload (\ s a -> s{_utsrsPayload = a})
 
 -- | -- | The response status code.
 utsrsResponseStatus :: Lens' UpdateThingShadowResponse Int
-utsrsResponseStatus =
-  lens _utsrsResponseStatus (\s a -> s {_utsrsResponseStatus = a})
+utsrsResponseStatus = lens _utsrsResponseStatus (\ s a -> s{_utsrsResponseStatus = a})
 
-instance NFData UpdateThingShadowResponse
+instance NFData UpdateThingShadowResponse where

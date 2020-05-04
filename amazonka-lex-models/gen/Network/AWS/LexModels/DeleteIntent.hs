@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.LexModels.DeleteIntent
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,15 +26,17 @@
 -- This operation requires permission for the @lex:DeleteIntent@ action.
 --
 module Network.AWS.LexModels.DeleteIntent
+    (
     -- * Creating a Request
-  ( deleteIntent
-  , DeleteIntent
+      deleteIntent
+    , DeleteIntent
     -- * Request Lenses
-  , diName
+    , diName
+
     -- * Destructuring the Response
-  , deleteIntentResponse
-  , DeleteIntentResponse
-  ) where
+    , deleteIntentResponse
+    , DeleteIntentResponse
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.LexModels.Types
@@ -48,48 +52,56 @@ newtype DeleteIntent =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteIntent' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'diName' - The name of the intent. The name is case sensitive.
-deleteIntent ::
-     Text -- ^ 'diName'
-  -> DeleteIntent
+deleteIntent
+    :: Text -- ^ 'diName'
+    -> DeleteIntent
 deleteIntent pName_ = DeleteIntent' {_diName = pName_}
+
 
 -- | The name of the intent. The name is case sensitive.
 diName :: Lens' DeleteIntent Text
-diName = lens _diName (\s a -> s {_diName = a})
+diName = lens _diName (\ s a -> s{_diName = a})
 
 instance AWSRequest DeleteIntent where
-  type Rs DeleteIntent = DeleteIntentResponse
-  request = delete lexModels
-  response = receiveNull DeleteIntentResponse'
+        type Rs DeleteIntent = DeleteIntentResponse
+        request = delete lexModels
+        response = receiveNull DeleteIntentResponse'
 
-instance Hashable DeleteIntent
+instance Hashable DeleteIntent where
 
-instance NFData DeleteIntent
+instance NFData DeleteIntent where
 
 instance ToHeaders DeleteIntent where
-  toHeaders =
-    const
-      (mconcat ["Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)])
+        toHeaders
+          = const
+              (mconcat
+                 ["Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToPath DeleteIntent where
-  toPath DeleteIntent' {..} = mconcat ["/intents/", toBS _diName]
+        toPath DeleteIntent'{..}
+          = mconcat ["/intents/", toBS _diName]
 
 instance ToQuery DeleteIntent where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'deleteIntentResponse' smart constructor.
 data DeleteIntentResponse =
   DeleteIntentResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteIntentResponse' with the minimum fields required to make a request.
 --
-deleteIntentResponse :: DeleteIntentResponse
+deleteIntentResponse
+    :: DeleteIntentResponse
 deleteIntentResponse = DeleteIntentResponse'
 
-instance NFData DeleteIntentResponse
+
+instance NFData DeleteIntentResponse where

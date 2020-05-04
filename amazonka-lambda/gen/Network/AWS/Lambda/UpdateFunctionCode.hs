@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Lambda.UpdateFunctionCode
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,42 +26,44 @@
 -- This operation requires permission for the @lambda:UpdateFunctionCode@ action.
 --
 module Network.AWS.Lambda.UpdateFunctionCode
+    (
     -- * Creating a Request
-  ( updateFunctionCode
-  , UpdateFunctionCode
+      updateFunctionCode
+    , UpdateFunctionCode
     -- * Request Lenses
-  , uS3ObjectVersion
-  , uS3Key
-  , uZipFile
-  , uS3Bucket
-  , uDryRun
-  , uRevisionId
-  , uPublish
-  , uFunctionName
+    , uS3ObjectVersion
+    , uS3Key
+    , uZipFile
+    , uS3Bucket
+    , uDryRun
+    , uRevisionId
+    , uPublish
+    , uFunctionName
+
     -- * Destructuring the Response
-  , functionConfiguration
-  , FunctionConfiguration
+    , functionConfiguration
+    , FunctionConfiguration
     -- * Response Lenses
-  , fcMemorySize
-  , fcRuntime
-  , fcFunctionARN
-  , fcKMSKeyARN
-  , fcEnvironment
-  , fcDeadLetterConfig
-  , fcRole
-  , fcVPCConfig
-  , fcVersion
-  , fcFunctionName
-  , fcCodeSize
-  , fcHandler
-  , fcTimeout
-  , fcLastModified
-  , fcCodeSha256
-  , fcTracingConfig
-  , fcDescription
-  , fcRevisionId
-  , fcMasterARN
-  ) where
+    , fcMemorySize
+    , fcRuntime
+    , fcFunctionARN
+    , fcKMSKeyARN
+    , fcEnvironment
+    , fcDeadLetterConfig
+    , fcRole
+    , fcVPCConfig
+    , fcVersion
+    , fcFunctionName
+    , fcCodeSize
+    , fcHandler
+    , fcTimeout
+    , fcLastModified
+    , fcCodeSha256
+    , fcTracingConfig
+    , fcDescription
+    , fcRevisionId
+    , fcMasterARN
+    ) where
 
 import Network.AWS.Lambda.Types
 import Network.AWS.Lambda.Types.Product
@@ -86,6 +90,7 @@ data UpdateFunctionCode =
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateFunctionCode' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -105,9 +110,9 @@ data UpdateFunctionCode =
 -- * 'uPublish' - This boolean parameter can be used to request AWS Lambda to update the Lambda function and publish a version as an atomic operation.
 --
 -- * 'uFunctionName' - The existing Lambda function name whose code you want to replace. You can specify a function name (for example, @Thumbnail@ ) or you can specify Amazon Resource Name (ARN) of the function (for example, @arn:aws:lambda:us-west-2:account-id:function:ThumbNail@ ). AWS Lambda also allows you to specify a partial ARN (for example, @account-id:Thumbnail@ ). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.
-updateFunctionCode ::
-     Text -- ^ 'uFunctionName'
-  -> UpdateFunctionCode
+updateFunctionCode
+    :: Text -- ^ 'uFunctionName'
+    -> UpdateFunctionCode
 updateFunctionCode pFunctionName_ =
   UpdateFunctionCode'
     { _uS3ObjectVersion = Nothing
@@ -120,67 +125,68 @@ updateFunctionCode pFunctionName_ =
     , _uFunctionName = pFunctionName_
     }
 
+
 -- | The Amazon S3 object (the deployment package) version you want to upload.
 uS3ObjectVersion :: Lens' UpdateFunctionCode (Maybe Text)
-uS3ObjectVersion = lens _uS3ObjectVersion (\s a -> s {_uS3ObjectVersion = a})
+uS3ObjectVersion = lens _uS3ObjectVersion (\ s a -> s{_uS3ObjectVersion = a})
 
 -- | The Amazon S3 object (the deployment package) key name you want to upload.
 uS3Key :: Lens' UpdateFunctionCode (Maybe Text)
-uS3Key = lens _uS3Key (\s a -> s {_uS3Key = a})
+uS3Key = lens _uS3Key (\ s a -> s{_uS3Key = a})
 
 -- | The contents of your zip file containing your deployment package. If you are using the web API directly, the contents of the zip file must be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the encoding for you. For more information about creating a .zip file, see <http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html Execution Permissions> . -- /Note:/ This 'Lens' automatically encodes and decodes Base64 data. The underlying isomorphism will encode to Base64 representation during serialisation, and decode from Base64 representation during deserialisation. This 'Lens' accepts and returns only raw unencoded data.
 uZipFile :: Lens' UpdateFunctionCode (Maybe ByteString)
-uZipFile =
-  lens _uZipFile (\s a -> s {_uZipFile = a}) . mapping (_Sensitive . _Base64)
+uZipFile = lens _uZipFile (\ s a -> s{_uZipFile = a}) . mapping (_Sensitive . _Base64)
 
 -- | Amazon S3 bucket name where the .zip file containing your deployment package is stored. This bucket must reside in the same AWS Region where you are creating the Lambda function.
 uS3Bucket :: Lens' UpdateFunctionCode (Maybe Text)
-uS3Bucket = lens _uS3Bucket (\s a -> s {_uS3Bucket = a})
+uS3Bucket = lens _uS3Bucket (\ s a -> s{_uS3Bucket = a})
 
 -- | This boolean parameter can be used to test your request to AWS Lambda to update the Lambda function and publish a version as an atomic operation. It will do all necessary computation and validation of your code but will not upload it or a publish a version. Each time this operation is invoked, the @CodeSha256@ hash value of the provided code will also be computed and returned in the response.
 uDryRun :: Lens' UpdateFunctionCode (Maybe Bool)
-uDryRun = lens _uDryRun (\s a -> s {_uDryRun = a})
+uDryRun = lens _uDryRun (\ s a -> s{_uDryRun = a})
 
 -- | An optional value you can use to ensure you are updating the latest update of the function version or alias. If the @RevisionID@ you pass doesn't match the latest @RevisionId@ of the function or alias, it will fail with an error message, advising you to retrieve the latest function version or alias @RevisionID@ using either or .
 uRevisionId :: Lens' UpdateFunctionCode (Maybe Text)
-uRevisionId = lens _uRevisionId (\s a -> s {_uRevisionId = a})
+uRevisionId = lens _uRevisionId (\ s a -> s{_uRevisionId = a})
 
 -- | This boolean parameter can be used to request AWS Lambda to update the Lambda function and publish a version as an atomic operation.
 uPublish :: Lens' UpdateFunctionCode (Maybe Bool)
-uPublish = lens _uPublish (\s a -> s {_uPublish = a})
+uPublish = lens _uPublish (\ s a -> s{_uPublish = a})
 
 -- | The existing Lambda function name whose code you want to replace. You can specify a function name (for example, @Thumbnail@ ) or you can specify Amazon Resource Name (ARN) of the function (for example, @arn:aws:lambda:us-west-2:account-id:function:ThumbNail@ ). AWS Lambda also allows you to specify a partial ARN (for example, @account-id:Thumbnail@ ). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.
 uFunctionName :: Lens' UpdateFunctionCode Text
-uFunctionName = lens _uFunctionName (\s a -> s {_uFunctionName = a})
+uFunctionName = lens _uFunctionName (\ s a -> s{_uFunctionName = a})
 
 instance AWSRequest UpdateFunctionCode where
-  type Rs UpdateFunctionCode = FunctionConfiguration
-  request = putJSON lambda
-  response = receiveJSON (\s h x -> eitherParseJSON x)
+        type Rs UpdateFunctionCode = FunctionConfiguration
+        request = putJSON lambda
+        response = receiveJSON (\ s h x -> eitherParseJSON x)
 
-instance Hashable UpdateFunctionCode
+instance Hashable UpdateFunctionCode where
 
-instance NFData UpdateFunctionCode
+instance NFData UpdateFunctionCode where
 
 instance ToHeaders UpdateFunctionCode where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToJSON UpdateFunctionCode where
-  toJSON UpdateFunctionCode' {..} =
-    object
-      (catMaybes
-         [ ("S3ObjectVersion" .=) <$> _uS3ObjectVersion
-         , ("S3Key" .=) <$> _uS3Key
-         , ("ZipFile" .=) <$> _uZipFile
-         , ("S3Bucket" .=) <$> _uS3Bucket
-         , ("DryRun" .=) <$> _uDryRun
-         , ("RevisionId" .=) <$> _uRevisionId
-         , ("Publish" .=) <$> _uPublish
-         ])
+        toJSON UpdateFunctionCode'{..}
+          = object
+              (catMaybes
+                 [("S3ObjectVersion" .=) <$> _uS3ObjectVersion,
+                  ("S3Key" .=) <$> _uS3Key,
+                  ("ZipFile" .=) <$> _uZipFile,
+                  ("S3Bucket" .=) <$> _uS3Bucket,
+                  ("DryRun" .=) <$> _uDryRun,
+                  ("RevisionId" .=) <$> _uRevisionId,
+                  ("Publish" .=) <$> _uPublish])
 
 instance ToPath UpdateFunctionCode where
-  toPath UpdateFunctionCode' {..} =
-    mconcat ["/2015-03-31/functions/", toBS _uFunctionName, "/code"]
+        toPath UpdateFunctionCode'{..}
+          = mconcat
+              ["/2015-03-31/functions/", toBS _uFunctionName,
+               "/code"]
 
 instance ToQuery UpdateFunctionCode where
-  toQuery = const mempty
+        toQuery = const mempty

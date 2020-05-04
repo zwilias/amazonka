@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Transcribe.UpdateVocabulary
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,23 +22,25 @@
 --
 --
 module Network.AWS.Transcribe.UpdateVocabulary
+    (
     -- * Creating a Request
-  ( updateVocabulary
-  , UpdateVocabulary
+      updateVocabulary
+    , UpdateVocabulary
     -- * Request Lenses
-  , uvVocabularyName
-  , uvLanguageCode
-  , uvPhrases
+    , uvVocabularyName
+    , uvLanguageCode
+    , uvPhrases
+
     -- * Destructuring the Response
-  , updateVocabularyResponse
-  , UpdateVocabularyResponse
+    , updateVocabularyResponse
+    , UpdateVocabularyResponse
     -- * Response Lenses
-  , uvrsLanguageCode
-  , uvrsVocabularyName
-  , uvrsLastModifiedTime
-  , uvrsVocabularyState
-  , uvrsResponseStatus
-  ) where
+    , uvrsLanguageCode
+    , uvrsVocabularyName
+    , uvrsLastModifiedTime
+    , uvrsVocabularyState
+    , uvrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -54,6 +58,7 @@ data UpdateVocabulary =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateVocabulary' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -63,10 +68,10 @@ data UpdateVocabulary =
 -- * 'uvLanguageCode' - The language code of the vocabulary entries.
 --
 -- * 'uvPhrases' - An array of strings containing the vocabulary entries.
-updateVocabulary ::
-     Text -- ^ 'uvVocabularyName'
-  -> LanguageCode -- ^ 'uvLanguageCode'
-  -> UpdateVocabulary
+updateVocabulary
+    :: Text -- ^ 'uvVocabularyName'
+    -> LanguageCode -- ^ 'uvLanguageCode'
+    -> UpdateVocabulary
 updateVocabulary pVocabularyName_ pLanguageCode_ =
   UpdateVocabulary'
     { _uvVocabularyName = pVocabularyName_
@@ -74,56 +79,57 @@ updateVocabulary pVocabularyName_ pLanguageCode_ =
     , _uvPhrases = mempty
     }
 
+
 -- | The name of the vocabulary to update. The name is case-sensitive.
 uvVocabularyName :: Lens' UpdateVocabulary Text
-uvVocabularyName = lens _uvVocabularyName (\s a -> s {_uvVocabularyName = a})
+uvVocabularyName = lens _uvVocabularyName (\ s a -> s{_uvVocabularyName = a})
 
 -- | The language code of the vocabulary entries.
 uvLanguageCode :: Lens' UpdateVocabulary LanguageCode
-uvLanguageCode = lens _uvLanguageCode (\s a -> s {_uvLanguageCode = a})
+uvLanguageCode = lens _uvLanguageCode (\ s a -> s{_uvLanguageCode = a})
 
 -- | An array of strings containing the vocabulary entries.
 uvPhrases :: Lens' UpdateVocabulary [Text]
-uvPhrases = lens _uvPhrases (\s a -> s {_uvPhrases = a}) . _Coerce
+uvPhrases = lens _uvPhrases (\ s a -> s{_uvPhrases = a}) . _Coerce
 
 instance AWSRequest UpdateVocabulary where
-  type Rs UpdateVocabulary = UpdateVocabularyResponse
-  request = postJSON transcribe
-  response =
-    receiveJSON
-      (\s h x ->
-         UpdateVocabularyResponse' <$> (x .?> "LanguageCode") <*>
-         (x .?> "VocabularyName") <*>
-         (x .?> "LastModifiedTime") <*>
-         (x .?> "VocabularyState") <*>
-         (pure (fromEnum s)))
+        type Rs UpdateVocabulary = UpdateVocabularyResponse
+        request = postJSON transcribe
+        response
+          = receiveJSON
+              (\ s h x ->
+                 UpdateVocabularyResponse' <$>
+                   (x .?> "LanguageCode") <*> (x .?> "VocabularyName")
+                     <*> (x .?> "LastModifiedTime")
+                     <*> (x .?> "VocabularyState")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable UpdateVocabulary
+instance Hashable UpdateVocabulary where
 
-instance NFData UpdateVocabulary
+instance NFData UpdateVocabulary where
 
 instance ToHeaders UpdateVocabulary where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("Transcribe.UpdateVocabulary" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("Transcribe.UpdateVocabulary" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON UpdateVocabulary where
-  toJSON UpdateVocabulary' {..} =
-    object
-      (catMaybes
-         [ Just ("VocabularyName" .= _uvVocabularyName)
-         , Just ("LanguageCode" .= _uvLanguageCode)
-         , Just ("Phrases" .= _uvPhrases)
-         ])
+        toJSON UpdateVocabulary'{..}
+          = object
+              (catMaybes
+                 [Just ("VocabularyName" .= _uvVocabularyName),
+                  Just ("LanguageCode" .= _uvLanguageCode),
+                  Just ("Phrases" .= _uvPhrases)])
 
 instance ToPath UpdateVocabulary where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery UpdateVocabulary where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'updateVocabularyResponse' smart constructor.
 data UpdateVocabularyResponse =
@@ -135,6 +141,7 @@ data UpdateVocabularyResponse =
     , _uvrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'UpdateVocabularyResponse' with the minimum fields required to make a request.
 --
@@ -149,9 +156,9 @@ data UpdateVocabularyResponse =
 -- * 'uvrsVocabularyState' - The processing state of the vocabulary. When the @VocabularyState@ field contains @READY@ the vocabulary is ready to be used in a @StartTranscriptionJob@ request.
 --
 -- * 'uvrsResponseStatus' - -- | The response status code.
-updateVocabularyResponse ::
-     Int -- ^ 'uvrsResponseStatus'
-  -> UpdateVocabularyResponse
+updateVocabularyResponse
+    :: Int -- ^ 'uvrsResponseStatus'
+    -> UpdateVocabularyResponse
 updateVocabularyResponse pResponseStatus_ =
   UpdateVocabularyResponse'
     { _uvrsLanguageCode = Nothing
@@ -161,29 +168,25 @@ updateVocabularyResponse pResponseStatus_ =
     , _uvrsResponseStatus = pResponseStatus_
     }
 
+
 -- | The language code of the vocabulary entries.
 uvrsLanguageCode :: Lens' UpdateVocabularyResponse (Maybe LanguageCode)
-uvrsLanguageCode = lens _uvrsLanguageCode (\s a -> s {_uvrsLanguageCode = a})
+uvrsLanguageCode = lens _uvrsLanguageCode (\ s a -> s{_uvrsLanguageCode = a})
 
 -- | The name of the vocabulary that was updated.
 uvrsVocabularyName :: Lens' UpdateVocabularyResponse (Maybe Text)
-uvrsVocabularyName =
-  lens _uvrsVocabularyName (\s a -> s {_uvrsVocabularyName = a})
+uvrsVocabularyName = lens _uvrsVocabularyName (\ s a -> s{_uvrsVocabularyName = a})
 
 -- | The date and time that the vocabulary was updated.
 uvrsLastModifiedTime :: Lens' UpdateVocabularyResponse (Maybe UTCTime)
-uvrsLastModifiedTime =
-  lens _uvrsLastModifiedTime (\s a -> s {_uvrsLastModifiedTime = a}) .
-  mapping _Time
+uvrsLastModifiedTime = lens _uvrsLastModifiedTime (\ s a -> s{_uvrsLastModifiedTime = a}) . mapping _Time
 
 -- | The processing state of the vocabulary. When the @VocabularyState@ field contains @READY@ the vocabulary is ready to be used in a @StartTranscriptionJob@ request.
 uvrsVocabularyState :: Lens' UpdateVocabularyResponse (Maybe VocabularyState)
-uvrsVocabularyState =
-  lens _uvrsVocabularyState (\s a -> s {_uvrsVocabularyState = a})
+uvrsVocabularyState = lens _uvrsVocabularyState (\ s a -> s{_uvrsVocabularyState = a})
 
 -- | -- | The response status code.
 uvrsResponseStatus :: Lens' UpdateVocabularyResponse Int
-uvrsResponseStatus =
-  lens _uvrsResponseStatus (\s a -> s {_uvrsResponseStatus = a})
+uvrsResponseStatus = lens _uvrsResponseStatus (\ s a -> s{_uvrsResponseStatus = a})
 
-instance NFData UpdateVocabularyResponse
+instance NFData UpdateVocabularyResponse where

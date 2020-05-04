@@ -2,9 +2,11 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CloudWatch.Types.Sum
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -17,46 +19,104 @@ module Network.AWS.CloudWatch.Types.Sum where
 
 import Network.AWS.Prelude
 
+data AlarmType
+  = CompositeAlarm
+  | MetricAlarm
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText AlarmType where
+    parser = takeLowerText >>= \case
+        "compositealarm" -> pure CompositeAlarm
+        "metricalarm" -> pure MetricAlarm
+        e -> fromTextError $ "Failure parsing AlarmType from value: '" <> e
+           <> "'. Accepted values: compositealarm, metricalarm"
+
+instance ToText AlarmType where
+    toText = \case
+        CompositeAlarm -> "CompositeAlarm"
+        MetricAlarm -> "MetricAlarm"
+
+instance Hashable     AlarmType
+instance NFData       AlarmType
+instance ToByteString AlarmType
+instance ToQuery      AlarmType
+instance ToHeader     AlarmType
+
+instance FromXML AlarmType where
+    parseXML = parseXMLText "AlarmType"
+
+data AnomalyDetectorStateValue
+  = PendingTraining
+  | Trained
+  | TrainedInsufficientData
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+
+instance FromText AnomalyDetectorStateValue where
+    parser = takeLowerText >>= \case
+        "pending_training" -> pure PendingTraining
+        "trained" -> pure Trained
+        "trained_insufficient_data" -> pure TrainedInsufficientData
+        e -> fromTextError $ "Failure parsing AnomalyDetectorStateValue from value: '" <> e
+           <> "'. Accepted values: pending_training, trained, trained_insufficient_data"
+
+instance ToText AnomalyDetectorStateValue where
+    toText = \case
+        PendingTraining -> "PENDING_TRAINING"
+        Trained -> "TRAINED"
+        TrainedInsufficientData -> "TRAINED_INSUFFICIENT_DATA"
+
+instance Hashable     AnomalyDetectorStateValue
+instance NFData       AnomalyDetectorStateValue
+instance ToByteString AnomalyDetectorStateValue
+instance ToQuery      AnomalyDetectorStateValue
+instance ToHeader     AnomalyDetectorStateValue
+
+instance FromXML AnomalyDetectorStateValue where
+    parseXML = parseXMLText "AnomalyDetectorStateValue"
+
 data ComparisonOperator
   = GreaterThanOrEqualToThreshold
   | GreaterThanThreshold
+  | GreaterThanUpperThreshold
+  | LessThanLowerOrGreaterThanUpperThreshold
+  | LessThanLowerThreshold
   | LessThanOrEqualToThreshold
   | LessThanThreshold
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
+
 instance FromText ComparisonOperator where
-  parser =
-    takeLowerText >>= \case
-      "greaterthanorequaltothreshold" -> pure GreaterThanOrEqualToThreshold
-      "greaterthanthreshold" -> pure GreaterThanThreshold
-      "lessthanorequaltothreshold" -> pure LessThanOrEqualToThreshold
-      "lessthanthreshold" -> pure LessThanThreshold
-      e ->
-        fromTextError $
-        "Failure parsing ComparisonOperator from value: '" <>
-        e <>
-        "'. Accepted values: greaterthanorequaltothreshold, greaterthanthreshold, lessthanorequaltothreshold, lessthanthreshold"
+    parser = takeLowerText >>= \case
+        "greaterthanorequaltothreshold" -> pure GreaterThanOrEqualToThreshold
+        "greaterthanthreshold" -> pure GreaterThanThreshold
+        "greaterthanupperthreshold" -> pure GreaterThanUpperThreshold
+        "lessthanlowerorgreaterthanupperthreshold" -> pure LessThanLowerOrGreaterThanUpperThreshold
+        "lessthanlowerthreshold" -> pure LessThanLowerThreshold
+        "lessthanorequaltothreshold" -> pure LessThanOrEqualToThreshold
+        "lessthanthreshold" -> pure LessThanThreshold
+        e -> fromTextError $ "Failure parsing ComparisonOperator from value: '" <> e
+           <> "'. Accepted values: greaterthanorequaltothreshold, greaterthanthreshold, greaterthanupperthreshold, lessthanlowerorgreaterthanupperthreshold, lessthanlowerthreshold, lessthanorequaltothreshold, lessthanthreshold"
 
 instance ToText ComparisonOperator where
-  toText =
-    \case
-      GreaterThanOrEqualToThreshold -> "GreaterThanOrEqualToThreshold"
-      GreaterThanThreshold -> "GreaterThanThreshold"
-      LessThanOrEqualToThreshold -> "LessThanOrEqualToThreshold"
-      LessThanThreshold -> "LessThanThreshold"
+    toText = \case
+        GreaterThanOrEqualToThreshold -> "GreaterThanOrEqualToThreshold"
+        GreaterThanThreshold -> "GreaterThanThreshold"
+        GreaterThanUpperThreshold -> "GreaterThanUpperThreshold"
+        LessThanLowerOrGreaterThanUpperThreshold -> "LessThanLowerOrGreaterThanUpperThreshold"
+        LessThanLowerThreshold -> "LessThanLowerThreshold"
+        LessThanOrEqualToThreshold -> "LessThanOrEqualToThreshold"
+        LessThanThreshold -> "LessThanThreshold"
 
-instance Hashable ComparisonOperator
-
-instance NFData ComparisonOperator
-
+instance Hashable     ComparisonOperator
+instance NFData       ComparisonOperator
 instance ToByteString ComparisonOperator
-
-instance ToQuery ComparisonOperator
-
-instance ToHeader ComparisonOperator
+instance ToQuery      ComparisonOperator
+instance ToHeader     ComparisonOperator
 
 instance FromXML ComparisonOperator where
-  parseXML = parseXMLText "ComparisonOperator"
+    parseXML = parseXMLText "ComparisonOperator"
 
 data HistoryItemType
   = Action
@@ -64,67 +124,53 @@ data HistoryItemType
   | StateUpdate
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
+
 instance FromText HistoryItemType where
-  parser =
-    takeLowerText >>= \case
-      "action" -> pure Action
-      "configurationupdate" -> pure ConfigurationUpdate
-      "stateupdate" -> pure StateUpdate
-      e ->
-        fromTextError $
-        "Failure parsing HistoryItemType from value: '" <>
-        e <> "'. Accepted values: action, configurationupdate, stateupdate"
+    parser = takeLowerText >>= \case
+        "action" -> pure Action
+        "configurationupdate" -> pure ConfigurationUpdate
+        "stateupdate" -> pure StateUpdate
+        e -> fromTextError $ "Failure parsing HistoryItemType from value: '" <> e
+           <> "'. Accepted values: action, configurationupdate, stateupdate"
 
 instance ToText HistoryItemType where
-  toText =
-    \case
-      Action -> "Action"
-      ConfigurationUpdate -> "ConfigurationUpdate"
-      StateUpdate -> "StateUpdate"
+    toText = \case
+        Action -> "Action"
+        ConfigurationUpdate -> "ConfigurationUpdate"
+        StateUpdate -> "StateUpdate"
 
-instance Hashable HistoryItemType
-
-instance NFData HistoryItemType
-
+instance Hashable     HistoryItemType
+instance NFData       HistoryItemType
 instance ToByteString HistoryItemType
-
-instance ToQuery HistoryItemType
-
-instance ToHeader HistoryItemType
+instance ToQuery      HistoryItemType
+instance ToHeader     HistoryItemType
 
 instance FromXML HistoryItemType where
-  parseXML = parseXMLText "HistoryItemType"
+    parseXML = parseXMLText "HistoryItemType"
 
 data ScanBy
   = TimestampAscending
   | TimestampDescending
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
+
 instance FromText ScanBy where
-  parser =
-    takeLowerText >>= \case
-      "timestampascending" -> pure TimestampAscending
-      "timestampdescending" -> pure TimestampDescending
-      e ->
-        fromTextError $
-        "Failure parsing ScanBy from value: '" <>
-        e <> "'. Accepted values: timestampascending, timestampdescending"
+    parser = takeLowerText >>= \case
+        "timestampascending" -> pure TimestampAscending
+        "timestampdescending" -> pure TimestampDescending
+        e -> fromTextError $ "Failure parsing ScanBy from value: '" <> e
+           <> "'. Accepted values: timestampascending, timestampdescending"
 
 instance ToText ScanBy where
-  toText =
-    \case
-      TimestampAscending -> "TimestampAscending"
-      TimestampDescending -> "TimestampDescending"
+    toText = \case
+        TimestampAscending -> "TimestampAscending"
+        TimestampDescending -> "TimestampDescending"
 
-instance Hashable ScanBy
-
-instance NFData ScanBy
-
+instance Hashable     ScanBy
+instance NFData       ScanBy
 instance ToByteString ScanBy
-
-instance ToQuery ScanBy
-
-instance ToHeader ScanBy
+instance ToQuery      ScanBy
+instance ToHeader     ScanBy
 
 data StandardUnit
   = Bits
@@ -156,85 +202,77 @@ data StandardUnit
   | TerabytesSecond
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
+
 instance FromText StandardUnit where
-  parser =
-    takeLowerText >>= \case
-      "bits" -> pure Bits
-      "bits/second" -> pure BitsSecond
-      "bytes" -> pure Bytes
-      "bytes/second" -> pure BytesSecond
-      "count" -> pure Count
-      "count/second" -> pure CountSecond
-      "gigabits" -> pure Gigabits
-      "gigabits/second" -> pure GigabitsSecond
-      "gigabytes" -> pure Gigabytes
-      "gigabytes/second" -> pure GigabytesSecond
-      "kilobits" -> pure Kilobits
-      "kilobits/second" -> pure KilobitsSecond
-      "kilobytes" -> pure Kilobytes
-      "kilobytes/second" -> pure KilobytesSecond
-      "megabits" -> pure Megabits
-      "megabits/second" -> pure MegabitsSecond
-      "megabytes" -> pure Megabytes
-      "megabytes/second" -> pure MegabytesSecond
-      "microseconds" -> pure Microseconds
-      "milliseconds" -> pure Milliseconds
-      "none" -> pure None
-      "percent" -> pure Percent
-      "seconds" -> pure Seconds
-      "terabits" -> pure Terabits
-      "terabits/second" -> pure TerabitsSecond
-      "terabytes" -> pure Terabytes
-      "terabytes/second" -> pure TerabytesSecond
-      e ->
-        fromTextError $
-        "Failure parsing StandardUnit from value: '" <>
-        e <>
-        "'. Accepted values: bits, bits/second, bytes, bytes/second, count, count/second, gigabits, gigabits/second, gigabytes, gigabytes/second, kilobits, kilobits/second, kilobytes, kilobytes/second, megabits, megabits/second, megabytes, megabytes/second, microseconds, milliseconds, none, percent, seconds, terabits, terabits/second, terabytes, terabytes/second"
+    parser = takeLowerText >>= \case
+        "bits" -> pure Bits
+        "bits/second" -> pure BitsSecond
+        "bytes" -> pure Bytes
+        "bytes/second" -> pure BytesSecond
+        "count" -> pure Count
+        "count/second" -> pure CountSecond
+        "gigabits" -> pure Gigabits
+        "gigabits/second" -> pure GigabitsSecond
+        "gigabytes" -> pure Gigabytes
+        "gigabytes/second" -> pure GigabytesSecond
+        "kilobits" -> pure Kilobits
+        "kilobits/second" -> pure KilobitsSecond
+        "kilobytes" -> pure Kilobytes
+        "kilobytes/second" -> pure KilobytesSecond
+        "megabits" -> pure Megabits
+        "megabits/second" -> pure MegabitsSecond
+        "megabytes" -> pure Megabytes
+        "megabytes/second" -> pure MegabytesSecond
+        "microseconds" -> pure Microseconds
+        "milliseconds" -> pure Milliseconds
+        "none" -> pure None
+        "percent" -> pure Percent
+        "seconds" -> pure Seconds
+        "terabits" -> pure Terabits
+        "terabits/second" -> pure TerabitsSecond
+        "terabytes" -> pure Terabytes
+        "terabytes/second" -> pure TerabytesSecond
+        e -> fromTextError $ "Failure parsing StandardUnit from value: '" <> e
+           <> "'. Accepted values: bits, bits/second, bytes, bytes/second, count, count/second, gigabits, gigabits/second, gigabytes, gigabytes/second, kilobits, kilobits/second, kilobytes, kilobytes/second, megabits, megabits/second, megabytes, megabytes/second, microseconds, milliseconds, none, percent, seconds, terabits, terabits/second, terabytes, terabytes/second"
 
 instance ToText StandardUnit where
-  toText =
-    \case
-      Bits -> "Bits"
-      BitsSecond -> "Bits/Second"
-      Bytes -> "Bytes"
-      BytesSecond -> "Bytes/Second"
-      Count -> "Count"
-      CountSecond -> "Count/Second"
-      Gigabits -> "Gigabits"
-      GigabitsSecond -> "Gigabits/Second"
-      Gigabytes -> "Gigabytes"
-      GigabytesSecond -> "Gigabytes/Second"
-      Kilobits -> "Kilobits"
-      KilobitsSecond -> "Kilobits/Second"
-      Kilobytes -> "Kilobytes"
-      KilobytesSecond -> "Kilobytes/Second"
-      Megabits -> "Megabits"
-      MegabitsSecond -> "Megabits/Second"
-      Megabytes -> "Megabytes"
-      MegabytesSecond -> "Megabytes/Second"
-      Microseconds -> "Microseconds"
-      Milliseconds -> "Milliseconds"
-      None -> "None"
-      Percent -> "Percent"
-      Seconds -> "Seconds"
-      Terabits -> "Terabits"
-      TerabitsSecond -> "Terabits/Second"
-      Terabytes -> "Terabytes"
-      TerabytesSecond -> "Terabytes/Second"
+    toText = \case
+        Bits -> "Bits"
+        BitsSecond -> "Bits/Second"
+        Bytes -> "Bytes"
+        BytesSecond -> "Bytes/Second"
+        Count -> "Count"
+        CountSecond -> "Count/Second"
+        Gigabits -> "Gigabits"
+        GigabitsSecond -> "Gigabits/Second"
+        Gigabytes -> "Gigabytes"
+        GigabytesSecond -> "Gigabytes/Second"
+        Kilobits -> "Kilobits"
+        KilobitsSecond -> "Kilobits/Second"
+        Kilobytes -> "Kilobytes"
+        KilobytesSecond -> "Kilobytes/Second"
+        Megabits -> "Megabits"
+        MegabitsSecond -> "Megabits/Second"
+        Megabytes -> "Megabytes"
+        MegabytesSecond -> "Megabytes/Second"
+        Microseconds -> "Microseconds"
+        Milliseconds -> "Milliseconds"
+        None -> "None"
+        Percent -> "Percent"
+        Seconds -> "Seconds"
+        Terabits -> "Terabits"
+        TerabitsSecond -> "Terabits/Second"
+        Terabytes -> "Terabytes"
+        TerabytesSecond -> "Terabytes/Second"
 
-instance Hashable StandardUnit
-
-instance NFData StandardUnit
-
+instance Hashable     StandardUnit
+instance NFData       StandardUnit
 instance ToByteString StandardUnit
-
-instance ToQuery StandardUnit
-
-instance ToHeader StandardUnit
+instance ToQuery      StandardUnit
+instance ToHeader     StandardUnit
 
 instance FromXML StandardUnit where
-  parseXML = parseXMLText "StandardUnit"
+    parseXML = parseXMLText "StandardUnit"
 
 data StateValue
   = Alarm
@@ -242,36 +280,29 @@ data StateValue
   | OK
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
+
 instance FromText StateValue where
-  parser =
-    takeLowerText >>= \case
-      "alarm" -> pure Alarm
-      "insufficient_data" -> pure InsufficientData
-      "ok" -> pure OK
-      e ->
-        fromTextError $
-        "Failure parsing StateValue from value: '" <>
-        e <> "'. Accepted values: alarm, insufficient_data, ok"
+    parser = takeLowerText >>= \case
+        "alarm" -> pure Alarm
+        "insufficient_data" -> pure InsufficientData
+        "ok" -> pure OK
+        e -> fromTextError $ "Failure parsing StateValue from value: '" <> e
+           <> "'. Accepted values: alarm, insufficient_data, ok"
 
 instance ToText StateValue where
-  toText =
-    \case
-      Alarm -> "ALARM"
-      InsufficientData -> "INSUFFICIENT_DATA"
-      OK -> "OK"
+    toText = \case
+        Alarm -> "ALARM"
+        InsufficientData -> "INSUFFICIENT_DATA"
+        OK -> "OK"
 
-instance Hashable StateValue
-
-instance NFData StateValue
-
+instance Hashable     StateValue
+instance NFData       StateValue
 instance ToByteString StateValue
-
-instance ToQuery StateValue
-
-instance ToHeader StateValue
+instance ToQuery      StateValue
+instance ToHeader     StateValue
 
 instance FromXML StateValue where
-  parseXML = parseXMLText "StateValue"
+    parseXML = parseXMLText "StateValue"
 
 data Statistic
   = Average
@@ -281,40 +312,33 @@ data Statistic
   | Sum
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
+
 instance FromText Statistic where
-  parser =
-    takeLowerText >>= \case
-      "average" -> pure Average
-      "maximum" -> pure Maximum
-      "minimum" -> pure Minimum
-      "samplecount" -> pure SampleCount
-      "sum" -> pure Sum
-      e ->
-        fromTextError $
-        "Failure parsing Statistic from value: '" <>
-        e <> "'. Accepted values: average, maximum, minimum, samplecount, sum"
+    parser = takeLowerText >>= \case
+        "average" -> pure Average
+        "maximum" -> pure Maximum
+        "minimum" -> pure Minimum
+        "samplecount" -> pure SampleCount
+        "sum" -> pure Sum
+        e -> fromTextError $ "Failure parsing Statistic from value: '" <> e
+           <> "'. Accepted values: average, maximum, minimum, samplecount, sum"
 
 instance ToText Statistic where
-  toText =
-    \case
-      Average -> "Average"
-      Maximum -> "Maximum"
-      Minimum -> "Minimum"
-      SampleCount -> "SampleCount"
-      Sum -> "Sum"
+    toText = \case
+        Average -> "Average"
+        Maximum -> "Maximum"
+        Minimum -> "Minimum"
+        SampleCount -> "SampleCount"
+        Sum -> "Sum"
 
-instance Hashable Statistic
-
-instance NFData Statistic
-
+instance Hashable     Statistic
+instance NFData       Statistic
 instance ToByteString Statistic
-
-instance ToQuery Statistic
-
-instance ToHeader Statistic
+instance ToQuery      Statistic
+instance ToHeader     Statistic
 
 instance FromXML Statistic where
-  parseXML = parseXMLText "Statistic"
+    parseXML = parseXMLText "Statistic"
 
 data StatusCode
   = Complete
@@ -322,33 +346,26 @@ data StatusCode
   | PartialData
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
+
 instance FromText StatusCode where
-  parser =
-    takeLowerText >>= \case
-      "complete" -> pure Complete
-      "internalerror" -> pure InternalError
-      "partialdata" -> pure PartialData
-      e ->
-        fromTextError $
-        "Failure parsing StatusCode from value: '" <>
-        e <> "'. Accepted values: complete, internalerror, partialdata"
+    parser = takeLowerText >>= \case
+        "complete" -> pure Complete
+        "internalerror" -> pure InternalError
+        "partialdata" -> pure PartialData
+        e -> fromTextError $ "Failure parsing StatusCode from value: '" <> e
+           <> "'. Accepted values: complete, internalerror, partialdata"
 
 instance ToText StatusCode where
-  toText =
-    \case
-      Complete -> "Complete"
-      InternalError -> "InternalError"
-      PartialData -> "PartialData"
+    toText = \case
+        Complete -> "Complete"
+        InternalError -> "InternalError"
+        PartialData -> "PartialData"
 
-instance Hashable StatusCode
-
-instance NFData StatusCode
-
+instance Hashable     StatusCode
+instance NFData       StatusCode
 instance ToByteString StatusCode
-
-instance ToQuery StatusCode
-
-instance ToHeader StatusCode
+instance ToQuery      StatusCode
+instance ToHeader     StatusCode
 
 instance FromXML StatusCode where
-  parseXML = parseXMLText "StatusCode"
+    parseXML = parseXMLText "StatusCode"

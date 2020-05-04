@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Organizations.EnableAllFeatures
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -30,16 +32,18 @@
 -- This operation can be called only from the organization's master account.
 --
 module Network.AWS.Organizations.EnableAllFeatures
+    (
     -- * Creating a Request
-  ( enableAllFeatures
-  , EnableAllFeatures
+      enableAllFeatures
+    , EnableAllFeatures
+
     -- * Destructuring the Response
-  , enableAllFeaturesResponse
-  , EnableAllFeaturesResponse
+    , enableAllFeaturesResponse
+    , EnableAllFeaturesResponse
     -- * Response Lenses
-  , eafrsHandshake
-  , eafrsResponseStatus
-  ) where
+    , eafrsHandshake
+    , eafrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
@@ -53,41 +57,45 @@ data EnableAllFeatures =
   EnableAllFeatures'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'EnableAllFeatures' with the minimum fields required to make a request.
 --
-enableAllFeatures :: EnableAllFeatures
+enableAllFeatures
+    :: EnableAllFeatures
 enableAllFeatures = EnableAllFeatures'
 
+
 instance AWSRequest EnableAllFeatures where
-  type Rs EnableAllFeatures = EnableAllFeaturesResponse
-  request = postJSON organizations
-  response =
-    receiveJSON
-      (\s h x ->
-         EnableAllFeaturesResponse' <$> (x .?> "Handshake") <*>
-         (pure (fromEnum s)))
+        type Rs EnableAllFeatures = EnableAllFeaturesResponse
+        request = postJSON organizations
+        response
+          = receiveJSON
+              (\ s h x ->
+                 EnableAllFeaturesResponse' <$>
+                   (x .?> "Handshake") <*> (pure (fromEnum s)))
 
-instance Hashable EnableAllFeatures
+instance Hashable EnableAllFeatures where
 
-instance NFData EnableAllFeatures
+instance NFData EnableAllFeatures where
 
 instance ToHeaders EnableAllFeatures where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AWSOrganizationsV20161128.EnableAllFeatures" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWSOrganizationsV20161128.EnableAllFeatures" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON EnableAllFeatures where
-  toJSON = const (Object mempty)
+        toJSON = const (Object mempty)
 
 instance ToPath EnableAllFeatures where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery EnableAllFeatures where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'enableAllFeaturesResponse' smart constructor.
 data EnableAllFeaturesResponse =
@@ -97,6 +105,7 @@ data EnableAllFeaturesResponse =
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'EnableAllFeaturesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -104,20 +113,20 @@ data EnableAllFeaturesResponse =
 -- * 'eafrsHandshake' - A structure that contains details about the handshake created to support this request to enable all features in the organization.
 --
 -- * 'eafrsResponseStatus' - -- | The response status code.
-enableAllFeaturesResponse ::
-     Int -- ^ 'eafrsResponseStatus'
-  -> EnableAllFeaturesResponse
+enableAllFeaturesResponse
+    :: Int -- ^ 'eafrsResponseStatus'
+    -> EnableAllFeaturesResponse
 enableAllFeaturesResponse pResponseStatus_ =
   EnableAllFeaturesResponse'
     {_eafrsHandshake = Nothing, _eafrsResponseStatus = pResponseStatus_}
 
+
 -- | A structure that contains details about the handshake created to support this request to enable all features in the organization.
 eafrsHandshake :: Lens' EnableAllFeaturesResponse (Maybe Handshake)
-eafrsHandshake = lens _eafrsHandshake (\s a -> s {_eafrsHandshake = a})
+eafrsHandshake = lens _eafrsHandshake (\ s a -> s{_eafrsHandshake = a})
 
 -- | -- | The response status code.
 eafrsResponseStatus :: Lens' EnableAllFeaturesResponse Int
-eafrsResponseStatus =
-  lens _eafrsResponseStatus (\s a -> s {_eafrsResponseStatus = a})
+eafrsResponseStatus = lens _eafrsResponseStatus (\ s a -> s{_eafrsResponseStatus = a})
 
-instance NFData EnableAllFeaturesResponse
+instance NFData EnableAllFeaturesResponse where

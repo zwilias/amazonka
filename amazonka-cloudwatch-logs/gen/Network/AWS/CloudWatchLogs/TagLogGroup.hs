@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CloudWatchLogs.TagLogGroup
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,16 +26,18 @@
 -- For more information about tags, see <http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/log-group-tagging.html Tag Log Groups in Amazon CloudWatch Logs> in the /Amazon CloudWatch Logs User Guide/ .
 --
 module Network.AWS.CloudWatchLogs.TagLogGroup
+    (
     -- * Creating a Request
-  ( tagLogGroup
-  , TagLogGroup
+      tagLogGroup
+    , TagLogGroup
     -- * Request Lenses
-  , tlgLogGroupName
-  , tlgTags
+    , tlgLogGroupName
+    , tlgTags
+
     -- * Destructuring the Response
-  , tagLogGroupResponse
-  , TagLogGroupResponse
-  ) where
+    , tagLogGroupResponse
+    , TagLogGroupResponse
+    ) where
 
 import Network.AWS.CloudWatchLogs.Types
 import Network.AWS.CloudWatchLogs.Types.Product
@@ -50,6 +54,7 @@ data TagLogGroup =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'TagLogGroup' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -57,57 +62,63 @@ data TagLogGroup =
 -- * 'tlgLogGroupName' - The name of the log group.
 --
 -- * 'tlgTags' - The key-value pairs to use for the tags.
-tagLogGroup ::
-     Text -- ^ 'tlgLogGroupName'
-  -> TagLogGroup
+tagLogGroup
+    :: Text -- ^ 'tlgLogGroupName'
+    -> TagLogGroup
 tagLogGroup pLogGroupName_ =
   TagLogGroup' {_tlgLogGroupName = pLogGroupName_, _tlgTags = mempty}
 
+
 -- | The name of the log group.
 tlgLogGroupName :: Lens' TagLogGroup Text
-tlgLogGroupName = lens _tlgLogGroupName (\s a -> s {_tlgLogGroupName = a})
+tlgLogGroupName = lens _tlgLogGroupName (\ s a -> s{_tlgLogGroupName = a})
 
 -- | The key-value pairs to use for the tags.
 tlgTags :: Lens' TagLogGroup (HashMap Text Text)
-tlgTags = lens _tlgTags (\s a -> s {_tlgTags = a}) . _Map
+tlgTags = lens _tlgTags (\ s a -> s{_tlgTags = a}) . _Map
 
 instance AWSRequest TagLogGroup where
-  type Rs TagLogGroup = TagLogGroupResponse
-  request = postJSON cloudWatchLogs
-  response = receiveNull TagLogGroupResponse'
+        type Rs TagLogGroup = TagLogGroupResponse
+        request = postJSON cloudWatchLogs
+        response = receiveNull TagLogGroupResponse'
 
-instance Hashable TagLogGroup
+instance Hashable TagLogGroup where
 
-instance NFData TagLogGroup
+instance NFData TagLogGroup where
 
 instance ToHeaders TagLogGroup where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("Logs_20140328.TagLogGroup" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("Logs_20140328.TagLogGroup" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON TagLogGroup where
-  toJSON TagLogGroup' {..} =
-    object
-      (catMaybes
-         [Just ("logGroupName" .= _tlgLogGroupName), Just ("tags" .= _tlgTags)])
+        toJSON TagLogGroup'{..}
+          = object
+              (catMaybes
+                 [Just ("logGroupName" .= _tlgLogGroupName),
+                  Just ("tags" .= _tlgTags)])
 
 instance ToPath TagLogGroup where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery TagLogGroup where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'tagLogGroupResponse' smart constructor.
 data TagLogGroupResponse =
   TagLogGroupResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'TagLogGroupResponse' with the minimum fields required to make a request.
 --
-tagLogGroupResponse :: TagLogGroupResponse
+tagLogGroupResponse
+    :: TagLogGroupResponse
 tagLogGroupResponse = TagLogGroupResponse'
 
-instance NFData TagLogGroupResponse
+
+instance NFData TagLogGroupResponse where

@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Discovery.DeleteApplications
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,17 +22,19 @@
 --
 --
 module Network.AWS.Discovery.DeleteApplications
+    (
     -- * Creating a Request
-  ( deleteApplications
-  , DeleteApplications
+      deleteApplications
+    , DeleteApplications
     -- * Request Lenses
-  , daConfigurationIds
+    , daConfigurationIds
+
     -- * Destructuring the Response
-  , deleteApplicationsResponse
-  , DeleteApplicationsResponse
+    , deleteApplicationsResponse
+    , DeleteApplicationsResponse
     -- * Response Lenses
-  , darsResponseStatus
-  ) where
+    , darsResponseStatus
+    ) where
 
 import Network.AWS.Discovery.Types
 import Network.AWS.Discovery.Types.Product
@@ -46,47 +50,55 @@ newtype DeleteApplications =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteApplications' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'daConfigurationIds' - Configuration ID of an application to be deleted.
-deleteApplications :: DeleteApplications
+deleteApplications
+    :: DeleteApplications
 deleteApplications = DeleteApplications' {_daConfigurationIds = mempty}
+
 
 -- | Configuration ID of an application to be deleted.
 daConfigurationIds :: Lens' DeleteApplications [Text]
-daConfigurationIds =
-  lens _daConfigurationIds (\s a -> s {_daConfigurationIds = a}) . _Coerce
+daConfigurationIds = lens _daConfigurationIds (\ s a -> s{_daConfigurationIds = a}) . _Coerce
 
 instance AWSRequest DeleteApplications where
-  type Rs DeleteApplications = DeleteApplicationsResponse
-  request = postJSON discovery
-  response =
-    receiveEmpty (\s h x -> DeleteApplicationsResponse' <$> (pure (fromEnum s)))
+        type Rs DeleteApplications =
+             DeleteApplicationsResponse
+        request = postJSON discovery
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 DeleteApplicationsResponse' <$> (pure (fromEnum s)))
 
-instance Hashable DeleteApplications
+instance Hashable DeleteApplications where
 
-instance NFData DeleteApplications
+instance NFData DeleteApplications where
 
 instance ToHeaders DeleteApplications where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AWSPoseidonService_V2015_11_01.DeleteApplications" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWSPoseidonService_V2015_11_01.DeleteApplications"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DeleteApplications where
-  toJSON DeleteApplications' {..} =
-    object (catMaybes [Just ("configurationIds" .= _daConfigurationIds)])
+        toJSON DeleteApplications'{..}
+          = object
+              (catMaybes
+                 [Just ("configurationIds" .= _daConfigurationIds)])
 
 instance ToPath DeleteApplications where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DeleteApplications where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'deleteApplicationsResponse' smart constructor.
 newtype DeleteApplicationsResponse =
@@ -95,20 +107,21 @@ newtype DeleteApplicationsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteApplicationsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'darsResponseStatus' - -- | The response status code.
-deleteApplicationsResponse ::
-     Int -- ^ 'darsResponseStatus'
-  -> DeleteApplicationsResponse
+deleteApplicationsResponse
+    :: Int -- ^ 'darsResponseStatus'
+    -> DeleteApplicationsResponse
 deleteApplicationsResponse pResponseStatus_ =
   DeleteApplicationsResponse' {_darsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 darsResponseStatus :: Lens' DeleteApplicationsResponse Int
-darsResponseStatus =
-  lens _darsResponseStatus (\s a -> s {_darsResponseStatus = a})
+darsResponseStatus = lens _darsResponseStatus (\ s a -> s{_darsResponseStatus = a})
 
-instance NFData DeleteApplicationsResponse
+instance NFData DeleteApplicationsResponse where

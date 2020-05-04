@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.WorkDocs.DescribeComments
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,23 +22,25 @@
 --
 --
 module Network.AWS.WorkDocs.DescribeComments
+    (
     -- * Creating a Request
-  ( describeComments
-  , DescribeComments
+      describeComments
+    , DescribeComments
     -- * Request Lenses
-  , dcAuthenticationToken
-  , dcMarker
-  , dcLimit
-  , dcDocumentId
-  , dcVersionId
+    , dcAuthenticationToken
+    , dcMarker
+    , dcLimit
+    , dcDocumentId
+    , dcVersionId
+
     -- * Destructuring the Response
-  , describeCommentsResponse
-  , DescribeCommentsResponse
+    , describeCommentsResponse
+    , DescribeCommentsResponse
     -- * Response Lenses
-  , dcrsMarker
-  , dcrsComments
-  , dcrsResponseStatus
-  ) where
+    , dcrsMarker
+    , dcrsComments
+    , dcrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -56,6 +60,7 @@ data DescribeComments =
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeComments' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -69,10 +74,10 @@ data DescribeComments =
 -- * 'dcDocumentId' - The ID of the document.
 --
 -- * 'dcVersionId' - The ID of the document version.
-describeComments ::
-     Text -- ^ 'dcDocumentId'
-  -> Text -- ^ 'dcVersionId'
-  -> DescribeComments
+describeComments
+    :: Text -- ^ 'dcDocumentId'
+    -> Text -- ^ 'dcVersionId'
+    -> DescribeComments
 describeComments pDocumentId_ pVersionId_ =
   DescribeComments'
     { _dcAuthenticationToken = Nothing
@@ -82,62 +87,58 @@ describeComments pDocumentId_ pVersionId_ =
     , _dcVersionId = pVersionId_
     }
 
+
 -- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 dcAuthenticationToken :: Lens' DescribeComments (Maybe Text)
-dcAuthenticationToken =
-  lens _dcAuthenticationToken (\s a -> s {_dcAuthenticationToken = a}) .
-  mapping _Sensitive
+dcAuthenticationToken = lens _dcAuthenticationToken (\ s a -> s{_dcAuthenticationToken = a}) . mapping _Sensitive
 
 -- | The marker for the next set of results. This marker was received from a previous call.
 dcMarker :: Lens' DescribeComments (Maybe Text)
-dcMarker = lens _dcMarker (\s a -> s {_dcMarker = a})
+dcMarker = lens _dcMarker (\ s a -> s{_dcMarker = a})
 
 -- | The maximum number of items to return.
 dcLimit :: Lens' DescribeComments (Maybe Natural)
-dcLimit = lens _dcLimit (\s a -> s {_dcLimit = a}) . mapping _Nat
+dcLimit = lens _dcLimit (\ s a -> s{_dcLimit = a}) . mapping _Nat
 
 -- | The ID of the document.
 dcDocumentId :: Lens' DescribeComments Text
-dcDocumentId = lens _dcDocumentId (\s a -> s {_dcDocumentId = a})
+dcDocumentId = lens _dcDocumentId (\ s a -> s{_dcDocumentId = a})
 
 -- | The ID of the document version.
 dcVersionId :: Lens' DescribeComments Text
-dcVersionId = lens _dcVersionId (\s a -> s {_dcVersionId = a})
+dcVersionId = lens _dcVersionId (\ s a -> s{_dcVersionId = a})
 
 instance AWSRequest DescribeComments where
-  type Rs DescribeComments = DescribeCommentsResponse
-  request = get workDocs
-  response =
-    receiveJSON
-      (\s h x ->
-         DescribeCommentsResponse' <$> (x .?> "Marker") <*>
-         (x .?> "Comments" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs DescribeComments = DescribeCommentsResponse
+        request = get workDocs
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DescribeCommentsResponse' <$>
+                   (x .?> "Marker") <*> (x .?> "Comments" .!@ mempty)
+                     <*> (pure (fromEnum s)))
 
-instance Hashable DescribeComments
+instance Hashable DescribeComments where
 
-instance NFData DescribeComments
+instance NFData DescribeComments where
 
 instance ToHeaders DescribeComments where
-  toHeaders DescribeComments' {..} =
-    mconcat
-      [ "Authentication" =# _dcAuthenticationToken
-      , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-      ]
+        toHeaders DescribeComments'{..}
+          = mconcat
+              ["Authentication" =# _dcAuthenticationToken,
+               "Content-Type" =#
+                 ("application/x-amz-json-1.1" :: ByteString)]
 
 instance ToPath DescribeComments where
-  toPath DescribeComments' {..} =
-    mconcat
-      [ "/api/v1/documents/"
-      , toBS _dcDocumentId
-      , "/versions/"
-      , toBS _dcVersionId
-      , "/comments"
-      ]
+        toPath DescribeComments'{..}
+          = mconcat
+              ["/api/v1/documents/", toBS _dcDocumentId,
+               "/versions/", toBS _dcVersionId, "/comments"]
 
 instance ToQuery DescribeComments where
-  toQuery DescribeComments' {..} =
-    mconcat ["marker" =: _dcMarker, "limit" =: _dcLimit]
+        toQuery DescribeComments'{..}
+          = mconcat
+              ["marker" =: _dcMarker, "limit" =: _dcLimit]
 
 -- | /See:/ 'describeCommentsResponse' smart constructor.
 data DescribeCommentsResponse =
@@ -148,6 +149,7 @@ data DescribeCommentsResponse =
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeCommentsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -157,9 +159,9 @@ data DescribeCommentsResponse =
 -- * 'dcrsComments' - The list of comments for the specified document version.
 --
 -- * 'dcrsResponseStatus' - -- | The response status code.
-describeCommentsResponse ::
-     Int -- ^ 'dcrsResponseStatus'
-  -> DescribeCommentsResponse
+describeCommentsResponse
+    :: Int -- ^ 'dcrsResponseStatus'
+    -> DescribeCommentsResponse
 describeCommentsResponse pResponseStatus_ =
   DescribeCommentsResponse'
     { _dcrsMarker = Nothing
@@ -167,18 +169,17 @@ describeCommentsResponse pResponseStatus_ =
     , _dcrsResponseStatus = pResponseStatus_
     }
 
+
 -- | The marker for the next set of results. This marker was received from a previous call.
 dcrsMarker :: Lens' DescribeCommentsResponse (Maybe Text)
-dcrsMarker = lens _dcrsMarker (\s a -> s {_dcrsMarker = a})
+dcrsMarker = lens _dcrsMarker (\ s a -> s{_dcrsMarker = a})
 
 -- | The list of comments for the specified document version.
 dcrsComments :: Lens' DescribeCommentsResponse [Comment]
-dcrsComments =
-  lens _dcrsComments (\s a -> s {_dcrsComments = a}) . _Default . _Coerce
+dcrsComments = lens _dcrsComments (\ s a -> s{_dcrsComments = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 dcrsResponseStatus :: Lens' DescribeCommentsResponse Int
-dcrsResponseStatus =
-  lens _dcrsResponseStatus (\s a -> s {_dcrsResponseStatus = a})
+dcrsResponseStatus = lens _dcrsResponseStatus (\ s a -> s{_dcrsResponseStatus = a})
 
-instance NFData DescribeCommentsResponse
+instance NFData DescribeCommentsResponse where

@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CloudSearch.DescribeAvailabilityOptions
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,19 +22,21 @@
 --
 --
 module Network.AWS.CloudSearch.DescribeAvailabilityOptions
+    (
     -- * Creating a Request
-  ( describeAvailabilityOptions
-  , DescribeAvailabilityOptions
+      describeAvailabilityOptions
+    , DescribeAvailabilityOptions
     -- * Request Lenses
-  , daoDeployed
-  , daoDomainName
+    , daoDeployed
+    , daoDomainName
+
     -- * Destructuring the Response
-  , describeAvailabilityOptionsResponse
-  , DescribeAvailabilityOptionsResponse
+    , describeAvailabilityOptionsResponse
+    , DescribeAvailabilityOptionsResponse
     -- * Response Lenses
-  , daorsAvailabilityOptions
-  , daorsResponseStatus
-  ) where
+    , daorsAvailabilityOptions
+    , daorsResponseStatus
+    ) where
 
 import Network.AWS.CloudSearch.Types
 import Network.AWS.CloudSearch.Types.Product
@@ -53,6 +57,7 @@ data DescribeAvailabilityOptions =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeAvailabilityOptions' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -60,49 +65,52 @@ data DescribeAvailabilityOptions =
 -- * 'daoDeployed' - Whether to display the deployed configuration (@true@ ) or include any pending changes (@false@ ). Defaults to @false@ .
 --
 -- * 'daoDomainName' - The name of the domain you want to describe.
-describeAvailabilityOptions ::
-     Text -- ^ 'daoDomainName'
-  -> DescribeAvailabilityOptions
+describeAvailabilityOptions
+    :: Text -- ^ 'daoDomainName'
+    -> DescribeAvailabilityOptions
 describeAvailabilityOptions pDomainName_ =
   DescribeAvailabilityOptions'
     {_daoDeployed = Nothing, _daoDomainName = pDomainName_}
 
+
 -- | Whether to display the deployed configuration (@true@ ) or include any pending changes (@false@ ). Defaults to @false@ .
 daoDeployed :: Lens' DescribeAvailabilityOptions (Maybe Bool)
-daoDeployed = lens _daoDeployed (\s a -> s {_daoDeployed = a})
+daoDeployed = lens _daoDeployed (\ s a -> s{_daoDeployed = a})
 
 -- | The name of the domain you want to describe.
 daoDomainName :: Lens' DescribeAvailabilityOptions Text
-daoDomainName = lens _daoDomainName (\s a -> s {_daoDomainName = a})
+daoDomainName = lens _daoDomainName (\ s a -> s{_daoDomainName = a})
 
 instance AWSRequest DescribeAvailabilityOptions where
-  type Rs DescribeAvailabilityOptions = DescribeAvailabilityOptionsResponse
-  request = postQuery cloudSearch
-  response =
-    receiveXMLWrapper
-      "DescribeAvailabilityOptionsResult"
-      (\s h x ->
-         DescribeAvailabilityOptionsResponse' <$> (x .@? "AvailabilityOptions") <*>
-         (pure (fromEnum s)))
+        type Rs DescribeAvailabilityOptions =
+             DescribeAvailabilityOptionsResponse
+        request = postQuery cloudSearch
+        response
+          = receiveXMLWrapper
+              "DescribeAvailabilityOptionsResult"
+              (\ s h x ->
+                 DescribeAvailabilityOptionsResponse' <$>
+                   (x .@? "AvailabilityOptions") <*>
+                     (pure (fromEnum s)))
 
-instance Hashable DescribeAvailabilityOptions
+instance Hashable DescribeAvailabilityOptions where
 
-instance NFData DescribeAvailabilityOptions
+instance NFData DescribeAvailabilityOptions where
 
 instance ToHeaders DescribeAvailabilityOptions where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath DescribeAvailabilityOptions where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DescribeAvailabilityOptions where
-  toQuery DescribeAvailabilityOptions' {..} =
-    mconcat
-      [ "Action" =: ("DescribeAvailabilityOptions" :: ByteString)
-      , "Version" =: ("2013-01-01" :: ByteString)
-      , "Deployed" =: _daoDeployed
-      , "DomainName" =: _daoDomainName
-      ]
+        toQuery DescribeAvailabilityOptions'{..}
+          = mconcat
+              ["Action" =:
+                 ("DescribeAvailabilityOptions" :: ByteString),
+               "Version" =: ("2013-01-01" :: ByteString),
+               "Deployed" =: _daoDeployed,
+               "DomainName" =: _daoDomainName]
 
 -- | The result of a @DescribeAvailabilityOptions@ request. Indicates whether or not the Multi-AZ option is enabled for the domain specified in the request.
 --
@@ -116,6 +124,7 @@ data DescribeAvailabilityOptionsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeAvailabilityOptionsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -123,24 +132,23 @@ data DescribeAvailabilityOptionsResponse =
 -- * 'daorsAvailabilityOptions' - The availability options configured for the domain. Indicates whether Multi-AZ is enabled for the domain.
 --
 -- * 'daorsResponseStatus' - -- | The response status code.
-describeAvailabilityOptionsResponse ::
-     Int -- ^ 'daorsResponseStatus'
-  -> DescribeAvailabilityOptionsResponse
+describeAvailabilityOptionsResponse
+    :: Int -- ^ 'daorsResponseStatus'
+    -> DescribeAvailabilityOptionsResponse
 describeAvailabilityOptionsResponse pResponseStatus_ =
   DescribeAvailabilityOptionsResponse'
     { _daorsAvailabilityOptions = Nothing
     , _daorsResponseStatus = pResponseStatus_
     }
 
+
 -- | The availability options configured for the domain. Indicates whether Multi-AZ is enabled for the domain.
-daorsAvailabilityOptions ::
-     Lens' DescribeAvailabilityOptionsResponse (Maybe AvailabilityOptionsStatus)
-daorsAvailabilityOptions =
-  lens _daorsAvailabilityOptions (\s a -> s {_daorsAvailabilityOptions = a})
+daorsAvailabilityOptions :: Lens' DescribeAvailabilityOptionsResponse (Maybe AvailabilityOptionsStatus)
+daorsAvailabilityOptions = lens _daorsAvailabilityOptions (\ s a -> s{_daorsAvailabilityOptions = a})
 
 -- | -- | The response status code.
 daorsResponseStatus :: Lens' DescribeAvailabilityOptionsResponse Int
-daorsResponseStatus =
-  lens _daorsResponseStatus (\s a -> s {_daorsResponseStatus = a})
+daorsResponseStatus = lens _daorsResponseStatus (\ s a -> s{_daorsResponseStatus = a})
 
 instance NFData DescribeAvailabilityOptionsResponse
+         where

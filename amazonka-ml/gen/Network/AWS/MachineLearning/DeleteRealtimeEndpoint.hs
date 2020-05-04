@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.MachineLearning.DeleteRealtimeEndpoint
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,19 +22,21 @@
 --
 --
 module Network.AWS.MachineLearning.DeleteRealtimeEndpoint
+    (
     -- * Creating a Request
-  ( deleteRealtimeEndpoint
-  , DeleteRealtimeEndpoint
+      deleteRealtimeEndpoint
+    , DeleteRealtimeEndpoint
     -- * Request Lenses
-  , dreMLModelId
+    , dreMLModelId
+
     -- * Destructuring the Response
-  , deleteRealtimeEndpointResponse
-  , DeleteRealtimeEndpointResponse
+    , deleteRealtimeEndpointResponse
+    , DeleteRealtimeEndpointResponse
     -- * Response Lenses
-  , drersRealtimeEndpointInfo
-  , drersMLModelId
-  , drersResponseStatus
-  ) where
+    , drersRealtimeEndpointInfo
+    , drersMLModelId
+    , drersResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.MachineLearning.Types
@@ -48,53 +52,59 @@ newtype DeleteRealtimeEndpoint =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteRealtimeEndpoint' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dreMLModelId' - The ID assigned to the @MLModel@ during creation.
-deleteRealtimeEndpoint ::
-     Text -- ^ 'dreMLModelId'
-  -> DeleteRealtimeEndpoint
+deleteRealtimeEndpoint
+    :: Text -- ^ 'dreMLModelId'
+    -> DeleteRealtimeEndpoint
 deleteRealtimeEndpoint pMLModelId_ =
   DeleteRealtimeEndpoint' {_dreMLModelId = pMLModelId_}
 
+
 -- | The ID assigned to the @MLModel@ during creation.
 dreMLModelId :: Lens' DeleteRealtimeEndpoint Text
-dreMLModelId = lens _dreMLModelId (\s a -> s {_dreMLModelId = a})
+dreMLModelId = lens _dreMLModelId (\ s a -> s{_dreMLModelId = a})
 
 instance AWSRequest DeleteRealtimeEndpoint where
-  type Rs DeleteRealtimeEndpoint = DeleteRealtimeEndpointResponse
-  request = postJSON machineLearning
-  response =
-    receiveJSON
-      (\s h x ->
-         DeleteRealtimeEndpointResponse' <$> (x .?> "RealtimeEndpointInfo") <*>
-         (x .?> "MLModelId") <*>
-         (pure (fromEnum s)))
+        type Rs DeleteRealtimeEndpoint =
+             DeleteRealtimeEndpointResponse
+        request = postJSON machineLearning
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DeleteRealtimeEndpointResponse' <$>
+                   (x .?> "RealtimeEndpointInfo") <*>
+                     (x .?> "MLModelId")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable DeleteRealtimeEndpoint
+instance Hashable DeleteRealtimeEndpoint where
 
-instance NFData DeleteRealtimeEndpoint
+instance NFData DeleteRealtimeEndpoint where
 
 instance ToHeaders DeleteRealtimeEndpoint where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AmazonML_20141212.DeleteRealtimeEndpoint" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AmazonML_20141212.DeleteRealtimeEndpoint" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DeleteRealtimeEndpoint where
-  toJSON DeleteRealtimeEndpoint' {..} =
-    object (catMaybes [Just ("MLModelId" .= _dreMLModelId)])
+        toJSON DeleteRealtimeEndpoint'{..}
+          = object
+              (catMaybes [Just ("MLModelId" .= _dreMLModelId)])
 
 instance ToPath DeleteRealtimeEndpoint where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DeleteRealtimeEndpoint where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | Represents the output of an @DeleteRealtimeEndpoint@ operation.
 --
@@ -111,6 +121,7 @@ data DeleteRealtimeEndpointResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteRealtimeEndpointResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -120,9 +131,9 @@ data DeleteRealtimeEndpointResponse =
 -- * 'drersMLModelId' - A user-supplied ID that uniquely identifies the @MLModel@ . This value should be identical to the value of the @MLModelId@ in the request.
 --
 -- * 'drersResponseStatus' - -- | The response status code.
-deleteRealtimeEndpointResponse ::
-     Int -- ^ 'drersResponseStatus'
-  -> DeleteRealtimeEndpointResponse
+deleteRealtimeEndpointResponse
+    :: Int -- ^ 'drersResponseStatus'
+    -> DeleteRealtimeEndpointResponse
 deleteRealtimeEndpointResponse pResponseStatus_ =
   DeleteRealtimeEndpointResponse'
     { _drersRealtimeEndpointInfo = Nothing
@@ -130,19 +141,17 @@ deleteRealtimeEndpointResponse pResponseStatus_ =
     , _drersResponseStatus = pResponseStatus_
     }
 
+
 -- | The endpoint information of the @MLModel@
-drersRealtimeEndpointInfo ::
-     Lens' DeleteRealtimeEndpointResponse (Maybe RealtimeEndpointInfo)
-drersRealtimeEndpointInfo =
-  lens _drersRealtimeEndpointInfo (\s a -> s {_drersRealtimeEndpointInfo = a})
+drersRealtimeEndpointInfo :: Lens' DeleteRealtimeEndpointResponse (Maybe RealtimeEndpointInfo)
+drersRealtimeEndpointInfo = lens _drersRealtimeEndpointInfo (\ s a -> s{_drersRealtimeEndpointInfo = a})
 
 -- | A user-supplied ID that uniquely identifies the @MLModel@ . This value should be identical to the value of the @MLModelId@ in the request.
 drersMLModelId :: Lens' DeleteRealtimeEndpointResponse (Maybe Text)
-drersMLModelId = lens _drersMLModelId (\s a -> s {_drersMLModelId = a})
+drersMLModelId = lens _drersMLModelId (\ s a -> s{_drersMLModelId = a})
 
 -- | -- | The response status code.
 drersResponseStatus :: Lens' DeleteRealtimeEndpointResponse Int
-drersResponseStatus =
-  lens _drersResponseStatus (\s a -> s {_drersResponseStatus = a})
+drersResponseStatus = lens _drersResponseStatus (\ s a -> s{_drersResponseStatus = a})
 
-instance NFData DeleteRealtimeEndpointResponse
+instance NFData DeleteRealtimeEndpointResponse where

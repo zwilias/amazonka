@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.S3.GetBucketCORS
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,18 +20,20 @@
 --
 -- Returns the cors configuration for the bucket.
 module Network.AWS.S3.GetBucketCORS
+    (
     -- * Creating a Request
-  ( getBucketCORS
-  , GetBucketCORS
+      getBucketCORS
+    , GetBucketCORS
     -- * Request Lenses
-  , gbcBucket
+    , gbcBucket
+
     -- * Destructuring the Response
-  , getBucketCORSResponse
-  , GetBucketCORSResponse
+    , getBucketCORSResponse
+    , GetBucketCORSResponse
     -- * Response Lenses
-  , gbcrsCORSRules
-  , gbcrsResponseStatus
-  ) where
+    , gbcrsCORSRules
+    , gbcrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -45,41 +49,45 @@ newtype GetBucketCORS =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetBucketCORS' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'gbcBucket' - Undocumented member.
-getBucketCORS ::
-     BucketName -- ^ 'gbcBucket'
-  -> GetBucketCORS
+getBucketCORS
+    :: BucketName -- ^ 'gbcBucket'
+    -> GetBucketCORS
 getBucketCORS pBucket_ = GetBucketCORS' {_gbcBucket = pBucket_}
+
 
 -- | Undocumented member.
 gbcBucket :: Lens' GetBucketCORS BucketName
-gbcBucket = lens _gbcBucket (\s a -> s {_gbcBucket = a})
+gbcBucket = lens _gbcBucket (\ s a -> s{_gbcBucket = a})
 
 instance AWSRequest GetBucketCORS where
-  type Rs GetBucketCORS = GetBucketCORSResponse
-  request = get s3
-  response =
-    receiveXML
-      (\s h x ->
-         GetBucketCORSResponse' <$> (may (parseXMLList "CORSRule") x) <*>
-         (pure (fromEnum s)))
+        type Rs GetBucketCORS = GetBucketCORSResponse
+        request = get s3
+        response
+          = receiveXML
+              (\ s h x ->
+                 GetBucketCORSResponse' <$>
+                   (may (parseXMLList "CORSRule") x) <*>
+                     (pure (fromEnum s)))
 
-instance Hashable GetBucketCORS
+instance Hashable GetBucketCORS where
 
-instance NFData GetBucketCORS
+instance NFData GetBucketCORS where
 
 instance ToHeaders GetBucketCORS where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath GetBucketCORS where
-  toPath GetBucketCORS' {..} = mconcat ["/", toBS _gbcBucket]
+        toPath GetBucketCORS'{..}
+          = mconcat ["/", toBS _gbcBucket]
 
 instance ToQuery GetBucketCORS where
-  toQuery = const (mconcat ["cors"])
+        toQuery = const (mconcat ["cors"])
 
 -- | /See:/ 'getBucketCORSResponse' smart constructor.
 data GetBucketCORSResponse =
@@ -89,6 +97,7 @@ data GetBucketCORSResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetBucketCORSResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -96,21 +105,20 @@ data GetBucketCORSResponse =
 -- * 'gbcrsCORSRules' - Undocumented member.
 --
 -- * 'gbcrsResponseStatus' - -- | The response status code.
-getBucketCORSResponse ::
-     Int -- ^ 'gbcrsResponseStatus'
-  -> GetBucketCORSResponse
+getBucketCORSResponse
+    :: Int -- ^ 'gbcrsResponseStatus'
+    -> GetBucketCORSResponse
 getBucketCORSResponse pResponseStatus_ =
   GetBucketCORSResponse'
     {_gbcrsCORSRules = Nothing, _gbcrsResponseStatus = pResponseStatus_}
 
+
 -- | Undocumented member.
 gbcrsCORSRules :: Lens' GetBucketCORSResponse [CORSRule]
-gbcrsCORSRules =
-  lens _gbcrsCORSRules (\s a -> s {_gbcrsCORSRules = a}) . _Default . _Coerce
+gbcrsCORSRules = lens _gbcrsCORSRules (\ s a -> s{_gbcrsCORSRules = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 gbcrsResponseStatus :: Lens' GetBucketCORSResponse Int
-gbcrsResponseStatus =
-  lens _gbcrsResponseStatus (\s a -> s {_gbcrsResponseStatus = a})
+gbcrsResponseStatus = lens _gbcrsResponseStatus (\ s a -> s{_gbcrsResponseStatus = a})
 
-instance NFData GetBucketCORSResponse
+instance NFData GetBucketCORSResponse where

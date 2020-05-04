@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Test.AWS.Gen.AutoScalingPlans
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -23,6 +24,7 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
+
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -41,7 +43,11 @@ import Test.Tasty
 --         , requestDescribeScalingPlans $
 --             describeScalingPlans
 --
+--         , requestGetScalingPlanResourceForecastData $
+--             getScalingPlanResourceForecastData
+--
 --           ]
+
 --     , testGroup "response"
 --         [ responseDescribeScalingPlanResources $
 --             describeScalingPlanResourcesResponse
@@ -58,67 +64,84 @@ import Test.Tasty
 --         , responseDescribeScalingPlans $
 --             describeScalingPlansResponse
 --
+--         , responseGetScalingPlanResourceForecastData $
+--             getScalingPlanResourceForecastDataResponse
+--
 --           ]
 --     ]
+
 -- Requests
+
 requestDescribeScalingPlanResources :: DescribeScalingPlanResources -> TestTree
-requestDescribeScalingPlanResources =
-  req "DescribeScalingPlanResources" "fixture/DescribeScalingPlanResources.yaml"
+requestDescribeScalingPlanResources = req
+    "DescribeScalingPlanResources"
+    "fixture/DescribeScalingPlanResources.yaml"
 
 requestCreateScalingPlan :: CreateScalingPlan -> TestTree
-requestCreateScalingPlan =
-  req "CreateScalingPlan" "fixture/CreateScalingPlan.yaml"
+requestCreateScalingPlan = req
+    "CreateScalingPlan"
+    "fixture/CreateScalingPlan.yaml"
 
 requestDeleteScalingPlan :: DeleteScalingPlan -> TestTree
-requestDeleteScalingPlan =
-  req "DeleteScalingPlan" "fixture/DeleteScalingPlan.yaml"
+requestDeleteScalingPlan = req
+    "DeleteScalingPlan"
+    "fixture/DeleteScalingPlan.yaml"
 
 requestUpdateScalingPlan :: UpdateScalingPlan -> TestTree
-requestUpdateScalingPlan =
-  req "UpdateScalingPlan" "fixture/UpdateScalingPlan.yaml"
+requestUpdateScalingPlan = req
+    "UpdateScalingPlan"
+    "fixture/UpdateScalingPlan.yaml"
 
 requestDescribeScalingPlans :: DescribeScalingPlans -> TestTree
-requestDescribeScalingPlans =
-  req "DescribeScalingPlans" "fixture/DescribeScalingPlans.yaml"
+requestDescribeScalingPlans = req
+    "DescribeScalingPlans"
+    "fixture/DescribeScalingPlans.yaml"
+
+requestGetScalingPlanResourceForecastData :: GetScalingPlanResourceForecastData -> TestTree
+requestGetScalingPlanResourceForecastData = req
+    "GetScalingPlanResourceForecastData"
+    "fixture/GetScalingPlanResourceForecastData.yaml"
 
 -- Responses
-responseDescribeScalingPlanResources ::
-     DescribeScalingPlanResourcesResponse -> TestTree
-responseDescribeScalingPlanResources =
-  res
+
+responseDescribeScalingPlanResources :: DescribeScalingPlanResourcesResponse -> TestTree
+responseDescribeScalingPlanResources = res
     "DescribeScalingPlanResourcesResponse"
     "fixture/DescribeScalingPlanResourcesResponse.proto"
     autoScalingPlans
     (Proxy :: Proxy DescribeScalingPlanResources)
 
 responseCreateScalingPlan :: CreateScalingPlanResponse -> TestTree
-responseCreateScalingPlan =
-  res
+responseCreateScalingPlan = res
     "CreateScalingPlanResponse"
     "fixture/CreateScalingPlanResponse.proto"
     autoScalingPlans
     (Proxy :: Proxy CreateScalingPlan)
 
 responseDeleteScalingPlan :: DeleteScalingPlanResponse -> TestTree
-responseDeleteScalingPlan =
-  res
+responseDeleteScalingPlan = res
     "DeleteScalingPlanResponse"
     "fixture/DeleteScalingPlanResponse.proto"
     autoScalingPlans
     (Proxy :: Proxy DeleteScalingPlan)
 
 responseUpdateScalingPlan :: UpdateScalingPlanResponse -> TestTree
-responseUpdateScalingPlan =
-  res
+responseUpdateScalingPlan = res
     "UpdateScalingPlanResponse"
     "fixture/UpdateScalingPlanResponse.proto"
     autoScalingPlans
     (Proxy :: Proxy UpdateScalingPlan)
 
 responseDescribeScalingPlans :: DescribeScalingPlansResponse -> TestTree
-responseDescribeScalingPlans =
-  res
+responseDescribeScalingPlans = res
     "DescribeScalingPlansResponse"
     "fixture/DescribeScalingPlansResponse.proto"
     autoScalingPlans
     (Proxy :: Proxy DescribeScalingPlans)
+
+responseGetScalingPlanResourceForecastData :: GetScalingPlanResourceForecastDataResponse -> TestTree
+responseGetScalingPlanResourceForecastData = res
+    "GetScalingPlanResourceForecastDataResponse"
+    "fixture/GetScalingPlanResourceForecastDataResponse.proto"
+    autoScalingPlans
+    (Proxy :: Proxy GetScalingPlanResourceForecastData)

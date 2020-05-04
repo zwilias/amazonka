@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Test.AWS.Gen.MediaLive
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -23,6 +24,7 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
+
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -78,6 +80,7 @@ import Test.Tasty
 --             deleteInputSecurityGroup
 --
 --           ]
+
 --     , testGroup "response"
 --         [ responseListInputs $
 --             listInputsResponse
@@ -132,196 +135,210 @@ import Test.Tasty
 --
 --           ]
 --     ]
+
 -- Requests
+
 requestListInputs :: ListInputs -> TestTree
-requestListInputs = req "ListInputs" "fixture/ListInputs.yaml"
+requestListInputs = req
+    "ListInputs"
+    "fixture/ListInputs.yaml"
 
 requestListChannels :: ListChannels -> TestTree
-requestListChannels = req "ListChannels" "fixture/ListChannels.yaml"
+requestListChannels = req
+    "ListChannels"
+    "fixture/ListChannels.yaml"
 
 requestDescribeInputSecurityGroup :: DescribeInputSecurityGroup -> TestTree
-requestDescribeInputSecurityGroup =
-  req "DescribeInputSecurityGroup" "fixture/DescribeInputSecurityGroup.yaml"
+requestDescribeInputSecurityGroup = req
+    "DescribeInputSecurityGroup"
+    "fixture/DescribeInputSecurityGroup.yaml"
 
 requestCreateInput :: CreateInput -> TestTree
-requestCreateInput = req "CreateInput" "fixture/CreateInput.yaml"
+requestCreateInput = req
+    "CreateInput"
+    "fixture/CreateInput.yaml"
 
 requestDeleteChannel :: DeleteChannel -> TestTree
-requestDeleteChannel = req "DeleteChannel" "fixture/DeleteChannel.yaml"
+requestDeleteChannel = req
+    "DeleteChannel"
+    "fixture/DeleteChannel.yaml"
 
 requestUpdateChannel :: UpdateChannel -> TestTree
-requestUpdateChannel = req "UpdateChannel" "fixture/UpdateChannel.yaml"
+requestUpdateChannel = req
+    "UpdateChannel"
+    "fixture/UpdateChannel.yaml"
 
 requestCreateInputSecurityGroup :: CreateInputSecurityGroup -> TestTree
-requestCreateInputSecurityGroup =
-  req "CreateInputSecurityGroup" "fixture/CreateInputSecurityGroup.yaml"
+requestCreateInputSecurityGroup = req
+    "CreateInputSecurityGroup"
+    "fixture/CreateInputSecurityGroup.yaml"
 
 requestStartChannel :: StartChannel -> TestTree
-requestStartChannel = req "StartChannel" "fixture/StartChannel.yaml"
+requestStartChannel = req
+    "StartChannel"
+    "fixture/StartChannel.yaml"
 
 requestListInputSecurityGroups :: ListInputSecurityGroups -> TestTree
-requestListInputSecurityGroups =
-  req "ListInputSecurityGroups" "fixture/ListInputSecurityGroups.yaml"
+requestListInputSecurityGroups = req
+    "ListInputSecurityGroups"
+    "fixture/ListInputSecurityGroups.yaml"
 
 requestCreateChannel :: CreateChannel -> TestTree
-requestCreateChannel = req "CreateChannel" "fixture/CreateChannel.yaml"
+requestCreateChannel = req
+    "CreateChannel"
+    "fixture/CreateChannel.yaml"
 
 requestDeleteInput :: DeleteInput -> TestTree
-requestDeleteInput = req "DeleteInput" "fixture/DeleteInput.yaml"
+requestDeleteInput = req
+    "DeleteInput"
+    "fixture/DeleteInput.yaml"
 
 requestUpdateInput :: UpdateInput -> TestTree
-requestUpdateInput = req "UpdateInput" "fixture/UpdateInput.yaml"
+requestUpdateInput = req
+    "UpdateInput"
+    "fixture/UpdateInput.yaml"
 
 requestStopChannel :: StopChannel -> TestTree
-requestStopChannel = req "StopChannel" "fixture/StopChannel.yaml"
+requestStopChannel = req
+    "StopChannel"
+    "fixture/StopChannel.yaml"
 
 requestDescribeInput :: DescribeInput -> TestTree
-requestDescribeInput = req "DescribeInput" "fixture/DescribeInput.yaml"
+requestDescribeInput = req
+    "DescribeInput"
+    "fixture/DescribeInput.yaml"
 
 requestDescribeChannel :: DescribeChannel -> TestTree
-requestDescribeChannel = req "DescribeChannel" "fixture/DescribeChannel.yaml"
+requestDescribeChannel = req
+    "DescribeChannel"
+    "fixture/DescribeChannel.yaml"
 
 requestUpdateInputSecurityGroup :: UpdateInputSecurityGroup -> TestTree
-requestUpdateInputSecurityGroup =
-  req "UpdateInputSecurityGroup" "fixture/UpdateInputSecurityGroup.yaml"
+requestUpdateInputSecurityGroup = req
+    "UpdateInputSecurityGroup"
+    "fixture/UpdateInputSecurityGroup.yaml"
 
 requestDeleteInputSecurityGroup :: DeleteInputSecurityGroup -> TestTree
-requestDeleteInputSecurityGroup =
-  req "DeleteInputSecurityGroup" "fixture/DeleteInputSecurityGroup.yaml"
+requestDeleteInputSecurityGroup = req
+    "DeleteInputSecurityGroup"
+    "fixture/DeleteInputSecurityGroup.yaml"
 
 -- Responses
+
 responseListInputs :: ListInputsResponse -> TestTree
-responseListInputs =
-  res
+responseListInputs = res
     "ListInputsResponse"
     "fixture/ListInputsResponse.proto"
     mediaLive
     (Proxy :: Proxy ListInputs)
 
 responseListChannels :: ListChannelsResponse -> TestTree
-responseListChannels =
-  res
+responseListChannels = res
     "ListChannelsResponse"
     "fixture/ListChannelsResponse.proto"
     mediaLive
     (Proxy :: Proxy ListChannels)
 
-responseDescribeInputSecurityGroup ::
-     DescribeInputSecurityGroupResponse -> TestTree
-responseDescribeInputSecurityGroup =
-  res
+responseDescribeInputSecurityGroup :: DescribeInputSecurityGroupResponse -> TestTree
+responseDescribeInputSecurityGroup = res
     "DescribeInputSecurityGroupResponse"
     "fixture/DescribeInputSecurityGroupResponse.proto"
     mediaLive
     (Proxy :: Proxy DescribeInputSecurityGroup)
 
 responseCreateInput :: CreateInputResponse -> TestTree
-responseCreateInput =
-  res
+responseCreateInput = res
     "CreateInputResponse"
     "fixture/CreateInputResponse.proto"
     mediaLive
     (Proxy :: Proxy CreateInput)
 
 responseDeleteChannel :: DeleteChannelResponse -> TestTree
-responseDeleteChannel =
-  res
+responseDeleteChannel = res
     "DeleteChannelResponse"
     "fixture/DeleteChannelResponse.proto"
     mediaLive
     (Proxy :: Proxy DeleteChannel)
 
 responseUpdateChannel :: UpdateChannelResponse -> TestTree
-responseUpdateChannel =
-  res
+responseUpdateChannel = res
     "UpdateChannelResponse"
     "fixture/UpdateChannelResponse.proto"
     mediaLive
     (Proxy :: Proxy UpdateChannel)
 
 responseCreateInputSecurityGroup :: CreateInputSecurityGroupResponse -> TestTree
-responseCreateInputSecurityGroup =
-  res
+responseCreateInputSecurityGroup = res
     "CreateInputSecurityGroupResponse"
     "fixture/CreateInputSecurityGroupResponse.proto"
     mediaLive
     (Proxy :: Proxy CreateInputSecurityGroup)
 
 responseStartChannel :: StartChannelResponse -> TestTree
-responseStartChannel =
-  res
+responseStartChannel = res
     "StartChannelResponse"
     "fixture/StartChannelResponse.proto"
     mediaLive
     (Proxy :: Proxy StartChannel)
 
 responseListInputSecurityGroups :: ListInputSecurityGroupsResponse -> TestTree
-responseListInputSecurityGroups =
-  res
+responseListInputSecurityGroups = res
     "ListInputSecurityGroupsResponse"
     "fixture/ListInputSecurityGroupsResponse.proto"
     mediaLive
     (Proxy :: Proxy ListInputSecurityGroups)
 
 responseCreateChannel :: CreateChannelResponse -> TestTree
-responseCreateChannel =
-  res
+responseCreateChannel = res
     "CreateChannelResponse"
     "fixture/CreateChannelResponse.proto"
     mediaLive
     (Proxy :: Proxy CreateChannel)
 
 responseDeleteInput :: DeleteInputResponse -> TestTree
-responseDeleteInput =
-  res
+responseDeleteInput = res
     "DeleteInputResponse"
     "fixture/DeleteInputResponse.proto"
     mediaLive
     (Proxy :: Proxy DeleteInput)
 
 responseUpdateInput :: UpdateInputResponse -> TestTree
-responseUpdateInput =
-  res
+responseUpdateInput = res
     "UpdateInputResponse"
     "fixture/UpdateInputResponse.proto"
     mediaLive
     (Proxy :: Proxy UpdateInput)
 
 responseStopChannel :: StopChannelResponse -> TestTree
-responseStopChannel =
-  res
+responseStopChannel = res
     "StopChannelResponse"
     "fixture/StopChannelResponse.proto"
     mediaLive
     (Proxy :: Proxy StopChannel)
 
 responseDescribeInput :: DescribeInputResponse -> TestTree
-responseDescribeInput =
-  res
+responseDescribeInput = res
     "DescribeInputResponse"
     "fixture/DescribeInputResponse.proto"
     mediaLive
     (Proxy :: Proxy DescribeInput)
 
 responseDescribeChannel :: DescribeChannelResponse -> TestTree
-responseDescribeChannel =
-  res
+responseDescribeChannel = res
     "DescribeChannelResponse"
     "fixture/DescribeChannelResponse.proto"
     mediaLive
     (Proxy :: Proxy DescribeChannel)
 
 responseUpdateInputSecurityGroup :: UpdateInputSecurityGroupResponse -> TestTree
-responseUpdateInputSecurityGroup =
-  res
+responseUpdateInputSecurityGroup = res
     "UpdateInputSecurityGroupResponse"
     "fixture/UpdateInputSecurityGroupResponse.proto"
     mediaLive
     (Proxy :: Proxy UpdateInputSecurityGroup)
 
 responseDeleteInputSecurityGroup :: DeleteInputSecurityGroupResponse -> TestTree
-responseDeleteInputSecurityGroup =
-  res
+responseDeleteInputSecurityGroup = res
     "DeleteInputSecurityGroupResponse"
     "fixture/DeleteInputSecurityGroupResponse.proto"
     mediaLive

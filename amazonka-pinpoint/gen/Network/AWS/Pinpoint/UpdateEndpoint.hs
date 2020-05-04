@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Pinpoint.UpdateEndpoint
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,20 +20,22 @@
 --
 -- Use to update an endpoint.
 module Network.AWS.Pinpoint.UpdateEndpoint
+    (
     -- * Creating a Request
-  ( updateEndpoint
-  , UpdateEndpoint
+      updateEndpoint
+    , UpdateEndpoint
     -- * Request Lenses
-  , ueApplicationId
-  , ueEndpointId
-  , ueEndpointRequest
+    , ueApplicationId
+    , ueEndpointId
+    , ueEndpointRequest
+
     -- * Destructuring the Response
-  , updateEndpointResponse
-  , UpdateEndpointResponse
+    , updateEndpointResponse
+    , UpdateEndpointResponse
     -- * Response Lenses
-  , uersResponseStatus
-  , uersMessageBody
-  ) where
+    , uersResponseStatus
+    , uersMessageBody
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
@@ -49,6 +53,7 @@ data UpdateEndpoint =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateEndpoint' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -58,11 +63,11 @@ data UpdateEndpoint =
 -- * 'ueEndpointId' - Undocumented member.
 --
 -- * 'ueEndpointRequest' - Undocumented member.
-updateEndpoint ::
-     Text -- ^ 'ueApplicationId'
-  -> Text -- ^ 'ueEndpointId'
-  -> EndpointRequest -- ^ 'ueEndpointRequest'
-  -> UpdateEndpoint
+updateEndpoint
+    :: Text -- ^ 'ueApplicationId'
+    -> Text -- ^ 'ueEndpointId'
+    -> EndpointRequest -- ^ 'ueEndpointRequest'
+    -> UpdateEndpoint
 updateEndpoint pApplicationId_ pEndpointId_ pEndpointRequest_ =
   UpdateEndpoint'
     { _ueApplicationId = pApplicationId_
@@ -70,46 +75,53 @@ updateEndpoint pApplicationId_ pEndpointId_ pEndpointRequest_ =
     , _ueEndpointRequest = pEndpointRequest_
     }
 
+
 -- | Undocumented member.
 ueApplicationId :: Lens' UpdateEndpoint Text
-ueApplicationId = lens _ueApplicationId (\s a -> s {_ueApplicationId = a})
+ueApplicationId = lens _ueApplicationId (\ s a -> s{_ueApplicationId = a})
 
 -- | Undocumented member.
 ueEndpointId :: Lens' UpdateEndpoint Text
-ueEndpointId = lens _ueEndpointId (\s a -> s {_ueEndpointId = a})
+ueEndpointId = lens _ueEndpointId (\ s a -> s{_ueEndpointId = a})
 
 -- | Undocumented member.
 ueEndpointRequest :: Lens' UpdateEndpoint EndpointRequest
-ueEndpointRequest = lens _ueEndpointRequest (\s a -> s {_ueEndpointRequest = a})
+ueEndpointRequest = lens _ueEndpointRequest (\ s a -> s{_ueEndpointRequest = a})
 
 instance AWSRequest UpdateEndpoint where
-  type Rs UpdateEndpoint = UpdateEndpointResponse
-  request = putJSON pinpoint
-  response =
-    receiveJSON
-      (\s h x ->
-         UpdateEndpointResponse' <$> (pure (fromEnum s)) <*> (eitherParseJSON x))
+        type Rs UpdateEndpoint = UpdateEndpointResponse
+        request = putJSON pinpoint
+        response
+          = receiveJSON
+              (\ s h x ->
+                 UpdateEndpointResponse' <$>
+                   (pure (fromEnum s)) <*> (eitherParseJSON x))
 
-instance Hashable UpdateEndpoint
+instance Hashable UpdateEndpoint where
 
-instance NFData UpdateEndpoint
+instance NFData UpdateEndpoint where
 
 instance ToHeaders UpdateEndpoint where
-  toHeaders =
-    const
-      (mconcat ["Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)])
+        toHeaders
+          = const
+              (mconcat
+                 ["Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON UpdateEndpoint where
-  toJSON UpdateEndpoint' {..} =
-    object (catMaybes [Just ("EndpointRequest" .= _ueEndpointRequest)])
+        toJSON UpdateEndpoint'{..}
+          = object
+              (catMaybes
+                 [Just ("EndpointRequest" .= _ueEndpointRequest)])
 
 instance ToPath UpdateEndpoint where
-  toPath UpdateEndpoint' {..} =
-    mconcat
-      ["/v1/apps/", toBS _ueApplicationId, "/endpoints/", toBS _ueEndpointId]
+        toPath UpdateEndpoint'{..}
+          = mconcat
+              ["/v1/apps/", toBS _ueApplicationId, "/endpoints/",
+               toBS _ueEndpointId]
 
 instance ToQuery UpdateEndpoint where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'updateEndpointResponse' smart constructor.
 data UpdateEndpointResponse =
@@ -119,6 +131,7 @@ data UpdateEndpointResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateEndpointResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -126,21 +139,21 @@ data UpdateEndpointResponse =
 -- * 'uersResponseStatus' - -- | The response status code.
 --
 -- * 'uersMessageBody' - Undocumented member.
-updateEndpointResponse ::
-     Int -- ^ 'uersResponseStatus'
-  -> MessageBody -- ^ 'uersMessageBody'
-  -> UpdateEndpointResponse
+updateEndpointResponse
+    :: Int -- ^ 'uersResponseStatus'
+    -> MessageBody -- ^ 'uersMessageBody'
+    -> UpdateEndpointResponse
 updateEndpointResponse pResponseStatus_ pMessageBody_ =
   UpdateEndpointResponse'
     {_uersResponseStatus = pResponseStatus_, _uersMessageBody = pMessageBody_}
 
+
 -- | -- | The response status code.
 uersResponseStatus :: Lens' UpdateEndpointResponse Int
-uersResponseStatus =
-  lens _uersResponseStatus (\s a -> s {_uersResponseStatus = a})
+uersResponseStatus = lens _uersResponseStatus (\ s a -> s{_uersResponseStatus = a})
 
 -- | Undocumented member.
 uersMessageBody :: Lens' UpdateEndpointResponse MessageBody
-uersMessageBody = lens _uersMessageBody (\s a -> s {_uersMessageBody = a})
+uersMessageBody = lens _uersMessageBody (\ s a -> s{_uersMessageBody = a})
 
-instance NFData UpdateEndpointResponse
+instance NFData UpdateEndpointResponse where

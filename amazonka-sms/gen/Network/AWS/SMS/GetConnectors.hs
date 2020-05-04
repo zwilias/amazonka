@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SMS.GetConnectors
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,20 +22,22 @@
 --
 -- This operation returns paginated results.
 module Network.AWS.SMS.GetConnectors
+    (
     -- * Creating a Request
-  ( getConnectors
-  , GetConnectors
+      getConnectors
+    , GetConnectors
     -- * Request Lenses
-  , gcNextToken
-  , gcMaxResults
+    , gcNextToken
+    , gcMaxResults
+
     -- * Destructuring the Response
-  , getConnectorsResponse
-  , GetConnectorsResponse
+    , getConnectorsResponse
+    , GetConnectorsResponse
     -- * Response Lenses
-  , gcrsConnectorList
-  , gcrsNextToken
-  , gcrsResponseStatus
-  ) where
+    , gcrsConnectorList
+    , gcrsNextToken
+    , gcrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Pager
@@ -51,6 +55,7 @@ data GetConnectors =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetConnectors' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -58,59 +63,63 @@ data GetConnectors =
 -- * 'gcNextToken' - Undocumented member.
 --
 -- * 'gcMaxResults' - Undocumented member.
-getConnectors :: GetConnectors
+getConnectors
+    :: GetConnectors
 getConnectors = GetConnectors' {_gcNextToken = Nothing, _gcMaxResults = Nothing}
+
 
 -- | Undocumented member.
 gcNextToken :: Lens' GetConnectors (Maybe Text)
-gcNextToken = lens _gcNextToken (\s a -> s {_gcNextToken = a})
+gcNextToken = lens _gcNextToken (\ s a -> s{_gcNextToken = a})
 
 -- | Undocumented member.
 gcMaxResults :: Lens' GetConnectors (Maybe Int)
-gcMaxResults = lens _gcMaxResults (\s a -> s {_gcMaxResults = a})
+gcMaxResults = lens _gcMaxResults (\ s a -> s{_gcMaxResults = a})
 
 instance AWSPager GetConnectors where
-  page rq rs
-    | stop (rs ^. gcrsNextToken) = Nothing
-    | stop (rs ^. gcrsConnectorList) = Nothing
-    | otherwise = Just $ rq & gcNextToken .~ rs ^. gcrsNextToken
+        page rq rs
+          | stop (rs ^. gcrsNextToken) = Nothing
+          | stop (rs ^. gcrsConnectorList) = Nothing
+          | otherwise =
+            Just $ rq & gcNextToken .~ rs ^. gcrsNextToken
 
 instance AWSRequest GetConnectors where
-  type Rs GetConnectors = GetConnectorsResponse
-  request = postJSON sms
-  response =
-    receiveJSON
-      (\s h x ->
-         GetConnectorsResponse' <$> (x .?> "connectorList" .!@ mempty) <*>
-         (x .?> "nextToken") <*>
-         (pure (fromEnum s)))
+        type Rs GetConnectors = GetConnectorsResponse
+        request = postJSON sms
+        response
+          = receiveJSON
+              (\ s h x ->
+                 GetConnectorsResponse' <$>
+                   (x .?> "connectorList" .!@ mempty) <*>
+                     (x .?> "nextToken")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable GetConnectors
+instance Hashable GetConnectors where
 
-instance NFData GetConnectors
+instance NFData GetConnectors where
 
 instance ToHeaders GetConnectors where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AWSServerMigrationService_V2016_10_24.GetConnectors" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWSServerMigrationService_V2016_10_24.GetConnectors"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON GetConnectors where
-  toJSON GetConnectors' {..} =
-    object
-      (catMaybes
-         [ ("nextToken" .=) <$> _gcNextToken
-         , ("maxResults" .=) <$> _gcMaxResults
-         ])
+        toJSON GetConnectors'{..}
+          = object
+              (catMaybes
+                 [("nextToken" .=) <$> _gcNextToken,
+                  ("maxResults" .=) <$> _gcMaxResults])
 
 instance ToPath GetConnectors where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery GetConnectors where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'getConnectorsResponse' smart constructor.
 data GetConnectorsResponse =
@@ -121,6 +130,7 @@ data GetConnectorsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetConnectorsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -130,9 +140,9 @@ data GetConnectorsResponse =
 -- * 'gcrsNextToken' - Undocumented member.
 --
 -- * 'gcrsResponseStatus' - -- | The response status code.
-getConnectorsResponse ::
-     Int -- ^ 'gcrsResponseStatus'
-  -> GetConnectorsResponse
+getConnectorsResponse
+    :: Int -- ^ 'gcrsResponseStatus'
+    -> GetConnectorsResponse
 getConnectorsResponse pResponseStatus_ =
   GetConnectorsResponse'
     { _gcrsConnectorList = Nothing
@@ -140,19 +150,17 @@ getConnectorsResponse pResponseStatus_ =
     , _gcrsResponseStatus = pResponseStatus_
     }
 
+
 -- | Undocumented member.
 gcrsConnectorList :: Lens' GetConnectorsResponse [Connector]
-gcrsConnectorList =
-  lens _gcrsConnectorList (\s a -> s {_gcrsConnectorList = a}) .
-  _Default . _Coerce
+gcrsConnectorList = lens _gcrsConnectorList (\ s a -> s{_gcrsConnectorList = a}) . _Default . _Coerce
 
 -- | Undocumented member.
 gcrsNextToken :: Lens' GetConnectorsResponse (Maybe Text)
-gcrsNextToken = lens _gcrsNextToken (\s a -> s {_gcrsNextToken = a})
+gcrsNextToken = lens _gcrsNextToken (\ s a -> s{_gcrsNextToken = a})
 
 -- | -- | The response status code.
 gcrsResponseStatus :: Lens' GetConnectorsResponse Int
-gcrsResponseStatus =
-  lens _gcrsResponseStatus (\s a -> s {_gcrsResponseStatus = a})
+gcrsResponseStatus = lens _gcrsResponseStatus (\ s a -> s{_gcrsResponseStatus = a})
 
-instance NFData GetConnectorsResponse
+instance NFData GetConnectorsResponse where

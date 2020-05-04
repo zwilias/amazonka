@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SageMaker
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -12,281 +13,373 @@
 --
 -- Definition of the public APIs exposed by SageMaker
 module Network.AWS.SageMaker
+    (
     -- * Service Configuration
-  ( sageMaker
+      sageMaker
+
     -- * Errors
     -- $errors
+
     -- ** ResourceLimitExceeded
-  , _ResourceLimitExceeded
+    , _ResourceLimitExceeded
+
     -- ** ResourceInUse
-  , _ResourceInUse
+    , _ResourceInUse
+
     -- ** ResourceNotFound
-  , _ResourceNotFound
+    , _ResourceNotFound
+
     -- * Waiters
     -- $waiters
+
     -- ** NotebookInstanceDeleted
-  , notebookInstanceDeleted
+    , notebookInstanceDeleted
+
     -- ** EndpointDeleted
-  , endpointDeleted
+    , endpointDeleted
+
     -- ** EndpointInService
-  , endpointInService
+    , endpointInService
+
     -- ** NotebookInstanceInService
-  , notebookInstanceInService
+    , notebookInstanceInService
+
     -- ** TrainingJobCompletedOrStopped
-  , trainingJobCompletedOrStopped
+    , trainingJobCompletedOrStopped
+
     -- ** NotebookInstanceStopped
-  , notebookInstanceStopped
+    , notebookInstanceStopped
+
     -- * Operations
     -- $operations
+
     -- ** CreateNotebookInstance
-  , module Network.AWS.SageMaker.CreateNotebookInstance
+    , module Network.AWS.SageMaker.CreateNotebookInstance
+
     -- ** DescribeEndpointConfig
-  , module Network.AWS.SageMaker.DescribeEndpointConfig
+    , module Network.AWS.SageMaker.DescribeEndpointConfig
+
     -- ** CreateEndpoint
-  , module Network.AWS.SageMaker.CreateEndpoint
+    , module Network.AWS.SageMaker.CreateEndpoint
+
     -- ** DescribeTrainingJob
-  , module Network.AWS.SageMaker.DescribeTrainingJob
+    , module Network.AWS.SageMaker.DescribeTrainingJob
+
     -- ** DeleteEndpoint
-  , module Network.AWS.SageMaker.DeleteEndpoint
+    , module Network.AWS.SageMaker.DeleteEndpoint
+
     -- ** UpdateEndpoint
-  , module Network.AWS.SageMaker.UpdateEndpoint
+    , module Network.AWS.SageMaker.UpdateEndpoint
+
     -- ** DeleteNotebookInstanceLifecycleConfig
-  , module Network.AWS.SageMaker.DeleteNotebookInstanceLifecycleConfig
+    , module Network.AWS.SageMaker.DeleteNotebookInstanceLifecycleConfig
+
     -- ** UpdateNotebookInstanceLifecycleConfig
-  , module Network.AWS.SageMaker.UpdateNotebookInstanceLifecycleConfig
+    , module Network.AWS.SageMaker.UpdateNotebookInstanceLifecycleConfig
+
     -- ** DescribeNotebookInstance
-  , module Network.AWS.SageMaker.DescribeNotebookInstance
+    , module Network.AWS.SageMaker.DescribeNotebookInstance
+
     -- ** CreateEndpointConfig
-  , module Network.AWS.SageMaker.CreateEndpointConfig
+    , module Network.AWS.SageMaker.CreateEndpointConfig
+
     -- ** StopNotebookInstance
-  , module Network.AWS.SageMaker.StopNotebookInstance
+    , module Network.AWS.SageMaker.StopNotebookInstance
+
     -- ** UpdateEndpointWeightsAndCapacities
-  , module Network.AWS.SageMaker.UpdateEndpointWeightsAndCapacities
+    , module Network.AWS.SageMaker.UpdateEndpointWeightsAndCapacities
+
     -- ** DeleteTags
-  , module Network.AWS.SageMaker.DeleteTags
+    , module Network.AWS.SageMaker.DeleteTags
+
     -- ** DeleteEndpointConfig
-  , module Network.AWS.SageMaker.DeleteEndpointConfig
+    , module Network.AWS.SageMaker.DeleteEndpointConfig
+
     -- ** CreateModel
-  , module Network.AWS.SageMaker.CreateModel
+    , module Network.AWS.SageMaker.CreateModel
+
     -- ** DeleteModel
-  , module Network.AWS.SageMaker.DeleteModel
+    , module Network.AWS.SageMaker.DeleteModel
+
     -- ** ListModels (Paginated)
-  , module Network.AWS.SageMaker.ListModels
+    , module Network.AWS.SageMaker.ListModels
+
     -- ** DescribeNotebookInstanceLifecycleConfig
-  , module Network.AWS.SageMaker.DescribeNotebookInstanceLifecycleConfig
+    , module Network.AWS.SageMaker.DescribeNotebookInstanceLifecycleConfig
+
     -- ** ListNotebookInstances (Paginated)
-  , module Network.AWS.SageMaker.ListNotebookInstances
+    , module Network.AWS.SageMaker.ListNotebookInstances
+
     -- ** DeleteNotebookInstance
-  , module Network.AWS.SageMaker.DeleteNotebookInstance
+    , module Network.AWS.SageMaker.DeleteNotebookInstance
+
     -- ** UpdateNotebookInstance
-  , module Network.AWS.SageMaker.UpdateNotebookInstance
+    , module Network.AWS.SageMaker.UpdateNotebookInstance
+
     -- ** StopTrainingJob
-  , module Network.AWS.SageMaker.StopTrainingJob
+    , module Network.AWS.SageMaker.StopTrainingJob
+
     -- ** DescribeModel
-  , module Network.AWS.SageMaker.DescribeModel
+    , module Network.AWS.SageMaker.DescribeModel
+
     -- ** ListEndpoints (Paginated)
-  , module Network.AWS.SageMaker.ListEndpoints
+    , module Network.AWS.SageMaker.ListEndpoints
+
     -- ** CreatePresignedNotebookInstanceURL
-  , module Network.AWS.SageMaker.CreatePresignedNotebookInstanceURL
+    , module Network.AWS.SageMaker.CreatePresignedNotebookInstanceURL
+
     -- ** ListNotebookInstanceLifecycleConfigs
-  , module Network.AWS.SageMaker.ListNotebookInstanceLifecycleConfigs
+    , module Network.AWS.SageMaker.ListNotebookInstanceLifecycleConfigs
+
     -- ** CreateNotebookInstanceLifecycleConfig
-  , module Network.AWS.SageMaker.CreateNotebookInstanceLifecycleConfig
+    , module Network.AWS.SageMaker.CreateNotebookInstanceLifecycleConfig
+
     -- ** StartNotebookInstance
-  , module Network.AWS.SageMaker.StartNotebookInstance
+    , module Network.AWS.SageMaker.StartNotebookInstance
+
     -- ** AddTags
-  , module Network.AWS.SageMaker.AddTags
+    , module Network.AWS.SageMaker.AddTags
+
     -- ** ListEndpointConfigs (Paginated)
-  , module Network.AWS.SageMaker.ListEndpointConfigs
+    , module Network.AWS.SageMaker.ListEndpointConfigs
+
     -- ** ListTags (Paginated)
-  , module Network.AWS.SageMaker.ListTags
+    , module Network.AWS.SageMaker.ListTags
+
     -- ** CreateTrainingJob
-  , module Network.AWS.SageMaker.CreateTrainingJob
+    , module Network.AWS.SageMaker.CreateTrainingJob
+
     -- ** DescribeEndpoint
-  , module Network.AWS.SageMaker.DescribeEndpoint
+    , module Network.AWS.SageMaker.DescribeEndpoint
+
     -- ** ListTrainingJobs (Paginated)
-  , module Network.AWS.SageMaker.ListTrainingJobs
+    , module Network.AWS.SageMaker.ListTrainingJobs
+
     -- * Types
+
     -- ** CompressionType
-  , CompressionType(..)
+    , CompressionType (..)
+
     -- ** DirectInternetAccess
-  , DirectInternetAccess(..)
+    , DirectInternetAccess (..)
+
     -- ** EndpointConfigSortKey
-  , EndpointConfigSortKey(..)
+    , EndpointConfigSortKey (..)
+
     -- ** EndpointSortKey
-  , EndpointSortKey(..)
+    , EndpointSortKey (..)
+
     -- ** EndpointStatus
-  , EndpointStatus(..)
+    , EndpointStatus (..)
+
     -- ** InstanceType
-  , InstanceType(..)
+    , InstanceType (..)
+
     -- ** ModelSortKey
-  , ModelSortKey(..)
+    , ModelSortKey (..)
+
     -- ** NotebookInstanceLifecycleConfigSortKey
-  , NotebookInstanceLifecycleConfigSortKey(..)
+    , NotebookInstanceLifecycleConfigSortKey (..)
+
     -- ** NotebookInstanceLifecycleConfigSortOrder
-  , NotebookInstanceLifecycleConfigSortOrder(..)
+    , NotebookInstanceLifecycleConfigSortOrder (..)
+
     -- ** NotebookInstanceSortKey
-  , NotebookInstanceSortKey(..)
+    , NotebookInstanceSortKey (..)
+
     -- ** NotebookInstanceSortOrder
-  , NotebookInstanceSortOrder(..)
+    , NotebookInstanceSortOrder (..)
+
     -- ** NotebookInstanceStatus
-  , NotebookInstanceStatus(..)
+    , NotebookInstanceStatus (..)
+
     -- ** OrderKey
-  , OrderKey(..)
+    , OrderKey (..)
+
     -- ** ProductionVariantInstanceType
-  , ProductionVariantInstanceType(..)
+    , ProductionVariantInstanceType (..)
+
     -- ** RecordWrapper
-  , RecordWrapper(..)
+    , RecordWrapper (..)
+
     -- ** S3DataDistribution
-  , S3DataDistribution(..)
+    , S3DataDistribution (..)
+
     -- ** S3DataType
-  , S3DataType(..)
+    , S3DataType (..)
+
     -- ** SecondaryStatus
-  , SecondaryStatus(..)
+    , SecondaryStatus (..)
+
     -- ** SortBy
-  , SortBy(..)
+    , SortBy (..)
+
     -- ** SortOrder
-  , SortOrder(..)
+    , SortOrder (..)
+
     -- ** TrainingInputMode
-  , TrainingInputMode(..)
+    , TrainingInputMode (..)
+
     -- ** TrainingInstanceType
-  , TrainingInstanceType(..)
+    , TrainingInstanceType (..)
+
     -- ** TrainingJobStatus
-  , TrainingJobStatus(..)
+    , TrainingJobStatus (..)
+
     -- ** AlgorithmSpecification
-  , AlgorithmSpecification
-  , algorithmSpecification
-  , asTrainingImage
-  , asTrainingInputMode
+    , AlgorithmSpecification
+    , algorithmSpecification
+    , asTrainingImage
+    , asTrainingInputMode
+
     -- ** Channel
-  , Channel
-  , channel
-  , cRecordWrapperType
-  , cCompressionType
-  , cContentType
-  , cChannelName
-  , cDataSource
+    , Channel
+    , channel
+    , cRecordWrapperType
+    , cCompressionType
+    , cContentType
+    , cChannelName
+    , cDataSource
+
     -- ** ContainerDefinition
-  , ContainerDefinition
-  , containerDefinition
-  , cdModelDataURL
-  , cdEnvironment
-  , cdContainerHostname
-  , cdImage
+    , ContainerDefinition
+    , containerDefinition
+    , cdModelDataURL
+    , cdEnvironment
+    , cdContainerHostname
+    , cdImage
+
     -- ** DataSource
-  , DataSource
-  , dataSource
-  , dsS3DataSource
+    , DataSource
+    , dataSource
+    , dsS3DataSource
+
     -- ** DesiredWeightAndCapacity
-  , DesiredWeightAndCapacity
-  , desiredWeightAndCapacity
-  , dwacDesiredInstanceCount
-  , dwacDesiredWeight
-  , dwacVariantName
+    , DesiredWeightAndCapacity
+    , desiredWeightAndCapacity
+    , dwacDesiredInstanceCount
+    , dwacDesiredWeight
+    , dwacVariantName
+
     -- ** EndpointConfigSummary
-  , EndpointConfigSummary
-  , endpointConfigSummary
-  , ecsEndpointConfigName
-  , ecsEndpointConfigARN
-  , ecsCreationTime
+    , EndpointConfigSummary
+    , endpointConfigSummary
+    , ecsEndpointConfigName
+    , ecsEndpointConfigARN
+    , ecsCreationTime
+
     -- ** EndpointSummary
-  , EndpointSummary
-  , endpointSummary
-  , esEndpointName
-  , esEndpointARN
-  , esCreationTime
-  , esLastModifiedTime
-  , esEndpointStatus
+    , EndpointSummary
+    , endpointSummary
+    , esEndpointName
+    , esEndpointARN
+    , esCreationTime
+    , esLastModifiedTime
+    , esEndpointStatus
+
     -- ** ModelArtifacts
-  , ModelArtifacts
-  , modelArtifacts
-  , maS3ModelArtifacts
+    , ModelArtifacts
+    , modelArtifacts
+    , maS3ModelArtifacts
+
     -- ** ModelSummary
-  , ModelSummary
-  , modelSummary
-  , msModelName
-  , msModelARN
-  , msCreationTime
+    , ModelSummary
+    , modelSummary
+    , msModelName
+    , msModelARN
+    , msCreationTime
+
     -- ** NotebookInstanceLifecycleConfigSummary
-  , NotebookInstanceLifecycleConfigSummary
-  , notebookInstanceLifecycleConfigSummary
-  , nilcsCreationTime
-  , nilcsLastModifiedTime
-  , nilcsNotebookInstanceLifecycleConfigName
-  , nilcsNotebookInstanceLifecycleConfigARN
+    , NotebookInstanceLifecycleConfigSummary
+    , notebookInstanceLifecycleConfigSummary
+    , nilcsCreationTime
+    , nilcsLastModifiedTime
+    , nilcsNotebookInstanceLifecycleConfigName
+    , nilcsNotebookInstanceLifecycleConfigARN
+
     -- ** NotebookInstanceLifecycleHook
-  , NotebookInstanceLifecycleHook
-  , notebookInstanceLifecycleHook
-  , nilhContent
+    , NotebookInstanceLifecycleHook
+    , notebookInstanceLifecycleHook
+    , nilhContent
+
     -- ** NotebookInstanceSummary
-  , NotebookInstanceSummary
-  , notebookInstanceSummary
-  , nisCreationTime
-  , nisURL
-  , nisLastModifiedTime
-  , nisInstanceType
-  , nisNotebookInstanceStatus
-  , nisNotebookInstanceLifecycleConfigName
-  , nisNotebookInstanceName
-  , nisNotebookInstanceARN
+    , NotebookInstanceSummary
+    , notebookInstanceSummary
+    , nisCreationTime
+    , nisURL
+    , nisLastModifiedTime
+    , nisInstanceType
+    , nisNotebookInstanceStatus
+    , nisNotebookInstanceLifecycleConfigName
+    , nisNotebookInstanceName
+    , nisNotebookInstanceARN
+
     -- ** OutputDataConfig
-  , OutputDataConfig
-  , outputDataConfig
-  , odcKMSKeyId
-  , odcS3OutputPath
+    , OutputDataConfig
+    , outputDataConfig
+    , odcKMSKeyId
+    , odcS3OutputPath
+
     -- ** ProductionVariant
-  , ProductionVariant
-  , productionVariant
-  , pvInitialVariantWeight
-  , pvVariantName
-  , pvModelName
-  , pvInitialInstanceCount
-  , pvInstanceType
+    , ProductionVariant
+    , productionVariant
+    , pvInitialVariantWeight
+    , pvVariantName
+    , pvModelName
+    , pvInitialInstanceCount
+    , pvInstanceType
+
     -- ** ProductionVariantSummary
-  , ProductionVariantSummary
-  , productionVariantSummary
-  , pvsDesiredInstanceCount
-  , pvsDesiredWeight
-  , pvsCurrentWeight
-  , pvsCurrentInstanceCount
-  , pvsVariantName
+    , ProductionVariantSummary
+    , productionVariantSummary
+    , pvsDesiredInstanceCount
+    , pvsDesiredWeight
+    , pvsCurrentWeight
+    , pvsCurrentInstanceCount
+    , pvsVariantName
+
     -- ** ResourceConfig
-  , ResourceConfig
-  , resourceConfig
-  , rcVolumeKMSKeyId
-  , rcInstanceType
-  , rcInstanceCount
-  , rcVolumeSizeInGB
+    , ResourceConfig
+    , resourceConfig
+    , rcVolumeKMSKeyId
+    , rcInstanceType
+    , rcInstanceCount
+    , rcVolumeSizeInGB
+
     -- ** S3DataSource
-  , S3DataSource
-  , s3DataSource
-  , sdsS3DataDistributionType
-  , sdsS3DataType
-  , sdsS3URI
+    , S3DataSource
+    , s3DataSource
+    , sdsS3DataDistributionType
+    , sdsS3DataType
+    , sdsS3URI
+
     -- ** StoppingCondition
-  , StoppingCondition
-  , stoppingCondition
-  , scMaxRuntimeInSeconds
+    , StoppingCondition
+    , stoppingCondition
+    , scMaxRuntimeInSeconds
+
     -- ** Tag
-  , Tag
-  , tag
-  , tagKey
-  , tagValue
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
+
     -- ** TrainingJobSummary
-  , TrainingJobSummary
-  , trainingJobSummary
-  , tjsTrainingEndTime
-  , tjsLastModifiedTime
-  , tjsTrainingJobName
-  , tjsTrainingJobARN
-  , tjsCreationTime
-  , tjsTrainingJobStatus
+    , TrainingJobSummary
+    , trainingJobSummary
+    , tjsTrainingEndTime
+    , tjsLastModifiedTime
+    , tjsTrainingJobName
+    , tjsTrainingJobARN
+    , tjsCreationTime
+    , tjsTrainingJobStatus
+
     -- ** VPCConfig
-  , VPCConfig
-  , vpcConfig
-  , vcSecurityGroupIds
-  , vcSubnets
-  ) where
+    , VPCConfig
+    , vpcConfig
+    , vcSecurityGroupIds
+    , vcSubnets
+    ) where
 
 import Network.AWS.SageMaker.AddTags
 import Network.AWS.SageMaker.CreateEndpoint
@@ -324,12 +417,14 @@ import Network.AWS.SageMaker.UpdateEndpointWeightsAndCapacities
 import Network.AWS.SageMaker.UpdateNotebookInstance
 import Network.AWS.SageMaker.UpdateNotebookInstanceLifecycleConfig
 import Network.AWS.SageMaker.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'SageMaker'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -346,6 +441,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Transcribe.StartTranscriptionJob
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,23 +22,25 @@
 --
 --
 module Network.AWS.Transcribe.StartTranscriptionJob
+    (
     -- * Creating a Request
-  ( startTranscriptionJob
-  , StartTranscriptionJob
+      startTranscriptionJob
+    , StartTranscriptionJob
     -- * Request Lenses
-  , stjSettings
-  , stjMediaSampleRateHertz
-  , stjTranscriptionJobName
-  , stjLanguageCode
-  , stjMediaFormat
-  , stjMedia
+    , stjSettings
+    , stjMediaSampleRateHertz
+    , stjTranscriptionJobName
+    , stjLanguageCode
+    , stjMediaFormat
+    , stjMedia
+
     -- * Destructuring the Response
-  , startTranscriptionJobResponse
-  , StartTranscriptionJobResponse
+    , startTranscriptionJobResponse
+    , StartTranscriptionJobResponse
     -- * Response Lenses
-  , stjrsTranscriptionJob
-  , stjrsResponseStatus
-  ) where
+    , stjrsTranscriptionJob
+    , stjrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -57,6 +61,7 @@ data StartTranscriptionJob =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'StartTranscriptionJob' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -72,12 +77,12 @@ data StartTranscriptionJob =
 -- * 'stjMediaFormat' - The format of the input media file.
 --
 -- * 'stjMedia' - An object that describes the input media for a transcription job.
-startTranscriptionJob ::
-     Text -- ^ 'stjTranscriptionJobName'
-  -> LanguageCode -- ^ 'stjLanguageCode'
-  -> MediaFormat -- ^ 'stjMediaFormat'
-  -> Media -- ^ 'stjMedia'
-  -> StartTranscriptionJob
+startTranscriptionJob
+    :: Text -- ^ 'stjTranscriptionJobName'
+    -> LanguageCode -- ^ 'stjLanguageCode'
+    -> MediaFormat -- ^ 'stjMediaFormat'
+    -> Media -- ^ 'stjMedia'
+    -> StartTranscriptionJob
 startTranscriptionJob pTranscriptionJobName_ pLanguageCode_ pMediaFormat_ pMedia_ =
   StartTranscriptionJob'
     { _stjSettings = Nothing
@@ -88,71 +93,72 @@ startTranscriptionJob pTranscriptionJobName_ pLanguageCode_ pMediaFormat_ pMedia
     , _stjMedia = pMedia_
     }
 
+
 -- | A @Settings@ object that provides optional settings for a transcription job.
 stjSettings :: Lens' StartTranscriptionJob (Maybe Settings)
-stjSettings = lens _stjSettings (\s a -> s {_stjSettings = a})
+stjSettings = lens _stjSettings (\ s a -> s{_stjSettings = a})
 
 -- | The sample rate, in Hertz, of the audio track in the input media file.
 stjMediaSampleRateHertz :: Lens' StartTranscriptionJob (Maybe Natural)
-stjMediaSampleRateHertz =
-  lens _stjMediaSampleRateHertz (\s a -> s {_stjMediaSampleRateHertz = a}) .
-  mapping _Nat
+stjMediaSampleRateHertz = lens _stjMediaSampleRateHertz (\ s a -> s{_stjMediaSampleRateHertz = a}) . mapping _Nat
 
 -- | The name of the job. The name must be unique within an AWS account.
 stjTranscriptionJobName :: Lens' StartTranscriptionJob Text
-stjTranscriptionJobName =
-  lens _stjTranscriptionJobName (\s a -> s {_stjTranscriptionJobName = a})
+stjTranscriptionJobName = lens _stjTranscriptionJobName (\ s a -> s{_stjTranscriptionJobName = a})
 
 -- | The language code for the language used in the input media file.
 stjLanguageCode :: Lens' StartTranscriptionJob LanguageCode
-stjLanguageCode = lens _stjLanguageCode (\s a -> s {_stjLanguageCode = a})
+stjLanguageCode = lens _stjLanguageCode (\ s a -> s{_stjLanguageCode = a})
 
 -- | The format of the input media file.
 stjMediaFormat :: Lens' StartTranscriptionJob MediaFormat
-stjMediaFormat = lens _stjMediaFormat (\s a -> s {_stjMediaFormat = a})
+stjMediaFormat = lens _stjMediaFormat (\ s a -> s{_stjMediaFormat = a})
 
 -- | An object that describes the input media for a transcription job.
 stjMedia :: Lens' StartTranscriptionJob Media
-stjMedia = lens _stjMedia (\s a -> s {_stjMedia = a})
+stjMedia = lens _stjMedia (\ s a -> s{_stjMedia = a})
 
 instance AWSRequest StartTranscriptionJob where
-  type Rs StartTranscriptionJob = StartTranscriptionJobResponse
-  request = postJSON transcribe
-  response =
-    receiveJSON
-      (\s h x ->
-         StartTranscriptionJobResponse' <$> (x .?> "TranscriptionJob") <*>
-         (pure (fromEnum s)))
+        type Rs StartTranscriptionJob =
+             StartTranscriptionJobResponse
+        request = postJSON transcribe
+        response
+          = receiveJSON
+              (\ s h x ->
+                 StartTranscriptionJobResponse' <$>
+                   (x .?> "TranscriptionJob") <*> (pure (fromEnum s)))
 
-instance Hashable StartTranscriptionJob
+instance Hashable StartTranscriptionJob where
 
-instance NFData StartTranscriptionJob
+instance NFData StartTranscriptionJob where
 
 instance ToHeaders StartTranscriptionJob where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("Transcribe.StartTranscriptionJob" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("Transcribe.StartTranscriptionJob" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON StartTranscriptionJob where
-  toJSON StartTranscriptionJob' {..} =
-    object
-      (catMaybes
-         [ ("Settings" .=) <$> _stjSettings
-         , ("MediaSampleRateHertz" .=) <$> _stjMediaSampleRateHertz
-         , Just ("TranscriptionJobName" .= _stjTranscriptionJobName)
-         , Just ("LanguageCode" .= _stjLanguageCode)
-         , Just ("MediaFormat" .= _stjMediaFormat)
-         , Just ("Media" .= _stjMedia)
-         ])
+        toJSON StartTranscriptionJob'{..}
+          = object
+              (catMaybes
+                 [("Settings" .=) <$> _stjSettings,
+                  ("MediaSampleRateHertz" .=) <$>
+                    _stjMediaSampleRateHertz,
+                  Just
+                    ("TranscriptionJobName" .= _stjTranscriptionJobName),
+                  Just ("LanguageCode" .= _stjLanguageCode),
+                  Just ("MediaFormat" .= _stjMediaFormat),
+                  Just ("Media" .= _stjMedia)])
 
 instance ToPath StartTranscriptionJob where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery StartTranscriptionJob where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'startTranscriptionJobResponse' smart constructor.
 data StartTranscriptionJobResponse =
@@ -162,6 +168,7 @@ data StartTranscriptionJobResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'StartTranscriptionJobResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -169,22 +176,20 @@ data StartTranscriptionJobResponse =
 -- * 'stjrsTranscriptionJob' - An object containing details of the asynchronous transcription job.
 --
 -- * 'stjrsResponseStatus' - -- | The response status code.
-startTranscriptionJobResponse ::
-     Int -- ^ 'stjrsResponseStatus'
-  -> StartTranscriptionJobResponse
+startTranscriptionJobResponse
+    :: Int -- ^ 'stjrsResponseStatus'
+    -> StartTranscriptionJobResponse
 startTranscriptionJobResponse pResponseStatus_ =
   StartTranscriptionJobResponse'
     {_stjrsTranscriptionJob = Nothing, _stjrsResponseStatus = pResponseStatus_}
 
+
 -- | An object containing details of the asynchronous transcription job.
-stjrsTranscriptionJob ::
-     Lens' StartTranscriptionJobResponse (Maybe TranscriptionJob)
-stjrsTranscriptionJob =
-  lens _stjrsTranscriptionJob (\s a -> s {_stjrsTranscriptionJob = a})
+stjrsTranscriptionJob :: Lens' StartTranscriptionJobResponse (Maybe TranscriptionJob)
+stjrsTranscriptionJob = lens _stjrsTranscriptionJob (\ s a -> s{_stjrsTranscriptionJob = a})
 
 -- | -- | The response status code.
 stjrsResponseStatus :: Lens' StartTranscriptionJobResponse Int
-stjrsResponseStatus =
-  lens _stjrsResponseStatus (\s a -> s {_stjrsResponseStatus = a})
+stjrsResponseStatus = lens _stjrsResponseStatus (\ s a -> s{_stjrsResponseStatus = a})
 
-instance NFData StartTranscriptionJobResponse
+instance NFData StartTranscriptionJobResponse where

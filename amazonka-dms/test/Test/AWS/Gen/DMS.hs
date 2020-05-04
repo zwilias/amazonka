@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Test.AWS.Gen.DMS
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -23,6 +24,7 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
+
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -43,6 +45,9 @@ import Test.Tasty
 --
 --         , requestDescribeSchemas $
 --             describeSchemas
+--
+--         , requestDeleteConnection $
+--             deleteConnection
 --
 --         , requestModifyEventSubscription $
 --             modifyEventSubscription
@@ -122,6 +127,9 @@ import Test.Tasty
 --         , requestDescribeOrderableReplicationInstances $
 --             describeOrderableReplicationInstances
 --
+--         , requestDescribePendingMaintenanceActions $
+--             describePendingMaintenanceActions
+--
 --         , requestCreateReplicationTask $
 --             createReplicationTask
 --
@@ -136,6 +144,9 @@ import Test.Tasty
 --
 --         , requestModifyReplicationSubnetGroup $
 --             modifyReplicationSubnetGroup
+--
+--         , requestApplyPendingMaintenanceAction $
+--             applyPendingMaintenanceAction
 --
 --         , requestDescribeAccountAttributes $
 --             describeAccountAttributes
@@ -159,6 +170,7 @@ import Test.Tasty
 --             deleteReplicationSubnetGroup
 --
 --           ]
+
 --     , testGroup "response"
 --         [ responseDeleteReplicationInstance $
 --             deleteReplicationInstanceResponse
@@ -177,6 +189,9 @@ import Test.Tasty
 --
 --         , responseDescribeSchemas $
 --             describeSchemasResponse
+--
+--         , responseDeleteConnection $
+--             deleteConnectionResponse
 --
 --         , responseModifyEventSubscription $
 --             modifyEventSubscriptionResponse
@@ -256,6 +271,9 @@ import Test.Tasty
 --         , responseDescribeOrderableReplicationInstances $
 --             describeOrderableReplicationInstancesResponse
 --
+--         , responseDescribePendingMaintenanceActions $
+--             describePendingMaintenanceActionsResponse
+--
 --         , responseCreateReplicationTask $
 --             createReplicationTaskResponse
 --
@@ -270,6 +288,9 @@ import Test.Tasty
 --
 --         , responseModifyReplicationSubnetGroup $
 --             modifyReplicationSubnetGroupResponse
+--
+--         , responseApplyPendingMaintenanceAction $
+--             applyPendingMaintenanceActionResponse
 --
 --         , responseDescribeAccountAttributes $
 --             describeAccountAttributesResponse
@@ -294,554 +315,570 @@ import Test.Tasty
 --
 --           ]
 --     ]
+
 -- Requests
+
 requestDeleteReplicationInstance :: DeleteReplicationInstance -> TestTree
-requestDeleteReplicationInstance =
-  req "DeleteReplicationInstance" "fixture/DeleteReplicationInstance.yaml"
+requestDeleteReplicationInstance = req
+    "DeleteReplicationInstance"
+    "fixture/DeleteReplicationInstance.yaml"
 
 requestRebootReplicationInstance :: RebootReplicationInstance -> TestTree
-requestRebootReplicationInstance =
-  req "RebootReplicationInstance" "fixture/RebootReplicationInstance.yaml"
+requestRebootReplicationInstance = req
+    "RebootReplicationInstance"
+    "fixture/RebootReplicationInstance.yaml"
 
 requestReloadTables :: ReloadTables -> TestTree
-requestReloadTables = req "ReloadTables" "fixture/ReloadTables.yaml"
+requestReloadTables = req
+    "ReloadTables"
+    "fixture/ReloadTables.yaml"
 
-requestStartReplicationTaskAssessment ::
-     StartReplicationTaskAssessment -> TestTree
-requestStartReplicationTaskAssessment =
-  req
+requestStartReplicationTaskAssessment :: StartReplicationTaskAssessment -> TestTree
+requestStartReplicationTaskAssessment = req
     "StartReplicationTaskAssessment"
     "fixture/StartReplicationTaskAssessment.yaml"
 
 requestCreateEndpoint :: CreateEndpoint -> TestTree
-requestCreateEndpoint = req "CreateEndpoint" "fixture/CreateEndpoint.yaml"
+requestCreateEndpoint = req
+    "CreateEndpoint"
+    "fixture/CreateEndpoint.yaml"
 
 requestDescribeSchemas :: DescribeSchemas -> TestTree
-requestDescribeSchemas = req "DescribeSchemas" "fixture/DescribeSchemas.yaml"
+requestDescribeSchemas = req
+    "DescribeSchemas"
+    "fixture/DescribeSchemas.yaml"
+
+requestDeleteConnection :: DeleteConnection -> TestTree
+requestDeleteConnection = req
+    "DeleteConnection"
+    "fixture/DeleteConnection.yaml"
 
 requestModifyEventSubscription :: ModifyEventSubscription -> TestTree
-requestModifyEventSubscription =
-  req "ModifyEventSubscription" "fixture/ModifyEventSubscription.yaml"
+requestModifyEventSubscription = req
+    "ModifyEventSubscription"
+    "fixture/ModifyEventSubscription.yaml"
 
-requestDescribeReplicationInstanceTaskLogs ::
-     DescribeReplicationInstanceTaskLogs -> TestTree
-requestDescribeReplicationInstanceTaskLogs =
-  req
+requestDescribeReplicationInstanceTaskLogs :: DescribeReplicationInstanceTaskLogs -> TestTree
+requestDescribeReplicationInstanceTaskLogs = req
     "DescribeReplicationInstanceTaskLogs"
     "fixture/DescribeReplicationInstanceTaskLogs.yaml"
 
 requestDescribeEvents :: DescribeEvents -> TestTree
-requestDescribeEvents = req "DescribeEvents" "fixture/DescribeEvents.yaml"
+requestDescribeEvents = req
+    "DescribeEvents"
+    "fixture/DescribeEvents.yaml"
 
 requestDeleteEndpoint :: DeleteEndpoint -> TestTree
-requestDeleteEndpoint = req "DeleteEndpoint" "fixture/DeleteEndpoint.yaml"
+requestDeleteEndpoint = req
+    "DeleteEndpoint"
+    "fixture/DeleteEndpoint.yaml"
 
 requestListTagsForResource :: ListTagsForResource -> TestTree
-requestListTagsForResource =
-  req "ListTagsForResource" "fixture/ListTagsForResource.yaml"
+requestListTagsForResource = req
+    "ListTagsForResource"
+    "fixture/ListTagsForResource.yaml"
 
 requestDescribeEndpointTypes :: DescribeEndpointTypes -> TestTree
-requestDescribeEndpointTypes =
-  req "DescribeEndpointTypes" "fixture/DescribeEndpointTypes.yaml"
+requestDescribeEndpointTypes = req
+    "DescribeEndpointTypes"
+    "fixture/DescribeEndpointTypes.yaml"
 
 requestDeleteReplicationTask :: DeleteReplicationTask -> TestTree
-requestDeleteReplicationTask =
-  req "DeleteReplicationTask" "fixture/DeleteReplicationTask.yaml"
+requestDeleteReplicationTask = req
+    "DeleteReplicationTask"
+    "fixture/DeleteReplicationTask.yaml"
 
-requestDescribeReplicationTaskAssessmentResults ::
-     DescribeReplicationTaskAssessmentResults -> TestTree
-requestDescribeReplicationTaskAssessmentResults =
-  req
+requestDescribeReplicationTaskAssessmentResults :: DescribeReplicationTaskAssessmentResults -> TestTree
+requestDescribeReplicationTaskAssessmentResults = req
     "DescribeReplicationTaskAssessmentResults"
     "fixture/DescribeReplicationTaskAssessmentResults.yaml"
 
 requestTestConnection :: TestConnection -> TestTree
-requestTestConnection = req "TestConnection" "fixture/TestConnection.yaml"
+requestTestConnection = req
+    "TestConnection"
+    "fixture/TestConnection.yaml"
 
 requestDescribeConnections :: DescribeConnections -> TestTree
-requestDescribeConnections =
-  req "DescribeConnections" "fixture/DescribeConnections.yaml"
+requestDescribeConnections = req
+    "DescribeConnections"
+    "fixture/DescribeConnections.yaml"
 
 requestRemoveTagsFromResource :: RemoveTagsFromResource -> TestTree
-requestRemoveTagsFromResource =
-  req "RemoveTagsFromResource" "fixture/RemoveTagsFromResource.yaml"
+requestRemoveTagsFromResource = req
+    "RemoveTagsFromResource"
+    "fixture/RemoveTagsFromResource.yaml"
 
 requestModifyEndpoint :: ModifyEndpoint -> TestTree
-requestModifyEndpoint = req "ModifyEndpoint" "fixture/ModifyEndpoint.yaml"
+requestModifyEndpoint = req
+    "ModifyEndpoint"
+    "fixture/ModifyEndpoint.yaml"
 
 requestCreateEventSubscription :: CreateEventSubscription -> TestTree
-requestCreateEventSubscription =
-  req "CreateEventSubscription" "fixture/CreateEventSubscription.yaml"
+requestCreateEventSubscription = req
+    "CreateEventSubscription"
+    "fixture/CreateEventSubscription.yaml"
 
 requestDescribeCertificates :: DescribeCertificates -> TestTree
-requestDescribeCertificates =
-  req "DescribeCertificates" "fixture/DescribeCertificates.yaml"
+requestDescribeCertificates = req
+    "DescribeCertificates"
+    "fixture/DescribeCertificates.yaml"
 
 requestDeleteEventSubscription :: DeleteEventSubscription -> TestTree
-requestDeleteEventSubscription =
-  req "DeleteEventSubscription" "fixture/DeleteEventSubscription.yaml"
+requestDeleteEventSubscription = req
+    "DeleteEventSubscription"
+    "fixture/DeleteEventSubscription.yaml"
 
 requestDescribeTableStatistics :: DescribeTableStatistics -> TestTree
-requestDescribeTableStatistics =
-  req "DescribeTableStatistics" "fixture/DescribeTableStatistics.yaml"
+requestDescribeTableStatistics = req
+    "DescribeTableStatistics"
+    "fixture/DescribeTableStatistics.yaml"
 
-requestDescribeReplicationSubnetGroups ::
-     DescribeReplicationSubnetGroups -> TestTree
-requestDescribeReplicationSubnetGroups =
-  req
+requestDescribeReplicationSubnetGroups :: DescribeReplicationSubnetGroups -> TestTree
+requestDescribeReplicationSubnetGroups = req
     "DescribeReplicationSubnetGroups"
     "fixture/DescribeReplicationSubnetGroups.yaml"
 
 requestStartReplicationTask :: StartReplicationTask -> TestTree
-requestStartReplicationTask =
-  req "StartReplicationTask" "fixture/StartReplicationTask.yaml"
+requestStartReplicationTask = req
+    "StartReplicationTask"
+    "fixture/StartReplicationTask.yaml"
 
 requestDescribeEventSubscriptions :: DescribeEventSubscriptions -> TestTree
-requestDescribeEventSubscriptions =
-  req "DescribeEventSubscriptions" "fixture/DescribeEventSubscriptions.yaml"
+requestDescribeEventSubscriptions = req
+    "DescribeEventSubscriptions"
+    "fixture/DescribeEventSubscriptions.yaml"
 
 requestAddTagsToResource :: AddTagsToResource -> TestTree
-requestAddTagsToResource =
-  req "AddTagsToResource" "fixture/AddTagsToResource.yaml"
+requestAddTagsToResource = req
+    "AddTagsToResource"
+    "fixture/AddTagsToResource.yaml"
 
 requestCreateReplicationSubnetGroup :: CreateReplicationSubnetGroup -> TestTree
-requestCreateReplicationSubnetGroup =
-  req "CreateReplicationSubnetGroup" "fixture/CreateReplicationSubnetGroup.yaml"
+requestCreateReplicationSubnetGroup = req
+    "CreateReplicationSubnetGroup"
+    "fixture/CreateReplicationSubnetGroup.yaml"
 
 requestDeleteCertificate :: DeleteCertificate -> TestTree
-requestDeleteCertificate =
-  req "DeleteCertificate" "fixture/DeleteCertificate.yaml"
+requestDeleteCertificate = req
+    "DeleteCertificate"
+    "fixture/DeleteCertificate.yaml"
 
 requestRefreshSchemas :: RefreshSchemas -> TestTree
-requestRefreshSchemas = req "RefreshSchemas" "fixture/RefreshSchemas.yaml"
+requestRefreshSchemas = req
+    "RefreshSchemas"
+    "fixture/RefreshSchemas.yaml"
 
 requestDescribeReplicationTasks :: DescribeReplicationTasks -> TestTree
-requestDescribeReplicationTasks =
-  req "DescribeReplicationTasks" "fixture/DescribeReplicationTasks.yaml"
+requestDescribeReplicationTasks = req
+    "DescribeReplicationTasks"
+    "fixture/DescribeReplicationTasks.yaml"
 
 requestDescribeEventCategories :: DescribeEventCategories -> TestTree
-requestDescribeEventCategories =
-  req "DescribeEventCategories" "fixture/DescribeEventCategories.yaml"
+requestDescribeEventCategories = req
+    "DescribeEventCategories"
+    "fixture/DescribeEventCategories.yaml"
 
-requestDescribeOrderableReplicationInstances ::
-     DescribeOrderableReplicationInstances -> TestTree
-requestDescribeOrderableReplicationInstances =
-  req
+requestDescribeOrderableReplicationInstances :: DescribeOrderableReplicationInstances -> TestTree
+requestDescribeOrderableReplicationInstances = req
     "DescribeOrderableReplicationInstances"
     "fixture/DescribeOrderableReplicationInstances.yaml"
 
+requestDescribePendingMaintenanceActions :: DescribePendingMaintenanceActions -> TestTree
+requestDescribePendingMaintenanceActions = req
+    "DescribePendingMaintenanceActions"
+    "fixture/DescribePendingMaintenanceActions.yaml"
+
 requestCreateReplicationTask :: CreateReplicationTask -> TestTree
-requestCreateReplicationTask =
-  req "CreateReplicationTask" "fixture/CreateReplicationTask.yaml"
+requestCreateReplicationTask = req
+    "CreateReplicationTask"
+    "fixture/CreateReplicationTask.yaml"
 
 requestDescribeEndpoints :: DescribeEndpoints -> TestTree
-requestDescribeEndpoints =
-  req "DescribeEndpoints" "fixture/DescribeEndpoints.yaml"
+requestDescribeEndpoints = req
+    "DescribeEndpoints"
+    "fixture/DescribeEndpoints.yaml"
 
 requestModifyReplicationInstance :: ModifyReplicationInstance -> TestTree
-requestModifyReplicationInstance =
-  req "ModifyReplicationInstance" "fixture/ModifyReplicationInstance.yaml"
+requestModifyReplicationInstance = req
+    "ModifyReplicationInstance"
+    "fixture/ModifyReplicationInstance.yaml"
 
 requestImportCertificate :: ImportCertificate -> TestTree
-requestImportCertificate =
-  req "ImportCertificate" "fixture/ImportCertificate.yaml"
+requestImportCertificate = req
+    "ImportCertificate"
+    "fixture/ImportCertificate.yaml"
 
 requestModifyReplicationSubnetGroup :: ModifyReplicationSubnetGroup -> TestTree
-requestModifyReplicationSubnetGroup =
-  req "ModifyReplicationSubnetGroup" "fixture/ModifyReplicationSubnetGroup.yaml"
+requestModifyReplicationSubnetGroup = req
+    "ModifyReplicationSubnetGroup"
+    "fixture/ModifyReplicationSubnetGroup.yaml"
+
+requestApplyPendingMaintenanceAction :: ApplyPendingMaintenanceAction -> TestTree
+requestApplyPendingMaintenanceAction = req
+    "ApplyPendingMaintenanceAction"
+    "fixture/ApplyPendingMaintenanceAction.yaml"
 
 requestDescribeAccountAttributes :: DescribeAccountAttributes -> TestTree
-requestDescribeAccountAttributes =
-  req "DescribeAccountAttributes" "fixture/DescribeAccountAttributes.yaml"
+requestDescribeAccountAttributes = req
+    "DescribeAccountAttributes"
+    "fixture/DescribeAccountAttributes.yaml"
 
 requestDescribeReplicationInstances :: DescribeReplicationInstances -> TestTree
-requestDescribeReplicationInstances =
-  req "DescribeReplicationInstances" "fixture/DescribeReplicationInstances.yaml"
+requestDescribeReplicationInstances = req
+    "DescribeReplicationInstances"
+    "fixture/DescribeReplicationInstances.yaml"
 
 requestDescribeRefreshSchemasStatus :: DescribeRefreshSchemasStatus -> TestTree
-requestDescribeRefreshSchemasStatus =
-  req "DescribeRefreshSchemasStatus" "fixture/DescribeRefreshSchemasStatus.yaml"
+requestDescribeRefreshSchemasStatus = req
+    "DescribeRefreshSchemasStatus"
+    "fixture/DescribeRefreshSchemasStatus.yaml"
 
 requestStopReplicationTask :: StopReplicationTask -> TestTree
-requestStopReplicationTask =
-  req "StopReplicationTask" "fixture/StopReplicationTask.yaml"
+requestStopReplicationTask = req
+    "StopReplicationTask"
+    "fixture/StopReplicationTask.yaml"
 
 requestModifyReplicationTask :: ModifyReplicationTask -> TestTree
-requestModifyReplicationTask =
-  req "ModifyReplicationTask" "fixture/ModifyReplicationTask.yaml"
+requestModifyReplicationTask = req
+    "ModifyReplicationTask"
+    "fixture/ModifyReplicationTask.yaml"
 
 requestCreateReplicationInstance :: CreateReplicationInstance -> TestTree
-requestCreateReplicationInstance =
-  req "CreateReplicationInstance" "fixture/CreateReplicationInstance.yaml"
+requestCreateReplicationInstance = req
+    "CreateReplicationInstance"
+    "fixture/CreateReplicationInstance.yaml"
 
 requestDeleteReplicationSubnetGroup :: DeleteReplicationSubnetGroup -> TestTree
-requestDeleteReplicationSubnetGroup =
-  req "DeleteReplicationSubnetGroup" "fixture/DeleteReplicationSubnetGroup.yaml"
+requestDeleteReplicationSubnetGroup = req
+    "DeleteReplicationSubnetGroup"
+    "fixture/DeleteReplicationSubnetGroup.yaml"
 
 -- Responses
-responseDeleteReplicationInstance ::
-     DeleteReplicationInstanceResponse -> TestTree
-responseDeleteReplicationInstance =
-  res
+
+responseDeleteReplicationInstance :: DeleteReplicationInstanceResponse -> TestTree
+responseDeleteReplicationInstance = res
     "DeleteReplicationInstanceResponse"
     "fixture/DeleteReplicationInstanceResponse.proto"
     dms
     (Proxy :: Proxy DeleteReplicationInstance)
 
-responseRebootReplicationInstance ::
-     RebootReplicationInstanceResponse -> TestTree
-responseRebootReplicationInstance =
-  res
+responseRebootReplicationInstance :: RebootReplicationInstanceResponse -> TestTree
+responseRebootReplicationInstance = res
     "RebootReplicationInstanceResponse"
     "fixture/RebootReplicationInstanceResponse.proto"
     dms
     (Proxy :: Proxy RebootReplicationInstance)
 
 responseReloadTables :: ReloadTablesResponse -> TestTree
-responseReloadTables =
-  res
+responseReloadTables = res
     "ReloadTablesResponse"
     "fixture/ReloadTablesResponse.proto"
     dms
     (Proxy :: Proxy ReloadTables)
 
-responseStartReplicationTaskAssessment ::
-     StartReplicationTaskAssessmentResponse -> TestTree
-responseStartReplicationTaskAssessment =
-  res
+responseStartReplicationTaskAssessment :: StartReplicationTaskAssessmentResponse -> TestTree
+responseStartReplicationTaskAssessment = res
     "StartReplicationTaskAssessmentResponse"
     "fixture/StartReplicationTaskAssessmentResponse.proto"
     dms
     (Proxy :: Proxy StartReplicationTaskAssessment)
 
 responseCreateEndpoint :: CreateEndpointResponse -> TestTree
-responseCreateEndpoint =
-  res
+responseCreateEndpoint = res
     "CreateEndpointResponse"
     "fixture/CreateEndpointResponse.proto"
     dms
     (Proxy :: Proxy CreateEndpoint)
 
 responseDescribeSchemas :: DescribeSchemasResponse -> TestTree
-responseDescribeSchemas =
-  res
+responseDescribeSchemas = res
     "DescribeSchemasResponse"
     "fixture/DescribeSchemasResponse.proto"
     dms
     (Proxy :: Proxy DescribeSchemas)
 
+responseDeleteConnection :: DeleteConnectionResponse -> TestTree
+responseDeleteConnection = res
+    "DeleteConnectionResponse"
+    "fixture/DeleteConnectionResponse.proto"
+    dms
+    (Proxy :: Proxy DeleteConnection)
+
 responseModifyEventSubscription :: ModifyEventSubscriptionResponse -> TestTree
-responseModifyEventSubscription =
-  res
+responseModifyEventSubscription = res
     "ModifyEventSubscriptionResponse"
     "fixture/ModifyEventSubscriptionResponse.proto"
     dms
     (Proxy :: Proxy ModifyEventSubscription)
 
-responseDescribeReplicationInstanceTaskLogs ::
-     DescribeReplicationInstanceTaskLogsResponse -> TestTree
-responseDescribeReplicationInstanceTaskLogs =
-  res
+responseDescribeReplicationInstanceTaskLogs :: DescribeReplicationInstanceTaskLogsResponse -> TestTree
+responseDescribeReplicationInstanceTaskLogs = res
     "DescribeReplicationInstanceTaskLogsResponse"
     "fixture/DescribeReplicationInstanceTaskLogsResponse.proto"
     dms
     (Proxy :: Proxy DescribeReplicationInstanceTaskLogs)
 
 responseDescribeEvents :: DescribeEventsResponse -> TestTree
-responseDescribeEvents =
-  res
+responseDescribeEvents = res
     "DescribeEventsResponse"
     "fixture/DescribeEventsResponse.proto"
     dms
     (Proxy :: Proxy DescribeEvents)
 
 responseDeleteEndpoint :: DeleteEndpointResponse -> TestTree
-responseDeleteEndpoint =
-  res
+responseDeleteEndpoint = res
     "DeleteEndpointResponse"
     "fixture/DeleteEndpointResponse.proto"
     dms
     (Proxy :: Proxy DeleteEndpoint)
 
 responseListTagsForResource :: ListTagsForResourceResponse -> TestTree
-responseListTagsForResource =
-  res
+responseListTagsForResource = res
     "ListTagsForResourceResponse"
     "fixture/ListTagsForResourceResponse.proto"
     dms
     (Proxy :: Proxy ListTagsForResource)
 
 responseDescribeEndpointTypes :: DescribeEndpointTypesResponse -> TestTree
-responseDescribeEndpointTypes =
-  res
+responseDescribeEndpointTypes = res
     "DescribeEndpointTypesResponse"
     "fixture/DescribeEndpointTypesResponse.proto"
     dms
     (Proxy :: Proxy DescribeEndpointTypes)
 
 responseDeleteReplicationTask :: DeleteReplicationTaskResponse -> TestTree
-responseDeleteReplicationTask =
-  res
+responseDeleteReplicationTask = res
     "DeleteReplicationTaskResponse"
     "fixture/DeleteReplicationTaskResponse.proto"
     dms
     (Proxy :: Proxy DeleteReplicationTask)
 
-responseDescribeReplicationTaskAssessmentResults ::
-     DescribeReplicationTaskAssessmentResultsResponse -> TestTree
-responseDescribeReplicationTaskAssessmentResults =
-  res
+responseDescribeReplicationTaskAssessmentResults :: DescribeReplicationTaskAssessmentResultsResponse -> TestTree
+responseDescribeReplicationTaskAssessmentResults = res
     "DescribeReplicationTaskAssessmentResultsResponse"
     "fixture/DescribeReplicationTaskAssessmentResultsResponse.proto"
     dms
     (Proxy :: Proxy DescribeReplicationTaskAssessmentResults)
 
 responseTestConnection :: TestConnectionResponse -> TestTree
-responseTestConnection =
-  res
+responseTestConnection = res
     "TestConnectionResponse"
     "fixture/TestConnectionResponse.proto"
     dms
     (Proxy :: Proxy TestConnection)
 
 responseDescribeConnections :: DescribeConnectionsResponse -> TestTree
-responseDescribeConnections =
-  res
+responseDescribeConnections = res
     "DescribeConnectionsResponse"
     "fixture/DescribeConnectionsResponse.proto"
     dms
     (Proxy :: Proxy DescribeConnections)
 
 responseRemoveTagsFromResource :: RemoveTagsFromResourceResponse -> TestTree
-responseRemoveTagsFromResource =
-  res
+responseRemoveTagsFromResource = res
     "RemoveTagsFromResourceResponse"
     "fixture/RemoveTagsFromResourceResponse.proto"
     dms
     (Proxy :: Proxy RemoveTagsFromResource)
 
 responseModifyEndpoint :: ModifyEndpointResponse -> TestTree
-responseModifyEndpoint =
-  res
+responseModifyEndpoint = res
     "ModifyEndpointResponse"
     "fixture/ModifyEndpointResponse.proto"
     dms
     (Proxy :: Proxy ModifyEndpoint)
 
 responseCreateEventSubscription :: CreateEventSubscriptionResponse -> TestTree
-responseCreateEventSubscription =
-  res
+responseCreateEventSubscription = res
     "CreateEventSubscriptionResponse"
     "fixture/CreateEventSubscriptionResponse.proto"
     dms
     (Proxy :: Proxy CreateEventSubscription)
 
 responseDescribeCertificates :: DescribeCertificatesResponse -> TestTree
-responseDescribeCertificates =
-  res
+responseDescribeCertificates = res
     "DescribeCertificatesResponse"
     "fixture/DescribeCertificatesResponse.proto"
     dms
     (Proxy :: Proxy DescribeCertificates)
 
 responseDeleteEventSubscription :: DeleteEventSubscriptionResponse -> TestTree
-responseDeleteEventSubscription =
-  res
+responseDeleteEventSubscription = res
     "DeleteEventSubscriptionResponse"
     "fixture/DeleteEventSubscriptionResponse.proto"
     dms
     (Proxy :: Proxy DeleteEventSubscription)
 
 responseDescribeTableStatistics :: DescribeTableStatisticsResponse -> TestTree
-responseDescribeTableStatistics =
-  res
+responseDescribeTableStatistics = res
     "DescribeTableStatisticsResponse"
     "fixture/DescribeTableStatisticsResponse.proto"
     dms
     (Proxy :: Proxy DescribeTableStatistics)
 
-responseDescribeReplicationSubnetGroups ::
-     DescribeReplicationSubnetGroupsResponse -> TestTree
-responseDescribeReplicationSubnetGroups =
-  res
+responseDescribeReplicationSubnetGroups :: DescribeReplicationSubnetGroupsResponse -> TestTree
+responseDescribeReplicationSubnetGroups = res
     "DescribeReplicationSubnetGroupsResponse"
     "fixture/DescribeReplicationSubnetGroupsResponse.proto"
     dms
     (Proxy :: Proxy DescribeReplicationSubnetGroups)
 
 responseStartReplicationTask :: StartReplicationTaskResponse -> TestTree
-responseStartReplicationTask =
-  res
+responseStartReplicationTask = res
     "StartReplicationTaskResponse"
     "fixture/StartReplicationTaskResponse.proto"
     dms
     (Proxy :: Proxy StartReplicationTask)
 
-responseDescribeEventSubscriptions ::
-     DescribeEventSubscriptionsResponse -> TestTree
-responseDescribeEventSubscriptions =
-  res
+responseDescribeEventSubscriptions :: DescribeEventSubscriptionsResponse -> TestTree
+responseDescribeEventSubscriptions = res
     "DescribeEventSubscriptionsResponse"
     "fixture/DescribeEventSubscriptionsResponse.proto"
     dms
     (Proxy :: Proxy DescribeEventSubscriptions)
 
 responseAddTagsToResource :: AddTagsToResourceResponse -> TestTree
-responseAddTagsToResource =
-  res
+responseAddTagsToResource = res
     "AddTagsToResourceResponse"
     "fixture/AddTagsToResourceResponse.proto"
     dms
     (Proxy :: Proxy AddTagsToResource)
 
-responseCreateReplicationSubnetGroup ::
-     CreateReplicationSubnetGroupResponse -> TestTree
-responseCreateReplicationSubnetGroup =
-  res
+responseCreateReplicationSubnetGroup :: CreateReplicationSubnetGroupResponse -> TestTree
+responseCreateReplicationSubnetGroup = res
     "CreateReplicationSubnetGroupResponse"
     "fixture/CreateReplicationSubnetGroupResponse.proto"
     dms
     (Proxy :: Proxy CreateReplicationSubnetGroup)
 
 responseDeleteCertificate :: DeleteCertificateResponse -> TestTree
-responseDeleteCertificate =
-  res
+responseDeleteCertificate = res
     "DeleteCertificateResponse"
     "fixture/DeleteCertificateResponse.proto"
     dms
     (Proxy :: Proxy DeleteCertificate)
 
 responseRefreshSchemas :: RefreshSchemasResponse -> TestTree
-responseRefreshSchemas =
-  res
+responseRefreshSchemas = res
     "RefreshSchemasResponse"
     "fixture/RefreshSchemasResponse.proto"
     dms
     (Proxy :: Proxy RefreshSchemas)
 
 responseDescribeReplicationTasks :: DescribeReplicationTasksResponse -> TestTree
-responseDescribeReplicationTasks =
-  res
+responseDescribeReplicationTasks = res
     "DescribeReplicationTasksResponse"
     "fixture/DescribeReplicationTasksResponse.proto"
     dms
     (Proxy :: Proxy DescribeReplicationTasks)
 
 responseDescribeEventCategories :: DescribeEventCategoriesResponse -> TestTree
-responseDescribeEventCategories =
-  res
+responseDescribeEventCategories = res
     "DescribeEventCategoriesResponse"
     "fixture/DescribeEventCategoriesResponse.proto"
     dms
     (Proxy :: Proxy DescribeEventCategories)
 
-responseDescribeOrderableReplicationInstances ::
-     DescribeOrderableReplicationInstancesResponse -> TestTree
-responseDescribeOrderableReplicationInstances =
-  res
+responseDescribeOrderableReplicationInstances :: DescribeOrderableReplicationInstancesResponse -> TestTree
+responseDescribeOrderableReplicationInstances = res
     "DescribeOrderableReplicationInstancesResponse"
     "fixture/DescribeOrderableReplicationInstancesResponse.proto"
     dms
     (Proxy :: Proxy DescribeOrderableReplicationInstances)
 
+responseDescribePendingMaintenanceActions :: DescribePendingMaintenanceActionsResponse -> TestTree
+responseDescribePendingMaintenanceActions = res
+    "DescribePendingMaintenanceActionsResponse"
+    "fixture/DescribePendingMaintenanceActionsResponse.proto"
+    dms
+    (Proxy :: Proxy DescribePendingMaintenanceActions)
+
 responseCreateReplicationTask :: CreateReplicationTaskResponse -> TestTree
-responseCreateReplicationTask =
-  res
+responseCreateReplicationTask = res
     "CreateReplicationTaskResponse"
     "fixture/CreateReplicationTaskResponse.proto"
     dms
     (Proxy :: Proxy CreateReplicationTask)
 
 responseDescribeEndpoints :: DescribeEndpointsResponse -> TestTree
-responseDescribeEndpoints =
-  res
+responseDescribeEndpoints = res
     "DescribeEndpointsResponse"
     "fixture/DescribeEndpointsResponse.proto"
     dms
     (Proxy :: Proxy DescribeEndpoints)
 
-responseModifyReplicationInstance ::
-     ModifyReplicationInstanceResponse -> TestTree
-responseModifyReplicationInstance =
-  res
+responseModifyReplicationInstance :: ModifyReplicationInstanceResponse -> TestTree
+responseModifyReplicationInstance = res
     "ModifyReplicationInstanceResponse"
     "fixture/ModifyReplicationInstanceResponse.proto"
     dms
     (Proxy :: Proxy ModifyReplicationInstance)
 
 responseImportCertificate :: ImportCertificateResponse -> TestTree
-responseImportCertificate =
-  res
+responseImportCertificate = res
     "ImportCertificateResponse"
     "fixture/ImportCertificateResponse.proto"
     dms
     (Proxy :: Proxy ImportCertificate)
 
-responseModifyReplicationSubnetGroup ::
-     ModifyReplicationSubnetGroupResponse -> TestTree
-responseModifyReplicationSubnetGroup =
-  res
+responseModifyReplicationSubnetGroup :: ModifyReplicationSubnetGroupResponse -> TestTree
+responseModifyReplicationSubnetGroup = res
     "ModifyReplicationSubnetGroupResponse"
     "fixture/ModifyReplicationSubnetGroupResponse.proto"
     dms
     (Proxy :: Proxy ModifyReplicationSubnetGroup)
 
-responseDescribeAccountAttributes ::
-     DescribeAccountAttributesResponse -> TestTree
-responseDescribeAccountAttributes =
-  res
+responseApplyPendingMaintenanceAction :: ApplyPendingMaintenanceActionResponse -> TestTree
+responseApplyPendingMaintenanceAction = res
+    "ApplyPendingMaintenanceActionResponse"
+    "fixture/ApplyPendingMaintenanceActionResponse.proto"
+    dms
+    (Proxy :: Proxy ApplyPendingMaintenanceAction)
+
+responseDescribeAccountAttributes :: DescribeAccountAttributesResponse -> TestTree
+responseDescribeAccountAttributes = res
     "DescribeAccountAttributesResponse"
     "fixture/DescribeAccountAttributesResponse.proto"
     dms
     (Proxy :: Proxy DescribeAccountAttributes)
 
-responseDescribeReplicationInstances ::
-     DescribeReplicationInstancesResponse -> TestTree
-responseDescribeReplicationInstances =
-  res
+responseDescribeReplicationInstances :: DescribeReplicationInstancesResponse -> TestTree
+responseDescribeReplicationInstances = res
     "DescribeReplicationInstancesResponse"
     "fixture/DescribeReplicationInstancesResponse.proto"
     dms
     (Proxy :: Proxy DescribeReplicationInstances)
 
-responseDescribeRefreshSchemasStatus ::
-     DescribeRefreshSchemasStatusResponse -> TestTree
-responseDescribeRefreshSchemasStatus =
-  res
+responseDescribeRefreshSchemasStatus :: DescribeRefreshSchemasStatusResponse -> TestTree
+responseDescribeRefreshSchemasStatus = res
     "DescribeRefreshSchemasStatusResponse"
     "fixture/DescribeRefreshSchemasStatusResponse.proto"
     dms
     (Proxy :: Proxy DescribeRefreshSchemasStatus)
 
 responseStopReplicationTask :: StopReplicationTaskResponse -> TestTree
-responseStopReplicationTask =
-  res
+responseStopReplicationTask = res
     "StopReplicationTaskResponse"
     "fixture/StopReplicationTaskResponse.proto"
     dms
     (Proxy :: Proxy StopReplicationTask)
 
 responseModifyReplicationTask :: ModifyReplicationTaskResponse -> TestTree
-responseModifyReplicationTask =
-  res
+responseModifyReplicationTask = res
     "ModifyReplicationTaskResponse"
     "fixture/ModifyReplicationTaskResponse.proto"
     dms
     (Proxy :: Proxy ModifyReplicationTask)
 
-responseCreateReplicationInstance ::
-     CreateReplicationInstanceResponse -> TestTree
-responseCreateReplicationInstance =
-  res
+responseCreateReplicationInstance :: CreateReplicationInstanceResponse -> TestTree
+responseCreateReplicationInstance = res
     "CreateReplicationInstanceResponse"
     "fixture/CreateReplicationInstanceResponse.proto"
     dms
     (Proxy :: Proxy CreateReplicationInstance)
 
-responseDeleteReplicationSubnetGroup ::
-     DeleteReplicationSubnetGroupResponse -> TestTree
-responseDeleteReplicationSubnetGroup =
-  res
+responseDeleteReplicationSubnetGroup :: DeleteReplicationSubnetGroupResponse -> TestTree
+responseDeleteReplicationSubnetGroup = res
     "DeleteReplicationSubnetGroupResponse"
     "fixture/DeleteReplicationSubnetGroupResponse.proto"
     dms

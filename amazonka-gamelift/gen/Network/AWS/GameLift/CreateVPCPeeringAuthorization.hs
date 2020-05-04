@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.GameLift.CreateVPCPeeringAuthorization
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -44,19 +46,21 @@
 --
 --
 module Network.AWS.GameLift.CreateVPCPeeringAuthorization
+    (
     -- * Creating a Request
-  ( createVPCPeeringAuthorization
-  , CreateVPCPeeringAuthorization
+      createVPCPeeringAuthorization
+    , CreateVPCPeeringAuthorization
     -- * Request Lenses
-  , cvpaGameLiftAWSAccountId
-  , cvpaPeerVPCId
+    , cvpaGameLiftAWSAccountId
+    , cvpaPeerVPCId
+
     -- * Destructuring the Response
-  , createVPCPeeringAuthorizationResponse
-  , CreateVPCPeeringAuthorizationResponse
+    , createVPCPeeringAuthorizationResponse
+    , CreateVPCPeeringAuthorizationResponse
     -- * Response Lenses
-  , cvparsVPCPeeringAuthorization
-  , cvparsResponseStatus
-  ) where
+    , cvparsVPCPeeringAuthorization
+    , cvparsResponseStatus
+    ) where
 
 import Network.AWS.GameLift.Types
 import Network.AWS.GameLift.Types.Product
@@ -77,6 +81,7 @@ data CreateVPCPeeringAuthorization =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateVPCPeeringAuthorization' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -84,61 +89,66 @@ data CreateVPCPeeringAuthorization =
 -- * 'cvpaGameLiftAWSAccountId' - Unique identifier for the AWS account that you use to manage your Amazon GameLift fleet. You can find your Account ID in the AWS Management Console under account settings.
 --
 -- * 'cvpaPeerVPCId' - Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be in the same region where your fleet is deployed. To get VPC information, including IDs, use the Virtual Private Cloud service tools, including the VPC Dashboard in the AWS Management Console.
-createVPCPeeringAuthorization ::
-     Text -- ^ 'cvpaGameLiftAWSAccountId'
-  -> Text -- ^ 'cvpaPeerVPCId'
-  -> CreateVPCPeeringAuthorization
+createVPCPeeringAuthorization
+    :: Text -- ^ 'cvpaGameLiftAWSAccountId'
+    -> Text -- ^ 'cvpaPeerVPCId'
+    -> CreateVPCPeeringAuthorization
 createVPCPeeringAuthorization pGameLiftAWSAccountId_ pPeerVPCId_ =
   CreateVPCPeeringAuthorization'
     { _cvpaGameLiftAWSAccountId = pGameLiftAWSAccountId_
     , _cvpaPeerVPCId = pPeerVPCId_
     }
 
+
 -- | Unique identifier for the AWS account that you use to manage your Amazon GameLift fleet. You can find your Account ID in the AWS Management Console under account settings.
 cvpaGameLiftAWSAccountId :: Lens' CreateVPCPeeringAuthorization Text
-cvpaGameLiftAWSAccountId =
-  lens _cvpaGameLiftAWSAccountId (\s a -> s {_cvpaGameLiftAWSAccountId = a})
+cvpaGameLiftAWSAccountId = lens _cvpaGameLiftAWSAccountId (\ s a -> s{_cvpaGameLiftAWSAccountId = a})
 
 -- | Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be in the same region where your fleet is deployed. To get VPC information, including IDs, use the Virtual Private Cloud service tools, including the VPC Dashboard in the AWS Management Console.
 cvpaPeerVPCId :: Lens' CreateVPCPeeringAuthorization Text
-cvpaPeerVPCId = lens _cvpaPeerVPCId (\s a -> s {_cvpaPeerVPCId = a})
+cvpaPeerVPCId = lens _cvpaPeerVPCId (\ s a -> s{_cvpaPeerVPCId = a})
 
-instance AWSRequest CreateVPCPeeringAuthorization where
-  type Rs CreateVPCPeeringAuthorization = CreateVPCPeeringAuthorizationResponse
-  request = postJSON gameLift
-  response =
-    receiveJSON
-      (\s h x ->
-         CreateVPCPeeringAuthorizationResponse' <$>
-         (x .?> "VpcPeeringAuthorization") <*>
-         (pure (fromEnum s)))
+instance AWSRequest CreateVPCPeeringAuthorization
+         where
+        type Rs CreateVPCPeeringAuthorization =
+             CreateVPCPeeringAuthorizationResponse
+        request = postJSON gameLift
+        response
+          = receiveJSON
+              (\ s h x ->
+                 CreateVPCPeeringAuthorizationResponse' <$>
+                   (x .?> "VpcPeeringAuthorization") <*>
+                     (pure (fromEnum s)))
 
-instance Hashable CreateVPCPeeringAuthorization
+instance Hashable CreateVPCPeeringAuthorization where
 
-instance NFData CreateVPCPeeringAuthorization
+instance NFData CreateVPCPeeringAuthorization where
 
-instance ToHeaders CreateVPCPeeringAuthorization where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("GameLift.CreateVpcPeeringAuthorization" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+instance ToHeaders CreateVPCPeeringAuthorization
+         where
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("GameLift.CreateVpcPeeringAuthorization" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON CreateVPCPeeringAuthorization where
-  toJSON CreateVPCPeeringAuthorization' {..} =
-    object
-      (catMaybes
-         [ Just ("GameLiftAwsAccountId" .= _cvpaGameLiftAWSAccountId)
-         , Just ("PeerVpcId" .= _cvpaPeerVPCId)
-         ])
+        toJSON CreateVPCPeeringAuthorization'{..}
+          = object
+              (catMaybes
+                 [Just
+                    ("GameLiftAwsAccountId" .=
+                       _cvpaGameLiftAWSAccountId),
+                  Just ("PeerVpcId" .= _cvpaPeerVPCId)])
 
 instance ToPath CreateVPCPeeringAuthorization where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery CreateVPCPeeringAuthorization where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | Represents the returned data in response to a request action.
 --
@@ -152,6 +162,7 @@ data CreateVPCPeeringAuthorizationResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateVPCPeeringAuthorizationResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -159,26 +170,23 @@ data CreateVPCPeeringAuthorizationResponse =
 -- * 'cvparsVPCPeeringAuthorization' - Details on the requested VPC peering authorization, including expiration.
 --
 -- * 'cvparsResponseStatus' - -- | The response status code.
-createVPCPeeringAuthorizationResponse ::
-     Int -- ^ 'cvparsResponseStatus'
-  -> CreateVPCPeeringAuthorizationResponse
+createVPCPeeringAuthorizationResponse
+    :: Int -- ^ 'cvparsResponseStatus'
+    -> CreateVPCPeeringAuthorizationResponse
 createVPCPeeringAuthorizationResponse pResponseStatus_ =
   CreateVPCPeeringAuthorizationResponse'
     { _cvparsVPCPeeringAuthorization = Nothing
     , _cvparsResponseStatus = pResponseStatus_
     }
 
+
 -- | Details on the requested VPC peering authorization, including expiration.
-cvparsVPCPeeringAuthorization ::
-     Lens' CreateVPCPeeringAuthorizationResponse (Maybe VPCPeeringAuthorization)
-cvparsVPCPeeringAuthorization =
-  lens
-    _cvparsVPCPeeringAuthorization
-    (\s a -> s {_cvparsVPCPeeringAuthorization = a})
+cvparsVPCPeeringAuthorization :: Lens' CreateVPCPeeringAuthorizationResponse (Maybe VPCPeeringAuthorization)
+cvparsVPCPeeringAuthorization = lens _cvparsVPCPeeringAuthorization (\ s a -> s{_cvparsVPCPeeringAuthorization = a})
 
 -- | -- | The response status code.
 cvparsResponseStatus :: Lens' CreateVPCPeeringAuthorizationResponse Int
-cvparsResponseStatus =
-  lens _cvparsResponseStatus (\s a -> s {_cvparsResponseStatus = a})
+cvparsResponseStatus = lens _cvparsResponseStatus (\ s a -> s{_cvparsResponseStatus = a})
 
 instance NFData CreateVPCPeeringAuthorizationResponse
+         where

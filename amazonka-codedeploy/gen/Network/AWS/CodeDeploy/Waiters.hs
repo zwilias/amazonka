@@ -1,8 +1,10 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TypeFamilies      #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CodeDeploy.Waiters
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -41,3 +43,4 @@ deploymentSuccessful =
             (gdrsDeploymentInfo . _Just . diStatus . _Just . to toTextCI)
         ]
     }
+

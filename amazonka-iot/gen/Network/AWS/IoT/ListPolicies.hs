@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.IoT.ListPolicies
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,21 +24,23 @@
 --
 -- This operation returns paginated results.
 module Network.AWS.IoT.ListPolicies
+    (
     -- * Creating a Request
-  ( listPolicies
-  , ListPolicies
+      listPolicies
+    , ListPolicies
     -- * Request Lenses
-  , lpMarker
-  , lpAscendingOrder
-  , lpPageSize
+    , lpMarker
+    , lpAscendingOrder
+    , lpPageSize
+
     -- * Destructuring the Response
-  , listPoliciesResponse
-  , ListPoliciesResponse
+    , listPoliciesResponse
+    , ListPoliciesResponse
     -- * Response Lenses
-  , lprsNextMarker
-  , lprsPolicies
-  , lprsResponseStatus
-  ) where
+    , lprsNextMarker
+    , lprsPolicies
+    , lprsResponseStatus
+    ) where
 
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
@@ -59,6 +63,7 @@ data ListPolicies =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListPolicies' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -68,56 +73,59 @@ data ListPolicies =
 -- * 'lpAscendingOrder' - Specifies the order for results. If true, the results are returned in ascending creation order.
 --
 -- * 'lpPageSize' - The result page size.
-listPolicies :: ListPolicies
+listPolicies
+    :: ListPolicies
 listPolicies =
   ListPolicies'
     {_lpMarker = Nothing, _lpAscendingOrder = Nothing, _lpPageSize = Nothing}
 
+
 -- | The marker for the next set of results.
 lpMarker :: Lens' ListPolicies (Maybe Text)
-lpMarker = lens _lpMarker (\s a -> s {_lpMarker = a})
+lpMarker = lens _lpMarker (\ s a -> s{_lpMarker = a})
 
 -- | Specifies the order for results. If true, the results are returned in ascending creation order.
 lpAscendingOrder :: Lens' ListPolicies (Maybe Bool)
-lpAscendingOrder = lens _lpAscendingOrder (\s a -> s {_lpAscendingOrder = a})
+lpAscendingOrder = lens _lpAscendingOrder (\ s a -> s{_lpAscendingOrder = a})
 
 -- | The result page size.
 lpPageSize :: Lens' ListPolicies (Maybe Natural)
-lpPageSize = lens _lpPageSize (\s a -> s {_lpPageSize = a}) . mapping _Nat
+lpPageSize = lens _lpPageSize (\ s a -> s{_lpPageSize = a}) . mapping _Nat
 
 instance AWSPager ListPolicies where
-  page rq rs
-    | stop (rs ^. lprsNextMarker) = Nothing
-    | stop (rs ^. lprsPolicies) = Nothing
-    | otherwise = Just $ rq & lpMarker .~ rs ^. lprsNextMarker
+        page rq rs
+          | stop (rs ^. lprsNextMarker) = Nothing
+          | stop (rs ^. lprsPolicies) = Nothing
+          | otherwise =
+            Just $ rq & lpMarker .~ rs ^. lprsNextMarker
 
 instance AWSRequest ListPolicies where
-  type Rs ListPolicies = ListPoliciesResponse
-  request = get ioT
-  response =
-    receiveJSON
-      (\s h x ->
-         ListPoliciesResponse' <$> (x .?> "nextMarker") <*>
-         (x .?> "policies" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs ListPolicies = ListPoliciesResponse
+        request = get ioT
+        response
+          = receiveJSON
+              (\ s h x ->
+                 ListPoliciesResponse' <$>
+                   (x .?> "nextMarker") <*>
+                     (x .?> "policies" .!@ mempty)
+                     <*> (pure (fromEnum s)))
 
-instance Hashable ListPolicies
+instance Hashable ListPolicies where
 
-instance NFData ListPolicies
+instance NFData ListPolicies where
 
 instance ToHeaders ListPolicies where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath ListPolicies where
-  toPath = const "/policies"
+        toPath = const "/policies"
 
 instance ToQuery ListPolicies where
-  toQuery ListPolicies' {..} =
-    mconcat
-      [ "marker" =: _lpMarker
-      , "isAscendingOrder" =: _lpAscendingOrder
-      , "pageSize" =: _lpPageSize
-      ]
+        toQuery ListPolicies'{..}
+          = mconcat
+              ["marker" =: _lpMarker,
+               "isAscendingOrder" =: _lpAscendingOrder,
+               "pageSize" =: _lpPageSize]
 
 -- | The output from the ListPolicies operation.
 --
@@ -132,6 +140,7 @@ data ListPoliciesResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListPoliciesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -141,9 +150,9 @@ data ListPoliciesResponse =
 -- * 'lprsPolicies' - The descriptions of the policies.
 --
 -- * 'lprsResponseStatus' - -- | The response status code.
-listPoliciesResponse ::
-     Int -- ^ 'lprsResponseStatus'
-  -> ListPoliciesResponse
+listPoliciesResponse
+    :: Int -- ^ 'lprsResponseStatus'
+    -> ListPoliciesResponse
 listPoliciesResponse pResponseStatus_ =
   ListPoliciesResponse'
     { _lprsNextMarker = Nothing
@@ -151,18 +160,17 @@ listPoliciesResponse pResponseStatus_ =
     , _lprsResponseStatus = pResponseStatus_
     }
 
+
 -- | The marker for the next set of results, or null if there are no additional results.
 lprsNextMarker :: Lens' ListPoliciesResponse (Maybe Text)
-lprsNextMarker = lens _lprsNextMarker (\s a -> s {_lprsNextMarker = a})
+lprsNextMarker = lens _lprsNextMarker (\ s a -> s{_lprsNextMarker = a})
 
 -- | The descriptions of the policies.
 lprsPolicies :: Lens' ListPoliciesResponse [Policy]
-lprsPolicies =
-  lens _lprsPolicies (\s a -> s {_lprsPolicies = a}) . _Default . _Coerce
+lprsPolicies = lens _lprsPolicies (\ s a -> s{_lprsPolicies = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 lprsResponseStatus :: Lens' ListPoliciesResponse Int
-lprsResponseStatus =
-  lens _lprsResponseStatus (\s a -> s {_lprsResponseStatus = a})
+lprsResponseStatus = lens _lprsResponseStatus (\ s a -> s{_lprsResponseStatus = a})
 
-instance NFData ListPoliciesResponse
+instance NFData ListPoliciesResponse where

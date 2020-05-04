@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.IoTData.DeleteThingShadow
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,18 +24,20 @@
 -- For more information, see <http://docs.aws.amazon.com/iot/latest/developerguide/API_DeleteThingShadow.html DeleteThingShadow> in the /AWS IoT Developer Guide/ .
 --
 module Network.AWS.IoTData.DeleteThingShadow
+    (
     -- * Creating a Request
-  ( deleteThingShadow
-  , DeleteThingShadow
+      deleteThingShadow
+    , DeleteThingShadow
     -- * Request Lenses
-  , dtsThingName
+    , dtsThingName
+
     -- * Destructuring the Response
-  , deleteThingShadowResponse
-  , DeleteThingShadowResponse
+    , deleteThingShadowResponse
+    , DeleteThingShadowResponse
     -- * Response Lenses
-  , dtsrsResponseStatus
-  , dtsrsPayload
-  ) where
+    , dtsrsResponseStatus
+    , dtsrsPayload
+    ) where
 
 import Network.AWS.IoTData.Types
 import Network.AWS.IoTData.Types.Product
@@ -53,40 +57,44 @@ newtype DeleteThingShadow =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteThingShadow' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dtsThingName' - The name of the thing.
-deleteThingShadow ::
-     Text -- ^ 'dtsThingName'
-  -> DeleteThingShadow
+deleteThingShadow
+    :: Text -- ^ 'dtsThingName'
+    -> DeleteThingShadow
 deleteThingShadow pThingName_ = DeleteThingShadow' {_dtsThingName = pThingName_}
+
 
 -- | The name of the thing.
 dtsThingName :: Lens' DeleteThingShadow Text
-dtsThingName = lens _dtsThingName (\s a -> s {_dtsThingName = a})
+dtsThingName = lens _dtsThingName (\ s a -> s{_dtsThingName = a})
 
 instance AWSRequest DeleteThingShadow where
-  type Rs DeleteThingShadow = DeleteThingShadowResponse
-  request = delete ioTData
-  response =
-    receiveBytes
-      (\s h x -> DeleteThingShadowResponse' <$> (pure (fromEnum s)) <*> (pure x))
+        type Rs DeleteThingShadow = DeleteThingShadowResponse
+        request = delete ioTData
+        response
+          = receiveBytes
+              (\ s h x ->
+                 DeleteThingShadowResponse' <$>
+                   (pure (fromEnum s)) <*> (pure x))
 
-instance Hashable DeleteThingShadow
+instance Hashable DeleteThingShadow where
 
-instance NFData DeleteThingShadow
+instance NFData DeleteThingShadow where
 
 instance ToHeaders DeleteThingShadow where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath DeleteThingShadow where
-  toPath DeleteThingShadow' {..} =
-    mconcat ["/things/", toBS _dtsThingName, "/shadow"]
+        toPath DeleteThingShadow'{..}
+          = mconcat ["/things/", toBS _dtsThingName, "/shadow"]
 
 instance ToQuery DeleteThingShadow where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | The output from the DeleteThingShadow operation.
 --
@@ -100,6 +108,7 @@ data DeleteThingShadowResponse =
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteThingShadowResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -107,21 +116,21 @@ data DeleteThingShadowResponse =
 -- * 'dtsrsResponseStatus' - -- | The response status code.
 --
 -- * 'dtsrsPayload' - The state information, in JSON format.
-deleteThingShadowResponse ::
-     Int -- ^ 'dtsrsResponseStatus'
-  -> ByteString -- ^ 'dtsrsPayload'
-  -> DeleteThingShadowResponse
+deleteThingShadowResponse
+    :: Int -- ^ 'dtsrsResponseStatus'
+    -> ByteString -- ^ 'dtsrsPayload'
+    -> DeleteThingShadowResponse
 deleteThingShadowResponse pResponseStatus_ pPayload_ =
   DeleteThingShadowResponse'
     {_dtsrsResponseStatus = pResponseStatus_, _dtsrsPayload = pPayload_}
 
+
 -- | -- | The response status code.
 dtsrsResponseStatus :: Lens' DeleteThingShadowResponse Int
-dtsrsResponseStatus =
-  lens _dtsrsResponseStatus (\s a -> s {_dtsrsResponseStatus = a})
+dtsrsResponseStatus = lens _dtsrsResponseStatus (\ s a -> s{_dtsrsResponseStatus = a})
 
 -- | The state information, in JSON format.
 dtsrsPayload :: Lens' DeleteThingShadowResponse ByteString
-dtsrsPayload = lens _dtsrsPayload (\s a -> s {_dtsrsPayload = a})
+dtsrsPayload = lens _dtsrsPayload (\ s a -> s{_dtsrsPayload = a})
 
-instance NFData DeleteThingShadowResponse
+instance NFData DeleteThingShadowResponse where

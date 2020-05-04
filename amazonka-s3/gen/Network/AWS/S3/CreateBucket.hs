@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.S3.CreateBucket
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,25 +20,27 @@
 --
 -- Creates a new bucket.
 module Network.AWS.S3.CreateBucket
+    (
     -- * Creating a Request
-  ( createBucket
-  , CreateBucket
+      createBucket
+    , CreateBucket
     -- * Request Lenses
-  , cbGrantReadACP
-  , cbGrantWriteACP
-  , cbGrantRead
-  , cbGrantFullControl
-  , cbCreateBucketConfiguration
-  , cbGrantWrite
-  , cbACL
-  , cbBucket
+    , cbGrantReadACP
+    , cbGrantWriteACP
+    , cbGrantRead
+    , cbGrantFullControl
+    , cbCreateBucketConfiguration
+    , cbGrantWrite
+    , cbACL
+    , cbBucket
+
     -- * Destructuring the Response
-  , createBucketResponse
-  , CreateBucketResponse
+    , createBucketResponse
+    , CreateBucketResponse
     -- * Response Lenses
-  , cbrsLocation
-  , cbrsResponseStatus
-  ) where
+    , cbrsLocation
+    , cbrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -59,6 +63,7 @@ data CreateBucket =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateBucket' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -78,9 +83,9 @@ data CreateBucket =
 -- * 'cbACL' - The canned ACL to apply to the bucket.
 --
 -- * 'cbBucket' - Undocumented member.
-createBucket ::
-     BucketName -- ^ 'cbBucket'
-  -> CreateBucket
+createBucket
+    :: BucketName -- ^ 'cbBucket'
+    -> CreateBucket
 createBucket pBucket_ =
   CreateBucket'
     { _cbGrantReadACP = Nothing
@@ -93,77 +98,75 @@ createBucket pBucket_ =
     , _cbBucket = pBucket_
     }
 
+
 -- | Allows grantee to read the bucket ACL.
 cbGrantReadACP :: Lens' CreateBucket (Maybe Text)
-cbGrantReadACP = lens _cbGrantReadACP (\s a -> s {_cbGrantReadACP = a})
+cbGrantReadACP = lens _cbGrantReadACP (\ s a -> s{_cbGrantReadACP = a})
 
 -- | Allows grantee to write the ACL for the applicable bucket.
 cbGrantWriteACP :: Lens' CreateBucket (Maybe Text)
-cbGrantWriteACP = lens _cbGrantWriteACP (\s a -> s {_cbGrantWriteACP = a})
+cbGrantWriteACP = lens _cbGrantWriteACP (\ s a -> s{_cbGrantWriteACP = a})
 
 -- | Allows grantee to list the objects in the bucket.
 cbGrantRead :: Lens' CreateBucket (Maybe Text)
-cbGrantRead = lens _cbGrantRead (\s a -> s {_cbGrantRead = a})
+cbGrantRead = lens _cbGrantRead (\ s a -> s{_cbGrantRead = a})
 
 -- | Allows grantee the read, write, read ACP, and write ACP permissions on the bucket.
 cbGrantFullControl :: Lens' CreateBucket (Maybe Text)
-cbGrantFullControl =
-  lens _cbGrantFullControl (\s a -> s {_cbGrantFullControl = a})
+cbGrantFullControl = lens _cbGrantFullControl (\ s a -> s{_cbGrantFullControl = a})
 
 -- | Undocumented member.
-cbCreateBucketConfiguration ::
-     Lens' CreateBucket (Maybe CreateBucketConfiguration)
-cbCreateBucketConfiguration =
-  lens
-    _cbCreateBucketConfiguration
-    (\s a -> s {_cbCreateBucketConfiguration = a})
+cbCreateBucketConfiguration :: Lens' CreateBucket (Maybe CreateBucketConfiguration)
+cbCreateBucketConfiguration = lens _cbCreateBucketConfiguration (\ s a -> s{_cbCreateBucketConfiguration = a})
 
 -- | Allows grantee to create, overwrite, and delete any object in the bucket.
 cbGrantWrite :: Lens' CreateBucket (Maybe Text)
-cbGrantWrite = lens _cbGrantWrite (\s a -> s {_cbGrantWrite = a})
+cbGrantWrite = lens _cbGrantWrite (\ s a -> s{_cbGrantWrite = a})
 
 -- | The canned ACL to apply to the bucket.
 cbACL :: Lens' CreateBucket (Maybe BucketCannedACL)
-cbACL = lens _cbACL (\s a -> s {_cbACL = a})
+cbACL = lens _cbACL (\ s a -> s{_cbACL = a})
 
 -- | Undocumented member.
 cbBucket :: Lens' CreateBucket BucketName
-cbBucket = lens _cbBucket (\s a -> s {_cbBucket = a})
+cbBucket = lens _cbBucket (\ s a -> s{_cbBucket = a})
 
 instance AWSRequest CreateBucket where
-  type Rs CreateBucket = CreateBucketResponse
-  request = putXML s3
-  response =
-    receiveEmpty
-      (\s h x ->
-         CreateBucketResponse' <$> (h .#? "Location") <*> (pure (fromEnum s)))
+        type Rs CreateBucket = CreateBucketResponse
+        request = putXML s3
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 CreateBucketResponse' <$>
+                   (h .#? "Location") <*> (pure (fromEnum s)))
 
-instance Hashable CreateBucket
+instance Hashable CreateBucket where
 
-instance NFData CreateBucket
+instance NFData CreateBucket where
 
 instance ToElement CreateBucket where
-  toElement =
-    mkElement
-      "{http://s3.amazonaws.com/doc/2006-03-01/}CreateBucketConfiguration" .
-    _cbCreateBucketConfiguration
+        toElement
+          = mkElement
+              "{http://s3.amazonaws.com/doc/2006-03-01/}CreateBucketConfiguration"
+              .
+              _cbCreateBucketConfiguration
 
 instance ToHeaders CreateBucket where
-  toHeaders CreateBucket' {..} =
-    mconcat
-      [ "x-amz-grant-read-acp" =# _cbGrantReadACP
-      , "x-amz-grant-write-acp" =# _cbGrantWriteACP
-      , "x-amz-grant-read" =# _cbGrantRead
-      , "x-amz-grant-full-control" =# _cbGrantFullControl
-      , "x-amz-grant-write" =# _cbGrantWrite
-      , "x-amz-acl" =# _cbACL
-      ]
+        toHeaders CreateBucket'{..}
+          = mconcat
+              ["x-amz-grant-read-acp" =# _cbGrantReadACP,
+               "x-amz-grant-write-acp" =# _cbGrantWriteACP,
+               "x-amz-grant-read" =# _cbGrantRead,
+               "x-amz-grant-full-control" =# _cbGrantFullControl,
+               "x-amz-grant-write" =# _cbGrantWrite,
+               "x-amz-acl" =# _cbACL]
 
 instance ToPath CreateBucket where
-  toPath CreateBucket' {..} = mconcat ["/", toBS _cbBucket]
+        toPath CreateBucket'{..}
+          = mconcat ["/", toBS _cbBucket]
 
 instance ToQuery CreateBucket where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'createBucketResponse' smart constructor.
 data CreateBucketResponse =
@@ -173,6 +176,7 @@ data CreateBucketResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateBucketResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -180,20 +184,20 @@ data CreateBucketResponse =
 -- * 'cbrsLocation' - Undocumented member.
 --
 -- * 'cbrsResponseStatus' - -- | The response status code.
-createBucketResponse ::
-     Int -- ^ 'cbrsResponseStatus'
-  -> CreateBucketResponse
+createBucketResponse
+    :: Int -- ^ 'cbrsResponseStatus'
+    -> CreateBucketResponse
 createBucketResponse pResponseStatus_ =
   CreateBucketResponse'
     {_cbrsLocation = Nothing, _cbrsResponseStatus = pResponseStatus_}
 
+
 -- | Undocumented member.
 cbrsLocation :: Lens' CreateBucketResponse (Maybe Text)
-cbrsLocation = lens _cbrsLocation (\s a -> s {_cbrsLocation = a})
+cbrsLocation = lens _cbrsLocation (\ s a -> s{_cbrsLocation = a})
 
 -- | -- | The response status code.
 cbrsResponseStatus :: Lens' CreateBucketResponse Int
-cbrsResponseStatus =
-  lens _cbrsResponseStatus (\s a -> s {_cbrsResponseStatus = a})
+cbrsResponseStatus = lens _cbrsResponseStatus (\ s a -> s{_cbrsResponseStatus = a})
 
-instance NFData CreateBucketResponse
+instance NFData CreateBucketResponse where

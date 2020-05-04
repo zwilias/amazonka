@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.StorageGateway.DescribeStorediSCSIVolumes
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.StorageGateway.DescribeStorediSCSIVolumes
+    (
     -- * Creating a Request
-  ( describeStorediSCSIVolumes
-  , DescribeStorediSCSIVolumes
+      describeStorediSCSIVolumes
+    , DescribeStorediSCSIVolumes
     -- * Request Lenses
-  , dsscsivVolumeARNs
+    , dsscsivVolumeARNs
+
     -- * Destructuring the Response
-  , describeStorediSCSIVolumesResponse
-  , DescribeStorediSCSIVolumesResponse
+    , describeStorediSCSIVolumesResponse
+    , DescribeStorediSCSIVolumesResponse
     -- * Response Lenses
-  , dsscsivrsStorediSCSIVolumes
-  , dsscsivrsResponseStatus
-  ) where
+    , dsscsivrsStorediSCSIVolumes
+    , dsscsivrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -51,52 +55,58 @@ newtype DescribeStorediSCSIVolumes =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeStorediSCSIVolumes' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dsscsivVolumeARNs' - An array of strings where each string represents the Amazon Resource Name (ARN) of a stored volume. All of the specified stored volumes must from the same gateway. Use 'ListVolumes' to get volume ARNs for a gateway.
-describeStorediSCSIVolumes :: DescribeStorediSCSIVolumes
+describeStorediSCSIVolumes
+    :: DescribeStorediSCSIVolumes
 describeStorediSCSIVolumes =
   DescribeStorediSCSIVolumes' {_dsscsivVolumeARNs = mempty}
 
+
 -- | An array of strings where each string represents the Amazon Resource Name (ARN) of a stored volume. All of the specified stored volumes must from the same gateway. Use 'ListVolumes' to get volume ARNs for a gateway.
 dsscsivVolumeARNs :: Lens' DescribeStorediSCSIVolumes [Text]
-dsscsivVolumeARNs =
-  lens _dsscsivVolumeARNs (\s a -> s {_dsscsivVolumeARNs = a}) . _Coerce
+dsscsivVolumeARNs = lens _dsscsivVolumeARNs (\ s a -> s{_dsscsivVolumeARNs = a}) . _Coerce
 
 instance AWSRequest DescribeStorediSCSIVolumes where
-  type Rs DescribeStorediSCSIVolumes = DescribeStorediSCSIVolumesResponse
-  request = postJSON storageGateway
-  response =
-    receiveJSON
-      (\s h x ->
-         DescribeStorediSCSIVolumesResponse' <$>
-         (x .?> "StorediSCSIVolumes" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs DescribeStorediSCSIVolumes =
+             DescribeStorediSCSIVolumesResponse
+        request = postJSON storageGateway
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DescribeStorediSCSIVolumesResponse' <$>
+                   (x .?> "StorediSCSIVolumes" .!@ mempty) <*>
+                     (pure (fromEnum s)))
 
-instance Hashable DescribeStorediSCSIVolumes
+instance Hashable DescribeStorediSCSIVolumes where
 
-instance NFData DescribeStorediSCSIVolumes
+instance NFData DescribeStorediSCSIVolumes where
 
 instance ToHeaders DescribeStorediSCSIVolumes where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("StorageGateway_20130630.DescribeStorediSCSIVolumes" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("StorageGateway_20130630.DescribeStorediSCSIVolumes"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DescribeStorediSCSIVolumes where
-  toJSON DescribeStorediSCSIVolumes' {..} =
-    object (catMaybes [Just ("VolumeARNs" .= _dsscsivVolumeARNs)])
+        toJSON DescribeStorediSCSIVolumes'{..}
+          = object
+              (catMaybes
+                 [Just ("VolumeARNs" .= _dsscsivVolumeARNs)])
 
 instance ToPath DescribeStorediSCSIVolumes where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DescribeStorediSCSIVolumes where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'describeStorediSCSIVolumesResponse' smart constructor.
 data DescribeStorediSCSIVolumesResponse =
@@ -106,6 +116,7 @@ data DescribeStorediSCSIVolumesResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeStorediSCSIVolumesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -113,27 +124,23 @@ data DescribeStorediSCSIVolumesResponse =
 -- * 'dsscsivrsStorediSCSIVolumes' - Undocumented member.
 --
 -- * 'dsscsivrsResponseStatus' - -- | The response status code.
-describeStorediSCSIVolumesResponse ::
-     Int -- ^ 'dsscsivrsResponseStatus'
-  -> DescribeStorediSCSIVolumesResponse
+describeStorediSCSIVolumesResponse
+    :: Int -- ^ 'dsscsivrsResponseStatus'
+    -> DescribeStorediSCSIVolumesResponse
 describeStorediSCSIVolumesResponse pResponseStatus_ =
   DescribeStorediSCSIVolumesResponse'
     { _dsscsivrsStorediSCSIVolumes = Nothing
     , _dsscsivrsResponseStatus = pResponseStatus_
     }
 
+
 -- | Undocumented member.
-dsscsivrsStorediSCSIVolumes ::
-     Lens' DescribeStorediSCSIVolumesResponse [StorediSCSIVolume]
-dsscsivrsStorediSCSIVolumes =
-  lens
-    _dsscsivrsStorediSCSIVolumes
-    (\s a -> s {_dsscsivrsStorediSCSIVolumes = a}) .
-  _Default . _Coerce
+dsscsivrsStorediSCSIVolumes :: Lens' DescribeStorediSCSIVolumesResponse [StorediSCSIVolume]
+dsscsivrsStorediSCSIVolumes = lens _dsscsivrsStorediSCSIVolumes (\ s a -> s{_dsscsivrsStorediSCSIVolumes = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 dsscsivrsResponseStatus :: Lens' DescribeStorediSCSIVolumesResponse Int
-dsscsivrsResponseStatus =
-  lens _dsscsivrsResponseStatus (\s a -> s {_dsscsivrsResponseStatus = a})
+dsscsivrsResponseStatus = lens _dsscsivrsResponseStatus (\ s a -> s{_dsscsivrsResponseStatus = a})
 
 instance NFData DescribeStorediSCSIVolumesResponse
+         where

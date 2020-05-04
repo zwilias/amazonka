@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Test.AWS.Gen.Budgets
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -23,6 +24,7 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
+
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -50,6 +52,9 @@ import Test.Tasty
 --         , requestUpdateNotification $
 --             updateNotification
 --
+--         , requestDescribeBudgetPerformanceHistory $
+--             describeBudgetPerformanceHistory
+--
 --         , requestDescribeBudget $
 --             describeBudget
 --
@@ -66,6 +71,7 @@ import Test.Tasty
 --             createNotification
 --
 --           ]
+
 --     , testGroup "response"
 --         [ responseDescribeSubscribersForNotification $
 --             describeSubscribersForNotificationResponse
@@ -91,6 +97,9 @@ import Test.Tasty
 --         , responseUpdateNotification $
 --             updateNotificationResponse
 --
+--         , responseDescribeBudgetPerformanceHistory $
+--             describeBudgetPerformanceHistoryResponse
+--
 --         , responseDescribeBudget $
 --             describeBudgetResponse
 --
@@ -108,159 +117,174 @@ import Test.Tasty
 --
 --           ]
 --     ]
+
 -- Requests
-requestDescribeSubscribersForNotification ::
-     DescribeSubscribersForNotification -> TestTree
-requestDescribeSubscribersForNotification =
-  req
+
+requestDescribeSubscribersForNotification :: DescribeSubscribersForNotification -> TestTree
+requestDescribeSubscribersForNotification = req
     "DescribeSubscribersForNotification"
     "fixture/DescribeSubscribersForNotification.yaml"
 
-requestDescribeNotificationsForBudget ::
-     DescribeNotificationsForBudget -> TestTree
-requestDescribeNotificationsForBudget =
-  req
+requestDescribeNotificationsForBudget :: DescribeNotificationsForBudget -> TestTree
+requestDescribeNotificationsForBudget = req
     "DescribeNotificationsForBudget"
     "fixture/DescribeNotificationsForBudget.yaml"
 
 requestDescribeBudgets :: DescribeBudgets -> TestTree
-requestDescribeBudgets = req "DescribeBudgets" "fixture/DescribeBudgets.yaml"
+requestDescribeBudgets = req
+    "DescribeBudgets"
+    "fixture/DescribeBudgets.yaml"
 
 requestCreateSubscriber :: CreateSubscriber -> TestTree
-requestCreateSubscriber = req "CreateSubscriber" "fixture/CreateSubscriber.yaml"
+requestCreateSubscriber = req
+    "CreateSubscriber"
+    "fixture/CreateSubscriber.yaml"
 
 requestUpdateBudget :: UpdateBudget -> TestTree
-requestUpdateBudget = req "UpdateBudget" "fixture/UpdateBudget.yaml"
+requestUpdateBudget = req
+    "UpdateBudget"
+    "fixture/UpdateBudget.yaml"
 
 requestDeleteBudget :: DeleteBudget -> TestTree
-requestDeleteBudget = req "DeleteBudget" "fixture/DeleteBudget.yaml"
+requestDeleteBudget = req
+    "DeleteBudget"
+    "fixture/DeleteBudget.yaml"
 
 requestDeleteNotification :: DeleteNotification -> TestTree
-requestDeleteNotification =
-  req "DeleteNotification" "fixture/DeleteNotification.yaml"
+requestDeleteNotification = req
+    "DeleteNotification"
+    "fixture/DeleteNotification.yaml"
 
 requestUpdateNotification :: UpdateNotification -> TestTree
-requestUpdateNotification =
-  req "UpdateNotification" "fixture/UpdateNotification.yaml"
+requestUpdateNotification = req
+    "UpdateNotification"
+    "fixture/UpdateNotification.yaml"
+
+requestDescribeBudgetPerformanceHistory :: DescribeBudgetPerformanceHistory -> TestTree
+requestDescribeBudgetPerformanceHistory = req
+    "DescribeBudgetPerformanceHistory"
+    "fixture/DescribeBudgetPerformanceHistory.yaml"
 
 requestDescribeBudget :: DescribeBudget -> TestTree
-requestDescribeBudget = req "DescribeBudget" "fixture/DescribeBudget.yaml"
+requestDescribeBudget = req
+    "DescribeBudget"
+    "fixture/DescribeBudget.yaml"
 
 requestUpdateSubscriber :: UpdateSubscriber -> TestTree
-requestUpdateSubscriber = req "UpdateSubscriber" "fixture/UpdateSubscriber.yaml"
+requestUpdateSubscriber = req
+    "UpdateSubscriber"
+    "fixture/UpdateSubscriber.yaml"
 
 requestDeleteSubscriber :: DeleteSubscriber -> TestTree
-requestDeleteSubscriber = req "DeleteSubscriber" "fixture/DeleteSubscriber.yaml"
+requestDeleteSubscriber = req
+    "DeleteSubscriber"
+    "fixture/DeleteSubscriber.yaml"
 
 requestCreateBudget :: CreateBudget -> TestTree
-requestCreateBudget = req "CreateBudget" "fixture/CreateBudget.yaml"
+requestCreateBudget = req
+    "CreateBudget"
+    "fixture/CreateBudget.yaml"
 
 requestCreateNotification :: CreateNotification -> TestTree
-requestCreateNotification =
-  req "CreateNotification" "fixture/CreateNotification.yaml"
+requestCreateNotification = req
+    "CreateNotification"
+    "fixture/CreateNotification.yaml"
 
 -- Responses
-responseDescribeSubscribersForNotification ::
-     DescribeSubscribersForNotificationResponse -> TestTree
-responseDescribeSubscribersForNotification =
-  res
+
+responseDescribeSubscribersForNotification :: DescribeSubscribersForNotificationResponse -> TestTree
+responseDescribeSubscribersForNotification = res
     "DescribeSubscribersForNotificationResponse"
     "fixture/DescribeSubscribersForNotificationResponse.proto"
     budgets
     (Proxy :: Proxy DescribeSubscribersForNotification)
 
-responseDescribeNotificationsForBudget ::
-     DescribeNotificationsForBudgetResponse -> TestTree
-responseDescribeNotificationsForBudget =
-  res
+responseDescribeNotificationsForBudget :: DescribeNotificationsForBudgetResponse -> TestTree
+responseDescribeNotificationsForBudget = res
     "DescribeNotificationsForBudgetResponse"
     "fixture/DescribeNotificationsForBudgetResponse.proto"
     budgets
     (Proxy :: Proxy DescribeNotificationsForBudget)
 
 responseDescribeBudgets :: DescribeBudgetsResponse -> TestTree
-responseDescribeBudgets =
-  res
+responseDescribeBudgets = res
     "DescribeBudgetsResponse"
     "fixture/DescribeBudgetsResponse.proto"
     budgets
     (Proxy :: Proxy DescribeBudgets)
 
 responseCreateSubscriber :: CreateSubscriberResponse -> TestTree
-responseCreateSubscriber =
-  res
+responseCreateSubscriber = res
     "CreateSubscriberResponse"
     "fixture/CreateSubscriberResponse.proto"
     budgets
     (Proxy :: Proxy CreateSubscriber)
 
 responseUpdateBudget :: UpdateBudgetResponse -> TestTree
-responseUpdateBudget =
-  res
+responseUpdateBudget = res
     "UpdateBudgetResponse"
     "fixture/UpdateBudgetResponse.proto"
     budgets
     (Proxy :: Proxy UpdateBudget)
 
 responseDeleteBudget :: DeleteBudgetResponse -> TestTree
-responseDeleteBudget =
-  res
+responseDeleteBudget = res
     "DeleteBudgetResponse"
     "fixture/DeleteBudgetResponse.proto"
     budgets
     (Proxy :: Proxy DeleteBudget)
 
 responseDeleteNotification :: DeleteNotificationResponse -> TestTree
-responseDeleteNotification =
-  res
+responseDeleteNotification = res
     "DeleteNotificationResponse"
     "fixture/DeleteNotificationResponse.proto"
     budgets
     (Proxy :: Proxy DeleteNotification)
 
 responseUpdateNotification :: UpdateNotificationResponse -> TestTree
-responseUpdateNotification =
-  res
+responseUpdateNotification = res
     "UpdateNotificationResponse"
     "fixture/UpdateNotificationResponse.proto"
     budgets
     (Proxy :: Proxy UpdateNotification)
 
+responseDescribeBudgetPerformanceHistory :: DescribeBudgetPerformanceHistoryResponse -> TestTree
+responseDescribeBudgetPerformanceHistory = res
+    "DescribeBudgetPerformanceHistoryResponse"
+    "fixture/DescribeBudgetPerformanceHistoryResponse.proto"
+    budgets
+    (Proxy :: Proxy DescribeBudgetPerformanceHistory)
+
 responseDescribeBudget :: DescribeBudgetResponse -> TestTree
-responseDescribeBudget =
-  res
+responseDescribeBudget = res
     "DescribeBudgetResponse"
     "fixture/DescribeBudgetResponse.proto"
     budgets
     (Proxy :: Proxy DescribeBudget)
 
 responseUpdateSubscriber :: UpdateSubscriberResponse -> TestTree
-responseUpdateSubscriber =
-  res
+responseUpdateSubscriber = res
     "UpdateSubscriberResponse"
     "fixture/UpdateSubscriberResponse.proto"
     budgets
     (Proxy :: Proxy UpdateSubscriber)
 
 responseDeleteSubscriber :: DeleteSubscriberResponse -> TestTree
-responseDeleteSubscriber =
-  res
+responseDeleteSubscriber = res
     "DeleteSubscriberResponse"
     "fixture/DeleteSubscriberResponse.proto"
     budgets
     (Proxy :: Proxy DeleteSubscriber)
 
 responseCreateBudget :: CreateBudgetResponse -> TestTree
-responseCreateBudget =
-  res
+responseCreateBudget = res
     "CreateBudgetResponse"
     "fixture/CreateBudgetResponse.proto"
     budgets
     (Proxy :: Proxy CreateBudget)
 
 responseCreateNotification :: CreateNotificationResponse -> TestTree
-responseCreateNotification =
-  res
+responseCreateNotification = res
     "CreateNotificationResponse"
     "fixture/CreateNotificationResponse.proto"
     budgets

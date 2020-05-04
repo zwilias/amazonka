@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.DataPipeline.SetTaskStatus
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,21 +22,23 @@
 --
 --
 module Network.AWS.DataPipeline.SetTaskStatus
+    (
     -- * Creating a Request
-  ( setTaskStatus
-  , SetTaskStatus
+      setTaskStatus
+    , SetTaskStatus
     -- * Request Lenses
-  , stsErrorStackTrace
-  , stsErrorId
-  , stsErrorMessage
-  , stsTaskId
-  , stsTaskStatus
+    , stsErrorStackTrace
+    , stsErrorId
+    , stsErrorMessage
+    , stsTaskId
+    , stsTaskStatus
+
     -- * Destructuring the Response
-  , setTaskStatusResponse
-  , SetTaskStatusResponse
+    , setTaskStatusResponse
+    , SetTaskStatusResponse
     -- * Response Lenses
-  , stsrsResponseStatus
-  ) where
+    , stsrsResponseStatus
+    ) where
 
 import Network.AWS.DataPipeline.Types
 import Network.AWS.DataPipeline.Types.Product
@@ -58,6 +62,7 @@ data SetTaskStatus =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SetTaskStatus' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -71,10 +76,10 @@ data SetTaskStatus =
 -- * 'stsTaskId' - The ID of the task assigned to the task runner. This value is provided in the response for 'PollForTask' .
 --
 -- * 'stsTaskStatus' - If @FINISHED@ , the task successfully completed. If @FAILED@ , the task ended unsuccessfully. Preconditions use false.
-setTaskStatus ::
-     Text -- ^ 'stsTaskId'
-  -> TaskStatus -- ^ 'stsTaskStatus'
-  -> SetTaskStatus
+setTaskStatus
+    :: Text -- ^ 'stsTaskId'
+    -> TaskStatus -- ^ 'stsTaskStatus'
+    -> SetTaskStatus
 setTaskStatus pTaskId_ pTaskStatus_ =
   SetTaskStatus'
     { _stsErrorStackTrace = Nothing
@@ -84,61 +89,63 @@ setTaskStatus pTaskId_ pTaskStatus_ =
     , _stsTaskStatus = pTaskStatus_
     }
 
+
 -- | If an error occurred during the task, this value specifies the stack trace associated with the error. This value is set on the physical attempt object. It is used to display error information to the user. The web service does not parse this value.
 stsErrorStackTrace :: Lens' SetTaskStatus (Maybe Text)
-stsErrorStackTrace =
-  lens _stsErrorStackTrace (\s a -> s {_stsErrorStackTrace = a})
+stsErrorStackTrace = lens _stsErrorStackTrace (\ s a -> s{_stsErrorStackTrace = a})
 
 -- | If an error occurred during the task, this value specifies the error code. This value is set on the physical attempt object. It is used to display error information to the user. It should not start with string "Service_" which is reserved by the system.
 stsErrorId :: Lens' SetTaskStatus (Maybe Text)
-stsErrorId = lens _stsErrorId (\s a -> s {_stsErrorId = a})
+stsErrorId = lens _stsErrorId (\ s a -> s{_stsErrorId = a})
 
 -- | If an error occurred during the task, this value specifies a text description of the error. This value is set on the physical attempt object. It is used to display error information to the user. The web service does not parse this value.
 stsErrorMessage :: Lens' SetTaskStatus (Maybe Text)
-stsErrorMessage = lens _stsErrorMessage (\s a -> s {_stsErrorMessage = a})
+stsErrorMessage = lens _stsErrorMessage (\ s a -> s{_stsErrorMessage = a})
 
 -- | The ID of the task assigned to the task runner. This value is provided in the response for 'PollForTask' .
 stsTaskId :: Lens' SetTaskStatus Text
-stsTaskId = lens _stsTaskId (\s a -> s {_stsTaskId = a})
+stsTaskId = lens _stsTaskId (\ s a -> s{_stsTaskId = a})
 
 -- | If @FINISHED@ , the task successfully completed. If @FAILED@ , the task ended unsuccessfully. Preconditions use false.
 stsTaskStatus :: Lens' SetTaskStatus TaskStatus
-stsTaskStatus = lens _stsTaskStatus (\s a -> s {_stsTaskStatus = a})
+stsTaskStatus = lens _stsTaskStatus (\ s a -> s{_stsTaskStatus = a})
 
 instance AWSRequest SetTaskStatus where
-  type Rs SetTaskStatus = SetTaskStatusResponse
-  request = postJSON dataPipeline
-  response =
-    receiveEmpty (\s h x -> SetTaskStatusResponse' <$> (pure (fromEnum s)))
+        type Rs SetTaskStatus = SetTaskStatusResponse
+        request = postJSON dataPipeline
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 SetTaskStatusResponse' <$> (pure (fromEnum s)))
 
-instance Hashable SetTaskStatus
+instance Hashable SetTaskStatus where
 
-instance NFData SetTaskStatus
+instance NFData SetTaskStatus where
 
 instance ToHeaders SetTaskStatus where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("DataPipeline.SetTaskStatus" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("DataPipeline.SetTaskStatus" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON SetTaskStatus where
-  toJSON SetTaskStatus' {..} =
-    object
-      (catMaybes
-         [ ("errorStackTrace" .=) <$> _stsErrorStackTrace
-         , ("errorId" .=) <$> _stsErrorId
-         , ("errorMessage" .=) <$> _stsErrorMessage
-         , Just ("taskId" .= _stsTaskId)
-         , Just ("taskStatus" .= _stsTaskStatus)
-         ])
+        toJSON SetTaskStatus'{..}
+          = object
+              (catMaybes
+                 [("errorStackTrace" .=) <$> _stsErrorStackTrace,
+                  ("errorId" .=) <$> _stsErrorId,
+                  ("errorMessage" .=) <$> _stsErrorMessage,
+                  Just ("taskId" .= _stsTaskId),
+                  Just ("taskStatus" .= _stsTaskStatus)])
 
 instance ToPath SetTaskStatus where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery SetTaskStatus where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | Contains the output of SetTaskStatus.
 --
@@ -151,20 +158,21 @@ newtype SetTaskStatusResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SetTaskStatusResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'stsrsResponseStatus' - -- | The response status code.
-setTaskStatusResponse ::
-     Int -- ^ 'stsrsResponseStatus'
-  -> SetTaskStatusResponse
+setTaskStatusResponse
+    :: Int -- ^ 'stsrsResponseStatus'
+    -> SetTaskStatusResponse
 setTaskStatusResponse pResponseStatus_ =
   SetTaskStatusResponse' {_stsrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 stsrsResponseStatus :: Lens' SetTaskStatusResponse Int
-stsrsResponseStatus =
-  lens _stsrsResponseStatus (\s a -> s {_stsrsResponseStatus = a})
+stsrsResponseStatus = lens _stsrsResponseStatus (\ s a -> s{_stsrsResponseStatus = a})
 
-instance NFData SetTaskStatusResponse
+instance NFData SetTaskStatusResponse where

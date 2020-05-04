@@ -2,9 +2,11 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.StorageGateway.Types.Sum
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -30,45 +32,37 @@ data ObjectACL
   | PublicReadWrite
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
+
 instance FromText ObjectACL where
-  parser =
-    takeLowerText >>= \case
-      "aws-exec-read" -> pure AWSExecRead
-      "authenticated-read" -> pure AuthenticatedRead
-      "bucket-owner-full-control" -> pure BucketOwnerFullControl
-      "bucket-owner-read" -> pure BucketOwnerRead
-      "private" -> pure Private
-      "public-read" -> pure PublicRead
-      "public-read-write" -> pure PublicReadWrite
-      e ->
-        fromTextError $
-        "Failure parsing ObjectACL from value: '" <>
-        e <>
-        "'. Accepted values: aws-exec-read, authenticated-read, bucket-owner-full-control, bucket-owner-read, private, public-read, public-read-write"
+    parser = takeLowerText >>= \case
+        "aws-exec-read" -> pure AWSExecRead
+        "authenticated-read" -> pure AuthenticatedRead
+        "bucket-owner-full-control" -> pure BucketOwnerFullControl
+        "bucket-owner-read" -> pure BucketOwnerRead
+        "private" -> pure Private
+        "public-read" -> pure PublicRead
+        "public-read-write" -> pure PublicReadWrite
+        e -> fromTextError $ "Failure parsing ObjectACL from value: '" <> e
+           <> "'. Accepted values: aws-exec-read, authenticated-read, bucket-owner-full-control, bucket-owner-read, private, public-read, public-read-write"
 
 instance ToText ObjectACL where
-  toText =
-    \case
-      AWSExecRead -> "aws-exec-read"
-      AuthenticatedRead -> "authenticated-read"
-      BucketOwnerFullControl -> "bucket-owner-full-control"
-      BucketOwnerRead -> "bucket-owner-read"
-      Private -> "private"
-      PublicRead -> "public-read"
-      PublicReadWrite -> "public-read-write"
+    toText = \case
+        AWSExecRead -> "aws-exec-read"
+        AuthenticatedRead -> "authenticated-read"
+        BucketOwnerFullControl -> "bucket-owner-full-control"
+        BucketOwnerRead -> "bucket-owner-read"
+        Private -> "private"
+        PublicRead -> "public-read"
+        PublicReadWrite -> "public-read-write"
 
-instance Hashable ObjectACL
-
-instance NFData ObjectACL
-
+instance Hashable     ObjectACL
+instance NFData       ObjectACL
 instance ToByteString ObjectACL
-
-instance ToQuery ObjectACL
-
-instance ToHeader ObjectACL
+instance ToQuery      ObjectACL
+instance ToHeader     ObjectACL
 
 instance ToJSON ObjectACL where
-  toJSON = toJSONText
+    toJSON = toJSONText
 
 instance FromJSON ObjectACL where
-  parseJSON = parseJSONText "ObjectACL"
+    parseJSON = parseJSONText "ObjectACL"

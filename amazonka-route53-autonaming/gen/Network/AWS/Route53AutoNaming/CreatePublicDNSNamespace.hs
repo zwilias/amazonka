@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Route53AutoNaming.CreatePublicDNSNamespace
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,20 +22,22 @@
 --
 --
 module Network.AWS.Route53AutoNaming.CreatePublicDNSNamespace
+    (
     -- * Creating a Request
-  ( createPublicDNSNamespace
-  , CreatePublicDNSNamespace
+      createPublicDNSNamespace
+    , CreatePublicDNSNamespace
     -- * Request Lenses
-  , cpdnCreatorRequestId
-  , cpdnDescription
-  , cpdnName
+    , cpdnCreatorRequestId
+    , cpdnDescription
+    , cpdnName
+
     -- * Destructuring the Response
-  , createPublicDNSNamespaceResponse
-  , CreatePublicDNSNamespaceResponse
+    , createPublicDNSNamespaceResponse
+    , CreatePublicDNSNamespaceResponse
     -- * Response Lenses
-  , cpdnrsOperationId
-  , cpdnrsResponseStatus
-  ) where
+    , cpdnrsOperationId
+    , cpdnrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -51,6 +55,7 @@ data CreatePublicDNSNamespace =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreatePublicDNSNamespace' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -60,9 +65,9 @@ data CreatePublicDNSNamespace =
 -- * 'cpdnDescription' - A description for the namespace.
 --
 -- * 'cpdnName' - The name that you want to assign to this namespace.
-createPublicDNSNamespace ::
-     Text -- ^ 'cpdnName'
-  -> CreatePublicDNSNamespace
+createPublicDNSNamespace
+    :: Text -- ^ 'cpdnName'
+    -> CreatePublicDNSNamespace
 createPublicDNSNamespace pName_ =
   CreatePublicDNSNamespace'
     { _cpdnCreatorRequestId = Nothing
@@ -70,55 +75,56 @@ createPublicDNSNamespace pName_ =
     , _cpdnName = pName_
     }
 
+
 -- | A unique string that identifies the request and that allows failed @CreatePublicDnsNamespace@ requests to be retried without the risk of executing the operation twice. @CreatorRequestId@ can be any unique string, for example, a date/time stamp.
 cpdnCreatorRequestId :: Lens' CreatePublicDNSNamespace (Maybe Text)
-cpdnCreatorRequestId =
-  lens _cpdnCreatorRequestId (\s a -> s {_cpdnCreatorRequestId = a})
+cpdnCreatorRequestId = lens _cpdnCreatorRequestId (\ s a -> s{_cpdnCreatorRequestId = a})
 
 -- | A description for the namespace.
 cpdnDescription :: Lens' CreatePublicDNSNamespace (Maybe Text)
-cpdnDescription = lens _cpdnDescription (\s a -> s {_cpdnDescription = a})
+cpdnDescription = lens _cpdnDescription (\ s a -> s{_cpdnDescription = a})
 
 -- | The name that you want to assign to this namespace.
 cpdnName :: Lens' CreatePublicDNSNamespace Text
-cpdnName = lens _cpdnName (\s a -> s {_cpdnName = a})
+cpdnName = lens _cpdnName (\ s a -> s{_cpdnName = a})
 
 instance AWSRequest CreatePublicDNSNamespace where
-  type Rs CreatePublicDNSNamespace = CreatePublicDNSNamespaceResponse
-  request = postJSON route53AutoNaming
-  response =
-    receiveJSON
-      (\s h x ->
-         CreatePublicDNSNamespaceResponse' <$> (x .?> "OperationId") <*>
-         (pure (fromEnum s)))
+        type Rs CreatePublicDNSNamespace =
+             CreatePublicDNSNamespaceResponse
+        request = postJSON route53AutoNaming
+        response
+          = receiveJSON
+              (\ s h x ->
+                 CreatePublicDNSNamespaceResponse' <$>
+                   (x .?> "OperationId") <*> (pure (fromEnum s)))
 
-instance Hashable CreatePublicDNSNamespace
+instance Hashable CreatePublicDNSNamespace where
 
-instance NFData CreatePublicDNSNamespace
+instance NFData CreatePublicDNSNamespace where
 
 instance ToHeaders CreatePublicDNSNamespace where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("Route53AutoNaming_v20170314.CreatePublicDnsNamespace" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("Route53AutoNaming_v20170314.CreatePublicDnsNamespace"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON CreatePublicDNSNamespace where
-  toJSON CreatePublicDNSNamespace' {..} =
-    object
-      (catMaybes
-         [ ("CreatorRequestId" .=) <$> _cpdnCreatorRequestId
-         , ("Description" .=) <$> _cpdnDescription
-         , Just ("Name" .= _cpdnName)
-         ])
+        toJSON CreatePublicDNSNamespace'{..}
+          = object
+              (catMaybes
+                 [("CreatorRequestId" .=) <$> _cpdnCreatorRequestId,
+                  ("Description" .=) <$> _cpdnDescription,
+                  Just ("Name" .= _cpdnName)])
 
 instance ToPath CreatePublicDNSNamespace where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery CreatePublicDNSNamespace where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'createPublicDNSNamespaceResponse' smart constructor.
 data CreatePublicDNSNamespaceResponse =
@@ -128,6 +134,7 @@ data CreatePublicDNSNamespaceResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreatePublicDNSNamespaceResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -135,20 +142,21 @@ data CreatePublicDNSNamespaceResponse =
 -- * 'cpdnrsOperationId' - A value that you can use to determine whether the request completed successfully. To get the status of the operation, see 'GetOperation' .
 --
 -- * 'cpdnrsResponseStatus' - -- | The response status code.
-createPublicDNSNamespaceResponse ::
-     Int -- ^ 'cpdnrsResponseStatus'
-  -> CreatePublicDNSNamespaceResponse
+createPublicDNSNamespaceResponse
+    :: Int -- ^ 'cpdnrsResponseStatus'
+    -> CreatePublicDNSNamespaceResponse
 createPublicDNSNamespaceResponse pResponseStatus_ =
   CreatePublicDNSNamespaceResponse'
     {_cpdnrsOperationId = Nothing, _cpdnrsResponseStatus = pResponseStatus_}
 
+
 -- | A value that you can use to determine whether the request completed successfully. To get the status of the operation, see 'GetOperation' .
 cpdnrsOperationId :: Lens' CreatePublicDNSNamespaceResponse (Maybe Text)
-cpdnrsOperationId = lens _cpdnrsOperationId (\s a -> s {_cpdnrsOperationId = a})
+cpdnrsOperationId = lens _cpdnrsOperationId (\ s a -> s{_cpdnrsOperationId = a})
 
 -- | -- | The response status code.
 cpdnrsResponseStatus :: Lens' CreatePublicDNSNamespaceResponse Int
-cpdnrsResponseStatus =
-  lens _cpdnrsResponseStatus (\s a -> s {_cpdnrsResponseStatus = a})
+cpdnrsResponseStatus = lens _cpdnrsResponseStatus (\ s a -> s{_cpdnrsResponseStatus = a})
 
 instance NFData CreatePublicDNSNamespaceResponse
+         where

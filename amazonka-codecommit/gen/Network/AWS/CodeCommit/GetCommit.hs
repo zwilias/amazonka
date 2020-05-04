@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CodeCommit.GetCommit
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,19 +22,21 @@
 --
 --
 module Network.AWS.CodeCommit.GetCommit
+    (
     -- * Creating a Request
-  ( getCommit
-  , GetCommit
+      getCommit
+    , GetCommit
     -- * Request Lenses
-  , gcRepositoryName
-  , gcCommitId
+    , gcRepositoryName
+    , gcCommitId
+
     -- * Destructuring the Response
-  , getCommitResponse
-  , GetCommitResponse
+    , getCommitResponse
+    , GetCommitResponse
     -- * Response Lenses
-  , gcrsResponseStatus
-  , gcrsCommit
-  ) where
+    , gcrsResponseStatus
+    , gcrsCommit
+    ) where
 
 import Network.AWS.CodeCommit.Types
 import Network.AWS.CodeCommit.Types.Product
@@ -53,60 +57,64 @@ data GetCommit =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetCommit' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'gcRepositoryName' - The name of the repository to which the commit was made.
 --
--- * 'gcCommitId' - The commit ID. Commit IDs are the full SHA of the commit.
-getCommit ::
-     Text -- ^ 'gcRepositoryName'
-  -> Text -- ^ 'gcCommitId'
-  -> GetCommit
+-- * 'gcCommitId' - The commit ID. Commit IDs are the full SHA ID of the commit.
+getCommit
+    :: Text -- ^ 'gcRepositoryName'
+    -> Text -- ^ 'gcCommitId'
+    -> GetCommit
 getCommit pRepositoryName_ pCommitId_ =
   GetCommit' {_gcRepositoryName = pRepositoryName_, _gcCommitId = pCommitId_}
 
+
 -- | The name of the repository to which the commit was made.
 gcRepositoryName :: Lens' GetCommit Text
-gcRepositoryName = lens _gcRepositoryName (\s a -> s {_gcRepositoryName = a})
+gcRepositoryName = lens _gcRepositoryName (\ s a -> s{_gcRepositoryName = a})
 
--- | The commit ID. Commit IDs are the full SHA of the commit.
+-- | The commit ID. Commit IDs are the full SHA ID of the commit.
 gcCommitId :: Lens' GetCommit Text
-gcCommitId = lens _gcCommitId (\s a -> s {_gcCommitId = a})
+gcCommitId = lens _gcCommitId (\ s a -> s{_gcCommitId = a})
 
 instance AWSRequest GetCommit where
-  type Rs GetCommit = GetCommitResponse
-  request = postJSON codeCommit
-  response =
-    receiveJSON
-      (\s h x -> GetCommitResponse' <$> (pure (fromEnum s)) <*> (x .:> "commit"))
+        type Rs GetCommit = GetCommitResponse
+        request = postJSON codeCommit
+        response
+          = receiveJSON
+              (\ s h x ->
+                 GetCommitResponse' <$>
+                   (pure (fromEnum s)) <*> (x .:> "commit"))
 
-instance Hashable GetCommit
+instance Hashable GetCommit where
 
-instance NFData GetCommit
+instance NFData GetCommit where
 
 instance ToHeaders GetCommit where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("CodeCommit_20150413.GetCommit" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("CodeCommit_20150413.GetCommit" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON GetCommit where
-  toJSON GetCommit' {..} =
-    object
-      (catMaybes
-         [ Just ("repositoryName" .= _gcRepositoryName)
-         , Just ("commitId" .= _gcCommitId)
-         ])
+        toJSON GetCommit'{..}
+          = object
+              (catMaybes
+                 [Just ("repositoryName" .= _gcRepositoryName),
+                  Just ("commitId" .= _gcCommitId)])
 
 instance ToPath GetCommit where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery GetCommit where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | Represents the output of a get commit operation.
 --
@@ -120,6 +128,7 @@ data GetCommitResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetCommitResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -127,21 +136,21 @@ data GetCommitResponse =
 -- * 'gcrsResponseStatus' - -- | The response status code.
 --
 -- * 'gcrsCommit' - A commit data type object that contains information about the specified commit.
-getCommitResponse ::
-     Int -- ^ 'gcrsResponseStatus'
-  -> Commit -- ^ 'gcrsCommit'
-  -> GetCommitResponse
+getCommitResponse
+    :: Int -- ^ 'gcrsResponseStatus'
+    -> Commit -- ^ 'gcrsCommit'
+    -> GetCommitResponse
 getCommitResponse pResponseStatus_ pCommit_ =
   GetCommitResponse'
     {_gcrsResponseStatus = pResponseStatus_, _gcrsCommit = pCommit_}
 
+
 -- | -- | The response status code.
 gcrsResponseStatus :: Lens' GetCommitResponse Int
-gcrsResponseStatus =
-  lens _gcrsResponseStatus (\s a -> s {_gcrsResponseStatus = a})
+gcrsResponseStatus = lens _gcrsResponseStatus (\ s a -> s{_gcrsResponseStatus = a})
 
 -- | A commit data type object that contains information about the specified commit.
 gcrsCommit :: Lens' GetCommitResponse Commit
-gcrsCommit = lens _gcrsCommit (\s a -> s {_gcrsCommit = a})
+gcrsCommit = lens _gcrsCommit (\ s a -> s{_gcrsCommit = a})
 
-instance NFData GetCommitResponse
+instance NFData GetCommitResponse where

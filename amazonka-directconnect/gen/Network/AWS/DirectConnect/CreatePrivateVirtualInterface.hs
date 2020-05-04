@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.DirectConnect.CreatePrivateVirtualInterface
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -16,40 +18,47 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a new private virtual interface. A virtual interface is the VLAN that transports AWS Direct Connect traffic. A private virtual interface supports sending traffic to a single virtual private cloud (VPC).
+-- Creates a private virtual interface. A virtual interface is the VLAN that transports AWS Direct Connect traffic. A private virtual interface can be connected to either a Direct Connect gateway or a Virtual Private Gateway (VGW). Connecting the private virtual interface to a Direct Connect gateway enables the possibility for connecting to multiple VPCs, including VPCs in different AWS Regions. Connecting the private virtual interface to a VGW only provides access to a single VPC within the same Region.
 --
 --
 module Network.AWS.DirectConnect.CreatePrivateVirtualInterface
+    (
     -- * Creating a Request
-  ( createPrivateVirtualInterface
-  , CreatePrivateVirtualInterface
+      createPrivateVirtualInterface
+    , CreatePrivateVirtualInterface
     -- * Request Lenses
-  , creConnectionId
-  , creNewPrivateVirtualInterface
+    , creConnectionId
+    , creNewPrivateVirtualInterface
+
     -- * Destructuring the Response
-  , virtualInterface
-  , VirtualInterface
+    , virtualInterface
+    , VirtualInterface
     -- * Response Lenses
-  , viBgpPeers
-  , viVirtualGatewayId
-  , viRouteFilterPrefixes
-  , viCustomerAddress
-  , viVlan
-  , viLocation
-  , viAmazonAddress
-  , viAddressFamily
-  , viVirtualInterfaceState
-  , viConnectionId
-  , viDirectConnectGatewayId
-  , viAmazonSideASN
-  , viVirtualInterfaceType
-  , viAsn
-  , viAuthKey
-  , viCustomerRouterConfig
-  , viOwnerAccount
-  , viVirtualInterfaceName
-  , viVirtualInterfaceId
-  ) where
+    , viBgpPeers
+    , viVirtualGatewayId
+    , viMtu
+    , viRouteFilterPrefixes
+    , viCustomerAddress
+    , viVlan
+    , viLocation
+    , viAmazonAddress
+    , viAddressFamily
+    , viVirtualInterfaceState
+    , viConnectionId
+    , viDirectConnectGatewayId
+    , viAmazonSideASN
+    , viVirtualInterfaceType
+    , viAsn
+    , viAuthKey
+    , viJumboFrameCapable
+    , viCustomerRouterConfig
+    , viOwnerAccount
+    , viRegion
+    , viVirtualInterfaceName
+    , viAwsDeviceV2
+    , viVirtualInterfaceId
+    , viTags
+    ) where
 
 import Network.AWS.DirectConnect.Types
 import Network.AWS.DirectConnect.Types.Product
@@ -58,11 +67,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Container for the parameters to the CreatePrivateVirtualInterface operation.
---
---
---
--- /See:/ 'createPrivateVirtualInterface' smart constructor.
+-- | /See:/ 'createPrivateVirtualInterface' smart constructor.
 data CreatePrivateVirtualInterface =
   CreatePrivateVirtualInterface'
     { _creConnectionId               :: !Text
@@ -70,63 +75,66 @@ data CreatePrivateVirtualInterface =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreatePrivateVirtualInterface' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'creConnectionId' - Undocumented member.
+-- * 'creConnectionId' - The ID of the connection.
 --
--- * 'creNewPrivateVirtualInterface' - Detailed information for the private virtual interface to be created. Default: None
-createPrivateVirtualInterface ::
-     Text -- ^ 'creConnectionId'
-  -> NewPrivateVirtualInterface -- ^ 'creNewPrivateVirtualInterface'
-  -> CreatePrivateVirtualInterface
+-- * 'creNewPrivateVirtualInterface' - Information about the private virtual interface.
+createPrivateVirtualInterface
+    :: Text -- ^ 'creConnectionId'
+    -> NewPrivateVirtualInterface -- ^ 'creNewPrivateVirtualInterface'
+    -> CreatePrivateVirtualInterface
 createPrivateVirtualInterface pConnectionId_ pNewPrivateVirtualInterface_ =
   CreatePrivateVirtualInterface'
     { _creConnectionId = pConnectionId_
     , _creNewPrivateVirtualInterface = pNewPrivateVirtualInterface_
     }
 
--- | Undocumented member.
+
+-- | The ID of the connection.
 creConnectionId :: Lens' CreatePrivateVirtualInterface Text
-creConnectionId = lens _creConnectionId (\s a -> s {_creConnectionId = a})
+creConnectionId = lens _creConnectionId (\ s a -> s{_creConnectionId = a})
 
--- | Detailed information for the private virtual interface to be created. Default: None
-creNewPrivateVirtualInterface ::
-     Lens' CreatePrivateVirtualInterface NewPrivateVirtualInterface
-creNewPrivateVirtualInterface =
-  lens
-    _creNewPrivateVirtualInterface
-    (\s a -> s {_creNewPrivateVirtualInterface = a})
+-- | Information about the private virtual interface.
+creNewPrivateVirtualInterface :: Lens' CreatePrivateVirtualInterface NewPrivateVirtualInterface
+creNewPrivateVirtualInterface = lens _creNewPrivateVirtualInterface (\ s a -> s{_creNewPrivateVirtualInterface = a})
 
-instance AWSRequest CreatePrivateVirtualInterface where
-  type Rs CreatePrivateVirtualInterface = VirtualInterface
-  request = postJSON directConnect
-  response = receiveJSON (\s h x -> eitherParseJSON x)
+instance AWSRequest CreatePrivateVirtualInterface
+         where
+        type Rs CreatePrivateVirtualInterface =
+             VirtualInterface
+        request = postJSON directConnect
+        response = receiveJSON (\ s h x -> eitherParseJSON x)
 
-instance Hashable CreatePrivateVirtualInterface
+instance Hashable CreatePrivateVirtualInterface where
 
-instance NFData CreatePrivateVirtualInterface
+instance NFData CreatePrivateVirtualInterface where
 
-instance ToHeaders CreatePrivateVirtualInterface where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("OvertureService.CreatePrivateVirtualInterface" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+instance ToHeaders CreatePrivateVirtualInterface
+         where
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("OvertureService.CreatePrivateVirtualInterface" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON CreatePrivateVirtualInterface where
-  toJSON CreatePrivateVirtualInterface' {..} =
-    object
-      (catMaybes
-         [ Just ("connectionId" .= _creConnectionId)
-         , Just ("newPrivateVirtualInterface" .= _creNewPrivateVirtualInterface)
-         ])
+        toJSON CreatePrivateVirtualInterface'{..}
+          = object
+              (catMaybes
+                 [Just ("connectionId" .= _creConnectionId),
+                  Just
+                    ("newPrivateVirtualInterface" .=
+                       _creNewPrivateVirtualInterface)])
 
 instance ToPath CreatePrivateVirtualInterface where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery CreatePrivateVirtualInterface where
-  toQuery = const mempty
+        toQuery = const mempty

@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.DMS.AddTagsToResource
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.DMS.AddTagsToResource
+    (
     -- * Creating a Request
-  ( addTagsToResource
-  , AddTagsToResource
+      addTagsToResource
+    , AddTagsToResource
     -- * Request Lenses
-  , attrResourceARN
-  , attrTags
+    , attrResourceARN
+    , attrTags
+
     -- * Destructuring the Response
-  , addTagsToResourceResponse
-  , AddTagsToResourceResponse
+    , addTagsToResourceResponse
+    , AddTagsToResourceResponse
     -- * Response Lenses
-  , attrrsResponseStatus
-  ) where
+    , attrrsResponseStatus
+    ) where
 
 import Network.AWS.DMS.Types
 import Network.AWS.DMS.Types.Product
@@ -40,7 +44,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | Associates a set of tags with an AWS DMS resource.
 --
 --
 --
@@ -52,57 +56,63 @@ data AddTagsToResource =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AddTagsToResource' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'attrResourceARN' - The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be added to. AWS DMS resources include a replication instance, endpoint, and a replication task.
+-- * 'attrResourceARN' - Identifies the AWS DMS resource to which tags should be added. The value for this parameter is an Amazon Resource Name (ARN). For AWS DMS, you can tag a replication instance, an endpoint, or a replication task.
 --
--- * 'attrTags' - The tag to be assigned to the DMS resource.
-addTagsToResource ::
-     Text -- ^ 'attrResourceARN'
-  -> AddTagsToResource
+-- * 'attrTags' - One or more tags to be assigned to the resource.
+addTagsToResource
+    :: Text -- ^ 'attrResourceARN'
+    -> AddTagsToResource
 addTagsToResource pResourceARN_ =
   AddTagsToResource' {_attrResourceARN = pResourceARN_, _attrTags = mempty}
 
--- | The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be added to. AWS DMS resources include a replication instance, endpoint, and a replication task.
-attrResourceARN :: Lens' AddTagsToResource Text
-attrResourceARN = lens _attrResourceARN (\s a -> s {_attrResourceARN = a})
 
--- | The tag to be assigned to the DMS resource.
+-- | Identifies the AWS DMS resource to which tags should be added. The value for this parameter is an Amazon Resource Name (ARN). For AWS DMS, you can tag a replication instance, an endpoint, or a replication task.
+attrResourceARN :: Lens' AddTagsToResource Text
+attrResourceARN = lens _attrResourceARN (\ s a -> s{_attrResourceARN = a})
+
+-- | One or more tags to be assigned to the resource.
 attrTags :: Lens' AddTagsToResource [Tag]
-attrTags = lens _attrTags (\s a -> s {_attrTags = a}) . _Coerce
+attrTags = lens _attrTags (\ s a -> s{_attrTags = a}) . _Coerce
 
 instance AWSRequest AddTagsToResource where
-  type Rs AddTagsToResource = AddTagsToResourceResponse
-  request = postJSON dms
-  response =
-    receiveEmpty (\s h x -> AddTagsToResourceResponse' <$> (pure (fromEnum s)))
+        type Rs AddTagsToResource = AddTagsToResourceResponse
+        request = postJSON dms
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 AddTagsToResourceResponse' <$> (pure (fromEnum s)))
 
-instance Hashable AddTagsToResource
+instance Hashable AddTagsToResource where
 
-instance NFData AddTagsToResource
+instance NFData AddTagsToResource where
 
 instance ToHeaders AddTagsToResource where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AmazonDMSv20160101.AddTagsToResource" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AmazonDMSv20160101.AddTagsToResource" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON AddTagsToResource where
-  toJSON AddTagsToResource' {..} =
-    object
-      (catMaybes
-         [Just ("ResourceArn" .= _attrResourceARN), Just ("Tags" .= _attrTags)])
+        toJSON AddTagsToResource'{..}
+          = object
+              (catMaybes
+                 [Just ("ResourceArn" .= _attrResourceARN),
+                  Just ("Tags" .= _attrTags)])
 
 instance ToPath AddTagsToResource where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery AddTagsToResource where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- |
 --
@@ -115,20 +125,21 @@ newtype AddTagsToResourceResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AddTagsToResourceResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'attrrsResponseStatus' - -- | The response status code.
-addTagsToResourceResponse ::
-     Int -- ^ 'attrrsResponseStatus'
-  -> AddTagsToResourceResponse
+addTagsToResourceResponse
+    :: Int -- ^ 'attrrsResponseStatus'
+    -> AddTagsToResourceResponse
 addTagsToResourceResponse pResponseStatus_ =
   AddTagsToResourceResponse' {_attrrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 attrrsResponseStatus :: Lens' AddTagsToResourceResponse Int
-attrrsResponseStatus =
-  lens _attrrsResponseStatus (\s a -> s {_attrrsResponseStatus = a})
+attrrsResponseStatus = lens _attrrsResponseStatus (\ s a -> s{_attrrsResponseStatus = a})
 
-instance NFData AddTagsToResourceResponse
+instance NFData AddTagsToResourceResponse where

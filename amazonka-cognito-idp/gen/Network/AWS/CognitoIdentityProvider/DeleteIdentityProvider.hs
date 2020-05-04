@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CognitoIdentityProvider.DeleteIdentityProvider
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,16 +22,18 @@
 --
 --
 module Network.AWS.CognitoIdentityProvider.DeleteIdentityProvider
+    (
     -- * Creating a Request
-  ( deleteIdentityProvider
-  , DeleteIdentityProvider
+      deleteIdentityProvider
+    , DeleteIdentityProvider
     -- * Request Lenses
-  , delUserPoolId
-  , delProviderName
+    , delUserPoolId
+    , delProviderName
+
     -- * Destructuring the Response
-  , deleteIdentityProviderResponse
-  , DeleteIdentityProviderResponse
-  ) where
+    , deleteIdentityProviderResponse
+    , DeleteIdentityProviderResponse
+    ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
 import Network.AWS.CognitoIdentityProvider.Types.Product
@@ -46,6 +50,7 @@ data DeleteIdentityProvider =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteIdentityProvider' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -53,62 +58,68 @@ data DeleteIdentityProvider =
 -- * 'delUserPoolId' - The user pool ID.
 --
 -- * 'delProviderName' - The identity provider name.
-deleteIdentityProvider ::
-     Text -- ^ 'delUserPoolId'
-  -> Text -- ^ 'delProviderName'
-  -> DeleteIdentityProvider
+deleteIdentityProvider
+    :: Text -- ^ 'delUserPoolId'
+    -> Text -- ^ 'delProviderName'
+    -> DeleteIdentityProvider
 deleteIdentityProvider pUserPoolId_ pProviderName_ =
   DeleteIdentityProvider'
     {_delUserPoolId = pUserPoolId_, _delProviderName = pProviderName_}
 
+
 -- | The user pool ID.
 delUserPoolId :: Lens' DeleteIdentityProvider Text
-delUserPoolId = lens _delUserPoolId (\s a -> s {_delUserPoolId = a})
+delUserPoolId = lens _delUserPoolId (\ s a -> s{_delUserPoolId = a})
 
 -- | The identity provider name.
 delProviderName :: Lens' DeleteIdentityProvider Text
-delProviderName = lens _delProviderName (\s a -> s {_delProviderName = a})
+delProviderName = lens _delProviderName (\ s a -> s{_delProviderName = a})
 
 instance AWSRequest DeleteIdentityProvider where
-  type Rs DeleteIdentityProvider = DeleteIdentityProviderResponse
-  request = postJSON cognitoIdentityProvider
-  response = receiveNull DeleteIdentityProviderResponse'
+        type Rs DeleteIdentityProvider =
+             DeleteIdentityProviderResponse
+        request = postJSON cognitoIdentityProvider
+        response
+          = receiveNull DeleteIdentityProviderResponse'
 
-instance Hashable DeleteIdentityProvider
+instance Hashable DeleteIdentityProvider where
 
-instance NFData DeleteIdentityProvider
+instance NFData DeleteIdentityProvider where
 
 instance ToHeaders DeleteIdentityProvider where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AWSCognitoIdentityProviderService.DeleteIdentityProvider" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWSCognitoIdentityProviderService.DeleteIdentityProvider"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DeleteIdentityProvider where
-  toJSON DeleteIdentityProvider' {..} =
-    object
-      (catMaybes
-         [ Just ("UserPoolId" .= _delUserPoolId)
-         , Just ("ProviderName" .= _delProviderName)
-         ])
+        toJSON DeleteIdentityProvider'{..}
+          = object
+              (catMaybes
+                 [Just ("UserPoolId" .= _delUserPoolId),
+                  Just ("ProviderName" .= _delProviderName)])
 
 instance ToPath DeleteIdentityProvider where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DeleteIdentityProvider where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'deleteIdentityProviderResponse' smart constructor.
 data DeleteIdentityProviderResponse =
   DeleteIdentityProviderResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteIdentityProviderResponse' with the minimum fields required to make a request.
 --
-deleteIdentityProviderResponse :: DeleteIdentityProviderResponse
+deleteIdentityProviderResponse
+    :: DeleteIdentityProviderResponse
 deleteIdentityProviderResponse = DeleteIdentityProviderResponse'
 
-instance NFData DeleteIdentityProviderResponse
+
+instance NFData DeleteIdentityProviderResponse where

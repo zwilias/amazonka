@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SMS.StartOnDemandReplicationRun
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,19 +20,21 @@
 --
 -- The StartOnDemandReplicationRun API is used to start a ReplicationRun on demand (in addition to those that are scheduled based on your frequency). This ReplicationRun will start immediately. StartOnDemandReplicationRun is subject to limits on how many on demand ReplicationRuns you may call per 24-hour period.
 module Network.AWS.SMS.StartOnDemandReplicationRun
+    (
     -- * Creating a Request
-  ( startOnDemandReplicationRun
-  , StartOnDemandReplicationRun
+      startOnDemandReplicationRun
+    , StartOnDemandReplicationRun
     -- * Request Lenses
-  , sodrrDescription
-  , sodrrReplicationJobId
+    , sodrrDescription
+    , sodrrReplicationJobId
+
     -- * Destructuring the Response
-  , startOnDemandReplicationRunResponse
-  , StartOnDemandReplicationRunResponse
+    , startOnDemandReplicationRunResponse
+    , StartOnDemandReplicationRunResponse
     -- * Response Lenses
-  , sodrrrsReplicationRunId
-  , sodrrrsResponseStatus
-  ) where
+    , sodrrrsReplicationRunId
+    , sodrrrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -47,6 +51,7 @@ data StartOnDemandReplicationRun =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'StartOnDemandReplicationRun' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -54,57 +59,58 @@ data StartOnDemandReplicationRun =
 -- * 'sodrrDescription' - Undocumented member.
 --
 -- * 'sodrrReplicationJobId' - Undocumented member.
-startOnDemandReplicationRun ::
-     Text -- ^ 'sodrrReplicationJobId'
-  -> StartOnDemandReplicationRun
+startOnDemandReplicationRun
+    :: Text -- ^ 'sodrrReplicationJobId'
+    -> StartOnDemandReplicationRun
 startOnDemandReplicationRun pReplicationJobId_ =
   StartOnDemandReplicationRun'
     {_sodrrDescription = Nothing, _sodrrReplicationJobId = pReplicationJobId_}
 
+
 -- | Undocumented member.
 sodrrDescription :: Lens' StartOnDemandReplicationRun (Maybe Text)
-sodrrDescription = lens _sodrrDescription (\s a -> s {_sodrrDescription = a})
+sodrrDescription = lens _sodrrDescription (\ s a -> s{_sodrrDescription = a})
 
 -- | Undocumented member.
 sodrrReplicationJobId :: Lens' StartOnDemandReplicationRun Text
-sodrrReplicationJobId =
-  lens _sodrrReplicationJobId (\s a -> s {_sodrrReplicationJobId = a})
+sodrrReplicationJobId = lens _sodrrReplicationJobId (\ s a -> s{_sodrrReplicationJobId = a})
 
 instance AWSRequest StartOnDemandReplicationRun where
-  type Rs StartOnDemandReplicationRun = StartOnDemandReplicationRunResponse
-  request = postJSON sms
-  response =
-    receiveJSON
-      (\s h x ->
-         StartOnDemandReplicationRunResponse' <$> (x .?> "replicationRunId") <*>
-         (pure (fromEnum s)))
+        type Rs StartOnDemandReplicationRun =
+             StartOnDemandReplicationRunResponse
+        request = postJSON sms
+        response
+          = receiveJSON
+              (\ s h x ->
+                 StartOnDemandReplicationRunResponse' <$>
+                   (x .?> "replicationRunId") <*> (pure (fromEnum s)))
 
-instance Hashable StartOnDemandReplicationRun
+instance Hashable StartOnDemandReplicationRun where
 
-instance NFData StartOnDemandReplicationRun
+instance NFData StartOnDemandReplicationRun where
 
 instance ToHeaders StartOnDemandReplicationRun where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AWSServerMigrationService_V2016_10_24.StartOnDemandReplicationRun" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWSServerMigrationService_V2016_10_24.StartOnDemandReplicationRun"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON StartOnDemandReplicationRun where
-  toJSON StartOnDemandReplicationRun' {..} =
-    object
-      (catMaybes
-         [ ("description" .=) <$> _sodrrDescription
-         , Just ("replicationJobId" .= _sodrrReplicationJobId)
-         ])
+        toJSON StartOnDemandReplicationRun'{..}
+          = object
+              (catMaybes
+                 [("description" .=) <$> _sodrrDescription,
+                  Just ("replicationJobId" .= _sodrrReplicationJobId)])
 
 instance ToPath StartOnDemandReplicationRun where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery StartOnDemandReplicationRun where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'startOnDemandReplicationRunResponse' smart constructor.
 data StartOnDemandReplicationRunResponse =
@@ -114,6 +120,7 @@ data StartOnDemandReplicationRunResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'StartOnDemandReplicationRunResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -121,24 +128,23 @@ data StartOnDemandReplicationRunResponse =
 -- * 'sodrrrsReplicationRunId' - Undocumented member.
 --
 -- * 'sodrrrsResponseStatus' - -- | The response status code.
-startOnDemandReplicationRunResponse ::
-     Int -- ^ 'sodrrrsResponseStatus'
-  -> StartOnDemandReplicationRunResponse
+startOnDemandReplicationRunResponse
+    :: Int -- ^ 'sodrrrsResponseStatus'
+    -> StartOnDemandReplicationRunResponse
 startOnDemandReplicationRunResponse pResponseStatus_ =
   StartOnDemandReplicationRunResponse'
     { _sodrrrsReplicationRunId = Nothing
     , _sodrrrsResponseStatus = pResponseStatus_
     }
 
+
 -- | Undocumented member.
-sodrrrsReplicationRunId ::
-     Lens' StartOnDemandReplicationRunResponse (Maybe Text)
-sodrrrsReplicationRunId =
-  lens _sodrrrsReplicationRunId (\s a -> s {_sodrrrsReplicationRunId = a})
+sodrrrsReplicationRunId :: Lens' StartOnDemandReplicationRunResponse (Maybe Text)
+sodrrrsReplicationRunId = lens _sodrrrsReplicationRunId (\ s a -> s{_sodrrrsReplicationRunId = a})
 
 -- | -- | The response status code.
 sodrrrsResponseStatus :: Lens' StartOnDemandReplicationRunResponse Int
-sodrrrsResponseStatus =
-  lens _sodrrrsResponseStatus (\s a -> s {_sodrrrsResponseStatus = a})
+sodrrrsResponseStatus = lens _sodrrrsResponseStatus (\ s a -> s{_sodrrrsResponseStatus = a})
 
 instance NFData StartOnDemandReplicationRunResponse
+         where

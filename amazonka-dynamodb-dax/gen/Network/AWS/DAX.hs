@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.DAX
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -14,217 +15,303 @@
 --
 --
 module Network.AWS.DAX
+    (
     -- * Service Configuration
-  ( dax
+      dax
+
     -- * Errors
     -- $errors
+
     -- ** SubnetQuotaExceededFault
-  , _SubnetQuotaExceededFault
+    , _SubnetQuotaExceededFault
+
     -- ** ParameterGroupNotFoundFault
-  , _ParameterGroupNotFoundFault
+    , _ParameterGroupNotFoundFault
+
     -- ** InvalidParameterGroupStateFault
-  , _InvalidParameterGroupStateFault
+    , _InvalidParameterGroupStateFault
+
     -- ** SubnetGroupInUseFault
-  , _SubnetGroupInUseFault
+    , _SubnetGroupInUseFault
+
     -- ** ParameterGroupAlreadyExistsFault
-  , _ParameterGroupAlreadyExistsFault
+    , _ParameterGroupAlreadyExistsFault
+
     -- ** InvalidSubnet
-  , _InvalidSubnet
+    , _InvalidSubnet
+
     -- ** TagQuotaPerResourceExceeded
-  , _TagQuotaPerResourceExceeded
+    , _TagQuotaPerResourceExceeded
+
     -- ** ClusterNotFoundFault
-  , _ClusterNotFoundFault
+    , _ClusterNotFoundFault
+
     -- ** TagNotFoundFault
-  , _TagNotFoundFault
+    , _TagNotFoundFault
+
     -- ** NodeQuotaForClusterExceededFault
-  , _NodeQuotaForClusterExceededFault
+    , _NodeQuotaForClusterExceededFault
+
     -- ** InvalidClusterStateFault
-  , _InvalidClusterStateFault
+    , _InvalidClusterStateFault
+
+    -- ** ServiceLinkedRoleNotFoundFault
+    , _ServiceLinkedRoleNotFoundFault
+
     -- ** InsufficientClusterCapacityFault
-  , _InsufficientClusterCapacityFault
+    , _InsufficientClusterCapacityFault
+
     -- ** NodeNotFoundFault
-  , _NodeNotFoundFault
+    , _NodeNotFoundFault
+
     -- ** ParameterGroupQuotaExceededFault
-  , _ParameterGroupQuotaExceededFault
+    , _ParameterGroupQuotaExceededFault
+
     -- ** InvalidParameterValueException
-  , _InvalidParameterValueException
+    , _InvalidParameterValueException
+
     -- ** InvalidVPCNetworkStateFault
-  , _InvalidVPCNetworkStateFault
+    , _InvalidVPCNetworkStateFault
+
     -- ** SubnetInUse
-  , _SubnetInUse
+    , _SubnetInUse
+
     -- ** ClusterQuotaForCustomerExceededFault
-  , _ClusterQuotaForCustomerExceededFault
+    , _ClusterQuotaForCustomerExceededFault
+
     -- ** SubnetGroupNotFoundFault
-  , _SubnetGroupNotFoundFault
+    , _SubnetGroupNotFoundFault
+
     -- ** SubnetGroupAlreadyExistsFault
-  , _SubnetGroupAlreadyExistsFault
+    , _SubnetGroupAlreadyExistsFault
+
     -- ** NodeQuotaForCustomerExceededFault
-  , _NodeQuotaForCustomerExceededFault
+    , _NodeQuotaForCustomerExceededFault
+
     -- ** SubnetGroupQuotaExceededFault
-  , _SubnetGroupQuotaExceededFault
+    , _SubnetGroupQuotaExceededFault
+
     -- ** ClusterAlreadyExistsFault
-  , _ClusterAlreadyExistsFault
+    , _ClusterAlreadyExistsFault
+
     -- ** InvalidARNFault
-  , _InvalidARNFault
+    , _InvalidARNFault
+
     -- ** InvalidParameterCombinationException
-  , _InvalidParameterCombinationException
+    , _InvalidParameterCombinationException
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
-    -- ** DescribeClusters
-  , module Network.AWS.DAX.DescribeClusters
-    -- ** DescribeParameters
-  , module Network.AWS.DAX.DescribeParameters
-    -- ** DescribeEvents
-  , module Network.AWS.DAX.DescribeEvents
+
+    -- ** DescribeClusters (Paginated)
+    , module Network.AWS.DAX.DescribeClusters
+
+    -- ** DescribeParameters (Paginated)
+    , module Network.AWS.DAX.DescribeParameters
+
+    -- ** DescribeEvents (Paginated)
+    , module Network.AWS.DAX.DescribeEvents
+
     -- ** IncreaseReplicationFactor
-  , module Network.AWS.DAX.IncreaseReplicationFactor
+    , module Network.AWS.DAX.IncreaseReplicationFactor
+
     -- ** CreateSubnetGroup
-  , module Network.AWS.DAX.CreateSubnetGroup
+    , module Network.AWS.DAX.CreateSubnetGroup
+
     -- ** DeleteCluster
-  , module Network.AWS.DAX.DeleteCluster
+    , module Network.AWS.DAX.DeleteCluster
+
     -- ** UpdateCluster
-  , module Network.AWS.DAX.UpdateCluster
+    , module Network.AWS.DAX.UpdateCluster
+
     -- ** CreateCluster
-  , module Network.AWS.DAX.CreateCluster
-    -- ** DescribeDefaultParameters
-  , module Network.AWS.DAX.DescribeDefaultParameters
+    , module Network.AWS.DAX.CreateCluster
+
+    -- ** DescribeDefaultParameters (Paginated)
+    , module Network.AWS.DAX.DescribeDefaultParameters
+
     -- ** DeleteParameterGroup
-  , module Network.AWS.DAX.DeleteParameterGroup
+    , module Network.AWS.DAX.DeleteParameterGroup
+
     -- ** UpdateParameterGroup
-  , module Network.AWS.DAX.UpdateParameterGroup
-    -- ** DescribeSubnetGroups
-  , module Network.AWS.DAX.DescribeSubnetGroups
+    , module Network.AWS.DAX.UpdateParameterGroup
+
+    -- ** DescribeSubnetGroups (Paginated)
+    , module Network.AWS.DAX.DescribeSubnetGroups
+
     -- ** CreateParameterGroup
-  , module Network.AWS.DAX.CreateParameterGroup
+    , module Network.AWS.DAX.CreateParameterGroup
+
     -- ** UpdateSubnetGroup
-  , module Network.AWS.DAX.UpdateSubnetGroup
+    , module Network.AWS.DAX.UpdateSubnetGroup
+
     -- ** DeleteSubnetGroup
-  , module Network.AWS.DAX.DeleteSubnetGroup
-    -- ** DescribeParameterGroups
-  , module Network.AWS.DAX.DescribeParameterGroups
+    , module Network.AWS.DAX.DeleteSubnetGroup
+
+    -- ** DescribeParameterGroups (Paginated)
+    , module Network.AWS.DAX.DescribeParameterGroups
+
     -- ** TagResource
-  , module Network.AWS.DAX.TagResource
-    -- ** ListTags
-  , module Network.AWS.DAX.ListTags
+    , module Network.AWS.DAX.TagResource
+
+    -- ** ListTags (Paginated)
+    , module Network.AWS.DAX.ListTags
+
     -- ** DecreaseReplicationFactor
-  , module Network.AWS.DAX.DecreaseReplicationFactor
+    , module Network.AWS.DAX.DecreaseReplicationFactor
+
     -- ** UntagResource
-  , module Network.AWS.DAX.UntagResource
+    , module Network.AWS.DAX.UntagResource
+
     -- ** RebootNode
-  , module Network.AWS.DAX.RebootNode
+    , module Network.AWS.DAX.RebootNode
+
     -- * Types
+
     -- ** ChangeType
-  , ChangeType(..)
+    , ChangeType (..)
+
     -- ** IsModifiable
-  , IsModifiable(..)
+    , IsModifiable (..)
+
     -- ** ParameterType
-  , ParameterType(..)
+    , ParameterType (..)
+
+    -- ** SSEStatus
+    , SSEStatus (..)
+
     -- ** SourceType
-  , SourceType(..)
+    , SourceType (..)
+
     -- ** Cluster
-  , Cluster
-  , cluster
-  , cStatus
-  , cIAMRoleARN
-  , cClusterARN
-  , cActiveNodes
-  , cSecurityGroups
-  , cNotificationConfiguration
-  , cNodeIdsToRemove
-  , cTotalNodes
-  , cPreferredMaintenanceWindow
-  , cSubnetGroup
-  , cClusterName
-  , cNodeType
-  , cNodes
-  , cClusterDiscoveryEndpoint
-  , cDescription
-  , cParameterGroup
+    , Cluster
+    , cluster
+    , cStatus
+    , cIAMRoleARN
+    , cClusterARN
+    , cActiveNodes
+    , cSecurityGroups
+    , cNotificationConfiguration
+    , cNodeIdsToRemove
+    , cTotalNodes
+    , cPreferredMaintenanceWindow
+    , cSubnetGroup
+    , cClusterName
+    , cNodeType
+    , cNodes
+    , cClusterDiscoveryEndpoint
+    , cSSEDescription
+    , cDescription
+    , cParameterGroup
+
     -- ** Endpoint
-  , Endpoint
-  , endpoint
-  , eAddress
-  , ePort
+    , Endpoint
+    , endpoint
+    , eAddress
+    , ePort
+
     -- ** Event
-  , Event
-  , event
-  , eSourceName
-  , eSourceType
-  , eDate
-  , eMessage
+    , Event
+    , event
+    , eSourceName
+    , eSourceType
+    , eDate
+    , eMessage
+
     -- ** Node
-  , Node
-  , node
-  , nNodeStatus
-  , nParameterGroupStatus
-  , nAvailabilityZone
-  , nNodeId
-  , nEndpoint
-  , nNodeCreateTime
+    , Node
+    , node
+    , nNodeStatus
+    , nParameterGroupStatus
+    , nAvailabilityZone
+    , nNodeId
+    , nEndpoint
+    , nNodeCreateTime
+
     -- ** NodeTypeSpecificValue
-  , NodeTypeSpecificValue
-  , nodeTypeSpecificValue
-  , ntsvValue
-  , ntsvNodeType
+    , NodeTypeSpecificValue
+    , nodeTypeSpecificValue
+    , ntsvValue
+    , ntsvNodeType
+
     -- ** NotificationConfiguration
-  , NotificationConfiguration
-  , notificationConfiguration
-  , ncTopicStatus
-  , ncTopicARN
+    , NotificationConfiguration
+    , notificationConfiguration
+    , ncTopicStatus
+    , ncTopicARN
+
     -- ** Parameter
-  , Parameter
-  , parameter
-  , pParameterValue
-  , pParameterType
-  , pSource
-  , pIsModifiable
-  , pDataType
-  , pNodeTypeSpecificValues
-  , pAllowedValues
-  , pParameterName
-  , pDescription
-  , pChangeType
+    , Parameter
+    , parameter
+    , pParameterValue
+    , pParameterType
+    , pSource
+    , pIsModifiable
+    , pDataType
+    , pNodeTypeSpecificValues
+    , pAllowedValues
+    , pParameterName
+    , pDescription
+    , pChangeType
+
     -- ** ParameterGroup
-  , ParameterGroup
-  , parameterGroup
-  , pgDescription
-  , pgParameterGroupName
+    , ParameterGroup
+    , parameterGroup
+    , pgDescription
+    , pgParameterGroupName
+
     -- ** ParameterGroupStatus
-  , ParameterGroupStatus
-  , parameterGroupStatus
-  , pgsNodeIdsToReboot
-  , pgsParameterApplyStatus
-  , pgsParameterGroupName
+    , ParameterGroupStatus
+    , parameterGroupStatus
+    , pgsNodeIdsToReboot
+    , pgsParameterApplyStatus
+    , pgsParameterGroupName
+
     -- ** ParameterNameValue
-  , ParameterNameValue
-  , parameterNameValue
-  , pnvParameterValue
-  , pnvParameterName
+    , ParameterNameValue
+    , parameterNameValue
+    , pnvParameterValue
+    , pnvParameterName
+
+    -- ** SSEDescription
+    , SSEDescription
+    , sSEDescription
+    , ssedStatus
+
+    -- ** SSESpecification
+    , SSESpecification
+    , sSESpecification
+    , ssesEnabled
+
     -- ** SecurityGroupMembership
-  , SecurityGroupMembership
-  , securityGroupMembership
-  , sgmStatus
-  , sgmSecurityGroupIdentifier
+    , SecurityGroupMembership
+    , securityGroupMembership
+    , sgmStatus
+    , sgmSecurityGroupIdentifier
+
     -- ** Subnet
-  , Subnet
-  , subnet
-  , sSubnetIdentifier
-  , sSubnetAvailabilityZone
+    , Subnet
+    , subnet
+    , sSubnetIdentifier
+    , sSubnetAvailabilityZone
+
     -- ** SubnetGroup
-  , SubnetGroup
-  , subnetGroup
-  , sgVPCId
-  , sgSubnets
-  , sgSubnetGroupName
-  , sgDescription
+    , SubnetGroup
+    , subnetGroup
+    , sgVPCId
+    , sgSubnets
+    , sgSubnetGroupName
+    , sgDescription
+
     -- ** Tag
-  , Tag
-  , tag
-  , tagValue
-  , tagKey
-  ) where
+    , Tag
+    , tag
+    , tagValue
+    , tagKey
+    ) where
 
 import Network.AWS.DAX.CreateCluster
 import Network.AWS.DAX.CreateParameterGroup
@@ -249,12 +336,14 @@ import Network.AWS.DAX.UpdateCluster
 import Network.AWS.DAX.UpdateParameterGroup
 import Network.AWS.DAX.UpdateSubnetGroup
 import Network.AWS.DAX.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'DAX'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -271,6 +360,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

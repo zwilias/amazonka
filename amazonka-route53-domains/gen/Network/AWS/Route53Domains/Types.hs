@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Route53Domains.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,95 +11,114 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.Route53Domains.Types
+    (
     -- * Service Configuration
-  ( route53Domains
+      route53Domains
+
     -- * Errors
-  , _InvalidInput
-  , _OperationLimitExceeded
-  , _DomainLimitExceeded
-  , _UnsupportedTLD
-  , _TLDRulesViolation
-  , _DuplicateRequest
+    , _InvalidInput
+    , _OperationLimitExceeded
+    , _DomainLimitExceeded
+    , _UnsupportedTLD
+    , _TLDRulesViolation
+    , _DuplicateRequest
+
     -- * ContactType
-  , ContactType(..)
+    , ContactType (..)
+
     -- * CountryCode
-  , CountryCode(..)
+    , CountryCode (..)
+
     -- * DomainAvailability
-  , DomainAvailability(..)
+    , DomainAvailability (..)
+
     -- * ExtraParamName
-  , ExtraParamName(..)
+    , ExtraParamName (..)
+
     -- * OperationStatus
-  , OperationStatus(..)
+    , OperationStatus (..)
+
     -- * OperationType
-  , OperationType(..)
+    , OperationType (..)
+
     -- * ReachabilityStatus
-  , ReachabilityStatus(..)
+    , ReachabilityStatus (..)
+
     -- * Transferable
-  , Transferable(..)
+    , Transferable (..)
+
     -- * BillingRecord
-  , BillingRecord
-  , billingRecord
-  , brOperation
-  , brInvoiceId
-  , brDomainName
-  , brBillDate
-  , brPrice
+    , BillingRecord
+    , billingRecord
+    , brOperation
+    , brInvoiceId
+    , brDomainName
+    , brBillDate
+    , brPrice
+
     -- * ContactDetail
-  , ContactDetail
-  , contactDetail
-  , cdOrganizationName
-  , cdEmail
-  , cdState
-  , cdFax
-  , cdLastName
-  , cdExtraParams
-  , cdZipCode
-  , cdAddressLine1
-  , cdCity
-  , cdPhoneNumber
-  , cdAddressLine2
-  , cdFirstName
-  , cdCountryCode
-  , cdContactType
+    , ContactDetail
+    , contactDetail
+    , cdOrganizationName
+    , cdEmail
+    , cdState
+    , cdFax
+    , cdLastName
+    , cdExtraParams
+    , cdZipCode
+    , cdAddressLine1
+    , cdCity
+    , cdPhoneNumber
+    , cdAddressLine2
+    , cdFirstName
+    , cdCountryCode
+    , cdContactType
+
     -- * DomainSuggestion
-  , DomainSuggestion
-  , domainSuggestion
-  , dAvailability
-  , dDomainName
+    , DomainSuggestion
+    , domainSuggestion
+    , dAvailability
+    , dDomainName
+
     -- * DomainSummary
-  , DomainSummary
-  , domainSummary
-  , dsExpiry
-  , dsTransferLock
-  , dsAutoRenew
-  , dsDomainName
+    , DomainSummary
+    , domainSummary
+    , dsExpiry
+    , dsTransferLock
+    , dsAutoRenew
+    , dsDomainName
+
     -- * DomainTransferability
-  , DomainTransferability
-  , domainTransferability
-  , dtTransferable
+    , DomainTransferability
+    , domainTransferability
+    , dtTransferable
+
     -- * ExtraParam
-  , ExtraParam
-  , extraParam
-  , epName
-  , epValue
+    , ExtraParam
+    , extraParam
+    , epName
+    , epValue
+
     -- * Nameserver
-  , Nameserver
-  , nameserver
-  , nGlueIPs
-  , nName
+    , Nameserver
+    , nameserver
+    , nGlueIPs
+    , nName
+
     -- * OperationSummary
-  , OperationSummary
-  , operationSummary
-  , osOperationId
-  , osStatus
-  , osType
-  , osSubmittedDate
+    , OperationSummary
+    , operationSummary
+    , osOperationId
+    , osStatus
+    , osType
+    , osSubmittedDate
+
     -- * Tag
-  , Tag
-  , tag
-  , tagValue
-  , tagKey
-  ) where
+    , Tag
+    , tag
+    , tagValue
+    , tagKey
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -144,19 +164,21 @@ route53Domains =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | The requested item is not acceptable. For example, for an OperationId it might refer to the ID of an operation that is already completed. For a domain name, it might not be a valid domain name or belong to the requester account.
 --
 --
 _InvalidInput :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidInput = _MatchServiceError route53Domains "InvalidInput"
 
+
 -- | The number of operations or jobs running exceeded the allowed threshold for the account.
 --
 --
-_OperationLimitExceeded ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_OperationLimitExceeded :: AsError a => Getting (First ServiceError) a ServiceError
 _OperationLimitExceeded =
   _MatchServiceError route53Domains "OperationLimitExceeded"
+
 
 -- | The number of domains has exceeded the allowed threshold for the account.
 --
@@ -164,11 +186,13 @@ _OperationLimitExceeded =
 _DomainLimitExceeded :: AsError a => Getting (First ServiceError) a ServiceError
 _DomainLimitExceeded = _MatchServiceError route53Domains "DomainLimitExceeded"
 
+
 -- | Amazon Route 53 does not support this top-level domain (TLD).
 --
 --
 _UnsupportedTLD :: AsError a => Getting (First ServiceError) a ServiceError
 _UnsupportedTLD = _MatchServiceError route53Domains "UnsupportedTLD"
+
 
 -- | The top-level domain does not support this operation.
 --
@@ -176,8 +200,10 @@ _UnsupportedTLD = _MatchServiceError route53Domains "UnsupportedTLD"
 _TLDRulesViolation :: AsError a => Getting (First ServiceError) a ServiceError
 _TLDRulesViolation = _MatchServiceError route53Domains "TLDRulesViolation"
 
+
 -- | The request is already in progress for the domain.
 --
 --
 _DuplicateRequest :: AsError a => Getting (First ServiceError) a ServiceError
 _DuplicateRequest = _MatchServiceError route53Domains "DuplicateRequest"
+

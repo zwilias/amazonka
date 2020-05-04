@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.MQ.DescribeConfigurationRevision
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,21 +20,23 @@
 --
 -- Returns the specified configuration revision for the specified configuration.
 module Network.AWS.MQ.DescribeConfigurationRevision
+    (
     -- * Creating a Request
-  ( describeConfigurationRevision
-  , DescribeConfigurationRevision
+      describeConfigurationRevision
+    , DescribeConfigurationRevision
     -- * Request Lenses
-  , dcrConfigurationRevision
-  , dcrConfigurationId
+    , dcrConfigurationRevision
+    , dcrConfigurationId
+
     -- * Destructuring the Response
-  , describeConfigurationRevisionResponse
-  , DescribeConfigurationRevisionResponse
+    , describeConfigurationRevisionResponse
+    , DescribeConfigurationRevisionResponse
     -- * Response Lenses
-  , dcrrsConfigurationId
-  , dcrrsData
-  , dcrrsDescription
-  , dcrrsResponseStatus
-  ) where
+    , dcrrsConfigurationId
+    , dcrrsData
+    , dcrrsDescription
+    , dcrrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.MQ.Types
@@ -49,6 +53,7 @@ data DescribeConfigurationRevision =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeConfigurationRevision' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -56,57 +61,58 @@ data DescribeConfigurationRevision =
 -- * 'dcrConfigurationRevision' - The revision of the configuration.
 --
 -- * 'dcrConfigurationId' - The unique ID that Amazon MQ generates for the configuration.
-describeConfigurationRevision ::
-     Text -- ^ 'dcrConfigurationRevision'
-  -> Text -- ^ 'dcrConfigurationId'
-  -> DescribeConfigurationRevision
+describeConfigurationRevision
+    :: Text -- ^ 'dcrConfigurationRevision'
+    -> Text -- ^ 'dcrConfigurationId'
+    -> DescribeConfigurationRevision
 describeConfigurationRevision pConfigurationRevision_ pConfigurationId_ =
   DescribeConfigurationRevision'
     { _dcrConfigurationRevision = pConfigurationRevision_
     , _dcrConfigurationId = pConfigurationId_
     }
 
+
 -- | The revision of the configuration.
 dcrConfigurationRevision :: Lens' DescribeConfigurationRevision Text
-dcrConfigurationRevision =
-  lens _dcrConfigurationRevision (\s a -> s {_dcrConfigurationRevision = a})
+dcrConfigurationRevision = lens _dcrConfigurationRevision (\ s a -> s{_dcrConfigurationRevision = a})
 
 -- | The unique ID that Amazon MQ generates for the configuration.
 dcrConfigurationId :: Lens' DescribeConfigurationRevision Text
-dcrConfigurationId =
-  lens _dcrConfigurationId (\s a -> s {_dcrConfigurationId = a})
+dcrConfigurationId = lens _dcrConfigurationId (\ s a -> s{_dcrConfigurationId = a})
 
-instance AWSRequest DescribeConfigurationRevision where
-  type Rs DescribeConfigurationRevision = DescribeConfigurationRevisionResponse
-  request = get mq
-  response =
-    receiveJSON
-      (\s h x ->
-         DescribeConfigurationRevisionResponse' <$> (x .?> "configurationId") <*>
-         (x .?> "data") <*>
-         (x .?> "description") <*>
-         (pure (fromEnum s)))
+instance AWSRequest DescribeConfigurationRevision
+         where
+        type Rs DescribeConfigurationRevision =
+             DescribeConfigurationRevisionResponse
+        request = get mq
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DescribeConfigurationRevisionResponse' <$>
+                   (x .?> "configurationId") <*> (x .?> "data") <*>
+                     (x .?> "description")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable DescribeConfigurationRevision
+instance Hashable DescribeConfigurationRevision where
 
-instance NFData DescribeConfigurationRevision
+instance NFData DescribeConfigurationRevision where
 
-instance ToHeaders DescribeConfigurationRevision where
-  toHeaders =
-    const
-      (mconcat ["Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)])
+instance ToHeaders DescribeConfigurationRevision
+         where
+        toHeaders
+          = const
+              (mconcat
+                 ["Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToPath DescribeConfigurationRevision where
-  toPath DescribeConfigurationRevision' {..} =
-    mconcat
-      [ "/v1/configurations/"
-      , toBS _dcrConfigurationId
-      , "/revisions/"
-      , toBS _dcrConfigurationRevision
-      ]
+        toPath DescribeConfigurationRevision'{..}
+          = mconcat
+              ["/v1/configurations/", toBS _dcrConfigurationId,
+               "/revisions/", toBS _dcrConfigurationRevision]
 
 instance ToQuery DescribeConfigurationRevision where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'describeConfigurationRevisionResponse' smart constructor.
 data DescribeConfigurationRevisionResponse =
@@ -117,6 +123,7 @@ data DescribeConfigurationRevisionResponse =
     , _dcrrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'DescribeConfigurationRevisionResponse' with the minimum fields required to make a request.
 --
@@ -129,9 +136,9 @@ data DescribeConfigurationRevisionResponse =
 -- * 'dcrrsDescription' - The description of the configuration.
 --
 -- * 'dcrrsResponseStatus' - -- | The response status code.
-describeConfigurationRevisionResponse ::
-     Int -- ^ 'dcrrsResponseStatus'
-  -> DescribeConfigurationRevisionResponse
+describeConfigurationRevisionResponse
+    :: Int -- ^ 'dcrrsResponseStatus'
+    -> DescribeConfigurationRevisionResponse
 describeConfigurationRevisionResponse pResponseStatus_ =
   DescribeConfigurationRevisionResponse'
     { _dcrrsConfigurationId = Nothing
@@ -140,22 +147,22 @@ describeConfigurationRevisionResponse pResponseStatus_ =
     , _dcrrsResponseStatus = pResponseStatus_
     }
 
+
 -- | Required. The unique ID that Amazon MQ generates for the configuration.
 dcrrsConfigurationId :: Lens' DescribeConfigurationRevisionResponse (Maybe Text)
-dcrrsConfigurationId =
-  lens _dcrrsConfigurationId (\s a -> s {_dcrrsConfigurationId = a})
+dcrrsConfigurationId = lens _dcrrsConfigurationId (\ s a -> s{_dcrrsConfigurationId = a})
 
 -- | Required. The base64-encoded XML configuration.
 dcrrsData :: Lens' DescribeConfigurationRevisionResponse (Maybe Text)
-dcrrsData = lens _dcrrsData (\s a -> s {_dcrrsData = a})
+dcrrsData = lens _dcrrsData (\ s a -> s{_dcrrsData = a})
 
 -- | The description of the configuration.
 dcrrsDescription :: Lens' DescribeConfigurationRevisionResponse (Maybe Text)
-dcrrsDescription = lens _dcrrsDescription (\s a -> s {_dcrrsDescription = a})
+dcrrsDescription = lens _dcrrsDescription (\ s a -> s{_dcrrsDescription = a})
 
 -- | -- | The response status code.
 dcrrsResponseStatus :: Lens' DescribeConfigurationRevisionResponse Int
-dcrrsResponseStatus =
-  lens _dcrrsResponseStatus (\s a -> s {_dcrrsResponseStatus = a})
+dcrrsResponseStatus = lens _dcrrsResponseStatus (\ s a -> s{_dcrrsResponseStatus = a})
 
 instance NFData DescribeConfigurationRevisionResponse
+         where

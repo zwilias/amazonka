@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CognitoIdentityProvider.UpdateDeviceStatus
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,19 +22,21 @@
 --
 --
 module Network.AWS.CognitoIdentityProvider.UpdateDeviceStatus
+    (
     -- * Creating a Request
-  ( updateDeviceStatus
-  , UpdateDeviceStatus
+      updateDeviceStatus
+    , UpdateDeviceStatus
     -- * Request Lenses
-  , udsDeviceRememberedStatus
-  , udsAccessToken
-  , udsDeviceKey
+    , udsDeviceRememberedStatus
+    , udsAccessToken
+    , udsDeviceKey
+
     -- * Destructuring the Response
-  , updateDeviceStatusResponse
-  , UpdateDeviceStatusResponse
+    , updateDeviceStatusResponse
+    , UpdateDeviceStatusResponse
     -- * Response Lenses
-  , udsrsResponseStatus
-  ) where
+    , udsrsResponseStatus
+    ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
 import Network.AWS.CognitoIdentityProvider.Types.Product
@@ -54,6 +58,7 @@ data UpdateDeviceStatus =
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateDeviceStatus' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -63,10 +68,10 @@ data UpdateDeviceStatus =
 -- * 'udsAccessToken' - The access token.
 --
 -- * 'udsDeviceKey' - The device key.
-updateDeviceStatus ::
-     Text -- ^ 'udsAccessToken'
-  -> Text -- ^ 'udsDeviceKey'
-  -> UpdateDeviceStatus
+updateDeviceStatus
+    :: Text -- ^ 'udsAccessToken'
+    -> Text -- ^ 'udsDeviceKey'
+    -> UpdateDeviceStatus
 updateDeviceStatus pAccessToken_ pDeviceKey_ =
   UpdateDeviceStatus'
     { _udsDeviceRememberedStatus = Nothing
@@ -74,54 +79,56 @@ updateDeviceStatus pAccessToken_ pDeviceKey_ =
     , _udsDeviceKey = pDeviceKey_
     }
 
+
 -- | The status of whether a device is remembered.
-udsDeviceRememberedStatus ::
-     Lens' UpdateDeviceStatus (Maybe DeviceRememberedStatusType)
-udsDeviceRememberedStatus =
-  lens _udsDeviceRememberedStatus (\s a -> s {_udsDeviceRememberedStatus = a})
+udsDeviceRememberedStatus :: Lens' UpdateDeviceStatus (Maybe DeviceRememberedStatusType)
+udsDeviceRememberedStatus = lens _udsDeviceRememberedStatus (\ s a -> s{_udsDeviceRememberedStatus = a})
 
 -- | The access token.
 udsAccessToken :: Lens' UpdateDeviceStatus Text
-udsAccessToken =
-  lens _udsAccessToken (\s a -> s {_udsAccessToken = a}) . _Sensitive
+udsAccessToken = lens _udsAccessToken (\ s a -> s{_udsAccessToken = a}) . _Sensitive
 
 -- | The device key.
 udsDeviceKey :: Lens' UpdateDeviceStatus Text
-udsDeviceKey = lens _udsDeviceKey (\s a -> s {_udsDeviceKey = a})
+udsDeviceKey = lens _udsDeviceKey (\ s a -> s{_udsDeviceKey = a})
 
 instance AWSRequest UpdateDeviceStatus where
-  type Rs UpdateDeviceStatus = UpdateDeviceStatusResponse
-  request = postJSON cognitoIdentityProvider
-  response =
-    receiveEmpty (\s h x -> UpdateDeviceStatusResponse' <$> (pure (fromEnum s)))
+        type Rs UpdateDeviceStatus =
+             UpdateDeviceStatusResponse
+        request = postJSON cognitoIdentityProvider
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 UpdateDeviceStatusResponse' <$> (pure (fromEnum s)))
 
-instance Hashable UpdateDeviceStatus
+instance Hashable UpdateDeviceStatus where
 
-instance NFData UpdateDeviceStatus
+instance NFData UpdateDeviceStatus where
 
 instance ToHeaders UpdateDeviceStatus where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AWSCognitoIdentityProviderService.UpdateDeviceStatus" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWSCognitoIdentityProviderService.UpdateDeviceStatus"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON UpdateDeviceStatus where
-  toJSON UpdateDeviceStatus' {..} =
-    object
-      (catMaybes
-         [ ("DeviceRememberedStatus" .=) <$> _udsDeviceRememberedStatus
-         , Just ("AccessToken" .= _udsAccessToken)
-         , Just ("DeviceKey" .= _udsDeviceKey)
-         ])
+        toJSON UpdateDeviceStatus'{..}
+          = object
+              (catMaybes
+                 [("DeviceRememberedStatus" .=) <$>
+                    _udsDeviceRememberedStatus,
+                  Just ("AccessToken" .= _udsAccessToken),
+                  Just ("DeviceKey" .= _udsDeviceKey)])
 
 instance ToPath UpdateDeviceStatus where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery UpdateDeviceStatus where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | The response to the request to update the device status.
 --
@@ -134,20 +141,21 @@ newtype UpdateDeviceStatusResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateDeviceStatusResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'udsrsResponseStatus' - -- | The response status code.
-updateDeviceStatusResponse ::
-     Int -- ^ 'udsrsResponseStatus'
-  -> UpdateDeviceStatusResponse
+updateDeviceStatusResponse
+    :: Int -- ^ 'udsrsResponseStatus'
+    -> UpdateDeviceStatusResponse
 updateDeviceStatusResponse pResponseStatus_ =
   UpdateDeviceStatusResponse' {_udsrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 udsrsResponseStatus :: Lens' UpdateDeviceStatusResponse Int
-udsrsResponseStatus =
-  lens _udsrsResponseStatus (\s a -> s {_udsrsResponseStatus = a})
+udsrsResponseStatus = lens _udsrsResponseStatus (\ s a -> s{_udsrsResponseStatus = a})
 
-instance NFData UpdateDeviceStatusResponse
+instance NFData UpdateDeviceStatusResponse where

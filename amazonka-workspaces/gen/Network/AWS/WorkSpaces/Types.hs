@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.WorkSpaces.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,184 +11,216 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.WorkSpaces.Types
+    (
     -- * Service Configuration
-  ( workSpaces
+      workSpaces
+
     -- * Errors
-  , _AccessDeniedException
-  , _ResourceCreationFailedException
-  , _ResourceUnavailableException
-  , _InvalidParameterValuesException
-  , _ResourceAssociatedException
-  , _OperationInProgressException
-  , _ResourceAlreadyExistsException
-  , _ResourceLimitExceededException
-  , _InvalidResourceStateException
-  , _OperationNotSupportedException
-  , _UnsupportedWorkspaceConfigurationException
-  , _ResourceNotFoundException
+    , _AccessDeniedException
+    , _ResourceCreationFailedException
+    , _ResourceUnavailableException
+    , _InvalidParameterValuesException
+    , _ResourceAssociatedException
+    , _OperationInProgressException
+    , _ResourceAlreadyExistsException
+    , _ResourceLimitExceededException
+    , _InvalidResourceStateException
+    , _OperationNotSupportedException
+    , _UnsupportedWorkspaceConfigurationException
+    , _ResourceNotFoundException
+
     -- * Compute
-  , Compute(..)
+    , Compute (..)
+
     -- * ConnectionState
-  , ConnectionState(..)
+    , ConnectionState (..)
+
     -- * ModificationResourceEnum
-  , ModificationResourceEnum(..)
+    , ModificationResourceEnum (..)
+
     -- * ModificationStateEnum
-  , ModificationStateEnum(..)
+    , ModificationStateEnum (..)
+
     -- * RunningMode
-  , RunningMode(..)
+    , RunningMode (..)
+
     -- * TargetWorkspaceState
-  , TargetWorkspaceState(..)
+    , TargetWorkspaceState (..)
+
     -- * WorkspaceDirectoryState
-  , WorkspaceDirectoryState(..)
+    , WorkspaceDirectoryState (..)
+
     -- * WorkspaceDirectoryType
-  , WorkspaceDirectoryType(..)
+    , WorkspaceDirectoryType (..)
+
     -- * WorkspaceState
-  , WorkspaceState(..)
+    , WorkspaceState (..)
+
     -- * ComputeType
-  , ComputeType
-  , computeType
-  , ctName
+    , ComputeType
+    , computeType
+    , ctName
+
     -- * DefaultWorkspaceCreationProperties
-  , DefaultWorkspaceCreationProperties
-  , defaultWorkspaceCreationProperties
-  , dwcpCustomSecurityGroupId
-  , dwcpUserEnabledAsLocalAdministrator
-  , dwcpEnableWorkDocs
-  , dwcpEnableInternetAccess
-  , dwcpDefaultOu
+    , DefaultWorkspaceCreationProperties
+    , defaultWorkspaceCreationProperties
+    , dwcpCustomSecurityGroupId
+    , dwcpUserEnabledAsLocalAdministrator
+    , dwcpEnableWorkDocs
+    , dwcpEnableInternetAccess
+    , dwcpDefaultOu
+
     -- * FailedCreateWorkspaceRequest
-  , FailedCreateWorkspaceRequest
-  , failedCreateWorkspaceRequest
-  , fcwrWorkspaceRequest
-  , fcwrErrorCode
-  , fcwrErrorMessage
+    , FailedCreateWorkspaceRequest
+    , failedCreateWorkspaceRequest
+    , fcwrWorkspaceRequest
+    , fcwrErrorCode
+    , fcwrErrorMessage
+
     -- * FailedWorkspaceChangeRequest
-  , FailedWorkspaceChangeRequest
-  , failedWorkspaceChangeRequest
-  , fwcrErrorCode
-  , fwcrWorkspaceId
-  , fwcrErrorMessage
+    , FailedWorkspaceChangeRequest
+    , failedWorkspaceChangeRequest
+    , fwcrErrorCode
+    , fwcrWorkspaceId
+    , fwcrErrorMessage
+
     -- * IPRuleItem
-  , IPRuleItem
-  , ipRuleItem
-  , iriRuleDesc
-  , iriIpRule
+    , IPRuleItem
+    , ipRuleItem
+    , iriRuleDesc
+    , iriIpRule
+
     -- * ModificationState
-  , ModificationState
-  , modificationState
-  , msState
-  , msResource
+    , ModificationState
+    , modificationState
+    , msState
+    , msResource
+
     -- * RebootRequest
-  , RebootRequest
-  , rebootRequest
-  , rWorkspaceId
+    , RebootRequest
+    , rebootRequest
+    , rWorkspaceId
+
     -- * RebuildRequest
-  , RebuildRequest
-  , rebuildRequest
-  , rrWorkspaceId
+    , RebuildRequest
+    , rebuildRequest
+    , rrWorkspaceId
+
     -- * RootStorage
-  , RootStorage
-  , rootStorage
-  , rsCapacity
+    , RootStorage
+    , rootStorage
+    , rsCapacity
+
     -- * StartRequest
-  , StartRequest
-  , startRequest
-  , sWorkspaceId
+    , StartRequest
+    , startRequest
+    , sWorkspaceId
+
     -- * StopRequest
-  , StopRequest
-  , stopRequest
-  , srWorkspaceId
+    , StopRequest
+    , stopRequest
+    , srWorkspaceId
+
     -- * Tag
-  , Tag
-  , tag
-  , tagValue
-  , tagKey
+    , Tag
+    , tag
+    , tagValue
+    , tagKey
+
     -- * TerminateRequest
-  , TerminateRequest
-  , terminateRequest
-  , trWorkspaceId
+    , TerminateRequest
+    , terminateRequest
+    , trWorkspaceId
+
     -- * UserStorage
-  , UserStorage
-  , userStorage
-  , usCapacity
+    , UserStorage
+    , userStorage
+    , usCapacity
+
     -- * Workspace
-  , Workspace
-  , workspace
-  , wDirectoryId
-  , wState
-  , wIPAddress
-  , wModificationStates
-  , wUserName
-  , wSubnetId
-  , wBundleId
-  , wWorkspaceProperties
-  , wRootVolumeEncryptionEnabled
-  , wErrorCode
-  , wVolumeEncryptionKey
-  , wComputerName
-  , wWorkspaceId
-  , wUserVolumeEncryptionEnabled
-  , wErrorMessage
+    , Workspace
+    , workspace
+    , wDirectoryId
+    , wState
+    , wIPAddress
+    , wModificationStates
+    , wUserName
+    , wSubnetId
+    , wBundleId
+    , wWorkspaceProperties
+    , wRootVolumeEncryptionEnabled
+    , wErrorCode
+    , wVolumeEncryptionKey
+    , wComputerName
+    , wWorkspaceId
+    , wUserVolumeEncryptionEnabled
+    , wErrorMessage
+
     -- * WorkspaceBundle
-  , WorkspaceBundle
-  , workspaceBundle
-  , wbBundleId
-  , wbOwner
-  , wbRootStorage
-  , wbName
-  , wbComputeType
-  , wbUserStorage
-  , wbDescription
+    , WorkspaceBundle
+    , workspaceBundle
+    , wbBundleId
+    , wbOwner
+    , wbRootStorage
+    , wbName
+    , wbComputeType
+    , wbUserStorage
+    , wbDescription
+
     -- * WorkspaceConnectionStatus
-  , WorkspaceConnectionStatus
-  , workspaceConnectionStatus
-  , wcsLastKnownUserConnectionTimestamp
-  , wcsConnectionStateCheckTimestamp
-  , wcsWorkspaceId
-  , wcsConnectionState
+    , WorkspaceConnectionStatus
+    , workspaceConnectionStatus
+    , wcsLastKnownUserConnectionTimestamp
+    , wcsConnectionStateCheckTimestamp
+    , wcsWorkspaceId
+    , wcsConnectionState
+
     -- * WorkspaceDirectory
-  , WorkspaceDirectory
-  , workspaceDirectory
-  , wdRegistrationCode
-  , wdIAMRoleId
-  , wdDirectoryId
-  , wdState
-  , wdCustomerUserName
-  , wdSubnetIds
-  , wdIpGroupIds
-  , wdAlias
-  , wdWorkspaceSecurityGroupId
-  , wdDirectoryType
-  , wdWorkspaceCreationProperties
-  , wdDNSIPAddresses
-  , wdDirectoryName
+    , WorkspaceDirectory
+    , workspaceDirectory
+    , wdRegistrationCode
+    , wdIAMRoleId
+    , wdDirectoryId
+    , wdState
+    , wdCustomerUserName
+    , wdSubnetIds
+    , wdIpGroupIds
+    , wdAlias
+    , wdWorkspaceSecurityGroupId
+    , wdDirectoryType
+    , wdWorkspaceCreationProperties
+    , wdDNSIPAddresses
+    , wdDirectoryName
+
     -- * WorkspaceProperties
-  , WorkspaceProperties
-  , workspaceProperties
-  , wpComputeTypeName
-  , wpRunningMode
-  , wpRootVolumeSizeGib
-  , wpRunningModeAutoStopTimeoutInMinutes
-  , wpUserVolumeSizeGib
+    , WorkspaceProperties
+    , workspaceProperties
+    , wpComputeTypeName
+    , wpRunningMode
+    , wpRootVolumeSizeGib
+    , wpRunningModeAutoStopTimeoutInMinutes
+    , wpUserVolumeSizeGib
+
     -- * WorkspaceRequest
-  , WorkspaceRequest
-  , workspaceRequest
-  , wrWorkspaceProperties
-  , wrRootVolumeEncryptionEnabled
-  , wrVolumeEncryptionKey
-  , wrUserVolumeEncryptionEnabled
-  , wrTags
-  , wrDirectoryId
-  , wrUserName
-  , wrBundleId
+    , WorkspaceRequest
+    , workspaceRequest
+    , wrWorkspaceProperties
+    , wrRootVolumeEncryptionEnabled
+    , wrVolumeEncryptionKey
+    , wrUserVolumeEncryptionEnabled
+    , wrTags
+    , wrDirectoryId
+    , wrUserName
+    , wrBundleId
+
     -- * WorkspacesIPGroup
-  , WorkspacesIPGroup
-  , workspacesIPGroup
-  , wigGroupDesc
-  , wigUserRules
-  , wigGroupId
-  , wigGroupName
-  ) where
+    , WorkspacesIPGroup
+    , workspacesIPGroup
+    , wigGroupDesc
+    , wigUserRules
+    , wigGroupId
+    , wigGroupName
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -233,97 +266,98 @@ workSpaces =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | The user is not authorized to access a resource.
 --
 --
-_AccessDeniedException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
 _AccessDeniedException = _MatchServiceError workSpaces "AccessDeniedException"
+
 
 -- | The resource could not be created.
 --
 --
-_ResourceCreationFailedException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ResourceCreationFailedException :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceCreationFailedException =
   _MatchServiceError workSpaces "ResourceCreationFailedException"
+
 
 -- | The specified resource is not available.
 --
 --
-_ResourceUnavailableException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ResourceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceUnavailableException =
   _MatchServiceError workSpaces "ResourceUnavailableException"
+
 
 -- | One or more parameter values are not valid.
 --
 --
-_InvalidParameterValuesException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterValuesException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidParameterValuesException =
   _MatchServiceError workSpaces "InvalidParameterValuesException"
+
 
 -- | The resource is associated with a directory.
 --
 --
-_ResourceAssociatedException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ResourceAssociatedException :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceAssociatedException =
   _MatchServiceError workSpaces "ResourceAssociatedException"
+
 
 -- | The properties of this WorkSpace are currently being modified. Try again in a moment.
 --
 --
-_OperationInProgressException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_OperationInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
 _OperationInProgressException =
   _MatchServiceError workSpaces "OperationInProgressException"
+
 
 -- | The specified resource already exists.
 --
 --
-_ResourceAlreadyExistsException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceAlreadyExistsException =
   _MatchServiceError workSpaces "ResourceAlreadyExistsException"
+
 
 -- | Your resource limits have been exceeded.
 --
 --
-_ResourceLimitExceededException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ResourceLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceLimitExceededException =
   _MatchServiceError workSpaces "ResourceLimitExceededException"
+
 
 -- | The state of the resource is not valid for this operation.
 --
 --
-_InvalidResourceStateException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidResourceStateException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidResourceStateException =
   _MatchServiceError workSpaces "InvalidResourceStateException"
+
 
 -- | This operation is not supported.
 --
 --
-_OperationNotSupportedException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_OperationNotSupportedException :: AsError a => Getting (First ServiceError) a ServiceError
 _OperationNotSupportedException =
   _MatchServiceError workSpaces "OperationNotSupportedException"
+
 
 -- | The configuration of this WorkSpace is not supported for this operation. For more information, see the <http://docs.aws.amazon.com/workspaces/latest/adminguide/ Amazon WorkSpaces Administration Guide> .
 --
 --
-_UnsupportedWorkspaceConfigurationException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_UnsupportedWorkspaceConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError
 _UnsupportedWorkspaceConfigurationException =
   _MatchServiceError workSpaces "UnsupportedWorkspaceConfigurationException"
+
 
 -- | The resource could not be found.
 --
 --
-_ResourceNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceNotFoundException =
   _MatchServiceError workSpaces "ResourceNotFoundException"
+

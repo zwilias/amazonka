@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.MQ.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,98 +11,117 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.MQ.Types
+    (
     -- * Service Configuration
-  ( mq
+      mq
+
     -- * Errors
-  , _ConflictException
-  , _ForbiddenException
-  , _NotFoundException
-  , _InternalServerErrorException
-  , _UnauthorizedException
-  , _BadRequestException
+    , _ConflictException
+    , _ForbiddenException
+    , _NotFoundException
+    , _InternalServerErrorException
+    , _UnauthorizedException
+    , _BadRequestException
+
     -- * BrokerState
-  , BrokerState(..)
+    , BrokerState (..)
+
     -- * ChangeType
-  , ChangeType(..)
+    , ChangeType (..)
+
     -- * DayOfWeek
-  , DayOfWeek(..)
+    , DayOfWeek (..)
+
     -- * DeploymentMode
-  , DeploymentMode(..)
+    , DeploymentMode (..)
+
     -- * EngineType
-  , EngineType(..)
+    , EngineType (..)
+
     -- * SanitizationWarningReason
-  , SanitizationWarningReason(..)
+    , SanitizationWarningReason (..)
+
     -- * BrokerInstance
-  , BrokerInstance
-  , brokerInstance
-  , biConsoleURL
-  , biEndpoints
+    , BrokerInstance
+    , brokerInstance
+    , biConsoleURL
+    , biEndpoints
+
     -- * BrokerSummary
-  , BrokerSummary
-  , brokerSummary
-  , bsBrokerName
-  , bsBrokerState
-  , bsDeploymentMode
-  , bsBrokerId
-  , bsBrokerARN
-  , bsHostInstanceType
+    , BrokerSummary
+    , brokerSummary
+    , bsBrokerName
+    , bsBrokerState
+    , bsDeploymentMode
+    , bsBrokerId
+    , bsBrokerARN
+    , bsHostInstanceType
+
     -- * Configuration
-  , Configuration
-  , configuration
-  , cEngineVersion
-  , cARN
-  , cLatestRevision
-  , cName
-  , cId
-  , cDescription
-  , cEngineType
+    , Configuration
+    , configuration
+    , cEngineVersion
+    , cARN
+    , cLatestRevision
+    , cName
+    , cId
+    , cDescription
+    , cEngineType
+
     -- * ConfigurationId
-  , ConfigurationId
-  , configurationId
-  , ciId
-  , ciRevision
+    , ConfigurationId
+    , configurationId
+    , ciId
+    , ciRevision
+
     -- * ConfigurationRevision
-  , ConfigurationRevision
-  , configurationRevision
-  , crRevision
-  , crDescription
+    , ConfigurationRevision
+    , configurationRevision
+    , crRevision
+    , crDescription
+
     -- * Configurations
-  , Configurations
-  , configurations
-  , cPending
-  , cHistory
-  , cCurrent
+    , Configurations
+    , configurations
+    , cPending
+    , cHistory
+    , cCurrent
+
     -- * SanitizationWarning
-  , SanitizationWarning
-  , sanitizationWarning
-  , swReason
-  , swAttributeName
-  , swElementName
+    , SanitizationWarning
+    , sanitizationWarning
+    , swReason
+    , swAttributeName
+    , swElementName
+
     -- * User
-  , User
-  , user
-  , uGroups
-  , uConsoleAccess
-  , uUsername
-  , uPassword
+    , User
+    , user
+    , uGroups
+    , uConsoleAccess
+    , uUsername
+    , uPassword
+
     -- * UserPendingChanges
-  , UserPendingChanges
-  , userPendingChanges
-  , upcGroups
-  , upcConsoleAccess
-  , upcPendingChange
+    , UserPendingChanges
+    , userPendingChanges
+    , upcGroups
+    , upcConsoleAccess
+    , upcPendingChange
+
     -- * UserSummary
-  , UserSummary
-  , userSummary
-  , usUsername
-  , usPendingChange
+    , UserSummary
+    , userSummary
+    , usUsername
+    , usPendingChange
+
     -- * WeeklyStartTime
-  , WeeklyStartTime
-  , weeklyStartTime
-  , wstTimeOfDay
-  , wstTimeZone
-  , wstDayOfWeek
-  ) where
+    , WeeklyStartTime
+    , weeklyStartTime
+    , wstTimeOfDay
+    , wstTimeZone
+    , wstDayOfWeek
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.MQ.Types.Product
@@ -147,31 +167,36 @@ mq =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | Returns information about an error.
 _ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
 _ConflictException = _MatchServiceError mq "ConflictException" . hasStatus 409
+
 
 -- | Returns information about an error.
 _ForbiddenException :: AsError a => Getting (First ServiceError) a ServiceError
 _ForbiddenException = _MatchServiceError mq "ForbiddenException" . hasStatus 403
 
+
 -- | Returns information about an error.
 _NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _NotFoundException = _MatchServiceError mq "NotFoundException" . hasStatus 404
 
+
 -- | Returns information about an error.
-_InternalServerErrorException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalServerErrorException =
   _MatchServiceError mq "InternalServerErrorException" . hasStatus 500
 
+
 -- | Returns information about an error.
-_UnauthorizedException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_UnauthorizedException :: AsError a => Getting (First ServiceError) a ServiceError
 _UnauthorizedException =
   _MatchServiceError mq "UnauthorizedException" . hasStatus 401
+
 
 -- | Returns information about an error.
 _BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
 _BadRequestException =
   _MatchServiceError mq "BadRequestException" . hasStatus 400
+

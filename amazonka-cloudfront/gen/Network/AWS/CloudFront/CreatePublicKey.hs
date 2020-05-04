@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CloudFront.CreatePublicKey
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,20 +22,22 @@
 --
 --
 module Network.AWS.CloudFront.CreatePublicKey
+    (
     -- * Creating a Request
-  ( createPublicKey
-  , CreatePublicKey
+      createPublicKey
+    , CreatePublicKey
     -- * Request Lenses
-  , cpkPublicKeyConfig
+    , cpkPublicKeyConfig
+
     -- * Destructuring the Response
-  , createPublicKeyResponse
-  , CreatePublicKeyResponse
+    , createPublicKeyResponse
+    , CreatePublicKeyResponse
     -- * Response Lenses
-  , cpkrsETag
-  , cpkrsLocation
-  , cpkrsPublicKey
-  , cpkrsResponseStatus
-  ) where
+    , cpkrsETag
+    , cpkrsLocation
+    , cpkrsPublicKey
+    , cpkrsResponseStatus
+    ) where
 
 import Network.AWS.CloudFront.Types
 import Network.AWS.CloudFront.Types.Product
@@ -49,49 +53,53 @@ newtype CreatePublicKey =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreatePublicKey' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'cpkPublicKeyConfig' - The request to add a public key to CloudFront.
-createPublicKey ::
-     PublicKeyConfig -- ^ 'cpkPublicKeyConfig'
-  -> CreatePublicKey
+createPublicKey
+    :: PublicKeyConfig -- ^ 'cpkPublicKeyConfig'
+    -> CreatePublicKey
 createPublicKey pPublicKeyConfig_ =
   CreatePublicKey' {_cpkPublicKeyConfig = pPublicKeyConfig_}
 
+
 -- | The request to add a public key to CloudFront.
 cpkPublicKeyConfig :: Lens' CreatePublicKey PublicKeyConfig
-cpkPublicKeyConfig =
-  lens _cpkPublicKeyConfig (\s a -> s {_cpkPublicKeyConfig = a})
+cpkPublicKeyConfig = lens _cpkPublicKeyConfig (\ s a -> s{_cpkPublicKeyConfig = a})
 
 instance AWSRequest CreatePublicKey where
-  type Rs CreatePublicKey = CreatePublicKeyResponse
-  request = postXML cloudFront
-  response =
-    receiveXML
-      (\s h x ->
-         CreatePublicKeyResponse' <$> (h .#? "ETag") <*> (h .#? "Location") <*>
-         (parseXML x) <*>
-         (pure (fromEnum s)))
+        type Rs CreatePublicKey = CreatePublicKeyResponse
+        request = postXML cloudFront
+        response
+          = receiveXML
+              (\ s h x ->
+                 CreatePublicKeyResponse' <$>
+                   (h .#? "ETag") <*> (h .#? "Location") <*>
+                     (parseXML x)
+                     <*> (pure (fromEnum s)))
 
-instance Hashable CreatePublicKey
+instance Hashable CreatePublicKey where
 
-instance NFData CreatePublicKey
+instance NFData CreatePublicKey where
 
 instance ToElement CreatePublicKey where
-  toElement =
-    mkElement "{http://cloudfront.amazonaws.com/doc/2017-10-30/}PublicKeyConfig" .
-    _cpkPublicKeyConfig
+        toElement
+          = mkElement
+              "{http://cloudfront.amazonaws.com/doc/2019-03-26/}PublicKeyConfig"
+              .
+              _cpkPublicKeyConfig
 
 instance ToHeaders CreatePublicKey where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath CreatePublicKey where
-  toPath = const "/2017-10-30/public-key"
+        toPath = const "/2019-03-26/public-key"
 
 instance ToQuery CreatePublicKey where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'createPublicKeyResponse' smart constructor.
 data CreatePublicKeyResponse =
@@ -102,6 +110,7 @@ data CreatePublicKeyResponse =
     , _cpkrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'CreatePublicKeyResponse' with the minimum fields required to make a request.
 --
@@ -114,9 +123,9 @@ data CreatePublicKeyResponse =
 -- * 'cpkrsPublicKey' - Returned when you add a public key.
 --
 -- * 'cpkrsResponseStatus' - -- | The response status code.
-createPublicKeyResponse ::
-     Int -- ^ 'cpkrsResponseStatus'
-  -> CreatePublicKeyResponse
+createPublicKeyResponse
+    :: Int -- ^ 'cpkrsResponseStatus'
+    -> CreatePublicKeyResponse
 createPublicKeyResponse pResponseStatus_ =
   CreatePublicKeyResponse'
     { _cpkrsETag = Nothing
@@ -125,21 +134,21 @@ createPublicKeyResponse pResponseStatus_ =
     , _cpkrsResponseStatus = pResponseStatus_
     }
 
+
 -- | The current version of the public key. For example: @E2QWRUHAPOMQZL@ .
 cpkrsETag :: Lens' CreatePublicKeyResponse (Maybe Text)
-cpkrsETag = lens _cpkrsETag (\s a -> s {_cpkrsETag = a})
+cpkrsETag = lens _cpkrsETag (\ s a -> s{_cpkrsETag = a})
 
 -- | The fully qualified URI of the new public key resource just created. For example: @https://cloudfront.amazonaws.com/2010-11-01/cloudfront-public-key/EDFDVBD632BHDS5@ .
 cpkrsLocation :: Lens' CreatePublicKeyResponse (Maybe Text)
-cpkrsLocation = lens _cpkrsLocation (\s a -> s {_cpkrsLocation = a})
+cpkrsLocation = lens _cpkrsLocation (\ s a -> s{_cpkrsLocation = a})
 
 -- | Returned when you add a public key.
 cpkrsPublicKey :: Lens' CreatePublicKeyResponse (Maybe PublicKey)
-cpkrsPublicKey = lens _cpkrsPublicKey (\s a -> s {_cpkrsPublicKey = a})
+cpkrsPublicKey = lens _cpkrsPublicKey (\ s a -> s{_cpkrsPublicKey = a})
 
 -- | -- | The response status code.
 cpkrsResponseStatus :: Lens' CreatePublicKeyResponse Int
-cpkrsResponseStatus =
-  lens _cpkrsResponseStatus (\s a -> s {_cpkrsResponseStatus = a})
+cpkrsResponseStatus = lens _cpkrsResponseStatus (\ s a -> s{_cpkrsResponseStatus = a})
 
-instance NFData CreatePublicKeyResponse
+instance NFData CreatePublicKeyResponse where

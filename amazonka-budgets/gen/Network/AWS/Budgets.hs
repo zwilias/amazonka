@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Budgets
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,18 +11,32 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Budgets enable you to plan your service usage, service costs, and your RI utilization. You can also track how close your plan is to your budgeted amount or to the free tier limits. Budgets provide you with a quick way to see your usage-to-date and current estimated charges from AWS and to see how much your predicted usage accrues in charges by the end of the month. Budgets also compare current estimates and charges to the amount that you indicated you want to use or spend and lets you see how much of your budget has been used. AWS updates your budget status several times a day. Budgets track your unblended costs, subscriptions, and refunds. You can create the following types of budgets:
+-- The AWS Budgets API enables you to use AWS Budgets to plan your service usage, service costs, and instance reservations. The API reference provides descriptions, syntax, and usage examples for each of the actions and data types for AWS Budgets.
 --
 --
---     * Cost budgets allow you to say how much you want to spend on a service.
+-- Budgets provide you with a way to see the following information:
 --
---     * Usage budgets allow you to say how many hours you want to use for one or more services.
+--     * How close your plan is to your budgeted amount or to the free tier limits
 --
---     * RI utilization budgets allow you to define a utilization threshold and receive alerts when RIs are tracking below that threshold.
+--     * Your usage-to-date, including how much you've used of your Reserved Instances (RIs)
+--
+--     * Your current estimated charges from AWS, and how much your predicted usage will accrue in charges by the end of the month
+--
+--     * How much of your budget has been used
 --
 --
 --
--- You can create up to 20,000 budgets per AWS master account. Your first two budgets are free of charge. Each additional budget costs $0.02 per day. You can set up optional notifications that warn you if you exceed, or are forecasted to exceed, your budgeted amount. You can have notifications sent to an Amazon SNS topic, to an email address, or to both. For more information, see <https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-sns-policy.html Creating an Amazon SNS Topic for Budget Notifications> . AWS Free Tier usage alerts via AWS Budgets are provided for you, and do not count toward your budget limits.
+-- AWS updates your budget status several times a day. Budgets track your unblended costs, subscriptions, refunds, and RIs. You can create the following types of budgets:
+--
+--     * __Cost budgets__ - Plan how much you want to spend on a service.
+--
+--     * __Usage budgets__ - Plan how much you want to use one or more services.
+--
+--     * __RI utilization budgets__ - Define a utilization threshold, and receive alerts when your RI usage falls below that threshold. This lets you see if your RIs are unused or under-utilized.
+--
+--     * __RI coverage budgets__ - Define a coverage threshold, and receive alerts when the number of your instance hours that are covered by RIs fall below that threshold. This lets you see how much of your instance usage is covered by a reservation.
+--
+--
 --
 -- Service Endpoint
 --
@@ -31,128 +46,196 @@
 --
 --
 --
--- For information about costs associated with the AWS Budgets API, see <https://aws.amazon.com/aws-cost-management/pricing/ AWS Cost Management Pricing> .
+-- For information about costs that are associated with the AWS Budgets API, see <https://aws.amazon.com/aws-cost-management/pricing/ AWS Cost Management Pricing> .
 --
 module Network.AWS.Budgets
+    (
     -- * Service Configuration
-  ( budgets
+      budgets
+
     -- * Errors
     -- $errors
+
+    -- ** AccessDeniedException
+    , _AccessDeniedException
+
     -- ** InvalidParameterException
-  , _InvalidParameterException
+    , _InvalidParameterException
+
     -- ** InternalErrorException
-  , _InternalErrorException
+    , _InternalErrorException
+
     -- ** ExpiredNextTokenException
-  , _ExpiredNextTokenException
+    , _ExpiredNextTokenException
+
     -- ** NotFoundException
-  , _NotFoundException
+    , _NotFoundException
+
     -- ** InvalidNextTokenException
-  , _InvalidNextTokenException
+    , _InvalidNextTokenException
+
     -- ** DuplicateRecordException
-  , _DuplicateRecordException
+    , _DuplicateRecordException
+
     -- ** CreationLimitExceededException
-  , _CreationLimitExceededException
+    , _CreationLimitExceededException
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
-    -- ** DescribeSubscribersForNotification
-  , module Network.AWS.Budgets.DescribeSubscribersForNotification
-    -- ** DescribeNotificationsForBudget
-  , module Network.AWS.Budgets.DescribeNotificationsForBudget
-    -- ** DescribeBudgets
-  , module Network.AWS.Budgets.DescribeBudgets
+
+    -- ** DescribeSubscribersForNotification (Paginated)
+    , module Network.AWS.Budgets.DescribeSubscribersForNotification
+
+    -- ** DescribeNotificationsForBudget (Paginated)
+    , module Network.AWS.Budgets.DescribeNotificationsForBudget
+
+    -- ** DescribeBudgets (Paginated)
+    , module Network.AWS.Budgets.DescribeBudgets
+
     -- ** CreateSubscriber
-  , module Network.AWS.Budgets.CreateSubscriber
+    , module Network.AWS.Budgets.CreateSubscriber
+
     -- ** UpdateBudget
-  , module Network.AWS.Budgets.UpdateBudget
+    , module Network.AWS.Budgets.UpdateBudget
+
     -- ** DeleteBudget
-  , module Network.AWS.Budgets.DeleteBudget
+    , module Network.AWS.Budgets.DeleteBudget
+
     -- ** DeleteNotification
-  , module Network.AWS.Budgets.DeleteNotification
+    , module Network.AWS.Budgets.DeleteNotification
+
     -- ** UpdateNotification
-  , module Network.AWS.Budgets.UpdateNotification
+    , module Network.AWS.Budgets.UpdateNotification
+
+    -- ** DescribeBudgetPerformanceHistory
+    , module Network.AWS.Budgets.DescribeBudgetPerformanceHistory
+
     -- ** DescribeBudget
-  , module Network.AWS.Budgets.DescribeBudget
+    , module Network.AWS.Budgets.DescribeBudget
+
     -- ** UpdateSubscriber
-  , module Network.AWS.Budgets.UpdateSubscriber
+    , module Network.AWS.Budgets.UpdateSubscriber
+
     -- ** DeleteSubscriber
-  , module Network.AWS.Budgets.DeleteSubscriber
+    , module Network.AWS.Budgets.DeleteSubscriber
+
     -- ** CreateBudget
-  , module Network.AWS.Budgets.CreateBudget
+    , module Network.AWS.Budgets.CreateBudget
+
     -- ** CreateNotification
-  , module Network.AWS.Budgets.CreateNotification
+    , module Network.AWS.Budgets.CreateNotification
+
     -- * Types
+
     -- ** BudgetType
-  , BudgetType(..)
+    , BudgetType (..)
+
     -- ** ComparisonOperator
-  , ComparisonOperator(..)
+    , ComparisonOperator (..)
+
+    -- ** NotificationState
+    , NotificationState (..)
+
     -- ** NotificationType
-  , NotificationType(..)
+    , NotificationType (..)
+
     -- ** SubscriptionType
-  , SubscriptionType(..)
+    , SubscriptionType (..)
+
     -- ** ThresholdType
-  , ThresholdType(..)
+    , ThresholdType (..)
+
     -- ** TimeUnit
-  , TimeUnit(..)
+    , TimeUnit (..)
+
     -- ** Budget
-  , Budget
-  , budget
-  , bCalculatedSpend
-  , bBudgetLimit
-  , bTimePeriod
-  , bCostTypes
-  , bCostFilters
-  , bBudgetName
-  , bTimeUnit
-  , bBudgetType
+    , Budget
+    , budget
+    , bCalculatedSpend
+    , bPlannedBudgetLimits
+    , bLastUpdatedTime
+    , bBudgetLimit
+    , bTimePeriod
+    , bCostTypes
+    , bCostFilters
+    , bBudgetName
+    , bTimeUnit
+    , bBudgetType
+
+    -- ** BudgetPerformanceHistory
+    , BudgetPerformanceHistory
+    , budgetPerformanceHistory
+    , bphBudgetedAndActualAmountsList
+    , bphTimeUnit
+    , bphBudgetName
+    , bphBudgetType
+    , bphCostTypes
+    , bphCostFilters
+
+    -- ** BudgetedAndActualAmounts
+    , BudgetedAndActualAmounts
+    , budgetedAndActualAmounts
+    , baaaTimePeriod
+    , baaaActualAmount
+    , baaaBudgetedAmount
+
     -- ** CalculatedSpend
-  , CalculatedSpend
-  , calculatedSpend
-  , csForecastedSpend
-  , csActualSpend
+    , CalculatedSpend
+    , calculatedSpend
+    , csForecastedSpend
+    , csActualSpend
+
     -- ** CostTypes
-  , CostTypes
-  , costTypes
-  , ctUseAmortized
-  , ctIncludeRecurring
-  , ctUseBlended
-  , ctIncludeSupport
-  , ctIncludeDiscount
-  , ctIncludeSubscription
-  , ctIncludeRefund
-  , ctIncludeUpfront
-  , ctIncludeOtherSubscription
-  , ctIncludeTax
-  , ctIncludeCredit
+    , CostTypes
+    , costTypes
+    , ctUseAmortized
+    , ctIncludeRecurring
+    , ctUseBlended
+    , ctIncludeSupport
+    , ctIncludeDiscount
+    , ctIncludeSubscription
+    , ctIncludeRefund
+    , ctIncludeUpfront
+    , ctIncludeOtherSubscription
+    , ctIncludeTax
+    , ctIncludeCredit
+
     -- ** Notification
-  , Notification
-  , notification
-  , nThresholdType
-  , nNotificationType
-  , nComparisonOperator
-  , nThreshold
+    , Notification
+    , notification
+    , nThresholdType
+    , nNotificationState
+    , nNotificationType
+    , nComparisonOperator
+    , nThreshold
+
     -- ** NotificationWithSubscribers
-  , NotificationWithSubscribers
-  , notificationWithSubscribers
-  , nwsNotification
-  , nwsSubscribers
+    , NotificationWithSubscribers
+    , notificationWithSubscribers
+    , nwsNotification
+    , nwsSubscribers
+
     -- ** Spend
-  , Spend
-  , spend
-  , sAmount
-  , sUnit
+    , Spend
+    , spend
+    , sAmount
+    , sUnit
+
     -- ** Subscriber
-  , Subscriber
-  , subscriber
-  , sSubscriptionType
-  , sAddress
+    , Subscriber
+    , subscriber
+    , sSubscriptionType
+    , sAddress
+
     -- ** TimePeriod
-  , TimePeriod
-  , timePeriod
-  , tpStart
-  , tpEnd
-  ) where
+    , TimePeriod
+    , timePeriod
+    , tpStart
+    , tpEnd
+    ) where
 
 import Network.AWS.Budgets.CreateBudget
 import Network.AWS.Budgets.CreateNotification
@@ -161,6 +244,7 @@ import Network.AWS.Budgets.DeleteBudget
 import Network.AWS.Budgets.DeleteNotification
 import Network.AWS.Budgets.DeleteSubscriber
 import Network.AWS.Budgets.DescribeBudget
+import Network.AWS.Budgets.DescribeBudgetPerformanceHistory
 import Network.AWS.Budgets.DescribeBudgets
 import Network.AWS.Budgets.DescribeNotificationsForBudget
 import Network.AWS.Budgets.DescribeSubscribersForNotification
@@ -169,12 +253,14 @@ import Network.AWS.Budgets.UpdateBudget
 import Network.AWS.Budgets.UpdateNotification
 import Network.AWS.Budgets.UpdateSubscriber
 import Network.AWS.Budgets.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'Budgets'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -191,6 +277,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.AutoScalingPlans.UpdateScalingPlan
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -16,26 +18,28 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates the scaling plan for the specified scaling plan.
+-- Updates the specified scaling plan.
 --
 --
 -- You cannot update a scaling plan if it is in the process of being created, updated, or deleted.
 --
 module Network.AWS.AutoScalingPlans.UpdateScalingPlan
+    (
     -- * Creating a Request
-  ( updateScalingPlan
-  , UpdateScalingPlan
+      updateScalingPlan
+    , UpdateScalingPlan
     -- * Request Lenses
-  , uspScalingInstructions
-  , uspApplicationSource
-  , uspScalingPlanName
-  , uspScalingPlanVersion
+    , uspScalingInstructions
+    , uspApplicationSource
+    , uspScalingPlanName
+    , uspScalingPlanVersion
+
     -- * Destructuring the Response
-  , updateScalingPlanResponse
-  , UpdateScalingPlanResponse
+    , updateScalingPlanResponse
+    , UpdateScalingPlanResponse
     -- * Response Lenses
-  , usprsResponseStatus
-  ) where
+    , usprsResponseStatus
+    ) where
 
 import Network.AWS.AutoScalingPlans.Types
 import Network.AWS.AutoScalingPlans.Types.Product
@@ -54,6 +58,7 @@ data UpdateScalingPlan =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateScalingPlan' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -64,11 +69,11 @@ data UpdateScalingPlan =
 --
 -- * 'uspScalingPlanName' - The name of the scaling plan.
 --
--- * 'uspScalingPlanVersion' - The version number.
-updateScalingPlan ::
-     Text -- ^ 'uspScalingPlanName'
-  -> Integer -- ^ 'uspScalingPlanVersion'
-  -> UpdateScalingPlan
+-- * 'uspScalingPlanVersion' - The version number of the scaling plan.
+updateScalingPlan
+    :: Text -- ^ 'uspScalingPlanName'
+    -> Integer -- ^ 'uspScalingPlanVersion'
+    -> UpdateScalingPlan
 updateScalingPlan pScalingPlanName_ pScalingPlanVersion_ =
   UpdateScalingPlan'
     { _uspScalingInstructions = Nothing
@@ -77,61 +82,61 @@ updateScalingPlan pScalingPlanName_ pScalingPlanVersion_ =
     , _uspScalingPlanVersion = pScalingPlanVersion_
     }
 
+
 -- | The scaling instructions.
 uspScalingInstructions :: Lens' UpdateScalingPlan [ScalingInstruction]
-uspScalingInstructions =
-  lens _uspScalingInstructions (\s a -> s {_uspScalingInstructions = a}) .
-  _Default . _Coerce
+uspScalingInstructions = lens _uspScalingInstructions (\ s a -> s{_uspScalingInstructions = a}) . _Default . _Coerce
 
 -- | A CloudFormation stack or set of tags.
 uspApplicationSource :: Lens' UpdateScalingPlan (Maybe ApplicationSource)
-uspApplicationSource =
-  lens _uspApplicationSource (\s a -> s {_uspApplicationSource = a})
+uspApplicationSource = lens _uspApplicationSource (\ s a -> s{_uspApplicationSource = a})
 
 -- | The name of the scaling plan.
 uspScalingPlanName :: Lens' UpdateScalingPlan Text
-uspScalingPlanName =
-  lens _uspScalingPlanName (\s a -> s {_uspScalingPlanName = a})
+uspScalingPlanName = lens _uspScalingPlanName (\ s a -> s{_uspScalingPlanName = a})
 
--- | The version number.
+-- | The version number of the scaling plan.
 uspScalingPlanVersion :: Lens' UpdateScalingPlan Integer
-uspScalingPlanVersion =
-  lens _uspScalingPlanVersion (\s a -> s {_uspScalingPlanVersion = a})
+uspScalingPlanVersion = lens _uspScalingPlanVersion (\ s a -> s{_uspScalingPlanVersion = a})
 
 instance AWSRequest UpdateScalingPlan where
-  type Rs UpdateScalingPlan = UpdateScalingPlanResponse
-  request = postJSON autoScalingPlans
-  response =
-    receiveEmpty (\s h x -> UpdateScalingPlanResponse' <$> (pure (fromEnum s)))
+        type Rs UpdateScalingPlan = UpdateScalingPlanResponse
+        request = postJSON autoScalingPlans
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 UpdateScalingPlanResponse' <$> (pure (fromEnum s)))
 
-instance Hashable UpdateScalingPlan
+instance Hashable UpdateScalingPlan where
 
-instance NFData UpdateScalingPlan
+instance NFData UpdateScalingPlan where
 
 instance ToHeaders UpdateScalingPlan where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AnyScaleScalingPlannerFrontendService.UpdateScalingPlan" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AnyScaleScalingPlannerFrontendService.UpdateScalingPlan"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON UpdateScalingPlan where
-  toJSON UpdateScalingPlan' {..} =
-    object
-      (catMaybes
-         [ ("ScalingInstructions" .=) <$> _uspScalingInstructions
-         , ("ApplicationSource" .=) <$> _uspApplicationSource
-         , Just ("ScalingPlanName" .= _uspScalingPlanName)
-         , Just ("ScalingPlanVersion" .= _uspScalingPlanVersion)
-         ])
+        toJSON UpdateScalingPlan'{..}
+          = object
+              (catMaybes
+                 [("ScalingInstructions" .=) <$>
+                    _uspScalingInstructions,
+                  ("ApplicationSource" .=) <$> _uspApplicationSource,
+                  Just ("ScalingPlanName" .= _uspScalingPlanName),
+                  Just
+                    ("ScalingPlanVersion" .= _uspScalingPlanVersion)])
 
 instance ToPath UpdateScalingPlan where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery UpdateScalingPlan where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'updateScalingPlanResponse' smart constructor.
 newtype UpdateScalingPlanResponse =
@@ -140,20 +145,21 @@ newtype UpdateScalingPlanResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateScalingPlanResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'usprsResponseStatus' - -- | The response status code.
-updateScalingPlanResponse ::
-     Int -- ^ 'usprsResponseStatus'
-  -> UpdateScalingPlanResponse
+updateScalingPlanResponse
+    :: Int -- ^ 'usprsResponseStatus'
+    -> UpdateScalingPlanResponse
 updateScalingPlanResponse pResponseStatus_ =
   UpdateScalingPlanResponse' {_usprsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 usprsResponseStatus :: Lens' UpdateScalingPlanResponse Int
-usprsResponseStatus =
-  lens _usprsResponseStatus (\s a -> s {_usprsResponseStatus = a})
+usprsResponseStatus = lens _usprsResponseStatus (\ s a -> s{_usprsResponseStatus = a})
 
-instance NFData UpdateScalingPlanResponse
+instance NFData UpdateScalingPlanResponse where

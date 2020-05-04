@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.IoT.DescribeCertificate
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.IoT.DescribeCertificate
+    (
     -- * Creating a Request
-  ( describeCertificate
-  , DescribeCertificate
+      describeCertificate
+    , DescribeCertificate
     -- * Request Lenses
-  , desCertificateId
+    , desCertificateId
+
     -- * Destructuring the Response
-  , describeCertificateResponse
-  , DescribeCertificateResponse
+    , describeCertificateResponse
+    , DescribeCertificateResponse
     -- * Response Lenses
-  , dcrsCertificateDescription
-  , dcrsResponseStatus
-  ) where
+    , dcrsCertificateDescription
+    , dcrsResponseStatus
+    ) where
 
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
@@ -51,43 +55,47 @@ newtype DescribeCertificate =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeCertificate' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'desCertificateId' - The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)
-describeCertificate ::
-     Text -- ^ 'desCertificateId'
-  -> DescribeCertificate
+describeCertificate
+    :: Text -- ^ 'desCertificateId'
+    -> DescribeCertificate
 describeCertificate pCertificateId_ =
   DescribeCertificate' {_desCertificateId = pCertificateId_}
 
+
 -- | The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)
 desCertificateId :: Lens' DescribeCertificate Text
-desCertificateId = lens _desCertificateId (\s a -> s {_desCertificateId = a})
+desCertificateId = lens _desCertificateId (\ s a -> s{_desCertificateId = a})
 
 instance AWSRequest DescribeCertificate where
-  type Rs DescribeCertificate = DescribeCertificateResponse
-  request = get ioT
-  response =
-    receiveJSON
-      (\s h x ->
-         DescribeCertificateResponse' <$> (x .?> "certificateDescription") <*>
-         (pure (fromEnum s)))
+        type Rs DescribeCertificate =
+             DescribeCertificateResponse
+        request = get ioT
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DescribeCertificateResponse' <$>
+                   (x .?> "certificateDescription") <*>
+                     (pure (fromEnum s)))
 
-instance Hashable DescribeCertificate
+instance Hashable DescribeCertificate where
 
-instance NFData DescribeCertificate
+instance NFData DescribeCertificate where
 
 instance ToHeaders DescribeCertificate where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath DescribeCertificate where
-  toPath DescribeCertificate' {..} =
-    mconcat ["/certificates/", toBS _desCertificateId]
+        toPath DescribeCertificate'{..}
+          = mconcat ["/certificates/", toBS _desCertificateId]
 
 instance ToQuery DescribeCertificate where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | The output of the DescribeCertificate operation.
 --
@@ -101,6 +109,7 @@ data DescribeCertificateResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeCertificateResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -108,24 +117,22 @@ data DescribeCertificateResponse =
 -- * 'dcrsCertificateDescription' - The description of the certificate.
 --
 -- * 'dcrsResponseStatus' - -- | The response status code.
-describeCertificateResponse ::
-     Int -- ^ 'dcrsResponseStatus'
-  -> DescribeCertificateResponse
+describeCertificateResponse
+    :: Int -- ^ 'dcrsResponseStatus'
+    -> DescribeCertificateResponse
 describeCertificateResponse pResponseStatus_ =
   DescribeCertificateResponse'
     { _dcrsCertificateDescription = Nothing
     , _dcrsResponseStatus = pResponseStatus_
     }
 
+
 -- | The description of the certificate.
-dcrsCertificateDescription ::
-     Lens' DescribeCertificateResponse (Maybe CertificateDescription)
-dcrsCertificateDescription =
-  lens _dcrsCertificateDescription (\s a -> s {_dcrsCertificateDescription = a})
+dcrsCertificateDescription :: Lens' DescribeCertificateResponse (Maybe CertificateDescription)
+dcrsCertificateDescription = lens _dcrsCertificateDescription (\ s a -> s{_dcrsCertificateDescription = a})
 
 -- | -- | The response status code.
 dcrsResponseStatus :: Lens' DescribeCertificateResponse Int
-dcrsResponseStatus =
-  lens _dcrsResponseStatus (\s a -> s {_dcrsResponseStatus = a})
+dcrsResponseStatus = lens _dcrsResponseStatus (\ s a -> s{_dcrsResponseStatus = a})
 
-instance NFData DescribeCertificateResponse
+instance NFData DescribeCertificateResponse where

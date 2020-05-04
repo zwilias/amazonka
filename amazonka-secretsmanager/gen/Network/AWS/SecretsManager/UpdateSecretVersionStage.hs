@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SecretsManager.UpdateSecretVersionStage
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -40,22 +42,24 @@
 --
 --
 module Network.AWS.SecretsManager.UpdateSecretVersionStage
+    (
     -- * Creating a Request
-  ( updateSecretVersionStage
-  , UpdateSecretVersionStage
+      updateSecretVersionStage
+    , UpdateSecretVersionStage
     -- * Request Lenses
-  , usvsRemoveFromVersionId
-  , usvsMoveToVersionId
-  , usvsSecretId
-  , usvsVersionStage
+    , usvsRemoveFromVersionId
+    , usvsMoveToVersionId
+    , usvsSecretId
+    , usvsVersionStage
+
     -- * Destructuring the Response
-  , updateSecretVersionStageResponse
-  , UpdateSecretVersionStageResponse
+    , updateSecretVersionStageResponse
+    , UpdateSecretVersionStageResponse
     -- * Response Lenses
-  , usvsrsARN
-  , usvsrsName
-  , usvsrsResponseStatus
-  ) where
+    , usvsrsARN
+    , usvsrsName
+    , usvsrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -74,6 +78,7 @@ data UpdateSecretVersionStage =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateSecretVersionStage' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -85,10 +90,10 @@ data UpdateSecretVersionStage =
 -- * 'usvsSecretId' - Specifies the secret with the version whose list of staging labels you want to modify. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
 --
 -- * 'usvsVersionStage' - The list of staging labels to add to this version.
-updateSecretVersionStage ::
-     Text -- ^ 'usvsSecretId'
-  -> Text -- ^ 'usvsVersionStage'
-  -> UpdateSecretVersionStage
+updateSecretVersionStage
+    :: Text -- ^ 'usvsSecretId'
+    -> Text -- ^ 'usvsVersionStage'
+    -> UpdateSecretVersionStage
 updateSecretVersionStage pSecretId_ pVersionStage_ =
   UpdateSecretVersionStage'
     { _usvsRemoveFromVersionId = Nothing
@@ -97,61 +102,63 @@ updateSecretVersionStage pSecretId_ pVersionStage_ =
     , _usvsVersionStage = pVersionStage_
     }
 
+
 -- | (Optional) Specifies the secret version ID of the version that the staging labels are to be removed from. If you want to move a label to a new version, you do not have to explicitly remove it with this parameter. Adding a label using the @MoveToVersionId@ parameter automatically removes it from the old version. However, if you do include both the "MoveTo" and "RemoveFrom" parameters, then the move is successful only if the staging labels are actually present on the "RemoveFrom" version. If a staging label was on a different version than "RemoveFrom", then the request fails.
 usvsRemoveFromVersionId :: Lens' UpdateSecretVersionStage (Maybe Text)
-usvsRemoveFromVersionId =
-  lens _usvsRemoveFromVersionId (\s a -> s {_usvsRemoveFromVersionId = a})
+usvsRemoveFromVersionId = lens _usvsRemoveFromVersionId (\ s a -> s{_usvsRemoveFromVersionId = a})
 
 -- | (Optional) The secret version ID that you want to add the staging labels to. If any of the staging labels are already attached to a different version of the secret, then they are removed from that version before adding them to this version.
 usvsMoveToVersionId :: Lens' UpdateSecretVersionStage (Maybe Text)
-usvsMoveToVersionId =
-  lens _usvsMoveToVersionId (\s a -> s {_usvsMoveToVersionId = a})
+usvsMoveToVersionId = lens _usvsMoveToVersionId (\ s a -> s{_usvsMoveToVersionId = a})
 
 -- | Specifies the secret with the version whose list of staging labels you want to modify. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
 usvsSecretId :: Lens' UpdateSecretVersionStage Text
-usvsSecretId = lens _usvsSecretId (\s a -> s {_usvsSecretId = a})
+usvsSecretId = lens _usvsSecretId (\ s a -> s{_usvsSecretId = a})
 
 -- | The list of staging labels to add to this version.
 usvsVersionStage :: Lens' UpdateSecretVersionStage Text
-usvsVersionStage = lens _usvsVersionStage (\s a -> s {_usvsVersionStage = a})
+usvsVersionStage = lens _usvsVersionStage (\ s a -> s{_usvsVersionStage = a})
 
 instance AWSRequest UpdateSecretVersionStage where
-  type Rs UpdateSecretVersionStage = UpdateSecretVersionStageResponse
-  request = postJSON secretsManager
-  response =
-    receiveJSON
-      (\s h x ->
-         UpdateSecretVersionStageResponse' <$> (x .?> "ARN") <*> (x .?> "Name") <*>
-         (pure (fromEnum s)))
+        type Rs UpdateSecretVersionStage =
+             UpdateSecretVersionStageResponse
+        request = postJSON secretsManager
+        response
+          = receiveJSON
+              (\ s h x ->
+                 UpdateSecretVersionStageResponse' <$>
+                   (x .?> "ARN") <*> (x .?> "Name") <*>
+                     (pure (fromEnum s)))
 
-instance Hashable UpdateSecretVersionStage
+instance Hashable UpdateSecretVersionStage where
 
-instance NFData UpdateSecretVersionStage
+instance NFData UpdateSecretVersionStage where
 
 instance ToHeaders UpdateSecretVersionStage where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("secretsmanager.UpdateSecretVersionStage" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("secretsmanager.UpdateSecretVersionStage" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON UpdateSecretVersionStage where
-  toJSON UpdateSecretVersionStage' {..} =
-    object
-      (catMaybes
-         [ ("RemoveFromVersionId" .=) <$> _usvsRemoveFromVersionId
-         , ("MoveToVersionId" .=) <$> _usvsMoveToVersionId
-         , Just ("SecretId" .= _usvsSecretId)
-         , Just ("VersionStage" .= _usvsVersionStage)
-         ])
+        toJSON UpdateSecretVersionStage'{..}
+          = object
+              (catMaybes
+                 [("RemoveFromVersionId" .=) <$>
+                    _usvsRemoveFromVersionId,
+                  ("MoveToVersionId" .=) <$> _usvsMoveToVersionId,
+                  Just ("SecretId" .= _usvsSecretId),
+                  Just ("VersionStage" .= _usvsVersionStage)])
 
 instance ToPath UpdateSecretVersionStage where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery UpdateSecretVersionStage where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'updateSecretVersionStageResponse' smart constructor.
 data UpdateSecretVersionStageResponse =
@@ -162,6 +169,7 @@ data UpdateSecretVersionStageResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateSecretVersionStageResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -171,9 +179,9 @@ data UpdateSecretVersionStageResponse =
 -- * 'usvsrsName' - The friendly name of the secret with the staging labels that were modified.
 --
 -- * 'usvsrsResponseStatus' - -- | The response status code.
-updateSecretVersionStageResponse ::
-     Int -- ^ 'usvsrsResponseStatus'
-  -> UpdateSecretVersionStageResponse
+updateSecretVersionStageResponse
+    :: Int -- ^ 'usvsrsResponseStatus'
+    -> UpdateSecretVersionStageResponse
 updateSecretVersionStageResponse pResponseStatus_ =
   UpdateSecretVersionStageResponse'
     { _usvsrsARN = Nothing
@@ -181,17 +189,18 @@ updateSecretVersionStageResponse pResponseStatus_ =
     , _usvsrsResponseStatus = pResponseStatus_
     }
 
+
 -- | The ARN of the secret with the staging labels that were modified.
 usvsrsARN :: Lens' UpdateSecretVersionStageResponse (Maybe Text)
-usvsrsARN = lens _usvsrsARN (\s a -> s {_usvsrsARN = a})
+usvsrsARN = lens _usvsrsARN (\ s a -> s{_usvsrsARN = a})
 
 -- | The friendly name of the secret with the staging labels that were modified.
 usvsrsName :: Lens' UpdateSecretVersionStageResponse (Maybe Text)
-usvsrsName = lens _usvsrsName (\s a -> s {_usvsrsName = a})
+usvsrsName = lens _usvsrsName (\ s a -> s{_usvsrsName = a})
 
 -- | -- | The response status code.
 usvsrsResponseStatus :: Lens' UpdateSecretVersionStageResponse Int
-usvsrsResponseStatus =
-  lens _usvsrsResponseStatus (\s a -> s {_usvsrsResponseStatus = a})
+usvsrsResponseStatus = lens _usvsrsResponseStatus (\ s a -> s{_usvsrsResponseStatus = a})
 
 instance NFData UpdateSecretVersionStageResponse
+         where

@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Rekognition.DetectFaces
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -30,20 +32,22 @@
 -- This operation requires permissions to perform the @rekognition:DetectFaces@ action.
 --
 module Network.AWS.Rekognition.DetectFaces
+    (
     -- * Creating a Request
-  ( detectFaces
-  , DetectFaces
+      detectFaces
+    , DetectFaces
     -- * Request Lenses
-  , dfAttributes
-  , dfImage
+    , dfAttributes
+    , dfImage
+
     -- * Destructuring the Response
-  , detectFacesResponse
-  , DetectFacesResponse
+    , detectFacesResponse
+    , DetectFacesResponse
     -- * Response Lenses
-  , dfrsOrientationCorrection
-  , dfrsFaceDetails
-  , dfrsResponseStatus
-  ) where
+    , dfrsOrientationCorrection
+    , dfrsFaceDetails
+    , dfrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -60,6 +64,7 @@ data DetectFaces =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DetectFaces' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -67,53 +72,56 @@ data DetectFaces =
 -- * 'dfAttributes' - An array of facial attributes you want to be returned. This can be the default list of attributes or all attributes. If you don't specify a value for @Attributes@ or if you specify @["DEFAULT"]@ , the API returns the following subset of facial attributes: @BoundingBox@ , @Confidence@ , @Pose@ , @Quality@ and @Landmarks@ . If you provide @["ALL"]@ , all facial attributes are returned but the operation will take longer to complete. If you provide both, @["ALL", "DEFAULT"]@ , the service uses a logical AND operator to determine which attributes to return (in this case, all attributes).
 --
 -- * 'dfImage' - The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.
-detectFaces ::
-     Image -- ^ 'dfImage'
-  -> DetectFaces
+detectFaces
+    :: Image -- ^ 'dfImage'
+    -> DetectFaces
 detectFaces pImage_ = DetectFaces' {_dfAttributes = Nothing, _dfImage = pImage_}
+
 
 -- | An array of facial attributes you want to be returned. This can be the default list of attributes or all attributes. If you don't specify a value for @Attributes@ or if you specify @["DEFAULT"]@ , the API returns the following subset of facial attributes: @BoundingBox@ , @Confidence@ , @Pose@ , @Quality@ and @Landmarks@ . If you provide @["ALL"]@ , all facial attributes are returned but the operation will take longer to complete. If you provide both, @["ALL", "DEFAULT"]@ , the service uses a logical AND operator to determine which attributes to return (in this case, all attributes).
 dfAttributes :: Lens' DetectFaces [Attribute]
-dfAttributes =
-  lens _dfAttributes (\s a -> s {_dfAttributes = a}) . _Default . _Coerce
+dfAttributes = lens _dfAttributes (\ s a -> s{_dfAttributes = a}) . _Default . _Coerce
 
 -- | The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.
 dfImage :: Lens' DetectFaces Image
-dfImage = lens _dfImage (\s a -> s {_dfImage = a})
+dfImage = lens _dfImage (\ s a -> s{_dfImage = a})
 
 instance AWSRequest DetectFaces where
-  type Rs DetectFaces = DetectFacesResponse
-  request = postJSON rekognition
-  response =
-    receiveJSON
-      (\s h x ->
-         DetectFacesResponse' <$> (x .?> "OrientationCorrection") <*>
-         (x .?> "FaceDetails" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs DetectFaces = DetectFacesResponse
+        request = postJSON rekognition
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DetectFacesResponse' <$>
+                   (x .?> "OrientationCorrection") <*>
+                     (x .?> "FaceDetails" .!@ mempty)
+                     <*> (pure (fromEnum s)))
 
-instance Hashable DetectFaces
+instance Hashable DetectFaces where
 
-instance NFData DetectFaces
+instance NFData DetectFaces where
 
 instance ToHeaders DetectFaces where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("RekognitionService.DetectFaces" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("RekognitionService.DetectFaces" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DetectFaces where
-  toJSON DetectFaces' {..} =
-    object
-      (catMaybes
-         [("Attributes" .=) <$> _dfAttributes, Just ("Image" .= _dfImage)])
+        toJSON DetectFaces'{..}
+          = object
+              (catMaybes
+                 [("Attributes" .=) <$> _dfAttributes,
+                  Just ("Image" .= _dfImage)])
 
 instance ToPath DetectFaces where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DetectFaces where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'detectFacesResponse' smart constructor.
 data DetectFacesResponse =
@@ -124,6 +132,7 @@ data DetectFacesResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DetectFacesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -133,9 +142,9 @@ data DetectFacesResponse =
 -- * 'dfrsFaceDetails' - Details of each face found in the image.
 --
 -- * 'dfrsResponseStatus' - -- | The response status code.
-detectFacesResponse ::
-     Int -- ^ 'dfrsResponseStatus'
-  -> DetectFacesResponse
+detectFacesResponse
+    :: Int -- ^ 'dfrsResponseStatus'
+    -> DetectFacesResponse
 detectFacesResponse pResponseStatus_ =
   DetectFacesResponse'
     { _dfrsOrientationCorrection = Nothing
@@ -143,20 +152,17 @@ detectFacesResponse pResponseStatus_ =
     , _dfrsResponseStatus = pResponseStatus_
     }
 
+
 -- | The orientation of the input image (counter-clockwise direction). If your application displays the image, you can use this value to correct image orientation. The bounding box coordinates returned in @FaceDetails@ represent face locations before the image orientation is corrected.
-dfrsOrientationCorrection ::
-     Lens' DetectFacesResponse (Maybe OrientationCorrection)
-dfrsOrientationCorrection =
-  lens _dfrsOrientationCorrection (\s a -> s {_dfrsOrientationCorrection = a})
+dfrsOrientationCorrection :: Lens' DetectFacesResponse (Maybe OrientationCorrection)
+dfrsOrientationCorrection = lens _dfrsOrientationCorrection (\ s a -> s{_dfrsOrientationCorrection = a})
 
 -- | Details of each face found in the image.
 dfrsFaceDetails :: Lens' DetectFacesResponse [FaceDetail]
-dfrsFaceDetails =
-  lens _dfrsFaceDetails (\s a -> s {_dfrsFaceDetails = a}) . _Default . _Coerce
+dfrsFaceDetails = lens _dfrsFaceDetails (\ s a -> s{_dfrsFaceDetails = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 dfrsResponseStatus :: Lens' DetectFacesResponse Int
-dfrsResponseStatus =
-  lens _dfrsResponseStatus (\s a -> s {_dfrsResponseStatus = a})
+dfrsResponseStatus = lens _dfrsResponseStatus (\ s a -> s{_dfrsResponseStatus = a})
 
-instance NFData DetectFacesResponse
+instance NFData DetectFacesResponse where

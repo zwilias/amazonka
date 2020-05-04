@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.ElasticTranscoder.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,303 +11,336 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.ElasticTranscoder.Types
+    (
     -- * Service Configuration
-  ( elasticTranscoder
+      elasticTranscoder
+
     -- * Errors
-  , _IncompatibleVersionException
-  , _ValidationException
-  , _AccessDeniedException
-  , _InternalServiceException
-  , _ResourceNotFoundException
-  , _LimitExceededException
-  , _ResourceInUseException
+    , _IncompatibleVersionException
+    , _ValidationException
+    , _AccessDeniedException
+    , _InternalServiceException
+    , _ResourceNotFoundException
+    , _LimitExceededException
+    , _ResourceInUseException
+
     -- * Artwork
-  , Artwork
-  , artwork
-  , aSizingPolicy
-  , aAlbumArtFormat
-  , aMaxHeight
-  , aInputKey
-  , aPaddingPolicy
-  , aEncryption
-  , aMaxWidth
+    , Artwork
+    , artwork
+    , aSizingPolicy
+    , aAlbumArtFormat
+    , aMaxHeight
+    , aInputKey
+    , aPaddingPolicy
+    , aEncryption
+    , aMaxWidth
+
     -- * AudioCodecOptions
-  , AudioCodecOptions
-  , audioCodecOptions
-  , acoSigned
-  , acoBitDepth
-  , acoProfile
-  , acoBitOrder
+    , AudioCodecOptions
+    , audioCodecOptions
+    , acoSigned
+    , acoBitDepth
+    , acoProfile
+    , acoBitOrder
+
     -- * AudioParameters
-  , AudioParameters
-  , audioParameters
-  , apChannels
-  , apCodec
-  , apAudioPackingMode
-  , apSampleRate
-  , apBitRate
-  , apCodecOptions
+    , AudioParameters
+    , audioParameters
+    , apChannels
+    , apCodec
+    , apAudioPackingMode
+    , apSampleRate
+    , apBitRate
+    , apCodecOptions
+
     -- * CaptionFormat
-  , CaptionFormat
-  , captionFormat
-  , cfPattern
-  , cfFormat
-  , cfEncryption
+    , CaptionFormat
+    , captionFormat
+    , cfPattern
+    , cfFormat
+    , cfEncryption
+
     -- * CaptionSource
-  , CaptionSource
-  , captionSource
-  , csTimeOffset
-  , csEncryption
-  , csKey
-  , csLanguage
-  , csLabel
+    , CaptionSource
+    , captionSource
+    , csTimeOffset
+    , csEncryption
+    , csKey
+    , csLanguage
+    , csLabel
+
     -- * Captions
-  , Captions
-  , captions
-  , cMergePolicy
-  , cCaptionSources
-  , cCaptionFormats
+    , Captions
+    , captions
+    , cMergePolicy
+    , cCaptionSources
+    , cCaptionFormats
+
     -- * Clip
-  , Clip
-  , clip
-  , cTimeSpan
+    , Clip
+    , clip
+    , cTimeSpan
+
     -- * CreateJobOutput
-  , CreateJobOutput
-  , createJobOutput
-  , cjoThumbnailPattern
-  , cjoCaptions
-  , cjoPresetId
-  , cjoComposition
-  , cjoAlbumArt
-  , cjoWatermarks
-  , cjoEncryption
-  , cjoKey
-  , cjoSegmentDuration
-  , cjoThumbnailEncryption
-  , cjoRotate
+    , CreateJobOutput
+    , createJobOutput
+    , cjoThumbnailPattern
+    , cjoCaptions
+    , cjoPresetId
+    , cjoComposition
+    , cjoAlbumArt
+    , cjoWatermarks
+    , cjoEncryption
+    , cjoKey
+    , cjoSegmentDuration
+    , cjoThumbnailEncryption
+    , cjoRotate
+
     -- * CreateJobPlaylist
-  , CreateJobPlaylist
-  , createJobPlaylist
-  , cjpPlayReadyDrm
-  , cjpFormat
-  , cjpOutputKeys
-  , cjpName
-  , cjpHlsContentProtection
+    , CreateJobPlaylist
+    , createJobPlaylist
+    , cjpPlayReadyDrm
+    , cjpFormat
+    , cjpOutputKeys
+    , cjpName
+    , cjpHlsContentProtection
+
     -- * DetectedProperties
-  , DetectedProperties
-  , detectedProperties
-  , dpHeight
-  , dpFrameRate
-  , dpFileSize
-  , dpWidth
-  , dpDurationMillis
+    , DetectedProperties
+    , detectedProperties
+    , dpHeight
+    , dpFrameRate
+    , dpFileSize
+    , dpWidth
+    , dpDurationMillis
+
     -- * Encryption
-  , Encryption
-  , encryption
-  , eMode
-  , eKeyMD5
-  , eKey
-  , eInitializationVector
+    , Encryption
+    , encryption
+    , eMode
+    , eKeyMD5
+    , eKey
+    , eInitializationVector
+
     -- * HlsContentProtection
-  , HlsContentProtection
-  , hlsContentProtection
-  , hcpKeyMD5
-  , hcpKeyStoragePolicy
-  , hcpKey
-  , hcpMethod
-  , hcpInitializationVector
-  , hcpLicenseAcquisitionURL
+    , HlsContentProtection
+    , hlsContentProtection
+    , hcpKeyMD5
+    , hcpKeyStoragePolicy
+    , hcpKey
+    , hcpMethod
+    , hcpInitializationVector
+    , hcpLicenseAcquisitionURL
+
     -- * InputCaptions
-  , InputCaptions
-  , inputCaptions
-  , icMergePolicy
-  , icCaptionSources
+    , InputCaptions
+    , inputCaptions
+    , icMergePolicy
+    , icCaptionSources
+
     -- * Job'
-  , Job'
-  , job'
-  , jStatus
-  , jPipelineId
-  , jARN
-  , jInputs
-  , jInput
-  , jUserMetadata
-  , jOutputs
-  , jOutput
-  , jId
-  , jPlaylists
-  , jOutputKeyPrefix
-  , jTiming
+    , Job'
+    , job'
+    , jStatus
+    , jPipelineId
+    , jARN
+    , jInputs
+    , jInput
+    , jUserMetadata
+    , jOutputs
+    , jOutput
+    , jId
+    , jPlaylists
+    , jOutputKeyPrefix
+    , jTiming
+
     -- * JobAlbumArt
-  , JobAlbumArt
-  , jobAlbumArt
-  , jaaMergePolicy
-  , jaaArtwork
+    , JobAlbumArt
+    , jobAlbumArt
+    , jaaMergePolicy
+    , jaaArtwork
+
     -- * JobInput
-  , JobInput
-  , jobInput
-  , jiFrameRate
-  , jiResolution
-  , jiAspectRatio
-  , jiTimeSpan
-  , jiEncryption
-  , jiKey
-  , jiDetectedProperties
-  , jiContainer
-  , jiInterlaced
-  , jiInputCaptions
+    , JobInput
+    , jobInput
+    , jiFrameRate
+    , jiResolution
+    , jiAspectRatio
+    , jiTimeSpan
+    , jiEncryption
+    , jiKey
+    , jiDetectedProperties
+    , jiContainer
+    , jiInterlaced
+    , jiInputCaptions
+
     -- * JobOutput
-  , JobOutput
-  , jobOutput
-  , joAppliedColorSpaceConversion
-  , joThumbnailPattern
-  , joStatus
-  , joHeight
-  , joFrameRate
-  , joCaptions
-  , joPresetId
-  , joComposition
-  , joAlbumArt
-  , joFileSize
-  , joWatermarks
-  , joWidth
-  , joEncryption
-  , joKey
-  , joStatusDetail
-  , joId
-  , joSegmentDuration
-  , joDurationMillis
-  , joThumbnailEncryption
-  , joDuration
-  , joRotate
+    , JobOutput
+    , jobOutput
+    , joAppliedColorSpaceConversion
+    , joThumbnailPattern
+    , joStatus
+    , joHeight
+    , joFrameRate
+    , joCaptions
+    , joPresetId
+    , joComposition
+    , joAlbumArt
+    , joFileSize
+    , joWatermarks
+    , joWidth
+    , joEncryption
+    , joKey
+    , joStatusDetail
+    , joId
+    , joSegmentDuration
+    , joDurationMillis
+    , joThumbnailEncryption
+    , joDuration
+    , joRotate
+
     -- * JobWatermark
-  , JobWatermark
-  , jobWatermark
-  , jwPresetWatermarkId
-  , jwInputKey
-  , jwEncryption
+    , JobWatermark
+    , jobWatermark
+    , jwPresetWatermarkId
+    , jwInputKey
+    , jwEncryption
+
     -- * Notifications
-  , Notifications
-  , notifications
-  , nError
-  , nWarning
-  , nProgressing
-  , nCompleted
+    , Notifications
+    , notifications
+    , nError
+    , nWarning
+    , nProgressing
+    , nCompleted
+
     -- * Permission
-  , Permission
-  , permission
-  , pAccess
-  , pGranteeType
-  , pGrantee
+    , Permission
+    , permission
+    , pAccess
+    , pGranteeType
+    , pGrantee
+
     -- * Pipeline
-  , Pipeline
-  , pipeline
-  , pipStatus
-  , pipARN
-  , pipInputBucket
-  , pipContentConfig
-  , pipOutputBucket
-  , pipRole
-  , pipName
-  , pipAWSKMSKeyARN
-  , pipId
-  , pipNotifications
-  , pipThumbnailConfig
+    , Pipeline
+    , pipeline
+    , pipStatus
+    , pipARN
+    , pipInputBucket
+    , pipContentConfig
+    , pipOutputBucket
+    , pipRole
+    , pipName
+    , pipAWSKMSKeyARN
+    , pipId
+    , pipNotifications
+    , pipThumbnailConfig
+
     -- * PipelineOutputConfig
-  , PipelineOutputConfig
-  , pipelineOutputConfig
-  , pocBucket
-  , pocStorageClass
-  , pocPermissions
+    , PipelineOutputConfig
+    , pipelineOutputConfig
+    , pocBucket
+    , pocStorageClass
+    , pocPermissions
+
     -- * PlayReadyDrm
-  , PlayReadyDrm
-  , playReadyDrm
-  , prdKeyId
-  , prdFormat
-  , prdKeyMD5
-  , prdKey
-  , prdInitializationVector
-  , prdLicenseAcquisitionURL
+    , PlayReadyDrm
+    , playReadyDrm
+    , prdKeyId
+    , prdFormat
+    , prdKeyMD5
+    , prdKey
+    , prdInitializationVector
+    , prdLicenseAcquisitionURL
+
     -- * Playlist
-  , Playlist
-  , playlist
-  , pStatus
-  , pPlayReadyDrm
-  , pFormat
-  , pOutputKeys
-  , pName
-  , pStatusDetail
-  , pHlsContentProtection
+    , Playlist
+    , playlist
+    , pStatus
+    , pPlayReadyDrm
+    , pFormat
+    , pOutputKeys
+    , pName
+    , pStatusDetail
+    , pHlsContentProtection
+
     -- * Preset
-  , Preset
-  , preset
-  , preARN
-  , preVideo
-  , preThumbnails
-  , preName
-  , preContainer
-  , preId
-  , preType
-  , preDescription
-  , preAudio
+    , Preset
+    , preset
+    , preARN
+    , preVideo
+    , preThumbnails
+    , preName
+    , preContainer
+    , preId
+    , preType
+    , preDescription
+    , preAudio
+
     -- * PresetWatermark
-  , PresetWatermark
-  , presetWatermark
-  , pwVerticalAlign
-  , pwSizingPolicy
-  , pwHorizontalOffset
-  , pwMaxHeight
-  , pwOpacity
-  , pwVerticalOffset
-  , pwMaxWidth
-  , pwId
-  , pwHorizontalAlign
-  , pwTarget
+    , PresetWatermark
+    , presetWatermark
+    , pwVerticalAlign
+    , pwSizingPolicy
+    , pwHorizontalOffset
+    , pwMaxHeight
+    , pwOpacity
+    , pwVerticalOffset
+    , pwMaxWidth
+    , pwId
+    , pwHorizontalAlign
+    , pwTarget
+
     -- * Thumbnails
-  , Thumbnails
-  , thumbnails
-  , tSizingPolicy
-  , tFormat
-  , tMaxHeight
-  , tResolution
-  , tAspectRatio
-  , tPaddingPolicy
-  , tInterval
-  , tMaxWidth
+    , Thumbnails
+    , thumbnails
+    , tSizingPolicy
+    , tFormat
+    , tMaxHeight
+    , tResolution
+    , tAspectRatio
+    , tPaddingPolicy
+    , tInterval
+    , tMaxWidth
+
     -- * TimeSpan
-  , TimeSpan
-  , timeSpan
-  , tsStartTime
-  , tsDuration
+    , TimeSpan
+    , timeSpan
+    , tsStartTime
+    , tsDuration
+
     -- * Timing
-  , Timing
-  , timing
-  , tSubmitTimeMillis
-  , tFinishTimeMillis
-  , tStartTimeMillis
+    , Timing
+    , timing
+    , tSubmitTimeMillis
+    , tFinishTimeMillis
+    , tStartTimeMillis
+
     -- * VideoParameters
-  , VideoParameters
-  , videoParameters
-  , vpKeyframesMaxDist
-  , vpFrameRate
-  , vpSizingPolicy
-  , vpMaxFrameRate
-  , vpMaxHeight
-  , vpWatermarks
-  , vpDisplayAspectRatio
-  , vpResolution
-  , vpCodec
-  , vpAspectRatio
-  , vpPaddingPolicy
-  , vpMaxWidth
-  , vpBitRate
-  , vpFixedGOP
-  , vpCodecOptions
+    , VideoParameters
+    , videoParameters
+    , vpKeyframesMaxDist
+    , vpFrameRate
+    , vpSizingPolicy
+    , vpMaxFrameRate
+    , vpMaxHeight
+    , vpWatermarks
+    , vpDisplayAspectRatio
+    , vpResolution
+    , vpCodec
+    , vpAspectRatio
+    , vpPaddingPolicy
+    , vpMaxWidth
+    , vpBitRate
+    , vpFixedGOP
+    , vpCodecOptions
+
     -- * Warning
-  , Warning
-  , warning
-  , wCode
-  , wMessage
-  ) where
+    , Warning
+    , warning
+    , wCode
+    , wMessage
+    ) where
 
 import Network.AWS.ElasticTranscoder.Types.Product
 import Network.AWS.ElasticTranscoder.Types.Sum
@@ -352,12 +386,13 @@ elasticTranscoder =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | Prism for IncompatibleVersionException' errors.
-_IncompatibleVersionException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_IncompatibleVersionException :: AsError a => Getting (First ServiceError) a ServiceError
 _IncompatibleVersionException =
   _MatchServiceError elasticTranscoder "IncompatibleVersionException" .
   hasStatus 400
+
 
 -- | One or more required parameter values were not provided in the request.
 --
@@ -366,43 +401,44 @@ _ValidationException :: AsError a => Getting (First ServiceError) a ServiceError
 _ValidationException =
   _MatchServiceError elasticTranscoder "ValidationException" . hasStatus 400
 
+
 -- | General authentication failure. The request was not signed correctly.
 --
 --
-_AccessDeniedException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
 _AccessDeniedException =
   _MatchServiceError elasticTranscoder "AccessDeniedException" . hasStatus 403
+
 
 -- | Elastic Transcoder encountered an unexpected exception while trying to fulfill the request.
 --
 --
-_InternalServiceException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InternalServiceException :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalServiceException =
   _MatchServiceError elasticTranscoder "InternalServiceException"
+
 
 -- | The requested resource does not exist or is not available. For example, the pipeline to which you're trying to add a job doesn't exist or is still being created.
 --
 --
-_ResourceNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceNotFoundException =
   _MatchServiceError elasticTranscoder "ResourceNotFoundException" .
   hasStatus 404
 
+
 -- | Too many operations for a given AWS account. For example, the number of pipelines exceeds the maximum allowed.
 --
 --
-_LimitExceededException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException =
   _MatchServiceError elasticTranscoder "LimitExceededException" . hasStatus 429
+
 
 -- | The resource you are attempting to change is in use. For example, you are attempting to delete a pipeline that is currently in use.
 --
 --
-_ResourceInUseException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ResourceInUseException :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceInUseException =
   _MatchServiceError elasticTranscoder "ResourceInUseException" . hasStatus 409
+

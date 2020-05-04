@@ -60,9 +60,11 @@ library
         , Network.AWS.CodePipeline.GetPipelineExecution
         , Network.AWS.CodePipeline.GetPipelineState
         , Network.AWS.CodePipeline.GetThirdPartyJobDetails
+        , Network.AWS.CodePipeline.ListActionExecutions
         , Network.AWS.CodePipeline.ListActionTypes
         , Network.AWS.CodePipeline.ListPipelineExecutions
         , Network.AWS.CodePipeline.ListPipelines
+        , Network.AWS.CodePipeline.ListTagsForResource
         , Network.AWS.CodePipeline.ListWebhooks
         , Network.AWS.CodePipeline.PollForJobs
         , Network.AWS.CodePipeline.PollForThirdPartyJobs
@@ -76,7 +78,10 @@ library
         , Network.AWS.CodePipeline.RegisterWebhookWithThirdParty
         , Network.AWS.CodePipeline.RetryStageExecution
         , Network.AWS.CodePipeline.StartPipelineExecution
+        , Network.AWS.CodePipeline.StopPipelineExecution
+        , Network.AWS.CodePipeline.TagResource
         , Network.AWS.CodePipeline.Types
+        , Network.AWS.CodePipeline.UntagResource
         , Network.AWS.CodePipeline.UpdatePipeline
         , Network.AWS.CodePipeline.Waiters
 

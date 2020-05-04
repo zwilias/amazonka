@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.IoTJobsData.UpdateJobExecution
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,26 +22,28 @@
 --
 --
 module Network.AWS.IoTJobsData.UpdateJobExecution
+    (
     -- * Creating a Request
-  ( updateJobExecution
-  , UpdateJobExecution
+      updateJobExecution
+    , UpdateJobExecution
     -- * Request Lenses
-  , ujeIncludeJobDocument
-  , ujeStatusDetails
-  , ujeExecutionNumber
-  , ujeExpectedVersion
-  , ujeIncludeJobExecutionState
-  , ujeJobId
-  , ujeThingName
-  , ujeStatus
+    , ujeIncludeJobDocument
+    , ujeStatusDetails
+    , ujeExecutionNumber
+    , ujeExpectedVersion
+    , ujeIncludeJobExecutionState
+    , ujeJobId
+    , ujeThingName
+    , ujeStatus
+
     -- * Destructuring the Response
-  , updateJobExecutionResponse
-  , UpdateJobExecutionResponse
+    , updateJobExecutionResponse
+    , UpdateJobExecutionResponse
     -- * Response Lenses
-  , ujersJobDocument
-  , ujersExecutionState
-  , ujersResponseStatus
-  ) where
+    , ujersJobDocument
+    , ujersExecutionState
+    , ujersResponseStatus
+    ) where
 
 import Network.AWS.IoTJobsData.Types
 import Network.AWS.IoTJobsData.Types.Product
@@ -62,6 +66,7 @@ data UpdateJobExecution =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateJobExecution' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -81,11 +86,11 @@ data UpdateJobExecution =
 -- * 'ujeThingName' - The name of the thing associated with the device.
 --
 -- * 'ujeStatus' - The new status for the job execution (IN_PROGRESS, FAILED, SUCCESS, or REJECTED). This must be specified on every update.
-updateJobExecution ::
-     Text -- ^ 'ujeJobId'
-  -> Text -- ^ 'ujeThingName'
-  -> JobExecutionStatus -- ^ 'ujeStatus'
-  -> UpdateJobExecution
+updateJobExecution
+    :: Text -- ^ 'ujeJobId'
+    -> Text -- ^ 'ujeThingName'
+    -> JobExecutionStatus -- ^ 'ujeStatus'
+    -> UpdateJobExecution
 updateJobExecution pJobId_ pThingName_ pStatus_ =
   UpdateJobExecution'
     { _ujeIncludeJobDocument = Nothing
@@ -98,80 +103,78 @@ updateJobExecution pJobId_ pThingName_ pStatus_ =
     , _ujeStatus = pStatus_
     }
 
+
 -- | Optional. When set to true, the response contains the job document. The default is false.
 ujeIncludeJobDocument :: Lens' UpdateJobExecution (Maybe Bool)
-ujeIncludeJobDocument =
-  lens _ujeIncludeJobDocument (\s a -> s {_ujeIncludeJobDocument = a})
+ujeIncludeJobDocument = lens _ujeIncludeJobDocument (\ s a -> s{_ujeIncludeJobDocument = a})
 
 -- | Optional. A collection of name/value pairs that describe the status of the job execution. If not specified, the statusDetails are unchanged.
 ujeStatusDetails :: Lens' UpdateJobExecution (HashMap Text Text)
-ujeStatusDetails =
-  lens _ujeStatusDetails (\s a -> s {_ujeStatusDetails = a}) . _Default . _Map
+ujeStatusDetails = lens _ujeStatusDetails (\ s a -> s{_ujeStatusDetails = a}) . _Default . _Map
 
 -- | Optional. A number that identifies a particular job execution on a particular device.
 ujeExecutionNumber :: Lens' UpdateJobExecution (Maybe Integer)
-ujeExecutionNumber =
-  lens _ujeExecutionNumber (\s a -> s {_ujeExecutionNumber = a})
+ujeExecutionNumber = lens _ujeExecutionNumber (\ s a -> s{_ujeExecutionNumber = a})
 
 -- | Optional. The expected current version of the job execution. Each time you update the job execution, its version is incremented. If the version of the job execution stored in Jobs does not match, the update is rejected with a VersionMismatch error, and an ErrorResponse that contains the current job execution status data is returned. (This makes it unnecessary to perform a separate DescribeJobExecution request in order to obtain the job execution status data.)
 ujeExpectedVersion :: Lens' UpdateJobExecution (Maybe Integer)
-ujeExpectedVersion =
-  lens _ujeExpectedVersion (\s a -> s {_ujeExpectedVersion = a})
+ujeExpectedVersion = lens _ujeExpectedVersion (\ s a -> s{_ujeExpectedVersion = a})
 
 -- | Optional. When included and set to true, the response contains the JobExecutionState data. The default is false.
 ujeIncludeJobExecutionState :: Lens' UpdateJobExecution (Maybe Bool)
-ujeIncludeJobExecutionState =
-  lens
-    _ujeIncludeJobExecutionState
-    (\s a -> s {_ujeIncludeJobExecutionState = a})
+ujeIncludeJobExecutionState = lens _ujeIncludeJobExecutionState (\ s a -> s{_ujeIncludeJobExecutionState = a})
 
 -- | The unique identifier assigned to this job when it was created.
 ujeJobId :: Lens' UpdateJobExecution Text
-ujeJobId = lens _ujeJobId (\s a -> s {_ujeJobId = a})
+ujeJobId = lens _ujeJobId (\ s a -> s{_ujeJobId = a})
 
 -- | The name of the thing associated with the device.
 ujeThingName :: Lens' UpdateJobExecution Text
-ujeThingName = lens _ujeThingName (\s a -> s {_ujeThingName = a})
+ujeThingName = lens _ujeThingName (\ s a -> s{_ujeThingName = a})
 
 -- | The new status for the job execution (IN_PROGRESS, FAILED, SUCCESS, or REJECTED). This must be specified on every update.
 ujeStatus :: Lens' UpdateJobExecution JobExecutionStatus
-ujeStatus = lens _ujeStatus (\s a -> s {_ujeStatus = a})
+ujeStatus = lens _ujeStatus (\ s a -> s{_ujeStatus = a})
 
 instance AWSRequest UpdateJobExecution where
-  type Rs UpdateJobExecution = UpdateJobExecutionResponse
-  request = postJSON ioTJobsData
-  response =
-    receiveJSON
-      (\s h x ->
-         UpdateJobExecutionResponse' <$> (x .?> "jobDocument") <*>
-         (x .?> "executionState") <*>
-         (pure (fromEnum s)))
+        type Rs UpdateJobExecution =
+             UpdateJobExecutionResponse
+        request = postJSON ioTJobsData
+        response
+          = receiveJSON
+              (\ s h x ->
+                 UpdateJobExecutionResponse' <$>
+                   (x .?> "jobDocument") <*> (x .?> "executionState")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable UpdateJobExecution
+instance Hashable UpdateJobExecution where
 
-instance NFData UpdateJobExecution
+instance NFData UpdateJobExecution where
 
 instance ToHeaders UpdateJobExecution where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToJSON UpdateJobExecution where
-  toJSON UpdateJobExecution' {..} =
-    object
-      (catMaybes
-         [ ("includeJobDocument" .=) <$> _ujeIncludeJobDocument
-         , ("statusDetails" .=) <$> _ujeStatusDetails
-         , ("executionNumber" .=) <$> _ujeExecutionNumber
-         , ("expectedVersion" .=) <$> _ujeExpectedVersion
-         , ("includeJobExecutionState" .=) <$> _ujeIncludeJobExecutionState
-         , Just ("status" .= _ujeStatus)
-         ])
+        toJSON UpdateJobExecution'{..}
+          = object
+              (catMaybes
+                 [("includeJobDocument" .=) <$>
+                    _ujeIncludeJobDocument,
+                  ("statusDetails" .=) <$> _ujeStatusDetails,
+                  ("executionNumber" .=) <$> _ujeExecutionNumber,
+                  ("expectedVersion" .=) <$> _ujeExpectedVersion,
+                  ("includeJobExecutionState" .=) <$>
+                    _ujeIncludeJobExecutionState,
+                  Just ("status" .= _ujeStatus)])
 
 instance ToPath UpdateJobExecution where
-  toPath UpdateJobExecution' {..} =
-    mconcat ["/things/", toBS _ujeThingName, "/jobs/", toBS _ujeJobId]
+        toPath UpdateJobExecution'{..}
+          = mconcat
+              ["/things/", toBS _ujeThingName, "/jobs/",
+               toBS _ujeJobId]
 
 instance ToQuery UpdateJobExecution where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'updateJobExecutionResponse' smart constructor.
 data UpdateJobExecutionResponse =
@@ -182,6 +185,7 @@ data UpdateJobExecutionResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateJobExecutionResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -191,9 +195,9 @@ data UpdateJobExecutionResponse =
 -- * 'ujersExecutionState' - A JobExecutionState object.
 --
 -- * 'ujersResponseStatus' - -- | The response status code.
-updateJobExecutionResponse ::
-     Int -- ^ 'ujersResponseStatus'
-  -> UpdateJobExecutionResponse
+updateJobExecutionResponse
+    :: Int -- ^ 'ujersResponseStatus'
+    -> UpdateJobExecutionResponse
 updateJobExecutionResponse pResponseStatus_ =
   UpdateJobExecutionResponse'
     { _ujersJobDocument = Nothing
@@ -201,19 +205,17 @@ updateJobExecutionResponse pResponseStatus_ =
     , _ujersResponseStatus = pResponseStatus_
     }
 
+
 -- | The contents of the Job Documents.
 ujersJobDocument :: Lens' UpdateJobExecutionResponse (Maybe Text)
-ujersJobDocument = lens _ujersJobDocument (\s a -> s {_ujersJobDocument = a})
+ujersJobDocument = lens _ujersJobDocument (\ s a -> s{_ujersJobDocument = a})
 
 -- | A JobExecutionState object.
-ujersExecutionState ::
-     Lens' UpdateJobExecutionResponse (Maybe JobExecutionState)
-ujersExecutionState =
-  lens _ujersExecutionState (\s a -> s {_ujersExecutionState = a})
+ujersExecutionState :: Lens' UpdateJobExecutionResponse (Maybe JobExecutionState)
+ujersExecutionState = lens _ujersExecutionState (\ s a -> s{_ujersExecutionState = a})
 
 -- | -- | The response status code.
 ujersResponseStatus :: Lens' UpdateJobExecutionResponse Int
-ujersResponseStatus =
-  lens _ujersResponseStatus (\s a -> s {_ujersResponseStatus = a})
+ujersResponseStatus = lens _ujersResponseStatus (\ s a -> s{_ujersResponseStatus = a})
 
-instance NFData UpdateJobExecutionResponse
+instance NFData UpdateJobExecutionResponse where

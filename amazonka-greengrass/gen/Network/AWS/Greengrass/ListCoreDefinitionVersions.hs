@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Greengrass.ListCoreDefinitionVersions
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,21 +20,23 @@
 --
 -- Lists the versions of a core definition.
 module Network.AWS.Greengrass.ListCoreDefinitionVersions
+    (
     -- * Creating a Request
-  ( listCoreDefinitionVersions
-  , ListCoreDefinitionVersions
+      listCoreDefinitionVersions
+    , ListCoreDefinitionVersions
     -- * Request Lenses
-  , lcdvNextToken
-  , lcdvMaxResults
-  , lcdvCoreDefinitionId
+    , lcdvNextToken
+    , lcdvMaxResults
+    , lcdvCoreDefinitionId
+
     -- * Destructuring the Response
-  , listCoreDefinitionVersionsResponse
-  , ListCoreDefinitionVersionsResponse
+    , listCoreDefinitionVersionsResponse
+    , ListCoreDefinitionVersionsResponse
     -- * Response Lenses
-  , lcdvrsVersions
-  , lcdvrsNextToken
-  , lcdvrsResponseStatus
-  ) where
+    , lcdvrsVersions
+    , lcdvrsNextToken
+    , lcdvrsResponseStatus
+    ) where
 
 import Network.AWS.Greengrass.Types
 import Network.AWS.Greengrass.Types.Product
@@ -50,6 +54,7 @@ data ListCoreDefinitionVersions =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListCoreDefinitionVersions' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -59,9 +64,9 @@ data ListCoreDefinitionVersions =
 -- * 'lcdvMaxResults' - The maximum number of results to be returned per request.
 --
 -- * 'lcdvCoreDefinitionId' - The ID of the core definition.
-listCoreDefinitionVersions ::
-     Text -- ^ 'lcdvCoreDefinitionId'
-  -> ListCoreDefinitionVersions
+listCoreDefinitionVersions
+    :: Text -- ^ 'lcdvCoreDefinitionId'
+    -> ListCoreDefinitionVersions
 listCoreDefinitionVersions pCoreDefinitionId_ =
   ListCoreDefinitionVersions'
     { _lcdvNextToken = Nothing
@@ -69,46 +74,52 @@ listCoreDefinitionVersions pCoreDefinitionId_ =
     , _lcdvCoreDefinitionId = pCoreDefinitionId_
     }
 
+
 -- | The token for the next set of results, or ''null'' if there are no additional results.
 lcdvNextToken :: Lens' ListCoreDefinitionVersions (Maybe Text)
-lcdvNextToken = lens _lcdvNextToken (\s a -> s {_lcdvNextToken = a})
+lcdvNextToken = lens _lcdvNextToken (\ s a -> s{_lcdvNextToken = a})
 
 -- | The maximum number of results to be returned per request.
 lcdvMaxResults :: Lens' ListCoreDefinitionVersions (Maybe Text)
-lcdvMaxResults = lens _lcdvMaxResults (\s a -> s {_lcdvMaxResults = a})
+lcdvMaxResults = lens _lcdvMaxResults (\ s a -> s{_lcdvMaxResults = a})
 
 -- | The ID of the core definition.
 lcdvCoreDefinitionId :: Lens' ListCoreDefinitionVersions Text
-lcdvCoreDefinitionId =
-  lens _lcdvCoreDefinitionId (\s a -> s {_lcdvCoreDefinitionId = a})
+lcdvCoreDefinitionId = lens _lcdvCoreDefinitionId (\ s a -> s{_lcdvCoreDefinitionId = a})
 
 instance AWSRequest ListCoreDefinitionVersions where
-  type Rs ListCoreDefinitionVersions = ListCoreDefinitionVersionsResponse
-  request = get greengrass
-  response =
-    receiveJSON
-      (\s h x ->
-         ListCoreDefinitionVersionsResponse' <$> (x .?> "Versions" .!@ mempty) <*>
-         (x .?> "NextToken") <*>
-         (pure (fromEnum s)))
+        type Rs ListCoreDefinitionVersions =
+             ListCoreDefinitionVersionsResponse
+        request = get greengrass
+        response
+          = receiveJSON
+              (\ s h x ->
+                 ListCoreDefinitionVersionsResponse' <$>
+                   (x .?> "Versions" .!@ mempty) <*> (x .?> "NextToken")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable ListCoreDefinitionVersions
+instance Hashable ListCoreDefinitionVersions where
 
-instance NFData ListCoreDefinitionVersions
+instance NFData ListCoreDefinitionVersions where
 
 instance ToHeaders ListCoreDefinitionVersions where
-  toHeaders =
-    const
-      (mconcat ["Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)])
+        toHeaders
+          = const
+              (mconcat
+                 ["Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToPath ListCoreDefinitionVersions where
-  toPath ListCoreDefinitionVersions' {..} =
-    mconcat
-      ["/greengrass/definition/cores/", toBS _lcdvCoreDefinitionId, "/versions"]
+        toPath ListCoreDefinitionVersions'{..}
+          = mconcat
+              ["/greengrass/definition/cores/",
+               toBS _lcdvCoreDefinitionId, "/versions"]
 
 instance ToQuery ListCoreDefinitionVersions where
-  toQuery ListCoreDefinitionVersions' {..} =
-    mconcat ["NextToken" =: _lcdvNextToken, "MaxResults" =: _lcdvMaxResults]
+        toQuery ListCoreDefinitionVersions'{..}
+          = mconcat
+              ["NextToken" =: _lcdvNextToken,
+               "MaxResults" =: _lcdvMaxResults]
 
 -- | /See:/ 'listCoreDefinitionVersionsResponse' smart constructor.
 data ListCoreDefinitionVersionsResponse =
@@ -119,6 +130,7 @@ data ListCoreDefinitionVersionsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListCoreDefinitionVersionsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -128,9 +140,9 @@ data ListCoreDefinitionVersionsResponse =
 -- * 'lcdvrsNextToken' - The token for the next set of results, or ''null'' if there are no additional results.
 --
 -- * 'lcdvrsResponseStatus' - -- | The response status code.
-listCoreDefinitionVersionsResponse ::
-     Int -- ^ 'lcdvrsResponseStatus'
-  -> ListCoreDefinitionVersionsResponse
+listCoreDefinitionVersionsResponse
+    :: Int -- ^ 'lcdvrsResponseStatus'
+    -> ListCoreDefinitionVersionsResponse
 listCoreDefinitionVersionsResponse pResponseStatus_ =
   ListCoreDefinitionVersionsResponse'
     { _lcdvrsVersions = Nothing
@@ -138,18 +150,18 @@ listCoreDefinitionVersionsResponse pResponseStatus_ =
     , _lcdvrsResponseStatus = pResponseStatus_
     }
 
+
 -- | Information about a version.
 lcdvrsVersions :: Lens' ListCoreDefinitionVersionsResponse [VersionInformation]
-lcdvrsVersions =
-  lens _lcdvrsVersions (\s a -> s {_lcdvrsVersions = a}) . _Default . _Coerce
+lcdvrsVersions = lens _lcdvrsVersions (\ s a -> s{_lcdvrsVersions = a}) . _Default . _Coerce
 
 -- | The token for the next set of results, or ''null'' if there are no additional results.
 lcdvrsNextToken :: Lens' ListCoreDefinitionVersionsResponse (Maybe Text)
-lcdvrsNextToken = lens _lcdvrsNextToken (\s a -> s {_lcdvrsNextToken = a})
+lcdvrsNextToken = lens _lcdvrsNextToken (\ s a -> s{_lcdvrsNextToken = a})
 
 -- | -- | The response status code.
 lcdvrsResponseStatus :: Lens' ListCoreDefinitionVersionsResponse Int
-lcdvrsResponseStatus =
-  lens _lcdvrsResponseStatus (\s a -> s {_lcdvrsResponseStatus = a})
+lcdvrsResponseStatus = lens _lcdvrsResponseStatus (\ s a -> s{_lcdvrsResponseStatus = a})
 
 instance NFData ListCoreDefinitionVersionsResponse
+         where

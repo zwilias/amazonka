@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Glacier.GetVaultLock
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -34,22 +36,24 @@
 -- If there is no vault lock policy set on the vault, the operation returns a @404 Not found@ error. For more information about vault lock policies, <http://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock-policy.html Amazon Glacier Access Control with Vault Lock Policies> .
 --
 module Network.AWS.Glacier.GetVaultLock
+    (
     -- * Creating a Request
-  ( getVaultLock
-  , GetVaultLock
+      getVaultLock
+    , GetVaultLock
     -- * Request Lenses
-  , gvlAccountId
-  , gvlVaultName
+    , gvlAccountId
+    , gvlVaultName
+
     -- * Destructuring the Response
-  , getVaultLockResponse
-  , GetVaultLockResponse
+    , getVaultLockResponse
+    , GetVaultLockResponse
     -- * Response Lenses
-  , gvlrsState
-  , gvlrsExpirationDate
-  , gvlrsCreationDate
-  , gvlrsPolicy
-  , gvlrsResponseStatus
-  ) where
+    , gvlrsState
+    , gvlrsExpirationDate
+    , gvlrsCreationDate
+    , gvlrsPolicy
+    , gvlrsResponseStatus
+    ) where
 
 import Network.AWS.Glacier.Types
 import Network.AWS.Glacier.Types.Product
@@ -70,6 +74,7 @@ data GetVaultLock =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetVaultLock' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -77,46 +82,49 @@ data GetVaultLock =
 -- * 'gvlAccountId' - The @AccountId@ value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.
 --
 -- * 'gvlVaultName' - The name of the vault.
-getVaultLock ::
-     Text -- ^ 'gvlAccountId'
-  -> Text -- ^ 'gvlVaultName'
-  -> GetVaultLock
+getVaultLock
+    :: Text -- ^ 'gvlAccountId'
+    -> Text -- ^ 'gvlVaultName'
+    -> GetVaultLock
 getVaultLock pAccountId_ pVaultName_ =
   GetVaultLock' {_gvlAccountId = pAccountId_, _gvlVaultName = pVaultName_}
 
+
 -- | The @AccountId@ value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.
 gvlAccountId :: Lens' GetVaultLock Text
-gvlAccountId = lens _gvlAccountId (\s a -> s {_gvlAccountId = a})
+gvlAccountId = lens _gvlAccountId (\ s a -> s{_gvlAccountId = a})
 
 -- | The name of the vault.
 gvlVaultName :: Lens' GetVaultLock Text
-gvlVaultName = lens _gvlVaultName (\s a -> s {_gvlVaultName = a})
+gvlVaultName = lens _gvlVaultName (\ s a -> s{_gvlVaultName = a})
 
 instance AWSRequest GetVaultLock where
-  type Rs GetVaultLock = GetVaultLockResponse
-  request = get glacier
-  response =
-    receiveJSON
-      (\s h x ->
-         GetVaultLockResponse' <$> (x .?> "State") <*> (x .?> "ExpirationDate") <*>
-         (x .?> "CreationDate") <*>
-         (x .?> "Policy") <*>
-         (pure (fromEnum s)))
+        type Rs GetVaultLock = GetVaultLockResponse
+        request = get glacier
+        response
+          = receiveJSON
+              (\ s h x ->
+                 GetVaultLockResponse' <$>
+                   (x .?> "State") <*> (x .?> "ExpirationDate") <*>
+                     (x .?> "CreationDate")
+                     <*> (x .?> "Policy")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable GetVaultLock
+instance Hashable GetVaultLock where
 
-instance NFData GetVaultLock
+instance NFData GetVaultLock where
 
 instance ToHeaders GetVaultLock where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath GetVaultLock where
-  toPath GetVaultLock' {..} =
-    mconcat
-      ["/", toBS _gvlAccountId, "/vaults/", toBS _gvlVaultName, "/lock-policy"]
+        toPath GetVaultLock'{..}
+          = mconcat
+              ["/", toBS _gvlAccountId, "/vaults/",
+               toBS _gvlVaultName, "/lock-policy"]
 
 instance ToQuery GetVaultLock where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | Contains the Amazon Glacier response to your request.
 --
@@ -133,6 +141,7 @@ data GetVaultLockResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetVaultLockResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -146,9 +155,9 @@ data GetVaultLockResponse =
 -- * 'gvlrsPolicy' - The vault lock policy as a JSON string, which uses "\" as an escape character.
 --
 -- * 'gvlrsResponseStatus' - -- | The response status code.
-getVaultLockResponse ::
-     Int -- ^ 'gvlrsResponseStatus'
-  -> GetVaultLockResponse
+getVaultLockResponse
+    :: Int -- ^ 'gvlrsResponseStatus'
+    -> GetVaultLockResponse
 getVaultLockResponse pResponseStatus_ =
   GetVaultLockResponse'
     { _gvlrsState = Nothing
@@ -158,26 +167,25 @@ getVaultLockResponse pResponseStatus_ =
     , _gvlrsResponseStatus = pResponseStatus_
     }
 
+
 -- | The state of the vault lock. @InProgress@ or @Locked@ .
 gvlrsState :: Lens' GetVaultLockResponse (Maybe Text)
-gvlrsState = lens _gvlrsState (\s a -> s {_gvlrsState = a})
+gvlrsState = lens _gvlrsState (\ s a -> s{_gvlrsState = a})
 
 -- | The UTC date and time at which the lock ID expires. This value can be @null@ if the vault lock is in a @Locked@ state.
 gvlrsExpirationDate :: Lens' GetVaultLockResponse (Maybe Text)
-gvlrsExpirationDate =
-  lens _gvlrsExpirationDate (\s a -> s {_gvlrsExpirationDate = a})
+gvlrsExpirationDate = lens _gvlrsExpirationDate (\ s a -> s{_gvlrsExpirationDate = a})
 
 -- | The UTC date and time at which the vault lock was put into the @InProgress@ state.
 gvlrsCreationDate :: Lens' GetVaultLockResponse (Maybe Text)
-gvlrsCreationDate = lens _gvlrsCreationDate (\s a -> s {_gvlrsCreationDate = a})
+gvlrsCreationDate = lens _gvlrsCreationDate (\ s a -> s{_gvlrsCreationDate = a})
 
 -- | The vault lock policy as a JSON string, which uses "\" as an escape character.
 gvlrsPolicy :: Lens' GetVaultLockResponse (Maybe Text)
-gvlrsPolicy = lens _gvlrsPolicy (\s a -> s {_gvlrsPolicy = a})
+gvlrsPolicy = lens _gvlrsPolicy (\ s a -> s{_gvlrsPolicy = a})
 
 -- | -- | The response status code.
 gvlrsResponseStatus :: Lens' GetVaultLockResponse Int
-gvlrsResponseStatus =
-  lens _gvlrsResponseStatus (\s a -> s {_gvlrsResponseStatus = a})
+gvlrsResponseStatus = lens _gvlrsResponseStatus (\ s a -> s{_gvlrsResponseStatus = a})
 
-instance NFData GetVaultLockResponse
+instance NFData GetVaultLockResponse where

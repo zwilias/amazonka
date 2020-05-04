@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.OpsWorks.RebootInstance
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,15 +24,17 @@
 -- __Required Permissions__ : To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see <http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html Managing User Permissions> .
 --
 module Network.AWS.OpsWorks.RebootInstance
+    (
     -- * Creating a Request
-  ( rebootInstance
-  , RebootInstance
+      rebootInstance
+    , RebootInstance
     -- * Request Lenses
-  , riInstanceId
+    , riInstanceId
+
     -- * Destructuring the Response
-  , rebootInstanceResponse
-  , RebootInstanceResponse
-  ) where
+    , rebootInstanceResponse
+    , RebootInstanceResponse
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
@@ -46,55 +50,62 @@ newtype RebootInstance =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'RebootInstance' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'riInstanceId' - The instance ID.
-rebootInstance ::
-     Text -- ^ 'riInstanceId'
-  -> RebootInstance
+rebootInstance
+    :: Text -- ^ 'riInstanceId'
+    -> RebootInstance
 rebootInstance pInstanceId_ = RebootInstance' {_riInstanceId = pInstanceId_}
+
 
 -- | The instance ID.
 riInstanceId :: Lens' RebootInstance Text
-riInstanceId = lens _riInstanceId (\s a -> s {_riInstanceId = a})
+riInstanceId = lens _riInstanceId (\ s a -> s{_riInstanceId = a})
 
 instance AWSRequest RebootInstance where
-  type Rs RebootInstance = RebootInstanceResponse
-  request = postJSON opsWorks
-  response = receiveNull RebootInstanceResponse'
+        type Rs RebootInstance = RebootInstanceResponse
+        request = postJSON opsWorks
+        response = receiveNull RebootInstanceResponse'
 
-instance Hashable RebootInstance
+instance Hashable RebootInstance where
 
-instance NFData RebootInstance
+instance NFData RebootInstance where
 
 instance ToHeaders RebootInstance where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("OpsWorks_20130218.RebootInstance" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("OpsWorks_20130218.RebootInstance" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON RebootInstance where
-  toJSON RebootInstance' {..} =
-    object (catMaybes [Just ("InstanceId" .= _riInstanceId)])
+        toJSON RebootInstance'{..}
+          = object
+              (catMaybes [Just ("InstanceId" .= _riInstanceId)])
 
 instance ToPath RebootInstance where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery RebootInstance where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'rebootInstanceResponse' smart constructor.
 data RebootInstanceResponse =
   RebootInstanceResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'RebootInstanceResponse' with the minimum fields required to make a request.
 --
-rebootInstanceResponse :: RebootInstanceResponse
+rebootInstanceResponse
+    :: RebootInstanceResponse
 rebootInstanceResponse = RebootInstanceResponse'
 
-instance NFData RebootInstanceResponse
+
+instance NFData RebootInstanceResponse where

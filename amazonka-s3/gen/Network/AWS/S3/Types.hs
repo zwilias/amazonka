@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.S3.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,678 +11,826 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.S3.Types
+    (
     -- * Service Configuration
-  ( s3
+      s3
+
     -- * Errors
-  , _BucketAlreadyOwnedByYou
-  , _ObjectAlreadyInActiveTierError
-  , _BucketAlreadyExists
-  , _ObjectNotInActiveTierError
-  , _NoSuchUpload
-  , _NoSuchBucket
-  , _NoSuchKey
+    , _BucketAlreadyOwnedByYou
+    , _ObjectAlreadyInActiveTierError
+    , _BucketAlreadyExists
+    , _ObjectNotInActiveTierError
+    , _NoSuchUpload
+    , _NoSuchBucket
+    , _NoSuchKey
+
     -- * Re-exported Types
-  , module Network.AWS.S3.Internal
+    , module Network.AWS.S3.Internal
+
     -- * AnalyticsS3ExportFileFormat
-  , AnalyticsS3ExportFileFormat(..)
+    , AnalyticsS3ExportFileFormat (..)
+
     -- * BucketAccelerateStatus
-  , BucketAccelerateStatus(..)
+    , BucketAccelerateStatus (..)
+
     -- * BucketCannedACL
-  , BucketCannedACL(..)
+    , BucketCannedACL (..)
+
     -- * BucketLogsPermission
-  , BucketLogsPermission(..)
+    , BucketLogsPermission (..)
+
     -- * BucketVersioningStatus
-  , BucketVersioningStatus(..)
+    , BucketVersioningStatus (..)
+
     -- * CompressionType
-  , CompressionType(..)
+    , CompressionType (..)
+
     -- * EncodingType
-  , EncodingType(..)
+    , EncodingType (..)
+
     -- * Event
-  , Event(..)
+    , Event (..)
+
     -- * ExpirationStatus
-  , ExpirationStatus(..)
+    , ExpirationStatus (..)
+
     -- * ExpressionType
-  , ExpressionType(..)
+    , ExpressionType (..)
+
     -- * FileHeaderInfo
-  , FileHeaderInfo(..)
+    , FileHeaderInfo (..)
+
     -- * FilterRuleName
-  , FilterRuleName(..)
+    , FilterRuleName (..)
+
     -- * InventoryFormat
-  , InventoryFormat(..)
+    , InventoryFormat (..)
+
     -- * InventoryFrequency
-  , InventoryFrequency(..)
+    , InventoryFrequency (..)
+
     -- * InventoryIncludedObjectVersions
-  , InventoryIncludedObjectVersions(..)
+    , InventoryIncludedObjectVersions (..)
+
     -- * InventoryOptionalField
-  , InventoryOptionalField(..)
+    , InventoryOptionalField (..)
+
     -- * JSONType
-  , JSONType(..)
+    , JSONType (..)
+
     -- * MFADelete
-  , MFADelete(..)
+    , MFADelete (..)
+
     -- * MFADeleteStatus
-  , MFADeleteStatus(..)
+    , MFADeleteStatus (..)
+
     -- * MetadataDirective
-  , MetadataDirective(..)
+    , MetadataDirective (..)
+
     -- * ObjectCannedACL
-  , ObjectCannedACL(..)
+    , ObjectCannedACL (..)
+
     -- * ObjectStorageClass
-  , ObjectStorageClass(..)
+    , ObjectStorageClass (..)
+
     -- * ObjectVersionStorageClass
-  , ObjectVersionStorageClass(..)
+    , ObjectVersionStorageClass (..)
+
     -- * OwnerOverride
-  , OwnerOverride(..)
+    , OwnerOverride (..)
+
     -- * Payer
-  , Payer(..)
+    , Payer (..)
+
     -- * Permission
-  , Permission(..)
+    , Permission (..)
+
     -- * Protocol
-  , Protocol(..)
+    , Protocol (..)
+
     -- * QuoteFields
-  , QuoteFields(..)
+    , QuoteFields (..)
+
     -- * ReplicationRuleStatus
-  , ReplicationRuleStatus(..)
+    , ReplicationRuleStatus (..)
+
     -- * ReplicationStatus
-  , ReplicationStatus(..)
+    , ReplicationStatus (..)
+
     -- * RequestCharged
-  , RequestCharged(..)
+    , RequestCharged (..)
+
     -- * RequestPayer
-  , RequestPayer(..)
+    , RequestPayer (..)
+
     -- * RestoreRequestType
-  , RestoreRequestType(..)
+    , RestoreRequestType (..)
+
     -- * ServerSideEncryption
-  , ServerSideEncryption(..)
+    , ServerSideEncryption (..)
+
     -- * SseKMSEncryptedObjectsStatus
-  , SseKMSEncryptedObjectsStatus(..)
+    , SseKMSEncryptedObjectsStatus (..)
+
     -- * StorageClass
-  , StorageClass(..)
+    , StorageClass (..)
+
     -- * StorageClassAnalysisSchemaVersion
-  , StorageClassAnalysisSchemaVersion(..)
+    , StorageClassAnalysisSchemaVersion (..)
+
     -- * TaggingDirective
-  , TaggingDirective(..)
+    , TaggingDirective (..)
+
     -- * Tier
-  , Tier(..)
+    , Tier (..)
+
     -- * TransitionStorageClass
-  , TransitionStorageClass(..)
+    , TransitionStorageClass (..)
+
     -- * Type
-  , Type(..)
+    , Type (..)
+
     -- * AbortIncompleteMultipartUpload
-  , AbortIncompleteMultipartUpload
-  , abortIncompleteMultipartUpload
-  , aimuDaysAfterInitiation
+    , AbortIncompleteMultipartUpload
+    , abortIncompleteMultipartUpload
+    , aimuDaysAfterInitiation
+
     -- * AccelerateConfiguration
-  , AccelerateConfiguration
-  , accelerateConfiguration
-  , acStatus
+    , AccelerateConfiguration
+    , accelerateConfiguration
+    , acStatus
+
     -- * AccessControlPolicy
-  , AccessControlPolicy
-  , accessControlPolicy
-  , acpGrants
-  , acpOwner
+    , AccessControlPolicy
+    , accessControlPolicy
+    , acpGrants
+    , acpOwner
+
     -- * AccessControlTranslation
-  , AccessControlTranslation
-  , accessControlTranslation
-  , actOwner
+    , AccessControlTranslation
+    , accessControlTranslation
+    , actOwner
+
     -- * AnalyticsAndOperator
-  , AnalyticsAndOperator
-  , analyticsAndOperator
-  , aaoPrefix
-  , aaoTags
+    , AnalyticsAndOperator
+    , analyticsAndOperator
+    , aaoPrefix
+    , aaoTags
+
     -- * AnalyticsConfiguration
-  , AnalyticsConfiguration
-  , analyticsConfiguration
-  , acFilter
-  , acId
-  , acStorageClassAnalysis
+    , AnalyticsConfiguration
+    , analyticsConfiguration
+    , acFilter
+    , acId
+    , acStorageClassAnalysis
+
     -- * AnalyticsExportDestination
-  , AnalyticsExportDestination
-  , analyticsExportDestination
-  , aedS3BucketDestination
+    , AnalyticsExportDestination
+    , analyticsExportDestination
+    , aedS3BucketDestination
+
     -- * AnalyticsFilter
-  , AnalyticsFilter
-  , analyticsFilter
-  , afTag
-  , afPrefix
-  , afAnd
+    , AnalyticsFilter
+    , analyticsFilter
+    , afTag
+    , afPrefix
+    , afAnd
+
     -- * AnalyticsS3BucketDestination
-  , AnalyticsS3BucketDestination
-  , analyticsS3BucketDestination
-  , asbdBucketAccountId
-  , asbdPrefix
-  , asbdFormat
-  , asbdBucket
+    , AnalyticsS3BucketDestination
+    , analyticsS3BucketDestination
+    , asbdBucketAccountId
+    , asbdPrefix
+    , asbdFormat
+    , asbdBucket
+
     -- * Bucket
-  , Bucket
-  , bucket
-  , bCreationDate
-  , bName
+    , Bucket
+    , bucket
+    , bCreationDate
+    , bName
+
     -- * BucketLifecycleConfiguration
-  , BucketLifecycleConfiguration
-  , bucketLifecycleConfiguration
-  , blcRules
+    , BucketLifecycleConfiguration
+    , bucketLifecycleConfiguration
+    , blcRules
+
     -- * BucketLoggingStatus
-  , BucketLoggingStatus
-  , bucketLoggingStatus
-  , blsLoggingEnabled
+    , BucketLoggingStatus
+    , bucketLoggingStatus
+    , blsLoggingEnabled
+
     -- * CORSConfiguration
-  , CORSConfiguration
-  , corsConfiguration
-  , ccCORSRules
+    , CORSConfiguration
+    , corsConfiguration
+    , ccCORSRules
+
     -- * CORSRule
-  , CORSRule
-  , corsRule
-  , crMaxAgeSeconds
-  , crAllowedHeaders
-  , crExposeHeaders
-  , crAllowedMethods
-  , crAllowedOrigins
+    , CORSRule
+    , corsRule
+    , crMaxAgeSeconds
+    , crAllowedHeaders
+    , crExposeHeaders
+    , crAllowedMethods
+    , crAllowedOrigins
+
     -- * CSVInput
-  , CSVInput
-  , csvInput
-  , ciQuoteCharacter
-  , ciRecordDelimiter
-  , ciFileHeaderInfo
-  , ciQuoteEscapeCharacter
-  , ciComments
-  , ciFieldDelimiter
+    , CSVInput
+    , csvInput
+    , ciQuoteCharacter
+    , ciRecordDelimiter
+    , ciFileHeaderInfo
+    , ciQuoteEscapeCharacter
+    , ciComments
+    , ciFieldDelimiter
+
     -- * CSVOutput
-  , CSVOutput
-  , csvOutput
-  , coQuoteCharacter
-  , coQuoteFields
-  , coRecordDelimiter
-  , coQuoteEscapeCharacter
-  , coFieldDelimiter
+    , CSVOutput
+    , csvOutput
+    , coQuoteCharacter
+    , coQuoteFields
+    , coRecordDelimiter
+    , coQuoteEscapeCharacter
+    , coFieldDelimiter
+
     -- * CommonPrefix
-  , CommonPrefix
-  , commonPrefix
-  , cpPrefix
+    , CommonPrefix
+    , commonPrefix
+    , cpPrefix
+
     -- * CompletedMultipartUpload
-  , CompletedMultipartUpload
-  , completedMultipartUpload
-  , cmuParts
+    , CompletedMultipartUpload
+    , completedMultipartUpload
+    , cmuParts
+
     -- * CompletedPart
-  , CompletedPart
-  , completedPart
-  , cpPartNumber
-  , cpETag
+    , CompletedPart
+    , completedPart
+    , cpPartNumber
+    , cpETag
+
     -- * Condition
-  , Condition
-  , condition
-  , cKeyPrefixEquals
-  , cHTTPErrorCodeReturnedEquals
+    , Condition
+    , condition
+    , cKeyPrefixEquals
+    , cHTTPErrorCodeReturnedEquals
+
     -- * ContinuationEvent
-  , ContinuationEvent
-  , continuationEvent
+    , ContinuationEvent
+    , continuationEvent
+
     -- * CopyObjectResult
-  , CopyObjectResult
-  , copyObjectResult
-  , corETag
-  , corLastModified
+    , CopyObjectResult
+    , copyObjectResult
+    , corETag
+    , corLastModified
+
     -- * CopyPartResult
-  , CopyPartResult
-  , copyPartResult
-  , cprETag
-  , cprLastModified
+    , CopyPartResult
+    , copyPartResult
+    , cprETag
+    , cprLastModified
+
     -- * CreateBucketConfiguration
-  , CreateBucketConfiguration
-  , createBucketConfiguration
-  , cbcLocationConstraint
+    , CreateBucketConfiguration
+    , createBucketConfiguration
+    , cbcLocationConstraint
+
     -- * Delete
-  , Delete
-  , delete'
-  , dQuiet
-  , dObjects
+    , Delete
+    , delete'
+    , dQuiet
+    , dObjects
+
     -- * DeleteMarkerEntry
-  , DeleteMarkerEntry
-  , deleteMarkerEntry
-  , dmeVersionId
-  , dmeIsLatest
-  , dmeOwner
-  , dmeKey
-  , dmeLastModified
+    , DeleteMarkerEntry
+    , deleteMarkerEntry
+    , dmeVersionId
+    , dmeIsLatest
+    , dmeOwner
+    , dmeKey
+    , dmeLastModified
+
     -- * DeletedObject
-  , DeletedObject
-  , deletedObject
-  , dVersionId
-  , dDeleteMarker
-  , dDeleteMarkerVersionId
-  , dKey
+    , DeletedObject
+    , deletedObject
+    , dVersionId
+    , dDeleteMarker
+    , dDeleteMarkerVersionId
+    , dKey
+
     -- * Destination
-  , Destination
-  , destination
-  , dAccessControlTranslation
-  , dAccount
-  , dStorageClass
-  , dEncryptionConfiguration
-  , dBucket
+    , Destination
+    , destination
+    , dAccessControlTranslation
+    , dAccount
+    , dStorageClass
+    , dEncryptionConfiguration
+    , dBucket
+
     -- * Encryption
-  , Encryption
-  , encryption
-  , eKMSKeyId
-  , eKMSContext
-  , eEncryptionType
+    , Encryption
+    , encryption
+    , eKMSKeyId
+    , eKMSContext
+    , eEncryptionType
+
     -- * EncryptionConfiguration
-  , EncryptionConfiguration
-  , encryptionConfiguration
-  , ecReplicaKMSKeyId
+    , EncryptionConfiguration
+    , encryptionConfiguration
+    , ecReplicaKMSKeyId
+
     -- * EndEvent
-  , EndEvent
-  , endEvent
+    , EndEvent
+    , endEvent
+
     -- * ErrorDocument
-  , ErrorDocument
-  , errorDocument
-  , edKey
+    , ErrorDocument
+    , errorDocument
+    , edKey
+
     -- * FilterRule
-  , FilterRule
-  , filterRule
-  , frValue
-  , frName
+    , FilterRule
+    , filterRule
+    , frValue
+    , frName
+
     -- * GlacierJobParameters
-  , GlacierJobParameters
-  , glacierJobParameters
-  , gjpTier
+    , GlacierJobParameters
+    , glacierJobParameters
+    , gjpTier
+
     -- * Grant
-  , Grant
-  , grant
-  , gPermission
-  , gGrantee
+    , Grant
+    , grant
+    , gPermission
+    , gGrantee
+
     -- * Grantee
-  , Grantee
-  , grantee
-  , gURI
-  , gEmailAddress
-  , gDisplayName
-  , gId
-  , gType
+    , Grantee
+    , grantee
+    , gURI
+    , gEmailAddress
+    , gDisplayName
+    , gId
+    , gType
+
     -- * IndexDocument
-  , IndexDocument
-  , indexDocument
-  , idSuffix
+    , IndexDocument
+    , indexDocument
+    , idSuffix
+
     -- * Initiator
-  , Initiator
-  , initiator
-  , iDisplayName
-  , iId
+    , Initiator
+    , initiator
+    , iDisplayName
+    , iId
+
     -- * InputSerialization
-  , InputSerialization
-  , inputSerialization
-  , isJSON
-  , isCSV
-  , isCompressionType
+    , InputSerialization
+    , inputSerialization
+    , isJSON
+    , isCSV
+    , isCompressionType
+
     -- * InventoryConfiguration
-  , InventoryConfiguration
-  , inventoryConfiguration
-  , icOptionalFields
-  , icFilter
-  , icDestination
-  , icIsEnabled
-  , icId
-  , icIncludedObjectVersions
-  , icSchedule
+    , InventoryConfiguration
+    , inventoryConfiguration
+    , icOptionalFields
+    , icFilter
+    , icDestination
+    , icIsEnabled
+    , icId
+    , icIncludedObjectVersions
+    , icSchedule
+
     -- * InventoryDestination
-  , InventoryDestination
-  , inventoryDestination
-  , idS3BucketDestination
+    , InventoryDestination
+    , inventoryDestination
+    , idS3BucketDestination
+
     -- * InventoryEncryption
-  , InventoryEncryption
-  , inventoryEncryption
-  , ieSSES3
-  , ieSSEKMS
+    , InventoryEncryption
+    , inventoryEncryption
+    , ieSSES3
+    , ieSSEKMS
+
     -- * InventoryFilter
-  , InventoryFilter
-  , inventoryFilter
-  , ifPrefix
+    , InventoryFilter
+    , inventoryFilter
+    , ifPrefix
+
     -- * InventoryS3BucketDestination
-  , InventoryS3BucketDestination
-  , inventoryS3BucketDestination
-  , isbdPrefix
-  , isbdAccountId
-  , isbdEncryption
-  , isbdBucket
-  , isbdFormat
+    , InventoryS3BucketDestination
+    , inventoryS3BucketDestination
+    , isbdPrefix
+    , isbdAccountId
+    , isbdEncryption
+    , isbdBucket
+    , isbdFormat
+
     -- * InventorySchedule
-  , InventorySchedule
-  , inventorySchedule
-  , isFrequency
+    , InventorySchedule
+    , inventorySchedule
+    , isFrequency
+
     -- * JSONInput
-  , JSONInput
-  , jsonInput
-  , jiType
+    , JSONInput
+    , jsonInput
+    , jiType
+
     -- * JSONOutput
-  , JSONOutput
-  , jsonOutput
-  , joRecordDelimiter
+    , JSONOutput
+    , jsonOutput
+    , joRecordDelimiter
+
     -- * LambdaFunctionConfiguration
-  , LambdaFunctionConfiguration
-  , lambdaFunctionConfiguration
-  , lfcId
-  , lfcFilter
-  , lfcLambdaFunctionARN
-  , lfcEvents
+    , LambdaFunctionConfiguration
+    , lambdaFunctionConfiguration
+    , lfcId
+    , lfcFilter
+    , lfcLambdaFunctionARN
+    , lfcEvents
+
     -- * LifecycleExpiration
-  , LifecycleExpiration
-  , lifecycleExpiration
-  , leDays
-  , leDate
-  , leExpiredObjectDeleteMarker
+    , LifecycleExpiration
+    , lifecycleExpiration
+    , leDays
+    , leDate
+    , leExpiredObjectDeleteMarker
+
     -- * LifecycleRule
-  , LifecycleRule
-  , lifecycleRule
-  , lrTransitions
-  , lrNoncurrentVersionExpiration
-  , lrPrefix
-  , lrNoncurrentVersionTransitions
-  , lrExpiration
-  , lrId
-  , lrFilter
-  , lrAbortIncompleteMultipartUpload
-  , lrStatus
+    , LifecycleRule
+    , lifecycleRule
+    , lrTransitions
+    , lrNoncurrentVersionExpiration
+    , lrPrefix
+    , lrNoncurrentVersionTransitions
+    , lrExpiration
+    , lrId
+    , lrFilter
+    , lrAbortIncompleteMultipartUpload
+    , lrStatus
+
     -- * LifecycleRuleAndOperator
-  , LifecycleRuleAndOperator
-  , lifecycleRuleAndOperator
-  , lraoPrefix
-  , lraoTags
+    , LifecycleRuleAndOperator
+    , lifecycleRuleAndOperator
+    , lraoPrefix
+    , lraoTags
+
     -- * LifecycleRuleFilter
-  , LifecycleRuleFilter
-  , lifecycleRuleFilter
-  , lrfTag
-  , lrfPrefix
-  , lrfAnd
+    , LifecycleRuleFilter
+    , lifecycleRuleFilter
+    , lrfTag
+    , lrfPrefix
+    , lrfAnd
+
     -- * LoggingEnabled
-  , LoggingEnabled
-  , loggingEnabled
-  , leTargetGrants
-  , leTargetBucket
-  , leTargetPrefix
+    , LoggingEnabled
+    , loggingEnabled
+    , leTargetGrants
+    , leTargetBucket
+    , leTargetPrefix
+
     -- * MetadataEntry
-  , MetadataEntry
-  , metadataEntry
-  , meValue
-  , meName
+    , MetadataEntry
+    , metadataEntry
+    , meValue
+    , meName
+
     -- * MetricsAndOperator
-  , MetricsAndOperator
-  , metricsAndOperator
-  , maoPrefix
-  , maoTags
+    , MetricsAndOperator
+    , metricsAndOperator
+    , maoPrefix
+    , maoTags
+
     -- * MetricsConfiguration
-  , MetricsConfiguration
-  , metricsConfiguration
-  , mcFilter
-  , mcId
+    , MetricsConfiguration
+    , metricsConfiguration
+    , mcFilter
+    , mcId
+
     -- * MetricsFilter
-  , MetricsFilter
-  , metricsFilter
-  , mfTag
-  , mfPrefix
-  , mfAnd
+    , MetricsFilter
+    , metricsFilter
+    , mfTag
+    , mfPrefix
+    , mfAnd
+
     -- * MultipartUpload
-  , MultipartUpload
-  , multipartUpload
-  , muInitiated
-  , muInitiator
-  , muOwner
-  , muKey
-  , muStorageClass
-  , muUploadId
+    , MultipartUpload
+    , multipartUpload
+    , muInitiated
+    , muInitiator
+    , muOwner
+    , muKey
+    , muStorageClass
+    , muUploadId
+
     -- * NoncurrentVersionExpiration
-  , NoncurrentVersionExpiration
-  , noncurrentVersionExpiration
-  , nveNoncurrentDays
+    , NoncurrentVersionExpiration
+    , noncurrentVersionExpiration
+    , nveNoncurrentDays
+
     -- * NoncurrentVersionTransition
-  , NoncurrentVersionTransition
-  , noncurrentVersionTransition
-  , nvtNoncurrentDays
-  , nvtStorageClass
+    , NoncurrentVersionTransition
+    , noncurrentVersionTransition
+    , nvtNoncurrentDays
+    , nvtStorageClass
+
     -- * NotificationConfiguration
-  , NotificationConfiguration
-  , notificationConfiguration
-  , ncQueueConfigurations
-  , ncTopicConfigurations
-  , ncLambdaFunctionConfigurations
+    , NotificationConfiguration
+    , notificationConfiguration
+    , ncQueueConfigurations
+    , ncTopicConfigurations
+    , ncLambdaFunctionConfigurations
+
     -- * NotificationConfigurationFilter
-  , NotificationConfigurationFilter
-  , notificationConfigurationFilter
-  , ncfKey
+    , NotificationConfigurationFilter
+    , notificationConfigurationFilter
+    , ncfKey
+
     -- * Object
-  , Object
-  , object'
-  , oOwner
-  , oETag
-  , oSize
-  , oKey
-  , oStorageClass
-  , oLastModified
+    , Object
+    , object'
+    , oOwner
+    , oETag
+    , oSize
+    , oKey
+    , oStorageClass
+    , oLastModified
+
     -- * ObjectIdentifier
-  , ObjectIdentifier
-  , objectIdentifier
-  , oiVersionId
-  , oiKey
+    , ObjectIdentifier
+    , objectIdentifier
+    , oiVersionId
+    , oiKey
+
     -- * ObjectVersion
-  , ObjectVersion
-  , objectVersion
-  , ovETag
-  , ovVersionId
-  , ovSize
-  , ovIsLatest
-  , ovOwner
-  , ovKey
-  , ovStorageClass
-  , ovLastModified
+    , ObjectVersion
+    , objectVersion
+    , ovETag
+    , ovVersionId
+    , ovSize
+    , ovIsLatest
+    , ovOwner
+    , ovKey
+    , ovStorageClass
+    , ovLastModified
+
     -- * OutputLocation
-  , OutputLocation
-  , outputLocation
-  , olS3
+    , OutputLocation
+    , outputLocation
+    , olS3
+
     -- * OutputSerialization
-  , OutputSerialization
-  , outputSerialization
-  , osJSON
-  , osCSV
+    , OutputSerialization
+    , outputSerialization
+    , osJSON
+    , osCSV
+
     -- * Owner
-  , Owner
-  , owner
-  , oDisplayName
-  , oId
+    , Owner
+    , owner
+    , oDisplayName
+    , oId
+
     -- * Part
-  , Part
-  , part
-  , pETag
-  , pSize
-  , pPartNumber
-  , pLastModified
+    , Part
+    , part
+    , pETag
+    , pSize
+    , pPartNumber
+    , pLastModified
+
     -- * Progress
-  , Progress
-  , progress
-  , pBytesReturned
-  , pBytesScanned
-  , pBytesProcessed
+    , Progress
+    , progress
+    , pBytesReturned
+    , pBytesScanned
+    , pBytesProcessed
+
     -- * ProgressEvent
-  , ProgressEvent
-  , progressEvent
-  , peDetails
+    , ProgressEvent
+    , progressEvent
+    , peDetails
+
     -- * QueueConfiguration
-  , QueueConfiguration
-  , queueConfiguration
-  , qcId
-  , qcFilter
-  , qcQueueARN
-  , qcEvents
+    , QueueConfiguration
+    , queueConfiguration
+    , qcId
+    , qcFilter
+    , qcQueueARN
+    , qcEvents
+
     -- * RecordsEvent
-  , RecordsEvent
-  , recordsEvent
-  , rePayload
+    , RecordsEvent
+    , recordsEvent
+    , rePayload
+
     -- * Redirect
-  , Redirect
-  , redirect
-  , rHostName
-  , rProtocol
-  , rHTTPRedirectCode
-  , rReplaceKeyWith
-  , rReplaceKeyPrefixWith
+    , Redirect
+    , redirect
+    , rHostName
+    , rProtocol
+    , rHTTPRedirectCode
+    , rReplaceKeyWith
+    , rReplaceKeyPrefixWith
+
     -- * RedirectAllRequestsTo
-  , RedirectAllRequestsTo
-  , redirectAllRequestsTo
-  , rartProtocol
-  , rartHostName
+    , RedirectAllRequestsTo
+    , redirectAllRequestsTo
+    , rartProtocol
+    , rartHostName
+
     -- * ReplicationConfiguration
-  , ReplicationConfiguration
-  , replicationConfiguration
-  , rcRole
-  , rcRules
+    , ReplicationConfiguration
+    , replicationConfiguration
+    , rcRole
+    , rcRules
+
     -- * ReplicationRule
-  , ReplicationRule
-  , replicationRule
-  , rrId
-  , rrSourceSelectionCriteria
-  , rrPrefix
-  , rrStatus
-  , rrDestination
+    , ReplicationRule
+    , replicationRule
+    , rrId
+    , rrSourceSelectionCriteria
+    , rrPrefix
+    , rrStatus
+    , rrDestination
+
     -- * RequestPaymentConfiguration
-  , RequestPaymentConfiguration
-  , requestPaymentConfiguration
-  , rpcPayer
+    , RequestPaymentConfiguration
+    , requestPaymentConfiguration
+    , rpcPayer
+
     -- * RequestProgress
-  , RequestProgress
-  , requestProgress
-  , rpEnabled
+    , RequestProgress
+    , requestProgress
+    , rpEnabled
+
     -- * RestoreRequest
-  , RestoreRequest
-  , restoreRequest
-  , rrDays
-  , rrSelectParameters
-  , rrOutputLocation
-  , rrTier
-  , rrGlacierJobParameters
-  , rrType
-  , rrDescription
+    , RestoreRequest
+    , restoreRequest
+    , rrDays
+    , rrSelectParameters
+    , rrOutputLocation
+    , rrTier
+    , rrGlacierJobParameters
+    , rrType
+    , rrDescription
+
     -- * RoutingRule
-  , RoutingRule
-  , routingRule
-  , rrCondition
-  , rrRedirect
+    , RoutingRule
+    , routingRule
+    , rrCondition
+    , rrRedirect
+
     -- * S3KeyFilter
-  , S3KeyFilter
-  , s3KeyFilter
-  , skfFilterRules
+    , S3KeyFilter
+    , s3KeyFilter
+    , skfFilterRules
+
     -- * S3Location
-  , S3Location
-  , s3Location
-  , slCannedACL
-  , slAccessControlList
-  , slUserMetadata
-  , slEncryption
-  , slStorageClass
-  , slTagging
-  , slBucketName
-  , slPrefix
+    , S3Location
+    , s3Location
+    , slCannedACL
+    , slAccessControlList
+    , slUserMetadata
+    , slEncryption
+    , slStorageClass
+    , slTagging
+    , slBucketName
+    , slPrefix
+
     -- * S3ServiceError
-  , S3ServiceError
-  , s3ServiceError
-  , sseVersionId
-  , sseKey
-  , sseCode
-  , sseMessage
+    , S3ServiceError
+    , s3ServiceError
+    , sseVersionId
+    , sseKey
+    , sseCode
+    , sseMessage
+
     -- * SSEKMS
-  , SSEKMS
-  , sSEKMS
-  , ssekKeyId
+    , SSEKMS
+    , sSEKMS
+    , ssekKeyId
+
     -- * SSES3
-  , SSES3
-  , sSES3
+    , SSES3
+    , sSES3
+
     -- * SelectObjectContentEventStream
-  , SelectObjectContentEventStream
-  , selectObjectContentEventStream
-  , socesProgress
-  , socesRecords
-  , socesCont
-  , socesStats
-  , socesEnd
+    , SelectObjectContentEventStream
+    , selectObjectContentEventStream
+    , socesProgress
+    , socesRecords
+    , socesCont
+    , socesStats
+    , socesEnd
+
     -- * SelectParameters
-  , SelectParameters
-  , selectParameters
-  , spInputSerialization
-  , spExpressionType
-  , spExpression
-  , spOutputSerialization
+    , SelectParameters
+    , selectParameters
+    , spInputSerialization
+    , spExpressionType
+    , spExpression
+    , spOutputSerialization
+
     -- * ServerSideEncryptionByDefault
-  , ServerSideEncryptionByDefault
-  , serverSideEncryptionByDefault
-  , ssebdKMSMasterKeyId
-  , ssebdSSEAlgorithm
+    , ServerSideEncryptionByDefault
+    , serverSideEncryptionByDefault
+    , ssebdKMSMasterKeyId
+    , ssebdSSEAlgorithm
+
     -- * ServerSideEncryptionConfiguration
-  , ServerSideEncryptionConfiguration
-  , serverSideEncryptionConfiguration
-  , ssecRules
+    , ServerSideEncryptionConfiguration
+    , serverSideEncryptionConfiguration
+    , ssecRules
+
     -- * ServerSideEncryptionRule
-  , ServerSideEncryptionRule
-  , serverSideEncryptionRule
-  , sserApplyServerSideEncryptionByDefault
+    , ServerSideEncryptionRule
+    , serverSideEncryptionRule
+    , sserApplyServerSideEncryptionByDefault
+
     -- * SourceSelectionCriteria
-  , SourceSelectionCriteria
-  , sourceSelectionCriteria
-  , sscSseKMSEncryptedObjects
+    , SourceSelectionCriteria
+    , sourceSelectionCriteria
+    , sscSseKMSEncryptedObjects
+
     -- * SseKMSEncryptedObjects
-  , SseKMSEncryptedObjects
-  , sseKMSEncryptedObjects
-  , skeoStatus
+    , SseKMSEncryptedObjects
+    , sseKMSEncryptedObjects
+    , skeoStatus
+
     -- * Stats
-  , Stats
-  , stats
-  , sBytesReturned
-  , sBytesScanned
-  , sBytesProcessed
+    , Stats
+    , stats
+    , sBytesReturned
+    , sBytesScanned
+    , sBytesProcessed
+
     -- * StatsEvent
-  , StatsEvent
-  , statsEvent
-  , seDetails
+    , StatsEvent
+    , statsEvent
+    , seDetails
+
     -- * StorageClassAnalysis
-  , StorageClassAnalysis
-  , storageClassAnalysis
-  , scaDataExport
+    , StorageClassAnalysis
+    , storageClassAnalysis
+    , scaDataExport
+
     -- * StorageClassAnalysisDataExport
-  , StorageClassAnalysisDataExport
-  , storageClassAnalysisDataExport
-  , scadeOutputSchemaVersion
-  , scadeDestination
+    , StorageClassAnalysisDataExport
+    , storageClassAnalysisDataExport
+    , scadeOutputSchemaVersion
+    , scadeDestination
+
     -- * Tag
-  , Tag
-  , tag
-  , tagKey
-  , tagValue
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
+
     -- * Tagging
-  , Tagging
-  , tagging
-  , tTagSet
+    , Tagging
+    , tagging
+    , tTagSet
+
     -- * TargetGrant
-  , TargetGrant
-  , targetGrant
-  , tgPermission
-  , tgGrantee
+    , TargetGrant
+    , targetGrant
+    , tgPermission
+    , tgGrantee
+
     -- * TopicConfiguration
-  , TopicConfiguration
-  , topicConfiguration
-  , tcId
-  , tcFilter
-  , tcTopicARN
-  , tcEvents
+    , TopicConfiguration
+    , topicConfiguration
+    , tcId
+    , tcFilter
+    , tcTopicARN
+    , tcEvents
+
     -- * Transition
-  , Transition
-  , transition
-  , tDays
-  , tDate
-  , tStorageClass
+    , Transition
+    , transition
+    , tDays
+    , tDate
+    , tStorageClass
+
     -- * VersioningConfiguration
-  , VersioningConfiguration
-  , versioningConfiguration
-  , vcStatus
-  , vcMFADelete
+    , VersioningConfiguration
+    , versioningConfiguration
+    , vcStatus
+    , vcMFADelete
+
     -- * WebsiteConfiguration
-  , WebsiteConfiguration
-  , websiteConfiguration
-  , wcRedirectAllRequestsTo
-  , wcErrorDocument
-  , wcIndexDocument
-  , wcRoutingRules
-  ) where
+    , WebsiteConfiguration
+    , websiteConfiguration
+    , wcRedirectAllRequestsTo
+    , wcErrorDocument
+    , wcIndexDocument
+    , wcRoutingRules
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -730,34 +879,39 @@ s3 =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | Prism for BucketAlreadyOwnedByYou' errors.
-_BucketAlreadyOwnedByYou ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_BucketAlreadyOwnedByYou :: AsError a => Getting (First ServiceError) a ServiceError
 _BucketAlreadyOwnedByYou = _MatchServiceError s3 "BucketAlreadyOwnedByYou"
 
+
 -- | This operation is not allowed against this storage tier
-_ObjectAlreadyInActiveTierError ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ObjectAlreadyInActiveTierError :: AsError a => Getting (First ServiceError) a ServiceError
 _ObjectAlreadyInActiveTierError =
   _MatchServiceError s3 "ObjectAlreadyInActiveTierError"
+
 
 -- | The requested bucket name is not available. The bucket namespace is shared by all users of the system. Please select a different name and try again.
 _BucketAlreadyExists :: AsError a => Getting (First ServiceError) a ServiceError
 _BucketAlreadyExists = _MatchServiceError s3 "BucketAlreadyExists"
 
+
 -- | The source object of the COPY operation is not in the active tier and is only stored in Amazon Glacier.
-_ObjectNotInActiveTierError ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ObjectNotInActiveTierError :: AsError a => Getting (First ServiceError) a ServiceError
 _ObjectNotInActiveTierError = _MatchServiceError s3 "ObjectNotInActiveTierError"
+
 
 -- | The specified multipart upload does not exist.
 _NoSuchUpload :: AsError a => Getting (First ServiceError) a ServiceError
 _NoSuchUpload = _MatchServiceError s3 "NoSuchUpload"
 
+
 -- | The specified bucket does not exist.
 _NoSuchBucket :: AsError a => Getting (First ServiceError) a ServiceError
 _NoSuchBucket = _MatchServiceError s3 "NoSuchBucket"
 
+
 -- | The specified key does not exist.
 _NoSuchKey :: AsError a => Getting (First ServiceError) a ServiceError
 _NoSuchKey = _MatchServiceError s3 "NoSuchKey"
+

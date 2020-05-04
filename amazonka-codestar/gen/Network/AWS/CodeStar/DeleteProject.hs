@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CodeStar.DeleteProject
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,21 +22,23 @@
 --
 --
 module Network.AWS.CodeStar.DeleteProject
+    (
     -- * Creating a Request
-  ( deleteProject
-  , DeleteProject
+      deleteProject
+    , DeleteProject
     -- * Request Lenses
-  , dpDeleteStack
-  , dpClientRequestToken
-  , dpId
+    , dpDeleteStack
+    , dpClientRequestToken
+    , dpId
+
     -- * Destructuring the Response
-  , deleteProjectResponse
-  , DeleteProjectResponse
+    , deleteProjectResponse
+    , DeleteProjectResponse
     -- * Response Lenses
-  , dprsProjectARN
-  , dprsStackId
-  , dprsResponseStatus
-  ) where
+    , dprsProjectARN
+    , dprsStackId
+    , dprsResponseStatus
+    ) where
 
 import Network.AWS.CodeStar.Types
 import Network.AWS.CodeStar.Types.Product
@@ -52,6 +56,7 @@ data DeleteProject =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteProject' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -61,61 +66,62 @@ data DeleteProject =
 -- * 'dpClientRequestToken' - A user- or system-generated token that identifies the entity that requested project deletion. This token can be used to repeat the request.
 --
 -- * 'dpId' - The ID of the project to be deleted in AWS CodeStar.
-deleteProject ::
-     Text -- ^ 'dpId'
-  -> DeleteProject
+deleteProject
+    :: Text -- ^ 'dpId'
+    -> DeleteProject
 deleteProject pId_ =
   DeleteProject'
     {_dpDeleteStack = Nothing, _dpClientRequestToken = Nothing, _dpId = pId_}
 
+
 -- | Whether to send a delete request for the primary stack in AWS CloudFormation originally used to generate the project and its resources. This option will delete all AWS resources for the project (except for any buckets in Amazon S3) as well as deleting the project itself. Recommended for most use cases.
 dpDeleteStack :: Lens' DeleteProject (Maybe Bool)
-dpDeleteStack = lens _dpDeleteStack (\s a -> s {_dpDeleteStack = a})
+dpDeleteStack = lens _dpDeleteStack (\ s a -> s{_dpDeleteStack = a})
 
 -- | A user- or system-generated token that identifies the entity that requested project deletion. This token can be used to repeat the request.
 dpClientRequestToken :: Lens' DeleteProject (Maybe Text)
-dpClientRequestToken =
-  lens _dpClientRequestToken (\s a -> s {_dpClientRequestToken = a})
+dpClientRequestToken = lens _dpClientRequestToken (\ s a -> s{_dpClientRequestToken = a})
 
 -- | The ID of the project to be deleted in AWS CodeStar.
 dpId :: Lens' DeleteProject Text
-dpId = lens _dpId (\s a -> s {_dpId = a})
+dpId = lens _dpId (\ s a -> s{_dpId = a})
 
 instance AWSRequest DeleteProject where
-  type Rs DeleteProject = DeleteProjectResponse
-  request = postJSON codeStar
-  response =
-    receiveJSON
-      (\s h x ->
-         DeleteProjectResponse' <$> (x .?> "projectArn") <*> (x .?> "stackId") <*>
-         (pure (fromEnum s)))
+        type Rs DeleteProject = DeleteProjectResponse
+        request = postJSON codeStar
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DeleteProjectResponse' <$>
+                   (x .?> "projectArn") <*> (x .?> "stackId") <*>
+                     (pure (fromEnum s)))
 
-instance Hashable DeleteProject
+instance Hashable DeleteProject where
 
-instance NFData DeleteProject
+instance NFData DeleteProject where
 
 instance ToHeaders DeleteProject where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("CodeStar_20170419.DeleteProject" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("CodeStar_20170419.DeleteProject" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DeleteProject where
-  toJSON DeleteProject' {..} =
-    object
-      (catMaybes
-         [ ("deleteStack" .=) <$> _dpDeleteStack
-         , ("clientRequestToken" .=) <$> _dpClientRequestToken
-         , Just ("id" .= _dpId)
-         ])
+        toJSON DeleteProject'{..}
+          = object
+              (catMaybes
+                 [("deleteStack" .=) <$> _dpDeleteStack,
+                  ("clientRequestToken" .=) <$> _dpClientRequestToken,
+                  Just ("id" .= _dpId)])
 
 instance ToPath DeleteProject where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DeleteProject where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'deleteProjectResponse' smart constructor.
 data DeleteProjectResponse =
@@ -126,6 +132,7 @@ data DeleteProjectResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteProjectResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -135,9 +142,9 @@ data DeleteProjectResponse =
 -- * 'dprsStackId' - The ID of the primary stack in AWS CloudFormation that will be deleted as part of deleting the project and its resources.
 --
 -- * 'dprsResponseStatus' - -- | The response status code.
-deleteProjectResponse ::
-     Int -- ^ 'dprsResponseStatus'
-  -> DeleteProjectResponse
+deleteProjectResponse
+    :: Int -- ^ 'dprsResponseStatus'
+    -> DeleteProjectResponse
 deleteProjectResponse pResponseStatus_ =
   DeleteProjectResponse'
     { _dprsProjectARN = Nothing
@@ -145,17 +152,17 @@ deleteProjectResponse pResponseStatus_ =
     , _dprsResponseStatus = pResponseStatus_
     }
 
+
 -- | The Amazon Resource Name (ARN) of the deleted project.
 dprsProjectARN :: Lens' DeleteProjectResponse (Maybe Text)
-dprsProjectARN = lens _dprsProjectARN (\s a -> s {_dprsProjectARN = a})
+dprsProjectARN = lens _dprsProjectARN (\ s a -> s{_dprsProjectARN = a})
 
 -- | The ID of the primary stack in AWS CloudFormation that will be deleted as part of deleting the project and its resources.
 dprsStackId :: Lens' DeleteProjectResponse (Maybe Text)
-dprsStackId = lens _dprsStackId (\s a -> s {_dprsStackId = a})
+dprsStackId = lens _dprsStackId (\ s a -> s{_dprsStackId = a})
 
 -- | -- | The response status code.
 dprsResponseStatus :: Lens' DeleteProjectResponse Int
-dprsResponseStatus =
-  lens _dprsResponseStatus (\s a -> s {_dprsResponseStatus = a})
+dprsResponseStatus = lens _dprsResponseStatus (\ s a -> s{_dprsResponseStatus = a})
 
-instance NFData DeleteProjectResponse
+instance NFData DeleteProjectResponse where

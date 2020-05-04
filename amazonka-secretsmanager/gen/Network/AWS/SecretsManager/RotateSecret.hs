@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SecretsManager.RotateSecret
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -54,23 +56,25 @@
 --
 --
 module Network.AWS.SecretsManager.RotateSecret
+    (
     -- * Creating a Request
-  ( rotateSecret
-  , RotateSecret
+      rotateSecret
+    , RotateSecret
     -- * Request Lenses
-  , rsRotationRules
-  , rsClientRequestToken
-  , rsRotationLambdaARN
-  , rsSecretId
+    , rsRotationRules
+    , rsClientRequestToken
+    , rsRotationLambdaARN
+    , rsSecretId
+
     -- * Destructuring the Response
-  , rotateSecretResponse
-  , RotateSecretResponse
+    , rotateSecretResponse
+    , RotateSecretResponse
     -- * Response Lenses
-  , rsrsVersionId
-  , rsrsARN
-  , rsrsName
-  , rsrsResponseStatus
-  ) where
+    , rsrsVersionId
+    , rsrsARN
+    , rsrsName
+    , rsrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -89,6 +93,7 @@ data RotateSecret =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'RotateSecret' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -100,9 +105,9 @@ data RotateSecret =
 -- * 'rsRotationLambdaARN' - (Optional) Specifies the ARN of the Lambda function that can rotate the secret.
 --
 -- * 'rsSecretId' - Specifies the secret that you want to rotate. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
-rotateSecret ::
-     Text -- ^ 'rsSecretId'
-  -> RotateSecret
+rotateSecret
+    :: Text -- ^ 'rsSecretId'
+    -> RotateSecret
 rotateSecret pSecretId_ =
   RotateSecret'
     { _rsRotationRules = Nothing
@@ -111,61 +116,61 @@ rotateSecret pSecretId_ =
     , _rsSecretId = pSecretId_
     }
 
+
 -- | A structure that defines the rotation configuration for this secret.
 rsRotationRules :: Lens' RotateSecret (Maybe RotationRulesType)
-rsRotationRules = lens _rsRotationRules (\s a -> s {_rsRotationRules = a})
+rsRotationRules = lens _rsRotationRules (\ s a -> s{_rsRotationRules = a})
 
 -- | (Optional) Specifies a unique identifier for the new version of the secret that helps ensure idempotency.  If you use the AWS CLI or one of the AWS SDK to call this operation, then you can leave this parameter empty. The CLI or SDK generates a random UUID for you and includes that in the request for this parameter. If you don't use the SDK and instead generate a raw HTTP request to the Secrets Manager service endpoint, then you must generate a @ClientRequestToken@ yourself for new versions and include that value in the request. You only need to specify your own value if you are implementing your own retry logic and want to ensure that a given secret is not created twice. We recommend that you generate a <https://wikipedia.org/wiki/Universally_unique_identifier UUID-type> value to ensure uniqueness within the specified secret.  Secrets Manager uses this value to prevent the accidental creation of duplicate versions if there are failures and retries during the function's processing.     * If the @ClientRequestToken@ value isn't already associated with a version of the secret then a new version of the secret is created.      * If a version with this value already exists and that version's @SecretString@ and @SecretBinary@ values are the same as the request, then the request is ignored (the operation is idempotent).      * If a version with this value already exists and that version's @SecretString@ and @SecretBinary@ values are different from the request then an error occurs because you cannot modify an existing secret value. This value becomes the @SecretVersionId@ of the new version.
 rsClientRequestToken :: Lens' RotateSecret (Maybe Text)
-rsClientRequestToken =
-  lens _rsClientRequestToken (\s a -> s {_rsClientRequestToken = a})
+rsClientRequestToken = lens _rsClientRequestToken (\ s a -> s{_rsClientRequestToken = a})
 
 -- | (Optional) Specifies the ARN of the Lambda function that can rotate the secret.
 rsRotationLambdaARN :: Lens' RotateSecret (Maybe Text)
-rsRotationLambdaARN =
-  lens _rsRotationLambdaARN (\s a -> s {_rsRotationLambdaARN = a})
+rsRotationLambdaARN = lens _rsRotationLambdaARN (\ s a -> s{_rsRotationLambdaARN = a})
 
 -- | Specifies the secret that you want to rotate. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
 rsSecretId :: Lens' RotateSecret Text
-rsSecretId = lens _rsSecretId (\s a -> s {_rsSecretId = a})
+rsSecretId = lens _rsSecretId (\ s a -> s{_rsSecretId = a})
 
 instance AWSRequest RotateSecret where
-  type Rs RotateSecret = RotateSecretResponse
-  request = postJSON secretsManager
-  response =
-    receiveJSON
-      (\s h x ->
-         RotateSecretResponse' <$> (x .?> "VersionId") <*> (x .?> "ARN") <*>
-         (x .?> "Name") <*>
-         (pure (fromEnum s)))
+        type Rs RotateSecret = RotateSecretResponse
+        request = postJSON secretsManager
+        response
+          = receiveJSON
+              (\ s h x ->
+                 RotateSecretResponse' <$>
+                   (x .?> "VersionId") <*> (x .?> "ARN") <*>
+                     (x .?> "Name")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable RotateSecret
+instance Hashable RotateSecret where
 
-instance NFData RotateSecret
+instance NFData RotateSecret where
 
 instance ToHeaders RotateSecret where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("secretsmanager.RotateSecret" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("secretsmanager.RotateSecret" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON RotateSecret where
-  toJSON RotateSecret' {..} =
-    object
-      (catMaybes
-         [ ("RotationRules" .=) <$> _rsRotationRules
-         , ("ClientRequestToken" .=) <$> _rsClientRequestToken
-         , ("RotationLambdaARN" .=) <$> _rsRotationLambdaARN
-         , Just ("SecretId" .= _rsSecretId)
-         ])
+        toJSON RotateSecret'{..}
+          = object
+              (catMaybes
+                 [("RotationRules" .=) <$> _rsRotationRules,
+                  ("ClientRequestToken" .=) <$> _rsClientRequestToken,
+                  ("RotationLambdaARN" .=) <$> _rsRotationLambdaARN,
+                  Just ("SecretId" .= _rsSecretId)])
 
 instance ToPath RotateSecret where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery RotateSecret where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'rotateSecretResponse' smart constructor.
 data RotateSecretResponse =
@@ -176,6 +181,7 @@ data RotateSecretResponse =
     , _rsrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'RotateSecretResponse' with the minimum fields required to make a request.
 --
@@ -188,9 +194,9 @@ data RotateSecretResponse =
 -- * 'rsrsName' - The friendly name of the secret.
 --
 -- * 'rsrsResponseStatus' - -- | The response status code.
-rotateSecretResponse ::
-     Int -- ^ 'rsrsResponseStatus'
-  -> RotateSecretResponse
+rotateSecretResponse
+    :: Int -- ^ 'rsrsResponseStatus'
+    -> RotateSecretResponse
 rotateSecretResponse pResponseStatus_ =
   RotateSecretResponse'
     { _rsrsVersionId = Nothing
@@ -199,21 +205,21 @@ rotateSecretResponse pResponseStatus_ =
     , _rsrsResponseStatus = pResponseStatus_
     }
 
+
 -- | The ID of the new version of the secret created by the rotation started by this request.
 rsrsVersionId :: Lens' RotateSecretResponse (Maybe Text)
-rsrsVersionId = lens _rsrsVersionId (\s a -> s {_rsrsVersionId = a})
+rsrsVersionId = lens _rsrsVersionId (\ s a -> s{_rsrsVersionId = a})
 
 -- | The ARN of the secret.
 rsrsARN :: Lens' RotateSecretResponse (Maybe Text)
-rsrsARN = lens _rsrsARN (\s a -> s {_rsrsARN = a})
+rsrsARN = lens _rsrsARN (\ s a -> s{_rsrsARN = a})
 
 -- | The friendly name of the secret.
 rsrsName :: Lens' RotateSecretResponse (Maybe Text)
-rsrsName = lens _rsrsName (\s a -> s {_rsrsName = a})
+rsrsName = lens _rsrsName (\ s a -> s{_rsrsName = a})
 
 -- | -- | The response status code.
 rsrsResponseStatus :: Lens' RotateSecretResponse Int
-rsrsResponseStatus =
-  lens _rsrsResponseStatus (\s a -> s {_rsrsResponseStatus = a})
+rsrsResponseStatus = lens _rsrsResponseStatus (\ s a -> s{_rsrsResponseStatus = a})
 
-instance NFData RotateSecretResponse
+instance NFData RotateSecretResponse where

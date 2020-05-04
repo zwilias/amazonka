@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.DirectConnect.DescribeLocations
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -16,20 +18,22 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns the list of AWS Direct Connect locations in the current AWS region. These are the locations that may be selected when calling 'CreateConnection' or 'CreateInterconnect' .
+-- Lists the AWS Direct Connect locations in the current AWS Region. These are the locations that can be selected when calling 'CreateConnection' or 'CreateInterconnect' .
 --
 --
 module Network.AWS.DirectConnect.DescribeLocations
+    (
     -- * Creating a Request
-  ( describeLocations
-  , DescribeLocations
+      describeLocations
+    , DescribeLocations
+
     -- * Destructuring the Response
-  , describeLocationsResponse
-  , DescribeLocationsResponse
+    , describeLocationsResponse
+    , DescribeLocationsResponse
     -- * Response Lenses
-  , dlsrsLocations
-  , dlsrsResponseStatus
-  ) where
+    , dlsrsLocations
+    , dlsrsResponseStatus
+    ) where
 
 import Network.AWS.DirectConnect.Types
 import Network.AWS.DirectConnect.Types.Product
@@ -43,46 +47,47 @@ data DescribeLocations =
   DescribeLocations'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeLocations' with the minimum fields required to make a request.
 --
-describeLocations :: DescribeLocations
+describeLocations
+    :: DescribeLocations
 describeLocations = DescribeLocations'
 
+
 instance AWSRequest DescribeLocations where
-  type Rs DescribeLocations = DescribeLocationsResponse
-  request = postJSON directConnect
-  response =
-    receiveJSON
-      (\s h x ->
-         DescribeLocationsResponse' <$> (x .?> "locations" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs DescribeLocations = DescribeLocationsResponse
+        request = postJSON directConnect
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DescribeLocationsResponse' <$>
+                   (x .?> "locations" .!@ mempty) <*>
+                     (pure (fromEnum s)))
 
-instance Hashable DescribeLocations
+instance Hashable DescribeLocations where
 
-instance NFData DescribeLocations
+instance NFData DescribeLocations where
 
 instance ToHeaders DescribeLocations where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("OvertureService.DescribeLocations" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("OvertureService.DescribeLocations" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DescribeLocations where
-  toJSON = const (Object mempty)
+        toJSON = const (Object mempty)
 
 instance ToPath DescribeLocations where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DescribeLocations where
-  toQuery = const mempty
+        toQuery = const mempty
 
--- | A location is a network facility where AWS Direct Connect routers are available to be connected. Generally, these are colocation hubs where many network providers have equipment, and where cross connects can be delivered. Locations include a name and facility code, and must be provided when creating a connection.
---
---
---
--- /See:/ 'describeLocationsResponse' smart constructor.
+-- | /See:/ 'describeLocationsResponse' smart constructor.
 data DescribeLocationsResponse =
   DescribeLocationsResponse'
     { _dlsrsLocations      :: !(Maybe [Location])
@@ -90,28 +95,28 @@ data DescribeLocationsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeLocationsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dlsrsLocations' - A list of colocation hubs where network providers have equipment. Most regions have multiple locations available.
+-- * 'dlsrsLocations' - The locations.
 --
 -- * 'dlsrsResponseStatus' - -- | The response status code.
-describeLocationsResponse ::
-     Int -- ^ 'dlsrsResponseStatus'
-  -> DescribeLocationsResponse
+describeLocationsResponse
+    :: Int -- ^ 'dlsrsResponseStatus'
+    -> DescribeLocationsResponse
 describeLocationsResponse pResponseStatus_ =
   DescribeLocationsResponse'
     {_dlsrsLocations = Nothing, _dlsrsResponseStatus = pResponseStatus_}
 
--- | A list of colocation hubs where network providers have equipment. Most regions have multiple locations available.
+
+-- | The locations.
 dlsrsLocations :: Lens' DescribeLocationsResponse [Location]
-dlsrsLocations =
-  lens _dlsrsLocations (\s a -> s {_dlsrsLocations = a}) . _Default . _Coerce
+dlsrsLocations = lens _dlsrsLocations (\ s a -> s{_dlsrsLocations = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 dlsrsResponseStatus :: Lens' DescribeLocationsResponse Int
-dlsrsResponseStatus =
-  lens _dlsrsResponseStatus (\s a -> s {_dlsrsResponseStatus = a})
+dlsrsResponseStatus = lens _dlsrsResponseStatus (\ s a -> s{_dlsrsResponseStatus = a})
 
-instance NFData DescribeLocationsResponse
+instance NFData DescribeLocationsResponse where

@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Cloud9.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,42 +11,67 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.Cloud9.Types
+    (
     -- * Service Configuration
-  ( cloud9
+      cloud9
+
     -- * Errors
-  , _ConflictException
-  , _ForbiddenException
-  , _NotFoundException
-  , _TooManyRequestsException
-  , _InternalServerErrorException
-  , _BadRequestException
-  , _LimitExceededException
+    , _ConflictException
+    , _ForbiddenException
+    , _NotFoundException
+    , _TooManyRequestsException
+    , _InternalServerErrorException
+    , _BadRequestException
+    , _LimitExceededException
+
+    -- * EnvironmentLifecycleStatus
+    , EnvironmentLifecycleStatus (..)
+
     -- * EnvironmentStatus
-  , EnvironmentStatus(..)
+    , EnvironmentStatus (..)
+
     -- * EnvironmentType
-  , EnvironmentType(..)
+    , EnvironmentType (..)
+
     -- * MemberPermissions
-  , MemberPermissions(..)
+    , MemberPermissions (..)
+
     -- * Permissions
-  , Permissions(..)
+    , Permissions (..)
+
     -- * Environment
-  , Environment
-  , environment
-  , eArn
-  , eOwnerARN
-  , eName
-  , eId
-  , eType
-  , eDescription
+    , Environment
+    , environment
+    , eArn
+    , eLifecycle
+    , eOwnerARN
+    , eName
+    , eId
+    , eType
+    , eDescription
+
+    -- * EnvironmentLifecycle
+    , EnvironmentLifecycle
+    , environmentLifecycle
+    , elStatus
+    , elFailureResource
+    , elReason
+
     -- * EnvironmentMember
-  , EnvironmentMember
-  , environmentMember
-  , emLastAccess
-  , emUserId
-  , emUserARN
-  , emPermissions
-  , emEnvironmentId
-  ) where
+    , EnvironmentMember
+    , environmentMember
+    , emLastAccess
+    , emUserId
+    , emUserARN
+    , emPermissions
+    , emEnvironmentId
+
+    -- * Tag
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
+    ) where
 
 import Network.AWS.Cloud9.Types.Product
 import Network.AWS.Cloud9.Types.Sum
@@ -91,11 +117,13 @@ cloud9 =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | A conflict occurred.
 --
 --
 _ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
 _ConflictException = _MatchServiceError cloud9 "ConflictException"
+
 
 -- | An access permissions issue occurred.
 --
@@ -103,26 +131,28 @@ _ConflictException = _MatchServiceError cloud9 "ConflictException"
 _ForbiddenException :: AsError a => Getting (First ServiceError) a ServiceError
 _ForbiddenException = _MatchServiceError cloud9 "ForbiddenException"
 
+
 -- | The target resource cannot be found.
 --
 --
 _NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _NotFoundException = _MatchServiceError cloud9 "NotFoundException"
 
+
 -- | Too many service requests were made over the given time period.
 --
 --
-_TooManyRequestsException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
 _TooManyRequestsException = _MatchServiceError cloud9 "TooManyRequestsException"
+
 
 -- | An internal server error occurred.
 --
 --
-_InternalServerErrorException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalServerErrorException =
   _MatchServiceError cloud9 "InternalServerErrorException"
+
 
 -- | The target request is invalid.
 --
@@ -130,9 +160,10 @@ _InternalServerErrorException =
 _BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
 _BadRequestException = _MatchServiceError cloud9 "BadRequestException"
 
+
 -- | A service limit was exceeded.
 --
 --
-_LimitExceededException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException = _MatchServiceError cloud9 "LimitExceededException"
+

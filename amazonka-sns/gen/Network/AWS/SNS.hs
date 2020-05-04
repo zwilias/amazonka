@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SNS
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -17,124 +18,174 @@
 -- We also provide SDKs that enable you to access Amazon SNS from your preferred programming language. The SDKs contain functionality that automatically takes care of tasks such as: cryptographically signing your service requests, retrying requests, and handling error responses. For a list of available SDKs, go to <http://aws.amazon.com/tools/ Tools for Amazon Web Services> .
 --
 module Network.AWS.SNS
+    (
     -- * Service Configuration
-  ( sns
+      sns
+
     -- * Errors
     -- $errors
+
     -- ** EndpointDisabledException
-  , _EndpointDisabledException
+    , _EndpointDisabledException
+
     -- ** AuthorizationErrorException
-  , _AuthorizationErrorException
+    , _AuthorizationErrorException
+
     -- ** InvalidParameterException
-  , _InvalidParameterException
+    , _InvalidParameterException
+
     -- ** SubscriptionLimitExceededException
-  , _SubscriptionLimitExceededException
+    , _SubscriptionLimitExceededException
+
     -- ** PlatformApplicationDisabledException
-  , _PlatformApplicationDisabledException
+    , _PlatformApplicationDisabledException
+
     -- ** InternalErrorException
-  , _InternalErrorException
+    , _InternalErrorException
+
     -- ** ThrottledException
-  , _ThrottledException
+    , _ThrottledException
+
     -- ** InvalidParameterValueException
-  , _InvalidParameterValueException
+    , _InvalidParameterValueException
+
     -- ** NotFoundException
-  , _NotFoundException
+    , _NotFoundException
+
     -- ** TopicLimitExceededException
-  , _TopicLimitExceededException
+    , _TopicLimitExceededException
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
+
     -- ** ListPhoneNumbersOptedOut
-  , module Network.AWS.SNS.ListPhoneNumbersOptedOut
+    , module Network.AWS.SNS.ListPhoneNumbersOptedOut
+
     -- ** DeleteEndpoint
-  , module Network.AWS.SNS.DeleteEndpoint
+    , module Network.AWS.SNS.DeleteEndpoint
+
     -- ** RemovePermission
-  , module Network.AWS.SNS.RemovePermission
+    , module Network.AWS.SNS.RemovePermission
+
     -- ** DeleteTopic
-  , module Network.AWS.SNS.DeleteTopic
+    , module Network.AWS.SNS.DeleteTopic
+
     -- ** SetSMSAttributes
-  , module Network.AWS.SNS.SetSMSAttributes
+    , module Network.AWS.SNS.SetSMSAttributes
+
     -- ** ListTopics (Paginated)
-  , module Network.AWS.SNS.ListTopics
+    , module Network.AWS.SNS.ListTopics
+
     -- ** CreatePlatformEndpoint
-  , module Network.AWS.SNS.CreatePlatformEndpoint
+    , module Network.AWS.SNS.CreatePlatformEndpoint
+
     -- ** SetPlatformApplicationAttributes
-  , module Network.AWS.SNS.SetPlatformApplicationAttributes
+    , module Network.AWS.SNS.SetPlatformApplicationAttributes
+
     -- ** ListSubscriptionsByTopic (Paginated)
-  , module Network.AWS.SNS.ListSubscriptionsByTopic
+    , module Network.AWS.SNS.ListSubscriptionsByTopic
+
     -- ** GetTopicAttributes
-  , module Network.AWS.SNS.GetTopicAttributes
+    , module Network.AWS.SNS.GetTopicAttributes
+
     -- ** OptInPhoneNumber
-  , module Network.AWS.SNS.OptInPhoneNumber
+    , module Network.AWS.SNS.OptInPhoneNumber
+
     -- ** CreatePlatformApplication
-  , module Network.AWS.SNS.CreatePlatformApplication
+    , module Network.AWS.SNS.CreatePlatformApplication
+
     -- ** GetPlatformApplicationAttributes
-  , module Network.AWS.SNS.GetPlatformApplicationAttributes
+    , module Network.AWS.SNS.GetPlatformApplicationAttributes
+
     -- ** ListEndpointsByPlatformApplication (Paginated)
-  , module Network.AWS.SNS.ListEndpointsByPlatformApplication
+    , module Network.AWS.SNS.ListEndpointsByPlatformApplication
+
     -- ** SetTopicAttributes
-  , module Network.AWS.SNS.SetTopicAttributes
+    , module Network.AWS.SNS.SetTopicAttributes
+
     -- ** DeletePlatformApplication
-  , module Network.AWS.SNS.DeletePlatformApplication
+    , module Network.AWS.SNS.DeletePlatformApplication
+
     -- ** GetSMSAttributes
-  , module Network.AWS.SNS.GetSMSAttributes
+    , module Network.AWS.SNS.GetSMSAttributes
+
     -- ** ListPlatformApplications (Paginated)
-  , module Network.AWS.SNS.ListPlatformApplications
+    , module Network.AWS.SNS.ListPlatformApplications
+
     -- ** AddPermission
-  , module Network.AWS.SNS.AddPermission
+    , module Network.AWS.SNS.AddPermission
+
     -- ** GetEndpointAttributes
-  , module Network.AWS.SNS.GetEndpointAttributes
+    , module Network.AWS.SNS.GetEndpointAttributes
+
     -- ** ListSubscriptions (Paginated)
-  , module Network.AWS.SNS.ListSubscriptions
+    , module Network.AWS.SNS.ListSubscriptions
+
     -- ** GetSubscriptionAttributes
-  , module Network.AWS.SNS.GetSubscriptionAttributes
+    , module Network.AWS.SNS.GetSubscriptionAttributes
+
     -- ** CreateTopic
-  , module Network.AWS.SNS.CreateTopic
+    , module Network.AWS.SNS.CreateTopic
+
     -- ** CheckIfPhoneNumberIsOptedOut
-  , module Network.AWS.SNS.CheckIfPhoneNumberIsOptedOut
+    , module Network.AWS.SNS.CheckIfPhoneNumberIsOptedOut
+
     -- ** Subscribe
-  , module Network.AWS.SNS.Subscribe
+    , module Network.AWS.SNS.Subscribe
+
     -- ** Unsubscribe
-  , module Network.AWS.SNS.Unsubscribe
+    , module Network.AWS.SNS.Unsubscribe
+
     -- ** SetEndpointAttributes
-  , module Network.AWS.SNS.SetEndpointAttributes
+    , module Network.AWS.SNS.SetEndpointAttributes
+
     -- ** SetSubscriptionAttributes
-  , module Network.AWS.SNS.SetSubscriptionAttributes
+    , module Network.AWS.SNS.SetSubscriptionAttributes
+
     -- ** ConfirmSubscription
-  , module Network.AWS.SNS.ConfirmSubscription
+    , module Network.AWS.SNS.ConfirmSubscription
+
     -- ** Publish
-  , module Network.AWS.SNS.Publish
+    , module Network.AWS.SNS.Publish
+
     -- * Types
+
     -- ** Endpoint
-  , Endpoint
-  , endpoint
-  , eAttributes
-  , eEndpointARN
+    , Endpoint
+    , endpoint
+    , eAttributes
+    , eEndpointARN
+
     -- ** MessageAttributeValue
-  , MessageAttributeValue
-  , messageAttributeValue
-  , mavBinaryValue
-  , mavStringValue
-  , mavDataType
+    , MessageAttributeValue
+    , messageAttributeValue
+    , mavBinaryValue
+    , mavStringValue
+    , mavDataType
+
     -- ** PlatformApplication
-  , PlatformApplication
-  , platformApplication
-  , paPlatformApplicationARN
-  , paAttributes
+    , PlatformApplication
+    , platformApplication
+    , paPlatformApplicationARN
+    , paAttributes
+
     -- ** Subscription
-  , Subscription
-  , subscription
-  , sProtocol
-  , sOwner
-  , sTopicARN
-  , sEndpoint
-  , sSubscriptionARN
+    , Subscription
+    , subscription
+    , sProtocol
+    , sOwner
+    , sTopicARN
+    , sEndpoint
+    , sSubscriptionARN
+
     -- ** Topic
-  , Topic
-  , topic
-  , tTopicARN
-  ) where
+    , Topic
+    , topic
+    , tTopicARN
+    ) where
 
 import Network.AWS.SNS.AddPermission
 import Network.AWS.SNS.CheckIfPhoneNumberIsOptedOut
@@ -168,12 +219,14 @@ import Network.AWS.SNS.Subscribe
 import Network.AWS.SNS.Types
 import Network.AWS.SNS.Unsubscribe
 import Network.AWS.SNS.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'SNS'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -190,6 +243,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

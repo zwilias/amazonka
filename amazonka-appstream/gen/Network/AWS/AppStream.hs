@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.AppStream
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -12,292 +13,553 @@
 --
 -- __Amazon AppStream 2.0__
 --
--- You can use Amazon AppStream 2.0 to stream desktop applications to any device running a web browser, without rewriting them.
+-- This is the /Amazon AppStream 2.0 API Reference/ . This documentation provides descriptions and syntax for each of the actions and data types in AppStream 2.0. AppStream 2.0 is a fully managed, secure application streaming service that lets you stream desktop applications to users without rewriting applications. AppStream 2.0 manages the AWS resources that are required to host and run your applications, scales automatically, and provides access to your users on demand.
+--
+-- To learn more about AppStream 2.0, see the following resources:
+--
+--     * <http://aws.amazon.com/appstream2 Amazon AppStream 2.0 product page>
+--
+--     * <http://aws.amazon.com/documentation/appstream2 Amazon AppStream 2.0 documentation>
+--
+--
 --
 module Network.AWS.AppStream
+    (
     -- * Service Configuration
-  ( appStream
+      appStream
+
     -- * Errors
     -- $errors
+
     -- ** InvalidRoleException
-  , _InvalidRoleException
+    , _InvalidRoleException
+
     -- ** ResourceAlreadyExistsException
-  , _ResourceAlreadyExistsException
+    , _ResourceAlreadyExistsException
+
     -- ** IncompatibleImageException
-  , _IncompatibleImageException
+    , _IncompatibleImageException
+
     -- ** ConcurrentModificationException
-  , _ConcurrentModificationException
+    , _ConcurrentModificationException
+
     -- ** OperationNotPermittedException
-  , _OperationNotPermittedException
+    , _OperationNotPermittedException
+
     -- ** InvalidAccountStatusException
-  , _InvalidAccountStatusException
+    , _InvalidAccountStatusException
+
     -- ** ResourceNotFoundException
-  , _ResourceNotFoundException
+    , _ResourceNotFoundException
+
     -- ** InvalidParameterCombinationException
-  , _InvalidParameterCombinationException
+    , _InvalidParameterCombinationException
+
     -- ** ResourceNotAvailableException
-  , _ResourceNotAvailableException
+    , _ResourceNotAvailableException
+
     -- ** LimitExceededException
-  , _LimitExceededException
+    , _LimitExceededException
+
     -- ** ResourceInUseException
-  , _ResourceInUseException
+    , _ResourceInUseException
+
     -- * Waiters
     -- $waiters
+
     -- ** FleetStopped
-  , fleetStopped
+    , fleetStopped
+
     -- ** FleetStarted
-  , fleetStarted
+    , fleetStarted
+
     -- * Operations
     -- $operations
+
+    -- ** CreateUsageReportSubscription
+    , module Network.AWS.AppStream.CreateUsageReportSubscription
+
     -- ** DisassociateFleet
-  , module Network.AWS.AppStream.DisassociateFleet
-    -- ** ListAssociatedFleets
-  , module Network.AWS.AppStream.ListAssociatedFleets
+    , module Network.AWS.AppStream.DisassociateFleet
+
+    -- ** ListAssociatedFleets (Paginated)
+    , module Network.AWS.AppStream.ListAssociatedFleets
+
     -- ** DeleteStack
-  , module Network.AWS.AppStream.DeleteStack
+    , module Network.AWS.AppStream.DeleteStack
+
     -- ** UpdateStack
-  , module Network.AWS.AppStream.UpdateStack
+    , module Network.AWS.AppStream.UpdateStack
+
     -- ** CreateDirectoryConfig
-  , module Network.AWS.AppStream.CreateDirectoryConfig
-    -- ** ListAssociatedStacks
-  , module Network.AWS.AppStream.ListAssociatedStacks
+    , module Network.AWS.AppStream.CreateDirectoryConfig
+
+    -- ** DescribeUsers (Paginated)
+    , module Network.AWS.AppStream.DescribeUsers
+
+    -- ** ListAssociatedStacks (Paginated)
+    , module Network.AWS.AppStream.ListAssociatedStacks
+
     -- ** DeleteFleet
-  , module Network.AWS.AppStream.DeleteFleet
+    , module Network.AWS.AppStream.DeleteFleet
+
     -- ** UpdateFleet
-  , module Network.AWS.AppStream.UpdateFleet
+    , module Network.AWS.AppStream.UpdateFleet
+
     -- ** DeleteImageBuilder
-  , module Network.AWS.AppStream.DeleteImageBuilder
+    , module Network.AWS.AppStream.DeleteImageBuilder
+
     -- ** AssociateFleet
-  , module Network.AWS.AppStream.AssociateFleet
+    , module Network.AWS.AppStream.AssociateFleet
+
     -- ** CreateImageBuilder
-  , module Network.AWS.AppStream.CreateImageBuilder
+    , module Network.AWS.AppStream.CreateImageBuilder
+
     -- ** ListTagsForResource
-  , module Network.AWS.AppStream.ListTagsForResource
-    -- ** DescribeDirectoryConfigs
-  , module Network.AWS.AppStream.DescribeDirectoryConfigs
+    , module Network.AWS.AppStream.ListTagsForResource
+
+    -- ** DescribeDirectoryConfigs (Paginated)
+    , module Network.AWS.AppStream.DescribeDirectoryConfigs
+
     -- ** CreateImageBuilderStreamingURL
-  , module Network.AWS.AppStream.CreateImageBuilderStreamingURL
-    -- ** DescribeSessions
-  , module Network.AWS.AppStream.DescribeSessions
-    -- ** DescribeStacks
-  , module Network.AWS.AppStream.DescribeStacks
-    -- ** DescribeFleets
-  , module Network.AWS.AppStream.DescribeFleets
-    -- ** DescribeImageBuilders
-  , module Network.AWS.AppStream.DescribeImageBuilders
+    , module Network.AWS.AppStream.CreateImageBuilderStreamingURL
+
+    -- ** DescribeSessions (Paginated)
+    , module Network.AWS.AppStream.DescribeSessions
+
+    -- ** DescribeStacks (Paginated)
+    , module Network.AWS.AppStream.DescribeStacks
+
+    -- ** DescribeFleets (Paginated)
+    , module Network.AWS.AppStream.DescribeFleets
+
+    -- ** DescribeImageBuilders (Paginated)
+    , module Network.AWS.AppStream.DescribeImageBuilders
+
+    -- ** EnableUser
+    , module Network.AWS.AppStream.EnableUser
+
+    -- ** DescribeUserStackAssociations (Paginated)
+    , module Network.AWS.AppStream.DescribeUserStackAssociations
+
+    -- ** DescribeUsageReportSubscriptions
+    , module Network.AWS.AppStream.DescribeUsageReportSubscriptions
+
+    -- ** UpdateImagePermissions
+    , module Network.AWS.AppStream.UpdateImagePermissions
+
+    -- ** DeleteImagePermissions
+    , module Network.AWS.AppStream.DeleteImagePermissions
+
     -- ** StopFleet
-  , module Network.AWS.AppStream.StopFleet
+    , module Network.AWS.AppStream.StopFleet
+
     -- ** StartImageBuilder
-  , module Network.AWS.AppStream.StartImageBuilder
+    , module Network.AWS.AppStream.StartImageBuilder
+
+    -- ** BatchAssociateUserStack
+    , module Network.AWS.AppStream.BatchAssociateUserStack
+
+    -- ** DescribeImagePermissions
+    , module Network.AWS.AppStream.DescribeImagePermissions
+
     -- ** DeleteDirectoryConfig
-  , module Network.AWS.AppStream.DeleteDirectoryConfig
+    , module Network.AWS.AppStream.DeleteDirectoryConfig
+
     -- ** UpdateDirectoryConfig
-  , module Network.AWS.AppStream.UpdateDirectoryConfig
+    , module Network.AWS.AppStream.UpdateDirectoryConfig
+
     -- ** CreateFleet
-  , module Network.AWS.AppStream.CreateFleet
+    , module Network.AWS.AppStream.CreateFleet
+
     -- ** CreateStack
-  , module Network.AWS.AppStream.CreateStack
+    , module Network.AWS.AppStream.CreateStack
+
     -- ** CopyImage
-  , module Network.AWS.AppStream.CopyImage
+    , module Network.AWS.AppStream.CopyImage
+
     -- ** ExpireSession
-  , module Network.AWS.AppStream.ExpireSession
+    , module Network.AWS.AppStream.ExpireSession
+
+    -- ** CreateUser
+    , module Network.AWS.AppStream.CreateUser
+
+    -- ** DisableUser
+    , module Network.AWS.AppStream.DisableUser
+
+    -- ** DeleteUser
+    , module Network.AWS.AppStream.DeleteUser
+
     -- ** TagResource
-  , module Network.AWS.AppStream.TagResource
+    , module Network.AWS.AppStream.TagResource
+
     -- ** CreateStreamingURL
-  , module Network.AWS.AppStream.CreateStreamingURL
+    , module Network.AWS.AppStream.CreateStreamingURL
+
     -- ** UntagResource
-  , module Network.AWS.AppStream.UntagResource
+    , module Network.AWS.AppStream.UntagResource
+
     -- ** StartFleet
-  , module Network.AWS.AppStream.StartFleet
+    , module Network.AWS.AppStream.StartFleet
+
     -- ** StopImageBuilder
-  , module Network.AWS.AppStream.StopImageBuilder
+    , module Network.AWS.AppStream.StopImageBuilder
+
     -- ** DeleteImage
-  , module Network.AWS.AppStream.DeleteImage
-    -- ** DescribeImages
-  , module Network.AWS.AppStream.DescribeImages
+    , module Network.AWS.AppStream.DeleteImage
+
+    -- ** DeleteUsageReportSubscription
+    , module Network.AWS.AppStream.DeleteUsageReportSubscription
+
+    -- ** BatchDisassociateUserStack
+    , module Network.AWS.AppStream.BatchDisassociateUserStack
+
+    -- ** DescribeImages (Paginated)
+    , module Network.AWS.AppStream.DescribeImages
+
     -- * Types
+
+    -- ** AccessEndpointType
+    , AccessEndpointType (..)
+
+    -- ** Action
+    , Action (..)
+
     -- ** AuthenticationType
-  , AuthenticationType(..)
+    , AuthenticationType (..)
+
     -- ** FleetAttribute
-  , FleetAttribute(..)
+    , FleetAttribute (..)
+
     -- ** FleetErrorCode
-  , FleetErrorCode(..)
+    , FleetErrorCode (..)
+
     -- ** FleetState
-  , FleetState(..)
+    , FleetState (..)
+
     -- ** FleetType
-  , FleetType(..)
+    , FleetType (..)
+
     -- ** ImageBuilderState
-  , ImageBuilderState(..)
+    , ImageBuilderState (..)
+
     -- ** ImageBuilderStateChangeReasonCode
-  , ImageBuilderStateChangeReasonCode(..)
+    , ImageBuilderStateChangeReasonCode (..)
+
     -- ** ImageState
-  , ImageState(..)
+    , ImageState (..)
+
     -- ** ImageStateChangeReasonCode
-  , ImageStateChangeReasonCode(..)
+    , ImageStateChangeReasonCode (..)
+
+    -- ** MessageAction
+    , MessageAction (..)
+
+    -- ** Permission
+    , Permission (..)
+
     -- ** PlatformType
-  , PlatformType(..)
+    , PlatformType (..)
+
+    -- ** SessionConnectionState
+    , SessionConnectionState (..)
+
     -- ** SessionState
-  , SessionState(..)
+    , SessionState (..)
+
     -- ** StackAttribute
-  , StackAttribute(..)
+    , StackAttribute (..)
+
     -- ** StackErrorCode
-  , StackErrorCode(..)
+    , StackErrorCode (..)
+
     -- ** StorageConnectorType
-  , StorageConnectorType(..)
+    , StorageConnectorType (..)
+
+    -- ** UsageReportExecutionErrorCode
+    , UsageReportExecutionErrorCode (..)
+
+    -- ** UsageReportSchedule
+    , UsageReportSchedule (..)
+
+    -- ** UserStackAssociationErrorCode
+    , UserStackAssociationErrorCode (..)
+
     -- ** VisibilityType
-  , VisibilityType(..)
+    , VisibilityType (..)
+
+    -- ** AccessEndpoint
+    , AccessEndpoint
+    , accessEndpoint
+    , aeVPCeId
+    , aeEndpointType
+
     -- ** Application
-  , Application
-  , application
-  , aEnabled
-  , aLaunchPath
-  , aLaunchParameters
-  , aName
-  , aDisplayName
-  , aMetadata
-  , aIconURL
+    , Application
+    , application
+    , appEnabled
+    , appLaunchPath
+    , appLaunchParameters
+    , appName
+    , appDisplayName
+    , appMetadata
+    , appIconURL
+
+    -- ** ApplicationSettings
+    , ApplicationSettings
+    , applicationSettings
+    , aSettingsGroup
+    , aEnabled
+
+    -- ** ApplicationSettingsResponse
+    , ApplicationSettingsResponse
+    , applicationSettingsResponse
+    , asEnabled
+    , asSettingsGroup
+    , asS3BucketName
+
     -- ** ComputeCapacity
-  , ComputeCapacity
-  , computeCapacity
-  , ccDesiredInstances
+    , ComputeCapacity
+    , computeCapacity
+    , ccDesiredInstances
+
     -- ** ComputeCapacityStatus
-  , ComputeCapacityStatus
-  , computeCapacityStatus
-  , ccsInUse
-  , ccsRunning
-  , ccsAvailable
-  , ccsDesired
+    , ComputeCapacityStatus
+    , computeCapacityStatus
+    , ccsInUse
+    , ccsRunning
+    , ccsAvailable
+    , ccsDesired
+
     -- ** DirectoryConfig
-  , DirectoryConfig
-  , directoryConfig
-  , dcCreatedTime
-  , dcServiceAccountCredentials
-  , dcOrganizationalUnitDistinguishedNames
-  , dcDirectoryName
+    , DirectoryConfig
+    , directoryConfig
+    , dcCreatedTime
+    , dcServiceAccountCredentials
+    , dcOrganizationalUnitDistinguishedNames
+    , dcDirectoryName
+
     -- ** DomainJoinInfo
-  , DomainJoinInfo
-  , domainJoinInfo
-  , djiOrganizationalUnitDistinguishedName
-  , djiDirectoryName
+    , DomainJoinInfo
+    , domainJoinInfo
+    , djiOrganizationalUnitDistinguishedName
+    , djiDirectoryName
+
     -- ** Fleet
-  , Fleet
-  , fleet
-  , fDomainJoinInfo
-  , fDisconnectTimeoutInSeconds
-  , fMaxUserDurationInSeconds
-  , fCreatedTime
-  , fFleetType
-  , fVPCConfig
-  , fFleetErrors
-  , fDisplayName
-  , fEnableDefaultInternetAccess
-  , fDescription
-  , fARN
-  , fName
-  , fImageName
-  , fInstanceType
-  , fComputeCapacityStatus
-  , fState
+    , Fleet
+    , fleet
+    , fDomainJoinInfo
+    , fIAMRoleARN
+    , fDisconnectTimeoutInSeconds
+    , fMaxUserDurationInSeconds
+    , fCreatedTime
+    , fIdleDisconnectTimeoutInSeconds
+    , fFleetType
+    , fVPCConfig
+    , fImageARN
+    , fFleetErrors
+    , fDisplayName
+    , fEnableDefaultInternetAccess
+    , fImageName
+    , fDescription
+    , fARN
+    , fName
+    , fInstanceType
+    , fComputeCapacityStatus
+    , fState
+
     -- ** FleetError
-  , FleetError
-  , fleetError
-  , feErrorCode
-  , feErrorMessage
+    , FleetError
+    , fleetError
+    , feErrorCode
+    , feErrorMessage
+
     -- ** Image
-  , Image
-  , image
-  , iState
-  , iPlatform
-  , iPublicBaseImageReleasedDate
-  , iStateChangeReason
-  , iARN
-  , iCreatedTime
-  , iImageBuilderSupported
-  , iVisibility
-  , iBaseImageARN
-  , iDisplayName
-  , iDescription
-  , iAppstreamAgentVersion
-  , iApplications
-  , iName
+    , Image
+    , image
+    , iState
+    , iImagePermissions
+    , iPlatform
+    , iPublicBaseImageReleasedDate
+    , iStateChangeReason
+    , iARN
+    , iCreatedTime
+    , iImageBuilderSupported
+    , iVisibility
+    , iImageBuilderName
+    , iBaseImageARN
+    , iDisplayName
+    , iDescription
+    , iAppstreamAgentVersion
+    , iApplications
+    , iName
+
     -- ** ImageBuilder
-  , ImageBuilder
-  , imageBuilder
-  , ibDomainJoinInfo
-  , ibState
-  , ibPlatform
-  , ibStateChangeReason
-  , ibARN
-  , ibCreatedTime
-  , ibImageBuilderErrors
-  , ibInstanceType
-  , ibVPCConfig
-  , ibImageARN
-  , ibDisplayName
-  , ibEnableDefaultInternetAccess
-  , ibDescription
-  , ibAppstreamAgentVersion
-  , ibName
+    , ImageBuilder
+    , imageBuilder
+    , ibDomainJoinInfo
+    , ibIAMRoleARN
+    , ibState
+    , ibPlatform
+    , ibNetworkAccessConfiguration
+    , ibStateChangeReason
+    , ibARN
+    , ibCreatedTime
+    , ibImageBuilderErrors
+    , ibInstanceType
+    , ibAccessEndpoints
+    , ibVPCConfig
+    , ibImageARN
+    , ibDisplayName
+    , ibEnableDefaultInternetAccess
+    , ibDescription
+    , ibAppstreamAgentVersion
+    , ibName
+
     -- ** ImageBuilderStateChangeReason
-  , ImageBuilderStateChangeReason
-  , imageBuilderStateChangeReason
-  , ibscrCode
-  , ibscrMessage
+    , ImageBuilderStateChangeReason
+    , imageBuilderStateChangeReason
+    , ibscrCode
+    , ibscrMessage
+
+    -- ** ImagePermissions
+    , ImagePermissions
+    , imagePermissions
+    , ipAllowFleet
+    , ipAllowImageBuilder
+
     -- ** ImageStateChangeReason
-  , ImageStateChangeReason
-  , imageStateChangeReason
-  , iscrCode
-  , iscrMessage
+    , ImageStateChangeReason
+    , imageStateChangeReason
+    , iscrCode
+    , iscrMessage
+
+    -- ** LastReportGenerationExecutionError
+    , LastReportGenerationExecutionError
+    , lastReportGenerationExecutionError
+    , lrgeeErrorCode
+    , lrgeeErrorMessage
+
+    -- ** NetworkAccessConfiguration
+    , NetworkAccessConfiguration
+    , networkAccessConfiguration
+    , nacEniId
+    , nacEniPrivateIPAddress
+
     -- ** ResourceError
-  , ResourceError
-  , resourceError
-  , reErrorCode
-  , reErrorMessage
-  , reErrorTimestamp
+    , ResourceError
+    , resourceError
+    , reErrorCode
+    , reErrorMessage
+    , reErrorTimestamp
+
     -- ** ServiceAccountCredentials
-  , ServiceAccountCredentials
-  , serviceAccountCredentials
-  , sacAccountName
-  , sacAccountPassword
+    , ServiceAccountCredentials
+    , serviceAccountCredentials
+    , sacAccountName
+    , sacAccountPassword
+
     -- ** Session
-  , Session
-  , session
-  , sAuthenticationType
-  , sId
-  , sUserId
-  , sStackName
-  , sFleetName
-  , sState
+    , Session
+    , session
+    , sNetworkAccessConfiguration
+    , sMaxExpirationTime
+    , sStartTime
+    , sAuthenticationType
+    , sConnectionState
+    , sId
+    , sUserId
+    , sStackName
+    , sFleetName
+    , sState
+
+    -- ** SharedImagePermissions
+    , SharedImagePermissions
+    , sharedImagePermissions
+    , sipSharedAccountId
+    , sipImagePermissions
+
     -- ** Stack
-  , Stack
-  , stack
-  , sFeedbackURL
-  , sARN
-  , sCreatedTime
-  , sStorageConnectors
-  , sDisplayName
-  , sStackErrors
-  , sDescription
-  , sRedirectURL
-  , sName
+    , Stack
+    , stack
+    , sUserSettings
+    , sApplicationSettings
+    , sFeedbackURL
+    , sARN
+    , sCreatedTime
+    , sStorageConnectors
+    , sAccessEndpoints
+    , sDisplayName
+    , sStackErrors
+    , sEmbedHostDomains
+    , sDescription
+    , sRedirectURL
+    , sName
+
     -- ** StackError
-  , StackError
-  , stackError
-  , seErrorCode
-  , seErrorMessage
+    , StackError
+    , stackError
+    , seErrorCode
+    , seErrorMessage
+
     -- ** StorageConnector
-  , StorageConnector
-  , storageConnector
-  , scResourceIdentifier
-  , scConnectorType
+    , StorageConnector
+    , storageConnector
+    , scDomains
+    , scResourceIdentifier
+    , scConnectorType
+
+    -- ** UsageReportSubscription
+    , UsageReportSubscription
+    , usageReportSubscription
+    , ursLastGeneratedReportDate
+    , ursSchedule
+    , ursSubscriptionErrors
+    , ursS3BucketName
+
+    -- ** User
+    , User
+    , user
+    , uStatus
+    , uEnabled
+    , uLastName
+    , uARN
+    , uCreatedTime
+    , uUserName
+    , uFirstName
+    , uAuthenticationType
+
+    -- ** UserSetting
+    , UserSetting
+    , userSetting
+    , usAction
+    , usPermission
+
+    -- ** UserStackAssociation
+    , UserStackAssociation
+    , userStackAssociation
+    , usaSendEmailNotification
+    , usaStackName
+    , usaUserName
+    , usaAuthenticationType
+
+    -- ** UserStackAssociationError
+    , UserStackAssociationError
+    , userStackAssociationError
+    , usaeUserStackAssociation
+    , usaeErrorCode
+    , usaeErrorMessage
+
     -- ** VPCConfig
-  , VPCConfig
-  , vpcConfig
-  , vcSecurityGroupIds
-  , vcSubnetIds
-  ) where
+    , VPCConfig
+    , vpcConfig
+    , vcSecurityGroupIds
+    , vcSubnetIds
+    ) where
 
 import Network.AWS.AppStream.AssociateFleet
+import Network.AWS.AppStream.BatchAssociateUserStack
+import Network.AWS.AppStream.BatchDisassociateUserStack
 import Network.AWS.AppStream.CopyImage
 import Network.AWS.AppStream.CreateDirectoryConfig
 import Network.AWS.AppStream.CreateFleet
@@ -305,18 +567,29 @@ import Network.AWS.AppStream.CreateImageBuilder
 import Network.AWS.AppStream.CreateImageBuilderStreamingURL
 import Network.AWS.AppStream.CreateStack
 import Network.AWS.AppStream.CreateStreamingURL
+import Network.AWS.AppStream.CreateUsageReportSubscription
+import Network.AWS.AppStream.CreateUser
 import Network.AWS.AppStream.DeleteDirectoryConfig
 import Network.AWS.AppStream.DeleteFleet
 import Network.AWS.AppStream.DeleteImage
 import Network.AWS.AppStream.DeleteImageBuilder
+import Network.AWS.AppStream.DeleteImagePermissions
 import Network.AWS.AppStream.DeleteStack
+import Network.AWS.AppStream.DeleteUsageReportSubscription
+import Network.AWS.AppStream.DeleteUser
 import Network.AWS.AppStream.DescribeDirectoryConfigs
 import Network.AWS.AppStream.DescribeFleets
 import Network.AWS.AppStream.DescribeImageBuilders
+import Network.AWS.AppStream.DescribeImagePermissions
 import Network.AWS.AppStream.DescribeImages
 import Network.AWS.AppStream.DescribeSessions
 import Network.AWS.AppStream.DescribeStacks
+import Network.AWS.AppStream.DescribeUsageReportSubscriptions
+import Network.AWS.AppStream.DescribeUsers
+import Network.AWS.AppStream.DescribeUserStackAssociations
+import Network.AWS.AppStream.DisableUser
 import Network.AWS.AppStream.DisassociateFleet
+import Network.AWS.AppStream.EnableUser
 import Network.AWS.AppStream.ExpireSession
 import Network.AWS.AppStream.ListAssociatedFleets
 import Network.AWS.AppStream.ListAssociatedStacks
@@ -330,14 +603,17 @@ import Network.AWS.AppStream.Types
 import Network.AWS.AppStream.UntagResource
 import Network.AWS.AppStream.UpdateDirectoryConfig
 import Network.AWS.AppStream.UpdateFleet
+import Network.AWS.AppStream.UpdateImagePermissions
 import Network.AWS.AppStream.UpdateStack
 import Network.AWS.AppStream.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'AppStream'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -354,6 +630,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

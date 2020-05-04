@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CloudDirectory.AttachObject
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,21 +28,23 @@
 --
 --
 module Network.AWS.CloudDirectory.AttachObject
+    (
     -- * Creating a Request
-  ( attachObject
-  , AttachObject
+      attachObject
+    , AttachObject
     -- * Request Lenses
-  , aoDirectoryARN
-  , aoParentReference
-  , aoChildReference
-  , aoLinkName
+    , aoDirectoryARN
+    , aoParentReference
+    , aoChildReference
+    , aoLinkName
+
     -- * Destructuring the Response
-  , attachObjectResponse
-  , AttachObjectResponse
+    , attachObjectResponse
+    , AttachObjectResponse
     -- * Response Lenses
-  , aorsAttachedObjectIdentifier
-  , aorsResponseStatus
-  ) where
+    , aorsAttachedObjectIdentifier
+    , aorsResponseStatus
+    ) where
 
 import Network.AWS.CloudDirectory.Types
 import Network.AWS.CloudDirectory.Types.Product
@@ -59,6 +63,7 @@ data AttachObject =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AttachObject' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -70,12 +75,12 @@ data AttachObject =
 -- * 'aoChildReference' - The child object reference to be attached to the object.
 --
 -- * 'aoLinkName' - The link name with which the child object is attached to the parent.
-attachObject ::
-     Text -- ^ 'aoDirectoryARN'
-  -> ObjectReference -- ^ 'aoParentReference'
-  -> ObjectReference -- ^ 'aoChildReference'
-  -> Text -- ^ 'aoLinkName'
-  -> AttachObject
+attachObject
+    :: Text -- ^ 'aoDirectoryARN'
+    -> ObjectReference -- ^ 'aoParentReference'
+    -> ObjectReference -- ^ 'aoChildReference'
+    -> Text -- ^ 'aoLinkName'
+    -> AttachObject
 attachObject pDirectoryARN_ pParentReference_ pChildReference_ pLinkName_ =
   AttachObject'
     { _aoDirectoryARN = pDirectoryARN_
@@ -84,53 +89,56 @@ attachObject pDirectoryARN_ pParentReference_ pChildReference_ pLinkName_ =
     , _aoLinkName = pLinkName_
     }
 
+
 -- | Amazon Resource Name (ARN) that is associated with the 'Directory' where both objects reside. For more information, see 'arns' .
 aoDirectoryARN :: Lens' AttachObject Text
-aoDirectoryARN = lens _aoDirectoryARN (\s a -> s {_aoDirectoryARN = a})
+aoDirectoryARN = lens _aoDirectoryARN (\ s a -> s{_aoDirectoryARN = a})
 
 -- | The parent object reference.
 aoParentReference :: Lens' AttachObject ObjectReference
-aoParentReference = lens _aoParentReference (\s a -> s {_aoParentReference = a})
+aoParentReference = lens _aoParentReference (\ s a -> s{_aoParentReference = a})
 
 -- | The child object reference to be attached to the object.
 aoChildReference :: Lens' AttachObject ObjectReference
-aoChildReference = lens _aoChildReference (\s a -> s {_aoChildReference = a})
+aoChildReference = lens _aoChildReference (\ s a -> s{_aoChildReference = a})
 
 -- | The link name with which the child object is attached to the parent.
 aoLinkName :: Lens' AttachObject Text
-aoLinkName = lens _aoLinkName (\s a -> s {_aoLinkName = a})
+aoLinkName = lens _aoLinkName (\ s a -> s{_aoLinkName = a})
 
 instance AWSRequest AttachObject where
-  type Rs AttachObject = AttachObjectResponse
-  request = putJSON cloudDirectory
-  response =
-    receiveJSON
-      (\s h x ->
-         AttachObjectResponse' <$> (x .?> "AttachedObjectIdentifier") <*>
-         (pure (fromEnum s)))
+        type Rs AttachObject = AttachObjectResponse
+        request = putJSON cloudDirectory
+        response
+          = receiveJSON
+              (\ s h x ->
+                 AttachObjectResponse' <$>
+                   (x .?> "AttachedObjectIdentifier") <*>
+                     (pure (fromEnum s)))
 
-instance Hashable AttachObject
+instance Hashable AttachObject where
 
-instance NFData AttachObject
+instance NFData AttachObject where
 
 instance ToHeaders AttachObject where
-  toHeaders AttachObject' {..} =
-    mconcat ["x-amz-data-partition" =# _aoDirectoryARN]
+        toHeaders AttachObject'{..}
+          = mconcat ["x-amz-data-partition" =# _aoDirectoryARN]
 
 instance ToJSON AttachObject where
-  toJSON AttachObject' {..} =
-    object
-      (catMaybes
-         [ Just ("ParentReference" .= _aoParentReference)
-         , Just ("ChildReference" .= _aoChildReference)
-         , Just ("LinkName" .= _aoLinkName)
-         ])
+        toJSON AttachObject'{..}
+          = object
+              (catMaybes
+                 [Just ("ParentReference" .= _aoParentReference),
+                  Just ("ChildReference" .= _aoChildReference),
+                  Just ("LinkName" .= _aoLinkName)])
 
 instance ToPath AttachObject where
-  toPath = const "/amazonclouddirectory/2017-01-11/object/attach"
+        toPath
+          = const
+              "/amazonclouddirectory/2017-01-11/object/attach"
 
 instance ToQuery AttachObject where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'attachObjectResponse' smart constructor.
 data AttachObjectResponse =
@@ -140,6 +148,7 @@ data AttachObjectResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AttachObjectResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -147,25 +156,22 @@ data AttachObjectResponse =
 -- * 'aorsAttachedObjectIdentifier' - The attached @ObjectIdentifier@ , which is the child @ObjectIdentifier@ .
 --
 -- * 'aorsResponseStatus' - -- | The response status code.
-attachObjectResponse ::
-     Int -- ^ 'aorsResponseStatus'
-  -> AttachObjectResponse
+attachObjectResponse
+    :: Int -- ^ 'aorsResponseStatus'
+    -> AttachObjectResponse
 attachObjectResponse pResponseStatus_ =
   AttachObjectResponse'
     { _aorsAttachedObjectIdentifier = Nothing
     , _aorsResponseStatus = pResponseStatus_
     }
 
+
 -- | The attached @ObjectIdentifier@ , which is the child @ObjectIdentifier@ .
 aorsAttachedObjectIdentifier :: Lens' AttachObjectResponse (Maybe Text)
-aorsAttachedObjectIdentifier =
-  lens
-    _aorsAttachedObjectIdentifier
-    (\s a -> s {_aorsAttachedObjectIdentifier = a})
+aorsAttachedObjectIdentifier = lens _aorsAttachedObjectIdentifier (\ s a -> s{_aorsAttachedObjectIdentifier = a})
 
 -- | -- | The response status code.
 aorsResponseStatus :: Lens' AttachObjectResponse Int
-aorsResponseStatus =
-  lens _aorsResponseStatus (\s a -> s {_aorsResponseStatus = a})
+aorsResponseStatus = lens _aorsResponseStatus (\ s a -> s{_aorsResponseStatus = a})
 
-instance NFData AttachObjectResponse
+instance NFData AttachObjectResponse where

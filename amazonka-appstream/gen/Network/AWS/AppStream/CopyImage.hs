@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.AppStream.CopyImage
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,21 +22,23 @@
 --
 --
 module Network.AWS.AppStream.CopyImage
+    (
     -- * Creating a Request
-  ( copyImage
-  , CopyImage
+      copyImage
+    , CopyImage
     -- * Request Lenses
-  , ciDestinationImageDescription
-  , ciSourceImageName
-  , ciDestinationImageName
-  , ciDestinationRegion
+    , ciDestinationImageDescription
+    , ciSourceImageName
+    , ciDestinationImageName
+    , ciDestinationRegion
+
     -- * Destructuring the Response
-  , copyImageResponse
-  , CopyImageResponse
+    , copyImageResponse
+    , CopyImageResponse
     -- * Response Lenses
-  , cirsDestinationImageName
-  , cirsResponseStatus
-  ) where
+    , cirsDestinationImageName
+    , cirsResponseStatus
+    ) where
 
 import Network.AWS.AppStream.Types
 import Network.AWS.AppStream.Types.Product
@@ -53,6 +57,7 @@ data CopyImage =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CopyImage' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -64,11 +69,11 @@ data CopyImage =
 -- * 'ciDestinationImageName' - The name that the image will have when it is copied to the destination.
 --
 -- * 'ciDestinationRegion' - The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.
-copyImage ::
-     Text -- ^ 'ciSourceImageName'
-  -> Text -- ^ 'ciDestinationImageName'
-  -> Text -- ^ 'ciDestinationRegion'
-  -> CopyImage
+copyImage
+    :: Text -- ^ 'ciSourceImageName'
+    -> Text -- ^ 'ciDestinationImageName'
+    -> Text -- ^ 'ciDestinationRegion'
+    -> CopyImage
 copyImage pSourceImageName_ pDestinationImageName_ pDestinationRegion_ =
   CopyImage'
     { _ciDestinationImageDescription = Nothing
@@ -77,63 +82,62 @@ copyImage pSourceImageName_ pDestinationImageName_ pDestinationRegion_ =
     , _ciDestinationRegion = pDestinationRegion_
     }
 
+
 -- | The description that the image will have when it is copied to the destination.
 ciDestinationImageDescription :: Lens' CopyImage (Maybe Text)
-ciDestinationImageDescription =
-  lens
-    _ciDestinationImageDescription
-    (\s a -> s {_ciDestinationImageDescription = a})
+ciDestinationImageDescription = lens _ciDestinationImageDescription (\ s a -> s{_ciDestinationImageDescription = a})
 
 -- | The name of the image to copy.
 ciSourceImageName :: Lens' CopyImage Text
-ciSourceImageName = lens _ciSourceImageName (\s a -> s {_ciSourceImageName = a})
+ciSourceImageName = lens _ciSourceImageName (\ s a -> s{_ciSourceImageName = a})
 
 -- | The name that the image will have when it is copied to the destination.
 ciDestinationImageName :: Lens' CopyImage Text
-ciDestinationImageName =
-  lens _ciDestinationImageName (\s a -> s {_ciDestinationImageName = a})
+ciDestinationImageName = lens _ciDestinationImageName (\ s a -> s{_ciDestinationImageName = a})
 
 -- | The destination region to which the image will be copied. This parameter is required, even if you are copying an image within the same region.
 ciDestinationRegion :: Lens' CopyImage Text
-ciDestinationRegion =
-  lens _ciDestinationRegion (\s a -> s {_ciDestinationRegion = a})
+ciDestinationRegion = lens _ciDestinationRegion (\ s a -> s{_ciDestinationRegion = a})
 
 instance AWSRequest CopyImage where
-  type Rs CopyImage = CopyImageResponse
-  request = postJSON appStream
-  response =
-    receiveJSON
-      (\s h x ->
-         CopyImageResponse' <$> (x .?> "DestinationImageName") <*>
-         (pure (fromEnum s)))
+        type Rs CopyImage = CopyImageResponse
+        request = postJSON appStream
+        response
+          = receiveJSON
+              (\ s h x ->
+                 CopyImageResponse' <$>
+                   (x .?> "DestinationImageName") <*>
+                     (pure (fromEnum s)))
 
-instance Hashable CopyImage
+instance Hashable CopyImage where
 
-instance NFData CopyImage
+instance NFData CopyImage where
 
 instance ToHeaders CopyImage where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("PhotonAdminProxyService.CopyImage" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("PhotonAdminProxyService.CopyImage" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON CopyImage where
-  toJSON CopyImage' {..} =
-    object
-      (catMaybes
-         [ ("DestinationImageDescription" .=) <$> _ciDestinationImageDescription
-         , Just ("SourceImageName" .= _ciSourceImageName)
-         , Just ("DestinationImageName" .= _ciDestinationImageName)
-         , Just ("DestinationRegion" .= _ciDestinationRegion)
-         ])
+        toJSON CopyImage'{..}
+          = object
+              (catMaybes
+                 [("DestinationImageDescription" .=) <$>
+                    _ciDestinationImageDescription,
+                  Just ("SourceImageName" .= _ciSourceImageName),
+                  Just
+                    ("DestinationImageName" .= _ciDestinationImageName),
+                  Just ("DestinationRegion" .= _ciDestinationRegion)])
 
 instance ToPath CopyImage where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery CopyImage where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'copyImageResponse' smart constructor.
 data CopyImageResponse =
@@ -143,6 +147,7 @@ data CopyImageResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CopyImageResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -150,23 +155,22 @@ data CopyImageResponse =
 -- * 'cirsDestinationImageName' - The name of the destination image.
 --
 -- * 'cirsResponseStatus' - -- | The response status code.
-copyImageResponse ::
-     Int -- ^ 'cirsResponseStatus'
-  -> CopyImageResponse
+copyImageResponse
+    :: Int -- ^ 'cirsResponseStatus'
+    -> CopyImageResponse
 copyImageResponse pResponseStatus_ =
   CopyImageResponse'
     { _cirsDestinationImageName = Nothing
     , _cirsResponseStatus = pResponseStatus_
     }
 
+
 -- | The name of the destination image.
 cirsDestinationImageName :: Lens' CopyImageResponse (Maybe Text)
-cirsDestinationImageName =
-  lens _cirsDestinationImageName (\s a -> s {_cirsDestinationImageName = a})
+cirsDestinationImageName = lens _cirsDestinationImageName (\ s a -> s{_cirsDestinationImageName = a})
 
 -- | -- | The response status code.
 cirsResponseStatus :: Lens' CopyImageResponse Int
-cirsResponseStatus =
-  lens _cirsResponseStatus (\s a -> s {_cirsResponseStatus = a})
+cirsResponseStatus = lens _cirsResponseStatus (\ s a -> s{_cirsResponseStatus = a})
 
-instance NFData CopyImageResponse
+instance NFData CopyImageResponse where

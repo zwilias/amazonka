@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.APIGateway.CreateUsagePlan
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,27 +22,31 @@
 --
 --
 module Network.AWS.APIGateway.CreateUsagePlan
+    (
     -- * Creating a Request
-  ( createUsagePlan
-  , CreateUsagePlan
+      createUsagePlan
+    , CreateUsagePlan
     -- * Request Lenses
-  , cupApiStages
-  , cupThrottle
-  , cupQuota
-  , cupDescription
-  , cupName
+    , cupApiStages
+    , cupThrottle
+    , cupQuota
+    , cupDescription
+    , cupTags
+    , cupName
+
     -- * Destructuring the Response
-  , usagePlan
-  , UsagePlan
+    , usagePlan
+    , UsagePlan
     -- * Response Lenses
-  , upApiStages
-  , upName
-  , upId
-  , upThrottle
-  , upQuota
-  , upDescription
-  , upProductCode
-  ) where
+    , upApiStages
+    , upName
+    , upId
+    , upThrottle
+    , upQuota
+    , upDescription
+    , upProductCode
+    , upTags
+    ) where
 
 import Network.AWS.APIGateway.Types
 import Network.AWS.APIGateway.Types.Product
@@ -60,9 +66,11 @@ data CreateUsagePlan =
     , _cupThrottle    :: !(Maybe ThrottleSettings)
     , _cupQuota       :: !(Maybe QuotaSettings)
     , _cupDescription :: !(Maybe Text)
+    , _cupTags        :: !(Maybe (Map Text Text))
     , _cupName        :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'CreateUsagePlan' with the minimum fields required to make a request.
 --
@@ -76,65 +84,74 @@ data CreateUsagePlan =
 --
 -- * 'cupDescription' - The description of the usage plan.
 --
+-- * 'cupTags' - The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not start with @aws:@ . The tag value can be up to 256 characters.
+--
 -- * 'cupName' - [Required] The name of the usage plan.
-createUsagePlan ::
-     Text -- ^ 'cupName'
-  -> CreateUsagePlan
+createUsagePlan
+    :: Text -- ^ 'cupName'
+    -> CreateUsagePlan
 createUsagePlan pName_ =
   CreateUsagePlan'
     { _cupApiStages = Nothing
     , _cupThrottle = Nothing
     , _cupQuota = Nothing
     , _cupDescription = Nothing
+    , _cupTags = Nothing
     , _cupName = pName_
     }
 
+
 -- | The associated API stages of the usage plan.
 cupApiStages :: Lens' CreateUsagePlan [APIStage]
-cupApiStages =
-  lens _cupApiStages (\s a -> s {_cupApiStages = a}) . _Default . _Coerce
+cupApiStages = lens _cupApiStages (\ s a -> s{_cupApiStages = a}) . _Default . _Coerce
 
 -- | The throttling limits of the usage plan.
 cupThrottle :: Lens' CreateUsagePlan (Maybe ThrottleSettings)
-cupThrottle = lens _cupThrottle (\s a -> s {_cupThrottle = a})
+cupThrottle = lens _cupThrottle (\ s a -> s{_cupThrottle = a})
 
 -- | The quota of the usage plan.
 cupQuota :: Lens' CreateUsagePlan (Maybe QuotaSettings)
-cupQuota = lens _cupQuota (\s a -> s {_cupQuota = a})
+cupQuota = lens _cupQuota (\ s a -> s{_cupQuota = a})
 
 -- | The description of the usage plan.
 cupDescription :: Lens' CreateUsagePlan (Maybe Text)
-cupDescription = lens _cupDescription (\s a -> s {_cupDescription = a})
+cupDescription = lens _cupDescription (\ s a -> s{_cupDescription = a})
+
+-- | The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not start with @aws:@ . The tag value can be up to 256 characters.
+cupTags :: Lens' CreateUsagePlan (HashMap Text Text)
+cupTags = lens _cupTags (\ s a -> s{_cupTags = a}) . _Default . _Map
 
 -- | [Required] The name of the usage plan.
 cupName :: Lens' CreateUsagePlan Text
-cupName = lens _cupName (\s a -> s {_cupName = a})
+cupName = lens _cupName (\ s a -> s{_cupName = a})
 
 instance AWSRequest CreateUsagePlan where
-  type Rs CreateUsagePlan = UsagePlan
-  request = postJSON apiGateway
-  response = receiveJSON (\s h x -> eitherParseJSON x)
+        type Rs CreateUsagePlan = UsagePlan
+        request = postJSON apiGateway
+        response = receiveJSON (\ s h x -> eitherParseJSON x)
 
-instance Hashable CreateUsagePlan
+instance Hashable CreateUsagePlan where
 
-instance NFData CreateUsagePlan
+instance NFData CreateUsagePlan where
 
 instance ToHeaders CreateUsagePlan where
-  toHeaders = const (mconcat ["Accept" =# ("application/json" :: ByteString)])
+        toHeaders
+          = const
+              (mconcat
+                 ["Accept" =# ("application/json" :: ByteString)])
 
 instance ToJSON CreateUsagePlan where
-  toJSON CreateUsagePlan' {..} =
-    object
-      (catMaybes
-         [ ("apiStages" .=) <$> _cupApiStages
-         , ("throttle" .=) <$> _cupThrottle
-         , ("quota" .=) <$> _cupQuota
-         , ("description" .=) <$> _cupDescription
-         , Just ("name" .= _cupName)
-         ])
+        toJSON CreateUsagePlan'{..}
+          = object
+              (catMaybes
+                 [("apiStages" .=) <$> _cupApiStages,
+                  ("throttle" .=) <$> _cupThrottle,
+                  ("quota" .=) <$> _cupQuota,
+                  ("description" .=) <$> _cupDescription,
+                  ("tags" .=) <$> _cupTags, Just ("name" .= _cupName)])
 
 instance ToPath CreateUsagePlan where
-  toPath = const "/usageplans"
+        toPath = const "/usageplans"
 
 instance ToQuery CreateUsagePlan where
-  toQuery = const mempty
+        toQuery = const mempty

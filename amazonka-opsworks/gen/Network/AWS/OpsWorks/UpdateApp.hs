@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.OpsWorks.UpdateApp
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,25 +24,27 @@
 -- __Required Permissions__ : To use this action, an IAM user must have a Deploy or Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see <http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html Managing User Permissions> .
 --
 module Network.AWS.OpsWorks.UpdateApp
+    (
     -- * Creating a Request
-  ( updateApp
-  , UpdateApp
+      updateApp
+    , UpdateApp
     -- * Request Lenses
-  , uaSSLConfiguration
-  , uaEnvironment
-  , uaEnableSSL
-  , uaDataSources
-  , uaAppSource
-  , uaAttributes
-  , uaName
-  , uaType
-  , uaDomains
-  , uaDescription
-  , uaAppId
+    , uaSSLConfiguration
+    , uaEnvironment
+    , uaEnableSSL
+    , uaDataSources
+    , uaAppSource
+    , uaAttributes
+    , uaName
+    , uaType
+    , uaDomains
+    , uaDescription
+    , uaAppId
+
     -- * Destructuring the Response
-  , updateAppResponse
-  , UpdateAppResponse
-  ) where
+    , updateAppResponse
+    , UpdateAppResponse
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
@@ -65,6 +69,7 @@ data UpdateApp =
     , _uaAppId            :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'UpdateApp' with the minimum fields required to make a request.
 --
@@ -91,9 +96,9 @@ data UpdateApp =
 -- * 'uaDescription' - A description of the app.
 --
 -- * 'uaAppId' - The app ID.
-updateApp ::
-     Text -- ^ 'uaAppId'
-  -> UpdateApp
+updateApp
+    :: Text -- ^ 'uaAppId'
+    -> UpdateApp
 updateApp pAppId_ =
   UpdateApp'
     { _uaSSLConfiguration = Nothing
@@ -109,102 +114,101 @@ updateApp pAppId_ =
     , _uaAppId = pAppId_
     }
 
+
 -- | An @SslConfiguration@ object with the SSL configuration.
 uaSSLConfiguration :: Lens' UpdateApp (Maybe SSLConfiguration)
-uaSSLConfiguration =
-  lens _uaSSLConfiguration (\s a -> s {_uaSSLConfiguration = a})
+uaSSLConfiguration = lens _uaSSLConfiguration (\ s a -> s{_uaSSLConfiguration = a})
 
 -- | An array of @EnvironmentVariable@ objects that specify environment variables to be associated with the app. After you deploy the app, these variables are defined on the associated app server instances.For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment Environment Variables> . There is no specific limit on the number of environment variables. However, the size of the associated data structure - which includes the variables' names, values, and protected flag values - cannot exceed 10 KB (10240 Bytes). This limit should accommodate most if not all use cases. Exceeding it will cause an exception with the message, "Environment: is too large (maximum is 10KB)."
 uaEnvironment :: Lens' UpdateApp [EnvironmentVariable]
-uaEnvironment =
-  lens _uaEnvironment (\s a -> s {_uaEnvironment = a}) . _Default . _Coerce
+uaEnvironment = lens _uaEnvironment (\ s a -> s{_uaEnvironment = a}) . _Default . _Coerce
 
 -- | Whether SSL is enabled for the app.
 uaEnableSSL :: Lens' UpdateApp (Maybe Bool)
-uaEnableSSL = lens _uaEnableSSL (\s a -> s {_uaEnableSSL = a})
+uaEnableSSL = lens _uaEnableSSL (\ s a -> s{_uaEnableSSL = a})
 
 -- | The app's data sources.
 uaDataSources :: Lens' UpdateApp [DataSource]
-uaDataSources =
-  lens _uaDataSources (\s a -> s {_uaDataSources = a}) . _Default . _Coerce
+uaDataSources = lens _uaDataSources (\ s a -> s{_uaDataSources = a}) . _Default . _Coerce
 
 -- | A @Source@ object that specifies the app repository.
 uaAppSource :: Lens' UpdateApp (Maybe Source)
-uaAppSource = lens _uaAppSource (\s a -> s {_uaAppSource = a})
+uaAppSource = lens _uaAppSource (\ s a -> s{_uaAppSource = a})
 
 -- | One or more user-defined key/value pairs to be added to the stack attributes.
 uaAttributes :: Lens' UpdateApp (HashMap AppAttributesKeys Text)
-uaAttributes =
-  lens _uaAttributes (\s a -> s {_uaAttributes = a}) . _Default . _Map
+uaAttributes = lens _uaAttributes (\ s a -> s{_uaAttributes = a}) . _Default . _Map
 
 -- | The app name.
 uaName :: Lens' UpdateApp (Maybe Text)
-uaName = lens _uaName (\s a -> s {_uaName = a})
+uaName = lens _uaName (\ s a -> s{_uaName = a})
 
 -- | The app type.
 uaType :: Lens' UpdateApp (Maybe AppType)
-uaType = lens _uaType (\s a -> s {_uaType = a})
+uaType = lens _uaType (\ s a -> s{_uaType = a})
 
 -- | The app's virtual host settings, with multiple domains separated by commas. For example: @'www.example.com, example.com'@
 uaDomains :: Lens' UpdateApp [Text]
-uaDomains = lens _uaDomains (\s a -> s {_uaDomains = a}) . _Default . _Coerce
+uaDomains = lens _uaDomains (\ s a -> s{_uaDomains = a}) . _Default . _Coerce
 
 -- | A description of the app.
 uaDescription :: Lens' UpdateApp (Maybe Text)
-uaDescription = lens _uaDescription (\s a -> s {_uaDescription = a})
+uaDescription = lens _uaDescription (\ s a -> s{_uaDescription = a})
 
 -- | The app ID.
 uaAppId :: Lens' UpdateApp Text
-uaAppId = lens _uaAppId (\s a -> s {_uaAppId = a})
+uaAppId = lens _uaAppId (\ s a -> s{_uaAppId = a})
 
 instance AWSRequest UpdateApp where
-  type Rs UpdateApp = UpdateAppResponse
-  request = postJSON opsWorks
-  response = receiveNull UpdateAppResponse'
+        type Rs UpdateApp = UpdateAppResponse
+        request = postJSON opsWorks
+        response = receiveNull UpdateAppResponse'
 
-instance Hashable UpdateApp
+instance Hashable UpdateApp where
 
-instance NFData UpdateApp
+instance NFData UpdateApp where
 
 instance ToHeaders UpdateApp where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("OpsWorks_20130218.UpdateApp" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("OpsWorks_20130218.UpdateApp" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON UpdateApp where
-  toJSON UpdateApp' {..} =
-    object
-      (catMaybes
-         [ ("SslConfiguration" .=) <$> _uaSSLConfiguration
-         , ("Environment" .=) <$> _uaEnvironment
-         , ("EnableSsl" .=) <$> _uaEnableSSL
-         , ("DataSources" .=) <$> _uaDataSources
-         , ("AppSource" .=) <$> _uaAppSource
-         , ("Attributes" .=) <$> _uaAttributes
-         , ("Name" .=) <$> _uaName
-         , ("Type" .=) <$> _uaType
-         , ("Domains" .=) <$> _uaDomains
-         , ("Description" .=) <$> _uaDescription
-         , Just ("AppId" .= _uaAppId)
-         ])
+        toJSON UpdateApp'{..}
+          = object
+              (catMaybes
+                 [("SslConfiguration" .=) <$> _uaSSLConfiguration,
+                  ("Environment" .=) <$> _uaEnvironment,
+                  ("EnableSsl" .=) <$> _uaEnableSSL,
+                  ("DataSources" .=) <$> _uaDataSources,
+                  ("AppSource" .=) <$> _uaAppSource,
+                  ("Attributes" .=) <$> _uaAttributes,
+                  ("Name" .=) <$> _uaName, ("Type" .=) <$> _uaType,
+                  ("Domains" .=) <$> _uaDomains,
+                  ("Description" .=) <$> _uaDescription,
+                  Just ("AppId" .= _uaAppId)])
 
 instance ToPath UpdateApp where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery UpdateApp where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'updateAppResponse' smart constructor.
 data UpdateAppResponse =
   UpdateAppResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateAppResponse' with the minimum fields required to make a request.
 --
-updateAppResponse :: UpdateAppResponse
+updateAppResponse
+    :: UpdateAppResponse
 updateAppResponse = UpdateAppResponse'
 
-instance NFData UpdateAppResponse
+
+instance NFData UpdateAppResponse where

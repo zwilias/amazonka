@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Test.AWS.Gen.MarketplaceAnalytics
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -23,6 +24,7 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
+
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -33,6 +35,7 @@ import Test.Tasty
 --             generateDataSet
 --
 --           ]
+
 --     , testGroup "response"
 --         [ responseStartSupportDataExport $
 --             startSupportDataExportResponse
@@ -42,26 +45,30 @@ import Test.Tasty
 --
 --           ]
 --     ]
+
 -- Requests
+
 requestStartSupportDataExport :: StartSupportDataExport -> TestTree
-requestStartSupportDataExport =
-  req "StartSupportDataExport" "fixture/StartSupportDataExport.yaml"
+requestStartSupportDataExport = req
+    "StartSupportDataExport"
+    "fixture/StartSupportDataExport.yaml"
 
 requestGenerateDataSet :: GenerateDataSet -> TestTree
-requestGenerateDataSet = req "GenerateDataSet" "fixture/GenerateDataSet.yaml"
+requestGenerateDataSet = req
+    "GenerateDataSet"
+    "fixture/GenerateDataSet.yaml"
 
 -- Responses
+
 responseStartSupportDataExport :: StartSupportDataExportResponse -> TestTree
-responseStartSupportDataExport =
-  res
+responseStartSupportDataExport = res
     "StartSupportDataExportResponse"
     "fixture/StartSupportDataExportResponse.proto"
     marketplaceAnalytics
     (Proxy :: Proxy StartSupportDataExport)
 
 responseGenerateDataSet :: GenerateDataSetResponse -> TestTree
-responseGenerateDataSet =
-  res
+responseGenerateDataSet = res
     "GenerateDataSetResponse"
     "fixture/GenerateDataSetResponse.proto"
     marketplaceAnalytics

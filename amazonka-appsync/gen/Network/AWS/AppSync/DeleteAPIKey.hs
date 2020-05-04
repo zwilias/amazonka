@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.AppSync.DeleteAPIKey
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.AppSync.DeleteAPIKey
+    (
     -- * Creating a Request
-  ( deleteAPIKey
-  , DeleteAPIKey
+      deleteAPIKey
+    , DeleteAPIKey
     -- * Request Lenses
-  , dakApiId
-  , dakId
+    , dakApiId
+    , dakId
+
     -- * Destructuring the Response
-  , deleteAPIKeyResponse
-  , DeleteAPIKeyResponse
+    , deleteAPIKeyResponse
+    , DeleteAPIKeyResponse
     -- * Response Lenses
-  , dakrsResponseStatus
-  ) where
+    , dakrsResponseStatus
+    ) where
 
 import Network.AWS.AppSync.Types
 import Network.AWS.AppSync.Types.Product
@@ -48,6 +52,7 @@ data DeleteAPIKey =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteAPIKey' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -55,41 +60,48 @@ data DeleteAPIKey =
 -- * 'dakApiId' - The API ID.
 --
 -- * 'dakId' - The ID for the API key.
-deleteAPIKey ::
-     Text -- ^ 'dakApiId'
-  -> Text -- ^ 'dakId'
-  -> DeleteAPIKey
+deleteAPIKey
+    :: Text -- ^ 'dakApiId'
+    -> Text -- ^ 'dakId'
+    -> DeleteAPIKey
 deleteAPIKey pApiId_ pId_ = DeleteAPIKey' {_dakApiId = pApiId_, _dakId = pId_}
+
 
 -- | The API ID.
 dakApiId :: Lens' DeleteAPIKey Text
-dakApiId = lens _dakApiId (\s a -> s {_dakApiId = a})
+dakApiId = lens _dakApiId (\ s a -> s{_dakApiId = a})
 
 -- | The ID for the API key.
 dakId :: Lens' DeleteAPIKey Text
-dakId = lens _dakId (\s a -> s {_dakId = a})
+dakId = lens _dakId (\ s a -> s{_dakId = a})
 
 instance AWSRequest DeleteAPIKey where
-  type Rs DeleteAPIKey = DeleteAPIKeyResponse
-  request = delete appSync
-  response =
-    receiveEmpty (\s h x -> DeleteAPIKeyResponse' <$> (pure (fromEnum s)))
+        type Rs DeleteAPIKey = DeleteAPIKeyResponse
+        request = delete appSync
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 DeleteAPIKeyResponse' <$> (pure (fromEnum s)))
 
-instance Hashable DeleteAPIKey
+instance Hashable DeleteAPIKey where
 
-instance NFData DeleteAPIKey
+instance NFData DeleteAPIKey where
 
 instance ToHeaders DeleteAPIKey where
-  toHeaders =
-    const
-      (mconcat ["Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)])
+        toHeaders
+          = const
+              (mconcat
+                 ["Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToPath DeleteAPIKey where
-  toPath DeleteAPIKey' {..} =
-    mconcat ["/v1/apis/", toBS _dakApiId, "/apikeys/", toBS _dakId]
+        toPath DeleteAPIKey'{..}
+          = mconcat
+              ["/v1/apis/", toBS _dakApiId, "/apikeys/",
+               toBS _dakId]
 
 instance ToQuery DeleteAPIKey where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'deleteAPIKeyResponse' smart constructor.
 newtype DeleteAPIKeyResponse =
@@ -98,20 +110,21 @@ newtype DeleteAPIKeyResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteAPIKeyResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dakrsResponseStatus' - -- | The response status code.
-deleteAPIKeyResponse ::
-     Int -- ^ 'dakrsResponseStatus'
-  -> DeleteAPIKeyResponse
+deleteAPIKeyResponse
+    :: Int -- ^ 'dakrsResponseStatus'
+    -> DeleteAPIKeyResponse
 deleteAPIKeyResponse pResponseStatus_ =
   DeleteAPIKeyResponse' {_dakrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 dakrsResponseStatus :: Lens' DeleteAPIKeyResponse Int
-dakrsResponseStatus =
-  lens _dakrsResponseStatus (\s a -> s {_dakrsResponseStatus = a})
+dakrsResponseStatus = lens _dakrsResponseStatus (\ s a -> s{_dakrsResponseStatus = a})
 
-instance NFData DeleteAPIKeyResponse
+instance NFData DeleteAPIKeyResponse where

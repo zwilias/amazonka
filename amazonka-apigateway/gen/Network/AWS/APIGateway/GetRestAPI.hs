@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.APIGateway.GetRestAPI
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,27 +22,30 @@
 --
 --
 module Network.AWS.APIGateway.GetRestAPI
+    (
     -- * Creating a Request
-  ( getRestAPI
-  , GetRestAPI
+      getRestAPI
+    , GetRestAPI
     -- * Request Lenses
-  , graRestAPIId
+    , graRestAPIId
+
     -- * Destructuring the Response
-  , restAPI
-  , RestAPI
+    , restAPI
+    , RestAPI
     -- * Response Lenses
-  , raMinimumCompressionSize
-  , raBinaryMediaTypes
-  , raWarnings
-  , raCreatedDate
-  , raName
-  , raVersion
-  , raApiKeySource
-  , raId
-  , raPolicy
-  , raEndpointConfiguration
-  , raDescription
-  ) where
+    , raMinimumCompressionSize
+    , raBinaryMediaTypes
+    , raWarnings
+    , raCreatedDate
+    , raName
+    , raVersion
+    , raApiKeySource
+    , raId
+    , raPolicy
+    , raEndpointConfiguration
+    , raDescription
+    , raTags
+    ) where
 
 import Network.AWS.APIGateway.Types
 import Network.AWS.APIGateway.Types.Product
@@ -60,34 +65,40 @@ newtype GetRestAPI =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetRestAPI' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'graRestAPIId' - [Required] The string identifier of the associated 'RestApi' .
-getRestAPI ::
-     Text -- ^ 'graRestAPIId'
-  -> GetRestAPI
+getRestAPI
+    :: Text -- ^ 'graRestAPIId'
+    -> GetRestAPI
 getRestAPI pRestAPIId_ = GetRestAPI' {_graRestAPIId = pRestAPIId_}
+
 
 -- | [Required] The string identifier of the associated 'RestApi' .
 graRestAPIId :: Lens' GetRestAPI Text
-graRestAPIId = lens _graRestAPIId (\s a -> s {_graRestAPIId = a})
+graRestAPIId = lens _graRestAPIId (\ s a -> s{_graRestAPIId = a})
 
 instance AWSRequest GetRestAPI where
-  type Rs GetRestAPI = RestAPI
-  request = get apiGateway
-  response = receiveJSON (\s h x -> eitherParseJSON x)
+        type Rs GetRestAPI = RestAPI
+        request = get apiGateway
+        response = receiveJSON (\ s h x -> eitherParseJSON x)
 
-instance Hashable GetRestAPI
+instance Hashable GetRestAPI where
 
-instance NFData GetRestAPI
+instance NFData GetRestAPI where
 
 instance ToHeaders GetRestAPI where
-  toHeaders = const (mconcat ["Accept" =# ("application/json" :: ByteString)])
+        toHeaders
+          = const
+              (mconcat
+                 ["Accept" =# ("application/json" :: ByteString)])
 
 instance ToPath GetRestAPI where
-  toPath GetRestAPI' {..} = mconcat ["/restapis/", toBS _graRestAPIId]
+        toPath GetRestAPI'{..}
+          = mconcat ["/restapis/", toBS _graRestAPIId]
 
 instance ToQuery GetRestAPI where
-  toQuery = const mempty
+        toQuery = const mempty

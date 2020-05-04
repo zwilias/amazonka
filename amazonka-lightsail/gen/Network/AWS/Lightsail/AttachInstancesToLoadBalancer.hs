@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Lightsail.AttachInstancesToLoadBalancer
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,19 +24,21 @@
 -- After some time, the instances are attached to the load balancer and the health check status is available.
 --
 module Network.AWS.Lightsail.AttachInstancesToLoadBalancer
+    (
     -- * Creating a Request
-  ( attachInstancesToLoadBalancer
-  , AttachInstancesToLoadBalancer
+      attachInstancesToLoadBalancer
+    , AttachInstancesToLoadBalancer
     -- * Request Lenses
-  , aitlbLoadBalancerName
-  , aitlbInstanceNames
+    , aitlbLoadBalancerName
+    , aitlbInstanceNames
+
     -- * Destructuring the Response
-  , attachInstancesToLoadBalancerResponse
-  , AttachInstancesToLoadBalancerResponse
+    , attachInstancesToLoadBalancerResponse
+    , AttachInstancesToLoadBalancerResponse
     -- * Response Lenses
-  , aitlbrsOperations
-  , aitlbrsResponseStatus
-  ) where
+    , aitlbrsOperations
+    , aitlbrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
@@ -51,6 +55,7 @@ data AttachInstancesToLoadBalancer =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AttachInstancesToLoadBalancer' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -58,59 +63,61 @@ data AttachInstancesToLoadBalancer =
 -- * 'aitlbLoadBalancerName' - The name of the load balancer.
 --
 -- * 'aitlbInstanceNames' - An array of strings representing the instance name(s) you want to attach to your load balancer. An instance must be @running@ before you can attach it to your load balancer. There are no additional limits on the number of instances you can attach to your load balancer, aside from the limit of Lightsail instances you can create in your account (20).
-attachInstancesToLoadBalancer ::
-     Text -- ^ 'aitlbLoadBalancerName'
-  -> AttachInstancesToLoadBalancer
+attachInstancesToLoadBalancer
+    :: Text -- ^ 'aitlbLoadBalancerName'
+    -> AttachInstancesToLoadBalancer
 attachInstancesToLoadBalancer pLoadBalancerName_ =
   AttachInstancesToLoadBalancer'
     {_aitlbLoadBalancerName = pLoadBalancerName_, _aitlbInstanceNames = mempty}
 
+
 -- | The name of the load balancer.
 aitlbLoadBalancerName :: Lens' AttachInstancesToLoadBalancer Text
-aitlbLoadBalancerName =
-  lens _aitlbLoadBalancerName (\s a -> s {_aitlbLoadBalancerName = a})
+aitlbLoadBalancerName = lens _aitlbLoadBalancerName (\ s a -> s{_aitlbLoadBalancerName = a})
 
 -- | An array of strings representing the instance name(s) you want to attach to your load balancer. An instance must be @running@ before you can attach it to your load balancer. There are no additional limits on the number of instances you can attach to your load balancer, aside from the limit of Lightsail instances you can create in your account (20).
 aitlbInstanceNames :: Lens' AttachInstancesToLoadBalancer [Text]
-aitlbInstanceNames =
-  lens _aitlbInstanceNames (\s a -> s {_aitlbInstanceNames = a}) . _Coerce
+aitlbInstanceNames = lens _aitlbInstanceNames (\ s a -> s{_aitlbInstanceNames = a}) . _Coerce
 
-instance AWSRequest AttachInstancesToLoadBalancer where
-  type Rs AttachInstancesToLoadBalancer = AttachInstancesToLoadBalancerResponse
-  request = postJSON lightsail
-  response =
-    receiveJSON
-      (\s h x ->
-         AttachInstancesToLoadBalancerResponse' <$>
-         (x .?> "operations" .!@ mempty) <*>
-         (pure (fromEnum s)))
+instance AWSRequest AttachInstancesToLoadBalancer
+         where
+        type Rs AttachInstancesToLoadBalancer =
+             AttachInstancesToLoadBalancerResponse
+        request = postJSON lightsail
+        response
+          = receiveJSON
+              (\ s h x ->
+                 AttachInstancesToLoadBalancerResponse' <$>
+                   (x .?> "operations" .!@ mempty) <*>
+                     (pure (fromEnum s)))
 
-instance Hashable AttachInstancesToLoadBalancer
+instance Hashable AttachInstancesToLoadBalancer where
 
-instance NFData AttachInstancesToLoadBalancer
+instance NFData AttachInstancesToLoadBalancer where
 
-instance ToHeaders AttachInstancesToLoadBalancer where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("Lightsail_20161128.AttachInstancesToLoadBalancer" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+instance ToHeaders AttachInstancesToLoadBalancer
+         where
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("Lightsail_20161128.AttachInstancesToLoadBalancer"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON AttachInstancesToLoadBalancer where
-  toJSON AttachInstancesToLoadBalancer' {..} =
-    object
-      (catMaybes
-         [ Just ("loadBalancerName" .= _aitlbLoadBalancerName)
-         , Just ("instanceNames" .= _aitlbInstanceNames)
-         ])
+        toJSON AttachInstancesToLoadBalancer'{..}
+          = object
+              (catMaybes
+                 [Just ("loadBalancerName" .= _aitlbLoadBalancerName),
+                  Just ("instanceNames" .= _aitlbInstanceNames)])
 
 instance ToPath AttachInstancesToLoadBalancer where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery AttachInstancesToLoadBalancer where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'attachInstancesToLoadBalancerResponse' smart constructor.
 data AttachInstancesToLoadBalancerResponse =
@@ -120,6 +127,7 @@ data AttachInstancesToLoadBalancerResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AttachInstancesToLoadBalancerResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -127,22 +135,21 @@ data AttachInstancesToLoadBalancerResponse =
 -- * 'aitlbrsOperations' - An object representing the API operations.
 --
 -- * 'aitlbrsResponseStatus' - -- | The response status code.
-attachInstancesToLoadBalancerResponse ::
-     Int -- ^ 'aitlbrsResponseStatus'
-  -> AttachInstancesToLoadBalancerResponse
+attachInstancesToLoadBalancerResponse
+    :: Int -- ^ 'aitlbrsResponseStatus'
+    -> AttachInstancesToLoadBalancerResponse
 attachInstancesToLoadBalancerResponse pResponseStatus_ =
   AttachInstancesToLoadBalancerResponse'
     {_aitlbrsOperations = Nothing, _aitlbrsResponseStatus = pResponseStatus_}
 
+
 -- | An object representing the API operations.
 aitlbrsOperations :: Lens' AttachInstancesToLoadBalancerResponse [Operation]
-aitlbrsOperations =
-  lens _aitlbrsOperations (\s a -> s {_aitlbrsOperations = a}) .
-  _Default . _Coerce
+aitlbrsOperations = lens _aitlbrsOperations (\ s a -> s{_aitlbrsOperations = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 aitlbrsResponseStatus :: Lens' AttachInstancesToLoadBalancerResponse Int
-aitlbrsResponseStatus =
-  lens _aitlbrsResponseStatus (\s a -> s {_aitlbrsResponseStatus = a})
+aitlbrsResponseStatus = lens _aitlbrsResponseStatus (\ s a -> s{_aitlbrsResponseStatus = a})
 
 instance NFData AttachInstancesToLoadBalancerResponse
+         where

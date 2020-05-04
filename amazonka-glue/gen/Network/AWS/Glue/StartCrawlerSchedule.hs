@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Glue.StartCrawlerSchedule
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,17 +22,19 @@
 --
 --
 module Network.AWS.Glue.StartCrawlerSchedule
+    (
     -- * Creating a Request
-  ( startCrawlerSchedule
-  , StartCrawlerSchedule
+      startCrawlerSchedule
+    , StartCrawlerSchedule
     -- * Request Lenses
-  , scsCrawlerName
+    , scsCrawlerName
+
     -- * Destructuring the Response
-  , startCrawlerScheduleResponse
-  , StartCrawlerScheduleResponse
+    , startCrawlerScheduleResponse
+    , StartCrawlerScheduleResponse
     -- * Response Lenses
-  , scsrsResponseStatus
-  ) where
+    , scsrsResponseStatus
+    ) where
 
 import Network.AWS.Glue.Types
 import Network.AWS.Glue.Types.Product
@@ -46,49 +50,56 @@ newtype StartCrawlerSchedule =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'StartCrawlerSchedule' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'scsCrawlerName' - Name of the crawler to schedule.
-startCrawlerSchedule ::
-     Text -- ^ 'scsCrawlerName'
-  -> StartCrawlerSchedule
+startCrawlerSchedule
+    :: Text -- ^ 'scsCrawlerName'
+    -> StartCrawlerSchedule
 startCrawlerSchedule pCrawlerName_ =
   StartCrawlerSchedule' {_scsCrawlerName = pCrawlerName_}
 
+
 -- | Name of the crawler to schedule.
 scsCrawlerName :: Lens' StartCrawlerSchedule Text
-scsCrawlerName = lens _scsCrawlerName (\s a -> s {_scsCrawlerName = a})
+scsCrawlerName = lens _scsCrawlerName (\ s a -> s{_scsCrawlerName = a})
 
 instance AWSRequest StartCrawlerSchedule where
-  type Rs StartCrawlerSchedule = StartCrawlerScheduleResponse
-  request = postJSON glue
-  response =
-    receiveEmpty
-      (\s h x -> StartCrawlerScheduleResponse' <$> (pure (fromEnum s)))
+        type Rs StartCrawlerSchedule =
+             StartCrawlerScheduleResponse
+        request = postJSON glue
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 StartCrawlerScheduleResponse' <$>
+                   (pure (fromEnum s)))
 
-instance Hashable StartCrawlerSchedule
+instance Hashable StartCrawlerSchedule where
 
-instance NFData StartCrawlerSchedule
+instance NFData StartCrawlerSchedule where
 
 instance ToHeaders StartCrawlerSchedule where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("AWSGlue.StartCrawlerSchedule" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWSGlue.StartCrawlerSchedule" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON StartCrawlerSchedule where
-  toJSON StartCrawlerSchedule' {..} =
-    object (catMaybes [Just ("CrawlerName" .= _scsCrawlerName)])
+        toJSON StartCrawlerSchedule'{..}
+          = object
+              (catMaybes [Just ("CrawlerName" .= _scsCrawlerName)])
 
 instance ToPath StartCrawlerSchedule where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery StartCrawlerSchedule where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'startCrawlerScheduleResponse' smart constructor.
 newtype StartCrawlerScheduleResponse =
@@ -97,20 +108,21 @@ newtype StartCrawlerScheduleResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'StartCrawlerScheduleResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'scsrsResponseStatus' - -- | The response status code.
-startCrawlerScheduleResponse ::
-     Int -- ^ 'scsrsResponseStatus'
-  -> StartCrawlerScheduleResponse
+startCrawlerScheduleResponse
+    :: Int -- ^ 'scsrsResponseStatus'
+    -> StartCrawlerScheduleResponse
 startCrawlerScheduleResponse pResponseStatus_ =
   StartCrawlerScheduleResponse' {_scsrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 scsrsResponseStatus :: Lens' StartCrawlerScheduleResponse Int
-scsrsResponseStatus =
-  lens _scsrsResponseStatus (\s a -> s {_scsrsResponseStatus = a})
+scsrsResponseStatus = lens _scsrsResponseStatus (\ s a -> s{_scsrsResponseStatus = a})
 
-instance NFData StartCrawlerScheduleResponse
+instance NFData StartCrawlerScheduleResponse where

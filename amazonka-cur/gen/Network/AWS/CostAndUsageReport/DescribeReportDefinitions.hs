@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CostAndUsageReport.DescribeReportDefinitions
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -16,24 +18,28 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Describe a list of report definitions owned by the account
+-- Lists the AWS Cost and Usage reports available to this account.
+--
+--
 --
 -- This operation returns paginated results.
 module Network.AWS.CostAndUsageReport.DescribeReportDefinitions
+    (
     -- * Creating a Request
-  ( describeReportDefinitions
-  , DescribeReportDefinitions
+      describeReportDefinitions
+    , DescribeReportDefinitions
     -- * Request Lenses
-  , drdNextToken
-  , drdMaxResults
+    , drdNextToken
+    , drdMaxResults
+
     -- * Destructuring the Response
-  , describeReportDefinitionsResponse
-  , DescribeReportDefinitionsResponse
+    , describeReportDefinitionsResponse
+    , DescribeReportDefinitionsResponse
     -- * Response Lenses
-  , drdrsNextToken
-  , drdrsReportDefinitions
-  , drdrsResponseStatus
-  ) where
+    , drdrsNextToken
+    , drdrsReportDefinitions
+    , drdrsResponseStatus
+    ) where
 
 import Network.AWS.CostAndUsageReport.Types
 import Network.AWS.CostAndUsageReport.Types.Product
@@ -43,7 +49,9 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Request of DescribeReportDefinitions
+-- | Requests a list of AWS Cost and Usage reports owned by the account.
+--
+--
 --
 -- /See:/ 'describeReportDefinitions' smart constructor.
 data DescribeReportDefinitions =
@@ -53,6 +61,7 @@ data DescribeReportDefinitions =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeReportDefinitions' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -60,63 +69,69 @@ data DescribeReportDefinitions =
 -- * 'drdNextToken' - Undocumented member.
 --
 -- * 'drdMaxResults' - Undocumented member.
-describeReportDefinitions :: DescribeReportDefinitions
+describeReportDefinitions
+    :: DescribeReportDefinitions
 describeReportDefinitions =
   DescribeReportDefinitions' {_drdNextToken = Nothing, _drdMaxResults = Nothing}
 
+
 -- | Undocumented member.
 drdNextToken :: Lens' DescribeReportDefinitions (Maybe Text)
-drdNextToken = lens _drdNextToken (\s a -> s {_drdNextToken = a})
+drdNextToken = lens _drdNextToken (\ s a -> s{_drdNextToken = a})
 
 -- | Undocumented member.
 drdMaxResults :: Lens' DescribeReportDefinitions (Maybe Natural)
-drdMaxResults =
-  lens _drdMaxResults (\s a -> s {_drdMaxResults = a}) . mapping _Nat
+drdMaxResults = lens _drdMaxResults (\ s a -> s{_drdMaxResults = a}) . mapping _Nat
 
 instance AWSPager DescribeReportDefinitions where
-  page rq rs
-    | stop (rs ^. drdrsNextToken) = Nothing
-    | stop (rs ^. drdrsReportDefinitions) = Nothing
-    | otherwise = Just $ rq & drdNextToken .~ rs ^. drdrsNextToken
+        page rq rs
+          | stop (rs ^. drdrsNextToken) = Nothing
+          | stop (rs ^. drdrsReportDefinitions) = Nothing
+          | otherwise =
+            Just $ rq & drdNextToken .~ rs ^. drdrsNextToken
 
 instance AWSRequest DescribeReportDefinitions where
-  type Rs DescribeReportDefinitions = DescribeReportDefinitionsResponse
-  request = postJSON costAndUsageReport
-  response =
-    receiveJSON
-      (\s h x ->
-         DescribeReportDefinitionsResponse' <$> (x .?> "NextToken") <*>
-         (x .?> "ReportDefinitions" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs DescribeReportDefinitions =
+             DescribeReportDefinitionsResponse
+        request = postJSON costAndUsageReport
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DescribeReportDefinitionsResponse' <$>
+                   (x .?> "NextToken") <*>
+                     (x .?> "ReportDefinitions" .!@ mempty)
+                     <*> (pure (fromEnum s)))
 
-instance Hashable DescribeReportDefinitions
+instance Hashable DescribeReportDefinitions where
 
-instance NFData DescribeReportDefinitions
+instance NFData DescribeReportDefinitions where
 
 instance ToHeaders DescribeReportDefinitions where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AWSOrigamiServiceGatewayService.DescribeReportDefinitions" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWSOrigamiServiceGatewayService.DescribeReportDefinitions"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DescribeReportDefinitions where
-  toJSON DescribeReportDefinitions' {..} =
-    object
-      (catMaybes
-         [ ("NextToken" .=) <$> _drdNextToken
-         , ("MaxResults" .=) <$> _drdMaxResults
-         ])
+        toJSON DescribeReportDefinitions'{..}
+          = object
+              (catMaybes
+                 [("NextToken" .=) <$> _drdNextToken,
+                  ("MaxResults" .=) <$> _drdMaxResults])
 
 instance ToPath DescribeReportDefinitions where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DescribeReportDefinitions where
-  toQuery = const mempty
+        toQuery = const mempty
 
--- | Response of DescribeReportDefinitions
+-- | If the action is successful, the service sends back an HTTP 200 response.
+--
+--
 --
 -- /See:/ 'describeReportDefinitionsResponse' smart constructor.
 data DescribeReportDefinitionsResponse =
@@ -127,18 +142,19 @@ data DescribeReportDefinitionsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeReportDefinitionsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'drdrsNextToken' - Undocumented member.
 --
--- * 'drdrsReportDefinitions' - Undocumented member.
+-- * 'drdrsReportDefinitions' - A list of AWS Cost and Usage reports owned by the account.
 --
 -- * 'drdrsResponseStatus' - -- | The response status code.
-describeReportDefinitionsResponse ::
-     Int -- ^ 'drdrsResponseStatus'
-  -> DescribeReportDefinitionsResponse
+describeReportDefinitionsResponse
+    :: Int -- ^ 'drdrsResponseStatus'
+    -> DescribeReportDefinitionsResponse
 describeReportDefinitionsResponse pResponseStatus_ =
   DescribeReportDefinitionsResponse'
     { _drdrsNextToken = Nothing
@@ -146,20 +162,18 @@ describeReportDefinitionsResponse pResponseStatus_ =
     , _drdrsResponseStatus = pResponseStatus_
     }
 
--- | Undocumented member.
-drdrsNextToken :: Lens' DescribeReportDefinitionsResponse (Maybe Text)
-drdrsNextToken = lens _drdrsNextToken (\s a -> s {_drdrsNextToken = a})
 
 -- | Undocumented member.
-drdrsReportDefinitions ::
-     Lens' DescribeReportDefinitionsResponse [ReportDefinition]
-drdrsReportDefinitions =
-  lens _drdrsReportDefinitions (\s a -> s {_drdrsReportDefinitions = a}) .
-  _Default . _Coerce
+drdrsNextToken :: Lens' DescribeReportDefinitionsResponse (Maybe Text)
+drdrsNextToken = lens _drdrsNextToken (\ s a -> s{_drdrsNextToken = a})
+
+-- | A list of AWS Cost and Usage reports owned by the account.
+drdrsReportDefinitions :: Lens' DescribeReportDefinitionsResponse [ReportDefinition]
+drdrsReportDefinitions = lens _drdrsReportDefinitions (\ s a -> s{_drdrsReportDefinitions = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 drdrsResponseStatus :: Lens' DescribeReportDefinitionsResponse Int
-drdrsResponseStatus =
-  lens _drdrsResponseStatus (\s a -> s {_drdrsResponseStatus = a})
+drdrsResponseStatus = lens _drdrsResponseStatus (\ s a -> s{_drdrsResponseStatus = a})
 
 instance NFData DescribeReportDefinitionsResponse
+         where

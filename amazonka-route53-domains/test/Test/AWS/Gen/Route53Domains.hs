@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Test.AWS.Gen.Route53Domains
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -23,6 +24,7 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
+
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -99,6 +101,7 @@ import Test.Tasty
 --             listDomains
 --
 --           ]
+
 --     , testGroup "response"
 --         [ responseListOperations $
 --             listOperationsResponse
@@ -174,292 +177,294 @@ import Test.Tasty
 --
 --           ]
 --     ]
+
 -- Requests
+
 requestListOperations :: ListOperations -> TestTree
-requestListOperations = req "ListOperations" "fixture/ListOperations.yaml"
+requestListOperations = req
+    "ListOperations"
+    "fixture/ListOperations.yaml"
 
 requestGetDomainDetail :: GetDomainDetail -> TestTree
-requestGetDomainDetail = req "GetDomainDetail" "fixture/GetDomainDetail.yaml"
+requestGetDomainDetail = req
+    "GetDomainDetail"
+    "fixture/GetDomainDetail.yaml"
 
 requestCheckDomainTransferability :: CheckDomainTransferability -> TestTree
-requestCheckDomainTransferability =
-  req "CheckDomainTransferability" "fixture/CheckDomainTransferability.yaml"
+requestCheckDomainTransferability = req
+    "CheckDomainTransferability"
+    "fixture/CheckDomainTransferability.yaml"
 
 requestUpdateDomainContactPrivacy :: UpdateDomainContactPrivacy -> TestTree
-requestUpdateDomainContactPrivacy =
-  req "UpdateDomainContactPrivacy" "fixture/UpdateDomainContactPrivacy.yaml"
+requestUpdateDomainContactPrivacy = req
+    "UpdateDomainContactPrivacy"
+    "fixture/UpdateDomainContactPrivacy.yaml"
 
 requestGetOperationDetail :: GetOperationDetail -> TestTree
-requestGetOperationDetail =
-  req "GetOperationDetail" "fixture/GetOperationDetail.yaml"
+requestGetOperationDetail = req
+    "GetOperationDetail"
+    "fixture/GetOperationDetail.yaml"
 
 requestEnableDomainAutoRenew :: EnableDomainAutoRenew -> TestTree
-requestEnableDomainAutoRenew =
-  req "EnableDomainAutoRenew" "fixture/EnableDomainAutoRenew.yaml"
+requestEnableDomainAutoRenew = req
+    "EnableDomainAutoRenew"
+    "fixture/EnableDomainAutoRenew.yaml"
 
-requestResendContactReachabilityEmail ::
-     ResendContactReachabilityEmail -> TestTree
-requestResendContactReachabilityEmail =
-  req
+requestResendContactReachabilityEmail :: ResendContactReachabilityEmail -> TestTree
+requestResendContactReachabilityEmail = req
     "ResendContactReachabilityEmail"
     "fixture/ResendContactReachabilityEmail.yaml"
 
 requestDisableDomainAutoRenew :: DisableDomainAutoRenew -> TestTree
-requestDisableDomainAutoRenew =
-  req "DisableDomainAutoRenew" "fixture/DisableDomainAutoRenew.yaml"
+requestDisableDomainAutoRenew = req
+    "DisableDomainAutoRenew"
+    "fixture/DisableDomainAutoRenew.yaml"
 
 requestRenewDomain :: RenewDomain -> TestTree
-requestRenewDomain = req "RenewDomain" "fixture/RenewDomain.yaml"
+requestRenewDomain = req
+    "RenewDomain"
+    "fixture/RenewDomain.yaml"
 
 requestViewBilling :: ViewBilling -> TestTree
-requestViewBilling = req "ViewBilling" "fixture/ViewBilling.yaml"
+requestViewBilling = req
+    "ViewBilling"
+    "fixture/ViewBilling.yaml"
 
 requestUpdateDomainContact :: UpdateDomainContact -> TestTree
-requestUpdateDomainContact =
-  req "UpdateDomainContact" "fixture/UpdateDomainContact.yaml"
+requestUpdateDomainContact = req
+    "UpdateDomainContact"
+    "fixture/UpdateDomainContact.yaml"
 
 requestEnableDomainTransferLock :: EnableDomainTransferLock -> TestTree
-requestEnableDomainTransferLock =
-  req "EnableDomainTransferLock" "fixture/EnableDomainTransferLock.yaml"
+requestEnableDomainTransferLock = req
+    "EnableDomainTransferLock"
+    "fixture/EnableDomainTransferLock.yaml"
 
 requestRegisterDomain :: RegisterDomain -> TestTree
-requestRegisterDomain = req "RegisterDomain" "fixture/RegisterDomain.yaml"
+requestRegisterDomain = req
+    "RegisterDomain"
+    "fixture/RegisterDomain.yaml"
 
 requestGetDomainSuggestions :: GetDomainSuggestions -> TestTree
-requestGetDomainSuggestions =
-  req "GetDomainSuggestions" "fixture/GetDomainSuggestions.yaml"
+requestGetDomainSuggestions = req
+    "GetDomainSuggestions"
+    "fixture/GetDomainSuggestions.yaml"
 
 requestDisableDomainTransferLock :: DisableDomainTransferLock -> TestTree
-requestDisableDomainTransferLock =
-  req "DisableDomainTransferLock" "fixture/DisableDomainTransferLock.yaml"
+requestDisableDomainTransferLock = req
+    "DisableDomainTransferLock"
+    "fixture/DisableDomainTransferLock.yaml"
 
 requestCheckDomainAvailability :: CheckDomainAvailability -> TestTree
-requestCheckDomainAvailability =
-  req "CheckDomainAvailability" "fixture/CheckDomainAvailability.yaml"
+requestCheckDomainAvailability = req
+    "CheckDomainAvailability"
+    "fixture/CheckDomainAvailability.yaml"
 
 requestGetContactReachabilityStatus :: GetContactReachabilityStatus -> TestTree
-requestGetContactReachabilityStatus =
-  req "GetContactReachabilityStatus" "fixture/GetContactReachabilityStatus.yaml"
+requestGetContactReachabilityStatus = req
+    "GetContactReachabilityStatus"
+    "fixture/GetContactReachabilityStatus.yaml"
 
 requestListTagsForDomain :: ListTagsForDomain -> TestTree
-requestListTagsForDomain =
-  req "ListTagsForDomain" "fixture/ListTagsForDomain.yaml"
+requestListTagsForDomain = req
+    "ListTagsForDomain"
+    "fixture/ListTagsForDomain.yaml"
 
 requestUpdateDomainNameservers :: UpdateDomainNameservers -> TestTree
-requestUpdateDomainNameservers =
-  req "UpdateDomainNameservers" "fixture/UpdateDomainNameservers.yaml"
+requestUpdateDomainNameservers = req
+    "UpdateDomainNameservers"
+    "fixture/UpdateDomainNameservers.yaml"
 
 requestDeleteTagsForDomain :: DeleteTagsForDomain -> TestTree
-requestDeleteTagsForDomain =
-  req "DeleteTagsForDomain" "fixture/DeleteTagsForDomain.yaml"
+requestDeleteTagsForDomain = req
+    "DeleteTagsForDomain"
+    "fixture/DeleteTagsForDomain.yaml"
 
 requestUpdateTagsForDomain :: UpdateTagsForDomain -> TestTree
-requestUpdateTagsForDomain =
-  req "UpdateTagsForDomain" "fixture/UpdateTagsForDomain.yaml"
+requestUpdateTagsForDomain = req
+    "UpdateTagsForDomain"
+    "fixture/UpdateTagsForDomain.yaml"
 
 requestRetrieveDomainAuthCode :: RetrieveDomainAuthCode -> TestTree
-requestRetrieveDomainAuthCode =
-  req "RetrieveDomainAuthCode" "fixture/RetrieveDomainAuthCode.yaml"
+requestRetrieveDomainAuthCode = req
+    "RetrieveDomainAuthCode"
+    "fixture/RetrieveDomainAuthCode.yaml"
 
 requestTransferDomain :: TransferDomain -> TestTree
-requestTransferDomain = req "TransferDomain" "fixture/TransferDomain.yaml"
+requestTransferDomain = req
+    "TransferDomain"
+    "fixture/TransferDomain.yaml"
 
 requestListDomains :: ListDomains -> TestTree
-requestListDomains = req "ListDomains" "fixture/ListDomains.yaml"
+requestListDomains = req
+    "ListDomains"
+    "fixture/ListDomains.yaml"
 
 -- Responses
+
 responseListOperations :: ListOperationsResponse -> TestTree
-responseListOperations =
-  res
+responseListOperations = res
     "ListOperationsResponse"
     "fixture/ListOperationsResponse.proto"
     route53Domains
     (Proxy :: Proxy ListOperations)
 
 responseGetDomainDetail :: GetDomainDetailResponse -> TestTree
-responseGetDomainDetail =
-  res
+responseGetDomainDetail = res
     "GetDomainDetailResponse"
     "fixture/GetDomainDetailResponse.proto"
     route53Domains
     (Proxy :: Proxy GetDomainDetail)
 
-responseCheckDomainTransferability ::
-     CheckDomainTransferabilityResponse -> TestTree
-responseCheckDomainTransferability =
-  res
+responseCheckDomainTransferability :: CheckDomainTransferabilityResponse -> TestTree
+responseCheckDomainTransferability = res
     "CheckDomainTransferabilityResponse"
     "fixture/CheckDomainTransferabilityResponse.proto"
     route53Domains
     (Proxy :: Proxy CheckDomainTransferability)
 
-responseUpdateDomainContactPrivacy ::
-     UpdateDomainContactPrivacyResponse -> TestTree
-responseUpdateDomainContactPrivacy =
-  res
+responseUpdateDomainContactPrivacy :: UpdateDomainContactPrivacyResponse -> TestTree
+responseUpdateDomainContactPrivacy = res
     "UpdateDomainContactPrivacyResponse"
     "fixture/UpdateDomainContactPrivacyResponse.proto"
     route53Domains
     (Proxy :: Proxy UpdateDomainContactPrivacy)
 
 responseGetOperationDetail :: GetOperationDetailResponse -> TestTree
-responseGetOperationDetail =
-  res
+responseGetOperationDetail = res
     "GetOperationDetailResponse"
     "fixture/GetOperationDetailResponse.proto"
     route53Domains
     (Proxy :: Proxy GetOperationDetail)
 
 responseEnableDomainAutoRenew :: EnableDomainAutoRenewResponse -> TestTree
-responseEnableDomainAutoRenew =
-  res
+responseEnableDomainAutoRenew = res
     "EnableDomainAutoRenewResponse"
     "fixture/EnableDomainAutoRenewResponse.proto"
     route53Domains
     (Proxy :: Proxy EnableDomainAutoRenew)
 
-responseResendContactReachabilityEmail ::
-     ResendContactReachabilityEmailResponse -> TestTree
-responseResendContactReachabilityEmail =
-  res
+responseResendContactReachabilityEmail :: ResendContactReachabilityEmailResponse -> TestTree
+responseResendContactReachabilityEmail = res
     "ResendContactReachabilityEmailResponse"
     "fixture/ResendContactReachabilityEmailResponse.proto"
     route53Domains
     (Proxy :: Proxy ResendContactReachabilityEmail)
 
 responseDisableDomainAutoRenew :: DisableDomainAutoRenewResponse -> TestTree
-responseDisableDomainAutoRenew =
-  res
+responseDisableDomainAutoRenew = res
     "DisableDomainAutoRenewResponse"
     "fixture/DisableDomainAutoRenewResponse.proto"
     route53Domains
     (Proxy :: Proxy DisableDomainAutoRenew)
 
 responseRenewDomain :: RenewDomainResponse -> TestTree
-responseRenewDomain =
-  res
+responseRenewDomain = res
     "RenewDomainResponse"
     "fixture/RenewDomainResponse.proto"
     route53Domains
     (Proxy :: Proxy RenewDomain)
 
 responseViewBilling :: ViewBillingResponse -> TestTree
-responseViewBilling =
-  res
+responseViewBilling = res
     "ViewBillingResponse"
     "fixture/ViewBillingResponse.proto"
     route53Domains
     (Proxy :: Proxy ViewBilling)
 
 responseUpdateDomainContact :: UpdateDomainContactResponse -> TestTree
-responseUpdateDomainContact =
-  res
+responseUpdateDomainContact = res
     "UpdateDomainContactResponse"
     "fixture/UpdateDomainContactResponse.proto"
     route53Domains
     (Proxy :: Proxy UpdateDomainContact)
 
 responseEnableDomainTransferLock :: EnableDomainTransferLockResponse -> TestTree
-responseEnableDomainTransferLock =
-  res
+responseEnableDomainTransferLock = res
     "EnableDomainTransferLockResponse"
     "fixture/EnableDomainTransferLockResponse.proto"
     route53Domains
     (Proxy :: Proxy EnableDomainTransferLock)
 
 responseRegisterDomain :: RegisterDomainResponse -> TestTree
-responseRegisterDomain =
-  res
+responseRegisterDomain = res
     "RegisterDomainResponse"
     "fixture/RegisterDomainResponse.proto"
     route53Domains
     (Proxy :: Proxy RegisterDomain)
 
 responseGetDomainSuggestions :: GetDomainSuggestionsResponse -> TestTree
-responseGetDomainSuggestions =
-  res
+responseGetDomainSuggestions = res
     "GetDomainSuggestionsResponse"
     "fixture/GetDomainSuggestionsResponse.proto"
     route53Domains
     (Proxy :: Proxy GetDomainSuggestions)
 
-responseDisableDomainTransferLock ::
-     DisableDomainTransferLockResponse -> TestTree
-responseDisableDomainTransferLock =
-  res
+responseDisableDomainTransferLock :: DisableDomainTransferLockResponse -> TestTree
+responseDisableDomainTransferLock = res
     "DisableDomainTransferLockResponse"
     "fixture/DisableDomainTransferLockResponse.proto"
     route53Domains
     (Proxy :: Proxy DisableDomainTransferLock)
 
 responseCheckDomainAvailability :: CheckDomainAvailabilityResponse -> TestTree
-responseCheckDomainAvailability =
-  res
+responseCheckDomainAvailability = res
     "CheckDomainAvailabilityResponse"
     "fixture/CheckDomainAvailabilityResponse.proto"
     route53Domains
     (Proxy :: Proxy CheckDomainAvailability)
 
-responseGetContactReachabilityStatus ::
-     GetContactReachabilityStatusResponse -> TestTree
-responseGetContactReachabilityStatus =
-  res
+responseGetContactReachabilityStatus :: GetContactReachabilityStatusResponse -> TestTree
+responseGetContactReachabilityStatus = res
     "GetContactReachabilityStatusResponse"
     "fixture/GetContactReachabilityStatusResponse.proto"
     route53Domains
     (Proxy :: Proxy GetContactReachabilityStatus)
 
 responseListTagsForDomain :: ListTagsForDomainResponse -> TestTree
-responseListTagsForDomain =
-  res
+responseListTagsForDomain = res
     "ListTagsForDomainResponse"
     "fixture/ListTagsForDomainResponse.proto"
     route53Domains
     (Proxy :: Proxy ListTagsForDomain)
 
 responseUpdateDomainNameservers :: UpdateDomainNameserversResponse -> TestTree
-responseUpdateDomainNameservers =
-  res
+responseUpdateDomainNameservers = res
     "UpdateDomainNameserversResponse"
     "fixture/UpdateDomainNameserversResponse.proto"
     route53Domains
     (Proxy :: Proxy UpdateDomainNameservers)
 
 responseDeleteTagsForDomain :: DeleteTagsForDomainResponse -> TestTree
-responseDeleteTagsForDomain =
-  res
+responseDeleteTagsForDomain = res
     "DeleteTagsForDomainResponse"
     "fixture/DeleteTagsForDomainResponse.proto"
     route53Domains
     (Proxy :: Proxy DeleteTagsForDomain)
 
 responseUpdateTagsForDomain :: UpdateTagsForDomainResponse -> TestTree
-responseUpdateTagsForDomain =
-  res
+responseUpdateTagsForDomain = res
     "UpdateTagsForDomainResponse"
     "fixture/UpdateTagsForDomainResponse.proto"
     route53Domains
     (Proxy :: Proxy UpdateTagsForDomain)
 
 responseRetrieveDomainAuthCode :: RetrieveDomainAuthCodeResponse -> TestTree
-responseRetrieveDomainAuthCode =
-  res
+responseRetrieveDomainAuthCode = res
     "RetrieveDomainAuthCodeResponse"
     "fixture/RetrieveDomainAuthCodeResponse.proto"
     route53Domains
     (Proxy :: Proxy RetrieveDomainAuthCode)
 
 responseTransferDomain :: TransferDomainResponse -> TestTree
-responseTransferDomain =
-  res
+responseTransferDomain = res
     "TransferDomainResponse"
     "fixture/TransferDomainResponse.proto"
     route53Domains
     (Proxy :: Proxy TransferDomain)
 
 responseListDomains :: ListDomainsResponse -> TestTree
-responseListDomains =
-  res
+responseListDomains = res
     "ListDomainsResponse"
     "fixture/ListDomainsResponse.proto"
     route53Domains

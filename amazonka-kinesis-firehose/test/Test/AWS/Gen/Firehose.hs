@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Test.AWS.Gen.Firehose
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -23,6 +24,7 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
+
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -57,6 +59,7 @@ import Test.Tasty
 --             deleteDeliveryStream
 --
 --           ]
+
 --     , testGroup "response"
 --         [ responsePutRecord $
 --             putRecordResponse
@@ -90,122 +93,126 @@ import Test.Tasty
 --
 --           ]
 --     ]
+
 -- Requests
+
 requestPutRecord :: PutRecord -> TestTree
-requestPutRecord = req "PutRecord" "fixture/PutRecord.yaml"
+requestPutRecord = req
+    "PutRecord"
+    "fixture/PutRecord.yaml"
 
 requestTagDeliveryStream :: TagDeliveryStream -> TestTree
-requestTagDeliveryStream =
-  req "TagDeliveryStream" "fixture/TagDeliveryStream.yaml"
+requestTagDeliveryStream = req
+    "TagDeliveryStream"
+    "fixture/TagDeliveryStream.yaml"
 
 requestUpdateDestination :: UpdateDestination -> TestTree
-requestUpdateDestination =
-  req "UpdateDestination" "fixture/UpdateDestination.yaml"
+requestUpdateDestination = req
+    "UpdateDestination"
+    "fixture/UpdateDestination.yaml"
 
 requestPutRecordBatch :: PutRecordBatch -> TestTree
-requestPutRecordBatch = req "PutRecordBatch" "fixture/PutRecordBatch.yaml"
+requestPutRecordBatch = req
+    "PutRecordBatch"
+    "fixture/PutRecordBatch.yaml"
 
 requestUntagDeliveryStream :: UntagDeliveryStream -> TestTree
-requestUntagDeliveryStream =
-  req "UntagDeliveryStream" "fixture/UntagDeliveryStream.yaml"
+requestUntagDeliveryStream = req
+    "UntagDeliveryStream"
+    "fixture/UntagDeliveryStream.yaml"
 
 requestCreateDeliveryStream :: CreateDeliveryStream -> TestTree
-requestCreateDeliveryStream =
-  req "CreateDeliveryStream" "fixture/CreateDeliveryStream.yaml"
+requestCreateDeliveryStream = req
+    "CreateDeliveryStream"
+    "fixture/CreateDeliveryStream.yaml"
 
 requestDescribeDeliveryStream :: DescribeDeliveryStream -> TestTree
-requestDescribeDeliveryStream =
-  req "DescribeDeliveryStream" "fixture/DescribeDeliveryStream.yaml"
+requestDescribeDeliveryStream = req
+    "DescribeDeliveryStream"
+    "fixture/DescribeDeliveryStream.yaml"
 
 requestListTagsForDeliveryStream :: ListTagsForDeliveryStream -> TestTree
-requestListTagsForDeliveryStream =
-  req "ListTagsForDeliveryStream" "fixture/ListTagsForDeliveryStream.yaml"
+requestListTagsForDeliveryStream = req
+    "ListTagsForDeliveryStream"
+    "fixture/ListTagsForDeliveryStream.yaml"
 
 requestListDeliveryStreams :: ListDeliveryStreams -> TestTree
-requestListDeliveryStreams =
-  req "ListDeliveryStreams" "fixture/ListDeliveryStreams.yaml"
+requestListDeliveryStreams = req
+    "ListDeliveryStreams"
+    "fixture/ListDeliveryStreams.yaml"
 
 requestDeleteDeliveryStream :: DeleteDeliveryStream -> TestTree
-requestDeleteDeliveryStream =
-  req "DeleteDeliveryStream" "fixture/DeleteDeliveryStream.yaml"
+requestDeleteDeliveryStream = req
+    "DeleteDeliveryStream"
+    "fixture/DeleteDeliveryStream.yaml"
 
 -- Responses
+
 responsePutRecord :: PutRecordResponse -> TestTree
-responsePutRecord =
-  res
+responsePutRecord = res
     "PutRecordResponse"
     "fixture/PutRecordResponse.proto"
     firehose
     (Proxy :: Proxy PutRecord)
 
 responseTagDeliveryStream :: TagDeliveryStreamResponse -> TestTree
-responseTagDeliveryStream =
-  res
+responseTagDeliveryStream = res
     "TagDeliveryStreamResponse"
     "fixture/TagDeliveryStreamResponse.proto"
     firehose
     (Proxy :: Proxy TagDeliveryStream)
 
 responseUpdateDestination :: UpdateDestinationResponse -> TestTree
-responseUpdateDestination =
-  res
+responseUpdateDestination = res
     "UpdateDestinationResponse"
     "fixture/UpdateDestinationResponse.proto"
     firehose
     (Proxy :: Proxy UpdateDestination)
 
 responsePutRecordBatch :: PutRecordBatchResponse -> TestTree
-responsePutRecordBatch =
-  res
+responsePutRecordBatch = res
     "PutRecordBatchResponse"
     "fixture/PutRecordBatchResponse.proto"
     firehose
     (Proxy :: Proxy PutRecordBatch)
 
 responseUntagDeliveryStream :: UntagDeliveryStreamResponse -> TestTree
-responseUntagDeliveryStream =
-  res
+responseUntagDeliveryStream = res
     "UntagDeliveryStreamResponse"
     "fixture/UntagDeliveryStreamResponse.proto"
     firehose
     (Proxy :: Proxy UntagDeliveryStream)
 
 responseCreateDeliveryStream :: CreateDeliveryStreamResponse -> TestTree
-responseCreateDeliveryStream =
-  res
+responseCreateDeliveryStream = res
     "CreateDeliveryStreamResponse"
     "fixture/CreateDeliveryStreamResponse.proto"
     firehose
     (Proxy :: Proxy CreateDeliveryStream)
 
 responseDescribeDeliveryStream :: DescribeDeliveryStreamResponse -> TestTree
-responseDescribeDeliveryStream =
-  res
+responseDescribeDeliveryStream = res
     "DescribeDeliveryStreamResponse"
     "fixture/DescribeDeliveryStreamResponse.proto"
     firehose
     (Proxy :: Proxy DescribeDeliveryStream)
 
-responseListTagsForDeliveryStream ::
-     ListTagsForDeliveryStreamResponse -> TestTree
-responseListTagsForDeliveryStream =
-  res
+responseListTagsForDeliveryStream :: ListTagsForDeliveryStreamResponse -> TestTree
+responseListTagsForDeliveryStream = res
     "ListTagsForDeliveryStreamResponse"
     "fixture/ListTagsForDeliveryStreamResponse.proto"
     firehose
     (Proxy :: Proxy ListTagsForDeliveryStream)
 
 responseListDeliveryStreams :: ListDeliveryStreamsResponse -> TestTree
-responseListDeliveryStreams =
-  res
+responseListDeliveryStreams = res
     "ListDeliveryStreamsResponse"
     "fixture/ListDeliveryStreamsResponse.proto"
     firehose
     (Proxy :: Proxy ListDeliveryStreams)
 
 responseDeleteDeliveryStream :: DeleteDeliveryStreamResponse -> TestTree
-responseDeleteDeliveryStream =
-  res
+responseDeleteDeliveryStream = res
     "DeleteDeliveryStreamResponse"
     "fixture/DeleteDeliveryStreamResponse.proto"
     firehose

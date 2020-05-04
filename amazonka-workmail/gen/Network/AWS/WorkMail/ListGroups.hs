@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.WorkMail.ListGroups
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,21 +24,23 @@
 --
 -- This operation returns paginated results.
 module Network.AWS.WorkMail.ListGroups
+    (
     -- * Creating a Request
-  ( listGroups
-  , ListGroups
+      listGroups
+    , ListGroups
     -- * Request Lenses
-  , lgNextToken
-  , lgMaxResults
-  , lgOrganizationId
+    , lgNextToken
+    , lgMaxResults
+    , lgOrganizationId
+
     -- * Destructuring the Response
-  , listGroupsResponse
-  , ListGroupsResponse
+    , listGroupsResponse
+    , ListGroupsResponse
     -- * Response Lenses
-  , lgrsGroups
-  , lgrsNextToken
-  , lgrsResponseStatus
-  ) where
+    , lgrsGroups
+    , lgrsNextToken
+    , lgrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Pager
@@ -55,6 +59,7 @@ data ListGroups =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListGroups' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -64,9 +69,9 @@ data ListGroups =
 -- * 'lgMaxResults' - The maximum number of results to return in a single call.
 --
 -- * 'lgOrganizationId' - The identifier for the organization under which the groups exist.
-listGroups ::
-     Text -- ^ 'lgOrganizationId'
-  -> ListGroups
+listGroups
+    :: Text -- ^ 'lgOrganizationId'
+    -> ListGroups
 listGroups pOrganizationId_ =
   ListGroups'
     { _lgNextToken = Nothing
@@ -74,60 +79,62 @@ listGroups pOrganizationId_ =
     , _lgOrganizationId = pOrganizationId_
     }
 
+
 -- | The token to use to retrieve the next page of results. The first call does not contain any tokens.
 lgNextToken :: Lens' ListGroups (Maybe Text)
-lgNextToken = lens _lgNextToken (\s a -> s {_lgNextToken = a})
+lgNextToken = lens _lgNextToken (\ s a -> s{_lgNextToken = a})
 
 -- | The maximum number of results to return in a single call.
 lgMaxResults :: Lens' ListGroups (Maybe Natural)
-lgMaxResults = lens _lgMaxResults (\s a -> s {_lgMaxResults = a}) . mapping _Nat
+lgMaxResults = lens _lgMaxResults (\ s a -> s{_lgMaxResults = a}) . mapping _Nat
 
 -- | The identifier for the organization under which the groups exist.
 lgOrganizationId :: Lens' ListGroups Text
-lgOrganizationId = lens _lgOrganizationId (\s a -> s {_lgOrganizationId = a})
+lgOrganizationId = lens _lgOrganizationId (\ s a -> s{_lgOrganizationId = a})
 
 instance AWSPager ListGroups where
-  page rq rs
-    | stop (rs ^. lgrsNextToken) = Nothing
-    | stop (rs ^. lgrsGroups) = Nothing
-    | otherwise = Just $ rq & lgNextToken .~ rs ^. lgrsNextToken
+        page rq rs
+          | stop (rs ^. lgrsNextToken) = Nothing
+          | stop (rs ^. lgrsGroups) = Nothing
+          | otherwise =
+            Just $ rq & lgNextToken .~ rs ^. lgrsNextToken
 
 instance AWSRequest ListGroups where
-  type Rs ListGroups = ListGroupsResponse
-  request = postJSON workMail
-  response =
-    receiveJSON
-      (\s h x ->
-         ListGroupsResponse' <$> (x .?> "Groups" .!@ mempty) <*>
-         (x .?> "NextToken") <*>
-         (pure (fromEnum s)))
+        type Rs ListGroups = ListGroupsResponse
+        request = postJSON workMail
+        response
+          = receiveJSON
+              (\ s h x ->
+                 ListGroupsResponse' <$>
+                   (x .?> "Groups" .!@ mempty) <*> (x .?> "NextToken")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable ListGroups
+instance Hashable ListGroups where
 
-instance NFData ListGroups
+instance NFData ListGroups where
 
 instance ToHeaders ListGroups where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("WorkMailService.ListGroups" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("WorkMailService.ListGroups" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON ListGroups where
-  toJSON ListGroups' {..} =
-    object
-      (catMaybes
-         [ ("NextToken" .=) <$> _lgNextToken
-         , ("MaxResults" .=) <$> _lgMaxResults
-         , Just ("OrganizationId" .= _lgOrganizationId)
-         ])
+        toJSON ListGroups'{..}
+          = object
+              (catMaybes
+                 [("NextToken" .=) <$> _lgNextToken,
+                  ("MaxResults" .=) <$> _lgMaxResults,
+                  Just ("OrganizationId" .= _lgOrganizationId)])
 
 instance ToPath ListGroups where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery ListGroups where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'listGroupsResponse' smart constructor.
 data ListGroupsResponse =
@@ -138,6 +145,7 @@ data ListGroupsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListGroupsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -147,9 +155,9 @@ data ListGroupsResponse =
 -- * 'lgrsNextToken' - The token to use to retrieve the next page of results. The value is "null" when there are no more results to return.
 --
 -- * 'lgrsResponseStatus' - -- | The response status code.
-listGroupsResponse ::
-     Int -- ^ 'lgrsResponseStatus'
-  -> ListGroupsResponse
+listGroupsResponse
+    :: Int -- ^ 'lgrsResponseStatus'
+    -> ListGroupsResponse
 listGroupsResponse pResponseStatus_ =
   ListGroupsResponse'
     { _lgrsGroups = Nothing
@@ -157,17 +165,17 @@ listGroupsResponse pResponseStatus_ =
     , _lgrsResponseStatus = pResponseStatus_
     }
 
+
 -- | The overview of groups for an organization.
 lgrsGroups :: Lens' ListGroupsResponse [Group]
-lgrsGroups = lens _lgrsGroups (\s a -> s {_lgrsGroups = a}) . _Default . _Coerce
+lgrsGroups = lens _lgrsGroups (\ s a -> s{_lgrsGroups = a}) . _Default . _Coerce
 
 -- | The token to use to retrieve the next page of results. The value is "null" when there are no more results to return.
 lgrsNextToken :: Lens' ListGroupsResponse (Maybe Text)
-lgrsNextToken = lens _lgrsNextToken (\s a -> s {_lgrsNextToken = a})
+lgrsNextToken = lens _lgrsNextToken (\ s a -> s{_lgrsNextToken = a})
 
 -- | -- | The response status code.
 lgrsResponseStatus :: Lens' ListGroupsResponse Int
-lgrsResponseStatus =
-  lens _lgrsResponseStatus (\s a -> s {_lgrsResponseStatus = a})
+lgrsResponseStatus = lens _lgrsResponseStatus (\ s a -> s{_lgrsResponseStatus = a})
 
-instance NFData ListGroupsResponse
+instance NFData ListGroupsResponse where

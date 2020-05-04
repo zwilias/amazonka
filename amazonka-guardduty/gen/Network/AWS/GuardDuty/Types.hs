@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.GuardDuty.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,263 +11,308 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.GuardDuty.Types
+    (
     -- * Service Configuration
-  ( guardDuty
+      guardDuty
+
     -- * Errors
-  , _InternalServerErrorException
-  , _BadRequestException
+    , _InternalServerErrorException
+    , _BadRequestException
+
     -- * DetectorStatus
-  , DetectorStatus(..)
+    , DetectorStatus (..)
+
     -- * Feedback
-  , Feedback(..)
+    , Feedback (..)
+
     -- * FilterAction
-  , FilterAction(..)
+    , FilterAction (..)
+
     -- * FindingStatisticType
-  , FindingStatisticType(..)
+    , FindingStatisticType (..)
+
     -- * IPSetFormat
-  , IPSetFormat(..)
+    , IPSetFormat (..)
+
     -- * IPSetStatus
-  , IPSetStatus(..)
+    , IPSetStatus (..)
+
     -- * OrderBy
-  , OrderBy(..)
+    , OrderBy (..)
+
     -- * ThreatIntelSetFormat
-  , ThreatIntelSetFormat(..)
+    , ThreatIntelSetFormat (..)
+
     -- * ThreatIntelSetStatus
-  , ThreatIntelSetStatus(..)
+    , ThreatIntelSetStatus (..)
+
     -- * AWSAPICallAction
-  , AWSAPICallAction
-  , awsAPICallAction
-  , aacaRemoteIPDetails
-  , aacaCallerType
-  , aacaDomainDetails
-  , aacaServiceName
-  , aacaAPI
+    , AWSAPICallAction
+    , awsAPICallAction
+    , aacaRemoteIPDetails
+    , aacaCallerType
+    , aacaDomainDetails
+    , aacaServiceName
+    , aacaAPI
+
     -- * AccessKeyDetails
-  , AccessKeyDetails
-  , accessKeyDetails
-  , akdPrincipalId
-  , akdUserName
-  , akdAccessKeyId
-  , akdUserType
+    , AccessKeyDetails
+    , accessKeyDetails
+    , akdPrincipalId
+    , akdUserName
+    , akdAccessKeyId
+    , akdUserType
+
     -- * AccountDetail
-  , AccountDetail
-  , accountDetail
-  , adEmail
-  , adAccountId
+    , AccountDetail
+    , accountDetail
+    , adEmail
+    , adAccountId
+
     -- * Action
-  , Action
-  , action
-  , aNetworkConnectionAction
-  , aPortProbeAction
-  , aActionType
-  , aDNSRequestAction
-  , aAWSAPICallAction
+    , Action
+    , action
+    , aNetworkConnectionAction
+    , aPortProbeAction
+    , aActionType
+    , aDNSRequestAction
+    , aAWSAPICallAction
+
     -- * City
-  , City
-  , city
-  , cCityName
+    , City
+    , city
+    , cCityName
+
     -- * Condition
-  , Condition
-  , condition
-  , cEQ
-  , cLte
-  , cGT
-  , cNeq
-  , cLT
-  , cGte
+    , Condition
+    , condition
+    , cEQ
+    , cLte
+    , cGT
+    , cNeq
+    , cLT
+    , cGte
+
     -- * Country
-  , Country
-  , country
-  , cCountryName
-  , cCountryCode
+    , Country
+    , country
+    , cCountryName
+    , cCountryCode
+
     -- * DNSRequestAction
-  , DNSRequestAction
-  , dnsRequestAction
-  , draDomain
+    , DNSRequestAction
+    , dnsRequestAction
+    , draDomain
+
     -- * DomainDetails
-  , DomainDetails
-  , domainDetails
+    , DomainDetails
+    , domainDetails
+
     -- * Finding
-  , Finding
-  , finding
-  , fService
-  , fConfidence
-  , fPartition
-  , fTitle
-  , fDescription
-  , fAccountId
-  , fSchemaVersion
-  , fCreatedAt
-  , fResource
-  , fSeverity
-  , fUpdatedAt
-  , fType
-  , fRegion
-  , fId
-  , fARN
+    , Finding
+    , finding
+    , fService
+    , fConfidence
+    , fPartition
+    , fTitle
+    , fDescription
+    , fAccountId
+    , fSchemaVersion
+    , fCreatedAt
+    , fResource
+    , fSeverity
+    , fUpdatedAt
+    , fType
+    , fRegion
+    , fId
+    , fARN
+
     -- * FindingCriteria
-  , FindingCriteria
-  , findingCriteria
-  , fcCriterion
+    , FindingCriteria
+    , findingCriteria
+    , fcCriterion
+
     -- * FindingStatistics
-  , FindingStatistics
-  , findingStatistics
-  , fsCountBySeverity
+    , FindingStatistics
+    , findingStatistics
+    , fsCountBySeverity
+
     -- * GeoLocation
-  , GeoLocation
-  , geoLocation
-  , glLat
-  , glLon
+    , GeoLocation
+    , geoLocation
+    , glLat
+    , glLon
+
     -- * IAMInstanceProfile
-  , IAMInstanceProfile
-  , iamInstanceProfile
-  , iapARN
-  , iapId
+    , IAMInstanceProfile
+    , iamInstanceProfile
+    , iapARN
+    , iapId
+
     -- * InstanceDetails
-  , InstanceDetails
-  , instanceDetails
-  , idInstanceId
-  , idPlatform
-  , idLaunchTime
-  , idNetworkInterfaces
-  , idInstanceType
-  , idAvailabilityZone
-  , idIAMInstanceProfile
-  , idImageId
-  , idProductCodes
-  , idInstanceState
-  , idTags
-  , idImageDescription
+    , InstanceDetails
+    , instanceDetails
+    , idInstanceId
+    , idPlatform
+    , idLaunchTime
+    , idNetworkInterfaces
+    , idInstanceType
+    , idAvailabilityZone
+    , idIAMInstanceProfile
+    , idImageId
+    , idProductCodes
+    , idInstanceState
+    , idTags
+    , idImageDescription
+
     -- * Invitation
-  , Invitation
-  , invitation
-  , iInvitedAt
-  , iRelationshipStatus
-  , iInvitationId
-  , iAccountId
+    , Invitation
+    , invitation
+    , iInvitedAt
+    , iRelationshipStatus
+    , iInvitationId
+    , iAccountId
+
     -- * LocalPortDetails
-  , LocalPortDetails
-  , localPortDetails
-  , lpdPortName
-  , lpdPort
+    , LocalPortDetails
+    , localPortDetails
+    , lpdPortName
+    , lpdPort
+
     -- * Master
-  , Master
-  , master
-  , masInvitedAt
-  , masRelationshipStatus
-  , masInvitationId
-  , masAccountId
+    , Master
+    , master
+    , masInvitedAt
+    , masRelationshipStatus
+    , masInvitationId
+    , masAccountId
+
     -- * Member
-  , Member
-  , member
-  , mInvitedAt
-  , mDetectorId
-  , mEmail
-  , mAccountId
-  , mMasterId
-  , mUpdatedAt
-  , mRelationshipStatus
+    , Member
+    , member
+    , mInvitedAt
+    , mDetectorId
+    , mEmail
+    , mAccountId
+    , mMasterId
+    , mUpdatedAt
+    , mRelationshipStatus
+
     -- * NetworkConnectionAction
-  , NetworkConnectionAction
-  , networkConnectionAction
-  , ncaRemoteIPDetails
-  , ncaProtocol
-  , ncaRemotePortDetails
-  , ncaBlocked
-  , ncaConnectionDirection
-  , ncaLocalPortDetails
+    , NetworkConnectionAction
+    , networkConnectionAction
+    , ncaRemoteIPDetails
+    , ncaProtocol
+    , ncaRemotePortDetails
+    , ncaBlocked
+    , ncaConnectionDirection
+    , ncaLocalPortDetails
+
     -- * NetworkInterface
-  , NetworkInterface
-  , networkInterface
-  , niPrivateIPAddresses
-  , niPublicDNSName
-  , niSecurityGroups
-  , niVPCId
-  , niNetworkInterfaceId
-  , niSubnetId
-  , niPrivateIPAddress
-  , niPublicIP
-  , niPrivateDNSName
-  , niIPv6Addresses
+    , NetworkInterface
+    , networkInterface
+    , niPrivateIPAddresses
+    , niPublicDNSName
+    , niSecurityGroups
+    , niVPCId
+    , niNetworkInterfaceId
+    , niSubnetId
+    , niPrivateIPAddress
+    , niPublicIP
+    , niPrivateDNSName
+    , niIPv6Addresses
+
     -- * Organization
-  , Organization
-  , organization
-  , oOrg
-  , oASNOrg
-  , oASN
-  , oIsp
+    , Organization
+    , organization
+    , oOrg
+    , oASNOrg
+    , oASN
+    , oIsp
+
     -- * PortProbeAction
-  , PortProbeAction
-  , portProbeAction
-  , ppaPortProbeDetails
-  , ppaBlocked
+    , PortProbeAction
+    , portProbeAction
+    , ppaPortProbeDetails
+    , ppaBlocked
+
     -- * PortProbeDetail
-  , PortProbeDetail
-  , portProbeDetail
-  , ppdRemoteIPDetails
-  , ppdLocalPortDetails
+    , PortProbeDetail
+    , portProbeDetail
+    , ppdRemoteIPDetails
+    , ppdLocalPortDetails
+
     -- * PrivateIPAddressDetails
-  , PrivateIPAddressDetails
-  , privateIPAddressDetails
-  , piadPrivateIPAddress
-  , piadPrivateDNSName
+    , PrivateIPAddressDetails
+    , privateIPAddressDetails
+    , piadPrivateIPAddress
+    , piadPrivateDNSName
+
     -- * ProductCode
-  , ProductCode
-  , productCode
-  , pcProductType
-  , pcCode
+    , ProductCode
+    , productCode
+    , pcProductType
+    , pcCode
+
     -- * RemoteIPDetails
-  , RemoteIPDetails
-  , remoteIPDetails
-  , ridCountry
-  , ridCity
-  , ridIPAddressV4
-  , ridGeoLocation
-  , ridOrganization
+    , RemoteIPDetails
+    , remoteIPDetails
+    , ridCountry
+    , ridCity
+    , ridIPAddressV4
+    , ridGeoLocation
+    , ridOrganization
+
     -- * RemotePortDetails
-  , RemotePortDetails
-  , remotePortDetails
-  , rpdPortName
-  , rpdPort
+    , RemotePortDetails
+    , remotePortDetails
+    , rpdPortName
+    , rpdPort
+
     -- * Resource
-  , Resource
-  , resource
-  , rResourceType
-  , rInstanceDetails
-  , rAccessKeyDetails
+    , Resource
+    , resource
+    , rResourceType
+    , rInstanceDetails
+    , rAccessKeyDetails
+
     -- * SecurityGroup
-  , SecurityGroup
-  , securityGroup
-  , sgGroupId
-  , sgGroupName
+    , SecurityGroup
+    , securityGroup
+    , sgGroupId
+    , sgGroupName
+
     -- * ServiceInfo
-  , ServiceInfo
-  , serviceInfo
-  , siCount
-  , siEventFirstSeen
-  , siAction
-  , siDetectorId
-  , siServiceName
-  , siUserFeedback
-  , siEventLastSeen
-  , siResourceRole
-  , siArchived
+    , ServiceInfo
+    , serviceInfo
+    , siCount
+    , siEventFirstSeen
+    , siAction
+    , siDetectorId
+    , siServiceName
+    , siUserFeedback
+    , siEventLastSeen
+    , siResourceRole
+    , siArchived
+
     -- * SortCriteria
-  , SortCriteria
-  , sortCriteria
-  , scOrderBy
-  , scAttributeName
+    , SortCriteria
+    , sortCriteria
+    , scOrderBy
+    , scAttributeName
+
     -- * Tag
-  , Tag
-  , tag
-  , tagValue
-  , tagKey
+    , Tag
+    , tag
+    , tagValue
+    , tagKey
+
     -- * UnprocessedAccount
-  , UnprocessedAccount
-  , unprocessedAccount
-  , uaAccountId
-  , uaResult
-  ) where
+    , UnprocessedAccount
+    , unprocessedAccount
+    , uaAccountId
+    , uaResult
+    ) where
 
 import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.GuardDuty.Types.Sum
@@ -312,13 +358,15 @@ guardDuty =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | Error response object.
-_InternalServerErrorException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalServerErrorException =
   _MatchServiceError guardDuty "InternalServerErrorException" . hasStatus 500
+
 
 -- | Error response object.
 _BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
 _BadRequestException =
   _MatchServiceError guardDuty "BadRequestException" . hasStatus 400
+

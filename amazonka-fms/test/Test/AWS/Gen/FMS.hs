@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Test.AWS.Gen.FMS
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -23,6 +24,7 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
+
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -63,6 +65,7 @@ import Test.Tasty
 --             getPolicy
 --
 --           ]
+
 --     , testGroup "response"
 --         [ responseListPolicies $
 --             listPoliciesResponse
@@ -102,143 +105,150 @@ import Test.Tasty
 --
 --           ]
 --     ]
+
 -- Requests
+
 requestListPolicies :: ListPolicies -> TestTree
-requestListPolicies = req "ListPolicies" "fixture/ListPolicies.yaml"
+requestListPolicies = req
+    "ListPolicies"
+    "fixture/ListPolicies.yaml"
 
 requestGetComplianceDetail :: GetComplianceDetail -> TestTree
-requestGetComplianceDetail =
-  req "GetComplianceDetail" "fixture/GetComplianceDetail.yaml"
+requestGetComplianceDetail = req
+    "GetComplianceDetail"
+    "fixture/GetComplianceDetail.yaml"
 
 requestGetNotificationChannel :: GetNotificationChannel -> TestTree
-requestGetNotificationChannel =
-  req "GetNotificationChannel" "fixture/GetNotificationChannel.yaml"
+requestGetNotificationChannel = req
+    "GetNotificationChannel"
+    "fixture/GetNotificationChannel.yaml"
 
 requestGetAdminAccount :: GetAdminAccount -> TestTree
-requestGetAdminAccount = req "GetAdminAccount" "fixture/GetAdminAccount.yaml"
+requestGetAdminAccount = req
+    "GetAdminAccount"
+    "fixture/GetAdminAccount.yaml"
 
 requestListComplianceStatus :: ListComplianceStatus -> TestTree
-requestListComplianceStatus =
-  req "ListComplianceStatus" "fixture/ListComplianceStatus.yaml"
+requestListComplianceStatus = req
+    "ListComplianceStatus"
+    "fixture/ListComplianceStatus.yaml"
 
 requestPutPolicy :: PutPolicy -> TestTree
-requestPutPolicy = req "PutPolicy" "fixture/PutPolicy.yaml"
+requestPutPolicy = req
+    "PutPolicy"
+    "fixture/PutPolicy.yaml"
 
 requestDeletePolicy :: DeletePolicy -> TestTree
-requestDeletePolicy = req "DeletePolicy" "fixture/DeletePolicy.yaml"
+requestDeletePolicy = req
+    "DeletePolicy"
+    "fixture/DeletePolicy.yaml"
 
 requestDisassociateAdminAccount :: DisassociateAdminAccount -> TestTree
-requestDisassociateAdminAccount =
-  req "DisassociateAdminAccount" "fixture/DisassociateAdminAccount.yaml"
+requestDisassociateAdminAccount = req
+    "DisassociateAdminAccount"
+    "fixture/DisassociateAdminAccount.yaml"
 
 requestPutNotificationChannel :: PutNotificationChannel -> TestTree
-requestPutNotificationChannel =
-  req "PutNotificationChannel" "fixture/PutNotificationChannel.yaml"
+requestPutNotificationChannel = req
+    "PutNotificationChannel"
+    "fixture/PutNotificationChannel.yaml"
 
 requestDeleteNotificationChannel :: DeleteNotificationChannel -> TestTree
-requestDeleteNotificationChannel =
-  req "DeleteNotificationChannel" "fixture/DeleteNotificationChannel.yaml"
+requestDeleteNotificationChannel = req
+    "DeleteNotificationChannel"
+    "fixture/DeleteNotificationChannel.yaml"
 
 requestAssociateAdminAccount :: AssociateAdminAccount -> TestTree
-requestAssociateAdminAccount =
-  req "AssociateAdminAccount" "fixture/AssociateAdminAccount.yaml"
+requestAssociateAdminAccount = req
+    "AssociateAdminAccount"
+    "fixture/AssociateAdminAccount.yaml"
 
 requestGetPolicy :: GetPolicy -> TestTree
-requestGetPolicy = req "GetPolicy" "fixture/GetPolicy.yaml"
+requestGetPolicy = req
+    "GetPolicy"
+    "fixture/GetPolicy.yaml"
 
 -- Responses
+
 responseListPolicies :: ListPoliciesResponse -> TestTree
-responseListPolicies =
-  res
+responseListPolicies = res
     "ListPoliciesResponse"
     "fixture/ListPoliciesResponse.proto"
     fms
     (Proxy :: Proxy ListPolicies)
 
 responseGetComplianceDetail :: GetComplianceDetailResponse -> TestTree
-responseGetComplianceDetail =
-  res
+responseGetComplianceDetail = res
     "GetComplianceDetailResponse"
     "fixture/GetComplianceDetailResponse.proto"
     fms
     (Proxy :: Proxy GetComplianceDetail)
 
 responseGetNotificationChannel :: GetNotificationChannelResponse -> TestTree
-responseGetNotificationChannel =
-  res
+responseGetNotificationChannel = res
     "GetNotificationChannelResponse"
     "fixture/GetNotificationChannelResponse.proto"
     fms
     (Proxy :: Proxy GetNotificationChannel)
 
 responseGetAdminAccount :: GetAdminAccountResponse -> TestTree
-responseGetAdminAccount =
-  res
+responseGetAdminAccount = res
     "GetAdminAccountResponse"
     "fixture/GetAdminAccountResponse.proto"
     fms
     (Proxy :: Proxy GetAdminAccount)
 
 responseListComplianceStatus :: ListComplianceStatusResponse -> TestTree
-responseListComplianceStatus =
-  res
+responseListComplianceStatus = res
     "ListComplianceStatusResponse"
     "fixture/ListComplianceStatusResponse.proto"
     fms
     (Proxy :: Proxy ListComplianceStatus)
 
 responsePutPolicy :: PutPolicyResponse -> TestTree
-responsePutPolicy =
-  res
+responsePutPolicy = res
     "PutPolicyResponse"
     "fixture/PutPolicyResponse.proto"
     fms
     (Proxy :: Proxy PutPolicy)
 
 responseDeletePolicy :: DeletePolicyResponse -> TestTree
-responseDeletePolicy =
-  res
+responseDeletePolicy = res
     "DeletePolicyResponse"
     "fixture/DeletePolicyResponse.proto"
     fms
     (Proxy :: Proxy DeletePolicy)
 
 responseDisassociateAdminAccount :: DisassociateAdminAccountResponse -> TestTree
-responseDisassociateAdminAccount =
-  res
+responseDisassociateAdminAccount = res
     "DisassociateAdminAccountResponse"
     "fixture/DisassociateAdminAccountResponse.proto"
     fms
     (Proxy :: Proxy DisassociateAdminAccount)
 
 responsePutNotificationChannel :: PutNotificationChannelResponse -> TestTree
-responsePutNotificationChannel =
-  res
+responsePutNotificationChannel = res
     "PutNotificationChannelResponse"
     "fixture/PutNotificationChannelResponse.proto"
     fms
     (Proxy :: Proxy PutNotificationChannel)
 
-responseDeleteNotificationChannel ::
-     DeleteNotificationChannelResponse -> TestTree
-responseDeleteNotificationChannel =
-  res
+responseDeleteNotificationChannel :: DeleteNotificationChannelResponse -> TestTree
+responseDeleteNotificationChannel = res
     "DeleteNotificationChannelResponse"
     "fixture/DeleteNotificationChannelResponse.proto"
     fms
     (Proxy :: Proxy DeleteNotificationChannel)
 
 responseAssociateAdminAccount :: AssociateAdminAccountResponse -> TestTree
-responseAssociateAdminAccount =
-  res
+responseAssociateAdminAccount = res
     "AssociateAdminAccountResponse"
     "fixture/AssociateAdminAccountResponse.proto"
     fms
     (Proxy :: Proxy AssociateAdminAccount)
 
 responseGetPolicy :: GetPolicyResponse -> TestTree
-responseGetPolicy =
-  res
+responseGetPolicy = res
     "GetPolicyResponse"
     "fixture/GetPolicyResponse.proto"
     fms

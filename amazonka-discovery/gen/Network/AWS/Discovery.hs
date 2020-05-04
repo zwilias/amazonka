@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Discovery
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -35,170 +36,216 @@
 -- This guide is intended for use with the <http://docs.aws.amazon.com/application-discovery/latest/userguide/ /AWS Application Discovery Service User Guide/ > .
 --
 module Network.AWS.Discovery
+    (
     -- * Service Configuration
-  ( discovery
+      discovery
+
     -- * Errors
     -- $errors
+
     -- ** AuthorizationErrorException
-  , _AuthorizationErrorException
+    , _AuthorizationErrorException
+
     -- ** InvalidParameterException
-  , _InvalidParameterException
+    , _InvalidParameterException
+
     -- ** InvalidParameterValueException
-  , _InvalidParameterValueException
+    , _InvalidParameterValueException
+
     -- ** ServerInternalErrorException
-  , _ServerInternalErrorException
+    , _ServerInternalErrorException
+
     -- ** OperationNotPermittedException
-  , _OperationNotPermittedException
+    , _OperationNotPermittedException
+
     -- ** ResourceNotFoundException
-  , _ResourceNotFoundException
+    , _ResourceNotFoundException
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
+
     -- ** DescribeTags
-  , module Network.AWS.Discovery.DescribeTags
+    , module Network.AWS.Discovery.DescribeTags
+
     -- ** StopDataCollectionByAgentIds
-  , module Network.AWS.Discovery.StopDataCollectionByAgentIds
+    , module Network.AWS.Discovery.StopDataCollectionByAgentIds
+
     -- ** CreateTags
-  , module Network.AWS.Discovery.CreateTags
+    , module Network.AWS.Discovery.CreateTags
+
     -- ** DeleteTags
-  , module Network.AWS.Discovery.DeleteTags
+    , module Network.AWS.Discovery.DeleteTags
+
     -- ** DeleteApplications
-  , module Network.AWS.Discovery.DeleteApplications
+    , module Network.AWS.Discovery.DeleteApplications
+
     -- ** UpdateApplication
-  , module Network.AWS.Discovery.UpdateApplication
+    , module Network.AWS.Discovery.UpdateApplication
+
     -- ** DescribeConfigurations
-  , module Network.AWS.Discovery.DescribeConfigurations
+    , module Network.AWS.Discovery.DescribeConfigurations
+
     -- ** CreateApplication
-  , module Network.AWS.Discovery.CreateApplication
+    , module Network.AWS.Discovery.CreateApplication
+
     -- ** ListConfigurations
-  , module Network.AWS.Discovery.ListConfigurations
+    , module Network.AWS.Discovery.ListConfigurations
+
     -- ** DescribeAgents
-  , module Network.AWS.Discovery.DescribeAgents
+    , module Network.AWS.Discovery.DescribeAgents
+
     -- ** DescribeExportTasks
-  , module Network.AWS.Discovery.DescribeExportTasks
+    , module Network.AWS.Discovery.DescribeExportTasks
+
     -- ** StartDataCollectionByAgentIds
-  , module Network.AWS.Discovery.StartDataCollectionByAgentIds
+    , module Network.AWS.Discovery.StartDataCollectionByAgentIds
+
     -- ** GetDiscoverySummary
-  , module Network.AWS.Discovery.GetDiscoverySummary
+    , module Network.AWS.Discovery.GetDiscoverySummary
+
     -- ** DisassociateConfigurationItemsFromApplication
-  , module Network.AWS.Discovery.DisassociateConfigurationItemsFromApplication
+    , module Network.AWS.Discovery.DisassociateConfigurationItemsFromApplication
+
     -- ** AssociateConfigurationItemsToApplication
-  , module Network.AWS.Discovery.AssociateConfigurationItemsToApplication
+    , module Network.AWS.Discovery.AssociateConfigurationItemsToApplication
+
     -- ** ListServerNeighbors
-  , module Network.AWS.Discovery.ListServerNeighbors
+    , module Network.AWS.Discovery.ListServerNeighbors
+
     -- ** StartExportTask
-  , module Network.AWS.Discovery.StartExportTask
+    , module Network.AWS.Discovery.StartExportTask
+
     -- * Types
+
     -- ** AgentStatus
-  , AgentStatus(..)
+    , AgentStatus (..)
+
     -- ** ConfigurationItemType
-  , ConfigurationItemType(..)
+    , ConfigurationItemType (..)
+
     -- ** ExportDataFormat
-  , ExportDataFormat(..)
+    , ExportDataFormat (..)
+
     -- ** ExportStatus
-  , ExportStatus(..)
+    , ExportStatus (..)
+
     -- ** OrderString
-  , OrderString(..)
+    , OrderString (..)
+
     -- ** AgentConfigurationStatus
-  , AgentConfigurationStatus
-  , agentConfigurationStatus
-  , acsAgentId
-  , acsOperationSucceeded
-  , acsDescription
+    , AgentConfigurationStatus
+    , agentConfigurationStatus
+    , acsAgentId
+    , acsOperationSucceeded
+    , acsDescription
+
     -- ** AgentInfo
-  , AgentInfo
-  , agentInfo
-  , aiHostName
-  , aiLastHealthPingTime
-  , aiAgentNetworkInfoList
-  , aiConnectorId
-  , aiHealth
-  , aiAgentId
-  , aiVersion
-  , aiCollectionStatus
-  , aiRegisteredTime
-  , aiAgentType
+    , AgentInfo
+    , agentInfo
+    , aiHostName
+    , aiLastHealthPingTime
+    , aiAgentNetworkInfoList
+    , aiConnectorId
+    , aiHealth
+    , aiAgentId
+    , aiVersion
+    , aiCollectionStatus
+    , aiRegisteredTime
+    , aiAgentType
+
     -- ** AgentNetworkInfo
-  , AgentNetworkInfo
-  , agentNetworkInfo
-  , aniIpAddress
-  , aniMacAddress
+    , AgentNetworkInfo
+    , agentNetworkInfo
+    , aniIpAddress
+    , aniMacAddress
+
     -- ** ConfigurationTag
-  , ConfigurationTag
-  , configurationTag
-  , ctTimeOfCreation
-  , ctConfigurationId
-  , ctConfigurationType
-  , ctValue
-  , ctKey
+    , ConfigurationTag
+    , configurationTag
+    , ctTimeOfCreation
+    , ctConfigurationId
+    , ctConfigurationType
+    , ctValue
+    , ctKey
+
     -- ** CustomerAgentInfo
-  , CustomerAgentInfo
-  , customerAgentInfo
-  , caiActiveAgents
-  , caiHealthyAgents
-  , caiBlackListedAgents
-  , caiShutdownAgents
-  , caiUnhealthyAgents
-  , caiTotalAgents
-  , caiUnknownAgents
+    , CustomerAgentInfo
+    , customerAgentInfo
+    , caiActiveAgents
+    , caiHealthyAgents
+    , caiBlackListedAgents
+    , caiShutdownAgents
+    , caiUnhealthyAgents
+    , caiTotalAgents
+    , caiUnknownAgents
+
     -- ** CustomerConnectorInfo
-  , CustomerConnectorInfo
-  , customerConnectorInfo
-  , cciActiveConnectors
-  , cciHealthyConnectors
-  , cciBlackListedConnectors
-  , cciShutdownConnectors
-  , cciUnhealthyConnectors
-  , cciTotalConnectors
-  , cciUnknownConnectors
+    , CustomerConnectorInfo
+    , customerConnectorInfo
+    , cciActiveConnectors
+    , cciHealthyConnectors
+    , cciBlackListedConnectors
+    , cciShutdownConnectors
+    , cciUnhealthyConnectors
+    , cciTotalConnectors
+    , cciUnknownConnectors
+
     -- ** ExportFilter
-  , ExportFilter
-  , exportFilter
-  , efName
-  , efValues
-  , efCondition
+    , ExportFilter
+    , exportFilter
+    , efName
+    , efValues
+    , efCondition
+
     -- ** ExportInfo
-  , ExportInfo
-  , exportInfo
-  , eiConfigurationsDownloadURL
-  , eiRequestedStartTime
-  , eiRequestedEndTime
-  , eiIsTruncated
-  , eiExportId
-  , eiExportStatus
-  , eiStatusMessage
-  , eiExportRequestTime
+    , ExportInfo
+    , exportInfo
+    , eiConfigurationsDownloadURL
+    , eiRequestedStartTime
+    , eiRequestedEndTime
+    , eiIsTruncated
+    , eiExportId
+    , eiExportStatus
+    , eiStatusMessage
+    , eiExportRequestTime
+
     -- ** Filter
-  , Filter
-  , filter'
-  , fName
-  , fValues
-  , fCondition
+    , Filter
+    , filter'
+    , fName
+    , fValues
+    , fCondition
+
     -- ** NeighborConnectionDetail
-  , NeighborConnectionDetail
-  , neighborConnectionDetail
-  , ncdTransportProtocol
-  , ncdDestinationPort
-  , ncdSourceServerId
-  , ncdDestinationServerId
-  , ncdConnectionsCount
+    , NeighborConnectionDetail
+    , neighborConnectionDetail
+    , ncdTransportProtocol
+    , ncdDestinationPort
+    , ncdSourceServerId
+    , ncdDestinationServerId
+    , ncdConnectionsCount
+
     -- ** OrderByElement
-  , OrderByElement
-  , orderByElement
-  , obeSortOrder
-  , obeFieldName
+    , OrderByElement
+    , orderByElement
+    , obeSortOrder
+    , obeFieldName
+
     -- ** Tag
-  , Tag
-  , tag
-  , tagKey
-  , tagValue
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
+
     -- ** TagFilter
-  , TagFilter
-  , tagFilter
-  , tfName
-  , tfValues
-  ) where
+    , TagFilter
+    , tagFilter
+    , tfName
+    , tfValues
+    ) where
 
 import Network.AWS.Discovery.AssociateConfigurationItemsToApplication
 import Network.AWS.Discovery.CreateApplication
@@ -219,12 +266,14 @@ import Network.AWS.Discovery.StopDataCollectionByAgentIds
 import Network.AWS.Discovery.Types
 import Network.AWS.Discovery.UpdateApplication
 import Network.AWS.Discovery.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'Discovery'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -241,6 +290,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

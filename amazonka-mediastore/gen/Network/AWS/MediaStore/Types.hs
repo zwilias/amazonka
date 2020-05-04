@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.MediaStore.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,36 +11,42 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.MediaStore.Types
+    (
     -- * Service Configuration
-  ( mediaStore
+      mediaStore
+
     -- * Errors
-  , _PolicyNotFoundException
-  , _CORSPolicyNotFoundException
-  , _ContainerInUseException
-  , _InternalServerError
-  , _ContainerNotFoundException
-  , _LimitExceededException
+    , _PolicyNotFoundException
+    , _CORSPolicyNotFoundException
+    , _ContainerInUseException
+    , _InternalServerError
+    , _ContainerNotFoundException
+    , _LimitExceededException
+
     -- * ContainerStatus
-  , ContainerStatus(..)
+    , ContainerStatus (..)
+
     -- * MethodName
-  , MethodName(..)
+    , MethodName (..)
+
     -- * CORSRule
-  , CORSRule
-  , corsRule
-  , crAllowedMethods
-  , crMaxAgeSeconds
-  , crAllowedHeaders
-  , crAllowedOrigins
-  , crExposeHeaders
+    , CORSRule
+    , corsRule
+    , crAllowedMethods
+    , crMaxAgeSeconds
+    , crAllowedHeaders
+    , crAllowedOrigins
+    , crExposeHeaders
+
     -- * Container
-  , Container
-  , container
-  , cCreationTime
-  , cStatus
-  , cARN
-  , cName
-  , cEndpoint
-  ) where
+    , Container
+    , container
+    , cCreationTime
+    , cStatus
+    , cARN
+    , cName
+    , cEndpoint
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.MediaStore.Types.Product
@@ -85,29 +92,30 @@ mediaStore =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
--- | Could not perform an operation on a policy that does not exist.
---
---
-_PolicyNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
-_PolicyNotFoundException =
-  _MatchServiceError mediaStore "PolicyNotFoundException"
 
 -- | Could not perform an operation on a policy that does not exist.
 --
 --
-_CORSPolicyNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_PolicyNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_PolicyNotFoundException =
+  _MatchServiceError mediaStore "PolicyNotFoundException"
+
+
+-- | Could not perform an operation on a policy that does not exist.
+--
+--
+_CORSPolicyNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _CORSPolicyNotFoundException =
   _MatchServiceError mediaStore "CorsPolicyNotFoundException"
+
 
 -- | Resource already exists or is being updated.
 --
 --
-_ContainerInUseException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ContainerInUseException :: AsError a => Getting (First ServiceError) a ServiceError
 _ContainerInUseException =
   _MatchServiceError mediaStore "ContainerInUseException"
+
 
 -- | The service is temporarily unavailable.
 --
@@ -115,17 +123,18 @@ _ContainerInUseException =
 _InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalServerError = _MatchServiceError mediaStore "InternalServerError"
 
+
 -- | Could not perform an operation on a container that does not exist.
 --
 --
-_ContainerNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ContainerNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _ContainerNotFoundException =
   _MatchServiceError mediaStore "ContainerNotFoundException"
+
 
 -- | A service limit has been exceeded.
 --
 --
-_LimitExceededException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException = _MatchServiceError mediaStore "LimitExceededException"
+

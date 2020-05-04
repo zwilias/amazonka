@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.ECS.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,431 +11,496 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.ECS.Types
+    (
     -- * Service Configuration
-  ( ecs
+      ecs
+
     -- * Errors
-  , _AccessDeniedException
-  , _InvalidParameterException
-  , _ServerException
-  , _ClusterContainsTasksException
-  , _PlatformUnknownException
-  , _ClusterContainsServicesException
-  , _ClusterContainsContainerInstancesException
-  , _ServiceNotActiveException
-  , _ClusterNotFoundException
-  , _NoUpdateAvailableException
-  , _UnsupportedFeatureException
-  , _ServiceNotFoundException
-  , _PlatformTaskDefinitionIncompatibilityException
-  , _MissingVersionException
-  , _UpdateInProgressException
-  , _BlockedException
-  , _TargetNotFoundException
-  , _AttributeLimitExceededException
-  , _ClientException
+    , _AccessDeniedException
+    , _InvalidParameterException
+    , _ServerException
+    , _ClusterContainsTasksException
+    , _PlatformUnknownException
+    , _ClusterContainsServicesException
+    , _ClusterContainsContainerInstancesException
+    , _ServiceNotActiveException
+    , _ClusterNotFoundException
+    , _NoUpdateAvailableException
+    , _UnsupportedFeatureException
+    , _ServiceNotFoundException
+    , _PlatformTaskDefinitionIncompatibilityException
+    , _MissingVersionException
+    , _UpdateInProgressException
+    , _BlockedException
+    , _TargetNotFoundException
+    , _AttributeLimitExceededException
+    , _ClientException
+
     -- * AgentUpdateStatus
-  , AgentUpdateStatus(..)
+    , AgentUpdateStatus (..)
+
     -- * AssignPublicIP
-  , AssignPublicIP(..)
+    , AssignPublicIP (..)
+
     -- * ClusterField
-  , ClusterField(..)
+    , ClusterField (..)
+
     -- * Compatibility
-  , Compatibility(..)
+    , Compatibility (..)
+
     -- * Connectivity
-  , Connectivity(..)
+    , Connectivity (..)
+
     -- * ContainerInstanceStatus
-  , ContainerInstanceStatus(..)
+    , ContainerInstanceStatus (..)
+
     -- * DesiredStatus
-  , DesiredStatus(..)
+    , DesiredStatus (..)
+
     -- * DeviceCgroupPermission
-  , DeviceCgroupPermission(..)
+    , DeviceCgroupPermission (..)
+
     -- * HealthStatus
-  , HealthStatus(..)
+    , HealthStatus (..)
+
     -- * LaunchType
-  , LaunchType(..)
+    , LaunchType (..)
+
     -- * LogDriver
-  , LogDriver(..)
+    , LogDriver (..)
+
     -- * NetworkMode
-  , NetworkMode(..)
+    , NetworkMode (..)
+
     -- * PlacementConstraintType
-  , PlacementConstraintType(..)
+    , PlacementConstraintType (..)
+
     -- * PlacementStrategyType
-  , PlacementStrategyType(..)
+    , PlacementStrategyType (..)
+
     -- * SortOrder
-  , SortOrder(..)
+    , SortOrder (..)
+
     -- * TargetType
-  , TargetType(..)
+    , TargetType (..)
+
     -- * TaskDefinitionFamilyStatus
-  , TaskDefinitionFamilyStatus(..)
+    , TaskDefinitionFamilyStatus (..)
+
     -- * TaskDefinitionPlacementConstraintType
-  , TaskDefinitionPlacementConstraintType(..)
+    , TaskDefinitionPlacementConstraintType (..)
+
     -- * TaskDefinitionStatus
-  , TaskDefinitionStatus(..)
+    , TaskDefinitionStatus (..)
+
     -- * TransportProtocol
-  , TransportProtocol(..)
+    , TransportProtocol (..)
+
     -- * UlimitName
-  , UlimitName(..)
+    , UlimitName (..)
+
     -- * AWSVPCConfiguration
-  , AWSVPCConfiguration
-  , awsVPCConfiguration
-  , avcSecurityGroups
-  , avcAssignPublicIP
-  , avcSubnets
+    , AWSVPCConfiguration
+    , awsVPCConfiguration
+    , avcSecurityGroups
+    , avcAssignPublicIP
+    , avcSubnets
+
     -- * Attachment
-  , Attachment
-  , attachment
-  , aStatus
-  , aDetails
-  , aId
-  , aType
+    , Attachment
+    , attachment
+    , aStatus
+    , aDetails
+    , aId
+    , aType
+
     -- * AttachmentStateChange
-  , AttachmentStateChange
-  , attachmentStateChange
-  , ascAttachmentARN
-  , ascStatus
+    , AttachmentStateChange
+    , attachmentStateChange
+    , ascAttachmentARN
+    , ascStatus
+
     -- * Attribute
-  , Attribute
-  , attribute
-  , aTargetId
-  , aValue
-  , aTargetType
-  , aName
+    , Attribute
+    , attribute
+    , aTargetId
+    , aValue
+    , aTargetType
+    , aName
+
     -- * Cluster
-  , Cluster
-  , cluster
-  , cStatus
-  , cClusterARN
-  , cRunningTasksCount
-  , cRegisteredContainerInstancesCount
-  , cPendingTasksCount
-  , cClusterName
-  , cStatistics
-  , cActiveServicesCount
+    , Cluster
+    , cluster
+    , cStatus
+    , cClusterARN
+    , cRunningTasksCount
+    , cRegisteredContainerInstancesCount
+    , cPendingTasksCount
+    , cClusterName
+    , cStatistics
+    , cActiveServicesCount
+
     -- * Container
-  , Container
-  , container
-  , cNetworkBindings
-  , cContainerARN
-  , cNetworkInterfaces
-  , cTaskARN
-  , cLastStatus
-  , cReason
-  , cName
-  , cExitCode
-  , cHealthStatus
+    , Container
+    , container
+    , cNetworkBindings
+    , cContainerARN
+    , cNetworkInterfaces
+    , cTaskARN
+    , cLastStatus
+    , cReason
+    , cName
+    , cExitCode
+    , cHealthStatus
+
     -- * ContainerDefinition
-  , ContainerDefinition
-  , containerDefinition
-  , cdImage
-  , cdCommand
-  , cdHostname
-  , cdDockerSecurityOptions
-  , cdHealthCheck
-  , cdDisableNetworking
-  , cdVolumesFrom
-  , cdEnvironment
-  , cdEntryPoint
-  , cdWorkingDirectory
-  , cdUlimits
-  , cdPrivileged
-  , cdPortMappings
-  , cdDockerLabels
-  , cdExtraHosts
-  , cdMemory
-  , cdUser
-  , cdDnsSearchDomains
-  , cdLogConfiguration
-  , cdLinuxParameters
-  , cdName
-  , cdDnsServers
-  , cdMountPoints
-  , cdLinks
-  , cdReadonlyRootFilesystem
-  , cdEssential
-  , cdCpu
-  , cdMemoryReservation
+    , ContainerDefinition
+    , containerDefinition
+    , cdImage
+    , cdCommand
+    , cdHostname
+    , cdDockerSecurityOptions
+    , cdHealthCheck
+    , cdDisableNetworking
+    , cdVolumesFrom
+    , cdEnvironment
+    , cdEntryPoint
+    , cdWorkingDirectory
+    , cdUlimits
+    , cdPrivileged
+    , cdPortMappings
+    , cdDockerLabels
+    , cdExtraHosts
+    , cdMemory
+    , cdUser
+    , cdDnsSearchDomains
+    , cdLogConfiguration
+    , cdLinuxParameters
+    , cdName
+    , cdDnsServers
+    , cdMountPoints
+    , cdLinks
+    , cdReadonlyRootFilesystem
+    , cdEssential
+    , cdCpu
+    , cdMemoryReservation
+
     -- * ContainerInstance
-  , ContainerInstance
-  , containerInstance
-  , ciStatus
-  , ciAttachments
-  , ciRunningTasksCount
-  , ciRemainingResources
-  , ciEc2InstanceId
-  , ciContainerInstanceARN
-  , ciAgentConnected
-  , ciVersionInfo
-  , ciAgentUpdateStatus
-  , ciAttributes
-  , ciVersion
-  , ciPendingTasksCount
-  , ciRegisteredAt
-  , ciRegisteredResources
+    , ContainerInstance
+    , containerInstance
+    , ciStatus
+    , ciAttachments
+    , ciRunningTasksCount
+    , ciRemainingResources
+    , ciEc2InstanceId
+    , ciContainerInstanceARN
+    , ciAgentConnected
+    , ciVersionInfo
+    , ciAgentUpdateStatus
+    , ciAttributes
+    , ciVersion
+    , ciPendingTasksCount
+    , ciRegisteredAt
+    , ciRegisteredResources
+
     -- * ContainerOverride
-  , ContainerOverride
-  , containerOverride
-  , coCommand
-  , coEnvironment
-  , coMemory
-  , coName
-  , coCpu
-  , coMemoryReservation
+    , ContainerOverride
+    , containerOverride
+    , coCommand
+    , coEnvironment
+    , coMemory
+    , coName
+    , coCpu
+    , coMemoryReservation
+
     -- * ContainerService
-  , ContainerService
-  , containerService
-  , csRunningCount
-  , csStatus
-  , csClusterARN
-  , csCreatedAt
-  , csPlatformVersion
-  , csDesiredCount
-  , csLoadBalancers
-  , csPendingCount
-  , csPlacementConstraints
-  , csEvents
-  , csPlacementStrategy
-  , csDeployments
-  , csServiceName
-  , csLaunchType
-  , csServiceARN
-  , csTaskDefinition
-  , csHealthCheckGracePeriodSeconds
-  , csNetworkConfiguration
-  , csServiceRegistries
-  , csRoleARN
-  , csDeploymentConfiguration
+    , ContainerService
+    , containerService
+    , csRunningCount
+    , csStatus
+    , csClusterARN
+    , csCreatedAt
+    , csPlatformVersion
+    , csDesiredCount
+    , csLoadBalancers
+    , csPendingCount
+    , csPlacementConstraints
+    , csEvents
+    , csPlacementStrategy
+    , csDeployments
+    , csServiceName
+    , csLaunchType
+    , csServiceARN
+    , csTaskDefinition
+    , csHealthCheckGracePeriodSeconds
+    , csNetworkConfiguration
+    , csServiceRegistries
+    , csRoleARN
+    , csDeploymentConfiguration
+
     -- * ContainerStateChange
-  , ContainerStateChange
-  , containerStateChange
-  , cscNetworkBindings
-  , cscStatus
-  , cscContainerName
-  , cscReason
-  , cscExitCode
+    , ContainerStateChange
+    , containerStateChange
+    , cscNetworkBindings
+    , cscStatus
+    , cscContainerName
+    , cscReason
+    , cscExitCode
+
     -- * Deployment
-  , Deployment
-  , deployment
-  , dRunningCount
-  , dStatus
-  , dCreatedAt
-  , dPlatformVersion
-  , dDesiredCount
-  , dPendingCount
-  , dId
-  , dLaunchType
-  , dUpdatedAt
-  , dTaskDefinition
-  , dNetworkConfiguration
+    , Deployment
+    , deployment
+    , dRunningCount
+    , dStatus
+    , dCreatedAt
+    , dPlatformVersion
+    , dDesiredCount
+    , dPendingCount
+    , dId
+    , dLaunchType
+    , dUpdatedAt
+    , dTaskDefinition
+    , dNetworkConfiguration
+
     -- * DeploymentConfiguration
-  , DeploymentConfiguration
-  , deploymentConfiguration
-  , dcMinimumHealthyPercent
-  , dcMaximumPercent
+    , DeploymentConfiguration
+    , deploymentConfiguration
+    , dcMinimumHealthyPercent
+    , dcMaximumPercent
+
     -- * Device
-  , Device
-  , device
-  , dContainerPath
-  , dPermissions
-  , dHostPath
+    , Device
+    , device
+    , dContainerPath
+    , dPermissions
+    , dHostPath
+
     -- * Failure
-  , Failure
-  , failure
-  , fArn
-  , fReason
+    , Failure
+    , failure
+    , fArn
+    , fReason
+
     -- * HealthCheck
-  , HealthCheck
-  , healthCheck
-  , hcStartPeriod
-  , hcRetries
-  , hcInterval
-  , hcTimeout
-  , hcCommand
+    , HealthCheck
+    , healthCheck
+    , hcStartPeriod
+    , hcRetries
+    , hcInterval
+    , hcTimeout
+    , hcCommand
+
     -- * HostEntry
-  , HostEntry
-  , hostEntry
-  , heHostname
-  , heIpAddress
+    , HostEntry
+    , hostEntry
+    , heHostname
+    , heIpAddress
+
     -- * HostVolumeProperties
-  , HostVolumeProperties
-  , hostVolumeProperties
-  , hvpSourcePath
+    , HostVolumeProperties
+    , hostVolumeProperties
+    , hvpSourcePath
+
     -- * KernelCapabilities
-  , KernelCapabilities
-  , kernelCapabilities
-  , kcDrop
-  , kcAdd
+    , KernelCapabilities
+    , kernelCapabilities
+    , kcDrop
+    , kcAdd
+
     -- * KeyValuePair
-  , KeyValuePair
-  , keyValuePair
-  , kvpValue
-  , kvpName
+    , KeyValuePair
+    , keyValuePair
+    , kvpValue
+    , kvpName
+
     -- * LinuxParameters
-  , LinuxParameters
-  , linuxParameters
-  , lpSharedMemorySize
-  , lpInitProcessEnabled
-  , lpTmpfs
-  , lpDevices
-  , lpCapabilities
+    , LinuxParameters
+    , linuxParameters
+    , lpSharedMemorySize
+    , lpInitProcessEnabled
+    , lpTmpfs
+    , lpDevices
+    , lpCapabilities
+
     -- * LoadBalancer
-  , LoadBalancer
-  , loadBalancer
-  , lbLoadBalancerName
-  , lbContainerName
-  , lbTargetGroupARN
-  , lbContainerPort
+    , LoadBalancer
+    , loadBalancer
+    , lbLoadBalancerName
+    , lbContainerName
+    , lbTargetGroupARN
+    , lbContainerPort
+
     -- * LogConfiguration
-  , LogConfiguration
-  , logConfiguration
-  , lcOptions
-  , lcLogDriver
+    , LogConfiguration
+    , logConfiguration
+    , lcOptions
+    , lcLogDriver
+
     -- * MountPoint
-  , MountPoint
-  , mountPoint
-  , mpContainerPath
-  , mpSourceVolume
-  , mpReadOnly
+    , MountPoint
+    , mountPoint
+    , mpContainerPath
+    , mpSourceVolume
+    , mpReadOnly
+
     -- * NetworkBinding
-  , NetworkBinding
-  , networkBinding
-  , nbBindIP
-  , nbProtocol
-  , nbHostPort
-  , nbContainerPort
+    , NetworkBinding
+    , networkBinding
+    , nbBindIP
+    , nbProtocol
+    , nbHostPort
+    , nbContainerPort
+
     -- * NetworkConfiguration
-  , NetworkConfiguration
-  , networkConfiguration
-  , ncAwsvpcConfiguration
+    , NetworkConfiguration
+    , networkConfiguration
+    , ncAwsvpcConfiguration
+
     -- * NetworkInterface
-  , NetworkInterface
-  , networkInterface
-  , niIpv6Address
-  , niPrivateIPv4Address
-  , niAttachmentId
+    , NetworkInterface
+    , networkInterface
+    , niIpv6Address
+    , niPrivateIPv4Address
+    , niAttachmentId
+
     -- * PlacementConstraint
-  , PlacementConstraint
-  , placementConstraint
-  , pcExpression
-  , pcType
+    , PlacementConstraint
+    , placementConstraint
+    , pcExpression
+    , pcType
+
     -- * PlacementStrategy
-  , PlacementStrategy
-  , placementStrategy
-  , psField
-  , psType
+    , PlacementStrategy
+    , placementStrategy
+    , psField
+    , psType
+
     -- * PortMapping
-  , PortMapping
-  , portMapping
-  , pmProtocol
-  , pmHostPort
-  , pmContainerPort
+    , PortMapping
+    , portMapping
+    , pmProtocol
+    , pmHostPort
+    , pmContainerPort
+
     -- * Resource
-  , Resource
-  , resource
-  , rStringSetValue
-  , rIntegerValue
-  , rDoubleValue
-  , rLongValue
-  , rName
-  , rType
+    , Resource
+    , resource
+    , rStringSetValue
+    , rIntegerValue
+    , rDoubleValue
+    , rLongValue
+    , rName
+    , rType
+
     -- * ServiceEvent
-  , ServiceEvent
-  , serviceEvent
-  , seCreatedAt
-  , seId
-  , seMessage
+    , ServiceEvent
+    , serviceEvent
+    , seCreatedAt
+    , seId
+    , seMessage
+
     -- * ServiceRegistry
-  , ServiceRegistry
-  , serviceRegistry
-  , srRegistryARN
-  , srPort
+    , ServiceRegistry
+    , serviceRegistry
+    , srRegistryARN
+    , srPort
+
     -- * Task
-  , Task
-  , task
-  , tStoppedAt
-  , tDesiredStatus
-  , tOverrides
-  , tClusterARN
-  , tGroup
-  , tAttachments
-  , tCreatedAt
-  , tPlatformVersion
-  , tTaskARN
-  , tContainerInstanceARN
-  , tExecutionStoppedAt
-  , tLastStatus
-  , tMemory
-  , tPullStoppedAt
-  , tContainers
-  , tStartedAt
-  , tVersion
-  , tStartedBy
-  , tStoppedReason
-  , tConnectivity
-  , tStoppingAt
-  , tLaunchType
-  , tTaskDefinitionARN
-  , tHealthStatus
-  , tConnectivityAt
-  , tCpu
-  , tPullStartedAt
+    , Task
+    , task
+    , tStoppedAt
+    , tDesiredStatus
+    , tOverrides
+    , tClusterARN
+    , tGroup
+    , tAttachments
+    , tCreatedAt
+    , tPlatformVersion
+    , tTaskARN
+    , tContainerInstanceARN
+    , tExecutionStoppedAt
+    , tLastStatus
+    , tMemory
+    , tPullStoppedAt
+    , tContainers
+    , tStartedAt
+    , tVersion
+    , tStartedBy
+    , tStoppedReason
+    , tConnectivity
+    , tStoppingAt
+    , tLaunchType
+    , tTaskDefinitionARN
+    , tHealthStatus
+    , tConnectivityAt
+    , tCpu
+    , tPullStartedAt
+
     -- * TaskDefinition
-  , TaskDefinition
-  , taskDefinition
-  , tdStatus
-  , tdExecutionRoleARN
-  , tdRequiresCompatibilities
-  , tdFamily
-  , tdContainerDefinitions
-  , tdMemory
-  , tdTaskRoleARN
-  , tdPlacementConstraints
-  , tdNetworkMode
-  , tdTaskDefinitionARN
-  , tdCompatibilities
-  , tdRevision
-  , tdVolumes
-  , tdCpu
-  , tdRequiresAttributes
+    , TaskDefinition
+    , taskDefinition
+    , tdStatus
+    , tdExecutionRoleARN
+    , tdRequiresCompatibilities
+    , tdFamily
+    , tdContainerDefinitions
+    , tdMemory
+    , tdTaskRoleARN
+    , tdPlacementConstraints
+    , tdNetworkMode
+    , tdTaskDefinitionARN
+    , tdCompatibilities
+    , tdRevision
+    , tdVolumes
+    , tdCpu
+    , tdRequiresAttributes
+
     -- * TaskDefinitionPlacementConstraint
-  , TaskDefinitionPlacementConstraint
-  , taskDefinitionPlacementConstraint
-  , tdpcExpression
-  , tdpcType
+    , TaskDefinitionPlacementConstraint
+    , taskDefinitionPlacementConstraint
+    , tdpcExpression
+    , tdpcType
+
     -- * TaskOverride
-  , TaskOverride
-  , taskOverride
-  , toContainerOverrides
-  , toExecutionRoleARN
-  , toTaskRoleARN
+    , TaskOverride
+    , taskOverride
+    , toContainerOverrides
+    , toExecutionRoleARN
+    , toTaskRoleARN
+
     -- * Tmpfs
-  , Tmpfs
-  , tmpfs
-  , tMountOptions
-  , tContainerPath
-  , tSize
+    , Tmpfs
+    , tmpfs
+    , tMountOptions
+    , tContainerPath
+    , tSize
+
     -- * Ulimit
-  , Ulimit
-  , ulimit
-  , uName
-  , uSoftLimit
-  , uHardLimit
+    , Ulimit
+    , ulimit
+    , uName
+    , uSoftLimit
+    , uHardLimit
+
     -- * VersionInfo
-  , VersionInfo
-  , versionInfo
-  , viAgentHash
-  , viAgentVersion
-  , viDockerVersion
+    , VersionInfo
+    , versionInfo
+    , viAgentHash
+    , viAgentVersion
+    , viDockerVersion
+
     -- * Volume
-  , Volume
-  , volume
-  , vName
-  , vHost
+    , Volume
+    , volume
+    , vName
+    , vHost
+
     -- * VolumeFrom
-  , VolumeFrom
-  , volumeFrom
-  , vfSourceContainer
-  , vfReadOnly
-  ) where
+    , VolumeFrom
+    , volumeFrom
+    , vfSourceContainer
+    , vfReadOnly
+    ) where
 
 import Network.AWS.ECS.Types.Product
 import Network.AWS.ECS.Types.Sum
@@ -480,19 +546,20 @@ ecs =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | You do not have authorization to perform the requested action.
 --
 --
-_AccessDeniedException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
 _AccessDeniedException = _MatchServiceError ecs "AccessDeniedException"
+
 
 -- | The specified parameter is invalid. Review the available parameters for the API request.
 --
 --
-_InvalidParameterException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidParameterException = _MatchServiceError ecs "InvalidParameterException"
+
 
 -- | These errors are usually caused by a server issue.
 --
@@ -500,95 +567,96 @@ _InvalidParameterException = _MatchServiceError ecs "InvalidParameterException"
 _ServerException :: AsError a => Getting (First ServiceError) a ServiceError
 _ServerException = _MatchServiceError ecs "ServerException"
 
+
 -- | You cannot delete a cluster that has active tasks.
 --
 --
-_ClusterContainsTasksException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ClusterContainsTasksException :: AsError a => Getting (First ServiceError) a ServiceError
 _ClusterContainsTasksException =
   _MatchServiceError ecs "ClusterContainsTasksException"
+
 
 -- | The specified platform version does not exist.
 --
 --
-_PlatformUnknownException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_PlatformUnknownException :: AsError a => Getting (First ServiceError) a ServiceError
 _PlatformUnknownException = _MatchServiceError ecs "PlatformUnknownException"
+
 
 -- | You cannot delete a cluster that contains services. You must first update the service to reduce its desired task count to 0 and then delete the service. For more information, see 'UpdateService' and 'DeleteService' .
 --
 --
-_ClusterContainsServicesException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ClusterContainsServicesException :: AsError a => Getting (First ServiceError) a ServiceError
 _ClusterContainsServicesException =
   _MatchServiceError ecs "ClusterContainsServicesException"
+
 
 -- | You cannot delete a cluster that has registered container instances. You must first deregister the container instances before you can delete the cluster. For more information, see 'DeregisterContainerInstance' .
 --
 --
-_ClusterContainsContainerInstancesException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ClusterContainsContainerInstancesException :: AsError a => Getting (First ServiceError) a ServiceError
 _ClusterContainsContainerInstancesException =
   _MatchServiceError ecs "ClusterContainsContainerInstancesException"
+
 
 -- | The specified service is not active. You can't update a service that is inactive. If you have previously deleted a service, you can re-create it with 'CreateService' .
 --
 --
-_ServiceNotActiveException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ServiceNotActiveException :: AsError a => Getting (First ServiceError) a ServiceError
 _ServiceNotActiveException = _MatchServiceError ecs "ServiceNotActiveException"
+
 
 -- | The specified cluster could not be found. You can view your available clusters with 'ListClusters' . Amazon ECS clusters are region-specific.
 --
 --
-_ClusterNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ClusterNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _ClusterNotFoundException = _MatchServiceError ecs "ClusterNotFoundException"
+
 
 -- | There is no update available for this Amazon ECS container agent. This could be because the agent is already running the latest version, or it is so old that there is no update path to the current version.
 --
 --
-_NoUpdateAvailableException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_NoUpdateAvailableException :: AsError a => Getting (First ServiceError) a ServiceError
 _NoUpdateAvailableException =
   _MatchServiceError ecs "NoUpdateAvailableException"
+
 
 -- | The specified task is not supported in this region.
 --
 --
-_UnsupportedFeatureException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_UnsupportedFeatureException :: AsError a => Getting (First ServiceError) a ServiceError
 _UnsupportedFeatureException =
   _MatchServiceError ecs "UnsupportedFeatureException"
+
 
 -- | The specified service could not be found. You can view your available services with 'ListServices' . Amazon ECS services are cluster-specific and region-specific.
 --
 --
-_ServiceNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ServiceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _ServiceNotFoundException = _MatchServiceError ecs "ServiceNotFoundException"
+
 
 -- | The specified platform version does not satisfy the task definition’s required capabilities.
 --
 --
-_PlatformTaskDefinitionIncompatibilityException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_PlatformTaskDefinitionIncompatibilityException :: AsError a => Getting (First ServiceError) a ServiceError
 _PlatformTaskDefinitionIncompatibilityException =
   _MatchServiceError ecs "PlatformTaskDefinitionIncompatibilityException"
+
 
 -- | Amazon ECS is unable to determine the current version of the Amazon ECS container agent on the container instance and does not have enough information to proceed with an update. This could be because the agent running on the container instance is an older or custom version that does not use our version information.
 --
 --
-_MissingVersionException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_MissingVersionException :: AsError a => Getting (First ServiceError) a ServiceError
 _MissingVersionException = _MatchServiceError ecs "MissingVersionException"
+
 
 -- | There is already a current Amazon ECS container agent update in progress on the specified container instance. If the container agent becomes disconnected while it is in a transitional stage, such as @PENDING@ or @STAGING@ , the update process can get stuck in that state. However, when the agent reconnects, it resumes where it stopped previously.
 --
 --
-_UpdateInProgressException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_UpdateInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
 _UpdateInProgressException = _MatchServiceError ecs "UpdateInProgressException"
+
 
 -- | Your AWS account has been blocked. <http://aws.amazon.com/contact-us/ Contact AWS Support> for more information.
 --
@@ -596,23 +664,25 @@ _UpdateInProgressException = _MatchServiceError ecs "UpdateInProgressException"
 _BlockedException :: AsError a => Getting (First ServiceError) a ServiceError
 _BlockedException = _MatchServiceError ecs "BlockedException"
 
+
 -- | The specified target could not be found. You can view your available container instances with 'ListContainerInstances' . Amazon ECS container instances are cluster-specific and region-specific.
 --
 --
-_TargetNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_TargetNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _TargetNotFoundException = _MatchServiceError ecs "TargetNotFoundException"
+
 
 -- | You can apply up to 10 custom attributes per resource. You can view the attributes of a resource with 'ListAttributes' . You can remove existing attributes on a resource with 'DeleteAttributes' .
 --
 --
-_AttributeLimitExceededException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_AttributeLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _AttributeLimitExceededException =
   _MatchServiceError ecs "AttributeLimitExceededException"
+
 
 -- | These errors are usually caused by a client action, such as using an action or resource on behalf of a user that doesn't have permissions to use the action or resource, or specifying an identifier that is not valid.
 --
 --
 _ClientException :: AsError a => Getting (First ServiceError) a ServiceError
 _ClientException = _MatchServiceError ecs "ClientException"
+

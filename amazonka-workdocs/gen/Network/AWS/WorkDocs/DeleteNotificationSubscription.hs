@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.WorkDocs.DeleteNotificationSubscription
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,16 +22,18 @@
 --
 --
 module Network.AWS.WorkDocs.DeleteNotificationSubscription
+    (
     -- * Creating a Request
-  ( deleteNotificationSubscription
-  , DeleteNotificationSubscription
+      deleteNotificationSubscription
+    , DeleteNotificationSubscription
     -- * Request Lenses
-  , dnsSubscriptionId
-  , dnsOrganizationId
+    , dnsSubscriptionId
+    , dnsOrganizationId
+
     -- * Destructuring the Response
-  , deleteNotificationSubscriptionResponse
-  , DeleteNotificationSubscriptionResponse
-  ) where
+    , deleteNotificationSubscriptionResponse
+    , DeleteNotificationSubscriptionResponse
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -46,6 +50,7 @@ data DeleteNotificationSubscription =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteNotificationSubscription' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -53,58 +58,68 @@ data DeleteNotificationSubscription =
 -- * 'dnsSubscriptionId' - The ID of the subscription.
 --
 -- * 'dnsOrganizationId' - The ID of the organization.
-deleteNotificationSubscription ::
-     Text -- ^ 'dnsSubscriptionId'
-  -> Text -- ^ 'dnsOrganizationId'
-  -> DeleteNotificationSubscription
+deleteNotificationSubscription
+    :: Text -- ^ 'dnsSubscriptionId'
+    -> Text -- ^ 'dnsOrganizationId'
+    -> DeleteNotificationSubscription
 deleteNotificationSubscription pSubscriptionId_ pOrganizationId_ =
   DeleteNotificationSubscription'
     { _dnsSubscriptionId = pSubscriptionId_
     , _dnsOrganizationId = pOrganizationId_
     }
 
+
 -- | The ID of the subscription.
 dnsSubscriptionId :: Lens' DeleteNotificationSubscription Text
-dnsSubscriptionId = lens _dnsSubscriptionId (\s a -> s {_dnsSubscriptionId = a})
+dnsSubscriptionId = lens _dnsSubscriptionId (\ s a -> s{_dnsSubscriptionId = a})
 
 -- | The ID of the organization.
 dnsOrganizationId :: Lens' DeleteNotificationSubscription Text
-dnsOrganizationId = lens _dnsOrganizationId (\s a -> s {_dnsOrganizationId = a})
+dnsOrganizationId = lens _dnsOrganizationId (\ s a -> s{_dnsOrganizationId = a})
 
-instance AWSRequest DeleteNotificationSubscription where
-  type Rs DeleteNotificationSubscription = DeleteNotificationSubscriptionResponse
-  request = delete workDocs
-  response = receiveNull DeleteNotificationSubscriptionResponse'
+instance AWSRequest DeleteNotificationSubscription
+         where
+        type Rs DeleteNotificationSubscription =
+             DeleteNotificationSubscriptionResponse
+        request = delete workDocs
+        response
+          = receiveNull DeleteNotificationSubscriptionResponse'
 
 instance Hashable DeleteNotificationSubscription
+         where
 
-instance NFData DeleteNotificationSubscription
+instance NFData DeleteNotificationSubscription where
 
-instance ToHeaders DeleteNotificationSubscription where
-  toHeaders =
-    const
-      (mconcat ["Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)])
+instance ToHeaders DeleteNotificationSubscription
+         where
+        toHeaders
+          = const
+              (mconcat
+                 ["Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToPath DeleteNotificationSubscription where
-  toPath DeleteNotificationSubscription' {..} =
-    mconcat
-      [ "/api/v1/organizations/"
-      , toBS _dnsOrganizationId
-      , "/subscriptions/"
-      , toBS _dnsSubscriptionId
-      ]
+        toPath DeleteNotificationSubscription'{..}
+          = mconcat
+              ["/api/v1/organizations/", toBS _dnsOrganizationId,
+               "/subscriptions/", toBS _dnsSubscriptionId]
 
 instance ToQuery DeleteNotificationSubscription where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'deleteNotificationSubscriptionResponse' smart constructor.
 data DeleteNotificationSubscriptionResponse =
   DeleteNotificationSubscriptionResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteNotificationSubscriptionResponse' with the minimum fields required to make a request.
 --
-deleteNotificationSubscriptionResponse :: DeleteNotificationSubscriptionResponse
+deleteNotificationSubscriptionResponse
+    :: DeleteNotificationSubscriptionResponse
 deleteNotificationSubscriptionResponse = DeleteNotificationSubscriptionResponse'
 
-instance NFData DeleteNotificationSubscriptionResponse
+
+instance NFData
+           DeleteNotificationSubscriptionResponse
+         where

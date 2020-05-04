@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.GuardDuty.StartMonitoringMembers
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,19 +20,21 @@
 --
 -- Re-enables GuardDuty to monitor findings of the member accounts specified by the account IDs. A master GuardDuty account can run this command after disabling GuardDuty from monitoring these members' findings by running StopMonitoringMembers.
 module Network.AWS.GuardDuty.StartMonitoringMembers
+    (
     -- * Creating a Request
-  ( startMonitoringMembers
-  , StartMonitoringMembers
+      startMonitoringMembers
+    , StartMonitoringMembers
     -- * Request Lenses
-  , sAccountIds
-  , sDetectorId
+    , sAccountIds
+    , sDetectorId
+
     -- * Destructuring the Response
-  , startMonitoringMembersResponse
-  , StartMonitoringMembersResponse
+    , startMonitoringMembersResponse
+    , StartMonitoringMembersResponse
     -- * Response Lenses
-  , srsUnprocessedAccounts
-  , srsResponseStatus
-  ) where
+    , srsUnprocessedAccounts
+    , srsResponseStatus
+    ) where
 
 import Network.AWS.GuardDuty.Types
 import Network.AWS.GuardDuty.Types.Product
@@ -49,6 +53,7 @@ data StartMonitoringMembers =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'StartMonitoringMembers' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -56,50 +61,55 @@ data StartMonitoringMembers =
 -- * 'sAccountIds' - A list of account IDs of the GuardDuty member accounts whose findings you want the master account to monitor.
 --
 -- * 'sDetectorId' - The unique ID of the detector of the GuardDuty account whom you want to re-enable to monitor members' findings.
-startMonitoringMembers ::
-     Text -- ^ 'sDetectorId'
-  -> StartMonitoringMembers
+startMonitoringMembers
+    :: Text -- ^ 'sDetectorId'
+    -> StartMonitoringMembers
 startMonitoringMembers pDetectorId_ =
   StartMonitoringMembers' {_sAccountIds = Nothing, _sDetectorId = pDetectorId_}
 
+
 -- | A list of account IDs of the GuardDuty member accounts whose findings you want the master account to monitor.
 sAccountIds :: Lens' StartMonitoringMembers [Text]
-sAccountIds =
-  lens _sAccountIds (\s a -> s {_sAccountIds = a}) . _Default . _Coerce
+sAccountIds = lens _sAccountIds (\ s a -> s{_sAccountIds = a}) . _Default . _Coerce
 
 -- | The unique ID of the detector of the GuardDuty account whom you want to re-enable to monitor members' findings.
 sDetectorId :: Lens' StartMonitoringMembers Text
-sDetectorId = lens _sDetectorId (\s a -> s {_sDetectorId = a})
+sDetectorId = lens _sDetectorId (\ s a -> s{_sDetectorId = a})
 
 instance AWSRequest StartMonitoringMembers where
-  type Rs StartMonitoringMembers = StartMonitoringMembersResponse
-  request = postJSON guardDuty
-  response =
-    receiveJSON
-      (\s h x ->
-         StartMonitoringMembersResponse' <$>
-         (x .?> "unprocessedAccounts" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs StartMonitoringMembers =
+             StartMonitoringMembersResponse
+        request = postJSON guardDuty
+        response
+          = receiveJSON
+              (\ s h x ->
+                 StartMonitoringMembersResponse' <$>
+                   (x .?> "unprocessedAccounts" .!@ mempty) <*>
+                     (pure (fromEnum s)))
 
-instance Hashable StartMonitoringMembers
+instance Hashable StartMonitoringMembers where
 
-instance NFData StartMonitoringMembers
+instance NFData StartMonitoringMembers where
 
 instance ToHeaders StartMonitoringMembers where
-  toHeaders =
-    const
-      (mconcat ["Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)])
+        toHeaders
+          = const
+              (mconcat
+                 ["Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON StartMonitoringMembers where
-  toJSON StartMonitoringMembers' {..} =
-    object (catMaybes [("accountIds" .=) <$> _sAccountIds])
+        toJSON StartMonitoringMembers'{..}
+          = object
+              (catMaybes [("accountIds" .=) <$> _sAccountIds])
 
 instance ToPath StartMonitoringMembers where
-  toPath StartMonitoringMembers' {..} =
-    mconcat ["/detector/", toBS _sDetectorId, "/member/start"]
+        toPath StartMonitoringMembers'{..}
+          = mconcat
+              ["/detector/", toBS _sDetectorId, "/member/start"]
 
 instance ToQuery StartMonitoringMembers where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'startMonitoringMembersResponse' smart constructor.
 data StartMonitoringMembersResponse =
@@ -109,6 +119,7 @@ data StartMonitoringMembersResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'StartMonitoringMembersResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -116,22 +127,20 @@ data StartMonitoringMembersResponse =
 -- * 'srsUnprocessedAccounts' - A list of objects containing the unprocessed account and a result string explaining why it was unprocessed.
 --
 -- * 'srsResponseStatus' - -- | The response status code.
-startMonitoringMembersResponse ::
-     Int -- ^ 'srsResponseStatus'
-  -> StartMonitoringMembersResponse
+startMonitoringMembersResponse
+    :: Int -- ^ 'srsResponseStatus'
+    -> StartMonitoringMembersResponse
 startMonitoringMembersResponse pResponseStatus_ =
   StartMonitoringMembersResponse'
     {_srsUnprocessedAccounts = Nothing, _srsResponseStatus = pResponseStatus_}
 
+
 -- | A list of objects containing the unprocessed account and a result string explaining why it was unprocessed.
-srsUnprocessedAccounts ::
-     Lens' StartMonitoringMembersResponse [UnprocessedAccount]
-srsUnprocessedAccounts =
-  lens _srsUnprocessedAccounts (\s a -> s {_srsUnprocessedAccounts = a}) .
-  _Default . _Coerce
+srsUnprocessedAccounts :: Lens' StartMonitoringMembersResponse [UnprocessedAccount]
+srsUnprocessedAccounts = lens _srsUnprocessedAccounts (\ s a -> s{_srsUnprocessedAccounts = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 srsResponseStatus :: Lens' StartMonitoringMembersResponse Int
-srsResponseStatus = lens _srsResponseStatus (\s a -> s {_srsResponseStatus = a})
+srsResponseStatus = lens _srsResponseStatus (\ s a -> s{_srsResponseStatus = a})
 
-instance NFData StartMonitoringMembersResponse
+instance NFData StartMonitoringMembersResponse where

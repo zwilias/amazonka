@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Greengrass.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,212 +11,253 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.Greengrass.Types
+    (
     -- * Service Configuration
-  ( greengrass
+      greengrass
+
     -- * Errors
-  , _InternalServerErrorException
-  , _BadRequestException
+    , _InternalServerErrorException
+    , _BadRequestException
+
     -- * DeploymentType
-  , DeploymentType(..)
+    , DeploymentType (..)
+
     -- * EncodingType
-  , EncodingType(..)
+    , EncodingType (..)
+
     -- * LoggerComponent
-  , LoggerComponent(..)
+    , LoggerComponent (..)
+
     -- * LoggerLevel
-  , LoggerLevel(..)
+    , LoggerLevel (..)
+
     -- * LoggerType
-  , LoggerType(..)
+    , LoggerType (..)
+
     -- * Permission
-  , Permission(..)
+    , Permission (..)
+
     -- * SoftwareToUpdate
-  , SoftwareToUpdate(..)
+    , SoftwareToUpdate (..)
+
     -- * UpdateAgentLogLevel
-  , UpdateAgentLogLevel(..)
+    , UpdateAgentLogLevel (..)
+
     -- * UpdateTargetsArchitecture
-  , UpdateTargetsArchitecture(..)
+    , UpdateTargetsArchitecture (..)
+
     -- * UpdateTargetsOperatingSystem
-  , UpdateTargetsOperatingSystem(..)
+    , UpdateTargetsOperatingSystem (..)
+
     -- * ConnectivityInfo
-  , ConnectivityInfo
-  , connectivityInfo
-  , ciPortNumber
-  , ciId
-  , ciMetadata
-  , ciHostAddress
+    , ConnectivityInfo
+    , connectivityInfo
+    , ciPortNumber
+    , ciId
+    , ciMetadata
+    , ciHostAddress
+
     -- * Core
-  , Core
-  , core
-  , cCertificateARN
-  , cThingARN
-  , cSyncShadow
-  , cId
+    , Core
+    , core
+    , cCertificateARN
+    , cThingARN
+    , cSyncShadow
+    , cId
+
     -- * CoreDefinitionVersion
-  , CoreDefinitionVersion
-  , coreDefinitionVersion
-  , cdvCores
+    , CoreDefinitionVersion
+    , coreDefinitionVersion
+    , cdvCores
+
     -- * DefinitionInformation
-  , DefinitionInformation
-  , definitionInformation
-  , diLatestVersionARN
-  , diARN
-  , diName
-  , diCreationTimestamp
-  , diId
-  , diLatestVersion
-  , diLastUpdatedTimestamp
+    , DefinitionInformation
+    , definitionInformation
+    , diLatestVersionARN
+    , diARN
+    , diName
+    , diCreationTimestamp
+    , diId
+    , diLatestVersion
+    , diLastUpdatedTimestamp
+
     -- * Deployment
-  , Deployment
-  , deployment
-  , dDeploymentId
-  , dDeploymentARN
-  , dCreatedAt
-  , dDeploymentType
-  , dGroupARN
+    , Deployment
+    , deployment
+    , dDeploymentId
+    , dDeploymentARN
+    , dCreatedAt
+    , dDeploymentType
+    , dGroupARN
+
     -- * Device
-  , Device
-  , device
-  , dCertificateARN
-  , dThingARN
-  , dSyncShadow
-  , dId
+    , Device
+    , device
+    , dCertificateARN
+    , dThingARN
+    , dSyncShadow
+    , dId
+
     -- * DeviceDefinitionVersion
-  , DeviceDefinitionVersion
-  , deviceDefinitionVersion
-  , ddvDevices
+    , DeviceDefinitionVersion
+    , deviceDefinitionVersion
+    , ddvDevices
+
     -- * ErrorDetail
-  , ErrorDetail
-  , errorDetail
-  , edDetailedErrorCode
-  , edDetailedErrorMessage
+    , ErrorDetail
+    , errorDetail
+    , edDetailedErrorCode
+    , edDetailedErrorMessage
+
     -- * Function
-  , Function
-  , function
-  , fFunctionARN
-  , fFunctionConfiguration
-  , fId
+    , Function
+    , function
+    , fFunctionARN
+    , fFunctionConfiguration
+    , fId
+
     -- * FunctionConfiguration
-  , FunctionConfiguration
-  , functionConfiguration
-  , fcMemorySize
-  , fcExecArgs
-  , fcEnvironment
-  , fcExecutable
-  , fcPinned
-  , fcEncodingType
-  , fcTimeout
+    , FunctionConfiguration
+    , functionConfiguration
+    , fcMemorySize
+    , fcExecArgs
+    , fcEnvironment
+    , fcExecutable
+    , fcPinned
+    , fcEncodingType
+    , fcTimeout
+
     -- * FunctionConfigurationEnvironment
-  , FunctionConfigurationEnvironment
-  , functionConfigurationEnvironment
-  , fceVariables
-  , fceResourceAccessPolicies
-  , fceAccessSysfs
+    , FunctionConfigurationEnvironment
+    , functionConfigurationEnvironment
+    , fceVariables
+    , fceResourceAccessPolicies
+    , fceAccessSysfs
+
     -- * FunctionDefinitionVersion
-  , FunctionDefinitionVersion
-  , functionDefinitionVersion
-  , fdvFunctions
+    , FunctionDefinitionVersion
+    , functionDefinitionVersion
+    , fdvFunctions
+
     -- * GreengrassLogger
-  , GreengrassLogger
-  , greengrassLogger
-  , glSpace
-  , glComponent
-  , glId
-  , glType
-  , glLevel
+    , GreengrassLogger
+    , greengrassLogger
+    , glSpace
+    , glComponent
+    , glId
+    , glType
+    , glLevel
+
     -- * GroupCertificateAuthorityProperties
-  , GroupCertificateAuthorityProperties
-  , groupCertificateAuthorityProperties
-  , gcapGroupCertificateAuthorityARN
-  , gcapGroupCertificateAuthorityId
+    , GroupCertificateAuthorityProperties
+    , groupCertificateAuthorityProperties
+    , gcapGroupCertificateAuthorityARN
+    , gcapGroupCertificateAuthorityId
+
     -- * GroupInformation
-  , GroupInformation
-  , groupInformation
-  , giLatestVersionARN
-  , giARN
-  , giName
-  , giCreationTimestamp
-  , giId
-  , giLatestVersion
-  , giLastUpdatedTimestamp
+    , GroupInformation
+    , groupInformation
+    , giLatestVersionARN
+    , giARN
+    , giName
+    , giCreationTimestamp
+    , giId
+    , giLatestVersion
+    , giLastUpdatedTimestamp
+
     -- * GroupOwnerSetting
-  , GroupOwnerSetting
-  , groupOwnerSetting
-  , gosAutoAddGroupOwner
-  , gosGroupOwner
+    , GroupOwnerSetting
+    , groupOwnerSetting
+    , gosAutoAddGroupOwner
+    , gosGroupOwner
+
     -- * GroupVersion
-  , GroupVersion
-  , groupVersion
-  , gvResourceDefinitionVersionARN
-  , gvSubscriptionDefinitionVersionARN
-  , gvCoreDefinitionVersionARN
-  , gvDeviceDefinitionVersionARN
-  , gvFunctionDefinitionVersionARN
-  , gvLoggerDefinitionVersionARN
+    , GroupVersion
+    , groupVersion
+    , gvResourceDefinitionVersionARN
+    , gvSubscriptionDefinitionVersionARN
+    , gvCoreDefinitionVersionARN
+    , gvDeviceDefinitionVersionARN
+    , gvFunctionDefinitionVersionARN
+    , gvLoggerDefinitionVersionARN
+
     -- * LocalDeviceResourceData
-  , LocalDeviceResourceData
-  , localDeviceResourceData
-  , ldrdGroupOwnerSetting
-  , ldrdSourcePath
+    , LocalDeviceResourceData
+    , localDeviceResourceData
+    , ldrdGroupOwnerSetting
+    , ldrdSourcePath
+
     -- * LocalVolumeResourceData
-  , LocalVolumeResourceData
-  , localVolumeResourceData
-  , lvrdGroupOwnerSetting
-  , lvrdDestinationPath
-  , lvrdSourcePath
+    , LocalVolumeResourceData
+    , localVolumeResourceData
+    , lvrdGroupOwnerSetting
+    , lvrdDestinationPath
+    , lvrdSourcePath
+
     -- * LoggerDefinitionVersion
-  , LoggerDefinitionVersion
-  , loggerDefinitionVersion
-  , ldvLoggers
+    , LoggerDefinitionVersion
+    , loggerDefinitionVersion
+    , ldvLoggers
+
     -- * Resource
-  , Resource
-  , resource
-  , rResourceDataContainer
-  , rName
-  , rId
+    , Resource
+    , resource
+    , rResourceDataContainer
+    , rName
+    , rId
+
     -- * ResourceAccessPolicy
-  , ResourceAccessPolicy
-  , resourceAccessPolicy
-  , rapResourceId
-  , rapPermission
+    , ResourceAccessPolicy
+    , resourceAccessPolicy
+    , rapResourceId
+    , rapPermission
+
     -- * ResourceDataContainer
-  , ResourceDataContainer
-  , resourceDataContainer
-  , rdcS3MachineLearningModelResourceData
-  , rdcSageMakerMachineLearningModelResourceData
-  , rdcLocalVolumeResourceData
-  , rdcLocalDeviceResourceData
+    , ResourceDataContainer
+    , resourceDataContainer
+    , rdcS3MachineLearningModelResourceData
+    , rdcSageMakerMachineLearningModelResourceData
+    , rdcLocalVolumeResourceData
+    , rdcLocalDeviceResourceData
+
     -- * ResourceDefinitionVersion
-  , ResourceDefinitionVersion
-  , resourceDefinitionVersion
-  , rdvResources
+    , ResourceDefinitionVersion
+    , resourceDefinitionVersion
+    , rdvResources
+
     -- * S3MachineLearningModelResourceData
-  , S3MachineLearningModelResourceData
-  , s3MachineLearningModelResourceData
-  , smlmrdDestinationPath
-  , smlmrdS3URI
+    , S3MachineLearningModelResourceData
+    , s3MachineLearningModelResourceData
+    , smlmrdDestinationPath
+    , smlmrdS3URI
+
     -- * SageMakerMachineLearningModelResourceData
-  , SageMakerMachineLearningModelResourceData
-  , sageMakerMachineLearningModelResourceData
-  , smmlmrdSageMakerJobARN
-  , smmlmrdDestinationPath
+    , SageMakerMachineLearningModelResourceData
+    , sageMakerMachineLearningModelResourceData
+    , smmlmrdSageMakerJobARN
+    , smmlmrdDestinationPath
+
     -- * Subscription
-  , Subscription
-  , subscription
-  , sSubject
-  , sSource
-  , sId
-  , sTarget
+    , Subscription
+    , subscription
+    , sSubject
+    , sSource
+    , sId
+    , sTarget
+
     -- * SubscriptionDefinitionVersion
-  , SubscriptionDefinitionVersion
-  , subscriptionDefinitionVersion
-  , sdvSubscriptions
+    , SubscriptionDefinitionVersion
+    , subscriptionDefinitionVersion
+    , sdvSubscriptions
+
     -- * VersionInformation
-  , VersionInformation
-  , versionInformation
-  , viARN
-  , viCreationTimestamp
-  , viVersion
-  , viId
-  ) where
+    , VersionInformation
+    , versionInformation
+    , viARN
+    , viCreationTimestamp
+    , viVersion
+    , viId
+    ) where
 
 import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Greengrass.Types.Sum
@@ -261,13 +303,15 @@ greengrass =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | General error information.
-_InternalServerErrorException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalServerErrorException =
   _MatchServiceError greengrass "InternalServerErrorException" . hasStatus 500
+
 
 -- | General error information.
 _BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
 _BadRequestException =
   _MatchServiceError greengrass "BadRequestException" . hasStatus 400
+

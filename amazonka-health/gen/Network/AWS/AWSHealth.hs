@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.AWSHealth
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -47,131 +48,160 @@
 --
 --
 module Network.AWS.AWSHealth
+    (
     -- * Service Configuration
-  ( awsHealth
+      awsHealth
+
     -- * Errors
     -- $errors
+
     -- ** InvalidPaginationToken
-  , _InvalidPaginationToken
+    , _InvalidPaginationToken
+
     -- ** UnsupportedLocale
-  , _UnsupportedLocale
+    , _UnsupportedLocale
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
+
     -- ** DescribeEntityAggregates
-  , module Network.AWS.AWSHealth.DescribeEntityAggregates
+    , module Network.AWS.AWSHealth.DescribeEntityAggregates
+
     -- ** DescribeEvents (Paginated)
-  , module Network.AWS.AWSHealth.DescribeEvents
+    , module Network.AWS.AWSHealth.DescribeEvents
+
     -- ** DescribeEventDetails
-  , module Network.AWS.AWSHealth.DescribeEventDetails
+    , module Network.AWS.AWSHealth.DescribeEventDetails
+
     -- ** DescribeEventAggregates (Paginated)
-  , module Network.AWS.AWSHealth.DescribeEventAggregates
+    , module Network.AWS.AWSHealth.DescribeEventAggregates
+
     -- ** DescribeAffectedEntities (Paginated)
-  , module Network.AWS.AWSHealth.DescribeAffectedEntities
+    , module Network.AWS.AWSHealth.DescribeAffectedEntities
+
     -- ** DescribeEventTypes (Paginated)
-  , module Network.AWS.AWSHealth.DescribeEventTypes
+    , module Network.AWS.AWSHealth.DescribeEventTypes
+
     -- * Types
+
     -- ** EntityStatusCode
-  , EntityStatusCode(..)
+    , EntityStatusCode (..)
+
     -- ** EventAggregateField
-  , EventAggregateField(..)
+    , EventAggregateField (..)
+
     -- ** EventStatusCode
-  , EventStatusCode(..)
+    , EventStatusCode (..)
+
     -- ** EventTypeCategory
-  , EventTypeCategory(..)
+    , EventTypeCategory (..)
+
     -- ** AffectedEntity
-  , AffectedEntity
-  , affectedEntity
-  , aeLastUpdatedTime
-  , aeEntityValue
-  , aeAwsAccountId
-  , aeEventARN
-  , aeEntityARN
-  , aeTags
-  , aeStatusCode
+    , AffectedEntity
+    , affectedEntity
+    , aeLastUpdatedTime
+    , aeEntityValue
+    , aeAwsAccountId
+    , aeEventARN
+    , aeEntityARN
+    , aeTags
+    , aeStatusCode
+
     -- ** DateTimeRange
-  , DateTimeRange
-  , dateTimeRange
-  , dtrTo
-  , dtrFrom
+    , DateTimeRange
+    , dateTimeRange
+    , dtrTo
+    , dtrFrom
+
     -- ** EntityAggregate
-  , EntityAggregate
-  , entityAggregate
-  , eCount
-  , eEventARN
+    , EntityAggregate
+    , entityAggregate
+    , eCount
+    , eEventARN
+
     -- ** EntityFilter
-  , EntityFilter
-  , entityFilter
-  , eStatusCodes
-  , eEntityARNs
-  , eEntityValues
-  , eTags
-  , eLastUpdatedTimes
-  , eEventARNs
+    , EntityFilter
+    , entityFilter
+    , eStatusCodes
+    , eEntityARNs
+    , eEntityValues
+    , eTags
+    , eLastUpdatedTimes
+    , eEventARNs
+
     -- ** Event
-  , Event
-  , event
-  , eLastUpdatedTime
-  , eArn
-  , eService
-  , eStartTime
-  , eEventTypeCode
-  , eEventTypeCategory
-  , eAvailabilityZone
-  , eEndTime
-  , eRegion
-  , eStatusCode
+    , Event
+    , event
+    , eLastUpdatedTime
+    , eArn
+    , eService
+    , eStartTime
+    , eEventTypeCode
+    , eEventTypeCategory
+    , eAvailabilityZone
+    , eEndTime
+    , eRegion
+    , eStatusCode
+
     -- ** EventAggregate
-  , EventAggregate
-  , eventAggregate
-  , eaCount
-  , eaAggregateValue
+    , EventAggregate
+    , eventAggregate
+    , eaCount
+    , eaAggregateValue
+
     -- ** EventDescription
-  , EventDescription
-  , eventDescription
-  , edLatestDescription
+    , EventDescription
+    , eventDescription
+    , edLatestDescription
+
     -- ** EventDetails
-  , EventDetails
-  , eventDetails
-  , edEvent
-  , edEventDescription
-  , edEventMetadata
+    , EventDetails
+    , eventDetails
+    , edEvent
+    , edEventDescription
+    , edEventMetadata
+
     -- ** EventDetailsErrorItem
-  , EventDetailsErrorItem
-  , eventDetailsErrorItem
-  , edeiEventARN
-  , edeiErrorName
-  , edeiErrorMessage
+    , EventDetailsErrorItem
+    , eventDetailsErrorItem
+    , edeiEventARN
+    , edeiErrorName
+    , edeiErrorMessage
+
     -- ** EventFilter
-  , EventFilter
-  , eventFilter
-  , efEventARNs
-  , efEventTypeCategories
-  , efEventTypeCodes
-  , efRegions
-  , efEventStatusCodes
-  , efEndTimes
-  , efAvailabilityZones
-  , efEntityARNs
-  , efEntityValues
-  , efStartTimes
-  , efServices
-  , efTags
-  , efLastUpdatedTimes
+    , EventFilter
+    , eventFilter
+    , efEventARNs
+    , efEventTypeCategories
+    , efEventTypeCodes
+    , efRegions
+    , efEventStatusCodes
+    , efEndTimes
+    , efAvailabilityZones
+    , efEntityARNs
+    , efEntityValues
+    , efStartTimes
+    , efServices
+    , efTags
+    , efLastUpdatedTimes
+
     -- ** EventType
-  , EventType
-  , eventType
-  , etService
-  , etCategory
-  , etCode
+    , EventType
+    , eventType
+    , etService
+    , etCategory
+    , etCode
+
     -- ** EventTypeFilter
-  , EventTypeFilter
-  , eventTypeFilter
-  , etfEventTypeCategories
-  , etfEventTypeCodes
-  , etfServices
-  ) where
+    , EventTypeFilter
+    , eventTypeFilter
+    , etfEventTypeCategories
+    , etfEventTypeCodes
+    , etfServices
+    ) where
 
 import Network.AWS.AWSHealth.DescribeAffectedEntities
 import Network.AWS.AWSHealth.DescribeEntityAggregates
@@ -181,12 +211,14 @@ import Network.AWS.AWSHealth.DescribeEvents
 import Network.AWS.AWSHealth.DescribeEventTypes
 import Network.AWS.AWSHealth.Types
 import Network.AWS.AWSHealth.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'AWSHealth'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -203,6 +235,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

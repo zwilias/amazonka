@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CloudWatch.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,155 +11,279 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.CloudWatch.Types
+    (
     -- * Service Configuration
-  ( cloudWatch
+      cloudWatch
+
     -- * Errors
-  , _LimitExceededFault
-  , _DashboardNotFoundError
-  , _InvalidNextToken
-  , _InternalServiceFault
-  , _DashboardInvalidInputError
-  , _InvalidParameterValueException
-  , _InvalidFormatFault
-  , _MissingRequiredParameterException
-  , _InvalidParameterCombinationException
-  , _ResourceNotFound
+    , _LimitExceededFault
+    , _DashboardNotFoundError
+    , _InvalidNextToken
+    , _InternalServiceFault
+    , _DashboardInvalidInputError
+    , _InvalidParameterValueException
+    , _ConcurrentModificationException
+    , _InvalidFormatFault
+    , _MissingRequiredParameterException
+    , _ResourceNotFoundException
+    , _InvalidParameterCombinationException
+    , _LimitExceededException
+    , _ResourceNotFound
+
+    -- * AlarmType
+    , AlarmType (..)
+
+    -- * AnomalyDetectorStateValue
+    , AnomalyDetectorStateValue (..)
+
     -- * ComparisonOperator
-  , ComparisonOperator(..)
+    , ComparisonOperator (..)
+
     -- * HistoryItemType
-  , HistoryItemType(..)
+    , HistoryItemType (..)
+
     -- * ScanBy
-  , ScanBy(..)
+    , ScanBy (..)
+
     -- * StandardUnit
-  , StandardUnit(..)
+    , StandardUnit (..)
+
     -- * StateValue
-  , StateValue(..)
+    , StateValue (..)
+
     -- * Statistic
-  , Statistic(..)
+    , Statistic (..)
+
     -- * StatusCode
-  , StatusCode(..)
+    , StatusCode (..)
+
     -- * AlarmHistoryItem
-  , AlarmHistoryItem
-  , alarmHistoryItem
-  , ahiAlarmName
-  , ahiHistoryItemType
-  , ahiHistoryData
-  , ahiHistorySummary
-  , ahiTimestamp
+    , AlarmHistoryItem
+    , alarmHistoryItem
+    , ahiAlarmName
+    , ahiHistoryItemType
+    , ahiHistoryData
+    , ahiAlarmType
+    , ahiHistorySummary
+    , ahiTimestamp
+
+    -- * AnomalyDetector
+    , AnomalyDetector
+    , anomalyDetector
+    , adMetricName
+    , adNamespace
+    , adStateValue
+    , adStat
+    , adConfiguration
+    , adDimensions
+
+    -- * AnomalyDetectorConfiguration
+    , AnomalyDetectorConfiguration
+    , anomalyDetectorConfiguration
+    , adcMetricTimezone
+    , adcExcludedTimeRanges
+
+    -- * CompositeAlarm
+    , CompositeAlarm
+    , compositeAlarm
+    , caAlarmName
+    , caStateUpdatedTimestamp
+    , caAlarmDescription
+    , caAlarmRule
+    , caOKActions
+    , caStateValue
+    , caAlarmConfigurationUpdatedTimestamp
+    , caActionsEnabled
+    , caInsufficientDataActions
+    , caStateReason
+    , caStateReasonData
+    , caAlarmARN
+    , caAlarmActions
+
     -- * DashboardEntry
-  , DashboardEntry
-  , dashboardEntry
-  , deSize
-  , deDashboardName
-  , deLastModified
-  , deDashboardARN
+    , DashboardEntry
+    , dashboardEntry
+    , deSize
+    , deDashboardName
+    , deLastModified
+    , deDashboardARN
+
     -- * DashboardValidationMessage
-  , DashboardValidationMessage
-  , dashboardValidationMessage
-  , dvmDataPath
-  , dvmMessage
+    , DashboardValidationMessage
+    , dashboardValidationMessage
+    , dvmDataPath
+    , dvmMessage
+
     -- * Datapoint
-  , Datapoint
-  , datapoint
-  , dSampleCount
-  , dMaximum
-  , dAverage
-  , dMinimum
-  , dExtendedStatistics
-  , dSum
-  , dUnit
-  , dTimestamp
+    , Datapoint
+    , datapoint
+    , dSampleCount
+    , dMaximum
+    , dAverage
+    , dMinimum
+    , dExtendedStatistics
+    , dSum
+    , dUnit
+    , dTimestamp
+
     -- * Dimension
-  , Dimension
-  , dimension
-  , dName
-  , dValue
+    , Dimension
+    , dimension
+    , dName
+    , dValue
+
     -- * DimensionFilter
-  , DimensionFilter
-  , dimensionFilter
-  , dfValue
-  , dfName
+    , DimensionFilter
+    , dimensionFilter
+    , dfValue
+    , dfName
+
+    -- * InsightRule
+    , InsightRule
+    , insightRule
+    , irName
+    , irState
+    , irSchema
+    , irDefinition
+
+    -- * InsightRuleContributor
+    , InsightRuleContributor
+    , insightRuleContributor
+    , ircKeys
+    , ircApproximateAggregateValue
+    , ircDatapoints
+
+    -- * InsightRuleContributorDatapoint
+    , InsightRuleContributorDatapoint
+    , insightRuleContributorDatapoint
+    , ircdTimestamp
+    , ircdApproximateValue
+
+    -- * InsightRuleMetricDatapoint
+    , InsightRuleMetricDatapoint
+    , insightRuleMetricDatapoint
+    , irmdMaxContributorValue
+    , irmdSampleCount
+    , irmdMaximum
+    , irmdAverage
+    , irmdMinimum
+    , irmdUniqueContributors
+    , irmdSum
+    , irmdTimestamp
+
     -- * MessageData
-  , MessageData
-  , messageData
-  , mValue
-  , mCode
+    , MessageData
+    , messageData
+    , mValue
+    , mCode
+
     -- * Metric
-  , Metric
-  , metric
-  , mMetricName
-  , mNamespace
-  , mDimensions
+    , Metric
+    , metric
+    , mMetricName
+    , mNamespace
+    , mDimensions
+
     -- * MetricAlarm
-  , MetricAlarm
-  , metricAlarm
-  , maAlarmName
-  , maStateUpdatedTimestamp
-  , maTreatMissingData
-  , maPeriod
-  , maAlarmDescription
-  , maEvaluationPeriods
-  , maMetricName
-  , maNamespace
-  , maComparisonOperator
-  , maOKActions
-  , maEvaluateLowSampleCountPercentile
-  , maStateValue
-  , maDatapointsToAlarm
-  , maThreshold
-  , maAlarmConfigurationUpdatedTimestamp
-  , maActionsEnabled
-  , maInsufficientDataActions
-  , maStateReason
-  , maStateReasonData
-  , maDimensions
-  , maAlarmARN
-  , maAlarmActions
-  , maUnit
-  , maStatistic
-  , maExtendedStatistic
+    , MetricAlarm
+    , metricAlarm
+    , maAlarmName
+    , maStateUpdatedTimestamp
+    , maMetrics
+    , maTreatMissingData
+    , maPeriod
+    , maAlarmDescription
+    , maEvaluationPeriods
+    , maMetricName
+    , maNamespace
+    , maThresholdMetricId
+    , maComparisonOperator
+    , maOKActions
+    , maEvaluateLowSampleCountPercentile
+    , maStateValue
+    , maDatapointsToAlarm
+    , maThreshold
+    , maAlarmConfigurationUpdatedTimestamp
+    , maActionsEnabled
+    , maInsufficientDataActions
+    , maStateReason
+    , maStateReasonData
+    , maDimensions
+    , maAlarmARN
+    , maAlarmActions
+    , maUnit
+    , maStatistic
+    , maExtendedStatistic
+
     -- * MetricDataQuery
-  , MetricDataQuery
-  , metricDataQuery
-  , mdqReturnData
-  , mdqExpression
-  , mdqLabel
-  , mdqMetricStat
-  , mdqId
+    , MetricDataQuery
+    , metricDataQuery
+    , mdqReturnData
+    , mdqPeriod
+    , mdqExpression
+    , mdqLabel
+    , mdqMetricStat
+    , mdqId
+
     -- * MetricDataResult
-  , MetricDataResult
-  , metricDataResult
-  , mdrValues
-  , mdrId
-  , mdrTimestamps
-  , mdrMessages
-  , mdrLabel
-  , mdrStatusCode
+    , MetricDataResult
+    , metricDataResult
+    , mdrValues
+    , mdrId
+    , mdrTimestamps
+    , mdrMessages
+    , mdrLabel
+    , mdrStatusCode
+
     -- * MetricDatum
-  , MetricDatum
-  , metricDatum
-  , mdValue
-  , mdStorageResolution
-  , mdDimensions
-  , mdUnit
-  , mdTimestamp
-  , mdStatisticValues
-  , mdMetricName
+    , MetricDatum
+    , metricDatum
+    , mdValues
+    , mdCounts
+    , mdValue
+    , mdStorageResolution
+    , mdDimensions
+    , mdUnit
+    , mdTimestamp
+    , mdStatisticValues
+    , mdMetricName
+
     -- * MetricStat
-  , MetricStat
-  , metricStat
-  , msUnit
-  , msMetric
-  , msPeriod
-  , msStat
+    , MetricStat
+    , metricStat
+    , msUnit
+    , msMetric
+    , msPeriod
+    , msStat
+
+    -- * PartialFailure
+    , PartialFailure
+    , partialFailure
+    , pfFailureResource
+    , pfFailureCode
+    , pfFailureDescription
+    , pfExceptionType
+
+    -- * Range
+    , Range
+    , range
+    , rStartTime
+    , rEndTime
+
     -- * StatisticSet
-  , StatisticSet
-  , statisticSet
-  , ssSampleCount
-  , ssSum
-  , ssMinimum
-  , ssMaximum
-  ) where
+    , StatisticSet
+    , statisticSet
+    , ssSampleCount
+    , ssSum
+    , ssMinimum
+    , ssMaximum
+
+    -- * Tag
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
+    ) where
 
 import Network.AWS.CloudWatch.Types.Product
 import Network.AWS.CloudWatch.Types.Sum
@@ -204,6 +329,7 @@ cloudWatch =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | The quota for alarms for this customer has already been reached.
 --
 --
@@ -211,13 +337,14 @@ _LimitExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededFault =
   _MatchServiceError cloudWatch "LimitExceeded" . hasStatus 400
 
+
 -- | The specified dashboard does not exist.
 --
 --
-_DashboardNotFoundError ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_DashboardNotFoundError :: AsError a => Getting (First ServiceError) a ServiceError
 _DashboardNotFoundError =
   _MatchServiceError cloudWatch "ResourceNotFound" . hasStatus 404
+
 
 -- | The next token specified is invalid.
 --
@@ -226,29 +353,39 @@ _InvalidNextToken :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidNextToken =
   _MatchServiceError cloudWatch "InvalidNextToken" . hasStatus 400
 
+
 -- | Request processing has failed due to some unknown error, exception, or failure.
 --
 --
-_InternalServiceFault ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InternalServiceFault :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalServiceFault =
   _MatchServiceError cloudWatch "InternalServiceError" . hasStatus 500
+
 
 -- | Some part of the dashboard data is invalid.
 --
 --
-_DashboardInvalidInputError ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_DashboardInvalidInputError :: AsError a => Getting (First ServiceError) a ServiceError
 _DashboardInvalidInputError =
   _MatchServiceError cloudWatch "InvalidParameterInput" . hasStatus 400
+
 
 -- | The value of an input parameter is bad or out-of-range.
 --
 --
-_InvalidParameterValueException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterValueException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidParameterValueException =
   _MatchServiceError cloudWatch "InvalidParameterValue" . hasStatus 400
+
+
+-- | More than one process tried to modify a resource at the same time.
+--
+--
+_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConcurrentModificationException =
+  _MatchServiceError cloudWatch "ConcurrentModificationException" .
+  hasStatus 429
+
 
 -- | Data was not syntactically valid JSON.
 --
@@ -257,21 +394,38 @@ _InvalidFormatFault :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidFormatFault =
   _MatchServiceError cloudWatch "InvalidFormat" . hasStatus 400
 
+
 -- | An input parameter that is required is missing.
 --
 --
-_MissingRequiredParameterException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_MissingRequiredParameterException :: AsError a => Getting (First ServiceError) a ServiceError
 _MissingRequiredParameterException =
   _MatchServiceError cloudWatch "MissingParameter" . hasStatus 400
+
+
+-- | The named resource does not exist.
+--
+--
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException =
+  _MatchServiceError cloudWatch "ResourceNotFoundException" . hasStatus 404
+
 
 -- | Parameters were used together that cannot be used together.
 --
 --
-_InvalidParameterCombinationException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterCombinationException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidParameterCombinationException =
   _MatchServiceError cloudWatch "InvalidParameterCombination" . hasStatus 400
+
+
+-- | The operation exceeded one or more limits.
+--
+--
+_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException =
+  _MatchServiceError cloudWatch "LimitExceededException" . hasStatus 400
+
 
 -- | The named resource does not exist.
 --
@@ -279,3 +433,4 @@ _InvalidParameterCombinationException =
 _ResourceNotFound :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceNotFound =
   _MatchServiceError cloudWatch "ResourceNotFound" . hasStatus 404
+

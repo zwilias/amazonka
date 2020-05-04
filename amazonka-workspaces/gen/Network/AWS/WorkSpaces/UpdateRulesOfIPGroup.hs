@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.WorkSpaces.UpdateRulesOfIPGroup
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.WorkSpaces.UpdateRulesOfIPGroup
+    (
     -- * Creating a Request
-  ( updateRulesOfIPGroup
-  , UpdateRulesOfIPGroup
+      updateRulesOfIPGroup
+    , UpdateRulesOfIPGroup
     -- * Request Lenses
-  , uroigGroupId
-  , uroigUserRules
+    , uroigGroupId
+    , uroigUserRules
+
     -- * Destructuring the Response
-  , updateRulesOfIPGroupResponse
-  , UpdateRulesOfIPGroupResponse
+    , updateRulesOfIPGroupResponse
+    , UpdateRulesOfIPGroupResponse
     -- * Response Lenses
-  , uroigrsResponseStatus
-  ) where
+    , uroigrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -48,6 +52,7 @@ data UpdateRulesOfIPGroup =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateRulesOfIPGroup' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -55,54 +60,57 @@ data UpdateRulesOfIPGroup =
 -- * 'uroigGroupId' - The ID of the group.
 --
 -- * 'uroigUserRules' - One or more rules.
-updateRulesOfIPGroup ::
-     Text -- ^ 'uroigGroupId'
-  -> UpdateRulesOfIPGroup
+updateRulesOfIPGroup
+    :: Text -- ^ 'uroigGroupId'
+    -> UpdateRulesOfIPGroup
 updateRulesOfIPGroup pGroupId_ =
   UpdateRulesOfIPGroup' {_uroigGroupId = pGroupId_, _uroigUserRules = mempty}
 
+
 -- | The ID of the group.
 uroigGroupId :: Lens' UpdateRulesOfIPGroup Text
-uroigGroupId = lens _uroigGroupId (\s a -> s {_uroigGroupId = a})
+uroigGroupId = lens _uroigGroupId (\ s a -> s{_uroigGroupId = a})
 
 -- | One or more rules.
 uroigUserRules :: Lens' UpdateRulesOfIPGroup [IPRuleItem]
-uroigUserRules =
-  lens _uroigUserRules (\s a -> s {_uroigUserRules = a}) . _Coerce
+uroigUserRules = lens _uroigUserRules (\ s a -> s{_uroigUserRules = a}) . _Coerce
 
 instance AWSRequest UpdateRulesOfIPGroup where
-  type Rs UpdateRulesOfIPGroup = UpdateRulesOfIPGroupResponse
-  request = postJSON workSpaces
-  response =
-    receiveEmpty
-      (\s h x -> UpdateRulesOfIPGroupResponse' <$> (pure (fromEnum s)))
+        type Rs UpdateRulesOfIPGroup =
+             UpdateRulesOfIPGroupResponse
+        request = postJSON workSpaces
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 UpdateRulesOfIPGroupResponse' <$>
+                   (pure (fromEnum s)))
 
-instance Hashable UpdateRulesOfIPGroup
+instance Hashable UpdateRulesOfIPGroup where
 
-instance NFData UpdateRulesOfIPGroup
+instance NFData UpdateRulesOfIPGroup where
 
 instance ToHeaders UpdateRulesOfIPGroup where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("WorkspacesService.UpdateRulesOfIpGroup" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("WorkspacesService.UpdateRulesOfIpGroup" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON UpdateRulesOfIPGroup where
-  toJSON UpdateRulesOfIPGroup' {..} =
-    object
-      (catMaybes
-         [ Just ("GroupId" .= _uroigGroupId)
-         , Just ("UserRules" .= _uroigUserRules)
-         ])
+        toJSON UpdateRulesOfIPGroup'{..}
+          = object
+              (catMaybes
+                 [Just ("GroupId" .= _uroigGroupId),
+                  Just ("UserRules" .= _uroigUserRules)])
 
 instance ToPath UpdateRulesOfIPGroup where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery UpdateRulesOfIPGroup where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'updateRulesOfIPGroupResponse' smart constructor.
 newtype UpdateRulesOfIPGroupResponse =
@@ -111,20 +119,21 @@ newtype UpdateRulesOfIPGroupResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateRulesOfIPGroupResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'uroigrsResponseStatus' - -- | The response status code.
-updateRulesOfIPGroupResponse ::
-     Int -- ^ 'uroigrsResponseStatus'
-  -> UpdateRulesOfIPGroupResponse
+updateRulesOfIPGroupResponse
+    :: Int -- ^ 'uroigrsResponseStatus'
+    -> UpdateRulesOfIPGroupResponse
 updateRulesOfIPGroupResponse pResponseStatus_ =
   UpdateRulesOfIPGroupResponse' {_uroigrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 uroigrsResponseStatus :: Lens' UpdateRulesOfIPGroupResponse Int
-uroigrsResponseStatus =
-  lens _uroigrsResponseStatus (\s a -> s {_uroigrsResponseStatus = a})
+uroigrsResponseStatus = lens _uroigrsResponseStatus (\ s a -> s{_uroigrsResponseStatus = a})
 
-instance NFData UpdateRulesOfIPGroupResponse
+instance NFData UpdateRulesOfIPGroupResponse where

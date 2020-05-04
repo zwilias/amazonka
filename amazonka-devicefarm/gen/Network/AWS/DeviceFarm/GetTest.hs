@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.DeviceFarm.GetTest
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.DeviceFarm.GetTest
+    (
     -- * Creating a Request
-  ( getTest
-  , GetTest
+      getTest
+    , GetTest
     -- * Request Lenses
-  , gtArn
+    , gtArn
+
     -- * Destructuring the Response
-  , getTestResponse
-  , GetTestResponse
+    , getTestResponse
+    , GetTestResponse
     -- * Response Lenses
-  , gtrsTest
-  , gtrsResponseStatus
-  ) where
+    , gtrsTest
+    , gtrsResponseStatus
+    ) where
 
 import Network.AWS.DeviceFarm.Types
 import Network.AWS.DeviceFarm.Types.Product
@@ -51,47 +55,53 @@ newtype GetTest =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetTest' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'gtArn' - The test's ARN.
-getTest ::
-     Text -- ^ 'gtArn'
-  -> GetTest
+getTest
+    :: Text -- ^ 'gtArn'
+    -> GetTest
 getTest pArn_ = GetTest' {_gtArn = pArn_}
+
 
 -- | The test's ARN.
 gtArn :: Lens' GetTest Text
-gtArn = lens _gtArn (\s a -> s {_gtArn = a})
+gtArn = lens _gtArn (\ s a -> s{_gtArn = a})
 
 instance AWSRequest GetTest where
-  type Rs GetTest = GetTestResponse
-  request = postJSON deviceFarm
-  response =
-    receiveJSON
-      (\s h x -> GetTestResponse' <$> (x .?> "test") <*> (pure (fromEnum s)))
+        type Rs GetTest = GetTestResponse
+        request = postJSON deviceFarm
+        response
+          = receiveJSON
+              (\ s h x ->
+                 GetTestResponse' <$>
+                   (x .?> "test") <*> (pure (fromEnum s)))
 
-instance Hashable GetTest
+instance Hashable GetTest where
 
-instance NFData GetTest
+instance NFData GetTest where
 
 instance ToHeaders GetTest where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("DeviceFarm_20150623.GetTest" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("DeviceFarm_20150623.GetTest" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON GetTest where
-  toJSON GetTest' {..} = object (catMaybes [Just ("arn" .= _gtArn)])
+        toJSON GetTest'{..}
+          = object (catMaybes [Just ("arn" .= _gtArn)])
 
 instance ToPath GetTest where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery GetTest where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | Represents the result of a get test request.
 --
@@ -105,6 +115,7 @@ data GetTestResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetTestResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -112,19 +123,19 @@ data GetTestResponse =
 -- * 'gtrsTest' - A test condition that is evaluated.
 --
 -- * 'gtrsResponseStatus' - -- | The response status code.
-getTestResponse ::
-     Int -- ^ 'gtrsResponseStatus'
-  -> GetTestResponse
+getTestResponse
+    :: Int -- ^ 'gtrsResponseStatus'
+    -> GetTestResponse
 getTestResponse pResponseStatus_ =
   GetTestResponse' {_gtrsTest = Nothing, _gtrsResponseStatus = pResponseStatus_}
 
+
 -- | A test condition that is evaluated.
 gtrsTest :: Lens' GetTestResponse (Maybe Test)
-gtrsTest = lens _gtrsTest (\s a -> s {_gtrsTest = a})
+gtrsTest = lens _gtrsTest (\ s a -> s{_gtrsTest = a})
 
 -- | -- | The response status code.
 gtrsResponseStatus :: Lens' GetTestResponse Int
-gtrsResponseStatus =
-  lens _gtrsResponseStatus (\s a -> s {_gtrsResponseStatus = a})
+gtrsResponseStatus = lens _gtrsResponseStatus (\ s a -> s{_gtrsResponseStatus = a})
 
-instance NFData GetTestResponse
+instance NFData GetTestResponse where

@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.MediaStoreData
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -14,47 +15,64 @@
 --
 --
 module Network.AWS.MediaStoreData
+    (
     -- * Service Configuration
-  ( mediaStoreData
+      mediaStoreData
+
     -- * Errors
     -- $errors
+
     -- ** RequestedRangeNotSatisfiableException
-  , _RequestedRangeNotSatisfiableException
+    , _RequestedRangeNotSatisfiableException
+
     -- ** InternalServerError
-  , _InternalServerError
+    , _InternalServerError
+
     -- ** ContainerNotFoundException
-  , _ContainerNotFoundException
+    , _ContainerNotFoundException
+
     -- ** ObjectNotFoundException
-  , _ObjectNotFoundException
+    , _ObjectNotFoundException
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
+
     -- ** PutObject
-  , module Network.AWS.MediaStoreData.PutObject
+    , module Network.AWS.MediaStoreData.PutObject
+
     -- ** DeleteObject
-  , module Network.AWS.MediaStoreData.DeleteObject
+    , module Network.AWS.MediaStoreData.DeleteObject
+
     -- ** DescribeObject
-  , module Network.AWS.MediaStoreData.DescribeObject
+    , module Network.AWS.MediaStoreData.DescribeObject
+
     -- ** GetObject
-  , module Network.AWS.MediaStoreData.GetObject
+    , module Network.AWS.MediaStoreData.GetObject
+
     -- ** ListItems
-  , module Network.AWS.MediaStoreData.ListItems
+    , module Network.AWS.MediaStoreData.ListItems
+
     -- * Types
+
     -- ** ItemType
-  , ItemType(..)
+    , ItemType (..)
+
     -- ** StorageClass
-  , StorageClass(..)
+    , StorageClass (..)
+
     -- ** Item
-  , Item
-  , item
-  , iETag
-  , iContentLength
-  , iName
-  , iType
-  , iLastModified
-  , iContentType
-  ) where
+    , Item
+    , item
+    , iETag
+    , iContentLength
+    , iName
+    , iType
+    , iLastModified
+    , iContentType
+    ) where
 
 import Network.AWS.MediaStoreData.DeleteObject
 import Network.AWS.MediaStoreData.DescribeObject
@@ -63,12 +81,14 @@ import Network.AWS.MediaStoreData.ListItems
 import Network.AWS.MediaStoreData.PutObject
 import Network.AWS.MediaStoreData.Types
 import Network.AWS.MediaStoreData.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'MediaStoreData'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -85,6 +105,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

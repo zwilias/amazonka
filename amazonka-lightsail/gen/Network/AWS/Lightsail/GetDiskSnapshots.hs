@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Lightsail.GetDiskSnapshots
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,19 +24,21 @@
 -- If you are describing a long list of disk snapshots, you can paginate the output to make the list more manageable. You can use the pageToken and nextPageToken values to retrieve the next items in the list.
 --
 module Network.AWS.Lightsail.GetDiskSnapshots
+    (
     -- * Creating a Request
-  ( getDiskSnapshots
-  , GetDiskSnapshots
+      getDiskSnapshots
+    , GetDiskSnapshots
     -- * Request Lenses
-  , gdsPageToken
+    , gdsPageToken
+
     -- * Destructuring the Response
-  , getDiskSnapshotsResponse
-  , GetDiskSnapshotsResponse
+    , getDiskSnapshotsResponse
+    , GetDiskSnapshotsResponse
     -- * Response Lenses
-  , gdssrsNextPageToken
-  , gdssrsDiskSnapshots
-  , gdssrsResponseStatus
-  ) where
+    , gdssrsNextPageToken
+    , gdssrsDiskSnapshots
+    , gdssrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
@@ -50,50 +54,56 @@ newtype GetDiskSnapshots =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetDiskSnapshots' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'gdsPageToken' - A token used for advancing to the next page of results from your GetDiskSnapshots request.
-getDiskSnapshots :: GetDiskSnapshots
+getDiskSnapshots
+    :: GetDiskSnapshots
 getDiskSnapshots = GetDiskSnapshots' {_gdsPageToken = Nothing}
+
 
 -- | A token used for advancing to the next page of results from your GetDiskSnapshots request.
 gdsPageToken :: Lens' GetDiskSnapshots (Maybe Text)
-gdsPageToken = lens _gdsPageToken (\s a -> s {_gdsPageToken = a})
+gdsPageToken = lens _gdsPageToken (\ s a -> s{_gdsPageToken = a})
 
 instance AWSRequest GetDiskSnapshots where
-  type Rs GetDiskSnapshots = GetDiskSnapshotsResponse
-  request = postJSON lightsail
-  response =
-    receiveJSON
-      (\s h x ->
-         GetDiskSnapshotsResponse' <$> (x .?> "nextPageToken") <*>
-         (x .?> "diskSnapshots" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs GetDiskSnapshots = GetDiskSnapshotsResponse
+        request = postJSON lightsail
+        response
+          = receiveJSON
+              (\ s h x ->
+                 GetDiskSnapshotsResponse' <$>
+                   (x .?> "nextPageToken") <*>
+                     (x .?> "diskSnapshots" .!@ mempty)
+                     <*> (pure (fromEnum s)))
 
-instance Hashable GetDiskSnapshots
+instance Hashable GetDiskSnapshots where
 
-instance NFData GetDiskSnapshots
+instance NFData GetDiskSnapshots where
 
 instance ToHeaders GetDiskSnapshots where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("Lightsail_20161128.GetDiskSnapshots" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("Lightsail_20161128.GetDiskSnapshots" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON GetDiskSnapshots where
-  toJSON GetDiskSnapshots' {..} =
-    object (catMaybes [("pageToken" .=) <$> _gdsPageToken])
+        toJSON GetDiskSnapshots'{..}
+          = object
+              (catMaybes [("pageToken" .=) <$> _gdsPageToken])
 
 instance ToPath GetDiskSnapshots where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery GetDiskSnapshots where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'getDiskSnapshotsResponse' smart constructor.
 data GetDiskSnapshotsResponse =
@@ -104,6 +114,7 @@ data GetDiskSnapshotsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetDiskSnapshotsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -113,9 +124,9 @@ data GetDiskSnapshotsResponse =
 -- * 'gdssrsDiskSnapshots' - An array of objects containing information about all block storage disk snapshots.
 --
 -- * 'gdssrsResponseStatus' - -- | The response status code.
-getDiskSnapshotsResponse ::
-     Int -- ^ 'gdssrsResponseStatus'
-  -> GetDiskSnapshotsResponse
+getDiskSnapshotsResponse
+    :: Int -- ^ 'gdssrsResponseStatus'
+    -> GetDiskSnapshotsResponse
 getDiskSnapshotsResponse pResponseStatus_ =
   GetDiskSnapshotsResponse'
     { _gdssrsNextPageToken = Nothing
@@ -123,20 +134,17 @@ getDiskSnapshotsResponse pResponseStatus_ =
     , _gdssrsResponseStatus = pResponseStatus_
     }
 
+
 -- | A token used for advancing to the next page of results from your GetDiskSnapshots request.
 gdssrsNextPageToken :: Lens' GetDiskSnapshotsResponse (Maybe Text)
-gdssrsNextPageToken =
-  lens _gdssrsNextPageToken (\s a -> s {_gdssrsNextPageToken = a})
+gdssrsNextPageToken = lens _gdssrsNextPageToken (\ s a -> s{_gdssrsNextPageToken = a})
 
 -- | An array of objects containing information about all block storage disk snapshots.
 gdssrsDiskSnapshots :: Lens' GetDiskSnapshotsResponse [DiskSnapshot]
-gdssrsDiskSnapshots =
-  lens _gdssrsDiskSnapshots (\s a -> s {_gdssrsDiskSnapshots = a}) .
-  _Default . _Coerce
+gdssrsDiskSnapshots = lens _gdssrsDiskSnapshots (\ s a -> s{_gdssrsDiskSnapshots = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 gdssrsResponseStatus :: Lens' GetDiskSnapshotsResponse Int
-gdssrsResponseStatus =
-  lens _gdssrsResponseStatus (\s a -> s {_gdssrsResponseStatus = a})
+gdssrsResponseStatus = lens _gdssrsResponseStatus (\ s a -> s{_gdssrsResponseStatus = a})
 
-instance NFData GetDiskSnapshotsResponse
+instance NFData GetDiskSnapshotsResponse where

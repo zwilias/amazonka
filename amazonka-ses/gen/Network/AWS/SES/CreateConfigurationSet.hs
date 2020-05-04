@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SES.CreateConfigurationSet
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,17 +26,19 @@
 -- You can execute this operation no more than once per second.
 --
 module Network.AWS.SES.CreateConfigurationSet
+    (
     -- * Creating a Request
-  ( createConfigurationSet
-  , CreateConfigurationSet
+      createConfigurationSet
+    , CreateConfigurationSet
     -- * Request Lenses
-  , ccsConfigurationSet
+    , ccsConfigurationSet
+
     -- * Destructuring the Response
-  , createConfigurationSetResponse
-  , CreateConfigurationSetResponse
+    , createConfigurationSetResponse
+    , CreateConfigurationSetResponse
     -- * Response Lenses
-  , ccsrsResponseStatus
-  ) where
+    , ccsrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -54,47 +58,50 @@ newtype CreateConfigurationSet =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateConfigurationSet' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'ccsConfigurationSet' - A data structure that contains the name of the configuration set.
-createConfigurationSet ::
-     ConfigurationSet -- ^ 'ccsConfigurationSet'
-  -> CreateConfigurationSet
+createConfigurationSet
+    :: ConfigurationSet -- ^ 'ccsConfigurationSet'
+    -> CreateConfigurationSet
 createConfigurationSet pConfigurationSet_ =
   CreateConfigurationSet' {_ccsConfigurationSet = pConfigurationSet_}
 
+
 -- | A data structure that contains the name of the configuration set.
 ccsConfigurationSet :: Lens' CreateConfigurationSet ConfigurationSet
-ccsConfigurationSet =
-  lens _ccsConfigurationSet (\s a -> s {_ccsConfigurationSet = a})
+ccsConfigurationSet = lens _ccsConfigurationSet (\ s a -> s{_ccsConfigurationSet = a})
 
 instance AWSRequest CreateConfigurationSet where
-  type Rs CreateConfigurationSet = CreateConfigurationSetResponse
-  request = postQuery ses
-  response =
-    receiveXMLWrapper
-      "CreateConfigurationSetResult"
-      (\s h x -> CreateConfigurationSetResponse' <$> (pure (fromEnum s)))
+        type Rs CreateConfigurationSet =
+             CreateConfigurationSetResponse
+        request = postQuery ses
+        response
+          = receiveXMLWrapper "CreateConfigurationSetResult"
+              (\ s h x ->
+                 CreateConfigurationSetResponse' <$>
+                   (pure (fromEnum s)))
 
-instance Hashable CreateConfigurationSet
+instance Hashable CreateConfigurationSet where
 
-instance NFData CreateConfigurationSet
+instance NFData CreateConfigurationSet where
 
 instance ToHeaders CreateConfigurationSet where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath CreateConfigurationSet where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery CreateConfigurationSet where
-  toQuery CreateConfigurationSet' {..} =
-    mconcat
-      [ "Action" =: ("CreateConfigurationSet" :: ByteString)
-      , "Version" =: ("2010-12-01" :: ByteString)
-      , "ConfigurationSet" =: _ccsConfigurationSet
-      ]
+        toQuery CreateConfigurationSet'{..}
+          = mconcat
+              ["Action" =:
+                 ("CreateConfigurationSet" :: ByteString),
+               "Version" =: ("2010-12-01" :: ByteString),
+               "ConfigurationSet" =: _ccsConfigurationSet]
 
 -- | An empty element returned on a successful request.
 --
@@ -107,20 +114,21 @@ newtype CreateConfigurationSetResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateConfigurationSetResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'ccsrsResponseStatus' - -- | The response status code.
-createConfigurationSetResponse ::
-     Int -- ^ 'ccsrsResponseStatus'
-  -> CreateConfigurationSetResponse
+createConfigurationSetResponse
+    :: Int -- ^ 'ccsrsResponseStatus'
+    -> CreateConfigurationSetResponse
 createConfigurationSetResponse pResponseStatus_ =
   CreateConfigurationSetResponse' {_ccsrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 ccsrsResponseStatus :: Lens' CreateConfigurationSetResponse Int
-ccsrsResponseStatus =
-  lens _ccsrsResponseStatus (\s a -> s {_ccsrsResponseStatus = a})
+ccsrsResponseStatus = lens _ccsrsResponseStatus (\ s a -> s{_ccsrsResponseStatus = a})
 
-instance NFData CreateConfigurationSetResponse
+instance NFData CreateConfigurationSetResponse where

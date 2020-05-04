@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.KinesisVideo.TagStream
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,19 +28,21 @@
 -- Kinesis video streams support up to 50 tags.
 --
 module Network.AWS.KinesisVideo.TagStream
+    (
     -- * Creating a Request
-  ( tagStream
-  , TagStream
+      tagStream
+    , TagStream
     -- * Request Lenses
-  , tsStreamARN
-  , tsStreamName
-  , tsTags
+    , tsStreamARN
+    , tsStreamName
+    , tsTags
+
     -- * Destructuring the Response
-  , tagStreamResponse
-  , TagStreamResponse
+    , tagStreamResponse
+    , TagStreamResponse
     -- * Response Lenses
-  , tsrsResponseStatus
-  ) where
+    , tsrsResponseStatus
+    ) where
 
 import Network.AWS.KinesisVideo.Types
 import Network.AWS.KinesisVideo.Types.Product
@@ -56,6 +60,7 @@ data TagStream =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'TagStream' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -65,48 +70,52 @@ data TagStream =
 -- * 'tsStreamName' - The name of the stream that you want to add the tag or tags to.
 --
 -- * 'tsTags' - A list of tags to associate with the specified stream. Each tag is a key-value pair (the value is optional).
-tagStream :: TagStream
+tagStream
+    :: TagStream
 tagStream =
   TagStream' {_tsStreamARN = Nothing, _tsStreamName = Nothing, _tsTags = mempty}
 
+
 -- | The Amazon Resource Name (ARN) of the resource that you want to add the tag or tags to.
 tsStreamARN :: Lens' TagStream (Maybe Text)
-tsStreamARN = lens _tsStreamARN (\s a -> s {_tsStreamARN = a})
+tsStreamARN = lens _tsStreamARN (\ s a -> s{_tsStreamARN = a})
 
 -- | The name of the stream that you want to add the tag or tags to.
 tsStreamName :: Lens' TagStream (Maybe Text)
-tsStreamName = lens _tsStreamName (\s a -> s {_tsStreamName = a})
+tsStreamName = lens _tsStreamName (\ s a -> s{_tsStreamName = a})
 
 -- | A list of tags to associate with the specified stream. Each tag is a key-value pair (the value is optional).
 tsTags :: Lens' TagStream (HashMap Text Text)
-tsTags = lens _tsTags (\s a -> s {_tsTags = a}) . _Map
+tsTags = lens _tsTags (\ s a -> s{_tsTags = a}) . _Map
 
 instance AWSRequest TagStream where
-  type Rs TagStream = TagStreamResponse
-  request = postJSON kinesisVideo
-  response = receiveEmpty (\s h x -> TagStreamResponse' <$> (pure (fromEnum s)))
+        type Rs TagStream = TagStreamResponse
+        request = postJSON kinesisVideo
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 TagStreamResponse' <$> (pure (fromEnum s)))
 
-instance Hashable TagStream
+instance Hashable TagStream where
 
-instance NFData TagStream
+instance NFData TagStream where
 
 instance ToHeaders TagStream where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToJSON TagStream where
-  toJSON TagStream' {..} =
-    object
-      (catMaybes
-         [ ("StreamARN" .=) <$> _tsStreamARN
-         , ("StreamName" .=) <$> _tsStreamName
-         , Just ("Tags" .= _tsTags)
-         ])
+        toJSON TagStream'{..}
+          = object
+              (catMaybes
+                 [("StreamARN" .=) <$> _tsStreamARN,
+                  ("StreamName" .=) <$> _tsStreamName,
+                  Just ("Tags" .= _tsTags)])
 
 instance ToPath TagStream where
-  toPath = const "/tagStream"
+        toPath = const "/tagStream"
 
 instance ToQuery TagStream where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'tagStreamResponse' smart constructor.
 newtype TagStreamResponse =
@@ -115,20 +124,21 @@ newtype TagStreamResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'TagStreamResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'tsrsResponseStatus' - -- | The response status code.
-tagStreamResponse ::
-     Int -- ^ 'tsrsResponseStatus'
-  -> TagStreamResponse
+tagStreamResponse
+    :: Int -- ^ 'tsrsResponseStatus'
+    -> TagStreamResponse
 tagStreamResponse pResponseStatus_ =
   TagStreamResponse' {_tsrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 tsrsResponseStatus :: Lens' TagStreamResponse Int
-tsrsResponseStatus =
-  lens _tsrsResponseStatus (\s a -> s {_tsrsResponseStatus = a})
+tsrsResponseStatus = lens _tsrsResponseStatus (\ s a -> s{_tsrsResponseStatus = a})
 
-instance NFData TagStreamResponse
+instance NFData TagStreamResponse where

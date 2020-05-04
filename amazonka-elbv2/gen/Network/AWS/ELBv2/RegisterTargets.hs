@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.ELBv2.RegisterTargets
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -28,18 +30,20 @@
 -- To remove a target from a target group, use 'DeregisterTargets' .
 --
 module Network.AWS.ELBv2.RegisterTargets
+    (
     -- * Creating a Request
-  ( registerTargets
-  , RegisterTargets
+      registerTargets
+    , RegisterTargets
     -- * Request Lenses
-  , rtTargetGroupARN
-  , rtTargets
+    , rtTargetGroupARN
+    , rtTargets
+
     -- * Destructuring the Response
-  , registerTargetsResponse
-  , RegisterTargetsResponse
+    , registerTargetsResponse
+    , RegisterTargetsResponse
     -- * Response Lenses
-  , rrsResponseStatus
-  ) where
+    , rrsResponseStatus
+    ) where
 
 import Network.AWS.ELBv2.Types
 import Network.AWS.ELBv2.Types.Product
@@ -56,6 +60,7 @@ data RegisterTargets =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'RegisterTargets' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -63,46 +68,46 @@ data RegisterTargets =
 -- * 'rtTargetGroupARN' - The Amazon Resource Name (ARN) of the target group.
 --
 -- * 'rtTargets' - The targets.
-registerTargets ::
-     Text -- ^ 'rtTargetGroupARN'
-  -> RegisterTargets
+registerTargets
+    :: Text -- ^ 'rtTargetGroupARN'
+    -> RegisterTargets
 registerTargets pTargetGroupARN_ =
   RegisterTargets' {_rtTargetGroupARN = pTargetGroupARN_, _rtTargets = mempty}
 
+
 -- | The Amazon Resource Name (ARN) of the target group.
 rtTargetGroupARN :: Lens' RegisterTargets Text
-rtTargetGroupARN = lens _rtTargetGroupARN (\s a -> s {_rtTargetGroupARN = a})
+rtTargetGroupARN = lens _rtTargetGroupARN (\ s a -> s{_rtTargetGroupARN = a})
 
 -- | The targets.
 rtTargets :: Lens' RegisterTargets [TargetDescription]
-rtTargets = lens _rtTargets (\s a -> s {_rtTargets = a}) . _Coerce
+rtTargets = lens _rtTargets (\ s a -> s{_rtTargets = a}) . _Coerce
 
 instance AWSRequest RegisterTargets where
-  type Rs RegisterTargets = RegisterTargetsResponse
-  request = postQuery eLBv2
-  response =
-    receiveXMLWrapper
-      "RegisterTargetsResult"
-      (\s h x -> RegisterTargetsResponse' <$> (pure (fromEnum s)))
+        type Rs RegisterTargets = RegisterTargetsResponse
+        request = postQuery eLBv2
+        response
+          = receiveXMLWrapper "RegisterTargetsResult"
+              (\ s h x ->
+                 RegisterTargetsResponse' <$> (pure (fromEnum s)))
 
-instance Hashable RegisterTargets
+instance Hashable RegisterTargets where
 
-instance NFData RegisterTargets
+instance NFData RegisterTargets where
 
 instance ToHeaders RegisterTargets where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath RegisterTargets where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery RegisterTargets where
-  toQuery RegisterTargets' {..} =
-    mconcat
-      [ "Action" =: ("RegisterTargets" :: ByteString)
-      , "Version" =: ("2015-12-01" :: ByteString)
-      , "TargetGroupArn" =: _rtTargetGroupARN
-      , "Targets" =: toQueryList "member" _rtTargets
-      ]
+        toQuery RegisterTargets'{..}
+          = mconcat
+              ["Action" =: ("RegisterTargets" :: ByteString),
+               "Version" =: ("2015-12-01" :: ByteString),
+               "TargetGroupArn" =: _rtTargetGroupARN,
+               "Targets" =: toQueryList "member" _rtTargets]
 
 -- | /See:/ 'registerTargetsResponse' smart constructor.
 newtype RegisterTargetsResponse =
@@ -111,19 +116,21 @@ newtype RegisterTargetsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'RegisterTargetsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'rrsResponseStatus' - -- | The response status code.
-registerTargetsResponse ::
-     Int -- ^ 'rrsResponseStatus'
-  -> RegisterTargetsResponse
+registerTargetsResponse
+    :: Int -- ^ 'rrsResponseStatus'
+    -> RegisterTargetsResponse
 registerTargetsResponse pResponseStatus_ =
   RegisterTargetsResponse' {_rrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 rrsResponseStatus :: Lens' RegisterTargetsResponse Int
-rrsResponseStatus = lens _rrsResponseStatus (\s a -> s {_rrsResponseStatus = a})
+rrsResponseStatus = lens _rrsResponseStatus (\ s a -> s{_rrsResponseStatus = a})
 
-instance NFData RegisterTargetsResponse
+instance NFData RegisterTargetsResponse where

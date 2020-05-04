@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Lightsail.StopInstance
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,19 +22,21 @@
 --
 --
 module Network.AWS.Lightsail.StopInstance
+    (
     -- * Creating a Request
-  ( stopInstance
-  , StopInstance
+      stopInstance
+    , StopInstance
     -- * Request Lenses
-  , siForce
-  , siInstanceName
+    , siForce
+    , siInstanceName
+
     -- * Destructuring the Response
-  , stopInstanceResponse
-  , StopInstanceResponse
+    , stopInstanceResponse
+    , StopInstanceResponse
     -- * Response Lenses
-  , sirsOperations
-  , sirsResponseStatus
-  ) where
+    , sirsOperations
+    , sirsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
@@ -49,6 +53,7 @@ data StopInstance =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'StopInstance' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -56,52 +61,56 @@ data StopInstance =
 -- * 'siForce' - When set to @True@ , forces a Lightsail instance that is stuck in a @stopping@ state to stop. /Important:/ Only use the @force@ parameter if your instance is stuck in the @stopping@ state. In any other state, your instance should stop normally without adding this parameter to your API request.
 --
 -- * 'siInstanceName' - The name of the instance (a virtual private server) to stop.
-stopInstance ::
-     Text -- ^ 'siInstanceName'
-  -> StopInstance
+stopInstance
+    :: Text -- ^ 'siInstanceName'
+    -> StopInstance
 stopInstance pInstanceName_ =
   StopInstance' {_siForce = Nothing, _siInstanceName = pInstanceName_}
 
+
 -- | When set to @True@ , forces a Lightsail instance that is stuck in a @stopping@ state to stop. /Important:/ Only use the @force@ parameter if your instance is stuck in the @stopping@ state. In any other state, your instance should stop normally without adding this parameter to your API request.
 siForce :: Lens' StopInstance (Maybe Bool)
-siForce = lens _siForce (\s a -> s {_siForce = a})
+siForce = lens _siForce (\ s a -> s{_siForce = a})
 
 -- | The name of the instance (a virtual private server) to stop.
 siInstanceName :: Lens' StopInstance Text
-siInstanceName = lens _siInstanceName (\s a -> s {_siInstanceName = a})
+siInstanceName = lens _siInstanceName (\ s a -> s{_siInstanceName = a})
 
 instance AWSRequest StopInstance where
-  type Rs StopInstance = StopInstanceResponse
-  request = postJSON lightsail
-  response =
-    receiveJSON
-      (\s h x ->
-         StopInstanceResponse' <$> (x .?> "operations" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs StopInstance = StopInstanceResponse
+        request = postJSON lightsail
+        response
+          = receiveJSON
+              (\ s h x ->
+                 StopInstanceResponse' <$>
+                   (x .?> "operations" .!@ mempty) <*>
+                     (pure (fromEnum s)))
 
-instance Hashable StopInstance
+instance Hashable StopInstance where
 
-instance NFData StopInstance
+instance NFData StopInstance where
 
 instance ToHeaders StopInstance where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("Lightsail_20161128.StopInstance" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("Lightsail_20161128.StopInstance" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON StopInstance where
-  toJSON StopInstance' {..} =
-    object
-      (catMaybes
-         [("force" .=) <$> _siForce, Just ("instanceName" .= _siInstanceName)])
+        toJSON StopInstance'{..}
+          = object
+              (catMaybes
+                 [("force" .=) <$> _siForce,
+                  Just ("instanceName" .= _siInstanceName)])
 
 instance ToPath StopInstance where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery StopInstance where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'stopInstanceResponse' smart constructor.
 data StopInstanceResponse =
@@ -111,6 +120,7 @@ data StopInstanceResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'StopInstanceResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -118,21 +128,20 @@ data StopInstanceResponse =
 -- * 'sirsOperations' - An array of key-value pairs containing information about the request operation.
 --
 -- * 'sirsResponseStatus' - -- | The response status code.
-stopInstanceResponse ::
-     Int -- ^ 'sirsResponseStatus'
-  -> StopInstanceResponse
+stopInstanceResponse
+    :: Int -- ^ 'sirsResponseStatus'
+    -> StopInstanceResponse
 stopInstanceResponse pResponseStatus_ =
   StopInstanceResponse'
     {_sirsOperations = Nothing, _sirsResponseStatus = pResponseStatus_}
 
+
 -- | An array of key-value pairs containing information about the request operation.
 sirsOperations :: Lens' StopInstanceResponse [Operation]
-sirsOperations =
-  lens _sirsOperations (\s a -> s {_sirsOperations = a}) . _Default . _Coerce
+sirsOperations = lens _sirsOperations (\ s a -> s{_sirsOperations = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 sirsResponseStatus :: Lens' StopInstanceResponse Int
-sirsResponseStatus =
-  lens _sirsResponseStatus (\s a -> s {_sirsResponseStatus = a})
+sirsResponseStatus = lens _sirsResponseStatus (\ s a -> s{_sirsResponseStatus = a})
 
-instance NFData StopInstanceResponse
+instance NFData StopInstanceResponse where

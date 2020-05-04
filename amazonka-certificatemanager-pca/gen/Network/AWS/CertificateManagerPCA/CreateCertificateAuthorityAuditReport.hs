@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CertificateManagerPCA.CreateCertificateAuthorityAuditReport
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,21 +22,23 @@
 --
 --
 module Network.AWS.CertificateManagerPCA.CreateCertificateAuthorityAuditReport
+    (
     -- * Creating a Request
-  ( createCertificateAuthorityAuditReport
-  , CreateCertificateAuthorityAuditReport
+      createCertificateAuthorityAuditReport
+    , CreateCertificateAuthorityAuditReport
     -- * Request Lenses
-  , ccaarCertificateAuthorityARN
-  , ccaarS3BucketName
-  , ccaarAuditReportResponseFormat
+    , ccaarCertificateAuthorityARN
+    , ccaarS3BucketName
+    , ccaarAuditReportResponseFormat
+
     -- * Destructuring the Response
-  , createCertificateAuthorityAuditReportResponse
-  , CreateCertificateAuthorityAuditReportResponse
+    , createCertificateAuthorityAuditReportResponse
+    , CreateCertificateAuthorityAuditReportResponse
     -- * Response Lenses
-  , ccaarrsS3Key
-  , ccaarrsAuditReportId
-  , ccaarrsResponseStatus
-  ) where
+    , ccaarrsS3Key
+    , ccaarrsAuditReportId
+    , ccaarrsResponseStatus
+    ) where
 
 import Network.AWS.CertificateManagerPCA.Types
 import Network.AWS.CertificateManagerPCA.Types.Product
@@ -52,6 +56,7 @@ data CreateCertificateAuthorityAuditReport =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateCertificateAuthorityAuditReport' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -61,11 +66,11 @@ data CreateCertificateAuthorityAuditReport =
 -- * 'ccaarS3BucketName' - Name of the S3 bucket that will contain the audit report.
 --
 -- * 'ccaarAuditReportResponseFormat' - Format in which to create the report. This can be either __JSON__ or __CSV__ .
-createCertificateAuthorityAuditReport ::
-     Text -- ^ 'ccaarCertificateAuthorityARN'
-  -> Text -- ^ 'ccaarS3BucketName'
-  -> AuditReportResponseFormat -- ^ 'ccaarAuditReportResponseFormat'
-  -> CreateCertificateAuthorityAuditReport
+createCertificateAuthorityAuditReport
+    :: Text -- ^ 'ccaarCertificateAuthorityARN'
+    -> Text -- ^ 'ccaarS3BucketName'
+    -> AuditReportResponseFormat -- ^ 'ccaarAuditReportResponseFormat'
+    -> CreateCertificateAuthorityAuditReport
 createCertificateAuthorityAuditReport pCertificateAuthorityARN_ pS3BucketName_ pAuditReportResponseFormat_ =
   CreateCertificateAuthorityAuditReport'
     { _ccaarCertificateAuthorityARN = pCertificateAuthorityARN_
@@ -73,62 +78,72 @@ createCertificateAuthorityAuditReport pCertificateAuthorityARN_ pS3BucketName_ p
     , _ccaarAuditReportResponseFormat = pAuditReportResponseFormat_
     }
 
+
 -- | Amazon Resource Name (ARN) of the CA to be audited. This is of the form: @arn:aws:acm:/region/ :/account/ :certificate-authority//12345678-1234-1234-1234-123456789012/ @ .
 ccaarCertificateAuthorityARN :: Lens' CreateCertificateAuthorityAuditReport Text
-ccaarCertificateAuthorityARN =
-  lens
-    _ccaarCertificateAuthorityARN
-    (\s a -> s {_ccaarCertificateAuthorityARN = a})
+ccaarCertificateAuthorityARN = lens _ccaarCertificateAuthorityARN (\ s a -> s{_ccaarCertificateAuthorityARN = a})
 
 -- | Name of the S3 bucket that will contain the audit report.
 ccaarS3BucketName :: Lens' CreateCertificateAuthorityAuditReport Text
-ccaarS3BucketName = lens _ccaarS3BucketName (\s a -> s {_ccaarS3BucketName = a})
+ccaarS3BucketName = lens _ccaarS3BucketName (\ s a -> s{_ccaarS3BucketName = a})
 
 -- | Format in which to create the report. This can be either __JSON__ or __CSV__ .
-ccaarAuditReportResponseFormat ::
-     Lens' CreateCertificateAuthorityAuditReport AuditReportResponseFormat
-ccaarAuditReportResponseFormat =
-  lens
-    _ccaarAuditReportResponseFormat
-    (\s a -> s {_ccaarAuditReportResponseFormat = a})
+ccaarAuditReportResponseFormat :: Lens' CreateCertificateAuthorityAuditReport AuditReportResponseFormat
+ccaarAuditReportResponseFormat = lens _ccaarAuditReportResponseFormat (\ s a -> s{_ccaarAuditReportResponseFormat = a})
 
-instance AWSRequest CreateCertificateAuthorityAuditReport where
-  type Rs CreateCertificateAuthorityAuditReport = CreateCertificateAuthorityAuditReportResponse
-  request = postJSON certificateManagerPCA
-  response =
-    receiveJSON
-      (\s h x ->
-         CreateCertificateAuthorityAuditReportResponse' <$> (x .?> "S3Key") <*>
-         (x .?> "AuditReportId") <*>
-         (pure (fromEnum s)))
+instance AWSRequest
+           CreateCertificateAuthorityAuditReport
+         where
+        type Rs CreateCertificateAuthorityAuditReport =
+             CreateCertificateAuthorityAuditReportResponse
+        request = postJSON certificateManagerPCA
+        response
+          = receiveJSON
+              (\ s h x ->
+                 CreateCertificateAuthorityAuditReportResponse' <$>
+                   (x .?> "S3Key") <*> (x .?> "AuditReportId") <*>
+                     (pure (fromEnum s)))
 
-instance Hashable CreateCertificateAuthorityAuditReport
+instance Hashable
+           CreateCertificateAuthorityAuditReport
+         where
 
 instance NFData CreateCertificateAuthorityAuditReport
+         where
 
-instance ToHeaders CreateCertificateAuthorityAuditReport where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("ACMPrivateCA.CreateCertificateAuthorityAuditReport" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+instance ToHeaders
+           CreateCertificateAuthorityAuditReport
+         where
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("ACMPrivateCA.CreateCertificateAuthorityAuditReport"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
-instance ToJSON CreateCertificateAuthorityAuditReport where
-  toJSON CreateCertificateAuthorityAuditReport' {..} =
-    object
-      (catMaybes
-         [ Just ("CertificateAuthorityArn" .= _ccaarCertificateAuthorityARN)
-         , Just ("S3BucketName" .= _ccaarS3BucketName)
-         , Just ("AuditReportResponseFormat" .= _ccaarAuditReportResponseFormat)
-         ])
+instance ToJSON CreateCertificateAuthorityAuditReport
+         where
+        toJSON CreateCertificateAuthorityAuditReport'{..}
+          = object
+              (catMaybes
+                 [Just
+                    ("CertificateAuthorityArn" .=
+                       _ccaarCertificateAuthorityARN),
+                  Just ("S3BucketName" .= _ccaarS3BucketName),
+                  Just
+                    ("AuditReportResponseFormat" .=
+                       _ccaarAuditReportResponseFormat)])
 
-instance ToPath CreateCertificateAuthorityAuditReport where
-  toPath = const "/"
+instance ToPath CreateCertificateAuthorityAuditReport
+         where
+        toPath = const "/"
 
-instance ToQuery CreateCertificateAuthorityAuditReport where
-  toQuery = const mempty
+instance ToQuery
+           CreateCertificateAuthorityAuditReport
+         where
+        toQuery = const mempty
 
 -- | /See:/ 'createCertificateAuthorityAuditReportResponse' smart constructor.
 data CreateCertificateAuthorityAuditReportResponse =
@@ -139,6 +154,7 @@ data CreateCertificateAuthorityAuditReportResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateCertificateAuthorityAuditReportResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -148,9 +164,9 @@ data CreateCertificateAuthorityAuditReportResponse =
 -- * 'ccaarrsAuditReportId' - An alphanumeric string that contains a report identifier.
 --
 -- * 'ccaarrsResponseStatus' - -- | The response status code.
-createCertificateAuthorityAuditReportResponse ::
-     Int -- ^ 'ccaarrsResponseStatus'
-  -> CreateCertificateAuthorityAuditReportResponse
+createCertificateAuthorityAuditReportResponse
+    :: Int -- ^ 'ccaarrsResponseStatus'
+    -> CreateCertificateAuthorityAuditReportResponse
 createCertificateAuthorityAuditReportResponse pResponseStatus_ =
   CreateCertificateAuthorityAuditReportResponse'
     { _ccaarrsS3Key = Nothing
@@ -158,19 +174,19 @@ createCertificateAuthorityAuditReportResponse pResponseStatus_ =
     , _ccaarrsResponseStatus = pResponseStatus_
     }
 
+
 -- | The __key__ that uniquely identifies the report file in your S3 bucket.
 ccaarrsS3Key :: Lens' CreateCertificateAuthorityAuditReportResponse (Maybe Text)
-ccaarrsS3Key = lens _ccaarrsS3Key (\s a -> s {_ccaarrsS3Key = a})
+ccaarrsS3Key = lens _ccaarrsS3Key (\ s a -> s{_ccaarrsS3Key = a})
 
 -- | An alphanumeric string that contains a report identifier.
-ccaarrsAuditReportId ::
-     Lens' CreateCertificateAuthorityAuditReportResponse (Maybe Text)
-ccaarrsAuditReportId =
-  lens _ccaarrsAuditReportId (\s a -> s {_ccaarrsAuditReportId = a})
+ccaarrsAuditReportId :: Lens' CreateCertificateAuthorityAuditReportResponse (Maybe Text)
+ccaarrsAuditReportId = lens _ccaarrsAuditReportId (\ s a -> s{_ccaarrsAuditReportId = a})
 
 -- | -- | The response status code.
 ccaarrsResponseStatus :: Lens' CreateCertificateAuthorityAuditReportResponse Int
-ccaarrsResponseStatus =
-  lens _ccaarrsResponseStatus (\s a -> s {_ccaarrsResponseStatus = a})
+ccaarrsResponseStatus = lens _ccaarrsResponseStatus (\ s a -> s{_ccaarrsResponseStatus = a})
 
-instance NFData CreateCertificateAuthorityAuditReportResponse
+instance NFData
+           CreateCertificateAuthorityAuditReportResponse
+         where

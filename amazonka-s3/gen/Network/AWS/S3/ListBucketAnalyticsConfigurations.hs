@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.S3.ListBucketAnalyticsConfigurations
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,22 +20,24 @@
 --
 -- Lists the analytics configurations for the bucket.
 module Network.AWS.S3.ListBucketAnalyticsConfigurations
+    (
     -- * Creating a Request
-  ( listBucketAnalyticsConfigurations
-  , ListBucketAnalyticsConfigurations
+      listBucketAnalyticsConfigurations
+    , ListBucketAnalyticsConfigurations
     -- * Request Lenses
-  , lbacContinuationToken
-  , lbacBucket
+    , lbacContinuationToken
+    , lbacBucket
+
     -- * Destructuring the Response
-  , listBucketAnalyticsConfigurationsResponse
-  , ListBucketAnalyticsConfigurationsResponse
+    , listBucketAnalyticsConfigurationsResponse
+    , ListBucketAnalyticsConfigurationsResponse
     -- * Response Lenses
-  , lbacrsAnalyticsConfigurationList
-  , lbacrsContinuationToken
-  , lbacrsNextContinuationToken
-  , lbacrsIsTruncated
-  , lbacrsResponseStatus
-  ) where
+    , lbacrsAnalyticsConfigurationList
+    , lbacrsContinuationToken
+    , lbacrsNextContinuationToken
+    , lbacrsIsTruncated
+    , lbacrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -50,6 +54,7 @@ data ListBucketAnalyticsConfigurations =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListBucketAnalyticsConfigurations' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -57,49 +62,58 @@ data ListBucketAnalyticsConfigurations =
 -- * 'lbacContinuationToken' - The ContinuationToken that represents a placeholder from where this request should begin.
 --
 -- * 'lbacBucket' - The name of the bucket from which analytics configurations are retrieved.
-listBucketAnalyticsConfigurations ::
-     BucketName -- ^ 'lbacBucket'
-  -> ListBucketAnalyticsConfigurations
+listBucketAnalyticsConfigurations
+    :: BucketName -- ^ 'lbacBucket'
+    -> ListBucketAnalyticsConfigurations
 listBucketAnalyticsConfigurations pBucket_ =
   ListBucketAnalyticsConfigurations'
     {_lbacContinuationToken = Nothing, _lbacBucket = pBucket_}
 
+
 -- | The ContinuationToken that represents a placeholder from where this request should begin.
 lbacContinuationToken :: Lens' ListBucketAnalyticsConfigurations (Maybe Text)
-lbacContinuationToken =
-  lens _lbacContinuationToken (\s a -> s {_lbacContinuationToken = a})
+lbacContinuationToken = lens _lbacContinuationToken (\ s a -> s{_lbacContinuationToken = a})
 
 -- | The name of the bucket from which analytics configurations are retrieved.
 lbacBucket :: Lens' ListBucketAnalyticsConfigurations BucketName
-lbacBucket = lens _lbacBucket (\s a -> s {_lbacBucket = a})
+lbacBucket = lens _lbacBucket (\ s a -> s{_lbacBucket = a})
 
-instance AWSRequest ListBucketAnalyticsConfigurations where
-  type Rs ListBucketAnalyticsConfigurations = ListBucketAnalyticsConfigurationsResponse
-  request = get s3
-  response =
-    receiveXML
-      (\s h x ->
-         ListBucketAnalyticsConfigurationsResponse' <$>
-         (may (parseXMLList "AnalyticsConfiguration") x) <*>
-         (x .@? "ContinuationToken") <*>
-         (x .@? "NextContinuationToken") <*>
-         (x .@? "IsTruncated") <*>
-         (pure (fromEnum s)))
+instance AWSRequest ListBucketAnalyticsConfigurations
+         where
+        type Rs ListBucketAnalyticsConfigurations =
+             ListBucketAnalyticsConfigurationsResponse
+        request = get s3
+        response
+          = receiveXML
+              (\ s h x ->
+                 ListBucketAnalyticsConfigurationsResponse' <$>
+                   (may (parseXMLList "AnalyticsConfiguration") x) <*>
+                     (x .@? "ContinuationToken")
+                     <*> (x .@? "NextContinuationToken")
+                     <*> (x .@? "IsTruncated")
+                     <*> (pure (fromEnum s)))
 
 instance Hashable ListBucketAnalyticsConfigurations
+         where
 
 instance NFData ListBucketAnalyticsConfigurations
+         where
 
-instance ToHeaders ListBucketAnalyticsConfigurations where
-  toHeaders = const mempty
+instance ToHeaders ListBucketAnalyticsConfigurations
+         where
+        toHeaders = const mempty
 
-instance ToPath ListBucketAnalyticsConfigurations where
-  toPath ListBucketAnalyticsConfigurations' {..} =
-    mconcat ["/", toBS _lbacBucket]
+instance ToPath ListBucketAnalyticsConfigurations
+         where
+        toPath ListBucketAnalyticsConfigurations'{..}
+          = mconcat ["/", toBS _lbacBucket]
 
-instance ToQuery ListBucketAnalyticsConfigurations where
-  toQuery ListBucketAnalyticsConfigurations' {..} =
-    mconcat ["continuation-token" =: _lbacContinuationToken, "analytics"]
+instance ToQuery ListBucketAnalyticsConfigurations
+         where
+        toQuery ListBucketAnalyticsConfigurations'{..}
+          = mconcat
+              ["continuation-token" =: _lbacContinuationToken,
+               "analytics"]
 
 -- | /See:/ 'listBucketAnalyticsConfigurationsResponse' smart constructor.
 data ListBucketAnalyticsConfigurationsResponse =
@@ -111,6 +125,7 @@ data ListBucketAnalyticsConfigurationsResponse =
     , _lbacrsResponseStatus             :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'ListBucketAnalyticsConfigurationsResponse' with the minimum fields required to make a request.
 --
@@ -125,9 +140,9 @@ data ListBucketAnalyticsConfigurationsResponse =
 -- * 'lbacrsIsTruncated' - Indicates whether the returned list of analytics configurations is complete. A value of true indicates that the list is not complete and the NextContinuationToken will be provided for a subsequent request.
 --
 -- * 'lbacrsResponseStatus' - -- | The response status code.
-listBucketAnalyticsConfigurationsResponse ::
-     Int -- ^ 'lbacrsResponseStatus'
-  -> ListBucketAnalyticsConfigurationsResponse
+listBucketAnalyticsConfigurationsResponse
+    :: Int -- ^ 'lbacrsResponseStatus'
+    -> ListBucketAnalyticsConfigurationsResponse
 listBucketAnalyticsConfigurationsResponse pResponseStatus_ =
   ListBucketAnalyticsConfigurationsResponse'
     { _lbacrsAnalyticsConfigurationList = Nothing
@@ -137,37 +152,27 @@ listBucketAnalyticsConfigurationsResponse pResponseStatus_ =
     , _lbacrsResponseStatus = pResponseStatus_
     }
 
+
 -- | The list of analytics configurations for a bucket.
-lbacrsAnalyticsConfigurationList ::
-     Lens' ListBucketAnalyticsConfigurationsResponse [AnalyticsConfiguration]
-lbacrsAnalyticsConfigurationList =
-  lens
-    _lbacrsAnalyticsConfigurationList
-    (\s a -> s {_lbacrsAnalyticsConfigurationList = a}) .
-  _Default . _Coerce
+lbacrsAnalyticsConfigurationList :: Lens' ListBucketAnalyticsConfigurationsResponse [AnalyticsConfiguration]
+lbacrsAnalyticsConfigurationList = lens _lbacrsAnalyticsConfigurationList (\ s a -> s{_lbacrsAnalyticsConfigurationList = a}) . _Default . _Coerce
 
 -- | The ContinuationToken that represents where this request began.
-lbacrsContinuationToken ::
-     Lens' ListBucketAnalyticsConfigurationsResponse (Maybe Text)
-lbacrsContinuationToken =
-  lens _lbacrsContinuationToken (\s a -> s {_lbacrsContinuationToken = a})
+lbacrsContinuationToken :: Lens' ListBucketAnalyticsConfigurationsResponse (Maybe Text)
+lbacrsContinuationToken = lens _lbacrsContinuationToken (\ s a -> s{_lbacrsContinuationToken = a})
 
 -- | NextContinuationToken is sent when isTruncated is true, which indicates that there are more analytics configurations to list. The next request must include this NextContinuationToken. The token is obfuscated and is not a usable value.
-lbacrsNextContinuationToken ::
-     Lens' ListBucketAnalyticsConfigurationsResponse (Maybe Text)
-lbacrsNextContinuationToken =
-  lens
-    _lbacrsNextContinuationToken
-    (\s a -> s {_lbacrsNextContinuationToken = a})
+lbacrsNextContinuationToken :: Lens' ListBucketAnalyticsConfigurationsResponse (Maybe Text)
+lbacrsNextContinuationToken = lens _lbacrsNextContinuationToken (\ s a -> s{_lbacrsNextContinuationToken = a})
 
 -- | Indicates whether the returned list of analytics configurations is complete. A value of true indicates that the list is not complete and the NextContinuationToken will be provided for a subsequent request.
-lbacrsIsTruncated ::
-     Lens' ListBucketAnalyticsConfigurationsResponse (Maybe Bool)
-lbacrsIsTruncated = lens _lbacrsIsTruncated (\s a -> s {_lbacrsIsTruncated = a})
+lbacrsIsTruncated :: Lens' ListBucketAnalyticsConfigurationsResponse (Maybe Bool)
+lbacrsIsTruncated = lens _lbacrsIsTruncated (\ s a -> s{_lbacrsIsTruncated = a})
 
 -- | -- | The response status code.
 lbacrsResponseStatus :: Lens' ListBucketAnalyticsConfigurationsResponse Int
-lbacrsResponseStatus =
-  lens _lbacrsResponseStatus (\s a -> s {_lbacrsResponseStatus = a})
+lbacrsResponseStatus = lens _lbacrsResponseStatus (\ s a -> s{_lbacrsResponseStatus = a})
 
-instance NFData ListBucketAnalyticsConfigurationsResponse
+instance NFData
+           ListBucketAnalyticsConfigurationsResponse
+         where

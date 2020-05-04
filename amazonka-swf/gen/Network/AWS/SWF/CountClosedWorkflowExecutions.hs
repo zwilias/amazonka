@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SWF.CountClosedWorkflowExecutions
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -42,24 +44,26 @@
 -- If the caller doesn't have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's @cause@ parameter is set to @OPERATION_NOT_PERMITTED@ . For details and example IAM policies, see <http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html Using IAM to Manage Access to Amazon SWF Workflows> in the /Amazon SWF Developer Guide/ .
 --
 module Network.AWS.SWF.CountClosedWorkflowExecutions
+    (
     -- * Creating a Request
-  ( countClosedWorkflowExecutions
-  , CountClosedWorkflowExecutions
+      countClosedWorkflowExecutions
+    , CountClosedWorkflowExecutions
     -- * Request Lenses
-  , ccweExecutionFilter
-  , ccweCloseStatusFilter
-  , ccweTypeFilter
-  , ccweCloseTimeFilter
-  , ccweTagFilter
-  , ccweStartTimeFilter
-  , ccweDomain
+    , ccweExecutionFilter
+    , ccweCloseStatusFilter
+    , ccweTypeFilter
+    , ccweCloseTimeFilter
+    , ccweTagFilter
+    , ccweStartTimeFilter
+    , ccweDomain
+
     -- * Destructuring the Response
-  , workflowExecutionCount
-  , WorkflowExecutionCount
+    , workflowExecutionCount
+    , WorkflowExecutionCount
     -- * Response Lenses
-  , wecTruncated
-  , wecCount
-  ) where
+    , wecTruncated
+    , wecCount
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -81,6 +85,7 @@ data CountClosedWorkflowExecutions =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CountClosedWorkflowExecutions' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -98,9 +103,9 @@ data CountClosedWorkflowExecutions =
 -- * 'ccweStartTimeFilter' - If specified, only workflow executions that meet the start time criteria of the filter are counted.
 --
 -- * 'ccweDomain' - The name of the domain containing the workflow executions to count.
-countClosedWorkflowExecutions ::
-     Text -- ^ 'ccweDomain'
-  -> CountClosedWorkflowExecutions
+countClosedWorkflowExecutions
+    :: Text -- ^ 'ccweDomain'
+    -> CountClosedWorkflowExecutions
 countClosedWorkflowExecutions pDomain_ =
   CountClosedWorkflowExecutions'
     { _ccweExecutionFilter = Nothing
@@ -112,75 +117,71 @@ countClosedWorkflowExecutions pDomain_ =
     , _ccweDomain = pDomain_
     }
 
+
 -- | If specified, only workflow executions matching the @WorkflowId@ in the filter are counted.
-ccweExecutionFilter ::
-     Lens' CountClosedWorkflowExecutions (Maybe WorkflowExecutionFilter)
-ccweExecutionFilter =
-  lens _ccweExecutionFilter (\s a -> s {_ccweExecutionFilter = a})
+ccweExecutionFilter :: Lens' CountClosedWorkflowExecutions (Maybe WorkflowExecutionFilter)
+ccweExecutionFilter = lens _ccweExecutionFilter (\ s a -> s{_ccweExecutionFilter = a})
 
 -- | If specified, only workflow executions that match this close status are counted. This filter has an affect only if @executionStatus@ is specified as @CLOSED@ .
-ccweCloseStatusFilter ::
-     Lens' CountClosedWorkflowExecutions (Maybe CloseStatusFilter)
-ccweCloseStatusFilter =
-  lens _ccweCloseStatusFilter (\s a -> s {_ccweCloseStatusFilter = a})
+ccweCloseStatusFilter :: Lens' CountClosedWorkflowExecutions (Maybe CloseStatusFilter)
+ccweCloseStatusFilter = lens _ccweCloseStatusFilter (\ s a -> s{_ccweCloseStatusFilter = a})
 
 -- | If specified, indicates the type of the workflow executions to be counted.
 ccweTypeFilter :: Lens' CountClosedWorkflowExecutions (Maybe WorkflowTypeFilter)
-ccweTypeFilter = lens _ccweTypeFilter (\s a -> s {_ccweTypeFilter = a})
+ccweTypeFilter = lens _ccweTypeFilter (\ s a -> s{_ccweTypeFilter = a})
 
 -- | If specified, only workflow executions that meet the close time criteria of the filter are counted.
-ccweCloseTimeFilter ::
-     Lens' CountClosedWorkflowExecutions (Maybe ExecutionTimeFilter)
-ccweCloseTimeFilter =
-  lens _ccweCloseTimeFilter (\s a -> s {_ccweCloseTimeFilter = a})
+ccweCloseTimeFilter :: Lens' CountClosedWorkflowExecutions (Maybe ExecutionTimeFilter)
+ccweCloseTimeFilter = lens _ccweCloseTimeFilter (\ s a -> s{_ccweCloseTimeFilter = a})
 
 -- | If specified, only executions that have a tag that matches the filter are counted.
 ccweTagFilter :: Lens' CountClosedWorkflowExecutions (Maybe TagFilter)
-ccweTagFilter = lens _ccweTagFilter (\s a -> s {_ccweTagFilter = a})
+ccweTagFilter = lens _ccweTagFilter (\ s a -> s{_ccweTagFilter = a})
 
 -- | If specified, only workflow executions that meet the start time criteria of the filter are counted.
-ccweStartTimeFilter ::
-     Lens' CountClosedWorkflowExecutions (Maybe ExecutionTimeFilter)
-ccweStartTimeFilter =
-  lens _ccweStartTimeFilter (\s a -> s {_ccweStartTimeFilter = a})
+ccweStartTimeFilter :: Lens' CountClosedWorkflowExecutions (Maybe ExecutionTimeFilter)
+ccweStartTimeFilter = lens _ccweStartTimeFilter (\ s a -> s{_ccweStartTimeFilter = a})
 
 -- | The name of the domain containing the workflow executions to count.
 ccweDomain :: Lens' CountClosedWorkflowExecutions Text
-ccweDomain = lens _ccweDomain (\s a -> s {_ccweDomain = a})
+ccweDomain = lens _ccweDomain (\ s a -> s{_ccweDomain = a})
 
-instance AWSRequest CountClosedWorkflowExecutions where
-  type Rs CountClosedWorkflowExecutions = WorkflowExecutionCount
-  request = postJSON swf
-  response = receiveJSON (\s h x -> eitherParseJSON x)
+instance AWSRequest CountClosedWorkflowExecutions
+         where
+        type Rs CountClosedWorkflowExecutions =
+             WorkflowExecutionCount
+        request = postJSON swf
+        response = receiveJSON (\ s h x -> eitherParseJSON x)
 
-instance Hashable CountClosedWorkflowExecutions
+instance Hashable CountClosedWorkflowExecutions where
 
-instance NFData CountClosedWorkflowExecutions
+instance NFData CountClosedWorkflowExecutions where
 
-instance ToHeaders CountClosedWorkflowExecutions where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("SimpleWorkflowService.CountClosedWorkflowExecutions" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.0" :: ByteString)
-         ])
+instance ToHeaders CountClosedWorkflowExecutions
+         where
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("SimpleWorkflowService.CountClosedWorkflowExecutions"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.0" :: ByteString)])
 
 instance ToJSON CountClosedWorkflowExecutions where
-  toJSON CountClosedWorkflowExecutions' {..} =
-    object
-      (catMaybes
-         [ ("executionFilter" .=) <$> _ccweExecutionFilter
-         , ("closeStatusFilter" .=) <$> _ccweCloseStatusFilter
-         , ("typeFilter" .=) <$> _ccweTypeFilter
-         , ("closeTimeFilter" .=) <$> _ccweCloseTimeFilter
-         , ("tagFilter" .=) <$> _ccweTagFilter
-         , ("startTimeFilter" .=) <$> _ccweStartTimeFilter
-         , Just ("domain" .= _ccweDomain)
-         ])
+        toJSON CountClosedWorkflowExecutions'{..}
+          = object
+              (catMaybes
+                 [("executionFilter" .=) <$> _ccweExecutionFilter,
+                  ("closeStatusFilter" .=) <$> _ccweCloseStatusFilter,
+                  ("typeFilter" .=) <$> _ccweTypeFilter,
+                  ("closeTimeFilter" .=) <$> _ccweCloseTimeFilter,
+                  ("tagFilter" .=) <$> _ccweTagFilter,
+                  ("startTimeFilter" .=) <$> _ccweStartTimeFilter,
+                  Just ("domain" .= _ccweDomain)])
 
 instance ToPath CountClosedWorkflowExecutions where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery CountClosedWorkflowExecutions where
-  toQuery = const mempty
+        toQuery = const mempty

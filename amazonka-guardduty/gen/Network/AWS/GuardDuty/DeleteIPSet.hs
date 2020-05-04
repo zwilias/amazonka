@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.GuardDuty.DeleteIPSet
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,18 +20,20 @@
 --
 -- Deletes the IPSet specified by the IPSet ID.
 module Network.AWS.GuardDuty.DeleteIPSet
+    (
     -- * Creating a Request
-  ( deleteIPSet
-  , DeleteIPSet
+      deleteIPSet
+    , DeleteIPSet
     -- * Request Lenses
-  , disDetectorId
-  , disIPSetId
+    , disDetectorId
+    , disIPSetId
+
     -- * Destructuring the Response
-  , deleteIPSetResponse
-  , DeleteIPSetResponse
+    , deleteIPSetResponse
+    , DeleteIPSetResponse
     -- * Response Lenses
-  , dipsrsResponseStatus
-  ) where
+    , dipsrsResponseStatus
+    ) where
 
 import Network.AWS.GuardDuty.Types
 import Network.AWS.GuardDuty.Types.Product
@@ -46,6 +50,7 @@ data DeleteIPSet =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteIPSet' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -53,42 +58,49 @@ data DeleteIPSet =
 -- * 'disDetectorId' - The detectorID that specifies the GuardDuty service whose IPSet you want to delete.
 --
 -- * 'disIPSetId' - The unique ID that specifies the IPSet that you want to delete.
-deleteIPSet ::
-     Text -- ^ 'disDetectorId'
-  -> Text -- ^ 'disIPSetId'
-  -> DeleteIPSet
+deleteIPSet
+    :: Text -- ^ 'disDetectorId'
+    -> Text -- ^ 'disIPSetId'
+    -> DeleteIPSet
 deleteIPSet pDetectorId_ pIPSetId_ =
   DeleteIPSet' {_disDetectorId = pDetectorId_, _disIPSetId = pIPSetId_}
 
+
 -- | The detectorID that specifies the GuardDuty service whose IPSet you want to delete.
 disDetectorId :: Lens' DeleteIPSet Text
-disDetectorId = lens _disDetectorId (\s a -> s {_disDetectorId = a})
+disDetectorId = lens _disDetectorId (\ s a -> s{_disDetectorId = a})
 
 -- | The unique ID that specifies the IPSet that you want to delete.
 disIPSetId :: Lens' DeleteIPSet Text
-disIPSetId = lens _disIPSetId (\s a -> s {_disIPSetId = a})
+disIPSetId = lens _disIPSetId (\ s a -> s{_disIPSetId = a})
 
 instance AWSRequest DeleteIPSet where
-  type Rs DeleteIPSet = DeleteIPSetResponse
-  request = delete guardDuty
-  response =
-    receiveEmpty (\s h x -> DeleteIPSetResponse' <$> (pure (fromEnum s)))
+        type Rs DeleteIPSet = DeleteIPSetResponse
+        request = delete guardDuty
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 DeleteIPSetResponse' <$> (pure (fromEnum s)))
 
-instance Hashable DeleteIPSet
+instance Hashable DeleteIPSet where
 
-instance NFData DeleteIPSet
+instance NFData DeleteIPSet where
 
 instance ToHeaders DeleteIPSet where
-  toHeaders =
-    const
-      (mconcat ["Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)])
+        toHeaders
+          = const
+              (mconcat
+                 ["Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToPath DeleteIPSet where
-  toPath DeleteIPSet' {..} =
-    mconcat ["/detector/", toBS _disDetectorId, "/ipset/", toBS _disIPSetId]
+        toPath DeleteIPSet'{..}
+          = mconcat
+              ["/detector/", toBS _disDetectorId, "/ipset/",
+               toBS _disIPSetId]
 
 instance ToQuery DeleteIPSet where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'deleteIPSetResponse' smart constructor.
 newtype DeleteIPSetResponse =
@@ -97,20 +109,21 @@ newtype DeleteIPSetResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteIPSetResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dipsrsResponseStatus' - -- | The response status code.
-deleteIPSetResponse ::
-     Int -- ^ 'dipsrsResponseStatus'
-  -> DeleteIPSetResponse
+deleteIPSetResponse
+    :: Int -- ^ 'dipsrsResponseStatus'
+    -> DeleteIPSetResponse
 deleteIPSetResponse pResponseStatus_ =
   DeleteIPSetResponse' {_dipsrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 dipsrsResponseStatus :: Lens' DeleteIPSetResponse Int
-dipsrsResponseStatus =
-  lens _dipsrsResponseStatus (\s a -> s {_dipsrsResponseStatus = a})
+dipsrsResponseStatus = lens _dipsrsResponseStatus (\ s a -> s{_dipsrsResponseStatus = a})
 
-instance NFData DeleteIPSetResponse
+instance NFData DeleteIPSetResponse where

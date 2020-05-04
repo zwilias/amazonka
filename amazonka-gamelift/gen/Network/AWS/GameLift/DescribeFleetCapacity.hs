@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.GameLift.DescribeFleetCapacity
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -68,21 +70,23 @@
 --
 --
 module Network.AWS.GameLift.DescribeFleetCapacity
+    (
     -- * Creating a Request
-  ( describeFleetCapacity
-  , DescribeFleetCapacity
+      describeFleetCapacity
+    , DescribeFleetCapacity
     -- * Request Lenses
-  , dfcNextToken
-  , dfcLimit
-  , dfcFleetIds
+    , dfcNextToken
+    , dfcLimit
+    , dfcFleetIds
+
     -- * Destructuring the Response
-  , describeFleetCapacityResponse
-  , DescribeFleetCapacityResponse
+    , describeFleetCapacityResponse
+    , DescribeFleetCapacityResponse
     -- * Response Lenses
-  , dfcrsNextToken
-  , dfcrsFleetCapacity
-  , dfcrsResponseStatus
-  ) where
+    , dfcrsNextToken
+    , dfcrsFleetCapacity
+    , dfcrsResponseStatus
+    ) where
 
 import Network.AWS.GameLift.Types
 import Network.AWS.GameLift.Types.Product
@@ -104,6 +108,7 @@ data DescribeFleetCapacity =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeFleetCapacity' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -113,59 +118,63 @@ data DescribeFleetCapacity =
 -- * 'dfcLimit' - Maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.
 --
 -- * 'dfcFleetIds' - Unique identifier for a fleet(s) to retrieve capacity information for. To request capacity information for all fleets, leave this parameter empty.
-describeFleetCapacity :: DescribeFleetCapacity
+describeFleetCapacity
+    :: DescribeFleetCapacity
 describeFleetCapacity =
   DescribeFleetCapacity'
     {_dfcNextToken = Nothing, _dfcLimit = Nothing, _dfcFleetIds = Nothing}
 
+
 -- | Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.
 dfcNextToken :: Lens' DescribeFleetCapacity (Maybe Text)
-dfcNextToken = lens _dfcNextToken (\s a -> s {_dfcNextToken = a})
+dfcNextToken = lens _dfcNextToken (\ s a -> s{_dfcNextToken = a})
 
 -- | Maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.
 dfcLimit :: Lens' DescribeFleetCapacity (Maybe Natural)
-dfcLimit = lens _dfcLimit (\s a -> s {_dfcLimit = a}) . mapping _Nat
+dfcLimit = lens _dfcLimit (\ s a -> s{_dfcLimit = a}) . mapping _Nat
 
 -- | Unique identifier for a fleet(s) to retrieve capacity information for. To request capacity information for all fleets, leave this parameter empty.
 dfcFleetIds :: Lens' DescribeFleetCapacity (Maybe (NonEmpty Text))
-dfcFleetIds = lens _dfcFleetIds (\s a -> s {_dfcFleetIds = a}) . mapping _List1
+dfcFleetIds = lens _dfcFleetIds (\ s a -> s{_dfcFleetIds = a}) . mapping _List1
 
 instance AWSRequest DescribeFleetCapacity where
-  type Rs DescribeFleetCapacity = DescribeFleetCapacityResponse
-  request = postJSON gameLift
-  response =
-    receiveJSON
-      (\s h x ->
-         DescribeFleetCapacityResponse' <$> (x .?> "NextToken") <*>
-         (x .?> "FleetCapacity" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs DescribeFleetCapacity =
+             DescribeFleetCapacityResponse
+        request = postJSON gameLift
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DescribeFleetCapacityResponse' <$>
+                   (x .?> "NextToken") <*>
+                     (x .?> "FleetCapacity" .!@ mempty)
+                     <*> (pure (fromEnum s)))
 
-instance Hashable DescribeFleetCapacity
+instance Hashable DescribeFleetCapacity where
 
-instance NFData DescribeFleetCapacity
+instance NFData DescribeFleetCapacity where
 
 instance ToHeaders DescribeFleetCapacity where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("GameLift.DescribeFleetCapacity" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("GameLift.DescribeFleetCapacity" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DescribeFleetCapacity where
-  toJSON DescribeFleetCapacity' {..} =
-    object
-      (catMaybes
-         [ ("NextToken" .=) <$> _dfcNextToken
-         , ("Limit" .=) <$> _dfcLimit
-         , ("FleetIds" .=) <$> _dfcFleetIds
-         ])
+        toJSON DescribeFleetCapacity'{..}
+          = object
+              (catMaybes
+                 [("NextToken" .=) <$> _dfcNextToken,
+                  ("Limit" .=) <$> _dfcLimit,
+                  ("FleetIds" .=) <$> _dfcFleetIds])
 
 instance ToPath DescribeFleetCapacity where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DescribeFleetCapacity where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | Represents the returned data in response to a request action.
 --
@@ -180,6 +189,7 @@ data DescribeFleetCapacityResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeFleetCapacityResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -189,9 +199,9 @@ data DescribeFleetCapacityResponse =
 -- * 'dfcrsFleetCapacity' - Collection of objects containing capacity information for each requested fleet ID. Leave this parameter empty to retrieve capacity information for all fleets.
 --
 -- * 'dfcrsResponseStatus' - -- | The response status code.
-describeFleetCapacityResponse ::
-     Int -- ^ 'dfcrsResponseStatus'
-  -> DescribeFleetCapacityResponse
+describeFleetCapacityResponse
+    :: Int -- ^ 'dfcrsResponseStatus'
+    -> DescribeFleetCapacityResponse
 describeFleetCapacityResponse pResponseStatus_ =
   DescribeFleetCapacityResponse'
     { _dfcrsNextToken = Nothing
@@ -199,19 +209,17 @@ describeFleetCapacityResponse pResponseStatus_ =
     , _dfcrsResponseStatus = pResponseStatus_
     }
 
+
 -- | Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 dfcrsNextToken :: Lens' DescribeFleetCapacityResponse (Maybe Text)
-dfcrsNextToken = lens _dfcrsNextToken (\s a -> s {_dfcrsNextToken = a})
+dfcrsNextToken = lens _dfcrsNextToken (\ s a -> s{_dfcrsNextToken = a})
 
 -- | Collection of objects containing capacity information for each requested fleet ID. Leave this parameter empty to retrieve capacity information for all fleets.
 dfcrsFleetCapacity :: Lens' DescribeFleetCapacityResponse [FleetCapacity]
-dfcrsFleetCapacity =
-  lens _dfcrsFleetCapacity (\s a -> s {_dfcrsFleetCapacity = a}) .
-  _Default . _Coerce
+dfcrsFleetCapacity = lens _dfcrsFleetCapacity (\ s a -> s{_dfcrsFleetCapacity = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 dfcrsResponseStatus :: Lens' DescribeFleetCapacityResponse Int
-dfcrsResponseStatus =
-  lens _dfcrsResponseStatus (\s a -> s {_dfcrsResponseStatus = a})
+dfcrsResponseStatus = lens _dfcrsResponseStatus (\ s a -> s{_dfcrsResponseStatus = a})
 
-instance NFData DescribeFleetCapacityResponse
+instance NFData DescribeFleetCapacityResponse where

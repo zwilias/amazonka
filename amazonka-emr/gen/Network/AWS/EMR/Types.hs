@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.EMR.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,540 +11,634 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.EMR.Types
+    (
     -- * Service Configuration
-  ( emr
+      emr
+
     -- * Errors
-  , _InvalidRequestException
-  , _InternalServerError
-  , _InternalServerException
+    , _InvalidRequestException
+    , _InternalServerError
+    , _InternalServerException
+
     -- * ActionOnFailure
-  , ActionOnFailure(..)
+    , ActionOnFailure (..)
+
     -- * AdjustmentType
-  , AdjustmentType(..)
+    , AdjustmentType (..)
+
     -- * AutoScalingPolicyState
-  , AutoScalingPolicyState(..)
+    , AutoScalingPolicyState (..)
+
     -- * AutoScalingPolicyStateChangeReasonCode
-  , AutoScalingPolicyStateChangeReasonCode(..)
+    , AutoScalingPolicyStateChangeReasonCode (..)
+
     -- * CancelStepsRequestStatus
-  , CancelStepsRequestStatus(..)
+    , CancelStepsRequestStatus (..)
+
     -- * ClusterState
-  , ClusterState(..)
+    , ClusterState (..)
+
     -- * ClusterStateChangeReasonCode
-  , ClusterStateChangeReasonCode(..)
+    , ClusterStateChangeReasonCode (..)
+
     -- * ComparisonOperator
-  , ComparisonOperator(..)
+    , ComparisonOperator (..)
+
     -- * InstanceCollectionType
-  , InstanceCollectionType(..)
+    , InstanceCollectionType (..)
+
     -- * InstanceFleetState
-  , InstanceFleetState(..)
+    , InstanceFleetState (..)
+
     -- * InstanceFleetStateChangeReasonCode
-  , InstanceFleetStateChangeReasonCode(..)
+    , InstanceFleetStateChangeReasonCode (..)
+
     -- * InstanceFleetType
-  , InstanceFleetType(..)
+    , InstanceFleetType (..)
+
     -- * InstanceGroupState
-  , InstanceGroupState(..)
+    , InstanceGroupState (..)
+
     -- * InstanceGroupStateChangeReasonCode
-  , InstanceGroupStateChangeReasonCode(..)
+    , InstanceGroupStateChangeReasonCode (..)
+
     -- * InstanceGroupType
-  , InstanceGroupType(..)
+    , InstanceGroupType (..)
+
     -- * InstanceRoleType
-  , InstanceRoleType(..)
+    , InstanceRoleType (..)
+
     -- * InstanceState
-  , InstanceState(..)
+    , InstanceState (..)
+
     -- * InstanceStateChangeReasonCode
-  , InstanceStateChangeReasonCode(..)
+    , InstanceStateChangeReasonCode (..)
+
     -- * MarketType
-  , MarketType(..)
+    , MarketType (..)
+
     -- * RepoUpgradeOnBoot
-  , RepoUpgradeOnBoot(..)
+    , RepoUpgradeOnBoot (..)
+
     -- * ScaleDownBehavior
-  , ScaleDownBehavior(..)
+    , ScaleDownBehavior (..)
+
     -- * SpotProvisioningTimeoutAction
-  , SpotProvisioningTimeoutAction(..)
+    , SpotProvisioningTimeoutAction (..)
+
     -- * Statistic
-  , Statistic(..)
+    , Statistic (..)
+
     -- * StepState
-  , StepState(..)
+    , StepState (..)
+
     -- * StepStateChangeReasonCode
-  , StepStateChangeReasonCode(..)
+    , StepStateChangeReasonCode (..)
+
     -- * Unit
-  , Unit(..)
+    , Unit (..)
+
     -- * Application
-  , Application
-  , application
-  , aArgs
-  , aAdditionalInfo
-  , aName
-  , aVersion
+    , Application
+    , application
+    , aArgs
+    , aAdditionalInfo
+    , aName
+    , aVersion
+
     -- * AutoScalingPolicy
-  , AutoScalingPolicy
-  , autoScalingPolicy
-  , aspConstraints
-  , aspRules
+    , AutoScalingPolicy
+    , autoScalingPolicy
+    , aspConstraints
+    , aspRules
+
     -- * AutoScalingPolicyDescription
-  , AutoScalingPolicyDescription
-  , autoScalingPolicyDescription
-  , aspdStatus
-  , aspdRules
-  , aspdConstraints
+    , AutoScalingPolicyDescription
+    , autoScalingPolicyDescription
+    , aspdStatus
+    , aspdRules
+    , aspdConstraints
+
     -- * AutoScalingPolicyStateChangeReason
-  , AutoScalingPolicyStateChangeReason
-  , autoScalingPolicyStateChangeReason
-  , aspscrCode
-  , aspscrMessage
+    , AutoScalingPolicyStateChangeReason
+    , autoScalingPolicyStateChangeReason
+    , aspscrCode
+    , aspscrMessage
+
     -- * AutoScalingPolicyStatus
-  , AutoScalingPolicyStatus
-  , autoScalingPolicyStatus
-  , aspsState
-  , aspsStateChangeReason
+    , AutoScalingPolicyStatus
+    , autoScalingPolicyStatus
+    , aspsState
+    , aspsStateChangeReason
+
     -- * BootstrapActionConfig
-  , BootstrapActionConfig
-  , bootstrapActionConfig
-  , bacName
-  , bacScriptBootstrapAction
+    , BootstrapActionConfig
+    , bootstrapActionConfig
+    , bacName
+    , bacScriptBootstrapAction
+
     -- * CancelStepsInfo
-  , CancelStepsInfo
-  , cancelStepsInfo
-  , csiStatus
-  , csiStepId
-  , csiReason
+    , CancelStepsInfo
+    , cancelStepsInfo
+    , csiStatus
+    , csiStepId
+    , csiReason
+
     -- * CloudWatchAlarmDefinition
-  , CloudWatchAlarmDefinition
-  , cloudWatchAlarmDefinition
-  , cwadEvaluationPeriods
-  , cwadNamespace
-  , cwadDimensions
-  , cwadUnit
-  , cwadStatistic
-  , cwadComparisonOperator
-  , cwadMetricName
-  , cwadPeriod
-  , cwadThreshold
+    , CloudWatchAlarmDefinition
+    , cloudWatchAlarmDefinition
+    , cwadEvaluationPeriods
+    , cwadNamespace
+    , cwadDimensions
+    , cwadUnit
+    , cwadStatistic
+    , cwadComparisonOperator
+    , cwadMetricName
+    , cwadPeriod
+    , cwadThreshold
+
     -- * Cluster
-  , Cluster
-  , cluster
-  , cluRequestedAMIVersion
-  , cluEBSRootVolumeSize
-  , cluEC2InstanceAttributes
-  , cluNormalizedInstanceHours
-  , cluConfigurations
-  , cluCustomAMIId
-  , cluAutoScalingRole
-  , cluSecurityConfiguration
-  , cluScaleDownBehavior
-  , cluInstanceCollectionType
-  , cluReleaseLabel
-  , cluRepoUpgradeOnBoot
-  , cluLogURI
-  , cluKerberosAttributes
-  , cluRunningAMIVersion
-  , cluMasterPublicDNSName
-  , cluTerminationProtected
-  , cluVisibleToAllUsers
-  , cluAutoTerminate
-  , cluApplications
-  , cluTags
-  , cluServiceRole
-  , cluId
-  , cluName
-  , cluStatus
+    , Cluster
+    , cluster
+    , cluRequestedAMIVersion
+    , cluEBSRootVolumeSize
+    , cluEC2InstanceAttributes
+    , cluNormalizedInstanceHours
+    , cluConfigurations
+    , cluCustomAMIId
+    , cluAutoScalingRole
+    , cluSecurityConfiguration
+    , cluScaleDownBehavior
+    , cluInstanceCollectionType
+    , cluReleaseLabel
+    , cluRepoUpgradeOnBoot
+    , cluLogURI
+    , cluKerberosAttributes
+    , cluRunningAMIVersion
+    , cluMasterPublicDNSName
+    , cluTerminationProtected
+    , cluVisibleToAllUsers
+    , cluAutoTerminate
+    , cluApplications
+    , cluTags
+    , cluServiceRole
+    , cluId
+    , cluName
+    , cluStatus
+
     -- * ClusterStateChangeReason
-  , ClusterStateChangeReason
-  , clusterStateChangeReason
-  , cscrCode
-  , cscrMessage
+    , ClusterStateChangeReason
+    , clusterStateChangeReason
+    , cscrCode
+    , cscrMessage
+
     -- * ClusterStatus
-  , ClusterStatus
-  , clusterStatus
-  , csState
-  , csStateChangeReason
-  , csTimeline
+    , ClusterStatus
+    , clusterStatus
+    , csState
+    , csStateChangeReason
+    , csTimeline
+
     -- * ClusterSummary
-  , ClusterSummary
-  , clusterSummary
-  , csStatus
-  , csNormalizedInstanceHours
-  , csName
-  , csId
+    , ClusterSummary
+    , clusterSummary
+    , csStatus
+    , csNormalizedInstanceHours
+    , csName
+    , csId
+
     -- * ClusterTimeline
-  , ClusterTimeline
-  , clusterTimeline
-  , ctReadyDateTime
-  , ctCreationDateTime
-  , ctEndDateTime
+    , ClusterTimeline
+    , clusterTimeline
+    , ctReadyDateTime
+    , ctCreationDateTime
+    , ctEndDateTime
+
     -- * Command
-  , Command
-  , command
-  , cArgs
-  , cScriptPath
-  , cName
+    , Command
+    , command
+    , cArgs
+    , cScriptPath
+    , cName
+
     -- * Configuration
-  , Configuration
-  , configuration
-  , cConfigurations
-  , cClassification
-  , cProperties
+    , Configuration
+    , configuration
+    , cConfigurations
+    , cClassification
+    , cProperties
+
     -- * EBSBlockDevice
-  , EBSBlockDevice
-  , ebsBlockDevice
-  , ebdDevice
-  , ebdVolumeSpecification
+    , EBSBlockDevice
+    , ebsBlockDevice
+    , ebdDevice
+    , ebdVolumeSpecification
+
     -- * EBSBlockDeviceConfig
-  , EBSBlockDeviceConfig
-  , ebsBlockDeviceConfig
-  , ebdcVolumesPerInstance
-  , ebdcVolumeSpecification
+    , EBSBlockDeviceConfig
+    , ebsBlockDeviceConfig
+    , ebdcVolumesPerInstance
+    , ebdcVolumeSpecification
+
     -- * EBSConfiguration
-  , EBSConfiguration
-  , ebsConfiguration
-  , ecEBSOptimized
-  , ecEBSBlockDeviceConfigs
+    , EBSConfiguration
+    , ebsConfiguration
+    , ecEBSOptimized
+    , ecEBSBlockDeviceConfigs
+
     -- * EBSVolume
-  , EBSVolume
-  , ebsVolume
-  , evDevice
-  , evVolumeId
+    , EBSVolume
+    , ebsVolume
+    , evDevice
+    , evVolumeId
+
     -- * EC2InstanceAttributes
-  , EC2InstanceAttributes
-  , ec2InstanceAttributes
-  , eiaEC2KeyName
-  , eiaEmrManagedSlaveSecurityGroup
-  , eiaAdditionalSlaveSecurityGroups
-  , eiaRequestedEC2SubnetIds
-  , eiaAdditionalMasterSecurityGroups
-  , eiaIAMInstanceProfile
-  , eiaEmrManagedMasterSecurityGroup
-  , eiaEC2SubnetId
-  , eiaRequestedEC2AvailabilityZones
-  , eiaServiceAccessSecurityGroup
-  , eiaEC2AvailabilityZone
+    , EC2InstanceAttributes
+    , ec2InstanceAttributes
+    , eiaEC2KeyName
+    , eiaEmrManagedSlaveSecurityGroup
+    , eiaAdditionalSlaveSecurityGroups
+    , eiaRequestedEC2SubnetIds
+    , eiaAdditionalMasterSecurityGroups
+    , eiaIAMInstanceProfile
+    , eiaEmrManagedMasterSecurityGroup
+    , eiaEC2SubnetId
+    , eiaRequestedEC2AvailabilityZones
+    , eiaServiceAccessSecurityGroup
+    , eiaEC2AvailabilityZone
+
     -- * FailureDetails
-  , FailureDetails
-  , failureDetails
-  , fdLogFile
-  , fdReason
-  , fdMessage
+    , FailureDetails
+    , failureDetails
+    , fdLogFile
+    , fdReason
+    , fdMessage
+
     -- * HadoopJARStepConfig
-  , HadoopJARStepConfig
-  , hadoopJARStepConfig
-  , hjscArgs
-  , hjscMainClass
-  , hjscProperties
-  , hjscJAR
+    , HadoopJARStepConfig
+    , hadoopJARStepConfig
+    , hjscArgs
+    , hjscMainClass
+    , hjscProperties
+    , hjscJAR
+
     -- * HadoopStepConfig
-  , HadoopStepConfig
-  , hadoopStepConfig
-  , hscArgs
-  , hscJAR
-  , hscMainClass
-  , hscProperties
+    , HadoopStepConfig
+    , hadoopStepConfig
+    , hscArgs
+    , hscJAR
+    , hscMainClass
+    , hscProperties
+
     -- * Instance
-  , Instance
-  , instance'
-  , iStatus
-  , iPublicDNSName
-  , iEBSVolumes
-  , iEC2InstanceId
-  , iInstanceType
-  , iMarket
-  , iPrivateIPAddress
-  , iInstanceFleetId
-  , iId
-  , iInstanceGroupId
-  , iPrivateDNSName
-  , iPublicIPAddress
+    , Instance
+    , instance'
+    , iStatus
+    , iPublicDNSName
+    , iEBSVolumes
+    , iEC2InstanceId
+    , iInstanceType
+    , iMarket
+    , iPrivateIPAddress
+    , iInstanceFleetId
+    , iId
+    , iInstanceGroupId
+    , iPrivateDNSName
+    , iPublicIPAddress
+
     -- * InstanceFleet
-  , InstanceFleet
-  , instanceFleet
-  , ifProvisionedSpotCapacity
-  , ifStatus
-  , ifTargetOnDemandCapacity
-  , ifInstanceFleetType
-  , ifInstanceTypeSpecifications
-  , ifName
-  , ifProvisionedOnDemandCapacity
-  , ifTargetSpotCapacity
-  , ifId
-  , ifLaunchSpecifications
+    , InstanceFleet
+    , instanceFleet
+    , ifProvisionedSpotCapacity
+    , ifStatus
+    , ifTargetOnDemandCapacity
+    , ifInstanceFleetType
+    , ifInstanceTypeSpecifications
+    , ifName
+    , ifProvisionedOnDemandCapacity
+    , ifTargetSpotCapacity
+    , ifId
+    , ifLaunchSpecifications
+
     -- * InstanceFleetConfig
-  , InstanceFleetConfig
-  , instanceFleetConfig
-  , ifcInstanceTypeConfigs
-  , ifcTargetOnDemandCapacity
-  , ifcName
-  , ifcTargetSpotCapacity
-  , ifcLaunchSpecifications
-  , ifcInstanceFleetType
+    , InstanceFleetConfig
+    , instanceFleetConfig
+    , ifcInstanceTypeConfigs
+    , ifcTargetOnDemandCapacity
+    , ifcName
+    , ifcTargetSpotCapacity
+    , ifcLaunchSpecifications
+    , ifcInstanceFleetType
+
     -- * InstanceFleetModifyConfig
-  , InstanceFleetModifyConfig
-  , instanceFleetModifyConfig
-  , ifmcTargetOnDemandCapacity
-  , ifmcTargetSpotCapacity
-  , ifmcInstanceFleetId
+    , InstanceFleetModifyConfig
+    , instanceFleetModifyConfig
+    , ifmcTargetOnDemandCapacity
+    , ifmcTargetSpotCapacity
+    , ifmcInstanceFleetId
+
     -- * InstanceFleetProvisioningSpecifications
-  , InstanceFleetProvisioningSpecifications
-  , instanceFleetProvisioningSpecifications
-  , ifpsSpotSpecification
+    , InstanceFleetProvisioningSpecifications
+    , instanceFleetProvisioningSpecifications
+    , ifpsSpotSpecification
+
     -- * InstanceFleetStateChangeReason
-  , InstanceFleetStateChangeReason
-  , instanceFleetStateChangeReason
-  , ifscrCode
-  , ifscrMessage
+    , InstanceFleetStateChangeReason
+    , instanceFleetStateChangeReason
+    , ifscrCode
+    , ifscrMessage
+
     -- * InstanceFleetStatus
-  , InstanceFleetStatus
-  , instanceFleetStatus
-  , ifsState
-  , ifsStateChangeReason
-  , ifsTimeline
+    , InstanceFleetStatus
+    , instanceFleetStatus
+    , ifsState
+    , ifsStateChangeReason
+    , ifsTimeline
+
     -- * InstanceFleetTimeline
-  , InstanceFleetTimeline
-  , instanceFleetTimeline
-  , iftReadyDateTime
-  , iftCreationDateTime
-  , iftEndDateTime
+    , InstanceFleetTimeline
+    , instanceFleetTimeline
+    , iftReadyDateTime
+    , iftCreationDateTime
+    , iftEndDateTime
+
     -- * InstanceGroup
-  , InstanceGroup
-  , instanceGroup
-  , igStatus
-  , igBidPrice
-  , igRequestedInstanceCount
-  , igRunningInstanceCount
-  , igConfigurations
-  , igInstanceGroupType
-  , igEBSBlockDevices
-  , igInstanceType
-  , igEBSOptimized
-  , igMarket
-  , igName
-  , igAutoScalingPolicy
-  , igShrinkPolicy
-  , igId
+    , InstanceGroup
+    , instanceGroup
+    , igStatus
+    , igBidPrice
+    , igRequestedInstanceCount
+    , igRunningInstanceCount
+    , igConfigurations
+    , igInstanceGroupType
+    , igEBSBlockDevices
+    , igInstanceType
+    , igEBSOptimized
+    , igMarket
+    , igName
+    , igAutoScalingPolicy
+    , igShrinkPolicy
+    , igId
+
     -- * InstanceGroupConfig
-  , InstanceGroupConfig
-  , instanceGroupConfig
-  , igcEBSConfiguration
-  , igcBidPrice
-  , igcConfigurations
-  , igcMarket
-  , igcName
-  , igcAutoScalingPolicy
-  , igcInstanceRole
-  , igcInstanceType
-  , igcInstanceCount
+    , InstanceGroupConfig
+    , instanceGroupConfig
+    , igcEBSConfiguration
+    , igcBidPrice
+    , igcConfigurations
+    , igcMarket
+    , igcName
+    , igcAutoScalingPolicy
+    , igcInstanceRole
+    , igcInstanceType
+    , igcInstanceCount
+
     -- * InstanceGroupModifyConfig
-  , InstanceGroupModifyConfig
-  , instanceGroupModifyConfig
-  , igmcInstanceCount
-  , igmcEC2InstanceIdsToTerminate
-  , igmcShrinkPolicy
-  , igmcInstanceGroupId
+    , InstanceGroupModifyConfig
+    , instanceGroupModifyConfig
+    , igmcInstanceCount
+    , igmcEC2InstanceIdsToTerminate
+    , igmcShrinkPolicy
+    , igmcInstanceGroupId
+
     -- * InstanceGroupStateChangeReason
-  , InstanceGroupStateChangeReason
-  , instanceGroupStateChangeReason
-  , igscrCode
-  , igscrMessage
+    , InstanceGroupStateChangeReason
+    , instanceGroupStateChangeReason
+    , igscrCode
+    , igscrMessage
+
     -- * InstanceGroupStatus
-  , InstanceGroupStatus
-  , instanceGroupStatus
-  , igsState
-  , igsStateChangeReason
-  , igsTimeline
+    , InstanceGroupStatus
+    , instanceGroupStatus
+    , igsState
+    , igsStateChangeReason
+    , igsTimeline
+
     -- * InstanceGroupTimeline
-  , InstanceGroupTimeline
-  , instanceGroupTimeline
-  , igtReadyDateTime
-  , igtCreationDateTime
-  , igtEndDateTime
+    , InstanceGroupTimeline
+    , instanceGroupTimeline
+    , igtReadyDateTime
+    , igtCreationDateTime
+    , igtEndDateTime
+
     -- * InstanceResizePolicy
-  , InstanceResizePolicy
-  , instanceResizePolicy
-  , irpInstancesToProtect
-  , irpInstancesToTerminate
-  , irpInstanceTerminationTimeout
+    , InstanceResizePolicy
+    , instanceResizePolicy
+    , irpInstancesToProtect
+    , irpInstancesToTerminate
+    , irpInstanceTerminationTimeout
+
     -- * InstanceStateChangeReason
-  , InstanceStateChangeReason
-  , instanceStateChangeReason
-  , iscrCode
-  , iscrMessage
+    , InstanceStateChangeReason
+    , instanceStateChangeReason
+    , iscrCode
+    , iscrMessage
+
     -- * InstanceStatus
-  , InstanceStatus
-  , instanceStatus
-  , isState
-  , isStateChangeReason
-  , isTimeline
+    , InstanceStatus
+    , instanceStatus
+    , isState
+    , isStateChangeReason
+    , isTimeline
+
     -- * InstanceTimeline
-  , InstanceTimeline
-  , instanceTimeline
-  , itReadyDateTime
-  , itCreationDateTime
-  , itEndDateTime
+    , InstanceTimeline
+    , instanceTimeline
+    , itReadyDateTime
+    , itCreationDateTime
+    , itEndDateTime
+
     -- * InstanceTypeConfig
-  , InstanceTypeConfig
-  , instanceTypeConfig
-  , itcEBSConfiguration
-  , itcBidPrice
-  , itcWeightedCapacity
-  , itcConfigurations
-  , itcBidPriceAsPercentageOfOnDemandPrice
-  , itcInstanceType
+    , InstanceTypeConfig
+    , instanceTypeConfig
+    , itcEBSConfiguration
+    , itcBidPrice
+    , itcWeightedCapacity
+    , itcConfigurations
+    , itcBidPriceAsPercentageOfOnDemandPrice
+    , itcInstanceType
+
     -- * InstanceTypeSpecification
-  , InstanceTypeSpecification
-  , instanceTypeSpecification
-  , itsBidPrice
-  , itsWeightedCapacity
-  , itsConfigurations
-  , itsEBSBlockDevices
-  , itsInstanceType
-  , itsEBSOptimized
-  , itsBidPriceAsPercentageOfOnDemandPrice
+    , InstanceTypeSpecification
+    , instanceTypeSpecification
+    , itsBidPrice
+    , itsWeightedCapacity
+    , itsConfigurations
+    , itsEBSBlockDevices
+    , itsInstanceType
+    , itsEBSOptimized
+    , itsBidPriceAsPercentageOfOnDemandPrice
+
     -- * JobFlowInstancesConfig
-  , JobFlowInstancesConfig
-  , jobFlowInstancesConfig
-  , jficInstanceFleets
-  , jficEC2KeyName
-  , jficSlaveInstanceType
-  , jficInstanceCount
-  , jficEmrManagedSlaveSecurityGroup
-  , jficAdditionalSlaveSecurityGroups
-  , jficEC2SubnetIds
-  , jficHadoopVersion
-  , jficAdditionalMasterSecurityGroups
-  , jficEmrManagedMasterSecurityGroup
-  , jficEC2SubnetId
-  , jficMasterInstanceType
-  , jficInstanceGroups
-  , jficKeepJobFlowAliveWhenNoSteps
-  , jficServiceAccessSecurityGroup
-  , jficTerminationProtected
-  , jficPlacement
+    , JobFlowInstancesConfig
+    , jobFlowInstancesConfig
+    , jficInstanceFleets
+    , jficEC2KeyName
+    , jficSlaveInstanceType
+    , jficInstanceCount
+    , jficEmrManagedSlaveSecurityGroup
+    , jficAdditionalSlaveSecurityGroups
+    , jficEC2SubnetIds
+    , jficHadoopVersion
+    , jficAdditionalMasterSecurityGroups
+    , jficEmrManagedMasterSecurityGroup
+    , jficEC2SubnetId
+    , jficMasterInstanceType
+    , jficInstanceGroups
+    , jficKeepJobFlowAliveWhenNoSteps
+    , jficServiceAccessSecurityGroup
+    , jficTerminationProtected
+    , jficPlacement
+
     -- * KerberosAttributes
-  , KerberosAttributes
-  , kerberosAttributes
-  , kaADDomainJoinPassword
-  , kaCrossRealmTrustPrincipalPassword
-  , kaADDomainJoinUser
-  , kaRealm
-  , kaKdcAdminPassword
+    , KerberosAttributes
+    , kerberosAttributes
+    , kaKdcAdminPassword
+    , kaRealm
+    , kaADDomainJoinPassword
+    , kaCrossRealmTrustPrincipalPassword
+    , kaADDomainJoinUser
+
     -- * KeyValue
-  , KeyValue
-  , keyValue
-  , kvValue
-  , kvKey
+    , KeyValue
+    , keyValue
+    , kvValue
+    , kvKey
+
     -- * MetricDimension
-  , MetricDimension
-  , metricDimension
-  , mdValue
-  , mdKey
+    , MetricDimension
+    , metricDimension
+    , mdValue
+    , mdKey
+
     -- * PlacementType
-  , PlacementType
-  , placementType
-  , ptAvailabilityZones
-  , ptAvailabilityZone
+    , PlacementType
+    , placementType
+    , ptAvailabilityZones
+    , ptAvailabilityZone
+
     -- * ScalingAction
-  , ScalingAction
-  , scalingAction
-  , saMarket
-  , saSimpleScalingPolicyConfiguration
+    , ScalingAction
+    , scalingAction
+    , saMarket
+    , saSimpleScalingPolicyConfiguration
+
     -- * ScalingConstraints
-  , ScalingConstraints
-  , scalingConstraints
-  , scMinCapacity
-  , scMaxCapacity
+    , ScalingConstraints
+    , scalingConstraints
+    , scMinCapacity
+    , scMaxCapacity
+
     -- * ScalingRule
-  , ScalingRule
-  , scalingRule
-  , srDescription
-  , srName
-  , srAction
-  , srTrigger
+    , ScalingRule
+    , scalingRule
+    , srDescription
+    , srName
+    , srAction
+    , srTrigger
+
     -- * ScalingTrigger
-  , ScalingTrigger
-  , scalingTrigger
-  , stCloudWatchAlarmDefinition
+    , ScalingTrigger
+    , scalingTrigger
+    , stCloudWatchAlarmDefinition
+
     -- * ScriptBootstrapActionConfig
-  , ScriptBootstrapActionConfig
-  , scriptBootstrapActionConfig
-  , sbacArgs
-  , sbacPath
+    , ScriptBootstrapActionConfig
+    , scriptBootstrapActionConfig
+    , sbacArgs
+    , sbacPath
+
     -- * SecurityConfigurationSummary
-  , SecurityConfigurationSummary
-  , securityConfigurationSummary
-  , scsName
-  , scsCreationDateTime
+    , SecurityConfigurationSummary
+    , securityConfigurationSummary
+    , scsName
+    , scsCreationDateTime
+
     -- * ShrinkPolicy
-  , ShrinkPolicy
-  , shrinkPolicy
-  , spDecommissionTimeout
-  , spInstanceResizePolicy
+    , ShrinkPolicy
+    , shrinkPolicy
+    , spDecommissionTimeout
+    , spInstanceResizePolicy
+
     -- * SimpleScalingPolicyConfiguration
-  , SimpleScalingPolicyConfiguration
-  , simpleScalingPolicyConfiguration
-  , sspcAdjustmentType
-  , sspcCoolDown
-  , sspcScalingAdjustment
+    , SimpleScalingPolicyConfiguration
+    , simpleScalingPolicyConfiguration
+    , sspcAdjustmentType
+    , sspcCoolDown
+    , sspcScalingAdjustment
+
     -- * SpotProvisioningSpecification
-  , SpotProvisioningSpecification
-  , spotProvisioningSpecification
-  , spsBlockDurationMinutes
-  , spsTimeoutDurationMinutes
-  , spsTimeoutAction
+    , SpotProvisioningSpecification
+    , spotProvisioningSpecification
+    , spsBlockDurationMinutes
+    , spsTimeoutDurationMinutes
+    , spsTimeoutAction
+
     -- * Step
-  , Step
-  , step
-  , sStatus
-  , sActionOnFailure
-  , sConfig
-  , sName
-  , sId
+    , Step
+    , step
+    , sStatus
+    , sActionOnFailure
+    , sConfig
+    , sName
+    , sId
+
     -- * StepConfig
-  , StepConfig
-  , stepConfig
-  , scActionOnFailure
-  , scName
-  , scHadoopJARStep
+    , StepConfig
+    , stepConfig
+    , scActionOnFailure
+    , scName
+    , scHadoopJARStep
+
     -- * StepStateChangeReason
-  , StepStateChangeReason
-  , stepStateChangeReason
-  , sscrCode
-  , sscrMessage
+    , StepStateChangeReason
+    , stepStateChangeReason
+    , sscrCode
+    , sscrMessage
+
     -- * StepStatus
-  , StepStatus
-  , stepStatus
-  , ssState
-  , ssFailureDetails
-  , ssStateChangeReason
-  , ssTimeline
+    , StepStatus
+    , stepStatus
+    , ssState
+    , ssFailureDetails
+    , ssStateChangeReason
+    , ssTimeline
+
     -- * StepSummary
-  , StepSummary
-  , stepSummary
-  , ssStatus
-  , ssActionOnFailure
-  , ssConfig
-  , ssName
-  , ssId
+    , StepSummary
+    , stepSummary
+    , ssStatus
+    , ssActionOnFailure
+    , ssConfig
+    , ssName
+    , ssId
+
     -- * StepTimeline
-  , StepTimeline
-  , stepTimeline
-  , stCreationDateTime
-  , stEndDateTime
-  , stStartDateTime
+    , StepTimeline
+    , stepTimeline
+    , stCreationDateTime
+    , stEndDateTime
+    , stStartDateTime
+
     -- * SupportedProductConfig
-  , SupportedProductConfig
-  , supportedProductConfig
-  , spcArgs
-  , spcName
+    , SupportedProductConfig
+    , supportedProductConfig
+    , spcArgs
+    , spcName
+
     -- * Tag
-  , Tag
-  , tag
-  , tagValue
-  , tagKey
+    , Tag
+    , tag
+    , tagValue
+    , tagKey
+
     -- * VolumeSpecification
-  , VolumeSpecification
-  , volumeSpecification
-  , vsIOPS
-  , vsVolumeType
-  , vsSizeInGB
-  ) where
+    , VolumeSpecification
+    , volumeSpecification
+    , vsIOPS
+    , vsVolumeType
+    , vsSizeInGB
+    ) where
 
 import Network.AWS.EMR.Types.Product
 import Network.AWS.EMR.Types.Sum
@@ -589,12 +684,13 @@ emr =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | This exception occurs when there is something wrong with user input.
 --
 --
-_InvalidRequestException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidRequestException = _MatchServiceError emr "InvalidRequestException"
+
 
 -- | Indicates that an error occurred while processing the request and that the request was not completed.
 --
@@ -602,9 +698,10 @@ _InvalidRequestException = _MatchServiceError emr "InvalidRequestException"
 _InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalServerError = _MatchServiceError emr "InternalServerError"
 
+
 -- | This exception occurs when there is an internal failure in the EMR service.
 --
 --
-_InternalServerException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerException :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalServerException = _MatchServiceError emr "InternalServerException"
+

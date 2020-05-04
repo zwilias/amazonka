@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CloudHSM
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -17,75 +18,108 @@
 -- __For information about the current version of AWS CloudHSM__ , see <http://aws.amazon.com/cloudhsm/ AWS CloudHSM> , the <http://docs.aws.amazon.com/cloudhsm/latest/userguide/ AWS CloudHSM User Guide> , and the <http://docs.aws.amazon.com/cloudhsm/latest/APIReference/ AWS CloudHSM API Reference> .
 --
 module Network.AWS.CloudHSM
+    (
     -- * Service Configuration
-  ( cloudHSM
+      cloudHSM
+
     -- * Errors
     -- $errors
+
     -- ** InvalidRequestException
-  , _InvalidRequestException
+    , _InvalidRequestException
+
     -- ** CloudHSMServiceException
-  , _CloudHSMServiceException
+    , _CloudHSMServiceException
+
     -- ** CloudHSMInternalException
-  , _CloudHSMInternalException
+    , _CloudHSMInternalException
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
+
     -- ** DeleteHAPG
-  , module Network.AWS.CloudHSM.DeleteHAPG
-    -- ** ListHAPGs
-  , module Network.AWS.CloudHSM.ListHAPGs
+    , module Network.AWS.CloudHSM.DeleteHAPG
+
+    -- ** ListHAPGs (Paginated)
+    , module Network.AWS.CloudHSM.ListHAPGs
+
     -- ** ModifyLunaClient
-  , module Network.AWS.CloudHSM.ModifyLunaClient
-    -- ** ListHSMs
-  , module Network.AWS.CloudHSM.ListHSMs
+    , module Network.AWS.CloudHSM.ModifyLunaClient
+
+    -- ** ListHSMs (Paginated)
+    , module Network.AWS.CloudHSM.ListHSMs
+
     -- ** DescribeLunaClient
-  , module Network.AWS.CloudHSM.DescribeLunaClient
+    , module Network.AWS.CloudHSM.DescribeLunaClient
+
     -- ** ListTagsForResource
-  , module Network.AWS.CloudHSM.ListTagsForResource
+    , module Network.AWS.CloudHSM.ListTagsForResource
+
     -- ** CreateHAPG
-  , module Network.AWS.CloudHSM.CreateHAPG
+    , module Network.AWS.CloudHSM.CreateHAPG
+
     -- ** CreateHSM
-  , module Network.AWS.CloudHSM.CreateHSM
+    , module Network.AWS.CloudHSM.CreateHSM
+
     -- ** RemoveTagsFromResource
-  , module Network.AWS.CloudHSM.RemoveTagsFromResource
+    , module Network.AWS.CloudHSM.RemoveTagsFromResource
+
     -- ** DescribeHAPG
-  , module Network.AWS.CloudHSM.DescribeHAPG
+    , module Network.AWS.CloudHSM.DescribeHAPG
+
     -- ** CreateLunaClient
-  , module Network.AWS.CloudHSM.CreateLunaClient
-    -- ** ListLunaClients
-  , module Network.AWS.CloudHSM.ListLunaClients
+    , module Network.AWS.CloudHSM.CreateLunaClient
+
+    -- ** ListLunaClients (Paginated)
+    , module Network.AWS.CloudHSM.ListLunaClients
+
     -- ** AddTagsToResource
-  , module Network.AWS.CloudHSM.AddTagsToResource
+    , module Network.AWS.CloudHSM.AddTagsToResource
+
     -- ** GetConfig
-  , module Network.AWS.CloudHSM.GetConfig
+    , module Network.AWS.CloudHSM.GetConfig
+
     -- ** DeleteHSM
-  , module Network.AWS.CloudHSM.DeleteHSM
+    , module Network.AWS.CloudHSM.DeleteHSM
+
     -- ** DescribeHSM
-  , module Network.AWS.CloudHSM.DescribeHSM
+    , module Network.AWS.CloudHSM.DescribeHSM
+
     -- ** ModifyHAPG
-  , module Network.AWS.CloudHSM.ModifyHAPG
+    , module Network.AWS.CloudHSM.ModifyHAPG
+
     -- ** DeleteLunaClient
-  , module Network.AWS.CloudHSM.DeleteLunaClient
+    , module Network.AWS.CloudHSM.DeleteLunaClient
+
     -- ** ModifyHSM
-  , module Network.AWS.CloudHSM.ModifyHSM
+    , module Network.AWS.CloudHSM.ModifyHSM
+
     -- ** ListAvailableZones
-  , module Network.AWS.CloudHSM.ListAvailableZones
+    , module Network.AWS.CloudHSM.ListAvailableZones
+
     -- * Types
+
     -- ** ClientVersion
-  , ClientVersion(..)
+    , ClientVersion (..)
+
     -- ** CloudHSMObjectState
-  , CloudHSMObjectState(..)
+    , CloudHSMObjectState (..)
+
     -- ** HSMStatus
-  , HSMStatus(..)
+    , HSMStatus (..)
+
     -- ** SubscriptionType
-  , SubscriptionType(..)
+    , SubscriptionType (..)
+
     -- ** Tag
-  , Tag
-  , tag
-  , tagKey
-  , tagValue
-  ) where
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
+    ) where
 
 import Network.AWS.CloudHSM.AddTagsToResource
 import Network.AWS.CloudHSM.CreateHAPG
@@ -109,12 +143,14 @@ import Network.AWS.CloudHSM.ModifyLunaClient
 import Network.AWS.CloudHSM.RemoveTagsFromResource
 import Network.AWS.CloudHSM.Types
 import Network.AWS.CloudHSM.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'CloudHSM'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -131,6 +167,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

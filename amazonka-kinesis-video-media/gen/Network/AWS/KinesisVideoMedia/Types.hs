@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.KinesisVideoMedia.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,25 +11,29 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.KinesisVideoMedia.Types
+    (
     -- * Service Configuration
-  ( kinesisVideoMedia
+      kinesisVideoMedia
+
     -- * Errors
-  , _ConnectionLimitExceededException
-  , _InvalidArgumentException
-  , _NotAuthorizedException
-  , _ClientLimitExceededException
-  , _InvalidEndpointException
-  , _ResourceNotFoundException
+    , _ConnectionLimitExceededException
+    , _InvalidArgumentException
+    , _NotAuthorizedException
+    , _ClientLimitExceededException
+    , _InvalidEndpointException
+    , _ResourceNotFoundException
+
     -- * StartSelectorType
-  , StartSelectorType(..)
+    , StartSelectorType (..)
+
     -- * StartSelector
-  , StartSelector
-  , startSelector
-  , ssContinuationToken
-  , ssAfterFragmentNumber
-  , ssStartTimestamp
-  , ssStartSelectorType
-  ) where
+    , StartSelector
+    , startSelector
+    , ssContinuationToken
+    , ssAfterFragmentNumber
+    , ssStartTimestamp
+    , ssStartSelectorType
+    ) where
 
 import Network.AWS.KinesisVideoMedia.Types.Product
 import Network.AWS.KinesisVideoMedia.Types.Sum
@@ -74,55 +79,56 @@ kinesisVideoMedia =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | Kinesis Video Streams has throttled the request because you have exceeded the limit of allowed client connections.
 --
 --
-_ConnectionLimitExceededException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ConnectionLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _ConnectionLimitExceededException =
   _MatchServiceError kinesisVideoMedia "ConnectionLimitExceededException" .
   hasStatus 400
 
+
 -- | The value for this input parameter is invalid.
 --
 --
-_InvalidArgumentException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidArgumentException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidArgumentException =
   _MatchServiceError kinesisVideoMedia "InvalidArgumentException" .
   hasStatus 400
 
+
 -- | Status Code: 403, The caller is not authorized to perform an operation on the given stream, or the token has expired.
 --
 --
-_NotAuthorizedException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_NotAuthorizedException :: AsError a => Getting (First ServiceError) a ServiceError
 _NotAuthorizedException =
   _MatchServiceError kinesisVideoMedia "NotAuthorizedException" . hasStatus 401
+
 
 -- | Kinesis Video Streams has throttled the request because you have exceeded the limit of allowed client calls. Try making the call later.
 --
 --
-_ClientLimitExceededException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ClientLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _ClientLimitExceededException =
   _MatchServiceError kinesisVideoMedia "ClientLimitExceededException" .
   hasStatus 400
 
+
 -- | Status Code: 400, Caller used wrong endpoint to write data to a stream. On receiving such an exception, the user must call @GetDataEndpoint@ with @AccessMode@ set to "READ" and use the endpoint Kinesis Video returns in the next @GetMedia@ call.
 --
 --
-_InvalidEndpointException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidEndpointException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidEndpointException =
   _MatchServiceError kinesisVideoMedia "InvalidEndpointException" .
   hasStatus 400
 
+
 -- | Status Code: 404, The stream with the given name does not exist.
 --
 --
-_ResourceNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceNotFoundException =
   _MatchServiceError kinesisVideoMedia "ResourceNotFoundException" .
   hasStatus 404
+

@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Batch.DescribeJobs
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.Batch.DescribeJobs
+    (
     -- * Creating a Request
-  ( describeJobs
-  , DescribeJobs
+      describeJobs
+    , DescribeJobs
     -- * Request Lenses
-  , djJobs
+    , djJobs
+
     -- * Destructuring the Response
-  , describeJobsResponse
-  , DescribeJobsResponse
+    , describeJobsResponse
+    , DescribeJobsResponse
     -- * Response Lenses
-  , djrsJobs
-  , djrsResponseStatus
-  ) where
+    , djrsJobs
+    , djrsResponseStatus
+    ) where
 
 import Network.AWS.Batch.Types
 import Network.AWS.Batch.Types.Product
@@ -47,44 +51,50 @@ newtype DescribeJobs =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeJobs' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'djJobs' - A space-separated list of up to 100 job IDs.
-describeJobs :: DescribeJobs
+-- * 'djJobs' - A list of up to 100 job IDs.
+describeJobs
+    :: DescribeJobs
 describeJobs = DescribeJobs' {_djJobs = mempty}
 
--- | A space-separated list of up to 100 job IDs.
+
+-- | A list of up to 100 job IDs.
 djJobs :: Lens' DescribeJobs [Text]
-djJobs = lens _djJobs (\s a -> s {_djJobs = a}) . _Coerce
+djJobs = lens _djJobs (\ s a -> s{_djJobs = a}) . _Coerce
 
 instance AWSRequest DescribeJobs where
-  type Rs DescribeJobs = DescribeJobsResponse
-  request = postJSON batch
-  response =
-    receiveJSON
-      (\s h x ->
-         DescribeJobsResponse' <$> (x .?> "jobs" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs DescribeJobs = DescribeJobsResponse
+        request = postJSON batch
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DescribeJobsResponse' <$>
+                   (x .?> "jobs" .!@ mempty) <*> (pure (fromEnum s)))
 
-instance Hashable DescribeJobs
+instance Hashable DescribeJobs where
 
-instance NFData DescribeJobs
+instance NFData DescribeJobs where
 
 instance ToHeaders DescribeJobs where
-  toHeaders =
-    const
-      (mconcat ["Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)])
+        toHeaders
+          = const
+              (mconcat
+                 ["Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DescribeJobs where
-  toJSON DescribeJobs' {..} = object (catMaybes [Just ("jobs" .= _djJobs)])
+        toJSON DescribeJobs'{..}
+          = object (catMaybes [Just ("jobs" .= _djJobs)])
 
 instance ToPath DescribeJobs where
-  toPath = const "/v1/describejobs"
+        toPath = const "/v1/describejobs"
 
 instance ToQuery DescribeJobs where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'describeJobsResponse' smart constructor.
 data DescribeJobsResponse =
@@ -94,6 +104,7 @@ data DescribeJobsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeJobsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -101,20 +112,20 @@ data DescribeJobsResponse =
 -- * 'djrsJobs' - The list of jobs.
 --
 -- * 'djrsResponseStatus' - -- | The response status code.
-describeJobsResponse ::
-     Int -- ^ 'djrsResponseStatus'
-  -> DescribeJobsResponse
+describeJobsResponse
+    :: Int -- ^ 'djrsResponseStatus'
+    -> DescribeJobsResponse
 describeJobsResponse pResponseStatus_ =
   DescribeJobsResponse'
     {_djrsJobs = Nothing, _djrsResponseStatus = pResponseStatus_}
 
+
 -- | The list of jobs.
 djrsJobs :: Lens' DescribeJobsResponse [JobDetail]
-djrsJobs = lens _djrsJobs (\s a -> s {_djrsJobs = a}) . _Default . _Coerce
+djrsJobs = lens _djrsJobs (\ s a -> s{_djrsJobs = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 djrsResponseStatus :: Lens' DescribeJobsResponse Int
-djrsResponseStatus =
-  lens _djrsResponseStatus (\s a -> s {_djrsResponseStatus = a})
+djrsResponseStatus = lens _djrsResponseStatus (\ s a -> s{_djrsResponseStatus = a})
 
-instance NFData DescribeJobsResponse
+instance NFData DescribeJobsResponse where

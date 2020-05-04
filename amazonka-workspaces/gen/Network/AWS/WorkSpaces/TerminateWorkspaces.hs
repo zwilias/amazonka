@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.WorkSpaces.TerminateWorkspaces
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,18 +28,20 @@
 -- This operation is asynchronous and returns before the WorkSpaces have been completely terminated.
 --
 module Network.AWS.WorkSpaces.TerminateWorkspaces
+    (
     -- * Creating a Request
-  ( terminateWorkspaces
-  , TerminateWorkspaces
+      terminateWorkspaces
+    , TerminateWorkspaces
     -- * Request Lenses
-  , twTerminateWorkspaceRequests
+    , twTerminateWorkspaceRequests
+
     -- * Destructuring the Response
-  , terminateWorkspacesResponse
-  , TerminateWorkspacesResponse
+    , terminateWorkspacesResponse
+    , TerminateWorkspacesResponse
     -- * Response Lenses
-  , twrsFailedRequests
-  , twrsResponseStatus
-  ) where
+    , twrsFailedRequests
+    , twrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -53,60 +57,62 @@ newtype TerminateWorkspaces =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'TerminateWorkspaces' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'twTerminateWorkspaceRequests' - The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.
-terminateWorkspaces ::
-     NonEmpty TerminateRequest -- ^ 'twTerminateWorkspaceRequests'
-  -> TerminateWorkspaces
+terminateWorkspaces
+    :: NonEmpty TerminateRequest -- ^ 'twTerminateWorkspaceRequests'
+    -> TerminateWorkspaces
 terminateWorkspaces pTerminateWorkspaceRequests_ =
   TerminateWorkspaces'
     {_twTerminateWorkspaceRequests = _List1 # pTerminateWorkspaceRequests_}
 
+
 -- | The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.
-twTerminateWorkspaceRequests ::
-     Lens' TerminateWorkspaces (NonEmpty TerminateRequest)
-twTerminateWorkspaceRequests =
-  lens
-    _twTerminateWorkspaceRequests
-    (\s a -> s {_twTerminateWorkspaceRequests = a}) .
-  _List1
+twTerminateWorkspaceRequests :: Lens' TerminateWorkspaces (NonEmpty TerminateRequest)
+twTerminateWorkspaceRequests = lens _twTerminateWorkspaceRequests (\ s a -> s{_twTerminateWorkspaceRequests = a}) . _List1
 
 instance AWSRequest TerminateWorkspaces where
-  type Rs TerminateWorkspaces = TerminateWorkspacesResponse
-  request = postJSON workSpaces
-  response =
-    receiveJSON
-      (\s h x ->
-         TerminateWorkspacesResponse' <$> (x .?> "FailedRequests" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs TerminateWorkspaces =
+             TerminateWorkspacesResponse
+        request = postJSON workSpaces
+        response
+          = receiveJSON
+              (\ s h x ->
+                 TerminateWorkspacesResponse' <$>
+                   (x .?> "FailedRequests" .!@ mempty) <*>
+                     (pure (fromEnum s)))
 
-instance Hashable TerminateWorkspaces
+instance Hashable TerminateWorkspaces where
 
-instance NFData TerminateWorkspaces
+instance NFData TerminateWorkspaces where
 
 instance ToHeaders TerminateWorkspaces where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("WorkspacesService.TerminateWorkspaces" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("WorkspacesService.TerminateWorkspaces" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON TerminateWorkspaces where
-  toJSON TerminateWorkspaces' {..} =
-    object
-      (catMaybes
-         [Just ("TerminateWorkspaceRequests" .= _twTerminateWorkspaceRequests)])
+        toJSON TerminateWorkspaces'{..}
+          = object
+              (catMaybes
+                 [Just
+                    ("TerminateWorkspaceRequests" .=
+                       _twTerminateWorkspaceRequests)])
 
 instance ToPath TerminateWorkspaces where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery TerminateWorkspaces where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'terminateWorkspacesResponse' smart constructor.
 data TerminateWorkspacesResponse =
@@ -116,6 +122,7 @@ data TerminateWorkspacesResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'TerminateWorkspacesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -123,23 +130,20 @@ data TerminateWorkspacesResponse =
 -- * 'twrsFailedRequests' - Information about the WorkSpaces that could not be terminated.
 --
 -- * 'twrsResponseStatus' - -- | The response status code.
-terminateWorkspacesResponse ::
-     Int -- ^ 'twrsResponseStatus'
-  -> TerminateWorkspacesResponse
+terminateWorkspacesResponse
+    :: Int -- ^ 'twrsResponseStatus'
+    -> TerminateWorkspacesResponse
 terminateWorkspacesResponse pResponseStatus_ =
   TerminateWorkspacesResponse'
     {_twrsFailedRequests = Nothing, _twrsResponseStatus = pResponseStatus_}
 
+
 -- | Information about the WorkSpaces that could not be terminated.
-twrsFailedRequests ::
-     Lens' TerminateWorkspacesResponse [FailedWorkspaceChangeRequest]
-twrsFailedRequests =
-  lens _twrsFailedRequests (\s a -> s {_twrsFailedRequests = a}) .
-  _Default . _Coerce
+twrsFailedRequests :: Lens' TerminateWorkspacesResponse [FailedWorkspaceChangeRequest]
+twrsFailedRequests = lens _twrsFailedRequests (\ s a -> s{_twrsFailedRequests = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 twrsResponseStatus :: Lens' TerminateWorkspacesResponse Int
-twrsResponseStatus =
-  lens _twrsResponseStatus (\s a -> s {_twrsResponseStatus = a})
+twrsResponseStatus = lens _twrsResponseStatus (\ s a -> s{_twrsResponseStatus = a})
 
-instance NFData TerminateWorkspacesResponse
+instance NFData TerminateWorkspacesResponse where

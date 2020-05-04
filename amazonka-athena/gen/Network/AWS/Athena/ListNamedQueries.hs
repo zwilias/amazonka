@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Athena.ListNamedQueries
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -16,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Provides a list of all available query IDs.
+-- Provides a list of available query IDs only for queries saved in the specified workgroup. Requires that you have access to the workgroup. If a workgroup is not specified, lists the saved queries for the primary workgroup.
 --
 --
 -- For code samples using the AWS SDK for Java, see <http://docs.aws.amazon.com/athena/latest/ug/code-samples.html Examples and Code Samples> in the /Amazon Athena User Guide/ .
@@ -24,20 +26,23 @@
 --
 -- This operation returns paginated results.
 module Network.AWS.Athena.ListNamedQueries
+    (
     -- * Creating a Request
-  ( listNamedQueries
-  , ListNamedQueries
+      listNamedQueries
+    , ListNamedQueries
     -- * Request Lenses
-  , lnqNextToken
-  , lnqMaxResults
+    , lnqNextToken
+    , lnqWorkGroup
+    , lnqMaxResults
+
     -- * Destructuring the Response
-  , listNamedQueriesResponse
-  , ListNamedQueriesResponse
+    , listNamedQueriesResponse
+    , ListNamedQueriesResponse
     -- * Response Lenses
-  , lnqrsNextToken
-  , lnqrsNamedQueryIds
-  , lnqrsResponseStatus
-  ) where
+    , lnqrsNextToken
+    , lnqrsNamedQueryIds
+    , lnqrsResponseStatus
+    ) where
 
 import Network.AWS.Athena.Types
 import Network.AWS.Athena.Types.Product
@@ -51,9 +56,11 @@ import Network.AWS.Response
 data ListNamedQueries =
   ListNamedQueries'
     { _lnqNextToken  :: !(Maybe Text)
+    , _lnqWorkGroup  :: !(Maybe Text)
     , _lnqMaxResults :: !(Maybe Nat)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'ListNamedQueries' with the minimum fields required to make a request.
 --
@@ -61,61 +68,71 @@ data ListNamedQueries =
 --
 -- * 'lnqNextToken' - The token that specifies where to start pagination if a previous request was truncated.
 --
+-- * 'lnqWorkGroup' - The name of the workgroup from which the named queries are returned. If a workgroup is not specified, the saved queries for the primary workgroup are returned.
+--
 -- * 'lnqMaxResults' - The maximum number of queries to return in this request.
-listNamedQueries :: ListNamedQueries
+listNamedQueries
+    :: ListNamedQueries
 listNamedQueries =
-  ListNamedQueries' {_lnqNextToken = Nothing, _lnqMaxResults = Nothing}
+  ListNamedQueries'
+    {_lnqNextToken = Nothing, _lnqWorkGroup = Nothing, _lnqMaxResults = Nothing}
+
 
 -- | The token that specifies where to start pagination if a previous request was truncated.
 lnqNextToken :: Lens' ListNamedQueries (Maybe Text)
-lnqNextToken = lens _lnqNextToken (\s a -> s {_lnqNextToken = a})
+lnqNextToken = lens _lnqNextToken (\ s a -> s{_lnqNextToken = a})
+
+-- | The name of the workgroup from which the named queries are returned. If a workgroup is not specified, the saved queries for the primary workgroup are returned.
+lnqWorkGroup :: Lens' ListNamedQueries (Maybe Text)
+lnqWorkGroup = lens _lnqWorkGroup (\ s a -> s{_lnqWorkGroup = a})
 
 -- | The maximum number of queries to return in this request.
 lnqMaxResults :: Lens' ListNamedQueries (Maybe Natural)
-lnqMaxResults =
-  lens _lnqMaxResults (\s a -> s {_lnqMaxResults = a}) . mapping _Nat
+lnqMaxResults = lens _lnqMaxResults (\ s a -> s{_lnqMaxResults = a}) . mapping _Nat
 
 instance AWSPager ListNamedQueries where
-  page rq rs
-    | stop (rs ^. lnqrsNextToken) = Nothing
-    | stop (rs ^. lnqrsNamedQueryIds) = Nothing
-    | otherwise = Just $ rq & lnqNextToken .~ rs ^. lnqrsNextToken
+        page rq rs
+          | stop (rs ^. lnqrsNextToken) = Nothing
+          | stop (rs ^. lnqrsNamedQueryIds) = Nothing
+          | otherwise =
+            Just $ rq & lnqNextToken .~ rs ^. lnqrsNextToken
 
 instance AWSRequest ListNamedQueries where
-  type Rs ListNamedQueries = ListNamedQueriesResponse
-  request = postJSON athena
-  response =
-    receiveJSON
-      (\s h x ->
-         ListNamedQueriesResponse' <$> (x .?> "NextToken") <*>
-         (x .?> "NamedQueryIds") <*>
-         (pure (fromEnum s)))
+        type Rs ListNamedQueries = ListNamedQueriesResponse
+        request = postJSON athena
+        response
+          = receiveJSON
+              (\ s h x ->
+                 ListNamedQueriesResponse' <$>
+                   (x .?> "NextToken") <*> (x .?> "NamedQueryIds") <*>
+                     (pure (fromEnum s)))
 
-instance Hashable ListNamedQueries
+instance Hashable ListNamedQueries where
 
-instance NFData ListNamedQueries
+instance NFData ListNamedQueries where
 
 instance ToHeaders ListNamedQueries where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("AmazonAthena.ListNamedQueries" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AmazonAthena.ListNamedQueries" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON ListNamedQueries where
-  toJSON ListNamedQueries' {..} =
-    object
-      (catMaybes
-         [ ("NextToken" .=) <$> _lnqNextToken
-         , ("MaxResults" .=) <$> _lnqMaxResults
-         ])
+        toJSON ListNamedQueries'{..}
+          = object
+              (catMaybes
+                 [("NextToken" .=) <$> _lnqNextToken,
+                  ("WorkGroup" .=) <$> _lnqWorkGroup,
+                  ("MaxResults" .=) <$> _lnqMaxResults])
 
 instance ToPath ListNamedQueries where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery ListNamedQueries where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'listNamedQueriesResponse' smart constructor.
 data ListNamedQueriesResponse =
@@ -126,6 +143,7 @@ data ListNamedQueriesResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListNamedQueriesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -135,9 +153,9 @@ data ListNamedQueriesResponse =
 -- * 'lnqrsNamedQueryIds' - The list of unique query IDs.
 --
 -- * 'lnqrsResponseStatus' - -- | The response status code.
-listNamedQueriesResponse ::
-     Int -- ^ 'lnqrsResponseStatus'
-  -> ListNamedQueriesResponse
+listNamedQueriesResponse
+    :: Int -- ^ 'lnqrsResponseStatus'
+    -> ListNamedQueriesResponse
 listNamedQueriesResponse pResponseStatus_ =
   ListNamedQueriesResponse'
     { _lnqrsNextToken = Nothing
@@ -145,19 +163,17 @@ listNamedQueriesResponse pResponseStatus_ =
     , _lnqrsResponseStatus = pResponseStatus_
     }
 
+
 -- | A token to be used by the next request if this request is truncated.
 lnqrsNextToken :: Lens' ListNamedQueriesResponse (Maybe Text)
-lnqrsNextToken = lens _lnqrsNextToken (\s a -> s {_lnqrsNextToken = a})
+lnqrsNextToken = lens _lnqrsNextToken (\ s a -> s{_lnqrsNextToken = a})
 
 -- | The list of unique query IDs.
 lnqrsNamedQueryIds :: Lens' ListNamedQueriesResponse (Maybe (NonEmpty Text))
-lnqrsNamedQueryIds =
-  lens _lnqrsNamedQueryIds (\s a -> s {_lnqrsNamedQueryIds = a}) .
-  mapping _List1
+lnqrsNamedQueryIds = lens _lnqrsNamedQueryIds (\ s a -> s{_lnqrsNamedQueryIds = a}) . mapping _List1
 
 -- | -- | The response status code.
 lnqrsResponseStatus :: Lens' ListNamedQueriesResponse Int
-lnqrsResponseStatus =
-  lens _lnqrsResponseStatus (\s a -> s {_lnqrsResponseStatus = a})
+lnqrsResponseStatus = lens _lnqrsResponseStatus (\ s a -> s{_lnqrsResponseStatus = a})
 
-instance NFData ListNamedQueriesResponse
+instance NFData ListNamedQueriesResponse where

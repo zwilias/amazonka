@@ -2,9 +2,11 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Mobile.Types.Sum
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -30,48 +32,40 @@ data Platform
   | Windows
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
+
 instance FromText Platform where
-  parser =
-    takeLowerText >>= \case
-      "android" -> pure Android
-      "javascript" -> pure Javascript
-      "linux" -> pure Linux
-      "osx" -> pure OSx
-      "objc" -> pure Objc
-      "swift" -> pure Swift
-      "windows" -> pure Windows
-      e ->
-        fromTextError $
-        "Failure parsing Platform from value: '" <>
-        e <>
-        "'. Accepted values: android, javascript, linux, osx, objc, swift, windows"
+    parser = takeLowerText >>= \case
+        "android" -> pure Android
+        "javascript" -> pure Javascript
+        "linux" -> pure Linux
+        "osx" -> pure OSx
+        "objc" -> pure Objc
+        "swift" -> pure Swift
+        "windows" -> pure Windows
+        e -> fromTextError $ "Failure parsing Platform from value: '" <> e
+           <> "'. Accepted values: android, javascript, linux, osx, objc, swift, windows"
 
 instance ToText Platform where
-  toText =
-    \case
-      Android -> "ANDROID"
-      Javascript -> "JAVASCRIPT"
-      Linux -> "LINUX"
-      OSx -> "OSX"
-      Objc -> "OBJC"
-      Swift -> "SWIFT"
-      Windows -> "WINDOWS"
+    toText = \case
+        Android -> "ANDROID"
+        Javascript -> "JAVASCRIPT"
+        Linux -> "LINUX"
+        OSx -> "OSX"
+        Objc -> "OBJC"
+        Swift -> "SWIFT"
+        Windows -> "WINDOWS"
 
-instance Hashable Platform
-
-instance NFData Platform
-
+instance Hashable     Platform
+instance NFData       Platform
 instance ToByteString Platform
-
-instance ToQuery Platform
-
-instance ToHeader Platform
+instance ToQuery      Platform
+instance ToHeader     Platform
 
 instance ToJSON Platform where
-  toJSON = toJSONText
+    toJSON = toJSONText
 
 instance FromJSON Platform where
-  parseJSON = parseJSONText "Platform"
+    parseJSON = parseJSONText "Platform"
 
 -- | Synchronization state for a project.
 --
@@ -82,33 +76,26 @@ data ProjectState
   | Syncing
   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
 
+
 instance FromText ProjectState where
-  parser =
-    takeLowerText >>= \case
-      "importing" -> pure Importing
-      "normal" -> pure Normal
-      "syncing" -> pure Syncing
-      e ->
-        fromTextError $
-        "Failure parsing ProjectState from value: '" <>
-        e <> "'. Accepted values: importing, normal, syncing"
+    parser = takeLowerText >>= \case
+        "importing" -> pure Importing
+        "normal" -> pure Normal
+        "syncing" -> pure Syncing
+        e -> fromTextError $ "Failure parsing ProjectState from value: '" <> e
+           <> "'. Accepted values: importing, normal, syncing"
 
 instance ToText ProjectState where
-  toText =
-    \case
-      Importing -> "IMPORTING"
-      Normal -> "NORMAL"
-      Syncing -> "SYNCING"
+    toText = \case
+        Importing -> "IMPORTING"
+        Normal -> "NORMAL"
+        Syncing -> "SYNCING"
 
-instance Hashable ProjectState
-
-instance NFData ProjectState
-
+instance Hashable     ProjectState
+instance NFData       ProjectState
 instance ToByteString ProjectState
-
-instance ToQuery ProjectState
-
-instance ToHeader ProjectState
+instance ToQuery      ProjectState
+instance ToHeader     ProjectState
 
 instance FromJSON ProjectState where
-  parseJSON = parseJSONText "ProjectState"
+    parseJSON = parseJSONText "ProjectState"

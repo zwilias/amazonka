@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CloudWatchLogs.AssociateKMSKey
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,16 +28,18 @@
 -- If you attempt to associate a CMK with a log group but the CMK does not exist or the CMK is disabled, you will receive an @InvalidParameterException@ error.
 --
 module Network.AWS.CloudWatchLogs.AssociateKMSKey
+    (
     -- * Creating a Request
-  ( associateKMSKey
-  , AssociateKMSKey
+      associateKMSKey
+    , AssociateKMSKey
     -- * Request Lenses
-  , akkLogGroupName
-  , akkKmsKeyId
+    , akkLogGroupName
+    , akkKmsKeyId
+
     -- * Destructuring the Response
-  , associateKMSKeyResponse
-  , AssociateKMSKeyResponse
-  ) where
+    , associateKMSKeyResponse
+    , AssociateKMSKeyResponse
+    ) where
 
 import Network.AWS.CloudWatchLogs.Types
 import Network.AWS.CloudWatchLogs.Types.Product
@@ -52,6 +56,7 @@ data AssociateKMSKey =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AssociateKMSKey' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -59,61 +64,65 @@ data AssociateKMSKey =
 -- * 'akkLogGroupName' - The name of the log group.
 --
 -- * 'akkKmsKeyId' - The Amazon Resource Name (ARN) of the CMK to use when encrypting log data. For more information, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms Amazon Resource Names - AWS Key Management Service (AWS KMS)> .
-associateKMSKey ::
-     Text -- ^ 'akkLogGroupName'
-  -> Text -- ^ 'akkKmsKeyId'
-  -> AssociateKMSKey
+associateKMSKey
+    :: Text -- ^ 'akkLogGroupName'
+    -> Text -- ^ 'akkKmsKeyId'
+    -> AssociateKMSKey
 associateKMSKey pLogGroupName_ pKmsKeyId_ =
   AssociateKMSKey'
     {_akkLogGroupName = pLogGroupName_, _akkKmsKeyId = pKmsKeyId_}
 
+
 -- | The name of the log group.
 akkLogGroupName :: Lens' AssociateKMSKey Text
-akkLogGroupName = lens _akkLogGroupName (\s a -> s {_akkLogGroupName = a})
+akkLogGroupName = lens _akkLogGroupName (\ s a -> s{_akkLogGroupName = a})
 
 -- | The Amazon Resource Name (ARN) of the CMK to use when encrypting log data. For more information, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms Amazon Resource Names - AWS Key Management Service (AWS KMS)> .
 akkKmsKeyId :: Lens' AssociateKMSKey Text
-akkKmsKeyId = lens _akkKmsKeyId (\s a -> s {_akkKmsKeyId = a})
+akkKmsKeyId = lens _akkKmsKeyId (\ s a -> s{_akkKmsKeyId = a})
 
 instance AWSRequest AssociateKMSKey where
-  type Rs AssociateKMSKey = AssociateKMSKeyResponse
-  request = postJSON cloudWatchLogs
-  response = receiveNull AssociateKMSKeyResponse'
+        type Rs AssociateKMSKey = AssociateKMSKeyResponse
+        request = postJSON cloudWatchLogs
+        response = receiveNull AssociateKMSKeyResponse'
 
-instance Hashable AssociateKMSKey
+instance Hashable AssociateKMSKey where
 
-instance NFData AssociateKMSKey
+instance NFData AssociateKMSKey where
 
 instance ToHeaders AssociateKMSKey where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("Logs_20140328.AssociateKmsKey" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("Logs_20140328.AssociateKmsKey" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON AssociateKMSKey where
-  toJSON AssociateKMSKey' {..} =
-    object
-      (catMaybes
-         [ Just ("logGroupName" .= _akkLogGroupName)
-         , Just ("kmsKeyId" .= _akkKmsKeyId)
-         ])
+        toJSON AssociateKMSKey'{..}
+          = object
+              (catMaybes
+                 [Just ("logGroupName" .= _akkLogGroupName),
+                  Just ("kmsKeyId" .= _akkKmsKeyId)])
 
 instance ToPath AssociateKMSKey where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery AssociateKMSKey where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'associateKMSKeyResponse' smart constructor.
 data AssociateKMSKeyResponse =
   AssociateKMSKeyResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AssociateKMSKeyResponse' with the minimum fields required to make a request.
 --
-associateKMSKeyResponse :: AssociateKMSKeyResponse
+associateKMSKeyResponse
+    :: AssociateKMSKeyResponse
 associateKMSKeyResponse = AssociateKMSKeyResponse'
 
-instance NFData AssociateKMSKeyResponse
+
+instance NFData AssociateKMSKeyResponse where

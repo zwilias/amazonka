@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.MarketplaceEntitlement.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,30 +11,35 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.MarketplaceEntitlement.Types
+    (
     -- * Service Configuration
-  ( marketplaceEntitlement
+      marketplaceEntitlement
+
     -- * Errors
-  , _InvalidParameterException
-  , _ThrottlingException
-  , _InternalServiceErrorException
+    , _InvalidParameterException
+    , _ThrottlingException
+    , _InternalServiceErrorException
+
     -- * GetEntitlementFilterName
-  , GetEntitlementFilterName(..)
+    , GetEntitlementFilterName (..)
+
     -- * Entitlement
-  , Entitlement
-  , entitlement
-  , eDimension
-  , eValue
-  , eExpirationDate
-  , eCustomerIdentifier
-  , eProductCode
+    , Entitlement
+    , entitlement
+    , eDimension
+    , eValue
+    , eExpirationDate
+    , eCustomerIdentifier
+    , eProductCode
+
     -- * EntitlementValue
-  , EntitlementValue
-  , entitlementValue
-  , evIntegerValue
-  , evDoubleValue
-  , evStringValue
-  , evBooleanValue
-  ) where
+    , EntitlementValue
+    , entitlementValue
+    , evIntegerValue
+    , evDoubleValue
+    , evStringValue
+    , evBooleanValue
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.MarketplaceEntitlement.Types.Product
@@ -79,13 +85,14 @@ marketplaceEntitlement =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | One or more parameters in your request was invalid.
 --
 --
-_InvalidParameterException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidParameterException =
   _MatchServiceError marketplaceEntitlement "InvalidParameterException"
+
 
 -- | The calls to the GetEntitlements API are throttled.
 --
@@ -94,10 +101,11 @@ _ThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
 _ThrottlingException =
   _MatchServiceError marketplaceEntitlement "ThrottlingException"
 
+
 -- | An internal error has occurred. Retry your request. If the problem persists, post a message with details on the AWS forums.
 --
 --
-_InternalServiceErrorException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InternalServiceErrorException :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalServiceErrorException =
   _MatchServiceError marketplaceEntitlement "InternalServiceErrorException"
+

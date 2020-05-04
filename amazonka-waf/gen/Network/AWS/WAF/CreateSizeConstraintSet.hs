@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.WAF.CreateSizeConstraintSet
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -34,20 +36,22 @@
 -- For more information about how to use the AWS WAF API to allow or block HTTP requests, see the <http://docs.aws.amazon.com/waf/latest/developerguide/ AWS WAF Developer Guide> .
 --
 module Network.AWS.WAF.CreateSizeConstraintSet
+    (
     -- * Creating a Request
-  ( createSizeConstraintSet
-  , CreateSizeConstraintSet
+      createSizeConstraintSet
+    , CreateSizeConstraintSet
     -- * Request Lenses
-  , cscsName
-  , cscsChangeToken
+    , cscsName
+    , cscsChangeToken
+
     -- * Destructuring the Response
-  , createSizeConstraintSetResponse
-  , CreateSizeConstraintSetResponse
+    , createSizeConstraintSetResponse
+    , CreateSizeConstraintSetResponse
     -- * Response Lenses
-  , cscsrsSizeConstraintSet
-  , cscsrsChangeToken
-  , cscsrsResponseStatus
-  ) where
+    , cscsrsSizeConstraintSet
+    , cscsrsChangeToken
+    , cscsrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -64,6 +68,7 @@ data CreateSizeConstraintSet =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateSizeConstraintSet' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -71,56 +76,60 @@ data CreateSizeConstraintSet =
 -- * 'cscsName' - A friendly name or description of the 'SizeConstraintSet' . You can't change @Name@ after you create a @SizeConstraintSet@ .
 --
 -- * 'cscsChangeToken' - The value returned by the most recent call to 'GetChangeToken' .
-createSizeConstraintSet ::
-     Text -- ^ 'cscsName'
-  -> Text -- ^ 'cscsChangeToken'
-  -> CreateSizeConstraintSet
+createSizeConstraintSet
+    :: Text -- ^ 'cscsName'
+    -> Text -- ^ 'cscsChangeToken'
+    -> CreateSizeConstraintSet
 createSizeConstraintSet pName_ pChangeToken_ =
   CreateSizeConstraintSet'
     {_cscsName = pName_, _cscsChangeToken = pChangeToken_}
 
+
 -- | A friendly name or description of the 'SizeConstraintSet' . You can't change @Name@ after you create a @SizeConstraintSet@ .
 cscsName :: Lens' CreateSizeConstraintSet Text
-cscsName = lens _cscsName (\s a -> s {_cscsName = a})
+cscsName = lens _cscsName (\ s a -> s{_cscsName = a})
 
 -- | The value returned by the most recent call to 'GetChangeToken' .
 cscsChangeToken :: Lens' CreateSizeConstraintSet Text
-cscsChangeToken = lens _cscsChangeToken (\s a -> s {_cscsChangeToken = a})
+cscsChangeToken = lens _cscsChangeToken (\ s a -> s{_cscsChangeToken = a})
 
 instance AWSRequest CreateSizeConstraintSet where
-  type Rs CreateSizeConstraintSet = CreateSizeConstraintSetResponse
-  request = postJSON waf
-  response =
-    receiveJSON
-      (\s h x ->
-         CreateSizeConstraintSetResponse' <$> (x .?> "SizeConstraintSet") <*>
-         (x .?> "ChangeToken") <*>
-         (pure (fromEnum s)))
+        type Rs CreateSizeConstraintSet =
+             CreateSizeConstraintSetResponse
+        request = postJSON waf
+        response
+          = receiveJSON
+              (\ s h x ->
+                 CreateSizeConstraintSetResponse' <$>
+                   (x .?> "SizeConstraintSet") <*> (x .?> "ChangeToken")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable CreateSizeConstraintSet
+instance Hashable CreateSizeConstraintSet where
 
-instance NFData CreateSizeConstraintSet
+instance NFData CreateSizeConstraintSet where
 
 instance ToHeaders CreateSizeConstraintSet where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AWSWAF_20150824.CreateSizeConstraintSet" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWSWAF_20150824.CreateSizeConstraintSet" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON CreateSizeConstraintSet where
-  toJSON CreateSizeConstraintSet' {..} =
-    object
-      (catMaybes
-         [Just ("Name" .= _cscsName), Just ("ChangeToken" .= _cscsChangeToken)])
+        toJSON CreateSizeConstraintSet'{..}
+          = object
+              (catMaybes
+                 [Just ("Name" .= _cscsName),
+                  Just ("ChangeToken" .= _cscsChangeToken)])
 
 instance ToPath CreateSizeConstraintSet where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery CreateSizeConstraintSet where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'createSizeConstraintSetResponse' smart constructor.
 data CreateSizeConstraintSetResponse =
@@ -131,6 +140,7 @@ data CreateSizeConstraintSetResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateSizeConstraintSetResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -140,9 +150,9 @@ data CreateSizeConstraintSetResponse =
 -- * 'cscsrsChangeToken' - The @ChangeToken@ that you used to submit the @CreateSizeConstraintSet@ request. You can also use this value to query the status of the request. For more information, see 'GetChangeTokenStatus' .
 --
 -- * 'cscsrsResponseStatus' - -- | The response status code.
-createSizeConstraintSetResponse ::
-     Int -- ^ 'cscsrsResponseStatus'
-  -> CreateSizeConstraintSetResponse
+createSizeConstraintSetResponse
+    :: Int -- ^ 'cscsrsResponseStatus'
+    -> CreateSizeConstraintSetResponse
 createSizeConstraintSetResponse pResponseStatus_ =
   CreateSizeConstraintSetResponse'
     { _cscsrsSizeConstraintSet = Nothing
@@ -150,19 +160,17 @@ createSizeConstraintSetResponse pResponseStatus_ =
     , _cscsrsResponseStatus = pResponseStatus_
     }
 
+
 -- | A 'SizeConstraintSet' that contains no @SizeConstraint@ objects.
-cscsrsSizeConstraintSet ::
-     Lens' CreateSizeConstraintSetResponse (Maybe SizeConstraintSet)
-cscsrsSizeConstraintSet =
-  lens _cscsrsSizeConstraintSet (\s a -> s {_cscsrsSizeConstraintSet = a})
+cscsrsSizeConstraintSet :: Lens' CreateSizeConstraintSetResponse (Maybe SizeConstraintSet)
+cscsrsSizeConstraintSet = lens _cscsrsSizeConstraintSet (\ s a -> s{_cscsrsSizeConstraintSet = a})
 
 -- | The @ChangeToken@ that you used to submit the @CreateSizeConstraintSet@ request. You can also use this value to query the status of the request. For more information, see 'GetChangeTokenStatus' .
 cscsrsChangeToken :: Lens' CreateSizeConstraintSetResponse (Maybe Text)
-cscsrsChangeToken = lens _cscsrsChangeToken (\s a -> s {_cscsrsChangeToken = a})
+cscsrsChangeToken = lens _cscsrsChangeToken (\ s a -> s{_cscsrsChangeToken = a})
 
 -- | -- | The response status code.
 cscsrsResponseStatus :: Lens' CreateSizeConstraintSetResponse Int
-cscsrsResponseStatus =
-  lens _cscsrsResponseStatus (\s a -> s {_cscsrsResponseStatus = a})
+cscsrsResponseStatus = lens _cscsrsResponseStatus (\ s a -> s{_cscsrsResponseStatus = a})
 
-instance NFData CreateSizeConstraintSetResponse
+instance NFData CreateSizeConstraintSetResponse where

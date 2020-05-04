@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.GameLift.CreateBuild
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -48,23 +50,25 @@
 --
 --
 module Network.AWS.GameLift.CreateBuild
+    (
     -- * Creating a Request
-  ( createBuild
-  , CreateBuild
+      createBuild
+    , CreateBuild
     -- * Request Lenses
-  , cbStorageLocation
-  , cbOperatingSystem
-  , cbName
-  , cbVersion
+    , cbStorageLocation
+    , cbOperatingSystem
+    , cbName
+    , cbVersion
+
     -- * Destructuring the Response
-  , createBuildResponse
-  , CreateBuildResponse
+    , createBuildResponse
+    , CreateBuildResponse
     -- * Response Lenses
-  , cbrsStorageLocation
-  , cbrsUploadCredentials
-  , cbrsBuild
-  , cbrsResponseStatus
-  ) where
+    , cbrsStorageLocation
+    , cbrsUploadCredentials
+    , cbrsBuild
+    , cbrsResponseStatus
+    ) where
 
 import Network.AWS.GameLift.Types
 import Network.AWS.GameLift.Types.Product
@@ -87,6 +91,7 @@ data CreateBuild =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateBuild' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -98,7 +103,8 @@ data CreateBuild =
 -- * 'cbName' - Descriptive label that is associated with a build. Build names do not need to be unique. You can use 'UpdateBuild' to change this value later.
 --
 -- * 'cbVersion' - Version that is associated with this build. Version strings do not need to be unique. You can use 'UpdateBuild' to change this value later.
-createBuild :: CreateBuild
+createBuild
+    :: CreateBuild
 createBuild =
   CreateBuild'
     { _cbStorageLocation = Nothing
@@ -107,60 +113,62 @@ createBuild =
     , _cbVersion = Nothing
     }
 
+
 -- | Information indicating where your game build files are stored. Use this parameter only when creating a build with files stored in an Amazon S3 bucket that you own. The storage location must specify an Amazon S3 bucket name and key, as well as a role ARN that you set up to allow Amazon GameLift to access your Amazon S3 bucket. The S3 bucket must be in the same region that you want to create a new build in.
 cbStorageLocation :: Lens' CreateBuild (Maybe S3Location)
-cbStorageLocation = lens _cbStorageLocation (\s a -> s {_cbStorageLocation = a})
+cbStorageLocation = lens _cbStorageLocation (\ s a -> s{_cbStorageLocation = a})
 
 -- | Operating system that the game server binaries are built to run on. This value determines the type of fleet resources that you can use for this build. If your game build contains multiple executables, they all must run on the same operating system. If an operating system is not specified when creating a build, Amazon GameLift uses the default value (WINDOWS_2012). This value cannot be changed later.
 cbOperatingSystem :: Lens' CreateBuild (Maybe OperatingSystem)
-cbOperatingSystem = lens _cbOperatingSystem (\s a -> s {_cbOperatingSystem = a})
+cbOperatingSystem = lens _cbOperatingSystem (\ s a -> s{_cbOperatingSystem = a})
 
 -- | Descriptive label that is associated with a build. Build names do not need to be unique. You can use 'UpdateBuild' to change this value later.
 cbName :: Lens' CreateBuild (Maybe Text)
-cbName = lens _cbName (\s a -> s {_cbName = a})
+cbName = lens _cbName (\ s a -> s{_cbName = a})
 
 -- | Version that is associated with this build. Version strings do not need to be unique. You can use 'UpdateBuild' to change this value later.
 cbVersion :: Lens' CreateBuild (Maybe Text)
-cbVersion = lens _cbVersion (\s a -> s {_cbVersion = a})
+cbVersion = lens _cbVersion (\ s a -> s{_cbVersion = a})
 
 instance AWSRequest CreateBuild where
-  type Rs CreateBuild = CreateBuildResponse
-  request = postJSON gameLift
-  response =
-    receiveJSON
-      (\s h x ->
-         CreateBuildResponse' <$> (x .?> "StorageLocation") <*>
-         (x .?> "UploadCredentials") <*>
-         (x .?> "Build") <*>
-         (pure (fromEnum s)))
+        type Rs CreateBuild = CreateBuildResponse
+        request = postJSON gameLift
+        response
+          = receiveJSON
+              (\ s h x ->
+                 CreateBuildResponse' <$>
+                   (x .?> "StorageLocation") <*>
+                     (x .?> "UploadCredentials")
+                     <*> (x .?> "Build")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable CreateBuild
+instance Hashable CreateBuild where
 
-instance NFData CreateBuild
+instance NFData CreateBuild where
 
 instance ToHeaders CreateBuild where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("GameLift.CreateBuild" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("GameLift.CreateBuild" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON CreateBuild where
-  toJSON CreateBuild' {..} =
-    object
-      (catMaybes
-         [ ("StorageLocation" .=) <$> _cbStorageLocation
-         , ("OperatingSystem" .=) <$> _cbOperatingSystem
-         , ("Name" .=) <$> _cbName
-         , ("Version" .=) <$> _cbVersion
-         ])
+        toJSON CreateBuild'{..}
+          = object
+              (catMaybes
+                 [("StorageLocation" .=) <$> _cbStorageLocation,
+                  ("OperatingSystem" .=) <$> _cbOperatingSystem,
+                  ("Name" .=) <$> _cbName,
+                  ("Version" .=) <$> _cbVersion])
 
 instance ToPath CreateBuild where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery CreateBuild where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | Represents the returned data in response to a request action.
 --
@@ -176,6 +184,7 @@ data CreateBuildResponse =
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateBuildResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -187,9 +196,9 @@ data CreateBuildResponse =
 -- * 'cbrsBuild' - The newly created build record, including a unique build ID and status.
 --
 -- * 'cbrsResponseStatus' - -- | The response status code.
-createBuildResponse ::
-     Int -- ^ 'cbrsResponseStatus'
-  -> CreateBuildResponse
+createBuildResponse
+    :: Int -- ^ 'cbrsResponseStatus'
+    -> CreateBuildResponse
 createBuildResponse pResponseStatus_ =
   CreateBuildResponse'
     { _cbrsStorageLocation = Nothing
@@ -198,24 +207,21 @@ createBuildResponse pResponseStatus_ =
     , _cbrsResponseStatus = pResponseStatus_
     }
 
+
 -- | Amazon S3 location for your game build file, including bucket name and key.
 cbrsStorageLocation :: Lens' CreateBuildResponse (Maybe S3Location)
-cbrsStorageLocation =
-  lens _cbrsStorageLocation (\s a -> s {_cbrsStorageLocation = a})
+cbrsStorageLocation = lens _cbrsStorageLocation (\ s a -> s{_cbrsStorageLocation = a})
 
 -- | This element is returned only when the operation is called without a storage location. It contains credentials to use when you are uploading a build file to an Amazon S3 bucket that is owned by Amazon GameLift. Credentials have a limited life span. To refresh these credentials, call 'RequestUploadCredentials' .
 cbrsUploadCredentials :: Lens' CreateBuildResponse (Maybe AWSCredentials)
-cbrsUploadCredentials =
-  lens _cbrsUploadCredentials (\s a -> s {_cbrsUploadCredentials = a}) .
-  mapping _Sensitive
+cbrsUploadCredentials = lens _cbrsUploadCredentials (\ s a -> s{_cbrsUploadCredentials = a}) . mapping _Sensitive
 
 -- | The newly created build record, including a unique build ID and status.
 cbrsBuild :: Lens' CreateBuildResponse (Maybe Build)
-cbrsBuild = lens _cbrsBuild (\s a -> s {_cbrsBuild = a})
+cbrsBuild = lens _cbrsBuild (\ s a -> s{_cbrsBuild = a})
 
 -- | -- | The response status code.
 cbrsResponseStatus :: Lens' CreateBuildResponse Int
-cbrsResponseStatus =
-  lens _cbrsResponseStatus (\s a -> s {_cbrsResponseStatus = a})
+cbrsResponseStatus = lens _cbrsResponseStatus (\ s a -> s{_cbrsResponseStatus = a})
 
-instance NFData CreateBuildResponse
+instance NFData CreateBuildResponse where

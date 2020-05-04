@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.EFS.DeleteMountTarget
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -34,15 +36,17 @@
 --
 --
 module Network.AWS.EFS.DeleteMountTarget
+    (
     -- * Creating a Request
-  ( deleteMountTarget
-  , DeleteMountTarget
+      deleteMountTarget
+    , DeleteMountTarget
     -- * Request Lenses
-  , dMountTargetId
+    , dMountTargetId
+
     -- * Destructuring the Response
-  , deleteMountTargetResponse
-  , DeleteMountTargetResponse
-  ) where
+    , deleteMountTargetResponse
+    , DeleteMountTargetResponse
+    ) where
 
 import Network.AWS.EFS.Types
 import Network.AWS.EFS.Types.Product
@@ -62,48 +66,54 @@ newtype DeleteMountTarget =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteMountTarget' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dMountTargetId' - ID of the mount target to delete (String).
-deleteMountTarget ::
-     Text -- ^ 'dMountTargetId'
-  -> DeleteMountTarget
+deleteMountTarget
+    :: Text -- ^ 'dMountTargetId'
+    -> DeleteMountTarget
 deleteMountTarget pMountTargetId_ =
   DeleteMountTarget' {_dMountTargetId = pMountTargetId_}
 
+
 -- | ID of the mount target to delete (String).
 dMountTargetId :: Lens' DeleteMountTarget Text
-dMountTargetId = lens _dMountTargetId (\s a -> s {_dMountTargetId = a})
+dMountTargetId = lens _dMountTargetId (\ s a -> s{_dMountTargetId = a})
 
 instance AWSRequest DeleteMountTarget where
-  type Rs DeleteMountTarget = DeleteMountTargetResponse
-  request = delete efs
-  response = receiveNull DeleteMountTargetResponse'
+        type Rs DeleteMountTarget = DeleteMountTargetResponse
+        request = delete efs
+        response = receiveNull DeleteMountTargetResponse'
 
-instance Hashable DeleteMountTarget
+instance Hashable DeleteMountTarget where
 
-instance NFData DeleteMountTarget
+instance NFData DeleteMountTarget where
 
 instance ToHeaders DeleteMountTarget where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath DeleteMountTarget where
-  toPath DeleteMountTarget' {..} =
-    mconcat ["/2015-02-01/mount-targets/", toBS _dMountTargetId]
+        toPath DeleteMountTarget'{..}
+          = mconcat
+              ["/2015-02-01/mount-targets/", toBS _dMountTargetId]
 
 instance ToQuery DeleteMountTarget where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'deleteMountTargetResponse' smart constructor.
 data DeleteMountTargetResponse =
   DeleteMountTargetResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteMountTargetResponse' with the minimum fields required to make a request.
 --
-deleteMountTargetResponse :: DeleteMountTargetResponse
+deleteMountTargetResponse
+    :: DeleteMountTargetResponse
 deleteMountTargetResponse = DeleteMountTargetResponse'
 
-instance NFData DeleteMountTargetResponse
+
+instance NFData DeleteMountTargetResponse where

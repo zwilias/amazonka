@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SES.CreateConfigurationSetEventDestination
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,18 +26,20 @@
 -- You can execute this operation no more than once per second.
 --
 module Network.AWS.SES.CreateConfigurationSetEventDestination
+    (
     -- * Creating a Request
-  ( createConfigurationSetEventDestination
-  , CreateConfigurationSetEventDestination
+      createConfigurationSetEventDestination
+    , CreateConfigurationSetEventDestination
     -- * Request Lenses
-  , ccsedConfigurationSetName
-  , ccsedEventDestination
+    , ccsedConfigurationSetName
+    , ccsedEventDestination
+
     -- * Destructuring the Response
-  , createConfigurationSetEventDestinationResponse
-  , CreateConfigurationSetEventDestinationResponse
+    , createConfigurationSetEventDestinationResponse
+    , CreateConfigurationSetEventDestinationResponse
     -- * Response Lenses
-  , ccsedrsResponseStatus
-  ) where
+    , ccsedrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -56,6 +60,7 @@ data CreateConfigurationSetEventDestination =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateConfigurationSetEventDestination' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -63,54 +68,67 @@ data CreateConfigurationSetEventDestination =
 -- * 'ccsedConfigurationSetName' - The name of the configuration set that the event destination should be associated with.
 --
 -- * 'ccsedEventDestination' - An object that describes the AWS service that email sending event information will be published to.
-createConfigurationSetEventDestination ::
-     Text -- ^ 'ccsedConfigurationSetName'
-  -> EventDestination -- ^ 'ccsedEventDestination'
-  -> CreateConfigurationSetEventDestination
+createConfigurationSetEventDestination
+    :: Text -- ^ 'ccsedConfigurationSetName'
+    -> EventDestination -- ^ 'ccsedEventDestination'
+    -> CreateConfigurationSetEventDestination
 createConfigurationSetEventDestination pConfigurationSetName_ pEventDestination_ =
   CreateConfigurationSetEventDestination'
     { _ccsedConfigurationSetName = pConfigurationSetName_
     , _ccsedEventDestination = pEventDestination_
     }
 
+
 -- | The name of the configuration set that the event destination should be associated with.
 ccsedConfigurationSetName :: Lens' CreateConfigurationSetEventDestination Text
-ccsedConfigurationSetName =
-  lens _ccsedConfigurationSetName (\s a -> s {_ccsedConfigurationSetName = a})
+ccsedConfigurationSetName = lens _ccsedConfigurationSetName (\ s a -> s{_ccsedConfigurationSetName = a})
 
 -- | An object that describes the AWS service that email sending event information will be published to.
-ccsedEventDestination ::
-     Lens' CreateConfigurationSetEventDestination EventDestination
-ccsedEventDestination =
-  lens _ccsedEventDestination (\s a -> s {_ccsedEventDestination = a})
+ccsedEventDestination :: Lens' CreateConfigurationSetEventDestination EventDestination
+ccsedEventDestination = lens _ccsedEventDestination (\ s a -> s{_ccsedEventDestination = a})
 
-instance AWSRequest CreateConfigurationSetEventDestination where
-  type Rs CreateConfigurationSetEventDestination = CreateConfigurationSetEventDestinationResponse
-  request = postQuery ses
-  response =
-    receiveXMLWrapper
-      "CreateConfigurationSetEventDestinationResult"
-      (\s h x ->
-         CreateConfigurationSetEventDestinationResponse' <$> (pure (fromEnum s)))
+instance AWSRequest
+           CreateConfigurationSetEventDestination
+         where
+        type Rs CreateConfigurationSetEventDestination =
+             CreateConfigurationSetEventDestinationResponse
+        request = postQuery ses
+        response
+          = receiveXMLWrapper
+              "CreateConfigurationSetEventDestinationResult"
+              (\ s h x ->
+                 CreateConfigurationSetEventDestinationResponse' <$>
+                   (pure (fromEnum s)))
 
-instance Hashable CreateConfigurationSetEventDestination
+instance Hashable
+           CreateConfigurationSetEventDestination
+         where
 
-instance NFData CreateConfigurationSetEventDestination
+instance NFData
+           CreateConfigurationSetEventDestination
+         where
 
-instance ToHeaders CreateConfigurationSetEventDestination where
-  toHeaders = const mempty
+instance ToHeaders
+           CreateConfigurationSetEventDestination
+         where
+        toHeaders = const mempty
 
-instance ToPath CreateConfigurationSetEventDestination where
-  toPath = const "/"
+instance ToPath
+           CreateConfigurationSetEventDestination
+         where
+        toPath = const "/"
 
-instance ToQuery CreateConfigurationSetEventDestination where
-  toQuery CreateConfigurationSetEventDestination' {..} =
-    mconcat
-      [ "Action" =: ("CreateConfigurationSetEventDestination" :: ByteString)
-      , "Version" =: ("2010-12-01" :: ByteString)
-      , "ConfigurationSetName" =: _ccsedConfigurationSetName
-      , "EventDestination" =: _ccsedEventDestination
-      ]
+instance ToQuery
+           CreateConfigurationSetEventDestination
+         where
+        toQuery CreateConfigurationSetEventDestination'{..}
+          = mconcat
+              ["Action" =:
+                 ("CreateConfigurationSetEventDestination" ::
+                    ByteString),
+               "Version" =: ("2010-12-01" :: ByteString),
+               "ConfigurationSetName" =: _ccsedConfigurationSetName,
+               "EventDestination" =: _ccsedEventDestination]
 
 -- | An empty element returned on a successful request.
 --
@@ -123,22 +141,24 @@ newtype CreateConfigurationSetEventDestinationResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateConfigurationSetEventDestinationResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'ccsedrsResponseStatus' - -- | The response status code.
-createConfigurationSetEventDestinationResponse ::
-     Int -- ^ 'ccsedrsResponseStatus'
-  -> CreateConfigurationSetEventDestinationResponse
+createConfigurationSetEventDestinationResponse
+    :: Int -- ^ 'ccsedrsResponseStatus'
+    -> CreateConfigurationSetEventDestinationResponse
 createConfigurationSetEventDestinationResponse pResponseStatus_ =
   CreateConfigurationSetEventDestinationResponse'
     {_ccsedrsResponseStatus = pResponseStatus_}
 
--- | -- | The response status code.
-ccsedrsResponseStatus ::
-     Lens' CreateConfigurationSetEventDestinationResponse Int
-ccsedrsResponseStatus =
-  lens _ccsedrsResponseStatus (\s a -> s {_ccsedrsResponseStatus = a})
 
-instance NFData CreateConfigurationSetEventDestinationResponse
+-- | -- | The response status code.
+ccsedrsResponseStatus :: Lens' CreateConfigurationSetEventDestinationResponse Int
+ccsedrsResponseStatus = lens _ccsedrsResponseStatus (\ s a -> s{_ccsedrsResponseStatus = a})
+
+instance NFData
+           CreateConfigurationSetEventDestinationResponse
+         where

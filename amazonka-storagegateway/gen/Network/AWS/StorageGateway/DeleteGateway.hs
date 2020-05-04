@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.StorageGateway.DeleteGateway
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,18 +26,20 @@
 -- /Important:/ You no longer pay software charges after the gateway is deleted; however, your existing Amazon EBS snapshots persist and you will continue to be billed for these snapshots. You can choose to remove all remaining Amazon EBS snapshots by canceling your Amazon EC2 subscription.  If you prefer not to cancel your Amazon EC2 subscription, you can delete your snapshots using the Amazon EC2 console. For more information, see the <http://aws.amazon.com/storagegateway AWS Storage Gateway Detail Page> .
 --
 module Network.AWS.StorageGateway.DeleteGateway
+    (
     -- * Creating a Request
-  ( deleteGateway
-  , DeleteGateway
+      deleteGateway
+    , DeleteGateway
     -- * Request Lenses
-  , dgGatewayARN
+    , dgGatewayARN
+
     -- * Destructuring the Response
-  , deleteGatewayResponse
-  , DeleteGatewayResponse
+    , deleteGatewayResponse
+    , DeleteGatewayResponse
     -- * Response Lenses
-  , dgrsGatewayARN
-  , dgrsResponseStatus
-  ) where
+    , dgrsGatewayARN
+    , dgrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -55,50 +59,55 @@ newtype DeleteGateway =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteGateway' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dgGatewayARN' - Undocumented member.
-deleteGateway ::
-     Text -- ^ 'dgGatewayARN'
-  -> DeleteGateway
+deleteGateway
+    :: Text -- ^ 'dgGatewayARN'
+    -> DeleteGateway
 deleteGateway pGatewayARN_ = DeleteGateway' {_dgGatewayARN = pGatewayARN_}
+
 
 -- | Undocumented member.
 dgGatewayARN :: Lens' DeleteGateway Text
-dgGatewayARN = lens _dgGatewayARN (\s a -> s {_dgGatewayARN = a})
+dgGatewayARN = lens _dgGatewayARN (\ s a -> s{_dgGatewayARN = a})
 
 instance AWSRequest DeleteGateway where
-  type Rs DeleteGateway = DeleteGatewayResponse
-  request = postJSON storageGateway
-  response =
-    receiveJSON
-      (\s h x ->
-         DeleteGatewayResponse' <$> (x .?> "GatewayARN") <*> (pure (fromEnum s)))
+        type Rs DeleteGateway = DeleteGatewayResponse
+        request = postJSON storageGateway
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DeleteGatewayResponse' <$>
+                   (x .?> "GatewayARN") <*> (pure (fromEnum s)))
 
-instance Hashable DeleteGateway
+instance Hashable DeleteGateway where
 
-instance NFData DeleteGateway
+instance NFData DeleteGateway where
 
 instance ToHeaders DeleteGateway where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("StorageGateway_20130630.DeleteGateway" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("StorageGateway_20130630.DeleteGateway" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DeleteGateway where
-  toJSON DeleteGateway' {..} =
-    object (catMaybes [Just ("GatewayARN" .= _dgGatewayARN)])
+        toJSON DeleteGateway'{..}
+          = object
+              (catMaybes [Just ("GatewayARN" .= _dgGatewayARN)])
 
 instance ToPath DeleteGateway where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DeleteGateway where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | A JSON object containing the ID of the deleted gateway.
 --
@@ -112,6 +121,7 @@ data DeleteGatewayResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteGatewayResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -119,20 +129,20 @@ data DeleteGatewayResponse =
 -- * 'dgrsGatewayARN' - Undocumented member.
 --
 -- * 'dgrsResponseStatus' - -- | The response status code.
-deleteGatewayResponse ::
-     Int -- ^ 'dgrsResponseStatus'
-  -> DeleteGatewayResponse
+deleteGatewayResponse
+    :: Int -- ^ 'dgrsResponseStatus'
+    -> DeleteGatewayResponse
 deleteGatewayResponse pResponseStatus_ =
   DeleteGatewayResponse'
     {_dgrsGatewayARN = Nothing, _dgrsResponseStatus = pResponseStatus_}
 
+
 -- | Undocumented member.
 dgrsGatewayARN :: Lens' DeleteGatewayResponse (Maybe Text)
-dgrsGatewayARN = lens _dgrsGatewayARN (\s a -> s {_dgrsGatewayARN = a})
+dgrsGatewayARN = lens _dgrsGatewayARN (\ s a -> s{_dgrsGatewayARN = a})
 
 -- | -- | The response status code.
 dgrsResponseStatus :: Lens' DeleteGatewayResponse Int
-dgrsResponseStatus =
-  lens _dgrsResponseStatus (\s a -> s {_dgrsResponseStatus = a})
+dgrsResponseStatus = lens _dgrsResponseStatus (\ s a -> s{_dgrsResponseStatus = a})
 
-instance NFData DeleteGatewayResponse
+instance NFData DeleteGatewayResponse where

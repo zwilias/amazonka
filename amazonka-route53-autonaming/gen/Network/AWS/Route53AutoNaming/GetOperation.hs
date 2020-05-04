@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Route53AutoNaming.GetOperation
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.Route53AutoNaming.GetOperation
+    (
     -- * Creating a Request
-  ( getOperation
-  , GetOperation
+      getOperation
+    , GetOperation
     -- * Request Lenses
-  , goOperationId
+    , goOperationId
+
     -- * Destructuring the Response
-  , getOperationResponse
-  , GetOperationResponse
+    , getOperationResponse
+    , GetOperationResponse
     -- * Response Lenses
-  , gorsOperation
-  , gorsResponseStatus
-  ) where
+    , gorsOperation
+    , gorsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -47,50 +51,55 @@ newtype GetOperation =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetOperation' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'goOperationId' - The ID of the operation that you want to get more information about.
-getOperation ::
-     Text -- ^ 'goOperationId'
-  -> GetOperation
+getOperation
+    :: Text -- ^ 'goOperationId'
+    -> GetOperation
 getOperation pOperationId_ = GetOperation' {_goOperationId = pOperationId_}
+
 
 -- | The ID of the operation that you want to get more information about.
 goOperationId :: Lens' GetOperation Text
-goOperationId = lens _goOperationId (\s a -> s {_goOperationId = a})
+goOperationId = lens _goOperationId (\ s a -> s{_goOperationId = a})
 
 instance AWSRequest GetOperation where
-  type Rs GetOperation = GetOperationResponse
-  request = postJSON route53AutoNaming
-  response =
-    receiveJSON
-      (\s h x ->
-         GetOperationResponse' <$> (x .?> "Operation") <*> (pure (fromEnum s)))
+        type Rs GetOperation = GetOperationResponse
+        request = postJSON route53AutoNaming
+        response
+          = receiveJSON
+              (\ s h x ->
+                 GetOperationResponse' <$>
+                   (x .?> "Operation") <*> (pure (fromEnum s)))
 
-instance Hashable GetOperation
+instance Hashable GetOperation where
 
-instance NFData GetOperation
+instance NFData GetOperation where
 
 instance ToHeaders GetOperation where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("Route53AutoNaming_v20170314.GetOperation" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("Route53AutoNaming_v20170314.GetOperation" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON GetOperation where
-  toJSON GetOperation' {..} =
-    object (catMaybes [Just ("OperationId" .= _goOperationId)])
+        toJSON GetOperation'{..}
+          = object
+              (catMaybes [Just ("OperationId" .= _goOperationId)])
 
 instance ToPath GetOperation where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery GetOperation where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'getOperationResponse' smart constructor.
 data GetOperationResponse =
@@ -100,6 +109,7 @@ data GetOperationResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetOperationResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -107,20 +117,20 @@ data GetOperationResponse =
 -- * 'gorsOperation' - A complex type that contains information about the operation.
 --
 -- * 'gorsResponseStatus' - -- | The response status code.
-getOperationResponse ::
-     Int -- ^ 'gorsResponseStatus'
-  -> GetOperationResponse
+getOperationResponse
+    :: Int -- ^ 'gorsResponseStatus'
+    -> GetOperationResponse
 getOperationResponse pResponseStatus_ =
   GetOperationResponse'
     {_gorsOperation = Nothing, _gorsResponseStatus = pResponseStatus_}
 
+
 -- | A complex type that contains information about the operation.
 gorsOperation :: Lens' GetOperationResponse (Maybe Operation)
-gorsOperation = lens _gorsOperation (\s a -> s {_gorsOperation = a})
+gorsOperation = lens _gorsOperation (\ s a -> s{_gorsOperation = a})
 
 -- | -- | The response status code.
 gorsResponseStatus :: Lens' GetOperationResponse Int
-gorsResponseStatus =
-  lens _gorsResponseStatus (\s a -> s {_gorsResponseStatus = a})
+gorsResponseStatus = lens _gorsResponseStatus (\ s a -> s{_gorsResponseStatus = a})
 
-instance NFData GetOperationResponse
+instance NFData GetOperationResponse where

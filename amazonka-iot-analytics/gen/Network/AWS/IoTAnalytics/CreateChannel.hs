@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.IoTAnalytics.CreateChannel
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,21 +22,23 @@
 --
 --
 module Network.AWS.IoTAnalytics.CreateChannel
+    (
     -- * Creating a Request
-  ( createChannel
-  , CreateChannel
+      createChannel
+    , CreateChannel
     -- * Request Lenses
-  , ccRetentionPeriod
-  , ccChannelName
+    , ccRetentionPeriod
+    , ccChannelName
+
     -- * Destructuring the Response
-  , createChannelResponse
-  , CreateChannelResponse
+    , createChannelResponse
+    , CreateChannelResponse
     -- * Response Lenses
-  , ccrsChannelARN
-  , ccrsRetentionPeriod
-  , ccrsChannelName
-  , ccrsResponseStatus
-  ) where
+    , ccrsChannelARN
+    , ccrsRetentionPeriod
+    , ccrsChannelName
+    , ccrsResponseStatus
+    ) where
 
 import Network.AWS.IoTAnalytics.Types
 import Network.AWS.IoTAnalytics.Types.Product
@@ -51,6 +55,7 @@ data CreateChannel =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateChannel' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -58,51 +63,51 @@ data CreateChannel =
 -- * 'ccRetentionPeriod' - How long, in days, message data is kept for the channel.
 --
 -- * 'ccChannelName' - The name of the channel.
-createChannel ::
-     Text -- ^ 'ccChannelName'
-  -> CreateChannel
+createChannel
+    :: Text -- ^ 'ccChannelName'
+    -> CreateChannel
 createChannel pChannelName_ =
   CreateChannel' {_ccRetentionPeriod = Nothing, _ccChannelName = pChannelName_}
 
+
 -- | How long, in days, message data is kept for the channel.
 ccRetentionPeriod :: Lens' CreateChannel (Maybe RetentionPeriod)
-ccRetentionPeriod = lens _ccRetentionPeriod (\s a -> s {_ccRetentionPeriod = a})
+ccRetentionPeriod = lens _ccRetentionPeriod (\ s a -> s{_ccRetentionPeriod = a})
 
 -- | The name of the channel.
 ccChannelName :: Lens' CreateChannel Text
-ccChannelName = lens _ccChannelName (\s a -> s {_ccChannelName = a})
+ccChannelName = lens _ccChannelName (\ s a -> s{_ccChannelName = a})
 
 instance AWSRequest CreateChannel where
-  type Rs CreateChannel = CreateChannelResponse
-  request = postJSON ioTAnalytics
-  response =
-    receiveJSON
-      (\s h x ->
-         CreateChannelResponse' <$> (x .?> "channelArn") <*>
-         (x .?> "retentionPeriod") <*>
-         (x .?> "channelName") <*>
-         (pure (fromEnum s)))
+        type Rs CreateChannel = CreateChannelResponse
+        request = postJSON ioTAnalytics
+        response
+          = receiveJSON
+              (\ s h x ->
+                 CreateChannelResponse' <$>
+                   (x .?> "channelArn") <*> (x .?> "retentionPeriod")
+                     <*> (x .?> "channelName")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable CreateChannel
+instance Hashable CreateChannel where
 
-instance NFData CreateChannel
+instance NFData CreateChannel where
 
 instance ToHeaders CreateChannel where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToJSON CreateChannel where
-  toJSON CreateChannel' {..} =
-    object
-      (catMaybes
-         [ ("retentionPeriod" .=) <$> _ccRetentionPeriod
-         , Just ("channelName" .= _ccChannelName)
-         ])
+        toJSON CreateChannel'{..}
+          = object
+              (catMaybes
+                 [("retentionPeriod" .=) <$> _ccRetentionPeriod,
+                  Just ("channelName" .= _ccChannelName)])
 
 instance ToPath CreateChannel where
-  toPath = const "/channels"
+        toPath = const "/channels"
 
 instance ToQuery CreateChannel where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'createChannelResponse' smart constructor.
 data CreateChannelResponse =
@@ -113,6 +118,7 @@ data CreateChannelResponse =
     , _ccrsResponseStatus  :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'CreateChannelResponse' with the minimum fields required to make a request.
 --
@@ -125,9 +131,9 @@ data CreateChannelResponse =
 -- * 'ccrsChannelName' - The name of the channel.
 --
 -- * 'ccrsResponseStatus' - -- | The response status code.
-createChannelResponse ::
-     Int -- ^ 'ccrsResponseStatus'
-  -> CreateChannelResponse
+createChannelResponse
+    :: Int -- ^ 'ccrsResponseStatus'
+    -> CreateChannelResponse
 createChannelResponse pResponseStatus_ =
   CreateChannelResponse'
     { _ccrsChannelARN = Nothing
@@ -136,22 +142,21 @@ createChannelResponse pResponseStatus_ =
     , _ccrsResponseStatus = pResponseStatus_
     }
 
+
 -- | The ARN of the channel.
 ccrsChannelARN :: Lens' CreateChannelResponse (Maybe Text)
-ccrsChannelARN = lens _ccrsChannelARN (\s a -> s {_ccrsChannelARN = a})
+ccrsChannelARN = lens _ccrsChannelARN (\ s a -> s{_ccrsChannelARN = a})
 
 -- | How long, in days, message data is kept for the channel.
 ccrsRetentionPeriod :: Lens' CreateChannelResponse (Maybe RetentionPeriod)
-ccrsRetentionPeriod =
-  lens _ccrsRetentionPeriod (\s a -> s {_ccrsRetentionPeriod = a})
+ccrsRetentionPeriod = lens _ccrsRetentionPeriod (\ s a -> s{_ccrsRetentionPeriod = a})
 
 -- | The name of the channel.
 ccrsChannelName :: Lens' CreateChannelResponse (Maybe Text)
-ccrsChannelName = lens _ccrsChannelName (\s a -> s {_ccrsChannelName = a})
+ccrsChannelName = lens _ccrsChannelName (\ s a -> s{_ccrsChannelName = a})
 
 -- | -- | The response status code.
 ccrsResponseStatus :: Lens' CreateChannelResponse Int
-ccrsResponseStatus =
-  lens _ccrsResponseStatus (\s a -> s {_ccrsResponseStatus = a})
+ccrsResponseStatus = lens _ccrsResponseStatus (\ s a -> s{_ccrsResponseStatus = a})
 
-instance NFData CreateChannelResponse
+instance NFData CreateChannelResponse where

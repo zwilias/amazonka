@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SDB.BatchPutAttributes
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -32,16 +34,18 @@
 --
 --
 module Network.AWS.SDB.BatchPutAttributes
+    (
     -- * Creating a Request
-  ( batchPutAttributes
-  , BatchPutAttributes
+      batchPutAttributes
+    , BatchPutAttributes
     -- * Request Lenses
-  , bpaDomainName
-  , bpaItems
+    , bpaDomainName
+    , bpaItems
+
     -- * Destructuring the Response
-  , batchPutAttributesResponse
-  , BatchPutAttributesResponse
-  ) where
+    , batchPutAttributesResponse
+    , BatchPutAttributesResponse
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -58,6 +62,7 @@ data BatchPutAttributes =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'BatchPutAttributes' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -65,52 +70,56 @@ data BatchPutAttributes =
 -- * 'bpaDomainName' - The name of the domain in which the attributes are being stored.
 --
 -- * 'bpaItems' - A list of items on which to perform the operation.
-batchPutAttributes ::
-     Text -- ^ 'bpaDomainName'
-  -> BatchPutAttributes
+batchPutAttributes
+    :: Text -- ^ 'bpaDomainName'
+    -> BatchPutAttributes
 batchPutAttributes pDomainName_ =
   BatchPutAttributes' {_bpaDomainName = pDomainName_, _bpaItems = mempty}
 
+
 -- | The name of the domain in which the attributes are being stored.
 bpaDomainName :: Lens' BatchPutAttributes Text
-bpaDomainName = lens _bpaDomainName (\s a -> s {_bpaDomainName = a})
+bpaDomainName = lens _bpaDomainName (\ s a -> s{_bpaDomainName = a})
 
 -- | A list of items on which to perform the operation.
 bpaItems :: Lens' BatchPutAttributes [ReplaceableItem]
-bpaItems = lens _bpaItems (\s a -> s {_bpaItems = a}) . _Coerce
+bpaItems = lens _bpaItems (\ s a -> s{_bpaItems = a}) . _Coerce
 
 instance AWSRequest BatchPutAttributes where
-  type Rs BatchPutAttributes = BatchPutAttributesResponse
-  request = postQuery sdb
-  response = receiveNull BatchPutAttributesResponse'
+        type Rs BatchPutAttributes =
+             BatchPutAttributesResponse
+        request = postQuery sdb
+        response = receiveNull BatchPutAttributesResponse'
 
-instance Hashable BatchPutAttributes
+instance Hashable BatchPutAttributes where
 
-instance NFData BatchPutAttributes
+instance NFData BatchPutAttributes where
 
 instance ToHeaders BatchPutAttributes where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath BatchPutAttributes where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery BatchPutAttributes where
-  toQuery BatchPutAttributes' {..} =
-    mconcat
-      [ "Action" =: ("BatchPutAttributes" :: ByteString)
-      , "Version" =: ("2009-04-15" :: ByteString)
-      , "DomainName" =: _bpaDomainName
-      , toQueryList "Item" _bpaItems
-      ]
+        toQuery BatchPutAttributes'{..}
+          = mconcat
+              ["Action" =: ("BatchPutAttributes" :: ByteString),
+               "Version" =: ("2009-04-15" :: ByteString),
+               "DomainName" =: _bpaDomainName,
+               toQueryList "Item" _bpaItems]
 
 -- | /See:/ 'batchPutAttributesResponse' smart constructor.
 data BatchPutAttributesResponse =
   BatchPutAttributesResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'BatchPutAttributesResponse' with the minimum fields required to make a request.
 --
-batchPutAttributesResponse :: BatchPutAttributesResponse
+batchPutAttributesResponse
+    :: BatchPutAttributesResponse
 batchPutAttributesResponse = BatchPutAttributesResponse'
 
-instance NFData BatchPutAttributesResponse
+
+instance NFData BatchPutAttributesResponse where

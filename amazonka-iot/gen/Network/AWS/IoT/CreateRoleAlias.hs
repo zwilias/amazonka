@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.IoT.CreateRoleAlias
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,21 +22,23 @@
 --
 --
 module Network.AWS.IoT.CreateRoleAlias
+    (
     -- * Creating a Request
-  ( createRoleAlias
-  , CreateRoleAlias
+      createRoleAlias
+    , CreateRoleAlias
     -- * Request Lenses
-  , craCredentialDurationSeconds
-  , craRoleAlias
-  , craRoleARN
+    , craCredentialDurationSeconds
+    , craRoleAlias
+    , craRoleARN
+
     -- * Destructuring the Response
-  , createRoleAliasResponse
-  , CreateRoleAliasResponse
+    , createRoleAliasResponse
+    , CreateRoleAliasResponse
     -- * Response Lenses
-  , crarsRoleAliasARN
-  , crarsRoleAlias
-  , crarsResponseStatus
-  ) where
+    , crarsRoleAliasARN
+    , crarsRoleAlias
+    , crarsResponseStatus
+    ) where
 
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
@@ -52,6 +56,7 @@ data CreateRoleAlias =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateRoleAlias' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -61,10 +66,10 @@ data CreateRoleAlias =
 -- * 'craRoleAlias' - The role alias that points to a role ARN. This allows you to change the role without having to update the device.
 --
 -- * 'craRoleARN' - The role ARN.
-createRoleAlias ::
-     Text -- ^ 'craRoleAlias'
-  -> Text -- ^ 'craRoleARN'
-  -> CreateRoleAlias
+createRoleAlias
+    :: Text -- ^ 'craRoleAlias'
+    -> Text -- ^ 'craRoleARN'
+    -> CreateRoleAlias
 createRoleAlias pRoleAlias_ pRoleARN_ =
   CreateRoleAlias'
     { _craCredentialDurationSeconds = Nothing
@@ -72,52 +77,50 @@ createRoleAlias pRoleAlias_ pRoleARN_ =
     , _craRoleARN = pRoleARN_
     }
 
+
 -- | How long (in seconds) the credentials will be valid.
 craCredentialDurationSeconds :: Lens' CreateRoleAlias (Maybe Natural)
-craCredentialDurationSeconds =
-  lens
-    _craCredentialDurationSeconds
-    (\s a -> s {_craCredentialDurationSeconds = a}) .
-  mapping _Nat
+craCredentialDurationSeconds = lens _craCredentialDurationSeconds (\ s a -> s{_craCredentialDurationSeconds = a}) . mapping _Nat
 
 -- | The role alias that points to a role ARN. This allows you to change the role without having to update the device.
 craRoleAlias :: Lens' CreateRoleAlias Text
-craRoleAlias = lens _craRoleAlias (\s a -> s {_craRoleAlias = a})
+craRoleAlias = lens _craRoleAlias (\ s a -> s{_craRoleAlias = a})
 
 -- | The role ARN.
 craRoleARN :: Lens' CreateRoleAlias Text
-craRoleARN = lens _craRoleARN (\s a -> s {_craRoleARN = a})
+craRoleARN = lens _craRoleARN (\ s a -> s{_craRoleARN = a})
 
 instance AWSRequest CreateRoleAlias where
-  type Rs CreateRoleAlias = CreateRoleAliasResponse
-  request = postJSON ioT
-  response =
-    receiveJSON
-      (\s h x ->
-         CreateRoleAliasResponse' <$> (x .?> "roleAliasArn") <*>
-         (x .?> "roleAlias") <*>
-         (pure (fromEnum s)))
+        type Rs CreateRoleAlias = CreateRoleAliasResponse
+        request = postJSON ioT
+        response
+          = receiveJSON
+              (\ s h x ->
+                 CreateRoleAliasResponse' <$>
+                   (x .?> "roleAliasArn") <*> (x .?> "roleAlias") <*>
+                     (pure (fromEnum s)))
 
-instance Hashable CreateRoleAlias
+instance Hashable CreateRoleAlias where
 
-instance NFData CreateRoleAlias
+instance NFData CreateRoleAlias where
 
 instance ToHeaders CreateRoleAlias where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToJSON CreateRoleAlias where
-  toJSON CreateRoleAlias' {..} =
-    object
-      (catMaybes
-         [ ("credentialDurationSeconds" .=) <$> _craCredentialDurationSeconds
-         , Just ("roleArn" .= _craRoleARN)
-         ])
+        toJSON CreateRoleAlias'{..}
+          = object
+              (catMaybes
+                 [("credentialDurationSeconds" .=) <$>
+                    _craCredentialDurationSeconds,
+                  Just ("roleArn" .= _craRoleARN)])
 
 instance ToPath CreateRoleAlias where
-  toPath CreateRoleAlias' {..} = mconcat ["/role-aliases/", toBS _craRoleAlias]
+        toPath CreateRoleAlias'{..}
+          = mconcat ["/role-aliases/", toBS _craRoleAlias]
 
 instance ToQuery CreateRoleAlias where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'createRoleAliasResponse' smart constructor.
 data CreateRoleAliasResponse =
@@ -128,6 +131,7 @@ data CreateRoleAliasResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateRoleAliasResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -137,9 +141,9 @@ data CreateRoleAliasResponse =
 -- * 'crarsRoleAlias' - The role alias.
 --
 -- * 'crarsResponseStatus' - -- | The response status code.
-createRoleAliasResponse ::
-     Int -- ^ 'crarsResponseStatus'
-  -> CreateRoleAliasResponse
+createRoleAliasResponse
+    :: Int -- ^ 'crarsResponseStatus'
+    -> CreateRoleAliasResponse
 createRoleAliasResponse pResponseStatus_ =
   CreateRoleAliasResponse'
     { _crarsRoleAliasARN = Nothing
@@ -147,17 +151,17 @@ createRoleAliasResponse pResponseStatus_ =
     , _crarsResponseStatus = pResponseStatus_
     }
 
+
 -- | The role alias ARN.
 crarsRoleAliasARN :: Lens' CreateRoleAliasResponse (Maybe Text)
-crarsRoleAliasARN = lens _crarsRoleAliasARN (\s a -> s {_crarsRoleAliasARN = a})
+crarsRoleAliasARN = lens _crarsRoleAliasARN (\ s a -> s{_crarsRoleAliasARN = a})
 
 -- | The role alias.
 crarsRoleAlias :: Lens' CreateRoleAliasResponse (Maybe Text)
-crarsRoleAlias = lens _crarsRoleAlias (\s a -> s {_crarsRoleAlias = a})
+crarsRoleAlias = lens _crarsRoleAlias (\ s a -> s{_crarsRoleAlias = a})
 
 -- | -- | The response status code.
 crarsResponseStatus :: Lens' CreateRoleAliasResponse Int
-crarsResponseStatus =
-  lens _crarsResponseStatus (\s a -> s {_crarsResponseStatus = a})
+crarsResponseStatus = lens _crarsResponseStatus (\ s a -> s{_crarsResponseStatus = a})
 
-instance NFData CreateRoleAliasResponse
+instance NFData CreateRoleAliasResponse where

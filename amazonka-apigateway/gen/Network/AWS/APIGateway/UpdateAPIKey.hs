@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.APIGateway.UpdateAPIKey
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,26 +22,29 @@
 --
 --
 module Network.AWS.APIGateway.UpdateAPIKey
+    (
     -- * Creating a Request
-  ( updateAPIKey
-  , UpdateAPIKey
+      updateAPIKey
+    , UpdateAPIKey
     -- * Request Lenses
-  , uakPatchOperations
-  , uakApiKey
+    , uakPatchOperations
+    , uakApiKey
+
     -- * Destructuring the Response
-  , apiKey
-  , APIKey
+    , apiKey
+    , APIKey
     -- * Response Lenses
-  , akEnabled
-  , akValue
-  , akCustomerId
-  , akCreatedDate
-  , akName
-  , akId
-  , akStageKeys
-  , akLastUpdatedDate
-  , akDescription
-  ) where
+    , akEnabled
+    , akValue
+    , akCustomerId
+    , akCreatedDate
+    , akName
+    , akId
+    , akStageKeys
+    , akLastUpdatedDate
+    , akDescription
+    , akTags
+    ) where
 
 import Network.AWS.APIGateway.Types
 import Network.AWS.APIGateway.Types.Product
@@ -60,6 +65,7 @@ data UpdateAPIKey =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateAPIKey' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -67,40 +73,45 @@ data UpdateAPIKey =
 -- * 'uakPatchOperations' - A list of update operations to be applied to the specified resource and in the order specified in this list.
 --
 -- * 'uakApiKey' - [Required] The identifier of the 'ApiKey' resource to be updated.
-updateAPIKey ::
-     Text -- ^ 'uakApiKey'
-  -> UpdateAPIKey
+updateAPIKey
+    :: Text -- ^ 'uakApiKey'
+    -> UpdateAPIKey
 updateAPIKey pApiKey_ =
   UpdateAPIKey' {_uakPatchOperations = Nothing, _uakApiKey = pApiKey_}
 
+
 -- | A list of update operations to be applied to the specified resource and in the order specified in this list.
 uakPatchOperations :: Lens' UpdateAPIKey [PatchOperation]
-uakPatchOperations =
-  lens _uakPatchOperations (\s a -> s {_uakPatchOperations = a}) .
-  _Default . _Coerce
+uakPatchOperations = lens _uakPatchOperations (\ s a -> s{_uakPatchOperations = a}) . _Default . _Coerce
 
 -- | [Required] The identifier of the 'ApiKey' resource to be updated.
 uakApiKey :: Lens' UpdateAPIKey Text
-uakApiKey = lens _uakApiKey (\s a -> s {_uakApiKey = a})
+uakApiKey = lens _uakApiKey (\ s a -> s{_uakApiKey = a})
 
 instance AWSRequest UpdateAPIKey where
-  type Rs UpdateAPIKey = APIKey
-  request = patchJSON apiGateway
-  response = receiveJSON (\s h x -> eitherParseJSON x)
+        type Rs UpdateAPIKey = APIKey
+        request = patchJSON apiGateway
+        response = receiveJSON (\ s h x -> eitherParseJSON x)
 
-instance Hashable UpdateAPIKey
+instance Hashable UpdateAPIKey where
 
-instance NFData UpdateAPIKey
+instance NFData UpdateAPIKey where
 
 instance ToHeaders UpdateAPIKey where
-  toHeaders = const (mconcat ["Accept" =# ("application/json" :: ByteString)])
+        toHeaders
+          = const
+              (mconcat
+                 ["Accept" =# ("application/json" :: ByteString)])
 
 instance ToJSON UpdateAPIKey where
-  toJSON UpdateAPIKey' {..} =
-    object (catMaybes [("patchOperations" .=) <$> _uakPatchOperations])
+        toJSON UpdateAPIKey'{..}
+          = object
+              (catMaybes
+                 [("patchOperations" .=) <$> _uakPatchOperations])
 
 instance ToPath UpdateAPIKey where
-  toPath UpdateAPIKey' {..} = mconcat ["/apikeys/", toBS _uakApiKey]
+        toPath UpdateAPIKey'{..}
+          = mconcat ["/apikeys/", toBS _uakApiKey]
 
 instance ToQuery UpdateAPIKey where
-  toQuery = const mempty
+        toQuery = const mempty

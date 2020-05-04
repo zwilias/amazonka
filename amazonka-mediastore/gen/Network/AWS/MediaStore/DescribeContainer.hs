@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.MediaStore.DescribeContainer
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.MediaStore.DescribeContainer
+    (
     -- * Creating a Request
-  ( describeContainer
-  , DescribeContainer
+      describeContainer
+    , DescribeContainer
     -- * Request Lenses
-  , dContainerName
+    , dContainerName
+
     -- * Destructuring the Response
-  , describeContainerResponse
-  , DescribeContainerResponse
+    , describeContainerResponse
+    , DescribeContainerResponse
     -- * Response Lenses
-  , drsContainer
-  , drsResponseStatus
-  ) where
+    , drsContainer
+    , drsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.MediaStore.Types
@@ -47,49 +51,55 @@ newtype DescribeContainer =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeContainer' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dContainerName' - The name of the container to query.
-describeContainer :: DescribeContainer
+describeContainer
+    :: DescribeContainer
 describeContainer = DescribeContainer' {_dContainerName = Nothing}
+
 
 -- | The name of the container to query.
 dContainerName :: Lens' DescribeContainer (Maybe Text)
-dContainerName = lens _dContainerName (\s a -> s {_dContainerName = a})
+dContainerName = lens _dContainerName (\ s a -> s{_dContainerName = a})
 
 instance AWSRequest DescribeContainer where
-  type Rs DescribeContainer = DescribeContainerResponse
-  request = postJSON mediaStore
-  response =
-    receiveJSON
-      (\s h x ->
-         DescribeContainerResponse' <$> (x .?> "Container") <*>
-         (pure (fromEnum s)))
+        type Rs DescribeContainer = DescribeContainerResponse
+        request = postJSON mediaStore
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DescribeContainerResponse' <$>
+                   (x .?> "Container") <*> (pure (fromEnum s)))
 
-instance Hashable DescribeContainer
+instance Hashable DescribeContainer where
 
-instance NFData DescribeContainer
+instance NFData DescribeContainer where
 
 instance ToHeaders DescribeContainer where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("MediaStore_20170901.DescribeContainer" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("MediaStore_20170901.DescribeContainer" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DescribeContainer where
-  toJSON DescribeContainer' {..} =
-    object (catMaybes [("ContainerName" .=) <$> _dContainerName])
+        toJSON DescribeContainer'{..}
+          = object
+              (catMaybes
+                 [("ContainerName" .=) <$> _dContainerName])
 
 instance ToPath DescribeContainer where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DescribeContainer where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'describeContainerResponse' smart constructor.
 data DescribeContainerResponse =
@@ -99,6 +109,7 @@ data DescribeContainerResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeContainerResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -106,19 +117,20 @@ data DescribeContainerResponse =
 -- * 'drsContainer' - The name of the queried container.
 --
 -- * 'drsResponseStatus' - -- | The response status code.
-describeContainerResponse ::
-     Int -- ^ 'drsResponseStatus'
-  -> DescribeContainerResponse
+describeContainerResponse
+    :: Int -- ^ 'drsResponseStatus'
+    -> DescribeContainerResponse
 describeContainerResponse pResponseStatus_ =
   DescribeContainerResponse'
     {_drsContainer = Nothing, _drsResponseStatus = pResponseStatus_}
 
+
 -- | The name of the queried container.
 drsContainer :: Lens' DescribeContainerResponse (Maybe Container)
-drsContainer = lens _drsContainer (\s a -> s {_drsContainer = a})
+drsContainer = lens _drsContainer (\ s a -> s{_drsContainer = a})
 
 -- | -- | The response status code.
 drsResponseStatus :: Lens' DescribeContainerResponse Int
-drsResponseStatus = lens _drsResponseStatus (\s a -> s {_drsResponseStatus = a})
+drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a})
 
-instance NFData DescribeContainerResponse
+instance NFData DescribeContainerResponse where

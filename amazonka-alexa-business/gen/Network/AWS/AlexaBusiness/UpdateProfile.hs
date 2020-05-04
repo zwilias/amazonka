@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.AlexaBusiness.UpdateProfile
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,26 +22,28 @@
 --
 --
 module Network.AWS.AlexaBusiness.UpdateProfile
+    (
     -- * Creating a Request
-  ( updateProfile
-  , UpdateProfile
+      updateProfile
+    , UpdateProfile
     -- * Request Lenses
-  , upSetupModeDisabled
-  , upPSTNEnabled
-  , upDistanceUnit
-  , upAddress
-  , upProfileARN
-  , upWakeWord
-  , upProfileName
-  , upTemperatureUnit
-  , upTimezone
-  , upMaxVolumeLimit
+    , upSetupModeDisabled
+    , upPSTNEnabled
+    , upDistanceUnit
+    , upAddress
+    , upProfileARN
+    , upWakeWord
+    , upProfileName
+    , upTemperatureUnit
+    , upTimezone
+    , upMaxVolumeLimit
+
     -- * Destructuring the Response
-  , updateProfileResponse
-  , UpdateProfileResponse
+    , updateProfileResponse
+    , UpdateProfileResponse
     -- * Response Lenses
-  , uprsResponseStatus
-  ) where
+    , uprsResponseStatus
+    ) where
 
 import Network.AWS.AlexaBusiness.Types
 import Network.AWS.AlexaBusiness.Types.Product
@@ -64,6 +68,7 @@ data UpdateProfile =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateProfile' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -87,7 +92,8 @@ data UpdateProfile =
 -- * 'upTimezone' - The updated timezone for the room profile.
 --
 -- * 'upMaxVolumeLimit' - The updated maximum volume limit for the room profile.
-updateProfile :: UpdateProfile
+updateProfile
+    :: UpdateProfile
 updateProfile =
   UpdateProfile'
     { _upSetupModeDisabled = Nothing
@@ -102,86 +108,88 @@ updateProfile =
     , _upMaxVolumeLimit = Nothing
     }
 
+
 -- | Whether the setup mode of the profile is enabled.
 upSetupModeDisabled :: Lens' UpdateProfile (Maybe Bool)
-upSetupModeDisabled =
-  lens _upSetupModeDisabled (\s a -> s {_upSetupModeDisabled = a})
+upSetupModeDisabled = lens _upSetupModeDisabled (\ s a -> s{_upSetupModeDisabled = a})
 
 -- | Whether the PSTN setting of the room profile is enabled.
 upPSTNEnabled :: Lens' UpdateProfile (Maybe Bool)
-upPSTNEnabled = lens _upPSTNEnabled (\s a -> s {_upPSTNEnabled = a})
+upPSTNEnabled = lens _upPSTNEnabled (\ s a -> s{_upPSTNEnabled = a})
 
 -- | The updated distance unit for the room profile.
 upDistanceUnit :: Lens' UpdateProfile (Maybe DistanceUnit)
-upDistanceUnit = lens _upDistanceUnit (\s a -> s {_upDistanceUnit = a})
+upDistanceUnit = lens _upDistanceUnit (\ s a -> s{_upDistanceUnit = a})
 
 -- | The updated address for the room profile.
 upAddress :: Lens' UpdateProfile (Maybe Text)
-upAddress = lens _upAddress (\s a -> s {_upAddress = a})
+upAddress = lens _upAddress (\ s a -> s{_upAddress = a})
 
 -- | The ARN of the room profile to update. Required.
 upProfileARN :: Lens' UpdateProfile (Maybe Text)
-upProfileARN = lens _upProfileARN (\s a -> s {_upProfileARN = a})
+upProfileARN = lens _upProfileARN (\ s a -> s{_upProfileARN = a})
 
 -- | The updated wake word for the room profile.
 upWakeWord :: Lens' UpdateProfile (Maybe WakeWord)
-upWakeWord = lens _upWakeWord (\s a -> s {_upWakeWord = a})
+upWakeWord = lens _upWakeWord (\ s a -> s{_upWakeWord = a})
 
 -- | The updated name for the room profile.
 upProfileName :: Lens' UpdateProfile (Maybe Text)
-upProfileName = lens _upProfileName (\s a -> s {_upProfileName = a})
+upProfileName = lens _upProfileName (\ s a -> s{_upProfileName = a})
 
 -- | The updated temperature unit for the room profile.
 upTemperatureUnit :: Lens' UpdateProfile (Maybe TemperatureUnit)
-upTemperatureUnit = lens _upTemperatureUnit (\s a -> s {_upTemperatureUnit = a})
+upTemperatureUnit = lens _upTemperatureUnit (\ s a -> s{_upTemperatureUnit = a})
 
 -- | The updated timezone for the room profile.
 upTimezone :: Lens' UpdateProfile (Maybe Text)
-upTimezone = lens _upTimezone (\s a -> s {_upTimezone = a})
+upTimezone = lens _upTimezone (\ s a -> s{_upTimezone = a})
 
 -- | The updated maximum volume limit for the room profile.
 upMaxVolumeLimit :: Lens' UpdateProfile (Maybe Int)
-upMaxVolumeLimit = lens _upMaxVolumeLimit (\s a -> s {_upMaxVolumeLimit = a})
+upMaxVolumeLimit = lens _upMaxVolumeLimit (\ s a -> s{_upMaxVolumeLimit = a})
 
 instance AWSRequest UpdateProfile where
-  type Rs UpdateProfile = UpdateProfileResponse
-  request = postJSON alexaBusiness
-  response =
-    receiveEmpty (\s h x -> UpdateProfileResponse' <$> (pure (fromEnum s)))
+        type Rs UpdateProfile = UpdateProfileResponse
+        request = postJSON alexaBusiness
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 UpdateProfileResponse' <$> (pure (fromEnum s)))
 
-instance Hashable UpdateProfile
+instance Hashable UpdateProfile where
 
-instance NFData UpdateProfile
+instance NFData UpdateProfile where
 
 instance ToHeaders UpdateProfile where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("AlexaForBusiness.UpdateProfile" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AlexaForBusiness.UpdateProfile" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON UpdateProfile where
-  toJSON UpdateProfile' {..} =
-    object
-      (catMaybes
-         [ ("SetupModeDisabled" .=) <$> _upSetupModeDisabled
-         , ("PSTNEnabled" .=) <$> _upPSTNEnabled
-         , ("DistanceUnit" .=) <$> _upDistanceUnit
-         , ("Address" .=) <$> _upAddress
-         , ("ProfileArn" .=) <$> _upProfileARN
-         , ("WakeWord" .=) <$> _upWakeWord
-         , ("ProfileName" .=) <$> _upProfileName
-         , ("TemperatureUnit" .=) <$> _upTemperatureUnit
-         , ("Timezone" .=) <$> _upTimezone
-         , ("MaxVolumeLimit" .=) <$> _upMaxVolumeLimit
-         ])
+        toJSON UpdateProfile'{..}
+          = object
+              (catMaybes
+                 [("SetupModeDisabled" .=) <$> _upSetupModeDisabled,
+                  ("PSTNEnabled" .=) <$> _upPSTNEnabled,
+                  ("DistanceUnit" .=) <$> _upDistanceUnit,
+                  ("Address" .=) <$> _upAddress,
+                  ("ProfileArn" .=) <$> _upProfileARN,
+                  ("WakeWord" .=) <$> _upWakeWord,
+                  ("ProfileName" .=) <$> _upProfileName,
+                  ("TemperatureUnit" .=) <$> _upTemperatureUnit,
+                  ("Timezone" .=) <$> _upTimezone,
+                  ("MaxVolumeLimit" .=) <$> _upMaxVolumeLimit])
 
 instance ToPath UpdateProfile where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery UpdateProfile where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'updateProfileResponse' smart constructor.
 newtype UpdateProfileResponse =
@@ -190,20 +198,21 @@ newtype UpdateProfileResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateProfileResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'uprsResponseStatus' - -- | The response status code.
-updateProfileResponse ::
-     Int -- ^ 'uprsResponseStatus'
-  -> UpdateProfileResponse
+updateProfileResponse
+    :: Int -- ^ 'uprsResponseStatus'
+    -> UpdateProfileResponse
 updateProfileResponse pResponseStatus_ =
   UpdateProfileResponse' {_uprsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 uprsResponseStatus :: Lens' UpdateProfileResponse Int
-uprsResponseStatus =
-  lens _uprsResponseStatus (\s a -> s {_uprsResponseStatus = a})
+uprsResponseStatus = lens _uprsResponseStatus (\ s a -> s{_uprsResponseStatus = a})
 
-instance NFData UpdateProfileResponse
+instance NFData UpdateProfileResponse where

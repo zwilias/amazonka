@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CloudWatchEvents.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,110 +11,219 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.CloudWatchEvents.Types
+    (
     -- * Service Configuration
-  ( cloudWatchEvents
+      cloudWatchEvents
+
     -- * Errors
-  , _PolicyLengthExceededException
-  , _ConcurrentModificationException
-  , _InvalidEventPatternException
-  , _InternalException
-  , _ResourceNotFoundException
-  , _LimitExceededException
+    , _ManagedRuleException
+    , _PolicyLengthExceededException
+    , _ResourceAlreadyExistsException
+    , _ConcurrentModificationException
+    , _InvalidEventPatternException
+    , _InternalException
+    , _ResourceNotFoundException
+    , _InvalidStateException
+    , _LimitExceededException
+
+    -- * AssignPublicIP
+    , AssignPublicIP (..)
+
+    -- * EventSourceState
+    , EventSourceState (..)
+
+    -- * LaunchType
+    , LaunchType (..)
+
     -- * RuleState
-  , RuleState(..)
+    , RuleState (..)
+
+    -- * AWSVPCConfiguration
+    , AWSVPCConfiguration
+    , awsVPCConfiguration
+    , avcSecurityGroups
+    , avcAssignPublicIP
+    , avcSubnets
+
     -- * BatchArrayProperties
-  , BatchArrayProperties
-  , batchArrayProperties
-  , bapSize
+    , BatchArrayProperties
+    , batchArrayProperties
+    , bapSize
+
     -- * BatchParameters
-  , BatchParameters
-  , batchParameters
-  , bpRetryStrategy
-  , bpArrayProperties
-  , bpJobDefinition
-  , bpJobName
+    , BatchParameters
+    , batchParameters
+    , bpRetryStrategy
+    , bpArrayProperties
+    , bpJobDefinition
+    , bpJobName
+
     -- * BatchRetryStrategy
-  , BatchRetryStrategy
-  , batchRetryStrategy
-  , brsAttempts
+    , BatchRetryStrategy
+    , batchRetryStrategy
+    , brsAttempts
+
+    -- * Condition
+    , Condition
+    , condition
+    , cType
+    , cKey
+    , cValue
+
     -- * EcsParameters
-  , EcsParameters
-  , ecsParameters
-  , epTaskCount
-  , epTaskDefinitionARN
+    , EcsParameters
+    , ecsParameters
+    , epGroup
+    , epPlatformVersion
+    , epLaunchType
+    , epTaskCount
+    , epNetworkConfiguration
+    , epTaskDefinitionARN
+
+    -- * EventBus
+    , EventBus
+    , eventBus
+    , ebARN
+    , ebName
+    , ebPolicy
+
+    -- * EventSource
+    , EventSource
+    , eventSource
+    , esCreationTime
+    , esState
+    , esARN
+    , esCreatedBy
+    , esName
+    , esExpirationTime
+
     -- * InputTransformer
-  , InputTransformer
-  , inputTransformer
-  , itInputPathsMap
-  , itInputTemplate
+    , InputTransformer
+    , inputTransformer
+    , itInputPathsMap
+    , itInputTemplate
+
     -- * KinesisParameters
-  , KinesisParameters
-  , kinesisParameters
-  , kpPartitionKeyPath
+    , KinesisParameters
+    , kinesisParameters
+    , kpPartitionKeyPath
+
+    -- * NetworkConfiguration
+    , NetworkConfiguration
+    , networkConfiguration
+    , ncAwsvpcConfiguration
+
+    -- * PartnerEventSource
+    , PartnerEventSource
+    , partnerEventSource
+    , pesARN
+    , pesName
+
+    -- * PartnerEventSourceAccount
+    , PartnerEventSourceAccount
+    , partnerEventSourceAccount
+    , pesaCreationTime
+    , pesaState
+    , pesaAccount
+    , pesaExpirationTime
+
     -- * PutEventsRequestEntry
-  , PutEventsRequestEntry
-  , putEventsRequestEntry
-  , pereTime
-  , pereDetailType
-  , pereResources
-  , pereSource
-  , pereDetail
+    , PutEventsRequestEntry
+    , putEventsRequestEntry
+    , pereTime
+    , pereDetailType
+    , pereResources
+    , pereEventBusName
+    , pereSource
+    , pereDetail
+
     -- * PutEventsResultEntry
-  , PutEventsResultEntry
-  , putEventsResultEntry
-  , pereErrorCode
-  , pereErrorMessage
-  , pereEventId
+    , PutEventsResultEntry
+    , putEventsResultEntry
+    , pereErrorCode
+    , pereErrorMessage
+    , pereEventId
+
+    -- * PutPartnerEventsRequestEntry
+    , PutPartnerEventsRequestEntry
+    , putPartnerEventsRequestEntry
+    , ppereTime
+    , ppereDetailType
+    , ppereResources
+    , ppereSource
+    , ppereDetail
+
+    -- * PutPartnerEventsResultEntry
+    , PutPartnerEventsResultEntry
+    , putPartnerEventsResultEntry
+    , ppereErrorCode
+    , ppereErrorMessage
+    , ppereEventId
+
     -- * PutTargetsResultEntry
-  , PutTargetsResultEntry
-  , putTargetsResultEntry
-  , ptreTargetId
-  , ptreErrorCode
-  , ptreErrorMessage
+    , PutTargetsResultEntry
+    , putTargetsResultEntry
+    , ptreTargetId
+    , ptreErrorCode
+    , ptreErrorMessage
+
     -- * RemoveTargetsResultEntry
-  , RemoveTargetsResultEntry
-  , removeTargetsResultEntry
-  , rtreTargetId
-  , rtreErrorCode
-  , rtreErrorMessage
+    , RemoveTargetsResultEntry
+    , removeTargetsResultEntry
+    , rtreTargetId
+    , rtreErrorCode
+    , rtreErrorMessage
+
     -- * Rule
-  , Rule
-  , rule
-  , rEventPattern
-  , rState
-  , rARN
-  , rScheduleExpression
-  , rName
-  , rDescription
-  , rRoleARN
+    , Rule
+    , rule
+    , rEventPattern
+    , rState
+    , rARN
+    , rEventBusName
+    , rScheduleExpression
+    , rName
+    , rDescription
+    , rManagedBy
+    , rRoleARN
+
     -- * RunCommandParameters
-  , RunCommandParameters
-  , runCommandParameters
-  , rcpRunCommandTargets
+    , RunCommandParameters
+    , runCommandParameters
+    , rcpRunCommandTargets
+
     -- * RunCommandTarget
-  , RunCommandTarget
-  , runCommandTarget
-  , rctKey
-  , rctValues
+    , RunCommandTarget
+    , runCommandTarget
+    , rctKey
+    , rctValues
+
     -- * SqsParameters
-  , SqsParameters
-  , sqsParameters
-  , spMessageGroupId
+    , SqsParameters
+    , sqsParameters
+    , spMessageGroupId
+
+    -- * Tag
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
+
     -- * Target
-  , Target
-  , target
-  , tRunCommandParameters
-  , tKinesisParameters
-  , tInputTransformer
-  , tSqsParameters
-  , tInput
-  , tBatchParameters
-  , tEcsParameters
-  , tInputPath
-  , tRoleARN
-  , tId
-  , tARN
-  ) where
+    , Target
+    , target
+    , tRunCommandParameters
+    , tKinesisParameters
+    , tInputTransformer
+    , tSqsParameters
+    , tInput
+    , tBatchParameters
+    , tEcsParameters
+    , tInputPath
+    , tRoleARN
+    , tId
+    , tARN
+    ) where
 
 import Network.AWS.CloudWatchEvents.Types.Product
 import Network.AWS.CloudWatchEvents.Types.Sum
@@ -121,7 +231,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
 
--- | API version @2015-10-07@ of the Amazon CloudWatch Events SDK configuration.
+-- | API version @2015-10-07@ of the Amazon EventBridge SDK configuration.
 cloudWatchEvents :: Service
 cloudWatchEvents =
   Service
@@ -159,29 +269,46 @@ cloudWatchEvents =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
+-- | An AWS service created this rule on behalf of your account. That service manages it. If you see this error in response to @DeleteRule@ or @RemoveTargets@ , you can use the @Force@ parameter in those calls to delete the rule or remove targets from the rule. You can't modify these managed rules by using @DisableRule@ , @EnableRule@ , @PutTargets@ , @PutRule@ , @TagResource@ , or @UntagResource@ .
+--
+--
+_ManagedRuleException :: AsError a => Getting (First ServiceError) a ServiceError
+_ManagedRuleException =
+  _MatchServiceError cloudWatchEvents "ManagedRuleException"
+
+
 -- | The event bus policy is too long. For more information, see the limits.
 --
 --
-_PolicyLengthExceededException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_PolicyLengthExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _PolicyLengthExceededException =
   _MatchServiceError cloudWatchEvents "PolicyLengthExceededException"
 
--- | There is concurrent modification on a rule or target.
+
+-- | The resource that you're trying to create already exists.
 --
 --
-_ConcurrentModificationException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceAlreadyExistsException =
+  _MatchServiceError cloudWatchEvents "ResourceAlreadyExistsException"
+
+
+-- | There is concurrent modification on a resource.
+--
+--
+_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
 _ConcurrentModificationException =
   _MatchServiceError cloudWatchEvents "ConcurrentModificationException"
 
--- | The event pattern is not valid.
+
+-- | The event pattern isn't valid.
 --
 --
-_InvalidEventPatternException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidEventPatternException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidEventPatternException =
   _MatchServiceError cloudWatchEvents "InvalidEventPatternException"
+
 
 -- | This exception occurs due to unexpected causes.
 --
@@ -189,18 +316,27 @@ _InvalidEventPatternException =
 _InternalException :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalException = _MatchServiceError cloudWatchEvents "InternalException"
 
--- | An entity that you specified does not exist.
+
+-- | An entity that you specified doesn't exist.
 --
 --
-_ResourceNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceNotFoundException =
   _MatchServiceError cloudWatchEvents "ResourceNotFoundException"
 
--- | You tried to create more rules or add more targets to a rule than is allowed.
+
+-- | The specified state isn't a valid state for an event source.
 --
 --
-_LimitExceededException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidStateException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidStateException =
+  _MatchServiceError cloudWatchEvents "InvalidStateException"
+
+
+-- | You tried to create more resources than is allowed.
+--
+--
+_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException =
   _MatchServiceError cloudWatchEvents "LimitExceededException"
+

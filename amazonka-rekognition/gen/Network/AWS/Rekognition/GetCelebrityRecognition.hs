@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Rekognition.GetCelebrityRecognition
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -32,25 +34,27 @@
 -- Use MaxResults parameter to limit the number of labels returned. If there are more results than specified in @MaxResults@ , the value of @NextToken@ in the operation response contains a pagination token for getting the next set of results. To get the next page of results, call @GetCelebrityDetection@ and populate the @NextToken@ request parameter with the token value returned from the previous call to @GetCelebrityRecognition@ .
 --
 module Network.AWS.Rekognition.GetCelebrityRecognition
+    (
     -- * Creating a Request
-  ( getCelebrityRecognition
-  , GetCelebrityRecognition
+      getCelebrityRecognition
+    , GetCelebrityRecognition
     -- * Request Lenses
-  , gcrNextToken
-  , gcrMaxResults
-  , gcrSortBy
-  , gcrJobId
+    , gcrNextToken
+    , gcrMaxResults
+    , gcrSortBy
+    , gcrJobId
+
     -- * Destructuring the Response
-  , getCelebrityRecognitionResponse
-  , GetCelebrityRecognitionResponse
+    , getCelebrityRecognitionResponse
+    , GetCelebrityRecognitionResponse
     -- * Response Lenses
-  , gcrrsNextToken
-  , gcrrsVideoMetadata
-  , gcrrsStatusMessage
-  , gcrrsCelebrities
-  , gcrrsJobStatus
-  , gcrrsResponseStatus
-  ) where
+    , gcrrsNextToken
+    , gcrrsVideoMetadata
+    , gcrrsStatusMessage
+    , gcrrsCelebrities
+    , gcrrsJobStatus
+    , gcrrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -69,6 +73,7 @@ data GetCelebrityRecognition =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetCelebrityRecognition' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -80,9 +85,9 @@ data GetCelebrityRecognition =
 -- * 'gcrSortBy' - Sort to use for celebrities returned in @Celebrities@ field. Specify @ID@ to sort by the celebrity identifier, specify @TIMESTAMP@ to sort by the time the celebrity was recognized.
 --
 -- * 'gcrJobId' - Job identifier for the required celebrity recognition analysis. You can get the job identifer from a call to @StartCelebrityRecognition@ .
-getCelebrityRecognition ::
-     Text -- ^ 'gcrJobId'
-  -> GetCelebrityRecognition
+getCelebrityRecognition
+    :: Text -- ^ 'gcrJobId'
+    -> GetCelebrityRecognition
 getCelebrityRecognition pJobId_ =
   GetCelebrityRecognition'
     { _gcrNextToken = Nothing
@@ -91,64 +96,65 @@ getCelebrityRecognition pJobId_ =
     , _gcrJobId = pJobId_
     }
 
+
 -- | If the previous response was incomplete (because there is more recognized celebrities to retrieve), Rekognition Video returns a pagination token in the response. You can use this pagination token to retrieve the next set of celebrities.
 gcrNextToken :: Lens' GetCelebrityRecognition (Maybe Text)
-gcrNextToken = lens _gcrNextToken (\s a -> s {_gcrNextToken = a})
+gcrNextToken = lens _gcrNextToken (\ s a -> s{_gcrNextToken = a})
 
 -- | Maximum number of results to return per paginated call. The largest value you can specify is 1000. If you specify a value greater than 1000, a maximum of 1000 results is returned. The default value is 1000.
 gcrMaxResults :: Lens' GetCelebrityRecognition (Maybe Natural)
-gcrMaxResults =
-  lens _gcrMaxResults (\s a -> s {_gcrMaxResults = a}) . mapping _Nat
+gcrMaxResults = lens _gcrMaxResults (\ s a -> s{_gcrMaxResults = a}) . mapping _Nat
 
 -- | Sort to use for celebrities returned in @Celebrities@ field. Specify @ID@ to sort by the celebrity identifier, specify @TIMESTAMP@ to sort by the time the celebrity was recognized.
 gcrSortBy :: Lens' GetCelebrityRecognition (Maybe CelebrityRecognitionSortBy)
-gcrSortBy = lens _gcrSortBy (\s a -> s {_gcrSortBy = a})
+gcrSortBy = lens _gcrSortBy (\ s a -> s{_gcrSortBy = a})
 
 -- | Job identifier for the required celebrity recognition analysis. You can get the job identifer from a call to @StartCelebrityRecognition@ .
 gcrJobId :: Lens' GetCelebrityRecognition Text
-gcrJobId = lens _gcrJobId (\s a -> s {_gcrJobId = a})
+gcrJobId = lens _gcrJobId (\ s a -> s{_gcrJobId = a})
 
 instance AWSRequest GetCelebrityRecognition where
-  type Rs GetCelebrityRecognition = GetCelebrityRecognitionResponse
-  request = postJSON rekognition
-  response =
-    receiveJSON
-      (\s h x ->
-         GetCelebrityRecognitionResponse' <$> (x .?> "NextToken") <*>
-         (x .?> "VideoMetadata") <*>
-         (x .?> "StatusMessage") <*>
-         (x .?> "Celebrities" .!@ mempty) <*>
-         (x .?> "JobStatus") <*>
-         (pure (fromEnum s)))
+        type Rs GetCelebrityRecognition =
+             GetCelebrityRecognitionResponse
+        request = postJSON rekognition
+        response
+          = receiveJSON
+              (\ s h x ->
+                 GetCelebrityRecognitionResponse' <$>
+                   (x .?> "NextToken") <*> (x .?> "VideoMetadata") <*>
+                     (x .?> "StatusMessage")
+                     <*> (x .?> "Celebrities" .!@ mempty)
+                     <*> (x .?> "JobStatus")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable GetCelebrityRecognition
+instance Hashable GetCelebrityRecognition where
 
-instance NFData GetCelebrityRecognition
+instance NFData GetCelebrityRecognition where
 
 instance ToHeaders GetCelebrityRecognition where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("RekognitionService.GetCelebrityRecognition" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("RekognitionService.GetCelebrityRecognition" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON GetCelebrityRecognition where
-  toJSON GetCelebrityRecognition' {..} =
-    object
-      (catMaybes
-         [ ("NextToken" .=) <$> _gcrNextToken
-         , ("MaxResults" .=) <$> _gcrMaxResults
-         , ("SortBy" .=) <$> _gcrSortBy
-         , Just ("JobId" .= _gcrJobId)
-         ])
+        toJSON GetCelebrityRecognition'{..}
+          = object
+              (catMaybes
+                 [("NextToken" .=) <$> _gcrNextToken,
+                  ("MaxResults" .=) <$> _gcrMaxResults,
+                  ("SortBy" .=) <$> _gcrSortBy,
+                  Just ("JobId" .= _gcrJobId)])
 
 instance ToPath GetCelebrityRecognition where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery GetCelebrityRecognition where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'getCelebrityRecognitionResponse' smart constructor.
 data GetCelebrityRecognitionResponse =
@@ -161,6 +167,7 @@ data GetCelebrityRecognitionResponse =
     , _gcrrsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'GetCelebrityRecognitionResponse' with the minimum fields required to make a request.
 --
@@ -177,9 +184,9 @@ data GetCelebrityRecognitionResponse =
 -- * 'gcrrsJobStatus' - The current status of the celebrity recognition job.
 --
 -- * 'gcrrsResponseStatus' - -- | The response status code.
-getCelebrityRecognitionResponse ::
-     Int -- ^ 'gcrrsResponseStatus'
-  -> GetCelebrityRecognitionResponse
+getCelebrityRecognitionResponse
+    :: Int -- ^ 'gcrrsResponseStatus'
+    -> GetCelebrityRecognitionResponse
 getCelebrityRecognitionResponse pResponseStatus_ =
   GetCelebrityRecognitionResponse'
     { _gcrrsNextToken = Nothing
@@ -190,34 +197,29 @@ getCelebrityRecognitionResponse pResponseStatus_ =
     , _gcrrsResponseStatus = pResponseStatus_
     }
 
+
 -- | If the response is truncated, Rekognition Video returns this token that you can use in the subsequent request to retrieve the next set of celebrities.
 gcrrsNextToken :: Lens' GetCelebrityRecognitionResponse (Maybe Text)
-gcrrsNextToken = lens _gcrrsNextToken (\s a -> s {_gcrrsNextToken = a})
+gcrrsNextToken = lens _gcrrsNextToken (\ s a -> s{_gcrrsNextToken = a})
 
 -- | Information about a video that Rekognition Video analyzed. @Videometadata@ is returned in every page of paginated responses from a Rekognition Video operation.
-gcrrsVideoMetadata ::
-     Lens' GetCelebrityRecognitionResponse (Maybe VideoMetadata)
-gcrrsVideoMetadata =
-  lens _gcrrsVideoMetadata (\s a -> s {_gcrrsVideoMetadata = a})
+gcrrsVideoMetadata :: Lens' GetCelebrityRecognitionResponse (Maybe VideoMetadata)
+gcrrsVideoMetadata = lens _gcrrsVideoMetadata (\ s a -> s{_gcrrsVideoMetadata = a})
 
 -- | If the job fails, @StatusMessage@ provides a descriptive error message.
 gcrrsStatusMessage :: Lens' GetCelebrityRecognitionResponse (Maybe Text)
-gcrrsStatusMessage =
-  lens _gcrrsStatusMessage (\s a -> s {_gcrrsStatusMessage = a})
+gcrrsStatusMessage = lens _gcrrsStatusMessage (\ s a -> s{_gcrrsStatusMessage = a})
 
 -- | Array of celebrities recognized in the video.
 gcrrsCelebrities :: Lens' GetCelebrityRecognitionResponse [CelebrityRecognition]
-gcrrsCelebrities =
-  lens _gcrrsCelebrities (\s a -> s {_gcrrsCelebrities = a}) .
-  _Default . _Coerce
+gcrrsCelebrities = lens _gcrrsCelebrities (\ s a -> s{_gcrrsCelebrities = a}) . _Default . _Coerce
 
 -- | The current status of the celebrity recognition job.
 gcrrsJobStatus :: Lens' GetCelebrityRecognitionResponse (Maybe VideoJobStatus)
-gcrrsJobStatus = lens _gcrrsJobStatus (\s a -> s {_gcrrsJobStatus = a})
+gcrrsJobStatus = lens _gcrrsJobStatus (\ s a -> s{_gcrrsJobStatus = a})
 
 -- | -- | The response status code.
 gcrrsResponseStatus :: Lens' GetCelebrityRecognitionResponse Int
-gcrrsResponseStatus =
-  lens _gcrrsResponseStatus (\s a -> s {_gcrrsResponseStatus = a})
+gcrrsResponseStatus = lens _gcrrsResponseStatus (\ s a -> s{_gcrrsResponseStatus = a})
 
-instance NFData GetCelebrityRecognitionResponse
+instance NFData GetCelebrityRecognitionResponse where

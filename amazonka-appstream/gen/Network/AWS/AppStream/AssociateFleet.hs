@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.AppStream.AssociateFleet
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.AppStream.AssociateFleet
+    (
     -- * Creating a Request
-  ( associateFleet
-  , AssociateFleet
+      associateFleet
+    , AssociateFleet
     -- * Request Lenses
-  , afFleetName
-  , afStackName
+    , afFleetName
+    , afStackName
+
     -- * Destructuring the Response
-  , associateFleetResponse
-  , AssociateFleetResponse
+    , associateFleetResponse
+    , AssociateFleetResponse
     -- * Response Lenses
-  , afrsResponseStatus
-  ) where
+    , afrsResponseStatus
+    ) where
 
 import Network.AWS.AppStream.Types
 import Network.AWS.AppStream.Types.Product
@@ -48,6 +52,7 @@ data AssociateFleet =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AssociateFleet' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -55,53 +60,56 @@ data AssociateFleet =
 -- * 'afFleetName' - The name of the fleet.
 --
 -- * 'afStackName' - The name of the stack.
-associateFleet ::
-     Text -- ^ 'afFleetName'
-  -> Text -- ^ 'afStackName'
-  -> AssociateFleet
+associateFleet
+    :: Text -- ^ 'afFleetName'
+    -> Text -- ^ 'afStackName'
+    -> AssociateFleet
 associateFleet pFleetName_ pStackName_ =
   AssociateFleet' {_afFleetName = pFleetName_, _afStackName = pStackName_}
 
+
 -- | The name of the fleet.
 afFleetName :: Lens' AssociateFleet Text
-afFleetName = lens _afFleetName (\s a -> s {_afFleetName = a})
+afFleetName = lens _afFleetName (\ s a -> s{_afFleetName = a})
 
 -- | The name of the stack.
 afStackName :: Lens' AssociateFleet Text
-afStackName = lens _afStackName (\s a -> s {_afStackName = a})
+afStackName = lens _afStackName (\ s a -> s{_afStackName = a})
 
 instance AWSRequest AssociateFleet where
-  type Rs AssociateFleet = AssociateFleetResponse
-  request = postJSON appStream
-  response =
-    receiveEmpty (\s h x -> AssociateFleetResponse' <$> (pure (fromEnum s)))
+        type Rs AssociateFleet = AssociateFleetResponse
+        request = postJSON appStream
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 AssociateFleetResponse' <$> (pure (fromEnum s)))
 
-instance Hashable AssociateFleet
+instance Hashable AssociateFleet where
 
-instance NFData AssociateFleet
+instance NFData AssociateFleet where
 
 instance ToHeaders AssociateFleet where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("PhotonAdminProxyService.AssociateFleet" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("PhotonAdminProxyService.AssociateFleet" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON AssociateFleet where
-  toJSON AssociateFleet' {..} =
-    object
-      (catMaybes
-         [ Just ("FleetName" .= _afFleetName)
-         , Just ("StackName" .= _afStackName)
-         ])
+        toJSON AssociateFleet'{..}
+          = object
+              (catMaybes
+                 [Just ("FleetName" .= _afFleetName),
+                  Just ("StackName" .= _afStackName)])
 
 instance ToPath AssociateFleet where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery AssociateFleet where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'associateFleetResponse' smart constructor.
 newtype AssociateFleetResponse =
@@ -110,20 +118,21 @@ newtype AssociateFleetResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AssociateFleetResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'afrsResponseStatus' - -- | The response status code.
-associateFleetResponse ::
-     Int -- ^ 'afrsResponseStatus'
-  -> AssociateFleetResponse
+associateFleetResponse
+    :: Int -- ^ 'afrsResponseStatus'
+    -> AssociateFleetResponse
 associateFleetResponse pResponseStatus_ =
   AssociateFleetResponse' {_afrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 afrsResponseStatus :: Lens' AssociateFleetResponse Int
-afrsResponseStatus =
-  lens _afrsResponseStatus (\s a -> s {_afrsResponseStatus = a})
+afrsResponseStatus = lens _afrsResponseStatus (\ s a -> s{_afrsResponseStatus = a})
 
-instance NFData AssociateFleetResponse
+instance NFData AssociateFleetResponse where

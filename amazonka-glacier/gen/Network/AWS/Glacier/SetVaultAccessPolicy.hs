@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Glacier.SetVaultAccessPolicy
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,17 +22,19 @@
 --
 --
 module Network.AWS.Glacier.SetVaultAccessPolicy
+    (
     -- * Creating a Request
-  ( setVaultAccessPolicy
-  , SetVaultAccessPolicy
+      setVaultAccessPolicy
+    , SetVaultAccessPolicy
     -- * Request Lenses
-  , svapPolicy
-  , svapAccountId
-  , svapVaultName
+    , svapPolicy
+    , svapAccountId
+    , svapVaultName
+
     -- * Destructuring the Response
-  , setVaultAccessPolicyResponse
-  , SetVaultAccessPolicyResponse
-  ) where
+    , setVaultAccessPolicyResponse
+    , SetVaultAccessPolicyResponse
+    ) where
 
 import Network.AWS.Glacier.Types
 import Network.AWS.Glacier.Types.Product
@@ -52,6 +56,7 @@ data SetVaultAccessPolicy =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SetVaultAccessPolicy' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -61,10 +66,10 @@ data SetVaultAccessPolicy =
 -- * 'svapAccountId' - The @AccountId@ value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.
 --
 -- * 'svapVaultName' - The name of the vault.
-setVaultAccessPolicy ::
-     Text -- ^ 'svapAccountId'
-  -> Text -- ^ 'svapVaultName'
-  -> SetVaultAccessPolicy
+setVaultAccessPolicy
+    :: Text -- ^ 'svapAccountId'
+    -> Text -- ^ 'svapVaultName'
+    -> SetVaultAccessPolicy
 setVaultAccessPolicy pAccountId_ pVaultName_ =
   SetVaultAccessPolicy'
     { _svapPolicy = Nothing
@@ -72,55 +77,56 @@ setVaultAccessPolicy pAccountId_ pVaultName_ =
     , _svapVaultName = pVaultName_
     }
 
+
 -- | The vault access policy as a JSON string.
 svapPolicy :: Lens' SetVaultAccessPolicy (Maybe VaultAccessPolicy)
-svapPolicy = lens _svapPolicy (\s a -> s {_svapPolicy = a})
+svapPolicy = lens _svapPolicy (\ s a -> s{_svapPolicy = a})
 
 -- | The @AccountId@ value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.
 svapAccountId :: Lens' SetVaultAccessPolicy Text
-svapAccountId = lens _svapAccountId (\s a -> s {_svapAccountId = a})
+svapAccountId = lens _svapAccountId (\ s a -> s{_svapAccountId = a})
 
 -- | The name of the vault.
 svapVaultName :: Lens' SetVaultAccessPolicy Text
-svapVaultName = lens _svapVaultName (\s a -> s {_svapVaultName = a})
+svapVaultName = lens _svapVaultName (\ s a -> s{_svapVaultName = a})
 
 instance AWSRequest SetVaultAccessPolicy where
-  type Rs SetVaultAccessPolicy = SetVaultAccessPolicyResponse
-  request = putJSON glacier
-  response = receiveNull SetVaultAccessPolicyResponse'
+        type Rs SetVaultAccessPolicy =
+             SetVaultAccessPolicyResponse
+        request = putJSON glacier
+        response = receiveNull SetVaultAccessPolicyResponse'
 
-instance Hashable SetVaultAccessPolicy
+instance Hashable SetVaultAccessPolicy where
 
-instance NFData SetVaultAccessPolicy
+instance NFData SetVaultAccessPolicy where
 
 instance ToHeaders SetVaultAccessPolicy where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToJSON SetVaultAccessPolicy where
-  toJSON SetVaultAccessPolicy' {..} =
-    object (catMaybes [("policy" .=) <$> _svapPolicy])
+        toJSON SetVaultAccessPolicy'{..}
+          = object (catMaybes [("policy" .=) <$> _svapPolicy])
 
 instance ToPath SetVaultAccessPolicy where
-  toPath SetVaultAccessPolicy' {..} =
-    mconcat
-      [ "/"
-      , toBS _svapAccountId
-      , "/vaults/"
-      , toBS _svapVaultName
-      , "/access-policy"
-      ]
+        toPath SetVaultAccessPolicy'{..}
+          = mconcat
+              ["/", toBS _svapAccountId, "/vaults/",
+               toBS _svapVaultName, "/access-policy"]
 
 instance ToQuery SetVaultAccessPolicy where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'setVaultAccessPolicyResponse' smart constructor.
 data SetVaultAccessPolicyResponse =
   SetVaultAccessPolicyResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SetVaultAccessPolicyResponse' with the minimum fields required to make a request.
 --
-setVaultAccessPolicyResponse :: SetVaultAccessPolicyResponse
+setVaultAccessPolicyResponse
+    :: SetVaultAccessPolicyResponse
 setVaultAccessPolicyResponse = SetVaultAccessPolicyResponse'
 
-instance NFData SetVaultAccessPolicyResponse
+
+instance NFData SetVaultAccessPolicyResponse where

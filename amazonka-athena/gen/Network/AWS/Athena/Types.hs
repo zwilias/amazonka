@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Athena.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,104 +11,188 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.Athena.Types
+    (
     -- * Service Configuration
-  ( athena
+      athena
+
     -- * Errors
-  , _InvalidRequestException
-  , _TooManyRequestsException
-  , _InternalServerException
+    , _InvalidRequestException
+    , _TooManyRequestsException
+    , _InternalServerException
+    , _ResourceNotFoundException
+
     -- * ColumnNullable
-  , ColumnNullable(..)
+    , ColumnNullable (..)
+
     -- * EncryptionOption
-  , EncryptionOption(..)
+    , EncryptionOption (..)
+
     -- * QueryExecutionState
-  , QueryExecutionState(..)
+    , QueryExecutionState (..)
+
+    -- * StatementType
+    , StatementType (..)
+
+    -- * WorkGroupState
+    , WorkGroupState (..)
+
     -- * ColumnInfo
-  , ColumnInfo
-  , columnInfo
-  , ciScale
-  , ciPrecision
-  , ciSchemaName
-  , ciCatalogName
-  , ciCaseSensitive
-  , ciLabel
-  , ciTableName
-  , ciNullable
-  , ciName
-  , ciType
+    , ColumnInfo
+    , columnInfo
+    , ciScale
+    , ciPrecision
+    , ciSchemaName
+    , ciCatalogName
+    , ciCaseSensitive
+    , ciLabel
+    , ciTableName
+    , ciNullable
+    , ciName
+    , ciType
+
     -- * Datum
-  , Datum
-  , datum
-  , dVarCharValue
+    , Datum
+    , datum
+    , dVarCharValue
+
     -- * EncryptionConfiguration
-  , EncryptionConfiguration
-  , encryptionConfiguration
-  , ecKMSKey
-  , ecEncryptionOption
+    , EncryptionConfiguration
+    , encryptionConfiguration
+    , ecKMSKey
+    , ecEncryptionOption
+
     -- * NamedQuery
-  , NamedQuery
-  , namedQuery
-  , nqNamedQueryId
-  , nqDescription
-  , nqName
-  , nqDatabase
-  , nqQueryString
+    , NamedQuery
+    , namedQuery
+    , nqNamedQueryId
+    , nqDescription
+    , nqWorkGroup
+    , nqName
+    , nqDatabase
+    , nqQueryString
+
     -- * QueryExecution
-  , QueryExecution
-  , queryExecution
-  , qeStatus
-  , qeQueryExecutionContext
-  , qeResultConfiguration
-  , qeQuery
-  , qeStatistics
-  , qeQueryExecutionId
+    , QueryExecution
+    , queryExecution
+    , qeStatus
+    , qeQueryExecutionContext
+    , qeResultConfiguration
+    , qeQuery
+    , qeStatementType
+    , qeStatistics
+    , qeQueryExecutionId
+    , qeWorkGroup
+
     -- * QueryExecutionContext
-  , QueryExecutionContext
-  , queryExecutionContext
-  , qecDatabase
+    , QueryExecutionContext
+    , queryExecutionContext
+    , qecDatabase
+
     -- * QueryExecutionStatistics
-  , QueryExecutionStatistics
-  , queryExecutionStatistics
-  , qesEngineExecutionTimeInMillis
-  , qesDataScannedInBytes
+    , QueryExecutionStatistics
+    , queryExecutionStatistics
+    , qesTotalExecutionTimeInMillis
+    , qesEngineExecutionTimeInMillis
+    , qesQueryPlanningTimeInMillis
+    , qesDataScannedInBytes
+    , qesQueryQueueTimeInMillis
+    , qesDataManifestLocation
+    , qesServiceProcessingTimeInMillis
+
     -- * QueryExecutionStatus
-  , QueryExecutionStatus
-  , queryExecutionStatus
-  , qesState
-  , qesStateChangeReason
-  , qesSubmissionDateTime
-  , qesCompletionDateTime
+    , QueryExecutionStatus
+    , queryExecutionStatus
+    , qesState
+    , qesStateChangeReason
+    , qesSubmissionDateTime
+    , qesCompletionDateTime
+
     -- * ResultConfiguration
-  , ResultConfiguration
-  , resultConfiguration
-  , rcEncryptionConfiguration
-  , rcOutputLocation
+    , ResultConfiguration
+    , resultConfiguration
+    , rcEncryptionConfiguration
+    , rcOutputLocation
+
+    -- * ResultConfigurationUpdates
+    , ResultConfigurationUpdates
+    , resultConfigurationUpdates
+    , rcuRemoveOutputLocation
+    , rcuRemoveEncryptionConfiguration
+    , rcuEncryptionConfiguration
+    , rcuOutputLocation
+
     -- * ResultSet
-  , ResultSet
-  , resultSet
-  , rsRows
-  , rsResultSetMetadata
+    , ResultSet
+    , resultSet
+    , rsRows
+    , rsResultSetMetadata
+
     -- * ResultSetMetadata
-  , ResultSetMetadata
-  , resultSetMetadata
-  , rsmColumnInfo
+    , ResultSetMetadata
+    , resultSetMetadata
+    , rsmColumnInfo
+
     -- * Row
-  , Row
-  , row
-  , rowData
+    , Row
+    , row
+    , rowData
+
+    -- * Tag
+    , Tag
+    , tag
+    , tagValue
+    , tagKey
+
     -- * UnprocessedNamedQueryId
-  , UnprocessedNamedQueryId
-  , unprocessedNamedQueryId
-  , unqiNamedQueryId
-  , unqiErrorCode
-  , unqiErrorMessage
+    , UnprocessedNamedQueryId
+    , unprocessedNamedQueryId
+    , unqiNamedQueryId
+    , unqiErrorCode
+    , unqiErrorMessage
+
     -- * UnprocessedQueryExecutionId
-  , UnprocessedQueryExecutionId
-  , unprocessedQueryExecutionId
-  , uqeiErrorCode
-  , uqeiQueryExecutionId
-  , uqeiErrorMessage
-  ) where
+    , UnprocessedQueryExecutionId
+    , unprocessedQueryExecutionId
+    , uqeiErrorCode
+    , uqeiQueryExecutionId
+    , uqeiErrorMessage
+
+    -- * WorkGroup
+    , WorkGroup
+    , workGroup
+    , wgCreationTime
+    , wgState
+    , wgConfiguration
+    , wgDescription
+    , wgName
+
+    -- * WorkGroupConfiguration
+    , WorkGroupConfiguration
+    , workGroupConfiguration
+    , wgcRequesterPaysEnabled
+    , wgcResultConfiguration
+    , wgcBytesScannedCutoffPerQuery
+    , wgcEnforceWorkGroupConfiguration
+    , wgcPublishCloudWatchMetricsEnabled
+
+    -- * WorkGroupConfigurationUpdates
+    , WorkGroupConfigurationUpdates
+    , workGroupConfigurationUpdates
+    , wgcuRequesterPaysEnabled
+    , wgcuResultConfigurationUpdates
+    , wgcuBytesScannedCutoffPerQuery
+    , wgcuRemoveBytesScannedCutoffPerQuery
+    , wgcuEnforceWorkGroupConfiguration
+    , wgcuPublishCloudWatchMetricsEnabled
+
+    -- * WorkGroupSummary
+    , WorkGroupSummary
+    , workGroupSummary
+    , wgsCreationTime
+    , wgsState
+    , wgsName
+    , wgsDescription
+    ) where
 
 import Network.AWS.Athena.Types.Product
 import Network.AWS.Athena.Types.Sum
@@ -153,23 +238,32 @@ athena =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | Indicates that something is wrong with the input to the request. For example, a required parameter may be missing or out of range.
 --
 --
-_InvalidRequestException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidRequestException = _MatchServiceError athena "InvalidRequestException"
+
 
 -- | Indicates that the request was throttled.
 --
 --
-_TooManyRequestsException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
 _TooManyRequestsException = _MatchServiceError athena "TooManyRequestsException"
+
 
 -- | Indicates a platform issue, which may be due to a transient condition or outage.
 --
 --
-_InternalServerException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerException :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalServerException = _MatchServiceError athena "InternalServerException"
+
+
+-- | A resource, such as a workgroup, was not found.
+--
+--
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException =
+  _MatchServiceError athena "ResourceNotFoundException"
+

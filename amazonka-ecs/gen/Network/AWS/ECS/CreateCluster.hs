@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.ECS.CreateCluster
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.ECS.CreateCluster
+    (
     -- * Creating a Request
-  ( createCluster
-  , CreateCluster
+      createCluster
+    , CreateCluster
     -- * Request Lenses
-  , ccClusterName
+    , ccClusterName
+
     -- * Destructuring the Response
-  , createClusterResponse
-  , CreateClusterResponse
+    , createClusterResponse
+    , CreateClusterResponse
     -- * Response Lenses
-  , ccrsCluster
-  , ccrsResponseStatus
-  ) where
+    , ccrsCluster
+    , ccrsResponseStatus
+    ) where
 
 import Network.AWS.ECS.Types
 import Network.AWS.ECS.Types.Product
@@ -47,48 +51,54 @@ newtype CreateCluster =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateCluster' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'ccClusterName' - The name of your cluster. If you do not specify a name for your cluster, you create a cluster named @default@ . Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.
-createCluster :: CreateCluster
+createCluster
+    :: CreateCluster
 createCluster = CreateCluster' {_ccClusterName = Nothing}
+
 
 -- | The name of your cluster. If you do not specify a name for your cluster, you create a cluster named @default@ . Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.
 ccClusterName :: Lens' CreateCluster (Maybe Text)
-ccClusterName = lens _ccClusterName (\s a -> s {_ccClusterName = a})
+ccClusterName = lens _ccClusterName (\ s a -> s{_ccClusterName = a})
 
 instance AWSRequest CreateCluster where
-  type Rs CreateCluster = CreateClusterResponse
-  request = postJSON ecs
-  response =
-    receiveJSON
-      (\s h x ->
-         CreateClusterResponse' <$> (x .?> "cluster") <*> (pure (fromEnum s)))
+        type Rs CreateCluster = CreateClusterResponse
+        request = postJSON ecs
+        response
+          = receiveJSON
+              (\ s h x ->
+                 CreateClusterResponse' <$>
+                   (x .?> "cluster") <*> (pure (fromEnum s)))
 
-instance Hashable CreateCluster
+instance Hashable CreateCluster where
 
-instance NFData CreateCluster
+instance NFData CreateCluster where
 
 instance ToHeaders CreateCluster where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AmazonEC2ContainerServiceV20141113.CreateCluster" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AmazonEC2ContainerServiceV20141113.CreateCluster"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON CreateCluster where
-  toJSON CreateCluster' {..} =
-    object (catMaybes [("clusterName" .=) <$> _ccClusterName])
+        toJSON CreateCluster'{..}
+          = object
+              (catMaybes [("clusterName" .=) <$> _ccClusterName])
 
 instance ToPath CreateCluster where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery CreateCluster where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'createClusterResponse' smart constructor.
 data CreateClusterResponse =
@@ -98,6 +108,7 @@ data CreateClusterResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateClusterResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -105,20 +116,20 @@ data CreateClusterResponse =
 -- * 'ccrsCluster' - The full description of your new cluster.
 --
 -- * 'ccrsResponseStatus' - -- | The response status code.
-createClusterResponse ::
-     Int -- ^ 'ccrsResponseStatus'
-  -> CreateClusterResponse
+createClusterResponse
+    :: Int -- ^ 'ccrsResponseStatus'
+    -> CreateClusterResponse
 createClusterResponse pResponseStatus_ =
   CreateClusterResponse'
     {_ccrsCluster = Nothing, _ccrsResponseStatus = pResponseStatus_}
 
+
 -- | The full description of your new cluster.
 ccrsCluster :: Lens' CreateClusterResponse (Maybe Cluster)
-ccrsCluster = lens _ccrsCluster (\s a -> s {_ccrsCluster = a})
+ccrsCluster = lens _ccrsCluster (\ s a -> s{_ccrsCluster = a})
 
 -- | -- | The response status code.
 ccrsResponseStatus :: Lens' CreateClusterResponse Int
-ccrsResponseStatus =
-  lens _ccrsResponseStatus (\s a -> s {_ccrsResponseStatus = a})
+ccrsResponseStatus = lens _ccrsResponseStatus (\ s a -> s{_ccrsResponseStatus = a})
 
-instance NFData CreateClusterResponse
+instance NFData CreateClusterResponse where

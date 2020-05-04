@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CodeStar.DescribeProject
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,25 +22,28 @@
 --
 --
 module Network.AWS.CodeStar.DescribeProject
+    (
     -- * Creating a Request
-  ( describeProject
-  , DescribeProject
+      describeProject
+    , DescribeProject
     -- * Request Lenses
-  , dId
+    , dId
+
     -- * Destructuring the Response
-  , describeProjectResponse
-  , DescribeProjectResponse
+    , describeProjectResponse
+    , DescribeProjectResponse
     -- * Response Lenses
-  , drsArn
-  , drsProjectTemplateId
-  , drsName
-  , drsId
-  , drsStackId
-  , drsClientRequestToken
-  , drsCreatedTimeStamp
-  , drsDescription
-  , drsResponseStatus
-  ) where
+    , drsStatus
+    , drsArn
+    , drsProjectTemplateId
+    , drsName
+    , drsId
+    , drsStackId
+    , drsClientRequestToken
+    , drsCreatedTimeStamp
+    , drsDescription
+    , drsResponseStatus
+    ) where
 
 import Network.AWS.CodeStar.Types
 import Network.AWS.CodeStar.Types.Product
@@ -54,61 +59,67 @@ newtype DescribeProject =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeProject' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dId' - The ID of the project.
-describeProject ::
-     Text -- ^ 'dId'
-  -> DescribeProject
+describeProject
+    :: Text -- ^ 'dId'
+    -> DescribeProject
 describeProject pId_ = DescribeProject' {_dId = pId_}
+
 
 -- | The ID of the project.
 dId :: Lens' DescribeProject Text
-dId = lens _dId (\s a -> s {_dId = a})
+dId = lens _dId (\ s a -> s{_dId = a})
 
 instance AWSRequest DescribeProject where
-  type Rs DescribeProject = DescribeProjectResponse
-  request = postJSON codeStar
-  response =
-    receiveJSON
-      (\s h x ->
-         DescribeProjectResponse' <$> (x .?> "arn") <*>
-         (x .?> "projectTemplateId") <*>
-         (x .?> "name") <*>
-         (x .?> "id") <*>
-         (x .?> "stackId") <*>
-         (x .?> "clientRequestToken") <*>
-         (x .?> "createdTimeStamp") <*>
-         (x .?> "description") <*>
-         (pure (fromEnum s)))
+        type Rs DescribeProject = DescribeProjectResponse
+        request = postJSON codeStar
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DescribeProjectResponse' <$>
+                   (x .?> "status") <*> (x .?> "arn") <*>
+                     (x .?> "projectTemplateId")
+                     <*> (x .?> "name")
+                     <*> (x .?> "id")
+                     <*> (x .?> "stackId")
+                     <*> (x .?> "clientRequestToken")
+                     <*> (x .?> "createdTimeStamp")
+                     <*> (x .?> "description")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable DescribeProject
+instance Hashable DescribeProject where
 
-instance NFData DescribeProject
+instance NFData DescribeProject where
 
 instance ToHeaders DescribeProject where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("CodeStar_20170419.DescribeProject" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("CodeStar_20170419.DescribeProject" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DescribeProject where
-  toJSON DescribeProject' {..} = object (catMaybes [Just ("id" .= _dId)])
+        toJSON DescribeProject'{..}
+          = object (catMaybes [Just ("id" .= _dId)])
 
 instance ToPath DescribeProject where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DescribeProject where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'describeProjectResponse' smart constructor.
 data DescribeProjectResponse =
   DescribeProjectResponse'
-    { _drsArn                :: !(Maybe Text)
+    { _drsStatus             :: !(Maybe ProjectStatus)
+    , _drsArn                :: !(Maybe Text)
     , _drsProjectTemplateId  :: !(Maybe Text)
     , _drsName               :: !(Maybe (Sensitive Text))
     , _drsId                 :: !(Maybe Text)
@@ -120,9 +131,12 @@ data DescribeProjectResponse =
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeProjectResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'drsStatus' - The project creation or deletion status.
 --
 -- * 'drsArn' - The Amazon Resource Name (ARN) for the project.
 --
@@ -141,12 +155,13 @@ data DescribeProjectResponse =
 -- * 'drsDescription' - The description of the project, if any.
 --
 -- * 'drsResponseStatus' - -- | The response status code.
-describeProjectResponse ::
-     Int -- ^ 'drsResponseStatus'
-  -> DescribeProjectResponse
+describeProjectResponse
+    :: Int -- ^ 'drsResponseStatus'
+    -> DescribeProjectResponse
 describeProjectResponse pResponseStatus_ =
   DescribeProjectResponse'
-    { _drsArn = Nothing
+    { _drsStatus = Nothing
+    , _drsArn = Nothing
     , _drsProjectTemplateId = Nothing
     , _drsName = Nothing
     , _drsId = Nothing
@@ -157,45 +172,45 @@ describeProjectResponse pResponseStatus_ =
     , _drsResponseStatus = pResponseStatus_
     }
 
+
+-- | The project creation or deletion status.
+drsStatus :: Lens' DescribeProjectResponse (Maybe ProjectStatus)
+drsStatus = lens _drsStatus (\ s a -> s{_drsStatus = a})
+
 -- | The Amazon Resource Name (ARN) for the project.
 drsArn :: Lens' DescribeProjectResponse (Maybe Text)
-drsArn = lens _drsArn (\s a -> s {_drsArn = a})
+drsArn = lens _drsArn (\ s a -> s{_drsArn = a})
 
 -- | The ID for the AWS CodeStar project template used to create the project.
 drsProjectTemplateId :: Lens' DescribeProjectResponse (Maybe Text)
-drsProjectTemplateId =
-  lens _drsProjectTemplateId (\s a -> s {_drsProjectTemplateId = a})
+drsProjectTemplateId = lens _drsProjectTemplateId (\ s a -> s{_drsProjectTemplateId = a})
 
 -- | The display name for the project.
 drsName :: Lens' DescribeProjectResponse (Maybe Text)
-drsName = lens _drsName (\s a -> s {_drsName = a}) . mapping _Sensitive
+drsName = lens _drsName (\ s a -> s{_drsName = a}) . mapping _Sensitive
 
 -- | The ID of the project.
 drsId :: Lens' DescribeProjectResponse (Maybe Text)
-drsId = lens _drsId (\s a -> s {_drsId = a})
+drsId = lens _drsId (\ s a -> s{_drsId = a})
 
 -- | The ID of the primary stack in AWS CloudFormation used to generate resources for the project.
 drsStackId :: Lens' DescribeProjectResponse (Maybe Text)
-drsStackId = lens _drsStackId (\s a -> s {_drsStackId = a})
+drsStackId = lens _drsStackId (\ s a -> s{_drsStackId = a})
 
 -- | A user- or system-generated token that identifies the entity that requested project creation.
 drsClientRequestToken :: Lens' DescribeProjectResponse (Maybe Text)
-drsClientRequestToken =
-  lens _drsClientRequestToken (\s a -> s {_drsClientRequestToken = a})
+drsClientRequestToken = lens _drsClientRequestToken (\ s a -> s{_drsClientRequestToken = a})
 
 -- | The date and time the project was created, in timestamp format.
 drsCreatedTimeStamp :: Lens' DescribeProjectResponse (Maybe UTCTime)
-drsCreatedTimeStamp =
-  lens _drsCreatedTimeStamp (\s a -> s {_drsCreatedTimeStamp = a}) .
-  mapping _Time
+drsCreatedTimeStamp = lens _drsCreatedTimeStamp (\ s a -> s{_drsCreatedTimeStamp = a}) . mapping _Time
 
 -- | The description of the project, if any.
 drsDescription :: Lens' DescribeProjectResponse (Maybe Text)
-drsDescription =
-  lens _drsDescription (\s a -> s {_drsDescription = a}) . mapping _Sensitive
+drsDescription = lens _drsDescription (\ s a -> s{_drsDescription = a}) . mapping _Sensitive
 
 -- | -- | The response status code.
 drsResponseStatus :: Lens' DescribeProjectResponse Int
-drsResponseStatus = lens _drsResponseStatus (\s a -> s {_drsResponseStatus = a})
+drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a})
 
-instance NFData DescribeProjectResponse
+instance NFData DescribeProjectResponse where

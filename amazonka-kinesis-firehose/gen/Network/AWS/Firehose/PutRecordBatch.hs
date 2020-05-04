@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Firehose.PutRecordBatch
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -38,20 +40,22 @@
 -- Data records sent to Kinesis Data Firehose are stored for 24 hours from the time they are added to a delivery stream as it attempts to send the records to the destination. If the destination is unreachable for more than 24 hours, the data is no longer available.
 --
 module Network.AWS.Firehose.PutRecordBatch
+    (
     -- * Creating a Request
-  ( putRecordBatch
-  , PutRecordBatch
+      putRecordBatch
+    , PutRecordBatch
     -- * Request Lenses
-  , prbDeliveryStreamName
-  , prbRecords
+    , prbDeliveryStreamName
+    , prbRecords
+
     -- * Destructuring the Response
-  , putRecordBatchResponse
-  , PutRecordBatchResponse
+    , putRecordBatchResponse
+    , PutRecordBatchResponse
     -- * Response Lenses
-  , prbrsResponseStatus
-  , prbrsFailedPutCount
-  , prbrsRequestResponses
-  ) where
+    , prbrsResponseStatus
+    , prbrsFailedPutCount
+    , prbrsRequestResponses
+    ) where
 
 import Network.AWS.Firehose.Types
 import Network.AWS.Firehose.Types.Product
@@ -68,6 +72,7 @@ data PutRecordBatch =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'PutRecordBatch' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -75,60 +80,61 @@ data PutRecordBatch =
 -- * 'prbDeliveryStreamName' - The name of the delivery stream.
 --
 -- * 'prbRecords' - One or more records.
-putRecordBatch ::
-     Text -- ^ 'prbDeliveryStreamName'
-  -> NonEmpty Record -- ^ 'prbRecords'
-  -> PutRecordBatch
+putRecordBatch
+    :: Text -- ^ 'prbDeliveryStreamName'
+    -> NonEmpty Record -- ^ 'prbRecords'
+    -> PutRecordBatch
 putRecordBatch pDeliveryStreamName_ pRecords_ =
   PutRecordBatch'
     { _prbDeliveryStreamName = pDeliveryStreamName_
     , _prbRecords = _List1 # pRecords_
     }
 
+
 -- | The name of the delivery stream.
 prbDeliveryStreamName :: Lens' PutRecordBatch Text
-prbDeliveryStreamName =
-  lens _prbDeliveryStreamName (\s a -> s {_prbDeliveryStreamName = a})
+prbDeliveryStreamName = lens _prbDeliveryStreamName (\ s a -> s{_prbDeliveryStreamName = a})
 
 -- | One or more records.
 prbRecords :: Lens' PutRecordBatch (NonEmpty Record)
-prbRecords = lens _prbRecords (\s a -> s {_prbRecords = a}) . _List1
+prbRecords = lens _prbRecords (\ s a -> s{_prbRecords = a}) . _List1
 
 instance AWSRequest PutRecordBatch where
-  type Rs PutRecordBatch = PutRecordBatchResponse
-  request = postJSON firehose
-  response =
-    receiveJSON
-      (\s h x ->
-         PutRecordBatchResponse' <$> (pure (fromEnum s)) <*>
-         (x .:> "FailedPutCount") <*>
-         (x .:> "RequestResponses"))
+        type Rs PutRecordBatch = PutRecordBatchResponse
+        request = postJSON firehose
+        response
+          = receiveJSON
+              (\ s h x ->
+                 PutRecordBatchResponse' <$>
+                   (pure (fromEnum s)) <*> (x .:> "FailedPutCount") <*>
+                     (x .:> "RequestResponses"))
 
-instance Hashable PutRecordBatch
+instance Hashable PutRecordBatch where
 
-instance NFData PutRecordBatch
+instance NFData PutRecordBatch where
 
 instance ToHeaders PutRecordBatch where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("Firehose_20150804.PutRecordBatch" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("Firehose_20150804.PutRecordBatch" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON PutRecordBatch where
-  toJSON PutRecordBatch' {..} =
-    object
-      (catMaybes
-         [ Just ("DeliveryStreamName" .= _prbDeliveryStreamName)
-         , Just ("Records" .= _prbRecords)
-         ])
+        toJSON PutRecordBatch'{..}
+          = object
+              (catMaybes
+                 [Just
+                    ("DeliveryStreamName" .= _prbDeliveryStreamName),
+                  Just ("Records" .= _prbRecords)])
 
 instance ToPath PutRecordBatch where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery PutRecordBatch where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'putRecordBatchResponse' smart constructor.
 data PutRecordBatchResponse =
@@ -139,6 +145,7 @@ data PutRecordBatchResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'PutRecordBatchResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -148,11 +155,11 @@ data PutRecordBatchResponse =
 -- * 'prbrsFailedPutCount' - The number of records that might have failed processing.
 --
 -- * 'prbrsRequestResponses' - The results array. For each record, the index of the response element is the same as the index used in the request array.
-putRecordBatchResponse ::
-     Int -- ^ 'prbrsResponseStatus'
-  -> Natural -- ^ 'prbrsFailedPutCount'
-  -> NonEmpty PutRecordBatchResponseEntry -- ^ 'prbrsRequestResponses'
-  -> PutRecordBatchResponse
+putRecordBatchResponse
+    :: Int -- ^ 'prbrsResponseStatus'
+    -> Natural -- ^ 'prbrsFailedPutCount'
+    -> NonEmpty PutRecordBatchResponseEntry -- ^ 'prbrsRequestResponses'
+    -> PutRecordBatchResponse
 putRecordBatchResponse pResponseStatus_ pFailedPutCount_ pRequestResponses_ =
   PutRecordBatchResponse'
     { _prbrsResponseStatus = pResponseStatus_
@@ -160,20 +167,17 @@ putRecordBatchResponse pResponseStatus_ pFailedPutCount_ pRequestResponses_ =
     , _prbrsRequestResponses = _List1 # pRequestResponses_
     }
 
+
 -- | -- | The response status code.
 prbrsResponseStatus :: Lens' PutRecordBatchResponse Int
-prbrsResponseStatus =
-  lens _prbrsResponseStatus (\s a -> s {_prbrsResponseStatus = a})
+prbrsResponseStatus = lens _prbrsResponseStatus (\ s a -> s{_prbrsResponseStatus = a})
 
 -- | The number of records that might have failed processing.
 prbrsFailedPutCount :: Lens' PutRecordBatchResponse Natural
-prbrsFailedPutCount =
-  lens _prbrsFailedPutCount (\s a -> s {_prbrsFailedPutCount = a}) . _Nat
+prbrsFailedPutCount = lens _prbrsFailedPutCount (\ s a -> s{_prbrsFailedPutCount = a}) . _Nat
 
 -- | The results array. For each record, the index of the response element is the same as the index used in the request array.
-prbrsRequestResponses ::
-     Lens' PutRecordBatchResponse (NonEmpty PutRecordBatchResponseEntry)
-prbrsRequestResponses =
-  lens _prbrsRequestResponses (\s a -> s {_prbrsRequestResponses = a}) . _List1
+prbrsRequestResponses :: Lens' PutRecordBatchResponse (NonEmpty PutRecordBatchResponseEntry)
+prbrsRequestResponses = lens _prbrsRequestResponses (\ s a -> s{_prbrsRequestResponses = a}) . _List1
 
-instance NFData PutRecordBatchResponse
+instance NFData PutRecordBatchResponse where

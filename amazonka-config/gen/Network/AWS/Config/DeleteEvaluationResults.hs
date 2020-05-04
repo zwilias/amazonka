@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Config.DeleteEvaluationResults
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,17 +22,19 @@
 --
 --
 module Network.AWS.Config.DeleteEvaluationResults
+    (
     -- * Creating a Request
-  ( deleteEvaluationResults
-  , DeleteEvaluationResults
+      deleteEvaluationResults
+    , DeleteEvaluationResults
     -- * Request Lenses
-  , derConfigRuleName
+    , derConfigRuleName
+
     -- * Destructuring the Response
-  , deleteEvaluationResultsResponse
-  , DeleteEvaluationResultsResponse
+    , deleteEvaluationResultsResponse
+    , DeleteEvaluationResultsResponse
     -- * Response Lenses
-  , derrsResponseStatus
-  ) where
+    , derrsResponseStatus
+    ) where
 
 import Network.AWS.Config.Types
 import Network.AWS.Config.Types.Product
@@ -50,50 +54,58 @@ newtype DeleteEvaluationResults =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteEvaluationResults' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'derConfigRuleName' - The name of the AWS Config rule for which you want to delete the evaluation results.
-deleteEvaluationResults ::
-     Text -- ^ 'derConfigRuleName'
-  -> DeleteEvaluationResults
+deleteEvaluationResults
+    :: Text -- ^ 'derConfigRuleName'
+    -> DeleteEvaluationResults
 deleteEvaluationResults pConfigRuleName_ =
   DeleteEvaluationResults' {_derConfigRuleName = pConfigRuleName_}
 
+
 -- | The name of the AWS Config rule for which you want to delete the evaluation results.
 derConfigRuleName :: Lens' DeleteEvaluationResults Text
-derConfigRuleName = lens _derConfigRuleName (\s a -> s {_derConfigRuleName = a})
+derConfigRuleName = lens _derConfigRuleName (\ s a -> s{_derConfigRuleName = a})
 
 instance AWSRequest DeleteEvaluationResults where
-  type Rs DeleteEvaluationResults = DeleteEvaluationResultsResponse
-  request = postJSON config
-  response =
-    receiveEmpty
-      (\s h x -> DeleteEvaluationResultsResponse' <$> (pure (fromEnum s)))
+        type Rs DeleteEvaluationResults =
+             DeleteEvaluationResultsResponse
+        request = postJSON config
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 DeleteEvaluationResultsResponse' <$>
+                   (pure (fromEnum s)))
 
-instance Hashable DeleteEvaluationResults
+instance Hashable DeleteEvaluationResults where
 
-instance NFData DeleteEvaluationResults
+instance NFData DeleteEvaluationResults where
 
 instance ToHeaders DeleteEvaluationResults where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("StarlingDoveService.DeleteEvaluationResults" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("StarlingDoveService.DeleteEvaluationResults" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DeleteEvaluationResults where
-  toJSON DeleteEvaluationResults' {..} =
-    object (catMaybes [Just ("ConfigRuleName" .= _derConfigRuleName)])
+        toJSON DeleteEvaluationResults'{..}
+          = object
+              (catMaybes
+                 [Just ("ConfigRuleName" .= _derConfigRuleName)])
 
 instance ToPath DeleteEvaluationResults where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DeleteEvaluationResults where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | The output when you delete the evaluation results for the specified AWS Config rule.
 --
@@ -106,20 +118,21 @@ newtype DeleteEvaluationResultsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteEvaluationResultsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'derrsResponseStatus' - -- | The response status code.
-deleteEvaluationResultsResponse ::
-     Int -- ^ 'derrsResponseStatus'
-  -> DeleteEvaluationResultsResponse
+deleteEvaluationResultsResponse
+    :: Int -- ^ 'derrsResponseStatus'
+    -> DeleteEvaluationResultsResponse
 deleteEvaluationResultsResponse pResponseStatus_ =
   DeleteEvaluationResultsResponse' {_derrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 derrsResponseStatus :: Lens' DeleteEvaluationResultsResponse Int
-derrsResponseStatus =
-  lens _derrsResponseStatus (\s a -> s {_derrsResponseStatus = a})
+derrsResponseStatus = lens _derrsResponseStatus (\ s a -> s{_derrsResponseStatus = a})
 
-instance NFData DeleteEvaluationResultsResponse
+instance NFData DeleteEvaluationResultsResponse where

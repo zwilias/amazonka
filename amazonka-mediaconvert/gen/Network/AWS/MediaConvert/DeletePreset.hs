@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.MediaConvert.DeletePreset
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,17 +20,19 @@
 --
 -- Permanently delete a preset you have created.
 module Network.AWS.MediaConvert.DeletePreset
+    (
     -- * Creating a Request
-  ( deletePreset
-  , DeletePreset
+      deletePreset
+    , DeletePreset
     -- * Request Lenses
-  , dpName
+    , dpName
+
     -- * Destructuring the Response
-  , deletePresetResponse
-  , DeletePresetResponse
+    , deletePresetResponse
+    , DeletePresetResponse
     -- * Response Lenses
-  , dprsResponseStatus
-  ) where
+    , dprsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.MediaConvert.Types
@@ -44,40 +48,47 @@ newtype DeletePreset =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeletePreset' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dpName' - The name of the preset to be deleted.
-deletePreset ::
-     Text -- ^ 'dpName'
-  -> DeletePreset
+deletePreset
+    :: Text -- ^ 'dpName'
+    -> DeletePreset
 deletePreset pName_ = DeletePreset' {_dpName = pName_}
+
 
 -- | The name of the preset to be deleted.
 dpName :: Lens' DeletePreset Text
-dpName = lens _dpName (\s a -> s {_dpName = a})
+dpName = lens _dpName (\ s a -> s{_dpName = a})
 
 instance AWSRequest DeletePreset where
-  type Rs DeletePreset = DeletePresetResponse
-  request = delete mediaConvert
-  response =
-    receiveEmpty (\s h x -> DeletePresetResponse' <$> (pure (fromEnum s)))
+        type Rs DeletePreset = DeletePresetResponse
+        request = delete mediaConvert
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 DeletePresetResponse' <$> (pure (fromEnum s)))
 
-instance Hashable DeletePreset
+instance Hashable DeletePreset where
 
-instance NFData DeletePreset
+instance NFData DeletePreset where
 
 instance ToHeaders DeletePreset where
-  toHeaders =
-    const
-      (mconcat ["Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)])
+        toHeaders
+          = const
+              (mconcat
+                 ["Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToPath DeletePreset where
-  toPath DeletePreset' {..} = mconcat ["/2017-08-29/presets/", toBS _dpName]
+        toPath DeletePreset'{..}
+          = mconcat ["/2017-08-29/presets/", toBS _dpName]
 
 instance ToQuery DeletePreset where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'deletePresetResponse' smart constructor.
 newtype DeletePresetResponse =
@@ -86,20 +97,21 @@ newtype DeletePresetResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeletePresetResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dprsResponseStatus' - -- | The response status code.
-deletePresetResponse ::
-     Int -- ^ 'dprsResponseStatus'
-  -> DeletePresetResponse
+deletePresetResponse
+    :: Int -- ^ 'dprsResponseStatus'
+    -> DeletePresetResponse
 deletePresetResponse pResponseStatus_ =
   DeletePresetResponse' {_dprsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 dprsResponseStatus :: Lens' DeletePresetResponse Int
-dprsResponseStatus =
-  lens _dprsResponseStatus (\s a -> s {_dprsResponseStatus = a})
+dprsResponseStatus = lens _dprsResponseStatus (\ s a -> s{_dprsResponseStatus = a})
 
-instance NFData DeletePresetResponse
+instance NFData DeletePresetResponse where

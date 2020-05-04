@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.DeviceFarm.ListInstanceProfiles
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -19,25 +21,30 @@
 -- Returns information about all the instance profiles in an AWS account.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.DeviceFarm.ListInstanceProfiles
+    (
     -- * Creating a Request
-  ( listInstanceProfiles
-  , ListInstanceProfiles
+      listInstanceProfiles
+    , ListInstanceProfiles
     -- * Request Lenses
-  , lipNextToken
-  , lipMaxResults
+    , lipNextToken
+    , lipMaxResults
+
     -- * Destructuring the Response
-  , listInstanceProfilesResponse
-  , ListInstanceProfilesResponse
+    , listInstanceProfilesResponse
+    , ListInstanceProfilesResponse
     -- * Response Lenses
-  , liprsNextToken
-  , liprsInstanceProfiles
-  , liprsResponseStatus
-  ) where
+    , liprsNextToken
+    , liprsInstanceProfiles
+    , liprsResponseStatus
+    ) where
 
 import Network.AWS.DeviceFarm.Types
 import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -50,61 +57,73 @@ data ListInstanceProfiles =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListInstanceProfiles' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'lipNextToken' - An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 --
--- * 'lipMaxResults' - An integer specifying the maximum number of items you want to return in the API response.
-listInstanceProfiles :: ListInstanceProfiles
+-- * 'lipMaxResults' - An integer that specifies the maximum number of items you want to return in the API response.
+listInstanceProfiles
+    :: ListInstanceProfiles
 listInstanceProfiles =
   ListInstanceProfiles' {_lipNextToken = Nothing, _lipMaxResults = Nothing}
 
+
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 lipNextToken :: Lens' ListInstanceProfiles (Maybe Text)
-lipNextToken = lens _lipNextToken (\s a -> s {_lipNextToken = a})
+lipNextToken = lens _lipNextToken (\ s a -> s{_lipNextToken = a})
 
--- | An integer specifying the maximum number of items you want to return in the API response.
+-- | An integer that specifies the maximum number of items you want to return in the API response.
 lipMaxResults :: Lens' ListInstanceProfiles (Maybe Int)
-lipMaxResults = lens _lipMaxResults (\s a -> s {_lipMaxResults = a})
+lipMaxResults = lens _lipMaxResults (\ s a -> s{_lipMaxResults = a})
+
+instance AWSPager ListInstanceProfiles where
+        page rq rs
+          | stop (rs ^. liprsNextToken) = Nothing
+          | stop (rs ^. liprsInstanceProfiles) = Nothing
+          | otherwise =
+            Just $ rq & lipNextToken .~ rs ^. liprsNextToken
 
 instance AWSRequest ListInstanceProfiles where
-  type Rs ListInstanceProfiles = ListInstanceProfilesResponse
-  request = postJSON deviceFarm
-  response =
-    receiveJSON
-      (\s h x ->
-         ListInstanceProfilesResponse' <$> (x .?> "nextToken") <*>
-         (x .?> "instanceProfiles" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs ListInstanceProfiles =
+             ListInstanceProfilesResponse
+        request = postJSON deviceFarm
+        response
+          = receiveJSON
+              (\ s h x ->
+                 ListInstanceProfilesResponse' <$>
+                   (x .?> "nextToken") <*>
+                     (x .?> "instanceProfiles" .!@ mempty)
+                     <*> (pure (fromEnum s)))
 
-instance Hashable ListInstanceProfiles
+instance Hashable ListInstanceProfiles where
 
-instance NFData ListInstanceProfiles
+instance NFData ListInstanceProfiles where
 
 instance ToHeaders ListInstanceProfiles where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("DeviceFarm_20150623.ListInstanceProfiles" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("DeviceFarm_20150623.ListInstanceProfiles" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON ListInstanceProfiles where
-  toJSON ListInstanceProfiles' {..} =
-    object
-      (catMaybes
-         [ ("nextToken" .=) <$> _lipNextToken
-         , ("maxResults" .=) <$> _lipMaxResults
-         ])
+        toJSON ListInstanceProfiles'{..}
+          = object
+              (catMaybes
+                 [("nextToken" .=) <$> _lipNextToken,
+                  ("maxResults" .=) <$> _lipMaxResults])
 
 instance ToPath ListInstanceProfiles where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery ListInstanceProfiles where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'listInstanceProfilesResponse' smart constructor.
 data ListInstanceProfilesResponse =
@@ -115,18 +134,19 @@ data ListInstanceProfilesResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListInstanceProfilesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'liprsNextToken' - An identifier that can be used in the next call to this operation to return the next set of items in the list.
 --
--- * 'liprsInstanceProfiles' - An object containing information about your instance profiles.
+-- * 'liprsInstanceProfiles' - An object that contains information about your instance profiles.
 --
 -- * 'liprsResponseStatus' - -- | The response status code.
-listInstanceProfilesResponse ::
-     Int -- ^ 'liprsResponseStatus'
-  -> ListInstanceProfilesResponse
+listInstanceProfilesResponse
+    :: Int -- ^ 'liprsResponseStatus'
+    -> ListInstanceProfilesResponse
 listInstanceProfilesResponse pResponseStatus_ =
   ListInstanceProfilesResponse'
     { _liprsNextToken = Nothing
@@ -134,19 +154,17 @@ listInstanceProfilesResponse pResponseStatus_ =
     , _liprsResponseStatus = pResponseStatus_
     }
 
+
 -- | An identifier that can be used in the next call to this operation to return the next set of items in the list.
 liprsNextToken :: Lens' ListInstanceProfilesResponse (Maybe Text)
-liprsNextToken = lens _liprsNextToken (\s a -> s {_liprsNextToken = a})
+liprsNextToken = lens _liprsNextToken (\ s a -> s{_liprsNextToken = a})
 
--- | An object containing information about your instance profiles.
+-- | An object that contains information about your instance profiles.
 liprsInstanceProfiles :: Lens' ListInstanceProfilesResponse [InstanceProfile]
-liprsInstanceProfiles =
-  lens _liprsInstanceProfiles (\s a -> s {_liprsInstanceProfiles = a}) .
-  _Default . _Coerce
+liprsInstanceProfiles = lens _liprsInstanceProfiles (\ s a -> s{_liprsInstanceProfiles = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 liprsResponseStatus :: Lens' ListInstanceProfilesResponse Int
-liprsResponseStatus =
-  lens _liprsResponseStatus (\s a -> s {_liprsResponseStatus = a})
+liprsResponseStatus = lens _liprsResponseStatus (\ s a -> s{_liprsResponseStatus = a})
 
-instance NFData ListInstanceProfilesResponse
+instance NFData ListInstanceProfilesResponse where

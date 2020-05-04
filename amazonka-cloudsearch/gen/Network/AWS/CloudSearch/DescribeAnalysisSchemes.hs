@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CloudSearch.DescribeAnalysisSchemes
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,20 +22,22 @@
 --
 --
 module Network.AWS.CloudSearch.DescribeAnalysisSchemes
+    (
     -- * Creating a Request
-  ( describeAnalysisSchemes
-  , DescribeAnalysisSchemes
+      describeAnalysisSchemes
+    , DescribeAnalysisSchemes
     -- * Request Lenses
-  , dassDeployed
-  , dassAnalysisSchemeNames
-  , dassDomainName
+    , dassDeployed
+    , dassAnalysisSchemeNames
+    , dassDomainName
+
     -- * Destructuring the Response
-  , describeAnalysisSchemesResponse
-  , DescribeAnalysisSchemesResponse
+    , describeAnalysisSchemesResponse
+    , DescribeAnalysisSchemesResponse
     -- * Response Lenses
-  , dasrsResponseStatus
-  , dasrsAnalysisSchemes
-  ) where
+    , dasrsResponseStatus
+    , dasrsAnalysisSchemes
+    ) where
 
 import Network.AWS.CloudSearch.Types
 import Network.AWS.CloudSearch.Types.Product
@@ -55,6 +59,7 @@ data DescribeAnalysisSchemes =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeAnalysisSchemes' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -64,9 +69,9 @@ data DescribeAnalysisSchemes =
 -- * 'dassAnalysisSchemeNames' - The analysis schemes you want to describe.
 --
 -- * 'dassDomainName' - The name of the domain you want to describe.
-describeAnalysisSchemes ::
-     Text -- ^ 'dassDomainName'
-  -> DescribeAnalysisSchemes
+describeAnalysisSchemes
+    :: Text -- ^ 'dassDomainName'
+    -> DescribeAnalysisSchemes
 describeAnalysisSchemes pDomainName_ =
   DescribeAnalysisSchemes'
     { _dassDeployed = Nothing
@@ -74,50 +79,52 @@ describeAnalysisSchemes pDomainName_ =
     , _dassDomainName = pDomainName_
     }
 
+
 -- | Whether to display the deployed configuration (@true@ ) or include any pending changes (@false@ ). Defaults to @false@ .
 dassDeployed :: Lens' DescribeAnalysisSchemes (Maybe Bool)
-dassDeployed = lens _dassDeployed (\s a -> s {_dassDeployed = a})
+dassDeployed = lens _dassDeployed (\ s a -> s{_dassDeployed = a})
 
 -- | The analysis schemes you want to describe.
 dassAnalysisSchemeNames :: Lens' DescribeAnalysisSchemes [Text]
-dassAnalysisSchemeNames =
-  lens _dassAnalysisSchemeNames (\s a -> s {_dassAnalysisSchemeNames = a}) .
-  _Default . _Coerce
+dassAnalysisSchemeNames = lens _dassAnalysisSchemeNames (\ s a -> s{_dassAnalysisSchemeNames = a}) . _Default . _Coerce
 
 -- | The name of the domain you want to describe.
 dassDomainName :: Lens' DescribeAnalysisSchemes Text
-dassDomainName = lens _dassDomainName (\s a -> s {_dassDomainName = a})
+dassDomainName = lens _dassDomainName (\ s a -> s{_dassDomainName = a})
 
 instance AWSRequest DescribeAnalysisSchemes where
-  type Rs DescribeAnalysisSchemes = DescribeAnalysisSchemesResponse
-  request = postQuery cloudSearch
-  response =
-    receiveXMLWrapper
-      "DescribeAnalysisSchemesResult"
-      (\s h x ->
-         DescribeAnalysisSchemesResponse' <$> (pure (fromEnum s)) <*>
-         (x .@? "AnalysisSchemes" .!@ mempty >>= parseXMLList "member"))
+        type Rs DescribeAnalysisSchemes =
+             DescribeAnalysisSchemesResponse
+        request = postQuery cloudSearch
+        response
+          = receiveXMLWrapper "DescribeAnalysisSchemesResult"
+              (\ s h x ->
+                 DescribeAnalysisSchemesResponse' <$>
+                   (pure (fromEnum s)) <*>
+                     (x .@? "AnalysisSchemes" .!@ mempty >>=
+                        parseXMLList "member"))
 
-instance Hashable DescribeAnalysisSchemes
+instance Hashable DescribeAnalysisSchemes where
 
-instance NFData DescribeAnalysisSchemes
+instance NFData DescribeAnalysisSchemes where
 
 instance ToHeaders DescribeAnalysisSchemes where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath DescribeAnalysisSchemes where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DescribeAnalysisSchemes where
-  toQuery DescribeAnalysisSchemes' {..} =
-    mconcat
-      [ "Action" =: ("DescribeAnalysisSchemes" :: ByteString)
-      , "Version" =: ("2013-01-01" :: ByteString)
-      , "Deployed" =: _dassDeployed
-      , "AnalysisSchemeNames" =:
-        toQuery (toQueryList "member" <$> _dassAnalysisSchemeNames)
-      , "DomainName" =: _dassDomainName
-      ]
+        toQuery DescribeAnalysisSchemes'{..}
+          = mconcat
+              ["Action" =:
+                 ("DescribeAnalysisSchemes" :: ByteString),
+               "Version" =: ("2013-01-01" :: ByteString),
+               "Deployed" =: _dassDeployed,
+               "AnalysisSchemeNames" =:
+                 toQuery
+                   (toQueryList "member" <$> _dassAnalysisSchemeNames),
+               "DomainName" =: _dassDomainName]
 
 -- | The result of a @DescribeAnalysisSchemes@ request. Contains the analysis schemes configured for the domain specified in the request.
 --
@@ -131,6 +138,7 @@ data DescribeAnalysisSchemesResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeAnalysisSchemesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -138,22 +146,20 @@ data DescribeAnalysisSchemesResponse =
 -- * 'dasrsResponseStatus' - -- | The response status code.
 --
 -- * 'dasrsAnalysisSchemes' - The analysis scheme descriptions.
-describeAnalysisSchemesResponse ::
-     Int -- ^ 'dasrsResponseStatus'
-  -> DescribeAnalysisSchemesResponse
+describeAnalysisSchemesResponse
+    :: Int -- ^ 'dasrsResponseStatus'
+    -> DescribeAnalysisSchemesResponse
 describeAnalysisSchemesResponse pResponseStatus_ =
   DescribeAnalysisSchemesResponse'
     {_dasrsResponseStatus = pResponseStatus_, _dasrsAnalysisSchemes = mempty}
 
+
 -- | -- | The response status code.
 dasrsResponseStatus :: Lens' DescribeAnalysisSchemesResponse Int
-dasrsResponseStatus =
-  lens _dasrsResponseStatus (\s a -> s {_dasrsResponseStatus = a})
+dasrsResponseStatus = lens _dasrsResponseStatus (\ s a -> s{_dasrsResponseStatus = a})
 
 -- | The analysis scheme descriptions.
-dasrsAnalysisSchemes ::
-     Lens' DescribeAnalysisSchemesResponse [AnalysisSchemeStatus]
-dasrsAnalysisSchemes =
-  lens _dasrsAnalysisSchemes (\s a -> s {_dasrsAnalysisSchemes = a}) . _Coerce
+dasrsAnalysisSchemes :: Lens' DescribeAnalysisSchemesResponse [AnalysisSchemeStatus]
+dasrsAnalysisSchemes = lens _dasrsAnalysisSchemes (\ s a -> s{_dasrsAnalysisSchemes = a}) . _Coerce
 
-instance NFData DescribeAnalysisSchemesResponse
+instance NFData DescribeAnalysisSchemesResponse where

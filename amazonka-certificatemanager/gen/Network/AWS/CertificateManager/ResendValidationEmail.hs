@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CertificateManager.ResendValidationEmail
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,17 +22,19 @@
 --
 --
 module Network.AWS.CertificateManager.ResendValidationEmail
+    (
     -- * Creating a Request
-  ( resendValidationEmail
-  , ResendValidationEmail
+      resendValidationEmail
+    , ResendValidationEmail
     -- * Request Lenses
-  , rveCertificateARN
-  , rveDomain
-  , rveValidationDomain
+    , rveCertificateARN
+    , rveDomain
+    , rveValidationDomain
+
     -- * Destructuring the Response
-  , resendValidationEmailResponse
-  , ResendValidationEmailResponse
-  ) where
+    , resendValidationEmailResponse
+    , ResendValidationEmailResponse
+    ) where
 
 import Network.AWS.CertificateManager.Types
 import Network.AWS.CertificateManager.Types.Product
@@ -48,6 +52,7 @@ data ResendValidationEmail =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ResendValidationEmail' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -57,11 +62,11 @@ data ResendValidationEmail =
 -- * 'rveDomain' - The fully qualified domain name (FQDN) of the certificate that needs to be validated.
 --
 -- * 'rveValidationDomain' - The base validation domain that will act as the suffix of the email addresses that are used to send the emails. This must be the same as the @Domain@ value or a superdomain of the @Domain@ value. For example, if you requested a certificate for @site.subdomain.example.com@ and specify a __ValidationDomain__ of @subdomain.example.com@ , ACM sends email to the domain registrant, technical contact, and administrative contact in WHOIS and the following five addresses:     * admin@subdomain.example.com     * administrator@subdomain.example.com     * hostmaster@subdomain.example.com     * postmaster@subdomain.example.com     * webmaster@subdomain.example.com
-resendValidationEmail ::
-     Text -- ^ 'rveCertificateARN'
-  -> Text -- ^ 'rveDomain'
-  -> Text -- ^ 'rveValidationDomain'
-  -> ResendValidationEmail
+resendValidationEmail
+    :: Text -- ^ 'rveCertificateARN'
+    -> Text -- ^ 'rveDomain'
+    -> Text -- ^ 'rveValidationDomain'
+    -> ResendValidationEmail
 resendValidationEmail pCertificateARN_ pDomain_ pValidationDomain_ =
   ResendValidationEmail'
     { _rveCertificateARN = pCertificateARN_
@@ -69,60 +74,64 @@ resendValidationEmail pCertificateARN_ pDomain_ pValidationDomain_ =
     , _rveValidationDomain = pValidationDomain_
     }
 
+
 -- | String that contains the ARN of the requested certificate. The certificate ARN is generated and returned by the 'RequestCertificate' action as soon as the request is made. By default, using this parameter causes email to be sent to all top-level domains you specified in the certificate request. The ARN must be of the form:  @arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012@
 rveCertificateARN :: Lens' ResendValidationEmail Text
-rveCertificateARN = lens _rveCertificateARN (\s a -> s {_rveCertificateARN = a})
+rveCertificateARN = lens _rveCertificateARN (\ s a -> s{_rveCertificateARN = a})
 
 -- | The fully qualified domain name (FQDN) of the certificate that needs to be validated.
 rveDomain :: Lens' ResendValidationEmail Text
-rveDomain = lens _rveDomain (\s a -> s {_rveDomain = a})
+rveDomain = lens _rveDomain (\ s a -> s{_rveDomain = a})
 
 -- | The base validation domain that will act as the suffix of the email addresses that are used to send the emails. This must be the same as the @Domain@ value or a superdomain of the @Domain@ value. For example, if you requested a certificate for @site.subdomain.example.com@ and specify a __ValidationDomain__ of @subdomain.example.com@ , ACM sends email to the domain registrant, technical contact, and administrative contact in WHOIS and the following five addresses:     * admin@subdomain.example.com     * administrator@subdomain.example.com     * hostmaster@subdomain.example.com     * postmaster@subdomain.example.com     * webmaster@subdomain.example.com
 rveValidationDomain :: Lens' ResendValidationEmail Text
-rveValidationDomain =
-  lens _rveValidationDomain (\s a -> s {_rveValidationDomain = a})
+rveValidationDomain = lens _rveValidationDomain (\ s a -> s{_rveValidationDomain = a})
 
 instance AWSRequest ResendValidationEmail where
-  type Rs ResendValidationEmail = ResendValidationEmailResponse
-  request = postJSON certificateManager
-  response = receiveNull ResendValidationEmailResponse'
+        type Rs ResendValidationEmail =
+             ResendValidationEmailResponse
+        request = postJSON certificateManager
+        response = receiveNull ResendValidationEmailResponse'
 
-instance Hashable ResendValidationEmail
+instance Hashable ResendValidationEmail where
 
-instance NFData ResendValidationEmail
+instance NFData ResendValidationEmail where
 
 instance ToHeaders ResendValidationEmail where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("CertificateManager.ResendValidationEmail" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("CertificateManager.ResendValidationEmail" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON ResendValidationEmail where
-  toJSON ResendValidationEmail' {..} =
-    object
-      (catMaybes
-         [ Just ("CertificateArn" .= _rveCertificateARN)
-         , Just ("Domain" .= _rveDomain)
-         , Just ("ValidationDomain" .= _rveValidationDomain)
-         ])
+        toJSON ResendValidationEmail'{..}
+          = object
+              (catMaybes
+                 [Just ("CertificateArn" .= _rveCertificateARN),
+                  Just ("Domain" .= _rveDomain),
+                  Just ("ValidationDomain" .= _rveValidationDomain)])
 
 instance ToPath ResendValidationEmail where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery ResendValidationEmail where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'resendValidationEmailResponse' smart constructor.
 data ResendValidationEmailResponse =
   ResendValidationEmailResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ResendValidationEmailResponse' with the minimum fields required to make a request.
 --
-resendValidationEmailResponse :: ResendValidationEmailResponse
+resendValidationEmailResponse
+    :: ResendValidationEmailResponse
 resendValidationEmailResponse = ResendValidationEmailResponse'
 
-instance NFData ResendValidationEmailResponse
+
+instance NFData ResendValidationEmailResponse where

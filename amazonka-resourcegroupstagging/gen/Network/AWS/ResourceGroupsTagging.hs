@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.ResourceGroupsTagging
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -35,57 +36,76 @@
 -- To make full use of the resource groups tagging APIs, you might need additional IAM permissions, including permission to access the resources of individual services as well as permission to view and apply tags to those resources. For more information, see <http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html Obtaining Permissions for Tagging> in the /AWS Resource Groups and Tag Editor User Guide/ .
 --
 module Network.AWS.ResourceGroupsTagging
+    (
     -- * Service Configuration
-  ( resourceGroupsTagging
+      resourceGroupsTagging
+
     -- * Errors
     -- $errors
+
     -- ** InvalidParameterException
-  , _InvalidParameterException
+    , _InvalidParameterException
+
     -- ** ThrottledException
-  , _ThrottledException
+    , _ThrottledException
+
     -- ** PaginationTokenExpiredException
-  , _PaginationTokenExpiredException
+    , _PaginationTokenExpiredException
+
     -- ** InternalServiceException
-  , _InternalServiceException
+    , _InternalServiceException
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
+
     -- ** GetTagKeys (Paginated)
-  , module Network.AWS.ResourceGroupsTagging.GetTagKeys
+    , module Network.AWS.ResourceGroupsTagging.GetTagKeys
+
     -- ** TagResources
-  , module Network.AWS.ResourceGroupsTagging.TagResources
+    , module Network.AWS.ResourceGroupsTagging.TagResources
+
     -- ** GetTagValues (Paginated)
-  , module Network.AWS.ResourceGroupsTagging.GetTagValues
+    , module Network.AWS.ResourceGroupsTagging.GetTagValues
+
     -- ** GetResources (Paginated)
-  , module Network.AWS.ResourceGroupsTagging.GetResources
+    , module Network.AWS.ResourceGroupsTagging.GetResources
+
     -- ** UntagResources
-  , module Network.AWS.ResourceGroupsTagging.UntagResources
+    , module Network.AWS.ResourceGroupsTagging.UntagResources
+
     -- * Types
+
     -- ** ResourceErrorCode
-  , ResourceErrorCode(..)
+    , ResourceErrorCode (..)
+
     -- ** FailureInfo
-  , FailureInfo
-  , failureInfo
-  , fiErrorCode
-  , fiErrorMessage
-  , fiStatusCode
+    , FailureInfo
+    , failureInfo
+    , fiErrorCode
+    , fiErrorMessage
+    , fiStatusCode
+
     -- ** ResourceTagMapping
-  , ResourceTagMapping
-  , resourceTagMapping
-  , rtmResourceARN
-  , rtmTags
+    , ResourceTagMapping
+    , resourceTagMapping
+    , rtmResourceARN
+    , rtmTags
+
     -- ** Tag
-  , Tag
-  , tag
-  , tagKey
-  , tagValue
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
+
     -- ** TagFilter
-  , TagFilter
-  , tagFilter
-  , tfValues
-  , tfKey
-  ) where
+    , TagFilter
+    , tagFilter
+    , tfValues
+    , tfKey
+    ) where
 
 import Network.AWS.ResourceGroupsTagging.GetResources
 import Network.AWS.ResourceGroupsTagging.GetTagKeys
@@ -94,12 +114,14 @@ import Network.AWS.ResourceGroupsTagging.TagResources
 import Network.AWS.ResourceGroupsTagging.Types
 import Network.AWS.ResourceGroupsTagging.UntagResources
 import Network.AWS.ResourceGroupsTagging.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'ResourceGroupsTagging'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -116,6 +138,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

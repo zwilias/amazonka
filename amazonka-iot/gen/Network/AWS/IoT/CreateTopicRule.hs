@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.IoT.CreateTopicRule
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,16 +22,18 @@
 --
 --
 module Network.AWS.IoT.CreateTopicRule
+    (
     -- * Creating a Request
-  ( createTopicRule
-  , CreateTopicRule
+      createTopicRule
+    , CreateTopicRule
     -- * Request Lenses
-  , ctrRuleName
-  , ctrTopicRulePayload
+    , ctrRuleName
+    , ctrTopicRulePayload
+
     -- * Destructuring the Response
-  , createTopicRuleResponse
-  , CreateTopicRuleResponse
-  ) where
+    , createTopicRuleResponse
+    , CreateTopicRuleResponse
+    ) where
 
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
@@ -50,6 +54,7 @@ data CreateTopicRule =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateTopicRule' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -57,53 +62,59 @@ data CreateTopicRule =
 -- * 'ctrRuleName' - The name of the rule.
 --
 -- * 'ctrTopicRulePayload' - The rule payload.
-createTopicRule ::
-     Text -- ^ 'ctrRuleName'
-  -> TopicRulePayload -- ^ 'ctrTopicRulePayload'
-  -> CreateTopicRule
+createTopicRule
+    :: Text -- ^ 'ctrRuleName'
+    -> TopicRulePayload -- ^ 'ctrTopicRulePayload'
+    -> CreateTopicRule
 createTopicRule pRuleName_ pTopicRulePayload_ =
   CreateTopicRule'
     {_ctrRuleName = pRuleName_, _ctrTopicRulePayload = pTopicRulePayload_}
 
+
 -- | The name of the rule.
 ctrRuleName :: Lens' CreateTopicRule Text
-ctrRuleName = lens _ctrRuleName (\s a -> s {_ctrRuleName = a})
+ctrRuleName = lens _ctrRuleName (\ s a -> s{_ctrRuleName = a})
 
 -- | The rule payload.
 ctrTopicRulePayload :: Lens' CreateTopicRule TopicRulePayload
-ctrTopicRulePayload =
-  lens _ctrTopicRulePayload (\s a -> s {_ctrTopicRulePayload = a})
+ctrTopicRulePayload = lens _ctrTopicRulePayload (\ s a -> s{_ctrTopicRulePayload = a})
 
 instance AWSRequest CreateTopicRule where
-  type Rs CreateTopicRule = CreateTopicRuleResponse
-  request = postJSON ioT
-  response = receiveNull CreateTopicRuleResponse'
+        type Rs CreateTopicRule = CreateTopicRuleResponse
+        request = postJSON ioT
+        response = receiveNull CreateTopicRuleResponse'
 
-instance Hashable CreateTopicRule
+instance Hashable CreateTopicRule where
 
-instance NFData CreateTopicRule
+instance NFData CreateTopicRule where
 
 instance ToHeaders CreateTopicRule where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToJSON CreateTopicRule where
-  toJSON CreateTopicRule' {..} =
-    object (catMaybes [Just ("topicRulePayload" .= _ctrTopicRulePayload)])
+        toJSON CreateTopicRule'{..}
+          = object
+              (catMaybes
+                 [Just ("topicRulePayload" .= _ctrTopicRulePayload)])
 
 instance ToPath CreateTopicRule where
-  toPath CreateTopicRule' {..} = mconcat ["/rules/", toBS _ctrRuleName]
+        toPath CreateTopicRule'{..}
+          = mconcat ["/rules/", toBS _ctrRuleName]
 
 instance ToQuery CreateTopicRule where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'createTopicRuleResponse' smart constructor.
 data CreateTopicRuleResponse =
   CreateTopicRuleResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateTopicRuleResponse' with the minimum fields required to make a request.
 --
-createTopicRuleResponse :: CreateTopicRuleResponse
+createTopicRuleResponse
+    :: CreateTopicRuleResponse
 createTopicRuleResponse = CreateTopicRuleResponse'
 
-instance NFData CreateTopicRuleResponse
+
+instance NFData CreateTopicRuleResponse where

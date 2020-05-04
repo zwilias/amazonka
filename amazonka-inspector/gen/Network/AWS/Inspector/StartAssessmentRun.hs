@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Inspector.StartAssessmentRun
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,19 +22,21 @@
 --
 --
 module Network.AWS.Inspector.StartAssessmentRun
+    (
     -- * Creating a Request
-  ( startAssessmentRun
-  , StartAssessmentRun
+      startAssessmentRun
+    , StartAssessmentRun
     -- * Request Lenses
-  , sarAssessmentRunName
-  , sarAssessmentTemplateARN
+    , sarAssessmentRunName
+    , sarAssessmentTemplateARN
+
     -- * Destructuring the Response
-  , startAssessmentRunResponse
-  , StartAssessmentRunResponse
+    , startAssessmentRunResponse
+    , StartAssessmentRunResponse
     -- * Response Lenses
-  , sarrsResponseStatus
-  , sarrsAssessmentRunARN
-  ) where
+    , sarrsResponseStatus
+    , sarrsAssessmentRunARN
+    ) where
 
 import Network.AWS.Inspector.Types
 import Network.AWS.Inspector.Types.Product
@@ -49,6 +53,7 @@ data StartAssessmentRun =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'StartAssessmentRun' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -56,60 +61,62 @@ data StartAssessmentRun =
 -- * 'sarAssessmentRunName' - You can specify the name for the assessment run. The name must be unique for the assessment template whose ARN is used to start the assessment run.
 --
 -- * 'sarAssessmentTemplateARN' - The ARN of the assessment template of the assessment run that you want to start.
-startAssessmentRun ::
-     Text -- ^ 'sarAssessmentTemplateARN'
-  -> StartAssessmentRun
+startAssessmentRun
+    :: Text -- ^ 'sarAssessmentTemplateARN'
+    -> StartAssessmentRun
 startAssessmentRun pAssessmentTemplateARN_ =
   StartAssessmentRun'
     { _sarAssessmentRunName = Nothing
     , _sarAssessmentTemplateARN = pAssessmentTemplateARN_
     }
 
+
 -- | You can specify the name for the assessment run. The name must be unique for the assessment template whose ARN is used to start the assessment run.
 sarAssessmentRunName :: Lens' StartAssessmentRun (Maybe Text)
-sarAssessmentRunName =
-  lens _sarAssessmentRunName (\s a -> s {_sarAssessmentRunName = a})
+sarAssessmentRunName = lens _sarAssessmentRunName (\ s a -> s{_sarAssessmentRunName = a})
 
 -- | The ARN of the assessment template of the assessment run that you want to start.
 sarAssessmentTemplateARN :: Lens' StartAssessmentRun Text
-sarAssessmentTemplateARN =
-  lens _sarAssessmentTemplateARN (\s a -> s {_sarAssessmentTemplateARN = a})
+sarAssessmentTemplateARN = lens _sarAssessmentTemplateARN (\ s a -> s{_sarAssessmentTemplateARN = a})
 
 instance AWSRequest StartAssessmentRun where
-  type Rs StartAssessmentRun = StartAssessmentRunResponse
-  request = postJSON inspector
-  response =
-    receiveJSON
-      (\s h x ->
-         StartAssessmentRunResponse' <$> (pure (fromEnum s)) <*>
-         (x .:> "assessmentRunArn"))
+        type Rs StartAssessmentRun =
+             StartAssessmentRunResponse
+        request = postJSON inspector
+        response
+          = receiveJSON
+              (\ s h x ->
+                 StartAssessmentRunResponse' <$>
+                   (pure (fromEnum s)) <*> (x .:> "assessmentRunArn"))
 
-instance Hashable StartAssessmentRun
+instance Hashable StartAssessmentRun where
 
-instance NFData StartAssessmentRun
+instance NFData StartAssessmentRun where
 
 instance ToHeaders StartAssessmentRun where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("InspectorService.StartAssessmentRun" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("InspectorService.StartAssessmentRun" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON StartAssessmentRun where
-  toJSON StartAssessmentRun' {..} =
-    object
-      (catMaybes
-         [ ("assessmentRunName" .=) <$> _sarAssessmentRunName
-         , Just ("assessmentTemplateArn" .= _sarAssessmentTemplateARN)
-         ])
+        toJSON StartAssessmentRun'{..}
+          = object
+              (catMaybes
+                 [("assessmentRunName" .=) <$> _sarAssessmentRunName,
+                  Just
+                    ("assessmentTemplateArn" .=
+                       _sarAssessmentTemplateARN)])
 
 instance ToPath StartAssessmentRun where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery StartAssessmentRun where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'startAssessmentRunResponse' smart constructor.
 data StartAssessmentRunResponse =
@@ -119,6 +126,7 @@ data StartAssessmentRunResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'StartAssessmentRunResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -126,24 +134,23 @@ data StartAssessmentRunResponse =
 -- * 'sarrsResponseStatus' - -- | The response status code.
 --
 -- * 'sarrsAssessmentRunARN' - The ARN of the assessment run that has been started.
-startAssessmentRunResponse ::
-     Int -- ^ 'sarrsResponseStatus'
-  -> Text -- ^ 'sarrsAssessmentRunARN'
-  -> StartAssessmentRunResponse
+startAssessmentRunResponse
+    :: Int -- ^ 'sarrsResponseStatus'
+    -> Text -- ^ 'sarrsAssessmentRunARN'
+    -> StartAssessmentRunResponse
 startAssessmentRunResponse pResponseStatus_ pAssessmentRunARN_ =
   StartAssessmentRunResponse'
     { _sarrsResponseStatus = pResponseStatus_
     , _sarrsAssessmentRunARN = pAssessmentRunARN_
     }
 
+
 -- | -- | The response status code.
 sarrsResponseStatus :: Lens' StartAssessmentRunResponse Int
-sarrsResponseStatus =
-  lens _sarrsResponseStatus (\s a -> s {_sarrsResponseStatus = a})
+sarrsResponseStatus = lens _sarrsResponseStatus (\ s a -> s{_sarrsResponseStatus = a})
 
 -- | The ARN of the assessment run that has been started.
 sarrsAssessmentRunARN :: Lens' StartAssessmentRunResponse Text
-sarrsAssessmentRunARN =
-  lens _sarrsAssessmentRunARN (\s a -> s {_sarrsAssessmentRunARN = a})
+sarrsAssessmentRunARN = lens _sarrsAssessmentRunARN (\ s a -> s{_sarrsAssessmentRunARN = a})
 
-instance NFData StartAssessmentRunResponse
+instance NFData StartAssessmentRunResponse where

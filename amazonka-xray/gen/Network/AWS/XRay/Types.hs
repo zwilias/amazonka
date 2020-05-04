@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.XRay.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,165 +11,189 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.XRay.Types
+    (
     -- * Service Configuration
-  ( xRay
+      xRay
+
     -- * Errors
-  , _InvalidRequestException
-  , _ThrottledException
+    , _InvalidRequestException
+    , _ThrottledException
+
     -- * EncryptionStatus
-  , EncryptionStatus(..)
+    , EncryptionStatus (..)
+
     -- * EncryptionType
-  , EncryptionType(..)
+    , EncryptionType (..)
+
     -- * Alias
-  , Alias
-  , alias
-  , aNames
-  , aName
-  , aType
+    , Alias
+    , alias
+    , aNames
+    , aName
+    , aType
+
     -- * AnnotationValue
-  , AnnotationValue
-  , annotationValue
-  , avNumberValue
-  , avStringValue
-  , avBooleanValue
+    , AnnotationValue
+    , annotationValue
+    , avNumberValue
+    , avStringValue
+    , avBooleanValue
+
     -- * BackendConnectionErrors
-  , BackendConnectionErrors
-  , backendConnectionErrors
-  , bceOtherCount
-  , bceTimeoutCount
-  , bceHTTPCode5XXCount
-  , bceConnectionRefusedCount
-  , bceHTTPCode4XXCount
-  , bceUnknownHostCount
+    , BackendConnectionErrors
+    , backendConnectionErrors
+    , bceOtherCount
+    , bceTimeoutCount
+    , bceHTTPCode5XXCount
+    , bceConnectionRefusedCount
+    , bceHTTPCode4XXCount
+    , bceUnknownHostCount
+
     -- * Edge
-  , Edge
-  , edge
-  , eStartTime
-  , eAliases
-  , eResponseTimeHistogram
-  , eReferenceId
-  , eEndTime
-  , eSummaryStatistics
+    , Edge
+    , edge
+    , eStartTime
+    , eAliases
+    , eResponseTimeHistogram
+    , eReferenceId
+    , eEndTime
+    , eSummaryStatistics
+
     -- * EdgeStatistics
-  , EdgeStatistics
-  , edgeStatistics
-  , esFaultStatistics
-  , esOKCount
-  , esTotalResponseTime
-  , esErrorStatistics
-  , esTotalCount
+    , EdgeStatistics
+    , edgeStatistics
+    , esFaultStatistics
+    , esOKCount
+    , esTotalResponseTime
+    , esErrorStatistics
+    , esTotalCount
+
     -- * EncryptionConfig
-  , EncryptionConfig
-  , encryptionConfig
-  , ecStatus
-  , ecKeyId
-  , ecType
+    , EncryptionConfig
+    , encryptionConfig
+    , ecStatus
+    , ecKeyId
+    , ecType
+
     -- * ErrorStatistics
-  , ErrorStatistics
-  , errorStatistics
-  , eOtherCount
-  , eThrottleCount
-  , eTotalCount
+    , ErrorStatistics
+    , errorStatistics
+    , eOtherCount
+    , eThrottleCount
+    , eTotalCount
+
     -- * FaultStatistics
-  , FaultStatistics
-  , faultStatistics
-  , fsOtherCount
-  , fsTotalCount
+    , FaultStatistics
+    , faultStatistics
+    , fsOtherCount
+    , fsTotalCount
+
     -- * HTTP
-  , HTTP
-  , hTTP
-  , httpHTTPMethod
-  , httpHTTPStatus
-  , httpClientIP
-  , httpUserAgent
-  , httpHTTPURL
+    , HTTP
+    , hTTP
+    , httpHTTPMethod
+    , httpHTTPStatus
+    , httpClientIP
+    , httpUserAgent
+    , httpHTTPURL
+
     -- * HistogramEntry
-  , HistogramEntry
-  , histogramEntry
-  , heCount
-  , heValue
+    , HistogramEntry
+    , histogramEntry
+    , heCount
+    , heValue
+
     -- * Segment
-  , Segment
-  , segment
-  , sDocument
-  , sId
+    , Segment
+    , segment
+    , sDocument
+    , sId
+
     -- * ServiceId
-  , ServiceId
-  , serviceId
-  , siAccountId
-  , siNames
-  , siName
-  , siType
+    , ServiceId
+    , serviceId
+    , siAccountId
+    , siNames
+    , siName
+    , siType
+
     -- * ServiceInfo
-  , ServiceInfo
-  , serviceInfo
-  , sState
-  , sStartTime
-  , sRoot
-  , sResponseTimeHistogram
-  , sDurationHistogram
-  , sReferenceId
-  , sAccountId
-  , sNames
-  , sName
-  , sEndTime
-  , sType
-  , sEdges
-  , sSummaryStatistics
+    , ServiceInfo
+    , serviceInfo
+    , sState
+    , sStartTime
+    , sRoot
+    , sResponseTimeHistogram
+    , sDurationHistogram
+    , sReferenceId
+    , sAccountId
+    , sNames
+    , sName
+    , sEndTime
+    , sType
+    , sEdges
+    , sSummaryStatistics
+
     -- * ServiceStatistics
-  , ServiceStatistics
-  , serviceStatistics
-  , ssFaultStatistics
-  , ssOKCount
-  , ssTotalResponseTime
-  , ssErrorStatistics
-  , ssTotalCount
+    , ServiceStatistics
+    , serviceStatistics
+    , ssFaultStatistics
+    , ssOKCount
+    , ssTotalResponseTime
+    , ssErrorStatistics
+    , ssTotalCount
+
     -- * TelemetryRecord
-  , TelemetryRecord
-  , telemetryRecord
-  , trSegmentsReceivedCount
-  , trSegmentsSentCount
-  , trSegmentsSpilloverCount
-  , trSegmentsRejectedCount
-  , trBackendConnectionErrors
-  , trTimestamp
+    , TelemetryRecord
+    , telemetryRecord
+    , trSegmentsReceivedCount
+    , trSegmentsSentCount
+    , trSegmentsSpilloverCount
+    , trSegmentsRejectedCount
+    , trBackendConnectionErrors
+    , trTimestamp
+
     -- * Trace
-  , Trace
-  , trace
-  , tId
-  , tSegments
-  , tDuration
+    , Trace
+    , trace
+    , tId
+    , tSegments
+    , tDuration
+
     -- * TraceSummary
-  , TraceSummary
-  , traceSummary
-  , tsAnnotations
-  , tsHasThrottle
-  , tsUsers
-  , tsHasFault
-  , tsServiceIds
-  , tsIsPartial
-  , tsHasError
-  , tsId
-  , tsHTTP
-  , tsDuration
-  , tsResponseTime
+    , TraceSummary
+    , traceSummary
+    , tsAnnotations
+    , tsHasThrottle
+    , tsUsers
+    , tsHasFault
+    , tsServiceIds
+    , tsIsPartial
+    , tsHasError
+    , tsId
+    , tsHTTP
+    , tsDuration
+    , tsResponseTime
+
     -- * TraceUser
-  , TraceUser
-  , traceUser
-  , tuServiceIds
-  , tuUserName
+    , TraceUser
+    , traceUser
+    , tuServiceIds
+    , tuUserName
+
     -- * UnprocessedTraceSegment
-  , UnprocessedTraceSegment
-  , unprocessedTraceSegment
-  , utsErrorCode
-  , utsId
-  , utsMessage
+    , UnprocessedTraceSegment
+    , unprocessedTraceSegment
+    , utsErrorCode
+    , utsId
+    , utsMessage
+
     -- * ValueWithServiceIds
-  , ValueWithServiceIds
-  , valueWithServiceIds
-  , vwsiServiceIds
-  , vwsiAnnotationValue
-  ) where
+    , ValueWithServiceIds
+    , valueWithServiceIds
+    , vwsiServiceIds
+    , vwsiAnnotationValue
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -214,12 +239,13 @@ xRay =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | The request is missing required parameters or has invalid parameters.
 --
 --
-_InvalidRequestException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidRequestException = _MatchServiceError xRay "InvalidRequestException"
+
 
 -- | The request exceeds the maximum number of requests per second.
 --
@@ -227,3 +253,4 @@ _InvalidRequestException = _MatchServiceError xRay "InvalidRequestException"
 _ThrottledException :: AsError a => Getting (First ServiceError) a ServiceError
 _ThrottledException =
   _MatchServiceError xRay "ThrottledException" . hasStatus 429
+

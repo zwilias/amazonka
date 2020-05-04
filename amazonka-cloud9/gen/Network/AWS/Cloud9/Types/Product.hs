@@ -2,9 +2,11 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Cloud9.Types.Product
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -27,19 +29,23 @@ import Network.AWS.Prelude
 data Environment =
   Environment'
     { _eArn         :: !(Maybe Text)
+    , _eLifecycle   :: !(Maybe EnvironmentLifecycle)
     , _eOwnerARN    :: !(Maybe Text)
     , _eName        :: !(Maybe Text)
     , _eId          :: !(Maybe Text)
     , _eType        :: !(Maybe EnvironmentType)
-    , _eDescription :: !(Maybe Text)
+    , _eDescription :: !(Maybe (Sensitive Text))
     }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
+  deriving (Eq, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'Environment' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'eArn' - The Amazon Resource Name (ARN) of the environment.
+--
+-- * 'eLifecycle' - The state of the environment in its creation or deletion lifecycle.
 --
 -- * 'eOwnerARN' - The Amazon Resource Name (ARN) of the environment owner.
 --
@@ -50,10 +56,12 @@ data Environment =
 -- * 'eType' - The type of environment. Valid values include the following:     * @ec2@ : An Amazon Elastic Compute Cloud (Amazon EC2) instance connects to the environment.     * @ssh@ : Your own server connects to the environment.
 --
 -- * 'eDescription' - The description for the environment.
-environment :: Environment
+environment
+    :: Environment
 environment =
   Environment'
     { _eArn = Nothing
+    , _eLifecycle = Nothing
     , _eOwnerARN = Nothing
     , _eName = Nothing
     , _eId = Nothing
@@ -61,44 +69,104 @@ environment =
     , _eDescription = Nothing
     }
 
+
 -- | The Amazon Resource Name (ARN) of the environment.
 eArn :: Lens' Environment (Maybe Text)
-eArn = lens _eArn (\s a -> s {_eArn = a})
+eArn = lens _eArn (\ s a -> s{_eArn = a})
+
+-- | The state of the environment in its creation or deletion lifecycle.
+eLifecycle :: Lens' Environment (Maybe EnvironmentLifecycle)
+eLifecycle = lens _eLifecycle (\ s a -> s{_eLifecycle = a})
 
 -- | The Amazon Resource Name (ARN) of the environment owner.
 eOwnerARN :: Lens' Environment (Maybe Text)
-eOwnerARN = lens _eOwnerARN (\s a -> s {_eOwnerARN = a})
+eOwnerARN = lens _eOwnerARN (\ s a -> s{_eOwnerARN = a})
 
 -- | The name of the environment.
 eName :: Lens' Environment (Maybe Text)
-eName = lens _eName (\s a -> s {_eName = a})
+eName = lens _eName (\ s a -> s{_eName = a})
 
 -- | The ID of the environment.
 eId :: Lens' Environment (Maybe Text)
-eId = lens _eId (\s a -> s {_eId = a})
+eId = lens _eId (\ s a -> s{_eId = a})
 
 -- | The type of environment. Valid values include the following:     * @ec2@ : An Amazon Elastic Compute Cloud (Amazon EC2) instance connects to the environment.     * @ssh@ : Your own server connects to the environment.
 eType :: Lens' Environment (Maybe EnvironmentType)
-eType = lens _eType (\s a -> s {_eType = a})
+eType = lens _eType (\ s a -> s{_eType = a})
 
 -- | The description for the environment.
 eDescription :: Lens' Environment (Maybe Text)
-eDescription = lens _eDescription (\s a -> s {_eDescription = a})
+eDescription = lens _eDescription (\ s a -> s{_eDescription = a}) . mapping _Sensitive
 
 instance FromJSON Environment where
-  parseJSON =
-    withObject
-      "Environment"
-      (\x ->
-         Environment' <$> (x .:? "arn") <*> (x .:? "ownerArn") <*>
-         (x .:? "name") <*>
-         (x .:? "id") <*>
-         (x .:? "type") <*>
-         (x .:? "description"))
+        parseJSON
+          = withObject "Environment"
+              (\ x ->
+                 Environment' <$>
+                   (x .:? "arn") <*> (x .:? "lifecycle") <*>
+                     (x .:? "ownerArn")
+                     <*> (x .:? "name")
+                     <*> (x .:? "id")
+                     <*> (x .:? "type")
+                     <*> (x .:? "description"))
 
-instance Hashable Environment
+instance Hashable Environment where
 
-instance NFData Environment
+instance NFData Environment where
+
+-- | Information about the current creation or deletion lifecycle state of an AWS Cloud9 development environment.
+--
+--
+--
+-- /See:/ 'environmentLifecycle' smart constructor.
+data EnvironmentLifecycle =
+  EnvironmentLifecycle'
+    { _elStatus          :: !(Maybe EnvironmentLifecycleStatus)
+    , _elFailureResource :: !(Maybe Text)
+    , _elReason          :: !(Maybe Text)
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'EnvironmentLifecycle' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'elStatus' - The current creation or deletion lifecycle state of the environment.     * @CREATING@ : The environment is in the process of being created.     * @CREATED@ : The environment was successfully created.     * @CREATE_FAILED@ : The environment failed to be created.     * @DELETING@ : The environment is in the process of being deleted.     * @DELETE_FAILED@ : The environment failed to delete.
+--
+-- * 'elFailureResource' - If the environment failed to delete, the Amazon Resource Name (ARN) of the related AWS resource.
+--
+-- * 'elReason' - Any informational message about the lifecycle state of the environment.
+environmentLifecycle
+    :: EnvironmentLifecycle
+environmentLifecycle =
+  EnvironmentLifecycle'
+    {_elStatus = Nothing, _elFailureResource = Nothing, _elReason = Nothing}
+
+
+-- | The current creation or deletion lifecycle state of the environment.     * @CREATING@ : The environment is in the process of being created.     * @CREATED@ : The environment was successfully created.     * @CREATE_FAILED@ : The environment failed to be created.     * @DELETING@ : The environment is in the process of being deleted.     * @DELETE_FAILED@ : The environment failed to delete.
+elStatus :: Lens' EnvironmentLifecycle (Maybe EnvironmentLifecycleStatus)
+elStatus = lens _elStatus (\ s a -> s{_elStatus = a})
+
+-- | If the environment failed to delete, the Amazon Resource Name (ARN) of the related AWS resource.
+elFailureResource :: Lens' EnvironmentLifecycle (Maybe Text)
+elFailureResource = lens _elFailureResource (\ s a -> s{_elFailureResource = a})
+
+-- | Any informational message about the lifecycle state of the environment.
+elReason :: Lens' EnvironmentLifecycle (Maybe Text)
+elReason = lens _elReason (\ s a -> s{_elReason = a})
+
+instance FromJSON EnvironmentLifecycle where
+        parseJSON
+          = withObject "EnvironmentLifecycle"
+              (\ x ->
+                 EnvironmentLifecycle' <$>
+                   (x .:? "status") <*> (x .:? "failureResource") <*>
+                     (x .:? "reason"))
+
+instance Hashable EnvironmentLifecycle where
+
+instance NFData EnvironmentLifecycle where
 
 -- | Information about an environment member for an AWS Cloud9 development environment.
 --
@@ -115,6 +183,7 @@ data EnvironmentMember =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'EnvironmentMember' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -128,7 +197,8 @@ data EnvironmentMember =
 -- * 'emPermissions' - The type of environment member permissions associated with this environment member. Available values include:     * @owner@ : Owns the environment.     * @read-only@ : Has read-only access to the environment.     * @read-write@ : Has read-write access to the environment.
 --
 -- * 'emEnvironmentId' - The ID of the environment for the environment member.
-environmentMember :: EnvironmentMember
+environmentMember
+    :: EnvironmentMember
 environmentMember =
   EnvironmentMember'
     { _emLastAccess = Nothing
@@ -138,37 +208,88 @@ environmentMember =
     , _emEnvironmentId = Nothing
     }
 
+
 -- | The time, expressed in epoch time format, when the environment member last opened the environment.
 emLastAccess :: Lens' EnvironmentMember (Maybe UTCTime)
-emLastAccess =
-  lens _emLastAccess (\s a -> s {_emLastAccess = a}) . mapping _Time
+emLastAccess = lens _emLastAccess (\ s a -> s{_emLastAccess = a}) . mapping _Time
 
 -- | The user ID in AWS Identity and Access Management (AWS IAM) of the environment member.
 emUserId :: Lens' EnvironmentMember (Maybe Text)
-emUserId = lens _emUserId (\s a -> s {_emUserId = a})
+emUserId = lens _emUserId (\ s a -> s{_emUserId = a})
 
 -- | The Amazon Resource Name (ARN) of the environment member.
 emUserARN :: Lens' EnvironmentMember (Maybe Text)
-emUserARN = lens _emUserARN (\s a -> s {_emUserARN = a})
+emUserARN = lens _emUserARN (\ s a -> s{_emUserARN = a})
 
 -- | The type of environment member permissions associated with this environment member. Available values include:     * @owner@ : Owns the environment.     * @read-only@ : Has read-only access to the environment.     * @read-write@ : Has read-write access to the environment.
 emPermissions :: Lens' EnvironmentMember (Maybe Permissions)
-emPermissions = lens _emPermissions (\s a -> s {_emPermissions = a})
+emPermissions = lens _emPermissions (\ s a -> s{_emPermissions = a})
 
 -- | The ID of the environment for the environment member.
 emEnvironmentId :: Lens' EnvironmentMember (Maybe Text)
-emEnvironmentId = lens _emEnvironmentId (\s a -> s {_emEnvironmentId = a})
+emEnvironmentId = lens _emEnvironmentId (\ s a -> s{_emEnvironmentId = a})
 
 instance FromJSON EnvironmentMember where
-  parseJSON =
-    withObject
-      "EnvironmentMember"
-      (\x ->
-         EnvironmentMember' <$> (x .:? "lastAccess") <*> (x .:? "userId") <*>
-         (x .:? "userArn") <*>
-         (x .:? "permissions") <*>
-         (x .:? "environmentId"))
+        parseJSON
+          = withObject "EnvironmentMember"
+              (\ x ->
+                 EnvironmentMember' <$>
+                   (x .:? "lastAccess") <*> (x .:? "userId") <*>
+                     (x .:? "userArn")
+                     <*> (x .:? "permissions")
+                     <*> (x .:? "environmentId"))
 
-instance Hashable EnvironmentMember
+instance Hashable EnvironmentMember where
 
-instance NFData EnvironmentMember
+instance NFData EnvironmentMember where
+
+-- | Metadata that is associated with AWS resources. In particular, a name-value pair that can be associated with an AWS Cloud9 development environment. There are two types of tags: /user tags/ and /system tags/ . A user tag is created by the user. A system tag is automatically created by AWS services. A system tag is prefixed with "aws:" and cannot be modified by the user.
+--
+--
+--
+-- /See:/ 'tag' smart constructor.
+data Tag =
+  Tag'
+    { _tagKey   :: !Text
+    , _tagValue :: !Text
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'Tag' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'tagKey' - The __name__ part of a tag.
+--
+-- * 'tagValue' - The __value__ part of a tag.
+tag
+    :: Text -- ^ 'tagKey'
+    -> Text -- ^ 'tagValue'
+    -> Tag
+tag pKey_ pValue_ = Tag' {_tagKey = pKey_, _tagValue = pValue_}
+
+
+-- | The __name__ part of a tag.
+tagKey :: Lens' Tag Text
+tagKey = lens _tagKey (\ s a -> s{_tagKey = a})
+
+-- | The __value__ part of a tag.
+tagValue :: Lens' Tag Text
+tagValue = lens _tagValue (\ s a -> s{_tagValue = a})
+
+instance FromJSON Tag where
+        parseJSON
+          = withObject "Tag"
+              (\ x -> Tag' <$> (x .: "Key") <*> (x .: "Value"))
+
+instance Hashable Tag where
+
+instance NFData Tag where
+
+instance ToJSON Tag where
+        toJSON Tag'{..}
+          = object
+              (catMaybes
+                 [Just ("Key" .= _tagKey),
+                  Just ("Value" .= _tagValue)])

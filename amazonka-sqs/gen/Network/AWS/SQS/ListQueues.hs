@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SQS.ListQueues
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.SQS.ListQueues
+    (
     -- * Creating a Request
-  ( listQueues
-  , ListQueues
+      listQueues
+    , ListQueues
     -- * Request Lenses
-  , lqQueueNamePrefix
+    , lqQueueNamePrefix
+
     -- * Destructuring the Response
-  , listQueuesResponse
-  , ListQueuesResponse
+    , listQueuesResponse
+    , ListQueuesResponse
     -- * Response Lenses
-  , lqrsQueueURLs
-  , lqrsResponseStatus
-  ) where
+    , lqrsQueueURLs
+    , lqrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -51,45 +55,47 @@ newtype ListQueues =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListQueues' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'lqQueueNamePrefix' - A string to use for filtering the list results. Only those queues whose name begins with the specified string are returned. Queue names are case-sensitive.
-listQueues :: ListQueues
+listQueues
+    :: ListQueues
 listQueues = ListQueues' {_lqQueueNamePrefix = Nothing}
+
 
 -- | A string to use for filtering the list results. Only those queues whose name begins with the specified string are returned. Queue names are case-sensitive.
 lqQueueNamePrefix :: Lens' ListQueues (Maybe Text)
-lqQueueNamePrefix = lens _lqQueueNamePrefix (\s a -> s {_lqQueueNamePrefix = a})
+lqQueueNamePrefix = lens _lqQueueNamePrefix (\ s a -> s{_lqQueueNamePrefix = a})
 
 instance AWSRequest ListQueues where
-  type Rs ListQueues = ListQueuesResponse
-  request = postQuery sqs
-  response =
-    receiveXMLWrapper
-      "ListQueuesResult"
-      (\s h x ->
-         ListQueuesResponse' <$> (may (parseXMLList "QueueUrl") x) <*>
-         (pure (fromEnum s)))
+        type Rs ListQueues = ListQueuesResponse
+        request = postQuery sqs
+        response
+          = receiveXMLWrapper "ListQueuesResult"
+              (\ s h x ->
+                 ListQueuesResponse' <$>
+                   (may (parseXMLList "QueueUrl") x) <*>
+                     (pure (fromEnum s)))
 
-instance Hashable ListQueues
+instance Hashable ListQueues where
 
-instance NFData ListQueues
+instance NFData ListQueues where
 
 instance ToHeaders ListQueues where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath ListQueues where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery ListQueues where
-  toQuery ListQueues' {..} =
-    mconcat
-      [ "Action" =: ("ListQueues" :: ByteString)
-      , "Version" =: ("2012-11-05" :: ByteString)
-      , "QueueNamePrefix" =: _lqQueueNamePrefix
-      ]
+        toQuery ListQueues'{..}
+          = mconcat
+              ["Action" =: ("ListQueues" :: ByteString),
+               "Version" =: ("2012-11-05" :: ByteString),
+               "QueueNamePrefix" =: _lqQueueNamePrefix]
 
 -- | A list of your queues.
 --
@@ -103,6 +109,7 @@ data ListQueuesResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListQueuesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -110,21 +117,20 @@ data ListQueuesResponse =
 -- * 'lqrsQueueURLs' - A list of queue URLs, up to 1,000 entries.
 --
 -- * 'lqrsResponseStatus' - -- | The response status code.
-listQueuesResponse ::
-     Int -- ^ 'lqrsResponseStatus'
-  -> ListQueuesResponse
+listQueuesResponse
+    :: Int -- ^ 'lqrsResponseStatus'
+    -> ListQueuesResponse
 listQueuesResponse pResponseStatus_ =
   ListQueuesResponse'
     {_lqrsQueueURLs = Nothing, _lqrsResponseStatus = pResponseStatus_}
 
+
 -- | A list of queue URLs, up to 1,000 entries.
 lqrsQueueURLs :: Lens' ListQueuesResponse [Text]
-lqrsQueueURLs =
-  lens _lqrsQueueURLs (\s a -> s {_lqrsQueueURLs = a}) . _Default . _Coerce
+lqrsQueueURLs = lens _lqrsQueueURLs (\ s a -> s{_lqrsQueueURLs = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 lqrsResponseStatus :: Lens' ListQueuesResponse Int
-lqrsResponseStatus =
-  lens _lqrsResponseStatus (\s a -> s {_lqrsResponseStatus = a})
+lqrsResponseStatus = lens _lqrsResponseStatus (\ s a -> s{_lqrsResponseStatus = a})
 
-instance NFData ListQueuesResponse
+instance NFData ListQueuesResponse where

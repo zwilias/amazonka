@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Config.PutDeliveryChannel
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,15 +26,17 @@
 -- You can use this action to change the Amazon S3 bucket or an Amazon SNS topic of the existing delivery channel. To change the Amazon S3 bucket or an Amazon SNS topic, call this action and specify the changed values for the S3 bucket and the SNS topic. If you specify a different value for either the S3 bucket or the SNS topic, this action will keep the existing value for the parameter that is not changed.
 --
 module Network.AWS.Config.PutDeliveryChannel
+    (
     -- * Creating a Request
-  ( putDeliveryChannel
-  , PutDeliveryChannel
+      putDeliveryChannel
+    , PutDeliveryChannel
     -- * Request Lenses
-  , pdcDeliveryChannel
+    , pdcDeliveryChannel
+
     -- * Destructuring the Response
-  , putDeliveryChannelResponse
-  , PutDeliveryChannelResponse
-  ) where
+    , putDeliveryChannelResponse
+    , PutDeliveryChannelResponse
+    ) where
 
 import Network.AWS.Config.Types
 import Network.AWS.Config.Types.Product
@@ -52,58 +56,66 @@ newtype PutDeliveryChannel =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'PutDeliveryChannel' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'pdcDeliveryChannel' - The configuration delivery channel object that delivers the configuration information to an Amazon S3 bucket and to an Amazon SNS topic.
-putDeliveryChannel ::
-     DeliveryChannel -- ^ 'pdcDeliveryChannel'
-  -> PutDeliveryChannel
+putDeliveryChannel
+    :: DeliveryChannel -- ^ 'pdcDeliveryChannel'
+    -> PutDeliveryChannel
 putDeliveryChannel pDeliveryChannel_ =
   PutDeliveryChannel' {_pdcDeliveryChannel = pDeliveryChannel_}
 
+
 -- | The configuration delivery channel object that delivers the configuration information to an Amazon S3 bucket and to an Amazon SNS topic.
 pdcDeliveryChannel :: Lens' PutDeliveryChannel DeliveryChannel
-pdcDeliveryChannel =
-  lens _pdcDeliveryChannel (\s a -> s {_pdcDeliveryChannel = a})
+pdcDeliveryChannel = lens _pdcDeliveryChannel (\ s a -> s{_pdcDeliveryChannel = a})
 
 instance AWSRequest PutDeliveryChannel where
-  type Rs PutDeliveryChannel = PutDeliveryChannelResponse
-  request = postJSON config
-  response = receiveNull PutDeliveryChannelResponse'
+        type Rs PutDeliveryChannel =
+             PutDeliveryChannelResponse
+        request = postJSON config
+        response = receiveNull PutDeliveryChannelResponse'
 
-instance Hashable PutDeliveryChannel
+instance Hashable PutDeliveryChannel where
 
-instance NFData PutDeliveryChannel
+instance NFData PutDeliveryChannel where
 
 instance ToHeaders PutDeliveryChannel where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("StarlingDoveService.PutDeliveryChannel" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("StarlingDoveService.PutDeliveryChannel" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON PutDeliveryChannel where
-  toJSON PutDeliveryChannel' {..} =
-    object (catMaybes [Just ("DeliveryChannel" .= _pdcDeliveryChannel)])
+        toJSON PutDeliveryChannel'{..}
+          = object
+              (catMaybes
+                 [Just ("DeliveryChannel" .= _pdcDeliveryChannel)])
 
 instance ToPath PutDeliveryChannel where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery PutDeliveryChannel where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'putDeliveryChannelResponse' smart constructor.
 data PutDeliveryChannelResponse =
   PutDeliveryChannelResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'PutDeliveryChannelResponse' with the minimum fields required to make a request.
 --
-putDeliveryChannelResponse :: PutDeliveryChannelResponse
+putDeliveryChannelResponse
+    :: PutDeliveryChannelResponse
 putDeliveryChannelResponse = PutDeliveryChannelResponse'
 
-instance NFData PutDeliveryChannelResponse
+
+instance NFData PutDeliveryChannelResponse where

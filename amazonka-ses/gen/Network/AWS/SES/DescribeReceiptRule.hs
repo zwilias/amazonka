@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SES.DescribeReceiptRule
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,19 +26,21 @@
 -- You can execute this operation no more than once per second.
 --
 module Network.AWS.SES.DescribeReceiptRule
+    (
     -- * Creating a Request
-  ( describeReceiptRule
-  , DescribeReceiptRule
+      describeReceiptRule
+    , DescribeReceiptRule
     -- * Request Lenses
-  , drrRuleSetName
-  , drrRuleName
+    , drrRuleSetName
+    , drrRuleName
+
     -- * Destructuring the Response
-  , describeReceiptRuleResponse
-  , DescribeReceiptRuleResponse
+    , describeReceiptRuleResponse
+    , DescribeReceiptRuleResponse
     -- * Response Lenses
-  , drrrsRule
-  , drrrsResponseStatus
-  ) where
+    , drrrsRule
+    , drrrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -57,6 +61,7 @@ data DescribeReceiptRule =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeReceiptRule' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -64,49 +69,50 @@ data DescribeReceiptRule =
 -- * 'drrRuleSetName' - The name of the receipt rule set that the receipt rule belongs to.
 --
 -- * 'drrRuleName' - The name of the receipt rule.
-describeReceiptRule ::
-     Text -- ^ 'drrRuleSetName'
-  -> Text -- ^ 'drrRuleName'
-  -> DescribeReceiptRule
+describeReceiptRule
+    :: Text -- ^ 'drrRuleSetName'
+    -> Text -- ^ 'drrRuleName'
+    -> DescribeReceiptRule
 describeReceiptRule pRuleSetName_ pRuleName_ =
   DescribeReceiptRule'
     {_drrRuleSetName = pRuleSetName_, _drrRuleName = pRuleName_}
 
+
 -- | The name of the receipt rule set that the receipt rule belongs to.
 drrRuleSetName :: Lens' DescribeReceiptRule Text
-drrRuleSetName = lens _drrRuleSetName (\s a -> s {_drrRuleSetName = a})
+drrRuleSetName = lens _drrRuleSetName (\ s a -> s{_drrRuleSetName = a})
 
 -- | The name of the receipt rule.
 drrRuleName :: Lens' DescribeReceiptRule Text
-drrRuleName = lens _drrRuleName (\s a -> s {_drrRuleName = a})
+drrRuleName = lens _drrRuleName (\ s a -> s{_drrRuleName = a})
 
 instance AWSRequest DescribeReceiptRule where
-  type Rs DescribeReceiptRule = DescribeReceiptRuleResponse
-  request = postQuery ses
-  response =
-    receiveXMLWrapper
-      "DescribeReceiptRuleResult"
-      (\s h x ->
-         DescribeReceiptRuleResponse' <$> (x .@? "Rule") <*> (pure (fromEnum s)))
+        type Rs DescribeReceiptRule =
+             DescribeReceiptRuleResponse
+        request = postQuery ses
+        response
+          = receiveXMLWrapper "DescribeReceiptRuleResult"
+              (\ s h x ->
+                 DescribeReceiptRuleResponse' <$>
+                   (x .@? "Rule") <*> (pure (fromEnum s)))
 
-instance Hashable DescribeReceiptRule
+instance Hashable DescribeReceiptRule where
 
-instance NFData DescribeReceiptRule
+instance NFData DescribeReceiptRule where
 
 instance ToHeaders DescribeReceiptRule where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath DescribeReceiptRule where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DescribeReceiptRule where
-  toQuery DescribeReceiptRule' {..} =
-    mconcat
-      [ "Action" =: ("DescribeReceiptRule" :: ByteString)
-      , "Version" =: ("2010-12-01" :: ByteString)
-      , "RuleSetName" =: _drrRuleSetName
-      , "RuleName" =: _drrRuleName
-      ]
+        toQuery DescribeReceiptRule'{..}
+          = mconcat
+              ["Action" =: ("DescribeReceiptRule" :: ByteString),
+               "Version" =: ("2010-12-01" :: ByteString),
+               "RuleSetName" =: _drrRuleSetName,
+               "RuleName" =: _drrRuleName]
 
 -- | Represents the details of a receipt rule.
 --
@@ -120,6 +126,7 @@ data DescribeReceiptRuleResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeReceiptRuleResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -127,20 +134,20 @@ data DescribeReceiptRuleResponse =
 -- * 'drrrsRule' - A data structure that contains the specified receipt rule's name, actions, recipients, domains, enabled status, scan status, and Transport Layer Security (TLS) policy.
 --
 -- * 'drrrsResponseStatus' - -- | The response status code.
-describeReceiptRuleResponse ::
-     Int -- ^ 'drrrsResponseStatus'
-  -> DescribeReceiptRuleResponse
+describeReceiptRuleResponse
+    :: Int -- ^ 'drrrsResponseStatus'
+    -> DescribeReceiptRuleResponse
 describeReceiptRuleResponse pResponseStatus_ =
   DescribeReceiptRuleResponse'
     {_drrrsRule = Nothing, _drrrsResponseStatus = pResponseStatus_}
 
+
 -- | A data structure that contains the specified receipt rule's name, actions, recipients, domains, enabled status, scan status, and Transport Layer Security (TLS) policy.
 drrrsRule :: Lens' DescribeReceiptRuleResponse (Maybe ReceiptRule)
-drrrsRule = lens _drrrsRule (\s a -> s {_drrrsRule = a})
+drrrsRule = lens _drrrsRule (\ s a -> s{_drrrsRule = a})
 
 -- | -- | The response status code.
 drrrsResponseStatus :: Lens' DescribeReceiptRuleResponse Int
-drrrsResponseStatus =
-  lens _drrrsResponseStatus (\s a -> s {_drrrsResponseStatus = a})
+drrrsResponseStatus = lens _drrrsResponseStatus (\ s a -> s{_drrrsResponseStatus = a})
 
-instance NFData DescribeReceiptRuleResponse
+instance NFData DescribeReceiptRuleResponse where

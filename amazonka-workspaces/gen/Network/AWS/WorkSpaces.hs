@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.WorkSpaces
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -15,248 +16,318 @@
 -- Amazon WorkSpaces enables you to provision virtual, cloud-based Microsoft Windows desktops for your users.
 --
 module Network.AWS.WorkSpaces
+    (
     -- * Service Configuration
-  ( workSpaces
+      workSpaces
+
     -- * Errors
     -- $errors
+
     -- ** AccessDeniedException
-  , _AccessDeniedException
+    , _AccessDeniedException
+
     -- ** ResourceCreationFailedException
-  , _ResourceCreationFailedException
+    , _ResourceCreationFailedException
+
     -- ** ResourceUnavailableException
-  , _ResourceUnavailableException
+    , _ResourceUnavailableException
+
     -- ** InvalidParameterValuesException
-  , _InvalidParameterValuesException
+    , _InvalidParameterValuesException
+
     -- ** ResourceAssociatedException
-  , _ResourceAssociatedException
+    , _ResourceAssociatedException
+
     -- ** OperationInProgressException
-  , _OperationInProgressException
+    , _OperationInProgressException
+
     -- ** ResourceAlreadyExistsException
-  , _ResourceAlreadyExistsException
+    , _ResourceAlreadyExistsException
+
     -- ** ResourceLimitExceededException
-  , _ResourceLimitExceededException
+    , _ResourceLimitExceededException
+
     -- ** InvalidResourceStateException
-  , _InvalidResourceStateException
+    , _InvalidResourceStateException
+
     -- ** OperationNotSupportedException
-  , _OperationNotSupportedException
+    , _OperationNotSupportedException
+
     -- ** UnsupportedWorkspaceConfigurationException
-  , _UnsupportedWorkspaceConfigurationException
+    , _UnsupportedWorkspaceConfigurationException
+
     -- ** ResourceNotFoundException
-  , _ResourceNotFoundException
+    , _ResourceNotFoundException
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
+
     -- ** RevokeIPRules
-  , module Network.AWS.WorkSpaces.RevokeIPRules
+    , module Network.AWS.WorkSpaces.RevokeIPRules
+
     -- ** ModifyWorkspaceProperties
-  , module Network.AWS.WorkSpaces.ModifyWorkspaceProperties
+    , module Network.AWS.WorkSpaces.ModifyWorkspaceProperties
+
     -- ** DescribeTags
-  , module Network.AWS.WorkSpaces.DescribeTags
+    , module Network.AWS.WorkSpaces.DescribeTags
+
     -- ** DescribeWorkspaceDirectories (Paginated)
-  , module Network.AWS.WorkSpaces.DescribeWorkspaceDirectories
+    , module Network.AWS.WorkSpaces.DescribeWorkspaceDirectories
+
     -- ** DisassociateIPGroups
-  , module Network.AWS.WorkSpaces.DisassociateIPGroups
+    , module Network.AWS.WorkSpaces.DisassociateIPGroups
+
     -- ** DescribeWorkspaceBundles (Paginated)
-  , module Network.AWS.WorkSpaces.DescribeWorkspaceBundles
+    , module Network.AWS.WorkSpaces.DescribeWorkspaceBundles
+
     -- ** AuthorizeIPRules
-  , module Network.AWS.WorkSpaces.AuthorizeIPRules
+    , module Network.AWS.WorkSpaces.AuthorizeIPRules
+
     -- ** RebuildWorkspaces
-  , module Network.AWS.WorkSpaces.RebuildWorkspaces
+    , module Network.AWS.WorkSpaces.RebuildWorkspaces
+
     -- ** ModifyWorkspaceState
-  , module Network.AWS.WorkSpaces.ModifyWorkspaceState
+    , module Network.AWS.WorkSpaces.ModifyWorkspaceState
+
     -- ** CreateIPGroup
-  , module Network.AWS.WorkSpaces.CreateIPGroup
+    , module Network.AWS.WorkSpaces.CreateIPGroup
+
     -- ** CreateTags
-  , module Network.AWS.WorkSpaces.CreateTags
+    , module Network.AWS.WorkSpaces.CreateTags
+
     -- ** DeleteTags
-  , module Network.AWS.WorkSpaces.DeleteTags
+    , module Network.AWS.WorkSpaces.DeleteTags
+
     -- ** UpdateRulesOfIPGroup
-  , module Network.AWS.WorkSpaces.UpdateRulesOfIPGroup
+    , module Network.AWS.WorkSpaces.UpdateRulesOfIPGroup
+
     -- ** StopWorkspaces
-  , module Network.AWS.WorkSpaces.StopWorkspaces
+    , module Network.AWS.WorkSpaces.StopWorkspaces
+
     -- ** AssociateIPGroups
-  , module Network.AWS.WorkSpaces.AssociateIPGroups
+    , module Network.AWS.WorkSpaces.AssociateIPGroups
+
     -- ** DescribeWorkspacesConnectionStatus
-  , module Network.AWS.WorkSpaces.DescribeWorkspacesConnectionStatus
+    , module Network.AWS.WorkSpaces.DescribeWorkspacesConnectionStatus
+
     -- ** RebootWorkspaces
-  , module Network.AWS.WorkSpaces.RebootWorkspaces
+    , module Network.AWS.WorkSpaces.RebootWorkspaces
+
     -- ** DeleteIPGroup
-  , module Network.AWS.WorkSpaces.DeleteIPGroup
+    , module Network.AWS.WorkSpaces.DeleteIPGroup
+
     -- ** TerminateWorkspaces
-  , module Network.AWS.WorkSpaces.TerminateWorkspaces
+    , module Network.AWS.WorkSpaces.TerminateWorkspaces
+
     -- ** CreateWorkspaces
-  , module Network.AWS.WorkSpaces.CreateWorkspaces
+    , module Network.AWS.WorkSpaces.CreateWorkspaces
+
     -- ** DescribeIPGroups
-  , module Network.AWS.WorkSpaces.DescribeIPGroups
+    , module Network.AWS.WorkSpaces.DescribeIPGroups
+
     -- ** DescribeWorkspaces (Paginated)
-  , module Network.AWS.WorkSpaces.DescribeWorkspaces
+    , module Network.AWS.WorkSpaces.DescribeWorkspaces
+
     -- ** StartWorkspaces
-  , module Network.AWS.WorkSpaces.StartWorkspaces
+    , module Network.AWS.WorkSpaces.StartWorkspaces
+
     -- * Types
+
     -- ** Compute
-  , Compute(..)
+    , Compute (..)
+
     -- ** ConnectionState
-  , ConnectionState(..)
+    , ConnectionState (..)
+
     -- ** ModificationResourceEnum
-  , ModificationResourceEnum(..)
+    , ModificationResourceEnum (..)
+
     -- ** ModificationStateEnum
-  , ModificationStateEnum(..)
+    , ModificationStateEnum (..)
+
     -- ** RunningMode
-  , RunningMode(..)
+    , RunningMode (..)
+
     -- ** TargetWorkspaceState
-  , TargetWorkspaceState(..)
+    , TargetWorkspaceState (..)
+
     -- ** WorkspaceDirectoryState
-  , WorkspaceDirectoryState(..)
+    , WorkspaceDirectoryState (..)
+
     -- ** WorkspaceDirectoryType
-  , WorkspaceDirectoryType(..)
+    , WorkspaceDirectoryType (..)
+
     -- ** WorkspaceState
-  , WorkspaceState(..)
+    , WorkspaceState (..)
+
     -- ** ComputeType
-  , ComputeType
-  , computeType
-  , ctName
+    , ComputeType
+    , computeType
+    , ctName
+
     -- ** DefaultWorkspaceCreationProperties
-  , DefaultWorkspaceCreationProperties
-  , defaultWorkspaceCreationProperties
-  , dwcpCustomSecurityGroupId
-  , dwcpUserEnabledAsLocalAdministrator
-  , dwcpEnableWorkDocs
-  , dwcpEnableInternetAccess
-  , dwcpDefaultOu
+    , DefaultWorkspaceCreationProperties
+    , defaultWorkspaceCreationProperties
+    , dwcpCustomSecurityGroupId
+    , dwcpUserEnabledAsLocalAdministrator
+    , dwcpEnableWorkDocs
+    , dwcpEnableInternetAccess
+    , dwcpDefaultOu
+
     -- ** FailedCreateWorkspaceRequest
-  , FailedCreateWorkspaceRequest
-  , failedCreateWorkspaceRequest
-  , fcwrWorkspaceRequest
-  , fcwrErrorCode
-  , fcwrErrorMessage
+    , FailedCreateWorkspaceRequest
+    , failedCreateWorkspaceRequest
+    , fcwrWorkspaceRequest
+    , fcwrErrorCode
+    , fcwrErrorMessage
+
     -- ** FailedWorkspaceChangeRequest
-  , FailedWorkspaceChangeRequest
-  , failedWorkspaceChangeRequest
-  , fwcrErrorCode
-  , fwcrWorkspaceId
-  , fwcrErrorMessage
+    , FailedWorkspaceChangeRequest
+    , failedWorkspaceChangeRequest
+    , fwcrErrorCode
+    , fwcrWorkspaceId
+    , fwcrErrorMessage
+
     -- ** IPRuleItem
-  , IPRuleItem
-  , ipRuleItem
-  , iriRuleDesc
-  , iriIpRule
+    , IPRuleItem
+    , ipRuleItem
+    , iriRuleDesc
+    , iriIpRule
+
     -- ** ModificationState
-  , ModificationState
-  , modificationState
-  , msState
-  , msResource
+    , ModificationState
+    , modificationState
+    , msState
+    , msResource
+
     -- ** RebootRequest
-  , RebootRequest
-  , rebootRequest
-  , rWorkspaceId
+    , RebootRequest
+    , rebootRequest
+    , rWorkspaceId
+
     -- ** RebuildRequest
-  , RebuildRequest
-  , rebuildRequest
-  , rrWorkspaceId
+    , RebuildRequest
+    , rebuildRequest
+    , rrWorkspaceId
+
     -- ** RootStorage
-  , RootStorage
-  , rootStorage
-  , rsCapacity
+    , RootStorage
+    , rootStorage
+    , rsCapacity
+
     -- ** StartRequest
-  , StartRequest
-  , startRequest
-  , sWorkspaceId
+    , StartRequest
+    , startRequest
+    , sWorkspaceId
+
     -- ** StopRequest
-  , StopRequest
-  , stopRequest
-  , srWorkspaceId
+    , StopRequest
+    , stopRequest
+    , srWorkspaceId
+
     -- ** Tag
-  , Tag
-  , tag
-  , tagValue
-  , tagKey
+    , Tag
+    , tag
+    , tagValue
+    , tagKey
+
     -- ** TerminateRequest
-  , TerminateRequest
-  , terminateRequest
-  , trWorkspaceId
+    , TerminateRequest
+    , terminateRequest
+    , trWorkspaceId
+
     -- ** UserStorage
-  , UserStorage
-  , userStorage
-  , usCapacity
+    , UserStorage
+    , userStorage
+    , usCapacity
+
     -- ** Workspace
-  , Workspace
-  , workspace
-  , wDirectoryId
-  , wState
-  , wIPAddress
-  , wModificationStates
-  , wUserName
-  , wSubnetId
-  , wBundleId
-  , wWorkspaceProperties
-  , wRootVolumeEncryptionEnabled
-  , wErrorCode
-  , wVolumeEncryptionKey
-  , wComputerName
-  , wWorkspaceId
-  , wUserVolumeEncryptionEnabled
-  , wErrorMessage
+    , Workspace
+    , workspace
+    , wDirectoryId
+    , wState
+    , wIPAddress
+    , wModificationStates
+    , wUserName
+    , wSubnetId
+    , wBundleId
+    , wWorkspaceProperties
+    , wRootVolumeEncryptionEnabled
+    , wErrorCode
+    , wVolumeEncryptionKey
+    , wComputerName
+    , wWorkspaceId
+    , wUserVolumeEncryptionEnabled
+    , wErrorMessage
+
     -- ** WorkspaceBundle
-  , WorkspaceBundle
-  , workspaceBundle
-  , wbBundleId
-  , wbOwner
-  , wbRootStorage
-  , wbName
-  , wbComputeType
-  , wbUserStorage
-  , wbDescription
+    , WorkspaceBundle
+    , workspaceBundle
+    , wbBundleId
+    , wbOwner
+    , wbRootStorage
+    , wbName
+    , wbComputeType
+    , wbUserStorage
+    , wbDescription
+
     -- ** WorkspaceConnectionStatus
-  , WorkspaceConnectionStatus
-  , workspaceConnectionStatus
-  , wcsLastKnownUserConnectionTimestamp
-  , wcsConnectionStateCheckTimestamp
-  , wcsWorkspaceId
-  , wcsConnectionState
+    , WorkspaceConnectionStatus
+    , workspaceConnectionStatus
+    , wcsLastKnownUserConnectionTimestamp
+    , wcsConnectionStateCheckTimestamp
+    , wcsWorkspaceId
+    , wcsConnectionState
+
     -- ** WorkspaceDirectory
-  , WorkspaceDirectory
-  , workspaceDirectory
-  , wdRegistrationCode
-  , wdIAMRoleId
-  , wdDirectoryId
-  , wdState
-  , wdCustomerUserName
-  , wdSubnetIds
-  , wdIpGroupIds
-  , wdAlias
-  , wdWorkspaceSecurityGroupId
-  , wdDirectoryType
-  , wdWorkspaceCreationProperties
-  , wdDNSIPAddresses
-  , wdDirectoryName
+    , WorkspaceDirectory
+    , workspaceDirectory
+    , wdRegistrationCode
+    , wdIAMRoleId
+    , wdDirectoryId
+    , wdState
+    , wdCustomerUserName
+    , wdSubnetIds
+    , wdIpGroupIds
+    , wdAlias
+    , wdWorkspaceSecurityGroupId
+    , wdDirectoryType
+    , wdWorkspaceCreationProperties
+    , wdDNSIPAddresses
+    , wdDirectoryName
+
     -- ** WorkspaceProperties
-  , WorkspaceProperties
-  , workspaceProperties
-  , wpComputeTypeName
-  , wpRunningMode
-  , wpRootVolumeSizeGib
-  , wpRunningModeAutoStopTimeoutInMinutes
-  , wpUserVolumeSizeGib
+    , WorkspaceProperties
+    , workspaceProperties
+    , wpComputeTypeName
+    , wpRunningMode
+    , wpRootVolumeSizeGib
+    , wpRunningModeAutoStopTimeoutInMinutes
+    , wpUserVolumeSizeGib
+
     -- ** WorkspaceRequest
-  , WorkspaceRequest
-  , workspaceRequest
-  , wrWorkspaceProperties
-  , wrRootVolumeEncryptionEnabled
-  , wrVolumeEncryptionKey
-  , wrUserVolumeEncryptionEnabled
-  , wrTags
-  , wrDirectoryId
-  , wrUserName
-  , wrBundleId
+    , WorkspaceRequest
+    , workspaceRequest
+    , wrWorkspaceProperties
+    , wrRootVolumeEncryptionEnabled
+    , wrVolumeEncryptionKey
+    , wrUserVolumeEncryptionEnabled
+    , wrTags
+    , wrDirectoryId
+    , wrUserName
+    , wrBundleId
+
     -- ** WorkspacesIPGroup
-  , WorkspacesIPGroup
-  , workspacesIPGroup
-  , wigGroupDesc
-  , wigUserRules
-  , wigGroupId
-  , wigGroupName
-  ) where
+    , WorkspacesIPGroup
+    , workspacesIPGroup
+    , wigGroupDesc
+    , wigUserRules
+    , wigGroupId
+    , wigGroupName
+    ) where
 
 import Network.AWS.WorkSpaces.AssociateIPGroups
 import Network.AWS.WorkSpaces.AuthorizeIPRules
@@ -283,12 +354,14 @@ import Network.AWS.WorkSpaces.TerminateWorkspaces
 import Network.AWS.WorkSpaces.Types
 import Network.AWS.WorkSpaces.UpdateRulesOfIPGroup
 import Network.AWS.WorkSpaces.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'WorkSpaces'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -305,6 +378,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

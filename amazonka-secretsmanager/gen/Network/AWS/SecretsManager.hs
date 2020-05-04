@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SecretsManager
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -37,98 +38,132 @@
 -- AWS Secrets Manager supports AWS CloudTrail, a service that records AWS API calls for your AWS account and delivers log files to an Amazon S3 bucket. By using information that's collected by AWS CloudTrail, you can determine which requests were successfully made to Secrets Manager, who made the request, when it was made, and so on. For more about AWS Secrets Manager and its support for AWS CloudTrail, see <http://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring.html#monitoring_cloudtrail Logging AWS Secrets Manager Events with AWS CloudTrail> in the /AWS Secrets Manager User Guide/ . To learn more about CloudTrail, including how to turn it on and find your log files, see the <http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html AWS CloudTrail User Guide> .
 --
 module Network.AWS.SecretsManager
+    (
     -- * Service Configuration
-  ( secretsManager
+      secretsManager
+
     -- * Errors
     -- $errors
+
     -- ** MalformedPolicyDocumentException
-  , _MalformedPolicyDocumentException
+    , _MalformedPolicyDocumentException
+
     -- ** InvalidParameterException
-  , _InvalidParameterException
+    , _InvalidParameterException
+
     -- ** InvalidRequestException
-  , _InvalidRequestException
+    , _InvalidRequestException
+
     -- ** DecryptionFailure
-  , _DecryptionFailure
+    , _DecryptionFailure
+
     -- ** EncryptionFailure
-  , _EncryptionFailure
+    , _EncryptionFailure
+
     -- ** InvalidNextTokenException
-  , _InvalidNextTokenException
+    , _InvalidNextTokenException
+
     -- ** InternalServiceError
-  , _InternalServiceError
+    , _InternalServiceError
+
     -- ** ResourceExistsException
-  , _ResourceExistsException
+    , _ResourceExistsException
+
     -- ** ResourceNotFoundException
-  , _ResourceNotFoundException
+    , _ResourceNotFoundException
+
     -- ** LimitExceededException
-  , _LimitExceededException
+    , _LimitExceededException
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
+
     -- ** DeleteSecret
-  , module Network.AWS.SecretsManager.DeleteSecret
-    -- ** ListSecrets
-  , module Network.AWS.SecretsManager.ListSecrets
+    , module Network.AWS.SecretsManager.DeleteSecret
+
+    -- ** ListSecrets (Paginated)
+    , module Network.AWS.SecretsManager.ListSecrets
+
     -- ** UpdateSecret
-  , module Network.AWS.SecretsManager.UpdateSecret
+    , module Network.AWS.SecretsManager.UpdateSecret
+
     -- ** RotateSecret
-  , module Network.AWS.SecretsManager.RotateSecret
+    , module Network.AWS.SecretsManager.RotateSecret
+
     -- ** CreateSecret
-  , module Network.AWS.SecretsManager.CreateSecret
+    , module Network.AWS.SecretsManager.CreateSecret
+
     -- ** GetSecretValue
-  , module Network.AWS.SecretsManager.GetSecretValue
+    , module Network.AWS.SecretsManager.GetSecretValue
+
     -- ** DescribeSecret
-  , module Network.AWS.SecretsManager.DescribeSecret
+    , module Network.AWS.SecretsManager.DescribeSecret
+
     -- ** RestoreSecret
-  , module Network.AWS.SecretsManager.RestoreSecret
+    , module Network.AWS.SecretsManager.RestoreSecret
+
     -- ** CancelRotateSecret
-  , module Network.AWS.SecretsManager.CancelRotateSecret
+    , module Network.AWS.SecretsManager.CancelRotateSecret
+
     -- ** PutSecretValue
-  , module Network.AWS.SecretsManager.PutSecretValue
+    , module Network.AWS.SecretsManager.PutSecretValue
+
     -- ** GetRandomPassword
-  , module Network.AWS.SecretsManager.GetRandomPassword
-    -- ** ListSecretVersionIds
-  , module Network.AWS.SecretsManager.ListSecretVersionIds
+    , module Network.AWS.SecretsManager.GetRandomPassword
+
+    -- ** ListSecretVersionIds (Paginated)
+    , module Network.AWS.SecretsManager.ListSecretVersionIds
+
     -- ** TagResource
-  , module Network.AWS.SecretsManager.TagResource
+    , module Network.AWS.SecretsManager.TagResource
+
     -- ** UntagResource
-  , module Network.AWS.SecretsManager.UntagResource
+    , module Network.AWS.SecretsManager.UntagResource
+
     -- ** UpdateSecretVersionStage
-  , module Network.AWS.SecretsManager.UpdateSecretVersionStage
+    , module Network.AWS.SecretsManager.UpdateSecretVersionStage
+
     -- * Types
+
     -- ** RotationRulesType
-  , RotationRulesType
-  , rotationRulesType
-  , rrtAutomaticallyAfterDays
+    , RotationRulesType
+    , rotationRulesType
+    , rrtAutomaticallyAfterDays
+
     -- ** SecretListEntry
-  , SecretListEntry
-  , secretListEntry
-  , sleLastChangedDate
-  , sleARN
-  , sleSecretVersionsToStages
-  , sleRotationRules
-  , sleDeletedDate
-  , sleRotationEnabled
-  , sleKMSKeyId
-  , sleName
-  , sleLastRotatedDate
-  , sleLastAccessedDate
-  , sleDescription
-  , sleRotationLambdaARN
-  , sleTags
+    , SecretListEntry
+    , secretListEntry
+    , sleLastChangedDate
+    , sleARN
+    , sleSecretVersionsToStages
+    , sleRotationRules
+    , sleDeletedDate
+    , sleRotationEnabled
+    , sleKMSKeyId
+    , sleName
+    , sleLastRotatedDate
+    , sleLastAccessedDate
+    , sleDescription
+    , sleRotationLambdaARN
+    , sleTags
+
     -- ** SecretVersionsListEntry
-  , SecretVersionsListEntry
-  , secretVersionsListEntry
-  , svleVersionId
-  , svleVersionStages
-  , svleCreatedDate
-  , svleLastAccessedDate
+    , SecretVersionsListEntry
+    , secretVersionsListEntry
+    , svleVersionId
+    , svleVersionStages
+    , svleCreatedDate
+    , svleLastAccessedDate
+
     -- ** Tag
-  , Tag
-  , tag
-  , tagValue
-  , tagKey
-  ) where
+    , Tag
+    , tag
+    , tagValue
+    , tagKey
+    ) where
 
 import Network.AWS.SecretsManager.CancelRotateSecret
 import Network.AWS.SecretsManager.CreateSecret
@@ -147,12 +182,14 @@ import Network.AWS.SecretsManager.UntagResource
 import Network.AWS.SecretsManager.UpdateSecret
 import Network.AWS.SecretsManager.UpdateSecretVersionStage
 import Network.AWS.SecretsManager.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'SecretsManager'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -169,6 +206,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

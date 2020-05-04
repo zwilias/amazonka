@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Pricing
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -26,61 +27,80 @@
 --
 --
 module Network.AWS.Pricing
+    (
     -- * Service Configuration
-  ( pricing
+      pricing
+
     -- * Errors
     -- $errors
+
     -- ** InvalidParameterException
-  , _InvalidParameterException
+    , _InvalidParameterException
+
     -- ** InternalErrorException
-  , _InternalErrorException
+    , _InternalErrorException
+
     -- ** ExpiredNextTokenException
-  , _ExpiredNextTokenException
+    , _ExpiredNextTokenException
+
     -- ** NotFoundException
-  , _NotFoundException
+    , _NotFoundException
+
     -- ** InvalidNextTokenException
-  , _InvalidNextTokenException
+    , _InvalidNextTokenException
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
+
     -- ** GetAttributeValues (Paginated)
-  , module Network.AWS.Pricing.GetAttributeValues
+    , module Network.AWS.Pricing.GetAttributeValues
+
     -- ** DescribeServices (Paginated)
-  , module Network.AWS.Pricing.DescribeServices
+    , module Network.AWS.Pricing.DescribeServices
+
     -- ** GetProducts (Paginated)
-  , module Network.AWS.Pricing.GetProducts
+    , module Network.AWS.Pricing.GetProducts
+
     -- * Types
+
     -- ** FilterType
-  , FilterType(..)
+    , FilterType (..)
+
     -- ** AttributeValue
-  , AttributeValue
-  , attributeValue
-  , avValue
+    , AttributeValue
+    , attributeValue
+    , avValue
+
     -- ** Filter
-  , Filter
-  , filter'
-  , fType
-  , fField
-  , fValue
+    , Filter
+    , filter'
+    , fType
+    , fField
+    , fValue
+
     -- ** PricingService
-  , PricingService
-  , pricingService
-  , psAttributeNames
-  , psServiceCode
-  ) where
+    , PricingService
+    , pricingService
+    , psAttributeNames
+    , psServiceCode
+    ) where
 
 import Network.AWS.Pricing.DescribeServices
 import Network.AWS.Pricing.GetAttributeValues
 import Network.AWS.Pricing.GetProducts
 import Network.AWS.Pricing.Types
 import Network.AWS.Pricing.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'Pricing'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -97,6 +117,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

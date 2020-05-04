@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.APIGateway.GetRequestValidator
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,21 +22,23 @@
 --
 --
 module Network.AWS.APIGateway.GetRequestValidator
+    (
     -- * Creating a Request
-  ( getRequestValidator
-  , GetRequestValidator
+      getRequestValidator
+    , GetRequestValidator
     -- * Request Lenses
-  , grvrRestAPIId
-  , grvrRequestValidatorId
+    , grvrRestAPIId
+    , grvrRequestValidatorId
+
     -- * Destructuring the Response
-  , requestValidator
-  , RequestValidator
+    , requestValidator
+    , RequestValidator
     -- * Response Lenses
-  , rvValidateRequestParameters
-  , rvName
-  , rvValidateRequestBody
-  , rvId
-  ) where
+    , rvValidateRequestParameters
+    , rvName
+    , rvValidateRequestBody
+    , rvId
+    ) where
 
 import Network.AWS.APIGateway.Types
 import Network.AWS.APIGateway.Types.Product
@@ -55,6 +59,7 @@ data GetRequestValidator =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetRequestValidator' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -62,45 +67,45 @@ data GetRequestValidator =
 -- * 'grvrRestAPIId' - [Required] The string identifier of the associated 'RestApi' .
 --
 -- * 'grvrRequestValidatorId' - [Required] The identifier of the 'RequestValidator' to be retrieved.
-getRequestValidator ::
-     Text -- ^ 'grvrRestAPIId'
-  -> Text -- ^ 'grvrRequestValidatorId'
-  -> GetRequestValidator
+getRequestValidator
+    :: Text -- ^ 'grvrRestAPIId'
+    -> Text -- ^ 'grvrRequestValidatorId'
+    -> GetRequestValidator
 getRequestValidator pRestAPIId_ pRequestValidatorId_ =
   GetRequestValidator'
     { _grvrRestAPIId = pRestAPIId_
     , _grvrRequestValidatorId = pRequestValidatorId_
     }
 
+
 -- | [Required] The string identifier of the associated 'RestApi' .
 grvrRestAPIId :: Lens' GetRequestValidator Text
-grvrRestAPIId = lens _grvrRestAPIId (\s a -> s {_grvrRestAPIId = a})
+grvrRestAPIId = lens _grvrRestAPIId (\ s a -> s{_grvrRestAPIId = a})
 
 -- | [Required] The identifier of the 'RequestValidator' to be retrieved.
 grvrRequestValidatorId :: Lens' GetRequestValidator Text
-grvrRequestValidatorId =
-  lens _grvrRequestValidatorId (\s a -> s {_grvrRequestValidatorId = a})
+grvrRequestValidatorId = lens _grvrRequestValidatorId (\ s a -> s{_grvrRequestValidatorId = a})
 
 instance AWSRequest GetRequestValidator where
-  type Rs GetRequestValidator = RequestValidator
-  request = get apiGateway
-  response = receiveJSON (\s h x -> eitherParseJSON x)
+        type Rs GetRequestValidator = RequestValidator
+        request = get apiGateway
+        response = receiveJSON (\ s h x -> eitherParseJSON x)
 
-instance Hashable GetRequestValidator
+instance Hashable GetRequestValidator where
 
-instance NFData GetRequestValidator
+instance NFData GetRequestValidator where
 
 instance ToHeaders GetRequestValidator where
-  toHeaders = const (mconcat ["Accept" =# ("application/json" :: ByteString)])
+        toHeaders
+          = const
+              (mconcat
+                 ["Accept" =# ("application/json" :: ByteString)])
 
 instance ToPath GetRequestValidator where
-  toPath GetRequestValidator' {..} =
-    mconcat
-      [ "/restapis/"
-      , toBS _grvrRestAPIId
-      , "/requestvalidators/"
-      , toBS _grvrRequestValidatorId
-      ]
+        toPath GetRequestValidator'{..}
+          = mconcat
+              ["/restapis/", toBS _grvrRestAPIId,
+               "/requestvalidators/", toBS _grvrRequestValidatorId]
 
 instance ToQuery GetRequestValidator where
-  toQuery = const mempty
+        toQuery = const mempty

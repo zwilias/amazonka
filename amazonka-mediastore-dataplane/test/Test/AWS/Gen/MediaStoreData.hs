@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Test.AWS.Gen.MediaStoreData
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -23,6 +24,7 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
+
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -42,6 +44,7 @@ import Test.Tasty
 --             listItems
 --
 --           ]
+
 --     , testGroup "response"
 --         [ responsePutObject $
 --             putObjectResponse
@@ -60,47 +63,54 @@ import Test.Tasty
 --
 --           ]
 --     ]
+
 -- Requests
+
 requestDeleteObject :: DeleteObject -> TestTree
-requestDeleteObject = req "DeleteObject" "fixture/DeleteObject.yaml"
+requestDeleteObject = req
+    "DeleteObject"
+    "fixture/DeleteObject.yaml"
 
 requestDescribeObject :: DescribeObject -> TestTree
-requestDescribeObject = req "DescribeObject" "fixture/DescribeObject.yaml"
+requestDescribeObject = req
+    "DescribeObject"
+    "fixture/DescribeObject.yaml"
 
 requestGetObject :: GetObject -> TestTree
-requestGetObject = req "GetObject" "fixture/GetObject.yaml"
+requestGetObject = req
+    "GetObject"
+    "fixture/GetObject.yaml"
 
 requestListItems :: ListItems -> TestTree
-requestListItems = req "ListItems" "fixture/ListItems.yaml"
+requestListItems = req
+    "ListItems"
+    "fixture/ListItems.yaml"
 
 -- Responses
+
 responsePutObject :: PutObjectResponse -> TestTree
-responsePutObject =
-  res
+responsePutObject = res
     "PutObjectResponse"
     "fixture/PutObjectResponse.proto"
     mediaStoreData
     (Proxy :: Proxy PutObject)
 
 responseDeleteObject :: DeleteObjectResponse -> TestTree
-responseDeleteObject =
-  res
+responseDeleteObject = res
     "DeleteObjectResponse"
     "fixture/DeleteObjectResponse.proto"
     mediaStoreData
     (Proxy :: Proxy DeleteObject)
 
 responseDescribeObject :: DescribeObjectResponse -> TestTree
-responseDescribeObject =
-  res
+responseDescribeObject = res
     "DescribeObjectResponse"
     "fixture/DescribeObjectResponse.proto"
     mediaStoreData
     (Proxy :: Proxy DescribeObject)
 
 responseListItems :: ListItemsResponse -> TestTree
-responseListItems =
-  res
+responseListItems = res
     "ListItemsResponse"
     "fixture/ListItemsResponse.proto"
     mediaStoreData

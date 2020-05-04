@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SageMaker.CreateModel
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -28,22 +30,24 @@
 -- In the request, you also provide an IAM role that Amazon SageMaker can assume to access model artifacts and docker image for deployment on ML compute hosting instances. In addition, you also use the IAM role to manage permissions the inference code needs. For example, if the inference code access any other AWS resources, you grant necessary permissions via this role.
 --
 module Network.AWS.SageMaker.CreateModel
+    (
     -- * Creating a Request
-  ( createModel
-  , CreateModel
+      createModel
+    , CreateModel
     -- * Request Lenses
-  , cmVPCConfig
-  , cmTags
-  , cmModelName
-  , cmPrimaryContainer
-  , cmExecutionRoleARN
+    , cmVPCConfig
+    , cmTags
+    , cmModelName
+    , cmPrimaryContainer
+    , cmExecutionRoleARN
+
     -- * Destructuring the Response
-  , createModelResponse
-  , CreateModelResponse
+    , createModelResponse
+    , CreateModelResponse
     -- * Response Lenses
-  , cmrsResponseStatus
-  , cmrsModelARN
-  ) where
+    , cmrsResponseStatus
+    , cmrsModelARN
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -63,6 +67,7 @@ data CreateModel =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateModel' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -76,11 +81,11 @@ data CreateModel =
 -- * 'cmPrimaryContainer' - The location of the primary docker image containing inference code, associated artifacts, and custom environment map that the inference code uses when the model is deployed into production.
 --
 -- * 'cmExecutionRoleARN' - The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can assume to access model artifacts and docker image for deployment on ML compute instances. Deploying on ML compute instances is part of model hosting. For more information, see <http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html Amazon SageMaker Roles> .
-createModel ::
-     Text -- ^ 'cmModelName'
-  -> ContainerDefinition -- ^ 'cmPrimaryContainer'
-  -> Text -- ^ 'cmExecutionRoleARN'
-  -> CreateModel
+createModel
+    :: Text -- ^ 'cmModelName'
+    -> ContainerDefinition -- ^ 'cmPrimaryContainer'
+    -> Text -- ^ 'cmExecutionRoleARN'
+    -> CreateModel
 createModel pModelName_ pPrimaryContainer_ pExecutionRoleARN_ =
   CreateModel'
     { _cmVPCConfig = Nothing
@@ -90,64 +95,64 @@ createModel pModelName_ pPrimaryContainer_ pExecutionRoleARN_ =
     , _cmExecutionRoleARN = pExecutionRoleARN_
     }
 
+
 -- | A object that specifies the VPC that you want your model to connect to. Control access to and from your training container by configuring the VPC. For more information, see 'host-vpc' .
 cmVPCConfig :: Lens' CreateModel (Maybe VPCConfig)
-cmVPCConfig = lens _cmVPCConfig (\s a -> s {_cmVPCConfig = a})
+cmVPCConfig = lens _cmVPCConfig (\ s a -> s{_cmVPCConfig = a})
 
 -- | An array of key-value pairs. For more information, see <http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what Using Cost Allocation Tags> in the /AWS Billing and Cost Management User Guide/ .
 cmTags :: Lens' CreateModel [Tag]
-cmTags = lens _cmTags (\s a -> s {_cmTags = a}) . _Default . _Coerce
+cmTags = lens _cmTags (\ s a -> s{_cmTags = a}) . _Default . _Coerce
 
 -- | The name of the new model.
 cmModelName :: Lens' CreateModel Text
-cmModelName = lens _cmModelName (\s a -> s {_cmModelName = a})
+cmModelName = lens _cmModelName (\ s a -> s{_cmModelName = a})
 
 -- | The location of the primary docker image containing inference code, associated artifacts, and custom environment map that the inference code uses when the model is deployed into production.
 cmPrimaryContainer :: Lens' CreateModel ContainerDefinition
-cmPrimaryContainer =
-  lens _cmPrimaryContainer (\s a -> s {_cmPrimaryContainer = a})
+cmPrimaryContainer = lens _cmPrimaryContainer (\ s a -> s{_cmPrimaryContainer = a})
 
 -- | The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can assume to access model artifacts and docker image for deployment on ML compute instances. Deploying on ML compute instances is part of model hosting. For more information, see <http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html Amazon SageMaker Roles> .
 cmExecutionRoleARN :: Lens' CreateModel Text
-cmExecutionRoleARN =
-  lens _cmExecutionRoleARN (\s a -> s {_cmExecutionRoleARN = a})
+cmExecutionRoleARN = lens _cmExecutionRoleARN (\ s a -> s{_cmExecutionRoleARN = a})
 
 instance AWSRequest CreateModel where
-  type Rs CreateModel = CreateModelResponse
-  request = postJSON sageMaker
-  response =
-    receiveJSON
-      (\s h x ->
-         CreateModelResponse' <$> (pure (fromEnum s)) <*> (x .:> "ModelArn"))
+        type Rs CreateModel = CreateModelResponse
+        request = postJSON sageMaker
+        response
+          = receiveJSON
+              (\ s h x ->
+                 CreateModelResponse' <$>
+                   (pure (fromEnum s)) <*> (x .:> "ModelArn"))
 
-instance Hashable CreateModel
+instance Hashable CreateModel where
 
-instance NFData CreateModel
+instance NFData CreateModel where
 
 instance ToHeaders CreateModel where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("SageMaker.CreateModel" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("SageMaker.CreateModel" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON CreateModel where
-  toJSON CreateModel' {..} =
-    object
-      (catMaybes
-         [ ("VpcConfig" .=) <$> _cmVPCConfig
-         , ("Tags" .=) <$> _cmTags
-         , Just ("ModelName" .= _cmModelName)
-         , Just ("PrimaryContainer" .= _cmPrimaryContainer)
-         , Just ("ExecutionRoleArn" .= _cmExecutionRoleARN)
-         ])
+        toJSON CreateModel'{..}
+          = object
+              (catMaybes
+                 [("VpcConfig" .=) <$> _cmVPCConfig,
+                  ("Tags" .=) <$> _cmTags,
+                  Just ("ModelName" .= _cmModelName),
+                  Just ("PrimaryContainer" .= _cmPrimaryContainer),
+                  Just ("ExecutionRoleArn" .= _cmExecutionRoleARN)])
 
 instance ToPath CreateModel where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery CreateModel where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'createModelResponse' smart constructor.
 data CreateModelResponse =
@@ -157,6 +162,7 @@ data CreateModelResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateModelResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -164,21 +170,21 @@ data CreateModelResponse =
 -- * 'cmrsResponseStatus' - -- | The response status code.
 --
 -- * 'cmrsModelARN' - The ARN of the model created in Amazon SageMaker.
-createModelResponse ::
-     Int -- ^ 'cmrsResponseStatus'
-  -> Text -- ^ 'cmrsModelARN'
-  -> CreateModelResponse
+createModelResponse
+    :: Int -- ^ 'cmrsResponseStatus'
+    -> Text -- ^ 'cmrsModelARN'
+    -> CreateModelResponse
 createModelResponse pResponseStatus_ pModelARN_ =
   CreateModelResponse'
     {_cmrsResponseStatus = pResponseStatus_, _cmrsModelARN = pModelARN_}
 
+
 -- | -- | The response status code.
 cmrsResponseStatus :: Lens' CreateModelResponse Int
-cmrsResponseStatus =
-  lens _cmrsResponseStatus (\s a -> s {_cmrsResponseStatus = a})
+cmrsResponseStatus = lens _cmrsResponseStatus (\ s a -> s{_cmrsResponseStatus = a})
 
 -- | The ARN of the model created in Amazon SageMaker.
 cmrsModelARN :: Lens' CreateModelResponse Text
-cmrsModelARN = lens _cmrsModelARN (\s a -> s {_cmrsModelARN = a})
+cmrsModelARN = lens _cmrsModelARN (\ s a -> s{_cmrsModelARN = a})
 
-instance NFData CreateModelResponse
+instance NFData CreateModelResponse where

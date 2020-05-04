@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.EFS.DescribeTags
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,22 +26,24 @@
 --
 -- This operation returns paginated results.
 module Network.AWS.EFS.DescribeTags
+    (
     -- * Creating a Request
-  ( describeTags
-  , DescribeTags
+      describeTags
+    , DescribeTags
     -- * Request Lenses
-  , dtMarker
-  , dtMaxItems
-  , dtFileSystemId
+    , dtMarker
+    , dtMaxItems
+    , dtFileSystemId
+
     -- * Destructuring the Response
-  , describeTagsResponse
-  , DescribeTagsResponse
+    , describeTagsResponse
+    , DescribeTagsResponse
     -- * Response Lenses
-  , dtrsMarker
-  , dtrsNextMarker
-  , dtrsResponseStatus
-  , dtrsTags
-  ) where
+    , dtrsMarker
+    , dtrsNextMarker
+    , dtrsResponseStatus
+    , dtrsTags
+    ) where
 
 import Network.AWS.EFS.Types
 import Network.AWS.EFS.Types.Product
@@ -62,6 +66,7 @@ data DescribeTags =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeTags' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -71,9 +76,9 @@ data DescribeTags =
 -- * 'dtMaxItems' - (Optional) Maximum number of file system tags to return in the response. It must be an integer with a value greater than zero.
 --
 -- * 'dtFileSystemId' - ID of the file system whose tag set you want to retrieve.
-describeTags ::
-     Text -- ^ 'dtFileSystemId'
-  -> DescribeTags
+describeTags
+    :: Text -- ^ 'dtFileSystemId'
+    -> DescribeTags
 describeTags pFileSystemId_ =
   DescribeTags'
     { _dtMarker = Nothing
@@ -81,48 +86,53 @@ describeTags pFileSystemId_ =
     , _dtFileSystemId = pFileSystemId_
     }
 
+
 -- | (Optional) Opaque pagination token returned from a previous @DescribeTags@ operation (String). If present, it specifies to continue the list from where the previous call left off.
 dtMarker :: Lens' DescribeTags (Maybe Text)
-dtMarker = lens _dtMarker (\s a -> s {_dtMarker = a})
+dtMarker = lens _dtMarker (\ s a -> s{_dtMarker = a})
 
 -- | (Optional) Maximum number of file system tags to return in the response. It must be an integer with a value greater than zero.
 dtMaxItems :: Lens' DescribeTags (Maybe Natural)
-dtMaxItems = lens _dtMaxItems (\s a -> s {_dtMaxItems = a}) . mapping _Nat
+dtMaxItems = lens _dtMaxItems (\ s a -> s{_dtMaxItems = a}) . mapping _Nat
 
 -- | ID of the file system whose tag set you want to retrieve.
 dtFileSystemId :: Lens' DescribeTags Text
-dtFileSystemId = lens _dtFileSystemId (\s a -> s {_dtFileSystemId = a})
+dtFileSystemId = lens _dtFileSystemId (\ s a -> s{_dtFileSystemId = a})
 
 instance AWSPager DescribeTags where
-  page rq rs
-    | stop (rs ^. dtrsNextMarker) = Nothing
-    | stop (rs ^. dtrsTags) = Nothing
-    | otherwise = Just $ rq & dtMarker .~ rs ^. dtrsNextMarker
+        page rq rs
+          | stop (rs ^. dtrsNextMarker) = Nothing
+          | stop (rs ^. dtrsTags) = Nothing
+          | otherwise =
+            Just $ rq & dtMarker .~ rs ^. dtrsNextMarker
 
 instance AWSRequest DescribeTags where
-  type Rs DescribeTags = DescribeTagsResponse
-  request = get efs
-  response =
-    receiveJSON
-      (\s h x ->
-         DescribeTagsResponse' <$> (x .?> "Marker") <*> (x .?> "NextMarker") <*>
-         (pure (fromEnum s)) <*>
-         (x .?> "Tags" .!@ mempty))
+        type Rs DescribeTags = DescribeTagsResponse
+        request = get efs
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DescribeTagsResponse' <$>
+                   (x .?> "Marker") <*> (x .?> "NextMarker") <*>
+                     (pure (fromEnum s))
+                     <*> (x .?> "Tags" .!@ mempty))
 
-instance Hashable DescribeTags
+instance Hashable DescribeTags where
 
-instance NFData DescribeTags
+instance NFData DescribeTags where
 
 instance ToHeaders DescribeTags where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath DescribeTags where
-  toPath DescribeTags' {..} =
-    mconcat ["/2015-02-01/tags/", toBS _dtFileSystemId, "/"]
+        toPath DescribeTags'{..}
+          = mconcat
+              ["/2015-02-01/tags/", toBS _dtFileSystemId, "/"]
 
 instance ToQuery DescribeTags where
-  toQuery DescribeTags' {..} =
-    mconcat ["Marker" =: _dtMarker, "MaxItems" =: _dtMaxItems]
+        toQuery DescribeTags'{..}
+          = mconcat
+              ["Marker" =: _dtMarker, "MaxItems" =: _dtMaxItems]
 
 -- |
 --
@@ -138,6 +148,7 @@ data DescribeTagsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeTagsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -149,9 +160,9 @@ data DescribeTagsResponse =
 -- * 'dtrsResponseStatus' - -- | The response status code.
 --
 -- * 'dtrsTags' - Returns tags associated with the file system as an array of @Tag@ objects.
-describeTagsResponse ::
-     Int -- ^ 'dtrsResponseStatus'
-  -> DescribeTagsResponse
+describeTagsResponse
+    :: Int -- ^ 'dtrsResponseStatus'
+    -> DescribeTagsResponse
 describeTagsResponse pResponseStatus_ =
   DescribeTagsResponse'
     { _dtrsMarker = Nothing
@@ -160,21 +171,21 @@ describeTagsResponse pResponseStatus_ =
     , _dtrsTags = mempty
     }
 
+
 -- | If the request included a @Marker@ , the response returns that value in this field.
 dtrsMarker :: Lens' DescribeTagsResponse (Maybe Text)
-dtrsMarker = lens _dtrsMarker (\s a -> s {_dtrsMarker = a})
+dtrsMarker = lens _dtrsMarker (\ s a -> s{_dtrsMarker = a})
 
 -- | If a value is present, there are more tags to return. In a subsequent request, you can provide the value of @NextMarker@ as the value of the @Marker@ parameter in your next request to retrieve the next set of tags.
 dtrsNextMarker :: Lens' DescribeTagsResponse (Maybe Text)
-dtrsNextMarker = lens _dtrsNextMarker (\s a -> s {_dtrsNextMarker = a})
+dtrsNextMarker = lens _dtrsNextMarker (\ s a -> s{_dtrsNextMarker = a})
 
 -- | -- | The response status code.
 dtrsResponseStatus :: Lens' DescribeTagsResponse Int
-dtrsResponseStatus =
-  lens _dtrsResponseStatus (\s a -> s {_dtrsResponseStatus = a})
+dtrsResponseStatus = lens _dtrsResponseStatus (\ s a -> s{_dtrsResponseStatus = a})
 
 -- | Returns tags associated with the file system as an array of @Tag@ objects.
 dtrsTags :: Lens' DescribeTagsResponse [Tag]
-dtrsTags = lens _dtrsTags (\s a -> s {_dtrsTags = a}) . _Coerce
+dtrsTags = lens _dtrsTags (\ s a -> s{_dtrsTags = a}) . _Coerce
 
-instance NFData DescribeTagsResponse
+instance NFData DescribeTagsResponse where

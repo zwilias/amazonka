@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CloudDirectory.BatchRead
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,20 +22,22 @@
 --
 --
 module Network.AWS.CloudDirectory.BatchRead
+    (
     -- * Creating a Request
-  ( batchRead
-  , BatchRead
+      batchRead
+    , BatchRead
     -- * Request Lenses
-  , brConsistencyLevel
-  , brDirectoryARN
-  , brOperations
+    , brConsistencyLevel
+    , brDirectoryARN
+    , brOperations
+
     -- * Destructuring the Response
-  , batchReadResponse
-  , BatchReadResponse
+    , batchReadResponse
+    , BatchReadResponse
     -- * Response Lenses
-  , brrsResponses
-  , brrsResponseStatus
-  ) where
+    , brrsResponses
+    , brrsResponseStatus
+    ) where
 
 import Network.AWS.CloudDirectory.Types
 import Network.AWS.CloudDirectory.Types.Product
@@ -51,6 +55,7 @@ data BatchRead =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'BatchRead' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -60,9 +65,9 @@ data BatchRead =
 -- * 'brDirectoryARN' - The Amazon Resource Name (ARN) that is associated with the 'Directory' . For more information, see 'arns' .
 --
 -- * 'brOperations' - A list of operations that are part of the batch.
-batchRead ::
-     Text -- ^ 'brDirectoryARN'
-  -> BatchRead
+batchRead
+    :: Text -- ^ 'brDirectoryARN'
+    -> BatchRead
 batchRead pDirectoryARN_ =
   BatchRead'
     { _brConsistencyLevel = Nothing
@@ -70,48 +75,50 @@ batchRead pDirectoryARN_ =
     , _brOperations = mempty
     }
 
+
 -- | Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.
 brConsistencyLevel :: Lens' BatchRead (Maybe ConsistencyLevel)
-brConsistencyLevel =
-  lens _brConsistencyLevel (\s a -> s {_brConsistencyLevel = a})
+brConsistencyLevel = lens _brConsistencyLevel (\ s a -> s{_brConsistencyLevel = a})
 
 -- | The Amazon Resource Name (ARN) that is associated with the 'Directory' . For more information, see 'arns' .
 brDirectoryARN :: Lens' BatchRead Text
-brDirectoryARN = lens _brDirectoryARN (\s a -> s {_brDirectoryARN = a})
+brDirectoryARN = lens _brDirectoryARN (\ s a -> s{_brDirectoryARN = a})
 
 -- | A list of operations that are part of the batch.
 brOperations :: Lens' BatchRead [BatchReadOperation]
-brOperations = lens _brOperations (\s a -> s {_brOperations = a}) . _Coerce
+brOperations = lens _brOperations (\ s a -> s{_brOperations = a}) . _Coerce
 
 instance AWSRequest BatchRead where
-  type Rs BatchRead = BatchReadResponse
-  request = postJSON cloudDirectory
-  response =
-    receiveJSON
-      (\s h x ->
-         BatchReadResponse' <$> (x .?> "Responses" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs BatchRead = BatchReadResponse
+        request = postJSON cloudDirectory
+        response
+          = receiveJSON
+              (\ s h x ->
+                 BatchReadResponse' <$>
+                   (x .?> "Responses" .!@ mempty) <*>
+                     (pure (fromEnum s)))
 
-instance Hashable BatchRead
+instance Hashable BatchRead where
 
-instance NFData BatchRead
+instance NFData BatchRead where
 
 instance ToHeaders BatchRead where
-  toHeaders BatchRead' {..} =
-    mconcat
-      [ "x-amz-consistency-level" =# _brConsistencyLevel
-      , "x-amz-data-partition" =# _brDirectoryARN
-      ]
+        toHeaders BatchRead'{..}
+          = mconcat
+              ["x-amz-consistency-level" =# _brConsistencyLevel,
+               "x-amz-data-partition" =# _brDirectoryARN]
 
 instance ToJSON BatchRead where
-  toJSON BatchRead' {..} =
-    object (catMaybes [Just ("Operations" .= _brOperations)])
+        toJSON BatchRead'{..}
+          = object
+              (catMaybes [Just ("Operations" .= _brOperations)])
 
 instance ToPath BatchRead where
-  toPath = const "/amazonclouddirectory/2017-01-11/batchread"
+        toPath
+          = const "/amazonclouddirectory/2017-01-11/batchread"
 
 instance ToQuery BatchRead where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'batchReadResponse' smart constructor.
 data BatchReadResponse =
@@ -121,6 +128,7 @@ data BatchReadResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'BatchReadResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -128,21 +136,20 @@ data BatchReadResponse =
 -- * 'brrsResponses' - A list of all the responses for each batch read.
 --
 -- * 'brrsResponseStatus' - -- | The response status code.
-batchReadResponse ::
-     Int -- ^ 'brrsResponseStatus'
-  -> BatchReadResponse
+batchReadResponse
+    :: Int -- ^ 'brrsResponseStatus'
+    -> BatchReadResponse
 batchReadResponse pResponseStatus_ =
   BatchReadResponse'
     {_brrsResponses = Nothing, _brrsResponseStatus = pResponseStatus_}
 
+
 -- | A list of all the responses for each batch read.
 brrsResponses :: Lens' BatchReadResponse [BatchReadOperationResponse]
-brrsResponses =
-  lens _brrsResponses (\s a -> s {_brrsResponses = a}) . _Default . _Coerce
+brrsResponses = lens _brrsResponses (\ s a -> s{_brrsResponses = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 brrsResponseStatus :: Lens' BatchReadResponse Int
-brrsResponseStatus =
-  lens _brrsResponseStatus (\s a -> s {_brrsResponseStatus = a})
+brrsResponseStatus = lens _brrsResponseStatus (\ s a -> s{_brrsResponseStatus = a})
 
-instance NFData BatchReadResponse
+instance NFData BatchReadResponse where

@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Route53.DeleteHostedZone
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -34,18 +36,20 @@
 --
 --
 module Network.AWS.Route53.DeleteHostedZone
+    (
     -- * Creating a Request
-  ( deleteHostedZone
-  , DeleteHostedZone
+      deleteHostedZone
+    , DeleteHostedZone
     -- * Request Lenses
-  , dhzId
+    , dhzId
+
     -- * Destructuring the Response
-  , deleteHostedZoneResponse
-  , DeleteHostedZoneResponse
+    , deleteHostedZoneResponse
+    , DeleteHostedZoneResponse
     -- * Response Lenses
-  , dhzrsResponseStatus
-  , dhzrsChangeInfo
-  ) where
+    , dhzrsResponseStatus
+    , dhzrsChangeInfo
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -65,42 +69,44 @@ newtype DeleteHostedZone =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteHostedZone' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dhzId' - The ID of the hosted zone you want to delete.
-deleteHostedZone ::
-     ResourceId -- ^ 'dhzId'
-  -> DeleteHostedZone
+deleteHostedZone
+    :: ResourceId -- ^ 'dhzId'
+    -> DeleteHostedZone
 deleteHostedZone pId_ = DeleteHostedZone' {_dhzId = pId_}
+
 
 -- | The ID of the hosted zone you want to delete.
 dhzId :: Lens' DeleteHostedZone ResourceId
-dhzId = lens _dhzId (\s a -> s {_dhzId = a})
+dhzId = lens _dhzId (\ s a -> s{_dhzId = a})
 
 instance AWSRequest DeleteHostedZone where
-  type Rs DeleteHostedZone = DeleteHostedZoneResponse
-  request = delete route53
-  response =
-    receiveXML
-      (\s h x ->
-         DeleteHostedZoneResponse' <$> (pure (fromEnum s)) <*>
-         (x .@ "ChangeInfo"))
+        type Rs DeleteHostedZone = DeleteHostedZoneResponse
+        request = delete route53
+        response
+          = receiveXML
+              (\ s h x ->
+                 DeleteHostedZoneResponse' <$>
+                   (pure (fromEnum s)) <*> (x .@ "ChangeInfo"))
 
-instance Hashable DeleteHostedZone
+instance Hashable DeleteHostedZone where
 
-instance NFData DeleteHostedZone
+instance NFData DeleteHostedZone where
 
 instance ToHeaders DeleteHostedZone where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath DeleteHostedZone where
-  toPath DeleteHostedZone' {..} =
-    mconcat ["/2013-04-01/hostedzone/", toBS _dhzId]
+        toPath DeleteHostedZone'{..}
+          = mconcat ["/2013-04-01/hostedzone/", toBS _dhzId]
 
 instance ToQuery DeleteHostedZone where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | A complex type that contains the response to a @DeleteHostedZone@ request.
 --
@@ -114,6 +120,7 @@ data DeleteHostedZoneResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteHostedZoneResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -121,21 +128,21 @@ data DeleteHostedZoneResponse =
 -- * 'dhzrsResponseStatus' - -- | The response status code.
 --
 -- * 'dhzrsChangeInfo' - A complex type that contains the ID, the status, and the date and time of a request to delete a hosted zone.
-deleteHostedZoneResponse ::
-     Int -- ^ 'dhzrsResponseStatus'
-  -> ChangeInfo -- ^ 'dhzrsChangeInfo'
-  -> DeleteHostedZoneResponse
+deleteHostedZoneResponse
+    :: Int -- ^ 'dhzrsResponseStatus'
+    -> ChangeInfo -- ^ 'dhzrsChangeInfo'
+    -> DeleteHostedZoneResponse
 deleteHostedZoneResponse pResponseStatus_ pChangeInfo_ =
   DeleteHostedZoneResponse'
     {_dhzrsResponseStatus = pResponseStatus_, _dhzrsChangeInfo = pChangeInfo_}
 
+
 -- | -- | The response status code.
 dhzrsResponseStatus :: Lens' DeleteHostedZoneResponse Int
-dhzrsResponseStatus =
-  lens _dhzrsResponseStatus (\s a -> s {_dhzrsResponseStatus = a})
+dhzrsResponseStatus = lens _dhzrsResponseStatus (\ s a -> s{_dhzrsResponseStatus = a})
 
 -- | A complex type that contains the ID, the status, and the date and time of a request to delete a hosted zone.
 dhzrsChangeInfo :: Lens' DeleteHostedZoneResponse ChangeInfo
-dhzrsChangeInfo = lens _dhzrsChangeInfo (\s a -> s {_dhzrsChangeInfo = a})
+dhzrsChangeInfo = lens _dhzrsChangeInfo (\ s a -> s{_dhzrsChangeInfo = a})
 
-instance NFData DeleteHostedZoneResponse
+instance NFData DeleteHostedZoneResponse where

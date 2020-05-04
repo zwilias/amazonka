@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.STS.GetSessionToken
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -34,20 +36,22 @@
 -- For more information about using @GetSessionToken@ to create temporary credentials, go to <http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getsessiontoken Temporary Credentials for Users in Untrusted Environments> in the /IAM User Guide/ .
 --
 module Network.AWS.STS.GetSessionToken
+    (
     -- * Creating a Request
-  ( getSessionToken
-  , GetSessionToken
+      getSessionToken
+    , GetSessionToken
     -- * Request Lenses
-  , gstTokenCode
-  , gstDurationSeconds
-  , gstSerialNumber
+    , gstTokenCode
+    , gstDurationSeconds
+    , gstSerialNumber
+
     -- * Destructuring the Response
-  , getSessionTokenResponse
-  , GetSessionTokenResponse
+    , getSessionTokenResponse
+    , GetSessionTokenResponse
     -- * Response Lenses
-  , gstrsCredentials
-  , gstrsResponseStatus
-  ) where
+    , gstrsCredentials
+    , gstrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -65,6 +69,7 @@ data GetSessionToken =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetSessionToken' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -74,7 +79,8 @@ data GetSessionToken =
 -- * 'gstDurationSeconds' - The duration, in seconds, that the credentials should remain valid. Acceptable durations for IAM user sessions range from 900 seconds (15 minutes) to 129600 seconds (36 hours), with 43200 seconds (12 hours) as the default. Sessions for AWS account owners are restricted to a maximum of 3600 seconds (one hour). If the duration is longer than one hour, the session for AWS account owners defaults to one hour.
 --
 -- * 'gstSerialNumber' - The identification number of the MFA device that is associated with the IAM user who is making the @GetSessionToken@ call. Specify this value if the IAM user has a policy that requires MFA authentication. The value is either the serial number for a hardware device (such as @GAHT12345678@ ) or an Amazon Resource Name (ARN) for a virtual device (such as @arn:aws:iam::123456789012:mfa/user@ ). You can find the device for an IAM user by going to the AWS Management Console and viewing the user's security credentials.  The regex used to validated this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@:/-
-getSessionToken :: GetSessionToken
+getSessionToken
+    :: GetSessionToken
 getSessionToken =
   GetSessionToken'
     { _gstTokenCode = Nothing
@@ -82,48 +88,46 @@ getSessionToken =
     , _gstSerialNumber = Nothing
     }
 
+
 -- | The value provided by the MFA device, if MFA is required. If any policy requires the IAM user to submit an MFA code, specify this value. If MFA authentication is required, and the user does not provide a code when requesting a set of temporary security credentials, the user will receive an "access denied" response when requesting resources that require MFA authentication. The format for this parameter, as described by its regex pattern, is a sequence of six numeric digits.
 gstTokenCode :: Lens' GetSessionToken (Maybe Text)
-gstTokenCode = lens _gstTokenCode (\s a -> s {_gstTokenCode = a})
+gstTokenCode = lens _gstTokenCode (\ s a -> s{_gstTokenCode = a})
 
 -- | The duration, in seconds, that the credentials should remain valid. Acceptable durations for IAM user sessions range from 900 seconds (15 minutes) to 129600 seconds (36 hours), with 43200 seconds (12 hours) as the default. Sessions for AWS account owners are restricted to a maximum of 3600 seconds (one hour). If the duration is longer than one hour, the session for AWS account owners defaults to one hour.
 gstDurationSeconds :: Lens' GetSessionToken (Maybe Natural)
-gstDurationSeconds =
-  lens _gstDurationSeconds (\s a -> s {_gstDurationSeconds = a}) . mapping _Nat
+gstDurationSeconds = lens _gstDurationSeconds (\ s a -> s{_gstDurationSeconds = a}) . mapping _Nat
 
 -- | The identification number of the MFA device that is associated with the IAM user who is making the @GetSessionToken@ call. Specify this value if the IAM user has a policy that requires MFA authentication. The value is either the serial number for a hardware device (such as @GAHT12345678@ ) or an Amazon Resource Name (ARN) for a virtual device (such as @arn:aws:iam::123456789012:mfa/user@ ). You can find the device for an IAM user by going to the AWS Management Console and viewing the user's security credentials.  The regex used to validated this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@:/-
 gstSerialNumber :: Lens' GetSessionToken (Maybe Text)
-gstSerialNumber = lens _gstSerialNumber (\s a -> s {_gstSerialNumber = a})
+gstSerialNumber = lens _gstSerialNumber (\ s a -> s{_gstSerialNumber = a})
 
 instance AWSRequest GetSessionToken where
-  type Rs GetSessionToken = GetSessionTokenResponse
-  request = postQuery sts
-  response =
-    receiveXMLWrapper
-      "GetSessionTokenResult"
-      (\s h x ->
-         GetSessionTokenResponse' <$> (x .@? "Credentials") <*>
-         (pure (fromEnum s)))
+        type Rs GetSessionToken = GetSessionTokenResponse
+        request = postQuery sts
+        response
+          = receiveXMLWrapper "GetSessionTokenResult"
+              (\ s h x ->
+                 GetSessionTokenResponse' <$>
+                   (x .@? "Credentials") <*> (pure (fromEnum s)))
 
-instance Hashable GetSessionToken
+instance Hashable GetSessionToken where
 
-instance NFData GetSessionToken
+instance NFData GetSessionToken where
 
 instance ToHeaders GetSessionToken where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath GetSessionToken where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery GetSessionToken where
-  toQuery GetSessionToken' {..} =
-    mconcat
-      [ "Action" =: ("GetSessionToken" :: ByteString)
-      , "Version" =: ("2011-06-15" :: ByteString)
-      , "TokenCode" =: _gstTokenCode
-      , "DurationSeconds" =: _gstDurationSeconds
-      , "SerialNumber" =: _gstSerialNumber
-      ]
+        toQuery GetSessionToken'{..}
+          = mconcat
+              ["Action" =: ("GetSessionToken" :: ByteString),
+               "Version" =: ("2011-06-15" :: ByteString),
+               "TokenCode" =: _gstTokenCode,
+               "DurationSeconds" =: _gstDurationSeconds,
+               "SerialNumber" =: _gstSerialNumber]
 
 -- | Contains the response to a successful 'GetSessionToken' request, including temporary AWS credentials that can be used to make AWS requests.
 --
@@ -137,6 +141,7 @@ data GetSessionTokenResponse =
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetSessionTokenResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -144,20 +149,20 @@ data GetSessionTokenResponse =
 -- * 'gstrsCredentials' - The temporary security credentials, which include an access key ID, a secret access key, and a security (or session) token. __Note:__ The size of the security token that STS APIs return is not fixed. We strongly recommend that you make no assumptions about the maximum size. As of this writing, the typical size is less than 4096 bytes, but that can vary. Also, future updates to AWS might require larger sizes.
 --
 -- * 'gstrsResponseStatus' - -- | The response status code.
-getSessionTokenResponse ::
-     Int -- ^ 'gstrsResponseStatus'
-  -> GetSessionTokenResponse
+getSessionTokenResponse
+    :: Int -- ^ 'gstrsResponseStatus'
+    -> GetSessionTokenResponse
 getSessionTokenResponse pResponseStatus_ =
   GetSessionTokenResponse'
     {_gstrsCredentials = Nothing, _gstrsResponseStatus = pResponseStatus_}
 
+
 -- | The temporary security credentials, which include an access key ID, a secret access key, and a security (or session) token. __Note:__ The size of the security token that STS APIs return is not fixed. We strongly recommend that you make no assumptions about the maximum size. As of this writing, the typical size is less than 4096 bytes, but that can vary. Also, future updates to AWS might require larger sizes.
 gstrsCredentials :: Lens' GetSessionTokenResponse (Maybe AuthEnv)
-gstrsCredentials = lens _gstrsCredentials (\s a -> s {_gstrsCredentials = a})
+gstrsCredentials = lens _gstrsCredentials (\ s a -> s{_gstrsCredentials = a})
 
 -- | -- | The response status code.
 gstrsResponseStatus :: Lens' GetSessionTokenResponse Int
-gstrsResponseStatus =
-  lens _gstrsResponseStatus (\s a -> s {_gstrsResponseStatus = a})
+gstrsResponseStatus = lens _gstrsResponseStatus (\ s a -> s{_gstrsResponseStatus = a})
 
-instance NFData GetSessionTokenResponse
+instance NFData GetSessionTokenResponse where

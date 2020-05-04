@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.DMS.ListTagsForResource
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.DMS.ListTagsForResource
+    (
     -- * Creating a Request
-  ( listTagsForResource
-  , ListTagsForResource
+      listTagsForResource
+    , ListTagsForResource
     -- * Request Lenses
-  , ltfrResourceARN
+    , ltfrResourceARN
+
     -- * Destructuring the Response
-  , listTagsForResourceResponse
-  , ListTagsForResourceResponse
+    , listTagsForResourceResponse
+    , ListTagsForResourceResponse
     -- * Response Lenses
-  , ltfrrsTagList
-  , ltfrrsResponseStatus
-  ) where
+    , ltfrrsTagList
+    , ltfrrsResponseStatus
+    ) where
 
 import Network.AWS.DMS.Types
 import Network.AWS.DMS.Types.Product
@@ -51,52 +55,58 @@ newtype ListTagsForResource =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListTagsForResource' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'ltfrResourceARN' - The Amazon Resource Name (ARN) string that uniquely identifies the AWS DMS resource.
-listTagsForResource ::
-     Text -- ^ 'ltfrResourceARN'
-  -> ListTagsForResource
+listTagsForResource
+    :: Text -- ^ 'ltfrResourceARN'
+    -> ListTagsForResource
 listTagsForResource pResourceARN_ =
   ListTagsForResource' {_ltfrResourceARN = pResourceARN_}
 
+
 -- | The Amazon Resource Name (ARN) string that uniquely identifies the AWS DMS resource.
 ltfrResourceARN :: Lens' ListTagsForResource Text
-ltfrResourceARN = lens _ltfrResourceARN (\s a -> s {_ltfrResourceARN = a})
+ltfrResourceARN = lens _ltfrResourceARN (\ s a -> s{_ltfrResourceARN = a})
 
 instance AWSRequest ListTagsForResource where
-  type Rs ListTagsForResource = ListTagsForResourceResponse
-  request = postJSON dms
-  response =
-    receiveJSON
-      (\s h x ->
-         ListTagsForResourceResponse' <$> (x .?> "TagList" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs ListTagsForResource =
+             ListTagsForResourceResponse
+        request = postJSON dms
+        response
+          = receiveJSON
+              (\ s h x ->
+                 ListTagsForResourceResponse' <$>
+                   (x .?> "TagList" .!@ mempty) <*> (pure (fromEnum s)))
 
-instance Hashable ListTagsForResource
+instance Hashable ListTagsForResource where
 
-instance NFData ListTagsForResource
+instance NFData ListTagsForResource where
 
 instance ToHeaders ListTagsForResource where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AmazonDMSv20160101.ListTagsForResource" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AmazonDMSv20160101.ListTagsForResource" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON ListTagsForResource where
-  toJSON ListTagsForResource' {..} =
-    object (catMaybes [Just ("ResourceArn" .= _ltfrResourceARN)])
+        toJSON ListTagsForResource'{..}
+          = object
+              (catMaybes
+                 [Just ("ResourceArn" .= _ltfrResourceARN)])
 
 instance ToPath ListTagsForResource where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery ListTagsForResource where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- |
 --
@@ -110,6 +120,7 @@ data ListTagsForResourceResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListTagsForResourceResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -117,21 +128,20 @@ data ListTagsForResourceResponse =
 -- * 'ltfrrsTagList' - A list of tags for the resource.
 --
 -- * 'ltfrrsResponseStatus' - -- | The response status code.
-listTagsForResourceResponse ::
-     Int -- ^ 'ltfrrsResponseStatus'
-  -> ListTagsForResourceResponse
+listTagsForResourceResponse
+    :: Int -- ^ 'ltfrrsResponseStatus'
+    -> ListTagsForResourceResponse
 listTagsForResourceResponse pResponseStatus_ =
   ListTagsForResourceResponse'
     {_ltfrrsTagList = Nothing, _ltfrrsResponseStatus = pResponseStatus_}
 
+
 -- | A list of tags for the resource.
 ltfrrsTagList :: Lens' ListTagsForResourceResponse [Tag]
-ltfrrsTagList =
-  lens _ltfrrsTagList (\s a -> s {_ltfrrsTagList = a}) . _Default . _Coerce
+ltfrrsTagList = lens _ltfrrsTagList (\ s a -> s{_ltfrrsTagList = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 ltfrrsResponseStatus :: Lens' ListTagsForResourceResponse Int
-ltfrrsResponseStatus =
-  lens _ltfrrsResponseStatus (\s a -> s {_ltfrrsResponseStatus = a})
+ltfrrsResponseStatus = lens _ltfrrsResponseStatus (\ s a -> s{_ltfrrsResponseStatus = a})
 
-instance NFData ListTagsForResourceResponse
+instance NFData ListTagsForResourceResponse where

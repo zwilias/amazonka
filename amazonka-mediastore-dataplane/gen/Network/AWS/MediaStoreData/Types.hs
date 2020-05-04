@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.MediaStoreData.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,27 +11,32 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.MediaStoreData.Types
+    (
     -- * Service Configuration
-  ( mediaStoreData
+      mediaStoreData
+
     -- * Errors
-  , _RequestedRangeNotSatisfiableException
-  , _InternalServerError
-  , _ContainerNotFoundException
-  , _ObjectNotFoundException
+    , _RequestedRangeNotSatisfiableException
+    , _InternalServerError
+    , _ContainerNotFoundException
+    , _ObjectNotFoundException
+
     -- * ItemType
-  , ItemType(..)
+    , ItemType (..)
+
     -- * StorageClass
-  , StorageClass(..)
+    , StorageClass (..)
+
     -- * Item
-  , Item
-  , item
-  , iETag
-  , iContentLength
-  , iName
-  , iType
-  , iLastModified
-  , iContentType
-  ) where
+    , Item
+    , item
+    , iETag
+    , iContentLength
+    , iName
+    , iType
+    , iLastModified
+    , iContentType
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.MediaStoreData.Types.Product
@@ -76,14 +82,15 @@ mediaStoreData =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | The requested content range is not valid.
 --
 --
-_RequestedRangeNotSatisfiableException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_RequestedRangeNotSatisfiableException :: AsError a => Getting (First ServiceError) a ServiceError
 _RequestedRangeNotSatisfiableException =
   _MatchServiceError mediaStoreData "RequestedRangeNotSatisfiableException" .
   hasStatus 416
+
 
 -- | The service is temporarily unavailable.
 --
@@ -91,18 +98,19 @@ _RequestedRangeNotSatisfiableException =
 _InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalServerError = _MatchServiceError mediaStoreData "InternalServerError"
 
+
 -- | The specified container was not found for the specified account.
 --
 --
-_ContainerNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ContainerNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _ContainerNotFoundException =
   _MatchServiceError mediaStoreData "ContainerNotFoundException" . hasStatus 404
+
 
 -- | Could not perform an operation on an object that does not exist.
 --
 --
-_ObjectNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ObjectNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _ObjectNotFoundException =
   _MatchServiceError mediaStoreData "ObjectNotFoundException" . hasStatus 404
+

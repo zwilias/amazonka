@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SageMaker.CreateNotebookInstanceLifecycleConfig
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -30,20 +32,22 @@
 -- For information about notebook instance lifestyle configurations, see 'notebook-lifecycle-config' .
 --
 module Network.AWS.SageMaker.CreateNotebookInstanceLifecycleConfig
+    (
     -- * Creating a Request
-  ( createNotebookInstanceLifecycleConfig
-  , CreateNotebookInstanceLifecycleConfig
+      createNotebookInstanceLifecycleConfig
+    , CreateNotebookInstanceLifecycleConfig
     -- * Request Lenses
-  , cnilcOnCreate
-  , cnilcOnStart
-  , cnilcNotebookInstanceLifecycleConfigName
+    , cnilcOnCreate
+    , cnilcOnStart
+    , cnilcNotebookInstanceLifecycleConfigName
+
     -- * Destructuring the Response
-  , createNotebookInstanceLifecycleConfigResponse
-  , CreateNotebookInstanceLifecycleConfigResponse
+    , createNotebookInstanceLifecycleConfigResponse
+    , CreateNotebookInstanceLifecycleConfigResponse
     -- * Response Lenses
-  , cnilcrsNotebookInstanceLifecycleConfigARN
-  , cnilcrsResponseStatus
-  ) where
+    , cnilcrsNotebookInstanceLifecycleConfigARN
+    , cnilcrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -61,6 +65,7 @@ data CreateNotebookInstanceLifecycleConfig =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateNotebookInstanceLifecycleConfig' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -70,9 +75,9 @@ data CreateNotebookInstanceLifecycleConfig =
 -- * 'cnilcOnStart' - A shell script that runs every time you start a notebook instance, including when you create the notebook instance.
 --
 -- * 'cnilcNotebookInstanceLifecycleConfigName' - The name of the lifecycle configuration.
-createNotebookInstanceLifecycleConfig ::
-     Text -- ^ 'cnilcNotebookInstanceLifecycleConfigName'
-  -> CreateNotebookInstanceLifecycleConfig
+createNotebookInstanceLifecycleConfig
+    :: Text -- ^ 'cnilcNotebookInstanceLifecycleConfigName'
+    -> CreateNotebookInstanceLifecycleConfig
 createNotebookInstanceLifecycleConfig pNotebookInstanceLifecycleConfigName_ =
   CreateNotebookInstanceLifecycleConfig'
     { _cnilcOnCreate = Nothing
@@ -81,65 +86,70 @@ createNotebookInstanceLifecycleConfig pNotebookInstanceLifecycleConfigName_ =
         pNotebookInstanceLifecycleConfigName_
     }
 
+
 -- | A shell script that runs only once, when you create a notebook instance.
-cnilcOnCreate ::
-     Lens' CreateNotebookInstanceLifecycleConfig [NotebookInstanceLifecycleHook]
-cnilcOnCreate =
-  lens _cnilcOnCreate (\s a -> s {_cnilcOnCreate = a}) . _Default . _Coerce
+cnilcOnCreate :: Lens' CreateNotebookInstanceLifecycleConfig [NotebookInstanceLifecycleHook]
+cnilcOnCreate = lens _cnilcOnCreate (\ s a -> s{_cnilcOnCreate = a}) . _Default . _Coerce
 
 -- | A shell script that runs every time you start a notebook instance, including when you create the notebook instance.
-cnilcOnStart ::
-     Lens' CreateNotebookInstanceLifecycleConfig [NotebookInstanceLifecycleHook]
-cnilcOnStart =
-  lens _cnilcOnStart (\s a -> s {_cnilcOnStart = a}) . _Default . _Coerce
+cnilcOnStart :: Lens' CreateNotebookInstanceLifecycleConfig [NotebookInstanceLifecycleHook]
+cnilcOnStart = lens _cnilcOnStart (\ s a -> s{_cnilcOnStart = a}) . _Default . _Coerce
 
 -- | The name of the lifecycle configuration.
-cnilcNotebookInstanceLifecycleConfigName ::
-     Lens' CreateNotebookInstanceLifecycleConfig Text
-cnilcNotebookInstanceLifecycleConfigName =
-  lens
-    _cnilcNotebookInstanceLifecycleConfigName
-    (\s a -> s {_cnilcNotebookInstanceLifecycleConfigName = a})
+cnilcNotebookInstanceLifecycleConfigName :: Lens' CreateNotebookInstanceLifecycleConfig Text
+cnilcNotebookInstanceLifecycleConfigName = lens _cnilcNotebookInstanceLifecycleConfigName (\ s a -> s{_cnilcNotebookInstanceLifecycleConfigName = a})
 
-instance AWSRequest CreateNotebookInstanceLifecycleConfig where
-  type Rs CreateNotebookInstanceLifecycleConfig = CreateNotebookInstanceLifecycleConfigResponse
-  request = postJSON sageMaker
-  response =
-    receiveJSON
-      (\s h x ->
-         CreateNotebookInstanceLifecycleConfigResponse' <$>
-         (x .?> "NotebookInstanceLifecycleConfigArn") <*>
-         (pure (fromEnum s)))
+instance AWSRequest
+           CreateNotebookInstanceLifecycleConfig
+         where
+        type Rs CreateNotebookInstanceLifecycleConfig =
+             CreateNotebookInstanceLifecycleConfigResponse
+        request = postJSON sageMaker
+        response
+          = receiveJSON
+              (\ s h x ->
+                 CreateNotebookInstanceLifecycleConfigResponse' <$>
+                   (x .?> "NotebookInstanceLifecycleConfigArn") <*>
+                     (pure (fromEnum s)))
 
-instance Hashable CreateNotebookInstanceLifecycleConfig
+instance Hashable
+           CreateNotebookInstanceLifecycleConfig
+         where
 
 instance NFData CreateNotebookInstanceLifecycleConfig
+         where
 
-instance ToHeaders CreateNotebookInstanceLifecycleConfig where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("SageMaker.CreateNotebookInstanceLifecycleConfig" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+instance ToHeaders
+           CreateNotebookInstanceLifecycleConfig
+         where
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("SageMaker.CreateNotebookInstanceLifecycleConfig" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
-instance ToJSON CreateNotebookInstanceLifecycleConfig where
-  toJSON CreateNotebookInstanceLifecycleConfig' {..} =
-    object
-      (catMaybes
-         [ ("OnCreate" .=) <$> _cnilcOnCreate
-         , ("OnStart" .=) <$> _cnilcOnStart
-         , Just
-             ("NotebookInstanceLifecycleConfigName" .=
-              _cnilcNotebookInstanceLifecycleConfigName)
-         ])
+instance ToJSON CreateNotebookInstanceLifecycleConfig
+         where
+        toJSON CreateNotebookInstanceLifecycleConfig'{..}
+          = object
+              (catMaybes
+                 [("OnCreate" .=) <$> _cnilcOnCreate,
+                  ("OnStart" .=) <$> _cnilcOnStart,
+                  Just
+                    ("NotebookInstanceLifecycleConfigName" .=
+                       _cnilcNotebookInstanceLifecycleConfigName)])
 
-instance ToPath CreateNotebookInstanceLifecycleConfig where
-  toPath = const "/"
+instance ToPath CreateNotebookInstanceLifecycleConfig
+         where
+        toPath = const "/"
 
-instance ToQuery CreateNotebookInstanceLifecycleConfig where
-  toQuery = const mempty
+instance ToQuery
+           CreateNotebookInstanceLifecycleConfig
+         where
+        toQuery = const mempty
 
 -- | /See:/ 'createNotebookInstanceLifecycleConfigResponse' smart constructor.
 data CreateNotebookInstanceLifecycleConfigResponse =
@@ -149,6 +159,7 @@ data CreateNotebookInstanceLifecycleConfigResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateNotebookInstanceLifecycleConfigResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -156,26 +167,24 @@ data CreateNotebookInstanceLifecycleConfigResponse =
 -- * 'cnilcrsNotebookInstanceLifecycleConfigARN' - The Amazon Resource Name (ARN) of the lifecycle configuration.
 --
 -- * 'cnilcrsResponseStatus' - -- | The response status code.
-createNotebookInstanceLifecycleConfigResponse ::
-     Int -- ^ 'cnilcrsResponseStatus'
-  -> CreateNotebookInstanceLifecycleConfigResponse
+createNotebookInstanceLifecycleConfigResponse
+    :: Int -- ^ 'cnilcrsResponseStatus'
+    -> CreateNotebookInstanceLifecycleConfigResponse
 createNotebookInstanceLifecycleConfigResponse pResponseStatus_ =
   CreateNotebookInstanceLifecycleConfigResponse'
     { _cnilcrsNotebookInstanceLifecycleConfigARN = Nothing
     , _cnilcrsResponseStatus = pResponseStatus_
     }
 
+
 -- | The Amazon Resource Name (ARN) of the lifecycle configuration.
-cnilcrsNotebookInstanceLifecycleConfigARN ::
-     Lens' CreateNotebookInstanceLifecycleConfigResponse (Maybe Text)
-cnilcrsNotebookInstanceLifecycleConfigARN =
-  lens
-    _cnilcrsNotebookInstanceLifecycleConfigARN
-    (\s a -> s {_cnilcrsNotebookInstanceLifecycleConfigARN = a})
+cnilcrsNotebookInstanceLifecycleConfigARN :: Lens' CreateNotebookInstanceLifecycleConfigResponse (Maybe Text)
+cnilcrsNotebookInstanceLifecycleConfigARN = lens _cnilcrsNotebookInstanceLifecycleConfigARN (\ s a -> s{_cnilcrsNotebookInstanceLifecycleConfigARN = a})
 
 -- | -- | The response status code.
 cnilcrsResponseStatus :: Lens' CreateNotebookInstanceLifecycleConfigResponse Int
-cnilcrsResponseStatus =
-  lens _cnilcrsResponseStatus (\s a -> s {_cnilcrsResponseStatus = a})
+cnilcrsResponseStatus = lens _cnilcrsResponseStatus (\ s a -> s{_cnilcrsResponseStatus = a})
 
-instance NFData CreateNotebookInstanceLifecycleConfigResponse
+instance NFData
+           CreateNotebookInstanceLifecycleConfigResponse
+         where

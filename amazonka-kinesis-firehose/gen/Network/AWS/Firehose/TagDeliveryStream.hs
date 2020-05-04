@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Firehose.TagDeliveryStream
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,18 +26,20 @@
 -- This operation has a limit of five transactions per second per account.
 --
 module Network.AWS.Firehose.TagDeliveryStream
+    (
     -- * Creating a Request
-  ( tagDeliveryStream
-  , TagDeliveryStream
+      tagDeliveryStream
+    , TagDeliveryStream
     -- * Request Lenses
-  , tdsDeliveryStreamName
-  , tdsTags
+    , tdsDeliveryStreamName
+    , tdsTags
+
     -- * Destructuring the Response
-  , tagDeliveryStreamResponse
-  , TagDeliveryStreamResponse
+    , tagDeliveryStreamResponse
+    , TagDeliveryStreamResponse
     -- * Response Lenses
-  , tdsrsResponseStatus
-  ) where
+    , tdsrsResponseStatus
+    ) where
 
 import Network.AWS.Firehose.Types
 import Network.AWS.Firehose.Types.Product
@@ -52,6 +56,7 @@ data TagDeliveryStream =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'TagDeliveryStream' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -59,55 +64,58 @@ data TagDeliveryStream =
 -- * 'tdsDeliveryStreamName' - The name of the delivery stream to which you want to add the tags.
 --
 -- * 'tdsTags' - A set of key-value pairs to use to create the tags.
-tagDeliveryStream ::
-     Text -- ^ 'tdsDeliveryStreamName'
-  -> NonEmpty Tag -- ^ 'tdsTags'
-  -> TagDeliveryStream
+tagDeliveryStream
+    :: Text -- ^ 'tdsDeliveryStreamName'
+    -> NonEmpty Tag -- ^ 'tdsTags'
+    -> TagDeliveryStream
 tagDeliveryStream pDeliveryStreamName_ pTags_ =
   TagDeliveryStream'
     {_tdsDeliveryStreamName = pDeliveryStreamName_, _tdsTags = _List1 # pTags_}
 
+
 -- | The name of the delivery stream to which you want to add the tags.
 tdsDeliveryStreamName :: Lens' TagDeliveryStream Text
-tdsDeliveryStreamName =
-  lens _tdsDeliveryStreamName (\s a -> s {_tdsDeliveryStreamName = a})
+tdsDeliveryStreamName = lens _tdsDeliveryStreamName (\ s a -> s{_tdsDeliveryStreamName = a})
 
 -- | A set of key-value pairs to use to create the tags.
 tdsTags :: Lens' TagDeliveryStream (NonEmpty Tag)
-tdsTags = lens _tdsTags (\s a -> s {_tdsTags = a}) . _List1
+tdsTags = lens _tdsTags (\ s a -> s{_tdsTags = a}) . _List1
 
 instance AWSRequest TagDeliveryStream where
-  type Rs TagDeliveryStream = TagDeliveryStreamResponse
-  request = postJSON firehose
-  response =
-    receiveEmpty (\s h x -> TagDeliveryStreamResponse' <$> (pure (fromEnum s)))
+        type Rs TagDeliveryStream = TagDeliveryStreamResponse
+        request = postJSON firehose
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 TagDeliveryStreamResponse' <$> (pure (fromEnum s)))
 
-instance Hashable TagDeliveryStream
+instance Hashable TagDeliveryStream where
 
-instance NFData TagDeliveryStream
+instance NFData TagDeliveryStream where
 
 instance ToHeaders TagDeliveryStream where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("Firehose_20150804.TagDeliveryStream" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("Firehose_20150804.TagDeliveryStream" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON TagDeliveryStream where
-  toJSON TagDeliveryStream' {..} =
-    object
-      (catMaybes
-         [ Just ("DeliveryStreamName" .= _tdsDeliveryStreamName)
-         , Just ("Tags" .= _tdsTags)
-         ])
+        toJSON TagDeliveryStream'{..}
+          = object
+              (catMaybes
+                 [Just
+                    ("DeliveryStreamName" .= _tdsDeliveryStreamName),
+                  Just ("Tags" .= _tdsTags)])
 
 instance ToPath TagDeliveryStream where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery TagDeliveryStream where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'tagDeliveryStreamResponse' smart constructor.
 newtype TagDeliveryStreamResponse =
@@ -116,20 +124,21 @@ newtype TagDeliveryStreamResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'TagDeliveryStreamResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'tdsrsResponseStatus' - -- | The response status code.
-tagDeliveryStreamResponse ::
-     Int -- ^ 'tdsrsResponseStatus'
-  -> TagDeliveryStreamResponse
+tagDeliveryStreamResponse
+    :: Int -- ^ 'tdsrsResponseStatus'
+    -> TagDeliveryStreamResponse
 tagDeliveryStreamResponse pResponseStatus_ =
   TagDeliveryStreamResponse' {_tdsrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 tdsrsResponseStatus :: Lens' TagDeliveryStreamResponse Int
-tdsrsResponseStatus =
-  lens _tdsrsResponseStatus (\s a -> s {_tdsrsResponseStatus = a})
+tdsrsResponseStatus = lens _tdsrsResponseStatus (\ s a -> s{_tdsrsResponseStatus = a})
 
-instance NFData TagDeliveryStreamResponse
+instance NFData TagDeliveryStreamResponse where

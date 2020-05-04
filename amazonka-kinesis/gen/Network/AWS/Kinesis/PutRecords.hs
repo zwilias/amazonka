@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Kinesis.PutRecords
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -40,21 +42,23 @@
 -- By default, data records are accessible for 24 hours from the time that they are added to a stream. You can use 'IncreaseStreamRetentionPeriod' or 'DecreaseStreamRetentionPeriod' to modify this retention period.
 --
 module Network.AWS.Kinesis.PutRecords
+    (
     -- * Creating a Request
-  ( putRecords
-  , PutRecords
+      putRecords
+    , PutRecords
     -- * Request Lenses
-  , pRecordEntries
-  , pStreamName
+    , pRecordEntries
+    , pStreamName
+
     -- * Destructuring the Response
-  , putRecordsResponse
-  , PutRecordsResponse
+    , putRecordsResponse
+    , PutRecordsResponse
     -- * Response Lenses
-  , prsEncryptionType
-  , prsFailedRecordCount
-  , prsResponseStatus
-  , prsRecords
-  ) where
+    , prsEncryptionType
+    , prsFailedRecordCount
+    , prsResponseStatus
+    , prsRecords
+    ) where
 
 import Network.AWS.Kinesis.Types
 import Network.AWS.Kinesis.Types.Product
@@ -75,6 +79,7 @@ data PutRecords =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'PutRecords' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -82,58 +87,60 @@ data PutRecords =
 -- * 'pRecordEntries' - The records associated with the request.
 --
 -- * 'pStreamName' - The stream name associated with the request.
-putRecords ::
-     NonEmpty PutRecordsRequestEntry -- ^ 'pRecordEntries'
-  -> Text -- ^ 'pStreamName'
-  -> PutRecords
+putRecords
+    :: NonEmpty PutRecordsRequestEntry -- ^ 'pRecordEntries'
+    -> Text -- ^ 'pStreamName'
+    -> PutRecords
 putRecords pRecordEntries_ pStreamName_ =
   PutRecords'
     {_pRecordEntries = _List1 # pRecordEntries_, _pStreamName = pStreamName_}
 
+
 -- | The records associated with the request.
 pRecordEntries :: Lens' PutRecords (NonEmpty PutRecordsRequestEntry)
-pRecordEntries = lens _pRecordEntries (\s a -> s {_pRecordEntries = a}) . _List1
+pRecordEntries = lens _pRecordEntries (\ s a -> s{_pRecordEntries = a}) . _List1
 
 -- | The stream name associated with the request.
 pStreamName :: Lens' PutRecords Text
-pStreamName = lens _pStreamName (\s a -> s {_pStreamName = a})
+pStreamName = lens _pStreamName (\ s a -> s{_pStreamName = a})
 
 instance AWSRequest PutRecords where
-  type Rs PutRecords = PutRecordsResponse
-  request = postJSON kinesis
-  response =
-    receiveJSON
-      (\s h x ->
-         PutRecordsResponse' <$> (x .?> "EncryptionType") <*>
-         (x .?> "FailedRecordCount") <*>
-         (pure (fromEnum s)) <*>
-         (x .:> "Records"))
+        type Rs PutRecords = PutRecordsResponse
+        request = postJSON kinesis
+        response
+          = receiveJSON
+              (\ s h x ->
+                 PutRecordsResponse' <$>
+                   (x .?> "EncryptionType") <*>
+                     (x .?> "FailedRecordCount")
+                     <*> (pure (fromEnum s))
+                     <*> (x .:> "Records"))
 
-instance Hashable PutRecords
+instance Hashable PutRecords where
 
-instance NFData PutRecords
+instance NFData PutRecords where
 
 instance ToHeaders PutRecords where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("Kinesis_20131202.PutRecords" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("Kinesis_20131202.PutRecords" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON PutRecords where
-  toJSON PutRecords' {..} =
-    object
-      (catMaybes
-         [ Just ("Records" .= _pRecordEntries)
-         , Just ("StreamName" .= _pStreamName)
-         ])
+        toJSON PutRecords'{..}
+          = object
+              (catMaybes
+                 [Just ("Records" .= _pRecordEntries),
+                  Just ("StreamName" .= _pStreamName)])
 
 instance ToPath PutRecords where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery PutRecords where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | @PutRecords@ results.
 --
@@ -149,6 +156,7 @@ data PutRecordsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'PutRecordsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -160,10 +168,10 @@ data PutRecordsResponse =
 -- * 'prsResponseStatus' - -- | The response status code.
 --
 -- * 'prsRecords' - An array of successfully and unsuccessfully processed record results, correlated with the request by natural ordering. A record that is successfully added to a stream includes @SequenceNumber@ and @ShardId@ in the result. A record that fails to be added to a stream includes @ErrorCode@ and @ErrorMessage@ in the result.
-putRecordsResponse ::
-     Int -- ^ 'prsResponseStatus'
-  -> NonEmpty PutRecordsResultEntry -- ^ 'prsRecords'
-  -> PutRecordsResponse
+putRecordsResponse
+    :: Int -- ^ 'prsResponseStatus'
+    -> NonEmpty PutRecordsResultEntry -- ^ 'prsRecords'
+    -> PutRecordsResponse
 putRecordsResponse pResponseStatus_ pRecords_ =
   PutRecordsResponse'
     { _prsEncryptionType = Nothing
@@ -172,22 +180,21 @@ putRecordsResponse pResponseStatus_ pRecords_ =
     , _prsRecords = _List1 # pRecords_
     }
 
+
 -- | The encryption type used on the records. This parameter can be one of the following values:     * @NONE@ : Do not encrypt the records.     * @KMS@ : Use server-side encryption on the records using a customer-managed AWS KMS key.
 prsEncryptionType :: Lens' PutRecordsResponse (Maybe EncryptionType)
-prsEncryptionType = lens _prsEncryptionType (\s a -> s {_prsEncryptionType = a})
+prsEncryptionType = lens _prsEncryptionType (\ s a -> s{_prsEncryptionType = a})
 
 -- | The number of unsuccessfully processed records in a @PutRecords@ request.
 prsFailedRecordCount :: Lens' PutRecordsResponse (Maybe Natural)
-prsFailedRecordCount =
-  lens _prsFailedRecordCount (\s a -> s {_prsFailedRecordCount = a}) .
-  mapping _Nat
+prsFailedRecordCount = lens _prsFailedRecordCount (\ s a -> s{_prsFailedRecordCount = a}) . mapping _Nat
 
 -- | -- | The response status code.
 prsResponseStatus :: Lens' PutRecordsResponse Int
-prsResponseStatus = lens _prsResponseStatus (\s a -> s {_prsResponseStatus = a})
+prsResponseStatus = lens _prsResponseStatus (\ s a -> s{_prsResponseStatus = a})
 
 -- | An array of successfully and unsuccessfully processed record results, correlated with the request by natural ordering. A record that is successfully added to a stream includes @SequenceNumber@ and @ShardId@ in the result. A record that fails to be added to a stream includes @ErrorCode@ and @ErrorMessage@ in the result.
 prsRecords :: Lens' PutRecordsResponse (NonEmpty PutRecordsResultEntry)
-prsRecords = lens _prsRecords (\s a -> s {_prsRecords = a}) . _List1
+prsRecords = lens _prsRecords (\ s a -> s{_prsRecords = a}) . _List1
 
-instance NFData PutRecordsResponse
+instance NFData PutRecordsResponse where

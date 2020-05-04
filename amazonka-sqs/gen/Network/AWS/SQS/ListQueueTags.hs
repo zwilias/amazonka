@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SQS.ListQueueTags
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -36,18 +38,20 @@
 -- For a full list of tag restrictions, see <http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/limits-queues.html Limits Related to Queues> in the /Amazon Simple Queue Service Developer Guide/ .
 --
 module Network.AWS.SQS.ListQueueTags
+    (
     -- * Creating a Request
-  ( listQueueTags
-  , ListQueueTags
+      listQueueTags
+    , ListQueueTags
     -- * Request Lenses
-  , lqtQueueURL
+    , lqtQueueURL
+
     -- * Destructuring the Response
-  , listQueueTagsResponse
-  , ListQueueTagsResponse
+    , listQueueTagsResponse
+    , ListQueueTagsResponse
     -- * Response Lenses
-  , lqtrsTags
-  , lqtrsResponseStatus
-  ) where
+    , lqtrsTags
+    , lqtrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -63,47 +67,48 @@ newtype ListQueueTags =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListQueueTags' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'lqtQueueURL' - The URL of the queue.
-listQueueTags ::
-     Text -- ^ 'lqtQueueURL'
-  -> ListQueueTags
+listQueueTags
+    :: Text -- ^ 'lqtQueueURL'
+    -> ListQueueTags
 listQueueTags pQueueURL_ = ListQueueTags' {_lqtQueueURL = pQueueURL_}
+
 
 -- | The URL of the queue.
 lqtQueueURL :: Lens' ListQueueTags Text
-lqtQueueURL = lens _lqtQueueURL (\s a -> s {_lqtQueueURL = a})
+lqtQueueURL = lens _lqtQueueURL (\ s a -> s{_lqtQueueURL = a})
 
 instance AWSRequest ListQueueTags where
-  type Rs ListQueueTags = ListQueueTagsResponse
-  request = postQuery sqs
-  response =
-    receiveXMLWrapper
-      "ListQueueTagsResult"
-      (\s h x ->
-         ListQueueTagsResponse' <$> (may (parseXMLMap "Tag" "Key" "Value") x) <*>
-         (pure (fromEnum s)))
+        type Rs ListQueueTags = ListQueueTagsResponse
+        request = postQuery sqs
+        response
+          = receiveXMLWrapper "ListQueueTagsResult"
+              (\ s h x ->
+                 ListQueueTagsResponse' <$>
+                   (may (parseXMLMap "Tag" "Key" "Value") x) <*>
+                     (pure (fromEnum s)))
 
-instance Hashable ListQueueTags
+instance Hashable ListQueueTags where
 
-instance NFData ListQueueTags
+instance NFData ListQueueTags where
 
 instance ToHeaders ListQueueTags where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath ListQueueTags where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery ListQueueTags where
-  toQuery ListQueueTags' {..} =
-    mconcat
-      [ "Action" =: ("ListQueueTags" :: ByteString)
-      , "Version" =: ("2012-11-05" :: ByteString)
-      , "QueueUrl" =: _lqtQueueURL
-      ]
+        toQuery ListQueueTags'{..}
+          = mconcat
+              ["Action" =: ("ListQueueTags" :: ByteString),
+               "Version" =: ("2012-11-05" :: ByteString),
+               "QueueUrl" =: _lqtQueueURL]
 
 -- | /See:/ 'listQueueTagsResponse' smart constructor.
 data ListQueueTagsResponse =
@@ -113,6 +118,7 @@ data ListQueueTagsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListQueueTagsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -120,20 +126,20 @@ data ListQueueTagsResponse =
 -- * 'lqtrsTags' - The list of all tags added to the specified queue.
 --
 -- * 'lqtrsResponseStatus' - -- | The response status code.
-listQueueTagsResponse ::
-     Int -- ^ 'lqtrsResponseStatus'
-  -> ListQueueTagsResponse
+listQueueTagsResponse
+    :: Int -- ^ 'lqtrsResponseStatus'
+    -> ListQueueTagsResponse
 listQueueTagsResponse pResponseStatus_ =
   ListQueueTagsResponse'
     {_lqtrsTags = Nothing, _lqtrsResponseStatus = pResponseStatus_}
 
+
 -- | The list of all tags added to the specified queue.
 lqtrsTags :: Lens' ListQueueTagsResponse (HashMap Text Text)
-lqtrsTags = lens _lqtrsTags (\s a -> s {_lqtrsTags = a}) . _Default . _Map
+lqtrsTags = lens _lqtrsTags (\ s a -> s{_lqtrsTags = a}) . _Default . _Map
 
 -- | -- | The response status code.
 lqtrsResponseStatus :: Lens' ListQueueTagsResponse Int
-lqtrsResponseStatus =
-  lens _lqtrsResponseStatus (\s a -> s {_lqtrsResponseStatus = a})
+lqtrsResponseStatus = lens _lqtrsResponseStatus (\ s a -> s{_lqtrsResponseStatus = a})
 
-instance NFData ListQueueTagsResponse
+instance NFData ListQueueTagsResponse where

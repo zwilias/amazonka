@@ -2,9 +2,11 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.IoTJobsData.Types.Product
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -39,6 +41,7 @@ data JobExecution =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'JobExecution' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -62,7 +65,8 @@ data JobExecution =
 -- * 'jeStartedAt' - The time, in milliseconds since the epoch, when the job execution was started.
 --
 -- * 'jeThingName' - The name of the thing that is executing the job.
-jobExecution :: JobExecution
+jobExecution
+    :: JobExecution
 jobExecution =
   JobExecution'
     { _jeStatus = Nothing
@@ -77,65 +81,65 @@ jobExecution =
     , _jeThingName = Nothing
     }
 
+
 -- | The status of the job execution. Can be one of: "QUEUED", "IN_PROGRESS", "FAILED", "SUCCESS", "CANCELED", "REJECTED", or "REMOVED".
 jeStatus :: Lens' JobExecution (Maybe JobExecutionStatus)
-jeStatus = lens _jeStatus (\s a -> s {_jeStatus = a})
+jeStatus = lens _jeStatus (\ s a -> s{_jeStatus = a})
 
 -- | The unique identifier you assigned to this job when it was created.
 jeJobId :: Lens' JobExecution (Maybe Text)
-jeJobId = lens _jeJobId (\s a -> s {_jeJobId = a})
+jeJobId = lens _jeJobId (\ s a -> s{_jeJobId = a})
 
 -- | The time, in milliseconds since the epoch, when the job execution was last updated.
 jeLastUpdatedAt :: Lens' JobExecution (Maybe Integer)
-jeLastUpdatedAt = lens _jeLastUpdatedAt (\s a -> s {_jeLastUpdatedAt = a})
+jeLastUpdatedAt = lens _jeLastUpdatedAt (\ s a -> s{_jeLastUpdatedAt = a})
 
 -- | The time, in milliseconds since the epoch, when the job execution was enqueued.
 jeQueuedAt :: Lens' JobExecution (Maybe Integer)
-jeQueuedAt = lens _jeQueuedAt (\s a -> s {_jeQueuedAt = a})
+jeQueuedAt = lens _jeQueuedAt (\ s a -> s{_jeQueuedAt = a})
 
 -- | The content of the job document.
 jeJobDocument :: Lens' JobExecution (Maybe Text)
-jeJobDocument = lens _jeJobDocument (\s a -> s {_jeJobDocument = a})
+jeJobDocument = lens _jeJobDocument (\ s a -> s{_jeJobDocument = a})
 
 -- | A collection of name/value pairs that describe the status of the job execution.
 jeStatusDetails :: Lens' JobExecution (HashMap Text Text)
-jeStatusDetails =
-  lens _jeStatusDetails (\s a -> s {_jeStatusDetails = a}) . _Default . _Map
+jeStatusDetails = lens _jeStatusDetails (\ s a -> s{_jeStatusDetails = a}) . _Default . _Map
 
 -- | A number that identifies a particular job execution on a particular device. It can be used later in commands that return or update job execution information.
 jeExecutionNumber :: Lens' JobExecution (Maybe Integer)
-jeExecutionNumber = lens _jeExecutionNumber (\s a -> s {_jeExecutionNumber = a})
+jeExecutionNumber = lens _jeExecutionNumber (\ s a -> s{_jeExecutionNumber = a})
 
 -- | The version of the job execution. Job execution versions are incremented each time they are updated by a device.
 jeVersionNumber :: Lens' JobExecution (Maybe Integer)
-jeVersionNumber = lens _jeVersionNumber (\s a -> s {_jeVersionNumber = a})
+jeVersionNumber = lens _jeVersionNumber (\ s a -> s{_jeVersionNumber = a})
 
 -- | The time, in milliseconds since the epoch, when the job execution was started.
 jeStartedAt :: Lens' JobExecution (Maybe Integer)
-jeStartedAt = lens _jeStartedAt (\s a -> s {_jeStartedAt = a})
+jeStartedAt = lens _jeStartedAt (\ s a -> s{_jeStartedAt = a})
 
 -- | The name of the thing that is executing the job.
 jeThingName :: Lens' JobExecution (Maybe Text)
-jeThingName = lens _jeThingName (\s a -> s {_jeThingName = a})
+jeThingName = lens _jeThingName (\ s a -> s{_jeThingName = a})
 
 instance FromJSON JobExecution where
-  parseJSON =
-    withObject
-      "JobExecution"
-      (\x ->
-         JobExecution' <$> (x .:? "status") <*> (x .:? "jobId") <*>
-         (x .:? "lastUpdatedAt") <*>
-         (x .:? "queuedAt") <*>
-         (x .:? "jobDocument") <*>
-         (x .:? "statusDetails" .!= mempty) <*>
-         (x .:? "executionNumber") <*>
-         (x .:? "versionNumber") <*>
-         (x .:? "startedAt") <*>
-         (x .:? "thingName"))
+        parseJSON
+          = withObject "JobExecution"
+              (\ x ->
+                 JobExecution' <$>
+                   (x .:? "status") <*> (x .:? "jobId") <*>
+                     (x .:? "lastUpdatedAt")
+                     <*> (x .:? "queuedAt")
+                     <*> (x .:? "jobDocument")
+                     <*> (x .:? "statusDetails" .!= mempty)
+                     <*> (x .:? "executionNumber")
+                     <*> (x .:? "versionNumber")
+                     <*> (x .:? "startedAt")
+                     <*> (x .:? "thingName"))
 
-instance Hashable JobExecution
+instance Hashable JobExecution where
 
-instance NFData JobExecution
+instance NFData JobExecution where
 
 -- | Contains data about the state of a job execution.
 --
@@ -150,6 +154,7 @@ data JobExecutionState =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'JobExecutionState' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -159,7 +164,8 @@ data JobExecutionState =
 -- * 'jesStatusDetails' - A collection of name/value pairs that describe the status of the job execution.
 --
 -- * 'jesVersionNumber' - The version of the job execution. Job execution versions are incremented each time they are updated by a device.
-jobExecutionState :: JobExecutionState
+jobExecutionState
+    :: JobExecutionState
 jobExecutionState =
   JobExecutionState'
     { _jesStatus = Nothing
@@ -167,31 +173,31 @@ jobExecutionState =
     , _jesVersionNumber = Nothing
     }
 
+
 -- | The status of the job execution. Can be one of: "QUEUED", "IN_PROGRESS", "FAILED", "SUCCESS", "CANCELED", "REJECTED", or "REMOVED".
 jesStatus :: Lens' JobExecutionState (Maybe JobExecutionStatus)
-jesStatus = lens _jesStatus (\s a -> s {_jesStatus = a})
+jesStatus = lens _jesStatus (\ s a -> s{_jesStatus = a})
 
 -- | A collection of name/value pairs that describe the status of the job execution.
 jesStatusDetails :: Lens' JobExecutionState (HashMap Text Text)
-jesStatusDetails =
-  lens _jesStatusDetails (\s a -> s {_jesStatusDetails = a}) . _Default . _Map
+jesStatusDetails = lens _jesStatusDetails (\ s a -> s{_jesStatusDetails = a}) . _Default . _Map
 
 -- | The version of the job execution. Job execution versions are incremented each time they are updated by a device.
 jesVersionNumber :: Lens' JobExecutionState (Maybe Integer)
-jesVersionNumber = lens _jesVersionNumber (\s a -> s {_jesVersionNumber = a})
+jesVersionNumber = lens _jesVersionNumber (\ s a -> s{_jesVersionNumber = a})
 
 instance FromJSON JobExecutionState where
-  parseJSON =
-    withObject
-      "JobExecutionState"
-      (\x ->
-         JobExecutionState' <$> (x .:? "status") <*>
-         (x .:? "statusDetails" .!= mempty) <*>
-         (x .:? "versionNumber"))
+        parseJSON
+          = withObject "JobExecutionState"
+              (\ x ->
+                 JobExecutionState' <$>
+                   (x .:? "status") <*>
+                     (x .:? "statusDetails" .!= mempty)
+                     <*> (x .:? "versionNumber"))
 
-instance Hashable JobExecutionState
+instance Hashable JobExecutionState where
 
-instance NFData JobExecutionState
+instance NFData JobExecutionState where
 
 -- | Contains a subset of information about a job execution.
 --
@@ -209,6 +215,7 @@ data JobExecutionSummary =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'JobExecutionSummary' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -224,7 +231,8 @@ data JobExecutionSummary =
 -- * 'jVersionNumber' - The version of the job execution. Job execution versions are incremented each time AWS IoT Jobs receives an update from a device.
 --
 -- * 'jStartedAt' - The time, in milliseconds since the epoch, when the job execution started.
-jobExecutionSummary :: JobExecutionSummary
+jobExecutionSummary
+    :: JobExecutionSummary
 jobExecutionSummary =
   JobExecutionSummary'
     { _jJobId = Nothing
@@ -235,41 +243,42 @@ jobExecutionSummary =
     , _jStartedAt = Nothing
     }
 
+
 -- | The unique identifier you assigned to this job when it was created.
 jJobId :: Lens' JobExecutionSummary (Maybe Text)
-jJobId = lens _jJobId (\s a -> s {_jJobId = a})
+jJobId = lens _jJobId (\ s a -> s{_jJobId = a})
 
 -- | The time, in milliseconds since the epoch, when the job execution was last updated.
 jLastUpdatedAt :: Lens' JobExecutionSummary (Maybe Integer)
-jLastUpdatedAt = lens _jLastUpdatedAt (\s a -> s {_jLastUpdatedAt = a})
+jLastUpdatedAt = lens _jLastUpdatedAt (\ s a -> s{_jLastUpdatedAt = a})
 
 -- | The time, in milliseconds since the epoch, when the job execution was enqueued.
 jQueuedAt :: Lens' JobExecutionSummary (Maybe Integer)
-jQueuedAt = lens _jQueuedAt (\s a -> s {_jQueuedAt = a})
+jQueuedAt = lens _jQueuedAt (\ s a -> s{_jQueuedAt = a})
 
 -- | A number that identifies a particular job execution on a particular device.
 jExecutionNumber :: Lens' JobExecutionSummary (Maybe Integer)
-jExecutionNumber = lens _jExecutionNumber (\s a -> s {_jExecutionNumber = a})
+jExecutionNumber = lens _jExecutionNumber (\ s a -> s{_jExecutionNumber = a})
 
 -- | The version of the job execution. Job execution versions are incremented each time AWS IoT Jobs receives an update from a device.
 jVersionNumber :: Lens' JobExecutionSummary (Maybe Integer)
-jVersionNumber = lens _jVersionNumber (\s a -> s {_jVersionNumber = a})
+jVersionNumber = lens _jVersionNumber (\ s a -> s{_jVersionNumber = a})
 
 -- | The time, in milliseconds since the epoch, when the job execution started.
 jStartedAt :: Lens' JobExecutionSummary (Maybe Integer)
-jStartedAt = lens _jStartedAt (\s a -> s {_jStartedAt = a})
+jStartedAt = lens _jStartedAt (\ s a -> s{_jStartedAt = a})
 
 instance FromJSON JobExecutionSummary where
-  parseJSON =
-    withObject
-      "JobExecutionSummary"
-      (\x ->
-         JobExecutionSummary' <$> (x .:? "jobId") <*> (x .:? "lastUpdatedAt") <*>
-         (x .:? "queuedAt") <*>
-         (x .:? "executionNumber") <*>
-         (x .:? "versionNumber") <*>
-         (x .:? "startedAt"))
+        parseJSON
+          = withObject "JobExecutionSummary"
+              (\ x ->
+                 JobExecutionSummary' <$>
+                   (x .:? "jobId") <*> (x .:? "lastUpdatedAt") <*>
+                     (x .:? "queuedAt")
+                     <*> (x .:? "executionNumber")
+                     <*> (x .:? "versionNumber")
+                     <*> (x .:? "startedAt"))
 
-instance Hashable JobExecutionSummary
+instance Hashable JobExecutionSummary where
 
-instance NFData JobExecutionSummary
+instance NFData JobExecutionSummary where

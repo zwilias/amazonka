@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.DMS.StartReplicationTaskAssessment
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.DMS.StartReplicationTaskAssessment
+    (
     -- * Creating a Request
-  ( startReplicationTaskAssessment
-  , StartReplicationTaskAssessment
+      startReplicationTaskAssessment
+    , StartReplicationTaskAssessment
     -- * Request Lenses
-  , srtaReplicationTaskARN
+    , srtaReplicationTaskARN
+
     -- * Destructuring the Response
-  , startReplicationTaskAssessmentResponse
-  , StartReplicationTaskAssessmentResponse
+    , startReplicationTaskAssessmentResponse
+    , StartReplicationTaskAssessmentResponse
     -- * Response Lenses
-  , srtarsReplicationTask
-  , srtarsResponseStatus
-  ) where
+    , srtarsReplicationTask
+    , srtarsResponseStatus
+    ) where
 
 import Network.AWS.DMS.Types
 import Network.AWS.DMS.Types.Product
@@ -51,54 +55,63 @@ newtype StartReplicationTaskAssessment =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'StartReplicationTaskAssessment' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'srtaReplicationTaskARN' - The Amazon Resource Name (ARN) of the replication task.
-startReplicationTaskAssessment ::
-     Text -- ^ 'srtaReplicationTaskARN'
-  -> StartReplicationTaskAssessment
+startReplicationTaskAssessment
+    :: Text -- ^ 'srtaReplicationTaskARN'
+    -> StartReplicationTaskAssessment
 startReplicationTaskAssessment pReplicationTaskARN_ =
   StartReplicationTaskAssessment'
     {_srtaReplicationTaskARN = pReplicationTaskARN_}
 
+
 -- | The Amazon Resource Name (ARN) of the replication task.
 srtaReplicationTaskARN :: Lens' StartReplicationTaskAssessment Text
-srtaReplicationTaskARN =
-  lens _srtaReplicationTaskARN (\s a -> s {_srtaReplicationTaskARN = a})
+srtaReplicationTaskARN = lens _srtaReplicationTaskARN (\ s a -> s{_srtaReplicationTaskARN = a})
 
-instance AWSRequest StartReplicationTaskAssessment where
-  type Rs StartReplicationTaskAssessment = StartReplicationTaskAssessmentResponse
-  request = postJSON dms
-  response =
-    receiveJSON
-      (\s h x ->
-         StartReplicationTaskAssessmentResponse' <$> (x .?> "ReplicationTask") <*>
-         (pure (fromEnum s)))
+instance AWSRequest StartReplicationTaskAssessment
+         where
+        type Rs StartReplicationTaskAssessment =
+             StartReplicationTaskAssessmentResponse
+        request = postJSON dms
+        response
+          = receiveJSON
+              (\ s h x ->
+                 StartReplicationTaskAssessmentResponse' <$>
+                   (x .?> "ReplicationTask") <*> (pure (fromEnum s)))
 
 instance Hashable StartReplicationTaskAssessment
+         where
 
-instance NFData StartReplicationTaskAssessment
+instance NFData StartReplicationTaskAssessment where
 
-instance ToHeaders StartReplicationTaskAssessment where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AmazonDMSv20160101.StartReplicationTaskAssessment" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+instance ToHeaders StartReplicationTaskAssessment
+         where
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AmazonDMSv20160101.StartReplicationTaskAssessment"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON StartReplicationTaskAssessment where
-  toJSON StartReplicationTaskAssessment' {..} =
-    object (catMaybes [Just ("ReplicationTaskArn" .= _srtaReplicationTaskARN)])
+        toJSON StartReplicationTaskAssessment'{..}
+          = object
+              (catMaybes
+                 [Just
+                    ("ReplicationTaskArn" .= _srtaReplicationTaskARN)])
 
 instance ToPath StartReplicationTaskAssessment where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery StartReplicationTaskAssessment where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- |
 --
@@ -112,6 +125,7 @@ data StartReplicationTaskAssessmentResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'StartReplicationTaskAssessmentResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -119,22 +133,22 @@ data StartReplicationTaskAssessmentResponse =
 -- * 'srtarsReplicationTask' - The assessed replication task.
 --
 -- * 'srtarsResponseStatus' - -- | The response status code.
-startReplicationTaskAssessmentResponse ::
-     Int -- ^ 'srtarsResponseStatus'
-  -> StartReplicationTaskAssessmentResponse
+startReplicationTaskAssessmentResponse
+    :: Int -- ^ 'srtarsResponseStatus'
+    -> StartReplicationTaskAssessmentResponse
 startReplicationTaskAssessmentResponse pResponseStatus_ =
   StartReplicationTaskAssessmentResponse'
     {_srtarsReplicationTask = Nothing, _srtarsResponseStatus = pResponseStatus_}
 
+
 -- | The assessed replication task.
-srtarsReplicationTask ::
-     Lens' StartReplicationTaskAssessmentResponse (Maybe ReplicationTask)
-srtarsReplicationTask =
-  lens _srtarsReplicationTask (\s a -> s {_srtarsReplicationTask = a})
+srtarsReplicationTask :: Lens' StartReplicationTaskAssessmentResponse (Maybe ReplicationTask)
+srtarsReplicationTask = lens _srtarsReplicationTask (\ s a -> s{_srtarsReplicationTask = a})
 
 -- | -- | The response status code.
 srtarsResponseStatus :: Lens' StartReplicationTaskAssessmentResponse Int
-srtarsResponseStatus =
-  lens _srtarsResponseStatus (\s a -> s {_srtarsResponseStatus = a})
+srtarsResponseStatus = lens _srtarsResponseStatus (\ s a -> s{_srtarsResponseStatus = a})
 
-instance NFData StartReplicationTaskAssessmentResponse
+instance NFData
+           StartReplicationTaskAssessmentResponse
+         where

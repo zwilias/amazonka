@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SES.UpdateReceiptRule
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,18 +26,20 @@
 -- You can execute this operation no more than once per second.
 --
 module Network.AWS.SES.UpdateReceiptRule
+    (
     -- * Creating a Request
-  ( updateReceiptRule
-  , UpdateReceiptRule
+      updateReceiptRule
+    , UpdateReceiptRule
     -- * Request Lenses
-  , urrRuleSetName
-  , urrRule
+    , urrRuleSetName
+    , urrRule
+
     -- * Destructuring the Response
-  , updateReceiptRuleResponse
-  , UpdateReceiptRuleResponse
+    , updateReceiptRuleResponse
+    , UpdateReceiptRuleResponse
     -- * Response Lenses
-  , urrrsResponseStatus
-  ) where
+    , urrrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -56,6 +60,7 @@ data UpdateReceiptRule =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateReceiptRule' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -63,47 +68,46 @@ data UpdateReceiptRule =
 -- * 'urrRuleSetName' - The name of the receipt rule set that the receipt rule belongs to.
 --
 -- * 'urrRule' - A data structure that contains the updated receipt rule information.
-updateReceiptRule ::
-     Text -- ^ 'urrRuleSetName'
-  -> ReceiptRule -- ^ 'urrRule'
-  -> UpdateReceiptRule
+updateReceiptRule
+    :: Text -- ^ 'urrRuleSetName'
+    -> ReceiptRule -- ^ 'urrRule'
+    -> UpdateReceiptRule
 updateReceiptRule pRuleSetName_ pRule_ =
   UpdateReceiptRule' {_urrRuleSetName = pRuleSetName_, _urrRule = pRule_}
 
+
 -- | The name of the receipt rule set that the receipt rule belongs to.
 urrRuleSetName :: Lens' UpdateReceiptRule Text
-urrRuleSetName = lens _urrRuleSetName (\s a -> s {_urrRuleSetName = a})
+urrRuleSetName = lens _urrRuleSetName (\ s a -> s{_urrRuleSetName = a})
 
 -- | A data structure that contains the updated receipt rule information.
 urrRule :: Lens' UpdateReceiptRule ReceiptRule
-urrRule = lens _urrRule (\s a -> s {_urrRule = a})
+urrRule = lens _urrRule (\ s a -> s{_urrRule = a})
 
 instance AWSRequest UpdateReceiptRule where
-  type Rs UpdateReceiptRule = UpdateReceiptRuleResponse
-  request = postQuery ses
-  response =
-    receiveXMLWrapper
-      "UpdateReceiptRuleResult"
-      (\s h x -> UpdateReceiptRuleResponse' <$> (pure (fromEnum s)))
+        type Rs UpdateReceiptRule = UpdateReceiptRuleResponse
+        request = postQuery ses
+        response
+          = receiveXMLWrapper "UpdateReceiptRuleResult"
+              (\ s h x ->
+                 UpdateReceiptRuleResponse' <$> (pure (fromEnum s)))
 
-instance Hashable UpdateReceiptRule
+instance Hashable UpdateReceiptRule where
 
-instance NFData UpdateReceiptRule
+instance NFData UpdateReceiptRule where
 
 instance ToHeaders UpdateReceiptRule where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath UpdateReceiptRule where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery UpdateReceiptRule where
-  toQuery UpdateReceiptRule' {..} =
-    mconcat
-      [ "Action" =: ("UpdateReceiptRule" :: ByteString)
-      , "Version" =: ("2010-12-01" :: ByteString)
-      , "RuleSetName" =: _urrRuleSetName
-      , "Rule" =: _urrRule
-      ]
+        toQuery UpdateReceiptRule'{..}
+          = mconcat
+              ["Action" =: ("UpdateReceiptRule" :: ByteString),
+               "Version" =: ("2010-12-01" :: ByteString),
+               "RuleSetName" =: _urrRuleSetName, "Rule" =: _urrRule]
 
 -- | An empty element returned on a successful request.
 --
@@ -116,20 +120,21 @@ newtype UpdateReceiptRuleResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateReceiptRuleResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'urrrsResponseStatus' - -- | The response status code.
-updateReceiptRuleResponse ::
-     Int -- ^ 'urrrsResponseStatus'
-  -> UpdateReceiptRuleResponse
+updateReceiptRuleResponse
+    :: Int -- ^ 'urrrsResponseStatus'
+    -> UpdateReceiptRuleResponse
 updateReceiptRuleResponse pResponseStatus_ =
   UpdateReceiptRuleResponse' {_urrrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 urrrsResponseStatus :: Lens' UpdateReceiptRuleResponse Int
-urrrsResponseStatus =
-  lens _urrrsResponseStatus (\s a -> s {_urrrsResponseStatus = a})
+urrrsResponseStatus = lens _urrrsResponseStatus (\ s a -> s{_urrrsResponseStatus = a})
 
-instance NFData UpdateReceiptRuleResponse
+instance NFData UpdateReceiptRuleResponse where

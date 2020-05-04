@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.MediaPackage.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,161 +11,185 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.MediaPackage.Types
+    (
     -- * Service Configuration
-  ( mediaPackage
+      mediaPackage
+
     -- * Errors
-  , _UnprocessableEntityException
-  , _ForbiddenException
-  , _NotFoundException
-  , _TooManyRequestsException
-  , _InternalServerErrorException
-  , _ServiceUnavailableException
+    , _UnprocessableEntityException
+    , _ForbiddenException
+    , _NotFoundException
+    , _TooManyRequestsException
+    , _InternalServerErrorException
+    , _ServiceUnavailableException
+
     -- * AdMarkers
-  , AdMarkers(..)
+    , AdMarkers (..)
+
     -- * EncryptionMethod
-  , EncryptionMethod(..)
+    , EncryptionMethod (..)
+
     -- * PlaylistType
-  , PlaylistType(..)
+    , PlaylistType (..)
+
     -- * Profile
-  , Profile(..)
+    , Profile (..)
+
     -- * StreamOrder
-  , StreamOrder(..)
+    , StreamOrder (..)
+
     -- * Channel
-  , Channel
-  , channel
-  , cHlsIngest
-  , cARN
-  , cId
-  , cDescription
+    , Channel
+    , channel
+    , cHlsIngest
+    , cARN
+    , cId
+    , cDescription
+
     -- * CmafEncryption
-  , CmafEncryption
-  , cmafEncryption
-  , ceKeyRotationIntervalSeconds
-  , ceSpekeKeyProvider
+    , CmafEncryption
+    , cmafEncryption
+    , ceKeyRotationIntervalSeconds
+    , ceSpekeKeyProvider
+
     -- * CmafPackage
-  , CmafPackage
-  , cmafPackage
-  , cpHlsManifests
-  , cpSegmentDurationSeconds
-  , cpStreamSelection
-  , cpEncryption
-  , cpSegmentPrefix
+    , CmafPackage
+    , cmafPackage
+    , cpHlsManifests
+    , cpSegmentDurationSeconds
+    , cpStreamSelection
+    , cpEncryption
+    , cpSegmentPrefix
+
     -- * CmafPackageCreateOrUpdateParameters
-  , CmafPackageCreateOrUpdateParameters
-  , cmafPackageCreateOrUpdateParameters
-  , cpcoupHlsManifests
-  , cpcoupSegmentDurationSeconds
-  , cpcoupStreamSelection
-  , cpcoupEncryption
-  , cpcoupSegmentPrefix
+    , CmafPackageCreateOrUpdateParameters
+    , cmafPackageCreateOrUpdateParameters
+    , cpcoupHlsManifests
+    , cpcoupSegmentDurationSeconds
+    , cpcoupStreamSelection
+    , cpcoupEncryption
+    , cpcoupSegmentPrefix
+
     -- * DashEncryption
-  , DashEncryption
-  , dashEncryption
-  , deKeyRotationIntervalSeconds
-  , deSpekeKeyProvider
+    , DashEncryption
+    , dashEncryption
+    , deKeyRotationIntervalSeconds
+    , deSpekeKeyProvider
+
     -- * DashPackage
-  , DashPackage
-  , dashPackage
-  , dpMinBufferTimeSeconds
-  , dpProfile
-  , dpSegmentDurationSeconds
-  , dpStreamSelection
-  , dpEncryption
-  , dpMinUpdatePeriodSeconds
-  , dpSuggestedPresentationDelaySeconds
-  , dpManifestWindowSeconds
+    , DashPackage
+    , dashPackage
+    , dpMinBufferTimeSeconds
+    , dpProfile
+    , dpSegmentDurationSeconds
+    , dpStreamSelection
+    , dpEncryption
+    , dpMinUpdatePeriodSeconds
+    , dpSuggestedPresentationDelaySeconds
+    , dpManifestWindowSeconds
+
     -- * HlsEncryption
-  , HlsEncryption
-  , hlsEncryption
-  , heEncryptionMethod
-  , heKeyRotationIntervalSeconds
-  , heConstantInitializationVector
-  , heRepeatExtXKey
-  , heSpekeKeyProvider
+    , HlsEncryption
+    , hlsEncryption
+    , heEncryptionMethod
+    , heKeyRotationIntervalSeconds
+    , heConstantInitializationVector
+    , heRepeatExtXKey
+    , heSpekeKeyProvider
+
     -- * HlsIngest
-  , HlsIngest
-  , hlsIngest
-  , hiIngestEndpoints
+    , HlsIngest
+    , hlsIngest
+    , hiIngestEndpoints
+
     -- * HlsManifest
-  , HlsManifest
-  , hlsManifest
-  , hmManifestName
-  , hmURL
-  , hmPlaylistType
-  , hmProgramDateTimeIntervalSeconds
-  , hmAdMarkers
-  , hmIncludeIframeOnlyStream
-  , hmPlaylistWindowSeconds
-  , hmId
+    , HlsManifest
+    , hlsManifest
+    , hmManifestName
+    , hmURL
+    , hmPlaylistType
+    , hmProgramDateTimeIntervalSeconds
+    , hmAdMarkers
+    , hmIncludeIframeOnlyStream
+    , hmPlaylistWindowSeconds
+    , hmId
+
     -- * HlsManifestCreateOrUpdateParameters
-  , HlsManifestCreateOrUpdateParameters
-  , hlsManifestCreateOrUpdateParameters
-  , hmcoupManifestName
-  , hmcoupPlaylistType
-  , hmcoupProgramDateTimeIntervalSeconds
-  , hmcoupAdMarkers
-  , hmcoupIncludeIframeOnlyStream
-  , hmcoupPlaylistWindowSeconds
-  , hmcoupId
+    , HlsManifestCreateOrUpdateParameters
+    , hlsManifestCreateOrUpdateParameters
+    , hmcoupManifestName
+    , hmcoupPlaylistType
+    , hmcoupProgramDateTimeIntervalSeconds
+    , hmcoupAdMarkers
+    , hmcoupIncludeIframeOnlyStream
+    , hmcoupPlaylistWindowSeconds
+    , hmcoupId
+
     -- * HlsPackage
-  , HlsPackage
-  , hlsPackage
-  , hpUseAudioRenditionGroup
-  , hpPlaylistType
-  , hpSegmentDurationSeconds
-  , hpProgramDateTimeIntervalSeconds
-  , hpStreamSelection
-  , hpAdMarkers
-  , hpEncryption
-  , hpIncludeIframeOnlyStream
-  , hpPlaylistWindowSeconds
+    , HlsPackage
+    , hlsPackage
+    , hpUseAudioRenditionGroup
+    , hpPlaylistType
+    , hpSegmentDurationSeconds
+    , hpProgramDateTimeIntervalSeconds
+    , hpStreamSelection
+    , hpAdMarkers
+    , hpEncryption
+    , hpIncludeIframeOnlyStream
+    , hpPlaylistWindowSeconds
+
     -- * IngestEndpoint
-  , IngestEndpoint
-  , ingestEndpoint
-  , ieURL
-  , ieUsername
-  , iePassword
+    , IngestEndpoint
+    , ingestEndpoint
+    , ieURL
+    , ieUsername
+    , iePassword
+
     -- * MssEncryption
-  , MssEncryption
-  , mssEncryption
-  , meSpekeKeyProvider
+    , MssEncryption
+    , mssEncryption
+    , meSpekeKeyProvider
+
     -- * MssPackage
-  , MssPackage
-  , mssPackage
-  , mpSegmentDurationSeconds
-  , mpStreamSelection
-  , mpEncryption
-  , mpManifestWindowSeconds
+    , MssPackage
+    , mssPackage
+    , mpSegmentDurationSeconds
+    , mpStreamSelection
+    , mpEncryption
+    , mpManifestWindowSeconds
+
     -- * OriginEndpoint
-  , OriginEndpoint
-  , originEndpoint
-  , oeWhitelist
-  , oeHlsPackage
-  , oeARN
-  , oeManifestName
-  , oeURL
-  , oeChannelId
-  , oeStartoverWindowSeconds
-  , oeDashPackage
-  , oeMssPackage
-  , oeId
-  , oeTimeDelaySeconds
-  , oeCmafPackage
-  , oeDescription
+    , OriginEndpoint
+    , originEndpoint
+    , oeWhitelist
+    , oeHlsPackage
+    , oeARN
+    , oeManifestName
+    , oeURL
+    , oeChannelId
+    , oeStartoverWindowSeconds
+    , oeDashPackage
+    , oeMssPackage
+    , oeId
+    , oeTimeDelaySeconds
+    , oeCmafPackage
+    , oeDescription
+
     -- * SpekeKeyProvider
-  , SpekeKeyProvider
-  , spekeKeyProvider
-  , skpURL
-  , skpResourceId
-  , skpRoleARN
-  , skpSystemIds
+    , SpekeKeyProvider
+    , spekeKeyProvider
+    , skpURL
+    , skpResourceId
+    , skpRoleARN
+    , skpSystemIds
+
     -- * StreamSelection
-  , StreamSelection
-  , streamSelection
-  , ssStreamOrder
-  , ssMinVideoBitsPerSecond
-  , ssMaxVideoBitsPerSecond
-  ) where
+    , StreamSelection
+    , streamSelection
+    , ssStreamOrder
+    , ssMinVideoBitsPerSecond
+    , ssMaxVideoBitsPerSecond
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.MediaPackage.Types.Product
@@ -210,36 +235,39 @@ mediaPackage =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | The parameters sent in the request are not valid.
-_UnprocessableEntityException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_UnprocessableEntityException :: AsError a => Getting (First ServiceError) a ServiceError
 _UnprocessableEntityException =
   _MatchServiceError mediaPackage "UnprocessableEntityException" . hasStatus 422
+
 
 -- | The client is not authorized to access the requested resource.
 _ForbiddenException :: AsError a => Getting (First ServiceError) a ServiceError
 _ForbiddenException =
   _MatchServiceError mediaPackage "ForbiddenException" . hasStatus 403
 
+
 -- | The requested resource does not exist.
 _NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _NotFoundException =
   _MatchServiceError mediaPackage "NotFoundException" . hasStatus 404
 
+
 -- | The client has exceeded their resource or throttling limits.
-_TooManyRequestsException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
 _TooManyRequestsException =
   _MatchServiceError mediaPackage "TooManyRequestsException" . hasStatus 429
 
+
 -- | An unexpected error occurred.
-_InternalServerErrorException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalServerErrorException =
   _MatchServiceError mediaPackage "InternalServerErrorException" . hasStatus 500
 
+
 -- | An unexpected error occurred.
-_ServiceUnavailableException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
 _ServiceUnavailableException =
   _MatchServiceError mediaPackage "ServiceUnavailableException" . hasStatus 503
+

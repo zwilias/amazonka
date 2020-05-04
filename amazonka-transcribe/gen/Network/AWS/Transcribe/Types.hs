@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Transcribe.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,67 +11,79 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.Transcribe.Types
+    (
     -- * Service Configuration
-  ( transcribe
+      transcribe
+
     -- * Errors
-  , _ConflictException
-  , _NotFoundException
-  , _InternalFailureException
-  , _BadRequestException
-  , _LimitExceededException
+    , _ConflictException
+    , _NotFoundException
+    , _InternalFailureException
+    , _BadRequestException
+    , _LimitExceededException
+
     -- * LanguageCode
-  , LanguageCode(..)
+    , LanguageCode (..)
+
     -- * MediaFormat
-  , MediaFormat(..)
+    , MediaFormat (..)
+
     -- * TranscriptionJobStatus
-  , TranscriptionJobStatus(..)
+    , TranscriptionJobStatus (..)
+
     -- * VocabularyState
-  , VocabularyState(..)
+    , VocabularyState (..)
+
     -- * Media
-  , Media
-  , media
-  , mMediaFileURI
+    , Media
+    , media
+    , mMediaFileURI
+
     -- * Settings
-  , Settings
-  , settings
-  , sVocabularyName
-  , sMaxSpeakerLabels
-  , sShowSpeakerLabels
+    , Settings
+    , settings
+    , sVocabularyName
+    , sMaxSpeakerLabels
+    , sShowSpeakerLabels
+
     -- * Transcript
-  , Transcript
-  , transcript
-  , tTranscriptFileURI
+    , Transcript
+    , transcript
+    , tTranscriptFileURI
+
     -- * TranscriptionJob
-  , TranscriptionJob
-  , transcriptionJob
-  , tjCreationTime
-  , tjFailureReason
-  , tjLanguageCode
-  , tjSettings
-  , tjCompletionTime
-  , tjMedia
-  , tjMediaFormat
-  , tjTranscriptionJobStatus
-  , tjTranscriptionJobName
-  , tjTranscript
-  , tjMediaSampleRateHertz
+    , TranscriptionJob
+    , transcriptionJob
+    , tjCreationTime
+    , tjFailureReason
+    , tjLanguageCode
+    , tjSettings
+    , tjCompletionTime
+    , tjMedia
+    , tjMediaFormat
+    , tjTranscriptionJobStatus
+    , tjTranscriptionJobName
+    , tjTranscript
+    , tjMediaSampleRateHertz
+
     -- * TranscriptionJobSummary
-  , TranscriptionJobSummary
-  , transcriptionJobSummary
-  , tjsCreationTime
-  , tjsFailureReason
-  , tjsLanguageCode
-  , tjsCompletionTime
-  , tjsTranscriptionJobStatus
-  , tjsTranscriptionJobName
+    , TranscriptionJobSummary
+    , transcriptionJobSummary
+    , tjsCreationTime
+    , tjsFailureReason
+    , tjsLanguageCode
+    , tjsCompletionTime
+    , tjsTranscriptionJobStatus
+    , tjsTranscriptionJobName
+
     -- * VocabularyInfo
-  , VocabularyInfo
-  , vocabularyInfo
-  , viLanguageCode
-  , viVocabularyName
-  , viLastModifiedTime
-  , viVocabularyState
-  ) where
+    , VocabularyInfo
+    , vocabularyInfo
+    , viLanguageCode
+    , viVocabularyName
+    , viLastModifiedTime
+    , viVocabularyState
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -116,11 +129,13 @@ transcribe =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | The @JobName@ field is a duplicate of a previously entered job name. Resend your request with a different name.
 --
 --
 _ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
 _ConflictException = _MatchServiceError transcribe "ConflictException"
+
 
 -- | We can't find the requested transcription job or custom vocabulary. Check the name and try your request again.
 --
@@ -128,13 +143,14 @@ _ConflictException = _MatchServiceError transcribe "ConflictException"
 _NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _NotFoundException = _MatchServiceError transcribe "NotFoundException"
 
+
 -- | There was an internal error. Check the error message and try your request again.
 --
 --
-_InternalFailureException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalFailureException =
   _MatchServiceError transcribe "InternalFailureException"
+
 
 -- | Your request didn't pass one or more validation tests. For example, a name already exists when createing a resource or a name may not exist when getting a transcription job or custom vocabulary. See the exception @Message@ field for more information.
 --
@@ -142,9 +158,10 @@ _InternalFailureException =
 _BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
 _BadRequestException = _MatchServiceError transcribe "BadRequestException"
 
+
 -- | Either you have sent too many requests or your input file is too long. Wait before you resend your request, or use a smaller file and resend the request.
 --
 --
-_LimitExceededException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException = _MatchServiceError transcribe "LimitExceededException"
+

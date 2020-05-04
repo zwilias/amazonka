@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Config.DeleteConfigRule
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,15 +26,17 @@
 -- You can check the state of a rule by using the @DescribeConfigRules@ request.
 --
 module Network.AWS.Config.DeleteConfigRule
+    (
     -- * Creating a Request
-  ( deleteConfigRule
-  , DeleteConfigRule
+      deleteConfigRule
+    , DeleteConfigRule
     -- * Request Lenses
-  , dcrConfigRuleName
+    , dcrConfigRuleName
+
     -- * Destructuring the Response
-  , deleteConfigRuleResponse
-  , DeleteConfigRuleResponse
-  ) where
+    , deleteConfigRuleResponse
+    , DeleteConfigRuleResponse
+    ) where
 
 import Network.AWS.Config.Types
 import Network.AWS.Config.Types.Product
@@ -52,57 +56,65 @@ newtype DeleteConfigRule =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteConfigRule' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dcrConfigRuleName' - The name of the AWS Config rule that you want to delete.
-deleteConfigRule ::
-     Text -- ^ 'dcrConfigRuleName'
-  -> DeleteConfigRule
+deleteConfigRule
+    :: Text -- ^ 'dcrConfigRuleName'
+    -> DeleteConfigRule
 deleteConfigRule pConfigRuleName_ =
   DeleteConfigRule' {_dcrConfigRuleName = pConfigRuleName_}
 
+
 -- | The name of the AWS Config rule that you want to delete.
 dcrConfigRuleName :: Lens' DeleteConfigRule Text
-dcrConfigRuleName = lens _dcrConfigRuleName (\s a -> s {_dcrConfigRuleName = a})
+dcrConfigRuleName = lens _dcrConfigRuleName (\ s a -> s{_dcrConfigRuleName = a})
 
 instance AWSRequest DeleteConfigRule where
-  type Rs DeleteConfigRule = DeleteConfigRuleResponse
-  request = postJSON config
-  response = receiveNull DeleteConfigRuleResponse'
+        type Rs DeleteConfigRule = DeleteConfigRuleResponse
+        request = postJSON config
+        response = receiveNull DeleteConfigRuleResponse'
 
-instance Hashable DeleteConfigRule
+instance Hashable DeleteConfigRule where
 
-instance NFData DeleteConfigRule
+instance NFData DeleteConfigRule where
 
 instance ToHeaders DeleteConfigRule where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("StarlingDoveService.DeleteConfigRule" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("StarlingDoveService.DeleteConfigRule" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DeleteConfigRule where
-  toJSON DeleteConfigRule' {..} =
-    object (catMaybes [Just ("ConfigRuleName" .= _dcrConfigRuleName)])
+        toJSON DeleteConfigRule'{..}
+          = object
+              (catMaybes
+                 [Just ("ConfigRuleName" .= _dcrConfigRuleName)])
 
 instance ToPath DeleteConfigRule where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DeleteConfigRule where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'deleteConfigRuleResponse' smart constructor.
 data DeleteConfigRuleResponse =
   DeleteConfigRuleResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteConfigRuleResponse' with the minimum fields required to make a request.
 --
-deleteConfigRuleResponse :: DeleteConfigRuleResponse
+deleteConfigRuleResponse
+    :: DeleteConfigRuleResponse
 deleteConfigRuleResponse = DeleteConfigRuleResponse'
 
-instance NFData DeleteConfigRuleResponse
+
+instance NFData DeleteConfigRuleResponse where

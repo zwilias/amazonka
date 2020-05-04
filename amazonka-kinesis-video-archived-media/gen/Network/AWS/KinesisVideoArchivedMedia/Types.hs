@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.KinesisVideoArchivedMedia.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,34 +11,40 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.KinesisVideoArchivedMedia.Types
+    (
     -- * Service Configuration
-  ( kinesisVideoArchivedMedia
+      kinesisVideoArchivedMedia
+
     -- * Errors
-  , _InvalidArgumentException
-  , _NotAuthorizedException
-  , _ClientLimitExceededException
-  , _ResourceNotFoundException
+    , _InvalidArgumentException
+    , _NotAuthorizedException
+    , _ClientLimitExceededException
+    , _ResourceNotFoundException
+
     -- * FragmentSelectorType
-  , FragmentSelectorType(..)
+    , FragmentSelectorType (..)
+
     -- * Fragment
-  , Fragment
-  , fragment
-  , fFragmentLengthInMilliseconds
-  , fServerTimestamp
-  , fFragmentSizeInBytes
-  , fFragmentNumber
-  , fProducerTimestamp
+    , Fragment
+    , fragment
+    , fFragmentLengthInMilliseconds
+    , fServerTimestamp
+    , fFragmentSizeInBytes
+    , fFragmentNumber
+    , fProducerTimestamp
+
     -- * FragmentSelector
-  , FragmentSelector
-  , fragmentSelector
-  , fsFragmentSelectorType
-  , fsTimestampRange
+    , FragmentSelector
+    , fragmentSelector
+    , fsFragmentSelectorType
+    , fsTimestampRange
+
     -- * TimestampRange
-  , TimestampRange
-  , timestampRange
-  , trStartTimestamp
-  , trEndTimestamp
-  ) where
+    , TimestampRange
+    , timestampRange
+    , trStartTimestamp
+    , trEndTimestamp
+    ) where
 
 import Network.AWS.KinesisVideoArchivedMedia.Types.Product
 import Network.AWS.KinesisVideoArchivedMedia.Types.Sum
@@ -83,38 +90,39 @@ kinesisVideoArchivedMedia =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | A specified parameter exceeds its restrictions, is not supported, or can't be used.
 --
 --
-_InvalidArgumentException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidArgumentException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidArgumentException =
   _MatchServiceError kinesisVideoArchivedMedia "InvalidArgumentException" .
   hasStatus 400
 
+
 -- | Status Code: 403, The caller is not authorized to perform an operation on the given stream, or the token has expired.
 --
 --
-_NotAuthorizedException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_NotAuthorizedException :: AsError a => Getting (First ServiceError) a ServiceError
 _NotAuthorizedException =
   _MatchServiceError kinesisVideoArchivedMedia "NotAuthorizedException" .
   hasStatus 401
 
+
 -- | Kinesis Video Streams has throttled the request because you have exceeded the limit of allowed client calls. Try making the call later.
 --
 --
-_ClientLimitExceededException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ClientLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _ClientLimitExceededException =
   _MatchServiceError kinesisVideoArchivedMedia "ClientLimitExceededException" .
   hasStatus 400
 
+
 -- | Kinesis Video Streams can't find the stream that you specified.
 --
 --
-_ResourceNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceNotFoundException =
   _MatchServiceError kinesisVideoArchivedMedia "ResourceNotFoundException" .
   hasStatus 404
+

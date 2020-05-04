@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.S3.DeleteBucketWebsite
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,15 +20,17 @@
 --
 -- This operation removes the website configuration from the bucket.
 module Network.AWS.S3.DeleteBucketWebsite
+    (
     -- * Creating a Request
-  ( deleteBucketWebsite
-  , DeleteBucketWebsite
+      deleteBucketWebsite
+    , DeleteBucketWebsite
     -- * Request Lenses
-  , dbwBucket
+    , dbwBucket
+
     -- * Destructuring the Response
-  , deleteBucketWebsiteResponse
-  , DeleteBucketWebsiteResponse
-  ) where
+    , deleteBucketWebsiteResponse
+    , DeleteBucketWebsiteResponse
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -42,46 +46,53 @@ newtype DeleteBucketWebsite =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteBucketWebsite' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dbwBucket' - Undocumented member.
-deleteBucketWebsite ::
-     BucketName -- ^ 'dbwBucket'
-  -> DeleteBucketWebsite
+deleteBucketWebsite
+    :: BucketName -- ^ 'dbwBucket'
+    -> DeleteBucketWebsite
 deleteBucketWebsite pBucket_ = DeleteBucketWebsite' {_dbwBucket = pBucket_}
+
 
 -- | Undocumented member.
 dbwBucket :: Lens' DeleteBucketWebsite BucketName
-dbwBucket = lens _dbwBucket (\s a -> s {_dbwBucket = a})
+dbwBucket = lens _dbwBucket (\ s a -> s{_dbwBucket = a})
 
 instance AWSRequest DeleteBucketWebsite where
-  type Rs DeleteBucketWebsite = DeleteBucketWebsiteResponse
-  request = delete s3
-  response = receiveNull DeleteBucketWebsiteResponse'
+        type Rs DeleteBucketWebsite =
+             DeleteBucketWebsiteResponse
+        request = delete s3
+        response = receiveNull DeleteBucketWebsiteResponse'
 
-instance Hashable DeleteBucketWebsite
+instance Hashable DeleteBucketWebsite where
 
-instance NFData DeleteBucketWebsite
+instance NFData DeleteBucketWebsite where
 
 instance ToHeaders DeleteBucketWebsite where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath DeleteBucketWebsite where
-  toPath DeleteBucketWebsite' {..} = mconcat ["/", toBS _dbwBucket]
+        toPath DeleteBucketWebsite'{..}
+          = mconcat ["/", toBS _dbwBucket]
 
 instance ToQuery DeleteBucketWebsite where
-  toQuery = const (mconcat ["website"])
+        toQuery = const (mconcat ["website"])
 
 -- | /See:/ 'deleteBucketWebsiteResponse' smart constructor.
 data DeleteBucketWebsiteResponse =
   DeleteBucketWebsiteResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteBucketWebsiteResponse' with the minimum fields required to make a request.
 --
-deleteBucketWebsiteResponse :: DeleteBucketWebsiteResponse
+deleteBucketWebsiteResponse
+    :: DeleteBucketWebsiteResponse
 deleteBucketWebsiteResponse = DeleteBucketWebsiteResponse'
 
-instance NFData DeleteBucketWebsiteResponse
+
+instance NFData DeleteBucketWebsiteResponse where

@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SSM.SendAutomationSignal
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,19 +22,21 @@
 --
 --
 module Network.AWS.SSM.SendAutomationSignal
+    (
     -- * Creating a Request
-  ( sendAutomationSignal
-  , SendAutomationSignal
+      sendAutomationSignal
+    , SendAutomationSignal
     -- * Request Lenses
-  , sasPayload
-  , sasAutomationExecutionId
-  , sasSignalType
+    , sasPayload
+    , sasAutomationExecutionId
+    , sasSignalType
+
     -- * Destructuring the Response
-  , sendAutomationSignalResponse
-  , SendAutomationSignalResponse
+    , sendAutomationSignalResponse
+    , SendAutomationSignalResponse
     -- * Response Lenses
-  , sasrsResponseStatus
-  ) where
+    , sasrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -50,6 +54,7 @@ data SendAutomationSignal =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SendAutomationSignal' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -59,10 +64,10 @@ data SendAutomationSignal =
 -- * 'sasAutomationExecutionId' - The unique identifier for an existing Automation execution that you want to send the signal to.
 --
 -- * 'sasSignalType' - The type of signal. Valid signal types include the following: Approve and Reject
-sendAutomationSignal ::
-     Text -- ^ 'sasAutomationExecutionId'
-  -> SignalType -- ^ 'sasSignalType'
-  -> SendAutomationSignal
+sendAutomationSignal
+    :: Text -- ^ 'sasAutomationExecutionId'
+    -> SignalType -- ^ 'sasSignalType'
+    -> SendAutomationSignal
 sendAutomationSignal pAutomationExecutionId_ pSignalType_ =
   SendAutomationSignal'
     { _sasPayload = Nothing
@@ -70,52 +75,57 @@ sendAutomationSignal pAutomationExecutionId_ pSignalType_ =
     , _sasSignalType = pSignalType_
     }
 
+
 -- | The data sent with the signal. The data schema depends on the type of signal used in the request.
 sasPayload :: Lens' SendAutomationSignal (HashMap Text [Text])
-sasPayload = lens _sasPayload (\s a -> s {_sasPayload = a}) . _Default . _Map
+sasPayload = lens _sasPayload (\ s a -> s{_sasPayload = a}) . _Default . _Map
 
 -- | The unique identifier for an existing Automation execution that you want to send the signal to.
 sasAutomationExecutionId :: Lens' SendAutomationSignal Text
-sasAutomationExecutionId =
-  lens _sasAutomationExecutionId (\s a -> s {_sasAutomationExecutionId = a})
+sasAutomationExecutionId = lens _sasAutomationExecutionId (\ s a -> s{_sasAutomationExecutionId = a})
 
 -- | The type of signal. Valid signal types include the following: Approve and Reject
 sasSignalType :: Lens' SendAutomationSignal SignalType
-sasSignalType = lens _sasSignalType (\s a -> s {_sasSignalType = a})
+sasSignalType = lens _sasSignalType (\ s a -> s{_sasSignalType = a})
 
 instance AWSRequest SendAutomationSignal where
-  type Rs SendAutomationSignal = SendAutomationSignalResponse
-  request = postJSON ssm
-  response =
-    receiveEmpty
-      (\s h x -> SendAutomationSignalResponse' <$> (pure (fromEnum s)))
+        type Rs SendAutomationSignal =
+             SendAutomationSignalResponse
+        request = postJSON ssm
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 SendAutomationSignalResponse' <$>
+                   (pure (fromEnum s)))
 
-instance Hashable SendAutomationSignal
+instance Hashable SendAutomationSignal where
 
-instance NFData SendAutomationSignal
+instance NFData SendAutomationSignal where
 
 instance ToHeaders SendAutomationSignal where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("AmazonSSM.SendAutomationSignal" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AmazonSSM.SendAutomationSignal" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON SendAutomationSignal where
-  toJSON SendAutomationSignal' {..} =
-    object
-      (catMaybes
-         [ ("Payload" .=) <$> _sasPayload
-         , Just ("AutomationExecutionId" .= _sasAutomationExecutionId)
-         , Just ("SignalType" .= _sasSignalType)
-         ])
+        toJSON SendAutomationSignal'{..}
+          = object
+              (catMaybes
+                 [("Payload" .=) <$> _sasPayload,
+                  Just
+                    ("AutomationExecutionId" .=
+                       _sasAutomationExecutionId),
+                  Just ("SignalType" .= _sasSignalType)])
 
 instance ToPath SendAutomationSignal where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery SendAutomationSignal where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'sendAutomationSignalResponse' smart constructor.
 newtype SendAutomationSignalResponse =
@@ -124,20 +134,21 @@ newtype SendAutomationSignalResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SendAutomationSignalResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'sasrsResponseStatus' - -- | The response status code.
-sendAutomationSignalResponse ::
-     Int -- ^ 'sasrsResponseStatus'
-  -> SendAutomationSignalResponse
+sendAutomationSignalResponse
+    :: Int -- ^ 'sasrsResponseStatus'
+    -> SendAutomationSignalResponse
 sendAutomationSignalResponse pResponseStatus_ =
   SendAutomationSignalResponse' {_sasrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 sasrsResponseStatus :: Lens' SendAutomationSignalResponse Int
-sasrsResponseStatus =
-  lens _sasrsResponseStatus (\s a -> s {_sasrsResponseStatus = a})
+sasrsResponseStatus = lens _sasrsResponseStatus (\ s a -> s{_sasrsResponseStatus = a})
 
-instance NFData SendAutomationSignalResponse
+instance NFData SendAutomationSignalResponse where

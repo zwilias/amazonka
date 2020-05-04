@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Budgets.DeleteBudget
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -19,21 +21,23 @@
 -- Deletes a budget. You can delete your budget at any time.
 --
 --
--- __Deleting a budget also deletes the notifications and subscribers associated with that budget.__
+-- /Important:/ Deleting a budget also deletes the notifications and subscribers that are associated with that budget.
 --
 module Network.AWS.Budgets.DeleteBudget
+    (
     -- * Creating a Request
-  ( deleteBudget
-  , DeleteBudget
+      deleteBudget
+    , DeleteBudget
     -- * Request Lenses
-  , dAccountId
-  , dBudgetName
+    , dAccountId
+    , dBudgetName
+
     -- * Destructuring the Response
-  , deleteBudgetResponse
-  , DeleteBudgetResponse
+    , deleteBudgetResponse
+    , DeleteBudgetResponse
     -- * Response Lenses
-  , drsResponseStatus
-  ) where
+    , drsResponseStatus
+    ) where
 
 import Network.AWS.Budgets.Types
 import Network.AWS.Budgets.Types.Product
@@ -54,6 +58,7 @@ data DeleteBudget =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteBudget' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -61,53 +66,56 @@ data DeleteBudget =
 -- * 'dAccountId' - The @accountId@ that is associated with the budget that you want to delete.
 --
 -- * 'dBudgetName' - The name of the budget that you want to delete.
-deleteBudget ::
-     Text -- ^ 'dAccountId'
-  -> Text -- ^ 'dBudgetName'
-  -> DeleteBudget
+deleteBudget
+    :: Text -- ^ 'dAccountId'
+    -> Text -- ^ 'dBudgetName'
+    -> DeleteBudget
 deleteBudget pAccountId_ pBudgetName_ =
   DeleteBudget' {_dAccountId = pAccountId_, _dBudgetName = pBudgetName_}
 
+
 -- | The @accountId@ that is associated with the budget that you want to delete.
 dAccountId :: Lens' DeleteBudget Text
-dAccountId = lens _dAccountId (\s a -> s {_dAccountId = a})
+dAccountId = lens _dAccountId (\ s a -> s{_dAccountId = a})
 
 -- | The name of the budget that you want to delete.
 dBudgetName :: Lens' DeleteBudget Text
-dBudgetName = lens _dBudgetName (\s a -> s {_dBudgetName = a})
+dBudgetName = lens _dBudgetName (\ s a -> s{_dBudgetName = a})
 
 instance AWSRequest DeleteBudget where
-  type Rs DeleteBudget = DeleteBudgetResponse
-  request = postJSON budgets
-  response =
-    receiveEmpty (\s h x -> DeleteBudgetResponse' <$> (pure (fromEnum s)))
+        type Rs DeleteBudget = DeleteBudgetResponse
+        request = postJSON budgets
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 DeleteBudgetResponse' <$> (pure (fromEnum s)))
 
-instance Hashable DeleteBudget
+instance Hashable DeleteBudget where
 
-instance NFData DeleteBudget
+instance NFData DeleteBudget where
 
 instance ToHeaders DeleteBudget where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AWSBudgetServiceGateway.DeleteBudget" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWSBudgetServiceGateway.DeleteBudget" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DeleteBudget where
-  toJSON DeleteBudget' {..} =
-    object
-      (catMaybes
-         [ Just ("AccountId" .= _dAccountId)
-         , Just ("BudgetName" .= _dBudgetName)
-         ])
+        toJSON DeleteBudget'{..}
+          = object
+              (catMaybes
+                 [Just ("AccountId" .= _dAccountId),
+                  Just ("BudgetName" .= _dBudgetName)])
 
 instance ToPath DeleteBudget where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DeleteBudget where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | Response of DeleteBudget
 --
@@ -120,19 +128,21 @@ newtype DeleteBudgetResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteBudgetResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'drsResponseStatus' - -- | The response status code.
-deleteBudgetResponse ::
-     Int -- ^ 'drsResponseStatus'
-  -> DeleteBudgetResponse
+deleteBudgetResponse
+    :: Int -- ^ 'drsResponseStatus'
+    -> DeleteBudgetResponse
 deleteBudgetResponse pResponseStatus_ =
   DeleteBudgetResponse' {_drsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 drsResponseStatus :: Lens' DeleteBudgetResponse Int
-drsResponseStatus = lens _drsResponseStatus (\s a -> s {_drsResponseStatus = a})
+drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a})
 
-instance NFData DeleteBudgetResponse
+instance NFData DeleteBudgetResponse where

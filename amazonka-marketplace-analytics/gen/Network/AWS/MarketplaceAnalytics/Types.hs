@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.MarketplaceAnalytics.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,15 +11,19 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.MarketplaceAnalytics.Types
+    (
     -- * Service Configuration
-  ( marketplaceAnalytics
+      marketplaceAnalytics
+
     -- * Errors
-  , _MarketplaceCommerceAnalyticsException
+    , _MarketplaceCommerceAnalyticsException
+
     -- * DataSetType
-  , DataSetType(..)
+    , DataSetType (..)
+
     -- * SupportDataSetType
-  , SupportDataSetType(..)
-  ) where
+    , SupportDataSetType (..)
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.MarketplaceAnalytics.Types.Product
@@ -64,10 +69,11 @@ marketplaceAnalytics =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | This exception is thrown when an internal service error occurs.
-_MarketplaceCommerceAnalyticsException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_MarketplaceCommerceAnalyticsException :: AsError a => Getting (First ServiceError) a ServiceError
 _MarketplaceCommerceAnalyticsException =
   _MatchServiceError
     marketplaceAnalytics
     "MarketplaceCommerceAnalyticsException"
+

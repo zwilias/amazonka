@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Polly
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -16,95 +17,130 @@
 -- The Amazon Polly service provides API operations for synthesizing high-quality speech from plain text and Speech Synthesis Markup Language (SSML), along with managing pronunciations lexicons that enable you to get the best results for your application domain.
 --
 module Network.AWS.Polly
+    (
     -- * Service Configuration
-  ( polly
+      polly
+
     -- * Errors
     -- $errors
+
     -- ** UnsupportedPlsLanguageException
-  , _UnsupportedPlsLanguageException
+    , _UnsupportedPlsLanguageException
+
     -- ** InvalidSsmlException
-  , _InvalidSsmlException
+    , _InvalidSsmlException
+
     -- ** InvalidSampleRateException
-  , _InvalidSampleRateException
+    , _InvalidSampleRateException
+
     -- ** MaxLexiconsNumberExceededException
-  , _MaxLexiconsNumberExceededException
+    , _MaxLexiconsNumberExceededException
+
     -- ** TextLengthExceededException
-  , _TextLengthExceededException
+    , _TextLengthExceededException
+
     -- ** MaxLexemeLengthExceededException
-  , _MaxLexemeLengthExceededException
+    , _MaxLexemeLengthExceededException
+
     -- ** InvalidLexiconException
-  , _InvalidLexiconException
+    , _InvalidLexiconException
+
     -- ** ServiceFailureException
-  , _ServiceFailureException
+    , _ServiceFailureException
+
     -- ** UnsupportedPlsAlphabetException
-  , _UnsupportedPlsAlphabetException
+    , _UnsupportedPlsAlphabetException
+
     -- ** InvalidNextTokenException
-  , _InvalidNextTokenException
+    , _InvalidNextTokenException
+
     -- ** MarksNotSupportedForFormatException
-  , _MarksNotSupportedForFormatException
+    , _MarksNotSupportedForFormatException
+
     -- ** SsmlMarksNotSupportedForTextTypeException
-  , _SsmlMarksNotSupportedForTextTypeException
+    , _SsmlMarksNotSupportedForTextTypeException
+
     -- ** LexiconSizeExceededException
-  , _LexiconSizeExceededException
+    , _LexiconSizeExceededException
+
     -- ** LexiconNotFoundException
-  , _LexiconNotFoundException
+    , _LexiconNotFoundException
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
+
     -- ** GetLexicon
-  , module Network.AWS.Polly.GetLexicon
+    , module Network.AWS.Polly.GetLexicon
+
     -- ** DescribeVoices (Paginated)
-  , module Network.AWS.Polly.DescribeVoices
+    , module Network.AWS.Polly.DescribeVoices
+
     -- ** ListLexicons
-  , module Network.AWS.Polly.ListLexicons
+    , module Network.AWS.Polly.ListLexicons
+
     -- ** SynthesizeSpeech
-  , module Network.AWS.Polly.SynthesizeSpeech
+    , module Network.AWS.Polly.SynthesizeSpeech
+
     -- ** PutLexicon
-  , module Network.AWS.Polly.PutLexicon
+    , module Network.AWS.Polly.PutLexicon
+
     -- ** DeleteLexicon
-  , module Network.AWS.Polly.DeleteLexicon
+    , module Network.AWS.Polly.DeleteLexicon
+
     -- * Types
+
     -- ** Gender
-  , Gender(..)
+    , Gender (..)
+
     -- ** LanguageCode
-  , LanguageCode(..)
+    , LanguageCode (..)
+
     -- ** OutputFormat
-  , OutputFormat(..)
+    , OutputFormat (..)
+
     -- ** SpeechMarkType
-  , SpeechMarkType(..)
+    , SpeechMarkType (..)
+
     -- ** TextType
-  , TextType(..)
+    , TextType (..)
+
     -- ** VoiceId
-  , VoiceId(..)
+    , VoiceId (..)
+
     -- ** Lexicon
-  , Lexicon
-  , lexicon
-  , lContent
-  , lName
+    , Lexicon
+    , lexicon
+    , lContent
+    , lName
+
     -- ** LexiconAttributes
-  , LexiconAttributes
-  , lexiconAttributes
-  , laLanguageCode
-  , laSize
-  , laLexemesCount
-  , laLexiconARN
-  , laAlphabet
-  , laLastModified
+    , LexiconAttributes
+    , lexiconAttributes
+    , laLanguageCode
+    , laSize
+    , laLexemesCount
+    , laLexiconARN
+    , laAlphabet
+    , laLastModified
+
     -- ** LexiconDescription
-  , LexiconDescription
-  , lexiconDescription
-  , ldAttributes
-  , ldName
+    , LexiconDescription
+    , lexiconDescription
+    , ldAttributes
+    , ldName
+
     -- ** Voice
-  , Voice
-  , voice
-  , vLanguageCode
-  , vLanguageName
-  , vGender
-  , vName
-  , vId
-  ) where
+    , Voice
+    , voice
+    , vLanguageCode
+    , vLanguageName
+    , vGender
+    , vName
+    , vId
+    ) where
 
 import Network.AWS.Polly.DeleteLexicon
 import Network.AWS.Polly.DescribeVoices
@@ -114,12 +150,14 @@ import Network.AWS.Polly.PutLexicon
 import Network.AWS.Polly.SynthesizeSpeech
 import Network.AWS.Polly.Types
 import Network.AWS.Polly.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'Polly'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -136,6 +174,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

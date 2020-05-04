@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.DMS.RebootReplicationInstance
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,19 +22,21 @@
 --
 --
 module Network.AWS.DMS.RebootReplicationInstance
+    (
     -- * Creating a Request
-  ( rebootReplicationInstance
-  , RebootReplicationInstance
+      rebootReplicationInstance
+    , RebootReplicationInstance
     -- * Request Lenses
-  , rriForceFailover
-  , rriReplicationInstanceARN
+    , rriForceFailover
+    , rriReplicationInstanceARN
+
     -- * Destructuring the Response
-  , rebootReplicationInstanceResponse
-  , RebootReplicationInstanceResponse
+    , rebootReplicationInstanceResponse
+    , RebootReplicationInstanceResponse
     -- * Response Lenses
-  , rrirsReplicationInstance
-  , rrirsResponseStatus
-  ) where
+    , rrirsReplicationInstance
+    , rrirsResponseStatus
+    ) where
 
 import Network.AWS.DMS.Types
 import Network.AWS.DMS.Types.Product
@@ -49,6 +53,7 @@ data RebootReplicationInstance =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'RebootReplicationInstance' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -56,59 +61,63 @@ data RebootReplicationInstance =
 -- * 'rriForceFailover' - If this parameter is @true@ , the reboot is conducted through a Multi-AZ failover. (If the instance isn't configured for Multi-AZ, then you can't specify @true@ .)
 --
 -- * 'rriReplicationInstanceARN' - The Amazon Resource Name (ARN) of the replication instance.
-rebootReplicationInstance ::
-     Text -- ^ 'rriReplicationInstanceARN'
-  -> RebootReplicationInstance
+rebootReplicationInstance
+    :: Text -- ^ 'rriReplicationInstanceARN'
+    -> RebootReplicationInstance
 rebootReplicationInstance pReplicationInstanceARN_ =
   RebootReplicationInstance'
     { _rriForceFailover = Nothing
     , _rriReplicationInstanceARN = pReplicationInstanceARN_
     }
 
+
 -- | If this parameter is @true@ , the reboot is conducted through a Multi-AZ failover. (If the instance isn't configured for Multi-AZ, then you can't specify @true@ .)
 rriForceFailover :: Lens' RebootReplicationInstance (Maybe Bool)
-rriForceFailover = lens _rriForceFailover (\s a -> s {_rriForceFailover = a})
+rriForceFailover = lens _rriForceFailover (\ s a -> s{_rriForceFailover = a})
 
 -- | The Amazon Resource Name (ARN) of the replication instance.
 rriReplicationInstanceARN :: Lens' RebootReplicationInstance Text
-rriReplicationInstanceARN =
-  lens _rriReplicationInstanceARN (\s a -> s {_rriReplicationInstanceARN = a})
+rriReplicationInstanceARN = lens _rriReplicationInstanceARN (\ s a -> s{_rriReplicationInstanceARN = a})
 
 instance AWSRequest RebootReplicationInstance where
-  type Rs RebootReplicationInstance = RebootReplicationInstanceResponse
-  request = postJSON dms
-  response =
-    receiveJSON
-      (\s h x ->
-         RebootReplicationInstanceResponse' <$> (x .?> "ReplicationInstance") <*>
-         (pure (fromEnum s)))
+        type Rs RebootReplicationInstance =
+             RebootReplicationInstanceResponse
+        request = postJSON dms
+        response
+          = receiveJSON
+              (\ s h x ->
+                 RebootReplicationInstanceResponse' <$>
+                   (x .?> "ReplicationInstance") <*>
+                     (pure (fromEnum s)))
 
-instance Hashable RebootReplicationInstance
+instance Hashable RebootReplicationInstance where
 
-instance NFData RebootReplicationInstance
+instance NFData RebootReplicationInstance where
 
 instance ToHeaders RebootReplicationInstance where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AmazonDMSv20160101.RebootReplicationInstance" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AmazonDMSv20160101.RebootReplicationInstance" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON RebootReplicationInstance where
-  toJSON RebootReplicationInstance' {..} =
-    object
-      (catMaybes
-         [ ("ForceFailover" .=) <$> _rriForceFailover
-         , Just ("ReplicationInstanceArn" .= _rriReplicationInstanceARN)
-         ])
+        toJSON RebootReplicationInstance'{..}
+          = object
+              (catMaybes
+                 [("ForceFailover" .=) <$> _rriForceFailover,
+                  Just
+                    ("ReplicationInstanceArn" .=
+                       _rriReplicationInstanceARN)])
 
 instance ToPath RebootReplicationInstance where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery RebootReplicationInstance where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'rebootReplicationInstanceResponse' smart constructor.
 data RebootReplicationInstanceResponse =
@@ -118,6 +127,7 @@ data RebootReplicationInstanceResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'RebootReplicationInstanceResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -125,24 +135,23 @@ data RebootReplicationInstanceResponse =
 -- * 'rrirsReplicationInstance' - The replication instance that is being rebooted.
 --
 -- * 'rrirsResponseStatus' - -- | The response status code.
-rebootReplicationInstanceResponse ::
-     Int -- ^ 'rrirsResponseStatus'
-  -> RebootReplicationInstanceResponse
+rebootReplicationInstanceResponse
+    :: Int -- ^ 'rrirsResponseStatus'
+    -> RebootReplicationInstanceResponse
 rebootReplicationInstanceResponse pResponseStatus_ =
   RebootReplicationInstanceResponse'
     { _rrirsReplicationInstance = Nothing
     , _rrirsResponseStatus = pResponseStatus_
     }
 
+
 -- | The replication instance that is being rebooted.
-rrirsReplicationInstance ::
-     Lens' RebootReplicationInstanceResponse (Maybe ReplicationInstance)
-rrirsReplicationInstance =
-  lens _rrirsReplicationInstance (\s a -> s {_rrirsReplicationInstance = a})
+rrirsReplicationInstance :: Lens' RebootReplicationInstanceResponse (Maybe ReplicationInstance)
+rrirsReplicationInstance = lens _rrirsReplicationInstance (\ s a -> s{_rrirsReplicationInstance = a})
 
 -- | -- | The response status code.
 rrirsResponseStatus :: Lens' RebootReplicationInstanceResponse Int
-rrirsResponseStatus =
-  lens _rrirsResponseStatus (\s a -> s {_rrirsResponseStatus = a})
+rrirsResponseStatus = lens _rrirsResponseStatus (\ s a -> s{_rrirsResponseStatus = a})
 
 instance NFData RebootReplicationInstanceResponse
+         where

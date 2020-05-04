@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.StorageGateway.AddTagsToResource
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -34,19 +36,21 @@
 -- You can create a maximum of 10 tags for each resource. Virtual tapes and storage volumes that are recovered to a new gateway maintain their tags.
 --
 module Network.AWS.StorageGateway.AddTagsToResource
+    (
     -- * Creating a Request
-  ( addTagsToResource
-  , AddTagsToResource
+      addTagsToResource
+    , AddTagsToResource
     -- * Request Lenses
-  , attrResourceARN
-  , attrTags
+    , attrResourceARN
+    , attrTags
+
     -- * Destructuring the Response
-  , addTagsToResourceResponse
-  , AddTagsToResourceResponse
+    , addTagsToResourceResponse
+    , AddTagsToResourceResponse
     -- * Response Lenses
-  , attrrsResourceARN
-  , attrrsResponseStatus
-  ) where
+    , attrrsResourceARN
+    , attrrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -67,6 +71,7 @@ data AddTagsToResource =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AddTagsToResource' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -74,53 +79,56 @@ data AddTagsToResource =
 -- * 'attrResourceARN' - The Amazon Resource Name (ARN) of the resource you want to add tags to.
 --
 -- * 'attrTags' - The key-value pair that represents the tag you want to add to the resource. The value can be an empty string.
-addTagsToResource ::
-     Text -- ^ 'attrResourceARN'
-  -> AddTagsToResource
+addTagsToResource
+    :: Text -- ^ 'attrResourceARN'
+    -> AddTagsToResource
 addTagsToResource pResourceARN_ =
   AddTagsToResource' {_attrResourceARN = pResourceARN_, _attrTags = mempty}
 
+
 -- | The Amazon Resource Name (ARN) of the resource you want to add tags to.
 attrResourceARN :: Lens' AddTagsToResource Text
-attrResourceARN = lens _attrResourceARN (\s a -> s {_attrResourceARN = a})
+attrResourceARN = lens _attrResourceARN (\ s a -> s{_attrResourceARN = a})
 
 -- | The key-value pair that represents the tag you want to add to the resource. The value can be an empty string.
 attrTags :: Lens' AddTagsToResource [Tag]
-attrTags = lens _attrTags (\s a -> s {_attrTags = a}) . _Coerce
+attrTags = lens _attrTags (\ s a -> s{_attrTags = a}) . _Coerce
 
 instance AWSRequest AddTagsToResource where
-  type Rs AddTagsToResource = AddTagsToResourceResponse
-  request = postJSON storageGateway
-  response =
-    receiveJSON
-      (\s h x ->
-         AddTagsToResourceResponse' <$> (x .?> "ResourceARN") <*>
-         (pure (fromEnum s)))
+        type Rs AddTagsToResource = AddTagsToResourceResponse
+        request = postJSON storageGateway
+        response
+          = receiveJSON
+              (\ s h x ->
+                 AddTagsToResourceResponse' <$>
+                   (x .?> "ResourceARN") <*> (pure (fromEnum s)))
 
-instance Hashable AddTagsToResource
+instance Hashable AddTagsToResource where
 
-instance NFData AddTagsToResource
+instance NFData AddTagsToResource where
 
 instance ToHeaders AddTagsToResource where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("StorageGateway_20130630.AddTagsToResource" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("StorageGateway_20130630.AddTagsToResource" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON AddTagsToResource where
-  toJSON AddTagsToResource' {..} =
-    object
-      (catMaybes
-         [Just ("ResourceARN" .= _attrResourceARN), Just ("Tags" .= _attrTags)])
+        toJSON AddTagsToResource'{..}
+          = object
+              (catMaybes
+                 [Just ("ResourceARN" .= _attrResourceARN),
+                  Just ("Tags" .= _attrTags)])
 
 instance ToPath AddTagsToResource where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery AddTagsToResource where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | AddTagsToResourceOutput
 --
@@ -134,6 +142,7 @@ data AddTagsToResourceResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AddTagsToResourceResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -141,20 +150,20 @@ data AddTagsToResourceResponse =
 -- * 'attrrsResourceARN' - The Amazon Resource Name (ARN) of the resource you want to add tags to.
 --
 -- * 'attrrsResponseStatus' - -- | The response status code.
-addTagsToResourceResponse ::
-     Int -- ^ 'attrrsResponseStatus'
-  -> AddTagsToResourceResponse
+addTagsToResourceResponse
+    :: Int -- ^ 'attrrsResponseStatus'
+    -> AddTagsToResourceResponse
 addTagsToResourceResponse pResponseStatus_ =
   AddTagsToResourceResponse'
     {_attrrsResourceARN = Nothing, _attrrsResponseStatus = pResponseStatus_}
 
+
 -- | The Amazon Resource Name (ARN) of the resource you want to add tags to.
 attrrsResourceARN :: Lens' AddTagsToResourceResponse (Maybe Text)
-attrrsResourceARN = lens _attrrsResourceARN (\s a -> s {_attrrsResourceARN = a})
+attrrsResourceARN = lens _attrrsResourceARN (\ s a -> s{_attrrsResourceARN = a})
 
 -- | -- | The response status code.
 attrrsResponseStatus :: Lens' AddTagsToResourceResponse Int
-attrrsResponseStatus =
-  lens _attrrsResponseStatus (\s a -> s {_attrrsResponseStatus = a})
+attrrsResponseStatus = lens _attrrsResponseStatus (\ s a -> s{_attrrsResponseStatus = a})
 
-instance NFData AddTagsToResourceResponse
+instance NFData AddTagsToResourceResponse where

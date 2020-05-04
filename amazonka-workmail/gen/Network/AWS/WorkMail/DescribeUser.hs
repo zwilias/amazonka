@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.WorkMail.DescribeUser
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,26 +22,28 @@
 --
 --
 module Network.AWS.WorkMail.DescribeUser
+    (
     -- * Creating a Request
-  ( describeUser
-  , DescribeUser
+      describeUser
+    , DescribeUser
     -- * Request Lenses
-  , duOrganizationId
-  , duUserId
+    , duOrganizationId
+    , duUserId
+
     -- * Destructuring the Response
-  , describeUserResponse
-  , DescribeUserResponse
+    , describeUserResponse
+    , DescribeUserResponse
     -- * Response Lenses
-  , dursEmail
-  , dursState
-  , dursUserId
-  , dursDisabledDate
-  , dursName
-  , dursDisplayName
-  , dursUserRole
-  , dursEnabledDate
-  , dursResponseStatus
-  ) where
+    , dursEmail
+    , dursState
+    , dursUserId
+    , dursDisabledDate
+    , dursName
+    , dursDisplayName
+    , dursUserRole
+    , dursEnabledDate
+    , dursResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -56,6 +60,7 @@ data DescribeUser =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeUser' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -63,61 +68,63 @@ data DescribeUser =
 -- * 'duOrganizationId' - The identifier for the organization under which the user exists.
 --
 -- * 'duUserId' - The identifier for the user to be described.
-describeUser ::
-     Text -- ^ 'duOrganizationId'
-  -> Text -- ^ 'duUserId'
-  -> DescribeUser
+describeUser
+    :: Text -- ^ 'duOrganizationId'
+    -> Text -- ^ 'duUserId'
+    -> DescribeUser
 describeUser pOrganizationId_ pUserId_ =
   DescribeUser' {_duOrganizationId = pOrganizationId_, _duUserId = pUserId_}
 
+
 -- | The identifier for the organization under which the user exists.
 duOrganizationId :: Lens' DescribeUser Text
-duOrganizationId = lens _duOrganizationId (\s a -> s {_duOrganizationId = a})
+duOrganizationId = lens _duOrganizationId (\ s a -> s{_duOrganizationId = a})
 
 -- | The identifier for the user to be described.
 duUserId :: Lens' DescribeUser Text
-duUserId = lens _duUserId (\s a -> s {_duUserId = a})
+duUserId = lens _duUserId (\ s a -> s{_duUserId = a})
 
 instance AWSRequest DescribeUser where
-  type Rs DescribeUser = DescribeUserResponse
-  request = postJSON workMail
-  response =
-    receiveJSON
-      (\s h x ->
-         DescribeUserResponse' <$> (x .?> "Email") <*> (x .?> "State") <*>
-         (x .?> "UserId") <*>
-         (x .?> "DisabledDate") <*>
-         (x .?> "Name") <*>
-         (x .?> "DisplayName") <*>
-         (x .?> "UserRole") <*>
-         (x .?> "EnabledDate") <*>
-         (pure (fromEnum s)))
+        type Rs DescribeUser = DescribeUserResponse
+        request = postJSON workMail
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DescribeUserResponse' <$>
+                   (x .?> "Email") <*> (x .?> "State") <*>
+                     (x .?> "UserId")
+                     <*> (x .?> "DisabledDate")
+                     <*> (x .?> "Name")
+                     <*> (x .?> "DisplayName")
+                     <*> (x .?> "UserRole")
+                     <*> (x .?> "EnabledDate")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable DescribeUser
+instance Hashable DescribeUser where
 
-instance NFData DescribeUser
+instance NFData DescribeUser where
 
 instance ToHeaders DescribeUser where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("WorkMailService.DescribeUser" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("WorkMailService.DescribeUser" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DescribeUser where
-  toJSON DescribeUser' {..} =
-    object
-      (catMaybes
-         [ Just ("OrganizationId" .= _duOrganizationId)
-         , Just ("UserId" .= _duUserId)
-         ])
+        toJSON DescribeUser'{..}
+          = object
+              (catMaybes
+                 [Just ("OrganizationId" .= _duOrganizationId),
+                  Just ("UserId" .= _duUserId)])
 
 instance ToPath DescribeUser where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DescribeUser where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'describeUserResponse' smart constructor.
 data DescribeUserResponse =
@@ -133,6 +140,7 @@ data DescribeUserResponse =
     , _dursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'DescribeUserResponse' with the minimum fields required to make a request.
 --
@@ -155,9 +163,9 @@ data DescribeUserResponse =
 -- * 'dursEnabledDate' - The date and time at which the user was enabled for Amazon WorkMail usage, in UNIX epoch time format.
 --
 -- * 'dursResponseStatus' - -- | The response status code.
-describeUserResponse ::
-     Int -- ^ 'dursResponseStatus'
-  -> DescribeUserResponse
+describeUserResponse
+    :: Int -- ^ 'dursResponseStatus'
+    -> DescribeUserResponse
 describeUserResponse pResponseStatus_ =
   DescribeUserResponse'
     { _dursEmail = Nothing
@@ -171,43 +179,41 @@ describeUserResponse pResponseStatus_ =
     , _dursResponseStatus = pResponseStatus_
     }
 
+
 -- | The email of the user.
 dursEmail :: Lens' DescribeUserResponse (Maybe Text)
-dursEmail = lens _dursEmail (\s a -> s {_dursEmail = a})
+dursEmail = lens _dursEmail (\ s a -> s{_dursEmail = a})
 
 -- | The state of a user: enabled (registered to Amazon WorkMail) or disabled (deregistered or never registered to Amazon WorkMail).
 dursState :: Lens' DescribeUserResponse (Maybe EntityState)
-dursState = lens _dursState (\s a -> s {_dursState = a})
+dursState = lens _dursState (\ s a -> s{_dursState = a})
 
 -- | The identifier for the described user.
 dursUserId :: Lens' DescribeUserResponse (Maybe Text)
-dursUserId = lens _dursUserId (\s a -> s {_dursUserId = a})
+dursUserId = lens _dursUserId (\ s a -> s{_dursUserId = a})
 
 -- | The date and time at which the user was disabled for Amazon WorkMail usage, in UNIX epoch time format.
 dursDisabledDate :: Lens' DescribeUserResponse (Maybe UTCTime)
-dursDisabledDate =
-  lens _dursDisabledDate (\s a -> s {_dursDisabledDate = a}) . mapping _Time
+dursDisabledDate = lens _dursDisabledDate (\ s a -> s{_dursDisabledDate = a}) . mapping _Time
 
 -- | The name for the user.
 dursName :: Lens' DescribeUserResponse (Maybe Text)
-dursName = lens _dursName (\s a -> s {_dursName = a})
+dursName = lens _dursName (\ s a -> s{_dursName = a})
 
 -- | The display name of the user.
 dursDisplayName :: Lens' DescribeUserResponse (Maybe Text)
-dursDisplayName = lens _dursDisplayName (\s a -> s {_dursDisplayName = a})
+dursDisplayName = lens _dursDisplayName (\ s a -> s{_dursDisplayName = a})
 
 -- | In certain cases other entities are modeled as users. If interoperability is enabled, resources are imported into Amazon WorkMail as users. Because different Amazon WorkMail organizations rely on different directory types, administrators can distinguish between a user that is not registered to Amazon WorkMail (is disabled and has a user role) and the administrative users of the directory. The values are USER, RESOURCE, and SYSTEM_USER.
 dursUserRole :: Lens' DescribeUserResponse (Maybe UserRole)
-dursUserRole = lens _dursUserRole (\s a -> s {_dursUserRole = a})
+dursUserRole = lens _dursUserRole (\ s a -> s{_dursUserRole = a})
 
 -- | The date and time at which the user was enabled for Amazon WorkMail usage, in UNIX epoch time format.
 dursEnabledDate :: Lens' DescribeUserResponse (Maybe UTCTime)
-dursEnabledDate =
-  lens _dursEnabledDate (\s a -> s {_dursEnabledDate = a}) . mapping _Time
+dursEnabledDate = lens _dursEnabledDate (\ s a -> s{_dursEnabledDate = a}) . mapping _Time
 
 -- | -- | The response status code.
 dursResponseStatus :: Lens' DescribeUserResponse Int
-dursResponseStatus =
-  lens _dursResponseStatus (\s a -> s {_dursResponseStatus = a})
+dursResponseStatus = lens _dursResponseStatus (\ s a -> s{_dursResponseStatus = a})
 
-instance NFData DescribeUserResponse
+instance NFData DescribeUserResponse where

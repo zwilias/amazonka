@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Organizations.AcceptHandshake
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -34,18 +36,20 @@
 -- After you accept a handshake, it continues to appear in the results of relevant APIs for only 30 days. After that it is deleted.
 --
 module Network.AWS.Organizations.AcceptHandshake
+    (
     -- * Creating a Request
-  ( acceptHandshake
-  , AcceptHandshake
+      acceptHandshake
+    , AcceptHandshake
     -- * Request Lenses
-  , ahHandshakeId
+    , ahHandshakeId
+
     -- * Destructuring the Response
-  , acceptHandshakeResponse
-  , AcceptHandshakeResponse
+    , acceptHandshakeResponse
+    , AcceptHandshakeResponse
     -- * Response Lenses
-  , ahrsHandshake
-  , ahrsResponseStatus
-  ) where
+    , ahrsHandshake
+    , ahrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
@@ -61,52 +65,56 @@ newtype AcceptHandshake =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AcceptHandshake' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'ahHandshakeId' - The unique identifier (ID) of the handshake that you want to accept. The <http://wikipedia.org/wiki/regex regex pattern> for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.
-acceptHandshake ::
-     Text -- ^ 'ahHandshakeId'
-  -> AcceptHandshake
+acceptHandshake
+    :: Text -- ^ 'ahHandshakeId'
+    -> AcceptHandshake
 acceptHandshake pHandshakeId_ =
   AcceptHandshake' {_ahHandshakeId = pHandshakeId_}
 
+
 -- | The unique identifier (ID) of the handshake that you want to accept. The <http://wikipedia.org/wiki/regex regex pattern> for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.
 ahHandshakeId :: Lens' AcceptHandshake Text
-ahHandshakeId = lens _ahHandshakeId (\s a -> s {_ahHandshakeId = a})
+ahHandshakeId = lens _ahHandshakeId (\ s a -> s{_ahHandshakeId = a})
 
 instance AWSRequest AcceptHandshake where
-  type Rs AcceptHandshake = AcceptHandshakeResponse
-  request = postJSON organizations
-  response =
-    receiveJSON
-      (\s h x ->
-         AcceptHandshakeResponse' <$> (x .?> "Handshake") <*>
-         (pure (fromEnum s)))
+        type Rs AcceptHandshake = AcceptHandshakeResponse
+        request = postJSON organizations
+        response
+          = receiveJSON
+              (\ s h x ->
+                 AcceptHandshakeResponse' <$>
+                   (x .?> "Handshake") <*> (pure (fromEnum s)))
 
-instance Hashable AcceptHandshake
+instance Hashable AcceptHandshake where
 
-instance NFData AcceptHandshake
+instance NFData AcceptHandshake where
 
 instance ToHeaders AcceptHandshake where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AWSOrganizationsV20161128.AcceptHandshake" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWSOrganizationsV20161128.AcceptHandshake" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON AcceptHandshake where
-  toJSON AcceptHandshake' {..} =
-    object (catMaybes [Just ("HandshakeId" .= _ahHandshakeId)])
+        toJSON AcceptHandshake'{..}
+          = object
+              (catMaybes [Just ("HandshakeId" .= _ahHandshakeId)])
 
 instance ToPath AcceptHandshake where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery AcceptHandshake where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'acceptHandshakeResponse' smart constructor.
 data AcceptHandshakeResponse =
@@ -116,6 +124,7 @@ data AcceptHandshakeResponse =
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AcceptHandshakeResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -123,20 +132,20 @@ data AcceptHandshakeResponse =
 -- * 'ahrsHandshake' - A structure that contains details about the accepted handshake.
 --
 -- * 'ahrsResponseStatus' - -- | The response status code.
-acceptHandshakeResponse ::
-     Int -- ^ 'ahrsResponseStatus'
-  -> AcceptHandshakeResponse
+acceptHandshakeResponse
+    :: Int -- ^ 'ahrsResponseStatus'
+    -> AcceptHandshakeResponse
 acceptHandshakeResponse pResponseStatus_ =
   AcceptHandshakeResponse'
     {_ahrsHandshake = Nothing, _ahrsResponseStatus = pResponseStatus_}
 
+
 -- | A structure that contains details about the accepted handshake.
 ahrsHandshake :: Lens' AcceptHandshakeResponse (Maybe Handshake)
-ahrsHandshake = lens _ahrsHandshake (\s a -> s {_ahrsHandshake = a})
+ahrsHandshake = lens _ahrsHandshake (\ s a -> s{_ahrsHandshake = a})
 
 -- | -- | The response status code.
 ahrsResponseStatus :: Lens' AcceptHandshakeResponse Int
-ahrsResponseStatus =
-  lens _ahrsResponseStatus (\s a -> s {_ahrsResponseStatus = a})
+ahrsResponseStatus = lens _ahrsResponseStatus (\ s a -> s{_ahrsResponseStatus = a})
 
-instance NFData AcceptHandshakeResponse
+instance NFData AcceptHandshakeResponse where

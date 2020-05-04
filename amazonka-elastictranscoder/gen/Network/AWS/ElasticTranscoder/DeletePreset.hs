@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.ElasticTranscoder.DeletePreset
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,17 +22,19 @@
 --
 --
 module Network.AWS.ElasticTranscoder.DeletePreset
+    (
     -- * Creating a Request
-  ( deletePreset
-  , DeletePreset
+      deletePreset
+    , DeletePreset
     -- * Request Lenses
-  , dpId
+    , dpId
+
     -- * Destructuring the Response
-  , deletePresetResponse
-  , DeletePresetResponse
+    , deletePresetResponse
+    , DeletePresetResponse
     -- * Response Lenses
-  , dprsResponseStatus
-  ) where
+    , dprsResponseStatus
+    ) where
 
 import Network.AWS.ElasticTranscoder.Types
 import Network.AWS.ElasticTranscoder.Types.Product
@@ -50,38 +54,43 @@ newtype DeletePreset =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeletePreset' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dpId' - The identifier of the preset for which you want to get detailed information.
-deletePreset ::
-     Text -- ^ 'dpId'
-  -> DeletePreset
+deletePreset
+    :: Text -- ^ 'dpId'
+    -> DeletePreset
 deletePreset pId_ = DeletePreset' {_dpId = pId_}
+
 
 -- | The identifier of the preset for which you want to get detailed information.
 dpId :: Lens' DeletePreset Text
-dpId = lens _dpId (\s a -> s {_dpId = a})
+dpId = lens _dpId (\ s a -> s{_dpId = a})
 
 instance AWSRequest DeletePreset where
-  type Rs DeletePreset = DeletePresetResponse
-  request = delete elasticTranscoder
-  response =
-    receiveEmpty (\s h x -> DeletePresetResponse' <$> (pure (fromEnum s)))
+        type Rs DeletePreset = DeletePresetResponse
+        request = delete elasticTranscoder
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 DeletePresetResponse' <$> (pure (fromEnum s)))
 
-instance Hashable DeletePreset
+instance Hashable DeletePreset where
 
-instance NFData DeletePreset
+instance NFData DeletePreset where
 
 instance ToHeaders DeletePreset where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath DeletePreset where
-  toPath DeletePreset' {..} = mconcat ["/2012-09-25/presets/", toBS _dpId]
+        toPath DeletePreset'{..}
+          = mconcat ["/2012-09-25/presets/", toBS _dpId]
 
 instance ToQuery DeletePreset where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | The @DeletePresetResponse@ structure.
 --
@@ -94,20 +103,21 @@ newtype DeletePresetResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeletePresetResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dprsResponseStatus' - -- | The response status code.
-deletePresetResponse ::
-     Int -- ^ 'dprsResponseStatus'
-  -> DeletePresetResponse
+deletePresetResponse
+    :: Int -- ^ 'dprsResponseStatus'
+    -> DeletePresetResponse
 deletePresetResponse pResponseStatus_ =
   DeletePresetResponse' {_dprsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 dprsResponseStatus :: Lens' DeletePresetResponse Int
-dprsResponseStatus =
-  lens _dprsResponseStatus (\s a -> s {_dprsResponseStatus = a})
+dprsResponseStatus = lens _dprsResponseStatus (\ s a -> s{_dprsResponseStatus = a})
 
-instance NFData DeletePresetResponse
+instance NFData DeletePresetResponse where

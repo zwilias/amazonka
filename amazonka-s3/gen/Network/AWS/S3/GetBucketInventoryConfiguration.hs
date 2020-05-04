@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.S3.GetBucketInventoryConfiguration
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,19 +20,21 @@
 --
 -- Returns an inventory configuration (identified by the inventory ID) from the bucket.
 module Network.AWS.S3.GetBucketInventoryConfiguration
+    (
     -- * Creating a Request
-  ( getBucketInventoryConfiguration
-  , GetBucketInventoryConfiguration
+      getBucketInventoryConfiguration
+    , GetBucketInventoryConfiguration
     -- * Request Lenses
-  , gbicBucket
-  , gbicId
+    , gbicBucket
+    , gbicId
+
     -- * Destructuring the Response
-  , getBucketInventoryConfigurationResponse
-  , GetBucketInventoryConfigurationResponse
+    , getBucketInventoryConfigurationResponse
+    , GetBucketInventoryConfigurationResponse
     -- * Response Lenses
-  , gbicrsInventoryConfiguration
-  , gbicrsResponseStatus
-  ) where
+    , gbicrsInventoryConfiguration
+    , gbicrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -47,6 +51,7 @@ data GetBucketInventoryConfiguration =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetBucketInventoryConfiguration' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -54,43 +59,50 @@ data GetBucketInventoryConfiguration =
 -- * 'gbicBucket' - The name of the bucket containing the inventory configuration to retrieve.
 --
 -- * 'gbicId' - The ID used to identify the inventory configuration.
-getBucketInventoryConfiguration ::
-     BucketName -- ^ 'gbicBucket'
-  -> Text -- ^ 'gbicId'
-  -> GetBucketInventoryConfiguration
+getBucketInventoryConfiguration
+    :: BucketName -- ^ 'gbicBucket'
+    -> Text -- ^ 'gbicId'
+    -> GetBucketInventoryConfiguration
 getBucketInventoryConfiguration pBucket_ pId_ =
   GetBucketInventoryConfiguration' {_gbicBucket = pBucket_, _gbicId = pId_}
 
+
 -- | The name of the bucket containing the inventory configuration to retrieve.
 gbicBucket :: Lens' GetBucketInventoryConfiguration BucketName
-gbicBucket = lens _gbicBucket (\s a -> s {_gbicBucket = a})
+gbicBucket = lens _gbicBucket (\ s a -> s{_gbicBucket = a})
 
 -- | The ID used to identify the inventory configuration.
 gbicId :: Lens' GetBucketInventoryConfiguration Text
-gbicId = lens _gbicId (\s a -> s {_gbicId = a})
+gbicId = lens _gbicId (\ s a -> s{_gbicId = a})
 
-instance AWSRequest GetBucketInventoryConfiguration where
-  type Rs GetBucketInventoryConfiguration = GetBucketInventoryConfigurationResponse
-  request = get s3
-  response =
-    receiveXML
-      (\s h x ->
-         GetBucketInventoryConfigurationResponse' <$> (parseXML x) <*>
-         (pure (fromEnum s)))
+instance AWSRequest GetBucketInventoryConfiguration
+         where
+        type Rs GetBucketInventoryConfiguration =
+             GetBucketInventoryConfigurationResponse
+        request = get s3
+        response
+          = receiveXML
+              (\ s h x ->
+                 GetBucketInventoryConfigurationResponse' <$>
+                   (parseXML x) <*> (pure (fromEnum s)))
 
 instance Hashable GetBucketInventoryConfiguration
+         where
 
-instance NFData GetBucketInventoryConfiguration
+instance NFData GetBucketInventoryConfiguration where
 
-instance ToHeaders GetBucketInventoryConfiguration where
-  toHeaders = const mempty
+instance ToHeaders GetBucketInventoryConfiguration
+         where
+        toHeaders = const mempty
 
 instance ToPath GetBucketInventoryConfiguration where
-  toPath GetBucketInventoryConfiguration' {..} = mconcat ["/", toBS _gbicBucket]
+        toPath GetBucketInventoryConfiguration'{..}
+          = mconcat ["/", toBS _gbicBucket]
 
-instance ToQuery GetBucketInventoryConfiguration where
-  toQuery GetBucketInventoryConfiguration' {..} =
-    mconcat ["id" =: _gbicId, "inventory"]
+instance ToQuery GetBucketInventoryConfiguration
+         where
+        toQuery GetBucketInventoryConfiguration'{..}
+          = mconcat ["id" =: _gbicId, "inventory"]
 
 -- | /See:/ 'getBucketInventoryConfigurationResponse' smart constructor.
 data GetBucketInventoryConfigurationResponse =
@@ -100,6 +112,7 @@ data GetBucketInventoryConfigurationResponse =
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetBucketInventoryConfigurationResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -107,26 +120,24 @@ data GetBucketInventoryConfigurationResponse =
 -- * 'gbicrsInventoryConfiguration' - Specifies the inventory configuration.
 --
 -- * 'gbicrsResponseStatus' - -- | The response status code.
-getBucketInventoryConfigurationResponse ::
-     Int -- ^ 'gbicrsResponseStatus'
-  -> GetBucketInventoryConfigurationResponse
+getBucketInventoryConfigurationResponse
+    :: Int -- ^ 'gbicrsResponseStatus'
+    -> GetBucketInventoryConfigurationResponse
 getBucketInventoryConfigurationResponse pResponseStatus_ =
   GetBucketInventoryConfigurationResponse'
     { _gbicrsInventoryConfiguration = Nothing
     , _gbicrsResponseStatus = pResponseStatus_
     }
 
+
 -- | Specifies the inventory configuration.
-gbicrsInventoryConfiguration ::
-     Lens' GetBucketInventoryConfigurationResponse (Maybe InventoryConfiguration)
-gbicrsInventoryConfiguration =
-  lens
-    _gbicrsInventoryConfiguration
-    (\s a -> s {_gbicrsInventoryConfiguration = a})
+gbicrsInventoryConfiguration :: Lens' GetBucketInventoryConfigurationResponse (Maybe InventoryConfiguration)
+gbicrsInventoryConfiguration = lens _gbicrsInventoryConfiguration (\ s a -> s{_gbicrsInventoryConfiguration = a})
 
 -- | -- | The response status code.
 gbicrsResponseStatus :: Lens' GetBucketInventoryConfigurationResponse Int
-gbicrsResponseStatus =
-  lens _gbicrsResponseStatus (\s a -> s {_gbicrsResponseStatus = a})
+gbicrsResponseStatus = lens _gbicrsResponseStatus (\ s a -> s{_gbicrsResponseStatus = a})
 
-instance NFData GetBucketInventoryConfigurationResponse
+instance NFData
+           GetBucketInventoryConfigurationResponse
+         where

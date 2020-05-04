@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.DirectoryService.UpdateRadius
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -16,22 +18,24 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates the Remote Authentication Dial In User Service (RADIUS) server information for an AD Connector directory.
+-- Updates the Remote Authentication Dial In User Service (RADIUS) server information for an AD Connector or Microsoft AD directory.
 --
 --
 module Network.AWS.DirectoryService.UpdateRadius
+    (
     -- * Creating a Request
-  ( updateRadius
-  , UpdateRadius
+      updateRadius
+    , UpdateRadius
     -- * Request Lenses
-  , urDirectoryId
-  , urRadiusSettings
+    , urDirectoryId
+    , urRadiusSettings
+
     -- * Destructuring the Response
-  , updateRadiusResponse
-  , UpdateRadiusResponse
+    , updateRadiusResponse
+    , UpdateRadiusResponse
     -- * Response Lenses
-  , urrsResponseStatus
-  ) where
+    , urrsResponseStatus
+    ) where
 
 import Network.AWS.DirectoryService.Types
 import Network.AWS.DirectoryService.Types.Product
@@ -52,6 +56,7 @@ data UpdateRadius =
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateRadius' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -59,54 +64,57 @@ data UpdateRadius =
 -- * 'urDirectoryId' - The identifier of the directory for which to update the RADIUS server information.
 --
 -- * 'urRadiusSettings' - A 'RadiusSettings' object that contains information about the RADIUS server.
-updateRadius ::
-     Text -- ^ 'urDirectoryId'
-  -> RadiusSettings -- ^ 'urRadiusSettings'
-  -> UpdateRadius
+updateRadius
+    :: Text -- ^ 'urDirectoryId'
+    -> RadiusSettings -- ^ 'urRadiusSettings'
+    -> UpdateRadius
 updateRadius pDirectoryId_ pRadiusSettings_ =
   UpdateRadius'
     {_urDirectoryId = pDirectoryId_, _urRadiusSettings = pRadiusSettings_}
 
+
 -- | The identifier of the directory for which to update the RADIUS server information.
 urDirectoryId :: Lens' UpdateRadius Text
-urDirectoryId = lens _urDirectoryId (\s a -> s {_urDirectoryId = a})
+urDirectoryId = lens _urDirectoryId (\ s a -> s{_urDirectoryId = a})
 
 -- | A 'RadiusSettings' object that contains information about the RADIUS server.
 urRadiusSettings :: Lens' UpdateRadius RadiusSettings
-urRadiusSettings = lens _urRadiusSettings (\s a -> s {_urRadiusSettings = a})
+urRadiusSettings = lens _urRadiusSettings (\ s a -> s{_urRadiusSettings = a})
 
 instance AWSRequest UpdateRadius where
-  type Rs UpdateRadius = UpdateRadiusResponse
-  request = postJSON directoryService
-  response =
-    receiveEmpty (\s h x -> UpdateRadiusResponse' <$> (pure (fromEnum s)))
+        type Rs UpdateRadius = UpdateRadiusResponse
+        request = postJSON directoryService
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 UpdateRadiusResponse' <$> (pure (fromEnum s)))
 
-instance Hashable UpdateRadius
+instance Hashable UpdateRadius where
 
-instance NFData UpdateRadius
+instance NFData UpdateRadius where
 
 instance ToHeaders UpdateRadius where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("DirectoryService_20150416.UpdateRadius" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("DirectoryService_20150416.UpdateRadius" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON UpdateRadius where
-  toJSON UpdateRadius' {..} =
-    object
-      (catMaybes
-         [ Just ("DirectoryId" .= _urDirectoryId)
-         , Just ("RadiusSettings" .= _urRadiusSettings)
-         ])
+        toJSON UpdateRadius'{..}
+          = object
+              (catMaybes
+                 [Just ("DirectoryId" .= _urDirectoryId),
+                  Just ("RadiusSettings" .= _urRadiusSettings)])
 
 instance ToPath UpdateRadius where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery UpdateRadius where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | Contains the results of the 'UpdateRadius' operation.
 --
@@ -119,20 +127,21 @@ newtype UpdateRadiusResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateRadiusResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'urrsResponseStatus' - -- | The response status code.
-updateRadiusResponse ::
-     Int -- ^ 'urrsResponseStatus'
-  -> UpdateRadiusResponse
+updateRadiusResponse
+    :: Int -- ^ 'urrsResponseStatus'
+    -> UpdateRadiusResponse
 updateRadiusResponse pResponseStatus_ =
   UpdateRadiusResponse' {_urrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 urrsResponseStatus :: Lens' UpdateRadiusResponse Int
-urrsResponseStatus =
-  lens _urrsResponseStatus (\s a -> s {_urrsResponseStatus = a})
+urrsResponseStatus = lens _urrsResponseStatus (\ s a -> s{_urrsResponseStatus = a})
 
-instance NFData UpdateRadiusResponse
+instance NFData UpdateRadiusResponse where

@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Budgets.CreateSubscriber
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,20 +22,22 @@
 --
 --
 module Network.AWS.Budgets.CreateSubscriber
+    (
     -- * Creating a Request
-  ( createSubscriber
-  , CreateSubscriber
+      createSubscriber
+    , CreateSubscriber
     -- * Request Lenses
-  , csAccountId
-  , csBudgetName
-  , csNotification
-  , csSubscriber
+    , csAccountId
+    , csBudgetName
+    , csNotification
+    , csSubscriber
+
     -- * Destructuring the Response
-  , createSubscriberResponse
-  , CreateSubscriberResponse
+    , createSubscriberResponse
+    , CreateSubscriberResponse
     -- * Response Lenses
-  , csrsResponseStatus
-  ) where
+    , csrsResponseStatus
+    ) where
 
 import Network.AWS.Budgets.Types
 import Network.AWS.Budgets.Types.Product
@@ -54,25 +58,26 @@ data CreateSubscriber =
     , _csNotification :: !Notification
     , _csSubscriber   :: !Subscriber
     }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
+  deriving (Eq, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'CreateSubscriber' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'csAccountId' - The @accountId@ associated with the budget that you want to create a subscriber for.
+-- * 'csAccountId' - The @accountId@ that is associated with the budget that you want to create a subscriber for.
 --
 -- * 'csBudgetName' - The name of the budget that you want to subscribe to. Budget names must be unique within an account.
 --
 -- * 'csNotification' - The notification that you want to create a subscriber for.
 --
 -- * 'csSubscriber' - The subscriber that you want to associate with a budget notification.
-createSubscriber ::
-     Text -- ^ 'csAccountId'
-  -> Text -- ^ 'csBudgetName'
-  -> Notification -- ^ 'csNotification'
-  -> Subscriber -- ^ 'csSubscriber'
-  -> CreateSubscriber
+createSubscriber
+    :: Text -- ^ 'csAccountId'
+    -> Text -- ^ 'csBudgetName'
+    -> Notification -- ^ 'csNotification'
+    -> Subscriber -- ^ 'csSubscriber'
+    -> CreateSubscriber
 createSubscriber pAccountId_ pBudgetName_ pNotification_ pSubscriber_ =
   CreateSubscriber'
     { _csAccountId = pAccountId_
@@ -81,56 +86,59 @@ createSubscriber pAccountId_ pBudgetName_ pNotification_ pSubscriber_ =
     , _csSubscriber = pSubscriber_
     }
 
--- | The @accountId@ associated with the budget that you want to create a subscriber for.
+
+-- | The @accountId@ that is associated with the budget that you want to create a subscriber for.
 csAccountId :: Lens' CreateSubscriber Text
-csAccountId = lens _csAccountId (\s a -> s {_csAccountId = a})
+csAccountId = lens _csAccountId (\ s a -> s{_csAccountId = a})
 
 -- | The name of the budget that you want to subscribe to. Budget names must be unique within an account.
 csBudgetName :: Lens' CreateSubscriber Text
-csBudgetName = lens _csBudgetName (\s a -> s {_csBudgetName = a})
+csBudgetName = lens _csBudgetName (\ s a -> s{_csBudgetName = a})
 
 -- | The notification that you want to create a subscriber for.
 csNotification :: Lens' CreateSubscriber Notification
-csNotification = lens _csNotification (\s a -> s {_csNotification = a})
+csNotification = lens _csNotification (\ s a -> s{_csNotification = a})
 
 -- | The subscriber that you want to associate with a budget notification.
 csSubscriber :: Lens' CreateSubscriber Subscriber
-csSubscriber = lens _csSubscriber (\s a -> s {_csSubscriber = a})
+csSubscriber = lens _csSubscriber (\ s a -> s{_csSubscriber = a})
 
 instance AWSRequest CreateSubscriber where
-  type Rs CreateSubscriber = CreateSubscriberResponse
-  request = postJSON budgets
-  response =
-    receiveEmpty (\s h x -> CreateSubscriberResponse' <$> (pure (fromEnum s)))
+        type Rs CreateSubscriber = CreateSubscriberResponse
+        request = postJSON budgets
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 CreateSubscriberResponse' <$> (pure (fromEnum s)))
 
-instance Hashable CreateSubscriber
+instance Hashable CreateSubscriber where
 
-instance NFData CreateSubscriber
+instance NFData CreateSubscriber where
 
 instance ToHeaders CreateSubscriber where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AWSBudgetServiceGateway.CreateSubscriber" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWSBudgetServiceGateway.CreateSubscriber" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON CreateSubscriber where
-  toJSON CreateSubscriber' {..} =
-    object
-      (catMaybes
-         [ Just ("AccountId" .= _csAccountId)
-         , Just ("BudgetName" .= _csBudgetName)
-         , Just ("Notification" .= _csNotification)
-         , Just ("Subscriber" .= _csSubscriber)
-         ])
+        toJSON CreateSubscriber'{..}
+          = object
+              (catMaybes
+                 [Just ("AccountId" .= _csAccountId),
+                  Just ("BudgetName" .= _csBudgetName),
+                  Just ("Notification" .= _csNotification),
+                  Just ("Subscriber" .= _csSubscriber)])
 
 instance ToPath CreateSubscriber where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery CreateSubscriber where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | Response of CreateSubscriber
 --
@@ -143,20 +151,21 @@ newtype CreateSubscriberResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateSubscriberResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'csrsResponseStatus' - -- | The response status code.
-createSubscriberResponse ::
-     Int -- ^ 'csrsResponseStatus'
-  -> CreateSubscriberResponse
+createSubscriberResponse
+    :: Int -- ^ 'csrsResponseStatus'
+    -> CreateSubscriberResponse
 createSubscriberResponse pResponseStatus_ =
   CreateSubscriberResponse' {_csrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 csrsResponseStatus :: Lens' CreateSubscriberResponse Int
-csrsResponseStatus =
-  lens _csrsResponseStatus (\s a -> s {_csrsResponseStatus = a})
+csrsResponseStatus = lens _csrsResponseStatus (\ s a -> s{_csrsResponseStatus = a})
 
-instance NFData CreateSubscriberResponse
+instance NFData CreateSubscriberResponse where

@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.APIGateway.GetClientCertificate
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,21 +22,24 @@
 --
 --
 module Network.AWS.APIGateway.GetClientCertificate
+    (
     -- * Creating a Request
-  ( getClientCertificate
-  , GetClientCertificate
+      getClientCertificate
+    , GetClientCertificate
     -- * Request Lenses
-  , gccClientCertificateId
+    , gccClientCertificateId
+
     -- * Destructuring the Response
-  , clientCertificate
-  , ClientCertificate
+    , clientCertificate
+    , ClientCertificate
     -- * Response Lenses
-  , ccPemEncodedCertificate
-  , ccClientCertificateId
-  , ccCreatedDate
-  , ccExpirationDate
-  , ccDescription
-  ) where
+    , ccPemEncodedCertificate
+    , ccClientCertificateId
+    , ccCreatedDate
+    , ccExpirationDate
+    , ccDescription
+    , ccTags
+    ) where
 
 import Network.AWS.APIGateway.Types
 import Network.AWS.APIGateway.Types.Product
@@ -54,37 +59,43 @@ newtype GetClientCertificate =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetClientCertificate' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'gccClientCertificateId' - [Required] The identifier of the 'ClientCertificate' resource to be described.
-getClientCertificate ::
-     Text -- ^ 'gccClientCertificateId'
-  -> GetClientCertificate
+getClientCertificate
+    :: Text -- ^ 'gccClientCertificateId'
+    -> GetClientCertificate
 getClientCertificate pClientCertificateId_ =
   GetClientCertificate' {_gccClientCertificateId = pClientCertificateId_}
 
+
 -- | [Required] The identifier of the 'ClientCertificate' resource to be described.
 gccClientCertificateId :: Lens' GetClientCertificate Text
-gccClientCertificateId =
-  lens _gccClientCertificateId (\s a -> s {_gccClientCertificateId = a})
+gccClientCertificateId = lens _gccClientCertificateId (\ s a -> s{_gccClientCertificateId = a})
 
 instance AWSRequest GetClientCertificate where
-  type Rs GetClientCertificate = ClientCertificate
-  request = get apiGateway
-  response = receiveJSON (\s h x -> eitherParseJSON x)
+        type Rs GetClientCertificate = ClientCertificate
+        request = get apiGateway
+        response = receiveJSON (\ s h x -> eitherParseJSON x)
 
-instance Hashable GetClientCertificate
+instance Hashable GetClientCertificate where
 
-instance NFData GetClientCertificate
+instance NFData GetClientCertificate where
 
 instance ToHeaders GetClientCertificate where
-  toHeaders = const (mconcat ["Accept" =# ("application/json" :: ByteString)])
+        toHeaders
+          = const
+              (mconcat
+                 ["Accept" =# ("application/json" :: ByteString)])
 
 instance ToPath GetClientCertificate where
-  toPath GetClientCertificate' {..} =
-    mconcat ["/clientcertificates/", toBS _gccClientCertificateId]
+        toPath GetClientCertificate'{..}
+          = mconcat
+              ["/clientcertificates/",
+               toBS _gccClientCertificateId]
 
 instance ToQuery GetClientCertificate where
-  toQuery = const mempty
+        toQuery = const mempty

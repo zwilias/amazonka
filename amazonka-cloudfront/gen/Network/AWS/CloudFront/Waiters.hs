@@ -1,8 +1,10 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TypeFamilies      #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CloudFront.Waiters
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -36,12 +38,13 @@ streamingDistributionDeployed =
         ]
     }
 
--- | Polls 'Network.AWS.CloudFront.GetDistribution' every 60 seconds until a successful state is reached. An error is returned after 25 failed checks.
+
+-- | Polls 'Network.AWS.CloudFront.GetDistribution' every 60 seconds until a successful state is reached. An error is returned after 35 failed checks.
 distributionDeployed :: Wait GetDistribution
 distributionDeployed =
   Wait
     { _waitName = "DistributionDeployed"
-    , _waitAttempts = 25
+    , _waitAttempts = 35
     , _waitDelay = 60
     , _waitAcceptors =
         [ matchAll
@@ -50,6 +53,7 @@ distributionDeployed =
             (gdrsDistribution . _Just . dStatus . to toTextCI)
         ]
     }
+
 
 -- | Polls 'Network.AWS.CloudFront.GetInvalidation' every 20 seconds until a successful state is reached. An error is returned after 30 failed checks.
 invalidationCompleted :: Wait GetInvalidation
@@ -65,3 +69,4 @@ invalidationCompleted =
             (girsInvalidation . _Just . iStatus . to toTextCI)
         ]
     }
+

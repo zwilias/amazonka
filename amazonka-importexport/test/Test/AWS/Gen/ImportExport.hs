@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Test.AWS.Gen.ImportExport
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -23,6 +24,7 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
+
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -45,6 +47,7 @@ import Test.Tasty
 --             cancelJob
 --
 --           ]
+
 --     , testGroup "response"
 --         [ responseGetShippingLabel $
 --             getShippingLabelResponse
@@ -66,69 +69,78 @@ import Test.Tasty
 --
 --           ]
 --     ]
+
 -- Requests
+
 requestGetShippingLabel :: GetShippingLabel -> TestTree
-requestGetShippingLabel = req "GetShippingLabel" "fixture/GetShippingLabel.yaml"
+requestGetShippingLabel = req
+    "GetShippingLabel"
+    "fixture/GetShippingLabel.yaml"
 
 requestCreateJob :: CreateJob -> TestTree
-requestCreateJob = req "CreateJob" "fixture/CreateJob.yaml"
+requestCreateJob = req
+    "CreateJob"
+    "fixture/CreateJob.yaml"
 
 requestListJobs :: ListJobs -> TestTree
-requestListJobs = req "ListJobs" "fixture/ListJobs.yaml"
+requestListJobs = req
+    "ListJobs"
+    "fixture/ListJobs.yaml"
 
 requestUpdateJob :: UpdateJob -> TestTree
-requestUpdateJob = req "UpdateJob" "fixture/UpdateJob.yaml"
+requestUpdateJob = req
+    "UpdateJob"
+    "fixture/UpdateJob.yaml"
 
 requestGetStatus :: GetStatus -> TestTree
-requestGetStatus = req "GetStatus" "fixture/GetStatus.yaml"
+requestGetStatus = req
+    "GetStatus"
+    "fixture/GetStatus.yaml"
 
 requestCancelJob :: CancelJob -> TestTree
-requestCancelJob = req "CancelJob" "fixture/CancelJob.yaml"
+requestCancelJob = req
+    "CancelJob"
+    "fixture/CancelJob.yaml"
 
 -- Responses
+
 responseGetShippingLabel :: GetShippingLabelResponse -> TestTree
-responseGetShippingLabel =
-  res
+responseGetShippingLabel = res
     "GetShippingLabelResponse"
     "fixture/GetShippingLabelResponse.proto"
     importExport
     (Proxy :: Proxy GetShippingLabel)
 
 responseCreateJob :: CreateJobResponse -> TestTree
-responseCreateJob =
-  res
+responseCreateJob = res
     "CreateJobResponse"
     "fixture/CreateJobResponse.proto"
     importExport
     (Proxy :: Proxy CreateJob)
 
 responseListJobs :: ListJobsResponse -> TestTree
-responseListJobs =
-  res
+responseListJobs = res
     "ListJobsResponse"
     "fixture/ListJobsResponse.proto"
     importExport
     (Proxy :: Proxy ListJobs)
 
 responseUpdateJob :: UpdateJobResponse -> TestTree
-responseUpdateJob =
-  res
+responseUpdateJob = res
     "UpdateJobResponse"
     "fixture/UpdateJobResponse.proto"
     importExport
     (Proxy :: Proxy UpdateJob)
 
 responseGetStatus :: GetStatusResponse -> TestTree
-responseGetStatus =
-  res
+responseGetStatus = res
     "GetStatusResponse"
     "fixture/GetStatusResponse.proto"
     importExport
     (Proxy :: Proxy GetStatus)
 
 responseCancelJob :: CancelJobResponse -> TestTree
-responseCancelJob =
-  res
+responseCancelJob = res
     "CancelJobResponse"
     "fixture/CancelJobResponse.proto"
     importExport

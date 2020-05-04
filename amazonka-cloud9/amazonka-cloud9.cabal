@@ -53,7 +53,10 @@ library
         , Network.AWS.Cloud9.DescribeEnvironmentStatus
         , Network.AWS.Cloud9.DescribeEnvironments
         , Network.AWS.Cloud9.ListEnvironments
+        , Network.AWS.Cloud9.ListTagsForResource
+        , Network.AWS.Cloud9.TagResource
         , Network.AWS.Cloud9.Types
+        , Network.AWS.Cloud9.UntagResource
         , Network.AWS.Cloud9.UpdateEnvironment
         , Network.AWS.Cloud9.UpdateEnvironmentMembership
         , Network.AWS.Cloud9.Waiters

@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CostExplorer.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,202 +11,573 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.CostExplorer.Types
+    (
     -- * Service Configuration
-  ( costExplorer
+      costExplorer
+
     -- * Errors
-  , _BillExpirationException
-  , _RequestChangedException
-  , _InvalidNextTokenException
-  , _DataUnavailableException
-  , _LimitExceededException
+    , _BillExpirationException
+    , _RequestChangedException
+    , _UnresolvableUsageUnitException
+    , _ServiceQuotaExceededException
+    , _InvalidNextTokenException
+    , _DataUnavailableException
+    , _ResourceNotFoundException
+    , _LimitExceededException
+
     -- * AccountScope
-  , AccountScope(..)
+    , AccountScope (..)
+
     -- * Context
-  , Context(..)
+    , Context (..)
+
+    -- * CostCategoryRuleVersion
+    , CostCategoryRuleVersion (..)
+
     -- * Dimension
-  , Dimension(..)
+    , Dimension (..)
+
     -- * Granularity
-  , Granularity(..)
+    , Granularity (..)
+
     -- * GroupDefinitionType
-  , GroupDefinitionType(..)
+    , GroupDefinitionType (..)
+
     -- * LookbackPeriodInDays
-  , LookbackPeriodInDays(..)
+    , LookbackPeriodInDays (..)
+
+    -- * MatchOption
+    , MatchOption (..)
+
+    -- * Metric
+    , Metric (..)
+
     -- * OfferingClass
-  , OfferingClass(..)
+    , OfferingClass (..)
+
     -- * PaymentOption
-  , PaymentOption(..)
+    , PaymentOption (..)
+
+    -- * RecommendationTarget
+    , RecommendationTarget (..)
+
+    -- * RightsizingType
+    , RightsizingType (..)
+
+    -- * SupportedSavingsPlansType
+    , SupportedSavingsPlansType (..)
+
     -- * TermInYears
-  , TermInYears(..)
+    , TermInYears (..)
+
+    -- * CostCategory
+    , CostCategory
+    , costCategory
+    , ccEffectiveEnd
+    , ccCostCategoryARN
+    , ccEffectiveStart
+    , ccName
+    , ccRuleVersion
+    , ccRules
+
+    -- * CostCategoryReference
+    , CostCategoryReference
+    , costCategoryReference
+    , ccrEffectiveStart
+    , ccrCostCategoryARN
+    , ccrNumberOfRules
+    , ccrName
+    , ccrEffectiveEnd
+
+    -- * CostCategoryRule
+    , CostCategoryRule
+    , costCategoryRule
+    , ccrValue
+    , ccrRule
+
+    -- * CostCategoryValues
+    , CostCategoryValues
+    , costCategoryValues
+    , ccvValues
+    , ccvKey
+
     -- * Coverage
-  , Coverage
-  , coverage
-  , cCoverageHours
+    , Coverage
+    , coverage
+    , cCoverageNormalizedUnits
+    , cCoverageHours
+    , cCoverageCost
+
     -- * CoverageByTime
-  , CoverageByTime
-  , coverageByTime
-  , cbtGroups
-  , cbtTimePeriod
-  , cbtTotal
+    , CoverageByTime
+    , coverageByTime
+    , cbtGroups
+    , cbtTimePeriod
+    , cbtTotal
+
+    -- * CoverageCost
+    , CoverageCost
+    , coverageCost
+    , ccOnDemandCost
+
     -- * CoverageHours
-  , CoverageHours
-  , coverageHours
-  , chCoverageHoursPercentage
-  , chOnDemandHours
-  , chTotalRunningHours
-  , chReservedHours
+    , CoverageHours
+    , coverageHours
+    , chCoverageHoursPercentage
+    , chOnDemandHours
+    , chTotalRunningHours
+    , chReservedHours
+
+    -- * CoverageNormalizedUnits
+    , CoverageNormalizedUnits
+    , coverageNormalizedUnits
+    , cnuReservedNormalizedUnits
+    , cnuTotalRunningNormalizedUnits
+    , cnuCoverageNormalizedUnitsPercentage
+    , cnuOnDemandNormalizedUnits
+
+    -- * CurrentInstance
+    , CurrentInstance
+    , currentInstance
+    , ciResourceId
+    , ciCurrencyCode
+    , ciResourceUtilization
+    , ciResourceDetails
+    , ciTotalRunningHoursInLookbackPeriod
+    , ciReservationCoveredHoursInLookbackPeriod
+    , ciOnDemandHoursInLookbackPeriod
+    , ciMonthlyCost
+    , ciSavingsPlansCoveredHoursInLookbackPeriod
+    , ciTags
+
     -- * DateInterval
-  , DateInterval
-  , dateInterval
-  , diStart
-  , diEnd
+    , DateInterval
+    , dateInterval
+    , diStart
+    , diEnd
+
     -- * DimensionValues
-  , DimensionValues
-  , dimensionValues
-  , dvValues
-  , dvKey
+    , DimensionValues
+    , dimensionValues
+    , dvValues
+    , dvKey
+    , dvMatchOptions
+
     -- * DimensionValuesWithAttributes
-  , DimensionValuesWithAttributes
-  , dimensionValuesWithAttributes
-  , dvwaValue
-  , dvwaAttributes
+    , DimensionValuesWithAttributes
+    , dimensionValuesWithAttributes
+    , dvwaValue
+    , dvwaAttributes
+
     -- * EC2InstanceDetails
-  , EC2InstanceDetails
-  , ec2InstanceDetails
-  , eidCurrentGeneration
-  , eidPlatform
-  , eidFamily
-  , eidInstanceType
-  , eidAvailabilityZone
-  , eidSizeFlexEligible
-  , eidTenancy
-  , eidRegion
+    , EC2InstanceDetails
+    , ec2InstanceDetails
+    , eidCurrentGeneration
+    , eidPlatform
+    , eidFamily
+    , eidInstanceType
+    , eidAvailabilityZone
+    , eidSizeFlexEligible
+    , eidTenancy
+    , eidRegion
+
+    -- * EC2ResourceDetails
+    , EC2ResourceDetails
+    , ec2ResourceDetails
+    , erdPlatform
+    , erdVcpu
+    , erdNetworkPerformance
+    , erdMemory
+    , erdInstanceType
+    , erdStorage
+    , erdSku
+    , erdRegion
+    , erdHourlyOnDemandRate
+
+    -- * EC2ResourceUtilization
+    , EC2ResourceUtilization
+    , ec2ResourceUtilization
+    , eruMaxCPUUtilizationPercentage
+    , eruMaxStorageUtilizationPercentage
+    , eruMaxMemoryUtilizationPercentage
+
     -- * EC2Specification
-  , EC2Specification
-  , ec2Specification
-  , esOfferingClass
+    , EC2Specification
+    , ec2Specification
+    , esOfferingClass
+
+    -- * ESInstanceDetails
+    , ESInstanceDetails
+    , eSInstanceDetails
+    , esidCurrentGeneration
+    , esidInstanceClass
+    , esidInstanceSize
+    , esidSizeFlexEligible
+    , esidRegion
+
+    -- * ElastiCacheInstanceDetails
+    , ElastiCacheInstanceDetails
+    , elastiCacheInstanceDetails
+    , ecidCurrentGeneration
+    , ecidProductDescription
+    , ecidFamily
+    , ecidSizeFlexEligible
+    , ecidRegion
+    , ecidNodeType
+
     -- * Expression
-  , Expression
-  , expression
-  , eNot
-  , eAnd
-  , eOr
-  , eDimensions
-  , eTags
+    , Expression
+    , expression
+    , eNot
+    , eAnd
+    , eOr
+    , eCostCategories
+    , eDimensions
+    , eTags
+
+    -- * ForecastResult
+    , ForecastResult
+    , forecastResult
+    , frTimePeriod
+    , frMeanValue
+    , frPredictionIntervalUpperBound
+    , frPredictionIntervalLowerBound
+
     -- * Group
-  , Group
-  , group'
-  , gMetrics
-  , gKeys
+    , Group
+    , group'
+    , gMetrics
+    , gKeys
+
     -- * GroupDefinition
-  , GroupDefinition
-  , groupDefinition
-  , gdKey
-  , gdType
+    , GroupDefinition
+    , groupDefinition
+    , gdKey
+    , gdType
+
     -- * InstanceDetails
-  , InstanceDetails
-  , instanceDetails
-  , idRDSInstanceDetails
-  , idEC2InstanceDetails
+    , InstanceDetails
+    , instanceDetails
+    , idESInstanceDetails
+    , idRDSInstanceDetails
+    , idElastiCacheInstanceDetails
+    , idEC2InstanceDetails
+    , idRedshiftInstanceDetails
+
     -- * MetricValue
-  , MetricValue
-  , metricValue
-  , mvAmount
-  , mvUnit
+    , MetricValue
+    , metricValue
+    , mvAmount
+    , mvUnit
+
+    -- * ModifyRecommendationDetail
+    , ModifyRecommendationDetail
+    , modifyRecommendationDetail
+    , mrdTargetInstances
+
     -- * RDSInstanceDetails
-  , RDSInstanceDetails
-  , rdsInstanceDetails
-  , ridCurrentGeneration
-  , ridDeploymentOption
-  , ridFamily
-  , ridInstanceType
-  , ridLicenseModel
-  , ridSizeFlexEligible
-  , ridRegion
-  , ridDatabaseEngine
+    , RDSInstanceDetails
+    , rdsInstanceDetails
+    , ridCurrentGeneration
+    , ridDeploymentOption
+    , ridFamily
+    , ridInstanceType
+    , ridLicenseModel
+    , ridSizeFlexEligible
+    , ridRegion
+    , ridDatabaseEngine
+    , ridDatabaseEdition
+
+    -- * RedshiftInstanceDetails
+    , RedshiftInstanceDetails
+    , redshiftInstanceDetails
+    , rCurrentGeneration
+    , rFamily
+    , rSizeFlexEligible
+    , rRegion
+    , rNodeType
+
     -- * ReservationAggregates
-  , ReservationAggregates
-  , reservationAggregates
-  , raPurchasedHours
-  , raTotalActualHours
-  , raUtilizationPercentage
-  , raUnusedHours
+    , ReservationAggregates
+    , reservationAggregates
+    , raPurchasedHours
+    , raTotalActualHours
+    , raUtilizationPercentage
+    , raTotalAmortizedFee
+    , raUnusedUnits
+    , raUnusedHours
+    , raPurchasedUnits
+    , raAmortizedUpfrontFee
+    , raAmortizedRecurringFee
+    , raUtilizationPercentageInUnits
+    , raNetRISavings
+    , raOnDemandCostOfRIHoursUsed
+    , raTotalPotentialRISavings
+    , raTotalActualUnits
+
     -- * ReservationCoverageGroup
-  , ReservationCoverageGroup
-  , reservationCoverageGroup
-  , rcgCoverage
-  , rcgAttributes
+    , ReservationCoverageGroup
+    , reservationCoverageGroup
+    , rcgCoverage
+    , rcgAttributes
+
     -- * ReservationPurchaseRecommendation
-  , ReservationPurchaseRecommendation
-  , reservationPurchaseRecommendation
-  , rprTermInYears
-  , rprRecommendationSummary
-  , rprServiceSpecification
-  , rprAccountScope
-  , rprRecommendationDetails
-  , rprLookbackPeriodInDays
-  , rprPaymentOption
+    , ReservationPurchaseRecommendation
+    , reservationPurchaseRecommendation
+    , rprTermInYears
+    , rprRecommendationSummary
+    , rprServiceSpecification
+    , rprAccountScope
+    , rprRecommendationDetails
+    , rprLookbackPeriodInDays
+    , rprPaymentOption
+
     -- * ReservationPurchaseRecommendationDetail
-  , ReservationPurchaseRecommendationDetail
-  , reservationPurchaseRecommendationDetail
-  , rprdMaximumNormalizedUnitsUsedPerHour
-  , rprdRecurringStandardMonthlyCost
-  , rprdAverageNormalizedUnitsUsedPerHour
-  , rprdCurrencyCode
-  , rprdEstimatedMonthlySavingsPercentage
-  , rprdRecommendedNormalizedUnitsToPurchase
-  , rprdAverageUtilization
-  , rprdEstimatedMonthlySavingsAmount
-  , rprdUpfrontCost
-  , rprdMinimumNormalizedUnitsUsedPerHour
-  , rprdEstimatedMonthlyOnDemandCost
-  , rprdRecommendedNumberOfInstancesToPurchase
-  , rprdMaximumNumberOfInstancesUsedPerHour
-  , rprdEstimatedReservationCostForLookbackPeriod
-  , rprdInstanceDetails
-  , rprdAverageNumberOfInstancesUsedPerHour
-  , rprdMinimumNumberOfInstancesUsedPerHour
-  , rprdEstimatedBreakEvenInMonths
+    , ReservationPurchaseRecommendationDetail
+    , reservationPurchaseRecommendationDetail
+    , rprdMaximumNormalizedUnitsUsedPerHour
+    , rprdRecurringStandardMonthlyCost
+    , rprdAverageNormalizedUnitsUsedPerHour
+    , rprdCurrencyCode
+    , rprdEstimatedMonthlySavingsPercentage
+    , rprdRecommendedNormalizedUnitsToPurchase
+    , rprdAverageUtilization
+    , rprdAccountId
+    , rprdEstimatedMonthlySavingsAmount
+    , rprdUpfrontCost
+    , rprdMinimumNormalizedUnitsUsedPerHour
+    , rprdEstimatedMonthlyOnDemandCost
+    , rprdRecommendedNumberOfInstancesToPurchase
+    , rprdMaximumNumberOfInstancesUsedPerHour
+    , rprdEstimatedReservationCostForLookbackPeriod
+    , rprdInstanceDetails
+    , rprdAverageNumberOfInstancesUsedPerHour
+    , rprdMinimumNumberOfInstancesUsedPerHour
+    , rprdEstimatedBreakEvenInMonths
+
     -- * ReservationPurchaseRecommendationMetadata
-  , ReservationPurchaseRecommendationMetadata
-  , reservationPurchaseRecommendationMetadata
-  , rprmRecommendationId
-  , rprmGenerationTimestamp
+    , ReservationPurchaseRecommendationMetadata
+    , reservationPurchaseRecommendationMetadata
+    , rprmRecommendationId
+    , rprmGenerationTimestamp
+
     -- * ReservationPurchaseRecommendationSummary
-  , ReservationPurchaseRecommendationSummary
-  , reservationPurchaseRecommendationSummary
-  , rprsCurrencyCode
-  , rprsTotalEstimatedMonthlySavingsPercentage
-  , rprsTotalEstimatedMonthlySavingsAmount
+    , ReservationPurchaseRecommendationSummary
+    , reservationPurchaseRecommendationSummary
+    , rprsCurrencyCode
+    , rprsTotalEstimatedMonthlySavingsPercentage
+    , rprsTotalEstimatedMonthlySavingsAmount
+
     -- * ReservationUtilizationGroup
-  , ReservationUtilizationGroup
-  , reservationUtilizationGroup
-  , rugValue
-  , rugKey
-  , rugAttributes
-  , rugUtilization
+    , ReservationUtilizationGroup
+    , reservationUtilizationGroup
+    , rugValue
+    , rugKey
+    , rugAttributes
+    , rugUtilization
+
+    -- * ResourceDetails
+    , ResourceDetails
+    , resourceDetails
+    , rdEC2ResourceDetails
+
+    -- * ResourceUtilization
+    , ResourceUtilization
+    , resourceUtilization
+    , ruEC2ResourceUtilization
+
     -- * ResultByTime
-  , ResultByTime
-  , resultByTime
-  , rbtGroups
-  , rbtTimePeriod
-  , rbtTotal
-  , rbtEstimated
+    , ResultByTime
+    , resultByTime
+    , rbtGroups
+    , rbtTimePeriod
+    , rbtTotal
+    , rbtEstimated
+
+    -- * RightsizingRecommendation
+    , RightsizingRecommendation
+    , rightsizingRecommendation
+    , rrAccountId
+    , rrModifyRecommendationDetail
+    , rrCurrentInstance
+    , rrRightsizingType
+    , rrTerminateRecommendationDetail
+
+    -- * RightsizingRecommendationConfiguration
+    , RightsizingRecommendationConfiguration
+    , rightsizingRecommendationConfiguration
+    , rrcRecommendationTarget
+    , rrcBenefitsConsidered
+
+    -- * RightsizingRecommendationMetadata
+    , RightsizingRecommendationMetadata
+    , rightsizingRecommendationMetadata
+    , rrmRecommendationId
+    , rrmGenerationTimestamp
+    , rrmLookbackPeriodInDays
+
+    -- * RightsizingRecommendationSummary
+    , RightsizingRecommendationSummary
+    , rightsizingRecommendationSummary
+    , rrsSavingsPercentage
+    , rrsSavingsCurrencyCode
+    , rrsTotalRecommendationCount
+    , rrsEstimatedTotalMonthlySavingsAmount
+
+    -- * SavingsPlansAmortizedCommitment
+    , SavingsPlansAmortizedCommitment
+    , savingsPlansAmortizedCommitment
+    , spacAmortizedUpfrontCommitment
+    , spacTotalAmortizedCommitment
+    , spacAmortizedRecurringCommitment
+
+    -- * SavingsPlansCoverage
+    , SavingsPlansCoverage
+    , savingsPlansCoverage
+    , spcTimePeriod
+    , spcCoverage
+    , spcAttributes
+
+    -- * SavingsPlansCoverageData
+    , SavingsPlansCoverageData
+    , savingsPlansCoverageData
+    , spcdOnDemandCost
+    , spcdSpendCoveredBySavingsPlans
+    , spcdCoveragePercentage
+    , spcdTotalCost
+
+    -- * SavingsPlansDetails
+    , SavingsPlansDetails
+    , savingsPlansDetails
+    , spdInstanceFamily
+    , spdOfferingId
+    , spdRegion
+
+    -- * SavingsPlansPurchaseRecommendation
+    , SavingsPlansPurchaseRecommendation
+    , savingsPlansPurchaseRecommendation
+    , spprSavingsPlansPurchaseRecommendationDetails
+    , spprTermInYears
+    , spprAccountScope
+    , spprSavingsPlansType
+    , spprLookbackPeriodInDays
+    , spprPaymentOption
+    , spprSavingsPlansPurchaseRecommendationSummary
+
+    -- * SavingsPlansPurchaseRecommendationDetail
+    , SavingsPlansPurchaseRecommendationDetail
+    , savingsPlansPurchaseRecommendationDetail
+    , spprdCurrencyCode
+    , spprdCurrentAverageHourlyOnDemandSpend
+    , spprdSavingsPlansDetails
+    , spprdCurrentMinimumHourlyOnDemandSpend
+    , spprdEstimatedROI
+    , spprdCurrentMaximumHourlyOnDemandSpend
+    , spprdEstimatedSavingsAmount
+    , spprdAccountId
+    , spprdEstimatedMonthlySavingsAmount
+    , spprdEstimatedOnDemandCost
+    , spprdEstimatedOnDemandCostWithCurrentCommitment
+    , spprdUpfrontCost
+    , spprdEstimatedSPCost
+    , spprdEstimatedSavingsPercentage
+    , spprdEstimatedAverageUtilization
+    , spprdHourlyCommitmentToPurchase
+
+    -- * SavingsPlansPurchaseRecommendationMetadata
+    , SavingsPlansPurchaseRecommendationMetadata
+    , savingsPlansPurchaseRecommendationMetadata
+    , spprmRecommendationId
+    , spprmGenerationTimestamp
+
+    -- * SavingsPlansPurchaseRecommendationSummary
+    , SavingsPlansPurchaseRecommendationSummary
+    , savingsPlansPurchaseRecommendationSummary
+    , spprsCurrencyCode
+    , spprsDailyCommitmentToPurchase
+    , spprsEstimatedTotalCost
+    , spprsEstimatedROI
+    , spprsEstimatedSavingsAmount
+    , spprsEstimatedMonthlySavingsAmount
+    , spprsEstimatedOnDemandCostWithCurrentCommitment
+    , spprsEstimatedSavingsPercentage
+    , spprsTotalRecommendationCount
+    , spprsCurrentOnDemandSpend
+    , spprsHourlyCommitmentToPurchase
+
+    -- * SavingsPlansSavings
+    , SavingsPlansSavings
+    , savingsPlansSavings
+    , spsNetSavings
+    , spsOnDemandCostEquivalent
+
+    -- * SavingsPlansUtilization
+    , SavingsPlansUtilization
+    , savingsPlansUtilization
+    , spuUnusedCommitment
+    , spuUtilizationPercentage
+    , spuTotalCommitment
+    , spuUsedCommitment
+
+    -- * SavingsPlansUtilizationAggregates
+    , SavingsPlansUtilizationAggregates
+    , savingsPlansUtilizationAggregates
+    , spuaAmortizedCommitment
+    , spuaSavings
+    , spuaUtilization
+
+    -- * SavingsPlansUtilizationByTime
+    , SavingsPlansUtilizationByTime
+    , savingsPlansUtilizationByTime
+    , spubtAmortizedCommitment
+    , spubtSavings
+    , spubtTimePeriod
+    , spubtUtilization
+
+    -- * SavingsPlansUtilizationDetail
+    , SavingsPlansUtilizationDetail
+    , savingsPlansUtilizationDetail
+    , spudAmortizedCommitment
+    , spudSavings
+    , spudAttributes
+    , spudUtilization
+    , spudSavingsPlanARN
+
     -- * ServiceSpecification
-  , ServiceSpecification
-  , serviceSpecification
-  , ssEC2Specification
+    , ServiceSpecification
+    , serviceSpecification
+    , ssEC2Specification
+
     -- * TagValues
-  , TagValues
-  , tagValues
-  , tvValues
-  , tvKey
+    , TagValues
+    , tagValues
+    , tvValues
+    , tvKey
+    , tvMatchOptions
+
+    -- * TargetInstance
+    , TargetInstance
+    , targetInstance
+    , tiCurrencyCode
+    , tiResourceDetails
+    , tiDefaultTargetInstance
+    , tiEstimatedMonthlyCost
+    , tiEstimatedMonthlySavings
+    , tiExpectedResourceUtilization
+
+    -- * TerminateRecommendationDetail
+    , TerminateRecommendationDetail
+    , terminateRecommendationDetail
+    , trdCurrencyCode
+    , trdEstimatedMonthlySavings
+
     -- * UtilizationByTime
-  , UtilizationByTime
-  , utilizationByTime
-  , ubtGroups
-  , ubtTimePeriod
-  , ubtTotal
-  ) where
+    , UtilizationByTime
+    , utilizationByTime
+    , ubtGroups
+    , ubtTimePeriod
+    , ubtTotal
+    ) where
 
 import Network.AWS.CostExplorer.Types.Product
 import Network.AWS.CostExplorer.Types.Sum
@@ -251,42 +623,67 @@ costExplorer =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | The requested report expired. Update the date interval and try again.
 --
 --
-_BillExpirationException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_BillExpirationException :: AsError a => Getting (First ServiceError) a ServiceError
 _BillExpirationException =
   _MatchServiceError costExplorer "BillExpirationException"
+
 
 -- | Your request parameters changed between pages. Try again with the old parameters or without a pagination token.
 --
 --
-_RequestChangedException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_RequestChangedException :: AsError a => Getting (First ServiceError) a ServiceError
 _RequestChangedException =
   _MatchServiceError costExplorer "RequestChangedException"
+
+
+-- | Cost Explorer was unable to identify the usage unit. Provide @UsageType/UsageTypeGroup@ filter selections that contain matching units, for example: @hours@ .
+--
+--
+_UnresolvableUsageUnitException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnresolvableUsageUnitException =
+  _MatchServiceError costExplorer "UnresolvableUsageUnitException"
+
+
+-- | You've reached the limit on the number of resources you can create, or exceeded the size of an individual resources.
+--
+--
+_ServiceQuotaExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceQuotaExceededException =
+  _MatchServiceError costExplorer "ServiceQuotaExceededException"
+
 
 -- | The pagination token is invalid. Try again without a pagination token.
 --
 --
-_InvalidNextTokenException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidNextTokenException =
   _MatchServiceError costExplorer "InvalidNextTokenException"
+
 
 -- | The requested data is unavailable.
 --
 --
-_DataUnavailableException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_DataUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
 _DataUnavailableException =
   _MatchServiceError costExplorer "DataUnavailableException"
+
+
+-- | The specified ARN in the request doesn't exist.
+--
+--
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException =
+  _MatchServiceError costExplorer "ResourceNotFoundException"
+
 
 -- | You made too many calls in a short period of time. Try again later.
 --
 --
-_LimitExceededException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException =
   _MatchServiceError costExplorer "LimitExceededException"
+

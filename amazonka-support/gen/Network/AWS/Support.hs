@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Support
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -45,172 +46,216 @@
 -- See <http://docs.aws.amazon.com/awssupport/latest/user/Welcome.html About the AWS Support API> in the /AWS Support User Guide/ for information about how to use this service to create and manage your support cases, and how to call Trusted Advisor for results of checks on your resources.
 --
 module Network.AWS.Support
+    (
     -- * Service Configuration
-  ( support
+      support
+
     -- * Errors
     -- $errors
+
     -- ** AttachmentSetExpired
-  , _AttachmentSetExpired
+    , _AttachmentSetExpired
+
     -- ** AttachmentLimitExceeded
-  , _AttachmentLimitExceeded
+    , _AttachmentLimitExceeded
+
     -- ** DescribeAttachmentLimitExceeded
-  , _DescribeAttachmentLimitExceeded
+    , _DescribeAttachmentLimitExceeded
+
     -- ** CaseIdNotFound
-  , _CaseIdNotFound
+    , _CaseIdNotFound
+
     -- ** AttachmentSetIdNotFound
-  , _AttachmentSetIdNotFound
+    , _AttachmentSetIdNotFound
+
     -- ** AttachmentSetSizeLimitExceeded
-  , _AttachmentSetSizeLimitExceeded
+    , _AttachmentSetSizeLimitExceeded
+
     -- ** AttachmentIdNotFound
-  , _AttachmentIdNotFound
+    , _AttachmentIdNotFound
+
     -- ** InternalServerError
-  , _InternalServerError
+    , _InternalServerError
+
     -- ** CaseCreationLimitExceeded
-  , _CaseCreationLimitExceeded
+    , _CaseCreationLimitExceeded
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
+
     -- ** RefreshTrustedAdvisorCheck
-  , module Network.AWS.Support.RefreshTrustedAdvisorCheck
+    , module Network.AWS.Support.RefreshTrustedAdvisorCheck
+
     -- ** DescribeCases (Paginated)
-  , module Network.AWS.Support.DescribeCases
+    , module Network.AWS.Support.DescribeCases
+
     -- ** DescribeTrustedAdvisorCheckRefreshStatuses
-  , module Network.AWS.Support.DescribeTrustedAdvisorCheckRefreshStatuses
+    , module Network.AWS.Support.DescribeTrustedAdvisorCheckRefreshStatuses
+
     -- ** DescribeTrustedAdvisorCheckSummaries
-  , module Network.AWS.Support.DescribeTrustedAdvisorCheckSummaries
+    , module Network.AWS.Support.DescribeTrustedAdvisorCheckSummaries
+
     -- ** CreateCase
-  , module Network.AWS.Support.CreateCase
+    , module Network.AWS.Support.CreateCase
+
     -- ** ResolveCase
-  , module Network.AWS.Support.ResolveCase
+    , module Network.AWS.Support.ResolveCase
+
     -- ** DescribeSeverityLevels
-  , module Network.AWS.Support.DescribeSeverityLevels
+    , module Network.AWS.Support.DescribeSeverityLevels
+
     -- ** DescribeTrustedAdvisorChecks
-  , module Network.AWS.Support.DescribeTrustedAdvisorChecks
+    , module Network.AWS.Support.DescribeTrustedAdvisorChecks
+
     -- ** DescribeAttachment
-  , module Network.AWS.Support.DescribeAttachment
+    , module Network.AWS.Support.DescribeAttachment
+
     -- ** AddAttachmentsToSet
-  , module Network.AWS.Support.AddAttachmentsToSet
+    , module Network.AWS.Support.AddAttachmentsToSet
+
     -- ** DescribeTrustedAdvisorCheckResult
-  , module Network.AWS.Support.DescribeTrustedAdvisorCheckResult
+    , module Network.AWS.Support.DescribeTrustedAdvisorCheckResult
+
     -- ** DescribeServices
-  , module Network.AWS.Support.DescribeServices
+    , module Network.AWS.Support.DescribeServices
+
     -- ** DescribeCommunications (Paginated)
-  , module Network.AWS.Support.DescribeCommunications
+    , module Network.AWS.Support.DescribeCommunications
+
     -- ** AddCommunicationToCase
-  , module Network.AWS.Support.AddCommunicationToCase
+    , module Network.AWS.Support.AddCommunicationToCase
+
     -- * Types
+
     -- ** Attachment
-  , Attachment
-  , attachment
-  , aData
-  , aFileName
+    , Attachment
+    , attachment
+    , aData
+    , aFileName
+
     -- ** AttachmentDetails
-  , AttachmentDetails
-  , attachmentDetails
-  , adAttachmentId
-  , adFileName
+    , AttachmentDetails
+    , attachmentDetails
+    , adAttachmentId
+    , adFileName
+
     -- ** CaseDetails
-  , CaseDetails
-  , caseDetails
-  , cdSubject
-  , cdStatus
-  , cdRecentCommunications
-  , cdSeverityCode
-  , cdCaseId
-  , cdCcEmailAddresses
-  , cdDisplayId
-  , cdSubmittedBy
-  , cdLanguage
-  , cdTimeCreated
-  , cdCategoryCode
-  , cdServiceCode
+    , CaseDetails
+    , caseDetails
+    , cdSubject
+    , cdStatus
+    , cdRecentCommunications
+    , cdSeverityCode
+    , cdCaseId
+    , cdCcEmailAddresses
+    , cdDisplayId
+    , cdSubmittedBy
+    , cdLanguage
+    , cdTimeCreated
+    , cdCategoryCode
+    , cdServiceCode
+
     -- ** Category
-  , Category
-  , category
-  , cName
-  , cCode
+    , Category
+    , category
+    , cName
+    , cCode
+
     -- ** Communication
-  , Communication
-  , communication
-  , cBody
-  , cCaseId
-  , cSubmittedBy
-  , cTimeCreated
-  , cAttachmentSet
+    , Communication
+    , communication
+    , cBody
+    , cCaseId
+    , cSubmittedBy
+    , cTimeCreated
+    , cAttachmentSet
+
     -- ** RecentCaseCommunications
-  , RecentCaseCommunications
-  , recentCaseCommunications
-  , rccNextToken
-  , rccCommunications
+    , RecentCaseCommunications
+    , recentCaseCommunications
+    , rccNextToken
+    , rccCommunications
+
     -- ** SeverityLevel
-  , SeverityLevel
-  , severityLevel
-  , slName
-  , slCode
+    , SeverityLevel
+    , severityLevel
+    , slName
+    , slCode
+
     -- ** SupportService
-  , SupportService
-  , supportService
-  , ssCategories
-  , ssName
-  , ssCode
+    , SupportService
+    , supportService
+    , ssCategories
+    , ssName
+    , ssCode
+
     -- ** TrustedAdvisorCategorySpecificSummary
-  , TrustedAdvisorCategorySpecificSummary
-  , trustedAdvisorCategorySpecificSummary
-  , tacssCostOptimizing
+    , TrustedAdvisorCategorySpecificSummary
+    , trustedAdvisorCategorySpecificSummary
+    , tacssCostOptimizing
+
     -- ** TrustedAdvisorCheckDescription
-  , TrustedAdvisorCheckDescription
-  , trustedAdvisorCheckDescription
-  , tacdId
-  , tacdName
-  , tacdDescription
-  , tacdCategory
-  , tacdMetadata
+    , TrustedAdvisorCheckDescription
+    , trustedAdvisorCheckDescription
+    , tacdId
+    , tacdName
+    , tacdDescription
+    , tacdCategory
+    , tacdMetadata
+
     -- ** TrustedAdvisorCheckRefreshStatus
-  , TrustedAdvisorCheckRefreshStatus
-  , trustedAdvisorCheckRefreshStatus
-  , tacrsCheckId
-  , tacrsStatus
-  , tacrsMillisUntilNextRefreshable
+    , TrustedAdvisorCheckRefreshStatus
+    , trustedAdvisorCheckRefreshStatus
+    , tacrsCheckId
+    , tacrsStatus
+    , tacrsMillisUntilNextRefreshable
+
     -- ** TrustedAdvisorCheckResult
-  , TrustedAdvisorCheckResult
-  , trustedAdvisorCheckResult
-  , tacrCheckId
-  , tacrTimestamp
-  , tacrStatus
-  , tacrResourcesSummary
-  , tacrCategorySpecificSummary
-  , tacrFlaggedResources
+    , TrustedAdvisorCheckResult
+    , trustedAdvisorCheckResult
+    , tacrCheckId
+    , tacrTimestamp
+    , tacrStatus
+    , tacrResourcesSummary
+    , tacrCategorySpecificSummary
+    , tacrFlaggedResources
+
     -- ** TrustedAdvisorCheckSummary
-  , TrustedAdvisorCheckSummary
-  , trustedAdvisorCheckSummary
-  , tacsHasFlaggedResources
-  , tacsCheckId
-  , tacsTimestamp
-  , tacsStatus
-  , tacsResourcesSummary
-  , tacsCategorySpecificSummary
+    , TrustedAdvisorCheckSummary
+    , trustedAdvisorCheckSummary
+    , tacsHasFlaggedResources
+    , tacsCheckId
+    , tacsTimestamp
+    , tacsStatus
+    , tacsResourcesSummary
+    , tacsCategorySpecificSummary
+
     -- ** TrustedAdvisorCostOptimizingSummary
-  , TrustedAdvisorCostOptimizingSummary
-  , trustedAdvisorCostOptimizingSummary
-  , tacosEstimatedMonthlySavings
-  , tacosEstimatedPercentMonthlySavings
+    , TrustedAdvisorCostOptimizingSummary
+    , trustedAdvisorCostOptimizingSummary
+    , tacosEstimatedMonthlySavings
+    , tacosEstimatedPercentMonthlySavings
+
     -- ** TrustedAdvisorResourceDetail
-  , TrustedAdvisorResourceDetail
-  , trustedAdvisorResourceDetail
-  , tardIsSuppressed
-  , tardRegion
-  , tardStatus
-  , tardResourceId
-  , tardMetadata
+    , TrustedAdvisorResourceDetail
+    , trustedAdvisorResourceDetail
+    , tardIsSuppressed
+    , tardRegion
+    , tardStatus
+    , tardResourceId
+    , tardMetadata
+
     -- ** TrustedAdvisorResourcesSummary
-  , TrustedAdvisorResourcesSummary
-  , trustedAdvisorResourcesSummary
-  , tarsResourcesProcessed
-  , tarsResourcesFlagged
-  , tarsResourcesIgnored
-  , tarsResourcesSuppressed
-  ) where
+    , TrustedAdvisorResourcesSummary
+    , trustedAdvisorResourcesSummary
+    , tarsResourcesProcessed
+    , tarsResourcesFlagged
+    , tarsResourcesIgnored
+    , tarsResourcesSuppressed
+    ) where
 
 import Network.AWS.Support.AddAttachmentsToSet
 import Network.AWS.Support.AddCommunicationToCase
@@ -228,12 +273,14 @@ import Network.AWS.Support.RefreshTrustedAdvisorCheck
 import Network.AWS.Support.ResolveCase
 import Network.AWS.Support.Types
 import Network.AWS.Support.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'Support'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -250,6 +297,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

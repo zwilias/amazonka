@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.MarketplaceEntitlement
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -23,51 +24,65 @@
 --
 --
 module Network.AWS.MarketplaceEntitlement
+    (
     -- * Service Configuration
-  ( marketplaceEntitlement
+      marketplaceEntitlement
+
     -- * Errors
     -- $errors
+
     -- ** InvalidParameterException
-  , _InvalidParameterException
+    , _InvalidParameterException
+
     -- ** ThrottlingException
-  , _ThrottlingException
+    , _ThrottlingException
+
     -- ** InternalServiceErrorException
-  , _InternalServiceErrorException
+    , _InternalServiceErrorException
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
+
     -- ** GetEntitlements
-  , module Network.AWS.MarketplaceEntitlement.GetEntitlements
+    , module Network.AWS.MarketplaceEntitlement.GetEntitlements
+
     -- * Types
+
     -- ** GetEntitlementFilterName
-  , GetEntitlementFilterName(..)
+    , GetEntitlementFilterName (..)
+
     -- ** Entitlement
-  , Entitlement
-  , entitlement
-  , eDimension
-  , eValue
-  , eExpirationDate
-  , eCustomerIdentifier
-  , eProductCode
+    , Entitlement
+    , entitlement
+    , eDimension
+    , eValue
+    , eExpirationDate
+    , eCustomerIdentifier
+    , eProductCode
+
     -- ** EntitlementValue
-  , EntitlementValue
-  , entitlementValue
-  , evIntegerValue
-  , evDoubleValue
-  , evStringValue
-  , evBooleanValue
-  ) where
+    , EntitlementValue
+    , entitlementValue
+    , evIntegerValue
+    , evDoubleValue
+    , evStringValue
+    , evBooleanValue
+    ) where
 
 import Network.AWS.MarketplaceEntitlement.GetEntitlements
 import Network.AWS.MarketplaceEntitlement.Types
 import Network.AWS.MarketplaceEntitlement.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'MarketplaceEntitlement'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -84,6 +99,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

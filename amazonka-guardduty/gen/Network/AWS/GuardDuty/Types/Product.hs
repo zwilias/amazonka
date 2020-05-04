@@ -2,9 +2,11 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.GuardDuty.Types.Product
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -32,6 +34,7 @@ data AWSAPICallAction =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AWSAPICallAction' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -45,7 +48,8 @@ data AWSAPICallAction =
 -- * 'aacaServiceName' - AWS service name whose API was invoked.
 --
 -- * 'aacaAPI' - AWS API name.
-awsAPICallAction :: AWSAPICallAction
+awsAPICallAction
+    :: AWSAPICallAction
 awsAPICallAction =
   AWSAPICallAction'
     { _aacaRemoteIPDetails = Nothing
@@ -55,41 +59,40 @@ awsAPICallAction =
     , _aacaAPI = Nothing
     }
 
+
 -- | Remote IP information of the connection.
 aacaRemoteIPDetails :: Lens' AWSAPICallAction (Maybe RemoteIPDetails)
-aacaRemoteIPDetails =
-  lens _aacaRemoteIPDetails (\s a -> s {_aacaRemoteIPDetails = a})
+aacaRemoteIPDetails = lens _aacaRemoteIPDetails (\ s a -> s{_aacaRemoteIPDetails = a})
 
 -- | AWS API caller type.
 aacaCallerType :: Lens' AWSAPICallAction (Maybe Text)
-aacaCallerType = lens _aacaCallerType (\s a -> s {_aacaCallerType = a})
+aacaCallerType = lens _aacaCallerType (\ s a -> s{_aacaCallerType = a})
 
 -- | Domain information for the AWS API call.
 aacaDomainDetails :: Lens' AWSAPICallAction (Maybe DomainDetails)
-aacaDomainDetails = lens _aacaDomainDetails (\s a -> s {_aacaDomainDetails = a})
+aacaDomainDetails = lens _aacaDomainDetails (\ s a -> s{_aacaDomainDetails = a})
 
 -- | AWS service name whose API was invoked.
 aacaServiceName :: Lens' AWSAPICallAction (Maybe Text)
-aacaServiceName = lens _aacaServiceName (\s a -> s {_aacaServiceName = a})
+aacaServiceName = lens _aacaServiceName (\ s a -> s{_aacaServiceName = a})
 
 -- | AWS API name.
 aacaAPI :: Lens' AWSAPICallAction (Maybe Text)
-aacaAPI = lens _aacaAPI (\s a -> s {_aacaAPI = a})
+aacaAPI = lens _aacaAPI (\ s a -> s{_aacaAPI = a})
 
 instance FromJSON AWSAPICallAction where
-  parseJSON =
-    withObject
-      "AWSAPICallAction"
-      (\x ->
-         AWSAPICallAction' <$> (x .:? "remoteIpDetails") <*>
-         (x .:? "callerType") <*>
-         (x .:? "domainDetails") <*>
-         (x .:? "serviceName") <*>
-         (x .:? "api"))
+        parseJSON
+          = withObject "AWSAPICallAction"
+              (\ x ->
+                 AWSAPICallAction' <$>
+                   (x .:? "remoteIpDetails") <*> (x .:? "callerType")
+                     <*> (x .:? "domainDetails")
+                     <*> (x .:? "serviceName")
+                     <*> (x .:? "api"))
 
-instance Hashable AWSAPICallAction
+instance Hashable AWSAPICallAction where
 
-instance NFData AWSAPICallAction
+instance NFData AWSAPICallAction where
 
 -- | The IAM access key details (IAM user information) of a user that engaged in the activity that prompted GuardDuty to generate a finding.
 --
@@ -103,6 +106,7 @@ data AccessKeyDetails =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AccessKeyDetails' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -114,7 +118,8 @@ data AccessKeyDetails =
 -- * 'akdAccessKeyId' - Access key ID of the user.
 --
 -- * 'akdUserType' - The type of the user.
-accessKeyDetails :: AccessKeyDetails
+accessKeyDetails
+    :: AccessKeyDetails
 accessKeyDetails =
   AccessKeyDetails'
     { _akdPrincipalId = Nothing
@@ -123,34 +128,35 @@ accessKeyDetails =
     , _akdUserType = Nothing
     }
 
+
 -- | The principal ID of the user.
 akdPrincipalId :: Lens' AccessKeyDetails (Maybe Text)
-akdPrincipalId = lens _akdPrincipalId (\s a -> s {_akdPrincipalId = a})
+akdPrincipalId = lens _akdPrincipalId (\ s a -> s{_akdPrincipalId = a})
 
 -- | The name of the user.
 akdUserName :: Lens' AccessKeyDetails (Maybe Text)
-akdUserName = lens _akdUserName (\s a -> s {_akdUserName = a})
+akdUserName = lens _akdUserName (\ s a -> s{_akdUserName = a})
 
 -- | Access key ID of the user.
 akdAccessKeyId :: Lens' AccessKeyDetails (Maybe Text)
-akdAccessKeyId = lens _akdAccessKeyId (\s a -> s {_akdAccessKeyId = a})
+akdAccessKeyId = lens _akdAccessKeyId (\ s a -> s{_akdAccessKeyId = a})
 
 -- | The type of the user.
 akdUserType :: Lens' AccessKeyDetails (Maybe Text)
-akdUserType = lens _akdUserType (\s a -> s {_akdUserType = a})
+akdUserType = lens _akdUserType (\ s a -> s{_akdUserType = a})
 
 instance FromJSON AccessKeyDetails where
-  parseJSON =
-    withObject
-      "AccessKeyDetails"
-      (\x ->
-         AccessKeyDetails' <$> (x .:? "principalId") <*> (x .:? "userName") <*>
-         (x .:? "accessKeyId") <*>
-         (x .:? "userType"))
+        parseJSON
+          = withObject "AccessKeyDetails"
+              (\ x ->
+                 AccessKeyDetails' <$>
+                   (x .:? "principalId") <*> (x .:? "userName") <*>
+                     (x .:? "accessKeyId")
+                     <*> (x .:? "userType"))
 
-instance Hashable AccessKeyDetails
+instance Hashable AccessKeyDetails where
 
-instance NFData AccessKeyDetails
+instance NFData AccessKeyDetails where
 
 -- | An object containing the member's accountId and email address.
 --
@@ -162,6 +168,7 @@ data AccountDetail =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AccountDetail' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -169,30 +176,32 @@ data AccountDetail =
 -- * 'adEmail' - Member account's email address.
 --
 -- * 'adAccountId' - Member account ID.
-accountDetail ::
-     Text -- ^ 'adEmail'
-  -> Text -- ^ 'adAccountId'
-  -> AccountDetail
+accountDetail
+    :: Text -- ^ 'adEmail'
+    -> Text -- ^ 'adAccountId'
+    -> AccountDetail
 accountDetail pEmail_ pAccountId_ =
   AccountDetail' {_adEmail = pEmail_, _adAccountId = pAccountId_}
 
+
 -- | Member account's email address.
 adEmail :: Lens' AccountDetail Text
-adEmail = lens _adEmail (\s a -> s {_adEmail = a})
+adEmail = lens _adEmail (\ s a -> s{_adEmail = a})
 
 -- | Member account ID.
 adAccountId :: Lens' AccountDetail Text
-adAccountId = lens _adAccountId (\s a -> s {_adAccountId = a})
+adAccountId = lens _adAccountId (\ s a -> s{_adAccountId = a})
 
-instance Hashable AccountDetail
+instance Hashable AccountDetail where
 
-instance NFData AccountDetail
+instance NFData AccountDetail where
 
 instance ToJSON AccountDetail where
-  toJSON AccountDetail' {..} =
-    object
-      (catMaybes
-         [Just ("email" .= _adEmail), Just ("accountId" .= _adAccountId)])
+        toJSON AccountDetail'{..}
+          = object
+              (catMaybes
+                 [Just ("email" .= _adEmail),
+                  Just ("accountId" .= _adAccountId)])
 
 -- | Information about the activity described in a finding.
 --
@@ -207,6 +216,7 @@ data Action =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Action' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -220,7 +230,8 @@ data Action =
 -- * 'aDNSRequestAction' - Information about the DNS_REQUEST action described in this finding.
 --
 -- * 'aAWSAPICallAction' - Information about the AWS_API_CALL action described in this finding.
-action :: Action
+action
+    :: Action
 action =
   Action'
     { _aNetworkConnectionAction = Nothing
@@ -230,41 +241,41 @@ action =
     , _aAWSAPICallAction = Nothing
     }
 
+
 -- | Information about the NETWORK_CONNECTION action described in this finding.
 aNetworkConnectionAction :: Lens' Action (Maybe NetworkConnectionAction)
-aNetworkConnectionAction =
-  lens _aNetworkConnectionAction (\s a -> s {_aNetworkConnectionAction = a})
+aNetworkConnectionAction = lens _aNetworkConnectionAction (\ s a -> s{_aNetworkConnectionAction = a})
 
 -- | Information about the PORT_PROBE action described in this finding.
 aPortProbeAction :: Lens' Action (Maybe PortProbeAction)
-aPortProbeAction = lens _aPortProbeAction (\s a -> s {_aPortProbeAction = a})
+aPortProbeAction = lens _aPortProbeAction (\ s a -> s{_aPortProbeAction = a})
 
 -- | GuardDuty Finding activity type.
 aActionType :: Lens' Action (Maybe Text)
-aActionType = lens _aActionType (\s a -> s {_aActionType = a})
+aActionType = lens _aActionType (\ s a -> s{_aActionType = a})
 
 -- | Information about the DNS_REQUEST action described in this finding.
 aDNSRequestAction :: Lens' Action (Maybe DNSRequestAction)
-aDNSRequestAction = lens _aDNSRequestAction (\s a -> s {_aDNSRequestAction = a})
+aDNSRequestAction = lens _aDNSRequestAction (\ s a -> s{_aDNSRequestAction = a})
 
 -- | Information about the AWS_API_CALL action described in this finding.
 aAWSAPICallAction :: Lens' Action (Maybe AWSAPICallAction)
-aAWSAPICallAction = lens _aAWSAPICallAction (\s a -> s {_aAWSAPICallAction = a})
+aAWSAPICallAction = lens _aAWSAPICallAction (\ s a -> s{_aAWSAPICallAction = a})
 
 instance FromJSON Action where
-  parseJSON =
-    withObject
-      "Action"
-      (\x ->
-         Action' <$> (x .:? "networkConnectionAction") <*>
-         (x .:? "portProbeAction") <*>
-         (x .:? "actionType") <*>
-         (x .:? "dnsRequestAction") <*>
-         (x .:? "awsApiCallAction"))
+        parseJSON
+          = withObject "Action"
+              (\ x ->
+                 Action' <$>
+                   (x .:? "networkConnectionAction") <*>
+                     (x .:? "portProbeAction")
+                     <*> (x .:? "actionType")
+                     <*> (x .:? "dnsRequestAction")
+                     <*> (x .:? "awsApiCallAction"))
 
-instance Hashable Action
+instance Hashable Action where
 
-instance NFData Action
+instance NFData Action where
 
 -- | City information of the remote IP address.
 --
@@ -275,24 +286,29 @@ newtype City =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'City' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'cCityName' - City name of the remote IP address.
-city :: City
+city
+    :: City
 city = City' {_cCityName = Nothing}
+
 
 -- | City name of the remote IP address.
 cCityName :: Lens' City (Maybe Text)
-cCityName = lens _cCityName (\s a -> s {_cCityName = a})
+cCityName = lens _cCityName (\ s a -> s{_cCityName = a})
 
 instance FromJSON City where
-  parseJSON = withObject "City" (\x -> City' <$> (x .:? "cityName"))
+        parseJSON
+          = withObject "City"
+              (\ x -> City' <$> (x .:? "cityName"))
 
-instance Hashable City
+instance Hashable City where
 
-instance NFData City
+instance NFData City where
 
 -- | Finding attribute (for example, accountId) for which conditions and values must be specified when querying findings.
 --
@@ -307,6 +323,7 @@ data Condition =
     , _cGte :: !(Maybe Int)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'Condition' with the minimum fields required to make a request.
 --
@@ -323,7 +340,8 @@ data Condition =
 -- * 'cLT' - Represents the less than condition to be applied to a single field when querying for findings.
 --
 -- * 'cGte' - Represents the greater than equal condition to be applied to a single field when querying for findings.
-condition :: Condition
+condition
+    :: Condition
 condition =
   Condition'
     { _cEQ = Nothing
@@ -334,56 +352,53 @@ condition =
     , _cGte = Nothing
     }
 
+
 -- | Represents the equal condition to be applied to a single field when querying for findings.
 cEQ :: Lens' Condition [Text]
-cEQ = lens _cEQ (\s a -> s {_cEQ = a}) . _Default . _Coerce
+cEQ = lens _cEQ (\ s a -> s{_cEQ = a}) . _Default . _Coerce
 
 -- | Represents the less than equal condition to be applied to a single field when querying for findings.
 cLte :: Lens' Condition (Maybe Int)
-cLte = lens _cLte (\s a -> s {_cLte = a})
+cLte = lens _cLte (\ s a -> s{_cLte = a})
 
 -- | Represents the greater than condition to be applied to a single field when querying for findings.
 cGT :: Lens' Condition (Maybe Int)
-cGT = lens _cGT (\s a -> s {_cGT = a})
+cGT = lens _cGT (\ s a -> s{_cGT = a})
 
 -- | Represents the not equal condition to be applied to a single field when querying for findings.
 cNeq :: Lens' Condition [Text]
-cNeq = lens _cNeq (\s a -> s {_cNeq = a}) . _Default . _Coerce
+cNeq = lens _cNeq (\ s a -> s{_cNeq = a}) . _Default . _Coerce
 
 -- | Represents the less than condition to be applied to a single field when querying for findings.
 cLT :: Lens' Condition (Maybe Int)
-cLT = lens _cLT (\s a -> s {_cLT = a})
+cLT = lens _cLT (\ s a -> s{_cLT = a})
 
 -- | Represents the greater than equal condition to be applied to a single field when querying for findings.
 cGte :: Lens' Condition (Maybe Int)
-cGte = lens _cGte (\s a -> s {_cGte = a})
+cGte = lens _cGte (\ s a -> s{_cGte = a})
 
 instance FromJSON Condition where
-  parseJSON =
-    withObject
-      "Condition"
-      (\x ->
-         Condition' <$> (x .:? "eq" .!= mempty) <*> (x .:? "lte") <*>
-         (x .:? "gt") <*>
-         (x .:? "neq" .!= mempty) <*>
-         (x .:? "lt") <*>
-         (x .:? "gte"))
+        parseJSON
+          = withObject "Condition"
+              (\ x ->
+                 Condition' <$>
+                   (x .:? "eq" .!= mempty) <*> (x .:? "lte") <*>
+                     (x .:? "gt")
+                     <*> (x .:? "neq" .!= mempty)
+                     <*> (x .:? "lt")
+                     <*> (x .:? "gte"))
 
-instance Hashable Condition
+instance Hashable Condition where
 
-instance NFData Condition
+instance NFData Condition where
 
 instance ToJSON Condition where
-  toJSON Condition' {..} =
-    object
-      (catMaybes
-         [ ("eq" .=) <$> _cEQ
-         , ("lte" .=) <$> _cLte
-         , ("gt" .=) <$> _cGT
-         , ("neq" .=) <$> _cNeq
-         , ("lt" .=) <$> _cLT
-         , ("gte" .=) <$> _cGte
-         ])
+        toJSON Condition'{..}
+          = object
+              (catMaybes
+                 [("eq" .=) <$> _cEQ, ("lte" .=) <$> _cLte,
+                  ("gt" .=) <$> _cGT, ("neq" .=) <$> _cNeq,
+                  ("lt" .=) <$> _cLT, ("gte" .=) <$> _cGte])
 
 -- | Country information of the remote IP address.
 --
@@ -395,6 +410,7 @@ data Country =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Country' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -402,26 +418,29 @@ data Country =
 -- * 'cCountryName' - Country name of the remote IP address.
 --
 -- * 'cCountryCode' - Country code of the remote IP address.
-country :: Country
+country
+    :: Country
 country = Country' {_cCountryName = Nothing, _cCountryCode = Nothing}
+
 
 -- | Country name of the remote IP address.
 cCountryName :: Lens' Country (Maybe Text)
-cCountryName = lens _cCountryName (\s a -> s {_cCountryName = a})
+cCountryName = lens _cCountryName (\ s a -> s{_cCountryName = a})
 
 -- | Country code of the remote IP address.
 cCountryCode :: Lens' Country (Maybe Text)
-cCountryCode = lens _cCountryCode (\s a -> s {_cCountryCode = a})
+cCountryCode = lens _cCountryCode (\ s a -> s{_cCountryCode = a})
 
 instance FromJSON Country where
-  parseJSON =
-    withObject
-      "Country"
-      (\x -> Country' <$> (x .:? "countryName") <*> (x .:? "countryCode"))
+        parseJSON
+          = withObject "Country"
+              (\ x ->
+                 Country' <$>
+                   (x .:? "countryName") <*> (x .:? "countryCode"))
 
-instance Hashable Country
+instance Hashable Country where
 
-instance NFData Country
+instance NFData Country where
 
 -- | Information about the DNS_REQUEST action described in this finding.
 --
@@ -432,25 +451,29 @@ newtype DNSRequestAction =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DNSRequestAction' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'draDomain' - Domain information for the DNS request.
-dnsRequestAction :: DNSRequestAction
+dnsRequestAction
+    :: DNSRequestAction
 dnsRequestAction = DNSRequestAction' {_draDomain = Nothing}
+
 
 -- | Domain information for the DNS request.
 draDomain :: Lens' DNSRequestAction (Maybe Text)
-draDomain = lens _draDomain (\s a -> s {_draDomain = a})
+draDomain = lens _draDomain (\ s a -> s{_draDomain = a})
 
 instance FromJSON DNSRequestAction where
-  parseJSON =
-    withObject "DNSRequestAction" (\x -> DNSRequestAction' <$> (x .:? "domain"))
+        parseJSON
+          = withObject "DNSRequestAction"
+              (\ x -> DNSRequestAction' <$> (x .:? "domain"))
 
-instance Hashable DNSRequestAction
+instance Hashable DNSRequestAction where
 
-instance NFData DNSRequestAction
+instance NFData DNSRequestAction where
 
 -- | Domain information for the AWS API call.
 --
@@ -459,17 +482,22 @@ data DomainDetails =
   DomainDetails'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DomainDetails' with the minimum fields required to make a request.
 --
-domainDetails :: DomainDetails
+domainDetails
+    :: DomainDetails
 domainDetails = DomainDetails'
 
+
 instance FromJSON DomainDetails where
-  parseJSON = withObject "DomainDetails" (\x -> pure DomainDetails')
+        parseJSON
+          = withObject "DomainDetails"
+              (\ x -> pure DomainDetails')
 
-instance Hashable DomainDetails
+instance Hashable DomainDetails where
 
-instance NFData DomainDetails
+instance NFData DomainDetails where
 
 -- | Representation of a abnormal or suspicious activity.
 --
@@ -493,6 +521,7 @@ data Finding =
     , _fARN           :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'Finding' with the minimum fields required to make a request.
 --
@@ -527,18 +556,18 @@ data Finding =
 -- * 'fId' - The identifier that corresponds to a finding described by the action.
 --
 -- * 'fARN' - The ARN of a finding described by the action.
-finding ::
-     Text -- ^ 'fAccountId'
-  -> Text -- ^ 'fSchemaVersion'
-  -> Text -- ^ 'fCreatedAt'
-  -> Resource -- ^ 'fResource'
-  -> Double -- ^ 'fSeverity'
-  -> Text -- ^ 'fUpdatedAt'
-  -> Text -- ^ 'fType'
-  -> Text -- ^ 'fRegion'
-  -> Text -- ^ 'fId'
-  -> Text -- ^ 'fARN'
-  -> Finding
+finding
+    :: Text -- ^ 'fAccountId'
+    -> Text -- ^ 'fSchemaVersion'
+    -> Text -- ^ 'fCreatedAt'
+    -> Resource -- ^ 'fResource'
+    -> Double -- ^ 'fSeverity'
+    -> Text -- ^ 'fUpdatedAt'
+    -> Text -- ^ 'fType'
+    -> Text -- ^ 'fRegion'
+    -> Text -- ^ 'fId'
+    -> Text -- ^ 'fARN'
+    -> Finding
 finding pAccountId_ pSchemaVersion_ pCreatedAt_ pResource_ pSeverity_ pUpdatedAt_ pType_ pRegion_ pId_ pARN_ =
   Finding'
     { _fService = Nothing
@@ -558,89 +587,90 @@ finding pAccountId_ pSchemaVersion_ pCreatedAt_ pResource_ pSeverity_ pUpdatedAt
     , _fARN = pARN_
     }
 
+
 -- | Additional information assigned to the generated finding by GuardDuty.
 fService :: Lens' Finding (Maybe ServiceInfo)
-fService = lens _fService (\s a -> s {_fService = a})
+fService = lens _fService (\ s a -> s{_fService = a})
 
 -- | The confidence level of a finding.
 fConfidence :: Lens' Finding (Maybe Double)
-fConfidence = lens _fConfidence (\s a -> s {_fConfidence = a})
+fConfidence = lens _fConfidence (\ s a -> s{_fConfidence = a})
 
 -- | The AWS resource partition.
 fPartition :: Lens' Finding (Maybe Text)
-fPartition = lens _fPartition (\s a -> s {_fPartition = a})
+fPartition = lens _fPartition (\ s a -> s{_fPartition = a})
 
 -- | The title of a finding.
 fTitle :: Lens' Finding (Maybe Text)
-fTitle = lens _fTitle (\s a -> s {_fTitle = a})
+fTitle = lens _fTitle (\ s a -> s{_fTitle = a})
 
 -- | The description of a finding.
 fDescription :: Lens' Finding (Maybe Text)
-fDescription = lens _fDescription (\s a -> s {_fDescription = a})
+fDescription = lens _fDescription (\ s a -> s{_fDescription = a})
 
 -- | AWS account ID where the activity occurred that prompted GuardDuty to generate a finding.
 fAccountId :: Lens' Finding Text
-fAccountId = lens _fAccountId (\s a -> s {_fAccountId = a})
+fAccountId = lens _fAccountId (\ s a -> s{_fAccountId = a})
 
 -- | Findings' schema version.
 fSchemaVersion :: Lens' Finding Text
-fSchemaVersion = lens _fSchemaVersion (\s a -> s {_fSchemaVersion = a})
+fSchemaVersion = lens _fSchemaVersion (\ s a -> s{_fSchemaVersion = a})
 
 -- | The time stamp at which a finding was generated.
 fCreatedAt :: Lens' Finding Text
-fCreatedAt = lens _fCreatedAt (\s a -> s {_fCreatedAt = a})
+fCreatedAt = lens _fCreatedAt (\ s a -> s{_fCreatedAt = a})
 
 -- | The AWS resource associated with the activity that prompted GuardDuty to generate a finding.
 fResource :: Lens' Finding Resource
-fResource = lens _fResource (\s a -> s {_fResource = a})
+fResource = lens _fResource (\ s a -> s{_fResource = a})
 
 -- | The severity of a finding.
 fSeverity :: Lens' Finding Double
-fSeverity = lens _fSeverity (\s a -> s {_fSeverity = a})
+fSeverity = lens _fSeverity (\ s a -> s{_fSeverity = a})
 
 -- | The time stamp at which a finding was last updated.
 fUpdatedAt :: Lens' Finding Text
-fUpdatedAt = lens _fUpdatedAt (\s a -> s {_fUpdatedAt = a})
+fUpdatedAt = lens _fUpdatedAt (\ s a -> s{_fUpdatedAt = a})
 
 -- | The type of a finding described by the action.
 fType :: Lens' Finding Text
-fType = lens _fType (\s a -> s {_fType = a})
+fType = lens _fType (\ s a -> s{_fType = a})
 
 -- | The AWS region where the activity occurred that prompted GuardDuty to generate a finding.
 fRegion :: Lens' Finding Text
-fRegion = lens _fRegion (\s a -> s {_fRegion = a})
+fRegion = lens _fRegion (\ s a -> s{_fRegion = a})
 
 -- | The identifier that corresponds to a finding described by the action.
 fId :: Lens' Finding Text
-fId = lens _fId (\s a -> s {_fId = a})
+fId = lens _fId (\ s a -> s{_fId = a})
 
 -- | The ARN of a finding described by the action.
 fARN :: Lens' Finding Text
-fARN = lens _fARN (\s a -> s {_fARN = a})
+fARN = lens _fARN (\ s a -> s{_fARN = a})
 
 instance FromJSON Finding where
-  parseJSON =
-    withObject
-      "Finding"
-      (\x ->
-         Finding' <$> (x .:? "service") <*> (x .:? "confidence") <*>
-         (x .:? "partition") <*>
-         (x .:? "title") <*>
-         (x .:? "description") <*>
-         (x .: "accountId") <*>
-         (x .: "schemaVersion") <*>
-         (x .: "createdAt") <*>
-         (x .: "resource") <*>
-         (x .: "severity") <*>
-         (x .: "updatedAt") <*>
-         (x .: "type") <*>
-         (x .: "region") <*>
-         (x .: "id") <*>
-         (x .: "arn"))
+        parseJSON
+          = withObject "Finding"
+              (\ x ->
+                 Finding' <$>
+                   (x .:? "service") <*> (x .:? "confidence") <*>
+                     (x .:? "partition")
+                     <*> (x .:? "title")
+                     <*> (x .:? "description")
+                     <*> (x .: "accountId")
+                     <*> (x .: "schemaVersion")
+                     <*> (x .: "createdAt")
+                     <*> (x .: "resource")
+                     <*> (x .: "severity")
+                     <*> (x .: "updatedAt")
+                     <*> (x .: "type")
+                     <*> (x .: "region")
+                     <*> (x .: "id")
+                     <*> (x .: "arn"))
 
-instance Hashable Finding
+instance Hashable Finding where
 
-instance NFData Finding
+instance NFData Finding where
 
 -- | Represents the criteria used for querying findings.
 --
@@ -651,31 +681,35 @@ newtype FindingCriteria =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'FindingCriteria' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'fcCriterion' - Represents a map of finding properties that match specified conditions and values when querying findings.
-findingCriteria :: FindingCriteria
+findingCriteria
+    :: FindingCriteria
 findingCriteria = FindingCriteria' {_fcCriterion = Nothing}
+
 
 -- | Represents a map of finding properties that match specified conditions and values when querying findings.
 fcCriterion :: Lens' FindingCriteria (HashMap Text Condition)
-fcCriterion = lens _fcCriterion (\s a -> s {_fcCriterion = a}) . _Default . _Map
+fcCriterion = lens _fcCriterion (\ s a -> s{_fcCriterion = a}) . _Default . _Map
 
 instance FromJSON FindingCriteria where
-  parseJSON =
-    withObject
-      "FindingCriteria"
-      (\x -> FindingCriteria' <$> (x .:? "criterion" .!= mempty))
+        parseJSON
+          = withObject "FindingCriteria"
+              (\ x ->
+                 FindingCriteria' <$> (x .:? "criterion" .!= mempty))
 
-instance Hashable FindingCriteria
+instance Hashable FindingCriteria where
 
-instance NFData FindingCriteria
+instance NFData FindingCriteria where
 
 instance ToJSON FindingCriteria where
-  toJSON FindingCriteria' {..} =
-    object (catMaybes [("criterion" .=) <$> _fcCriterion])
+        toJSON FindingCriteria'{..}
+          = object
+              (catMaybes [("criterion" .=) <$> _fcCriterion])
 
 -- | Finding statistics object.
 --
@@ -686,28 +720,31 @@ newtype FindingStatistics =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'FindingStatistics' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'fsCountBySeverity' - Represents a map of severity to count statistic for a set of findings
-findingStatistics :: FindingStatistics
+findingStatistics
+    :: FindingStatistics
 findingStatistics = FindingStatistics' {_fsCountBySeverity = Nothing}
+
 
 -- | Represents a map of severity to count statistic for a set of findings
 fsCountBySeverity :: Lens' FindingStatistics (HashMap Text Int)
-fsCountBySeverity =
-  lens _fsCountBySeverity (\s a -> s {_fsCountBySeverity = a}) . _Default . _Map
+fsCountBySeverity = lens _fsCountBySeverity (\ s a -> s{_fsCountBySeverity = a}) . _Default . _Map
 
 instance FromJSON FindingStatistics where
-  parseJSON =
-    withObject
-      "FindingStatistics"
-      (\x -> FindingStatistics' <$> (x .:? "countBySeverity" .!= mempty))
+        parseJSON
+          = withObject "FindingStatistics"
+              (\ x ->
+                 FindingStatistics' <$>
+                   (x .:? "countBySeverity" .!= mempty))
 
-instance Hashable FindingStatistics
+instance Hashable FindingStatistics where
 
-instance NFData FindingStatistics
+instance NFData FindingStatistics where
 
 -- | Location information of the remote IP address.
 --
@@ -719,6 +756,7 @@ data GeoLocation =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GeoLocation' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -726,26 +764,28 @@ data GeoLocation =
 -- * 'glLat' - Latitude information of remote IP address.
 --
 -- * 'glLon' - Longitude information of remote IP address.
-geoLocation :: GeoLocation
+geoLocation
+    :: GeoLocation
 geoLocation = GeoLocation' {_glLat = Nothing, _glLon = Nothing}
+
 
 -- | Latitude information of remote IP address.
 glLat :: Lens' GeoLocation (Maybe Double)
-glLat = lens _glLat (\s a -> s {_glLat = a})
+glLat = lens _glLat (\ s a -> s{_glLat = a})
 
 -- | Longitude information of remote IP address.
 glLon :: Lens' GeoLocation (Maybe Double)
-glLon = lens _glLon (\s a -> s {_glLon = a})
+glLon = lens _glLon (\ s a -> s{_glLon = a})
 
 instance FromJSON GeoLocation where
-  parseJSON =
-    withObject
-      "GeoLocation"
-      (\x -> GeoLocation' <$> (x .:? "lat") <*> (x .:? "lon"))
+        parseJSON
+          = withObject "GeoLocation"
+              (\ x ->
+                 GeoLocation' <$> (x .:? "lat") <*> (x .:? "lon"))
 
-instance Hashable GeoLocation
+instance Hashable GeoLocation where
 
-instance NFData GeoLocation
+instance NFData GeoLocation where
 
 -- | The profile information of the EC2 instance.
 --
@@ -757,6 +797,7 @@ data IAMInstanceProfile =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'IAMInstanceProfile' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -764,26 +805,29 @@ data IAMInstanceProfile =
 -- * 'iapARN' - AWS EC2 instance profile ARN.
 --
 -- * 'iapId' - AWS EC2 instance profile ID.
-iamInstanceProfile :: IAMInstanceProfile
+iamInstanceProfile
+    :: IAMInstanceProfile
 iamInstanceProfile = IAMInstanceProfile' {_iapARN = Nothing, _iapId = Nothing}
+
 
 -- | AWS EC2 instance profile ARN.
 iapARN :: Lens' IAMInstanceProfile (Maybe Text)
-iapARN = lens _iapARN (\s a -> s {_iapARN = a})
+iapARN = lens _iapARN (\ s a -> s{_iapARN = a})
 
 -- | AWS EC2 instance profile ID.
 iapId :: Lens' IAMInstanceProfile (Maybe Text)
-iapId = lens _iapId (\s a -> s {_iapId = a})
+iapId = lens _iapId (\ s a -> s{_iapId = a})
 
 instance FromJSON IAMInstanceProfile where
-  parseJSON =
-    withObject
-      "IAMInstanceProfile"
-      (\x -> IAMInstanceProfile' <$> (x .:? "arn") <*> (x .:? "id"))
+        parseJSON
+          = withObject "IAMInstanceProfile"
+              (\ x ->
+                 IAMInstanceProfile' <$>
+                   (x .:? "arn") <*> (x .:? "id"))
 
-instance Hashable IAMInstanceProfile
+instance Hashable IAMInstanceProfile where
 
-instance NFData IAMInstanceProfile
+instance NFData IAMInstanceProfile where
 
 -- | The information about the EC2 instance associated with the activity that prompted GuardDuty to generate a finding.
 --
@@ -804,6 +848,7 @@ data InstanceDetails =
     , _idImageDescription   :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'InstanceDetails' with the minimum fields required to make a request.
 --
@@ -832,7 +877,8 @@ data InstanceDetails =
 -- * 'idTags' - The tags of the EC2 instance.
 --
 -- * 'idImageDescription' - The image description of the EC2 instance.
-instanceDetails :: InstanceDetails
+instanceDetails
+    :: InstanceDetails
 instanceDetails =
   InstanceDetails'
     { _idInstanceId = Nothing
@@ -849,80 +895,75 @@ instanceDetails =
     , _idImageDescription = Nothing
     }
 
+
 -- | The ID of the EC2 instance.
 idInstanceId :: Lens' InstanceDetails (Maybe Text)
-idInstanceId = lens _idInstanceId (\s a -> s {_idInstanceId = a})
+idInstanceId = lens _idInstanceId (\ s a -> s{_idInstanceId = a})
 
 -- | The platform of the EC2 instance.
 idPlatform :: Lens' InstanceDetails (Maybe Text)
-idPlatform = lens _idPlatform (\s a -> s {_idPlatform = a})
+idPlatform = lens _idPlatform (\ s a -> s{_idPlatform = a})
 
 -- | The launch time of the EC2 instance.
 idLaunchTime :: Lens' InstanceDetails (Maybe Text)
-idLaunchTime = lens _idLaunchTime (\s a -> s {_idLaunchTime = a})
+idLaunchTime = lens _idLaunchTime (\ s a -> s{_idLaunchTime = a})
 
 -- | The network interface information of the EC2 instance.
 idNetworkInterfaces :: Lens' InstanceDetails [NetworkInterface]
-idNetworkInterfaces =
-  lens _idNetworkInterfaces (\s a -> s {_idNetworkInterfaces = a}) .
-  _Default . _Coerce
+idNetworkInterfaces = lens _idNetworkInterfaces (\ s a -> s{_idNetworkInterfaces = a}) . _Default . _Coerce
 
 -- | The type of the EC2 instance.
 idInstanceType :: Lens' InstanceDetails (Maybe Text)
-idInstanceType = lens _idInstanceType (\s a -> s {_idInstanceType = a})
+idInstanceType = lens _idInstanceType (\ s a -> s{_idInstanceType = a})
 
 -- | The availability zone of the EC2 instance.
 idAvailabilityZone :: Lens' InstanceDetails (Maybe Text)
-idAvailabilityZone =
-  lens _idAvailabilityZone (\s a -> s {_idAvailabilityZone = a})
+idAvailabilityZone = lens _idAvailabilityZone (\ s a -> s{_idAvailabilityZone = a})
 
 -- | Undocumented member.
 idIAMInstanceProfile :: Lens' InstanceDetails (Maybe IAMInstanceProfile)
-idIAMInstanceProfile =
-  lens _idIAMInstanceProfile (\s a -> s {_idIAMInstanceProfile = a})
+idIAMInstanceProfile = lens _idIAMInstanceProfile (\ s a -> s{_idIAMInstanceProfile = a})
 
 -- | The image ID of the EC2 instance.
 idImageId :: Lens' InstanceDetails (Maybe Text)
-idImageId = lens _idImageId (\s a -> s {_idImageId = a})
+idImageId = lens _idImageId (\ s a -> s{_idImageId = a})
 
 -- | The product code of the EC2 instance.
 idProductCodes :: Lens' InstanceDetails [ProductCode]
-idProductCodes =
-  lens _idProductCodes (\s a -> s {_idProductCodes = a}) . _Default . _Coerce
+idProductCodes = lens _idProductCodes (\ s a -> s{_idProductCodes = a}) . _Default . _Coerce
 
 -- | The state of the EC2 instance.
 idInstanceState :: Lens' InstanceDetails (Maybe Text)
-idInstanceState = lens _idInstanceState (\s a -> s {_idInstanceState = a})
+idInstanceState = lens _idInstanceState (\ s a -> s{_idInstanceState = a})
 
 -- | The tags of the EC2 instance.
 idTags :: Lens' InstanceDetails [Tag]
-idTags = lens _idTags (\s a -> s {_idTags = a}) . _Default . _Coerce
+idTags = lens _idTags (\ s a -> s{_idTags = a}) . _Default . _Coerce
 
 -- | The image description of the EC2 instance.
 idImageDescription :: Lens' InstanceDetails (Maybe Text)
-idImageDescription =
-  lens _idImageDescription (\s a -> s {_idImageDescription = a})
+idImageDescription = lens _idImageDescription (\ s a -> s{_idImageDescription = a})
 
 instance FromJSON InstanceDetails where
-  parseJSON =
-    withObject
-      "InstanceDetails"
-      (\x ->
-         InstanceDetails' <$> (x .:? "instanceId") <*> (x .:? "platform") <*>
-         (x .:? "launchTime") <*>
-         (x .:? "networkInterfaces" .!= mempty) <*>
-         (x .:? "instanceType") <*>
-         (x .:? "availabilityZone") <*>
-         (x .:? "iamInstanceProfile") <*>
-         (x .:? "imageId") <*>
-         (x .:? "productCodes" .!= mempty) <*>
-         (x .:? "instanceState") <*>
-         (x .:? "tags" .!= mempty) <*>
-         (x .:? "imageDescription"))
+        parseJSON
+          = withObject "InstanceDetails"
+              (\ x ->
+                 InstanceDetails' <$>
+                   (x .:? "instanceId") <*> (x .:? "platform") <*>
+                     (x .:? "launchTime")
+                     <*> (x .:? "networkInterfaces" .!= mempty)
+                     <*> (x .:? "instanceType")
+                     <*> (x .:? "availabilityZone")
+                     <*> (x .:? "iamInstanceProfile")
+                     <*> (x .:? "imageId")
+                     <*> (x .:? "productCodes" .!= mempty)
+                     <*> (x .:? "instanceState")
+                     <*> (x .:? "tags" .!= mempty)
+                     <*> (x .:? "imageDescription"))
 
-instance Hashable InstanceDetails
+instance Hashable InstanceDetails where
 
-instance NFData InstanceDetails
+instance NFData InstanceDetails where
 
 -- | Invitation from an AWS account to become the current account's master.
 --
@@ -936,6 +977,7 @@ data Invitation =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Invitation' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -947,7 +989,8 @@ data Invitation =
 -- * 'iInvitationId' - This value is used to validate the inviter account to the member account.
 --
 -- * 'iAccountId' - Inviter account ID
-invitation :: Invitation
+invitation
+    :: Invitation
 invitation =
   Invitation'
     { _iInvitedAt = Nothing
@@ -956,35 +999,35 @@ invitation =
     , _iAccountId = Nothing
     }
 
+
 -- | Timestamp at which the invitation was sent
 iInvitedAt :: Lens' Invitation (Maybe Text)
-iInvitedAt = lens _iInvitedAt (\s a -> s {_iInvitedAt = a})
+iInvitedAt = lens _iInvitedAt (\ s a -> s{_iInvitedAt = a})
 
 -- | The status of the relationship between the inviter and invitee accounts.
 iRelationshipStatus :: Lens' Invitation (Maybe Text)
-iRelationshipStatus =
-  lens _iRelationshipStatus (\s a -> s {_iRelationshipStatus = a})
+iRelationshipStatus = lens _iRelationshipStatus (\ s a -> s{_iRelationshipStatus = a})
 
 -- | This value is used to validate the inviter account to the member account.
 iInvitationId :: Lens' Invitation (Maybe Text)
-iInvitationId = lens _iInvitationId (\s a -> s {_iInvitationId = a})
+iInvitationId = lens _iInvitationId (\ s a -> s{_iInvitationId = a})
 
 -- | Inviter account ID
 iAccountId :: Lens' Invitation (Maybe Text)
-iAccountId = lens _iAccountId (\s a -> s {_iAccountId = a})
+iAccountId = lens _iAccountId (\ s a -> s{_iAccountId = a})
 
 instance FromJSON Invitation where
-  parseJSON =
-    withObject
-      "Invitation"
-      (\x ->
-         Invitation' <$> (x .:? "invitedAt") <*> (x .:? "relationshipStatus") <*>
-         (x .:? "invitationId") <*>
-         (x .:? "accountId"))
+        parseJSON
+          = withObject "Invitation"
+              (\ x ->
+                 Invitation' <$>
+                   (x .:? "invitedAt") <*> (x .:? "relationshipStatus")
+                     <*> (x .:? "invitationId")
+                     <*> (x .:? "accountId"))
 
-instance Hashable Invitation
+instance Hashable Invitation where
 
-instance NFData Invitation
+instance NFData Invitation where
 
 -- | Local port information of the connection.
 --
@@ -996,6 +1039,7 @@ data LocalPortDetails =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'LocalPortDetails' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1003,27 +1047,30 @@ data LocalPortDetails =
 -- * 'lpdPortName' - Port name of the local connection.
 --
 -- * 'lpdPort' - Port number of the local connection.
-localPortDetails :: LocalPortDetails
+localPortDetails
+    :: LocalPortDetails
 localPortDetails =
   LocalPortDetails' {_lpdPortName = Nothing, _lpdPort = Nothing}
 
+
 -- | Port name of the local connection.
 lpdPortName :: Lens' LocalPortDetails (Maybe Text)
-lpdPortName = lens _lpdPortName (\s a -> s {_lpdPortName = a})
+lpdPortName = lens _lpdPortName (\ s a -> s{_lpdPortName = a})
 
 -- | Port number of the local connection.
 lpdPort :: Lens' LocalPortDetails (Maybe Int)
-lpdPort = lens _lpdPort (\s a -> s {_lpdPort = a})
+lpdPort = lens _lpdPort (\ s a -> s{_lpdPort = a})
 
 instance FromJSON LocalPortDetails where
-  parseJSON =
-    withObject
-      "LocalPortDetails"
-      (\x -> LocalPortDetails' <$> (x .:? "portName") <*> (x .:? "port"))
+        parseJSON
+          = withObject "LocalPortDetails"
+              (\ x ->
+                 LocalPortDetails' <$>
+                   (x .:? "portName") <*> (x .:? "port"))
 
-instance Hashable LocalPortDetails
+instance Hashable LocalPortDetails where
 
-instance NFData LocalPortDetails
+instance NFData LocalPortDetails where
 
 -- | Contains details about the master account.
 --
@@ -1037,6 +1084,7 @@ data Master =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Master' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1048,7 +1096,8 @@ data Master =
 -- * 'masInvitationId' - This value is used to validate the master account to the member account.
 --
 -- * 'masAccountId' - Master account ID
-master :: Master
+master
+    :: Master
 master =
   Master'
     { _masInvitedAt = Nothing
@@ -1057,35 +1106,35 @@ master =
     , _masAccountId = Nothing
     }
 
+
 -- | Timestamp at which the invitation was sent
 masInvitedAt :: Lens' Master (Maybe Text)
-masInvitedAt = lens _masInvitedAt (\s a -> s {_masInvitedAt = a})
+masInvitedAt = lens _masInvitedAt (\ s a -> s{_masInvitedAt = a})
 
 -- | The status of the relationship between the master and member accounts.
 masRelationshipStatus :: Lens' Master (Maybe Text)
-masRelationshipStatus =
-  lens _masRelationshipStatus (\s a -> s {_masRelationshipStatus = a})
+masRelationshipStatus = lens _masRelationshipStatus (\ s a -> s{_masRelationshipStatus = a})
 
 -- | This value is used to validate the master account to the member account.
 masInvitationId :: Lens' Master (Maybe Text)
-masInvitationId = lens _masInvitationId (\s a -> s {_masInvitationId = a})
+masInvitationId = lens _masInvitationId (\ s a -> s{_masInvitationId = a})
 
 -- | Master account ID
 masAccountId :: Lens' Master (Maybe Text)
-masAccountId = lens _masAccountId (\s a -> s {_masAccountId = a})
+masAccountId = lens _masAccountId (\ s a -> s{_masAccountId = a})
 
 instance FromJSON Master where
-  parseJSON =
-    withObject
-      "Master"
-      (\x ->
-         Master' <$> (x .:? "invitedAt") <*> (x .:? "relationshipStatus") <*>
-         (x .:? "invitationId") <*>
-         (x .:? "accountId"))
+        parseJSON
+          = withObject "Master"
+              (\ x ->
+                 Master' <$>
+                   (x .:? "invitedAt") <*> (x .:? "relationshipStatus")
+                     <*> (x .:? "invitationId")
+                     <*> (x .:? "accountId"))
 
-instance Hashable Master
+instance Hashable Master where
 
-instance NFData Master
+instance NFData Master where
 
 -- | Contains details about the member account.
 --
@@ -1101,6 +1150,7 @@ data Member =
     , _mRelationshipStatus :: !Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'Member' with the minimum fields required to make a request.
 --
@@ -1119,13 +1169,13 @@ data Member =
 -- * 'mUpdatedAt' - Undocumented member.
 --
 -- * 'mRelationshipStatus' - The status of the relationship between the member and the master.
-member ::
-     Text -- ^ 'mEmail'
-  -> Text -- ^ 'mAccountId'
-  -> Text -- ^ 'mMasterId'
-  -> Text -- ^ 'mUpdatedAt'
-  -> Text -- ^ 'mRelationshipStatus'
-  -> Member
+member
+    :: Text -- ^ 'mEmail'
+    -> Text -- ^ 'mAccountId'
+    -> Text -- ^ 'mMasterId'
+    -> Text -- ^ 'mUpdatedAt'
+    -> Text -- ^ 'mRelationshipStatus'
+    -> Member
 member pEmail_ pAccountId_ pMasterId_ pUpdatedAt_ pRelationshipStatus_ =
   Member'
     { _mInvitedAt = Nothing
@@ -1137,50 +1187,50 @@ member pEmail_ pAccountId_ pMasterId_ pUpdatedAt_ pRelationshipStatus_ =
     , _mRelationshipStatus = pRelationshipStatus_
     }
 
+
 -- | Timestamp at which the invitation was sent
 mInvitedAt :: Lens' Member (Maybe Text)
-mInvitedAt = lens _mInvitedAt (\s a -> s {_mInvitedAt = a})
+mInvitedAt = lens _mInvitedAt (\ s a -> s{_mInvitedAt = a})
 
 -- | Undocumented member.
 mDetectorId :: Lens' Member (Maybe Text)
-mDetectorId = lens _mDetectorId (\s a -> s {_mDetectorId = a})
+mDetectorId = lens _mDetectorId (\ s a -> s{_mDetectorId = a})
 
 -- | Member account's email address.
 mEmail :: Lens' Member Text
-mEmail = lens _mEmail (\s a -> s {_mEmail = a})
+mEmail = lens _mEmail (\ s a -> s{_mEmail = a})
 
 -- | Undocumented member.
 mAccountId :: Lens' Member Text
-mAccountId = lens _mAccountId (\s a -> s {_mAccountId = a})
+mAccountId = lens _mAccountId (\ s a -> s{_mAccountId = a})
 
 -- | Undocumented member.
 mMasterId :: Lens' Member Text
-mMasterId = lens _mMasterId (\s a -> s {_mMasterId = a})
+mMasterId = lens _mMasterId (\ s a -> s{_mMasterId = a})
 
 -- | Undocumented member.
 mUpdatedAt :: Lens' Member Text
-mUpdatedAt = lens _mUpdatedAt (\s a -> s {_mUpdatedAt = a})
+mUpdatedAt = lens _mUpdatedAt (\ s a -> s{_mUpdatedAt = a})
 
 -- | The status of the relationship between the member and the master.
 mRelationshipStatus :: Lens' Member Text
-mRelationshipStatus =
-  lens _mRelationshipStatus (\s a -> s {_mRelationshipStatus = a})
+mRelationshipStatus = lens _mRelationshipStatus (\ s a -> s{_mRelationshipStatus = a})
 
 instance FromJSON Member where
-  parseJSON =
-    withObject
-      "Member"
-      (\x ->
-         Member' <$> (x .:? "invitedAt") <*> (x .:? "detectorId") <*>
-         (x .: "email") <*>
-         (x .: "accountId") <*>
-         (x .: "masterId") <*>
-         (x .: "updatedAt") <*>
-         (x .: "relationshipStatus"))
+        parseJSON
+          = withObject "Member"
+              (\ x ->
+                 Member' <$>
+                   (x .:? "invitedAt") <*> (x .:? "detectorId") <*>
+                     (x .: "email")
+                     <*> (x .: "accountId")
+                     <*> (x .: "masterId")
+                     <*> (x .: "updatedAt")
+                     <*> (x .: "relationshipStatus"))
 
-instance Hashable Member
+instance Hashable Member where
 
-instance NFData Member
+instance NFData Member where
 
 -- | Information about the NETWORK_CONNECTION action described in this finding.
 --
@@ -1195,6 +1245,7 @@ data NetworkConnectionAction =
     , _ncaLocalPortDetails    :: !(Maybe LocalPortDetails)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'NetworkConnectionAction' with the minimum fields required to make a request.
 --
@@ -1211,7 +1262,8 @@ data NetworkConnectionAction =
 -- * 'ncaConnectionDirection' - Network connection direction.
 --
 -- * 'ncaLocalPortDetails' - Local port information of the connection.
-networkConnectionAction :: NetworkConnectionAction
+networkConnectionAction
+    :: NetworkConnectionAction
 networkConnectionAction =
   NetworkConnectionAction'
     { _ncaRemoteIPDetails = Nothing
@@ -1222,49 +1274,45 @@ networkConnectionAction =
     , _ncaLocalPortDetails = Nothing
     }
 
+
 -- | Remote IP information of the connection.
 ncaRemoteIPDetails :: Lens' NetworkConnectionAction (Maybe RemoteIPDetails)
-ncaRemoteIPDetails =
-  lens _ncaRemoteIPDetails (\s a -> s {_ncaRemoteIPDetails = a})
+ncaRemoteIPDetails = lens _ncaRemoteIPDetails (\ s a -> s{_ncaRemoteIPDetails = a})
 
 -- | Network connection protocol.
 ncaProtocol :: Lens' NetworkConnectionAction (Maybe Text)
-ncaProtocol = lens _ncaProtocol (\s a -> s {_ncaProtocol = a})
+ncaProtocol = lens _ncaProtocol (\ s a -> s{_ncaProtocol = a})
 
 -- | Remote port information of the connection.
 ncaRemotePortDetails :: Lens' NetworkConnectionAction (Maybe RemotePortDetails)
-ncaRemotePortDetails =
-  lens _ncaRemotePortDetails (\s a -> s {_ncaRemotePortDetails = a})
+ncaRemotePortDetails = lens _ncaRemotePortDetails (\ s a -> s{_ncaRemotePortDetails = a})
 
 -- | Network connection blocked information.
 ncaBlocked :: Lens' NetworkConnectionAction (Maybe Bool)
-ncaBlocked = lens _ncaBlocked (\s a -> s {_ncaBlocked = a})
+ncaBlocked = lens _ncaBlocked (\ s a -> s{_ncaBlocked = a})
 
 -- | Network connection direction.
 ncaConnectionDirection :: Lens' NetworkConnectionAction (Maybe Text)
-ncaConnectionDirection =
-  lens _ncaConnectionDirection (\s a -> s {_ncaConnectionDirection = a})
+ncaConnectionDirection = lens _ncaConnectionDirection (\ s a -> s{_ncaConnectionDirection = a})
 
 -- | Local port information of the connection.
 ncaLocalPortDetails :: Lens' NetworkConnectionAction (Maybe LocalPortDetails)
-ncaLocalPortDetails =
-  lens _ncaLocalPortDetails (\s a -> s {_ncaLocalPortDetails = a})
+ncaLocalPortDetails = lens _ncaLocalPortDetails (\ s a -> s{_ncaLocalPortDetails = a})
 
 instance FromJSON NetworkConnectionAction where
-  parseJSON =
-    withObject
-      "NetworkConnectionAction"
-      (\x ->
-         NetworkConnectionAction' <$> (x .:? "remoteIpDetails") <*>
-         (x .:? "protocol") <*>
-         (x .:? "remotePortDetails") <*>
-         (x .:? "blocked") <*>
-         (x .:? "connectionDirection") <*>
-         (x .:? "localPortDetails"))
+        parseJSON
+          = withObject "NetworkConnectionAction"
+              (\ x ->
+                 NetworkConnectionAction' <$>
+                   (x .:? "remoteIpDetails") <*> (x .:? "protocol") <*>
+                     (x .:? "remotePortDetails")
+                     <*> (x .:? "blocked")
+                     <*> (x .:? "connectionDirection")
+                     <*> (x .:? "localPortDetails"))
 
-instance Hashable NetworkConnectionAction
+instance Hashable NetworkConnectionAction where
 
-instance NFData NetworkConnectionAction
+instance NFData NetworkConnectionAction where
 
 -- | The network interface information of the EC2 instance.
 --
@@ -1283,6 +1331,7 @@ data NetworkInterface =
     , _niIPv6Addresses      :: !(Maybe [Text])
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'NetworkInterface' with the minimum fields required to make a request.
 --
@@ -1307,7 +1356,8 @@ data NetworkInterface =
 -- * 'niPrivateDNSName' - Private DNS name of the EC2 instance.
 --
 -- * 'niIPv6Addresses' - A list of EC2 instance IPv6 address information.
-networkInterface :: NetworkInterface
+networkInterface
+    :: NetworkInterface
 networkInterface =
   NetworkInterface'
     { _niPrivateIPAddresses = Nothing
@@ -1322,72 +1372,66 @@ networkInterface =
     , _niIPv6Addresses = Nothing
     }
 
+
 -- | Other private IP address information of the EC2 instance.
 niPrivateIPAddresses :: Lens' NetworkInterface [PrivateIPAddressDetails]
-niPrivateIPAddresses =
-  lens _niPrivateIPAddresses (\s a -> s {_niPrivateIPAddresses = a}) .
-  _Default . _Coerce
+niPrivateIPAddresses = lens _niPrivateIPAddresses (\ s a -> s{_niPrivateIPAddresses = a}) . _Default . _Coerce
 
 -- | Public DNS name of the EC2 instance.
 niPublicDNSName :: Lens' NetworkInterface (Maybe Text)
-niPublicDNSName = lens _niPublicDNSName (\s a -> s {_niPublicDNSName = a})
+niPublicDNSName = lens _niPublicDNSName (\ s a -> s{_niPublicDNSName = a})
 
 -- | Security groups associated with the EC2 instance.
 niSecurityGroups :: Lens' NetworkInterface [SecurityGroup]
-niSecurityGroups =
-  lens _niSecurityGroups (\s a -> s {_niSecurityGroups = a}) .
-  _Default . _Coerce
+niSecurityGroups = lens _niSecurityGroups (\ s a -> s{_niSecurityGroups = a}) . _Default . _Coerce
 
 -- | The VPC ID of the EC2 instance.
 niVPCId :: Lens' NetworkInterface (Maybe Text)
-niVPCId = lens _niVPCId (\s a -> s {_niVPCId = a})
+niVPCId = lens _niVPCId (\ s a -> s{_niVPCId = a})
 
 -- | The ID of the network interface
 niNetworkInterfaceId :: Lens' NetworkInterface (Maybe Text)
-niNetworkInterfaceId =
-  lens _niNetworkInterfaceId (\s a -> s {_niNetworkInterfaceId = a})
+niNetworkInterfaceId = lens _niNetworkInterfaceId (\ s a -> s{_niNetworkInterfaceId = a})
 
 -- | The subnet ID of the EC2 instance.
 niSubnetId :: Lens' NetworkInterface (Maybe Text)
-niSubnetId = lens _niSubnetId (\s a -> s {_niSubnetId = a})
+niSubnetId = lens _niSubnetId (\ s a -> s{_niSubnetId = a})
 
 -- | Private IP address of the EC2 instance.
 niPrivateIPAddress :: Lens' NetworkInterface (Maybe Text)
-niPrivateIPAddress =
-  lens _niPrivateIPAddress (\s a -> s {_niPrivateIPAddress = a})
+niPrivateIPAddress = lens _niPrivateIPAddress (\ s a -> s{_niPrivateIPAddress = a})
 
 -- | Public IP address of the EC2 instance.
 niPublicIP :: Lens' NetworkInterface (Maybe Text)
-niPublicIP = lens _niPublicIP (\s a -> s {_niPublicIP = a})
+niPublicIP = lens _niPublicIP (\ s a -> s{_niPublicIP = a})
 
 -- | Private DNS name of the EC2 instance.
 niPrivateDNSName :: Lens' NetworkInterface (Maybe Text)
-niPrivateDNSName = lens _niPrivateDNSName (\s a -> s {_niPrivateDNSName = a})
+niPrivateDNSName = lens _niPrivateDNSName (\ s a -> s{_niPrivateDNSName = a})
 
 -- | A list of EC2 instance IPv6 address information.
 niIPv6Addresses :: Lens' NetworkInterface [Text]
-niIPv6Addresses =
-  lens _niIPv6Addresses (\s a -> s {_niIPv6Addresses = a}) . _Default . _Coerce
+niIPv6Addresses = lens _niIPv6Addresses (\ s a -> s{_niIPv6Addresses = a}) . _Default . _Coerce
 
 instance FromJSON NetworkInterface where
-  parseJSON =
-    withObject
-      "NetworkInterface"
-      (\x ->
-         NetworkInterface' <$> (x .:? "privateIpAddresses" .!= mempty) <*>
-         (x .:? "publicDnsName") <*>
-         (x .:? "securityGroups" .!= mempty) <*>
-         (x .:? "vpcId") <*>
-         (x .:? "networkInterfaceId") <*>
-         (x .:? "subnetId") <*>
-         (x .:? "privateIpAddress") <*>
-         (x .:? "publicIp") <*>
-         (x .:? "privateDnsName") <*>
-         (x .:? "ipv6Addresses" .!= mempty))
+        parseJSON
+          = withObject "NetworkInterface"
+              (\ x ->
+                 NetworkInterface' <$>
+                   (x .:? "privateIpAddresses" .!= mempty) <*>
+                     (x .:? "publicDnsName")
+                     <*> (x .:? "securityGroups" .!= mempty)
+                     <*> (x .:? "vpcId")
+                     <*> (x .:? "networkInterfaceId")
+                     <*> (x .:? "subnetId")
+                     <*> (x .:? "privateIpAddress")
+                     <*> (x .:? "publicIp")
+                     <*> (x .:? "privateDnsName")
+                     <*> (x .:? "ipv6Addresses" .!= mempty))
 
-instance Hashable NetworkInterface
+instance Hashable NetworkInterface where
 
-instance NFData NetworkInterface
+instance NFData NetworkInterface where
 
 -- | ISP Organization information of the remote IP address.
 --
@@ -1401,6 +1445,7 @@ data Organization =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Organization' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1412,38 +1457,40 @@ data Organization =
 -- * 'oASN' - Autonomous system number of the internet provider of the remote IP address.
 --
 -- * 'oIsp' - ISP information for the internet provider.
-organization :: Organization
+organization
+    :: Organization
 organization =
   Organization'
     {_oOrg = Nothing, _oASNOrg = Nothing, _oASN = Nothing, _oIsp = Nothing}
 
+
 -- | Name of the internet provider.
 oOrg :: Lens' Organization (Maybe Text)
-oOrg = lens _oOrg (\s a -> s {_oOrg = a})
+oOrg = lens _oOrg (\ s a -> s{_oOrg = a})
 
 -- | Organization that registered this ASN.
 oASNOrg :: Lens' Organization (Maybe Text)
-oASNOrg = lens _oASNOrg (\s a -> s {_oASNOrg = a})
+oASNOrg = lens _oASNOrg (\ s a -> s{_oASNOrg = a})
 
 -- | Autonomous system number of the internet provider of the remote IP address.
 oASN :: Lens' Organization (Maybe Text)
-oASN = lens _oASN (\s a -> s {_oASN = a})
+oASN = lens _oASN (\ s a -> s{_oASN = a})
 
 -- | ISP information for the internet provider.
 oIsp :: Lens' Organization (Maybe Text)
-oIsp = lens _oIsp (\s a -> s {_oIsp = a})
+oIsp = lens _oIsp (\ s a -> s{_oIsp = a})
 
 instance FromJSON Organization where
-  parseJSON =
-    withObject
-      "Organization"
-      (\x ->
-         Organization' <$> (x .:? "org") <*> (x .:? "asnOrg") <*> (x .:? "asn") <*>
-         (x .:? "isp"))
+        parseJSON
+          = withObject "Organization"
+              (\ x ->
+                 Organization' <$>
+                   (x .:? "org") <*> (x .:? "asnOrg") <*> (x .:? "asn")
+                     <*> (x .:? "isp"))
 
-instance Hashable Organization
+instance Hashable Organization where
 
-instance NFData Organization
+instance NFData Organization where
 
 -- | Information about the PORT_PROBE action described in this finding.
 --
@@ -1455,6 +1502,7 @@ data PortProbeAction =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'PortProbeAction' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1462,31 +1510,31 @@ data PortProbeAction =
 -- * 'ppaPortProbeDetails' - A list of port probe details objects.
 --
 -- * 'ppaBlocked' - Port probe blocked information.
-portProbeAction :: PortProbeAction
+portProbeAction
+    :: PortProbeAction
 portProbeAction =
   PortProbeAction' {_ppaPortProbeDetails = Nothing, _ppaBlocked = Nothing}
 
+
 -- | A list of port probe details objects.
 ppaPortProbeDetails :: Lens' PortProbeAction [PortProbeDetail]
-ppaPortProbeDetails =
-  lens _ppaPortProbeDetails (\s a -> s {_ppaPortProbeDetails = a}) .
-  _Default . _Coerce
+ppaPortProbeDetails = lens _ppaPortProbeDetails (\ s a -> s{_ppaPortProbeDetails = a}) . _Default . _Coerce
 
 -- | Port probe blocked information.
 ppaBlocked :: Lens' PortProbeAction (Maybe Bool)
-ppaBlocked = lens _ppaBlocked (\s a -> s {_ppaBlocked = a})
+ppaBlocked = lens _ppaBlocked (\ s a -> s{_ppaBlocked = a})
 
 instance FromJSON PortProbeAction where
-  parseJSON =
-    withObject
-      "PortProbeAction"
-      (\x ->
-         PortProbeAction' <$> (x .:? "portProbeDetails" .!= mempty) <*>
-         (x .:? "blocked"))
+        parseJSON
+          = withObject "PortProbeAction"
+              (\ x ->
+                 PortProbeAction' <$>
+                   (x .:? "portProbeDetails" .!= mempty) <*>
+                     (x .:? "blocked"))
 
-instance Hashable PortProbeAction
+instance Hashable PortProbeAction where
 
-instance NFData PortProbeAction
+instance NFData PortProbeAction where
 
 -- | Details about the port probe finding.
 --
@@ -1498,6 +1546,7 @@ data PortProbeDetail =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'PortProbeDetail' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1505,32 +1554,32 @@ data PortProbeDetail =
 -- * 'ppdRemoteIPDetails' - Remote IP information of the connection.
 --
 -- * 'ppdLocalPortDetails' - Local port information of the connection.
-portProbeDetail :: PortProbeDetail
+portProbeDetail
+    :: PortProbeDetail
 portProbeDetail =
   PortProbeDetail'
     {_ppdRemoteIPDetails = Nothing, _ppdLocalPortDetails = Nothing}
 
+
 -- | Remote IP information of the connection.
 ppdRemoteIPDetails :: Lens' PortProbeDetail (Maybe RemoteIPDetails)
-ppdRemoteIPDetails =
-  lens _ppdRemoteIPDetails (\s a -> s {_ppdRemoteIPDetails = a})
+ppdRemoteIPDetails = lens _ppdRemoteIPDetails (\ s a -> s{_ppdRemoteIPDetails = a})
 
 -- | Local port information of the connection.
 ppdLocalPortDetails :: Lens' PortProbeDetail (Maybe LocalPortDetails)
-ppdLocalPortDetails =
-  lens _ppdLocalPortDetails (\s a -> s {_ppdLocalPortDetails = a})
+ppdLocalPortDetails = lens _ppdLocalPortDetails (\ s a -> s{_ppdLocalPortDetails = a})
 
 instance FromJSON PortProbeDetail where
-  parseJSON =
-    withObject
-      "PortProbeDetail"
-      (\x ->
-         PortProbeDetail' <$> (x .:? "remoteIpDetails") <*>
-         (x .:? "localPortDetails"))
+        parseJSON
+          = withObject "PortProbeDetail"
+              (\ x ->
+                 PortProbeDetail' <$>
+                   (x .:? "remoteIpDetails") <*>
+                     (x .:? "localPortDetails"))
 
-instance Hashable PortProbeDetail
+instance Hashable PortProbeDetail where
 
-instance NFData PortProbeDetail
+instance NFData PortProbeDetail where
 
 -- | Other private IP address information of the EC2 instance.
 --
@@ -1542,6 +1591,7 @@ data PrivateIPAddressDetails =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'PrivateIPAddressDetails' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1549,32 +1599,32 @@ data PrivateIPAddressDetails =
 -- * 'piadPrivateIPAddress' - Private IP address of the EC2 instance.
 --
 -- * 'piadPrivateDNSName' - Private DNS name of the EC2 instance.
-privateIPAddressDetails :: PrivateIPAddressDetails
+privateIPAddressDetails
+    :: PrivateIPAddressDetails
 privateIPAddressDetails =
   PrivateIPAddressDetails'
     {_piadPrivateIPAddress = Nothing, _piadPrivateDNSName = Nothing}
 
+
 -- | Private IP address of the EC2 instance.
 piadPrivateIPAddress :: Lens' PrivateIPAddressDetails (Maybe Text)
-piadPrivateIPAddress =
-  lens _piadPrivateIPAddress (\s a -> s {_piadPrivateIPAddress = a})
+piadPrivateIPAddress = lens _piadPrivateIPAddress (\ s a -> s{_piadPrivateIPAddress = a})
 
 -- | Private DNS name of the EC2 instance.
 piadPrivateDNSName :: Lens' PrivateIPAddressDetails (Maybe Text)
-piadPrivateDNSName =
-  lens _piadPrivateDNSName (\s a -> s {_piadPrivateDNSName = a})
+piadPrivateDNSName = lens _piadPrivateDNSName (\ s a -> s{_piadPrivateDNSName = a})
 
 instance FromJSON PrivateIPAddressDetails where
-  parseJSON =
-    withObject
-      "PrivateIPAddressDetails"
-      (\x ->
-         PrivateIPAddressDetails' <$> (x .:? "privateIpAddress") <*>
-         (x .:? "privateDnsName"))
+        parseJSON
+          = withObject "PrivateIPAddressDetails"
+              (\ x ->
+                 PrivateIPAddressDetails' <$>
+                   (x .:? "privateIpAddress") <*>
+                     (x .:? "privateDnsName"))
 
-instance Hashable PrivateIPAddressDetails
+instance Hashable PrivateIPAddressDetails where
 
-instance NFData PrivateIPAddressDetails
+instance NFData PrivateIPAddressDetails where
 
 -- | The product code of the EC2 instance.
 --
@@ -1586,6 +1636,7 @@ data ProductCode =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ProductCode' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1593,26 +1644,29 @@ data ProductCode =
 -- * 'pcProductType' - Product code type.
 --
 -- * 'pcCode' - Product code information.
-productCode :: ProductCode
+productCode
+    :: ProductCode
 productCode = ProductCode' {_pcProductType = Nothing, _pcCode = Nothing}
+
 
 -- | Product code type.
 pcProductType :: Lens' ProductCode (Maybe Text)
-pcProductType = lens _pcProductType (\s a -> s {_pcProductType = a})
+pcProductType = lens _pcProductType (\ s a -> s{_pcProductType = a})
 
 -- | Product code information.
 pcCode :: Lens' ProductCode (Maybe Text)
-pcCode = lens _pcCode (\s a -> s {_pcCode = a})
+pcCode = lens _pcCode (\ s a -> s{_pcCode = a})
 
 instance FromJSON ProductCode where
-  parseJSON =
-    withObject
-      "ProductCode"
-      (\x -> ProductCode' <$> (x .:? "productType") <*> (x .:? "code"))
+        parseJSON
+          = withObject "ProductCode"
+              (\ x ->
+                 ProductCode' <$>
+                   (x .:? "productType") <*> (x .:? "code"))
 
-instance Hashable ProductCode
+instance Hashable ProductCode where
 
-instance NFData ProductCode
+instance NFData ProductCode where
 
 -- | Remote IP information of the connection.
 --
@@ -1627,6 +1681,7 @@ data RemoteIPDetails =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'RemoteIPDetails' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1640,7 +1695,8 @@ data RemoteIPDetails =
 -- * 'ridGeoLocation' - Location information of the remote IP address.
 --
 -- * 'ridOrganization' - ISP Organization information of the remote IP address.
-remoteIPDetails :: RemoteIPDetails
+remoteIPDetails
+    :: RemoteIPDetails
 remoteIPDetails =
   RemoteIPDetails'
     { _ridCountry = Nothing
@@ -1650,39 +1706,40 @@ remoteIPDetails =
     , _ridOrganization = Nothing
     }
 
+
 -- | Country code of the remote IP address.
 ridCountry :: Lens' RemoteIPDetails (Maybe Country)
-ridCountry = lens _ridCountry (\s a -> s {_ridCountry = a})
+ridCountry = lens _ridCountry (\ s a -> s{_ridCountry = a})
 
 -- | City information of the remote IP address.
 ridCity :: Lens' RemoteIPDetails (Maybe City)
-ridCity = lens _ridCity (\s a -> s {_ridCity = a})
+ridCity = lens _ridCity (\ s a -> s{_ridCity = a})
 
 -- | IPV4 remote address of the connection.
 ridIPAddressV4 :: Lens' RemoteIPDetails (Maybe Text)
-ridIPAddressV4 = lens _ridIPAddressV4 (\s a -> s {_ridIPAddressV4 = a})
+ridIPAddressV4 = lens _ridIPAddressV4 (\ s a -> s{_ridIPAddressV4 = a})
 
 -- | Location information of the remote IP address.
 ridGeoLocation :: Lens' RemoteIPDetails (Maybe GeoLocation)
-ridGeoLocation = lens _ridGeoLocation (\s a -> s {_ridGeoLocation = a})
+ridGeoLocation = lens _ridGeoLocation (\ s a -> s{_ridGeoLocation = a})
 
 -- | ISP Organization information of the remote IP address.
 ridOrganization :: Lens' RemoteIPDetails (Maybe Organization)
-ridOrganization = lens _ridOrganization (\s a -> s {_ridOrganization = a})
+ridOrganization = lens _ridOrganization (\ s a -> s{_ridOrganization = a})
 
 instance FromJSON RemoteIPDetails where
-  parseJSON =
-    withObject
-      "RemoteIPDetails"
-      (\x ->
-         RemoteIPDetails' <$> (x .:? "country") <*> (x .:? "city") <*>
-         (x .:? "ipAddressV4") <*>
-         (x .:? "geoLocation") <*>
-         (x .:? "organization"))
+        parseJSON
+          = withObject "RemoteIPDetails"
+              (\ x ->
+                 RemoteIPDetails' <$>
+                   (x .:? "country") <*> (x .:? "city") <*>
+                     (x .:? "ipAddressV4")
+                     <*> (x .:? "geoLocation")
+                     <*> (x .:? "organization"))
 
-instance Hashable RemoteIPDetails
+instance Hashable RemoteIPDetails where
 
-instance NFData RemoteIPDetails
+instance NFData RemoteIPDetails where
 
 -- | Remote port information of the connection.
 --
@@ -1694,6 +1751,7 @@ data RemotePortDetails =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'RemotePortDetails' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1701,27 +1759,30 @@ data RemotePortDetails =
 -- * 'rpdPortName' - Port name of the remote connection.
 --
 -- * 'rpdPort' - Port number of the remote connection.
-remotePortDetails :: RemotePortDetails
+remotePortDetails
+    :: RemotePortDetails
 remotePortDetails =
   RemotePortDetails' {_rpdPortName = Nothing, _rpdPort = Nothing}
 
+
 -- | Port name of the remote connection.
 rpdPortName :: Lens' RemotePortDetails (Maybe Text)
-rpdPortName = lens _rpdPortName (\s a -> s {_rpdPortName = a})
+rpdPortName = lens _rpdPortName (\ s a -> s{_rpdPortName = a})
 
 -- | Port number of the remote connection.
 rpdPort :: Lens' RemotePortDetails (Maybe Int)
-rpdPort = lens _rpdPort (\s a -> s {_rpdPort = a})
+rpdPort = lens _rpdPort (\ s a -> s{_rpdPort = a})
 
 instance FromJSON RemotePortDetails where
-  parseJSON =
-    withObject
-      "RemotePortDetails"
-      (\x -> RemotePortDetails' <$> (x .:? "portName") <*> (x .:? "port"))
+        parseJSON
+          = withObject "RemotePortDetails"
+              (\ x ->
+                 RemotePortDetails' <$>
+                   (x .:? "portName") <*> (x .:? "port"))
 
-instance Hashable RemotePortDetails
+instance Hashable RemotePortDetails where
 
-instance NFData RemotePortDetails
+instance NFData RemotePortDetails where
 
 -- | The AWS resource associated with the activity that prompted GuardDuty to generate a finding.
 --
@@ -1734,6 +1795,7 @@ data Resource =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Resource' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1743,7 +1805,8 @@ data Resource =
 -- * 'rInstanceDetails' - Undocumented member.
 --
 -- * 'rAccessKeyDetails' - Undocumented member.
-resource :: Resource
+resource
+    :: Resource
 resource =
   Resource'
     { _rResourceType = Nothing
@@ -1751,29 +1814,30 @@ resource =
     , _rAccessKeyDetails = Nothing
     }
 
+
 -- | The type of the AWS resource.
 rResourceType :: Lens' Resource (Maybe Text)
-rResourceType = lens _rResourceType (\s a -> s {_rResourceType = a})
+rResourceType = lens _rResourceType (\ s a -> s{_rResourceType = a})
 
 -- | Undocumented member.
 rInstanceDetails :: Lens' Resource (Maybe InstanceDetails)
-rInstanceDetails = lens _rInstanceDetails (\s a -> s {_rInstanceDetails = a})
+rInstanceDetails = lens _rInstanceDetails (\ s a -> s{_rInstanceDetails = a})
 
 -- | Undocumented member.
 rAccessKeyDetails :: Lens' Resource (Maybe AccessKeyDetails)
-rAccessKeyDetails = lens _rAccessKeyDetails (\s a -> s {_rAccessKeyDetails = a})
+rAccessKeyDetails = lens _rAccessKeyDetails (\ s a -> s{_rAccessKeyDetails = a})
 
 instance FromJSON Resource where
-  parseJSON =
-    withObject
-      "Resource"
-      (\x ->
-         Resource' <$> (x .:? "resourceType") <*> (x .:? "instanceDetails") <*>
-         (x .:? "accessKeyDetails"))
+        parseJSON
+          = withObject "Resource"
+              (\ x ->
+                 Resource' <$>
+                   (x .:? "resourceType") <*> (x .:? "instanceDetails")
+                     <*> (x .:? "accessKeyDetails"))
 
-instance Hashable Resource
+instance Hashable Resource where
 
-instance NFData Resource
+instance NFData Resource where
 
 -- | Security groups associated with the EC2 instance.
 --
@@ -1785,6 +1849,7 @@ data SecurityGroup =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SecurityGroup' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1792,26 +1857,29 @@ data SecurityGroup =
 -- * 'sgGroupId' - EC2 instance's security group ID.
 --
 -- * 'sgGroupName' - EC2 instance's security group name.
-securityGroup :: SecurityGroup
+securityGroup
+    :: SecurityGroup
 securityGroup = SecurityGroup' {_sgGroupId = Nothing, _sgGroupName = Nothing}
+
 
 -- | EC2 instance's security group ID.
 sgGroupId :: Lens' SecurityGroup (Maybe Text)
-sgGroupId = lens _sgGroupId (\s a -> s {_sgGroupId = a})
+sgGroupId = lens _sgGroupId (\ s a -> s{_sgGroupId = a})
 
 -- | EC2 instance's security group name.
 sgGroupName :: Lens' SecurityGroup (Maybe Text)
-sgGroupName = lens _sgGroupName (\s a -> s {_sgGroupName = a})
+sgGroupName = lens _sgGroupName (\ s a -> s{_sgGroupName = a})
 
 instance FromJSON SecurityGroup where
-  parseJSON =
-    withObject
-      "SecurityGroup"
-      (\x -> SecurityGroup' <$> (x .:? "groupId") <*> (x .:? "groupName"))
+        parseJSON
+          = withObject "SecurityGroup"
+              (\ x ->
+                 SecurityGroup' <$>
+                   (x .:? "groupId") <*> (x .:? "groupName"))
 
-instance Hashable SecurityGroup
+instance Hashable SecurityGroup where
 
-instance NFData SecurityGroup
+instance NFData SecurityGroup where
 
 -- | Additional information assigned to the generated finding by GuardDuty.
 --
@@ -1829,6 +1897,7 @@ data ServiceInfo =
     , _siArchived       :: !(Maybe Bool)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'ServiceInfo' with the minimum fields required to make a request.
 --
@@ -1851,7 +1920,8 @@ data ServiceInfo =
 -- * 'siResourceRole' - Resource role information for this finding.
 --
 -- * 'siArchived' - Indicates whether this finding is archived.
-serviceInfo :: ServiceInfo
+serviceInfo
+    :: ServiceInfo
 serviceInfo =
   ServiceInfo'
     { _siCount = Nothing
@@ -1865,59 +1935,60 @@ serviceInfo =
     , _siArchived = Nothing
     }
 
+
 -- | Total count of the occurrences of this finding type.
 siCount :: Lens' ServiceInfo (Maybe Int)
-siCount = lens _siCount (\s a -> s {_siCount = a})
+siCount = lens _siCount (\ s a -> s{_siCount = a})
 
 -- | First seen timestamp of the activity that prompted GuardDuty to generate this finding.
 siEventFirstSeen :: Lens' ServiceInfo (Maybe Text)
-siEventFirstSeen = lens _siEventFirstSeen (\s a -> s {_siEventFirstSeen = a})
+siEventFirstSeen = lens _siEventFirstSeen (\ s a -> s{_siEventFirstSeen = a})
 
 -- | Information about the activity described in a finding.
 siAction :: Lens' ServiceInfo (Maybe Action)
-siAction = lens _siAction (\s a -> s {_siAction = a})
+siAction = lens _siAction (\ s a -> s{_siAction = a})
 
 -- | Detector ID for the GuardDuty service.
 siDetectorId :: Lens' ServiceInfo (Maybe Text)
-siDetectorId = lens _siDetectorId (\s a -> s {_siDetectorId = a})
+siDetectorId = lens _siDetectorId (\ s a -> s{_siDetectorId = a})
 
 -- | The name of the AWS service (GuardDuty) that generated a finding.
 siServiceName :: Lens' ServiceInfo (Maybe Text)
-siServiceName = lens _siServiceName (\s a -> s {_siServiceName = a})
+siServiceName = lens _siServiceName (\ s a -> s{_siServiceName = a})
 
 -- | Feedback left about the finding.
 siUserFeedback :: Lens' ServiceInfo (Maybe Text)
-siUserFeedback = lens _siUserFeedback (\s a -> s {_siUserFeedback = a})
+siUserFeedback = lens _siUserFeedback (\ s a -> s{_siUserFeedback = a})
 
 -- | Last seen timestamp of the activity that prompted GuardDuty to generate this finding.
 siEventLastSeen :: Lens' ServiceInfo (Maybe Text)
-siEventLastSeen = lens _siEventLastSeen (\s a -> s {_siEventLastSeen = a})
+siEventLastSeen = lens _siEventLastSeen (\ s a -> s{_siEventLastSeen = a})
 
 -- | Resource role information for this finding.
 siResourceRole :: Lens' ServiceInfo (Maybe Text)
-siResourceRole = lens _siResourceRole (\s a -> s {_siResourceRole = a})
+siResourceRole = lens _siResourceRole (\ s a -> s{_siResourceRole = a})
 
 -- | Indicates whether this finding is archived.
 siArchived :: Lens' ServiceInfo (Maybe Bool)
-siArchived = lens _siArchived (\s a -> s {_siArchived = a})
+siArchived = lens _siArchived (\ s a -> s{_siArchived = a})
 
 instance FromJSON ServiceInfo where
-  parseJSON =
-    withObject
-      "ServiceInfo"
-      (\x ->
-         ServiceInfo' <$> (x .:? "count") <*> (x .:? "eventFirstSeen") <*>
-         (x .:? "action") <*>
-         (x .:? "detectorId") <*>
-         (x .:? "serviceName") <*>
-         (x .:? "userFeedback") <*>
-         (x .:? "eventLastSeen") <*>
-         (x .:? "resourceRole") <*>
-         (x .:? "archived"))
+        parseJSON
+          = withObject "ServiceInfo"
+              (\ x ->
+                 ServiceInfo' <$>
+                   (x .:? "count") <*> (x .:? "eventFirstSeen") <*>
+                     (x .:? "action")
+                     <*> (x .:? "detectorId")
+                     <*> (x .:? "serviceName")
+                     <*> (x .:? "userFeedback")
+                     <*> (x .:? "eventLastSeen")
+                     <*> (x .:? "resourceRole")
+                     <*> (x .:? "archived"))
 
-instance Hashable ServiceInfo
+instance Hashable ServiceInfo where
 
-instance NFData ServiceInfo
+instance NFData ServiceInfo where
 
 -- | Represents the criteria used for sorting findings.
 --
@@ -1929,6 +2000,7 @@ data SortCriteria =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SortCriteria' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1936,28 +2008,29 @@ data SortCriteria =
 -- * 'scOrderBy' - Order by which the sorted findings are to be displayed.
 --
 -- * 'scAttributeName' - Represents the finding attribute (for example, accountId) by which to sort findings.
-sortCriteria :: SortCriteria
+sortCriteria
+    :: SortCriteria
 sortCriteria = SortCriteria' {_scOrderBy = Nothing, _scAttributeName = Nothing}
+
 
 -- | Order by which the sorted findings are to be displayed.
 scOrderBy :: Lens' SortCriteria (Maybe OrderBy)
-scOrderBy = lens _scOrderBy (\s a -> s {_scOrderBy = a})
+scOrderBy = lens _scOrderBy (\ s a -> s{_scOrderBy = a})
 
 -- | Represents the finding attribute (for example, accountId) by which to sort findings.
 scAttributeName :: Lens' SortCriteria (Maybe Text)
-scAttributeName = lens _scAttributeName (\s a -> s {_scAttributeName = a})
+scAttributeName = lens _scAttributeName (\ s a -> s{_scAttributeName = a})
 
-instance Hashable SortCriteria
+instance Hashable SortCriteria where
 
-instance NFData SortCriteria
+instance NFData SortCriteria where
 
 instance ToJSON SortCriteria where
-  toJSON SortCriteria' {..} =
-    object
-      (catMaybes
-         [ ("orderBy" .=) <$> _scOrderBy
-         , ("attributeName" .=) <$> _scAttributeName
-         ])
+        toJSON SortCriteria'{..}
+          = object
+              (catMaybes
+                 [("orderBy" .=) <$> _scOrderBy,
+                  ("attributeName" .=) <$> _scAttributeName])
 
 -- | A tag of the EC2 instance.
 --
@@ -1969,6 +2042,7 @@ data Tag =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Tag' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1976,24 +2050,27 @@ data Tag =
 -- * 'tagValue' - EC2 instance tag value.
 --
 -- * 'tagKey' - EC2 instance tag key.
-tag :: Tag
+tag
+    :: Tag
 tag = Tag' {_tagValue = Nothing, _tagKey = Nothing}
+
 
 -- | EC2 instance tag value.
 tagValue :: Lens' Tag (Maybe Text)
-tagValue = lens _tagValue (\s a -> s {_tagValue = a})
+tagValue = lens _tagValue (\ s a -> s{_tagValue = a})
 
 -- | EC2 instance tag key.
 tagKey :: Lens' Tag (Maybe Text)
-tagKey = lens _tagKey (\s a -> s {_tagKey = a})
+tagKey = lens _tagKey (\ s a -> s{_tagKey = a})
 
 instance FromJSON Tag where
-  parseJSON =
-    withObject "Tag" (\x -> Tag' <$> (x .:? "value") <*> (x .:? "key"))
+        parseJSON
+          = withObject "Tag"
+              (\ x -> Tag' <$> (x .:? "value") <*> (x .:? "key"))
 
-instance Hashable Tag
+instance Hashable Tag where
 
-instance NFData Tag
+instance NFData Tag where
 
 -- | An object containing the unprocessed account and a result string explaining why it was unprocessed.
 --
@@ -2005,6 +2082,7 @@ data UnprocessedAccount =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UnprocessedAccount' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -2012,27 +2090,29 @@ data UnprocessedAccount =
 -- * 'uaAccountId' - AWS Account ID.
 --
 -- * 'uaResult' - A reason why the account hasn't been processed.
-unprocessedAccount ::
-     Text -- ^ 'uaAccountId'
-  -> Text -- ^ 'uaResult'
-  -> UnprocessedAccount
+unprocessedAccount
+    :: Text -- ^ 'uaAccountId'
+    -> Text -- ^ 'uaResult'
+    -> UnprocessedAccount
 unprocessedAccount pAccountId_ pResult_ =
   UnprocessedAccount' {_uaAccountId = pAccountId_, _uaResult = pResult_}
 
+
 -- | AWS Account ID.
 uaAccountId :: Lens' UnprocessedAccount Text
-uaAccountId = lens _uaAccountId (\s a -> s {_uaAccountId = a})
+uaAccountId = lens _uaAccountId (\ s a -> s{_uaAccountId = a})
 
 -- | A reason why the account hasn't been processed.
 uaResult :: Lens' UnprocessedAccount Text
-uaResult = lens _uaResult (\s a -> s {_uaResult = a})
+uaResult = lens _uaResult (\ s a -> s{_uaResult = a})
 
 instance FromJSON UnprocessedAccount where
-  parseJSON =
-    withObject
-      "UnprocessedAccount"
-      (\x -> UnprocessedAccount' <$> (x .: "accountId") <*> (x .: "result"))
+        parseJSON
+          = withObject "UnprocessedAccount"
+              (\ x ->
+                 UnprocessedAccount' <$>
+                   (x .: "accountId") <*> (x .: "result"))
 
-instance Hashable UnprocessedAccount
+instance Hashable UnprocessedAccount where
 
-instance NFData UnprocessedAccount
+instance NFData UnprocessedAccount where

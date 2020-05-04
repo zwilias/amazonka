@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.IoTAnalytics.SampleChannelData
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,21 +22,23 @@
 --
 --
 module Network.AWS.IoTAnalytics.SampleChannelData
+    (
     -- * Creating a Request
-  ( sampleChannelData
-  , SampleChannelData
+      sampleChannelData
+    , SampleChannelData
     -- * Request Lenses
-  , scdStartTime
-  , scdMaxMessages
-  , scdEndTime
-  , scdChannelName
+    , scdStartTime
+    , scdMaxMessages
+    , scdEndTime
+    , scdChannelName
+
     -- * Destructuring the Response
-  , sampleChannelDataResponse
-  , SampleChannelDataResponse
+    , sampleChannelDataResponse
+    , SampleChannelDataResponse
     -- * Response Lenses
-  , scdrsPayloads
-  , scdrsResponseStatus
-  ) where
+    , scdrsPayloads
+    , scdrsResponseStatus
+    ) where
 
 import Network.AWS.IoTAnalytics.Types
 import Network.AWS.IoTAnalytics.Types.Product
@@ -53,6 +57,7 @@ data SampleChannelData =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SampleChannelData' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -64,9 +69,9 @@ data SampleChannelData =
 -- * 'scdEndTime' - The end of the time window from which sample messages are retrieved.
 --
 -- * 'scdChannelName' - The name of the channel whose message samples are retrieved.
-sampleChannelData ::
-     Text -- ^ 'scdChannelName'
-  -> SampleChannelData
+sampleChannelData
+    :: Text -- ^ 'scdChannelName'
+    -> SampleChannelData
 sampleChannelData pChannelName_ =
   SampleChannelData'
     { _scdStartTime = Nothing
@@ -75,51 +80,50 @@ sampleChannelData pChannelName_ =
     , _scdChannelName = pChannelName_
     }
 
+
 -- | The start of the time window from which sample messages are retrieved.
 scdStartTime :: Lens' SampleChannelData (Maybe UTCTime)
-scdStartTime =
-  lens _scdStartTime (\s a -> s {_scdStartTime = a}) . mapping _Time
+scdStartTime = lens _scdStartTime (\ s a -> s{_scdStartTime = a}) . mapping _Time
 
 -- | The number of sample messages to be retrieved. The limit is 10, the default is also 10.
 scdMaxMessages :: Lens' SampleChannelData (Maybe Natural)
-scdMaxMessages =
-  lens _scdMaxMessages (\s a -> s {_scdMaxMessages = a}) . mapping _Nat
+scdMaxMessages = lens _scdMaxMessages (\ s a -> s{_scdMaxMessages = a}) . mapping _Nat
 
 -- | The end of the time window from which sample messages are retrieved.
 scdEndTime :: Lens' SampleChannelData (Maybe UTCTime)
-scdEndTime = lens _scdEndTime (\s a -> s {_scdEndTime = a}) . mapping _Time
+scdEndTime = lens _scdEndTime (\ s a -> s{_scdEndTime = a}) . mapping _Time
 
 -- | The name of the channel whose message samples are retrieved.
 scdChannelName :: Lens' SampleChannelData Text
-scdChannelName = lens _scdChannelName (\s a -> s {_scdChannelName = a})
+scdChannelName = lens _scdChannelName (\ s a -> s{_scdChannelName = a})
 
 instance AWSRequest SampleChannelData where
-  type Rs SampleChannelData = SampleChannelDataResponse
-  request = get ioTAnalytics
-  response =
-    receiveJSON
-      (\s h x ->
-         SampleChannelDataResponse' <$> (x .?> "payloads") <*>
-         (pure (fromEnum s)))
+        type Rs SampleChannelData = SampleChannelDataResponse
+        request = get ioTAnalytics
+        response
+          = receiveJSON
+              (\ s h x ->
+                 SampleChannelDataResponse' <$>
+                   (x .?> "payloads") <*> (pure (fromEnum s)))
 
-instance Hashable SampleChannelData
+instance Hashable SampleChannelData where
 
-instance NFData SampleChannelData
+instance NFData SampleChannelData where
 
 instance ToHeaders SampleChannelData where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath SampleChannelData where
-  toPath SampleChannelData' {..} =
-    mconcat ["/channels/", toBS _scdChannelName, "/sample"]
+        toPath SampleChannelData'{..}
+          = mconcat
+              ["/channels/", toBS _scdChannelName, "/sample"]
 
 instance ToQuery SampleChannelData where
-  toQuery SampleChannelData' {..} =
-    mconcat
-      [ "startTime" =: _scdStartTime
-      , "maxMessages" =: _scdMaxMessages
-      , "endTime" =: _scdEndTime
-      ]
+        toQuery SampleChannelData'{..}
+          = mconcat
+              ["startTime" =: _scdStartTime,
+               "maxMessages" =: _scdMaxMessages,
+               "endTime" =: _scdEndTime]
 
 -- | /See:/ 'sampleChannelDataResponse' smart constructor.
 data SampleChannelDataResponse =
@@ -129,6 +133,7 @@ data SampleChannelDataResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SampleChannelDataResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -136,21 +141,20 @@ data SampleChannelDataResponse =
 -- * 'scdrsPayloads' - The list of message samples. Each sample message is returned as a base64-encoded string.
 --
 -- * 'scdrsResponseStatus' - -- | The response status code.
-sampleChannelDataResponse ::
-     Int -- ^ 'scdrsResponseStatus'
-  -> SampleChannelDataResponse
+sampleChannelDataResponse
+    :: Int -- ^ 'scdrsResponseStatus'
+    -> SampleChannelDataResponse
 sampleChannelDataResponse pResponseStatus_ =
   SampleChannelDataResponse'
     {_scdrsPayloads = Nothing, _scdrsResponseStatus = pResponseStatus_}
 
+
 -- | The list of message samples. Each sample message is returned as a base64-encoded string.
 scdrsPayloads :: Lens' SampleChannelDataResponse (Maybe (NonEmpty ByteString))
-scdrsPayloads =
-  lens _scdrsPayloads (\s a -> s {_scdrsPayloads = a}) . mapping _List1
+scdrsPayloads = lens _scdrsPayloads (\ s a -> s{_scdrsPayloads = a}) . mapping _List1
 
 -- | -- | The response status code.
 scdrsResponseStatus :: Lens' SampleChannelDataResponse Int
-scdrsResponseStatus =
-  lens _scdrsResponseStatus (\s a -> s {_scdrsResponseStatus = a})
+scdrsResponseStatus = lens _scdrsResponseStatus (\ s a -> s{_scdrsResponseStatus = a})
 
-instance NFData SampleChannelDataResponse
+instance NFData SampleChannelDataResponse where

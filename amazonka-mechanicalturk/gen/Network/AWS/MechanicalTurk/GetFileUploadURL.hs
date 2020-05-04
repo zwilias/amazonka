@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.MechanicalTurk.GetFileUploadURL
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,19 +22,21 @@
 --
 --
 module Network.AWS.MechanicalTurk.GetFileUploadURL
+    (
     -- * Creating a Request
-  ( getFileUploadURL
-  , GetFileUploadURL
+      getFileUploadURL
+    , GetFileUploadURL
     -- * Request Lenses
-  , gfuuAssignmentId
-  , gfuuQuestionIdentifier
+    , gfuuAssignmentId
+    , gfuuQuestionIdentifier
+
     -- * Destructuring the Response
-  , getFileUploadURLResponse
-  , GetFileUploadURLResponse
+    , getFileUploadURLResponse
+    , GetFileUploadURLResponse
     -- * Response Lenses
-  , gfuursFileUploadURL
-  , gfuursResponseStatus
-  ) where
+    , gfuursFileUploadURL
+    , gfuursResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.MechanicalTurk.Types
@@ -49,6 +53,7 @@ data GetFileUploadURL =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetFileUploadURL' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -56,60 +61,61 @@ data GetFileUploadURL =
 -- * 'gfuuAssignmentId' - The ID of the assignment that contains the question with a FileUploadAnswer.
 --
 -- * 'gfuuQuestionIdentifier' - The identifier of the question with a FileUploadAnswer, as specified in the QuestionForm of the HIT.
-getFileUploadURL ::
-     Text -- ^ 'gfuuAssignmentId'
-  -> Text -- ^ 'gfuuQuestionIdentifier'
-  -> GetFileUploadURL
+getFileUploadURL
+    :: Text -- ^ 'gfuuAssignmentId'
+    -> Text -- ^ 'gfuuQuestionIdentifier'
+    -> GetFileUploadURL
 getFileUploadURL pAssignmentId_ pQuestionIdentifier_ =
   GetFileUploadURL'
     { _gfuuAssignmentId = pAssignmentId_
     , _gfuuQuestionIdentifier = pQuestionIdentifier_
     }
 
+
 -- | The ID of the assignment that contains the question with a FileUploadAnswer.
 gfuuAssignmentId :: Lens' GetFileUploadURL Text
-gfuuAssignmentId = lens _gfuuAssignmentId (\s a -> s {_gfuuAssignmentId = a})
+gfuuAssignmentId = lens _gfuuAssignmentId (\ s a -> s{_gfuuAssignmentId = a})
 
 -- | The identifier of the question with a FileUploadAnswer, as specified in the QuestionForm of the HIT.
 gfuuQuestionIdentifier :: Lens' GetFileUploadURL Text
-gfuuQuestionIdentifier =
-  lens _gfuuQuestionIdentifier (\s a -> s {_gfuuQuestionIdentifier = a})
+gfuuQuestionIdentifier = lens _gfuuQuestionIdentifier (\ s a -> s{_gfuuQuestionIdentifier = a})
 
 instance AWSRequest GetFileUploadURL where
-  type Rs GetFileUploadURL = GetFileUploadURLResponse
-  request = postJSON mechanicalTurk
-  response =
-    receiveJSON
-      (\s h x ->
-         GetFileUploadURLResponse' <$> (x .?> "FileUploadURL") <*>
-         (pure (fromEnum s)))
+        type Rs GetFileUploadURL = GetFileUploadURLResponse
+        request = postJSON mechanicalTurk
+        response
+          = receiveJSON
+              (\ s h x ->
+                 GetFileUploadURLResponse' <$>
+                   (x .?> "FileUploadURL") <*> (pure (fromEnum s)))
 
-instance Hashable GetFileUploadURL
+instance Hashable GetFileUploadURL where
 
-instance NFData GetFileUploadURL
+instance NFData GetFileUploadURL where
 
 instance ToHeaders GetFileUploadURL where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("MTurkRequesterServiceV20170117.GetFileUploadURL" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("MTurkRequesterServiceV20170117.GetFileUploadURL" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON GetFileUploadURL where
-  toJSON GetFileUploadURL' {..} =
-    object
-      (catMaybes
-         [ Just ("AssignmentId" .= _gfuuAssignmentId)
-         , Just ("QuestionIdentifier" .= _gfuuQuestionIdentifier)
-         ])
+        toJSON GetFileUploadURL'{..}
+          = object
+              (catMaybes
+                 [Just ("AssignmentId" .= _gfuuAssignmentId),
+                  Just
+                    ("QuestionIdentifier" .= _gfuuQuestionIdentifier)])
 
 instance ToPath GetFileUploadURL where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery GetFileUploadURL where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'getFileUploadURLResponse' smart constructor.
 data GetFileUploadURLResponse =
@@ -119,6 +125,7 @@ data GetFileUploadURLResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetFileUploadURLResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -126,21 +133,20 @@ data GetFileUploadURLResponse =
 -- * 'gfuursFileUploadURL' - A temporary URL for the file that the Worker uploaded for the answer.
 --
 -- * 'gfuursResponseStatus' - -- | The response status code.
-getFileUploadURLResponse ::
-     Int -- ^ 'gfuursResponseStatus'
-  -> GetFileUploadURLResponse
+getFileUploadURLResponse
+    :: Int -- ^ 'gfuursResponseStatus'
+    -> GetFileUploadURLResponse
 getFileUploadURLResponse pResponseStatus_ =
   GetFileUploadURLResponse'
     {_gfuursFileUploadURL = Nothing, _gfuursResponseStatus = pResponseStatus_}
 
+
 -- | A temporary URL for the file that the Worker uploaded for the answer.
 gfuursFileUploadURL :: Lens' GetFileUploadURLResponse (Maybe Text)
-gfuursFileUploadURL =
-  lens _gfuursFileUploadURL (\s a -> s {_gfuursFileUploadURL = a})
+gfuursFileUploadURL = lens _gfuursFileUploadURL (\ s a -> s{_gfuursFileUploadURL = a})
 
 -- | -- | The response status code.
 gfuursResponseStatus :: Lens' GetFileUploadURLResponse Int
-gfuursResponseStatus =
-  lens _gfuursResponseStatus (\s a -> s {_gfuursResponseStatus = a})
+gfuursResponseStatus = lens _gfuursResponseStatus (\ s a -> s{_gfuursResponseStatus = a})
 
-instance NFData GetFileUploadURLResponse
+instance NFData GetFileUploadURLResponse where

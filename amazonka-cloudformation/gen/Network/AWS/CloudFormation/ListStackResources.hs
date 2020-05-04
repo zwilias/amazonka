@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CloudFormation.ListStackResources
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,20 +26,22 @@
 --
 -- This operation returns paginated results.
 module Network.AWS.CloudFormation.ListStackResources
+    (
     -- * Creating a Request
-  ( listStackResources
-  , ListStackResources
+      listStackResources
+    , ListStackResources
     -- * Request Lenses
-  , lsrNextToken
-  , lsrStackName
+    , lsrNextToken
+    , lsrStackName
+
     -- * Destructuring the Response
-  , listStackResourcesResponse
-  , ListStackResourcesResponse
+    , listStackResourcesResponse
+    , ListStackResourcesResponse
     -- * Response Lenses
-  , lsrrsNextToken
-  , lsrrsStackResourceSummaries
-  , lsrrsResponseStatus
-  ) where
+    , lsrrsNextToken
+    , lsrrsStackResourceSummaries
+    , lsrrsResponseStatus
+    ) where
 
 import Network.AWS.CloudFormation.Types
 import Network.AWS.CloudFormation.Types.Product
@@ -59,6 +63,7 @@ data ListStackResources =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListStackResources' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -66,56 +71,58 @@ data ListStackResources =
 -- * 'lsrNextToken' - A string that identifies the next page of stack resources that you want to retrieve.
 --
 -- * 'lsrStackName' - The name or the unique stack ID that is associated with the stack, which are not always interchangeable:     * Running stacks: You can specify either the stack's name or its unique stack ID.     * Deleted stacks: You must specify the unique stack ID. Default: There is no default value.
-listStackResources ::
-     Text -- ^ 'lsrStackName'
-  -> ListStackResources
+listStackResources
+    :: Text -- ^ 'lsrStackName'
+    -> ListStackResources
 listStackResources pStackName_ =
   ListStackResources' {_lsrNextToken = Nothing, _lsrStackName = pStackName_}
 
+
 -- | A string that identifies the next page of stack resources that you want to retrieve.
 lsrNextToken :: Lens' ListStackResources (Maybe Text)
-lsrNextToken = lens _lsrNextToken (\s a -> s {_lsrNextToken = a})
+lsrNextToken = lens _lsrNextToken (\ s a -> s{_lsrNextToken = a})
 
 -- | The name or the unique stack ID that is associated with the stack, which are not always interchangeable:     * Running stacks: You can specify either the stack's name or its unique stack ID.     * Deleted stacks: You must specify the unique stack ID. Default: There is no default value.
 lsrStackName :: Lens' ListStackResources Text
-lsrStackName = lens _lsrStackName (\s a -> s {_lsrStackName = a})
+lsrStackName = lens _lsrStackName (\ s a -> s{_lsrStackName = a})
 
 instance AWSPager ListStackResources where
-  page rq rs
-    | stop (rs ^. lsrrsNextToken) = Nothing
-    | stop (rs ^. lsrrsStackResourceSummaries) = Nothing
-    | otherwise = Just $ rq & lsrNextToken .~ rs ^. lsrrsNextToken
+        page rq rs
+          | stop (rs ^. lsrrsNextToken) = Nothing
+          | stop (rs ^. lsrrsStackResourceSummaries) = Nothing
+          | otherwise =
+            Just $ rq & lsrNextToken .~ rs ^. lsrrsNextToken
 
 instance AWSRequest ListStackResources where
-  type Rs ListStackResources = ListStackResourcesResponse
-  request = postQuery cloudFormation
-  response =
-    receiveXMLWrapper
-      "ListStackResourcesResult"
-      (\s h x ->
-         ListStackResourcesResponse' <$> (x .@? "NextToken") <*>
-         (x .@? "StackResourceSummaries" .!@ mempty >>=
-          may (parseXMLList "member")) <*>
-         (pure (fromEnum s)))
+        type Rs ListStackResources =
+             ListStackResourcesResponse
+        request = postQuery cloudFormation
+        response
+          = receiveXMLWrapper "ListStackResourcesResult"
+              (\ s h x ->
+                 ListStackResourcesResponse' <$>
+                   (x .@? "NextToken") <*>
+                     (x .@? "StackResourceSummaries" .!@ mempty >>=
+                        may (parseXMLList "member"))
+                     <*> (pure (fromEnum s)))
 
-instance Hashable ListStackResources
+instance Hashable ListStackResources where
 
-instance NFData ListStackResources
+instance NFData ListStackResources where
 
 instance ToHeaders ListStackResources where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath ListStackResources where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery ListStackResources where
-  toQuery ListStackResources' {..} =
-    mconcat
-      [ "Action" =: ("ListStackResources" :: ByteString)
-      , "Version" =: ("2010-05-15" :: ByteString)
-      , "NextToken" =: _lsrNextToken
-      , "StackName" =: _lsrStackName
-      ]
+        toQuery ListStackResources'{..}
+          = mconcat
+              ["Action" =: ("ListStackResources" :: ByteString),
+               "Version" =: ("2010-05-15" :: ByteString),
+               "NextToken" =: _lsrNextToken,
+               "StackName" =: _lsrStackName]
 
 -- | The output for a 'ListStackResources' action.
 --
@@ -130,6 +137,7 @@ data ListStackResourcesResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListStackResourcesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -139,9 +147,9 @@ data ListStackResourcesResponse =
 -- * 'lsrrsStackResourceSummaries' - A list of @StackResourceSummary@ structures.
 --
 -- * 'lsrrsResponseStatus' - -- | The response status code.
-listStackResourcesResponse ::
-     Int -- ^ 'lsrrsResponseStatus'
-  -> ListStackResourcesResponse
+listStackResourcesResponse
+    :: Int -- ^ 'lsrrsResponseStatus'
+    -> ListStackResourcesResponse
 listStackResourcesResponse pResponseStatus_ =
   ListStackResourcesResponse'
     { _lsrrsNextToken = Nothing
@@ -149,22 +157,17 @@ listStackResourcesResponse pResponseStatus_ =
     , _lsrrsResponseStatus = pResponseStatus_
     }
 
+
 -- | If the output exceeds 1 MB, a string that identifies the next page of stack resources. If no additional page exists, this value is null.
 lsrrsNextToken :: Lens' ListStackResourcesResponse (Maybe Text)
-lsrrsNextToken = lens _lsrrsNextToken (\s a -> s {_lsrrsNextToken = a})
+lsrrsNextToken = lens _lsrrsNextToken (\ s a -> s{_lsrrsNextToken = a})
 
 -- | A list of @StackResourceSummary@ structures.
-lsrrsStackResourceSummaries ::
-     Lens' ListStackResourcesResponse [StackResourceSummary]
-lsrrsStackResourceSummaries =
-  lens
-    _lsrrsStackResourceSummaries
-    (\s a -> s {_lsrrsStackResourceSummaries = a}) .
-  _Default . _Coerce
+lsrrsStackResourceSummaries :: Lens' ListStackResourcesResponse [StackResourceSummary]
+lsrrsStackResourceSummaries = lens _lsrrsStackResourceSummaries (\ s a -> s{_lsrrsStackResourceSummaries = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 lsrrsResponseStatus :: Lens' ListStackResourcesResponse Int
-lsrrsResponseStatus =
-  lens _lsrrsResponseStatus (\s a -> s {_lsrrsResponseStatus = a})
+lsrrsResponseStatus = lens _lsrrsResponseStatus (\ s a -> s{_lsrrsResponseStatus = a})
 
-instance NFData ListStackResourcesResponse
+instance NFData ListStackResourcesResponse where

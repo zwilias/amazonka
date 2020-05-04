@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CognitoIdentityProvider.ChangePassword
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,19 +22,21 @@
 --
 --
 module Network.AWS.CognitoIdentityProvider.ChangePassword
+    (
     -- * Creating a Request
-  ( changePassword
-  , ChangePassword
+      changePassword
+    , ChangePassword
     -- * Request Lenses
-  , cpPreviousPassword
-  , cpProposedPassword
-  , cpAccessToken
+    , cpPreviousPassword
+    , cpProposedPassword
+    , cpAccessToken
+
     -- * Destructuring the Response
-  , changePasswordResponse
-  , ChangePasswordResponse
+    , changePasswordResponse
+    , ChangePasswordResponse
     -- * Response Lenses
-  , cprsResponseStatus
-  ) where
+    , cprsResponseStatus
+    ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
 import Network.AWS.CognitoIdentityProvider.Types.Product
@@ -54,6 +58,7 @@ data ChangePassword =
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ChangePassword' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -63,11 +68,11 @@ data ChangePassword =
 -- * 'cpProposedPassword' - The new password.
 --
 -- * 'cpAccessToken' - The access token.
-changePassword ::
-     Text -- ^ 'cpPreviousPassword'
-  -> Text -- ^ 'cpProposedPassword'
-  -> Text -- ^ 'cpAccessToken'
-  -> ChangePassword
+changePassword
+    :: Text -- ^ 'cpPreviousPassword'
+    -> Text -- ^ 'cpProposedPassword'
+    -> Text -- ^ 'cpAccessToken'
+    -> ChangePassword
 changePassword pPreviousPassword_ pProposedPassword_ pAccessToken_ =
   ChangePassword'
     { _cpPreviousPassword = _Sensitive # pPreviousPassword_
@@ -75,54 +80,54 @@ changePassword pPreviousPassword_ pProposedPassword_ pAccessToken_ =
     , _cpAccessToken = _Sensitive # pAccessToken_
     }
 
+
 -- | The old password.
 cpPreviousPassword :: Lens' ChangePassword Text
-cpPreviousPassword =
-  lens _cpPreviousPassword (\s a -> s {_cpPreviousPassword = a}) . _Sensitive
+cpPreviousPassword = lens _cpPreviousPassword (\ s a -> s{_cpPreviousPassword = a}) . _Sensitive
 
 -- | The new password.
 cpProposedPassword :: Lens' ChangePassword Text
-cpProposedPassword =
-  lens _cpProposedPassword (\s a -> s {_cpProposedPassword = a}) . _Sensitive
+cpProposedPassword = lens _cpProposedPassword (\ s a -> s{_cpProposedPassword = a}) . _Sensitive
 
 -- | The access token.
 cpAccessToken :: Lens' ChangePassword Text
-cpAccessToken =
-  lens _cpAccessToken (\s a -> s {_cpAccessToken = a}) . _Sensitive
+cpAccessToken = lens _cpAccessToken (\ s a -> s{_cpAccessToken = a}) . _Sensitive
 
 instance AWSRequest ChangePassword where
-  type Rs ChangePassword = ChangePasswordResponse
-  request = postJSON cognitoIdentityProvider
-  response =
-    receiveEmpty (\s h x -> ChangePasswordResponse' <$> (pure (fromEnum s)))
+        type Rs ChangePassword = ChangePasswordResponse
+        request = postJSON cognitoIdentityProvider
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 ChangePasswordResponse' <$> (pure (fromEnum s)))
 
-instance Hashable ChangePassword
+instance Hashable ChangePassword where
 
-instance NFData ChangePassword
+instance NFData ChangePassword where
 
 instance ToHeaders ChangePassword where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AWSCognitoIdentityProviderService.ChangePassword" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWSCognitoIdentityProviderService.ChangePassword"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON ChangePassword where
-  toJSON ChangePassword' {..} =
-    object
-      (catMaybes
-         [ Just ("PreviousPassword" .= _cpPreviousPassword)
-         , Just ("ProposedPassword" .= _cpProposedPassword)
-         , Just ("AccessToken" .= _cpAccessToken)
-         ])
+        toJSON ChangePassword'{..}
+          = object
+              (catMaybes
+                 [Just ("PreviousPassword" .= _cpPreviousPassword),
+                  Just ("ProposedPassword" .= _cpProposedPassword),
+                  Just ("AccessToken" .= _cpAccessToken)])
 
 instance ToPath ChangePassword where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery ChangePassword where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | The response from the server to the change password request.
 --
@@ -135,20 +140,21 @@ newtype ChangePasswordResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ChangePasswordResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'cprsResponseStatus' - -- | The response status code.
-changePasswordResponse ::
-     Int -- ^ 'cprsResponseStatus'
-  -> ChangePasswordResponse
+changePasswordResponse
+    :: Int -- ^ 'cprsResponseStatus'
+    -> ChangePasswordResponse
 changePasswordResponse pResponseStatus_ =
   ChangePasswordResponse' {_cprsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 cprsResponseStatus :: Lens' ChangePasswordResponse Int
-cprsResponseStatus =
-  lens _cprsResponseStatus (\s a -> s {_cprsResponseStatus = a})
+cprsResponseStatus = lens _cprsResponseStatus (\ s a -> s{_cprsResponseStatus = a})
 
-instance NFData ChangePasswordResponse
+instance NFData ChangePasswordResponse where

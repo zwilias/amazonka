@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.ImportExport.ListJobs
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,21 +22,23 @@
 --
 -- This operation returns paginated results.
 module Network.AWS.ImportExport.ListJobs
+    (
     -- * Creating a Request
-  ( listJobs
-  , ListJobs
+      listJobs
+    , ListJobs
     -- * Request Lenses
-  , ljAPIVersion
-  , ljMarker
-  , ljMaxJobs
+    , ljAPIVersion
+    , ljMarker
+    , ljMaxJobs
+
     -- * Destructuring the Response
-  , listJobsResponse
-  , ListJobsResponse
+    , listJobsResponse
+    , ListJobsResponse
     -- * Response Lenses
-  , ljrsJobs
-  , ljrsIsTruncated
-  , ljrsResponseStatus
-  ) where
+    , ljrsJobs
+    , ljrsIsTruncated
+    , ljrsResponseStatus
+    ) where
 
 import Network.AWS.ImportExport.Types
 import Network.AWS.ImportExport.Types.Product
@@ -55,6 +59,7 @@ data ListJobs =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListJobs' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -64,60 +69,63 @@ data ListJobs =
 -- * 'ljMarker' - Undocumented member.
 --
 -- * 'ljMaxJobs' - Undocumented member.
-listJobs :: ListJobs
+listJobs
+    :: ListJobs
 listJobs =
   ListJobs' {_ljAPIVersion = Nothing, _ljMarker = Nothing, _ljMaxJobs = Nothing}
 
+
 -- | Undocumented member.
 ljAPIVersion :: Lens' ListJobs (Maybe Text)
-ljAPIVersion = lens _ljAPIVersion (\s a -> s {_ljAPIVersion = a})
+ljAPIVersion = lens _ljAPIVersion (\ s a -> s{_ljAPIVersion = a})
 
 -- | Undocumented member.
 ljMarker :: Lens' ListJobs (Maybe Text)
-ljMarker = lens _ljMarker (\s a -> s {_ljMarker = a})
+ljMarker = lens _ljMarker (\ s a -> s{_ljMarker = a})
 
 -- | Undocumented member.
 ljMaxJobs :: Lens' ListJobs (Maybe Int)
-ljMaxJobs = lens _ljMaxJobs (\s a -> s {_ljMaxJobs = a})
+ljMaxJobs = lens _ljMaxJobs (\ s a -> s{_ljMaxJobs = a})
 
 instance AWSPager ListJobs where
-  page rq rs
-    | stop (rs ^. ljrsIsTruncated) = Nothing
-    | isNothing (rs ^? ljrsJobs . _last . jobJobId) = Nothing
-    | otherwise = Just $ rq & ljMarker .~ rs ^? ljrsJobs . _last . jobJobId
+        page rq rs
+          | stop (rs ^. ljrsIsTruncated) = Nothing
+          | isNothing (rs ^? ljrsJobs . _last . jobJobId) =
+            Nothing
+          | otherwise =
+            Just $ rq &
+              ljMarker .~ rs ^? ljrsJobs . _last . jobJobId
 
 instance AWSRequest ListJobs where
-  type Rs ListJobs = ListJobsResponse
-  request = postQuery importExport
-  response =
-    receiveXMLWrapper
-      "ListJobsResult"
-      (\s h x ->
-         ListJobsResponse' <$>
-         (x .@? "Jobs" .!@ mempty >>= may (parseXMLList "member")) <*>
-         (x .@? "IsTruncated") <*>
-         (pure (fromEnum s)))
+        type Rs ListJobs = ListJobsResponse
+        request = postQuery importExport
+        response
+          = receiveXMLWrapper "ListJobsResult"
+              (\ s h x ->
+                 ListJobsResponse' <$>
+                   (x .@? "Jobs" .!@ mempty >>=
+                      may (parseXMLList "member"))
+                     <*> (x .@? "IsTruncated")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable ListJobs
+instance Hashable ListJobs where
 
-instance NFData ListJobs
+instance NFData ListJobs where
 
 instance ToHeaders ListJobs where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath ListJobs where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery ListJobs where
-  toQuery ListJobs' {..} =
-    mconcat
-      [ "Operation=ListJobs"
-      , "Action" =: ("ListJobs" :: ByteString)
-      , "Version" =: ("2010-06-01" :: ByteString)
-      , "APIVersion" =: _ljAPIVersion
-      , "Marker" =: _ljMarker
-      , "MaxJobs" =: _ljMaxJobs
-      ]
+        toQuery ListJobs'{..}
+          = mconcat
+              ["Operation=ListJobs",
+               "Action" =: ("ListJobs" :: ByteString),
+               "Version" =: ("2010-06-01" :: ByteString),
+               "APIVersion" =: _ljAPIVersion, "Marker" =: _ljMarker,
+               "MaxJobs" =: _ljMaxJobs]
 
 -- | Output structure for the ListJobs operation.
 --
@@ -130,6 +138,7 @@ data ListJobsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListJobsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -139,9 +148,9 @@ data ListJobsResponse =
 -- * 'ljrsIsTruncated' - Undocumented member.
 --
 -- * 'ljrsResponseStatus' - -- | The response status code.
-listJobsResponse ::
-     Int -- ^ 'ljrsResponseStatus'
-  -> ListJobsResponse
+listJobsResponse
+    :: Int -- ^ 'ljrsResponseStatus'
+    -> ListJobsResponse
 listJobsResponse pResponseStatus_ =
   ListJobsResponse'
     { _ljrsJobs = Nothing
@@ -149,17 +158,17 @@ listJobsResponse pResponseStatus_ =
     , _ljrsResponseStatus = pResponseStatus_
     }
 
+
 -- | Undocumented member.
 ljrsJobs :: Lens' ListJobsResponse [Job]
-ljrsJobs = lens _ljrsJobs (\s a -> s {_ljrsJobs = a}) . _Default . _Coerce
+ljrsJobs = lens _ljrsJobs (\ s a -> s{_ljrsJobs = a}) . _Default . _Coerce
 
 -- | Undocumented member.
 ljrsIsTruncated :: Lens' ListJobsResponse (Maybe Bool)
-ljrsIsTruncated = lens _ljrsIsTruncated (\s a -> s {_ljrsIsTruncated = a})
+ljrsIsTruncated = lens _ljrsIsTruncated (\ s a -> s{_ljrsIsTruncated = a})
 
 -- | -- | The response status code.
 ljrsResponseStatus :: Lens' ListJobsResponse Int
-ljrsResponseStatus =
-  lens _ljrsResponseStatus (\s a -> s {_ljrsResponseStatus = a})
+ljrsResponseStatus = lens _ljrsResponseStatus (\ s a -> s{_ljrsResponseStatus = a})
 
-instance NFData ListJobsResponse
+instance NFData ListJobsResponse where

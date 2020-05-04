@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.StorageGateway.AddWorkingStorage
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,19 +24,21 @@
 -- In the request, you specify the gateway Amazon Resource Name (ARN) to which you want to add working storage, and one or more disk IDs that you want to configure as working storage.
 --
 module Network.AWS.StorageGateway.AddWorkingStorage
+    (
     -- * Creating a Request
-  ( addWorkingStorage
-  , AddWorkingStorage
+      addWorkingStorage
+    , AddWorkingStorage
     -- * Request Lenses
-  , awsGatewayARN
-  , awsDiskIds
+    , awsGatewayARN
+    , awsDiskIds
+
     -- * Destructuring the Response
-  , addWorkingStorageResponse
-  , AddWorkingStorageResponse
+    , addWorkingStorageResponse
+    , AddWorkingStorageResponse
     -- * Response Lenses
-  , awsrsGatewayARN
-  , awsrsResponseStatus
-  ) where
+    , awsrsGatewayARN
+    , awsrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -59,6 +63,7 @@ data AddWorkingStorage =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AddWorkingStorage' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -66,55 +71,56 @@ data AddWorkingStorage =
 -- * 'awsGatewayARN' - Undocumented member.
 --
 -- * 'awsDiskIds' - An array of strings that identify disks that are to be configured as working storage. Each string have a minimum length of 1 and maximum length of 300. You can get the disk IDs from the 'ListLocalDisks' API.
-addWorkingStorage ::
-     Text -- ^ 'awsGatewayARN'
-  -> AddWorkingStorage
+addWorkingStorage
+    :: Text -- ^ 'awsGatewayARN'
+    -> AddWorkingStorage
 addWorkingStorage pGatewayARN_ =
   AddWorkingStorage' {_awsGatewayARN = pGatewayARN_, _awsDiskIds = mempty}
 
+
 -- | Undocumented member.
 awsGatewayARN :: Lens' AddWorkingStorage Text
-awsGatewayARN = lens _awsGatewayARN (\s a -> s {_awsGatewayARN = a})
+awsGatewayARN = lens _awsGatewayARN (\ s a -> s{_awsGatewayARN = a})
 
 -- | An array of strings that identify disks that are to be configured as working storage. Each string have a minimum length of 1 and maximum length of 300. You can get the disk IDs from the 'ListLocalDisks' API.
 awsDiskIds :: Lens' AddWorkingStorage [Text]
-awsDiskIds = lens _awsDiskIds (\s a -> s {_awsDiskIds = a}) . _Coerce
+awsDiskIds = lens _awsDiskIds (\ s a -> s{_awsDiskIds = a}) . _Coerce
 
 instance AWSRequest AddWorkingStorage where
-  type Rs AddWorkingStorage = AddWorkingStorageResponse
-  request = postJSON storageGateway
-  response =
-    receiveJSON
-      (\s h x ->
-         AddWorkingStorageResponse' <$> (x .?> "GatewayARN") <*>
-         (pure (fromEnum s)))
+        type Rs AddWorkingStorage = AddWorkingStorageResponse
+        request = postJSON storageGateway
+        response
+          = receiveJSON
+              (\ s h x ->
+                 AddWorkingStorageResponse' <$>
+                   (x .?> "GatewayARN") <*> (pure (fromEnum s)))
 
-instance Hashable AddWorkingStorage
+instance Hashable AddWorkingStorage where
 
-instance NFData AddWorkingStorage
+instance NFData AddWorkingStorage where
 
 instance ToHeaders AddWorkingStorage where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("StorageGateway_20130630.AddWorkingStorage" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("StorageGateway_20130630.AddWorkingStorage" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON AddWorkingStorage where
-  toJSON AddWorkingStorage' {..} =
-    object
-      (catMaybes
-         [ Just ("GatewayARN" .= _awsGatewayARN)
-         , Just ("DiskIds" .= _awsDiskIds)
-         ])
+        toJSON AddWorkingStorage'{..}
+          = object
+              (catMaybes
+                 [Just ("GatewayARN" .= _awsGatewayARN),
+                  Just ("DiskIds" .= _awsDiskIds)])
 
 instance ToPath AddWorkingStorage where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery AddWorkingStorage where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | A JSON object containing the of the gateway for which working storage was configured.
 --
@@ -128,6 +134,7 @@ data AddWorkingStorageResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AddWorkingStorageResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -135,20 +142,20 @@ data AddWorkingStorageResponse =
 -- * 'awsrsGatewayARN' - Undocumented member.
 --
 -- * 'awsrsResponseStatus' - -- | The response status code.
-addWorkingStorageResponse ::
-     Int -- ^ 'awsrsResponseStatus'
-  -> AddWorkingStorageResponse
+addWorkingStorageResponse
+    :: Int -- ^ 'awsrsResponseStatus'
+    -> AddWorkingStorageResponse
 addWorkingStorageResponse pResponseStatus_ =
   AddWorkingStorageResponse'
     {_awsrsGatewayARN = Nothing, _awsrsResponseStatus = pResponseStatus_}
 
+
 -- | Undocumented member.
 awsrsGatewayARN :: Lens' AddWorkingStorageResponse (Maybe Text)
-awsrsGatewayARN = lens _awsrsGatewayARN (\s a -> s {_awsrsGatewayARN = a})
+awsrsGatewayARN = lens _awsrsGatewayARN (\ s a -> s{_awsrsGatewayARN = a})
 
 -- | -- | The response status code.
 awsrsResponseStatus :: Lens' AddWorkingStorageResponse Int
-awsrsResponseStatus =
-  lens _awsrsResponseStatus (\s a -> s {_awsrsResponseStatus = a})
+awsrsResponseStatus = lens _awsrsResponseStatus (\ s a -> s{_awsrsResponseStatus = a})
 
-instance NFData AddWorkingStorageResponse
+instance NFData AddWorkingStorageResponse where

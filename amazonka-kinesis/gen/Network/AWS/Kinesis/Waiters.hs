@@ -1,8 +1,10 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TypeFamilies      #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Kinesis.Waiters
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -35,6 +37,7 @@ streamExists =
         ]
     }
 
+
 -- | Polls 'Network.AWS.Kinesis.DescribeStream' every 10 seconds until a successful state is reached. An error is returned after 18 failed checks.
 streamNotExists :: Wait DescribeStream
 streamNotExists =
@@ -44,3 +47,4 @@ streamNotExists =
     , _waitDelay = 10
     , _waitAcceptors = [matchError "ResourceNotFoundException" AcceptSuccess]
     }
+

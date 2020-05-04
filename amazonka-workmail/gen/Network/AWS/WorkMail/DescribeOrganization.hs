@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.WorkMail.DescribeOrganization
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,25 +22,27 @@
 --
 --
 module Network.AWS.WorkMail.DescribeOrganization
+    (
     -- * Creating a Request
-  ( describeOrganization
-  , DescribeOrganization
+      describeOrganization
+    , DescribeOrganization
     -- * Request Lenses
-  , doOrganizationId
+    , doOrganizationId
+
     -- * Destructuring the Response
-  , describeOrganizationResponse
-  , DescribeOrganizationResponse
+    , describeOrganizationResponse
+    , DescribeOrganizationResponse
     -- * Response Lenses
-  , dorsDirectoryId
-  , dorsState
-  , dorsAlias
-  , dorsCompletedDate
-  , dorsDirectoryType
-  , dorsDefaultMailDomain
-  , dorsErrorMessage
-  , dorsOrganizationId
-  , dorsResponseStatus
-  ) where
+    , dorsDirectoryId
+    , dorsState
+    , dorsAlias
+    , dorsCompletedDate
+    , dorsDirectoryType
+    , dorsDefaultMailDomain
+    , dorsErrorMessage
+    , dorsOrganizationId
+    , dorsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -54,59 +58,65 @@ newtype DescribeOrganization =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeOrganization' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'doOrganizationId' - The identifier for the organization to be described.
-describeOrganization ::
-     Text -- ^ 'doOrganizationId'
-  -> DescribeOrganization
+describeOrganization
+    :: Text -- ^ 'doOrganizationId'
+    -> DescribeOrganization
 describeOrganization pOrganizationId_ =
   DescribeOrganization' {_doOrganizationId = pOrganizationId_}
 
+
 -- | The identifier for the organization to be described.
 doOrganizationId :: Lens' DescribeOrganization Text
-doOrganizationId = lens _doOrganizationId (\s a -> s {_doOrganizationId = a})
+doOrganizationId = lens _doOrganizationId (\ s a -> s{_doOrganizationId = a})
 
 instance AWSRequest DescribeOrganization where
-  type Rs DescribeOrganization = DescribeOrganizationResponse
-  request = postJSON workMail
-  response =
-    receiveJSON
-      (\s h x ->
-         DescribeOrganizationResponse' <$> (x .?> "DirectoryId") <*>
-         (x .?> "State") <*>
-         (x .?> "Alias") <*>
-         (x .?> "CompletedDate") <*>
-         (x .?> "DirectoryType") <*>
-         (x .?> "DefaultMailDomain") <*>
-         (x .?> "ErrorMessage") <*>
-         (x .?> "OrganizationId") <*>
-         (pure (fromEnum s)))
+        type Rs DescribeOrganization =
+             DescribeOrganizationResponse
+        request = postJSON workMail
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DescribeOrganizationResponse' <$>
+                   (x .?> "DirectoryId") <*> (x .?> "State") <*>
+                     (x .?> "Alias")
+                     <*> (x .?> "CompletedDate")
+                     <*> (x .?> "DirectoryType")
+                     <*> (x .?> "DefaultMailDomain")
+                     <*> (x .?> "ErrorMessage")
+                     <*> (x .?> "OrganizationId")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable DescribeOrganization
+instance Hashable DescribeOrganization where
 
-instance NFData DescribeOrganization
+instance NFData DescribeOrganization where
 
 instance ToHeaders DescribeOrganization where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("WorkMailService.DescribeOrganization" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("WorkMailService.DescribeOrganization" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DescribeOrganization where
-  toJSON DescribeOrganization' {..} =
-    object (catMaybes [Just ("OrganizationId" .= _doOrganizationId)])
+        toJSON DescribeOrganization'{..}
+          = object
+              (catMaybes
+                 [Just ("OrganizationId" .= _doOrganizationId)])
 
 instance ToPath DescribeOrganization where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DescribeOrganization where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'describeOrganizationResponse' smart constructor.
 data DescribeOrganizationResponse =
@@ -122,6 +132,7 @@ data DescribeOrganizationResponse =
     , _dorsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'DescribeOrganizationResponse' with the minimum fields required to make a request.
 --
@@ -144,9 +155,9 @@ data DescribeOrganizationResponse =
 -- * 'dorsOrganizationId' - The identifier of an organization.
 --
 -- * 'dorsResponseStatus' - -- | The response status code.
-describeOrganizationResponse ::
-     Int -- ^ 'dorsResponseStatus'
-  -> DescribeOrganizationResponse
+describeOrganizationResponse
+    :: Int -- ^ 'dorsResponseStatus'
+    -> DescribeOrganizationResponse
 describeOrganizationResponse pResponseStatus_ =
   DescribeOrganizationResponse'
     { _dorsDirectoryId = Nothing
@@ -160,44 +171,41 @@ describeOrganizationResponse pResponseStatus_ =
     , _dorsResponseStatus = pResponseStatus_
     }
 
+
 -- | The identifier for the directory associated with an Amazon WorkMail organization.
 dorsDirectoryId :: Lens' DescribeOrganizationResponse (Maybe Text)
-dorsDirectoryId = lens _dorsDirectoryId (\s a -> s {_dorsDirectoryId = a})
+dorsDirectoryId = lens _dorsDirectoryId (\ s a -> s{_dorsDirectoryId = a})
 
 -- | The state of an organization.
 dorsState :: Lens' DescribeOrganizationResponse (Maybe Text)
-dorsState = lens _dorsState (\s a -> s {_dorsState = a})
+dorsState = lens _dorsState (\ s a -> s{_dorsState = a})
 
 -- | The alias for an organization.
 dorsAlias :: Lens' DescribeOrganizationResponse (Maybe Text)
-dorsAlias = lens _dorsAlias (\s a -> s {_dorsAlias = a})
+dorsAlias = lens _dorsAlias (\ s a -> s{_dorsAlias = a})
 
 -- | The date at which the organization became usable in the Amazon WorkMail context, in UNIX epoch time format.
 dorsCompletedDate :: Lens' DescribeOrganizationResponse (Maybe UTCTime)
-dorsCompletedDate =
-  lens _dorsCompletedDate (\s a -> s {_dorsCompletedDate = a}) . mapping _Time
+dorsCompletedDate = lens _dorsCompletedDate (\ s a -> s{_dorsCompletedDate = a}) . mapping _Time
 
 -- | The type of directory associated with the Amazon WorkMail organization.
 dorsDirectoryType :: Lens' DescribeOrganizationResponse (Maybe Text)
-dorsDirectoryType = lens _dorsDirectoryType (\s a -> s {_dorsDirectoryType = a})
+dorsDirectoryType = lens _dorsDirectoryType (\ s a -> s{_dorsDirectoryType = a})
 
 -- | The default mail domain associated with the organization.
 dorsDefaultMailDomain :: Lens' DescribeOrganizationResponse (Maybe Text)
-dorsDefaultMailDomain =
-  lens _dorsDefaultMailDomain (\s a -> s {_dorsDefaultMailDomain = a})
+dorsDefaultMailDomain = lens _dorsDefaultMailDomain (\ s a -> s{_dorsDefaultMailDomain = a})
 
 -- | The (optional) error message indicating if unexpected behavior was encountered with regards to the organization.
 dorsErrorMessage :: Lens' DescribeOrganizationResponse (Maybe Text)
-dorsErrorMessage = lens _dorsErrorMessage (\s a -> s {_dorsErrorMessage = a})
+dorsErrorMessage = lens _dorsErrorMessage (\ s a -> s{_dorsErrorMessage = a})
 
 -- | The identifier of an organization.
 dorsOrganizationId :: Lens' DescribeOrganizationResponse (Maybe Text)
-dorsOrganizationId =
-  lens _dorsOrganizationId (\s a -> s {_dorsOrganizationId = a})
+dorsOrganizationId = lens _dorsOrganizationId (\ s a -> s{_dorsOrganizationId = a})
 
 -- | -- | The response status code.
 dorsResponseStatus :: Lens' DescribeOrganizationResponse Int
-dorsResponseStatus =
-  lens _dorsResponseStatus (\s a -> s {_dorsResponseStatus = a})
+dorsResponseStatus = lens _dorsResponseStatus (\ s a -> s{_dorsResponseStatus = a})
 
-instance NFData DescribeOrganizationResponse
+instance NFData DescribeOrganizationResponse where

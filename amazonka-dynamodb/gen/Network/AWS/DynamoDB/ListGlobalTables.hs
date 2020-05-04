@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.DynamoDB.ListGlobalTables
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -16,25 +18,27 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Lists all global tables that have a replica in the specified region.
+-- Lists all global tables that have a replica in the specified Region.
 --
 --
 module Network.AWS.DynamoDB.ListGlobalTables
+    (
     -- * Creating a Request
-  ( listGlobalTables
-  , ListGlobalTables
+      listGlobalTables
+    , ListGlobalTables
     -- * Request Lenses
-  , lgtRegionName
-  , lgtExclusiveStartGlobalTableName
-  , lgtLimit
+    , lgtRegionName
+    , lgtExclusiveStartGlobalTableName
+    , lgtLimit
+
     -- * Destructuring the Response
-  , listGlobalTablesResponse
-  , ListGlobalTablesResponse
+    , listGlobalTablesResponse
+    , ListGlobalTablesResponse
     -- * Response Lenses
-  , lgtrsLastEvaluatedGlobalTableName
-  , lgtrsGlobalTables
-  , lgtrsResponseStatus
-  ) where
+    , lgtrsLastEvaluatedGlobalTableName
+    , lgtrsGlobalTables
+    , lgtrsResponseStatus
+    ) where
 
 import Network.AWS.DynamoDB.Types
 import Network.AWS.DynamoDB.Types.Product
@@ -52,16 +56,18 @@ data ListGlobalTables =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListGlobalTables' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lgtRegionName' - Lists the global tables in a specific region.
+-- * 'lgtRegionName' - Lists the global tables in a specific Region.
 --
 -- * 'lgtExclusiveStartGlobalTableName' - The first global table name that this operation will evaluate.
 --
--- * 'lgtLimit' - The maximum number of table names to return.
-listGlobalTables :: ListGlobalTables
+-- * 'lgtLimit' - The maximum number of table names to return, if the parameter is not specified DynamoDB defaults to 100. If the number of global tables DynamoDB finds reaches this limit, it stops the operation and returns the table names collected up to that point, with a table name in the @LastEvaluatedGlobalTableName@ to apply in a subsequent operation to the @ExclusiveStartGlobalTableName@ parameter.
+listGlobalTables
+    :: ListGlobalTables
 listGlobalTables =
   ListGlobalTables'
     { _lgtRegionName = Nothing
@@ -69,59 +75,57 @@ listGlobalTables =
     , _lgtLimit = Nothing
     }
 
--- | Lists the global tables in a specific region.
+
+-- | Lists the global tables in a specific Region.
 lgtRegionName :: Lens' ListGlobalTables (Maybe Text)
-lgtRegionName = lens _lgtRegionName (\s a -> s {_lgtRegionName = a})
+lgtRegionName = lens _lgtRegionName (\ s a -> s{_lgtRegionName = a})
 
 -- | The first global table name that this operation will evaluate.
 lgtExclusiveStartGlobalTableName :: Lens' ListGlobalTables (Maybe Text)
-lgtExclusiveStartGlobalTableName =
-  lens
-    _lgtExclusiveStartGlobalTableName
-    (\s a -> s {_lgtExclusiveStartGlobalTableName = a})
+lgtExclusiveStartGlobalTableName = lens _lgtExclusiveStartGlobalTableName (\ s a -> s{_lgtExclusiveStartGlobalTableName = a})
 
--- | The maximum number of table names to return.
+-- | The maximum number of table names to return, if the parameter is not specified DynamoDB defaults to 100. If the number of global tables DynamoDB finds reaches this limit, it stops the operation and returns the table names collected up to that point, with a table name in the @LastEvaluatedGlobalTableName@ to apply in a subsequent operation to the @ExclusiveStartGlobalTableName@ parameter.
 lgtLimit :: Lens' ListGlobalTables (Maybe Natural)
-lgtLimit = lens _lgtLimit (\s a -> s {_lgtLimit = a}) . mapping _Nat
+lgtLimit = lens _lgtLimit (\ s a -> s{_lgtLimit = a}) . mapping _Nat
 
 instance AWSRequest ListGlobalTables where
-  type Rs ListGlobalTables = ListGlobalTablesResponse
-  request = postJSON dynamoDB
-  response =
-    receiveJSON
-      (\s h x ->
-         ListGlobalTablesResponse' <$> (x .?> "LastEvaluatedGlobalTableName") <*>
-         (x .?> "GlobalTables" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs ListGlobalTables = ListGlobalTablesResponse
+        request = postJSON dynamoDB
+        response
+          = receiveJSON
+              (\ s h x ->
+                 ListGlobalTablesResponse' <$>
+                   (x .?> "LastEvaluatedGlobalTableName") <*>
+                     (x .?> "GlobalTables" .!@ mempty)
+                     <*> (pure (fromEnum s)))
 
-instance Hashable ListGlobalTables
+instance Hashable ListGlobalTables where
 
-instance NFData ListGlobalTables
+instance NFData ListGlobalTables where
 
 instance ToHeaders ListGlobalTables where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("DynamoDB_20120810.ListGlobalTables" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.0" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("DynamoDB_20120810.ListGlobalTables" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.0" :: ByteString)])
 
 instance ToJSON ListGlobalTables where
-  toJSON ListGlobalTables' {..} =
-    object
-      (catMaybes
-         [ ("RegionName" .=) <$> _lgtRegionName
-         , ("ExclusiveStartGlobalTableName" .=) <$>
-           _lgtExclusiveStartGlobalTableName
-         , ("Limit" .=) <$> _lgtLimit
-         ])
+        toJSON ListGlobalTables'{..}
+          = object
+              (catMaybes
+                 [("RegionName" .=) <$> _lgtRegionName,
+                  ("ExclusiveStartGlobalTableName" .=) <$>
+                    _lgtExclusiveStartGlobalTableName,
+                  ("Limit" .=) <$> _lgtLimit])
 
 instance ToPath ListGlobalTables where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery ListGlobalTables where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'listGlobalTablesResponse' smart constructor.
 data ListGlobalTablesResponse =
@@ -132,6 +136,7 @@ data ListGlobalTablesResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListGlobalTablesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -141,9 +146,9 @@ data ListGlobalTablesResponse =
 -- * 'lgtrsGlobalTables' - List of global table names.
 --
 -- * 'lgtrsResponseStatus' - -- | The response status code.
-listGlobalTablesResponse ::
-     Int -- ^ 'lgtrsResponseStatus'
-  -> ListGlobalTablesResponse
+listGlobalTablesResponse
+    :: Int -- ^ 'lgtrsResponseStatus'
+    -> ListGlobalTablesResponse
 listGlobalTablesResponse pResponseStatus_ =
   ListGlobalTablesResponse'
     { _lgtrsLastEvaluatedGlobalTableName = Nothing
@@ -151,22 +156,17 @@ listGlobalTablesResponse pResponseStatus_ =
     , _lgtrsResponseStatus = pResponseStatus_
     }
 
+
 -- | Last evaluated global table name.
 lgtrsLastEvaluatedGlobalTableName :: Lens' ListGlobalTablesResponse (Maybe Text)
-lgtrsLastEvaluatedGlobalTableName =
-  lens
-    _lgtrsLastEvaluatedGlobalTableName
-    (\s a -> s {_lgtrsLastEvaluatedGlobalTableName = a})
+lgtrsLastEvaluatedGlobalTableName = lens _lgtrsLastEvaluatedGlobalTableName (\ s a -> s{_lgtrsLastEvaluatedGlobalTableName = a})
 
 -- | List of global table names.
 lgtrsGlobalTables :: Lens' ListGlobalTablesResponse [GlobalTable]
-lgtrsGlobalTables =
-  lens _lgtrsGlobalTables (\s a -> s {_lgtrsGlobalTables = a}) .
-  _Default . _Coerce
+lgtrsGlobalTables = lens _lgtrsGlobalTables (\ s a -> s{_lgtrsGlobalTables = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 lgtrsResponseStatus :: Lens' ListGlobalTablesResponse Int
-lgtrsResponseStatus =
-  lens _lgtrsResponseStatus (\s a -> s {_lgtrsResponseStatus = a})
+lgtrsResponseStatus = lens _lgtrsResponseStatus (\ s a -> s{_lgtrsResponseStatus = a})
 
-instance NFData ListGlobalTablesResponse
+instance NFData ListGlobalTablesResponse where

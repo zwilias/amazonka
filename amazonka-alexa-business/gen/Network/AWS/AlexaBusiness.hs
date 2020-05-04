@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.AlexaBusiness
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -14,301 +15,392 @@
 --
 --
 module Network.AWS.AlexaBusiness
+    (
     -- * Service Configuration
-  ( alexaBusiness
+      alexaBusiness
+
     -- * Errors
     -- $errors
+
     -- ** InvalidUserStatusException
-  , _InvalidUserStatusException
+    , _InvalidUserStatusException
+
     -- ** NotFoundException
-  , _NotFoundException
+    , _NotFoundException
+
     -- ** NameInUseException
-  , _NameInUseException
+    , _NameInUseException
+
     -- ** AlreadyExistsException
-  , _AlreadyExistsException
+    , _AlreadyExistsException
+
     -- ** LimitExceededException
-  , _LimitExceededException
+    , _LimitExceededException
+
     -- ** ResourceInUseException
-  , _ResourceInUseException
+    , _ResourceInUseException
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
+
     -- ** SearchUsers (Paginated)
-  , module Network.AWS.AlexaBusiness.SearchUsers
+    , module Network.AWS.AlexaBusiness.SearchUsers
+
     -- ** AssociateSkillGroupWithRoom
-  , module Network.AWS.AlexaBusiness.AssociateSkillGroupWithRoom
+    , module Network.AWS.AlexaBusiness.AssociateSkillGroupWithRoom
+
     -- ** DeleteProfile
-  , module Network.AWS.AlexaBusiness.DeleteProfile
+    , module Network.AWS.AlexaBusiness.DeleteProfile
+
     -- ** UpdateProfile
-  , module Network.AWS.AlexaBusiness.UpdateProfile
+    , module Network.AWS.AlexaBusiness.UpdateProfile
+
     -- ** SearchRooms (Paginated)
-  , module Network.AWS.AlexaBusiness.SearchRooms
+    , module Network.AWS.AlexaBusiness.SearchRooms
+
     -- ** DisassociateContactFromAddressBook
-  , module Network.AWS.AlexaBusiness.DisassociateContactFromAddressBook
+    , module Network.AWS.AlexaBusiness.DisassociateContactFromAddressBook
+
     -- ** CreateAddressBook
-  , module Network.AWS.AlexaBusiness.CreateAddressBook
+    , module Network.AWS.AlexaBusiness.CreateAddressBook
+
     -- ** DeleteAddressBook
-  , module Network.AWS.AlexaBusiness.DeleteAddressBook
+    , module Network.AWS.AlexaBusiness.DeleteAddressBook
+
     -- ** UpdateAddressBook
-  , module Network.AWS.AlexaBusiness.UpdateAddressBook
+    , module Network.AWS.AlexaBusiness.UpdateAddressBook
+
     -- ** UpdateRoom
-  , module Network.AWS.AlexaBusiness.UpdateRoom
+    , module Network.AWS.AlexaBusiness.UpdateRoom
+
     -- ** DeleteRoom
-  , module Network.AWS.AlexaBusiness.DeleteRoom
+    , module Network.AWS.AlexaBusiness.DeleteRoom
+
     -- ** GetDevice
-  , module Network.AWS.AlexaBusiness.GetDevice
+    , module Network.AWS.AlexaBusiness.GetDevice
+
     -- ** GetContact
-  , module Network.AWS.AlexaBusiness.GetContact
+    , module Network.AWS.AlexaBusiness.GetContact
+
     -- ** AssociateDeviceWithRoom
-  , module Network.AWS.AlexaBusiness.AssociateDeviceWithRoom
+    , module Network.AWS.AlexaBusiness.AssociateDeviceWithRoom
+
     -- ** GetRoomSkillParameter
-  , module Network.AWS.AlexaBusiness.GetRoomSkillParameter
+    , module Network.AWS.AlexaBusiness.GetRoomSkillParameter
+
     -- ** DeleteContact
-  , module Network.AWS.AlexaBusiness.DeleteContact
+    , module Network.AWS.AlexaBusiness.DeleteContact
+
     -- ** UpdateContact
-  , module Network.AWS.AlexaBusiness.UpdateContact
+    , module Network.AWS.AlexaBusiness.UpdateContact
+
     -- ** GetAddressBook
-  , module Network.AWS.AlexaBusiness.GetAddressBook
+    , module Network.AWS.AlexaBusiness.GetAddressBook
+
     -- ** CreateContact
-  , module Network.AWS.AlexaBusiness.CreateContact
+    , module Network.AWS.AlexaBusiness.CreateContact
+
     -- ** CreateProfile
-  , module Network.AWS.AlexaBusiness.CreateProfile
+    , module Network.AWS.AlexaBusiness.CreateProfile
+
     -- ** DeleteSkillGroup
-  , module Network.AWS.AlexaBusiness.DeleteSkillGroup
+    , module Network.AWS.AlexaBusiness.DeleteSkillGroup
+
     -- ** UpdateSkillGroup
-  , module Network.AWS.AlexaBusiness.UpdateSkillGroup
+    , module Network.AWS.AlexaBusiness.UpdateSkillGroup
+
     -- ** StartDeviceSync
-  , module Network.AWS.AlexaBusiness.StartDeviceSync
+    , module Network.AWS.AlexaBusiness.StartDeviceSync
+
     -- ** SearchAddressBooks
-  , module Network.AWS.AlexaBusiness.SearchAddressBooks
+    , module Network.AWS.AlexaBusiness.SearchAddressBooks
+
     -- ** CreateSkillGroup
-  , module Network.AWS.AlexaBusiness.CreateSkillGroup
+    , module Network.AWS.AlexaBusiness.CreateSkillGroup
+
     -- ** GetProfile
-  , module Network.AWS.AlexaBusiness.GetProfile
+    , module Network.AWS.AlexaBusiness.GetProfile
+
     -- ** DisassociateSkillGroupFromRoom
-  , module Network.AWS.AlexaBusiness.DisassociateSkillGroupFromRoom
+    , module Network.AWS.AlexaBusiness.DisassociateSkillGroupFromRoom
+
     -- ** SendInvitation
-  , module Network.AWS.AlexaBusiness.SendInvitation
+    , module Network.AWS.AlexaBusiness.SendInvitation
+
     -- ** ListDeviceEvents
-  , module Network.AWS.AlexaBusiness.ListDeviceEvents
+    , module Network.AWS.AlexaBusiness.ListDeviceEvents
+
     -- ** CreateUser
-  , module Network.AWS.AlexaBusiness.CreateUser
+    , module Network.AWS.AlexaBusiness.CreateUser
+
     -- ** SearchDevices (Paginated)
-  , module Network.AWS.AlexaBusiness.SearchDevices
+    , module Network.AWS.AlexaBusiness.SearchDevices
+
     -- ** SearchContacts
-  , module Network.AWS.AlexaBusiness.SearchContacts
+    , module Network.AWS.AlexaBusiness.SearchContacts
+
     -- ** DeleteUser
-  , module Network.AWS.AlexaBusiness.DeleteUser
+    , module Network.AWS.AlexaBusiness.DeleteUser
+
     -- ** GetSkillGroup
-  , module Network.AWS.AlexaBusiness.GetSkillGroup
+    , module Network.AWS.AlexaBusiness.GetSkillGroup
+
     -- ** ListSkills (Paginated)
-  , module Network.AWS.AlexaBusiness.ListSkills
+    , module Network.AWS.AlexaBusiness.ListSkills
+
     -- ** TagResource
-  , module Network.AWS.AlexaBusiness.TagResource
+    , module Network.AWS.AlexaBusiness.TagResource
+
     -- ** DisassociateDeviceFromRoom
-  , module Network.AWS.AlexaBusiness.DisassociateDeviceFromRoom
+    , module Network.AWS.AlexaBusiness.DisassociateDeviceFromRoom
+
     -- ** SearchSkillGroups (Paginated)
-  , module Network.AWS.AlexaBusiness.SearchSkillGroups
+    , module Network.AWS.AlexaBusiness.SearchSkillGroups
+
     -- ** ListTags (Paginated)
-  , module Network.AWS.AlexaBusiness.ListTags
+    , module Network.AWS.AlexaBusiness.ListTags
+
     -- ** UntagResource
-  , module Network.AWS.AlexaBusiness.UntagResource
+    , module Network.AWS.AlexaBusiness.UntagResource
+
     -- ** ResolveRoom
-  , module Network.AWS.AlexaBusiness.ResolveRoom
+    , module Network.AWS.AlexaBusiness.ResolveRoom
+
     -- ** CreateRoom
-  , module Network.AWS.AlexaBusiness.CreateRoom
+    , module Network.AWS.AlexaBusiness.CreateRoom
+
     -- ** DeleteRoomSkillParameter
-  , module Network.AWS.AlexaBusiness.DeleteRoomSkillParameter
+    , module Network.AWS.AlexaBusiness.DeleteRoomSkillParameter
+
     -- ** PutRoomSkillParameter
-  , module Network.AWS.AlexaBusiness.PutRoomSkillParameter
+    , module Network.AWS.AlexaBusiness.PutRoomSkillParameter
+
     -- ** SearchProfiles (Paginated)
-  , module Network.AWS.AlexaBusiness.SearchProfiles
+    , module Network.AWS.AlexaBusiness.SearchProfiles
+
     -- ** RevokeInvitation
-  , module Network.AWS.AlexaBusiness.RevokeInvitation
+    , module Network.AWS.AlexaBusiness.RevokeInvitation
+
     -- ** UpdateDevice
-  , module Network.AWS.AlexaBusiness.UpdateDevice
+    , module Network.AWS.AlexaBusiness.UpdateDevice
+
     -- ** GetRoom
-  , module Network.AWS.AlexaBusiness.GetRoom
+    , module Network.AWS.AlexaBusiness.GetRoom
+
     -- ** AssociateContactWithAddressBook
-  , module Network.AWS.AlexaBusiness.AssociateContactWithAddressBook
+    , module Network.AWS.AlexaBusiness.AssociateContactWithAddressBook
+
     -- * Types
+
     -- ** ConnectionStatus
-  , ConnectionStatus(..)
+    , ConnectionStatus (..)
+
     -- ** DeviceEventType
-  , DeviceEventType(..)
+    , DeviceEventType (..)
+
     -- ** DeviceStatus
-  , DeviceStatus(..)
+    , DeviceStatus (..)
+
     -- ** DeviceStatusDetailCode
-  , DeviceStatusDetailCode(..)
+    , DeviceStatusDetailCode (..)
+
     -- ** DistanceUnit
-  , DistanceUnit(..)
+    , DistanceUnit (..)
+
     -- ** EnrollmentStatus
-  , EnrollmentStatus(..)
+    , EnrollmentStatus (..)
+
     -- ** Feature
-  , Feature(..)
+    , Feature (..)
+
     -- ** SortValue
-  , SortValue(..)
+    , SortValue (..)
+
     -- ** TemperatureUnit
-  , TemperatureUnit(..)
+    , TemperatureUnit (..)
+
     -- ** WakeWord
-  , WakeWord(..)
+    , WakeWord (..)
+
     -- ** AddressBook
-  , AddressBook
-  , addressBook
-  , abAddressBookARN
-  , abName
-  , abDescription
+    , AddressBook
+    , addressBook
+    , abAddressBookARN
+    , abName
+    , abDescription
+
     -- ** AddressBookData
-  , AddressBookData
-  , addressBookData
-  , abdAddressBookARN
-  , abdName
-  , abdDescription
+    , AddressBookData
+    , addressBookData
+    , abdAddressBookARN
+    , abdName
+    , abdDescription
+
     -- ** Contact
-  , Contact
-  , contact
-  , cLastName
-  , cContactARN
-  , cPhoneNumber
-  , cFirstName
-  , cDisplayName
+    , Contact
+    , contact
+    , cLastName
+    , cContactARN
+    , cPhoneNumber
+    , cFirstName
+    , cDisplayName
+
     -- ** ContactData
-  , ContactData
-  , contactData
-  , cdLastName
-  , cdContactARN
-  , cdPhoneNumber
-  , cdFirstName
-  , cdDisplayName
+    , ContactData
+    , contactData
+    , cdLastName
+    , cdContactARN
+    , cdPhoneNumber
+    , cdFirstName
+    , cdDisplayName
+
     -- ** Device
-  , Device
-  , device
-  , dDeviceStatus
-  , dDeviceStatusInfo
-  , dDeviceARN
-  , dMACAddress
-  , dDeviceName
-  , dRoomARN
-  , dSoftwareVersion
-  , dDeviceType
-  , dDeviceSerialNumber
+    , Device
+    , device
+    , dDeviceStatus
+    , dDeviceStatusInfo
+    , dDeviceARN
+    , dMACAddress
+    , dDeviceName
+    , dRoomARN
+    , dSoftwareVersion
+    , dDeviceType
+    , dDeviceSerialNumber
+
     -- ** DeviceData
-  , DeviceData
-  , deviceData
-  , ddDeviceStatus
-  , ddDeviceStatusInfo
-  , ddDeviceARN
-  , ddMACAddress
-  , ddDeviceName
-  , ddRoomARN
-  , ddSoftwareVersion
-  , ddDeviceType
-  , ddRoomName
-  , ddDeviceSerialNumber
+    , DeviceData
+    , deviceData
+    , ddDeviceStatus
+    , ddDeviceStatusInfo
+    , ddDeviceARN
+    , ddMACAddress
+    , ddDeviceName
+    , ddRoomARN
+    , ddSoftwareVersion
+    , ddDeviceType
+    , ddRoomName
+    , ddDeviceSerialNumber
+
     -- ** DeviceEvent
-  , DeviceEvent
-  , deviceEvent
-  , deValue
-  , deType
-  , deTimestamp
+    , DeviceEvent
+    , deviceEvent
+    , deValue
+    , deType
+    , deTimestamp
+
     -- ** DeviceStatusDetail
-  , DeviceStatusDetail
-  , deviceStatusDetail
-  , dsdCode
+    , DeviceStatusDetail
+    , deviceStatusDetail
+    , dsdCode
+
     -- ** DeviceStatusInfo
-  , DeviceStatusInfo
-  , deviceStatusInfo
-  , dsiDeviceStatusDetails
-  , dsiConnectionStatus
+    , DeviceStatusInfo
+    , deviceStatusInfo
+    , dsiDeviceStatusDetails
+    , dsiConnectionStatus
+
     -- ** Filter
-  , Filter
-  , filter'
-  , fKey
-  , fValues
+    , Filter
+    , filter'
+    , fKey
+    , fValues
+
     -- ** Profile
-  , Profile
-  , profile
-  , pSetupModeDisabled
-  , pPSTNEnabled
-  , pDistanceUnit
-  , pAddress
-  , pProfileARN
-  , pWakeWord
-  , pProfileName
-  , pTemperatureUnit
-  , pTimezone
-  , pMaxVolumeLimit
+    , Profile
+    , profile
+    , pSetupModeDisabled
+    , pPSTNEnabled
+    , pDistanceUnit
+    , pAddress
+    , pProfileARN
+    , pWakeWord
+    , pProfileName
+    , pTemperatureUnit
+    , pTimezone
+    , pMaxVolumeLimit
+
     -- ** ProfileData
-  , ProfileData
-  , profileData
-  , pdDistanceUnit
-  , pdAddress
-  , pdProfileARN
-  , pdWakeWord
-  , pdProfileName
-  , pdTemperatureUnit
-  , pdTimezone
+    , ProfileData
+    , profileData
+    , pdDistanceUnit
+    , pdAddress
+    , pdProfileARN
+    , pdWakeWord
+    , pdProfileName
+    , pdTemperatureUnit
+    , pdTimezone
+
     -- ** Room
-  , Room
-  , room
-  , rProfileARN
-  , rProviderCalendarId
-  , rRoomARN
-  , rRoomName
-  , rDescription
+    , Room
+    , room
+    , rProfileARN
+    , rProviderCalendarId
+    , rRoomARN
+    , rRoomName
+    , rDescription
+
     -- ** RoomData
-  , RoomData
-  , roomData
-  , rdProfileARN
-  , rdProviderCalendarId
-  , rdProfileName
-  , rdRoomARN
-  , rdRoomName
-  , rdDescription
+    , RoomData
+    , roomData
+    , rdProfileARN
+    , rdProviderCalendarId
+    , rdProfileName
+    , rdRoomARN
+    , rdRoomName
+    , rdDescription
+
     -- ** RoomSkillParameter
-  , RoomSkillParameter
-  , roomSkillParameter
-  , rspParameterKey
-  , rspParameterValue
+    , RoomSkillParameter
+    , roomSkillParameter
+    , rspParameterKey
+    , rspParameterValue
+
     -- ** SkillGroup
-  , SkillGroup
-  , skillGroup
-  , sgSkillGroupARN
-  , sgDescription
-  , sgSkillGroupName
+    , SkillGroup
+    , skillGroup
+    , sgSkillGroupARN
+    , sgDescription
+    , sgSkillGroupName
+
     -- ** SkillGroupData
-  , SkillGroupData
-  , skillGroupData
-  , sgdSkillGroupARN
-  , sgdDescription
-  , sgdSkillGroupName
+    , SkillGroupData
+    , skillGroupData
+    , sgdSkillGroupARN
+    , sgdDescription
+    , sgdSkillGroupName
+
     -- ** SkillSummary
-  , SkillSummary
-  , skillSummary
-  , ssSkillId
-  , ssSupportsLinking
-  , ssSkillName
+    , SkillSummary
+    , skillSummary
+    , ssSkillId
+    , ssSupportsLinking
+    , ssSkillName
+
     -- ** Sort
-  , Sort
-  , sort
-  , sKey
-  , sValue
+    , Sort
+    , sort
+    , sKey
+    , sValue
+
     -- ** Tag
-  , Tag
-  , tag
-  , tagValue
-  , tagKey
+    , Tag
+    , tag
+    , tagValue
+    , tagKey
+
     -- ** UserData
-  , UserData
-  , userData
-  , udEmail
-  , udLastName
-  , udEnrollmentId
-  , udUserARN
-  , udFirstName
-  , udEnrollmentStatus
-  ) where
+    , UserData
+    , userData
+    , udEmail
+    , udLastName
+    , udEnrollmentId
+    , udUserARN
+    , udFirstName
+    , udEnrollmentStatus
+    ) where
 
 import Network.AWS.AlexaBusiness.AssociateContactWithAddressBook
 import Network.AWS.AlexaBusiness.AssociateDeviceWithRoom
@@ -361,12 +453,14 @@ import Network.AWS.AlexaBusiness.UpdateProfile
 import Network.AWS.AlexaBusiness.UpdateRoom
 import Network.AWS.AlexaBusiness.UpdateSkillGroup
 import Network.AWS.AlexaBusiness.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'AlexaBusiness'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -383,6 +477,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

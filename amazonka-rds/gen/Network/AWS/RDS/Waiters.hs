@@ -1,8 +1,10 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TypeFamilies      #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.RDS.Waiters
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -64,6 +66,7 @@ dbInstanceAvailable =
         ]
     }
 
+
 -- | Polls 'Network.AWS.RDS.DescribeDBSnapshots' every 15 seconds until a successful state is reached. An error is returned after 40 failed checks.
 dbSnapshotCompleted :: Wait DescribeDBSnapshots
 dbSnapshotCompleted =
@@ -80,6 +83,7 @@ dbSnapshotCompleted =
              dsStatus . _Just . to toTextCI)
         ]
     }
+
 
 -- | Polls 'Network.AWS.RDS.DescribeDBSnapshots' every 30 seconds until a successful state is reached. An error is returned after 60 failed checks.
 dbSnapshotDeleted :: Wait DescribeDBSnapshots
@@ -118,6 +122,7 @@ dbSnapshotDeleted =
         ]
     }
 
+
 -- | Polls 'Network.AWS.RDS.DescribeDBInstances' every 30 seconds until a successful state is reached. An error is returned after 60 failed checks.
 dbInstanceDeleted :: Wait DescribeDBInstances
 dbInstanceDeleted =
@@ -154,6 +159,7 @@ dbInstanceDeleted =
              diDBInstanceStatus . _Just . to toTextCI)
         ]
     }
+
 
 -- | Polls 'Network.AWS.RDS.DescribeDBSnapshots' every 30 seconds until a successful state is reached. An error is returned after 60 failed checks.
 dbSnapshotAvailable :: Wait DescribeDBSnapshots
@@ -195,3 +201,4 @@ dbSnapshotAvailable =
              dsStatus . _Just . to toTextCI)
         ]
     }
+

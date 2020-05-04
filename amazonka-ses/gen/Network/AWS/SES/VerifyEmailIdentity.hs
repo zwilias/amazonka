@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SES.VerifyEmailIdentity
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,17 +24,19 @@
 -- You can execute this operation no more than once per second.
 --
 module Network.AWS.SES.VerifyEmailIdentity
+    (
     -- * Creating a Request
-  ( verifyEmailIdentity
-  , VerifyEmailIdentity
+      verifyEmailIdentity
+    , VerifyEmailIdentity
     -- * Request Lenses
-  , veiEmailAddress
+    , veiEmailAddress
+
     -- * Destructuring the Response
-  , verifyEmailIdentityResponse
-  , VerifyEmailIdentityResponse
+    , verifyEmailIdentityResponse
+    , VerifyEmailIdentityResponse
     -- * Response Lenses
-  , veirsResponseStatus
-  ) where
+    , veirsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -52,46 +56,48 @@ newtype VerifyEmailIdentity =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'VerifyEmailIdentity' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'veiEmailAddress' - The email address to be verified.
-verifyEmailIdentity ::
-     Text -- ^ 'veiEmailAddress'
-  -> VerifyEmailIdentity
+verifyEmailIdentity
+    :: Text -- ^ 'veiEmailAddress'
+    -> VerifyEmailIdentity
 verifyEmailIdentity pEmailAddress_ =
   VerifyEmailIdentity' {_veiEmailAddress = pEmailAddress_}
 
+
 -- | The email address to be verified.
 veiEmailAddress :: Lens' VerifyEmailIdentity Text
-veiEmailAddress = lens _veiEmailAddress (\s a -> s {_veiEmailAddress = a})
+veiEmailAddress = lens _veiEmailAddress (\ s a -> s{_veiEmailAddress = a})
 
 instance AWSRequest VerifyEmailIdentity where
-  type Rs VerifyEmailIdentity = VerifyEmailIdentityResponse
-  request = postQuery ses
-  response =
-    receiveXMLWrapper
-      "VerifyEmailIdentityResult"
-      (\s h x -> VerifyEmailIdentityResponse' <$> (pure (fromEnum s)))
+        type Rs VerifyEmailIdentity =
+             VerifyEmailIdentityResponse
+        request = postQuery ses
+        response
+          = receiveXMLWrapper "VerifyEmailIdentityResult"
+              (\ s h x ->
+                 VerifyEmailIdentityResponse' <$> (pure (fromEnum s)))
 
-instance Hashable VerifyEmailIdentity
+instance Hashable VerifyEmailIdentity where
 
-instance NFData VerifyEmailIdentity
+instance NFData VerifyEmailIdentity where
 
 instance ToHeaders VerifyEmailIdentity where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath VerifyEmailIdentity where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery VerifyEmailIdentity where
-  toQuery VerifyEmailIdentity' {..} =
-    mconcat
-      [ "Action" =: ("VerifyEmailIdentity" :: ByteString)
-      , "Version" =: ("2010-12-01" :: ByteString)
-      , "EmailAddress" =: _veiEmailAddress
-      ]
+        toQuery VerifyEmailIdentity'{..}
+          = mconcat
+              ["Action" =: ("VerifyEmailIdentity" :: ByteString),
+               "Version" =: ("2010-12-01" :: ByteString),
+               "EmailAddress" =: _veiEmailAddress]
 
 -- | An empty element returned on a successful request.
 --
@@ -104,20 +110,21 @@ newtype VerifyEmailIdentityResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'VerifyEmailIdentityResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'veirsResponseStatus' - -- | The response status code.
-verifyEmailIdentityResponse ::
-     Int -- ^ 'veirsResponseStatus'
-  -> VerifyEmailIdentityResponse
+verifyEmailIdentityResponse
+    :: Int -- ^ 'veirsResponseStatus'
+    -> VerifyEmailIdentityResponse
 verifyEmailIdentityResponse pResponseStatus_ =
   VerifyEmailIdentityResponse' {_veirsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 veirsResponseStatus :: Lens' VerifyEmailIdentityResponse Int
-veirsResponseStatus =
-  lens _veirsResponseStatus (\s a -> s {_veirsResponseStatus = a})
+veirsResponseStatus = lens _veirsResponseStatus (\ s a -> s{_veirsResponseStatus = a})
 
-instance NFData VerifyEmailIdentityResponse
+instance NFData VerifyEmailIdentityResponse where

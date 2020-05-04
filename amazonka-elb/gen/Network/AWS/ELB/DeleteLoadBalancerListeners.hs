@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.ELB.DeleteLoadBalancerListeners
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.ELB.DeleteLoadBalancerListeners
+    (
     -- * Creating a Request
-  ( deleteLoadBalancerListeners
-  , DeleteLoadBalancerListeners
+      deleteLoadBalancerListeners
+    , DeleteLoadBalancerListeners
     -- * Request Lenses
-  , dlblLoadBalancerName
-  , dlblLoadBalancerPorts
+    , dlblLoadBalancerName
+    , dlblLoadBalancerPorts
+
     -- * Destructuring the Response
-  , deleteLoadBalancerListenersResponse
-  , DeleteLoadBalancerListenersResponse
+    , deleteLoadBalancerListenersResponse
+    , DeleteLoadBalancerListenersResponse
     -- * Response Lenses
-  , dlblrsResponseStatus
-  ) where
+    , dlblrsResponseStatus
+    ) where
 
 import Network.AWS.ELB.Types
 import Network.AWS.ELB.Types.Product
@@ -52,6 +56,7 @@ data DeleteLoadBalancerListeners =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteLoadBalancerListeners' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -59,51 +64,54 @@ data DeleteLoadBalancerListeners =
 -- * 'dlblLoadBalancerName' - The name of the load balancer.
 --
 -- * 'dlblLoadBalancerPorts' - The client port numbers of the listeners.
-deleteLoadBalancerListeners ::
-     Text -- ^ 'dlblLoadBalancerName'
-  -> DeleteLoadBalancerListeners
+deleteLoadBalancerListeners
+    :: Text -- ^ 'dlblLoadBalancerName'
+    -> DeleteLoadBalancerListeners
 deleteLoadBalancerListeners pLoadBalancerName_ =
   DeleteLoadBalancerListeners'
     { _dlblLoadBalancerName = pLoadBalancerName_
     , _dlblLoadBalancerPorts = mempty
     }
 
+
 -- | The name of the load balancer.
 dlblLoadBalancerName :: Lens' DeleteLoadBalancerListeners Text
-dlblLoadBalancerName =
-  lens _dlblLoadBalancerName (\s a -> s {_dlblLoadBalancerName = a})
+dlblLoadBalancerName = lens _dlblLoadBalancerName (\ s a -> s{_dlblLoadBalancerName = a})
 
 -- | The client port numbers of the listeners.
 dlblLoadBalancerPorts :: Lens' DeleteLoadBalancerListeners [Int]
-dlblLoadBalancerPorts =
-  lens _dlblLoadBalancerPorts (\s a -> s {_dlblLoadBalancerPorts = a}) . _Coerce
+dlblLoadBalancerPorts = lens _dlblLoadBalancerPorts (\ s a -> s{_dlblLoadBalancerPorts = a}) . _Coerce
 
 instance AWSRequest DeleteLoadBalancerListeners where
-  type Rs DeleteLoadBalancerListeners = DeleteLoadBalancerListenersResponse
-  request = postQuery elb
-  response =
-    receiveXMLWrapper
-      "DeleteLoadBalancerListenersResult"
-      (\s h x -> DeleteLoadBalancerListenersResponse' <$> (pure (fromEnum s)))
+        type Rs DeleteLoadBalancerListeners =
+             DeleteLoadBalancerListenersResponse
+        request = postQuery elb
+        response
+          = receiveXMLWrapper
+              "DeleteLoadBalancerListenersResult"
+              (\ s h x ->
+                 DeleteLoadBalancerListenersResponse' <$>
+                   (pure (fromEnum s)))
 
-instance Hashable DeleteLoadBalancerListeners
+instance Hashable DeleteLoadBalancerListeners where
 
-instance NFData DeleteLoadBalancerListeners
+instance NFData DeleteLoadBalancerListeners where
 
 instance ToHeaders DeleteLoadBalancerListeners where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath DeleteLoadBalancerListeners where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DeleteLoadBalancerListeners where
-  toQuery DeleteLoadBalancerListeners' {..} =
-    mconcat
-      [ "Action" =: ("DeleteLoadBalancerListeners" :: ByteString)
-      , "Version" =: ("2012-06-01" :: ByteString)
-      , "LoadBalancerName" =: _dlblLoadBalancerName
-      , "LoadBalancerPorts" =: toQueryList "member" _dlblLoadBalancerPorts
-      ]
+        toQuery DeleteLoadBalancerListeners'{..}
+          = mconcat
+              ["Action" =:
+                 ("DeleteLoadBalancerListeners" :: ByteString),
+               "Version" =: ("2012-06-01" :: ByteString),
+               "LoadBalancerName" =: _dlblLoadBalancerName,
+               "LoadBalancerPorts" =:
+                 toQueryList "member" _dlblLoadBalancerPorts]
 
 -- | Contains the output of DeleteLoadBalancerListeners.
 --
@@ -116,21 +124,23 @@ newtype DeleteLoadBalancerListenersResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteLoadBalancerListenersResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dlblrsResponseStatus' - -- | The response status code.
-deleteLoadBalancerListenersResponse ::
-     Int -- ^ 'dlblrsResponseStatus'
-  -> DeleteLoadBalancerListenersResponse
+deleteLoadBalancerListenersResponse
+    :: Int -- ^ 'dlblrsResponseStatus'
+    -> DeleteLoadBalancerListenersResponse
 deleteLoadBalancerListenersResponse pResponseStatus_ =
   DeleteLoadBalancerListenersResponse'
     {_dlblrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 dlblrsResponseStatus :: Lens' DeleteLoadBalancerListenersResponse Int
-dlblrsResponseStatus =
-  lens _dlblrsResponseStatus (\s a -> s {_dlblrsResponseStatus = a})
+dlblrsResponseStatus = lens _dlblrsResponseStatus (\ s a -> s{_dlblrsResponseStatus = a})
 
 instance NFData DeleteLoadBalancerListenersResponse
+         where

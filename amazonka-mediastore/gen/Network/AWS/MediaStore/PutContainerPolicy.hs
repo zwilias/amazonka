@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.MediaStore.PutContainerPolicy
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,18 +24,20 @@
 -- For this release of the REST API, you can create only one policy for a container. If you enter @PutContainerPolicy@ twice, the second command modifies the existing policy.
 --
 module Network.AWS.MediaStore.PutContainerPolicy
+    (
     -- * Creating a Request
-  ( putContainerPolicy
-  , PutContainerPolicy
+      putContainerPolicy
+    , PutContainerPolicy
     -- * Request Lenses
-  , pContainerName
-  , pPolicy
+    , pContainerName
+    , pPolicy
+
     -- * Destructuring the Response
-  , putContainerPolicyResponse
-  , PutContainerPolicyResponse
+    , putContainerPolicyResponse
+    , PutContainerPolicyResponse
     -- * Response Lenses
-  , pcprsResponseStatus
-  ) where
+    , pcprsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.MediaStore.Types
@@ -50,6 +54,7 @@ data PutContainerPolicy =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'PutContainerPolicy' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -57,53 +62,57 @@ data PutContainerPolicy =
 -- * 'pContainerName' - The name of the container.
 --
 -- * 'pPolicy' - The contents of the policy, which includes the following:      * One @Version@ tag     * One @Statement@ tag that contains the standard tags for the policy.
-putContainerPolicy ::
-     Text -- ^ 'pContainerName'
-  -> Text -- ^ 'pPolicy'
-  -> PutContainerPolicy
+putContainerPolicy
+    :: Text -- ^ 'pContainerName'
+    -> Text -- ^ 'pPolicy'
+    -> PutContainerPolicy
 putContainerPolicy pContainerName_ pPolicy_ =
   PutContainerPolicy' {_pContainerName = pContainerName_, _pPolicy = pPolicy_}
 
+
 -- | The name of the container.
 pContainerName :: Lens' PutContainerPolicy Text
-pContainerName = lens _pContainerName (\s a -> s {_pContainerName = a})
+pContainerName = lens _pContainerName (\ s a -> s{_pContainerName = a})
 
 -- | The contents of the policy, which includes the following:      * One @Version@ tag     * One @Statement@ tag that contains the standard tags for the policy.
 pPolicy :: Lens' PutContainerPolicy Text
-pPolicy = lens _pPolicy (\s a -> s {_pPolicy = a})
+pPolicy = lens _pPolicy (\ s a -> s{_pPolicy = a})
 
 instance AWSRequest PutContainerPolicy where
-  type Rs PutContainerPolicy = PutContainerPolicyResponse
-  request = postJSON mediaStore
-  response =
-    receiveEmpty (\s h x -> PutContainerPolicyResponse' <$> (pure (fromEnum s)))
+        type Rs PutContainerPolicy =
+             PutContainerPolicyResponse
+        request = postJSON mediaStore
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 PutContainerPolicyResponse' <$> (pure (fromEnum s)))
 
-instance Hashable PutContainerPolicy
+instance Hashable PutContainerPolicy where
 
-instance NFData PutContainerPolicy
+instance NFData PutContainerPolicy where
 
 instance ToHeaders PutContainerPolicy where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("MediaStore_20170901.PutContainerPolicy" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("MediaStore_20170901.PutContainerPolicy" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON PutContainerPolicy where
-  toJSON PutContainerPolicy' {..} =
-    object
-      (catMaybes
-         [ Just ("ContainerName" .= _pContainerName)
-         , Just ("Policy" .= _pPolicy)
-         ])
+        toJSON PutContainerPolicy'{..}
+          = object
+              (catMaybes
+                 [Just ("ContainerName" .= _pContainerName),
+                  Just ("Policy" .= _pPolicy)])
 
 instance ToPath PutContainerPolicy where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery PutContainerPolicy where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'putContainerPolicyResponse' smart constructor.
 newtype PutContainerPolicyResponse =
@@ -112,20 +121,21 @@ newtype PutContainerPolicyResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'PutContainerPolicyResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'pcprsResponseStatus' - -- | The response status code.
-putContainerPolicyResponse ::
-     Int -- ^ 'pcprsResponseStatus'
-  -> PutContainerPolicyResponse
+putContainerPolicyResponse
+    :: Int -- ^ 'pcprsResponseStatus'
+    -> PutContainerPolicyResponse
 putContainerPolicyResponse pResponseStatus_ =
   PutContainerPolicyResponse' {_pcprsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 pcprsResponseStatus :: Lens' PutContainerPolicyResponse Int
-pcprsResponseStatus =
-  lens _pcprsResponseStatus (\s a -> s {_pcprsResponseStatus = a})
+pcprsResponseStatus = lens _pcprsResponseStatus (\ s a -> s{_pcprsResponseStatus = a})
 
-instance NFData PutContainerPolicyResponse
+instance NFData PutContainerPolicyResponse where

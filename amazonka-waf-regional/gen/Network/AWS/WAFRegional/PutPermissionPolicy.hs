@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.WAFRegional.PutPermissionPolicy
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -44,18 +46,20 @@
 -- An example of a valid policy parameter is shown in the Examples section below.
 --
 module Network.AWS.WAFRegional.PutPermissionPolicy
+    (
     -- * Creating a Request
-  ( putPermissionPolicy
-  , PutPermissionPolicy
+      putPermissionPolicy
+    , PutPermissionPolicy
     -- * Request Lenses
-  , pppResourceARN
-  , pppPolicy
+    , pppResourceARN
+    , pppPolicy
+
     -- * Destructuring the Response
-  , putPermissionPolicyResponse
-  , PutPermissionPolicyResponse
+    , putPermissionPolicyResponse
+    , PutPermissionPolicyResponse
     -- * Response Lenses
-  , ppprsResponseStatus
-  ) where
+    , ppprsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -72,6 +76,7 @@ data PutPermissionPolicy =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'PutPermissionPolicy' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -79,54 +84,57 @@ data PutPermissionPolicy =
 -- * 'pppResourceARN' - The Amazon Resource Name (ARN) of the RuleGroup to which you want to attach the policy.
 --
 -- * 'pppPolicy' - The policy to attach to the specified RuleGroup.
-putPermissionPolicy ::
-     Text -- ^ 'pppResourceARN'
-  -> Text -- ^ 'pppPolicy'
-  -> PutPermissionPolicy
+putPermissionPolicy
+    :: Text -- ^ 'pppResourceARN'
+    -> Text -- ^ 'pppPolicy'
+    -> PutPermissionPolicy
 putPermissionPolicy pResourceARN_ pPolicy_ =
   PutPermissionPolicy' {_pppResourceARN = pResourceARN_, _pppPolicy = pPolicy_}
 
+
 -- | The Amazon Resource Name (ARN) of the RuleGroup to which you want to attach the policy.
 pppResourceARN :: Lens' PutPermissionPolicy Text
-pppResourceARN = lens _pppResourceARN (\s a -> s {_pppResourceARN = a})
+pppResourceARN = lens _pppResourceARN (\ s a -> s{_pppResourceARN = a})
 
 -- | The policy to attach to the specified RuleGroup.
 pppPolicy :: Lens' PutPermissionPolicy Text
-pppPolicy = lens _pppPolicy (\s a -> s {_pppPolicy = a})
+pppPolicy = lens _pppPolicy (\ s a -> s{_pppPolicy = a})
 
 instance AWSRequest PutPermissionPolicy where
-  type Rs PutPermissionPolicy = PutPermissionPolicyResponse
-  request = postJSON wAFRegional
-  response =
-    receiveEmpty
-      (\s h x -> PutPermissionPolicyResponse' <$> (pure (fromEnum s)))
+        type Rs PutPermissionPolicy =
+             PutPermissionPolicyResponse
+        request = postJSON wAFRegional
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 PutPermissionPolicyResponse' <$> (pure (fromEnum s)))
 
-instance Hashable PutPermissionPolicy
+instance Hashable PutPermissionPolicy where
 
-instance NFData PutPermissionPolicy
+instance NFData PutPermissionPolicy where
 
 instance ToHeaders PutPermissionPolicy where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AWSWAF_Regional_20161128.PutPermissionPolicy" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWSWAF_Regional_20161128.PutPermissionPolicy" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON PutPermissionPolicy where
-  toJSON PutPermissionPolicy' {..} =
-    object
-      (catMaybes
-         [ Just ("ResourceArn" .= _pppResourceARN)
-         , Just ("Policy" .= _pppPolicy)
-         ])
+        toJSON PutPermissionPolicy'{..}
+          = object
+              (catMaybes
+                 [Just ("ResourceArn" .= _pppResourceARN),
+                  Just ("Policy" .= _pppPolicy)])
 
 instance ToPath PutPermissionPolicy where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery PutPermissionPolicy where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'putPermissionPolicyResponse' smart constructor.
 newtype PutPermissionPolicyResponse =
@@ -135,20 +143,21 @@ newtype PutPermissionPolicyResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'PutPermissionPolicyResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'ppprsResponseStatus' - -- | The response status code.
-putPermissionPolicyResponse ::
-     Int -- ^ 'ppprsResponseStatus'
-  -> PutPermissionPolicyResponse
+putPermissionPolicyResponse
+    :: Int -- ^ 'ppprsResponseStatus'
+    -> PutPermissionPolicyResponse
 putPermissionPolicyResponse pResponseStatus_ =
   PutPermissionPolicyResponse' {_ppprsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 ppprsResponseStatus :: Lens' PutPermissionPolicyResponse Int
-ppprsResponseStatus =
-  lens _ppprsResponseStatus (\s a -> s {_ppprsResponseStatus = a})
+ppprsResponseStatus = lens _ppprsResponseStatus (\ s a -> s{_ppprsResponseStatus = a})
 
-instance NFData PutPermissionPolicyResponse
+instance NFData PutPermissionPolicyResponse where

@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.StorageGateway.UpdateBandwidthRateLimit
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,20 +26,22 @@
 -- To specify which gateway to update, use the Amazon Resource Name (ARN) of the gateway in your request.
 --
 module Network.AWS.StorageGateway.UpdateBandwidthRateLimit
+    (
     -- * Creating a Request
-  ( updateBandwidthRateLimit
-  , UpdateBandwidthRateLimit
+      updateBandwidthRateLimit
+    , UpdateBandwidthRateLimit
     -- * Request Lenses
-  , ubrlAverageUploadRateLimitInBitsPerSec
-  , ubrlAverageDownloadRateLimitInBitsPerSec
-  , ubrlGatewayARN
+    , ubrlAverageUploadRateLimitInBitsPerSec
+    , ubrlAverageDownloadRateLimitInBitsPerSec
+    , ubrlGatewayARN
+
     -- * Destructuring the Response
-  , updateBandwidthRateLimitResponse
-  , UpdateBandwidthRateLimitResponse
+    , updateBandwidthRateLimitResponse
+    , UpdateBandwidthRateLimitResponse
     -- * Response Lenses
-  , ubrlrsGatewayARN
-  , ubrlrsResponseStatus
-  ) where
+    , ubrlrsGatewayARN
+    , ubrlrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -65,6 +69,7 @@ data UpdateBandwidthRateLimit =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateBandwidthRateLimit' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -74,9 +79,9 @@ data UpdateBandwidthRateLimit =
 -- * 'ubrlAverageDownloadRateLimitInBitsPerSec' - The average download bandwidth rate limit in bits per second.
 --
 -- * 'ubrlGatewayARN' - Undocumented member.
-updateBandwidthRateLimit ::
-     Text -- ^ 'ubrlGatewayARN'
-  -> UpdateBandwidthRateLimit
+updateBandwidthRateLimit
+    :: Text -- ^ 'ubrlGatewayARN'
+    -> UpdateBandwidthRateLimit
 updateBandwidthRateLimit pGatewayARN_ =
   UpdateBandwidthRateLimit'
     { _ubrlAverageUploadRateLimitInBitsPerSec = Nothing
@@ -84,66 +89,58 @@ updateBandwidthRateLimit pGatewayARN_ =
     , _ubrlGatewayARN = pGatewayARN_
     }
 
+
 -- | The average upload bandwidth rate limit in bits per second.
-ubrlAverageUploadRateLimitInBitsPerSec ::
-     Lens' UpdateBandwidthRateLimit (Maybe Natural)
-ubrlAverageUploadRateLimitInBitsPerSec =
-  lens
-    _ubrlAverageUploadRateLimitInBitsPerSec
-    (\s a -> s {_ubrlAverageUploadRateLimitInBitsPerSec = a}) .
-  mapping _Nat
+ubrlAverageUploadRateLimitInBitsPerSec :: Lens' UpdateBandwidthRateLimit (Maybe Natural)
+ubrlAverageUploadRateLimitInBitsPerSec = lens _ubrlAverageUploadRateLimitInBitsPerSec (\ s a -> s{_ubrlAverageUploadRateLimitInBitsPerSec = a}) . mapping _Nat
 
 -- | The average download bandwidth rate limit in bits per second.
-ubrlAverageDownloadRateLimitInBitsPerSec ::
-     Lens' UpdateBandwidthRateLimit (Maybe Natural)
-ubrlAverageDownloadRateLimitInBitsPerSec =
-  lens
-    _ubrlAverageDownloadRateLimitInBitsPerSec
-    (\s a -> s {_ubrlAverageDownloadRateLimitInBitsPerSec = a}) .
-  mapping _Nat
+ubrlAverageDownloadRateLimitInBitsPerSec :: Lens' UpdateBandwidthRateLimit (Maybe Natural)
+ubrlAverageDownloadRateLimitInBitsPerSec = lens _ubrlAverageDownloadRateLimitInBitsPerSec (\ s a -> s{_ubrlAverageDownloadRateLimitInBitsPerSec = a}) . mapping _Nat
 
 -- | Undocumented member.
 ubrlGatewayARN :: Lens' UpdateBandwidthRateLimit Text
-ubrlGatewayARN = lens _ubrlGatewayARN (\s a -> s {_ubrlGatewayARN = a})
+ubrlGatewayARN = lens _ubrlGatewayARN (\ s a -> s{_ubrlGatewayARN = a})
 
 instance AWSRequest UpdateBandwidthRateLimit where
-  type Rs UpdateBandwidthRateLimit = UpdateBandwidthRateLimitResponse
-  request = postJSON storageGateway
-  response =
-    receiveJSON
-      (\s h x ->
-         UpdateBandwidthRateLimitResponse' <$> (x .?> "GatewayARN") <*>
-         (pure (fromEnum s)))
+        type Rs UpdateBandwidthRateLimit =
+             UpdateBandwidthRateLimitResponse
+        request = postJSON storageGateway
+        response
+          = receiveJSON
+              (\ s h x ->
+                 UpdateBandwidthRateLimitResponse' <$>
+                   (x .?> "GatewayARN") <*> (pure (fromEnum s)))
 
-instance Hashable UpdateBandwidthRateLimit
+instance Hashable UpdateBandwidthRateLimit where
 
-instance NFData UpdateBandwidthRateLimit
+instance NFData UpdateBandwidthRateLimit where
 
 instance ToHeaders UpdateBandwidthRateLimit where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("StorageGateway_20130630.UpdateBandwidthRateLimit" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("StorageGateway_20130630.UpdateBandwidthRateLimit"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON UpdateBandwidthRateLimit where
-  toJSON UpdateBandwidthRateLimit' {..} =
-    object
-      (catMaybes
-         [ ("AverageUploadRateLimitInBitsPerSec" .=) <$>
-           _ubrlAverageUploadRateLimitInBitsPerSec
-         , ("AverageDownloadRateLimitInBitsPerSec" .=) <$>
-           _ubrlAverageDownloadRateLimitInBitsPerSec
-         , Just ("GatewayARN" .= _ubrlGatewayARN)
-         ])
+        toJSON UpdateBandwidthRateLimit'{..}
+          = object
+              (catMaybes
+                 [("AverageUploadRateLimitInBitsPerSec" .=) <$>
+                    _ubrlAverageUploadRateLimitInBitsPerSec,
+                  ("AverageDownloadRateLimitInBitsPerSec" .=) <$>
+                    _ubrlAverageDownloadRateLimitInBitsPerSec,
+                  Just ("GatewayARN" .= _ubrlGatewayARN)])
 
 instance ToPath UpdateBandwidthRateLimit where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery UpdateBandwidthRateLimit where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | A JSON object containing the of the gateway whose throttle information was updated.
 --
@@ -157,6 +154,7 @@ data UpdateBandwidthRateLimitResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateBandwidthRateLimitResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -164,20 +162,21 @@ data UpdateBandwidthRateLimitResponse =
 -- * 'ubrlrsGatewayARN' - Undocumented member.
 --
 -- * 'ubrlrsResponseStatus' - -- | The response status code.
-updateBandwidthRateLimitResponse ::
-     Int -- ^ 'ubrlrsResponseStatus'
-  -> UpdateBandwidthRateLimitResponse
+updateBandwidthRateLimitResponse
+    :: Int -- ^ 'ubrlrsResponseStatus'
+    -> UpdateBandwidthRateLimitResponse
 updateBandwidthRateLimitResponse pResponseStatus_ =
   UpdateBandwidthRateLimitResponse'
     {_ubrlrsGatewayARN = Nothing, _ubrlrsResponseStatus = pResponseStatus_}
 
+
 -- | Undocumented member.
 ubrlrsGatewayARN :: Lens' UpdateBandwidthRateLimitResponse (Maybe Text)
-ubrlrsGatewayARN = lens _ubrlrsGatewayARN (\s a -> s {_ubrlrsGatewayARN = a})
+ubrlrsGatewayARN = lens _ubrlrsGatewayARN (\ s a -> s{_ubrlrsGatewayARN = a})
 
 -- | -- | The response status code.
 ubrlrsResponseStatus :: Lens' UpdateBandwidthRateLimitResponse Int
-ubrlrsResponseStatus =
-  lens _ubrlrsResponseStatus (\s a -> s {_ubrlrsResponseStatus = a})
+ubrlrsResponseStatus = lens _ubrlrsResponseStatus (\ s a -> s{_ubrlrsResponseStatus = a})
 
 instance NFData UpdateBandwidthRateLimitResponse
+         where

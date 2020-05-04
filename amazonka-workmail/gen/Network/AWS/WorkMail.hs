@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.WorkMail
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -34,183 +35,248 @@
 -- All Amazon WorkMail API actions are Amazon-authenticated and certificate-signed. They not only require the use of the AWS SDK, but also allow for the exclusive use of IAM users and roles to help facilitate access, trust, and permission policies. By creating a role and allowing an IAM user to access the Amazon WorkMail site, the IAM user gains full administrative visibility into the entire Amazon WorkMail organization (or as set in the IAM policy). This includes, but is not limited to, the ability to create, update, and delete users, groups, and resources. This allows developers to perform the scenarios listed above, as well as give users the ability to grant access on a selective basis using the IAM model.
 --
 module Network.AWS.WorkMail
+    (
     -- * Service Configuration
-  ( workMail
+      workMail
+
     -- * Errors
     -- $errors
+
     -- ** DirectoryUnavailableException
-  , _DirectoryUnavailableException
+    , _DirectoryUnavailableException
+
     -- ** InvalidParameterException
-  , _InvalidParameterException
+    , _InvalidParameterException
+
     -- ** UnsupportedOperationException
-  , _UnsupportedOperationException
+    , _UnsupportedOperationException
+
     -- ** DirectoryServiceAuthenticationFailedException
-  , _DirectoryServiceAuthenticationFailedException
+    , _DirectoryServiceAuthenticationFailedException
+
     -- ** OrganizationStateException
-  , _OrganizationStateException
+    , _OrganizationStateException
+
     -- ** EntityStateException
-  , _EntityStateException
+    , _EntityStateException
+
     -- ** InvalidConfigurationException
-  , _InvalidConfigurationException
+    , _InvalidConfigurationException
+
     -- ** MailDomainStateException
-  , _MailDomainStateException
+    , _MailDomainStateException
+
     -- ** ReservedNameException
-  , _ReservedNameException
+    , _ReservedNameException
+
     -- ** OrganizationNotFoundException
-  , _OrganizationNotFoundException
+    , _OrganizationNotFoundException
+
     -- ** EntityNotFoundException
-  , _EntityNotFoundException
+    , _EntityNotFoundException
+
     -- ** EntityAlreadyRegisteredException
-  , _EntityAlreadyRegisteredException
+    , _EntityAlreadyRegisteredException
+
     -- ** MailDomainNotFoundException
-  , _MailDomainNotFoundException
+    , _MailDomainNotFoundException
+
     -- ** EmailAddressInUseException
-  , _EmailAddressInUseException
+    , _EmailAddressInUseException
+
     -- ** NameAvailabilityException
-  , _NameAvailabilityException
+    , _NameAvailabilityException
+
     -- ** InvalidPasswordException
-  , _InvalidPasswordException
+    , _InvalidPasswordException
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
+
     -- ** UpdatePrimaryEmailAddress
-  , module Network.AWS.WorkMail.UpdatePrimaryEmailAddress
+    , module Network.AWS.WorkMail.UpdatePrimaryEmailAddress
+
     -- ** DescribeResource
-  , module Network.AWS.WorkMail.DescribeResource
+    , module Network.AWS.WorkMail.DescribeResource
+
     -- ** CreateAlias
-  , module Network.AWS.WorkMail.CreateAlias
+    , module Network.AWS.WorkMail.CreateAlias
+
     -- ** ResetPassword
-  , module Network.AWS.WorkMail.ResetPassword
+    , module Network.AWS.WorkMail.ResetPassword
+
     -- ** DescribeGroup
-  , module Network.AWS.WorkMail.DescribeGroup
+    , module Network.AWS.WorkMail.DescribeGroup
+
     -- ** RegisterToWorkMail
-  , module Network.AWS.WorkMail.RegisterToWorkMail
+    , module Network.AWS.WorkMail.RegisterToWorkMail
+
     -- ** ListAliases (Paginated)
-  , module Network.AWS.WorkMail.ListAliases
+    , module Network.AWS.WorkMail.ListAliases
+
     -- ** PutMailboxPermissions
-  , module Network.AWS.WorkMail.PutMailboxPermissions
+    , module Network.AWS.WorkMail.PutMailboxPermissions
+
     -- ** DeleteMailboxPermissions
-  , module Network.AWS.WorkMail.DeleteMailboxPermissions
+    , module Network.AWS.WorkMail.DeleteMailboxPermissions
+
     -- ** ListUsers (Paginated)
-  , module Network.AWS.WorkMail.ListUsers
+    , module Network.AWS.WorkMail.ListUsers
+
     -- ** AssociateMemberToGroup
-  , module Network.AWS.WorkMail.AssociateMemberToGroup
+    , module Network.AWS.WorkMail.AssociateMemberToGroup
+
     -- ** DeleteResource
-  , module Network.AWS.WorkMail.DeleteResource
+    , module Network.AWS.WorkMail.DeleteResource
+
     -- ** UpdateResource
-  , module Network.AWS.WorkMail.UpdateResource
+    , module Network.AWS.WorkMail.UpdateResource
+
     -- ** DisassociateMemberFromGroup
-  , module Network.AWS.WorkMail.DisassociateMemberFromGroup
+    , module Network.AWS.WorkMail.DisassociateMemberFromGroup
+
     -- ** ListResources (Paginated)
-  , module Network.AWS.WorkMail.ListResources
+    , module Network.AWS.WorkMail.ListResources
+
     -- ** DeregisterFromWorkMail
-  , module Network.AWS.WorkMail.DeregisterFromWorkMail
+    , module Network.AWS.WorkMail.DeregisterFromWorkMail
+
     -- ** ListMailboxPermissions
-  , module Network.AWS.WorkMail.ListMailboxPermissions
+    , module Network.AWS.WorkMail.ListMailboxPermissions
+
     -- ** ListGroupMembers (Paginated)
-  , module Network.AWS.WorkMail.ListGroupMembers
+    , module Network.AWS.WorkMail.ListGroupMembers
+
     -- ** DisassociateDelegateFromResource
-  , module Network.AWS.WorkMail.DisassociateDelegateFromResource
+    , module Network.AWS.WorkMail.DisassociateDelegateFromResource
+
     -- ** ListResourceDelegates
-  , module Network.AWS.WorkMail.ListResourceDelegates
+    , module Network.AWS.WorkMail.ListResourceDelegates
+
     -- ** DescribeUser
-  , module Network.AWS.WorkMail.DescribeUser
+    , module Network.AWS.WorkMail.DescribeUser
+
     -- ** DeleteAlias
-  , module Network.AWS.WorkMail.DeleteAlias
+    , module Network.AWS.WorkMail.DeleteAlias
+
     -- ** ListOrganizations (Paginated)
-  , module Network.AWS.WorkMail.ListOrganizations
+    , module Network.AWS.WorkMail.ListOrganizations
+
     -- ** AssociateDelegateToResource
-  , module Network.AWS.WorkMail.AssociateDelegateToResource
+    , module Network.AWS.WorkMail.AssociateDelegateToResource
+
     -- ** CreateUser
-  , module Network.AWS.WorkMail.CreateUser
+    , module Network.AWS.WorkMail.CreateUser
+
     -- ** DeleteUser
-  , module Network.AWS.WorkMail.DeleteUser
+    , module Network.AWS.WorkMail.DeleteUser
+
     -- ** CreateGroup
-  , module Network.AWS.WorkMail.CreateGroup
+    , module Network.AWS.WorkMail.CreateGroup
+
     -- ** DeleteGroup
-  , module Network.AWS.WorkMail.DeleteGroup
+    , module Network.AWS.WorkMail.DeleteGroup
+
     -- ** ListGroups (Paginated)
-  , module Network.AWS.WorkMail.ListGroups
+    , module Network.AWS.WorkMail.ListGroups
+
     -- ** DescribeOrganization
-  , module Network.AWS.WorkMail.DescribeOrganization
+    , module Network.AWS.WorkMail.DescribeOrganization
+
     -- ** CreateResource
-  , module Network.AWS.WorkMail.CreateResource
+    , module Network.AWS.WorkMail.CreateResource
+
     -- * Types
+
     -- ** EntityState
-  , EntityState(..)
+    , EntityState (..)
+
     -- ** MemberType
-  , MemberType(..)
+    , MemberType (..)
+
     -- ** PermissionType
-  , PermissionType(..)
+    , PermissionType (..)
+
     -- ** ResourceType
-  , ResourceType(..)
+    , ResourceType (..)
+
     -- ** UserRole
-  , UserRole(..)
+    , UserRole (..)
+
     -- ** BookingOptions
-  , BookingOptions
-  , bookingOptions
-  , boAutoDeclineConflictingRequests
-  , boAutoDeclineRecurringRequests
-  , boAutoAcceptRequests
+    , BookingOptions
+    , bookingOptions
+    , boAutoDeclineConflictingRequests
+    , boAutoDeclineRecurringRequests
+    , boAutoAcceptRequests
+
     -- ** Delegate
-  , Delegate
-  , delegate
-  , dId
-  , dType
+    , Delegate
+    , delegate
+    , dId
+    , dType
+
     -- ** Group
-  , Group
-  , group'
-  , gEmail
-  , gState
-  , gDisabledDate
-  , gName
-  , gId
-  , gEnabledDate
+    , Group
+    , group'
+    , gEmail
+    , gState
+    , gDisabledDate
+    , gName
+    , gId
+    , gEnabledDate
+
     -- ** Member
-  , Member
-  , member
-  , mState
-  , mDisabledDate
-  , mName
-  , mId
-  , mType
-  , mEnabledDate
+    , Member
+    , member
+    , mState
+    , mDisabledDate
+    , mName
+    , mId
+    , mType
+    , mEnabledDate
+
     -- ** OrganizationSummary
-  , OrganizationSummary
-  , organizationSummary
-  , osState
-  , osAlias
-  , osErrorMessage
-  , osOrganizationId
+    , OrganizationSummary
+    , organizationSummary
+    , osState
+    , osAlias
+    , osErrorMessage
+    , osOrganizationId
+
     -- ** Permission
-  , Permission
-  , permission
-  , pGranteeId
-  , pGranteeType
-  , pPermissionValues
+    , Permission
+    , permission
+    , pGranteeId
+    , pGranteeType
+    , pPermissionValues
+
     -- ** Resource
-  , Resource
-  , resource
-  , rEmail
-  , rState
-  , rDisabledDate
-  , rName
-  , rId
-  , rType
-  , rEnabledDate
+    , Resource
+    , resource
+    , rEmail
+    , rState
+    , rDisabledDate
+    , rName
+    , rId
+    , rType
+    , rEnabledDate
+
     -- ** User
-  , User
-  , user
-  , uEmail
-  , uState
-  , uDisabledDate
-  , uName
-  , uId
-  , uDisplayName
-  , uUserRole
-  , uEnabledDate
-  ) where
+    , User
+    , user
+    , uEmail
+    , uState
+    , uDisabledDate
+    , uName
+    , uId
+    , uDisplayName
+    , uUserRole
+    , uEnabledDate
+    ) where
 
 import Network.AWS.WorkMail.AssociateDelegateToResource
 import Network.AWS.WorkMail.AssociateMemberToGroup
@@ -245,12 +311,14 @@ import Network.AWS.WorkMail.Types
 import Network.AWS.WorkMail.UpdatePrimaryEmailAddress
 import Network.AWS.WorkMail.UpdateResource
 import Network.AWS.WorkMail.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'WorkMail'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -267,6 +335,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

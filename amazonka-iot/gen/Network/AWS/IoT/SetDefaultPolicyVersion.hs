@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.IoT.SetDefaultPolicyVersion
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,16 +22,18 @@
 --
 --
 module Network.AWS.IoT.SetDefaultPolicyVersion
+    (
     -- * Creating a Request
-  ( setDefaultPolicyVersion
-  , SetDefaultPolicyVersion
+      setDefaultPolicyVersion
+    , SetDefaultPolicyVersion
     -- * Request Lenses
-  , sdpvPolicyName
-  , sdpvPolicyVersionId
+    , sdpvPolicyName
+    , sdpvPolicyVersionId
+
     -- * Destructuring the Response
-  , setDefaultPolicyVersionResponse
-  , SetDefaultPolicyVersionResponse
-  ) where
+    , setDefaultPolicyVersionResponse
+    , SetDefaultPolicyVersionResponse
+    ) where
 
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
@@ -50,6 +54,7 @@ data SetDefaultPolicyVersion =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SetDefaultPolicyVersion' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -57,58 +62,60 @@ data SetDefaultPolicyVersion =
 -- * 'sdpvPolicyName' - The policy name.
 --
 -- * 'sdpvPolicyVersionId' - The policy version ID.
-setDefaultPolicyVersion ::
-     Text -- ^ 'sdpvPolicyName'
-  -> Text -- ^ 'sdpvPolicyVersionId'
-  -> SetDefaultPolicyVersion
+setDefaultPolicyVersion
+    :: Text -- ^ 'sdpvPolicyName'
+    -> Text -- ^ 'sdpvPolicyVersionId'
+    -> SetDefaultPolicyVersion
 setDefaultPolicyVersion pPolicyName_ pPolicyVersionId_ =
   SetDefaultPolicyVersion'
     {_sdpvPolicyName = pPolicyName_, _sdpvPolicyVersionId = pPolicyVersionId_}
 
+
 -- | The policy name.
 sdpvPolicyName :: Lens' SetDefaultPolicyVersion Text
-sdpvPolicyName = lens _sdpvPolicyName (\s a -> s {_sdpvPolicyName = a})
+sdpvPolicyName = lens _sdpvPolicyName (\ s a -> s{_sdpvPolicyName = a})
 
 -- | The policy version ID.
 sdpvPolicyVersionId :: Lens' SetDefaultPolicyVersion Text
-sdpvPolicyVersionId =
-  lens _sdpvPolicyVersionId (\s a -> s {_sdpvPolicyVersionId = a})
+sdpvPolicyVersionId = lens _sdpvPolicyVersionId (\ s a -> s{_sdpvPolicyVersionId = a})
 
 instance AWSRequest SetDefaultPolicyVersion where
-  type Rs SetDefaultPolicyVersion = SetDefaultPolicyVersionResponse
-  request = patchJSON ioT
-  response = receiveNull SetDefaultPolicyVersionResponse'
+        type Rs SetDefaultPolicyVersion =
+             SetDefaultPolicyVersionResponse
+        request = patchJSON ioT
+        response
+          = receiveNull SetDefaultPolicyVersionResponse'
 
-instance Hashable SetDefaultPolicyVersion
+instance Hashable SetDefaultPolicyVersion where
 
-instance NFData SetDefaultPolicyVersion
+instance NFData SetDefaultPolicyVersion where
 
 instance ToHeaders SetDefaultPolicyVersion where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToJSON SetDefaultPolicyVersion where
-  toJSON = const (Object mempty)
+        toJSON = const (Object mempty)
 
 instance ToPath SetDefaultPolicyVersion where
-  toPath SetDefaultPolicyVersion' {..} =
-    mconcat
-      [ "/policies/"
-      , toBS _sdpvPolicyName
-      , "/version/"
-      , toBS _sdpvPolicyVersionId
-      ]
+        toPath SetDefaultPolicyVersion'{..}
+          = mconcat
+              ["/policies/", toBS _sdpvPolicyName, "/version/",
+               toBS _sdpvPolicyVersionId]
 
 instance ToQuery SetDefaultPolicyVersion where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'setDefaultPolicyVersionResponse' smart constructor.
 data SetDefaultPolicyVersionResponse =
   SetDefaultPolicyVersionResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SetDefaultPolicyVersionResponse' with the minimum fields required to make a request.
 --
-setDefaultPolicyVersionResponse :: SetDefaultPolicyVersionResponse
+setDefaultPolicyVersionResponse
+    :: SetDefaultPolicyVersionResponse
 setDefaultPolicyVersionResponse = SetDefaultPolicyVersionResponse'
 
-instance NFData SetDefaultPolicyVersionResponse
+
+instance NFData SetDefaultPolicyVersionResponse where

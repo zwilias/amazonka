@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Test.AWS.Gen.ServerlessApplicationRepository
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -23,6 +24,7 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
+
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -57,6 +59,7 @@ import Test.Tasty
 --             listApplications
 --
 --           ]
+
 --     , testGroup "response"
 --         [ responseGetApplicationPolicy $
 --             getApplicationPolicyResponse
@@ -90,125 +93,126 @@ import Test.Tasty
 --
 --           ]
 --     ]
+
 -- Requests
+
 requestGetApplicationPolicy :: GetApplicationPolicy -> TestTree
-requestGetApplicationPolicy =
-  req "GetApplicationPolicy" "fixture/GetApplicationPolicy.yaml"
+requestGetApplicationPolicy = req
+    "GetApplicationPolicy"
+    "fixture/GetApplicationPolicy.yaml"
 
 requestCreateApplicationVersion :: CreateApplicationVersion -> TestTree
-requestCreateApplicationVersion =
-  req "CreateApplicationVersion" "fixture/CreateApplicationVersion.yaml"
+requestCreateApplicationVersion = req
+    "CreateApplicationVersion"
+    "fixture/CreateApplicationVersion.yaml"
 
 requestDeleteApplication :: DeleteApplication -> TestTree
-requestDeleteApplication =
-  req "DeleteApplication" "fixture/DeleteApplication.yaml"
+requestDeleteApplication = req
+    "DeleteApplication"
+    "fixture/DeleteApplication.yaml"
 
 requestUpdateApplication :: UpdateApplication -> TestTree
-requestUpdateApplication =
-  req "UpdateApplication" "fixture/UpdateApplication.yaml"
+requestUpdateApplication = req
+    "UpdateApplication"
+    "fixture/UpdateApplication.yaml"
 
 requestCreateApplication :: CreateApplication -> TestTree
-requestCreateApplication =
-  req "CreateApplication" "fixture/CreateApplication.yaml"
+requestCreateApplication = req
+    "CreateApplication"
+    "fixture/CreateApplication.yaml"
 
 requestListApplicationVersions :: ListApplicationVersions -> TestTree
-requestListApplicationVersions =
-  req "ListApplicationVersions" "fixture/ListApplicationVersions.yaml"
+requestListApplicationVersions = req
+    "ListApplicationVersions"
+    "fixture/ListApplicationVersions.yaml"
 
 requestGetApplication :: GetApplication -> TestTree
-requestGetApplication = req "GetApplication" "fixture/GetApplication.yaml"
+requestGetApplication = req
+    "GetApplication"
+    "fixture/GetApplication.yaml"
 
-requestCreateCloudFormationChangeSet ::
-     CreateCloudFormationChangeSet -> TestTree
-requestCreateCloudFormationChangeSet =
-  req
+requestCreateCloudFormationChangeSet :: CreateCloudFormationChangeSet -> TestTree
+requestCreateCloudFormationChangeSet = req
     "CreateCloudFormationChangeSet"
     "fixture/CreateCloudFormationChangeSet.yaml"
 
 requestPutApplicationPolicy :: PutApplicationPolicy -> TestTree
-requestPutApplicationPolicy =
-  req "PutApplicationPolicy" "fixture/PutApplicationPolicy.yaml"
+requestPutApplicationPolicy = req
+    "PutApplicationPolicy"
+    "fixture/PutApplicationPolicy.yaml"
 
 requestListApplications :: ListApplications -> TestTree
-requestListApplications = req "ListApplications" "fixture/ListApplications.yaml"
+requestListApplications = req
+    "ListApplications"
+    "fixture/ListApplications.yaml"
 
 -- Responses
+
 responseGetApplicationPolicy :: GetApplicationPolicyResponse -> TestTree
-responseGetApplicationPolicy =
-  res
+responseGetApplicationPolicy = res
     "GetApplicationPolicyResponse"
     "fixture/GetApplicationPolicyResponse.proto"
     serverlessApplicationRepository
     (Proxy :: Proxy GetApplicationPolicy)
 
 responseCreateApplicationVersion :: CreateApplicationVersionResponse -> TestTree
-responseCreateApplicationVersion =
-  res
+responseCreateApplicationVersion = res
     "CreateApplicationVersionResponse"
     "fixture/CreateApplicationVersionResponse.proto"
     serverlessApplicationRepository
     (Proxy :: Proxy CreateApplicationVersion)
 
 responseDeleteApplication :: DeleteApplicationResponse -> TestTree
-responseDeleteApplication =
-  res
+responseDeleteApplication = res
     "DeleteApplicationResponse"
     "fixture/DeleteApplicationResponse.proto"
     serverlessApplicationRepository
     (Proxy :: Proxy DeleteApplication)
 
 responseUpdateApplication :: UpdateApplicationResponse -> TestTree
-responseUpdateApplication =
-  res
+responseUpdateApplication = res
     "UpdateApplicationResponse"
     "fixture/UpdateApplicationResponse.proto"
     serverlessApplicationRepository
     (Proxy :: Proxy UpdateApplication)
 
 responseCreateApplication :: CreateApplicationResponse -> TestTree
-responseCreateApplication =
-  res
+responseCreateApplication = res
     "CreateApplicationResponse"
     "fixture/CreateApplicationResponse.proto"
     serverlessApplicationRepository
     (Proxy :: Proxy CreateApplication)
 
 responseListApplicationVersions :: ListApplicationVersionsResponse -> TestTree
-responseListApplicationVersions =
-  res
+responseListApplicationVersions = res
     "ListApplicationVersionsResponse"
     "fixture/ListApplicationVersionsResponse.proto"
     serverlessApplicationRepository
     (Proxy :: Proxy ListApplicationVersions)
 
 responseGetApplication :: GetApplicationResponse -> TestTree
-responseGetApplication =
-  res
+responseGetApplication = res
     "GetApplicationResponse"
     "fixture/GetApplicationResponse.proto"
     serverlessApplicationRepository
     (Proxy :: Proxy GetApplication)
 
-responseCreateCloudFormationChangeSet ::
-     CreateCloudFormationChangeSetResponse -> TestTree
-responseCreateCloudFormationChangeSet =
-  res
+responseCreateCloudFormationChangeSet :: CreateCloudFormationChangeSetResponse -> TestTree
+responseCreateCloudFormationChangeSet = res
     "CreateCloudFormationChangeSetResponse"
     "fixture/CreateCloudFormationChangeSetResponse.proto"
     serverlessApplicationRepository
     (Proxy :: Proxy CreateCloudFormationChangeSet)
 
 responsePutApplicationPolicy :: PutApplicationPolicyResponse -> TestTree
-responsePutApplicationPolicy =
-  res
+responsePutApplicationPolicy = res
     "PutApplicationPolicyResponse"
     "fixture/PutApplicationPolicyResponse.proto"
     serverlessApplicationRepository
     (Proxy :: Proxy PutApplicationPolicy)
 
 responseListApplications :: ListApplicationsResponse -> TestTree
-responseListApplications =
-  res
+responseListApplications = res
     "ListApplicationsResponse"
     "fixture/ListApplicationsResponse.proto"
     serverlessApplicationRepository

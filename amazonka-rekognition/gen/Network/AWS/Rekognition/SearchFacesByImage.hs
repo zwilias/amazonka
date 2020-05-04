@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Rekognition.SearchFacesByImage
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -28,24 +30,26 @@
 -- This operation requires permissions to perform the @rekognition:SearchFacesByImage@ action.
 --
 module Network.AWS.Rekognition.SearchFacesByImage
+    (
     -- * Creating a Request
-  ( searchFacesByImage
-  , SearchFacesByImage
+      searchFacesByImage
+    , SearchFacesByImage
     -- * Request Lenses
-  , sfbiFaceMatchThreshold
-  , sfbiMaxFaces
-  , sfbiCollectionId
-  , sfbiImage
+    , sfbiFaceMatchThreshold
+    , sfbiMaxFaces
+    , sfbiCollectionId
+    , sfbiImage
+
     -- * Destructuring the Response
-  , searchFacesByImageResponse
-  , SearchFacesByImageResponse
+    , searchFacesByImageResponse
+    , SearchFacesByImageResponse
     -- * Response Lenses
-  , sfbirsFaceMatches
-  , sfbirsFaceModelVersion
-  , sfbirsSearchedFaceBoundingBox
-  , sfbirsSearchedFaceConfidence
-  , sfbirsResponseStatus
-  ) where
+    , sfbirsFaceMatches
+    , sfbirsFaceModelVersion
+    , sfbirsSearchedFaceBoundingBox
+    , sfbirsSearchedFaceConfidence
+    , sfbirsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -64,6 +68,7 @@ data SearchFacesByImage =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SearchFacesByImage' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -75,10 +80,10 @@ data SearchFacesByImage =
 -- * 'sfbiCollectionId' - ID of the collection to search.
 --
 -- * 'sfbiImage' - The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.
-searchFacesByImage ::
-     Text -- ^ 'sfbiCollectionId'
-  -> Image -- ^ 'sfbiImage'
-  -> SearchFacesByImage
+searchFacesByImage
+    :: Text -- ^ 'sfbiCollectionId'
+    -> Image -- ^ 'sfbiImage'
+    -> SearchFacesByImage
 searchFacesByImage pCollectionId_ pImage_ =
   SearchFacesByImage'
     { _sfbiFaceMatchThreshold = Nothing
@@ -87,63 +92,66 @@ searchFacesByImage pCollectionId_ pImage_ =
     , _sfbiImage = pImage_
     }
 
+
 -- | (Optional) Specifies the minimum confidence in the face match to return. For example, don't return any matches where confidence in matches is less than 70%.
 sfbiFaceMatchThreshold :: Lens' SearchFacesByImage (Maybe Double)
-sfbiFaceMatchThreshold =
-  lens _sfbiFaceMatchThreshold (\s a -> s {_sfbiFaceMatchThreshold = a})
+sfbiFaceMatchThreshold = lens _sfbiFaceMatchThreshold (\ s a -> s{_sfbiFaceMatchThreshold = a})
 
 -- | Maximum number of faces to return. The operation returns the maximum number of faces with the highest confidence in the match.
 sfbiMaxFaces :: Lens' SearchFacesByImage (Maybe Natural)
-sfbiMaxFaces = lens _sfbiMaxFaces (\s a -> s {_sfbiMaxFaces = a}) . mapping _Nat
+sfbiMaxFaces = lens _sfbiMaxFaces (\ s a -> s{_sfbiMaxFaces = a}) . mapping _Nat
 
 -- | ID of the collection to search.
 sfbiCollectionId :: Lens' SearchFacesByImage Text
-sfbiCollectionId = lens _sfbiCollectionId (\s a -> s {_sfbiCollectionId = a})
+sfbiCollectionId = lens _sfbiCollectionId (\ s a -> s{_sfbiCollectionId = a})
 
 -- | The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.
 sfbiImage :: Lens' SearchFacesByImage Image
-sfbiImage = lens _sfbiImage (\s a -> s {_sfbiImage = a})
+sfbiImage = lens _sfbiImage (\ s a -> s{_sfbiImage = a})
 
 instance AWSRequest SearchFacesByImage where
-  type Rs SearchFacesByImage = SearchFacesByImageResponse
-  request = postJSON rekognition
-  response =
-    receiveJSON
-      (\s h x ->
-         SearchFacesByImageResponse' <$> (x .?> "FaceMatches" .!@ mempty) <*>
-         (x .?> "FaceModelVersion") <*>
-         (x .?> "SearchedFaceBoundingBox") <*>
-         (x .?> "SearchedFaceConfidence") <*>
-         (pure (fromEnum s)))
+        type Rs SearchFacesByImage =
+             SearchFacesByImageResponse
+        request = postJSON rekognition
+        response
+          = receiveJSON
+              (\ s h x ->
+                 SearchFacesByImageResponse' <$>
+                   (x .?> "FaceMatches" .!@ mempty) <*>
+                     (x .?> "FaceModelVersion")
+                     <*> (x .?> "SearchedFaceBoundingBox")
+                     <*> (x .?> "SearchedFaceConfidence")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable SearchFacesByImage
+instance Hashable SearchFacesByImage where
 
-instance NFData SearchFacesByImage
+instance NFData SearchFacesByImage where
 
 instance ToHeaders SearchFacesByImage where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("RekognitionService.SearchFacesByImage" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("RekognitionService.SearchFacesByImage" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON SearchFacesByImage where
-  toJSON SearchFacesByImage' {..} =
-    object
-      (catMaybes
-         [ ("FaceMatchThreshold" .=) <$> _sfbiFaceMatchThreshold
-         , ("MaxFaces" .=) <$> _sfbiMaxFaces
-         , Just ("CollectionId" .= _sfbiCollectionId)
-         , Just ("Image" .= _sfbiImage)
-         ])
+        toJSON SearchFacesByImage'{..}
+          = object
+              (catMaybes
+                 [("FaceMatchThreshold" .=) <$>
+                    _sfbiFaceMatchThreshold,
+                  ("MaxFaces" .=) <$> _sfbiMaxFaces,
+                  Just ("CollectionId" .= _sfbiCollectionId),
+                  Just ("Image" .= _sfbiImage)])
 
 instance ToPath SearchFacesByImage where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery SearchFacesByImage where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'searchFacesByImageResponse' smart constructor.
 data SearchFacesByImageResponse =
@@ -155,6 +163,7 @@ data SearchFacesByImageResponse =
     , _sfbirsResponseStatus          :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'SearchFacesByImageResponse' with the minimum fields required to make a request.
 --
@@ -169,9 +178,9 @@ data SearchFacesByImageResponse =
 -- * 'sfbirsSearchedFaceConfidence' - The level of confidence that the @searchedFaceBoundingBox@ , contains a face.
 --
 -- * 'sfbirsResponseStatus' - -- | The response status code.
-searchFacesByImageResponse ::
-     Int -- ^ 'sfbirsResponseStatus'
-  -> SearchFacesByImageResponse
+searchFacesByImageResponse
+    :: Int -- ^ 'sfbirsResponseStatus'
+    -> SearchFacesByImageResponse
 searchFacesByImageResponse pResponseStatus_ =
   SearchFacesByImageResponse'
     { _sfbirsFaceMatches = Nothing
@@ -181,35 +190,25 @@ searchFacesByImageResponse pResponseStatus_ =
     , _sfbirsResponseStatus = pResponseStatus_
     }
 
+
 -- | An array of faces that match the input face, along with the confidence in the match.
 sfbirsFaceMatches :: Lens' SearchFacesByImageResponse [FaceMatch]
-sfbirsFaceMatches =
-  lens _sfbirsFaceMatches (\s a -> s {_sfbirsFaceMatches = a}) .
-  _Default . _Coerce
+sfbirsFaceMatches = lens _sfbirsFaceMatches (\ s a -> s{_sfbirsFaceMatches = a}) . _Default . _Coerce
 
 -- | Version number of the face detection model associated with the input collection (@CollectionId@ ).
 sfbirsFaceModelVersion :: Lens' SearchFacesByImageResponse (Maybe Text)
-sfbirsFaceModelVersion =
-  lens _sfbirsFaceModelVersion (\s a -> s {_sfbirsFaceModelVersion = a})
+sfbirsFaceModelVersion = lens _sfbirsFaceModelVersion (\ s a -> s{_sfbirsFaceModelVersion = a})
 
 -- | The bounding box around the face in the input image that Amazon Rekognition used for the search.
-sfbirsSearchedFaceBoundingBox ::
-     Lens' SearchFacesByImageResponse (Maybe BoundingBox)
-sfbirsSearchedFaceBoundingBox =
-  lens
-    _sfbirsSearchedFaceBoundingBox
-    (\s a -> s {_sfbirsSearchedFaceBoundingBox = a})
+sfbirsSearchedFaceBoundingBox :: Lens' SearchFacesByImageResponse (Maybe BoundingBox)
+sfbirsSearchedFaceBoundingBox = lens _sfbirsSearchedFaceBoundingBox (\ s a -> s{_sfbirsSearchedFaceBoundingBox = a})
 
 -- | The level of confidence that the @searchedFaceBoundingBox@ , contains a face.
 sfbirsSearchedFaceConfidence :: Lens' SearchFacesByImageResponse (Maybe Double)
-sfbirsSearchedFaceConfidence =
-  lens
-    _sfbirsSearchedFaceConfidence
-    (\s a -> s {_sfbirsSearchedFaceConfidence = a})
+sfbirsSearchedFaceConfidence = lens _sfbirsSearchedFaceConfidence (\ s a -> s{_sfbirsSearchedFaceConfidence = a})
 
 -- | -- | The response status code.
 sfbirsResponseStatus :: Lens' SearchFacesByImageResponse Int
-sfbirsResponseStatus =
-  lens _sfbirsResponseStatus (\s a -> s {_sfbirsResponseStatus = a})
+sfbirsResponseStatus = lens _sfbirsResponseStatus (\ s a -> s{_sfbirsResponseStatus = a})
 
-instance NFData SearchFacesByImageResponse
+instance NFData SearchFacesByImageResponse where

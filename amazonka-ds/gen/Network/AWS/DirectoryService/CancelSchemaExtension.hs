@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.DirectoryService.CancelSchemaExtension
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.DirectoryService.CancelSchemaExtension
+    (
     -- * Creating a Request
-  ( cancelSchemaExtension
-  , CancelSchemaExtension
+      cancelSchemaExtension
+    , CancelSchemaExtension
     -- * Request Lenses
-  , cseDirectoryId
-  , cseSchemaExtensionId
+    , cseDirectoryId
+    , cseSchemaExtensionId
+
     -- * Destructuring the Response
-  , cancelSchemaExtensionResponse
-  , CancelSchemaExtensionResponse
+    , cancelSchemaExtensionResponse
+    , CancelSchemaExtensionResponse
     -- * Response Lenses
-  , csersResponseStatus
-  ) where
+    , csersResponseStatus
+    ) where
 
 import Network.AWS.DirectoryService.Types
 import Network.AWS.DirectoryService.Types.Product
@@ -48,6 +52,7 @@ data CancelSchemaExtension =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CancelSchemaExtension' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -55,58 +60,61 @@ data CancelSchemaExtension =
 -- * 'cseDirectoryId' - The identifier of the directory whose schema extension will be canceled.
 --
 -- * 'cseSchemaExtensionId' - The identifier of the schema extension that will be canceled.
-cancelSchemaExtension ::
-     Text -- ^ 'cseDirectoryId'
-  -> Text -- ^ 'cseSchemaExtensionId'
-  -> CancelSchemaExtension
+cancelSchemaExtension
+    :: Text -- ^ 'cseDirectoryId'
+    -> Text -- ^ 'cseSchemaExtensionId'
+    -> CancelSchemaExtension
 cancelSchemaExtension pDirectoryId_ pSchemaExtensionId_ =
   CancelSchemaExtension'
     { _cseDirectoryId = pDirectoryId_
     , _cseSchemaExtensionId = pSchemaExtensionId_
     }
 
+
 -- | The identifier of the directory whose schema extension will be canceled.
 cseDirectoryId :: Lens' CancelSchemaExtension Text
-cseDirectoryId = lens _cseDirectoryId (\s a -> s {_cseDirectoryId = a})
+cseDirectoryId = lens _cseDirectoryId (\ s a -> s{_cseDirectoryId = a})
 
 -- | The identifier of the schema extension that will be canceled.
 cseSchemaExtensionId :: Lens' CancelSchemaExtension Text
-cseSchemaExtensionId =
-  lens _cseSchemaExtensionId (\s a -> s {_cseSchemaExtensionId = a})
+cseSchemaExtensionId = lens _cseSchemaExtensionId (\ s a -> s{_cseSchemaExtensionId = a})
 
 instance AWSRequest CancelSchemaExtension where
-  type Rs CancelSchemaExtension = CancelSchemaExtensionResponse
-  request = postJSON directoryService
-  response =
-    receiveEmpty
-      (\s h x -> CancelSchemaExtensionResponse' <$> (pure (fromEnum s)))
+        type Rs CancelSchemaExtension =
+             CancelSchemaExtensionResponse
+        request = postJSON directoryService
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 CancelSchemaExtensionResponse' <$>
+                   (pure (fromEnum s)))
 
-instance Hashable CancelSchemaExtension
+instance Hashable CancelSchemaExtension where
 
-instance NFData CancelSchemaExtension
+instance NFData CancelSchemaExtension where
 
 instance ToHeaders CancelSchemaExtension where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("DirectoryService_20150416.CancelSchemaExtension" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("DirectoryService_20150416.CancelSchemaExtension" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON CancelSchemaExtension where
-  toJSON CancelSchemaExtension' {..} =
-    object
-      (catMaybes
-         [ Just ("DirectoryId" .= _cseDirectoryId)
-         , Just ("SchemaExtensionId" .= _cseSchemaExtensionId)
-         ])
+        toJSON CancelSchemaExtension'{..}
+          = object
+              (catMaybes
+                 [Just ("DirectoryId" .= _cseDirectoryId),
+                  Just ("SchemaExtensionId" .= _cseSchemaExtensionId)])
 
 instance ToPath CancelSchemaExtension where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery CancelSchemaExtension where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'cancelSchemaExtensionResponse' smart constructor.
 newtype CancelSchemaExtensionResponse =
@@ -115,20 +123,21 @@ newtype CancelSchemaExtensionResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CancelSchemaExtensionResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'csersResponseStatus' - -- | The response status code.
-cancelSchemaExtensionResponse ::
-     Int -- ^ 'csersResponseStatus'
-  -> CancelSchemaExtensionResponse
+cancelSchemaExtensionResponse
+    :: Int -- ^ 'csersResponseStatus'
+    -> CancelSchemaExtensionResponse
 cancelSchemaExtensionResponse pResponseStatus_ =
   CancelSchemaExtensionResponse' {_csersResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 csersResponseStatus :: Lens' CancelSchemaExtensionResponse Int
-csersResponseStatus =
-  lens _csersResponseStatus (\s a -> s {_csersResponseStatus = a})
+csersResponseStatus = lens _csersResponseStatus (\ s a -> s{_csersResponseStatus = a})
 
-instance NFData CancelSchemaExtensionResponse
+instance NFData CancelSchemaExtensionResponse where

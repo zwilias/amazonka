@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.MachineLearning.DeleteTags
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,21 +24,23 @@
 -- If you specify a tag that doesn't exist, Amazon ML ignores it.
 --
 module Network.AWS.MachineLearning.DeleteTags
+    (
     -- * Creating a Request
-  ( deleteTags
-  , DeleteTags
+      deleteTags
+    , DeleteTags
     -- * Request Lenses
-  , dTagKeys
-  , dResourceId
-  , dResourceType
+    , dTagKeys
+    , dResourceId
+    , dResourceType
+
     -- * Destructuring the Response
-  , deleteTagsResponse
-  , DeleteTagsResponse
+    , deleteTagsResponse
+    , DeleteTagsResponse
     -- * Response Lenses
-  , drsResourceId
-  , drsResourceType
-  , drsResponseStatus
-  ) where
+    , drsResourceId
+    , drsResourceType
+    , drsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.MachineLearning.Types
@@ -54,6 +58,7 @@ data DeleteTags =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteTags' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -63,10 +68,10 @@ data DeleteTags =
 -- * 'dResourceId' - The ID of the tagged ML object. For example, @exampleModelId@ .
 --
 -- * 'dResourceType' - The type of the tagged ML object.
-deleteTags ::
-     Text -- ^ 'dResourceId'
-  -> TaggableResourceType -- ^ 'dResourceType'
-  -> DeleteTags
+deleteTags
+    :: Text -- ^ 'dResourceId'
+    -> TaggableResourceType -- ^ 'dResourceType'
+    -> DeleteTags
 deleteTags pResourceId_ pResourceType_ =
   DeleteTags'
     { _dTagKeys = mempty
@@ -74,53 +79,55 @@ deleteTags pResourceId_ pResourceType_ =
     , _dResourceType = pResourceType_
     }
 
+
 -- | One or more tags to delete.
 dTagKeys :: Lens' DeleteTags [Text]
-dTagKeys = lens _dTagKeys (\s a -> s {_dTagKeys = a}) . _Coerce
+dTagKeys = lens _dTagKeys (\ s a -> s{_dTagKeys = a}) . _Coerce
 
 -- | The ID of the tagged ML object. For example, @exampleModelId@ .
 dResourceId :: Lens' DeleteTags Text
-dResourceId = lens _dResourceId (\s a -> s {_dResourceId = a})
+dResourceId = lens _dResourceId (\ s a -> s{_dResourceId = a})
 
 -- | The type of the tagged ML object.
 dResourceType :: Lens' DeleteTags TaggableResourceType
-dResourceType = lens _dResourceType (\s a -> s {_dResourceType = a})
+dResourceType = lens _dResourceType (\ s a -> s{_dResourceType = a})
 
 instance AWSRequest DeleteTags where
-  type Rs DeleteTags = DeleteTagsResponse
-  request = postJSON machineLearning
-  response =
-    receiveJSON
-      (\s h x ->
-         DeleteTagsResponse' <$> (x .?> "ResourceId") <*> (x .?> "ResourceType") <*>
-         (pure (fromEnum s)))
+        type Rs DeleteTags = DeleteTagsResponse
+        request = postJSON machineLearning
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DeleteTagsResponse' <$>
+                   (x .?> "ResourceId") <*> (x .?> "ResourceType") <*>
+                     (pure (fromEnum s)))
 
-instance Hashable DeleteTags
+instance Hashable DeleteTags where
 
-instance NFData DeleteTags
+instance NFData DeleteTags where
 
 instance ToHeaders DeleteTags where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("AmazonML_20141212.DeleteTags" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AmazonML_20141212.DeleteTags" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DeleteTags where
-  toJSON DeleteTags' {..} =
-    object
-      (catMaybes
-         [ Just ("TagKeys" .= _dTagKeys)
-         , Just ("ResourceId" .= _dResourceId)
-         , Just ("ResourceType" .= _dResourceType)
-         ])
+        toJSON DeleteTags'{..}
+          = object
+              (catMaybes
+                 [Just ("TagKeys" .= _dTagKeys),
+                  Just ("ResourceId" .= _dResourceId),
+                  Just ("ResourceType" .= _dResourceType)])
 
 instance ToPath DeleteTags where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DeleteTags where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | Amazon ML returns the following elements.
 --
@@ -135,6 +142,7 @@ data DeleteTagsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteTagsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -144,9 +152,9 @@ data DeleteTagsResponse =
 -- * 'drsResourceType' - The type of the ML object from which tags were deleted.
 --
 -- * 'drsResponseStatus' - -- | The response status code.
-deleteTagsResponse ::
-     Int -- ^ 'drsResponseStatus'
-  -> DeleteTagsResponse
+deleteTagsResponse
+    :: Int -- ^ 'drsResponseStatus'
+    -> DeleteTagsResponse
 deleteTagsResponse pResponseStatus_ =
   DeleteTagsResponse'
     { _drsResourceId = Nothing
@@ -154,16 +162,17 @@ deleteTagsResponse pResponseStatus_ =
     , _drsResponseStatus = pResponseStatus_
     }
 
+
 -- | The ID of the ML object from which tags were deleted.
 drsResourceId :: Lens' DeleteTagsResponse (Maybe Text)
-drsResourceId = lens _drsResourceId (\s a -> s {_drsResourceId = a})
+drsResourceId = lens _drsResourceId (\ s a -> s{_drsResourceId = a})
 
 -- | The type of the ML object from which tags were deleted.
 drsResourceType :: Lens' DeleteTagsResponse (Maybe TaggableResourceType)
-drsResourceType = lens _drsResourceType (\s a -> s {_drsResourceType = a})
+drsResourceType = lens _drsResourceType (\ s a -> s{_drsResourceType = a})
 
 -- | -- | The response status code.
 drsResponseStatus :: Lens' DeleteTagsResponse Int
-drsResponseStatus = lens _drsResponseStatus (\s a -> s {_drsResponseStatus = a})
+drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a})
 
-instance NFData DeleteTagsResponse
+instance NFData DeleteTagsResponse where

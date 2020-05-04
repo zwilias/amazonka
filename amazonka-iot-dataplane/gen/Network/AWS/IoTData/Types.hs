@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.IoTData.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,20 +11,22 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.IoTData.Types
+    (
     -- * Service Configuration
-  ( ioTData
+      ioTData
+
     -- * Errors
-  , _InvalidRequestException
-  , _ConflictException
-  , _RequestEntityTooLargeException
-  , _ThrottlingException
-  , _MethodNotAllowedException
-  , _InternalFailureException
-  , _ServiceUnavailableException
-  , _UnauthorizedException
-  , _ResourceNotFoundException
-  , _UnsupportedDocumentEncodingException
-  ) where
+    , _InvalidRequestException
+    , _ConflictException
+    , _RequestEntityTooLargeException
+    , _ThrottlingException
+    , _MethodNotAllowedException
+    , _InternalFailureException
+    , _ServiceUnavailableException
+    , _UnauthorizedException
+    , _ResourceNotFoundException
+    , _UnsupportedDocumentEncodingException
+    ) where
 
 import Network.AWS.IoTData.Types.Product
 import Network.AWS.IoTData.Types.Sum
@@ -69,13 +72,14 @@ ioTData =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | The request is not valid.
 --
 --
-_InvalidRequestException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidRequestException =
   _MatchServiceError ioTData "InvalidRequestException" . hasStatus 400
+
 
 -- | The specified version does not match the version of the document.
 --
@@ -84,13 +88,14 @@ _ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
 _ConflictException =
   _MatchServiceError ioTData "ConflictException" . hasStatus 409
 
+
 -- | The payload exceeds the maximum size allowed.
 --
 --
-_RequestEntityTooLargeException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_RequestEntityTooLargeException :: AsError a => Getting (First ServiceError) a ServiceError
 _RequestEntityTooLargeException =
   _MatchServiceError ioTData "RequestEntityTooLargeException" . hasStatus 413
+
 
 -- | The rate exceeds the limit.
 --
@@ -99,51 +104,52 @@ _ThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
 _ThrottlingException =
   _MatchServiceError ioTData "ThrottlingException" . hasStatus 429
 
+
 -- | The specified combination of HTTP verb and URI is not supported.
 --
 --
-_MethodNotAllowedException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_MethodNotAllowedException :: AsError a => Getting (First ServiceError) a ServiceError
 _MethodNotAllowedException =
   _MatchServiceError ioTData "MethodNotAllowedException" . hasStatus 405
+
 
 -- | An unexpected error has occurred.
 --
 --
-_InternalFailureException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalFailureException =
   _MatchServiceError ioTData "InternalFailureException" . hasStatus 500
+
 
 -- | The service is temporarily unavailable.
 --
 --
-_ServiceUnavailableException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
 _ServiceUnavailableException =
   _MatchServiceError ioTData "ServiceUnavailableException" . hasStatus 503
+
 
 -- | You are not authorized to perform this operation.
 --
 --
-_UnauthorizedException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_UnauthorizedException :: AsError a => Getting (First ServiceError) a ServiceError
 _UnauthorizedException =
   _MatchServiceError ioTData "UnauthorizedException" . hasStatus 401
+
 
 -- | The specified resource does not exist.
 --
 --
-_ResourceNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceNotFoundException =
   _MatchServiceError ioTData "ResourceNotFoundException" . hasStatus 404
+
 
 -- | The document encoding is not supported.
 --
 --
-_UnsupportedDocumentEncodingException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_UnsupportedDocumentEncodingException :: AsError a => Getting (First ServiceError) a ServiceError
 _UnsupportedDocumentEncodingException =
   _MatchServiceError ioTData "UnsupportedDocumentEncodingException" .
   hasStatus 415
+

@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CloudWatchLogs.PutMetricFilter
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,18 +24,20 @@
 -- The maximum number of metric filters that can be associated with a log group is 100.
 --
 module Network.AWS.CloudWatchLogs.PutMetricFilter
+    (
     -- * Creating a Request
-  ( putMetricFilter
-  , PutMetricFilter
+      putMetricFilter
+    , PutMetricFilter
     -- * Request Lenses
-  , pmfLogGroupName
-  , pmfFilterName
-  , pmfFilterPattern
-  , pmfMetricTransformations
+    , pmfLogGroupName
+    , pmfFilterName
+    , pmfFilterPattern
+    , pmfMetricTransformations
+
     -- * Destructuring the Response
-  , putMetricFilterResponse
-  , PutMetricFilterResponse
-  ) where
+    , putMetricFilterResponse
+    , PutMetricFilterResponse
+    ) where
 
 import Network.AWS.CloudWatchLogs.Types
 import Network.AWS.CloudWatchLogs.Types.Product
@@ -52,6 +56,7 @@ data PutMetricFilter =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'PutMetricFilter' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -63,12 +68,12 @@ data PutMetricFilter =
 -- * 'pmfFilterPattern' - A filter pattern for extracting metric data out of ingested log events.
 --
 -- * 'pmfMetricTransformations' - A collection of information that defines how metric data gets emitted.
-putMetricFilter ::
-     Text -- ^ 'pmfLogGroupName'
-  -> Text -- ^ 'pmfFilterName'
-  -> Text -- ^ 'pmfFilterPattern'
-  -> NonEmpty MetricTransformation -- ^ 'pmfMetricTransformations'
-  -> PutMetricFilter
+putMetricFilter
+    :: Text -- ^ 'pmfLogGroupName'
+    -> Text -- ^ 'pmfFilterName'
+    -> Text -- ^ 'pmfFilterPattern'
+    -> NonEmpty MetricTransformation -- ^ 'pmfMetricTransformations'
+    -> PutMetricFilter
 putMetricFilter pLogGroupName_ pFilterName_ pFilterPattern_ pMetricTransformations_ =
   PutMetricFilter'
     { _pmfLogGroupName = pLogGroupName_
@@ -77,66 +82,69 @@ putMetricFilter pLogGroupName_ pFilterName_ pFilterPattern_ pMetricTransformatio
     , _pmfMetricTransformations = _List1 # pMetricTransformations_
     }
 
+
 -- | The name of the log group.
 pmfLogGroupName :: Lens' PutMetricFilter Text
-pmfLogGroupName = lens _pmfLogGroupName (\s a -> s {_pmfLogGroupName = a})
+pmfLogGroupName = lens _pmfLogGroupName (\ s a -> s{_pmfLogGroupName = a})
 
 -- | A name for the metric filter.
 pmfFilterName :: Lens' PutMetricFilter Text
-pmfFilterName = lens _pmfFilterName (\s a -> s {_pmfFilterName = a})
+pmfFilterName = lens _pmfFilterName (\ s a -> s{_pmfFilterName = a})
 
 -- | A filter pattern for extracting metric data out of ingested log events.
 pmfFilterPattern :: Lens' PutMetricFilter Text
-pmfFilterPattern = lens _pmfFilterPattern (\s a -> s {_pmfFilterPattern = a})
+pmfFilterPattern = lens _pmfFilterPattern (\ s a -> s{_pmfFilterPattern = a})
 
 -- | A collection of information that defines how metric data gets emitted.
-pmfMetricTransformations ::
-     Lens' PutMetricFilter (NonEmpty MetricTransformation)
-pmfMetricTransformations =
-  lens _pmfMetricTransformations (\s a -> s {_pmfMetricTransformations = a}) .
-  _List1
+pmfMetricTransformations :: Lens' PutMetricFilter (NonEmpty MetricTransformation)
+pmfMetricTransformations = lens _pmfMetricTransformations (\ s a -> s{_pmfMetricTransformations = a}) . _List1
 
 instance AWSRequest PutMetricFilter where
-  type Rs PutMetricFilter = PutMetricFilterResponse
-  request = postJSON cloudWatchLogs
-  response = receiveNull PutMetricFilterResponse'
+        type Rs PutMetricFilter = PutMetricFilterResponse
+        request = postJSON cloudWatchLogs
+        response = receiveNull PutMetricFilterResponse'
 
-instance Hashable PutMetricFilter
+instance Hashable PutMetricFilter where
 
-instance NFData PutMetricFilter
+instance NFData PutMetricFilter where
 
 instance ToHeaders PutMetricFilter where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("Logs_20140328.PutMetricFilter" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("Logs_20140328.PutMetricFilter" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON PutMetricFilter where
-  toJSON PutMetricFilter' {..} =
-    object
-      (catMaybes
-         [ Just ("logGroupName" .= _pmfLogGroupName)
-         , Just ("filterName" .= _pmfFilterName)
-         , Just ("filterPattern" .= _pmfFilterPattern)
-         , Just ("metricTransformations" .= _pmfMetricTransformations)
-         ])
+        toJSON PutMetricFilter'{..}
+          = object
+              (catMaybes
+                 [Just ("logGroupName" .= _pmfLogGroupName),
+                  Just ("filterName" .= _pmfFilterName),
+                  Just ("filterPattern" .= _pmfFilterPattern),
+                  Just
+                    ("metricTransformations" .=
+                       _pmfMetricTransformations)])
 
 instance ToPath PutMetricFilter where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery PutMetricFilter where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'putMetricFilterResponse' smart constructor.
 data PutMetricFilterResponse =
   PutMetricFilterResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'PutMetricFilterResponse' with the minimum fields required to make a request.
 --
-putMetricFilterResponse :: PutMetricFilterResponse
+putMetricFilterResponse
+    :: PutMetricFilterResponse
 putMetricFilterResponse = PutMetricFilterResponse'
 
-instance NFData PutMetricFilterResponse
+
+instance NFData PutMetricFilterResponse where

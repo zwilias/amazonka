@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SES.SetActiveReceiptRuleSet
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,17 +26,19 @@
 -- You can execute this operation no more than once per second.
 --
 module Network.AWS.SES.SetActiveReceiptRuleSet
+    (
     -- * Creating a Request
-  ( setActiveReceiptRuleSet
-  , SetActiveReceiptRuleSet
+      setActiveReceiptRuleSet
+    , SetActiveReceiptRuleSet
     -- * Request Lenses
-  , sarrsRuleSetName
+    , sarrsRuleSetName
+
     -- * Destructuring the Response
-  , setActiveReceiptRuleSetResponse
-  , SetActiveReceiptRuleSetResponse
+    , setActiveReceiptRuleSetResponse
+    , SetActiveReceiptRuleSetResponse
     -- * Response Lenses
-  , sarrsrsResponseStatus
-  ) where
+    , sarrsrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -54,43 +58,48 @@ newtype SetActiveReceiptRuleSet =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SetActiveReceiptRuleSet' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'sarrsRuleSetName' - The name of the receipt rule set to make active. Setting this value to null disables all email receiving.
-setActiveReceiptRuleSet :: SetActiveReceiptRuleSet
+setActiveReceiptRuleSet
+    :: SetActiveReceiptRuleSet
 setActiveReceiptRuleSet = SetActiveReceiptRuleSet' {_sarrsRuleSetName = Nothing}
+
 
 -- | The name of the receipt rule set to make active. Setting this value to null disables all email receiving.
 sarrsRuleSetName :: Lens' SetActiveReceiptRuleSet (Maybe Text)
-sarrsRuleSetName = lens _sarrsRuleSetName (\s a -> s {_sarrsRuleSetName = a})
+sarrsRuleSetName = lens _sarrsRuleSetName (\ s a -> s{_sarrsRuleSetName = a})
 
 instance AWSRequest SetActiveReceiptRuleSet where
-  type Rs SetActiveReceiptRuleSet = SetActiveReceiptRuleSetResponse
-  request = postQuery ses
-  response =
-    receiveXMLWrapper
-      "SetActiveReceiptRuleSetResult"
-      (\s h x -> SetActiveReceiptRuleSetResponse' <$> (pure (fromEnum s)))
+        type Rs SetActiveReceiptRuleSet =
+             SetActiveReceiptRuleSetResponse
+        request = postQuery ses
+        response
+          = receiveXMLWrapper "SetActiveReceiptRuleSetResult"
+              (\ s h x ->
+                 SetActiveReceiptRuleSetResponse' <$>
+                   (pure (fromEnum s)))
 
-instance Hashable SetActiveReceiptRuleSet
+instance Hashable SetActiveReceiptRuleSet where
 
-instance NFData SetActiveReceiptRuleSet
+instance NFData SetActiveReceiptRuleSet where
 
 instance ToHeaders SetActiveReceiptRuleSet where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath SetActiveReceiptRuleSet where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery SetActiveReceiptRuleSet where
-  toQuery SetActiveReceiptRuleSet' {..} =
-    mconcat
-      [ "Action" =: ("SetActiveReceiptRuleSet" :: ByteString)
-      , "Version" =: ("2010-12-01" :: ByteString)
-      , "RuleSetName" =: _sarrsRuleSetName
-      ]
+        toQuery SetActiveReceiptRuleSet'{..}
+          = mconcat
+              ["Action" =:
+                 ("SetActiveReceiptRuleSet" :: ByteString),
+               "Version" =: ("2010-12-01" :: ByteString),
+               "RuleSetName" =: _sarrsRuleSetName]
 
 -- | An empty element returned on a successful request.
 --
@@ -103,20 +112,21 @@ newtype SetActiveReceiptRuleSetResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SetActiveReceiptRuleSetResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'sarrsrsResponseStatus' - -- | The response status code.
-setActiveReceiptRuleSetResponse ::
-     Int -- ^ 'sarrsrsResponseStatus'
-  -> SetActiveReceiptRuleSetResponse
+setActiveReceiptRuleSetResponse
+    :: Int -- ^ 'sarrsrsResponseStatus'
+    -> SetActiveReceiptRuleSetResponse
 setActiveReceiptRuleSetResponse pResponseStatus_ =
   SetActiveReceiptRuleSetResponse' {_sarrsrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 sarrsrsResponseStatus :: Lens' SetActiveReceiptRuleSetResponse Int
-sarrsrsResponseStatus =
-  lens _sarrsrsResponseStatus (\s a -> s {_sarrsrsResponseStatus = a})
+sarrsrsResponseStatus = lens _sarrsrsResponseStatus (\ s a -> s{_sarrsrsResponseStatus = a})
 
-instance NFData SetActiveReceiptRuleSetResponse
+instance NFData SetActiveReceiptRuleSetResponse where

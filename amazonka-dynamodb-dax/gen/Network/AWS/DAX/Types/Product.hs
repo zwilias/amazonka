@@ -2,9 +2,11 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.DAX.Types.Product
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -40,10 +42,12 @@ data Cluster =
     , _cNodeType                   :: !(Maybe Text)
     , _cNodes                      :: !(Maybe [Node])
     , _cClusterDiscoveryEndpoint   :: !(Maybe Endpoint)
+    , _cSSEDescription             :: !(Maybe SSEDescription)
     , _cDescription                :: !(Maybe Text)
     , _cParameterGroup             :: !(Maybe ParameterGroupStatus)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'Cluster' with the minimum fields required to make a request.
 --
@@ -77,10 +81,13 @@ data Cluster =
 --
 -- * 'cClusterDiscoveryEndpoint' - The configuration endpoint for this DAX cluster, consisting of a DNS name and a port number. Client applications can specify this endpoint, rather than an individual node endpoint, and allow the DAX client software to intelligently route requests and responses to nodes in the DAX cluster.
 --
+-- * 'cSSEDescription' - The description of the server-side encryption status on the specified DAX cluster.
+--
 -- * 'cDescription' - The description of the cluster.
 --
 -- * 'cParameterGroup' - The parameter group being used by nodes in the cluster.
-cluster :: Cluster
+cluster
+    :: Cluster
 cluster =
   Cluster'
     { _cStatus = Nothing
@@ -97,106 +104,105 @@ cluster =
     , _cNodeType = Nothing
     , _cNodes = Nothing
     , _cClusterDiscoveryEndpoint = Nothing
+    , _cSSEDescription = Nothing
     , _cDescription = Nothing
     , _cParameterGroup = Nothing
     }
 
+
 -- | The current status of the cluster.
 cStatus :: Lens' Cluster (Maybe Text)
-cStatus = lens _cStatus (\s a -> s {_cStatus = a})
+cStatus = lens _cStatus (\ s a -> s{_cStatus = a})
 
 -- | A valid Amazon Resource Name (ARN) that identifies an IAM role. At runtime, DAX will assume this role and use the role's permissions to access DynamoDB on your behalf.
 cIAMRoleARN :: Lens' Cluster (Maybe Text)
-cIAMRoleARN = lens _cIAMRoleARN (\s a -> s {_cIAMRoleARN = a})
+cIAMRoleARN = lens _cIAMRoleARN (\ s a -> s{_cIAMRoleARN = a})
 
 -- | The Amazon Resource Name (ARN) that uniquely identifies the cluster.
 cClusterARN :: Lens' Cluster (Maybe Text)
-cClusterARN = lens _cClusterARN (\s a -> s {_cClusterARN = a})
+cClusterARN = lens _cClusterARN (\ s a -> s{_cClusterARN = a})
 
 -- | The number of nodes in the cluster that are active (i.e., capable of serving requests).
 cActiveNodes :: Lens' Cluster (Maybe Int)
-cActiveNodes = lens _cActiveNodes (\s a -> s {_cActiveNodes = a})
+cActiveNodes = lens _cActiveNodes (\ s a -> s{_cActiveNodes = a})
 
 -- | A list of security groups, and the status of each, for the nodes in the cluster.
 cSecurityGroups :: Lens' Cluster [SecurityGroupMembership]
-cSecurityGroups =
-  lens _cSecurityGroups (\s a -> s {_cSecurityGroups = a}) . _Default . _Coerce
+cSecurityGroups = lens _cSecurityGroups (\ s a -> s{_cSecurityGroups = a}) . _Default . _Coerce
 
 -- | Describes a notification topic and its status. Notification topics are used for publishing DAX events to subscribers using Amazon Simple Notification Service (SNS).
 cNotificationConfiguration :: Lens' Cluster (Maybe NotificationConfiguration)
-cNotificationConfiguration =
-  lens _cNotificationConfiguration (\s a -> s {_cNotificationConfiguration = a})
+cNotificationConfiguration = lens _cNotificationConfiguration (\ s a -> s{_cNotificationConfiguration = a})
 
 -- | A list of nodes to be removed from the cluster.
 cNodeIdsToRemove :: Lens' Cluster [Text]
-cNodeIdsToRemove =
-  lens _cNodeIdsToRemove (\s a -> s {_cNodeIdsToRemove = a}) .
-  _Default . _Coerce
+cNodeIdsToRemove = lens _cNodeIdsToRemove (\ s a -> s{_cNodeIdsToRemove = a}) . _Default . _Coerce
 
 -- | The total number of nodes in the cluster.
 cTotalNodes :: Lens' Cluster (Maybe Int)
-cTotalNodes = lens _cTotalNodes (\s a -> s {_cTotalNodes = a})
+cTotalNodes = lens _cTotalNodes (\ s a -> s{_cTotalNodes = a})
 
 -- | A range of time when maintenance of DAX cluster software will be performed. For example: @sun:01:00-sun:09:00@ . Cluster maintenance normally takes less than 30 minutes, and is performed automatically within the maintenance window.
 cPreferredMaintenanceWindow :: Lens' Cluster (Maybe Text)
-cPreferredMaintenanceWindow =
-  lens
-    _cPreferredMaintenanceWindow
-    (\s a -> s {_cPreferredMaintenanceWindow = a})
+cPreferredMaintenanceWindow = lens _cPreferredMaintenanceWindow (\ s a -> s{_cPreferredMaintenanceWindow = a})
 
 -- | The subnet group where the DAX cluster is running.
 cSubnetGroup :: Lens' Cluster (Maybe Text)
-cSubnetGroup = lens _cSubnetGroup (\s a -> s {_cSubnetGroup = a})
+cSubnetGroup = lens _cSubnetGroup (\ s a -> s{_cSubnetGroup = a})
 
 -- | The name of the DAX cluster.
 cClusterName :: Lens' Cluster (Maybe Text)
-cClusterName = lens _cClusterName (\s a -> s {_cClusterName = a})
+cClusterName = lens _cClusterName (\ s a -> s{_cClusterName = a})
 
 -- | The node type for the nodes in the cluster. (All nodes in a DAX cluster are of the same type.)
 cNodeType :: Lens' Cluster (Maybe Text)
-cNodeType = lens _cNodeType (\s a -> s {_cNodeType = a})
+cNodeType = lens _cNodeType (\ s a -> s{_cNodeType = a})
 
 -- | A list of nodes that are currently in the cluster.
 cNodes :: Lens' Cluster [Node]
-cNodes = lens _cNodes (\s a -> s {_cNodes = a}) . _Default . _Coerce
+cNodes = lens _cNodes (\ s a -> s{_cNodes = a}) . _Default . _Coerce
 
 -- | The configuration endpoint for this DAX cluster, consisting of a DNS name and a port number. Client applications can specify this endpoint, rather than an individual node endpoint, and allow the DAX client software to intelligently route requests and responses to nodes in the DAX cluster.
 cClusterDiscoveryEndpoint :: Lens' Cluster (Maybe Endpoint)
-cClusterDiscoveryEndpoint =
-  lens _cClusterDiscoveryEndpoint (\s a -> s {_cClusterDiscoveryEndpoint = a})
+cClusterDiscoveryEndpoint = lens _cClusterDiscoveryEndpoint (\ s a -> s{_cClusterDiscoveryEndpoint = a})
+
+-- | The description of the server-side encryption status on the specified DAX cluster.
+cSSEDescription :: Lens' Cluster (Maybe SSEDescription)
+cSSEDescription = lens _cSSEDescription (\ s a -> s{_cSSEDescription = a})
 
 -- | The description of the cluster.
 cDescription :: Lens' Cluster (Maybe Text)
-cDescription = lens _cDescription (\s a -> s {_cDescription = a})
+cDescription = lens _cDescription (\ s a -> s{_cDescription = a})
 
 -- | The parameter group being used by nodes in the cluster.
 cParameterGroup :: Lens' Cluster (Maybe ParameterGroupStatus)
-cParameterGroup = lens _cParameterGroup (\s a -> s {_cParameterGroup = a})
+cParameterGroup = lens _cParameterGroup (\ s a -> s{_cParameterGroup = a})
 
 instance FromJSON Cluster where
-  parseJSON =
-    withObject
-      "Cluster"
-      (\x ->
-         Cluster' <$> (x .:? "Status") <*> (x .:? "IamRoleArn") <*>
-         (x .:? "ClusterArn") <*>
-         (x .:? "ActiveNodes") <*>
-         (x .:? "SecurityGroups" .!= mempty) <*>
-         (x .:? "NotificationConfiguration") <*>
-         (x .:? "NodeIdsToRemove" .!= mempty) <*>
-         (x .:? "TotalNodes") <*>
-         (x .:? "PreferredMaintenanceWindow") <*>
-         (x .:? "SubnetGroup") <*>
-         (x .:? "ClusterName") <*>
-         (x .:? "NodeType") <*>
-         (x .:? "Nodes" .!= mempty) <*>
-         (x .:? "ClusterDiscoveryEndpoint") <*>
-         (x .:? "Description") <*>
-         (x .:? "ParameterGroup"))
+        parseJSON
+          = withObject "Cluster"
+              (\ x ->
+                 Cluster' <$>
+                   (x .:? "Status") <*> (x .:? "IamRoleArn") <*>
+                     (x .:? "ClusterArn")
+                     <*> (x .:? "ActiveNodes")
+                     <*> (x .:? "SecurityGroups" .!= mempty)
+                     <*> (x .:? "NotificationConfiguration")
+                     <*> (x .:? "NodeIdsToRemove" .!= mempty)
+                     <*> (x .:? "TotalNodes")
+                     <*> (x .:? "PreferredMaintenanceWindow")
+                     <*> (x .:? "SubnetGroup")
+                     <*> (x .:? "ClusterName")
+                     <*> (x .:? "NodeType")
+                     <*> (x .:? "Nodes" .!= mempty)
+                     <*> (x .:? "ClusterDiscoveryEndpoint")
+                     <*> (x .:? "SSEDescription")
+                     <*> (x .:? "Description")
+                     <*> (x .:? "ParameterGroup"))
 
-instance Hashable Cluster
+instance Hashable Cluster where
 
-instance NFData Cluster
+instance NFData Cluster where
 
 -- | Represents the information required for client programs to connect to the configuration endpoint for a DAX cluster, or to an individual node within the cluster.
 --
@@ -210,6 +216,7 @@ data Endpoint =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Endpoint' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -217,26 +224,28 @@ data Endpoint =
 -- * 'eAddress' - The DNS hostname of the endpoint.
 --
 -- * 'ePort' - The port number that applications should use to connect to the endpoint.
-endpoint :: Endpoint
+endpoint
+    :: Endpoint
 endpoint = Endpoint' {_eAddress = Nothing, _ePort = Nothing}
+
 
 -- | The DNS hostname of the endpoint.
 eAddress :: Lens' Endpoint (Maybe Text)
-eAddress = lens _eAddress (\s a -> s {_eAddress = a})
+eAddress = lens _eAddress (\ s a -> s{_eAddress = a})
 
 -- | The port number that applications should use to connect to the endpoint.
 ePort :: Lens' Endpoint (Maybe Int)
-ePort = lens _ePort (\s a -> s {_ePort = a})
+ePort = lens _ePort (\ s a -> s{_ePort = a})
 
 instance FromJSON Endpoint where
-  parseJSON =
-    withObject
-      "Endpoint"
-      (\x -> Endpoint' <$> (x .:? "Address") <*> (x .:? "Port"))
+        parseJSON
+          = withObject "Endpoint"
+              (\ x ->
+                 Endpoint' <$> (x .:? "Address") <*> (x .:? "Port"))
 
-instance Hashable Endpoint
+instance Hashable Endpoint where
 
-instance NFData Endpoint
+instance NFData Endpoint where
 
 -- | Represents a single occurrence of something interesting within the system. Some examples of events are creating a DAX cluster, adding or removing a node, or rebooting a node.
 --
@@ -252,6 +261,7 @@ data Event =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Event' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -263,7 +273,8 @@ data Event =
 -- * 'eDate' - The date and time when the event occurred.
 --
 -- * 'eMessage' - A user-defined message associated with the event.
-event :: Event
+event
+    :: Event
 event =
   Event'
     { _eSourceName = Nothing
@@ -272,34 +283,35 @@ event =
     , _eMessage = Nothing
     }
 
+
 -- | The source of the event. For example, if the event occurred at the node level, the source would be the node ID.
 eSourceName :: Lens' Event (Maybe Text)
-eSourceName = lens _eSourceName (\s a -> s {_eSourceName = a})
+eSourceName = lens _eSourceName (\ s a -> s{_eSourceName = a})
 
 -- | Specifies the origin of this event - a cluster, a parameter group, a node ID, etc.
 eSourceType :: Lens' Event (Maybe SourceType)
-eSourceType = lens _eSourceType (\s a -> s {_eSourceType = a})
+eSourceType = lens _eSourceType (\ s a -> s{_eSourceType = a})
 
 -- | The date and time when the event occurred.
 eDate :: Lens' Event (Maybe UTCTime)
-eDate = lens _eDate (\s a -> s {_eDate = a}) . mapping _Time
+eDate = lens _eDate (\ s a -> s{_eDate = a}) . mapping _Time
 
 -- | A user-defined message associated with the event.
 eMessage :: Lens' Event (Maybe Text)
-eMessage = lens _eMessage (\s a -> s {_eMessage = a})
+eMessage = lens _eMessage (\ s a -> s{_eMessage = a})
 
 instance FromJSON Event where
-  parseJSON =
-    withObject
-      "Event"
-      (\x ->
-         Event' <$> (x .:? "SourceName") <*> (x .:? "SourceType") <*>
-         (x .:? "Date") <*>
-         (x .:? "Message"))
+        parseJSON
+          = withObject "Event"
+              (\ x ->
+                 Event' <$>
+                   (x .:? "SourceName") <*> (x .:? "SourceType") <*>
+                     (x .:? "Date")
+                     <*> (x .:? "Message"))
 
-instance Hashable Event
+instance Hashable Event where
 
-instance NFData Event
+instance NFData Event where
 
 -- | Represents an individual node within a DAX cluster.
 --
@@ -317,6 +329,7 @@ data Node =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Node' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -332,7 +345,8 @@ data Node =
 -- * 'nEndpoint' - The endpoint for the node, consisting of a DNS name and a port number. Client applications can connect directly to a node endpoint, if desired (as an alternative to allowing DAX client software to intelligently route requests and responses to nodes in the DAX cluster.
 --
 -- * 'nNodeCreateTime' - The date and time (in UNIX epoch format) when the node was launched.
-node :: Node
+node
+    :: Node
 node =
   Node'
     { _nNodeStatus = Nothing
@@ -343,46 +357,46 @@ node =
     , _nNodeCreateTime = Nothing
     }
 
+
 -- | The current status of the node. For example: @available@ .
 nNodeStatus :: Lens' Node (Maybe Text)
-nNodeStatus = lens _nNodeStatus (\s a -> s {_nNodeStatus = a})
+nNodeStatus = lens _nNodeStatus (\ s a -> s{_nNodeStatus = a})
 
 -- | The status of the parameter group associated with this node. For example, @in-sync@ .
 nParameterGroupStatus :: Lens' Node (Maybe Text)
-nParameterGroupStatus =
-  lens _nParameterGroupStatus (\s a -> s {_nParameterGroupStatus = a})
+nParameterGroupStatus = lens _nParameterGroupStatus (\ s a -> s{_nParameterGroupStatus = a})
 
 -- | The Availability Zone (AZ) in which the node has been deployed.
 nAvailabilityZone :: Lens' Node (Maybe Text)
-nAvailabilityZone = lens _nAvailabilityZone (\s a -> s {_nAvailabilityZone = a})
+nAvailabilityZone = lens _nAvailabilityZone (\ s a -> s{_nAvailabilityZone = a})
 
 -- | A system-generated identifier for the node.
 nNodeId :: Lens' Node (Maybe Text)
-nNodeId = lens _nNodeId (\s a -> s {_nNodeId = a})
+nNodeId = lens _nNodeId (\ s a -> s{_nNodeId = a})
 
 -- | The endpoint for the node, consisting of a DNS name and a port number. Client applications can connect directly to a node endpoint, if desired (as an alternative to allowing DAX client software to intelligently route requests and responses to nodes in the DAX cluster.
 nEndpoint :: Lens' Node (Maybe Endpoint)
-nEndpoint = lens _nEndpoint (\s a -> s {_nEndpoint = a})
+nEndpoint = lens _nEndpoint (\ s a -> s{_nEndpoint = a})
 
 -- | The date and time (in UNIX epoch format) when the node was launched.
 nNodeCreateTime :: Lens' Node (Maybe UTCTime)
-nNodeCreateTime =
-  lens _nNodeCreateTime (\s a -> s {_nNodeCreateTime = a}) . mapping _Time
+nNodeCreateTime = lens _nNodeCreateTime (\ s a -> s{_nNodeCreateTime = a}) . mapping _Time
 
 instance FromJSON Node where
-  parseJSON =
-    withObject
-      "Node"
-      (\x ->
-         Node' <$> (x .:? "NodeStatus") <*> (x .:? "ParameterGroupStatus") <*>
-         (x .:? "AvailabilityZone") <*>
-         (x .:? "NodeId") <*>
-         (x .:? "Endpoint") <*>
-         (x .:? "NodeCreateTime"))
+        parseJSON
+          = withObject "Node"
+              (\ x ->
+                 Node' <$>
+                   (x .:? "NodeStatus") <*>
+                     (x .:? "ParameterGroupStatus")
+                     <*> (x .:? "AvailabilityZone")
+                     <*> (x .:? "NodeId")
+                     <*> (x .:? "Endpoint")
+                     <*> (x .:? "NodeCreateTime"))
 
-instance Hashable Node
+instance Hashable Node where
 
-instance NFData Node
+instance NFData Node where
 
 -- | Represents a parameter value that is applicable to a particular node type.
 --
@@ -396,6 +410,7 @@ data NodeTypeSpecificValue =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'NodeTypeSpecificValue' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -403,27 +418,30 @@ data NodeTypeSpecificValue =
 -- * 'ntsvValue' - The parameter value for this node type.
 --
 -- * 'ntsvNodeType' - A node type to which the parameter value applies.
-nodeTypeSpecificValue :: NodeTypeSpecificValue
+nodeTypeSpecificValue
+    :: NodeTypeSpecificValue
 nodeTypeSpecificValue =
   NodeTypeSpecificValue' {_ntsvValue = Nothing, _ntsvNodeType = Nothing}
 
+
 -- | The parameter value for this node type.
 ntsvValue :: Lens' NodeTypeSpecificValue (Maybe Text)
-ntsvValue = lens _ntsvValue (\s a -> s {_ntsvValue = a})
+ntsvValue = lens _ntsvValue (\ s a -> s{_ntsvValue = a})
 
 -- | A node type to which the parameter value applies.
 ntsvNodeType :: Lens' NodeTypeSpecificValue (Maybe Text)
-ntsvNodeType = lens _ntsvNodeType (\s a -> s {_ntsvNodeType = a})
+ntsvNodeType = lens _ntsvNodeType (\ s a -> s{_ntsvNodeType = a})
 
 instance FromJSON NodeTypeSpecificValue where
-  parseJSON =
-    withObject
-      "NodeTypeSpecificValue"
-      (\x -> NodeTypeSpecificValue' <$> (x .:? "Value") <*> (x .:? "NodeType"))
+        parseJSON
+          = withObject "NodeTypeSpecificValue"
+              (\ x ->
+                 NodeTypeSpecificValue' <$>
+                   (x .:? "Value") <*> (x .:? "NodeType"))
 
-instance Hashable NodeTypeSpecificValue
+instance Hashable NodeTypeSpecificValue where
 
-instance NFData NodeTypeSpecificValue
+instance NFData NodeTypeSpecificValue where
 
 -- | Describes a notification topic and its status. Notification topics are used for publishing DAX events to subscribers using Amazon Simple Notification Service (SNS).
 --
@@ -437,6 +455,7 @@ data NotificationConfiguration =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'NotificationConfiguration' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -444,29 +463,30 @@ data NotificationConfiguration =
 -- * 'ncTopicStatus' - The current state of the topic.
 --
 -- * 'ncTopicARN' - The Amazon Resource Name (ARN) that identifies the topic.
-notificationConfiguration :: NotificationConfiguration
+notificationConfiguration
+    :: NotificationConfiguration
 notificationConfiguration =
   NotificationConfiguration' {_ncTopicStatus = Nothing, _ncTopicARN = Nothing}
 
+
 -- | The current state of the topic.
 ncTopicStatus :: Lens' NotificationConfiguration (Maybe Text)
-ncTopicStatus = lens _ncTopicStatus (\s a -> s {_ncTopicStatus = a})
+ncTopicStatus = lens _ncTopicStatus (\ s a -> s{_ncTopicStatus = a})
 
 -- | The Amazon Resource Name (ARN) that identifies the topic.
 ncTopicARN :: Lens' NotificationConfiguration (Maybe Text)
-ncTopicARN = lens _ncTopicARN (\s a -> s {_ncTopicARN = a})
+ncTopicARN = lens _ncTopicARN (\ s a -> s{_ncTopicARN = a})
 
 instance FromJSON NotificationConfiguration where
-  parseJSON =
-    withObject
-      "NotificationConfiguration"
-      (\x ->
-         NotificationConfiguration' <$> (x .:? "TopicStatus") <*>
-         (x .:? "TopicArn"))
+        parseJSON
+          = withObject "NotificationConfiguration"
+              (\ x ->
+                 NotificationConfiguration' <$>
+                   (x .:? "TopicStatus") <*> (x .:? "TopicArn"))
 
-instance Hashable NotificationConfiguration
+instance Hashable NotificationConfiguration where
 
-instance NFData NotificationConfiguration
+instance NFData NotificationConfiguration where
 
 -- | Describes an individual setting that controls some aspect of DAX behavior.
 --
@@ -487,6 +507,7 @@ data Parameter =
     , _pChangeType             :: !(Maybe ChangeType)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'Parameter' with the minimum fields required to make a request.
 --
@@ -511,7 +532,8 @@ data Parameter =
 -- * 'pDescription' - A description of the parameter
 --
 -- * 'pChangeType' - The conditions under which changes to this parameter can be applied. For example, @requires-reboot@ indicates that a new value for this parameter will only take effect if a node is rebooted.
-parameter :: Parameter
+parameter
+    :: Parameter
 parameter =
   Parameter'
     { _pParameterValue = Nothing
@@ -526,66 +548,65 @@ parameter =
     , _pChangeType = Nothing
     }
 
+
 -- | The value for the parameter.
 pParameterValue :: Lens' Parameter (Maybe Text)
-pParameterValue = lens _pParameterValue (\s a -> s {_pParameterValue = a})
+pParameterValue = lens _pParameterValue (\ s a -> s{_pParameterValue = a})
 
 -- | Determines whether the parameter can be applied to any nodes, or only nodes of a particular type.
 pParameterType :: Lens' Parameter (Maybe ParameterType)
-pParameterType = lens _pParameterType (\s a -> s {_pParameterType = a})
+pParameterType = lens _pParameterType (\ s a -> s{_pParameterType = a})
 
 -- | How the parameter is defined. For example, @system@ denotes a system-defined parameter.
 pSource :: Lens' Parameter (Maybe Text)
-pSource = lens _pSource (\s a -> s {_pSource = a})
+pSource = lens _pSource (\ s a -> s{_pSource = a})
 
 -- | Whether the customer is allowed to modify the parameter.
 pIsModifiable :: Lens' Parameter (Maybe IsModifiable)
-pIsModifiable = lens _pIsModifiable (\s a -> s {_pIsModifiable = a})
+pIsModifiable = lens _pIsModifiable (\ s a -> s{_pIsModifiable = a})
 
 -- | The data type of the parameter. For example, @integer@ :
 pDataType :: Lens' Parameter (Maybe Text)
-pDataType = lens _pDataType (\s a -> s {_pDataType = a})
+pDataType = lens _pDataType (\ s a -> s{_pDataType = a})
 
 -- | A list of node types, and specific parameter values for each node.
 pNodeTypeSpecificValues :: Lens' Parameter [NodeTypeSpecificValue]
-pNodeTypeSpecificValues =
-  lens _pNodeTypeSpecificValues (\s a -> s {_pNodeTypeSpecificValues = a}) .
-  _Default . _Coerce
+pNodeTypeSpecificValues = lens _pNodeTypeSpecificValues (\ s a -> s{_pNodeTypeSpecificValues = a}) . _Default . _Coerce
 
 -- | A range of values within which the parameter can be set.
 pAllowedValues :: Lens' Parameter (Maybe Text)
-pAllowedValues = lens _pAllowedValues (\s a -> s {_pAllowedValues = a})
+pAllowedValues = lens _pAllowedValues (\ s a -> s{_pAllowedValues = a})
 
 -- | The name of the parameter.
 pParameterName :: Lens' Parameter (Maybe Text)
-pParameterName = lens _pParameterName (\s a -> s {_pParameterName = a})
+pParameterName = lens _pParameterName (\ s a -> s{_pParameterName = a})
 
 -- | A description of the parameter
 pDescription :: Lens' Parameter (Maybe Text)
-pDescription = lens _pDescription (\s a -> s {_pDescription = a})
+pDescription = lens _pDescription (\ s a -> s{_pDescription = a})
 
 -- | The conditions under which changes to this parameter can be applied. For example, @requires-reboot@ indicates that a new value for this parameter will only take effect if a node is rebooted.
 pChangeType :: Lens' Parameter (Maybe ChangeType)
-pChangeType = lens _pChangeType (\s a -> s {_pChangeType = a})
+pChangeType = lens _pChangeType (\ s a -> s{_pChangeType = a})
 
 instance FromJSON Parameter where
-  parseJSON =
-    withObject
-      "Parameter"
-      (\x ->
-         Parameter' <$> (x .:? "ParameterValue") <*> (x .:? "ParameterType") <*>
-         (x .:? "Source") <*>
-         (x .:? "IsModifiable") <*>
-         (x .:? "DataType") <*>
-         (x .:? "NodeTypeSpecificValues" .!= mempty) <*>
-         (x .:? "AllowedValues") <*>
-         (x .:? "ParameterName") <*>
-         (x .:? "Description") <*>
-         (x .:? "ChangeType"))
+        parseJSON
+          = withObject "Parameter"
+              (\ x ->
+                 Parameter' <$>
+                   (x .:? "ParameterValue") <*> (x .:? "ParameterType")
+                     <*> (x .:? "Source")
+                     <*> (x .:? "IsModifiable")
+                     <*> (x .:? "DataType")
+                     <*> (x .:? "NodeTypeSpecificValues" .!= mempty)
+                     <*> (x .:? "AllowedValues")
+                     <*> (x .:? "ParameterName")
+                     <*> (x .:? "Description")
+                     <*> (x .:? "ChangeType"))
 
-instance Hashable Parameter
+instance Hashable Parameter where
 
-instance NFData Parameter
+instance NFData Parameter where
 
 -- | A named set of parameters that are applied to all of the nodes in a DAX cluster.
 --
@@ -599,6 +620,7 @@ data ParameterGroup =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ParameterGroup' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -606,30 +628,31 @@ data ParameterGroup =
 -- * 'pgDescription' - A description of the parameter group.
 --
 -- * 'pgParameterGroupName' - The name of the parameter group.
-parameterGroup :: ParameterGroup
+parameterGroup
+    :: ParameterGroup
 parameterGroup =
   ParameterGroup' {_pgDescription = Nothing, _pgParameterGroupName = Nothing}
 
+
 -- | A description of the parameter group.
 pgDescription :: Lens' ParameterGroup (Maybe Text)
-pgDescription = lens _pgDescription (\s a -> s {_pgDescription = a})
+pgDescription = lens _pgDescription (\ s a -> s{_pgDescription = a})
 
 -- | The name of the parameter group.
 pgParameterGroupName :: Lens' ParameterGroup (Maybe Text)
-pgParameterGroupName =
-  lens _pgParameterGroupName (\s a -> s {_pgParameterGroupName = a})
+pgParameterGroupName = lens _pgParameterGroupName (\ s a -> s{_pgParameterGroupName = a})
 
 instance FromJSON ParameterGroup where
-  parseJSON =
-    withObject
-      "ParameterGroup"
-      (\x ->
-         ParameterGroup' <$> (x .:? "Description") <*>
-         (x .:? "ParameterGroupName"))
+        parseJSON
+          = withObject "ParameterGroup"
+              (\ x ->
+                 ParameterGroup' <$>
+                   (x .:? "Description") <*>
+                     (x .:? "ParameterGroupName"))
 
-instance Hashable ParameterGroup
+instance Hashable ParameterGroup where
 
-instance NFData ParameterGroup
+instance NFData ParameterGroup where
 
 -- | The status of a parameter group.
 --
@@ -644,6 +667,7 @@ data ParameterGroupStatus =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ParameterGroupStatus' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -653,7 +677,8 @@ data ParameterGroupStatus =
 -- * 'pgsParameterApplyStatus' - The status of parameter updates.
 --
 -- * 'pgsParameterGroupName' - The name of the parameter group.
-parameterGroupStatus :: ParameterGroupStatus
+parameterGroupStatus
+    :: ParameterGroupStatus
 parameterGroupStatus =
   ParameterGroupStatus'
     { _pgsNodeIdsToReboot = Nothing
@@ -661,34 +686,31 @@ parameterGroupStatus =
     , _pgsParameterGroupName = Nothing
     }
 
+
 -- | The node IDs of one or more nodes to be rebooted.
 pgsNodeIdsToReboot :: Lens' ParameterGroupStatus [Text]
-pgsNodeIdsToReboot =
-  lens _pgsNodeIdsToReboot (\s a -> s {_pgsNodeIdsToReboot = a}) .
-  _Default . _Coerce
+pgsNodeIdsToReboot = lens _pgsNodeIdsToReboot (\ s a -> s{_pgsNodeIdsToReboot = a}) . _Default . _Coerce
 
 -- | The status of parameter updates.
 pgsParameterApplyStatus :: Lens' ParameterGroupStatus (Maybe Text)
-pgsParameterApplyStatus =
-  lens _pgsParameterApplyStatus (\s a -> s {_pgsParameterApplyStatus = a})
+pgsParameterApplyStatus = lens _pgsParameterApplyStatus (\ s a -> s{_pgsParameterApplyStatus = a})
 
 -- | The name of the parameter group.
 pgsParameterGroupName :: Lens' ParameterGroupStatus (Maybe Text)
-pgsParameterGroupName =
-  lens _pgsParameterGroupName (\s a -> s {_pgsParameterGroupName = a})
+pgsParameterGroupName = lens _pgsParameterGroupName (\ s a -> s{_pgsParameterGroupName = a})
 
 instance FromJSON ParameterGroupStatus where
-  parseJSON =
-    withObject
-      "ParameterGroupStatus"
-      (\x ->
-         ParameterGroupStatus' <$> (x .:? "NodeIdsToReboot" .!= mempty) <*>
-         (x .:? "ParameterApplyStatus") <*>
-         (x .:? "ParameterGroupName"))
+        parseJSON
+          = withObject "ParameterGroupStatus"
+              (\ x ->
+                 ParameterGroupStatus' <$>
+                   (x .:? "NodeIdsToReboot" .!= mempty) <*>
+                     (x .:? "ParameterApplyStatus")
+                     <*> (x .:? "ParameterGroupName"))
 
-instance Hashable ParameterGroupStatus
+instance Hashable ParameterGroupStatus where
 
-instance NFData ParameterGroupStatus
+instance NFData ParameterGroupStatus where
 
 -- | An individual DAX parameter.
 --
@@ -702,6 +724,7 @@ data ParameterNameValue =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ParameterNameValue' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -709,30 +732,102 @@ data ParameterNameValue =
 -- * 'pnvParameterValue' - The value of the parameter.
 --
 -- * 'pnvParameterName' - The name of the parameter.
-parameterNameValue :: ParameterNameValue
+parameterNameValue
+    :: ParameterNameValue
 parameterNameValue =
   ParameterNameValue'
     {_pnvParameterValue = Nothing, _pnvParameterName = Nothing}
 
+
 -- | The value of the parameter.
 pnvParameterValue :: Lens' ParameterNameValue (Maybe Text)
-pnvParameterValue = lens _pnvParameterValue (\s a -> s {_pnvParameterValue = a})
+pnvParameterValue = lens _pnvParameterValue (\ s a -> s{_pnvParameterValue = a})
 
 -- | The name of the parameter.
 pnvParameterName :: Lens' ParameterNameValue (Maybe Text)
-pnvParameterName = lens _pnvParameterName (\s a -> s {_pnvParameterName = a})
+pnvParameterName = lens _pnvParameterName (\ s a -> s{_pnvParameterName = a})
 
-instance Hashable ParameterNameValue
+instance Hashable ParameterNameValue where
 
-instance NFData ParameterNameValue
+instance NFData ParameterNameValue where
 
 instance ToJSON ParameterNameValue where
-  toJSON ParameterNameValue' {..} =
-    object
-      (catMaybes
-         [ ("ParameterValue" .=) <$> _pnvParameterValue
-         , ("ParameterName" .=) <$> _pnvParameterName
-         ])
+        toJSON ParameterNameValue'{..}
+          = object
+              (catMaybes
+                 [("ParameterValue" .=) <$> _pnvParameterValue,
+                  ("ParameterName" .=) <$> _pnvParameterName])
+
+-- | The description of the server-side encryption status on the specified DAX cluster.
+--
+--
+--
+-- /See:/ 'sSEDescription' smart constructor.
+newtype SSEDescription =
+  SSEDescription'
+    { _ssedStatus :: Maybe SSEStatus
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'SSEDescription' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'ssedStatus' - The current state of server-side encryption:     * @ENABLING@ - Server-side encryption is being enabled.     * @ENABLED@ - Server-side encryption is enabled.     * @DISABLING@ - Server-side encryption is being disabled.     * @DISABLED@ - Server-side encryption is disabled.
+sSEDescription
+    :: SSEDescription
+sSEDescription = SSEDescription' {_ssedStatus = Nothing}
+
+
+-- | The current state of server-side encryption:     * @ENABLING@ - Server-side encryption is being enabled.     * @ENABLED@ - Server-side encryption is enabled.     * @DISABLING@ - Server-side encryption is being disabled.     * @DISABLED@ - Server-side encryption is disabled.
+ssedStatus :: Lens' SSEDescription (Maybe SSEStatus)
+ssedStatus = lens _ssedStatus (\ s a -> s{_ssedStatus = a})
+
+instance FromJSON SSEDescription where
+        parseJSON
+          = withObject "SSEDescription"
+              (\ x -> SSEDescription' <$> (x .:? "Status"))
+
+instance Hashable SSEDescription where
+
+instance NFData SSEDescription where
+
+-- | Represents the settings used to enable server-side encryption.
+--
+--
+--
+-- /See:/ 'sSESpecification' smart constructor.
+newtype SSESpecification =
+  SSESpecification'
+    { _ssesEnabled :: Bool
+    }
+  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+
+-- | Creates a value of 'SSESpecification' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'ssesEnabled' - Indicates whether server-side encryption is enabled (true) or disabled (false) on the cluster.
+sSESpecification
+    :: Bool -- ^ 'ssesEnabled'
+    -> SSESpecification
+sSESpecification pEnabled_ = SSESpecification' {_ssesEnabled = pEnabled_}
+
+
+-- | Indicates whether server-side encryption is enabled (true) or disabled (false) on the cluster.
+ssesEnabled :: Lens' SSESpecification Bool
+ssesEnabled = lens _ssesEnabled (\ s a -> s{_ssesEnabled = a})
+
+instance Hashable SSESpecification where
+
+instance NFData SSESpecification where
+
+instance ToJSON SSESpecification where
+        toJSON SSESpecification'{..}
+          = object
+              (catMaybes [Just ("Enabled" .= _ssesEnabled)])
 
 -- | An individual VPC security group and its status.
 --
@@ -746,6 +841,7 @@ data SecurityGroupMembership =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SecurityGroupMembership' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -753,31 +849,32 @@ data SecurityGroupMembership =
 -- * 'sgmStatus' - The status of this security group.
 --
 -- * 'sgmSecurityGroupIdentifier' - The unique ID for this security group.
-securityGroupMembership :: SecurityGroupMembership
+securityGroupMembership
+    :: SecurityGroupMembership
 securityGroupMembership =
   SecurityGroupMembership'
     {_sgmStatus = Nothing, _sgmSecurityGroupIdentifier = Nothing}
 
+
 -- | The status of this security group.
 sgmStatus :: Lens' SecurityGroupMembership (Maybe Text)
-sgmStatus = lens _sgmStatus (\s a -> s {_sgmStatus = a})
+sgmStatus = lens _sgmStatus (\ s a -> s{_sgmStatus = a})
 
 -- | The unique ID for this security group.
 sgmSecurityGroupIdentifier :: Lens' SecurityGroupMembership (Maybe Text)
-sgmSecurityGroupIdentifier =
-  lens _sgmSecurityGroupIdentifier (\s a -> s {_sgmSecurityGroupIdentifier = a})
+sgmSecurityGroupIdentifier = lens _sgmSecurityGroupIdentifier (\ s a -> s{_sgmSecurityGroupIdentifier = a})
 
 instance FromJSON SecurityGroupMembership where
-  parseJSON =
-    withObject
-      "SecurityGroupMembership"
-      (\x ->
-         SecurityGroupMembership' <$> (x .:? "Status") <*>
-         (x .:? "SecurityGroupIdentifier"))
+        parseJSON
+          = withObject "SecurityGroupMembership"
+              (\ x ->
+                 SecurityGroupMembership' <$>
+                   (x .:? "Status") <*>
+                     (x .:? "SecurityGroupIdentifier"))
 
-instance Hashable SecurityGroupMembership
+instance Hashable SecurityGroupMembership where
 
-instance NFData SecurityGroupMembership
+instance NFData SecurityGroupMembership where
 
 -- | Represents the subnet associated with a DAX cluster. This parameter refers to subnets defined in Amazon Virtual Private Cloud (Amazon VPC) and used with DAX.
 --
@@ -791,37 +888,39 @@ data Subnet =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Subnet' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'sSubnetIdentifier' - The system-assigned identifier for the subnet.
 --
--- * 'sSubnetAvailabilityZone' - The Availability Zone (AZ) for subnet subnet.
-subnet :: Subnet
+-- * 'sSubnetAvailabilityZone' - The Availability Zone (AZ) for the subnet.
+subnet
+    :: Subnet
 subnet =
   Subnet' {_sSubnetIdentifier = Nothing, _sSubnetAvailabilityZone = Nothing}
 
+
 -- | The system-assigned identifier for the subnet.
 sSubnetIdentifier :: Lens' Subnet (Maybe Text)
-sSubnetIdentifier = lens _sSubnetIdentifier (\s a -> s {_sSubnetIdentifier = a})
+sSubnetIdentifier = lens _sSubnetIdentifier (\ s a -> s{_sSubnetIdentifier = a})
 
--- | The Availability Zone (AZ) for subnet subnet.
+-- | The Availability Zone (AZ) for the subnet.
 sSubnetAvailabilityZone :: Lens' Subnet (Maybe Text)
-sSubnetAvailabilityZone =
-  lens _sSubnetAvailabilityZone (\s a -> s {_sSubnetAvailabilityZone = a})
+sSubnetAvailabilityZone = lens _sSubnetAvailabilityZone (\ s a -> s{_sSubnetAvailabilityZone = a})
 
 instance FromJSON Subnet where
-  parseJSON =
-    withObject
-      "Subnet"
-      (\x ->
-         Subnet' <$> (x .:? "SubnetIdentifier") <*>
-         (x .:? "SubnetAvailabilityZone"))
+        parseJSON
+          = withObject "Subnet"
+              (\ x ->
+                 Subnet' <$>
+                   (x .:? "SubnetIdentifier") <*>
+                     (x .:? "SubnetAvailabilityZone"))
 
-instance Hashable Subnet
+instance Hashable Subnet where
 
-instance NFData Subnet
+instance NFData Subnet where
 
 -- | Represents the output of one of the following actions:
 --
@@ -843,6 +942,7 @@ data SubnetGroup =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SubnetGroup' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -854,7 +954,8 @@ data SubnetGroup =
 -- * 'sgSubnetGroupName' - The name of the subnet group.
 --
 -- * 'sgDescription' - The description of the subnet group.
-subnetGroup :: SubnetGroup
+subnetGroup
+    :: SubnetGroup
 subnetGroup =
   SubnetGroup'
     { _sgVPCId = Nothing
@@ -863,34 +964,35 @@ subnetGroup =
     , _sgDescription = Nothing
     }
 
+
 -- | The Amazon Virtual Private Cloud identifier (VPC ID) of the subnet group.
 sgVPCId :: Lens' SubnetGroup (Maybe Text)
-sgVPCId = lens _sgVPCId (\s a -> s {_sgVPCId = a})
+sgVPCId = lens _sgVPCId (\ s a -> s{_sgVPCId = a})
 
 -- | A list of subnets associated with the subnet group.
 sgSubnets :: Lens' SubnetGroup [Subnet]
-sgSubnets = lens _sgSubnets (\s a -> s {_sgSubnets = a}) . _Default . _Coerce
+sgSubnets = lens _sgSubnets (\ s a -> s{_sgSubnets = a}) . _Default . _Coerce
 
 -- | The name of the subnet group.
 sgSubnetGroupName :: Lens' SubnetGroup (Maybe Text)
-sgSubnetGroupName = lens _sgSubnetGroupName (\s a -> s {_sgSubnetGroupName = a})
+sgSubnetGroupName = lens _sgSubnetGroupName (\ s a -> s{_sgSubnetGroupName = a})
 
 -- | The description of the subnet group.
 sgDescription :: Lens' SubnetGroup (Maybe Text)
-sgDescription = lens _sgDescription (\s a -> s {_sgDescription = a})
+sgDescription = lens _sgDescription (\ s a -> s{_sgDescription = a})
 
 instance FromJSON SubnetGroup where
-  parseJSON =
-    withObject
-      "SubnetGroup"
-      (\x ->
-         SubnetGroup' <$> (x .:? "VpcId") <*> (x .:? "Subnets" .!= mempty) <*>
-         (x .:? "SubnetGroupName") <*>
-         (x .:? "Description"))
+        parseJSON
+          = withObject "SubnetGroup"
+              (\ x ->
+                 SubnetGroup' <$>
+                   (x .:? "VpcId") <*> (x .:? "Subnets" .!= mempty) <*>
+                     (x .:? "SubnetGroupName")
+                     <*> (x .:? "Description"))
 
-instance Hashable SubnetGroup
+instance Hashable SubnetGroup where
 
-instance NFData SubnetGroup
+instance NFData SubnetGroup where
 
 -- | A description of a tag. Every tag is a key-value pair. You can add up to 50 tags to a single DAX cluster.
 --
@@ -908,6 +1010,7 @@ data Tag =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Tag' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -915,25 +1018,30 @@ data Tag =
 -- * 'tagValue' - The value of the tag. Tag values are case-sensitive and can be null.
 --
 -- * 'tagKey' - The key for the tag. Tag keys are case sensitive. Every DAX cluster can only have one tag with the same key. If you try to add an existing tag (same key), the existing tag value will be updated to the new value.
-tag :: Tag
+tag
+    :: Tag
 tag = Tag' {_tagValue = Nothing, _tagKey = Nothing}
+
 
 -- | The value of the tag. Tag values are case-sensitive and can be null.
 tagValue :: Lens' Tag (Maybe Text)
-tagValue = lens _tagValue (\s a -> s {_tagValue = a})
+tagValue = lens _tagValue (\ s a -> s{_tagValue = a})
 
 -- | The key for the tag. Tag keys are case sensitive. Every DAX cluster can only have one tag with the same key. If you try to add an existing tag (same key), the existing tag value will be updated to the new value.
 tagKey :: Lens' Tag (Maybe Text)
-tagKey = lens _tagKey (\s a -> s {_tagKey = a})
+tagKey = lens _tagKey (\ s a -> s{_tagKey = a})
 
 instance FromJSON Tag where
-  parseJSON =
-    withObject "Tag" (\x -> Tag' <$> (x .:? "Value") <*> (x .:? "Key"))
+        parseJSON
+          = withObject "Tag"
+              (\ x -> Tag' <$> (x .:? "Value") <*> (x .:? "Key"))
 
-instance Hashable Tag
+instance Hashable Tag where
 
-instance NFData Tag
+instance NFData Tag where
 
 instance ToJSON Tag where
-  toJSON Tag' {..} =
-    object (catMaybes [("Value" .=) <$> _tagValue, ("Key" .=) <$> _tagKey])
+        toJSON Tag'{..}
+          = object
+              (catMaybes
+                 [("Value" .=) <$> _tagValue, ("Key" .=) <$> _tagKey])

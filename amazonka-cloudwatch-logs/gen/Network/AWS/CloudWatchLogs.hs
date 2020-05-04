@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CloudWatchLogs
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,225 +25,291 @@
 --
 --
 module Network.AWS.CloudWatchLogs
+    (
     -- * Service Configuration
-  ( cloudWatchLogs
+      cloudWatchLogs
+
     -- * Errors
     -- $errors
+
     -- ** InvalidParameterException
-  , _InvalidParameterException
+    , _InvalidParameterException
+
     -- ** InvalidSequenceTokenException
-  , _InvalidSequenceTokenException
+    , _InvalidSequenceTokenException
+
     -- ** ResourceAlreadyExistsException
-  , _ResourceAlreadyExistsException
+    , _ResourceAlreadyExistsException
+
     -- ** OperationAbortedException
-  , _OperationAbortedException
+    , _OperationAbortedException
+
     -- ** ServiceUnavailableException
-  , _ServiceUnavailableException
+    , _ServiceUnavailableException
+
     -- ** DataAlreadyAcceptedException
-  , _DataAlreadyAcceptedException
+    , _DataAlreadyAcceptedException
+
     -- ** InvalidOperationException
-  , _InvalidOperationException
+    , _InvalidOperationException
+
     -- ** ResourceNotFoundException
-  , _ResourceNotFoundException
+    , _ResourceNotFoundException
+
     -- ** LimitExceededException
-  , _LimitExceededException
+    , _LimitExceededException
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
+
     -- ** DescribeDestinations (Paginated)
-  , module Network.AWS.CloudWatchLogs.DescribeDestinations
+    , module Network.AWS.CloudWatchLogs.DescribeDestinations
+
     -- ** UntagLogGroup
-  , module Network.AWS.CloudWatchLogs.UntagLogGroup
+    , module Network.AWS.CloudWatchLogs.UntagLogGroup
+
     -- ** CreateExportTask
-  , module Network.AWS.CloudWatchLogs.CreateExportTask
+    , module Network.AWS.CloudWatchLogs.CreateExportTask
+
     -- ** PutDestination
-  , module Network.AWS.CloudWatchLogs.PutDestination
+    , module Network.AWS.CloudWatchLogs.PutDestination
+
     -- ** DescribeSubscriptionFilters (Paginated)
-  , module Network.AWS.CloudWatchLogs.DescribeSubscriptionFilters
+    , module Network.AWS.CloudWatchLogs.DescribeSubscriptionFilters
+
     -- ** GetLogEvents
-  , module Network.AWS.CloudWatchLogs.GetLogEvents
+    , module Network.AWS.CloudWatchLogs.GetLogEvents
+
     -- ** DescribeLogGroups (Paginated)
-  , module Network.AWS.CloudWatchLogs.DescribeLogGroups
+    , module Network.AWS.CloudWatchLogs.DescribeLogGroups
+
     -- ** DeleteDestination
-  , module Network.AWS.CloudWatchLogs.DeleteDestination
+    , module Network.AWS.CloudWatchLogs.DeleteDestination
+
     -- ** DisassociateKMSKey
-  , module Network.AWS.CloudWatchLogs.DisassociateKMSKey
+    , module Network.AWS.CloudWatchLogs.DisassociateKMSKey
+
     -- ** FilterLogEvents (Paginated)
-  , module Network.AWS.CloudWatchLogs.FilterLogEvents
+    , module Network.AWS.CloudWatchLogs.FilterLogEvents
+
     -- ** TagLogGroup
-  , module Network.AWS.CloudWatchLogs.TagLogGroup
+    , module Network.AWS.CloudWatchLogs.TagLogGroup
+
     -- ** DescribeResourcePolicies
-  , module Network.AWS.CloudWatchLogs.DescribeResourcePolicies
+    , module Network.AWS.CloudWatchLogs.DescribeResourcePolicies
+
     -- ** DeleteLogStream
-  , module Network.AWS.CloudWatchLogs.DeleteLogStream
+    , module Network.AWS.CloudWatchLogs.DeleteLogStream
+
     -- ** CreateLogStream
-  , module Network.AWS.CloudWatchLogs.CreateLogStream
+    , module Network.AWS.CloudWatchLogs.CreateLogStream
+
     -- ** CreateLogGroup
-  , module Network.AWS.CloudWatchLogs.CreateLogGroup
+    , module Network.AWS.CloudWatchLogs.CreateLogGroup
+
     -- ** DescribeExportTasks
-  , module Network.AWS.CloudWatchLogs.DescribeExportTasks
+    , module Network.AWS.CloudWatchLogs.DescribeExportTasks
+
     -- ** CancelExportTask
-  , module Network.AWS.CloudWatchLogs.CancelExportTask
+    , module Network.AWS.CloudWatchLogs.CancelExportTask
+
     -- ** PutSubscriptionFilter
-  , module Network.AWS.CloudWatchLogs.PutSubscriptionFilter
+    , module Network.AWS.CloudWatchLogs.PutSubscriptionFilter
+
     -- ** DeleteLogGroup
-  , module Network.AWS.CloudWatchLogs.DeleteLogGroup
+    , module Network.AWS.CloudWatchLogs.DeleteLogGroup
+
     -- ** DeleteSubscriptionFilter
-  , module Network.AWS.CloudWatchLogs.DeleteSubscriptionFilter
+    , module Network.AWS.CloudWatchLogs.DeleteSubscriptionFilter
+
     -- ** PutLogEvents
-  , module Network.AWS.CloudWatchLogs.PutLogEvents
+    , module Network.AWS.CloudWatchLogs.PutLogEvents
+
     -- ** DescribeMetricFilters (Paginated)
-  , module Network.AWS.CloudWatchLogs.DescribeMetricFilters
+    , module Network.AWS.CloudWatchLogs.DescribeMetricFilters
+
     -- ** TestMetricFilter
-  , module Network.AWS.CloudWatchLogs.TestMetricFilter
+    , module Network.AWS.CloudWatchLogs.TestMetricFilter
+
     -- ** PutDestinationPolicy
-  , module Network.AWS.CloudWatchLogs.PutDestinationPolicy
+    , module Network.AWS.CloudWatchLogs.PutDestinationPolicy
+
     -- ** PutMetricFilter
-  , module Network.AWS.CloudWatchLogs.PutMetricFilter
+    , module Network.AWS.CloudWatchLogs.PutMetricFilter
+
     -- ** DeleteRetentionPolicy
-  , module Network.AWS.CloudWatchLogs.DeleteRetentionPolicy
+    , module Network.AWS.CloudWatchLogs.DeleteRetentionPolicy
+
     -- ** DeleteMetricFilter
-  , module Network.AWS.CloudWatchLogs.DeleteMetricFilter
+    , module Network.AWS.CloudWatchLogs.DeleteMetricFilter
+
     -- ** PutRetentionPolicy
-  , module Network.AWS.CloudWatchLogs.PutRetentionPolicy
+    , module Network.AWS.CloudWatchLogs.PutRetentionPolicy
+
     -- ** ListTagsLogGroup
-  , module Network.AWS.CloudWatchLogs.ListTagsLogGroup
+    , module Network.AWS.CloudWatchLogs.ListTagsLogGroup
+
     -- ** PutResourcePolicy
-  , module Network.AWS.CloudWatchLogs.PutResourcePolicy
+    , module Network.AWS.CloudWatchLogs.PutResourcePolicy
+
     -- ** DeleteResourcePolicy
-  , module Network.AWS.CloudWatchLogs.DeleteResourcePolicy
+    , module Network.AWS.CloudWatchLogs.DeleteResourcePolicy
+
     -- ** AssociateKMSKey
-  , module Network.AWS.CloudWatchLogs.AssociateKMSKey
+    , module Network.AWS.CloudWatchLogs.AssociateKMSKey
+
     -- ** DescribeLogStreams (Paginated)
-  , module Network.AWS.CloudWatchLogs.DescribeLogStreams
+    , module Network.AWS.CloudWatchLogs.DescribeLogStreams
+
     -- * Types
+
     -- ** Distribution
-  , Distribution(..)
+    , Distribution (..)
+
     -- ** ExportTaskStatusCode
-  , ExportTaskStatusCode(..)
+    , ExportTaskStatusCode (..)
+
     -- ** OrderBy
-  , OrderBy(..)
+    , OrderBy (..)
+
     -- ** Destination
-  , Destination
-  , destination
-  , dTargetARN
-  , dCreationTime
-  , dArn
-  , dAccessPolicy
-  , dDestinationName
-  , dRoleARN
+    , Destination
+    , destination
+    , dTargetARN
+    , dCreationTime
+    , dArn
+    , dAccessPolicy
+    , dDestinationName
+    , dRoleARN
+
     -- ** ExportTask
-  , ExportTask
-  , exportTask
-  , etDestinationPrefix
-  , etDestination
-  , etStatus
-  , etTaskName
-  , etTaskId
-  , etTo
-  , etFrom
-  , etLogGroupName
-  , etExecutionInfo
+    , ExportTask
+    , exportTask
+    , etDestinationPrefix
+    , etDestination
+    , etStatus
+    , etTaskName
+    , etTaskId
+    , etTo
+    , etFrom
+    , etLogGroupName
+    , etExecutionInfo
+
     -- ** ExportTaskExecutionInfo
-  , ExportTaskExecutionInfo
-  , exportTaskExecutionInfo
-  , eteiCreationTime
-  , eteiCompletionTime
+    , ExportTaskExecutionInfo
+    , exportTaskExecutionInfo
+    , eteiCreationTime
+    , eteiCompletionTime
+
     -- ** ExportTaskStatus
-  , ExportTaskStatus
-  , exportTaskStatus
-  , etsCode
-  , etsMessage
+    , ExportTaskStatus
+    , exportTaskStatus
+    , etsCode
+    , etsMessage
+
     -- ** FilteredLogEvent
-  , FilteredLogEvent
-  , filteredLogEvent
-  , fleIngestionTime
-  , fleLogStreamName
-  , fleMessage
-  , fleTimestamp
-  , fleEventId
+    , FilteredLogEvent
+    , filteredLogEvent
+    , fleIngestionTime
+    , fleLogStreamName
+    , fleMessage
+    , fleTimestamp
+    , fleEventId
+
     -- ** InputLogEvent
-  , InputLogEvent
-  , inputLogEvent
-  , ileTimestamp
-  , ileMessage
+    , InputLogEvent
+    , inputLogEvent
+    , ileTimestamp
+    , ileMessage
+
     -- ** LogGroup
-  , LogGroup
-  , logGroup
-  , lgCreationTime
-  , lgMetricFilterCount
-  , lgArn
-  , lgLogGroupName
-  , lgRetentionInDays
-  , lgKmsKeyId
-  , lgStoredBytes
+    , LogGroup
+    , logGroup
+    , lgCreationTime
+    , lgMetricFilterCount
+    , lgArn
+    , lgLogGroupName
+    , lgRetentionInDays
+    , lgKmsKeyId
+    , lgStoredBytes
+
     -- ** LogStream
-  , LogStream
-  , logStream
-  , lsCreationTime
-  , lsUploadSequenceToken
-  , lsArn
-  , lsFirstEventTimestamp
-  , lsLogStreamName
-  , lsStoredBytes
-  , lsLastIngestionTime
-  , lsLastEventTimestamp
+    , LogStream
+    , logStream
+    , lsCreationTime
+    , lsUploadSequenceToken
+    , lsArn
+    , lsFirstEventTimestamp
+    , lsLogStreamName
+    , lsStoredBytes
+    , lsLastIngestionTime
+    , lsLastEventTimestamp
+
     -- ** MetricFilter
-  , MetricFilter
-  , metricFilter
-  , mfCreationTime
-  , mfFilterName
-  , mfLogGroupName
-  , mfFilterPattern
-  , mfMetricTransformations
+    , MetricFilter
+    , metricFilter
+    , mfCreationTime
+    , mfFilterName
+    , mfLogGroupName
+    , mfFilterPattern
+    , mfMetricTransformations
+
     -- ** MetricFilterMatchRecord
-  , MetricFilterMatchRecord
-  , metricFilterMatchRecord
-  , mfmrExtractedValues
-  , mfmrEventNumber
-  , mfmrEventMessage
+    , MetricFilterMatchRecord
+    , metricFilterMatchRecord
+    , mfmrExtractedValues
+    , mfmrEventNumber
+    , mfmrEventMessage
+
     -- ** MetricTransformation
-  , MetricTransformation
-  , metricTransformation
-  , mtDefaultValue
-  , mtMetricName
-  , mtMetricNamespace
-  , mtMetricValue
+    , MetricTransformation
+    , metricTransformation
+    , mtDefaultValue
+    , mtMetricName
+    , mtMetricNamespace
+    , mtMetricValue
+
     -- ** OutputLogEvent
-  , OutputLogEvent
-  , outputLogEvent
-  , oleIngestionTime
-  , oleMessage
-  , oleTimestamp
+    , OutputLogEvent
+    , outputLogEvent
+    , oleIngestionTime
+    , oleMessage
+    , oleTimestamp
+
     -- ** RejectedLogEventsInfo
-  , RejectedLogEventsInfo
-  , rejectedLogEventsInfo
-  , rleiTooOldLogEventEndIndex
-  , rleiTooNewLogEventStartIndex
-  , rleiExpiredLogEventEndIndex
+    , RejectedLogEventsInfo
+    , rejectedLogEventsInfo
+    , rleiTooOldLogEventEndIndex
+    , rleiTooNewLogEventStartIndex
+    , rleiExpiredLogEventEndIndex
+
     -- ** ResourcePolicy
-  , ResourcePolicy
-  , resourcePolicy
-  , rpPolicyName
-  , rpPolicyDocument
-  , rpLastUpdatedTime
+    , ResourcePolicy
+    , resourcePolicy
+    , rpPolicyName
+    , rpPolicyDocument
+    , rpLastUpdatedTime
+
     -- ** SearchedLogStream
-  , SearchedLogStream
-  , searchedLogStream
-  , slsLogStreamName
-  , slsSearchedCompletely
+    , SearchedLogStream
+    , searchedLogStream
+    , slsLogStreamName
+    , slsSearchedCompletely
+
     -- ** SubscriptionFilter
-  , SubscriptionFilter
-  , subscriptionFilter
-  , sfCreationTime
-  , sfFilterName
-  , sfDistribution
-  , sfDestinationARN
-  , sfLogGroupName
-  , sfFilterPattern
-  , sfRoleARN
-  ) where
+    , SubscriptionFilter
+    , subscriptionFilter
+    , sfCreationTime
+    , sfFilterName
+    , sfDistribution
+    , sfDestinationARN
+    , sfLogGroupName
+    , sfFilterPattern
+    , sfRoleARN
+    ) where
 
 import Network.AWS.CloudWatchLogs.AssociateKMSKey
 import Network.AWS.CloudWatchLogs.CancelExportTask
@@ -279,12 +346,14 @@ import Network.AWS.CloudWatchLogs.TestMetricFilter
 import Network.AWS.CloudWatchLogs.Types
 import Network.AWS.CloudWatchLogs.UntagLogGroup
 import Network.AWS.CloudWatchLogs.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'CloudWatchLogs'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -301,6 +370,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

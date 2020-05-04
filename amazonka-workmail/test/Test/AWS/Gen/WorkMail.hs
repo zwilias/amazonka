@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Test.AWS.Gen.WorkMail
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -23,6 +24,7 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
+
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -120,6 +122,7 @@ import Test.Tasty
 --             createResource
 --
 --           ]
+
 --     , testGroup "response"
 --         [ responseUpdatePrimaryEmailAddress $
 --             updatePrimaryEmailAddressResponse
@@ -216,364 +219,378 @@ import Test.Tasty
 --
 --           ]
 --     ]
+
 -- Requests
+
 requestUpdatePrimaryEmailAddress :: UpdatePrimaryEmailAddress -> TestTree
-requestUpdatePrimaryEmailAddress =
-  req "UpdatePrimaryEmailAddress" "fixture/UpdatePrimaryEmailAddress.yaml"
+requestUpdatePrimaryEmailAddress = req
+    "UpdatePrimaryEmailAddress"
+    "fixture/UpdatePrimaryEmailAddress.yaml"
 
 requestDescribeResource :: DescribeResource -> TestTree
-requestDescribeResource = req "DescribeResource" "fixture/DescribeResource.yaml"
+requestDescribeResource = req
+    "DescribeResource"
+    "fixture/DescribeResource.yaml"
 
 requestCreateAlias :: CreateAlias -> TestTree
-requestCreateAlias = req "CreateAlias" "fixture/CreateAlias.yaml"
+requestCreateAlias = req
+    "CreateAlias"
+    "fixture/CreateAlias.yaml"
 
 requestResetPassword :: ResetPassword -> TestTree
-requestResetPassword = req "ResetPassword" "fixture/ResetPassword.yaml"
+requestResetPassword = req
+    "ResetPassword"
+    "fixture/ResetPassword.yaml"
 
 requestDescribeGroup :: DescribeGroup -> TestTree
-requestDescribeGroup = req "DescribeGroup" "fixture/DescribeGroup.yaml"
+requestDescribeGroup = req
+    "DescribeGroup"
+    "fixture/DescribeGroup.yaml"
 
 requestRegisterToWorkMail :: RegisterToWorkMail -> TestTree
-requestRegisterToWorkMail =
-  req "RegisterToWorkMail" "fixture/RegisterToWorkMail.yaml"
+requestRegisterToWorkMail = req
+    "RegisterToWorkMail"
+    "fixture/RegisterToWorkMail.yaml"
 
 requestListAliases :: ListAliases -> TestTree
-requestListAliases = req "ListAliases" "fixture/ListAliases.yaml"
+requestListAliases = req
+    "ListAliases"
+    "fixture/ListAliases.yaml"
 
 requestPutMailboxPermissions :: PutMailboxPermissions -> TestTree
-requestPutMailboxPermissions =
-  req "PutMailboxPermissions" "fixture/PutMailboxPermissions.yaml"
+requestPutMailboxPermissions = req
+    "PutMailboxPermissions"
+    "fixture/PutMailboxPermissions.yaml"
 
 requestDeleteMailboxPermissions :: DeleteMailboxPermissions -> TestTree
-requestDeleteMailboxPermissions =
-  req "DeleteMailboxPermissions" "fixture/DeleteMailboxPermissions.yaml"
+requestDeleteMailboxPermissions = req
+    "DeleteMailboxPermissions"
+    "fixture/DeleteMailboxPermissions.yaml"
 
 requestListUsers :: ListUsers -> TestTree
-requestListUsers = req "ListUsers" "fixture/ListUsers.yaml"
+requestListUsers = req
+    "ListUsers"
+    "fixture/ListUsers.yaml"
 
 requestAssociateMemberToGroup :: AssociateMemberToGroup -> TestTree
-requestAssociateMemberToGroup =
-  req "AssociateMemberToGroup" "fixture/AssociateMemberToGroup.yaml"
+requestAssociateMemberToGroup = req
+    "AssociateMemberToGroup"
+    "fixture/AssociateMemberToGroup.yaml"
 
 requestDeleteResource :: DeleteResource -> TestTree
-requestDeleteResource = req "DeleteResource" "fixture/DeleteResource.yaml"
+requestDeleteResource = req
+    "DeleteResource"
+    "fixture/DeleteResource.yaml"
 
 requestUpdateResource :: UpdateResource -> TestTree
-requestUpdateResource = req "UpdateResource" "fixture/UpdateResource.yaml"
+requestUpdateResource = req
+    "UpdateResource"
+    "fixture/UpdateResource.yaml"
 
 requestDisassociateMemberFromGroup :: DisassociateMemberFromGroup -> TestTree
-requestDisassociateMemberFromGroup =
-  req "DisassociateMemberFromGroup" "fixture/DisassociateMemberFromGroup.yaml"
+requestDisassociateMemberFromGroup = req
+    "DisassociateMemberFromGroup"
+    "fixture/DisassociateMemberFromGroup.yaml"
 
 requestListResources :: ListResources -> TestTree
-requestListResources = req "ListResources" "fixture/ListResources.yaml"
+requestListResources = req
+    "ListResources"
+    "fixture/ListResources.yaml"
 
 requestDeregisterFromWorkMail :: DeregisterFromWorkMail -> TestTree
-requestDeregisterFromWorkMail =
-  req "DeregisterFromWorkMail" "fixture/DeregisterFromWorkMail.yaml"
+requestDeregisterFromWorkMail = req
+    "DeregisterFromWorkMail"
+    "fixture/DeregisterFromWorkMail.yaml"
 
 requestListMailboxPermissions :: ListMailboxPermissions -> TestTree
-requestListMailboxPermissions =
-  req "ListMailboxPermissions" "fixture/ListMailboxPermissions.yaml"
+requestListMailboxPermissions = req
+    "ListMailboxPermissions"
+    "fixture/ListMailboxPermissions.yaml"
 
 requestListGroupMembers :: ListGroupMembers -> TestTree
-requestListGroupMembers = req "ListGroupMembers" "fixture/ListGroupMembers.yaml"
+requestListGroupMembers = req
+    "ListGroupMembers"
+    "fixture/ListGroupMembers.yaml"
 
-requestDisassociateDelegateFromResource ::
-     DisassociateDelegateFromResource -> TestTree
-requestDisassociateDelegateFromResource =
-  req
+requestDisassociateDelegateFromResource :: DisassociateDelegateFromResource -> TestTree
+requestDisassociateDelegateFromResource = req
     "DisassociateDelegateFromResource"
     "fixture/DisassociateDelegateFromResource.yaml"
 
 requestListResourceDelegates :: ListResourceDelegates -> TestTree
-requestListResourceDelegates =
-  req "ListResourceDelegates" "fixture/ListResourceDelegates.yaml"
+requestListResourceDelegates = req
+    "ListResourceDelegates"
+    "fixture/ListResourceDelegates.yaml"
 
 requestDescribeUser :: DescribeUser -> TestTree
-requestDescribeUser = req "DescribeUser" "fixture/DescribeUser.yaml"
+requestDescribeUser = req
+    "DescribeUser"
+    "fixture/DescribeUser.yaml"
 
 requestDeleteAlias :: DeleteAlias -> TestTree
-requestDeleteAlias = req "DeleteAlias" "fixture/DeleteAlias.yaml"
+requestDeleteAlias = req
+    "DeleteAlias"
+    "fixture/DeleteAlias.yaml"
 
 requestListOrganizations :: ListOrganizations -> TestTree
-requestListOrganizations =
-  req "ListOrganizations" "fixture/ListOrganizations.yaml"
+requestListOrganizations = req
+    "ListOrganizations"
+    "fixture/ListOrganizations.yaml"
 
 requestAssociateDelegateToResource :: AssociateDelegateToResource -> TestTree
-requestAssociateDelegateToResource =
-  req "AssociateDelegateToResource" "fixture/AssociateDelegateToResource.yaml"
+requestAssociateDelegateToResource = req
+    "AssociateDelegateToResource"
+    "fixture/AssociateDelegateToResource.yaml"
 
 requestCreateUser :: CreateUser -> TestTree
-requestCreateUser = req "CreateUser" "fixture/CreateUser.yaml"
+requestCreateUser = req
+    "CreateUser"
+    "fixture/CreateUser.yaml"
 
 requestDeleteUser :: DeleteUser -> TestTree
-requestDeleteUser = req "DeleteUser" "fixture/DeleteUser.yaml"
+requestDeleteUser = req
+    "DeleteUser"
+    "fixture/DeleteUser.yaml"
 
 requestCreateGroup :: CreateGroup -> TestTree
-requestCreateGroup = req "CreateGroup" "fixture/CreateGroup.yaml"
+requestCreateGroup = req
+    "CreateGroup"
+    "fixture/CreateGroup.yaml"
 
 requestDeleteGroup :: DeleteGroup -> TestTree
-requestDeleteGroup = req "DeleteGroup" "fixture/DeleteGroup.yaml"
+requestDeleteGroup = req
+    "DeleteGroup"
+    "fixture/DeleteGroup.yaml"
 
 requestListGroups :: ListGroups -> TestTree
-requestListGroups = req "ListGroups" "fixture/ListGroups.yaml"
+requestListGroups = req
+    "ListGroups"
+    "fixture/ListGroups.yaml"
 
 requestDescribeOrganization :: DescribeOrganization -> TestTree
-requestDescribeOrganization =
-  req "DescribeOrganization" "fixture/DescribeOrganization.yaml"
+requestDescribeOrganization = req
+    "DescribeOrganization"
+    "fixture/DescribeOrganization.yaml"
 
 requestCreateResource :: CreateResource -> TestTree
-requestCreateResource = req "CreateResource" "fixture/CreateResource.yaml"
+requestCreateResource = req
+    "CreateResource"
+    "fixture/CreateResource.yaml"
 
 -- Responses
-responseUpdatePrimaryEmailAddress ::
-     UpdatePrimaryEmailAddressResponse -> TestTree
-responseUpdatePrimaryEmailAddress =
-  res
+
+responseUpdatePrimaryEmailAddress :: UpdatePrimaryEmailAddressResponse -> TestTree
+responseUpdatePrimaryEmailAddress = res
     "UpdatePrimaryEmailAddressResponse"
     "fixture/UpdatePrimaryEmailAddressResponse.proto"
     workMail
     (Proxy :: Proxy UpdatePrimaryEmailAddress)
 
 responseDescribeResource :: DescribeResourceResponse -> TestTree
-responseDescribeResource =
-  res
+responseDescribeResource = res
     "DescribeResourceResponse"
     "fixture/DescribeResourceResponse.proto"
     workMail
     (Proxy :: Proxy DescribeResource)
 
 responseCreateAlias :: CreateAliasResponse -> TestTree
-responseCreateAlias =
-  res
+responseCreateAlias = res
     "CreateAliasResponse"
     "fixture/CreateAliasResponse.proto"
     workMail
     (Proxy :: Proxy CreateAlias)
 
 responseResetPassword :: ResetPasswordResponse -> TestTree
-responseResetPassword =
-  res
+responseResetPassword = res
     "ResetPasswordResponse"
     "fixture/ResetPasswordResponse.proto"
     workMail
     (Proxy :: Proxy ResetPassword)
 
 responseDescribeGroup :: DescribeGroupResponse -> TestTree
-responseDescribeGroup =
-  res
+responseDescribeGroup = res
     "DescribeGroupResponse"
     "fixture/DescribeGroupResponse.proto"
     workMail
     (Proxy :: Proxy DescribeGroup)
 
 responseRegisterToWorkMail :: RegisterToWorkMailResponse -> TestTree
-responseRegisterToWorkMail =
-  res
+responseRegisterToWorkMail = res
     "RegisterToWorkMailResponse"
     "fixture/RegisterToWorkMailResponse.proto"
     workMail
     (Proxy :: Proxy RegisterToWorkMail)
 
 responseListAliases :: ListAliasesResponse -> TestTree
-responseListAliases =
-  res
+responseListAliases = res
     "ListAliasesResponse"
     "fixture/ListAliasesResponse.proto"
     workMail
     (Proxy :: Proxy ListAliases)
 
 responsePutMailboxPermissions :: PutMailboxPermissionsResponse -> TestTree
-responsePutMailboxPermissions =
-  res
+responsePutMailboxPermissions = res
     "PutMailboxPermissionsResponse"
     "fixture/PutMailboxPermissionsResponse.proto"
     workMail
     (Proxy :: Proxy PutMailboxPermissions)
 
 responseDeleteMailboxPermissions :: DeleteMailboxPermissionsResponse -> TestTree
-responseDeleteMailboxPermissions =
-  res
+responseDeleteMailboxPermissions = res
     "DeleteMailboxPermissionsResponse"
     "fixture/DeleteMailboxPermissionsResponse.proto"
     workMail
     (Proxy :: Proxy DeleteMailboxPermissions)
 
 responseListUsers :: ListUsersResponse -> TestTree
-responseListUsers =
-  res
+responseListUsers = res
     "ListUsersResponse"
     "fixture/ListUsersResponse.proto"
     workMail
     (Proxy :: Proxy ListUsers)
 
 responseAssociateMemberToGroup :: AssociateMemberToGroupResponse -> TestTree
-responseAssociateMemberToGroup =
-  res
+responseAssociateMemberToGroup = res
     "AssociateMemberToGroupResponse"
     "fixture/AssociateMemberToGroupResponse.proto"
     workMail
     (Proxy :: Proxy AssociateMemberToGroup)
 
 responseDeleteResource :: DeleteResourceResponse -> TestTree
-responseDeleteResource =
-  res
+responseDeleteResource = res
     "DeleteResourceResponse"
     "fixture/DeleteResourceResponse.proto"
     workMail
     (Proxy :: Proxy DeleteResource)
 
 responseUpdateResource :: UpdateResourceResponse -> TestTree
-responseUpdateResource =
-  res
+responseUpdateResource = res
     "UpdateResourceResponse"
     "fixture/UpdateResourceResponse.proto"
     workMail
     (Proxy :: Proxy UpdateResource)
 
-responseDisassociateMemberFromGroup ::
-     DisassociateMemberFromGroupResponse -> TestTree
-responseDisassociateMemberFromGroup =
-  res
+responseDisassociateMemberFromGroup :: DisassociateMemberFromGroupResponse -> TestTree
+responseDisassociateMemberFromGroup = res
     "DisassociateMemberFromGroupResponse"
     "fixture/DisassociateMemberFromGroupResponse.proto"
     workMail
     (Proxy :: Proxy DisassociateMemberFromGroup)
 
 responseListResources :: ListResourcesResponse -> TestTree
-responseListResources =
-  res
+responseListResources = res
     "ListResourcesResponse"
     "fixture/ListResourcesResponse.proto"
     workMail
     (Proxy :: Proxy ListResources)
 
 responseDeregisterFromWorkMail :: DeregisterFromWorkMailResponse -> TestTree
-responseDeregisterFromWorkMail =
-  res
+responseDeregisterFromWorkMail = res
     "DeregisterFromWorkMailResponse"
     "fixture/DeregisterFromWorkMailResponse.proto"
     workMail
     (Proxy :: Proxy DeregisterFromWorkMail)
 
 responseListMailboxPermissions :: ListMailboxPermissionsResponse -> TestTree
-responseListMailboxPermissions =
-  res
+responseListMailboxPermissions = res
     "ListMailboxPermissionsResponse"
     "fixture/ListMailboxPermissionsResponse.proto"
     workMail
     (Proxy :: Proxy ListMailboxPermissions)
 
 responseListGroupMembers :: ListGroupMembersResponse -> TestTree
-responseListGroupMembers =
-  res
+responseListGroupMembers = res
     "ListGroupMembersResponse"
     "fixture/ListGroupMembersResponse.proto"
     workMail
     (Proxy :: Proxy ListGroupMembers)
 
-responseDisassociateDelegateFromResource ::
-     DisassociateDelegateFromResourceResponse -> TestTree
-responseDisassociateDelegateFromResource =
-  res
+responseDisassociateDelegateFromResource :: DisassociateDelegateFromResourceResponse -> TestTree
+responseDisassociateDelegateFromResource = res
     "DisassociateDelegateFromResourceResponse"
     "fixture/DisassociateDelegateFromResourceResponse.proto"
     workMail
     (Proxy :: Proxy DisassociateDelegateFromResource)
 
 responseListResourceDelegates :: ListResourceDelegatesResponse -> TestTree
-responseListResourceDelegates =
-  res
+responseListResourceDelegates = res
     "ListResourceDelegatesResponse"
     "fixture/ListResourceDelegatesResponse.proto"
     workMail
     (Proxy :: Proxy ListResourceDelegates)
 
 responseDescribeUser :: DescribeUserResponse -> TestTree
-responseDescribeUser =
-  res
+responseDescribeUser = res
     "DescribeUserResponse"
     "fixture/DescribeUserResponse.proto"
     workMail
     (Proxy :: Proxy DescribeUser)
 
 responseDeleteAlias :: DeleteAliasResponse -> TestTree
-responseDeleteAlias =
-  res
+responseDeleteAlias = res
     "DeleteAliasResponse"
     "fixture/DeleteAliasResponse.proto"
     workMail
     (Proxy :: Proxy DeleteAlias)
 
 responseListOrganizations :: ListOrganizationsResponse -> TestTree
-responseListOrganizations =
-  res
+responseListOrganizations = res
     "ListOrganizationsResponse"
     "fixture/ListOrganizationsResponse.proto"
     workMail
     (Proxy :: Proxy ListOrganizations)
 
-responseAssociateDelegateToResource ::
-     AssociateDelegateToResourceResponse -> TestTree
-responseAssociateDelegateToResource =
-  res
+responseAssociateDelegateToResource :: AssociateDelegateToResourceResponse -> TestTree
+responseAssociateDelegateToResource = res
     "AssociateDelegateToResourceResponse"
     "fixture/AssociateDelegateToResourceResponse.proto"
     workMail
     (Proxy :: Proxy AssociateDelegateToResource)
 
 responseCreateUser :: CreateUserResponse -> TestTree
-responseCreateUser =
-  res
+responseCreateUser = res
     "CreateUserResponse"
     "fixture/CreateUserResponse.proto"
     workMail
     (Proxy :: Proxy CreateUser)
 
 responseDeleteUser :: DeleteUserResponse -> TestTree
-responseDeleteUser =
-  res
+responseDeleteUser = res
     "DeleteUserResponse"
     "fixture/DeleteUserResponse.proto"
     workMail
     (Proxy :: Proxy DeleteUser)
 
 responseCreateGroup :: CreateGroupResponse -> TestTree
-responseCreateGroup =
-  res
+responseCreateGroup = res
     "CreateGroupResponse"
     "fixture/CreateGroupResponse.proto"
     workMail
     (Proxy :: Proxy CreateGroup)
 
 responseDeleteGroup :: DeleteGroupResponse -> TestTree
-responseDeleteGroup =
-  res
+responseDeleteGroup = res
     "DeleteGroupResponse"
     "fixture/DeleteGroupResponse.proto"
     workMail
     (Proxy :: Proxy DeleteGroup)
 
 responseListGroups :: ListGroupsResponse -> TestTree
-responseListGroups =
-  res
+responseListGroups = res
     "ListGroupsResponse"
     "fixture/ListGroupsResponse.proto"
     workMail
     (Proxy :: Proxy ListGroups)
 
 responseDescribeOrganization :: DescribeOrganizationResponse -> TestTree
-responseDescribeOrganization =
-  res
+responseDescribeOrganization = res
     "DescribeOrganizationResponse"
     "fixture/DescribeOrganizationResponse.proto"
     workMail
     (Proxy :: Proxy DescribeOrganization)
 
 responseCreateResource :: CreateResourceResponse -> TestTree
-responseCreateResource =
-  res
+responseCreateResource = res
     "CreateResourceResponse"
     "fixture/CreateResourceResponse.proto"
     workMail

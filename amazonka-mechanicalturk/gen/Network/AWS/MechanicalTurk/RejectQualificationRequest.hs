@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.MechanicalTurk.RejectQualificationRequest
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,18 +24,20 @@
 -- You can provide a text message explaining why the request was rejected. The Worker who made the request can see this message.
 --
 module Network.AWS.MechanicalTurk.RejectQualificationRequest
+    (
     -- * Creating a Request
-  ( rejectQualificationRequest
-  , RejectQualificationRequest
+      rejectQualificationRequest
+    , RejectQualificationRequest
     -- * Request Lenses
-  , rqrReason
-  , rqrQualificationRequestId
+    , rqrReason
+    , rqrQualificationRequestId
+
     -- * Destructuring the Response
-  , rejectQualificationRequestResponse
-  , RejectQualificationRequestResponse
+    , rejectQualificationRequestResponse
+    , RejectQualificationRequestResponse
     -- * Response Lenses
-  , rqrrsResponseStatus
-  ) where
+    , rqrrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.MechanicalTurk.Types
@@ -50,6 +54,7 @@ data RejectQualificationRequest =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'RejectQualificationRequest' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -57,57 +62,62 @@ data RejectQualificationRequest =
 -- * 'rqrReason' - A text message explaining why the request was rejected, to be shown to the Worker who made the request.
 --
 -- * 'rqrQualificationRequestId' - The ID of the Qualification request, as returned by the @ListQualificationRequests@ operation.
-rejectQualificationRequest ::
-     Text -- ^ 'rqrQualificationRequestId'
-  -> RejectQualificationRequest
+rejectQualificationRequest
+    :: Text -- ^ 'rqrQualificationRequestId'
+    -> RejectQualificationRequest
 rejectQualificationRequest pQualificationRequestId_ =
   RejectQualificationRequest'
     { _rqrReason = Nothing
     , _rqrQualificationRequestId = pQualificationRequestId_
     }
 
+
 -- | A text message explaining why the request was rejected, to be shown to the Worker who made the request.
 rqrReason :: Lens' RejectQualificationRequest (Maybe Text)
-rqrReason = lens _rqrReason (\s a -> s {_rqrReason = a})
+rqrReason = lens _rqrReason (\ s a -> s{_rqrReason = a})
 
 -- | The ID of the Qualification request, as returned by the @ListQualificationRequests@ operation.
 rqrQualificationRequestId :: Lens' RejectQualificationRequest Text
-rqrQualificationRequestId =
-  lens _rqrQualificationRequestId (\s a -> s {_rqrQualificationRequestId = a})
+rqrQualificationRequestId = lens _rqrQualificationRequestId (\ s a -> s{_rqrQualificationRequestId = a})
 
 instance AWSRequest RejectQualificationRequest where
-  type Rs RejectQualificationRequest = RejectQualificationRequestResponse
-  request = postJSON mechanicalTurk
-  response =
-    receiveEmpty
-      (\s h x -> RejectQualificationRequestResponse' <$> (pure (fromEnum s)))
+        type Rs RejectQualificationRequest =
+             RejectQualificationRequestResponse
+        request = postJSON mechanicalTurk
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 RejectQualificationRequestResponse' <$>
+                   (pure (fromEnum s)))
 
-instance Hashable RejectQualificationRequest
+instance Hashable RejectQualificationRequest where
 
-instance NFData RejectQualificationRequest
+instance NFData RejectQualificationRequest where
 
 instance ToHeaders RejectQualificationRequest where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("MTurkRequesterServiceV20170117.RejectQualificationRequest" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("MTurkRequesterServiceV20170117.RejectQualificationRequest"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON RejectQualificationRequest where
-  toJSON RejectQualificationRequest' {..} =
-    object
-      (catMaybes
-         [ ("Reason" .=) <$> _rqrReason
-         , Just ("QualificationRequestId" .= _rqrQualificationRequestId)
-         ])
+        toJSON RejectQualificationRequest'{..}
+          = object
+              (catMaybes
+                 [("Reason" .=) <$> _rqrReason,
+                  Just
+                    ("QualificationRequestId" .=
+                       _rqrQualificationRequestId)])
 
 instance ToPath RejectQualificationRequest where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery RejectQualificationRequest where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'rejectQualificationRequestResponse' smart constructor.
 newtype RejectQualificationRequestResponse =
@@ -116,20 +126,22 @@ newtype RejectQualificationRequestResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'RejectQualificationRequestResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'rqrrsResponseStatus' - -- | The response status code.
-rejectQualificationRequestResponse ::
-     Int -- ^ 'rqrrsResponseStatus'
-  -> RejectQualificationRequestResponse
+rejectQualificationRequestResponse
+    :: Int -- ^ 'rqrrsResponseStatus'
+    -> RejectQualificationRequestResponse
 rejectQualificationRequestResponse pResponseStatus_ =
   RejectQualificationRequestResponse' {_rqrrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 rqrrsResponseStatus :: Lens' RejectQualificationRequestResponse Int
-rqrrsResponseStatus =
-  lens _rqrrsResponseStatus (\s a -> s {_rqrrsResponseStatus = a})
+rqrrsResponseStatus = lens _rqrrsResponseStatus (\ s a -> s{_rqrrsResponseStatus = a})
 
 instance NFData RejectQualificationRequestResponse
+         where

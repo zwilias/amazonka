@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SES.GetCustomVerificationEmailTemplate
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,23 +26,25 @@
 -- You can execute this operation no more than once per second.
 --
 module Network.AWS.SES.GetCustomVerificationEmailTemplate
+    (
     -- * Creating a Request
-  ( getCustomVerificationEmailTemplate
-  , GetCustomVerificationEmailTemplate
+      getCustomVerificationEmailTemplate
+    , GetCustomVerificationEmailTemplate
     -- * Request Lenses
-  , gcvetTemplateName
+    , gcvetTemplateName
+
     -- * Destructuring the Response
-  , getCustomVerificationEmailTemplateResponse
-  , GetCustomVerificationEmailTemplateResponse
+    , getCustomVerificationEmailTemplateResponse
+    , GetCustomVerificationEmailTemplateResponse
     -- * Response Lenses
-  , gcvetrsFromEmailAddress
-  , gcvetrsTemplateName
-  , gcvetrsFailureRedirectionURL
-  , gcvetrsTemplateSubject
-  , gcvetrsSuccessRedirectionURL
-  , gcvetrsTemplateContent
-  , gcvetrsResponseStatus
-  ) where
+    , gcvetrsFromEmailAddress
+    , gcvetrsTemplateName
+    , gcvetrsFailureRedirectionURL
+    , gcvetrsTemplateSubject
+    , gcvetrsSuccessRedirectionURL
+    , gcvetrsTemplateContent
+    , gcvetrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -60,54 +64,63 @@ newtype GetCustomVerificationEmailTemplate =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetCustomVerificationEmailTemplate' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'gcvetTemplateName' - The name of the custom verification email template that you want to retrieve.
-getCustomVerificationEmailTemplate ::
-     Text -- ^ 'gcvetTemplateName'
-  -> GetCustomVerificationEmailTemplate
+getCustomVerificationEmailTemplate
+    :: Text -- ^ 'gcvetTemplateName'
+    -> GetCustomVerificationEmailTemplate
 getCustomVerificationEmailTemplate pTemplateName_ =
   GetCustomVerificationEmailTemplate' {_gcvetTemplateName = pTemplateName_}
 
+
 -- | The name of the custom verification email template that you want to retrieve.
 gcvetTemplateName :: Lens' GetCustomVerificationEmailTemplate Text
-gcvetTemplateName = lens _gcvetTemplateName (\s a -> s {_gcvetTemplateName = a})
+gcvetTemplateName = lens _gcvetTemplateName (\ s a -> s{_gcvetTemplateName = a})
 
-instance AWSRequest GetCustomVerificationEmailTemplate where
-  type Rs GetCustomVerificationEmailTemplate = GetCustomVerificationEmailTemplateResponse
-  request = postQuery ses
-  response =
-    receiveXMLWrapper
-      "GetCustomVerificationEmailTemplateResult"
-      (\s h x ->
-         GetCustomVerificationEmailTemplateResponse' <$>
-         (x .@? "FromEmailAddress") <*>
-         (x .@? "TemplateName") <*>
-         (x .@? "FailureRedirectionURL") <*>
-         (x .@? "TemplateSubject") <*>
-         (x .@? "SuccessRedirectionURL") <*>
-         (x .@? "TemplateContent") <*>
-         (pure (fromEnum s)))
+instance AWSRequest
+           GetCustomVerificationEmailTemplate
+         where
+        type Rs GetCustomVerificationEmailTemplate =
+             GetCustomVerificationEmailTemplateResponse
+        request = postQuery ses
+        response
+          = receiveXMLWrapper
+              "GetCustomVerificationEmailTemplateResult"
+              (\ s h x ->
+                 GetCustomVerificationEmailTemplateResponse' <$>
+                   (x .@? "FromEmailAddress") <*> (x .@? "TemplateName")
+                     <*> (x .@? "FailureRedirectionURL")
+                     <*> (x .@? "TemplateSubject")
+                     <*> (x .@? "SuccessRedirectionURL")
+                     <*> (x .@? "TemplateContent")
+                     <*> (pure (fromEnum s)))
 
 instance Hashable GetCustomVerificationEmailTemplate
+         where
 
 instance NFData GetCustomVerificationEmailTemplate
+         where
 
-instance ToHeaders GetCustomVerificationEmailTemplate where
-  toHeaders = const mempty
+instance ToHeaders GetCustomVerificationEmailTemplate
+         where
+        toHeaders = const mempty
 
-instance ToPath GetCustomVerificationEmailTemplate where
-  toPath = const "/"
+instance ToPath GetCustomVerificationEmailTemplate
+         where
+        toPath = const "/"
 
-instance ToQuery GetCustomVerificationEmailTemplate where
-  toQuery GetCustomVerificationEmailTemplate' {..} =
-    mconcat
-      [ "Action" =: ("GetCustomVerificationEmailTemplate" :: ByteString)
-      , "Version" =: ("2010-12-01" :: ByteString)
-      , "TemplateName" =: _gcvetTemplateName
-      ]
+instance ToQuery GetCustomVerificationEmailTemplate
+         where
+        toQuery GetCustomVerificationEmailTemplate'{..}
+          = mconcat
+              ["Action" =:
+                 ("GetCustomVerificationEmailTemplate" :: ByteString),
+               "Version" =: ("2010-12-01" :: ByteString),
+               "TemplateName" =: _gcvetTemplateName]
 
 -- | The content of the custom verification email template.
 --
@@ -126,6 +139,7 @@ data GetCustomVerificationEmailTemplateResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetCustomVerificationEmailTemplateResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -143,9 +157,9 @@ data GetCustomVerificationEmailTemplateResponse =
 -- * 'gcvetrsTemplateContent' - The content of the custom verification email.
 --
 -- * 'gcvetrsResponseStatus' - -- | The response status code.
-getCustomVerificationEmailTemplateResponse ::
-     Int -- ^ 'gcvetrsResponseStatus'
-  -> GetCustomVerificationEmailTemplateResponse
+getCustomVerificationEmailTemplateResponse
+    :: Int -- ^ 'gcvetrsResponseStatus'
+    -> GetCustomVerificationEmailTemplateResponse
 getCustomVerificationEmailTemplateResponse pResponseStatus_ =
   GetCustomVerificationEmailTemplateResponse'
     { _gcvetrsFromEmailAddress = Nothing
@@ -157,49 +171,35 @@ getCustomVerificationEmailTemplateResponse pResponseStatus_ =
     , _gcvetrsResponseStatus = pResponseStatus_
     }
 
+
 -- | The email address that the custom verification email is sent from.
-gcvetrsFromEmailAddress ::
-     Lens' GetCustomVerificationEmailTemplateResponse (Maybe Text)
-gcvetrsFromEmailAddress =
-  lens _gcvetrsFromEmailAddress (\s a -> s {_gcvetrsFromEmailAddress = a})
+gcvetrsFromEmailAddress :: Lens' GetCustomVerificationEmailTemplateResponse (Maybe Text)
+gcvetrsFromEmailAddress = lens _gcvetrsFromEmailAddress (\ s a -> s{_gcvetrsFromEmailAddress = a})
 
 -- | The name of the custom verification email template.
-gcvetrsTemplateName ::
-     Lens' GetCustomVerificationEmailTemplateResponse (Maybe Text)
-gcvetrsTemplateName =
-  lens _gcvetrsTemplateName (\s a -> s {_gcvetrsTemplateName = a})
+gcvetrsTemplateName :: Lens' GetCustomVerificationEmailTemplateResponse (Maybe Text)
+gcvetrsTemplateName = lens _gcvetrsTemplateName (\ s a -> s{_gcvetrsTemplateName = a})
 
 -- | The URL that the recipient of the verification email is sent to if his or her address is not successfully verified.
-gcvetrsFailureRedirectionURL ::
-     Lens' GetCustomVerificationEmailTemplateResponse (Maybe Text)
-gcvetrsFailureRedirectionURL =
-  lens
-    _gcvetrsFailureRedirectionURL
-    (\s a -> s {_gcvetrsFailureRedirectionURL = a})
+gcvetrsFailureRedirectionURL :: Lens' GetCustomVerificationEmailTemplateResponse (Maybe Text)
+gcvetrsFailureRedirectionURL = lens _gcvetrsFailureRedirectionURL (\ s a -> s{_gcvetrsFailureRedirectionURL = a})
 
 -- | The subject line of the custom verification email.
-gcvetrsTemplateSubject ::
-     Lens' GetCustomVerificationEmailTemplateResponse (Maybe Text)
-gcvetrsTemplateSubject =
-  lens _gcvetrsTemplateSubject (\s a -> s {_gcvetrsTemplateSubject = a})
+gcvetrsTemplateSubject :: Lens' GetCustomVerificationEmailTemplateResponse (Maybe Text)
+gcvetrsTemplateSubject = lens _gcvetrsTemplateSubject (\ s a -> s{_gcvetrsTemplateSubject = a})
 
 -- | The URL that the recipient of the verification email is sent to if his or her address is successfully verified.
-gcvetrsSuccessRedirectionURL ::
-     Lens' GetCustomVerificationEmailTemplateResponse (Maybe Text)
-gcvetrsSuccessRedirectionURL =
-  lens
-    _gcvetrsSuccessRedirectionURL
-    (\s a -> s {_gcvetrsSuccessRedirectionURL = a})
+gcvetrsSuccessRedirectionURL :: Lens' GetCustomVerificationEmailTemplateResponse (Maybe Text)
+gcvetrsSuccessRedirectionURL = lens _gcvetrsSuccessRedirectionURL (\ s a -> s{_gcvetrsSuccessRedirectionURL = a})
 
 -- | The content of the custom verification email.
-gcvetrsTemplateContent ::
-     Lens' GetCustomVerificationEmailTemplateResponse (Maybe Text)
-gcvetrsTemplateContent =
-  lens _gcvetrsTemplateContent (\s a -> s {_gcvetrsTemplateContent = a})
+gcvetrsTemplateContent :: Lens' GetCustomVerificationEmailTemplateResponse (Maybe Text)
+gcvetrsTemplateContent = lens _gcvetrsTemplateContent (\ s a -> s{_gcvetrsTemplateContent = a})
 
 -- | -- | The response status code.
 gcvetrsResponseStatus :: Lens' GetCustomVerificationEmailTemplateResponse Int
-gcvetrsResponseStatus =
-  lens _gcvetrsResponseStatus (\s a -> s {_gcvetrsResponseStatus = a})
+gcvetrsResponseStatus = lens _gcvetrsResponseStatus (\ s a -> s{_gcvetrsResponseStatus = a})
 
-instance NFData GetCustomVerificationEmailTemplateResponse
+instance NFData
+           GetCustomVerificationEmailTemplateResponse
+         where

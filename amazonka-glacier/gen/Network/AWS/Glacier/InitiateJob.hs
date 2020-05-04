@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Glacier.InitiateJob
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,22 +22,24 @@
 --
 --
 module Network.AWS.Glacier.InitiateJob
+    (
     -- * Creating a Request
-  ( initiateJob
-  , InitiateJob
+      initiateJob
+    , InitiateJob
     -- * Request Lenses
-  , ijJobParameters
-  , ijAccountId
-  , ijVaultName
+    , ijJobParameters
+    , ijAccountId
+    , ijVaultName
+
     -- * Destructuring the Response
-  , initiateJobResponse
-  , InitiateJobResponse
+    , initiateJobResponse
+    , InitiateJobResponse
     -- * Response Lenses
-  , ijrsJobId
-  , ijrsJobOutputPath
-  , ijrsLocation
-  , ijrsResponseStatus
-  ) where
+    , ijrsJobId
+    , ijrsJobOutputPath
+    , ijrsLocation
+    , ijrsResponseStatus
+    ) where
 
 import Network.AWS.Glacier.Types
 import Network.AWS.Glacier.Types.Product
@@ -57,6 +61,7 @@ data InitiateJob =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'InitiateJob' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -66,10 +71,10 @@ data InitiateJob =
 -- * 'ijAccountId' - The @AccountId@ value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.
 --
 -- * 'ijVaultName' - The name of the vault.
-initiateJob ::
-     Text -- ^ 'ijAccountId'
-  -> Text -- ^ 'ijVaultName'
-  -> InitiateJob
+initiateJob
+    :: Text -- ^ 'ijAccountId'
+    -> Text -- ^ 'ijVaultName'
+    -> InitiateJob
 initiateJob pAccountId_ pVaultName_ =
   InitiateJob'
     { _ijJobParameters = Nothing
@@ -77,46 +82,52 @@ initiateJob pAccountId_ pVaultName_ =
     , _ijVaultName = pVaultName_
     }
 
+
 -- | Provides options for specifying job information.
 ijJobParameters :: Lens' InitiateJob (Maybe JobParameters)
-ijJobParameters = lens _ijJobParameters (\s a -> s {_ijJobParameters = a})
+ijJobParameters = lens _ijJobParameters (\ s a -> s{_ijJobParameters = a})
 
 -- | The @AccountId@ value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.
 ijAccountId :: Lens' InitiateJob Text
-ijAccountId = lens _ijAccountId (\s a -> s {_ijAccountId = a})
+ijAccountId = lens _ijAccountId (\ s a -> s{_ijAccountId = a})
 
 -- | The name of the vault.
 ijVaultName :: Lens' InitiateJob Text
-ijVaultName = lens _ijVaultName (\s a -> s {_ijVaultName = a})
+ijVaultName = lens _ijVaultName (\ s a -> s{_ijVaultName = a})
 
 instance AWSRequest InitiateJob where
-  type Rs InitiateJob = InitiateJobResponse
-  request = postJSON glacier
-  response =
-    receiveEmpty
-      (\s h x ->
-         InitiateJobResponse' <$> (h .#? "x-amz-job-id") <*>
-         (h .#? "x-amz-job-output-path") <*>
-         (h .#? "Location") <*>
-         (pure (fromEnum s)))
+        type Rs InitiateJob = InitiateJobResponse
+        request = postJSON glacier
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 InitiateJobResponse' <$>
+                   (h .#? "x-amz-job-id") <*>
+                     (h .#? "x-amz-job-output-path")
+                     <*> (h .#? "Location")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable InitiateJob
+instance Hashable InitiateJob where
 
-instance NFData InitiateJob
+instance NFData InitiateJob where
 
 instance ToHeaders InitiateJob where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToJSON InitiateJob where
-  toJSON InitiateJob' {..} =
-    object (catMaybes [("jobParameters" .=) <$> _ijJobParameters])
+        toJSON InitiateJob'{..}
+          = object
+              (catMaybes
+                 [("jobParameters" .=) <$> _ijJobParameters])
 
 instance ToPath InitiateJob where
-  toPath InitiateJob' {..} =
-    mconcat ["/", toBS _ijAccountId, "/vaults/", toBS _ijVaultName, "/jobs"]
+        toPath InitiateJob'{..}
+          = mconcat
+              ["/", toBS _ijAccountId, "/vaults/",
+               toBS _ijVaultName, "/jobs"]
 
 instance ToQuery InitiateJob where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | Contains the Amazon Glacier response to your request.
 --
@@ -132,6 +143,7 @@ data InitiateJobResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'InitiateJobResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -143,9 +155,9 @@ data InitiateJobResponse =
 -- * 'ijrsLocation' - The relative URI path of the job.
 --
 -- * 'ijrsResponseStatus' - -- | The response status code.
-initiateJobResponse ::
-     Int -- ^ 'ijrsResponseStatus'
-  -> InitiateJobResponse
+initiateJobResponse
+    :: Int -- ^ 'ijrsResponseStatus'
+    -> InitiateJobResponse
 initiateJobResponse pResponseStatus_ =
   InitiateJobResponse'
     { _ijrsJobId = Nothing
@@ -154,21 +166,21 @@ initiateJobResponse pResponseStatus_ =
     , _ijrsResponseStatus = pResponseStatus_
     }
 
+
 -- | The ID of the job.
 ijrsJobId :: Lens' InitiateJobResponse (Maybe Text)
-ijrsJobId = lens _ijrsJobId (\s a -> s {_ijrsJobId = a})
+ijrsJobId = lens _ijrsJobId (\ s a -> s{_ijrsJobId = a})
 
 -- | The path to the location of where the select results are stored.
 ijrsJobOutputPath :: Lens' InitiateJobResponse (Maybe Text)
-ijrsJobOutputPath = lens _ijrsJobOutputPath (\s a -> s {_ijrsJobOutputPath = a})
+ijrsJobOutputPath = lens _ijrsJobOutputPath (\ s a -> s{_ijrsJobOutputPath = a})
 
 -- | The relative URI path of the job.
 ijrsLocation :: Lens' InitiateJobResponse (Maybe Text)
-ijrsLocation = lens _ijrsLocation (\s a -> s {_ijrsLocation = a})
+ijrsLocation = lens _ijrsLocation (\ s a -> s{_ijrsLocation = a})
 
 -- | -- | The response status code.
 ijrsResponseStatus :: Lens' InitiateJobResponse Int
-ijrsResponseStatus =
-  lens _ijrsResponseStatus (\s a -> s {_ijrsResponseStatus = a})
+ijrsResponseStatus = lens _ijrsResponseStatus (\ s a -> s{_ijrsResponseStatus = a})
 
-instance NFData InitiateJobResponse
+instance NFData InitiateJobResponse where

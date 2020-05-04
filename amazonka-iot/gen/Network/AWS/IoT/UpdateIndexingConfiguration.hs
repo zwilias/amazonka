@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.IoT.UpdateIndexingConfiguration
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,17 +22,19 @@
 --
 --
 module Network.AWS.IoT.UpdateIndexingConfiguration
+    (
     -- * Creating a Request
-  ( updateIndexingConfiguration
-  , UpdateIndexingConfiguration
+      updateIndexingConfiguration
+    , UpdateIndexingConfiguration
     -- * Request Lenses
-  , uicThingIndexingConfiguration
+    , uicThingIndexingConfiguration
+
     -- * Destructuring the Response
-  , updateIndexingConfigurationResponse
-  , UpdateIndexingConfigurationResponse
+    , updateIndexingConfigurationResponse
+    , UpdateIndexingConfigurationResponse
     -- * Response Lenses
-  , uicrsResponseStatus
-  ) where
+    , uicrsResponseStatus
+    ) where
 
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
@@ -46,48 +50,51 @@ newtype UpdateIndexingConfiguration =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateIndexingConfiguration' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'uicThingIndexingConfiguration' - Thing indexing configuration.
-updateIndexingConfiguration :: UpdateIndexingConfiguration
+updateIndexingConfiguration
+    :: UpdateIndexingConfiguration
 updateIndexingConfiguration =
   UpdateIndexingConfiguration' {_uicThingIndexingConfiguration = Nothing}
 
+
 -- | Thing indexing configuration.
-uicThingIndexingConfiguration ::
-     Lens' UpdateIndexingConfiguration (Maybe ThingIndexingConfiguration)
-uicThingIndexingConfiguration =
-  lens
-    _uicThingIndexingConfiguration
-    (\s a -> s {_uicThingIndexingConfiguration = a})
+uicThingIndexingConfiguration :: Lens' UpdateIndexingConfiguration (Maybe ThingIndexingConfiguration)
+uicThingIndexingConfiguration = lens _uicThingIndexingConfiguration (\ s a -> s{_uicThingIndexingConfiguration = a})
 
 instance AWSRequest UpdateIndexingConfiguration where
-  type Rs UpdateIndexingConfiguration = UpdateIndexingConfigurationResponse
-  request = postJSON ioT
-  response =
-    receiveEmpty
-      (\s h x -> UpdateIndexingConfigurationResponse' <$> (pure (fromEnum s)))
+        type Rs UpdateIndexingConfiguration =
+             UpdateIndexingConfigurationResponse
+        request = postJSON ioT
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 UpdateIndexingConfigurationResponse' <$>
+                   (pure (fromEnum s)))
 
-instance Hashable UpdateIndexingConfiguration
+instance Hashable UpdateIndexingConfiguration where
 
-instance NFData UpdateIndexingConfiguration
+instance NFData UpdateIndexingConfiguration where
 
 instance ToHeaders UpdateIndexingConfiguration where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToJSON UpdateIndexingConfiguration where
-  toJSON UpdateIndexingConfiguration' {..} =
-    object
-      (catMaybes
-         [("thingIndexingConfiguration" .=) <$> _uicThingIndexingConfiguration])
+        toJSON UpdateIndexingConfiguration'{..}
+          = object
+              (catMaybes
+                 [("thingIndexingConfiguration" .=) <$>
+                    _uicThingIndexingConfiguration])
 
 instance ToPath UpdateIndexingConfiguration where
-  toPath = const "/indexing/config"
+        toPath = const "/indexing/config"
 
 instance ToQuery UpdateIndexingConfiguration where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'updateIndexingConfigurationResponse' smart constructor.
 newtype UpdateIndexingConfigurationResponse =
@@ -96,20 +103,22 @@ newtype UpdateIndexingConfigurationResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateIndexingConfigurationResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'uicrsResponseStatus' - -- | The response status code.
-updateIndexingConfigurationResponse ::
-     Int -- ^ 'uicrsResponseStatus'
-  -> UpdateIndexingConfigurationResponse
+updateIndexingConfigurationResponse
+    :: Int -- ^ 'uicrsResponseStatus'
+    -> UpdateIndexingConfigurationResponse
 updateIndexingConfigurationResponse pResponseStatus_ =
   UpdateIndexingConfigurationResponse' {_uicrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 uicrsResponseStatus :: Lens' UpdateIndexingConfigurationResponse Int
-uicrsResponseStatus =
-  lens _uicrsResponseStatus (\s a -> s {_uicrsResponseStatus = a})
+uicrsResponseStatus = lens _uicrsResponseStatus (\ s a -> s{_uicrsResponseStatus = a})
 
 instance NFData UpdateIndexingConfigurationResponse
+         where

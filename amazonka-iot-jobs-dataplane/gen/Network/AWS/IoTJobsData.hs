@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.IoTJobsData
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,68 +19,88 @@
 -- AWS IoT Jobs sends a message to inform the targets that a job is available. The target starts the execution of the job by downloading the job document, performing the operations it specifies, and reporting its progress to AWS IoT. The Jobs service provides commands to track the progress of a job on a specific target and for all the targets of the job
 --
 module Network.AWS.IoTJobsData
+    (
     -- * Service Configuration
-  ( ioTJobsData
+      ioTJobsData
+
     -- * Errors
     -- $errors
+
     -- ** TerminalStateException
-  , _TerminalStateException
+    , _TerminalStateException
+
     -- ** InvalidRequestException
-  , _InvalidRequestException
+    , _InvalidRequestException
+
     -- ** CertificateValidationException
-  , _CertificateValidationException
+    , _CertificateValidationException
+
     -- ** ThrottlingException
-  , _ThrottlingException
+    , _ThrottlingException
+
     -- ** ServiceUnavailableException
-  , _ServiceUnavailableException
+    , _ServiceUnavailableException
+
     -- ** InvalidStateTransitionException
-  , _InvalidStateTransitionException
+    , _InvalidStateTransitionException
+
     -- ** ResourceNotFoundException
-  , _ResourceNotFoundException
+    , _ResourceNotFoundException
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
+
     -- ** UpdateJobExecution
-  , module Network.AWS.IoTJobsData.UpdateJobExecution
+    , module Network.AWS.IoTJobsData.UpdateJobExecution
+
     -- ** StartNextPendingJobExecution
-  , module Network.AWS.IoTJobsData.StartNextPendingJobExecution
+    , module Network.AWS.IoTJobsData.StartNextPendingJobExecution
+
     -- ** DescribeJobExecution
-  , module Network.AWS.IoTJobsData.DescribeJobExecution
+    , module Network.AWS.IoTJobsData.DescribeJobExecution
+
     -- ** GetPendingJobExecutions
-  , module Network.AWS.IoTJobsData.GetPendingJobExecutions
+    , module Network.AWS.IoTJobsData.GetPendingJobExecutions
+
     -- * Types
+
     -- ** JobExecutionStatus
-  , JobExecutionStatus(..)
+    , JobExecutionStatus (..)
+
     -- ** JobExecution
-  , JobExecution
-  , jobExecution
-  , jeStatus
-  , jeJobId
-  , jeLastUpdatedAt
-  , jeQueuedAt
-  , jeJobDocument
-  , jeStatusDetails
-  , jeExecutionNumber
-  , jeVersionNumber
-  , jeStartedAt
-  , jeThingName
+    , JobExecution
+    , jobExecution
+    , jeStatus
+    , jeJobId
+    , jeLastUpdatedAt
+    , jeQueuedAt
+    , jeJobDocument
+    , jeStatusDetails
+    , jeExecutionNumber
+    , jeVersionNumber
+    , jeStartedAt
+    , jeThingName
+
     -- ** JobExecutionState
-  , JobExecutionState
-  , jobExecutionState
-  , jesStatus
-  , jesStatusDetails
-  , jesVersionNumber
+    , JobExecutionState
+    , jobExecutionState
+    , jesStatus
+    , jesStatusDetails
+    , jesVersionNumber
+
     -- ** JobExecutionSummary
-  , JobExecutionSummary
-  , jobExecutionSummary
-  , jJobId
-  , jLastUpdatedAt
-  , jQueuedAt
-  , jExecutionNumber
-  , jVersionNumber
-  , jStartedAt
-  ) where
+    , JobExecutionSummary
+    , jobExecutionSummary
+    , jJobId
+    , jLastUpdatedAt
+    , jQueuedAt
+    , jExecutionNumber
+    , jVersionNumber
+    , jStartedAt
+    ) where
 
 import Network.AWS.IoTJobsData.DescribeJobExecution
 import Network.AWS.IoTJobsData.GetPendingJobExecutions
@@ -87,12 +108,14 @@ import Network.AWS.IoTJobsData.StartNextPendingJobExecution
 import Network.AWS.IoTJobsData.Types
 import Network.AWS.IoTJobsData.UpdateJobExecution
 import Network.AWS.IoTJobsData.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'IoTJobsData'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -109,6 +132,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

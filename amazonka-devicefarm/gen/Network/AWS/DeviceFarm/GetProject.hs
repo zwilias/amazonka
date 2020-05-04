@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.DeviceFarm.GetProject
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.DeviceFarm.GetProject
+    (
     -- * Creating a Request
-  ( getProject
-  , GetProject
+      getProject
+    , GetProject
     -- * Request Lenses
-  , gpArn
+    , gpArn
+
     -- * Destructuring the Response
-  , getProjectResponse
-  , GetProjectResponse
+    , getProjectResponse
+    , GetProjectResponse
     -- * Response Lenses
-  , gprsProject
-  , gprsResponseStatus
-  ) where
+    , gprsProject
+    , gprsResponseStatus
+    ) where
 
 import Network.AWS.DeviceFarm.Types
 import Network.AWS.DeviceFarm.Types.Product
@@ -51,48 +55,53 @@ newtype GetProject =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetProject' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'gpArn' - The project's ARN.
-getProject ::
-     Text -- ^ 'gpArn'
-  -> GetProject
+getProject
+    :: Text -- ^ 'gpArn'
+    -> GetProject
 getProject pArn_ = GetProject' {_gpArn = pArn_}
+
 
 -- | The project's ARN.
 gpArn :: Lens' GetProject Text
-gpArn = lens _gpArn (\s a -> s {_gpArn = a})
+gpArn = lens _gpArn (\ s a -> s{_gpArn = a})
 
 instance AWSRequest GetProject where
-  type Rs GetProject = GetProjectResponse
-  request = postJSON deviceFarm
-  response =
-    receiveJSON
-      (\s h x ->
-         GetProjectResponse' <$> (x .?> "project") <*> (pure (fromEnum s)))
+        type Rs GetProject = GetProjectResponse
+        request = postJSON deviceFarm
+        response
+          = receiveJSON
+              (\ s h x ->
+                 GetProjectResponse' <$>
+                   (x .?> "project") <*> (pure (fromEnum s)))
 
-instance Hashable GetProject
+instance Hashable GetProject where
 
-instance NFData GetProject
+instance NFData GetProject where
 
 instance ToHeaders GetProject where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("DeviceFarm_20150623.GetProject" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("DeviceFarm_20150623.GetProject" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON GetProject where
-  toJSON GetProject' {..} = object (catMaybes [Just ("arn" .= _gpArn)])
+        toJSON GetProject'{..}
+          = object (catMaybes [Just ("arn" .= _gpArn)])
 
 instance ToPath GetProject where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery GetProject where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | Represents the result of a get project request.
 --
@@ -106,27 +115,28 @@ data GetProjectResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetProjectResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gprsProject' - The project you wish to get information about.
+-- * 'gprsProject' - The project to get information about.
 --
 -- * 'gprsResponseStatus' - -- | The response status code.
-getProjectResponse ::
-     Int -- ^ 'gprsResponseStatus'
-  -> GetProjectResponse
+getProjectResponse
+    :: Int -- ^ 'gprsResponseStatus'
+    -> GetProjectResponse
 getProjectResponse pResponseStatus_ =
   GetProjectResponse'
     {_gprsProject = Nothing, _gprsResponseStatus = pResponseStatus_}
 
--- | The project you wish to get information about.
+
+-- | The project to get information about.
 gprsProject :: Lens' GetProjectResponse (Maybe Project)
-gprsProject = lens _gprsProject (\s a -> s {_gprsProject = a})
+gprsProject = lens _gprsProject (\ s a -> s{_gprsProject = a})
 
 -- | -- | The response status code.
 gprsResponseStatus :: Lens' GetProjectResponse Int
-gprsResponseStatus =
-  lens _gprsResponseStatus (\s a -> s {_gprsResponseStatus = a})
+gprsResponseStatus = lens _gprsResponseStatus (\ s a -> s{_gprsResponseStatus = a})
 
-instance NFData GetProjectResponse
+instance NFData GetProjectResponse where

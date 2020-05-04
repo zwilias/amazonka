@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.MQ.DescribeUser
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,23 +20,25 @@
 --
 -- Returns information about an ActiveMQ user.
 module Network.AWS.MQ.DescribeUser
+    (
     -- * Creating a Request
-  ( describeUser
-  , DescribeUser
+      describeUser
+    , DescribeUser
     -- * Request Lenses
-  , duUsername
-  , duBrokerId
+    , duUsername
+    , duBrokerId
+
     -- * Destructuring the Response
-  , describeUserResponse
-  , DescribeUserResponse
+    , describeUserResponse
+    , DescribeUserResponse
     -- * Response Lenses
-  , dursGroups
-  , dursPending
-  , dursConsoleAccess
-  , dursUsername
-  , dursBrokerId
-  , dursResponseStatus
-  ) where
+    , dursGroups
+    , dursPending
+    , dursConsoleAccess
+    , dursUsername
+    , dursBrokerId
+    , dursResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.MQ.Types
@@ -51,6 +55,7 @@ data DescribeUser =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeUser' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -58,49 +63,54 @@ data DescribeUser =
 -- * 'duUsername' - The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
 --
 -- * 'duBrokerId' - The unique ID that Amazon MQ generates for the broker.
-describeUser ::
-     Text -- ^ 'duUsername'
-  -> Text -- ^ 'duBrokerId'
-  -> DescribeUser
+describeUser
+    :: Text -- ^ 'duUsername'
+    -> Text -- ^ 'duBrokerId'
+    -> DescribeUser
 describeUser pUsername_ pBrokerId_ =
   DescribeUser' {_duUsername = pUsername_, _duBrokerId = pBrokerId_}
 
+
 -- | The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
 duUsername :: Lens' DescribeUser Text
-duUsername = lens _duUsername (\s a -> s {_duUsername = a})
+duUsername = lens _duUsername (\ s a -> s{_duUsername = a})
 
 -- | The unique ID that Amazon MQ generates for the broker.
 duBrokerId :: Lens' DescribeUser Text
-duBrokerId = lens _duBrokerId (\s a -> s {_duBrokerId = a})
+duBrokerId = lens _duBrokerId (\ s a -> s{_duBrokerId = a})
 
 instance AWSRequest DescribeUser where
-  type Rs DescribeUser = DescribeUserResponse
-  request = get mq
-  response =
-    receiveJSON
-      (\s h x ->
-         DescribeUserResponse' <$> (x .?> "groups" .!@ mempty) <*>
-         (x .?> "pending") <*>
-         (x .?> "consoleAccess") <*>
-         (x .?> "username") <*>
-         (x .?> "brokerId") <*>
-         (pure (fromEnum s)))
+        type Rs DescribeUser = DescribeUserResponse
+        request = get mq
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DescribeUserResponse' <$>
+                   (x .?> "groups" .!@ mempty) <*> (x .?> "pending") <*>
+                     (x .?> "consoleAccess")
+                     <*> (x .?> "username")
+                     <*> (x .?> "brokerId")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable DescribeUser
+instance Hashable DescribeUser where
 
-instance NFData DescribeUser
+instance NFData DescribeUser where
 
 instance ToHeaders DescribeUser where
-  toHeaders =
-    const
-      (mconcat ["Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)])
+        toHeaders
+          = const
+              (mconcat
+                 ["Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToPath DescribeUser where
-  toPath DescribeUser' {..} =
-    mconcat ["/v1/brokers/", toBS _duBrokerId, "/users/", toBS _duUsername]
+        toPath DescribeUser'{..}
+          = mconcat
+              ["/v1/brokers/", toBS _duBrokerId, "/users/",
+               toBS _duUsername]
 
 instance ToQuery DescribeUser where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'describeUserResponse' smart constructor.
 data DescribeUserResponse =
@@ -113,6 +123,7 @@ data DescribeUserResponse =
     , _dursResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'DescribeUserResponse' with the minimum fields required to make a request.
 --
@@ -129,9 +140,9 @@ data DescribeUserResponse =
 -- * 'dursBrokerId' - Required. The unique ID that Amazon MQ generates for the broker.
 --
 -- * 'dursResponseStatus' - -- | The response status code.
-describeUserResponse ::
-     Int -- ^ 'dursResponseStatus'
-  -> DescribeUserResponse
+describeUserResponse
+    :: Int -- ^ 'dursResponseStatus'
+    -> DescribeUserResponse
 describeUserResponse pResponseStatus_ =
   DescribeUserResponse'
     { _dursGroups = Nothing
@@ -142,29 +153,29 @@ describeUserResponse pResponseStatus_ =
     , _dursResponseStatus = pResponseStatus_
     }
 
+
 -- | The list of groups (20 maximum) to which the ActiveMQ user belongs. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
 dursGroups :: Lens' DescribeUserResponse [Text]
-dursGroups = lens _dursGroups (\s a -> s {_dursGroups = a}) . _Default . _Coerce
+dursGroups = lens _dursGroups (\ s a -> s{_dursGroups = a}) . _Default . _Coerce
 
 -- | The status of the changes pending for the ActiveMQ user.
 dursPending :: Lens' DescribeUserResponse (Maybe UserPendingChanges)
-dursPending = lens _dursPending (\s a -> s {_dursPending = a})
+dursPending = lens _dursPending (\ s a -> s{_dursPending = a})
 
 -- | Enables access to the the ActiveMQ Web Console for the ActiveMQ user.
 dursConsoleAccess :: Lens' DescribeUserResponse (Maybe Bool)
-dursConsoleAccess = lens _dursConsoleAccess (\s a -> s {_dursConsoleAccess = a})
+dursConsoleAccess = lens _dursConsoleAccess (\ s a -> s{_dursConsoleAccess = a})
 
 -- | Required. The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
 dursUsername :: Lens' DescribeUserResponse (Maybe Text)
-dursUsername = lens _dursUsername (\s a -> s {_dursUsername = a})
+dursUsername = lens _dursUsername (\ s a -> s{_dursUsername = a})
 
 -- | Required. The unique ID that Amazon MQ generates for the broker.
 dursBrokerId :: Lens' DescribeUserResponse (Maybe Text)
-dursBrokerId = lens _dursBrokerId (\s a -> s {_dursBrokerId = a})
+dursBrokerId = lens _dursBrokerId (\ s a -> s{_dursBrokerId = a})
 
 -- | -- | The response status code.
 dursResponseStatus :: Lens' DescribeUserResponse Int
-dursResponseStatus =
-  lens _dursResponseStatus (\s a -> s {_dursResponseStatus = a})
+dursResponseStatus = lens _dursResponseStatus (\ s a -> s{_dursResponseStatus = a})
 
-instance NFData DescribeUserResponse
+instance NFData DescribeUserResponse where

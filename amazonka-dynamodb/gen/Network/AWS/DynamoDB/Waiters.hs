@@ -1,8 +1,10 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TypeFamilies      #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.DynamoDB.Waiters
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -30,6 +32,7 @@ tableNotExists =
     , _waitAcceptors = [matchError "ResourceNotFoundException" AcceptSuccess]
     }
 
+
 -- | Polls 'Network.AWS.DynamoDB.DescribeTable' every 20 seconds until a successful state is reached. An error is returned after 25 failed checks.
 tableExists :: Wait DescribeTable
 tableExists =
@@ -45,3 +48,4 @@ tableExists =
         , matchError "ResourceNotFoundException" AcceptRetry
         ]
     }
+

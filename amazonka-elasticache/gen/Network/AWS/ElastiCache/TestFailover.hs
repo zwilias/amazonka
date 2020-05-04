@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.ElastiCache.TestFailover
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -56,19 +58,21 @@
 -- Also see, <http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/AutoFailover.html#auto-failover-test Testing Multi-AZ with Automatic Failover> in the /ElastiCache User Guide/ .
 --
 module Network.AWS.ElastiCache.TestFailover
+    (
     -- * Creating a Request
-  ( testFailover
-  , TestFailover
+      testFailover
+    , TestFailover
     -- * Request Lenses
-  , tfReplicationGroupId
-  , tfNodeGroupId
+    , tfReplicationGroupId
+    , tfNodeGroupId
+
     -- * Destructuring the Response
-  , testFailoverResponse
-  , TestFailoverResponse
+    , testFailoverResponse
+    , TestFailoverResponse
     -- * Response Lenses
-  , tfrsReplicationGroup
-  , tfrsResponseStatus
-  ) where
+    , tfrsReplicationGroup
+    , tfrsResponseStatus
+    ) where
 
 import Network.AWS.ElastiCache.Types
 import Network.AWS.ElastiCache.Types.Product
@@ -85,6 +89,7 @@ data TestFailover =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'TestFailover' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -92,53 +97,51 @@ data TestFailover =
 -- * 'tfReplicationGroupId' - The name of the replication group (console: cluster) whose automatic failover is being tested by this operation.
 --
 -- * 'tfNodeGroupId' - The name of the node group (called shard in the console) in this replication group on which automatic failover is to be tested. You may test automatic failover on up to 5 node groups in any rolling 24-hour period.
-testFailover ::
-     Text -- ^ 'tfReplicationGroupId'
-  -> Text -- ^ 'tfNodeGroupId'
-  -> TestFailover
+testFailover
+    :: Text -- ^ 'tfReplicationGroupId'
+    -> Text -- ^ 'tfNodeGroupId'
+    -> TestFailover
 testFailover pReplicationGroupId_ pNodeGroupId_ =
   TestFailover'
     { _tfReplicationGroupId = pReplicationGroupId_
     , _tfNodeGroupId = pNodeGroupId_
     }
 
+
 -- | The name of the replication group (console: cluster) whose automatic failover is being tested by this operation.
 tfReplicationGroupId :: Lens' TestFailover Text
-tfReplicationGroupId =
-  lens _tfReplicationGroupId (\s a -> s {_tfReplicationGroupId = a})
+tfReplicationGroupId = lens _tfReplicationGroupId (\ s a -> s{_tfReplicationGroupId = a})
 
 -- | The name of the node group (called shard in the console) in this replication group on which automatic failover is to be tested. You may test automatic failover on up to 5 node groups in any rolling 24-hour period.
 tfNodeGroupId :: Lens' TestFailover Text
-tfNodeGroupId = lens _tfNodeGroupId (\s a -> s {_tfNodeGroupId = a})
+tfNodeGroupId = lens _tfNodeGroupId (\ s a -> s{_tfNodeGroupId = a})
 
 instance AWSRequest TestFailover where
-  type Rs TestFailover = TestFailoverResponse
-  request = postQuery elastiCache
-  response =
-    receiveXMLWrapper
-      "TestFailoverResult"
-      (\s h x ->
-         TestFailoverResponse' <$> (x .@? "ReplicationGroup") <*>
-         (pure (fromEnum s)))
+        type Rs TestFailover = TestFailoverResponse
+        request = postQuery elastiCache
+        response
+          = receiveXMLWrapper "TestFailoverResult"
+              (\ s h x ->
+                 TestFailoverResponse' <$>
+                   (x .@? "ReplicationGroup") <*> (pure (fromEnum s)))
 
-instance Hashable TestFailover
+instance Hashable TestFailover where
 
-instance NFData TestFailover
+instance NFData TestFailover where
 
 instance ToHeaders TestFailover where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath TestFailover where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery TestFailover where
-  toQuery TestFailover' {..} =
-    mconcat
-      [ "Action" =: ("TestFailover" :: ByteString)
-      , "Version" =: ("2015-02-02" :: ByteString)
-      , "ReplicationGroupId" =: _tfReplicationGroupId
-      , "NodeGroupId" =: _tfNodeGroupId
-      ]
+        toQuery TestFailover'{..}
+          = mconcat
+              ["Action" =: ("TestFailover" :: ByteString),
+               "Version" =: ("2015-02-02" :: ByteString),
+               "ReplicationGroupId" =: _tfReplicationGroupId,
+               "NodeGroupId" =: _tfNodeGroupId]
 
 -- | /See:/ 'testFailoverResponse' smart constructor.
 data TestFailoverResponse =
@@ -148,6 +151,7 @@ data TestFailoverResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'TestFailoverResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -155,21 +159,20 @@ data TestFailoverResponse =
 -- * 'tfrsReplicationGroup' - Undocumented member.
 --
 -- * 'tfrsResponseStatus' - -- | The response status code.
-testFailoverResponse ::
-     Int -- ^ 'tfrsResponseStatus'
-  -> TestFailoverResponse
+testFailoverResponse
+    :: Int -- ^ 'tfrsResponseStatus'
+    -> TestFailoverResponse
 testFailoverResponse pResponseStatus_ =
   TestFailoverResponse'
     {_tfrsReplicationGroup = Nothing, _tfrsResponseStatus = pResponseStatus_}
 
+
 -- | Undocumented member.
 tfrsReplicationGroup :: Lens' TestFailoverResponse (Maybe ReplicationGroup)
-tfrsReplicationGroup =
-  lens _tfrsReplicationGroup (\s a -> s {_tfrsReplicationGroup = a})
+tfrsReplicationGroup = lens _tfrsReplicationGroup (\ s a -> s{_tfrsReplicationGroup = a})
 
 -- | -- | The response status code.
 tfrsResponseStatus :: Lens' TestFailoverResponse Int
-tfrsResponseStatus =
-  lens _tfrsResponseStatus (\s a -> s {_tfrsResponseStatus = a})
+tfrsResponseStatus = lens _tfrsResponseStatus (\ s a -> s{_tfrsResponseStatus = a})
 
-instance NFData TestFailoverResponse
+instance NFData TestFailoverResponse where

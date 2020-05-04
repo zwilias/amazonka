@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.ServiceCatalog.DeletePortfolioShare
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,19 +22,21 @@
 --
 --
 module Network.AWS.ServiceCatalog.DeletePortfolioShare
+    (
     -- * Creating a Request
-  ( deletePortfolioShare
-  , DeletePortfolioShare
+      deletePortfolioShare
+    , DeletePortfolioShare
     -- * Request Lenses
-  , dpsAcceptLanguage
-  , dpsPortfolioId
-  , dpsAccountId
+    , dpsAcceptLanguage
+    , dpsPortfolioId
+    , dpsAccountId
+
     -- * Destructuring the Response
-  , deletePortfolioShareResponse
-  , DeletePortfolioShareResponse
+    , deletePortfolioShareResponse
+    , DeletePortfolioShareResponse
     -- * Response Lenses
-  , dpsrsResponseStatus
-  ) where
+    , dpsrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -50,6 +54,7 @@ data DeletePortfolioShare =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeletePortfolioShare' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -59,10 +64,10 @@ data DeletePortfolioShare =
 -- * 'dpsPortfolioId' - The portfolio identifier.
 --
 -- * 'dpsAccountId' - The AWS account ID.
-deletePortfolioShare ::
-     Text -- ^ 'dpsPortfolioId'
-  -> Text -- ^ 'dpsAccountId'
-  -> DeletePortfolioShare
+deletePortfolioShare
+    :: Text -- ^ 'dpsPortfolioId'
+    -> Text -- ^ 'dpsAccountId'
+    -> DeletePortfolioShare
 deletePortfolioShare pPortfolioId_ pAccountId_ =
   DeletePortfolioShare'
     { _dpsAcceptLanguage = Nothing
@@ -70,52 +75,56 @@ deletePortfolioShare pPortfolioId_ pAccountId_ =
     , _dpsAccountId = pAccountId_
     }
 
+
 -- | The language code.     * @en@ - English (default)     * @jp@ - Japanese     * @zh@ - Chinese
 dpsAcceptLanguage :: Lens' DeletePortfolioShare (Maybe Text)
-dpsAcceptLanguage = lens _dpsAcceptLanguage (\s a -> s {_dpsAcceptLanguage = a})
+dpsAcceptLanguage = lens _dpsAcceptLanguage (\ s a -> s{_dpsAcceptLanguage = a})
 
 -- | The portfolio identifier.
 dpsPortfolioId :: Lens' DeletePortfolioShare Text
-dpsPortfolioId = lens _dpsPortfolioId (\s a -> s {_dpsPortfolioId = a})
+dpsPortfolioId = lens _dpsPortfolioId (\ s a -> s{_dpsPortfolioId = a})
 
 -- | The AWS account ID.
 dpsAccountId :: Lens' DeletePortfolioShare Text
-dpsAccountId = lens _dpsAccountId (\s a -> s {_dpsAccountId = a})
+dpsAccountId = lens _dpsAccountId (\ s a -> s{_dpsAccountId = a})
 
 instance AWSRequest DeletePortfolioShare where
-  type Rs DeletePortfolioShare = DeletePortfolioShareResponse
-  request = postJSON serviceCatalog
-  response =
-    receiveEmpty
-      (\s h x -> DeletePortfolioShareResponse' <$> (pure (fromEnum s)))
+        type Rs DeletePortfolioShare =
+             DeletePortfolioShareResponse
+        request = postJSON serviceCatalog
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 DeletePortfolioShareResponse' <$>
+                   (pure (fromEnum s)))
 
-instance Hashable DeletePortfolioShare
+instance Hashable DeletePortfolioShare where
 
-instance NFData DeletePortfolioShare
+instance NFData DeletePortfolioShare where
 
 instance ToHeaders DeletePortfolioShare where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AWS242ServiceCatalogService.DeletePortfolioShare" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWS242ServiceCatalogService.DeletePortfolioShare"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DeletePortfolioShare where
-  toJSON DeletePortfolioShare' {..} =
-    object
-      (catMaybes
-         [ ("AcceptLanguage" .=) <$> _dpsAcceptLanguage
-         , Just ("PortfolioId" .= _dpsPortfolioId)
-         , Just ("AccountId" .= _dpsAccountId)
-         ])
+        toJSON DeletePortfolioShare'{..}
+          = object
+              (catMaybes
+                 [("AcceptLanguage" .=) <$> _dpsAcceptLanguage,
+                  Just ("PortfolioId" .= _dpsPortfolioId),
+                  Just ("AccountId" .= _dpsAccountId)])
 
 instance ToPath DeletePortfolioShare where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DeletePortfolioShare where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'deletePortfolioShareResponse' smart constructor.
 newtype DeletePortfolioShareResponse =
@@ -124,20 +133,21 @@ newtype DeletePortfolioShareResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeletePortfolioShareResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dpsrsResponseStatus' - -- | The response status code.
-deletePortfolioShareResponse ::
-     Int -- ^ 'dpsrsResponseStatus'
-  -> DeletePortfolioShareResponse
+deletePortfolioShareResponse
+    :: Int -- ^ 'dpsrsResponseStatus'
+    -> DeletePortfolioShareResponse
 deletePortfolioShareResponse pResponseStatus_ =
   DeletePortfolioShareResponse' {_dpsrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 dpsrsResponseStatus :: Lens' DeletePortfolioShareResponse Int
-dpsrsResponseStatus =
-  lens _dpsrsResponseStatus (\s a -> s {_dpsrsResponseStatus = a})
+dpsrsResponseStatus = lens _dpsrsResponseStatus (\ s a -> s{_dpsrsResponseStatus = a})
 
-instance NFData DeletePortfolioShareResponse
+instance NFData DeletePortfolioShareResponse where

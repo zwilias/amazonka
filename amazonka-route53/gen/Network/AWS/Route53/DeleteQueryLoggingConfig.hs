@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Route53.DeleteQueryLoggingConfig
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,17 +24,19 @@
 -- For more information about DNS query logs, see 'CreateQueryLoggingConfig' .
 --
 module Network.AWS.Route53.DeleteQueryLoggingConfig
+    (
     -- * Creating a Request
-  ( deleteQueryLoggingConfig
-  , DeleteQueryLoggingConfig
+      deleteQueryLoggingConfig
+    , DeleteQueryLoggingConfig
     -- * Request Lenses
-  , dqlcId
+    , dqlcId
+
     -- * Destructuring the Response
-  , deleteQueryLoggingConfigResponse
-  , DeleteQueryLoggingConfigResponse
+    , deleteQueryLoggingConfigResponse
+    , DeleteQueryLoggingConfigResponse
     -- * Response Lenses
-  , dqlcrsResponseStatus
-  ) where
+    , dqlcrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -48,40 +52,46 @@ newtype DeleteQueryLoggingConfig =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteQueryLoggingConfig' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dqlcId' - The ID of the configuration that you want to delete.
-deleteQueryLoggingConfig ::
-     Text -- ^ 'dqlcId'
-  -> DeleteQueryLoggingConfig
+deleteQueryLoggingConfig
+    :: Text -- ^ 'dqlcId'
+    -> DeleteQueryLoggingConfig
 deleteQueryLoggingConfig pId_ = DeleteQueryLoggingConfig' {_dqlcId = pId_}
+
 
 -- | The ID of the configuration that you want to delete.
 dqlcId :: Lens' DeleteQueryLoggingConfig Text
-dqlcId = lens _dqlcId (\s a -> s {_dqlcId = a})
+dqlcId = lens _dqlcId (\ s a -> s{_dqlcId = a})
 
 instance AWSRequest DeleteQueryLoggingConfig where
-  type Rs DeleteQueryLoggingConfig = DeleteQueryLoggingConfigResponse
-  request = delete route53
-  response =
-    receiveEmpty
-      (\s h x -> DeleteQueryLoggingConfigResponse' <$> (pure (fromEnum s)))
+        type Rs DeleteQueryLoggingConfig =
+             DeleteQueryLoggingConfigResponse
+        request = delete route53
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 DeleteQueryLoggingConfigResponse' <$>
+                   (pure (fromEnum s)))
 
-instance Hashable DeleteQueryLoggingConfig
+instance Hashable DeleteQueryLoggingConfig where
 
-instance NFData DeleteQueryLoggingConfig
+instance NFData DeleteQueryLoggingConfig where
 
 instance ToHeaders DeleteQueryLoggingConfig where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath DeleteQueryLoggingConfig where
-  toPath DeleteQueryLoggingConfig' {..} =
-    mconcat ["/2013-04-01/queryloggingconfig/", toBS _dqlcId]
+        toPath DeleteQueryLoggingConfig'{..}
+          = mconcat
+              ["/2013-04-01/queryloggingconfig/", toBS _dqlcId]
 
 instance ToQuery DeleteQueryLoggingConfig where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'deleteQueryLoggingConfigResponse' smart constructor.
 newtype DeleteQueryLoggingConfigResponse =
@@ -90,20 +100,22 @@ newtype DeleteQueryLoggingConfigResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteQueryLoggingConfigResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dqlcrsResponseStatus' - -- | The response status code.
-deleteQueryLoggingConfigResponse ::
-     Int -- ^ 'dqlcrsResponseStatus'
-  -> DeleteQueryLoggingConfigResponse
+deleteQueryLoggingConfigResponse
+    :: Int -- ^ 'dqlcrsResponseStatus'
+    -> DeleteQueryLoggingConfigResponse
 deleteQueryLoggingConfigResponse pResponseStatus_ =
   DeleteQueryLoggingConfigResponse' {_dqlcrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 dqlcrsResponseStatus :: Lens' DeleteQueryLoggingConfigResponse Int
-dqlcrsResponseStatus =
-  lens _dqlcrsResponseStatus (\s a -> s {_dqlcrsResponseStatus = a})
+dqlcrsResponseStatus = lens _dqlcrsResponseStatus (\ s a -> s{_dqlcrsResponseStatus = a})
 
 instance NFData DeleteQueryLoggingConfigResponse
+         where

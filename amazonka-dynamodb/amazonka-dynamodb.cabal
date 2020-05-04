@@ -55,13 +55,17 @@ library
         , Network.AWS.DynamoDB.DeleteTable
         , Network.AWS.DynamoDB.DescribeBackup
         , Network.AWS.DynamoDB.DescribeContinuousBackups
+        , Network.AWS.DynamoDB.DescribeContributorInsights
+        , Network.AWS.DynamoDB.DescribeEndpoints
         , Network.AWS.DynamoDB.DescribeGlobalTable
         , Network.AWS.DynamoDB.DescribeGlobalTableSettings
         , Network.AWS.DynamoDB.DescribeLimits
         , Network.AWS.DynamoDB.DescribeTable
+        , Network.AWS.DynamoDB.DescribeTableReplicaAutoScaling
         , Network.AWS.DynamoDB.DescribeTimeToLive
         , Network.AWS.DynamoDB.GetItem
         , Network.AWS.DynamoDB.ListBackups
+        , Network.AWS.DynamoDB.ListContributorInsights
         , Network.AWS.DynamoDB.ListGlobalTables
         , Network.AWS.DynamoDB.ListTables
         , Network.AWS.DynamoDB.ListTagsOfResource
@@ -71,13 +75,17 @@ library
         , Network.AWS.DynamoDB.RestoreTableToPointInTime
         , Network.AWS.DynamoDB.Scan
         , Network.AWS.DynamoDB.TagResource
+        , Network.AWS.DynamoDB.TransactGetItems
+        , Network.AWS.DynamoDB.TransactWriteItems
         , Network.AWS.DynamoDB.Types
         , Network.AWS.DynamoDB.UntagResource
         , Network.AWS.DynamoDB.UpdateContinuousBackups
+        , Network.AWS.DynamoDB.UpdateContributorInsights
         , Network.AWS.DynamoDB.UpdateGlobalTable
         , Network.AWS.DynamoDB.UpdateGlobalTableSettings
         , Network.AWS.DynamoDB.UpdateItem
         , Network.AWS.DynamoDB.UpdateTable
+        , Network.AWS.DynamoDB.UpdateTableReplicaAutoScaling
         , Network.AWS.DynamoDB.UpdateTimeToLive
         , Network.AWS.DynamoDB.Waiters
 

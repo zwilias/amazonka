@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.GameLift.CreateVPCPeeringConnection
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -40,19 +42,21 @@
 --
 --
 module Network.AWS.GameLift.CreateVPCPeeringConnection
+    (
     -- * Creating a Request
-  ( createVPCPeeringConnection
-  , CreateVPCPeeringConnection
+      createVPCPeeringConnection
+    , CreateVPCPeeringConnection
     -- * Request Lenses
-  , cvpcFleetId
-  , cvpcPeerVPCAWSAccountId
-  , cvpcPeerVPCId
+    , cvpcFleetId
+    , cvpcPeerVPCAWSAccountId
+    , cvpcPeerVPCId
+
     -- * Destructuring the Response
-  , createVPCPeeringConnectionResponse
-  , CreateVPCPeeringConnectionResponse
+    , createVPCPeeringConnectionResponse
+    , CreateVPCPeeringConnectionResponse
     -- * Response Lenses
-  , cvpcrsResponseStatus
-  ) where
+    , cvpcrsResponseStatus
+    ) where
 
 import Network.AWS.GameLift.Types
 import Network.AWS.GameLift.Types.Product
@@ -74,6 +78,7 @@ data CreateVPCPeeringConnection =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateVPCPeeringConnection' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -83,11 +88,11 @@ data CreateVPCPeeringConnection =
 -- * 'cvpcPeerVPCAWSAccountId' - Unique identifier for the AWS account with the VPC that you want to peer your Amazon GameLift fleet with. You can find your Account ID in the AWS Management Console under account settings.
 --
 -- * 'cvpcPeerVPCId' - Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be in the same region where your fleet is deployed. To get VPC information, including IDs, use the Virtual Private Cloud service tools, including the VPC Dashboard in the AWS Management Console.
-createVPCPeeringConnection ::
-     Text -- ^ 'cvpcFleetId'
-  -> Text -- ^ 'cvpcPeerVPCAWSAccountId'
-  -> Text -- ^ 'cvpcPeerVPCId'
-  -> CreateVPCPeeringConnection
+createVPCPeeringConnection
+    :: Text -- ^ 'cvpcFleetId'
+    -> Text -- ^ 'cvpcPeerVPCAWSAccountId'
+    -> Text -- ^ 'cvpcPeerVPCId'
+    -> CreateVPCPeeringConnection
 createVPCPeeringConnection pFleetId_ pPeerVPCAWSAccountId_ pPeerVPCId_ =
   CreateVPCPeeringConnection'
     { _cvpcFleetId = pFleetId_
@@ -95,53 +100,57 @@ createVPCPeeringConnection pFleetId_ pPeerVPCAWSAccountId_ pPeerVPCId_ =
     , _cvpcPeerVPCId = pPeerVPCId_
     }
 
+
 -- | Unique identifier for a fleet. This tells Amazon GameLift which GameLift VPC to peer with.
 cvpcFleetId :: Lens' CreateVPCPeeringConnection Text
-cvpcFleetId = lens _cvpcFleetId (\s a -> s {_cvpcFleetId = a})
+cvpcFleetId = lens _cvpcFleetId (\ s a -> s{_cvpcFleetId = a})
 
 -- | Unique identifier for the AWS account with the VPC that you want to peer your Amazon GameLift fleet with. You can find your Account ID in the AWS Management Console under account settings.
 cvpcPeerVPCAWSAccountId :: Lens' CreateVPCPeeringConnection Text
-cvpcPeerVPCAWSAccountId =
-  lens _cvpcPeerVPCAWSAccountId (\s a -> s {_cvpcPeerVPCAWSAccountId = a})
+cvpcPeerVPCAWSAccountId = lens _cvpcPeerVPCAWSAccountId (\ s a -> s{_cvpcPeerVPCAWSAccountId = a})
 
 -- | Unique identifier for a VPC with resources to be accessed by your Amazon GameLift fleet. The VPC must be in the same region where your fleet is deployed. To get VPC information, including IDs, use the Virtual Private Cloud service tools, including the VPC Dashboard in the AWS Management Console.
 cvpcPeerVPCId :: Lens' CreateVPCPeeringConnection Text
-cvpcPeerVPCId = lens _cvpcPeerVPCId (\s a -> s {_cvpcPeerVPCId = a})
+cvpcPeerVPCId = lens _cvpcPeerVPCId (\ s a -> s{_cvpcPeerVPCId = a})
 
 instance AWSRequest CreateVPCPeeringConnection where
-  type Rs CreateVPCPeeringConnection = CreateVPCPeeringConnectionResponse
-  request = postJSON gameLift
-  response =
-    receiveEmpty
-      (\s h x -> CreateVPCPeeringConnectionResponse' <$> (pure (fromEnum s)))
+        type Rs CreateVPCPeeringConnection =
+             CreateVPCPeeringConnectionResponse
+        request = postJSON gameLift
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 CreateVPCPeeringConnectionResponse' <$>
+                   (pure (fromEnum s)))
 
-instance Hashable CreateVPCPeeringConnection
+instance Hashable CreateVPCPeeringConnection where
 
-instance NFData CreateVPCPeeringConnection
+instance NFData CreateVPCPeeringConnection where
 
 instance ToHeaders CreateVPCPeeringConnection where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("GameLift.CreateVpcPeeringConnection" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("GameLift.CreateVpcPeeringConnection" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON CreateVPCPeeringConnection where
-  toJSON CreateVPCPeeringConnection' {..} =
-    object
-      (catMaybes
-         [ Just ("FleetId" .= _cvpcFleetId)
-         , Just ("PeerVpcAwsAccountId" .= _cvpcPeerVPCAWSAccountId)
-         , Just ("PeerVpcId" .= _cvpcPeerVPCId)
-         ])
+        toJSON CreateVPCPeeringConnection'{..}
+          = object
+              (catMaybes
+                 [Just ("FleetId" .= _cvpcFleetId),
+                  Just
+                    ("PeerVpcAwsAccountId" .= _cvpcPeerVPCAWSAccountId),
+                  Just ("PeerVpcId" .= _cvpcPeerVPCId)])
 
 instance ToPath CreateVPCPeeringConnection where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery CreateVPCPeeringConnection where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'createVPCPeeringConnectionResponse' smart constructor.
 newtype CreateVPCPeeringConnectionResponse =
@@ -150,20 +159,22 @@ newtype CreateVPCPeeringConnectionResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateVPCPeeringConnectionResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'cvpcrsResponseStatus' - -- | The response status code.
-createVPCPeeringConnectionResponse ::
-     Int -- ^ 'cvpcrsResponseStatus'
-  -> CreateVPCPeeringConnectionResponse
+createVPCPeeringConnectionResponse
+    :: Int -- ^ 'cvpcrsResponseStatus'
+    -> CreateVPCPeeringConnectionResponse
 createVPCPeeringConnectionResponse pResponseStatus_ =
   CreateVPCPeeringConnectionResponse' {_cvpcrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 cvpcrsResponseStatus :: Lens' CreateVPCPeeringConnectionResponse Int
-cvpcrsResponseStatus =
-  lens _cvpcrsResponseStatus (\s a -> s {_cvpcrsResponseStatus = a})
+cvpcrsResponseStatus = lens _cvpcrsResponseStatus (\ s a -> s{_cvpcrsResponseStatus = a})
 
 instance NFData CreateVPCPeeringConnectionResponse
+         where

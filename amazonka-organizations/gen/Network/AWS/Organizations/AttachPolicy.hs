@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Organizations.AttachPolicy
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -40,16 +42,18 @@
 -- This operation can be called only from the organization's master account.
 --
 module Network.AWS.Organizations.AttachPolicy
+    (
     -- * Creating a Request
-  ( attachPolicy
-  , AttachPolicy
+      attachPolicy
+    , AttachPolicy
     -- * Request Lenses
-  , apPolicyId
-  , apTargetId
+    , apPolicyId
+    , apTargetId
+
     -- * Destructuring the Response
-  , attachPolicyResponse
-  , AttachPolicyResponse
-  ) where
+    , attachPolicyResponse
+    , AttachPolicyResponse
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
@@ -66,6 +70,7 @@ data AttachPolicy =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AttachPolicy' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -73,59 +78,65 @@ data AttachPolicy =
 -- * 'apPolicyId' - The unique identifier (ID) of the policy that you want to attach to the target. You can get the ID for the policy by calling the 'ListPolicies' operation. The <http://wikipedia.org/wiki/regex regex pattern> for a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or digits.
 --
 -- * 'apTargetId' - The unique identifier (ID) of the root, OU, or account that you want to attach the policy to. You can get the ID by calling the 'ListRoots' , 'ListOrganizationalUnitsForParent' , or 'ListAccounts' operations. The <http://wikipedia.org/wiki/regex regex pattern> for a target ID string requires one of the following:     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.     * Account: a string that consists of exactly 12 digits.     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.
-attachPolicy ::
-     Text -- ^ 'apPolicyId'
-  -> Text -- ^ 'apTargetId'
-  -> AttachPolicy
+attachPolicy
+    :: Text -- ^ 'apPolicyId'
+    -> Text -- ^ 'apTargetId'
+    -> AttachPolicy
 attachPolicy pPolicyId_ pTargetId_ =
   AttachPolicy' {_apPolicyId = pPolicyId_, _apTargetId = pTargetId_}
 
+
 -- | The unique identifier (ID) of the policy that you want to attach to the target. You can get the ID for the policy by calling the 'ListPolicies' operation. The <http://wikipedia.org/wiki/regex regex pattern> for a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or digits.
 apPolicyId :: Lens' AttachPolicy Text
-apPolicyId = lens _apPolicyId (\s a -> s {_apPolicyId = a})
+apPolicyId = lens _apPolicyId (\ s a -> s{_apPolicyId = a})
 
 -- | The unique identifier (ID) of the root, OU, or account that you want to attach the policy to. You can get the ID by calling the 'ListRoots' , 'ListOrganizationalUnitsForParent' , or 'ListAccounts' operations. The <http://wikipedia.org/wiki/regex regex pattern> for a target ID string requires one of the following:     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.     * Account: a string that consists of exactly 12 digits.     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.
 apTargetId :: Lens' AttachPolicy Text
-apTargetId = lens _apTargetId (\s a -> s {_apTargetId = a})
+apTargetId = lens _apTargetId (\ s a -> s{_apTargetId = a})
 
 instance AWSRequest AttachPolicy where
-  type Rs AttachPolicy = AttachPolicyResponse
-  request = postJSON organizations
-  response = receiveNull AttachPolicyResponse'
+        type Rs AttachPolicy = AttachPolicyResponse
+        request = postJSON organizations
+        response = receiveNull AttachPolicyResponse'
 
-instance Hashable AttachPolicy
+instance Hashable AttachPolicy where
 
-instance NFData AttachPolicy
+instance NFData AttachPolicy where
 
 instance ToHeaders AttachPolicy where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AWSOrganizationsV20161128.AttachPolicy" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWSOrganizationsV20161128.AttachPolicy" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON AttachPolicy where
-  toJSON AttachPolicy' {..} =
-    object
-      (catMaybes
-         [Just ("PolicyId" .= _apPolicyId), Just ("TargetId" .= _apTargetId)])
+        toJSON AttachPolicy'{..}
+          = object
+              (catMaybes
+                 [Just ("PolicyId" .= _apPolicyId),
+                  Just ("TargetId" .= _apTargetId)])
 
 instance ToPath AttachPolicy where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery AttachPolicy where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'attachPolicyResponse' smart constructor.
 data AttachPolicyResponse =
   AttachPolicyResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AttachPolicyResponse' with the minimum fields required to make a request.
 --
-attachPolicyResponse :: AttachPolicyResponse
+attachPolicyResponse
+    :: AttachPolicyResponse
 attachPolicyResponse = AttachPolicyResponse'
 
-instance NFData AttachPolicyResponse
+
+instance NFData AttachPolicyResponse where

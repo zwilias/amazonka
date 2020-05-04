@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.IoT.DeleteOTAUpdate
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,17 +22,19 @@
 --
 --
 module Network.AWS.IoT.DeleteOTAUpdate
+    (
     -- * Creating a Request
-  ( deleteOTAUpdate
-  , DeleteOTAUpdate
+      deleteOTAUpdate
+    , DeleteOTAUpdate
     -- * Request Lenses
-  , dotauOtaUpdateId
+    , dotauOtaUpdateId
+
     -- * Destructuring the Response
-  , deleteOTAUpdateResponse
-  , DeleteOTAUpdateResponse
+    , deleteOTAUpdateResponse
+    , DeleteOTAUpdateResponse
     -- * Response Lenses
-  , dotaursResponseStatus
-  ) where
+    , dotaursResponseStatus
+    ) where
 
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
@@ -46,40 +50,44 @@ newtype DeleteOTAUpdate =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteOTAUpdate' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dotauOtaUpdateId' - The OTA update ID to delete.
-deleteOTAUpdate ::
-     Text -- ^ 'dotauOtaUpdateId'
-  -> DeleteOTAUpdate
+deleteOTAUpdate
+    :: Text -- ^ 'dotauOtaUpdateId'
+    -> DeleteOTAUpdate
 deleteOTAUpdate pOtaUpdateId_ =
   DeleteOTAUpdate' {_dotauOtaUpdateId = pOtaUpdateId_}
 
+
 -- | The OTA update ID to delete.
 dotauOtaUpdateId :: Lens' DeleteOTAUpdate Text
-dotauOtaUpdateId = lens _dotauOtaUpdateId (\s a -> s {_dotauOtaUpdateId = a})
+dotauOtaUpdateId = lens _dotauOtaUpdateId (\ s a -> s{_dotauOtaUpdateId = a})
 
 instance AWSRequest DeleteOTAUpdate where
-  type Rs DeleteOTAUpdate = DeleteOTAUpdateResponse
-  request = delete ioT
-  response =
-    receiveEmpty (\s h x -> DeleteOTAUpdateResponse' <$> (pure (fromEnum s)))
+        type Rs DeleteOTAUpdate = DeleteOTAUpdateResponse
+        request = delete ioT
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 DeleteOTAUpdateResponse' <$> (pure (fromEnum s)))
 
-instance Hashable DeleteOTAUpdate
+instance Hashable DeleteOTAUpdate where
 
-instance NFData DeleteOTAUpdate
+instance NFData DeleteOTAUpdate where
 
 instance ToHeaders DeleteOTAUpdate where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath DeleteOTAUpdate where
-  toPath DeleteOTAUpdate' {..} =
-    mconcat ["/otaUpdates/", toBS _dotauOtaUpdateId]
+        toPath DeleteOTAUpdate'{..}
+          = mconcat ["/otaUpdates/", toBS _dotauOtaUpdateId]
 
 instance ToQuery DeleteOTAUpdate where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'deleteOTAUpdateResponse' smart constructor.
 newtype DeleteOTAUpdateResponse =
@@ -88,20 +96,21 @@ newtype DeleteOTAUpdateResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteOTAUpdateResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dotaursResponseStatus' - -- | The response status code.
-deleteOTAUpdateResponse ::
-     Int -- ^ 'dotaursResponseStatus'
-  -> DeleteOTAUpdateResponse
+deleteOTAUpdateResponse
+    :: Int -- ^ 'dotaursResponseStatus'
+    -> DeleteOTAUpdateResponse
 deleteOTAUpdateResponse pResponseStatus_ =
   DeleteOTAUpdateResponse' {_dotaursResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 dotaursResponseStatus :: Lens' DeleteOTAUpdateResponse Int
-dotaursResponseStatus =
-  lens _dotaursResponseStatus (\s a -> s {_dotaursResponseStatus = a})
+dotaursResponseStatus = lens _dotaursResponseStatus (\ s a -> s{_dotaursResponseStatus = a})
 
-instance NFData DeleteOTAUpdateResponse
+instance NFData DeleteOTAUpdateResponse where

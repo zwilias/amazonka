@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.KinesisVideo.DeleteStream
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -28,18 +30,20 @@
 -- This operation requires permission for the @KinesisVideo:DeleteStream@ action.
 --
 module Network.AWS.KinesisVideo.DeleteStream
+    (
     -- * Creating a Request
-  ( deleteStream
-  , DeleteStream
+      deleteStream
+    , DeleteStream
     -- * Request Lenses
-  , dsCurrentVersion
-  , dsStreamARN
+    , dsCurrentVersion
+    , dsStreamARN
+
     -- * Destructuring the Response
-  , deleteStreamResponse
-  , DeleteStreamResponse
+    , deleteStreamResponse
+    , DeleteStreamResponse
     -- * Response Lenses
-  , dsrsResponseStatus
-  ) where
+    , dsrsResponseStatus
+    ) where
 
 import Network.AWS.KinesisVideo.Types
 import Network.AWS.KinesisVideo.Types.Product
@@ -56,6 +60,7 @@ data DeleteStream =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteStream' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -63,46 +68,48 @@ data DeleteStream =
 -- * 'dsCurrentVersion' - Optional: The version of the stream that you want to delete.  Specify the version as a safeguard to ensure that your are deleting the correct stream. To get the stream version, use the @DescribeStream@ API. If not specified, only the @CreationTime@ is checked before deleting the stream.
 --
 -- * 'dsStreamARN' - The Amazon Resource Name (ARN) of the stream that you want to delete.
-deleteStream ::
-     Text -- ^ 'dsStreamARN'
-  -> DeleteStream
+deleteStream
+    :: Text -- ^ 'dsStreamARN'
+    -> DeleteStream
 deleteStream pStreamARN_ =
   DeleteStream' {_dsCurrentVersion = Nothing, _dsStreamARN = pStreamARN_}
 
+
 -- | Optional: The version of the stream that you want to delete.  Specify the version as a safeguard to ensure that your are deleting the correct stream. To get the stream version, use the @DescribeStream@ API. If not specified, only the @CreationTime@ is checked before deleting the stream.
 dsCurrentVersion :: Lens' DeleteStream (Maybe Text)
-dsCurrentVersion = lens _dsCurrentVersion (\s a -> s {_dsCurrentVersion = a})
+dsCurrentVersion = lens _dsCurrentVersion (\ s a -> s{_dsCurrentVersion = a})
 
 -- | The Amazon Resource Name (ARN) of the stream that you want to delete.
 dsStreamARN :: Lens' DeleteStream Text
-dsStreamARN = lens _dsStreamARN (\s a -> s {_dsStreamARN = a})
+dsStreamARN = lens _dsStreamARN (\ s a -> s{_dsStreamARN = a})
 
 instance AWSRequest DeleteStream where
-  type Rs DeleteStream = DeleteStreamResponse
-  request = postJSON kinesisVideo
-  response =
-    receiveEmpty (\s h x -> DeleteStreamResponse' <$> (pure (fromEnum s)))
+        type Rs DeleteStream = DeleteStreamResponse
+        request = postJSON kinesisVideo
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 DeleteStreamResponse' <$> (pure (fromEnum s)))
 
-instance Hashable DeleteStream
+instance Hashable DeleteStream where
 
-instance NFData DeleteStream
+instance NFData DeleteStream where
 
 instance ToHeaders DeleteStream where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToJSON DeleteStream where
-  toJSON DeleteStream' {..} =
-    object
-      (catMaybes
-         [ ("CurrentVersion" .=) <$> _dsCurrentVersion
-         , Just ("StreamARN" .= _dsStreamARN)
-         ])
+        toJSON DeleteStream'{..}
+          = object
+              (catMaybes
+                 [("CurrentVersion" .=) <$> _dsCurrentVersion,
+                  Just ("StreamARN" .= _dsStreamARN)])
 
 instance ToPath DeleteStream where
-  toPath = const "/deleteStream"
+        toPath = const "/deleteStream"
 
 instance ToQuery DeleteStream where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'deleteStreamResponse' smart constructor.
 newtype DeleteStreamResponse =
@@ -111,20 +118,21 @@ newtype DeleteStreamResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteStreamResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dsrsResponseStatus' - -- | The response status code.
-deleteStreamResponse ::
-     Int -- ^ 'dsrsResponseStatus'
-  -> DeleteStreamResponse
+deleteStreamResponse
+    :: Int -- ^ 'dsrsResponseStatus'
+    -> DeleteStreamResponse
 deleteStreamResponse pResponseStatus_ =
   DeleteStreamResponse' {_dsrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 dsrsResponseStatus :: Lens' DeleteStreamResponse Int
-dsrsResponseStatus =
-  lens _dsrsResponseStatus (\s a -> s {_dsrsResponseStatus = a})
+dsrsResponseStatus = lens _dsrsResponseStatus (\ s a -> s{_dsrsResponseStatus = a})
 
-instance NFData DeleteStreamResponse
+instance NFData DeleteStreamResponse where

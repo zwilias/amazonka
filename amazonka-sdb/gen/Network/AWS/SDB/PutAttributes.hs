@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SDB.PutAttributes
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -32,18 +34,20 @@
 --
 --
 module Network.AWS.SDB.PutAttributes
+    (
     -- * Creating a Request
-  ( putAttributes
-  , PutAttributes
+      putAttributes
+    , PutAttributes
     -- * Request Lenses
-  , paExpected
-  , paDomainName
-  , paItemName
-  , paAttributes
+    , paExpected
+    , paDomainName
+    , paItemName
+    , paAttributes
+
     -- * Destructuring the Response
-  , putAttributesResponse
-  , PutAttributesResponse
-  ) where
+    , putAttributesResponse
+    , PutAttributesResponse
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -62,6 +66,7 @@ data PutAttributes =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'PutAttributes' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -73,10 +78,10 @@ data PutAttributes =
 -- * 'paItemName' - The name of the item.
 --
 -- * 'paAttributes' - The list of attributes.
-putAttributes ::
-     Text -- ^ 'paDomainName'
-  -> Text -- ^ 'paItemName'
-  -> PutAttributes
+putAttributes
+    :: Text -- ^ 'paDomainName'
+    -> Text -- ^ 'paItemName'
+    -> PutAttributes
 putAttributes pDomainName_ pItemName_ =
   PutAttributes'
     { _paExpected = Nothing
@@ -85,56 +90,59 @@ putAttributes pDomainName_ pItemName_ =
     , _paAttributes = mempty
     }
 
+
 -- | The update condition which, if specified, determines whether the specified attributes will be updated or not. The update condition must be satisfied in order for this request to be processed and the attributes to be updated.
 paExpected :: Lens' PutAttributes (Maybe UpdateCondition)
-paExpected = lens _paExpected (\s a -> s {_paExpected = a})
+paExpected = lens _paExpected (\ s a -> s{_paExpected = a})
 
 -- | The name of the domain in which to perform the operation.
 paDomainName :: Lens' PutAttributes Text
-paDomainName = lens _paDomainName (\s a -> s {_paDomainName = a})
+paDomainName = lens _paDomainName (\ s a -> s{_paDomainName = a})
 
 -- | The name of the item.
 paItemName :: Lens' PutAttributes Text
-paItemName = lens _paItemName (\s a -> s {_paItemName = a})
+paItemName = lens _paItemName (\ s a -> s{_paItemName = a})
 
 -- | The list of attributes.
 paAttributes :: Lens' PutAttributes [ReplaceableAttribute]
-paAttributes = lens _paAttributes (\s a -> s {_paAttributes = a}) . _Coerce
+paAttributes = lens _paAttributes (\ s a -> s{_paAttributes = a}) . _Coerce
 
 instance AWSRequest PutAttributes where
-  type Rs PutAttributes = PutAttributesResponse
-  request = postQuery sdb
-  response = receiveNull PutAttributesResponse'
+        type Rs PutAttributes = PutAttributesResponse
+        request = postQuery sdb
+        response = receiveNull PutAttributesResponse'
 
-instance Hashable PutAttributes
+instance Hashable PutAttributes where
 
-instance NFData PutAttributes
+instance NFData PutAttributes where
 
 instance ToHeaders PutAttributes where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath PutAttributes where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery PutAttributes where
-  toQuery PutAttributes' {..} =
-    mconcat
-      [ "Action" =: ("PutAttributes" :: ByteString)
-      , "Version" =: ("2009-04-15" :: ByteString)
-      , "Expected" =: _paExpected
-      , "DomainName" =: _paDomainName
-      , "ItemName" =: _paItemName
-      , toQueryList "Attribute" _paAttributes
-      ]
+        toQuery PutAttributes'{..}
+          = mconcat
+              ["Action" =: ("PutAttributes" :: ByteString),
+               "Version" =: ("2009-04-15" :: ByteString),
+               "Expected" =: _paExpected,
+               "DomainName" =: _paDomainName,
+               "ItemName" =: _paItemName,
+               toQueryList "Attribute" _paAttributes]
 
 -- | /See:/ 'putAttributesResponse' smart constructor.
 data PutAttributesResponse =
   PutAttributesResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'PutAttributesResponse' with the minimum fields required to make a request.
 --
-putAttributesResponse :: PutAttributesResponse
+putAttributesResponse
+    :: PutAttributesResponse
 putAttributesResponse = PutAttributesResponse'
 
-instance NFData PutAttributesResponse
+
+instance NFData PutAttributesResponse where

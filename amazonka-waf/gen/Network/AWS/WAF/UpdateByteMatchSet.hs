@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.WAF.UpdateByteMatchSet
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -46,20 +48,22 @@
 -- For more information about how to use the AWS WAF API to allow or block HTTP requests, see the <http://docs.aws.amazon.com/waf/latest/developerguide/ AWS WAF Developer Guide> .
 --
 module Network.AWS.WAF.UpdateByteMatchSet
+    (
     -- * Creating a Request
-  ( updateByteMatchSet
-  , UpdateByteMatchSet
+      updateByteMatchSet
+    , UpdateByteMatchSet
     -- * Request Lenses
-  , ubmsByteMatchSetId
-  , ubmsChangeToken
-  , ubmsUpdates
+    , ubmsByteMatchSetId
+    , ubmsChangeToken
+    , ubmsUpdates
+
     -- * Destructuring the Response
-  , updateByteMatchSetResponse
-  , UpdateByteMatchSetResponse
+    , updateByteMatchSetResponse
+    , UpdateByteMatchSetResponse
     -- * Response Lenses
-  , ubmsrsChangeToken
-  , ubmsrsResponseStatus
-  ) where
+    , ubmsrsChangeToken
+    , ubmsrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -77,6 +81,7 @@ data UpdateByteMatchSet =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateByteMatchSet' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -86,11 +91,11 @@ data UpdateByteMatchSet =
 -- * 'ubmsChangeToken' - The value returned by the most recent call to 'GetChangeToken' .
 --
 -- * 'ubmsUpdates' - An array of @ByteMatchSetUpdate@ objects that you want to insert into or delete from a 'ByteMatchSet' . For more information, see the applicable data types:     * 'ByteMatchSetUpdate' : Contains @Action@ and @ByteMatchTuple@      * 'ByteMatchTuple' : Contains @FieldToMatch@ , @PositionalConstraint@ , @TargetString@ , and @TextTransformation@      * 'FieldToMatch' : Contains @Data@ and @Type@
-updateByteMatchSet ::
-     Text -- ^ 'ubmsByteMatchSetId'
-  -> Text -- ^ 'ubmsChangeToken'
-  -> NonEmpty ByteMatchSetUpdate -- ^ 'ubmsUpdates'
-  -> UpdateByteMatchSet
+updateByteMatchSet
+    :: Text -- ^ 'ubmsByteMatchSetId'
+    -> Text -- ^ 'ubmsChangeToken'
+    -> NonEmpty ByteMatchSetUpdate -- ^ 'ubmsUpdates'
+    -> UpdateByteMatchSet
 updateByteMatchSet pByteMatchSetId_ pChangeToken_ pUpdates_ =
   UpdateByteMatchSet'
     { _ubmsByteMatchSetId = pByteMatchSetId_
@@ -98,55 +103,55 @@ updateByteMatchSet pByteMatchSetId_ pChangeToken_ pUpdates_ =
     , _ubmsUpdates = _List1 # pUpdates_
     }
 
+
 -- | The @ByteMatchSetId@ of the 'ByteMatchSet' that you want to update. @ByteMatchSetId@ is returned by 'CreateByteMatchSet' and by 'ListByteMatchSets' .
 ubmsByteMatchSetId :: Lens' UpdateByteMatchSet Text
-ubmsByteMatchSetId =
-  lens _ubmsByteMatchSetId (\s a -> s {_ubmsByteMatchSetId = a})
+ubmsByteMatchSetId = lens _ubmsByteMatchSetId (\ s a -> s{_ubmsByteMatchSetId = a})
 
 -- | The value returned by the most recent call to 'GetChangeToken' .
 ubmsChangeToken :: Lens' UpdateByteMatchSet Text
-ubmsChangeToken = lens _ubmsChangeToken (\s a -> s {_ubmsChangeToken = a})
+ubmsChangeToken = lens _ubmsChangeToken (\ s a -> s{_ubmsChangeToken = a})
 
 -- | An array of @ByteMatchSetUpdate@ objects that you want to insert into or delete from a 'ByteMatchSet' . For more information, see the applicable data types:     * 'ByteMatchSetUpdate' : Contains @Action@ and @ByteMatchTuple@      * 'ByteMatchTuple' : Contains @FieldToMatch@ , @PositionalConstraint@ , @TargetString@ , and @TextTransformation@      * 'FieldToMatch' : Contains @Data@ and @Type@
 ubmsUpdates :: Lens' UpdateByteMatchSet (NonEmpty ByteMatchSetUpdate)
-ubmsUpdates = lens _ubmsUpdates (\s a -> s {_ubmsUpdates = a}) . _List1
+ubmsUpdates = lens _ubmsUpdates (\ s a -> s{_ubmsUpdates = a}) . _List1
 
 instance AWSRequest UpdateByteMatchSet where
-  type Rs UpdateByteMatchSet = UpdateByteMatchSetResponse
-  request = postJSON waf
-  response =
-    receiveJSON
-      (\s h x ->
-         UpdateByteMatchSetResponse' <$> (x .?> "ChangeToken") <*>
-         (pure (fromEnum s)))
+        type Rs UpdateByteMatchSet =
+             UpdateByteMatchSetResponse
+        request = postJSON waf
+        response
+          = receiveJSON
+              (\ s h x ->
+                 UpdateByteMatchSetResponse' <$>
+                   (x .?> "ChangeToken") <*> (pure (fromEnum s)))
 
-instance Hashable UpdateByteMatchSet
+instance Hashable UpdateByteMatchSet where
 
-instance NFData UpdateByteMatchSet
+instance NFData UpdateByteMatchSet where
 
 instance ToHeaders UpdateByteMatchSet where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AWSWAF_20150824.UpdateByteMatchSet" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWSWAF_20150824.UpdateByteMatchSet" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON UpdateByteMatchSet where
-  toJSON UpdateByteMatchSet' {..} =
-    object
-      (catMaybes
-         [ Just ("ByteMatchSetId" .= _ubmsByteMatchSetId)
-         , Just ("ChangeToken" .= _ubmsChangeToken)
-         , Just ("Updates" .= _ubmsUpdates)
-         ])
+        toJSON UpdateByteMatchSet'{..}
+          = object
+              (catMaybes
+                 [Just ("ByteMatchSetId" .= _ubmsByteMatchSetId),
+                  Just ("ChangeToken" .= _ubmsChangeToken),
+                  Just ("Updates" .= _ubmsUpdates)])
 
 instance ToPath UpdateByteMatchSet where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery UpdateByteMatchSet where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'updateByteMatchSetResponse' smart constructor.
 data UpdateByteMatchSetResponse =
@@ -156,6 +161,7 @@ data UpdateByteMatchSetResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateByteMatchSetResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -163,20 +169,20 @@ data UpdateByteMatchSetResponse =
 -- * 'ubmsrsChangeToken' - The @ChangeToken@ that you used to submit the @UpdateByteMatchSet@ request. You can also use this value to query the status of the request. For more information, see 'GetChangeTokenStatus' .
 --
 -- * 'ubmsrsResponseStatus' - -- | The response status code.
-updateByteMatchSetResponse ::
-     Int -- ^ 'ubmsrsResponseStatus'
-  -> UpdateByteMatchSetResponse
+updateByteMatchSetResponse
+    :: Int -- ^ 'ubmsrsResponseStatus'
+    -> UpdateByteMatchSetResponse
 updateByteMatchSetResponse pResponseStatus_ =
   UpdateByteMatchSetResponse'
     {_ubmsrsChangeToken = Nothing, _ubmsrsResponseStatus = pResponseStatus_}
 
+
 -- | The @ChangeToken@ that you used to submit the @UpdateByteMatchSet@ request. You can also use this value to query the status of the request. For more information, see 'GetChangeTokenStatus' .
 ubmsrsChangeToken :: Lens' UpdateByteMatchSetResponse (Maybe Text)
-ubmsrsChangeToken = lens _ubmsrsChangeToken (\s a -> s {_ubmsrsChangeToken = a})
+ubmsrsChangeToken = lens _ubmsrsChangeToken (\ s a -> s{_ubmsrsChangeToken = a})
 
 -- | -- | The response status code.
 ubmsrsResponseStatus :: Lens' UpdateByteMatchSetResponse Int
-ubmsrsResponseStatus =
-  lens _ubmsrsResponseStatus (\s a -> s {_ubmsrsResponseStatus = a})
+ubmsrsResponseStatus = lens _ubmsrsResponseStatus (\ s a -> s{_ubmsrsResponseStatus = a})
 
-instance NFData UpdateByteMatchSetResponse
+instance NFData UpdateByteMatchSetResponse where

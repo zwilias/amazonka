@@ -2,9 +2,11 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Shield.Types.Product
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -37,6 +39,7 @@ data AttackDetail =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AttackDetail' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -56,7 +59,8 @@ data AttackDetail =
 -- * 'adResourceARN' - The ARN (Amazon Resource Name) of the resource that was attacked.
 --
 -- * 'adEndTime' - The time the attack ended, in Unix time in seconds. For more information see <http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types timestamp> .
-attackDetail :: AttackDetail
+attackDetail
+    :: AttackDetail
 attackDetail =
   AttackDetail'
     { _adAttackId = Nothing
@@ -69,60 +73,55 @@ attackDetail =
     , _adEndTime = Nothing
     }
 
+
 -- | The unique identifier (ID) of the attack.
 adAttackId :: Lens' AttackDetail (Maybe Text)
-adAttackId = lens _adAttackId (\s a -> s {_adAttackId = a})
+adAttackId = lens _adAttackId (\ s a -> s{_adAttackId = a})
 
 -- | The time the attack started, in Unix time in seconds. For more information see <http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types timestamp> .
 adStartTime :: Lens' AttackDetail (Maybe UTCTime)
-adStartTime = lens _adStartTime (\s a -> s {_adStartTime = a}) . mapping _Time
+adStartTime = lens _adStartTime (\ s a -> s{_adStartTime = a}) . mapping _Time
 
 -- | If applicable, additional detail about the resource being attacked, for example, IP address or URL.
 adSubResources :: Lens' AttackDetail [SubResourceSummary]
-adSubResources =
-  lens _adSubResources (\s a -> s {_adSubResources = a}) . _Default . _Coerce
+adSubResources = lens _adSubResources (\ s a -> s{_adSubResources = a}) . _Default . _Coerce
 
 -- | List of mitigation actions taken for the attack.
 adMitigations :: Lens' AttackDetail [Mitigation]
-adMitigations =
-  lens _adMitigations (\s a -> s {_adMitigations = a}) . _Default . _Coerce
+adMitigations = lens _adMitigations (\ s a -> s{_adMitigations = a}) . _Default . _Coerce
 
 -- | The array of 'AttackProperty' objects.
 adAttackProperties :: Lens' AttackDetail [AttackProperty]
-adAttackProperties =
-  lens _adAttackProperties (\s a -> s {_adAttackProperties = a}) .
-  _Default . _Coerce
+adAttackProperties = lens _adAttackProperties (\ s a -> s{_adAttackProperties = a}) . _Default . _Coerce
 
 -- | List of counters that describe the attack for the specified time period.
 adAttackCounters :: Lens' AttackDetail [SummarizedCounter]
-adAttackCounters =
-  lens _adAttackCounters (\s a -> s {_adAttackCounters = a}) .
-  _Default . _Coerce
+adAttackCounters = lens _adAttackCounters (\ s a -> s{_adAttackCounters = a}) . _Default . _Coerce
 
 -- | The ARN (Amazon Resource Name) of the resource that was attacked.
 adResourceARN :: Lens' AttackDetail (Maybe Text)
-adResourceARN = lens _adResourceARN (\s a -> s {_adResourceARN = a})
+adResourceARN = lens _adResourceARN (\ s a -> s{_adResourceARN = a})
 
 -- | The time the attack ended, in Unix time in seconds. For more information see <http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types timestamp> .
 adEndTime :: Lens' AttackDetail (Maybe UTCTime)
-adEndTime = lens _adEndTime (\s a -> s {_adEndTime = a}) . mapping _Time
+adEndTime = lens _adEndTime (\ s a -> s{_adEndTime = a}) . mapping _Time
 
 instance FromJSON AttackDetail where
-  parseJSON =
-    withObject
-      "AttackDetail"
-      (\x ->
-         AttackDetail' <$> (x .:? "AttackId") <*> (x .:? "StartTime") <*>
-         (x .:? "SubResources" .!= mempty) <*>
-         (x .:? "Mitigations" .!= mempty) <*>
-         (x .:? "AttackProperties" .!= mempty) <*>
-         (x .:? "AttackCounters" .!= mempty) <*>
-         (x .:? "ResourceArn") <*>
-         (x .:? "EndTime"))
+        parseJSON
+          = withObject "AttackDetail"
+              (\ x ->
+                 AttackDetail' <$>
+                   (x .:? "AttackId") <*> (x .:? "StartTime") <*>
+                     (x .:? "SubResources" .!= mempty)
+                     <*> (x .:? "Mitigations" .!= mempty)
+                     <*> (x .:? "AttackProperties" .!= mempty)
+                     <*> (x .:? "AttackCounters" .!= mempty)
+                     <*> (x .:? "ResourceArn")
+                     <*> (x .:? "EndTime"))
 
-instance Hashable AttackDetail
+instance Hashable AttackDetail where
 
-instance NFData AttackDetail
+instance NFData AttackDetail where
 
 -- | Details of the described attack.
 --
@@ -139,6 +138,7 @@ data AttackProperty =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AttackProperty' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -152,7 +152,8 @@ data AttackProperty =
 -- * 'apTotal' - The total contributions made to this attack by all contributors, not just the five listed in the @TopContributors@ list.
 --
 -- * 'apUnit' - The unit of the @Value@ of the contributions.
-attackProperty :: AttackProperty
+attackProperty
+    :: AttackProperty
 attackProperty =
   AttackProperty'
     { _apAttackLayer = Nothing
@@ -162,44 +163,41 @@ attackProperty =
     , _apUnit = Nothing
     }
 
+
 -- | The type of DDoS event that was observed. @NETWORK@ indicates layer 3 and layer 4 events and @APPLICATION@ indicates layer 7 events.
 apAttackLayer :: Lens' AttackProperty (Maybe AttackLayer)
-apAttackLayer = lens _apAttackLayer (\s a -> s {_apAttackLayer = a})
+apAttackLayer = lens _apAttackLayer (\ s a -> s{_apAttackLayer = a})
 
 -- | The array of 'Contributor' objects that includes the top five contributors to an attack.
 apTopContributors :: Lens' AttackProperty [Contributor]
-apTopContributors =
-  lens _apTopContributors (\s a -> s {_apTopContributors = a}) .
-  _Default . _Coerce
+apTopContributors = lens _apTopContributors (\ s a -> s{_apTopContributors = a}) . _Default . _Coerce
 
 -- | Defines the DDoS attack property information that is provided.
-apAttackPropertyIdentifier ::
-     Lens' AttackProperty (Maybe AttackPropertyIdentifier)
-apAttackPropertyIdentifier =
-  lens _apAttackPropertyIdentifier (\s a -> s {_apAttackPropertyIdentifier = a})
+apAttackPropertyIdentifier :: Lens' AttackProperty (Maybe AttackPropertyIdentifier)
+apAttackPropertyIdentifier = lens _apAttackPropertyIdentifier (\ s a -> s{_apAttackPropertyIdentifier = a})
 
 -- | The total contributions made to this attack by all contributors, not just the five listed in the @TopContributors@ list.
 apTotal :: Lens' AttackProperty (Maybe Integer)
-apTotal = lens _apTotal (\s a -> s {_apTotal = a})
+apTotal = lens _apTotal (\ s a -> s{_apTotal = a})
 
 -- | The unit of the @Value@ of the contributions.
 apUnit :: Lens' AttackProperty (Maybe Unit)
-apUnit = lens _apUnit (\s a -> s {_apUnit = a})
+apUnit = lens _apUnit (\ s a -> s{_apUnit = a})
 
 instance FromJSON AttackProperty where
-  parseJSON =
-    withObject
-      "AttackProperty"
-      (\x ->
-         AttackProperty' <$> (x .:? "AttackLayer") <*>
-         (x .:? "TopContributors" .!= mempty) <*>
-         (x .:? "AttackPropertyIdentifier") <*>
-         (x .:? "Total") <*>
-         (x .:? "Unit"))
+        parseJSON
+          = withObject "AttackProperty"
+              (\ x ->
+                 AttackProperty' <$>
+                   (x .:? "AttackLayer") <*>
+                     (x .:? "TopContributors" .!= mempty)
+                     <*> (x .:? "AttackPropertyIdentifier")
+                     <*> (x .:? "Total")
+                     <*> (x .:? "Unit"))
 
-instance Hashable AttackProperty
+instance Hashable AttackProperty where
 
-instance NFData AttackProperty
+instance NFData AttackProperty where
 
 -- | Summarizes all DDoS attacks for a specified time period.
 --
@@ -216,6 +214,7 @@ data AttackSummary =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AttackSummary' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -229,7 +228,8 @@ data AttackSummary =
 -- * 'asResourceARN' - The ARN (Amazon Resource Name) of the resource that was attacked.
 --
 -- * 'asEndTime' - The end time of the attack, in Unix time in seconds. For more information see <http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types timestamp> .
-attackSummary :: AttackSummary
+attackSummary
+    :: AttackSummary
 attackSummary =
   AttackSummary'
     { _asAttackVectors = Nothing
@@ -239,41 +239,41 @@ attackSummary =
     , _asEndTime = Nothing
     }
 
+
 -- | The list of attacks for a specified time period.
 asAttackVectors :: Lens' AttackSummary [AttackVectorDescription]
-asAttackVectors =
-  lens _asAttackVectors (\s a -> s {_asAttackVectors = a}) . _Default . _Coerce
+asAttackVectors = lens _asAttackVectors (\ s a -> s{_asAttackVectors = a}) . _Default . _Coerce
 
 -- | The unique identifier (ID) of the attack.
 asAttackId :: Lens' AttackSummary (Maybe Text)
-asAttackId = lens _asAttackId (\s a -> s {_asAttackId = a})
+asAttackId = lens _asAttackId (\ s a -> s{_asAttackId = a})
 
 -- | The start time of the attack, in Unix time in seconds. For more information see <http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types timestamp> .
 asStartTime :: Lens' AttackSummary (Maybe UTCTime)
-asStartTime = lens _asStartTime (\s a -> s {_asStartTime = a}) . mapping _Time
+asStartTime = lens _asStartTime (\ s a -> s{_asStartTime = a}) . mapping _Time
 
 -- | The ARN (Amazon Resource Name) of the resource that was attacked.
 asResourceARN :: Lens' AttackSummary (Maybe Text)
-asResourceARN = lens _asResourceARN (\s a -> s {_asResourceARN = a})
+asResourceARN = lens _asResourceARN (\ s a -> s{_asResourceARN = a})
 
 -- | The end time of the attack, in Unix time in seconds. For more information see <http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types timestamp> .
 asEndTime :: Lens' AttackSummary (Maybe UTCTime)
-asEndTime = lens _asEndTime (\s a -> s {_asEndTime = a}) . mapping _Time
+asEndTime = lens _asEndTime (\ s a -> s{_asEndTime = a}) . mapping _Time
 
 instance FromJSON AttackSummary where
-  parseJSON =
-    withObject
-      "AttackSummary"
-      (\x ->
-         AttackSummary' <$> (x .:? "AttackVectors" .!= mempty) <*>
-         (x .:? "AttackId") <*>
-         (x .:? "StartTime") <*>
-         (x .:? "ResourceArn") <*>
-         (x .:? "EndTime"))
+        parseJSON
+          = withObject "AttackSummary"
+              (\ x ->
+                 AttackSummary' <$>
+                   (x .:? "AttackVectors" .!= mempty) <*>
+                     (x .:? "AttackId")
+                     <*> (x .:? "StartTime")
+                     <*> (x .:? "ResourceArn")
+                     <*> (x .:? "EndTime"))
 
-instance Hashable AttackSummary
+instance Hashable AttackSummary where
 
-instance NFData AttackSummary
+instance NFData AttackSummary where
 
 -- | Describes the attack.
 --
@@ -286,30 +286,32 @@ newtype AttackVectorDescription =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AttackVectorDescription' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'avdVectorType' - The attack type. Valid values:     * UDP_TRAFFIC     * UDP_FRAGMENT     * GENERIC_UDP_REFLECTION     * DNS_REFLECTION     * NTP_REFLECTION     * CHARGEN_REFLECTION     * SSDP_REFLECTION     * PORT_MAPPER     * RIP_REFLECTION     * SNMP_REFLECTION     * MSSQL_REFLECTION     * NET_BIOS_REFLECTION     * SYN_FLOOD     * ACK_FLOOD     * REQUEST_FLOOD
-attackVectorDescription ::
-     Text -- ^ 'avdVectorType'
-  -> AttackVectorDescription
+attackVectorDescription
+    :: Text -- ^ 'avdVectorType'
+    -> AttackVectorDescription
 attackVectorDescription pVectorType_ =
   AttackVectorDescription' {_avdVectorType = pVectorType_}
 
+
 -- | The attack type. Valid values:     * UDP_TRAFFIC     * UDP_FRAGMENT     * GENERIC_UDP_REFLECTION     * DNS_REFLECTION     * NTP_REFLECTION     * CHARGEN_REFLECTION     * SSDP_REFLECTION     * PORT_MAPPER     * RIP_REFLECTION     * SNMP_REFLECTION     * MSSQL_REFLECTION     * NET_BIOS_REFLECTION     * SYN_FLOOD     * ACK_FLOOD     * REQUEST_FLOOD
 avdVectorType :: Lens' AttackVectorDescription Text
-avdVectorType = lens _avdVectorType (\s a -> s {_avdVectorType = a})
+avdVectorType = lens _avdVectorType (\ s a -> s{_avdVectorType = a})
 
 instance FromJSON AttackVectorDescription where
-  parseJSON =
-    withObject
-      "AttackVectorDescription"
-      (\x -> AttackVectorDescription' <$> (x .: "VectorType"))
+        parseJSON
+          = withObject "AttackVectorDescription"
+              (\ x ->
+                 AttackVectorDescription' <$> (x .: "VectorType"))
 
-instance Hashable AttackVectorDescription
+instance Hashable AttackVectorDescription where
 
-instance NFData AttackVectorDescription
+instance NFData AttackVectorDescription where
 
 -- | A contributor to the attack and their contribution.
 --
@@ -323,6 +325,7 @@ data Contributor =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Contributor' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -330,26 +333,28 @@ data Contributor =
 -- * 'cValue' - The contribution of this contributor expressed in 'Protection' units. For example @10,000@ .
 --
 -- * 'cName' - The name of the contributor. This is dependent on the @AttackPropertyIdentifier@ . For example, if the @AttackPropertyIdentifier@ is @SOURCE_COUNTRY@ , the @Name@ could be @United States@ .
-contributor :: Contributor
+contributor
+    :: Contributor
 contributor = Contributor' {_cValue = Nothing, _cName = Nothing}
+
 
 -- | The contribution of this contributor expressed in 'Protection' units. For example @10,000@ .
 cValue :: Lens' Contributor (Maybe Integer)
-cValue = lens _cValue (\s a -> s {_cValue = a})
+cValue = lens _cValue (\ s a -> s{_cValue = a})
 
 -- | The name of the contributor. This is dependent on the @AttackPropertyIdentifier@ . For example, if the @AttackPropertyIdentifier@ is @SOURCE_COUNTRY@ , the @Name@ could be @United States@ .
 cName :: Lens' Contributor (Maybe Text)
-cName = lens _cName (\s a -> s {_cName = a})
+cName = lens _cName (\ s a -> s{_cName = a})
 
 instance FromJSON Contributor where
-  parseJSON =
-    withObject
-      "Contributor"
-      (\x -> Contributor' <$> (x .:? "Value") <*> (x .:? "Name"))
+        parseJSON
+          = withObject "Contributor"
+              (\ x ->
+                 Contributor' <$> (x .:? "Value") <*> (x .:? "Name"))
 
-instance Hashable Contributor
+instance Hashable Contributor where
 
-instance NFData Contributor
+instance NFData Contributor where
 
 -- | The mitigation applied to a DDoS attack.
 --
@@ -362,25 +367,29 @@ newtype Mitigation =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Mitigation' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'mMitigationName' - The name of the mitigation taken for this attack.
-mitigation :: Mitigation
+mitigation
+    :: Mitigation
 mitigation = Mitigation' {_mMitigationName = Nothing}
+
 
 -- | The name of the mitigation taken for this attack.
 mMitigationName :: Lens' Mitigation (Maybe Text)
-mMitigationName = lens _mMitigationName (\s a -> s {_mMitigationName = a})
+mMitigationName = lens _mMitigationName (\ s a -> s{_mMitigationName = a})
 
 instance FromJSON Mitigation where
-  parseJSON =
-    withObject "Mitigation" (\x -> Mitigation' <$> (x .:? "MitigationName"))
+        parseJSON
+          = withObject "Mitigation"
+              (\ x -> Mitigation' <$> (x .:? "MitigationName"))
 
-instance Hashable Mitigation
+instance Hashable Mitigation where
 
-instance NFData Mitigation
+instance NFData Mitigation where
 
 -- | An object that represents a resource that is under DDoS protection.
 --
@@ -395,6 +404,7 @@ data Protection =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Protection' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -404,33 +414,35 @@ data Protection =
 -- * 'pName' - The friendly name of the protection. For example, @My CloudFront distributions@ .
 --
 -- * 'pId' - The unique identifier (ID) of the protection.
-protection :: Protection
+protection
+    :: Protection
 protection =
   Protection' {_pResourceARN = Nothing, _pName = Nothing, _pId = Nothing}
 
+
 -- | The ARN (Amazon Resource Name) of the AWS resource that is protected.
 pResourceARN :: Lens' Protection (Maybe Text)
-pResourceARN = lens _pResourceARN (\s a -> s {_pResourceARN = a})
+pResourceARN = lens _pResourceARN (\ s a -> s{_pResourceARN = a})
 
 -- | The friendly name of the protection. For example, @My CloudFront distributions@ .
 pName :: Lens' Protection (Maybe Text)
-pName = lens _pName (\s a -> s {_pName = a})
+pName = lens _pName (\ s a -> s{_pName = a})
 
 -- | The unique identifier (ID) of the protection.
 pId :: Lens' Protection (Maybe Text)
-pId = lens _pId (\s a -> s {_pId = a})
+pId = lens _pId (\ s a -> s{_pId = a})
 
 instance FromJSON Protection where
-  parseJSON =
-    withObject
-      "Protection"
-      (\x ->
-         Protection' <$> (x .:? "ResourceArn") <*> (x .:? "Name") <*>
-         (x .:? "Id"))
+        parseJSON
+          = withObject "Protection"
+              (\ x ->
+                 Protection' <$>
+                   (x .:? "ResourceArn") <*> (x .:? "Name") <*>
+                     (x .:? "Id"))
 
-instance Hashable Protection
+instance Hashable Protection where
 
-instance NFData Protection
+instance NFData Protection where
 
 -- | The attack information for the specified SubResource.
 --
@@ -446,6 +458,7 @@ data SubResourceSummary =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SubResourceSummary' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -457,7 +470,8 @@ data SubResourceSummary =
 -- * 'srsId' - The unique identifier (ID) of the @SubResource@ .
 --
 -- * 'srsType' - The @SubResource@ type.
-subResourceSummary :: SubResourceSummary
+subResourceSummary
+    :: SubResourceSummary
 subResourceSummary =
   SubResourceSummary'
     { _srsCounters = Nothing
@@ -466,38 +480,36 @@ subResourceSummary =
     , _srsType = Nothing
     }
 
+
 -- | The counters that describe the details of the attack.
 srsCounters :: Lens' SubResourceSummary [SummarizedCounter]
-srsCounters =
-  lens _srsCounters (\s a -> s {_srsCounters = a}) . _Default . _Coerce
+srsCounters = lens _srsCounters (\ s a -> s{_srsCounters = a}) . _Default . _Coerce
 
 -- | The list of attack types and associated counters.
 srsAttackVectors :: Lens' SubResourceSummary [SummarizedAttackVector]
-srsAttackVectors =
-  lens _srsAttackVectors (\s a -> s {_srsAttackVectors = a}) .
-  _Default . _Coerce
+srsAttackVectors = lens _srsAttackVectors (\ s a -> s{_srsAttackVectors = a}) . _Default . _Coerce
 
 -- | The unique identifier (ID) of the @SubResource@ .
 srsId :: Lens' SubResourceSummary (Maybe Text)
-srsId = lens _srsId (\s a -> s {_srsId = a})
+srsId = lens _srsId (\ s a -> s{_srsId = a})
 
 -- | The @SubResource@ type.
 srsType :: Lens' SubResourceSummary (Maybe SubResourceType)
-srsType = lens _srsType (\s a -> s {_srsType = a})
+srsType = lens _srsType (\ s a -> s{_srsType = a})
 
 instance FromJSON SubResourceSummary where
-  parseJSON =
-    withObject
-      "SubResourceSummary"
-      (\x ->
-         SubResourceSummary' <$> (x .:? "Counters" .!= mempty) <*>
-         (x .:? "AttackVectors" .!= mempty) <*>
-         (x .:? "Id") <*>
-         (x .:? "Type"))
+        parseJSON
+          = withObject "SubResourceSummary"
+              (\ x ->
+                 SubResourceSummary' <$>
+                   (x .:? "Counters" .!= mempty) <*>
+                     (x .:? "AttackVectors" .!= mempty)
+                     <*> (x .:? "Id")
+                     <*> (x .:? "Type"))
 
-instance Hashable SubResourceSummary
+instance Hashable SubResourceSummary where
 
-instance NFData SubResourceSummary
+instance NFData SubResourceSummary where
 
 -- | Information about the AWS Shield Advanced subscription for an account.
 --
@@ -511,6 +523,7 @@ data Subscription =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Subscription' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -518,31 +531,31 @@ data Subscription =
 -- * 'sTimeCommitmentInSeconds' - The length, in seconds, of the AWS Shield Advanced subscription for the account.
 --
 -- * 'sStartTime' - The start time of the subscription, in Unix time in seconds. For more information see <http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types timestamp> .
-subscription :: Subscription
+subscription
+    :: Subscription
 subscription =
   Subscription' {_sTimeCommitmentInSeconds = Nothing, _sStartTime = Nothing}
 
+
 -- | The length, in seconds, of the AWS Shield Advanced subscription for the account.
 sTimeCommitmentInSeconds :: Lens' Subscription (Maybe Natural)
-sTimeCommitmentInSeconds =
-  lens _sTimeCommitmentInSeconds (\s a -> s {_sTimeCommitmentInSeconds = a}) .
-  mapping _Nat
+sTimeCommitmentInSeconds = lens _sTimeCommitmentInSeconds (\ s a -> s{_sTimeCommitmentInSeconds = a}) . mapping _Nat
 
 -- | The start time of the subscription, in Unix time in seconds. For more information see <http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types timestamp> .
 sStartTime :: Lens' Subscription (Maybe UTCTime)
-sStartTime = lens _sStartTime (\s a -> s {_sStartTime = a}) . mapping _Time
+sStartTime = lens _sStartTime (\ s a -> s{_sStartTime = a}) . mapping _Time
 
 instance FromJSON Subscription where
-  parseJSON =
-    withObject
-      "Subscription"
-      (\x ->
-         Subscription' <$> (x .:? "TimeCommitmentInSeconds") <*>
-         (x .:? "StartTime"))
+        parseJSON
+          = withObject "Subscription"
+              (\ x ->
+                 Subscription' <$>
+                   (x .:? "TimeCommitmentInSeconds") <*>
+                     (x .:? "StartTime"))
 
-instance Hashable Subscription
+instance Hashable Subscription where
 
-instance NFData Subscription
+instance NFData Subscription where
 
 -- | A summary of information about the attack.
 --
@@ -556,6 +569,7 @@ data SummarizedAttackVector =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SummarizedAttackVector' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -563,34 +577,33 @@ data SummarizedAttackVector =
 -- * 'savVectorCounters' - The list of counters that describe the details of the attack.
 --
 -- * 'savVectorType' - The attack type, for example, SNMP reflection or SYN flood.
-summarizedAttackVector ::
-     Text -- ^ 'savVectorType'
-  -> SummarizedAttackVector
+summarizedAttackVector
+    :: Text -- ^ 'savVectorType'
+    -> SummarizedAttackVector
 summarizedAttackVector pVectorType_ =
   SummarizedAttackVector'
     {_savVectorCounters = Nothing, _savVectorType = pVectorType_}
 
+
 -- | The list of counters that describe the details of the attack.
 savVectorCounters :: Lens' SummarizedAttackVector [SummarizedCounter]
-savVectorCounters =
-  lens _savVectorCounters (\s a -> s {_savVectorCounters = a}) .
-  _Default . _Coerce
+savVectorCounters = lens _savVectorCounters (\ s a -> s{_savVectorCounters = a}) . _Default . _Coerce
 
 -- | The attack type, for example, SNMP reflection or SYN flood.
 savVectorType :: Lens' SummarizedAttackVector Text
-savVectorType = lens _savVectorType (\s a -> s {_savVectorType = a})
+savVectorType = lens _savVectorType (\ s a -> s{_savVectorType = a})
 
 instance FromJSON SummarizedAttackVector where
-  parseJSON =
-    withObject
-      "SummarizedAttackVector"
-      (\x ->
-         SummarizedAttackVector' <$> (x .:? "VectorCounters" .!= mempty) <*>
-         (x .: "VectorType"))
+        parseJSON
+          = withObject "SummarizedAttackVector"
+              (\ x ->
+                 SummarizedAttackVector' <$>
+                   (x .:? "VectorCounters" .!= mempty) <*>
+                     (x .: "VectorType"))
 
-instance Hashable SummarizedAttackVector
+instance Hashable SummarizedAttackVector where
 
-instance NFData SummarizedAttackVector
+instance NFData SummarizedAttackVector where
 
 -- | The counter that describes a DDoS attack.
 --
@@ -608,6 +621,7 @@ data SummarizedCounter =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SummarizedCounter' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -623,7 +637,8 @@ data SummarizedCounter =
 -- * 'scSum' - The total of counter values for a specified time period.
 --
 -- * 'scUnit' - The unit of the counters.
-summarizedCounter :: SummarizedCounter
+summarizedCounter
+    :: SummarizedCounter
 summarizedCounter =
   SummarizedCounter'
     { _scMax = Nothing
@@ -634,44 +649,44 @@ summarizedCounter =
     , _scUnit = Nothing
     }
 
+
 -- | The maximum value of the counter for a specified time period.
 scMax :: Lens' SummarizedCounter (Maybe Double)
-scMax = lens _scMax (\s a -> s {_scMax = a})
+scMax = lens _scMax (\ s a -> s{_scMax = a})
 
 -- | The average value of the counter for a specified time period.
 scAverage :: Lens' SummarizedCounter (Maybe Double)
-scAverage = lens _scAverage (\s a -> s {_scAverage = a})
+scAverage = lens _scAverage (\ s a -> s{_scAverage = a})
 
 -- | The number of counters for a specified time period.
 scN :: Lens' SummarizedCounter (Maybe Int)
-scN = lens _scN (\s a -> s {_scN = a})
+scN = lens _scN (\ s a -> s{_scN = a})
 
 -- | The counter name.
 scName :: Lens' SummarizedCounter (Maybe Text)
-scName = lens _scName (\s a -> s {_scName = a})
+scName = lens _scName (\ s a -> s{_scName = a})
 
 -- | The total of counter values for a specified time period.
 scSum :: Lens' SummarizedCounter (Maybe Double)
-scSum = lens _scSum (\s a -> s {_scSum = a})
+scSum = lens _scSum (\ s a -> s{_scSum = a})
 
 -- | The unit of the counters.
 scUnit :: Lens' SummarizedCounter (Maybe Text)
-scUnit = lens _scUnit (\s a -> s {_scUnit = a})
+scUnit = lens _scUnit (\ s a -> s{_scUnit = a})
 
 instance FromJSON SummarizedCounter where
-  parseJSON =
-    withObject
-      "SummarizedCounter"
-      (\x ->
-         SummarizedCounter' <$> (x .:? "Max") <*> (x .:? "Average") <*>
-         (x .:? "N") <*>
-         (x .:? "Name") <*>
-         (x .:? "Sum") <*>
-         (x .:? "Unit"))
+        parseJSON
+          = withObject "SummarizedCounter"
+              (\ x ->
+                 SummarizedCounter' <$>
+                   (x .:? "Max") <*> (x .:? "Average") <*> (x .:? "N")
+                     <*> (x .:? "Name")
+                     <*> (x .:? "Sum")
+                     <*> (x .:? "Unit"))
 
-instance Hashable SummarizedCounter
+instance Hashable SummarizedCounter where
 
-instance NFData SummarizedCounter
+instance NFData SummarizedCounter where
 
 -- | The time range.
 --
@@ -685,6 +700,7 @@ data TimeRange =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'TimeRange' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -692,27 +708,26 @@ data TimeRange =
 -- * 'trFromInclusive' - The start time, in Unix time in seconds. For more information see <http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types timestamp> .
 --
 -- * 'trToExclusive' - The end time, in Unix time in seconds. For more information see <http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types timestamp> .
-timeRange :: TimeRange
+timeRange
+    :: TimeRange
 timeRange = TimeRange' {_trFromInclusive = Nothing, _trToExclusive = Nothing}
+
 
 -- | The start time, in Unix time in seconds. For more information see <http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types timestamp> .
 trFromInclusive :: Lens' TimeRange (Maybe UTCTime)
-trFromInclusive =
-  lens _trFromInclusive (\s a -> s {_trFromInclusive = a}) . mapping _Time
+trFromInclusive = lens _trFromInclusive (\ s a -> s{_trFromInclusive = a}) . mapping _Time
 
 -- | The end time, in Unix time in seconds. For more information see <http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types timestamp> .
 trToExclusive :: Lens' TimeRange (Maybe UTCTime)
-trToExclusive =
-  lens _trToExclusive (\s a -> s {_trToExclusive = a}) . mapping _Time
+trToExclusive = lens _trToExclusive (\ s a -> s{_trToExclusive = a}) . mapping _Time
 
-instance Hashable TimeRange
+instance Hashable TimeRange where
 
-instance NFData TimeRange
+instance NFData TimeRange where
 
 instance ToJSON TimeRange where
-  toJSON TimeRange' {..} =
-    object
-      (catMaybes
-         [ ("FromInclusive" .=) <$> _trFromInclusive
-         , ("ToExclusive" .=) <$> _trToExclusive
-         ])
+        toJSON TimeRange'{..}
+          = object
+              (catMaybes
+                 [("FromInclusive" .=) <$> _trFromInclusive,
+                  ("ToExclusive" .=) <$> _trToExclusive])

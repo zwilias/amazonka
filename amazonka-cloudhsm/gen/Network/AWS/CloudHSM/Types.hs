@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CloudHSM.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,26 +11,33 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.CloudHSM.Types
+    (
     -- * Service Configuration
-  ( cloudHSM
+      cloudHSM
+
     -- * Errors
-  , _InvalidRequestException
-  , _CloudHSMServiceException
-  , _CloudHSMInternalException
+    , _InvalidRequestException
+    , _CloudHSMServiceException
+    , _CloudHSMInternalException
+
     -- * ClientVersion
-  , ClientVersion(..)
+    , ClientVersion (..)
+
     -- * CloudHSMObjectState
-  , CloudHSMObjectState(..)
+    , CloudHSMObjectState (..)
+
     -- * HSMStatus
-  , HSMStatus(..)
+    , HSMStatus (..)
+
     -- * SubscriptionType
-  , SubscriptionType(..)
+    , SubscriptionType (..)
+
     -- * Tag
-  , Tag
-  , tag
-  , tagKey
-  , tagValue
-  ) where
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
+    ) where
 
 import Network.AWS.CloudHSM.Types.Product
 import Network.AWS.CloudHSM.Types.Sum
@@ -75,25 +83,26 @@ cloudHSM =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | Indicates that one or more of the request parameters are not valid.
 --
 --
-_InvalidRequestException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidRequestException = _MatchServiceError cloudHSM "InvalidRequestException"
+
 
 -- | Indicates that an exception occurred in the AWS CloudHSM service.
 --
 --
-_CloudHSMServiceException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_CloudHSMServiceException :: AsError a => Getting (First ServiceError) a ServiceError
 _CloudHSMServiceException =
   _MatchServiceError cloudHSM "CloudHsmServiceException"
+
 
 -- | Indicates that an internal error occurred.
 --
 --
-_CloudHSMInternalException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_CloudHSMInternalException :: AsError a => Getting (First ServiceError) a ServiceError
 _CloudHSMInternalException =
   _MatchServiceError cloudHSM "CloudHsmInternalException"
+

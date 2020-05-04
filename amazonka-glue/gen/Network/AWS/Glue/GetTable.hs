@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Glue.GetTable
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,20 +22,22 @@
 --
 --
 module Network.AWS.Glue.GetTable
+    (
     -- * Creating a Request
-  ( getTable
-  , GetTable
+      getTable
+    , GetTable
     -- * Request Lenses
-  , gttCatalogId
-  , gttDatabaseName
-  , gttName
+    , gttCatalogId
+    , gttDatabaseName
+    , gttName
+
     -- * Destructuring the Response
-  , getTableResponse
-  , GetTableResponse
+    , getTableResponse
+    , GetTableResponse
     -- * Response Lenses
-  , ggrsTable
-  , ggrsResponseStatus
-  ) where
+    , ggrsTable
+    , ggrsResponseStatus
+    ) where
 
 import Network.AWS.Glue.Types
 import Network.AWS.Glue.Types.Product
@@ -51,6 +55,7 @@ data GetTable =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetTable' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -60,10 +65,10 @@ data GetTable =
 -- * 'gttDatabaseName' - The name of the database in the catalog in which the table resides. For Hive compatibility, this name is entirely lowercase.
 --
 -- * 'gttName' - The name of the table for which to retrieve the definition. For Hive compatibility, this name is entirely lowercase.
-getTable ::
-     Text -- ^ 'gttDatabaseName'
-  -> Text -- ^ 'gttName'
-  -> GetTable
+getTable
+    :: Text -- ^ 'gttDatabaseName'
+    -> Text -- ^ 'gttName'
+    -> GetTable
 getTable pDatabaseName_ pName_ =
   GetTable'
     { _gttCatalogId = Nothing
@@ -71,51 +76,54 @@ getTable pDatabaseName_ pName_ =
     , _gttName = pName_
     }
 
+
 -- | The ID of the Data Catalog where the table resides. If none is supplied, the AWS account ID is used by default.
 gttCatalogId :: Lens' GetTable (Maybe Text)
-gttCatalogId = lens _gttCatalogId (\s a -> s {_gttCatalogId = a})
+gttCatalogId = lens _gttCatalogId (\ s a -> s{_gttCatalogId = a})
 
 -- | The name of the database in the catalog in which the table resides. For Hive compatibility, this name is entirely lowercase.
 gttDatabaseName :: Lens' GetTable Text
-gttDatabaseName = lens _gttDatabaseName (\s a -> s {_gttDatabaseName = a})
+gttDatabaseName = lens _gttDatabaseName (\ s a -> s{_gttDatabaseName = a})
 
 -- | The name of the table for which to retrieve the definition. For Hive compatibility, this name is entirely lowercase.
 gttName :: Lens' GetTable Text
-gttName = lens _gttName (\s a -> s {_gttName = a})
+gttName = lens _gttName (\ s a -> s{_gttName = a})
 
 instance AWSRequest GetTable where
-  type Rs GetTable = GetTableResponse
-  request = postJSON glue
-  response =
-    receiveJSON
-      (\s h x -> GetTableResponse' <$> (x .?> "Table") <*> (pure (fromEnum s)))
+        type Rs GetTable = GetTableResponse
+        request = postJSON glue
+        response
+          = receiveJSON
+              (\ s h x ->
+                 GetTableResponse' <$>
+                   (x .?> "Table") <*> (pure (fromEnum s)))
 
-instance Hashable GetTable
+instance Hashable GetTable where
 
-instance NFData GetTable
+instance NFData GetTable where
 
 instance ToHeaders GetTable where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("AWSGlue.GetTable" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWSGlue.GetTable" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON GetTable where
-  toJSON GetTable' {..} =
-    object
-      (catMaybes
-         [ ("CatalogId" .=) <$> _gttCatalogId
-         , Just ("DatabaseName" .= _gttDatabaseName)
-         , Just ("Name" .= _gttName)
-         ])
+        toJSON GetTable'{..}
+          = object
+              (catMaybes
+                 [("CatalogId" .=) <$> _gttCatalogId,
+                  Just ("DatabaseName" .= _gttDatabaseName),
+                  Just ("Name" .= _gttName)])
 
 instance ToPath GetTable where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery GetTable where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'getTableResponse' smart constructor.
 data GetTableResponse =
@@ -125,6 +133,7 @@ data GetTableResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetTableResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -132,20 +141,20 @@ data GetTableResponse =
 -- * 'ggrsTable' - The @Table@ object that defines the specified table.
 --
 -- * 'ggrsResponseStatus' - -- | The response status code.
-getTableResponse ::
-     Int -- ^ 'ggrsResponseStatus'
-  -> GetTableResponse
+getTableResponse
+    :: Int -- ^ 'ggrsResponseStatus'
+    -> GetTableResponse
 getTableResponse pResponseStatus_ =
   GetTableResponse'
     {_ggrsTable = Nothing, _ggrsResponseStatus = pResponseStatus_}
 
+
 -- | The @Table@ object that defines the specified table.
 ggrsTable :: Lens' GetTableResponse (Maybe Table)
-ggrsTable = lens _ggrsTable (\s a -> s {_ggrsTable = a})
+ggrsTable = lens _ggrsTable (\ s a -> s{_ggrsTable = a})
 
 -- | -- | The response status code.
 ggrsResponseStatus :: Lens' GetTableResponse Int
-ggrsResponseStatus =
-  lens _ggrsResponseStatus (\s a -> s {_ggrsResponseStatus = a})
+ggrsResponseStatus = lens _ggrsResponseStatus (\ s a -> s{_ggrsResponseStatus = a})
 
-instance NFData GetTableResponse
+instance NFData GetTableResponse where

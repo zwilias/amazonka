@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Organizations.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,189 +11,222 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.Organizations.Types
+    (
     -- * Service Configuration
-  ( organizations
+      organizations
+
     -- * Errors
-  , _PolicyNotFoundException
-  , _PolicyTypeAlreadyEnabledException
-  , _HandshakeConstraintViolationException
-  , _AccessDeniedException
-  , _MalformedPolicyDocumentException
-  , _RootNotFoundException
-  , _MasterCannotLeaveOrganizationException
-  , _AccountNotFoundException
-  , _DuplicatePolicyException
-  , _ConstraintViolationException
-  , _FinalizingOrganizationException
-  , _HandshakeNotFoundException
-  , _PolicyTypeNotAvailableForOrganizationException
-  , _ChildNotFoundException
-  , _OrganizationalUnitNotFoundException
-  , _DestinationParentNotFoundException
-  , _OrganizationNotEmptyException
-  , _PolicyTypeNotEnabledException
-  , _DuplicateHandshakeException
-  , _OrganizationalUnitNotEmptyException
-  , _TooManyRequestsException
-  , _ConcurrentModificationException
-  , _ServiceException
-  , _SourceParentNotFoundException
-  , _TargetNotFoundException
-  , _CreateAccountStatusNotFoundException
-  , _AlreadyInOrganizationException
-  , _DuplicateOrganizationalUnitException
-  , _InvalidInputException
-  , _PolicyNotAttachedException
-  , _ParentNotFoundException
-  , _AccessDeniedForDependencyException
-  , _AWSOrganizationsNotInUseException
-  , _PolicyInUseException
-  , _InvalidHandshakeTransitionException
-  , _HandshakeAlreadyInStateException
-  , _DuplicateAccountException
-  , _DuplicatePolicyAttachmentException
+    , _PolicyNotFoundException
+    , _PolicyTypeAlreadyEnabledException
+    , _HandshakeConstraintViolationException
+    , _AccessDeniedException
+    , _MalformedPolicyDocumentException
+    , _RootNotFoundException
+    , _MasterCannotLeaveOrganizationException
+    , _AccountNotFoundException
+    , _DuplicatePolicyException
+    , _ConstraintViolationException
+    , _FinalizingOrganizationException
+    , _HandshakeNotFoundException
+    , _PolicyTypeNotAvailableForOrganizationException
+    , _ChildNotFoundException
+    , _OrganizationalUnitNotFoundException
+    , _DestinationParentNotFoundException
+    , _OrganizationNotEmptyException
+    , _PolicyTypeNotEnabledException
+    , _DuplicateHandshakeException
+    , _OrganizationalUnitNotEmptyException
+    , _TooManyRequestsException
+    , _ConcurrentModificationException
+    , _ServiceException
+    , _SourceParentNotFoundException
+    , _TargetNotFoundException
+    , _CreateAccountStatusNotFoundException
+    , _AlreadyInOrganizationException
+    , _DuplicateOrganizationalUnitException
+    , _InvalidInputException
+    , _PolicyNotAttachedException
+    , _ParentNotFoundException
+    , _AccessDeniedForDependencyException
+    , _AWSOrganizationsNotInUseException
+    , _PolicyInUseException
+    , _InvalidHandshakeTransitionException
+    , _HandshakeAlreadyInStateException
+    , _DuplicateAccountException
+    , _DuplicatePolicyAttachmentException
+
     -- * AccountJoinedMethod
-  , AccountJoinedMethod(..)
+    , AccountJoinedMethod (..)
+
     -- * AccountStatus
-  , AccountStatus(..)
+    , AccountStatus (..)
+
     -- * ActionType
-  , ActionType(..)
+    , ActionType (..)
+
     -- * ChildType
-  , ChildType(..)
+    , ChildType (..)
+
     -- * CreateAccountFailureReason
-  , CreateAccountFailureReason(..)
+    , CreateAccountFailureReason (..)
+
     -- * CreateAccountState
-  , CreateAccountState(..)
+    , CreateAccountState (..)
+
     -- * HandshakePartyType
-  , HandshakePartyType(..)
+    , HandshakePartyType (..)
+
     -- * HandshakeResourceType
-  , HandshakeResourceType(..)
+    , HandshakeResourceType (..)
+
     -- * HandshakeState
-  , HandshakeState(..)
+    , HandshakeState (..)
+
     -- * IAMUserAccessToBilling
-  , IAMUserAccessToBilling(..)
+    , IAMUserAccessToBilling (..)
+
     -- * OrganizationFeatureSet
-  , OrganizationFeatureSet(..)
+    , OrganizationFeatureSet (..)
+
     -- * ParentType
-  , ParentType(..)
+    , ParentType (..)
+
     -- * PolicyType
-  , PolicyType(..)
+    , PolicyType (..)
+
     -- * PolicyTypeStatus
-  , PolicyTypeStatus(..)
+    , PolicyTypeStatus (..)
+
     -- * TargetType
-  , TargetType(..)
+    , TargetType (..)
+
     -- * Account
-  , Account
-  , account
-  , aStatus
-  , aJoinedMethod
-  , aEmail
-  , aARN
-  , aJoinedTimestamp
-  , aName
-  , aId
+    , Account
+    , account
+    , aStatus
+    , aJoinedMethod
+    , aEmail
+    , aARN
+    , aJoinedTimestamp
+    , aName
+    , aId
+
     -- * Child
-  , Child
-  , child
-  , cId
-  , cType
+    , Child
+    , child
+    , cId
+    , cType
+
     -- * CreateAccountStatus
-  , CreateAccountStatus
-  , createAccountStatus
-  , casFailureReason
-  , casState
-  , casCompletedTimestamp
-  , casAccountName
-  , casAccountId
-  , casId
-  , casRequestedTimestamp
+    , CreateAccountStatus
+    , createAccountStatus
+    , casFailureReason
+    , casState
+    , casCompletedTimestamp
+    , casAccountName
+    , casAccountId
+    , casId
+    , casRequestedTimestamp
+
     -- * EnabledServicePrincipal
-  , EnabledServicePrincipal
-  , enabledServicePrincipal
-  , espServicePrincipal
-  , espDateEnabled
+    , EnabledServicePrincipal
+    , enabledServicePrincipal
+    , espServicePrincipal
+    , espDateEnabled
+
     -- * Handshake
-  , Handshake
-  , handshake
-  , hState
-  , hARN
-  , hAction
-  , hResources
-  , hId
-  , hExpirationTimestamp
-  , hParties
-  , hRequestedTimestamp
+    , Handshake
+    , handshake
+    , hState
+    , hARN
+    , hAction
+    , hResources
+    , hId
+    , hExpirationTimestamp
+    , hParties
+    , hRequestedTimestamp
+
     -- * HandshakeFilter
-  , HandshakeFilter
-  , handshakeFilter
-  , hfParentHandshakeId
-  , hfActionType
+    , HandshakeFilter
+    , handshakeFilter
+    , hfParentHandshakeId
+    , hfActionType
+
     -- * HandshakeParty
-  , HandshakeParty
-  , handshakeParty
-  , hpId
-  , hpType
+    , HandshakeParty
+    , handshakeParty
+    , hpId
+    , hpType
+
     -- * HandshakeResource
-  , HandshakeResource
-  , handshakeResource
-  , hrValue
-  , hrResources
-  , hrType
+    , HandshakeResource
+    , handshakeResource
+    , hrValue
+    , hrResources
+    , hrType
+
     -- * Organization
-  , Organization
-  , organization
-  , oARN
-  , oMasterAccountId
-  , oMasterAccountARN
-  , oMasterAccountEmail
-  , oAvailablePolicyTypes
-  , oId
-  , oFeatureSet
+    , Organization
+    , organization
+    , oARN
+    , oMasterAccountId
+    , oMasterAccountARN
+    , oMasterAccountEmail
+    , oAvailablePolicyTypes
+    , oId
+    , oFeatureSet
+
     -- * OrganizationalUnit
-  , OrganizationalUnit
-  , organizationalUnit
-  , ouARN
-  , ouName
-  , ouId
+    , OrganizationalUnit
+    , organizationalUnit
+    , ouARN
+    , ouName
+    , ouId
+
     -- * Parent
-  , Parent
-  , parent
-  , pId
-  , pType
+    , Parent
+    , parent
+    , pId
+    , pType
+
     -- * Policy
-  , Policy
-  , policy
-  , pContent
-  , pPolicySummary
+    , Policy
+    , policy
+    , pContent
+    , pPolicySummary
+
     -- * PolicySummary
-  , PolicySummary
-  , policySummary
-  , psARN
-  , psName
-  , psId
-  , psAWSManaged
-  , psType
-  , psDescription
+    , PolicySummary
+    , policySummary
+    , psARN
+    , psName
+    , psId
+    , psAWSManaged
+    , psType
+    , psDescription
+
     -- * PolicyTargetSummary
-  , PolicyTargetSummary
-  , policyTargetSummary
-  , polTargetId
-  , polARN
-  , polName
-  , polType
+    , PolicyTargetSummary
+    , policyTargetSummary
+    , polTargetId
+    , polARN
+    , polName
+    , polType
+
     -- * PolicyTypeSummary
-  , PolicyTypeSummary
-  , policyTypeSummary
-  , ptsStatus
-  , ptsType
+    , PolicyTypeSummary
+    , policyTypeSummary
+    , ptsStatus
+    , ptsType
+
     -- * Root
-  , Root
-  , root
-  , rARN
-  , rName
-  , rId
-  , rPolicyTypes
-  ) where
+    , Root
+    , root
+    , rARN
+    , rName
+    , rId
+    , rPolicyTypes
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types.Product
@@ -238,21 +272,22 @@ organizations =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | We can't find a policy with the PolicyId that you specified.
 --
 --
-_PolicyNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_PolicyNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _PolicyNotFoundException =
   _MatchServiceError organizations "PolicyNotFoundException"
+
 
 -- | The specified policy type is already enabled in the specified root.
 --
 --
-_PolicyTypeAlreadyEnabledException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_PolicyTypeAlreadyEnabledException :: AsError a => Getting (First ServiceError) a ServiceError
 _PolicyTypeAlreadyEnabledException =
   _MatchServiceError organizations "PolicyTypeAlreadyEnabledException"
+
 
 -- | The requested operation would violate the constraint identified in the reason code.
 --
@@ -277,58 +312,58 @@ _PolicyTypeAlreadyEnabledException =
 --
 --
 --
-_HandshakeConstraintViolationException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_HandshakeConstraintViolationException :: AsError a => Getting (First ServiceError) a ServiceError
 _HandshakeConstraintViolationException =
   _MatchServiceError organizations "HandshakeConstraintViolationException"
+
 
 -- | You don't have permissions to perform the requested operation. The user or role that is making the request must have at least one IAM permissions policy attached that grants the required permissions. For more information, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/access.html Access Management> in the /IAM User Guide/ .
 --
 --
-_AccessDeniedException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
 _AccessDeniedException =
   _MatchServiceError organizations "AccessDeniedException"
+
 
 -- | The provided policy document does not meet the requirements of the specified policy type. For example, the syntax might be incorrect. For details about service control policy syntax, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html Service Control Policy Syntax> in the /AWS Organizations User Guide/ .
 --
 --
-_MalformedPolicyDocumentException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_MalformedPolicyDocumentException :: AsError a => Getting (First ServiceError) a ServiceError
 _MalformedPolicyDocumentException =
   _MatchServiceError organizations "MalformedPolicyDocumentException"
+
 
 -- | We can't find a root with the RootId that you specified.
 --
 --
-_RootNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_RootNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _RootNotFoundException =
   _MatchServiceError organizations "RootNotFoundException"
+
 
 -- | You can't remove a master account from an organization. If you want the master account to become a member account in another organization, you must first delete the current organization of the master account.
 --
 --
-_MasterCannotLeaveOrganizationException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_MasterCannotLeaveOrganizationException :: AsError a => Getting (First ServiceError) a ServiceError
 _MasterCannotLeaveOrganizationException =
   _MatchServiceError organizations "MasterCannotLeaveOrganizationException"
+
 
 -- | We can't find an AWS account with the AccountId that you specified, or the account whose credentials you used to make this request is not a member of an organization.
 --
 --
-_AccountNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_AccountNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _AccountNotFoundException =
   _MatchServiceError organizations "AccountNotFoundException"
+
 
 -- | A policy with the same name already exists.
 --
 --
-_DuplicatePolicyException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_DuplicatePolicyException :: AsError a => Getting (First ServiceError) a ServiceError
 _DuplicatePolicyException =
   _MatchServiceError organizations "DuplicatePolicyException"
+
 
 -- | Performing this operation violates a minimum or maximum value limit. For example, attempting to removing the last SCP from an OU or root, inviting or creating too many accounts to the organization, or attaching too many policies to an account, OU, or root. This exception includes a reason that contains additional information about the violated limit:
 --
@@ -371,108 +406,108 @@ _DuplicatePolicyException =
 --
 --
 --
-_ConstraintViolationException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ConstraintViolationException :: AsError a => Getting (First ServiceError) a ServiceError
 _ConstraintViolationException =
   _MatchServiceError organizations "ConstraintViolationException"
+
 
 -- | AWS Organizations could not finalize the creation of your organization. Try again later. If this persists, contact AWS customer support.
 --
 --
-_FinalizingOrganizationException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_FinalizingOrganizationException :: AsError a => Getting (First ServiceError) a ServiceError
 _FinalizingOrganizationException =
   _MatchServiceError organizations "FinalizingOrganizationException"
+
 
 -- | We can't find a handshake with the HandshakeId that you specified.
 --
 --
-_HandshakeNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_HandshakeNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _HandshakeNotFoundException =
   _MatchServiceError organizations "HandshakeNotFoundException"
+
 
 -- | You can't use the specified policy type with the feature set currently enabled for this organization. For example, you can enable service control policies (SCPs) only after you enable all features in the organization. For more information, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html#enable_policies_on_root Enabling and Disabling a Policy Type on a Root> in the /AWS Organizations User Guide/ .
 --
 --
-_PolicyTypeNotAvailableForOrganizationException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_PolicyTypeNotAvailableForOrganizationException :: AsError a => Getting (First ServiceError) a ServiceError
 _PolicyTypeNotAvailableForOrganizationException =
   _MatchServiceError
     organizations
     "PolicyTypeNotAvailableForOrganizationException"
 
+
 -- | We can't find an organizational unit (OU) or AWS account with the ChildId that you specified.
 --
 --
-_ChildNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ChildNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _ChildNotFoundException =
   _MatchServiceError organizations "ChildNotFoundException"
+
 
 -- | We can't find an organizational unit (OU) with the OrganizationalUnitId that you specified.
 --
 --
-_OrganizationalUnitNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_OrganizationalUnitNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _OrganizationalUnitNotFoundException =
   _MatchServiceError organizations "OrganizationalUnitNotFoundException"
+
 
 -- | We can't find the destination container (a root or OU) with the ParentId that you specified.
 --
 --
-_DestinationParentNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_DestinationParentNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _DestinationParentNotFoundException =
   _MatchServiceError organizations "DestinationParentNotFoundException"
+
 
 -- | The organization isn't empty. To delete an organization, you must first remove all accounts except the master account, delete all organizational units (OUs), and delete all policies.
 --
 --
-_OrganizationNotEmptyException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_OrganizationNotEmptyException :: AsError a => Getting (First ServiceError) a ServiceError
 _OrganizationNotEmptyException =
   _MatchServiceError organizations "OrganizationNotEmptyException"
+
 
 -- | The specified policy type is not currently enabled in this root. You cannot attach policies of the specified type to entities in a root until you enable that type in the root. For more information, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html Enabling All Features in Your Organization> in the /AWS Organizations User Guide/ .
 --
 --
-_PolicyTypeNotEnabledException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_PolicyTypeNotEnabledException :: AsError a => Getting (First ServiceError) a ServiceError
 _PolicyTypeNotEnabledException =
   _MatchServiceError organizations "PolicyTypeNotEnabledException"
+
 
 -- | A handshake with the same action and target already exists. For example, if you invited an account to join your organization, the invited account might already have a pending invitation from this organization. If you intend to resend an invitation to an account, ensure that existing handshakes that might be considered duplicates are canceled or declined.
 --
 --
-_DuplicateHandshakeException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_DuplicateHandshakeException :: AsError a => Getting (First ServiceError) a ServiceError
 _DuplicateHandshakeException =
   _MatchServiceError organizations "DuplicateHandshakeException"
+
 
 -- | The specified organizational unit (OU) is not empty. Move all accounts to another root or to other OUs, remove all child OUs, and then try the operation again.
 --
 --
-_OrganizationalUnitNotEmptyException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_OrganizationalUnitNotEmptyException :: AsError a => Getting (First ServiceError) a ServiceError
 _OrganizationalUnitNotEmptyException =
   _MatchServiceError organizations "OrganizationalUnitNotEmptyException"
+
 
 -- | You've sent too many requests in too short a period of time. The limit helps protect against denial-of-service attacks. Try again later.
 --
 --
-_TooManyRequestsException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
 _TooManyRequestsException =
   _MatchServiceError organizations "TooManyRequestsException"
+
 
 -- | The target of the operation is currently being modified by a different request. Try again later.
 --
 --
-_ConcurrentModificationException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
 _ConcurrentModificationException =
   _MatchServiceError organizations "ConcurrentModificationException"
+
 
 -- | AWS Organizations can't complete your request because of an internal service error. Try again later.
 --
@@ -480,45 +515,46 @@ _ConcurrentModificationException =
 _ServiceException :: AsError a => Getting (First ServiceError) a ServiceError
 _ServiceException = _MatchServiceError organizations "ServiceException"
 
+
 -- | We can't find a source root or OU with the ParentId that you specified.
 --
 --
-_SourceParentNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_SourceParentNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _SourceParentNotFoundException =
   _MatchServiceError organizations "SourceParentNotFoundException"
+
 
 -- | We can't find a root, OU, or account with the TargetId that you specified.
 --
 --
-_TargetNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_TargetNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _TargetNotFoundException =
   _MatchServiceError organizations "TargetNotFoundException"
+
 
 -- | We can't find an create account request with the CreateAccountRequestId that you specified.
 --
 --
-_CreateAccountStatusNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_CreateAccountStatusNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _CreateAccountStatusNotFoundException =
   _MatchServiceError organizations "CreateAccountStatusNotFoundException"
+
 
 -- | This account is already a member of an organization. An account can belong to only one organization at a time.
 --
 --
-_AlreadyInOrganizationException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_AlreadyInOrganizationException :: AsError a => Getting (First ServiceError) a ServiceError
 _AlreadyInOrganizationException =
   _MatchServiceError organizations "AlreadyInOrganizationException"
+
 
 -- | An organizational unit (OU) with the same name already exists.
 --
 --
-_DuplicateOrganizationalUnitException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_DuplicateOrganizationalUnitException :: AsError a => Getting (First ServiceError) a ServiceError
 _DuplicateOrganizationalUnitException =
   _MatchServiceError organizations "DuplicateOrganizationalUnitException"
+
 
 -- | The requested operation failed because you provided invalid values for one or more of the request parameters. This exception includes a reason that contains additional information about the violated limit:
 --
@@ -561,78 +597,78 @@ _DuplicateOrganizationalUnitException =
 --
 --
 --
-_InvalidInputException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidInputException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidInputException =
   _MatchServiceError organizations "InvalidInputException"
+
 
 -- | The policy isn't attached to the specified target in the specified root.
 --
 --
-_PolicyNotAttachedException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_PolicyNotAttachedException :: AsError a => Getting (First ServiceError) a ServiceError
 _PolicyNotAttachedException =
   _MatchServiceError organizations "PolicyNotAttachedException"
+
 
 -- | We can't find a root or organizational unit (OU) with the ParentId that you specified.
 --
 --
-_ParentNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ParentNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _ParentNotFoundException =
   _MatchServiceError organizations "ParentNotFoundException"
+
 
 -- | The operation you attempted requires you to have the @iam:CreateServiceLinkedRole@ so that Organizations can create the required service-linked role. You do not have that permission.
 --
 --
-_AccessDeniedForDependencyException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_AccessDeniedForDependencyException :: AsError a => Getting (First ServiceError) a ServiceError
 _AccessDeniedForDependencyException =
   _MatchServiceError organizations "AccessDeniedForDependencyException"
+
 
 -- | Your account is not a member of an organization. To make this request, you must use the credentials of an account that belongs to an organization.
 --
 --
-_AWSOrganizationsNotInUseException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_AWSOrganizationsNotInUseException :: AsError a => Getting (First ServiceError) a ServiceError
 _AWSOrganizationsNotInUseException =
   _MatchServiceError organizations "AWSOrganizationsNotInUseException"
+
 
 -- | The policy is attached to one or more entities. You must detach it from all roots, organizational units (OUs), and accounts before performing this operation.
 --
 --
-_PolicyInUseException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_PolicyInUseException :: AsError a => Getting (First ServiceError) a ServiceError
 _PolicyInUseException = _MatchServiceError organizations "PolicyInUseException"
+
 
 -- | You can't perform the operation on the handshake in its current state. For example, you can't cancel a handshake that was already accepted, or accept a handshake that was already declined.
 --
 --
-_InvalidHandshakeTransitionException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidHandshakeTransitionException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidHandshakeTransitionException =
   _MatchServiceError organizations "InvalidHandshakeTransitionException"
+
 
 -- | The specified handshake is already in the requested state. For example, you can't accept a handshake that was already accepted.
 --
 --
-_HandshakeAlreadyInStateException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_HandshakeAlreadyInStateException :: AsError a => Getting (First ServiceError) a ServiceError
 _HandshakeAlreadyInStateException =
   _MatchServiceError organizations "HandshakeAlreadyInStateException"
+
 
 -- | That account is already present in the specified destination.
 --
 --
-_DuplicateAccountException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_DuplicateAccountException :: AsError a => Getting (First ServiceError) a ServiceError
 _DuplicateAccountException =
   _MatchServiceError organizations "DuplicateAccountException"
+
 
 -- | The selected policy is already attached to the specified target.
 --
 --
-_DuplicatePolicyAttachmentException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_DuplicatePolicyAttachmentException :: AsError a => Getting (First ServiceError) a ServiceError
 _DuplicatePolicyAttachmentException =
   _MatchServiceError organizations "DuplicatePolicyAttachmentException"
+

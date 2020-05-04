@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CognitoIdentityProvider.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,529 +11,659 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.CognitoIdentityProvider.Types
+    (
     -- * Service Configuration
-  ( cognitoIdentityProvider
+      cognitoIdentityProvider
+
     -- * Errors
-  , _UnsupportedUserStateException
-  , _PasswordResetRequiredException
-  , _InvalidParameterException
-  , _InvalidLambdaResponseException
-  , _InvalidEmailRoleAccessPolicyException
-  , _UnsupportedIdentityProviderException
-  , _UserNotFoundException
-  , _UnexpectedLambdaException
-  , _NotAuthorizedException
-  , _InternalErrorException
-  , _InvalidUserPoolConfigurationException
-  , _InvalidSmsRoleAccessPolicyException
-  , _InvalidOAuthFlowException
-  , _CodeMismatchException
-  , _UserImportInProgressException
-  , _InvalidSmsRoleTrustRelationshipException
-  , _UserPoolTaggingException
-  , _SoftwareTokenMFANotFoundException
-  , _TooManyRequestsException
-  , _ConcurrentModificationException
-  , _UserPoolAddOnNotEnabledException
-  , _UserLambdaValidationException
-  , _PreconditionNotMetException
-  , _ExpiredCodeException
-  , _TooManyFailedAttemptsException
-  , _EnableSoftwareTokenMFAException
-  , _UserNotConfirmedException
-  , _GroupExistsException
-  , _CodeDeliveryFailureException
-  , _ScopeDoesNotExistException
-  , _ResourceNotFoundException
-  , _MFAMethodNotFoundException
-  , _AliasExistsException
-  , _DuplicateProviderException
-  , _LimitExceededException
-  , _InvalidPasswordException
-  , _UsernameExistsException
+    , _UnsupportedUserStateException
+    , _PasswordResetRequiredException
+    , _InvalidParameterException
+    , _InvalidLambdaResponseException
+    , _InvalidEmailRoleAccessPolicyException
+    , _UnsupportedIdentityProviderException
+    , _UserNotFoundException
+    , _UnexpectedLambdaException
+    , _NotAuthorizedException
+    , _InternalErrorException
+    , _InvalidUserPoolConfigurationException
+    , _InvalidSmsRoleAccessPolicyException
+    , _InvalidOAuthFlowException
+    , _CodeMismatchException
+    , _UserImportInProgressException
+    , _InvalidSmsRoleTrustRelationshipException
+    , _UserPoolTaggingException
+    , _SoftwareTokenMFANotFoundException
+    , _TooManyRequestsException
+    , _ConcurrentModificationException
+    , _UserPoolAddOnNotEnabledException
+    , _UserLambdaValidationException
+    , _PreconditionNotMetException
+    , _ExpiredCodeException
+    , _TooManyFailedAttemptsException
+    , _EnableSoftwareTokenMFAException
+    , _UserNotConfirmedException
+    , _GroupExistsException
+    , _CodeDeliveryFailureException
+    , _ScopeDoesNotExistException
+    , _ResourceNotFoundException
+    , _MFAMethodNotFoundException
+    , _AliasExistsException
+    , _DuplicateProviderException
+    , _LimitExceededException
+    , _InvalidPasswordException
+    , _UsernameExistsException
+
     -- * AccountTakeoverEventActionType
-  , AccountTakeoverEventActionType(..)
+    , AccountTakeoverEventActionType (..)
+
     -- * AdvancedSecurityModeType
-  , AdvancedSecurityModeType(..)
+    , AdvancedSecurityModeType (..)
+
     -- * AliasAttributeType
-  , AliasAttributeType(..)
+    , AliasAttributeType (..)
+
     -- * AttributeDataType
-  , AttributeDataType(..)
+    , AttributeDataType (..)
+
     -- * AuthFlowType
-  , AuthFlowType(..)
+    , AuthFlowType (..)
+
     -- * ChallengeName
-  , ChallengeName(..)
+    , ChallengeName (..)
+
     -- * ChallengeNameType
-  , ChallengeNameType(..)
+    , ChallengeNameType (..)
+
     -- * ChallengeResponse
-  , ChallengeResponse(..)
+    , ChallengeResponse (..)
+
     -- * CompromisedCredentialsEventActionType
-  , CompromisedCredentialsEventActionType(..)
+    , CompromisedCredentialsEventActionType (..)
+
     -- * DefaultEmailOptionType
-  , DefaultEmailOptionType(..)
+    , DefaultEmailOptionType (..)
+
     -- * DeliveryMediumType
-  , DeliveryMediumType(..)
+    , DeliveryMediumType (..)
+
     -- * DeviceRememberedStatusType
-  , DeviceRememberedStatusType(..)
+    , DeviceRememberedStatusType (..)
+
     -- * DomainStatusType
-  , DomainStatusType(..)
+    , DomainStatusType (..)
+
+    -- * EmailSendingAccountType
+    , EmailSendingAccountType (..)
+
     -- * EventFilterType
-  , EventFilterType(..)
+    , EventFilterType (..)
+
     -- * EventResponseType
-  , EventResponseType(..)
+    , EventResponseType (..)
+
     -- * EventType
-  , EventType(..)
+    , EventType (..)
+
     -- * ExplicitAuthFlowsType
-  , ExplicitAuthFlowsType(..)
+    , ExplicitAuthFlowsType (..)
+
     -- * FeedbackValueType
-  , FeedbackValueType(..)
+    , FeedbackValueType (..)
+
     -- * IdentityProviderTypeType
-  , IdentityProviderTypeType(..)
+    , IdentityProviderTypeType (..)
+
     -- * MessageActionType
-  , MessageActionType(..)
+    , MessageActionType (..)
+
     -- * OAuthFlowType
-  , OAuthFlowType(..)
+    , OAuthFlowType (..)
+
+    -- * PreventUserExistenceErrorTypes
+    , PreventUserExistenceErrorTypes (..)
+
+    -- * RecoveryOptionNameType
+    , RecoveryOptionNameType (..)
+
     -- * RiskDecisionType
-  , RiskDecisionType(..)
+    , RiskDecisionType (..)
+
     -- * RiskLevelType
-  , RiskLevelType(..)
+    , RiskLevelType (..)
+
     -- * StatusType
-  , StatusType(..)
+    , StatusType (..)
+
     -- * UserImportJobStatusType
-  , UserImportJobStatusType(..)
+    , UserImportJobStatusType (..)
+
     -- * UserPoolMFAType
-  , UserPoolMFAType(..)
+    , UserPoolMFAType (..)
+
     -- * UserStatusType
-  , UserStatusType(..)
+    , UserStatusType (..)
+
     -- * UsernameAttributeType
-  , UsernameAttributeType(..)
+    , UsernameAttributeType (..)
+
     -- * VerifiedAttributeType
-  , VerifiedAttributeType(..)
+    , VerifiedAttributeType (..)
+
     -- * VerifySoftwareTokenResponseType
-  , VerifySoftwareTokenResponseType(..)
+    , VerifySoftwareTokenResponseType (..)
+
+    -- * AccountRecoverySettingType
+    , AccountRecoverySettingType
+    , accountRecoverySettingType
+    , arstRecoveryMechanisms
+
     -- * AccountTakeoverActionType
-  , AccountTakeoverActionType
-  , accountTakeoverActionType
-  , atatNotify
-  , atatEventAction
+    , AccountTakeoverActionType
+    , accountTakeoverActionType
+    , atatNotify
+    , atatEventAction
+
     -- * AccountTakeoverActionsType
-  , AccountTakeoverActionsType
-  , accountTakeoverActionsType
-  , atatLowAction
-  , atatHighAction
-  , atatMediumAction
+    , AccountTakeoverActionsType
+    , accountTakeoverActionsType
+    , atatLowAction
+    , atatHighAction
+    , atatMediumAction
+
     -- * AccountTakeoverRiskConfigurationType
-  , AccountTakeoverRiskConfigurationType
-  , accountTakeoverRiskConfigurationType
-  , atrctNotifyConfiguration
-  , atrctActions
+    , AccountTakeoverRiskConfigurationType
+    , accountTakeoverRiskConfigurationType
+    , atrctNotifyConfiguration
+    , atrctActions
+
     -- * AdminCreateUserConfigType
-  , AdminCreateUserConfigType
-  , adminCreateUserConfigType
-  , acuctAllowAdminCreateUserOnly
-  , acuctUnusedAccountValidityDays
-  , acuctInviteMessageTemplate
+    , AdminCreateUserConfigType
+    , adminCreateUserConfigType
+    , acuctAllowAdminCreateUserOnly
+    , acuctUnusedAccountValidityDays
+    , acuctInviteMessageTemplate
+
     -- * AnalyticsConfigurationType
-  , AnalyticsConfigurationType
-  , analyticsConfigurationType
-  , actUserDataShared
-  , actApplicationId
-  , actRoleARN
-  , actExternalId
+    , AnalyticsConfigurationType
+    , analyticsConfigurationType
+    , actUserDataShared
+    , actApplicationId
+    , actRoleARN
+    , actExternalId
+
     -- * AnalyticsMetadataType
-  , AnalyticsMetadataType
-  , analyticsMetadataType
-  , amtAnalyticsEndpointId
+    , AnalyticsMetadataType
+    , analyticsMetadataType
+    , amtAnalyticsEndpointId
+
     -- * AttributeType
-  , AttributeType
-  , attributeType
-  , atValue
-  , atName
+    , AttributeType
+    , attributeType
+    , atValue
+    , atName
+
     -- * AuthEventType
-  , AuthEventType
-  , authEventType
-  , aetEventRisk
-  , aetEventResponse
-  , aetEventContextData
-  , aetChallengeResponses
-  , aetEventType
-  , aetCreationDate
-  , aetEventFeedback
-  , aetEventId
+    , AuthEventType
+    , authEventType
+    , aetEventRisk
+    , aetEventResponse
+    , aetEventContextData
+    , aetChallengeResponses
+    , aetEventType
+    , aetCreationDate
+    , aetEventFeedback
+    , aetEventId
+
     -- * AuthenticationResultType
-  , AuthenticationResultType
-  , authenticationResultType
-  , artAccessToken
-  , artRefreshToken
-  , artNewDeviceMetadata
-  , artExpiresIn
-  , artTokenType
-  , artIdToken
+    , AuthenticationResultType
+    , authenticationResultType
+    , artAccessToken
+    , artRefreshToken
+    , artNewDeviceMetadata
+    , artExpiresIn
+    , artTokenType
+    , artIdToken
+
     -- * ChallengeResponseType
-  , ChallengeResponseType
-  , challengeResponseType
-  , crtChallengeName
-  , crtChallengeResponse
+    , ChallengeResponseType
+    , challengeResponseType
+    , crtChallengeName
+    , crtChallengeResponse
+
     -- * CodeDeliveryDetailsType
-  , CodeDeliveryDetailsType
-  , codeDeliveryDetailsType
-  , cddtDestination
-  , cddtDeliveryMedium
-  , cddtAttributeName
+    , CodeDeliveryDetailsType
+    , codeDeliveryDetailsType
+    , cddtDestination
+    , cddtDeliveryMedium
+    , cddtAttributeName
+
     -- * CompromisedCredentialsActionsType
-  , CompromisedCredentialsActionsType
-  , compromisedCredentialsActionsType
-  , ccatEventAction
+    , CompromisedCredentialsActionsType
+    , compromisedCredentialsActionsType
+    , ccatEventAction
+
     -- * CompromisedCredentialsRiskConfigurationType
-  , CompromisedCredentialsRiskConfigurationType
-  , compromisedCredentialsRiskConfigurationType
-  , ccrctEventFilter
-  , ccrctActions
+    , CompromisedCredentialsRiskConfigurationType
+    , compromisedCredentialsRiskConfigurationType
+    , ccrctEventFilter
+    , ccrctActions
+
     -- * ContextDataType
-  , ContextDataType
-  , contextDataType
-  , cdtEncodedData
-  , cdtIPAddress
-  , cdtServerName
-  , cdtServerPath
-  , cdtHTTPHeaders
+    , ContextDataType
+    , contextDataType
+    , cdtEncodedData
+    , cdtIPAddress
+    , cdtServerName
+    , cdtServerPath
+    , cdtHTTPHeaders
+
+    -- * CustomDomainConfigType
+    , CustomDomainConfigType
+    , customDomainConfigType
+    , cdctCertificateARN
+
     -- * DeviceConfigurationType
-  , DeviceConfigurationType
-  , deviceConfigurationType
-  , dctChallengeRequiredOnNewDevice
-  , dctDeviceOnlyRememberedOnUserPrompt
+    , DeviceConfigurationType
+    , deviceConfigurationType
+    , dctChallengeRequiredOnNewDevice
+    , dctDeviceOnlyRememberedOnUserPrompt
+
     -- * DeviceSecretVerifierConfigType
-  , DeviceSecretVerifierConfigType
-  , deviceSecretVerifierConfigType
-  , dsvctPasswordVerifier
-  , dsvctSalt
+    , DeviceSecretVerifierConfigType
+    , deviceSecretVerifierConfigType
+    , dsvctPasswordVerifier
+    , dsvctSalt
+
     -- * DeviceType
-  , DeviceType
-  , deviceType
-  , dtDeviceLastModifiedDate
-  , dtDeviceCreateDate
-  , dtDeviceAttributes
-  , dtDeviceKey
-  , dtDeviceLastAuthenticatedDate
+    , DeviceType
+    , deviceType
+    , dtDeviceLastModifiedDate
+    , dtDeviceCreateDate
+    , dtDeviceAttributes
+    , dtDeviceKey
+    , dtDeviceLastAuthenticatedDate
+
     -- * DomainDescriptionType
-  , DomainDescriptionType
-  , domainDescriptionType
-  , ddtStatus
-  , ddtCloudFrontDistribution
-  , ddtUserPoolId
-  , ddtDomain
-  , ddtAWSAccountId
-  , ddtVersion
-  , ddtS3Bucket
+    , DomainDescriptionType
+    , domainDescriptionType
+    , ddtStatus
+    , ddtCloudFrontDistribution
+    , ddtUserPoolId
+    , ddtDomain
+    , ddtAWSAccountId
+    , ddtCustomDomainConfig
+    , ddtVersion
+    , ddtS3Bucket
+
     -- * EmailConfigurationType
-  , EmailConfigurationType
-  , emailConfigurationType
-  , ectSourceARN
-  , ectReplyToEmailAddress
+    , EmailConfigurationType
+    , emailConfigurationType
+    , ectSourceARN
+    , ectFrom
+    , ectConfigurationSet
+    , ectReplyToEmailAddress
+    , ectEmailSendingAccount
+
     -- * EventContextDataType
-  , EventContextDataType
-  , eventContextDataType
-  , ecdtIPAddress
-  , ecdtCountry
-  , ecdtCity
-  , ecdtDeviceName
-  , ecdtTimezone
+    , EventContextDataType
+    , eventContextDataType
+    , ecdtIPAddress
+    , ecdtCountry
+    , ecdtCity
+    , ecdtDeviceName
+    , ecdtTimezone
+
     -- * EventFeedbackType
-  , EventFeedbackType
-  , eventFeedbackType
-  , eftFeedbackDate
-  , eftFeedbackValue
-  , eftProvider
+    , EventFeedbackType
+    , eventFeedbackType
+    , eftFeedbackDate
+    , eftFeedbackValue
+    , eftProvider
+
     -- * EventRiskType
-  , EventRiskType
-  , eventRiskType
-  , ertRiskLevel
-  , ertRiskDecision
+    , EventRiskType
+    , eventRiskType
+    , ertCompromisedCredentialsDetected
+    , ertRiskLevel
+    , ertRiskDecision
+
     -- * GroupType
-  , GroupType
-  , groupType
-  , gtLastModifiedDate
-  , gtUserPoolId
-  , gtCreationDate
-  , gtPrecedence
-  , gtGroupName
-  , gtDescription
-  , gtRoleARN
+    , GroupType
+    , groupType
+    , gtLastModifiedDate
+    , gtUserPoolId
+    , gtCreationDate
+    , gtPrecedence
+    , gtGroupName
+    , gtDescription
+    , gtRoleARN
+
     -- * HTTPHeader
-  , HTTPHeader
-  , hTTPHeader
-  , httphHeaderValue
-  , httphHeaderName
+    , HTTPHeader
+    , hTTPHeader
+    , httphHeaderValue
+    , httphHeaderName
+
     -- * IdentityProviderType
-  , IdentityProviderType
-  , identityProviderType
-  , iptLastModifiedDate
-  , iptUserPoolId
-  , iptProviderType
-  , iptCreationDate
-  , iptIdpIdentifiers
-  , iptAttributeMapping
-  , iptProviderDetails
-  , iptProviderName
+    , IdentityProviderType
+    , identityProviderType
+    , iptLastModifiedDate
+    , iptUserPoolId
+    , iptProviderType
+    , iptCreationDate
+    , iptIdpIdentifiers
+    , iptAttributeMapping
+    , iptProviderDetails
+    , iptProviderName
+
     -- * LambdaConfigType
-  , LambdaConfigType
-  , lambdaConfigType
-  , lctPreAuthentication
-  , lctCreateAuthChallenge
-  , lctVerifyAuthChallengeResponse
-  , lctPostAuthentication
-  , lctCustomMessage
-  , lctDefineAuthChallenge
-  , lctPostConfirmation
-  , lctPreTokenGeneration
-  , lctUserMigration
-  , lctPreSignUp
+    , LambdaConfigType
+    , lambdaConfigType
+    , lctPreAuthentication
+    , lctCreateAuthChallenge
+    , lctVerifyAuthChallengeResponse
+    , lctPostAuthentication
+    , lctCustomMessage
+    , lctDefineAuthChallenge
+    , lctPostConfirmation
+    , lctPreTokenGeneration
+    , lctUserMigration
+    , lctPreSignUp
+
     -- * MFAOptionType
-  , MFAOptionType
-  , mfaOptionType
-  , motDeliveryMedium
-  , motAttributeName
+    , MFAOptionType
+    , mfaOptionType
+    , motDeliveryMedium
+    , motAttributeName
+
     -- * MessageTemplateType
-  , MessageTemplateType
-  , messageTemplateType
-  , mttEmailSubject
-  , mttSMSMessage
-  , mttEmailMessage
+    , MessageTemplateType
+    , messageTemplateType
+    , mttEmailSubject
+    , mttSMSMessage
+    , mttEmailMessage
+
     -- * NewDeviceMetadataType
-  , NewDeviceMetadataType
-  , newDeviceMetadataType
-  , ndmtDeviceGroupKey
-  , ndmtDeviceKey
+    , NewDeviceMetadataType
+    , newDeviceMetadataType
+    , ndmtDeviceGroupKey
+    , ndmtDeviceKey
+
     -- * NotifyConfigurationType
-  , NotifyConfigurationType
-  , notifyConfigurationType
-  , nctNoActionEmail
-  , nctFrom
-  , nctReplyTo
-  , nctBlockEmail
-  , nctMFAEmail
-  , nctSourceARN
+    , NotifyConfigurationType
+    , notifyConfigurationType
+    , nctNoActionEmail
+    , nctFrom
+    , nctReplyTo
+    , nctBlockEmail
+    , nctMFAEmail
+    , nctSourceARN
+
     -- * NotifyEmailType
-  , NotifyEmailType
-  , notifyEmailType
-  , netTextBody
-  , netHTMLBody
-  , netSubject
+    , NotifyEmailType
+    , notifyEmailType
+    , netTextBody
+    , netHTMLBody
+    , netSubject
+
     -- * NumberAttributeConstraintsType
-  , NumberAttributeConstraintsType
-  , numberAttributeConstraintsType
-  , nactMaxValue
-  , nactMinValue
+    , NumberAttributeConstraintsType
+    , numberAttributeConstraintsType
+    , nactMaxValue
+    , nactMinValue
+
     -- * PasswordPolicyType
-  , PasswordPolicyType
-  , passwordPolicyType
-  , pptRequireNumbers
-  , pptRequireUppercase
-  , pptRequireLowercase
-  , pptMinimumLength
-  , pptRequireSymbols
+    , PasswordPolicyType
+    , passwordPolicyType
+    , pptRequireNumbers
+    , pptRequireUppercase
+    , pptRequireLowercase
+    , pptMinimumLength
+    , pptRequireSymbols
+    , pptTemporaryPasswordValidityDays
+
     -- * ProviderDescription
-  , ProviderDescription
-  , providerDescription
-  , pdLastModifiedDate
-  , pdProviderType
-  , pdCreationDate
-  , pdProviderName
+    , ProviderDescription
+    , providerDescription
+    , pdLastModifiedDate
+    , pdProviderType
+    , pdCreationDate
+    , pdProviderName
+
     -- * ProviderUserIdentifierType
-  , ProviderUserIdentifierType
-  , providerUserIdentifierType
-  , puitProviderAttributeValue
-  , puitProviderAttributeName
-  , puitProviderName
+    , ProviderUserIdentifierType
+    , providerUserIdentifierType
+    , puitProviderAttributeValue
+    , puitProviderAttributeName
+    , puitProviderName
+
+    -- * RecoveryOptionType
+    , RecoveryOptionType
+    , recoveryOptionType
+    , rotPriority
+    , rotName
+
     -- * ResourceServerScopeType
-  , ResourceServerScopeType
-  , resourceServerScopeType
-  , rsstScopeName
-  , rsstScopeDescription
+    , ResourceServerScopeType
+    , resourceServerScopeType
+    , rsstScopeName
+    , rsstScopeDescription
+
     -- * ResourceServerType
-  , ResourceServerType
-  , resourceServerType
-  , rstUserPoolId
-  , rstIdentifier
-  , rstScopes
-  , rstName
+    , ResourceServerType
+    , resourceServerType
+    , rstUserPoolId
+    , rstIdentifier
+    , rstScopes
+    , rstName
+
     -- * RiskConfigurationType
-  , RiskConfigurationType
-  , riskConfigurationType
-  , rctRiskExceptionConfiguration
-  , rctClientId
-  , rctAccountTakeoverRiskConfiguration
-  , rctLastModifiedDate
-  , rctUserPoolId
-  , rctCompromisedCredentialsRiskConfiguration
+    , RiskConfigurationType
+    , riskConfigurationType
+    , rctRiskExceptionConfiguration
+    , rctClientId
+    , rctAccountTakeoverRiskConfiguration
+    , rctLastModifiedDate
+    , rctUserPoolId
+    , rctCompromisedCredentialsRiskConfiguration
+
     -- * RiskExceptionConfigurationType
-  , RiskExceptionConfigurationType
-  , riskExceptionConfigurationType
-  , rectSkippedIPRangeList
-  , rectBlockedIPRangeList
+    , RiskExceptionConfigurationType
+    , riskExceptionConfigurationType
+    , rectSkippedIPRangeList
+    , rectBlockedIPRangeList
+
     -- * SMSMFASettingsType
-  , SMSMFASettingsType
-  , sMSMFASettingsType
-  , smsmstEnabled
-  , smsmstPreferredMFA
+    , SMSMFASettingsType
+    , sMSMFASettingsType
+    , smsmstEnabled
+    , smsmstPreferredMFA
+
     -- * SchemaAttributeType
-  , SchemaAttributeType
-  , schemaAttributeType
-  , satNumberAttributeConstraints
-  , satRequired
-  , satAttributeDataType
-  , satStringAttributeConstraints
-  , satName
-  , satDeveloperOnlyAttribute
-  , satMutable
+    , SchemaAttributeType
+    , schemaAttributeType
+    , satNumberAttributeConstraints
+    , satRequired
+    , satAttributeDataType
+    , satStringAttributeConstraints
+    , satName
+    , satDeveloperOnlyAttribute
+    , satMutable
+
     -- * SmsConfigurationType
-  , SmsConfigurationType
-  , smsConfigurationType
-  , sctExternalId
-  , sctSNSCallerARN
+    , SmsConfigurationType
+    , smsConfigurationType
+    , sctExternalId
+    , sctSNSCallerARN
+
     -- * SmsMFAConfigType
-  , SmsMFAConfigType
-  , smsMFAConfigType
-  , smctSmsAuthenticationMessage
-  , smctSmsConfiguration
+    , SmsMFAConfigType
+    , smsMFAConfigType
+    , smctSmsAuthenticationMessage
+    , smctSmsConfiguration
+
     -- * SoftwareTokenMFAConfigType
-  , SoftwareTokenMFAConfigType
-  , softwareTokenMFAConfigType
-  , stmctEnabled
+    , SoftwareTokenMFAConfigType
+    , softwareTokenMFAConfigType
+    , stmctEnabled
+
     -- * SoftwareTokenMFASettingsType
-  , SoftwareTokenMFASettingsType
-  , softwareTokenMFASettingsType
-  , stmstEnabled
-  , stmstPreferredMFA
+    , SoftwareTokenMFASettingsType
+    , softwareTokenMFASettingsType
+    , stmstEnabled
+    , stmstPreferredMFA
+
     -- * StringAttributeConstraintsType
-  , StringAttributeConstraintsType
-  , stringAttributeConstraintsType
-  , sactMaxLength
-  , sactMinLength
+    , StringAttributeConstraintsType
+    , stringAttributeConstraintsType
+    , sactMaxLength
+    , sactMinLength
+
     -- * UICustomizationType
-  , UICustomizationType
-  , uICustomizationType
-  , uictClientId
-  , uictLastModifiedDate
-  , uictUserPoolId
-  , uictCSS
-  , uictCSSVersion
-  , uictImageURL
-  , uictCreationDate
+    , UICustomizationType
+    , uICustomizationType
+    , uictClientId
+    , uictLastModifiedDate
+    , uictUserPoolId
+    , uictCSS
+    , uictCSSVersion
+    , uictImageURL
+    , uictCreationDate
+
     -- * UserContextDataType
-  , UserContextDataType
-  , userContextDataType
-  , ucdtEncodedData
+    , UserContextDataType
+    , userContextDataType
+    , ucdtEncodedData
+
     -- * UserImportJobType
-  , UserImportJobType
-  , userImportJobType
-  , uijtStatus
-  , uijtSkippedUsers
-  , uijtJobId
-  , uijtUserPoolId
-  , uijtJobName
-  , uijtPreSignedURL
-  , uijtFailedUsers
-  , uijtStartDate
-  , uijtCompletionMessage
-  , uijtCreationDate
-  , uijtCompletionDate
-  , uijtCloudWatchLogsRoleARN
-  , uijtImportedUsers
+    , UserImportJobType
+    , userImportJobType
+    , uijtStatus
+    , uijtSkippedUsers
+    , uijtJobId
+    , uijtUserPoolId
+    , uijtJobName
+    , uijtPreSignedURL
+    , uijtFailedUsers
+    , uijtStartDate
+    , uijtCompletionMessage
+    , uijtCreationDate
+    , uijtCompletionDate
+    , uijtCloudWatchLogsRoleARN
+    , uijtImportedUsers
+
     -- * UserPoolAddOnsType
-  , UserPoolAddOnsType
-  , userPoolAddOnsType
-  , upaotAdvancedSecurityMode
+    , UserPoolAddOnsType
+    , userPoolAddOnsType
+    , upaotAdvancedSecurityMode
+
     -- * UserPoolClientDescription
-  , UserPoolClientDescription
-  , userPoolClientDescription
-  , upcdClientId
-  , upcdUserPoolId
-  , upcdClientName
+    , UserPoolClientDescription
+    , userPoolClientDescription
+    , upcdClientId
+    , upcdUserPoolId
+    , upcdClientName
+
     -- * UserPoolClientType
-  , UserPoolClientType
-  , userPoolClientType
-  , upctRefreshTokenValidity
-  , upctClientId
-  , upctExplicitAuthFlows
-  , upctClientSecret
-  , upctLastModifiedDate
-  , upctSupportedIdentityProviders
-  , upctLogoutURLs
-  , upctAllowedOAuthFlowsUserPoolClient
-  , upctUserPoolId
-  , upctDefaultRedirectURI
-  , upctWriteAttributes
-  , upctCreationDate
-  , upctReadAttributes
-  , upctAllowedOAuthScopes
-  , upctAllowedOAuthFlows
-  , upctAnalyticsConfiguration
-  , upctClientName
-  , upctCallbackURLs
+    , UserPoolClientType
+    , userPoolClientType
+    , upctRefreshTokenValidity
+    , upctClientId
+    , upctExplicitAuthFlows
+    , upctClientSecret
+    , upctLastModifiedDate
+    , upctSupportedIdentityProviders
+    , upctLogoutURLs
+    , upctAllowedOAuthFlowsUserPoolClient
+    , upctUserPoolId
+    , upctDefaultRedirectURI
+    , upctWriteAttributes
+    , upctPreventUserExistenceErrors
+    , upctCreationDate
+    , upctReadAttributes
+    , upctAllowedOAuthScopes
+    , upctAllowedOAuthFlows
+    , upctAnalyticsConfiguration
+    , upctClientName
+    , upctCallbackURLs
+
     -- * UserPoolDescriptionType
-  , UserPoolDescriptionType
-  , userPoolDescriptionType
-  , updtStatus
-  , updtLastModifiedDate
-  , updtName
-  , updtId
-  , updtCreationDate
-  , updtLambdaConfig
+    , UserPoolDescriptionType
+    , userPoolDescriptionType
+    , updtStatus
+    , updtLastModifiedDate
+    , updtName
+    , updtId
+    , updtCreationDate
+    , updtLambdaConfig
+
     -- * UserPoolPolicyType
-  , UserPoolPolicyType
-  , userPoolPolicyType
-  , upptPasswordPolicy
+    , UserPoolPolicyType
+    , userPoolPolicyType
+    , upptPasswordPolicy
+
     -- * UserPoolType
-  , UserPoolType
-  , userPoolType
-  , uptStatus
-  , uptUserPoolTags
-  , uptEmailConfigurationFailure
-  , uptLastModifiedDate
-  , uptVerificationMessageTemplate
-  , uptEstimatedNumberOfUsers
-  , uptDomain
-  , uptEmailVerificationMessage
-  , uptSmsAuthenticationMessage
-  , uptUserPoolAddOns
-  , uptSchemaAttributes
-  , uptEmailVerificationSubject
-  , uptUsernameAttributes
-  , uptAliasAttributes
-  , uptEmailConfiguration
-  , uptSmsVerificationMessage
-  , uptName
-  , uptMFAConfiguration
-  , uptId
-  , uptSmsConfigurationFailure
-  , uptCreationDate
-  , uptLambdaConfig
-  , uptSmsConfiguration
-  , uptAdminCreateUserConfig
-  , uptDeviceConfiguration
-  , uptAutoVerifiedAttributes
-  , uptPolicies
+    , UserPoolType
+    , userPoolType
+    , uptStatus
+    , uptUserPoolTags
+    , uptEmailConfigurationFailure
+    , uptLastModifiedDate
+    , uptVerificationMessageTemplate
+    , uptEstimatedNumberOfUsers
+    , uptARN
+    , uptDomain
+    , uptCustomDomain
+    , uptEmailVerificationMessage
+    , uptSmsAuthenticationMessage
+    , uptUserPoolAddOns
+    , uptSchemaAttributes
+    , uptEmailVerificationSubject
+    , uptUsernameAttributes
+    , uptAliasAttributes
+    , uptAccountRecoverySetting
+    , uptEmailConfiguration
+    , uptSmsVerificationMessage
+    , uptName
+    , uptMFAConfiguration
+    , uptId
+    , uptSmsConfigurationFailure
+    , uptCreationDate
+    , uptLambdaConfig
+    , uptSmsConfiguration
+    , uptAdminCreateUserConfig
+    , uptDeviceConfiguration
+    , uptAutoVerifiedAttributes
+    , uptPolicies
+    , uptUsernameConfiguration
+
     -- * UserType
-  , UserType
-  , userType
-  , utEnabled
-  , utUserStatus
-  , utUsername
-  , utUserCreateDate
-  , utAttributes
-  , utMFAOptions
-  , utUserLastModifiedDate
+    , UserType
+    , userType
+    , utEnabled
+    , utUserStatus
+    , utUsername
+    , utUserCreateDate
+    , utAttributes
+    , utMFAOptions
+    , utUserLastModifiedDate
+
+    -- * UsernameConfigurationType
+    , UsernameConfigurationType
+    , usernameConfigurationType
+    , uctCaseSensitive
+
     -- * VerificationMessageTemplateType
-  , VerificationMessageTemplateType
-  , verificationMessageTemplateType
-  , vmttDefaultEmailOption
-  , vmttEmailSubject
-  , vmttEmailSubjectByLink
-  , vmttSmsMessage
-  , vmttEmailMessageByLink
-  , vmttEmailMessage
-  ) where
+    , VerificationMessageTemplateType
+    , verificationMessageTemplateType
+    , vmttDefaultEmailOption
+    , vmttEmailSubject
+    , vmttEmailSubjectByLink
+    , vmttSmsMessage
+    , vmttEmailMessageByLink
+    , vmttEmailMessage
+    ) where
 
 import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.CognitoIdentityProvider.Types.Sum
@@ -578,308 +709,309 @@ cognitoIdentityProvider =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | The request failed because the user is in an unsupported state.
 --
 --
-_UnsupportedUserStateException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_UnsupportedUserStateException :: AsError a => Getting (First ServiceError) a ServiceError
 _UnsupportedUserStateException =
   _MatchServiceError cognitoIdentityProvider "UnsupportedUserStateException"
+
 
 -- | This exception is thrown when a password reset is required.
 --
 --
-_PasswordResetRequiredException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_PasswordResetRequiredException :: AsError a => Getting (First ServiceError) a ServiceError
 _PasswordResetRequiredException =
   _MatchServiceError cognitoIdentityProvider "PasswordResetRequiredException"
+
 
 -- | This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
 --
 --
-_InvalidParameterException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidParameterException =
   _MatchServiceError cognitoIdentityProvider "InvalidParameterException"
+
 
 -- | This exception is thrown when the Amazon Cognito service encounters an invalid AWS Lambda response.
 --
 --
-_InvalidLambdaResponseException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidLambdaResponseException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidLambdaResponseException =
   _MatchServiceError cognitoIdentityProvider "InvalidLambdaResponseException"
+
 
 -- | This exception is thrown when Amazon Cognito is not allowed to use your email identity. HTTP status code: 400.
 --
 --
-_InvalidEmailRoleAccessPolicyException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidEmailRoleAccessPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidEmailRoleAccessPolicyException =
   _MatchServiceError
     cognitoIdentityProvider
     "InvalidEmailRoleAccessPolicyException"
 
+
 -- | This exception is thrown when the specified identifier is not supported.
 --
 --
-_UnsupportedIdentityProviderException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_UnsupportedIdentityProviderException :: AsError a => Getting (First ServiceError) a ServiceError
 _UnsupportedIdentityProviderException =
   _MatchServiceError
     cognitoIdentityProvider
     "UnsupportedIdentityProviderException"
 
+
 -- | This exception is thrown when a user is not found.
 --
 --
-_UserNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_UserNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _UserNotFoundException =
   _MatchServiceError cognitoIdentityProvider "UserNotFoundException"
+
 
 -- | This exception is thrown when the Amazon Cognito service encounters an unexpected exception with the AWS Lambda service.
 --
 --
-_UnexpectedLambdaException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_UnexpectedLambdaException :: AsError a => Getting (First ServiceError) a ServiceError
 _UnexpectedLambdaException =
   _MatchServiceError cognitoIdentityProvider "UnexpectedLambdaException"
+
 
 -- | This exception is thrown when a user is not authorized.
 --
 --
-_NotAuthorizedException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_NotAuthorizedException :: AsError a => Getting (First ServiceError) a ServiceError
 _NotAuthorizedException =
   _MatchServiceError cognitoIdentityProvider "NotAuthorizedException"
+
 
 -- | This exception is thrown when Amazon Cognito encounters an internal error.
 --
 --
-_InternalErrorException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InternalErrorException :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalErrorException =
   _MatchServiceError cognitoIdentityProvider "InternalErrorException"
+
 
 -- | This exception is thrown when the user pool configuration is invalid.
 --
 --
-_InvalidUserPoolConfigurationException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidUserPoolConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidUserPoolConfigurationException =
   _MatchServiceError
     cognitoIdentityProvider
     "InvalidUserPoolConfigurationException"
 
+
 -- | This exception is returned when the role provided for SMS configuration does not have permission to publish using Amazon SNS.
 --
 --
-_InvalidSmsRoleAccessPolicyException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidSmsRoleAccessPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidSmsRoleAccessPolicyException =
   _MatchServiceError
     cognitoIdentityProvider
     "InvalidSmsRoleAccessPolicyException"
 
+
 -- | This exception is thrown when the specified OAuth flow is invalid.
 --
 --
-_InvalidOAuthFlowException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidOAuthFlowException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidOAuthFlowException =
   _MatchServiceError cognitoIdentityProvider "InvalidOAuthFlowException"
+
 
 -- | This exception is thrown if the provided code does not match what the server was expecting.
 --
 --
-_CodeMismatchException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_CodeMismatchException :: AsError a => Getting (First ServiceError) a ServiceError
 _CodeMismatchException =
   _MatchServiceError cognitoIdentityProvider "CodeMismatchException"
+
 
 -- | This exception is thrown when you are trying to modify a user pool while a user import job is in progress for that pool.
 --
 --
-_UserImportInProgressException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_UserImportInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
 _UserImportInProgressException =
   _MatchServiceError cognitoIdentityProvider "UserImportInProgressException"
+
 
 -- | This exception is thrown when the trust relationship is invalid for the role provided for SMS configuration. This can happen if you do not trust __cognito-idp.amazonaws.com__ or the external ID provided in the role does not match what is provided in the SMS configuration for the user pool.
 --
 --
-_InvalidSmsRoleTrustRelationshipException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidSmsRoleTrustRelationshipException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidSmsRoleTrustRelationshipException =
   _MatchServiceError
     cognitoIdentityProvider
     "InvalidSmsRoleTrustRelationshipException"
 
+
 -- | This exception is thrown when a user pool tag cannot be set or updated.
 --
 --
-_UserPoolTaggingException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_UserPoolTaggingException :: AsError a => Getting (First ServiceError) a ServiceError
 _UserPoolTaggingException =
   _MatchServiceError cognitoIdentityProvider "UserPoolTaggingException"
+
 
 -- | This exception is thrown when the software token TOTP multi-factor authentication (MFA) is not enabled for the user pool.
 --
 --
-_SoftwareTokenMFANotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_SoftwareTokenMFANotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _SoftwareTokenMFANotFoundException =
   _MatchServiceError cognitoIdentityProvider "SoftwareTokenMFANotFoundException"
+
 
 -- | This exception is thrown when the user has made too many requests for a given operation.
 --
 --
-_TooManyRequestsException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
 _TooManyRequestsException =
   _MatchServiceError cognitoIdentityProvider "TooManyRequestsException"
+
 
 -- | This exception is thrown if two or more modifications are happening concurrently.
 --
 --
-_ConcurrentModificationException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
 _ConcurrentModificationException =
   _MatchServiceError cognitoIdentityProvider "ConcurrentModificationException"
+
 
 -- | This exception is thrown when user pool add-ons are not enabled.
 --
 --
-_UserPoolAddOnNotEnabledException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_UserPoolAddOnNotEnabledException :: AsError a => Getting (First ServiceError) a ServiceError
 _UserPoolAddOnNotEnabledException =
   _MatchServiceError cognitoIdentityProvider "UserPoolAddOnNotEnabledException"
+
 
 -- | This exception is thrown when the Amazon Cognito service encounters a user validation exception with the AWS Lambda service.
 --
 --
-_UserLambdaValidationException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_UserLambdaValidationException :: AsError a => Getting (First ServiceError) a ServiceError
 _UserLambdaValidationException =
   _MatchServiceError cognitoIdentityProvider "UserLambdaValidationException"
+
 
 -- | This exception is thrown when a precondition is not met.
 --
 --
-_PreconditionNotMetException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_PreconditionNotMetException :: AsError a => Getting (First ServiceError) a ServiceError
 _PreconditionNotMetException =
   _MatchServiceError cognitoIdentityProvider "PreconditionNotMetException"
+
 
 -- | This exception is thrown if a code has expired.
 --
 --
-_ExpiredCodeException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ExpiredCodeException :: AsError a => Getting (First ServiceError) a ServiceError
 _ExpiredCodeException =
   _MatchServiceError cognitoIdentityProvider "ExpiredCodeException"
+
 
 -- | This exception is thrown when the user has made too many failed attempts for a given action (e.g., sign in).
 --
 --
-_TooManyFailedAttemptsException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_TooManyFailedAttemptsException :: AsError a => Getting (First ServiceError) a ServiceError
 _TooManyFailedAttemptsException =
   _MatchServiceError cognitoIdentityProvider "TooManyFailedAttemptsException"
+
 
 -- | This exception is thrown when there is a code mismatch and the service fails to configure the software token TOTP multi-factor authentication (MFA).
 --
 --
-_EnableSoftwareTokenMFAException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_EnableSoftwareTokenMFAException :: AsError a => Getting (First ServiceError) a ServiceError
 _EnableSoftwareTokenMFAException =
   _MatchServiceError cognitoIdentityProvider "EnableSoftwareTokenMFAException"
+
 
 -- | This exception is thrown when a user is not confirmed successfully.
 --
 --
-_UserNotConfirmedException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_UserNotConfirmedException :: AsError a => Getting (First ServiceError) a ServiceError
 _UserNotConfirmedException =
   _MatchServiceError cognitoIdentityProvider "UserNotConfirmedException"
+
 
 -- | This exception is thrown when Amazon Cognito encounters a group that already exists in the user pool.
 --
 --
-_GroupExistsException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_GroupExistsException :: AsError a => Getting (First ServiceError) a ServiceError
 _GroupExistsException =
   _MatchServiceError cognitoIdentityProvider "GroupExistsException"
+
 
 -- | This exception is thrown when a verification code fails to deliver successfully.
 --
 --
-_CodeDeliveryFailureException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_CodeDeliveryFailureException :: AsError a => Getting (First ServiceError) a ServiceError
 _CodeDeliveryFailureException =
   _MatchServiceError cognitoIdentityProvider "CodeDeliveryFailureException"
+
 
 -- | This exception is thrown when the specified scope does not exist.
 --
 --
-_ScopeDoesNotExistException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ScopeDoesNotExistException :: AsError a => Getting (First ServiceError) a ServiceError
 _ScopeDoesNotExistException =
   _MatchServiceError cognitoIdentityProvider "ScopeDoesNotExistException"
+
 
 -- | This exception is thrown when the Amazon Cognito service cannot find the requested resource.
 --
 --
-_ResourceNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceNotFoundException =
   _MatchServiceError cognitoIdentityProvider "ResourceNotFoundException"
+
 
 -- | This exception is thrown when Amazon Cognito cannot find a multi-factor authentication (MFA) method.
 --
 --
-_MFAMethodNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_MFAMethodNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _MFAMethodNotFoundException =
   _MatchServiceError cognitoIdentityProvider "MFAMethodNotFoundException"
+
 
 -- | This exception is thrown when a user tries to confirm the account with an email or phone number that has already been supplied as an alias from a different account. This exception tells user that an account with this email or phone already exists.
 --
 --
-_AliasExistsException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_AliasExistsException :: AsError a => Getting (First ServiceError) a ServiceError
 _AliasExistsException =
   _MatchServiceError cognitoIdentityProvider "AliasExistsException"
+
 
 -- | This exception is thrown when the provider is already supported by the user pool.
 --
 --
-_DuplicateProviderException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_DuplicateProviderException :: AsError a => Getting (First ServiceError) a ServiceError
 _DuplicateProviderException =
   _MatchServiceError cognitoIdentityProvider "DuplicateProviderException"
+
 
 -- | This exception is thrown when a user exceeds the limit for a requested AWS resource.
 --
 --
-_LimitExceededException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException =
   _MatchServiceError cognitoIdentityProvider "LimitExceededException"
+
 
 -- | This exception is thrown when the Amazon Cognito service encounters an invalid password.
 --
 --
-_InvalidPasswordException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidPasswordException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidPasswordException =
   _MatchServiceError cognitoIdentityProvider "InvalidPasswordException"
+
 
 -- | This exception is thrown when Amazon Cognito encounters a user name that already exists in the user pool.
 --
 --
-_UsernameExistsException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_UsernameExistsException :: AsError a => Getting (First ServiceError) a ServiceError
 _UsernameExistsException =
   _MatchServiceError cognitoIdentityProvider "UsernameExistsException"
+

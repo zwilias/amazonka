@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.ECR.StartLifecyclePolicyPreview
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,23 +22,25 @@
 --
 --
 module Network.AWS.ECR.StartLifecyclePolicyPreview
+    (
     -- * Creating a Request
-  ( startLifecyclePolicyPreview
-  , StartLifecyclePolicyPreview
+      startLifecyclePolicyPreview
+    , StartLifecyclePolicyPreview
     -- * Request Lenses
-  , slppRegistryId
-  , slppLifecyclePolicyText
-  , slppRepositoryName
+    , slppRegistryId
+    , slppLifecyclePolicyText
+    , slppRepositoryName
+
     -- * Destructuring the Response
-  , startLifecyclePolicyPreviewResponse
-  , StartLifecyclePolicyPreviewResponse
+    , startLifecyclePolicyPreviewResponse
+    , StartLifecyclePolicyPreviewResponse
     -- * Response Lenses
-  , slpprsStatus
-  , slpprsRegistryId
-  , slpprsLifecyclePolicyText
-  , slpprsRepositoryName
-  , slpprsResponseStatus
-  ) where
+    , slpprsStatus
+    , slpprsRegistryId
+    , slpprsLifecyclePolicyText
+    , slpprsRepositoryName
+    , slpprsResponseStatus
+    ) where
 
 import Network.AWS.ECR.Types
 import Network.AWS.ECR.Types.Product
@@ -54,6 +58,7 @@ data StartLifecyclePolicyPreview =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'StartLifecyclePolicyPreview' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -63,9 +68,9 @@ data StartLifecyclePolicyPreview =
 -- * 'slppLifecyclePolicyText' - The policy to be evaluated against. If you do not specify a policy, the current policy for the repository is used.
 --
 -- * 'slppRepositoryName' - The name of the repository to be evaluated.
-startLifecyclePolicyPreview ::
-     Text -- ^ 'slppRepositoryName'
-  -> StartLifecyclePolicyPreview
+startLifecyclePolicyPreview
+    :: Text -- ^ 'slppRepositoryName'
+    -> StartLifecyclePolicyPreview
 startLifecyclePolicyPreview pRepositoryName_ =
   StartLifecyclePolicyPreview'
     { _slppRegistryId = Nothing
@@ -73,59 +78,60 @@ startLifecyclePolicyPreview pRepositoryName_ =
     , _slppRepositoryName = pRepositoryName_
     }
 
+
 -- | The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.
 slppRegistryId :: Lens' StartLifecyclePolicyPreview (Maybe Text)
-slppRegistryId = lens _slppRegistryId (\s a -> s {_slppRegistryId = a})
+slppRegistryId = lens _slppRegistryId (\ s a -> s{_slppRegistryId = a})
 
 -- | The policy to be evaluated against. If you do not specify a policy, the current policy for the repository is used.
 slppLifecyclePolicyText :: Lens' StartLifecyclePolicyPreview (Maybe Text)
-slppLifecyclePolicyText =
-  lens _slppLifecyclePolicyText (\s a -> s {_slppLifecyclePolicyText = a})
+slppLifecyclePolicyText = lens _slppLifecyclePolicyText (\ s a -> s{_slppLifecyclePolicyText = a})
 
 -- | The name of the repository to be evaluated.
 slppRepositoryName :: Lens' StartLifecyclePolicyPreview Text
-slppRepositoryName =
-  lens _slppRepositoryName (\s a -> s {_slppRepositoryName = a})
+slppRepositoryName = lens _slppRepositoryName (\ s a -> s{_slppRepositoryName = a})
 
 instance AWSRequest StartLifecyclePolicyPreview where
-  type Rs StartLifecyclePolicyPreview = StartLifecyclePolicyPreviewResponse
-  request = postJSON ecr
-  response =
-    receiveJSON
-      (\s h x ->
-         StartLifecyclePolicyPreviewResponse' <$> (x .?> "status") <*>
-         (x .?> "registryId") <*>
-         (x .?> "lifecyclePolicyText") <*>
-         (x .?> "repositoryName") <*>
-         (pure (fromEnum s)))
+        type Rs StartLifecyclePolicyPreview =
+             StartLifecyclePolicyPreviewResponse
+        request = postJSON ecr
+        response
+          = receiveJSON
+              (\ s h x ->
+                 StartLifecyclePolicyPreviewResponse' <$>
+                   (x .?> "status") <*> (x .?> "registryId") <*>
+                     (x .?> "lifecyclePolicyText")
+                     <*> (x .?> "repositoryName")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable StartLifecyclePolicyPreview
+instance Hashable StartLifecyclePolicyPreview where
 
-instance NFData StartLifecyclePolicyPreview
+instance NFData StartLifecyclePolicyPreview where
 
 instance ToHeaders StartLifecyclePolicyPreview where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AmazonEC2ContainerRegistry_V20150921.StartLifecyclePolicyPreview" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AmazonEC2ContainerRegistry_V20150921.StartLifecyclePolicyPreview"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON StartLifecyclePolicyPreview where
-  toJSON StartLifecyclePolicyPreview' {..} =
-    object
-      (catMaybes
-         [ ("registryId" .=) <$> _slppRegistryId
-         , ("lifecyclePolicyText" .=) <$> _slppLifecyclePolicyText
-         , Just ("repositoryName" .= _slppRepositoryName)
-         ])
+        toJSON StartLifecyclePolicyPreview'{..}
+          = object
+              (catMaybes
+                 [("registryId" .=) <$> _slppRegistryId,
+                  ("lifecyclePolicyText" .=) <$>
+                    _slppLifecyclePolicyText,
+                  Just ("repositoryName" .= _slppRepositoryName)])
 
 instance ToPath StartLifecyclePolicyPreview where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery StartLifecyclePolicyPreview where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'startLifecyclePolicyPreviewResponse' smart constructor.
 data StartLifecyclePolicyPreviewResponse =
@@ -137,6 +143,7 @@ data StartLifecyclePolicyPreviewResponse =
     , _slpprsResponseStatus      :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'StartLifecyclePolicyPreviewResponse' with the minimum fields required to make a request.
 --
@@ -151,9 +158,9 @@ data StartLifecyclePolicyPreviewResponse =
 -- * 'slpprsRepositoryName' - The repository name associated with the request.
 --
 -- * 'slpprsResponseStatus' - -- | The response status code.
-startLifecyclePolicyPreviewResponse ::
-     Int -- ^ 'slpprsResponseStatus'
-  -> StartLifecyclePolicyPreviewResponse
+startLifecyclePolicyPreviewResponse
+    :: Int -- ^ 'slpprsResponseStatus'
+    -> StartLifecyclePolicyPreviewResponse
 startLifecyclePolicyPreviewResponse pResponseStatus_ =
   StartLifecyclePolicyPreviewResponse'
     { _slpprsStatus = Nothing
@@ -163,29 +170,26 @@ startLifecyclePolicyPreviewResponse pResponseStatus_ =
     , _slpprsResponseStatus = pResponseStatus_
     }
 
+
 -- | The status of the lifecycle policy preview request.
-slpprsStatus ::
-     Lens' StartLifecyclePolicyPreviewResponse (Maybe LifecyclePolicyPreviewStatus)
-slpprsStatus = lens _slpprsStatus (\s a -> s {_slpprsStatus = a})
+slpprsStatus :: Lens' StartLifecyclePolicyPreviewResponse (Maybe LifecyclePolicyPreviewStatus)
+slpprsStatus = lens _slpprsStatus (\ s a -> s{_slpprsStatus = a})
 
 -- | The registry ID associated with the request.
 slpprsRegistryId :: Lens' StartLifecyclePolicyPreviewResponse (Maybe Text)
-slpprsRegistryId = lens _slpprsRegistryId (\s a -> s {_slpprsRegistryId = a})
+slpprsRegistryId = lens _slpprsRegistryId (\ s a -> s{_slpprsRegistryId = a})
 
 -- | The JSON repository policy text.
-slpprsLifecyclePolicyText ::
-     Lens' StartLifecyclePolicyPreviewResponse (Maybe Text)
-slpprsLifecyclePolicyText =
-  lens _slpprsLifecyclePolicyText (\s a -> s {_slpprsLifecyclePolicyText = a})
+slpprsLifecyclePolicyText :: Lens' StartLifecyclePolicyPreviewResponse (Maybe Text)
+slpprsLifecyclePolicyText = lens _slpprsLifecyclePolicyText (\ s a -> s{_slpprsLifecyclePolicyText = a})
 
 -- | The repository name associated with the request.
 slpprsRepositoryName :: Lens' StartLifecyclePolicyPreviewResponse (Maybe Text)
-slpprsRepositoryName =
-  lens _slpprsRepositoryName (\s a -> s {_slpprsRepositoryName = a})
+slpprsRepositoryName = lens _slpprsRepositoryName (\ s a -> s{_slpprsRepositoryName = a})
 
 -- | -- | The response status code.
 slpprsResponseStatus :: Lens' StartLifecyclePolicyPreviewResponse Int
-slpprsResponseStatus =
-  lens _slpprsResponseStatus (\s a -> s {_slpprsResponseStatus = a})
+slpprsResponseStatus = lens _slpprsResponseStatus (\ s a -> s{_slpprsResponseStatus = a})
 
 instance NFData StartLifecyclePolicyPreviewResponse
+         where

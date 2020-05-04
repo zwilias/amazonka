@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CloudFront.UpdateCloudFrontOriginAccessIdentity
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,21 +22,23 @@
 --
 --
 module Network.AWS.CloudFront.UpdateCloudFrontOriginAccessIdentity
+    (
     -- * Creating a Request
-  ( updateCloudFrontOriginAccessIdentity
-  , UpdateCloudFrontOriginAccessIdentity
+      updateCloudFrontOriginAccessIdentity
+    , UpdateCloudFrontOriginAccessIdentity
     -- * Request Lenses
-  , ucfoaiIfMatch
-  , ucfoaiCloudFrontOriginAccessIdentityConfig
-  , ucfoaiId
+    , ucfoaiIfMatch
+    , ucfoaiCloudFrontOriginAccessIdentityConfig
+    , ucfoaiId
+
     -- * Destructuring the Response
-  , updateCloudFrontOriginAccessIdentityResponse
-  , UpdateCloudFrontOriginAccessIdentityResponse
+    , updateCloudFrontOriginAccessIdentityResponse
+    , UpdateCloudFrontOriginAccessIdentityResponse
     -- * Response Lenses
-  , ucfoairsETag
-  , ucfoairsCloudFrontOriginAccessIdentity
-  , ucfoairsResponseStatus
-  ) where
+    , ucfoairsETag
+    , ucfoairsCloudFrontOriginAccessIdentity
+    , ucfoairsResponseStatus
+    ) where
 
 import Network.AWS.CloudFront.Types
 import Network.AWS.CloudFront.Types.Product
@@ -56,6 +60,7 @@ data UpdateCloudFrontOriginAccessIdentity =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateCloudFrontOriginAccessIdentity' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -65,10 +70,10 @@ data UpdateCloudFrontOriginAccessIdentity =
 -- * 'ucfoaiCloudFrontOriginAccessIdentityConfig' - The identity's configuration information.
 --
 -- * 'ucfoaiId' - The identity's id.
-updateCloudFrontOriginAccessIdentity ::
-     CloudFrontOriginAccessIdentityConfig -- ^ 'ucfoaiCloudFrontOriginAccessIdentityConfig'
-  -> Text -- ^ 'ucfoaiId'
-  -> UpdateCloudFrontOriginAccessIdentity
+updateCloudFrontOriginAccessIdentity
+    :: CloudFrontOriginAccessIdentityConfig -- ^ 'ucfoaiCloudFrontOriginAccessIdentityConfig'
+    -> Text -- ^ 'ucfoaiId'
+    -> UpdateCloudFrontOriginAccessIdentity
 updateCloudFrontOriginAccessIdentity pCloudFrontOriginAccessIdentityConfig_ pId_ =
   UpdateCloudFrontOriginAccessIdentity'
     { _ucfoaiIfMatch = Nothing
@@ -77,56 +82,64 @@ updateCloudFrontOriginAccessIdentity pCloudFrontOriginAccessIdentityConfig_ pId_
     , _ucfoaiId = pId_
     }
 
+
 -- | The value of the @ETag@ header that you received when retrieving the identity's configuration. For example: @E2QWRUHAPOMQZL@ .
 ucfoaiIfMatch :: Lens' UpdateCloudFrontOriginAccessIdentity (Maybe Text)
-ucfoaiIfMatch = lens _ucfoaiIfMatch (\s a -> s {_ucfoaiIfMatch = a})
+ucfoaiIfMatch = lens _ucfoaiIfMatch (\ s a -> s{_ucfoaiIfMatch = a})
 
 -- | The identity's configuration information.
-ucfoaiCloudFrontOriginAccessIdentityConfig ::
-     Lens' UpdateCloudFrontOriginAccessIdentity CloudFrontOriginAccessIdentityConfig
-ucfoaiCloudFrontOriginAccessIdentityConfig =
-  lens
-    _ucfoaiCloudFrontOriginAccessIdentityConfig
-    (\s a -> s {_ucfoaiCloudFrontOriginAccessIdentityConfig = a})
+ucfoaiCloudFrontOriginAccessIdentityConfig :: Lens' UpdateCloudFrontOriginAccessIdentity CloudFrontOriginAccessIdentityConfig
+ucfoaiCloudFrontOriginAccessIdentityConfig = lens _ucfoaiCloudFrontOriginAccessIdentityConfig (\ s a -> s{_ucfoaiCloudFrontOriginAccessIdentityConfig = a})
 
 -- | The identity's id.
 ucfoaiId :: Lens' UpdateCloudFrontOriginAccessIdentity Text
-ucfoaiId = lens _ucfoaiId (\s a -> s {_ucfoaiId = a})
+ucfoaiId = lens _ucfoaiId (\ s a -> s{_ucfoaiId = a})
 
-instance AWSRequest UpdateCloudFrontOriginAccessIdentity where
-  type Rs UpdateCloudFrontOriginAccessIdentity = UpdateCloudFrontOriginAccessIdentityResponse
-  request = putXML cloudFront
-  response =
-    receiveXML
-      (\s h x ->
-         UpdateCloudFrontOriginAccessIdentityResponse' <$> (h .#? "ETag") <*>
-         (parseXML x) <*>
-         (pure (fromEnum s)))
+instance AWSRequest
+           UpdateCloudFrontOriginAccessIdentity
+         where
+        type Rs UpdateCloudFrontOriginAccessIdentity =
+             UpdateCloudFrontOriginAccessIdentityResponse
+        request = putXML cloudFront
+        response
+          = receiveXML
+              (\ s h x ->
+                 UpdateCloudFrontOriginAccessIdentityResponse' <$>
+                   (h .#? "ETag") <*> (parseXML x) <*>
+                     (pure (fromEnum s)))
 
-instance Hashable UpdateCloudFrontOriginAccessIdentity
+instance Hashable
+           UpdateCloudFrontOriginAccessIdentity
+         where
 
 instance NFData UpdateCloudFrontOriginAccessIdentity
+         where
 
-instance ToElement UpdateCloudFrontOriginAccessIdentity where
-  toElement =
-    mkElement
-      "{http://cloudfront.amazonaws.com/doc/2017-10-30/}CloudFrontOriginAccessIdentityConfig" .
-    _ucfoaiCloudFrontOriginAccessIdentityConfig
+instance ToElement
+           UpdateCloudFrontOriginAccessIdentity
+         where
+        toElement
+          = mkElement
+              "{http://cloudfront.amazonaws.com/doc/2019-03-26/}CloudFrontOriginAccessIdentityConfig"
+              .
+              _ucfoaiCloudFrontOriginAccessIdentityConfig
 
-instance ToHeaders UpdateCloudFrontOriginAccessIdentity where
-  toHeaders UpdateCloudFrontOriginAccessIdentity' {..} =
-    mconcat ["If-Match" =# _ucfoaiIfMatch]
+instance ToHeaders
+           UpdateCloudFrontOriginAccessIdentity
+         where
+        toHeaders UpdateCloudFrontOriginAccessIdentity'{..}
+          = mconcat ["If-Match" =# _ucfoaiIfMatch]
 
-instance ToPath UpdateCloudFrontOriginAccessIdentity where
-  toPath UpdateCloudFrontOriginAccessIdentity' {..} =
-    mconcat
-      [ "/2017-10-30/origin-access-identity/cloudfront/"
-      , toBS _ucfoaiId
-      , "/config"
-      ]
+instance ToPath UpdateCloudFrontOriginAccessIdentity
+         where
+        toPath UpdateCloudFrontOriginAccessIdentity'{..}
+          = mconcat
+              ["/2019-03-26/origin-access-identity/cloudfront/",
+               toBS _ucfoaiId, "/config"]
 
-instance ToQuery UpdateCloudFrontOriginAccessIdentity where
-  toQuery = const mempty
+instance ToQuery UpdateCloudFrontOriginAccessIdentity
+         where
+        toQuery = const mempty
 
 -- | The returned result of the corresponding request.
 --
@@ -141,6 +154,7 @@ data UpdateCloudFrontOriginAccessIdentityResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateCloudFrontOriginAccessIdentityResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -150,9 +164,9 @@ data UpdateCloudFrontOriginAccessIdentityResponse =
 -- * 'ucfoairsCloudFrontOriginAccessIdentity' - The origin access identity's information.
 --
 -- * 'ucfoairsResponseStatus' - -- | The response status code.
-updateCloudFrontOriginAccessIdentityResponse ::
-     Int -- ^ 'ucfoairsResponseStatus'
-  -> UpdateCloudFrontOriginAccessIdentityResponse
+updateCloudFrontOriginAccessIdentityResponse
+    :: Int -- ^ 'ucfoairsResponseStatus'
+    -> UpdateCloudFrontOriginAccessIdentityResponse
 updateCloudFrontOriginAccessIdentityResponse pResponseStatus_ =
   UpdateCloudFrontOriginAccessIdentityResponse'
     { _ucfoairsETag = Nothing
@@ -160,21 +174,19 @@ updateCloudFrontOriginAccessIdentityResponse pResponseStatus_ =
     , _ucfoairsResponseStatus = pResponseStatus_
     }
 
+
 -- | The current version of the configuration. For example: @E2QWRUHAPOMQZL@ .
 ucfoairsETag :: Lens' UpdateCloudFrontOriginAccessIdentityResponse (Maybe Text)
-ucfoairsETag = lens _ucfoairsETag (\s a -> s {_ucfoairsETag = a})
+ucfoairsETag = lens _ucfoairsETag (\ s a -> s{_ucfoairsETag = a})
 
 -- | The origin access identity's information.
-ucfoairsCloudFrontOriginAccessIdentity ::
-     Lens' UpdateCloudFrontOriginAccessIdentityResponse (Maybe CloudFrontOriginAccessIdentity)
-ucfoairsCloudFrontOriginAccessIdentity =
-  lens
-    _ucfoairsCloudFrontOriginAccessIdentity
-    (\s a -> s {_ucfoairsCloudFrontOriginAccessIdentity = a})
+ucfoairsCloudFrontOriginAccessIdentity :: Lens' UpdateCloudFrontOriginAccessIdentityResponse (Maybe CloudFrontOriginAccessIdentity)
+ucfoairsCloudFrontOriginAccessIdentity = lens _ucfoairsCloudFrontOriginAccessIdentity (\ s a -> s{_ucfoairsCloudFrontOriginAccessIdentity = a})
 
 -- | -- | The response status code.
 ucfoairsResponseStatus :: Lens' UpdateCloudFrontOriginAccessIdentityResponse Int
-ucfoairsResponseStatus =
-  lens _ucfoairsResponseStatus (\s a -> s {_ucfoairsResponseStatus = a})
+ucfoairsResponseStatus = lens _ucfoairsResponseStatus (\ s a -> s{_ucfoairsResponseStatus = a})
 
-instance NFData UpdateCloudFrontOriginAccessIdentityResponse
+instance NFData
+           UpdateCloudFrontOriginAccessIdentityResponse
+         where

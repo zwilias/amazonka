@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Test.AWS.Gen.STS
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -23,6 +24,7 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
+
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -48,6 +50,7 @@ import Test.Tasty
 --             assumeRoleWithSAML
 --
 --           ]
+
 --     , testGroup "response"
 --         [ responseGetCallerIdentity $
 --             getCallerIdentityResponse
@@ -72,87 +75,90 @@ import Test.Tasty
 --
 --           ]
 --     ]
+
 -- Requests
+
 requestGetCallerIdentity :: GetCallerIdentity -> TestTree
-requestGetCallerIdentity =
-  req "GetCallerIdentity" "fixture/GetCallerIdentity.yaml"
+requestGetCallerIdentity = req
+    "GetCallerIdentity"
+    "fixture/GetCallerIdentity.yaml"
 
 requestAssumeRole :: AssumeRole -> TestTree
-requestAssumeRole = req "AssumeRole" "fixture/AssumeRole.yaml"
+requestAssumeRole = req
+    "AssumeRole"
+    "fixture/AssumeRole.yaml"
 
 requestDecodeAuthorizationMessage :: DecodeAuthorizationMessage -> TestTree
-requestDecodeAuthorizationMessage =
-  req "DecodeAuthorizationMessage" "fixture/DecodeAuthorizationMessage.yaml"
+requestDecodeAuthorizationMessage = req
+    "DecodeAuthorizationMessage"
+    "fixture/DecodeAuthorizationMessage.yaml"
 
 requestAssumeRoleWithWebIdentity :: AssumeRoleWithWebIdentity -> TestTree
-requestAssumeRoleWithWebIdentity =
-  req "AssumeRoleWithWebIdentity" "fixture/AssumeRoleWithWebIdentity.yaml"
+requestAssumeRoleWithWebIdentity = req
+    "AssumeRoleWithWebIdentity"
+    "fixture/AssumeRoleWithWebIdentity.yaml"
 
 requestGetFederationToken :: GetFederationToken -> TestTree
-requestGetFederationToken =
-  req "GetFederationToken" "fixture/GetFederationToken.yaml"
+requestGetFederationToken = req
+    "GetFederationToken"
+    "fixture/GetFederationToken.yaml"
 
 requestGetSessionToken :: GetSessionToken -> TestTree
-requestGetSessionToken = req "GetSessionToken" "fixture/GetSessionToken.yaml"
+requestGetSessionToken = req
+    "GetSessionToken"
+    "fixture/GetSessionToken.yaml"
 
 requestAssumeRoleWithSAML :: AssumeRoleWithSAML -> TestTree
-requestAssumeRoleWithSAML =
-  req "AssumeRoleWithSAML" "fixture/AssumeRoleWithSAML.yaml"
+requestAssumeRoleWithSAML = req
+    "AssumeRoleWithSAML"
+    "fixture/AssumeRoleWithSAML.yaml"
 
 -- Responses
+
 responseGetCallerIdentity :: GetCallerIdentityResponse -> TestTree
-responseGetCallerIdentity =
-  res
+responseGetCallerIdentity = res
     "GetCallerIdentityResponse"
     "fixture/GetCallerIdentityResponse.proto"
     sts
     (Proxy :: Proxy GetCallerIdentity)
 
 responseAssumeRole :: AssumeRoleResponse -> TestTree
-responseAssumeRole =
-  res
+responseAssumeRole = res
     "AssumeRoleResponse"
     "fixture/AssumeRoleResponse.proto"
     sts
     (Proxy :: Proxy AssumeRole)
 
-responseDecodeAuthorizationMessage ::
-     DecodeAuthorizationMessageResponse -> TestTree
-responseDecodeAuthorizationMessage =
-  res
+responseDecodeAuthorizationMessage :: DecodeAuthorizationMessageResponse -> TestTree
+responseDecodeAuthorizationMessage = res
     "DecodeAuthorizationMessageResponse"
     "fixture/DecodeAuthorizationMessageResponse.proto"
     sts
     (Proxy :: Proxy DecodeAuthorizationMessage)
 
-responseAssumeRoleWithWebIdentity ::
-     AssumeRoleWithWebIdentityResponse -> TestTree
-responseAssumeRoleWithWebIdentity =
-  res
+responseAssumeRoleWithWebIdentity :: AssumeRoleWithWebIdentityResponse -> TestTree
+responseAssumeRoleWithWebIdentity = res
     "AssumeRoleWithWebIdentityResponse"
     "fixture/AssumeRoleWithWebIdentityResponse.proto"
     sts
     (Proxy :: Proxy AssumeRoleWithWebIdentity)
 
 responseGetFederationToken :: GetFederationTokenResponse -> TestTree
-responseGetFederationToken =
-  res
+responseGetFederationToken = res
     "GetFederationTokenResponse"
     "fixture/GetFederationTokenResponse.proto"
     sts
     (Proxy :: Proxy GetFederationToken)
 
 responseGetSessionToken :: GetSessionTokenResponse -> TestTree
-responseGetSessionToken =
-  res
+responseGetSessionToken = res
     "GetSessionTokenResponse"
     "fixture/GetSessionTokenResponse.proto"
     sts
     (Proxy :: Proxy GetSessionToken)
 
 responseAssumeRoleWithSAML :: AssumeRoleWithSAMLResponse -> TestTree
-responseAssumeRoleWithSAML =
-  res
+responseAssumeRoleWithSAML = res
     "AssumeRoleWithSAMLResponse"
     "fixture/AssumeRoleWithSAMLResponse.proto"
     sts

@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Lightsail.DeleteLoadBalancerTLSCertificate
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,20 +22,22 @@
 --
 --
 module Network.AWS.Lightsail.DeleteLoadBalancerTLSCertificate
+    (
     -- * Creating a Request
-  ( deleteLoadBalancerTLSCertificate
-  , DeleteLoadBalancerTLSCertificate
+      deleteLoadBalancerTLSCertificate
+    , DeleteLoadBalancerTLSCertificate
     -- * Request Lenses
-  , dlbtcForce
-  , dlbtcLoadBalancerName
-  , dlbtcCertificateName
+    , dlbtcForce
+    , dlbtcLoadBalancerName
+    , dlbtcCertificateName
+
     -- * Destructuring the Response
-  , deleteLoadBalancerTLSCertificateResponse
-  , DeleteLoadBalancerTLSCertificateResponse
+    , deleteLoadBalancerTLSCertificateResponse
+    , DeleteLoadBalancerTLSCertificateResponse
     -- * Response Lenses
-  , dlbtcrsOperations
-  , dlbtcrsResponseStatus
-  ) where
+    , dlbtcrsOperations
+    , dlbtcrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
@@ -51,6 +55,7 @@ data DeleteLoadBalancerTLSCertificate =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteLoadBalancerTLSCertificate' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -60,10 +65,10 @@ data DeleteLoadBalancerTLSCertificate =
 -- * 'dlbtcLoadBalancerName' - The load balancer name.
 --
 -- * 'dlbtcCertificateName' - The SSL/TLS certificate name.
-deleteLoadBalancerTLSCertificate ::
-     Text -- ^ 'dlbtcLoadBalancerName'
-  -> Text -- ^ 'dlbtcCertificateName'
-  -> DeleteLoadBalancerTLSCertificate
+deleteLoadBalancerTLSCertificate
+    :: Text -- ^ 'dlbtcLoadBalancerName'
+    -> Text -- ^ 'dlbtcCertificateName'
+    -> DeleteLoadBalancerTLSCertificate
 deleteLoadBalancerTLSCertificate pLoadBalancerName_ pCertificateName_ =
   DeleteLoadBalancerTLSCertificate'
     { _dlbtcForce = Nothing
@@ -71,57 +76,64 @@ deleteLoadBalancerTLSCertificate pLoadBalancerName_ pCertificateName_ =
     , _dlbtcCertificateName = pCertificateName_
     }
 
+
 -- | When @true@ , forces the deletion of an SSL/TLS certificate. There can be two certificates associated with a Lightsail load balancer: the primary and the backup. The force parameter is required when the primary SSL/TLS certificate is in use by an instance attached to the load balancer.
 dlbtcForce :: Lens' DeleteLoadBalancerTLSCertificate (Maybe Bool)
-dlbtcForce = lens _dlbtcForce (\s a -> s {_dlbtcForce = a})
+dlbtcForce = lens _dlbtcForce (\ s a -> s{_dlbtcForce = a})
 
 -- | The load balancer name.
 dlbtcLoadBalancerName :: Lens' DeleteLoadBalancerTLSCertificate Text
-dlbtcLoadBalancerName =
-  lens _dlbtcLoadBalancerName (\s a -> s {_dlbtcLoadBalancerName = a})
+dlbtcLoadBalancerName = lens _dlbtcLoadBalancerName (\ s a -> s{_dlbtcLoadBalancerName = a})
 
 -- | The SSL/TLS certificate name.
 dlbtcCertificateName :: Lens' DeleteLoadBalancerTLSCertificate Text
-dlbtcCertificateName =
-  lens _dlbtcCertificateName (\s a -> s {_dlbtcCertificateName = a})
+dlbtcCertificateName = lens _dlbtcCertificateName (\ s a -> s{_dlbtcCertificateName = a})
 
-instance AWSRequest DeleteLoadBalancerTLSCertificate where
-  type Rs DeleteLoadBalancerTLSCertificate = DeleteLoadBalancerTLSCertificateResponse
-  request = postJSON lightsail
-  response =
-    receiveJSON
-      (\s h x ->
-         DeleteLoadBalancerTLSCertificateResponse' <$>
-         (x .?> "operations" .!@ mempty) <*>
-         (pure (fromEnum s)))
+instance AWSRequest DeleteLoadBalancerTLSCertificate
+         where
+        type Rs DeleteLoadBalancerTLSCertificate =
+             DeleteLoadBalancerTLSCertificateResponse
+        request = postJSON lightsail
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DeleteLoadBalancerTLSCertificateResponse' <$>
+                   (x .?> "operations" .!@ mempty) <*>
+                     (pure (fromEnum s)))
 
 instance Hashable DeleteLoadBalancerTLSCertificate
+         where
 
 instance NFData DeleteLoadBalancerTLSCertificate
+         where
 
-instance ToHeaders DeleteLoadBalancerTLSCertificate where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("Lightsail_20161128.DeleteLoadBalancerTlsCertificate" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+instance ToHeaders DeleteLoadBalancerTLSCertificate
+         where
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("Lightsail_20161128.DeleteLoadBalancerTlsCertificate"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
-instance ToJSON DeleteLoadBalancerTLSCertificate where
-  toJSON DeleteLoadBalancerTLSCertificate' {..} =
-    object
-      (catMaybes
-         [ ("force" .=) <$> _dlbtcForce
-         , Just ("loadBalancerName" .= _dlbtcLoadBalancerName)
-         , Just ("certificateName" .= _dlbtcCertificateName)
-         ])
+instance ToJSON DeleteLoadBalancerTLSCertificate
+         where
+        toJSON DeleteLoadBalancerTLSCertificate'{..}
+          = object
+              (catMaybes
+                 [("force" .=) <$> _dlbtcForce,
+                  Just ("loadBalancerName" .= _dlbtcLoadBalancerName),
+                  Just ("certificateName" .= _dlbtcCertificateName)])
 
-instance ToPath DeleteLoadBalancerTLSCertificate where
-  toPath = const "/"
+instance ToPath DeleteLoadBalancerTLSCertificate
+         where
+        toPath = const "/"
 
-instance ToQuery DeleteLoadBalancerTLSCertificate where
-  toQuery = const mempty
+instance ToQuery DeleteLoadBalancerTLSCertificate
+         where
+        toQuery = const mempty
 
 -- | /See:/ 'deleteLoadBalancerTLSCertificateResponse' smart constructor.
 data DeleteLoadBalancerTLSCertificateResponse =
@@ -131,6 +143,7 @@ data DeleteLoadBalancerTLSCertificateResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteLoadBalancerTLSCertificateResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -138,22 +151,22 @@ data DeleteLoadBalancerTLSCertificateResponse =
 -- * 'dlbtcrsOperations' - An object describing the API operations.
 --
 -- * 'dlbtcrsResponseStatus' - -- | The response status code.
-deleteLoadBalancerTLSCertificateResponse ::
-     Int -- ^ 'dlbtcrsResponseStatus'
-  -> DeleteLoadBalancerTLSCertificateResponse
+deleteLoadBalancerTLSCertificateResponse
+    :: Int -- ^ 'dlbtcrsResponseStatus'
+    -> DeleteLoadBalancerTLSCertificateResponse
 deleteLoadBalancerTLSCertificateResponse pResponseStatus_ =
   DeleteLoadBalancerTLSCertificateResponse'
     {_dlbtcrsOperations = Nothing, _dlbtcrsResponseStatus = pResponseStatus_}
 
+
 -- | An object describing the API operations.
 dlbtcrsOperations :: Lens' DeleteLoadBalancerTLSCertificateResponse [Operation]
-dlbtcrsOperations =
-  lens _dlbtcrsOperations (\s a -> s {_dlbtcrsOperations = a}) .
-  _Default . _Coerce
+dlbtcrsOperations = lens _dlbtcrsOperations (\ s a -> s{_dlbtcrsOperations = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 dlbtcrsResponseStatus :: Lens' DeleteLoadBalancerTLSCertificateResponse Int
-dlbtcrsResponseStatus =
-  lens _dlbtcrsResponseStatus (\s a -> s {_dlbtcrsResponseStatus = a})
+dlbtcrsResponseStatus = lens _dlbtcrsResponseStatus (\ s a -> s{_dlbtcrsResponseStatus = a})
 
-instance NFData DeleteLoadBalancerTLSCertificateResponse
+instance NFData
+           DeleteLoadBalancerTLSCertificateResponse
+         where

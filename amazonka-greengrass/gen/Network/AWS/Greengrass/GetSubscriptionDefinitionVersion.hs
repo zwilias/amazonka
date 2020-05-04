@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Greengrass.GetSubscriptionDefinitionVersion
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,23 +20,25 @@
 --
 -- Retrieves information about a subscription definition version.
 module Network.AWS.Greengrass.GetSubscriptionDefinitionVersion
+    (
     -- * Creating a Request
-  ( getSubscriptionDefinitionVersion
-  , GetSubscriptionDefinitionVersion
+      getSubscriptionDefinitionVersion
+    , GetSubscriptionDefinitionVersion
     -- * Request Lenses
-  , gsdvSubscriptionDefinitionId
-  , gsdvSubscriptionDefinitionVersionId
+    , gsdvSubscriptionDefinitionId
+    , gsdvSubscriptionDefinitionVersionId
+
     -- * Destructuring the Response
-  , getSubscriptionDefinitionVersionResponse
-  , GetSubscriptionDefinitionVersionResponse
+    , getSubscriptionDefinitionVersionResponse
+    , GetSubscriptionDefinitionVersionResponse
     -- * Response Lenses
-  , gsdvrsDefinition
-  , gsdvrsARN
-  , gsdvrsCreationTimestamp
-  , gsdvrsVersion
-  , gsdvrsId
-  , gsdvrsResponseStatus
-  ) where
+    , gsdvrsDefinition
+    , gsdvrsARN
+    , gsdvrsCreationTimestamp
+    , gsdvrsVersion
+    , gsdvrsId
+    , gsdvrsResponseStatus
+    ) where
 
 import Network.AWS.Greengrass.Types
 import Network.AWS.Greengrass.Types.Product
@@ -51,6 +55,7 @@ data GetSubscriptionDefinitionVersion =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetSubscriptionDefinitionVersion' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -58,64 +63,65 @@ data GetSubscriptionDefinitionVersion =
 -- * 'gsdvSubscriptionDefinitionId' - The ID of the subscription definition.
 --
 -- * 'gsdvSubscriptionDefinitionVersionId' - The ID of the subscription definition version.
-getSubscriptionDefinitionVersion ::
-     Text -- ^ 'gsdvSubscriptionDefinitionId'
-  -> Text -- ^ 'gsdvSubscriptionDefinitionVersionId'
-  -> GetSubscriptionDefinitionVersion
+getSubscriptionDefinitionVersion
+    :: Text -- ^ 'gsdvSubscriptionDefinitionId'
+    -> Text -- ^ 'gsdvSubscriptionDefinitionVersionId'
+    -> GetSubscriptionDefinitionVersion
 getSubscriptionDefinitionVersion pSubscriptionDefinitionId_ pSubscriptionDefinitionVersionId_ =
   GetSubscriptionDefinitionVersion'
     { _gsdvSubscriptionDefinitionId = pSubscriptionDefinitionId_
     , _gsdvSubscriptionDefinitionVersionId = pSubscriptionDefinitionVersionId_
     }
 
+
 -- | The ID of the subscription definition.
 gsdvSubscriptionDefinitionId :: Lens' GetSubscriptionDefinitionVersion Text
-gsdvSubscriptionDefinitionId =
-  lens
-    _gsdvSubscriptionDefinitionId
-    (\s a -> s {_gsdvSubscriptionDefinitionId = a})
+gsdvSubscriptionDefinitionId = lens _gsdvSubscriptionDefinitionId (\ s a -> s{_gsdvSubscriptionDefinitionId = a})
 
 -- | The ID of the subscription definition version.
-gsdvSubscriptionDefinitionVersionId ::
-     Lens' GetSubscriptionDefinitionVersion Text
-gsdvSubscriptionDefinitionVersionId =
-  lens
-    _gsdvSubscriptionDefinitionVersionId
-    (\s a -> s {_gsdvSubscriptionDefinitionVersionId = a})
+gsdvSubscriptionDefinitionVersionId :: Lens' GetSubscriptionDefinitionVersion Text
+gsdvSubscriptionDefinitionVersionId = lens _gsdvSubscriptionDefinitionVersionId (\ s a -> s{_gsdvSubscriptionDefinitionVersionId = a})
 
-instance AWSRequest GetSubscriptionDefinitionVersion where
-  type Rs GetSubscriptionDefinitionVersion = GetSubscriptionDefinitionVersionResponse
-  request = get greengrass
-  response =
-    receiveJSON
-      (\s h x ->
-         GetSubscriptionDefinitionVersionResponse' <$> (x .?> "Definition") <*>
-         (x .?> "Arn") <*>
-         (x .?> "CreationTimestamp") <*>
-         (x .?> "Version") <*>
-         (x .?> "Id") <*>
-         (pure (fromEnum s)))
+instance AWSRequest GetSubscriptionDefinitionVersion
+         where
+        type Rs GetSubscriptionDefinitionVersion =
+             GetSubscriptionDefinitionVersionResponse
+        request = get greengrass
+        response
+          = receiveJSON
+              (\ s h x ->
+                 GetSubscriptionDefinitionVersionResponse' <$>
+                   (x .?> "Definition") <*> (x .?> "Arn") <*>
+                     (x .?> "CreationTimestamp")
+                     <*> (x .?> "Version")
+                     <*> (x .?> "Id")
+                     <*> (pure (fromEnum s)))
 
 instance Hashable GetSubscriptionDefinitionVersion
+         where
 
 instance NFData GetSubscriptionDefinitionVersion
+         where
 
-instance ToHeaders GetSubscriptionDefinitionVersion where
-  toHeaders =
-    const
-      (mconcat ["Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)])
+instance ToHeaders GetSubscriptionDefinitionVersion
+         where
+        toHeaders
+          = const
+              (mconcat
+                 ["Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
-instance ToPath GetSubscriptionDefinitionVersion where
-  toPath GetSubscriptionDefinitionVersion' {..} =
-    mconcat
-      [ "/greengrass/definition/subscriptions/"
-      , toBS _gsdvSubscriptionDefinitionId
-      , "/versions/"
-      , toBS _gsdvSubscriptionDefinitionVersionId
-      ]
+instance ToPath GetSubscriptionDefinitionVersion
+         where
+        toPath GetSubscriptionDefinitionVersion'{..}
+          = mconcat
+              ["/greengrass/definition/subscriptions/",
+               toBS _gsdvSubscriptionDefinitionId, "/versions/",
+               toBS _gsdvSubscriptionDefinitionVersionId]
 
-instance ToQuery GetSubscriptionDefinitionVersion where
-  toQuery = const mempty
+instance ToQuery GetSubscriptionDefinitionVersion
+         where
+        toQuery = const mempty
 
 -- | /See:/ 'getSubscriptionDefinitionVersionResponse' smart constructor.
 data GetSubscriptionDefinitionVersionResponse =
@@ -128,6 +134,7 @@ data GetSubscriptionDefinitionVersionResponse =
     , _gsdvrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'GetSubscriptionDefinitionVersionResponse' with the minimum fields required to make a request.
 --
@@ -144,9 +151,9 @@ data GetSubscriptionDefinitionVersionResponse =
 -- * 'gsdvrsId' - The ID of the subscription definition version.
 --
 -- * 'gsdvrsResponseStatus' - -- | The response status code.
-getSubscriptionDefinitionVersionResponse ::
-     Int -- ^ 'gsdvrsResponseStatus'
-  -> GetSubscriptionDefinitionVersionResponse
+getSubscriptionDefinitionVersionResponse
+    :: Int -- ^ 'gsdvrsResponseStatus'
+    -> GetSubscriptionDefinitionVersionResponse
 getSubscriptionDefinitionVersionResponse pResponseStatus_ =
   GetSubscriptionDefinitionVersionResponse'
     { _gsdvrsDefinition = Nothing
@@ -157,32 +164,31 @@ getSubscriptionDefinitionVersionResponse pResponseStatus_ =
     , _gsdvrsResponseStatus = pResponseStatus_
     }
 
+
 -- | Information about the subscription definition version.
-gsdvrsDefinition ::
-     Lens' GetSubscriptionDefinitionVersionResponse (Maybe SubscriptionDefinitionVersion)
-gsdvrsDefinition = lens _gsdvrsDefinition (\s a -> s {_gsdvrsDefinition = a})
+gsdvrsDefinition :: Lens' GetSubscriptionDefinitionVersionResponse (Maybe SubscriptionDefinitionVersion)
+gsdvrsDefinition = lens _gsdvrsDefinition (\ s a -> s{_gsdvrsDefinition = a})
 
 -- | The ARN of the subscription definition version.
 gsdvrsARN :: Lens' GetSubscriptionDefinitionVersionResponse (Maybe Text)
-gsdvrsARN = lens _gsdvrsARN (\s a -> s {_gsdvrsARN = a})
+gsdvrsARN = lens _gsdvrsARN (\ s a -> s{_gsdvrsARN = a})
 
 -- | The time, in milliseconds since the epoch, when the subscription definition version was created.
-gsdvrsCreationTimestamp ::
-     Lens' GetSubscriptionDefinitionVersionResponse (Maybe Text)
-gsdvrsCreationTimestamp =
-  lens _gsdvrsCreationTimestamp (\s a -> s {_gsdvrsCreationTimestamp = a})
+gsdvrsCreationTimestamp :: Lens' GetSubscriptionDefinitionVersionResponse (Maybe Text)
+gsdvrsCreationTimestamp = lens _gsdvrsCreationTimestamp (\ s a -> s{_gsdvrsCreationTimestamp = a})
 
 -- | The version of the subscription definition version.
 gsdvrsVersion :: Lens' GetSubscriptionDefinitionVersionResponse (Maybe Text)
-gsdvrsVersion = lens _gsdvrsVersion (\s a -> s {_gsdvrsVersion = a})
+gsdvrsVersion = lens _gsdvrsVersion (\ s a -> s{_gsdvrsVersion = a})
 
 -- | The ID of the subscription definition version.
 gsdvrsId :: Lens' GetSubscriptionDefinitionVersionResponse (Maybe Text)
-gsdvrsId = lens _gsdvrsId (\s a -> s {_gsdvrsId = a})
+gsdvrsId = lens _gsdvrsId (\ s a -> s{_gsdvrsId = a})
 
 -- | -- | The response status code.
 gsdvrsResponseStatus :: Lens' GetSubscriptionDefinitionVersionResponse Int
-gsdvrsResponseStatus =
-  lens _gsdvrsResponseStatus (\s a -> s {_gsdvrsResponseStatus = a})
+gsdvrsResponseStatus = lens _gsdvrsResponseStatus (\ s a -> s{_gsdvrsResponseStatus = a})
 
-instance NFData GetSubscriptionDefinitionVersionResponse
+instance NFData
+           GetSubscriptionDefinitionVersionResponse
+         where

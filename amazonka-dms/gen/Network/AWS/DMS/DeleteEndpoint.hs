@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.DMS.DeleteEndpoint
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,18 +24,20 @@
 --
 --
 module Network.AWS.DMS.DeleteEndpoint
+    (
     -- * Creating a Request
-  ( deleteEndpoint
-  , DeleteEndpoint
+      deleteEndpoint
+    , DeleteEndpoint
     -- * Request Lenses
-  , deEndpointARN
+    , deEndpointARN
+
     -- * Destructuring the Response
-  , deleteEndpointResponse
-  , DeleteEndpointResponse
+    , deleteEndpointResponse
+    , DeleteEndpointResponse
     -- * Response Lenses
-  , delrsEndpoint
-  , delrsResponseStatus
-  ) where
+    , delrsEndpoint
+    , delrsResponseStatus
+    ) where
 
 import Network.AWS.DMS.Types
 import Network.AWS.DMS.Types.Product
@@ -53,49 +57,54 @@ newtype DeleteEndpoint =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteEndpoint' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'deEndpointARN' - The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.
-deleteEndpoint ::
-     Text -- ^ 'deEndpointARN'
-  -> DeleteEndpoint
+deleteEndpoint
+    :: Text -- ^ 'deEndpointARN'
+    -> DeleteEndpoint
 deleteEndpoint pEndpointARN_ = DeleteEndpoint' {_deEndpointARN = pEndpointARN_}
+
 
 -- | The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.
 deEndpointARN :: Lens' DeleteEndpoint Text
-deEndpointARN = lens _deEndpointARN (\s a -> s {_deEndpointARN = a})
+deEndpointARN = lens _deEndpointARN (\ s a -> s{_deEndpointARN = a})
 
 instance AWSRequest DeleteEndpoint where
-  type Rs DeleteEndpoint = DeleteEndpointResponse
-  request = postJSON dms
-  response =
-    receiveJSON
-      (\s h x ->
-         DeleteEndpointResponse' <$> (x .?> "Endpoint") <*> (pure (fromEnum s)))
+        type Rs DeleteEndpoint = DeleteEndpointResponse
+        request = postJSON dms
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DeleteEndpointResponse' <$>
+                   (x .?> "Endpoint") <*> (pure (fromEnum s)))
 
-instance Hashable DeleteEndpoint
+instance Hashable DeleteEndpoint where
 
-instance NFData DeleteEndpoint
+instance NFData DeleteEndpoint where
 
 instance ToHeaders DeleteEndpoint where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("AmazonDMSv20160101.DeleteEndpoint" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AmazonDMSv20160101.DeleteEndpoint" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DeleteEndpoint where
-  toJSON DeleteEndpoint' {..} =
-    object (catMaybes [Just ("EndpointArn" .= _deEndpointARN)])
+        toJSON DeleteEndpoint'{..}
+          = object
+              (catMaybes [Just ("EndpointArn" .= _deEndpointARN)])
 
 instance ToPath DeleteEndpoint where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DeleteEndpoint where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- |
 --
@@ -109,6 +118,7 @@ data DeleteEndpointResponse =
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteEndpointResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -116,20 +126,20 @@ data DeleteEndpointResponse =
 -- * 'delrsEndpoint' - The endpoint that was deleted.
 --
 -- * 'delrsResponseStatus' - -- | The response status code.
-deleteEndpointResponse ::
-     Int -- ^ 'delrsResponseStatus'
-  -> DeleteEndpointResponse
+deleteEndpointResponse
+    :: Int -- ^ 'delrsResponseStatus'
+    -> DeleteEndpointResponse
 deleteEndpointResponse pResponseStatus_ =
   DeleteEndpointResponse'
     {_delrsEndpoint = Nothing, _delrsResponseStatus = pResponseStatus_}
 
+
 -- | The endpoint that was deleted.
 delrsEndpoint :: Lens' DeleteEndpointResponse (Maybe Endpoint)
-delrsEndpoint = lens _delrsEndpoint (\s a -> s {_delrsEndpoint = a})
+delrsEndpoint = lens _delrsEndpoint (\ s a -> s{_delrsEndpoint = a})
 
 -- | -- | The response status code.
 delrsResponseStatus :: Lens' DeleteEndpointResponse Int
-delrsResponseStatus =
-  lens _delrsResponseStatus (\s a -> s {_delrsResponseStatus = a})
+delrsResponseStatus = lens _delrsResponseStatus (\ s a -> s{_delrsResponseStatus = a})
 
-instance NFData DeleteEndpointResponse
+instance NFData DeleteEndpointResponse where

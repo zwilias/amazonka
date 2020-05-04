@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Discovery.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,124 +11,144 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.Discovery.Types
+    (
     -- * Service Configuration
-  ( discovery
+      discovery
+
     -- * Errors
-  , _AuthorizationErrorException
-  , _InvalidParameterException
-  , _InvalidParameterValueException
-  , _ServerInternalErrorException
-  , _OperationNotPermittedException
-  , _ResourceNotFoundException
+    , _AuthorizationErrorException
+    , _InvalidParameterException
+    , _InvalidParameterValueException
+    , _ServerInternalErrorException
+    , _OperationNotPermittedException
+    , _ResourceNotFoundException
+
     -- * AgentStatus
-  , AgentStatus(..)
+    , AgentStatus (..)
+
     -- * ConfigurationItemType
-  , ConfigurationItemType(..)
+    , ConfigurationItemType (..)
+
     -- * ExportDataFormat
-  , ExportDataFormat(..)
+    , ExportDataFormat (..)
+
     -- * ExportStatus
-  , ExportStatus(..)
+    , ExportStatus (..)
+
     -- * OrderString
-  , OrderString(..)
+    , OrderString (..)
+
     -- * AgentConfigurationStatus
-  , AgentConfigurationStatus
-  , agentConfigurationStatus
-  , acsAgentId
-  , acsOperationSucceeded
-  , acsDescription
+    , AgentConfigurationStatus
+    , agentConfigurationStatus
+    , acsAgentId
+    , acsOperationSucceeded
+    , acsDescription
+
     -- * AgentInfo
-  , AgentInfo
-  , agentInfo
-  , aiHostName
-  , aiLastHealthPingTime
-  , aiAgentNetworkInfoList
-  , aiConnectorId
-  , aiHealth
-  , aiAgentId
-  , aiVersion
-  , aiCollectionStatus
-  , aiRegisteredTime
-  , aiAgentType
+    , AgentInfo
+    , agentInfo
+    , aiHostName
+    , aiLastHealthPingTime
+    , aiAgentNetworkInfoList
+    , aiConnectorId
+    , aiHealth
+    , aiAgentId
+    , aiVersion
+    , aiCollectionStatus
+    , aiRegisteredTime
+    , aiAgentType
+
     -- * AgentNetworkInfo
-  , AgentNetworkInfo
-  , agentNetworkInfo
-  , aniIpAddress
-  , aniMacAddress
+    , AgentNetworkInfo
+    , agentNetworkInfo
+    , aniIpAddress
+    , aniMacAddress
+
     -- * ConfigurationTag
-  , ConfigurationTag
-  , configurationTag
-  , ctTimeOfCreation
-  , ctConfigurationId
-  , ctConfigurationType
-  , ctValue
-  , ctKey
+    , ConfigurationTag
+    , configurationTag
+    , ctTimeOfCreation
+    , ctConfigurationId
+    , ctConfigurationType
+    , ctValue
+    , ctKey
+
     -- * CustomerAgentInfo
-  , CustomerAgentInfo
-  , customerAgentInfo
-  , caiActiveAgents
-  , caiHealthyAgents
-  , caiBlackListedAgents
-  , caiShutdownAgents
-  , caiUnhealthyAgents
-  , caiTotalAgents
-  , caiUnknownAgents
+    , CustomerAgentInfo
+    , customerAgentInfo
+    , caiActiveAgents
+    , caiHealthyAgents
+    , caiBlackListedAgents
+    , caiShutdownAgents
+    , caiUnhealthyAgents
+    , caiTotalAgents
+    , caiUnknownAgents
+
     -- * CustomerConnectorInfo
-  , CustomerConnectorInfo
-  , customerConnectorInfo
-  , cciActiveConnectors
-  , cciHealthyConnectors
-  , cciBlackListedConnectors
-  , cciShutdownConnectors
-  , cciUnhealthyConnectors
-  , cciTotalConnectors
-  , cciUnknownConnectors
+    , CustomerConnectorInfo
+    , customerConnectorInfo
+    , cciActiveConnectors
+    , cciHealthyConnectors
+    , cciBlackListedConnectors
+    , cciShutdownConnectors
+    , cciUnhealthyConnectors
+    , cciTotalConnectors
+    , cciUnknownConnectors
+
     -- * ExportFilter
-  , ExportFilter
-  , exportFilter
-  , efName
-  , efValues
-  , efCondition
+    , ExportFilter
+    , exportFilter
+    , efName
+    , efValues
+    , efCondition
+
     -- * ExportInfo
-  , ExportInfo
-  , exportInfo
-  , eiConfigurationsDownloadURL
-  , eiRequestedStartTime
-  , eiRequestedEndTime
-  , eiIsTruncated
-  , eiExportId
-  , eiExportStatus
-  , eiStatusMessage
-  , eiExportRequestTime
+    , ExportInfo
+    , exportInfo
+    , eiConfigurationsDownloadURL
+    , eiRequestedStartTime
+    , eiRequestedEndTime
+    , eiIsTruncated
+    , eiExportId
+    , eiExportStatus
+    , eiStatusMessage
+    , eiExportRequestTime
+
     -- * Filter
-  , Filter
-  , filter'
-  , fName
-  , fValues
-  , fCondition
+    , Filter
+    , filter'
+    , fName
+    , fValues
+    , fCondition
+
     -- * NeighborConnectionDetail
-  , NeighborConnectionDetail
-  , neighborConnectionDetail
-  , ncdTransportProtocol
-  , ncdDestinationPort
-  , ncdSourceServerId
-  , ncdDestinationServerId
-  , ncdConnectionsCount
+    , NeighborConnectionDetail
+    , neighborConnectionDetail
+    , ncdTransportProtocol
+    , ncdDestinationPort
+    , ncdSourceServerId
+    , ncdDestinationServerId
+    , ncdConnectionsCount
+
     -- * OrderByElement
-  , OrderByElement
-  , orderByElement
-  , obeSortOrder
-  , obeFieldName
+    , OrderByElement
+    , orderByElement
+    , obeSortOrder
+    , obeFieldName
+
     -- * Tag
-  , Tag
-  , tag
-  , tagKey
-  , tagValue
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
+
     -- * TagFilter
-  , TagFilter
-  , tagFilter
-  , tfName
-  , tfValues
-  ) where
+    , TagFilter
+    , tagFilter
+    , tfName
+    , tfValues
+    ) where
 
 import Network.AWS.Discovery.Types.Product
 import Network.AWS.Discovery.Types.Sum
@@ -173,50 +194,51 @@ discovery =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | The AWS user account does not have permission to perform the action. Check the IAM policy associated with this account.
 --
 --
-_AuthorizationErrorException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_AuthorizationErrorException :: AsError a => Getting (First ServiceError) a ServiceError
 _AuthorizationErrorException =
   _MatchServiceError discovery "AuthorizationErrorException"
+
 
 -- | One or more parameters are not valid. Verify the parameters and try again.
 --
 --
-_InvalidParameterException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidParameterException =
   _MatchServiceError discovery "InvalidParameterException"
+
 
 -- | The value of one or more parameters are either invalid or out of range. Verify the parameter values and try again.
 --
 --
-_InvalidParameterValueException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterValueException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidParameterValueException =
   _MatchServiceError discovery "InvalidParameterValueException"
+
 
 -- | The server experienced an internal error. Try again.
 --
 --
-_ServerInternalErrorException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ServerInternalErrorException :: AsError a => Getting (First ServiceError) a ServiceError
 _ServerInternalErrorException =
   _MatchServiceError discovery "ServerInternalErrorException"
+
 
 -- | This operation is not permitted.
 --
 --
-_OperationNotPermittedException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_OperationNotPermittedException :: AsError a => Getting (First ServiceError) a ServiceError
 _OperationNotPermittedException =
   _MatchServiceError discovery "OperationNotPermittedException"
+
 
 -- | The specified configuration ID was not located. Verify the configuration ID and try again.
 --
 --
-_ResourceNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceNotFoundException =
   _MatchServiceError discovery "ResourceNotFoundException"
+

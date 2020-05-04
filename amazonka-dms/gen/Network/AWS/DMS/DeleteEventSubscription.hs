@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.DMS.DeleteEventSubscription
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.DMS.DeleteEventSubscription
+    (
     -- * Creating a Request
-  ( deleteEventSubscription
-  , DeleteEventSubscription
+      deleteEventSubscription
+    , DeleteEventSubscription
     -- * Request Lenses
-  , desSubscriptionName
+    , desSubscriptionName
+
     -- * Destructuring the Response
-  , deleteEventSubscriptionResponse
-  , DeleteEventSubscriptionResponse
+    , deleteEventSubscriptionResponse
+    , DeleteEventSubscriptionResponse
     -- * Response Lenses
-  , desersEventSubscription
-  , desersResponseStatus
-  ) where
+    , desersEventSubscription
+    , desersResponseStatus
+    ) where
 
 import Network.AWS.DMS.Types
 import Network.AWS.DMS.Types.Product
@@ -51,53 +55,58 @@ newtype DeleteEventSubscription =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteEventSubscription' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'desSubscriptionName' - The name of the DMS event notification subscription to be deleted.
-deleteEventSubscription ::
-     Text -- ^ 'desSubscriptionName'
-  -> DeleteEventSubscription
+deleteEventSubscription
+    :: Text -- ^ 'desSubscriptionName'
+    -> DeleteEventSubscription
 deleteEventSubscription pSubscriptionName_ =
   DeleteEventSubscription' {_desSubscriptionName = pSubscriptionName_}
 
+
 -- | The name of the DMS event notification subscription to be deleted.
 desSubscriptionName :: Lens' DeleteEventSubscription Text
-desSubscriptionName =
-  lens _desSubscriptionName (\s a -> s {_desSubscriptionName = a})
+desSubscriptionName = lens _desSubscriptionName (\ s a -> s{_desSubscriptionName = a})
 
 instance AWSRequest DeleteEventSubscription where
-  type Rs DeleteEventSubscription = DeleteEventSubscriptionResponse
-  request = postJSON dms
-  response =
-    receiveJSON
-      (\s h x ->
-         DeleteEventSubscriptionResponse' <$> (x .?> "EventSubscription") <*>
-         (pure (fromEnum s)))
+        type Rs DeleteEventSubscription =
+             DeleteEventSubscriptionResponse
+        request = postJSON dms
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DeleteEventSubscriptionResponse' <$>
+                   (x .?> "EventSubscription") <*> (pure (fromEnum s)))
 
-instance Hashable DeleteEventSubscription
+instance Hashable DeleteEventSubscription where
 
-instance NFData DeleteEventSubscription
+instance NFData DeleteEventSubscription where
 
 instance ToHeaders DeleteEventSubscription where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AmazonDMSv20160101.DeleteEventSubscription" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AmazonDMSv20160101.DeleteEventSubscription" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DeleteEventSubscription where
-  toJSON DeleteEventSubscription' {..} =
-    object (catMaybes [Just ("SubscriptionName" .= _desSubscriptionName)])
+        toJSON DeleteEventSubscription'{..}
+          = object
+              (catMaybes
+                 [Just ("SubscriptionName" .= _desSubscriptionName)])
 
 instance ToPath DeleteEventSubscription where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DeleteEventSubscription where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- |
 --
@@ -111,6 +120,7 @@ data DeleteEventSubscriptionResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteEventSubscriptionResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -118,24 +128,22 @@ data DeleteEventSubscriptionResponse =
 -- * 'desersEventSubscription' - The event subscription that was deleted.
 --
 -- * 'desersResponseStatus' - -- | The response status code.
-deleteEventSubscriptionResponse ::
-     Int -- ^ 'desersResponseStatus'
-  -> DeleteEventSubscriptionResponse
+deleteEventSubscriptionResponse
+    :: Int -- ^ 'desersResponseStatus'
+    -> DeleteEventSubscriptionResponse
 deleteEventSubscriptionResponse pResponseStatus_ =
   DeleteEventSubscriptionResponse'
     { _desersEventSubscription = Nothing
     , _desersResponseStatus = pResponseStatus_
     }
 
+
 -- | The event subscription that was deleted.
-desersEventSubscription ::
-     Lens' DeleteEventSubscriptionResponse (Maybe EventSubscription)
-desersEventSubscription =
-  lens _desersEventSubscription (\s a -> s {_desersEventSubscription = a})
+desersEventSubscription :: Lens' DeleteEventSubscriptionResponse (Maybe EventSubscription)
+desersEventSubscription = lens _desersEventSubscription (\ s a -> s{_desersEventSubscription = a})
 
 -- | -- | The response status code.
 desersResponseStatus :: Lens' DeleteEventSubscriptionResponse Int
-desersResponseStatus =
-  lens _desersResponseStatus (\s a -> s {_desersResponseStatus = a})
+desersResponseStatus = lens _desersResponseStatus (\ s a -> s{_desersResponseStatus = a})
 
-instance NFData DeleteEventSubscriptionResponse
+instance NFData DeleteEventSubscriptionResponse where

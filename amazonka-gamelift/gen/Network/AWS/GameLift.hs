@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.GameLift
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -259,563 +260,712 @@
 --
 --
 module Network.AWS.GameLift
+    (
     -- * Service Configuration
-  ( gameLift
+      gameLift
+
     -- * Errors
     -- $errors
+
     -- ** InvalidFleetStatusException
-  , _InvalidFleetStatusException
+    , _InvalidFleetStatusException
+
     -- ** InvalidRequestException
-  , _InvalidRequestException
+    , _InvalidRequestException
+
     -- ** ConflictException
-  , _ConflictException
+    , _ConflictException
+
     -- ** TerminalRoutingStrategyException
-  , _TerminalRoutingStrategyException
+    , _TerminalRoutingStrategyException
+
     -- ** NotFoundException
-  , _NotFoundException
+    , _NotFoundException
+
     -- ** GameSessionFullException
-  , _GameSessionFullException
+    , _GameSessionFullException
+
     -- ** UnsupportedRegionException
-  , _UnsupportedRegionException
+    , _UnsupportedRegionException
+
     -- ** InvalidGameSessionStatusException
-  , _InvalidGameSessionStatusException
+    , _InvalidGameSessionStatusException
+
     -- ** InternalServiceException
-  , _InternalServiceException
+    , _InternalServiceException
+
     -- ** IdempotentParameterMismatchException
-  , _IdempotentParameterMismatchException
+    , _IdempotentParameterMismatchException
+
     -- ** UnauthorizedException
-  , _UnauthorizedException
+    , _UnauthorizedException
+
     -- ** FleetCapacityExceededException
-  , _FleetCapacityExceededException
+    , _FleetCapacityExceededException
+
     -- ** LimitExceededException
-  , _LimitExceededException
+    , _LimitExceededException
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
+
     -- ** StopMatchmaking
-  , module Network.AWS.GameLift.StopMatchmaking
+    , module Network.AWS.GameLift.StopMatchmaking
+
     -- ** CreateGameSession
-  , module Network.AWS.GameLift.CreateGameSession
+    , module Network.AWS.GameLift.CreateGameSession
+
     -- ** DeleteScalingPolicy
-  , module Network.AWS.GameLift.DeleteScalingPolicy
+    , module Network.AWS.GameLift.DeleteScalingPolicy
+
     -- ** PutScalingPolicy
-  , module Network.AWS.GameLift.PutScalingPolicy
+    , module Network.AWS.GameLift.PutScalingPolicy
+
     -- ** ListBuilds
-  , module Network.AWS.GameLift.ListBuilds
+    , module Network.AWS.GameLift.ListBuilds
+
     -- ** DeleteFleet
-  , module Network.AWS.GameLift.DeleteFleet
+    , module Network.AWS.GameLift.DeleteFleet
+
     -- ** CreateBuild
-  , module Network.AWS.GameLift.CreateBuild
+    , module Network.AWS.GameLift.CreateBuild
+
     -- ** RequestUploadCredentials
-  , module Network.AWS.GameLift.RequestUploadCredentials
+    , module Network.AWS.GameLift.RequestUploadCredentials
+
     -- ** CreateAlias
-  , module Network.AWS.GameLift.CreateAlias
+    , module Network.AWS.GameLift.CreateAlias
+
     -- ** ResolveAlias
-  , module Network.AWS.GameLift.ResolveAlias
+    , module Network.AWS.GameLift.ResolveAlias
+
     -- ** ListAliases
-  , module Network.AWS.GameLift.ListAliases
+    , module Network.AWS.GameLift.ListAliases
+
     -- ** UpdateRuntimeConfiguration
-  , module Network.AWS.GameLift.UpdateRuntimeConfiguration
+    , module Network.AWS.GameLift.UpdateRuntimeConfiguration
+
     -- ** CreateVPCPeeringConnection
-  , module Network.AWS.GameLift.CreateVPCPeeringConnection
+    , module Network.AWS.GameLift.CreateVPCPeeringConnection
+
     -- ** CreateGameSessionQueue
-  , module Network.AWS.GameLift.CreateGameSessionQueue
+    , module Network.AWS.GameLift.CreateGameSessionQueue
+
     -- ** SearchGameSessions
-  , module Network.AWS.GameLift.SearchGameSessions
+    , module Network.AWS.GameLift.SearchGameSessions
+
     -- ** CreateVPCPeeringAuthorization
-  , module Network.AWS.GameLift.CreateVPCPeeringAuthorization
+    , module Network.AWS.GameLift.CreateVPCPeeringAuthorization
+
     -- ** UpdateGameSessionQueue
-  , module Network.AWS.GameLift.UpdateGameSessionQueue
+    , module Network.AWS.GameLift.UpdateGameSessionQueue
+
     -- ** DeleteGameSessionQueue
-  , module Network.AWS.GameLift.DeleteGameSessionQueue
+    , module Network.AWS.GameLift.DeleteGameSessionQueue
+
     -- ** DeleteVPCPeeringConnection
-  , module Network.AWS.GameLift.DeleteVPCPeeringConnection
+    , module Network.AWS.GameLift.DeleteVPCPeeringConnection
+
     -- ** StartFleetActions
-  , module Network.AWS.GameLift.StartFleetActions
+    , module Network.AWS.GameLift.StartFleetActions
+
     -- ** GetInstanceAccess
-  , module Network.AWS.GameLift.GetInstanceAccess
+    , module Network.AWS.GameLift.GetInstanceAccess
+
     -- ** DescribeScalingPolicies
-  , module Network.AWS.GameLift.DescribeScalingPolicies
+    , module Network.AWS.GameLift.DescribeScalingPolicies
+
     -- ** DescribeMatchmakingRuleSets
-  , module Network.AWS.GameLift.DescribeMatchmakingRuleSets
+    , module Network.AWS.GameLift.DescribeMatchmakingRuleSets
+
     -- ** DescribeGameSessions
-  , module Network.AWS.GameLift.DescribeGameSessions
+    , module Network.AWS.GameLift.DescribeGameSessions
+
     -- ** StartGameSessionPlacement
-  , module Network.AWS.GameLift.StartGameSessionPlacement
+    , module Network.AWS.GameLift.StartGameSessionPlacement
+
     -- ** DescribeFleetUtilization
-  , module Network.AWS.GameLift.DescribeFleetUtilization
+    , module Network.AWS.GameLift.DescribeFleetUtilization
+
     -- ** DescribeRuntimeConfiguration
-  , module Network.AWS.GameLift.DescribeRuntimeConfiguration
+    , module Network.AWS.GameLift.DescribeRuntimeConfiguration
+
     -- ** GetGameSessionLogURL
-  , module Network.AWS.GameLift.GetGameSessionLogURL
+    , module Network.AWS.GameLift.GetGameSessionLogURL
+
     -- ** DescribeFleetAttributes
-  , module Network.AWS.GameLift.DescribeFleetAttributes
+    , module Network.AWS.GameLift.DescribeFleetAttributes
+
     -- ** DescribeGameSessionPlacement
-  , module Network.AWS.GameLift.DescribeGameSessionPlacement
+    , module Network.AWS.GameLift.DescribeGameSessionPlacement
+
     -- ** DescribeFleetEvents
-  , module Network.AWS.GameLift.DescribeFleetEvents
+    , module Network.AWS.GameLift.DescribeFleetEvents
+
     -- ** StartMatchmaking
-  , module Network.AWS.GameLift.StartMatchmaking
+    , module Network.AWS.GameLift.StartMatchmaking
+
     -- ** CreateMatchmakingRuleSet
-  , module Network.AWS.GameLift.CreateMatchmakingRuleSet
+    , module Network.AWS.GameLift.CreateMatchmakingRuleSet
+
     -- ** DescribeFleetCapacity
-  , module Network.AWS.GameLift.DescribeFleetCapacity
+    , module Network.AWS.GameLift.DescribeFleetCapacity
+
     -- ** DeleteBuild
-  , module Network.AWS.GameLift.DeleteBuild
+    , module Network.AWS.GameLift.DeleteBuild
+
     -- ** UpdateBuild
-  , module Network.AWS.GameLift.UpdateBuild
+    , module Network.AWS.GameLift.UpdateBuild
+
     -- ** ListFleets
-  , module Network.AWS.GameLift.ListFleets
+    , module Network.AWS.GameLift.ListFleets
+
     -- ** DeleteAlias
-  , module Network.AWS.GameLift.DeleteAlias
+    , module Network.AWS.GameLift.DeleteAlias
+
     -- ** UpdateAlias
-  , module Network.AWS.GameLift.UpdateAlias
+    , module Network.AWS.GameLift.UpdateAlias
+
     -- ** StartMatchBackfill
-  , module Network.AWS.GameLift.StartMatchBackfill
+    , module Network.AWS.GameLift.StartMatchBackfill
+
     -- ** DescribeInstances
-  , module Network.AWS.GameLift.DescribeInstances
+    , module Network.AWS.GameLift.DescribeInstances
+
     -- ** DescribeGameSessionDetails
-  , module Network.AWS.GameLift.DescribeGameSessionDetails
+    , module Network.AWS.GameLift.DescribeGameSessionDetails
+
     -- ** DescribeFleetPortSettings
-  , module Network.AWS.GameLift.DescribeFleetPortSettings
+    , module Network.AWS.GameLift.DescribeFleetPortSettings
+
     -- ** DescribeGameSessionQueues
-  , module Network.AWS.GameLift.DescribeGameSessionQueues
+    , module Network.AWS.GameLift.DescribeGameSessionQueues
+
     -- ** DescribeVPCPeeringConnections
-  , module Network.AWS.GameLift.DescribeVPCPeeringConnections
+    , module Network.AWS.GameLift.DescribeVPCPeeringConnections
+
     -- ** CreatePlayerSessions
-  , module Network.AWS.GameLift.CreatePlayerSessions
+    , module Network.AWS.GameLift.CreatePlayerSessions
+
     -- ** DescribeMatchmakingConfigurations
-  , module Network.AWS.GameLift.DescribeMatchmakingConfigurations
+    , module Network.AWS.GameLift.DescribeMatchmakingConfigurations
+
     -- ** DescribeVPCPeeringAuthorizations
-  , module Network.AWS.GameLift.DescribeVPCPeeringAuthorizations
+    , module Network.AWS.GameLift.DescribeVPCPeeringAuthorizations
+
     -- ** CreateFleet
-  , module Network.AWS.GameLift.CreateFleet
+    , module Network.AWS.GameLift.CreateFleet
+
     -- ** DeleteMatchmakingConfiguration
-  , module Network.AWS.GameLift.DeleteMatchmakingConfiguration
+    , module Network.AWS.GameLift.DeleteMatchmakingConfiguration
+
     -- ** UpdateMatchmakingConfiguration
-  , module Network.AWS.GameLift.UpdateMatchmakingConfiguration
+    , module Network.AWS.GameLift.UpdateMatchmakingConfiguration
+
     -- ** DeleteVPCPeeringAuthorization
-  , module Network.AWS.GameLift.DeleteVPCPeeringAuthorization
+    , module Network.AWS.GameLift.DeleteVPCPeeringAuthorization
+
     -- ** UpdateFleetAttributes
-  , module Network.AWS.GameLift.UpdateFleetAttributes
+    , module Network.AWS.GameLift.UpdateFleetAttributes
+
     -- ** CreateMatchmakingConfiguration
-  , module Network.AWS.GameLift.CreateMatchmakingConfiguration
+    , module Network.AWS.GameLift.CreateMatchmakingConfiguration
+
     -- ** DescribePlayerSessions
-  , module Network.AWS.GameLift.DescribePlayerSessions
+    , module Network.AWS.GameLift.DescribePlayerSessions
+
     -- ** StopFleetActions
-  , module Network.AWS.GameLift.StopFleetActions
+    , module Network.AWS.GameLift.StopFleetActions
+
     -- ** DescribeBuild
-  , module Network.AWS.GameLift.DescribeBuild
+    , module Network.AWS.GameLift.DescribeBuild
+
     -- ** UpdateFleetPortSettings
-  , module Network.AWS.GameLift.UpdateFleetPortSettings
+    , module Network.AWS.GameLift.UpdateFleetPortSettings
+
     -- ** UpdateFleetCapacity
-  , module Network.AWS.GameLift.UpdateFleetCapacity
+    , module Network.AWS.GameLift.UpdateFleetCapacity
+
     -- ** AcceptMatch
-  , module Network.AWS.GameLift.AcceptMatch
+    , module Network.AWS.GameLift.AcceptMatch
+
     -- ** DescribeAlias
-  , module Network.AWS.GameLift.DescribeAlias
+    , module Network.AWS.GameLift.DescribeAlias
+
     -- ** ValidateMatchmakingRuleSet
-  , module Network.AWS.GameLift.ValidateMatchmakingRuleSet
+    , module Network.AWS.GameLift.ValidateMatchmakingRuleSet
+
     -- ** DescribeEC2InstanceLimits
-  , module Network.AWS.GameLift.DescribeEC2InstanceLimits
+    , module Network.AWS.GameLift.DescribeEC2InstanceLimits
+
     -- ** StopGameSessionPlacement
-  , module Network.AWS.GameLift.StopGameSessionPlacement
+    , module Network.AWS.GameLift.StopGameSessionPlacement
+
     -- ** UpdateGameSession
-  , module Network.AWS.GameLift.UpdateGameSession
+    , module Network.AWS.GameLift.UpdateGameSession
+
     -- ** DescribeMatchmaking
-  , module Network.AWS.GameLift.DescribeMatchmaking
+    , module Network.AWS.GameLift.DescribeMatchmaking
+
     -- ** CreatePlayerSession
-  , module Network.AWS.GameLift.CreatePlayerSession
+    , module Network.AWS.GameLift.CreatePlayerSession
+
     -- * Types
+
     -- ** AcceptanceType
-  , AcceptanceType(..)
+    , AcceptanceType (..)
+
     -- ** BuildStatus
-  , BuildStatus(..)
+    , BuildStatus (..)
+
     -- ** ComparisonOperatorType
-  , ComparisonOperatorType(..)
+    , ComparisonOperatorType (..)
+
     -- ** EC2InstanceType
-  , EC2InstanceType(..)
+    , EC2InstanceType (..)
+
     -- ** EventCode
-  , EventCode(..)
+    , EventCode (..)
+
     -- ** FleetAction
-  , FleetAction(..)
+    , FleetAction (..)
+
     -- ** FleetStatus
-  , FleetStatus(..)
+    , FleetStatus (..)
+
     -- ** FleetType
-  , FleetType(..)
+    , FleetType (..)
+
     -- ** GameSessionPlacementState
-  , GameSessionPlacementState(..)
+    , GameSessionPlacementState (..)
+
     -- ** GameSessionStatus
-  , GameSessionStatus(..)
+    , GameSessionStatus (..)
+
     -- ** GameSessionStatusReason
-  , GameSessionStatusReason(..)
+    , GameSessionStatusReason (..)
+
     -- ** IPProtocol
-  , IPProtocol(..)
+    , IPProtocol (..)
+
     -- ** InstanceStatus
-  , InstanceStatus(..)
+    , InstanceStatus (..)
+
     -- ** MatchmakingConfigurationStatus
-  , MatchmakingConfigurationStatus(..)
+    , MatchmakingConfigurationStatus (..)
+
     -- ** MetricName
-  , MetricName(..)
+    , MetricName (..)
+
     -- ** OperatingSystem
-  , OperatingSystem(..)
+    , OperatingSystem (..)
+
     -- ** PlayerSessionCreationPolicy
-  , PlayerSessionCreationPolicy(..)
+    , PlayerSessionCreationPolicy (..)
+
     -- ** PlayerSessionStatus
-  , PlayerSessionStatus(..)
+    , PlayerSessionStatus (..)
+
     -- ** PolicyType
-  , PolicyType(..)
+    , PolicyType (..)
+
     -- ** ProtectionPolicy
-  , ProtectionPolicy(..)
+    , ProtectionPolicy (..)
+
     -- ** RoutingStrategyType
-  , RoutingStrategyType(..)
+    , RoutingStrategyType (..)
+
     -- ** ScalingAdjustmentType
-  , ScalingAdjustmentType(..)
+    , ScalingAdjustmentType (..)
+
     -- ** ScalingStatusType
-  , ScalingStatusType(..)
+    , ScalingStatusType (..)
+
     -- ** AWSCredentials
-  , AWSCredentials
-  , awsCredentials
-  , acSecretAccessKey
-  , acSessionToken
-  , acAccessKeyId
+    , AWSCredentials
+    , awsCredentials
+    , acSecretAccessKey
+    , acSessionToken
+    , acAccessKeyId
+
     -- ** Alias
-  , Alias
-  , alias
-  , aCreationTime
-  , aLastUpdatedTime
-  , aAliasId
-  , aRoutingStrategy
-  , aName
-  , aAliasARN
-  , aDescription
+    , Alias
+    , alias
+    , aCreationTime
+    , aLastUpdatedTime
+    , aAliasId
+    , aRoutingStrategy
+    , aName
+    , aAliasARN
+    , aDescription
+
     -- ** AttributeValue
-  , AttributeValue
-  , attributeValue
-  , avSL
-  , avSDM
-  , avN
-  , avS
+    , AttributeValue
+    , attributeValue
+    , avSL
+    , avSDM
+    , avN
+    , avS
+
     -- ** Build
-  , Build
-  , build
-  , bCreationTime
-  , bStatus
-  , bOperatingSystem
-  , bBuildId
-  , bName
-  , bVersion
-  , bSizeOnDisk
+    , Build
+    , build
+    , bCreationTime
+    , bStatus
+    , bOperatingSystem
+    , bBuildId
+    , bName
+    , bVersion
+    , bSizeOnDisk
+
     -- ** DesiredPlayerSession
-  , DesiredPlayerSession
-  , desiredPlayerSession
-  , dpsPlayerData
-  , dpsPlayerId
+    , DesiredPlayerSession
+    , desiredPlayerSession
+    , dpsPlayerData
+    , dpsPlayerId
+
     -- ** EC2InstanceCounts
-  , EC2InstanceCounts
-  , ec2InstanceCounts
-  , eicIdLE
-  , eicTERMINATING
-  , eicPENDING
-  , eicMAXIMUM
-  , eicDESIRED
-  , eicMINIMUM
-  , eicACTIVE
+    , EC2InstanceCounts
+    , ec2InstanceCounts
+    , eicIdLE
+    , eicTERMINATING
+    , eicPENDING
+    , eicMAXIMUM
+    , eicDESIRED
+    , eicMINIMUM
+    , eicACTIVE
+
     -- ** EC2InstanceLimit
-  , EC2InstanceLimit
-  , ec2InstanceLimit
-  , eilEC2InstanceType
-  , eilCurrentInstances
-  , eilInstanceLimit
+    , EC2InstanceLimit
+    , ec2InstanceLimit
+    , eilEC2InstanceType
+    , eilCurrentInstances
+    , eilInstanceLimit
+
     -- ** Event
-  , Event
-  , event
-  , eResourceId
-  , ePreSignedLogURL
-  , eEventTime
-  , eMessage
-  , eEventCode
-  , eEventId
+    , Event
+    , event
+    , eResourceId
+    , ePreSignedLogURL
+    , eEventTime
+    , eMessage
+    , eEventCode
+    , eEventId
+
     -- ** FleetAttributes
-  , FleetAttributes
-  , fleetAttributes
-  , faCreationTime
-  , faStatus
-  , faServerLaunchParameters
-  , faLogPaths
-  , faOperatingSystem
-  , faBuildId
-  , faFleetARN
-  , faFleetType
-  , faTerminationTime
-  , faInstanceType
-  , faStoppedActions
-  , faNewGameSessionProtectionPolicy
-  , faName
-  , faServerLaunchPath
-  , faMetricGroups
-  , faFleetId
-  , faDescription
-  , faResourceCreationLimitPolicy
+    , FleetAttributes
+    , fleetAttributes
+    , faCreationTime
+    , faStatus
+    , faServerLaunchParameters
+    , faLogPaths
+    , faOperatingSystem
+    , faBuildId
+    , faFleetARN
+    , faFleetType
+    , faTerminationTime
+    , faInstanceType
+    , faStoppedActions
+    , faNewGameSessionProtectionPolicy
+    , faName
+    , faServerLaunchPath
+    , faMetricGroups
+    , faFleetId
+    , faDescription
+    , faResourceCreationLimitPolicy
+
     -- ** FleetCapacity
-  , FleetCapacity
-  , fleetCapacity
-  , fcInstanceType
-  , fcFleetId
-  , fcInstanceCounts
+    , FleetCapacity
+    , fleetCapacity
+    , fcInstanceType
+    , fcFleetId
+    , fcInstanceCounts
+
     -- ** FleetUtilization
-  , FleetUtilization
-  , fleetUtilization
-  , fuActiveGameSessionCount
-  , fuMaximumPlayerSessionCount
-  , fuCurrentPlayerSessionCount
-  , fuFleetId
-  , fuActiveServerProcessCount
+    , FleetUtilization
+    , fleetUtilization
+    , fuActiveGameSessionCount
+    , fuMaximumPlayerSessionCount
+    , fuCurrentPlayerSessionCount
+    , fuFleetId
+    , fuActiveServerProcessCount
+
     -- ** GameProperty
-  , GameProperty
-  , gameProperty
-  , gpKey
-  , gpValue
+    , GameProperty
+    , gameProperty
+    , gpKey
+    , gpValue
+
     -- ** GameSession
-  , GameSession
-  , gameSession
-  , gsCreationTime
-  , gsStatus
-  , gsGameProperties
-  , gsIPAddress
-  , gsGameSessionId
-  , gsMatchmakerData
-  , gsMaximumPlayerSessionCount
-  , gsTerminationTime
-  , gsPlayerSessionCreationPolicy
-  , gsName
-  , gsCurrentPlayerSessionCount
-  , gsStatusReason
-  , gsGameSessionData
-  , gsFleetId
-  , gsCreatorId
-  , gsPort
+    , GameSession
+    , gameSession
+    , gsCreationTime
+    , gsStatus
+    , gsGameProperties
+    , gsIPAddress
+    , gsGameSessionId
+    , gsMatchmakerData
+    , gsMaximumPlayerSessionCount
+    , gsTerminationTime
+    , gsPlayerSessionCreationPolicy
+    , gsName
+    , gsCurrentPlayerSessionCount
+    , gsStatusReason
+    , gsGameSessionData
+    , gsFleetId
+    , gsCreatorId
+    , gsPort
+
     -- ** GameSessionConnectionInfo
-  , GameSessionConnectionInfo
-  , gameSessionConnectionInfo
-  , gsciMatchedPlayerSessions
-  , gsciIPAddress
-  , gsciGameSessionARN
-  , gsciPort
+    , GameSessionConnectionInfo
+    , gameSessionConnectionInfo
+    , gsciMatchedPlayerSessions
+    , gsciIPAddress
+    , gsciGameSessionARN
+    , gsciPort
+
     -- ** GameSessionDetail
-  , GameSessionDetail
-  , gameSessionDetail
-  , gsdGameSession
-  , gsdProtectionPolicy
+    , GameSessionDetail
+    , gameSessionDetail
+    , gsdGameSession
+    , gsdProtectionPolicy
+
     -- ** GameSessionPlacement
-  , GameSessionPlacement
-  , gameSessionPlacement
-  , gspStatus
-  , gspPlacementId
-  , gspGameProperties
-  , gspIPAddress
-  , gspGameSessionName
-  , gspStartTime
-  , gspGameSessionId
-  , gspGameSessionRegion
-  , gspMatchmakerData
-  , gspMaximumPlayerSessionCount
-  , gspEndTime
-  , gspGameSessionARN
-  , gspPlayerLatencies
-  , gspGameSessionData
-  , gspGameSessionQueueName
-  , gspPlacedPlayerSessions
-  , gspPort
+    , GameSessionPlacement
+    , gameSessionPlacement
+    , gspStatus
+    , gspPlacementId
+    , gspGameProperties
+    , gspIPAddress
+    , gspGameSessionName
+    , gspStartTime
+    , gspGameSessionId
+    , gspGameSessionRegion
+    , gspMatchmakerData
+    , gspMaximumPlayerSessionCount
+    , gspEndTime
+    , gspGameSessionARN
+    , gspPlayerLatencies
+    , gspGameSessionData
+    , gspGameSessionQueueName
+    , gspPlacedPlayerSessions
+    , gspPort
+
     -- ** GameSessionQueue
-  , GameSessionQueue
-  , gameSessionQueue
-  , gsqGameSessionQueueARN
-  , gsqPlayerLatencyPolicies
-  , gsqTimeoutInSeconds
-  , gsqDestinations
-  , gsqName
+    , GameSessionQueue
+    , gameSessionQueue
+    , gsqGameSessionQueueARN
+    , gsqPlayerLatencyPolicies
+    , gsqTimeoutInSeconds
+    , gsqDestinations
+    , gsqName
+
     -- ** GameSessionQueueDestination
-  , GameSessionQueueDestination
-  , gameSessionQueueDestination
-  , gsqdDestinationARN
+    , GameSessionQueueDestination
+    , gameSessionQueueDestination
+    , gsqdDestinationARN
+
     -- ** IPPermission
-  , IPPermission
-  , ipPermission
-  , ipFromPort
-  , ipToPort
-  , ipIPRange
-  , ipProtocol
+    , IPPermission
+    , ipPermission
+    , ipFromPort
+    , ipToPort
+    , ipIPRange
+    , ipProtocol
+
     -- ** Instance
-  , Instance
-  , instance'
-  , iCreationTime
-  , iInstanceId
-  , iStatus
-  , iIPAddress
-  , iOperatingSystem
-  , iType
-  , iFleetId
+    , Instance
+    , instance'
+    , iCreationTime
+    , iInstanceId
+    , iStatus
+    , iIPAddress
+    , iOperatingSystem
+    , iType
+    , iFleetId
+
     -- ** InstanceAccess
-  , InstanceAccess
-  , instanceAccess
-  , iaInstanceId
-  , iaIPAddress
-  , iaOperatingSystem
-  , iaCredentials
-  , iaFleetId
+    , InstanceAccess
+    , instanceAccess
+    , iaInstanceId
+    , iaIPAddress
+    , iaOperatingSystem
+    , iaCredentials
+    , iaFleetId
+
     -- ** InstanceCredentials
-  , InstanceCredentials
-  , instanceCredentials
-  , icUserName
-  , icSecret
+    , InstanceCredentials
+    , instanceCredentials
+    , icUserName
+    , icSecret
+
     -- ** MatchedPlayerSession
-  , MatchedPlayerSession
-  , matchedPlayerSession
-  , mpsPlayerSessionId
-  , mpsPlayerId
+    , MatchedPlayerSession
+    , matchedPlayerSession
+    , mpsPlayerSessionId
+    , mpsPlayerId
+
     -- ** MatchmakingConfiguration
-  , MatchmakingConfiguration
-  , matchmakingConfiguration
-  , mcCreationTime
-  , mcGameProperties
-  , mcRuleSetName
-  , mcAcceptanceTimeoutSeconds
-  , mcRequestTimeoutSeconds
-  , mcNotificationTarget
-  , mcGameSessionQueueARNs
-  , mcName
-  , mcCustomEventData
-  , mcAcceptanceRequired
-  , mcGameSessionData
-  , mcDescription
-  , mcAdditionalPlayerCount
+    , MatchmakingConfiguration
+    , matchmakingConfiguration
+    , mcCreationTime
+    , mcGameProperties
+    , mcRuleSetName
+    , mcAcceptanceTimeoutSeconds
+    , mcRequestTimeoutSeconds
+    , mcNotificationTarget
+    , mcGameSessionQueueARNs
+    , mcName
+    , mcCustomEventData
+    , mcAcceptanceRequired
+    , mcGameSessionData
+    , mcDescription
+    , mcAdditionalPlayerCount
+
     -- ** MatchmakingRuleSet
-  , MatchmakingRuleSet
-  , matchmakingRuleSet
-  , mrsCreationTime
-  , mrsRuleSetName
-  , mrsRuleSetBody
+    , MatchmakingRuleSet
+    , matchmakingRuleSet
+    , mrsCreationTime
+    , mrsRuleSetName
+    , mrsRuleSetBody
+
     -- ** MatchmakingTicket
-  , MatchmakingTicket
-  , matchmakingTicket
-  , mtStatus
-  , mtConfigurationName
-  , mtStartTime
-  , mtGameSessionConnectionInfo
-  , mtTicketId
-  , mtEstimatedWaitTime
-  , mtStatusMessage
-  , mtEndTime
-  , mtStatusReason
-  , mtPlayers
+    , MatchmakingTicket
+    , matchmakingTicket
+    , mtStatus
+    , mtConfigurationName
+    , mtStartTime
+    , mtGameSessionConnectionInfo
+    , mtTicketId
+    , mtEstimatedWaitTime
+    , mtStatusMessage
+    , mtEndTime
+    , mtStatusReason
+    , mtPlayers
+
     -- ** PlacedPlayerSession
-  , PlacedPlayerSession
-  , placedPlayerSession
-  , ppsPlayerSessionId
-  , ppsPlayerId
+    , PlacedPlayerSession
+    , placedPlayerSession
+    , ppsPlayerSessionId
+    , ppsPlayerId
+
     -- ** Player
-  , Player
-  , player
-  , pPlayerAttributes
-  , pTeam
-  , pPlayerId
-  , pLatencyInMs
+    , Player
+    , player
+    , pPlayerAttributes
+    , pTeam
+    , pPlayerId
+    , pLatencyInMs
+
     -- ** PlayerLatency
-  , PlayerLatency
-  , playerLatency
-  , plLatencyInMilliseconds
-  , plRegionIdentifier
-  , plPlayerId
+    , PlayerLatency
+    , playerLatency
+    , plLatencyInMilliseconds
+    , plRegionIdentifier
+    , plPlayerId
+
     -- ** PlayerLatencyPolicy
-  , PlayerLatencyPolicy
-  , playerLatencyPolicy
-  , plpPolicyDurationSeconds
-  , plpMaximumIndividualPlayerLatencyMilliseconds
+    , PlayerLatencyPolicy
+    , playerLatencyPolicy
+    , plpPolicyDurationSeconds
+    , plpMaximumIndividualPlayerLatencyMilliseconds
+
     -- ** PlayerSession
-  , PlayerSession
-  , playerSession
-  , psCreationTime
-  , psStatus
-  , psIPAddress
-  , psGameSessionId
-  , psTerminationTime
-  , psPlayerSessionId
-  , psFleetId
-  , psPlayerData
-  , psPlayerId
-  , psPort
+    , PlayerSession
+    , playerSession
+    , psCreationTime
+    , psStatus
+    , psIPAddress
+    , psGameSessionId
+    , psTerminationTime
+    , psPlayerSessionId
+    , psFleetId
+    , psPlayerData
+    , psPlayerId
+    , psPort
+
     -- ** ResourceCreationLimitPolicy
-  , ResourceCreationLimitPolicy
-  , resourceCreationLimitPolicy
-  , rclpNewGameSessionsPerCreator
-  , rclpPolicyPeriodInMinutes
+    , ResourceCreationLimitPolicy
+    , resourceCreationLimitPolicy
+    , rclpNewGameSessionsPerCreator
+    , rclpPolicyPeriodInMinutes
+
     -- ** RoutingStrategy
-  , RoutingStrategy
-  , routingStrategy
-  , rsType
-  , rsMessage
-  , rsFleetId
+    , RoutingStrategy
+    , routingStrategy
+    , rsType
+    , rsMessage
+    , rsFleetId
+
     -- ** RuntimeConfiguration
-  , RuntimeConfiguration
-  , runtimeConfiguration
-  , rcGameSessionActivationTimeoutSeconds
-  , rcServerProcesses
-  , rcMaxConcurrentGameSessionActivations
+    , RuntimeConfiguration
+    , runtimeConfiguration
+    , rcGameSessionActivationTimeoutSeconds
+    , rcServerProcesses
+    , rcMaxConcurrentGameSessionActivations
+
     -- ** S3Location
-  , S3Location
-  , s3Location
-  , slBucket
-  , slKey
-  , slRoleARN
+    , S3Location
+    , s3Location
+    , slBucket
+    , slKey
+    , slRoleARN
+
     -- ** ScalingPolicy
-  , ScalingPolicy
-  , scalingPolicy
-  , spStatus
-  , spScalingAdjustmentType
-  , spEvaluationPeriods
-  , spPolicyType
-  , spMetricName
-  , spComparisonOperator
-  , spName
-  , spThreshold
-  , spScalingAdjustment
-  , spFleetId
-  , spTargetConfiguration
+    , ScalingPolicy
+    , scalingPolicy
+    , spStatus
+    , spScalingAdjustmentType
+    , spEvaluationPeriods
+    , spPolicyType
+    , spMetricName
+    , spComparisonOperator
+    , spName
+    , spThreshold
+    , spScalingAdjustment
+    , spFleetId
+    , spTargetConfiguration
+
     -- ** ServerProcess
-  , ServerProcess
-  , serverProcess
-  , spParameters
-  , spLaunchPath
-  , spConcurrentExecutions
+    , ServerProcess
+    , serverProcess
+    , spParameters
+    , spLaunchPath
+    , spConcurrentExecutions
+
     -- ** TargetConfiguration
-  , TargetConfiguration
-  , targetConfiguration
-  , tcTargetValue
+    , TargetConfiguration
+    , targetConfiguration
+    , tcTargetValue
+
     -- ** VPCPeeringAuthorization
-  , VPCPeeringAuthorization
-  , vpcPeeringAuthorization
-  , vpaCreationTime
-  , vpaPeerVPCId
-  , vpaPeerVPCAWSAccountId
-  , vpaGameLiftAWSAccountId
-  , vpaExpirationTime
+    , VPCPeeringAuthorization
+    , vpcPeeringAuthorization
+    , vpaCreationTime
+    , vpaPeerVPCId
+    , vpaPeerVPCAWSAccountId
+    , vpaGameLiftAWSAccountId
+    , vpaExpirationTime
+
     -- ** VPCPeeringConnection
-  , VPCPeeringConnection
-  , vpcPeeringConnection
-  , vpcVPCPeeringConnectionId
-  , vpcStatus
-  , vpcPeerVPCId
-  , vpcIPV4CidrBlock
-  , vpcGameLiftVPCId
-  , vpcFleetId
+    , VPCPeeringConnection
+    , vpcPeeringConnection
+    , vpcVPCPeeringConnectionId
+    , vpcStatus
+    , vpcPeerVPCId
+    , vpcIPV4CidrBlock
+    , vpcGameLiftVPCId
+    , vpcFleetId
+
     -- ** VPCPeeringConnectionStatus
-  , VPCPeeringConnectionStatus
-  , vpcPeeringConnectionStatus
-  , vpcsCode
-  , vpcsMessage
-  ) where
+    , VPCPeeringConnectionStatus
+    , vpcPeeringConnectionStatus
+    , vpcsCode
+    , vpcsMessage
+    ) where
 
 import Network.AWS.GameLift.AcceptMatch
 import Network.AWS.GameLift.CreateAlias
@@ -886,12 +1036,14 @@ import Network.AWS.GameLift.UpdateMatchmakingConfiguration
 import Network.AWS.GameLift.UpdateRuntimeConfiguration
 import Network.AWS.GameLift.ValidateMatchmakingRuleSet
 import Network.AWS.GameLift.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'GameLift'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -908,6 +1060,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

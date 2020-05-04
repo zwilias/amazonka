@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Lightsail.AttachDisk
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,20 +22,22 @@
 --
 --
 module Network.AWS.Lightsail.AttachDisk
+    (
     -- * Creating a Request
-  ( attachDisk
-  , AttachDisk
+      attachDisk
+    , AttachDisk
     -- * Request Lenses
-  , adDiskName
-  , adInstanceName
-  , adDiskPath
+    , adDiskName
+    , adInstanceName
+    , adDiskPath
+
     -- * Destructuring the Response
-  , attachDiskResponse
-  , AttachDiskResponse
+    , attachDiskResponse
+    , AttachDiskResponse
     -- * Response Lenses
-  , adrsOperations
-  , adrsResponseStatus
-  ) where
+    , adrsOperations
+    , adrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
@@ -51,6 +55,7 @@ data AttachDisk =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AttachDisk' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -60,11 +65,11 @@ data AttachDisk =
 -- * 'adInstanceName' - The name of the Lightsail instance where you want to utilize the storage disk.
 --
 -- * 'adDiskPath' - The disk path to expose to the instance (e.g., @/dev/xvdf@ ).
-attachDisk ::
-     Text -- ^ 'adDiskName'
-  -> Text -- ^ 'adInstanceName'
-  -> Text -- ^ 'adDiskPath'
-  -> AttachDisk
+attachDisk
+    :: Text -- ^ 'adDiskName'
+    -> Text -- ^ 'adInstanceName'
+    -> Text -- ^ 'adDiskPath'
+    -> AttachDisk
 attachDisk pDiskName_ pInstanceName_ pDiskPath_ =
   AttachDisk'
     { _adDiskName = pDiskName_
@@ -72,53 +77,55 @@ attachDisk pDiskName_ pInstanceName_ pDiskPath_ =
     , _adDiskPath = pDiskPath_
     }
 
+
 -- | The unique Lightsail disk name (e.g., @my-disk@ ).
 adDiskName :: Lens' AttachDisk Text
-adDiskName = lens _adDiskName (\s a -> s {_adDiskName = a})
+adDiskName = lens _adDiskName (\ s a -> s{_adDiskName = a})
 
 -- | The name of the Lightsail instance where you want to utilize the storage disk.
 adInstanceName :: Lens' AttachDisk Text
-adInstanceName = lens _adInstanceName (\s a -> s {_adInstanceName = a})
+adInstanceName = lens _adInstanceName (\ s a -> s{_adInstanceName = a})
 
 -- | The disk path to expose to the instance (e.g., @/dev/xvdf@ ).
 adDiskPath :: Lens' AttachDisk Text
-adDiskPath = lens _adDiskPath (\s a -> s {_adDiskPath = a})
+adDiskPath = lens _adDiskPath (\ s a -> s{_adDiskPath = a})
 
 instance AWSRequest AttachDisk where
-  type Rs AttachDisk = AttachDiskResponse
-  request = postJSON lightsail
-  response =
-    receiveJSON
-      (\s h x ->
-         AttachDiskResponse' <$> (x .?> "operations" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs AttachDisk = AttachDiskResponse
+        request = postJSON lightsail
+        response
+          = receiveJSON
+              (\ s h x ->
+                 AttachDiskResponse' <$>
+                   (x .?> "operations" .!@ mempty) <*>
+                     (pure (fromEnum s)))
 
-instance Hashable AttachDisk
+instance Hashable AttachDisk where
 
-instance NFData AttachDisk
+instance NFData AttachDisk where
 
 instance ToHeaders AttachDisk where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("Lightsail_20161128.AttachDisk" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("Lightsail_20161128.AttachDisk" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON AttachDisk where
-  toJSON AttachDisk' {..} =
-    object
-      (catMaybes
-         [ Just ("diskName" .= _adDiskName)
-         , Just ("instanceName" .= _adInstanceName)
-         , Just ("diskPath" .= _adDiskPath)
-         ])
+        toJSON AttachDisk'{..}
+          = object
+              (catMaybes
+                 [Just ("diskName" .= _adDiskName),
+                  Just ("instanceName" .= _adInstanceName),
+                  Just ("diskPath" .= _adDiskPath)])
 
 instance ToPath AttachDisk where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery AttachDisk where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'attachDiskResponse' smart constructor.
 data AttachDiskResponse =
@@ -128,6 +135,7 @@ data AttachDiskResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AttachDiskResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -135,21 +143,20 @@ data AttachDiskResponse =
 -- * 'adrsOperations' - An object describing the API operations.
 --
 -- * 'adrsResponseStatus' - -- | The response status code.
-attachDiskResponse ::
-     Int -- ^ 'adrsResponseStatus'
-  -> AttachDiskResponse
+attachDiskResponse
+    :: Int -- ^ 'adrsResponseStatus'
+    -> AttachDiskResponse
 attachDiskResponse pResponseStatus_ =
   AttachDiskResponse'
     {_adrsOperations = Nothing, _adrsResponseStatus = pResponseStatus_}
 
+
 -- | An object describing the API operations.
 adrsOperations :: Lens' AttachDiskResponse [Operation]
-adrsOperations =
-  lens _adrsOperations (\s a -> s {_adrsOperations = a}) . _Default . _Coerce
+adrsOperations = lens _adrsOperations (\ s a -> s{_adrsOperations = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 adrsResponseStatus :: Lens' AttachDiskResponse Int
-adrsResponseStatus =
-  lens _adrsResponseStatus (\s a -> s {_adrsResponseStatus = a})
+adrsResponseStatus = lens _adrsResponseStatus (\ s a -> s{_adrsResponseStatus = a})
 
-instance NFData AttachDiskResponse
+instance NFData AttachDiskResponse where

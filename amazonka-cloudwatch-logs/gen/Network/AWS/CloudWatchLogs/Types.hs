@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CloudWatchLogs.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,144 +11,165 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.CloudWatchLogs.Types
+    (
     -- * Service Configuration
-  ( cloudWatchLogs
+      cloudWatchLogs
+
     -- * Errors
-  , _InvalidParameterException
-  , _InvalidSequenceTokenException
-  , _ResourceAlreadyExistsException
-  , _OperationAbortedException
-  , _ServiceUnavailableException
-  , _DataAlreadyAcceptedException
-  , _InvalidOperationException
-  , _ResourceNotFoundException
-  , _LimitExceededException
+    , _InvalidParameterException
+    , _InvalidSequenceTokenException
+    , _ResourceAlreadyExistsException
+    , _OperationAbortedException
+    , _ServiceUnavailableException
+    , _DataAlreadyAcceptedException
+    , _InvalidOperationException
+    , _ResourceNotFoundException
+    , _LimitExceededException
+
     -- * Distribution
-  , Distribution(..)
+    , Distribution (..)
+
     -- * ExportTaskStatusCode
-  , ExportTaskStatusCode(..)
+    , ExportTaskStatusCode (..)
+
     -- * OrderBy
-  , OrderBy(..)
+    , OrderBy (..)
+
     -- * Destination
-  , Destination
-  , destination
-  , dTargetARN
-  , dCreationTime
-  , dArn
-  , dAccessPolicy
-  , dDestinationName
-  , dRoleARN
+    , Destination
+    , destination
+    , dTargetARN
+    , dCreationTime
+    , dArn
+    , dAccessPolicy
+    , dDestinationName
+    , dRoleARN
+
     -- * ExportTask
-  , ExportTask
-  , exportTask
-  , etDestinationPrefix
-  , etDestination
-  , etStatus
-  , etTaskName
-  , etTaskId
-  , etTo
-  , etFrom
-  , etLogGroupName
-  , etExecutionInfo
+    , ExportTask
+    , exportTask
+    , etDestinationPrefix
+    , etDestination
+    , etStatus
+    , etTaskName
+    , etTaskId
+    , etTo
+    , etFrom
+    , etLogGroupName
+    , etExecutionInfo
+
     -- * ExportTaskExecutionInfo
-  , ExportTaskExecutionInfo
-  , exportTaskExecutionInfo
-  , eteiCreationTime
-  , eteiCompletionTime
+    , ExportTaskExecutionInfo
+    , exportTaskExecutionInfo
+    , eteiCreationTime
+    , eteiCompletionTime
+
     -- * ExportTaskStatus
-  , ExportTaskStatus
-  , exportTaskStatus
-  , etsCode
-  , etsMessage
+    , ExportTaskStatus
+    , exportTaskStatus
+    , etsCode
+    , etsMessage
+
     -- * FilteredLogEvent
-  , FilteredLogEvent
-  , filteredLogEvent
-  , fleIngestionTime
-  , fleLogStreamName
-  , fleMessage
-  , fleTimestamp
-  , fleEventId
+    , FilteredLogEvent
+    , filteredLogEvent
+    , fleIngestionTime
+    , fleLogStreamName
+    , fleMessage
+    , fleTimestamp
+    , fleEventId
+
     -- * InputLogEvent
-  , InputLogEvent
-  , inputLogEvent
-  , ileTimestamp
-  , ileMessage
+    , InputLogEvent
+    , inputLogEvent
+    , ileTimestamp
+    , ileMessage
+
     -- * LogGroup
-  , LogGroup
-  , logGroup
-  , lgCreationTime
-  , lgMetricFilterCount
-  , lgArn
-  , lgLogGroupName
-  , lgRetentionInDays
-  , lgKmsKeyId
-  , lgStoredBytes
+    , LogGroup
+    , logGroup
+    , lgCreationTime
+    , lgMetricFilterCount
+    , lgArn
+    , lgLogGroupName
+    , lgRetentionInDays
+    , lgKmsKeyId
+    , lgStoredBytes
+
     -- * LogStream
-  , LogStream
-  , logStream
-  , lsCreationTime
-  , lsUploadSequenceToken
-  , lsArn
-  , lsFirstEventTimestamp
-  , lsLogStreamName
-  , lsStoredBytes
-  , lsLastIngestionTime
-  , lsLastEventTimestamp
+    , LogStream
+    , logStream
+    , lsCreationTime
+    , lsUploadSequenceToken
+    , lsArn
+    , lsFirstEventTimestamp
+    , lsLogStreamName
+    , lsStoredBytes
+    , lsLastIngestionTime
+    , lsLastEventTimestamp
+
     -- * MetricFilter
-  , MetricFilter
-  , metricFilter
-  , mfCreationTime
-  , mfFilterName
-  , mfLogGroupName
-  , mfFilterPattern
-  , mfMetricTransformations
+    , MetricFilter
+    , metricFilter
+    , mfCreationTime
+    , mfFilterName
+    , mfLogGroupName
+    , mfFilterPattern
+    , mfMetricTransformations
+
     -- * MetricFilterMatchRecord
-  , MetricFilterMatchRecord
-  , metricFilterMatchRecord
-  , mfmrExtractedValues
-  , mfmrEventNumber
-  , mfmrEventMessage
+    , MetricFilterMatchRecord
+    , metricFilterMatchRecord
+    , mfmrExtractedValues
+    , mfmrEventNumber
+    , mfmrEventMessage
+
     -- * MetricTransformation
-  , MetricTransformation
-  , metricTransformation
-  , mtDefaultValue
-  , mtMetricName
-  , mtMetricNamespace
-  , mtMetricValue
+    , MetricTransformation
+    , metricTransformation
+    , mtDefaultValue
+    , mtMetricName
+    , mtMetricNamespace
+    , mtMetricValue
+
     -- * OutputLogEvent
-  , OutputLogEvent
-  , outputLogEvent
-  , oleIngestionTime
-  , oleMessage
-  , oleTimestamp
+    , OutputLogEvent
+    , outputLogEvent
+    , oleIngestionTime
+    , oleMessage
+    , oleTimestamp
+
     -- * RejectedLogEventsInfo
-  , RejectedLogEventsInfo
-  , rejectedLogEventsInfo
-  , rleiTooOldLogEventEndIndex
-  , rleiTooNewLogEventStartIndex
-  , rleiExpiredLogEventEndIndex
+    , RejectedLogEventsInfo
+    , rejectedLogEventsInfo
+    , rleiTooOldLogEventEndIndex
+    , rleiTooNewLogEventStartIndex
+    , rleiExpiredLogEventEndIndex
+
     -- * ResourcePolicy
-  , ResourcePolicy
-  , resourcePolicy
-  , rpPolicyName
-  , rpPolicyDocument
-  , rpLastUpdatedTime
+    , ResourcePolicy
+    , resourcePolicy
+    , rpPolicyName
+    , rpPolicyDocument
+    , rpLastUpdatedTime
+
     -- * SearchedLogStream
-  , SearchedLogStream
-  , searchedLogStream
-  , slsLogStreamName
-  , slsSearchedCompletely
+    , SearchedLogStream
+    , searchedLogStream
+    , slsLogStreamName
+    , slsSearchedCompletely
+
     -- * SubscriptionFilter
-  , SubscriptionFilter
-  , subscriptionFilter
-  , sfCreationTime
-  , sfFilterName
-  , sfDistribution
-  , sfDestinationARN
-  , sfLogGroupName
-  , sfFilterPattern
-  , sfRoleARN
-  ) where
+    , SubscriptionFilter
+    , subscriptionFilter
+    , sfCreationTime
+    , sfFilterName
+    , sfDistribution
+    , sfDestinationARN
+    , sfLogGroupName
+    , sfFilterPattern
+    , sfRoleARN
+    ) where
 
 import Network.AWS.CloudWatchLogs.Types.Product
 import Network.AWS.CloudWatchLogs.Types.Sum
@@ -193,74 +215,75 @@ cloudWatchLogs =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | A parameter is specified incorrectly.
 --
 --
-_InvalidParameterException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidParameterException =
   _MatchServiceError cloudWatchLogs "InvalidParameterException"
+
 
 -- | The sequence token is not valid.
 --
 --
-_InvalidSequenceTokenException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidSequenceTokenException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidSequenceTokenException =
   _MatchServiceError cloudWatchLogs "InvalidSequenceTokenException"
+
 
 -- | The specified resource already exists.
 --
 --
-_ResourceAlreadyExistsException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceAlreadyExistsException =
   _MatchServiceError cloudWatchLogs "ResourceAlreadyExistsException"
+
 
 -- | Multiple requests to update the same resource were in conflict.
 --
 --
-_OperationAbortedException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_OperationAbortedException :: AsError a => Getting (First ServiceError) a ServiceError
 _OperationAbortedException =
   _MatchServiceError cloudWatchLogs "OperationAbortedException"
+
 
 -- | The service cannot complete the request.
 --
 --
-_ServiceUnavailableException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
 _ServiceUnavailableException =
   _MatchServiceError cloudWatchLogs "ServiceUnavailableException"
+
 
 -- | The event was already logged.
 --
 --
-_DataAlreadyAcceptedException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_DataAlreadyAcceptedException :: AsError a => Getting (First ServiceError) a ServiceError
 _DataAlreadyAcceptedException =
   _MatchServiceError cloudWatchLogs "DataAlreadyAcceptedException"
+
 
 -- | The operation is not valid on the specified resource.
 --
 --
-_InvalidOperationException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InvalidOperationException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidOperationException =
   _MatchServiceError cloudWatchLogs "InvalidOperationException"
+
 
 -- | The specified resource does not exist.
 --
 --
-_ResourceNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceNotFoundException =
   _MatchServiceError cloudWatchLogs "ResourceNotFoundException"
+
 
 -- | You have reached the maximum number of resources that can be created.
 --
 --
-_LimitExceededException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException =
   _MatchServiceError cloudWatchLogs "LimitExceededException"
+

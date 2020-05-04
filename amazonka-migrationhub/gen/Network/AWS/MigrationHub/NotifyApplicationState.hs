@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.MigrationHub.NotifyApplicationState
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,19 +22,21 @@
 --
 --
 module Network.AWS.MigrationHub.NotifyApplicationState
+    (
     -- * Creating a Request
-  ( notifyApplicationState
-  , NotifyApplicationState
+      notifyApplicationState
+    , NotifyApplicationState
     -- * Request Lenses
-  , nasDryRun
-  , nasApplicationId
-  , nasStatus
+    , nasDryRun
+    , nasApplicationId
+    , nasStatus
+
     -- * Destructuring the Response
-  , notifyApplicationStateResponse
-  , NotifyApplicationStateResponse
+    , notifyApplicationStateResponse
+    , NotifyApplicationStateResponse
     -- * Response Lenses
-  , nasrsResponseStatus
-  ) where
+    , nasrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.MigrationHub.Types
@@ -50,6 +54,7 @@ data NotifyApplicationState =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'NotifyApplicationState' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -59,10 +64,10 @@ data NotifyApplicationState =
 -- * 'nasApplicationId' - The configurationId in ADS that uniquely identifies the grouped application.
 --
 -- * 'nasStatus' - Status of the application - Not Started, In-Progress, Complete.
-notifyApplicationState ::
-     Text -- ^ 'nasApplicationId'
-  -> ApplicationStatus -- ^ 'nasStatus'
-  -> NotifyApplicationState
+notifyApplicationState
+    :: Text -- ^ 'nasApplicationId'
+    -> ApplicationStatus -- ^ 'nasStatus'
+    -> NotifyApplicationState
 notifyApplicationState pApplicationId_ pStatus_ =
   NotifyApplicationState'
     { _nasDryRun = Nothing
@@ -70,52 +75,56 @@ notifyApplicationState pApplicationId_ pStatus_ =
     , _nasStatus = pStatus_
     }
 
+
 -- | Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.
 nasDryRun :: Lens' NotifyApplicationState (Maybe Bool)
-nasDryRun = lens _nasDryRun (\s a -> s {_nasDryRun = a})
+nasDryRun = lens _nasDryRun (\ s a -> s{_nasDryRun = a})
 
 -- | The configurationId in ADS that uniquely identifies the grouped application.
 nasApplicationId :: Lens' NotifyApplicationState Text
-nasApplicationId = lens _nasApplicationId (\s a -> s {_nasApplicationId = a})
+nasApplicationId = lens _nasApplicationId (\ s a -> s{_nasApplicationId = a})
 
 -- | Status of the application - Not Started, In-Progress, Complete.
 nasStatus :: Lens' NotifyApplicationState ApplicationStatus
-nasStatus = lens _nasStatus (\s a -> s {_nasStatus = a})
+nasStatus = lens _nasStatus (\ s a -> s{_nasStatus = a})
 
 instance AWSRequest NotifyApplicationState where
-  type Rs NotifyApplicationState = NotifyApplicationStateResponse
-  request = postJSON migrationHub
-  response =
-    receiveEmpty
-      (\s h x -> NotifyApplicationStateResponse' <$> (pure (fromEnum s)))
+        type Rs NotifyApplicationState =
+             NotifyApplicationStateResponse
+        request = postJSON migrationHub
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 NotifyApplicationStateResponse' <$>
+                   (pure (fromEnum s)))
 
-instance Hashable NotifyApplicationState
+instance Hashable NotifyApplicationState where
 
-instance NFData NotifyApplicationState
+instance NFData NotifyApplicationState where
 
 instance ToHeaders NotifyApplicationState where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AWSMigrationHub.NotifyApplicationState" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWSMigrationHub.NotifyApplicationState" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON NotifyApplicationState where
-  toJSON NotifyApplicationState' {..} =
-    object
-      (catMaybes
-         [ ("DryRun" .=) <$> _nasDryRun
-         , Just ("ApplicationId" .= _nasApplicationId)
-         , Just ("Status" .= _nasStatus)
-         ])
+        toJSON NotifyApplicationState'{..}
+          = object
+              (catMaybes
+                 [("DryRun" .=) <$> _nasDryRun,
+                  Just ("ApplicationId" .= _nasApplicationId),
+                  Just ("Status" .= _nasStatus)])
 
 instance ToPath NotifyApplicationState where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery NotifyApplicationState where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'notifyApplicationStateResponse' smart constructor.
 newtype NotifyApplicationStateResponse =
@@ -124,20 +133,21 @@ newtype NotifyApplicationStateResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'NotifyApplicationStateResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'nasrsResponseStatus' - -- | The response status code.
-notifyApplicationStateResponse ::
-     Int -- ^ 'nasrsResponseStatus'
-  -> NotifyApplicationStateResponse
+notifyApplicationStateResponse
+    :: Int -- ^ 'nasrsResponseStatus'
+    -> NotifyApplicationStateResponse
 notifyApplicationStateResponse pResponseStatus_ =
   NotifyApplicationStateResponse' {_nasrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 nasrsResponseStatus :: Lens' NotifyApplicationStateResponse Int
-nasrsResponseStatus =
-  lens _nasrsResponseStatus (\s a -> s {_nasrsResponseStatus = a})
+nasrsResponseStatus = lens _nasrsResponseStatus (\ s a -> s{_nasrsResponseStatus = a})
 
-instance NFData NotifyApplicationStateResponse
+instance NFData NotifyApplicationStateResponse where

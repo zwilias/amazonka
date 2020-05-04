@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.RDS.CreateDBClusterParameterGroup
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -28,21 +30,23 @@
 -- For more information on Amazon Aurora, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html Aurora on Amazon RDS> in the /Amazon RDS User Guide./
 --
 module Network.AWS.RDS.CreateDBClusterParameterGroup
+    (
     -- * Creating a Request
-  ( createDBClusterParameterGroup
-  , CreateDBClusterParameterGroup
+      createDBClusterParameterGroup
+    , CreateDBClusterParameterGroup
     -- * Request Lenses
-  , cdcpgTags
-  , cdcpgDBClusterParameterGroupName
-  , cdcpgDBParameterGroupFamily
-  , cdcpgDescription
+    , cdcpgTags
+    , cdcpgDBClusterParameterGroupName
+    , cdcpgDBParameterGroupFamily
+    , cdcpgDescription
+
     -- * Destructuring the Response
-  , createDBClusterParameterGroupResponse
-  , CreateDBClusterParameterGroupResponse
+    , createDBClusterParameterGroupResponse
+    , CreateDBClusterParameterGroupResponse
     -- * Response Lenses
-  , cdbcpgrsDBClusterParameterGroup
-  , cdbcpgrsResponseStatus
-  ) where
+    , cdbcpgrsDBClusterParameterGroup
+    , cdbcpgrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -65,6 +69,7 @@ data CreateDBClusterParameterGroup =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateDBClusterParameterGroup' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -76,11 +81,11 @@ data CreateDBClusterParameterGroup =
 -- * 'cdcpgDBParameterGroupFamily' - The DB cluster parameter group family name. A DB cluster parameter group can be associated with one and only one DB cluster parameter group family, and can be applied only to a DB cluster running a database engine and engine version compatible with that DB cluster parameter group family. __Aurora MySQL__  Example: @aurora5.6@ , @aurora-mysql5.7@  __Aurora PostgreSQL__  Example: @aurora-postgresql9.6@
 --
 -- * 'cdcpgDescription' - The description for the DB cluster parameter group.
-createDBClusterParameterGroup ::
-     Text -- ^ 'cdcpgDBClusterParameterGroupName'
-  -> Text -- ^ 'cdcpgDBParameterGroupFamily'
-  -> Text -- ^ 'cdcpgDescription'
-  -> CreateDBClusterParameterGroup
+createDBClusterParameterGroup
+    :: Text -- ^ 'cdcpgDBClusterParameterGroupName'
+    -> Text -- ^ 'cdcpgDBParameterGroupFamily'
+    -> Text -- ^ 'cdcpgDescription'
+    -> CreateDBClusterParameterGroup
 createDBClusterParameterGroup pDBClusterParameterGroupName_ pDBParameterGroupFamily_ pDescription_ =
   CreateDBClusterParameterGroup'
     { _cdcpgTags = Nothing
@@ -89,59 +94,59 @@ createDBClusterParameterGroup pDBClusterParameterGroupName_ pDBParameterGroupFam
     , _cdcpgDescription = pDescription_
     }
 
+
 -- | Undocumented member.
 cdcpgTags :: Lens' CreateDBClusterParameterGroup [Tag]
-cdcpgTags = lens _cdcpgTags (\s a -> s {_cdcpgTags = a}) . _Default . _Coerce
+cdcpgTags = lens _cdcpgTags (\ s a -> s{_cdcpgTags = a}) . _Default . _Coerce
 
 -- | The name of the DB cluster parameter group. Constraints:     * Must match the name of an existing DBClusterParameterGroup.
 cdcpgDBClusterParameterGroupName :: Lens' CreateDBClusterParameterGroup Text
-cdcpgDBClusterParameterGroupName =
-  lens
-    _cdcpgDBClusterParameterGroupName
-    (\s a -> s {_cdcpgDBClusterParameterGroupName = a})
+cdcpgDBClusterParameterGroupName = lens _cdcpgDBClusterParameterGroupName (\ s a -> s{_cdcpgDBClusterParameterGroupName = a})
 
 -- | The DB cluster parameter group family name. A DB cluster parameter group can be associated with one and only one DB cluster parameter group family, and can be applied only to a DB cluster running a database engine and engine version compatible with that DB cluster parameter group family. __Aurora MySQL__  Example: @aurora5.6@ , @aurora-mysql5.7@  __Aurora PostgreSQL__  Example: @aurora-postgresql9.6@
 cdcpgDBParameterGroupFamily :: Lens' CreateDBClusterParameterGroup Text
-cdcpgDBParameterGroupFamily =
-  lens
-    _cdcpgDBParameterGroupFamily
-    (\s a -> s {_cdcpgDBParameterGroupFamily = a})
+cdcpgDBParameterGroupFamily = lens _cdcpgDBParameterGroupFamily (\ s a -> s{_cdcpgDBParameterGroupFamily = a})
 
 -- | The description for the DB cluster parameter group.
 cdcpgDescription :: Lens' CreateDBClusterParameterGroup Text
-cdcpgDescription = lens _cdcpgDescription (\s a -> s {_cdcpgDescription = a})
+cdcpgDescription = lens _cdcpgDescription (\ s a -> s{_cdcpgDescription = a})
 
-instance AWSRequest CreateDBClusterParameterGroup where
-  type Rs CreateDBClusterParameterGroup = CreateDBClusterParameterGroupResponse
-  request = postQuery rds
-  response =
-    receiveXMLWrapper
-      "CreateDBClusterParameterGroupResult"
-      (\s h x ->
-         CreateDBClusterParameterGroupResponse' <$>
-         (x .@? "DBClusterParameterGroup") <*>
-         (pure (fromEnum s)))
+instance AWSRequest CreateDBClusterParameterGroup
+         where
+        type Rs CreateDBClusterParameterGroup =
+             CreateDBClusterParameterGroupResponse
+        request = postQuery rds
+        response
+          = receiveXMLWrapper
+              "CreateDBClusterParameterGroupResult"
+              (\ s h x ->
+                 CreateDBClusterParameterGroupResponse' <$>
+                   (x .@? "DBClusterParameterGroup") <*>
+                     (pure (fromEnum s)))
 
-instance Hashable CreateDBClusterParameterGroup
+instance Hashable CreateDBClusterParameterGroup where
 
-instance NFData CreateDBClusterParameterGroup
+instance NFData CreateDBClusterParameterGroup where
 
-instance ToHeaders CreateDBClusterParameterGroup where
-  toHeaders = const mempty
+instance ToHeaders CreateDBClusterParameterGroup
+         where
+        toHeaders = const mempty
 
 instance ToPath CreateDBClusterParameterGroup where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery CreateDBClusterParameterGroup where
-  toQuery CreateDBClusterParameterGroup' {..} =
-    mconcat
-      [ "Action" =: ("CreateDBClusterParameterGroup" :: ByteString)
-      , "Version" =: ("2014-10-31" :: ByteString)
-      , "Tags" =: toQuery (toQueryList "Tag" <$> _cdcpgTags)
-      , "DBClusterParameterGroupName" =: _cdcpgDBClusterParameterGroupName
-      , "DBParameterGroupFamily" =: _cdcpgDBParameterGroupFamily
-      , "Description" =: _cdcpgDescription
-      ]
+        toQuery CreateDBClusterParameterGroup'{..}
+          = mconcat
+              ["Action" =:
+                 ("CreateDBClusterParameterGroup" :: ByteString),
+               "Version" =: ("2014-10-31" :: ByteString),
+               "Tags" =: toQuery (toQueryList "Tag" <$> _cdcpgTags),
+               "DBClusterParameterGroupName" =:
+                 _cdcpgDBClusterParameterGroupName,
+               "DBParameterGroupFamily" =:
+                 _cdcpgDBParameterGroupFamily,
+               "Description" =: _cdcpgDescription]
 
 -- | /See:/ 'createDBClusterParameterGroupResponse' smart constructor.
 data CreateDBClusterParameterGroupResponse =
@@ -151,6 +156,7 @@ data CreateDBClusterParameterGroupResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateDBClusterParameterGroupResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -158,26 +164,23 @@ data CreateDBClusterParameterGroupResponse =
 -- * 'cdbcpgrsDBClusterParameterGroup' - Undocumented member.
 --
 -- * 'cdbcpgrsResponseStatus' - -- | The response status code.
-createDBClusterParameterGroupResponse ::
-     Int -- ^ 'cdbcpgrsResponseStatus'
-  -> CreateDBClusterParameterGroupResponse
+createDBClusterParameterGroupResponse
+    :: Int -- ^ 'cdbcpgrsResponseStatus'
+    -> CreateDBClusterParameterGroupResponse
 createDBClusterParameterGroupResponse pResponseStatus_ =
   CreateDBClusterParameterGroupResponse'
     { _cdbcpgrsDBClusterParameterGroup = Nothing
     , _cdbcpgrsResponseStatus = pResponseStatus_
     }
 
+
 -- | Undocumented member.
-cdbcpgrsDBClusterParameterGroup ::
-     Lens' CreateDBClusterParameterGroupResponse (Maybe DBClusterParameterGroup)
-cdbcpgrsDBClusterParameterGroup =
-  lens
-    _cdbcpgrsDBClusterParameterGroup
-    (\s a -> s {_cdbcpgrsDBClusterParameterGroup = a})
+cdbcpgrsDBClusterParameterGroup :: Lens' CreateDBClusterParameterGroupResponse (Maybe DBClusterParameterGroup)
+cdbcpgrsDBClusterParameterGroup = lens _cdbcpgrsDBClusterParameterGroup (\ s a -> s{_cdbcpgrsDBClusterParameterGroup = a})
 
 -- | -- | The response status code.
 cdbcpgrsResponseStatus :: Lens' CreateDBClusterParameterGroupResponse Int
-cdbcpgrsResponseStatus =
-  lens _cdbcpgrsResponseStatus (\s a -> s {_cdbcpgrsResponseStatus = a})
+cdbcpgrsResponseStatus = lens _cdbcpgrsResponseStatus (\ s a -> s{_cdbcpgrsResponseStatus = a})
 
 instance NFData CreateDBClusterParameterGroupResponse
+         where

@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CloudTrail.DescribeTrails
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -16,23 +18,25 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves settings for the trail associated with the current region for your account.
+-- Retrieves settings for one or more trails associated with the current region for your account.
 --
 --
 module Network.AWS.CloudTrail.DescribeTrails
+    (
     -- * Creating a Request
-  ( describeTrails
-  , DescribeTrails
+      describeTrails
+    , DescribeTrails
     -- * Request Lenses
-  , dtIncludeShadowTrails
-  , dtTrailNameList
+    , dtIncludeShadowTrails
+    , dtTrailNameList
+
     -- * Destructuring the Response
-  , describeTrailsResponse
-  , DescribeTrailsResponse
+    , describeTrailsResponse
+    , DescribeTrailsResponse
     -- * Response Lenses
-  , dtrsTrailList
-  , dtrsResponseStatus
-  ) where
+    , dtrsTrailList
+    , dtrsResponseStatus
+    ) where
 
 import Network.AWS.CloudTrail.Types
 import Network.AWS.CloudTrail.Types.Product
@@ -53,62 +57,65 @@ data DescribeTrails =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeTrails' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtIncludeShadowTrails' - Specifies whether to include shadow trails in the response. A shadow trail is the replication in a region of a trail that was created in a different region. The default is true.
+-- * 'dtIncludeShadowTrails' - Specifies whether to include shadow trails in the response. A shadow trail is the replication in a region of a trail that was created in a different region, or in the case of an organization trail, the replication of an organization trail in member accounts. If you do not include shadow trails, organization trails in a member account and region replication trails will not be returned. The default is true.
 --
--- * 'dtTrailNameList' - Specifies a list of trail names, trail ARNs, or both, of the trails to describe. The format of a trail ARN is: @arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail@  If an empty list is specified, information for the trail in the current region is returned.     * If an empty list is specified and @IncludeShadowTrails@ is false, then information for all trails in the current region is returned.     * If an empty list is specified and IncludeShadowTrails is null or true, then information for all trails in the current region and any associated shadow trails in other regions is returned.
-describeTrails :: DescribeTrails
+-- * 'dtTrailNameList' - Specifies a list of trail names, trail ARNs, or both, of the trails to describe. The format of a trail ARN is: @arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail@  If an empty list is specified, information for the trail in the current region is returned.     * If an empty list is specified and @IncludeShadowTrails@ is false, then information for all trails in the current region is returned.     * If an empty list is specified and IncludeShadowTrails is null or true, then information for all trails in the current region and any associated shadow trails in other regions is returned.
+describeTrails
+    :: DescribeTrails
 describeTrails =
   DescribeTrails' {_dtIncludeShadowTrails = Nothing, _dtTrailNameList = Nothing}
 
--- | Specifies whether to include shadow trails in the response. A shadow trail is the replication in a region of a trail that was created in a different region. The default is true.
-dtIncludeShadowTrails :: Lens' DescribeTrails (Maybe Bool)
-dtIncludeShadowTrails =
-  lens _dtIncludeShadowTrails (\s a -> s {_dtIncludeShadowTrails = a})
 
--- | Specifies a list of trail names, trail ARNs, or both, of the trails to describe. The format of a trail ARN is: @arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail@  If an empty list is specified, information for the trail in the current region is returned.     * If an empty list is specified and @IncludeShadowTrails@ is false, then information for all trails in the current region is returned.     * If an empty list is specified and IncludeShadowTrails is null or true, then information for all trails in the current region and any associated shadow trails in other regions is returned.
+-- | Specifies whether to include shadow trails in the response. A shadow trail is the replication in a region of a trail that was created in a different region, or in the case of an organization trail, the replication of an organization trail in member accounts. If you do not include shadow trails, organization trails in a member account and region replication trails will not be returned. The default is true.
+dtIncludeShadowTrails :: Lens' DescribeTrails (Maybe Bool)
+dtIncludeShadowTrails = lens _dtIncludeShadowTrails (\ s a -> s{_dtIncludeShadowTrails = a})
+
+-- | Specifies a list of trail names, trail ARNs, or both, of the trails to describe. The format of a trail ARN is: @arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail@  If an empty list is specified, information for the trail in the current region is returned.     * If an empty list is specified and @IncludeShadowTrails@ is false, then information for all trails in the current region is returned.     * If an empty list is specified and IncludeShadowTrails is null or true, then information for all trails in the current region and any associated shadow trails in other regions is returned.
 dtTrailNameList :: Lens' DescribeTrails [Text]
-dtTrailNameList =
-  lens _dtTrailNameList (\s a -> s {_dtTrailNameList = a}) . _Default . _Coerce
+dtTrailNameList = lens _dtTrailNameList (\ s a -> s{_dtTrailNameList = a}) . _Default . _Coerce
 
 instance AWSRequest DescribeTrails where
-  type Rs DescribeTrails = DescribeTrailsResponse
-  request = postJSON cloudTrail
-  response =
-    receiveJSON
-      (\s h x ->
-         DescribeTrailsResponse' <$> (x .?> "trailList" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs DescribeTrails = DescribeTrailsResponse
+        request = postJSON cloudTrail
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DescribeTrailsResponse' <$>
+                   (x .?> "trailList" .!@ mempty) <*>
+                     (pure (fromEnum s)))
 
-instance Hashable DescribeTrails
+instance Hashable DescribeTrails where
 
-instance NFData DescribeTrails
+instance NFData DescribeTrails where
 
 instance ToHeaders DescribeTrails where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.DescribeTrails" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.DescribeTrails"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DescribeTrails where
-  toJSON DescribeTrails' {..} =
-    object
-      (catMaybes
-         [ ("includeShadowTrails" .=) <$> _dtIncludeShadowTrails
-         , ("trailNameList" .=) <$> _dtTrailNameList
-         ])
+        toJSON DescribeTrails'{..}
+          = object
+              (catMaybes
+                 [("includeShadowTrails" .=) <$>
+                    _dtIncludeShadowTrails,
+                  ("trailNameList" .=) <$> _dtTrailNameList])
 
 instance ToPath DescribeTrails where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DescribeTrails where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | Returns the objects or data listed below if successful. Otherwise, returns an error.
 --
@@ -122,28 +129,28 @@ data DescribeTrailsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeTrailsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtrsTrailList' - The list of trail objects.
+-- * 'dtrsTrailList' - The list of trail objects. Trail objects with string values are only returned if values for the objects exist in a trail's configuration. For example, @SNSTopicName@ and @SNSTopicARN@ are only returned in results if a trail is configured to send SNS notifications. Similarly, @KMSKeyId@ only appears in results if a trail's log files are encrypted with AWS KMS-managed keys.
 --
 -- * 'dtrsResponseStatus' - -- | The response status code.
-describeTrailsResponse ::
-     Int -- ^ 'dtrsResponseStatus'
-  -> DescribeTrailsResponse
+describeTrailsResponse
+    :: Int -- ^ 'dtrsResponseStatus'
+    -> DescribeTrailsResponse
 describeTrailsResponse pResponseStatus_ =
   DescribeTrailsResponse'
     {_dtrsTrailList = Nothing, _dtrsResponseStatus = pResponseStatus_}
 
--- | The list of trail objects.
+
+-- | The list of trail objects. Trail objects with string values are only returned if values for the objects exist in a trail's configuration. For example, @SNSTopicName@ and @SNSTopicARN@ are only returned in results if a trail is configured to send SNS notifications. Similarly, @KMSKeyId@ only appears in results if a trail's log files are encrypted with AWS KMS-managed keys.
 dtrsTrailList :: Lens' DescribeTrailsResponse [Trail]
-dtrsTrailList =
-  lens _dtrsTrailList (\s a -> s {_dtrsTrailList = a}) . _Default . _Coerce
+dtrsTrailList = lens _dtrsTrailList (\ s a -> s{_dtrsTrailList = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 dtrsResponseStatus :: Lens' DescribeTrailsResponse Int
-dtrsResponseStatus =
-  lens _dtrsResponseStatus (\s a -> s {_dtrsResponseStatus = a})
+dtrsResponseStatus = lens _dtrsResponseStatus (\ s a -> s{_dtrsResponseStatus = a})
 
-instance NFData DescribeTrailsResponse
+instance NFData DescribeTrailsResponse where

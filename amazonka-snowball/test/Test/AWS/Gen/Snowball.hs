@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Test.AWS.Gen.Snowball
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -23,6 +24,7 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
+
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -78,6 +80,7 @@ import Test.Tasty
 --             cancelJob
 --
 --           ]
+
 --     , testGroup "response"
 --         [ responseCancelCluster $
 --             cancelClusterResponse
@@ -132,191 +135,210 @@ import Test.Tasty
 --
 --           ]
 --     ]
+
 -- Requests
+
 requestCancelCluster :: CancelCluster -> TestTree
-requestCancelCluster = req "CancelCluster" "fixture/CancelCluster.yaml"
+requestCancelCluster = req
+    "CancelCluster"
+    "fixture/CancelCluster.yaml"
 
 requestDescribeCluster :: DescribeCluster -> TestTree
-requestDescribeCluster = req "DescribeCluster" "fixture/DescribeCluster.yaml"
+requestDescribeCluster = req
+    "DescribeCluster"
+    "fixture/DescribeCluster.yaml"
 
 requestCreateAddress :: CreateAddress -> TestTree
-requestCreateAddress = req "CreateAddress" "fixture/CreateAddress.yaml"
+requestCreateAddress = req
+    "CreateAddress"
+    "fixture/CreateAddress.yaml"
 
 requestGetSnowballUsage :: GetSnowballUsage -> TestTree
-requestGetSnowballUsage = req "GetSnowballUsage" "fixture/GetSnowballUsage.yaml"
+requestGetSnowballUsage = req
+    "GetSnowballUsage"
+    "fixture/GetSnowballUsage.yaml"
 
 requestDescribeAddresses :: DescribeAddresses -> TestTree
-requestDescribeAddresses =
-  req "DescribeAddresses" "fixture/DescribeAddresses.yaml"
+requestDescribeAddresses = req
+    "DescribeAddresses"
+    "fixture/DescribeAddresses.yaml"
 
 requestUpdateCluster :: UpdateCluster -> TestTree
-requestUpdateCluster = req "UpdateCluster" "fixture/UpdateCluster.yaml"
+requestUpdateCluster = req
+    "UpdateCluster"
+    "fixture/UpdateCluster.yaml"
 
 requestCreateJob :: CreateJob -> TestTree
-requestCreateJob = req "CreateJob" "fixture/CreateJob.yaml"
+requestCreateJob = req
+    "CreateJob"
+    "fixture/CreateJob.yaml"
 
 requestGetJobManifest :: GetJobManifest -> TestTree
-requestGetJobManifest = req "GetJobManifest" "fixture/GetJobManifest.yaml"
+requestGetJobManifest = req
+    "GetJobManifest"
+    "fixture/GetJobManifest.yaml"
 
 requestCreateCluster :: CreateCluster -> TestTree
-requestCreateCluster = req "CreateCluster" "fixture/CreateCluster.yaml"
+requestCreateCluster = req
+    "CreateCluster"
+    "fixture/CreateCluster.yaml"
 
 requestListJobs :: ListJobs -> TestTree
-requestListJobs = req "ListJobs" "fixture/ListJobs.yaml"
+requestListJobs = req
+    "ListJobs"
+    "fixture/ListJobs.yaml"
 
 requestUpdateJob :: UpdateJob -> TestTree
-requestUpdateJob = req "UpdateJob" "fixture/UpdateJob.yaml"
+requestUpdateJob = req
+    "UpdateJob"
+    "fixture/UpdateJob.yaml"
 
 requestGetJobUnlockCode :: GetJobUnlockCode -> TestTree
-requestGetJobUnlockCode = req "GetJobUnlockCode" "fixture/GetJobUnlockCode.yaml"
+requestGetJobUnlockCode = req
+    "GetJobUnlockCode"
+    "fixture/GetJobUnlockCode.yaml"
 
 requestListClusterJobs :: ListClusterJobs -> TestTree
-requestListClusterJobs = req "ListClusterJobs" "fixture/ListClusterJobs.yaml"
+requestListClusterJobs = req
+    "ListClusterJobs"
+    "fixture/ListClusterJobs.yaml"
 
 requestDescribeJob :: DescribeJob -> TestTree
-requestDescribeJob = req "DescribeJob" "fixture/DescribeJob.yaml"
+requestDescribeJob = req
+    "DescribeJob"
+    "fixture/DescribeJob.yaml"
 
 requestListClusters :: ListClusters -> TestTree
-requestListClusters = req "ListClusters" "fixture/ListClusters.yaml"
+requestListClusters = req
+    "ListClusters"
+    "fixture/ListClusters.yaml"
 
 requestDescribeAddress :: DescribeAddress -> TestTree
-requestDescribeAddress = req "DescribeAddress" "fixture/DescribeAddress.yaml"
+requestDescribeAddress = req
+    "DescribeAddress"
+    "fixture/DescribeAddress.yaml"
 
 requestCancelJob :: CancelJob -> TestTree
-requestCancelJob = req "CancelJob" "fixture/CancelJob.yaml"
+requestCancelJob = req
+    "CancelJob"
+    "fixture/CancelJob.yaml"
 
 -- Responses
+
 responseCancelCluster :: CancelClusterResponse -> TestTree
-responseCancelCluster =
-  res
+responseCancelCluster = res
     "CancelClusterResponse"
     "fixture/CancelClusterResponse.proto"
     snowball
     (Proxy :: Proxy CancelCluster)
 
 responseDescribeCluster :: DescribeClusterResponse -> TestTree
-responseDescribeCluster =
-  res
+responseDescribeCluster = res
     "DescribeClusterResponse"
     "fixture/DescribeClusterResponse.proto"
     snowball
     (Proxy :: Proxy DescribeCluster)
 
 responseCreateAddress :: CreateAddressResponse -> TestTree
-responseCreateAddress =
-  res
+responseCreateAddress = res
     "CreateAddressResponse"
     "fixture/CreateAddressResponse.proto"
     snowball
     (Proxy :: Proxy CreateAddress)
 
 responseGetSnowballUsage :: GetSnowballUsageResponse -> TestTree
-responseGetSnowballUsage =
-  res
+responseGetSnowballUsage = res
     "GetSnowballUsageResponse"
     "fixture/GetSnowballUsageResponse.proto"
     snowball
     (Proxy :: Proxy GetSnowballUsage)
 
 responseDescribeAddresses :: DescribeAddressesResponse -> TestTree
-responseDescribeAddresses =
-  res
+responseDescribeAddresses = res
     "DescribeAddressesResponse"
     "fixture/DescribeAddressesResponse.proto"
     snowball
     (Proxy :: Proxy DescribeAddresses)
 
 responseUpdateCluster :: UpdateClusterResponse -> TestTree
-responseUpdateCluster =
-  res
+responseUpdateCluster = res
     "UpdateClusterResponse"
     "fixture/UpdateClusterResponse.proto"
     snowball
     (Proxy :: Proxy UpdateCluster)
 
 responseCreateJob :: CreateJobResponse -> TestTree
-responseCreateJob =
-  res
+responseCreateJob = res
     "CreateJobResponse"
     "fixture/CreateJobResponse.proto"
     snowball
     (Proxy :: Proxy CreateJob)
 
 responseGetJobManifest :: GetJobManifestResponse -> TestTree
-responseGetJobManifest =
-  res
+responseGetJobManifest = res
     "GetJobManifestResponse"
     "fixture/GetJobManifestResponse.proto"
     snowball
     (Proxy :: Proxy GetJobManifest)
 
 responseCreateCluster :: CreateClusterResponse -> TestTree
-responseCreateCluster =
-  res
+responseCreateCluster = res
     "CreateClusterResponse"
     "fixture/CreateClusterResponse.proto"
     snowball
     (Proxy :: Proxy CreateCluster)
 
 responseListJobs :: ListJobsResponse -> TestTree
-responseListJobs =
-  res
+responseListJobs = res
     "ListJobsResponse"
     "fixture/ListJobsResponse.proto"
     snowball
     (Proxy :: Proxy ListJobs)
 
 responseUpdateJob :: UpdateJobResponse -> TestTree
-responseUpdateJob =
-  res
+responseUpdateJob = res
     "UpdateJobResponse"
     "fixture/UpdateJobResponse.proto"
     snowball
     (Proxy :: Proxy UpdateJob)
 
 responseGetJobUnlockCode :: GetJobUnlockCodeResponse -> TestTree
-responseGetJobUnlockCode =
-  res
+responseGetJobUnlockCode = res
     "GetJobUnlockCodeResponse"
     "fixture/GetJobUnlockCodeResponse.proto"
     snowball
     (Proxy :: Proxy GetJobUnlockCode)
 
 responseListClusterJobs :: ListClusterJobsResponse -> TestTree
-responseListClusterJobs =
-  res
+responseListClusterJobs = res
     "ListClusterJobsResponse"
     "fixture/ListClusterJobsResponse.proto"
     snowball
     (Proxy :: Proxy ListClusterJobs)
 
 responseDescribeJob :: DescribeJobResponse -> TestTree
-responseDescribeJob =
-  res
+responseDescribeJob = res
     "DescribeJobResponse"
     "fixture/DescribeJobResponse.proto"
     snowball
     (Proxy :: Proxy DescribeJob)
 
 responseListClusters :: ListClustersResponse -> TestTree
-responseListClusters =
-  res
+responseListClusters = res
     "ListClustersResponse"
     "fixture/ListClustersResponse.proto"
     snowball
     (Proxy :: Proxy ListClusters)
 
 responseDescribeAddress :: DescribeAddressResponse -> TestTree
-responseDescribeAddress =
-  res
+responseDescribeAddress = res
     "DescribeAddressResponse"
     "fixture/DescribeAddressResponse.proto"
     snowball
     (Proxy :: Proxy DescribeAddress)
 
 responseCancelJob :: CancelJobResponse -> TestTree
-responseCancelJob =
-  res
+responseCancelJob = res
     "CancelJobResponse"
     "fixture/CancelJobResponse.proto"
     snowball

@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SageMaker.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,192 +11,238 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.SageMaker.Types
+    (
     -- * Service Configuration
-  ( sageMaker
+      sageMaker
+
     -- * Errors
-  , _ResourceLimitExceeded
-  , _ResourceInUse
-  , _ResourceNotFound
+    , _ResourceLimitExceeded
+    , _ResourceInUse
+    , _ResourceNotFound
+
     -- * CompressionType
-  , CompressionType(..)
+    , CompressionType (..)
+
     -- * DirectInternetAccess
-  , DirectInternetAccess(..)
+    , DirectInternetAccess (..)
+
     -- * EndpointConfigSortKey
-  , EndpointConfigSortKey(..)
+    , EndpointConfigSortKey (..)
+
     -- * EndpointSortKey
-  , EndpointSortKey(..)
+    , EndpointSortKey (..)
+
     -- * EndpointStatus
-  , EndpointStatus(..)
+    , EndpointStatus (..)
+
     -- * InstanceType
-  , InstanceType(..)
+    , InstanceType (..)
+
     -- * ModelSortKey
-  , ModelSortKey(..)
+    , ModelSortKey (..)
+
     -- * NotebookInstanceLifecycleConfigSortKey
-  , NotebookInstanceLifecycleConfigSortKey(..)
+    , NotebookInstanceLifecycleConfigSortKey (..)
+
     -- * NotebookInstanceLifecycleConfigSortOrder
-  , NotebookInstanceLifecycleConfigSortOrder(..)
+    , NotebookInstanceLifecycleConfigSortOrder (..)
+
     -- * NotebookInstanceSortKey
-  , NotebookInstanceSortKey(..)
+    , NotebookInstanceSortKey (..)
+
     -- * NotebookInstanceSortOrder
-  , NotebookInstanceSortOrder(..)
+    , NotebookInstanceSortOrder (..)
+
     -- * NotebookInstanceStatus
-  , NotebookInstanceStatus(..)
+    , NotebookInstanceStatus (..)
+
     -- * OrderKey
-  , OrderKey(..)
+    , OrderKey (..)
+
     -- * ProductionVariantInstanceType
-  , ProductionVariantInstanceType(..)
+    , ProductionVariantInstanceType (..)
+
     -- * RecordWrapper
-  , RecordWrapper(..)
+    , RecordWrapper (..)
+
     -- * S3DataDistribution
-  , S3DataDistribution(..)
+    , S3DataDistribution (..)
+
     -- * S3DataType
-  , S3DataType(..)
+    , S3DataType (..)
+
     -- * SecondaryStatus
-  , SecondaryStatus(..)
+    , SecondaryStatus (..)
+
     -- * SortBy
-  , SortBy(..)
+    , SortBy (..)
+
     -- * SortOrder
-  , SortOrder(..)
+    , SortOrder (..)
+
     -- * TrainingInputMode
-  , TrainingInputMode(..)
+    , TrainingInputMode (..)
+
     -- * TrainingInstanceType
-  , TrainingInstanceType(..)
+    , TrainingInstanceType (..)
+
     -- * TrainingJobStatus
-  , TrainingJobStatus(..)
+    , TrainingJobStatus (..)
+
     -- * AlgorithmSpecification
-  , AlgorithmSpecification
-  , algorithmSpecification
-  , asTrainingImage
-  , asTrainingInputMode
+    , AlgorithmSpecification
+    , algorithmSpecification
+    , asTrainingImage
+    , asTrainingInputMode
+
     -- * Channel
-  , Channel
-  , channel
-  , cRecordWrapperType
-  , cCompressionType
-  , cContentType
-  , cChannelName
-  , cDataSource
+    , Channel
+    , channel
+    , cRecordWrapperType
+    , cCompressionType
+    , cContentType
+    , cChannelName
+    , cDataSource
+
     -- * ContainerDefinition
-  , ContainerDefinition
-  , containerDefinition
-  , cdModelDataURL
-  , cdEnvironment
-  , cdContainerHostname
-  , cdImage
+    , ContainerDefinition
+    , containerDefinition
+    , cdModelDataURL
+    , cdEnvironment
+    , cdContainerHostname
+    , cdImage
+
     -- * DataSource
-  , DataSource
-  , dataSource
-  , dsS3DataSource
+    , DataSource
+    , dataSource
+    , dsS3DataSource
+
     -- * DesiredWeightAndCapacity
-  , DesiredWeightAndCapacity
-  , desiredWeightAndCapacity
-  , dwacDesiredInstanceCount
-  , dwacDesiredWeight
-  , dwacVariantName
+    , DesiredWeightAndCapacity
+    , desiredWeightAndCapacity
+    , dwacDesiredInstanceCount
+    , dwacDesiredWeight
+    , dwacVariantName
+
     -- * EndpointConfigSummary
-  , EndpointConfigSummary
-  , endpointConfigSummary
-  , ecsEndpointConfigName
-  , ecsEndpointConfigARN
-  , ecsCreationTime
+    , EndpointConfigSummary
+    , endpointConfigSummary
+    , ecsEndpointConfigName
+    , ecsEndpointConfigARN
+    , ecsCreationTime
+
     -- * EndpointSummary
-  , EndpointSummary
-  , endpointSummary
-  , esEndpointName
-  , esEndpointARN
-  , esCreationTime
-  , esLastModifiedTime
-  , esEndpointStatus
+    , EndpointSummary
+    , endpointSummary
+    , esEndpointName
+    , esEndpointARN
+    , esCreationTime
+    , esLastModifiedTime
+    , esEndpointStatus
+
     -- * ModelArtifacts
-  , ModelArtifacts
-  , modelArtifacts
-  , maS3ModelArtifacts
+    , ModelArtifacts
+    , modelArtifacts
+    , maS3ModelArtifacts
+
     -- * ModelSummary
-  , ModelSummary
-  , modelSummary
-  , msModelName
-  , msModelARN
-  , msCreationTime
+    , ModelSummary
+    , modelSummary
+    , msModelName
+    , msModelARN
+    , msCreationTime
+
     -- * NotebookInstanceLifecycleConfigSummary
-  , NotebookInstanceLifecycleConfigSummary
-  , notebookInstanceLifecycleConfigSummary
-  , nilcsCreationTime
-  , nilcsLastModifiedTime
-  , nilcsNotebookInstanceLifecycleConfigName
-  , nilcsNotebookInstanceLifecycleConfigARN
+    , NotebookInstanceLifecycleConfigSummary
+    , notebookInstanceLifecycleConfigSummary
+    , nilcsCreationTime
+    , nilcsLastModifiedTime
+    , nilcsNotebookInstanceLifecycleConfigName
+    , nilcsNotebookInstanceLifecycleConfigARN
+
     -- * NotebookInstanceLifecycleHook
-  , NotebookInstanceLifecycleHook
-  , notebookInstanceLifecycleHook
-  , nilhContent
+    , NotebookInstanceLifecycleHook
+    , notebookInstanceLifecycleHook
+    , nilhContent
+
     -- * NotebookInstanceSummary
-  , NotebookInstanceSummary
-  , notebookInstanceSummary
-  , nisCreationTime
-  , nisURL
-  , nisLastModifiedTime
-  , nisInstanceType
-  , nisNotebookInstanceStatus
-  , nisNotebookInstanceLifecycleConfigName
-  , nisNotebookInstanceName
-  , nisNotebookInstanceARN
+    , NotebookInstanceSummary
+    , notebookInstanceSummary
+    , nisCreationTime
+    , nisURL
+    , nisLastModifiedTime
+    , nisInstanceType
+    , nisNotebookInstanceStatus
+    , nisNotebookInstanceLifecycleConfigName
+    , nisNotebookInstanceName
+    , nisNotebookInstanceARN
+
     -- * OutputDataConfig
-  , OutputDataConfig
-  , outputDataConfig
-  , odcKMSKeyId
-  , odcS3OutputPath
+    , OutputDataConfig
+    , outputDataConfig
+    , odcKMSKeyId
+    , odcS3OutputPath
+
     -- * ProductionVariant
-  , ProductionVariant
-  , productionVariant
-  , pvInitialVariantWeight
-  , pvVariantName
-  , pvModelName
-  , pvInitialInstanceCount
-  , pvInstanceType
+    , ProductionVariant
+    , productionVariant
+    , pvInitialVariantWeight
+    , pvVariantName
+    , pvModelName
+    , pvInitialInstanceCount
+    , pvInstanceType
+
     -- * ProductionVariantSummary
-  , ProductionVariantSummary
-  , productionVariantSummary
-  , pvsDesiredInstanceCount
-  , pvsDesiredWeight
-  , pvsCurrentWeight
-  , pvsCurrentInstanceCount
-  , pvsVariantName
+    , ProductionVariantSummary
+    , productionVariantSummary
+    , pvsDesiredInstanceCount
+    , pvsDesiredWeight
+    , pvsCurrentWeight
+    , pvsCurrentInstanceCount
+    , pvsVariantName
+
     -- * ResourceConfig
-  , ResourceConfig
-  , resourceConfig
-  , rcVolumeKMSKeyId
-  , rcInstanceType
-  , rcInstanceCount
-  , rcVolumeSizeInGB
+    , ResourceConfig
+    , resourceConfig
+    , rcVolumeKMSKeyId
+    , rcInstanceType
+    , rcInstanceCount
+    , rcVolumeSizeInGB
+
     -- * S3DataSource
-  , S3DataSource
-  , s3DataSource
-  , sdsS3DataDistributionType
-  , sdsS3DataType
-  , sdsS3URI
+    , S3DataSource
+    , s3DataSource
+    , sdsS3DataDistributionType
+    , sdsS3DataType
+    , sdsS3URI
+
     -- * StoppingCondition
-  , StoppingCondition
-  , stoppingCondition
-  , scMaxRuntimeInSeconds
+    , StoppingCondition
+    , stoppingCondition
+    , scMaxRuntimeInSeconds
+
     -- * Tag
-  , Tag
-  , tag
-  , tagKey
-  , tagValue
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
+
     -- * TrainingJobSummary
-  , TrainingJobSummary
-  , trainingJobSummary
-  , tjsTrainingEndTime
-  , tjsLastModifiedTime
-  , tjsTrainingJobName
-  , tjsTrainingJobARN
-  , tjsCreationTime
-  , tjsTrainingJobStatus
+    , TrainingJobSummary
+    , trainingJobSummary
+    , tjsTrainingEndTime
+    , tjsLastModifiedTime
+    , tjsTrainingJobName
+    , tjsTrainingJobARN
+    , tjsCreationTime
+    , tjsTrainingJobStatus
+
     -- * VPCConfig
-  , VPCConfig
-  , vpcConfig
-  , vcSecurityGroupIds
-  , vcSubnets
-  ) where
+    , VPCConfig
+    , vpcConfig
+    , vcSecurityGroupIds
+    , vcSubnets
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -241,12 +288,13 @@ sageMaker =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | You have exceeded an Amazon SageMaker resource limit. For example, you might have too many training jobs created.
 --
 --
-_ResourceLimitExceeded ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ResourceLimitExceeded :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceLimitExceeded = _MatchServiceError sageMaker "ResourceLimitExceeded"
+
 
 -- | Resource being accessed is in use.
 --
@@ -254,8 +302,10 @@ _ResourceLimitExceeded = _MatchServiceError sageMaker "ResourceLimitExceeded"
 _ResourceInUse :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceInUse = _MatchServiceError sageMaker "ResourceInUse"
 
+
 -- | Resource being access is not found.
 --
 --
 _ResourceNotFound :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceNotFound = _MatchServiceError sageMaker "ResourceNotFound"
+

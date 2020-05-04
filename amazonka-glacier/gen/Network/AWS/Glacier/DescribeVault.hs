@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Glacier.DescribeVault
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,23 +26,25 @@
 -- For conceptual information and underlying REST API, see <http://docs.aws.amazon.com/amazonglacier/latest/dev/retrieving-vault-info.html Retrieving Vault Metadata in Amazon Glacier> and <http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-get.html Describe Vault > in the /Amazon Glacier Developer Guide/ .
 --
 module Network.AWS.Glacier.DescribeVault
+    (
     -- * Creating a Request
-  ( describeVault
-  , DescribeVault
+      describeVault
+    , DescribeVault
     -- * Request Lenses
-  , dvAccountId
-  , dvVaultName
+    , dvAccountId
+    , dvVaultName
+
     -- * Destructuring the Response
-  , describeVaultOutput
-  , DescribeVaultOutput
+    , describeVaultOutput
+    , DescribeVaultOutput
     -- * Response Lenses
-  , dvoVaultName
-  , dvoSizeInBytes
-  , dvoLastInventoryDate
-  , dvoVaultARN
-  , dvoCreationDate
-  , dvoNumberOfArchives
-  ) where
+    , dvoVaultName
+    , dvoSizeInBytes
+    , dvoLastInventoryDate
+    , dvoVaultARN
+    , dvoCreationDate
+    , dvoNumberOfArchives
+    ) where
 
 import Network.AWS.Glacier.Types
 import Network.AWS.Glacier.Types.Product
@@ -61,6 +65,7 @@ data DescribeVault =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeVault' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -68,36 +73,39 @@ data DescribeVault =
 -- * 'dvAccountId' - The @AccountId@ value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.
 --
 -- * 'dvVaultName' - The name of the vault.
-describeVault ::
-     Text -- ^ 'dvAccountId'
-  -> Text -- ^ 'dvVaultName'
-  -> DescribeVault
+describeVault
+    :: Text -- ^ 'dvAccountId'
+    -> Text -- ^ 'dvVaultName'
+    -> DescribeVault
 describeVault pAccountId_ pVaultName_ =
   DescribeVault' {_dvAccountId = pAccountId_, _dvVaultName = pVaultName_}
 
+
 -- | The @AccountId@ value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.
 dvAccountId :: Lens' DescribeVault Text
-dvAccountId = lens _dvAccountId (\s a -> s {_dvAccountId = a})
+dvAccountId = lens _dvAccountId (\ s a -> s{_dvAccountId = a})
 
 -- | The name of the vault.
 dvVaultName :: Lens' DescribeVault Text
-dvVaultName = lens _dvVaultName (\s a -> s {_dvVaultName = a})
+dvVaultName = lens _dvVaultName (\ s a -> s{_dvVaultName = a})
 
 instance AWSRequest DescribeVault where
-  type Rs DescribeVault = DescribeVaultOutput
-  request = get glacier
-  response = receiveJSON (\s h x -> eitherParseJSON x)
+        type Rs DescribeVault = DescribeVaultOutput
+        request = get glacier
+        response = receiveJSON (\ s h x -> eitherParseJSON x)
 
-instance Hashable DescribeVault
+instance Hashable DescribeVault where
 
-instance NFData DescribeVault
+instance NFData DescribeVault where
 
 instance ToHeaders DescribeVault where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath DescribeVault where
-  toPath DescribeVault' {..} =
-    mconcat ["/", toBS _dvAccountId, "/vaults/", toBS _dvVaultName]
+        toPath DescribeVault'{..}
+          = mconcat
+              ["/", toBS _dvAccountId, "/vaults/",
+               toBS _dvVaultName]
 
 instance ToQuery DescribeVault where
-  toQuery = const mempty
+        toQuery = const mempty

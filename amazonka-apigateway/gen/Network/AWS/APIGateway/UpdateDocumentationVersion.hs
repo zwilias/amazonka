@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.APIGateway.UpdateDocumentationVersion
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,21 +20,23 @@
 --
 -- Undocumented operation.
 module Network.AWS.APIGateway.UpdateDocumentationVersion
+    (
     -- * Creating a Request
-  ( updateDocumentationVersion
-  , UpdateDocumentationVersion
+      updateDocumentationVersion
+    , UpdateDocumentationVersion
     -- * Request Lenses
-  , udvPatchOperations
-  , udvRestAPIId
-  , udvDocumentationVersion
+    , udvPatchOperations
+    , udvRestAPIId
+    , udvDocumentationVersion
+
     -- * Destructuring the Response
-  , documentationVersion
-  , DocumentationVersion
+    , documentationVersion
+    , DocumentationVersion
     -- * Response Lenses
-  , dvCreatedDate
-  , dvVersion
-  , dvDescription
-  ) where
+    , dvCreatedDate
+    , dvVersion
+    , dvDescription
+    ) where
 
 import Network.AWS.APIGateway.Types
 import Network.AWS.APIGateway.Types.Product
@@ -54,6 +58,7 @@ data UpdateDocumentationVersion =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateDocumentationVersion' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -63,10 +68,10 @@ data UpdateDocumentationVersion =
 -- * 'udvRestAPIId' - [Required] The string identifier of the associated 'RestApi' ..
 --
 -- * 'udvDocumentationVersion' - [Required] The version identifier of the to-be-updated documentation version.
-updateDocumentationVersion ::
-     Text -- ^ 'udvRestAPIId'
-  -> Text -- ^ 'udvDocumentationVersion'
-  -> UpdateDocumentationVersion
+updateDocumentationVersion
+    :: Text -- ^ 'udvRestAPIId'
+    -> Text -- ^ 'udvDocumentationVersion'
+    -> UpdateDocumentationVersion
 updateDocumentationVersion pRestAPIId_ pDocumentationVersion_ =
   UpdateDocumentationVersion'
     { _udvPatchOperations = Nothing
@@ -74,45 +79,47 @@ updateDocumentationVersion pRestAPIId_ pDocumentationVersion_ =
     , _udvDocumentationVersion = pDocumentationVersion_
     }
 
+
 -- | A list of update operations to be applied to the specified resource and in the order specified in this list.
 udvPatchOperations :: Lens' UpdateDocumentationVersion [PatchOperation]
-udvPatchOperations =
-  lens _udvPatchOperations (\s a -> s {_udvPatchOperations = a}) .
-  _Default . _Coerce
+udvPatchOperations = lens _udvPatchOperations (\ s a -> s{_udvPatchOperations = a}) . _Default . _Coerce
 
 -- | [Required] The string identifier of the associated 'RestApi' ..
 udvRestAPIId :: Lens' UpdateDocumentationVersion Text
-udvRestAPIId = lens _udvRestAPIId (\s a -> s {_udvRestAPIId = a})
+udvRestAPIId = lens _udvRestAPIId (\ s a -> s{_udvRestAPIId = a})
 
 -- | [Required] The version identifier of the to-be-updated documentation version.
 udvDocumentationVersion :: Lens' UpdateDocumentationVersion Text
-udvDocumentationVersion =
-  lens _udvDocumentationVersion (\s a -> s {_udvDocumentationVersion = a})
+udvDocumentationVersion = lens _udvDocumentationVersion (\ s a -> s{_udvDocumentationVersion = a})
 
 instance AWSRequest UpdateDocumentationVersion where
-  type Rs UpdateDocumentationVersion = DocumentationVersion
-  request = patchJSON apiGateway
-  response = receiveJSON (\s h x -> eitherParseJSON x)
+        type Rs UpdateDocumentationVersion =
+             DocumentationVersion
+        request = patchJSON apiGateway
+        response = receiveJSON (\ s h x -> eitherParseJSON x)
 
-instance Hashable UpdateDocumentationVersion
+instance Hashable UpdateDocumentationVersion where
 
-instance NFData UpdateDocumentationVersion
+instance NFData UpdateDocumentationVersion where
 
 instance ToHeaders UpdateDocumentationVersion where
-  toHeaders = const (mconcat ["Accept" =# ("application/json" :: ByteString)])
+        toHeaders
+          = const
+              (mconcat
+                 ["Accept" =# ("application/json" :: ByteString)])
 
 instance ToJSON UpdateDocumentationVersion where
-  toJSON UpdateDocumentationVersion' {..} =
-    object (catMaybes [("patchOperations" .=) <$> _udvPatchOperations])
+        toJSON UpdateDocumentationVersion'{..}
+          = object
+              (catMaybes
+                 [("patchOperations" .=) <$> _udvPatchOperations])
 
 instance ToPath UpdateDocumentationVersion where
-  toPath UpdateDocumentationVersion' {..} =
-    mconcat
-      [ "/restapis/"
-      , toBS _udvRestAPIId
-      , "/documentation/versions/"
-      , toBS _udvDocumentationVersion
-      ]
+        toPath UpdateDocumentationVersion'{..}
+          = mconcat
+              ["/restapis/", toBS _udvRestAPIId,
+               "/documentation/versions/",
+               toBS _udvDocumentationVersion]
 
 instance ToQuery UpdateDocumentationVersion where
-  toQuery = const mempty
+        toQuery = const mempty

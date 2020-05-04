@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Mobile.DeleteProject
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,19 +22,21 @@
 --
 --
 module Network.AWS.Mobile.DeleteProject
+    (
     -- * Creating a Request
-  ( deleteProject
-  , DeleteProject
+      deleteProject
+    , DeleteProject
     -- * Request Lenses
-  , dpProjectId
+    , dpProjectId
+
     -- * Destructuring the Response
-  , deleteProjectResponse
-  , DeleteProjectResponse
+    , deleteProjectResponse
+    , DeleteProjectResponse
     -- * Response Lenses
-  , dprsDeletedResources
-  , dprsOrphanedResources
-  , dprsResponseStatus
-  ) where
+    , dprsDeletedResources
+    , dprsOrphanedResources
+    , dprsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Mobile.Types
@@ -52,44 +56,50 @@ newtype DeleteProject =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteProject' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dpProjectId' - Unique project identifier.
-deleteProject ::
-     Text -- ^ 'dpProjectId'
-  -> DeleteProject
+deleteProject
+    :: Text -- ^ 'dpProjectId'
+    -> DeleteProject
 deleteProject pProjectId_ = DeleteProject' {_dpProjectId = pProjectId_}
+
 
 -- | Unique project identifier.
 dpProjectId :: Lens' DeleteProject Text
-dpProjectId = lens _dpProjectId (\s a -> s {_dpProjectId = a})
+dpProjectId = lens _dpProjectId (\ s a -> s{_dpProjectId = a})
 
 instance AWSRequest DeleteProject where
-  type Rs DeleteProject = DeleteProjectResponse
-  request = delete mobile
-  response =
-    receiveJSON
-      (\s h x ->
-         DeleteProjectResponse' <$> (x .?> "deletedResources" .!@ mempty) <*>
-         (x .?> "orphanedResources" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs DeleteProject = DeleteProjectResponse
+        request = delete mobile
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DeleteProjectResponse' <$>
+                   (x .?> "deletedResources" .!@ mempty) <*>
+                     (x .?> "orphanedResources" .!@ mempty)
+                     <*> (pure (fromEnum s)))
 
-instance Hashable DeleteProject
+instance Hashable DeleteProject where
 
-instance NFData DeleteProject
+instance NFData DeleteProject where
 
 instance ToHeaders DeleteProject where
-  toHeaders =
-    const
-      (mconcat ["Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)])
+        toHeaders
+          = const
+              (mconcat
+                 ["Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToPath DeleteProject where
-  toPath DeleteProject' {..} = mconcat ["/projects/", toBS _dpProjectId]
+        toPath DeleteProject'{..}
+          = mconcat ["/projects/", toBS _dpProjectId]
 
 instance ToQuery DeleteProject where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | Result structure used in response to request to delete a project.
 --
@@ -104,6 +114,7 @@ data DeleteProjectResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteProjectResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -113,9 +124,9 @@ data DeleteProjectResponse =
 -- * 'dprsOrphanedResources' - Resources which were not deleted, due to a risk of losing potentially important data or files.
 --
 -- * 'dprsResponseStatus' - -- | The response status code.
-deleteProjectResponse ::
-     Int -- ^ 'dprsResponseStatus'
-  -> DeleteProjectResponse
+deleteProjectResponse
+    :: Int -- ^ 'dprsResponseStatus'
+    -> DeleteProjectResponse
 deleteProjectResponse pResponseStatus_ =
   DeleteProjectResponse'
     { _dprsDeletedResources = Nothing
@@ -123,21 +134,17 @@ deleteProjectResponse pResponseStatus_ =
     , _dprsResponseStatus = pResponseStatus_
     }
 
+
 -- | Resources which were deleted.
 dprsDeletedResources :: Lens' DeleteProjectResponse [Resource]
-dprsDeletedResources =
-  lens _dprsDeletedResources (\s a -> s {_dprsDeletedResources = a}) .
-  _Default . _Coerce
+dprsDeletedResources = lens _dprsDeletedResources (\ s a -> s{_dprsDeletedResources = a}) . _Default . _Coerce
 
 -- | Resources which were not deleted, due to a risk of losing potentially important data or files.
 dprsOrphanedResources :: Lens' DeleteProjectResponse [Resource]
-dprsOrphanedResources =
-  lens _dprsOrphanedResources (\s a -> s {_dprsOrphanedResources = a}) .
-  _Default . _Coerce
+dprsOrphanedResources = lens _dprsOrphanedResources (\ s a -> s{_dprsOrphanedResources = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 dprsResponseStatus :: Lens' DeleteProjectResponse Int
-dprsResponseStatus =
-  lens _dprsResponseStatus (\s a -> s {_dprsResponseStatus = a})
+dprsResponseStatus = lens _dprsResponseStatus (\ s a -> s{_dprsResponseStatus = a})
 
-instance NFData DeleteProjectResponse
+instance NFData DeleteProjectResponse where

@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.GameLift.DescribeFleetUtilization
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -68,21 +70,23 @@
 --
 --
 module Network.AWS.GameLift.DescribeFleetUtilization
+    (
     -- * Creating a Request
-  ( describeFleetUtilization
-  , DescribeFleetUtilization
+      describeFleetUtilization
+    , DescribeFleetUtilization
     -- * Request Lenses
-  , dfuNextToken
-  , dfuLimit
-  , dfuFleetIds
+    , dfuNextToken
+    , dfuLimit
+    , dfuFleetIds
+
     -- * Destructuring the Response
-  , describeFleetUtilizationResponse
-  , DescribeFleetUtilizationResponse
+    , describeFleetUtilizationResponse
+    , DescribeFleetUtilizationResponse
     -- * Response Lenses
-  , dfursNextToken
-  , dfursFleetUtilization
-  , dfursResponseStatus
-  ) where
+    , dfursNextToken
+    , dfursFleetUtilization
+    , dfursResponseStatus
+    ) where
 
 import Network.AWS.GameLift.Types
 import Network.AWS.GameLift.Types.Product
@@ -104,6 +108,7 @@ data DescribeFleetUtilization =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeFleetUtilization' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -113,59 +118,63 @@ data DescribeFleetUtilization =
 -- * 'dfuLimit' - Maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.
 --
 -- * 'dfuFleetIds' - Unique identifier for a fleet(s) to retrieve utilization data for. To request utilization data for all fleets, leave this parameter empty.
-describeFleetUtilization :: DescribeFleetUtilization
+describeFleetUtilization
+    :: DescribeFleetUtilization
 describeFleetUtilization =
   DescribeFleetUtilization'
     {_dfuNextToken = Nothing, _dfuLimit = Nothing, _dfuFleetIds = Nothing}
 
+
 -- | Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.
 dfuNextToken :: Lens' DescribeFleetUtilization (Maybe Text)
-dfuNextToken = lens _dfuNextToken (\s a -> s {_dfuNextToken = a})
+dfuNextToken = lens _dfuNextToken (\ s a -> s{_dfuNextToken = a})
 
 -- | Maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.
 dfuLimit :: Lens' DescribeFleetUtilization (Maybe Natural)
-dfuLimit = lens _dfuLimit (\s a -> s {_dfuLimit = a}) . mapping _Nat
+dfuLimit = lens _dfuLimit (\ s a -> s{_dfuLimit = a}) . mapping _Nat
 
 -- | Unique identifier for a fleet(s) to retrieve utilization data for. To request utilization data for all fleets, leave this parameter empty.
 dfuFleetIds :: Lens' DescribeFleetUtilization (Maybe (NonEmpty Text))
-dfuFleetIds = lens _dfuFleetIds (\s a -> s {_dfuFleetIds = a}) . mapping _List1
+dfuFleetIds = lens _dfuFleetIds (\ s a -> s{_dfuFleetIds = a}) . mapping _List1
 
 instance AWSRequest DescribeFleetUtilization where
-  type Rs DescribeFleetUtilization = DescribeFleetUtilizationResponse
-  request = postJSON gameLift
-  response =
-    receiveJSON
-      (\s h x ->
-         DescribeFleetUtilizationResponse' <$> (x .?> "NextToken") <*>
-         (x .?> "FleetUtilization" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs DescribeFleetUtilization =
+             DescribeFleetUtilizationResponse
+        request = postJSON gameLift
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DescribeFleetUtilizationResponse' <$>
+                   (x .?> "NextToken") <*>
+                     (x .?> "FleetUtilization" .!@ mempty)
+                     <*> (pure (fromEnum s)))
 
-instance Hashable DescribeFleetUtilization
+instance Hashable DescribeFleetUtilization where
 
-instance NFData DescribeFleetUtilization
+instance NFData DescribeFleetUtilization where
 
 instance ToHeaders DescribeFleetUtilization where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("GameLift.DescribeFleetUtilization" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("GameLift.DescribeFleetUtilization" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DescribeFleetUtilization where
-  toJSON DescribeFleetUtilization' {..} =
-    object
-      (catMaybes
-         [ ("NextToken" .=) <$> _dfuNextToken
-         , ("Limit" .=) <$> _dfuLimit
-         , ("FleetIds" .=) <$> _dfuFleetIds
-         ])
+        toJSON DescribeFleetUtilization'{..}
+          = object
+              (catMaybes
+                 [("NextToken" .=) <$> _dfuNextToken,
+                  ("Limit" .=) <$> _dfuLimit,
+                  ("FleetIds" .=) <$> _dfuFleetIds])
 
 instance ToPath DescribeFleetUtilization where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DescribeFleetUtilization where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | Represents the returned data in response to a request action.
 --
@@ -180,6 +189,7 @@ data DescribeFleetUtilizationResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeFleetUtilizationResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -189,9 +199,9 @@ data DescribeFleetUtilizationResponse =
 -- * 'dfursFleetUtilization' - Collection of objects containing utilization information for each requested fleet ID.
 --
 -- * 'dfursResponseStatus' - -- | The response status code.
-describeFleetUtilizationResponse ::
-     Int -- ^ 'dfursResponseStatus'
-  -> DescribeFleetUtilizationResponse
+describeFleetUtilizationResponse
+    :: Int -- ^ 'dfursResponseStatus'
+    -> DescribeFleetUtilizationResponse
 describeFleetUtilizationResponse pResponseStatus_ =
   DescribeFleetUtilizationResponse'
     { _dfursNextToken = Nothing
@@ -199,20 +209,18 @@ describeFleetUtilizationResponse pResponseStatus_ =
     , _dfursResponseStatus = pResponseStatus_
     }
 
+
 -- | Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 dfursNextToken :: Lens' DescribeFleetUtilizationResponse (Maybe Text)
-dfursNextToken = lens _dfursNextToken (\s a -> s {_dfursNextToken = a})
+dfursNextToken = lens _dfursNextToken (\ s a -> s{_dfursNextToken = a})
 
 -- | Collection of objects containing utilization information for each requested fleet ID.
-dfursFleetUtilization ::
-     Lens' DescribeFleetUtilizationResponse [FleetUtilization]
-dfursFleetUtilization =
-  lens _dfursFleetUtilization (\s a -> s {_dfursFleetUtilization = a}) .
-  _Default . _Coerce
+dfursFleetUtilization :: Lens' DescribeFleetUtilizationResponse [FleetUtilization]
+dfursFleetUtilization = lens _dfursFleetUtilization (\ s a -> s{_dfursFleetUtilization = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 dfursResponseStatus :: Lens' DescribeFleetUtilizationResponse Int
-dfursResponseStatus =
-  lens _dfursResponseStatus (\s a -> s {_dfursResponseStatus = a})
+dfursResponseStatus = lens _dfursResponseStatus (\ s a -> s{_dfursResponseStatus = a})
 
 instance NFData DescribeFleetUtilizationResponse
+         where

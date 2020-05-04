@@ -2,9 +2,11 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.MechanicalTurk.Types.Product
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -41,6 +43,7 @@ data Assignment =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Assignment' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -68,7 +71,8 @@ data Assignment =
 -- * 'aAssignmentId' - A unique identifier for the assignment.
 --
 -- * 'aSubmitTime' - If the Worker has submitted results, SubmitTime is the date and time the assignment was submitted. This value is omitted from the assignment if the Worker has not yet submitted results.
-assignment :: Assignment
+assignment
+    :: Assignment
 assignment =
   Assignment'
     { _aAcceptTime = Nothing
@@ -85,78 +89,75 @@ assignment =
     , _aSubmitTime = Nothing
     }
 
+
 -- | The date and time the Worker accepted the assignment.
 aAcceptTime :: Lens' Assignment (Maybe UTCTime)
-aAcceptTime = lens _aAcceptTime (\s a -> s {_aAcceptTime = a}) . mapping _Time
+aAcceptTime = lens _aAcceptTime (\ s a -> s{_aAcceptTime = a}) . mapping _Time
 
 -- | The Worker's answers submitted for the HIT contained in a QuestionFormAnswers document, if the Worker provides an answer. If the Worker does not provide any answers, Answer may contain a QuestionFormAnswers document, or Answer may be empty.
 aAnswer :: Lens' Assignment (Maybe Text)
-aAnswer = lens _aAnswer (\s a -> s {_aAnswer = a})
+aAnswer = lens _aAnswer (\ s a -> s{_aAnswer = a})
 
 -- | The status of the assignment.
 aAssignmentStatus :: Lens' Assignment (Maybe AssignmentStatus)
-aAssignmentStatus = lens _aAssignmentStatus (\s a -> s {_aAssignmentStatus = a})
+aAssignmentStatus = lens _aAssignmentStatus (\ s a -> s{_aAssignmentStatus = a})
 
 -- | The feedback string included with the call to the ApproveAssignment operation or the RejectAssignment operation, if the Requester approved or rejected the assignment and specified feedback.
 aRequesterFeedback :: Lens' Assignment (Maybe Text)
-aRequesterFeedback =
-  lens _aRequesterFeedback (\s a -> s {_aRequesterFeedback = a})
+aRequesterFeedback = lens _aRequesterFeedback (\ s a -> s{_aRequesterFeedback = a})
 
 -- | The date and time of the deadline for the assignment. This value is derived from the deadline specification for the HIT and the date and time the Worker accepted the HIT.
 aDeadline :: Lens' Assignment (Maybe UTCTime)
-aDeadline = lens _aDeadline (\s a -> s {_aDeadline = a}) . mapping _Time
+aDeadline = lens _aDeadline (\ s a -> s{_aDeadline = a}) . mapping _Time
 
 -- | If the Worker has submitted results and the Requester has approved the results, ApprovalTime is the date and time the Requester approved the results. This value is omitted from the assignment if the Requester has not yet approved the results.
 aApprovalTime :: Lens' Assignment (Maybe UTCTime)
-aApprovalTime =
-  lens _aApprovalTime (\s a -> s {_aApprovalTime = a}) . mapping _Time
+aApprovalTime = lens _aApprovalTime (\ s a -> s{_aApprovalTime = a}) . mapping _Time
 
 -- | If the Worker has submitted results and the Requester has rejected the results, RejectionTime is the date and time the Requester rejected the results.
 aRejectionTime :: Lens' Assignment (Maybe UTCTime)
-aRejectionTime =
-  lens _aRejectionTime (\s a -> s {_aRejectionTime = a}) . mapping _Time
+aRejectionTime = lens _aRejectionTime (\ s a -> s{_aRejectionTime = a}) . mapping _Time
 
 -- | If results have been submitted, AutoApprovalTime is the date and time the results of the assignment results are considered Approved automatically if they have not already been explicitly approved or rejected by the Requester. This value is derived from the auto-approval delay specified by the Requester in the HIT. This value is omitted from the assignment if the Worker has not yet submitted results.
 aAutoApprovalTime :: Lens' Assignment (Maybe UTCTime)
-aAutoApprovalTime =
-  lens _aAutoApprovalTime (\s a -> s {_aAutoApprovalTime = a}) . mapping _Time
+aAutoApprovalTime = lens _aAutoApprovalTime (\ s a -> s{_aAutoApprovalTime = a}) . mapping _Time
 
 -- | The ID of the HIT.
 aHITId :: Lens' Assignment (Maybe Text)
-aHITId = lens _aHITId (\s a -> s {_aHITId = a})
+aHITId = lens _aHITId (\ s a -> s{_aHITId = a})
 
 -- | The ID of the Worker who accepted the HIT.
 aWorkerId :: Lens' Assignment (Maybe Text)
-aWorkerId = lens _aWorkerId (\s a -> s {_aWorkerId = a})
+aWorkerId = lens _aWorkerId (\ s a -> s{_aWorkerId = a})
 
 -- | A unique identifier for the assignment.
 aAssignmentId :: Lens' Assignment (Maybe Text)
-aAssignmentId = lens _aAssignmentId (\s a -> s {_aAssignmentId = a})
+aAssignmentId = lens _aAssignmentId (\ s a -> s{_aAssignmentId = a})
 
 -- | If the Worker has submitted results, SubmitTime is the date and time the assignment was submitted. This value is omitted from the assignment if the Worker has not yet submitted results.
 aSubmitTime :: Lens' Assignment (Maybe UTCTime)
-aSubmitTime = lens _aSubmitTime (\s a -> s {_aSubmitTime = a}) . mapping _Time
+aSubmitTime = lens _aSubmitTime (\ s a -> s{_aSubmitTime = a}) . mapping _Time
 
 instance FromJSON Assignment where
-  parseJSON =
-    withObject
-      "Assignment"
-      (\x ->
-         Assignment' <$> (x .:? "AcceptTime") <*> (x .:? "Answer") <*>
-         (x .:? "AssignmentStatus") <*>
-         (x .:? "RequesterFeedback") <*>
-         (x .:? "Deadline") <*>
-         (x .:? "ApprovalTime") <*>
-         (x .:? "RejectionTime") <*>
-         (x .:? "AutoApprovalTime") <*>
-         (x .:? "HITId") <*>
-         (x .:? "WorkerId") <*>
-         (x .:? "AssignmentId") <*>
-         (x .:? "SubmitTime"))
+        parseJSON
+          = withObject "Assignment"
+              (\ x ->
+                 Assignment' <$>
+                   (x .:? "AcceptTime") <*> (x .:? "Answer") <*>
+                     (x .:? "AssignmentStatus")
+                     <*> (x .:? "RequesterFeedback")
+                     <*> (x .:? "Deadline")
+                     <*> (x .:? "ApprovalTime")
+                     <*> (x .:? "RejectionTime")
+                     <*> (x .:? "AutoApprovalTime")
+                     <*> (x .:? "HITId")
+                     <*> (x .:? "WorkerId")
+                     <*> (x .:? "AssignmentId")
+                     <*> (x .:? "SubmitTime"))
 
-instance Hashable Assignment
+instance Hashable Assignment where
 
-instance NFData Assignment
+instance NFData Assignment where
 
 -- | An object representing a Bonus payment paid to a Worker.
 --
@@ -173,6 +174,7 @@ data BonusPayment =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'BonusPayment' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -186,7 +188,8 @@ data BonusPayment =
 -- * 'bpAssignmentId' - The ID of the assignment associated with this bonus payment.
 --
 -- * 'bpBonusAmount' - Undocumented member.
-bonusPayment :: BonusPayment
+bonusPayment
+    :: BonusPayment
 bonusPayment =
   BonusPayment'
     { _bpReason = Nothing
@@ -196,39 +199,40 @@ bonusPayment =
     , _bpBonusAmount = Nothing
     }
 
+
 -- | The Reason text given when the bonus was granted, if any.
 bpReason :: Lens' BonusPayment (Maybe Text)
-bpReason = lens _bpReason (\s a -> s {_bpReason = a})
+bpReason = lens _bpReason (\ s a -> s{_bpReason = a})
 
 -- | The date and time of when the bonus was granted.
 bpGrantTime :: Lens' BonusPayment (Maybe UTCTime)
-bpGrantTime = lens _bpGrantTime (\s a -> s {_bpGrantTime = a}) . mapping _Time
+bpGrantTime = lens _bpGrantTime (\ s a -> s{_bpGrantTime = a}) . mapping _Time
 
 -- | The ID of the Worker to whom the bonus was paid.
 bpWorkerId :: Lens' BonusPayment (Maybe Text)
-bpWorkerId = lens _bpWorkerId (\s a -> s {_bpWorkerId = a})
+bpWorkerId = lens _bpWorkerId (\ s a -> s{_bpWorkerId = a})
 
 -- | The ID of the assignment associated with this bonus payment.
 bpAssignmentId :: Lens' BonusPayment (Maybe Text)
-bpAssignmentId = lens _bpAssignmentId (\s a -> s {_bpAssignmentId = a})
+bpAssignmentId = lens _bpAssignmentId (\ s a -> s{_bpAssignmentId = a})
 
 -- | Undocumented member.
 bpBonusAmount :: Lens' BonusPayment (Maybe Text)
-bpBonusAmount = lens _bpBonusAmount (\s a -> s {_bpBonusAmount = a})
+bpBonusAmount = lens _bpBonusAmount (\ s a -> s{_bpBonusAmount = a})
 
 instance FromJSON BonusPayment where
-  parseJSON =
-    withObject
-      "BonusPayment"
-      (\x ->
-         BonusPayment' <$> (x .:? "Reason") <*> (x .:? "GrantTime") <*>
-         (x .:? "WorkerId") <*>
-         (x .:? "AssignmentId") <*>
-         (x .:? "BonusAmount"))
+        parseJSON
+          = withObject "BonusPayment"
+              (\ x ->
+                 BonusPayment' <$>
+                   (x .:? "Reason") <*> (x .:? "GrantTime") <*>
+                     (x .:? "WorkerId")
+                     <*> (x .:? "AssignmentId")
+                     <*> (x .:? "BonusAmount"))
 
-instance Hashable BonusPayment
+instance Hashable BonusPayment where
 
-instance NFData BonusPayment
+instance NFData BonusPayment where
 
 -- | The HIT data structure represents a single HIT, including all the information necessary for a Worker to accept and complete the HIT.
 --
@@ -260,6 +264,7 @@ data HIT =
     , _hitAssignmentDurationInSeconds  :: !(Maybe Integer)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'HIT' with the minimum fields required to make a request.
 --
@@ -306,7 +311,8 @@ data HIT =
 -- * 'hitQuestion' - The data the Worker completing the HIT uses produce the results. This is either either a QuestionForm, HTMLQuestion or an ExternalQuestion data structure.
 --
 -- * 'hitAssignmentDurationInSeconds' - The length of time, in seconds, that a Worker has to complete the HIT after accepting it.
-hIT :: HIT
+hIT
+    :: HIT
 hIT =
   HIT'
     { _hitCreationTime = Nothing
@@ -332,142 +338,120 @@ hIT =
     , _hitAssignmentDurationInSeconds = Nothing
     }
 
+
 -- | The date and time the HIT was created.
 hitCreationTime :: Lens' HIT (Maybe UTCTime)
-hitCreationTime =
-  lens _hitCreationTime (\s a -> s {_hitCreationTime = a}) . mapping _Time
+hitCreationTime = lens _hitCreationTime (\ s a -> s{_hitCreationTime = a}) . mapping _Time
 
 -- | The ID of the HIT Group of this HIT.
 hitHITGroupId :: Lens' HIT (Maybe Text)
-hitHITGroupId = lens _hitHITGroupId (\s a -> s {_hitHITGroupId = a})
+hitHITGroupId = lens _hitHITGroupId (\ s a -> s{_hitHITGroupId = a})
 
 -- | The number of assignments for this HIT that are being previewed or have been accepted by Workers, but have not yet been submitted, returned, or abandoned.
 hitNumberOfAssignmentsPending :: Lens' HIT (Maybe Int)
-hitNumberOfAssignmentsPending =
-  lens
-    _hitNumberOfAssignmentsPending
-    (\s a -> s {_hitNumberOfAssignmentsPending = a})
+hitNumberOfAssignmentsPending = lens _hitNumberOfAssignmentsPending (\ s a -> s{_hitNumberOfAssignmentsPending = a})
 
 -- | The ID of the HIT type of this HIT
 hitHITTypeId :: Lens' HIT (Maybe Text)
-hitHITTypeId = lens _hitHITTypeId (\s a -> s {_hitHITTypeId = a})
+hitHITTypeId = lens _hitHITTypeId (\ s a -> s{_hitHITTypeId = a})
 
 -- | The date and time the HIT expires.
 hitExpiration :: Lens' HIT (Maybe UTCTime)
-hitExpiration =
-  lens _hitExpiration (\s a -> s {_hitExpiration = a}) . mapping _Time
+hitExpiration = lens _hitExpiration (\ s a -> s{_hitExpiration = a}) . mapping _Time
 
 -- | The amount of time, in seconds, after the Worker submits an assignment for the HIT that the results are automatically approved by Amazon Mechanical Turk. This is the amount of time the Requester has to reject an assignment submitted by a Worker before the assignment is auto-approved and the Worker is paid.
 hitAutoApprovalDelayInSeconds :: Lens' HIT (Maybe Integer)
-hitAutoApprovalDelayInSeconds =
-  lens
-    _hitAutoApprovalDelayInSeconds
-    (\s a -> s {_hitAutoApprovalDelayInSeconds = a})
+hitAutoApprovalDelayInSeconds = lens _hitAutoApprovalDelayInSeconds (\ s a -> s{_hitAutoApprovalDelayInSeconds = a})
 
 -- | An arbitrary data field the Requester who created the HIT can use. This field is visible only to the creator of the HIT.
 hitRequesterAnnotation :: Lens' HIT (Maybe Text)
-hitRequesterAnnotation =
-  lens _hitRequesterAnnotation (\s a -> s {_hitRequesterAnnotation = a})
+hitRequesterAnnotation = lens _hitRequesterAnnotation (\ s a -> s{_hitRequesterAnnotation = a})
 
 -- | The status of the HIT and its assignments. Valid Values are Assignable | Unassignable | Reviewable | Reviewing | Disposed.
 hitHITStatus :: Lens' HIT (Maybe HITStatus)
-hitHITStatus = lens _hitHITStatus (\s a -> s {_hitHITStatus = a})
+hitHITStatus = lens _hitHITStatus (\ s a -> s{_hitHITStatus = a})
 
 -- | The number of times the HIT can be accepted and completed before the HIT becomes unavailable.
 hitMaxAssignments :: Lens' HIT (Maybe Int)
-hitMaxAssignments = lens _hitMaxAssignments (\s a -> s {_hitMaxAssignments = a})
+hitMaxAssignments = lens _hitMaxAssignments (\ s a -> s{_hitMaxAssignments = a})
 
 -- | The number of assignments for this HIT that have been approved or rejected.
 hitNumberOfAssignmentsCompleted :: Lens' HIT (Maybe Int)
-hitNumberOfAssignmentsCompleted =
-  lens
-    _hitNumberOfAssignmentsCompleted
-    (\s a -> s {_hitNumberOfAssignmentsCompleted = a})
+hitNumberOfAssignmentsCompleted = lens _hitNumberOfAssignmentsCompleted (\ s a -> s{_hitNumberOfAssignmentsCompleted = a})
 
 -- | Undocumented member.
 hitReward :: Lens' HIT (Maybe Text)
-hitReward = lens _hitReward (\s a -> s {_hitReward = a})
+hitReward = lens _hitReward (\ s a -> s{_hitReward = a})
 
 -- | One or more words or phrases that describe the HIT, separated by commas. Search terms similar to the keywords of a HIT are more likely to have the HIT in the search results.
 hitKeywords :: Lens' HIT (Maybe Text)
-hitKeywords = lens _hitKeywords (\s a -> s {_hitKeywords = a})
+hitKeywords = lens _hitKeywords (\ s a -> s{_hitKeywords = a})
 
 -- | The ID of the HIT Layout of this HIT.
 hitHITLayoutId :: Lens' HIT (Maybe Text)
-hitHITLayoutId = lens _hitHITLayoutId (\s a -> s {_hitHITLayoutId = a})
+hitHITLayoutId = lens _hitHITLayoutId (\ s a -> s{_hitHITLayoutId = a})
 
 -- | Conditions that a Worker's Qualifications must meet in order to accept the HIT. A HIT can have between zero and ten Qualification requirements. All requirements must be met in order for a Worker to accept the HIT. Additionally, other actions can be restricted using the @ActionsGuarded@ field on each @QualificationRequirement@ structure.
 hitQualificationRequirements :: Lens' HIT [QualificationRequirement]
-hitQualificationRequirements =
-  lens
-    _hitQualificationRequirements
-    (\s a -> s {_hitQualificationRequirements = a}) .
-  _Default . _Coerce
+hitQualificationRequirements = lens _hitQualificationRequirements (\ s a -> s{_hitQualificationRequirements = a}) . _Default . _Coerce
 
 -- | The title of the HIT.
 hitTitle :: Lens' HIT (Maybe Text)
-hitTitle = lens _hitTitle (\s a -> s {_hitTitle = a})
+hitTitle = lens _hitTitle (\ s a -> s{_hitTitle = a})
 
 -- | A unique identifier for the HIT.
 hitHITId :: Lens' HIT (Maybe Text)
-hitHITId = lens _hitHITId (\s a -> s {_hitHITId = a})
+hitHITId = lens _hitHITId (\ s a -> s{_hitHITId = a})
 
 -- | Indicates the review status of the HIT. Valid Values are NotReviewed | MarkedForReview | ReviewedAppropriate | ReviewedInappropriate.
 hitHITReviewStatus :: Lens' HIT (Maybe HITReviewStatus)
-hitHITReviewStatus =
-  lens _hitHITReviewStatus (\s a -> s {_hitHITReviewStatus = a})
+hitHITReviewStatus = lens _hitHITReviewStatus (\ s a -> s{_hitHITReviewStatus = a})
 
 -- | The number of assignments for this HIT that are available for Workers to accept.
 hitNumberOfAssignmentsAvailable :: Lens' HIT (Maybe Int)
-hitNumberOfAssignmentsAvailable =
-  lens
-    _hitNumberOfAssignmentsAvailable
-    (\s a -> s {_hitNumberOfAssignmentsAvailable = a})
+hitNumberOfAssignmentsAvailable = lens _hitNumberOfAssignmentsAvailable (\ s a -> s{_hitNumberOfAssignmentsAvailable = a})
 
 -- | A general description of the HIT.
 hitDescription :: Lens' HIT (Maybe Text)
-hitDescription = lens _hitDescription (\s a -> s {_hitDescription = a})
+hitDescription = lens _hitDescription (\ s a -> s{_hitDescription = a})
 
 -- | The data the Worker completing the HIT uses produce the results. This is either either a QuestionForm, HTMLQuestion or an ExternalQuestion data structure.
 hitQuestion :: Lens' HIT (Maybe Text)
-hitQuestion = lens _hitQuestion (\s a -> s {_hitQuestion = a})
+hitQuestion = lens _hitQuestion (\ s a -> s{_hitQuestion = a})
 
 -- | The length of time, in seconds, that a Worker has to complete the HIT after accepting it.
 hitAssignmentDurationInSeconds :: Lens' HIT (Maybe Integer)
-hitAssignmentDurationInSeconds =
-  lens
-    _hitAssignmentDurationInSeconds
-    (\s a -> s {_hitAssignmentDurationInSeconds = a})
+hitAssignmentDurationInSeconds = lens _hitAssignmentDurationInSeconds (\ s a -> s{_hitAssignmentDurationInSeconds = a})
 
 instance FromJSON HIT where
-  parseJSON =
-    withObject
-      "HIT"
-      (\x ->
-         HIT' <$> (x .:? "CreationTime") <*> (x .:? "HITGroupId") <*>
-         (x .:? "NumberOfAssignmentsPending") <*>
-         (x .:? "HITTypeId") <*>
-         (x .:? "Expiration") <*>
-         (x .:? "AutoApprovalDelayInSeconds") <*>
-         (x .:? "RequesterAnnotation") <*>
-         (x .:? "HITStatus") <*>
-         (x .:? "MaxAssignments") <*>
-         (x .:? "NumberOfAssignmentsCompleted") <*>
-         (x .:? "Reward") <*>
-         (x .:? "Keywords") <*>
-         (x .:? "HITLayoutId") <*>
-         (x .:? "QualificationRequirements" .!= mempty) <*>
-         (x .:? "Title") <*>
-         (x .:? "HITId") <*>
-         (x .:? "HITReviewStatus") <*>
-         (x .:? "NumberOfAssignmentsAvailable") <*>
-         (x .:? "Description") <*>
-         (x .:? "Question") <*>
-         (x .:? "AssignmentDurationInSeconds"))
+        parseJSON
+          = withObject "HIT"
+              (\ x ->
+                 HIT' <$>
+                   (x .:? "CreationTime") <*> (x .:? "HITGroupId") <*>
+                     (x .:? "NumberOfAssignmentsPending")
+                     <*> (x .:? "HITTypeId")
+                     <*> (x .:? "Expiration")
+                     <*> (x .:? "AutoApprovalDelayInSeconds")
+                     <*> (x .:? "RequesterAnnotation")
+                     <*> (x .:? "HITStatus")
+                     <*> (x .:? "MaxAssignments")
+                     <*> (x .:? "NumberOfAssignmentsCompleted")
+                     <*> (x .:? "Reward")
+                     <*> (x .:? "Keywords")
+                     <*> (x .:? "HITLayoutId")
+                     <*> (x .:? "QualificationRequirements" .!= mempty)
+                     <*> (x .:? "Title")
+                     <*> (x .:? "HITId")
+                     <*> (x .:? "HITReviewStatus")
+                     <*> (x .:? "NumberOfAssignmentsAvailable")
+                     <*> (x .:? "Description")
+                     <*> (x .:? "Question")
+                     <*> (x .:? "AssignmentDurationInSeconds"))
 
-instance Hashable HIT
+instance Hashable HIT where
 
-instance NFData HIT
+instance NFData HIT where
 
 -- | The HITLayoutParameter data structure defines parameter values used with a HITLayout. A HITLayout is a reusable Amazon Mechanical Turk project template used to provide Human Intelligence Task (HIT) question data for CreateHIT.
 --
@@ -481,6 +465,7 @@ data HITLayoutParameter =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'HITLayoutParameter' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -488,29 +473,32 @@ data HITLayoutParameter =
 -- * 'hitlpName' - The name of the parameter in the HITLayout.
 --
 -- * 'hitlpValue' - The value substituted for the parameter referenced in the HITLayout.
-hITLayoutParameter ::
-     Text -- ^ 'hitlpName'
-  -> Text -- ^ 'hitlpValue'
-  -> HITLayoutParameter
+hITLayoutParameter
+    :: Text -- ^ 'hitlpName'
+    -> Text -- ^ 'hitlpValue'
+    -> HITLayoutParameter
 hITLayoutParameter pName_ pValue_ =
   HITLayoutParameter' {_hitlpName = pName_, _hitlpValue = pValue_}
 
+
 -- | The name of the parameter in the HITLayout.
 hitlpName :: Lens' HITLayoutParameter Text
-hitlpName = lens _hitlpName (\s a -> s {_hitlpName = a})
+hitlpName = lens _hitlpName (\ s a -> s{_hitlpName = a})
 
 -- | The value substituted for the parameter referenced in the HITLayout.
 hitlpValue :: Lens' HITLayoutParameter Text
-hitlpValue = lens _hitlpValue (\s a -> s {_hitlpValue = a})
+hitlpValue = lens _hitlpValue (\ s a -> s{_hitlpValue = a})
 
-instance Hashable HITLayoutParameter
+instance Hashable HITLayoutParameter where
 
-instance NFData HITLayoutParameter
+instance NFData HITLayoutParameter where
 
 instance ToJSON HITLayoutParameter where
-  toJSON HITLayoutParameter' {..} =
-    object
-      (catMaybes [Just ("Name" .= _hitlpName), Just ("Value" .= _hitlpValue)])
+        toJSON HITLayoutParameter'{..}
+          = object
+              (catMaybes
+                 [Just ("Name" .= _hitlpName),
+                  Just ("Value" .= _hitlpValue)])
 
 -- | The Locale data structure represents a geographical region or location.
 --
@@ -524,6 +512,7 @@ data Locale =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Locale' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -531,34 +520,37 @@ data Locale =
 -- * 'lSubdivision' - The state or subdivision of the locale. A valid ISO 3166-2 subdivision code. For example, the code WA refers to the state of Washington.
 --
 -- * 'lCountry' - The country of the locale. Must be a valid ISO 3166 country code. For example, the code US refers to the United States of America.
-locale ::
-     Text -- ^ 'lCountry'
-  -> Locale
+locale
+    :: Text -- ^ 'lCountry'
+    -> Locale
 locale pCountry_ = Locale' {_lSubdivision = Nothing, _lCountry = pCountry_}
+
 
 -- | The state or subdivision of the locale. A valid ISO 3166-2 subdivision code. For example, the code WA refers to the state of Washington.
 lSubdivision :: Lens' Locale (Maybe Text)
-lSubdivision = lens _lSubdivision (\s a -> s {_lSubdivision = a})
+lSubdivision = lens _lSubdivision (\ s a -> s{_lSubdivision = a})
 
 -- | The country of the locale. Must be a valid ISO 3166 country code. For example, the code US refers to the United States of America.
 lCountry :: Lens' Locale Text
-lCountry = lens _lCountry (\s a -> s {_lCountry = a})
+lCountry = lens _lCountry (\ s a -> s{_lCountry = a})
 
 instance FromJSON Locale where
-  parseJSON =
-    withObject
-      "Locale"
-      (\x -> Locale' <$> (x .:? "Subdivision") <*> (x .: "Country"))
+        parseJSON
+          = withObject "Locale"
+              (\ x ->
+                 Locale' <$>
+                   (x .:? "Subdivision") <*> (x .: "Country"))
 
-instance Hashable Locale
+instance Hashable Locale where
 
-instance NFData Locale
+instance NFData Locale where
 
 instance ToJSON Locale where
-  toJSON Locale' {..} =
-    object
-      (catMaybes
-         [("Subdivision" .=) <$> _lSubdivision, Just ("Country" .= _lCountry)])
+        toJSON Locale'{..}
+          = object
+              (catMaybes
+                 [("Subdivision" .=) <$> _lSubdivision,
+                  Just ("Country" .= _lCountry)])
 
 -- | The NotificationSpecification data structure describes a HIT event notification for a HIT type.
 --
@@ -574,6 +566,7 @@ data NotificationSpecification =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'NotificationSpecification' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -585,11 +578,11 @@ data NotificationSpecification =
 -- * 'nsVersion' - The version of the Notification API to use. Valid value is 2006-05-05.
 --
 -- * 'nsEventTypes' - The list of events that should cause notifications to be sent. Valid Values: AssignmentAccepted | AssignmentAbandoned | AssignmentReturned | AssignmentSubmitted | AssignmentRejected | AssignmentApproved | HITCreated | HITExtended | HITDisposed | HITReviewable | HITExpired | Ping. The Ping event is only valid for the SendTestEventNotification operation.
-notificationSpecification ::
-     Text -- ^ 'nsDestination'
-  -> NotificationTransport -- ^ 'nsTransport'
-  -> Text -- ^ 'nsVersion'
-  -> NotificationSpecification
+notificationSpecification
+    :: Text -- ^ 'nsDestination'
+    -> NotificationTransport -- ^ 'nsTransport'
+    -> Text -- ^ 'nsVersion'
+    -> NotificationSpecification
 notificationSpecification pDestination_ pTransport_ pVersion_ =
   NotificationSpecification'
     { _nsDestination = pDestination_
@@ -598,35 +591,35 @@ notificationSpecification pDestination_ pTransport_ pVersion_ =
     , _nsEventTypes = mempty
     }
 
+
 -- | The target for notification messages. The Destination’s format is determined by the specified Transport:      * When Transport is Email, the Destination is your email address.     * When Transport is SQS, the Destination is your queue URL.     * When Transport is SNS, the Destination is the ARN of your topic.
 nsDestination :: Lens' NotificationSpecification Text
-nsDestination = lens _nsDestination (\s a -> s {_nsDestination = a})
+nsDestination = lens _nsDestination (\ s a -> s{_nsDestination = a})
 
 -- | The method Amazon Mechanical Turk uses to send the notification. Valid Values: Email | SQS | SNS.
 nsTransport :: Lens' NotificationSpecification NotificationTransport
-nsTransport = lens _nsTransport (\s a -> s {_nsTransport = a})
+nsTransport = lens _nsTransport (\ s a -> s{_nsTransport = a})
 
 -- | The version of the Notification API to use. Valid value is 2006-05-05.
 nsVersion :: Lens' NotificationSpecification Text
-nsVersion = lens _nsVersion (\s a -> s {_nsVersion = a})
+nsVersion = lens _nsVersion (\ s a -> s{_nsVersion = a})
 
 -- | The list of events that should cause notifications to be sent. Valid Values: AssignmentAccepted | AssignmentAbandoned | AssignmentReturned | AssignmentSubmitted | AssignmentRejected | AssignmentApproved | HITCreated | HITExtended | HITDisposed | HITReviewable | HITExpired | Ping. The Ping event is only valid for the SendTestEventNotification operation.
 nsEventTypes :: Lens' NotificationSpecification [EventType]
-nsEventTypes = lens _nsEventTypes (\s a -> s {_nsEventTypes = a}) . _Coerce
+nsEventTypes = lens _nsEventTypes (\ s a -> s{_nsEventTypes = a}) . _Coerce
 
-instance Hashable NotificationSpecification
+instance Hashable NotificationSpecification where
 
-instance NFData NotificationSpecification
+instance NFData NotificationSpecification where
 
 instance ToJSON NotificationSpecification where
-  toJSON NotificationSpecification' {..} =
-    object
-      (catMaybes
-         [ Just ("Destination" .= _nsDestination)
-         , Just ("Transport" .= _nsTransport)
-         , Just ("Version" .= _nsVersion)
-         , Just ("EventTypes" .= _nsEventTypes)
-         ])
+        toJSON NotificationSpecification'{..}
+          = object
+              (catMaybes
+                 [Just ("Destination" .= _nsDestination),
+                  Just ("Transport" .= _nsTransport),
+                  Just ("Version" .= _nsVersion),
+                  Just ("EventTypes" .= _nsEventTypes)])
 
 -- | When MTurk encounters an issue with notifying the Workers you specified, it returns back this object with failure details.
 --
@@ -641,6 +634,7 @@ data NotifyWorkersFailureStatus =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'NotifyWorkersFailureStatus' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -650,7 +644,8 @@ data NotifyWorkersFailureStatus =
 -- * 'nwfsNotifyWorkersFailureCode' - Encoded value for the failure type.
 --
 -- * 'nwfsWorkerId' - The ID of the Worker.
-notifyWorkersFailureStatus :: NotifyWorkersFailureStatus
+notifyWorkersFailureStatus
+    :: NotifyWorkersFailureStatus
 notifyWorkersFailureStatus =
   NotifyWorkersFailureStatus'
     { _nwfsNotifyWorkersFailureMessage = Nothing
@@ -658,37 +653,31 @@ notifyWorkersFailureStatus =
     , _nwfsWorkerId = Nothing
     }
 
+
 -- | A message detailing the reason the Worker could not be notified.
 nwfsNotifyWorkersFailureMessage :: Lens' NotifyWorkersFailureStatus (Maybe Text)
-nwfsNotifyWorkersFailureMessage =
-  lens
-    _nwfsNotifyWorkersFailureMessage
-    (\s a -> s {_nwfsNotifyWorkersFailureMessage = a})
+nwfsNotifyWorkersFailureMessage = lens _nwfsNotifyWorkersFailureMessage (\ s a -> s{_nwfsNotifyWorkersFailureMessage = a})
 
 -- | Encoded value for the failure type.
-nwfsNotifyWorkersFailureCode ::
-     Lens' NotifyWorkersFailureStatus (Maybe NotifyWorkersFailureCode)
-nwfsNotifyWorkersFailureCode =
-  lens
-    _nwfsNotifyWorkersFailureCode
-    (\s a -> s {_nwfsNotifyWorkersFailureCode = a})
+nwfsNotifyWorkersFailureCode :: Lens' NotifyWorkersFailureStatus (Maybe NotifyWorkersFailureCode)
+nwfsNotifyWorkersFailureCode = lens _nwfsNotifyWorkersFailureCode (\ s a -> s{_nwfsNotifyWorkersFailureCode = a})
 
 -- | The ID of the Worker.
 nwfsWorkerId :: Lens' NotifyWorkersFailureStatus (Maybe Text)
-nwfsWorkerId = lens _nwfsWorkerId (\s a -> s {_nwfsWorkerId = a})
+nwfsWorkerId = lens _nwfsWorkerId (\ s a -> s{_nwfsWorkerId = a})
 
 instance FromJSON NotifyWorkersFailureStatus where
-  parseJSON =
-    withObject
-      "NotifyWorkersFailureStatus"
-      (\x ->
-         NotifyWorkersFailureStatus' <$> (x .:? "NotifyWorkersFailureMessage") <*>
-         (x .:? "NotifyWorkersFailureCode") <*>
-         (x .:? "WorkerId"))
+        parseJSON
+          = withObject "NotifyWorkersFailureStatus"
+              (\ x ->
+                 NotifyWorkersFailureStatus' <$>
+                   (x .:? "NotifyWorkersFailureMessage") <*>
+                     (x .:? "NotifyWorkersFailureCode")
+                     <*> (x .:? "WorkerId"))
 
-instance Hashable NotifyWorkersFailureStatus
+instance Hashable NotifyWorkersFailureStatus where
 
-instance NFData NotifyWorkersFailureStatus
+instance NFData NotifyWorkersFailureStatus where
 
 -- | This data structure is the data type for the AnswerKey parameter of the ScoreMyKnownAnswers/2011-09-01 Review Policy.
 --
@@ -702,6 +691,7 @@ data ParameterMapEntry =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ParameterMapEntry' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -709,31 +699,36 @@ data ParameterMapEntry =
 -- * 'pmeValues' - The list of answers to the question specified in the MapEntry Key element. The Worker must match all values in order for the answer to be scored correctly.
 --
 -- * 'pmeKey' - The QuestionID from the HIT that is used to identify which question requires Mechanical Turk to score as part of the ScoreMyKnownAnswers/2011-09-01 Review Policy.
-parameterMapEntry :: ParameterMapEntry
+parameterMapEntry
+    :: ParameterMapEntry
 parameterMapEntry = ParameterMapEntry' {_pmeValues = Nothing, _pmeKey = Nothing}
+
 
 -- | The list of answers to the question specified in the MapEntry Key element. The Worker must match all values in order for the answer to be scored correctly.
 pmeValues :: Lens' ParameterMapEntry [Text]
-pmeValues = lens _pmeValues (\s a -> s {_pmeValues = a}) . _Default . _Coerce
+pmeValues = lens _pmeValues (\ s a -> s{_pmeValues = a}) . _Default . _Coerce
 
 -- | The QuestionID from the HIT that is used to identify which question requires Mechanical Turk to score as part of the ScoreMyKnownAnswers/2011-09-01 Review Policy.
 pmeKey :: Lens' ParameterMapEntry (Maybe Text)
-pmeKey = lens _pmeKey (\s a -> s {_pmeKey = a})
+pmeKey = lens _pmeKey (\ s a -> s{_pmeKey = a})
 
 instance FromJSON ParameterMapEntry where
-  parseJSON =
-    withObject
-      "ParameterMapEntry"
-      (\x ->
-         ParameterMapEntry' <$> (x .:? "Values" .!= mempty) <*> (x .:? "Key"))
+        parseJSON
+          = withObject "ParameterMapEntry"
+              (\ x ->
+                 ParameterMapEntry' <$>
+                   (x .:? "Values" .!= mempty) <*> (x .:? "Key"))
 
-instance Hashable ParameterMapEntry
+instance Hashable ParameterMapEntry where
 
-instance NFData ParameterMapEntry
+instance NFData ParameterMapEntry where
 
 instance ToJSON ParameterMapEntry where
-  toJSON ParameterMapEntry' {..} =
-    object (catMaybes [("Values" .=) <$> _pmeValues, ("Key" .=) <$> _pmeKey])
+        toJSON ParameterMapEntry'{..}
+          = object
+              (catMaybes
+                 [("Values" .=) <$> _pmeValues,
+                  ("Key" .=) <$> _pmeKey])
 
 -- | Name of the parameter from the Review policy.
 --
@@ -748,6 +743,7 @@ data PolicyParameter =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'PolicyParameter' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -757,45 +753,45 @@ data PolicyParameter =
 -- * 'ppMapEntries' - List of ParameterMapEntry objects.
 --
 -- * 'ppKey' - Name of the parameter from the list of Review Polices.
-policyParameter :: PolicyParameter
+policyParameter
+    :: PolicyParameter
 policyParameter =
   PolicyParameter'
     {_ppValues = Nothing, _ppMapEntries = Nothing, _ppKey = Nothing}
 
+
 -- | The list of values of the Parameter
 ppValues :: Lens' PolicyParameter [Text]
-ppValues = lens _ppValues (\s a -> s {_ppValues = a}) . _Default . _Coerce
+ppValues = lens _ppValues (\ s a -> s{_ppValues = a}) . _Default . _Coerce
 
 -- | List of ParameterMapEntry objects.
 ppMapEntries :: Lens' PolicyParameter [ParameterMapEntry]
-ppMapEntries =
-  lens _ppMapEntries (\s a -> s {_ppMapEntries = a}) . _Default . _Coerce
+ppMapEntries = lens _ppMapEntries (\ s a -> s{_ppMapEntries = a}) . _Default . _Coerce
 
 -- | Name of the parameter from the list of Review Polices.
 ppKey :: Lens' PolicyParameter (Maybe Text)
-ppKey = lens _ppKey (\s a -> s {_ppKey = a})
+ppKey = lens _ppKey (\ s a -> s{_ppKey = a})
 
 instance FromJSON PolicyParameter where
-  parseJSON =
-    withObject
-      "PolicyParameter"
-      (\x ->
-         PolicyParameter' <$> (x .:? "Values" .!= mempty) <*>
-         (x .:? "MapEntries" .!= mempty) <*>
-         (x .:? "Key"))
+        parseJSON
+          = withObject "PolicyParameter"
+              (\ x ->
+                 PolicyParameter' <$>
+                   (x .:? "Values" .!= mempty) <*>
+                     (x .:? "MapEntries" .!= mempty)
+                     <*> (x .:? "Key"))
 
-instance Hashable PolicyParameter
+instance Hashable PolicyParameter where
 
-instance NFData PolicyParameter
+instance NFData PolicyParameter where
 
 instance ToJSON PolicyParameter where
-  toJSON PolicyParameter' {..} =
-    object
-      (catMaybes
-         [ ("Values" .=) <$> _ppValues
-         , ("MapEntries" .=) <$> _ppMapEntries
-         , ("Key" .=) <$> _ppKey
-         ])
+        toJSON PolicyParameter'{..}
+          = object
+              (catMaybes
+                 [("Values" .=) <$> _ppValues,
+                  ("MapEntries" .=) <$> _ppMapEntries,
+                  ("Key" .=) <$> _ppKey])
 
 -- | The Qualification data structure represents a Qualification assigned to a user, including the Qualification type and the value (score).
 --
@@ -813,6 +809,7 @@ data Qualification =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'Qualification' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -828,7 +825,8 @@ data Qualification =
 -- * 'qGrantTime' - The date and time the Qualification was granted to the Worker. If the Worker's Qualification was revoked, and then re-granted based on a new Qualification request, GrantTime is the date and time of the last call to the AcceptQualificationRequest operation.
 --
 -- * 'qWorkerId' - The ID of the Worker who possesses the Qualification.
-qualification :: Qualification
+qualification
+    :: Qualification
 qualification =
   Qualification'
     { _qStatus = Nothing
@@ -839,45 +837,45 @@ qualification =
     , _qWorkerId = Nothing
     }
 
+
 -- | The status of the Qualification. Valid values are Granted | Revoked.
 qStatus :: Lens' Qualification (Maybe QualificationStatus)
-qStatus = lens _qStatus (\s a -> s {_qStatus = a})
+qStatus = lens _qStatus (\ s a -> s{_qStatus = a})
 
 -- | The value (score) of the Qualification, if the Qualification has an integer value.
 qIntegerValue :: Lens' Qualification (Maybe Int)
-qIntegerValue = lens _qIntegerValue (\s a -> s {_qIntegerValue = a})
+qIntegerValue = lens _qIntegerValue (\ s a -> s{_qIntegerValue = a})
 
 -- | Undocumented member.
 qLocaleValue :: Lens' Qualification (Maybe Locale)
-qLocaleValue = lens _qLocaleValue (\s a -> s {_qLocaleValue = a})
+qLocaleValue = lens _qLocaleValue (\ s a -> s{_qLocaleValue = a})
 
 -- | The ID of the Qualification type for the Qualification.
 qQualificationTypeId :: Lens' Qualification (Maybe Text)
-qQualificationTypeId =
-  lens _qQualificationTypeId (\s a -> s {_qQualificationTypeId = a})
+qQualificationTypeId = lens _qQualificationTypeId (\ s a -> s{_qQualificationTypeId = a})
 
 -- | The date and time the Qualification was granted to the Worker. If the Worker's Qualification was revoked, and then re-granted based on a new Qualification request, GrantTime is the date and time of the last call to the AcceptQualificationRequest operation.
 qGrantTime :: Lens' Qualification (Maybe UTCTime)
-qGrantTime = lens _qGrantTime (\s a -> s {_qGrantTime = a}) . mapping _Time
+qGrantTime = lens _qGrantTime (\ s a -> s{_qGrantTime = a}) . mapping _Time
 
 -- | The ID of the Worker who possesses the Qualification.
 qWorkerId :: Lens' Qualification (Maybe Text)
-qWorkerId = lens _qWorkerId (\s a -> s {_qWorkerId = a})
+qWorkerId = lens _qWorkerId (\ s a -> s{_qWorkerId = a})
 
 instance FromJSON Qualification where
-  parseJSON =
-    withObject
-      "Qualification"
-      (\x ->
-         Qualification' <$> (x .:? "Status") <*> (x .:? "IntegerValue") <*>
-         (x .:? "LocaleValue") <*>
-         (x .:? "QualificationTypeId") <*>
-         (x .:? "GrantTime") <*>
-         (x .:? "WorkerId"))
+        parseJSON
+          = withObject "Qualification"
+              (\ x ->
+                 Qualification' <$>
+                   (x .:? "Status") <*> (x .:? "IntegerValue") <*>
+                     (x .:? "LocaleValue")
+                     <*> (x .:? "QualificationTypeId")
+                     <*> (x .:? "GrantTime")
+                     <*> (x .:? "WorkerId"))
 
-instance Hashable Qualification
+instance Hashable Qualification where
 
-instance NFData Qualification
+instance NFData Qualification where
 
 -- | The QualificationRequest data structure represents a request a Worker has made for a Qualification.
 --
@@ -895,6 +893,7 @@ data QualificationRequest =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'QualificationRequest' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -910,7 +909,8 @@ data QualificationRequest =
 -- * 'quaWorkerId' - The ID of the Worker requesting the Qualification.
 --
 -- * 'quaSubmitTime' - The date and time the Qualification request had a status of Submitted. This is either the time the Worker submitted answers for a Qualification test, or the time the Worker requested the Qualification if the Qualification type does not have a test.
-qualificationRequest :: QualificationRequest
+qualificationRequest
+    :: QualificationRequest
 qualificationRequest =
   QualificationRequest'
     { _quaQualificationRequestId = Nothing
@@ -921,48 +921,45 @@ qualificationRequest =
     , _quaSubmitTime = Nothing
     }
 
+
 -- | The ID of the Qualification request, a unique identifier generated when the request was submitted.
 quaQualificationRequestId :: Lens' QualificationRequest (Maybe Text)
-quaQualificationRequestId =
-  lens _quaQualificationRequestId (\s a -> s {_quaQualificationRequestId = a})
+quaQualificationRequestId = lens _quaQualificationRequestId (\ s a -> s{_quaQualificationRequestId = a})
 
 -- | The contents of the Qualification test that was presented to the Worker, if the type has a test and the Worker has submitted answers. This value is identical to the QuestionForm associated with the Qualification type at the time the Worker requests the Qualification.
 quaTest :: Lens' QualificationRequest (Maybe Text)
-quaTest = lens _quaTest (\s a -> s {_quaTest = a})
+quaTest = lens _quaTest (\ s a -> s{_quaTest = a})
 
 -- | The ID of the Qualification type the Worker is requesting, as returned by the CreateQualificationType operation.
 quaQualificationTypeId :: Lens' QualificationRequest (Maybe Text)
-quaQualificationTypeId =
-  lens _quaQualificationTypeId (\s a -> s {_quaQualificationTypeId = a})
+quaQualificationTypeId = lens _quaQualificationTypeId (\ s a -> s{_quaQualificationTypeId = a})
 
 -- | The Worker's answers for the Qualification type's test contained in a QuestionFormAnswers document, if the type has a test and the Worker has submitted answers. If the Worker does not provide any answers, Answer may be empty.
 quaAnswer :: Lens' QualificationRequest (Maybe Text)
-quaAnswer = lens _quaAnswer (\s a -> s {_quaAnswer = a})
+quaAnswer = lens _quaAnswer (\ s a -> s{_quaAnswer = a})
 
 -- | The ID of the Worker requesting the Qualification.
 quaWorkerId :: Lens' QualificationRequest (Maybe Text)
-quaWorkerId = lens _quaWorkerId (\s a -> s {_quaWorkerId = a})
+quaWorkerId = lens _quaWorkerId (\ s a -> s{_quaWorkerId = a})
 
 -- | The date and time the Qualification request had a status of Submitted. This is either the time the Worker submitted answers for a Qualification test, or the time the Worker requested the Qualification if the Qualification type does not have a test.
 quaSubmitTime :: Lens' QualificationRequest (Maybe UTCTime)
-quaSubmitTime =
-  lens _quaSubmitTime (\s a -> s {_quaSubmitTime = a}) . mapping _Time
+quaSubmitTime = lens _quaSubmitTime (\ s a -> s{_quaSubmitTime = a}) . mapping _Time
 
 instance FromJSON QualificationRequest where
-  parseJSON =
-    withObject
-      "QualificationRequest"
-      (\x ->
-         QualificationRequest' <$> (x .:? "QualificationRequestId") <*>
-         (x .:? "Test") <*>
-         (x .:? "QualificationTypeId") <*>
-         (x .:? "Answer") <*>
-         (x .:? "WorkerId") <*>
-         (x .:? "SubmitTime"))
+        parseJSON
+          = withObject "QualificationRequest"
+              (\ x ->
+                 QualificationRequest' <$>
+                   (x .:? "QualificationRequestId") <*> (x .:? "Test")
+                     <*> (x .:? "QualificationTypeId")
+                     <*> (x .:? "Answer")
+                     <*> (x .:? "WorkerId")
+                     <*> (x .:? "SubmitTime"))
 
-instance Hashable QualificationRequest
+instance Hashable QualificationRequest where
 
-instance NFData QualificationRequest
+instance NFData QualificationRequest where
 
 -- | The QualificationRequirement data structure describes a Qualification that a Worker must have before the Worker is allowed to accept a HIT. A requirement may optionally state that a Worker must have the Qualification in order to preview the HIT, or see the HIT in search results.
 --
@@ -980,6 +977,7 @@ data QualificationRequirement =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'QualificationRequirement' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -995,10 +993,10 @@ data QualificationRequirement =
 -- * 'qrQualificationTypeId' - The ID of the Qualification type for the requirement.
 --
 -- * 'qrComparator' - The kind of comparison to make against a Qualification's value. You can compare a Qualification's value to an IntegerValue to see if it is LessThan, LessThanOrEqualTo, GreaterThan, GreaterThanOrEqualTo, EqualTo, or NotEqualTo the IntegerValue. You can compare it to a LocaleValue to see if it is EqualTo, or NotEqualTo the LocaleValue. You can check to see if the value is In or NotIn a set of IntegerValue or LocaleValue values. Lastly, a Qualification requirement can also test if a Qualification Exists or DoesNotExist in the user's profile, regardless of its value.
-qualificationRequirement ::
-     Text -- ^ 'qrQualificationTypeId'
-  -> Comparator -- ^ 'qrComparator'
-  -> QualificationRequirement
+qualificationRequirement
+    :: Text -- ^ 'qrQualificationTypeId'
+    -> Comparator -- ^ 'qrComparator'
+    -> QualificationRequirement
 qualificationRequirement pQualificationTypeId_ pComparator_ =
   QualificationRequirement'
     { _qrLocaleValues = Nothing
@@ -1009,61 +1007,58 @@ qualificationRequirement pQualificationTypeId_ pComparator_ =
     , _qrComparator = pComparator_
     }
 
+
 -- | The locale value to compare against the Qualification's value. The local value must be a valid ISO 3166 country code or supports ISO 3166-2 subdivisions. LocaleValue can only be used with a Worker_Locale QualificationType ID. LocaleValue can only be used with the EqualTo, NotEqualTo, In, and NotIn comparators. You must only use a single LocaleValue element when using the EqualTo or NotEqualTo comparators. When performing a set comparison by using the In or the NotIn comparator, you can use up to 30 LocaleValue elements in a QualificationRequirement data structure.
 qrLocaleValues :: Lens' QualificationRequirement [Locale]
-qrLocaleValues =
-  lens _qrLocaleValues (\s a -> s {_qrLocaleValues = a}) . _Default . _Coerce
+qrLocaleValues = lens _qrLocaleValues (\ s a -> s{_qrLocaleValues = a}) . _Default . _Coerce
 
 -- | Setting this attribute prevents Workers whose Qualifications do not meet this QualificationRequirement from taking the specified action. Valid arguments include "Accept" (Worker cannot accept the HIT, but can preview the HIT and see it in their search results), "PreviewAndAccept" (Worker cannot accept or preview the HIT, but can see the HIT in their search results), and "DiscoverPreviewAndAccept" (Worker cannot accept, preview, or see the HIT in their search results). It's possible for you to create a HIT with multiple QualificationRequirements (which can have different values for the ActionGuarded attribute). In this case, the Worker is only permitted to perform an action when they have met all QualificationRequirements guarding the action. The actions in the order of least restrictive to most restrictive are Discover, Preview and Accept. For example, if a Worker meets all QualificationRequirements that are set to DiscoverPreviewAndAccept, but do not meet all requirements that are set with PreviewAndAccept, then the Worker will be able to Discover, i.e. see the HIT in their search result, but will not be able to Preview or Accept the HIT. ActionsGuarded should not be used in combination with the @RequiredToPreview@ field.
 qrActionsGuarded :: Lens' QualificationRequirement (Maybe HITAccessActions)
-qrActionsGuarded = lens _qrActionsGuarded (\s a -> s {_qrActionsGuarded = a})
+qrActionsGuarded = lens _qrActionsGuarded (\ s a -> s{_qrActionsGuarded = a})
 
 -- | DEPRECATED: Use the @ActionsGuarded@ field instead. If RequiredToPreview is true, the question data for the HIT will not be shown when a Worker whose Qualifications do not meet this requirement tries to preview the HIT. That is, a Worker's Qualifications must meet all of the requirements for which RequiredToPreview is true in order to preview the HIT. If a Worker meets all of the requirements where RequiredToPreview is true (or if there are no such requirements), but does not meet all of the requirements for the HIT, the Worker will be allowed to preview the HIT's question data, but will not be allowed to accept and complete the HIT. The default is false. This should not be used in combination with the @ActionsGuarded@ field.
 qrRequiredToPreview :: Lens' QualificationRequirement (Maybe Bool)
-qrRequiredToPreview =
-  lens _qrRequiredToPreview (\s a -> s {_qrRequiredToPreview = a})
+qrRequiredToPreview = lens _qrRequiredToPreview (\ s a -> s{_qrRequiredToPreview = a})
 
 -- | The integer value to compare against the Qualification's value. IntegerValue must not be present if Comparator is Exists or DoesNotExist. IntegerValue can only be used if the Qualification type has an integer value; it cannot be used with the Worker_Locale QualificationType ID. When performing a set comparison by using the In or the NotIn comparator, you can use up to 15 IntegerValue elements in a QualificationRequirement data structure.
 qrIntegerValues :: Lens' QualificationRequirement [Int]
-qrIntegerValues =
-  lens _qrIntegerValues (\s a -> s {_qrIntegerValues = a}) . _Default . _Coerce
+qrIntegerValues = lens _qrIntegerValues (\ s a -> s{_qrIntegerValues = a}) . _Default . _Coerce
 
 -- | The ID of the Qualification type for the requirement.
 qrQualificationTypeId :: Lens' QualificationRequirement Text
-qrQualificationTypeId =
-  lens _qrQualificationTypeId (\s a -> s {_qrQualificationTypeId = a})
+qrQualificationTypeId = lens _qrQualificationTypeId (\ s a -> s{_qrQualificationTypeId = a})
 
 -- | The kind of comparison to make against a Qualification's value. You can compare a Qualification's value to an IntegerValue to see if it is LessThan, LessThanOrEqualTo, GreaterThan, GreaterThanOrEqualTo, EqualTo, or NotEqualTo the IntegerValue. You can compare it to a LocaleValue to see if it is EqualTo, or NotEqualTo the LocaleValue. You can check to see if the value is In or NotIn a set of IntegerValue or LocaleValue values. Lastly, a Qualification requirement can also test if a Qualification Exists or DoesNotExist in the user's profile, regardless of its value.
 qrComparator :: Lens' QualificationRequirement Comparator
-qrComparator = lens _qrComparator (\s a -> s {_qrComparator = a})
+qrComparator = lens _qrComparator (\ s a -> s{_qrComparator = a})
 
 instance FromJSON QualificationRequirement where
-  parseJSON =
-    withObject
-      "QualificationRequirement"
-      (\x ->
-         QualificationRequirement' <$> (x .:? "LocaleValues" .!= mempty) <*>
-         (x .:? "ActionsGuarded") <*>
-         (x .:? "RequiredToPreview") <*>
-         (x .:? "IntegerValues" .!= mempty) <*>
-         (x .: "QualificationTypeId") <*>
-         (x .: "Comparator"))
+        parseJSON
+          = withObject "QualificationRequirement"
+              (\ x ->
+                 QualificationRequirement' <$>
+                   (x .:? "LocaleValues" .!= mempty) <*>
+                     (x .:? "ActionsGuarded")
+                     <*> (x .:? "RequiredToPreview")
+                     <*> (x .:? "IntegerValues" .!= mempty)
+                     <*> (x .: "QualificationTypeId")
+                     <*> (x .: "Comparator"))
 
-instance Hashable QualificationRequirement
+instance Hashable QualificationRequirement where
 
-instance NFData QualificationRequirement
+instance NFData QualificationRequirement where
 
 instance ToJSON QualificationRequirement where
-  toJSON QualificationRequirement' {..} =
-    object
-      (catMaybes
-         [ ("LocaleValues" .=) <$> _qrLocaleValues
-         , ("ActionsGuarded" .=) <$> _qrActionsGuarded
-         , ("RequiredToPreview" .=) <$> _qrRequiredToPreview
-         , ("IntegerValues" .=) <$> _qrIntegerValues
-         , Just ("QualificationTypeId" .= _qrQualificationTypeId)
-         , Just ("Comparator" .= _qrComparator)
-         ])
+        toJSON QualificationRequirement'{..}
+          = object
+              (catMaybes
+                 [("LocaleValues" .=) <$> _qrLocaleValues,
+                  ("ActionsGuarded" .=) <$> _qrActionsGuarded,
+                  ("RequiredToPreview" .=) <$> _qrRequiredToPreview,
+                  ("IntegerValues" .=) <$> _qrIntegerValues,
+                  Just
+                    ("QualificationTypeId" .= _qrQualificationTypeId),
+                  Just ("Comparator" .= _qrComparator)])
 
 -- | The QualificationType data structure represents a Qualification type, a description of a property of a Worker that must match the requirements of a HIT for the Worker to be able to accept the HIT. The type also describes how a Worker can obtain a Qualification of that type, such as through a Qualification test.
 --
@@ -1087,6 +1082,7 @@ data QualificationType =
     , _qtRetryDelayInSeconds     :: !(Maybe Integer)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'QualificationType' with the minimum fields required to make a request.
 --
@@ -1117,7 +1113,8 @@ data QualificationType =
 -- * 'qtIsRequestable' - Specifies whether the Qualification type is one that a user can request through the Amazon Mechanical Turk web site, such as by taking a Qualification test. This value is False for Qualifications assigned automatically by the system. Valid values are True | False.
 --
 -- * 'qtRetryDelayInSeconds' - The amount of time, in seconds, Workers must wait after taking the Qualification test before they can take it again. Workers can take a Qualification test multiple times if they were not granted the Qualification from a previous attempt, or if the test offers a gradient score and they want a better score. If not specified, retries are disabled and Workers can request a Qualification only once.
-qualificationType :: QualificationType
+qualificationType
+    :: QualificationType
 qualificationType =
   QualificationType'
     { _qtCreationTime = Nothing
@@ -1135,87 +1132,81 @@ qualificationType =
     , _qtRetryDelayInSeconds = Nothing
     }
 
+
 -- | The date and time the Qualification type was created.
 qtCreationTime :: Lens' QualificationType (Maybe UTCTime)
-qtCreationTime =
-  lens _qtCreationTime (\s a -> s {_qtCreationTime = a}) . mapping _Time
+qtCreationTime = lens _qtCreationTime (\ s a -> s{_qtCreationTime = a}) . mapping _Time
 
 -- | The amount of time, in seconds, given to a Worker to complete the Qualification test, beginning from the time the Worker requests the Qualification.
 qtTestDurationInSeconds :: Lens' QualificationType (Maybe Integer)
-qtTestDurationInSeconds =
-  lens _qtTestDurationInSeconds (\s a -> s {_qtTestDurationInSeconds = a})
+qtTestDurationInSeconds = lens _qtTestDurationInSeconds (\ s a -> s{_qtTestDurationInSeconds = a})
 
 -- | The status of the Qualification type. A Qualification type's status determines if users can apply to receive a Qualification of this type, and if HITs can be created with requirements based on this type. Valid values are Active | Inactive.
-qtQualificationTypeStatus ::
-     Lens' QualificationType (Maybe QualificationTypeStatus)
-qtQualificationTypeStatus =
-  lens _qtQualificationTypeStatus (\s a -> s {_qtQualificationTypeStatus = a})
+qtQualificationTypeStatus :: Lens' QualificationType (Maybe QualificationTypeStatus)
+qtQualificationTypeStatus = lens _qtQualificationTypeStatus (\ s a -> s{_qtQualificationTypeStatus = a})
 
 -- | The answers to the Qualification test specified in the Test parameter.
 qtAnswerKey :: Lens' QualificationType (Maybe Text)
-qtAnswerKey = lens _qtAnswerKey (\s a -> s {_qtAnswerKey = a})
+qtAnswerKey = lens _qtAnswerKey (\ s a -> s{_qtAnswerKey = a})
 
 -- | The questions for a Qualification test associated with this Qualification type that a user can take to obtain a Qualification of this type. This parameter must be specified if AnswerKey is present. A Qualification type cannot have both a specified Test parameter and an AutoGranted value of true.
 qtTest :: Lens' QualificationType (Maybe Text)
-qtTest = lens _qtTest (\s a -> s {_qtTest = a})
+qtTest = lens _qtTest (\ s a -> s{_qtTest = a})
 
 -- | A unique identifier for the Qualification type. A Qualification type is given a Qualification type ID when you call the CreateQualificationType operation.
 qtQualificationTypeId :: Lens' QualificationType (Maybe Text)
-qtQualificationTypeId =
-  lens _qtQualificationTypeId (\s a -> s {_qtQualificationTypeId = a})
+qtQualificationTypeId = lens _qtQualificationTypeId (\ s a -> s{_qtQualificationTypeId = a})
 
 -- | The name of the Qualification type. The type name is used to identify the type, and to find the type using a Qualification type search.
 qtName :: Lens' QualificationType (Maybe Text)
-qtName = lens _qtName (\s a -> s {_qtName = a})
+qtName = lens _qtName (\ s a -> s{_qtName = a})
 
 -- | One or more words or phrases that describe theQualification type, separated by commas. The Keywords make the type easier to find using a search.
 qtKeywords :: Lens' QualificationType (Maybe Text)
-qtKeywords = lens _qtKeywords (\s a -> s {_qtKeywords = a})
+qtKeywords = lens _qtKeywords (\ s a -> s{_qtKeywords = a})
 
 -- | Specifies that requests for the Qualification type are granted immediately, without prompting the Worker with a Qualification test. Valid values are True | False.
 qtAutoGranted :: Lens' QualificationType (Maybe Bool)
-qtAutoGranted = lens _qtAutoGranted (\s a -> s {_qtAutoGranted = a})
+qtAutoGranted = lens _qtAutoGranted (\ s a -> s{_qtAutoGranted = a})
 
 -- | The Qualification integer value to use for automatically granted Qualifications, if AutoGranted is true. This is 1 by default.
 qtAutoGrantedValue :: Lens' QualificationType (Maybe Int)
-qtAutoGrantedValue =
-  lens _qtAutoGrantedValue (\s a -> s {_qtAutoGrantedValue = a})
+qtAutoGrantedValue = lens _qtAutoGrantedValue (\ s a -> s{_qtAutoGrantedValue = a})
 
 -- | A long description for the Qualification type.
 qtDescription :: Lens' QualificationType (Maybe Text)
-qtDescription = lens _qtDescription (\s a -> s {_qtDescription = a})
+qtDescription = lens _qtDescription (\ s a -> s{_qtDescription = a})
 
 -- | Specifies whether the Qualification type is one that a user can request through the Amazon Mechanical Turk web site, such as by taking a Qualification test. This value is False for Qualifications assigned automatically by the system. Valid values are True | False.
 qtIsRequestable :: Lens' QualificationType (Maybe Bool)
-qtIsRequestable = lens _qtIsRequestable (\s a -> s {_qtIsRequestable = a})
+qtIsRequestable = lens _qtIsRequestable (\ s a -> s{_qtIsRequestable = a})
 
 -- | The amount of time, in seconds, Workers must wait after taking the Qualification test before they can take it again. Workers can take a Qualification test multiple times if they were not granted the Qualification from a previous attempt, or if the test offers a gradient score and they want a better score. If not specified, retries are disabled and Workers can request a Qualification only once.
 qtRetryDelayInSeconds :: Lens' QualificationType (Maybe Integer)
-qtRetryDelayInSeconds =
-  lens _qtRetryDelayInSeconds (\s a -> s {_qtRetryDelayInSeconds = a})
+qtRetryDelayInSeconds = lens _qtRetryDelayInSeconds (\ s a -> s{_qtRetryDelayInSeconds = a})
 
 instance FromJSON QualificationType where
-  parseJSON =
-    withObject
-      "QualificationType"
-      (\x ->
-         QualificationType' <$> (x .:? "CreationTime") <*>
-         (x .:? "TestDurationInSeconds") <*>
-         (x .:? "QualificationTypeStatus") <*>
-         (x .:? "AnswerKey") <*>
-         (x .:? "Test") <*>
-         (x .:? "QualificationTypeId") <*>
-         (x .:? "Name") <*>
-         (x .:? "Keywords") <*>
-         (x .:? "AutoGranted") <*>
-         (x .:? "AutoGrantedValue") <*>
-         (x .:? "Description") <*>
-         (x .:? "IsRequestable") <*>
-         (x .:? "RetryDelayInSeconds"))
+        parseJSON
+          = withObject "QualificationType"
+              (\ x ->
+                 QualificationType' <$>
+                   (x .:? "CreationTime") <*>
+                     (x .:? "TestDurationInSeconds")
+                     <*> (x .:? "QualificationTypeStatus")
+                     <*> (x .:? "AnswerKey")
+                     <*> (x .:? "Test")
+                     <*> (x .:? "QualificationTypeId")
+                     <*> (x .:? "Name")
+                     <*> (x .:? "Keywords")
+                     <*> (x .:? "AutoGranted")
+                     <*> (x .:? "AutoGrantedValue")
+                     <*> (x .:? "Description")
+                     <*> (x .:? "IsRequestable")
+                     <*> (x .:? "RetryDelayInSeconds"))
 
-instance Hashable QualificationType
+instance Hashable QualificationType where
 
-instance NFData QualificationType
+instance NFData QualificationType where
 
 -- | Both the AssignmentReviewReport and the HITReviewReport elements contains the ReviewActionDetail data structure. This structure is returned multiple times for each action specified in the Review Policy.
 --
@@ -1234,6 +1225,7 @@ data ReviewActionDetail =
     , _radErrorCode    :: !(Maybe Text)
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'ReviewActionDetail' with the minimum fields required to make a request.
 --
@@ -1254,7 +1246,8 @@ data ReviewActionDetail =
 -- * 'radCompleteTime' - The date when the action was completed.
 --
 -- * 'radErrorCode' - Present only when the Results have a FAILED Status.
-reviewActionDetail :: ReviewActionDetail
+reviewActionDetail
+    :: ReviewActionDetail
 reviewActionDetail =
   ReviewActionDetail'
     { _radStatus = Nothing
@@ -1267,55 +1260,55 @@ reviewActionDetail =
     , _radErrorCode = Nothing
     }
 
+
 -- | The current disposition of the action: INTENDED, SUCCEEDED, FAILED, or CANCELLED.
 radStatus :: Lens' ReviewActionDetail (Maybe ReviewActionStatus)
-radStatus = lens _radStatus (\s a -> s {_radStatus = a})
+radStatus = lens _radStatus (\ s a -> s{_radStatus = a})
 
 -- | The specific HITId or AssignmentID targeted by the action.
 radTargetId :: Lens' ReviewActionDetail (Maybe Text)
-radTargetId = lens _radTargetId (\s a -> s {_radTargetId = a})
+radTargetId = lens _radTargetId (\ s a -> s{_radTargetId = a})
 
 -- | The unique identifier for the action.
 radActionId :: Lens' ReviewActionDetail (Maybe Text)
-radActionId = lens _radActionId (\s a -> s {_radActionId = a})
+radActionId = lens _radActionId (\ s a -> s{_radActionId = a})
 
 -- | The type of object in TargetId.
 radTargetType :: Lens' ReviewActionDetail (Maybe Text)
-radTargetType = lens _radTargetType (\s a -> s {_radTargetType = a})
+radTargetType = lens _radTargetType (\ s a -> s{_radTargetType = a})
 
 -- | A description of the outcome of the review.
 radResult :: Lens' ReviewActionDetail (Maybe Text)
-radResult = lens _radResult (\s a -> s {_radResult = a})
+radResult = lens _radResult (\ s a -> s{_radResult = a})
 
 -- | The nature of the action itself. The Review Policy is responsible for examining the HIT and Assignments, emitting results, and deciding which other actions will be necessary.
 radActionName :: Lens' ReviewActionDetail (Maybe Text)
-radActionName = lens _radActionName (\s a -> s {_radActionName = a})
+radActionName = lens _radActionName (\ s a -> s{_radActionName = a})
 
 -- | The date when the action was completed.
 radCompleteTime :: Lens' ReviewActionDetail (Maybe UTCTime)
-radCompleteTime =
-  lens _radCompleteTime (\s a -> s {_radCompleteTime = a}) . mapping _Time
+radCompleteTime = lens _radCompleteTime (\ s a -> s{_radCompleteTime = a}) . mapping _Time
 
 -- | Present only when the Results have a FAILED Status.
 radErrorCode :: Lens' ReviewActionDetail (Maybe Text)
-radErrorCode = lens _radErrorCode (\s a -> s {_radErrorCode = a})
+radErrorCode = lens _radErrorCode (\ s a -> s{_radErrorCode = a})
 
 instance FromJSON ReviewActionDetail where
-  parseJSON =
-    withObject
-      "ReviewActionDetail"
-      (\x ->
-         ReviewActionDetail' <$> (x .:? "Status") <*> (x .:? "TargetId") <*>
-         (x .:? "ActionId") <*>
-         (x .:? "TargetType") <*>
-         (x .:? "Result") <*>
-         (x .:? "ActionName") <*>
-         (x .:? "CompleteTime") <*>
-         (x .:? "ErrorCode"))
+        parseJSON
+          = withObject "ReviewActionDetail"
+              (\ x ->
+                 ReviewActionDetail' <$>
+                   (x .:? "Status") <*> (x .:? "TargetId") <*>
+                     (x .:? "ActionId")
+                     <*> (x .:? "TargetType")
+                     <*> (x .:? "Result")
+                     <*> (x .:? "ActionName")
+                     <*> (x .:? "CompleteTime")
+                     <*> (x .:? "ErrorCode"))
 
-instance Hashable ReviewActionDetail
+instance Hashable ReviewActionDetail where
 
-instance NFData ReviewActionDetail
+instance NFData ReviewActionDetail where
 
 -- | HIT Review Policy data structures represent HIT review policies, which you specify when you create a HIT.
 --
@@ -1329,6 +1322,7 @@ data ReviewPolicy =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ReviewPolicy' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1336,40 +1330,39 @@ data ReviewPolicy =
 -- * 'rpParameters' - Name of the parameter from the Review policy.
 --
 -- * 'rpPolicyName' - Name of a Review Policy: SimplePlurality/2011-09-01 or ScoreMyKnownAnswers/2011-09-01
-reviewPolicy ::
-     Text -- ^ 'rpPolicyName'
-  -> ReviewPolicy
+reviewPolicy
+    :: Text -- ^ 'rpPolicyName'
+    -> ReviewPolicy
 reviewPolicy pPolicyName_ =
   ReviewPolicy' {_rpParameters = Nothing, _rpPolicyName = pPolicyName_}
 
+
 -- | Name of the parameter from the Review policy.
 rpParameters :: Lens' ReviewPolicy [PolicyParameter]
-rpParameters =
-  lens _rpParameters (\s a -> s {_rpParameters = a}) . _Default . _Coerce
+rpParameters = lens _rpParameters (\ s a -> s{_rpParameters = a}) . _Default . _Coerce
 
 -- | Name of a Review Policy: SimplePlurality/2011-09-01 or ScoreMyKnownAnswers/2011-09-01
 rpPolicyName :: Lens' ReviewPolicy Text
-rpPolicyName = lens _rpPolicyName (\s a -> s {_rpPolicyName = a})
+rpPolicyName = lens _rpPolicyName (\ s a -> s{_rpPolicyName = a})
 
 instance FromJSON ReviewPolicy where
-  parseJSON =
-    withObject
-      "ReviewPolicy"
-      (\x ->
-         ReviewPolicy' <$> (x .:? "Parameters" .!= mempty) <*>
-         (x .: "PolicyName"))
+        parseJSON
+          = withObject "ReviewPolicy"
+              (\ x ->
+                 ReviewPolicy' <$>
+                   (x .:? "Parameters" .!= mempty) <*>
+                     (x .: "PolicyName"))
 
-instance Hashable ReviewPolicy
+instance Hashable ReviewPolicy where
 
-instance NFData ReviewPolicy
+instance NFData ReviewPolicy where
 
 instance ToJSON ReviewPolicy where
-  toJSON ReviewPolicy' {..} =
-    object
-      (catMaybes
-         [ ("Parameters" .=) <$> _rpParameters
-         , Just ("PolicyName" .= _rpPolicyName)
-         ])
+        toJSON ReviewPolicy'{..}
+          = object
+              (catMaybes
+                 [("Parameters" .=) <$> _rpParameters,
+                  Just ("PolicyName" .= _rpPolicyName)])
 
 -- | Contains both ReviewResult and ReviewAction elements for a particular HIT.
 --
@@ -1383,6 +1376,7 @@ data ReviewReport =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ReviewReport' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1390,31 +1384,31 @@ data ReviewReport =
 -- * 'rrReviewActions' - A list of ReviewAction objects for each action specified in the Review Policy.
 --
 -- * 'rrReviewResults' - A list of ReviewResults objects for each action specified in the Review Policy.
-reviewReport :: ReviewReport
+reviewReport
+    :: ReviewReport
 reviewReport =
   ReviewReport' {_rrReviewActions = Nothing, _rrReviewResults = Nothing}
 
+
 -- | A list of ReviewAction objects for each action specified in the Review Policy.
 rrReviewActions :: Lens' ReviewReport [ReviewActionDetail]
-rrReviewActions =
-  lens _rrReviewActions (\s a -> s {_rrReviewActions = a}) . _Default . _Coerce
+rrReviewActions = lens _rrReviewActions (\ s a -> s{_rrReviewActions = a}) . _Default . _Coerce
 
 -- | A list of ReviewResults objects for each action specified in the Review Policy.
 rrReviewResults :: Lens' ReviewReport [ReviewResultDetail]
-rrReviewResults =
-  lens _rrReviewResults (\s a -> s {_rrReviewResults = a}) . _Default . _Coerce
+rrReviewResults = lens _rrReviewResults (\ s a -> s{_rrReviewResults = a}) . _Default . _Coerce
 
 instance FromJSON ReviewReport where
-  parseJSON =
-    withObject
-      "ReviewReport"
-      (\x ->
-         ReviewReport' <$> (x .:? "ReviewActions" .!= mempty) <*>
-         (x .:? "ReviewResults" .!= mempty))
+        parseJSON
+          = withObject "ReviewReport"
+              (\ x ->
+                 ReviewReport' <$>
+                   (x .:? "ReviewActions" .!= mempty) <*>
+                     (x .:? "ReviewResults" .!= mempty))
 
-instance Hashable ReviewReport
+instance Hashable ReviewReport where
 
-instance NFData ReviewReport
+instance NFData ReviewReport where
 
 -- | This data structure is returned multiple times for each result specified in the Review Policy.
 --
@@ -1432,6 +1426,7 @@ data ReviewResultDetail =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ReviewResultDetail' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1447,7 +1442,8 @@ data ReviewResultDetail =
 -- * 'rrdQuestionId' - Specifies the QuestionId the result is describing. Depending on whether the TargetType is a HIT or Assignment this results could specify multiple values. If TargetType is HIT and QuestionId is absent, then the result describes results of the HIT, including the HIT agreement score. If ObjectType is Assignment and QuestionId is absent, then the result describes the Worker's performance on the HIT.
 --
 -- * 'rrdSubjectId' - The HITID or AssignmentId about which this result was taken. Note that HIT-level Review Policies will often emit results about both the HIT itself and its Assignments, while Assignment-level review policies generally only emit results about the Assignment itself.
-reviewResultDetail :: ReviewResultDetail
+reviewResultDetail
+    :: ReviewResultDetail
 reviewResultDetail =
   ReviewResultDetail'
     { _rrdValue = Nothing
@@ -1458,44 +1454,45 @@ reviewResultDetail =
     , _rrdSubjectId = Nothing
     }
 
+
 -- | The values of Key provided by the review policies you have selected.
 rrdValue :: Lens' ReviewResultDetail (Maybe Text)
-rrdValue = lens _rrdValue (\s a -> s {_rrdValue = a})
+rrdValue = lens _rrdValue (\ s a -> s{_rrdValue = a})
 
 -- | A unique identifier of the Review action result.
 rrdActionId :: Lens' ReviewResultDetail (Maybe Text)
-rrdActionId = lens _rrdActionId (\s a -> s {_rrdActionId = a})
+rrdActionId = lens _rrdActionId (\ s a -> s{_rrdActionId = a})
 
 -- | The type of the object from the SubjectId field.
 rrdSubjectType :: Lens' ReviewResultDetail (Maybe Text)
-rrdSubjectType = lens _rrdSubjectType (\s a -> s {_rrdSubjectType = a})
+rrdSubjectType = lens _rrdSubjectType (\ s a -> s{_rrdSubjectType = a})
 
 -- | Key identifies the particular piece of reviewed information.
 rrdKey :: Lens' ReviewResultDetail (Maybe Text)
-rrdKey = lens _rrdKey (\s a -> s {_rrdKey = a})
+rrdKey = lens _rrdKey (\ s a -> s{_rrdKey = a})
 
 -- | Specifies the QuestionId the result is describing. Depending on whether the TargetType is a HIT or Assignment this results could specify multiple values. If TargetType is HIT and QuestionId is absent, then the result describes results of the HIT, including the HIT agreement score. If ObjectType is Assignment and QuestionId is absent, then the result describes the Worker's performance on the HIT.
 rrdQuestionId :: Lens' ReviewResultDetail (Maybe Text)
-rrdQuestionId = lens _rrdQuestionId (\s a -> s {_rrdQuestionId = a})
+rrdQuestionId = lens _rrdQuestionId (\ s a -> s{_rrdQuestionId = a})
 
 -- | The HITID or AssignmentId about which this result was taken. Note that HIT-level Review Policies will often emit results about both the HIT itself and its Assignments, while Assignment-level review policies generally only emit results about the Assignment itself.
 rrdSubjectId :: Lens' ReviewResultDetail (Maybe Text)
-rrdSubjectId = lens _rrdSubjectId (\s a -> s {_rrdSubjectId = a})
+rrdSubjectId = lens _rrdSubjectId (\ s a -> s{_rrdSubjectId = a})
 
 instance FromJSON ReviewResultDetail where
-  parseJSON =
-    withObject
-      "ReviewResultDetail"
-      (\x ->
-         ReviewResultDetail' <$> (x .:? "Value") <*> (x .:? "ActionId") <*>
-         (x .:? "SubjectType") <*>
-         (x .:? "Key") <*>
-         (x .:? "QuestionId") <*>
-         (x .:? "SubjectId"))
+        parseJSON
+          = withObject "ReviewResultDetail"
+              (\ x ->
+                 ReviewResultDetail' <$>
+                   (x .:? "Value") <*> (x .:? "ActionId") <*>
+                     (x .:? "SubjectType")
+                     <*> (x .:? "Key")
+                     <*> (x .:? "QuestionId")
+                     <*> (x .:? "SubjectId"))
 
-instance Hashable ReviewResultDetail
+instance Hashable ReviewResultDetail where
 
-instance NFData ReviewResultDetail
+instance NFData ReviewResultDetail where
 
 -- | The WorkerBlock data structure represents a Worker who has been blocked. It has two elements: the WorkerId and the Reason for the block.
 --
@@ -1509,6 +1506,7 @@ data WorkerBlock =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'WorkerBlock' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -1516,23 +1514,26 @@ data WorkerBlock =
 -- * 'wbReason' - A message explaining the reason the Worker was blocked.
 --
 -- * 'wbWorkerId' - The ID of the Worker who accepted the HIT.
-workerBlock :: WorkerBlock
+workerBlock
+    :: WorkerBlock
 workerBlock = WorkerBlock' {_wbReason = Nothing, _wbWorkerId = Nothing}
+
 
 -- | A message explaining the reason the Worker was blocked.
 wbReason :: Lens' WorkerBlock (Maybe Text)
-wbReason = lens _wbReason (\s a -> s {_wbReason = a})
+wbReason = lens _wbReason (\ s a -> s{_wbReason = a})
 
 -- | The ID of the Worker who accepted the HIT.
 wbWorkerId :: Lens' WorkerBlock (Maybe Text)
-wbWorkerId = lens _wbWorkerId (\s a -> s {_wbWorkerId = a})
+wbWorkerId = lens _wbWorkerId (\ s a -> s{_wbWorkerId = a})
 
 instance FromJSON WorkerBlock where
-  parseJSON =
-    withObject
-      "WorkerBlock"
-      (\x -> WorkerBlock' <$> (x .:? "Reason") <*> (x .:? "WorkerId"))
+        parseJSON
+          = withObject "WorkerBlock"
+              (\ x ->
+                 WorkerBlock' <$>
+                   (x .:? "Reason") <*> (x .:? "WorkerId"))
 
-instance Hashable WorkerBlock
+instance Hashable WorkerBlock where
 
-instance NFData WorkerBlock
+instance NFData WorkerBlock where

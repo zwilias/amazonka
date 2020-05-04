@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Lightsail.GetDiskSnapshot
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.Lightsail.GetDiskSnapshot
+    (
     -- * Creating a Request
-  ( getDiskSnapshot
-  , GetDiskSnapshot
+      getDiskSnapshot
+    , GetDiskSnapshot
     -- * Request Lenses
-  , gdsDiskSnapshotName
+    , gdsDiskSnapshotName
+
     -- * Destructuring the Response
-  , getDiskSnapshotResponse
-  , GetDiskSnapshotResponse
+    , getDiskSnapshotResponse
+    , GetDiskSnapshotResponse
     -- * Response Lenses
-  , gdsrsDiskSnapshot
-  , gdsrsResponseStatus
-  ) where
+    , gdsrsDiskSnapshot
+    , gdsrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
@@ -47,53 +51,56 @@ newtype GetDiskSnapshot =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetDiskSnapshot' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'gdsDiskSnapshotName' - The name of the disk snapshot (e.g., @my-disk-snapshot@ ).
-getDiskSnapshot ::
-     Text -- ^ 'gdsDiskSnapshotName'
-  -> GetDiskSnapshot
+getDiskSnapshot
+    :: Text -- ^ 'gdsDiskSnapshotName'
+    -> GetDiskSnapshot
 getDiskSnapshot pDiskSnapshotName_ =
   GetDiskSnapshot' {_gdsDiskSnapshotName = pDiskSnapshotName_}
 
+
 -- | The name of the disk snapshot (e.g., @my-disk-snapshot@ ).
 gdsDiskSnapshotName :: Lens' GetDiskSnapshot Text
-gdsDiskSnapshotName =
-  lens _gdsDiskSnapshotName (\s a -> s {_gdsDiskSnapshotName = a})
+gdsDiskSnapshotName = lens _gdsDiskSnapshotName (\ s a -> s{_gdsDiskSnapshotName = a})
 
 instance AWSRequest GetDiskSnapshot where
-  type Rs GetDiskSnapshot = GetDiskSnapshotResponse
-  request = postJSON lightsail
-  response =
-    receiveJSON
-      (\s h x ->
-         GetDiskSnapshotResponse' <$> (x .?> "diskSnapshot") <*>
-         (pure (fromEnum s)))
+        type Rs GetDiskSnapshot = GetDiskSnapshotResponse
+        request = postJSON lightsail
+        response
+          = receiveJSON
+              (\ s h x ->
+                 GetDiskSnapshotResponse' <$>
+                   (x .?> "diskSnapshot") <*> (pure (fromEnum s)))
 
-instance Hashable GetDiskSnapshot
+instance Hashable GetDiskSnapshot where
 
-instance NFData GetDiskSnapshot
+instance NFData GetDiskSnapshot where
 
 instance ToHeaders GetDiskSnapshot where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("Lightsail_20161128.GetDiskSnapshot" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("Lightsail_20161128.GetDiskSnapshot" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON GetDiskSnapshot where
-  toJSON GetDiskSnapshot' {..} =
-    object (catMaybes [Just ("diskSnapshotName" .= _gdsDiskSnapshotName)])
+        toJSON GetDiskSnapshot'{..}
+          = object
+              (catMaybes
+                 [Just ("diskSnapshotName" .= _gdsDiskSnapshotName)])
 
 instance ToPath GetDiskSnapshot where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery GetDiskSnapshot where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'getDiskSnapshotResponse' smart constructor.
 data GetDiskSnapshotResponse =
@@ -103,6 +110,7 @@ data GetDiskSnapshotResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetDiskSnapshotResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -110,20 +118,20 @@ data GetDiskSnapshotResponse =
 -- * 'gdsrsDiskSnapshot' - An object containing information about the disk snapshot.
 --
 -- * 'gdsrsResponseStatus' - -- | The response status code.
-getDiskSnapshotResponse ::
-     Int -- ^ 'gdsrsResponseStatus'
-  -> GetDiskSnapshotResponse
+getDiskSnapshotResponse
+    :: Int -- ^ 'gdsrsResponseStatus'
+    -> GetDiskSnapshotResponse
 getDiskSnapshotResponse pResponseStatus_ =
   GetDiskSnapshotResponse'
     {_gdsrsDiskSnapshot = Nothing, _gdsrsResponseStatus = pResponseStatus_}
 
+
 -- | An object containing information about the disk snapshot.
 gdsrsDiskSnapshot :: Lens' GetDiskSnapshotResponse (Maybe DiskSnapshot)
-gdsrsDiskSnapshot = lens _gdsrsDiskSnapshot (\s a -> s {_gdsrsDiskSnapshot = a})
+gdsrsDiskSnapshot = lens _gdsrsDiskSnapshot (\ s a -> s{_gdsrsDiskSnapshot = a})
 
 -- | -- | The response status code.
 gdsrsResponseStatus :: Lens' GetDiskSnapshotResponse Int
-gdsrsResponseStatus =
-  lens _gdsrsResponseStatus (\s a -> s {_gdsrsResponseStatus = a})
+gdsrsResponseStatus = lens _gdsrsResponseStatus (\ s a -> s{_gdsrsResponseStatus = a})
 
-instance NFData GetDiskSnapshotResponse
+instance NFData GetDiskSnapshotResponse where

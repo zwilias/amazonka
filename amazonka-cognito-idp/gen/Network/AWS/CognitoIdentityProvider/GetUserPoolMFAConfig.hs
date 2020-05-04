@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CognitoIdentityProvider.GetUserPoolMFAConfig
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,20 +22,22 @@
 --
 --
 module Network.AWS.CognitoIdentityProvider.GetUserPoolMFAConfig
+    (
     -- * Creating a Request
-  ( getUserPoolMFAConfig
-  , GetUserPoolMFAConfig
+      getUserPoolMFAConfig
+    , GetUserPoolMFAConfig
     -- * Request Lenses
-  , gupmcUserPoolId
+    , gupmcUserPoolId
+
     -- * Destructuring the Response
-  , getUserPoolMFAConfigResponse
-  , GetUserPoolMFAConfigResponse
+    , getUserPoolMFAConfigResponse
+    , GetUserPoolMFAConfigResponse
     -- * Response Lenses
-  , gupmcrsSmsMFAConfiguration
-  , gupmcrsSoftwareTokenMFAConfiguration
-  , gupmcrsMFAConfiguration
-  , gupmcrsResponseStatus
-  ) where
+    , gupmcrsSmsMFAConfiguration
+    , gupmcrsSoftwareTokenMFAConfiguration
+    , gupmcrsMFAConfiguration
+    , gupmcrsResponseStatus
+    ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
 import Network.AWS.CognitoIdentityProvider.Types.Product
@@ -49,54 +53,60 @@ newtype GetUserPoolMFAConfig =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetUserPoolMFAConfig' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'gupmcUserPoolId' - The user pool ID.
-getUserPoolMFAConfig ::
-     Text -- ^ 'gupmcUserPoolId'
-  -> GetUserPoolMFAConfig
+getUserPoolMFAConfig
+    :: Text -- ^ 'gupmcUserPoolId'
+    -> GetUserPoolMFAConfig
 getUserPoolMFAConfig pUserPoolId_ =
   GetUserPoolMFAConfig' {_gupmcUserPoolId = pUserPoolId_}
 
+
 -- | The user pool ID.
 gupmcUserPoolId :: Lens' GetUserPoolMFAConfig Text
-gupmcUserPoolId = lens _gupmcUserPoolId (\s a -> s {_gupmcUserPoolId = a})
+gupmcUserPoolId = lens _gupmcUserPoolId (\ s a -> s{_gupmcUserPoolId = a})
 
 instance AWSRequest GetUserPoolMFAConfig where
-  type Rs GetUserPoolMFAConfig = GetUserPoolMFAConfigResponse
-  request = postJSON cognitoIdentityProvider
-  response =
-    receiveJSON
-      (\s h x ->
-         GetUserPoolMFAConfigResponse' <$> (x .?> "SmsMfaConfiguration") <*>
-         (x .?> "SoftwareTokenMfaConfiguration") <*>
-         (x .?> "MfaConfiguration") <*>
-         (pure (fromEnum s)))
+        type Rs GetUserPoolMFAConfig =
+             GetUserPoolMFAConfigResponse
+        request = postJSON cognitoIdentityProvider
+        response
+          = receiveJSON
+              (\ s h x ->
+                 GetUserPoolMFAConfigResponse' <$>
+                   (x .?> "SmsMfaConfiguration") <*>
+                     (x .?> "SoftwareTokenMfaConfiguration")
+                     <*> (x .?> "MfaConfiguration")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable GetUserPoolMFAConfig
+instance Hashable GetUserPoolMFAConfig where
 
-instance NFData GetUserPoolMFAConfig
+instance NFData GetUserPoolMFAConfig where
 
 instance ToHeaders GetUserPoolMFAConfig where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AWSCognitoIdentityProviderService.GetUserPoolMfaConfig" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWSCognitoIdentityProviderService.GetUserPoolMfaConfig"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON GetUserPoolMFAConfig where
-  toJSON GetUserPoolMFAConfig' {..} =
-    object (catMaybes [Just ("UserPoolId" .= _gupmcUserPoolId)])
+        toJSON GetUserPoolMFAConfig'{..}
+          = object
+              (catMaybes [Just ("UserPoolId" .= _gupmcUserPoolId)])
 
 instance ToPath GetUserPoolMFAConfig where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery GetUserPoolMFAConfig where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'getUserPoolMFAConfigResponse' smart constructor.
 data GetUserPoolMFAConfigResponse =
@@ -108,6 +118,7 @@ data GetUserPoolMFAConfigResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetUserPoolMFAConfigResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -116,12 +127,12 @@ data GetUserPoolMFAConfigResponse =
 --
 -- * 'gupmcrsSoftwareTokenMFAConfiguration' - The software token multi-factor (MFA) configuration.
 --
--- * 'gupmcrsMFAConfiguration' - The multi-factor (MFA) configuration.
+-- * 'gupmcrsMFAConfiguration' - The multi-factor (MFA) configuration. Valid values include:     * @OFF@ MFA will not be used for any users.     * @ON@ MFA is required for all users to sign in.     * @OPTIONAL@ MFA will be required only for individual users who have an MFA factor enabled.
 --
 -- * 'gupmcrsResponseStatus' - -- | The response status code.
-getUserPoolMFAConfigResponse ::
-     Int -- ^ 'gupmcrsResponseStatus'
-  -> GetUserPoolMFAConfigResponse
+getUserPoolMFAConfigResponse
+    :: Int -- ^ 'gupmcrsResponseStatus'
+    -> GetUserPoolMFAConfigResponse
 getUserPoolMFAConfigResponse pResponseStatus_ =
   GetUserPoolMFAConfigResponse'
     { _gupmcrsSmsMFAConfiguration = Nothing
@@ -130,29 +141,21 @@ getUserPoolMFAConfigResponse pResponseStatus_ =
     , _gupmcrsResponseStatus = pResponseStatus_
     }
 
+
 -- | The SMS text message multi-factor (MFA) configuration.
-gupmcrsSmsMFAConfiguration ::
-     Lens' GetUserPoolMFAConfigResponse (Maybe SmsMFAConfigType)
-gupmcrsSmsMFAConfiguration =
-  lens _gupmcrsSmsMFAConfiguration (\s a -> s {_gupmcrsSmsMFAConfiguration = a})
+gupmcrsSmsMFAConfiguration :: Lens' GetUserPoolMFAConfigResponse (Maybe SmsMFAConfigType)
+gupmcrsSmsMFAConfiguration = lens _gupmcrsSmsMFAConfiguration (\ s a -> s{_gupmcrsSmsMFAConfiguration = a})
 
 -- | The software token multi-factor (MFA) configuration.
-gupmcrsSoftwareTokenMFAConfiguration ::
-     Lens' GetUserPoolMFAConfigResponse (Maybe SoftwareTokenMFAConfigType)
-gupmcrsSoftwareTokenMFAConfiguration =
-  lens
-    _gupmcrsSoftwareTokenMFAConfiguration
-    (\s a -> s {_gupmcrsSoftwareTokenMFAConfiguration = a})
+gupmcrsSoftwareTokenMFAConfiguration :: Lens' GetUserPoolMFAConfigResponse (Maybe SoftwareTokenMFAConfigType)
+gupmcrsSoftwareTokenMFAConfiguration = lens _gupmcrsSoftwareTokenMFAConfiguration (\ s a -> s{_gupmcrsSoftwareTokenMFAConfiguration = a})
 
--- | The multi-factor (MFA) configuration.
-gupmcrsMFAConfiguration ::
-     Lens' GetUserPoolMFAConfigResponse (Maybe UserPoolMFAType)
-gupmcrsMFAConfiguration =
-  lens _gupmcrsMFAConfiguration (\s a -> s {_gupmcrsMFAConfiguration = a})
+-- | The multi-factor (MFA) configuration. Valid values include:     * @OFF@ MFA will not be used for any users.     * @ON@ MFA is required for all users to sign in.     * @OPTIONAL@ MFA will be required only for individual users who have an MFA factor enabled.
+gupmcrsMFAConfiguration :: Lens' GetUserPoolMFAConfigResponse (Maybe UserPoolMFAType)
+gupmcrsMFAConfiguration = lens _gupmcrsMFAConfiguration (\ s a -> s{_gupmcrsMFAConfiguration = a})
 
 -- | -- | The response status code.
 gupmcrsResponseStatus :: Lens' GetUserPoolMFAConfigResponse Int
-gupmcrsResponseStatus =
-  lens _gupmcrsResponseStatus (\s a -> s {_gupmcrsResponseStatus = a})
+gupmcrsResponseStatus = lens _gupmcrsResponseStatus (\ s a -> s{_gupmcrsResponseStatus = a})
 
-instance NFData GetUserPoolMFAConfigResponse
+instance NFData GetUserPoolMFAConfigResponse where

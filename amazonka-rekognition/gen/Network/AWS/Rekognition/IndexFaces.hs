@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Rekognition.IndexFaces
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -32,23 +34,25 @@
 -- This operation requires permissions to perform the @rekognition:IndexFaces@ action.
 --
 module Network.AWS.Rekognition.IndexFaces
+    (
     -- * Creating a Request
-  ( indexFaces
-  , IndexFaces
+      indexFaces
+    , IndexFaces
     -- * Request Lenses
-  , ifExternalImageId
-  , ifDetectionAttributes
-  , ifCollectionId
-  , ifImage
+    , ifExternalImageId
+    , ifDetectionAttributes
+    , ifCollectionId
+    , ifImage
+
     -- * Destructuring the Response
-  , indexFacesResponse
-  , IndexFacesResponse
+    , indexFacesResponse
+    , IndexFacesResponse
     -- * Response Lenses
-  , ifrsFaceModelVersion
-  , ifrsFaceRecords
-  , ifrsOrientationCorrection
-  , ifrsResponseStatus
-  ) where
+    , ifrsFaceModelVersion
+    , ifrsFaceRecords
+    , ifrsOrientationCorrection
+    , ifrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -67,6 +71,7 @@ data IndexFaces =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'IndexFaces' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -78,10 +83,10 @@ data IndexFaces =
 -- * 'ifCollectionId' - The ID of an existing collection to which you want to add the faces that are detected in the input images.
 --
 -- * 'ifImage' - The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.
-indexFaces ::
-     Text -- ^ 'ifCollectionId'
-  -> Image -- ^ 'ifImage'
-  -> IndexFaces
+indexFaces
+    :: Text -- ^ 'ifCollectionId'
+    -> Image -- ^ 'ifImage'
+    -> IndexFaces
 indexFaces pCollectionId_ pImage_ =
   IndexFaces'
     { _ifExternalImageId = Nothing
@@ -90,62 +95,63 @@ indexFaces pCollectionId_ pImage_ =
     , _ifImage = pImage_
     }
 
+
 -- | ID you want to assign to all the faces detected in the image.
 ifExternalImageId :: Lens' IndexFaces (Maybe Text)
-ifExternalImageId = lens _ifExternalImageId (\s a -> s {_ifExternalImageId = a})
+ifExternalImageId = lens _ifExternalImageId (\ s a -> s{_ifExternalImageId = a})
 
 -- | An array of facial attributes that you want to be returned. This can be the default list of attributes or all attributes. If you don't specify a value for @Attributes@ or if you specify @["DEFAULT"]@ , the API returns the following subset of facial attributes: @BoundingBox@ , @Confidence@ , @Pose@ , @Quality@ and @Landmarks@ . If you provide @["ALL"]@ , all facial attributes are returned but the operation will take longer to complete. If you provide both, @["ALL", "DEFAULT"]@ , the service uses a logical AND operator to determine which attributes to return (in this case, all attributes).
 ifDetectionAttributes :: Lens' IndexFaces [Attribute]
-ifDetectionAttributes =
-  lens _ifDetectionAttributes (\s a -> s {_ifDetectionAttributes = a}) .
-  _Default . _Coerce
+ifDetectionAttributes = lens _ifDetectionAttributes (\ s a -> s{_ifDetectionAttributes = a}) . _Default . _Coerce
 
 -- | The ID of an existing collection to which you want to add the faces that are detected in the input images.
 ifCollectionId :: Lens' IndexFaces Text
-ifCollectionId = lens _ifCollectionId (\s a -> s {_ifCollectionId = a})
+ifCollectionId = lens _ifCollectionId (\ s a -> s{_ifCollectionId = a})
 
 -- | The input image as base64-encoded bytes or an S3 object. If you use the AWS CLI to call Amazon Rekognition operations, passing base64-encoded image bytes is not supported.
 ifImage :: Lens' IndexFaces Image
-ifImage = lens _ifImage (\s a -> s {_ifImage = a})
+ifImage = lens _ifImage (\ s a -> s{_ifImage = a})
 
 instance AWSRequest IndexFaces where
-  type Rs IndexFaces = IndexFacesResponse
-  request = postJSON rekognition
-  response =
-    receiveJSON
-      (\s h x ->
-         IndexFacesResponse' <$> (x .?> "FaceModelVersion") <*>
-         (x .?> "FaceRecords" .!@ mempty) <*>
-         (x .?> "OrientationCorrection") <*>
-         (pure (fromEnum s)))
+        type Rs IndexFaces = IndexFacesResponse
+        request = postJSON rekognition
+        response
+          = receiveJSON
+              (\ s h x ->
+                 IndexFacesResponse' <$>
+                   (x .?> "FaceModelVersion") <*>
+                     (x .?> "FaceRecords" .!@ mempty)
+                     <*> (x .?> "OrientationCorrection")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable IndexFaces
+instance Hashable IndexFaces where
 
-instance NFData IndexFaces
+instance NFData IndexFaces where
 
 instance ToHeaders IndexFaces where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("RekognitionService.IndexFaces" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("RekognitionService.IndexFaces" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON IndexFaces where
-  toJSON IndexFaces' {..} =
-    object
-      (catMaybes
-         [ ("ExternalImageId" .=) <$> _ifExternalImageId
-         , ("DetectionAttributes" .=) <$> _ifDetectionAttributes
-         , Just ("CollectionId" .= _ifCollectionId)
-         , Just ("Image" .= _ifImage)
-         ])
+        toJSON IndexFaces'{..}
+          = object
+              (catMaybes
+                 [("ExternalImageId" .=) <$> _ifExternalImageId,
+                  ("DetectionAttributes" .=) <$>
+                    _ifDetectionAttributes,
+                  Just ("CollectionId" .= _ifCollectionId),
+                  Just ("Image" .= _ifImage)])
 
 instance ToPath IndexFaces where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery IndexFaces where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'indexFacesResponse' smart constructor.
 data IndexFacesResponse =
@@ -156,6 +162,7 @@ data IndexFacesResponse =
     , _ifrsResponseStatus        :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'IndexFacesResponse' with the minimum fields required to make a request.
 --
@@ -168,9 +175,9 @@ data IndexFacesResponse =
 -- * 'ifrsOrientationCorrection' - The orientation of the input image (counterclockwise direction). If your application displays the image, you can use this value to correct image orientation. The bounding box coordinates returned in @FaceRecords@ represent face locations before the image orientation is corrected.
 --
 -- * 'ifrsResponseStatus' - -- | The response status code.
-indexFacesResponse ::
-     Int -- ^ 'ifrsResponseStatus'
-  -> IndexFacesResponse
+indexFacesResponse
+    :: Int -- ^ 'ifrsResponseStatus'
+    -> IndexFacesResponse
 indexFacesResponse pResponseStatus_ =
   IndexFacesResponse'
     { _ifrsFaceModelVersion = Nothing
@@ -179,25 +186,21 @@ indexFacesResponse pResponseStatus_ =
     , _ifrsResponseStatus = pResponseStatus_
     }
 
+
 -- | Version number of the face detection model associated with the input collection (@CollectionId@ ).
 ifrsFaceModelVersion :: Lens' IndexFacesResponse (Maybe Text)
-ifrsFaceModelVersion =
-  lens _ifrsFaceModelVersion (\s a -> s {_ifrsFaceModelVersion = a})
+ifrsFaceModelVersion = lens _ifrsFaceModelVersion (\ s a -> s{_ifrsFaceModelVersion = a})
 
 -- | An array of faces detected and added to the collection. For more information, see 'collections-index-faces' .
 ifrsFaceRecords :: Lens' IndexFacesResponse [FaceRecord]
-ifrsFaceRecords =
-  lens _ifrsFaceRecords (\s a -> s {_ifrsFaceRecords = a}) . _Default . _Coerce
+ifrsFaceRecords = lens _ifrsFaceRecords (\ s a -> s{_ifrsFaceRecords = a}) . _Default . _Coerce
 
 -- | The orientation of the input image (counterclockwise direction). If your application displays the image, you can use this value to correct image orientation. The bounding box coordinates returned in @FaceRecords@ represent face locations before the image orientation is corrected.
-ifrsOrientationCorrection ::
-     Lens' IndexFacesResponse (Maybe OrientationCorrection)
-ifrsOrientationCorrection =
-  lens _ifrsOrientationCorrection (\s a -> s {_ifrsOrientationCorrection = a})
+ifrsOrientationCorrection :: Lens' IndexFacesResponse (Maybe OrientationCorrection)
+ifrsOrientationCorrection = lens _ifrsOrientationCorrection (\ s a -> s{_ifrsOrientationCorrection = a})
 
 -- | -- | The response status code.
 ifrsResponseStatus :: Lens' IndexFacesResponse Int
-ifrsResponseStatus =
-  lens _ifrsResponseStatus (\s a -> s {_ifrsResponseStatus = a})
+ifrsResponseStatus = lens _ifrsResponseStatus (\ s a -> s{_ifrsResponseStatus = a})
 
-instance NFData IndexFacesResponse
+instance NFData IndexFacesResponse where

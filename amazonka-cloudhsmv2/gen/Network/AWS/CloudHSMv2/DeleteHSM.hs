@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CloudHSMv2.DeleteHSM
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,21 +22,23 @@
 --
 --
 module Network.AWS.CloudHSMv2.DeleteHSM
+    (
     -- * Creating a Request
-  ( deleteHSM
-  , DeleteHSM
+      deleteHSM
+    , DeleteHSM
     -- * Request Lenses
-  , dhEniId
-  , dhHSMId
-  , dhEniIP
-  , dhClusterId
+    , dhEniId
+    , dhHSMId
+    , dhEniIP
+    , dhClusterId
+
     -- * Destructuring the Response
-  , deleteHSMResponse
-  , DeleteHSMResponse
+    , deleteHSMResponse
+    , DeleteHSMResponse
     -- * Response Lenses
-  , dhrsHSMId
-  , dhrsResponseStatus
-  ) where
+    , dhrsHSMId
+    , dhrsResponseStatus
+    ) where
 
 import Network.AWS.CloudHSMv2.Types
 import Network.AWS.CloudHSMv2.Types.Product
@@ -53,6 +57,7 @@ data DeleteHSM =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteHSM' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -64,9 +69,9 @@ data DeleteHSM =
 -- * 'dhEniIP' - The IP address of the elastic network interface (ENI) of the HSM that you are deleting.
 --
 -- * 'dhClusterId' - The identifier (ID) of the cluster that contains the HSM that you are deleting.
-deleteHSM ::
-     Text -- ^ 'dhClusterId'
-  -> DeleteHSM
+deleteHSM
+    :: Text -- ^ 'dhClusterId'
+    -> DeleteHSM
 deleteHSM pClusterId_ =
   DeleteHSM'
     { _dhEniId = Nothing
@@ -75,56 +80,58 @@ deleteHSM pClusterId_ =
     , _dhClusterId = pClusterId_
     }
 
+
 -- | The identifier (ID) of the elastic network interface (ENI) of the HSM that you are deleting.
 dhEniId :: Lens' DeleteHSM (Maybe Text)
-dhEniId = lens _dhEniId (\s a -> s {_dhEniId = a})
+dhEniId = lens _dhEniId (\ s a -> s{_dhEniId = a})
 
 -- | The identifier (ID) of the HSM that you are deleting.
 dhHSMId :: Lens' DeleteHSM (Maybe Text)
-dhHSMId = lens _dhHSMId (\s a -> s {_dhHSMId = a})
+dhHSMId = lens _dhHSMId (\ s a -> s{_dhHSMId = a})
 
 -- | The IP address of the elastic network interface (ENI) of the HSM that you are deleting.
 dhEniIP :: Lens' DeleteHSM (Maybe Text)
-dhEniIP = lens _dhEniIP (\s a -> s {_dhEniIP = a})
+dhEniIP = lens _dhEniIP (\ s a -> s{_dhEniIP = a})
 
 -- | The identifier (ID) of the cluster that contains the HSM that you are deleting.
 dhClusterId :: Lens' DeleteHSM Text
-dhClusterId = lens _dhClusterId (\s a -> s {_dhClusterId = a})
+dhClusterId = lens _dhClusterId (\ s a -> s{_dhClusterId = a})
 
 instance AWSRequest DeleteHSM where
-  type Rs DeleteHSM = DeleteHSMResponse
-  request = postJSON cloudHSMv2
-  response =
-    receiveJSON
-      (\s h x -> DeleteHSMResponse' <$> (x .?> "HsmId") <*> (pure (fromEnum s)))
+        type Rs DeleteHSM = DeleteHSMResponse
+        request = postJSON cloudHSMv2
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DeleteHSMResponse' <$>
+                   (x .?> "HsmId") <*> (pure (fromEnum s)))
 
-instance Hashable DeleteHSM
+instance Hashable DeleteHSM where
 
-instance NFData DeleteHSM
+instance NFData DeleteHSM where
 
 instance ToHeaders DeleteHSM where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("BaldrApiService.DeleteHsm" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("BaldrApiService.DeleteHsm" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DeleteHSM where
-  toJSON DeleteHSM' {..} =
-    object
-      (catMaybes
-         [ ("EniId" .=) <$> _dhEniId
-         , ("HsmId" .=) <$> _dhHSMId
-         , ("EniIp" .=) <$> _dhEniIP
-         , Just ("ClusterId" .= _dhClusterId)
-         ])
+        toJSON DeleteHSM'{..}
+          = object
+              (catMaybes
+                 [("EniId" .=) <$> _dhEniId,
+                  ("HsmId" .=) <$> _dhHSMId, ("EniIp" .=) <$> _dhEniIP,
+                  Just ("ClusterId" .= _dhClusterId)])
 
 instance ToPath DeleteHSM where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DeleteHSM where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'deleteHSMResponse' smart constructor.
 data DeleteHSMResponse =
@@ -134,6 +141,7 @@ data DeleteHSMResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteHSMResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -141,20 +149,20 @@ data DeleteHSMResponse =
 -- * 'dhrsHSMId' - The identifier (ID) of the HSM that was deleted.
 --
 -- * 'dhrsResponseStatus' - -- | The response status code.
-deleteHSMResponse ::
-     Int -- ^ 'dhrsResponseStatus'
-  -> DeleteHSMResponse
+deleteHSMResponse
+    :: Int -- ^ 'dhrsResponseStatus'
+    -> DeleteHSMResponse
 deleteHSMResponse pResponseStatus_ =
   DeleteHSMResponse'
     {_dhrsHSMId = Nothing, _dhrsResponseStatus = pResponseStatus_}
 
+
 -- | The identifier (ID) of the HSM that was deleted.
 dhrsHSMId :: Lens' DeleteHSMResponse (Maybe Text)
-dhrsHSMId = lens _dhrsHSMId (\s a -> s {_dhrsHSMId = a})
+dhrsHSMId = lens _dhrsHSMId (\ s a -> s{_dhrsHSMId = a})
 
 -- | -- | The response status code.
 dhrsResponseStatus :: Lens' DeleteHSMResponse Int
-dhrsResponseStatus =
-  lens _dhrsResponseStatus (\s a -> s {_dhrsResponseStatus = a})
+dhrsResponseStatus = lens _dhrsResponseStatus (\ s a -> s{_dhrsResponseStatus = a})
 
-instance NFData DeleteHSMResponse
+instance NFData DeleteHSMResponse where

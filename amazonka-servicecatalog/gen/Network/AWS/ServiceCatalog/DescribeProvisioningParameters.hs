@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.ServiceCatalog.DescribeProvisioningParameters
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,24 +24,26 @@
 -- If the output contains a TagOption key with an empty list of values, there is a TagOption conflict for that key. The end user cannot take action to fix the conflict, and launch is not blocked. In subsequent calls to 'ProvisionProduct' , do not include conflicted TagOption keys as tags, or this causes the error "Parameter validation failed: Missing required parameter in Tags[/N/ ]:/Value/ ". Tag the provisioned product with the value @sc-tagoption-conflict-portfolioId-productId@ .
 --
 module Network.AWS.ServiceCatalog.DescribeProvisioningParameters
+    (
     -- * Creating a Request
-  ( describeProvisioningParameters
-  , DescribeProvisioningParameters
+      describeProvisioningParameters
+    , DescribeProvisioningParameters
     -- * Request Lenses
-  , dppsAcceptLanguage
-  , dppsPathId
-  , dppsProductId
-  , dppsProvisioningArtifactId
+    , dppsAcceptLanguage
+    , dppsPathId
+    , dppsProductId
+    , dppsProvisioningArtifactId
+
     -- * Destructuring the Response
-  , describeProvisioningParametersResponse
-  , DescribeProvisioningParametersResponse
+    , describeProvisioningParametersResponse
+    , DescribeProvisioningParametersResponse
     -- * Response Lenses
-  , dpprsProvisioningArtifactParameters
-  , dpprsUsageInstructions
-  , dpprsConstraintSummaries
-  , dpprsTagOptions
-  , dpprsResponseStatus
-  ) where
+    , dpprsProvisioningArtifactParameters
+    , dpprsUsageInstructions
+    , dpprsConstraintSummaries
+    , dpprsTagOptions
+    , dpprsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -58,6 +62,7 @@ data DescribeProvisioningParameters =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeProvisioningParameters' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -69,10 +74,10 @@ data DescribeProvisioningParameters =
 -- * 'dppsProductId' - The product identifier.
 --
 -- * 'dppsProvisioningArtifactId' - The identifier of the provisioning artifact.
-describeProvisioningParameters ::
-     Text -- ^ 'dppsProductId'
-  -> Text -- ^ 'dppsProvisioningArtifactId'
-  -> DescribeProvisioningParameters
+describeProvisioningParameters
+    :: Text -- ^ 'dppsProductId'
+    -> Text -- ^ 'dppsProvisioningArtifactId'
+    -> DescribeProvisioningParameters
 describeProvisioningParameters pProductId_ pProvisioningArtifactId_ =
   DescribeProvisioningParameters'
     { _dppsAcceptLanguage = Nothing
@@ -81,65 +86,70 @@ describeProvisioningParameters pProductId_ pProvisioningArtifactId_ =
     , _dppsProvisioningArtifactId = pProvisioningArtifactId_
     }
 
+
 -- | The language code.     * @en@ - English (default)     * @jp@ - Japanese     * @zh@ - Chinese
 dppsAcceptLanguage :: Lens' DescribeProvisioningParameters (Maybe Text)
-dppsAcceptLanguage =
-  lens _dppsAcceptLanguage (\s a -> s {_dppsAcceptLanguage = a})
+dppsAcceptLanguage = lens _dppsAcceptLanguage (\ s a -> s{_dppsAcceptLanguage = a})
 
 -- | The path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path. To list the paths for a product, use 'ListLaunchPaths' .
 dppsPathId :: Lens' DescribeProvisioningParameters (Maybe Text)
-dppsPathId = lens _dppsPathId (\s a -> s {_dppsPathId = a})
+dppsPathId = lens _dppsPathId (\ s a -> s{_dppsPathId = a})
 
 -- | The product identifier.
 dppsProductId :: Lens' DescribeProvisioningParameters Text
-dppsProductId = lens _dppsProductId (\s a -> s {_dppsProductId = a})
+dppsProductId = lens _dppsProductId (\ s a -> s{_dppsProductId = a})
 
 -- | The identifier of the provisioning artifact.
 dppsProvisioningArtifactId :: Lens' DescribeProvisioningParameters Text
-dppsProvisioningArtifactId =
-  lens _dppsProvisioningArtifactId (\s a -> s {_dppsProvisioningArtifactId = a})
+dppsProvisioningArtifactId = lens _dppsProvisioningArtifactId (\ s a -> s{_dppsProvisioningArtifactId = a})
 
-instance AWSRequest DescribeProvisioningParameters where
-  type Rs DescribeProvisioningParameters = DescribeProvisioningParametersResponse
-  request = postJSON serviceCatalog
-  response =
-    receiveJSON
-      (\s h x ->
-         DescribeProvisioningParametersResponse' <$>
-         (x .?> "ProvisioningArtifactParameters" .!@ mempty) <*>
-         (x .?> "UsageInstructions" .!@ mempty) <*>
-         (x .?> "ConstraintSummaries" .!@ mempty) <*>
-         (x .?> "TagOptions" .!@ mempty) <*>
-         (pure (fromEnum s)))
+instance AWSRequest DescribeProvisioningParameters
+         where
+        type Rs DescribeProvisioningParameters =
+             DescribeProvisioningParametersResponse
+        request = postJSON serviceCatalog
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DescribeProvisioningParametersResponse' <$>
+                   (x .?> "ProvisioningArtifactParameters" .!@ mempty)
+                     <*> (x .?> "UsageInstructions" .!@ mempty)
+                     <*> (x .?> "ConstraintSummaries" .!@ mempty)
+                     <*> (x .?> "TagOptions" .!@ mempty)
+                     <*> (pure (fromEnum s)))
 
 instance Hashable DescribeProvisioningParameters
+         where
 
-instance NFData DescribeProvisioningParameters
+instance NFData DescribeProvisioningParameters where
 
-instance ToHeaders DescribeProvisioningParameters where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AWS242ServiceCatalogService.DescribeProvisioningParameters" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+instance ToHeaders DescribeProvisioningParameters
+         where
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWS242ServiceCatalogService.DescribeProvisioningParameters"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DescribeProvisioningParameters where
-  toJSON DescribeProvisioningParameters' {..} =
-    object
-      (catMaybes
-         [ ("AcceptLanguage" .=) <$> _dppsAcceptLanguage
-         , ("PathId" .=) <$> _dppsPathId
-         , Just ("ProductId" .= _dppsProductId)
-         , Just ("ProvisioningArtifactId" .= _dppsProvisioningArtifactId)
-         ])
+        toJSON DescribeProvisioningParameters'{..}
+          = object
+              (catMaybes
+                 [("AcceptLanguage" .=) <$> _dppsAcceptLanguage,
+                  ("PathId" .=) <$> _dppsPathId,
+                  Just ("ProductId" .= _dppsProductId),
+                  Just
+                    ("ProvisioningArtifactId" .=
+                       _dppsProvisioningArtifactId)])
 
 instance ToPath DescribeProvisioningParameters where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DescribeProvisioningParameters where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'describeProvisioningParametersResponse' smart constructor.
 data DescribeProvisioningParametersResponse =
@@ -151,6 +161,7 @@ data DescribeProvisioningParametersResponse =
     , _dpprsResponseStatus :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'DescribeProvisioningParametersResponse' with the minimum fields required to make a request.
 --
@@ -165,9 +176,9 @@ data DescribeProvisioningParametersResponse =
 -- * 'dpprsTagOptions' - Information about the TagOptions associated with the resource.
 --
 -- * 'dpprsResponseStatus' - -- | The response status code.
-describeProvisioningParametersResponse ::
-     Int -- ^ 'dpprsResponseStatus'
-  -> DescribeProvisioningParametersResponse
+describeProvisioningParametersResponse
+    :: Int -- ^ 'dpprsResponseStatus'
+    -> DescribeProvisioningParametersResponse
 describeProvisioningParametersResponse pResponseStatus_ =
   DescribeProvisioningParametersResponse'
     { _dpprsProvisioningArtifactParameters = Nothing
@@ -177,38 +188,27 @@ describeProvisioningParametersResponse pResponseStatus_ =
     , _dpprsResponseStatus = pResponseStatus_
     }
 
+
 -- | Information about the parameters used to provision the product.
-dpprsProvisioningArtifactParameters ::
-     Lens' DescribeProvisioningParametersResponse [ProvisioningArtifactParameter]
-dpprsProvisioningArtifactParameters =
-  lens
-    _dpprsProvisioningArtifactParameters
-    (\s a -> s {_dpprsProvisioningArtifactParameters = a}) .
-  _Default . _Coerce
+dpprsProvisioningArtifactParameters :: Lens' DescribeProvisioningParametersResponse [ProvisioningArtifactParameter]
+dpprsProvisioningArtifactParameters = lens _dpprsProvisioningArtifactParameters (\ s a -> s{_dpprsProvisioningArtifactParameters = a}) . _Default . _Coerce
 
 -- | Any additional metadata specifically related to the provisioning of the product. For example, see the @Version@ field of the CloudFormation template.
-dpprsUsageInstructions ::
-     Lens' DescribeProvisioningParametersResponse [UsageInstruction]
-dpprsUsageInstructions =
-  lens _dpprsUsageInstructions (\s a -> s {_dpprsUsageInstructions = a}) .
-  _Default . _Coerce
+dpprsUsageInstructions :: Lens' DescribeProvisioningParametersResponse [UsageInstruction]
+dpprsUsageInstructions = lens _dpprsUsageInstructions (\ s a -> s{_dpprsUsageInstructions = a}) . _Default . _Coerce
 
 -- | Information about the constraints used to provision the product.
-dpprsConstraintSummaries ::
-     Lens' DescribeProvisioningParametersResponse [ConstraintSummary]
-dpprsConstraintSummaries =
-  lens _dpprsConstraintSummaries (\s a -> s {_dpprsConstraintSummaries = a}) .
-  _Default . _Coerce
+dpprsConstraintSummaries :: Lens' DescribeProvisioningParametersResponse [ConstraintSummary]
+dpprsConstraintSummaries = lens _dpprsConstraintSummaries (\ s a -> s{_dpprsConstraintSummaries = a}) . _Default . _Coerce
 
 -- | Information about the TagOptions associated with the resource.
-dpprsTagOptions ::
-     Lens' DescribeProvisioningParametersResponse [TagOptionSummary]
-dpprsTagOptions =
-  lens _dpprsTagOptions (\s a -> s {_dpprsTagOptions = a}) . _Default . _Coerce
+dpprsTagOptions :: Lens' DescribeProvisioningParametersResponse [TagOptionSummary]
+dpprsTagOptions = lens _dpprsTagOptions (\ s a -> s{_dpprsTagOptions = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 dpprsResponseStatus :: Lens' DescribeProvisioningParametersResponse Int
-dpprsResponseStatus =
-  lens _dpprsResponseStatus (\s a -> s {_dpprsResponseStatus = a})
+dpprsResponseStatus = lens _dpprsResponseStatus (\ s a -> s{_dpprsResponseStatus = a})
 
-instance NFData DescribeProvisioningParametersResponse
+instance NFData
+           DescribeProvisioningParametersResponse
+         where

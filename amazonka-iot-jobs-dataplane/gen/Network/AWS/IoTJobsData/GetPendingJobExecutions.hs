@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.IoTJobsData.GetPendingJobExecutions
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,19 +22,21 @@
 --
 --
 module Network.AWS.IoTJobsData.GetPendingJobExecutions
+    (
     -- * Creating a Request
-  ( getPendingJobExecutions
-  , GetPendingJobExecutions
+      getPendingJobExecutions
+    , GetPendingJobExecutions
     -- * Request Lenses
-  , gpjeThingName
+    , gpjeThingName
+
     -- * Destructuring the Response
-  , getPendingJobExecutionsResponse
-  , GetPendingJobExecutionsResponse
+    , getPendingJobExecutionsResponse
+    , GetPendingJobExecutionsResponse
     -- * Response Lenses
-  , gpjersInProgressJobs
-  , gpjersQueuedJobs
-  , gpjersResponseStatus
-  ) where
+    , gpjersInProgressJobs
+    , gpjersQueuedJobs
+    , gpjersResponseStatus
+    ) where
 
 import Network.AWS.IoTJobsData.Types
 import Network.AWS.IoTJobsData.Types.Product
@@ -48,45 +52,48 @@ newtype GetPendingJobExecutions =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetPendingJobExecutions' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'gpjeThingName' - The name of the thing that is executing the job.
-getPendingJobExecutions ::
-     Text -- ^ 'gpjeThingName'
-  -> GetPendingJobExecutions
+getPendingJobExecutions
+    :: Text -- ^ 'gpjeThingName'
+    -> GetPendingJobExecutions
 getPendingJobExecutions pThingName_ =
   GetPendingJobExecutions' {_gpjeThingName = pThingName_}
 
+
 -- | The name of the thing that is executing the job.
 gpjeThingName :: Lens' GetPendingJobExecutions Text
-gpjeThingName = lens _gpjeThingName (\s a -> s {_gpjeThingName = a})
+gpjeThingName = lens _gpjeThingName (\ s a -> s{_gpjeThingName = a})
 
 instance AWSRequest GetPendingJobExecutions where
-  type Rs GetPendingJobExecutions = GetPendingJobExecutionsResponse
-  request = get ioTJobsData
-  response =
-    receiveJSON
-      (\s h x ->
-         GetPendingJobExecutionsResponse' <$>
-         (x .?> "inProgressJobs" .!@ mempty) <*>
-         (x .?> "queuedJobs" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs GetPendingJobExecutions =
+             GetPendingJobExecutionsResponse
+        request = get ioTJobsData
+        response
+          = receiveJSON
+              (\ s h x ->
+                 GetPendingJobExecutionsResponse' <$>
+                   (x .?> "inProgressJobs" .!@ mempty) <*>
+                     (x .?> "queuedJobs" .!@ mempty)
+                     <*> (pure (fromEnum s)))
 
-instance Hashable GetPendingJobExecutions
+instance Hashable GetPendingJobExecutions where
 
-instance NFData GetPendingJobExecutions
+instance NFData GetPendingJobExecutions where
 
 instance ToHeaders GetPendingJobExecutions where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath GetPendingJobExecutions where
-  toPath GetPendingJobExecutions' {..} =
-    mconcat ["/things/", toBS _gpjeThingName, "/jobs"]
+        toPath GetPendingJobExecutions'{..}
+          = mconcat ["/things/", toBS _gpjeThingName, "/jobs"]
 
 instance ToQuery GetPendingJobExecutions where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'getPendingJobExecutionsResponse' smart constructor.
 data GetPendingJobExecutionsResponse =
@@ -97,6 +104,7 @@ data GetPendingJobExecutionsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetPendingJobExecutionsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -106,9 +114,9 @@ data GetPendingJobExecutionsResponse =
 -- * 'gpjersQueuedJobs' - A list of JobExecutionSummary objects with status QUEUED.
 --
 -- * 'gpjersResponseStatus' - -- | The response status code.
-getPendingJobExecutionsResponse ::
-     Int -- ^ 'gpjersResponseStatus'
-  -> GetPendingJobExecutionsResponse
+getPendingJobExecutionsResponse
+    :: Int -- ^ 'gpjersResponseStatus'
+    -> GetPendingJobExecutionsResponse
 getPendingJobExecutionsResponse pResponseStatus_ =
   GetPendingJobExecutionsResponse'
     { _gpjersInProgressJobs = Nothing
@@ -116,22 +124,17 @@ getPendingJobExecutionsResponse pResponseStatus_ =
     , _gpjersResponseStatus = pResponseStatus_
     }
 
+
 -- | A list of JobExecutionSummary objects with status IN_PROGRESS.
-gpjersInProgressJobs ::
-     Lens' GetPendingJobExecutionsResponse [JobExecutionSummary]
-gpjersInProgressJobs =
-  lens _gpjersInProgressJobs (\s a -> s {_gpjersInProgressJobs = a}) .
-  _Default . _Coerce
+gpjersInProgressJobs :: Lens' GetPendingJobExecutionsResponse [JobExecutionSummary]
+gpjersInProgressJobs = lens _gpjersInProgressJobs (\ s a -> s{_gpjersInProgressJobs = a}) . _Default . _Coerce
 
 -- | A list of JobExecutionSummary objects with status QUEUED.
 gpjersQueuedJobs :: Lens' GetPendingJobExecutionsResponse [JobExecutionSummary]
-gpjersQueuedJobs =
-  lens _gpjersQueuedJobs (\s a -> s {_gpjersQueuedJobs = a}) .
-  _Default . _Coerce
+gpjersQueuedJobs = lens _gpjersQueuedJobs (\ s a -> s{_gpjersQueuedJobs = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 gpjersResponseStatus :: Lens' GetPendingJobExecutionsResponse Int
-gpjersResponseStatus =
-  lens _gpjersResponseStatus (\s a -> s {_gpjersResponseStatus = a})
+gpjersResponseStatus = lens _gpjersResponseStatus (\ s a -> s{_gpjersResponseStatus = a})
 
-instance NFData GetPendingJobExecutionsResponse
+instance NFData GetPendingJobExecutionsResponse where

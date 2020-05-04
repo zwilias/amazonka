@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.AppSync.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,113 +11,269 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.AppSync.Types
+    (
     -- * Service Configuration
-  ( appSync
+      appSync
+
     -- * Errors
-  , _APIKeyValidityOutOfBoundsException
-  , _APIKeyLimitExceededException
-  , _APILimitExceededException
-  , _NotFoundException
-  , _GraphQLSchemaException
-  , _ConcurrentModificationException
-  , _InternalFailureException
-  , _UnauthorizedException
-  , _BadRequestException
-  , _LimitExceededException
+    , _APIKeyValidityOutOfBoundsException
+    , _AccessDeniedException
+    , _APIKeyLimitExceededException
+    , _APILimitExceededException
+    , _NotFoundException
+    , _GraphQLSchemaException
+    , _ConcurrentModificationException
+    , _InternalFailureException
+    , _UnauthorizedException
+    , _BadRequestException
+    , _LimitExceededException
+
+    -- * APICacheStatus
+    , APICacheStatus (..)
+
+    -- * APICacheType
+    , APICacheType (..)
+
+    -- * APICachingBehavior
+    , APICachingBehavior (..)
+
     -- * AuthenticationType
-  , AuthenticationType(..)
+    , AuthenticationType (..)
+
+    -- * AuthorizationType
+    , AuthorizationType (..)
+
+    -- * ConflictDetectionType
+    , ConflictDetectionType (..)
+
+    -- * ConflictHandlerType
+    , ConflictHandlerType (..)
+
     -- * DataSourceType
-  , DataSourceType(..)
+    , DataSourceType (..)
+
     -- * DefaultAction
-  , DefaultAction(..)
+    , DefaultAction (..)
+
     -- * FieldLogLevel
-  , FieldLogLevel(..)
+    , FieldLogLevel (..)
+
     -- * OutputType
-  , OutputType(..)
+    , OutputType (..)
+
+    -- * RelationalDatabaseSourceType
+    , RelationalDatabaseSourceType (..)
+
+    -- * ResolverKind
+    , ResolverKind (..)
+
     -- * SchemaStatus
-  , SchemaStatus(..)
+    , SchemaStatus (..)
+
     -- * TypeDefinitionFormat
-  , TypeDefinitionFormat(..)
+    , TypeDefinitionFormat (..)
+
+    -- * APICache
+    , APICache
+    , apiCache
+    , acTtl
+    , acStatus
+    , acAtRestEncryptionEnabled
+    , acTransitEncryptionEnabled
+    , acApiCachingBehavior
+    , acType
+
     -- * APIKey
-  , APIKey
-  , apiKey
-  , akExpires
-  , akId
-  , akDescription
+    , APIKey
+    , apiKey
+    , akExpires
+    , akId
+    , akDescription
+
+    -- * AWSIAMConfig
+    , AWSIAMConfig
+    , awsIAMConfig
+    , aicSigningServiceName
+    , aicSigningRegion
+
+    -- * AdditionalAuthenticationProvider
+    , AdditionalAuthenticationProvider
+    , additionalAuthenticationProvider
+    , aapOpenIdConnectConfig
+    , aapUserPoolConfig
+    , aapAuthenticationType
+
+    -- * AuthorizationConfig
+    , AuthorizationConfig
+    , authorizationConfig
+    , acAwsIAMConfig
+    , acAuthorizationType
+
+    -- * CachingConfig
+    , CachingConfig
+    , cachingConfig
+    , ccTtl
+    , ccCachingKeys
+
+    -- * CognitoUserPoolConfig
+    , CognitoUserPoolConfig
+    , cognitoUserPoolConfig
+    , cupcAppIdClientRegex
+    , cupcUserPoolId
+    , cupcAwsRegion
+
     -- * DataSource
-  , DataSource
-  , dataSource
-  , dsServiceRoleARN
-  , dsDataSourceARN
-  , dsDynamodbConfig
-  , dsName
-  , dsLambdaConfig
-  , dsType
-  , dsDescription
-  , dsElasticsearchConfig
+    , DataSource
+    , dataSource
+    , dsServiceRoleARN
+    , dsRelationalDatabaseConfig
+    , dsDataSourceARN
+    , dsDynamodbConfig
+    , dsName
+    , dsHttpConfig
+    , dsLambdaConfig
+    , dsType
+    , dsDescription
+    , dsElasticsearchConfig
+
+    -- * DeltaSyncConfig
+    , DeltaSyncConfig
+    , deltaSyncConfig
+    , dscBaseTableTTL
+    , dscDeltaSyncTableName
+    , dscDeltaSyncTableTTL
+
     -- * DynamodbDataSourceConfig
-  , DynamodbDataSourceConfig
-  , dynamodbDataSourceConfig
-  , ddscUseCallerCredentials
-  , ddscTableName
-  , ddscAwsRegion
+    , DynamodbDataSourceConfig
+    , dynamodbDataSourceConfig
+    , ddscVersioned
+    , ddscUseCallerCredentials
+    , ddscDeltaSyncConfig
+    , ddscTableName
+    , ddscAwsRegion
+
     -- * ElasticsearchDataSourceConfig
-  , ElasticsearchDataSourceConfig
-  , elasticsearchDataSourceConfig
-  , edscEndpoint
-  , edscAwsRegion
+    , ElasticsearchDataSourceConfig
+    , elasticsearchDataSourceConfig
+    , edscEndpoint
+    , edscAwsRegion
+
+    -- * FunctionConfiguration
+    , FunctionConfiguration
+    , functionConfiguration
+    , fcFunctionARN
+    , fcDataSourceName
+    , fcRequestMappingTemplate
+    , fcName
+    , fcFunctionId
+    , fcResponseMappingTemplate
+    , fcFunctionVersion
+    , fcDescription
+
     -- * GraphqlAPI
-  , GraphqlAPI
-  , graphqlAPI
-  , gaArn
-  , gaApiId
-  , gaUris
-  , gaOpenIdConnectConfig
-  , gaName
-  , gaUserPoolConfig
-  , gaAuthenticationType
-  , gaLogConfig
+    , GraphqlAPI
+    , graphqlAPI
+    , gaXrayEnabled
+    , gaArn
+    , gaApiId
+    , gaUris
+    , gaOpenIdConnectConfig
+    , gaAdditionalAuthenticationProviders
+    , gaName
+    , gaUserPoolConfig
+    , gaAuthenticationType
+    , gaLogConfig
+    , gaTags
+
+    -- * HTTPDataSourceConfig
+    , HTTPDataSourceConfig
+    , hTTPDataSourceConfig
+    , httpdscAuthorizationConfig
+    , httpdscEndpoint
+
+    -- * LambdaConflictHandlerConfig
+    , LambdaConflictHandlerConfig
+    , lambdaConflictHandlerConfig
+    , lchcLambdaConflictHandlerARN
+
     -- * LambdaDataSourceConfig
-  , LambdaDataSourceConfig
-  , lambdaDataSourceConfig
-  , ldscLambdaFunctionARN
+    , LambdaDataSourceConfig
+    , lambdaDataSourceConfig
+    , ldscLambdaFunctionARN
+
     -- * LogConfig
-  , LogConfig
-  , logConfig
-  , lcFieldLogLevel
-  , lcCloudWatchLogsRoleARN
+    , LogConfig
+    , logConfig
+    , lcExcludeVerboseContent
+    , lcFieldLogLevel
+    , lcCloudWatchLogsRoleARN
+
     -- * OpenIdConnectConfig
-  , OpenIdConnectConfig
-  , openIdConnectConfig
-  , oiccAuthTTL
-  , oiccClientId
-  , oiccIatTTL
-  , oiccIssuer
+    , OpenIdConnectConfig
+    , openIdConnectConfig
+    , oiccAuthTTL
+    , oiccClientId
+    , oiccIatTTL
+    , oiccIssuer
+
+    -- * PipelineConfig
+    , PipelineConfig
+    , pipelineConfig
+    , pcFunctions
+
+    -- * RDSHTTPEndpointConfig
+    , RDSHTTPEndpointConfig
+    , rdsHTTPEndpointConfig
+    , rhttpecDbClusterIdentifier
+    , rhttpecSchema
+    , rhttpecDatabaseName
+    , rhttpecAwsRegion
+    , rhttpecAwsSecretStoreARN
+
+    -- * RelationalDatabaseDataSourceConfig
+    , RelationalDatabaseDataSourceConfig
+    , relationalDatabaseDataSourceConfig
+    , rddscRelationalDatabaseSourceType
+    , rddscRdsHTTPEndpointConfig
+
     -- * Resolver
-  , Resolver
-  , resolver
-  , rTypeName
-  , rDataSourceName
-  , rRequestMappingTemplate
-  , rResolverARN
-  , rResponseMappingTemplate
-  , rFieldName
+    , Resolver
+    , resolver
+    , rTypeName
+    , rDataSourceName
+    , rRequestMappingTemplate
+    , rKind
+    , rResolverARN
+    , rCachingConfig
+    , rResponseMappingTemplate
+    , rFieldName
+    , rSyncConfig
+    , rPipelineConfig
+
+    -- * SyncConfig
+    , SyncConfig
+    , syncConfig
+    , scConflictHandler
+    , scConflictDetection
+    , scLambdaConflictHandlerConfig
+
     -- * Type
-  , Type
-  , type'
-  , tArn
-  , tDefinition
-  , tFormat
-  , tName
-  , tDescription
+    , Type
+    , type'
+    , tArn
+    , tDefinition
+    , tFormat
+    , tName
+    , tDescription
+
     -- * UserPoolConfig
-  , UserPoolConfig
-  , userPoolConfig
-  , upcAppIdClientRegex
-  , upcUserPoolId
-  , upcAwsRegion
-  , upcDefaultAction
-  ) where
+    , UserPoolConfig
+    , userPoolConfig
+    , upcAppIdClientRegex
+    , upcUserPoolId
+    , upcAwsRegion
+    , upcDefaultAction
+    ) where
 
 import Network.AWS.AppSync.Types.Product
 import Network.AWS.AppSync.Types.Sum
@@ -162,81 +319,92 @@ appSync =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | The API key expiration must be set to a value between 1 and 365 days from creation (for @CreateApiKey@ ) or from update (for @UpdateApiKey@ ).
 --
 --
-_APIKeyValidityOutOfBoundsException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_APIKeyValidityOutOfBoundsException :: AsError a => Getting (First ServiceError) a ServiceError
 _APIKeyValidityOutOfBoundsException =
   _MatchServiceError appSync "ApiKeyValidityOutOfBoundsException" .
   hasStatus 400
 
+
+-- | You do not have access to perform this operation on this resource.
+--
+--
+_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
+_AccessDeniedException =
+  _MatchServiceError appSync "AccessDeniedException" . hasStatus 403
+
+
 -- | The API key exceeded a limit. Try your request again.
 --
 --
-_APIKeyLimitExceededException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_APIKeyLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _APIKeyLimitExceededException =
   _MatchServiceError appSync "ApiKeyLimitExceededException" . hasStatus 400
+
 
 -- | The GraphQL API exceeded a limit. Try your request again.
 --
 --
-_APILimitExceededException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_APILimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _APILimitExceededException =
   _MatchServiceError appSync "ApiLimitExceededException" . hasStatus 400
 
--- | The resource specified in the request was not found. Check the resource and try again.
+
+-- | The resource specified in the request was not found. Check the resource, and then try again.
 --
 --
 _NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _NotFoundException =
   _MatchServiceError appSync "NotFoundException" . hasStatus 404
 
+
 -- | The GraphQL schema is not valid.
 --
 --
-_GraphQLSchemaException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_GraphQLSchemaException :: AsError a => Getting (First ServiceError) a ServiceError
 _GraphQLSchemaException =
   _MatchServiceError appSync "GraphQLSchemaException" . hasStatus 400
 
--- | Another modification is being made. That modification must complete before you can make your change.
+
+-- | Another modification is in progress at this time and it must complete before you can make your change.
 --
 --
-_ConcurrentModificationException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
 _ConcurrentModificationException =
   _MatchServiceError appSync "ConcurrentModificationException" . hasStatus 409
+
 
 -- | An internal AWS AppSync error occurred. Try your request again.
 --
 --
-_InternalFailureException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalFailureException =
   _MatchServiceError appSync "InternalFailureException" . hasStatus 500
+
 
 -- | You are not authorized to perform this operation.
 --
 --
-_UnauthorizedException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_UnauthorizedException :: AsError a => Getting (First ServiceError) a ServiceError
 _UnauthorizedException =
   _MatchServiceError appSync "UnauthorizedException" . hasStatus 401
 
--- | The request is not well formed. For example, a value is invalid or a required field is missing. Check the field values, and try again.
+
+-- | The request is not well formed. For example, a value is invalid or a required field is missing. Check the field values, and then try again.
 --
 --
 _BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
 _BadRequestException =
   _MatchServiceError appSync "BadRequestException" . hasStatus 400
 
+
 -- | The request exceeded a limit. Try your request again.
 --
 --
-_LimitExceededException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException =
   _MatchServiceError appSync "LimitExceededException" . hasStatus 429
+

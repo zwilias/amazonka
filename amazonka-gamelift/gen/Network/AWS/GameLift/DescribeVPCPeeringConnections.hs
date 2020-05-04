@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.GameLift.DescribeVPCPeeringConnections
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -38,18 +40,20 @@
 --
 --
 module Network.AWS.GameLift.DescribeVPCPeeringConnections
+    (
     -- * Creating a Request
-  ( describeVPCPeeringConnections
-  , DescribeVPCPeeringConnections
+      describeVPCPeeringConnections
+    , DescribeVPCPeeringConnections
     -- * Request Lenses
-  , dvpcpcFleetId
+    , dvpcpcFleetId
+
     -- * Destructuring the Response
-  , describeVPCPeeringConnectionsResponse
-  , DescribeVPCPeeringConnectionsResponse
+    , describeVPCPeeringConnectionsResponse
+    , DescribeVPCPeeringConnectionsResponse
     -- * Response Lenses
-  , dvpcpcrsVPCPeeringConnections
-  , dvpcpcrsResponseStatus
-  ) where
+    , dvpcpcrsVPCPeeringConnections
+    , dvpcpcrsResponseStatus
+    ) where
 
 import Network.AWS.GameLift.Types
 import Network.AWS.GameLift.Types.Product
@@ -69,51 +73,59 @@ newtype DescribeVPCPeeringConnections =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeVPCPeeringConnections' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dvpcpcFleetId' - Unique identifier for a fleet.
-describeVPCPeeringConnections :: DescribeVPCPeeringConnections
+describeVPCPeeringConnections
+    :: DescribeVPCPeeringConnections
 describeVPCPeeringConnections =
   DescribeVPCPeeringConnections' {_dvpcpcFleetId = Nothing}
 
+
 -- | Unique identifier for a fleet.
 dvpcpcFleetId :: Lens' DescribeVPCPeeringConnections (Maybe Text)
-dvpcpcFleetId = lens _dvpcpcFleetId (\s a -> s {_dvpcpcFleetId = a})
+dvpcpcFleetId = lens _dvpcpcFleetId (\ s a -> s{_dvpcpcFleetId = a})
 
-instance AWSRequest DescribeVPCPeeringConnections where
-  type Rs DescribeVPCPeeringConnections = DescribeVPCPeeringConnectionsResponse
-  request = postJSON gameLift
-  response =
-    receiveJSON
-      (\s h x ->
-         DescribeVPCPeeringConnectionsResponse' <$>
-         (x .?> "VpcPeeringConnections" .!@ mempty) <*>
-         (pure (fromEnum s)))
+instance AWSRequest DescribeVPCPeeringConnections
+         where
+        type Rs DescribeVPCPeeringConnections =
+             DescribeVPCPeeringConnectionsResponse
+        request = postJSON gameLift
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DescribeVPCPeeringConnectionsResponse' <$>
+                   (x .?> "VpcPeeringConnections" .!@ mempty) <*>
+                     (pure (fromEnum s)))
 
-instance Hashable DescribeVPCPeeringConnections
+instance Hashable DescribeVPCPeeringConnections where
 
-instance NFData DescribeVPCPeeringConnections
+instance NFData DescribeVPCPeeringConnections where
 
-instance ToHeaders DescribeVPCPeeringConnections where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("GameLift.DescribeVpcPeeringConnections" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+instance ToHeaders DescribeVPCPeeringConnections
+         where
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("GameLift.DescribeVpcPeeringConnections" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DescribeVPCPeeringConnections where
-  toJSON DescribeVPCPeeringConnections' {..} =
-    object (catMaybes [("FleetId" .=) <$> _dvpcpcFleetId])
+        toJSON DescribeVPCPeeringConnections'{..}
+          = object
+              (catMaybes [("FleetId" .=) <$> _dvpcpcFleetId])
 
 instance ToPath DescribeVPCPeeringConnections where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DescribeVPCPeeringConnections where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | Represents the returned data in response to a request action.
 --
@@ -127,6 +139,7 @@ data DescribeVPCPeeringConnectionsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeVPCPeeringConnectionsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -134,27 +147,23 @@ data DescribeVPCPeeringConnectionsResponse =
 -- * 'dvpcpcrsVPCPeeringConnections' - Collection of VPC peering connection records that match the request.
 --
 -- * 'dvpcpcrsResponseStatus' - -- | The response status code.
-describeVPCPeeringConnectionsResponse ::
-     Int -- ^ 'dvpcpcrsResponseStatus'
-  -> DescribeVPCPeeringConnectionsResponse
+describeVPCPeeringConnectionsResponse
+    :: Int -- ^ 'dvpcpcrsResponseStatus'
+    -> DescribeVPCPeeringConnectionsResponse
 describeVPCPeeringConnectionsResponse pResponseStatus_ =
   DescribeVPCPeeringConnectionsResponse'
     { _dvpcpcrsVPCPeeringConnections = Nothing
     , _dvpcpcrsResponseStatus = pResponseStatus_
     }
 
+
 -- | Collection of VPC peering connection records that match the request.
-dvpcpcrsVPCPeeringConnections ::
-     Lens' DescribeVPCPeeringConnectionsResponse [VPCPeeringConnection]
-dvpcpcrsVPCPeeringConnections =
-  lens
-    _dvpcpcrsVPCPeeringConnections
-    (\s a -> s {_dvpcpcrsVPCPeeringConnections = a}) .
-  _Default . _Coerce
+dvpcpcrsVPCPeeringConnections :: Lens' DescribeVPCPeeringConnectionsResponse [VPCPeeringConnection]
+dvpcpcrsVPCPeeringConnections = lens _dvpcpcrsVPCPeeringConnections (\ s a -> s{_dvpcpcrsVPCPeeringConnections = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 dvpcpcrsResponseStatus :: Lens' DescribeVPCPeeringConnectionsResponse Int
-dvpcpcrsResponseStatus =
-  lens _dvpcpcrsResponseStatus (\s a -> s {_dvpcpcrsResponseStatus = a})
+dvpcpcrsResponseStatus = lens _dvpcpcrsResponseStatus (\ s a -> s{_dvpcpcrsResponseStatus = a})
 
 instance NFData DescribeVPCPeeringConnectionsResponse
+         where

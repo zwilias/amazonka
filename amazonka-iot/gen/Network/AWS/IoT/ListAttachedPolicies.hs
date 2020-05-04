@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.IoT.ListAttachedPolicies
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,22 +22,24 @@
 --
 --
 module Network.AWS.IoT.ListAttachedPolicies
+    (
     -- * Creating a Request
-  ( listAttachedPolicies
-  , ListAttachedPolicies
+      listAttachedPolicies
+    , ListAttachedPolicies
     -- * Request Lenses
-  , lapMarker
-  , lapRecursive
-  , lapPageSize
-  , lapTarget
+    , lapMarker
+    , lapRecursive
+    , lapPageSize
+    , lapTarget
+
     -- * Destructuring the Response
-  , listAttachedPoliciesResponse
-  , ListAttachedPoliciesResponse
+    , listAttachedPoliciesResponse
+    , ListAttachedPoliciesResponse
     -- * Response Lenses
-  , laprsNextMarker
-  , laprsPolicies
-  , laprsResponseStatus
-  ) where
+    , laprsNextMarker
+    , laprsPolicies
+    , laprsResponseStatus
+    ) where
 
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
@@ -54,6 +58,7 @@ data ListAttachedPolicies =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListAttachedPolicies' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -65,9 +70,9 @@ data ListAttachedPolicies =
 -- * 'lapPageSize' - The maximum number of results to be returned per request.
 --
 -- * 'lapTarget' - The group for which the policies will be listed.
-listAttachedPolicies ::
-     Text -- ^ 'lapTarget'
-  -> ListAttachedPolicies
+listAttachedPolicies
+    :: Text -- ^ 'lapTarget'
+    -> ListAttachedPolicies
 listAttachedPolicies pTarget_ =
   ListAttachedPolicies'
     { _lapMarker = Nothing
@@ -76,53 +81,55 @@ listAttachedPolicies pTarget_ =
     , _lapTarget = pTarget_
     }
 
+
 -- | The token to retrieve the next set of results.
 lapMarker :: Lens' ListAttachedPolicies (Maybe Text)
-lapMarker = lens _lapMarker (\s a -> s {_lapMarker = a})
+lapMarker = lens _lapMarker (\ s a -> s{_lapMarker = a})
 
 -- | When true, recursively list attached policies.
 lapRecursive :: Lens' ListAttachedPolicies (Maybe Bool)
-lapRecursive = lens _lapRecursive (\s a -> s {_lapRecursive = a})
+lapRecursive = lens _lapRecursive (\ s a -> s{_lapRecursive = a})
 
 -- | The maximum number of results to be returned per request.
 lapPageSize :: Lens' ListAttachedPolicies (Maybe Natural)
-lapPageSize = lens _lapPageSize (\s a -> s {_lapPageSize = a}) . mapping _Nat
+lapPageSize = lens _lapPageSize (\ s a -> s{_lapPageSize = a}) . mapping _Nat
 
 -- | The group for which the policies will be listed.
 lapTarget :: Lens' ListAttachedPolicies Text
-lapTarget = lens _lapTarget (\s a -> s {_lapTarget = a})
+lapTarget = lens _lapTarget (\ s a -> s{_lapTarget = a})
 
 instance AWSRequest ListAttachedPolicies where
-  type Rs ListAttachedPolicies = ListAttachedPoliciesResponse
-  request = postJSON ioT
-  response =
-    receiveJSON
-      (\s h x ->
-         ListAttachedPoliciesResponse' <$> (x .?> "nextMarker") <*>
-         (x .?> "policies" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs ListAttachedPolicies =
+             ListAttachedPoliciesResponse
+        request = postJSON ioT
+        response
+          = receiveJSON
+              (\ s h x ->
+                 ListAttachedPoliciesResponse' <$>
+                   (x .?> "nextMarker") <*>
+                     (x .?> "policies" .!@ mempty)
+                     <*> (pure (fromEnum s)))
 
-instance Hashable ListAttachedPolicies
+instance Hashable ListAttachedPolicies where
 
-instance NFData ListAttachedPolicies
+instance NFData ListAttachedPolicies where
 
 instance ToHeaders ListAttachedPolicies where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToJSON ListAttachedPolicies where
-  toJSON = const (Object mempty)
+        toJSON = const (Object mempty)
 
 instance ToPath ListAttachedPolicies where
-  toPath ListAttachedPolicies' {..} =
-    mconcat ["/attached-policies/", toBS _lapTarget]
+        toPath ListAttachedPolicies'{..}
+          = mconcat ["/attached-policies/", toBS _lapTarget]
 
 instance ToQuery ListAttachedPolicies where
-  toQuery ListAttachedPolicies' {..} =
-    mconcat
-      [ "marker" =: _lapMarker
-      , "recursive" =: _lapRecursive
-      , "pageSize" =: _lapPageSize
-      ]
+        toQuery ListAttachedPolicies'{..}
+          = mconcat
+              ["marker" =: _lapMarker,
+               "recursive" =: _lapRecursive,
+               "pageSize" =: _lapPageSize]
 
 -- | /See:/ 'listAttachedPoliciesResponse' smart constructor.
 data ListAttachedPoliciesResponse =
@@ -133,6 +140,7 @@ data ListAttachedPoliciesResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListAttachedPoliciesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -142,9 +150,9 @@ data ListAttachedPoliciesResponse =
 -- * 'laprsPolicies' - The policies.
 --
 -- * 'laprsResponseStatus' - -- | The response status code.
-listAttachedPoliciesResponse ::
-     Int -- ^ 'laprsResponseStatus'
-  -> ListAttachedPoliciesResponse
+listAttachedPoliciesResponse
+    :: Int -- ^ 'laprsResponseStatus'
+    -> ListAttachedPoliciesResponse
 listAttachedPoliciesResponse pResponseStatus_ =
   ListAttachedPoliciesResponse'
     { _laprsNextMarker = Nothing
@@ -152,18 +160,17 @@ listAttachedPoliciesResponse pResponseStatus_ =
     , _laprsResponseStatus = pResponseStatus_
     }
 
+
 -- | The token to retrieve the next set of results, or ``null`` if there are no more results.
 laprsNextMarker :: Lens' ListAttachedPoliciesResponse (Maybe Text)
-laprsNextMarker = lens _laprsNextMarker (\s a -> s {_laprsNextMarker = a})
+laprsNextMarker = lens _laprsNextMarker (\ s a -> s{_laprsNextMarker = a})
 
 -- | The policies.
 laprsPolicies :: Lens' ListAttachedPoliciesResponse [Policy]
-laprsPolicies =
-  lens _laprsPolicies (\s a -> s {_laprsPolicies = a}) . _Default . _Coerce
+laprsPolicies = lens _laprsPolicies (\ s a -> s{_laprsPolicies = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 laprsResponseStatus :: Lens' ListAttachedPoliciesResponse Int
-laprsResponseStatus =
-  lens _laprsResponseStatus (\s a -> s {_laprsResponseStatus = a})
+laprsResponseStatus = lens _laprsResponseStatus (\ s a -> s{_laprsResponseStatus = a})
 
-instance NFData ListAttachedPoliciesResponse
+instance NFData ListAttachedPoliciesResponse where

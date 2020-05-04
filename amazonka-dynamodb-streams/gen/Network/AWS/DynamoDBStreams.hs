@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.DynamoDBStreams
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -15,116 +16,144 @@
 -- Amazon DynamoDB Streams provides API actions for accessing streams and processing stream records. To learn more about application development with Streams, see <http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html Capturing Table Activity with DynamoDB Streams> in the Amazon DynamoDB Developer Guide.
 --
 module Network.AWS.DynamoDBStreams
+    (
     -- * Service Configuration
-  ( dynamoDBStreams
+      dynamoDBStreams
+
     -- * Errors
     -- $errors
+
     -- ** ExpiredIteratorException
-  , _ExpiredIteratorException
+    , _ExpiredIteratorException
+
     -- ** InternalServerError
-  , _InternalServerError
+    , _InternalServerError
+
     -- ** TrimmedDataAccessException
-  , _TrimmedDataAccessException
+    , _TrimmedDataAccessException
+
     -- ** ResourceNotFoundException
-  , _ResourceNotFoundException
+    , _ResourceNotFoundException
+
     -- ** LimitExceededException
-  , _LimitExceededException
+    , _LimitExceededException
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
+
     -- ** GetShardIterator
-  , module Network.AWS.DynamoDBStreams.GetShardIterator
+    , module Network.AWS.DynamoDBStreams.GetShardIterator
+
     -- ** GetRecords
-  , module Network.AWS.DynamoDBStreams.GetRecords
+    , module Network.AWS.DynamoDBStreams.GetRecords
+
     -- ** ListStreams
-  , module Network.AWS.DynamoDBStreams.ListStreams
+    , module Network.AWS.DynamoDBStreams.ListStreams
+
     -- ** DescribeStream
-  , module Network.AWS.DynamoDBStreams.DescribeStream
+    , module Network.AWS.DynamoDBStreams.DescribeStream
+
     -- * Types
+
     -- ** KeyType
-  , KeyType(..)
+    , KeyType (..)
+
     -- ** OperationType
-  , OperationType(..)
+    , OperationType (..)
+
     -- ** ShardIteratorType
-  , ShardIteratorType(..)
+    , ShardIteratorType (..)
+
     -- ** StreamStatus
-  , StreamStatus(..)
+    , StreamStatus (..)
+
     -- ** StreamViewType
-  , StreamViewType(..)
+    , StreamViewType (..)
+
     -- ** AttributeValue
-  , AttributeValue
-  , attributeValue
-  , avL
-  , avNS
-  , avM
-  , avNULL
-  , avN
-  , avBS
-  , avB
-  , avSS
-  , avS
-  , avBOOL
+    , AttributeValue
+    , attributeValue
+    , avL
+    , avNS
+    , avM
+    , avNULL
+    , avN
+    , avBS
+    , avB
+    , avSS
+    , avS
+    , avBOOL
+
     -- ** Identity
-  , Identity
-  , identity
-  , iPrincipalId
-  , iType
+    , Identity
+    , identity
+    , iPrincipalId
+    , iType
+
     -- ** KeySchemaElement
-  , KeySchemaElement
-  , keySchemaElement
-  , kseAttributeName
-  , kseKeyType
+    , KeySchemaElement
+    , keySchemaElement
+    , kseAttributeName
+    , kseKeyType
+
     -- ** Record
-  , Record
-  , record
-  , rUserIdentity
-  , rEventVersion
-  , rDynamodb
-  , rAwsRegion
-  , rEventName
-  , rEventSource
-  , rEventId
+    , Record
+    , record
+    , rUserIdentity
+    , rEventVersion
+    , rDynamodb
+    , rAwsRegion
+    , rEventName
+    , rEventSource
+    , rEventId
+
     -- ** SequenceNumberRange
-  , SequenceNumberRange
-  , sequenceNumberRange
-  , snrStartingSequenceNumber
-  , snrEndingSequenceNumber
+    , SequenceNumberRange
+    , sequenceNumberRange
+    , snrStartingSequenceNumber
+    , snrEndingSequenceNumber
+
     -- ** Shard
-  , Shard
-  , shard
-  , sParentShardId
-  , sSequenceNumberRange
-  , sShardId
+    , Shard
+    , shard
+    , sParentShardId
+    , sSequenceNumberRange
+    , sShardId
+
     -- ** Stream
-  , Stream
-  , stream
-  , sStreamLabel
-  , sStreamARN
-  , sTableName
+    , Stream
+    , stream
+    , sStreamLabel
+    , sStreamARN
+    , sTableName
+
     -- ** StreamDescription
-  , StreamDescription
-  , streamDescription
-  , sdLastEvaluatedShardId
-  , sdStreamLabel
-  , sdStreamStatus
-  , sdKeySchema
-  , sdStreamViewType
-  , sdStreamARN
-  , sdShards
-  , sdTableName
-  , sdCreationRequestDateTime
+    , StreamDescription
+    , streamDescription
+    , sdLastEvaluatedShardId
+    , sdStreamLabel
+    , sdStreamStatus
+    , sdKeySchema
+    , sdStreamViewType
+    , sdStreamARN
+    , sdShards
+    , sdTableName
+    , sdCreationRequestDateTime
+
     -- ** StreamRecord
-  , StreamRecord
-  , streamRecord
-  , srSizeBytes
-  , srSequenceNumber
-  , srApproximateCreationDateTime
-  , srStreamViewType
-  , srKeys
-  , srOldImage
-  , srNewImage
-  ) where
+    , StreamRecord
+    , streamRecord
+    , srSizeBytes
+    , srSequenceNumber
+    , srApproximateCreationDateTime
+    , srStreamViewType
+    , srKeys
+    , srOldImage
+    , srNewImage
+    ) where
 
 import Network.AWS.DynamoDBStreams.DescribeStream
 import Network.AWS.DynamoDBStreams.GetRecords
@@ -132,12 +161,14 @@ import Network.AWS.DynamoDBStreams.GetShardIterator
 import Network.AWS.DynamoDBStreams.ListStreams
 import Network.AWS.DynamoDBStreams.Types
 import Network.AWS.DynamoDBStreams.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'DynamoDBStreams'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -154,6 +185,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

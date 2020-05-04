@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Config.DescribeConfigRules
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,20 +24,22 @@
 --
 -- This operation returns paginated results.
 module Network.AWS.Config.DescribeConfigRules
+    (
     -- * Creating a Request
-  ( describeConfigRules
-  , DescribeConfigRules
+      describeConfigRules
+    , DescribeConfigRules
     -- * Request Lenses
-  , dcrConfigRuleNames
-  , dcrNextToken
+    , dcrConfigRuleNames
+    , dcrNextToken
+
     -- * Destructuring the Response
-  , describeConfigRulesResponse
-  , DescribeConfigRulesResponse
+    , describeConfigRulesResponse
+    , DescribeConfigRulesResponse
     -- * Response Lenses
-  , dcrrsConfigRules
-  , dcrrsNextToken
-  , dcrrsResponseStatus
-  ) where
+    , dcrrsConfigRules
+    , dcrrsNextToken
+    , dcrrsResponseStatus
+    ) where
 
 import Network.AWS.Config.Types
 import Network.AWS.Config.Types.Product
@@ -57,6 +61,7 @@ data DescribeConfigRules =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeConfigRules' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -64,62 +69,65 @@ data DescribeConfigRules =
 -- * 'dcrConfigRuleNames' - The names of the AWS Config rules for which you want details. If you do not specify any names, AWS Config returns details for all your rules.
 --
 -- * 'dcrNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
-describeConfigRules :: DescribeConfigRules
+describeConfigRules
+    :: DescribeConfigRules
 describeConfigRules =
   DescribeConfigRules' {_dcrConfigRuleNames = Nothing, _dcrNextToken = Nothing}
 
+
 -- | The names of the AWS Config rules for which you want details. If you do not specify any names, AWS Config returns details for all your rules.
 dcrConfigRuleNames :: Lens' DescribeConfigRules [Text]
-dcrConfigRuleNames =
-  lens _dcrConfigRuleNames (\s a -> s {_dcrConfigRuleNames = a}) .
-  _Default . _Coerce
+dcrConfigRuleNames = lens _dcrConfigRuleNames (\ s a -> s{_dcrConfigRuleNames = a}) . _Default . _Coerce
 
 -- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
 dcrNextToken :: Lens' DescribeConfigRules (Maybe Text)
-dcrNextToken = lens _dcrNextToken (\s a -> s {_dcrNextToken = a})
+dcrNextToken = lens _dcrNextToken (\ s a -> s{_dcrNextToken = a})
 
 instance AWSPager DescribeConfigRules where
-  page rq rs
-    | stop (rs ^. dcrrsNextToken) = Nothing
-    | stop (rs ^. dcrrsConfigRules) = Nothing
-    | otherwise = Just $ rq & dcrNextToken .~ rs ^. dcrrsNextToken
+        page rq rs
+          | stop (rs ^. dcrrsNextToken) = Nothing
+          | stop (rs ^. dcrrsConfigRules) = Nothing
+          | otherwise =
+            Just $ rq & dcrNextToken .~ rs ^. dcrrsNextToken
 
 instance AWSRequest DescribeConfigRules where
-  type Rs DescribeConfigRules = DescribeConfigRulesResponse
-  request = postJSON config
-  response =
-    receiveJSON
-      (\s h x ->
-         DescribeConfigRulesResponse' <$> (x .?> "ConfigRules" .!@ mempty) <*>
-         (x .?> "NextToken") <*>
-         (pure (fromEnum s)))
+        type Rs DescribeConfigRules =
+             DescribeConfigRulesResponse
+        request = postJSON config
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DescribeConfigRulesResponse' <$>
+                   (x .?> "ConfigRules" .!@ mempty) <*>
+                     (x .?> "NextToken")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable DescribeConfigRules
+instance Hashable DescribeConfigRules where
 
-instance NFData DescribeConfigRules
+instance NFData DescribeConfigRules where
 
 instance ToHeaders DescribeConfigRules where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("StarlingDoveService.DescribeConfigRules" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("StarlingDoveService.DescribeConfigRules" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DescribeConfigRules where
-  toJSON DescribeConfigRules' {..} =
-    object
-      (catMaybes
-         [ ("ConfigRuleNames" .=) <$> _dcrConfigRuleNames
-         , ("NextToken" .=) <$> _dcrNextToken
-         ])
+        toJSON DescribeConfigRules'{..}
+          = object
+              (catMaybes
+                 [("ConfigRuleNames" .=) <$> _dcrConfigRuleNames,
+                  ("NextToken" .=) <$> _dcrNextToken])
 
 instance ToPath DescribeConfigRules where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DescribeConfigRules where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- |
 --
@@ -134,6 +142,7 @@ data DescribeConfigRulesResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeConfigRulesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -143,9 +152,9 @@ data DescribeConfigRulesResponse =
 -- * 'dcrrsNextToken' - The string that you use in a subsequent request to get the next page of results in a paginated response.
 --
 -- * 'dcrrsResponseStatus' - -- | The response status code.
-describeConfigRulesResponse ::
-     Int -- ^ 'dcrrsResponseStatus'
-  -> DescribeConfigRulesResponse
+describeConfigRulesResponse
+    :: Int -- ^ 'dcrrsResponseStatus'
+    -> DescribeConfigRulesResponse
 describeConfigRulesResponse pResponseStatus_ =
   DescribeConfigRulesResponse'
     { _dcrrsConfigRules = Nothing
@@ -153,19 +162,17 @@ describeConfigRulesResponse pResponseStatus_ =
     , _dcrrsResponseStatus = pResponseStatus_
     }
 
+
 -- | The details about your AWS Config rules.
 dcrrsConfigRules :: Lens' DescribeConfigRulesResponse [ConfigRule]
-dcrrsConfigRules =
-  lens _dcrrsConfigRules (\s a -> s {_dcrrsConfigRules = a}) .
-  _Default . _Coerce
+dcrrsConfigRules = lens _dcrrsConfigRules (\ s a -> s{_dcrrsConfigRules = a}) . _Default . _Coerce
 
 -- | The string that you use in a subsequent request to get the next page of results in a paginated response.
 dcrrsNextToken :: Lens' DescribeConfigRulesResponse (Maybe Text)
-dcrrsNextToken = lens _dcrrsNextToken (\s a -> s {_dcrrsNextToken = a})
+dcrrsNextToken = lens _dcrrsNextToken (\ s a -> s{_dcrrsNextToken = a})
 
 -- | -- | The response status code.
 dcrrsResponseStatus :: Lens' DescribeConfigRulesResponse Int
-dcrrsResponseStatus =
-  lens _dcrrsResponseStatus (\s a -> s {_dcrrsResponseStatus = a})
+dcrrsResponseStatus = lens _dcrrsResponseStatus (\ s a -> s{_dcrrsResponseStatus = a})
 
-instance NFData DescribeConfigRulesResponse
+instance NFData DescribeConfigRulesResponse where

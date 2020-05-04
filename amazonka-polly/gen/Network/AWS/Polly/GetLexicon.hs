@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Polly.GetLexicon
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,19 +22,21 @@
 --
 --
 module Network.AWS.Polly.GetLexicon
+    (
     -- * Creating a Request
-  ( getLexicon
-  , GetLexicon
+      getLexicon
+    , GetLexicon
     -- * Request Lenses
-  , glName
+    , glName
+
     -- * Destructuring the Response
-  , getLexiconResponse
-  , GetLexiconResponse
+    , getLexiconResponse
+    , GetLexiconResponse
     -- * Response Lenses
-  , glrsLexiconAttributes
-  , glrsLexicon
-  , glrsResponseStatus
-  ) where
+    , glrsLexiconAttributes
+    , glrsLexicon
+    , glrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Polly.Types
@@ -48,42 +52,45 @@ newtype GetLexicon =
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetLexicon' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'glName' - Name of the lexicon.
-getLexicon ::
-     Text -- ^ 'glName'
-  -> GetLexicon
+getLexicon
+    :: Text -- ^ 'glName'
+    -> GetLexicon
 getLexicon pName_ = GetLexicon' {_glName = _Sensitive # pName_}
+
 
 -- | Name of the lexicon.
 glName :: Lens' GetLexicon Text
-glName = lens _glName (\s a -> s {_glName = a}) . _Sensitive
+glName = lens _glName (\ s a -> s{_glName = a}) . _Sensitive
 
 instance AWSRequest GetLexicon where
-  type Rs GetLexicon = GetLexiconResponse
-  request = get polly
-  response =
-    receiveJSON
-      (\s h x ->
-         GetLexiconResponse' <$> (x .?> "LexiconAttributes") <*>
-         (x .?> "Lexicon") <*>
-         (pure (fromEnum s)))
+        type Rs GetLexicon = GetLexiconResponse
+        request = get polly
+        response
+          = receiveJSON
+              (\ s h x ->
+                 GetLexiconResponse' <$>
+                   (x .?> "LexiconAttributes") <*> (x .?> "Lexicon") <*>
+                     (pure (fromEnum s)))
 
-instance Hashable GetLexicon
+instance Hashable GetLexicon where
 
-instance NFData GetLexicon
+instance NFData GetLexicon where
 
 instance ToHeaders GetLexicon where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath GetLexicon where
-  toPath GetLexicon' {..} = mconcat ["/v1/lexicons/", toBS _glName]
+        toPath GetLexicon'{..}
+          = mconcat ["/v1/lexicons/", toBS _glName]
 
 instance ToQuery GetLexicon where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'getLexiconResponse' smart constructor.
 data GetLexiconResponse =
@@ -94,6 +101,7 @@ data GetLexiconResponse =
     }
   deriving (Eq, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetLexiconResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -103,9 +111,9 @@ data GetLexiconResponse =
 -- * 'glrsLexicon' - Lexicon object that provides name and the string content of the lexicon.
 --
 -- * 'glrsResponseStatus' - -- | The response status code.
-getLexiconResponse ::
-     Int -- ^ 'glrsResponseStatus'
-  -> GetLexiconResponse
+getLexiconResponse
+    :: Int -- ^ 'glrsResponseStatus'
+    -> GetLexiconResponse
 getLexiconResponse pResponseStatus_ =
   GetLexiconResponse'
     { _glrsLexiconAttributes = Nothing
@@ -113,18 +121,17 @@ getLexiconResponse pResponseStatus_ =
     , _glrsResponseStatus = pResponseStatus_
     }
 
+
 -- | Metadata of the lexicon, including phonetic alphabetic used, language code, lexicon ARN, number of lexemes defined in the lexicon, and size of lexicon in bytes.
 glrsLexiconAttributes :: Lens' GetLexiconResponse (Maybe LexiconAttributes)
-glrsLexiconAttributes =
-  lens _glrsLexiconAttributes (\s a -> s {_glrsLexiconAttributes = a})
+glrsLexiconAttributes = lens _glrsLexiconAttributes (\ s a -> s{_glrsLexiconAttributes = a})
 
 -- | Lexicon object that provides name and the string content of the lexicon.
 glrsLexicon :: Lens' GetLexiconResponse (Maybe Lexicon)
-glrsLexicon = lens _glrsLexicon (\s a -> s {_glrsLexicon = a})
+glrsLexicon = lens _glrsLexicon (\ s a -> s{_glrsLexicon = a})
 
 -- | -- | The response status code.
 glrsResponseStatus :: Lens' GetLexiconResponse Int
-glrsResponseStatus =
-  lens _glrsResponseStatus (\s a -> s {_glrsResponseStatus = a})
+glrsResponseStatus = lens _glrsResponseStatus (\ s a -> s{_glrsResponseStatus = a})
 
-instance NFData GetLexiconResponse
+instance NFData GetLexiconResponse where

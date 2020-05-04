@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Greengrass.DisassociateRoleFromGroup
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,18 +20,20 @@
 --
 -- Disassociates the role from a group.
 module Network.AWS.Greengrass.DisassociateRoleFromGroup
+    (
     -- * Creating a Request
-  ( disassociateRoleFromGroup
-  , DisassociateRoleFromGroup
+      disassociateRoleFromGroup
+    , DisassociateRoleFromGroup
     -- * Request Lenses
-  , drfgGroupId
+    , drfgGroupId
+
     -- * Destructuring the Response
-  , disassociateRoleFromGroupResponse
-  , DisassociateRoleFromGroupResponse
+    , disassociateRoleFromGroupResponse
+    , DisassociateRoleFromGroupResponse
     -- * Response Lenses
-  , drfgrsDisassociatedAt
-  , drfgrsResponseStatus
-  ) where
+    , drfgrsDisassociatedAt
+    , drfgrsResponseStatus
+    ) where
 
 import Network.AWS.Greengrass.Types
 import Network.AWS.Greengrass.Types.Product
@@ -45,45 +49,51 @@ newtype DisassociateRoleFromGroup =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DisassociateRoleFromGroup' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'drfgGroupId' - The ID of the AWS Greengrass group.
-disassociateRoleFromGroup ::
-     Text -- ^ 'drfgGroupId'
-  -> DisassociateRoleFromGroup
+disassociateRoleFromGroup
+    :: Text -- ^ 'drfgGroupId'
+    -> DisassociateRoleFromGroup
 disassociateRoleFromGroup pGroupId_ =
   DisassociateRoleFromGroup' {_drfgGroupId = pGroupId_}
 
+
 -- | The ID of the AWS Greengrass group.
 drfgGroupId :: Lens' DisassociateRoleFromGroup Text
-drfgGroupId = lens _drfgGroupId (\s a -> s {_drfgGroupId = a})
+drfgGroupId = lens _drfgGroupId (\ s a -> s{_drfgGroupId = a})
 
 instance AWSRequest DisassociateRoleFromGroup where
-  type Rs DisassociateRoleFromGroup = DisassociateRoleFromGroupResponse
-  request = delete greengrass
-  response =
-    receiveJSON
-      (\s h x ->
-         DisassociateRoleFromGroupResponse' <$> (x .?> "DisassociatedAt") <*>
-         (pure (fromEnum s)))
+        type Rs DisassociateRoleFromGroup =
+             DisassociateRoleFromGroupResponse
+        request = delete greengrass
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DisassociateRoleFromGroupResponse' <$>
+                   (x .?> "DisassociatedAt") <*> (pure (fromEnum s)))
 
-instance Hashable DisassociateRoleFromGroup
+instance Hashable DisassociateRoleFromGroup where
 
-instance NFData DisassociateRoleFromGroup
+instance NFData DisassociateRoleFromGroup where
 
 instance ToHeaders DisassociateRoleFromGroup where
-  toHeaders =
-    const
-      (mconcat ["Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)])
+        toHeaders
+          = const
+              (mconcat
+                 ["Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToPath DisassociateRoleFromGroup where
-  toPath DisassociateRoleFromGroup' {..} =
-    mconcat ["/greengrass/groups/", toBS _drfgGroupId, "/role"]
+        toPath DisassociateRoleFromGroup'{..}
+          = mconcat
+              ["/greengrass/groups/", toBS _drfgGroupId, "/role"]
 
 instance ToQuery DisassociateRoleFromGroup where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'disassociateRoleFromGroupResponse' smart constructor.
 data DisassociateRoleFromGroupResponse =
@@ -93,6 +103,7 @@ data DisassociateRoleFromGroupResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DisassociateRoleFromGroupResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -100,21 +111,21 @@ data DisassociateRoleFromGroupResponse =
 -- * 'drfgrsDisassociatedAt' - The time, in milliseconds since the epoch, when the role was disassociated from the group.
 --
 -- * 'drfgrsResponseStatus' - -- | The response status code.
-disassociateRoleFromGroupResponse ::
-     Int -- ^ 'drfgrsResponseStatus'
-  -> DisassociateRoleFromGroupResponse
+disassociateRoleFromGroupResponse
+    :: Int -- ^ 'drfgrsResponseStatus'
+    -> DisassociateRoleFromGroupResponse
 disassociateRoleFromGroupResponse pResponseStatus_ =
   DisassociateRoleFromGroupResponse'
     {_drfgrsDisassociatedAt = Nothing, _drfgrsResponseStatus = pResponseStatus_}
 
+
 -- | The time, in milliseconds since the epoch, when the role was disassociated from the group.
 drfgrsDisassociatedAt :: Lens' DisassociateRoleFromGroupResponse (Maybe Text)
-drfgrsDisassociatedAt =
-  lens _drfgrsDisassociatedAt (\s a -> s {_drfgrsDisassociatedAt = a})
+drfgrsDisassociatedAt = lens _drfgrsDisassociatedAt (\ s a -> s{_drfgrsDisassociatedAt = a})
 
 -- | -- | The response status code.
 drfgrsResponseStatus :: Lens' DisassociateRoleFromGroupResponse Int
-drfgrsResponseStatus =
-  lens _drfgrsResponseStatus (\s a -> s {_drfgrsResponseStatus = a})
+drfgrsResponseStatus = lens _drfgrsResponseStatus (\ s a -> s{_drfgrsResponseStatus = a})
 
 instance NFData DisassociateRoleFromGroupResponse
+         where

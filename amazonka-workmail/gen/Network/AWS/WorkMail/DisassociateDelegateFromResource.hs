@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.WorkMail.DisassociateDelegateFromResource
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,19 +22,21 @@
 --
 --
 module Network.AWS.WorkMail.DisassociateDelegateFromResource
+    (
     -- * Creating a Request
-  ( disassociateDelegateFromResource
-  , DisassociateDelegateFromResource
+      disassociateDelegateFromResource
+    , DisassociateDelegateFromResource
     -- * Request Lenses
-  , ddfrOrganizationId
-  , ddfrResourceId
-  , ddfrEntityId
+    , ddfrOrganizationId
+    , ddfrResourceId
+    , ddfrEntityId
+
     -- * Destructuring the Response
-  , disassociateDelegateFromResourceResponse
-  , DisassociateDelegateFromResourceResponse
+    , disassociateDelegateFromResourceResponse
+    , DisassociateDelegateFromResourceResponse
     -- * Response Lenses
-  , ddfrrsResponseStatus
-  ) where
+    , ddfrrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -50,6 +54,7 @@ data DisassociateDelegateFromResource =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DisassociateDelegateFromResource' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -59,11 +64,11 @@ data DisassociateDelegateFromResource =
 -- * 'ddfrResourceId' - The identifier of the resource from which delegates' set members are removed.
 --
 -- * 'ddfrEntityId' - The identifier for the member (user, group) to be removed from the resource's delegates.
-disassociateDelegateFromResource ::
-     Text -- ^ 'ddfrOrganizationId'
-  -> Text -- ^ 'ddfrResourceId'
-  -> Text -- ^ 'ddfrEntityId'
-  -> DisassociateDelegateFromResource
+disassociateDelegateFromResource
+    :: Text -- ^ 'ddfrOrganizationId'
+    -> Text -- ^ 'ddfrResourceId'
+    -> Text -- ^ 'ddfrEntityId'
+    -> DisassociateDelegateFromResource
 disassociateDelegateFromResource pOrganizationId_ pResourceId_ pEntityId_ =
   DisassociateDelegateFromResource'
     { _ddfrOrganizationId = pOrganizationId_
@@ -71,54 +76,63 @@ disassociateDelegateFromResource pOrganizationId_ pResourceId_ pEntityId_ =
     , _ddfrEntityId = pEntityId_
     }
 
+
 -- | The identifier for the organization under which the resource exists.
 ddfrOrganizationId :: Lens' DisassociateDelegateFromResource Text
-ddfrOrganizationId =
-  lens _ddfrOrganizationId (\s a -> s {_ddfrOrganizationId = a})
+ddfrOrganizationId = lens _ddfrOrganizationId (\ s a -> s{_ddfrOrganizationId = a})
 
 -- | The identifier of the resource from which delegates' set members are removed.
 ddfrResourceId :: Lens' DisassociateDelegateFromResource Text
-ddfrResourceId = lens _ddfrResourceId (\s a -> s {_ddfrResourceId = a})
+ddfrResourceId = lens _ddfrResourceId (\ s a -> s{_ddfrResourceId = a})
 
 -- | The identifier for the member (user, group) to be removed from the resource's delegates.
 ddfrEntityId :: Lens' DisassociateDelegateFromResource Text
-ddfrEntityId = lens _ddfrEntityId (\s a -> s {_ddfrEntityId = a})
+ddfrEntityId = lens _ddfrEntityId (\ s a -> s{_ddfrEntityId = a})
 
-instance AWSRequest DisassociateDelegateFromResource where
-  type Rs DisassociateDelegateFromResource = DisassociateDelegateFromResourceResponse
-  request = postJSON workMail
-  response =
-    receiveEmpty
-      (\s h x ->
-         DisassociateDelegateFromResourceResponse' <$> (pure (fromEnum s)))
+instance AWSRequest DisassociateDelegateFromResource
+         where
+        type Rs DisassociateDelegateFromResource =
+             DisassociateDelegateFromResourceResponse
+        request = postJSON workMail
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 DisassociateDelegateFromResourceResponse' <$>
+                   (pure (fromEnum s)))
 
 instance Hashable DisassociateDelegateFromResource
+         where
 
 instance NFData DisassociateDelegateFromResource
+         where
 
-instance ToHeaders DisassociateDelegateFromResource where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("WorkMailService.DisassociateDelegateFromResource" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+instance ToHeaders DisassociateDelegateFromResource
+         where
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("WorkMailService.DisassociateDelegateFromResource"
+                       :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
-instance ToJSON DisassociateDelegateFromResource where
-  toJSON DisassociateDelegateFromResource' {..} =
-    object
-      (catMaybes
-         [ Just ("OrganizationId" .= _ddfrOrganizationId)
-         , Just ("ResourceId" .= _ddfrResourceId)
-         , Just ("EntityId" .= _ddfrEntityId)
-         ])
+instance ToJSON DisassociateDelegateFromResource
+         where
+        toJSON DisassociateDelegateFromResource'{..}
+          = object
+              (catMaybes
+                 [Just ("OrganizationId" .= _ddfrOrganizationId),
+                  Just ("ResourceId" .= _ddfrResourceId),
+                  Just ("EntityId" .= _ddfrEntityId)])
 
-instance ToPath DisassociateDelegateFromResource where
-  toPath = const "/"
+instance ToPath DisassociateDelegateFromResource
+         where
+        toPath = const "/"
 
-instance ToQuery DisassociateDelegateFromResource where
-  toQuery = const mempty
+instance ToQuery DisassociateDelegateFromResource
+         where
+        toQuery = const mempty
 
 -- | /See:/ 'disassociateDelegateFromResourceResponse' smart constructor.
 newtype DisassociateDelegateFromResourceResponse =
@@ -127,21 +141,24 @@ newtype DisassociateDelegateFromResourceResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DisassociateDelegateFromResourceResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'ddfrrsResponseStatus' - -- | The response status code.
-disassociateDelegateFromResourceResponse ::
-     Int -- ^ 'ddfrrsResponseStatus'
-  -> DisassociateDelegateFromResourceResponse
+disassociateDelegateFromResourceResponse
+    :: Int -- ^ 'ddfrrsResponseStatus'
+    -> DisassociateDelegateFromResourceResponse
 disassociateDelegateFromResourceResponse pResponseStatus_ =
   DisassociateDelegateFromResourceResponse'
     {_ddfrrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 ddfrrsResponseStatus :: Lens' DisassociateDelegateFromResourceResponse Int
-ddfrrsResponseStatus =
-  lens _ddfrrsResponseStatus (\s a -> s {_ddfrrsResponseStatus = a})
+ddfrrsResponseStatus = lens _ddfrrsResponseStatus (\ s a -> s{_ddfrrsResponseStatus = a})
 
-instance NFData DisassociateDelegateFromResourceResponse
+instance NFData
+           DisassociateDelegateFromResourceResponse
+         where

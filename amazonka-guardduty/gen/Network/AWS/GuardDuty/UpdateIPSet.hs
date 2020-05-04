@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.GuardDuty.UpdateIPSet
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,21 +20,23 @@
 --
 -- Updates the IPSet specified by the IPSet ID.
 module Network.AWS.GuardDuty.UpdateIPSet
+    (
     -- * Creating a Request
-  ( updateIPSet
-  , UpdateIPSet
+      updateIPSet
+    , UpdateIPSet
     -- * Request Lenses
-  , uisLocation
-  , uisActivate
-  , uisName
-  , uisDetectorId
-  , uisIPSetId
+    , uisLocation
+    , uisActivate
+    , uisName
+    , uisDetectorId
+    , uisIPSetId
+
     -- * Destructuring the Response
-  , updateIPSetResponse
-  , UpdateIPSetResponse
+    , updateIPSetResponse
+    , UpdateIPSetResponse
     -- * Response Lenses
-  , uisrsResponseStatus
-  ) where
+    , uisrsResponseStatus
+    ) where
 
 import Network.AWS.GuardDuty.Types
 import Network.AWS.GuardDuty.Types.Product
@@ -54,6 +58,7 @@ data UpdateIPSet =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateIPSet' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -67,10 +72,10 @@ data UpdateIPSet =
 -- * 'uisDetectorId' - The detectorID that specifies the GuardDuty service whose IPSet you want to update.
 --
 -- * 'uisIPSetId' - The unique ID that specifies the IPSet that you want to update.
-updateIPSet ::
-     Text -- ^ 'uisDetectorId'
-  -> Text -- ^ 'uisIPSetId'
-  -> UpdateIPSet
+updateIPSet
+    :: Text -- ^ 'uisDetectorId'
+    -> Text -- ^ 'uisIPSetId'
+    -> UpdateIPSet
 updateIPSet pDetectorId_ pIPSetId_ =
   UpdateIPSet'
     { _uisLocation = Nothing
@@ -80,56 +85,62 @@ updateIPSet pDetectorId_ pIPSetId_ =
     , _uisIPSetId = pIPSetId_
     }
 
+
 -- | The updated URI of the file that contains the IPSet. For example (https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key).
 uisLocation :: Lens' UpdateIPSet (Maybe Text)
-uisLocation = lens _uisLocation (\s a -> s {_uisLocation = a})
+uisLocation = lens _uisLocation (\ s a -> s{_uisLocation = a})
 
 -- | The updated boolean value that specifies whether the IPSet is active or not.
 uisActivate :: Lens' UpdateIPSet (Maybe Bool)
-uisActivate = lens _uisActivate (\s a -> s {_uisActivate = a})
+uisActivate = lens _uisActivate (\ s a -> s{_uisActivate = a})
 
 -- | The unique ID that specifies the IPSet that you want to update.
 uisName :: Lens' UpdateIPSet (Maybe Text)
-uisName = lens _uisName (\s a -> s {_uisName = a})
+uisName = lens _uisName (\ s a -> s{_uisName = a})
 
 -- | The detectorID that specifies the GuardDuty service whose IPSet you want to update.
 uisDetectorId :: Lens' UpdateIPSet Text
-uisDetectorId = lens _uisDetectorId (\s a -> s {_uisDetectorId = a})
+uisDetectorId = lens _uisDetectorId (\ s a -> s{_uisDetectorId = a})
 
 -- | The unique ID that specifies the IPSet that you want to update.
 uisIPSetId :: Lens' UpdateIPSet Text
-uisIPSetId = lens _uisIPSetId (\s a -> s {_uisIPSetId = a})
+uisIPSetId = lens _uisIPSetId (\ s a -> s{_uisIPSetId = a})
 
 instance AWSRequest UpdateIPSet where
-  type Rs UpdateIPSet = UpdateIPSetResponse
-  request = postJSON guardDuty
-  response =
-    receiveEmpty (\s h x -> UpdateIPSetResponse' <$> (pure (fromEnum s)))
+        type Rs UpdateIPSet = UpdateIPSetResponse
+        request = postJSON guardDuty
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 UpdateIPSetResponse' <$> (pure (fromEnum s)))
 
-instance Hashable UpdateIPSet
+instance Hashable UpdateIPSet where
 
-instance NFData UpdateIPSet
+instance NFData UpdateIPSet where
 
 instance ToHeaders UpdateIPSet where
-  toHeaders =
-    const
-      (mconcat ["Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)])
+        toHeaders
+          = const
+              (mconcat
+                 ["Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON UpdateIPSet where
-  toJSON UpdateIPSet' {..} =
-    object
-      (catMaybes
-         [ ("location" .=) <$> _uisLocation
-         , ("activate" .=) <$> _uisActivate
-         , ("name" .=) <$> _uisName
-         ])
+        toJSON UpdateIPSet'{..}
+          = object
+              (catMaybes
+                 [("location" .=) <$> _uisLocation,
+                  ("activate" .=) <$> _uisActivate,
+                  ("name" .=) <$> _uisName])
 
 instance ToPath UpdateIPSet where
-  toPath UpdateIPSet' {..} =
-    mconcat ["/detector/", toBS _uisDetectorId, "/ipset/", toBS _uisIPSetId]
+        toPath UpdateIPSet'{..}
+          = mconcat
+              ["/detector/", toBS _uisDetectorId, "/ipset/",
+               toBS _uisIPSetId]
 
 instance ToQuery UpdateIPSet where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'updateIPSetResponse' smart constructor.
 newtype UpdateIPSetResponse =
@@ -138,20 +149,21 @@ newtype UpdateIPSetResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateIPSetResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'uisrsResponseStatus' - -- | The response status code.
-updateIPSetResponse ::
-     Int -- ^ 'uisrsResponseStatus'
-  -> UpdateIPSetResponse
+updateIPSetResponse
+    :: Int -- ^ 'uisrsResponseStatus'
+    -> UpdateIPSetResponse
 updateIPSetResponse pResponseStatus_ =
   UpdateIPSetResponse' {_uisrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 uisrsResponseStatus :: Lens' UpdateIPSetResponse Int
-uisrsResponseStatus =
-  lens _uisrsResponseStatus (\s a -> s {_uisrsResponseStatus = a})
+uisrsResponseStatus = lens _uisrsResponseStatus (\ s a -> s{_uisrsResponseStatus = a})
 
-instance NFData UpdateIPSetResponse
+instance NFData UpdateIPSetResponse where

@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.MigrationHub.AssociateDiscoveredResource
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,20 +22,22 @@
 --
 --
 module Network.AWS.MigrationHub.AssociateDiscoveredResource
+    (
     -- * Creating a Request
-  ( associateDiscoveredResource
-  , AssociateDiscoveredResource
+      associateDiscoveredResource
+    , AssociateDiscoveredResource
     -- * Request Lenses
-  , adrDryRun
-  , adrProgressUpdateStream
-  , adrMigrationTaskName
-  , adrDiscoveredResource
+    , adrDryRun
+    , adrProgressUpdateStream
+    , adrMigrationTaskName
+    , adrDiscoveredResource
+
     -- * Destructuring the Response
-  , associateDiscoveredResourceResponse
-  , AssociateDiscoveredResourceResponse
+    , associateDiscoveredResourceResponse
+    , AssociateDiscoveredResourceResponse
     -- * Response Lenses
-  , adrrsResponseStatus
-  ) where
+    , adrrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.MigrationHub.Types
@@ -52,6 +56,7 @@ data AssociateDiscoveredResource =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AssociateDiscoveredResource' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -63,11 +68,11 @@ data AssociateDiscoveredResource =
 -- * 'adrMigrationTaskName' - The identifier given to the MigrationTask.
 --
 -- * 'adrDiscoveredResource' - Object representing a Resource.
-associateDiscoveredResource ::
-     Text -- ^ 'adrProgressUpdateStream'
-  -> Text -- ^ 'adrMigrationTaskName'
-  -> DiscoveredResource -- ^ 'adrDiscoveredResource'
-  -> AssociateDiscoveredResource
+associateDiscoveredResource
+    :: Text -- ^ 'adrProgressUpdateStream'
+    -> Text -- ^ 'adrMigrationTaskName'
+    -> DiscoveredResource -- ^ 'adrDiscoveredResource'
+    -> AssociateDiscoveredResource
 associateDiscoveredResource pProgressUpdateStream_ pMigrationTaskName_ pDiscoveredResource_ =
   AssociateDiscoveredResource'
     { _adrDryRun = Nothing
@@ -76,60 +81,63 @@ associateDiscoveredResource pProgressUpdateStream_ pMigrationTaskName_ pDiscover
     , _adrDiscoveredResource = pDiscoveredResource_
     }
 
+
 -- | Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.
 adrDryRun :: Lens' AssociateDiscoveredResource (Maybe Bool)
-adrDryRun = lens _adrDryRun (\s a -> s {_adrDryRun = a})
+adrDryRun = lens _adrDryRun (\ s a -> s{_adrDryRun = a})
 
 -- | The name of the ProgressUpdateStream.
 adrProgressUpdateStream :: Lens' AssociateDiscoveredResource Text
-adrProgressUpdateStream =
-  lens _adrProgressUpdateStream (\s a -> s {_adrProgressUpdateStream = a})
+adrProgressUpdateStream = lens _adrProgressUpdateStream (\ s a -> s{_adrProgressUpdateStream = a})
 
 -- | The identifier given to the MigrationTask.
 adrMigrationTaskName :: Lens' AssociateDiscoveredResource Text
-adrMigrationTaskName =
-  lens _adrMigrationTaskName (\s a -> s {_adrMigrationTaskName = a})
+adrMigrationTaskName = lens _adrMigrationTaskName (\ s a -> s{_adrMigrationTaskName = a})
 
 -- | Object representing a Resource.
 adrDiscoveredResource :: Lens' AssociateDiscoveredResource DiscoveredResource
-adrDiscoveredResource =
-  lens _adrDiscoveredResource (\s a -> s {_adrDiscoveredResource = a})
+adrDiscoveredResource = lens _adrDiscoveredResource (\ s a -> s{_adrDiscoveredResource = a})
 
 instance AWSRequest AssociateDiscoveredResource where
-  type Rs AssociateDiscoveredResource = AssociateDiscoveredResourceResponse
-  request = postJSON migrationHub
-  response =
-    receiveEmpty
-      (\s h x -> AssociateDiscoveredResourceResponse' <$> (pure (fromEnum s)))
+        type Rs AssociateDiscoveredResource =
+             AssociateDiscoveredResourceResponse
+        request = postJSON migrationHub
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 AssociateDiscoveredResourceResponse' <$>
+                   (pure (fromEnum s)))
 
-instance Hashable AssociateDiscoveredResource
+instance Hashable AssociateDiscoveredResource where
 
-instance NFData AssociateDiscoveredResource
+instance NFData AssociateDiscoveredResource where
 
 instance ToHeaders AssociateDiscoveredResource where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AWSMigrationHub.AssociateDiscoveredResource" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWSMigrationHub.AssociateDiscoveredResource" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON AssociateDiscoveredResource where
-  toJSON AssociateDiscoveredResource' {..} =
-    object
-      (catMaybes
-         [ ("DryRun" .=) <$> _adrDryRun
-         , Just ("ProgressUpdateStream" .= _adrProgressUpdateStream)
-         , Just ("MigrationTaskName" .= _adrMigrationTaskName)
-         , Just ("DiscoveredResource" .= _adrDiscoveredResource)
-         ])
+        toJSON AssociateDiscoveredResource'{..}
+          = object
+              (catMaybes
+                 [("DryRun" .=) <$> _adrDryRun,
+                  Just
+                    ("ProgressUpdateStream" .= _adrProgressUpdateStream),
+                  Just ("MigrationTaskName" .= _adrMigrationTaskName),
+                  Just
+                    ("DiscoveredResource" .= _adrDiscoveredResource)])
 
 instance ToPath AssociateDiscoveredResource where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery AssociateDiscoveredResource where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'associateDiscoveredResourceResponse' smart constructor.
 newtype AssociateDiscoveredResourceResponse =
@@ -138,20 +146,22 @@ newtype AssociateDiscoveredResourceResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AssociateDiscoveredResourceResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'adrrsResponseStatus' - -- | The response status code.
-associateDiscoveredResourceResponse ::
-     Int -- ^ 'adrrsResponseStatus'
-  -> AssociateDiscoveredResourceResponse
+associateDiscoveredResourceResponse
+    :: Int -- ^ 'adrrsResponseStatus'
+    -> AssociateDiscoveredResourceResponse
 associateDiscoveredResourceResponse pResponseStatus_ =
   AssociateDiscoveredResourceResponse' {_adrrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 adrrsResponseStatus :: Lens' AssociateDiscoveredResourceResponse Int
-adrrsResponseStatus =
-  lens _adrrsResponseStatus (\s a -> s {_adrrsResponseStatus = a})
+adrrsResponseStatus = lens _adrrsResponseStatus (\ s a -> s{_adrrsResponseStatus = a})
 
 instance NFData AssociateDiscoveredResourceResponse
+         where

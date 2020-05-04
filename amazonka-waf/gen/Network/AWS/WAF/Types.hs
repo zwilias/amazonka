@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.WAF.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,340 +11,407 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.WAF.Types
+    (
     -- * Service Configuration
-  ( waf
+      waf
+
     -- * Errors
-  , _WAFInvalidAccountException
-  , _WAFSubscriptionNotFoundException
-  , _WAFReferencedItemException
-  , _WAFInvalidRegexPatternException
-  , _WAFInvalidOperationException
-  , _WAFNonexistentItemException
-  , _WAFInvalidParameterException
-  , _WAFLimitsExceededException
-  , _WAFInvalidPermissionPolicyException
-  , _WAFStaleDataException
-  , _WAFInternalErrorException
-  , _WAFNonexistentContainerException
-  , _WAFDisallowedNameException
-  , _WAFNonEmptyEntityException
+    , _WAFInvalidAccountException
+    , _WAFSubscriptionNotFoundException
+    , _WAFReferencedItemException
+    , _WAFInvalidRegexPatternException
+    , _WAFInvalidOperationException
+    , _WAFNonexistentItemException
+    , _WAFInvalidParameterException
+    , _WAFLimitsExceededException
+    , _WAFInvalidPermissionPolicyException
+    , _WAFStaleDataException
+    , _WAFInternalErrorException
+    , _WAFNonexistentContainerException
+    , _WAFDisallowedNameException
+    , _WAFNonEmptyEntityException
+
     -- * ChangeAction
-  , ChangeAction(..)
+    , ChangeAction (..)
+
     -- * ChangeTokenStatus
-  , ChangeTokenStatus(..)
+    , ChangeTokenStatus (..)
+
     -- * ComparisonOperator
-  , ComparisonOperator(..)
+    , ComparisonOperator (..)
+
     -- * GeoMatchConstraintType
-  , GeoMatchConstraintType(..)
+    , GeoMatchConstraintType (..)
+
     -- * GeoMatchConstraintValue
-  , GeoMatchConstraintValue(..)
+    , GeoMatchConstraintValue (..)
+
     -- * IPSetDescriptorType
-  , IPSetDescriptorType(..)
+    , IPSetDescriptorType (..)
+
     -- * MatchFieldType
-  , MatchFieldType(..)
+    , MatchFieldType (..)
+
     -- * PositionalConstraint
-  , PositionalConstraint(..)
+    , PositionalConstraint (..)
+
     -- * PredicateType
-  , PredicateType(..)
+    , PredicateType (..)
+
     -- * RateKey
-  , RateKey(..)
+    , RateKey (..)
+
     -- * TextTransformation
-  , TextTransformation(..)
+    , TextTransformation (..)
+
     -- * WafActionType
-  , WafActionType(..)
+    , WafActionType (..)
+
     -- * WafOverrideActionType
-  , WafOverrideActionType(..)
+    , WafOverrideActionType (..)
+
     -- * WafRuleType
-  , WafRuleType(..)
+    , WafRuleType (..)
+
     -- * ActivatedRule
-  , ActivatedRule
-  , activatedRule
-  , arOverrideAction
-  , arAction
-  , arType
-  , arPriority
-  , arRuleId
+    , ActivatedRule
+    , activatedRule
+    , arOverrideAction
+    , arAction
+    , arType
+    , arPriority
+    , arRuleId
+
     -- * ByteMatchSet
-  , ByteMatchSet
-  , byteMatchSet
-  , bmsName
-  , bmsByteMatchSetId
-  , bmsByteMatchTuples
+    , ByteMatchSet
+    , byteMatchSet
+    , bmsName
+    , bmsByteMatchSetId
+    , bmsByteMatchTuples
+
     -- * ByteMatchSetSummary
-  , ByteMatchSetSummary
-  , byteMatchSetSummary
-  , bmssByteMatchSetId
-  , bmssName
+    , ByteMatchSetSummary
+    , byteMatchSetSummary
+    , bmssByteMatchSetId
+    , bmssName
+
     -- * ByteMatchSetUpdate
-  , ByteMatchSetUpdate
-  , byteMatchSetUpdate
-  , bmsuAction
-  , bmsuByteMatchTuple
+    , ByteMatchSetUpdate
+    , byteMatchSetUpdate
+    , bmsuAction
+    , bmsuByteMatchTuple
+
     -- * ByteMatchTuple
-  , ByteMatchTuple
-  , byteMatchTuple
-  , bmtFieldToMatch
-  , bmtTargetString
-  , bmtTextTransformation
-  , bmtPositionalConstraint
+    , ByteMatchTuple
+    , byteMatchTuple
+    , bmtFieldToMatch
+    , bmtTargetString
+    , bmtTextTransformation
+    , bmtPositionalConstraint
+
     -- * FieldToMatch
-  , FieldToMatch
-  , fieldToMatch
-  , ftmData
-  , ftmType
+    , FieldToMatch
+    , fieldToMatch
+    , ftmData
+    , ftmType
+
     -- * GeoMatchConstraint
-  , GeoMatchConstraint
-  , geoMatchConstraint
-  , gmcType
-  , gmcValue
+    , GeoMatchConstraint
+    , geoMatchConstraint
+    , gmcType
+    , gmcValue
+
     -- * GeoMatchSet
-  , GeoMatchSet
-  , geoMatchSet
-  , gmsName
-  , gmsGeoMatchSetId
-  , gmsGeoMatchConstraints
+    , GeoMatchSet
+    , geoMatchSet
+    , gmsName
+    , gmsGeoMatchSetId
+    , gmsGeoMatchConstraints
+
     -- * GeoMatchSetSummary
-  , GeoMatchSetSummary
-  , geoMatchSetSummary
-  , gmssGeoMatchSetId
-  , gmssName
+    , GeoMatchSetSummary
+    , geoMatchSetSummary
+    , gmssGeoMatchSetId
+    , gmssName
+
     -- * GeoMatchSetUpdate
-  , GeoMatchSetUpdate
-  , geoMatchSetUpdate
-  , gmsuAction
-  , gmsuGeoMatchConstraint
+    , GeoMatchSetUpdate
+    , geoMatchSetUpdate
+    , gmsuAction
+    , gmsuGeoMatchConstraint
+
     -- * HTTPHeader
-  , HTTPHeader
-  , hTTPHeader
-  , httphValue
-  , httphName
+    , HTTPHeader
+    , hTTPHeader
+    , httphValue
+    , httphName
+
     -- * HTTPRequest
-  , HTTPRequest
-  , hTTPRequest
-  , httprHTTPVersion
-  , httprCountry
-  , httprURI
-  , httprHeaders
-  , httprMethod
-  , httprClientIP
+    , HTTPRequest
+    , hTTPRequest
+    , httprHTTPVersion
+    , httprCountry
+    , httprURI
+    , httprHeaders
+    , httprMethod
+    , httprClientIP
+
     -- * IPSet
-  , IPSet
-  , ipSet
-  , isName
-  , isIPSetId
-  , isIPSetDescriptors
+    , IPSet
+    , ipSet
+    , isName
+    , isIPSetId
+    , isIPSetDescriptors
+
     -- * IPSetDescriptor
-  , IPSetDescriptor
-  , ipSetDescriptor
-  , isdType
-  , isdValue
+    , IPSetDescriptor
+    , ipSetDescriptor
+    , isdType
+    , isdValue
+
     -- * IPSetSummary
-  , IPSetSummary
-  , ipSetSummary
-  , issIPSetId
-  , issName
+    , IPSetSummary
+    , ipSetSummary
+    , issIPSetId
+    , issName
+
     -- * IPSetUpdate
-  , IPSetUpdate
-  , ipSetUpdate
-  , isuAction
-  , isuIPSetDescriptor
+    , IPSetUpdate
+    , ipSetUpdate
+    , isuAction
+    , isuIPSetDescriptor
+
     -- * Predicate
-  , Predicate
-  , predicate
-  , pNegated
-  , pType
-  , pDataId
+    , Predicate
+    , predicate
+    , pNegated
+    , pType
+    , pDataId
+
     -- * RateBasedRule
-  , RateBasedRule
-  , rateBasedRule
-  , rbrMetricName
-  , rbrName
-  , rbrRuleId
-  , rbrMatchPredicates
-  , rbrRateKey
-  , rbrRateLimit
+    , RateBasedRule
+    , rateBasedRule
+    , rbrMetricName
+    , rbrName
+    , rbrRuleId
+    , rbrMatchPredicates
+    , rbrRateKey
+    , rbrRateLimit
+
     -- * RegexMatchSet
-  , RegexMatchSet
-  , regexMatchSet
-  , rmsName
-  , rmsRegexMatchTuples
-  , rmsRegexMatchSetId
+    , RegexMatchSet
+    , regexMatchSet
+    , rmsName
+    , rmsRegexMatchTuples
+    , rmsRegexMatchSetId
+
     -- * RegexMatchSetSummary
-  , RegexMatchSetSummary
-  , regexMatchSetSummary
-  , rmssRegexMatchSetId
-  , rmssName
+    , RegexMatchSetSummary
+    , regexMatchSetSummary
+    , rmssRegexMatchSetId
+    , rmssName
+
     -- * RegexMatchSetUpdate
-  , RegexMatchSetUpdate
-  , regexMatchSetUpdate
-  , rmsuAction
-  , rmsuRegexMatchTuple
+    , RegexMatchSetUpdate
+    , regexMatchSetUpdate
+    , rmsuAction
+    , rmsuRegexMatchTuple
+
     -- * RegexMatchTuple
-  , RegexMatchTuple
-  , regexMatchTuple
-  , rmtFieldToMatch
-  , rmtTextTransformation
-  , rmtRegexPatternSetId
+    , RegexMatchTuple
+    , regexMatchTuple
+    , rmtFieldToMatch
+    , rmtTextTransformation
+    , rmtRegexPatternSetId
+
     -- * RegexPatternSet
-  , RegexPatternSet
-  , regexPatternSet
-  , rpsName
-  , rpsRegexPatternSetId
-  , rpsRegexPatternStrings
+    , RegexPatternSet
+    , regexPatternSet
+    , rpsName
+    , rpsRegexPatternSetId
+    , rpsRegexPatternStrings
+
     -- * RegexPatternSetSummary
-  , RegexPatternSetSummary
-  , regexPatternSetSummary
-  , rpssRegexPatternSetId
-  , rpssName
+    , RegexPatternSetSummary
+    , regexPatternSetSummary
+    , rpssRegexPatternSetId
+    , rpssName
+
     -- * RegexPatternSetUpdate
-  , RegexPatternSetUpdate
-  , regexPatternSetUpdate
-  , rpsuAction
-  , rpsuRegexPatternString
+    , RegexPatternSetUpdate
+    , regexPatternSetUpdate
+    , rpsuAction
+    , rpsuRegexPatternString
+
     -- * Rule
-  , Rule
-  , rule
-  , rMetricName
-  , rName
-  , rRuleId
-  , rPredicates
+    , Rule
+    , rule
+    , rMetricName
+    , rName
+    , rRuleId
+    , rPredicates
+
     -- * RuleGroup
-  , RuleGroup
-  , ruleGroup
-  , rgMetricName
-  , rgName
-  , rgRuleGroupId
+    , RuleGroup
+    , ruleGroup
+    , rgMetricName
+    , rgName
+    , rgRuleGroupId
+
     -- * RuleGroupSummary
-  , RuleGroupSummary
-  , ruleGroupSummary
-  , rgsRuleGroupId
-  , rgsName
+    , RuleGroupSummary
+    , ruleGroupSummary
+    , rgsRuleGroupId
+    , rgsName
+
     -- * RuleGroupUpdate
-  , RuleGroupUpdate
-  , ruleGroupUpdate
-  , rguAction
-  , rguActivatedRule
+    , RuleGroupUpdate
+    , ruleGroupUpdate
+    , rguAction
+    , rguActivatedRule
+
     -- * RuleSummary
-  , RuleSummary
-  , ruleSummary
-  , rsRuleId
-  , rsName
+    , RuleSummary
+    , ruleSummary
+    , rsRuleId
+    , rsName
+
     -- * RuleUpdate
-  , RuleUpdate
-  , ruleUpdate
-  , ruAction
-  , ruPredicate
+    , RuleUpdate
+    , ruleUpdate
+    , ruAction
+    , ruPredicate
+
     -- * SampledHTTPRequest
-  , SampledHTTPRequest
-  , sampledHTTPRequest
-  , shttprRuleWithinRuleGroup
-  , shttprAction
-  , shttprTimestamp
-  , shttprRequest
-  , shttprWeight
+    , SampledHTTPRequest
+    , sampledHTTPRequest
+    , shttprRuleWithinRuleGroup
+    , shttprAction
+    , shttprTimestamp
+    , shttprRequest
+    , shttprWeight
+
     -- * SizeConstraint
-  , SizeConstraint
-  , sizeConstraint
-  , scFieldToMatch
-  , scTextTransformation
-  , scComparisonOperator
-  , scSize
+    , SizeConstraint
+    , sizeConstraint
+    , scFieldToMatch
+    , scTextTransformation
+    , scComparisonOperator
+    , scSize
+
     -- * SizeConstraintSet
-  , SizeConstraintSet
-  , sizeConstraintSet
-  , scsName
-  , scsSizeConstraintSetId
-  , scsSizeConstraints
+    , SizeConstraintSet
+    , sizeConstraintSet
+    , scsName
+    , scsSizeConstraintSetId
+    , scsSizeConstraints
+
     -- * SizeConstraintSetSummary
-  , SizeConstraintSetSummary
-  , sizeConstraintSetSummary
-  , scssSizeConstraintSetId
-  , scssName
+    , SizeConstraintSetSummary
+    , sizeConstraintSetSummary
+    , scssSizeConstraintSetId
+    , scssName
+
     -- * SizeConstraintSetUpdate
-  , SizeConstraintSetUpdate
-  , sizeConstraintSetUpdate
-  , scsuAction
-  , scsuSizeConstraint
+    , SizeConstraintSetUpdate
+    , sizeConstraintSetUpdate
+    , scsuAction
+    , scsuSizeConstraint
+
     -- * SqlInjectionMatchSet
-  , SqlInjectionMatchSet
-  , sqlInjectionMatchSet
-  , simsName
-  , simsSqlInjectionMatchSetId
-  , simsSqlInjectionMatchTuples
+    , SqlInjectionMatchSet
+    , sqlInjectionMatchSet
+    , simsName
+    , simsSqlInjectionMatchSetId
+    , simsSqlInjectionMatchTuples
+
     -- * SqlInjectionMatchSetSummary
-  , SqlInjectionMatchSetSummary
-  , sqlInjectionMatchSetSummary
-  , simssSqlInjectionMatchSetId
-  , simssName
+    , SqlInjectionMatchSetSummary
+    , sqlInjectionMatchSetSummary
+    , simssSqlInjectionMatchSetId
+    , simssName
+
     -- * SqlInjectionMatchSetUpdate
-  , SqlInjectionMatchSetUpdate
-  , sqlInjectionMatchSetUpdate
-  , simsuAction
-  , simsuSqlInjectionMatchTuple
+    , SqlInjectionMatchSetUpdate
+    , sqlInjectionMatchSetUpdate
+    , simsuAction
+    , simsuSqlInjectionMatchTuple
+
     -- * SqlInjectionMatchTuple
-  , SqlInjectionMatchTuple
-  , sqlInjectionMatchTuple
-  , simtFieldToMatch
-  , simtTextTransformation
+    , SqlInjectionMatchTuple
+    , sqlInjectionMatchTuple
+    , simtFieldToMatch
+    , simtTextTransformation
+
     -- * SubscribedRuleGroupSummary
-  , SubscribedRuleGroupSummary
-  , subscribedRuleGroupSummary
-  , srgsRuleGroupId
-  , srgsName
-  , srgsMetricName
+    , SubscribedRuleGroupSummary
+    , subscribedRuleGroupSummary
+    , srgsRuleGroupId
+    , srgsName
+    , srgsMetricName
+
     -- * TimeWindow
-  , TimeWindow
-  , timeWindow
-  , twStartTime
-  , twEndTime
+    , TimeWindow
+    , timeWindow
+    , twStartTime
+    , twEndTime
+
     -- * WafAction
-  , WafAction
-  , wafAction
-  , waType
+    , WafAction
+    , wafAction
+    , waType
+
     -- * WafOverrideAction
-  , WafOverrideAction
-  , wafOverrideAction
-  , woaType
+    , WafOverrideAction
+    , wafOverrideAction
+    , woaType
+
     -- * WebACL
-  , WebACL
-  , webACL
-  , waMetricName
-  , waName
-  , waWebACLId
-  , waDefaultAction
-  , waRules
+    , WebACL
+    , webACL
+    , waMetricName
+    , waName
+    , waWebACLId
+    , waDefaultAction
+    , waRules
+
     -- * WebACLSummary
-  , WebACLSummary
-  , webACLSummary
-  , wasWebACLId
-  , wasName
+    , WebACLSummary
+    , webACLSummary
+    , wasWebACLId
+    , wasName
+
     -- * WebACLUpdate
-  , WebACLUpdate
-  , webACLUpdate
-  , wauAction
-  , wauActivatedRule
+    , WebACLUpdate
+    , webACLUpdate
+    , wauAction
+    , wauActivatedRule
+
     -- * XSSMatchSet
-  , XSSMatchSet
-  , xssMatchSet
-  , xmsName
-  , xmsXSSMatchSetId
-  , xmsXSSMatchTuples
+    , XSSMatchSet
+    , xssMatchSet
+    , xmsName
+    , xmsXSSMatchSetId
+    , xmsXSSMatchTuples
+
     -- * XSSMatchSetSummary
-  , XSSMatchSetSummary
-  , xssMatchSetSummary
-  , xmssXSSMatchSetId
-  , xmssName
+    , XSSMatchSetSummary
+    , xssMatchSetSummary
+    , xmssXSSMatchSetId
+    , xmssName
+
     -- * XSSMatchSetUpdate
-  , XSSMatchSetUpdate
-  , xssMatchSetUpdate
-  , xmsuAction
-  , xmsuXSSMatchTuple
+    , XSSMatchSetUpdate
+    , xssMatchSetUpdate
+    , xmsuAction
+    , xmsuXSSMatchTuple
+
     -- * XSSMatchTuple
-  , XSSMatchTuple
-  , xssMatchTuple
-  , xmtFieldToMatch
-  , xmtTextTransformation
-  ) where
+    , XSSMatchTuple
+    , xssMatchTuple
+    , xmtFieldToMatch
+    , xmtTextTransformation
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -389,21 +457,22 @@ waf =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | The operation failed because you tried to create, update, or delete an object by using an invalid account identifier.
 --
 --
-_WAFInvalidAccountException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_WAFInvalidAccountException :: AsError a => Getting (First ServiceError) a ServiceError
 _WAFInvalidAccountException =
   _MatchServiceError waf "WAFInvalidAccountException"
+
 
 -- | The specified subscription does not exist.
 --
 --
-_WAFSubscriptionNotFoundException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_WAFSubscriptionNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _WAFSubscriptionNotFoundException =
   _MatchServiceError waf "WAFSubscriptionNotFoundException"
+
 
 -- | The operation failed because you tried to delete an object that is still in use. For example:
 --
@@ -414,18 +483,18 @@ _WAFSubscriptionNotFoundException =
 --
 --
 --
-_WAFReferencedItemException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_WAFReferencedItemException :: AsError a => Getting (First ServiceError) a ServiceError
 _WAFReferencedItemException =
   _MatchServiceError waf "WAFReferencedItemException"
+
 
 -- | The regular expression (regex) you specified in @RegexPatternString@ is invalid.
 --
 --
-_WAFInvalidRegexPatternException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_WAFInvalidRegexPatternException :: AsError a => Getting (First ServiceError) a ServiceError
 _WAFInvalidRegexPatternException =
   _MatchServiceError waf "WAFInvalidRegexPatternException"
+
 
 -- | The operation failed because there was nothing to do. For example:
 --
@@ -444,18 +513,18 @@ _WAFInvalidRegexPatternException =
 --
 --
 --
-_WAFInvalidOperationException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_WAFInvalidOperationException :: AsError a => Getting (First ServiceError) a ServiceError
 _WAFInvalidOperationException =
   _MatchServiceError waf "WAFInvalidOperationException"
+
 
 -- | The operation failed because the referenced object doesn't exist.
 --
 --
-_WAFNonexistentItemException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_WAFNonexistentItemException :: AsError a => Getting (First ServiceError) a ServiceError
 _WAFNonexistentItemException =
   _MatchServiceError waf "WAFNonexistentItemException"
+
 
 -- | The operation failed because AWS WAF didn't recognize a parameter in the request. For example:
 --
@@ -480,18 +549,18 @@ _WAFNonexistentItemException =
 --
 --
 --
-_WAFInvalidParameterException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_WAFInvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
 _WAFInvalidParameterException =
   _MatchServiceError waf "WAFInvalidParameterException"
+
 
 -- | The operation exceeds a resource limit, for example, the maximum number of @WebACL@ objects that you can create for an AWS account. For more information, see <http://docs.aws.amazon.com/waf/latest/developerguide/limits.html Limits> in the /AWS WAF Developer Guide/ .
 --
 --
-_WAFLimitsExceededException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_WAFLimitsExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _WAFLimitsExceededException =
   _MatchServiceError waf "WAFLimitsExceededException"
+
 
 -- | The operation failed because the specified policy is not in the proper format.
 --
@@ -516,24 +585,24 @@ _WAFLimitsExceededException =
 --
 --
 --
-_WAFInvalidPermissionPolicyException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_WAFInvalidPermissionPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
 _WAFInvalidPermissionPolicyException =
   _MatchServiceError waf "WAFInvalidPermissionPolicyException"
+
 
 -- | The operation failed because you tried to create, update, or delete an object by using a change token that has already been used.
 --
 --
-_WAFStaleDataException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_WAFStaleDataException :: AsError a => Getting (First ServiceError) a ServiceError
 _WAFStaleDataException = _MatchServiceError waf "WAFStaleDataException"
+
 
 -- | The operation failed because of a system problem, even though the request was valid. Retry your request.
 --
 --
-_WAFInternalErrorException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_WAFInternalErrorException :: AsError a => Getting (First ServiceError) a ServiceError
 _WAFInternalErrorException = _MatchServiceError waf "WAFInternalErrorException"
+
 
 -- | The operation failed because you tried to add an object to or delete an object from another object that doesn't exist. For example:
 --
@@ -548,18 +617,18 @@ _WAFInternalErrorException = _MatchServiceError waf "WAFInternalErrorException"
 --
 --
 --
-_WAFNonexistentContainerException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_WAFNonexistentContainerException :: AsError a => Getting (First ServiceError) a ServiceError
 _WAFNonexistentContainerException =
   _MatchServiceError waf "WAFNonexistentContainerException"
+
 
 -- | The name specified is invalid.
 --
 --
-_WAFDisallowedNameException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_WAFDisallowedNameException :: AsError a => Getting (First ServiceError) a ServiceError
 _WAFDisallowedNameException =
   _MatchServiceError waf "WAFDisallowedNameException"
+
 
 -- | The operation failed because you tried to delete an object that isn't empty. For example:
 --
@@ -574,7 +643,7 @@ _WAFDisallowedNameException =
 --
 --
 --
-_WAFNonEmptyEntityException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_WAFNonEmptyEntityException :: AsError a => Getting (First ServiceError) a ServiceError
 _WAFNonEmptyEntityException =
   _MatchServiceError waf "WAFNonEmptyEntityException"
+

@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Kinesis.UpdateShardCount
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -39,25 +41,27 @@
 --
 --
 --
--- For the default limits for an AWS account, see <http://docs.aws.amazon.com/kinesis/latest/dev/service-sizes-and-limits.html Streams Limits> in the /Amazon Kinesis Data Streams Developer Guide/ . To request an increase in the call rate limit, the shard limit for this API, or your overall shard limit, use the <https://console.aws.amazon.com/support/v1#/case/create?issueType=service-limit-increase&amp;limitType=service-code-kinesis limits form> .
+-- For the default limits for an AWS account, see <http://docs.aws.amazon.com/kinesis/latest/dev/service-sizes-and-limits.html Streams Limits> in the /Amazon Kinesis Data Streams Developer Guide/ . To request an increase in the call rate limit, the shard limit for this API, or your overall shard limit, use the <https://console.aws.amazon.com/support/v1#/case/create?issueType=service-limit-increase&limitType=service-code-kinesis limits form> .
 --
 module Network.AWS.Kinesis.UpdateShardCount
+    (
     -- * Creating a Request
-  ( updateShardCount
-  , UpdateShardCount
+      updateShardCount
+    , UpdateShardCount
     -- * Request Lenses
-  , uscStreamName
-  , uscTargetShardCount
-  , uscScalingType
+    , uscStreamName
+    , uscTargetShardCount
+    , uscScalingType
+
     -- * Destructuring the Response
-  , updateShardCountResponse
-  , UpdateShardCountResponse
+    , updateShardCountResponse
+    , UpdateShardCountResponse
     -- * Response Lenses
-  , uscrsTargetShardCount
-  , uscrsStreamName
-  , uscrsCurrentShardCount
-  , uscrsResponseStatus
-  ) where
+    , uscrsTargetShardCount
+    , uscrsStreamName
+    , uscrsCurrentShardCount
+    , uscrsResponseStatus
+    ) where
 
 import Network.AWS.Kinesis.Types
 import Network.AWS.Kinesis.Types.Product
@@ -75,6 +79,7 @@ data UpdateShardCount =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'UpdateShardCount' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -84,11 +89,11 @@ data UpdateShardCount =
 -- * 'uscTargetShardCount' - The new number of shards.
 --
 -- * 'uscScalingType' - The scaling type. Uniform scaling creates shards of equal size.
-updateShardCount ::
-     Text -- ^ 'uscStreamName'
-  -> Natural -- ^ 'uscTargetShardCount'
-  -> ScalingType -- ^ 'uscScalingType'
-  -> UpdateShardCount
+updateShardCount
+    :: Text -- ^ 'uscStreamName'
+    -> Natural -- ^ 'uscTargetShardCount'
+    -> ScalingType -- ^ 'uscScalingType'
+    -> UpdateShardCount
 updateShardCount pStreamName_ pTargetShardCount_ pScalingType_ =
   UpdateShardCount'
     { _uscStreamName = pStreamName_
@@ -96,56 +101,56 @@ updateShardCount pStreamName_ pTargetShardCount_ pScalingType_ =
     , _uscScalingType = pScalingType_
     }
 
+
 -- | The name of the stream.
 uscStreamName :: Lens' UpdateShardCount Text
-uscStreamName = lens _uscStreamName (\s a -> s {_uscStreamName = a})
+uscStreamName = lens _uscStreamName (\ s a -> s{_uscStreamName = a})
 
 -- | The new number of shards.
 uscTargetShardCount :: Lens' UpdateShardCount Natural
-uscTargetShardCount =
-  lens _uscTargetShardCount (\s a -> s {_uscTargetShardCount = a}) . _Nat
+uscTargetShardCount = lens _uscTargetShardCount (\ s a -> s{_uscTargetShardCount = a}) . _Nat
 
 -- | The scaling type. Uniform scaling creates shards of equal size.
 uscScalingType :: Lens' UpdateShardCount ScalingType
-uscScalingType = lens _uscScalingType (\s a -> s {_uscScalingType = a})
+uscScalingType = lens _uscScalingType (\ s a -> s{_uscScalingType = a})
 
 instance AWSRequest UpdateShardCount where
-  type Rs UpdateShardCount = UpdateShardCountResponse
-  request = postJSON kinesis
-  response =
-    receiveJSON
-      (\s h x ->
-         UpdateShardCountResponse' <$> (x .?> "TargetShardCount") <*>
-         (x .?> "StreamName") <*>
-         (x .?> "CurrentShardCount") <*>
-         (pure (fromEnum s)))
+        type Rs UpdateShardCount = UpdateShardCountResponse
+        request = postJSON kinesis
+        response
+          = receiveJSON
+              (\ s h x ->
+                 UpdateShardCountResponse' <$>
+                   (x .?> "TargetShardCount") <*> (x .?> "StreamName")
+                     <*> (x .?> "CurrentShardCount")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable UpdateShardCount
+instance Hashable UpdateShardCount where
 
-instance NFData UpdateShardCount
+instance NFData UpdateShardCount where
 
 instance ToHeaders UpdateShardCount where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("Kinesis_20131202.UpdateShardCount" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("Kinesis_20131202.UpdateShardCount" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON UpdateShardCount where
-  toJSON UpdateShardCount' {..} =
-    object
-      (catMaybes
-         [ Just ("StreamName" .= _uscStreamName)
-         , Just ("TargetShardCount" .= _uscTargetShardCount)
-         , Just ("ScalingType" .= _uscScalingType)
-         ])
+        toJSON UpdateShardCount'{..}
+          = object
+              (catMaybes
+                 [Just ("StreamName" .= _uscStreamName),
+                  Just ("TargetShardCount" .= _uscTargetShardCount),
+                  Just ("ScalingType" .= _uscScalingType)])
 
 instance ToPath UpdateShardCount where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery UpdateShardCount where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'updateShardCountResponse' smart constructor.
 data UpdateShardCountResponse =
@@ -156,6 +161,7 @@ data UpdateShardCountResponse =
     , _uscrsResponseStatus    :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'UpdateShardCountResponse' with the minimum fields required to make a request.
 --
@@ -168,9 +174,9 @@ data UpdateShardCountResponse =
 -- * 'uscrsCurrentShardCount' - The current number of shards.
 --
 -- * 'uscrsResponseStatus' - -- | The response status code.
-updateShardCountResponse ::
-     Int -- ^ 'uscrsResponseStatus'
-  -> UpdateShardCountResponse
+updateShardCountResponse
+    :: Int -- ^ 'uscrsResponseStatus'
+    -> UpdateShardCountResponse
 updateShardCountResponse pResponseStatus_ =
   UpdateShardCountResponse'
     { _uscrsTargetShardCount = Nothing
@@ -179,25 +185,21 @@ updateShardCountResponse pResponseStatus_ =
     , _uscrsResponseStatus = pResponseStatus_
     }
 
+
 -- | The updated number of shards.
 uscrsTargetShardCount :: Lens' UpdateShardCountResponse (Maybe Natural)
-uscrsTargetShardCount =
-  lens _uscrsTargetShardCount (\s a -> s {_uscrsTargetShardCount = a}) .
-  mapping _Nat
+uscrsTargetShardCount = lens _uscrsTargetShardCount (\ s a -> s{_uscrsTargetShardCount = a}) . mapping _Nat
 
 -- | The name of the stream.
 uscrsStreamName :: Lens' UpdateShardCountResponse (Maybe Text)
-uscrsStreamName = lens _uscrsStreamName (\s a -> s {_uscrsStreamName = a})
+uscrsStreamName = lens _uscrsStreamName (\ s a -> s{_uscrsStreamName = a})
 
 -- | The current number of shards.
 uscrsCurrentShardCount :: Lens' UpdateShardCountResponse (Maybe Natural)
-uscrsCurrentShardCount =
-  lens _uscrsCurrentShardCount (\s a -> s {_uscrsCurrentShardCount = a}) .
-  mapping _Nat
+uscrsCurrentShardCount = lens _uscrsCurrentShardCount (\ s a -> s{_uscrsCurrentShardCount = a}) . mapping _Nat
 
 -- | -- | The response status code.
 uscrsResponseStatus :: Lens' UpdateShardCountResponse Int
-uscrsResponseStatus =
-  lens _uscrsResponseStatus (\s a -> s {_uscrsResponseStatus = a})
+uscrsResponseStatus = lens _uscrsResponseStatus (\ s a -> s{_uscrsResponseStatus = a})
 
-instance NFData UpdateShardCountResponse
+instance NFData UpdateShardCountResponse where

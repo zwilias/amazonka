@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.LexModels.Types
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -10,175 +11,211 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.LexModels.Types
+    (
     -- * Service Configuration
-  ( lexModels
+      lexModels
+
     -- * Errors
-  , _PreconditionFailedException
-  , _ConflictException
-  , _NotFoundException
-  , _InternalFailureException
-  , _BadRequestException
-  , _LimitExceededException
-  , _ResourceInUseException
+    , _PreconditionFailedException
+    , _ConflictException
+    , _NotFoundException
+    , _InternalFailureException
+    , _BadRequestException
+    , _LimitExceededException
+    , _ResourceInUseException
+
     -- * ChannelStatus
-  , ChannelStatus(..)
+    , ChannelStatus (..)
+
     -- * ChannelType
-  , ChannelType(..)
+    , ChannelType (..)
+
     -- * ContentType
-  , ContentType(..)
+    , ContentType (..)
+
     -- * ExportStatus
-  , ExportStatus(..)
+    , ExportStatus (..)
+
     -- * ExportType
-  , ExportType(..)
+    , ExportType (..)
+
     -- * FulfillmentActivityType
-  , FulfillmentActivityType(..)
+    , FulfillmentActivityType (..)
+
     -- * ImportStatus
-  , ImportStatus(..)
+    , ImportStatus (..)
+
     -- * LexStatus
-  , LexStatus(..)
+    , LexStatus (..)
+
     -- * Locale
-  , Locale(..)
+    , Locale (..)
+
     -- * MergeStrategy
-  , MergeStrategy(..)
+    , MergeStrategy (..)
+
     -- * ProcessBehavior
-  , ProcessBehavior(..)
+    , ProcessBehavior (..)
+
     -- * ResourceType
-  , ResourceType(..)
+    , ResourceType (..)
+
     -- * SlotConstraint
-  , SlotConstraint(..)
+    , SlotConstraint (..)
+
     -- * SlotValueSelectionStrategy
-  , SlotValueSelectionStrategy(..)
+    , SlotValueSelectionStrategy (..)
+
     -- * StatusType
-  , StatusType(..)
+    , StatusType (..)
+
     -- * BotAliasMetadata
-  , BotAliasMetadata
-  , botAliasMetadata
-  , bamChecksum
-  , bamBotVersion
-  , bamBotName
-  , bamCreatedDate
-  , bamName
-  , bamLastUpdatedDate
-  , bamDescription
+    , BotAliasMetadata
+    , botAliasMetadata
+    , bamChecksum
+    , bamBotVersion
+    , bamBotName
+    , bamCreatedDate
+    , bamName
+    , bamLastUpdatedDate
+    , bamDescription
+
     -- * BotChannelAssociation
-  , BotChannelAssociation
-  , botChannelAssociation
-  , bcaFailureReason
-  , bcaStatus
-  , bcaBotAlias
-  , bcaBotName
-  , bcaBotConfiguration
-  , bcaCreatedDate
-  , bcaName
-  , bcaType
-  , bcaDescription
+    , BotChannelAssociation
+    , botChannelAssociation
+    , bcaFailureReason
+    , bcaStatus
+    , bcaBotAlias
+    , bcaBotName
+    , bcaBotConfiguration
+    , bcaCreatedDate
+    , bcaName
+    , bcaType
+    , bcaDescription
+
     -- * BotMetadata
-  , BotMetadata
-  , botMetadata
-  , bmStatus
-  , bmCreatedDate
-  , bmName
-  , bmVersion
-  , bmLastUpdatedDate
-  , bmDescription
+    , BotMetadata
+    , botMetadata
+    , bmStatus
+    , bmCreatedDate
+    , bmName
+    , bmVersion
+    , bmLastUpdatedDate
+    , bmDescription
+
     -- * BuiltinIntentMetadata
-  , BuiltinIntentMetadata
-  , builtinIntentMetadata
-  , bimSignature
-  , bimSupportedLocales
+    , BuiltinIntentMetadata
+    , builtinIntentMetadata
+    , bimSignature
+    , bimSupportedLocales
+
     -- * BuiltinIntentSlot
-  , BuiltinIntentSlot
-  , builtinIntentSlot
-  , bisName
+    , BuiltinIntentSlot
+    , builtinIntentSlot
+    , bisName
+
     -- * BuiltinSlotTypeMetadata
-  , BuiltinSlotTypeMetadata
-  , builtinSlotTypeMetadata
-  , bstmSignature
-  , bstmSupportedLocales
+    , BuiltinSlotTypeMetadata
+    , builtinSlotTypeMetadata
+    , bstmSignature
+    , bstmSupportedLocales
+
     -- * CodeHook
-  , CodeHook
-  , codeHook
-  , chUri
-  , chMessageVersion
+    , CodeHook
+    , codeHook
+    , chUri
+    , chMessageVersion
+
     -- * EnumerationValue
-  , EnumerationValue
-  , enumerationValue
-  , evSynonyms
-  , evValue
+    , EnumerationValue
+    , enumerationValue
+    , evSynonyms
+    , evValue
+
     -- * FollowUpPrompt
-  , FollowUpPrompt
-  , followUpPrompt
-  , fupPrompt
-  , fupRejectionStatement
+    , FollowUpPrompt
+    , followUpPrompt
+    , fupPrompt
+    , fupRejectionStatement
+
     -- * FulfillmentActivity
-  , FulfillmentActivity
-  , fulfillmentActivity
-  , faCodeHook
-  , faType
+    , FulfillmentActivity
+    , fulfillmentActivity
+    , faCodeHook
+    , faType
+
     -- * Intent
-  , Intent
-  , intent
-  , iIntentName
-  , iIntentVersion
+    , Intent
+    , intent
+    , iIntentName
+    , iIntentVersion
+
     -- * IntentMetadata
-  , IntentMetadata
-  , intentMetadata
-  , imCreatedDate
-  , imName
-  , imVersion
-  , imLastUpdatedDate
-  , imDescription
+    , IntentMetadata
+    , intentMetadata
+    , imCreatedDate
+    , imName
+    , imVersion
+    , imLastUpdatedDate
+    , imDescription
+
     -- * Message
-  , Message
-  , message
-  , mGroupNumber
-  , mContentType
-  , mContent
+    , Message
+    , message
+    , mGroupNumber
+    , mContentType
+    , mContent
+
     -- * Prompt
-  , Prompt
-  , prompt
-  , pResponseCard
-  , pMessages
-  , pMaxAttempts
+    , Prompt
+    , prompt
+    , pResponseCard
+    , pMessages
+    , pMaxAttempts
+
     -- * Slot
-  , Slot
-  , slot
-  , sSlotType
-  , sValueElicitationPrompt
-  , sResponseCard
-  , sPriority
-  , sSlotTypeVersion
-  , sSampleUtterances
-  , sDescription
-  , sName
-  , sSlotConstraint
+    , Slot
+    , slot
+    , sSlotType
+    , sValueElicitationPrompt
+    , sResponseCard
+    , sPriority
+    , sSlotTypeVersion
+    , sSampleUtterances
+    , sDescription
+    , sName
+    , sSlotConstraint
+
     -- * SlotTypeMetadata
-  , SlotTypeMetadata
-  , slotTypeMetadata
-  , stmCreatedDate
-  , stmName
-  , stmVersion
-  , stmLastUpdatedDate
-  , stmDescription
+    , SlotTypeMetadata
+    , slotTypeMetadata
+    , stmCreatedDate
+    , stmName
+    , stmVersion
+    , stmLastUpdatedDate
+    , stmDescription
+
     -- * Statement
-  , Statement
-  , statement
-  , staResponseCard
-  , staMessages
+    , Statement
+    , statement
+    , staResponseCard
+    , staMessages
+
     -- * UtteranceData
-  , UtteranceData
-  , utteranceData
-  , udFirstUtteredDate
-  , udCount
-  , udUtteranceString
-  , udLastUtteredDate
-  , udDistinctUsers
+    , UtteranceData
+    , utteranceData
+    , udFirstUtteredDate
+    , udCount
+    , udUtteranceString
+    , udLastUtteredDate
+    , udDistinctUsers
+
     -- * UtteranceList
-  , UtteranceList
-  , utteranceList
-  , ulBotVersion
-  , ulUtterances
-  ) where
+    , UtteranceList
+    , utteranceList
+    , ulBotVersion
+    , ulUtterances
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.LexModels.Types.Product
@@ -224,13 +261,14 @@ lexModels =
       | has (hasStatus 509) e = Just "limit_exceeded"
       | otherwise = Nothing
 
+
 -- | The checksum of the resource that you are trying to change does not match the checksum in the request. Check the resource's checksum and try again.
 --
 --
-_PreconditionFailedException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_PreconditionFailedException :: AsError a => Getting (First ServiceError) a ServiceError
 _PreconditionFailedException =
   _MatchServiceError lexModels "PreconditionFailedException" . hasStatus 412
+
 
 -- | There was a conflict processing the request. Try your request again.
 --
@@ -239,6 +277,7 @@ _ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
 _ConflictException =
   _MatchServiceError lexModels "ConflictException" . hasStatus 409
 
+
 -- | The resource specified in the request was not found. Check the resource and try again.
 --
 --
@@ -246,13 +285,14 @@ _NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _NotFoundException =
   _MatchServiceError lexModels "NotFoundException" . hasStatus 404
 
+
 -- | An internal Amazon Lex error occurred. Try your request again.
 --
 --
-_InternalFailureException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_InternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalFailureException =
   _MatchServiceError lexModels "InternalFailureException" . hasStatus 500
+
 
 -- | The request is not well formed. For example, a value is invalid or a required field is missing. Check the field values, and try again.
 --
@@ -261,13 +301,14 @@ _BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
 _BadRequestException =
   _MatchServiceError lexModels "BadRequestException" . hasStatus 400
 
+
 -- | The request exceeded a limit. Try your request again.
 --
 --
-_LimitExceededException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException =
   _MatchServiceError lexModels "LimitExceededException" . hasStatus 429
+
 
 -- | The resource that you are attempting to delete is referred to by another resource. Use this information to remove references to the resource that you are trying to delete.
 --
@@ -280,7 +321,7 @@ _LimitExceededException =
 --
 -- @"name": /string/ , "version": /string/ } }@
 --
-_ResourceInUseException ::
-     AsError a => Getting (First ServiceError) a ServiceError
+_ResourceInUseException :: AsError a => Getting (First ServiceError) a ServiceError
 _ResourceInUseException =
   _MatchServiceError lexModels "ResourceInUseException" . hasStatus 400
+

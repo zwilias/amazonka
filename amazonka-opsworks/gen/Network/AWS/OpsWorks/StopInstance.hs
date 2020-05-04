@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.OpsWorks.StopInstance
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,16 +24,18 @@
 -- __Required Permissions__ : To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see <http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html Managing User Permissions> .
 --
 module Network.AWS.OpsWorks.StopInstance
+    (
     -- * Creating a Request
-  ( stopInstance
-  , StopInstance
+      stopInstance
+    , StopInstance
     -- * Request Lenses
-  , siForce
-  , siInstanceId
+    , siForce
+    , siInstanceId
+
     -- * Destructuring the Response
-  , stopInstanceResponse
-  , StopInstanceResponse
-  ) where
+    , stopInstanceResponse
+    , StopInstanceResponse
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
@@ -48,6 +52,7 @@ data StopInstance =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'StopInstance' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -55,57 +60,63 @@ data StopInstance =
 -- * 'siForce' - Undocumented member.
 --
 -- * 'siInstanceId' - The instance ID.
-stopInstance ::
-     Text -- ^ 'siInstanceId'
-  -> StopInstance
+stopInstance
+    :: Text -- ^ 'siInstanceId'
+    -> StopInstance
 stopInstance pInstanceId_ =
   StopInstance' {_siForce = Nothing, _siInstanceId = pInstanceId_}
 
+
 -- | Undocumented member.
 siForce :: Lens' StopInstance (Maybe Bool)
-siForce = lens _siForce (\s a -> s {_siForce = a})
+siForce = lens _siForce (\ s a -> s{_siForce = a})
 
 -- | The instance ID.
 siInstanceId :: Lens' StopInstance Text
-siInstanceId = lens _siInstanceId (\s a -> s {_siInstanceId = a})
+siInstanceId = lens _siInstanceId (\ s a -> s{_siInstanceId = a})
 
 instance AWSRequest StopInstance where
-  type Rs StopInstance = StopInstanceResponse
-  request = postJSON opsWorks
-  response = receiveNull StopInstanceResponse'
+        type Rs StopInstance = StopInstanceResponse
+        request = postJSON opsWorks
+        response = receiveNull StopInstanceResponse'
 
-instance Hashable StopInstance
+instance Hashable StopInstance where
 
-instance NFData StopInstance
+instance NFData StopInstance where
 
 instance ToHeaders StopInstance where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("OpsWorks_20130218.StopInstance" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("OpsWorks_20130218.StopInstance" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON StopInstance where
-  toJSON StopInstance' {..} =
-    object
-      (catMaybes
-         [("Force" .=) <$> _siForce, Just ("InstanceId" .= _siInstanceId)])
+        toJSON StopInstance'{..}
+          = object
+              (catMaybes
+                 [("Force" .=) <$> _siForce,
+                  Just ("InstanceId" .= _siInstanceId)])
 
 instance ToPath StopInstance where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery StopInstance where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'stopInstanceResponse' smart constructor.
 data StopInstanceResponse =
   StopInstanceResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'StopInstanceResponse' with the minimum fields required to make a request.
 --
-stopInstanceResponse :: StopInstanceResponse
+stopInstanceResponse
+    :: StopInstanceResponse
 stopInstanceResponse = StopInstanceResponse'
 
-instance NFData StopInstanceResponse
+
+instance NFData StopInstanceResponse where

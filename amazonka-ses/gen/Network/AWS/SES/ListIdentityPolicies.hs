@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SES.ListIdentityPolicies
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,18 +26,20 @@
 -- You can execute this operation no more than once per second.
 --
 module Network.AWS.SES.ListIdentityPolicies
+    (
     -- * Creating a Request
-  ( listIdentityPolicies
-  , ListIdentityPolicies
+      listIdentityPolicies
+    , ListIdentityPolicies
     -- * Request Lenses
-  , lipIdentity
+    , lipIdentity
+
     -- * Destructuring the Response
-  , listIdentityPoliciesResponse
-  , ListIdentityPoliciesResponse
+    , listIdentityPoliciesResponse
+    , ListIdentityPoliciesResponse
     -- * Response Lenses
-  , liprsResponseStatus
-  , liprsPolicyNames
-  ) where
+    , liprsResponseStatus
+    , liprsPolicyNames
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -55,48 +59,51 @@ newtype ListIdentityPolicies =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListIdentityPolicies' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'lipIdentity' - The identity that is associated with the policy for which the policies will be listed. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: @user@example.com@ , @example.com@ , @arn:aws:ses:us-east-1:123456789012:identity/example.com@ . To successfully call this API, you must own the identity.
-listIdentityPolicies ::
-     Text -- ^ 'lipIdentity'
-  -> ListIdentityPolicies
+listIdentityPolicies
+    :: Text -- ^ 'lipIdentity'
+    -> ListIdentityPolicies
 listIdentityPolicies pIdentity_ =
   ListIdentityPolicies' {_lipIdentity = pIdentity_}
 
+
 -- | The identity that is associated with the policy for which the policies will be listed. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: @user@example.com@ , @example.com@ , @arn:aws:ses:us-east-1:123456789012:identity/example.com@ . To successfully call this API, you must own the identity.
 lipIdentity :: Lens' ListIdentityPolicies Text
-lipIdentity = lens _lipIdentity (\s a -> s {_lipIdentity = a})
+lipIdentity = lens _lipIdentity (\ s a -> s{_lipIdentity = a})
 
 instance AWSRequest ListIdentityPolicies where
-  type Rs ListIdentityPolicies = ListIdentityPoliciesResponse
-  request = postQuery ses
-  response =
-    receiveXMLWrapper
-      "ListIdentityPoliciesResult"
-      (\s h x ->
-         ListIdentityPoliciesResponse' <$> (pure (fromEnum s)) <*>
-         (x .@? "PolicyNames" .!@ mempty >>= parseXMLList "member"))
+        type Rs ListIdentityPolicies =
+             ListIdentityPoliciesResponse
+        request = postQuery ses
+        response
+          = receiveXMLWrapper "ListIdentityPoliciesResult"
+              (\ s h x ->
+                 ListIdentityPoliciesResponse' <$>
+                   (pure (fromEnum s)) <*>
+                     (x .@? "PolicyNames" .!@ mempty >>=
+                        parseXMLList "member"))
 
-instance Hashable ListIdentityPolicies
+instance Hashable ListIdentityPolicies where
 
-instance NFData ListIdentityPolicies
+instance NFData ListIdentityPolicies where
 
 instance ToHeaders ListIdentityPolicies where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath ListIdentityPolicies where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery ListIdentityPolicies where
-  toQuery ListIdentityPolicies' {..} =
-    mconcat
-      [ "Action" =: ("ListIdentityPolicies" :: ByteString)
-      , "Version" =: ("2010-12-01" :: ByteString)
-      , "Identity" =: _lipIdentity
-      ]
+        toQuery ListIdentityPolicies'{..}
+          = mconcat
+              ["Action" =: ("ListIdentityPolicies" :: ByteString),
+               "Version" =: ("2010-12-01" :: ByteString),
+               "Identity" =: _lipIdentity]
 
 -- | A list of names of sending authorization policies that apply to an identity.
 --
@@ -110,6 +117,7 @@ data ListIdentityPoliciesResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListIdentityPoliciesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -117,21 +125,20 @@ data ListIdentityPoliciesResponse =
 -- * 'liprsResponseStatus' - -- | The response status code.
 --
 -- * 'liprsPolicyNames' - A list of names of policies that apply to the specified identity.
-listIdentityPoliciesResponse ::
-     Int -- ^ 'liprsResponseStatus'
-  -> ListIdentityPoliciesResponse
+listIdentityPoliciesResponse
+    :: Int -- ^ 'liprsResponseStatus'
+    -> ListIdentityPoliciesResponse
 listIdentityPoliciesResponse pResponseStatus_ =
   ListIdentityPoliciesResponse'
     {_liprsResponseStatus = pResponseStatus_, _liprsPolicyNames = mempty}
 
+
 -- | -- | The response status code.
 liprsResponseStatus :: Lens' ListIdentityPoliciesResponse Int
-liprsResponseStatus =
-  lens _liprsResponseStatus (\s a -> s {_liprsResponseStatus = a})
+liprsResponseStatus = lens _liprsResponseStatus (\ s a -> s{_liprsResponseStatus = a})
 
 -- | A list of names of policies that apply to the specified identity.
 liprsPolicyNames :: Lens' ListIdentityPoliciesResponse [Text]
-liprsPolicyNames =
-  lens _liprsPolicyNames (\s a -> s {_liprsPolicyNames = a}) . _Coerce
+liprsPolicyNames = lens _liprsPolicyNames (\ s a -> s{_liprsPolicyNames = a}) . _Coerce
 
-instance NFData ListIdentityPoliciesResponse
+instance NFData ListIdentityPoliciesResponse where

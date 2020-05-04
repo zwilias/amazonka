@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.DAX.CreateParameterGroup
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,19 +22,21 @@
 --
 --
 module Network.AWS.DAX.CreateParameterGroup
+    (
     -- * Creating a Request
-  ( createParameterGroup
-  , CreateParameterGroup
+      createParameterGroup
+    , CreateParameterGroup
     -- * Request Lenses
-  , cpgDescription
-  , cpgParameterGroupName
+    , cpgDescription
+    , cpgParameterGroupName
+
     -- * Destructuring the Response
-  , createParameterGroupResponse
-  , CreateParameterGroupResponse
+    , createParameterGroupResponse
+    , CreateParameterGroupResponse
     -- * Response Lenses
-  , cpgrsParameterGroup
-  , cpgrsResponseStatus
-  ) where
+    , cpgrsParameterGroup
+    , cpgrsResponseStatus
+    ) where
 
 import Network.AWS.DAX.Types
 import Network.AWS.DAX.Types.Product
@@ -49,6 +53,7 @@ data CreateParameterGroup =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateParameterGroup' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -56,56 +61,58 @@ data CreateParameterGroup =
 -- * 'cpgDescription' - A description of the parameter group.
 --
 -- * 'cpgParameterGroupName' - The name of the parameter group to apply to all of the clusters in this replication group.
-createParameterGroup ::
-     Text -- ^ 'cpgParameterGroupName'
-  -> CreateParameterGroup
+createParameterGroup
+    :: Text -- ^ 'cpgParameterGroupName'
+    -> CreateParameterGroup
 createParameterGroup pParameterGroupName_ =
   CreateParameterGroup'
     {_cpgDescription = Nothing, _cpgParameterGroupName = pParameterGroupName_}
 
+
 -- | A description of the parameter group.
 cpgDescription :: Lens' CreateParameterGroup (Maybe Text)
-cpgDescription = lens _cpgDescription (\s a -> s {_cpgDescription = a})
+cpgDescription = lens _cpgDescription (\ s a -> s{_cpgDescription = a})
 
 -- | The name of the parameter group to apply to all of the clusters in this replication group.
 cpgParameterGroupName :: Lens' CreateParameterGroup Text
-cpgParameterGroupName =
-  lens _cpgParameterGroupName (\s a -> s {_cpgParameterGroupName = a})
+cpgParameterGroupName = lens _cpgParameterGroupName (\ s a -> s{_cpgParameterGroupName = a})
 
 instance AWSRequest CreateParameterGroup where
-  type Rs CreateParameterGroup = CreateParameterGroupResponse
-  request = postJSON dax
-  response =
-    receiveJSON
-      (\s h x ->
-         CreateParameterGroupResponse' <$> (x .?> "ParameterGroup") <*>
-         (pure (fromEnum s)))
+        type Rs CreateParameterGroup =
+             CreateParameterGroupResponse
+        request = postJSON dax
+        response
+          = receiveJSON
+              (\ s h x ->
+                 CreateParameterGroupResponse' <$>
+                   (x .?> "ParameterGroup") <*> (pure (fromEnum s)))
 
-instance Hashable CreateParameterGroup
+instance Hashable CreateParameterGroup where
 
-instance NFData CreateParameterGroup
+instance NFData CreateParameterGroup where
 
 instance ToHeaders CreateParameterGroup where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("AmazonDAXV3.CreateParameterGroup" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AmazonDAXV3.CreateParameterGroup" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON CreateParameterGroup where
-  toJSON CreateParameterGroup' {..} =
-    object
-      (catMaybes
-         [ ("Description" .=) <$> _cpgDescription
-         , Just ("ParameterGroupName" .= _cpgParameterGroupName)
-         ])
+        toJSON CreateParameterGroup'{..}
+          = object
+              (catMaybes
+                 [("Description" .=) <$> _cpgDescription,
+                  Just
+                    ("ParameterGroupName" .= _cpgParameterGroupName)])
 
 instance ToPath CreateParameterGroup where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery CreateParameterGroup where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'createParameterGroupResponse' smart constructor.
 data CreateParameterGroupResponse =
@@ -115,6 +122,7 @@ data CreateParameterGroupResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'CreateParameterGroupResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -122,21 +130,20 @@ data CreateParameterGroupResponse =
 -- * 'cpgrsParameterGroup' - Represents the output of a /CreateParameterGroup/ action.
 --
 -- * 'cpgrsResponseStatus' - -- | The response status code.
-createParameterGroupResponse ::
-     Int -- ^ 'cpgrsResponseStatus'
-  -> CreateParameterGroupResponse
+createParameterGroupResponse
+    :: Int -- ^ 'cpgrsResponseStatus'
+    -> CreateParameterGroupResponse
 createParameterGroupResponse pResponseStatus_ =
   CreateParameterGroupResponse'
     {_cpgrsParameterGroup = Nothing, _cpgrsResponseStatus = pResponseStatus_}
 
+
 -- | Represents the output of a /CreateParameterGroup/ action.
 cpgrsParameterGroup :: Lens' CreateParameterGroupResponse (Maybe ParameterGroup)
-cpgrsParameterGroup =
-  lens _cpgrsParameterGroup (\s a -> s {_cpgrsParameterGroup = a})
+cpgrsParameterGroup = lens _cpgrsParameterGroup (\ s a -> s{_cpgrsParameterGroup = a})
 
 -- | -- | The response status code.
 cpgrsResponseStatus :: Lens' CreateParameterGroupResponse Int
-cpgrsResponseStatus =
-  lens _cpgrsResponseStatus (\s a -> s {_cpgrsResponseStatus = a})
+cpgrsResponseStatus = lens _cpgrsResponseStatus (\ s a -> s{_cpgrsResponseStatus = a})
 
-instance NFData CreateParameterGroupResponse
+instance NFData CreateParameterGroupResponse where

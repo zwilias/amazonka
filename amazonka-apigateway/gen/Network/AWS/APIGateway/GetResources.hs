@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.APIGateway.GetResources
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,22 +24,24 @@
 --
 -- This operation returns paginated results.
 module Network.AWS.APIGateway.GetResources
+    (
     -- * Creating a Request
-  ( getResources
-  , GetResources
+      getResources
+    , GetResources
     -- * Request Lenses
-  , grsEmbed
-  , grsLimit
-  , grsPosition
-  , grsRestAPIId
+    , grsEmbed
+    , grsLimit
+    , grsPosition
+    , grsRestAPIId
+
     -- * Destructuring the Response
-  , getResourcesResponse
-  , GetResourcesResponse
+    , getResourcesResponse
+    , GetResourcesResponse
     -- * Response Lenses
-  , grrsItems
-  , grrsPosition
-  , grrsResponseStatus
-  ) where
+    , grrsItems
+    , grrsPosition
+    , grrsResponseStatus
+    ) where
 
 import Network.AWS.APIGateway.Types
 import Network.AWS.APIGateway.Types.Product
@@ -61,6 +65,7 @@ data GetResources =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetResources' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -72,9 +77,9 @@ data GetResources =
 -- * 'grsPosition' - The current pagination position in the paged result set.
 --
 -- * 'grsRestAPIId' - [Required] The string identifier of the associated 'RestApi' .
-getResources ::
-     Text -- ^ 'grsRestAPIId'
-  -> GetResources
+getResources
+    :: Text -- ^ 'grsRestAPIId'
+    -> GetResources
 getResources pRestAPIId_ =
   GetResources'
     { _grsEmbed = Nothing
@@ -83,61 +88,66 @@ getResources pRestAPIId_ =
     , _grsRestAPIId = pRestAPIId_
     }
 
+
 -- | A query parameter used to retrieve the specified resources embedded in the returned 'Resources' resource in the response. This @embed@ parameter value is a list of comma-separated strings. Currently, the request supports only retrieval of the embedded 'Method' resources this way. The query parameter value must be a single-valued list and contain the @"methods"@ string. For example, @GET /restapis/{restapi_id}/resources?embed=methods@ .
 grsEmbed :: Lens' GetResources [Text]
-grsEmbed = lens _grsEmbed (\s a -> s {_grsEmbed = a}) . _Default . _Coerce
+grsEmbed = lens _grsEmbed (\ s a -> s{_grsEmbed = a}) . _Default . _Coerce
 
 -- | The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
 grsLimit :: Lens' GetResources (Maybe Int)
-grsLimit = lens _grsLimit (\s a -> s {_grsLimit = a})
+grsLimit = lens _grsLimit (\ s a -> s{_grsLimit = a})
 
 -- | The current pagination position in the paged result set.
 grsPosition :: Lens' GetResources (Maybe Text)
-grsPosition = lens _grsPosition (\s a -> s {_grsPosition = a})
+grsPosition = lens _grsPosition (\ s a -> s{_grsPosition = a})
 
 -- | [Required] The string identifier of the associated 'RestApi' .
 grsRestAPIId :: Lens' GetResources Text
-grsRestAPIId = lens _grsRestAPIId (\s a -> s {_grsRestAPIId = a})
+grsRestAPIId = lens _grsRestAPIId (\ s a -> s{_grsRestAPIId = a})
 
 instance AWSPager GetResources where
-  page rq rs
-    | stop (rs ^. grrsPosition) = Nothing
-    | stop (rs ^. grrsItems) = Nothing
-    | otherwise = Just $ rq & grsPosition .~ rs ^. grrsPosition
+        page rq rs
+          | stop (rs ^. grrsPosition) = Nothing
+          | stop (rs ^. grrsItems) = Nothing
+          | otherwise =
+            Just $ rq & grsPosition .~ rs ^. grrsPosition
 
 instance AWSRequest GetResources where
-  type Rs GetResources = GetResourcesResponse
-  request = get apiGateway
-  response =
-    receiveJSON
-      (\s h x ->
-         GetResourcesResponse' <$> (x .?> "item" .!@ mempty) <*>
-         (x .?> "position") <*>
-         (pure (fromEnum s)))
+        type Rs GetResources = GetResourcesResponse
+        request = get apiGateway
+        response
+          = receiveJSON
+              (\ s h x ->
+                 GetResourcesResponse' <$>
+                   (x .?> "item" .!@ mempty) <*> (x .?> "position") <*>
+                     (pure (fromEnum s)))
 
-instance Hashable GetResources
+instance Hashable GetResources where
 
-instance NFData GetResources
+instance NFData GetResources where
 
 instance ToHeaders GetResources where
-  toHeaders = const (mconcat ["Accept" =# ("application/json" :: ByteString)])
+        toHeaders
+          = const
+              (mconcat
+                 ["Accept" =# ("application/json" :: ByteString)])
 
 instance ToPath GetResources where
-  toPath GetResources' {..} =
-    mconcat ["/restapis/", toBS _grsRestAPIId, "/resources"]
+        toPath GetResources'{..}
+          = mconcat
+              ["/restapis/", toBS _grsRestAPIId, "/resources"]
 
 instance ToQuery GetResources where
-  toQuery GetResources' {..} =
-    mconcat
-      [ "embed" =: toQuery (toQueryList "member" <$> _grsEmbed)
-      , "limit" =: _grsLimit
-      , "position" =: _grsPosition
-      ]
+        toQuery GetResources'{..}
+          = mconcat
+              ["embed" =:
+                 toQuery (toQueryList "member" <$> _grsEmbed),
+               "limit" =: _grsLimit, "position" =: _grsPosition]
 
 -- | Represents a collection of 'Resource' resources.
 --
 --
--- <http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html Create an API>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html Create an API>
 --
 -- /See:/ 'getResourcesResponse' smart constructor.
 data GetResourcesResponse =
@@ -148,6 +158,7 @@ data GetResourcesResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetResourcesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -157,9 +168,9 @@ data GetResourcesResponse =
 -- * 'grrsPosition' - Undocumented member.
 --
 -- * 'grrsResponseStatus' - -- | The response status code.
-getResourcesResponse ::
-     Int -- ^ 'grrsResponseStatus'
-  -> GetResourcesResponse
+getResourcesResponse
+    :: Int -- ^ 'grrsResponseStatus'
+    -> GetResourcesResponse
 getResourcesResponse pResponseStatus_ =
   GetResourcesResponse'
     { _grrsItems = Nothing
@@ -167,17 +178,17 @@ getResourcesResponse pResponseStatus_ =
     , _grrsResponseStatus = pResponseStatus_
     }
 
+
 -- | The current page of elements from this collection.
 grrsItems :: Lens' GetResourcesResponse [Resource]
-grrsItems = lens _grrsItems (\s a -> s {_grrsItems = a}) . _Default . _Coerce
+grrsItems = lens _grrsItems (\ s a -> s{_grrsItems = a}) . _Default . _Coerce
 
 -- | Undocumented member.
 grrsPosition :: Lens' GetResourcesResponse (Maybe Text)
-grrsPosition = lens _grrsPosition (\s a -> s {_grrsPosition = a})
+grrsPosition = lens _grrsPosition (\ s a -> s{_grrsPosition = a})
 
 -- | -- | The response status code.
 grrsResponseStatus :: Lens' GetResourcesResponse Int
-grrsResponseStatus =
-  lens _grrsResponseStatus (\s a -> s {_grrsResponseStatus = a})
+grrsResponseStatus = lens _grrsResponseStatus (\ s a -> s{_grrsResponseStatus = a})
 
-instance NFData GetResourcesResponse
+instance NFData GetResourcesResponse where

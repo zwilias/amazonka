@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.AlexaBusiness.AssociateSkillGroupWithRoom
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.AlexaBusiness.AssociateSkillGroupWithRoom
+    (
     -- * Creating a Request
-  ( associateSkillGroupWithRoom
-  , AssociateSkillGroupWithRoom
+      associateSkillGroupWithRoom
+    , AssociateSkillGroupWithRoom
     -- * Request Lenses
-  , asgwrSkillGroupARN
-  , asgwrRoomARN
+    , asgwrSkillGroupARN
+    , asgwrRoomARN
+
     -- * Destructuring the Response
-  , associateSkillGroupWithRoomResponse
-  , AssociateSkillGroupWithRoomResponse
+    , associateSkillGroupWithRoomResponse
+    , AssociateSkillGroupWithRoomResponse
     -- * Response Lenses
-  , asgwrrsResponseStatus
-  ) where
+    , asgwrrsResponseStatus
+    ) where
 
 import Network.AWS.AlexaBusiness.Types
 import Network.AWS.AlexaBusiness.Types.Product
@@ -48,6 +52,7 @@ data AssociateSkillGroupWithRoom =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AssociateSkillGroupWithRoom' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -55,53 +60,57 @@ data AssociateSkillGroupWithRoom =
 -- * 'asgwrSkillGroupARN' - The ARN of the skill group to associate with a room. Required.
 --
 -- * 'asgwrRoomARN' - The ARN of the room with which to associate the skill group. Required.
-associateSkillGroupWithRoom :: AssociateSkillGroupWithRoom
+associateSkillGroupWithRoom
+    :: AssociateSkillGroupWithRoom
 associateSkillGroupWithRoom =
   AssociateSkillGroupWithRoom'
     {_asgwrSkillGroupARN = Nothing, _asgwrRoomARN = Nothing}
 
+
 -- | The ARN of the skill group to associate with a room. Required.
 asgwrSkillGroupARN :: Lens' AssociateSkillGroupWithRoom (Maybe Text)
-asgwrSkillGroupARN =
-  lens _asgwrSkillGroupARN (\s a -> s {_asgwrSkillGroupARN = a})
+asgwrSkillGroupARN = lens _asgwrSkillGroupARN (\ s a -> s{_asgwrSkillGroupARN = a})
 
 -- | The ARN of the room with which to associate the skill group. Required.
 asgwrRoomARN :: Lens' AssociateSkillGroupWithRoom (Maybe Text)
-asgwrRoomARN = lens _asgwrRoomARN (\s a -> s {_asgwrRoomARN = a})
+asgwrRoomARN = lens _asgwrRoomARN (\ s a -> s{_asgwrRoomARN = a})
 
 instance AWSRequest AssociateSkillGroupWithRoom where
-  type Rs AssociateSkillGroupWithRoom = AssociateSkillGroupWithRoomResponse
-  request = postJSON alexaBusiness
-  response =
-    receiveEmpty
-      (\s h x -> AssociateSkillGroupWithRoomResponse' <$> (pure (fromEnum s)))
+        type Rs AssociateSkillGroupWithRoom =
+             AssociateSkillGroupWithRoomResponse
+        request = postJSON alexaBusiness
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 AssociateSkillGroupWithRoomResponse' <$>
+                   (pure (fromEnum s)))
 
-instance Hashable AssociateSkillGroupWithRoom
+instance Hashable AssociateSkillGroupWithRoom where
 
-instance NFData AssociateSkillGroupWithRoom
+instance NFData AssociateSkillGroupWithRoom where
 
 instance ToHeaders AssociateSkillGroupWithRoom where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AlexaForBusiness.AssociateSkillGroupWithRoom" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AlexaForBusiness.AssociateSkillGroupWithRoom" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON AssociateSkillGroupWithRoom where
-  toJSON AssociateSkillGroupWithRoom' {..} =
-    object
-      (catMaybes
-         [ ("SkillGroupArn" .=) <$> _asgwrSkillGroupARN
-         , ("RoomArn" .=) <$> _asgwrRoomARN
-         ])
+        toJSON AssociateSkillGroupWithRoom'{..}
+          = object
+              (catMaybes
+                 [("SkillGroupArn" .=) <$> _asgwrSkillGroupARN,
+                  ("RoomArn" .=) <$> _asgwrRoomARN])
 
 instance ToPath AssociateSkillGroupWithRoom where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery AssociateSkillGroupWithRoom where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'associateSkillGroupWithRoomResponse' smart constructor.
 newtype AssociateSkillGroupWithRoomResponse =
@@ -110,21 +119,23 @@ newtype AssociateSkillGroupWithRoomResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AssociateSkillGroupWithRoomResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'asgwrrsResponseStatus' - -- | The response status code.
-associateSkillGroupWithRoomResponse ::
-     Int -- ^ 'asgwrrsResponseStatus'
-  -> AssociateSkillGroupWithRoomResponse
+associateSkillGroupWithRoomResponse
+    :: Int -- ^ 'asgwrrsResponseStatus'
+    -> AssociateSkillGroupWithRoomResponse
 associateSkillGroupWithRoomResponse pResponseStatus_ =
   AssociateSkillGroupWithRoomResponse'
     {_asgwrrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 asgwrrsResponseStatus :: Lens' AssociateSkillGroupWithRoomResponse Int
-asgwrrsResponseStatus =
-  lens _asgwrrsResponseStatus (\s a -> s {_asgwrrsResponseStatus = a})
+asgwrrsResponseStatus = lens _asgwrrsResponseStatus (\ s a -> s{_asgwrrsResponseStatus = a})
 
 instance NFData AssociateSkillGroupWithRoomResponse
+         where

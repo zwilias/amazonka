@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.WAFRegional.AssociateWebACL
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.WAFRegional.AssociateWebACL
+    (
     -- * Creating a Request
-  ( associateWebACL
-  , AssociateWebACL
+      associateWebACL
+    , AssociateWebACL
     -- * Request Lenses
-  , awaWebACLId
-  , awaResourceARN
+    , awaWebACLId
+    , awaResourceARN
+
     -- * Destructuring the Response
-  , associateWebACLResponse
-  , AssociateWebACLResponse
+    , associateWebACLResponse
+    , AssociateWebACLResponse
     -- * Response Lenses
-  , awarsResponseStatus
-  ) where
+    , awarsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -48,6 +52,7 @@ data AssociateWebACL =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AssociateWebACL' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -55,53 +60,56 @@ data AssociateWebACL =
 -- * 'awaWebACLId' - A unique identifier (ID) for the web ACL.
 --
 -- * 'awaResourceARN' - The ARN (Amazon Resource Name) of the resource to be protected.
-associateWebACL ::
-     Text -- ^ 'awaWebACLId'
-  -> Text -- ^ 'awaResourceARN'
-  -> AssociateWebACL
+associateWebACL
+    :: Text -- ^ 'awaWebACLId'
+    -> Text -- ^ 'awaResourceARN'
+    -> AssociateWebACL
 associateWebACL pWebACLId_ pResourceARN_ =
   AssociateWebACL' {_awaWebACLId = pWebACLId_, _awaResourceARN = pResourceARN_}
 
+
 -- | A unique identifier (ID) for the web ACL.
 awaWebACLId :: Lens' AssociateWebACL Text
-awaWebACLId = lens _awaWebACLId (\s a -> s {_awaWebACLId = a})
+awaWebACLId = lens _awaWebACLId (\ s a -> s{_awaWebACLId = a})
 
 -- | The ARN (Amazon Resource Name) of the resource to be protected.
 awaResourceARN :: Lens' AssociateWebACL Text
-awaResourceARN = lens _awaResourceARN (\s a -> s {_awaResourceARN = a})
+awaResourceARN = lens _awaResourceARN (\ s a -> s{_awaResourceARN = a})
 
 instance AWSRequest AssociateWebACL where
-  type Rs AssociateWebACL = AssociateWebACLResponse
-  request = postJSON wAFRegional
-  response =
-    receiveEmpty (\s h x -> AssociateWebACLResponse' <$> (pure (fromEnum s)))
+        type Rs AssociateWebACL = AssociateWebACLResponse
+        request = postJSON wAFRegional
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 AssociateWebACLResponse' <$> (pure (fromEnum s)))
 
-instance Hashable AssociateWebACL
+instance Hashable AssociateWebACL where
 
-instance NFData AssociateWebACL
+instance NFData AssociateWebACL where
 
 instance ToHeaders AssociateWebACL where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AWSWAF_Regional_20161128.AssociateWebACL" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWSWAF_Regional_20161128.AssociateWebACL" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON AssociateWebACL where
-  toJSON AssociateWebACL' {..} =
-    object
-      (catMaybes
-         [ Just ("WebACLId" .= _awaWebACLId)
-         , Just ("ResourceArn" .= _awaResourceARN)
-         ])
+        toJSON AssociateWebACL'{..}
+          = object
+              (catMaybes
+                 [Just ("WebACLId" .= _awaWebACLId),
+                  Just ("ResourceArn" .= _awaResourceARN)])
 
 instance ToPath AssociateWebACL where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery AssociateWebACL where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'associateWebACLResponse' smart constructor.
 newtype AssociateWebACLResponse =
@@ -110,20 +118,21 @@ newtype AssociateWebACLResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'AssociateWebACLResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'awarsResponseStatus' - -- | The response status code.
-associateWebACLResponse ::
-     Int -- ^ 'awarsResponseStatus'
-  -> AssociateWebACLResponse
+associateWebACLResponse
+    :: Int -- ^ 'awarsResponseStatus'
+    -> AssociateWebACLResponse
 associateWebACLResponse pResponseStatus_ =
   AssociateWebACLResponse' {_awarsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 awarsResponseStatus :: Lens' AssociateWebACLResponse Int
-awarsResponseStatus =
-  lens _awarsResponseStatus (\s a -> s {_awarsResponseStatus = a})
+awarsResponseStatus = lens _awarsResponseStatus (\ s a -> s{_awarsResponseStatus = a})
 
-instance NFData AssociateWebACLResponse
+instance NFData AssociateWebACLResponse where

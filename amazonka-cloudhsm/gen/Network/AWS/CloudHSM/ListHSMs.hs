@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CloudHSM.ListHSMs
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -25,24 +27,29 @@
 --
 -- This operation supports pagination with the use of the @NextToken@ member. If more results are available, the @NextToken@ member of the response contains a token that you pass in the next call to @ListHsms@ to retrieve the next set of items.
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.CloudHSM.ListHSMs
+    (
     -- * Creating a Request
-  ( listHSMs
-  , ListHSMs
+      listHSMs
+    , ListHSMs
     -- * Request Lenses
-  , lhsmNextToken
+    , lhsmNextToken
+
     -- * Destructuring the Response
-  , listHSMsResponse
-  , ListHSMsResponse
+    , listHSMsResponse
+    , ListHSMsResponse
     -- * Response Lenses
-  , lhsmrsNextToken
-  , lhsmrsHSMList
-  , lhsmrsResponseStatus
-  ) where
+    , lhsmrsNextToken
+    , lhsmrsHSMList
+    , lhsmrsResponseStatus
+    ) where
 
 import Network.AWS.CloudHSM.Types
 import Network.AWS.CloudHSM.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -54,49 +61,61 @@ newtype ListHSMs =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListHSMs' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'lhsmNextToken' - The @NextToken@ value from a previous call to @ListHsms@ . Pass null if this is the first call.
-listHSMs :: ListHSMs
+listHSMs
+    :: ListHSMs
 listHSMs = ListHSMs' {_lhsmNextToken = Nothing}
+
 
 -- | The @NextToken@ value from a previous call to @ListHsms@ . Pass null if this is the first call.
 lhsmNextToken :: Lens' ListHSMs (Maybe Text)
-lhsmNextToken = lens _lhsmNextToken (\s a -> s {_lhsmNextToken = a})
+lhsmNextToken = lens _lhsmNextToken (\ s a -> s{_lhsmNextToken = a})
+
+instance AWSPager ListHSMs where
+        page rq rs
+          | stop (rs ^. lhsmrsNextToken) = Nothing
+          | stop (rs ^. lhsmrsHSMList) = Nothing
+          | otherwise =
+            Just $ rq & lhsmNextToken .~ rs ^. lhsmrsNextToken
 
 instance AWSRequest ListHSMs where
-  type Rs ListHSMs = ListHSMsResponse
-  request = postJSON cloudHSM
-  response =
-    receiveJSON
-      (\s h x ->
-         ListHSMsResponse' <$> (x .?> "NextToken") <*>
-         (x .?> "HsmList" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs ListHSMs = ListHSMsResponse
+        request = postJSON cloudHSM
+        response
+          = receiveJSON
+              (\ s h x ->
+                 ListHSMsResponse' <$>
+                   (x .?> "NextToken") <*> (x .?> "HsmList" .!@ mempty)
+                     <*> (pure (fromEnum s)))
 
-instance Hashable ListHSMs
+instance Hashable ListHSMs where
 
-instance NFData ListHSMs
+instance NFData ListHSMs where
 
 instance ToHeaders ListHSMs where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("CloudHsmFrontendService.ListHsms" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("CloudHsmFrontendService.ListHsms" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON ListHSMs where
-  toJSON ListHSMs' {..} =
-    object (catMaybes [("NextToken" .=) <$> _lhsmNextToken])
+        toJSON ListHSMs'{..}
+          = object
+              (catMaybes [("NextToken" .=) <$> _lhsmNextToken])
 
 instance ToPath ListHSMs where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery ListHSMs where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | Contains the output of the @ListHsms@ operation.
 --
@@ -111,6 +130,7 @@ data ListHSMsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListHSMsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -120,9 +140,9 @@ data ListHSMsResponse =
 -- * 'lhsmrsHSMList' - The list of ARNs that identify the HSMs.
 --
 -- * 'lhsmrsResponseStatus' - -- | The response status code.
-listHSMsResponse ::
-     Int -- ^ 'lhsmrsResponseStatus'
-  -> ListHSMsResponse
+listHSMsResponse
+    :: Int -- ^ 'lhsmrsResponseStatus'
+    -> ListHSMsResponse
 listHSMsResponse pResponseStatus_ =
   ListHSMsResponse'
     { _lhsmrsNextToken = Nothing
@@ -130,18 +150,17 @@ listHSMsResponse pResponseStatus_ =
     , _lhsmrsResponseStatus = pResponseStatus_
     }
 
+
 -- | If not null, more results are available. Pass this value to @ListHsms@ to retrieve the next set of items.
 lhsmrsNextToken :: Lens' ListHSMsResponse (Maybe Text)
-lhsmrsNextToken = lens _lhsmrsNextToken (\s a -> s {_lhsmrsNextToken = a})
+lhsmrsNextToken = lens _lhsmrsNextToken (\ s a -> s{_lhsmrsNextToken = a})
 
 -- | The list of ARNs that identify the HSMs.
 lhsmrsHSMList :: Lens' ListHSMsResponse [Text]
-lhsmrsHSMList =
-  lens _lhsmrsHSMList (\s a -> s {_lhsmrsHSMList = a}) . _Default . _Coerce
+lhsmrsHSMList = lens _lhsmrsHSMList (\ s a -> s{_lhsmrsHSMList = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 lhsmrsResponseStatus :: Lens' ListHSMsResponse Int
-lhsmrsResponseStatus =
-  lens _lhsmrsResponseStatus (\s a -> s {_lhsmrsResponseStatus = a})
+lhsmrsResponseStatus = lens _lhsmrsResponseStatus (\ s a -> s{_lhsmrsResponseStatus = a})
 
-instance NFData ListHSMsResponse
+instance NFData ListHSMsResponse where

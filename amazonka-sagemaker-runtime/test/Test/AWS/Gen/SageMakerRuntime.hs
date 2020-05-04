@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-orphans        #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Test.AWS.Gen.SageMakerRuntime
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -23,6 +24,7 @@ import Test.Tasty
 -- the top-level so that real test data can be incrementally added.
 --
 -- This commented snippet is what the entire set should look like:
+
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
@@ -30,20 +32,25 @@ import Test.Tasty
 --             invokeEndpoint
 --
 --           ]
+
 --     , testGroup "response"
 --         [ responseInvokeEndpoint $
 --             invokeEndpointResponse
 --
 --           ]
 --     ]
+
 -- Requests
+
 requestInvokeEndpoint :: InvokeEndpoint -> TestTree
-requestInvokeEndpoint = req "InvokeEndpoint" "fixture/InvokeEndpoint.yaml"
+requestInvokeEndpoint = req
+    "InvokeEndpoint"
+    "fixture/InvokeEndpoint.yaml"
 
 -- Responses
+
 responseInvokeEndpoint :: InvokeEndpointResponse -> TestTree
-responseInvokeEndpoint =
-  res
+responseInvokeEndpoint = res
     "InvokeEndpointResponse"
     "fixture/InvokeEndpointResponse.proto"
     sageMakerRuntime

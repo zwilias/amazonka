@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Transcribe.GetVocabulary
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,23 +22,25 @@
 --
 --
 module Network.AWS.Transcribe.GetVocabulary
+    (
     -- * Creating a Request
-  ( getVocabulary
-  , GetVocabulary
+      getVocabulary
+    , GetVocabulary
     -- * Request Lenses
-  , gvVocabularyName
+    , gvVocabularyName
+
     -- * Destructuring the Response
-  , getVocabularyResponse
-  , GetVocabularyResponse
+    , getVocabularyResponse
+    , GetVocabularyResponse
     -- * Response Lenses
-  , gvrsFailureReason
-  , gvrsLanguageCode
-  , gvrsDownloadURI
-  , gvrsVocabularyName
-  , gvrsLastModifiedTime
-  , gvrsVocabularyState
-  , gvrsResponseStatus
-  ) where
+    , gvrsFailureReason
+    , gvrsLanguageCode
+    , gvrsDownloadURI
+    , gvrsVocabularyName
+    , gvrsLastModifiedTime
+    , gvrsVocabularyState
+    , gvrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -52,56 +56,61 @@ newtype GetVocabulary =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetVocabulary' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'gvVocabularyName' - The name of the vocabulary to return information about. The name is case-sensitive.
-getVocabulary ::
-     Text -- ^ 'gvVocabularyName'
-  -> GetVocabulary
+getVocabulary
+    :: Text -- ^ 'gvVocabularyName'
+    -> GetVocabulary
 getVocabulary pVocabularyName_ =
   GetVocabulary' {_gvVocabularyName = pVocabularyName_}
 
+
 -- | The name of the vocabulary to return information about. The name is case-sensitive.
 gvVocabularyName :: Lens' GetVocabulary Text
-gvVocabularyName = lens _gvVocabularyName (\s a -> s {_gvVocabularyName = a})
+gvVocabularyName = lens _gvVocabularyName (\ s a -> s{_gvVocabularyName = a})
 
 instance AWSRequest GetVocabulary where
-  type Rs GetVocabulary = GetVocabularyResponse
-  request = postJSON transcribe
-  response =
-    receiveJSON
-      (\s h x ->
-         GetVocabularyResponse' <$> (x .?> "FailureReason") <*>
-         (x .?> "LanguageCode") <*>
-         (x .?> "DownloadUri") <*>
-         (x .?> "VocabularyName") <*>
-         (x .?> "LastModifiedTime") <*>
-         (x .?> "VocabularyState") <*>
-         (pure (fromEnum s)))
+        type Rs GetVocabulary = GetVocabularyResponse
+        request = postJSON transcribe
+        response
+          = receiveJSON
+              (\ s h x ->
+                 GetVocabularyResponse' <$>
+                   (x .?> "FailureReason") <*> (x .?> "LanguageCode")
+                     <*> (x .?> "DownloadUri")
+                     <*> (x .?> "VocabularyName")
+                     <*> (x .?> "LastModifiedTime")
+                     <*> (x .?> "VocabularyState")
+                     <*> (pure (fromEnum s)))
 
-instance Hashable GetVocabulary
+instance Hashable GetVocabulary where
 
-instance NFData GetVocabulary
+instance NFData GetVocabulary where
 
 instance ToHeaders GetVocabulary where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("Transcribe.GetVocabulary" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("Transcribe.GetVocabulary" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON GetVocabulary where
-  toJSON GetVocabulary' {..} =
-    object (catMaybes [Just ("VocabularyName" .= _gvVocabularyName)])
+        toJSON GetVocabulary'{..}
+          = object
+              (catMaybes
+                 [Just ("VocabularyName" .= _gvVocabularyName)])
 
 instance ToPath GetVocabulary where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery GetVocabulary where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'getVocabularyResponse' smart constructor.
 data GetVocabularyResponse =
@@ -115,6 +124,7 @@ data GetVocabularyResponse =
     , _gvrsResponseStatus   :: !Int
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'GetVocabularyResponse' with the minimum fields required to make a request.
 --
@@ -133,9 +143,9 @@ data GetVocabularyResponse =
 -- * 'gvrsVocabularyState' - The processing state of the vocabulary.
 --
 -- * 'gvrsResponseStatus' - -- | The response status code.
-getVocabularyResponse ::
-     Int -- ^ 'gvrsResponseStatus'
-  -> GetVocabularyResponse
+getVocabularyResponse
+    :: Int -- ^ 'gvrsResponseStatus'
+    -> GetVocabularyResponse
 getVocabularyResponse pResponseStatus_ =
   GetVocabularyResponse'
     { _gvrsFailureReason = Nothing
@@ -147,37 +157,33 @@ getVocabularyResponse pResponseStatus_ =
     , _gvrsResponseStatus = pResponseStatus_
     }
 
+
 -- | If the @VocabularyState@ field is @FAILED@ , this field contains information about why the job failed.
 gvrsFailureReason :: Lens' GetVocabularyResponse (Maybe Text)
-gvrsFailureReason = lens _gvrsFailureReason (\s a -> s {_gvrsFailureReason = a})
+gvrsFailureReason = lens _gvrsFailureReason (\ s a -> s{_gvrsFailureReason = a})
 
 -- | The language code of the vocabulary entries.
 gvrsLanguageCode :: Lens' GetVocabularyResponse (Maybe LanguageCode)
-gvrsLanguageCode = lens _gvrsLanguageCode (\s a -> s {_gvrsLanguageCode = a})
+gvrsLanguageCode = lens _gvrsLanguageCode (\ s a -> s{_gvrsLanguageCode = a})
 
 -- | The S3 location where the vocabulary is stored. Use this URI to get the contents of the vocabulary. The URI is available for a limited time.
 gvrsDownloadURI :: Lens' GetVocabularyResponse (Maybe Text)
-gvrsDownloadURI = lens _gvrsDownloadURI (\s a -> s {_gvrsDownloadURI = a})
+gvrsDownloadURI = lens _gvrsDownloadURI (\ s a -> s{_gvrsDownloadURI = a})
 
 -- | The name of the vocabulary to return.
 gvrsVocabularyName :: Lens' GetVocabularyResponse (Maybe Text)
-gvrsVocabularyName =
-  lens _gvrsVocabularyName (\s a -> s {_gvrsVocabularyName = a})
+gvrsVocabularyName = lens _gvrsVocabularyName (\ s a -> s{_gvrsVocabularyName = a})
 
 -- | The date and time that the vocabulary was last modified.
 gvrsLastModifiedTime :: Lens' GetVocabularyResponse (Maybe UTCTime)
-gvrsLastModifiedTime =
-  lens _gvrsLastModifiedTime (\s a -> s {_gvrsLastModifiedTime = a}) .
-  mapping _Time
+gvrsLastModifiedTime = lens _gvrsLastModifiedTime (\ s a -> s{_gvrsLastModifiedTime = a}) . mapping _Time
 
 -- | The processing state of the vocabulary.
 gvrsVocabularyState :: Lens' GetVocabularyResponse (Maybe VocabularyState)
-gvrsVocabularyState =
-  lens _gvrsVocabularyState (\s a -> s {_gvrsVocabularyState = a})
+gvrsVocabularyState = lens _gvrsVocabularyState (\ s a -> s{_gvrsVocabularyState = a})
 
 -- | -- | The response status code.
 gvrsResponseStatus :: Lens' GetVocabularyResponse Int
-gvrsResponseStatus =
-  lens _gvrsResponseStatus (\s a -> s {_gvrsResponseStatus = a})
+gvrsResponseStatus = lens _gvrsResponseStatus (\ s a -> s{_gvrsResponseStatus = a})
 
-instance NFData GetVocabularyResponse
+instance NFData GetVocabularyResponse where

@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.ServiceCatalog.DeleteConstraint
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.ServiceCatalog.DeleteConstraint
+    (
     -- * Creating a Request
-  ( deleteConstraint
-  , DeleteConstraint
+      deleteConstraint
+    , DeleteConstraint
     -- * Request Lenses
-  , dcAcceptLanguage
-  , dcId
+    , dcAcceptLanguage
+    , dcId
+
     -- * Destructuring the Response
-  , deleteConstraintResponse
-  , DeleteConstraintResponse
+    , deleteConstraintResponse
+    , DeleteConstraintResponse
     -- * Response Lenses
-  , dcrsResponseStatus
-  ) where
+    , dcrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -48,6 +52,7 @@ data DeleteConstraint =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteConstraint' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -55,50 +60,55 @@ data DeleteConstraint =
 -- * 'dcAcceptLanguage' - The language code.     * @en@ - English (default)     * @jp@ - Japanese     * @zh@ - Chinese
 --
 -- * 'dcId' - The identifier of the constraint.
-deleteConstraint ::
-     Text -- ^ 'dcId'
-  -> DeleteConstraint
+deleteConstraint
+    :: Text -- ^ 'dcId'
+    -> DeleteConstraint
 deleteConstraint pId_ =
   DeleteConstraint' {_dcAcceptLanguage = Nothing, _dcId = pId_}
 
+
 -- | The language code.     * @en@ - English (default)     * @jp@ - Japanese     * @zh@ - Chinese
 dcAcceptLanguage :: Lens' DeleteConstraint (Maybe Text)
-dcAcceptLanguage = lens _dcAcceptLanguage (\s a -> s {_dcAcceptLanguage = a})
+dcAcceptLanguage = lens _dcAcceptLanguage (\ s a -> s{_dcAcceptLanguage = a})
 
 -- | The identifier of the constraint.
 dcId :: Lens' DeleteConstraint Text
-dcId = lens _dcId (\s a -> s {_dcId = a})
+dcId = lens _dcId (\ s a -> s{_dcId = a})
 
 instance AWSRequest DeleteConstraint where
-  type Rs DeleteConstraint = DeleteConstraintResponse
-  request = postJSON serviceCatalog
-  response =
-    receiveEmpty (\s h x -> DeleteConstraintResponse' <$> (pure (fromEnum s)))
+        type Rs DeleteConstraint = DeleteConstraintResponse
+        request = postJSON serviceCatalog
+        response
+          = receiveEmpty
+              (\ s h x ->
+                 DeleteConstraintResponse' <$> (pure (fromEnum s)))
 
-instance Hashable DeleteConstraint
+instance Hashable DeleteConstraint where
 
-instance NFData DeleteConstraint
+instance NFData DeleteConstraint where
 
 instance ToHeaders DeleteConstraint where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("AWS242ServiceCatalogService.DeleteConstraint" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("AWS242ServiceCatalogService.DeleteConstraint" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON DeleteConstraint where
-  toJSON DeleteConstraint' {..} =
-    object
-      (catMaybes
-         [("AcceptLanguage" .=) <$> _dcAcceptLanguage, Just ("Id" .= _dcId)])
+        toJSON DeleteConstraint'{..}
+          = object
+              (catMaybes
+                 [("AcceptLanguage" .=) <$> _dcAcceptLanguage,
+                  Just ("Id" .= _dcId)])
 
 instance ToPath DeleteConstraint where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DeleteConstraint where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'deleteConstraintResponse' smart constructor.
 newtype DeleteConstraintResponse =
@@ -107,20 +117,21 @@ newtype DeleteConstraintResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DeleteConstraintResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dcrsResponseStatus' - -- | The response status code.
-deleteConstraintResponse ::
-     Int -- ^ 'dcrsResponseStatus'
-  -> DeleteConstraintResponse
+deleteConstraintResponse
+    :: Int -- ^ 'dcrsResponseStatus'
+    -> DeleteConstraintResponse
 deleteConstraintResponse pResponseStatus_ =
   DeleteConstraintResponse' {_dcrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 dcrsResponseStatus :: Lens' DeleteConstraintResponse Int
-dcrsResponseStatus =
-  lens _dcrsResponseStatus (\s a -> s {_dcrsResponseStatus = a})
+dcrsResponseStatus = lens _dcrsResponseStatus (\ s a -> s{_dcrsResponseStatus = a})
 
-instance NFData DeleteConstraintResponse
+instance NFData DeleteConstraintResponse where

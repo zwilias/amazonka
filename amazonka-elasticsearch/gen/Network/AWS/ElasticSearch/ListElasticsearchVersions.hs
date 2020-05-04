@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.ElasticSearch.ListElasticsearchVersions
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,20 +24,22 @@
 --
 -- This operation returns paginated results.
 module Network.AWS.ElasticSearch.ListElasticsearchVersions
+    (
     -- * Creating a Request
-  ( listElasticsearchVersions
-  , ListElasticsearchVersions
+      listElasticsearchVersions
+    , ListElasticsearchVersions
     -- * Request Lenses
-  , levNextToken
-  , levMaxResults
+    , levNextToken
+    , levMaxResults
+
     -- * Destructuring the Response
-  , listElasticsearchVersionsResponse
-  , ListElasticsearchVersionsResponse
+    , listElasticsearchVersionsResponse
+    , ListElasticsearchVersionsResponse
     -- * Response Lenses
-  , levrsNextToken
-  , levrsElasticsearchVersions
-  , levrsResponseStatus
-  ) where
+    , levrsNextToken
+    , levrsElasticsearchVersions
+    , levrsResponseStatus
+    ) where
 
 import Network.AWS.ElasticSearch.Types
 import Network.AWS.ElasticSearch.Types.Product
@@ -61,6 +65,7 @@ data ListElasticsearchVersions =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListElasticsearchVersions' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -68,47 +73,54 @@ data ListElasticsearchVersions =
 -- * 'levNextToken' - Undocumented member.
 --
 -- * 'levMaxResults' - Set this value to limit the number of results returned. Value provided must be greater than 10 else it wont be honored.
-listElasticsearchVersions :: ListElasticsearchVersions
+listElasticsearchVersions
+    :: ListElasticsearchVersions
 listElasticsearchVersions =
   ListElasticsearchVersions' {_levNextToken = Nothing, _levMaxResults = Nothing}
 
+
 -- | Undocumented member.
 levNextToken :: Lens' ListElasticsearchVersions (Maybe Text)
-levNextToken = lens _levNextToken (\s a -> s {_levNextToken = a})
+levNextToken = lens _levNextToken (\ s a -> s{_levNextToken = a})
 
 -- | Set this value to limit the number of results returned. Value provided must be greater than 10 else it wont be honored.
 levMaxResults :: Lens' ListElasticsearchVersions (Maybe Int)
-levMaxResults = lens _levMaxResults (\s a -> s {_levMaxResults = a})
+levMaxResults = lens _levMaxResults (\ s a -> s{_levMaxResults = a})
 
 instance AWSPager ListElasticsearchVersions where
-  page rq rs
-    | stop (rs ^. levrsNextToken) = Nothing
-    | stop (rs ^. levrsElasticsearchVersions) = Nothing
-    | otherwise = Just $ rq & levNextToken .~ rs ^. levrsNextToken
+        page rq rs
+          | stop (rs ^. levrsNextToken) = Nothing
+          | stop (rs ^. levrsElasticsearchVersions) = Nothing
+          | otherwise =
+            Just $ rq & levNextToken .~ rs ^. levrsNextToken
 
 instance AWSRequest ListElasticsearchVersions where
-  type Rs ListElasticsearchVersions = ListElasticsearchVersionsResponse
-  request = get elasticSearch
-  response =
-    receiveJSON
-      (\s h x ->
-         ListElasticsearchVersionsResponse' <$> (x .?> "NextToken") <*>
-         (x .?> "ElasticsearchVersions" .!@ mempty) <*>
-         (pure (fromEnum s)))
+        type Rs ListElasticsearchVersions =
+             ListElasticsearchVersionsResponse
+        request = get elasticSearch
+        response
+          = receiveJSON
+              (\ s h x ->
+                 ListElasticsearchVersionsResponse' <$>
+                   (x .?> "NextToken") <*>
+                     (x .?> "ElasticsearchVersions" .!@ mempty)
+                     <*> (pure (fromEnum s)))
 
-instance Hashable ListElasticsearchVersions
+instance Hashable ListElasticsearchVersions where
 
-instance NFData ListElasticsearchVersions
+instance NFData ListElasticsearchVersions where
 
 instance ToHeaders ListElasticsearchVersions where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath ListElasticsearchVersions where
-  toPath = const "/2015-01-01/es/versions"
+        toPath = const "/2015-01-01/es/versions"
 
 instance ToQuery ListElasticsearchVersions where
-  toQuery ListElasticsearchVersions' {..} =
-    mconcat ["nextToken" =: _levNextToken, "maxResults" =: _levMaxResults]
+        toQuery ListElasticsearchVersions'{..}
+          = mconcat
+              ["nextToken" =: _levNextToken,
+               "maxResults" =: _levMaxResults]
 
 -- | Container for the parameters for response received from @'ListElasticsearchVersions' @ operation.
 --
@@ -123,6 +135,7 @@ data ListElasticsearchVersionsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListElasticsearchVersionsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -132,9 +145,9 @@ data ListElasticsearchVersionsResponse =
 -- * 'levrsElasticsearchVersions' - Undocumented member.
 --
 -- * 'levrsResponseStatus' - -- | The response status code.
-listElasticsearchVersionsResponse ::
-     Int -- ^ 'levrsResponseStatus'
-  -> ListElasticsearchVersionsResponse
+listElasticsearchVersionsResponse
+    :: Int -- ^ 'levrsResponseStatus'
+    -> ListElasticsearchVersionsResponse
 listElasticsearchVersionsResponse pResponseStatus_ =
   ListElasticsearchVersionsResponse'
     { _levrsNextToken = Nothing
@@ -142,19 +155,18 @@ listElasticsearchVersionsResponse pResponseStatus_ =
     , _levrsResponseStatus = pResponseStatus_
     }
 
+
 -- | Undocumented member.
 levrsNextToken :: Lens' ListElasticsearchVersionsResponse (Maybe Text)
-levrsNextToken = lens _levrsNextToken (\s a -> s {_levrsNextToken = a})
+levrsNextToken = lens _levrsNextToken (\ s a -> s{_levrsNextToken = a})
 
 -- | Undocumented member.
 levrsElasticsearchVersions :: Lens' ListElasticsearchVersionsResponse [Text]
-levrsElasticsearchVersions =
-  lens _levrsElasticsearchVersions (\s a -> s {_levrsElasticsearchVersions = a}) .
-  _Default . _Coerce
+levrsElasticsearchVersions = lens _levrsElasticsearchVersions (\ s a -> s{_levrsElasticsearchVersions = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 levrsResponseStatus :: Lens' ListElasticsearchVersionsResponse Int
-levrsResponseStatus =
-  lens _levrsResponseStatus (\s a -> s {_levrsResponseStatus = a})
+levrsResponseStatus = lens _levrsResponseStatus (\ s a -> s{_levrsResponseStatus = a})
 
 instance NFData ListElasticsearchVersionsResponse
+         where

@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.LexRuntime
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -14,78 +15,104 @@
 --
 --
 module Network.AWS.LexRuntime
+    (
     -- * Service Configuration
-  ( lexRuntime
+      lexRuntime
+
     -- * Errors
     -- $errors
+
     -- ** NotAcceptableException
-  , _NotAcceptableException
+    , _NotAcceptableException
+
     -- ** DependencyFailedException
-  , _DependencyFailedException
+    , _DependencyFailedException
+
     -- ** UnsupportedMediaTypeException
-  , _UnsupportedMediaTypeException
+    , _UnsupportedMediaTypeException
+
     -- ** ConflictException
-  , _ConflictException
+    , _ConflictException
+
     -- ** NotFoundException
-  , _NotFoundException
+    , _NotFoundException
+
     -- ** RequestTimeoutException
-  , _RequestTimeoutException
+    , _RequestTimeoutException
+
     -- ** LoopDetectedException
-  , _LoopDetectedException
+    , _LoopDetectedException
+
     -- ** InternalFailureException
-  , _InternalFailureException
+    , _InternalFailureException
+
     -- ** BadGatewayException
-  , _BadGatewayException
+    , _BadGatewayException
+
     -- ** BadRequestException
-  , _BadRequestException
+    , _BadRequestException
+
     -- ** LimitExceededException
-  , _LimitExceededException
+    , _LimitExceededException
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
+
     -- ** PostText
-  , module Network.AWS.LexRuntime.PostText
+    , module Network.AWS.LexRuntime.PostText
+
     -- ** PostContent
-  , module Network.AWS.LexRuntime.PostContent
+    , module Network.AWS.LexRuntime.PostContent
+
     -- * Types
+
     -- ** ContentType
-  , ContentType(..)
+    , ContentType (..)
+
     -- ** DialogState
-  , DialogState(..)
+    , DialogState (..)
+
     -- ** MessageFormatType
-  , MessageFormatType(..)
+    , MessageFormatType (..)
+
     -- ** Button
-  , Button
-  , button
-  , bText
-  , bValue
+    , Button
+    , button
+    , bText
+    , bValue
+
     -- ** GenericAttachment
-  , GenericAttachment
-  , genericAttachment
-  , gaButtons
-  , gaSubTitle
-  , gaImageURL
-  , gaAttachmentLinkURL
-  , gaTitle
+    , GenericAttachment
+    , genericAttachment
+    , gaButtons
+    , gaSubTitle
+    , gaImageURL
+    , gaAttachmentLinkURL
+    , gaTitle
+
     -- ** ResponseCard
-  , ResponseCard
-  , responseCard
-  , rcGenericAttachments
-  , rcVersion
-  , rcContentType
-  ) where
+    , ResponseCard
+    , responseCard
+    , rcGenericAttachments
+    , rcVersion
+    , rcContentType
+    ) where
 
 import Network.AWS.LexRuntime.PostContent
 import Network.AWS.LexRuntime.PostText
 import Network.AWS.LexRuntime.Types
 import Network.AWS.LexRuntime.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'LexRuntime'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -102,6 +129,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

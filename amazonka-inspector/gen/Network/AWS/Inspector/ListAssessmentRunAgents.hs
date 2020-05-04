@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Inspector.ListAssessmentRunAgents
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -22,22 +24,24 @@
 --
 -- This operation returns paginated results.
 module Network.AWS.Inspector.ListAssessmentRunAgents
+    (
     -- * Creating a Request
-  ( listAssessmentRunAgents
-  , ListAssessmentRunAgents
+      listAssessmentRunAgents
+    , ListAssessmentRunAgents
     -- * Request Lenses
-  , laraNextToken
-  , laraFilter
-  , laraMaxResults
-  , laraAssessmentRunARN
+    , laraNextToken
+    , laraFilter
+    , laraMaxResults
+    , laraAssessmentRunARN
+
     -- * Destructuring the Response
-  , listAssessmentRunAgentsResponse
-  , ListAssessmentRunAgentsResponse
+    , listAssessmentRunAgentsResponse
+    , ListAssessmentRunAgentsResponse
     -- * Response Lenses
-  , lararsNextToken
-  , lararsResponseStatus
-  , lararsAssessmentRunAgents
-  ) where
+    , lararsNextToken
+    , lararsResponseStatus
+    , lararsAssessmentRunAgents
+    ) where
 
 import Network.AWS.Inspector.Types
 import Network.AWS.Inspector.Types.Product
@@ -57,6 +61,7 @@ data ListAssessmentRunAgents =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListAssessmentRunAgents' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -68,9 +73,9 @@ data ListAssessmentRunAgents =
 -- * 'laraMaxResults' - You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 10. The maximum value is 500.
 --
 -- * 'laraAssessmentRunARN' - The ARN that specifies the assessment run whose agents you want to list.
-listAssessmentRunAgents ::
-     Text -- ^ 'laraAssessmentRunARN'
-  -> ListAssessmentRunAgents
+listAssessmentRunAgents
+    :: Text -- ^ 'laraAssessmentRunARN'
+    -> ListAssessmentRunAgents
 listAssessmentRunAgents pAssessmentRunARN_ =
   ListAssessmentRunAgents'
     { _laraNextToken = Nothing
@@ -79,67 +84,69 @@ listAssessmentRunAgents pAssessmentRunARN_ =
     , _laraAssessmentRunARN = pAssessmentRunARN_
     }
 
+
 -- | You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the __ListAssessmentRunAgents__ action. Subsequent calls to the action fill __nextToken__ in the request with the value of __NextToken__ from the previous response to continue listing data.
 laraNextToken :: Lens' ListAssessmentRunAgents (Maybe Text)
-laraNextToken = lens _laraNextToken (\s a -> s {_laraNextToken = a})
+laraNextToken = lens _laraNextToken (\ s a -> s{_laraNextToken = a})
 
 -- | You can use this parameter to specify a subset of data to be included in the action's response. For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.
 laraFilter :: Lens' ListAssessmentRunAgents (Maybe AgentFilter)
-laraFilter = lens _laraFilter (\s a -> s {_laraFilter = a})
+laraFilter = lens _laraFilter (\ s a -> s{_laraFilter = a})
 
 -- | You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 10. The maximum value is 500.
 laraMaxResults :: Lens' ListAssessmentRunAgents (Maybe Int)
-laraMaxResults = lens _laraMaxResults (\s a -> s {_laraMaxResults = a})
+laraMaxResults = lens _laraMaxResults (\ s a -> s{_laraMaxResults = a})
 
 -- | The ARN that specifies the assessment run whose agents you want to list.
 laraAssessmentRunARN :: Lens' ListAssessmentRunAgents Text
-laraAssessmentRunARN =
-  lens _laraAssessmentRunARN (\s a -> s {_laraAssessmentRunARN = a})
+laraAssessmentRunARN = lens _laraAssessmentRunARN (\ s a -> s{_laraAssessmentRunARN = a})
 
 instance AWSPager ListAssessmentRunAgents where
-  page rq rs
-    | stop (rs ^. lararsNextToken) = Nothing
-    | stop (rs ^. lararsAssessmentRunAgents) = Nothing
-    | otherwise = Just $ rq & laraNextToken .~ rs ^. lararsNextToken
+        page rq rs
+          | stop (rs ^. lararsNextToken) = Nothing
+          | stop (rs ^. lararsAssessmentRunAgents) = Nothing
+          | otherwise =
+            Just $ rq & laraNextToken .~ rs ^. lararsNextToken
 
 instance AWSRequest ListAssessmentRunAgents where
-  type Rs ListAssessmentRunAgents = ListAssessmentRunAgentsResponse
-  request = postJSON inspector
-  response =
-    receiveJSON
-      (\s h x ->
-         ListAssessmentRunAgentsResponse' <$> (x .?> "nextToken") <*>
-         (pure (fromEnum s)) <*>
-         (x .?> "assessmentRunAgents" .!@ mempty))
+        type Rs ListAssessmentRunAgents =
+             ListAssessmentRunAgentsResponse
+        request = postJSON inspector
+        response
+          = receiveJSON
+              (\ s h x ->
+                 ListAssessmentRunAgentsResponse' <$>
+                   (x .?> "nextToken") <*> (pure (fromEnum s)) <*>
+                     (x .?> "assessmentRunAgents" .!@ mempty))
 
-instance Hashable ListAssessmentRunAgents
+instance Hashable ListAssessmentRunAgents where
 
-instance NFData ListAssessmentRunAgents
+instance NFData ListAssessmentRunAgents where
 
 instance ToHeaders ListAssessmentRunAgents where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("InspectorService.ListAssessmentRunAgents" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.1" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("InspectorService.ListAssessmentRunAgents" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.1" :: ByteString)])
 
 instance ToJSON ListAssessmentRunAgents where
-  toJSON ListAssessmentRunAgents' {..} =
-    object
-      (catMaybes
-         [ ("nextToken" .=) <$> _laraNextToken
-         , ("filter" .=) <$> _laraFilter
-         , ("maxResults" .=) <$> _laraMaxResults
-         , Just ("assessmentRunArn" .= _laraAssessmentRunARN)
-         ])
+        toJSON ListAssessmentRunAgents'{..}
+          = object
+              (catMaybes
+                 [("nextToken" .=) <$> _laraNextToken,
+                  ("filter" .=) <$> _laraFilter,
+                  ("maxResults" .=) <$> _laraMaxResults,
+                  Just ("assessmentRunArn" .= _laraAssessmentRunARN)])
 
 instance ToPath ListAssessmentRunAgents where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery ListAssessmentRunAgents where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'listAssessmentRunAgentsResponse' smart constructor.
 data ListAssessmentRunAgentsResponse =
@@ -150,6 +157,7 @@ data ListAssessmentRunAgentsResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ListAssessmentRunAgentsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -159,9 +167,9 @@ data ListAssessmentRunAgentsResponse =
 -- * 'lararsResponseStatus' - -- | The response status code.
 --
 -- * 'lararsAssessmentRunAgents' - A list of ARNs that specifies the agents returned by the action.
-listAssessmentRunAgentsResponse ::
-     Int -- ^ 'lararsResponseStatus'
-  -> ListAssessmentRunAgentsResponse
+listAssessmentRunAgentsResponse
+    :: Int -- ^ 'lararsResponseStatus'
+    -> ListAssessmentRunAgentsResponse
 listAssessmentRunAgentsResponse pResponseStatus_ =
   ListAssessmentRunAgentsResponse'
     { _lararsNextToken = Nothing
@@ -169,20 +177,17 @@ listAssessmentRunAgentsResponse pResponseStatus_ =
     , _lararsAssessmentRunAgents = mempty
     }
 
+
 -- | When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the __nextToken__ parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.
 lararsNextToken :: Lens' ListAssessmentRunAgentsResponse (Maybe Text)
-lararsNextToken = lens _lararsNextToken (\s a -> s {_lararsNextToken = a})
+lararsNextToken = lens _lararsNextToken (\ s a -> s{_lararsNextToken = a})
 
 -- | -- | The response status code.
 lararsResponseStatus :: Lens' ListAssessmentRunAgentsResponse Int
-lararsResponseStatus =
-  lens _lararsResponseStatus (\s a -> s {_lararsResponseStatus = a})
+lararsResponseStatus = lens _lararsResponseStatus (\ s a -> s{_lararsResponseStatus = a})
 
 -- | A list of ARNs that specifies the agents returned by the action.
-lararsAssessmentRunAgents ::
-     Lens' ListAssessmentRunAgentsResponse [AssessmentRunAgent]
-lararsAssessmentRunAgents =
-  lens _lararsAssessmentRunAgents (\s a -> s {_lararsAssessmentRunAgents = a}) .
-  _Coerce
+lararsAssessmentRunAgents :: Lens' ListAssessmentRunAgentsResponse [AssessmentRunAgent]
+lararsAssessmentRunAgents = lens _lararsAssessmentRunAgents (\ s a -> s{_lararsAssessmentRunAgents = a}) . _Coerce
 
-instance NFData ListAssessmentRunAgentsResponse
+instance NFData ListAssessmentRunAgentsResponse where

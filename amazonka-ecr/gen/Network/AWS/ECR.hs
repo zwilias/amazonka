@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.ECR
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -14,194 +15,261 @@
 --
 --
 module Network.AWS.ECR
+    (
     -- * Service Configuration
-  ( ecr
+      ecr
+
     -- * Errors
     -- $errors
+
     -- ** LayersNotFoundException
-  , _LayersNotFoundException
+    , _LayersNotFoundException
+
     -- ** InvalidParameterException
-  , _InvalidParameterException
+    , _InvalidParameterException
+
     -- ** LayerAlreadyExistsException
-  , _LayerAlreadyExistsException
+    , _LayerAlreadyExistsException
+
     -- ** ServerException
-  , _ServerException
+    , _ServerException
+
     -- ** LayerInaccessibleException
-  , _LayerInaccessibleException
+    , _LayerInaccessibleException
+
     -- ** InvalidLayerException
-  , _InvalidLayerException
+    , _InvalidLayerException
+
     -- ** LayerPartTooSmallException
-  , _LayerPartTooSmallException
+    , _LayerPartTooSmallException
+
     -- ** LifecyclePolicyPreviewNotFoundException
-  , _LifecyclePolicyPreviewNotFoundException
+    , _LifecyclePolicyPreviewNotFoundException
+
     -- ** ImageNotFoundException
-  , _ImageNotFoundException
+    , _ImageNotFoundException
+
     -- ** ImageAlreadyExistsException
-  , _ImageAlreadyExistsException
+    , _ImageAlreadyExistsException
+
     -- ** RepositoryNotFoundException
-  , _RepositoryNotFoundException
+    , _RepositoryNotFoundException
+
     -- ** LifecyclePolicyPreviewInProgressException
-  , _LifecyclePolicyPreviewInProgressException
+    , _LifecyclePolicyPreviewInProgressException
+
     -- ** UploadNotFoundException
-  , _UploadNotFoundException
+    , _UploadNotFoundException
+
     -- ** LifecyclePolicyNotFoundException
-  , _LifecyclePolicyNotFoundException
+    , _LifecyclePolicyNotFoundException
+
     -- ** InvalidLayerPartException
-  , _InvalidLayerPartException
+    , _InvalidLayerPartException
+
     -- ** RepositoryNotEmptyException
-  , _RepositoryNotEmptyException
+    , _RepositoryNotEmptyException
+
     -- ** RepositoryAlreadyExistsException
-  , _RepositoryAlreadyExistsException
+    , _RepositoryAlreadyExistsException
+
     -- ** RepositoryPolicyNotFoundException
-  , _RepositoryPolicyNotFoundException
+    , _RepositoryPolicyNotFoundException
+
     -- ** EmptyUploadException
-  , _EmptyUploadException
+    , _EmptyUploadException
+
     -- ** LimitExceededException
-  , _LimitExceededException
+    , _LimitExceededException
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
+
     -- ** GetRepositoryPolicy
-  , module Network.AWS.ECR.GetRepositoryPolicy
+    , module Network.AWS.ECR.GetRepositoryPolicy
+
     -- ** PutLifecyclePolicy
-  , module Network.AWS.ECR.PutLifecyclePolicy
+    , module Network.AWS.ECR.PutLifecyclePolicy
+
     -- ** DeleteLifecyclePolicy
-  , module Network.AWS.ECR.DeleteLifecyclePolicy
+    , module Network.AWS.ECR.DeleteLifecyclePolicy
+
     -- ** BatchDeleteImage
-  , module Network.AWS.ECR.BatchDeleteImage
+    , module Network.AWS.ECR.BatchDeleteImage
+
     -- ** GetLifecyclePolicyPreview
-  , module Network.AWS.ECR.GetLifecyclePolicyPreview
+    , module Network.AWS.ECR.GetLifecyclePolicyPreview
+
     -- ** BatchCheckLayerAvailability
-  , module Network.AWS.ECR.BatchCheckLayerAvailability
+    , module Network.AWS.ECR.BatchCheckLayerAvailability
+
     -- ** DeleteRepositoryPolicy
-  , module Network.AWS.ECR.DeleteRepositoryPolicy
+    , module Network.AWS.ECR.DeleteRepositoryPolicy
+
     -- ** CreateRepository
-  , module Network.AWS.ECR.CreateRepository
+    , module Network.AWS.ECR.CreateRepository
+
     -- ** CompleteLayerUpload
-  , module Network.AWS.ECR.CompleteLayerUpload
+    , module Network.AWS.ECR.CompleteLayerUpload
+
     -- ** DescribeRepositories (Paginated)
-  , module Network.AWS.ECR.DescribeRepositories
+    , module Network.AWS.ECR.DescribeRepositories
+
     -- ** StartLifecyclePolicyPreview
-  , module Network.AWS.ECR.StartLifecyclePolicyPreview
+    , module Network.AWS.ECR.StartLifecyclePolicyPreview
+
     -- ** UploadLayerPart
-  , module Network.AWS.ECR.UploadLayerPart
+    , module Network.AWS.ECR.UploadLayerPart
+
     -- ** BatchGetImage
-  , module Network.AWS.ECR.BatchGetImage
+    , module Network.AWS.ECR.BatchGetImage
+
     -- ** GetLifecyclePolicy
-  , module Network.AWS.ECR.GetLifecyclePolicy
+    , module Network.AWS.ECR.GetLifecyclePolicy
+
     -- ** SetRepositoryPolicy
-  , module Network.AWS.ECR.SetRepositoryPolicy
+    , module Network.AWS.ECR.SetRepositoryPolicy
+
     -- ** InitiateLayerUpload
-  , module Network.AWS.ECR.InitiateLayerUpload
+    , module Network.AWS.ECR.InitiateLayerUpload
+
     -- ** DeleteRepository
-  , module Network.AWS.ECR.DeleteRepository
+    , module Network.AWS.ECR.DeleteRepository
+
     -- ** PutImage
-  , module Network.AWS.ECR.PutImage
+    , module Network.AWS.ECR.PutImage
+
     -- ** ListImages (Paginated)
-  , module Network.AWS.ECR.ListImages
+    , module Network.AWS.ECR.ListImages
+
     -- ** GetAuthorizationToken
-  , module Network.AWS.ECR.GetAuthorizationToken
+    , module Network.AWS.ECR.GetAuthorizationToken
+
     -- ** GetDownloadURLForLayer
-  , module Network.AWS.ECR.GetDownloadURLForLayer
+    , module Network.AWS.ECR.GetDownloadURLForLayer
+
     -- ** DescribeImages (Paginated)
-  , module Network.AWS.ECR.DescribeImages
+    , module Network.AWS.ECR.DescribeImages
+
     -- * Types
+
     -- ** ImageActionType
-  , ImageActionType(..)
+    , ImageActionType (..)
+
     -- ** ImageFailureCode
-  , ImageFailureCode(..)
+    , ImageFailureCode (..)
+
     -- ** LayerAvailability
-  , LayerAvailability(..)
+    , LayerAvailability (..)
+
     -- ** LayerFailureCode
-  , LayerFailureCode(..)
+    , LayerFailureCode (..)
+
     -- ** LifecyclePolicyPreviewStatus
-  , LifecyclePolicyPreviewStatus(..)
+    , LifecyclePolicyPreviewStatus (..)
+
     -- ** TagStatus
-  , TagStatus(..)
+    , TagStatus (..)
+
     -- ** AuthorizationData
-  , AuthorizationData
-  , authorizationData
-  , adExpiresAt
-  , adProxyEndpoint
-  , adAuthorizationToken
+    , AuthorizationData
+    , authorizationData
+    , adExpiresAt
+    , adProxyEndpoint
+    , adAuthorizationToken
+
     -- ** DescribeImagesFilter
-  , DescribeImagesFilter
-  , describeImagesFilter
-  , difTagStatus
+    , DescribeImagesFilter
+    , describeImagesFilter
+    , difTagStatus
+
     -- ** Image
-  , Image
-  , image
-  , iRegistryId
-  , iImageId
-  , iRepositoryName
-  , iImageManifest
+    , Image
+    , image
+    , iRegistryId
+    , iImageId
+    , iRepositoryName
+    , iImageManifest
+
     -- ** ImageDetail
-  , ImageDetail
-  , imageDetail
-  , idRegistryId
-  , idImageTags
-  , idImageSizeInBytes
-  , idImageDigest
-  , idImagePushedAt
-  , idRepositoryName
+    , ImageDetail
+    , imageDetail
+    , idRegistryId
+    , idImageTags
+    , idImageSizeInBytes
+    , idImageDigest
+    , idImagePushedAt
+    , idRepositoryName
+
     -- ** ImageFailure
-  , ImageFailure
-  , imageFailure
-  , ifFailureReason
-  , ifFailureCode
-  , ifImageId
+    , ImageFailure
+    , imageFailure
+    , ifFailureReason
+    , ifFailureCode
+    , ifImageId
+
     -- ** ImageIdentifier
-  , ImageIdentifier
-  , imageIdentifier
-  , iiImageDigest
-  , iiImageTag
+    , ImageIdentifier
+    , imageIdentifier
+    , iiImageDigest
+    , iiImageTag
+
     -- ** Layer
-  , Layer
-  , layer
-  , lMediaType
-  , lLayerDigest
-  , lLayerSize
-  , lLayerAvailability
+    , Layer
+    , layer
+    , lMediaType
+    , lLayerDigest
+    , lLayerSize
+    , lLayerAvailability
+
     -- ** LayerFailure
-  , LayerFailure
-  , layerFailure
-  , lfFailureReason
-  , lfFailureCode
-  , lfLayerDigest
+    , LayerFailure
+    , layerFailure
+    , lfFailureReason
+    , lfFailureCode
+    , lfLayerDigest
+
     -- ** LifecyclePolicyPreviewFilter
-  , LifecyclePolicyPreviewFilter
-  , lifecyclePolicyPreviewFilter
-  , lppfTagStatus
+    , LifecyclePolicyPreviewFilter
+    , lifecyclePolicyPreviewFilter
+    , lppfTagStatus
+
     -- ** LifecyclePolicyPreviewResult
-  , LifecyclePolicyPreviewResult
-  , lifecyclePolicyPreviewResult
-  , lpprImageTags
-  , lpprAction
-  , lpprImageDigest
-  , lpprImagePushedAt
-  , lpprAppliedRulePriority
+    , LifecyclePolicyPreviewResult
+    , lifecyclePolicyPreviewResult
+    , lpprImageTags
+    , lpprAction
+    , lpprImageDigest
+    , lpprImagePushedAt
+    , lpprAppliedRulePriority
+
     -- ** LifecyclePolicyPreviewSummary
-  , LifecyclePolicyPreviewSummary
-  , lifecyclePolicyPreviewSummary
-  , lppsExpiringImageTotalCount
+    , LifecyclePolicyPreviewSummary
+    , lifecyclePolicyPreviewSummary
+    , lppsExpiringImageTotalCount
+
     -- ** LifecyclePolicyRuleAction
-  , LifecyclePolicyRuleAction
-  , lifecyclePolicyRuleAction
-  , lpraType
+    , LifecyclePolicyRuleAction
+    , lifecyclePolicyRuleAction
+    , lpraType
+
     -- ** ListImagesFilter
-  , ListImagesFilter
-  , listImagesFilter
-  , lifTagStatus
+    , ListImagesFilter
+    , listImagesFilter
+    , lifTagStatus
+
     -- ** Repository
-  , Repository
-  , repository
-  , rRepositoryARN
-  , rCreatedAt
-  , rRegistryId
-  , rRepositoryURI
-  , rRepositoryName
-  ) where
+    , Repository
+    , repository
+    , rRepositoryARN
+    , rCreatedAt
+    , rRegistryId
+    , rRepositoryURI
+    , rRepositoryName
+    ) where
 
 import Network.AWS.ECR.BatchCheckLayerAvailability
 import Network.AWS.ECR.BatchDeleteImage
@@ -227,12 +295,14 @@ import Network.AWS.ECR.StartLifecyclePolicyPreview
 import Network.AWS.ECR.Types
 import Network.AWS.ECR.UploadLayerPart
 import Network.AWS.ECR.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'ECR'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -249,6 +319,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

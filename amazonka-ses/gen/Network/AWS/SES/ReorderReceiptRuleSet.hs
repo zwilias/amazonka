@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SES.ReorderReceiptRuleSet
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -24,18 +26,20 @@
 -- You can execute this operation no more than once per second.
 --
 module Network.AWS.SES.ReorderReceiptRuleSet
+    (
     -- * Creating a Request
-  ( reorderReceiptRuleSet
-  , ReorderReceiptRuleSet
+      reorderReceiptRuleSet
+    , ReorderReceiptRuleSet
     -- * Request Lenses
-  , rrrsRuleSetName
-  , rrrsRuleNames
+    , rrrsRuleSetName
+    , rrrsRuleNames
+
     -- * Destructuring the Response
-  , reorderReceiptRuleSetResponse
-  , ReorderReceiptRuleSetResponse
+    , reorderReceiptRuleSetResponse
+    , ReorderReceiptRuleSetResponse
     -- * Response Lenses
-  , rrrsrsResponseStatus
-  ) where
+    , rrrsrsResponseStatus
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -56,6 +60,7 @@ data ReorderReceiptRuleSet =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ReorderReceiptRuleSet' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -63,47 +68,49 @@ data ReorderReceiptRuleSet =
 -- * 'rrrsRuleSetName' - The name of the receipt rule set to reorder.
 --
 -- * 'rrrsRuleNames' - A list of the specified receipt rule set's receipt rules in the order that you want to put them.
-reorderReceiptRuleSet ::
-     Text -- ^ 'rrrsRuleSetName'
-  -> ReorderReceiptRuleSet
+reorderReceiptRuleSet
+    :: Text -- ^ 'rrrsRuleSetName'
+    -> ReorderReceiptRuleSet
 reorderReceiptRuleSet pRuleSetName_ =
   ReorderReceiptRuleSet'
     {_rrrsRuleSetName = pRuleSetName_, _rrrsRuleNames = mempty}
 
+
 -- | The name of the receipt rule set to reorder.
 rrrsRuleSetName :: Lens' ReorderReceiptRuleSet Text
-rrrsRuleSetName = lens _rrrsRuleSetName (\s a -> s {_rrrsRuleSetName = a})
+rrrsRuleSetName = lens _rrrsRuleSetName (\ s a -> s{_rrrsRuleSetName = a})
 
 -- | A list of the specified receipt rule set's receipt rules in the order that you want to put them.
 rrrsRuleNames :: Lens' ReorderReceiptRuleSet [Text]
-rrrsRuleNames = lens _rrrsRuleNames (\s a -> s {_rrrsRuleNames = a}) . _Coerce
+rrrsRuleNames = lens _rrrsRuleNames (\ s a -> s{_rrrsRuleNames = a}) . _Coerce
 
 instance AWSRequest ReorderReceiptRuleSet where
-  type Rs ReorderReceiptRuleSet = ReorderReceiptRuleSetResponse
-  request = postQuery ses
-  response =
-    receiveXMLWrapper
-      "ReorderReceiptRuleSetResult"
-      (\s h x -> ReorderReceiptRuleSetResponse' <$> (pure (fromEnum s)))
+        type Rs ReorderReceiptRuleSet =
+             ReorderReceiptRuleSetResponse
+        request = postQuery ses
+        response
+          = receiveXMLWrapper "ReorderReceiptRuleSetResult"
+              (\ s h x ->
+                 ReorderReceiptRuleSetResponse' <$>
+                   (pure (fromEnum s)))
 
-instance Hashable ReorderReceiptRuleSet
+instance Hashable ReorderReceiptRuleSet where
 
-instance NFData ReorderReceiptRuleSet
+instance NFData ReorderReceiptRuleSet where
 
 instance ToHeaders ReorderReceiptRuleSet where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath ReorderReceiptRuleSet where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery ReorderReceiptRuleSet where
-  toQuery ReorderReceiptRuleSet' {..} =
-    mconcat
-      [ "Action" =: ("ReorderReceiptRuleSet" :: ByteString)
-      , "Version" =: ("2010-12-01" :: ByteString)
-      , "RuleSetName" =: _rrrsRuleSetName
-      , "RuleNames" =: toQueryList "member" _rrrsRuleNames
-      ]
+        toQuery ReorderReceiptRuleSet'{..}
+          = mconcat
+              ["Action" =: ("ReorderReceiptRuleSet" :: ByteString),
+               "Version" =: ("2010-12-01" :: ByteString),
+               "RuleSetName" =: _rrrsRuleSetName,
+               "RuleNames" =: toQueryList "member" _rrrsRuleNames]
 
 -- | An empty element returned on a successful request.
 --
@@ -116,20 +123,21 @@ newtype ReorderReceiptRuleSetResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'ReorderReceiptRuleSetResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'rrrsrsResponseStatus' - -- | The response status code.
-reorderReceiptRuleSetResponse ::
-     Int -- ^ 'rrrsrsResponseStatus'
-  -> ReorderReceiptRuleSetResponse
+reorderReceiptRuleSetResponse
+    :: Int -- ^ 'rrrsrsResponseStatus'
+    -> ReorderReceiptRuleSetResponse
 reorderReceiptRuleSetResponse pResponseStatus_ =
   ReorderReceiptRuleSetResponse' {_rrrsrsResponseStatus = pResponseStatus_}
 
+
 -- | -- | The response status code.
 rrrsrsResponseStatus :: Lens' ReorderReceiptRuleSetResponse Int
-rrrsrsResponseStatus =
-  lens _rrrsrsResponseStatus (\s a -> s {_rrrsrsResponseStatus = a})
+rrrsrsResponseStatus = lens _rrrsrsResponseStatus (\ s a -> s{_rrrsrsResponseStatus = a})
 
-instance NFData ReorderReceiptRuleSetResponse
+instance NFData ReorderReceiptRuleSetResponse where

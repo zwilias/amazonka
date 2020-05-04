@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.DynamoDB.DescribeTable
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -20,18 +22,20 @@
 --
 --
 module Network.AWS.DynamoDB.DescribeTable
+    (
     -- * Creating a Request
-  ( describeTable
-  , DescribeTable
+      describeTable
+    , DescribeTable
     -- * Request Lenses
-  , dTableName
+    , desTableName
+
     -- * Destructuring the Response
-  , describeTableResponse
-  , DescribeTableResponse
+    , describeTableResponse
+    , DescribeTableResponse
     -- * Response Lenses
-  , drsTable
-  , drsResponseStatus
-  ) where
+    , drsTable
+    , drsResponseStatus
+    ) where
 
 import Network.AWS.DynamoDB.Types
 import Network.AWS.DynamoDB.Types.Product
@@ -47,53 +51,58 @@ import Network.AWS.Response
 -- /See:/ 'describeTable' smart constructor.
 newtype DescribeTable =
   DescribeTable'
-    { _dTableName :: Text
+    { _desTableName :: Text
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'DescribeTable' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dTableName' - The name of the table to describe.
-describeTable ::
-     Text -- ^ 'dTableName'
-  -> DescribeTable
-describeTable pTableName_ = DescribeTable' {_dTableName = pTableName_}
+-- * 'desTableName' - The name of the table to describe.
+describeTable
+    :: Text -- ^ 'desTableName'
+    -> DescribeTable
+describeTable pTableName_ = DescribeTable' {_desTableName = pTableName_}
+
 
 -- | The name of the table to describe.
-dTableName :: Lens' DescribeTable Text
-dTableName = lens _dTableName (\s a -> s {_dTableName = a})
+desTableName :: Lens' DescribeTable Text
+desTableName = lens _desTableName (\ s a -> s{_desTableName = a})
 
 instance AWSRequest DescribeTable where
-  type Rs DescribeTable = DescribeTableResponse
-  request = postJSON dynamoDB
-  response =
-    receiveJSON
-      (\s h x ->
-         DescribeTableResponse' <$> (x .?> "Table") <*> (pure (fromEnum s)))
+        type Rs DescribeTable = DescribeTableResponse
+        request = postJSON dynamoDB
+        response
+          = receiveJSON
+              (\ s h x ->
+                 DescribeTableResponse' <$>
+                   (x .?> "Table") <*> (pure (fromEnum s)))
 
-instance Hashable DescribeTable
+instance Hashable DescribeTable where
 
-instance NFData DescribeTable
+instance NFData DescribeTable where
 
 instance ToHeaders DescribeTable where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =# ("DynamoDB_20120810.DescribeTable" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.0" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("DynamoDB_20120810.DescribeTable" :: ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.0" :: ByteString)])
 
 instance ToJSON DescribeTable where
-  toJSON DescribeTable' {..} =
-    object (catMaybes [Just ("TableName" .= _dTableName)])
+        toJSON DescribeTable'{..}
+          = object
+              (catMaybes [Just ("TableName" .= _desTableName)])
 
 instance ToPath DescribeTable where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery DescribeTable where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | Represents the output of a @DescribeTable@ operation.
 --
@@ -107,6 +116,7 @@ data DescribeTableResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'DescribeTableResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -114,19 +124,20 @@ data DescribeTableResponse =
 -- * 'drsTable' - The properties of the table.
 --
 -- * 'drsResponseStatus' - -- | The response status code.
-describeTableResponse ::
-     Int -- ^ 'drsResponseStatus'
-  -> DescribeTableResponse
+describeTableResponse
+    :: Int -- ^ 'drsResponseStatus'
+    -> DescribeTableResponse
 describeTableResponse pResponseStatus_ =
   DescribeTableResponse'
     {_drsTable = Nothing, _drsResponseStatus = pResponseStatus_}
 
+
 -- | The properties of the table.
 drsTable :: Lens' DescribeTableResponse (Maybe TableDescription)
-drsTable = lens _drsTable (\s a -> s {_drsTable = a})
+drsTable = lens _drsTable (\ s a -> s{_drsTable = a})
 
 -- | -- | The response status code.
 drsResponseStatus :: Lens' DescribeTableResponse Int
-drsResponseStatus = lens _drsResponseStatus (\s a -> s {_drsResponseStatus = a})
+drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a})
 
-instance NFData DescribeTableResponse
+instance NFData DescribeTableResponse where

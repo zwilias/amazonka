@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.CloudWatch
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,230 +19,451 @@
 -- In addition to monitoring the built-in metrics that come with AWS, you can monitor your own custom metrics. With CloudWatch, you gain system-wide visibility into resource utilization, application performance, and operational health.
 --
 module Network.AWS.CloudWatch
+    (
     -- * Service Configuration
-  ( cloudWatch
+      cloudWatch
+
     -- * Errors
     -- $errors
+
     -- ** LimitExceededFault
-  , _LimitExceededFault
+    , _LimitExceededFault
+
     -- ** DashboardNotFoundError
-  , _DashboardNotFoundError
+    , _DashboardNotFoundError
+
     -- ** InvalidNextToken
-  , _InvalidNextToken
+    , _InvalidNextToken
+
     -- ** InternalServiceFault
-  , _InternalServiceFault
+    , _InternalServiceFault
+
     -- ** DashboardInvalidInputError
-  , _DashboardInvalidInputError
+    , _DashboardInvalidInputError
+
     -- ** InvalidParameterValueException
-  , _InvalidParameterValueException
+    , _InvalidParameterValueException
+
+    -- ** ConcurrentModificationException
+    , _ConcurrentModificationException
+
     -- ** InvalidFormatFault
-  , _InvalidFormatFault
+    , _InvalidFormatFault
+
     -- ** MissingRequiredParameterException
-  , _MissingRequiredParameterException
+    , _MissingRequiredParameterException
+
+    -- ** ResourceNotFoundException
+    , _ResourceNotFoundException
+
     -- ** InvalidParameterCombinationException
-  , _InvalidParameterCombinationException
+    , _InvalidParameterCombinationException
+
+    -- ** LimitExceededException
+    , _LimitExceededException
+
     -- ** ResourceNotFound
-  , _ResourceNotFound
+    , _ResourceNotFound
+
     -- * Waiters
     -- $waiters
+
+    -- ** CompositeAlarmExists
+    , compositeAlarmExists
+
     -- ** AlarmExists
-  , alarmExists
+    , alarmExists
+
     -- * Operations
     -- $operations
+
     -- ** EnableAlarmActions
-  , module Network.AWS.CloudWatch.EnableAlarmActions
+    , module Network.AWS.CloudWatch.EnableAlarmActions
+
+    -- ** DisableInsightRules
+    , module Network.AWS.CloudWatch.DisableInsightRules
+
+    -- ** PutCompositeAlarm
+    , module Network.AWS.CloudWatch.PutCompositeAlarm
+
+    -- ** DeleteAnomalyDetector
+    , module Network.AWS.CloudWatch.DeleteAnomalyDetector
+
+    -- ** DeleteInsightRules
+    , module Network.AWS.CloudWatch.DeleteInsightRules
+
     -- ** GetDashboard
-  , module Network.AWS.CloudWatch.GetDashboard
-    -- ** GetMetricData
-  , module Network.AWS.CloudWatch.GetMetricData
+    , module Network.AWS.CloudWatch.GetDashboard
+
+    -- ** PutAnomalyDetector
+    , module Network.AWS.CloudWatch.PutAnomalyDetector
+
+    -- ** ListTagsForResource
+    , module Network.AWS.CloudWatch.ListTagsForResource
+
+    -- ** GetMetricData (Paginated)
+    , module Network.AWS.CloudWatch.GetMetricData
+
     -- ** PutMetricData
-  , module Network.AWS.CloudWatch.PutMetricData
+    , module Network.AWS.CloudWatch.PutMetricData
+
     -- ** ListDashboards (Paginated)
-  , module Network.AWS.CloudWatch.ListDashboards
+    , module Network.AWS.CloudWatch.ListDashboards
+
     -- ** DescribeAlarms (Paginated)
-  , module Network.AWS.CloudWatch.DescribeAlarms
+    , module Network.AWS.CloudWatch.DescribeAlarms
+
     -- ** ListMetrics (Paginated)
-  , module Network.AWS.CloudWatch.ListMetrics
+    , module Network.AWS.CloudWatch.ListMetrics
+
+    -- ** GetInsightRuleReport
+    , module Network.AWS.CloudWatch.GetInsightRuleReport
+
     -- ** DeleteDashboards
-  , module Network.AWS.CloudWatch.DeleteDashboards
+    , module Network.AWS.CloudWatch.DeleteDashboards
+
+    -- ** PutInsightRule
+    , module Network.AWS.CloudWatch.PutInsightRule
+
+    -- ** GetMetricWidgetImage
+    , module Network.AWS.CloudWatch.GetMetricWidgetImage
+
     -- ** DeleteAlarms
-  , module Network.AWS.CloudWatch.DeleteAlarms
+    , module Network.AWS.CloudWatch.DeleteAlarms
+
     -- ** DescribeAlarmHistory (Paginated)
-  , module Network.AWS.CloudWatch.DescribeAlarmHistory
+    , module Network.AWS.CloudWatch.DescribeAlarmHistory
+
     -- ** GetMetricStatistics
-  , module Network.AWS.CloudWatch.GetMetricStatistics
+    , module Network.AWS.CloudWatch.GetMetricStatistics
+
     -- ** DescribeAlarmsForMetric
-  , module Network.AWS.CloudWatch.DescribeAlarmsForMetric
+    , module Network.AWS.CloudWatch.DescribeAlarmsForMetric
+
+    -- ** EnableInsightRules
+    , module Network.AWS.CloudWatch.EnableInsightRules
+
     -- ** DisableAlarmActions
-  , module Network.AWS.CloudWatch.DisableAlarmActions
+    , module Network.AWS.CloudWatch.DisableAlarmActions
+
+    -- ** DescribeAnomalyDetectors
+    , module Network.AWS.CloudWatch.DescribeAnomalyDetectors
+
     -- ** PutDashboard
-  , module Network.AWS.CloudWatch.PutDashboard
+    , module Network.AWS.CloudWatch.PutDashboard
+
+    -- ** TagResource
+    , module Network.AWS.CloudWatch.TagResource
+
+    -- ** UntagResource
+    , module Network.AWS.CloudWatch.UntagResource
+
     -- ** PutMetricAlarm
-  , module Network.AWS.CloudWatch.PutMetricAlarm
+    , module Network.AWS.CloudWatch.PutMetricAlarm
+
     -- ** SetAlarmState
-  , module Network.AWS.CloudWatch.SetAlarmState
+    , module Network.AWS.CloudWatch.SetAlarmState
+
+    -- ** DescribeInsightRules
+    , module Network.AWS.CloudWatch.DescribeInsightRules
+
     -- * Types
+
+    -- ** AlarmType
+    , AlarmType (..)
+
+    -- ** AnomalyDetectorStateValue
+    , AnomalyDetectorStateValue (..)
+
     -- ** ComparisonOperator
-  , ComparisonOperator(..)
+    , ComparisonOperator (..)
+
     -- ** HistoryItemType
-  , HistoryItemType(..)
+    , HistoryItemType (..)
+
     -- ** ScanBy
-  , ScanBy(..)
+    , ScanBy (..)
+
     -- ** StandardUnit
-  , StandardUnit(..)
+    , StandardUnit (..)
+
     -- ** StateValue
-  , StateValue(..)
+    , StateValue (..)
+
     -- ** Statistic
-  , Statistic(..)
+    , Statistic (..)
+
     -- ** StatusCode
-  , StatusCode(..)
+    , StatusCode (..)
+
     -- ** AlarmHistoryItem
-  , AlarmHistoryItem
-  , alarmHistoryItem
-  , ahiAlarmName
-  , ahiHistoryItemType
-  , ahiHistoryData
-  , ahiHistorySummary
-  , ahiTimestamp
+    , AlarmHistoryItem
+    , alarmHistoryItem
+    , ahiAlarmName
+    , ahiHistoryItemType
+    , ahiHistoryData
+    , ahiAlarmType
+    , ahiHistorySummary
+    , ahiTimestamp
+
+    -- ** AnomalyDetector
+    , AnomalyDetector
+    , anomalyDetector
+    , adMetricName
+    , adNamespace
+    , adStateValue
+    , adStat
+    , adConfiguration
+    , adDimensions
+
+    -- ** AnomalyDetectorConfiguration
+    , AnomalyDetectorConfiguration
+    , anomalyDetectorConfiguration
+    , adcMetricTimezone
+    , adcExcludedTimeRanges
+
+    -- ** CompositeAlarm
+    , CompositeAlarm
+    , compositeAlarm
+    , caAlarmName
+    , caStateUpdatedTimestamp
+    , caAlarmDescription
+    , caAlarmRule
+    , caOKActions
+    , caStateValue
+    , caAlarmConfigurationUpdatedTimestamp
+    , caActionsEnabled
+    , caInsufficientDataActions
+    , caStateReason
+    , caStateReasonData
+    , caAlarmARN
+    , caAlarmActions
+
     -- ** DashboardEntry
-  , DashboardEntry
-  , dashboardEntry
-  , deSize
-  , deDashboardName
-  , deLastModified
-  , deDashboardARN
+    , DashboardEntry
+    , dashboardEntry
+    , deSize
+    , deDashboardName
+    , deLastModified
+    , deDashboardARN
+
     -- ** DashboardValidationMessage
-  , DashboardValidationMessage
-  , dashboardValidationMessage
-  , dvmDataPath
-  , dvmMessage
+    , DashboardValidationMessage
+    , dashboardValidationMessage
+    , dvmDataPath
+    , dvmMessage
+
     -- ** Datapoint
-  , Datapoint
-  , datapoint
-  , dSampleCount
-  , dMaximum
-  , dAverage
-  , dMinimum
-  , dExtendedStatistics
-  , dSum
-  , dUnit
-  , dTimestamp
+    , Datapoint
+    , datapoint
+    , dSampleCount
+    , dMaximum
+    , dAverage
+    , dMinimum
+    , dExtendedStatistics
+    , dSum
+    , dUnit
+    , dTimestamp
+
     -- ** Dimension
-  , Dimension
-  , dimension
-  , dName
-  , dValue
+    , Dimension
+    , dimension
+    , dName
+    , dValue
+
     -- ** DimensionFilter
-  , DimensionFilter
-  , dimensionFilter
-  , dfValue
-  , dfName
+    , DimensionFilter
+    , dimensionFilter
+    , dfValue
+    , dfName
+
+    -- ** InsightRule
+    , InsightRule
+    , insightRule
+    , irName
+    , irState
+    , irSchema
+    , irDefinition
+
+    -- ** InsightRuleContributor
+    , InsightRuleContributor
+    , insightRuleContributor
+    , ircKeys
+    , ircApproximateAggregateValue
+    , ircDatapoints
+
+    -- ** InsightRuleContributorDatapoint
+    , InsightRuleContributorDatapoint
+    , insightRuleContributorDatapoint
+    , ircdTimestamp
+    , ircdApproximateValue
+
+    -- ** InsightRuleMetricDatapoint
+    , InsightRuleMetricDatapoint
+    , insightRuleMetricDatapoint
+    , irmdMaxContributorValue
+    , irmdSampleCount
+    , irmdMaximum
+    , irmdAverage
+    , irmdMinimum
+    , irmdUniqueContributors
+    , irmdSum
+    , irmdTimestamp
+
     -- ** MessageData
-  , MessageData
-  , messageData
-  , mValue
-  , mCode
+    , MessageData
+    , messageData
+    , mValue
+    , mCode
+
     -- ** Metric
-  , Metric
-  , metric
-  , mMetricName
-  , mNamespace
-  , mDimensions
+    , Metric
+    , metric
+    , mMetricName
+    , mNamespace
+    , mDimensions
+
     -- ** MetricAlarm
-  , MetricAlarm
-  , metricAlarm
-  , maAlarmName
-  , maStateUpdatedTimestamp
-  , maTreatMissingData
-  , maPeriod
-  , maAlarmDescription
-  , maEvaluationPeriods
-  , maMetricName
-  , maNamespace
-  , maComparisonOperator
-  , maOKActions
-  , maEvaluateLowSampleCountPercentile
-  , maStateValue
-  , maDatapointsToAlarm
-  , maThreshold
-  , maAlarmConfigurationUpdatedTimestamp
-  , maActionsEnabled
-  , maInsufficientDataActions
-  , maStateReason
-  , maStateReasonData
-  , maDimensions
-  , maAlarmARN
-  , maAlarmActions
-  , maUnit
-  , maStatistic
-  , maExtendedStatistic
+    , MetricAlarm
+    , metricAlarm
+    , maAlarmName
+    , maStateUpdatedTimestamp
+    , maMetrics
+    , maTreatMissingData
+    , maPeriod
+    , maAlarmDescription
+    , maEvaluationPeriods
+    , maMetricName
+    , maNamespace
+    , maThresholdMetricId
+    , maComparisonOperator
+    , maOKActions
+    , maEvaluateLowSampleCountPercentile
+    , maStateValue
+    , maDatapointsToAlarm
+    , maThreshold
+    , maAlarmConfigurationUpdatedTimestamp
+    , maActionsEnabled
+    , maInsufficientDataActions
+    , maStateReason
+    , maStateReasonData
+    , maDimensions
+    , maAlarmARN
+    , maAlarmActions
+    , maUnit
+    , maStatistic
+    , maExtendedStatistic
+
     -- ** MetricDataQuery
-  , MetricDataQuery
-  , metricDataQuery
-  , mdqReturnData
-  , mdqExpression
-  , mdqLabel
-  , mdqMetricStat
-  , mdqId
+    , MetricDataQuery
+    , metricDataQuery
+    , mdqReturnData
+    , mdqPeriod
+    , mdqExpression
+    , mdqLabel
+    , mdqMetricStat
+    , mdqId
+
     -- ** MetricDataResult
-  , MetricDataResult
-  , metricDataResult
-  , mdrValues
-  , mdrId
-  , mdrTimestamps
-  , mdrMessages
-  , mdrLabel
-  , mdrStatusCode
+    , MetricDataResult
+    , metricDataResult
+    , mdrValues
+    , mdrId
+    , mdrTimestamps
+    , mdrMessages
+    , mdrLabel
+    , mdrStatusCode
+
     -- ** MetricDatum
-  , MetricDatum
-  , metricDatum
-  , mdValue
-  , mdStorageResolution
-  , mdDimensions
-  , mdUnit
-  , mdTimestamp
-  , mdStatisticValues
-  , mdMetricName
+    , MetricDatum
+    , metricDatum
+    , mdValues
+    , mdCounts
+    , mdValue
+    , mdStorageResolution
+    , mdDimensions
+    , mdUnit
+    , mdTimestamp
+    , mdStatisticValues
+    , mdMetricName
+
     -- ** MetricStat
-  , MetricStat
-  , metricStat
-  , msUnit
-  , msMetric
-  , msPeriod
-  , msStat
+    , MetricStat
+    , metricStat
+    , msUnit
+    , msMetric
+    , msPeriod
+    , msStat
+
+    -- ** PartialFailure
+    , PartialFailure
+    , partialFailure
+    , pfFailureResource
+    , pfFailureCode
+    , pfFailureDescription
+    , pfExceptionType
+
+    -- ** Range
+    , Range
+    , range
+    , rStartTime
+    , rEndTime
+
     -- ** StatisticSet
-  , StatisticSet
-  , statisticSet
-  , ssSampleCount
-  , ssSum
-  , ssMinimum
-  , ssMaximum
-  ) where
+    , StatisticSet
+    , statisticSet
+    , ssSampleCount
+    , ssSum
+    , ssMinimum
+    , ssMaximum
+
+    -- ** Tag
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
+    ) where
 
 import Network.AWS.CloudWatch.DeleteAlarms
+import Network.AWS.CloudWatch.DeleteAnomalyDetector
 import Network.AWS.CloudWatch.DeleteDashboards
+import Network.AWS.CloudWatch.DeleteInsightRules
 import Network.AWS.CloudWatch.DescribeAlarmHistory
 import Network.AWS.CloudWatch.DescribeAlarms
 import Network.AWS.CloudWatch.DescribeAlarmsForMetric
+import Network.AWS.CloudWatch.DescribeAnomalyDetectors
+import Network.AWS.CloudWatch.DescribeInsightRules
 import Network.AWS.CloudWatch.DisableAlarmActions
+import Network.AWS.CloudWatch.DisableInsightRules
 import Network.AWS.CloudWatch.EnableAlarmActions
+import Network.AWS.CloudWatch.EnableInsightRules
 import Network.AWS.CloudWatch.GetDashboard
+import Network.AWS.CloudWatch.GetInsightRuleReport
 import Network.AWS.CloudWatch.GetMetricData
 import Network.AWS.CloudWatch.GetMetricStatistics
+import Network.AWS.CloudWatch.GetMetricWidgetImage
 import Network.AWS.CloudWatch.ListDashboards
 import Network.AWS.CloudWatch.ListMetrics
+import Network.AWS.CloudWatch.ListTagsForResource
+import Network.AWS.CloudWatch.PutAnomalyDetector
+import Network.AWS.CloudWatch.PutCompositeAlarm
 import Network.AWS.CloudWatch.PutDashboard
+import Network.AWS.CloudWatch.PutInsightRule
 import Network.AWS.CloudWatch.PutMetricAlarm
 import Network.AWS.CloudWatch.PutMetricData
 import Network.AWS.CloudWatch.SetAlarmState
+import Network.AWS.CloudWatch.TagResource
 import Network.AWS.CloudWatch.Types
+import Network.AWS.CloudWatch.UntagResource
 import Network.AWS.CloudWatch.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'CloudWatch'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -258,6 +480,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification

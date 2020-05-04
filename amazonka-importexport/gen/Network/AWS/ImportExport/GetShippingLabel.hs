@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.ImportExport.GetShippingLabel
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -18,30 +20,32 @@
 --
 -- This operation generates a pre-paid UPS shipping label that you will use to ship your device to AWS for processing.
 module Network.AWS.ImportExport.GetShippingLabel
+    (
     -- * Creating a Request
-  ( getShippingLabel
-  , GetShippingLabel
+      getShippingLabel
+    , GetShippingLabel
     -- * Request Lenses
-  , gslStreet3
-  , gslAPIVersion
-  , gslCountry
-  , gslStateOrProvince
-  , gslPostalCode
-  , gslStreet2
-  , gslName
-  , gslCompany
-  , gslPhoneNumber
-  , gslCity
-  , gslStreet1
-  , gslJobIds
+    , gslStreet3
+    , gslAPIVersion
+    , gslCountry
+    , gslStateOrProvince
+    , gslPostalCode
+    , gslStreet2
+    , gslName
+    , gslCompany
+    , gslPhoneNumber
+    , gslCity
+    , gslStreet1
+    , gslJobIds
+
     -- * Destructuring the Response
-  , getShippingLabelResponse
-  , GetShippingLabelResponse
+    , getShippingLabelResponse
+    , GetShippingLabelResponse
     -- * Response Lenses
-  , gslrsShippingLabelURL
-  , gslrsWarning
-  , gslrsResponseStatus
-  ) where
+    , gslrsShippingLabelURL
+    , gslrsWarning
+    , gslrsResponseStatus
+    ) where
 
 import Network.AWS.ImportExport.Types
 import Network.AWS.ImportExport.Types.Product
@@ -67,6 +71,7 @@ data GetShippingLabel =
     , _gslJobIds          :: ![Text]
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
 
 -- | Creates a value of 'GetShippingLabel' with the minimum fields required to make a request.
 --
@@ -95,7 +100,8 @@ data GetShippingLabel =
 -- * 'gslStreet1' - Undocumented member.
 --
 -- * 'gslJobIds' - Undocumented member.
-getShippingLabel :: GetShippingLabel
+getShippingLabel
+    :: GetShippingLabel
 getShippingLabel =
   GetShippingLabel'
     { _gslStreet3 = Nothing
@@ -112,95 +118,91 @@ getShippingLabel =
     , _gslJobIds = mempty
     }
 
+
 -- | Undocumented member.
 gslStreet3 :: Lens' GetShippingLabel (Maybe Text)
-gslStreet3 = lens _gslStreet3 (\s a -> s {_gslStreet3 = a})
+gslStreet3 = lens _gslStreet3 (\ s a -> s{_gslStreet3 = a})
 
 -- | Undocumented member.
 gslAPIVersion :: Lens' GetShippingLabel (Maybe Text)
-gslAPIVersion = lens _gslAPIVersion (\s a -> s {_gslAPIVersion = a})
+gslAPIVersion = lens _gslAPIVersion (\ s a -> s{_gslAPIVersion = a})
 
 -- | Undocumented member.
 gslCountry :: Lens' GetShippingLabel (Maybe Text)
-gslCountry = lens _gslCountry (\s a -> s {_gslCountry = a})
+gslCountry = lens _gslCountry (\ s a -> s{_gslCountry = a})
 
 -- | Undocumented member.
 gslStateOrProvince :: Lens' GetShippingLabel (Maybe Text)
-gslStateOrProvince =
-  lens _gslStateOrProvince (\s a -> s {_gslStateOrProvince = a})
+gslStateOrProvince = lens _gslStateOrProvince (\ s a -> s{_gslStateOrProvince = a})
 
 -- | Undocumented member.
 gslPostalCode :: Lens' GetShippingLabel (Maybe Text)
-gslPostalCode = lens _gslPostalCode (\s a -> s {_gslPostalCode = a})
+gslPostalCode = lens _gslPostalCode (\ s a -> s{_gslPostalCode = a})
 
 -- | Undocumented member.
 gslStreet2 :: Lens' GetShippingLabel (Maybe Text)
-gslStreet2 = lens _gslStreet2 (\s a -> s {_gslStreet2 = a})
+gslStreet2 = lens _gslStreet2 (\ s a -> s{_gslStreet2 = a})
 
 -- | Undocumented member.
 gslName :: Lens' GetShippingLabel (Maybe Text)
-gslName = lens _gslName (\s a -> s {_gslName = a})
+gslName = lens _gslName (\ s a -> s{_gslName = a})
 
 -- | Undocumented member.
 gslCompany :: Lens' GetShippingLabel (Maybe Text)
-gslCompany = lens _gslCompany (\s a -> s {_gslCompany = a})
+gslCompany = lens _gslCompany (\ s a -> s{_gslCompany = a})
 
 -- | Undocumented member.
 gslPhoneNumber :: Lens' GetShippingLabel (Maybe Text)
-gslPhoneNumber = lens _gslPhoneNumber (\s a -> s {_gslPhoneNumber = a})
+gslPhoneNumber = lens _gslPhoneNumber (\ s a -> s{_gslPhoneNumber = a})
 
 -- | Undocumented member.
 gslCity :: Lens' GetShippingLabel (Maybe Text)
-gslCity = lens _gslCity (\s a -> s {_gslCity = a})
+gslCity = lens _gslCity (\ s a -> s{_gslCity = a})
 
 -- | Undocumented member.
 gslStreet1 :: Lens' GetShippingLabel (Maybe Text)
-gslStreet1 = lens _gslStreet1 (\s a -> s {_gslStreet1 = a})
+gslStreet1 = lens _gslStreet1 (\ s a -> s{_gslStreet1 = a})
 
 -- | Undocumented member.
 gslJobIds :: Lens' GetShippingLabel [Text]
-gslJobIds = lens _gslJobIds (\s a -> s {_gslJobIds = a}) . _Coerce
+gslJobIds = lens _gslJobIds (\ s a -> s{_gslJobIds = a}) . _Coerce
 
 instance AWSRequest GetShippingLabel where
-  type Rs GetShippingLabel = GetShippingLabelResponse
-  request = postQuery importExport
-  response =
-    receiveXMLWrapper
-      "GetShippingLabelResult"
-      (\s h x ->
-         GetShippingLabelResponse' <$> (x .@? "ShippingLabelURL") <*>
-         (x .@? "Warning") <*>
-         (pure (fromEnum s)))
+        type Rs GetShippingLabel = GetShippingLabelResponse
+        request = postQuery importExport
+        response
+          = receiveXMLWrapper "GetShippingLabelResult"
+              (\ s h x ->
+                 GetShippingLabelResponse' <$>
+                   (x .@? "ShippingLabelURL") <*> (x .@? "Warning") <*>
+                     (pure (fromEnum s)))
 
-instance Hashable GetShippingLabel
+instance Hashable GetShippingLabel where
 
-instance NFData GetShippingLabel
+instance NFData GetShippingLabel where
 
 instance ToHeaders GetShippingLabel where
-  toHeaders = const mempty
+        toHeaders = const mempty
 
 instance ToPath GetShippingLabel where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery GetShippingLabel where
-  toQuery GetShippingLabel' {..} =
-    mconcat
-      [ "Operation=GetShippingLabel"
-      , "Action" =: ("GetShippingLabel" :: ByteString)
-      , "Version" =: ("2010-06-01" :: ByteString)
-      , "street3" =: _gslStreet3
-      , "APIVersion" =: _gslAPIVersion
-      , "country" =: _gslCountry
-      , "stateOrProvince" =: _gslStateOrProvince
-      , "postalCode" =: _gslPostalCode
-      , "street2" =: _gslStreet2
-      , "name" =: _gslName
-      , "company" =: _gslCompany
-      , "phoneNumber" =: _gslPhoneNumber
-      , "city" =: _gslCity
-      , "street1" =: _gslStreet1
-      , "jobIds" =: toQueryList "member" _gslJobIds
-      ]
+        toQuery GetShippingLabel'{..}
+          = mconcat
+              ["Operation=GetShippingLabel",
+               "Action" =: ("GetShippingLabel" :: ByteString),
+               "Version" =: ("2010-06-01" :: ByteString),
+               "street3" =: _gslStreet3,
+               "APIVersion" =: _gslAPIVersion,
+               "country" =: _gslCountry,
+               "stateOrProvince" =: _gslStateOrProvince,
+               "postalCode" =: _gslPostalCode,
+               "street2" =: _gslStreet2, "name" =: _gslName,
+               "company" =: _gslCompany,
+               "phoneNumber" =: _gslPhoneNumber, "city" =: _gslCity,
+               "street1" =: _gslStreet1,
+               "jobIds" =: toQueryList "member" _gslJobIds]
 
 -- | /See:/ 'getShippingLabelResponse' smart constructor.
 data GetShippingLabelResponse =
@@ -211,6 +213,7 @@ data GetShippingLabelResponse =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'GetShippingLabelResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -220,9 +223,9 @@ data GetShippingLabelResponse =
 -- * 'gslrsWarning' - Undocumented member.
 --
 -- * 'gslrsResponseStatus' - -- | The response status code.
-getShippingLabelResponse ::
-     Int -- ^ 'gslrsResponseStatus'
-  -> GetShippingLabelResponse
+getShippingLabelResponse
+    :: Int -- ^ 'gslrsResponseStatus'
+    -> GetShippingLabelResponse
 getShippingLabelResponse pResponseStatus_ =
   GetShippingLabelResponse'
     { _gslrsShippingLabelURL = Nothing
@@ -230,18 +233,17 @@ getShippingLabelResponse pResponseStatus_ =
     , _gslrsResponseStatus = pResponseStatus_
     }
 
+
 -- | Undocumented member.
 gslrsShippingLabelURL :: Lens' GetShippingLabelResponse (Maybe Text)
-gslrsShippingLabelURL =
-  lens _gslrsShippingLabelURL (\s a -> s {_gslrsShippingLabelURL = a})
+gslrsShippingLabelURL = lens _gslrsShippingLabelURL (\ s a -> s{_gslrsShippingLabelURL = a})
 
 -- | Undocumented member.
 gslrsWarning :: Lens' GetShippingLabelResponse (Maybe Text)
-gslrsWarning = lens _gslrsWarning (\s a -> s {_gslrsWarning = a})
+gslrsWarning = lens _gslrsWarning (\ s a -> s{_gslrsWarning = a})
 
 -- | -- | The response status code.
 gslrsResponseStatus :: Lens' GetShippingLabelResponse Int
-gslrsResponseStatus =
-  lens _gslrsResponseStatus (\s a -> s {_gslrsResponseStatus = a})
+gslrsResponseStatus = lens _gslrsResponseStatus (\ s a -> s{_gslrsResponseStatus = a})
 
-instance NFData GetShippingLabelResponse
+instance NFData GetShippingLabelResponse where

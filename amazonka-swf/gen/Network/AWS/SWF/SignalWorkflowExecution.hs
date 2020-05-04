@@ -3,11 +3,13 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE RecordWildCards    #-}
 {-# LANGUAGE TypeFamilies       #-}
+
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 {-# OPTIONS_GHC -fno-warn-unused-binds   #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.SWF.SignalWorkflowExecution
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -34,19 +36,21 @@
 -- If the caller doesn't have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's @cause@ parameter is set to @OPERATION_NOT_PERMITTED@ . For details and example IAM policies, see <http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html Using IAM to Manage Access to Amazon SWF Workflows> in the /Amazon SWF Developer Guide/ .
 --
 module Network.AWS.SWF.SignalWorkflowExecution
+    (
     -- * Creating a Request
-  ( signalWorkflowExecution
-  , SignalWorkflowExecution
+      signalWorkflowExecution
+    , SignalWorkflowExecution
     -- * Request Lenses
-  , sweInput
-  , sweRunId
-  , sweDomain
-  , sweWorkflowId
-  , sweSignalName
+    , sweInput
+    , sweRunId
+    , sweDomain
+    , sweWorkflowId
+    , sweSignalName
+
     -- * Destructuring the Response
-  , signalWorkflowExecutionResponse
-  , SignalWorkflowExecutionResponse
-  ) where
+    , signalWorkflowExecutionResponse
+    , SignalWorkflowExecutionResponse
+    ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -66,6 +70,7 @@ data SignalWorkflowExecution =
     }
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SignalWorkflowExecution' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
@@ -79,11 +84,11 @@ data SignalWorkflowExecution =
 -- * 'sweWorkflowId' - The workflowId of the workflow execution to signal.
 --
 -- * 'sweSignalName' - The name of the signal. This name must be meaningful to the target workflow.
-signalWorkflowExecution ::
-     Text -- ^ 'sweDomain'
-  -> Text -- ^ 'sweWorkflowId'
-  -> Text -- ^ 'sweSignalName'
-  -> SignalWorkflowExecution
+signalWorkflowExecution
+    :: Text -- ^ 'sweDomain'
+    -> Text -- ^ 'sweWorkflowId'
+    -> Text -- ^ 'sweSignalName'
+    -> SignalWorkflowExecution
 signalWorkflowExecution pDomain_ pWorkflowId_ pSignalName_ =
   SignalWorkflowExecution'
     { _sweInput = Nothing
@@ -93,69 +98,75 @@ signalWorkflowExecution pDomain_ pWorkflowId_ pSignalName_ =
     , _sweSignalName = pSignalName_
     }
 
+
 -- | Data to attach to the @WorkflowExecutionSignaled@ event in the target workflow execution's history.
 sweInput :: Lens' SignalWorkflowExecution (Maybe Text)
-sweInput = lens _sweInput (\s a -> s {_sweInput = a})
+sweInput = lens _sweInput (\ s a -> s{_sweInput = a})
 
 -- | The runId of the workflow execution to signal.
 sweRunId :: Lens' SignalWorkflowExecution (Maybe Text)
-sweRunId = lens _sweRunId (\s a -> s {_sweRunId = a})
+sweRunId = lens _sweRunId (\ s a -> s{_sweRunId = a})
 
 -- | The name of the domain containing the workflow execution to signal.
 sweDomain :: Lens' SignalWorkflowExecution Text
-sweDomain = lens _sweDomain (\s a -> s {_sweDomain = a})
+sweDomain = lens _sweDomain (\ s a -> s{_sweDomain = a})
 
 -- | The workflowId of the workflow execution to signal.
 sweWorkflowId :: Lens' SignalWorkflowExecution Text
-sweWorkflowId = lens _sweWorkflowId (\s a -> s {_sweWorkflowId = a})
+sweWorkflowId = lens _sweWorkflowId (\ s a -> s{_sweWorkflowId = a})
 
 -- | The name of the signal. This name must be meaningful to the target workflow.
 sweSignalName :: Lens' SignalWorkflowExecution Text
-sweSignalName = lens _sweSignalName (\s a -> s {_sweSignalName = a})
+sweSignalName = lens _sweSignalName (\ s a -> s{_sweSignalName = a})
 
 instance AWSRequest SignalWorkflowExecution where
-  type Rs SignalWorkflowExecution = SignalWorkflowExecutionResponse
-  request = postJSON swf
-  response = receiveNull SignalWorkflowExecutionResponse'
+        type Rs SignalWorkflowExecution =
+             SignalWorkflowExecutionResponse
+        request = postJSON swf
+        response
+          = receiveNull SignalWorkflowExecutionResponse'
 
-instance Hashable SignalWorkflowExecution
+instance Hashable SignalWorkflowExecution where
 
-instance NFData SignalWorkflowExecution
+instance NFData SignalWorkflowExecution where
 
 instance ToHeaders SignalWorkflowExecution where
-  toHeaders =
-    const
-      (mconcat
-         [ "X-Amz-Target" =#
-           ("SimpleWorkflowService.SignalWorkflowExecution" :: ByteString)
-         , "Content-Type" =# ("application/x-amz-json-1.0" :: ByteString)
-         ])
+        toHeaders
+          = const
+              (mconcat
+                 ["X-Amz-Target" =#
+                    ("SimpleWorkflowService.SignalWorkflowExecution" ::
+                       ByteString),
+                  "Content-Type" =#
+                    ("application/x-amz-json-1.0" :: ByteString)])
 
 instance ToJSON SignalWorkflowExecution where
-  toJSON SignalWorkflowExecution' {..} =
-    object
-      (catMaybes
-         [ ("input" .=) <$> _sweInput
-         , ("runId" .=) <$> _sweRunId
-         , Just ("domain" .= _sweDomain)
-         , Just ("workflowId" .= _sweWorkflowId)
-         , Just ("signalName" .= _sweSignalName)
-         ])
+        toJSON SignalWorkflowExecution'{..}
+          = object
+              (catMaybes
+                 [("input" .=) <$> _sweInput,
+                  ("runId" .=) <$> _sweRunId,
+                  Just ("domain" .= _sweDomain),
+                  Just ("workflowId" .= _sweWorkflowId),
+                  Just ("signalName" .= _sweSignalName)])
 
 instance ToPath SignalWorkflowExecution where
-  toPath = const "/"
+        toPath = const "/"
 
 instance ToQuery SignalWorkflowExecution where
-  toQuery = const mempty
+        toQuery = const mempty
 
 -- | /See:/ 'signalWorkflowExecutionResponse' smart constructor.
 data SignalWorkflowExecutionResponse =
   SignalWorkflowExecutionResponse'
   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
+
 -- | Creates a value of 'SignalWorkflowExecutionResponse' with the minimum fields required to make a request.
 --
-signalWorkflowExecutionResponse :: SignalWorkflowExecutionResponse
+signalWorkflowExecutionResponse
+    :: SignalWorkflowExecutionResponse
 signalWorkflowExecutionResponse = SignalWorkflowExecutionResponse'
 
-instance NFData SignalWorkflowExecutionResponse
+
+instance NFData SignalWorkflowExecutionResponse where

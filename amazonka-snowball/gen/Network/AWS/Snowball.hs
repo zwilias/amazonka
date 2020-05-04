@@ -2,6 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-duplicate-exports #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
+
 -- |
 -- Module      : Network.AWS.Snowball
 -- Copyright   : (c) 2013-2018 Brendan Hay
@@ -14,202 +15,253 @@
 --
 --
 module Network.AWS.Snowball
+    (
     -- * Service Configuration
-  ( snowball
+      snowball
+
     -- * Errors
     -- $errors
+
     -- ** InvalidResourceException
-  , _InvalidResourceException
+    , _InvalidResourceException
+
     -- ** UnsupportedAddressException
-  , _UnsupportedAddressException
+    , _UnsupportedAddressException
+
     -- ** KMSRequestFailedException
-  , _KMSRequestFailedException
+    , _KMSRequestFailedException
+
     -- ** InvalidJobStateException
-  , _InvalidJobStateException
+    , _InvalidJobStateException
+
     -- ** InvalidInputCombinationException
-  , _InvalidInputCombinationException
+    , _InvalidInputCombinationException
+
     -- ** InvalidNextTokenException
-  , _InvalidNextTokenException
+    , _InvalidNextTokenException
+
     -- ** InvalidAddressException
-  , _InvalidAddressException
+    , _InvalidAddressException
+
     -- ** ClusterLimitExceededException
-  , _ClusterLimitExceededException
+    , _ClusterLimitExceededException
+
     -- * Waiters
     -- $waiters
+
     -- * Operations
     -- $operations
+
     -- ** CancelCluster
-  , module Network.AWS.Snowball.CancelCluster
+    , module Network.AWS.Snowball.CancelCluster
+
     -- ** DescribeCluster
-  , module Network.AWS.Snowball.DescribeCluster
+    , module Network.AWS.Snowball.DescribeCluster
+
     -- ** CreateAddress
-  , module Network.AWS.Snowball.CreateAddress
+    , module Network.AWS.Snowball.CreateAddress
+
     -- ** GetSnowballUsage
-  , module Network.AWS.Snowball.GetSnowballUsage
+    , module Network.AWS.Snowball.GetSnowballUsage
+
     -- ** DescribeAddresses (Paginated)
-  , module Network.AWS.Snowball.DescribeAddresses
+    , module Network.AWS.Snowball.DescribeAddresses
+
     -- ** UpdateCluster
-  , module Network.AWS.Snowball.UpdateCluster
+    , module Network.AWS.Snowball.UpdateCluster
+
     -- ** CreateJob
-  , module Network.AWS.Snowball.CreateJob
+    , module Network.AWS.Snowball.CreateJob
+
     -- ** GetJobManifest
-  , module Network.AWS.Snowball.GetJobManifest
+    , module Network.AWS.Snowball.GetJobManifest
+
     -- ** CreateCluster
-  , module Network.AWS.Snowball.CreateCluster
+    , module Network.AWS.Snowball.CreateCluster
+
     -- ** ListJobs (Paginated)
-  , module Network.AWS.Snowball.ListJobs
+    , module Network.AWS.Snowball.ListJobs
+
     -- ** UpdateJob
-  , module Network.AWS.Snowball.UpdateJob
+    , module Network.AWS.Snowball.UpdateJob
+
     -- ** GetJobUnlockCode
-  , module Network.AWS.Snowball.GetJobUnlockCode
+    , module Network.AWS.Snowball.GetJobUnlockCode
+
     -- ** ListClusterJobs
-  , module Network.AWS.Snowball.ListClusterJobs
+    , module Network.AWS.Snowball.ListClusterJobs
+
     -- ** DescribeJob
-  , module Network.AWS.Snowball.DescribeJob
+    , module Network.AWS.Snowball.DescribeJob
+
     -- ** ListClusters
-  , module Network.AWS.Snowball.ListClusters
+    , module Network.AWS.Snowball.ListClusters
+
     -- ** DescribeAddress
-  , module Network.AWS.Snowball.DescribeAddress
+    , module Network.AWS.Snowball.DescribeAddress
+
     -- ** CancelJob
-  , module Network.AWS.Snowball.CancelJob
+    , module Network.AWS.Snowball.CancelJob
+
     -- * Types
+
     -- ** ClusterState
-  , ClusterState(..)
+    , ClusterState (..)
+
     -- ** JobState
-  , JobState(..)
+    , JobState (..)
+
     -- ** JobType
-  , JobType(..)
+    , JobType (..)
+
     -- ** ShippingOption
-  , ShippingOption(..)
+    , ShippingOption (..)
+
     -- ** SnowballCapacity
-  , SnowballCapacity(..)
+    , SnowballCapacity (..)
+
     -- ** SnowballType
-  , SnowballType(..)
+    , SnowballType (..)
+
     -- ** Address
-  , Address
-  , address
-  , aIsRestricted
-  , aStreet3
-  , aLandmark
-  , aPostalCode
-  , aCountry
-  , aStateOrProvince
-  , aStreet2
-  , aAddressId
-  , aCity
-  , aPhoneNumber
-  , aCompany
-  , aName
-  , aPrefectureOrDistrict
-  , aStreet1
+    , Address
+    , address
+    , aIsRestricted
+    , aStreet3
+    , aLandmark
+    , aPostalCode
+    , aCountry
+    , aStateOrProvince
+    , aStreet2
+    , aAddressId
+    , aCity
+    , aPhoneNumber
+    , aCompany
+    , aName
+    , aPrefectureOrDistrict
+    , aStreet1
+
     -- ** ClusterListEntry
-  , ClusterListEntry
-  , clusterListEntry
-  , cleClusterState
-  , cleClusterId
-  , cleCreationDate
-  , cleDescription
+    , ClusterListEntry
+    , clusterListEntry
+    , cleClusterState
+    , cleClusterId
+    , cleCreationDate
+    , cleDescription
+
     -- ** ClusterMetadata
-  , ClusterMetadata
-  , clusterMetadata
-  , cmJobType
-  , cmKMSKeyARN
-  , cmClusterState
-  , cmNotification
-  , cmForwardingAddressId
-  , cmAddressId
-  , cmSnowballType
-  , cmShippingOption
-  , cmResources
-  , cmClusterId
-  , cmCreationDate
-  , cmDescription
-  , cmRoleARN
+    , ClusterMetadata
+    , clusterMetadata
+    , cmJobType
+    , cmKMSKeyARN
+    , cmClusterState
+    , cmNotification
+    , cmForwardingAddressId
+    , cmAddressId
+    , cmSnowballType
+    , cmShippingOption
+    , cmResources
+    , cmClusterId
+    , cmCreationDate
+    , cmDescription
+    , cmRoleARN
+
     -- ** DataTransfer
-  , DataTransfer
-  , dataTransfer
-  , dtTotalObjects
-  , dtTotalBytes
-  , dtObjectsTransferred
-  , dtBytesTransferred
+    , DataTransfer
+    , dataTransfer
+    , dtTotalObjects
+    , dtTotalBytes
+    , dtObjectsTransferred
+    , dtBytesTransferred
+
     -- ** EventTriggerDefinition
-  , EventTriggerDefinition
-  , eventTriggerDefinition
-  , etdEventResourceARN
+    , EventTriggerDefinition
+    , eventTriggerDefinition
+    , etdEventResourceARN
+
     -- ** JobListEntry
-  , JobListEntry
-  , jobListEntry
-  , jleJobType
-  , jleJobId
-  , jleJobState
-  , jleSnowballType
-  , jleCreationDate
-  , jleDescription
-  , jleIsMaster
+    , JobListEntry
+    , jobListEntry
+    , jleJobType
+    , jleJobId
+    , jleJobState
+    , jleSnowballType
+    , jleCreationDate
+    , jleDescription
+    , jleIsMaster
+
     -- ** JobLogs
-  , JobLogs
-  , jobLogs
-  , jlJobFailureLogURI
-  , jlJobCompletionReportURI
-  , jlJobSuccessLogURI
+    , JobLogs
+    , jobLogs
+    , jlJobFailureLogURI
+    , jlJobCompletionReportURI
+    , jlJobSuccessLogURI
+
     -- ** JobMetadata
-  , JobMetadata
-  , jobMetadata
-  , jmJobType
-  , jmKMSKeyARN
-  , jmJobId
-  , jmJobLogInfo
-  , jmNotification
-  , jmJobState
-  , jmForwardingAddressId
-  , jmShippingDetails
-  , jmAddressId
-  , jmSnowballType
-  , jmDataTransferProgress
-  , jmResources
-  , jmClusterId
-  , jmCreationDate
-  , jmDescription
-  , jmRoleARN
-  , jmSnowballCapacityPreference
+    , JobMetadata
+    , jobMetadata
+    , jmJobType
+    , jmKMSKeyARN
+    , jmJobId
+    , jmJobLogInfo
+    , jmNotification
+    , jmJobState
+    , jmForwardingAddressId
+    , jmShippingDetails
+    , jmAddressId
+    , jmSnowballType
+    , jmDataTransferProgress
+    , jmResources
+    , jmClusterId
+    , jmCreationDate
+    , jmDescription
+    , jmRoleARN
+    , jmSnowballCapacityPreference
+
     -- ** JobResource
-  , JobResource
-  , jobResource
-  , jrLambdaResources
-  , jrS3Resources
+    , JobResource
+    , jobResource
+    , jrLambdaResources
+    , jrS3Resources
+
     -- ** KeyRange
-  , KeyRange
-  , keyRange
-  , krEndMarker
-  , krBeginMarker
+    , KeyRange
+    , keyRange
+    , krEndMarker
+    , krBeginMarker
+
     -- ** LambdaResource
-  , LambdaResource
-  , lambdaResource
-  , lrEventTriggers
-  , lrLambdaARN
+    , LambdaResource
+    , lambdaResource
+    , lrEventTriggers
+    , lrLambdaARN
+
     -- ** Notification
-  , Notification
-  , notification
-  , nNotifyAll
-  , nSNSTopicARN
-  , nJobStatesToNotify
+    , Notification
+    , notification
+    , nNotifyAll
+    , nSNSTopicARN
+    , nJobStatesToNotify
+
     -- ** S3Resource
-  , S3Resource
-  , s3Resource
-  , srKeyRange
-  , srBucketARN
+    , S3Resource
+    , s3Resource
+    , srKeyRange
+    , srBucketARN
+
     -- ** Shipment
-  , Shipment
-  , shipment
-  , sStatus
-  , sTrackingNumber
+    , Shipment
+    , shipment
+    , sStatus
+    , sTrackingNumber
+
     -- ** ShippingDetails
-  , ShippingDetails
-  , shippingDetails
-  , sdShippingOption
-  , sdOutboundShipment
-  , sdInboundShipment
-  ) where
+    , ShippingDetails
+    , shippingDetails
+    , sdShippingOption
+    , sdOutboundShipment
+    , sdInboundShipment
+    ) where
 
 import Network.AWS.Snowball.CancelCluster
 import Network.AWS.Snowball.CancelJob
@@ -230,12 +282,14 @@ import Network.AWS.Snowball.Types
 import Network.AWS.Snowball.UpdateCluster
 import Network.AWS.Snowball.UpdateJob
 import Network.AWS.Snowball.Waiters
+
 {- $errors
 Error matchers are designed for use with the functions provided by
 <http://hackage.haskell.org/package/lens/docs/Control-Exception-Lens.html Control.Exception.Lens>.
 This allows catching (and rethrowing) service specific errors returned
 by 'Snowball'.
 -}
+
 {- $operations
 Some AWS operations return results that are incomplete and require subsequent
 requests in order to obtain the entire result set. The process of sending
@@ -252,6 +306,7 @@ this have an additional note in the documentation.
 Many operations have the ability to filter results on the server side. See the
 individual operation parameters for details.
 -}
+
 {- $waiters
 Waiters poll by repeatedly sending a request until some remote success condition
 configured by the 'Wait' specification is fulfilled. The 'Wait' specification
